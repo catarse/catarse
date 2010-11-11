@@ -6,6 +6,7 @@ gem 'pg'
 gem 'haml'
 gem 'compass'
 gem 'authlogic'
+# TODO gem 'sexy_pg_constraints'
 
 gem "crowdfunding", :path => "/home/daniel/crowdfunding"
 
