@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
     deadline >= Time.now
   end
   def time_left
-    t 'time.days'
+    ""
   end
 end
 
