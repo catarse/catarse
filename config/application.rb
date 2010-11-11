@@ -31,6 +31,8 @@ module Kickstarter
     # config.i18n.default_locale = :de
 
     # JavaScript files you want as :defaults (application.js is always included).
+    config.active_record.schema_format = :sql
+
     config.action_view.javascript_expansions[:defaults] = %w()
 
     # Configure the default encoding used in templates for Ruby 1.9.
