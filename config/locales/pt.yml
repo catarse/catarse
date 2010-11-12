@@ -1,4 +1,3 @@
 pt:
-  time:
-    days: dias
+  foo: Bar
 

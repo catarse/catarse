@@ -11,9 +11,9 @@
 development:
   adapter: postgresql
   encoding: utf-8
-  database: kickstarter_development
+  database: nonameyet_development
   pool: 5
-  username: kickstarter
+  username: nonameyet
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -37,16 +37,16 @@ development:
 test:
   adapter: postgresql
   encoding: utf-8
-  database: kickstarter_test
+  database: nonameyet_test
   pool: 5
-  username: kickstarter
+  username: nonameyet
   password:
 
 production:
   adapter: postgresql
   encoding: utf-8
-  database: kickstarter_production
+  database: nonameyet_production
   pool: 5
-  username: kickstarter
+  username: nonameyet
   password:
 

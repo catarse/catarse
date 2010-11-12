@@ -16,6 +16,41 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: backers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE backers (
+    id integer NOT NULL,
+    project_id integer,
+    user_id integer,
+    value double precision,
+    confirmed boolean DEFAULT false,
+    confirmed_at timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: backers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE backers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+--
+-- Name: backers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE backers_id_seq OWNED BY backers.id;
+
+
+--
 -- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -52,13 +87,14 @@ ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 
 CREATE TABLE projects (
     id integer NOT NULL,
+    name character varying(255),
     user_id integer,
     category_id integer,
-    name character varying(255),
     goal double precision,
     pledged double precision,
     deadline timestamp without time zone,
     about text,
+    video_embed text,
     visible boolean DEFAULT false,
     recommended boolean DEFAULT false,
     created_at timestamp without time zone,
@@ -139,6 +175,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE backers ALTER COLUMN id SET DEFAULT nextval('backers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
 
 
@@ -154,6 +197,14 @@ ALTER TABLE projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regc
 --
 
 ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: backers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY backers
+    ADD CONSTRAINT backers_pkey PRIMARY KEY (id);
 
 
 --
@@ -178,6 +229,27 @@ ALTER TABLE ONLY projects
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_backers_on_confirmed; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_backers_on_confirmed ON backers USING btree (confirmed);
+
+
+--
+-- Name: index_backers_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_backers_on_project_id ON backers USING btree (project_id);
+
+
+--
+-- Name: index_backers_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_backers_on_user_id ON backers USING btree (user_id);
 
 
 --
@@ -238,3 +310,5 @@ INSERT INTO schema_migrations (version) VALUES ('20101111125716');
 INSERT INTO schema_migrations (version) VALUES ('20101111144048');
 
 INSERT INTO schema_migrations (version) VALUES ('20101111145200');
+
+INSERT INTO schema_migrations (version) VALUES ('20101111194251');

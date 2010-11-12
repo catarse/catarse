@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
-  validates_presence_of :name, :user, :category
+  validates_presence_of :name, :user, :category, :video_embed
 
   def successful?
     pledged >= goal
@@ -11,9 +11,6 @@ class Project < ActiveRecord::Base
   end
   def in_time?
     deadline >= Time.now
-  end
-  def time_left
-    ""
   end
 end
 

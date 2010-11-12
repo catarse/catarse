@@ -5,23 +5,23 @@ describe User do
     u = Factory(:user)
     u.should be_valid
   end
-  it "should validate presence of name" do
+  it "should have a name" do
     u = Factory.build(:user, :name => nil)
     u.should_not be_valid
   end
-  it "should validate presence of email" do
+  it "should have an email" do
     u = Factory.build(:user, :email => nil)
     u.should_not be_valid
   end
-  it "should validate presence of password" do
+  it "should have a password" do
     u = Factory.build(:user, :password => nil)
     u.should_not be_valid
   end
-  it "should validate presence of password_confirmation" do
+  it "should have a password_confirmation" do
     u = Factory.build(:user, :password_confirmation => nil)
     u.should_not be_valid
   end
-  it "should validate password_confirmation" do
+  it "should check password_confirmation" do
     u = Factory.build(:user)
     u.password = "foo123"
     u.password_confirmation = "bar123"
@@ -29,7 +29,7 @@ describe User do
     u.password_confirmation = "foo123"
     u.should be_valid
   end
-  it "should validate email format" do
+  it "should check email format" do
     u = Factory.build(:user)
     u.email = "foo"
     u.should_not be_valid
@@ -38,7 +38,7 @@ describe User do
     u.email = "foo@bar.com"
     u.should be_valid
   end
-  it "should validate uniqueness of email" do
+  it "should have an unique email" do
     u = Factory(:user, :email => "foo@bar.com")
     u.should be_valid
     u2 = Factory.build(:user, :email => "foo@bar.com")

@@ -1,4 +1,4 @@
-Kickstarter::Application.configure do
+Nonameyet::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -47,3 +47,4 @@ Kickstarter::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+

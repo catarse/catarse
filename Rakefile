@@ -4,4 +4,5 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Kickstarter::Application.load_tasks
+Nonameyet::Application.load_tasks
+
