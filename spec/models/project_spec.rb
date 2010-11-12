@@ -17,8 +17,8 @@ describe Project do
     p = Factory.build(:project, :category => nil)
     p.should_not be_valid
   end
-  it "should have a video embed" do
-    p = Factory.build(:project, :video_embed => nil)
+  it "should have a video URL" do
+    p = Factory.build(:project, :video_url => nil)
     p.should_not be_valid
   end
   it "should be successful if pledged >= goal" do

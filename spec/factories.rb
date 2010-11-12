@@ -1,3 +1,7 @@
+Factory.sequence :name do |n|
+  "Foo bar #{n}"
+end
+
 Factory.sequence :email do |n|
   "person#{n}@example.com"
 end
@@ -10,14 +14,21 @@ Factory.define :user do |f|
 end
 
 Factory.define :category do |f|
-  f.name "Foo bar"
+  f.name { Factory.next(:name) }
 end
 
 Factory.define :project do |f|
   f.name "Foo bar"
   f.association :user, :factory => :user
   f.association :category, :factory => :category
-  f.video_embed '<object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/20bQTYLlGQ4?fs=1&amp;hl=pt_BR"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/20bQTYLlGQ4?fs=1&amp;hl=pt_BR" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>'
+  f.video_url 'http://www.youtube.com/watch?v=20bQTYLlGQ4'
+end
+
+Factory.define :reward do |f|
+  f.association :project, :factory => :project
+  f.minimum_value 1.00
+  f.maximum_backers 0
+  f.description "Foo bar"
 end
 
 Factory.define :backer do |f|

@@ -8,7 +8,7 @@ class CreateProjects < ActiveRecord::Migration
       t.float :pledged
       t.datetime :deadline
       t.text :about
-      t.text :video_embed
+      t.string :video_url
       t.boolean :visible, :default => false
       t.boolean :recommended, :default => false
       t.timestamps
@@ -18,7 +18,7 @@ class CreateProjects < ActiveRecord::Migration
     #  t.name :not_blank => true
     #  t.user_id :not_blank => true, :reference => {:users => :id}
     #  t.category_id :not_blank => true, :reference => {:categories => :id}
-    #  t.video_embed :not_blank => true
+    #  t.video_url :not_blank => true
     #end
     add_index :projects, :user_id
     add_index :projects, :category_id

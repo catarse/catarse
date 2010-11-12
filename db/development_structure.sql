@@ -23,6 +23,7 @@ CREATE TABLE backers (
     id integer NOT NULL,
     project_id integer,
     user_id integer,
+    reward_id integer,
     value double precision,
     confirmed boolean DEFAULT false,
     confirmed_at timestamp without time zone,
@@ -94,7 +95,7 @@ CREATE TABLE projects (
     pledged double precision,
     deadline timestamp without time zone,
     about text,
-    video_embed text,
+    video_url character varying(255),
     visible boolean DEFAULT false,
     recommended boolean DEFAULT false,
     created_at timestamp without time zone,
@@ -119,6 +120,40 @@ CREATE SEQUENCE projects_id_seq
 --
 
 ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
+
+
+--
+-- Name: rewards; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE rewards (
+    id integer NOT NULL,
+    project_id integer,
+    minimum_value double precision,
+    maximum_backers integer,
+    description text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: rewards_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE rewards_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+
+--
+-- Name: rewards_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE rewards_id_seq OWNED BY rewards.id;
 
 
 --
@@ -196,6 +231,13 @@ ALTER TABLE projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regc
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE rewards ALTER COLUMN id SET DEFAULT nextval('rewards_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -224,6 +266,14 @@ ALTER TABLE ONLY projects
 
 
 --
+-- Name: rewards_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY rewards
+    ADD CONSTRAINT rewards_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -243,6 +293,13 @@ CREATE INDEX index_backers_on_confirmed ON backers USING btree (confirmed);
 --
 
 CREATE INDEX index_backers_on_project_id ON backers USING btree (project_id);
+
+
+--
+-- Name: index_backers_on_reward_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_backers_on_reward_id ON backers USING btree (reward_id);
 
 
 --
@@ -281,6 +338,13 @@ CREATE INDEX index_projects_on_user_id ON projects USING btree (user_id);
 
 
 --
+-- Name: index_rewards_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_rewards_on_project_id ON rewards USING btree (project_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -310,5 +374,7 @@ INSERT INTO schema_migrations (version) VALUES ('20101111125716');
 INSERT INTO schema_migrations (version) VALUES ('20101111144048');
 
 INSERT INTO schema_migrations (version) VALUES ('20101111145200');
+
+INSERT INTO schema_migrations (version) VALUES ('20101111165728');
 
 INSERT INTO schema_migrations (version) VALUES ('20101111194251');

@@ -17,14 +17,62 @@ describe Backer do
     b = Factory.build(:backer, :value => nil)
     b.should_not be_valid
   end
-  it "should have positive value" do
+  it "should have greater than 1 value" do
     b = Factory.build(:backer)
     b.value = -0.01
     b.should_not be_valid
-    b.value = 0.00
+    b.value = 0.99
     b.should_not be_valid
-    b.value = 0.01
+    b.value = 1.00
     b.should be_valid
+    b.value = 1.01
+    b.should be_valid
+  end
+  it "should have reward from the same project only" do
+    backer = Factory.build(:backer)
+    project1 = Factory(:project)
+    project2 = Factory(:project)
+    backer.project = project1
+    reward = Factory(:reward, :project => project2)
+    backer.should be_valid
+    backer.reward = reward
+    backer.should_not be_valid
+  end
+  it "should have a value at least equal to reward's minimum value" do
+    project = Factory(:project)
+    reward = Factory(:reward, :minimum_value => 500, :project => project)
+    backer = Factory.build(:backer, :reward => reward, :project => project)
+    backer.value = 499.99
+    backer.should_not be_valid
+    backer.value = 500.00
+    backer.should be_valid
+    backer.value = 500.01
+    backer.should be_valid
+  end
+  it "should not be able to back if reward's maximum backers' been reached (and maximum backers > 0)" do
+    project = Factory(:project)
+    reward1 = Factory(:reward, :maximum_backers => 0, :project => project)
+    reward2 = Factory(:reward, :maximum_backers => 1, :project => project)
+    reward3 = Factory(:reward, :maximum_backers => 2, :project => project)
+    backer = Factory.build(:backer, :reward => reward1, :project => project)
+    backer.should be_valid
+    backer.save
+    backer = Factory.build(:backer, :reward => reward1, :project => project)
+    backer.should be_valid
+    backer.save
+    backer = Factory.build(:backer, :reward => reward2, :project => project)
+    backer.should be_valid
+    backer.save
+    backer = Factory.build(:backer, :reward => reward2, :project => project)
+    backer.should_not be_valid
+    backer = Factory.build(:backer, :reward => reward3, :project => project)
+    backer.should be_valid
+    backer.save
+    backer = Factory.build(:backer, :reward => reward3, :project => project)
+    backer.should be_valid
+    backer.save
+    backer = Factory.build(:backer, :reward => reward3, :project => project)
+    backer.should_not be_valid
   end
 end
 
