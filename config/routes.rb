@@ -1,4 +1,4 @@
-Nonameyet::Application.routes.draw do
+Catarse::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

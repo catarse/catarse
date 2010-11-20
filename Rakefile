@@ -4,5 +4,5 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Nonameyet::Application.load_tasks
+Catarse::Application.load_tasks
 
