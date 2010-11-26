@@ -1,0 +1,3 @@
+[submodule "lib/generators/haml"]
+	path = lib/generators/haml
+	url = git://github.com/psynix/rails3_haml_scaffold_generator.git

@@ -1,0 +1,29 @@
+!!! 5
+%html{:lang => :pt}
+  %head
+    %meta{:charset => 'utf-8'}
+    %title #{@title} · #{t 'app.title'}
+    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
+    = csrf_meta_tag
+    %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
+  %body#site
+    %section#main
+      %header#header
+        %h1= link_to t('app.title'), root_path
+        %nav#menu
+          %ul
+            %li= link_to t('header.menu.new_project'), new_project_path
+            %li= link_to t('header.menu.login'), new_user_session_path
+        .clear
+      %section#content
+        %header
+          %h1= t 'content.header.punchline'
+          %h2
+            = t 'content.header.description'
+            -##{link_to t('content.header.know_more'), '#'}.
+        = yield
+      %footer#footer
+        = t 'app.copyright'
+
