@@ -5,7 +5,11 @@ pt:
   app:
     title: Catarse
     copyright: Copyright © 2010 Cartarse
-    login: Login
+
+  header:
+    menu:
+      new_project: Envie seu projeto
+      login: Login
 
   content:
     header:
@@ -16,5 +20,4 @@ pt:
   projects:
     index:
       title: Faça acontecer os projetos em que você acredita
-    new: Comece seu projeto
 
