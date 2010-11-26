@@ -10,15 +10,20 @@
     %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
   %body#site
     %section#main
-      %header
+      %header#header
         %h1= link_to t('app.title'), root_path
-        %nav
+        %nav#menu
           %ul
             %li= link_to t('projects.new'), new_project_path
             %li= link_to t('app.login'), new_user_session_path
         .clear
       %section#content
+        %header
+          %h1= t 'content.header.punchline'
+          %h2
+            = t 'content.header.description'
+            -##{link_to t('content.header.know_more'), '#'}.
         = yield
-      %footer
+      %footer#footer
         = t 'app.copyright'
 

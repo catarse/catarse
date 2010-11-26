@@ -13,18 +13,13 @@ body#site
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
   color: #222
   font-size: 18px
+  line-height: 22px
   +text-shadow(#fff, 1px, 1px, 0px)
-
-  h1
-    font-family: "museo-700"
-    font-size: 48px
-    font-weight: normal
-    padding: 20px 0
+  font-weight: normal
 
   a
-    text-decoration: none
-    font-weight: bold
-    color: green
+    text-decoration: underline
+    color: #080
     font-size: 100%
 
   a:hover
@@ -34,26 +29,47 @@ body#site
     width: 920px
     margin: 0 auto
 
+  #header
+    h1
+      font-family: "museo-700"
+      font-size: 48px
+      padding: 36px 0 20px 0
+      float: left
+      a
+        color: #222
+        text-decoration: none
+  #menu
+    float: right
+    ul
+      +horizontal-list(12px)
+      li
+        padding-top: 45px
+        padding-bottom: 20px
+    a
+      text-decoration: none
+      font-weight: bold
+
+  #content
+    background-color: rgba(255,255,255,0.5)
+    +border-radius(6px)
+    +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 16px)
     header
-      h1
-        float: left
-        a
-          color: #222
-      nav
-        float: right
-        ul
-          +horizontal-list(12px)
-          li
-            padding-top: 45px
-            padding-bottom: 20px
-
-    #content
-      background-color: rgba(255,255,255,0.6)
-      +border-radius(8px)
-      +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 16px)
-      padding: 20px
-
-    footer
       text-align: center
-      padding: 40px 0
+      color: #fff
+      padding: 20px 60px
+      background-color: rgba(0,150,0,0.7)
+      +border-top-left-radius(6px)
+      +box-shadow(rgba(0,0,0,0.5), 0px, 3px, 3px)
+      +text-shadow(green, 1px, 1px, 0px)
+      h1
+        font-family: "museo-500"
+        font-size: 32px
+        padding: 20px
+      a
+        color: #fff
+        +text-shadow(green, 1px, 1px, 0px)
+
+  #footer
+    text-align: center
+    padding: 40px 0
 
