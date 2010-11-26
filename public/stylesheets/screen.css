@@ -91,11 +91,21 @@ a img {
 }
 
 /* line 6, ../../app/stylesheets/screen.sass */
+.left {
+  float: left;
+}
+
+/* line 8, ../../app/stylesheets/screen.sass */
+.right {
+  float: right;
+}
+
+/* line 10, ../../app/stylesheets/screen.sass */
 .clear {
   clear: both;
 }
 
-/* line 9, ../../app/stylesheets/screen.sass */
+/* line 13, ../../app/stylesheets/screen.sass */
 body#site {
   background: url("/images/bg.png") repeat;
   text-rendering: optimizeLegibility;
@@ -106,42 +116,42 @@ body#site {
   text-shadow: white 1px 1px 0px;
   font-weight: normal;
 }
-/* line 20, ../../app/stylesheets/screen.sass */
+/* line 24, ../../app/stylesheets/screen.sass */
 body#site strong {
   font-weight: bold;
 }
-/* line 23, ../../app/stylesheets/screen.sass */
+/* line 27, ../../app/stylesheets/screen.sass */
 body#site a {
   text-decoration: underline;
   color: #008800;
   font-size: 100%;
 }
-/* line 28, ../../app/stylesheets/screen.sass */
+/* line 32, ../../app/stylesheets/screen.sass */
 body#site a:hover {
   color: #00aa00;
 }
-/* line 31, ../../app/stylesheets/screen.sass */
+/* line 35, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
 }
-/* line 36, ../../app/stylesheets/screen.sass */
+/* line 40, ../../app/stylesheets/screen.sass */
 body#site #header h1 {
   font-family: "museo-700";
   font-size: 48px;
   padding: 36px 0 20px 0;
   float: left;
 }
-/* line 41, ../../app/stylesheets/screen.sass */
+/* line 45, ../../app/stylesheets/screen.sass */
 body#site #header h1 a {
   color: #222222;
   text-decoration: none;
 }
-/* line 45, ../../app/stylesheets/screen.sass */
+/* line 49, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
 }
-/* line 47, ../../app/stylesheets/screen.sass */
+/* line 51, ../../app/stylesheets/screen.sass */
 body#site #menu ul {
   margin: 0;
   padding: 0;
@@ -169,17 +179,17 @@ body#site #menu ul li:first-child, body#site #menu ul li.first {
 body#site #menu ul li:last-child, body#site #menu ul li.last {
   padding-right: 0px;
 }
-/* line 49, ../../app/stylesheets/screen.sass */
+/* line 53, ../../app/stylesheets/screen.sass */
 body#site #menu ul li {
   padding-top: 45px;
   padding-bottom: 20px;
 }
-/* line 52, ../../app/stylesheets/screen.sass */
+/* line 56, ../../app/stylesheets/screen.sass */
 body#site #menu a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 56, ../../app/stylesheets/screen.sass */
+/* line 60, ../../app/stylesheets/screen.sass */
 body#site #content {
   background-color: rgba(255, 255, 255, 0.5);
   -moz-border-radius: 6px;
@@ -193,7 +203,7 @@ body#site #content {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 61, ../../app/stylesheets/screen.sass */
+/* line 65, ../../app/stylesheets/screen.sass */
 body#site #projects_header {
   text-align: center;
   color: white;
@@ -211,22 +221,22 @@ body#site #projects_header {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
   text-shadow: green 1px 1px 0px;
 }
-/* line 69, ../../app/stylesheets/screen.sass */
+/* line 73, ../../app/stylesheets/screen.sass */
 body#site #projects_header h1 {
   font-family: "museo-500";
   font-size: 32px;
   padding: 20px;
 }
-/* line 73, ../../app/stylesheets/screen.sass */
+/* line 77, ../../app/stylesheets/screen.sass */
 body#site #projects_header a {
   color: white;
   text-shadow: green 1px 1px 0px;
 }
-/* line 77, ../../app/stylesheets/screen.sass */
+/* line 81, ../../app/stylesheets/screen.sass */
 body#site #projects {
   padding: 40px;
 }
-/* line 80, ../../app/stylesheets/screen.sass */
+/* line 84, ../../app/stylesheets/screen.sass */
 body#site article.project {
   font-size: 16px;
   color: #666666;
@@ -240,7 +250,7 @@ body#site article.project {
   border-radius: 8px;
   border: 5px solid rgba(100, 100, 100, 0.1);
 }
-/* line 87, ../../app/stylesheets/screen.sass */
+/* line 91, ../../app/stylesheets/screen.sass */
 body#site article.project img {
   width: 280px;
   -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
@@ -249,27 +259,27 @@ body#site article.project img {
   box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
   margin-bottom: 16px;
 }
-/* line 93, ../../app/stylesheets/screen.sass */
+/* line 97, ../../app/stylesheets/screen.sass */
 body#site header.project h1 {
   font-family: "museo-300";
   font-size: 20px;
 }
-/* line 96, ../../app/stylesheets/screen.sass */
+/* line 100, ../../app/stylesheets/screen.sass */
 body#site header.project a {
   text-decoration: none;
   color: black;
 }
-/* line 99, ../../app/stylesheets/screen.sass */
+/* line 103, ../../app/stylesheets/screen.sass */
 body#site header.project a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 102, ../../app/stylesheets/screen.sass */
+/* line 106, ../../app/stylesheets/screen.sass */
 body#site footer.project {
   font-size: 14px;
   color: #999999;
   padding-bottom: 8px;
 }
-/* line 107, ../../app/stylesheets/screen.sass */
+/* line 111, ../../app/stylesheets/screen.sass */
 body#site .category.project {
   text-transform: uppercase;
   color: white;
@@ -286,12 +296,12 @@ body#site .category.project {
   font-size: 14px;
   margin-top: 16px;
 }
-/* line 118, ../../app/stylesheets/screen.sass */
+/* line 122, ../../app/stylesheets/screen.sass */
 body#site .wrap.project {
   width: 280px;
   padding: 20px;
 }
-/* line 122, ../../app/stylesheets/screen.sass */
+/* line 126, ../../app/stylesheets/screen.sass */
 body#site aside.project {
   text-transform: uppercase;
   color: #333333;
@@ -309,9 +319,60 @@ body#site aside.project {
   -khtml-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
   padding: 20px;
-  font-size: 14px;
+  font-size: 13px;
 }
-/* line 132, ../../app/stylesheets/screen.sass */
+/* line 134, ../../app/stylesheets/screen.sass */
+body#site aside.project ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 51, ../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+body#site aside.project ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: left;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+/* line 43, ../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+body#site aside.project ul li:first-child, body#site aside.project ul li.first {
+  padding-left: 0px;
+}
+/* line 44, ../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+body#site aside.project ul li:last-child, body#site aside.project ul li.last {
+  padding-right: 0px;
+}
+/* line 136, ../../app/stylesheets/screen.sass */
+body#site aside.project .progress_bar {
+  font-size: 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 280px;
+  margin-bottom: 16px;
+  -moz-border-radius: 32px;
+  -webkit-border-radius: 32px;
+  -o-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -khtml-border-radius: 32px;
+  border-radius: 32px;
+}
+/* line 142, ../../app/stylesheets/screen.sass */
+body#site aside.project .progress_bar .progress {
+  background-color: #009600;
+  -moz-border-radius: 32px;
+  -webkit-border-radius: 32px;
+  -o-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -khtml-border-radius: 32px;
+  border-radius: 32px;
+}
+/* line 146, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 40px 0;
