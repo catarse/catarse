@@ -1,3 +1,14 @@
+# coding: utf-8
+
 pt:
-  foo: Bar
+
+  app:
+    title: Catarse
+    copyright: Copyright © 2010 Cartarse
+    login: Login
+
+  projects:
+    index:
+      title: Faça acontecer os projetos em que você acredita
+    new: Comece seu projeto
 

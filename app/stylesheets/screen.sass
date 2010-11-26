@@ -1,0 +1,59 @@
+@import "compass/reset"
+@import "compass/utilities"
+@import "compass/css3"
+@import "fonts"
+
+.clear
+  clear: both
+
+body#site
+
+  background: url('/images/bg.png') repeat
+  text-rendering: optimizeLegibility
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  color: #222
+  font-size: 18px
+  +text-shadow(#fff, 1px, 1px, 0px)
+
+  h1
+    font-family: "museo-700"
+    font-size: 48px
+    font-weight: normal
+    padding: 20px 0
+
+  a
+    text-decoration: none
+    font-weight: bold
+    color: green
+    font-size: 100%
+
+  a:hover
+    color: #0A0
+
+  #main
+    width: 920px
+    margin: 0 auto
+
+    header
+      h1
+        float: left
+        a
+          color: #222
+      nav
+        float: right
+        ul
+          +horizontal-list(12px)
+          li
+            padding-top: 45px
+            padding-bottom: 20px
+
+    #content
+      background-color: rgba(255,255,255,0.6)
+      +border-radius(8px)
+      +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 16px)
+      padding: 20px
+
+    footer
+      text-align: center
+      padding: 40px 0
+
