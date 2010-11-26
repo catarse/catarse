@@ -107,37 +107,41 @@ body#site {
   font-weight: normal;
 }
 /* line 20, ../../app/stylesheets/screen.sass */
+body#site strong {
+  font-weight: bold;
+}
+/* line 23, ../../app/stylesheets/screen.sass */
 body#site a {
   text-decoration: underline;
   color: #008800;
   font-size: 100%;
 }
-/* line 25, ../../app/stylesheets/screen.sass */
+/* line 28, ../../app/stylesheets/screen.sass */
 body#site a:hover {
   color: #00aa00;
 }
-/* line 28, ../../app/stylesheets/screen.sass */
+/* line 31, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
 }
-/* line 33, ../../app/stylesheets/screen.sass */
+/* line 36, ../../app/stylesheets/screen.sass */
 body#site #header h1 {
   font-family: "museo-700";
   font-size: 48px;
   padding: 36px 0 20px 0;
   float: left;
 }
-/* line 38, ../../app/stylesheets/screen.sass */
+/* line 41, ../../app/stylesheets/screen.sass */
 body#site #header h1 a {
   color: #222222;
   text-decoration: none;
 }
-/* line 41, ../../app/stylesheets/screen.sass */
+/* line 45, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
 }
-/* line 43, ../../app/stylesheets/screen.sass */
+/* line 47, ../../app/stylesheets/screen.sass */
 body#site #menu ul {
   margin: 0;
   padding: 0;
@@ -165,17 +169,17 @@ body#site #menu ul li:first-child, body#site #menu ul li.first {
 body#site #menu ul li:last-child, body#site #menu ul li.last {
   padding-right: 0px;
 }
-/* line 45, ../../app/stylesheets/screen.sass */
+/* line 49, ../../app/stylesheets/screen.sass */
 body#site #menu ul li {
   padding-top: 45px;
   padding-bottom: 20px;
 }
-/* line 48, ../../app/stylesheets/screen.sass */
+/* line 52, ../../app/stylesheets/screen.sass */
 body#site #menu a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 52, ../../app/stylesheets/screen.sass */
+/* line 56, ../../app/stylesheets/screen.sass */
 body#site #content {
   background-color: rgba(255, 255, 255, 0.5);
   -moz-border-radius: 6px;
@@ -189,8 +193,8 @@ body#site #content {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 56, ../../app/stylesheets/screen.sass */
-body#site #content header {
+/* line 61, ../../app/stylesheets/screen.sass */
+body#site #projects_header {
   text-align: center;
   color: white;
   padding: 20px 60px;
@@ -207,18 +211,107 @@ body#site #content header {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
   text-shadow: green 1px 1px 0px;
 }
-/* line 64, ../../app/stylesheets/screen.sass */
-body#site #content header h1 {
+/* line 69, ../../app/stylesheets/screen.sass */
+body#site #projects_header h1 {
   font-family: "museo-500";
   font-size: 32px;
   padding: 20px;
 }
-/* line 68, ../../app/stylesheets/screen.sass */
-body#site #content header a {
+/* line 73, ../../app/stylesheets/screen.sass */
+body#site #projects_header a {
   color: white;
   text-shadow: green 1px 1px 0px;
 }
-/* line 72, ../../app/stylesheets/screen.sass */
+/* line 77, ../../app/stylesheets/screen.sass */
+body#site #projects {
+  padding: 40px;
+}
+/* line 80, ../../app/stylesheets/screen.sass */
+body#site article.project {
+  font-size: 16px;
+  color: #666666;
+  float: left;
+  margin: 10px 45px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  border: 5px solid rgba(100, 100, 100, 0.1);
+}
+/* line 87, ../../app/stylesheets/screen.sass */
+body#site article.project img {
+  width: 280px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
+  box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
+  margin-bottom: 16px;
+}
+/* line 93, ../../app/stylesheets/screen.sass */
+body#site header.project h1 {
+  font-family: "museo-300";
+  font-size: 20px;
+}
+/* line 96, ../../app/stylesheets/screen.sass */
+body#site header.project a {
+  text-decoration: none;
+  color: black;
+}
+/* line 99, ../../app/stylesheets/screen.sass */
+body#site header.project a:hover {
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
+}
+/* line 102, ../../app/stylesheets/screen.sass */
+body#site footer.project {
+  font-size: 14px;
+  color: #999999;
+  padding-bottom: 8px;
+}
+/* line 107, ../../app/stylesheets/screen.sass */
+body#site .category.project {
+  text-transform: uppercase;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  text-shadow: black 1px 1px 0px;
+  padding: 4px 8px;
+  float: right;
+  font-size: 14px;
+  margin-top: 16px;
+}
+/* line 118, ../../app/stylesheets/screen.sass */
+body#site .wrap.project {
+  width: 280px;
+  padding: 20px;
+}
+/* line 122, ../../app/stylesheets/screen.sass */
+body#site aside.project {
+  text-transform: uppercase;
+  color: #333333;
+  background-color: rgba(0, 0, 0, 0.2);
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -o-border-bottom-left-radius: 4px;
+  -ms-border-bottom-left-radius: 4px;
+  -khtml-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -o-border-bottom-right-radius: 4px;
+  -ms-border-bottom-right-radius: 4px;
+  -khtml-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 20px;
+  font-size: 14px;
+}
+/* line 132, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 40px 0;

@@ -18,11 +18,6 @@
             %li= link_to t('header.menu.login'), new_user_session_path
         .clear
       %section#content
-        %header
-          %h1= t 'content.header.punchline'
-          %h2
-            = t 'content.header.description'
-            -##{link_to t('content.header.know_more'), '#'}.
         = yield
       %footer#footer
         = t 'app.copyright'
