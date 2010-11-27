@@ -10,6 +10,8 @@
 .clear
   clear: both
 
+$default-transition-duration = 0.5s
+
 body#site
 
   background: url('/images/bg.png') repeat
@@ -28,6 +30,7 @@ body#site
     text-decoration: underline
     color: #080
     font-size: 100%
+    +transition
 
   a:hover
     color: #0A0
@@ -45,6 +48,7 @@ body#site
       a
         color: #222
         text-decoration: none
+        +transition
       a:hover
         +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
 
@@ -94,6 +98,9 @@ body#site
       width: 280px
       +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 5px)
       margin-bottom: 16px
+      +transition
+    img:hover
+      +box-shadow(rgba(0,0,0,0.7), 3px, 3px, 6px)
 
   header.project
     h1
@@ -102,6 +109,7 @@ body#site
     a
       text-decoration: none
       color: #000
+      +transition
     a:hover
       +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
 

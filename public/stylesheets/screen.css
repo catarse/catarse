@@ -105,7 +105,7 @@ a img {
   clear: both;
 }
 
-/* line 13, ../../app/stylesheets/screen.sass */
+/* line 15, ../../app/stylesheets/screen.sass */
 body#site {
   background: url("/images/bg.png") repeat;
   text-rendering: optimizeLegibility;
@@ -116,46 +116,62 @@ body#site {
   text-shadow: white 1px 1px 0px;
   font-weight: normal;
 }
-/* line 24, ../../app/stylesheets/screen.sass */
+/* line 26, ../../app/stylesheets/screen.sass */
 body#site strong {
   font-weight: bold;
 }
-/* line 27, ../../app/stylesheets/screen.sass */
+/* line 29, ../../app/stylesheets/screen.sass */
 body#site a {
   text-decoration: underline;
   color: #008800;
   font-size: 100%;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
-/* line 32, ../../app/stylesheets/screen.sass */
+/* line 35, ../../app/stylesheets/screen.sass */
 body#site a:hover {
   color: #00aa00;
 }
-/* line 35, ../../app/stylesheets/screen.sass */
+/* line 38, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
 }
-/* line 40, ../../app/stylesheets/screen.sass */
+/* line 43, ../../app/stylesheets/screen.sass */
 body#site #header h1 {
   font-family: "museo-700";
   font-size: 48px;
   padding: 36px 0 20px 0;
   float: left;
 }
-/* line 45, ../../app/stylesheets/screen.sass */
+/* line 48, ../../app/stylesheets/screen.sass */
 body#site #header h1 a {
   color: #222222;
   text-decoration: none;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
-/* line 48, ../../app/stylesheets/screen.sass */
+/* line 52, ../../app/stylesheets/screen.sass */
 body#site #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 51, ../../app/stylesheets/screen.sass */
+/* line 55, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
 }
-/* line 53, ../../app/stylesheets/screen.sass */
+/* line 57, ../../app/stylesheets/screen.sass */
 body#site #menu ul {
   margin: 0;
   padding: 0;
@@ -183,17 +199,17 @@ body#site #menu ul li:first-child, body#site #menu ul li.first {
 body#site #menu ul li:last-child, body#site #menu ul li.last {
   padding-right: 0px;
 }
-/* line 55, ../../app/stylesheets/screen.sass */
+/* line 59, ../../app/stylesheets/screen.sass */
 body#site #menu ul li {
   padding-top: 45px;
   padding-bottom: 20px;
 }
-/* line 58, ../../app/stylesheets/screen.sass */
+/* line 62, ../../app/stylesheets/screen.sass */
 body#site #menu a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 62, ../../app/stylesheets/screen.sass */
+/* line 66, ../../app/stylesheets/screen.sass */
 body#site #content {
   background-color: rgba(255, 255, 255, 0.5);
   -moz-border-radius: 6px;
@@ -207,7 +223,7 @@ body#site #content {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 67, ../../app/stylesheets/screen.sass */
+/* line 71, ../../app/stylesheets/screen.sass */
 body#site #projects_header {
   text-align: center;
   color: white;
@@ -225,22 +241,22 @@ body#site #projects_header {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
   text-shadow: green 1px 1px 0px;
 }
-/* line 75, ../../app/stylesheets/screen.sass */
+/* line 79, ../../app/stylesheets/screen.sass */
 body#site #projects_header h1 {
   font-family: "museo-500";
   font-size: 32px;
   padding: 20px;
 }
-/* line 79, ../../app/stylesheets/screen.sass */
+/* line 83, ../../app/stylesheets/screen.sass */
 body#site #projects_header a {
   color: white;
   text-shadow: green 1px 1px 0px;
 }
-/* line 83, ../../app/stylesheets/screen.sass */
+/* line 87, ../../app/stylesheets/screen.sass */
 body#site #projects {
   padding: 40px;
 }
-/* line 86, ../../app/stylesheets/screen.sass */
+/* line 90, ../../app/stylesheets/screen.sass */
 body#site article.project {
   font-size: 16px;
   color: #666666;
@@ -254,7 +270,7 @@ body#site article.project {
   border-radius: 8px;
   border: 5px solid rgba(100, 100, 100, 0.1);
 }
-/* line 93, ../../app/stylesheets/screen.sass */
+/* line 97, ../../app/stylesheets/screen.sass */
 body#site article.project img {
   width: 280px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
@@ -262,28 +278,51 @@ body#site article.project img {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-bottom: 16px;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
-/* line 99, ../../app/stylesheets/screen.sass */
+/* line 102, ../../app/stylesheets/screen.sass */
+body#site article.project img:hover {
+  -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
+}
+/* line 106, ../../app/stylesheets/screen.sass */
 body#site header.project h1 {
   font-family: "museo-300";
   font-size: 20px;
 }
-/* line 102, ../../app/stylesheets/screen.sass */
+/* line 109, ../../app/stylesheets/screen.sass */
 body#site header.project a {
   text-decoration: none;
   color: black;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
-/* line 105, ../../app/stylesheets/screen.sass */
+/* line 113, ../../app/stylesheets/screen.sass */
 body#site header.project a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 108, ../../app/stylesheets/screen.sass */
+/* line 116, ../../app/stylesheets/screen.sass */
 body#site footer.project {
   font-size: 14px;
   color: #999999;
   padding-bottom: 8px;
 }
-/* line 113, ../../app/stylesheets/screen.sass */
+/* line 121, ../../app/stylesheets/screen.sass */
 body#site .category.project {
   text-transform: uppercase;
   color: white;
@@ -300,12 +339,12 @@ body#site .category.project {
   font-size: 14px;
   margin-top: 16px;
 }
-/* line 124, ../../app/stylesheets/screen.sass */
+/* line 132, ../../app/stylesheets/screen.sass */
 body#site .wrap.project {
   width: 280px;
   padding: 20px;
 }
-/* line 128, ../../app/stylesheets/screen.sass */
+/* line 136, ../../app/stylesheets/screen.sass */
 body#site aside.project {
   text-transform: uppercase;
   color: #333333;
@@ -325,7 +364,7 @@ body#site aside.project {
   padding: 20px;
   font-size: 13px;
 }
-/* line 136, ../../app/stylesheets/screen.sass */
+/* line 144, ../../app/stylesheets/screen.sass */
 body#site aside.project ul {
   margin: 0;
   padding: 0;
@@ -353,7 +392,7 @@ body#site aside.project ul li:first-child, body#site aside.project ul li.first {
 body#site aside.project ul li:last-child, body#site aside.project ul li.last {
   padding-right: 0px;
 }
-/* line 138, ../../app/stylesheets/screen.sass */
+/* line 146, ../../app/stylesheets/screen.sass */
 body#site aside.project .progress_bar {
   font-size: 8px;
   background-color: rgba(0, 0, 0, 0.3);
@@ -366,7 +405,7 @@ body#site aside.project .progress_bar {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 144, ../../app/stylesheets/screen.sass */
+/* line 152, ../../app/stylesheets/screen.sass */
 body#site aside.project .progress_bar .progress {
   background-color: #009600;
   -moz-border-radius: 32px;
@@ -376,7 +415,7 @@ body#site aside.project .progress_bar .progress {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 148, ../../app/stylesheets/screen.sass */
+/* line 156, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 40px 0;
