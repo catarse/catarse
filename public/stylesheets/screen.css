@@ -253,10 +253,10 @@ body#site article.project {
 /* line 91, ../../app/stylesheets/screen.sass */
 body#site article.project img {
   width: 280px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
-  box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 5px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-bottom: 16px;
 }
 /* line 97, ../../app/stylesheets/screen.sass */
