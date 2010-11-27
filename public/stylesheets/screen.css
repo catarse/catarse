@@ -147,11 +147,15 @@ body#site #header h1 a {
   color: #222222;
   text-decoration: none;
 }
-/* line 49, ../../app/stylesheets/screen.sass */
+/* line 48, ../../app/stylesheets/screen.sass */
+body#site #header h1 a:hover {
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
+}
+/* line 51, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
 }
-/* line 51, ../../app/stylesheets/screen.sass */
+/* line 53, ../../app/stylesheets/screen.sass */
 body#site #menu ul {
   margin: 0;
   padding: 0;
@@ -179,17 +183,17 @@ body#site #menu ul li:first-child, body#site #menu ul li.first {
 body#site #menu ul li:last-child, body#site #menu ul li.last {
   padding-right: 0px;
 }
-/* line 53, ../../app/stylesheets/screen.sass */
+/* line 55, ../../app/stylesheets/screen.sass */
 body#site #menu ul li {
   padding-top: 45px;
   padding-bottom: 20px;
 }
-/* line 56, ../../app/stylesheets/screen.sass */
+/* line 58, ../../app/stylesheets/screen.sass */
 body#site #menu a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 60, ../../app/stylesheets/screen.sass */
+/* line 62, ../../app/stylesheets/screen.sass */
 body#site #content {
   background-color: rgba(255, 255, 255, 0.5);
   -moz-border-radius: 6px;
@@ -203,7 +207,7 @@ body#site #content {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 65, ../../app/stylesheets/screen.sass */
+/* line 67, ../../app/stylesheets/screen.sass */
 body#site #projects_header {
   text-align: center;
   color: white;
@@ -221,22 +225,22 @@ body#site #projects_header {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
   text-shadow: green 1px 1px 0px;
 }
-/* line 73, ../../app/stylesheets/screen.sass */
+/* line 75, ../../app/stylesheets/screen.sass */
 body#site #projects_header h1 {
   font-family: "museo-500";
   font-size: 32px;
   padding: 20px;
 }
-/* line 77, ../../app/stylesheets/screen.sass */
+/* line 79, ../../app/stylesheets/screen.sass */
 body#site #projects_header a {
   color: white;
   text-shadow: green 1px 1px 0px;
 }
-/* line 81, ../../app/stylesheets/screen.sass */
+/* line 83, ../../app/stylesheets/screen.sass */
 body#site #projects {
   padding: 40px;
 }
-/* line 84, ../../app/stylesheets/screen.sass */
+/* line 86, ../../app/stylesheets/screen.sass */
 body#site article.project {
   font-size: 16px;
   color: #666666;
@@ -250,7 +254,7 @@ body#site article.project {
   border-radius: 8px;
   border: 5px solid rgba(100, 100, 100, 0.1);
 }
-/* line 91, ../../app/stylesheets/screen.sass */
+/* line 93, ../../app/stylesheets/screen.sass */
 body#site article.project img {
   width: 280px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
@@ -259,27 +263,27 @@ body#site article.project img {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-bottom: 16px;
 }
-/* line 97, ../../app/stylesheets/screen.sass */
+/* line 99, ../../app/stylesheets/screen.sass */
 body#site header.project h1 {
   font-family: "museo-300";
   font-size: 20px;
 }
-/* line 100, ../../app/stylesheets/screen.sass */
+/* line 102, ../../app/stylesheets/screen.sass */
 body#site header.project a {
   text-decoration: none;
   color: black;
 }
-/* line 103, ../../app/stylesheets/screen.sass */
+/* line 105, ../../app/stylesheets/screen.sass */
 body#site header.project a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 106, ../../app/stylesheets/screen.sass */
+/* line 108, ../../app/stylesheets/screen.sass */
 body#site footer.project {
   font-size: 14px;
   color: #999999;
   padding-bottom: 8px;
 }
-/* line 111, ../../app/stylesheets/screen.sass */
+/* line 113, ../../app/stylesheets/screen.sass */
 body#site .category.project {
   text-transform: uppercase;
   color: white;
@@ -296,12 +300,12 @@ body#site .category.project {
   font-size: 14px;
   margin-top: 16px;
 }
-/* line 122, ../../app/stylesheets/screen.sass */
+/* line 124, ../../app/stylesheets/screen.sass */
 body#site .wrap.project {
   width: 280px;
   padding: 20px;
 }
-/* line 126, ../../app/stylesheets/screen.sass */
+/* line 128, ../../app/stylesheets/screen.sass */
 body#site aside.project {
   text-transform: uppercase;
   color: #333333;
@@ -321,7 +325,7 @@ body#site aside.project {
   padding: 20px;
   font-size: 13px;
 }
-/* line 134, ../../app/stylesheets/screen.sass */
+/* line 136, ../../app/stylesheets/screen.sass */
 body#site aside.project ul {
   margin: 0;
   padding: 0;
@@ -349,7 +353,7 @@ body#site aside.project ul li:first-child, body#site aside.project ul li.first {
 body#site aside.project ul li:last-child, body#site aside.project ul li.last {
   padding-right: 0px;
 }
-/* line 136, ../../app/stylesheets/screen.sass */
+/* line 138, ../../app/stylesheets/screen.sass */
 body#site aside.project .progress_bar {
   font-size: 8px;
   background-color: rgba(0, 0, 0, 0.3);
@@ -362,7 +366,7 @@ body#site aside.project .progress_bar {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 142, ../../app/stylesheets/screen.sass */
+/* line 144, ../../app/stylesheets/screen.sass */
 body#site aside.project .progress_bar .progress {
   background-color: #009600;
   -moz-border-radius: 32px;
@@ -372,7 +376,7 @@ body#site aside.project .progress_bar .progress {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 146, ../../app/stylesheets/screen.sass */
+/* line 148, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 40px 0;
