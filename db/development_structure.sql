@@ -9,6 +9,13 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET escape_string_warning = off;
 
+--
+-- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: -; Owner: -
+--
+
+CREATE OR REPLACE PROCEDURAL LANGUAGE plpgsql;
+
+
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -21,14 +28,15 @@ SET default_with_oids = false;
 
 CREATE TABLE backers (
     id integer NOT NULL,
-    project_id integer,
-    user_id integer,
+    project_id integer NOT NULL,
+    user_id integer NOT NULL,
     reward_id integer,
-    value double precision,
-    confirmed boolean DEFAULT false,
+    value double precision NOT NULL,
+    confirmed boolean DEFAULT false NOT NULL,
     confirmed_at timestamp without time zone,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    CONSTRAINT backers_value_positive CHECK ((value >= (0)::double precision))
 );
 
 
@@ -39,8 +47,8 @@ CREATE TABLE backers (
 CREATE SEQUENCE backers_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -57,9 +65,10 @@ ALTER SEQUENCE backers_id_seq OWNED BY backers.id;
 
 CREATE TABLE categories (
     id integer NOT NULL,
-    name character varying(255),
+    name character varying(255) NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    CONSTRAINT categories_name_not_blank CHECK ((length(btrim((name)::text)) > 0))
 );
 
 
@@ -70,8 +79,8 @@ CREATE TABLE categories (
 CREATE SEQUENCE categories_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -88,18 +97,19 @@ ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 
 CREATE TABLE projects (
     id integer NOT NULL,
-    name character varying(255),
-    user_id integer,
-    category_id integer,
+    name character varying(255) NOT NULL,
+    user_id integer NOT NULL,
+    category_id integer NOT NULL,
     goal double precision,
     pledged double precision,
     deadline timestamp without time zone,
     about text,
-    video_url character varying(255),
+    video_url character varying(255) NOT NULL,
     visible boolean DEFAULT false,
     recommended boolean DEFAULT false,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    CONSTRAINT projects_video_url_not_blank CHECK ((length(btrim((video_url)::text)) > 0))
 );
 
 
@@ -110,8 +120,8 @@ CREATE TABLE projects (
 CREATE SEQUENCE projects_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -128,12 +138,15 @@ ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
 
 CREATE TABLE rewards (
     id integer NOT NULL,
-    project_id integer,
-    minimum_value double precision,
-    maximum_backers integer,
-    description text,
+    project_id integer NOT NULL,
+    minimum_value double precision NOT NULL,
+    maximum_backers integer NOT NULL,
+    description text NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    CONSTRAINT rewards_description_not_blank CHECK ((length(btrim(description)) > 0)),
+    CONSTRAINT rewards_maximum_backers_positive CHECK ((maximum_backers >= 0)),
+    CONSTRAINT rewards_minimum_value_positive CHECK ((minimum_value >= (0)::double precision))
 );
 
 
@@ -144,8 +157,8 @@ CREATE TABLE rewards (
 CREATE SEQUENCE rewards_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -171,8 +184,8 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE users (
     id integer NOT NULL,
-    name character varying(255),
-    email character varying(255),
+    name character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
     biography character varying(255),
     vanity_id character varying(255),
     twitter_id character varying(255),
@@ -183,7 +196,9 @@ CREATE TABLE users (
     password_salt character varying(255),
     persistence_token character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    CONSTRAINT users_email_not_blank CHECK ((length(btrim((email)::text)) > 0)),
+    CONSTRAINT users_name_not_blank CHECK ((length(btrim((name)::text)) > 0))
 );
 
 
@@ -194,8 +209,8 @@ CREATE TABLE users (
 CREATE SEQUENCE users_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MAXVALUE
     NO MINVALUE
+    NO MAXVALUE
     CACHE 1;
 
 
@@ -250,6 +265,14 @@ ALTER TABLE ONLY backers
 
 
 --
+-- Name: categories_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_name_unique UNIQUE (name);
+
+
+--
 -- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -271,6 +294,14 @@ ALTER TABLE ONLY projects
 
 ALTER TABLE ONLY rewards
     ADD CONSTRAINT rewards_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_email_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_email_unique UNIQUE (email);
 
 
 --
@@ -366,14 +397,62 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: backers_project_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY backers
+    ADD CONSTRAINT backers_project_id_reference FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
+-- Name: backers_reward_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY backers
+    ADD CONSTRAINT backers_reward_id_reference FOREIGN KEY (reward_id) REFERENCES rewards(id);
+
+
+--
+-- Name: backers_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY backers
+    ADD CONSTRAINT backers_user_id_reference FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: projects_category_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_category_id_reference FOREIGN KEY (category_id) REFERENCES categories(id);
+
+
+--
+-- Name: projects_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_user_id_reference FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: rewards_project_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY rewards
+    ADD CONSTRAINT rewards_project_id_reference FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 INSERT INTO schema_migrations (version) VALUES ('20101111125716');
 
-INSERT INTO schema_migrations (version) VALUES ('20101111144048');
+INSERT INTO schema_migrations (version) VALUES ('20101111142800');
 
-INSERT INTO schema_migrations (version) VALUES ('20101111145200');
+INSERT INTO schema_migrations (version) VALUES ('20101111144048');
 
 INSERT INTO schema_migrations (version) VALUES ('20101111165728');
 

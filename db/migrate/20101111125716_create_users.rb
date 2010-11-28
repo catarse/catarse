@@ -1,8 +1,8 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string :name
-      t.string :email
+      t.string :name, :null => false
+      t.string :email, :null => false
       t.string :biography
       t.string :vanity_id
       t.string :twitter_id
@@ -14,11 +14,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string :persistence_token
       t.timestamps
     end
-    #TODO
-    #constrain :users do |t|
-    #  t.name :not_blank => true
-    #  t.email :not_blank => true, :unique => true
-    #end
+    constrain :users do |t|
+      t.name :not_blank => true
+      t.email :not_blank => true, :unique => true
+    end
     add_index :users, :name
     add_index :users, :email
   end

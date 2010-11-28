@@ -1,20 +1,18 @@
 class CreateRewards < ActiveRecord::Migration
   def self.up
     create_table :rewards do |t|
-      t.references :project
-      t.float :minimum_value
-      t.integer :maximum_backers
-      t.text :description
+      t.references :project, :null => false
+      t.float :minimum_value, :null => false
+      t.integer :maximum_backers, :null => false
+      t.text :description, :null => false
       t.timestamps
     end
-    # TODO
-    #constrain :rewards do |t|
-    #  t.project_id :not_blank => true, :reference => {:projects => :id}
-    #  t.minimum_value :not_blank, :positive => true
-    #  t.maximum_backers :not_blank
-    #  #TODO something to check if maximum_backers >= 0
-    #  t.description :not_blank
-    #end
+    constrain :rewards do |t|
+      t.project_id :reference => {:projects => :id}
+      t.minimum_value :positive => true
+      t.maximum_backers :positive => true
+      t.description :not_blank => true
+    end
     add_index :rewards, :project_id
   end
 
