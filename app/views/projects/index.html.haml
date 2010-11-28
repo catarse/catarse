@@ -1,22 +1,22 @@
-%header#projects_header
+#projects_header
   %h1= t 'content.header.punchline'
   %h2
     = t 'content.header.description'
-%section#projects
+#projects
   %article.project
-    .wrap.project
-      %header.project
+    .project_wrap
+      .project_header
         - link_to '#' do
           = image_tag 'project01.jpg'
           %h1 Tudo se encaixa
-      %footer.project
+      .project_owner
         por Lumineiro
-      .description.project
+      .project_description
         Tudo se encaixa é um número de malabarismo com caixas. Lumineiro adora pão de queijo e petit gateau e o trabalho de Amedeo Modigliani.
-      %span.category.project
+      %span.project_category
         Circo
       .clear
-    %aside.project
+    .project_progress
       .progress_bar
         .progress{ :style => "width: 100%" }
           &nbsp;
@@ -33,20 +33,20 @@
           %strong 26 dias
           %br
           restantes
-  %article.project
-    .wrap.project
-      %header.project
+  .project
+    .project_wrap
+      .project_header
         - link_to '#' do
           = image_tag 'project02.jpg'
           %h1 Antípodas, Igreine e outros
-      %footer.project
+      .project_owner
         por Alexandre Bandeira
-      .description.project
+      .project_description
         O artista plástico Alexandre Bandeira quer terminar sua série de quadros inspirados nas diversas vidas que temos, reais ou surreais.
-      %span.category.project
+      %span.project_category
         Artes plásticas
       .clear
-    %aside.project
+    .project_progress
       .progress_bar
         .progress{ :style => "width: 42%" }
           &nbsp;
@@ -63,20 +63,20 @@
           %strong 10 minutos
           %br
           restantes
-  %article.project
-    .wrap.project
-      %header.project
+  .project
+    .project_wrap
+      .project_header
         - link_to '#' do
           = image_tag 'project03.png'
           %h1 Ajude um reporter
-      %footer.project
+      .project_owner
         por Gustavo Carneiro
-      .description.project
+      .project_description
         O Ajude o reporter conecta jornalistas às fontes. Ajude a construir esta plataforma de crowdsourcing jornalístico.
-      %span.category.project
+      %span.project_category
         Jornalismo
       .clear
-    %aside.project
+    .project_progress
       .progress_bar
         .progress{ :style => "width: 89%" }
           &nbsp;
@@ -93,20 +93,20 @@
           %strong 6 horas
           %br
           restantes
-  %article.project
-    .wrap.project
-      %header.project
+  .project
+    .project_wrap
+      .project_header
         - link_to '#' do
           = image_tag 'project04.jpg'
           %h1 Absurdo Fantástico, o filme
-      %footer.project
+      .project_owner
         por Cisco Vasques
-      .description.project
+      .project_description
         Um longa metragem de videoarte que aniquila as definições, restando apenas a experiência. Absurdo fantástico. Sem mais.
-      %span.category.project
+      %span.project_category
         Cinema & Vídeo
       .clear
-    %aside.project
+    .project_progress
       .progress_bar
         .progress{ :style => "width: 100%" }
           &nbsp;

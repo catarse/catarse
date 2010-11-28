@@ -257,7 +257,7 @@ body#site #projects {
   padding: 40px;
 }
 /* line 90, ../../app/stylesheets/screen.sass */
-body#site article.project {
+body#site .project {
   font-size: 16px;
   color: #666666;
   float: left;
@@ -271,7 +271,7 @@ body#site article.project {
   border: 5px solid rgba(100, 100, 100, 0.1);
 }
 /* line 97, ../../app/stylesheets/screen.sass */
-body#site article.project img {
+body#site .project img {
   width: 280px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
@@ -288,19 +288,19 @@ body#site article.project img {
   transition-duration: 0.5s;
 }
 /* line 102, ../../app/stylesheets/screen.sass */
-body#site article.project img:hover {
+body#site .project img:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
 }
 /* line 106, ../../app/stylesheets/screen.sass */
-body#site header.project h1 {
+body#site .project_header h1 {
   font-family: "museo-300";
   font-size: 20px;
 }
 /* line 109, ../../app/stylesheets/screen.sass */
-body#site header.project a {
+body#site .project_header a {
   text-decoration: none;
   color: black;
   -moz-transition-property: all;
@@ -313,17 +313,17 @@ body#site header.project a {
   transition-duration: 0.5s;
 }
 /* line 113, ../../app/stylesheets/screen.sass */
-body#site header.project a:hover {
+body#site .project_header a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 116, ../../app/stylesheets/screen.sass */
-body#site footer.project {
+body#site .project_owner {
   font-size: 14px;
   color: #999999;
   padding-bottom: 8px;
 }
 /* line 121, ../../app/stylesheets/screen.sass */
-body#site .category.project {
+body#site .project_category {
   text-transform: uppercase;
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
@@ -340,12 +340,12 @@ body#site .category.project {
   margin-top: 16px;
 }
 /* line 132, ../../app/stylesheets/screen.sass */
-body#site .wrap.project {
+body#site .project_wrap {
   width: 280px;
   padding: 20px;
 }
 /* line 136, ../../app/stylesheets/screen.sass */
-body#site aside.project {
+body#site .project_progress {
   text-transform: uppercase;
   color: #333333;
   background-color: rgba(0, 0, 0, 0.2);
@@ -365,7 +365,7 @@ body#site aside.project {
   font-size: 13px;
 }
 /* line 144, ../../app/stylesheets/screen.sass */
-body#site aside.project ul {
+body#site .project_progress ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -374,7 +374,7 @@ body#site aside.project ul {
   *zoom: 1;
 }
 /* line 51, ../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site aside.project ul li {
+body#site .project_progress ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -385,15 +385,15 @@ body#site aside.project ul li {
   padding-right: 8px;
 }
 /* line 43, ../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site aside.project ul li:first-child, body#site aside.project ul li.first {
+body#site .project_progress ul li:first-child, body#site .project_progress ul li.first {
   padding-left: 0px;
 }
 /* line 44, ../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site aside.project ul li:last-child, body#site aside.project ul li.last {
+body#site .project_progress ul li:last-child, body#site .project_progress ul li.last {
   padding-right: 0px;
 }
 /* line 146, ../../app/stylesheets/screen.sass */
-body#site aside.project .progress_bar {
+body#site .project_progress .progress_bar {
   font-size: 8px;
   background-color: rgba(0, 0, 0, 0.3);
   width: 280px;
@@ -406,7 +406,7 @@ body#site aside.project .progress_bar {
   border-radius: 32px;
 }
 /* line 152, ../../app/stylesheets/screen.sass */
-body#site aside.project .progress_bar .progress {
+body#site .project_progress .progress_bar .progress {
   background-color: #009600;
   -moz-border-radius: 32px;
   -webkit-border-radius: 32px;

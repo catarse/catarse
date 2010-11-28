@@ -8,7 +8,7 @@ gem 'compass'
 gem 'authlogic'
 # TODO gem 'sexy_pg_constraints'
 
-gem "crowdfunding", :path => "/home/daniel/crowdfunding"
+#gem "crowdfunding", :path => "/home/daniel/crowdfunding"
 
 group :test, :development do
 gem 'capybara'

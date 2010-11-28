@@ -1,8 +1,3 @@
-PATH
-  remote: /home/daniel/crowdfunding
-  specs:
-    crowdfunding (0.1.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -138,7 +133,6 @@ DEPENDENCIES
   authlogic
   capybara
   compass
-  crowdfunding!
   cucumber
   cucumber-rails
   database_cleaner
