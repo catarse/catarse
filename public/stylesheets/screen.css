@@ -211,6 +211,7 @@ body#site #menu a {
 }
 /* line 66, ../../app/stylesheets/screen.sass */
 body#site #content {
+  background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -223,11 +224,12 @@ body#site #content {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 71, ../../app/stylesheets/screen.sass */
+/* line 72, ../../app/stylesheets/screen.sass */
 body#site #projects_header {
   text-align: center;
   color: white;
   padding: 20px 60px;
+  background-color: #009600;
   background-color: rgba(0, 150, 0, 0.7);
   -moz-border-radius-topleft: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -241,22 +243,22 @@ body#site #projects_header {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
   text-shadow: green 1px 1px 0px;
 }
-/* line 79, ../../app/stylesheets/screen.sass */
+/* line 81, ../../app/stylesheets/screen.sass */
 body#site #projects_header h1 {
   font-family: "museo-500";
   font-size: 32px;
   padding: 20px;
 }
-/* line 83, ../../app/stylesheets/screen.sass */
+/* line 85, ../../app/stylesheets/screen.sass */
 body#site #projects_header a {
   color: white;
   text-shadow: green 1px 1px 0px;
 }
-/* line 87, ../../app/stylesheets/screen.sass */
+/* line 89, ../../app/stylesheets/screen.sass */
 body#site #projects {
   padding: 40px;
 }
-/* line 90, ../../app/stylesheets/screen.sass */
+/* line 92, ../../app/stylesheets/screen.sass */
 body#site .project {
   font-size: 16px;
   color: #666666;
@@ -268,9 +270,10 @@ body#site .project {
   -ms-border-radius: 8px;
   -khtml-border-radius: 8px;
   border-radius: 8px;
+  border: 5px solid #eeeeee;
   border: 5px solid rgba(100, 100, 100, 0.1);
 }
-/* line 97, ../../app/stylesheets/screen.sass */
+/* line 100, ../../app/stylesheets/screen.sass */
 body#site .project img {
   width: 280px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
@@ -287,19 +290,19 @@ body#site .project img {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 102, ../../app/stylesheets/screen.sass */
+/* line 105, ../../app/stylesheets/screen.sass */
 body#site .project img:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
 }
-/* line 106, ../../app/stylesheets/screen.sass */
+/* line 109, ../../app/stylesheets/screen.sass */
 body#site .project_header h1 {
   font-family: "museo-300";
   font-size: 20px;
 }
-/* line 109, ../../app/stylesheets/screen.sass */
+/* line 112, ../../app/stylesheets/screen.sass */
 body#site .project_header a {
   text-decoration: none;
   color: black;
@@ -312,20 +315,21 @@ body#site .project_header a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 113, ../../app/stylesheets/screen.sass */
+/* line 116, ../../app/stylesheets/screen.sass */
 body#site .project_header a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 116, ../../app/stylesheets/screen.sass */
+/* line 119, ../../app/stylesheets/screen.sass */
 body#site .project_owner {
   font-size: 14px;
   color: #999999;
   padding-bottom: 8px;
 }
-/* line 121, ../../app/stylesheets/screen.sass */
+/* line 124, ../../app/stylesheets/screen.sass */
 body#site .project_category {
   text-transform: uppercase;
   color: white;
+  background-color: #555555;
   background-color: rgba(0, 0, 0, 0.7);
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -339,15 +343,16 @@ body#site .project_category {
   font-size: 14px;
   margin-top: 16px;
 }
-/* line 132, ../../app/stylesheets/screen.sass */
+/* line 136, ../../app/stylesheets/screen.sass */
 body#site .project_wrap {
   width: 280px;
   padding: 20px;
 }
-/* line 136, ../../app/stylesheets/screen.sass */
+/* line 140, ../../app/stylesheets/screen.sass */
 body#site .project_progress {
   text-transform: uppercase;
   color: #333333;
+  background-color: #cccccc;
   background-color: rgba(0, 0, 0, 0.2);
   -moz-border-radius-bottomleft: 4px;
   -webkit-border-bottom-left-radius: 4px;
@@ -364,7 +369,7 @@ body#site .project_progress {
   padding: 20px;
   font-size: 13px;
 }
-/* line 144, ../../app/stylesheets/screen.sass */
+/* line 149, ../../app/stylesheets/screen.sass */
 body#site .project_progress ul {
   margin: 0;
   padding: 0;
@@ -392,9 +397,10 @@ body#site .project_progress ul li:first-child, body#site .project_progress ul li
 body#site .project_progress ul li:last-child, body#site .project_progress ul li.last {
   padding-right: 0px;
 }
-/* line 146, ../../app/stylesheets/screen.sass */
+/* line 151, ../../app/stylesheets/screen.sass */
 body#site .project_progress .progress_bar {
   font-size: 8px;
+  background-color: #999999;
   background-color: rgba(0, 0, 0, 0.3);
   width: 280px;
   margin-bottom: 16px;
@@ -405,7 +411,7 @@ body#site .project_progress .progress_bar {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 152, ../../app/stylesheets/screen.sass */
+/* line 158, ../../app/stylesheets/screen.sass */
 body#site .project_progress .progress_bar .progress {
   background-color: #009600;
   -moz-border-radius: 32px;
@@ -415,7 +421,7 @@ body#site .project_progress .progress_bar .progress {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 156, ../../app/stylesheets/screen.sass */
+/* line 162, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 40px 0;
