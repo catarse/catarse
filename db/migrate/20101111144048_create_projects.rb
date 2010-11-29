@@ -1,3 +1,5 @@
+require 'sexy_pg_constraints'
+
 class CreateProjects < ActiveRecord::Migration
   def self.up
     create_table :projects do |t|

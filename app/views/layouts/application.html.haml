@@ -10,15 +10,15 @@
     %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
   %body#site
     #main
+      = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
       #header
         %h1= link_to t('app.title'), root_path
         #menu
           %ul
             %li= link_to t('header.menu.new_project'), new_project_path
-            %li= link_to t('header.menu.login'), new_user_session_path
+            %li= link_to t('header.menu.login'), '#'
         .clear
       #content
         = yield
       #footer
         = t 'app.copyright'
-

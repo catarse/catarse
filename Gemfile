@@ -6,7 +6,7 @@ gem 'rails', '3.0.0'
 gem 'pg'
 gem 'haml'
 gem 'compass'
-gem 'authlogic'
+gem "omniauth"
 gem 'maxim-sexy_pg_constraints'
 
 group :test, :development do

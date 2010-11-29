@@ -5,29 +5,20 @@ describe User do
     u = Factory(:user)
     u.should be_valid
   end
-  it "should have a name" do
-    u = Factory.build(:user, :name => nil)
+  it "should have a provider" do
+    u = Factory.build(:user, :provider => nil)
     u.should_not be_valid
   end
-  it "should have an email" do
-    u = Factory.build(:user, :email => nil)
+  it "should have an uid" do
+    u = Factory.build(:user, :uid => nil)
     u.should_not be_valid
   end
-  it "should have a password" do
-    u = Factory.build(:user, :password => nil)
-    u.should_not be_valid
-  end
-  it "should have a password_confirmation" do
-    u = Factory.build(:user, :password_confirmation => nil)
-    u.should_not be_valid
-  end
-  it "should check password_confirmation" do
-    u = Factory.build(:user)
-    u.password = "foo123"
-    u.password_confirmation = "bar123"
-    u.should_not be_valid
-    u.password_confirmation = "foo123"
+  it "should not have duplicate provider and uid" do
+    u = Factory.build(:user, :provider => "twitter", :uid => "123456")
     u.should be_valid
+    u.save
+    u = Factory.build(:user, :provider => "twitter", :uid => "123456")
+    u.should_not be_valid
   end
   it "should check email format" do
     u = Factory.build(:user)
@@ -37,12 +28,6 @@ describe User do
     u.should_not be_valid
     u.email = "foo@bar.com"
     u.should be_valid
-  end
-  it "should have an unique email" do
-    u = Factory(:user, :email => "foo@bar.com")
-    u.should be_valid
-    u2 = Factory.build(:user, :email => "foo@bar.com")
-    u2.should_not be_valid
   end
 end
 

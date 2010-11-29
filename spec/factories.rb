@@ -6,11 +6,15 @@ Factory.sequence :email do |n|
   "person#{n}@example.com"
 end
 
+Factory.sequence :uid do |n|
+  "#{n}"
+end
+
 Factory.define :user do |f|
+  f.provider "twitter"
+  f.uid { Factory.next(:uid) }
   f.name "Foo bar"
   f.email { Factory.next(:email) }
-  f.password "foobar123"
-  f.password_confirmation "foobar123"
 end
 
 Factory.define :category do |f|

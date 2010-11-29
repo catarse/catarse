@@ -1,3 +1,5 @@
+require 'sexy_pg_constraints'
+
 class CreateRewards < ActiveRecord::Migration
   def self.up
     create_table :rewards do |t|

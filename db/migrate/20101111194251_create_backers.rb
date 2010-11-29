@@ -1,3 +1,5 @@
+require 'sexy_pg_constraints'
+
 class CreateBackers < ActiveRecord::Migration
   def self.up
     create_table :backers do |t|

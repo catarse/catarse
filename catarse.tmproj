@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>app/stylesheets/screen.sass</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,46 +16,12 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>200</integer>
+	<integer>372</integer>
 	<key>metaData</key>
-	<dict>
-		<key>app/stylesheets/_fonts.sass</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/stylesheets/screen.sass</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>42</integer>
-				<key>line</key>
-				<integer>16</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>app/stylesheets/screen.sass</string>
-		<string>app/stylesheets/_fonts.sass</string>
-	</array>
+	<dict/>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{203, 4}, {2350, 1414}}</string>
+	<string>{{382, 4}, {2178, 1414}}</string>
 </dict>
 </plist>

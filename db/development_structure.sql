@@ -184,21 +184,17 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE users (
     id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    email character varying(255) NOT NULL,
+    provider character varying(255) NOT NULL,
+    uid character varying(255) NOT NULL,
+    email character varying(255),
+    name character varying(255),
     biography character varying(255),
-    vanity_id character varying(255),
-    twitter_id character varying(255),
-    facebook_id character varying(255),
     newsletter boolean DEFAULT false,
     project_updates boolean DEFAULT false,
-    crypted_password character varying(255),
-    password_salt character varying(255),
-    persistence_token character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    CONSTRAINT users_email_not_blank CHECK ((length(btrim((email)::text)) > 0)),
-    CONSTRAINT users_name_not_blank CHECK ((length(btrim((name)::text)) > 0))
+    CONSTRAINT users_provider_not_blank CHECK ((length(btrim((provider)::text)) > 0)),
+    CONSTRAINT users_uid_not_blank CHECK ((length(btrim((uid)::text)) > 0))
 );
 
 
@@ -297,19 +293,19 @@ ALTER TABLE ONLY rewards
 
 
 --
--- Name: users_email_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY users
-    ADD CONSTRAINT users_email_unique UNIQUE (email);
-
-
---
 -- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_provider_uid_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_provider_uid_unique UNIQUE (provider, uid);
 
 
 --
@@ -387,6 +383,27 @@ CREATE INDEX index_users_on_email ON users USING btree (email);
 --
 
 CREATE INDEX index_users_on_name ON users USING btree (name);
+
+
+--
+-- Name: index_users_on_provider; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_provider ON users USING btree (provider);
+
+
+--
+-- Name: index_users_on_provider_and_uid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_provider_and_uid ON users USING btree (provider, uid);
+
+
+--
+-- Name: index_users_on_uid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_uid ON users USING btree (uid);
 
 
 --

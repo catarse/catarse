@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require 'sexy_pg_constraints'
+
 class CreateCategories < ActiveRecord::Migration
   def self.up
     create_table :categories do |t|
