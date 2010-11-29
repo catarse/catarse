@@ -2,13 +2,9 @@
 @import "compass/utilities"
 @import "compass/css3"
 @import "fonts"
-
-.left
-  float: left
-.right
-  float: right
-.clear
-  clear: both
+@import "shortcuts"
+@import "page_overlay"
+@import "login"
 
 $default-transition-duration = 0.5s
 
@@ -62,7 +58,7 @@ body#site
     a
       text-decoration: none
       font-weight: bold
-
+    
   #content
     background-color: rgb(255,255,255)
     background-color: rgba(255,255,255,0.5)

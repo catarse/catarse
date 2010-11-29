@@ -6,6 +6,7 @@
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     /[if lt IE 9]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
+    = javascript_include_tag 'jquery-1.4.4.min.js', 'jquery-ui-1.8.6.custom.min.js'
     = csrf_meta_tag
     %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
   %body#site
@@ -16,9 +17,16 @@
         #menu
           %ul
             %li= link_to t('header.menu.new_project'), new_project_path
-            %li= link_to t('header.menu.login'), '#'
+            - if current_user
+              %li
+                = current_user.display_name
+                = image_tag current_user.image_url
+              %li= link_to 'Logout', logout_path
+            - else
+              %li= link_to t('header.menu.login'), '#', :id => 'login_link'
         .clear
       #content
         = yield
       #footer
         = t 'app.copyright'
+    = render '/layouts/login' unless current_user

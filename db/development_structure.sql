@@ -189,6 +189,7 @@ CREATE TABLE users (
     email character varying(255),
     name character varying(255),
     biography character varying(255),
+    image_url character varying(255),
     newsletter boolean DEFAULT false,
     project_updates boolean DEFAULT false,
     created_at timestamp without time zone,
