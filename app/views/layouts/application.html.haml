@@ -14,15 +14,11 @@
     #main
       #header
         %h1= link_to t('app.title'), root_path
+        = render '/layouts/user' if current_user
         #menu
           %ul
             %li= link_to t('header.menu.new_project'), new_project_path
-            - if current_user
-              %li
-                = current_user.display_name
-                = image_tag current_user.image_url
-              %li= link_to 'Logout', logout_path
-            - else
+            - unless current_user
               %li= link_to t('header.menu.login'), '#', :id => 'login_link'
         .clear
       #content

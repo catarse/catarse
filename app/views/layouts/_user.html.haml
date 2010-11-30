@@ -1,0 +1,10 @@
+#user
+  -#= link_to 'Logout', logout_path
+  = link_to '#', :id => 'user_menu_link' do
+    = image_tag current_user.display_image, :id => 'display_image'
+    = current_user.display_name
+    = image_tag 'dropdown.png', :class => 'dropdown'
+  #user_menu.hide
+    %ul
+      %li= link_to "Logout", logout_path
+= javascript_include_tag 'user'

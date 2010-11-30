@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   end
   
   def display_name
-    name || nickname
+    name || nickname || "Sem nome"
+  end
+  def display_image
+    image_url || 'user.png'
   end
 end

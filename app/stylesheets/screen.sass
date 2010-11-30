@@ -51,15 +51,56 @@ body#site
 
   #menu
     float: right
+    margin-top: 48px
+    margin-bottom: 20px
     ul
       +horizontal-list(12px)
       li
-        padding-top: 45px
-        padding-bottom: 20px
+        a
+          text-decoration: none
+          font-weight: bold
+
+  #user
+    float: right
+    margin-top: 22px
+    margin-left: 12px
+    height: 24px
+    position: relative
     a
+      display: block
+      padding: 20px 20px 21px 20px
+      +border-top-left-radius(16px)
+      +border-top-right-radius(16px)
+      color: #333
       text-decoration: none
       font-weight: bold
-    
+      img.dropdown
+        margin-bottom: 3px
+        vertical_align: middle
+      img#display_image
+        +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
+        +transition
+        margin-right: 6px
+        height: 24px
+      +transition(none)
+    .hover
+      color: #eee
+      +text-shadow(rgba(0,0,0,0.9), 0px, 0px, 0px)
+      background-color: rgba(0,0,0,0.9)
+      img#display_image
+        +box-shadow(rgba(255,255,255,0.7), 2px, 2px, 4px)
+    #user_menu
+      padding: 20px
+      background-color: rgba(0,0,0,0.9)
+      position: absolute
+      +border-top-left-radius(16px)
+      +border-bottom-left-radius(16px)
+      +border-bottom-right-radius(16px)
+      top: 69px
+      right: 0
+      z-index: 100
+      width: 220px
+  
   #content
     background-color: rgb(255,255,255)
     background-color: rgba(255,255,255,0.5)
