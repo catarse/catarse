@@ -10,8 +10,8 @@
     = csrf_meta_tag
     %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
   %body#site
+    = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
     #main
-      = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
       #header
         %h1= link_to t('app.title'), root_path
         #menu

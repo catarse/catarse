@@ -1,16 +1,6 @@
-.flash{ :style => '' }
+.flash{ :style => 'display:none' }
   - for key,msg in flash
-    %div{ :class => "#{key}_wrapper" }
-      %small (click to dismiss)
+    %div{ :class => "#{key} wrapper" }
       %div{ :class => key }= raw msg
       
-:javascript 
-  $(function(){
-    if($.browser.webkit){
-      $('.flash').show()
-    }else{
-      setTimeout( function(){ $('.flash').slideDown('slow') }, 100)
-    }
-    if( ! $('.flash a').length) setTimeout( function(){ $('.flash').slideUp('slow') }, 8000)
-  })
-  $(window).click(function(){ $('.flash').slideUp() })
+= javascript_include_tag 'flash'
