@@ -20,6 +20,13 @@ describe User do
     u = Factory.build(:user, :provider => "twitter", :uid => "123456")
     u.should_not be_valid
   end
+  it "should allow empty email" do
+    u = Factory.build(:user)
+    u.email = ""
+    u.should be_valid
+    u.email = nil
+    u.should be_valid
+  end
   it "should check email format" do
     u = Factory.build(:user)
     u.email = "foo"

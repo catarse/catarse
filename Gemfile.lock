@@ -127,6 +127,7 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    rcov (0.9.9)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.0.1)
@@ -150,6 +151,9 @@ GEM
       ffi (>= 0.6.1)
       json_pure
       rubyzip
+    spectator-validates_email (0.0.4)
+      actionpack (~> 3.0.0)
+      activemodel (~> 3.0.0)
     steak (1.0.0)
       rspec
     thor (0.14.2)
@@ -169,5 +173,7 @@ DEPENDENCIES
   omniauth
   pg
   rails (= 3.0.0)
+  rcov
   rspec-rails (~> 2.0.1)
+  spectator-validates_email
   steak
