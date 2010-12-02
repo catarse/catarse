@@ -50,6 +50,3 @@ production:
   username: catarse
   password:
 
-
-cucumber:
-  <<: *test

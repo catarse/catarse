@@ -2,7 +2,6 @@ GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
   specs:
-    ZenTest (4.4.0)
     abstract (1.0.0)
     actionmailer (3.0.0)
       actionpack (= 3.0.0)
@@ -33,9 +32,6 @@ GEM
     addressable (2.2.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
-    autotest (4.4.5)
-    autotest-rails (4.1.0)
-      ZenTest
     builder (2.1.2)
     capybara (0.3.9)
       culerity (>= 0.2.4)
@@ -44,22 +40,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.3)
-    chronic (0.3.0)
     compass (0.10.5)
       haml (>= 3.0.4)
-    configuration (1.1.0)
-    cucumber (0.9.0)
-      builder (~> 2.1.2)
-      diff-lcs (~> 1.1.2)
-      gherkin (~> 2.2.2)
-      json (~> 1.4.6)
-      term-ansicolor (~> 1.0.5)
-    cucumber-rails (0.3.2)
-      cucumber (>= 0.8.0)
     culerity (0.2.12)
-    database_cleaner (0.5.2)
-    delorean (0.2.1)
-      chronic
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -73,17 +56,9 @@ GEM
       rack (>= 1.1.0, < 2)
     ffi (0.6.3)
       rake (>= 0.8.7)
-    gherkin (2.2.4)
-      json (~> 1.4.6)
-      term-ansicolor (~> 1.0.5)
-      trollop (~> 1.16.2)
     haml (3.0.21)
     i18n (0.4.1)
-    json (1.4.6)
     json_pure (1.4.6)
-    launchy (0.3.7)
-      configuration (>= 0.0.5)
-      rake (>= 0.8.1)
     mail (2.2.6.1)
       activesupport (>= 2.3.6)
       mime-types
@@ -152,7 +127,6 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
-    rcov (0.9.9)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.0.1)
@@ -176,36 +150,24 @@ GEM
       ffi (>= 0.6.1)
       json_pure
       rubyzip
-    spork (0.8.4)
     steak (1.0.0)
       rspec
-    term-ansicolor (1.0.5)
     thor (0.14.2)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
-    trollop (1.16.2)
     tzinfo (0.3.23)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  autotest
-  autotest-rails
   capybara
   compass
-  cucumber
-  cucumber-rails
-  database_cleaner
-  delorean
   factory_girl_rails
   haml
-  launchy
   maxim-sexy_pg_constraints
   omniauth
   pg
   rails (= 3.0.0)
-  rcov
   rspec-rails (~> 2.0.1)
-  spork
   steak
