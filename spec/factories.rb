@@ -40,4 +40,3 @@ Factory.define :backer do |f|
   f.association :user, :factory => :user
   f.value 1.00
 end
-

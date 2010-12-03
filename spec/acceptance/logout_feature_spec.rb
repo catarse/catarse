@@ -4,18 +4,15 @@ feature "Logout Feature" do
 
   scenario "Given I'm logged in, I must be able to logout" do
 
-    @current_user = Factory(:user)
+    login
 
-    visit homepage
+    page.should have_link('Foo bar')
 
-    page.should have_no_selector('#login_link')
-
-    click_link @current_user.display_name
+    click_link "Foo bar"
     click_link "Logout"
 
-    page.should have_selector('#login_link')
-
+    page.should have_no_link('Foo bar')
+  
   end
 
 end
-

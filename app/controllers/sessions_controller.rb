@@ -17,4 +17,11 @@ class SessionsController < ApplicationController
     flash[:failure] = "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
     redirect_to :root
   end
+  def fake_create
+    raise "Forbiden" unless Rails.env == "test"
+    user = Factory(:user, :uid => 'fake_login')
+    session[:user_id] = user.id
+    flash[:success] = "Login realizado com sucesso. Bem-vindo, #{user.display_name}!"
+    redirect_to :root
+  end
 end
