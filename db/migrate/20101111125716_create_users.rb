@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :name
       t.string :nickname
-      t.string :biography
+      t.string :bio
       t.string :image_url
       t.boolean :newsletter, :default => false
       t.boolean :project_updates, :default => false
@@ -17,6 +17,7 @@ class CreateUsers < ActiveRecord::Migration
     constrain :users do |t|
       t.provider :not_blank => true
       t.uid :not_blank => true
+      t.bio :length_within => 0..140
     end
     constrain :users do |t|
       t[:provider, :uid].all :unique => true

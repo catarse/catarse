@@ -6,12 +6,12 @@ feature "Logout Feature" do
 
     login
 
-    page.should have_link('Foo bar')
+    page.should have_link(user.display_name)
 
-    click_link "Foo bar"
+    click_link user.display_name
     click_link "Logout"
 
-    page.should have_no_link('Foo bar')
+    page.should have_no_link(user.display_name)
   
   end
 

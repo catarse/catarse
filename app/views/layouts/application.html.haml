@@ -2,7 +2,7 @@
 %html{:lang => :pt}
   %head
     %meta{:charset => 'utf-8'}
-    %title #{@title} · #{t 'app.title'}
+    %title= "#{@title}#{' · ' if @title}#{t 'app.title'}"
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     /[if lt IE 9]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"

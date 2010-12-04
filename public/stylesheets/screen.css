@@ -257,7 +257,36 @@ a img {
   background-image: linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
 }
 
-/* line 12, ../../app/stylesheets/screen.sass */
+/* line 1, ../../app/stylesheets/_profile.sass */
+#content_header.profile {
+  position: relative;
+}
+/* line 3, ../../app/stylesheets/_profile.sass */
+#content_header.profile .image {
+  float: left;
+  padding: 20px;
+}
+/* line 6, ../../app/stylesheets/_profile.sass */
+#content_header.profile .image img {
+  background-color: white;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
+  max-width: 128px;
+  max-height: 128px;
+}
+/* line 12, ../../app/stylesheets/_profile.sass */
+#content_header.profile .info h1, #content_header.profile .info h2 {
+  text-align: left;
+}
+/* line 14, ../../app/stylesheets/_profile.sass */
+#content_header.profile .info h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* line 13, ../../app/stylesheets/screen.sass */
 body#site {
   background: url("/images/bg.png") repeat;
   text-rendering: optimizeLegibility;
@@ -268,11 +297,11 @@ body#site {
   text-shadow: white 1px 1px 0px;
   font-weight: normal;
 }
-/* line 23, ../../app/stylesheets/screen.sass */
+/* line 24, ../../app/stylesheets/screen.sass */
 body#site strong {
   font-weight: bold;
 }
-/* line 26, ../../app/stylesheets/screen.sass */
+/* line 27, ../../app/stylesheets/screen.sass */
 body#site a {
   text-decoration: underline;
   color: #008800;
@@ -286,23 +315,23 @@ body#site a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 32, ../../app/stylesheets/screen.sass */
+/* line 33, ../../app/stylesheets/screen.sass */
 body#site a:hover {
   color: #00aa00;
 }
-/* line 35, ../../app/stylesheets/screen.sass */
+/* line 36, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
 }
-/* line 40, ../../app/stylesheets/screen.sass */
+/* line 41, ../../app/stylesheets/screen.sass */
 body#site #header h1 {
   font-family: "museo-700";
   font-size: 48px;
   padding: 36px 0 20px 0;
   float: left;
 }
-/* line 45, ../../app/stylesheets/screen.sass */
+/* line 46, ../../app/stylesheets/screen.sass */
 body#site #header h1 a {
   color: #222222;
   text-decoration: none;
@@ -315,17 +344,17 @@ body#site #header h1 a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 49, ../../app/stylesheets/screen.sass */
+/* line 50, ../../app/stylesheets/screen.sass */
 body#site #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 52, ../../app/stylesheets/screen.sass */
+/* line 53, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
   margin-top: 48px;
   margin-bottom: 20px;
 }
-/* line 56, ../../app/stylesheets/screen.sass */
+/* line 57, ../../app/stylesheets/screen.sass */
 body#site #menu ul {
   margin: 0;
   padding: 0;
@@ -353,12 +382,12 @@ body#site #menu ul li:first-child, body#site #menu ul li.first {
 body#site #menu ul li:last-child, body#site #menu ul li.last {
   padding-right: 0px;
 }
-/* line 59, ../../app/stylesheets/screen.sass */
+/* line 60, ../../app/stylesheets/screen.sass */
 body#site #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 63, ../../app/stylesheets/screen.sass */
+/* line 64, ../../app/stylesheets/screen.sass */
 body#site #user {
   float: right;
   margin-top: 22px;
@@ -366,7 +395,7 @@ body#site #user {
   height: 24px;
   position: relative;
 }
-/* line 69, ../../app/stylesheets/screen.sass */
+/* line 70, ../../app/stylesheets/screen.sass */
 body#site #user a {
   display: block;
   padding: 20px 20px 21px 20px;
@@ -394,43 +423,36 @@ body#site #user a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 77, ../../app/stylesheets/screen.sass */
+/* line 78, ../../app/stylesheets/screen.sass */
 body#site #user a img.dropdown {
   margin-bottom: 3px;
   vertical_align: middle;
 }
-/* line 80, ../../app/stylesheets/screen.sass */
+/* line 81, ../../app/stylesheets/screen.sass */
 body#site #user a img#display_image {
+  background-color: white;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
   margin-right: 6px;
   height: 24px;
 }
-/* line 86, ../../app/stylesheets/screen.sass */
+/* line 87, ../../app/stylesheets/screen.sass */
 body#site #user .hover {
   color: #eeeeee;
   text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 0px;
   background-color: #0c0c0c;
   background-color: rgba(12, 12, 12, 0.9);
 }
-/* line 91, ../../app/stylesheets/screen.sass */
+/* line 92, ../../app/stylesheets/screen.sass */
 body#site #user .hover img#display_image {
   -moz-box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
   -webkit-box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
   -o-box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
   box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
 }
-/* line 93, ../../app/stylesheets/screen.sass */
+/* line 94, ../../app/stylesheets/screen.sass */
 body#site #user #user_menu {
   text-align: right;
   padding: 0 20px;
@@ -453,7 +475,7 @@ body#site #user #user_menu {
   right: 0;
   z-index: 100;
 }
-/* line 105, ../../app/stylesheets/screen.sass */
+/* line 106, ../../app/stylesheets/screen.sass */
 body#site #user #user_menu ul li a {
   font-weight: normal;
   padding-top: 0;
@@ -469,11 +491,11 @@ body#site #user #user_menu ul li a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 112, ../../app/stylesheets/screen.sass */
+/* line 113, ../../app/stylesheets/screen.sass */
 body#site #user #user_menu ul li a:hover {
   color: white;
 }
-/* line 114, ../../app/stylesheets/screen.sass */
+/* line 115, ../../app/stylesheets/screen.sass */
 body#site #user .user_menu_border {
   -moz-border-radius-topleft: 16px;
   -webkit-border-top-left-radius: 16px;
@@ -482,7 +504,7 @@ body#site #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 117, ../../app/stylesheets/screen.sass */
+/* line 118, ../../app/stylesheets/screen.sass */
 body#site #content {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
@@ -497,11 +519,11 @@ body#site #content {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 123, ../../app/stylesheets/screen.sass */
-body#site #projects_header {
+/* line 124, ../../app/stylesheets/screen.sass */
+body#site #content_header {
   text-align: center;
   color: white;
-  padding: 20px 60px;
+  padding: 20px;
   background-color: #009600;
   background-color: rgba(0, 150, 0, 0.7);
   -moz-border-radius-topleft: 6px;
@@ -514,19 +536,24 @@ body#site #projects_header {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
-  text-shadow: green 1px 1px 0px;
 }
 /* line 132, ../../app/stylesheets/screen.sass */
-body#site #projects_header h1 {
+body#site #content_header h1 {
   font-family: "museo-500";
   font-size: 32px;
-  padding: 20px;
+  padding: 20px 0;
+  text-shadow: green 2px 2px 1px;
 }
 /* line 137, ../../app/stylesheets/screen.sass */
+body#site #content_header h2 {
+  padding: 0 40px;
+  text-shadow: green 1px 1px 0px;
+}
+/* line 142, ../../app/stylesheets/screen.sass */
 body#site #projects {
   padding: 40px;
 }
-/* line 140, ../../app/stylesheets/screen.sass */
+/* line 145, ../../app/stylesheets/screen.sass */
 body#site .project {
   font-size: 16px;
   color: #666666;
@@ -541,7 +568,7 @@ body#site .project {
   border: 5px solid #eeeeee;
   border: 5px solid rgba(100, 100, 100, 0.1);
 }
-/* line 148, ../../app/stylesheets/screen.sass */
+/* line 153, ../../app/stylesheets/screen.sass */
 body#site .project img {
   width: 280px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
@@ -558,19 +585,19 @@ body#site .project img {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 153, ../../app/stylesheets/screen.sass */
+/* line 158, ../../app/stylesheets/screen.sass */
 body#site .project img:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
 }
-/* line 157, ../../app/stylesheets/screen.sass */
+/* line 162, ../../app/stylesheets/screen.sass */
 body#site .project_header h1 {
   font-family: "museo-300";
   font-size: 20px;
 }
-/* line 160, ../../app/stylesheets/screen.sass */
+/* line 165, ../../app/stylesheets/screen.sass */
 body#site .project_header a {
   text-decoration: none;
   color: black;
@@ -583,17 +610,17 @@ body#site .project_header a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 164, ../../app/stylesheets/screen.sass */
+/* line 169, ../../app/stylesheets/screen.sass */
 body#site .project_header a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 167, ../../app/stylesheets/screen.sass */
+/* line 172, ../../app/stylesheets/screen.sass */
 body#site .project_owner {
   font-size: 14px;
   color: #999999;
   padding-bottom: 8px;
 }
-/* line 172, ../../app/stylesheets/screen.sass */
+/* line 177, ../../app/stylesheets/screen.sass */
 body#site .project_category {
   text-transform: uppercase;
   color: white;
@@ -611,12 +638,12 @@ body#site .project_category {
   font-size: 14px;
   margin-top: 16px;
 }
-/* line 184, ../../app/stylesheets/screen.sass */
+/* line 189, ../../app/stylesheets/screen.sass */
 body#site .project_wrap {
   width: 280px;
   padding: 20px;
 }
-/* line 188, ../../app/stylesheets/screen.sass */
+/* line 193, ../../app/stylesheets/screen.sass */
 body#site .project_progress {
   text-transform: uppercase;
   color: #333333;
@@ -637,7 +664,7 @@ body#site .project_progress {
   padding: 20px;
   font-size: 13px;
 }
-/* line 197, ../../app/stylesheets/screen.sass */
+/* line 202, ../../app/stylesheets/screen.sass */
 body#site .project_progress ul {
   margin: 0;
   padding: 0;
@@ -665,7 +692,7 @@ body#site .project_progress ul li:first-child, body#site .project_progress ul li
 body#site .project_progress ul li:last-child, body#site .project_progress ul li.last {
   padding-right: 0px;
 }
-/* line 199, ../../app/stylesheets/screen.sass */
+/* line 204, ../../app/stylesheets/screen.sass */
 body#site .project_progress .progress_bar {
   font-size: 8px;
   background-color: #999999;
@@ -679,7 +706,7 @@ body#site .project_progress .progress_bar {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 206, ../../app/stylesheets/screen.sass */
+/* line 211, ../../app/stylesheets/screen.sass */
 body#site .project_progress .progress_bar .progress {
   background-color: #009600;
   -moz-border-radius: 32px;
@@ -689,7 +716,7 @@ body#site .project_progress .progress_bar .progress {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 210, ../../app/stylesheets/screen.sass */
+/* line 215, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 40px 0;

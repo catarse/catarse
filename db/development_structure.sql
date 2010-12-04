@@ -189,12 +189,13 @@ CREATE TABLE users (
     email character varying(255),
     name character varying(255),
     nickname character varying(255),
-    biography character varying(255),
+    bio character varying(255),
     image_url character varying(255),
     newsletter boolean DEFAULT false,
     project_updates boolean DEFAULT false,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    CONSTRAINT users_bio_length_within CHECK (((length((bio)::text) >= 0) AND (length((bio)::text) <= 140))),
     CONSTRAINT users_provider_not_blank CHECK ((length(btrim((provider)::text)) > 0)),
     CONSTRAINT users_uid_not_blank CHECK ((length(btrim((uid)::text)) > 0))
 );

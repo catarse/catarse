@@ -5,7 +5,7 @@
     = image_tag 'dropdown.png', :class => 'dropdown'
   #user_menu.hide
     %ul
-      %li= link_to "Meu perfil", logout_path
+      %li= link_to "Meu perfil", user_path(current_user)
       %li= link_to "Logout", logout_path
 = javascript_include_tag 'user'
 

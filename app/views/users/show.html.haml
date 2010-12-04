@@ -1,0 +1,8 @@
+#content_header.profile
+  .image
+    = image_tag @user.display_image
+  .info
+    %h1
+      = @user.display_name
+    %h2= @user.bio
+  .clear

@@ -15,6 +15,7 @@ Factory.define :user do |f|
   f.uid { Factory.next(:uid) }
   f.name "Foo bar"
   f.email { Factory.next(:email) }
+  f.bio "This is Foo bar's biography."
 end
 
 Factory.define :category do |f|

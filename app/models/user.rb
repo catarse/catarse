@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
+  validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
 
   def self.create_with_omniauth(auth)
@@ -9,7 +10,7 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.name = auth["user_info"]["name"]
       user.nickname = auth["user_info"]["nickname"]
-      user.biography = auth["user_info"]["description"]
+      user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
       user.image_url = auth["user_info"]["image"]
     end
   end
@@ -21,4 +22,3 @@ class User < ActiveRecord::Base
     image_url || 'user.png'
   end
 end
-

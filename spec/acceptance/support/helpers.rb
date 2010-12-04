@@ -3,6 +3,9 @@ module HelperMethods
   def login
     visit "/fake_login"
   end
+  def user
+    User.find_by_uid 'fake_login'
+  end
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance

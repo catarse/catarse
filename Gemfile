@@ -7,6 +7,7 @@ gem 'pg'
 gem 'haml'
 gem 'compass'
 gem "omniauth"
+gem 'inherited_resources', '>=1.1.2'
 gem 'maxim-sexy_pg_constraints'
 gem 'spectator-validates_email', :require => 'validates_email'
 
