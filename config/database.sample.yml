@@ -13,8 +13,8 @@ development:
   encoding: utf-8
   database: catarse_development
   pool: 5
-  username: catarse
-  password:
+  username: diogo
+  
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -39,14 +39,17 @@ test: &test
   encoding: utf-8
   database: catarse_test
   pool: 5
-  username: catarse
-  password:
+  username: diogo
+  
 
 production:
   adapter: postgresql
   encoding: utf-8
   database: catarse_production
   pool: 5
-  username: catarse
-  password:
+  username: diogo
+  
 
+
+cucumber:
+  <<: *test
