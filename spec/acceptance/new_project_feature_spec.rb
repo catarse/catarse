@@ -5,14 +5,18 @@ feature "New Project Feature" do
   scenario "I'm not logged in and I want to send a project" do
 
     visit homepage
-    
+
     click_link 'Envie seu projeto'
     click_link 'Twitter'
 
-    fill_in 'username_or_email', :with => 'catarsetest'
-    fill_in 'session[password]', :with => 'testcatarse'
-    click_button 'Sign in'
-
+    if page.has_button? 'Sign in'
+      fill_in 'username_or_email', :with => 'catarsetest'
+      fill_in 'session[password]', :with => 'testcatarse'
+      click_button 'Sign in'
+    end
+    
+    click_button 'Allow' if page.has_button?('Allow')
+    
     current_path.should == new_project_path
     
   end

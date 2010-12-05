@@ -12,9 +12,11 @@ feature "Login Feature" do
     click_link 'Login'
     click_link 'Twitter'
 
-    fill_in 'username_or_email', :with => 'catarsetest'
-    fill_in 'session[password]', :with => 'testcatarse'
-    click_button 'Sign in'
+    if page.has_button? 'Sign in'
+      fill_in 'username_or_email', :with => 'catarsetest'
+      fill_in 'session[password]', :with => 'testcatarse'
+      click_button 'Sign in'
+    end
     
     click_button 'Allow' if page.has_button?('Allow')
     
