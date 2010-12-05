@@ -29,4 +29,3 @@ class CreateProjects < ActiveRecord::Migration
     drop_table :projects
   end
 end
-

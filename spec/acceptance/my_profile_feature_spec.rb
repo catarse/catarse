@@ -27,5 +27,7 @@ feature "My profile Feature" do
       end
     end
     
+    pending "I still don't have the complete profile, and I still can't edit it."
+    
   end
 end
