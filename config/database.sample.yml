@@ -48,8 +48,3 @@ production:
   database: catarse_production
   pool: 5
   username: diogo
-  
-
-
-cucumber:
-  <<: *test
