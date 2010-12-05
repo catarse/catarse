@@ -6,6 +6,12 @@ module HelperMethods
   def user
     User.find_by_uid 'fake_login'
   end
+  def click_login
+    visit homepage
+    page.should have_no_css('#user')
+    click_link 'Login'
+  end
+
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance
