@@ -24,5 +24,13 @@ feature "Login Feature" do
   scenario "I'm new to the site and I want to signup with Google" do
     click_login
     click_link 'Google'
+    if page.has_button? 'signIn'
+      fill_in 'Email', :with => 'catarsetest'
+      fill_in 'Passwd', :with => 'testcatarse'
+      click_button 'signIn'
+    end
+    click_button 'approve_button' if page.has_button?('approve_button')
+    current_path.should == homepage
+    page.should have_css('#user')
   end
 end
