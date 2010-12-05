@@ -4,7 +4,7 @@ feature "Logout Feature" do
 
   scenario "Given I'm logged in, I must be able to logout" do
 
-    login
+    fake_login
 
     page.should have_link(user.display_name)
 

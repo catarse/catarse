@@ -6,12 +6,12 @@ feature "My profile Feature" do
 
   scenario "I should be able to see and edit my profile when I click on 'Meu perfil'" do
 
-    login
+    fake_login
     
     click_link user.display_name
     click_link 'Meu perfil'
 
-    current_path.should == "/users/#{user.id}"
+    current_path.should == user_path(user)
     
     within 'head title' do
       page.should have_content("#{user.display_name} · Catarse") 
