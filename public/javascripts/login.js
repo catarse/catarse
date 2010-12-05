@@ -4,7 +4,7 @@ $('#login_link').click(function(){
   $('#login').fadeIn()
 })
 $('#new_project_link').click(function(){
-  $('#return_to').val("/projects/new")
+  $('#return_to').val("/projects/guidelines")
   $('.page_overlay').show()
   $('#login').fadeIn()
 })

@@ -10,7 +10,9 @@ Catarse::Application.routes.draw do
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
   
-  resources :projects, :only => [:index, :new, :create, :show]
+  resources :projects, :only => [:index, :new, :create, :show] do
+    get 'guidelines', :on => :collection
+  end
   resources :users, :only => [:show]
 
 end

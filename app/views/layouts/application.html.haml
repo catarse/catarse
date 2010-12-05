@@ -17,7 +17,7 @@
         = render '/layouts/user' if current_user
         #menu
           %ul
-            %li= link_to t('header.menu.new_project'), (current_user ? new_project_path : '#'), :id => 'new_project_link'
+            %li= link_to t('header.menu.new_project'), (current_user ? guidelines_projects_path : '#'), :id => 'new_project_link'
             - unless current_user
               %li= link_to t('header.menu.login'), '#', :id => 'login_link'
         .clear

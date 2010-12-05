@@ -7,4 +7,8 @@ class ProjectsController < ApplicationController
     index!{ @title = t 'projects.index.title' }
   end
 
+  def guidelines
+    @title = "Envie seu projeto"
+  end
+  
 end
