@@ -4,3 +4,5 @@ log/*.log
 tmp/**/*
 config/database.yml
 
+# Vim
+*.swp
