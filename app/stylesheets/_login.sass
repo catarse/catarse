@@ -29,6 +29,13 @@
       +transition(all, 0.3s)
     img:hover, img:focus
       +scale(1.2)
+    img:active
+      +scale(1.1)
+  a.disabled
+    img
+      +opacity(0.6)
+    img:hover, img:focus, img:active
+      +scale(1)
   a.close
     color: #fff
     text-decoration: none

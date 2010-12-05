@@ -14,6 +14,9 @@ $('.close').click(function(){
 })
 $('#login a').click(function(e){
   e.preventDefault()
+  if($(this).hasClass('disabled'))
+    return
+  $('#login a').addClass('disabled')
   $('#provider').val($(this).attr('href'))
   $('#login form').submit()
 })

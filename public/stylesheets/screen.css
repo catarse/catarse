@@ -183,6 +183,26 @@ a img {
   transform: scale(1.2);
 }
 /* line 32, ../../app/stylesheets/_login.sass */
+#login a img:active {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
+/* line 35, ../../app/stylesheets/_login.sass */
+#login a.disabled img {
+  opacity: 0.6;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+}
+/* line 37, ../../app/stylesheets/_login.sass */
+#login a.disabled img:hover, #login a.disabled img:focus, #login a.disabled img:active {
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+/* line 39, ../../app/stylesheets/_login.sass */
 #login a.close {
   color: white;
   text-decoration: none;
@@ -219,7 +239,7 @@ a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 50, ../../app/stylesheets/_login.sass */
+/* line 57, ../../app/stylesheets/_login.sass */
 #login a.close:hover, #login a.close:focus {
   color: white;
   -moz-transform: scale(1.05);
