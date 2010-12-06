@@ -1,17 +1,17 @@
-.page_overlay.hide
+.overlay.hide
   #login.hide
     %a.close{ :href => '#' } X
     %h1 Entre através de sua rede social favorita
     = form_tag(auth_path) do
       = hidden_field_tag 'provider'
       = hidden_field_tag 'return_to'
-      = link_to image_tag('auth/twitter_128.png', :title => 'Twitter'), 'twitter'
-      = link_to image_tag('auth/facebook_128.png', :title => 'Facebook'), 'facebook'
-      = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google'
-      = link_to image_tag('auth/yahoo_128.png', :title => 'Yahoo!'), 'yahoo'
-      = link_to image_tag('auth/myspace_128.png', :title => 'MySpace'), 'myspace'
-      = link_to image_tag('auth/linkedin_128.png', :title => 'LinkedIn'), 'linkedin'
-      = link_to image_tag('auth/github_128.png', :title => 'GitHub'), 'github'
+      = link_to image_tag('auth/twitter_128.png', :title => 'Twitter'), 'twitter', :class => 'provider'
+      = link_to image_tag('auth/facebook_128.png', :title => 'Facebook'), 'facebook', :class => 'provider'
+      = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
+      = link_to image_tag('auth/yahoo_128.png', :title => 'Yahoo!'), 'yahoo', :class => 'provider'
+      = link_to image_tag('auth/myspace_128.png', :title => 'MySpace'), 'myspace', :class => 'provider'
+      = link_to image_tag('auth/linkedin_128.png', :title => 'LinkedIn'), 'linkedin', :class => 'provider'
+      = link_to image_tag('auth/github_128.png', :title => 'GitHub'), 'github', :class => 'provider'
     %p
       Caso você ainda não seja cadastrado, sua conta será criada. Se você já é cadastrado, você será redirecionado para sua conta após o login.
     %p

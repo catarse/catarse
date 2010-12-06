@@ -1,127 +1,125 @@
-#content_header
+= content_for :content_header do
   %h1= t 'content.header.punchline'
   %h2
     = t 'content.header.description'
-#projects
-  %article.project
-    .project_wrap
-      .project_header
-        = link_to '#' do
-          = image_tag 'project01.jpg'
-          %h1 Tudo se encaixa
-      .project_owner
-        por Lumineiro
-      .project_description
-        Tudo se encaixa é um número de malabarismo com caixas. Lumineiro adora pão de queijo e petit gateau e o trabalho de Amedeo Modigliani.
-      %span.project_category
-        Circo
-      .clear
-    .project_progress
-      .progress_bar
-        .progress{ :style => "width: 100%" }
-          &nbsp;
-      %ul
-        %li
-          %strong 128%
-          %br
-          atingido
-        %li
-          %strong R$ 13.452
-          %br
-          levantados
-        %li
-          %strong 26 dias
-          %br
-          restantes
-  .project
-    .project_wrap
-      .project_header
-        = link_to '#' do
-          = image_tag 'project02.jpg'
-          %h1 Antípodas, Igreine e outros
-      .project_owner
-        por Alexandre Bandeira
-      .project_description
-        O artista plástico Alexandre Bandeira quer terminar sua série de quadros inspirados nas diversas vidas que temos, reais ou surreais.
-      %span.project_category
-        Artes plásticas
-      .clear
-    .project_progress
-      .progress_bar
-        .progress{ :style => "width: 42%" }
-          &nbsp;
-      %ul
-        %li
-          %strong 42%
-          %br
-          atingido
-        %li
-          %strong R$ 822
-          %br
-          levantados
-        %li
-          %strong 10 minutos
-          %br
-          restantes
-  .project
-    .project_wrap
-      .project_header
-        = link_to '#' do
-          = image_tag 'project03.png'
-          %h1 Ajude um reporter
-      .project_owner
-        por Gustavo Carneiro
-      .project_description
-        O Ajude o reporter conecta jornalistas às fontes. Ajude a construir esta plataforma de crowdsourcing jornalístico.
-      %span.project_category
-        Jornalismo
-      .clear
-    .project_progress
-      .progress_bar
-        .progress{ :style => "width: 89%" }
-          &nbsp;
-      %ul
-        %li
-          %strong 89%
-          %br
-          atingido
-        %li
-          %strong R$ 10.536
-          %br
-          levantados
-        %li
-          %strong 6 horas
-          %br
-          restantes
-  .project
-    .project_wrap
-      .project_header
-        = link_to '#' do
-          = image_tag 'project04.jpg'
-          %h1 Absurdo Fantástico, o filme
-      .project_owner
-        por Cisco Vasques
-      .project_description
-        Um longa metragem de videoarte que aniquila as definições, restando apenas a experiência. Absurdo fantástico. Sem mais.
-      %span.project_category
-        Cinema & Vídeo
-      .clear
-    .project_progress
-      .progress_bar
-        .progress{ :style => "width: 100%" }
-          &nbsp;
-      %ul
-        %li
-          %strong 2003%
-          %br
-          atingido
-        %li
-          %strong R$ 202.456
-          %br
-          levantados
-        %li
-          %strong 38 dias
-          %br
-          restantes
-  .clear
-
+%article.project
+  .project_wrap
+    .project_header
+      = link_to '#' do
+        = image_tag 'project01.jpg'
+        %h1 Tudo se encaixa
+    .project_owner
+      por Lumineiro
+    .project_description
+      Tudo se encaixa é um número de malabarismo com caixas. Lumineiro adora pão de queijo e petit gateau e o trabalho de Amedeo Modigliani.
+    %span.project_category
+      Circo
+    .clear
+  .project_progress
+    .progress_bar
+      .progress{ :style => "width: 100%" }
+        &nbsp;
+    %ul
+      %li
+        %strong 128%
+        %br
+        atingido
+      %li
+        %strong R$ 13.452
+        %br
+        levantados
+      %li
+        %strong 26 dias
+        %br
+        restantes
+.project
+  .project_wrap
+    .project_header
+      = link_to '#' do
+        = image_tag 'project02.jpg'
+        %h1 Antípodas, Igreine e outros
+    .project_owner
+      por Alexandre Bandeira
+    .project_description
+      O artista plástico Alexandre Bandeira quer terminar sua série de quadros inspirados nas diversas vidas que temos, reais ou surreais.
+    %span.project_category
+      Artes plásticas
+    .clear
+  .project_progress
+    .progress_bar
+      .progress{ :style => "width: 42%" }
+        &nbsp;
+    %ul
+      %li
+        %strong 42%
+        %br
+        atingido
+      %li
+        %strong R$ 822
+        %br
+        levantados
+      %li
+        %strong 10 minutos
+        %br
+        restantes
+.project
+  .project_wrap
+    .project_header
+      = link_to '#' do
+        = image_tag 'project03.png'
+        %h1 Ajude um reporter
+    .project_owner
+      por Gustavo Carneiro
+    .project_description
+      O Ajude o reporter conecta jornalistas às fontes. Ajude a construir esta plataforma de crowdsourcing jornalístico.
+    %span.project_category
+      Jornalismo
+    .clear
+  .project_progress
+    .progress_bar
+      .progress{ :style => "width: 89%" }
+        &nbsp;
+    %ul
+      %li
+        %strong 89%
+        %br
+        atingido
+      %li
+        %strong R$ 10.536
+        %br
+        levantados
+      %li
+        %strong 6 horas
+        %br
+        restantes
+.project
+  .project_wrap
+    .project_header
+      = link_to '#' do
+        = image_tag 'project04.jpg'
+        %h1 Absurdo Fantástico, o filme
+    .project_owner
+      por Cisco Vasques
+    .project_description
+      Um longa metragem de videoarte que aniquila as definições, restando apenas a experiência. Absurdo fantástico. Sem mais.
+    %span.project_category
+      Cinema & Vídeo
+    .clear
+  .project_progress
+    .progress_bar
+      .progress{ :style => "width: 100%" }
+        &nbsp;
+    %ul
+      %li
+        %strong 2003%
+        %br
+        atingido
+      %li
+        %strong R$ 202.456
+        %br
+        levantados
+      %li
+        %strong 38 dias
+        %br
+        restantes
+.clear

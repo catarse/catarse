@@ -45,12 +45,12 @@ feature "New Project Feature" do
       end
     end
     
-    within '#guidelines' do
+    within '#content' do
       within 'h1' do
         page.should have_content("Melhores práticas no Catarse")
       end
     end
-    
+
   end
   
 end

@@ -90,28 +90,89 @@ a img {
   src: url("/fonts/MUSEO700.TTF");
 }
 
-/* line 1, ../../app/stylesheets/_shortcuts.sass */
+/* line 1, ../../app/stylesheets/_helpers.sass */
 .left {
   float: left;
 }
 
-/* line 3, ../../app/stylesheets/_shortcuts.sass */
+/* line 3, ../../app/stylesheets/_helpers.sass */
 .right {
   float: right;
 }
 
-/* line 5, ../../app/stylesheets/_shortcuts.sass */
+/* line 5, ../../app/stylesheets/_helpers.sass */
 .clear {
   clear: both;
 }
 
-/* line 7, ../../app/stylesheets/_shortcuts.sass */
+/* line 7, ../../app/stylesheets/_helpers.sass */
 .hide {
   display: none;
 }
 
-/* line 1, ../../app/stylesheets/_page_overlay.sass */
-.page_overlay {
+/* line 20, ../../app/stylesheets/screen.sass */
+body#site {
+  background: url("/images/bg.png") repeat;
+  text-rendering: optimizeLegibility;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222222;
+  font-size: 18px;
+  line-height: 22px;
+  text-shadow: white 1px 1px 0px;
+  font-weight: normal;
+}
+/* line 11, ../../app/stylesheets/_body.sass */
+body#site strong {
+  font-weight: bold;
+}
+/* line 14, ../../app/stylesheets/_body.sass */
+body#site a {
+  text-decoration: underline;
+  color: #008800;
+  font-size: 100%;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+/* line 20, ../../app/stylesheets/_body.sass */
+body#site a:hover {
+  color: #00aa00;
+}
+/* line 23, ../../app/stylesheets/screen.sass */
+body#site .flash {
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
+  text-align: center;
+  color: white;
+  text-shadow: black 1px 1px 1px;
+}
+/* line 6, ../../app/stylesheets/_flash.sass */
+body#site .flash .wrapper {
+  padding: 20px;
+}
+/* line 8, ../../app/stylesheets/_flash.sass */
+body#site .flash .success.wrapper {
+  background-color: #44a546;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
+  background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
+  background-image: linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
+}
+/* line 11, ../../app/stylesheets/_flash.sass */
+body#site .flash .failure.wrapper {
+  background-color: #aa3333;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #cc3333), color-stop(50%, #bb3333), color-stop(100%, #aa3333));
+  background-image: -moz-linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
+  background-image: linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
+}
+/* line 25, ../../app/stylesheets/screen.sass */
+body#site .overlay {
   background-color: #dddddd;
   background: rgba(180, 180, 180, 0.8);
   position: fixed;
@@ -121,9 +182,8 @@ a img {
   height: 100%;
   z-index: 100;
 }
-
-/* line 1, ../../app/stylesheets/_login.sass */
-#login {
+/* line 27, ../../app/stylesheets/screen.sass */
+body#site #login {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
   background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
@@ -153,18 +213,18 @@ a img {
   text-shadow: black 1px 1px 1px;
 }
 /* line 19, ../../app/stylesheets/_login.sass */
-#login h1 {
+body#site #login h1 {
   font-family: "museo-500";
   font-size: 24px;
   padding: 20px;
   margin-bottom: 10px;
 }
 /* line 24, ../../app/stylesheets/_login.sass */
-#login p {
+body#site #login p {
   margin-top: 20px;
 }
 /* line 27, ../../app/stylesheets/_login.sass */
-#login a img {
+body#site #login a img {
   width: 60px;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -176,34 +236,34 @@ a img {
   transition-duration: 0.3s;
 }
 /* line 30, ../../app/stylesheets/_login.sass */
-#login a img:hover, #login a img:focus {
+body#site #login a img:hover, body#site #login a img:focus {
   -moz-transform: scale(1.2);
   -webkit-transform: scale(1.2);
   -o-transform: scale(1.2);
   transform: scale(1.2);
 }
 /* line 32, ../../app/stylesheets/_login.sass */
-#login a img:active {
+body#site #login a img:active {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
 /* line 35, ../../app/stylesheets/_login.sass */
-#login a.disabled img {
+body#site #login a.disabled img {
   opacity: 0.6;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
 }
 /* line 37, ../../app/stylesheets/_login.sass */
-#login a.disabled img:hover, #login a.disabled img:focus, #login a.disabled img:active {
+body#site #login a.disabled img:hover, body#site #login a.disabled img:focus, body#site #login a.disabled img:active {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
 }
 /* line 39, ../../app/stylesheets/_login.sass */
-#login a.close {
+body#site #login a.close {
   color: white;
   text-decoration: none;
   position: absolute;
@@ -240,118 +300,26 @@ a img {
   transition-duration: 0.3s;
 }
 /* line 57, ../../app/stylesheets/_login.sass */
-#login a.close:hover, #login a.close:focus {
+body#site #login a.close:hover, body#site #login a.close:focus {
   color: white;
   -moz-transform: scale(1.05);
   -webkit-transform: scale(1.05);
   -o-transform: scale(1.05);
   transform: scale(1.05);
 }
-
-/* line 1, ../../app/stylesheets/_flash.sass */
-.flash {
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
-  text-align: center;
-  color: white;
-  text-shadow: black 1px 1px 1px;
-}
-/* line 6, ../../app/stylesheets/_flash.sass */
-.flash .wrapper {
-  padding: 20px;
-}
-/* line 8, ../../app/stylesheets/_flash.sass */
-.flash .success.wrapper {
-  background-color: #44a546;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  background-image: linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-}
-/* line 11, ../../app/stylesheets/_flash.sass */
-.flash .failure.wrapper {
-  background-color: #aa3333;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #cc3333), color-stop(50%, #bb3333), color-stop(100%, #aa3333));
-  background-image: -moz-linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
-  background-image: linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
-}
-
-/* line 1, ../../app/stylesheets/_profile.sass */
-#content_header.profile {
-  position: relative;
-}
-/* line 3, ../../app/stylesheets/_profile.sass */
-#content_header.profile .image {
-  float: left;
-  padding: 20px;
-}
-/* line 6, ../../app/stylesheets/_profile.sass */
-#content_header.profile .image img {
-  background-color: white;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
-  max-width: 128px;
-  max-height: 128px;
-}
-/* line 12, ../../app/stylesheets/_profile.sass */
-#content_header.profile .info h1, #content_header.profile .info h2 {
-  text-align: left;
-}
-/* line 14, ../../app/stylesheets/_profile.sass */
-#content_header.profile .info h2 {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* line 13, ../../app/stylesheets/screen.sass */
-body#site {
-  background: url("/images/bg.png") repeat;
-  text-rendering: optimizeLegibility;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #222222;
-  font-size: 18px;
-  line-height: 22px;
-  text-shadow: white 1px 1px 0px;
-  font-weight: normal;
-}
-/* line 24, ../../app/stylesheets/screen.sass */
-body#site strong {
-  font-weight: bold;
-}
-/* line 27, ../../app/stylesheets/screen.sass */
-body#site a {
-  text-decoration: underline;
-  color: #008800;
-  font-size: 100%;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-}
-/* line 33, ../../app/stylesheets/screen.sass */
-body#site a:hover {
-  color: #00aa00;
-}
-/* line 36, ../../app/stylesheets/screen.sass */
+/* line 29, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
 }
-/* line 41, ../../app/stylesheets/screen.sass */
+/* line 2, ../../app/stylesheets/_header.sass */
 body#site #header h1 {
   font-family: "museo-700";
   font-size: 48px;
   padding: 36px 0 20px 0;
   float: left;
 }
-/* line 46, ../../app/stylesheets/screen.sass */
+/* line 7, ../../app/stylesheets/_header.sass */
 body#site #header h1 a {
   color: #222222;
   text-decoration: none;
@@ -364,17 +332,17 @@ body#site #header h1 a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 50, ../../app/stylesheets/screen.sass */
+/* line 11, ../../app/stylesheets/_header.sass */
 body#site #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 53, ../../app/stylesheets/screen.sass */
+/* line 33, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
   margin-top: 48px;
   margin-bottom: 20px;
 }
-/* line 57, ../../app/stylesheets/screen.sass */
+/* line 5, ../../app/stylesheets/_menu.sass */
 body#site #menu ul {
   margin: 0;
   padding: 0;
@@ -402,12 +370,12 @@ body#site #menu ul li:first-child, body#site #menu ul li.first {
 body#site #menu ul li:last-child, body#site #menu ul li.last {
   padding-right: 0px;
 }
-/* line 60, ../../app/stylesheets/screen.sass */
+/* line 8, ../../app/stylesheets/_menu.sass */
 body#site #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 64, ../../app/stylesheets/screen.sass */
+/* line 35, ../../app/stylesheets/screen.sass */
 body#site #user {
   float: right;
   margin-top: 22px;
@@ -415,7 +383,7 @@ body#site #user {
   height: 24px;
   position: relative;
 }
-/* line 70, ../../app/stylesheets/screen.sass */
+/* line 7, ../../app/stylesheets/_user.sass */
 body#site #user a {
   display: block;
   padding: 20px 20px 21px 20px;
@@ -443,12 +411,12 @@ body#site #user a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 78, ../../app/stylesheets/screen.sass */
+/* line 15, ../../app/stylesheets/_user.sass */
 body#site #user a img.dropdown {
   margin-bottom: 3px;
   vertical_align: middle;
 }
-/* line 81, ../../app/stylesheets/screen.sass */
+/* line 18, ../../app/stylesheets/_user.sass */
 body#site #user a img#display_image {
   background-color: white;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
@@ -458,21 +426,21 @@ body#site #user a img#display_image {
   margin-right: 6px;
   height: 24px;
 }
-/* line 87, ../../app/stylesheets/screen.sass */
+/* line 24, ../../app/stylesheets/_user.sass */
 body#site #user .hover {
   color: #eeeeee;
   text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 0px;
   background-color: #0c0c0c;
   background-color: rgba(12, 12, 12, 0.9);
 }
-/* line 92, ../../app/stylesheets/screen.sass */
+/* line 29, ../../app/stylesheets/_user.sass */
 body#site #user .hover img#display_image {
   -moz-box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
   -webkit-box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
   -o-box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
   box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
 }
-/* line 94, ../../app/stylesheets/screen.sass */
+/* line 31, ../../app/stylesheets/_user.sass */
 body#site #user #user_menu {
   text-align: right;
   padding: 0 20px;
@@ -495,7 +463,7 @@ body#site #user #user_menu {
   right: 0;
   z-index: 100;
 }
-/* line 106, ../../app/stylesheets/screen.sass */
+/* line 43, ../../app/stylesheets/_user.sass */
 body#site #user #user_menu ul li a {
   font-weight: normal;
   padding-top: 0;
@@ -511,11 +479,11 @@ body#site #user #user_menu ul li a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 113, ../../app/stylesheets/screen.sass */
+/* line 50, ../../app/stylesheets/_user.sass */
 body#site #user #user_menu ul li a:hover {
   color: white;
 }
-/* line 115, ../../app/stylesheets/screen.sass */
+/* line 52, ../../app/stylesheets/_user.sass */
 body#site #user .user_menu_border {
   -moz-border-radius-topleft: 16px;
   -webkit-border-top-left-radius: 16px;
@@ -524,8 +492,8 @@ body#site #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 118, ../../app/stylesheets/screen.sass */
-body#site #content {
+/* line 37, ../../app/stylesheets/screen.sass */
+body#site #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
   -moz-border-radius: 6px;
@@ -539,8 +507,8 @@ body#site #content {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 124, ../../app/stylesheets/screen.sass */
-body#site #content_header {
+/* line 39, ../../app/stylesheets/screen.sass */
+body#site #content_wrapper #content_header {
   text-align: center;
   color: white;
   padding: 20px;
@@ -557,23 +525,55 @@ body#site #content_header {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
 }
-/* line 132, ../../app/stylesheets/screen.sass */
-body#site #content_header h1 {
+/* line 14, ../../app/stylesheets/_content.sass */
+body#site #content_wrapper #content_header h1 {
   font-family: "museo-500";
   font-size: 32px;
   padding: 20px 0;
   text-shadow: green 2px 2px 1px;
 }
-/* line 137, ../../app/stylesheets/screen.sass */
-body#site #content_header h2 {
+/* line 19, ../../app/stylesheets/_content.sass */
+body#site #content_wrapper #content_header h2 {
   padding: 0 40px;
   text-shadow: green 1px 1px 0px;
 }
-/* line 142, ../../app/stylesheets/screen.sass */
+/* line 41, ../../app/stylesheets/screen.sass */
+body#site #content_wrapper #content {
+  padding: 20px;
+}
+/* line 2, ../../app/stylesheets/_profile.sass */
+body#site #profile_header {
+  position: relative;
+}
+/* line 4, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .image {
+  float: left;
+  padding: 20px;
+}
+/* line 7, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .image img {
+  background-color: white;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
+  max-width: 128px;
+  max-height: 128px;
+}
+/* line 13, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .info h1, body#site #profile_header .info h2 {
+  text-align: left;
+}
+/* line 15, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .info h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* line 2, ../../app/stylesheets/_projects.sass */
 body#site #projects {
   padding: 40px;
 }
-/* line 145, ../../app/stylesheets/screen.sass */
+/* line 4, ../../app/stylesheets/_projects.sass */
 body#site .project {
   font-size: 16px;
   color: #666666;
@@ -588,7 +588,7 @@ body#site .project {
   border: 5px solid #eeeeee;
   border: 5px solid rgba(100, 100, 100, 0.1);
 }
-/* line 153, ../../app/stylesheets/screen.sass */
+/* line 12, ../../app/stylesheets/_projects.sass */
 body#site .project img {
   width: 280px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
@@ -605,19 +605,19 @@ body#site .project img {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 158, ../../app/stylesheets/screen.sass */
+/* line 17, ../../app/stylesheets/_projects.sass */
 body#site .project img:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
 }
-/* line 162, ../../app/stylesheets/screen.sass */
+/* line 20, ../../app/stylesheets/_projects.sass */
 body#site .project_header h1 {
   font-family: "museo-300";
   font-size: 20px;
 }
-/* line 165, ../../app/stylesheets/screen.sass */
+/* line 23, ../../app/stylesheets/_projects.sass */
 body#site .project_header a {
   text-decoration: none;
   color: black;
@@ -630,17 +630,17 @@ body#site .project_header a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 169, ../../app/stylesheets/screen.sass */
+/* line 27, ../../app/stylesheets/_projects.sass */
 body#site .project_header a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 172, ../../app/stylesheets/screen.sass */
+/* line 29, ../../app/stylesheets/_projects.sass */
 body#site .project_owner {
   font-size: 14px;
   color: #999999;
   padding-bottom: 8px;
 }
-/* line 177, ../../app/stylesheets/screen.sass */
+/* line 33, ../../app/stylesheets/_projects.sass */
 body#site .project_category {
   text-transform: uppercase;
   color: white;
@@ -658,12 +658,12 @@ body#site .project_category {
   font-size: 14px;
   margin-top: 16px;
 }
-/* line 189, ../../app/stylesheets/screen.sass */
+/* line 44, ../../app/stylesheets/_projects.sass */
 body#site .project_wrap {
   width: 280px;
   padding: 20px;
 }
-/* line 193, ../../app/stylesheets/screen.sass */
+/* line 47, ../../app/stylesheets/_projects.sass */
 body#site .project_progress {
   text-transform: uppercase;
   color: #333333;
@@ -684,7 +684,7 @@ body#site .project_progress {
   padding: 20px;
   font-size: 13px;
 }
-/* line 202, ../../app/stylesheets/screen.sass */
+/* line 56, ../../app/stylesheets/_projects.sass */
 body#site .project_progress ul {
   margin: 0;
   padding: 0;
@@ -712,7 +712,7 @@ body#site .project_progress ul li:first-child, body#site .project_progress ul li
 body#site .project_progress ul li:last-child, body#site .project_progress ul li.last {
   padding-right: 0px;
 }
-/* line 204, ../../app/stylesheets/screen.sass */
+/* line 58, ../../app/stylesheets/_projects.sass */
 body#site .project_progress .progress_bar {
   font-size: 8px;
   background-color: #999999;
@@ -726,7 +726,7 @@ body#site .project_progress .progress_bar {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 211, ../../app/stylesheets/screen.sass */
+/* line 65, ../../app/stylesheets/_projects.sass */
 body#site .project_progress .progress_bar .progress {
   background-color: #009600;
   -moz-border-radius: 32px;
@@ -736,7 +736,7 @@ body#site .project_progress .progress_bar .progress {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 215, ../../app/stylesheets/screen.sass */
+/* line 45, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 40px 0;

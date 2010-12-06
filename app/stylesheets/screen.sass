@@ -1,218 +1,46 @@
 @import "compass/reset"
 @import "compass/utilities"
 @import "compass/css3"
+@import "settings"
 @import "fonts"
-@import "shortcuts"
-@import "page_overlay"
-@import "login"
+@import "helpers"
+@import "body"
+@import "overlay"
 @import "flash"
+@import "login"
+@import "main"
+@import "header"
+@import "menu"
+@import "user"
+@import "content"
 @import "profile"
-
-$default-transition-duration = 0.5s
+@import "projects"
+@import "footer"
 
 body#site
 
-  background: url('/images/bg.png') repeat
-  text-rendering: optimizeLegibility
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-  color: #222
-  font-size: 18px
-  line-height: 22px
-  +text-shadow(#fff, 1px, 1px, 0px)
-  font-weight: normal
-
-  strong
-    font-weight: bold
-
-  a
-    text-decoration: underline
-    color: #080
-    font-size: 100%
-    +transition
-
-  a:hover
-    color: #0A0
-
+  +body
+  .flash
+    +flash
+  .overlay
+    +overlay
+  #login
+    +login
   #main
-    width: 920px
-    margin: 0 auto
-
+    +main
   #header
-    h1
-      font-family: "museo-700"
-      font-size: 48px
-      padding: 36px 0 20px 0
-      float: left
-      a
-        color: #222
-        text-decoration: none
-        +transition
-      a:hover
-        +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
-
+    +header
   #menu
-    float: right
-    margin-top: 48px
-    margin-bottom: 20px
-    ul
-      +horizontal-list(12px)
-      li
-        a
-          text-decoration: none
-          font-weight: bold
-
+    +menu
   #user
-    float: right
-    margin-top: 22px
-    margin-left: 12px
-    height: 24px
-    position: relative
-    a
-      display: block
-      padding: 20px 20px 21px 20px
-      +border-top-left-radius(16px)
-      +border-top-right-radius(16px)
-      color: #333
-      text-decoration: none
-      font-weight: bold
-      img.dropdown
-        margin-bottom: 3px
-        vertical_align: middle
-      img#display_image
-        background-color: #fff
-        +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
-        margin-right: 6px
-        height: 24px
-      +transition(none)
-    .hover
-      color: #eee
-      +text-shadow(rgba(0,0,0,0.9), 0px, 0px, 0px)
-      background-color: rgb(12,12,12)
-      background-color: rgba(12,12,12,0.9)
-      img#display_image
-        +box-shadow(rgba(255,255,255,0.7), 2px, 2px, 4px)
-    #user_menu
-      text-align: right
-      padding: 0 20px
-      background-color: rgb(12,12,12)
-      background-color: rgba(12,12,12,0.9)
-      position: absolute
-      +border-bottom-left-radius(16px)
-      +border-bottom-right-radius(16px)
-      top: 69px
-      right: 0
-      z-index: 100
-      ul li
-        a
-          font-weight: normal
-          padding-top: 0
-          padding-right: 12px
-          color: #ccc
-          +text-shadow(rgba(0,0,0,0.9), 0px, 0px, 0px)
-          +transition
-        a:hover
-          color: #fff
-    .user_menu_border
-      +border-top-left-radius(16px)
-
-  #content
-    background-color: rgb(255,255,255)
-    background-color: rgba(255,255,255,0.5)
-    +border-radius(6px)
-    +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 16px)
-
-  #content_header
-    text-align: center
-    color: #fff
-    padding: 20px
-    background-color: rgb(0,150,0)
-    background-color: rgba(0,150,0,0.7)
-    +border-top-left-radius(6px)
-    +box-shadow(rgba(0,0,0,0.5), 0px, 3px, 3px)
-    h1
-      font-family: "museo-500"
-      font-size: 32px
-      padding: 20px 0
-      +text-shadow(green, 2px, 2px, 1px)
-    h2
-      padding: 0 40px
-      +text-shadow(green, 1px, 1px, 0px)
-    
-
-  #projects
-    padding: 40px
-
-  .project
-    font-size: 16px
-    color: #666
-    float: left
-    margin: 10px 45px
-    +border-radius(8px)
-    border: 5px solid #eee
-    border: 5px solid rgba(100,100,100,0.1)
-    img
-      width: 280px
-      +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 5px)
-      margin-bottom: 16px
-      +transition
-    img:hover
-      +box-shadow(rgba(0,0,0,0.7), 3px, 3px, 6px)
-
-  .project_header
-    h1
-      font-family: "museo-300"
-      font-size: 20px
-    a
-      text-decoration: none
-      color: #000
-      +transition
-    a:hover
-      +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
-
-  .project_owner
-    font-size: 14px
-    color: #999
-    padding-bottom: 8px
-
-  .project_category
-    text-transform: uppercase
-    color: #fff
-    background-color: #555
-    background-color: rgba(0,0,0,0.7)
-    +border-radius(4px)
-    +text-shadow(#000, 1px, 1px, 0px)
-    padding: 4px 8px
-    float: right
-    font-size: 14px
-    margin-top: 16px
-
-  .project_wrap
-    width: 280px
-    padding: 20px
-
-  .project_progress
-    text-transform: uppercase
-    color: #333
-    background-color: #CCC
-    background-color: rgba(0,0,0,0.2)
-    +border-bottom-left-radius(4px)
-    +border-bottom-right-radius(4px)
-    padding: 20px
-    font-size: 13px
-    ul
-      +horizontal-list(8px)
-    .progress_bar
-      font-size: 8px
-      background-color: #999
-      background-color: rgba(0,0,0,0.3)
-      width: 280px
-      margin-bottom: 16px
-      +border-radius(32px)
-      .progress
-        background-color: rgb(0,150,0)
-        +border-radius(32px)
-
+    +user
+  #content_wrapper
+    +content_wrapper
+    #content_header
+      +content_header
+    #content
+      +content
+  +profile
+  +projects
   #footer
-    text-align: center
-    padding: 40px 0
-
+    +footer

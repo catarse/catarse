@@ -21,8 +21,11 @@
             - unless current_user
               %li= link_to t('header.menu.login'), '#', :id => 'login_link'
         .clear
-      #content
-        = yield
+      #content_wrapper
+        #content_header
+          = yield :content_header
+        #content
+          = yield
       #footer
         = t 'app.copyright'
     = render '/layouts/login' unless current_user
