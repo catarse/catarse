@@ -19,7 +19,6 @@ feature "Login Feature" do
       click_button 'Sign in'
     end
     click_button 'Allow' if page.has_button?('Allow')
-    save_and_open_page
     current_path.should == homepage
     page.should have_css('#user')
     page.should have_link('Catarse Test')
