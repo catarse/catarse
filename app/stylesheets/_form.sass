@@ -2,6 +2,30 @@
   form
     fieldset
       padding: 8px 0
+    label
+      display: block
+      margin-right: 8px
+      abbr[title=required]
+        font-size: 16px
+        color: #DD3333
+        margin-left: 2px
+    input[type=text],textarea,select
+      background-color: rgb(255,255,255)
+      background-color: rgba(255,255,255,0.2)
+      font-size: 18px
+      border: 2px solid rgb(0,60,0)
+      border: 2px solid rgba(0,60,0,0.6)
+      +border-radius(5px)
+      +text-shadow(rgba(255,255,255,0.85), 1px, 1px, 0px)
+    input[type=text]:focus,textarea:focus,select:focus
+      background-color: rgb(0,150,0)
+      background-color: rgba(0,150,0,0.2)
+    textarea
+      width: 100%
+      height: 200px
+    p.inline-hints
+      color: #777
+      font-size: 14px
     input[type=submit]
       text-rendering: optimizeLegibility
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
@@ -33,3 +57,15 @@
       background-color: #aaa
       +linear-gradient(color_stops(#bbb,#888))
       +box-shadow(rgba(0,0,0,0.75),2px,2px,6px)
+    input.ok,textarea.ok
+      background: url('/images/tick_16.png') no-repeat 98% center
+    input.error,textarea.error
+      background: url('/images/delete_16.png') no-repeat 98% center
+    input.loading,textarea.loading
+      background: url('/images/loading.gif') no-repeat 98% center
+    select.ok
+      background: url('/images/tick_16.png') no-repeat 86% center
+    select.error
+      background: url('/images/delete_16.png') no-repeat 86% center
+    select.loading
+      background: url('/images/loading.gif') no-repeat 86% center

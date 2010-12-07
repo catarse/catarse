@@ -1,7 +1,5 @@
 =projects
-  #projects
-    padding: 40px
-  .project
+  .project_box
     font-size: 16px
     color: #666
     float: left
@@ -19,7 +17,9 @@
   .project_header
     h1
       font-family: "museo-300"
-      font-size: 20px
+      font-size: 20px !important
+      color: #222 !important
+      padding: 0 !important
     a
       text-decoration: none
       color: #000
@@ -67,8 +67,20 @@
         +border-radius(32px)
   #guidelines_form
     fieldset
-      padding-bottom: 20px
+      padding-top: 20px
     label
       font-weight: bold
       color: #DD3333
+      display: inline
     text-align: center
+  #new_project_form
+    .submit
+      text-align: center
+      fieldset
+        padding-top: 20px
+    #project_category_id
+      width: 220px
+    #project_goal
+      width: 220px
+    #project_deadline
+      width: 340px

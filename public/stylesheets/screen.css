@@ -58,6 +58,16 @@ a img {
   border: none;
 }
 
+/* line 1, ../../app/stylesheets/_datepicker.sass */
+.ui-datepicker {
+  text-shadow: black 0px 0px 0px;
+}
+/* line 3, ../../app/stylesheets/_datepicker.sass */
+.ui-datepicker table tbody tr td a {
+  color: white !important;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 0px;
+}
+
 /* IE Fonts */
 @font-face {
   font-family: "museo-300";
@@ -92,22 +102,32 @@ a img {
 
 /* line 1, ../../app/stylesheets/_helpers.sass */
 .left {
-  float: left;
+  float: left !important;
 }
 
 /* line 3, ../../app/stylesheets/_helpers.sass */
 .right {
-  float: right;
+  float: right !important;
 }
 
 /* line 5, ../../app/stylesheets/_helpers.sass */
 .clear {
-  clear: both;
+  clear: both !important;
 }
 
 /* line 7, ../../app/stylesheets/_helpers.sass */
 .hide {
   display: none;
+}
+
+/* line 9, ../../app/stylesheets/_helpers.sass */
+.inline {
+  display: inline !important;
+}
+
+/* line 11, ../../app/stylesheets/_helpers.sass */
+.block {
+  display: block !important;
 }
 
 /* line 21, ../../app/stylesheets/screen.sass */
@@ -148,6 +168,47 @@ body#site form fieldset {
   padding: 8px 0;
 }
 /* line 5, ../../app/stylesheets/_form.sass */
+body#site form label {
+  display: block;
+  margin-right: 8px;
+}
+/* line 8, ../../app/stylesheets/_form.sass */
+body#site form label abbr[title=required] {
+  font-size: 16px;
+  color: #dd3333;
+  margin-left: 2px;
+}
+/* line 12, ../../app/stylesheets/_form.sass */
+body#site form input[type=text], body#site form textarea, body#site form select {
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  border: 2px solid #003c00;
+  border: 2px solid rgba(0, 60, 0, 0.6);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
+}
+/* line 20, ../../app/stylesheets/_form.sass */
+body#site form input[type=text]:focus, body#site form textarea:focus, body#site form select:focus {
+  background-color: #009600;
+  background-color: rgba(0, 150, 0, 0.2);
+}
+/* line 23, ../../app/stylesheets/_form.sass */
+body#site form textarea {
+  width: 100%;
+  height: 200px;
+}
+/* line 26, ../../app/stylesheets/_form.sass */
+body#site form p.inline-hints {
+  color: #777777;
+  font-size: 14px;
+}
+/* line 29, ../../app/stylesheets/_form.sass */
 body#site form input[type=submit] {
   text-rendering: optimizeLegibility;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -173,7 +234,7 @@ body#site form input[type=submit] {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
 }
-/* line 19, ../../app/stylesheets/_form.sass */
+/* line 43, ../../app/stylesheets/_form.sass */
 body#site form input[type=submit]:hover {
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
@@ -184,7 +245,7 @@ body#site form input[type=submit]:hover {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
 }
-/* line 23, ../../app/stylesheets/_form.sass */
+/* line 47, ../../app/stylesheets/_form.sass */
 body#site form input[type=submit]:active {
   padding: 11px 14px 9px 16px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
@@ -197,7 +258,7 @@ body#site form input[type=submit]:active {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
 }
-/* line 29, ../../app/stylesheets/_form.sass */
+/* line 53, ../../app/stylesheets/_form.sass */
 body#site form input[type=submit]:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
@@ -211,7 +272,31 @@ body#site form input[type=submit]:disabled {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
 }
-/* line 25, ../../app/stylesheets/screen.sass */
+/* line 60, ../../app/stylesheets/_form.sass */
+body#site form input.ok, body#site form textarea.ok {
+  background: url("/images/tick_16.png") no-repeat 98% center;
+}
+/* line 62, ../../app/stylesheets/_form.sass */
+body#site form input.error, body#site form textarea.error {
+  background: url("/images/delete_16.png") no-repeat 98% center;
+}
+/* line 64, ../../app/stylesheets/_form.sass */
+body#site form input.loading, body#site form textarea.loading {
+  background: url("/images/loading.gif") no-repeat 98% center;
+}
+/* line 66, ../../app/stylesheets/_form.sass */
+body#site form select.ok {
+  background: url("/images/tick_16.png") no-repeat 86% center;
+}
+/* line 68, ../../app/stylesheets/_form.sass */
+body#site form select.error {
+  background: url("/images/delete_16.png") no-repeat 86% center;
+}
+/* line 70, ../../app/stylesheets/_form.sass */
+body#site form select.loading {
+  background: url("/images/loading.gif") no-repeat 86% center;
+}
+/* line 24, ../../app/stylesheets/screen.sass */
 body#site .flash {
   -moz-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
@@ -239,7 +324,7 @@ body#site .flash .failure.wrapper {
   background-image: -moz-linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
   background-image: linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
 }
-/* line 27, ../../app/stylesheets/screen.sass */
+/* line 26, ../../app/stylesheets/screen.sass */
 body#site .overlay {
   background-color: #dddddd;
   background: rgba(180, 180, 180, 0.8);
@@ -250,7 +335,7 @@ body#site .overlay {
   height: 100%;
   z-index: 100;
 }
-/* line 29, ../../app/stylesheets/screen.sass */
+/* line 28, ../../app/stylesheets/screen.sass */
 body#site #login {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -375,7 +460,7 @@ body#site #login a.close:hover, body#site #login a.close:focus {
   -o-transform: scale(1.05);
   transform: scale(1.05);
 }
-/* line 31, ../../app/stylesheets/screen.sass */
+/* line 30, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
@@ -404,7 +489,7 @@ body#site #header h1 a {
 body#site #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 35, ../../app/stylesheets/screen.sass */
+/* line 34, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
   margin-top: 48px;
@@ -443,7 +528,7 @@ body#site #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 37, ../../app/stylesheets/screen.sass */
+/* line 36, ../../app/stylesheets/screen.sass */
 body#site #user {
   float: right;
   margin-top: 22px;
@@ -560,7 +645,7 @@ body#site #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 39, ../../app/stylesheets/screen.sass */
+/* line 38, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
@@ -575,7 +660,7 @@ body#site #content_wrapper {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 41, ../../app/stylesheets/screen.sass */
+/* line 40, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content_header {
   text-align: center;
   color: white;
@@ -605,9 +690,9 @@ body#site #content_wrapper #content_header h2 {
   padding: 0 40px;
   text-shadow: green 1px 1px 1px;
 }
-/* line 43, ../../app/stylesheets/screen.sass */
+/* line 42, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content {
-  padding: 20px;
+  padding: 40px;
 }
 /* line 24, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content h1 {
@@ -649,11 +734,7 @@ body#site #profile_header .info h2 {
   padding: 0 !important;
 }
 /* line 2, ../../app/stylesheets/_projects.sass */
-body#site #projects {
-  padding: 40px;
-}
-/* line 4, ../../app/stylesheets/_projects.sass */
-body#site .project {
+body#site .project_box {
   font-size: 16px;
   color: #666666;
   float: left;
@@ -667,8 +748,8 @@ body#site .project {
   border: 5px solid #eeeeee;
   border: 5px solid rgba(100, 100, 100, 0.1);
 }
-/* line 12, ../../app/stylesheets/_projects.sass */
-body#site .project img {
+/* line 10, ../../app/stylesheets/_projects.sass */
+body#site .project_box img {
   width: 280px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
@@ -684,17 +765,19 @@ body#site .project img {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 17, ../../app/stylesheets/_projects.sass */
-body#site .project img:hover {
+/* line 15, ../../app/stylesheets/_projects.sass */
+body#site .project_box img:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
 }
-/* line 20, ../../app/stylesheets/_projects.sass */
+/* line 18, ../../app/stylesheets/_projects.sass */
 body#site .project_header h1 {
   font-family: "museo-300";
-  font-size: 20px;
+  font-size: 20px !important;
+  color: #222222 !important;
+  padding: 0 !important;
 }
 /* line 23, ../../app/stylesheets/_projects.sass */
 body#site .project_header a {
@@ -821,14 +904,35 @@ body#site #guidelines_form {
 }
 /* line 69, ../../app/stylesheets/_projects.sass */
 body#site #guidelines_form fieldset {
-  padding-bottom: 20px;
+  padding-top: 20px;
 }
 /* line 71, ../../app/stylesheets/_projects.sass */
 body#site #guidelines_form label {
   font-weight: bold;
   color: #dd3333;
+  display: inline;
 }
-/* line 47, ../../app/stylesheets/screen.sass */
+/* line 77, ../../app/stylesheets/_projects.sass */
+body#site #new_project_form .submit {
+  text-align: center;
+}
+/* line 79, ../../app/stylesheets/_projects.sass */
+body#site #new_project_form .submit fieldset {
+  padding-top: 20px;
+}
+/* line 81, ../../app/stylesheets/_projects.sass */
+body#site #new_project_form #project_category_id {
+  width: 220px;
+}
+/* line 83, ../../app/stylesheets/_projects.sass */
+body#site #new_project_form #project_goal {
+  width: 220px;
+}
+/* line 85, ../../app/stylesheets/_projects.sass */
+body#site #new_project_form #project_deadline {
+  width: 340px;
+}
+/* line 46, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 40px 0;

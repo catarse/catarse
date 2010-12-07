@@ -21,6 +21,30 @@ describe Project do
     p = Factory.build(:project, :video_url => nil)
     p.should_not be_valid
   end
+  it "should have an about text" do
+    p = Factory.build(:project, :about => nil)
+    p.should_not be_valid
+  end
+  it "should have a goal" do
+    p = Factory.build(:project, :goal => nil)
+    p.should_not be_valid
+  end
+  it "should have a deadline" do
+    p = Factory.build(:project, :deadline => nil)
+    p.should_not be_valid
+  end
+  it "should have a valid Vimeo video URL" do
+    p = Factory.build(:project, :video_url => "http://youtube.com/foobar")
+    p.should_not be_valid
+    p = Factory.build(:project, :video_url => "http://www.vimeo.com/172984359999999")
+    p.should_not be_valid
+    p = Factory.build(:project, :video_url => "http://vimeo.com/172984359999999")
+    p.should_not be_valid
+    p = Factory.build(:project, :video_url => "http://www.vimeo.com/17298435")
+    p.should be_valid
+    p = Factory.build(:project, :video_url => "http://vimeo.com/17298435")
+    p.should be_valid
+  end
   it "should be successful if pledged >= goal" do
     p = Factory.build(:project)
     p.goal = 3000.00

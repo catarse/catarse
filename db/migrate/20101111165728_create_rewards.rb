@@ -1,5 +1,4 @@
 require 'sexy_pg_constraints'
-
 class CreateRewards < ActiveRecord::Migration
   def self.up
     create_table :rewards do |t|
@@ -17,9 +16,7 @@ class CreateRewards < ActiveRecord::Migration
     end
     add_index :rewards, :project_id
   end
-
   def self.down
     drop_table :rewards
   end
 end
-

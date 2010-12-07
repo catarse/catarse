@@ -1,5 +1,4 @@
 require 'sexy_pg_constraints'
-
 class CreateBackers < ActiveRecord::Migration
   def self.up
     create_table :backers do |t|
@@ -22,9 +21,7 @@ class CreateBackers < ActiveRecord::Migration
     add_index :backers, :reward_id
     add_index :backers, :confirmed
   end
-
   def self.down
     drop_table :backers
   end
 end
-

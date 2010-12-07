@@ -1,7 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
-
 feature "Login Feature" do
-
   scenario "I open the login page but then I cancel" do
     click_login
     find("#login").visible?.should be_true
@@ -9,7 +7,6 @@ feature "Login Feature" do
     current_path.should == homepage
     find("#login").visible?.should be_false
   end
-
   scenario "I'm new to the site and I want to signup with Twitter" do
     click_login
     click_link 'Twitter'
@@ -23,7 +20,6 @@ feature "Login Feature" do
     page.should have_css('#user')
     page.should have_link('Catarse Test')
   end
-
   scenario "I'm new to the site and I want to signup with Google" do
     click_login
     click_link 'Google'

@@ -5,4 +5,3 @@ class Reward < ActiveRecord::Base
   validates_numericality_of :minimum_value, :greater_than_or_equal_to => 1.00
   validates_numericality_of :maximum_backers, :only_integer => true, :greater_than_or_equal_to => 0
 end
-

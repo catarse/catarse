@@ -1,5 +1,4 @@
 # coding: utf-8
-
 class SessionsController < ApplicationController
   def auth
     session[:return_to] = params[:return_to]

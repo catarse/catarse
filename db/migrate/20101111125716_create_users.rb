@@ -1,5 +1,4 @@
 require 'sexy_pg_constraints'
-
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
@@ -28,7 +27,6 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :name
     add_index :users, :email
   end
-
   def self.down
     drop_table :users
   end

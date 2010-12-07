@@ -1,7 +1,5 @@
 # coding: utf-8
-
 require 'sexy_pg_constraints'
-
 class CreateCategories < ActiveRecord::Migration
   def self.up
     create_table :categories do |t|
@@ -33,9 +31,7 @@ class CreateCategories < ActiveRecord::Migration
     execute "INSERT INTO categories (name) VALUES ('Teatro')"
     execute "INSERT INTO categories (name) VALUES ('Literatura')"
   end
-
   def self.down
     drop_table :categories
   end
 end
-

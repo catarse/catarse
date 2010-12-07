@@ -100,15 +100,16 @@ CREATE TABLE projects (
     name character varying(255) NOT NULL,
     user_id integer NOT NULL,
     category_id integer NOT NULL,
-    goal double precision,
-    pledged double precision,
-    deadline timestamp without time zone,
-    about text,
+    goal double precision NOT NULL,
+    pledged double precision DEFAULT 0 NOT NULL,
+    deadline timestamp without time zone NOT NULL,
+    about text NOT NULL,
     video_url character varying(255) NOT NULL,
     visible boolean DEFAULT false,
     recommended boolean DEFAULT false,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    CONSTRAINT projects_about_not_blank CHECK ((length(btrim(about)) > 0)),
     CONSTRAINT projects_video_url_not_blank CHECK ((length(btrim((video_url)::text)) > 0))
 );
 
