@@ -13,3 +13,10 @@
 %p Our “no business funding” rule applies to technology projects too. Whether you’re making a new ecommerce site or building solar panels, if it’s first and foremost a business it’s not appropriate for Kickstarter.
 %p Open source projects are great. We’re huge fans of projects that benefit the open source community. This was key for Diaspora’s success—it was first and foremost an open source project.
 %p All projects must offer rewards. Kickstarter is not a general fundraising site, it’s a form of commerce and patronage. If you’re not viewing rewards as core to your project, Kickstarter may not be for you. Please note that raffles, financial returns, and investment offers are prohibited.
+= form_tag(new_project_path, :method => :get, :id => 'guidelines_form') do
+  %fieldset
+    = check_box_tag 'accept'
+    = label_tag 'accept', 'Eu li e entendi as melhores práticas no Catarse.'
+  %fieldset
+    = submit_tag 'Continuar', :disabled => true
+= javascript_include_tag 'guidelines'

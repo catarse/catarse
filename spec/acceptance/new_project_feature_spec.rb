@@ -45,12 +45,19 @@ feature "New Project Feature" do
       end
     end
     
-    within '#content' do
-      within 'h1' do
-        page.should have_content("Melhores práticas no Catarse")
-      end
+    within '#content h1' do
+      page.should have_content("Melhores práticas no Catarse")
     end
 
+    uncheck 'Eu li e entendi as melhores práticas no Catarse.'
+    find_button('Continuar')['disabled'].should == 'true'
+
+    check 'Eu li e entendi as melhores práticas no Catarse.'
+    find_button('Continuar')['disabled'].should == 'false'
+    
+    click_button 'Continuar'
+    current_path.should == new_project_path
+    
   end
   
 end

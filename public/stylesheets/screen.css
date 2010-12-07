@@ -110,7 +110,7 @@ a img {
   display: none;
 }
 
-/* line 20, ../../app/stylesheets/screen.sass */
+/* line 21, ../../app/stylesheets/screen.sass */
 body#site {
   background: url("/images/bg.png") repeat;
   text-rendering: optimizeLegibility;
@@ -121,11 +121,11 @@ body#site {
   text-shadow: white 1px 1px 0px;
   font-weight: normal;
 }
-/* line 11, ../../app/stylesheets/_body.sass */
+/* line 10, ../../app/stylesheets/_body.sass */
 body#site strong {
   font-weight: bold;
 }
-/* line 14, ../../app/stylesheets/_body.sass */
+/* line 12, ../../app/stylesheets/_body.sass */
 body#site a {
   text-decoration: underline;
   color: #008800;
@@ -139,11 +139,79 @@ body#site a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 20, ../../app/stylesheets/_body.sass */
+/* line 17, ../../app/stylesheets/_body.sass */
 body#site a:hover {
   color: #00aa00;
 }
-/* line 23, ../../app/stylesheets/screen.sass */
+/* line 3, ../../app/stylesheets/_form.sass */
+body#site form fieldset {
+  padding: 8px 0;
+}
+/* line 5, ../../app/stylesheets/_form.sass */
+body#site form input[type=submit] {
+  text-rendering: optimizeLegibility;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333333;
+  font-size: 18px;
+  line-height: 22px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #cccccc;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #dddddd), color-stop(100%, #aaaaaa));
+  background-image: -moz-linear-gradient(top, #dddddd 0%, #aaaaaa 100%);
+  background-image: linear-gradient(top, #dddddd 0%, #aaaaaa 100%);
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+}
+/* line 19, ../../app/stylesheets/_form.sass */
+body#site form input[type=submit]:hover {
+  background-color: #dddddd;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -moz-linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
+  background-image: linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+}
+/* line 23, ../../app/stylesheets/_form.sass */
+body#site form input[type=submit]:active {
+  padding: 11px 14px 9px 16px;
+  text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
+  background-color: #dddddd;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -moz-linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
+  background-image: linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
+}
+/* line 29, ../../app/stylesheets/_form.sass */
+body#site form input[type=submit]:disabled {
+  color: #888888;
+  text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
+  padding: 10px 15px;
+  background-color: #aaaaaa;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
+  background-image: -moz-linear-gradient(top, #bbbbbb 0%, #888888 100%);
+  background-image: linear-gradient(top, #bbbbbb 0%, #888888 100%);
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+}
+/* line 25, ../../app/stylesheets/screen.sass */
 body#site .flash {
   -moz-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
@@ -171,7 +239,7 @@ body#site .flash .failure.wrapper {
   background-image: -moz-linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
   background-image: linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
 }
-/* line 25, ../../app/stylesheets/screen.sass */
+/* line 27, ../../app/stylesheets/screen.sass */
 body#site .overlay {
   background-color: #dddddd;
   background: rgba(180, 180, 180, 0.8);
@@ -182,7 +250,7 @@ body#site .overlay {
   height: 100%;
   z-index: 100;
 }
-/* line 27, ../../app/stylesheets/screen.sass */
+/* line 29, ../../app/stylesheets/screen.sass */
 body#site #login {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -307,7 +375,7 @@ body#site #login a.close:hover, body#site #login a.close:focus {
   -o-transform: scale(1.05);
   transform: scale(1.05);
 }
-/* line 29, ../../app/stylesheets/screen.sass */
+/* line 31, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
@@ -336,7 +404,7 @@ body#site #header h1 a {
 body#site #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 33, ../../app/stylesheets/screen.sass */
+/* line 35, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
   margin-top: 48px;
@@ -375,7 +443,7 @@ body#site #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 35, ../../app/stylesheets/screen.sass */
+/* line 37, ../../app/stylesheets/screen.sass */
 body#site #user {
   float: right;
   margin-top: 22px;
@@ -492,7 +560,7 @@ body#site #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 37, ../../app/stylesheets/screen.sass */
+/* line 39, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
@@ -507,7 +575,7 @@ body#site #content_wrapper {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 39, ../../app/stylesheets/screen.sass */
+/* line 41, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content_header {
   text-align: center;
   color: white;
@@ -535,11 +603,22 @@ body#site #content_wrapper #content_header h1 {
 /* line 19, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content_header h2 {
   padding: 0 40px;
-  text-shadow: green 1px 1px 0px;
+  text-shadow: green 1px 1px 1px;
 }
-/* line 41, ../../app/stylesheets/screen.sass */
+/* line 43, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content {
   padding: 20px;
+}
+/* line 24, ../../app/stylesheets/_content.sass */
+body#site #content_wrapper #content h1 {
+  font-family: "museo-300";
+  font-size: 28px;
+  padding: 20px 0 30px 0;
+  color: #008800;
+}
+/* line 29, ../../app/stylesheets/_content.sass */
+body#site #content_wrapper #content p {
+  padding-bottom: 20px;
 }
 /* line 2, ../../app/stylesheets/_profile.sass */
 body#site #profile_header {
@@ -736,7 +815,20 @@ body#site .project_progress .progress_bar .progress {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 45, ../../app/stylesheets/screen.sass */
+/* line 68, ../../app/stylesheets/_projects.sass */
+body#site #guidelines_form {
+  text-align: center;
+}
+/* line 69, ../../app/stylesheets/_projects.sass */
+body#site #guidelines_form fieldset {
+  padding-bottom: 20px;
+}
+/* line 71, ../../app/stylesheets/_projects.sass */
+body#site #guidelines_form label {
+  font-weight: bold;
+  color: #dd3333;
+}
+/* line 47, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 40px 0;
