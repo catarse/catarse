@@ -9,6 +9,7 @@ class CreateProjects < ActiveRecord::Migration
       t.float :pledged, :null => false, :default => 0
       t.datetime :deadline, :null => false
       t.text :about, :null => false
+      t.string :headline, :null => false
       t.string :video_url, :null => false
       t.boolean :visible, :default => false
       t.boolean :recommended, :default => false
@@ -19,6 +20,7 @@ class CreateProjects < ActiveRecord::Migration
       t.category_id :reference => {:categories => :id}
       t.video_url :not_blank => true
       t.about :not_blank => true
+      t.headline :not_blank => true, :length_within => 1..140
     end
     add_index :projects, :user_id
     add_index :projects, :category_id

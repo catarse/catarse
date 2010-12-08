@@ -3,7 +3,8 @@ VIMEO_REGEX = /\Ahttp:\/\/(www\.)?vimeo.com\/(\d+)\z/
 class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
-  validates_presence_of :name, :user, :category, :about, :goal, :deadline, :video_url
+  validates_presence_of :name, :user, :category, :about, :headline, :goal, :deadline, :video_url
+  validates_length_of :headline, :maximum => 140
   validates_format_of :video_url, :with => VIMEO_REGEX, :message => "somente URLs do Vimeo são aceitas"
   validate :verify_if_video_exists_on_vimeo
   def verify_if_video_exists_on_vimeo
@@ -26,6 +27,15 @@ class Project < ActiveRecord::Base
     if result = video_url.match(VIMEO_REGEX)
       result[2]
     end
+  end
+  def video_embed_url
+    "http://player.vimeo.com/video/#{vimeo_id}"
+  end
+  def display_image
+    vimeo["thumbnail_large"]
+  end
+  def display_about
+    about.gsub("\n", "<br>")
   end
   def successful?
     pledged >= goal

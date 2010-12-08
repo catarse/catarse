@@ -6,6 +6,8 @@ everything_ok = function(){
     all_ok = false
   if(!ok('#project_about'))
     all_ok = false
+  if(!headline_ok())
+    all_ok = false
   if(!ok('#project_category_id'))
     all_ok = false
   if(!goal_ok())
@@ -57,6 +59,16 @@ video_ok = function(){
     return false
   }
 }
+headline_ok = function(){
+  value = $('#project_headline').val()
+  if(value && value.length > 0 && value.length <= 140){
+    $('#project_headline').addClass("ok").removeClass("error")
+    return true
+  } else {
+    $('#project_headline').addClass("error").removeClass("ok")
+    return false
+  }
+}
 goal_ok = function(){
   value = $('#project_goal').val()
   if(/^(\d+)(\,\d{1,2})?$/.test(value)){
@@ -96,6 +108,7 @@ $('#project_about').keyup(everything_ok)
 $('#project_category_id').change(everything_ok)
 $('#project_goal').keyup(everything_ok)
 $('#project_deadline').keyup(everything_ok)
+$('#project_headline').keyup(everything_ok)
 $('#accept').click(everything_ok)
 
 $('#project_goal').numeric(',')
@@ -103,3 +116,4 @@ $('#project_deadline').datepicker({
   altFormat: 'dd/mm/yy',
   onSelect: everything_ok
 })
+$('#project_headline').maxlength()

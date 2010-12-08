@@ -104,12 +104,15 @@ CREATE TABLE projects (
     pledged double precision DEFAULT 0 NOT NULL,
     deadline timestamp without time zone NOT NULL,
     about text NOT NULL,
+    headline character varying(255) NOT NULL,
     video_url character varying(255) NOT NULL,
     visible boolean DEFAULT false,
     recommended boolean DEFAULT false,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     CONSTRAINT projects_about_not_blank CHECK ((length(btrim(about)) > 0)),
+    CONSTRAINT projects_headline_length_within CHECK (((length((headline)::text) >= 1) AND (length((headline)::text) <= 140))),
+    CONSTRAINT projects_headline_not_blank CHECK ((length(btrim((headline)::text)) > 0)),
     CONSTRAINT projects_video_url_not_blank CHECK ((length(btrim((video_url)::text)) > 0))
 );
 

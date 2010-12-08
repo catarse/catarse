@@ -1,3 +1,21 @@
 =footer
   text-align: center
-  padding: 40px 0
+  padding: 20px 0
+  #colophon
+    padding-top: 20px
+    margin: 0 auto
+    width: 294px
+    font-size: 14px
+    p#copyright
+      float: left
+    a#softa_logo
+      margin-top: -20px
+      margin-right: 12px
+      float: left
+      +sprite("/images/softa_logo.png")
+      display: block
+      height: 50px
+      width: 110px
+      +transition(none)
+      &:hover
+        +position(0,-50px)

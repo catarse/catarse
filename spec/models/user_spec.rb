@@ -38,13 +38,11 @@ describe User do
   end
   it "should not be valid with a bio longer than 140 characters" do
     u = Factory.build(:user)
-    u.bio = "".center(139)
+    u.bio = "a".center(139)
     u.should be_valid
-    u = Factory.build(:user)
-    u.bio = "".center(140)
+    u.bio = "a".center(140)
     u.should be_valid
-    u = Factory.build(:user)
-    u.bio = "".center(141)
+    u.bio = "a".center(141)
     u.should_not be_valid
   end
   it "should create a new user receiving a omniauth hash" do

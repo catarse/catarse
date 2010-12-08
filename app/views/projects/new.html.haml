@@ -3,10 +3,11 @@
   %h2 A hora para fazer acontecer é agora! Estamos ansiosos para saber o que você está aprontando...
 = semantic_form_for @project, :html => { :id => 'new_project_form' } do |form|
   = form.inputs do
-    = form.input :user, :as => :hidden, :value => current_user.id, :required => true
+    = form.input :user_id, :as => :hidden, :value => current_user.id, :required => true
     = form.input :name, :label => 'Nome do projeto', :hint => "Qual o nome do seu projeto? Escolha com carinho, pois isto irá influenciar as chances do seu projeto atingir o mínimo.", :required => true
     = form.input :video_url, :label => "Vídeo", :hint => "Cole a URL de um vídeo no #{link_to 'Vimeo', 'http://vimeo.com', :target => :_blank}. Nós escolhemos o Vimeo pois ele é mais bonito e não tem propaganda. Assim, seu projeto fica mais bonito também! <strong>Produza seu vídeo o melhor possível e faça um vídeo específico para a campanha do Catarse</strong>. Se há um ponto que diferencia os projetos que antingem o mínimo dos outros é o vídeo. Observe ;)".html_safe, :required => true
     = form.input :about, :label => "Sobre o seu projeto", :hint => "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!", :required => true
+    = form.input :headline, :label => "Frase de efeito", :hint => "Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)", :required => true, :as => :text, :input_html => { :maxlength => 140 }
     = form.input :category, :label => "Categoria", :hint => "Escolha em que categoria você quer que seu projeto apareça. Não se preocupe caso você ache que ele se enquadra em mais de uma. Escolha aquela onde você quer que as pessoas o encontrem.", :collection => Category.all(:order => :name), :required => true
     = form.input :goal, :label => "De quanto você precisa?", :hint => "Pense bastante no valor que você vai solicitar. Ele deve ser o <strong>mínimo necessário para o projeto acontecer</strong>. Nada mais, nada menos. Se você pedir demais, suas chances de atingir o mínimo serão menores; se pedir de menos, não conseguirá realizar o projeto e, conseqüentemente terá sua reputação prejudicada, o que dificulta realizações futuras.".html_safe, :required => true
     = form.input :deadline, :as => :string, :label => "Qual o prazo para atingir o mínimo?", :hint => "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo.", :required => true
@@ -15,5 +16,5 @@
         = check_box_tag 'accept'
         = label_tag 'accept', "Eu li e estou de acordo com os #{link_to 'termos de serviço', '#'}.".html_safe, :class => 'inline'
       = form.buttons do
-        = form.commit_button 'Enviar o projeto', :button_html => {:disabled => true}
+        = form.commit_button 'Enviar o projeto', :button_html => {:disabled => false}
 = javascript_include_tag 'new_project'

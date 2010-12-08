@@ -22,6 +22,7 @@ Factory.define :project do |f|
   f.association :user, :factory => :user
   f.association :category, :factory => :category
   f.about "Foo bar"
+  f.headline "Foo bar"
   f.goal 10000
   f.deadline { 1.month.from_now }
   f.video_url 'http://vimeo.com/17298435'

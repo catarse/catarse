@@ -25,6 +25,19 @@ describe Project do
     p = Factory.build(:project, :about => nil)
     p.should_not be_valid
   end
+  it "should have a headline" do
+    p = Factory.build(:project, :headline => nil)
+    p.should_not be_valid
+  end
+  it "should not be valid with a headline longer than 140 characters" do
+    p = Factory.build(:project)
+    p.headline = "a".center(139)
+    p.should be_valid
+    p.headline = "a".center(140)
+    p.should be_valid
+    p.headline = "a".center(141)
+    p.should_not be_valid
+  end
   it "should have a goal" do
     p = Factory.build(:project, :goal => nil)
     p.should_not be_valid
@@ -44,6 +57,14 @@ describe Project do
     p.should be_valid
     p = Factory.build(:project, :video_url => "http://vimeo.com/17298435")
     p.should be_valid
+  end
+  it "should have a vimeo_id" do
+    p = Factory(:project, :video_url => "http://vimeo.com/17298435")
+    p.vimeo_id.should == "17298435"
+  end
+  it "should have a video_embed_url" do
+    p = Factory(:project, :video_url => "http://vimeo.com/17298435")
+    p.video_embed_url.should == "http://player.vimeo.com/video/17298435"
   end
   it "should be successful if pledged >= goal" do
     p = Factory.build(:project)
@@ -68,6 +89,14 @@ describe Project do
     p.in_time?.should be_false
     p.deadline = 2.seconds.from_now
     p.in_time?.should be_true
+  end
+  it "should have a display image" do
+    p = Factory(:project)
+    p.display_image.should_not be_empty
+  end
+  it "should have a display about that convers new lines to <br>" do
+    p = Factory(:project, :about => "Foo\nBar")
+    p.display_about.should == "Foo<br>Bar"
   end
 end
 
