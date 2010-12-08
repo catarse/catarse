@@ -33,7 +33,7 @@ ok = function(id){
 var video_valid = false
 verify_video = function(){
   video_valid = false
-  if($('#project_video_url').val() && $('#project_video_url').val().length > 0) {
+  if(/http:\/\/(www\.)?vimeo.com\/(\d+)/.test($('#project_video_url').val())) {
     $('#project_video_url').removeClass("ok").removeClass("error").addClass('loading')
     $.get('/projects/vimeo/?url='+$('#project_video_url').val(), function(r){
       $('#project_video_url').removeClass("loading")
@@ -90,7 +90,8 @@ accepted_terms = function(){
   return $('#accept').is(':checked')
 }
 $('#project_name').keyup(everything_ok)
-$('#project_video_url').keyup(verify_video)
+$('#project_video_url').keyup(function(){ video_valid = false; everything_ok() })
+$('#project_video_url').timedKeyup(verify_video)
 $('#project_about').keyup(everything_ok)
 $('#project_category_id').change(everything_ok)
 $('#project_goal').keyup(everything_ok)

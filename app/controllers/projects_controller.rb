@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     @title = "Envie seu projeto"
   end
   def vimeo
-    project = Factory.build(:project, :video_url => params[:url])
+    project = Project.new(:video_url => params[:url])
     if project.vimeo
       render :json => project.vimeo.to_json
     else
