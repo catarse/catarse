@@ -55,16 +55,17 @@
       font-size: 13px
       ul
         +horizontal-list(8px)
-      .progress_bar
-        font-size: 8px
-        background-color: #999
-        background-color: rgba(0,0,0,0.3)
-        width: 280px
-        margin-bottom: 16px
-        +border-radius(32px)
-        .progress
-          background-color: rgb(0,150,0)
-          +border-radius(32px)
+  .progress_bar
+    margin: 0 auto
+    font-size: 8px
+    background-color: #999
+    background-color: rgba(0,0,0,0.3)
+    width: 280px
+    margin-bottom: 16px
+    +border-radius(32px)
+    .progress
+      background-color: rgb(0,150,0)
+      +border-radius(32px)
   #guidelines_form
     fieldset
       padding-top: 20px
@@ -87,43 +88,142 @@
     #project_headline
       height: 44px
   #project_header
-    .image
-      float: left
-      padding: 20px
-      img
-        background-color: #fff
-        +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 6px)
-        max-width: 200px
-        max-height: 200px
-    .info
-      text-align: left
-      h1
-        padding-bottom: 8px !important
-      h2
-        margin-bottom: 16px
-        padding: 0 !important
-        a
-          color: #FFFFCC
-          text-decoration: none
-          +transition(all, 0.1s)
-        a:hover
-          +text-shadow(green, 2px, 2px, 2px)
-      h3
-        font-style: italic
-        font-size: 22px
-        line-height: 26px
-        +text-shadow(green, 1px, 1px, 1px)
+    text-align: left
+    padding: 0 20px
+    h1
+      padding-bottom: 8px !important
+    h2
+      padding: 0 !important
+      a
+        color: #FFFFAA
+        text-decoration: none
+        +transition(all, 0.1s)
+      a:hover
+        +text-shadow(green, 2px, 2px, 2px)
   #project_description
     float: left
-    width: 460px
+    width: 472px
     #project_video
-      +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 10px)
+      width: 460px
+      iframe
+        +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 10px)
+      #project_share
+        background-color: #FFFFAA
+        width: 96%
+        margin: 0 auto
+        margin-top: -8px
+        padding-bottom: 12px
+        +border-bottom-left-radius(12px)
+        +border-bottom-right-radius(12px)
+        border: 2px dotted rgba(0,0,0,0.5)
+        +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 10px)
+        text-align: center
+        font-size: 16px
+        line-height: 32px
+        ul
+          +horizontal-list(6px)
+          width: 92%
+          margin: 0 auto
+        a
+          text-decoration: none
+          color: #222
+          +transition(all, 0.1s)
+          &:hover
+            +text-shadow(#FFFF88, 2px, 2px, 4px)
+        img, a img
+          margin-top: -4px
+          vertical-align: middle
+        input
+          border: 1px solid rgba(0,0,0,0.4)
+          +border-radius(4px)
+        h1
+          color: #222
+          font-size: 20px
+          text-transform: lowercase
+          padding-bottom: 8px !important
     #project_about
-      margin-top: 20px
+      margin-top: 24px
+      h1
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+        font-size: 18px
+        font-weight: bold
+        color: #222
+        text-transform: uppercase
+        padding: 0
+        padding-bottom: 16px
   #project_back_info
     float: right
-    background-color: #DDDBD1
-    border: 3px solid #CDCBC1
-    +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 4px)
-    width: 312px
-    padding: 20px
+    width: 352px
+    #back_project
+      background-color: #DDDBD1
+      background-color: rgba(179,177,157,0.5)
+      border: 3px solid #BDBBB1
+      border: 3px solid rgba(173,171,151,0.5)
+      +box-shadow(rgba(0,0,0,0.5), 4px, 4px, 5px)
+      padding: 0px
+      .info
+        padding: 20px
+      .number
+        font-family: "museo-700"
+        font-size: 48px
+        line-height: 56px
+      .project_progress
+        margin-top: 16px
+        .progress_bar
+          margin-bottom: 0
+      .project_warning
+        padding: 4px 0
+        text-transform: uppercase
+        text-align: center
+        color: #fff
+        font-size: 14px
+        +text-shadow(#333, 1px, 1px, 0px)
+        .text
+          padding: 8px
+          margin: 0
+      .successful
+        background: url(/images/bg_top_green.png) top left repeat-x, url(/images/bg_bottom_green.png) bottom left repeat-x
+        .text
+          background-color: #040
+      .not_successful
+        background: url(/images/bg_top_red.png) top left repeat-x, url(/images/bg_bottom_red.png) bottom left repeat-x
+        .text
+          background-color: #600
+      form
+        text-align: center
+        input[type=submit]
+          color: #fff
+          +text-shadow(green, 1px, 1px, 1px)
+          background-color: #49B249
+          +linear-gradient(color_stops(#59C259,#31A232))
+          text-transform: uppercase
+        input[type=submit]:hover
+          background-color: #59C259
+          +linear-gradient(color_stops(#69D269,#41B242))
+        input[type=submit]:active
+          +text-shadow(green, 2px, 2px, 1px)
+    #rewards
+      margin-top: 24px
+      +border-radius(8px)
+      border: 5px solid #eee
+      border: 5px solid rgba(100,100,100,0.1)
+      padding: 12px
+      font-size: 16px
+      h1
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+        font-size: 18px
+        font-weight: bold
+        text-transform: uppercase
+        padding: 0
+        padding-bottom: 16px
+        font-size: 16px
+      ul
+        li
+          padding: 8px 0
+          border-bottom: 1px solid #ddd
+          h1
+            padding: 0
+            color: #222
+        li:last-child
+          border: 0
+          padding-bottom: 0
