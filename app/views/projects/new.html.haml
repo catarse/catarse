@@ -16,5 +16,5 @@
         = check_box_tag 'accept'
         = label_tag 'accept', "Eu li e estou de acordo com os #{link_to 'termos de serviço', '#'}.".html_safe, :class => 'inline'
       = form.buttons do
-        = form.commit_button 'Enviar o projeto', :button_html => {:disabled => false}
+        = form.commit_button 'Enviar o projeto', :button_html => {:disabled => true}
 = javascript_include_tag 'new_project'
