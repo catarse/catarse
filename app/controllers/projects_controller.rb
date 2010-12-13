@@ -1,8 +1,9 @@
+# coding: utf-8
 class ProjectsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :create
   def index
-    index!{ @title = t 'projects.index.title' }
+    index!{ @title = "Faça acontecer os projetos em que você acredita" }
   end
   def new
     new!{ @title = "Envie seu projeto" }

@@ -1,23 +1,5 @@
-# coding: utf-8
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-
-  app:
-    title: Catarse
-    copyright: Copyright © 2010 Catarse
-
-  header:
-    menu:
-      new_project: Envie seu projeto
-      login: Login
-
-  content:
-    header:
-      punchline: Faça acontecer os projetos em que você acredita!
-      description: Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que faltava nesta história.
-      know_more: Saiba mais
-
-  projects:
-    index:
-      title: Faça acontecer os projetos em que você acredita
-
+  hello: "Hello world"

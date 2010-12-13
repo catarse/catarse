@@ -2,7 +2,7 @@
 %html{:lang => :pt}
   %head
     %meta{:charset => 'utf-8'}
-    %title= "#{@title}#{' · ' if @title}#{t 'app.title'}"
+    %title= "#{@title}#{' · ' if @title}Catarse"
     = stylesheet_link_tag 'le-frog/jquery-ui-1.8.6.custom.css', :media => 'screen, projection'
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     /[if lt IE 9]
@@ -14,13 +14,13 @@
     = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
     #main
       #header
-        %h1= link_to t('app.title'), root_path
+        %h1= link_to "Catarse", root_path
         = render '/layouts/user' if current_user
         #menu
           %ul
-            %li= link_to t('header.menu.new_project'), (current_user ? guidelines_projects_path : '#'), :id => 'new_project_link'
+            %li= link_to "Envie seu projeto", (current_user ? guidelines_projects_path : '#'), :id => 'new_project_link'
             - unless current_user
-              %li= link_to t('header.menu.login'), '#', :id => 'login_link'
+              %li= link_to "Login", '#', :id => 'login_link'
         .clear
       #content_wrapper
         #content_header
@@ -30,5 +30,5 @@
       #footer
         #colophon
           = link_to "", "http://softa.com.br", :target => :_blank, :id => "softa_logo"
-          %p#copyright Copyright © 2010 Catarse
+          %p#copyright Copyright © 2010
     = render '/layouts/login' unless current_user
