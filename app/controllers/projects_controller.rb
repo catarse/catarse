@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
     show!{ @title = @project.name }
   end
   def guidelines
-    @title = "Envie seu projeto"
+    @title = "Como funciona o Catarse"
   end
   def vimeo
     project = Project.new(:video_url => params[:url])

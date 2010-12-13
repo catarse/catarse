@@ -697,6 +697,18 @@ body#site #content_wrapper #content h1 {
   color: #008800;
 }
 /* line 29, ../../app/stylesheets/_content.sass */
+body#site #content_wrapper #content h2 {
+  font-family: "museo-300";
+  font-size: 24px;
+  padding: 20px 0 30px 0;
+  color: #008800;
+}
+/* line 34, ../../app/stylesheets/_content.sass */
+body#site #content_wrapper #content h3 {
+  padding-bottom: 8px;
+  font-weight: bold;
+}
+/* line 37, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content p {
   padding-bottom: 20px;
 }
@@ -891,57 +903,97 @@ body#site .progress_bar .progress {
   border-radius: 32px;
 }
 /* line 69, ../../app/stylesheets/_projects.sass */
+body#site #how_it_works {
+  background-color: #ffffaa;
+  background-color: rgba(255, 255, 160, 0.6);
+  font-family: "museo-300";
+  font-size: 20px;
+  line-height: 28px;
+  padding: 20px;
+  margin-bottom: 28px;
+  color: black;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+}
+/* line 80, ../../app/stylesheets/_projects.sass */
+body#site #how_it_works strong {
+  font-family: "museo-500";
+}
+/* line 82, ../../app/stylesheets/_projects.sass */
+body#site #how_it_works #show_tips {
+  margin-top: 8px;
+}
+/* line 84, ../../app/stylesheets/_projects.sass */
+body#site #how_it_works #show_tips a {
+  font-family: "museo-500";
+  text-decoration: none;
+  font-weight: bold;
+  color: #ff9900;
+}
+/* line 89, ../../app/stylesheets/_projects.sass */
+body#site #how_it_works #show_tips a:hover {
+  color: #ffaa00;
+}
+/* line 91, ../../app/stylesheets/_projects.sass */
 body#site #guidelines_form {
   text-align: center;
 }
-/* line 70, ../../app/stylesheets/_projects.sass */
+/* line 92, ../../app/stylesheets/_projects.sass */
 body#site #guidelines_form fieldset {
   padding-top: 20px;
 }
-/* line 72, ../../app/stylesheets/_projects.sass */
+/* line 94, ../../app/stylesheets/_projects.sass */
 body#site #guidelines_form label {
   font-weight: bold;
   color: #dd3333;
   display: inline;
 }
-/* line 78, ../../app/stylesheets/_projects.sass */
+/* line 100, ../../app/stylesheets/_projects.sass */
 body#site #new_project_form .submit {
   text-align: center;
 }
-/* line 80, ../../app/stylesheets/_projects.sass */
+/* line 102, ../../app/stylesheets/_projects.sass */
 body#site #new_project_form .submit fieldset {
   padding-top: 20px;
 }
-/* line 82, ../../app/stylesheets/_projects.sass */
+/* line 104, ../../app/stylesheets/_projects.sass */
 body#site #new_project_form #project_category_id {
   width: 220px;
 }
-/* line 84, ../../app/stylesheets/_projects.sass */
+/* line 106, ../../app/stylesheets/_projects.sass */
 body#site #new_project_form #project_goal {
   width: 220px;
 }
-/* line 86, ../../app/stylesheets/_projects.sass */
+/* line 108, ../../app/stylesheets/_projects.sass */
 body#site #new_project_form #project_deadline {
   width: 340px;
 }
-/* line 88, ../../app/stylesheets/_projects.sass */
+/* line 110, ../../app/stylesheets/_projects.sass */
 body#site #new_project_form #project_headline {
   height: 44px;
 }
-/* line 90, ../../app/stylesheets/_projects.sass */
+/* line 112, ../../app/stylesheets/_projects.sass */
 body#site #project_header {
   text-align: left;
   padding: 0 20px;
 }
-/* line 93, ../../app/stylesheets/_projects.sass */
+/* line 115, ../../app/stylesheets/_projects.sass */
 body#site #project_header h1 {
   padding-bottom: 8px !important;
 }
-/* line 95, ../../app/stylesheets/_projects.sass */
+/* line 117, ../../app/stylesheets/_projects.sass */
 body#site #project_header h2 {
   padding: 0 !important;
 }
-/* line 97, ../../app/stylesheets/_projects.sass */
+/* line 119, ../../app/stylesheets/_projects.sass */
 body#site #project_header h2 a {
   color: #ffffaa;
   text-decoration: none;
@@ -954,27 +1006,27 @@ body#site #project_header h2 a {
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 101, ../../app/stylesheets/_projects.sass */
+/* line 123, ../../app/stylesheets/_projects.sass */
 body#site #project_header h2 a:hover {
   text-shadow: green 2px 2px 2px;
 }
-/* line 103, ../../app/stylesheets/_projects.sass */
+/* line 125, ../../app/stylesheets/_projects.sass */
 body#site #project_description {
   float: left;
   width: 472px;
 }
-/* line 106, ../../app/stylesheets/_projects.sass */
+/* line 128, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video {
   width: 460px;
 }
-/* line 108, ../../app/stylesheets/_projects.sass */
+/* line 130, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video iframe {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
 }
-/* line 110, ../../app/stylesheets/_projects.sass */
+/* line 132, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share {
   background-color: #ffffaa;
   width: 96%;
@@ -1002,7 +1054,7 @@ body#site #project_description #project_video #project_share {
   font-size: 16px;
   line-height: 32px;
 }
-/* line 123, ../../app/stylesheets/_projects.sass */
+/* line 145, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share ul {
   margin: 0;
   padding: 0;
@@ -1032,7 +1084,7 @@ body#site #project_description #project_video #project_share ul li:first-child, 
 body#site #project_description #project_video #project_share ul li:last-child, body#site #project_description #project_video #project_share ul li.last {
   padding-right: 0px;
 }
-/* line 127, ../../app/stylesheets/_projects.sass */
+/* line 149, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share a {
   text-decoration: none;
   color: #222222;
@@ -1045,16 +1097,16 @@ body#site #project_description #project_video #project_share a {
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 131, ../../app/stylesheets/_projects.sass */
+/* line 153, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share a:hover {
   text-shadow: #ffff88 2px 2px 4px;
 }
-/* line 133, ../../app/stylesheets/_projects.sass */
+/* line 155, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share img, body#site #project_description #project_video #project_share a img {
   margin-top: -4px;
   vertical-align: middle;
 }
-/* line 136, ../../app/stylesheets/_projects.sass */
+/* line 158, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share input {
   border: 1px solid rgba(0, 0, 0, 0.4);
   -moz-border-radius: 4px;
@@ -1064,18 +1116,18 @@ body#site #project_description #project_video #project_share input {
   -khtml-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 139, ../../app/stylesheets/_projects.sass */
+/* line 161, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share h1 {
   color: #222222;
   font-size: 20px;
   text-transform: lowercase;
   padding-bottom: 8px !important;
 }
-/* line 144, ../../app/stylesheets/_projects.sass */
+/* line 166, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_about {
   margin-top: 24px;
 }
-/* line 146, ../../app/stylesheets/_projects.sass */
+/* line 168, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_about h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -1085,12 +1137,12 @@ body#site #project_description #project_about h1 {
   padding: 0;
   padding-bottom: 16px;
 }
-/* line 154, ../../app/stylesheets/_projects.sass */
+/* line 176, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info {
   float: right;
   width: 352px;
 }
-/* line 157, ../../app/stylesheets/_projects.sass */
+/* line 179, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project {
   background-color: #dddbd1;
   background-color: rgba(179, 177, 157, 0.5);
@@ -1102,25 +1154,25 @@ body#site #project_back_info #back_project {
   box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
   padding: 0px;
 }
-/* line 164, ../../app/stylesheets/_projects.sass */
+/* line 186, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .info {
   padding: 20px;
 }
-/* line 166, ../../app/stylesheets/_projects.sass */
+/* line 188, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .number {
   font-family: "museo-700";
   font-size: 48px;
   line-height: 56px;
 }
-/* line 170, ../../app/stylesheets/_projects.sass */
+/* line 192, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .project_progress {
   margin-top: 16px;
 }
-/* line 172, ../../app/stylesheets/_projects.sass */
+/* line 194, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .project_progress .progress_bar {
   margin-bottom: 0;
 }
-/* line 174, ../../app/stylesheets/_projects.sass */
+/* line 196, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .project_warning {
   padding: 4px 0;
   text-transform: uppercase;
@@ -1129,32 +1181,32 @@ body#site #project_back_info #back_project .project_warning {
   font-size: 14px;
   text-shadow: #333333 1px 1px 0px;
 }
-/* line 181, ../../app/stylesheets/_projects.sass */
+/* line 203, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .project_warning .text {
   padding: 8px;
   margin: 0;
 }
-/* line 184, ../../app/stylesheets/_projects.sass */
+/* line 206, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .successful {
   background: url(/images/bg_top_green.png) top left repeat-x, url(/images/bg_bottom_green.png) bottom left repeat-x;
 }
-/* line 186, ../../app/stylesheets/_projects.sass */
+/* line 208, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .successful .text {
   background-color: #004400;
 }
-/* line 188, ../../app/stylesheets/_projects.sass */
+/* line 210, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .not_successful {
   background: url(/images/bg_top_red.png) top left repeat-x, url(/images/bg_bottom_red.png) bottom left repeat-x;
 }
-/* line 190, ../../app/stylesheets/_projects.sass */
+/* line 212, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .not_successful .text {
   background-color: #660000;
 }
-/* line 192, ../../app/stylesheets/_projects.sass */
+/* line 214, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form {
   text-align: center;
 }
-/* line 194, ../../app/stylesheets/_projects.sass */
+/* line 216, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form input[type=submit] {
   color: white;
   text-shadow: green 1px 1px 1px;
@@ -1164,18 +1216,18 @@ body#site #project_back_info #back_project form input[type=submit] {
   background-image: linear-gradient(top, #59c259 0%, #31a232 100%);
   text-transform: uppercase;
 }
-/* line 200, ../../app/stylesheets/_projects.sass */
+/* line 222, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form input[type=submit]:hover {
   background-color: #59c259;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #69d269), color-stop(100%, #41b242));
   background-image: -moz-linear-gradient(top, #69d269 0%, #41b242 100%);
   background-image: linear-gradient(top, #69d269 0%, #41b242 100%);
 }
-/* line 203, ../../app/stylesheets/_projects.sass */
+/* line 225, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form input[type=submit]:active {
   text-shadow: green 2px 2px 1px;
 }
-/* line 205, ../../app/stylesheets/_projects.sass */
+/* line 227, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards {
   margin-top: 24px;
   -moz-border-radius: 8px;
@@ -1189,7 +1241,7 @@ body#site #project_back_info #rewards {
   padding: 12px;
   font-size: 16px;
 }
-/* line 212, ../../app/stylesheets/_projects.sass */
+/* line 234, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -1199,17 +1251,17 @@ body#site #project_back_info #rewards h1 {
   padding-bottom: 16px;
   font-size: 16px;
 }
-/* line 221, ../../app/stylesheets/_projects.sass */
+/* line 243, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul li {
   padding: 8px 0;
   border-bottom: 1px solid #dddddd;
 }
-/* line 224, ../../app/stylesheets/_projects.sass */
+/* line 246, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul li h1 {
   padding: 0;
   color: #222222;
 }
-/* line 227, ../../app/stylesheets/_projects.sass */
+/* line 249, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul li:last-child {
   border: 0;
   padding-bottom: 0;
@@ -1217,20 +1269,104 @@ body#site #project_back_info #rewards ul li:last-child {
 /* line 47, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
-  padding: 20px 0 40px 0;
+  padding: 20px 0 80px 0;
 }
 /* line 4, ../../app/stylesheets/_footer.sass */
+body#site #footer #footer_menu {
+  margin: 0 auto;
+  width: 840px;
+  padding: 20px 0;
+}
+/* line 8, ../../app/stylesheets/_footer.sass */
+body#site #footer #footer_menu ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 51, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+body#site #footer #footer_menu ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: left;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+/* line 43, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+body#site #footer #footer_menu ul li:first-child, body#site #footer #footer_menu ul li.first {
+  padding-left: 0px;
+}
+/* line 44, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+body#site #footer #footer_menu ul li:last-child, body#site #footer #footer_menu ul li.last {
+  padding-right: 0px;
+}
+/* line 11, ../../app/stylesheets/_footer.sass */
+body#site #footer #footer_menu ul li a {
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 14, ../../app/stylesheets/_footer.sass */
+body#site #footer #social_menu {
+  margin: 0 auto;
+  width: 524px;
+  padding: 10px 0 40px 0;
+  font-size: 16px;
+}
+/* line 19, ../../app/stylesheets/_footer.sass */
+body#site #footer #social_menu img {
+  vertical-align: middle;
+  padding-bottom: 4px;
+}
+/* line 22, ../../app/stylesheets/_footer.sass */
+body#site #footer #social_menu ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 51, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+body#site #footer #social_menu ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: left;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+/* line 43, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+body#site #footer #social_menu ul li:first-child, body#site #footer #social_menu ul li.first {
+  padding-left: 0px;
+}
+/* line 44, ../../../../.rvm/gems/ruby-1.9.2-p0/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+body#site #footer #social_menu ul li:last-child, body#site #footer #social_menu ul li.last {
+  padding-right: 0px;
+}
+/* line 25, ../../app/stylesheets/_footer.sass */
+body#site #footer #social_menu ul li a {
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 28, ../../app/stylesheets/_footer.sass */
 body#site #footer #colophon {
   padding-top: 20px;
   margin: 0 auto;
-  width: 294px;
+  width: 240px;
   font-size: 14px;
 }
-/* line 9, ../../app/stylesheets/_footer.sass */
+/* line 33, ../../app/stylesheets/_footer.sass */
 body#site #footer #colophon p#copyright {
   float: left;
 }
-/* line 11, ../../app/stylesheets/_footer.sass */
+/* line 35, ../../app/stylesheets/_footer.sass */
 body#site #footer #colophon a#softa_logo {
   margin-top: -20px;
   margin-right: 12px;
@@ -1253,7 +1389,7 @@ body#site #footer #colophon a#softa_logo {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 20, ../../app/stylesheets/_footer.sass */
+/* line 44, ../../app/stylesheets/_footer.sass */
 body#site #footer #colophon a#softa_logo:hover {
   background-position: 0 -50px;
 }

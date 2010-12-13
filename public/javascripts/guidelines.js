@@ -5,3 +5,7 @@ $('input[type=checkbox]').click(function(){
     $('input[type=submit]').attr('disabled', true)
   }
 })
+$('#show_tips a').click(function(){
+  $(this).hide()
+  $('#more_tips').show()
+})

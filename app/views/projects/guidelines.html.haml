@@ -1,22 +1,62 @@
 = content_for :content_header do
-  %h1 Envie seu projeto
-  %h2 Mas antes, saiba um pouco mais sobre o que você pode ou não pode fazer no Catarse.
-%h1 Melhores práticas no Catarse
-%p At Kickstarter we welcome projects from the creative arts—Art, Dance, Film, Music, Photography, Publishing, and Theater—as well as projects from the diverse and creative fields of Food, Design, Fashion, Technology, Games, Comics and Journalism. We currently only support projects from these fields.
-%p We wish we didn’t have to do it, but projects violating our guidelines will be removed. If you have questions you can reach us here.
-%p No charity projects or causes. This includes everything from raising money for the Red Cross to individual causes such as “Buy Jenny a Prom Dress” to awareness campaigns about an issue. There are many important causes, however Kickstarter is not a general fundraising site. Please note that non-profits with creative projects that fit our other guidelines are welcome to use Kickstarter.
-%p No business funding, projects only. If your project hopes to make money, that’s perfectly fine! Rather, we’re underlining that we only allow projects. A project is something finite, with a clear beginning and end. Someone can be held accountable to the framework of a project—a project was either completed or it wasn’t—and there are definable expectations that everyone can agree to. Examples are making a film versus starting a film studio, or designing a new piece of apparel versus starting a fashion label.
-%p No fundraising for self-help projects or As-Seen-on-TV products. These kinds of projects are too overtly commercial, and not in the spirit of creativity that we support.
-%p No fundraising to hire programmers/developers to build your website/app. Whether it’s a website for documentary filmmakers or a cool idea for an iPhone game, we only support the funding of website/app projects if they are by the developers themselves.
-%p What about technology projects in general?
-%p Creative explorations of technology and the web are awesome. Kickstarter is full of imaginative applications of technology: grassroots mapping, open source DNA projects, DIY tinkering, and other creative uses of technology. These projects are great!
-%p Our “no business funding” rule applies to technology projects too. Whether you’re making a new ecommerce site or building solar panels, if it’s first and foremost a business it’s not appropriate for Kickstarter.
-%p Open source projects are great. We’re huge fans of projects that benefit the open source community. This was key for Diaspora’s success—it was first and foremost an open source project.
-%p All projects must offer rewards. Kickstarter is not a general fundraising site, it’s a form of commerce and patronage. If you’re not viewing rewards as core to your project, Kickstarter may not be for you. Please note that raffles, financial returns, and investment offers are prohibited.
+  %h1 Como funciona o Catarse?
+  %h2 Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse.
+#how_it_works
+  O Catarse funciona assim: você envia seu projeto, diz
+  %strong quanto precisa
+  e
+  %strong até quando
+  quer arrecadar este dinheiro. Aí você divulga o projeto e as pessoas podem optar por
+  %strong apoiar com qualquer valor
+  a partir de R$ 10 e
+  %strong receber recompensas
+  por isto! Se até o prazo escolhido você tiver atingido o valor que precisa, você recebe o dinheiro. Senão, todo mundo recebe o dinheiro de volta. Simples assim.
+  #show_tips
+    %a{:href => '#'} Veja mais dicas sobre como funciona o Catarse
+#more_tips.hide
+  %h2 Como funciona isso de financiamento colaborativo?
+  %h3 Nossa fórmula mágica
+  %p A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão.
+  %h3 E como funciona esse negócio de tudo ou nada?
+  %p No Catarse, um projeto só é financiado se o objetivo proposto for alcançado dentro do prazo. Se isso não acontecer, os apoiadores recebem seu dinheiro de volta. Por quê? Para diminuir os riscos de todo mundo. Desse jeito, não haverá expectativas de que um projeto seja executado com uma grana insuficiente – o que dificultaria também na distribuição das recompensas.
+  %h3 E quanto eu pago por isto?
+  %p
+    Para colocar um projeto no site, não custa nada. Agora, se (e somente se) o projeto for bem sucedido, o Catarse fica com 5% do valor arrecadado. Já o
+    = link_to "MoIP", "http://www.moip.com.br/", :target => :_blank
+    (que processa os pagamentos) cobra uma taxa que varia entre 6% e 7% por transação.
+  %h3 E a propriedade intelectual dos projetos?
+  %p Ela é inteiramente sua, 100%. Não ficamos com nada, nadinha.
+  %h3 E de onde vem o dinheiro que financia os projetos?
+  %p Bem, no começo, é importante que você traga gente que você conheça para apoiar seu projeto: seus amigos, familiares e gente que já é fã do seu trabalho. Se eles gostarem, seu projeto vai se espalhar pelas comunidades que essas pessoas fazem parte e vai cada vez atrair mais gente. Uma boa ideia, bem comunicada, pode se espalhar rápida e amplamente.
+  %h3 E quanto eu deveria pedir para financiar meu projeto?
+  %p O ponto chave aqui é entender o seu alcance. Pense sobre sua rede de relacionamentos e como o seu projeto e as suas recompensas vão ser atrativos para essas pessoas.
+  %h3 E eu posso arrecadar mais do que o meu objetivo?
+  %p Com certeza! Não há limite máximo. Os projetos aceitarão apoiadores até o último segundo do prazo final.
+  %h3 Mas minhas ideias não são grandiosas nem super importantes. O Catarse serve pra mim?
+  %p Lógico! O projeto pode ser pequeno, grande, sério, engraçado, tradicional, inovador. É um projeto que você irá finalizar em 1 semana e precisa de pouco dinheiro? Perfeito, estamos de braços abertos.
+  %h3 E que tipos de projetos se dão bem? Qual é o segredo?
+  %p O primeiro, disparado, é a paixão pelo projeto. A transparência e a habilidade para executar o projeto vêm logo após. Mas a sua capacidade de divulgar o projeto, principalmente, na internet, será fundamental.
+%h2 E é só enviar meu projeto e ele aparecerá no site?
+%p
+  Na verdade, não. Nós
+  %strong selecionamos os projetos
+  que irão aparecer no Catarse. Chamamos este processo de curadoria: nossa intenção é divulgar somente projetos bacanas e que estejam prontos para ir ao público pedir apoio financeiro. Mas não se preocupe: somos bastante abertos em relação ao que é um projeto bacana :)
+%h2 E que tipos de projetos o Catarse aceita?
+%p A gente está de braços abertos para projetos artísticos – Artes Plásticas, Circo, Dança, Filmes, Fotografia, Música, Teatro, etc. – e também para projetos criativos que surjam em campos como Alimentação, Design, Moda, Tecnologia, Jogos, Quadrinhos, Jornalismo, entre vários outros.
+%p
+  %strong Não aceitamos projetos de caridade.
+  Não que a gente não goste destes projetos e não ache que são importantes: longe disso. Mas o Catarse é um site que tem foco em projetos criativos. No entanto, se seu projeto envolve uma causa social e é criativo ao mesmo tempo, a gente o aceitará tranquilamente.
+%p
+  %strong Não financiamos empresas, apenas projetos.
+  Se o seu projeto tem como intuito ganhar dinheiro, nenhum problema! O que a gente quer dizer é que só aceitaremos projetos, ou seja: algo que seja finito, com um começo e um fim bem delimitados. Por exemplo, se você quer reformar sua lojinha de doces artesanais de uma maneira criativa, está mais do que convidado a compartilhar seu projeto. Mas o Catarse não é o lugar certo se você quiser abrir uma loja. Desenhar uma nova coleção de roupas, sim; começar uma nova marca de roupas, não.
+%p
+  %strong Todos os projetos tem que oferecer recompensas.
+  O Catarse é uma forma de comércio e mecenato. Se você não acha que as recompensas são parte fundamental do seu projeto, talvez o Catarse não seja a melhor solução para você. Ah, e lembre-se que rifas, sorteios, retorno financeiro e participação societária são proibidos.
+%p Bem, e qualquer dúvida que você tiver, é só falar com a gente #{mail_to "contato@catarse.me", "por aqui"}.
 = form_tag(new_project_path, :method => :get, :id => 'guidelines_form') do
   %fieldset
     = check_box_tag 'accept'
-    = label_tag 'accept', 'Eu li e entendi as melhores práticas no Catarse.'
+    = label_tag 'accept', 'Eu li e entendi como funciona o Catarse.'
   %fieldset
-    = submit_tag 'Continuar', :disabled => true
+    = submit_tag 'Enviar meu projeto', :disabled => true
 = javascript_include_tag 'guidelines'
