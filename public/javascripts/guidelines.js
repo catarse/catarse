@@ -5,7 +5,8 @@ $('input[type=checkbox]').click(function(){
     $('input[type=submit]').attr('disabled', true)
   }
 })
-$('#show_tips a').click(function(){
+$('#show_tips a').click(function(e){
+  e.preventDefault()
+  $('#more_tips').effect("highlight", {color: "#dfd"}, 1500);
   $(this).hide()
-  $('#more_tips').show()
 })

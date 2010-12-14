@@ -31,43 +31,46 @@
 #project_back_info
   #back_project
     .info
-      .number 85
+      .number= @project.backers.count
       Pessoas já apoiaram
-      .number R$ 2.345.437
+      .number= number_to_currency @project.pledged, :unit => 'R$ ', :precision => 0, :delimiter => '.'
       Atingidos de
-      %strong R$ 4.000
-      .number 16
-      Dias para atingir o mínimo
+      %strong= number_to_currency @project.goal, :unit => 'R$ ', :precision => 0, :delimiter => '.'
+      .number= @project.days_to_go
+      Dias restantes
       .project_progress
         .progress_bar
-          .progress{ :style => "width: 80%" }
+          .progress{ :style => "width: #{ @project.percent }%" }
             &nbsp;
-    .project_warning.not_successful
-      .text Este projeto só será financiado se pelo menos R$ 4.000 forem atingidos até #{@project.deadline.strftime('%d/%m')}
+    - if @project.successful?
+      .project_warning.successful
+        .text Este projeto será financiado em #{@project.deadline.strftime('%d/%m')}
+    - else
+      .project_warning.not_successful
+        .text Este projeto só será financiado se pelo menos #{number_to_currency @project.goal, :unit => 'R$ ', :precision => 0, :delimiter => '.'} forem atingidos até #{@project.deadline.strftime('%d/%m')}
     .info
-      = form_tag(new_project_path, :method => :get, :id => 'back_project_form') do
+      = form_tag(back_project_path(@project), :method => :get, :id => 'back_project_form') do
         %fieldset
           = submit_tag 'Quero apoiar este projeto'
   #rewards
     %h1 Recompensas para quem apoiar
     %ul
-      %li
-        %h1 Apoie com R$ 10+
-        Ganhe uma cópia do DVD antes que todo mundo.
-      %li
-        %h1 Apoie com R$ 25+
-        Ganhe uma cópia do DVD antes que todo mundo e uma camiseta massa.
-      %li
-        %h1 Apoie com R$ 50+
-        Ganhe uma cópia do DVD antes que todo mundo, uma camiseta e um boné.
-      %li
-        %h1 Apoie com R$ 100+
-        Ganhe uma cópia do DVD antes que todo mundo, uma camiseta, um boné e um chiclé.
-      %li
-        %h1 Apoie com R$ 500+
-        Ganhe uma cópia do DVD antes que todo mundo, uma camiseta, um boné, um chiclé e seu nome nos créditos como patrocinador.
-      %li
-        %h1 Apoie com R$ 1.000+
-        Ganhe uma cópia do DVD antes que todo mundo, uma camiseta, um boné, um chiclé, seu nome nos créditos como patrocinador e um beijo na boca dado pelo diretor.
+      - @project.rewards.each do |reward|
+        %li
+          %h1 Apoie com #{number_to_currency reward.minimum_value, :unit => 'R$ ', :precision => 0, :delimiter => '.'}+
+          = reward.description
+          .clear
+          - if reward.maximum_backers
+            .maximum_backers
+              - if reward.sold_out?
+                .sold_out Esgotada
+              - else
+                .limited Recompensa limitada
+              .remaining
+                = reward.remaining
+                de
+                = reward.maximum_backers
+                disponíveis
+            .clear
 .clear
 = javascript_include_tag 'show_project'

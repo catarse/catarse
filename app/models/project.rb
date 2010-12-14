@@ -3,6 +3,9 @@ VIMEO_REGEX = /\Ahttp:\/\/(www\.)?vimeo.com\/(\d+)\z/
 class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+  has_many :backers
+  has_many :rewards
+  accepts_nested_attributes_for :rewards
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :deadline, :video_url
   validates_length_of :headline, :maximum => 140
   validates_format_of :video_url, :with => VIMEO_REGEX, :message => "somente URLs do Vimeo são aceitas"
@@ -21,6 +24,8 @@ class Project < ActiveRecord::Base
     else
       @vimeo = nil
     end
+  rescue
+    @vimeo = nil
   end
   def vimeo_id
     return unless video_url
@@ -32,6 +37,7 @@ class Project < ActiveRecord::Base
     "http://player.vimeo.com/video/#{vimeo_id}"
   end
   def display_image
+    return "user.png" unless vimeo
     vimeo["thumbnail_large"]
   end
   def display_about
@@ -45,5 +51,12 @@ class Project < ActiveRecord::Base
   end
   def in_time?
     deadline >= Time.now
+  end
+  def percent
+    return 100 if successful?
+    ((pledged / goal * 100).abs).round
+  end
+  def days_to_go
+    ((deadline - Time.now).abs/60/60/24).round
   end
 end

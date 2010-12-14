@@ -5,6 +5,7 @@
     label
       display: block
       margin-right: 8px
+      margin-top: 14px
       abbr[title=required]
         font-size: 16px
         color: #DD3333
@@ -28,6 +29,7 @@
     p.inline-hints
       color: #777
       font-size: 14px
+      padding-bottom: 0 !important
     input[type=submit]
       text-rendering: optimizeLegibility
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
@@ -71,3 +73,14 @@
       background: url('/images/delete_16.png') no-repeat 86% center
     select.loading
       background: url('/images/loading.gif') no-repeat 86% center
+    .important
+      color: #000
+      background-color: #FBB
+      background-color: rgba(255,175,175,0.7)
+      padding: 10px
+      +text-shadow(rgba(255,255,255,0.6), 1px, 1px, 0px)
+      +border-radius(6px)
+      +box-shadow(rgba(0,0,0,0.75),2px,2px,6px)
+      margin: 20px 0
+      a
+        color: #000

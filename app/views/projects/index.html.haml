@@ -4,7 +4,7 @@
 .project_box
   .project_wrap
     .project_header
-      = link_to '#' do
+      = link_to project_path(Project.find(1)) do
         = image_tag 'project01.jpg'
         %h1 Tudo se encaixa
     .project_owner
@@ -20,7 +20,7 @@
         &nbsp;
     %ul
       %li
-        %strong 128%
+        %strong 168%
         %br
         atingido
       %li
@@ -28,7 +28,7 @@
         %br
         levantados
       %li
-        %strong 26 dias
+        %strong 73 dias
         %br
         restantes
 .project_box

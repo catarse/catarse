@@ -144,11 +144,10 @@ CREATE TABLE rewards (
     id integer NOT NULL,
     project_id integer NOT NULL,
     minimum_value double precision NOT NULL,
-    maximum_backers integer NOT NULL,
-    description text NOT NULL,
+    maximum_backers integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    CONSTRAINT rewards_description_not_blank CHECK ((length(btrim(description)) > 0)),
+    description character varying(255),
     CONSTRAINT rewards_maximum_backers_positive CHECK ((maximum_backers >= 0)),
     CONSTRAINT rewards_minimum_value_positive CHECK ((minimum_value >= (0)::double precision))
 );

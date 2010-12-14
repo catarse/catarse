@@ -30,11 +30,10 @@ end
 Factory.define :reward do |f|
   f.association :project, :factory => :project
   f.minimum_value 1.00
-  f.maximum_backers 0
   f.description "Foo bar"
 end
 Factory.define :backer do |f|
   f.association :project, :factory => :project
   f.association :user, :factory => :user
-  f.value 1.00
+  f.value 10.00
 end

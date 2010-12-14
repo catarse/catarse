@@ -17,15 +17,17 @@ describe Backer do
     b = Factory.build(:backer, :value => nil)
     b.should_not be_valid
   end
-  it "should have greater than 1 value" do
+  it "should have greater than 10 value" do
     b = Factory.build(:backer)
     b.value = -0.01
     b.should_not be_valid
     b.value = 0.99
     b.should_not be_valid
-    b.value = 1.00
+    b.value = 9.99
+    b.should_not be_valid
+    b.value = 10.00
     b.should be_valid
-    b.value = 1.01
+    b.value = 10.01
     b.should be_valid
   end
   it "should have reward from the same project only" do
@@ -51,7 +53,7 @@ describe Backer do
   end
   it "should not be able to back if reward's maximum backers' been reached (and maximum backers > 0)" do
     project = Factory(:project)
-    reward1 = Factory(:reward, :maximum_backers => 0, :project => project)
+    reward1 = Factory(:reward, :maximum_backers => nil, :project => project)
     reward2 = Factory(:reward, :maximum_backers => 1, :project => project)
     reward3 = Factory(:reward, :maximum_backers => 2, :project => project)
     backer = Factory.build(:backer, :reward => reward1, :project => project)
@@ -75,4 +77,3 @@ describe Backer do
     backer.should_not be_valid
   end
 end
-

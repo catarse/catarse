@@ -1,5 +1,25 @@
+$('#add_reward').click(function(e){
+  e.preventDefault()
+  new_reward = '<div class="reward">' + $($('.reward')[0]).html() + '</div>'
+  new_reward = new_reward.replace(/\_0\_/g, '_' + rewards_id + '_')
+  new_reward = new_reward.replace(/\[0\]/g, '[' + rewards_id + ']')
+  new_reward = $(new_reward)
+  new_reward.find('input').val(null)
+  new_reward.find('textarea').html(null)
+  new_reward.find('input').numeric(',')
+  new_reward.find('input, textarea').removeClass('ok').removeClass('error')
+  $('#rewards_wrapper').append(new_reward)
+  new_reward.find('textarea').focus()
+  rewards_count++
+  rewards_id++
+})
+var video_valid = null
 everything_ok = function(){
   var all_ok = true
+  if(video_valid == null) {
+    all_ok = false
+    verify_video()
+  }
   if(!ok('#project_name'))
     all_ok = false
   if(!video_ok())
@@ -13,6 +33,8 @@ everything_ok = function(){
   if(!goal_ok())
     all_ok = false
   if(!deadline_ok())
+    all_ok = false
+  if(!rewards_ok())
     all_ok = false
   if(!accepted_terms())
     all_ok = false
@@ -32,7 +54,6 @@ ok = function(id){
     return false
   }
 }
-var video_valid = false
 verify_video = function(){
   video_valid = false
   if(/http:\/\/(www\.)?vimeo.com\/(\d+)/.test($('#project_video_url').val())) {
@@ -71,7 +92,7 @@ headline_ok = function(){
 }
 goal_ok = function(){
   value = $('#project_goal').val()
-  if(/^(\d+)(\,\d{1,2})?$/.test(value)){
+  if(/^(\d+)(\,\d{1,2})?$/.test(value) && parseFloat(value.replace(',', '.')) > 0){
     $('#project_goal').addClass("ok").removeClass("error")
     return true
   } else {
@@ -82,11 +103,12 @@ goal_ok = function(){
 deadline_ok = function(){
   value = /^(\d{2})\/(\d{2})\/(\d{4})?$/.exec($('#project_deadline').val())
   if(value && value.length == 4) {
-    year = parseInt(value[3])
-    month = parseInt(value[2])-1
-    day = parseInt(value[1])
+    year = parseFloat(value[3])
+    month = parseFloat(value[2])-1
+    day = parseFloat(value[1])
     date = new Date(year, month, day)
-    if(((day==date.getDate()) && (month==date.getMonth()) && (year==date.getFullYear()))){
+    current_date = new Date()
+    if(((day==date.getDate()) && (month==date.getMonth()) && (year==date.getFullYear())) && date > current_date){
       $('#project_deadline').addClass("ok").removeClass("error")
       return true
     } else {
@@ -97,6 +119,39 @@ deadline_ok = function(){
     $('#project_deadline').addClass("error").removeClass("ok")
     return false
   }
+}
+rewards_ok = function(){
+  okey = true
+  $('.reward input').each(function(){
+    if(/^(\d+)(\,\d{1,2})?$/.test($(this).val())){
+      if(/minimum_value/.test($(this).attr('id'))){
+        if(parseFloat($(this).val().replace(',', '.')) > 0) {
+          $(this).addClass("ok").removeClass("error")
+        } else {
+          $(this).addClass("error").removeClass("ok")
+          okey = false
+        }
+      } else {
+        $(this).addClass("ok").removeClass("error")
+      }
+    } else {
+      if(/maximum_backers/.test($(this).attr('id')) && (!$(this).val())){
+        $(this).addClass("ok").removeClass("error")
+      } else {
+        $(this).addClass("error").removeClass("ok")
+        okey = false
+      }
+    }
+  })
+  $('.reward textarea').each(function(){
+    if($(this).val() && $(this).val().length > 0){
+      $(this).addClass("ok").removeClass("error")
+    } else {
+      $(this).addClass("error").removeClass("ok")
+      okey = false
+    }
+  })
+  return okey
 }
 accepted_terms = function(){
   return $('#accept').is(':checked')
@@ -110,10 +165,34 @@ $('#project_goal').keyup(everything_ok)
 $('#project_deadline').keyup(everything_ok)
 $('#project_headline').keyup(everything_ok)
 $('#accept').click(everything_ok)
+$('.reward input,.reward textarea').live('keyup', everything_ok)
 
 $('#project_goal').numeric(',')
+$('.reward input').numeric(',')
 $('#project_deadline').datepicker({
   altFormat: 'dd/mm/yy',
   onSelect: everything_ok
 })
-$('#project_headline').maxlength()
+$('input,textarea,select').live('focus', function(){
+  $('p.inline-hints').hide()
+  $(this).next('p.inline-hints').show()
+})
+$('.reward').live('mouseover', function(){
+  $('.remove_reward').hide()
+  if(rewards_count > 1){
+    $(this).find('.remove_reward').show()
+  }
+})
+$('.reward').live('mouseout', function(){
+  $(this).find('.remove_reward').hide()
+})
+$('.remove_reward').live('click', function(e){
+  e.preventDefault()
+  if(rewards_count > 1){
+    reward = $(this).parentsUntil('.reward').parent()
+    reward.remove()
+    rewards_count--
+  }
+})
+$('#project_name').focus()
+$('textarea').maxlength()

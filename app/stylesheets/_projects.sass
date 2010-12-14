@@ -96,7 +96,9 @@
       color: #DD3333
       display: inline
     text-align: center
-  #new_project_form
+  #project_form
+    p.inline-hints
+      display: none
     .submit
       text-align: center
       fieldset
@@ -109,6 +111,34 @@
       width: 340px
     #project_headline
       height: 44px
+    #project_rewards
+      margin-top: 20px
+      +border-radius(8px)
+      border: 5px solid #eee
+      border: 5px solid rgba(100,100,100,0.1)
+      padding: 12px
+      font-size: 16px
+      h3
+        text-transform: uppercase
+        font-size: 18px
+      p
+        color: #777
+        font-size: 14px
+        padding-bottom: 0
+      input
+        width: 364px
+      textarea
+        height: 44px
+      .reward
+        padding-bottom: 12px
+        p.inline-hints
+          padding-bottom: 8px
+      #add_reward_wrapper
+        text-align: right
+      .remove_reward_wrapper
+        float: right
+      .remove_reward
+        display: none
   #project_header
     text-align: left
     padding: 0 20px
@@ -116,12 +146,6 @@
       padding-bottom: 8px !important
     h2
       padding: 0 !important
-      a
-        color: #FFFFAA
-        text-decoration: none
-        +transition(all, 0.1s)
-      a:hover
-        +text-shadow(green, 2px, 2px, 2px)
   #project_description
     float: left
     width: 472px
@@ -187,8 +211,8 @@
         padding: 20px
       .number
         font-family: "museo-700"
-        font-size: 48px
-        line-height: 56px
+        font-size: 44px
+        line-height: 52px
       .project_progress
         margin-top: 16px
         .progress_bar
@@ -221,7 +245,7 @@
           text-transform: uppercase
         input[type=submit]:hover
           background-color: #59C259
-          +linear-gradient(color_stops(#69D269,#41B242))
+          +linear-gradient(color_stops(#59C259,#41B242))
         input[type=submit]:active
           +text-shadow(green, 2px, 2px, 1px)
     #rewards
@@ -249,3 +273,120 @@
         li:last-child
           border: 0
           padding-bottom: 0
+      .maximum_backers
+        margin-top: 8px
+        font-size: 14px
+        .limited
+          float: left
+          font-weight: bold
+          text-transform: uppercase
+        .sold_out
+          float: left
+          font-weight: bold
+          text-transform: uppercase
+          color: #fff
+          background-color: #555
+          background-color: rgba(0,0,0,0.7)
+          +border-radius(4px)
+          +text-shadow(#000, 1px, 1px, 0px)
+          padding: 0 8px
+        .remaining
+          float: left
+          margin-left: 12px
+          font-size: 12px
+          font-weight: bold
+  #back_options
+    float: left
+    width: 422px
+    margin-top: -14px
+    #backer_form
+      fieldset
+        padding: 0
+        margin: 0
+      input[type=text]
+        font-size: 48px
+        width: 392px
+        padding: 12px
+        border: 3px solid rgb(0,60,0)
+        border: 3px solid rgba(0,60,0,0.6)
+      input[type=text]:focus
+        background-color: rgb(0,150,0)
+        background-color: rgba(0,150,0,0.2)
+      input.ok,textarea.ok
+        background: url('/images/tick_32.png') no-repeat 96% center
+      input.error,textarea.error
+        background: url('/images/delete_32.png') no-repeat 96% center
+      p.inline-hints
+        font-size: 18px
+        margin-top: 8px
+        margin-bottom: 28px
+      input[type=radio]
+        float: left
+        margin: 8px 16px 0 0
+      label
+        font-family: "museo-300"
+        font-size: 24px
+        line-height: 28px
+        padding-bottom: 8px
+      li.radio ol
+        background-color: #ddd
+        +border-radius(12px)
+        +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 10px)
+      li.radio ol li
+        line-height: 22px
+        border-bottom: 2px solid #eee
+        padding: 10px 20px
+        &:first-child
+          +border-top-left-radius(12px)
+          +border-top-right-radius(12px)
+        &:last-child
+          +border-bottom-left-radius(12px)
+          +border-bottom-right-radius(12px)
+          border: none
+        &:hover
+          background-color: #bdb
+        label
+          margin: 0
+          padding: 0
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+          font-size: 18px
+      .reward_minimum_value
+        font-weight: bold
+        float: left
+      .reward_description
+        float: left
+        margin-left: 28px
+      .buttons
+        text-align: center
+        margin-top: 32px
+  #back_info
+    float: right
+    width: 362px
+    font-size: 16px
+    img
+      float: left
+      width: 128px
+      +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 5px)
+      +transition
+      margin-bottom: 16px
+    #project_info
+      float: right
+      width: 204px
+      margin-bottom: 16px
+      .project_name a
+        text-decoration: none
+        font-weight: bold
+        font-size: 18px
+      .project_owner
+        color: #777
+        a
+          text-decoration: none
+          color: #222
+          &:hover
+            +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
+      .project_deadline
+        font-size: 16px
+        margin-top: 8px
+        font-weight: bold
+        text-transform: uppercase
+        color: #666

@@ -4,7 +4,7 @@ class Backer < ActiveRecord::Base
   belongs_to :user
   belongs_to :reward
   validates_presence_of :project, :user, :value
-  validates_numericality_of :value, :greater_than_or_equal_to => 1.00
+  validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
   def reward_must_be_from_project
     return unless reward
@@ -17,7 +17,7 @@ class Backer < ActiveRecord::Base
   end
   validate :should_not_back_if_maximum_backers_been_reached
   def should_not_back_if_maximum_backers_been_reached
-    return unless reward and reward.maximum_backers > 0
+    return unless reward and reward.maximum_backers and reward.maximum_backers > 0
     errors.add(:reward, "já atingiu seu número máximo de apoiadores") unless reward.backers.count < reward.maximum_backers
   end
 end

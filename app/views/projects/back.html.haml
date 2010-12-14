@@ -1,0 +1,35 @@
+= content_for :content_header do
+  %h1 Oohh yeah!
+  %h2 Você está a poucos passos de fazer a diferença para o #{link_to @project.name, project_path(@project)} e se tornar parte deste projeto.
+#back_options
+  = semantic_form_for @backer, :url => project_path(@project), :html => { :id => 'backer_form' } do |form|
+    = form.inputs do
+      = form.input :user_id, :as => :hidden
+      = form.input :value, :label => 'Com quanto você quer apoiar?', :hint => "Você escolhe o valor ;) a partir de R$ 10 está ótimo.", :required => false
+      - @empty_reward.id = 0
+      %script
+        var rewards = new Array()
+        - @project.rewards.order(:minimum_value).all.each do |reward|
+          rewards[#{reward.id}] = #{reward.minimum_value}
+      = form.input :reward, :as => :radio, :label => "Selecione sua recompensa", :required => false, :collection => [@empty_reward] + @project.rewards.order(:minimum_value)
+    = form.buttons do
+      = form.commit_button 'Efetuar pagamento', :button_html => {:disabled => true}
+#back_info
+  = image_tag @project.display_image
+  #project_info
+    .project_name= link_to @project.name, project_path(@project)
+    .project_owner por #{link_to @project.user.display_name, user_path(@project.user)}
+    .project_deadline #{@project.days_to_go} dias restantes
+  .clear
+  %h3 Como eu apoio este projeto?
+  %p Primeiro, escolha o valor e a recompensa desejados. Depois nós te redirecionaremos para o #{link_to "MoIP", "http://www.moip.com.br/", :target => :_blank} para que você efetue o pagamento.
+  %h3 Quando o pagamento é efetivado?
+  %p Assim que o MoIP confirmar a transação. Depois, caso o projeto não atinja #{number_to_currency @project.goal, :unit => 'R$ ', :precision => 0, :delimiter => '.'} até #{@project.deadline.strftime('%d/%m')}, você receberá seu dinheiro de volta na forma de créditos no Catarse.
+  %h3 Então eu recebo meu dinheiro de volta se o projeto não sair?
+  %p Sim! Você recebe de volta 100% do que pagou na forma de créditos para apoiar outros projetos do Catarse.
+  %h3 E se eu não quiser usar os créditos no Catarse?
+  %p Não tem problema. Você pode transferir o dinheiro para sua conta facilmente. É só ter uma conta no MoIP e solicitar a transferência. Você só terá que pagar a taxa de transferência do MoIP, que varia que varia entre 6% e 7% por transação.
+  %h3 Se o projeto for financiado, como eu recebo minha recompensa?
+  %p Quando sua recompensa estiver pronta, #{link_to @project.user.display_name, user_path(@project.user)} vai entrar em contato com você para combinar a entrega.
+.clear
+= javascript_include_tag 'back_project'
