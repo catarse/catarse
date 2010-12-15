@@ -3,9 +3,13 @@ class ProjectsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :create, :edit, :update
   def index
-    index!{ @title = "Faça acontecer os projetos em que você acredita" }
+    index! do
+      @title = "Faça acontecer os projetos em que você acredita"
+      @projects = Project.visible
+    end
   end
   def new
+    return unless require_login
     new! do
       @title = "Envie seu projeto"
       @project.rewards.build
@@ -18,7 +22,10 @@ class ProjectsController < ApplicationController
     update!(:notice => "Seu projeto foi atualizado com sucesso!")
   end
   def show
-    show!{ @title = @project.name }
+    show!{
+      @title = @project.name
+      @rewards = @project.rewards.order(:minimum_value)
+    }
   end
   def guidelines
     @title = "Como funciona o Catarse"
@@ -32,10 +39,33 @@ class ProjectsController < ApplicationController
     end
   end
   def back
+    return unless require_login
     show! do
       @title = "Apoie o #{@project.name}"
       @backer = @project.backers.new(:user_id => current_user.id)
-      @empty_reward = Reward.new(:id => -1, :minimum_value => 0, :description => "Obrigado. Eu só quero ajudar o projeto.")
+      empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => "Obrigado. Eu só quero ajudar o projeto.")
+      @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
+    end
+  end
+  def pay
+    params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
+    params[:backer][:user_id] = current_user.id
+    project = Project.find params[:id]
+    backer = project.backers.new(params[:backer])
+    # TODO remove the next lines
+    backer.confirmed = true
+    backer.confirmed_at = Time.now
+    # TODO until here
+    if backer.save
+      redirect_to thank_you_project_path(project)
+    else
+      flash[:failure] = "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
+      redirect_to back_project_path(project)
+    end
+  end
+  def thank_you
+    show! do
+      @title = "Muito obrigado"
     end
   end
 end

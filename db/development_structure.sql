@@ -101,7 +101,6 @@ CREATE TABLE projects (
     user_id integer NOT NULL,
     category_id integer NOT NULL,
     goal double precision NOT NULL,
-    pledged double precision DEFAULT 0 NOT NULL,
     deadline timestamp without time zone NOT NULL,
     about text NOT NULL,
     headline character varying(255) NOT NULL,

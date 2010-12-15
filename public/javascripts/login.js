@@ -1,13 +1,22 @@
+require_login = function(e){
+  e.preventDefault()
+  if($(this).is('a')){
+    url = $(this).attr('href')
+  } else {
+    url = $('input[type=submit]').parentsUntil('form').parent().attr('action')
+  }
+  $('#return_to').val(url)
+  $('.overlay').show()
+  $('#login').fadeIn()
+}
 var return_to = null
 $('#login_link').click(function(){
   $('.overlay').show()
   $('#login').fadeIn()
 })
-$('#new_project_link').click(function(){
-  $('#return_to').val("/projects/guidelines")
-  $('.overlay').show()
-  $('#login').fadeIn()
-})
+if($('#login').length > 0){
+  $('#new_project_link').click(require_login)
+}
 $('.close').click(function(){
   $('#login').hide()
   $('.overlay').hide()

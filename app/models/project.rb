@@ -1,6 +1,7 @@
 # coding: utf-8
 VIMEO_REGEX = /\Ahttp:\/\/(www\.)?vimeo.com\/(\d+)\z/
 class Project < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   belongs_to :user
   belongs_to :category
   has_many :backers
@@ -15,6 +16,7 @@ class Project < ActiveRecord::Base
       errors.add(:video_url, "deve existir no Vimeo")
     end
   end
+  scope :visible, where(:visible => true)
   def vimeo
     return @vimeo if @vimeo
     return unless vimeo_id
@@ -43,6 +45,21 @@ class Project < ActiveRecord::Base
   def display_about
     about.gsub("\n", "<br>")
   end
+  def display_deadline
+    deadline.strftime('%d/%m')
+  end
+  def display_pledged
+    number_to_currency pledged, :unit => 'R$ ', :precision => 0, :delimiter => '.'
+  end
+  def display_goal
+    number_to_currency goal, :unit => 'R$ ', :precision => 0, :delimiter => '.'
+  end
+  def pledged
+    backers.confirmed.sum(:value)
+  end
+  def total_backers
+    backers.confirmed.count
+  end
   def successful?
     pledged >= goal
   end
@@ -53,10 +70,15 @@ class Project < ActiveRecord::Base
     deadline >= Time.now
   end
   def percent
-    return 100 if successful?
     ((pledged / goal * 100).abs).round
   end
+  def display_percent
+    return 100 if successful?
+    return 8 if percent > 0 and percent < 8
+    percent
+  end
   def days_to_go
+    return 0 if deadline < Time.now
     ((deadline - Time.now).abs/60/60/24).round
   end
 end

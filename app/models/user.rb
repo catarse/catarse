@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
+  has_many :backs, :class_name => "Backer"
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth["provider"]
@@ -18,5 +19,8 @@ class User < ActiveRecord::Base
   end
   def display_image
     image_url || 'user.png'
+  end
+  def backer?
+    backs.confirmed.count > 0
   end
 end

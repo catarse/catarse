@@ -35,5 +35,6 @@ end
 Factory.define :backer do |f|
   f.association :project, :factory => :project
   f.association :user, :factory => :user
+  f.confirmed true
   f.value 10.00
 end

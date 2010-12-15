@@ -7,10 +7,12 @@ Catarse::Application.routes.draw do
   if Rails.env == "test"
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
-  resources :projects, :only => [:index, :new, :create, :show, :edit, :update] do
+  resources :projects, :only => [:index, :new, :create, :show] do
     get 'guidelines', :on => :collection
     get 'vimeo', :on => :collection
     get 'back', :on => :member
+    post 'pay', :on => :member
+    get 'thank_you', :on => :member
   end
   resources :users, :only => [:show]
 end

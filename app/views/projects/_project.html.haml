@@ -1,0 +1,28 @@
+.project_box
+  .project_wrap
+    .project_header
+      = link_to project_path(project) do
+        = image_tag project.display_image
+        %h1= project.name
+    .project_owner
+      por #{project.user.name}
+    .project_headline= project.headline
+    %span.project_category= project.category.name
+    .clear
+  .project_progress
+    .progress_bar
+      .progress{ :style => "width: #{project.display_percent}%" }
+        &nbsp;
+    %ul
+      %li
+        %strong #{project.percent}%
+        %br
+        atingido
+      %li
+        %strong= project.display_pledged
+        %br
+        levantados
+      %li
+        %strong #{project.days_to_go} dias
+        %br
+        restantes

@@ -6,7 +6,6 @@ class CreateProjects < ActiveRecord::Migration
       t.references :user, :null => false
       t.references :category, :null => false
       t.float :goal, :null => false
-      t.float :pledged, :null => false, :default => 0
       t.datetime :deadline, :null => false
       t.text :about, :null => false
       t.string :headline, :null => false

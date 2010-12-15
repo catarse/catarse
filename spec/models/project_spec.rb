@@ -69,11 +69,13 @@ describe Project do
   it "should be successful if pledged >= goal" do
     p = Factory.build(:project)
     p.goal = 3000.00
-    p.pledged = 2999.99
+    Factory(:backer, :project => p, :value => 2999.99)
     p.successful?.should be_false
-    p.pledged = 3000.01
+    p.backers.destroy_all
+    Factory(:backer, :project => p, :value => 3000.00)
     p.successful?.should be_true
-    p.pledged = 3000.00
+    p.backers.destroy_all
+    Factory(:backer, :project => p, :value => 3000.01)
     p.successful?.should be_true
   end
   it "should be expired if deadline is passed" do

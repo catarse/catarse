@@ -1,3 +1,4 @@
+# coding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
@@ -10,5 +11,14 @@ class ApplicationController < ActionController::Base
   def redirect_back_or_default(default)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
-  end  
+  end
+  def require_login
+    unless current_user
+      flash[:failure] = "Você precisa estar logado para realizar esta ação."
+      redirect_to :root
+      false
+    else
+      true
+    end
+  end
 end

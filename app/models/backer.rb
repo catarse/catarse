@@ -6,6 +6,7 @@ class Backer < ActiveRecord::Base
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
+  scope :confirmed, where(:confirmed => true)
   def reward_must_be_from_project
     return unless reward
     errors.add(:reward, "deve ser do mesmo projeto") unless reward.project == project

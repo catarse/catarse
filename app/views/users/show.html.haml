@@ -1,4 +1,5 @@
 = content_for :content_header do
+  = image_tag 'badge.png', :id => "badge" if @user.backer?
   #profile_header
     .image
       = image_tag @user.display_image

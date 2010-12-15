@@ -10,3 +10,8 @@ $('#show_tips a').click(function(e){
   $('#more_tips').effect("highlight", {color: "#dfd"}, 1500);
   $(this).hide()
 })
+$(document).ready(function(){
+  if($('#login').length > 0){
+    $('input[type=submit]').click(require_login)
+  }
+})

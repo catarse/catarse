@@ -37,12 +37,14 @@ value_ok = function(){
         }
       }
     })
+    $('.sold_out').parent().find('input[type=radio]').attr('disabled', true)
     return true
   } else {
     $('#backer_value').addClass("error").removeClass("ok")
+    $('#backer_reward_id_0').attr("checked", true)
     $('input[type=radio]').attr("disabled", true)
     $('#backer_reward_id_0').attr("disabled", false)
-    $('#backer_reward_id_0').attr("checked", true)
+    $('.sold_out').parent().find('input[type=radio]').attr('disabled', true)
     return false
   }
 }
@@ -50,6 +52,7 @@ $('input[type=radio]').click(everything_ok)
 $('#backer_value').keyup(everything_ok)
 $('#backer_value').numeric(',')
 $('#backer_value').focus()
+$('#backer_reward_id_0').attr("checked", true)
 $('input[type=radio]').attr("disabled", true)
 $('#backer_reward_id_0').attr("disabled", false)
-$('#backer_reward_id_0').attr("checked", true)
+$('.sold_out').parent().find('input[type=radio]').attr('disabled', true)

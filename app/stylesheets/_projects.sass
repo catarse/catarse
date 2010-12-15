@@ -7,15 +7,17 @@
     +border-radius(8px)
     border: 5px solid #eee
     border: 5px solid rgba(100,100,100,0.1)
-    img
-      width: 280px
-      +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 5px)
-      margin-bottom: 16px
-      +transition
-    img:hover
-      +box-shadow(rgba(0,0,0,0.7), 3px, 3px, 6px)
     .project_header
+      text-align: center
+      img
+        height: 160px
+        +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 5px)
+        margin-bottom: 16px
+        +transition
+      img:hover
+        +box-shadow(rgba(0,0,0,0.7), 3px, 3px, 6px)
       h1
+        text-align: left
         font-family: "museo-300"
         font-size: 20px !important
         color: #222 !important
@@ -30,6 +32,8 @@
       font-size: 14px
       color: #999
       padding-bottom: 8px
+    .project_headline
+      min-height: 100px
     .project_category
       text-transform: uppercase
       color: #fff
@@ -248,6 +252,13 @@
           +linear-gradient(color_stops(#59C259,#41B242))
         input[type=submit]:active
           +text-shadow(green, 2px, 2px, 1px)
+        input[type=submit]:disabled
+          color: #888
+          +text-shadow(rgba(230,230,230,0.85), 1px, 1px, 0px)
+          padding: 10px 15px
+          background-color: #aaa
+          +linear-gradient(color_stops(#bbb,#888))
+          +box-shadow(rgba(0,0,0,0.75),2px,2px,6px)
     #rewards
       margin-top: 24px
       +border-radius(8px)
@@ -350,6 +361,18 @@
           padding: 0
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
           font-size: 18px
+          .sold_out
+            font-size: 14px
+            margin-bottom: 8px
+            float: right
+            font-weight: bold
+            text-transform: uppercase
+            color: #fff
+            background-color: #555
+            background-color: rgba(0,0,0,0.7)
+            +border-radius(4px)
+            +text-shadow(#000, 1px, 1px, 0px)
+            padding: 0 8px
       .reward_minimum_value
         font-weight: bold
         float: left
@@ -367,7 +390,6 @@
       float: left
       width: 128px
       +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 5px)
-      +transition
       margin-bottom: 16px
     #project_info
       float: right
@@ -390,3 +412,31 @@
         font-weight: bold
         text-transform: uppercase
         color: #666
+  #thank_you
+    margin-top: 10px
+    text-align: center
+    img#project_image
+      float: left
+      width: 128px
+      +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 5px)
+      margin-right: 20px
+    h1
+      text-align: left
+      font-family: "museo-500" !important
+      float: left
+      width: 680px
+      line-height: 32px
+      padding-top: 4px !important
+      color: #222 !important
+    h2
+      color: #222 !important
+      margin-top: 20px
+    a img
+      width: 116px
+      +transition(all,0.3s)
+      &:hover
+        +scale(1.1)
+    #how_it_works
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+      font-size: 18px
+      margin-top: 40px

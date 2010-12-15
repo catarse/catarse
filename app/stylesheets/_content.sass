@@ -4,6 +4,7 @@
   +border-radius(6px)
   +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 16px)
 =content_header
+  position: relative
   text-align: center
   color: #fff
   padding: 20px
@@ -25,6 +26,14 @@
       +transition(all, 0.1s)
     a:hover
       +text-shadow(green, 2px, 2px, 2px)
+  #badge
+    position: absolute
+    top: 52px
+    right: 10px
+    +transition(all,0.2s)
+    &:hover
+      +rotate(-4deg)
+      
 =content
   padding: 40px
   h1
