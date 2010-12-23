@@ -1,5 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Login Feature" do
+=begin
   scenario "I open the login page but then I cancel" do
     click_login
     find("#login").visible?.should be_true
@@ -29,6 +30,19 @@ feature "Login Feature" do
       click_button 'signIn'
     end
     click_button 'approve_button' if page.has_button?('approve_button')
+    current_path.should == homepage
+    page.should have_css('#user')
+  end
+=end
+  scenario "I'm new to the site and I want to signup with github" do
+    click_login
+    click_link 'Github'
+    if page.has_button? 'Log in'
+      fill_in 'login', :with => 'catarsetest'
+      fill_in 'password', :with => 'testcatarse123'
+      click_button 'Log in'
+    end
+    page.evaluate_script("$('#login button:first').click()") if page.evaluate_script("$('#login button:first').length").to_s != '0'
     current_path.should == homepage
     page.should have_css('#user')
   end
