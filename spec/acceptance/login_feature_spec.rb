@@ -1,6 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Login Feature" do
-=begin
   scenario "I open the login page but then I cancel" do
     click_login
     find("#login").visible?.should be_true
@@ -33,7 +32,7 @@ feature "Login Feature" do
     current_path.should == homepage
     page.should have_css('#user')
   end
-=end
+
   scenario "I'm new to the site and I want to signup with github" do
     click_login
     click_link 'Github'
