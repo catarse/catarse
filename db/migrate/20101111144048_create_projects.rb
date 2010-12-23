@@ -2,14 +2,14 @@ require 'sexy_pg_constraints'
 class CreateProjects < ActiveRecord::Migration
   def self.up
     create_table :projects do |t|
-      t.string :name, :null => false
+      t.text :name, :null => false
       t.references :user, :null => false
       t.references :category, :null => false
-      t.float :goal, :null => false
+      t.decimal :goal, :null => false
       t.datetime :deadline, :null => false
       t.text :about, :null => false
-      t.string :headline, :null => false
-      t.string :video_url, :null => false
+      t.text :headline, :null => false
+      t.text :video_url, :null => false
       t.boolean :visible, :default => false
       t.boolean :recommended, :default => false
       t.timestamps

@@ -3,9 +3,9 @@ class CreateRewards < ActiveRecord::Migration
   def self.up
     create_table :rewards do |t|
       t.references :project, :null => false
-      t.float :minimum_value, :null => false
+      t.decimal :minimum_value, :null => false
       t.integer :maximum_backers, :null => true
-      t.string :description, :null => false
+      t.text :description, :null => false
       t.timestamps
     end
     constrain :rewards do |t|

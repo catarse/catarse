@@ -5,7 +5,7 @@ class CreateBackers < ActiveRecord::Migration
       t.references :project, :null => false
       t.references :user, :null => false
       t.references :reward
-      t.float :value, :null => false
+      t.decimal :value, :null => false
       t.boolean :confirmed, :null => false, :default => false
       t.timestamp :confirmed_at
       t.timestamps

@@ -2,13 +2,13 @@ require 'sexy_pg_constraints'
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string :provider, :null => false
-      t.string :uid, :null => false
-      t.string :email
-      t.string :name
-      t.string :nickname
-      t.string :bio
-      t.string :image_url
+      t.text :provider, :null => false
+      t.text :uid, :null => false
+      t.text :email
+      t.text :name
+      t.text :nickname
+      t.text :bio
+      t.text :image_url
       t.boolean :newsletter, :default => false
       t.boolean :project_updates, :default => false
       t.timestamps
@@ -21,9 +21,7 @@ class CreateUsers < ActiveRecord::Migration
     constrain :users do |t|
       t[:provider, :uid].all :unique => true
     end
-    add_index :users, :provider
     add_index :users, :uid
-    add_index :users, [:provider, :uid], :unique => true
     add_index :users, :name
     add_index :users, :email
   end
