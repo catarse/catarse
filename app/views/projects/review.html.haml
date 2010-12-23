@@ -1,0 +1,23 @@
+= content_for :content_header do
+  %h1 Revise seus dados
+  %h2 Último passo para fazer a diferença e se tornar parte deste projeto.
+#project_review
+  = image_tag @project.display_image, :id => 'project_image'
+  %h1 Você está prestes a fazer parte do grupo que faz de tudo para o #{link_to @project.name, project_path(@project)} acontecer.
+  .clear
+  #review_text
+    Você irá apoiar com
+    %strong #{@backer.display_value}
+    - if @backer.reward
+      e ganhará a seguinte recompensa:
+      %span.reward #{@backer.reward.description}
+    - else
+      e não quer nenhuma recompensa por seu apoio.
+  = form_tag 'https://www.moip.com.br/PagamentoMoIP.do', :id => 'review_form' do
+    %fieldset
+      = hidden_field_tag 'id_carteira', 'softa'
+      = hidden_field_tag 'valor', ('%.2f' % @backer.value).gsub('.','')
+      = hidden_field_tag 'nome', "Apoio para projeto no Catarse"
+      = hidden_field_tag 'descricao', "Apoio para o projeto '#{@project.name}'"
+      = hidden_field_tag 'id_transacao', @backer.id
+      = submit_tag 'Efetuar pagamento'
