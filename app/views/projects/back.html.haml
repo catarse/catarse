@@ -2,7 +2,7 @@
   %h1 Oohh yeah!
   %h2 Você está a poucos passos de fazer a diferença e se tornar parte deste projeto.
 #back_options
-  = semantic_form_for @backer, :url => pay_project_path(@project), :html => { :id => 'backer_form' } do |form|
+  = semantic_form_for @backer, :url => review_project_path(@project), :html => { :id => 'backer_form' } do |form|
     = form.inputs do
       = form.input :value, :label => 'Com quanto você quer apoiar?', :hint => "Você escolhe o valor ;) a partir de R$ 10 está ótimo.", :required => false
       - @rewards[0].id = 0
@@ -12,7 +12,7 @@
           rewards[#{reward.id || 0}] = #{reward.minimum_value}
       = form.input :reward, :as => :radio, :label => "Selecione sua recompensa", :required => false, :collection => @rewards
     = form.buttons do
-      = form.commit_button 'Efetuar pagamento', :button_html => {:disabled => true}
+      = form.commit_button 'Revisar e realizar pagamento', :button_html => {:disabled => true}
 #back_info
   = image_tag @project.display_image
   #project_info

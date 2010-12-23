@@ -11,7 +11,7 @@ Catarse::Application.routes.draw do
     get 'guidelines', :on => :collection
     get 'vimeo', :on => :collection
     get 'back', :on => :member
-    post 'pay', :on => :member
+    post 'review', :on => :member
     get 'thank_you', :on => :member
   end
   resources :users, :only => [:show]

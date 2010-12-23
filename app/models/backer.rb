@@ -1,5 +1,6 @@
 # coding: utf-8
 class Backer < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   belongs_to :project
   belongs_to :user
   belongs_to :reward
@@ -20,5 +21,8 @@ class Backer < ActiveRecord::Base
   def should_not_back_if_maximum_backers_been_reached
     return unless reward and reward.maximum_backers and reward.maximum_backers > 0
     errors.add(:reward, "já atingiu seu número máximo de apoiadores") unless reward.backers.count < reward.maximum_backers
+  end
+  def display_value
+    number_to_currency value, :unit => 'R$ ', :precision => 0, :delimiter => '.'
   end
 end

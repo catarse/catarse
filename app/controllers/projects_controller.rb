@@ -47,18 +47,16 @@ class ProjectsController < ApplicationController
       @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
     end
   end
-  def pay
+  def review
     params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
     params[:backer][:user_id] = current_user.id
-    project = Project.find params[:id]
-    backer = project.backers.new(params[:backer])
+    @project = Project.find params[:id]
+    @backer = @project.backers.new(params[:backer])
     # TODO remove the next lines
-    backer.confirmed = true
-    backer.confirmed_at = Time.now
+    @backer.confirmed = true
+    @backer.confirmed_at = Time.now
     # TODO until here
-    if backer.save
-      redirect_to thank_you_project_path(project)
-    else
+    unless @backer.save
       flash[:failure] = "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
       redirect_to back_project_path(project)
     end

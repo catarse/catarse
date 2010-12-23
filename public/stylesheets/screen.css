@@ -1624,11 +1624,50 @@ body#site #back_info #project_info .project_deadline {
   color: #666666;
 }
 /* line 415, ../../app/stylesheets/_projects.sass */
+body#site #project_review {
+  text-align: center;
+  font-size: 28px;
+  line-height: 32px;
+}
+/* line 419, ../../app/stylesheets/_projects.sass */
+body#site #project_review #review_text {
+  margin: 40px 0;
+}
+/* line 421, ../../app/stylesheets/_projects.sass */
+body#site #project_review #review_text .reward {
+  font-style: italic;
+}
+/* line 423, ../../app/stylesheets/_projects.sass */
+body#site #project_review img#project_image {
+  float: left;
+  width: 128px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  margin-right: 20px;
+}
+/* line 428, ../../app/stylesheets/_projects.sass */
+body#site #project_review h1 {
+  text-align: left;
+  font-family: "museo-500" !important;
+  float: left;
+  width: 680px;
+  line-height: 32px;
+  padding-top: 4px !important;
+  color: #222222 !important;
+}
+/* line 436, ../../app/stylesheets/_projects.sass */
+body#site #project_review h2 {
+  color: #222222 !important;
+  margin-top: 20px;
+}
+/* line 439, ../../app/stylesheets/_projects.sass */
 body#site #thank_you {
   margin-top: 10px;
   text-align: center;
 }
-/* line 418, ../../app/stylesheets/_projects.sass */
+/* line 442, ../../app/stylesheets/_projects.sass */
 body#site #thank_you img#project_image {
   float: left;
   width: 128px;
@@ -1638,7 +1677,7 @@ body#site #thank_you img#project_image {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-right: 20px;
 }
-/* line 423, ../../app/stylesheets/_projects.sass */
+/* line 447, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h1 {
   text-align: left;
   font-family: "museo-500" !important;
@@ -1648,12 +1687,12 @@ body#site #thank_you h1 {
   padding-top: 4px !important;
   color: #222222 !important;
 }
-/* line 431, ../../app/stylesheets/_projects.sass */
+/* line 455, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
-/* line 434, ../../app/stylesheets/_projects.sass */
+/* line 458, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img {
   width: 116px;
   -moz-transition-property: all;
@@ -1665,14 +1704,14 @@ body#site #thank_you a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 437, ../../app/stylesheets/_projects.sass */
+/* line 461, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 439, ../../app/stylesheets/_projects.sass */
+/* line 463, ../../app/stylesheets/_projects.sass */
 body#site #thank_you #how_it_works {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
