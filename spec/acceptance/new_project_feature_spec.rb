@@ -4,14 +4,7 @@ feature "New Project Feature" do
   scenario "I'm not logged in and I want to send a project. It should ask for login." do
     visit homepage
     click_link 'Envie seu projeto'
-    click_link 'Twitter'
-    if page.has_button? 'Sign in'
-      fill_in 'username_or_email', :with => 'catarsetest'
-      fill_in 'session[password]', :with => 'testcatarse'
-      click_button 'Sign in'
-    end
-    click_button 'Allow' if page.has_button?('Allow')
-    current_path.should == guidelines_projects_path
+    find("#login").visible?.should be_true
   end
   scenario "I am logged in and I want to send a project" do
     visit homepage
@@ -19,24 +12,18 @@ feature "New Project Feature" do
     click_link 'Envie seu projeto'
     current_path.should == guidelines_projects_path
     within 'head title' do
-      page.should have_content("Envie seu projeto · Catarse") 
+      page.should have_content("Como funciona") 
     end    
     within '#content_header' do
       within 'h1' do
-        page.should have_content("Envie seu projeto")
-      end
-      within 'h2' do
-        page.should have_content("Mas antes, saiba um pouco mais sobre o que você pode ou não pode fazer no Catarse.")
+        page.should have_content("Como funciona")
       end
     end
-    within '#content h1' do
-      page.should have_content("Melhores práticas no Catarse")
-    end
-    uncheck 'Eu li e entendi as melhores práticas no Catarse.'
-    find_button('Continuar')['disabled'].should == 'true'
-    check 'Eu li e entendi as melhores práticas no Catarse.'
-    find_button('Continuar')['disabled'].should == 'false'
-    click_button 'Continuar'
+    uncheck 'accept'
+    find_button('Enviar meu projeto')['disabled'].should == 'true'
+    check 'accept'
+    find_button('Enviar meu projeto')['disabled'].should == 'false'
+    click_button 'Enviar meu projeto'
     current_path.should == new_project_path
     within '#content_header' do
       within 'h1' do
