@@ -4,18 +4,19 @@ gem 'rails', '3.0.0'
 gem 'pg'
 gem 'haml'
 gem 'compass'
-gem "omniauth"
+gem 'omniauth'
 gem 'formtastic', '~> 1.1.0'
 gem 'inherited_resources', '>=1.1.2'
 gem 'maxim-sexy_pg_constraints'
 gem 'spectator-validates_email', :require => 'validates_email'
 gem 'vimeo'
+gem 'wirble'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
-  gem "launchy"
-  gem "database_cleaner"
+  gem 'launchy'
+  gem 'database_cleaner'
   gem 'steak'
-  gem "rspec-rails", "~> 2.0.1"
-  gem "rcov"
+  gem 'rspec-rails', "~> 2.0.1"
+  gem 'rcov'
   gem 'factory_girl_rails'
 end
