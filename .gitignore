@@ -6,6 +6,3 @@ config/database.yml
 
 # Vim
 *.swp
-
-# Authentication keys
-config/initializers/omniauth.rb
