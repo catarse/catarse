@@ -7,42 +7,14 @@ feature "Login Feature" do
     current_path.should == homepage
     find("#login").visible?.should be_false
   end
-  scenario "I'm new to the site and I want to signup with Twitter" do
-    click_login
-    click_link 'Twitter'
-    if page.has_button? 'Sign in'
-      fill_in 'username_or_email', :with => 'catarsetest'
-      fill_in 'session[password]', :with => 'testcatarse'
-      click_button 'Sign in'
-    end
-    click_button 'Allow' if page.has_button?('Allow')
-    current_path.should == homepage
-    page.should have_css('#user')
-    page.should have_link('Catarse Test')
-  end
-  scenario "I'm new to the site and I want to signup with Google" do
-    click_login
-    click_link 'Google'
-    if page.has_button? 'signIn'
-      fill_in 'Email', :with => 'catarsetest'
-      fill_in 'Passwd', :with => 'testcatarse'
-      click_button 'signIn'
-    end
-    click_button 'approve_button' if page.has_button?('approve_button')
-    current_path.should == homepage
-    page.should have_css('#user')
-  end
 
-  scenario "I'm new to the site and I want to signup with github" do
+  scenario "I'm new to the site and I want to signup with a supported provider" do
     click_login
-    click_link 'Github'
-    if page.has_button? 'Log in'
-      fill_in 'login', :with => 'catarsetest'
-      fill_in 'password', :with => 'testcatarse123'
-      click_button 'Log in'
+    ['Twitter', 'Google', 'Github', 'Facebook', 'Yahoo', 'Myspace', 'Linkedin'].each do |provider|
+      page.should have_link(provider)
     end
-    page.evaluate_script("$('#login button:first').click()") if page.evaluate_script("$('#login button:first').length").to_s != '0'
-    current_path.should == homepage
+    fake_login
     page.should have_css('#user')
+    page.should have_link(user.name)
   end
 end
