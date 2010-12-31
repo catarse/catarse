@@ -5,13 +5,9 @@
     = form_tag(auth_path) do
       = hidden_field_tag 'provider'
       = hidden_field_tag 'return_to'
-      = link_to image_tag('auth/twitter_128.png', :title => 'Twitter'), 'twitter', :class => 'provider'
-      = link_to image_tag('auth/facebook_128.png', :title => 'Facebook'), 'facebook', :class => 'provider'
       = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
-      = link_to image_tag('auth/yahoo_128.png', :title => 'Yahoo!'), 'yahoo', :class => 'provider'
-      = link_to image_tag('auth/myspace_128.png', :title => 'MySpace'), 'myspace', :class => 'provider'
-      = link_to image_tag('auth/linkedin_128.png', :title => 'LinkedIn'), 'linkedin', :class => 'provider'
-      = link_to image_tag('auth/github_128.png', :title => 'GitHub'), 'github', :class => 'provider'
+      - OauthProvider.all.each do |p|
+        = link_to image_tag("auth/#{p.name}_128.png", :title => p.name.capitalize), p.name, :class => 'provider'
     %p
       Caso você ainda não seja cadastrado, sua conta será criada. Se você já é cadastrado, você será redirecionado para sua conta após o login.
     %p

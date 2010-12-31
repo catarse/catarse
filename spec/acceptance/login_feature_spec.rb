@@ -10,11 +10,19 @@ feature "Login Feature" do
 
   scenario "I'm new to the site and I want to signup with a supported provider" do
     click_login
-    ['Twitter', 'Google', 'Github', 'Facebook', 'Yahoo', 'Myspace', 'Linkedin'].each do |provider|
-      page.should have_link(provider)
-    end
+    page.should have_link('Google')
+    page.should_not have_link('Github')
+
     fake_login
     page.should have_css('#user')
     page.should have_link(user.name)
+  end
+
+  scenario "After insertion of a new provider it should appear in the login options" do
+    Factory(:oauth_provider)
+    sleep 1
+    click_login
+    page.should have_link('Google')
+    page.should have_link('Github')
   end
 end

@@ -39,7 +39,7 @@ Factory.define :backer do |f|
   f.value 10.00
 end
 Factory.define :oauth_provider do |f|
-  f.name 'twitter'
+  f.name 'github'
   f.key 'test_key'
   f.secret 'test_secret'
 end
