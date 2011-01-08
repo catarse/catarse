@@ -9,13 +9,6 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET escape_string_warning = off;
 
---
--- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: -; Owner: -
---
-
-CREATE OR REPLACE PROCEDURAL LANGUAGE plpgsql;
-
-
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -31,12 +24,12 @@ CREATE TABLE backers (
     project_id integer NOT NULL,
     user_id integer NOT NULL,
     reward_id integer,
-    value double precision NOT NULL,
+    value numeric NOT NULL,
     confirmed boolean DEFAULT false NOT NULL,
     confirmed_at timestamp without time zone,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    CONSTRAINT backers_value_positive CHECK ((value >= (0)::double precision))
+    CONSTRAINT backers_value_positive CHECK ((value >= (0)::numeric))
 );
 
 
@@ -47,8 +40,8 @@ CREATE TABLE backers (
 CREATE SEQUENCE backers_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MINVALUE
     NO MAXVALUE
+    NO MINVALUE
     CACHE 1;
 
 
@@ -65,10 +58,10 @@ ALTER SEQUENCE backers_id_seq OWNED BY backers.id;
 
 CREATE TABLE categories (
     id integer NOT NULL,
-    name character varying(255) NOT NULL,
+    name text NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    CONSTRAINT categories_name_not_blank CHECK ((length(btrim((name)::text)) > 0))
+    CONSTRAINT categories_name_not_blank CHECK ((length(btrim(name)) > 0))
 );
 
 
@@ -79,8 +72,8 @@ CREATE TABLE categories (
 CREATE SEQUENCE categories_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MINVALUE
     NO MAXVALUE
+    NO MINVALUE
     CACHE 1;
 
 
@@ -115,8 +108,8 @@ CREATE TABLE oauth_providers (
 CREATE SEQUENCE oauth_providers_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MINVALUE
     NO MAXVALUE
+    NO MINVALUE
     CACHE 1;
 
 
@@ -133,22 +126,22 @@ ALTER SEQUENCE oauth_providers_id_seq OWNED BY oauth_providers.id;
 
 CREATE TABLE projects (
     id integer NOT NULL,
-    name character varying(255) NOT NULL,
+    name text NOT NULL,
     user_id integer NOT NULL,
     category_id integer NOT NULL,
-    goal double precision NOT NULL,
+    goal numeric NOT NULL,
     deadline timestamp without time zone NOT NULL,
     about text NOT NULL,
-    headline character varying(255) NOT NULL,
-    video_url character varying(255) NOT NULL,
+    headline text NOT NULL,
+    video_url text NOT NULL,
     visible boolean DEFAULT false,
     recommended boolean DEFAULT false,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     CONSTRAINT projects_about_not_blank CHECK ((length(btrim(about)) > 0)),
-    CONSTRAINT projects_headline_length_within CHECK (((length((headline)::text) >= 1) AND (length((headline)::text) <= 140))),
-    CONSTRAINT projects_headline_not_blank CHECK ((length(btrim((headline)::text)) > 0)),
-    CONSTRAINT projects_video_url_not_blank CHECK ((length(btrim((video_url)::text)) > 0))
+    CONSTRAINT projects_headline_length_within CHECK (((length(headline) >= 1) AND (length(headline) <= 140))),
+    CONSTRAINT projects_headline_not_blank CHECK ((length(btrim(headline)) > 0)),
+    CONSTRAINT projects_video_url_not_blank CHECK ((length(btrim(video_url)) > 0))
 );
 
 
@@ -159,8 +152,8 @@ CREATE TABLE projects (
 CREATE SEQUENCE projects_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MINVALUE
     NO MAXVALUE
+    NO MINVALUE
     CACHE 1;
 
 
@@ -178,13 +171,15 @@ ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
 CREATE TABLE rewards (
     id integer NOT NULL,
     project_id integer NOT NULL,
-    minimum_value double precision NOT NULL,
+    minimum_value numeric NOT NULL,
     maximum_backers integer,
+    description text NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    description character varying(255),
+    CONSTRAINT rewards_description_length_within CHECK (((length(description) >= 1) AND (length(description) <= 140))),
+    CONSTRAINT rewards_description_not_blank CHECK ((length(btrim(description)) > 0)),
     CONSTRAINT rewards_maximum_backers_positive CHECK ((maximum_backers >= 0)),
-    CONSTRAINT rewards_minimum_value_positive CHECK ((minimum_value >= (0)::double precision))
+    CONSTRAINT rewards_minimum_value_positive CHECK ((minimum_value >= (0)::numeric))
 );
 
 
@@ -195,8 +190,8 @@ CREATE TABLE rewards (
 CREATE SEQUENCE rewards_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MINVALUE
     NO MAXVALUE
+    NO MINVALUE
     CACHE 1;
 
 
@@ -222,20 +217,20 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE users (
     id integer NOT NULL,
-    provider character varying(255) NOT NULL,
-    uid character varying(255) NOT NULL,
-    email character varying(255),
-    name character varying(255),
-    nickname character varying(255),
-    bio character varying(255),
-    image_url character varying(255),
+    provider text NOT NULL,
+    uid text NOT NULL,
+    email text,
+    name text,
+    nickname text,
+    bio text,
+    image_url text,
     newsletter boolean DEFAULT false,
     project_updates boolean DEFAULT false,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    CONSTRAINT users_bio_length_within CHECK (((length((bio)::text) >= 0) AND (length((bio)::text) <= 140))),
-    CONSTRAINT users_provider_not_blank CHECK ((length(btrim((provider)::text)) > 0)),
-    CONSTRAINT users_uid_not_blank CHECK ((length(btrim((uid)::text)) > 0))
+    CONSTRAINT users_bio_length_within CHECK (((length(bio) >= 0) AND (length(bio) <= 140))),
+    CONSTRAINT users_provider_not_blank CHECK ((length(btrim(provider)) > 0)),
+    CONSTRAINT users_uid_not_blank CHECK ((length(btrim(uid)) > 0))
 );
 
 
@@ -246,8 +241,8 @@ CREATE TABLE users (
 CREATE SEQUENCE users_id_seq
     START WITH 1
     INCREMENT BY 1
-    NO MINVALUE
     NO MAXVALUE
+    NO MINVALUE
     CACHE 1;
 
 
@@ -447,20 +442,6 @@ CREATE INDEX index_users_on_email ON users USING btree (email);
 --
 
 CREATE INDEX index_users_on_name ON users USING btree (name);
-
-
---
--- Name: index_users_on_provider; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_provider ON users USING btree (provider);
-
-
---
--- Name: index_users_on_provider_and_uid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_users_on_provider_and_uid ON users USING btree (provider, uid);
 
 
 --
