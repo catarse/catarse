@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["user_info"]["name"]
+      user.email = auth["user_info"]["email"] 
+      user.email = auth["extra"]["user_hash"]["email"] if auth["extra"] and user.email.nil?
       user.nickname = auth["user_info"]["nickname"]
       user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
       user.image_url = auth["user_info"]["image"]
