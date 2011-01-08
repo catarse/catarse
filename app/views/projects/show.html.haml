@@ -61,11 +61,14 @@
         %fieldset
           = submit_tag 'Quero apoiar este projeto', :disabled => @project.expired?
   #rewards
-    %h1 Recompensas para quem apoiar
+    %h1
+      Apoie e ganhe...
+      = image_tag 'rewards_left_border.png', :id => 'rewards_left_border'
+      = image_tag 'rewards_right_border.png', :id => 'rewards_right_border'
     %ul
       - @rewards.each do |reward|
         %li
-          %h1 Apoie com #{reward.display_minimum}+
+          %h1 Para #{reward.display_minimum} ou mais
           = reward.description
           .clear
           - if reward.maximum_backers

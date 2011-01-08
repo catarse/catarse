@@ -1357,54 +1357,88 @@ body#site #project_back_info #back_project form input[type=submit]:disabled {
 /* line 262, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards {
   margin-top: 24px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -o-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -khtml-border-radius: 8px;
-  border-radius: 8px;
-  border: 5px solid #eeeeee;
-  border: 5px solid rgba(100, 100, 100, 0.1);
-  padding: 12px;
   font-size: 16px;
 }
-/* line 269, ../../app/stylesheets/_projects.sass */
+/* line 265, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards h1 {
+  background-color: #0084b9 !important;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
-  padding: 0;
-  padding-bottom: 16px;
+  text-align: center;
+  padding: 8px 0;
   font-size: 16px;
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
+  position: relative;
 }
-/* line 278, ../../app/stylesheets/_projects.sass */
+/* line 276, ../../app/stylesheets/_projects.sass */
+body#site #project_back_info #rewards h1 img {
+  position: absolute;
+  top: 0;
+}
+/* line 279, ../../app/stylesheets/_projects.sass */
+body#site #project_back_info #rewards h1 #rewards_left_border {
+  left: -8px;
+}
+/* line 282, ../../app/stylesheets/_projects.sass */
+body#site #project_back_info #rewards h1 #rewards_right_border {
+  right: -8px;
+}
+/* line 284, ../../app/stylesheets/_projects.sass */
+body#site #project_back_info #rewards ul {
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -o-border-bottom-left-radius: 8px;
+  -ms-border-bottom-left-radius: 8px;
+  -khtml-border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -o-border-bottom-right-radius: 8px;
+  -ms-border-bottom-right-radius: 8px;
+  -khtml-border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 2px solid #dddddd;
+  border: 2px solid rgba(100, 100, 100, 0.2);
+  border-top: 0;
+  padding: 12px;
+}
+/* line 291, ../../app/stylesheets/_projects.sass */
+body#site #project_back_info #rewards ul h1 {
+  text-align: left;
+  padding-bottom: 4px !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  text-shadow: white 1px 1px 0px;
+}
+/* line 297, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul li {
   padding: 8px 0;
   border-bottom: 1px solid #dddddd;
 }
-/* line 281, ../../app/stylesheets/_projects.sass */
+/* line 300, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul li h1 {
   padding: 0;
   color: #222222;
 }
-/* line 284, ../../app/stylesheets/_projects.sass */
+/* line 303, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul li:last-child {
   border: 0;
   padding-bottom: 0;
 }
-/* line 287, ../../app/stylesheets/_projects.sass */
+/* line 306, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards .maximum_backers {
   margin-top: 8px;
   font-size: 14px;
 }
-/* line 290, ../../app/stylesheets/_projects.sass */
+/* line 309, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards .maximum_backers .limited {
   float: left;
   font-weight: bold;
   text-transform: uppercase;
 }
-/* line 294, ../../app/stylesheets/_projects.sass */
+/* line 313, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards .maximum_backers .sold_out {
   float: left;
   font-weight: bold;
@@ -1421,25 +1455,25 @@ body#site #project_back_info #rewards .maximum_backers .sold_out {
   text-shadow: black 1px 1px 0px;
   padding: 0 8px;
 }
-/* line 304, ../../app/stylesheets/_projects.sass */
+/* line 323, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards .maximum_backers .remaining {
   float: left;
   margin-left: 12px;
   font-size: 12px;
   font-weight: bold;
 }
-/* line 309, ../../app/stylesheets/_projects.sass */
+/* line 328, ../../app/stylesheets/_projects.sass */
 body#site #back_options {
   float: left;
   width: 422px;
   margin-top: -14px;
 }
-/* line 314, ../../app/stylesheets/_projects.sass */
+/* line 333, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form fieldset {
   padding: 0;
   margin: 0;
 }
-/* line 317, ../../app/stylesheets/_projects.sass */
+/* line 336, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input[type=text] {
   font-size: 48px;
   width: 392px;
@@ -1447,38 +1481,38 @@ body#site #back_options #backer_form input[type=text] {
   border: 3px solid #003c00;
   border: 3px solid rgba(0, 60, 0, 0.6);
 }
-/* line 323, ../../app/stylesheets/_projects.sass */
+/* line 342, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input[type=text]:focus {
   background-color: #009600;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 326, ../../app/stylesheets/_projects.sass */
+/* line 345, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input.ok, body#site #back_options #backer_form textarea.ok {
   background: url("/images/tick_32.png") no-repeat 96% center;
 }
-/* line 328, ../../app/stylesheets/_projects.sass */
+/* line 347, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input.error, body#site #back_options #backer_form textarea.error {
   background: url("/images/delete_32.png") no-repeat 96% center;
 }
-/* line 330, ../../app/stylesheets/_projects.sass */
+/* line 349, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form p.inline-hints {
   font-size: 18px;
   margin-top: 8px;
   margin-bottom: 28px;
 }
-/* line 334, ../../app/stylesheets/_projects.sass */
+/* line 353, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input[type=radio] {
   float: left;
   margin: 8px 16px 0 0;
 }
-/* line 337, ../../app/stylesheets/_projects.sass */
+/* line 356, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form label {
   font-family: "museo-300";
   font-size: 24px;
   line-height: 28px;
   padding-bottom: 8px;
 }
-/* line 342, ../../app/stylesheets/_projects.sass */
+/* line 361, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol {
   background-color: #dddddd;
   -moz-border-radius: 12px;
@@ -1492,13 +1526,13 @@ body#site #back_options #backer_form li.radio ol {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
 }
-/* line 346, ../../app/stylesheets/_projects.sass */
+/* line 365, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li {
   line-height: 22px;
   border-bottom: 2px solid #eeeeee;
   padding: 10px 20px;
 }
-/* line 350, ../../app/stylesheets/_projects.sass */
+/* line 369, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li:first-child {
   -moz-border-radius-topleft: 12px;
   -webkit-border-top-left-radius: 12px;
@@ -1513,7 +1547,7 @@ body#site #back_options #backer_form li.radio ol li:first-child {
   -khtml-border-top-right-radius: 12px;
   border-top-right-radius: 12px;
 }
-/* line 353, ../../app/stylesheets/_projects.sass */
+/* line 372, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li:last-child {
   -moz-border-radius-bottomleft: 12px;
   -webkit-border-bottom-left-radius: 12px;
@@ -1529,18 +1563,18 @@ body#site #back_options #backer_form li.radio ol li:last-child {
   border-bottom-right-radius: 12px;
   border: none;
 }
-/* line 357, ../../app/stylesheets/_projects.sass */
+/* line 376, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li:hover {
   background-color: #bbddbb;
 }
-/* line 359, ../../app/stylesheets/_projects.sass */
+/* line 378, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li label {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
 }
-/* line 364, ../../app/stylesheets/_projects.sass */
+/* line 383, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li label .sold_out {
   font-size: 14px;
   margin-bottom: 8px;
@@ -1559,28 +1593,28 @@ body#site #back_options #backer_form li.radio ol li label .sold_out {
   text-shadow: black 1px 1px 0px;
   padding: 0 8px;
 }
-/* line 376, ../../app/stylesheets/_projects.sass */
+/* line 395, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form .reward_minimum_value {
   font-weight: bold;
   float: left;
 }
-/* line 379, ../../app/stylesheets/_projects.sass */
+/* line 398, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form .reward_description {
   float: left;
   margin-left: 28px;
 }
-/* line 382, ../../app/stylesheets/_projects.sass */
+/* line 401, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form .buttons {
   text-align: center;
   margin-top: 32px;
 }
-/* line 385, ../../app/stylesheets/_projects.sass */
+/* line 404, ../../app/stylesheets/_projects.sass */
 body#site #back_info {
   float: right;
   width: 362px;
   font-size: 16px;
 }
-/* line 389, ../../app/stylesheets/_projects.sass */
+/* line 408, ../../app/stylesheets/_projects.sass */
 body#site #back_info img {
   float: left;
   width: 128px;
@@ -1590,32 +1624,32 @@ body#site #back_info img {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-bottom: 16px;
 }
-/* line 394, ../../app/stylesheets/_projects.sass */
+/* line 413, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info {
   float: right;
   width: 204px;
   margin-bottom: 16px;
 }
-/* line 398, ../../app/stylesheets/_projects.sass */
+/* line 417, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_name a {
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
 }
-/* line 402, ../../app/stylesheets/_projects.sass */
+/* line 421, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_owner {
   color: #777777;
 }
-/* line 404, ../../app/stylesheets/_projects.sass */
+/* line 423, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_owner a {
   text-decoration: none;
   color: #222222;
 }
-/* line 407, ../../app/stylesheets/_projects.sass */
+/* line 426, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_owner a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 409, ../../app/stylesheets/_projects.sass */
+/* line 428, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_deadline {
   font-size: 16px;
   margin-top: 8px;
@@ -1623,21 +1657,21 @@ body#site #back_info #project_info .project_deadline {
   text-transform: uppercase;
   color: #666666;
 }
-/* line 415, ../../app/stylesheets/_projects.sass */
+/* line 434, ../../app/stylesheets/_projects.sass */
 body#site #project_review {
   text-align: center;
   font-size: 28px;
   line-height: 32px;
 }
-/* line 419, ../../app/stylesheets/_projects.sass */
+/* line 438, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_text {
   margin: 40px 0;
 }
-/* line 421, ../../app/stylesheets/_projects.sass */
+/* line 440, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_text .reward {
   font-style: italic;
 }
-/* line 423, ../../app/stylesheets/_projects.sass */
+/* line 442, ../../app/stylesheets/_projects.sass */
 body#site #project_review img#project_image {
   float: left;
   width: 128px;
@@ -1647,7 +1681,7 @@ body#site #project_review img#project_image {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-right: 20px;
 }
-/* line 428, ../../app/stylesheets/_projects.sass */
+/* line 447, ../../app/stylesheets/_projects.sass */
 body#site #project_review h1 {
   text-align: left;
   font-family: "museo-500" !important;
@@ -1657,17 +1691,17 @@ body#site #project_review h1 {
   padding-top: 4px !important;
   color: #222222 !important;
 }
-/* line 436, ../../app/stylesheets/_projects.sass */
+/* line 455, ../../app/stylesheets/_projects.sass */
 body#site #project_review h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
-/* line 439, ../../app/stylesheets/_projects.sass */
+/* line 458, ../../app/stylesheets/_projects.sass */
 body#site #thank_you {
   margin-top: 10px;
   text-align: center;
 }
-/* line 442, ../../app/stylesheets/_projects.sass */
+/* line 461, ../../app/stylesheets/_projects.sass */
 body#site #thank_you img#project_image {
   float: left;
   width: 128px;
@@ -1677,7 +1711,7 @@ body#site #thank_you img#project_image {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-right: 20px;
 }
-/* line 447, ../../app/stylesheets/_projects.sass */
+/* line 466, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h1 {
   text-align: left;
   font-family: "museo-500" !important;
@@ -1687,12 +1721,12 @@ body#site #thank_you h1 {
   padding-top: 4px !important;
   color: #222222 !important;
 }
-/* line 455, ../../app/stylesheets/_projects.sass */
+/* line 474, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
-/* line 458, ../../app/stylesheets/_projects.sass */
+/* line 477, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img {
   width: 116px;
   -moz-transition-property: all;
@@ -1704,14 +1738,14 @@ body#site #thank_you a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 461, ../../app/stylesheets/_projects.sass */
+/* line 480, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 463, ../../app/stylesheets/_projects.sass */
+/* line 482, ../../app/stylesheets/_projects.sass */
 body#site #thank_you #how_it_works {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
