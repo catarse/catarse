@@ -28,3 +28,4 @@ class SessionsController < ApplicationController
     redirect_to :root
   end
 end
+

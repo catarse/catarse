@@ -5,6 +5,7 @@ class CreateOauthProviders < ActiveRecord::Migration
       t.text :name, :null => false
       t.text :key, :null => false
       t.text :secret, :null => false
+      t.integer :order
       t.timestamps
     end
     constrain :oauth_providers do |t|
@@ -18,3 +19,4 @@ class CreateOauthProviders < ActiveRecord::Migration
     drop_table :oauth_providers
   end
 end
+
