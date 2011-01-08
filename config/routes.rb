@@ -13,6 +13,7 @@ Catarse::Application.routes.draw do
     get 'back', :on => :member
     post 'review', :on => :member
     get 'thank_you', :on => :member
+    get 'backers', :on => :member
   end
   resources :users, :only => [:show]
 end

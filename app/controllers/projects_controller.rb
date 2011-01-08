@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
     show!{
       @title = @project.name
       @rewards = @project.rewards.order(:minimum_value)
+      @backers = @project.backers.confirmed.limit(6).order(:confirmed_at)
     }
   end
   def guidelines
@@ -52,10 +53,6 @@ class ProjectsController < ApplicationController
     params[:backer][:user_id] = current_user.id
     @project = Project.find params[:id]
     @backer = @project.backers.new(params[:backer])
-    # TODO remove the next lines
-    @backer.confirmed = true
-    @backer.confirmed_at = Time.now
-    # TODO until here
     unless @backer.save
       flash[:failure] = "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
       redirect_to back_project_path(project)
@@ -64,6 +61,12 @@ class ProjectsController < ApplicationController
   def thank_you
     show! do
       @title = "Muito obrigado"
+    end
+  end
+  def backers
+    show! do
+      @title = "Apoiadores do projeto #{@project.name}"
+      @backers = @project.backers.confirmed.order(:confirmed_at)
     end
   end
 end
