@@ -1,0 +1,59 @@
+#project_back_info
+  #back_project
+    .info
+      .number= @project.total_backers
+      Pessoas já apoiaram
+      .number= @project.display_pledged
+      Atingidos de
+      %strong= @project.display_goal
+      .number= @project.days_to_go
+      Dias restantes
+      .project_progress
+        .progress_bar
+          .progress{ :style => "width: #{ @project.display_percent }%" }
+            &nbsp;
+    - if @project.successful?
+      .project_warning.successful
+        .text
+          - if @project.expired?
+            Este projeto foi financiado em #{@project.display_deadline}
+          - else
+            Este projeto será financiado em #{@project.display_deadline}
+    - else
+      .project_warning.not_successful
+        .text
+          - if @project.expired?
+            Este projeto não atingiu o mínimo de #{@project.display_goal} até #{@project.display_deadline} e não foi financiado
+          - else
+            Este projeto só será financiado se pelo menos #{@project.display_goal} forem atingidos até #{@project.display_deadline}
+    .info
+      = form_tag(back_project_path(@project), :method => :get, :id => 'back_project_form') do
+        %fieldset
+          = submit_tag 'Quero apoiar este projeto', :disabled => @project.expired?
+  #rewards
+    %h1
+      Apoie e ganhe...
+      = image_tag 'rewards_left_border.png', :id => 'rewards_left_border'
+      = image_tag 'rewards_right_border.png', :id => 'rewards_right_border'
+    %ul
+      - @rewards.each do |reward|
+        %li
+          %h1 Para #{reward.display_minimum} ou mais
+          = reward.description
+          .clear
+          - if reward.maximum_backers
+            .maximum_backers
+              - if reward.sold_out?
+                .sold_out Esgotada
+              - else
+                .limited Recompensa limitada
+              .remaining
+                = reward.remaining
+                de
+                = reward.maximum_backers
+                disponíveis
+            .clear
+  - unless @backers.empty? or show_backers == false
+    = render :partial => 'backers', :locals => {:show_all_link => true, :show_badge => false}
+.clear
+= javascript_include_tag 'show_project'

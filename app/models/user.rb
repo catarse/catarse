@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     name || nickname || "Sem nome"
   end
   def display_image
-    image_url || gravatar_url || 'user.png'
+    gravatar_url || image_url || 'user.png'
   end
   def backer?
     backs.confirmed.count > 0

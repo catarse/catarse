@@ -1,0 +1,18 @@
+#project_backers
+  %h1 Quem já apoiou este projeto
+  %ul
+    - @backers.each do |backer|
+      %li
+        = backer.confirmed_at.strftime('%d/%m') if backer.confirmed_at
+        = link_to user_path(backer.user) do
+          = image_tag backer.user.display_image, :class => 'user'
+          = backer.user.name
+          = image_tag 'badge.png', :class => "badge" if show_badge
+        %p 
+          - if backer.user.backs.confirmed.count > 1
+            Apoiou este e mais outros #{backer.user.backs.confirmed.count} projetos
+          - else
+            Apoiou somente este projeto até agora
+  - if show_all_link
+    #all_backers
+      = link_to "Todos os apoiadores", backers_project_path(@project)

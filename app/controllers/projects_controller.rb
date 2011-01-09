@@ -66,6 +66,7 @@ class ProjectsController < ApplicationController
   def backers
     show! do
       @title = "Apoiadores do projeto #{@project.name}"
+      @rewards = @project.rewards.order(:minimum_value)
       @backers = @project.backers.confirmed.order(:confirmed_at)
     end
   end

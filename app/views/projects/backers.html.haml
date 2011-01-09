@@ -1,0 +1,6 @@
+= content_for :content_header do
+  %h1 Apoiadores do #{link_to @project.name, project_path(@project)}
+  %h2 Este é o grupo que faz de tudo para este projeto acontecer. Faça parte você também!
+#project_description
+  #backers= render :partial => 'backers', :locals => {:show_all_link => false, :show_badge => true}
+= render :partial => 'back_info', :locals => {:show_backers => false}
