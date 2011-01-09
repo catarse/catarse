@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
   has_many :backs, :class_name => "Backer"
-
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
+  end
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth["provider"]
