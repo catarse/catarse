@@ -1,5 +1,9 @@
 Catarse::Application.routes.draw do
-  root :to => "projects#index"
+  
+  # TODO change back the root to "projects#index" when we launch
+  #root :to => "projects#index"
+  root :to => "projects#teaser"
+  
   post "/auth" => "sessions#auth", :as => :auth
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
@@ -8,6 +12,7 @@ Catarse::Application.routes.draw do
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
   resources :projects, :only => [:index, :new, :create, :show] do
+    get 'teaser', :on => :collection
     get 'guidelines', :on => :collection
     get 'vimeo', :on => :collection
     get 'back', :on => :member
