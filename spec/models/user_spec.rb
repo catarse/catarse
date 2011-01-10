@@ -74,7 +74,7 @@ describe User do
     u.display_name.should == "Sem nome"
   end
   it "should have a display_image that shows the user's image or user.png when email is null" do
-    u = Factory(:user, :image_url => "image.png")
+    u = Factory(:user, :image_url => "image.png", :email => nil)
     u.display_image.should == "image.png"
     u = Factory(:user, :image_url => nil, :email => nil)
     u.display_image.should == "user.png"
