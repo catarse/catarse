@@ -223,7 +223,7 @@ a img {
   padding-bottom: 0 !important;
 }
 
-/* line 22, ../../app/stylesheets/screen.sass */
+/* line 23, ../../app/stylesheets/screen.sass */
 body#site {
   background: url("/images/bg.png") repeat;
   text-rendering: optimizeLegibility;
@@ -416,7 +416,7 @@ body#site form .important {
 body#site form .important a {
   color: black;
 }
-/* line 25, ../../app/stylesheets/screen.sass */
+/* line 26, ../../app/stylesheets/screen.sass */
 body#site .flash {
   -moz-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
@@ -444,7 +444,7 @@ body#site .flash .failure.wrapper, body#site .flash .error.wrapper {
   background-image: -moz-linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
   background-image: linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
 }
-/* line 27, ../../app/stylesheets/screen.sass */
+/* line 28, ../../app/stylesheets/screen.sass */
 body#site .overlay {
   background-color: #dddddd;
   background: rgba(180, 180, 180, 0.8);
@@ -455,7 +455,7 @@ body#site .overlay {
   height: 100%;
   z-index: 100;
 }
-/* line 29, ../../app/stylesheets/screen.sass */
+/* line 30, ../../app/stylesheets/screen.sass */
 body#site #login {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -573,7 +573,7 @@ body#site #login a.close:hover, body#site #login a.close:focus {
   -o-transform: scale(1.05);
   transform: scale(1.05);
 }
-/* line 31, ../../app/stylesheets/screen.sass */
+/* line 32, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
@@ -602,7 +602,7 @@ body#site #header h1 a {
 body#site #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 35, ../../app/stylesheets/screen.sass */
+/* line 36, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
   margin-top: 48px;
@@ -641,7 +641,7 @@ body#site #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 37, ../../app/stylesheets/screen.sass */
+/* line 38, ../../app/stylesheets/screen.sass */
 body#site #user {
   float: right;
   margin-top: 22px;
@@ -758,7 +758,7 @@ body#site #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 39, ../../app/stylesheets/screen.sass */
+/* line 40, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
@@ -773,7 +773,7 @@ body#site #content_wrapper {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 41, ../../app/stylesheets/screen.sass */
+/* line 42, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content_header {
   position: relative;
   text-align: center;
@@ -859,7 +859,7 @@ body#site #content_wrapper #content_header #badge:hover {
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 43, ../../app/stylesheets/screen.sass */
+/* line 44, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content {
   padding: 40px;
 }
@@ -1862,7 +1862,7 @@ body#site #thank_you #how_it_works {
   font-size: 18px;
   margin-top: 40px;
 }
-/* line 47, ../../app/stylesheets/screen.sass */
+/* line 48, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 20px 0 80px 0;
@@ -1989,4 +1989,26 @@ body#site #footer #colophon a#softa_logo {
 /* line 45, ../../app/stylesheets/_footer.sass */
 body#site #footer #colophon a#softa_logo:hover {
   background-position: 0 -50px;
+}
+/* line 50, ../../app/stylesheets/screen.sass */
+body#site #teaser {
+  text-align: center;
+}
+/* line 3, ../../app/stylesheets/_teaser.sass */
+body#site #teaser iframe {
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px 0;
+}
+/* line 5, ../../app/stylesheets/_teaser.sass */
+body#site #teaser h1 {
+  margin-top: 32px;
+  color: #dd3333 !important;
+}
+/* line 8, ../../app/stylesheets/_teaser.sass */
+body#site #teaser h2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  color: #666666 !important;
+  line-height: 32px;
 }

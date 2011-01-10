@@ -2,6 +2,10 @@
 class ProjectsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :create, :edit, :update
+  def teaser
+    @title = "Faça acontecer os projetos em que você acredita"
+    render :layout => 'teaser'
+  end
   def index
     index! do
       @title = "Faça acontecer os projetos em que você acredita"
