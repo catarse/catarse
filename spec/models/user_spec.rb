@@ -81,7 +81,7 @@ describe User do
   end
   it "should insert a gravatar in user's image if there is one available" do
     u = Factory(:user, :image_url => nil, :email => 'diogob@gmail.com')
-    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=http://catarse.heroku.com/images/user.png"
+    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=http://catarse.me/images/user.png"
   end
 end
 
