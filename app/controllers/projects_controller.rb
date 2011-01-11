@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   def teaser
     @title = "Faça acontecer os projetos em que você acredita"
     if params[:status] == "success"
-      flash.now[:success] = "Seu email foi adicionado com sucesso em nossa lista. Muito obrigado!"
+      flash.now[:success] = "Pronto. Agora é só verificar sua caixa de entrada e confirmar o cadastro. Muito obrigado!"
     elsif params[:status] == "failure"
       flash.now[:failure] = "Ooops. Ocorreu um erro ao adicionar seu email em nossa lista. Por favor, tente novamente."
     end
