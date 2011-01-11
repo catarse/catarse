@@ -886,12 +886,16 @@ body#site #content_wrapper #content h3 {
 body#site #content_wrapper #content p {
   padding-bottom: 20px;
 }
-/* line 3, ../../app/stylesheets/_profile.sass */
+/* line 2, ../../app/stylesheets/_profile.sass */
+body#site #profile_header {
+  width: 760px;
+}
+/* line 4, ../../app/stylesheets/_profile.sass */
 body#site #profile_header .image {
   float: left;
   padding: 20px;
 }
-/* line 6, ../../app/stylesheets/_profile.sass */
+/* line 7, ../../app/stylesheets/_profile.sass */
 body#site #profile_header .image img {
   background-color: white;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
@@ -901,14 +905,69 @@ body#site #profile_header .image img {
   max-width: 128px;
   max-height: 128px;
 }
-/* line 12, ../../app/stylesheets/_profile.sass */
+/* line 13, ../../app/stylesheets/_profile.sass */
 body#site #profile_header .info h1, body#site #profile_header .info h2 {
   text-align: left;
 }
-/* line 14, ../../app/stylesheets/_profile.sass */
+/* line 15, ../../app/stylesheets/_profile.sass */
 body#site #profile_header .info h2 {
   margin: 0 !important;
   padding: 0 !important;
+}
+/* line 18, ../../app/stylesheets/_profile.sass */
+body#site #user_feed {
+  color: #444444;
+  font-size: 22px;
+  line-height: 28px;
+}
+/* line 22, ../../app/stylesheets/_profile.sass */
+body#site #user_feed h1 {
+  font-size: 26px !important;
+  color: #999999 !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+/* line 27, ../../app/stylesheets/_profile.sass */
+body#site #user_feed img.project {
+  float: left;
+  margin-right: 12px;
+  width: 160px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+}
+/* line 32, ../../app/stylesheets/_profile.sass */
+body#site #user_feed a {
+  text-decoration: none !important;
+  font-size: 22px;
+  line-height: 28px;
+}
+/* line 36, ../../app/stylesheets/_profile.sass */
+body#site #user_feed p {
+  font-size: 18px;
+  color: #666666;
+}
+/* line 39, ../../app/stylesheets/_profile.sass */
+body#site #user_feed ul li {
+  margin-top: 32px;
+}
+/* line 41, ../../app/stylesheets/_profile.sass */
+body#site #user_feed ul li:first-child {
+  margin-top: 24px;
+}
+/* line 43, ../../app/stylesheets/_profile.sass */
+body#site #user_feed ul li:last-child {
+  margin-bottom: 24px;
+}
+/* line 45, ../../app/stylesheets/_profile.sass */
+body#site #user_feed div {
+  margin-top: 24px;
+}
+/* line 47, ../../app/stylesheets/_profile.sass */
+body#site #user_feed hr {
+  margin: 20px 0;
+  border: 1px dashed transparent;
 }
 /* line 2, ../../app/stylesheets/_projects.sass */
 body#site .project_box {

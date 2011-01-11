@@ -42,7 +42,7 @@ class Project < ActiveRecord::Base
     "http://player.vimeo.com/video/#{vimeo_id}"
   end
   def display_image
-    return "user.png" unless vimeo
+    return "user.png" unless vimeo and vimeo["thumbnail_large"]
     vimeo["thumbnail_large"]
   end
   def display_about

@@ -4,7 +4,33 @@
     .image
       = image_tag @user.display_image
     .info
-      %h1
-        = @user.display_name
+      %h1= @user.display_name
       %h2= @user.bio
     .clear
+#user_feed
+  %h1 Projetos de #{@user.display_name}
+  - if @projects.empty?
+    #no_projects #{@user.display_name} ainda não enviou nenhum projeto para o Catarse. Será que a inspiração vai bater uma hora dessas?
+  - else
+    %ul
+      - @projects.each do |project|
+        %li
+          = link_to project_path(project) do
+            = image_tag project.display_image, :class => 'project'
+            = project.name
+          %p= project.headline
+          .clear
+  %hr
+  %h1 Projetos que #{@user.display_name} já apoiou
+  - if @backs.empty?
+    #no_backs #{@user.display_name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D
+  - else
+    %ul
+      - @backs.each do |back|
+        %li
+          = back.confirmed_at.strftime('%d/%m') if back.confirmed_at
+          = link_to project_path(back.project) do
+            = image_tag back.project.display_image, :class => 'project'
+            = back.project.name
+          %p= back.project.headline
+          .clear

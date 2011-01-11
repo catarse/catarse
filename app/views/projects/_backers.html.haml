@@ -6,7 +6,7 @@
         = backer.confirmed_at.strftime('%d/%m') if backer.confirmed_at
         = link_to user_path(backer.user) do
           = image_tag backer.user.display_image, :class => 'user'
-          = backer.user.name
+          = backer.user.display_name
           = image_tag 'badge.png', :class => "badge" if show_badge
         %p 
           - if backer.user.backs.confirmed.count > 1

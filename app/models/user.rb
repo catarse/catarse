@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
   has_many :backs, :class_name => "Backer"
+  has_many :projects
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end
@@ -33,6 +34,6 @@ class User < ActiveRecord::Base
 
   # Returns a Gravatar URL associated with the email parameter
   def gravatar_url
-    email.nil? ? nil : "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=http://catarse.heroku.com/images/user.png"
+    email.nil? ? nil : "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=http://catarse.me/images/user.png"
   end
 end
