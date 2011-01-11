@@ -4,6 +4,11 @@ class ProjectsController < ApplicationController
   actions :index, :show, :new, :create, :edit, :update
   def teaser
     @title = "Faça acontecer os projetos em que você acredita"
+    if params[:status] == "success"
+      flash.now[:success] = "Seu email foi adicionado com sucesso em nossa lista. Muito obrigado!"
+    elsif params[:status] == "failure"
+      flash.now[:failure] = "Ooops. Ocorreu um erro ao adicionar seu email em nossa lista. Por favor, tente novamente."
+    end
     render :layout => 'teaser'
   end
   def index

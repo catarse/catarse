@@ -4,4 +4,15 @@
 #teaser
   %iframe{:src=>"http://player.vimeo.com/video/17998584",:width=>"600",:height=>"450",:frameborder=>"0"}
   %h1 O Catarse será lançado nos próximos dias!
+  #mailee
+    Deixe seu email para ser avisado assim que entrar no ar
+    = form_tag 'http://catarse.mailee.me/go/add_contact_form', :id=>'mailee-form' do
+      %fieldset
+        = hidden_field_tag 'key', '13122d'
+        = hidden_field_tag 'url_ok', 'http://catarse.me/?status=success'
+        = hidden_field_tag 'url_error', 'http://catarse.me/?status=failure'
+        = hidden_field_tag 'list[]', '24484'
+        = text_field_tag 'email'
+        = submit_tag 'Enviar', :disabled => true
   %h2 Enquanto isso, você pode conferir o vídeo acima, que fizemos para o blog #{link_to "Crowdfunding Brasil", "http://crowdfundingbr.com.br", :target => :_blank}, demonstrando o site.
+= javascript_include_tag 'teaser'

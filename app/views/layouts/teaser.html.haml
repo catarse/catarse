@@ -16,7 +16,7 @@
     #main
       #header
         %h1= link_to "Catarse", root_path
-        = render '/layouts/user' if current_user
+        -#= render '/layouts/user' if current_user
         #menu
           -#%ul
             %li= link_to "Envie seu projeto", guidelines_projects_path, :id => 'new_project_link'
