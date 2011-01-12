@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/stylesheets/_projects.sass</string>
+	<string>app/controllers/projects_controller.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -26,95 +26,95 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>38</integer>
+				<integer>101</integer>
 				<key>line</key>
-				<integer>67</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>37</integer>
+			<integer>0</integer>
 		</dict>
-		<key>app/stylesheets/_projects.sass</key>
+		<key>app/stylesheets/_form.sass</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>21</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>324</integer>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>316</integer>
+			<integer>7</integer>
 		</dict>
-		<key>app/stylesheets/_user.sass</key>
+		<key>app/stylesheets/_teaser.sass</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>20</integer>
+				<integer>23</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/projects/teaser.html.haml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>33</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/javascripts/project_form.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>42</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>18</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>19</integer>
+				<integer>41</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>20</integer>
+				<integer>42</integer>
 			</dict>
 		</dict>
-		<key>app/views/projects/backers.html.haml</key>
+		<key>public/javascripts/teaser.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>app/views/projects/show.html.haml</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>74</integer>
-				<key>line</key>
-				<integer>91</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>68</integer>
-		</dict>
-		<key>config/routes.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>16</integer>
-				<key>line</key>
-				<integer>15</integer>
+				<integer>11</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -124,12 +124,12 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/views/projects/show.html.haml</string>
+		<string>app/views/projects/teaser.html.haml</string>
 		<string>app/controllers/projects_controller.rb</string>
-		<string>app/views/projects/backers.html.haml</string>
-		<string>config/routes.rb</string>
-		<string>app/stylesheets/_projects.sass</string>
-		<string>app/stylesheets/_user.sass</string>
+		<string>public/javascripts/teaser.js</string>
+		<string>public/javascripts/project_form.js</string>
+		<string>app/stylesheets/_teaser.sass</string>
+		<string>app/stylesheets/_form.sass</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
