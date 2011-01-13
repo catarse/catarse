@@ -12,9 +12,28 @@
     .info
       h1, h2
         text-align: left
+        .on_the_spot_mouseover
+          background-color: rgb(0,150,0)
+          background-color: rgba(0,150,0,0.5)
+        .on_the_spot_editing
+          form
+            input,textarea
+              background-color: #cfc
+      h1
+        .on_the_spot_editing
+          form
+            input
+              font-family: "museo-500"
+              font-size: 32px
       h2
         margin: 0 !important
         padding: 0 !important
+        .on_the_spot_editing
+          form
+            textarea
+              width: 600px
+              height: 40px
+              
   #user_feed
     color: #444
     font-size: 22px
@@ -47,3 +66,31 @@
     hr
       margin: 20px 0
       border: 1px dashed transparent
+    #gravatar_hint
+      background-color: #FFA
+      background-color: rgba(255, 255, 160, 0.6)
+      font-family: "museo-300"
+      font-size: 20px
+      line-height: 28px
+      padding: 20px
+      margin-bottom: 28px
+      color: #000
+      +border-radius(12px)
+      +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 10px)
+      display: none
+      margin-top: -16px
+      color: #666
+      position: relative
+      #gravatar_arrow
+        display: none
+        position: absolute
+        top: -72px
+        left: 32px
+      #gravatar_logo
+        float: left
+        margin-right: 16px
+    .hint
+      margin-top: 4px
+      font-size: 16px
+      color: #666
+      font-style: italic

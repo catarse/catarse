@@ -1,0 +1,43 @@
+.on_the_spot_mouseover
+  background-color: rgb(0,150,0)
+  background-color: rgba(0,150,0,0.2)
+.on_the_spot_editing
+  form
+    input,textarea,select
+      padding-left: 4px
+      padding-right: 4px
+      background-color: rgb(255,255,255)
+      background-color: rgba(255,255,255,0.2)
+      font-size: 18px
+      border: 2px solid rgb(0,60,0)
+      border: 2px solid rgba(0,60,0,0.6)
+      +border-radius(5px)
+      +text-shadow(rgba(255,255,255,0.85), 1px, 1px, 0px)
+    input:focus,textarea:focus,select:focus
+      background-color: rgb(0,150,0)
+      background-color: rgba(0,150,0,0.2)
+    button
+      margin-left: 4px
+      text-rendering: optimizeLegibility
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+      color: #333
+      font-size: 14px
+      line-height: 16px
+      +text-shadow(rgba(255,255,255,0.85), 1px, 1px, 0px)
+      font-weight: bold
+      padding: 5px 10px
+      border: none
+      +border-radius(8px)
+      background-color: #ccc
+      +linear-gradient(color_stops(#ddd,#aaa))
+      +box-shadow(rgba(0,0,0,0.75),2px,2px,3px)
+    button:hover
+      background-color: #ddd
+      +linear-gradient(color_stops(#eee,#bbb))
+      +box-shadow(rgba(0,0,0,0.75),2px,2px,2px)
+    button:active
+      padding: 6px 9px 4px 11px
+      +text-shadow(rgba(255,255,255,0.85), 2px, 2px, 1px)
+      background-color: #ddd
+      +linear-gradient(color_stops(#eee,#bbb))
+      +box-shadow(rgba(0,0,0,0.75),1px,1px,1px)

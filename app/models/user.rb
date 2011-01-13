@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :backs, :class_name => "Backer"
   has_many :projects
   def to_param
+    return "#{self.id}" unless self.name
     "#{self.id}-#{self.name.parameterize}"
   end
   def self.create_with_omniauth(auth)

@@ -23,5 +23,7 @@ Catarse::Application.routes.draw do
     get 'thank_you', :on => :member
     get 'backers', :on => :member
   end
-  resources :users, :only => [:show]
+  resources :users, :only => [:show] do
+    post :update_attribute_on_the_spot, :on => :collection
+  end
 end

@@ -125,6 +125,8 @@ GEM
       oa-enterprise (= 0.1.6)
       oa-oauth (= 0.1.6)
       oa-openid (= 0.1.6)
+    on_the_spot (0.0.6)
+      json_pure (>= 1.4.6)
     pg (0.9.0)
     polyglot (0.3.1)
     pyu-ruby-sasl (0.0.3.2)
@@ -209,6 +211,7 @@ DEPENDENCIES
   launchy
   maxim-sexy_pg_constraints
   omniauth
+  on_the_spot
   pg
   rails (= 3.0.0)
   rcov

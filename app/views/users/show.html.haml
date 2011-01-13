@@ -2,15 +2,47 @@
   = image_tag 'badge.png', :id => "badge" if @user.backer?
   #profile_header
     .image
-      = image_tag @user.display_image
+      - if current_user and @user == current_user
+        = link_to 'http://br.gravatar.com/', :target => :_blank do
+          = image_tag @user.display_image
+      - else
+        = image_tag @user.display_image
     .info
-      %h1= @user.display_name
-      %h2= @user.bio
+      %h1
+        - if current_user and @user == current_user
+          #{on_the_spot_edit @user, :name, :tooltip => 'Clique aqui para preencher seu nome...'}
+        - else
+          = @user.display_name
+      %h2
+        - if current_user and @user == current_user
+          #{on_the_spot_edit @user, :bio, :type => :textarea, :tooltip => 'Clique aqui para escrever sobre você...'}
+        - else
+          = @user.bio
     .clear
 #user_feed
-  %h1 Projetos de #{@user.display_name}
+  - if current_user and @user == current_user
+    #gravatar_hint
+      -#= image_tag 'arrow.png', :id => 'gravatar_arrow'
+      = link_to 'http://br.gravatar.com/', :target => :_blank do
+        = image_tag 'gravatar.png', :id => 'gravatar_logo'
+      Quer mudar sua imagem? Cadastre-se no #{link_to 'Gravatar', 'http://br.gravatar.com/', :target => :_blank}. É tão simples quanto enviar a imagem para o Catarse e já funciona para outros sites também ;)
+    %h1 Meus dados
+    %ul
+      %li
+        #{on_the_spot_edit @user, :email, :tooltip => "Clique aqui para preencher seu email..."}
+        .hint Seu email será utilizado apenas para envio de comunicações do Catarse. Ele não estará visível em seu perfil.
+    %hr
+  %h1
+    - if current_user and @user == current_user
+      Meus projetos
+    - else
+      Projetos de #{@user.display_name}
   - if @projects.empty?
-    #no_projects #{@user.display_name} ainda não enviou nenhum projeto para o Catarse. Será que a inspiração vai bater uma hora dessas?
+    #no_projects
+      - if current_user and @user == current_user
+        Você ainda não enviou nenhum projeto para o Catarse. Deixe a inspiração bater e #{link_to 'clique aqui', new_project_path} para começar!
+      - else
+        #{@user.display_name} ainda não enviou nenhum projeto para o Catarse. Será que a inspiração vai bater uma hora dessas?
   - else
     %ul
       - @projects.each do |project|
@@ -21,9 +53,17 @@
           %p= project.headline
           .clear
   %hr
-  %h1 Projetos que #{@user.display_name} já apoiou
+  %h1
+    - if current_user and @user == current_user
+      Projetos que já apoiei
+    - else
+      Projetos que #{@user.display_name} já apoiou
   - if @backs.empty?
-    #no_backs #{@user.display_name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D
+    #no_backs
+      - if current_user and @user == current_user
+        Você ainda não apoiou nenhum projeto. Que tal #{link_to 'começar agora', root_path}?
+      - else
+        #{@user.display_name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D
   - else
     %ul
       - @backs.each do |back|
@@ -34,3 +74,4 @@
             = back.project.name
           %p= back.project.headline
           .clear
+= javascript_include_tag 'show_user' if current_user and @user == current_user

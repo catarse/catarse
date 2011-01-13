@@ -223,7 +223,87 @@ a img {
   padding-bottom: 0 !important;
 }
 
-/* line 23, ../../app/stylesheets/screen.sass */
+/* line 1, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_mouseover {
+  background-color: #009600;
+  background-color: rgba(0, 150, 0, 0.2);
+}
+
+/* line 6, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_editing form input, .on_the_spot_editing form textarea, .on_the_spot_editing form select {
+  padding-left: 4px;
+  padding-right: 4px;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  border: 2px solid #003c00;
+  border: 2px solid rgba(0, 60, 0, 0.6);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
+}
+/* line 16, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_editing form input:focus, .on_the_spot_editing form textarea:focus, .on_the_spot_editing form select:focus {
+  background-color: #009600;
+  background-color: rgba(0, 150, 0, 0.2);
+}
+/* line 19, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_editing form button {
+  margin-left: 4px;
+  text-rendering: optimizeLegibility;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333333;
+  font-size: 14px;
+  line-height: 16px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: none;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #cccccc;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #dddddd), color-stop(100%, #aaaaaa));
+  background-image: -moz-linear-gradient(top, #dddddd 0%, #aaaaaa 100%);
+  background-image: linear-gradient(top, #dddddd 0%, #aaaaaa 100%);
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
+}
+/* line 34, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_editing form button:hover {
+  background-color: #dddddd;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -moz-linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
+  background-image: linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
+}
+/* line 38, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_editing form button:active {
+  padding: 6px 9px 4px 11px;
+  text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
+  background-color: #dddddd;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -moz-linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
+  background-image: linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
+}
+
+/* line 24, ../../app/stylesheets/screen.sass */
 body#site {
   background: url("/images/bg.png") repeat;
   text-rendering: optimizeLegibility;
@@ -417,7 +497,7 @@ body#site form .important {
 body#site form .important a {
   color: black;
 }
-/* line 26, ../../app/stylesheets/screen.sass */
+/* line 27, ../../app/stylesheets/screen.sass */
 body#site .flash {
   -moz-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 4px 4px 10px 0;
@@ -445,7 +525,7 @@ body#site .flash .failure.wrapper, body#site .flash .error.wrapper {
   background-image: -moz-linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
   background-image: linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
 }
-/* line 28, ../../app/stylesheets/screen.sass */
+/* line 29, ../../app/stylesheets/screen.sass */
 body#site .overlay {
   background-color: #dddddd;
   background: rgba(180, 180, 180, 0.8);
@@ -456,7 +536,7 @@ body#site .overlay {
   height: 100%;
   z-index: 100;
 }
-/* line 30, ../../app/stylesheets/screen.sass */
+/* line 31, ../../app/stylesheets/screen.sass */
 body#site #login {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -574,7 +654,7 @@ body#site #login a.close:hover, body#site #login a.close:focus {
   -o-transform: scale(1.05);
   transform: scale(1.05);
 }
-/* line 32, ../../app/stylesheets/screen.sass */
+/* line 33, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
@@ -603,7 +683,7 @@ body#site #header h1 a {
 body#site #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 36, ../../app/stylesheets/screen.sass */
+/* line 37, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
   margin-top: 48px;
@@ -642,7 +722,7 @@ body#site #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 38, ../../app/stylesheets/screen.sass */
+/* line 39, ../../app/stylesheets/screen.sass */
 body#site #user {
   float: right;
   margin-top: 22px;
@@ -759,7 +839,7 @@ body#site #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 40, ../../app/stylesheets/screen.sass */
+/* line 41, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
@@ -774,7 +854,7 @@ body#site #content_wrapper {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 42, ../../app/stylesheets/screen.sass */
+/* line 43, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content_header {
   position: relative;
   text-align: center;
@@ -819,10 +899,11 @@ body#site #content_wrapper #content_header h1 a:hover {
 }
 /* line 26, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content_header h2 {
+  display: block;
   padding: 0 40px;
   text-shadow: green 1px 1px 1px;
 }
-/* line 29, ../../app/stylesheets/_content.sass */
+/* line 30, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content_header h2 a {
   color: #ffffaa;
   text-decoration: none;
@@ -835,11 +916,11 @@ body#site #content_wrapper #content_header h2 a {
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 33, ../../app/stylesheets/_content.sass */
+/* line 34, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content_header h2 a:hover {
   text-shadow: green 2px 2px 2px;
 }
-/* line 35, ../../app/stylesheets/_content.sass */
+/* line 36, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content_header #badge {
   position: absolute;
   top: 52px;
@@ -853,37 +934,37 @@ body#site #content_wrapper #content_header #badge {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 40, ../../app/stylesheets/_content.sass */
+/* line 41, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content_header #badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 44, ../../app/stylesheets/screen.sass */
+/* line 45, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content {
   padding: 40px;
 }
-/* line 45, ../../app/stylesheets/_content.sass */
+/* line 46, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content h1 {
   font-family: "museo-300";
   font-size: 28px;
   padding: 20px 0 30px 0;
   color: #008800;
 }
-/* line 50, ../../app/stylesheets/_content.sass */
+/* line 51, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content h2 {
   font-family: "museo-300";
   font-size: 24px;
   padding: 20px 0 30px 0;
   color: #008800;
 }
-/* line 55, ../../app/stylesheets/_content.sass */
+/* line 56, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content h3 {
   padding-bottom: 8px;
   font-weight: bold;
 }
-/* line 58, ../../app/stylesheets/_content.sass */
+/* line 59, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content p {
   padding-bottom: 20px;
 }
@@ -911,24 +992,43 @@ body#site #profile_header .info h1, body#site #profile_header .info h2 {
   text-align: left;
 }
 /* line 15, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .info h1 .on_the_spot_mouseover, body#site #profile_header .info h2 .on_the_spot_mouseover {
+  background-color: #009600;
+  background-color: rgba(0, 150, 0, 0.5);
+}
+/* line 20, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .info h1 .on_the_spot_editing form input, body#site #profile_header .info h1 .on_the_spot_editing form textarea, body#site #profile_header .info h2 .on_the_spot_editing form input, body#site #profile_header .info h2 .on_the_spot_editing form textarea {
+  background-color: #ccffcc;
+}
+/* line 25, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .info h1 .on_the_spot_editing form input {
+  font-family: "museo-500";
+  font-size: 32px;
+}
+/* line 28, ../../app/stylesheets/_profile.sass */
 body#site #profile_header .info h2 {
   margin: 0 !important;
   padding: 0 !important;
 }
-/* line 18, ../../app/stylesheets/_profile.sass */
+/* line 33, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .info h2 .on_the_spot_editing form textarea {
+  width: 600px;
+  height: 40px;
+}
+/* line 37, ../../app/stylesheets/_profile.sass */
 body#site #user_feed {
   color: #444444;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 22, ../../app/stylesheets/_profile.sass */
+/* line 41, ../../app/stylesheets/_profile.sass */
 body#site #user_feed h1 {
   font-size: 26px !important;
   color: #999999 !important;
   padding-bottom: 0 !important;
   padding-top: 0 !important;
 }
-/* line 27, ../../app/stylesheets/_profile.sass */
+/* line 46, ../../app/stylesheets/_profile.sass */
 body#site #user_feed img.project {
   float: left;
   margin-right: 12px;
@@ -938,37 +1038,81 @@ body#site #user_feed img.project {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
 }
-/* line 32, ../../app/stylesheets/_profile.sass */
+/* line 51, ../../app/stylesheets/_profile.sass */
 body#site #user_feed a {
   text-decoration: none !important;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 36, ../../app/stylesheets/_profile.sass */
+/* line 55, ../../app/stylesheets/_profile.sass */
 body#site #user_feed p {
   font-size: 18px;
   color: #666666;
 }
-/* line 39, ../../app/stylesheets/_profile.sass */
+/* line 58, ../../app/stylesheets/_profile.sass */
 body#site #user_feed ul li {
   margin-top: 32px;
 }
-/* line 41, ../../app/stylesheets/_profile.sass */
+/* line 60, ../../app/stylesheets/_profile.sass */
 body#site #user_feed ul li:first-child {
   margin-top: 24px;
 }
-/* line 43, ../../app/stylesheets/_profile.sass */
+/* line 62, ../../app/stylesheets/_profile.sass */
 body#site #user_feed ul li:last-child {
   margin-bottom: 24px;
 }
-/* line 45, ../../app/stylesheets/_profile.sass */
+/* line 64, ../../app/stylesheets/_profile.sass */
 body#site #user_feed div {
   margin-top: 24px;
 }
-/* line 47, ../../app/stylesheets/_profile.sass */
+/* line 66, ../../app/stylesheets/_profile.sass */
 body#site #user_feed hr {
   margin: 20px 0;
   border: 1px dashed transparent;
+}
+/* line 69, ../../app/stylesheets/_profile.sass */
+body#site #user_feed #gravatar_hint {
+  background-color: #ffffaa;
+  background-color: rgba(255, 255, 160, 0.6);
+  font-family: "museo-300";
+  font-size: 20px;
+  line-height: 28px;
+  padding: 20px;
+  margin-bottom: 28px;
+  color: black;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  display: none;
+  margin-top: -16px;
+  color: #666666;
+  position: relative;
+}
+/* line 84, ../../app/stylesheets/_profile.sass */
+body#site #user_feed #gravatar_hint #gravatar_arrow {
+  display: none;
+  position: absolute;
+  top: -72px;
+  left: 32px;
+}
+/* line 89, ../../app/stylesheets/_profile.sass */
+body#site #user_feed #gravatar_hint #gravatar_logo {
+  float: left;
+  margin-right: 16px;
+}
+/* line 92, ../../app/stylesheets/_profile.sass */
+body#site #user_feed .hint {
+  margin-top: 4px;
+  font-size: 16px;
+  color: #666666;
+  font-style: italic;
 }
 /* line 2, ../../app/stylesheets/_projects.sass */
 body#site .project_box {
@@ -1922,7 +2066,7 @@ body#site #thank_you #how_it_works {
   font-size: 18px;
   margin-top: 40px;
 }
-/* line 48, ../../app/stylesheets/screen.sass */
+/* line 49, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 20px 0 80px 0;
@@ -2050,7 +2194,7 @@ body#site #footer #colophon a#softa_logo {
 body#site #footer #colophon a#softa_logo:hover {
   background-position: 0 -50px;
 }
-/* line 50, ../../app/stylesheets/screen.sass */
+/* line 51, ../../app/stylesheets/screen.sass */
 body#site #teaser {
   text-align: center;
 }
