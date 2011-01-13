@@ -1,0 +1,13 @@
+%head
+  %meta{:charset => 'utf-8'}
+  = yield :meta_tags
+  %title= "#{@title}#{' · ' if @title}Catarse"
+  = stylesheet_link_tag 'le-frog/jquery-ui-1.8.6.custom.css', :media => 'screen, projection'
+  = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+  /[if lt IE 9]
+    = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
+  = javascript_include_tag 'jquery-1.4.4.min', 'jquery-ui-1.8.6.custom.min', 'jquery.ui.datepicker-pt-BR', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup'
+  = javascript_include_tag :on_the_spot
+  = csrf_meta_tag
+  %link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
+  = render '/layouts/analytics'

@@ -7,7 +7,7 @@
   %h1 Você agora é parte do grupo que faz de tudo para o #{link_to @project.name, project_path(@project)} acontecer.
   .clear
   %h2 Conte para todo mundo o que você acabou de fazer
-  = link_to image_tag('auth/twitter_128.png', :title => 'Twitter'), '#'
+  = link_to image_tag('auth/twitter_128.png', :title => 'Twitter'), "http://twitter.com/share?via=Catarse_&text=Eu apoio o projeto #{@project.name}&url=http%3A%2F%2Fcatarse.me", {:target => :_blank}
   = link_to image_tag('auth/facebook_128.png', :title => 'Facebook'), '#'
   #how_it_works
     - if @project.successful?
