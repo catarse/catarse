@@ -12,6 +12,7 @@ gem 'spectator-validates_email', :require => 'validates_email'
 gem 'vimeo'
 gem 'wirble'
 gem "on_the_spot"
+gem 'unicorn'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'
