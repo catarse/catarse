@@ -10,7 +10,7 @@ require_login = function(e){
   $('#login').fadeIn()
 }
 var return_to = null
-$('#login_link').click(function(){
+$('#login_link,#signup_link').click(function(){
   $('.overlay').show()
   $('#login').fadeIn()
 })

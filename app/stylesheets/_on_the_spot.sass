@@ -5,7 +5,7 @@
   form
     input,textarea,select
       padding-left: 4px
-      padding-right: 4px
+      padding-right: 24px
       background-color: rgb(255,255,255)
       background-color: rgba(255,255,255,0.2)
       font-size: 18px
@@ -16,6 +16,11 @@
     input:focus,textarea:focus,select:focus
       background-color: rgb(0,150,0)
       background-color: rgba(0,150,0,0.2)
+    textarea
+      padding-right: 28px
+      width: 96%
+      height: 200px
+      overflow: auto
     button
       margin-left: 4px
       text-rendering: optimizeLegibility
@@ -41,3 +46,10 @@
       background-color: #ddd
       +linear-gradient(color_stops(#eee,#bbb))
       +box-shadow(rgba(0,0,0,0.75),1px,1px,1px)
+    button:disabled
+      color: #888
+      +text-shadow(rgba(230,230,230,0.85), 1px, 1px, 0px)
+      padding: 5px 10px
+      background-color: #aaa
+      +linear-gradient(color_stops(#bbb,#888))
+      +box-shadow(rgba(0,0,0,0.75),2px,2px,6px)

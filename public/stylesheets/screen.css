@@ -232,7 +232,7 @@ a img {
 /* line 6, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form input, .on_the_spot_editing form textarea, .on_the_spot_editing form select {
   padding-left: 4px;
-  padding-right: 4px;
+  padding-right: 24px;
   background-color: white;
   background-color: rgba(255, 255, 255, 0.2);
   font-size: 18px;
@@ -252,6 +252,13 @@ a img {
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 19, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_editing form textarea {
+  padding-right: 28px;
+  width: 96%;
+  height: 200px;
+  overflow: auto;
+}
+/* line 24, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button {
   margin-left: 4px;
   text-rendering: optimizeLegibility;
@@ -278,7 +285,7 @@ a img {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
 }
-/* line 34, ../../app/stylesheets/_on_the_spot.sass */
+/* line 39, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:hover {
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
@@ -289,7 +296,7 @@ a img {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
 }
-/* line 38, ../../app/stylesheets/_on_the_spot.sass */
+/* line 43, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:active {
   padding: 6px 9px 4px 11px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
@@ -301,6 +308,20 @@ a img {
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
+}
+/* line 49, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_editing form button:disabled {
+  color: #888888;
+  text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
+  padding: 5px 10px;
+  background-color: #aaaaaa;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
+  background-image: -moz-linear-gradient(top, #bbbbbb 0%, #888888 100%);
+  background-image: linear-gradient(top, #bbbbbb 0%, #888888 100%);
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
 }
 
 /* line 24, ../../app/stylesheets/screen.sass */
@@ -1015,20 +1036,28 @@ body#site #profile_header .info h2 .on_the_spot_editing form textarea {
   width: 600px;
   height: 40px;
 }
-/* line 37, ../../app/stylesheets/_profile.sass */
+/* line 36, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .info h2 .on_the_spot_editing form textarea.ok {
+  background: #ccffcc url("/images/tick_16.png") no-repeat 96% center;
+}
+/* line 38, ../../app/stylesheets/_profile.sass */
+body#site #profile_header .info h2 .on_the_spot_editing form textarea.error {
+  background: #ccffcc url("/images/delete_16.png") no-repeat 96% center;
+}
+/* line 40, ../../app/stylesheets/_profile.sass */
 body#site #user_feed {
   color: #444444;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 41, ../../app/stylesheets/_profile.sass */
+/* line 44, ../../app/stylesheets/_profile.sass */
 body#site #user_feed h1 {
   font-size: 26px !important;
   color: #999999 !important;
   padding-bottom: 0 !important;
   padding-top: 0 !important;
 }
-/* line 46, ../../app/stylesheets/_profile.sass */
+/* line 49, ../../app/stylesheets/_profile.sass */
 body#site #user_feed img.project {
   float: left;
   margin-right: 12px;
@@ -1038,39 +1067,39 @@ body#site #user_feed img.project {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
 }
-/* line 51, ../../app/stylesheets/_profile.sass */
+/* line 54, ../../app/stylesheets/_profile.sass */
 body#site #user_feed a {
   text-decoration: none !important;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 55, ../../app/stylesheets/_profile.sass */
+/* line 58, ../../app/stylesheets/_profile.sass */
 body#site #user_feed p {
   font-size: 18px;
   color: #666666;
 }
-/* line 58, ../../app/stylesheets/_profile.sass */
+/* line 61, ../../app/stylesheets/_profile.sass */
 body#site #user_feed ul li {
   margin-top: 32px;
 }
-/* line 60, ../../app/stylesheets/_profile.sass */
+/* line 63, ../../app/stylesheets/_profile.sass */
 body#site #user_feed ul li:first-child {
   margin-top: 24px;
 }
-/* line 62, ../../app/stylesheets/_profile.sass */
+/* line 65, ../../app/stylesheets/_profile.sass */
 body#site #user_feed ul li:last-child {
   margin-bottom: 24px;
 }
-/* line 64, ../../app/stylesheets/_profile.sass */
+/* line 67, ../../app/stylesheets/_profile.sass */
 body#site #user_feed div {
   margin-top: 24px;
 }
-/* line 66, ../../app/stylesheets/_profile.sass */
+/* line 69, ../../app/stylesheets/_profile.sass */
 body#site #user_feed hr {
   margin: 20px 0;
   border: 1px dashed transparent;
 }
-/* line 69, ../../app/stylesheets/_profile.sass */
+/* line 72, ../../app/stylesheets/_profile.sass */
 body#site #user_feed #gravatar_hint {
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.6);
@@ -1090,29 +1119,25 @@ body#site #user_feed #gravatar_hint {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  display: none;
   margin-top: -16px;
   color: #666666;
   position: relative;
 }
-/* line 84, ../../app/stylesheets/_profile.sass */
-body#site #user_feed #gravatar_hint #gravatar_arrow {
-  display: none;
-  position: absolute;
-  top: -72px;
-  left: 32px;
-}
-/* line 89, ../../app/stylesheets/_profile.sass */
+/* line 86, ../../app/stylesheets/_profile.sass */
 body#site #user_feed #gravatar_hint #gravatar_logo {
   float: left;
   margin-right: 16px;
 }
-/* line 92, ../../app/stylesheets/_profile.sass */
+/* line 89, ../../app/stylesheets/_profile.sass */
 body#site #user_feed .hint {
   margin-top: 4px;
   font-size: 16px;
   color: #666666;
   font-style: italic;
+}
+/* line 94, ../../app/stylesheets/_profile.sass */
+body#site #user_feed .loading {
+  display: none;
 }
 /* line 2, ../../app/stylesheets/_projects.sass */
 body#site .project_box {

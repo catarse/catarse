@@ -33,7 +33,10 @@
             textarea
               width: 600px
               height: 40px
-              
+            textarea.ok
+              background: #cfc url('/images/tick_16.png') no-repeat 96% center
+            textarea.error
+              background: #cfc url('/images/delete_16.png') no-repeat 96% center
   #user_feed
     color: #444
     font-size: 22px
@@ -77,15 +80,9 @@
       color: #000
       +border-radius(12px)
       +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 10px)
-      display: none
       margin-top: -16px
       color: #666
       position: relative
-      #gravatar_arrow
-        display: none
-        position: absolute
-        top: -72px
-        left: 32px
       #gravatar_logo
         float: left
         margin-right: 16px
@@ -94,3 +91,5 @@
       font-size: 16px
       color: #666
       font-style: italic
+    .loading
+      display: none

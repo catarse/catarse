@@ -22,6 +22,7 @@
           %ul
             %li= link_to "Envie seu projeto", guidelines_projects_path, :id => 'new_project_link'
             - unless current_user
+              %li= link_to "Cadastre-se", '#', :id => 'signup_link'
               %li= link_to "Login", '#', :id => 'login_link'
         .clear
       #content_wrapper
@@ -41,15 +42,15 @@
         #social_menu
           %ul
             %li
-              = link_to '#' do
+              = link_to 'http://twitter.com/Catarse_', :target => :_blank do
                 = image_tag('social/twitter_32.png', :title => "Twitter")
                 Siga no Twitter
             %li
-              = link_to '#' do
+              = link_to 'http://www.facebook.com/pages/Catarse/127481150652036', :target => :_blank do
                 = image_tag('social/facebook_32.png', :title => "Facebook")
                 Adicione no Facebook
             %li
-              = link_to '#' do
+              = link_to '#', :target => :_blank do
                 = image_tag('social/rss_32.png', :title => "Blog")
                 Leia o blog
         #colophon

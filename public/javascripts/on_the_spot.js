@@ -46,7 +46,6 @@ $(document).ready(function() {
             options.rows = rows;
             options.cols = columns;
         }
-
         el.editable(data_url, options)
     })
 

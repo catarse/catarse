@@ -29,28 +29,6 @@
         #content
           = yield
       #footer
-        -#footer_menu
-          %ul
-            %li= link_to "Sobre nós", '#'
-            %li= link_to "Como funciona?", guidelines_projects_path
-            %li= link_to "FAQ/Ajuda", '#'
-            %li= link_to "Termos de uso", '#'
-            %li= link_to "Política de privacidade", '#'
-            %li= mail_to "contato@catarse.me", "Contato"
-        -#social_menu
-          %ul
-            %li
-              = link_to '#' do
-                = image_tag('social/twitter_32.png', :title => "Twitter")
-                Siga no Twitter
-            %li
-              = link_to '#' do
-                = image_tag('social/facebook_32.png', :title => "Facebook")
-                Adicione no Facebook
-            %li
-              = link_to '#' do
-                = image_tag('social/rss_32.png', :title => "Blog")
-                Leia o blog
         #colophon
           = link_to "", "http://softa.com.br", :target => :_blank, :id => "softa_logo"
           %p#copyright Copyright © 2010
