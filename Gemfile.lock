@@ -86,7 +86,6 @@ GEM
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
-    mailee (0.4.3)
     maxim-sexy_pg_constraints (0.1.3)
     mime-types (1.16)
     multi_json (0.0.5)
@@ -210,7 +209,6 @@ DEPENDENCIES
   haml
   inherited_resources (>= 1.1.2)
   launchy
-  mailee
   maxim-sexy_pg_constraints
   omniauth
   on_the_spot
