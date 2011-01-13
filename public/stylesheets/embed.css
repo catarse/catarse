@@ -1,0 +1,85 @@
+/*
+Syntax error: Undefined mixin 'border-radius'.
+        on line 7 of /Users/danielweinmann/Projects/catarse/app/stylesheets/embed.sass, in `border-radius'
+        from line 7 of /Users/danielweinmann/Projects/catarse/app/stylesheets/embed.sass
+
+2: .project_box
+3:   font-size: 16px
+4:   color: #666
+5:   float: none
+6:   margin: 10px 45px
+7:   +border-radius(8px)
+8:   border: 5px solid #eee
+9:   border: 5px solid rgba(100,100,100,0.1)
+10:   .project_header
+11:     text-align: center
+12:     img
+
+Backtrace:
+/Users/danielweinmann/Projects/catarse/app/stylesheets/embed.sass:7:in `border-radius'
+/Users/danielweinmann/Projects/catarse/app/stylesheets/embed.sass:7
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/mixin_node.rb:74:in `perform!'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `block in perform_children'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/rule_node.rb:191:in `perform!'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `block in perform_children'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/root_node.rb:59:in `perform!'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/root_node.rb:37:in `perform'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/tree/root_node.rb:29:in `render'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/plugin.rb:220:in `update_stylesheet'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/plugin.rb:85:in `block (2 levels) in update_stylesheets'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `each'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `block in update_stylesheets'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `each'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `update_stylesheets'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/plugin.rb:50:in `check_for_updates'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/haml-3.0.21/lib/sass/plugin/rack.rb:40:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/cookies.rb:287:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:32:in `block in call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/activerecord-3.0.0/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:12:in `cache'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:31:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/activerecord-3.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/activesupport-3.0.0/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/railties-3.0.0/lib/rails/rack/logger.rb:13:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/activesupport-3.0.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/rack-1.2.1/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/actionpack-3.0.0/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/railties-3.0.0/lib/rails/application.rb:168:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/railties-3.0.0/lib/rails/application.rb:77:in `method_missing'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/railties-3.0.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p0/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+/Users/danielweinmann/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/Users/danielweinmann/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/Users/danielweinmann/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'border-radius'.\A         on line 7 of /Users/danielweinmann/Projects/catarse/app/stylesheets/embed.sass, in `border-radius'\A         from line 7 of /Users/danielweinmann/Projects/catarse/app/stylesheets/embed.sass\A \A 2: .project_box\A 3:   font-size: 16px\A 4:   color: #666\A 5:   float: none\A 6:   margin: 10px 45px\A 7:   +border-radius(8px)\A 8:   border: 5px solid #eee\A 9:   border: 5px solid rgba(100,100,100,0.1)\A 10:   .project_header\A 11:     text-align: center\A 12:     img"; }

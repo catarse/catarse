@@ -15,13 +15,19 @@ Catarse::Application.routes.draw do
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
   resources :projects, :only => [:index, :new, :create, :show] do
-    get 'teaser', :on => :collection
-    get 'guidelines', :on => :collection
-    get 'vimeo', :on => :collection
-    get 'back', :on => :member
-    post 'review', :on => :member
-    get 'thank_you', :on => :member
-    get 'backers', :on => :member
+    collection do
+      get 'teaser'
+      get 'guidelines'
+      get 'vimeo'
+    end
+    member do
+      get 'back'
+      post 'review'
+      get 'thank_you'
+      get 'backers'
+      get 'embed'
+      get 'video_embed'
+    end
   end
   resources :users, :only => [:show] do
     post :update_attribute_on_the_spot, :on => :collection

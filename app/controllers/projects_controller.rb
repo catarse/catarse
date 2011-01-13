@@ -79,4 +79,14 @@ class ProjectsController < ApplicationController
       @backers = @project.backers.confirmed.order(:confirmed_at)
     end
   end
+  def embed
+    @project = Project.find params[:id]
+    @title = @project.name
+    render :layout => 'embed'
+  end
+  def video_embed
+    @project = Project.find params[:id]
+    @title = @project.name
+    render :layout => 'embed'
+  end
 end

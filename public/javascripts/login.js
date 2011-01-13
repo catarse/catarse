@@ -10,14 +10,16 @@ require_login = function(e){
   $('#login').fadeIn()
 }
 var return_to = null
-$('#login_link,#signup_link').click(function(){
+$('#login_link,#signup_link').click(function(e){
+  e.preventDefault()
   $('.overlay').show()
   $('#login').fadeIn()
 })
 if($('#login').length > 0){
   $('#new_project_link').click(require_login)
 }
-$('.close').click(function(){
+$('.close').click(function(e){
+  e.preventDefault()
   $('#login').hide()
   $('.overlay').hide()
 })

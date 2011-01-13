@@ -1,0 +1,71 @@
+=embed_modal
+  background-color: #44A546
+  +linear-gradient(color_stops(#51C252,#49B249,#44A546))
+  border: 5px solid #fff
+  +border-radius(8px)
+  +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 860px
+  height: 760px
+  margin-top: -400px
+  margin-left: -457px
+  z-index: 500
+  padding: 20px
+  text-align: center
+  color: #fff
+  +text-shadow(black, 1px, 1px, 1px)
+  h1
+    font-family: "museo-500"
+    font-size: 24px
+    padding: 0 20px
+    margin-bottom: 32px
+    color: #fff
+  h2
+    padding: 0
+    margin-bottom: 16px
+    color: #fff
+  a.close
+    color: #fff
+    text-decoration: none
+    position: absolute
+    width: 24px
+    height: 24px
+    border: 3px solid #fff
+    +border-radius(24px)
+    top: 0
+    left: 100%
+    margin-top: -15px
+    margin-left: -15px
+    line-height: 22px
+    background-color: #44A546
+    +linear-gradient(color_stops(#51C252,#49B249,#44A546))
+    +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)
+    font-weight: bold
+    +transition(all, 0.3s)
+  a.close:hover, a.close:focus
+    color: #fff
+    +scale(1.05)
+  #project_box_embed
+    float: left
+    iframe
+      +border-radius(8px)
+    textarea
+      padding-right: 4px
+      margin-top: 16px
+      height: 120px
+      width: 300px
+      background-color: #dfd
+      font-size: 14px
+  #project_video_embed
+    float: right
+    iframe
+      +border-radius(8px)
+    textarea
+      padding-right: 4px
+      margin-top: 16px
+      height: 120px
+      width: 470px
+      background-color: #dfd
+      font-size: 14px

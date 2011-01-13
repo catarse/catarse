@@ -1,7 +1,6 @@
 = content_for :content_header do
   #project_header
-    %h1
-      = @project.name
+    %h1= @project.name
     %h2 Um projeto de #{link_to @project.user.display_name, user_path(@project.user)}
 #project_description
   #project_video
@@ -22,9 +21,10 @@
           Link
           = text_field_tag "project_link", "http://catr.se/bPR1SQ"
       .embed
-        = link_to '#' do
+        = link_to '#', :id => 'embed_link' do
           = image_tag 'embed_32.png', :title => "Incorpore este projeto no seu site"
           Incorpore este projeto no seu site
+    = render 'embed'
   #project_about
     %h1 Sobre este projeto
     = @project.display_about.html_safe

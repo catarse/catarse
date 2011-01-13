@@ -17,7 +17,10 @@
 @import "user"
 @import "content"
 @import "profile"
+@import "embed_modal"
 @import "projects"
+@import "embed"
+@import "video_embed"
 @import "footer"
 @import "teaser"
 @import "on_the_spot"
@@ -46,6 +49,10 @@ body#site
       +content
   +profile
   +projects
+  #embed
+    +embed
+  #video_embed
+    +video_embed
   #footer
     +footer
   #teaser
