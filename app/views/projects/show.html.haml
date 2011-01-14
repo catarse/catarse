@@ -1,7 +1,15 @@
-= content_for :content_header do
+- content_for :content_header do
   #project_header
     %h1= @project.name
     %h2 Um projeto de #{link_to @project.user.display_name, user_path(@project.user)}
+- content_for :meta_tags do
+  -# Meta tags for facebook social graph
+  %meta{:property => "og:title", :content => @project.name} 
+  %meta{:property => "og:type", :content => 'cause'} 
+  %meta{:property => "og:url", :content => project_url(@project.id)} 
+  %meta{:property => "og:image", :content => @project.display_image} 
+  %meta{:property => "og:site_name", :content => 'Catarse'} 
+  %meta{:property => "og:description", :content => @project.about} 
 #project_description
   #project_video
     %iframe{:src => @project.video_embed_url, :width => "460", :height => "345"}

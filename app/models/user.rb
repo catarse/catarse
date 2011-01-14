@@ -5,6 +5,14 @@ class User < ActiveRecord::Base
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
   has_many :backs, :class_name => "Backer"
   has_many :projects
+  scope :primary, :conditions => ["primary_user_id IS NULL"]
+
+  def before_save
+    return if email.nil?
+    primary_user = User.primary.where(:email => email).first
+    self.primary_user_id = primary_user.id unless primary_user.nil?
+  end
+
   def to_param
     return "#{self.id}" unless self.name
     "#{self.id}-#{self.name.parameterize}"
