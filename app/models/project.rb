@@ -7,16 +7,19 @@ class Project < ActiveRecord::Base
   has_many :backers
   has_many :rewards
   accepts_nested_attributes_for :rewards
+  scope :visible, where(:visible => true)
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   validates_format_of :video_url, :with => VIMEO_REGEX, :message => "somente URLs do Vimeo são aceitas"
   validate :verify_if_video_exists_on_vimeo
+  before_create :store_urls
+  def store_urls
+  end
   def verify_if_video_exists_on_vimeo
     unless vimeo and vimeo["id"] == vimeo_id
       errors.add(:video_url, "deve existir no Vimeo")
     end
   end
-  scope :visible, where(:visible => true)
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end

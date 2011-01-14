@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
 
   scope :primary, :conditions => ["primary_user_id IS NULL"]
+  before_save :store_primary_user
 
-  def before_save
+  def store_primary_user
     return if email.nil?
     primary_user = User.primary.where(:email => email).first
     self.primary_user_id = primary_user.id unless primary_user.nil?

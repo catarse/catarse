@@ -10,6 +10,8 @@ class CreateProjects < ActiveRecord::Migration
       t.text :about, :null => false
       t.text :headline, :null => false
       t.text :video_url, :null => false
+      t.text :image_url
+      t.text :short_url
       t.boolean :visible, :default => false
       t.boolean :recommended, :default => false
       t.timestamps
