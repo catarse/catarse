@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   end
   def index
     index! do
-      @title = "Faça acontecer os projetos em que você acredita"
+      @title = "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
       @projects = Project.visible
     end
   end
