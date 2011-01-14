@@ -5,6 +5,19 @@ describe User do
     u = Factory(:user)
     u.should be_valid
   end
+  it "User.primary should return all primary users" do
+    u = Factory(:user)
+    secondary = Factory(:user, :email => u.email)
+    User.primary.all.should == [u]
+
+  end
+  it "if we already have a user with the same email it should be associated with the first user" do
+    u = Factory(:user)
+    secondary = Factory(:user, :email => u.email)
+    secondary.primary_user_id.should == u.id
+    another_user = Factory(:user, :email => u.email)
+    another_user.primary_user_id.should == u.id
+  end
   it "should have a provider" do
     u = Factory.build(:user, :provider => nil)
     u.should_not be_valid
