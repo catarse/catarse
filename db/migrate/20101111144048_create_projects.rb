@@ -13,6 +13,7 @@ class CreateProjects < ActiveRecord::Migration
       t.text :image_url
       t.text :short_url
       t.boolean :visible, :default => false
+      t.boolean :rejected, :default => false
       t.boolean :recommended, :default => false
       t.timestamps
     end
@@ -31,3 +32,4 @@ class CreateProjects < ActiveRecord::Migration
     drop_table :projects
   end
 end
+

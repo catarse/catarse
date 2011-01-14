@@ -91,5 +91,8 @@ class Project < ActiveRecord::Base
     return 0 if expires_at < Time.now
     ((expires_at - Time.now).abs/60/60/24).round
   end
+  def can_back?
+    visible and not expired? and not rejected
+  end
 end
 
