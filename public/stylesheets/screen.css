@@ -2294,7 +2294,7 @@ body#site #footer {
 /* line 4, ../../app/stylesheets/_footer.sass */
 body#site #footer #footer_menu {
   margin: 0 auto;
-  width: 840px;
+  width: 720px;
   padding: 20px 0;
 }
 /* line 8, ../../app/stylesheets/_footer.sass */
@@ -2333,7 +2333,7 @@ body#site #footer #footer_menu ul li a {
 /* line 14, ../../app/stylesheets/_footer.sass */
 body#site #footer #social_menu {
   margin: 0 auto;
-  width: 524px;
+  width: 474px;
   padding-bottom: 40px;
   font-size: 16px;
 }
