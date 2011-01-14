@@ -95,11 +95,6 @@ class ProjectsController < ApplicationController
     @title = @project.name
     render :layout => 'embed'
   end
-  def facebook_wall
-    session[:old_user] = current_user.id
-    session[:return_to] = thank_you_project_path(@project, :notice => "Você publicou seu apoio no mural do Facebook")
-    return redirect_to '/auth/facebook'
-  end
   private
   def bitly
     require 'net/http'
