@@ -33,9 +33,10 @@ class Project < ActiveRecord::Base
     @vimeo = nil
   end
   def vimeo_id
+    return @vimeo_id if @vimeo_id
     return unless video_url
     if result = video_url.match(VIMEO_REGEX)
-      result[2]
+      @vimeo_id = result[2]
     end
   end
   def video_embed_url
@@ -85,3 +86,4 @@ class Project < ActiveRecord::Base
     ((expires_at - Time.now).abs/60/60/24).round
   end
 end
+
