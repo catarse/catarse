@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     "#{self.id}-#{self.name.parameterize}"
   end
   def self.create_with_omniauth(auth)
-    create! do |user|
+    u = create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["user_info"]["name"]
@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
       user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
       user.image_url = auth["user_info"]["image"]
     end
+    u.primary.nil? ? u : u.primary
   end
   def display_name
     name || nickname || "Sem nome"

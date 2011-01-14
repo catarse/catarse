@@ -68,6 +68,23 @@ describe User do
     u.bio = "a".center(141)
     u.should_not be_valid
   end
+  it "should create a new user receiving a omniauth hash and always return the primary user" do
+    primary = Factory(:user)
+    auth = {
+      'provider' => "twitter",
+      'uid' => "foobar",
+      'user_info' => {
+        'name' => "Foo bar",
+        'email' => primary.email,
+        'nickname' => "foobar",
+        'description' => "Foo bar's bio".ljust(200),
+        'image' => "user.png"
+      }
+    }
+    u = User.create_with_omniauth(auth)
+    u.should == primary
+    User.count.should == 2
+  end
   it "should create a new user receiving a omniauth hash" do
     auth = {
       'provider' => "twitter",
