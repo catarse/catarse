@@ -31,6 +31,7 @@ class ProjectsController < ApplicationController
   end
   def create
     create!(:notice => "Seu projeto foi criado com sucesso! Logo avisaremos se ele foi selecionado. Muito obrigado!")
+    @project.update_attribute :short_url, bitly
   end
   def update
     update!(:notice => "Seu projeto foi atualizado com sucesso!")
@@ -93,5 +94,12 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:id]
     @title = @project.name
     render :layout => 'embed'
+  end
+  private
+  def bitly
+    require 'net/http'
+    res = Net::HTTP.start("api.bit.ly", 80) { |http| http.get("/v3/shorten?login=diogob&apiKey=R_76ee3ab860d76d0d1c1c8e9cc5485ca1&longUrl=#{CGI.escape(project_url(@project))}") }
+    data = JSON.parse(res.body)['data']
+    data['url'] if data
   end
 end

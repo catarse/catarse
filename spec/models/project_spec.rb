@@ -5,15 +5,11 @@ describe Project do
     p = Factory(:project)
     p.should be_valid
   end
-  it "should get the short URL and store it" do
-    Net::HTTPOK.any_instance.stubs(:body).returns('http://catr.se/ej5ez4')
-    Net::HTTP.any_instance.stubs(:get).returns(Net::HTTPOK.new(nil, nil, nil))
+  it "should get vimeo image URL and store it" do
     p = Factory.build(:project)
-    p.short_url.should == 'http://catr.se/ej5ez4'
-  end
-  it "should get vimeo image URL from Vimeo::Simple::Video and store it" do
-    Vimeo::Simple::Video.any_instance.stubs(:info).returns({"thumbnail_large" => 'http://b.vimeocdn.com/ts/117/614/117614276_200.jpg'})
-    p = Factory.build(:project)
+    p.stubs(:vimeo).returns({'id' => '1', 'thumbnail_large' => 'http://b.vimeocdn.com/ts/117/614/117614276_200.jpg'})
+    p.stubs(:vimeo_id).returns('1')
+    p.save!
     p.image_url.should == 'http://b.vimeocdn.com/ts/117/614/117614276_200.jpg'
   end
   it "should have a name" do

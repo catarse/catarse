@@ -23,7 +23,7 @@
         %li
           = image_tag 'link_32.png', :title => "Compartilhe o link"
           Link
-          = text_field_tag "project_link", "http://catr.se/bPR1SQ"
+          = text_field_tag "project_link", @project.short_url
       .embed
         = link_to '#', :id => 'embed_link' do
           = image_tag 'embed_32.png', :title => "Incorpore este projeto no seu site"

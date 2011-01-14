@@ -2,6 +2,7 @@
 VIMEO_REGEX = /\Ahttp:\/\/(www\.)?vimeo.com\/(\d+)\z/
 class Project < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  include Rails.application.routes.url_helpers
   belongs_to :user
   belongs_to :category
   has_many :backers
@@ -12,8 +13,9 @@ class Project < ActiveRecord::Base
   validates_length_of :headline, :maximum => 140
   validates_format_of :video_url, :with => VIMEO_REGEX, :message => "somente URLs do Vimeo são aceitas"
   validate :verify_if_video_exists_on_vimeo
-  before_create :store_urls
-  def store_urls
+  before_create :store_image_url
+  def store_image_url
+    self.image_url = vimeo["thumbnail_large"]
   end
   def verify_if_video_exists_on_vimeo
     unless vimeo and vimeo["id"] == vimeo_id

@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 
   def self.find_with_omni_auth(provider, uid)
     u = User.find_by_provider_and_uid(provider, uid)
+    return nil unless u
     u.primary.nil? ? u : u.primary
   end
 

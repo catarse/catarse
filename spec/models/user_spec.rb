@@ -90,6 +90,8 @@ describe User do
     secondary = Factory(:user, :email => primary.email)
     User.find_with_omni_auth(primary.provider, primary.uid).should == primary
     User.find_with_omni_auth(secondary.provider, secondary.uid).should == primary
+    # If user does not exist just returns nil
+    User.find_with_omni_auth(secondary.provider, 'user that does not exist').should == nil
   end
   it "should create a new user receiving a omniauth hash" do
     auth = {
