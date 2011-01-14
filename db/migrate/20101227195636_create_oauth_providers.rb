@@ -5,6 +5,7 @@ class CreateOauthProviders < ActiveRecord::Migration
       t.text :name, :null => false
       t.text :key, :null => false
       t.text :secret, :null => false
+      t.text :scope
       t.integer :order
       t.timestamps
     end
