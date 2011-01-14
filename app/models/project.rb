@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
   validate :verify_if_video_exists_on_vimeo
   before_create :store_image_url
   def store_image_url
-    self.image_url = vimeo["thumbnail_large"]
+    self.image_url = vimeo["thumbnail_large"] unless self.image_url
   end
   def verify_if_video_exists_on_vimeo
     unless vimeo and vimeo["id"] == vimeo_id
@@ -48,6 +48,7 @@ class Project < ActiveRecord::Base
     "http://player.vimeo.com/video/#{vimeo_id}"
   end
   def display_image
+    return image_url if image_url
     return "user.png" unless vimeo and vimeo["thumbnail_large"]
     vimeo["thumbnail_large"]
   end

@@ -5,6 +5,10 @@ describe Project do
     p = Factory(:project)
     p.should be_valid
   end
+  it "display_image should return image_url if it exists" do
+    p = Factory(:project, :image_url => 'http://test.com/image')
+    p.display_image.should == 'http://test.com/image'
+  end
   it "should get vimeo image URL and store it" do
     p = Factory.build(:project)
     p.stubs(:vimeo).returns({'id' => '1', 'thumbnail_large' => 'http://b.vimeocdn.com/ts/117/614/117614276_200.jpg'})
