@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_with_omni_auth(auth["provider"], auth["uid"].to_s)
     unless user
       user = User.create_with_omniauth(auth)
-      session[:return_to] = user_path(user) if session[:return_to].empty?
+      session[:return_to] = user_path(user) if session[:return_to] and session[:return_to].empty?
     end
     session[:user_id] = user.id
     flash[:success] = "Login realizado com sucesso. Bem-vindo, #{user.display_name}!"
