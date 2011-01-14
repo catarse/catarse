@@ -29,7 +29,7 @@
     %ul
       %li
         #{on_the_spot_edit @user, :email, :tooltip => "Clique aqui para preencher seu email..."}
-        .hint Seu email será utilizado apenas para envio de comunicações do Catarse. Ele não estará visível em seu perfil.
+        .hint Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Caso um projeto que você apoiou seja bem sucedido, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas.
       %li
         = hidden_field_tag 'id', @user.id
         = check_box_tag 'newsletter', '1', @user.newsletter
