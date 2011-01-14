@@ -27,7 +27,6 @@ Catarse::Application.routes.draw do
       get 'backers'
       get 'embed'
       get 'video_embed'
-      get 'facebook_wall'
     end
   end
   resources :users, :only => [:show] do

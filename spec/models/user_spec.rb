@@ -68,6 +68,42 @@ describe User do
     u.bio = "a".center(141)
     u.should_not be_valid
   end
+  it "should create and not associate user passed as parameter if email association suvcceeds" do
+    primary = Factory(:user)
+    another_user = Factory(:user)
+    auth = {
+      'provider' => "twitter",
+      'uid' => "foobar",
+      'user_info' => {
+        'name' => "Foo bar",
+        'email' => primary.email,
+        'nickname' => "foobar",
+        'description' => "Foo bar's bio".ljust(200),
+        'image' => "user.png"
+      }
+    }
+    u = User.create_with_omniauth(auth, another_user.id)
+    u.should == primary
+    User.count.should == 3
+  end
+  it "should create and associate user passed as parameter if email association fails" do
+    primary = Factory(:user)
+    auth = {
+      'provider' => "twitter",
+      'uid' => "foobar",
+      'user_info' => {
+        'name' => "Foo bar",
+        'email' => 'another_email@catarse.me',
+        'nickname' => "foobar",
+        'description' => "Foo bar's bio".ljust(200),
+        'image' => "user.png"
+      }
+    }
+    u = User.create_with_omniauth(auth, primary.id)
+    u.should == primary
+    User.count.should == 2
+  end
+
   it "should create a new user receiving a omniauth hash and always return the primary user" do
     primary = Factory(:user)
     auth = {

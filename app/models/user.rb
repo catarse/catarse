@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     u.primary.nil? ? u : u.primary
   end
 
-  def self.create_with_omniauth(auth)
+  def self.create_with_omniauth(auth, primary_user_id = nil)
     u = create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
       user.nickname = auth["user_info"]["nickname"]
       user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
       user.image_url = auth["user_info"]["image"]
+    end
+    # If we could not associate by email we try to use the parameter
+    if u.primary.nil? and primary_user_id
+      u.primary = User.find_by_id(primary_user_id)
     end
     u.primary.nil? ? u : u.primary
   end
