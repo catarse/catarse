@@ -6,7 +6,9 @@ class UsersController < ApplicationController
     show!{
       @title = "#{@user.display_name}"
       @backs = @user.backs.confirmed.order(:confirmed_at)
-      @projects = @user.projects.visible.order("updated_at DESC")
+      @projects = @user.projects.order("updated_at DESC")
+      @projects = @projects.visible unless @user == current_user
     }
   end
 end
+

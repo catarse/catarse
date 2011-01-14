@@ -4,12 +4,18 @@
     %h2 Um projeto de #{link_to @project.user.display_name, user_path(@project.user)}
 - content_for :meta_tags do
   -# Meta tags for facebook social graph
-  %meta{:property => "og:title", :content => @project.name} 
-  %meta{:property => "og:type", :content => 'cause'} 
-  %meta{:property => "og:url", :content => project_url(@project.id)} 
-  %meta{:property => "og:image", :content => @project.display_image} 
-  %meta{:property => "og:site_name", :content => 'Catarse'} 
-  %meta{:property => "og:description", :content => @project.about} 
+  %meta{:property => "og:title", :content => @project.name}
+  %meta{:property => "og:type", :content => 'cause'}
+  %meta{:property => "og:url", :content => project_url(@project.id)}
+  %meta{:property => "og:image", :content => @project.display_image}
+  %meta{:property => "og:site_name", :content => 'Catarse'}
+  %meta{:property => "og:description", :content => @project.about}
+- unless @project.visible
+  #project_warning
+    - if @project.rejected
+      Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)
+    - else
+      Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)
 #project_description
   #project_video
     %iframe{:src => @project.video_embed_url, :width => "460", :height => "345"}
@@ -17,9 +23,9 @@
       %h1 Faça parte disto e compartilhe este projeto
       %ul
         %li
-          = render :partial => 'twitter', :locals => {:url => 'http://catr.se/bPR1SQ', :text => "Confiram o projeto #{truncate(@project.name, :length => (140 - 19 - 19 -14))}"}
+          = render :partial => 'twitter', :locals => {:url => @project.short_url, :text => "Confiram o projeto #{truncate(@project.name, :length => (140 - 19 - 19 -14))}"}
         %li
-          = render :partial => 'facebook', :locals => {:url => 'http://catarse.me'}
+          = render :partial => 'facebook', :locals => {:url => @project.short_url}
         %li
           = image_tag 'link_32.png', :title => "Compartilhe o link"
           Link
@@ -33,3 +39,4 @@
     %h1 Sobre este projeto
     = @project.display_about.html_safe
 = render :partial => 'back_info', :locals => {:show_backers => true}
+
