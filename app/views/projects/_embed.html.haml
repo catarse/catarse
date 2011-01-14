@@ -2,7 +2,6 @@
 .overlay.hide
   #project_embed.hide
     %a.close{ :href => '#' } X
-    %h1 Incorpore este projeto no seu site
     #project_box_embed
       %iframe{ :frameborder => '0', :height => '552px', :width => '330px', :src => embed_project_path(@project)}
       %form.html= text_area_tag 'project_box_embed_html', '<iframe frameborder="0" height="552px" src="' + embed_project_url(@project) + '" width="330px" style="' + style + '"></iframe>', :readonly => true
@@ -11,3 +10,4 @@
       %form.html= text_area_tag 'project_video_embed_html', '<iframe frameborder="0" height="552px" src="' + video_embed_project_url(@project) + '" width="500px" style="' + style + '"></iframe>', :readonly => true
     .clear
 = javascript_include_tag 'project_embed'
+

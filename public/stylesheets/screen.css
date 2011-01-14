@@ -1617,8 +1617,8 @@ body#site #project_description #project_video #project_embed {
   top: 50%;
   left: 50%;
   width: 860px;
-  height: 760px;
-  margin-top: -400px;
+  height: 620px;
+  margin-top: -340px;
   margin-left: -457px;
   z-index: 500;
   padding: 20px;
@@ -1631,7 +1631,7 @@ body#site #project_description #project_video #project_embed h1 {
   font-family: "museo-500";
   font-size: 24px;
   padding: 0 20px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   color: white;
 }
 /* line 25, ../../app/stylesheets/_embed_modal.sass */
@@ -1701,8 +1701,8 @@ body#site #project_description #project_video #project_embed #project_box_embed 
 /* line 54, ../../app/stylesheets/_embed_modal.sass */
 body#site #project_description #project_video #project_embed #project_box_embed textarea {
   padding-right: 4px;
-  margin-top: 16px;
-  height: 120px;
+  margin-top: 8px;
+  height: 48px;
   width: 300px;
   background-color: #ddffdd;
   font-size: 14px;
@@ -1723,8 +1723,8 @@ body#site #project_description #project_video #project_embed #project_video_embe
 /* line 65, ../../app/stylesheets/_embed_modal.sass */
 body#site #project_description #project_video #project_embed #project_video_embed textarea {
   padding-right: 4px;
-  margin-top: 16px;
-  height: 120px;
+  margin-top: 8px;
+  height: 48px;
   width: 470px;
   background-color: #ddffdd;
   font-size: 14px;
