@@ -2,6 +2,11 @@
 class ProjectsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :create, :edit, :update
+  before_filter :date_format_convert, :only => [:create, :update]
+  def date_format_convert
+    params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
+  end
+
   def teaser
     @title = "Faça acontecer os projetos em que você acredita"
     if params[:status] == "success"
