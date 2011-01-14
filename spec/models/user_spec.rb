@@ -9,7 +9,17 @@ describe User do
     u = Factory(:user)
     secondary = Factory(:user, :email => u.email)
     User.primary.all.should == [u]
-
+  end
+  it "primary should return the primary user for this instance" do
+    u = Factory(:user)
+    secondary = Factory(:user, :email => u.email)
+    secondary.primary.should == u
+  end
+  it "secondary_users should return the secondary users for this instance" do
+    u = Factory(:user)
+    secondary = Factory(:user, :email => u.email)
+    another_user = Factory(:user, :email => u.email)
+    Set.new(u.secondary_users).should == Set.new([secondary, another_user])
   end
   it "if we already have a user with the same email it should be associated with the first user" do
     u = Factory(:user)

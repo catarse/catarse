@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
   has_many :backs, :class_name => "Backer"
   has_many :projects
+  has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
+  belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
+
   scope :primary, :conditions => ["primary_user_id IS NULL"]
 
   def before_save
