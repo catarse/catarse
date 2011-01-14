@@ -20,6 +20,12 @@ class User < ActiveRecord::Base
     return "#{self.id}" unless self.name
     "#{self.id}-#{self.name.parameterize}"
   end
+
+  def self.find_with_omni_auth(provider, uid)
+    u = User.find_by_provider_and_uid(provider, uid)
+    u.primary.nil? ? u : u.primary
+  end
+
   def self.create_with_omniauth(auth)
     u = create! do |user|
       user.provider = auth["provider"]

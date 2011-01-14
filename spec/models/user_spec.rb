@@ -85,6 +85,12 @@ describe User do
     u.should == primary
     User.count.should == 2
   end
+  it "should have a find_with_omniauth who finds always the primary" do
+    primary = Factory(:user)
+    secondary = Factory(:user, :email => primary.email)
+    User.find_with_omni_auth(primary.provider, primary.uid).should == primary
+    User.find_with_omni_auth(secondary.provider, secondary.uid).should == primary
+  end
   it "should create a new user receiving a omniauth hash" do
     auth = {
       'provider' => "twitter",
