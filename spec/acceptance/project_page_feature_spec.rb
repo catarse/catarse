@@ -2,7 +2,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Project Page Feature" do
   scenario "when I access a project it should show me the facebook meta tags" do
-    p = Factory(:project)
+    p = Factory(:project, :short_url => 'http://catr.se/teste')
     visit project_path(p.id)
     page.should have_css(%@meta [property="og:title"][content="#{p.name}"]@)
     page.should have_css(%@meta [property="og:type"][content="cause"]@)
