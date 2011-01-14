@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   has_many :backers
   has_many :rewards
   accepts_nested_attributes_for :rewards
-  validates_presence_of :name, :user, :category, :about, :headline, :goal, :deadline, :video_url
+  validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   validates_format_of :video_url, :with => VIMEO_REGEX, :message => "somente URLs do Vimeo são aceitas"
   validate :verify_if_video_exists_on_vimeo
@@ -48,8 +48,8 @@ class Project < ActiveRecord::Base
   def display_about
     about.gsub("\n", "<br>")
   end
-  def display_deadline
-    deadline.strftime('%d/%m')
+  def display_expires_at
+    expires_at.strftime('%d/%m')
   end
   def display_pledged
     number_to_currency pledged, :unit => 'R$ ', :precision => 0, :delimiter => '.'
@@ -67,10 +67,10 @@ class Project < ActiveRecord::Base
     pledged >= goal
   end
   def expired?
-    deadline < Time.now
+    expires_at < Time.now
   end
   def in_time?
-    deadline >= Time.now
+    expires_at >= Time.now
   end
   def percent
     ((pledged / goal * 100).abs).round
@@ -81,7 +81,7 @@ class Project < ActiveRecord::Base
     percent
   end
   def days_to_go
-    return 0 if deadline < Time.now
-    ((deadline - Time.now).abs/60/60/24).round
+    return 0 if expires_at < Time.now
+    ((expires_at - Time.now).abs/60/60/24).round
   end
 end

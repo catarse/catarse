@@ -18,12 +18,12 @@
   #project_info
     .project_name= link_to @project.name, project_path(@project)
     .project_owner por #{link_to @project.user.display_name, user_path(@project.user)}
-    .project_deadline #{@project.days_to_go} dias restantes
+    .project_expires_at #{@project.days_to_go} dias restantes
   .clear
   %h3 Como eu apoio este projeto?
   %p Primeiro, escolha o valor e a recompensa desejados. Depois nós te redirecionaremos para o #{link_to "MoIP", "http://www.moip.com.br/", :target => :_blank} para que você efetue o pagamento.
   %h3 Quando o pagamento é efetivado?
-  %p Assim que o MoIP confirmar a transação. Depois, caso o projeto não atinja #{@project.display_goal} até #{@project.display_deadline}, você receberá seu dinheiro de volta na forma de créditos no Catarse.
+  %p Assim que o MoIP confirmar a transação. Depois, caso o projeto não atinja #{@project.display_goal} até #{@project.display_expires_at}, você receberá seu dinheiro de volta na forma de créditos no Catarse.
   %h3 Então eu recebo meu dinheiro de volta se o projeto não sair?
   %p Sim! Você recebe de volta 100% do que pagou na forma de créditos para apoiar outros projetos do Catarse.
   %h3 E se eu não quiser usar os créditos no Catarse?

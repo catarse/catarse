@@ -24,7 +24,7 @@ Factory.define :project do |f|
   f.about "Foo bar"
   f.headline "Foo bar"
   f.goal 10000
-  f.deadline { 1.month.from_now }
+  f.expires_at { 1.month.from_now }
   f.video_url 'http://vimeo.com/17298435'
 end
 Factory.define :reward do |f|

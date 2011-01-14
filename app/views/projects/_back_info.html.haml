@@ -16,16 +16,16 @@
       .project_warning.successful
         .text
           - if @project.expired?
-            Este projeto foi financiado em #{@project.display_deadline}
+            Este projeto foi financiado em #{@project.display_expires_at}
           - else
-            Este projeto será financiado em #{@project.display_deadline}
+            Este projeto será financiado em #{@project.display_expires_at}
     - else
       .project_warning.not_successful
         .text
           - if @project.expired?
-            Este projeto não atingiu o mínimo de #{@project.display_goal} até #{@project.display_deadline} e não foi financiado
+            Este projeto não atingiu o mínimo de #{@project.display_goal} até #{@project.display_expires_at} e não foi financiado
           - else
-            Este projeto só será financiado se pelo menos #{@project.display_goal} forem atingidos até #{@project.display_deadline}
+            Este projeto só será financiado se pelo menos #{@project.display_goal} forem atingidos até #{@project.display_expires_at}
     .info
       = form_tag(back_project_path(@project), :method => :get, :id => 'back_project_form') do
         %fieldset

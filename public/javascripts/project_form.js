@@ -32,7 +32,7 @@ everything_ok = function(){
     all_ok = false
   if(!goal_ok())
     all_ok = false
-  if(!deadline_ok())
+  if(!expires_at_ok())
     all_ok = false
   if(!rewards_ok())
     all_ok = false
@@ -100,8 +100,8 @@ goal_ok = function(){
     return false
   }
 }
-deadline_ok = function(){
-  value = /^(\d{2})\/(\d{2})\/(\d{4})?$/.exec($('#project_deadline').val())
+expires_at_ok = function(){
+  value = /^(\d{2})\/(\d{2})\/(\d{4})?$/.exec($('#project_expires_at').val())
   if(value && value.length == 4) {
     year = parseFloat(value[3])
     month = parseFloat(value[2])-1
@@ -109,14 +109,14 @@ deadline_ok = function(){
     date = new Date(year, month, day)
     current_date = new Date()
     if(((day==date.getDate()) && (month==date.getMonth()) && (year==date.getFullYear())) && date > current_date){
-      $('#project_deadline').addClass("ok").removeClass("error")
+      $('#project_expires_at').addClass("ok").removeClass("error")
       return true
     } else {
-      $('#project_deadline').addClass("error").removeClass("ok")
+      $('#project_expires_at').addClass("error").removeClass("ok")
       return false
     }
   } else {
-    $('#project_deadline').addClass("error").removeClass("ok")
+    $('#project_expires_at').addClass("error").removeClass("ok")
     return false
   }
 }
@@ -162,14 +162,14 @@ $('#project_video_url').timedKeyup(verify_video)
 $('#project_about').keyup(everything_ok)
 $('#project_category_id').change(everything_ok)
 $('#project_goal').keyup(everything_ok)
-$('#project_deadline').keyup(everything_ok)
+$('#project_expires_at').keyup(everything_ok)
 $('#project_headline').keyup(everything_ok)
 $('#accept').click(everything_ok)
 $('.reward input,.reward textarea').live('keyup', everything_ok)
 
 $('#project_goal').numeric(',')
 $('.reward input').numeric(',')
-$('#project_deadline').datepicker({
+$('#project_expires_at').datepicker({
   altFormat: 'dd/mm/yy',
   onSelect: everything_ok
 })

@@ -42,8 +42,8 @@ describe Project do
     p = Factory.build(:project, :goal => nil)
     p.should_not be_valid
   end
-  it "should have a deadline" do
-    p = Factory.build(:project, :deadline => nil)
+  it "should have an expires_at date" do
+    p = Factory.build(:project, :expires_at => nil)
     p.should_not be_valid
   end
   it "should have a valid Vimeo video URL" do
@@ -78,18 +78,18 @@ describe Project do
     Factory(:backer, :project => p, :value => 3000.01)
     p.successful?.should be_true
   end
-  it "should be expired if deadline is passed" do
+  it "should be expired if expires_at is passed" do
     p = Factory.build(:project)
-    p.deadline = 2.seconds.from_now
+    p.expires_at = 2.seconds.from_now
     p.expired?.should be_false
-    p.deadline = 2.seconds.ago
+    p.expires_at = 2.seconds.ago
     p.expired?.should be_true
   end
-  it "should be in time if deadline is not passed" do
+  it "should be in time if expires_at is not passed" do
     p = Factory.build(:project)
-    p.deadline = 2.seconds.ago
+    p.expires_at = 2.seconds.ago
     p.in_time?.should be_false
-    p.deadline = 2.seconds.from_now
+    p.expires_at = 2.seconds.from_now
     p.in_time?.should be_true
   end
   it "should have a display image" do

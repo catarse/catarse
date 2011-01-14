@@ -7,10 +7,10 @@
   %h1 Você agora é parte do grupo que faz de tudo para o #{link_to @project.name, project_path(@project)} acontecer.
   .clear
   %h2 Conte para todo mundo o que você acabou de fazer
-  = link_to image_tag('auth/twitter_128.png', :title => 'Twitter'), "http://twitter.com/share?via=Catarse_&text=Eu apoio o projeto #{@project.name}&url=http%3A%2F%2Fcatarse.me", {:target => :_blank}
+  = link_to image_tag('auth/twitter_128.png', :title => 'Twitter'), "http://twitter.com/share?via=Catarse_&text=Eu acabei de apoiar o projeto #{@project.name}&url=http%3A%2F%2Fcatarse.me", {:target => :_blank}
   = link_to image_tag('auth/facebook_128.png', :title => 'Facebook'), '#'
   #how_it_works
     - if @project.successful?
-      Este projeto será financiado em #{@project.display_deadline}, graças a sua ajuda e de mais #{@project.total_backers - 1} pessoas. Muito obrigado!
+      Este projeto será financiado em #{@project.display_expires_at}, graças a sua ajuda e de mais #{@project.total_backers - 1} pessoas. Muito obrigado!
     - else
-      Este projeto só será financiado se pelo menos #{@project.display_goal} forem atingidos até #{@project.display_deadline}. Caso ele não seja bem sucedido, você receberá seu dinheiro de volta na forma de créditos no Catarse. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!
+      Este projeto só será financiado se pelo menos #{@project.display_goal} forem atingidos até #{@project.display_expires_at}. Caso ele não seja bem sucedido, você receberá seu dinheiro de volta na forma de créditos no Catarse. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!

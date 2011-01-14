@@ -11,7 +11,7 @@
       Lembre-se que o Catarse ficará com 5%, e o
       = link_to "MoIP", "http://www.moip.com.br/", :target => :_blank
       cobra uma taxa que varia entre 6% e 7% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas, depois.
-    = form.input :deadline, :as => :string, :label => "Qual o prazo para atingir o mínimo?", :hint => "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo.", :required => true, :input_html => { :value => (@project.deadline.strftime('%d/%m/%Y') if @project.deadline) }
+    = form.input :expires_at, :as => :string, :label => "Qual o prazo para atingir o mínimo?", :hint => "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo.", :required => true, :input_html => { :value => (@project.expires_at.strftime('%d/%m/%Y') if @project.expires_at) }
     #project_rewards
       :javascript
         var rewards_count = #{@project.rewards.size}

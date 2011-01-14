@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration
       t.references :user, :null => false
       t.references :category, :null => false
       t.decimal :goal, :null => false
-      t.datetime :deadline, :null => false
+      t.datetime :expires_at, :null => false
       t.text :about, :null => false
       t.text :headline, :null => false
       t.text :video_url, :null => false
