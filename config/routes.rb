@@ -19,6 +19,9 @@ Catarse::Application.routes.draw do
       get 'teaser'
       get 'guidelines'
       get 'vimeo'
+      get 'pending'
+      get 'pending_backers'
+      post 'update_attribute_on_the_spot'
     end
     member do
       get 'back'

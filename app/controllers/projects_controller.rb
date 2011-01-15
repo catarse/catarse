@@ -2,6 +2,7 @@
 class ProjectsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :create, :edit, :update
+  can_edit_on_the_spot
   before_filter :date_format_convert, :only => [:create, :update]
   def date_format_convert
     params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
@@ -94,6 +95,14 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:id]
     @title = @project.name
     render :layout => 'embed'
+  end
+  def pending
+    return unless require_admin
+    @projects = Project.pending.all
+  end
+  def pending_backers
+    return unless require_admin
+    @backers = Backer.pending.all
   end
   private
   def bitly

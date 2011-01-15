@@ -223,6 +223,55 @@ a img {
   padding-bottom: 0 !important;
 }
 
+/* line 549, ../../app/stylesheets/_projects.sass */
+#pending_projects, #pending_backers {
+  color: #444444;
+  font-size: 22px;
+  line-height: 28px;
+}
+/* line 553, ../../app/stylesheets/_projects.sass */
+#pending_projects img.project, #pending_projects img.user, #pending_backers img.project, #pending_backers img.user {
+  float: left;
+  margin-right: 12px;
+  width: 160px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+}
+/* line 558, ../../app/stylesheets/_projects.sass */
+#pending_projects img.user, #pending_backers img.user {
+  width: 48px;
+}
+/* line 560, ../../app/stylesheets/_projects.sass */
+#pending_projects a, #pending_backers a {
+  text-decoration: none !important;
+  font-size: 22px;
+  line-height: 28px;
+}
+/* line 564, ../../app/stylesheets/_projects.sass */
+#pending_projects p, #pending_backers p {
+  font-size: 18px;
+  color: #666666;
+}
+/* line 567, ../../app/stylesheets/_projects.sass */
+#pending_projects ul li, #pending_backers ul li {
+  margin-top: 32px;
+}
+/* line 569, ../../app/stylesheets/_projects.sass */
+#pending_projects ul li:first-child, #pending_backers ul li:first-child {
+  margin-top: 24px;
+}
+/* line 571, ../../app/stylesheets/_projects.sass */
+#pending_projects ul li:last-child, #pending_backers ul li:last-child {
+  margin-bottom: 24px;
+}
+/* line 573, ../../app/stylesheets/_projects.sass */
+#pending_projects hr, #pending_backers hr {
+  margin: 20px 0;
+  border: 1px dashed transparent;
+}
+
 /* line 1, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_mouseover {
   background-color: #009600;

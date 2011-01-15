@@ -1,0 +1,19 @@
+= content_for :content_header do
+  %h1 Projetos com aprovação pendente
+#pending_projects
+  - if @projects.empty?
+    Não há nenhum projeto com aprovação pendente
+  - else
+    %ul
+      - @projects.each do |project|
+        %li{ :id => project.id }
+          = link_to project_path(project) do
+            = image_tag project.display_image, :class => 'project'
+            = project.name
+          %p= project.headline
+          .clear
+          = check_box_tag 'visible', '1', project.visible
+          = label_tag 'visible', 'Visível na lista?'
+          = check_box_tag 'rejected', '1', project.rejected
+          = label_tag 'rejected', 'Rejeitado?'
+= javascript_include_tag 'pending_projects'

@@ -12,13 +12,19 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
-  def require_login
-    unless current_user
-      flash[:failure] = "Você precisa estar logado para realizar esta ação."
+  def require_condition(condition, message)
+    unless condition
+      flash[:failure] = message
       redirect_to :root
       false
     else
       true
     end
+  end
+  def require_login
+    require_condition(current_user, "Você precisa estar logado para realizar esta ação.")
+  end
+  def require_admin
+    require_condition((current_user and current_user.admin), "Você precisa ser admin para realizar esta ação.")
   end
 end
