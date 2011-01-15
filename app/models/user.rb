@@ -14,7 +14,9 @@ class User < ActiveRecord::Base
   def store_primary_user
     return if email.nil? or self.primary_user_id
     primary_user = User.primary.where(:email => email).first
-    self.primary_user_id = primary_user.id unless primary_user.nil?
+    if primary_user and primary_user.id != self.id
+      self.primary_user_id = primary_user.id
+    end
   end
 
   def to_param
