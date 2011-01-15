@@ -23,9 +23,13 @@
       %h1 Faça parte disto e compartilhe este projeto
       %ul
         %li
-          = render :partial => 'twitter', :locals => {:url => @project.short_url, :text => "Confiram o projeto #{truncate(@project.name, :length => (140 - 19 - 19 -14))}"}
+          = link_to "http://twitter.com/?status=Confira o projeto \"#{@project.name}\" no @Catarse_ #{@project.short_url}", :target => :_blank do
+            = image_tag 'auth/twitter_32.png', :title => 'Twitter'
+            Twitter
         %li
-          = render :partial => 'facebook', :locals => {:url => @project.short_url}
+          = link_to "http://www.facebook.com/share.php?u=#{project_url(@project)}&t=Confira o projeto \"#{@project.name}\" no Catarse&v=4", :target => :_blank do
+            = image_tag 'auth/facebook_32.png', :title => 'Facebook'
+            Facebook
         %li
           = image_tag 'link_32.png', :title => "Compartilhe o link"
           Link

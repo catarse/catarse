@@ -7,8 +7,10 @@
   %h1 Você agora é parte do grupo que faz de tudo para o #{link_to @project.name, project_path(@project)} acontecer.
   .clear
   %h2 Conte para todo mundo o que você acabou de fazer
-  = link_to image_tag('auth/twitter_128.png', :title => 'Twitter'), "http://twitter.com/?status=Eu acabei de apoiar o projeto #{@project.name} no @Catarse_ #{@project.short_url}", {:target => :_blank}
-  %a= image_tag('auth/facebook_128.png', :name => 'fb_share', :share_url => project_url(@project, :host => 'catarse.me'), :title => 'Facebook')
+  = link_to "http://twitter.com/?status=Eu acabei de apoiar o projeto \"#{@project.name}\" no @Catarse_ #{@project.short_url}", :target => :_blank do
+    = image_tag 'auth/twitter_128.png', :title => 'Twitter'
+  = link_to "http://www.facebook.com/share.php?u=#{project_url(@project)}&t=Eu acabei de apoiar o projeto \"#{@project.name}\" no Catarse&v=4", :target => :_blank do
+    = image_tag'auth/facebook_128.png', :title => 'Facebook'
   #how_it_works
     - if @project.successful?
       Este projeto será financiado em #{@project.display_expires_at}, graças a sua ajuda e de mais #{@project.total_backers - 1} pessoas. Muito obrigado!
