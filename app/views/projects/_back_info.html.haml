@@ -2,12 +2,12 @@
   #back_project
     .info
       .number= @project.total_backers
-      Pessoas já apoiaram
+      #{pluralize_without_number(@project.total_backers, 'Pessoa')} já #{pluralize_without_number(@project.total_backers, 'apoiou', 'apoiaram')}
       .number= @project.display_pledged
       Atingidos de
       %strong= @project.display_goal
       .number= @project.days_to_go
-      Dias restantes
+      #{pluralize_without_number(@project.days_to_go, 'Dia')} #{pluralize_without_number(@project.days_to_go, 'restante')}
       .project_progress
         .progress_bar
           .progress{ :style => "width: #{ @project.display_percent }%" }

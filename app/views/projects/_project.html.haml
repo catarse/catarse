@@ -23,6 +23,6 @@
         %br
         levantados
       %li
-        %strong #{project.days_to_go} dias
+        %strong #{project.days_to_go} #{pluralize_without_number(project.days_to_go, 'dia')}
         %br
-        restantes
+        #{pluralize_without_number(project.days_to_go, 'restante')}
