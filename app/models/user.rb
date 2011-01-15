@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   before_save :store_primary_user
 
   def store_primary_user
-    return if email.nil?
+    return if email.nil? or self.primary_user_id
     primary_user = User.primary.where(:email => email).first
     self.primary_user_id = primary_user.id unless primary_user.nil?
   end
