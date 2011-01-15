@@ -10,7 +10,6 @@ feature "My profile Feature" do
       page.should have_content("#{user.display_name} · Catarse") 
     end    
     within '#content_header' do
-      find('img')[:src].should match /#{user.display_image.gsub(/\?/, "\\?")}/
       within 'h1' do
         page.should have_content(user.display_name)
       end
