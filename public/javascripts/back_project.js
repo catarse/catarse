@@ -19,7 +19,7 @@ reward_ok = function(){
 }
 value_ok = function(){
   value = $('#backer_value').val()
-  if(/^(\d+)(\,\d{1,2})?$/.test(value) && parseFloat(value.replace(',', '.')) >= 10){
+  if(/^(\d+)$/.test(value) && parseInt(value) >= 10){
     $('#backer_value').addClass("ok").removeClass("error")
     $('input[type=radio]').attr("disabled", true)
     $('#backer_reward_id_0').attr("disabled", false)
@@ -50,7 +50,7 @@ value_ok = function(){
 }
 $('input[type=radio]').click(everything_ok)
 $('#backer_value').keyup(everything_ok)
-$('#backer_value').numeric(',')
+$('#backer_value').numeric(false)
 $('#backer_value').focus()
 $('#backer_reward_id_0').attr("checked", true)
 $('input[type=radio]').attr("disabled", true)
