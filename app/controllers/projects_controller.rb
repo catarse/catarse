@@ -48,6 +48,15 @@ class ProjectsController < ApplicationController
   def guidelines
     @title = "Como funciona o Catarse"
   end
+  def faq
+    @title = "Perguntas frequentes"
+  end
+  def terms
+    @title = "Termos de uso"
+  end
+  def privacy
+    @title = "Política de privacidade"
+  end
   def vimeo
     project = Project.new(:video_url => params[:url])
     if project.vimeo

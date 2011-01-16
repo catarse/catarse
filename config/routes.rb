@@ -7,6 +7,11 @@ Catarse::Application.routes.draw do
     root :to => "projects#index"
   end
   
+  match "/guidelines" => "projects#guidelines", :as => :guidelines
+  match "/faq" => "projects#faq", :as => :faq
+  match "/terms" => "projects#terms", :as => :terms
+  match "/privacy" => "projects#privacy", :as => :privacy
+  
   post "/auth" => "sessions#auth", :as => :auth
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
@@ -18,6 +23,9 @@ Catarse::Application.routes.draw do
     collection do
       get 'teaser'
       get 'guidelines'
+      get 'faq'
+      get 'terms'
+      get 'privacy'
       get 'vimeo'
       get 'pending'
       get 'pending_backers'

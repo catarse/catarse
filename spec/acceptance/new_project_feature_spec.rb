@@ -11,7 +11,7 @@ feature "New Project Feature" do
     visit homepage
     fake_login
     click_link 'Envie seu projeto'
-    current_path.should == guidelines_projects_path
+    current_path.should == guidelines_path
     within 'head title' do
       page.should have_content("Como funciona") 
     end    
