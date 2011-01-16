@@ -81,7 +81,7 @@ class Project < ActiveRecord::Base
     expires_at >= Time.now
   end
   def percent
-    ((pledged / goal * 100).abs).round
+    ((pledged / goal * 100).abs).round.to_i
   end
   def display_percent
     return 100 if successful?
