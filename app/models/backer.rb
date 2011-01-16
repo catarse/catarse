@@ -9,6 +9,15 @@ class Backer < ActiveRecord::Base
   validate :reward_must_be_from_project
   scope :confirmed, where(:confirmed => true)
   scope :pending, where(:confirmed => false)
+  before_save :confirm?
+  def confirm?
+    if confirmed and confirmed_at.nil?
+      self.confirmed_at = Time.now
+    end
+  end
+  def confirm!
+    update_attribute :confirmed, true
+  end
   def reward_must_be_from_project
     return unless reward
     errors.add(:reward, "deve ser do mesmo projeto") unless reward.project == project

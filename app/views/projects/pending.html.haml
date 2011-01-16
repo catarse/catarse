@@ -12,8 +12,8 @@
             = project.name
           %p= project.headline
           .clear
-          = check_box_tag 'visible', '1', project.visible
-          = label_tag 'visible', 'Visível na lista?'
-          = check_box_tag 'rejected', '1', project.rejected
-          = label_tag 'rejected', 'Rejeitado?'
+          = check_box_tag "visible_#{project.id}", '1', project.visible
+          = label_tag "visible_#{project.id}", 'Visível na lista?'
+          = check_box_tag "rejected_#{project.id}", '1', project.rejected
+          = label_tag "rejected_#{project.id}", 'Rejeitado?'
 = javascript_include_tag 'pending_projects'
