@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :create, :edit, :update
   can_edit_on_the_spot
+  before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create, :update]
   def date_format_convert
     params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
@@ -110,5 +111,24 @@ class ProjectsController < ApplicationController
     res = Net::HTTP.start("api.bit.ly", 80) { |http| http.get("/v3/shorten?login=diogob&apiKey=R_76ee3ab860d76d0d1c1c8e9cc5485ca1&longUrl=#{CGI.escape(project_url(@project))}") }
     data = JSON.parse(res.body)['data']
     data['url'] if data
+  end
+  def can_update_on_the_spot?
+    project_fields = []
+    project_admin_fields = ["visible", "rejected"]
+    backer_fields = []
+    backer_admin_fields = ["confirmed"]
+    def render_error; render :text => 'Você não possui permissão para realizar esta ação.', :status => 422; end
+    return render_error unless current_user
+    klass, field, id = params[:id].split('__')
+    return render_error unless klass == 'project' or klass == 'backer'
+    if klass == 'project'
+      return render_error unless project_fields.include?(field) or (current_user.admin and project_admin_fields.include?(field))
+      project = Project.find id
+      return render_error unless current_user.id == project.user.id or current_user.admin
+    else
+      return render_error unless backer_fields.include?(field) or (current_user.admin and backer_admin_fields.include?(field))
+      backer = Backer.find id
+      return render_error unless current_user.admin
+    end
   end
 end

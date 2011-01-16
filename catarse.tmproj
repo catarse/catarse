@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/projects/thank_you.html.haml</string>
+	<string>public/javascripts/user.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,6 +21,48 @@
 	<integer>372</integer>
 	<key>metaData</key>
 	<dict>
+		<key>app/views/layouts/_user.html.haml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/layouts/application.html.haml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>24</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>6</integer>
+		</dict>
+		<key>app/views/projects/show.html.haml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>12</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/views/projects/thank_you.html.haml</key>
 		<dict>
 			<key>caret</key>
@@ -28,7 +70,21 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>18</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/javascripts/user.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>16</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -39,6 +95,10 @@
 	<key>openDocuments</key>
 	<array>
 		<string>app/views/projects/thank_you.html.haml</string>
+		<string>app/views/projects/show.html.haml</string>
+		<string>app/views/layouts/application.html.haml</string>
+		<string>app/views/layouts/_user.html.haml</string>
+		<string>public/javascripts/user.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>

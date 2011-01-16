@@ -33,6 +33,6 @@ Catarse::Application.routes.draw do
     end
   end
   resources :users, :only => [:show] do
-    post :update_attribute_on_the_spot, :on => :collection
+    post 'update_attribute_on_the_spot', :on => :collection
   end
 end
