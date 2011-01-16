@@ -10,7 +10,7 @@
           = image_tag 'badge.png', :class => "badge" if show_badge
         %p 
           - if backer.user.backs.confirmed.count > 1
-            Apoiou este e mais outros #{backer.user.backs.confirmed.count} projetos
+            Apoiou este e mais outros #{backer.user.backs.confirmed.count-1} projetos
           - else
             Apoiou somente este projeto até agora
   - if show_all_link
