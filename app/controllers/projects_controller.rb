@@ -81,13 +81,18 @@ class ProjectsController < ApplicationController
     @backer = @project.backers.new(params[:backer])
     unless @backer.save
       flash[:failure] = "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
-      redirect_to back_project_path(project)
+      return redirect_to back_project_path(project)
     end
+    session[:thank_you_id] = @project.id
   end
   def thank_you
-    show! do
-      @title = "Muito obrigado"
+    unless session[:thank_you_id]
+      flash[:failure] = "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
+      return redirect_to :root
     end
+    @project = Project.find session[:thank_you_id]
+    @title = "Muito obrigado"
+    session[:thank_you_id] = nil
   end
   def backers
     show! do

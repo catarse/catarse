@@ -11,6 +11,7 @@ Catarse::Application.routes.draw do
   match "/faq" => "projects#faq", :as => :faq
   match "/terms" => "projects#terms", :as => :terms
   match "/privacy" => "projects#privacy", :as => :privacy
+  match "/thank_you" => "projects#thank_you", :as => :thank_you
   
   post "/auth" => "sessions#auth", :as => :auth
   match "/auth/:provider/callback" => "sessions#create"
@@ -29,12 +30,12 @@ Catarse::Application.routes.draw do
       get 'vimeo'
       get 'pending'
       get 'pending_backers'
+      get 'thank_you'
       post 'update_attribute_on_the_spot'
     end
     member do
       get 'back'
       post 'review'
-      get 'thank_you'
       get 'backers'
       get 'embed'
       get 'video_embed'
