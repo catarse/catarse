@@ -15,9 +15,13 @@
       e não quer nenhuma recompensa por seu apoio.
   = form_tag 'https://www.moip.com.br/PagamentoMoIP.do', :id => 'review_form' do
     %fieldset
+      = check_box_tag 'accept'
+      = label_tag 'accept', "Eu li e estou de acordo com os #{link_to 'termos de uso', terms_path, :target => :_blank}.".html_safe, :class => 'inline'
+    %fieldset
       = hidden_field_tag 'id_carteira', 'softa'
       = hidden_field_tag 'valor', ('%.2f' % @backer.value).gsub('.','')
       = hidden_field_tag 'nome', "Apoio para projeto no Catarse"
       = hidden_field_tag 'descricao', "Apoio para o projeto '#{@project.name}'"
       = hidden_field_tag 'id_transacao', @backer.id
-      = submit_tag 'Efetuar pagamento'
+      = submit_tag 'Efetuar pagamento', :disabled => true
+= javascript_include_tag 'review'
