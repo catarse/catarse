@@ -103,6 +103,7 @@ class ProjectsController < ApplicationController
     return render :status => 200 if backer.confirmed
     return render :status => 422 if backer.moip_value != value
     backer.update_attributes :confirmed => true, :confirmed_at => Time.now
+    return render :status => 200
   rescue
     return render :status => 422
   end
