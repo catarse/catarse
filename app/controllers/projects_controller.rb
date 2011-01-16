@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
   def index
     index! do
       @title = "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
-      @projects = Project.visible
+      @projects = Project.visible.order('"order", created_at DESC')
     end
   end
   def new
@@ -108,11 +108,11 @@ class ProjectsController < ApplicationController
   end
   def pending
     return unless require_admin
-    @projects = Project.pending.all
+    @projects = Project.order('visible, rejected, "order", created_at DESC').all
   end
   def pending_backers
     return unless require_admin
-    @backers = Backer.pending.all
+    @backers = Backer.order("confirmed, created_at DESC").all
   end
   private
   def bitly

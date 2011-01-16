@@ -23,7 +23,7 @@
           .reward
             .remove_reward_wrapper
               %a.remove_reward{:href=>'#'} remover
-            = reward.input :description, :as => :text, :label => "Descrição", :hint => "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!", :input_html => { :maxlength => 140 }
+            = reward.input :description, :as => :text, :label => "Descrição", :hint => "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!"
             .left
               = reward.input :minimum_value, :label => "Valor mínimo", :hint => "Este é valor mínimo de apoio para escolher esta recompensa."
             .right
