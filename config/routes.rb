@@ -12,6 +12,7 @@ Catarse::Application.routes.draw do
   match "/terms" => "projects#terms", :as => :terms
   match "/privacy" => "projects#privacy", :as => :privacy
   match "/thank_you" => "projects#thank_you", :as => :thank_you
+  match "/moip" => "projects#moip", :as => :moip
   
   post "/auth" => "sessions#auth", :as => :auth
   match "/auth/:provider/callback" => "sessions#create"
@@ -31,6 +32,7 @@ Catarse::Application.routes.draw do
       get 'pending'
       get 'pending_backers'
       get 'thank_you'
+      post 'moip'
       post 'update_attribute_on_the_spot'
     end
     member do

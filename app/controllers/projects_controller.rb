@@ -94,6 +94,18 @@ class ProjectsController < ApplicationController
     @title = "Muito obrigado"
     session[:thank_you_id] = nil
   end
+  def moip
+    id = params[:id_transacao]
+    status = params[:status_pagamento]
+    value = params[:valor]
+    backer = Backer.find id
+    return render :status => 200 if status != '1'
+    return render :status => 200 if backer.confirmed
+    return render :status => 422 if backer.moip_value != value
+    backer.update_attributes :confirmed => true, :confirmed_at => Time.now
+  rescue
+    return render :status => 422
+  end
   def backers
     show! do
       @title = "Apoiadores do projeto #{@project.name}"

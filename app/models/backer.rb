@@ -26,4 +26,7 @@ class Backer < ActiveRecord::Base
   def display_value
     number_to_currency value, :unit => 'R$ ', :precision => 0, :delimiter => '.'
   end
+  def moip_value
+    "%0.0f" % (value * 100)
+  end
 end
