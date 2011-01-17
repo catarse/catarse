@@ -2,4 +2,33 @@
   %h1 Faça acontecer os projetos em que você acredita!
   %h2 Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história.
 = render :partial => 'project', :collection => @projects
+.project_box
+  .project_wrap
+    .project_header
+      = link_to guidelines_path, :id => 'ghost_project_link' do
+        = image_tag 'ghost_project.png'
+        %h1 Envie seu projeto
+    .project_owner
+      por Você mesmo
+    .project_headline
+      A gente não vê a hora de rechear o Catarse com as ideias mais fantásticas do Brasil e ver esses projetos saírem do papel. Envie o seu!
+    %span.project_category Arte
+    .clear
+  .project_progress
+    .progress_bar
+      .progress{ :style => "width: 0%" }
+        &nbsp;
+    %ul
+      %li
+        %strong 0%
+        %br
+        atingido
+      %li
+        %strong R$ 0
+        %br
+        levantados
+      %li
+        %strong ?? dias
+        %br
+        restantes
 .clear

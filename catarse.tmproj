@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>public/javascripts/user.js</string>
+	<string>app/views/projects/_backers.html.haml</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,14 +21,56 @@
 	<integer>372</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/views/layouts/_user.html.haml</key>
+		<key>app/stylesheets/_body.sass</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/stylesheets/_content.sass</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>26</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/stylesheets/_on_the_spot.sass</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>4</integer>
+		</dict>
+		<key>app/views/layouts/_head.html.haml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -40,21 +82,21 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
+				<integer>64</integer>
 				<key>line</key>
-				<integer>24</integer>
+				<integer>28</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>6</integer>
+			<integer>10</integer>
 		</dict>
-		<key>app/views/projects/show.html.haml</key>
+		<key>app/views/projects/_backers.html.haml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>46</integer>
 				<key>line</key>
 				<integer>12</integer>
 			</dict>
@@ -63,42 +105,105 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/projects/thank_you.html.haml</key>
+		<key>app/views/projects/back.html.haml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>18</integer>
+				<integer>6</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>public/javascripts/user.js</key>
+		<key>app/views/projects/faq.html.haml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>16</integer>
+				<integer>104</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>86</integer>
+		</dict>
+		<key>app/views/projects/terms.html.haml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>254</integer>
+				<key>line</key>
+				<integer>45</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>27</integer>
+		</dict>
+		<key>config/routes.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>public/javascripts/back_project.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>52</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>22</integer>
+		</dict>
+		<key>public/javascripts/jquery.numeric.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>11</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/views/projects/thank_you.html.haml</string>
-		<string>app/views/projects/show.html.haml</string>
+		<string>app/stylesheets/_body.sass</string>
+		<string>app/stylesheets/_on_the_spot.sass</string>
+		<string>app/views/projects/back.html.haml</string>
+		<string>public/javascripts/back_project.js</string>
 		<string>app/views/layouts/application.html.haml</string>
-		<string>app/views/layouts/_user.html.haml</string>
-		<string>public/javascripts/user.js</string>
+		<string>app/views/layouts/_head.html.haml</string>
+		<string>config/routes.rb</string>
+		<string>app/views/projects/_backers.html.haml</string>
+		<string>public/javascripts/jquery.numeric.js</string>
+		<string>app/views/projects/faq.html.haml</string>
+		<string>app/views/projects/terms.html.haml</string>
+		<string>app/stylesheets/_content.sass</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
