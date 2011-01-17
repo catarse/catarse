@@ -9,11 +9,11 @@ class Reward < ActiveRecord::Base
   scope :sold_out, where("maximum_backers IS NOT NULL AND (SELECT COUNT(*) FROM backers WHERE reward_id = rewards.id) >= maximum_backers")
   scope :remaining, where("maximum_backers IS NULL OR (maximum_backers IS NOT NULL AND (SELECT COUNT(*) FROM backers WHERE reward_id = rewards.id) < maximum_backers)")
   def sold_out?
-    maximum_backers and backers.count >= maximum_backers
+    maximum_backers and backers.confirmed.count >= maximum_backers
   end
   def remaining
     return nil unless maximum_backers
-    maximum_backers - backers.count
+    maximum_backers - backers.confirmed.count
   end
   def name
     "<div class='reward_minimum_value'>#{(minimum_value > 0 ? display_minimum + '+' : 'Não quero recompensa')}</div><div class='reward_description'>#{description}</div>#{ '<div class="sold_out">Esgotada</div>' if sold_out? }<div class='clear'></div>".html_safe
@@ -22,3 +22,4 @@ class Reward < ActiveRecord::Base
     number_to_currency minimum_value, :unit => 'R$ ', :precision => 0, :delimiter => '.'
   end
 end
+
