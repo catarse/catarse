@@ -99,13 +99,15 @@ class ProjectsController < ApplicationController
     status = params[:status_pagamento]
     value = params[:valor]
     backer = Backer.find id
-    return render :status => 200 if status != '1'
-    return render :status => 200 if backer.confirmed
-    return render :status => 422 if backer.moip_value != value
+    MoipMailer.payment_received_email(backer, params).deliver
+    return render :nothing => true, :status => 200 if status != '1'
+    return render :nothing => true, :status => 200 if backer.confirmed
+    return render :nothing => true, :status => 422 if backer.moip_value != value
     backer.confirm!
-    return render :status => 200
-  rescue
-    return render :status => 422
+    return render :nothing => true, :status => 200
+  rescue => e
+    MoipMailer.error_in_payment_email(backer, params, e).deliver
+    return render :nothing => true, :status => 422
   end
   def backers
     show! do

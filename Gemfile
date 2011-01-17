@@ -13,6 +13,7 @@ gem 'vimeo'
 gem 'wirble'
 gem "on_the_spot"
 gem 'unicorn'
+gem 'mailee', '>= 0.4.3'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'
