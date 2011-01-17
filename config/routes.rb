@@ -1,11 +1,6 @@
 Catarse::Application.routes.draw do
   
-  # TODO change back the root to "projects#index" when we launch
-  if Rails.env == "production"
-    root :to => "projects#teaser"
-  else
-    root :to => "projects#index"
-  end
+  root :to => "projects#index"
   
   match "/guidelines" => "projects#guidelines", :as => :guidelines
   match "/faq" => "projects#faq", :as => :faq
