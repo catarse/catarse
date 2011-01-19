@@ -81,7 +81,7 @@
           %p
             - if current_user and @user == current_user
               - if back.reward
-                Recompensa: #{back.reward.display_minimum} - #{truncate(back.reward.description, 140, "...")}
+                Sua recompensa: #{back.reward.display_minimum} - #{truncate(back.reward.description, :length => 140)}
               - else
                 Você não selecionou nenhuma recompensa
             - else

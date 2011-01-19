@@ -23,7 +23,7 @@
           #{backer.display_value}
           %p
             - if backer.reward
-              #{backer.reward.display_minimum} - #{truncate(backer.reward.description, 40, "...")}
+              #{backer.reward.display_minimum} - #{truncate(backer.reward.description, :length => 40)}
             - else
               Este apoiador não selecionou nenhuma recompensa
           .clear
