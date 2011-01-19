@@ -40,7 +40,7 @@
         %li
           %h1 Para #{reward.display_minimum} ou mais
           - if current_user and current_user.admin
-            #{on_the_spot_edit @reward, :description, :type => :textarea}
+            #{on_the_spot_edit reward, :description, :type => :textarea}
           - else
             = reward.description
           .clear
