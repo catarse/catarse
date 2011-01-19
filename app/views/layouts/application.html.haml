@@ -2,9 +2,11 @@
 %html{:lang => :pt}
   = render :partial => 'layouts/head'
   %body#site
-    = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
-    #pre_header
-      Quer saber como apoiar um projeto? #{link_to 'Confira aqui', 'http://blog.catarse.me/post/2826297563/passo-a-passo-apoiar-projetos', :target => :_blank} um passo-a-passo que publicamos no nosso blog.
+    - unless flash.empty?
+      = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
+    - else
+      #pre_header
+        Quer saber como apoiar um projeto? #{link_to 'Confira aqui', 'http://blog.catarse.me/post/2826297563/passo-a-passo-apoiar-projetos', :target => :_blank} um passo-a-passo que publicamos no nosso blog.
     #main
       #header
         %h1= link_to "Catarse", root_path

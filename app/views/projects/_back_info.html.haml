@@ -57,7 +57,7 @@
                 disponíveis
             .clear
   - unless @backers.empty? or show_backers == false
-    = render :partial => 'backers', :locals => {:show_all_link => true, :show_badge => false}
+    = render :partial => 'backers', :locals => {:show_all_link => true, :show_badge => false, :show_rewards => false}
 .clear
 = javascript_include_tag 'show_project'
 
