@@ -161,7 +161,7 @@ class ProjectsController < ApplicationController
       backer = Backer.find id
       return render_error unless current_user.admin
     elsif klass == 'reward'
-      return render_error unless backer_fields.include?(field) or (current_user.admin and backer_admin_fields.include?(field))
+      return render_error unless reward_fields.include?(field) or (current_user.admin and reward_admin_fields.include?(field))
       reward = Reward.find id
       return render_error unless current_user.admin
     end
