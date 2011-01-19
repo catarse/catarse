@@ -133,6 +133,10 @@ class ProjectsController < ApplicationController
   def pending_backers
     return unless require_admin
     @backers = Backer.order("confirmed, created_at DESC").all
+    @total_backers = User.backers.count
+    @total_backs = Backer.confirmed.count
+    @total_pledged = Backer.confirmed.sum(:value)
+    @total_users = User.primary.count
   end
   private
   def bitly

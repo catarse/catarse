@@ -1,5 +1,14 @@
 = content_for :content_header do
   %h1 Apoiadores a confirmar
+  %h2
+    \# de apoiadores
+    %strong= @total_backers
+    \# de apoios
+    %strong= @total_backs
+    $ arrecadado
+    %strong= @total_pledged
+    \# Usuários
+    %strong= @total_users
 #pending_backers
   - if @backers.empty?
     Não há nenhum apoiador a confirmar
@@ -7,12 +16,18 @@
     %ul
       - @backers.each do |backer|
         %li{ :id => backer.id }
-          = backer.id
+          \##{backer.id}
           = link_to user_path(backer.user) do
             = image_tag backer.user.display_image, :class => 'user'
             = backer.user.display_name
-          %p #{backer.project.name} - #{backer.project.headline}
+          #{backer.display_value}
+          %p
+            - if backer.reward
+              #{backer.reward.display_minimum} - #{backer.reward.description}
+            - else
+              Este apoiador não selecionou nenhuma recompensa
           .clear
           = check_box_tag "confirmed_#{backer.id}", '1', backer.confirmed
           = label_tag "confirmed_#{backer.id}", 'Confirmado?'
 = javascript_include_tag 'pending_backers'
+

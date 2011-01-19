@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
 
   scope :primary, :conditions => ["primary_user_id IS NULL"]
+  scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   before_save :store_primary_user
 
   def store_primary_user
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["user_info"]["name"]
-      user.email = auth["user_info"]["email"] 
+      user.email = auth["user_info"]["email"]
       user.email = auth["extra"]["user_hash"]["email"] if auth["extra"] and user.email.nil?
       user.nickname = auth["user_info"]["nickname"]
       user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
@@ -65,3 +66,4 @@ class User < ActiveRecord::Base
     "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or 'http://catarse.me/images/user.png'}"
   end
 end
+
