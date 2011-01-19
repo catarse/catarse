@@ -1,3 +1,5 @@
+#project_warning
+  Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler #{link_to 'nosso guia', 'http://blog.catarse.me/post/2816685141/guia-colocar-projeto-catarse', :target => :_blank}.
 = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
   = form.inputs do
     = form.input :user_id, :as => :hidden, :value => current_user.id, :required => true
