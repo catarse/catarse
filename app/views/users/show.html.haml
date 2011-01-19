@@ -78,6 +78,14 @@
           = link_to project_path(back.project) do
             = image_tag back.project.display_image, :class => 'project'
             = back.project.name
-          %p= back.project.headline
+          %p
+            - if current_user and @user == current_user
+              - if back.reward
+                Recompensa: #{back.reward.display_minimum} - #{truncate(back.reward.description, 140, "...")}
+              - else
+                Você não selecionou nenhuma recompensa
+            - else
+              = back.project.headline
           .clear
 = javascript_include_tag 'profile' if current_user and @user == current_user
+
