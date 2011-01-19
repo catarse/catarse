@@ -4,6 +4,7 @@ log/*.log
 tmp/**/*
 config/database.yml
 db/development_structure.sql
-
+.rvmrc
 # Vim
 *.swp
+

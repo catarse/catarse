@@ -41,6 +41,9 @@
     = render 'embed'
   #project_about
     %h1 Sobre este projeto
-    = @project.display_about.html_safe
+    - if current_user and current_user.admin
+      #{on_the_spot_edit @project, :about, :type => :textarea}
+    - else
+      = @project.display_about.html_safe
 = render :partial => 'back_info', :locals => {:show_backers => true}
 

@@ -143,21 +143,28 @@ class ProjectsController < ApplicationController
   end
   def can_update_on_the_spot?
     project_fields = []
-    project_admin_fields = ["visible", "rejected"]
+    project_admin_fields = ["visible", "rejected", "about"]
     backer_fields = []
     backer_admin_fields = ["confirmed"]
+    reward_fields = []
+    reward_admin_fields = ["description"]
     def render_error; render :text => 'Você não possui permissão para realizar esta ação.', :status => 422; end
     return render_error unless current_user
     klass, field, id = params[:id].split('__')
-    return render_error unless klass == 'project' or klass == 'backer'
+    return render_error unless klass == 'project' or klass == 'backer' or klass == 'reward'
     if klass == 'project'
       return render_error unless project_fields.include?(field) or (current_user.admin and project_admin_fields.include?(field))
       project = Project.find id
       return render_error unless current_user.id == project.user.id or current_user.admin
-    else
+    elsif klass == 'backer'
       return render_error unless backer_fields.include?(field) or (current_user.admin and backer_admin_fields.include?(field))
       backer = Backer.find id
+      return render_error unless current_user.admin
+    elsif klass == 'reward'
+      return render_error unless backer_fields.include?(field) or (current_user.admin and backer_admin_fields.include?(field))
+      reward = Reward.find id
       return render_error unless current_user.admin
     end
   end
 end
+

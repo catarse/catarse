@@ -39,7 +39,10 @@
       - @rewards.each do |reward|
         %li
           %h1 Para #{reward.display_minimum} ou mais
-          = reward.description
+          - if current_user and current_user.admin
+            #{on_the_spot_edit @project, :about, :type => :textarea}
+          - else
+            = reward.description
           .clear
           - if reward.maximum_backers
             .maximum_backers
