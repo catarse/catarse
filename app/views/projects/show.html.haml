@@ -44,6 +44,6 @@
     - if current_user and current_user.admin
       #{on_the_spot_edit @project, :about, :type => :textarea}
     - else
-      = @project.display_about.html_safe
+      = auto_link(@project.display_about.html_safe, :html => {:target => :_blank})
 = render :partial => 'back_info', :locals => {:show_backers => true}
 
