@@ -6,13 +6,13 @@ require_login = function(e){
     url = $('input[type=submit]').parentsUntil('form').parent().attr('action')
   }
   $('#return_to').val(url)
-  $('.overlay').show()
+  $('#login_overlay').show()
   $('#login').fadeIn()
 }
 var return_to = null
 $('#login_link,#signup_link').click(function(e){
   e.preventDefault()
-  $('.overlay').show()
+  $('#login_overlay').show()
   $('#login').fadeIn()
 })
 if($('#login').length > 0){
@@ -21,7 +21,7 @@ if($('#login').length > 0){
 $('.close').click(function(e){
   e.preventDefault()
   $('#login').hide()
-  $('.overlay').hide()
+  $('#login_overlay').hide()
 })
 $('a.provider').click(function(e){
   e.preventDefault()
@@ -31,3 +31,4 @@ $('a.provider').click(function(e){
   $('#provider').val($(this).attr('href'))
   $('#login form').submit()
 })
+

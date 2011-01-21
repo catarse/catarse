@@ -4,7 +4,7 @@ $("#project_link").click(function(e){
 })
 $('#embed_link').click(function(e){
   e.preventDefault()
-  $('.overlay').show()
+  $('#embed_overlay').show()
   $('#project_embed').fadeIn()
 })
 $(document).ready(function(){
@@ -12,3 +12,4 @@ $(document).ready(function(){
     $('input[type=submit]').click(require_login)
   }
 })
+
