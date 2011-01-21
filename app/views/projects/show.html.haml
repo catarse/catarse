@@ -1,8 +1,9 @@
-- content_for :content_header do
+= content_for :content_header do
   #project_header
     %h1= @project.name
     %h2 Um projeto de #{link_to @project.user.display_name, user_path(@project.user)}
-- content_for :meta_tags do
+= content_for :meta_tags do
+  %meta{:name => "description", :content => @project.headline}
   -# Meta tags for facebook social graph
   %meta{:property => "og:title", :content => @project.name}
   %meta{:property => "og:type", :content => 'cause'}
