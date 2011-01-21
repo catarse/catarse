@@ -38,6 +38,14 @@
         = check_box_tag 'project_updates', '1', @user.project_updates
         = label_tag 'project_updates', 'Quero receber atualizações dos projetos por email'
     %hr
+  - elsif current_user and current_user.admin
+    %h1 Dados de #{@user.display_name}
+    %ul
+      %li
+        - if @user.email
+          = @user.email
+        - else
+          #{@user.display_name} ainda não preencheu seu email.
   %h1
     - if current_user and @user == current_user
       Meus projetos
