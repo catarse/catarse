@@ -4,12 +4,13 @@ class MoipMailer < ActionMailer::Base
   def payment_received_email(backer, parameters)
     @backer = backer.to_yaml
     @parameters = parameters.to_yaml
-    mail(:to => 'diogob@gmail.com', :subject => "Received payment from moip")
+    mail(:to => 'danielweinmann@gmail.com', :subject => "Received payment from moip")
   end
   def error_in_payment_email(backer, parameters, exception)
     @backer = backer.to_yaml
     @parameters = parameters.to_yaml
     @ex = exception
-    mail(:to => 'diogob@gmail.com', :subject => "Received payment from moip")
+    mail(:to => 'danielweinmann@gmail.com', :subject => "Received payment from moip")
   end
 end
+
