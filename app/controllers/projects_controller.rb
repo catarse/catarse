@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :create, :edit, :update
   can_edit_on_the_spot
+  skip_before_filter :verify_authenticity_token, :only => [:moip]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create, :update]
   def date_format_convert

@@ -1,14 +1,14 @@
 Catarse::Application.routes.draw do
-  
+
   root :to => "projects#index"
-  
+
   match "/guidelines" => "projects#guidelines", :as => :guidelines
   match "/faq" => "projects#faq", :as => :faq
   match "/terms" => "projects#terms", :as => :terms
   match "/privacy" => "projects#privacy", :as => :privacy
   match "/thank_you" => "projects#thank_you", :as => :thank_you
   match "/moip" => "projects#moip", :as => :moip
-  
+
   post "/auth" => "sessions#auth", :as => :auth
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
@@ -42,3 +42,4 @@ Catarse::Application.routes.draw do
     post 'update_attribute_on_the_spot', :on => :collection
   end
 end
+
