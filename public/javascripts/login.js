@@ -18,7 +18,7 @@ $('#login_link,#signup_link').click(function(e){
 if($('#login').length > 0){
   $('#new_project_link,#ghost_project_link').click(require_login)
 }
-$('.close').click(function(e){
+$('#login .close').click(function(e){
   e.preventDefault()
   $('#login').hide()
   $('#login_overlay').hide()

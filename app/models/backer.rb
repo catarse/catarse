@@ -9,10 +9,12 @@ class Backer < ActiveRecord::Base
   validate :reward_must_be_from_project
   scope :confirmed, where(:confirmed => true)
   scope :pending, where(:confirmed => false)
+  scope :display_notice, where(:display_notice => true)
   before_save :confirm?
   def confirm?
     if confirmed and confirmed_at.nil?
       self.confirmed_at = Time.now
+      self.display_notice = true
     end
   end
   def confirm!
@@ -39,3 +41,4 @@ class Backer < ActiveRecord::Base
     "%0.0f" % (value * 100)
   end
 end
+

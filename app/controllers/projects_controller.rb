@@ -150,7 +150,7 @@ class ProjectsController < ApplicationController
   def can_update_on_the_spot?
     project_fields = []
     project_admin_fields = ["visible", "rejected", "about"]
-    backer_fields = []
+    backer_fields = ["display_notice"]
     backer_admin_fields = ["confirmed"]
     reward_fields = []
     reward_admin_fields = ["description"]
@@ -165,7 +165,7 @@ class ProjectsController < ApplicationController
     elsif klass == 'backer'
       return render_error unless backer_fields.include?(field) or (current_user.admin and backer_admin_fields.include?(field))
       backer = Backer.find id
-      return render_error unless current_user.admin
+      return render_error unless current_user.admin or (backer.user == current_user)
     elsif klass == 'reward'
       return render_error unless reward_fields.include?(field) or (current_user.admin and reward_admin_fields.include?(field))
       reward = Reward.find id
