@@ -761,6 +761,7 @@ body#site #pre_header .back_notice {
 }
 /* line 18, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice img.social {
+  float: right;
   vertical-align: middle;
   margin-top: -4px;
   width: 28px;
@@ -773,14 +774,14 @@ body#site #pre_header .back_notice img.social {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 23, ../../app/stylesheets/_pre_header.sass */
+/* line 24, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice img.social:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 25, ../../app/stylesheets/_pre_header.sass */
+/* line 26, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice a.close {
   color: white;
   color: rgba(255, 255, 255, 0.7);
@@ -792,9 +793,10 @@ body#site #pre_header .back_notice a.close {
   font-size: 12px;
   line-height: 14px;
   margin-top: 4px;
+  margin-left: 8px;
   font-weight: bold;
 }
-/* line 37, ../../app/stylesheets/_pre_header.sass */
+/* line 39, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice a.close:hover, body#site #pre_header .back_notice a.close:focus {
   color: white;
 }
