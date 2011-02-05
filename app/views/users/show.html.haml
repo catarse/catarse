@@ -86,10 +86,14 @@
           = link_to project_path(back.project) do
             = image_tag back.project.display_image, :class => 'project'
             = back.project.name
+          = link_to "http://twitter.com/?status=Eu apoiei o projeto \"#{back.project.name}\" no @Catarse_ #{back.project.short_url}", :target => :_blank do
+            = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
+          = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}&t=Eu apoiei o projeto \"#{back.project.name}\" no Catarse&v=4", :target => :_blank do
+            = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
           %p
             - if current_user and @user == current_user
               - if back.reward
-                Sua recompensa: #{back.reward.display_minimum} - #{truncate(back.reward.description, :length => 140)}
+                Sua recompensa: #{back.reward.display_minimum} - #{truncate(back.reward.description, :length => 100)}
               - else
                 Você não selecionou nenhuma recompensa
             - else
