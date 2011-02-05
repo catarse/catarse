@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  sync_with_mailee :news => :newsletter
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
