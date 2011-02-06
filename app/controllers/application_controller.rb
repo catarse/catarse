@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     end
     if cookies[:remember_me_id] and cookies[:remember_me_hash]
       @current_user = User.find(cookies[:remember_me_id]) 
-      @current_user = nil unless @current_user.hash == cookies[:remember_me_hash]
+      @current_user = nil unless @current_user.remember_me_hash == cookies[:remember_me_hash]
       session[:user_id] = @current_user.id
     end
   rescue

@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     if session[:remember_me]
       cookies[:remember_me_id] = { :value => user.id, :expires => 30.days.from_now }
-      cookies[:remember_me_hash] = { :value => user.hash, :expires => 30.days.from_now }
+      cookies[:remember_me_hash] = { :value => user.remember_me_hash, :expires => 30.days.from_now }
     end
     flash[:success] = "Login realizado com sucesso. Bem-vindo, #{user.display_name}!"
     redirect_back_or_default :root
