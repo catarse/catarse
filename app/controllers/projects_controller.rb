@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
     show!{
       @title = @project.name
       @rewards = @project.rewards.order(:minimum_value)
-      @backers = @project.backers.confirmed.limit(12).order(:confirmed_at)
+      @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC")
     }
   end
   def guidelines
