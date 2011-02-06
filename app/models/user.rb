@@ -59,6 +59,9 @@ class User < ActiveRecord::Base
   def backer?
     backs.confirmed.count > 0
   end
+  def hash
+    Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
+  end
 
   protected
 

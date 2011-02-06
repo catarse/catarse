@@ -4,7 +4,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   private
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    return @current_user if @current_user
+    if session[:user_id]
+      return @current_user = User.find(session[:user_id])
+    end
+    if cookies[:remember_me_id] and cookies[:remember_me_hash]
+      @current_user = User.find(cookies[:remember_me_id]) 
+      @current_user = nil unless @current_user.hash == cookies[:remember_me_hash]
+      session[:user_id] = @current_user.id
+    end
   rescue
     session[:user_id] = nil
   end

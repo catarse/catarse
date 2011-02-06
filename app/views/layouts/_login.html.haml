@@ -10,8 +10,11 @@
         -# Remove this if when Yahoo login is finally working
         - unless p.path == "yahoo"
           = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
+      %fieldset
+        = check_box_tag 'remember_me', "1", true
+        = label_tag 'remember_me', "Lembre-se de mim e mantenha-me conectado.", :class => 'inline'
     %p
-      Caso você ainda não seja cadastrado, sua conta será criada. Se você já é cadastrado, você será redirecionado para sua conta após o login.
+      Caso você ainda não seja cadastrado, sua conta será criada. Se você já é cadastrado, você entrará normalmente.
     %p
       %strong Lembre-se com qual rede você se cadastrou.
       É com ela que você sempre irá acessar sua conta.

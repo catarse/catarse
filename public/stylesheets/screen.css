@@ -656,10 +656,15 @@ body#site #login h1 {
   margin-bottom: 10px;
 }
 /* line 24, ../../app/stylesheets/_login.sass */
+body#site #login form fieldset {
+  margin-top: 8px;
+  padding: 0;
+}
+/* line 27, ../../app/stylesheets/_login.sass */
 body#site #login p {
   margin-top: 20px;
 }
-/* line 27, ../../app/stylesheets/_login.sass */
+/* line 30, ../../app/stylesheets/_login.sass */
 body#site #login a img {
   width: 60px;
   -moz-transition-property: all;
@@ -671,27 +676,27 @@ body#site #login a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 30, ../../app/stylesheets/_login.sass */
+/* line 33, ../../app/stylesheets/_login.sass */
 body#site #login a img:hover, body#site #login a img:focus {
   -moz-transform: scale(1.2);
   -webkit-transform: scale(1.2);
   -o-transform: scale(1.2);
   transform: scale(1.2);
 }
-/* line 33, ../../app/stylesheets/_login.sass */
+/* line 36, ../../app/stylesheets/_login.sass */
 body#site #login a.disabled img {
   opacity: 0.6;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
 }
-/* line 35, ../../app/stylesheets/_login.sass */
+/* line 38, ../../app/stylesheets/_login.sass */
 body#site #login a.disabled img:hover, body#site #login a.disabled img:focus, body#site #login a.disabled img:active {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
 }
-/* line 37, ../../app/stylesheets/_login.sass */
+/* line 40, ../../app/stylesheets/_login.sass */
 body#site #login a.close {
   color: white;
   text-decoration: none;
@@ -728,7 +733,7 @@ body#site #login a.close {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 55, ../../app/stylesheets/_login.sass */
+/* line 58, ../../app/stylesheets/_login.sass */
 body#site #login a.close:hover, body#site #login a.close:focus {
   color: white;
   -moz-transform: scale(1.05);
