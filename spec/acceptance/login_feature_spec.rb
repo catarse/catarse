@@ -20,7 +20,7 @@ feature "Login Feature" do
 
   scenario "After insertion of a new provider it should appear in the login options" do
     Factory(:oauth_provider)
-    sleep 1
+    sleep 5
     click_login
     page.should have_link('Google')
     page.should have_link('Github')
