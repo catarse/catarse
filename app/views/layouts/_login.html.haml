@@ -7,11 +7,10 @@
       = hidden_field_tag 'return_to'
       = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
       - OauthProvider.order('"order"').all.each do |p|
-        = link_to image_tag("auth/#{p.name}_128.png", :title => p.name.capitalize), p.name, :class => 'provider'
+        = link_to image_tag("auth/#{p.name.downcase}_128.png", :title => p.name), p.path, :class => 'provider'
     %p
       Caso você ainda não seja cadastrado, sua conta será criada. Se você já é cadastrado, você será redirecionado para sua conta após o login.
     %p
       %strong Lembre-se com qual rede você se cadastrou.
       É com ela que você sempre irá acessar sua conta.
 = javascript_include_tag 'login'
-

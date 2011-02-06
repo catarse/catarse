@@ -37,8 +37,9 @@ class User < ActiveRecord::Base
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["user_info"]["name"]
+      user.name = auth["user_info"][:name] if user.name.nil?
       user.email = auth["user_info"]["email"]
-      user.email = auth["extra"]["user_hash"]["email"] if auth["extra"] and user.email.nil?
+      user.email = auth["extra"]["user_hash"]["email"] if auth["extra"] and auth["extra"]["user_hash"] and user.email.nil?
       user.nickname = auth["user_info"]["nickname"]
       user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
       user.image_url = auth["user_info"]["image"]
@@ -67,4 +68,3 @@ class User < ActiveRecord::Base
     "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or 'http://catarse.me/images/user.png'}"
   end
 end
-
