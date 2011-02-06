@@ -7,7 +7,9 @@
       = hidden_field_tag 'return_to'
       = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
       - OauthProvider.order('"order"').all.each do |p|
-        = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
+        -# Remove this if when Yahoo login is finally working
+        - unless p.path == "yahoo"
+          = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
     %p
       Caso você ainda não seja cadastrado, sua conta será criada. Se você já é cadastrado, você será redirecionado para sua conta após o login.
     %p
