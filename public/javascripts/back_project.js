@@ -11,48 +11,59 @@ everything_ok = function(){
   }
 }
 reward_ok = function(){
-  if($('input[type=radio]:checked').val()){
-    return true
-  } else {
+  if(!$('input[type=radio]:checked').val())
     return false
+  reward = $('input[type=radio]:checked')
+  id = /^backer_reward_id_(\d+)$/.exec(reward.attr('id'))
+  id = parseFloat(id[1])
+  minimum = rewards[id]
+  if(minimum){
+    value = $('#backer_value').val()
+    if(!(/^(\d+)$/.test(value)) || (parseInt(value) < minimum)){
+      return false
+    }
   }
+  return true
 }
 value_ok = function(){
   value = $('#backer_value').val()
   if(/^(\d+)$/.test(value) && parseInt(value) >= 10){
     $('#backer_value').addClass("ok").removeClass("error")
-    $('input[type=radio]').attr("disabled", true)
-    $('#backer_reward_id_0').attr("disabled", false)
-    $('input[type=radio]').each(function(){
-      id = /^backer_reward_id_(\d+)$/.exec($(this).attr('id'))
-      id = parseFloat(id[1])
-      minimum = rewards[id]
-      if(minimum){
-        if(parseFloat(value.replace(',', '.')) >= minimum){
-          $(this).attr("disabled", false)
-        } else {
-          if($(this).is(':checked'))
-            $('#backer_reward_id_0').attr("checked", true)
-          $(this).attr("disabled", true)
-        }
-      }
-    })
-    $('.sold_out').parent().find('input[type=radio]').attr('disabled', true)
     return true
   } else {
     $('#backer_value').addClass("error").removeClass("ok")
     $('#backer_reward_id_0').attr("checked", true)
-    $('input[type=radio]').attr("disabled", true)
-    $('#backer_reward_id_0').attr("disabled", false)
-    $('.sold_out').parent().find('input[type=radio]').attr('disabled', true)
     return false
   }
 }
-$('input[type=radio]').click(everything_ok)
-$('#backer_value').keyup(everything_ok)
+$('input[type=radio]').click(function(){
+  id = /^backer_reward_id_(\d+)$/.exec($(this).attr('id'))
+  id = parseFloat(id[1])
+  minimum = rewards[id]
+  if(minimum){
+    value = $('#backer_value').val()
+    if(!(/^(\d+)$/.test(value)) || (parseInt(value) < minimum)){
+      $('#backer_value').val(parseInt(minimum))
+    }
+  }
+  everything_ok()
+})
+$('#backer_value').keyup(function(){
+  reward = $('input[type=radio]:checked')
+  if(reward.val()){
+    id = /^backer_reward_id_(\d+)$/.exec(reward.attr('id'))
+    id = parseFloat(id[1])
+    minimum = rewards[id]
+    if(minimum){
+      value = $('#backer_value').val()
+      if(!(/^(\d+)$/.test(value)) || (parseInt(value) < minimum)){
+        $('#backer_reward_id_0').attr("checked", true)
+      }
+    }
+  }
+  everything_ok()
+})
 $('#backer_value').numeric(false)
 $('#backer_value').focus()
 $('#backer_reward_id_0').attr("checked", true)
-$('input[type=radio]').attr("disabled", true)
-$('#backer_reward_id_0').attr("disabled", false)
 $('.sold_out').parent().find('input[type=radio]').attr('disabled', true)
