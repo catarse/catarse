@@ -1,0 +1,36 @@
+.slider_wrapper
+  position: relative
+.navigation
+  .prev,.next
+    position: absolute
+    top: 172px
+    color: #fff
+    text-decoration: none
+    width: 48px
+    height: 48px
+    border: 3px solid #fff
+    +border-radius(48px)
+    line-height: 32px
+    background-color: #44A546
+    +linear-gradient(color_stops(#51C252,#49B249,#44A546))
+    +box-shadow(rgba(0,0,0,0.5),2px,2px,4px)
+    font-weight: bold
+    font-size: 32px
+    +transition(all, 0.3s)
+    padding-bottom: 5px
+    &:hover
+      +scale(1.1)
+    &:disabled
+      color: #888
+      border: 3px solid #ddd
+      +text-shadow(rgba(230,230,230,0.85), 1px, 1px, 0px)
+      background-color: #aaa
+      +linear-gradient(color_stops(#bbb,#888))
+      &:hover
+        +scale(1)
+  .prev
+    left: -32px
+    padding-right: 5px
+  .next
+    right: -32px
+    padding-left: 10px
