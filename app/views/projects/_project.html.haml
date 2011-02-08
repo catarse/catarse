@@ -13,16 +13,17 @@
     .progress_bar
       .progress{ :style => "width: #{project.display_percent}%" }
         &nbsp;
-    %ul
-      %li
-        %strong #{project.percent}%
-        %br
-        atingido
-      %li
-        %strong= project.display_pledged
-        %br
-        levantados
-      %li
-        %strong #{project.days_to_go} #{pluralize_without_number(project.days_to_go, 'dia')}
-        %br
-        #{pluralize_without_number(project.days_to_go, 'restante')}
+    .progress_info
+      %ul
+        %li
+          %strong #{project.percent}%
+          %br
+          atingido
+        %li
+          %strong= project.display_pledged
+          %br
+          levantados
+        %li
+          %strong #{project.days_to_go} #{pluralize_without_number(project.days_to_go, 'dia')}
+          %br
+          #{pluralize_without_number(project.days_to_go, 'restante')}

@@ -1,5 +1,5 @@
 #video_embed
-  %iframe{:src => @project.video_embed_url, :width => "460", :height => "345"}
+  %iframe{:src => @project.video_embed_url, :width => "320", :height => "240"}
   %h1= link_to @project.name, project_path(@project)
   %h2 Um projeto de #{link_to @project.user.display_name, user_path(@project.user)} no
   #catarse_link= link_to 'Catarse', :root

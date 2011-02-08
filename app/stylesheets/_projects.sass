@@ -1,53 +1,58 @@
 =projects
+  #project_list
+    margin-top: -10px
   .project_box
-    font-size: 16px
+    font-size: 12px
+    line-height: 16px
     color: #666
     float: left
-    margin: 10px 45px
+    margin: 0 8px 20px 8px
     +border-radius(8px)
     border: 5px solid #eee
     border: 5px solid rgba(100,100,100,0.1)
     .project_header
       text-align: center
       img
-        height: 160px
+        height: 120px
         +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 5px)
-        margin-bottom: 16px
+        margin-bottom: 12px
         +transition
       img:hover
         +box-shadow(rgba(0,0,0,0.7), 3px, 3px, 6px)
       h1
         text-align: left
         font-family: "museo-300"
-        font-size: 20px !important
+        font-size: 16px !important
+        line-height: 18px !important
         color: #222 !important
         padding: 0 !important
       a
         text-decoration: none
+        +text-shadow(none)
         color: #000
         +transition
       a:hover
-        +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
+        +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 4px)
     .project_owner
-      font-size: 14px
       color: #999
       padding-bottom: 8px
-    .project_headline
-      min-height: 100px
     .project_category
       text-transform: uppercase
       color: #fff
       background-color: #555
       background-color: rgba(0,0,0,0.7)
       +border-radius(4px)
-      +text-shadow(#000, 1px, 1px, 0px)
-      padding: 4px 8px
-      float: right
-      font-size: 14px
-      margin-top: 16px
+      +text-shadow(#000, 0px, 0px, 0px)
+      padding: 2px 6px
+      font-size: 10px
+      position: absolute
+      bottom: 12px
+      right: 12px
     .project_wrap
-      width: 280px
-      padding: 20px
+      min-height: 284px
+      width: 234px
+      padding: 10px
+      position: relative
     .project_progress
       text-transform: uppercase
       color: #333
@@ -55,17 +60,24 @@
       background-color: rgba(0,0,0,0.2)
       +border-bottom-left-radius(4px)
       +border-bottom-right-radius(4px)
-      padding: 20px
-      font-size: 13px
-      ul
-        +horizontal-list(8px)
+      padding: 10px
+      font-size: 10px
+      .progress_bar
+        font-size: 4px
+        line-height: 12px
+        width: 200px
+      .progress_info
+        width: 188px
+        margin: 0 auto
+        ul
+          +horizontal-list(4px)
   .progress_bar
     margin: 0 auto
     font-size: 8px
     background-color: #999
     background-color: rgba(0,0,0,0.3)
     width: 280px
-    margin-bottom: 16px
+    margin-bottom: 10px
     +border-radius(32px)
     .progress
       background-color: rgb(0,150,0)
