@@ -178,6 +178,7 @@
     margin-top: -16px
     color: #666
   #project_description
+    margin-top: -10px
     float: left
     width: 472px
     #project_video
@@ -189,17 +190,17 @@
         width: 96%
         margin: 0 auto
         margin-top: -8px
-        padding-bottom: 12px
+        padding-bottom: 4px
         +border-bottom-left-radius(12px)
         +border-bottom-right-radius(12px)
         border: 2px dotted rgba(0,0,0,0.5)
         +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 10px)
         text-align: center
-        font-size: 16px
+        font-size: 14px
         line-height: 32px
         ul
           +horizontal-list(6px)
-          width: 92%
+          width: 84%
           margin: 0 auto
         a
           text-decoration: none
@@ -210,15 +211,17 @@
         img, a img
           margin-top: -4px
           vertical-align: middle
+          width: 22px
         input
           border: 1px solid rgba(0,0,0,0.4)
           +border-radius(4px)
           width: 116px
         h1
           color: #222
-          font-size: 20px
+          font-size: 18px
           text-transform: lowercase
-          padding-bottom: 8px !important
+          padding-top: 8px !important
+          padding-bottom: 4px !important
       #project_embed
         +embed_modal
     #project_about
@@ -232,9 +235,8 @@
         text-transform: uppercase
         padding: 0
         padding-bottom: 16px
-    #backers
-
   #project_back_info
+    margin-top: -10px
     float: right
     width: 352px
     #back_project
@@ -245,13 +247,13 @@
       +box-shadow(rgba(0,0,0,0.5), 4px, 4px, 5px)
       padding: 0px
       .info
-        padding: 20px
+        padding: 16px
       .number
         font-family: "museo-700"
-        font-size: 44px
-        line-height: 52px
+        font-size: 36px
+        line-height: 40px
       .project_progress
-        margin-top: 16px
+        margin-top: 12px
         .progress_bar
           margin-bottom: 0
       .project_warning
@@ -259,10 +261,10 @@
         text-transform: uppercase
         text-align: center
         color: #fff
-        font-size: 14px
+        font-size: 13px
         +text-shadow(#333, 1px, 1px, 0px)
         .text
-          padding: 8px
+          padding: 4px
           margin: 0
       .successful
         background: url(/images/bg_top_green.png) top left repeat-x, url(/images/bg_bottom_green.png) bottom left repeat-x
