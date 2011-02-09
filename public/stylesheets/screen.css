@@ -446,10 +446,12 @@ a img {
 /* line 31, ../../app/stylesheets/_slider.sass */
 .navigation .prev {
   left: -32px;
+  padding-right: 5px;
 }
-/* line 33, ../../app/stylesheets/_slider.sass */
+/* line 34, ../../app/stylesheets/_slider.sass */
 .navigation .next {
   right: -32px;
+  padding-left: 10px;
 }
 
 /* line 31, ../../app/stylesheets/screen.sass */
