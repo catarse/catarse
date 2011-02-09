@@ -21,4 +21,22 @@
   .navigation
     = submit_tag "«", :class => 'prev', :disabled => true
     = submit_tag "»", :class => 'next'
+#press
+  %h1 Confira o que estão falando do Catarse na imprensa
+  = link_to "http://www1.folha.uol.com.br/mercado/848347-captacao-em-redes-sociais-banca-empreendedorismo.shtml", :target => :_blank do
+    = image_tag "press/folha.png", :title => "Folha de São Paulo"
+  = link_to "http://oglobo.globo.com/cultura/mat/2011/02/04/praticas-de-crowd-funding-uma-forma-de-financiamento-coletivo-organizada-na-internet-ampliam-os-mecanismos-de-investimento-cultural-923735382.asp", :target => :_blank do
+    = image_tag "press/oglobo.png", :title => "O Globo"
+  = link_to "http://revistagalileu.globo.com/Revista/Common/0,,EMI204680-17773,00-NEGOCIOS+EM+COMUNIDADE.html", :target => :_blank do
+    = image_tag "press/galileu.png", :title => "Revista Galileu"
+  = link_to "http://exame.abril.com.br/pme/noticias/fenomeno-do-crowdfunding-ganha-forca-no-brasil", :target => :_blank do
+    = image_tag "press/exame.png", :title => "Exame.com"
+  = link_to "http://revistapegn.globo.com/Revista/Common/0,,EMI204320-17180,00-CAMPUS+PARTY+E+PONTO+DE+ENCONTRO+DE+INVESTIDORES+E+STARTUPS.html", :target => :_blank do
+    = image_tag "press/pegn.png", :title => "Pequenas Empresas & Grandes Negócios"
+  = link_to "http://economia.ig.com.br/financas/seunegocio/as+aulas+em+video+e+a+internet+inteligente+que+ganharam+anjos/n1237982874272.html", :target => :_blank do
+    = image_tag "press/ig.png", :title => "iG"
+  = link_to "http://startupi.com.br/2011/o-crowdfunding-segundo-catarse-da-sabedoria-da-multidao-ao-financiamento-coletivo/", :target => :_blank do
+    = image_tag "press/startupi.png", :title => "startupi"
+  = link_to "http://readwriteweb.com.br/2010/12/30/crowdfunding-ja-ouviu-falar-sera-que-pega-por-aqui/", :target => :_blank do
+    = image_tag "press/rwwbr.png", :title => "Read Write Web Brasil"
 = javascript_include_tag 'slider'
