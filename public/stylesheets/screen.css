@@ -418,16 +418,15 @@ a img {
   font-size: 32px;
   line-height: 32px;
   text-align: center;
-  vertical-align: top;
 }
-/* line 22, ../../app/stylesheets/_slider.sass */
+/* line 21, ../../app/stylesheets/_slider.sass */
 .navigation .prev:hover, .navigation .next:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 24, ../../app/stylesheets/_slider.sass */
+/* line 23, ../../app/stylesheets/_slider.sass */
 .navigation .prev:disabled, .navigation .next:disabled {
   color: #888888;
   border: 3px solid #dddddd;
@@ -437,19 +436,19 @@ a img {
   background-image: -moz-linear-gradient(top, #bbbbbb 0%, #888888 100%);
   background-image: linear-gradient(top, #bbbbbb 0%, #888888 100%);
 }
-/* line 30, ../../app/stylesheets/_slider.sass */
+/* line 29, ../../app/stylesheets/_slider.sass */
 .navigation .prev:disabled:hover, .navigation .next:disabled:hover {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
 }
-/* line 32, ../../app/stylesheets/_slider.sass */
+/* line 31, ../../app/stylesheets/_slider.sass */
 .navigation .prev {
   left: -32px;
   padding-right: 5px;
 }
-/* line 35, ../../app/stylesheets/_slider.sass */
+/* line 34, ../../app/stylesheets/_slider.sass */
 .navigation .next {
   right: -32px;
   padding-left: 10px;
@@ -1501,7 +1500,7 @@ body#site .project_box .project_progress {
   -khtml-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
   padding: 10px;
-  font-size: 9px;
+  font-size: 11px;
 }
 /* line 69, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_progress .progress_bar {
@@ -1511,7 +1510,7 @@ body#site .project_box .project_progress .progress_bar {
 }
 /* line 73, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_progress .progress_info {
-  width: 180px;
+  width: 200px;
   margin: 0 auto;
 }
 /* line 76, ../../app/stylesheets/_projects.sass */
