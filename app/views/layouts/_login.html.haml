@@ -6,6 +6,7 @@
       = hidden_field_tag 'provider'
       = hidden_field_tag 'return_to'
       = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
+      = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), 'google', :class => 'provider'
       - OauthProvider.order('"order"').all.each do |p|
         = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
       %fieldset
