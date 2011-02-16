@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Login Feature" do
   scenario "I open the login page but then I cancel" do
+    Capybara.current_driver = :selenium
     click_login
     find("#login").visible?.should be_true
     click_link 'X'
@@ -20,7 +21,7 @@ feature "Login Feature" do
 
   scenario "After insertion of a new provider it should appear in the login options" do
     Factory(:oauth_provider)
-    sleep 5
+    sleep 3
     click_login
     page.should have_link('Google')
     page.should have_link('Github')

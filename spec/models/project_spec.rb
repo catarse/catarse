@@ -14,6 +14,7 @@ describe Project do
     p.stubs(:vimeo).returns({'id' => '1', 'thumbnail_large' => 'http://b.vimeocdn.com/ts/117/614/117614276_200.jpg'})
     p.stubs(:vimeo_id).returns('1')
     p.save!
+    p.reload
     p.image_url.should == 'http://b.vimeocdn.com/ts/117/614/117614276_200.jpg'
   end
   it "should have a name" do
@@ -76,6 +77,19 @@ describe Project do
   it "should have a video_embed_url" do
     p = Factory(:project, :video_url => "http://vimeo.com/17298435")
     p.video_embed_url.should == "http://player.vimeo.com/video/17298435"
+  end
+  it "should have a vimeo object" do
+    p = Factory(:project, :video_url => "http://vimeo.com/17298435")
+    p.vimeo.should_not be_nil
+  end
+  it "should have a nil vimeo object if the video doesn't exist" do
+    p = Factory.build(:project, :video_url => "http://vimeo.com/000000000")
+    p.vimeo.should be_nil
+  end
+  it "should have a nil vimeo object even if we get an error from Vimeo" do
+    Vimeo::Simple::Video.stubs(:info).returns(Exception.new)
+    p = Factory.build(:project, :video_url => "http://vimeo.com/000000000")
+    p.vimeo.should be_nil
   end
   it "should be successful if pledged >= goal" do
     p = Factory.build(:project)

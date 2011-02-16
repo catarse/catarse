@@ -167,5 +167,9 @@ describe User do
     u = Factory(:user, :image_url => nil, :email => 'diogob@gmail.com')
     u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=http://catarse.me/images/user.png"
   end
+  it "should have a remember_me_hash with the MD5 of the provider + ## + uid" do
+    u = Factory(:user, :provider => "foo", :uid => "bar")
+    u.remember_me_hash.should == "27fc6690fafccbb0fc0b8f84c6749644"
+  end
 end
 
