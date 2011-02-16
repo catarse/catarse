@@ -6,7 +6,7 @@ gem 'haml'
 gem 'compass'
 gem 'omniauth'
 gem 'formtastic', '~> 1.1.0'
-gem 'inherited_resources', '>=1.1.2'
+gem 'inherited_resources', '>= 1.1.2'
 gem 'maxim-sexy_pg_constraints'
 gem 'spectator-validates_email', :require => 'validates_email'
 gem 'vimeo'
@@ -18,7 +18,7 @@ group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'steak'
+  gem 'steak', "~> 1.1.0"
   gem 'rspec-rails', "~> 2.0.1"
   gem 'rcov'
   gem 'factory_girl_rails'
