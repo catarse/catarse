@@ -44,8 +44,10 @@ feature "New Project Feature" do
       check 'accept'
       click_button 'project_submit'
     end
-    p = Project.all.first
+    p = Project.first
     p.name.should == 'test project'
+    page.should have_content("test project")
+    visit p.short_url
     page.should have_content("test project")
   end
 end

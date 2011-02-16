@@ -398,7 +398,6 @@ a img {
   -ms-border-radius: 48px;
   -khtml-border-radius: 48px;
   border-radius: 48px;
-  line-height: 32px;
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
   background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
@@ -408,7 +407,6 @@ a img {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px 0;
   font-weight: bold;
-  font-size: 32px;
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -417,16 +415,19 @@ a img {
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  padding-bottom: 5px;
+  font-size: 32px;
+  line-height: 32px;
+  text-align: center;
+  vertical-align: top;
 }
-/* line 21, ../../app/stylesheets/_slider.sass */
+/* line 22, ../../app/stylesheets/_slider.sass */
 .navigation .prev:hover, .navigation .next:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 23, ../../app/stylesheets/_slider.sass */
+/* line 24, ../../app/stylesheets/_slider.sass */
 .navigation .prev:disabled, .navigation .next:disabled {
   color: #888888;
   border: 3px solid #dddddd;
@@ -436,19 +437,19 @@ a img {
   background-image: -moz-linear-gradient(top, #bbbbbb 0%, #888888 100%);
   background-image: linear-gradient(top, #bbbbbb 0%, #888888 100%);
 }
-/* line 29, ../../app/stylesheets/_slider.sass */
+/* line 30, ../../app/stylesheets/_slider.sass */
 .navigation .prev:disabled:hover, .navigation .next:disabled:hover {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
 }
-/* line 31, ../../app/stylesheets/_slider.sass */
+/* line 32, ../../app/stylesheets/_slider.sass */
 .navigation .prev {
   left: -32px;
   padding-right: 5px;
 }
-/* line 34, ../../app/stylesheets/_slider.sass */
+/* line 35, ../../app/stylesheets/_slider.sass */
 .navigation .next {
   right: -32px;
   padding-left: 10px;

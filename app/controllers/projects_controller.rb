@@ -34,6 +34,7 @@ class ProjectsController < ApplicationController
   end
   def create
     create!(:notice => "Seu projeto foi criado com sucesso! Logo avisaremos se ele foi selecionado. Muito obrigado!")
+    @project.reload
     @project.update_attribute :short_url, bitly
   end
   def update
