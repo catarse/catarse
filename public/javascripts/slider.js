@@ -13,7 +13,7 @@ $('.prev').click(function(e){
 })
 slide = function(slider, position){
   var total_projects = slider.parent().find('#total_projects').val()
-  if(position >= 3-total_projects)
+  if(position <= 3-total_projects)
     position = 3-total_projects
   prev = slider.parent().parent().parent().find('.prev')
   next = slider.parent().parent().parent().find('.next')
