@@ -446,11 +446,11 @@ a img {
 }
 /* line 32, ../../app/stylesheets/_slider.sass */
 .navigation .prev {
-  left: 0;
+  left: -32px;
 }
 /* line 34, ../../app/stylesheets/_slider.sass */
 .navigation .next {
-  right: 0;
+  right: -32px;
 }
 
 /* line 31, ../../app/stylesheets/screen.sass */
