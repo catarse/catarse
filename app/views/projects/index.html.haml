@@ -10,8 +10,9 @@
   %meta{:property => "og:image", :content => 'http://catarse.me/images/home_small.png'}
   %meta{:property => "og:site_name", :content => 'Catarse'}
   %meta{:property => "og:description", :content => "Faça acontecer os projetos em que você acredita! Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história."}
+.project_list_header Projetos em destaque
 .project_list_wrapper
-  .project_list_header Projetos em destaque
+  -#.project_list_header Projetos em destaque
   .project_list
     .slider_wrapper
       = hidden_field_tag 'total_projects', @recommended.count
@@ -22,8 +23,8 @@
   .navigation
     = submit_tag "«", :class => 'prev', :disabled => true
     = submit_tag "»", :class => 'next'
+.project_list_header Projetos recentes
 .project_list_wrapper
-  .project_list_header Projetos recentes
   .project_list
     .slider_wrapper
       = hidden_field_tag 'total_projects', @recent.count
