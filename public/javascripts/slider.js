@@ -1,13 +1,13 @@
 var size = 280
 $('.next').click(function(e){
   e.preventDefault()
-  var position = $(this).parent().parent().find('#position').val()
+  var position = parseInt($(this).parent().parent().find('#position').val())
   position -= 3
   slide($(this).parent().parent().find('.slider'), position)
 })
 $('.prev').click(function(e){
   e.preventDefault()
-  var position = $(this).parent().parent().find('#position').val()
+  var position = parseInt($(this).parent().parent().find('#position').val())
   position += 3
   slide($(this).parent().parent().find('.slider'), position)
 })
