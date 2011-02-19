@@ -16,4 +16,7 @@
           = label_tag "visible_#{project.id}", 'Visível na lista?'
           = check_box_tag "rejected_#{project.id}", '1', project.rejected
           = label_tag "rejected_#{project.id}", 'Rejeitado?'
+          = check_box_tag "recommended_#{project.id}", '1', project.recommended
+          = label_tag "recommended_#{project.id}", 'Recomendado?'
 = javascript_include_tag 'pending_projects'
+
