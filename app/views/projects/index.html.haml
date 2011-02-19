@@ -11,12 +11,25 @@
   %meta{:property => "og:site_name", :content => 'Catarse'}
   %meta{:property => "og:description", :content => "Faça acontecer os projetos em que você acredita! Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história."}
 .project_list_wrapper
+  .project_list_header Projetos em destaque
   .project_list
     .slider_wrapper
-      = hidden_field_tag 'total_projects', @projects.count
+      = hidden_field_tag 'total_projects', @recommended.count
       = hidden_field_tag 'position', 0
-      .slider{ :style => "width: #{@projects.count * 280}px" }
-        = render :partial => 'project', :collection => @projects
+      .slider{ :style => "width: #{@recommended.count * 280}px" }
+        = render :partial => 'project', :collection => @recommended
+        .clear
+  .navigation
+    = submit_tag "«", :class => 'prev', :disabled => true
+    = submit_tag "»", :class => 'next'
+.project_list_wrapper
+  .project_list_header Projetos recentes
+  .project_list
+    .slider_wrapper
+      = hidden_field_tag 'total_projects', @recent.count
+      = hidden_field_tag 'position', 0
+      .slider{ :style => "width: #{@recent.count * 280}px" }
+        = render :partial => 'project', :collection => @recent
         .clear
   .navigation
     = submit_tag "«", :class => 'prev', :disabled => true
@@ -43,3 +56,4 @@
     = image_tag "press/rwwbr_pb.png", :title => "Read Write Web Brasil"
 = javascript_include_tag 'slider'
 = javascript_include_tag 'press'
+

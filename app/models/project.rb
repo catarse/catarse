@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   has_many :rewards
   accepts_nested_attributes_for :rewards
   scope :visible, where(:visible => true)
+  scope :recommended, where(:recommended => true)
   scope :pending, where(:visible => false, :rejected => false)
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
