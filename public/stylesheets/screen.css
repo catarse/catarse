@@ -150,41 +150,42 @@ a img {
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  background-color: white;
 }
-/* line 546, ../../app/stylesheets/_projects.sass */
+/* line 547, ../../app/stylesheets/_projects.sass */
 #project_backers a {
   text-decoration: none !important;
 }
-/* line 548, ../../app/stylesheets/_projects.sass */
+/* line 549, ../../app/stylesheets/_projects.sass */
 #project_backers #all_backers {
   border-top: 1px dashed #cccccc;
   text-align: right;
   padding-top: 8px;
 }
-/* line 552, ../../app/stylesheets/_projects.sass */
+/* line 553, ../../app/stylesheets/_projects.sass */
 #project_backers p {
   font-size: 16px;
   color: #666666;
 }
-/* line 555, ../../app/stylesheets/_projects.sass */
+/* line 556, ../../app/stylesheets/_projects.sass */
 #project_backers p.reward {
   font-size: 12px;
   color: #333333;
 }
 
-/* line 558, ../../app/stylesheets/_projects.sass */
+/* line 559, ../../app/stylesheets/_projects.sass */
 #backers #project_backers {
   margin-top: 0;
 }
-/* line 560, ../../app/stylesheets/_projects.sass */
+/* line 561, ../../app/stylesheets/_projects.sass */
 #backers #project_backers h1 {
   padding-top: 0 !important;
 }
-/* line 562, ../../app/stylesheets/_projects.sass */
+/* line 563, ../../app/stylesheets/_projects.sass */
 #backers #project_backers ul {
   width: 94%;
 }
-/* line 564, ../../app/stylesheets/_projects.sass */
+/* line 565, ../../app/stylesheets/_projects.sass */
 #backers #project_backers ul li {
   background-color: #dddddd;
   margin-top: 16px;
@@ -197,7 +198,7 @@ a img {
   border-radius: 8px;
   position: relative;
 }
-/* line 570, ../../app/stylesheets/_projects.sass */
+/* line 571, ../../app/stylesheets/_projects.sass */
 #backers #project_backers ul li .badge {
   position: absolute;
   top: -10px;
@@ -212,29 +213,29 @@ a img {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 576, ../../app/stylesheets/_projects.sass */
+/* line 577, ../../app/stylesheets/_projects.sass */
 #backers #project_backers ul li .badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 578, ../../app/stylesheets/_projects.sass */
+/* line 579, ../../app/stylesheets/_projects.sass */
 #backers #project_backers a {
   text-decoration: none;
 }
-/* line 580, ../../app/stylesheets/_projects.sass */
+/* line 581, ../../app/stylesheets/_projects.sass */
 #backers #project_backers p {
   padding-bottom: 0 !important;
 }
 
-/* line 583, ../../app/stylesheets/_projects.sass */
+/* line 584, ../../app/stylesheets/_projects.sass */
 #pending_projects, #pending_backers {
   color: #444444;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 587, ../../app/stylesheets/_projects.sass */
+/* line 588, ../../app/stylesheets/_projects.sass */
 #pending_projects img.project, #pending_projects img.user, #pending_backers img.project, #pending_backers img.user {
   float: left;
   margin-right: 12px;
@@ -244,34 +245,34 @@ a img {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
 }
-/* line 592, ../../app/stylesheets/_projects.sass */
+/* line 593, ../../app/stylesheets/_projects.sass */
 #pending_projects img.user, #pending_backers img.user {
   width: 48px;
 }
-/* line 594, ../../app/stylesheets/_projects.sass */
+/* line 595, ../../app/stylesheets/_projects.sass */
 #pending_projects a, #pending_backers a {
   text-decoration: none !important;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 598, ../../app/stylesheets/_projects.sass */
+/* line 599, ../../app/stylesheets/_projects.sass */
 #pending_projects p, #pending_backers p {
   font-size: 18px;
   color: #666666;
 }
-/* line 601, ../../app/stylesheets/_projects.sass */
+/* line 602, ../../app/stylesheets/_projects.sass */
 #pending_projects ul li, #pending_backers ul li {
   margin-top: 32px;
 }
-/* line 603, ../../app/stylesheets/_projects.sass */
+/* line 604, ../../app/stylesheets/_projects.sass */
 #pending_projects ul li:first-child, #pending_backers ul li:first-child {
   margin-top: 24px;
 }
-/* line 605, ../../app/stylesheets/_projects.sass */
+/* line 606, ../../app/stylesheets/_projects.sass */
 #pending_projects ul li:last-child, #pending_backers ul li:last-child {
   margin-bottom: 24px;
 }
-/* line 607, ../../app/stylesheets/_projects.sass */
+/* line 608, ../../app/stylesheets/_projects.sass */
 #pending_projects hr, #pending_backers hr {
   margin: 20px 0;
   border: 1px dashed transparent;
