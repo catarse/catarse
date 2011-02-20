@@ -1,4 +1,4 @@
-/* line 14, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 14, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -18,42 +18,42 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   vertical-align: baseline;
 }
 
-/* line 17, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
   color: black;
   background: white;
 }
 
-/* line 19, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 19, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 21, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 21, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: separate;
   border-spacing: 0;
   vertical-align: middle;
 }
 
-/* line 23, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 23, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 25, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 25, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: "" "";
 }
-/* line 96, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 96, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
 }
 
-/* line 27, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 27, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
@@ -130,18 +130,18 @@ a img {
   display: block !important;
 }
 
-/* line 549, ../../app/stylesheets/_projects.sass */
+/* line 534, ../../app/stylesheets/_projects.sass */
 #project_backers {
   margin-top: 8px;
   color: #444444;
 }
-/* line 552, ../../app/stylesheets/_projects.sass */
+/* line 537, ../../app/stylesheets/_projects.sass */
 #project_backers h1 {
   font-size: 24px !important;
   color: #999999 !important;
   padding-bottom: 16px !important;
 }
-/* line 556, ../../app/stylesheets/_projects.sass */
+/* line 541, ../../app/stylesheets/_projects.sass */
 #project_backers img.user {
   float: left;
   margin-right: 12px;
@@ -151,40 +151,40 @@ a img {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
 }
-/* line 561, ../../app/stylesheets/_projects.sass */
+/* line 546, ../../app/stylesheets/_projects.sass */
 #project_backers a {
   text-decoration: none !important;
 }
-/* line 563, ../../app/stylesheets/_projects.sass */
+/* line 548, ../../app/stylesheets/_projects.sass */
 #project_backers #all_backers {
   border-top: 1px dashed #cccccc;
   text-align: right;
   padding-top: 8px;
 }
-/* line 567, ../../app/stylesheets/_projects.sass */
+/* line 552, ../../app/stylesheets/_projects.sass */
 #project_backers p {
   font-size: 16px;
   color: #666666;
 }
-/* line 570, ../../app/stylesheets/_projects.sass */
+/* line 555, ../../app/stylesheets/_projects.sass */
 #project_backers p.reward {
   font-size: 12px;
   color: #333333;
 }
 
-/* line 573, ../../app/stylesheets/_projects.sass */
+/* line 558, ../../app/stylesheets/_projects.sass */
 #backers #project_backers {
   margin-top: 0;
 }
-/* line 575, ../../app/stylesheets/_projects.sass */
+/* line 560, ../../app/stylesheets/_projects.sass */
 #backers #project_backers h1 {
   padding-top: 0 !important;
 }
-/* line 577, ../../app/stylesheets/_projects.sass */
+/* line 562, ../../app/stylesheets/_projects.sass */
 #backers #project_backers ul {
   width: 94%;
 }
-/* line 579, ../../app/stylesheets/_projects.sass */
+/* line 564, ../../app/stylesheets/_projects.sass */
 #backers #project_backers ul li {
   background-color: #dddddd;
   margin-top: 16px;
@@ -197,7 +197,7 @@ a img {
   border-radius: 8px;
   position: relative;
 }
-/* line 585, ../../app/stylesheets/_projects.sass */
+/* line 570, ../../app/stylesheets/_projects.sass */
 #backers #project_backers ul li .badge {
   position: absolute;
   top: -10px;
@@ -212,29 +212,29 @@ a img {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 591, ../../app/stylesheets/_projects.sass */
+/* line 576, ../../app/stylesheets/_projects.sass */
 #backers #project_backers ul li .badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 593, ../../app/stylesheets/_projects.sass */
+/* line 578, ../../app/stylesheets/_projects.sass */
 #backers #project_backers a {
   text-decoration: none;
 }
-/* line 595, ../../app/stylesheets/_projects.sass */
+/* line 580, ../../app/stylesheets/_projects.sass */
 #backers #project_backers p {
   padding-bottom: 0 !important;
 }
 
-/* line 598, ../../app/stylesheets/_projects.sass */
+/* line 583, ../../app/stylesheets/_projects.sass */
 #pending_projects, #pending_backers {
   color: #444444;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 602, ../../app/stylesheets/_projects.sass */
+/* line 587, ../../app/stylesheets/_projects.sass */
 #pending_projects img.project, #pending_projects img.user, #pending_backers img.project, #pending_backers img.user {
   float: left;
   margin-right: 12px;
@@ -244,34 +244,34 @@ a img {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
 }
-/* line 607, ../../app/stylesheets/_projects.sass */
+/* line 592, ../../app/stylesheets/_projects.sass */
 #pending_projects img.user, #pending_backers img.user {
   width: 48px;
 }
-/* line 609, ../../app/stylesheets/_projects.sass */
+/* line 594, ../../app/stylesheets/_projects.sass */
 #pending_projects a, #pending_backers a {
   text-decoration: none !important;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 613, ../../app/stylesheets/_projects.sass */
+/* line 598, ../../app/stylesheets/_projects.sass */
 #pending_projects p, #pending_backers p {
   font-size: 18px;
   color: #666666;
 }
-/* line 616, ../../app/stylesheets/_projects.sass */
+/* line 601, ../../app/stylesheets/_projects.sass */
 #pending_projects ul li, #pending_backers ul li {
   margin-top: 32px;
 }
-/* line 618, ../../app/stylesheets/_projects.sass */
+/* line 603, ../../app/stylesheets/_projects.sass */
 #pending_projects ul li:first-child, #pending_backers ul li:first-child {
   margin-top: 24px;
 }
-/* line 620, ../../app/stylesheets/_projects.sass */
+/* line 605, ../../app/stylesheets/_projects.sass */
 #pending_projects ul li:last-child, #pending_backers ul li:last-child {
   margin-bottom: 24px;
 }
-/* line 622, ../../app/stylesheets/_projects.sass */
+/* line 607, ../../app/stylesheets/_projects.sass */
 #pending_projects hr, #pending_backers hr {
   margin: 20px 0;
   border: 1px dashed transparent;
@@ -928,7 +928,7 @@ body#site #menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -939,11 +939,11 @@ body#site #menu ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 43, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #menu ul li:first-child, body#site #menu ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #menu ul li:last-child, body#site #menu ul li.last {
   padding-right: 0px;
 }
@@ -1378,13 +1378,13 @@ body#site .project_list_wrapper {
   position: relative;
   height: 420px;
 }
-/* line 23, ../../app/stylesheets/_projects.sass */
+/* line 8, ../../app/stylesheets/_projects.sass */
 body#site .project_list {
   margin-top: -10px;
   width: 840px;
   overflow: hidden;
 }
-/* line 27, ../../app/stylesheets/_projects.sass */
+/* line 12, ../../app/stylesheets/_projects.sass */
 body#site .project_box {
   font-size: 12px;
   line-height: 16px;
@@ -1400,11 +1400,11 @@ body#site .project_box {
   border: 5px solid #eeeeee;
   border: 5px solid rgba(100, 100, 100, 0.1);
 }
-/* line 36, ../../app/stylesheets/_projects.sass */
+/* line 21, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header {
   text-align: center;
 }
-/* line 38, ../../app/stylesheets/_projects.sass */
+/* line 23, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header img {
   height: 120px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
@@ -1421,14 +1421,14 @@ body#site .project_box .project_header img {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 43, ../../app/stylesheets/_projects.sass */
+/* line 28, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header img:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.7) 3px 3px 6px 0;
 }
-/* line 45, ../../app/stylesheets/_projects.sass */
+/* line 30, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header h1 {
   text-align: left;
   font-family: "museo-300";
@@ -1437,7 +1437,7 @@ body#site .project_box .project_header h1 {
   color: #222222 !important;
   padding: 0 !important;
 }
-/* line 52, ../../app/stylesheets/_projects.sass */
+/* line 37, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header a {
   text-decoration: none;
   text-shadow: none;
@@ -1451,16 +1451,16 @@ body#site .project_box .project_header a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 57, ../../app/stylesheets/_projects.sass */
+/* line 42, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 4px;
 }
-/* line 59, ../../app/stylesheets/_projects.sass */
+/* line 44, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_owner {
   color: #999999;
   padding-bottom: 8px;
 }
-/* line 62, ../../app/stylesheets/_projects.sass */
+/* line 47, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_category {
   text-transform: uppercase;
   color: white;
@@ -1479,14 +1479,14 @@ body#site .project_box .project_category {
   bottom: 12px;
   right: 12px;
 }
-/* line 74, ../../app/stylesheets/_projects.sass */
+/* line 59, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_wrap {
   min-height: 284px;
   width: 234px;
   padding: 10px;
   position: relative;
 }
-/* line 79, ../../app/stylesheets/_projects.sass */
+/* line 64, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_progress {
   text-transform: uppercase;
   color: #333333;
@@ -1507,18 +1507,18 @@ body#site .project_box .project_progress {
   padding: 10px 0;
   font-size: 11px;
 }
-/* line 88, ../../app/stylesheets/_projects.sass */
+/* line 73, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_progress .progress_bar {
   font-size: 4px;
   line-height: 12px;
   width: 200px;
 }
-/* line 92, ../../app/stylesheets/_projects.sass */
+/* line 77, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_progress .progress_info {
   width: 210px;
   margin: 0 auto;
 }
-/* line 95, ../../app/stylesheets/_projects.sass */
+/* line 80, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_progress .progress_info ul {
   margin: 0;
   padding: 0;
@@ -1527,7 +1527,7 @@ body#site .project_box .project_progress .progress_info ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site .project_box .project_progress .progress_info ul li {
   list-style-image: none;
   list-style-type: none;
@@ -1538,15 +1538,15 @@ body#site .project_box .project_progress .progress_info ul li {
   padding-left: 4px;
   padding-right: 4px;
 }
-/* line 43, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site .project_box .project_progress .progress_info ul li:first-child, body#site .project_box .project_progress .progress_info ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site .project_box .project_progress .progress_info ul li:last-child, body#site .project_box .project_progress .progress_info ul li.last {
   padding-right: 0px;
 }
-/* line 97, ../../app/stylesheets/_projects.sass */
+/* line 82, ../../app/stylesheets/_projects.sass */
 body#site .progress_bar {
   margin: 0 auto;
   font-size: 8px;
@@ -1561,7 +1561,7 @@ body#site .progress_bar {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 105, ../../app/stylesheets/_projects.sass */
+/* line 90, ../../app/stylesheets/_projects.sass */
 body#site .progress_bar .progress {
   background-color: #009600;
   -moz-border-radius: 32px;
@@ -1571,7 +1571,7 @@ body#site .progress_bar .progress {
   -khtml-border-radius: 32px;
   border-radius: 32px;
 }
-/* line 108, ../../app/stylesheets/_projects.sass */
+/* line 93, ../../app/stylesheets/_projects.sass */
 body#site #how_it_works {
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.6);
@@ -1592,68 +1592,68 @@ body#site #how_it_works {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
 }
-/* line 119, ../../app/stylesheets/_projects.sass */
+/* line 104, ../../app/stylesheets/_projects.sass */
 body#site #how_it_works strong {
   font-family: "museo-500";
 }
-/* line 121, ../../app/stylesheets/_projects.sass */
+/* line 106, ../../app/stylesheets/_projects.sass */
 body#site #how_it_works #show_tips {
   margin-top: 8px;
 }
-/* line 123, ../../app/stylesheets/_projects.sass */
+/* line 108, ../../app/stylesheets/_projects.sass */
 body#site #how_it_works #show_tips a {
   font-family: "museo-500";
   text-decoration: none;
   font-weight: bold;
   color: #ff9900;
 }
-/* line 128, ../../app/stylesheets/_projects.sass */
+/* line 113, ../../app/stylesheets/_projects.sass */
 body#site #how_it_works #show_tips a:hover {
   color: #ffaa00;
 }
-/* line 130, ../../app/stylesheets/_projects.sass */
+/* line 115, ../../app/stylesheets/_projects.sass */
 body#site #guidelines_form {
   text-align: center;
 }
-/* line 131, ../../app/stylesheets/_projects.sass */
+/* line 116, ../../app/stylesheets/_projects.sass */
 body#site #guidelines_form fieldset {
   padding-top: 20px;
 }
-/* line 133, ../../app/stylesheets/_projects.sass */
+/* line 118, ../../app/stylesheets/_projects.sass */
 body#site #guidelines_form label {
   font-weight: bold;
   color: #dd3333;
   display: inline;
 }
-/* line 139, ../../app/stylesheets/_projects.sass */
+/* line 124, ../../app/stylesheets/_projects.sass */
 body#site #project_form p.inline-hints {
   display: none;
 }
-/* line 141, ../../app/stylesheets/_projects.sass */
+/* line 126, ../../app/stylesheets/_projects.sass */
 body#site #project_form .submit {
   text-align: center;
 }
-/* line 143, ../../app/stylesheets/_projects.sass */
+/* line 128, ../../app/stylesheets/_projects.sass */
 body#site #project_form .submit fieldset {
   padding-top: 20px;
 }
-/* line 145, ../../app/stylesheets/_projects.sass */
+/* line 130, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_category_id {
   width: 220px;
 }
-/* line 147, ../../app/stylesheets/_projects.sass */
+/* line 132, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_goal {
   width: 220px;
 }
-/* line 149, ../../app/stylesheets/_projects.sass */
+/* line 134, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_expires_at {
   width: 340px;
 }
-/* line 151, ../../app/stylesheets/_projects.sass */
+/* line 136, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_headline {
   height: 44px;
 }
-/* line 153, ../../app/stylesheets/_projects.sass */
+/* line 138, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards {
   margin-top: 20px;
   -moz-border-radius: 8px;
@@ -1667,59 +1667,59 @@ body#site #project_form #project_rewards {
   padding: 12px;
   font-size: 16px;
 }
-/* line 160, ../../app/stylesheets/_projects.sass */
+/* line 145, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards h3 {
   text-transform: uppercase;
   font-size: 18px;
 }
-/* line 163, ../../app/stylesheets/_projects.sass */
+/* line 148, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards p {
   color: #777777;
   font-size: 14px;
   padding-bottom: 0;
 }
-/* line 167, ../../app/stylesheets/_projects.sass */
+/* line 152, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards input {
   width: 364px;
 }
-/* line 169, ../../app/stylesheets/_projects.sass */
+/* line 154, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards textarea {
   height: 44px;
 }
-/* line 171, ../../app/stylesheets/_projects.sass */
+/* line 156, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards .reward {
   padding-bottom: 12px;
 }
-/* line 173, ../../app/stylesheets/_projects.sass */
+/* line 158, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards .reward p.inline-hints {
   padding-bottom: 8px;
 }
-/* line 175, ../../app/stylesheets/_projects.sass */
+/* line 160, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards #add_reward_wrapper {
   text-align: right;
 }
-/* line 177, ../../app/stylesheets/_projects.sass */
+/* line 162, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards .remove_reward_wrapper {
   float: right;
 }
-/* line 179, ../../app/stylesheets/_projects.sass */
+/* line 164, ../../app/stylesheets/_projects.sass */
 body#site #project_form #project_rewards .remove_reward {
   display: none;
 }
-/* line 181, ../../app/stylesheets/_projects.sass */
+/* line 166, ../../app/stylesheets/_projects.sass */
 body#site #project_header {
   text-align: left;
   padding: 0 20px;
 }
-/* line 184, ../../app/stylesheets/_projects.sass */
+/* line 169, ../../app/stylesheets/_projects.sass */
 body#site #project_header h1 {
   padding-bottom: 8px !important;
 }
-/* line 186, ../../app/stylesheets/_projects.sass */
+/* line 171, ../../app/stylesheets/_projects.sass */
 body#site #project_header h2 {
   padding: 0 !important;
 }
-/* line 188, ../../app/stylesheets/_projects.sass */
+/* line 173, ../../app/stylesheets/_projects.sass */
 body#site #project_warning {
   text-align: center;
   background-color: #ffffaa;
@@ -1740,24 +1740,24 @@ body#site #project_warning {
   margin-top: -16px;
   color: #666666;
 }
-/* line 199, ../../app/stylesheets/_projects.sass */
+/* line 184, ../../app/stylesheets/_projects.sass */
 body#site #project_description {
   margin-top: -10px;
   float: left;
   width: 472px;
 }
-/* line 203, ../../app/stylesheets/_projects.sass */
+/* line 188, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video {
   width: 460px;
 }
-/* line 205, ../../app/stylesheets/_projects.sass */
+/* line 190, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video iframe {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
 }
-/* line 207, ../../app/stylesheets/_projects.sass */
+/* line 192, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share {
   background-color: #ffffaa;
   width: 96%;
@@ -1785,7 +1785,7 @@ body#site #project_description #project_video #project_share {
   font-size: 14px;
   line-height: 32px;
 }
-/* line 220, ../../app/stylesheets/_projects.sass */
+/* line 205, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share ul {
   margin: 0;
   padding: 0;
@@ -1796,7 +1796,7 @@ body#site #project_description #project_video #project_share ul {
   width: 84%;
   margin: 0 auto;
 }
-/* line 51, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #project_description #project_video #project_share ul li {
   list-style-image: none;
   list-style-type: none;
@@ -1807,15 +1807,15 @@ body#site #project_description #project_video #project_share ul li {
   padding-left: 6px;
   padding-right: 6px;
 }
-/* line 43, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #project_description #project_video #project_share ul li:first-child, body#site #project_description #project_video #project_share ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #project_description #project_video #project_share ul li:last-child, body#site #project_description #project_video #project_share ul li.last {
   padding-right: 0px;
 }
-/* line 224, ../../app/stylesheets/_projects.sass */
+/* line 209, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share a {
   text-decoration: none;
   color: #222222;
@@ -1828,17 +1828,17 @@ body#site #project_description #project_video #project_share a {
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 228, ../../app/stylesheets/_projects.sass */
+/* line 213, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share a:hover {
   text-shadow: #ffff88 2px 2px 4px;
 }
-/* line 230, ../../app/stylesheets/_projects.sass */
+/* line 215, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share img, body#site #project_description #project_video #project_share a img {
   margin-top: -4px;
   vertical-align: middle;
   width: 22px;
 }
-/* line 234, ../../app/stylesheets/_projects.sass */
+/* line 219, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share input {
   border: 1px solid rgba(0, 0, 0, 0.4);
   -moz-border-radius: 4px;
@@ -1849,7 +1849,7 @@ body#site #project_description #project_video #project_share input {
   border-radius: 4px;
   width: 116px;
 }
-/* line 238, ../../app/stylesheets/_projects.sass */
+/* line 223, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share h1 {
   color: #222222;
   font-size: 18px;
@@ -1857,7 +1857,7 @@ body#site #project_description #project_video #project_share h1 {
   padding-top: 8px !important;
   padding-bottom: 4px !important;
 }
-/* line 244, ../../app/stylesheets/_projects.sass */
+/* line 229, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_embed {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -1990,12 +1990,12 @@ body#site #project_description #project_video #project_embed #project_video_embe
   background-color: #ddffdd;
   font-size: 14px;
 }
-/* line 246, ../../app/stylesheets/_projects.sass */
+/* line 231, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_about {
   margin-top: 24px;
   margin-right: 16px;
 }
-/* line 249, ../../app/stylesheets/_projects.sass */
+/* line 234, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_about h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -2005,13 +2005,13 @@ body#site #project_description #project_about h1 {
   padding: 0;
   padding-bottom: 16px;
 }
-/* line 257, ../../app/stylesheets/_projects.sass */
+/* line 242, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info {
   margin-top: -10px;
   float: right;
   width: 352px;
 }
-/* line 261, ../../app/stylesheets/_projects.sass */
+/* line 246, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project {
   background-color: #dddbd1;
   background-color: rgba(179, 177, 157, 0.5);
@@ -2023,25 +2023,25 @@ body#site #project_back_info #back_project {
   box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
   padding: 0px;
 }
-/* line 268, ../../app/stylesheets/_projects.sass */
+/* line 253, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .info {
   padding: 16px;
 }
-/* line 270, ../../app/stylesheets/_projects.sass */
+/* line 255, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .number {
   font-family: "museo-700";
   font-size: 36px;
   line-height: 40px;
 }
-/* line 274, ../../app/stylesheets/_projects.sass */
+/* line 259, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .project_progress {
   margin-top: 12px;
 }
-/* line 276, ../../app/stylesheets/_projects.sass */
+/* line 261, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .project_progress .progress_bar {
   margin-bottom: 0;
 }
-/* line 278, ../../app/stylesheets/_projects.sass */
+/* line 263, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .project_warning {
   padding: 4px 0;
   text-transform: uppercase;
@@ -2050,32 +2050,32 @@ body#site #project_back_info #back_project .project_warning {
   font-size: 13px;
   text-shadow: #333333 1px 1px 0px;
 }
-/* line 285, ../../app/stylesheets/_projects.sass */
+/* line 270, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .project_warning .text {
   padding: 4px;
   margin: 0;
 }
-/* line 288, ../../app/stylesheets/_projects.sass */
+/* line 273, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .successful {
   background: url(/images/bg_top_green.png) top left repeat-x, url(/images/bg_bottom_green.png) bottom left repeat-x;
 }
-/* line 290, ../../app/stylesheets/_projects.sass */
+/* line 275, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .successful .text {
   background-color: #004400;
 }
-/* line 292, ../../app/stylesheets/_projects.sass */
+/* line 277, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .not_successful {
   background: url(/images/bg_top_red.png) top left repeat-x, url(/images/bg_bottom_red.png) bottom left repeat-x;
 }
-/* line 294, ../../app/stylesheets/_projects.sass */
+/* line 279, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project .not_successful .text {
   background-color: #660000;
 }
-/* line 296, ../../app/stylesheets/_projects.sass */
+/* line 281, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form {
   text-align: center;
 }
-/* line 298, ../../app/stylesheets/_projects.sass */
+/* line 283, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form input[type=submit] {
   color: white;
   text-shadow: green 1px 1px 1px;
@@ -2085,18 +2085,18 @@ body#site #project_back_info #back_project form input[type=submit] {
   background-image: linear-gradient(top, #59c259 0%, #31a232 100%);
   text-transform: uppercase;
 }
-/* line 304, ../../app/stylesheets/_projects.sass */
+/* line 289, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form input[type=submit]:hover {
   background-color: #59c259;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #59c259), color-stop(100%, #41b242));
   background-image: -moz-linear-gradient(top, #59c259 0%, #41b242 100%);
   background-image: linear-gradient(top, #59c259 0%, #41b242 100%);
 }
-/* line 307, ../../app/stylesheets/_projects.sass */
+/* line 292, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form input[type=submit]:active {
   text-shadow: green 2px 2px 1px;
 }
-/* line 309, ../../app/stylesheets/_projects.sass */
+/* line 294, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form input[type=submit]:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
@@ -2110,16 +2110,16 @@ body#site #project_back_info #back_project form input[type=submit]:disabled {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
 }
-/* line 316, ../../app/stylesheets/_projects.sass */
+/* line 301, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards {
   margin-top: 24px;
   font-size: 16px;
 }
-/* line 317, ../../app/stylesheets/_projects.sass */
+/* line 302, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards .on_the_spot_editing form textarea {
   width: 280px;
 }
-/* line 321, ../../app/stylesheets/_projects.sass */
+/* line 306, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards h1 {
   background-color: #0084b9 !important;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -2132,20 +2132,20 @@ body#site #project_back_info #rewards h1 {
   text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
   position: relative;
 }
-/* line 332, ../../app/stylesheets/_projects.sass */
+/* line 317, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards h1 img {
   position: absolute;
   top: 0;
 }
-/* line 335, ../../app/stylesheets/_projects.sass */
+/* line 320, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards h1 #rewards_left_border {
   left: -8px;
 }
-/* line 338, ../../app/stylesheets/_projects.sass */
+/* line 323, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards h1 #rewards_right_border {
   right: -8px;
 }
-/* line 340, ../../app/stylesheets/_projects.sass */
+/* line 325, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul {
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
@@ -2164,7 +2164,7 @@ body#site #project_back_info #rewards ul {
   border-top: 0;
   padding: 12px;
 }
-/* line 347, ../../app/stylesheets/_projects.sass */
+/* line 332, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul h1 {
   text-align: left;
   padding-bottom: 4px !important;
@@ -2172,33 +2172,33 @@ body#site #project_back_info #rewards ul h1 {
   background-image: none !important;
   text-shadow: white 1px 1px 0px;
 }
-/* line 353, ../../app/stylesheets/_projects.sass */
+/* line 338, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul li {
   padding: 8px 0;
   border-bottom: 1px solid #dddddd;
 }
-/* line 356, ../../app/stylesheets/_projects.sass */
+/* line 341, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul li h1 {
   padding: 0;
   color: #222222;
 }
-/* line 359, ../../app/stylesheets/_projects.sass */
+/* line 344, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards ul li:last-child {
   border: 0;
   padding-bottom: 0;
 }
-/* line 362, ../../app/stylesheets/_projects.sass */
+/* line 347, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards .maximum_backers {
   margin-top: 8px;
   font-size: 14px;
 }
-/* line 365, ../../app/stylesheets/_projects.sass */
+/* line 350, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards .maximum_backers .limited {
   float: left;
   font-weight: bold;
   text-transform: uppercase;
 }
-/* line 369, ../../app/stylesheets/_projects.sass */
+/* line 354, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards .maximum_backers .sold_out {
   float: left;
   font-weight: bold;
@@ -2215,25 +2215,25 @@ body#site #project_back_info #rewards .maximum_backers .sold_out {
   text-shadow: black 1px 1px 0px;
   padding: 0 8px;
 }
-/* line 379, ../../app/stylesheets/_projects.sass */
+/* line 364, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards .maximum_backers .remaining {
   float: left;
   margin-left: 12px;
   font-size: 12px;
   font-weight: bold;
 }
-/* line 384, ../../app/stylesheets/_projects.sass */
+/* line 369, ../../app/stylesheets/_projects.sass */
 body#site #back_options {
   float: left;
   width: 422px;
   margin-top: -14px;
 }
-/* line 389, ../../app/stylesheets/_projects.sass */
+/* line 374, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form fieldset {
   padding: 0;
   margin: 0;
 }
-/* line 392, ../../app/stylesheets/_projects.sass */
+/* line 377, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input[type=text] {
   font-size: 48px;
   width: 392px;
@@ -2241,38 +2241,38 @@ body#site #back_options #backer_form input[type=text] {
   border: 3px solid #003c00;
   border: 3px solid rgba(0, 60, 0, 0.6);
 }
-/* line 398, ../../app/stylesheets/_projects.sass */
+/* line 383, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input[type=text]:focus {
   background-color: #009600;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 401, ../../app/stylesheets/_projects.sass */
+/* line 386, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input.ok, body#site #back_options #backer_form textarea.ok {
   background: url("/images/tick_32.png") no-repeat 96% center;
 }
-/* line 403, ../../app/stylesheets/_projects.sass */
+/* line 388, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input.error, body#site #back_options #backer_form textarea.error {
   background: url("/images/delete_32.png") no-repeat 96% center;
 }
-/* line 405, ../../app/stylesheets/_projects.sass */
+/* line 390, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form p.inline-hints {
   font-size: 18px;
   margin-top: 8px;
   margin-bottom: 28px;
 }
-/* line 409, ../../app/stylesheets/_projects.sass */
+/* line 394, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input[type=radio] {
   float: left;
   margin: 8px 16px 0 0;
 }
-/* line 412, ../../app/stylesheets/_projects.sass */
+/* line 397, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form label {
   font-family: "museo-300";
   font-size: 24px;
   line-height: 28px;
   padding-bottom: 8px;
 }
-/* line 417, ../../app/stylesheets/_projects.sass */
+/* line 402, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol {
   background-color: #dddddd;
   -moz-border-radius: 12px;
@@ -2286,13 +2286,13 @@ body#site #back_options #backer_form li.radio ol {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
 }
-/* line 421, ../../app/stylesheets/_projects.sass */
+/* line 406, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li {
   line-height: 22px;
   border-bottom: 2px solid #eeeeee;
   padding: 10px 20px;
 }
-/* line 425, ../../app/stylesheets/_projects.sass */
+/* line 410, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li:first-child {
   -moz-border-radius-topleft: 12px;
   -webkit-border-top-left-radius: 12px;
@@ -2307,7 +2307,7 @@ body#site #back_options #backer_form li.radio ol li:first-child {
   -khtml-border-top-right-radius: 12px;
   border-top-right-radius: 12px;
 }
-/* line 428, ../../app/stylesheets/_projects.sass */
+/* line 413, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li:last-child {
   -moz-border-radius-bottomleft: 12px;
   -webkit-border-bottom-left-radius: 12px;
@@ -2323,18 +2323,18 @@ body#site #back_options #backer_form li.radio ol li:last-child {
   border-bottom-right-radius: 12px;
   border: none;
 }
-/* line 432, ../../app/stylesheets/_projects.sass */
+/* line 417, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li:hover {
   background-color: #bbddbb;
 }
-/* line 434, ../../app/stylesheets/_projects.sass */
+/* line 419, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li label {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
 }
-/* line 439, ../../app/stylesheets/_projects.sass */
+/* line 424, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li label .sold_out {
   font-size: 14px;
   margin-bottom: 8px;
@@ -2353,28 +2353,28 @@ body#site #back_options #backer_form li.radio ol li label .sold_out {
   text-shadow: black 1px 1px 0px;
   padding: 0 8px;
 }
-/* line 451, ../../app/stylesheets/_projects.sass */
+/* line 436, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form .reward_minimum_value {
   font-weight: bold;
   float: left;
 }
-/* line 454, ../../app/stylesheets/_projects.sass */
+/* line 439, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form .reward_description {
   float: left;
   margin-left: 28px;
 }
-/* line 457, ../../app/stylesheets/_projects.sass */
+/* line 442, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form .buttons {
   text-align: center;
   margin-top: 32px;
 }
-/* line 460, ../../app/stylesheets/_projects.sass */
+/* line 445, ../../app/stylesheets/_projects.sass */
 body#site #back_info {
   float: right;
   width: 362px;
   font-size: 16px;
 }
-/* line 464, ../../app/stylesheets/_projects.sass */
+/* line 449, ../../app/stylesheets/_projects.sass */
 body#site #back_info img {
   float: left;
   width: 128px;
@@ -2384,32 +2384,32 @@ body#site #back_info img {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-bottom: 16px;
 }
-/* line 469, ../../app/stylesheets/_projects.sass */
+/* line 454, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info {
   float: right;
   width: 204px;
   margin-bottom: 16px;
 }
-/* line 473, ../../app/stylesheets/_projects.sass */
+/* line 458, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_name a {
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
 }
-/* line 477, ../../app/stylesheets/_projects.sass */
+/* line 462, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_owner {
   color: #777777;
 }
-/* line 479, ../../app/stylesheets/_projects.sass */
+/* line 464, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_owner a {
   text-decoration: none;
   color: #222222;
 }
-/* line 482, ../../app/stylesheets/_projects.sass */
+/* line 467, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_owner a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 484, ../../app/stylesheets/_projects.sass */
+/* line 469, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_expires_at {
   font-size: 16px;
   margin-top: 8px;
@@ -2417,22 +2417,22 @@ body#site #back_info #project_info .project_expires_at {
   text-transform: uppercase;
   color: #666666;
 }
-/* line 490, ../../app/stylesheets/_projects.sass */
+/* line 475, ../../app/stylesheets/_projects.sass */
 body#site #project_review {
   text-align: center;
   font-size: 28px;
   line-height: 32px;
 }
-/* line 494, ../../app/stylesheets/_projects.sass */
+/* line 479, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_text {
   font-size: 22px;
   margin: 40px 0;
 }
-/* line 497, ../../app/stylesheets/_projects.sass */
+/* line 482, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_text .reward {
   font-style: italic;
 }
-/* line 499, ../../app/stylesheets/_projects.sass */
+/* line 484, ../../app/stylesheets/_projects.sass */
 body#site #project_review img#project_image {
   float: left;
   width: 128px;
@@ -2442,7 +2442,7 @@ body#site #project_review img#project_image {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-right: 20px;
 }
-/* line 504, ../../app/stylesheets/_projects.sass */
+/* line 489, ../../app/stylesheets/_projects.sass */
 body#site #project_review h1 {
   text-align: left;
   font-family: "museo-500" !important;
@@ -2452,25 +2452,25 @@ body#site #project_review h1 {
   padding-top: 4px !important;
   color: #222222 !important;
 }
-/* line 512, ../../app/stylesheets/_projects.sass */
+/* line 497, ../../app/stylesheets/_projects.sass */
 body#site #project_review h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
-/* line 515, ../../app/stylesheets/_projects.sass */
+/* line 500, ../../app/stylesheets/_projects.sass */
 body#site #project_review fieldset {
   margin-bottom: 10px;
 }
-/* line 517, ../../app/stylesheets/_projects.sass */
+/* line 502, ../../app/stylesheets/_projects.sass */
 body#site #project_review fieldset label {
   font-size: 18px;
 }
-/* line 519, ../../app/stylesheets/_projects.sass */
+/* line 504, ../../app/stylesheets/_projects.sass */
 body#site #thank_you {
   margin-top: 10px;
   text-align: center;
 }
-/* line 522, ../../app/stylesheets/_projects.sass */
+/* line 507, ../../app/stylesheets/_projects.sass */
 body#site #thank_you img#project_image {
   float: left;
   width: 128px;
@@ -2480,7 +2480,7 @@ body#site #thank_you img#project_image {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-right: 20px;
 }
-/* line 527, ../../app/stylesheets/_projects.sass */
+/* line 512, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h1 {
   text-align: left;
   font-family: "museo-500" !important;
@@ -2490,16 +2490,16 @@ body#site #thank_you h1 {
   padding-top: 4px !important;
   color: #222222 !important;
 }
-/* line 535, ../../app/stylesheets/_projects.sass */
+/* line 520, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
-/* line 538, ../../app/stylesheets/_projects.sass */
+/* line 523, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a {
   text-decoration: none;
 }
-/* line 540, ../../app/stylesheets/_projects.sass */
+/* line 525, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img {
   width: 116px;
   -moz-transition-property: all;
@@ -2511,14 +2511,14 @@ body#site #thank_you a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 543, ../../app/stylesheets/_projects.sass */
+/* line 528, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 545, ../../app/stylesheets/_projects.sass */
+/* line 530, ../../app/stylesheets/_projects.sass */
 body#site #thank_you #how_it_works {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -2608,7 +2608,7 @@ body#site #footer #footer_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #footer_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -2619,11 +2619,11 @@ body#site #footer #footer_menu ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 43, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #footer_menu ul li:first-child, body#site #footer #footer_menu ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #footer_menu ul li:last-child, body#site #footer #footer_menu ul li.last {
   padding-right: 0px;
 }
@@ -2654,7 +2654,7 @@ body#site #footer #social_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #social_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -2665,11 +2665,11 @@ body#site #footer #social_menu ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 43, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #social_menu ul li:first-child, body#site #footer #social_menu ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #social_menu ul li:last-child, body#site #footer #social_menu ul li.last {
   padding-right: 0px;
 }
