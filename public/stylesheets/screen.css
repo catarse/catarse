@@ -284,7 +284,16 @@ a img {
   background-color: rgba(0, 150, 0, 0.2);
 }
 
-/* line 6, ../../app/stylesheets/_on_the_spot.sass */
+/* line 5, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_form:after {
+  content: none !important;
+}
+
+/* line 8, ../../app/stylesheets/_on_the_spot.sass */
+.on_the_spot_editing:after {
+  content: " " url(/images/pencil_16.png);
+}
+/* line 11, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form input, .on_the_spot_editing form textarea, .on_the_spot_editing form select {
   padding-left: 4px;
   padding-right: 24px;
@@ -301,19 +310,19 @@ a img {
   border-radius: 5px;
   text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
 }
-/* line 16, ../../app/stylesheets/_on_the_spot.sass */
+/* line 21, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form input:focus, .on_the_spot_editing form textarea:focus, .on_the_spot_editing form select:focus {
   background-color: #009600;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 19, ../../app/stylesheets/_on_the_spot.sass */
+/* line 24, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form textarea {
   padding-right: 28px;
   width: 96%;
   height: 200px;
   overflow: auto;
 }
-/* line 24, ../../app/stylesheets/_on_the_spot.sass */
+/* line 29, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button {
   margin-left: 4px;
   text-rendering: optimizeLegibility;
@@ -340,7 +349,7 @@ a img {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
 }
-/* line 39, ../../app/stylesheets/_on_the_spot.sass */
+/* line 44, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:hover {
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
@@ -351,7 +360,7 @@ a img {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
 }
-/* line 43, ../../app/stylesheets/_on_the_spot.sass */
+/* line 48, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:active {
   padding: 6px 9px 4px 11px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
@@ -364,7 +373,7 @@ a img {
   -o-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
   box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
 }
-/* line 49, ../../app/stylesheets/_on_the_spot.sass */
+/* line 54, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;

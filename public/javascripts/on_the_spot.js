@@ -6,6 +6,9 @@ $(document).ready(function() {
     $(".on_the_spot_editing").mouseout(function() {
         $(this).removeClass('on_the_spot_mouseover');
     });
+    $(".on_the_spot_editing").click(function() {
+        $(this).addClass('on_the_spot_form')
+    });
     $('.on_the_spot_editing').each(function(n){
         var el           = $(this),
             data_url     = el.attr('data-url'),
@@ -28,6 +31,9 @@ $(document).ready(function() {
                 original.reset();
                 //just show the error-msg for now
                 alert(xhr.responseText);
+            },
+            onreset: function(){
+              $(this).parent().removeClass('on_the_spot_form')
             }
         };
         if (edit_type != null) {
