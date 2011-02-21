@@ -6,7 +6,11 @@
         %h1= project.name
     .project_owner
       por #{project.user.name}
-    .project_headline= project.headline
+    .project_headline
+      - if current_user and current_user.admin
+        #{on_the_spot_edit project, :headline}
+      - else
+        = project.headline
     %span.project_category= project.category.name
     .clear
   .project_progress
