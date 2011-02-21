@@ -286,7 +286,7 @@ a img {
 
 /* line 5, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_form:after {
-  content: none !important;
+  content: "" !important;
 }
 
 /* line 8, ../../app/stylesheets/_on_the_spot.sass */
