@@ -34,6 +34,9 @@ $(document).ready(function() {
             },
             onreset: function(){
               $(this).parent().removeClass('on_the_spot_form')
+            },
+            callback: function(){
+              $(this).removeClass('on_the_spot_form')
             }
         };
         if (edit_type != null) {
@@ -56,3 +59,4 @@ $(document).ready(function() {
     })
 
 });
+
