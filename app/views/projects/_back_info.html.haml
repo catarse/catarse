@@ -39,11 +39,6 @@
       - @rewards.each do |reward|
         %li
           %h1 Para #{reward.display_minimum} ou mais
-          - if current_user and current_user.admin
-            #{on_the_spot_edit reward, :description, :type => :textarea}
-          - else
-            = reward.description
-          .clear
           - if reward.maximum_backers
             .maximum_backers
               - if reward.sold_out?
@@ -56,6 +51,14 @@
                 = reward.maximum_backers
                 disponíveis
             .clear
+          - if current_user and current_user.admin
+            #{on_the_spot_edit reward, :description, :type => :textarea}
+          - else
+            = reward.description
+          .clear
+          .reward_backers
+            = pluralize reward.backers.confirmed.count, 'apoiador', 'apoiadores'
+            = image_tag 'badge.png', :class => "badge"
   - unless @backers.empty? or show_backers == false
     = render :partial => 'backers', :locals => {:show_all_link => true, :show_badge => false, :show_rewards => false}
 .clear
