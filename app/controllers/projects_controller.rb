@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
     index! do
       @title = "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
       @recommended = Project.visible.recommended.order('"order", created_at DESC')
-      @recent = Project.visible.limit(12).order('created_at DESC')
+      @recent = Project.visible.not_recommended.limit(12).order('created_at DESC')
     end
   end
   def new
