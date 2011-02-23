@@ -54,7 +54,7 @@
           - if current_user and current_user.admin
             #{on_the_spot_edit reward, :description, :type => :textarea}
           - else
-            = reward.description
+            = auto_link(reward.description, :html => {:target => :_blank})
           .clear
           .reward_backers
             = pluralize reward.backers.confirmed.count, 'apoiador', 'apoiadores'
