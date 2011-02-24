@@ -3,13 +3,19 @@
 
 Seja bem-vindo ao repositório dos códigos-fonte do Catarse. Nosso objetivo ao abrir o código do site é estimular a criação de sites de crowdfunding no Brasil, com alto nível de qualidade.
 
-Temos como objetivo, também, a criação de um Rails Engine para a criação de sites de crowdfunding. Criamos um rascunho em link:http://github.com/danielweinmann/crowdfunding, porém contamos com sua colaboração para a evolução desta gem. Nossa idéia é utilizar o código do Catarse como ponto de partida para a criação do Engine, e depois utilizar o Engine no Catarse. Porém, só iremos começar este desenvolvimento quando tivermos pelo menos + 1 colaborador interessado em usar a gem. Deste modo conseguiremos abstrair as necessidades de pelo menos 2 sites e colocar no Engine.
+Temos como objetivo, também, a criação de um Rails Engine para a criação de sites de crowdfunding. Criamos um rascunho em http://github.com/danielweinmann/crowdfunding, porém contamos com sua colaboração para a evolução desta gem. Nossa idéia é utilizar o código do Catarse como ponto de partida para a criação do Engine, e depois utilizar o Engine no Catarse. Porém, só iremos começar este desenvolvimento quando tivermos pelo menos + 1 colaborador interessado em usar a gem. Deste modo conseguiremos abstrair as necessidades de pelo menos 2 sites e colocar no Engine.
 
-Você pode ver estes códigos-fonte em ação no link:http://catarse.me.
+Você pode ver estes códigos-fonte em ação no http://catarse.me.
+
+== Boas práticas
+
+Embora você tenha o direito de utilizar estes códigos com liberdade, de acordo com a licença do MIT, nós agradeceremos se você devolver os frutos do seu trabalho à comunidade.
+
+Nosso objetivo ao abrir o código do Catarse é a difusão do crowdfunding no Brasil, em um mercado criativo e colaborativo. Portanto, se você quiser criar seu site utilizando o Catarse como modelo, por favor, respeite nossa identidade visual :) queremos ver o seu site no ar, porém com a sua cara e não a nossa.
 
 == Como contribuir
 
-Antes de contribuir, dê uma boa olhada no nosso "UserVoice":http://catarse.uservoice.com/ para saber o que mais estamos precisando.
+Antes de contribuir, dê uma boa olhada no nosso UserVoice (http://catarse.uservoice.com) para saber o que mais estamos precisando.
 
 Depois, basta fazer um fork, mudar, e mandar um pull request.
 
@@ -22,9 +28,3 @@ Nós utilizamos RSpec e Steak para os testes, e as melhores práticas são:
 
 Copyright (c) 2011 Softa
 Licenciado sob a licença do MIT (vide o arquivo MIT-LICENSE)
-
-== Boas práticas
-
-Embora você tenha o direito de utilizar estes códigos com liberdade, de acordo com a licença do MIT, nós agradeceremos se você devolver os frutos do seu trabalho à comunidade.
-
-Nosso objetivo ao abrir o código do Catarse é a difusão do crowdfunding no Brasil, em um mercado criativo e colaborativo. Portanto, se você quiser criar seu site utilizando o Catarse como modelo, por favor, respeite nossa identidade visual :) queremos ver o seu site no ar, porém com a sua cara e não a nossa.
