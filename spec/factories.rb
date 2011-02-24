@@ -45,3 +45,7 @@ Factory.define :oauth_provider do |f|
   f.key 'test_key'
   f.secret 'test_secret'
 end
+Factory.define :configuration do |f|
+  f.name 'Foo'
+  f.value 'Bar'
+end
