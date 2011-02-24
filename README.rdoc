@@ -27,4 +27,5 @@ Nós utilizamos RSpec e Steak para os testes, e as melhores práticas são:
 == Licença
 
 Copyright (c) 2011 Softa
+
 Licenciado sob a licença do MIT (vide o arquivo MIT-LICENSE)
