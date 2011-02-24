@@ -15,7 +15,7 @@ Nosso objetivo ao abrir o código do Catarse é a difusão do crowdfunding no Br
 
 == Como contribuir
 
-Antes de contribuir, dê uma boa olhada no nosso UserVoice (http://catarse.uservoice.com) para saber o que mais estamos precisando.
+Antes de contribuir, dê uma boa olhada no nosso UserVoice (http://catarse.uservoice.com) para saber o que o pessoal está pedindo e o que já está nos nossos planos.
 
 Depois, basta fazer um fork, mudar, e mandar um pull request.
 
