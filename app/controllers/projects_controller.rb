@@ -98,7 +98,7 @@ class ProjectsController < ApplicationController
     session[:thank_you_id] = nil
   end
   def moip
-    #MoipMailer.payment_received_email(nil, params).deliver
+    MoipMailer.payment_received_email(nil, request.remote_ip).deliver
     id = params[:id_transacao]
     status = params[:status_pagamento]
     value = params[:valor]
