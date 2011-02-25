@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
     @title = "Envie seu projeto"
   end
   def send_mail
-    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact]).deliver
+    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user).deliver
     flash[:success] = "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
     redirect_to :root
   end

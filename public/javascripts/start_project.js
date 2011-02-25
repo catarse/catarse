@@ -1,8 +1,3 @@
-$('input[type=submit]').click(function(e){
-  //e.preventDefault()
-  //$(this).attr('disabled', true)
-  //$('#loading').show()
-})
 everything_ok = function(){
   var all_ok = true
   if(!ok('#about'))
