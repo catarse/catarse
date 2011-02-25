@@ -1,7 +1,7 @@
 = content_for :content_header do
   %h1 Envie seu projeto
   %h2 A hora para fazer acontecer é agora! Estamos ansiosos para saber o que você está aprontando...
-#project_warning
+#project_warning{:style => 'margin-bottom: 16px'}
   Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler #{link_to 'nosso guia', 'http://blog.catarse.me/post/2816685141/guia-colocar-projeto-catarse', :target => :_blank}.
 = form_tag(send_mail_projects_path, :id => 'start_project_form') do
   %fieldset
