@@ -119,7 +119,7 @@
       color: #DD3333
       display: inline
     text-align: center
-  #project_form
+  #project_form,#start_project_form
     p.inline-hints
       display: none
     .submit
@@ -162,6 +162,16 @@
         float: right
       .remove_reward
         display: none
+  #start_project_form
+    #contact
+      width: 340px
+    .submit
+      position: relative
+      #loading
+        position: absolute
+        bottom: 22px
+        left: 520px
+        display: none
   #project_header
     text-align: left
     padding: 0 20px
@@ -174,7 +184,7 @@
     background-color: #FFA
     background-color: rgba(255, 255, 160, 0.6)
     padding: 20px
-    margin-bottom: 36px
+    margin-bottom: 16px
     color: #000
     +border-radius(12px)
     +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 10px)

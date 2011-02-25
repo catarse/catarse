@@ -18,6 +18,8 @@ Catarse::Application.routes.draw do
   end
   resources :projects, :only => [:index, :new, :create, :show] do
     collection do
+      get 'start'
+      post 'send_mail'
       get 'teaser'
       get 'guidelines'
       get 'faq'

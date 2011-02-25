@@ -26,6 +26,14 @@ class ProjectsController < ApplicationController
       @recent = Project.visible.not_recommended.limit(12).order('created_at DESC')
     end
   end
+  def start
+    @title = "Envie seu projeto"
+  end
+  def send_mail
+    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact]).deliver
+    flash[:success] = "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
+    redirect_to :root
+  end
   def new
     return unless require_login
     new! do

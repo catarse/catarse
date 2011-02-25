@@ -1,0 +1,13 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", 'http-equiv' => "Content-Type"}
+  %body
+    %h1 Projeto enviado pelo Catarse
+    %h2 Descreva seu projeto e quanto você precisa
+    %p= @about.html_safe
+    %h2 Que recompensas você quer oferecer?
+    %p= @rewards.html_safe
+    %h2 Onde podemos encontrar mais sobre você e seu projeto?
+    %p= @links.html_safe
+    %h2 Deixe seu email para entrarmos em contato
+    %p= @contact

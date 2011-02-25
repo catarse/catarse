@@ -10,21 +10,7 @@ feature "New Project Feature" do
     c = Factory(:category) 
     visit homepage
     fake_login
-    click_link 'Envie seu projeto'
-    current_path.should == guidelines_path
-    within 'head title' do
-      page.should have_content("Como funciona") 
-    end    
-    within '#content_header' do
-      within 'h1' do
-        page.should have_content("Como funciona")
-      end
-    end
-    uncheck 'accept'
-    find_button('Enviar meu projeto')['disabled'].should == 'true'
-    check 'accept'
-    find_button('Enviar meu projeto')['disabled'].should == 'false'
-    click_button 'Enviar meu projeto'
+    visit new_project_path
     current_path.should == new_project_path
     within '#content_header' do
       within 'h1' do
