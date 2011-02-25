@@ -132,7 +132,7 @@ class ProjectsController < ApplicationController
   end
   def pending
     return unless require_admin
-    @projects = Project.order('visible, rejected, "order", created_at DESC').all
+    @projects = Project.order('visible, rejected, "order", created_at DESC').paginate :page => params[:page]
   end
   def pending_backers
     return unless require_admin

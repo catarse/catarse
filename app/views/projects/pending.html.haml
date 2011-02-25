@@ -1,6 +1,7 @@
 = content_for :content_header do
   %h1 Projetos com aprovação pendente
 #pending_projects
+  = will_paginate @projects
   - if @projects.empty?
     Não há nenhum projeto com aprovação pendente
   - else
@@ -18,5 +19,6 @@
           = label_tag "rejected_#{project.id}", 'Rejeitado?'
           = check_box_tag "recommended_#{project.id}", '1', project.recommended
           = label_tag "recommended_#{project.id}", 'Recomendado?'
+  = will_paginate @projects
 = javascript_include_tag 'pending_projects'
 
