@@ -2,7 +2,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", 'http-equiv' => "Content-Type"}
   %body
-    %h1 Projeto enviado por #{link_to @user.display_name, user_url(@user, :host => 'http://catarse.me')}
+    %h1 Projeto enviado por #{link_to @user.display_name, user_url(@user, :host => 'catarse.me')}
     %h2 Descreva seu projeto e quanto você precisa
     %p= @about.html_safe
     %h2 Que recompensas você quer oferecer?
