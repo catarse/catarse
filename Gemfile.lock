@@ -200,6 +200,7 @@ GEM
       json (>= 1.1.9)
       multipart-post (>= 1.0.1)
       oauth (>= 0.4.3)
+    will_paginate (2.3.15)
     wirble (0.1.3)
     xpath (0.1.2)
       nokogiri (~> 1.3)
@@ -229,4 +230,5 @@ DEPENDENCIES
   steak (~> 1.1.0)
   unicorn
   vimeo
+  will_paginate
   wirble

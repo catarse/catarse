@@ -14,6 +14,7 @@ gem 'wirble'
 gem "on_the_spot"
 gem 'unicorn'
 gem 'mailee', '>= 0.4.3'
+gem 'will_paginate'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'

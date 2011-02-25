@@ -136,7 +136,7 @@ class ProjectsController < ApplicationController
   end
   def pending_backers
     return unless require_admin
-    @backers = Backer.order("confirmed, created_at DESC").all
+    @backers = Backer.order("confirmed, created_at DESC").paginate :page => params[:page]
     @total_backers = User.backers.count
     @total_backs = Backer.confirmed.count
     @total_pledged = Backer.confirmed.sum(:value)
