@@ -54,18 +54,19 @@
         }
 
         #wrapper {
-            width: 845px;
+            width: 920px;
             margin: 0 auto;
         }
 
             #wrapper #title {
-                margin: 30px 0;
+                margin: 30px 0 16px 0;
                 color: #fff;
                 font-size: 50px;
                 font-weight: bold;
                 font-family: {font:Title};
                 text-shadow: 1px 3px 5px rgba(0,0,0, 0.5);
                 letter-spacing: -1px;
+                text-align: center;
             }
 
                 #wrapper #title a {
@@ -73,8 +74,29 @@
                     text-decoration: none;
                 }
 
+                #wrapper #title img {
+                    height: 60px;
+                }
+            
+            #wrapper #social_menu {
+                margin-bottom: 28px;
+                text-align: center;
+                color: #444;
+            }
+            
+                #wrapper #social_menu a {
+                    color: #080;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+          
+                #wrapper #social_menu img {
+                    height: 20px;
+                    vertical-align: middle;
+                }
+          
             #wrapper #content {
-                width: 520px;
+                width: 920px;
                 float: left;
             }
 
@@ -109,18 +131,18 @@
                     }
 
                     #wrapper #content .post .quote.short {
-                        font-size: 33px;
-                        line-height: 35px;
+                        font-size: 28px;
+                        line-height: 30px;
                     }
 
                     #wrapper #content .post .quote.medium {
-                        font-size: 25px;
-                        line-height: 28px;
+                        font-size: 20px;
+                        line-height: 22px;
                     }
 
                     #wrapper #content .post .quote.long {
-                        font-size: 18px;
-                        line-height: 22px;
+                        font-size: 16px;
+                        line-height: 20px;
                     }
 
                         #wrapper #content .post .quote_source *:first-child {
@@ -142,8 +164,8 @@
                     #wrapper #content .post .copy {
                         color: #6e7173;
                         padding: 10px;
-                        font-size: 18px;
-                        line-height: 24px;
+                        font-size: 16px;
+                        line-height: 20px;
                     }
 
                         #wrapper #content .post .copy a {
@@ -211,7 +233,7 @@
 
                     #wrapper #content .post .question {
                         color: #494949;
-                        font-size: 18px;
+                        font-size: 16px;
                         font-weight: bold;
                         background: #f1f1f1;
                         -moz-border-radius: 8px;
@@ -245,7 +267,7 @@
 
                     #wrapper #content .post .title {
                         color: #494949;
-                        font-size: 22px;
+                        font-size: 20px;
                         font-weight: bold;
                         padding: 10px 10px 0 10px;
                     }
@@ -258,7 +280,7 @@
                         background-color: #fff;
                         border-left: 5px solid #dedddd;
                         margin: 10px 10px 0 10px;
-                        font-size: 18px;
+                        font-size: 16px;
                     }
 
                         #wrapper #content .post .chat .lines {
@@ -278,8 +300,8 @@
 
                         #wrapper #content .post .link {
                             margin: 4px 0 2px 0;
-                            font-size: 18px;
-                            line-height: 25px;
+                            font-size: 16px;
+                            line-height: 22px;
                         }
 
                             #wrapper #content .post .link a {
@@ -397,7 +419,7 @@
                                                 }
 
                         #wrapper #content .bottom {
-                            background: url('http://assets.tumblr.com/themes/redux/shadow-post.png') top center no-repeat transparent;
+                            /*background: url('http://assets.tumblr.com/themes/redux/shadow-post.png') top center no-repeat transparent;*/
                             width: 513px;
                             height: 40px;
                             margin: 0 auto;
@@ -497,7 +519,7 @@
                     margin: 0 0 15px 0;
                     text-shadow: 1px 3px 5px rgba(0,0,0, 0.5);
                     font-family: {font:Body};
-                    font-size: 20px;
+                    font-size: 16px;
                 }
 
                     #wrapper #content #searchresults .search_query {
@@ -513,8 +535,12 @@
                     }
 
             #wrapper #sidebar {
+                display: none;
+                position: fixed;
+                bottom: 0;
+                right: 40px;
                 width: 250px;
-                float: right;
+                /*float: right;*/
                 color: {color:Background};
                 font-family: {font:Accent}
             }
@@ -849,6 +875,22 @@
                 {block:IfHeaderImage}<img src="{image:Header}" />{/block:IfHeaderImage}
                 {block:IfNotHeaderImage}{Title}{/block:IfNotHeaderImage}
             </a>
+            <br>
+        </div>
+        
+        <div id="social_menu">
+          <a href="http://catarse.me" target="_blank">
+          Explore os projetos
+          </a>&nbsp;·&nbsp;
+          <a href="http://twitter.com/Catarse_" target="_blank">
+          Siga no Twitter
+          </a>&nbsp;·&nbsp;
+          <a href="http://www.facebook.com/Catarse.me" target="_blank">
+          Curta no Facebook
+          </a>&nbsp;·&nbsp;
+          <a href="http://blog.catarse.me/rss/" target="_blank">
+          Assine o RSS
+          </a>
         </div>
 
         <div id="content">
@@ -1150,4 +1192,3 @@
     {/block:IfDisqusShortname}
 </body>
 </html>
-
