@@ -11,6 +11,7 @@
         - @rewards.each do |reward|
           rewards[#{reward.id || 0}] = #{reward.minimum_value}
       = form.input :reward, :as => :radio, :label => "Selecione sua recompensa", :required => false, :collection => @rewards
+      = form.input :anonymous, :label => 'Quero que meu apoio seja anônimo.', :required => false
     = form.buttons do
       = form.commit_button 'Revisar e realizar pagamento', :button_html => {:disabled => true}
 #back_info

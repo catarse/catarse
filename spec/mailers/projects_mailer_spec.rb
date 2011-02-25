@@ -6,7 +6,8 @@ describe ProjectsMailer do
     rewards = "Rewards of the project"
     links = "Links of the project"
     contact = "foo@bar.com"
-    email = ProjectsMailer.start_project_email(about, rewards, links, contact).deliver
+    user = Factory(:user)
+    email = ProjectsMailer.start_project_email(about, rewards, links, contact, user).deliver
     ActionMailer::Base.deliveries.should_not be_empty
     email.encoded.should =~ /About the project/
     email.encoded.should =~ /Rewards of the project/

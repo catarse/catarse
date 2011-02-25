@@ -7,6 +7,8 @@ class Backer < ActiveRecord::Base
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
+  scope :visible, where(:anonymous => false)
+  scope :anonymous, where(:anonymous => true)
   scope :confirmed, where(:confirmed => true)
   scope :pending, where(:confirmed => false)
   scope :display_notice, where(:display_notice => true)

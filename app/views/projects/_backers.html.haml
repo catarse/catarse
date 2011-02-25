@@ -4,17 +4,23 @@
     - @backers.each do |backer|
       %li
         = backer.confirmed_at.strftime('%d/%m') if backer.confirmed_at
-        = link_to user_path(backer.user) do
-          = image_tag backer.user.display_image, :class => 'user'
-          = backer.user.display_name
+        - if backer.anonymous
+          = image_tag 'user.png', :class => 'user'
+          Apoiador anônimo
           = image_tag 'badge.png', :class => "badge" if show_badge
-        %p
-          - if backer.user.backs.confirmed.count == 2
-            Apoiou este e mais 1 outro projeto
-          - elsif backer.user.backs.confirmed.count > 1
-            Apoiou este e mais outros #{backer.user.backs.confirmed.count-1} projetos
-          - else
-            Apoiou somente este projeto até agora
+          %p Optou por permanecer incógnito
+        - else
+          = link_to user_path(backer.user) do
+            = image_tag backer.user.display_image, :class => 'user'
+            = backer.user.display_name
+            = image_tag 'badge.png', :class => "badge" if show_badge
+          %p
+            - if backer.user.total_backs == 2
+              Apoiou este e mais 1 outro projeto
+            - elsif backer.user.total_backs > 1
+              Apoiou este e mais outros #{backer.user.total_backs-1} projetos
+            - else
+              Apoiou somente este projeto até agora
         - if show_rewards and current_user and (current_user == @project.user or current_user.admin)
           %p.reward
             - if backer.reward
