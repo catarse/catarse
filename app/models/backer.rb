@@ -12,6 +12,10 @@ class Backer < ActiveRecord::Base
   scope :confirmed, where(:confirmed => true)
   scope :pending, where(:confirmed => false)
   scope :display_notice, where(:display_notice => true)
+  after_create :define_key
+  def define_key
+    self.update_attribute :key, Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s
+  end
   before_save :confirm?
   def confirm?
     if confirmed and confirmed_at.nil?

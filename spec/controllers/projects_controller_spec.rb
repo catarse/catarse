@@ -2,7 +2,7 @@ require 'spec_helper'
 describe ProjectsController do
   it "should confirm backer in moip payment" do
     backer = Factory(:backer, :confirmed => false)
-    post :moip, {:id_transacao => backer.id, :status_pagamento => '1', :valor => backer.moip_value}
+    post :moip, {:id_transacao => backer.key, :status_pagamento => '1', :valor => backer.moip_value}
     response.should be_successful
     backer.reload.confirmed.should be_true 
   end

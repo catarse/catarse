@@ -107,10 +107,10 @@ class ProjectsController < ApplicationController
     session[:thank_you_id] = nil
   end
   def moip
-    id = params[:id_transacao]
+    key = params[:id_transacao]
     status = params[:status_pagamento]
     value = params[:valor]
-    backer = Backer.find id
+    backer = Backer.find_by_key key
     #MoipMailer.payment_received_email(backer, params).deliver
     return render :nothing => true, :status => 200 if status != '1'
     return render :nothing => true, :status => 200 if backer.confirmed

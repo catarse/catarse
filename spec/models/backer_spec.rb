@@ -84,4 +84,10 @@ describe Backer do
     backer = Factory.build(:backer, :reward => reward3, :project => project)
     backer.should_not be_valid
   end
+  it "should define a key after create" do
+    Kernel.stubs(:rand).returns(1)
+    Kernel.rand.should == 1
+    backer = Factory(:backer)
+    backer.key.should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s
+  end
 end
