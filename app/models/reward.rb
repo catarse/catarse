@@ -1,6 +1,7 @@
 # coding: utf-8
 class Reward < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  include ERB::Util
   belongs_to :project
   has_many :backers
   validates_presence_of :minimum_value, :description
@@ -16,7 +17,7 @@ class Reward < ActiveRecord::Base
     maximum_backers - backers.confirmed.count
   end
   def name
-    "<div class='reward_minimum_value'>#{(minimum_value > 0 ? display_minimum + '+' : 'Não quero recompensa')}</div><div class='reward_description'>#{description}</div>#{ '<div class="sold_out">Esgotada</div>' if sold_out? }<div class='clear'></div>".html_safe
+    "<div class='reward_minimum_value'>#{(minimum_value > 0 ? display_minimum + '+' : 'Não quero recompensa')}</div><div class='reward_description'>#{h(description)}</div>#{ '<div class="sold_out">Esgotada</div>' if sold_out? }<div class='clear'></div>".html_safe
   end
   def display_minimum
     number_to_currency minimum_value, :unit => 'R$ ', :precision => 0, :delimiter => '.'

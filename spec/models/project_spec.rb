@@ -121,9 +121,10 @@ describe Project do
     p = Factory(:project)
     p.display_image.should_not be_empty
   end
-  it "should have a display about that convers new lines to <br>" do
-    p = Factory(:project, :about => "Foo\nBar")
-    p.display_about.should == "Foo<br>Bar"
+  it "should have a HTML-safe display about that converts new lines to <br>" do
+    p = Factory.build(:project)
+    p.about = "Foo\nBar<javascript>xss()</javascript>"
+    p.display_about.should == "Foo<br>Bar&lt;javascript&gt;xss()&lt;/javascript&gt;"
   end
 end
 

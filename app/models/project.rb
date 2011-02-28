@@ -2,6 +2,7 @@
 VIMEO_REGEX = /\Ahttp:\/\/(www\.)?vimeo.com\/(\d+)\z/
 class Project < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  include ERB::Util
   include Rails.application.routes.url_helpers
   belongs_to :user
   belongs_to :category
@@ -56,7 +57,7 @@ class Project < ActiveRecord::Base
     vimeo["thumbnail_large"]
   end
   def display_about
-    about.gsub("\n", "<br>")
+    h(about).gsub("\n", "<br>").html_safe
   end
   def display_expires_at
     expires_at.strftime('%d/%m')
