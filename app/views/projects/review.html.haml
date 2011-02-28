@@ -22,6 +22,6 @@
       = hidden_field_tag 'valor', ('%.2f' % @backer.value).gsub('.','')
       = hidden_field_tag 'nome', "Apoio para projeto no Catarse"
       = hidden_field_tag 'descricao', "Apoio para o projeto '#{@project.name}'"
-      = hidden_field_tag 'id_transacao', @backer.id
+      = hidden_field_tag 'id_transacao', @backer.key
       = submit_tag 'Efetuar pagamento', :disabled => true
 = javascript_include_tag 'review'
