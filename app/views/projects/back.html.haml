@@ -19,7 +19,7 @@
   #project_info
     .project_name= link_to @project.name, project_path(@project)
     .project_owner por #{link_to @project.user.display_name, user_path(@project.user)}
-    .project_expires_at #{@project.days_to_go} dias restantes
+    .project_expires_at #{@project.time_to_go[:time]} #{@project.time_to_go[:unit]} #{pluralize_without_number(@project.time_to_go[:time], 'restante')}
   .clear
   %h3 Como eu apoio este projeto?
   %p Primeiro, escolha o valor e a recompensa desejados. Depois nós te redirecionaremos para o #{link_to "MoIP", "http://www.moip.com.br/", :target => :_blank} para que você efetue o pagamento.

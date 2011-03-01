@@ -28,6 +28,6 @@
           %br
           levantados
         %li
-          %strong #{project.days_to_go} #{pluralize_without_number(project.days_to_go, 'dia')}
+          %strong #{project.time_to_go[:time]} #{project.time_to_go[:unit]}
           %br
-          #{pluralize_without_number(project.days_to_go, 'restante')}
+          #{pluralize_without_number(project.time_to_go[:time], 'restante')}

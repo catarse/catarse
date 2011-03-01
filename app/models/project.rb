@@ -2,6 +2,7 @@
 VIMEO_REGEX = /\Ahttp:\/\/(www\.)?vimeo.com\/(\d+)\z/
 class Project < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::TextHelper
   include ERB::Util
   include Rails.application.routes.url_helpers
   belongs_to :user
@@ -91,9 +92,22 @@ class Project < ActiveRecord::Base
     return 8 if percent > 0 and percent < 8
     percent
   end
-  def days_to_go
-    return 0 if expires_at < Time.now
-    ((expires_at - Time.now).abs/60/60/24).round
+  def time_to_go
+    if expires_at >= 1.day.from_now
+      time = ((expires_at - Time.now).abs/60/60/24).round
+      {:time => time, :unit => pluralize_without_number(time, 'dia')}
+    elsif expires_at >= 1.hour.from_now
+      time = ((expires_at - Time.now).abs/60/60).round
+      {:time => time, :unit => pluralize_without_number(time, 'hora')}
+    elsif expires_at >= 1.minute.from_now
+      time = ((expires_at - Time.now).abs/60).round
+      {:time => time, :unit => pluralize_without_number(time, 'minuto')}
+    elsif expires_at >= 1.second.from_now
+      time = ((expires_at - Time.now).abs).round
+      {:time => time, :unit => pluralize_without_number(time, 'segundo')}
+    else
+      {:time => 0, :unit => 'segundos'}
+    end
   end
   def can_back?
     visible and not expired? and not rejected

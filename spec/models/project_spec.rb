@@ -126,5 +126,42 @@ describe Project do
     p.about = "Foo\nBar<javascript>xss()</javascript>"
     p.display_about.should == "Foo<br>Bar&lt;javascript&gt;xss()&lt;/javascript&gt;"
   end
+  it "should be able to display the remaining time with days, hours, minutes and seconds" do
+    p = Factory.build(:project)
+    time = Time.now
+    Time.stubs(:now).returns(time)
+    p.expires_at = 30.days.from_now
+    p.time_to_go[:time].should == 30
+    p.time_to_go[:unit].should == "dias"
+    p.expires_at = 1.day.from_now
+    p.time_to_go[:time].should == 1
+    p.time_to_go[:unit].should == "dia"
+    p.expires_at = 23.hours.from_now + 59.minutes + 59.seconds
+    p.time_to_go[:time].should == 24
+    p.time_to_go[:unit].should == "horas"
+    p.expires_at = 1.hour.from_now
+    p.time_to_go[:time].should == 1
+    p.time_to_go[:unit].should == "hora"
+    p.expires_at = 59.minutes.from_now
+    p.time_to_go[:time].should == 59
+    p.time_to_go[:unit].should == "minutos"
+    p.expires_at = 1.minute.from_now
+    p.time_to_go[:time].should == 1
+    p.time_to_go[:unit].should == "minuto"
+    p.expires_at = 59.seconds.from_now
+    p.time_to_go[:time].should == 59
+    p.time_to_go[:unit].should == "segundos"
+    p.expires_at = 1.second.from_now
+    p.time_to_go[:time].should == 1
+    p.time_to_go[:unit].should == "segundo"
+    p.expires_at = 0.seconds.from_now
+    p.time_to_go[:time].should == 0
+    p.time_to_go[:unit].should == "segundos"
+    p.expires_at = 1.second.ago
+    p.time_to_go[:time].should == 0
+    p.time_to_go[:unit].should == "segundos"
+    p.expires_at = 30.days.ago
+    p.time_to_go[:time].should == 0
+    p.time_to_go[:unit].should == "segundos"
+  end
 end
-
