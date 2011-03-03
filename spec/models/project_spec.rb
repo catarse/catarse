@@ -164,4 +164,24 @@ describe Project do
     p.time_to_go[:time].should == 0
     p.time_to_go[:unit].should == "segundos"
   end
+  it "should be waiting confirmation until 3 weekdays after the deadline unless it is already successful" do
+    p = Factory(:project, :goal => 100)
+    p.successful?.should be_false
+    p.expires_at = 10.seconds.from_now
+    p.waiting_confirmation?.should be_false
+    p.expires_at = 4.weekdays_ago
+    p.waiting_confirmation?.should be_false
+    p.expires_at = 3.weekdays_ago - 10.seconds
+    p.waiting_confirmation?.should be_false
+    p.expires_at = 3.weekdays_ago + 10.seconds
+    p.waiting_confirmation?.should be_true
+    p.expires_at = 2.weekdays_ago
+    p.waiting_confirmation?.should be_true
+    Factory(:backer, :project => p, :value => 100, :confirmed => true)
+    p.successful?.should be_true
+    p.expires_at = 3.weekdays_ago + 10.seconds
+    p.waiting_confirmation?.should be_false
+    p.expires_at = 2.weekdays_ago
+    p.waiting_confirmation?.should be_false
+  end
 end

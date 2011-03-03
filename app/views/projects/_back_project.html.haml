@@ -17,6 +17,9 @@
         Este projeto foi financiado em #{@project.display_expires_at}
       - else
         Este projeto será financiado em #{@project.display_expires_at}
+- elsif @project.waiting_confirmation?
+  .project_warning.waiting_confirmation
+    .text Aguardando a confirmação de boletos para saber se este projeto será financiado.
 - else
   .project_warning.not_successful
     .text
