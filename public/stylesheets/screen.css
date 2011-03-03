@@ -2588,45 +2588,47 @@ body#site #embed .project_box {
 /* line 60, ../../app/stylesheets/screen.sass */
 body#site #video_embed {
   text-align: center;
-  padding: 20px;
+  padding: 16px;
+  padding-bottom: 0;
 }
-/* line 4, ../../app/stylesheets/_video_embed.sass */
+/* line 5, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed iframe {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
 }
-/* line 6, ../../app/stylesheets/_video_embed.sass */
+/* line 7, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed h1 {
   font-family: "museo-500";
   font-size: 24px;
+  line-height: 26px;
   padding: 12px 0;
 }
-/* line 10, ../../app/stylesheets/_video_embed.sass */
+/* line 12, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed h1 a {
   text-decoration: none;
   text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 3px;
 }
-/* line 13, ../../app/stylesheets/_video_embed.sass */
+/* line 15, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed h2 {
   font-size: 14px;
   color: #666666;
   padding: 0;
   text-shadow: white 1px 1px 0px;
 }
-/* line 18, ../../app/stylesheets/_video_embed.sass */
+/* line 20, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed h2 a {
   text-decoration: none;
   text-shadow: white 1px 1px 0px;
 }
-/* line 21, ../../app/stylesheets/_video_embed.sass */
+/* line 23, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed #catarse_link {
   font-family: "museo-700";
   font-size: 28px;
   line-height: 30px;
 }
-/* line 25, ../../app/stylesheets/_video_embed.sass */
+/* line 27, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed #catarse_link a {
   color: #222222;
   text-decoration: none;
@@ -2639,7 +2641,7 @@ body#site #video_embed #catarse_link a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 29, ../../app/stylesheets/_video_embed.sass */
+/* line 31, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed #catarse_link a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
