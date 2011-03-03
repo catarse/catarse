@@ -2603,7 +2603,7 @@ body#site #video_embed h1 {
   font-family: "museo-500";
   font-size: 24px;
   line-height: 26px;
-  padding: 12px 0;
+  padding: 12px 0 8px 0;
 }
 /* line 12, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed h1 a {
