@@ -38,7 +38,7 @@ class Backer < ActiveRecord::Base
   validate :should_not_back_if_maximum_backers_been_reached
   def should_not_back_if_maximum_backers_been_reached
     return unless reward and reward.maximum_backers and reward.maximum_backers > 0
-    errors.add(:reward, "já atingiu seu número máximo de apoiadores") unless reward.backers.count < reward.maximum_backers
+    errors.add(:reward, "já atingiu seu número máximo de apoiadores") unless reward.backers.confirmed.count < reward.maximum_backers
   end
   def display_value
     number_to_currency value, :unit => 'R$ ', :precision => 0, :delimiter => '.'
