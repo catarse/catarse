@@ -43,6 +43,7 @@ class ProjectsController < ApplicationController
     end
   end
   def create
+    params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
     create!(:notice => "Seu projeto foi criado com sucesso! Logo avisaremos se ele foi selecionado. Muito obrigado!")
     @project.reload
     @project.update_attribute :short_url, bitly

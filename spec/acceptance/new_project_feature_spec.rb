@@ -7,7 +7,7 @@ feature "New Project Feature" do
     find("#login").visible?.should be_true
   end
   scenario "I am logged in and I want to send a project" do
-    c = Factory(:category) 
+    c = Factory(:category)
     visit homepage
     fake_login
     visit new_project_path
@@ -32,8 +32,10 @@ feature "New Project Feature" do
     end
     p = Project.first
     p.name.should == 'test project'
+    p.expires_at.should == Time.parse('2012-12-21') + (23.hours + 59.minutes + 59.seconds)
     page.should have_content("test project")
     visit p.short_url
     page.should have_content("test project")
   end
 end
+
