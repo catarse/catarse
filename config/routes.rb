@@ -8,6 +8,7 @@ Catarse::Application.routes.draw do
   match "/privacy" => "projects#privacy", :as => :privacy
   match "/thank_you" => "projects#thank_you", :as => :thank_you
   match "/moip" => "projects#moip", :as => :moip
+  match "/explore" => "projects#explore", :as => :explore
 
   post "/auth" => "sessions#auth", :as => :auth
   match "/auth/:provider/callback" => "sessions#create"
