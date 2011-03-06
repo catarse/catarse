@@ -27,6 +27,7 @@
               Recompensa: #{backer.reward.display_minimum} - #{truncate(backer.reward.description, :length => 35)}
             - else
               Este apoiador não selecionou nenhuma recompensa
+        .clear
   - if show_all_link
     #all_backers
       = link_to "Todos os apoiadores", backers_project_path(@project)
