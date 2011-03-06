@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
     end
   end
   def explore
+    @title = "Explore os projetos"
     @categories = Category.with_projects.order(:name)
     @recommended = Project.visible.recommended.order('created_at DESC')
     @expiring = Project.visible.expiring.order('expires_at')
