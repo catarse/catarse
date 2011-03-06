@@ -569,84 +569,108 @@
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
       font-size: 18px
       margin-top: 40px
-#project_backers
-  margin-top: 8px
-  color: #444
-  h1
-    font-size: 24px !important
-    color: #999 !important
-    padding-bottom: 16px !important
-  img.user
-    float: left
-    margin-right: 12px
-    margin-bottom: 20px
-    width: 48px
-    +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
-    background-color: #fff
-  a
-    text-decoration: none !important
-  #all_backers
-    border-top: 1px dashed #CCC
-    text-align: right
-    padding-top: 8px
-  p
-    font-size: 16px
-    color: #666
-  p.reward
-    font-size: 12px
-    color: #333
-#backers #project_backers
-  img.user
-    margin-bottom: 0
-  margin-top: 0
-  h1
-    padding-top: 0 !important
-  ul
-    width: 94%
-    li
-      background-color: #ddd
-      margin-top: 16px
-      padding: 20px
-      +border-radius(8px)
-      position: relative
-      .badge
-        position: absolute
-        top: -10px
-        right: -10px
-        width: 72px
-        +transition(all,0.2s)
-        &:hover
-          +rotate(-4deg)
-  a
-    text-decoration: none
-  p
-    padding-bottom: 0 !important
+  #project_backers
+    margin-top: 8px
+    color: #444
+    h1
+      font-size: 24px !important
+      color: #999 !important
+      padding-bottom: 16px !important
+    img.user
+      float: left
+      margin-right: 12px
+      margin-bottom: 20px
+      width: 48px
+      +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
+      background-color: #fff
+    a
+      text-decoration: none !important
+    #all_backers
+      border-top: 1px dashed #CCC
+      text-align: right
+      padding-top: 8px
+    p
+      font-size: 16px
+      color: #666
+    p.reward
+      font-size: 12px
+      color: #333
+  #backers #project_backers
+    img.user
+      margin-bottom: 0
+    margin-top: 0
+    h1
+      padding-top: 0 !important
+    ul
+      width: 94%
+      li
+        background-color: #ddd
+        margin-top: 16px
+        padding: 20px
+        +border-radius(8px)
+        position: relative
+        .badge
+          position: absolute
+          top: -10px
+          right: -10px
+          width: 72px
+          +transition(all,0.2s)
+          &:hover
+            +rotate(-4deg)
+    a
+      text-decoration: none
+    p
+      padding-bottom: 0 !important
 
-#pending_projects, #pending_backers
-  color: #444
-  font-size: 22px
-  line-height: 28px
-  img.project,img.user
-    float: left
-    margin-right: 12px
-    width: 160px
-    +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
-  img.user
-    width: 48px
-  a
-    text-decoration: none !important
+  #pending_projects, #pending_backers
+    color: #444
     font-size: 22px
     line-height: 28px
-  p
-    font-size: 18px
-    color: #666
-  ul li
-    margin-top: 32px
-    &:first-child
-      margin-top: 24px
-    &:last-child
-      margin-bottom: 24px
-  hr
-    margin: 20px 0
-    border: 1px dashed transparent
+    img.project,img.user
+      float: left
+      margin-right: 12px
+      width: 160px
+      +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
+    img.user
+      width: 48px
+    a
+      text-decoration: none !important
+      font-size: 22px
+      line-height: 28px
+    p
+      font-size: 18px
+      color: #666
+    ul li
+      margin-top: 32px
+      &:first-child
+        margin-top: 24px
+      &:last-child
+        margin-bottom: 24px
+    hr
+      margin: 20px 0
+      border: 1px dashed transparent
+  #explore_projects
+    #explore_menu
+      float: left
+      width: 260px
+      ul
+        margin-bottom: 20px
+        li a
+          background-color: #ddd
+          margin-bottom: 4px
+          padding: 4px 8px
+          +border-radius(4px)
+          text-align: center
+          text-decoration: none
+          text-transform: uppercase
+          font-weight: bold
+          display: block
+          +transition(all,0.2s)
+          &.selected,&:hover
+            color: #fff
+            background-color: #0A0
+            +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
+    #explore_results
+      float: right
+      width: 560px
 

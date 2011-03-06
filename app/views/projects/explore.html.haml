@@ -1,0 +1,24 @@
+= content_for :content_header do
+  %h1 Encontre projetos incríveis
+  %h2 Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!
+#explore_projects
+  #explore_menu
+    %h3 Busca rápida
+    %ul#explore_quick
+      %li= link_to 'Recomendados', '#', :id => 'menu_recommended', :class => 'selected'
+      %li= link_to 'Na reta final', '#', :id => 'menu_expiring'
+      %li= link_to 'Recentes', '#', :id => 'menu_recent'
+      %li= link_to 'Bem-sucedidos', '#', :id => 'menu_successful'
+    %h3 Categorias
+    %ul#explore_categories
+      - @categories.each do |category|
+        %li= link_to category.name, '#', :id => "category_#{category.id}"
+  #explore_results
+    #explore_recommended.results= render :partial => 'project', :collection => @recommended
+    #explore_expiring.results.hide= render :partial => 'project', :collection => @expiring
+    #explore_recent.results.hide= render :partial => 'project', :collection => @recent
+    #explore_successful.results.hide= render :partial => 'project', :collection => @successful
+    #explore_all.results.hide= render :partial => 'project', :collection => @all
+  .clear
+= javascript_include_tag 'explore_projects'
+

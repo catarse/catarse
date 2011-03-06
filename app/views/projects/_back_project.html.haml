@@ -14,9 +14,9 @@
   .project_warning.successful
     .text
       - if @project.expired?
-        Este projeto foi bem sucedido e foi financiado em #{@project.display_expires_at}
+        Este projeto foi bem-sucedido e foi financiado em #{@project.display_expires_at}
       - else
-        Este projeto será bem sucedido e financiado em #{@project.display_expires_at}
+        Este projeto será bem-sucedido e financiado em #{@project.display_expires_at}
 - elsif @project.waiting_confirmation?
   .project_warning.waiting_confirmation
     .text Aguardando a confirmação de boletos para saber se este projeto será financiado.

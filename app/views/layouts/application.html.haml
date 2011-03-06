@@ -24,6 +24,7 @@
         = render '/layouts/user' if current_user
         #menu
           %ul
+            %li= link_to "Explore os projetos", explore_projects_path
             %li= link_to "Envie seu projeto", guidelines_path, :id => 'new_project_link'
             - unless current_user
               %li= link_to "Cadastre-se", '#', :id => 'signup_link'

@@ -22,9 +22,17 @@ class ProjectsController < ApplicationController
   def index
     index! do
       @title = "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
-      @recommended = Project.visible.recommended.order('"order", created_at DESC')
-      @recent = Project.visible.not_recommended.limit(12).order('created_at DESC')
+      @recommended = Project.visible.home_page.order('"order", created_at DESC').limit(6)
+      @recent = Project.visible.not_home_page.order('created_at DESC').limit(6)
     end
+  end
+  def explore
+    @categories = Category.with_projects.order(:name)
+    @recommended = Project.visible.recommended.order('created_at DESC')
+    @expiring = Project.visible.expiring.order('expires_at')
+    @recent = Project.visible.recent.order('created_at DESC')
+    @successful = Project.visible.successful.order('expires_at DESC')
+    @all = Project.visible.order('created_at DESC')
   end
   def start
     @title = "Envie seu projeto"
@@ -160,7 +168,7 @@ class ProjectsController < ApplicationController
   end
   def can_update_on_the_spot?
     project_fields = []
-    project_admin_fields = ["visible", "rejected", "recommended", "about", "headline"]
+    project_admin_fields = ["visible", "rejected", "recommended", "home_page", "about", "headline"]
     backer_fields = ["display_notice"]
     backer_admin_fields = ["confirmed"]
     reward_fields = []
