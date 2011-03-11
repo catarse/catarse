@@ -37,6 +37,7 @@ Catarse::Application.routes.draw do
     member do
       get 'back'
       post 'review'
+      post 'pay'
       get 'backers'
       get 'embed'
       get 'video_embed'

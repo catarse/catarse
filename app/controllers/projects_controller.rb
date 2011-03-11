@@ -107,6 +107,8 @@ class ProjectsController < ApplicationController
     end
     session[:thank_you_id] = @project.id
   end
+  def pay
+  end
   def thank_you
     unless session[:thank_you_id]
       flash[:failure] = "Ooops. Você só pode acessar esta página depois de apoiar um projeto."

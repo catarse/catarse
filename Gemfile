@@ -16,6 +16,7 @@ gem 'unicorn'
 gem 'mailee', '>= 0.4.3'
 gem 'will_paginate'
 gem 'weekdays'
+gem 'moip', :git => 'https://github.com/moiplabs/moip-ruby.git'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'
@@ -26,3 +27,4 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'mocha'
 end
+

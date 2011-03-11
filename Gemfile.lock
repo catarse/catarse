@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/moiplabs/moip-ruby.git
+  revision: 6d80cc7f896011e744f15f27d9ee70f03401655d
+  specs:
+    moip (1.0.1)
+      activesupport (>= 2.3.2)
+      httparty (~> 0.6.1)
+      nokogiri (~> 1.4.3)
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -221,6 +230,7 @@ DEPENDENCIES
   mailee (>= 0.4.3)
   maxim-sexy_pg_constraints
   mocha
+  moip!
   omniauth
   on_the_spot
   pg
