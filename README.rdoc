@@ -20,9 +20,9 @@ Antes de contribuir, dê uma boa olhada no nosso UserVoice (http://catarse.userv
 Depois, basta fazer um fork, mudar, e mandar um pull request.
 
 Nós utilizamos RSpec e Steak para os testes, e as melhores práticas são:
-* Manter os testes de modelo com 100% de cobertura (usando rcov)
+* Manter os modelos com 100% de cobertura de testes (usando rcov)
 * Criar testes de aceitação para tudo que for usar interface
-* Criar testes de controle apenas quando os testes não estiverem cobertos por um teste de aceitação. Ou seja: damos prioridade para os testes de aceitação em relação aos testes de controles.
+* Criar testes de controle apenas quando as funcionalidades não puderem ser completamente cobertas por testes de aceitação. Ou seja: damos prioridade para os testes de aceitação em relação aos testes de controles.
 
 Atualmente, uma série de funcionalidades estão sem testes de aceitação. Se você não sabe como começar, uma boa maneira pode ser contribuindo com testes de aceitação :) qualquer dúvida, estou à disposição no mailto:danielweinmann@gmail.com.
 
