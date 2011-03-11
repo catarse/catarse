@@ -1,7 +1,7 @@
 == Catarse
 === A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil
 
-Seja bem-vindo ao repositório dos códigos-fonte do Catarse. Nosso objetivo ao abrir o código do site é estimular a criação de sites de crowdfunding no Brasil, com alto nível de qualidade.
+Seja bem-vindo ao repositório dos códigos-fonte do Catarse. Nosso objetivo ao abrir o código do site é estimular a criação de uma comunidade de desenvolvedores em torno do crowdfunding no Brasil, com alto nível de qualidade.
 
 Temos como objetivo, também, a criação de um Rails Engine para a criação de sites de crowdfunding. Criamos um rascunho em http://github.com/danielweinmann/crowdfunding, porém contamos com sua colaboração para a evolução desta gem. Nossa idéia é utilizar o código do Catarse como ponto de partida para a criação do Engine, e depois utilizar o Engine no Catarse. Porém, só iremos começar este desenvolvimento quando tivermos pelo menos + 1 colaborador interessado em usar a gem. Deste modo conseguiremos abstrair as necessidades de pelo menos 2 sites e colocar no Engine.
 
