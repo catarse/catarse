@@ -21,7 +21,7 @@
       = form.input :address_zip_code, :label => 'CEP', :required => true, :as => :string
       = form.input :address_street, :label => 'Logradouro', :required => true, :as => :string
       = form.input :address_number, :label => 'Número', :required => true, :as => :string
-      = form.input :address_complement, :label => 'Complemento', :required => true, :as => :string
+      = form.input :address_complement, :label => 'Complemento', :required => false, :as => :string
       = form.input :address_neighbourhood, :label => 'Bairro', :required => true, :as => :string
       = form.input :address_city, :label => 'Cidade', :required => true, :as => :string
       = form.input :address_state, :label => 'Estado', :required => true, :as => :select, :collection => State.array

@@ -11,8 +11,6 @@ everything_ok = function(){
     all_ok = false
   if(!ok('#user_address_number'))
     all_ok = false
-  if(!ok('#user_address_complement'))
-    all_ok = false
   if(!ok('#user_address_neighbourhood'))
     all_ok = false
   if(!ok('#user_address_city'))
@@ -107,6 +105,7 @@ $('#user_phone_number').mask("(99)9999-9999")
 $('input[type=text]').keyup(everything_ok)
 $('#user_address_zip_code').keyup(function(){ zip_code_valid = false; everything_ok() })
 $('#user_address_zip_code').timedKeyup(verify_zip_code)
+$('#user_address_complement').addClass("ok")
 $('#accept').click(everything_ok)
 $('select').change(everything_ok)
 verify_zip_code()
