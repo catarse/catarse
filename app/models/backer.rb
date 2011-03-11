@@ -45,6 +45,6 @@ class Backer < ActiveRecord::Base
   end
   def moip_value
     "%0.0f" % (value * 100)
-  end
+  end  
 end
 

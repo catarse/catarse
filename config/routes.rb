@@ -28,6 +28,7 @@ Catarse::Application.routes.draw do
       get 'terms'
       get 'privacy'
       get 'vimeo'
+      get 'cep'
       get 'pending'
       get 'pending_backers'
       get 'thank_you'
@@ -37,7 +38,7 @@ Catarse::Application.routes.draw do
     member do
       get 'back'
       post 'review'
-      post 'pay'
+      put 'pay'
       get 'backers'
       get 'embed'
       get 'video_embed'

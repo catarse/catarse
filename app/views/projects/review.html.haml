@@ -1,5 +1,5 @@
 = content_for :content_header do
-  %h1 Revise seus dados
+  %h1 Preencha e revise seus dados
   %h2 Último passo para fazer a diferença e se tornar parte deste projeto.
 #project_review
   = image_tag @project.display_image, :id => 'project_image'
@@ -13,55 +13,24 @@
       %span.reward #{@backer.reward.description}
     - else
       e não quer nenhuma recompensa por seu apoio.
-  = semantic_form_for current_user, :html => { :id => 'review_form' } do |form|
+  = semantic_form_for current_user, :url => pay_project_path(@backer.project), :html => { :id => 'review_form' } do |form|
+    = hidden_field_tag 'backer_id', @backer.id
     = form.inputs do
-      = form.input :full_name, :label => 'Nome completo', :hint => "Preencha seu nome completo para enviarmos para o MoIP. Este não é o nome que irá aparecer no seu perfil e só será utilizado para pagamentos.", :required => true, :as => :string
-      = form.input :video_url, :label => "Vídeo", :hint => "Cole a URL de um vídeo no #{link_to 'Vimeo', 'http://vimeo.com', :target => :_blank}. Nós escolhemos o Vimeo pois ele é mais bonito e não tem propaganda. Assim, seu projeto fica mais bonito também! <strong>Produza seu vídeo o melhor possível e faça um vídeo específico para a campanha do Catarse</strong>. Se há um ponto que diferencia os projetos que antingem o mínimo dos outros é o vídeo. Observe ;)".html_safe, :required => true, :as => :string
-      = form.input :about, :label => "Sobre o seu projeto", :hint => "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!", :required => true
-      = form.input :headline, :label => "Frase de efeito", :hint => "Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)", :required => true, :as => :text, :input_html => { :maxlength => 140 }
-      = form.input :category, :label => "Categoria", :hint => "Escolha em que categoria você quer que seu projeto apareça. Não se preocupe caso você ache que ele se enquadra em mais de uma. Escolha aquela onde você quer que as pessoas o encontrem.", :collection => Category.all(:order => :name), :required => true
-      = form.input :goal, :label => "De quanto você precisa?", :hint => "Pense bastante no valor que você vai solicitar. Ele deve ser o <strong>mínimo necessário para o projeto acontecer</strong>. Nada mais, nada menos. Se você pedir demais, suas chances de atingir o mínimo serão menores; se pedir de menos, não conseguirá realizar o projeto e, conseqüentemente terá sua reputação prejudicada, o que dificulta realizações futuras.".html_safe, :required => true, :input_html => { :value => (( '%.2f' % @project.goal).gsub('.', ',') if @project.goal) }
-      .important
-        Lembre-se que o Catarse ficará com 5%, e o
-        = link_to "MoIP", "http://www.moip.com.br/", :target => :_blank
-        cobra uma taxa que varia entre 6% e 7% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas, depois.
-      = form.input :expires_at, :as => :string, :label => "Qual o prazo para atingir o mínimo?", :hint => "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo.", :required => true, :input_html => { :value => (@project.expires_at.strftime('%d/%m/%Y') if @project.expires_at) }
-      #project_rewards
-        :javascript
-          var rewards_count = #{@project.rewards.size}
-          var rewards_id = #{@project.rewards.size}
-        %h3 Recompensas
-        %p A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão.
-        #rewards_wrapper
-          = form.semantic_fields_for :rewards do |reward|
-            .reward
-              .remove_reward_wrapper
-                %a.remove_reward{:href=>'#'} remover
-              = reward.input :description, :as => :text, :label => "Descrição", :hint => "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!"
-              .left
-                = reward.input :minimum_value, :label => "Valor mínimo", :hint => "Este é valor mínimo de apoio para escolher esta recompensa."
-              .right
-                = reward.input :maximum_backers, :label => "Máximo de pessoas (opcional)", :required => false, :hint => "Se sua recompensa é limitada, informe o máximo de pessoas."
-              .clear
-        #add_reward_wrapper
-          %a#add_reward{:href=>'#'} Adicionar recompensa
-      .submit
-        %fieldset
-          = check_box_tag 'accept'
-          = label_tag 'accept', "Eu li e estou de acordo com os #{link_to 'termos de uso', terms_path, :target => :_blank}.".html_safe, :class => 'inline'
-        = form.buttons do
-          = form.commit_button 'Enviar o projeto', :button_html => {:disabled => true}
-  -# TODO Remove this form when ready to go to production with MoIP API
-  -#= form_tag 'https://www.moip.com.br/PagamentoMoIP.do', :id => 'review_form' do
-    %fieldset
-      = check_box_tag 'accept'
-      = label_tag 'accept', "Eu li e estou de acordo com os #{link_to 'termos de uso', terms_path, :target => :_blank}.".html_safe, :class => 'inline'
-    %fieldset
-      = hidden_field_tag 'id_carteira', 'softa'
-      = hidden_field_tag 'valor', ('%.2f' % @backer.value).gsub('.','')
-      = hidden_field_tag 'nome', "Apoio para projeto no Catarse"
-      = hidden_field_tag 'descricao', "Apoio para o projeto '#{@project.name}'"
-      = hidden_field_tag 'id_transacao', @backer.key
-      = submit_tag 'Efetuar pagamento', :disabled => true
+      = form.input :full_name, :label => 'Nome completo', :required => true, :as => :string
+      = form.input :email, :label => 'Email', :required => true, :as => :string
+      = form.input :address_zip_code, :label => 'CEP', :required => true, :as => :string
+      = form.input :address_street, :label => 'Logradouro', :required => true, :as => :string
+      = form.input :address_number, :label => 'Número', :required => true, :as => :string
+      = form.input :address_complement, :label => 'Complemento', :required => true, :as => :string
+      = form.input :address_neighbourhood, :label => 'Bairro', :required => true, :as => :string
+      = form.input :address_city, :label => 'Cidade', :required => true, :as => :string
+      = form.input :address_state, :label => 'Estado', :required => true, :as => :select, :collection => State.array
+      = form.input :phone_number, :label => 'Telefone fixo', :required => true, :as => :string
+    .submit
+      %fieldset
+        = check_box_tag 'accept'
+        = label_tag 'accept', "Eu li e estou de acordo com os #{link_to 'termos de uso', terms_path, :target => :_blank}.".html_safe, :class => 'inline'
+      = form.buttons do
+        = form.commit_button 'Efetuar pagamento', :button_html => {:disabled => true}
+= javascript_include_tag 'jquery.maskedinput-1.2.2.min'
 = javascript_include_tag 'review'
-

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
-
+  
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   before_save :store_primary_user

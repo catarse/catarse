@@ -87,6 +87,18 @@ class ProjectsController < ApplicationController
       render :json => {:id => false}.to_json
     end
   end
+  def cep
+    address = BuscaEndereco.por_cep(params[:cep])
+    render :json => {
+      :ok => true,
+      :street => "#{address[0]} #{address[1]}",
+      :neighbourhood => address[2],
+      :state => address[3],
+      :city => address[4]
+    }.to_json
+  rescue
+    render :json => {:ok => false}.to_json
+  end
   def back
     return unless require_login
     show! do
@@ -108,6 +120,35 @@ class ProjectsController < ApplicationController
     session[:thank_you_id] = @project.id
   end
   def pay
+    backer = Backer.find params[:backer_id]
+    current_user.update_attributes params[:user]
+    current_user.reload
+    payer = {
+      :nome => current_user.full_name,
+      :email => current_user.email,
+      :logradouro => current_user.address_street,
+      :numero => current_user.address_number,
+      :complemento => current_user.address_complement,
+      :bairro => current_user.address_neighbourhood,
+      :cidade => current_user.address_city,
+      :estado => current_user.address_state,
+      :pais => "BRA",
+      :cep => current_user.address_zip_code,
+      :tel_fixo => current_user.phone_number
+    }
+    payment = {
+      :valor => "%0.0f" % (backer.value),
+      :id_proprio => backer.key,
+      :razao => "Apoio para o projeto '#{backer.project.name}'",
+      :forma => "BoletoBancario",
+      :dias_expiracao => 0,
+      :pagador => payer
+    }
+    response = MoIP::Client.checkout(payment)
+    redirect_to MoIP::Client.moip_page(response["Token"])
+  rescue
+    flash[:failure] = "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
+    return redirect_to back_project_path(backer.project)
   end
   def thank_you
     unless session[:thank_you_id]

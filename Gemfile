@@ -17,6 +17,7 @@ gem 'mailee', '>= 0.4.3'
 gem 'will_paginate'
 gem 'weekdays'
 gem 'moip', :git => 'https://github.com/moiplabs/moip-ruby.git'
+gem 'brazilian-rails'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'
