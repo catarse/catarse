@@ -14,13 +14,15 @@
           %p= project.headline
           .clear
           = check_box_tag "visible__#{project.id}", '1', project.visible
-          = label_tag "visible__#{project.id}", 'Visível na lista?'
+          = label_tag "visible__#{project.id}", 'Visível?'
           = check_box_tag "rejected__#{project.id}", '1', project.rejected
           = label_tag "rejected__#{project.id}", 'Rejeitado?'
           = check_box_tag "recommended__#{project.id}", '1', project.recommended
           = label_tag "recommended__#{project.id}", 'Recomendado?'
           = check_box_tag "home_page__#{project.id}", '1', project.home_page
           = label_tag "home_page__#{project.id}", 'Home page?'
+          Ordem:
+          #{on_the_spot_edit project, :order, :tooltip => 'sem ordem'}
   = will_paginate @projects
 = javascript_include_tag 'pending_projects'
 
