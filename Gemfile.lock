@@ -40,36 +40,7 @@ GEM
     activesupport (3.0.3)
     addressable (2.2.2)
     arel (2.0.6)
-    brI18n (3.0.4)
-      actionpack (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-    brazilian-rails (3.0.4)
-      brI18n (= 3.0.4)
-      brcep (= 3.0.4)
-      brcpfcnpj (= 3.0.4)
-      brdata (= 3.0.4)
-      brdinheiro (= 3.0.4)
-      brhelper (= 3.0.4)
-      brnumeros (= 3.0.4)
-      brstring (= 3.0.4)
     brcep (3.0.4)
-    brcpfcnpj (3.0.4)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-    brdata (3.0.4)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-    brdinheiro (3.0.4)
-      actionpack (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      brnumeros (= 3.0.4)
-    brhelper (3.0.4)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-    brnumeros (3.0.4)
-    brstring (3.0.4)
-      activesupport (>= 3.0.0)
     builder (2.1.2)
     capybara (0.4.0)
       celerity (>= 0.7.9)
@@ -249,7 +220,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  brazilian-rails
+  brcep
   capybara (>= 0.4.0)
   compass
   database_cleaner
