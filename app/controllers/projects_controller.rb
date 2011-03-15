@@ -22,8 +22,8 @@ class ProjectsController < ApplicationController
   def index
     index! do
       @title = "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
-      @recommended = Project.visible.home_page.order('"order", created_at DESC').limit(6)
-      @recent = Project.visible.not_home_page.order('created_at DESC').limit(10)
+      @recommended = Project.visible.home_page.order('"order", created_at DESC').limit(6).all
+      @recent = Project.visible.not_home_page.order('created_at DESC').limit(10).all
     end
   end
   def explore

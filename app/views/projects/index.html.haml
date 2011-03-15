@@ -18,7 +18,7 @@
 .project_list_wrapper
   .project_list
     .slider_wrapper
-      = hidden_field_tag 'total_projects', @recent.count
+      = hidden_field_tag 'total_projects', @recent.size
       = hidden_field_tag 'position', 0
       .slider{ :style => "width: #{@recent.count * 280}px" }
         = render :partial => 'project', :collection => @recent
