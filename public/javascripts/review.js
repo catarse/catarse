@@ -66,6 +66,10 @@ zip_code_ok = function(){
   if(zip_code_valid){
     $('#user_address_zip_code').addClass("ok").removeClass("error")
     return true
+  } else if(/^[0-9]{5}-[0-9]{3}$/i.test($('#user_address_zip_code').val())) {
+    if(!$('#user_address_zip_code').hasClass('loading'))
+      $('#user_address_zip_code').removeClass("error").removeClass("ok")
+    return true
   } else {
     if(!$('#user_address_zip_code').hasClass('loading'))
       $('#user_address_zip_code').addClass("error").removeClass("ok")
@@ -109,3 +113,4 @@ $('#user_address_complement').addClass("ok")
 $('#accept').click(everything_ok)
 $('select').change(everything_ok)
 verify_zip_code()
+
