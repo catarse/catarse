@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     show!{
       return redirect_to(user_path(@user.primary)) if @user.primary
       @title = "#{@user.display_name}"
-      @backs = @user.backs.confirmed.visible.order(:confirmed_at)
+      @backs = @user.backs.confirmed.visible.project_visible.order(:confirmed_at)
       @projects = @user.projects.order("updated_at DESC")
       @projects = @projects.visible unless @user == current_user
     }
@@ -25,3 +25,4 @@ class UsersController < ApplicationController
     return render_error unless current_user.id == user.id or current_user.admin
   end
 end
+
