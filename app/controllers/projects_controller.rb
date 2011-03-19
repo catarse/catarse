@@ -106,6 +106,12 @@ class ProjectsController < ApplicationController
       @backer = @project.backers.new(:user_id => current_user.id)
       empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => "Obrigado. Eu só quero ajudar o projeto.")
       @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
+      @reward = @project.rewards.find params[:reward_id] if params[:reward_id]
+      @reward = nil if @reward and @reward.sold_out?
+      if @reward
+        @backer.reward = @reward
+        @backer.value = "%0.0f" % @reward.minimum_value
+      end
     end
   end
   def review

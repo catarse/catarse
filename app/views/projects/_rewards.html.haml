@@ -5,6 +5,7 @@
 %ul
   - @rewards.each do |reward|
     %li
+      = hidden_field_tag 'url', "#{back_project_path(@project)}/?reward_id=#{reward.id}"
       %h1 Para #{reward.display_minimum} ou mais
       - if reward.maximum_backers
         .maximum_backers
@@ -26,3 +27,4 @@
       .reward_backers
         = pluralize reward.backers.confirmed.count, 'apoiador', 'apoiadores'
         = image_tag 'badge.png', :class => "badge"
+

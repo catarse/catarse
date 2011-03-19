@@ -358,9 +358,13 @@
           h1
             padding: 0
             color: #222
-        li:last-child
-          border: 0
-          padding-bottom: 0
+          &:last-child
+            border: 0
+            padding-bottom: 0
+          &:hover
+            background-color: rgb(0,132,185)
+            background-color: rgba(0,132,185,0.2)
+            cursor: pointer
       .reward_backers
         text-align: right
         margin-top: 8px
@@ -449,7 +453,7 @@
           margin: 0
           padding: 0
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-          font-size: 18px
+          font-size: 16px
           .sold_out
             font-size: 14px
             margin-bottom: 8px

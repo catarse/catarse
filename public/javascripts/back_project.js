@@ -64,6 +64,10 @@ $('#backer_value').keyup(function(){
   everything_ok()
 })
 $('#backer_value').numeric(false)
-$('#backer_value').focus()
-$('#backer_reward_id_0').attr("checked", true)
 $('.sold_out').parent().find('input[type=radio]').attr('disabled', true)
+if($('input[type=radio]:checked').length == 0)
+  $('#backer_reward_id_0').attr("checked", true)
+if($('#backer_value').val())
+  everything_ok()
+$('#backer_value').focus()
+

@@ -12,4 +12,17 @@ $(document).ready(function(){
     $('input[type=submit]').click(require_login)
   }
 })
+$('#rewards li').click(function(){
+  url = $(this).find('input[type=hidden]').val()
+  if($('#login').length > 0){
+    $('#return_to').val(url)
+    $('#login_overlay').show()
+    $('#login').fadeIn()
+  } else {
+    window.location.href = url
+  }
+})
+$('#rewards li a').click(function(e){
+  e.stopPropagation()
+})
 
