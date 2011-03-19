@@ -147,7 +147,7 @@ class ProjectsController < ApplicationController
       :id_proprio => backer.key,
       :razao => "Apoio para o projeto '#{backer.project.name}'",
       :forma => "BoletoBancario",
-      :dias_expiracao => 0,
+      :dias_expiracao => 2,
       :pagador => payer
     }
     response = MoIP::Client.checkout(payment)
