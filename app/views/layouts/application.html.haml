@@ -60,6 +60,9 @@
                 Leia o blog
         #colophon
           = link_to "", "http://softa.com.br", :target => :_blank, :id => "softa_logo"
-          %p#copyright Copyright © 2011
+          %p#copyright
+            Copyleft
+            = image_tag 'copyleft.png'
+            = Date.today.year
     = render '/layouts/login' unless current_user
 
