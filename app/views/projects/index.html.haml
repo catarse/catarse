@@ -26,6 +26,19 @@
   .navigation
     = submit_tag "«", :class => 'prev', :disabled => true
     = submit_tag "»", :class => 'next'
+%br
+.project_list_header Projetos bem-sucedidos
+.project_list_wrapper
+  .project_list
+    .slider_wrapper
+      = hidden_field_tag 'total_projects', @successful.size
+      = hidden_field_tag 'position', 0
+      .slider{ :style => "width: #{@successful.count * 280}px" }
+        = render :partial => 'project', :collection => @successful
+        .clear
+  .navigation
+    = submit_tag "«", :class => 'prev', :disabled => true
+    = submit_tag "»", :class => 'next'
 #press
   %h1 Confira o que estão falando do Catarse na imprensa
   = link_to "http://economia.estadao.com.br/noticias/not_55827.htm", :target => :_blank do
