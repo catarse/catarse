@@ -70,4 +70,10 @@ if($('input[type=radio]:checked').length == 0)
 if($('#backer_value').val())
   everything_ok()
 $('#backer_value').focus()
-
+$('#backer_anonymous').click(function(){
+  if($(this).is(':checked')){
+    $('#anonymous_warning').slideDown(200)
+  } else {
+    $('#anonymous_warning').slideUp(200)
+  }
+})
