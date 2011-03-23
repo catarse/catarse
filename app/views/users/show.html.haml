@@ -93,8 +93,11 @@
               = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
           %p
             - if current_user and @user == current_user
+              - if back.anonymous
+                Apoio anônimo.
+              Valor: #{back.display_value}.
               - if back.reward
-                Sua recompensa: #{back.reward.display_minimum} - #{truncate(back.reward.description, :length => 100)}
+                Sua recompensa: #{back.reward.display_minimum} - #{truncate(back.reward.description, :length => 104)}
               - else
                 Você não selecionou nenhuma recompensa
             - else

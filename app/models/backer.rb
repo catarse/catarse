@@ -8,8 +8,8 @@ class Backer < ActiveRecord::Base
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
   scope :project_visible, where("project_id IN (SELECT id FROM projects WHERE visible)")
-  scope :visible, where(:anonymous => false)
   scope :anonymous, where(:anonymous => true)
+  scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(:confirmed => true)
   scope :pending, where(:confirmed => false)
   scope :display_notice, where(:display_notice => true)

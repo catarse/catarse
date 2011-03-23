@@ -2595,26 +2595,28 @@ body#site #project_backers p {
 }
 /* line 642, ../../app/stylesheets/_projects.sass */
 body#site #project_backers p.reward {
+  float: right;
+  width: 343px;
   font-size: 12px;
   color: #333333;
 }
-/* line 645, ../../app/stylesheets/_projects.sass */
+/* line 647, ../../app/stylesheets/_projects.sass */
 body#site #backers #project_backers {
   margin-top: 0;
 }
-/* line 646, ../../app/stylesheets/_projects.sass */
+/* line 648, ../../app/stylesheets/_projects.sass */
 body#site #backers #project_backers img.user {
   margin-bottom: 0;
 }
-/* line 649, ../../app/stylesheets/_projects.sass */
+/* line 651, ../../app/stylesheets/_projects.sass */
 body#site #backers #project_backers h1 {
   padding-top: 0 !important;
 }
-/* line 651, ../../app/stylesheets/_projects.sass */
+/* line 653, ../../app/stylesheets/_projects.sass */
 body#site #backers #project_backers ul {
   width: 94%;
 }
-/* line 653, ../../app/stylesheets/_projects.sass */
+/* line 655, ../../app/stylesheets/_projects.sass */
 body#site #backers #project_backers ul li {
   background-color: #dddddd;
   margin-top: 16px;
@@ -2627,7 +2629,7 @@ body#site #backers #project_backers ul li {
   border-radius: 8px;
   position: relative;
 }
-/* line 659, ../../app/stylesheets/_projects.sass */
+/* line 661, ../../app/stylesheets/_projects.sass */
 body#site #backers #project_backers ul li .badge {
   position: absolute;
   top: -10px;
@@ -2642,28 +2644,28 @@ body#site #backers #project_backers ul li .badge {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 665, ../../app/stylesheets/_projects.sass */
+/* line 667, ../../app/stylesheets/_projects.sass */
 body#site #backers #project_backers ul li .badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 667, ../../app/stylesheets/_projects.sass */
+/* line 669, ../../app/stylesheets/_projects.sass */
 body#site #backers #project_backers a {
   text-decoration: none;
 }
-/* line 669, ../../app/stylesheets/_projects.sass */
+/* line 671, ../../app/stylesheets/_projects.sass */
 body#site #backers #project_backers p {
   padding-bottom: 0 !important;
 }
-/* line 672, ../../app/stylesheets/_projects.sass */
+/* line 674, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects, body#site #pending_backers {
   color: #444444;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 676, ../../app/stylesheets/_projects.sass */
+/* line 678, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects img.project, body#site #pending_projects img.user, body#site #pending_backers img.project, body#site #pending_backers img.user {
   float: left;
   margin-right: 12px;
@@ -2673,48 +2675,48 @@ body#site #pending_projects img.project, body#site #pending_projects img.user, b
   -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
 }
-/* line 681, ../../app/stylesheets/_projects.sass */
+/* line 683, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects img.user, body#site #pending_backers img.user {
   width: 48px;
 }
-/* line 683, ../../app/stylesheets/_projects.sass */
+/* line 685, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects a, body#site #pending_backers a {
   text-decoration: none !important;
   font-size: 22px;
   line-height: 28px;
 }
-/* line 687, ../../app/stylesheets/_projects.sass */
+/* line 689, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects p, body#site #pending_backers p {
   font-size: 18px;
   color: #666666;
 }
-/* line 690, ../../app/stylesheets/_projects.sass */
+/* line 692, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects ul li, body#site #pending_backers ul li {
   margin-top: 32px;
 }
-/* line 692, ../../app/stylesheets/_projects.sass */
+/* line 694, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects ul li:first-child, body#site #pending_backers ul li:first-child {
   margin-top: 24px;
 }
-/* line 694, ../../app/stylesheets/_projects.sass */
+/* line 696, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects ul li:last-child, body#site #pending_backers ul li:last-child {
   margin-bottom: 24px;
 }
-/* line 696, ../../app/stylesheets/_projects.sass */
+/* line 698, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects hr, body#site #pending_backers hr {
   margin: 20px 0;
   border: 1px dashed transparent;
 }
-/* line 700, ../../app/stylesheets/_projects.sass */
+/* line 702, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu {
   float: left;
   width: 260px;
 }
-/* line 703, ../../app/stylesheets/_projects.sass */
+/* line 705, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul {
   margin-bottom: 20px;
 }
-/* line 705, ../../app/stylesheets/_projects.sass */
+/* line 707, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul li a {
   background-color: #dddddd;
   margin-bottom: 4px;
@@ -2740,13 +2742,13 @@ body#site #explore_projects #explore_menu ul li a {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 717, ../../app/stylesheets/_projects.sass */
+/* line 719, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul li a.selected, body#site #explore_projects #explore_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 721, ../../app/stylesheets/_projects.sass */
+/* line 723, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_results {
   float: right;
   width: 560px;

@@ -57,10 +57,10 @@ class User < ActiveRecord::Base
     gravatar_url || image_url || 'user.png'
   end
   def backer?
-    backs.confirmed.visible.count > 0
+    backs.confirmed.not_anonymous.count > 0
   end
   def total_backs
-    backs.confirmed.visible.count
+    backs.confirmed.not_anonymous.count
   end
   def remember_me_hash
     Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
