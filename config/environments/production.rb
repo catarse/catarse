@@ -49,5 +49,9 @@ Catarse::Application.configure do
   config.active_record.schema_format = :sql
 
   config.action_mailer.delivery_method = Mailee::Mailer
-end
 
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Exception] ",
+    :sender_address => %{"Catarse" <system@catarse.me>},
+    :exception_recipients => %w{danielweinmann@gmail.com contato@catarse.me}      
+end
