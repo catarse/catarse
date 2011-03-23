@@ -103,6 +103,10 @@ class ProjectsController < ApplicationController
   def back
     return unless require_login
     show! do
+      unless @project.can_back?
+        flash[:failure] = "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
+        return redirect_to :root
+      end
       @title = "Apoie o #{@project.name}"
       @backer = @project.backers.new(:user_id => current_user.id)
       empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => "Obrigado. Eu só quero ajudar o projeto.")

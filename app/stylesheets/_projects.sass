@@ -336,7 +336,6 @@
           top: 0
         #rewards_left_border
           left: -8px
-          //display: none
         #rewards_right_border
           right: -8px
       ul
@@ -361,10 +360,10 @@
           &:last-child
             border: 0
             padding-bottom: 0
-          &:hover
-            background-color: rgb(0,132,185)
-            background-color: rgba(0,132,185,0.2)
-            cursor: pointer
+        li.clickable:hover
+          background-color: rgb(0,132,185)
+          background-color: rgba(0,132,185,0.2)
+          cursor: pointer
       .reward_backers
         text-align: right
         margin-top: 8px

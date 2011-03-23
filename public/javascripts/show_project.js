@@ -12,7 +12,9 @@ $(document).ready(function(){
     $('input[type=submit]').click(require_login)
   }
 })
-$('#rewards li').click(function(){
+$('#rewards li.clickable').click(function(e){
+  if($(e.target).is('a') || $(e.target).is('textarea') || $(e.target).is('button'))
+    return true
   url = $(this).find('input[type=hidden]').val()
   if($('#login').length > 0){
     $('#return_to').val(url)
@@ -22,7 +24,3 @@ $('#rewards li').click(function(){
     window.location.href = url
   }
 })
-$('#rewards li a').click(function(e){
-  e.stopPropagation()
-})
-
