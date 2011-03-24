@@ -42,10 +42,15 @@ Catarse::Application.routes.draw do
       get 'backers'
       get 'embed'
       get 'video_embed'
+      get 'finish'
     end
   end
   resources :users, :only => [:show] do
-    post 'update_attribute_on_the_spot', :on => :collection
+    collection do
+      post 'update_attribute_on_the_spot'
+    end
+    member do
+      get 'credits'
+    end
   end
 end
-

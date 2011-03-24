@@ -700,13 +700,13 @@ body#site #pre_header a {
   text-decoration: none;
 }
 /* line 14, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice {
+body#site #pre_header .back_notice, body#site #pre_header .notification {
   width: 920px;
   margin: 0 auto;
   padding: 4px 0;
 }
 /* line 18, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice img.social {
+body#site #pre_header .back_notice img.social, body#site #pre_header .notification img.social {
   float: right;
   vertical-align: middle;
   margin-top: -4px;
@@ -721,14 +721,14 @@ body#site #pre_header .back_notice img.social {
   transition-duration: 0.3s;
 }
 /* line 24, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice img.social:hover {
+body#site #pre_header .back_notice img.social:hover, body#site #pre_header .notification img.social:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
 /* line 26, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice a.close {
+body#site #pre_header .back_notice a.close, body#site #pre_header .notification a.close {
   color: white;
   color: rgba(255, 255, 255, 0.7);
   text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 2px;
@@ -743,7 +743,7 @@ body#site #pre_header .back_notice a.close {
   font-weight: bold;
 }
 /* line 39, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice a.close:hover, body#site #pre_header .back_notice a.close:focus {
+body#site #pre_header .back_notice a.close:hover, body#site #pre_header .back_notice a.close:focus, body#site #pre_header .notification a.close:hover, body#site #pre_header .notification a.close:focus {
   color: white;
 }
 /* line 42, ../../app/stylesheets/screen.sass */
@@ -919,10 +919,14 @@ body#site #user #user_menu ul li a {
   transition-duration: 0.5s;
 }
 /* line 50, ../../app/stylesheets/_user.sass */
+body#site #user #user_menu ul li a .small {
+  font-size: 14px;
+}
+/* line 52, ../../app/stylesheets/_user.sass */
 body#site #user #user_menu ul li a:hover {
   color: white;
 }
-/* line 52, ../../app/stylesheets/_user.sass */
+/* line 54, ../../app/stylesheets/_user.sass */
 body#site #user .user_menu_border {
   -moz-border-radius-topleft: 16px;
   -webkit-border-top-left-radius: 16px;

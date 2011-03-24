@@ -16,15 +16,29 @@ class UsersController < ApplicationController
       @projects = @projects.all
     }
   end
+  def credits
+    show!{
+      return redirect_to(credits_user_path(@user.primary)) if @user.primary
+      return redirect_to :root unless @user == current_user
+      @title = "Meus créditos"
+    }
+  end
   private
   def can_update_on_the_spot?
-    fields = ["email", "name", "bio", "newsletter", "project_updates"]
+    user_fields = ["email", "name", "bio", "newsletter", "project_updates"]
+    notification_fields = ["dismissed"]
     def render_error; render :text => 'Você não possui permissão para realizar esta ação.', :status => 422; end
     return render_error unless current_user
     klass, field, id = params[:id].split('__')
-    return render_error unless klass == 'user'
-    return render_error unless fields.include? field
-    user = User.find id
-    return render_error unless current_user.id == user.id or current_user.admin
+    return render_error unless klass == 'user' or klass == 'notification'
+    if klass == 'user'
+      return render_error unless user_fields.include? field
+      user = User.find id
+      return render_error unless current_user.id == user.id or current_user.admin
+    elsif klass == 'notification'
+      return render_error unless notification_fields.include? field
+      notification = Notification.find id
+      return render_error unless current_user.id == notification.user.id
+    end
   end
 end

@@ -175,14 +175,12 @@ class ProjectsController < ApplicationController
     status = params[:status_pagamento]
     value = params[:valor]
     backer = Backer.find_by_key key
-    #MoipMailer.payment_received_email(backer, params).deliver
     return render :nothing => true, :status => 200 if status != '1'
     return render :nothing => true, :status => 200 if backer.confirmed
     return render :nothing => true, :status => 422 if backer.moip_value != value
     backer.confirm!
     return render :nothing => true, :status => 200
   rescue => e
-    #MoipMailer.error_in_payment_email(backer, params, e).deliver
     return render :nothing => true, :status => 422
   end
   def backers
@@ -213,6 +211,36 @@ class ProjectsController < ApplicationController
     @total_backs = Backer.confirmed.count
     @total_pledged = Backer.confirmed.sum(:value)
     @total_users = User.primary.count
+  end
+  def finish
+    return unless require_admin
+    show! {
+      unless @project.expired?
+        flash[:failure] = "Você só pode finalizar um projeto cujo prazo já tenha acabado."
+        return redirect_to project_path(@project)
+      end
+      @project.backers.confirmed.each do |backer|
+        if @project.successful?
+          # TODO compose the texts for successful projects
+          notification_text = "Uhuu! O projeto #{link_to(truncate(@project.name, :length => 32), project_path(@project))} que você apoiou foi bem-sucedido! Espalhe por aí!"
+          twitter_text = "Uhuu! O projeto '#{@project.name}' foi bem-sucedido no @Catarse_! #{@project.short_url}"
+          facebook_text = "Uhuu! O projeto '#{@project.name}' foi bem-sucedido no Catarse!"
+          email_subject = "Uhuu! O projeto que você apoiou foi bem-sucedido no Catarse!"
+          email_text = nil
+          #backer.user.notifications.create :project => @project, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
+        else
+          backer.generate_credits!
+          notification_text = "O projeto #{link_to(truncate(@project.name, :length => 32), project_path(@project))} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
+          backer.user.notifications.create :project => @project, :text => notification_text
+          notification_text = "Você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "aqui", credits_user_path(backer.user)}."
+          email_subject = "O projeto que você apoiou não foi financiado no Catarse."
+          email_text = "O projeto #{link_to(@project.name, project_url(@project), :style => 'color: #008800;')}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>#{backer.display_value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "clicando aqui", credits_user_url(backer.user), :style => 'color: #008800;'}."
+          backer.user.notifications.create :project => @project, :text => notification_text, :email_subject => email_subject, :email_text => email_text
+        end
+      end
+      flash[:success] = "Projeto finalizado com sucesso!"
+      return redirect_to project_path(@project)
+    }
   end
   private
   def bitly
@@ -247,4 +275,3 @@ class ProjectsController < ApplicationController
     end
   end
 end
-

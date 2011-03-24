@@ -123,4 +123,3 @@ class Project < ActiveRecord::Base
     visible and not expired? and not rejected
   end
 end
-

@@ -6,5 +6,9 @@
   #user_menu.hide
     %ul
       %li= link_to "Meu perfil", user_path(current_user)
+      %li
+        = link_to credits_user_path(current_user) do
+          Meus créditos
+          .small (#{current_user.display_credits})
       %li= link_to "Logout", logout_path
 = javascript_include_tag 'user'

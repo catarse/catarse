@@ -36,7 +36,7 @@ class Backer < ActiveRecord::Base
     return unless reward
     errors.add(:value, "deve ser pelo menos #{reward.minimum_value} para a recompensa selecionada") unless value >= reward.minimum_value
   end
-  validate :should_not_back_if_maximum_backers_been_reached
+  validate :should_not_back_if_maximum_backers_been_reached, :on => :create
   def should_not_back_if_maximum_backers_been_reached
     return unless reward and reward.maximum_backers and reward.maximum_backers > 0
     errors.add(:reward, "já atingiu seu número máximo de apoiadores") unless reward.backers.confirmed.count < reward.maximum_backers
@@ -47,5 +47,9 @@ class Backer < ActiveRecord::Base
   def moip_value
     "%0.0f" % (value * 100)
   end
+  def generate_credits!
+    return if self.can_refund
+    self.user.update_attribute :credits, self.user.credits + self.value
+    self.update_attribute :can_refund, true
+  end
 end
-

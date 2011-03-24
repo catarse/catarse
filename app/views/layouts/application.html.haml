@@ -3,7 +3,7 @@
   = render :partial => 'layouts/head'
   %body#site
     = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
-    - if current_user and not current_user.backs.display_notice.empty?
+    - if current_user and (not current_user.backs.display_notice.empty? or not current_user.notifications.not_dismissed.empty?)
       #pre_header
         - current_user.backs.display_notice.each do |back|
           %div{:id => "back_notice_#{back.id}", :class => "back_notice"}
@@ -14,7 +14,13 @@
               = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
             = link_to "http://twitter.com/?status=Eu apoiei o projeto \"#{back.project.name}\" no @Catarse_ #{back.project.short_url}", :target => :_blank do
               = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
-      = javascript_include_tag 'back_notices'
+        = javascript_include_tag 'back_notices'
+        - current_user.notifications.not_dismissed.each do |notification|
+          %div{:id => "notification_#{notification.id}", :class => "notification"}
+            = notification.text.html_safe
+            &nbsp;
+            %a.close{ :href => '#' } X
+        = javascript_include_tag 'notifications'
     - else
       #pre_header
         Quer saber como apoiar um projeto? #{link_to 'Confira aqui', 'http://blog.catarse.me/post/2826297563/passo-a-passo-apoiar-projetos', :target => :_blank} um passo-a-passo que publicamos no nosso blog.

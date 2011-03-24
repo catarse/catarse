@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   sync_with_mailee :news => :newsletter
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
@@ -6,9 +7,9 @@ class User < ActiveRecord::Base
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
   has_many :backs, :class_name => "Backer"
   has_many :projects
+  has_many :notifications
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
-  
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   before_save :store_primary_user
@@ -64,6 +65,9 @@ class User < ActiveRecord::Base
   end
   def remember_me_hash
     Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
+  end
+  def display_credits
+    number_to_currency credits, :unit => 'R$ ', :precision => 0, :delimiter => '.'
   end
 
   protected
