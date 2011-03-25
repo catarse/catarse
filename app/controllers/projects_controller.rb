@@ -137,8 +137,10 @@ class ProjectsController < ApplicationController
         flash[:failure] = "Você não possui créditos suficientes para realizar este apoio."
         return redirect_to back_project_path(backer.project)
       end
-      current_user.update_attribute :credits, current_user.credits - backer.value
-      backer.confirm!
+      unless backer.confirmed
+        current_user.update_attribute :credits, current_user.credits - backer.value
+        backer.confirm!
+      end
       flash[:success] = "Seu apoio foi realizado com sucesso. Muito obrigado!"
       redirect_to thank_you_path
     else
