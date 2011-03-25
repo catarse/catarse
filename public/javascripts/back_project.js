@@ -1,5 +1,6 @@
 everything_ok = function(){
   var all_ok = true
+  check_credits()
   if(!value_ok())
     all_ok = false
   if(!reward_ok())
@@ -8,6 +9,16 @@ everything_ok = function(){
     $('#backer_submit').attr('disabled', false)
   } else {
     $('#backer_submit').attr('disabled', true)
+  }
+}
+check_credits = function(){
+  var credits = parseInt($('#credits').val())
+  var value = parseInt($('#backer_value').val())
+  if(value > credits){
+    $('#backer_credits').attr('checked', false)
+    $('#backer_credits').attr('disabled', true)
+  } else {
+    $('#backer_credits').attr('disabled', false)
   }
 }
 reward_ok = function(){

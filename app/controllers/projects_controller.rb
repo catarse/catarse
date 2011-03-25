@@ -132,34 +132,47 @@ class ProjectsController < ApplicationController
   end
   def pay
     backer = Backer.find params[:backer_id]
-    current_user.update_attributes params[:user]
-    current_user.reload
-    payer = {
-      :nome => current_user.full_name,
-      :email => current_user.email,
-      :logradouro => current_user.address_street,
-      :numero => current_user.address_number,
-      :complemento => current_user.address_complement,
-      :bairro => current_user.address_neighbourhood,
-      :cidade => current_user.address_city,
-      :estado => current_user.address_state,
-      :pais => "BRA",
-      :cep => current_user.address_zip_code,
-      :tel_fixo => current_user.phone_number
-    }
-    payment = {
-      :valor => "%0.0f" % (backer.value),
-      :id_proprio => backer.key,
-      :razao => "Apoio para o projeto '#{backer.project.name}'",
-      :forma => "BoletoBancario",
-      :dias_expiracao => 2,
-      :pagador => payer
-    }
-    response = MoIP::Client.checkout(payment)
-    redirect_to MoIP::Client.moip_page(response["Token"])
-  rescue
-    flash[:failure] = "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
-    return redirect_to back_project_path(backer.project)
+    if backer.credits
+      if current_user.credits < backer.value
+        flash[:failure] = "Você não possui créditos suficientes para realizar este apoio."
+        return redirect_to back_project_path(backer.project)
+      end
+      current_user.update_attribute :credits, current_user.credits - backer.value
+      backer.confirm!
+      flash[:success] = "Seu apoio foi realizado com sucesso. Muito obrigado!"
+      redirect_to thank_you_path
+    else
+      begin
+        current_user.update_attributes params[:user]
+        current_user.reload
+        payer = {
+          :nome => current_user.full_name,
+          :email => current_user.email,
+          :logradouro => current_user.address_street,
+          :numero => current_user.address_number,
+          :complemento => current_user.address_complement,
+          :bairro => current_user.address_neighbourhood,
+          :cidade => current_user.address_city,
+          :estado => current_user.address_state,
+          :pais => "BRA",
+          :cep => current_user.address_zip_code,
+          :tel_fixo => current_user.phone_number
+        }
+        payment = {
+          :valor => "%0.0f" % (backer.value),
+          :id_proprio => backer.key,
+          :razao => "Apoio para o projeto '#{backer.project.name}'",
+          :forma => "BoletoBancario",
+          :dias_expiracao => 2,
+          :pagador => payer
+        }
+        response = MoIP::Client.checkout(payment)
+        redirect_to MoIP::Client.moip_page(response["Token"])
+      rescue
+        flash[:failure] = "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
+        return redirect_to back_project_path(backer.project)
+      end
+    end
   end
   def thank_you
     unless session[:thank_you_id]
