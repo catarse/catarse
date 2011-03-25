@@ -12,7 +12,7 @@
         - else
           = link_to user_path(backer.user) do
             = image_tag backer.user.display_image, :class => 'user'
-            = backer.user.display_name
+            = truncate backer.user.display_name, :length => 26
             = image_tag 'badge.png', :class => "badge" if show_badge
           %p
             - if backer.user.total_backs == 2

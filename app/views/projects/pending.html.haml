@@ -1,28 +1,67 @@
 = content_for :content_header do
-  %h1 Projetos com aprovação pendente
+  %h1 Gerenciamento dos projetos
 #pending_projects
+  - form_for @search, :url => pending_projects_path do |f|
+    %fieldset
+      = f.label :id_equals, "Id"
+      = f.text_field :id_equals
+      = f.label :name_contains, "Nome"
+      = f.text_field :name_contains
+      = f.label :user_name_contains, "Usuário"
+      = f.text_field :user_name_contains
+      = f.check_box :visible_is_true
+      = f.label :visible_is_true, "Visível?"
+      = f.check_box :rejected_is_true
+      = f.label :rejected_is_true, "Rejeitado?"
+    %fieldset
+      = f.check_box :recommended_is_true
+      = f.label :recommended_is_true, "Recomendado?"
+      = f.check_box :home_page_is_true
+      = f.label :home_page_is_true, "Home page?"
+      = f.check_box :can_finish_is_true
+      = f.label :can_finish_is_true, "Pode finalizar?"
+      = f.check_box :finished_is_true
+      = f.label :finished_is_true, "Finalizado?"
+      = f.submit "Pesquisar"
+  #total_results
+    = pluralize_without_number @search.count, 'Encontrado'
+    %strong= @search.count
+    = pluralize_without_number @search.count, 'projeto'
   = will_paginate @projects
+  .clear
   - if @projects.empty?
     Não há nenhum projeto com aprovação pendente
   - else
-    %ul
-      - @projects.each do |project|
-        %li{ :id => project.id }
-          = link_to project_path(project) do
-            = image_tag project.display_image, :class => 'project'
-            = project.name
-          %p= project.headline
-          .clear
-          = check_box_tag "visible__#{project.id}", '1', project.visible
-          = label_tag "visible__#{project.id}", 'Visível?'
-          = check_box_tag "rejected__#{project.id}", '1', project.rejected
-          = label_tag "rejected__#{project.id}", 'Rejeitado?'
-          = check_box_tag "recommended__#{project.id}", '1', project.recommended
-          = label_tag "recommended__#{project.id}", 'Recomendado?'
-          = check_box_tag "home_page__#{project.id}", '1', project.home_page
-          = label_tag "home_page__#{project.id}", 'Home page?'
-          Ordem:
-          #{on_the_spot_edit project, :order, :tooltip => 'sem ordem'}
+    %table
+      %thead
+        %tr
+          %th Id
+          %th Projeto
+          %th Usuário
+          %th Visível?
+          %th Rejeitado?
+          %th Recomendado?
+          %th Home page?
+          %th Ordem
+          %th Pode finalizar?
+          %th Finalizado?
+      %tbody
+        - @projects.each do |project|
+          %tr{ :id => project.id, :class => cycle("even", "odd") }
+            %td= project.id
+            %td{ :title => project.name }
+              = link_to project_path(project) do
+                = image_tag project.display_image
+            %td{ :title => project.user.display_name }
+              = link_to user_path(project.user) do
+                = image_tag project.user.display_image
+            %td= check_box_tag "visible__#{project.id}", '1', project.visible
+            %td= check_box_tag "rejected__#{project.id}", '1', project.rejected
+            %td= check_box_tag "recommended__#{project.id}", '1', project.recommended
+            %td= check_box_tag "home_page__#{project.id}", '1', project.home_page
+            %td= on_the_spot_edit project, :order, :tooltip => '-'
+            %td= check_box_tag "can_finish__#{project.id}", '1', project.can_finish
+            %td= (project.finished ? "Sim" : "Não")
   = will_paginate @projects
 = javascript_include_tag 'pending_projects'
 

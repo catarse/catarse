@@ -1,6 +1,6 @@
 $('.back_notice .close').click(function(e){
   e.preventDefault()
-  id = $(this).parent().attr('id').split('_')[2]
+  var id = $(this).parent().attr('id').split('_')[2]
   $.post('/projects/update_attribute_on_the_spot', {
     id: 'backer__display_notice__' + id,
     value: false

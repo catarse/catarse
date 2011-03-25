@@ -1,6 +1,6 @@
 $('#add_reward').click(function(e){
   e.preventDefault()
-  new_reward = '<div class="reward">' + $($('.reward')[0]).html() + '</div>'
+  var new_reward = '<div class="reward">' + $($('.reward')[0]).html() + '</div>'
   new_reward = new_reward.replace(/\_0\_/g, '_' + rewards_id + '_')
   new_reward = new_reward.replace(/\[0\]/g, '[' + rewards_id + ']')
   new_reward = $(new_reward)
@@ -45,7 +45,7 @@ everything_ok = function(){
   }
 }
 ok = function(id){
-  value = $(id).val()
+  var value = $(id).val()
   if(value && value.length > 0){
     $(id).addClass("ok").removeClass("error")
     return true
@@ -81,7 +81,7 @@ video_ok = function(){
   }
 }
 headline_ok = function(){
-  value = $('#project_headline').val()
+  var value = $('#project_headline').val()
   if(value && value.length > 0 && value.length <= 140){
     $('#project_headline').addClass("ok").removeClass("error")
     return true
@@ -91,7 +91,7 @@ headline_ok = function(){
   }
 }
 goal_ok = function(){
-  value = $('#project_goal').val()
+  var value = $('#project_goal').val()
   if(/^(\d+)(\,\d{1,2})?$/.test(value) && parseFloat(value.replace(',', '.')) > 0){
     $('#project_goal').addClass("ok").removeClass("error")
     return true
@@ -101,13 +101,13 @@ goal_ok = function(){
   }
 }
 expires_at_ok = function(){
-  value = /^(\d{2})\/(\d{2})\/(\d{4})?$/.exec($('#project_expires_at').val())
+  var value = /^(\d{2})\/(\d{2})\/(\d{4})?$/.exec($('#project_expires_at').val())
   if(value && value.length == 4) {
-    year = parseFloat(value[3])
-    month = parseFloat(value[2])-1
-    day = parseFloat(value[1])
-    date = new Date(year, month, day)
-    current_date = new Date()
+    var year = parseFloat(value[3])
+    var month = parseFloat(value[2])-1
+    var day = parseFloat(value[1])
+    var date = new Date(year, month, day)
+    var current_date = new Date()
     if(((day==date.getDate()) && (month==date.getMonth()) && (year==date.getFullYear())) && date > current_date){
       $('#project_expires_at').addClass("ok").removeClass("error")
       return true
@@ -121,7 +121,7 @@ expires_at_ok = function(){
   }
 }
 rewards_ok = function(){
-  okey = true
+  var okey = true
   $('.reward input').each(function(){
     if(/^(\d+)(\,\d{1,2})?$/.test($(this).val())){
       if(/minimum_value/.test($(this).attr('id'))){

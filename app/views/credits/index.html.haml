@@ -1,0 +1,47 @@
+= content_for :content_header do
+  %h1 Meus créditos
+  %h2 Quando um projeto que você apoiar não for financiado, você receberá créditos para apoiar outros projetos. Mas, caso você prefira, você pode solicitar o estorno de cada pagamento aqui.
+#credits
+  %h1
+    Seu saldo atual é de
+    %span.number= current_user.display_credits
+    em créditos.
+  -#buy_credits
+    %strong Você não precisa ter créditos para apoiar um projeto.
+    Você pode realizar o pagamento na hora. Mas se você gosta de apoiar vários projetos, é uma boa idéia comprar créditos antecipados: deste modo você não precisará fazer um pagamento cada vez que for apoiar.
+    = form_tag(buy_credits_path, :method => :get) do
+      %fieldset
+        = submit_tag 'Comprar créditos'
+  - if @refund_backs.empty?
+    %h2 Você não possui nenhum apoio que possa ter estorno realizado
+  - else
+    %h2 Apoios que podem ter estorno realizado
+    %table
+      %thead
+        %tr
+          %th Projeto
+          %th Data do apoio
+          %th Valor
+          %th Prazo para estorno
+          %th Status
+      %tbody
+        - @refund_backs.each do |back|
+          %tr{ :id => back.id, :class => cycle("even", "odd") }
+            %td= link_to back.project.name, project_path(back.project)
+            %td= back.created_at.strftime('%d/%m/%Y')
+            %td= back.display_value
+            %td= back.refund_deadline.strftime('%d/%m/%Y')
+            %td
+              .text
+                - if back.refunded
+                  Estorno realizado
+                - elsif back.requested_refund
+                  Solicitado estorno
+                - else
+                  = link_to "Solicitar estorno", '#'
+              = image_tag 'loading.gif', :class => 'loading hide'
+    .important
+      Você tem
+      %strong até 180 após a data de seu apoio
+      para solicitar o estorno do mesmo. Caso você opte pelo estorno, o valor do apoio será descontado dos seus créditos.
+= javascript_include_tag 'credits'

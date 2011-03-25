@@ -15,7 +15,7 @@ $(document).ready(function(){
 $('#rewards li.clickable').click(function(e){
   if($(e.target).is('a') || $(e.target).is('textarea') || $(e.target).is('button'))
     return true
-  url = $(this).find('input[type=hidden]').val()
+  var url = $(this).find('input[type=hidden]').val()
   if($('#login').length > 0){
     $('#return_to').val(url)
     $('#login_overlay').show()

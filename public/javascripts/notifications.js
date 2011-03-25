@@ -1,6 +1,6 @@
 $('.notification .close').click(function(e){
   e.preventDefault()
-  id = $(this).parent().attr('id').split('_')[1]
+  var id = $(this).parent().attr('id').split('_')[1]
   $.post('/users/update_attribute_on_the_spot', {
     id: 'notification__dismissed__' + id,
     value: true

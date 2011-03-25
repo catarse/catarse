@@ -1,13 +1,13 @@
 #user
   = link_to '#', :id => 'user_menu_link' do
     = image_tag current_user.display_image, :id => 'display_image'
-    = current_user.display_name
+    = truncate current_user.display_name, :length => 24
     = image_tag 'dropdown.png', :class => 'dropdown'
   #user_menu.hide
     %ul
       %li= link_to "Meu perfil", user_path(current_user)
       %li
-        = link_to credits_user_path(current_user) do
+        = link_to credits_path do
           Meus créditos
           .small (#{current_user.display_credits})
       %li= link_to "Logout", logout_path

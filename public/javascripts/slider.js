@@ -17,8 +17,8 @@ slide = function(slider, position){
     position = 3-total_projects
   if(position > 0)
     position = 0
-  prev = slider.parent().parent().parent().find('.prev')
-  next = slider.parent().parent().parent().find('.next')
+  var prev = slider.parent().parent().parent().find('.prev')
+  var next = slider.parent().parent().parent().find('.next')
   slider.animate({'margin-left': (position*size) + 'px'})
   if(position==0)
     prev.attr('disabled', true)

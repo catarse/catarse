@@ -1,6 +1,10 @@
 = content_for :content_header do
   #project_header
-    %h1= @project.name
+    %h1
+      - if current_user and current_user.admin
+        = on_the_spot_edit @project, :name
+      - else
+        = @project.name
     %h2 Um projeto de #{link_to @project.user.display_name, user_path(@project.user)}
 = content_for :meta_tags do
   %meta{:name => "description", :content => @project.headline}

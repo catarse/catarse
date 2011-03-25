@@ -54,7 +54,7 @@
   - if @projects.empty?
     #no_projects
       - if current_user and @user == current_user
-        Você ainda não enviou nenhum projeto para o Catarse. Deixe a inspiração bater e #{link_to 'clique aqui', new_project_path} para começar!
+        Você ainda não enviou nenhum projeto para o Catarse. Deixe a inspiração bater e #{link_to 'clique aqui', guidelines_path} para começar!
       - else
         #{@user.display_name} ainda não enviou nenhum projeto para o Catarse. Será que a inspiração vai bater uma hora dessas?
   - else

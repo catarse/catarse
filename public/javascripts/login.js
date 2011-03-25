@@ -1,5 +1,6 @@
 require_login = function(e){
   e.preventDefault()
+  var url = null
   if($(this).is('a')){
     url = $(this).attr('href')
   } else {
@@ -20,6 +21,7 @@ if($('#login').length > 0){
 }
 $('#login .close').click(function(e){
   e.preventDefault()
+  $('#return_to').val(null)
   $('#login').hide()
   $('#login_overlay').hide()
 })
@@ -31,4 +33,3 @@ $('a.provider').click(function(e){
   $('#provider').val($(this).attr('href'))
   $('#login form').submit()
 })
-

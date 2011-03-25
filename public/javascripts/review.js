@@ -28,7 +28,7 @@ everything_ok = function(){
   }
 }
 ok = function(id){
-  value = $(id).val()
+  var value = $(id).val()
   if(value && value.length > 0){
     $(id).addClass("ok").removeClass("error")
     return true
@@ -38,8 +38,8 @@ ok = function(id){
   }
 }
 email_ok = function(){
-  value = $('#user_email').val()
-  re = /^[a-z0-9\._-]+@([a-z0-9][a-z0-9-_]*[a-z0-9-_]\.)+([a-z-_]+\.)?([a-z-_]+)$/
+  var value = $('#user_email').val()
+  var re = /^[a-z0-9\._-]+@([a-z0-9][a-z0-9-_]*[a-z0-9-_]\.)+([a-z-_]+\.)?([a-z-_]+)$/
   if(value.match(re)){
     $('#user_email').addClass("ok").removeClass("error")
     return true
@@ -49,8 +49,8 @@ email_ok = function(){
   }
 }
 phone_number_ok = function(){
-  value = $('#user_phone_number').val()
-  re = /^\([0-9]{2}\)[0-9]{4}-[0-9]{4}$/
+  var value = $('#user_phone_number').val()
+  var re = /^\([0-9]{2}\)[0-9]{4}-[0-9]{4}$/
   if(value.match(re)){
     $('#user_phone_number').addClass("ok").removeClass("error")
     return true

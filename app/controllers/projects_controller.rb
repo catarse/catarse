@@ -202,45 +202,19 @@ class ProjectsController < ApplicationController
   end
   def pending
     return unless require_admin
-    @projects = Project.order('visible, rejected, "order", created_at DESC').paginate :page => params[:page]
+    @title = "Gerenciamento dos projetos"
+    @search = Project.search(params[:search])
+    @projects = @search.order('created_at DESC').paginate :page => params[:page]
   end
   def pending_backers
     return unless require_admin
-    @backers = Backer.order("confirmed, created_at DESC").paginate :page => params[:page]
+    @title = "Gerenciamento de apoios"
+    @search = Backer.search(params[:search])
+    @backers = @search.order("created_at DESC").paginate :page => params[:page]
     @total_backers = User.backers.count
     @total_backs = Backer.confirmed.count
     @total_pledged = Backer.confirmed.sum(:value)
     @total_users = User.primary.count
-  end
-  def finish
-    return unless require_admin
-    show! {
-      unless @project.expired?
-        flash[:failure] = "Você só pode finalizar um projeto cujo prazo já tenha acabado."
-        return redirect_to project_path(@project)
-      end
-      @project.backers.confirmed.each do |backer|
-        if @project.successful?
-          # TODO compose the texts for successful projects
-          notification_text = "Uhuu! O projeto #{link_to(truncate(@project.name, :length => 32), project_path(@project))} que você apoiou foi bem-sucedido! Espalhe por aí!"
-          twitter_text = "Uhuu! O projeto '#{@project.name}' foi bem-sucedido no @Catarse_! #{@project.short_url}"
-          facebook_text = "Uhuu! O projeto '#{@project.name}' foi bem-sucedido no Catarse!"
-          email_subject = "Uhuu! O projeto que você apoiou foi bem-sucedido no Catarse!"
-          email_text = nil
-          #backer.user.notifications.create :project => @project, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
-        else
-          backer.generate_credits!
-          notification_text = "O projeto #{link_to(truncate(@project.name, :length => 32), project_path(@project))} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
-          backer.user.notifications.create :project => @project, :text => notification_text
-          notification_text = "Você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "aqui", credits_user_path(backer.user)}."
-          email_subject = "O projeto que você apoiou não foi financiado no Catarse."
-          email_text = "O projeto #{link_to(@project.name, project_url(@project), :style => 'color: #008800;')}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>#{backer.display_value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "clicando aqui", credits_user_url(backer.user), :style => 'color: #008800;'}."
-          backer.user.notifications.create :project => @project, :text => notification_text, :email_subject => email_subject, :email_text => email_text
-        end
-      end
-      flash[:success] = "Projeto finalizado com sucesso!"
-      return redirect_to project_path(@project)
-    }
   end
   private
   def bitly
@@ -251,9 +225,9 @@ class ProjectsController < ApplicationController
   end
   def can_update_on_the_spot?
     project_fields = []
-    project_admin_fields = ["visible", "rejected", "recommended", "home_page", "about", "headline", "order"]
+    project_admin_fields = ["visible", "rejected", "recommended", "home_page", "name", "about", "headline", "order", "can_finish"]
     backer_fields = ["display_notice"]
-    backer_admin_fields = ["confirmed"]
+    backer_admin_fields = ["confirmed", "requested_refund", "refunded"]
     reward_fields = []
     reward_admin_fields = ["description"]
     def render_error; render :text => 'Você não possui permissão para realizar esta ação.', :status => 422; end

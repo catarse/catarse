@@ -19,6 +19,7 @@ gem 'weekdays'
 gem 'moip', :git => 'https://github.com/moiplabs/moip-ruby.git'
 gem 'brcep'
 gem 'exception_notification', :require => 'exception_notifier'
+gem "meta_search"
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'

@@ -4,8 +4,8 @@ $('input,textarea').live('keypress', function(e){
   }
 })
 $('#user_feed input').live('keyup', function(){
-  value = $(this).val()
-  re = /^[a-z0-9\._-]+@([a-z0-9][a-z0-9-_]*[a-z0-9-_]\.)+([a-z-_]+\.)?([a-z-_]+)$/
+  var value = $(this).val()
+  var re = /^[a-z0-9\._-]+@([a-z0-9][a-z0-9-_]*[a-z0-9-_]\.)+([a-z-_]+\.)?([a-z-_]+)$/
   if(value.match(re)){
     $(this).addClass("ok").removeClass("error")
     $("button:contains('OK')").attr('disabled', false)
@@ -15,7 +15,7 @@ $('#user_feed input').live('keyup', function(){
   }
 })
 $('#content_header textarea').live('keyup', function(){
-  value = $(this).val()
+  var value = $(this).val()
   if(value.length <= 140){
     $(this).addClass("ok").removeClass("error")
     $("button:contains('OK')").attr('disabled', false)

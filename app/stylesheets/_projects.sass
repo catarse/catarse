@@ -181,6 +181,15 @@
     padding: 0 20px
     h1
       padding-bottom: 8px !important
+      .on_the_spot_mouseover
+        background-color: rgb(0,150,0)
+        background-color: rgba(0,150,0,0.5)
+      .on_the_spot_editing
+        form
+          input
+            background-color: #cfc
+            font-family: "museo-500"
+            font-size: 32px
     h2
       padding: 0 !important
   #project_warning
@@ -670,34 +679,34 @@
       text-decoration: none
     p
       padding-bottom: 0 !important
-
-  #pending_projects, #pending_backers
-    color: #444
-    font-size: 22px
-    line-height: 28px
-    img.project,img.user
-      float: left
-      margin-right: 12px
-      width: 160px
-      +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
-    img.user
-      width: 48px
-    a
-      text-decoration: none !important
-      font-size: 22px
-      line-height: 28px
-    p
-      font-size: 18px
-      color: #666
-    ul li
-      margin-top: 32px
-      &:first-child
-        margin-top: 24px
-      &:last-child
-        margin-bottom: 24px
-    hr
+  #pending_projects,#pending_backers
+    form
+      margin-bottom: 20px
+      label
+        display: inline
+      input[type=text]
+        margin-right: 8px
+        width: 120px
+        padding: 0 !important
+      #search_id_equals
+        width: 40px
+    #total_results
+      float: right
+    table
       margin: 20px 0
-      border: 1px dashed transparent
+      img
+        width: 32px
+      thead
+        th
+          text-align: center
+          font-size: 14px
+      tbody
+        tr
+          td
+            text-align: center
+            font-size: 14px
+            &.key
+              font-size: 10px
   #explore_projects
     #explore_menu
       float: left

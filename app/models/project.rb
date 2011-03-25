@@ -3,6 +3,7 @@ VIMEO_REGEX = /\Ahttp:\/\/(www\.)?vimeo.com\/(\d+)\z/
 class Project < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::UrlHelper
   include ERB::Util
   include Rails.application.routes.url_helpers
   belongs_to :user
@@ -121,5 +122,33 @@ class Project < ActiveRecord::Base
   end
   def can_back?
     visible and not expired? and not rejected
+  end
+  def finish!
+    return unless expired? and can_finish and not finished
+    backers.confirmed.each do |backer|
+      unless backer.can_refund
+        if successful?
+          notification_text = "Uhuu! O projeto #{link_to(truncate(name, :length => 38), "/projects/#{self.to_param}")} que você apoiou foi bem-sucedido! Espalhe por aí!"
+          twitter_text = "Uhuu! O projeto '#{name}', que eu apoiei, foi bem-sucedido no @Catarse_! #{short_url}"
+          facebook_text = "Uhuu! O projeto '#{name}', que eu apoiei, foi bem-sucedido no Catarse!"
+          email_subject = "Uhuu! O projeto que você apoiou foi bem-sucedido no Catarse!"
+          email_text = "O projeto #{link_to(name, "#{BASE_URL}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, foi financiado com sucesso no Catarse! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, #{link_to(user.display_name, "#{BASE_URL}/users/#{user.to_param}", :style => 'color: #008800;')} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
+          backer.user.notifications.create :project => self, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
+          if backer.reward
+            notification_text = "Em breve, #{link_to(truncate(user.display_name, :length => 32), "/users/#{user.to_param}")} irá entrar em contato com você para entregar sua recompensa. Disfrute!"
+            backer.user.notifications.create :project => self, :text => notification_text
+          end
+        else
+          backer.generate_credits!
+          notification_text = "O projeto #{link_to(truncate(name, :length => 32), "/projects/#{self.to_param}")} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
+          backer.user.notifications.create :project => self, :text => notification_text
+          notification_text = "Você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "aqui", "#{BASE_URL}/credits"}."
+          email_subject = "O projeto que você apoiou não foi financiado no Catarse."
+          email_text = "O projeto #{link_to(name, "#{BASE_URL}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>#{backer.display_value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "clicando aqui", "#{BASE_URL}/credits", :style => 'color: #008800;'}."
+          backer.user.notifications.create :project => self, :text => notification_text, :email_subject => email_subject, :email_text => email_text
+        end
+      end
+    end
+    self.update_attribute :finished, true
   end
 end

@@ -16,13 +16,6 @@ class UsersController < ApplicationController
       @projects = @projects.all
     }
   end
-  def credits
-    show!{
-      return redirect_to(credits_user_path(@user.primary)) if @user.primary
-      return redirect_to :root unless @user == current_user
-      @title = "Meus créditos"
-    }
-  end
   private
   def can_update_on_the_spot?
     user_fields = ["email", "name", "bio", "newsletter", "project_updates"]

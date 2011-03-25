@@ -9,6 +9,7 @@ Catarse::Application.routes.draw do
   match "/thank_you" => "projects#thank_you", :as => :thank_you
   match "/moip" => "projects#moip", :as => :moip
   match "/explore" => "projects#explore", :as => :explore
+  match "/credits" => "credits#index", :as => :credits
 
   post "/auth" => "sessions#auth", :as => :auth
   match "/auth/:provider/callback" => "sessions#create"
@@ -42,15 +43,15 @@ Catarse::Application.routes.draw do
       get 'backers'
       get 'embed'
       get 'video_embed'
-      get 'finish'
     end
   end
   resources :users, :only => [:show] do
+    post 'update_attribute_on_the_spot', :on => :collection
+  end
+  resources :credits, :only => [:index] do
     collection do
-      post 'update_attribute_on_the_spot'
-    end
-    member do
-      get 'credits'
+      get 'buy'
+      post 'refund'
     end
   end
 end

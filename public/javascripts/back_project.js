@@ -13,12 +13,12 @@ everything_ok = function(){
 reward_ok = function(){
   if(!$('input[type=radio]:checked').val())
     return false
-  reward = $('input[type=radio]:checked')
-  id = /^backer_reward_id_(\d+)$/.exec(reward.attr('id'))
+  var reward = $('input[type=radio]:checked')
+  var id = /^backer_reward_id_(\d+)$/.exec(reward.attr('id'))
   id = parseFloat(id[1])
-  minimum = rewards[id]
+  var minimum = rewards[id]
   if(minimum){
-    value = $('#backer_value').val()
+    var value = $('#backer_value').val()
     if(!(/^(\d+)$/.test(value)) || (parseInt(value) < minimum)){
       return false
     }
@@ -26,7 +26,7 @@ reward_ok = function(){
   return true
 }
 value_ok = function(){
-  value = $('#backer_value').val()
+  var value = $('#backer_value').val()
   if(/^(\d+)$/.test(value) && parseInt(value) >= 10){
     $('#backer_value').addClass("ok").removeClass("error")
     return true
@@ -37,11 +37,11 @@ value_ok = function(){
   }
 }
 $('input[type=radio]').click(function(){
-  id = /^backer_reward_id_(\d+)$/.exec($(this).attr('id'))
+  var id = /^backer_reward_id_(\d+)$/.exec($(this).attr('id'))
   id = parseFloat(id[1])
-  minimum = rewards[id]
+  var minimum = rewards[id]
   if(minimum){
-    value = $('#backer_value').val()
+    var value = $('#backer_value').val()
     if(!(/^(\d+)$/.test(value)) || (parseInt(value) < minimum)){
       $('#backer_value').val(parseInt(minimum))
     }
@@ -49,13 +49,13 @@ $('input[type=radio]').click(function(){
   everything_ok()
 })
 $('#backer_value').keyup(function(){
-  reward = $('input[type=radio]:checked')
+  var reward = $('input[type=radio]:checked')
   if(reward.val()){
-    id = /^backer_reward_id_(\d+)$/.exec(reward.attr('id'))
+    var id = /^backer_reward_id_(\d+)$/.exec(reward.attr('id'))
     id = parseFloat(id[1])
-    minimum = rewards[id]
+    var minimum = rewards[id]
     if(minimum){
-      value = $('#backer_value').val()
+      var value = $('#backer_value').val()
       if(!(/^(\d+)$/.test(value)) || (parseInt(value) < minimum)){
         $('#backer_reward_id_0').attr("checked", true)
       }

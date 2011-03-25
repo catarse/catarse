@@ -17,7 +17,7 @@ everything_ok = function(){
   }
 }
 ok = function(id){
-  value = $(id).val()
+  var value = $(id).val()
   if(value && value.length > 0){
     $(id).addClass("ok").removeClass("error")
     return true
@@ -27,8 +27,8 @@ ok = function(id){
   }
 }
 contact_ok = function(){
-  value = $('#contact').val()
-  re = /^[a-z0-9\._-]+@([a-z0-9][a-z0-9-_]*[a-z0-9-_]\.)+([a-z-_]+\.)?([a-z-_]+)$/
+  var value = $('#contact').val()
+  var re = /^[a-z0-9\._-]+@([a-z0-9][a-z0-9-_]*[a-z0-9-_]\.)+([a-z-_]+\.)?([a-z-_]+)$/
   if(value.match(re)){
     $('#contact').addClass("ok").removeClass("error")
     return true

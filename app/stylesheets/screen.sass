@@ -8,6 +8,7 @@
 @import "helpers"
 @import "body"
 @import "form"
+@import "table"
 @import "overlay"
 @import "flash"
 @import "login"
@@ -28,9 +29,12 @@
 @import "text"
 @import "slider"
 @import "press"
+@import "credits"
 body#site
   +body
   +form
+  table
+    +table
   .flash
     +flash
   .overlay
@@ -67,4 +71,6 @@ body#site
     +text
   #press
     +press
+  #credits
+    +credits
 

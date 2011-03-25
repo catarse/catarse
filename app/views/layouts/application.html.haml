@@ -15,11 +15,17 @@
             = link_to "http://twitter.com/?status=Eu apoiei o projeto \"#{back.project.name}\" no @Catarse_ #{back.project.short_url}", :target => :_blank do
               = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
         = javascript_include_tag 'back_notices'
-        - current_user.notifications.not_dismissed.each do |notification|
+        - current_user.notifications.not_dismissed.order(:created_at).each do |notification|
           %div{:id => "notification_#{notification.id}", :class => "notification"}
             = notification.text.html_safe
             &nbsp;
             %a.close{ :href => '#' } X
+            - if notification.facebook_text
+              = link_to "http://www.facebook.com/share.php?u=#{project_url(notification.project)}&t=#{notification.facebook_text}&v=4", :target => :_blank do
+                = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
+            - if notification.twitter_text
+              = link_to "http://twitter.com/?status=#{notification.twitter_text}", :target => :_blank do
+                = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
         = javascript_include_tag 'notifications'
     - else
       #pre_header
