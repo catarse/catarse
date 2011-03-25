@@ -6,6 +6,7 @@ class Notification < ActiveRecord::Base
   after_create :send_email
   def send_email
     return unless self.email_subject and self.email_text and self.user.email
-    UsersMailer.notification_email(self).deliver    
+    UsersMailer.notification_email(self).deliver
+  rescue
   end
 end
