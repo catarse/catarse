@@ -128,7 +128,7 @@ class Project < ActiveRecord::Base
   def finish!
     return unless expired? and can_finish and not finished
     backers.confirmed.each do |backer|
-      unless backer.can_refund
+      unless backer.can_refund or backer.notified_finish
         if successful?
           notification_text = "Uhuu! O projeto #{link_to(truncate(name, :length => 38), "/projects/#{self.to_param}")} que você apoiou foi bem-sucedido! Espalhe por aí!"
           twitter_text = "Uhuu! O projeto '#{name}', que eu apoiei, foi bem-sucedido no @Catarse_! #{short_url}"
@@ -149,6 +149,7 @@ class Project < ActiveRecord::Base
           email_text = "O projeto #{link_to(name, "#{BASE_URL}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>#{backer.display_value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "clicando aqui", "#{BASE_URL}/credits", :style => 'color: #008800;'}."
           backer.user.notifications.create :project => self, :text => notification_text, :email_subject => email_subject, :email_text => email_text
         end
+        backer.update_attribute :notified_finish, true
       end
     end
     self.update_attribute :finished, true
