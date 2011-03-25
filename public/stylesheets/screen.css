@@ -2805,7 +2805,7 @@ body#site #pending_projects table tbody tr td, body#site #pending_backers table 
 }
 /* line 735, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table tbody tr td.key, body#site #pending_backers table tbody tr td.key {
-  font-size: 10px;
+  font-size: 8px;
 }
 /* line 738, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu {

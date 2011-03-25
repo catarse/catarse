@@ -46,6 +46,7 @@
           %th Recompensa
           %th Chave
           %th Confirmado
+          %th Usou créditos?
           %th Solicitou estorno?
           %th Estorno realizado?
       %tbody
@@ -66,7 +67,8 @@
                 \-
             %td.key= backer.key
             %td= check_box_tag "confirmed__#{backer.id}", '1', backer.confirmed
-            %td= check_box_tag "requested_refund__#{backer.id}", '1', backer.requested_refund
+            %td= (backer.credits ? "Sim" : "Não")
+            %td= (backer.requested_refund ? "Sim" : "Não")
             %td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded
   = will_paginate @backers
 = javascript_include_tag 'pending_backers'
