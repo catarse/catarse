@@ -30,5 +30,6 @@ slide = function(slider, position){
     next.attr('disabled', false)
   slider.parent().find('#position').val(position)
 }
-slide($('.slider'), 0)
-
+$('.slider').each(function(){
+  slide($(this), 0)
+})
