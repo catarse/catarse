@@ -3188,7 +3188,7 @@ body#site #credits h1 {
   color: #222222 !important;
 }
 /* line 4, ../../app/stylesheets/_credits.sass */
-body#site #credits h1 .number {
+body#site #credits #current_credits {
   color: #008800;
   font-size: 32px;
 }
@@ -3222,6 +3222,14 @@ body#site #credits table {
   margin-bottom: 32px;
 }
 /* line 22, ../../app/stylesheets/_credits.sass */
+body#site #credits table td.status {
+  width: 200px;
+}
+/* line 24, ../../app/stylesheets/_credits.sass */
+body#site #credits .error {
+  color: #ff4444;
+}
+/* line 26, ../../app/stylesheets/_credits.sass */
 body#site #credits .important {
   text-align: center;
   color: black;
@@ -3241,7 +3249,7 @@ body#site #credits .important {
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
   margin: 20px 0;
 }
-/* line 32, ../../app/stylesheets/_credits.sass */
+/* line 36, ../../app/stylesheets/_credits.sass */
 body#site #credits .important a {
   color: black;
 }

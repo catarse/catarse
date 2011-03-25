@@ -6,7 +6,7 @@
     = form.inputs do
       = hidden_field_tag 'credits', ("%0.0f" % current_user.credits)
       = form.input :value, :label => 'Com quanto você quer apoiar?', :hint => "Você escolhe o valor ;) a partir de R$ 10 está ótimo.", :required => false
-      - if current_user.credits > 0
+      - if current_user.credits >= 10
         = form.input :credits, :label => 'Quero usar meus créditos para este apoio.', :hint => "Você possui <strong>#{current_user.display_credits}</strong> em créditos e pode apoiar até este valor sem precisar realizar um novo pagamento.".html_safe,:required => false
       - @rewards[0].id = 0
       %script

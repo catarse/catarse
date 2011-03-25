@@ -6,9 +6,14 @@ $('table a').click(function(e){
   $.post('/credits/refund', {
     backer_id: backer_id
   }, function(r){
-    if(r.ok)
-      $('#' + r.backer_id + ' .text').html("Solicitado estorno")
     $('#' + r.backer_id + ' .loading').hide()
-    $('#' + r.backer_id + ' .text').show()
+    if(r.ok){
+      $('#' + r.backer_id + ' .text').html("Solicitado estorno")      
+      $('#' + r.backer_id + ' .text').show()
+      $('#current_credits').html(r.credits)
+    } else {
+      $('#' + r.backer_id + ' .error').html(r.message)
+      $('#' + r.backer_id + ' .error').show()
+    }
   })
 })

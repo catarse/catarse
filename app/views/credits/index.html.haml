@@ -4,7 +4,7 @@
 #credits
   %h1
     Seu saldo atual é de
-    %span.number= current_user.display_credits
+    %span#current_credits= current_user.display_credits
     em créditos.
   -#buy_credits
     %strong Você não precisa ter créditos para apoiar um projeto.
@@ -31,7 +31,7 @@
             %td= back.created_at.strftime('%d/%m/%Y')
             %td= back.display_value
             %td= back.refund_deadline.strftime('%d/%m/%Y')
-            %td
+            %td.status
               .text
                 - if back.refunded
                   Estorno realizado
@@ -39,6 +39,7 @@
                   Solicitado estorno
                 - else
                   = link_to "Solicitar estorno", '#'
+              .error.hide
               = image_tag 'loading.gif', :class => 'loading hide'
     .important
       Você tem
