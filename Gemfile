@@ -13,7 +13,7 @@ gem 'vimeo'
 gem 'wirble'
 gem "on_the_spot"
 gem 'unicorn'
-gem 'mailee', '>= 0.4.3'
+gem 'mailee', '>= 0.4.4', :git => 'https://github.com/softa/mailee-api.git'
 gem 'will_paginate'
 gem 'weekdays'
 gem 'moip', :git => 'https://github.com/moiplabs/moip-ruby.git'

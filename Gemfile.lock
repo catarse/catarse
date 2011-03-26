@@ -7,6 +7,12 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (~> 1.4.3)
 
+GIT
+  remote: https://github.com/softa/mailee-api.git
+  revision: a7295c9a2bb6f14a60e3acbf999a1e7cf0350cc8
+  specs:
+    mailee (0.4.4)
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -98,7 +104,6 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mailee (0.4.3)
     maxim-sexy_pg_constraints (0.1.3)
     meta_search (1.0.3)
       actionpack (~> 3.0.2)
@@ -236,7 +241,7 @@ DEPENDENCIES
   haml
   inherited_resources (>= 1.1.2)
   launchy
-  mailee (>= 0.4.3)
+  mailee (>= 0.4.4)!
   maxim-sexy_pg_constraints
   meta_search
   mocha
