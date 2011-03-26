@@ -46,6 +46,9 @@
           = @user.email
         - else
           #{@user.display_name} ainda não preencheu seu email.
+      %li
+        %strong= @user.display_credits
+        disponíveis em créditos.
   %h1
     - if current_user and @user == current_user
       Meus projetos
