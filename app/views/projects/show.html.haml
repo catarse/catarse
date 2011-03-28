@@ -50,5 +50,14 @@
       #{on_the_spot_edit @project, :about, :type => :textarea}
     - else
       = auto_link(@project.display_about, :html => {:target => :_blank})
+  - if current_user and current_user.admin
+    #project_admin
+      %h2 Campos para o admin
+      .project_admin_field
+        %strong Prazo:
+        #{on_the_spot_edit @project, :expires_at}
+      .project_admin_field
+        %strong Id do usuário:
+        #{on_the_spot_edit @project, :user_id}
 = render :partial => 'back_info', :locals => {:show_backers => true}
 
