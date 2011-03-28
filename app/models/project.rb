@@ -137,7 +137,7 @@ class Project < ActiveRecord::Base
           email_text = "O projeto #{link_to(name, "#{BASE_URL}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, foi financiado com sucesso no Catarse! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, #{link_to(user.display_name, "#{BASE_URL}/users/#{user.to_param}", :style => 'color: #008800;')} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
           backer.user.notifications.create :project => self, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
           if backer.reward
-            notification_text = "Em breve, #{link_to(truncate(user.display_name, :length => 32), "/users/#{user.to_param}")} irá entrar em contato com você para entregar sua recompensa. Disfrute!"
+            notification_text = "Em breve, #{link_to(truncate(user.display_name, :length => 32), "/users/#{user.to_param}")} irá entrar em contato com você para entregar sua recompensa. Desfrute!"
             backer.user.notifications.create :project => self, :text => notification_text
           end
         else
