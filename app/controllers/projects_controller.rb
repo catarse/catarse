@@ -240,7 +240,7 @@ class ProjectsController < ApplicationController
   end
   def can_update_on_the_spot?
     project_fields = []
-    project_admin_fields = ["visible", "rejected", "recommended", "home_page", "name", "about", "headline", "order", "can_finish", "expires_at", "user_id"]
+    project_admin_fields = ["visible", "rejected", "recommended", "home_page", "name", "about", "headline", "order", "can_finish", "expires_at", "user_id", "image_url"]
     backer_fields = ["display_notice"]
     backer_admin_fields = ["confirmed", "requested_refund", "refunded"]
     reward_fields = []

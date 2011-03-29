@@ -59,5 +59,8 @@
       .project_admin_field
         %strong Id do usuário:
         #{on_the_spot_edit @project, :user_id}
+      .project_admin_field
+        %strong URL da imagem:
+        #{on_the_spot_edit @project, :image_url}
 = render :partial => 'back_info', :locals => {:show_backers => true}
 
