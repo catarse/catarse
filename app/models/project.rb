@@ -11,6 +11,15 @@ class Project < ActiveRecord::Base
   has_many :backers
   has_many :rewards
   accepts_nested_attributes_for :rewards
+  auto_html_for :about do
+    html_escape :map => { 
+      '&' => '&amp;',  
+      '>' => '&gt;',
+      '<' => '&lt;',
+      '"' => '"' }
+    redcloth :target => :_blank
+    link :target => :_blank
+  end
   scope :visible, where(:visible => true)
   scope :home_page, where(:home_page => true)
   scope :not_home_page, where(:home_page => false)
@@ -65,9 +74,6 @@ class Project < ActiveRecord::Base
     return image_url if image_url
     return "user.png" unless vimeo and vimeo["thumbnail_large"]
     vimeo["thumbnail_large"]
-  end
-  def display_about
-    h(about).gsub("\n", "<br>").html_safe
   end
   def display_expires_at
     expires_at.strftime('%d/%m')

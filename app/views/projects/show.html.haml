@@ -49,7 +49,7 @@
     - if current_user and current_user.admin
       #{on_the_spot_edit @project, :about, :type => :textarea}
     - else
-      = auto_link(@project.display_about, :html => {:target => :_blank})
+      = @project.about_html.html_safe
   - if current_user and current_user.admin
     #project_admin
       %h2 Campos para o admin

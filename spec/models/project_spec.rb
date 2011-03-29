@@ -121,10 +121,10 @@ describe Project do
     p = Factory(:project)
     p.display_image.should_not be_empty
   end
-  it "should have a HTML-safe display about that converts new lines to <br>" do
+  it "should have a HTML-safe about_html, with textile and regular links" do
     p = Factory.build(:project)
-    p.about = "Foo\nBar<javascript>xss()</javascript>"
-    p.display_about.should == "Foo<br>Bar&lt;javascript&gt;xss()&lt;/javascript&gt;"
+    p.about = 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here'
+    p.about_html.should == '<p>Foo Bar <a href="http://www.foo.bar" target="_blank">http://www.foo.bar</a> &lt;javascript&gt;xss()&lt;/javascript&gt;<a target="_blank" href="http://click.here">Click here</a></p>'
   end
   it "should be able to display the remaining time with days, hours, minutes and seconds" do
     p = Factory.build(:project)

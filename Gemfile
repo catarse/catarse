@@ -13,13 +13,15 @@ gem 'vimeo'
 gem 'wirble'
 gem "on_the_spot"
 gem 'unicorn'
-gem 'mailee', '>= 0.5.0'
+gem 'mailee', '>= 0.5.1', :git => 'https://github.com/softa/mailee-api.git'
 gem 'will_paginate'
 gem 'weekdays'
 gem 'moip', :git => 'https://github.com/moiplabs/moip-ruby.git'
 gem 'brcep'
 gem 'exception_notification', :require => 'exception_notifier'
 gem "meta_search"
+gem "RedCloth"
+gem "auto_html", '>= 1.3.6', :git => 'https://github.com/danielweinmann/auto_html.git'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'
@@ -30,4 +32,3 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'mocha'
 end
-
