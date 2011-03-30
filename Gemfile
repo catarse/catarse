@@ -21,7 +21,8 @@ gem 'brcep'
 gem 'exception_notification', :require => 'exception_notifier'
 gem "meta_search"
 gem "RedCloth"
-gem "auto_html", '>= 1.3.6', :git => 'https://github.com/danielweinmann/auto_html.git'
+gem "auto_html", '>= 1.3.5'
+gem "acts_as_commentable"
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'

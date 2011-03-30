@@ -1,5 +1,6 @@
-#project_backers
-  %h1 Quem já apoiou este projeto
+- if @backers.empty?
+  Ninguém apoiou este projeto ainda. Que tal ser o primeiro?
+- else
   %ul
     - @backers.each do |backer|
       %li
@@ -36,5 +37,5 @@
         .clear
   - if show_all_link
     #all_backers
-      = link_to "Todos os apoiadores", backers_project_path(@project)
+      = link_to "Ver todos os apoiadores", backers_project_path(@project)
 

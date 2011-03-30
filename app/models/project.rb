@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   include ActionView::Helpers::UrlHelper
   include ERB::Util
   include Rails.application.routes.url_helpers
+  acts_as_commentable
   belongs_to :user
   belongs_to :category
   has_many :backers

@@ -44,23 +44,58 @@
           = image_tag 'embed_32.png', :title => "Incorpore este projeto no seu site"
           Incorpore este projeto no seu site
     = render 'embed'
-  #project_about
-    %h1 Sobre este projeto
-    - if current_user and current_user.admin
-      #{on_the_spot_edit @project, :about, :type => :textarea}
-    - else
-      = @project.about_html.html_safe
-  - if current_user and current_user.admin
-    #project_admin
-      %h2 Campos para o admin
-      .project_admin_field
-        %strong Prazo:
-        #{on_the_spot_edit @project, :expires_at}
-      .project_admin_field
-        %strong Id do usuário:
-        #{on_the_spot_edit @project, :user_id}
-      .project_admin_field
-        %strong URL da imagem:
-        #{on_the_spot_edit @project, :image_url}
-= render :partial => 'back_info', :locals => {:show_backers => true}
+  #project_menu
+    %ul
+      %li= link_to "Sobre", '#', :id => "about", :class => "selected"
+      %li
+        = link_to '#', :id => "updates" do
+          Atualizações
+          %span.count (#{@updates.count})
+      %li
+        = link_to '#', :id => "backers" do
+          Apoiadores
+          %span.count (#{@project.total_backers})
+      %li
+        = link_to '#', :id => "comments" do
+          Comentários
+          %span.count (#{@comments.count})
+  #project_menu_content
+    = hidden_field_tag 'project_id', @project.id
+    #project_about.project_content
+      - if current_user and current_user.admin
+        #{on_the_spot_edit @project, :about, :type => :textarea}
+      - else
+        = @project.about_html.html_safe
+      - if current_user and current_user.admin
+        #project_admin
+          %h2 Campos para o admin
+          .project_admin_field
+            %strong Prazo:
+            #{on_the_spot_edit @project, :expires_at}
+          .project_admin_field
+            %strong Id do usuário:
+            #{on_the_spot_edit @project, :user_id}
+          .project_admin_field
+            %strong URL da imagem:
+            #{on_the_spot_edit @project, :image_url}
+    #project_updates.project_content.hide
+    #project_backers.project_content.hide= render :partial => 'backers', :locals => {:show_all_link => true, :show_badge => true, :show_rewards => true}
+    #project_comments.project_content.hide
+      -if current_user
+        = form_tag(create_comment_projects_path, :id => 'new_comment_form') do
+          %fieldset
+            = text_area_tag 'comment_comment'
+          %fieldset
+            = submit_tag 'Enviar comentário'
+      - else
+        %em
+          Quer enviar um comentário?
+          = link_to 'Clique aqui', '#', :class => 'login_link'
+          para fazer login.
+      - unless @comments.empty?
+        %ul
+          - @comments.each do |comment|
+            %li
+              = comment.comment_html.html_safe
+= render :partial => 'back_info'
 

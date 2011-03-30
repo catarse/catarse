@@ -250,9 +250,30 @@
           padding-bottom: 4px !important
       #project_embed
         +embed_modal
-    #project_about
+    #project_menu
       margin-top: 24px
-      margin-right: 16px
+      margin-bottom: 16px
+      ul
+        +horizontal-list(2px)
+        li a
+          background-color: #ddd
+          padding: 8px
+          +border-radius(6px)
+          text-align: center
+          text-decoration: none
+          text-transform: uppercase
+          font-weight: bold
+          font-size: 12px
+          display: block
+          +transition(all,0.2s)
+          .count
+            font-size: 11px
+          &.selected,&:hover
+            color: #fff
+            background-color: #0A0
+            +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
+    #project_about
+      width: 460px
       h1
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
         font-size: 18px
@@ -261,6 +282,16 @@
         text-transform: uppercase
         padding: 0
         padding-bottom: 16px
+    #project_comments
+      width: 460px
+      form
+        text-align: right
+        textarea
+          width: 424px
+          height: 90px
+        input[type=submit]
+      em
+        text-align: center
   #project_back_info
     margin-top: -10px
     float: right
@@ -653,39 +684,34 @@
       font-size: 18px
       margin-top: 40px
   #project_backers
-    margin-top: 8px
+    margin-top: 0
     color: #444
     h1
       font-size: 24px !important
       color: #999 !important
       padding-bottom: 16px !important
+      padding-top: 0 !important
     img.user
       float: left
       margin-right: 12px
-      margin-bottom: 20px
+      margin-bottom: 0px
       width: 48px
       +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
       background-color: #fff
     a
       text-decoration: none !important
     #all_backers
-      border-top: 1px dashed #CCC
-      text-align: right
-      padding-top: 8px
+      text-align: center
+      margin-top: 16px
     p
       font-size: 16px
       color: #666
+      padding-bottom: 0 !important
     p.reward
       float: right
       width: 343px
       font-size: 12px
       color: #333
-  #backers #project_backers
-    img.user
-      margin-bottom: 0
-    margin-top: 0
-    h1
-      padding-top: 0 !important
     ul
       width: 94%
       li
@@ -702,10 +728,6 @@
           +transition(all,0.2s)
           &:hover
             +rotate(-4deg)
-    a
-      text-decoration: none
-    p
-      padding-bottom: 0 !important
   #pending_projects,#pending_backers
     form
       margin-bottom: 20px

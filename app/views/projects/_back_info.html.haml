@@ -1,8 +1,6 @@
 #project_back_info
   #back_project= render :partial => 'back_project'
   #rewards= render :partial => 'rewards'
-  - unless @backers.empty? or show_backers == false
-    = render :partial => 'backers', :locals => {:show_all_link => true, :show_badge => false, :show_rewards => false}
 .clear
 = javascript_include_tag 'show_project'
 

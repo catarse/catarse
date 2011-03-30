@@ -1,5 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
+  include ActionView::Helpers::DateHelper
   inherit_resources
   actions :index, :show, :new, :create, :edit, :update
   can_edit_on_the_spot
@@ -64,8 +65,10 @@ class ProjectsController < ApplicationController
   def show
     show!{
       @title = @project.name
-      @rewards = @project.rewards.order(:minimum_value)
-      @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC")
+      @rewards = @project.rewards.order(:minimum_value).all
+      @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
+      @updates = @project.comments.updates.all
+      @comments = @project.comments.not_updates.all
     }
   end
   def guidelines
@@ -99,6 +102,32 @@ class ProjectsController < ApplicationController
     }.to_json
   rescue
     render :json => {:ok => false}.to_json
+  end
+  def create_comment
+    return render :json => {:ok => false}.to_json unless current_user
+    comment = Comment.new
+    comment.commentable_type = params[:commentable_type]
+    comment.commentable_id = params[:commentable_id]
+    comment.title = params[:title]
+    comment.comment = params[:comment]
+    comment.user = current_user
+    comment.project_update = params[:project_update]
+    if comment.save
+      comment.reload
+      render :json => {
+        :ok => true,
+        :user => {
+          :name => current_user.name,
+          :image_url => current_user.display_image
+        },
+        :time => distance_of_time_in_words(comment.created_at, Time.now),
+        :comment_html => comment.comment_html
+      }.to_json
+    else
+      render :json => {:ok => false}.to_json
+    end
+  rescue => e
+    render :json => {:ok => false, :message => e.message}.to_json
   end
   def back
     return unless require_login
