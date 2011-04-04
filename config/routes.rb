@@ -35,7 +35,6 @@ Catarse::Application.routes.draw do
       get 'thank_you'
       post 'moip'
       post 'update_attribute_on_the_spot'
-      post 'create_comment'
     end
     member do
       get 'back'
@@ -55,4 +54,6 @@ Catarse::Application.routes.draw do
       post 'refund'
     end
   end
+  resources :comments, :only => [:create, :show]
 end
+
