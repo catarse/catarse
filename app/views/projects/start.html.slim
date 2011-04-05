@@ -1,0 +1,26 @@
+= content_for :content_header do
+  h1 Envie seu projeto
+  h2 A hora para fazer acontecer é agora! Estamos ansiosos para saber o que você está aprontando...
+#project_warning style='margin-bottom: 16px'
+  | Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler #{link_to 'nosso guia', 'http://blog.catarse.me/post/2816685141/guia-colocar-projeto-catarse', :target => :_blank}.
+= form_tag(send_mail_projects_path, :id => 'start_project_form') do
+  fieldset
+    = label_tag 'about', 'Descreva seu projeto e quanto você precisa'
+    = text_area_tag 'about'
+    p.inline-hints Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!
+    = label_tag 'rewards', 'Que recompensas você quer oferecer?'
+    = text_area_tag 'rewards'
+    p.inline-hints A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão.
+    = label_tag 'links', 'Onde podemos encontrar mais sobre você e seu projeto?'
+    = text_area_tag 'links'
+    p.inline-hints Deixe-nos o máximo de links que você tiver, para que a gente possa conhecer melhor seu trabalho e seu projeto. Não precisa ser algo formal nem nada, só alguns links úteis.
+    = label_tag 'contact', 'Deixe seu email para entrarmos em contato'
+    = text_field_tag 'contact', (current_user.email if current_user)
+  .submit
+    fieldset
+      = check_box_tag 'accept'
+      = label_tag 'accept', "Eu li e estou de acordo com os #{link_to 'termos de uso', terms_path, :target => :_blank}.".html_safe, :class => 'inline'
+    fieldset
+      = submit_tag 'Enviar o projeto', :disabled => true
+      = image_tag 'loading.gif', :id => 'loading'
+= javascript_include_tag 'start_project'

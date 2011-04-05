@@ -3,6 +3,7 @@ source 'http://gems.github.com'
 gem 'rails', '3.0.3'
 gem 'pg'
 gem 'haml'
+gem 'slim'
 gem 'compass'
 gem 'omniauth'
 gem 'formtastic', '~> 1.1.0'
@@ -23,6 +24,7 @@ gem "meta_search"
 gem "RedCloth"
 gem "auto_html", '>= 1.3.5'
 gem "acts_as_commentable"
+gem 'mustache'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'

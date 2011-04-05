@@ -1,0 +1,77 @@
+= content_for :content_header do
+  h1 Gerenciamento de apoios
+  h2
+    | \# de apoiadores
+    strong= @total_backers
+    | \# de apoios
+    strong= @total_backs
+    | $ arrecadado
+    strong= @total_pledged
+    | \# Usuários
+    strong= @total_users
+#pending_backers
+  - form_for @search, :url => pending_backers_projects_path do |f|
+    fieldset
+      = f.label :id_equals, "Id"
+      = f.text_field :id_equals
+      = f.label :key_equals, "Chave"
+      = f.text_field :key_equals
+      = f.label :project_name_contains, "Projeto"
+      = f.text_field :project_name_contains
+      = f.label :user_name_contains, "Usuário"
+      = f.text_field :user_name_contains
+    fieldset
+      = f.check_box :confirmed_is_true
+      = f.label :confirmed_is_true, "Confirmado?"
+      = f.check_box :credits_is_true
+      = f.label :credits_is_true, "Usou créditos?"
+      = f.check_box :requested_refund_is_true
+      = f.label :requested_refund_is_true, "Solicitou estorno?"
+      = f.check_box :refunded_is_true
+      = f.label :refunded_is_true, "Estorno realizado?"
+      = f.submit "Pesquisar"
+  #total_results
+    = pluralize_without_number @search.count, 'Encontrado'
+    strong= @search.count
+    = pluralize_without_number @search.count, 'apoio'
+  = will_paginate @backers
+  - if @backers.empty?
+    | Nenhum apoio encontrado.
+  - else
+    table
+      thead
+        tr
+          th Id
+          th Projeto
+          th Usuário
+          th Valor
+          th Recompensa
+          th Chave
+          th Confirmado
+          th Usou créditos?
+          th Solicitou estorno?
+          th Estorno realizado?
+      tbody
+        - @backers.each do |backer|
+          tr  id=(backer.id)class=cycle("even", "odd") 
+            td= backer.id
+            td  title=(backer.project.name )
+              = link_to project_path(backer.project) do
+                = image_tag backer.project.display_image
+            td  title=(backer.user.display_name )
+              = link_to user_path(backer.user) do
+                = image_tag backer.user.display_image
+            td= backer.display_value
+            td{ :title => ("#{backer.reward.display_minimum} - # backer.reward.description}" if backer.reward) 
+              - if backer.reward
+                = backer.reward.display_minimum
+              - else
+                | \-
+            td.key= backer.key
+            td= check_box_tag "confirmed__# backer.id
+            td= (backer.credits ? "Sim" : "Não")
+            td= (backer.requested_refund ? "Sim" : "Não")
+            td= check_box_tag "refunded__# backer.id
+  = will_paginate @backers
+= javascript_include_tag 'pending_backers'
+
