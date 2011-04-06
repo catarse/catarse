@@ -1,1 +1,3 @@
-var ProjectUpdatesView = ProjectPaginatedContentView.extend()
+var UpdatesView = CollectionView.extend({
+  template: $('#updates_template')
+})

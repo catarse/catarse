@@ -1,1 +1,3 @@
-var ProjectBackersView = ProjectPaginatedContentView.extend()
+var BackersView = CollectionView.extend({
+  template: $('#backers_template')
+})
