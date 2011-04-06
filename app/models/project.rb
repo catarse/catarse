@@ -163,4 +163,11 @@ class Project < ActiveRecord::Base
     end
     self.update_attribute :finished, true
   end
+  def as_json(options={})
+    {
+      :id => id,
+      :name => name,
+      :user => user
+    }
+  end
 end
