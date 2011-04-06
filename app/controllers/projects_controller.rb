@@ -3,7 +3,8 @@ class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
   inherit_resources
   actions :index, :show, :new, :create, :edit, :update
-  respond_to :html, :json
+  respond_to :html, :except => [:backers, :comments, :updates]
+  respond_to :json, :only => [:show, :backers, :comments, :updates]
   can_edit_on_the_spot
   skip_before_filter :verify_authenticity_token, :only => [:moip]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
@@ -196,17 +197,17 @@ class ProjectsController < ApplicationController
   def backers
     @project = Project.find params[:id]
     @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
-    render :json => @backers
+    respond_with @backers
   end
   def comments
     @project = Project.find params[:id]
     @comments = @project.comments.order("created_at DESC").all.paginate :page => params[:page], :per_page => 10
-    render :json => @comments
+    respond_with @comments
   end
   def updates
     @project = Project.find params[:id]
     @updates = @project.updates.order("created_at DESC").all.paginate :page => params[:page], :per_page => 10
-    render :json => @updates
+    respond_with @updates
   end
   def embed
     @project = Project.find params[:id]

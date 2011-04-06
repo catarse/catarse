@@ -17,14 +17,14 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
       this.nextPage()
   },
   nextPage: function(){
-    if(!this.collection.isEmpty) {
+    if(!this.collection.isEmpty()) {
       $('#loading img').show()
       this.collection.nextPage()
     }
   },
   render: function() {
     $('#loading img').hide()
-    if(this.collection.page == 1 || !this.collection.isEmpty)
+    if(this.collection.page == 1 || !this.collection.isEmpty())
       $(this.el).append(Mustache.to_html(this.template.html(), this.collection))
     $('#loading').waypoint(this.waypoint, {offset: "100%"})
     return this

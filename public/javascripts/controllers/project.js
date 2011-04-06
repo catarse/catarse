@@ -17,7 +17,11 @@ var ProjectController = Backbone.Controller.extend({
   },
 
   updates: function() {
-    alert('Updates!')
+    this.view = new ProjectUpdatesView({
+      collection: new Updates({project: this.project}),
+      link: $('#updates_link'),
+      template: $('#project_updates_template')
+    })
   },
 
   backers: function() {

@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
   has_many :rewards
   has_many :comments, :as => :commentable, :conditions => {:project_update => false}
   has_many :updates, :as => :commentable, :class_name => "Comment", :conditions => {:project_update => true}
-  accepts_nested_attributes_for :rewards, :comments, :updates
+  accepts_nested_attributes_for :rewards
   auto_html_for :about do
     html_escape :map => { 
       '&' => '&amp;',  
