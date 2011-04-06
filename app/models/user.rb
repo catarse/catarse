@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::TextHelper
+  include Rails.application.routes.url_helpers
   sync_with_mailee :news => :newsletter, :list => "Newsletter"
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
@@ -23,8 +25,8 @@ class User < ActiveRecord::Base
   end
 
   def to_param
-    return "#{self.id}" unless self.name
-    "#{self.id}-#{self.name.parameterize}"
+    return "#{self.id}" unless self.display_name
+    "#{self.id}-#{self.display_name.parameterize}"
   end
 
   def self.find_with_omni_auth(provider, uid)
@@ -54,8 +56,11 @@ class User < ActiveRecord::Base
   def display_name
     name || nickname || "Sem nome"
   end
+  def short_name
+    truncate display_name, :length => 26
+  end
   def display_image
-    gravatar_url || image_url || 'user.png'
+    gravatar_url || image_url || '/images/user.png'
   end
   def backer?
     backs.confirmed.not_anonymous.count > 0
@@ -63,11 +68,31 @@ class User < ActiveRecord::Base
   def total_backs
     backs.confirmed.not_anonymous.count
   end
+  def backs_text
+    if total_backs == 2
+      "Apoiou este e mais 1 outro projeto"
+    elsif total_backs > 1
+      "Apoiou este e mais outros #{total_backs-1} projetos"
+    else
+      "Apoiou somente este projeto até agora"
+    end
+  end
   def remember_me_hash
     Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
   end
   def display_credits
     number_to_currency credits, :unit => 'R$ ', :precision => 0, :delimiter => '.'
+  end
+  def as_json(options={})
+    {
+      :id => id,
+      :name => display_name,
+      :short_name => short_name,
+      :image => display_image,
+      :total_backs => total_backs,
+      :backs_text => backs_text,
+      :url => user_path(self)
+    }
   end
 
   protected
@@ -75,6 +100,6 @@ class User < ActiveRecord::Base
   # Returns a Gravatar URL associated with the email parameter
   def gravatar_url
     return unless email
-    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or 'http://catarse.me/images/user.png'}"
+    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or "#{BASE_URL}/images/user.png"}"
   end
 end

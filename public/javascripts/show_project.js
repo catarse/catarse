@@ -24,10 +24,3 @@ $('#rewards li.clickable').click(function(e){
     window.location.href = url
   }
 })
-$('#project_menu a').click(function(e){
-  e.preventDefault()
-  $('#project_menu_content .project_content').hide()
-  $('#project_'+ $(this).attr('id')).show()
-  $('#project_menu .selected').removeClass('selected')
-  $(this).addClass('selected')
-})

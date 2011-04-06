@@ -1,0 +1,1 @@
+var ProjectUpdatesView = ProjectPaginatedContentView.extend()

@@ -1,0 +1,12 @@
+script type="text/template" id="project_backers_template"
+  #project_backers
+    ul
+      |{{#models}}
+      li
+        |{{#attributes}}
+        = render :partial => 'backer'
+        |{{/attributes}}
+      |{{/models}}
+    |{{^models}}
+      Ninguém apoiou este projeto ainda. Que tal ser o primeiro?
+    |{{/models}}

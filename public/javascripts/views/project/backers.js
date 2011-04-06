@@ -1,0 +1,1 @@
+var ProjectBackersView = ProjectPaginatedContentView.extend()

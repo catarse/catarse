@@ -23,7 +23,6 @@ Catarse::Application.routes.draw do
       get 'explore'
       get 'start'
       post 'send_mail'
-      get 'teaser'
       get 'guidelines'
       get 'faq'
       get 'terms'
@@ -43,6 +42,8 @@ Catarse::Application.routes.draw do
       get 'backers'
       get 'embed'
       get 'video_embed'
+      get 'comments'
+      get 'updates'
     end
   end
   resources :users, :only => [:show] do
@@ -54,6 +55,5 @@ Catarse::Application.routes.draw do
       post 'refund'
     end
   end
-  resources :comments, :only => [:create, :show]
+  resources :comments, :only => [:index, :show, :create, :destroy]
 end
-

@@ -1,0 +1,21 @@
+|{{confirmed_at}} 
+
+|{{#anonymous}}
+= image_tag 'user.png', :class => 'user'
+| Apoiador anônimo
+= image_tag 'badge.png', :class => "badge"
+p Optou por permanecer incógnito
+|{{/anonymous}}
+
+|{{^anonymous}}
+|{{#user}}
+a href="{{url}}"
+  img src="{{image}}" class="user"
+  |{{short_name}}
+  = image_tag 'badge.png', :class => "badge"
+p
+  |{{backs_text}}
+|{{/user}}
+|{{/anonymous}}
+
+.clear

@@ -11,7 +11,9 @@ class Project < ActiveRecord::Base
   belongs_to :category
   has_many :backers
   has_many :rewards
-  accepts_nested_attributes_for :rewards
+  has_many :comments, :as => :commentable, :conditions => {:project_update => false}
+  has_many :updates, :as => :commentable, :class_name => "Comment", :conditions => {:project_update => true}
+  accepts_nested_attributes_for :rewards, :comments, :updates
   auto_html_for :about do
     html_escape :map => { 
       '&' => '&amp;',  

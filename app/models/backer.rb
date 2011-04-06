@@ -46,6 +46,9 @@ class Backer < ActiveRecord::Base
   def display_value
     number_to_currency value, :unit => 'R$ ', :precision => 0, :delimiter => '.'
   end
+  def display_confirmed_at
+    confirmed_at.strftime('%d/%m') if confirmed_at
+  end
   def moip_value
     "%0.0f" % (value * 100)
   end
@@ -56,5 +59,14 @@ class Backer < ActiveRecord::Base
   end
   def refund_deadline
     created_at + 180.days
+  end
+  def as_json(options={})
+    {
+      :id => id,
+      :anonymous => anonymous,
+      :confirmed => confirmed,
+      :confirmed_at => display_confirmed_at,
+      :user => user
+    }
   end
 end

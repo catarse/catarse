@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
   inherit_resources
   actions :index, :show, :new, :create, :edit, :update
+  respond_to :html, :json
   can_edit_on_the_spot
   skip_before_filter :verify_authenticity_token, :only => [:moip]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
@@ -11,15 +12,6 @@ class ProjectsController < ApplicationController
     params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
   end
 
-  def teaser
-    @title = "Faça acontecer os projetos em que você acredita"
-    if params[:status] == "success"
-      flash.now[:success] = "Pronto. Agora é só verificar sua caixa de entrada e confirmar o cadastro. Muito obrigado!"
-    elsif params[:status] == "failure"
-      flash.now[:failure] = "Ooops. Ocorreu um erro ao adicionar seu email em nossa lista. Por favor, tente novamente."
-    end
-    render :layout => 'teaser'
-  end
   def index
     index! do
       @title = "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
@@ -67,8 +59,8 @@ class ProjectsController < ApplicationController
       @title = @project.name
       @rewards = @project.rewards.order(:minimum_value).all
       @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
-      @updates = @project.comments.updates.all
-      @comments = @project.comments.not_updates.all
+      @updates = @project.updates.all
+      @comments = @project.comments.all
     }
   end
   def guidelines
@@ -102,32 +94,6 @@ class ProjectsController < ApplicationController
     }.to_json
   rescue
     render :json => {:ok => false}.to_json
-  end
-  def create_comment
-    return render :json => {:ok => false}.to_json unless current_user
-    comment = Comment.new
-    comment.commentable_type = params[:commentable_type]
-    comment.commentable_id = params[:commentable_id]
-    comment.title = params[:title]
-    comment.comment = params[:comment]
-    comment.user = current_user
-    comment.project_update = params[:project_update]
-    if comment.save
-      comment.reload
-      render :json => {
-        :ok => true,
-        :user => {
-          :name => current_user.name,
-          :image_url => current_user.display_image
-        },
-        :time => distance_of_time_in_words(comment.created_at, Time.now),
-        :comment_html => comment.comment_html
-      }.to_json
-    else
-      render :json => {:ok => false}.to_json
-    end
-  rescue => e
-    render :json => {:ok => false, :message => e.message}.to_json
   end
   def back
     return unless require_login
@@ -228,11 +194,19 @@ class ProjectsController < ApplicationController
     return render :nothing => true, :status => 422
   end
   def backers
-    show! do
-      @title = "Apoiadores do projeto #{@project.name}"
-      @rewards = @project.rewards.order(:minimum_value)
-      @backers = @project.backers.confirmed.order(:confirmed_at)
-    end
+    @project = Project.find params[:id]
+    @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
+    render :json => @backers
+  end
+  def comments
+    @project = Project.find params[:id]
+    @comments = @project.comments.order("created_at DESC").all.paginate :page => params[:page], :per_page => 10
+    render :json => @comments
+  end
+  def updates
+    @project = Project.find params[:id]
+    @updates = @project.updates.order("created_at DESC").all.paginate :page => params[:page], :per_page => 10
+    render :json => @updates
   end
   def embed
     @project = Project.find params[:id]

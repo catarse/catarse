@@ -12,5 +12,6 @@ module Catarse
       g.template_engine :haml
       g.test_framework :rspec, :fixture => false, :views => false
     end
+    ActiveRecord::Base.include_root_in_json = false
   end
 end

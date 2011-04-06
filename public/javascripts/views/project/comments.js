@@ -1,0 +1,1 @@
+var ProjectCommentsView = ProjectPaginatedContentView.extend()

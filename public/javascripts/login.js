@@ -11,7 +11,7 @@ require_login = function(e){
   $('#login').fadeIn()
 }
 var return_to = null
-$('#login_link,#signup_link,.login_link').click(function(e){
+$('#login_link,#signup_link,.login_link').live('click', function(e){
   e.preventDefault()
   $('#return_to').val(location.href)
   $('#login_overlay').show()
