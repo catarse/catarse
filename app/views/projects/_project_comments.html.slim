@@ -3,10 +3,11 @@ script type="text/template" id="project_comments_template"
     -if current_user
       = form_tag('#', :id => 'new_comment_form') do
         fieldset= text_area_tag 'comment_comment'
+        = render :partial => 'formatting_tips'
         fieldset= submit_tag 'Enviar comentário'
     - else
       em
         | Quer enviar um comentário? 
         = link_to 'Clique aqui', '#', :class => 'login_link'
         |  para fazer login.
-    ul
+    ul#collection_list

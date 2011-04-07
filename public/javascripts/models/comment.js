@@ -9,9 +9,9 @@ var Comment = Backbone.Model.extend({
     project_update: false
   },
   canDestroy: function(){
-    if(current_user.get('admin'))
+    if(currentUser.get('admin'))
       return true
-    if(this.get('user').id == current_user.get('id'))
+    if(this.get('user').id == currentUser.get('id'))
       return true
     return false
   },

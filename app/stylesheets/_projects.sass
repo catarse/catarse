@@ -292,7 +292,7 @@
         input[type=submit]
       em
         text-align: center
-      ul
+      #collection_list
         margin-top: 16px
         li
           background-color: rgb(0,132,185)
@@ -338,6 +338,21 @@
       img
         margin: 16px
         display: none
+  #show_formatting_tips
+    text-align: left !important
+    color: #666
+    font-size: 16px
+    margin-bottom: 8px
+  #formatting_tips
+    display: none
+    text-align: left
+    font-size: 16px
+    ul li
+      padding-bottom: 8px
+      margin-bottom: 8px
+      border-bottom: 1px dotted #999
+      &:last-child
+        border: none
   #project_back_info
     margin-top: -10px
     float: right

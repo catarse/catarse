@@ -1,7 +1,13 @@
 var ProjectCommentsView = ProjectPaginatedContentView.extend({
   modelView: CommentView,
   events: {
-    "click [type=submit]": "createComment"
+    "click [type=submit]": "createComment",
+    "click #show_formatting_tips": "showFormattingTips"
+  },
+  showFormattingTips: function(event){
+    event.preventDefault()
+    this.$('#show_formatting_tips').hide()
+    this.$('#formatting_tips').slideDown()
   },
   createComment: function(event){
     event.preventDefault()
@@ -29,7 +35,7 @@ var ProjectCommentsView = ProjectPaginatedContentView.extend({
     count = parseInt(count[1])
     countTag.html("(" + (count+1) + ")")
     var listItem = $('<li>')
-    this.$('ul').prepend(listItem)
+    this.$('#collection_list').prepend(listItem)
     new this.modelView({el: listItem, model: model, contentView: this})
   },
   errorCreate: function(model, response){

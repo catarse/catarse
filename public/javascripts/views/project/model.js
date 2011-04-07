@@ -22,7 +22,8 @@ var ModelView = Backbone.View.extend({
   },
   destroy: function(event){
     event.preventDefault()
-    this.model.destroy({success: this.successDestroy, error: this.errorDestroy})
+    if(this.model.canDestroy())
+      this.model.destroy({success: this.successDestroy, error: this.errorDestroy})
   },
   successDestroy: function(model, response){
     var countTag = this.options.contentView.link.find('.count')

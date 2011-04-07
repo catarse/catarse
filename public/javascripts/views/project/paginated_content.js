@@ -31,7 +31,7 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
     if(!this.collection.isEmpty()) {
       this.collection.each(function(model){
         var listItem = $('<li>')
-        this.$('ul').append(listItem)
+        this.$('#collection_list').append(listItem)
         new this.modelView({el: listItem, model: model, contentView: this})        
       }, this)
     } else if(this.collection.page == 1) {
