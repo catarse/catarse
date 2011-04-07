@@ -300,15 +300,28 @@
           +border-radius(6px)
           padding: 20px
           margin-bottom: 4px
+          position: relative
           .time
             text-transform: uppercase
             color: #999
             font-size: 14px
+          .destroy
+            position: absolute
+            top: 12px
+            right: 12px
+            a
+              img
+                +transition(all, 0.3s)
+                width: 20px
+                +opacity(0.8)
+                &:hover
+                  +opacity(1)
+                  +scale(1.2)
           img.user
             float: left
             margin-right: 12px
             margin-bottom: 0px
-            width: 48px
+            height: 38px
             +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
             background-color: #fff
           a

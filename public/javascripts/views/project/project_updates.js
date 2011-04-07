@@ -1,4 +1,4 @@
 var ProjectUpdatesView = ProjectCommentsView.extend({
-  collectionView: UpdatesView,
-  modelView: UpdateView
+  modelView: UpdateView,
+  emptyText: "Este projeto ainda não teve atualizações. Aguarde =D"
 })

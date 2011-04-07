@@ -1,5 +1,4 @@
 var ProjectCommentsView = ProjectPaginatedContentView.extend({
-  collectionView: CommentsView,
   modelView: CommentView,
   events: {
     "click [type=submit]": "createComment"
@@ -14,15 +13,26 @@ var ProjectCommentsView = ProjectPaginatedContentView.extend({
       commentable_id: this.collection.project.get('id'),
       comment: text
     })
-    comment.save(comment.attributes, {success: this.success, error: this.error})
+    comment.save(comment.attributes, {success: this.successCreate, error: this.errorCreate})
   },
-  success: function(model, response){
+  render: function() {
+    $(this.el).html(Mustache.to_html(this.template.html(), this.collection))
+    this.$('textarea').focus()
+    return this
+  },
+  successCreate: function(model, response){
     this.$('[type=submit]').attr('disabled', false)
     this.$('textarea').val("")
     this.$('textarea').focus()
-    new this.modelView({el: this.$('ul'), model: model})
+    var countTag = this.link.find('.count')
+    var count = /^\((\d+)\)$/.exec(countTag.html())
+    count = parseInt(count[1])
+    countTag.html("(" + (count+1) + ")")
+    var listItem = $('<li>')
+    this.$('ul').prepend(listItem)
+    new this.modelView({el: listItem, model: model, contentView: this})
   },
-  error: function(model, response){
+  errorCreate: function(model, response){
     this.$('[type=submit]').attr('disabled', false)
     this.$('textarea').focus()
     alert("Ooops! Ocorreu um erro ao salvar seu comentário. Por favor, tente novamente.")

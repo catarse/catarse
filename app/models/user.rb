@@ -59,6 +59,9 @@ class User < ActiveRecord::Base
   def short_name
     truncate display_name, :length => 26
   end
+  def medium_name
+    truncate display_name, :length => 42
+  end
   def display_image
     gravatar_url || image_url || '/images/user.png'
   end
@@ -88,10 +91,12 @@ class User < ActiveRecord::Base
       :id => id,
       :name => display_name,
       :short_name => short_name,
+      :medium_name => medium_name,
       :image => display_image,
       :total_backs => total_backs,
       :backs_text => backs_text,
-      :url => user_path(self)
+      :url => user_path(self),
+      :admin => admin
     }
   end
 

@@ -1,7 +1,7 @@
 var ProjectPaginatedContentView = ProjectContentView.extend({
   initialize: function(){
     $('#loading').waypoint('destroy')
-    _.bindAll(this, "render", "update", "nextPage", "waypoint", "success", "error")
+    _.bindAll(this, "render", "update", "nextPage", "waypoint", "successCreate", "errorCreate")
     this.setOptions()
     this.selectLink()
     this.render()
@@ -28,13 +28,20 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
   },
   update: function(){
     $('#loading img').hide()
-    if(!this.collection.isEmpty())
-      new this.collectionView({el: this.$('ul'), collection: this.collection})
+    if(!this.collection.isEmpty()) {
+      this.collection.each(function(model){
+        var listItem = $('<li>')
+        this.$('ul').append(listItem)
+        new this.modelView({el: listItem, model: model, contentView: this})        
+      }, this)
+    } else if(this.collection.page == 1) {
+      $(this.el).append(this.emptyText)
+    }
     $('#loading').waypoint(this.waypoint, {offset: "100%"})
     return this
   },
-  success: function(model, response){
+  successCreate: function(model, response){
   },
-  error: function(model, response){
+  errorCreate: function(model, response){
   }
 })
