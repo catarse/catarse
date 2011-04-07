@@ -27,9 +27,8 @@ var ModelView = Backbone.View.extend({
   },
   successDestroy: function(model, response){
     var countTag = this.options.contentView.link.find('.count')
-    var count = /^\((\d+)\)$/.exec(countTag.html())
-    count = parseInt(count[1])
-    countTag.html("(" + (count-1) + ")")
+    var count = parseInt((/^\((\d+)\)$/.exec(countTag.html()))[1])
+    countTag.html("(" + (count - 1) + ")")
     this.el.slideUp()
   },
   errorDestroy: function(model, response){

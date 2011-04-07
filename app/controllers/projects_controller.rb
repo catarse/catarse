@@ -61,7 +61,9 @@ class ProjectsController < ApplicationController
       @rewards = @project.rewards.order(:minimum_value).all
       @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
       @updates = @project.updates.all
+      @update = @project.comments.new :project_update => true
       @comments = @project.comments.all
+      @comment = @project.comments.new
     }
   end
   def guidelines

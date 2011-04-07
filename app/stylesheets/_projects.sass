@@ -285,11 +285,13 @@
     #project_comments,#project_updates
       width: 460px
       form
-        text-align: right
         textarea
           width: 424px
           height: 90px
-        input[type=submit]
+        .required abbr
+          display: none
+        .buttons
+          text-align: right
       em
         text-align: center
       #collection_list

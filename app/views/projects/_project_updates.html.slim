@@ -1,8 +1,14 @@
 script type="text/template" id="project_updates_template"
   #project_updates
     -if current_user and (@project.user == current_user or current_user.admin)
-      = form_tag('#', :id => 'new_update_form') do
-        fieldset= text_area_tag 'update_comment'
+      = semantic_form_for @update, :html => { :id => 'new_update_form' } do |form|
+        = form.inputs do
+          = form.input :commentable_type, :as => :hidden
+          = form.input :commentable_id, :as => :hidden
+          = form.input :project_update, :as => :hidden
+          = form.input :title, :label => "Título da sua atualização", :as => :string, :required => true
+          = form.input :comment, :label => "Texto da sua atualização", :as => :text, :required => true
         = render :partial => 'formatting_tips'
-        fieldset= submit_tag 'Enviar atualização'
+        = form.buttons do
+          = form.commit_button 'Enviar atualização'
     ul#collection_list

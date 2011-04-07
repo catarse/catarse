@@ -1,10 +1,14 @@
 script type="text/template" id="project_comments_template"
   #project_comments
     -if current_user
-      = form_tag('#', :id => 'new_comment_form') do
-        fieldset= text_area_tag 'comment_comment'
+      = semantic_form_for @comment, :html => { :id => 'new_comment_form' } do |form|
+        = form.inputs do
+          = form.input :commentable_type, :as => :hidden
+          = form.input :commentable_id, :as => :hidden
+          = form.input :comment, :label => "Deixe seu comentário sobre este projeto", :as => :text, :required => true
         = render :partial => 'formatting_tips'
-        fieldset= submit_tag 'Enviar comentário'
+        = form.buttons do
+          = form.commit_button 'Enviar comentário'
     - else
       em
         | Quer enviar um comentário? 

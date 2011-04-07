@@ -31,6 +31,7 @@ class Comment < ActiveRecord::Base
       :id => id,
       :user => user,
       :display_time => display_time,
+      :title => title,
       :html => comment_html
     }
   end
