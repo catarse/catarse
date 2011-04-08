@@ -46,7 +46,8 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
         new this.modelView({el: listItem, model: model, contentView: this})        
       }, this)
     } else if(this.collection.page == 1) {
-      $(this.el).append(this.emptyText)
+      var empty = $('<div id="empty_text">').html(this.emptyText)
+      $(this.el).append(empty)
     }
     $('#loading').waypoint(this.waypoint, {offset: "100%"})
     return this
@@ -57,7 +58,6 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
     var fieldName = ""
     var valid = true
     this.$('input,textarea').each(function(){
-      
       fieldName = /^\w+\[(\w+)\]$/.exec($(this).attr('name'))
       if(fieldName){
         fieldName = fieldName[1]
@@ -79,6 +79,7 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
     this.$('[type=submit]').attr('disabled', false)
     this.$('input[type=text],textarea').val("")
     this.$('input[type=text],textarea')[0].focus()
+    this.$('#empty_text').remove()
     var countTag = this.link.find('.count')
     var count = parseInt((/^\((\d+)\)$/.exec(countTag.html()))[1])
     countTag.html("(" + (count + 1) + ")")

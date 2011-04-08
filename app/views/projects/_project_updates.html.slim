@@ -6,8 +6,8 @@ script type="text/template" id="project_updates_template"
           = form.input :commentable_type, :as => :hidden, :required => false
           = form.input :commentable_id, :as => :hidden, :required => false
           = form.input :project_update, :as => :hidden, :required => false
-          = form.input :title, :label => "Título da sua atualização", :as => :string, :required => true
-          = form.input :comment, :label => "Texto da sua atualização", :as => :text, :required => true
+          = form.input :title, :label => "Título da atualização", :as => :string, :required => true
+          = form.input :comment, :label => "Texto da atualização", :as => :text, :required => true
         = render :partial => 'formatting_tips'
         = form.buttons do
           = form.commit_button 'Enviar atualização'

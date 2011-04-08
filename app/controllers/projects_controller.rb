@@ -203,12 +203,12 @@ class ProjectsController < ApplicationController
   end
   def comments
     @project = Project.find params[:id]
-    @comments = @project.comments.order("created_at DESC").paginate :page => params[:page], :per_page => 10
+    @comments = @project.comments.order("created_at DESC").paginate :page => params[:page], :per_page => 5
     respond_with @comments
   end
   def updates
     @project = Project.find params[:id]
-    @updates = @project.updates.order("created_at DESC").paginate :page => params[:page], :per_page => 10
+    @updates = @project.updates.order("created_at DESC").paginate :page => params[:page], :per_page => 3
     respond_with @updates
   end
   def embed

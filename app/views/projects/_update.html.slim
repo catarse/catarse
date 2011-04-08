@@ -2,14 +2,8 @@ script type="text/template" id="update_template"
   |{{#attributes}}
   h3
     |{{title}}
-  |{{#user}}
-  a href="{{url}}"
-    img src="{{image}}" class="user"
-    |{{short_name}}
-  |{{/user}}
   .time
     |{{display_time}}
-  .clear
   .comment
     |{{{html}}}
   |{{/attributes}}
