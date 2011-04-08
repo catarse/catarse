@@ -55,17 +55,25 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
     event.preventDefault()
     var fields = {}
     var fieldName = ""
+    var valid = true
     this.$('input,textarea').each(function(){
+      
       fieldName = /^\w+\[(\w+)\]$/.exec($(this).attr('name'))
       if(fieldName){
         fieldName = fieldName[1]
         fields[fieldName] = $(this).val()
+        if($(this).parent().hasClass('required') && $.trim($(this).val()) == ""){
+          valid = false
+          $(this).focus()
+          return false
+        }          
       }
     })
+    if(!valid)
+      return
     this.$('[type=submit]').attr('disabled', true)
-    var comment = new this.collection.model(fields)
-    // TODO validations on the models and checking error here
-    comment.save(comment.attributes, {success: this.successCreate, error: this.errorCreate})
+    var item = new this.collection.model(fields)
+    item.save(item.attributes, {success: this.successCreate, error: this.errorCreate})
   },
   successCreate: function(model, response){
     this.$('[type=submit]').attr('disabled', false)
@@ -81,6 +89,6 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
   errorCreate: function(model, response){
     this.$('[type=submit]').attr('disabled', false)
     this.$('input[type=text],textarea')[0].focus()
-    alert("Ooops! Ocorreu um erro ao salvar seu comentário. Por favor, tente novamente.")
+    alert("Ooops! Ocorreu um erro. Por favor, tente novamente.")
   }
 })

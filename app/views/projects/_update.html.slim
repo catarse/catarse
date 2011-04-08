@@ -13,4 +13,8 @@ script type="text/template" id="update_template"
   .comment
     |{{{html}}}
   |{{/attributes}}
-
+  |{{#canDestroy}}
+  .destroy
+    = link_to '#' do
+      = image_tag 'delete_32.png'
+  |{{/canDestroy}}
