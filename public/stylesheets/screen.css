@@ -3364,8 +3364,8 @@ body#site #press a {
 }
 /* line 23, ../../app/stylesheets/_press.sass */
 body#site #press a img {
-  margin: 0 2px;
-  height: 80px;
+  margin: 0 1px;
+  height: 75px;
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
