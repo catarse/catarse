@@ -315,7 +315,7 @@ a img {
   right: -32px;
 }
 
-/* line 33, ../../app/stylesheets/screen.sass */
+/* line 34, ../../app/stylesheets/screen.sass */
 body#site {
   background: url("/images/bg.png") repeat;
   text-rendering: optimizeLegibility;
@@ -513,7 +513,7 @@ body#site form .important {
 body#site form .important a {
   color: black;
 }
-/* line 36, ../../app/stylesheets/screen.sass */
+/* line 37, ../../app/stylesheets/screen.sass */
 body#site table {
   width: 100%;
 }
@@ -551,7 +551,7 @@ body#site table tbody tr:hover {
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.4);
 }
-/* line 38, ../../app/stylesheets/screen.sass */
+/* line 39, ../../app/stylesheets/screen.sass */
 body#site .flash {
   z-index: 500;
   position: fixed;
@@ -583,7 +583,7 @@ body#site .flash .failure.wrapper, body#site .flash .error.wrapper {
   background-image: -moz-linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
   background-image: linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
 }
-/* line 40, ../../app/stylesheets/screen.sass */
+/* line 41, ../../app/stylesheets/screen.sass */
 body#site .overlay {
   background-color: #dddddd;
   background: rgba(180, 180, 180, 0.8);
@@ -594,7 +594,7 @@ body#site .overlay {
   height: 100%;
   z-index: 100;
 }
-/* line 42, ../../app/stylesheets/screen.sass */
+/* line 43, ../../app/stylesheets/screen.sass */
 body#site #login {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -717,7 +717,7 @@ body#site #login a.close:hover, body#site #login a.close:focus {
   -o-transform: scale(1.05);
   transform: scale(1.05);
 }
-/* line 44, ../../app/stylesheets/screen.sass */
+/* line 45, ../../app/stylesheets/screen.sass */
 body#site #pre_header {
   background-color: #0084b9;
   text-align: center;
@@ -784,7 +784,7 @@ body#site #pre_header .back_notice a.close, body#site #pre_header .notification 
 body#site #pre_header .back_notice a.close:hover, body#site #pre_header .back_notice a.close:focus, body#site #pre_header .notification a.close:hover, body#site #pre_header .notification a.close:focus {
   color: white;
 }
-/* line 46, ../../app/stylesheets/screen.sass */
+/* line 47, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 920px;
   margin: 0 auto;
@@ -813,7 +813,7 @@ body#site #header h1 a {
 body#site #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 50, ../../app/stylesheets/screen.sass */
+/* line 51, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
   margin-top: 38px;
@@ -852,7 +852,7 @@ body#site #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 52, ../../app/stylesheets/screen.sass */
+/* line 53, ../../app/stylesheets/screen.sass */
 body#site #user {
   float: right;
   margin-top: 12px;
@@ -973,7 +973,7 @@ body#site #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 54, ../../app/stylesheets/screen.sass */
+/* line 55, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
@@ -988,7 +988,7 @@ body#site #content_wrapper {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
 }
-/* line 56, ../../app/stylesheets/screen.sass */
+/* line 57, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content_header {
   position: relative;
   text-align: center;
@@ -1074,7 +1074,7 @@ body#site #content_wrapper #content_header #badge:hover {
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 58, ../../app/stylesheets/screen.sass */
+/* line 59, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content {
   padding: 40px;
 }
@@ -3058,7 +3058,7 @@ body#site #embed .project_box {
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0 !important;
 }
-/* line 64, ../../app/stylesheets/screen.sass */
+/* line 65, ../../app/stylesheets/screen.sass */
 body#site #video_embed {
   text-align: center;
   padding: 16px;
@@ -3118,7 +3118,7 @@ body#site #video_embed #catarse_link a {
 body#site #video_embed #catarse_link a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 66, ../../app/stylesheets/screen.sass */
+/* line 67, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 20px 0 80px 0;
@@ -3250,7 +3250,7 @@ body#site #footer #colophon a#softa_logo {
 body#site #footer #colophon a#softa_logo:hover {
   background-position: 0 -50px;
 }
-/* line 68, ../../app/stylesheets/screen.sass */
+/* line 69, ../../app/stylesheets/screen.sass */
 body#site #teaser {
   text-align: center;
 }
@@ -3326,7 +3326,7 @@ body#site .text ul {
 body#site .text ul li {
   margin-bottom: 16px;
 }
-/* line 72, ../../app/stylesheets/screen.sass */
+/* line 73, ../../app/stylesheets/screen.sass */
 body#site #press {
   background-color: #dddbd1;
   background-color: rgba(179, 177, 157, 0.3);
@@ -3381,6 +3381,50 @@ body#site #press a img:hover {
   -webkit-transform: scale(1.04);
   -o-transform: scale(1.04);
   transform: scale(1.04);
+}
+/* line 75, ../../app/stylesheets/screen.sass */
+body#site #promo_video {
+  margin-bottom: 40px;
+  margin-left: 10px;
+}
+/* line 4, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video iframe {
+  border: 5px solid #bdbbb1;
+  border: 5px solid rgba(173, 171, 151, 0.8);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 8, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #promo_title {
+  float: right;
+  padding-top: 12px;
+  width: 220px;
+  font-family: "museo-500";
+  font-size: 28px;
+  line-height: 40px;
+  color: #888888;
+}
+/* line 16, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #promo_title .retrospective, body#site #promo_video #promo_title .surprise {
+  font-size: 36px;
+}
+/* line 18, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #promo_title .retrospective {
+  color: #222222;
+}
+/* line 20, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #promo_title .surprise {
+  color: #008800;
+}
+/* line 22, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #promo_title .catarse {
+  font-family: "museo-700";
+  color: #222222;
+  font-size: 38px;
 }
 /* line 2, ../../app/stylesheets/_credits.sass */
 body#site #credits h1 {
