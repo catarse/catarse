@@ -1,8 +1,13 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user
+  helper_method :current_user, :current_site
   private
+  def current_site
+    return @current_site if @current_site
+    return @current_site = session[:current_site] if session[:current_site]
+    nil
+  end
   def current_user
     return @current_user if @current_user
     if session[:user_id]

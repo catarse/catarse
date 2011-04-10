@@ -56,4 +56,5 @@ Catarse::Application.routes.draw do
     end
   end
   resources :comments, :only => [:index, :show, :create, :destroy]
+  resources :sites, :only => [:show]
 end
