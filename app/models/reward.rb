@@ -1,6 +1,7 @@
 # coding: utf-8
 class Reward < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::TextHelper
   include ERB::Util
   belongs_to :project
   has_many :backers
@@ -21,6 +22,17 @@ class Reward < ActiveRecord::Base
   end
   def display_minimum
     number_to_currency minimum_value, :unit => 'R$ ', :precision => 0, :delimiter => '.'
+  end
+  def short_description
+    truncate description, :length => 35
+  end
+  def as_json(options={})
+    {
+      :id => id,
+      :display_minimum => display_minimum,
+      :description => description,
+      :short_description => short_description
+    }
   end
 end
 

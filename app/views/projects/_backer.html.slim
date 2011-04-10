@@ -1,6 +1,6 @@
 script type="text/template" id="backer_template"
   |{{#attributes}}
-  |{{confirmed_at}} 
+  |{{confirmed_at}}
 
   |{{#anonymous}}
   = image_tag 'user.png', :class => 'user'
@@ -20,6 +20,27 @@ script type="text/template" id="backer_template"
   |{{/user}}
   |{{/anonymous}}
 
-  .clear
+  - if current_user and (current_user == @project.user or current_user.admin)
+    p.reward
+      | Valor: 
+      |{{display_value}}
+      | . Email:
+      |{{#user}} 
+      |{{email}}
+      |{{^email}}
+      | não informado.
+      |{{/email}}
+      |{{/user}} 
+      br
+      |{{#reward}}
+      | Recompensa: 
+      |{{display_minimum}} - {{short_description}}
+      |{{/reward}}
+      |{{^reward}}
+      | Este apoiador não selecionou nenhuma recompensa
+      |{{/reward}}
+ 
   |{{/attributes}}
+
+  .clear
 

@@ -66,7 +66,9 @@ class Backer < ActiveRecord::Base
       :anonymous => anonymous,
       :confirmed => confirmed,
       :confirmed_at => display_confirmed_at,
-      :user => user
+      :display_value => display_value,
+      :user => user,
+      :reward => reward
     }
   end
 end

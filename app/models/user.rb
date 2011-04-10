@@ -89,6 +89,7 @@ class User < ActiveRecord::Base
   def as_json(options={})
     {
       :id => id,
+      :email => email,
       :name => display_name,
       :short_name => short_name,
       :medium_name => medium_name,
