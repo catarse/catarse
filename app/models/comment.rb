@@ -17,8 +17,8 @@ class Comment < ActiveRecord::Base
       '"' => '"' }
     redcloth :target => :_blank
     image
-    youtube :width => 414, :height => 270
-    vimeo :width => 414, :height => 270
+    youtube :width => 580, :height => 378
+    vimeo :width => 580, :height => 378
     link :target => :_blank
   end
     

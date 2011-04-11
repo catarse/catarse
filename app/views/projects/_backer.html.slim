@@ -13,7 +13,7 @@ script type="text/template" id="backer_template"
   |{{#user}}
   a href="{{url}}"
     img src="{{image}}" class="user"
-    |  {{short_name}}
+    |  {{medium_name}}
     = image_tag 'badge.png', :class => "badge"
   p
     |{{backs_text}}
@@ -34,7 +34,7 @@ script type="text/template" id="backer_template"
       br
       |{{#reward}}
       | Recompensa: 
-      |{{display_minimum}} - {{short_description}}
+      |{{display_minimum}} - {{medium_description}}
       |{{/reward}}
       |{{^reward}}
       | Este apoiador não selecionou nenhuma recompensa

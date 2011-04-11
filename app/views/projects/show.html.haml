@@ -23,7 +23,7 @@
       Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)
 #project_description
   #project_video
-    %iframe{:src => @project.video_embed_url, :width => "460", :height => "300"}
+    %iframe{:src => @project.video_embed_url, :width => "610", :height => "346"}
     #project_share
       %h1 Faça parte disto e compartilhe este projeto
       %ul
@@ -39,10 +39,10 @@
           = image_tag 'link_32.png', :title => "Compartilhe o link"
           Link
           = text_field_tag "project_link", @project.short_url
-      .embed
-        = link_to '#', :id => 'embed_link' do
-          = image_tag 'embed_32.png', :title => "Incorpore este projeto no seu site"
-          Incorpore este projeto no seu site
+        %li.embed
+          = link_to '#', :id => 'embed_link' do
+            = image_tag 'embed_32.png', :title => "Incorpore este projeto no seu site"
+            Incorporar
     = render 'embed'
   #project_menu
     %ul

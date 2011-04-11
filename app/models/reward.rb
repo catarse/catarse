@@ -26,12 +26,16 @@ class Reward < ActiveRecord::Base
   def short_description
     truncate description, :length => 35
   end
+  def medium_description
+    truncate description, :length => 65
+  end
   def as_json(options={})
     {
       :id => id,
       :display_minimum => display_minimum,
       :description => description,
-      :short_description => short_description
+      :short_description => short_description,
+      :medium_description => medium_description
     }
   end
 end

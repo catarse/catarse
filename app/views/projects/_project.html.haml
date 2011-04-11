@@ -9,6 +9,7 @@
             = image_tag 'waiting_confirmation.png'
           - else
             = image_tag 'not_successful.png'
+    .project_category= project.category.name
     .project_header
       = link_to project_path(project) do
         = image_tag project.display_image
@@ -20,7 +21,6 @@
         #{on_the_spot_edit project, :headline}
       - else
         = project.headline
-    %span.project_category= project.category.name
     .clear
   .project_progress
     .progress_bar
