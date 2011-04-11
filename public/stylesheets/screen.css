@@ -1337,7 +1337,7 @@ body#site .project_box .project_header .project_image {
 }
 /* line 35, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header .project_image img {
-  max-height: 195px;
+  max-width: 254px;
 }
 /* line 37, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header h1 {
