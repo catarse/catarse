@@ -314,7 +314,6 @@ body#site #embed .project_box .project_progress .progress_info ul li:last-child,
 }
 /* line 147, ../../../app/stylesheets/sites/multidao.sass */
 body#site .navigation .prev, body#site .navigation .next {
-  z-index: 999;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: normal;
   top: 0;
@@ -338,14 +337,14 @@ body#site .navigation .prev, body#site .navigation .next {
   font-size: 20px;
   line-height: 20px;
 }
-/* line 161, ../../../app/stylesheets/sites/multidao.sass */
+/* line 160, ../../../app/stylesheets/sites/multidao.sass */
 body#site .navigation .prev:hover, body#site .navigation .next:hover {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
 }
-/* line 163, ../../../app/stylesheets/sites/multidao.sass */
+/* line 162, ../../../app/stylesheets/sites/multidao.sass */
 body#site .navigation .prev:disabled, body#site .navigation .next:disabled {
   color: #a1a1a1;
   border: none;
@@ -355,22 +354,22 @@ body#site .navigation .prev:disabled, body#site .navigation .next:disabled {
   background-image: -moz-linear-gradient(top, #c8c8c8 0%, #c8c8c8 100%);
   background-image: linear-gradient(top, #c8c8c8 0%, #c8c8c8 100%);
 }
-/* line 169, ../../../app/stylesheets/sites/multidao.sass */
+/* line 168, ../../../app/stylesheets/sites/multidao.sass */
 body#site .navigation .prev:disabled:hover, body#site .navigation .next:disabled:hover {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
 }
-/* line 171, ../../../app/stylesheets/sites/multidao.sass */
+/* line 170, ../../../app/stylesheets/sites/multidao.sass */
 body#site .navigation .prev {
   left: -6px !important;
 }
-/* line 173, ../../../app/stylesheets/sites/multidao.sass */
+/* line 172, ../../../app/stylesheets/sites/multidao.sass */
 body#site .navigation .next {
   right: -6px !important;
 }
-/* line 179, ../../../app/stylesheets/sites/multidao.sass */
+/* line 178, ../../../app/stylesheets/sites/multidao.sass */
 body#site #explore_projects #explore_menu ul li a.selected, body#site #explore_projects #explore_menu ul li a:hover {
   background-color: #6ab9e0;
   text-shadow: transparent 0 0 0;

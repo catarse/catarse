@@ -132,7 +132,7 @@ a img {
 
 /* line 1, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_mouseover {
-  background-color: #009600;
+  background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 
@@ -164,7 +164,7 @@ a img {
 }
 /* line 21, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form input:focus, .on_the_spot_editing form textarea:focus, .on_the_spot_editing form select:focus {
-  background-color: #009600;
+  background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 24, ../../app/stylesheets/_on_the_spot.sass */
@@ -247,7 +247,7 @@ a img {
 
 /* line 4, ../../app/stylesheets/_slider.sass */
 .navigation .prev, .navigation .next {
-  z-index: 999;
+  z-index: 400;
   font-family: "museo-500" !important;
   position: absolute;
   top: 172px;
@@ -1309,7 +1309,7 @@ body#site .project_box .status_image {
   position: absolute;
   top: -5px;
   left: -5px;
-  z-index: 999;
+  z-index: 100;
 }
 /* line 25, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header {
@@ -1383,7 +1383,7 @@ body#site .project_box .project_category {
   top: 139px;
   left: 0px;
   width: 234px;
-  z-index: 666;
+  z-index: 100;
 }
 /* line 64, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_owner {
@@ -2454,7 +2454,7 @@ body#site #back_options #backer_form input[type=text] {
 }
 /* line 547, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form input[type=text]:focus {
-  background-color: #009600;
+  background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 550, ../../app/stylesheets/_projects.sass */
