@@ -1,0 +1,31 @@
+#footer_menu
+  %ul
+    %li= link_to "Como funciona?", guidelines_path
+    %li= link_to "FAQ/Ajuda", faq_path
+    %li= link_to "Termos de uso", terms_path
+    %li= link_to "Política de privacidade", privacy_path
+#social_menu
+  %ul
+    %li
+      = link_to 'http://www.facebook.com/pages/Multidaoart/139326962792941', :target => :_blank do
+        = image_tag('sites/multidao/facebook.png', :title => "Facebook")
+        Curta no Facebook
+    %li
+      = link_to 'http://twitter.com/multidao_art', :target => :_blank do
+        = image_tag('sites/multidao/twitter.png', :title => "Twitter")
+        Siga no Twitter
+    %li
+      = link_to 'http://blog.multidao.art.br', :target => :_blank do
+        = image_tag('sites/multidao/rss.png', :title => "Blog")
+        Leia o blog
+    %li
+      = link_to "mailto:contato@multidao.art.br" do
+        = image_tag('sites/multidao/contact.png', :title => "Contato")
+        contato@multidao.art.br
+#colophon
+  #powered_by
+    = link_to "http://catarse.me", :target => :_blank do
+      = image_tag('sites/multidao/powered_by.png', :title => "powered by Catarse")
+  #grupo_comum
+    = link_to "http://comum.cc", :target => :_blank do
+      = image_tag('sites/multidao/logo_comum.png', :title => "Grupo Comum")

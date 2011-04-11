@@ -2138,7 +2138,7 @@ body#site #project_description #project_updates ul li:last-child {
 }
 /* line 355, ../../app/stylesheets/_projects.sass */
 body#site #project_description #loading {
-  width: 94%;
+  width: 580px;
   text-align: center;
 }
 /* line 358, ../../app/stylesheets/_projects.sass */
@@ -3274,6 +3274,14 @@ body#site #footer #colophon a#softa_logo {
 /* line 47, ../../app/stylesheets/_footer.sass */
 body#site #footer #colophon a#softa_logo:hover {
   background-position: 0 -50px;
+}
+/* line 49, ../../app/stylesheets/_footer.sass */
+body#site #footer #powered_by {
+  float: left;
+}
+/* line 51, ../../app/stylesheets/_footer.sass */
+body#site #footer #grupo_comum {
+  float: right;
 }
 /* line 69, ../../app/stylesheets/screen.sass */
 body#site #teaser {

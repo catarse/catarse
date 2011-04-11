@@ -12,6 +12,6 @@
   = javascript_include_tag 'jquery-1.4.4.min', 'jquery-ui-1.8.6.custom.min', 'jquery.ui.datepicker-pt-BR', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'underscore-min', 'backbone-min', 'mustache', 'waypoints.min'
   = javascript_include_tag :on_the_spot
   = csrf_meta_tag
-  -#%link{ :rel => 'shortcut icon', :href => '/images/favicon.png' }
+  %link{ :rel => 'shortcut icon', :href => "/images/sites/#{current_site}/favicon.ico" }
   = render '/layouts/analytics'
   = render '/layouts/uservoice'

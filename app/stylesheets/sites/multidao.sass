@@ -71,7 +71,29 @@ body#site
       padding: 40px 0
       margin: 0 auto
   #footer
-    background: #333
+    background: #252525
+    text-transform: lowercase
+    #footer_menu
+      width: 800px
+      ul
+        +horizontal-list(48px)
+        li
+          a
+            font-weight: normal
+            color: #fff
+    #social_menu
+      width: 800px
+      img
+        margin-right: 4px
+        height: 32px
+      ul
+        +horizontal-list(26px)
+        li
+          a
+            font-weight: normal
+            color: #aaa
+    #colophon
+      width: 936px
   .project_list_header
     text-transform: lowercase
   .project_box
@@ -95,6 +117,9 @@ body#site
       a:hover
         +text-shadow(transparent, 0, 0, 0)
     .project_category
+      text-align: left
+      text-transform: lowercase
+      font-size: 12px
       top: 169px
       width: 244px
     .project_owner
@@ -172,6 +197,9 @@ body#site
       left: -6px !important
     .next
       right: -6px !important
+  .on_the_spot_editing
+    &:after
+      content: " " url(/images/sites/multidao/pencil.png)  
   #explore_projects
     #explore_menu
       ul

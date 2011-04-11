@@ -49,34 +49,5 @@
             = yield :content_header
         #content
           = yield
-      #footer
-        #footer_menu
-          %ul
-            -#%li= link_to "Sobre nós", '#'
-            %li= link_to "Como funciona?", guidelines_path
-            %li= link_to "FAQ/Ajuda", faq_path
-            %li= link_to "Termos de uso", terms_path
-            %li= link_to "Política de privacidade", privacy_path
-            %li= mail_to "contato@catarse.me", "Contato"
-        #social_menu
-          %ul
-            %li
-              = link_to 'http://twitter.com/Catarse_', :target => :_blank do
-                = image_tag('social/twitter_32.png', :title => "Twitter")
-                Siga no Twitter
-            %li
-              = link_to 'http://www.facebook.com/Catarse.me', :target => :_blank do
-                = image_tag('social/facebook_32.png', :title => "Facebook")
-                Curta no Facebook
-            %li
-              = link_to 'http://blog.catarse.me', :target => :_blank do
-                = image_tag('social/rss_32.png', :title => "Blog")
-                Leia o blog
-        #colophon
-          = link_to "", "http://softa.com.br", :target => :_blank, :id => "softa_logo"
-          %p#copyright
-            Copyleft
-            = image_tag 'copyleft.png'
-            = Date.today.year
+      #footer= render :partial => "/sites/#{current_site}/footer"
     = render '/layouts/login' unless current_user
-

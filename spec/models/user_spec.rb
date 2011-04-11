@@ -161,11 +161,11 @@ describe User do
     u = Factory(:user, :image_url => "image.png", :email => nil)
     u.display_image.should == "image.png"
     u = Factory(:user, :image_url => nil, :email => nil)
-    u.display_image.should == "user.png"
+    u.display_image.should == "/images/user.png"
   end
   it "should insert a gravatar in user's image if there is one available" do
     u = Factory(:user, :image_url => nil, :email => 'diogob@gmail.com')
-    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=http://catarse.me/images/user.png"
+    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{BASE_URL}/images/user.png"
   end
   it "should have a remember_me_hash with the MD5 of the provider + ## + uid" do
     u = Factory(:user, :provider => "foo", :uid => "bar")
