@@ -1,4 +1,4 @@
-var size = 280
+var size = 312
 $('.next').click(function(e){
   e.preventDefault()
   var position = parseInt($(this).parent().parent().find('#position').val())

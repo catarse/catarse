@@ -1,0 +1,95 @@
+/* line 2, ../../../app/stylesheets/sites/multidao.sass */
+body#site {
+  background: white;
+  text-shadow: white 0px 0px 0px;
+}
+/* line 5, ../../../app/stylesheets/sites/multidao.sass */
+body#site a {
+  color: #6ab9e0;
+}
+/* line 7, ../../../app/stylesheets/sites/multidao.sass */
+body#site a:hover {
+  color: #6ebde4;
+}
+/* line 9, ../../../app/stylesheets/sites/multidao.sass */
+body#site #pre_header {
+  background-color: #6ab9e0;
+}
+/* line 11, ../../../app/stylesheets/sites/multidao.sass */
+body#site #menu {
+  text-transform: lowercase;
+}
+/* line 13, ../../../app/stylesheets/sites/multidao.sass */
+body#site #main {
+  width: 100%;
+}
+/* line 15, ../../../app/stylesheets/sites/multidao.sass */
+body#site #header_wrapper {
+  background: #222222;
+}
+/* line 17, ../../../app/stylesheets/sites/multidao.sass */
+body#site #header {
+  width: 890px;
+  margin: 0 auto;
+}
+/* line 20, ../../../app/stylesheets/sites/multidao.sass */
+body#site #header h1 a {
+  color: white;
+  font-family: "museo-700";
+  font-size: 36px;
+}
+/* line 24, ../../../app/stylesheets/sites/multidao.sass */
+body#site #content_header_wrapper {
+  background: #e5e5e5;
+}
+/* line 26, ../../../app/stylesheets/sites/multidao.sass */
+body#site #content_wrapper {
+  background: white;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -o-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  border-radius: 0px;
+  -moz-box-shadow: white 0 0 0 0;
+  -webkit-box-shadow: white 0 0 0 0;
+  -o-box-shadow: white 0 0 0 0;
+  box-shadow: white 0 0 0 0;
+}
+/* line 30, ../../../app/stylesheets/sites/multidao.sass */
+body#site #content_wrapper #content_header {
+  width: 890px;
+  padding: 20px 0;
+  margin: 0 auto;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -o-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  border-radius: 0px;
+  -moz-box-shadow: white 0 0 0 0;
+  -webkit-box-shadow: white 0 0 0 0;
+  -o-box-shadow: white 0 0 0 0;
+  box-shadow: white 0 0 0 0;
+  background-color: transparent;
+}
+/* line 37, ../../../app/stylesheets/sites/multidao.sass */
+body#site #content_wrapper #content_header h1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: black;
+  font-size: 38px;
+  text-transform: lowercase;
+  text-align: left;
+  text-shadow: white 0 0 0;
+  font-weight: bold;
+}
+/* line 45, ../../../app/stylesheets/sites/multidao.sass */
+body#site #content_wrapper #content {
+  width: 936px;
+  padding: 40px 0;
+  margin: 0 auto;
+}
+/* line 49, ../../../app/stylesheets/sites/multidao.sass */
+body#site #footer {
+  background: #333333;
+}

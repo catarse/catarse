@@ -1,25 +1,6 @@
-= content_for :content_header do
-  %h1 Faça acontecer os projetos em que você acredita!
-  %h2 Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história.
-= content_for :meta_tags do
-  %meta{:name => "description", :content => "Faça acontecer os projetos em que você acredita! Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história."}
-  -# Meta tags for facebook social graph
-  %meta{:property => "og:title", :content => "#{@title}#{' · ' if @title}Catarse"}
-  %meta{:property => "og:type", :content => 'cause'}
-  %meta{:property => "og:url", :content => root_url}
-  %meta{:property => "og:image", :content => 'http://catarse.me/images/home_small.png'}
-  %meta{:property => "og:site_name", :content => 'Catarse'}
-  %meta{:property => "og:description", :content => "Faça acontecer os projetos em que você acredita! Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história."}
-#promo_video
-  %iframe{:src => "http://player.vimeo.com/video/22152660?title=0&amp;byline=0&amp;portrait=0&amp;color=008800", :width => "586", :height => "330"}
-  #promo_title
-    Uma
-    .retrospective pequena retrospectiva
-    e
-    .surprise grande surpresa
-    do
-    .catarse Catarse
-  .clear
+= render :partial => "/sites/#{current_site}/index_header"
+= render :partial => "/sites/#{current_site}/index_meta_tags"
+= render :partial => "/sites/#{current_site}/promo_video"
 .project_list_header Projetos em destaque
 = render :partial => 'project', :collection => @recommended
 .clear
@@ -30,7 +11,7 @@
     .slider_wrapper
       = hidden_field_tag 'total_projects', @recent.size
       = hidden_field_tag 'position', 0
-      .slider{ :style => "width: #{@recent.count * 280}px" }
+      .slider{ :style => "width: #{@recent.count * 312}px" }
         = render :partial => 'project', :collection => @recent
         .clear
   .navigation
@@ -43,7 +24,7 @@
     .slider_wrapper
       = hidden_field_tag 'total_projects', @successful.size
       = hidden_field_tag 'position', 0
-      .slider{ :style => "width: #{@successful.count * 280}px" }
+      .slider{ :style => "width: #{@successful.count * 312}px" }
         = render :partial => 'project', :collection => @successful
         .clear
   .navigation

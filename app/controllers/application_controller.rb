@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def current_site
     return @current_site if @current_site
     return @current_site = session[:current_site] if session[:current_site]
-    nil
+    @current_site = "catarse"
   end
   def current_user
     return @current_user if @current_user
