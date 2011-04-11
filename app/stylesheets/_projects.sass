@@ -25,14 +25,15 @@
     .project_header
       position: relative
       text-align: center
-      img
+      .project_image
+        margin: -10px 0 6px -10px
         +border-top-left-radius(3px)
         +border-top-right-radius(3px)
         height: 165px
         width: 254px
-        margin: -10px 0 6px -10px
-        +transition
-        &:hover
+        overflow: hidden
+        img
+          max-height: 195px
       h1
         text-align: left
         font-family: "museo-300"

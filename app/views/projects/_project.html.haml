@@ -12,7 +12,7 @@
     .project_category= project.category.name
     .project_header
       = link_to project_path(project) do
-        = image_tag project.display_image
+        .project_image= image_tag project.display_image
         %h1= project.name
     .project_owner
       por #{project.user.name}
