@@ -6,13 +6,15 @@ body#site
   a
     color: #6ab9e0
   a:hover
-    color: #6ebde4
+    color: #7ecdf4
   #pre_header
     background-color: #6ab9e0
   #menu
     text-transform: lowercase
+    font-size: 16px
   #user
     a
+      font-size: 16px
       color: #aaa
       img#display_image
         +box-shadow(transparent, 0, 0, 0)
@@ -33,6 +35,7 @@ body#site
     margin: 0 auto
     h1
       font-family: "museo-500"
+      padding: 20px 0
       a
         color: #fff
         font-size: 36px
@@ -47,7 +50,7 @@ body#site
     +border-radius(0px)
     #content_header
       width: 890px
-      padding: 32px 0
+      padding: 24px 0 32px 0
       margin: 0 auto
       +border-radius(0px)
       +box-shadow(transparent, 0, 0, 0)
@@ -61,11 +64,14 @@ body#site
         text-align: left
         font-weight: bold
         +text-shadow(transparent, 0px, 0px, 0px)
+        letter-spacing: -2px
+        padding-bottom: 16px
       h2
         +text-shadow(transparent, 0px, 0px, 0px)
         text-transform: lowercase 
         text-align: left
         padding: 0
+        color: #4c4c4c
     #content
       width: 936px
       padding: 40px 0
@@ -73,10 +79,12 @@ body#site
   #footer
     background: #252525
     text-transform: lowercase
+    font-size: 16px
     #footer_menu
       width: 800px
+      padding-bottom: 40px
       ul
-        +horizontal-list(48px)
+        +horizontal-list(56px)
         li
           a
             font-weight: normal
@@ -113,6 +121,7 @@ body#site
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important
         font-weight: bold
         color: #4C525E !important
+        line-height: 14px !important
       .project_image
         +border-radius(0px)
         height: 195px
@@ -194,6 +203,7 @@ body#site
       line-height: 20px
       &:hover
         +scale(1)
+        width: 24px
       &:disabled
         color: #a1a1a1
         border: none
@@ -202,10 +212,21 @@ body#site
         +linear-gradient(color_stops(#c8c8c8, #c8c8c8))
         &:hover
           +scale(1)
+          width: 20px
     .prev
       left: -6px !important
+      &:hover
+        left: -10px !important
+      &:disabled
+        &:hover
+          left: -6px !important
     .next
       right: -6px !important
+      &:hover
+        right: -10px !important
+      &:disabled
+        &:hover
+          right: -6px !important
   .on_the_spot_editing
     &:after
       content: " " url(/images/sites/multidao/pencil.png)  
