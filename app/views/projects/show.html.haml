@@ -23,25 +23,25 @@
       Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)
 #project_description
   #project_video
-    %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp;color=008800", :width => "610", :height => "346"}
+    %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "610", :height => "346"}
     #project_share
       %h1 Faça parte disto e compartilhe este projeto
       %ul
-        %li
-          = link_to "http://twitter.com/?status=Confira o projeto \"#{@project.name}\" no @Catarse_ #{@project.short_url}", :target => :_blank do
-            = image_tag 'auth/twitter_32.png', :title => 'Twitter'
-            Twitter
-        %li
+        %li.social
           = link_to "http://www.facebook.com/share.php?u=#{project_url(@project)}&t=Confira o projeto \"#{@project.name}\" no Catarse&v=4", :target => :_blank do
-            = image_tag 'auth/facebook_32.png', :title => 'Facebook'
+            = image_tag "sites/#{current_site}/facebook_share.png", :title => 'Facebook'
             Facebook
-        %li
-          = image_tag 'link_32.png', :title => "Compartilhe o link"
+        %li.social
+          = link_to "http://twitter.com/?status=Confira o projeto \"#{@project.name}\" no @Catarse_ #{@project.short_url}", :target => :_blank do
+            = image_tag "sites/#{current_site}/twitter_share.png", :title => 'Twitter'
+            Twitter
+        %li.link
+          = image_tag "sites/#{current_site}/link_share.png", :title => "Compartilhe o link"
           Link
           = text_field_tag "project_link", @project.short_url
         %li.embed
           = link_to '#', :id => 'embed_link' do
-            = image_tag 'embed_32.png', :title => "Incorpore este projeto no seu site"
+            = image_tag "sites/#{current_site}/embed_share.png", :title => "Incorpore este projeto no seu site"
             Incorporar
     = render 'embed'
   #project_menu
