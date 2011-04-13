@@ -2616,7 +2616,7 @@ body#site #back_options #backer_form li.radio ol li:last-child {
   border: none;
 }
 /* line 609, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.radio ol li:hover {
+body#site #back_options #backer_form li.radio ol li.selected, body#site #back_options #backer_form li.radio ol li:hover {
   background-color: #bbddbb;
 }
 /* line 611, ../../app/stylesheets/_projects.sass */
@@ -2667,22 +2667,23 @@ body#site #back_options #backer_form .reward_minimum_value {
 }
 /* line 640, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form .reward_description {
+  clear: both;
   float: left;
   margin-left: 28px;
 }
-/* line 643, ../../app/stylesheets/_projects.sass */
+/* line 644, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form .buttons {
   text-align: center;
   margin-top: 16px;
 }
-/* line 646, ../../app/stylesheets/_projects.sass */
+/* line 647, ../../app/stylesheets/_projects.sass */
 body#site #back_info {
   float: right;
   width: 362px;
   font-size: 16px;
   margin-right: 10px;
 }
-/* line 651, ../../app/stylesheets/_projects.sass */
+/* line 652, ../../app/stylesheets/_projects.sass */
 body#site #back_info img {
   float: left;
   width: 128px;
@@ -2692,32 +2693,32 @@ body#site #back_info img {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-bottom: 16px;
 }
-/* line 656, ../../app/stylesheets/_projects.sass */
+/* line 657, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info {
   float: right;
   width: 204px;
   margin-bottom: 16px;
 }
-/* line 660, ../../app/stylesheets/_projects.sass */
+/* line 661, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_name a {
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
 }
-/* line 664, ../../app/stylesheets/_projects.sass */
+/* line 665, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_owner {
   color: #777777;
 }
-/* line 666, ../../app/stylesheets/_projects.sass */
+/* line 667, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_owner a {
   text-decoration: none;
   color: #222222;
 }
-/* line 669, ../../app/stylesheets/_projects.sass */
+/* line 670, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_owner a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 671, ../../app/stylesheets/_projects.sass */
+/* line 672, ../../app/stylesheets/_projects.sass */
 body#site #back_info #project_info .project_expires_at {
   font-size: 16px;
   margin-top: 8px;
@@ -2725,23 +2726,23 @@ body#site #back_info #project_info .project_expires_at {
   text-transform: uppercase;
   color: #666666;
 }
-/* line 677, ../../app/stylesheets/_projects.sass */
+/* line 678, ../../app/stylesheets/_projects.sass */
 body#site #project_review {
   text-align: center;
   font-size: 28px;
   line-height: 32px;
   margin: 0 10px;
 }
-/* line 682, ../../app/stylesheets/_projects.sass */
+/* line 683, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_text {
   font-size: 22px;
   margin: 20px 0;
 }
-/* line 685, ../../app/stylesheets/_projects.sass */
+/* line 686, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_text .reward {
   font-style: italic;
 }
-/* line 687, ../../app/stylesheets/_projects.sass */
+/* line 688, ../../app/stylesheets/_projects.sass */
 body#site #project_review #credits_notice {
   font-size: 18px;
   width: 90%;
@@ -2763,69 +2764,69 @@ body#site #project_review #credits_notice {
   box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
   margin: 32px auto 20px auto;
 }
-/* line 699, ../../app/stylesheets/_projects.sass */
+/* line 700, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form {
   text-align: left;
   margin: 0 auto;
   width: 476px;
 }
-/* line 703, ../../app/stylesheets/_projects.sass */
+/* line 704, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_full_name {
   width: 432px;
 }
-/* line 705, ../../app/stylesheets/_projects.sass */
+/* line 706, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_email {
   width: 432px;
 }
-/* line 707, ../../app/stylesheets/_projects.sass */
+/* line 708, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_zip_code {
   width: 120px;
 }
-/* line 709, ../../app/stylesheets/_projects.sass */
+/* line 710, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_street_input {
   margin-left: 12px;
 }
-/* line 711, ../../app/stylesheets/_projects.sass */
+/* line 712, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_street {
   width: 268px;
 }
-/* line 713, ../../app/stylesheets/_projects.sass */
+/* line 714, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_number {
   width: 120px;
 }
-/* line 715, ../../app/stylesheets/_projects.sass */
+/* line 716, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_complement_input {
   margin-left: 12px;
 }
-/* line 717, ../../app/stylesheets/_projects.sass */
+/* line 718, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_complement {
   width: 268px;
 }
-/* line 719, ../../app/stylesheets/_projects.sass */
+/* line 720, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_neighbourhood {
   width: 192px;
 }
-/* line 721, ../../app/stylesheets/_projects.sass */
+/* line 722, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_city_input {
   margin-left: 12px;
 }
-/* line 723, ../../app/stylesheets/_projects.sass */
+/* line 724, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_city {
   width: 194px;
 }
-/* line 725, ../../app/stylesheets/_projects.sass */
+/* line 726, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_address_state {
   width: 220px;
 }
-/* line 727, ../../app/stylesheets/_projects.sass */
+/* line 728, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_phone_number_input {
   margin-left: 12px;
 }
-/* line 729, ../../app/stylesheets/_projects.sass */
+/* line 730, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form #user_phone_number {
   width: 198px;
 }
-/* line 731, ../../app/stylesheets/_projects.sass */
+/* line 732, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form .inputs ol {
   margin: 0;
   padding: 0;
@@ -2853,12 +2854,12 @@ body#site #project_review #review_form .inputs ol li:first-child, body#site #pro
 body#site #project_review #review_form .inputs ol li:last-child, body#site #project_review #review_form .inputs ol li.last {
   padding-right: 0px;
 }
-/* line 733, ../../app/stylesheets/_projects.sass */
+/* line 734, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form .submit {
   text-align: center;
   margin-top: 20px;
 }
-/* line 736, ../../app/stylesheets/_projects.sass */
+/* line 737, ../../app/stylesheets/_projects.sass */
 body#site #project_review img#project_image {
   float: left;
   width: 128px;
@@ -2868,7 +2869,7 @@ body#site #project_review img#project_image {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-right: 20px;
 }
-/* line 741, ../../app/stylesheets/_projects.sass */
+/* line 742, ../../app/stylesheets/_projects.sass */
 body#site #project_review h1 {
   text-align: left;
   font-family: "museo-500" !important;
@@ -2878,25 +2879,25 @@ body#site #project_review h1 {
   padding-top: 4px !important;
   color: #222222 !important;
 }
-/* line 749, ../../app/stylesheets/_projects.sass */
+/* line 750, ../../app/stylesheets/_projects.sass */
 body#site #project_review h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
-/* line 752, ../../app/stylesheets/_projects.sass */
+/* line 753, ../../app/stylesheets/_projects.sass */
 body#site #project_review fieldset {
   margin-bottom: 10px;
 }
-/* line 754, ../../app/stylesheets/_projects.sass */
+/* line 755, ../../app/stylesheets/_projects.sass */
 body#site #project_review fieldset label {
   font-size: 18px;
 }
-/* line 756, ../../app/stylesheets/_projects.sass */
+/* line 757, ../../app/stylesheets/_projects.sass */
 body#site #thank_you {
   margin: 10px 20px;
   text-align: center;
 }
-/* line 759, ../../app/stylesheets/_projects.sass */
+/* line 760, ../../app/stylesheets/_projects.sass */
 body#site #thank_you img#project_image {
   float: left;
   width: 128px;
@@ -2906,7 +2907,7 @@ body#site #thank_you img#project_image {
   box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
   margin-right: 20px;
 }
-/* line 764, ../../app/stylesheets/_projects.sass */
+/* line 765, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h1 {
   text-align: left;
   font-family: "museo-500" !important;
@@ -2916,16 +2917,16 @@ body#site #thank_you h1 {
   padding-top: 4px !important;
   color: #222222 !important;
 }
-/* line 772, ../../app/stylesheets/_projects.sass */
+/* line 773, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
-/* line 775, ../../app/stylesheets/_projects.sass */
+/* line 776, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a {
   text-decoration: none;
 }
-/* line 777, ../../app/stylesheets/_projects.sass */
+/* line 778, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img {
   width: 116px;
   -moz-transition-property: all;
@@ -2937,37 +2938,37 @@ body#site #thank_you a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 780, ../../app/stylesheets/_projects.sass */
+/* line 781, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 782, ../../app/stylesheets/_projects.sass */
+/* line 783, ../../app/stylesheets/_projects.sass */
 body#site #thank_you #how_it_works {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   margin-top: 40px;
 }
-/* line 786, ../../app/stylesheets/_projects.sass */
+/* line 787, ../../app/stylesheets/_projects.sass */
 body#site #empty_text {
   width: 600px;
 }
-/* line 788, ../../app/stylesheets/_projects.sass */
+/* line 789, ../../app/stylesheets/_projects.sass */
 body#site #project_backers {
   margin-top: 0;
   color: #444444;
   width: 610px;
 }
-/* line 792, ../../app/stylesheets/_projects.sass */
+/* line 793, ../../app/stylesheets/_projects.sass */
 body#site #project_backers h1 {
   font-size: 24px !important;
   color: #999999 !important;
   padding-bottom: 16px !important;
   padding-top: 0 !important;
 }
-/* line 797, ../../app/stylesheets/_projects.sass */
+/* line 798, ../../app/stylesheets/_projects.sass */
 body#site #project_backers img.user {
   float: left;
   margin-right: 12px;
@@ -2979,33 +2980,33 @@ body#site #project_backers img.user {
   box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
   background-color: white;
 }
-/* line 804, ../../app/stylesheets/_projects.sass */
+/* line 805, ../../app/stylesheets/_projects.sass */
 body#site #project_backers a {
   text-decoration: none !important;
 }
-/* line 806, ../../app/stylesheets/_projects.sass */
+/* line 807, ../../app/stylesheets/_projects.sass */
 body#site #project_backers #all_backers {
   text-align: center;
   margin-top: 16px;
 }
-/* line 809, ../../app/stylesheets/_projects.sass */
+/* line 810, ../../app/stylesheets/_projects.sass */
 body#site #project_backers p {
   font-size: 16px;
   color: #666666;
   padding-bottom: 0 !important;
 }
-/* line 813, ../../app/stylesheets/_projects.sass */
+/* line 814, ../../app/stylesheets/_projects.sass */
 body#site #project_backers p.reward {
   float: right;
   width: 500px;
   font-size: 12px;
   color: #333333;
 }
-/* line 818, ../../app/stylesheets/_projects.sass */
+/* line 819, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul {
   width: 600px;
 }
-/* line 820, ../../app/stylesheets/_projects.sass */
+/* line 821, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul li {
   background-color: #dddddd;
   margin-top: 16px;
@@ -3018,7 +3019,7 @@ body#site #project_backers ul li {
   border-radius: 8px;
   position: relative;
 }
-/* line 826, ../../app/stylesheets/_projects.sass */
+/* line 827, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul li .badge {
   position: absolute;
   top: -10px;
@@ -3033,68 +3034,68 @@ body#site #project_backers ul li .badge {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 832, ../../app/stylesheets/_projects.sass */
+/* line 833, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul li .badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 835, ../../app/stylesheets/_projects.sass */
+/* line 836, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form, body#site #pending_backers form {
   margin-bottom: 20px;
 }
-/* line 837, ../../app/stylesheets/_projects.sass */
+/* line 838, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form label, body#site #pending_backers form label {
   display: inline;
 }
-/* line 839, ../../app/stylesheets/_projects.sass */
+/* line 840, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form input[type=text], body#site #pending_backers form input[type=text] {
   margin-right: 8px;
   width: 120px;
   padding: 0 !important;
 }
-/* line 843, ../../app/stylesheets/_projects.sass */
+/* line 844, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form #search_id_equals, body#site #pending_backers form #search_id_equals {
   width: 40px;
 }
-/* line 845, ../../app/stylesheets/_projects.sass */
+/* line 846, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects #total_results, body#site #pending_backers #total_results {
   float: right;
 }
-/* line 847, ../../app/stylesheets/_projects.sass */
+/* line 848, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table, body#site #pending_backers table {
   margin: 20px 0;
 }
-/* line 849, ../../app/stylesheets/_projects.sass */
+/* line 850, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table img, body#site #pending_backers table img {
   width: 32px;
 }
-/* line 852, ../../app/stylesheets/_projects.sass */
+/* line 853, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table thead th, body#site #pending_backers table thead th {
   text-align: center;
   font-size: 14px;
 }
-/* line 857, ../../app/stylesheets/_projects.sass */
+/* line 858, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table tbody tr td, body#site #pending_backers table tbody tr td {
   text-align: center;
   font-size: 14px;
 }
-/* line 860, ../../app/stylesheets/_projects.sass */
+/* line 861, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table tbody tr td.key, body#site #pending_backers table tbody tr td.key {
   font-size: 8px;
 }
-/* line 863, ../../app/stylesheets/_projects.sass */
+/* line 864, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu {
   float: left;
   width: 280px;
   margin-left: 20px;
 }
-/* line 867, ../../app/stylesheets/_projects.sass */
+/* line 868, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul {
   margin-bottom: 20px;
 }
-/* line 869, ../../app/stylesheets/_projects.sass */
+/* line 870, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul li a {
   background-color: #dddddd;
   margin-bottom: 4px;
@@ -3120,13 +3121,13 @@ body#site #explore_projects #explore_menu ul li a {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 881, ../../app/stylesheets/_projects.sass */
+/* line 882, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul li a.selected, body#site #explore_projects #explore_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 885, ../../app/stylesheets/_projects.sass */
+/* line 886, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_results {
   float: right;
   width: 626px;

@@ -57,6 +57,8 @@ $('input[type=radio]').click(function(){
       $('#backer_value').val(parseInt(minimum))
     }
   }
+  $('li.radio ol li').removeClass('selected')
+  $(this).parent().parent().addClass('selected')
   everything_ok()
 })
 $('#backer_value').keyup(function(){
@@ -88,3 +90,4 @@ $('#backer_anonymous').click(function(){
     $('#anonymous_warning').slideUp(200)
   }
 })
+$('input[type=radio]:checked').parent().parent().addClass('selected')
