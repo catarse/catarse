@@ -44,7 +44,7 @@ body#site
     select.loading
       background: url('/images/sites/multidao/loading.gif') no-repeat 86% center
   .important
-    +box-shadow(rgba(0,0,0,0.25),2px,2px,6px)
+    +box-shadow(rgba(0,0,0,0.25),-1px,1px,6px)
     +text-shadow(transparent, 0, 0, 0)
     background-color: #FAA
   .overlay
@@ -575,7 +575,7 @@ body#site
   #project_warning
     background-color: #D3E9F4
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-    +box-shadow(rgba(0,0,0,0.2), 1px, 1px, 10px)
+    +box-shadow(rgba(0,0,0,0.25), -1px, 1px, 6px)
   #profile_header
     .image
       padding: 8px 20px 20px 20px
@@ -694,5 +694,8 @@ body#site
     #project_info
       .project_expires_at
         text-transform: lowercase
+  #credits
+    #current_credits
+      color: #679C08
 
   
