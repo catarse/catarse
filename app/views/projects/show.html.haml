@@ -46,21 +46,27 @@
     = render 'embed'
   #project_menu
     %ul
-      %li= link_to "Sobre", '#about', :id => 'about_link'
+      %li
+        = link_to '#about', :id => 'about_link' do
+          Sobre
+          = image_tag "sites/#{current_site}/project_menu_selected.png"
       %li
         = link_to '#updates', :id => 'updates_link' do
           Atualizações
           %span.count (#{@updates.count})
+          = image_tag "sites/#{current_site}/project_menu_selected.png"
       %li
         = link_to '#backers', :id => 'backers_link' do
           Apoiadores
           %span.count (#{@project.total_backers})
+          = image_tag "sites/#{current_site}/project_menu_selected.png"
       %li
         = link_to '#comments', :id => 'comments_link' do
           Comentários
           %span.count (#{@comments.count})
+          = image_tag "sites/#{current_site}/project_menu_selected.png"
   #project_content
-  #loading= image_tag 'loading.gif'
+  #loading= image_tag "sites/#{current_site}/loading.gif"
 = render :partial => 'back_info'
 = render :partial => 'about'
 = render :partial => 'project_backers'

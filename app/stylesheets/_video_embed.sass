@@ -3,6 +3,8 @@
   padding: 16px
   padding-bottom: 0
   iframe
+    +border-top-left-radius(8px)
+    +border-top-right-radius(8px)
     +box-shadow(rgba(0,0,0,0.5), 5px, 5px, 10px)
   h1
     font-family: "museo-500"
@@ -21,12 +23,20 @@
       text-decoration: none
       +text-shadow(#fff, 1px, 1px, 0px)
   #catarse_link
-    font-family: "museo-700"
-    font-size: 28px
-    line-height: 30px
-    a
-      color: #222
-      text-decoration: none
-      +transition
-    a:hover
-      +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
+    h1
+      font-family: "museo-700"
+      font-size: 28px
+      line-height: 30px
+      padding: 0
+      a
+        color: #222
+        text-decoration: none
+        +transition
+      a:hover
+        +text-shadow(rgba(0,150,0,0.4), 1px, 1px, 10px)
+  #video_embed_footer
+    position: fixed
+    bottom: 4px
+    left: 50%
+    width: 220px
+    margin-left: -110px

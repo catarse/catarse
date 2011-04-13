@@ -17,8 +17,8 @@ var ProjectContentView = Backbone.View.extend({
       this.link = defaults.link
   },
   selectLink: function(){
-    this.link.parent().parent().find('a').removeClass('selected')
-    this.link.addClass('selected')
+    this.link.parent().parent().find('li').removeClass('selected')
+    this.link.parent().addClass('selected')
   },
   render: function() {
     $(this.el).html(Mustache.to_html(this.template.html(), this.collection))

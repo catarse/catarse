@@ -5,7 +5,7 @@ script type="text/template" id="backer_template"
   |{{#anonymous}}
   = image_tag 'user.png', :class => 'user'
   |  Apoiador anônimo
-  = image_tag 'badge.png', :class => "badge"
+  = image_tag "sites/#{current_site}/badge.png", :class => "badge"
   p Optou por permanecer incógnito
   |{{/anonymous}}
 
@@ -14,7 +14,7 @@ script type="text/template" id="backer_template"
   a href="{{url}}"
     img src="{{image}}" class="user"
     |  {{medium_name}}
-    = image_tag 'badge.png', :class => "badge"
+    = image_tag "sites/#{current_site}/badge.png", :class => "badge"
   p
     |{{backs_text}}
   |{{/user}}

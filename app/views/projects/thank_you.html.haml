@@ -1,7 +1,7 @@
 = content_for :content_header do
   %h1 Muito obrigado! :D
   %h2 Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!
-  = image_tag 'badge.png', :id => "badge"
+  = image_tag "sites/#{current_site}/badge.png", :id => "badge"
 #thank_you
   = image_tag @project.display_image, :id => 'project_image'
   %h1 Você agora é parte do grupo que faz de tudo para o #{link_to @project.name, project_path(@project)} acontecer.
