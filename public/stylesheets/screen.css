@@ -63,6 +63,10 @@ a img {
   text-shadow: black 0px 0px 0px;
 }
 /* line 3, ../../app/stylesheets/_datepicker.sass */
+.ui-datepicker table tbody tr td {
+  padding: 0 !important;
+}
+/* line 5, ../../app/stylesheets/_datepicker.sass */
 .ui-datepicker table tbody tr td a {
   color: white !important;
   text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 0px;
