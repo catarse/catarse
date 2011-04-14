@@ -16,19 +16,19 @@ class ProjectsController < ApplicationController
   def index
     index! do
       @title = current_site.title
-      @recommended = Project.visible.home_page.order('"order", created_at DESC').limit(6).all
-      @recent = Project.visible.not_home_page.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
-      @successful = Project.visible.not_home_page.successful.order('expires_at DESC').limit(12).all
+      @recommended = current_site.present_projects.visible.home_page.limit(6).order('projects_sites."order"').all
+      @recent = current_site.present_projects.visible.not_home_page.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
+      @successful = current_site.present_projects.visible.not_home_page.successful.order('expires_at DESC').limit(12).all
     end
   end
   def explore
     @title = "Explore os projetos"
-    @categories = Category.with_projects.order(:name)
-    @recommended = Project.visible.recommended.order('created_at DESC')
-    @expiring = Project.visible.expiring.order('expires_at')
-    @recent = Project.visible.recent.order('created_at DESC')
-    @successful = Project.visible.successful.order('expires_at DESC')
-    @all = Project.visible.order('created_at DESC')
+    @categories = Category.with_projects(current_site).order(:name)
+    @recommended = current_site.present_projects.visible.recommended.order('created_at DESC')
+    @expiring = current_site.present_projects.visible.expiring.order('expires_at')
+    @recent = current_site.present_projects.visible.recent.order('created_at DESC')
+    @successful = current_site.present_projects.visible.successful.order('expires_at DESC')
+    @all = current_site.present_projects.visible.order('created_at DESC')
   end
   def start
     @title = "Envie seu projeto"
@@ -51,12 +51,17 @@ class ProjectsController < ApplicationController
     create!(:notice => "Seu projeto foi criado com sucesso! Logo avisaremos se ele foi selecionado. Muito obrigado!")
     @project.reload
     @project.update_attribute :short_url, bitly
+    @project.projects_sites.create :site => current_site
   end
   def update
     update!(:notice => "Seu projeto foi atualizado com sucesso!")
   end
   def show
     show!{
+      unless @project.present?(current_site)
+        flash[:failure] = "Este projeto não está disponível neste site. Confira os outros projetos incríveis que temos!"
+        return redirect_to :root
+      end
       @title = @project.name
       @rewards = @project.rewards.order(:minimum_value).all
       @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
@@ -101,7 +106,7 @@ class ProjectsController < ApplicationController
   def back
     return unless require_login
     show! do
-      unless @project.can_back?
+      unless @project.can_back?(current_site)
         flash[:failure] = "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
         return redirect_to :root
       end

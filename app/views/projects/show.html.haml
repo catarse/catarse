@@ -15,9 +15,9 @@
   %meta{:property => "og:image", :content => @project.display_image}
   %meta{:property => "og:site_name", :content => current_site.name}
   %meta{:property => "og:description", :content => @project.headline}
-- unless @project.visible
+- unless @project.visible?(current_site)
   #project_warning
-    - if @project.rejected
+    - if @project.rejected?(current_site)
       Este projeto não foi selecionado para participar d#{current_site.the_name}. Quem sabe numa próxima vez? :)
     - else
       Este projeto está aguardando análise e logo saberemos se ele entrará #{current_site.in_the_name} ;)

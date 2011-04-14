@@ -1,16 +1,22 @@
 = render :partial => "/sites/#{current_site.path}/explore_header"
 #explore_projects
   #explore_menu
-    %h3 Busca rápida
-    %ul#explore_quick
-      %li= link_to 'Recomendados', '#', :id => 'menu_recommended', :class => 'selected'
-      %li= link_to 'Na reta final', '#', :id => 'menu_expiring'
-      %li= link_to 'Recentes', '#', :id => 'menu_recent'
-      %li= link_to 'Bem-sucedidos', '#', :id => 'menu_successful'
-    %h3 Categorias
-    %ul#explore_categories
-      - @categories.each do |category|
-        %li= link_to category.name, '#', :id => "category_#{category.id}"
+    - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
+      %h3 Busca rápida
+      %ul#explore_quick
+        - unless @recommended.empty?
+          %li= link_to 'Recomendados', '#', :id => 'menu_recommended', :class => 'selected'
+        - unless @expiring.empty?
+          %li= link_to 'Na reta final', '#', :id => 'menu_expiring'
+        - unless @recent.empty?
+          %li= link_to 'Recentes', '#', :id => 'menu_recent'
+        - unless @successful.empty?
+          %li= link_to 'Bem-sucedidos', '#', :id => 'menu_successful'
+    - unless @categories.empty?
+      %h3 Categorias
+      %ul#explore_categories
+        - @categories.each do |category|
+          %li= link_to category.name, '#', :id => "category_#{category.id}"
   #explore_results
     #explore_recommended.results= render :partial => 'project', :collection => @recommended
     #explore_expiring.results.hide= render :partial => 'project', :collection => @expiring

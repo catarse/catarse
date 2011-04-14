@@ -3,9 +3,9 @@
   = render :partial => 'layouts/head'
   %body#site
     = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
-    - if current_user and (not current_user.backs.display_notice.empty? or not current_user.notifications.where(:site_id => current_site.id).not_dismissed.empty?)
+    - if current_user and (not current_user.backs.project_visible(current_site).display_notice.empty? or not current_user.notifications.where(:site_id => current_site.id).not_dismissed.empty?)
       #pre_header
-        - current_user.backs.display_notice.each do |back|
+        - current_user.backs.project_visible(current_site).display_notice.each do |back|
           %div{:id => "back_notice_#{back.id}", :class => "back_notice"}
             Você apoiou o projeto #{link_to(truncate(back.project.name, :length => 32), project_path(back.project))}. Conte para todo mundo o que você fez!
             &nbsp;

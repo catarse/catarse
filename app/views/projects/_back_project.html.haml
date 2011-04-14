@@ -30,5 +30,5 @@
 .info
   = form_tag(back_project_path(@project), :method => :get, :id => 'back_project_form') do
     %fieldset
-      = submit_tag 'Quero apoiar este projeto', :disabled => (not @project.can_back?)
+      = submit_tag 'Quero apoiar este projeto', :disabled => (not @project.can_back?(current_site))
 

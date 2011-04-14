@@ -7,7 +7,6 @@ class Backer < ActiveRecord::Base
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
-  scope :project_visible, where("project_id IN (SELECT id FROM projects WHERE visible)")
   scope :anonymous, where(:anonymous => true)
   scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(:confirmed => true)
@@ -15,6 +14,9 @@ class Backer < ActiveRecord::Base
   scope :display_notice, where(:display_notice => true)
   scope :can_refund, where(:can_refund => true)
   scope :within_refund_deadline, where("current_timestamp < (created_at + interval '180 days')")
+  def self.project_visible(site)
+    joins(:project).joins("INNER JOIN projects_sites ON projects_sites.project_id = projects.id").where("projects_sites.site_id = #{site.id} AND projects_sites.visible = true")
+  end
   after_create :define_key
   def define_key
     self.update_attribute :key, Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s

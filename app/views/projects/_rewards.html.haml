@@ -4,7 +4,7 @@
   = image_tag "sites/#{current_site.path}/rewards_right_border.png", :id => 'rewards_right_border'
 %ul
   - @rewards.each do |reward|
-    %li{:class => ('clickable' if @project.can_back? and not reward.sold_out?)}
+    %li{:class => ('clickable' if @project.can_back?(current_site) and not reward.sold_out?)}
       = hidden_field_tag 'url', "#{back_project_path(@project)}/?reward_id=#{reward.id}"
       %h1 Para #{reward.display_minimum} ou mais
       - if reward.maximum_backers

@@ -14,6 +14,8 @@ class Project < ActiveRecord::Base
   has_many :rewards
   has_many :comments, :as => :commentable, :conditions => {:project_update => false}
   has_many :updates, :as => :commentable, :class_name => "Comment", :conditions => {:project_update => true}
+  has_many :projects_sites
+  has_many :sites_present, :through => :projects_sites, :source => :site
   accepts_nested_attributes_for :rewards
   auto_html_for :about do
     html_escape :map => { 
@@ -24,14 +26,14 @@ class Project < ActiveRecord::Base
     redcloth :target => :_blank
     link :target => :_blank
   end
-  scope :visible, where(:visible => true)
-  scope :home_page, where(:home_page => true)
-  scope :not_home_page, where(:home_page => false)
-  scope :recommended, where(:recommended => true)
-  scope :not_recommended, where(:recommended => false)
-  scope :pending, where(:visible => false, :rejected => false)
+  scope :visible, where("projects_sites.visible = true")
+  scope :home_page, where("projects_sites.home_page = true")
+  scope :not_home_page, where("projects_sites.home_page = false")
+  scope :recommended, where("projects_sites.recommended = true")
+  scope :not_recommended, where("projects_sites.recommended = false")
+  scope :pending, where("projects_sites.visible = false AND projects_sites.rejected = false")
   scope :expiring, where("expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks')")
-  scope :recent, where("created_at > (current_timestamp - interval '1 month')")
+  scope :recent, where("projects.created_at > (current_timestamp - interval '1 month')")
   scope :successful, where("goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
   scope :not_successful, where("NOT (goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
   scope :unsuccessful, where("goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
@@ -132,8 +134,17 @@ class Project < ActiveRecord::Base
       {:time => 0, :unit => 'segundos'}
     end
   end
-  def can_back?
-    visible and not expired? and not rejected
+  def present?(site)
+    projects_sites.where("site_id = #{site.id}").count > 0
+  end
+  def visible?(site)
+    projects_sites.where("visible AND site_id = #{site.id}").count > 0
+  end
+  def rejected?(site)
+    projects_sites.where("rejected AND site_id = #{site.id}").count > 0
+  end
+  def can_back?(site)
+    visible?(site) and not expired? and not rejected?(site)
   end
   def finish!
     return unless expired? and can_finish and not finished

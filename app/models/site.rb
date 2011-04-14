@@ -1,6 +1,9 @@
 class Site < ActiveRecord::Base
   validates_presence_of :name, :title, :path, :host
   validates_uniqueness_of :name, :path, :host
+  has_many :projects
+  has_many :projects_sites
+  has_many :present_projects, :through => :projects_sites, :source => :project
   def the(capitalize = false)
     if gender == "male"
       "#{capitalize ? 'O' : 'o'}"
