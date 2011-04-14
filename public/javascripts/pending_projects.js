@@ -1,8 +1,10 @@
 $('input[type=checkbox]').click(function(){
-  var id = $(this).parent().parent().attr('id')
-  var field = $(this).attr('id').split('__')[0]
+  var data = $(this).attr('id').split('__')
+  var klass = data[0]
+  var field = data[1]
+  var id = data[2]
   $.post('/projects/update_attribute_on_the_spot', {
-    id: 'project__' + field + '__' + id,
+    id: klass + '__' + field + '__' + id,
     value: ($(this).is(':checked') ? 1 : null)
   })
 })

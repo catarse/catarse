@@ -229,8 +229,8 @@ class ProjectsController < ApplicationController
   def pending
     return unless require_admin
     @title = "Gerenciamento dos projetos"
-    @search = Project.search(params[:search])
-    @projects = @search.order('created_at DESC').paginate :page => params[:page]
+    @search = current_site.projects_sites.includes(:project).search(params[:search])
+    @projects_sites = @search.order('projects.created_at DESC').paginate :page => params[:page]
   end
   def pending_backers
     return unless require_admin
@@ -251,7 +251,9 @@ class ProjectsController < ApplicationController
   end
   def can_update_on_the_spot?
     project_fields = []
-    project_admin_fields = ["visible", "rejected", "recommended", "home_page", "name", "about", "headline", "order", "can_finish", "expires_at", "user_id", "image_url"]
+    project_admin_fields = ["name", "about", "headline", "can_finish", "expires_at", "user_id", "image_url"]
+    projects_site_fields = []
+    projects_site_admin_fields = ["visible", "rejected", "recommended", "home_page", "order"]
     backer_fields = ["display_notice"]
     backer_admin_fields = ["confirmed", "requested_refund", "refunded"]
     reward_fields = []
@@ -259,11 +261,15 @@ class ProjectsController < ApplicationController
     def render_error; render :text => 'Você não possui permissão para realizar esta ação.', :status => 422; end
     return render_error unless current_user
     klass, field, id = params[:id].split('__')
-    return render_error unless klass == 'project' or klass == 'backer' or klass == 'reward'
+    return render_error unless klass == 'project' or klass == 'projects_site' or klass == 'backer' or klass == 'reward'
     if klass == 'project'
       return render_error unless project_fields.include?(field) or (current_user.admin and project_admin_fields.include?(field))
       project = Project.find id
       return render_error unless current_user.id == project.user.id or current_user.admin
+    elsif klass == 'projects_site'
+      return render_error unless projects_site_fields.include?(field) or (current_user.admin and projects_site_admin_fields.include?(field))
+      project_site = current_site.projects_sites.find id
+      return render_error unless current_user.id == project_site.project.user.id or current_user.admin
     elsif klass == 'backer'
       return render_error unless backer_fields.include?(field) or (current_user.admin and backer_admin_fields.include?(field))
       backer = Backer.find id

@@ -3,12 +3,12 @@
 #pending_projects
   - form_for @search, :url => pending_projects_path do |f|
     %fieldset
-      = f.label :id_equals, "Id"
-      = f.text_field :id_equals
-      = f.label :name_contains, "Nome"
-      = f.text_field :name_contains
-      = f.label :user_name_contains, "Usuário"
-      = f.text_field :user_name_contains
+      = f.label :project_id_equals, "Id"
+      = f.text_field :project_id_equals
+      = f.label :project_name_contains, "Nome"
+      = f.text_field :project_name_contains
+      = f.label :project_user_name_contains, "Usuário"
+      = f.text_field :project_user_name_contains
       = f.check_box :visible_is_true
       = f.label :visible_is_true, "Visível?"
       = f.check_box :rejected_is_true
@@ -18,18 +18,18 @@
       = f.label :recommended_is_true, "Recomendado?"
       = f.check_box :home_page_is_true
       = f.label :home_page_is_true, "Home page?"
-      = f.check_box :can_finish_is_true
-      = f.label :can_finish_is_true, "Pode finalizar?"
-      = f.check_box :finished_is_true
-      = f.label :finished_is_true, "Finalizado?"
+      = f.check_box :project_can_finish_is_true
+      = f.label :project_can_finish_is_true, "Pode finalizar?"
+      = f.check_box :project_finished_is_true
+      = f.label :project_finished_is_true, "Finalizado?"
       = f.submit "Pesquisar"
   #total_results
     = pluralize_without_number @search.count, 'Encontrado'
     %strong= @search.count
     = pluralize_without_number @search.count, 'projeto'
-  = will_paginate @projects
+  = will_paginate @projects_sites
   .clear
-  - if @projects.empty?
+  - if @projects_sites.empty?
     Não há nenhum projeto com aprovação pendente
   - else
     %table
@@ -37,6 +37,7 @@
         %tr
           %th Id
           %th Projeto
+          %th Site
           %th Usuário
           %th Visível?
           %th Rejeitado?
@@ -46,22 +47,23 @@
           %th Pode finalizar?
           %th Finalizado?
       %tbody
-        - @projects.each do |project|
-          %tr{ :id => project.id, :class => cycle("even", "odd") }
-            %td= project.id
-            %td{ :title => project.name }
-              = link_to project_path(project) do
-                = image_tag project.display_image
-            %td{ :title => project.user.display_name }
-              = link_to user_path(project.user) do
-                = image_tag project.user.display_image
-            %td= check_box_tag "visible__#{project.id}", '1', project.visible
-            %td= check_box_tag "rejected__#{project.id}", '1', project.rejected
-            %td= check_box_tag "recommended__#{project.id}", '1', project.recommended
-            %td= check_box_tag "home_page__#{project.id}", '1', project.home_page
-            %td= on_the_spot_edit project, :order, :tooltip => '-'
-            %td= check_box_tag "can_finish__#{project.id}", '1', project.can_finish
-            %td= (project.finished ? "Sim" : "Não")
-  = will_paginate @projects
+        - @projects_sites.each do |project_site|
+          %tr{ :class => cycle("even", "odd") }
+            %td= project_site.project.id
+            %td{ :title => project_site.project.name }
+              = link_to project_path(project_site.project) do
+                = image_tag project_site.project.display_image
+            %td= project_site.project.site.name
+            %td{ :title => project_site.project.user.display_name }
+              = link_to user_path(project_site.project.user) do
+                = image_tag project_site.project.user.display_image
+            %td= check_box_tag "projects_site__visible__#{project_site.id}", '1', project_site.visible
+            %td= check_box_tag "projects_site__rejected__#{project_site.id}", '1', project_site.rejected
+            %td= check_box_tag "projects_site__recommended__#{project_site.id}", '1', project_site.recommended
+            %td= check_box_tag "projects_site__home_page__#{project_site.id}", '1', project_site.home_page
+            %td= on_the_spot_edit project_site, :order, :tooltip => '-'
+            %td= check_box_tag "project__can_finish__#{project_site.project.id}", '1', project_site.project.can_finish
+            %td= (project_site.project.finished ? "Sim" : "Não")
+  = will_paginate @projects_sites
 = javascript_include_tag 'pending_projects'
 
