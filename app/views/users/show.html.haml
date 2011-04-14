@@ -34,6 +34,7 @@
         = hidden_field_tag 'id', @user.id
         = check_box_tag 'newsletter', '1', @user.newsletter
         = label_tag 'newsletter', "Quero receber novidades d#{current_site.the_name} por email"
+      -#
         %br
         = check_box_tag 'project_updates', '1', @user.project_updates
         = label_tag 'project_updates', 'Quero receber atualizações dos projetos por email'
