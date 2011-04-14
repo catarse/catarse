@@ -58,9 +58,9 @@
   - if @projects.empty?
     #no_projects
       - if current_user and @user == current_user
-        Você ainda não enviou nenhum projeto para #{current_site.the_name}. Deixe a inspiração bater e #{link_to 'clique aqui', guidelines_path} para começar!
+        Você ainda não realizou nenhum projeto #{current_site.in_the_name}. Deixe a inspiração bater e #{link_to 'clique aqui', guidelines_path} para começar!
       - else
-        #{@user.display_name} ainda não enviou nenhum projeto para #{current_site.the_name}. Será que a inspiração vai bater uma hora dessas?
+        #{@user.display_name} ainda não realizou nenhum projeto #{current_site.in_the_name}. Será que a inspiração vai bater uma hora dessas?
   - else
     %ul
       - @projects.each do |project|
