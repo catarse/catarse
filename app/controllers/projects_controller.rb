@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
   end
   def send_mail
     current_user.update_attribute :email, params[:contact] if current_user.email.nil?
-    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user).deliver
+    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user, current_site).deliver
     flash[:success] = "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
     redirect_to :root
   end

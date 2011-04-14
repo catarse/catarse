@@ -8,6 +8,20 @@ class ApplicationController < ActionController::Base
     return @current_site = Site.find_by_path(session[:current_site]) if session[:current_site]
     @current_site = Site.find_by_host request.host
     @current_site = Site.find_by_path("catarse") unless @current_site
+    unless @current_site
+      fields = {
+        :name => "Catarse",
+        :title => "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil",
+        :path => "catarse",
+        :host => "catarse.me",
+        :gender => "male",
+        :email => "contato@catarse.me",
+        :twitter => "Catarse_",
+        :facebook => "http://www.facebook.com/Catarse.me",
+        :blog => "http://blog.catarse.me"
+      }
+      @current_site = Site.create fields
+    end
     @current_site
   end
   def current_user

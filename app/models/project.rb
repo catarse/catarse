@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   acts_as_commentable
   belongs_to :user
   belongs_to :category
+  belongs_to :site
   has_many :backers
   has_many :rewards
   has_many :comments, :as => :commentable, :conditions => {:project_update => false}
@@ -35,7 +36,7 @@ class Project < ActiveRecord::Base
   scope :not_successful, where("NOT (goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
   scope :unsuccessful, where("goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
   scope :not_unsuccessful, where("NOT (goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
-  validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
+  validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url, :site
   validates_length_of :headline, :maximum => 140
   validates_format_of :video_url, :with => VIMEO_REGEX, :message => "somente URLs do Vimeo são aceitas"
   validate :verify_if_video_exists_on_vimeo
@@ -140,23 +141,23 @@ class Project < ActiveRecord::Base
       unless backer.can_refund or backer.notified_finish
         if successful?
           notification_text = "Uhuu! O projeto #{link_to(truncate(name, :length => 38), "/projects/#{self.to_param}")} que você apoiou foi bem-sucedido! Espalhe por aí!"
-          twitter_text = "Uhuu! O projeto '#{name}', que eu apoiei, foi bem-sucedido #{current_site.in_the_twitter}! #{short_url}"
-          facebook_text = "Uhuu! O projeto '#{name}', que eu apoiei, foi bem-sucedido #{current_site.in_the_name}!"
-          email_subject = "Uhuu! O projeto que você apoiou foi bem-sucedido #{current_site.in_the_name}!"
-          email_text = "O projeto #{link_to(name, "#{BASE_URL}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, foi financiado com sucesso #{current_site.in_the_name}! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, #{link_to(user.display_name, "#{BASE_URL}/users/#{user.to_param}", :style => 'color: #008800;')} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
-          backer.user.notifications.create :project => self, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
+          twitter_text = "Uhuu! O projeto '#{name}', que eu apoiei, foi bem-sucedido #{site.in_the_twitter}! #{short_url}"
+          facebook_text = "Uhuu! O projeto '#{name}', que eu apoiei, foi bem-sucedido #{site.in_the_name}!"
+          email_subject = "Uhuu! O projeto que você apoiou foi bem-sucedido #{site.in_the_name}!"
+          email_text = "O projeto #{link_to(name, "http://#{site.host}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, foi financiado com sucesso #{site.in_the_name}! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, #{link_to(user.display_name, "http://#{site.host}/users/#{user.to_param}", :style => 'color: #008800;')} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
+          backer.user.notifications.create :site => site, :project => self, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
           if backer.reward
             notification_text = "Em breve, #{link_to(truncate(user.display_name, :length => 32), "/users/#{user.to_param}")} irá entrar em contato com você para entregar sua recompensa. Desfrute!"
-            backer.user.notifications.create :project => self, :text => notification_text
+            backer.user.notifications.create :site => site, :project => self, :text => notification_text
           end
         else
           backer.generate_credits!
           notification_text = "O projeto #{link_to(truncate(name, :length => 32), "/projects/#{self.to_param}")} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
-          backer.user.notifications.create :project => self, :text => notification_text
-          notification_text = "Você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "aqui", "#{BASE_URL}/credits"}."
-          email_subject = "O projeto que você apoiou não foi financiado #{current_site.in_the_name}."
-          email_text = "O projeto #{link_to(name, "#{BASE_URL}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>#{backer.display_value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "clicando aqui", "#{BASE_URL}/credits", :style => 'color: #008800;'}."
-          backer.user.notifications.create :project => self, :text => notification_text, :email_subject => email_subject, :email_text => email_text
+          backer.user.notifications.create :site => site, :project => self, :text => notification_text
+          notification_text = "Você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "aqui", "http://#{site.host}/credits"}."
+          email_subject = "O projeto que você apoiou não foi financiado #{site.in_the_name}."
+          email_text = "O projeto #{link_to(name, "http://#{site.host}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>#{backer.display_value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "clicando aqui", "http://#{site.host}/credits", :style => 'color: #008800;'}."
+          backer.user.notifications.create :site => site, :project => self, :text => notification_text, :email_subject => email_subject, :email_text => email_text
         end
         backer.update_attribute :notified_finish, true
       end

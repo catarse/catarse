@@ -3,6 +3,7 @@
 = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
   = form.inputs do
     = form.input :user_id, :as => :hidden, :value => current_user.id, :required => true
+    = form.input :site_id, :as => :hidden, :value => current_site.id, :required => true
     = form.input :name, :label => 'Nome do projeto', :hint => "Qual o nome do seu projeto? Escolha com carinho, pois isto irá influenciar as chances do seu projeto atingir o mínimo.", :required => true, :as => :string
     = form.input :video_url, :label => "Vídeo", :hint => "Cole a URL de um vídeo no #{link_to 'Vimeo', 'http://vimeo.com', :target => :_blank}. Nós escolhemos o Vimeo pois ele é mais bonito e não tem propaganda. Assim, seu projeto fica mais bonito também! <strong>Produza seu vídeo o melhor possível e faça um vídeo específico para a campanha d#{current_site.the_name}</strong>. Se há um ponto que diferencia os projetos que antingem o mínimo dos outros é o vídeo. Observe ;)".html_safe, :required => true, :as => :string
     = form.input :about, :label => "Sobre o seu projeto", :hint => "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!", :required => true
