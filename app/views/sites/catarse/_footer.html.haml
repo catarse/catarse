@@ -4,19 +4,19 @@
     %li= link_to "FAQ/Ajuda", faq_path
     %li= link_to "Termos de uso", terms_path
     %li= link_to "Política de privacidade", privacy_path
-    %li= mail_to "contato@catarse.me", "Contato"
+    %li= mail_to current_site.email, "Contato"
 #social_menu
   %ul
     %li
-      = link_to 'http://twitter.com/Catarse_', :target => :_blank do
+      = link_to "http://twitter.com/#{current_site.twitter}", :target => :_blank do
         = image_tag('social/twitter_32.png', :title => "Twitter")
         Siga no Twitter
     %li
-      = link_to 'http://www.facebook.com/Catarse.me', :target => :_blank do
+      = link_to current_site.facebook, :target => :_blank do
         = image_tag('social/facebook_32.png', :title => "Facebook")
         Curta no Facebook
     %li
-      = link_to 'http://blog.catarse.me', :target => :_blank do
+      = link_to current_site.blog, :target => :_blank do
         = image_tag('social/rss_32.png', :title => "Blog")
         Leia o blog
 #colophon

@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
 
   def index
     index! do
-      @title = "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
+      @title = current_site.title
       @recommended = Project.visible.home_page.order('"order", created_at DESC').limit(6).all
       @recent = Project.visible.not_home_page.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
       @successful = Project.visible.not_home_page.successful.order('expires_at DESC').limit(12).all
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
     }
   end
   def guidelines
-    @title = "Como funciona o Catarse"
+    @title = "Como funciona #{current_site.the_name}"
   end
   def faq
     @title = "Perguntas frequentes"

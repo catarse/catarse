@@ -1169,11 +1169,11 @@ body#site #video_embed h2 a:hover {
   color: #7ecdf4;
 }
 /* line 573, ../../../app/stylesheets/sites/multidao.sass */
-body#site #video_embed #catarse_link h1 a img {
+body#site #video_embed #site_link h1 a img {
   height: 32px;
 }
 /* line 575, ../../../app/stylesheets/sites/multidao.sass */
-body#site #video_embed #catarse_link h1 a:hover {
+body#site #video_embed #site_link h1 a:hover {
   text-shadow: transparent 0 0 0;
 }
 /* line 577, ../../../app/stylesheets/sites/multidao.sass */

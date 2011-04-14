@@ -10,9 +10,9 @@
             Você apoiou o projeto #{link_to(truncate(back.project.name, :length => 32), project_path(back.project))}. Conte para todo mundo o que você fez!
             &nbsp;
             %a.close{ :href => '#' } X
-            = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}&t=Eu apoiei o projeto \"#{back.project.name}\" no Catarse&v=4", :target => :_blank do
+            = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}&t=Eu apoiei o projeto \"#{back.project.name}\" #{current_site.in_the_name}&v=4", :target => :_blank do
               = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
-            = link_to "http://twitter.com/?status=Eu apoiei o projeto \"#{back.project.name}\" no @Catarse_ #{back.project.short_url}", :target => :_blank do
+            = link_to "http://twitter.com/?status=Eu apoiei o projeto \"#{back.project.name}\" #{current_site.in_the_twitter} #{back.project.short_url}", :target => :_blank do
               = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
         = javascript_include_tag 'back_notices'
         - current_user.notifications.not_dismissed.order(:created_at).each do |notification|
@@ -33,7 +33,7 @@
     #main
       #header_wrapper
         #header
-          = render :partial => "/sites/#{current_site}/logo"
+          = render :partial => "/sites/#{current_site.path}/logo"
           = render '/layouts/user' if current_user
           #menu
             %ul
@@ -49,5 +49,5 @@
             = yield :content_header
         #content
           = yield
-      #footer= render :partial => "/sites/#{current_site}/footer"
+      #footer= render :partial => "/sites/#{current_site.path}/footer"
     = render '/layouts/login' unless current_user

@@ -3188,14 +3188,14 @@ body#site #video_embed h2 a {
   text-shadow: white 1px 1px 0px;
 }
 /* line 26, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed #catarse_link h1 {
+body#site #video_embed #site_link h1 {
   font-family: "museo-700";
   font-size: 28px;
   line-height: 30px;
   padding: 0;
 }
 /* line 31, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed #catarse_link h1 a {
+body#site #video_embed #site_link h1 a {
   color: #222222;
   text-decoration: none;
   -moz-transition-property: all;
@@ -3208,7 +3208,7 @@ body#site #video_embed #catarse_link h1 a {
   transition-duration: 0.5s;
 }
 /* line 35, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed #catarse_link h1 a:hover {
+body#site #video_embed #site_link h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 37, ../../app/stylesheets/_video_embed.sass */

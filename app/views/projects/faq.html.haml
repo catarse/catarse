@@ -1,16 +1,16 @@
 = content_for :content_header do
   %h1 Perguntas frequentes
-  %h2 Esclareça suas dúvidas e aprenda mais sobre financiamento colaborativo e sobre o Catarse.
+  %h2 Esclareça suas dúvidas e aprenda mais sobre financiamento colaborativo e sobre #{current_site.the_name}.
 .text
   %h2 Informações fundamentais
-  %h3 O que é o Catarse?
-  %p O Catarse é uma maneira diferente – e colaborativa! – de financiar projetos criativos. 
+  %h3 O que é #{current_site.the_name}?
+  %p #{current_site.the_name(true)} é uma maneira diferente – e colaborativa! – de financiar projetos criativos. 
   %p E antes de mais nada, seria legal você saber por que a gente acredita que essa nova maneira é sensacional:
   %ol
     %li Muitos projetos fantásticos não conseguem ir pra frente com as atuais possibilidades de financiamento – e, vamos combinar, elas não são nada divertidas também.
     %li Um grupo de pessoas empolgadas com seu projeto pode muito bem ser a fonte ideal de dinheiro pro seu projeto finalmente sair do papel. 
     %li Se as ideias forem boas e bem comunicadas, elas podem se espalhar rapidamente, pra um monte de gente e, com isso, mais pessoas contribuirão para o sucesso do seu projeto.
-  %h3 Mas como exatamente funciona o Catarse?
+  %h3 Mas como exatamente funciona #{current_site.the_name}?
   %p Todos os projetos tem que ter um objetivo de arrecadação (a partir de R$1,00) e um prazo (entre 1 e 90 dias). Nesse meio tempo, o dono do projeto tem que engajar sua comunidade pra conseguir reunir a grana que foi pedida. Quando acabar o prazo final, teremos duas opções, o que a gente chama de tudo-ou-nada:
   %p
     %em Projeto bem-sucedido:
@@ -44,20 +44,20 @@
     Nada melhor do que serviços, experiências e produtos únicos, criativos, divertidos, pra incentivar as pessoas a apoiarem seu projeto. As recompensas são oferecidas pelos donos dos projetos, de acordo com faixas de incentivos diferentes. Se você contribuir com R$10,00, ganha uma determinada recompensa. Se contribuir com R$ 50,00, ganha outra.
   %h3 Então não se trata de investimento?
   %p De jeito nenhum! Os criadores dos projetos ficam com 100% da participação e dos direitos autorais de suas ideias.
-  %h3 Mas, afinal, quem pode ter seu projeto no Catarse?
-  %p Aqui a gente está de braços abertos a projetos artísticos – Artes Plásticas, Cinema, Circo, Dança, Filmes, Música, Fotografia, Literatura, Teatro (se a gente esqueceu algo, pode dar um puxão de orelha #{mail_to 'contato@catarse.me', 'aqui'}) – e também a projetos criativos e empreendedores que surjam em campos como Alimentação, Design, Eventos, Moda, Tecnologia, Jogos, Quadrinhos, Jornalismo, etc.
+  %h3 Mas, afinal, quem pode ter seu projeto #{current_site.in_the_name}?
+  %p Aqui a gente está de braços abertos a projetos artísticos – Artes Plásticas, Cinema, Circo, Dança, Filmes, Música, Fotografia, Literatura, Teatro (se a gente esqueceu algo, pode dar um puxão de orelha #{mail_to current_site.email, 'aqui'}) – e também a projetos criativos e empreendedores que surjam em campos como Alimentação, Design, Eventos, Moda, Tecnologia, Jogos, Quadrinhos, Jornalismo, etc.
   %p Se você acha o seu projeto criativo, mas ele não se enquadra em nenhuma das áreas acima, não seja tímido, mande pra gente e conversaremos melhor sobre ele. A gente é apaixonado por novas ideias e adoraríamos conhecer a sua.
   %h2 Como a máquina vai rodar?
   %h3 Como eu faço para apoiar um projeto?
   %p Quando você estiver na página de um projeto, clique no botão verde grandão “Quero apoiar este projeto” (fica do lado direito da tela). Depois disso, você vai ter um campo pra digitar o valor que irá apoiar e poderá selecionar sua recompensa. Isso feito, você será redirecionado para o site do MoIP para confirmar o pagamento.
   %h3 Como funciona toda essa questão do dinheiro?
-  %p Assim que você apoiar o projeto (e o MoIP confirmar a transação), o dinheiro irá para uma conta do Catarse no MoIP. Depois, existem duas possibilidades:
+  %p Assim que você apoiar o projeto (e o MoIP confirmar a transação), o dinheiro irá para uma conta d#{current_site.the_name} no MoIP. Depois, existem duas possibilidades:
   %ul
     %li Se o projeto for bem-sucedido, nós redirecionaremos o valor para o dono do projeto no máximo 2 dias úteis após a compensação dos últimos boletos, após o prazo final para arrecadação do projeto.
     %li
       Se o projeto não for bem-sucedido, seu
       %strong dinheiro
-      voltará em créditos na sua conta do Catarse (um dia após a compensação dos últimos boletos, após o prazo final de arrecadação do projeto apoiado), e você pode apoiar outro projeto. Se você não quiser apoiar outro projeto e preferir ter seu dinheiro de volta, sem problemas: mande um email em até 180 dias após seu apoio para #{mail_to 'contato@catarse.me'} e a gente faz um estorno para você.
+      voltará em créditos na sua conta d#{current_site.the_name} (um dia após a compensação dos últimos boletos, após o prazo final de arrecadação do projeto apoiado), e você pode apoiar outro projeto. Se você não quiser apoiar outro projeto e preferir ter seu dinheiro de volta, sem problemas: mande um email em até 180 dias após seu apoio para #{mail_to current_site.email} e a gente faz um estorno para você.
   %p
     Um detalhe importante: se você pagou com
     %em cartão de crédito,
@@ -65,12 +65,12 @@
     %em débito em conta ou boleto,
     a única maneira de fazer o estorno é você abrir uma conta no MoIP. Aí a gente transfere o valor da nossa conta para a sua e, de lá, você transfere para sua conta no banco.
   %h3 E o que é o MoIP?
-  %p O MoIP é uma das empresas mais inovadoras no mercado brasileiro de meios de pagamento. Ele possibilita que as transações feitas no Catarse sejam seguras e garante que a gente consiga operacionalizar os estornos, caso os projetos não sejam bem-sucedidos.
+  %p O MoIP é uma das empresas mais inovadoras no mercado brasileiro de meios de pagamento. Ele possibilita que as transações feitas #{current_site.in_the_name} sejam seguras e garante que a gente consiga operacionalizar os estornos, caso os projetos não sejam bem-sucedidos.
   %p Vocês podem saber mais sobre eles #{link_to 'aqui', 'http://www.moip.com.br/MainMenu.do?method=whatmoipis', :target => :_blank}.
   %h3 Eu preciso ter uma conta no MoIP para apoiar um projeto?
   %p Não. Você pode usar seu cartão de crédito preferido, pagar pelo débito dos bancos parceiros do MoIP, ou emitir um boleto. Se você tiver uma conta no MoIP, fica ainda mais fácil, porque aí você não precisa digitar suas informações básicas toda vez que for apoiar um projeto. Se você quiser abrir uma conta por lá, #{link_to 'clique aqui', 'https://www.moip.com.br/CreateWallet.do', :target => :_blank}.
   %h3 Quais informações o criador do projeto vai receber se eu apoiar seu projeto?
-  %p Ele saberá o seu nome de usuário no Catarse, seu email, o valor que você apoiou e qual recompensa selecionou.
+  %p Ele saberá o seu nome de usuário #{current_site.in_the_name}, seu email, o valor que você apoiou e qual recompensa selecionou.
   %h3 O valor com que eu contribuí será mostrado publicamente?
   %p Não, não. Apenas o criador do projeto receberá essa informação.
   %h3 E se eu quiser que meu apoio seja anônimo?
@@ -85,7 +85,7 @@
   %p Não. O que a gente faz é incentivar os criadores a deixar essas informações bem transparentes, mas cabe a ele decidir sobre esse assunto.
   %h2 Enviando seu projeto
   %h3 O que eu preciso fazer pra enviar meu projeto?
-  %p Primeiro você tem que entrar no “Envie seu projeto” (fica no canto direito, na parte superior do site). Lá a gente explica direitinho como funciona o Catarse, e te dá algumas dicas pra você montar seu projeto. Depois, é só preencher os campos e enviar o projeto.
+  %p Primeiro você tem que entrar no “Envie seu projeto” (fica no canto direito, na parte superior do site). Lá a gente explica direitinho como funciona #{current_site.the_name}, e te dá algumas dicas pra você montar seu projeto. Depois, é só preencher os campos e enviar o projeto.
   %h3 Todo projeto enviado vai para o site?
   %p Não. A gente tem um time responsável por avaliar os projetos. Não iremos julgar a qualidade artística dele ou palpitar no seu modelo de negócios. Na verdade, o que queremos é conhecer um pouco melhor o histórico do criador do projeto, como ele pretende comunicar e engajar sua comunidade para conseguir levantar o dinheiro, saber quais recompensas que ele pretende oferecer e ver se o projeto se encaixa nas #{link_to 'nossas diretrizes', guidelines_path} (basicamente, não aceitamos projetos de caridade ou para causas sociais; não financiamos negócios de tempo indeterminado, apenas projetos).
   %p Temos alguns motivos para fazermos isso:
@@ -96,12 +96,12 @@
   %p Ah, e não há limites de projetos que irão para o ar. Não é uma competição. Para nós, quanto mais projetos, melhor.
   %h3 Que tipo de respostas eu posso esperar depois que eu enviei meu projeto?
   %p São três possibilidades: a gente autoriza o projeto e ele vai para o ar; nós enviaremos novas perguntas para entender um pouco mais sobre o projeto; ou não aceitaremos o projeto caso ele destoe do #{link_to 'nosso foco', guidelines_path}.
-  %h3 Por quanto tempo eu terei que esperar pela resposta do Catarse?
+  %h3 Por quanto tempo eu terei que esperar pela resposta d#{current_site.the_name}?
   %p Não mais que 2 dias, incluindo finais de semana.
   %h2 Coisa de dinheiro
   %h3 Como os criadores dos projetos receberão o dinheiro, caso o projeto seja bem sucedido?
-  %p Primeiramente, eles terão que ter uma conta no MoIP. Se houver sucesso no projeto, o dinheiro será enviado 2 dias úteis após o prazo final do projeto. Já será descontado o valor referente à taxa do Catarse e à taxa cobrada pelo MoIP.
-  %h3 Qual é a taxa que o Catarse cobra?
+  %p Primeiramente, eles terão que ter uma conta no MoIP. Se houver sucesso no projeto, o dinheiro será enviado 2 dias úteis após o prazo final do projeto. Já será descontado o valor referente à taxa d#{current_site.the_name} e à taxa cobrada pelo MoIP.
+  %h3 Qual é a taxa que #{current_site.the_name} cobra?
   %p 5%. Note-se que esse valor só será cobrado dos projetos bem-sucedidos.
   %h3 Qual é a taxa cobrada pelo MoIP?
   %p
@@ -112,7 +112,7 @@
     %li Cartão de crédito: 5,4% + R$ 0,39 por transação
     %li Débito automático: 1,9% + R$ 0,39 por transação
     %li Boleto bancário: 1,9% + R$ 0,39 por transação
-  %h3 Custa alguma coisa pra colocar um projeto no Catarse?
+  %h3 Custa alguma coisa pra colocar um projeto #{current_site.in_the_name}?
   %p Não. Nadinha.
   %h3 E qual o máximo que um projeto pode captar?
   %p Não tem limite máximo, só mínimo.
@@ -127,10 +127,10 @@
   %p Não, você tem que esperar até o prazo final. Aliás, essa é uma ótima oportunidade de você engajar sua comunidade para conseguir um apoio extra.
   %h3 Posso editar alguma informação do meu projeto após o prazo final do projeto?
   %p Não.
-  %h3 Um projeto pode ser apagado do Catarse?
+  %h3 Um projeto pode ser apagado d#{current_site.the_name}?
   %p Se ele já tiver sido lançado ao público, não. Mesmo se ele não for financiado, ele continuará no site, por uma questão de transparência.
   %h3 Posso cancelar meu projeto?
-  %p Pode. Para isso você terá que enviar um email para #{mail_to 'contato@catarse.me'}. Precisaremos também de uma explicação sobre os motivos para enviarmos a todos que já contribuíram com seu projeto.
+  %p Pode. Para isso você terá que enviar um email para #{mail_to current_site.email}. Precisaremos também de uma explicação sobre os motivos para enviarmos a todos que já contribuíram com seu projeto.
   %h2 Recompensas pra que te quero
   %h3 Quem cria as recompensas?
   %p São todas de responsabilidade do criador do projeto, tanto o que será a recompensa quanto o seu valor.
@@ -142,15 +142,15 @@
   %h3 Como posso obter as informações (email, tamanho de camiseta, endereço) dos apoiadores do meu projeto para distribuir as recompensas?
   %p Na página de apoiadores do projeto, você verá os emails de todos os seus apoiadores. Você deverá entrar em contato com eles para obter outros tipos de informações.
   %h3 Quem é o responsável pela entrega das recompensas?
-  %p O dono do projeto – e só ele. O Catarse é apenas um facilitador do processo, como, por exemplo, o #{link_to 'Mercado Livre', 'http://www.mercadolivre.com.br/', :target => :_blank}.
+  %p O dono do projeto – e só ele. #{current_site.the_name(true)} é apenas um facilitador do processo, como, por exemplo, o #{link_to 'Mercado Livre', 'http://www.mercadolivre.com.br/', :target => :_blank}.
   %h2 Algumas coisas mais
-  %h3 O Catarse tem um blog?
-  %p Tem sim. É esse aqui: #{link_to 'http://blog.catarse.me', 'http://blog.catarse.me', :target => :_blank}.
-  %h3 O Catarse está no twitter?
-  %p Sim, nosso perfil é o #{link_to '@Catarse_', 'http://twitter.com/Catarse_', :target => :_blank}.
+  %h3 #{current_site.the_name(true)} tem um blog?
+  %p Tem sim. É esse aqui: #{link_to current_site.blog, current_site.blog, :target => :_blank}.
+  %h3 #{current_site.the_name(true)} está no Twitter?
+  %p Sim, nosso perfil é o #{link_to "@#{current_site.twitter}", "http://twitter.com/#{current_site.twitter}", :target => :_blank}.
   %h3 E tem uma página no Facebook?
-  %p Tem também. Veja #{link_to 'aqui', 'http://www.facebook.com/Catarse.me', :target => :_blank}.
+  %p Tem também. Veja #{link_to 'aqui', current_site.facebook, :target => :_blank}.
   %h3 Tem algum lugar que eu posso requisitar novas funcionalidades?
-  %p Lógico. É só clicar no botão de "Sugestões" logo ali à sua esquerda, ou mandar um email para #{mail_to 'contato@catarse.me'}.
+  %p Lógico. É só clicar no botão de "Sugestões" logo ali à sua esquerda, ou mandar um email para #{mail_to current_site.email}.
   %h3 Tenho uma pergunta que não foi respondida por aqui, tem algum jeito de eu entrar em contato com vocês?
-  %p Claro. Pode entrar em contato com nosso time de atendimento #{mail_to 'contato@catarse.me', 'aqui'}.
+  %p Claro. Pode entrar em contato com nosso time de atendimento #{mail_to current_site.email, 'aqui'}.

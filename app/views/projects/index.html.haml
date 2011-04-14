@@ -1,6 +1,6 @@
-= render :partial => "/sites/#{current_site}/index_header"
-= render :partial => "/sites/#{current_site}/index_meta_tags"
-= render :partial => "/sites/#{current_site}/promo_video"
+= render :partial => "/sites/#{current_site.path}/index_header"
+= render :partial => "/sites/#{current_site.path}/index_meta_tags"
+= render :partial => "/sites/#{current_site.path}/promo_video"
 .project_list_header Projetos em destaque
 = render :partial => 'project', :collection => @recommended
 .clear
@@ -30,7 +30,7 @@
   .navigation
     = submit_tag "«", :class => 'prev', :disabled => true
     = submit_tag "»", :class => 'next'
-= render :partial => "/sites/#{current_site}/press"
+= render :partial => "/sites/#{current_site.path}/press"
 = javascript_include_tag 'slider'
 = javascript_include_tag 'press'
 

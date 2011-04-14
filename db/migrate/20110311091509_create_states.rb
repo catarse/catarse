@@ -1,6 +1,6 @@
 # coding: utf-8
+require 'sexy_pg_constraints'
 class CreateStates < ActiveRecord::Migration
-  require 'sexy_pg_constraints'
   def self.up
     create_table :states do |t|
       t.string :name, :null => false

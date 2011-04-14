@@ -5,8 +5,10 @@ class ApplicationController < ActionController::Base
   private
   def current_site
     return @current_site if @current_site
-    return @current_site = session[:current_site] if session[:current_site]
-    @current_site = "catarse"
+    return @current_site = Site.find_by_path(session[:current_site]) if session[:current_site]
+    @current_site = Site.find_by_host request.host
+    @current_site = Site.find_by_path("catarse") unless @current_site
+    @current_site
   end
   def current_user
     return @current_user if @current_user

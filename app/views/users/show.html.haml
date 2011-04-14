@@ -1,5 +1,5 @@
 = content_for :content_header do
-  = image_tag "sites/#{current_site}/badge.png", :id => "badge" if @user.backer?
+  = image_tag "sites/#{current_site.path}/badge.png", :id => "badge" if @user.backer?
   #profile_header
     .image
       - if current_user and @user == current_user
@@ -29,11 +29,11 @@
     %ul
       %li
         #{on_the_spot_edit @user, :email, :tooltip => "Clique aqui para preencher seu email..."}
-        .hint Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Caso um projeto que você apoiou seja bem sucedido, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas.
+        .hint Seu email será utilizado apenas para envio de comunicações d#{current_site.the_name} e dos projetos que você apoiar. Ele não estará visível em seu perfil. Caso um projeto que você apoiou seja bem sucedido, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas.
       %li
         = hidden_field_tag 'id', @user.id
         = check_box_tag 'newsletter', '1', @user.newsletter
-        = label_tag 'newsletter', 'Quero receber novidades do Catarse por email'
+        = label_tag 'newsletter', "Quero receber novidades d#{current_site.the_name} por email"
         %br
         = check_box_tag 'project_updates', '1', @user.project_updates
         = label_tag 'project_updates', 'Quero receber atualizações dos projetos por email'
@@ -57,9 +57,9 @@
   - if @projects.empty?
     #no_projects
       - if current_user and @user == current_user
-        Você ainda não enviou nenhum projeto para o Catarse. Deixe a inspiração bater e #{link_to 'clique aqui', guidelines_path} para começar!
+        Você ainda não enviou nenhum projeto para #{current_site.the_name}. Deixe a inspiração bater e #{link_to 'clique aqui', guidelines_path} para começar!
       - else
-        #{@user.display_name} ainda não enviou nenhum projeto para o Catarse. Será que a inspiração vai bater uma hora dessas?
+        #{@user.display_name} ainda não enviou nenhum projeto para #{current_site.the_name}. Será que a inspiração vai bater uma hora dessas?
   - else
     %ul
       - @projects.each do |project|
@@ -90,9 +90,9 @@
             = image_tag back.project.display_image, :class => 'project'
             = back.project.name
           - if current_user and @user == current_user
-            = link_to "http://twitter.com/?status=Eu apoiei o projeto \"#{back.project.name}\" no @Catarse_ #{back.project.short_url}", :target => :_blank do
+            = link_to "http://twitter.com/?status=Eu apoiei o projeto \"#{back.project.name}\" #{current_site.in_the_twitter} #{back.project.short_url}", :target => :_blank do
               = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
-            = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}&t=Eu apoiei o projeto \"#{back.project.name}\" no Catarse&v=4", :target => :_blank do
+            = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}&t=Eu apoiei o projeto \"#{back.project.name}\" #{current_site.in_the_name}&v=4", :target => :_blank do
               = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
           %p
             - if current_user and @user == current_user

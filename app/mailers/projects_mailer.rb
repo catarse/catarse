@@ -8,7 +8,7 @@ class ProjectsMailer < ActionMailer::Base
     @links = h(links).gsub("\n", "<br>").html_safe
     @contact = contact
     @user = user
-    mail(:to => "contato@catarse.me", :subject => "Projeto enviado por #{@user.name}")
+    mail(:to => current_site.email, :subject => "Projeto enviado por #{@user.name}")
   end
 end
 

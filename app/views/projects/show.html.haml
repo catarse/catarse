@@ -13,14 +13,14 @@
   %meta{:property => "og:type", :content => 'cause'}
   %meta{:property => "og:url", :content => project_url(@project)}
   %meta{:property => "og:image", :content => @project.display_image}
-  %meta{:property => "og:site_name", :content => 'Catarse'}
+  %meta{:property => "og:site_name", :content => current_site.name}
   %meta{:property => "og:description", :content => @project.headline}
 - unless @project.visible
   #project_warning
     - if @project.rejected
-      Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)
+      Este projeto não foi selecionado para participar d#{current_site.the_name}. Quem sabe numa próxima vez? :)
     - else
-      Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)
+      Este projeto está aguardando análise e logo saberemos se ele entrará #{current_site.in_the_name} ;)
 #project_description
   #project_video
     %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "610", :height => "346"}
@@ -28,20 +28,20 @@
       %h1 Faça parte disto e compartilhe este projeto
       %ul
         %li.social
-          = link_to "http://www.facebook.com/share.php?u=#{project_url(@project)}&t=Confira o projeto \"#{@project.name}\" no Catarse&v=4", :target => :_blank do
-            = image_tag "sites/#{current_site}/facebook_share.png", :title => 'Facebook'
+          = link_to "http://www.facebook.com/share.php?u=#{project_url(@project)}&t=Confira o projeto \"#{@project.name}\" #{current_site.in_the_name}&v=4", :target => :_blank do
+            = image_tag "sites/#{current_site.path}/facebook_share.png", :title => 'Facebook'
             Facebook
         %li.social
-          = link_to "http://twitter.com/?status=Confira o projeto \"#{@project.name}\" no @Catarse_ #{@project.short_url}", :target => :_blank do
-            = image_tag "sites/#{current_site}/twitter_share.png", :title => 'Twitter'
+          = link_to "http://twitter.com/?status=Confira o projeto \"#{@project.name}\" #{current_site.in_the_twitter} #{@project.short_url}", :target => :_blank do
+            = image_tag "sites/#{current_site.path}/twitter_share.png", :title => 'Twitter'
             Twitter
         %li.link
-          = image_tag "sites/#{current_site}/link_share.png", :title => "Compartilhe o link"
+          = image_tag "sites/#{current_site.path}/link_share.png", :title => "Compartilhe o link"
           Link
           = text_field_tag "project_link", @project.short_url
         %li.embed
           = link_to '#', :id => 'embed_link' do
-            = image_tag "sites/#{current_site}/embed_share.png", :title => "Incorpore este projeto no seu site"
+            = image_tag "sites/#{current_site.path}/embed_share.png", :title => "Incorpore este projeto no seu site"
             Incorporar
     = render 'embed'
   #project_menu
@@ -49,24 +49,24 @@
       %li
         = link_to '#about', :id => 'about_link' do
           Sobre
-          = image_tag "sites/#{current_site}/project_menu_selected.png"
+          = image_tag "sites/#{current_site.path}/project_menu_selected.png"
       %li
         = link_to '#updates', :id => 'updates_link' do
           Atualizações
           %span.count (#{@updates.count})
-          = image_tag "sites/#{current_site}/project_menu_selected.png"
+          = image_tag "sites/#{current_site.path}/project_menu_selected.png"
       %li
         = link_to '#backers', :id => 'backers_link' do
           Apoiadores
           %span.count (#{@project.total_backers})
-          = image_tag "sites/#{current_site}/project_menu_selected.png"
+          = image_tag "sites/#{current_site.path}/project_menu_selected.png"
       %li
         = link_to '#comments', :id => 'comments_link' do
           Comentários
           %span.count (#{@comments.count})
-          = image_tag "sites/#{current_site}/project_menu_selected.png"
+          = image_tag "sites/#{current_site.path}/project_menu_selected.png"
   #project_content
-  #loading= image_tag "sites/#{current_site}/loading.gif"
+  #loading= image_tag "sites/#{current_site.path}/loading.gif"
 = render :partial => 'back_info'
 = render :partial => 'about'
 = render :partial => 'project_backers'

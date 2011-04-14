@@ -22,5 +22,5 @@
       = label_tag 'accept', "Eu li e estou de acordo com os #{link_to 'termos de uso', terms_path, :target => :_blank}.".html_safe, :class => 'inline'
     %fieldset
       = submit_tag 'Enviar o projeto', :disabled => true
-      = image_tag "sites/#{current_site}/loading.gif", :id => 'loading'
+      = image_tag "sites/#{current_site.path}/loading.gif", :id => 'loading'
 = javascript_include_tag 'start_project'
