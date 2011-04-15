@@ -9,18 +9,17 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
     this.collection.page = 1
     this.collection.bind("refresh", this.update)
     this.collection.fetch()
-    $('#loading').waypoint(this.waypoint, {offset: "100%"})
   },
   events: {
     "click [type=submit]": "createItem",
     "click #show_formatting_tips": "showFormattingTips"
   },
   waypoint: function(event, direction){
-    if($('#loading img:visible').length > 0)
-      return
-    $('#loading').waypoint('remove')
-    if(direction == "down")
-      this.nextPage()
+    if(!$('#loading img').is(":visible")){
+      $('#loading').waypoint('remove')
+      if(direction == "down")
+        this.nextPage()
+    }
   },
   nextPage: function(){
     if(!this.collection.isEmpty()) {
