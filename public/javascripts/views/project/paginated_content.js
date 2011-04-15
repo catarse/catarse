@@ -16,6 +16,8 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
     "click #show_formatting_tips": "showFormattingTips"
   },
   waypoint: function(event, direction){
+    if($('#loading img:visible').length > 0)
+      return
     $('#loading').waypoint('remove')
     if(direction == "down")
       this.nextPage()
