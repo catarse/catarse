@@ -5,7 +5,7 @@ var ProjectCollection = PaginatedCollection.extend({
     this.initializeProject(options.project)
   },
   url: function(){
-    return "/" + this.controller + "/" + this.project.get('id') + "/" + this.action + "?page=" + this.page
+    return "/" + this.controller + "/" + this.project.get('id') + "/" + this.action + ".json?page=" + this.page
   },
   initializeProject: function(){
     this.initializePages(project)

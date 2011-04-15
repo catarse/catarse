@@ -5,7 +5,7 @@ var PaginatedCollection = Backbone.Collection.extend({
     this.initializePages()
   },
   url: function(){
-    return "/" + this.controller + "/" + this.action + "?page=" + this.page
+    return "/" + this.controller + "/" + this.action + ".json?page=" + this.page
   },
   initializePages: function(){
     _.bindAll(this, "nextPage")
