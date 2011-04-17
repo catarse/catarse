@@ -19,7 +19,6 @@ gem 'will_paginate'
 gem 'weekdays'
 gem 'moip', :git => 'https://github.com/moiplabs/moip-ruby.git'
 gem 'brcep'
-gem 'exception_notification', :require => 'exception_notifier'
 gem "meta_search"
 gem "RedCloth"
 gem "auto_html", '>= 1.3.5'
