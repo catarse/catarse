@@ -24,6 +24,7 @@ Factory.define :user do |f|
   f.name "Foo bar"
   f.email { Factory.next(:email) }
   f.bio "This is Foo bar's biography."
+  f.association :site, :factory => :site
 end
 Factory.define :category do |f|
   f.name { Factory.next(:name) }
@@ -47,6 +48,7 @@ end
 Factory.define :backer do |f|
   f.association :project, :factory => :project
   f.association :user, :factory => :user
+  f.association :site, :factory => :site
   f.confirmed true
   f.value 10.00
 end

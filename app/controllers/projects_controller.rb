@@ -111,7 +111,7 @@ class ProjectsController < ApplicationController
         return redirect_to :root
       end
       @title = "Apoie o #{@project.name}"
-      @backer = @project.backers.new(:user_id => current_user.id)
+      @backer = @project.backers.new(:user => current_user, :site => current_site)
       empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => "Obrigado. Eu só quero ajudar o projeto.")
       @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
       @reward = @project.rewards.find params[:reward_id] if params[:reward_id]
@@ -123,8 +123,10 @@ class ProjectsController < ApplicationController
     end
   end
   def review
+    @title = "Preencha e revise seus dados"
     params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
     params[:backer][:user_id] = current_user.id
+    params[:backer][:site_id] = current_site.id
     @project = Project.find params[:id]
     @backer = @project.backers.new(params[:backer])
     unless @backer.save

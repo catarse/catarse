@@ -82,7 +82,7 @@ describe User do
         'image' => "user.png"
       }
     }
-    u = User.create_with_omniauth(auth, another_user.id)
+    u = User.create_with_omniauth(Factory(:site), auth, another_user.id)
     u.should == primary
     User.count.should == 3
   end
@@ -99,7 +99,7 @@ describe User do
         'image' => "user.png"
       }
     }
-    u = User.create_with_omniauth(auth, primary.id)
+    u = User.create_with_omniauth(Factory(:site), auth, primary.id)
     u.should == primary
     User.count.should == 2
   end
@@ -117,7 +117,7 @@ describe User do
         'image' => "user.png"
       }
     }
-    u = User.create_with_omniauth(auth)
+    u = User.create_with_omniauth(Factory(:site), auth)
     u.should == primary
     User.count.should == 2
   end
@@ -140,7 +140,7 @@ describe User do
         'image' => "user.png"
       }
     }
-    u = User.create_with_omniauth(auth)
+    u = User.create_with_omniauth(Factory(:site), auth)
     u.should be_valid
     u.provider.should == auth['provider']
     u.uid.should == auth['uid']

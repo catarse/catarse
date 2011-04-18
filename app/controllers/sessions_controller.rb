@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.find_with_omni_auth(auth["provider"], auth["uid"].to_s)
     unless user
-      user = User.create_with_omniauth(auth, session[:old_user_id])
+      user = User.create_with_omniauth(current_site, auth, session[:old_user_id])
       session[:return_to] = user_path(user) if session[:return_to] and session[:return_to].empty?
     end
     session[:old_user_id] = nil

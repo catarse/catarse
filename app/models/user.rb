@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include Rails.application.routes.url_helpers
   sync_with_mailee :news => :newsletter, :list => "Newsletter"
-  validates_presence_of :provider, :uid
+  validates_presence_of :provider, :uid, :site
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :notifications
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
+  belongs_to :site
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
@@ -35,7 +36,7 @@ class User < ActiveRecord::Base
     u.primary.nil? ? u : u.primary
   end
 
-  def self.create_with_omniauth(auth, primary_user_id = nil)
+  def self.create_with_omniauth(site, auth, primary_user_id = nil)
     u = create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
@@ -46,6 +47,7 @@ class User < ActiveRecord::Base
       user.nickname = auth["user_info"]["nickname"]
       user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
       user.image_url = auth["user_info"]["image"]
+      user.site = site
     end
     # If we could not associate by email we try to use the parameter
     if u.primary.nil? and primary_user_id
