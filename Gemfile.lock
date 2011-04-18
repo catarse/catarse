@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:danielweinmann/moip-ruby.git
+  remote: https://github.com/danielweinmann/moip-ruby.git
   revision: db1b879358c623b597dc1c221b53336f9f06db0e
   specs:
     moip (1.0.2)
