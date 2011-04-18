@@ -6,7 +6,7 @@ $('#add_reward').click(function(e){
   new_reward = $(new_reward)
   new_reward.find('input').val(null)
   new_reward.find('textarea').html(null)
-  new_reward.find('input').numeric(',')
+  new_reward.find('input').numeric(false)
   new_reward.find('input, textarea').removeClass('ok').removeClass('error')
   $('#rewards_wrapper').append(new_reward)
   new_reward.find('textarea').focus()
@@ -92,7 +92,7 @@ headline_ok = function(){
 }
 goal_ok = function(){
   var value = $('#project_goal').val()
-  if(/^(\d+)(\,\d{1,2})?$/.test(value) && parseFloat(value.replace(',', '.')) > 0){
+  if(/^(\d+)$/.test(value) && parseInt(value) > 0){
     $('#project_goal').addClass("ok").removeClass("error")
     return true
   } else {
@@ -123,9 +123,9 @@ expires_at_ok = function(){
 rewards_ok = function(){
   var okey = true
   $('.reward input').each(function(){
-    if(/^(\d+)(\,\d{1,2})?$/.test($(this).val())){
+    if(/^(\d+)$/.test($(this).val())){
       if(/minimum_value/.test($(this).attr('id'))){
-        if(parseFloat($(this).val().replace(',', '.')) > 0) {
+        if(parseInt($(this).val()) > 0) {
           $(this).addClass("ok").removeClass("error")
         } else {
           $(this).addClass("error").removeClass("ok")
@@ -167,8 +167,8 @@ $('#project_headline').keyup(everything_ok)
 $('#accept').click(everything_ok)
 $('.reward input,.reward textarea').live('keyup', everything_ok)
 
-$('#project_goal').numeric(',')
-$('.reward input').numeric(',')
+$('#project_goal').numeric(false)
+$('.reward input').numeric(false)
 $('#project_expires_at').datepicker({
   altFormat: 'dd/mm/yy',
   onSelect: everything_ok
