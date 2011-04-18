@@ -28,8 +28,7 @@
                 = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
         = javascript_include_tag 'notifications'
     - else
-      #pre_header
-        Quer saber como apoiar um projeto? #{link_to 'Confira aqui', 'http://blog.catarse.me/post/2826297563/passo-a-passo-apoiar-projetos', :target => :_blank} um passo-a-passo que publicamos no nosso blog.
+      = render :partial => "/sites/#{current_site.path}/pre_header"
     #main
       #header_wrapper
         #header
