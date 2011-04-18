@@ -171,7 +171,8 @@ class ProjectsController < ApplicationController
           :razao => "Apoio para o projeto '#{backer.project.name}'",
           :forma => "BoletoBancario",
           :dias_expiracao => 2,
-          :pagador => payer
+          :pagador => payer,
+          :url_retorno => thank_you_url
         }
         response = MoIP::Client.checkout(payment)
         redirect_to MoIP::Client.moip_page(response["Token"])

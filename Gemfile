@@ -17,7 +17,7 @@ gem 'unicorn'
 gem 'mailee', '>= 0.5.1', :git => 'https://github.com/softa/mailee-api.git'
 gem 'will_paginate'
 gem 'weekdays'
-gem 'moip', :git => 'https://github.com/moiplabs/moip-ruby.git'
+gem 'moip', :git => 'git@github.com:danielweinmann/moip-ruby.git'
 gem 'brcep'
 gem "meta_search"
 gem "RedCloth"

@@ -1,8 +1,8 @@
 GIT
-  remote: https://github.com/moiplabs/moip-ruby.git
-  revision: 6d80cc7f896011e744f15f27d9ee70f03401655d
+  remote: git@github.com:danielweinmann/moip-ruby.git
+  revision: db1b879358c623b597dc1c221b53336f9f06db0e
   specs:
-    moip (1.0.1)
+    moip (1.0.2)
       activesupport (>= 2.3.2)
       httparty (~> 0.6.1)
       nokogiri (~> 1.4.3)
