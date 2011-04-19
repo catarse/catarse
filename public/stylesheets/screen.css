@@ -3313,7 +3313,7 @@ body#site #footer #social_menu ul li a {
 body#site #footer #colophon {
   padding-top: 20px;
   margin: 0 auto;
-  width: 240px;
+  width: 980px;
   font-size: 14px;
 }
 /* line 34, ../../app/stylesheets/_footer.sass */
@@ -3352,10 +3352,14 @@ body#site #footer #colophon a#softa_logo:hover {
   background-position: 0 -50px;
 }
 /* line 49, ../../app/stylesheets/_footer.sass */
+body#site #footer #colophon #grupo_comum {
+  float: right;
+}
+/* line 51, ../../app/stylesheets/_footer.sass */
 body#site #footer #powered_by {
   float: left;
 }
-/* line 51, ../../app/stylesheets/_footer.sass */
+/* line 53, ../../app/stylesheets/_footer.sass */
 body#site #footer #grupo_comum {
   float: right;
 }
