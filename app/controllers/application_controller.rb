@@ -39,7 +39,14 @@ class ApplicationController < ActionController::Base
     session[:user_id] = nil
   end
   def redirect_back_or_default(default)
+    if session[:return_site_id] and session[:return_site_id] != current_site.id
+      uri = URI.parse(session[:return_to] || "")
+      uri.scheme = "http" unless uri.scheme
+      uri.host = Site.find(session[:return_site_id]).host unless uri.host
+      session[:return_to] = uri.to_s
+    end
     redirect_to(session[:return_to] || default)
+    session[:return_site_id] = nil
     session[:return_to] = nil
   end
   def require_condition(condition, message)

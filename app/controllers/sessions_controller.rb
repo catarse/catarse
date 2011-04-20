@@ -1,7 +1,9 @@
 # coding: utf-8
 class SessionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:auth]
   def auth
     session[:return_to] = params[:return_to]
+    session[:return_site_id] = params[:return_site_id]
     session[:remember_me] = params[:remember_me]
     redirect_to "/auth/#{params[:provider]}"
   end

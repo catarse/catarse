@@ -2,9 +2,10 @@
   #login.hide
     %a.close{ :href => '#' } X
     %h1 Entre através de sua rede social favorita
-    = form_tag(auth_path) do
+    = form_tag("http://catarse.me/auth") do
       = hidden_field_tag 'provider'
       = hidden_field_tag 'return_to'
+      = hidden_field_tag 'return_site_id', current_site.id
       = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
       = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), 'google', :class => 'provider'
       - OauthProvider.order('"order"').all.each do |p|
