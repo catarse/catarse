@@ -13,6 +13,12 @@ Embora você tenha o direito de utilizar estes códigos com liberdade, de acordo
 
 Nosso objetivo ao abrir o código do Catarse é a difusão do crowdfunding no Brasil, em um mercado criativo e colaborativo. Portanto, se você quiser criar seu site utilizando o Catarse como modelo, por favor, respeite nossa identidade visual :) queremos ver o seu site no ar, porém com a sua cara e não a nossa.
 
+== Como começar
+
+O Relsi Hur Maron fez um ótimo post explicando passo a passo como fazer o código do Catarse rodar na sua máquina local. Veja o post em http://www.tuxtilt.com/catarse-plataforma-de-crowdfunding-open-source/ e se divirta!
+
+Muito obrigado ao Relsi pelo post e por se aventurar em terras não documentadas :)
+
 == Como contribuir
 
 Antes de contribuir, dê uma boa olhada no nosso UserVoice (http://catarse.uservoice.com) para saber o que o pessoal está pedindo e o que já está nos nossos planos.
