@@ -10,6 +10,9 @@ pt:
     catarse:
       logo:
         title: Catarse
+      pre_header:
+        content_html: Quer saber como apoiar um projeto? %{link} um passo-a-passo que publicamos no nosso blog.
+        help_link: Confira aqui
       explore_header: 
         title: Encontre projetos incríveis
         subtitle: Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!
