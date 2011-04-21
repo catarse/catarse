@@ -2,7 +2,6 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
   layouts:
     application:
       menu_explore: Explore projects
@@ -21,7 +20,7 @@ en:
           Join forces with everyone who wants to see a project brought to life.
           Get started today! 
       promo_video:
-        title: |
+        title_html: |
           It's here! now <div class="retrospective">find out</div> what's <div class="surprise">so cool</div> about <div class="catarse">Catharsis</div>
       press: 
-        title: 'Check out what they are saying about Catharsis in the press'
+        title: Check out what they are saying about Catharsis in the press
