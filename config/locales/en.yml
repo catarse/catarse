@@ -3,3 +3,16 @@
 
 en:
   hello: "Hello world"
+  sites:
+    catarse:
+      index_header:
+        title: Help build projects that you believe in!
+        subtitle: |
+          With Catharsis, users collaborate to fund projects and build a better world.
+          Join forces with everyone who wants to see a project brought to life.
+          Get started today! 
+      promo_video:
+        title: |
+          It's here! now <div class="retrospective">find out</div> what's <div class="surprise">so cool</div> about <div class="catarse">Catharsis</div>
+      press: 
+        title: 'Check out what they are saying about Catharsis in the press'
