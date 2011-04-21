@@ -1,5 +1,5 @@
 == Catharsis
-=== The first funding platform collaborative creative projects in Brazil
+=== The first crowd-funding platform for collaborative projects in Brazil
 
 Welcome to the repository for the catharsis source code. The goal of opening the source is the create an open source community around a high-quality crowd-funding platform for Brazil.
 
