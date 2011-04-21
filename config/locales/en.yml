@@ -3,8 +3,17 @@
 
 en:
   hello: "Hello world"
+  layouts:
+    application:
+      menu_explore: Explore projects
+      menu_submit: Submit your project
   sites:
     catarse:
+      logo:
+        title: Catharsis
+      explore_header: 
+        title: Find amazing projects!
+        subtitle: Explore the projects, find ones that inspire you, and help make them happen.
       index_header:
         title: Help build projects that you believe in!
         subtitle: |
