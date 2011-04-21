@@ -1,3 +1,4 @@
+# coding: utf-8
 class Site < ActiveRecord::Base
   validates_presence_of :name, :title, :path, :host
   validates_uniqueness_of :name, :path, :host

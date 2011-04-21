@@ -7,6 +7,8 @@
       #pre_header
         - current_user.backs.project_visible(current_site).display_notice.each do |back|
           %div{:id => "back_notice_#{back.id}", :class => "back_notice"}
+
+            = t(:back_notice, :link => link_to(truncate(back.project.name, :length => 32), project_path(back.project)))
             Você apoiou o projeto #{link_to(truncate(back.project.name, :length => 32), project_path(back.project))}. Conte para todo mundo o que você fez!
             &nbsp;
             %a.close{ :href => '#' } X
