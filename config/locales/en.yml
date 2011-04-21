@@ -11,8 +11,8 @@ en:
       logo:
         title: Catharsis
       pre_header:
-        content_html: Want to know how to support a project? %{link} a step-by-step we publish on our blog.
-        help_link: Check here for
+        content_html: Want to know how to support a project? %{link} for a step-by-step guide published on our blog.
+        help_link: Click here
       explore_header: 
         title: Find amazing projects!
         subtitle: Explore the projects, find ones that inspire you, and help make them happen.
