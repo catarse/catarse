@@ -35,9 +35,7 @@ You can learn how to create your own website powered by Catarse here: https://gi
 
 == Getting started
 
-We currently have a great blog post in Portuguese, written by Relsi Hur Maron, with a step-by-step guide on how to run and start developing Catarse on your environment.
-
-Check it on http://www.tuxtilt.com/catarse-plataforma-de-crowdfunding-open-source and have fun!
+We currently have a great blog post in Portuguese, written by Relsi Hur Maron, with a step-by-step guide on how to run and start developing Catarse on your environment. Check it on http://www.tuxtilt.com/catarse-plataforma-de-crowdfunding-open-source and have fun!
 
 Thanks a lot to Relsi for the post and for adventuring into undocumented lands :)
 
@@ -55,6 +53,12 @@ We use RSpec and Steak for the tests, and the best practices are:
 * Create controller tests only for functionalities that are not covered by acceptance testes. I mean: we give priority to acceptance tests over controller tests.
 
 Currently, a lot (lot!) of functionality are not tested. If you don't know how to start contributing, please help us regaining control over the code and write a few tests for us! *Any* doubt, please join our Google Group at http://groups.google.com/group/catarse-dev and we will help you out.
+
+== Credits
+
+Author: Daniel Weinmann
+
+Contributors: Daniel Walmsley, Diogo Biazus 
 
 == License
 
