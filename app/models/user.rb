@@ -1,3 +1,4 @@
+# coding: utf-8
 class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper

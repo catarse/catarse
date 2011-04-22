@@ -3,7 +3,7 @@ require 'rails/all'
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 module Catarse
   class Application < Rails::Application
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :pt
     config.active_record.schema_format = :sql
     config.encoding = "utf-8"
     config.filter_parameters += [:password, :password_confirmation]
