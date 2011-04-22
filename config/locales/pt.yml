@@ -6,6 +6,9 @@ pt:
     application:
       menu_explore: Explore os projetos
       menu_submit: Envie seu projeto 
+  projects:
+    guidelines:
+      title: Como funciona %{site_name}?
   sites:
     catarse:
       logo:
@@ -19,6 +22,15 @@ pt:
       index_header:
         title: Faça acontecer os projetos em que você acredita!
         subtitle:  Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair do papel e faça ele virar realidade. Você é a peça que falta nesta história.
+      footer:
+        guidelines: Como funciona?
+        faq: FAQ/Ajuda
+        terms: Termos de uso
+        privacy: Política de privacidade
+        email: Contato
+        twitter: Siga no Twitter
+        facebook: Curta no Facebook
+        blog: Leia o blog
       promo_video:
         title_html: |
           Rá!<div class="retrospective">descubra finalmente</div> qual é a <div class="surprise">grande surpresa</div> do <div class="catarse">Catarse</div>

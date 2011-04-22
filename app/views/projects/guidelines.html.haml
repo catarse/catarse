@@ -1,5 +1,6 @@
 = content_for :content_header do
-  %h1 Como funciona #{current_site.the_name}?
+  %h1 
+    =t('.title', :site_name => current_site.the_name)
   %h2 Antes de enviar seu projeto, saiba um pouco mais sobre como funciona #{current_site.the_name}.
 #how_it_works
   #{current_site.the_name(true)} funciona assim: você envia seu projeto, diz
