@@ -9,7 +9,7 @@ You can see the software in action in http://catarse.me.
 
 === Translations
 
-This software was first created as Brazil's first crowdfunding platform. Hence, it was made in Portuguese. We are now beginning to internationalize it. If you want to join us in this effort, please feel free to fork the repository and send as a pull request with your changes. If you have *any* doubt, please join our Google Group at http://groups.google.com/group/catarse-dev and we will help you.
+This software was first created as Brazil's first crowdfunding platform. Thus, it was made in Portuguese. We are now beginning to internationalize it. If you want to join us in this effort, please feel free to fork the repository and send as a pull request with your changes. If you have *any* doubt, please join our Google Group at http://groups.google.com/group/catarse-dev and we will help you.
 
 Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the internationalization and beginning the english translation.
 
@@ -17,7 +17,7 @@ Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the inter
 
 Currently, we only support MoIP, which is a brazilian payment gateway. We need to create different options of payment gateways so each site can chose which gateways to use.
 
-I'm thinking of a Rails Engine for each gateway, since we're gonna need to change some views to match each gateway's requirements. If you want your site to use a different gateway, pleas join us and help us creating this infrastructure.
+I'm thinking of a Rails Engine for each gateway, since we're gonna need to change some views to match each gateway's requirements. If you want your site to use a different gateway, please join us and help us creating this infrastructure.
 
 == Best practices
 
