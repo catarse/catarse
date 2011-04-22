@@ -27,7 +27,7 @@ Our goal is to spread crowdfunding across the world, in a collaborative and crea
 
 == Powered by Catarse
 
-We at http://comum.cc are willing to host your crowdfunding website at Catarse's infrastructure. We call this service a _powered by Catarse_ website. It's basically a different SASS (CSS for grown-ups) and some HAML/Slim (HTML for grown-ups) for each site, and different projects on each site. But they run on the same Rails processes.
+We at http://comum.cc are willing to host your crowdfunding website at Catarse's infrastructure. We call this service a "powered by Catarse" website. It's basically a different SASS (CSS for grown-ups) and some HAML/Slim (HTML for grown-ups) for each site, and different projects on each site. But they run on the same Rails processes.
 
 If you want to host your website with us, please contact us at contato@comum.cc.
 
@@ -37,7 +37,7 @@ You can learn how to create your own website _powered by Catarse_ here: https://
 
 We currently have a great blog post in Portuguese, written by Relsi Hur Maron, with a step-by-step guide on how to run and start developing Catarse on your environment.
 
-Check it on [[http://www.tuxtilt.com/catarse-plataforma-de-crowdfunding-open-source/]] and have fun!
+Check it on http://www.tuxtilt.com/catarse-plataforma-de-crowdfunding-open-source and have fun!
 
 Thanks a lot to Relsi for the post and for adventuring into undocumented lands :)
 
