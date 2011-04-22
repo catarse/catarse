@@ -1,39 +1,63 @@
 == Catarse
-=== A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil
+=== The first open source crowdfunding platform in the world
 
-Seja bem-vindo ao repositório dos códigos-fonte do Catarse. Nosso objetivo ao abrir o código do site é estimular a criação de uma comunidade de desenvolvedores em torno do crowdfunding no Brasil, com alto nível de qualidade.
+Welcome to Catarse's source code repository. Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
 
-Temos como objetivo, também, a criação de um Rails Engine para a criação de sites de crowdfunding. Criamos um rascunho em http://github.com/danielweinmann/crowdfunding, porém contamos com sua colaboração para a evolução desta gem. Nossa idéia é utilizar o código do Catarse como ponto de partida para a criação do Engine, e depois utilizar o Engine no Catarse. Porém, só iremos começar este desenvolvimento quando tivermos pelo menos + 1 colaborador interessado em usar a gem. Deste modo conseguiremos abstrair as necessidades de pelo menos 2 sites e colocar no Engine.
+You can see the software in action in http://catarse.me.
 
-Você pode ver estes códigos-fonte em ação no http://catarse.me.
+== Internationalization
 
-== Boas práticas
+=== Translations
 
-Embora você tenha o direito de utilizar estes códigos com liberdade, de acordo com a licença do MIT, nós agradeceremos se você devolver os frutos do seu trabalho à comunidade.
+This software was first created as Brazil's first crowdfunding platform. Hence, it was made in Portuguese. We are now beginning to internationalize it. If you want to join us in this effort, please feel free to fork the repository and send as a pull request with your changes. If you have *any* doubt, please join our Google Group at http://groups.google.com/group/catarse-dev and we will help you.
 
-Nosso objetivo ao abrir o código do Catarse é a difusão do crowdfunding no Brasil, em um mercado criativo e colaborativo. Portanto, se você quiser criar seu site utilizando o Catarse como modelo, por favor, respeite nossa identidade visual :) queremos ver o seu site no ar, porém com a sua cara e não a nossa.
+Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the internationalization and beginning the english translation.
 
-== Como começar
+=== Payment gateways
 
-O Relsi Hur Maron fez um ótimo post explicando passo a passo como fazer o código do Catarse rodar na sua máquina local. Veja o post em http://www.tuxtilt.com/catarse-plataforma-de-crowdfunding-open-source/ e se divirta!
+Currently, we only support MoIP, which is a brazilian payment gateway. We need to create different options of payment gateways so each site can chose which gateways to use.
 
-Muito obrigado ao Relsi pelo post e por se aventurar em terras não documentadas :)
+I'm thinking of a Rails Engine for each gateway, since we're gonna need to change some views to match each gateway's requirements. If you want your site to use a different gateway, pleas join us and help us creating this infrastructure.
 
-== Como contribuir
+== Best practices
 
-Antes de contribuir, dê uma boa olhada no nosso UserVoice (http://catarse.uservoice.com) para saber o que o pessoal está pedindo e o que já está nos nossos planos.
+Even though you have the right to use this source code with freedom, according to MIT's license, we'll appreciate if you give back the fruits of your work to the community.
 
-Depois, basta fazer um fork, mudar, e mandar um pull request.
+Our goal is to spread crowdfunding across the world, in a collaborative and creative environment. Thus, if you want to use Catarse as a starting point to your website, please be sure to respect our visual identity and create a new SASS for your site :) we want to see your site go live, but with your personality, not ours.
 
-Nós utilizamos RSpec e Steak para os testes, e as melhores práticas são:
-* Manter os modelos com 100% de cobertura de testes (usando rcov)
-* Criar testes de aceitação para tudo que for usar interface
-* Criar testes de controle apenas quando as funcionalidades não puderem ser completamente cobertas por testes de aceitação. Ou seja: damos prioridade para os testes de aceitação em relação aos testes de controles.
+== Powered by Catarse
 
-Atualmente, uma série de funcionalidades estão sem testes de aceitação. Se você não sabe como começar, uma boa maneira pode ser contribuindo com testes de aceitação :) qualquer dúvida, estou à disposição no mailto:danielweinmann@gmail.com.
+We at http://comum.cc are willing to host your crowdfunding website at Catarse's infrastructure. We call this service a _powered by Catarse_ website. It's basically a different SASS (CSS for grown-ups) and some HAML/Slim (HTML for grown-ups) for each site, and different projects on each site. But they run on the same Rails processes.
 
-== Licença
+If you want to host your website with us, please contact us at contato@comum.cc.
+
+You can learn how to create your own website _powered by Catarse_ here: https://github.com/danielweinmann/catarse/wiki/How-to-create-a-site-powered-by-catarse.
+
+== Getting started
+
+We currently have a great blog post in Portuguese, written by Relsi Hur Maron, with a step-by-step guide on how to run and start developing Catarse on your environment.
+
+Check it on [[http://www.tuxtilt.com/catarse-plataforma-de-crowdfunding-open-source/]] and have fun!
+
+Thanks a lot to Relsi for the post and for adventuring into undocumented lands :)
+
+Anyone willing to translate it to English?
+
+== How to contribute
+
+Before contributing, take a look at our Roadmap (https://github.com/danielweinmann/catarse/wiki/Roadmap) and see what we are needing.
+
+After that, just fork the project, change what you want, and send us a pull request.
+
+We use RSpec and Steak for the tests, and the best practices are:
+* Try and keep the models with 100% of coverage (using rcov)
+* Create acceptance tests for everything that has a user interface (currently lacking a lot of attention)
+* Create controller tests only for functionalities that are not covered by acceptance testes. I mean: we give priority to acceptance tests over controller tests.
+
+Currently, a lot (lot!) of functionality are not tested. If you don't know how to start contributing, please help us regaining control over the code and write a few tests for us! *Any* doubt, please join our Google Group at http://groups.google.com/group/catarse-dev and we will help you out.
+
+== License
 
 Copyright (c) 2011 Softa
 
-Licenciado sob a licença do MIT (vide o arquivo MIT-LICENSE)
+Licensed under the MIT (see MIT-LICENSE file)
