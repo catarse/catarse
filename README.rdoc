@@ -31,7 +31,7 @@ We at http://comum.cc are willing to host your crowdfunding website at Catarse's
 
 If you want to host your website with us, please contact us at contato@comum.cc.
 
-You can learn how to create your own website _powered by Catarse_ here: https://github.com/danielweinmann/catarse/wiki/How-to-create-a-site-powered-by-catarse.
+You can learn how to create your own website powered by Catarse here: https://github.com/danielweinmann/catarse/wiki/How-to-create-a-site-powered-by-catarse.
 
 == Getting started
 
