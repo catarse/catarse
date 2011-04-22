@@ -49,7 +49,7 @@ After that, just fork the project, change what you want, and send us a pull requ
 
 We use RSpec and Steak for the tests, and the best practices are:
 * Try and keep the models with 100% of coverage (using rcov)
-* Create acceptance tests for everything that has a user interface (currently lacking a lot of attention)
+* Create acceptance tests for everything that has an user interface (currently lacking a lot of attention)
 * Create controller tests only for functionalities that are not covered by acceptance testes. I mean: we give priority to acceptance tests over controller tests.
 
 Currently, a lot (lot!) of functionality are not tested. If you don't know how to start contributing, please help us regaining control over the code and write a few tests for us! *Any* doubt, please join our Google Group at http://groups.google.com/group/catarse-dev and we will help you out.
