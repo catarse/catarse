@@ -1,5 +1,11 @@
 module HelperMethods
   # Put helper methods you need to be available in all tests here.
+  def current_site
+    return @current_site if @current_site
+    @current_site = Site.find_by_path("catarse")
+    @current_site = Factory(:site, :name => "Catarse", :path => "catarse") unless @current_site
+    @current_site
+  end
   def fake_login
     visit fake_login_path
   end

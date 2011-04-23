@@ -16,20 +16,7 @@ class ApplicationController < ActionController::Base
     site_host = request.host.gsub "www.", ""
     @current_site = Site.find_by_host site_host
     @current_site = Site.find_by_path("catarse") unless @current_site
-    unless @current_site
-      fields = {
-        :name => "Catarse",
-        :title => "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil",
-        :path => "catarse",
-        :host => "catarse.me",
-        :gender => "male",
-        :email => "contato@catarse.me",
-        :twitter => "Catarse_",
-        :facebook => "http://www.facebook.com/Catarse.me",
-        :blog => "http://blog.catarse.me"
-      }
-      @current_site = Site.create fields
-    end
+    @current_site = Factory(:site, :name => "Catarse", :path => "catarse") unless @current_site
     @current_site
   end
   def current_user

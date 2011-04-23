@@ -1,7 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Login Feature" do
   scenario "I open the login page but then I cancel" do
-    Capybara.current_driver = :selenium
     click_login
     find("#login").visible?.should be_true
     click_link 'X'
