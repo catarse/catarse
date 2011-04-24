@@ -1,15 +1,44 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user, :current_site
+  helper_method :current_user, :current_site, :replace_locale
   before_filter :set_locale
-  
+  before_filter :detect_locale
   private
+  
   def set_locale
-    # if params[:locale] is nil then I18n.default_locale will be used
+    return unless params[:locale]
     I18n.locale = params[:locale]
+    return unless current_user
+    current_user.update_attribute :locale, params[:locale] if params[:locale] != current_user.locale
   end
-
+  
+  def detect_locale
+    return unless request.method == "GET"
+    return if params[:locale]
+    new_locale = current_user.locale if current_user
+    unless new_locale
+      new_locale = request.compatible_language_from(I18n.available_locales.map(&:to_s))
+      new_locale = 'pt' unless new_locale
+      flash[:locale] = t('notify_locale', :locale => new_locale)
+    end
+    return redirect_to replace_locale(new_locale)
+  end
+  
+  def replace_locale(new_locale)
+    new_url = "#{request.fullpath}"
+    if params[:locale]
+      new_url.gsub!(/^\/#{params[:locale]}/, "/#{new_locale}")
+    else
+      if new_url == "/"
+        new_url = "/#{new_locale}"
+      else
+        new_url[0] = "/#{new_locale}/"
+      end
+    end
+    new_url
+  end
+  
   def current_site
     return @current_site if @current_site
     return @current_site = Site.find_by_path(session[:current_site]) if session[:current_site]
@@ -46,9 +75,9 @@ class ApplicationController < ActionController::Base
     end
   end
   def require_login
-    require_condition(current_user, "Você precisa estar logado para realizar esta ação.")
+    require_condition(current_user, t('require_login'))
   end
   def require_admin
-    require_condition((current_user and current_user.admin), "Você precisa ser admin para realizar esta ação.")
+    require_condition((current_user and current_user.admin), t('require_admin'))
   end
 end

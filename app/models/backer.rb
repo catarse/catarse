@@ -34,20 +34,20 @@ class Backer < ActiveRecord::Base
   end
   def reward_must_be_from_project
     return unless reward
-    errors.add(:reward, "deve ser do mesmo projeto") unless reward.project == project
+    errors.add(:reward, I18n.t('backer.reward_must_be_from_project')) unless reward.project == project
   end
   validate :value_must_be_at_least_rewards_value
   def value_must_be_at_least_rewards_value
     return unless reward
-    errors.add(:value, "deve ser pelo menos #{reward.minimum_value} para a recompensa selecionada") unless value >= reward.minimum_value
+    errors.add(:value, I18n.t('backer.value_must_be_at_least_rewards_value', :minimum_value => reward.display_minimum)) unless value >= reward.minimum_value
   end
   validate :should_not_back_if_maximum_backers_been_reached, :on => :create
   def should_not_back_if_maximum_backers_been_reached
     return unless reward and reward.maximum_backers and reward.maximum_backers > 0
-    errors.add(:reward, "já atingiu seu número máximo de apoiadores") unless reward.backers.confirmed.count < reward.maximum_backers
+    errors.add(:reward, I18n.t('backer.should_not_back_if_maximum_backers_been_reached')) unless reward.backers.confirmed.count < reward.maximum_backers
   end
   def display_value
-    number_to_currency value, :unit => 'R$ ', :precision => 0, :delimiter => '.'
+    number_to_currency value, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
   def display_confirmed_at
     confirmed_at.strftime('%d/%m') if confirmed_at

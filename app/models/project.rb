@@ -40,7 +40,7 @@ class Project < ActiveRecord::Base
   scope :not_unsuccessful, where("NOT (goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url, :site
   validates_length_of :headline, :maximum => 140
-  validates_format_of :video_url, :with => VIMEO_REGEX, :message => "somente URLs do Vimeo são aceitas"
+  validates_format_of :video_url, :with => VIMEO_REGEX, :message => I18n.t('project.vimeo_regex_validation')
   validate :verify_if_video_exists_on_vimeo
   before_create :store_image_url
   def store_image_url
@@ -48,7 +48,7 @@ class Project < ActiveRecord::Base
   end
   def verify_if_video_exists_on_vimeo
     unless vimeo and vimeo["id"] == vimeo_id
-      errors.add(:video_url, "deve existir no Vimeo")
+      errors.add(:video_url, I18n.t('project.verify_if_video_exists_on_vimeo'))
     end
   end
   def to_param
@@ -85,10 +85,10 @@ class Project < ActiveRecord::Base
     expires_at.strftime('%d/%m')
   end
   def display_pledged
-    number_to_currency pledged, :unit => 'R$ ', :precision => 0, :delimiter => '.'
+    number_to_currency pledged, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
   def display_goal
-    number_to_currency goal, :unit => 'R$ ', :precision => 0, :delimiter => '.'
+    number_to_currency goal, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
   def pledged
     backers.confirmed.sum(:value)
@@ -120,18 +120,18 @@ class Project < ActiveRecord::Base
   def time_to_go
     if expires_at >= 1.day.from_now
       time = ((expires_at - Time.now).abs/60/60/24).round
-      {:time => time, :unit => pluralize_without_number(time, 'dia')}
+      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.day').downcase)}
     elsif expires_at >= 1.hour.from_now
       time = ((expires_at - Time.now).abs/60/60).round
-      {:time => time, :unit => pluralize_without_number(time, 'hora')}
+      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.hour').downcase)}
     elsif expires_at >= 1.minute.from_now
       time = ((expires_at - Time.now).abs/60).round
-      {:time => time, :unit => pluralize_without_number(time, 'minuto')}
+      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.minute').downcase)}
     elsif expires_at >= 1.second.from_now
       time = ((expires_at - Time.now).abs).round
-      {:time => time, :unit => pluralize_without_number(time, 'segundo')}
+      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.second').downcase)}
     else
-      {:time => 0, :unit => 'segundos'}
+      {:time => 0, :unit => pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
     end
   end
   def present?(site)
@@ -151,23 +151,23 @@ class Project < ActiveRecord::Base
     backers.confirmed.each do |backer|
       unless backer.can_refund or backer.notified_finish
         if successful?
-          notification_text = "Uhuu! O projeto #{link_to(truncate(name, :length => 38), "/projects/#{self.to_param}")} que você apoiou foi bem-sucedido! Espalhe por aí!"
-          twitter_text = "Uhuu! O projeto '#{name}', que eu apoiei, foi bem-sucedido #{site.in_the_twitter}! #{short_url}"
-          facebook_text = "Uhuu! O projeto '#{name}', que eu apoiei, foi bem-sucedido #{site.in_the_name}!"
-          email_subject = "Uhuu! O projeto que você apoiou foi bem-sucedido #{site.in_the_name}!"
-          email_text = "O projeto #{link_to(name, "http://#{site.host}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, foi financiado com sucesso #{site.in_the_name}! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, #{link_to(user.display_name, "http://#{site.host}/users/#{user.to_param}", :style => 'color: #008800;')} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
+          notification_text = I18n.t('project.finish.successful.notification_text', :link => link_to(truncate(name, :length => 38), "/projects/#{self.to_param}"), :locale => backer.user.locale)
+          twitter_text = I18n.t('project.finish.successful.twitter_text', :name => name, :in_the_twitter => site.in_the_twitter, :short_url => short_url, :locale => backer.user.locale)
+          facebook_text = I18n.t('project.finish.successful.facebook_text', :name => name, :in_the_name => site.in_the_name, :locale => backer.user.locale)
+          email_subject = I18n.t('project.finish.successful.email_subject', :in_the_name => site.in_the_name, :locale => backer.user.locale)
+          email_text = I18n.t('project.finish.successful.email_text', :project_link => link_to(name, "http://#{site.host}/projects/#{self.to_param}", :style => 'color: #008800;'), :in_the_name => site.in_the_name, :user_link => link_to(user.display_name, "http://#{site.host}/users/#{user.to_param}", :style => 'color: #008800;'), :locale => backer.user.locale)
           backer.user.notifications.create :site => site, :project => self, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
           if backer.reward
-            notification_text = "Em breve, #{link_to(truncate(user.display_name, :length => 32), "/users/#{user.to_param}")} irá entrar em contato com você para entregar sua recompensa. Desfrute!"
+            notification_text = I18n.t('project.finish.successful.reward_notification_text', :link => link_to(truncate(user.display_name, :length => 32), "/users/#{user.to_param}"), :locale => backer.user.locale)
             backer.user.notifications.create :site => site, :project => self, :text => notification_text
           end
         else
           backer.generate_credits!
-          notification_text = "O projeto #{link_to(truncate(name, :length => 32), "/projects/#{self.to_param}")} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
+          notification_text = I18n.t('project.finish.unsuccessful.unsuccessful_text', :link => link_to(truncate(name, :length => 32), "/projects/#{self.to_param}"), :locale => backer.user.locale)
           backer.user.notifications.create :site => site, :project => self, :text => notification_text
-          notification_text = "Você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "aqui", "http://#{site.host}/credits"}."
-          email_subject = "O projeto que você apoiou não foi financiado #{site.in_the_name}."
-          email_text = "O projeto #{link_to(name, "http://#{site.host}/projects/#{self.to_param}", :style => 'color: #008800;')}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>#{backer.display_value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta #{link_to "clicando aqui", "http://#{site.host}/credits", :style => 'color: #008800;'}."
+          notification_text = I18n.t('project.finish.unsuccessful.notification_text', :value => backer.display_value, :link => link_to(I18n.t('here', :locale => backer.user.locale), "http://#{site.host}/credits"), :locale => backer.user.locale)
+          email_subject = I18n.t('project.finish.unsuccessful.email_subject', :in_the_name => site.in_the_name, :locale => backer.user.locale)
+          email_text = I18n.t('project.finish.unsuccessful.email_text', :project_link => link_to(name, "http://#{site.host}/projects/#{self.to_param}", :style => 'color: #008800;'), :value => backer.display_value, :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "http://#{site.host}/credits", :style => 'color: #008800;'), :locale => backer.user.locale)
           backer.user.notifications.create :site => site, :project => self, :text => notification_text, :email_subject => email_subject, :email_text => email_text
         end
         backer.update_attribute :notified_finish, true

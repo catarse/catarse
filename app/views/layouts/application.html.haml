@@ -1,8 +1,9 @@
 !!! 5
-%html{:lang => :pt}
+%html{:lang => I18n.locale}
   = render :partial => 'layouts/head'
   %body#site
     = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
+    = render :partial => 'layouts/locales'
     - if current_user and (not current_user.backs.project_visible(current_site).display_notice.empty? or not current_user.notifications.where(:site_id => current_site.id).not_dismissed.empty?)
       #pre_header
         - current_user.backs.project_visible(current_site).display_notice.each do |back|

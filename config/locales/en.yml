@@ -2,6 +2,24 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  here: here
+  clicking_here: clicking here
+  project:
+    vimeo_regex_validation: somente URLs do Vimeo são aceitas
+    verify_if_video_exists_on_vimeo: deve existir no Vimeo
+    finish:
+      successful:
+        notification_text: Hooray! The project %{link} that you backed was successful! Spread the word!
+        twitter_text: "Hooray! The project '%{name}', which I backed, was successful %{in_the_twitter}! %{short_url}"
+        facebook_text: "Hooray! The project '%{name}', which I backed, was successful %{in_the_name}!"
+        email_subject: Hooray! The project you backed was successful %{in_the_name}!
+        email_text: "The project %{project_link}, which you backed, was successfuly funded %{in_the_name}! Time to celebrate :D<br><br>Thank you very much, from the heart, for your support! Without you this would never have been possible. Soon, %{user_link} will contact you to deliver your reward. Meanwhile, share with everybody this success!"
+        reward_notification_text: "Soon, %{link} will contact you to deliver your reward. Enjoy!"
+      unsuccessful:
+        unsuccessful_text: "The project %{link} that you backed wasn't funded. Maybe next time!"
+        notification_text: You received %{value} in credits to back other projects. If you prefer, you can request a refund %{link}.
+        email_subject: "The project you backed wasn't funded %{in_the_name}."
+        email_text: "The project %{project_link}, that you backed, was not funded. Maybe next time!<br><br>Because of this, you received <strong>%{value}</strong> in credits to back other projects. If you prefer, you can ask for a refund %{credits_link}."
   layouts:
     application:
       back_notice_html: You backed the project %{link}. Tell everyone what you just did!

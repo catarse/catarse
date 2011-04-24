@@ -2,6 +2,42 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 pt:
+  require_login: Você precisa estar logado para realizar esta ação.
+  require_admin: Você precisa ser admin para realizar esta ação.
+  require_permission: Você não tem permissão para realizar esta ação.
+  notify_locale: Identificamos seu idioma automaticamente. Caso você prefira outro, clique em uma das bandeiras à direita.
+  here: aqui
+  clicking_here: clicando aqui
+  backer:
+    reward_must_be_from_project: deve ser do mesmo projeto
+    value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para a recompensa selecionada
+    should_not_back_if_maximum_backers_been_reached: já atingiu seu número máximo de apoiadores
+  comment:
+    display_time: Há %{time_ago}
+  project:
+    vimeo_regex_validation: somente URLs do Vimeo são aceitas
+    verify_if_video_exists_on_vimeo: deve existir no Vimeo
+    finish:
+      successful:
+        notification_text: Uhuu! O projeto %{link} que você apoiou foi bem-sucedido! Espalhe por aí!
+        twitter_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido %{in_the_twitter}! %{short_url}"
+        facebook_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido %{in_the_name}!"
+        email_subject: Uhuu! O projeto que você apoiou foi bem-sucedido %{in_the_name}!
+        email_text: "O projeto %{project_link}, que você apoiou, foi financiado com sucesso %{in_the_name}! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, %{user_link} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
+        reward_notification_text: "Em breve, %{link} irá entrar em contato com você para entregar sua recompensa. Desfrute!"
+      unsuccessful:
+        unsuccessful_text: O projeto %{link} que você apoiou não foi financiado. Quem sabe numa próxima vez?
+        notification_text: Você recebeu %{value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{link}.
+        email_subject: O projeto que você apoiou não foi financiado %{in_the_name}.
+        email_text: "O projeto %{project_link}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>%{value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{credits_link}."
+  credits:
+    title: Meus créditos
+    refund:
+      cannot_refund: Este apoio não pode ser estornado.
+      no_credits: Você não possui créditos suficientes para realizar este estorno.
+      requested_refund: Você já solicitou estorno para este apoio.
+      refunded: Este apoio já foi estornado.
+      error: Oops. Ocorreu um erro ao solicitar seu estorno.
   layouts:
     application:
       back_notice_html: Você apoiou o projeto %{link}. Conte para todo mundo o que você fez!
@@ -10,3 +46,50 @@ pt:
   projects:
     guidelines:
       title: Como funciona %{site_name}?
+    faq:
+      title: Perguntas frequentes
+    terms:
+      title: Termos de uso
+    privacy:
+      title: Política de privacidade
+    explore:
+      title: Explore os projetos
+    start:
+      title: Envie seu projeto
+    send_mail:
+      success: Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!
+    new:
+      title: Envie seu projeto
+    create:
+      success: Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!
+    show:
+      not_present: Este projeto não está disponível neste site. Confira os outros projetos incríveis que temos!
+    back:
+      title: Apoie o %{name}
+      no_reward: Obrigado. Eu só quero ajudar o projeto.
+      cannot_back: Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos.
+    review:
+      title: Preencha e revise seus dados
+      error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
+    pay:
+      no_credits: Você não possui créditos suficientes para realizar este apoio.
+      success: Seu apoio foi realizado com sucesso. Muito obrigado!
+      moip_error: Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente.
+    thank_you:
+      title: Muito obrigado
+      error: Ooops. Você só pode acessar esta página depois de apoiar um projeto.
+    pending:
+      title: Gerenciamento dos projetos
+    pending_backers:
+      title: Gerenciamento de apoios
+  sessions:
+    post_auth:
+      error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
+      success: Login realizado com sucesso. Bem-vindo, %{name}!
+    destroy:
+      success: Logout realizado com sucesso. Até logo!
+    failure:
+      error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
+  projects_mailer:
+    start_project_email:
+      subject: Projeto enviado por %{name}

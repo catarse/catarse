@@ -23,7 +23,7 @@ class Comment < ActiveRecord::Base
   end
     
   def display_time
-    "Há #{distance_of_time_in_words(created_at, Time.now)}"
+    I18n.t('comment.display_time', :time_ago => time_ago_in_words(created_at))
   end
   
   def as_json(options={})

@@ -1,0 +1,11 @@
+#locales class=("notify" if flash[:locale])
+  ul
+    li
+      = link_to replace_locale("pt") do
+        = image_tag "locales/pt.png"
+    li
+      = link_to replace_locale("en") do
+        = image_tag "locales/en.png"
+    li
+      = link_to replace_locale("es") do
+        = image_tag "locales/es.png"

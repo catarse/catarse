@@ -2,13 +2,13 @@
 class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
   inherit_resources
-  actions :index, :show, :new, :create, :edit, :update
+  actions :index, :show, :new, :create
   respond_to :html, :except => [:backers, :comments, :updates]
   respond_to :json, :only => [:show, :backers, :comments, :updates]
   can_edit_on_the_spot
   skip_before_filter :verify_authenticity_token, :only => [:moip]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
-  before_filter :date_format_convert, :only => [:create, :update]
+  before_filter :date_format_convert, :only => [:create]
   def date_format_convert
     params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
   end
@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     end
   end
   def explore
-    @title = "Explore os projetos"
+    @title = t('projects.explore.title')
     @categories = Category.with_projects(current_site).order(:name)
     @recommended = current_site.present_projects.visible.recommended.order('created_at DESC')
     @expiring = current_site.present_projects.visible.expiring.order('expires_at')
@@ -31,35 +31,32 @@ class ProjectsController < ApplicationController
     @all = current_site.present_projects.visible.order('created_at DESC')
   end
   def start
-    @title = "Envie seu projeto"
+    @title = t('projects.start.title')
   end
   def send_mail
     current_user.update_attribute :email, params[:contact] if current_user.email.nil?
     ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user, current_site).deliver
-    flash[:success] = "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
+    flash[:success] = t('projects.send_mail.success')
     redirect_to :root
   end
   def new
     return unless require_login
     new! do
-      @title = "Envie seu projeto"
+      @title = t('projects.new.title')
       @project.rewards.build
     end
   end
   def create
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
-    create!(:notice => "Seu projeto foi criado com sucesso! Logo avisaremos se ele foi selecionado. Muito obrigado!")
+    create!(:notice => t('projects.create.success'))
     @project.reload
     @project.update_attribute :short_url, bitly
     @project.projects_sites.create :site => current_site
   end
-  def update
-    update!(:notice => "Seu projeto foi atualizado com sucesso!")
-  end
   def show
     show!{
       unless @project.present?(current_site)
-        flash[:failure] = "Este projeto não está disponível neste site. Confira os outros projetos incríveis que temos!"
+        flash[:failure] = t('projects.show.not_present')
         return redirect_to :root
       end
       @title = @project.name
@@ -72,16 +69,16 @@ class ProjectsController < ApplicationController
     }
   end
   def guidelines
-    @title = "Como funciona #{current_site.the_name}"
+    @title = t('projects.guidelines.title', :site_name => current_site.the_name)
   end
   def faq
-    @title = "Perguntas frequentes"
+    @title = t('projects.faq.title')
   end
   def terms
-    @title = "Termos de uso"
+    @title = t('projects.terms.title')
   end
   def privacy
-    @title = "Política de privacidade"
+    @title = t('projects.privacy.title')
   end
   def vimeo
     project = Project.new(:video_url => params[:url])
@@ -107,12 +104,12 @@ class ProjectsController < ApplicationController
     return unless require_login
     show! do
       unless @project.can_back?(current_site)
-        flash[:failure] = "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
+        flash[:failure] = t('projects.back.cannot_back')
         return redirect_to :root
       end
-      @title = "Apoie o #{@project.name}"
+      @title = t('projects.back.title', :name => @project.name)
       @backer = @project.backers.new(:user => current_user, :site => current_site)
-      empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => "Obrigado. Eu só quero ajudar o projeto.")
+      empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => t('projects.back.no_reward'))
       @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
       @reward = @project.rewards.find params[:reward_id] if params[:reward_id]
       @reward = nil if @reward and @reward.sold_out?
@@ -123,14 +120,14 @@ class ProjectsController < ApplicationController
     end
   end
   def review
-    @title = "Preencha e revise seus dados"
+    @title = t('projects.review.title')
     params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
     params[:backer][:user_id] = current_user.id
     params[:backer][:site_id] = current_site.id
     @project = Project.find params[:id]
     @backer = @project.backers.new(params[:backer])
     unless @backer.save
-      flash[:failure] = "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
+      flash[:failure] = t('projects.review.error')
       return redirect_to back_project_path(project)
     end
     session[:thank_you_id] = @project.id
@@ -139,14 +136,14 @@ class ProjectsController < ApplicationController
     backer = Backer.find params[:backer_id]
     if backer.credits
       if current_user.credits < backer.value
-        flash[:failure] = "Você não possui créditos suficientes para realizar este apoio."
+        flash[:failure] = t('projects.pay.no_credits')
         return redirect_to back_project_path(backer.project)
       end
       unless backer.confirmed
         current_user.update_attribute :credits, current_user.credits - backer.value
         backer.confirm!
       end
-      flash[:success] = "Seu apoio foi realizado com sucesso. Muito obrigado!"
+      flash[:success] = t('projects.pay.success')
       redirect_to thank_you_path
     else
       begin
@@ -177,18 +174,18 @@ class ProjectsController < ApplicationController
         response = MoIP::Client.checkout(payment)
         redirect_to MoIP::Client.moip_page(response["Token"])
       rescue
-        flash[:failure] = "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
+        flash[:failure] = t('projects.pay.moip_error')
         return redirect_to back_project_path(backer.project)
       end
     end
   end
   def thank_you
     unless session[:thank_you_id]
-      flash[:failure] = "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
+      flash[:failure] = t('projects.thank_you.error')
       return redirect_to :root
     end
     @project = Project.find session[:thank_you_id]
-    @title = "Muito obrigado"
+    @title = t('projects.thank_you.title')
     session[:thank_you_id] = nil
   end
   def moip
@@ -231,13 +228,13 @@ class ProjectsController < ApplicationController
   end
   def pending
     return unless require_admin
-    @title = "Gerenciamento dos projetos"
+    @title = t('projects.pending.title')
     @search = current_site.projects_sites.includes(:project).search(params[:search])
     @projects_sites = @search.order('projects.created_at DESC').paginate :page => params[:page]
   end
   def pending_backers
     return unless require_admin
-    @title = "Gerenciamento de apoios"
+    @title = t('projects.pending_backers.title')
     @search = Backer.search(params[:search])
     @backers = @search.order("created_at DESC").paginate :page => params[:page]
     @total_backers = User.backers.count
@@ -261,7 +258,7 @@ class ProjectsController < ApplicationController
     backer_admin_fields = ["confirmed", "requested_refund", "refunded"]
     reward_fields = []
     reward_admin_fields = ["description"]
-    def render_error; render :text => 'Você não possui permissão para realizar esta ação.', :status => 422; end
+    def render_error; render :text => t('require_permission'), :status => 422; end
     return render_error unless current_user
     klass, field, id = params[:id].split('__')
     return render_error unless klass == 'project' or klass == 'projects_site' or klass == 'backer' or klass == 'reward'

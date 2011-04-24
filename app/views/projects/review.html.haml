@@ -16,7 +16,7 @@
   - if @backer.credits
     #credits_notice
       Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de
-      %strong= number_to_currency (current_user.credits - @backer.value), :unit => 'R$ ', :precision => 0, :delimiter => '.'
+      %strong= number_to_currency (current_user.credits - @backer.value), :unit => 'R$', :precision => 0, :delimiter => '.'
       em créditos para apoiar outros projetos.
   = semantic_form_for current_user, :url => pay_project_path(@backer.project), :html => { :id => 'review_form' } do |form|
     = hidden_field_tag 'backer_id', @backer.id

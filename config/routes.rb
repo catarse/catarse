@@ -1,5 +1,7 @@
 Catarse::Application.routes.draw do
 
+  filter :locale
+  
   root :to => "projects#index"
 
   match "/guidelines" => "projects#guidelines", :as => :guidelines

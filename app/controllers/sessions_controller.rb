@@ -1,9 +1,13 @@
 # coding: utf-8
 class SessionsController < ApplicationController
+
+  skip_before_filter :detect_locale
+  
   def pre_auth
     session[:return_to] = params[:return_to]
     session[:remember_me] = params[:remember_me]
-    redirect_to "http://catarse.me/auth/?provider=#{params[:provider]}&return_site_id=#{params[:return_site_id]}&return_session_id=#{session[:session_id]}"
+    # TODO change to http://catarse.me
+    redirect_to "http://localhost:3000/auth/?provider=#{params[:provider]}&return_site_id=#{params[:return_site_id]}&return_session_id=#{session[:session_id]}"
   end
   def auth
     session[:return_site_id] = params[:return_site_id]
@@ -31,7 +35,7 @@ class SessionsController < ApplicationController
   def post_auth
     user = User.find(params[:user_id])
     if user.session_id != session[:session_id]
-      flash[:failure] = "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
+      flash[:failure] = t('sessions.post_auth.error')
       return redirect_to :root
     end
     if params[:new_user] == "true"
@@ -42,26 +46,25 @@ class SessionsController < ApplicationController
       cookies[:remember_me_id] = { :value => user.id, :expires => 30.days.from_now }
       cookies[:remember_me_hash] = { :value => user.remember_me_hash, :expires => 30.days.from_now }
     end
-    flash[:success] = "Login realizado com sucesso. Bem-vindo, #{user.display_name}!"
+    flash[:success] = t('sessions.post_auth.success', :name => user.display_name)
     redirect_back_or_default :root
   end
   def destroy
     session[:user_id] = nil
     cookies.delete :remember_me_id if cookies[:remember_me_id]
     cookies.delete :remember_me_hash if cookies[:remember_me_hash]
-    flash[:success] = "Logout realizado com sucesso. Até logo!"
+    flash[:success] = t('sessions.destroy.success')
     redirect_to :root
   end
   def failure
-    flash[:failure] = "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
+    flash[:failure] = t('sessions.failure.error')
     redirect_to :root
   end
   def fake_create
     raise "Forbiden" unless Rails.env == "test"
     user = Factory(:user, :uid => 'fake_login')
     session[:user_id] = user.id
-    flash[:success] = "Login realizado com sucesso. Bem-vindo, #{user.display_name}!"
+    flash[:success] = t('sessions.post_auth.success', :name => user.display_name)
     redirect_to :root
   end
 end
-

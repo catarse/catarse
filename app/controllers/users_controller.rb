@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def can_update_on_the_spot?
     user_fields = ["email", "name", "bio", "newsletter", "project_updates"]
     notification_fields = ["dismissed"]
-    def render_error; render :text => 'Você não possui permissão para realizar esta ação.', :status => 422; end
+    def render_error; render :text => t('require_permission'), :status => 422; end
     return render_error unless current_user
     klass, field, id = params[:id].split('__')
     return render_error unless klass == 'user' or klass == 'notification'

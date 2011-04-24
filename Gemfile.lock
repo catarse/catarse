@@ -89,6 +89,7 @@ GEM
       i18n (>= 0.4.0)
     haml (3.0.21)
     has_scope (0.5.0)
+    http_accept_language (1.0.1)
     httparty (0.6.1)
       crack (= 0.1.8)
     httpclient (2.1.5.2)
@@ -185,6 +186,8 @@ GEM
     responders (0.6.2)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    routing-filter (0.2.3)
+      actionpack
     rspec (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
@@ -251,6 +254,7 @@ DEPENDENCIES
   factory_girl_rails
   formtastic (~> 1.1.0)
   haml
+  http_accept_language
   inherited_resources (>= 1.1.2)
   launchy
   mailee (>= 0.5.1)!
@@ -264,6 +268,7 @@ DEPENDENCIES
   pg
   rails (= 3.0.3)
   rcov
+  routing-filter
   rspec-rails (~> 2.0.1)
   slim
   spectator-validates_email

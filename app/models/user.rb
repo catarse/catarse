@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
     Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
   end
   def display_credits
-    number_to_currency credits, :unit => 'R$ ', :precision => 0, :delimiter => '.'
+    number_to_currency credits, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
   def as_json(options={})
     {

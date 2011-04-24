@@ -40,6 +40,6 @@ feature "Send Project Feature" do
       click_button 'Enviar o projeto'
     end
     ActionMailer::Base.deliveries.should_not be_empty
-    current_path.should == homepage
+    current_path.should == "/pt"
   end
 end
