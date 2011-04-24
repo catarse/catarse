@@ -2,7 +2,7 @@ module NavigationHelpers
   # Put helper methods related to the paths in your application here.
 
   def homepage
-    "/"
+    "/pt"
   end
 end
 
