@@ -30,6 +30,24 @@ pt:
         notification_text: Você recebeu %{value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{link}.
         email_subject: O projeto que você apoiou não foi financiado %{in_the_name}.
         email_text: "O projeto %{project_link}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>%{value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{credits_link}."
+  reward:
+    dont_want: Não quero recompensa
+    sold_out: Esgotada
+  site:
+    male:
+      the: o
+      in_the: no
+      to_the: ao
+    female:
+      the: a
+      in_the: na
+      to_the: à
+  user:
+    no_name: Sem nome
+    backs_text:
+      one: Apoiou somente este projeto até agora
+      two: Apoiou este e mais 1 outro projeto
+      many: Apoiou este e mais outros %{total} projetos
   credits:
     title: Meus créditos
     refund:

@@ -9,35 +9,38 @@ class Site < ActiveRecord::Base
   has_many :users
   def the(capitalize = false)
     if gender == "male"
-      "#{capitalize ? 'O' : 'o'}"
+      text = I18n.t('site.male.the')
     elsif gender == "female"
-      "#{capitalize ? 'A' : 'a'}"
+      text = I18n.t('site.female.the')
     end
+    text.capitalize! if capitalize
+    text
   end
   def the_name(capitalize = false)
-    "#{the(capitalize)} #{name}"
+    "#{the(capitalize)} #{name}".strip
   end
   def in_the
     if gender == "male"
-      "no"
+      text = I18n.t('site.male.in_the')
     elsif gender == "female"
-      "na"
+      text = I18n.t('site.female.in_the')
     end
+    text
   end
   def in_the_name
-    "#{in_the} #{name}"
+    "#{in_the} #{name}".strip
   end
   def in_the_twitter
-    "#{in_the} @#{twitter}"
+    "#{in_the} @#{twitter}".strip
   end
   def to_the
     if gender == "male"
-      "ao"
+      text = I18n.t('site.male.to_the')
     elsif gender == "female"
-      "à"
+      text = I18n.t('site.female.to_the')
     end
   end
   def to_the_name
-    "#{to_the} #{name}"
+    "#{to_the} #{name}".strip
   end
 end

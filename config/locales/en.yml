@@ -4,6 +4,8 @@
 en:
   here: here
   clicking_here: clicking here
+  comment:
+    display_time: %{time_ago} ago
   project:
     vimeo_regex_validation: somente URLs do Vimeo são aceitas
     verify_if_video_exists_on_vimeo: deve existir no Vimeo
@@ -20,6 +22,15 @@ en:
         notification_text: You received %{value} in credits to back other projects. If you prefer, you can request a refund %{link}.
         email_subject: "The project you backed wasn't funded %{in_the_name}."
         email_text: "The project %{project_link}, that you backed, was not funded. Maybe next time!<br><br>Because of this, you received <strong>%{value}</strong> in credits to back other projects. If you prefer, you can ask for a refund %{credits_link}."
+  site:
+    male:
+      the: ""
+      in_the: on
+      to_the: to
+    female:
+      the: ""
+      in_the: on
+      to_the: to
   layouts:
     application:
       back_notice_html: You backed the project %{link}. Tell everyone what you just did!

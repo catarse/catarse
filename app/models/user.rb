@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
     u.primary.nil? ? u : u.primary
   end
   def display_name
-    name || nickname || "Sem nome"
+    name || nickname || I18n.t('user.no_name')
   end
   def short_name
     truncate display_name, :length => 26
@@ -76,11 +76,11 @@ class User < ActiveRecord::Base
   end
   def backs_text
     if total_backs == 2
-      "Apoiou este e mais 1 outro projeto"
+      I18n.t('user.backs_text.two')
     elsif total_backs > 1
-      "Apoiou este e mais outros #{total_backs-1} projetos"
+      I18n.t('user.backs_text.many', :total => (total_backs-1))
     else
-      "Apoiou somente este projeto até agora"
+      I18n.t('user.backs_text.one')
     end
   end
   def remember_me_hash
