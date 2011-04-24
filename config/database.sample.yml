@@ -13,7 +13,7 @@ development:
   encoding: utf-8
   database: catarse_development
   pool: 5
-  username: diogo
+  username: catarse
   
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -39,7 +39,7 @@ test: &test
   encoding: utf-8
   database: catarse_test
   pool: 5
-  username: diogo
+  username: catarse
   
 
 production:
@@ -47,4 +47,4 @@ production:
   encoding: utf-8
   database: catarse_production
   pool: 5
-  username: diogo
+  username: catarse

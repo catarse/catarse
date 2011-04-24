@@ -91,6 +91,7 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
   errorCreate: function(model, response){
     this.$('[type=submit]').attr('disabled', false)
     this.$('input[type=text],textarea')[0].focus()
+    // TODO internationalize
     alert("Ooops! Ocorreu um erro. Por favor, tente novamente.")
   }
 })

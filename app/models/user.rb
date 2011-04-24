@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
       user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
       user.image_url = auth["user_info"]["image"]
       user.site = site
+      user.locale = I18n.locale.to_s
     end
     # If we could not associate by email we try to use the parameter
     if u.primary.nil? and primary_user_id

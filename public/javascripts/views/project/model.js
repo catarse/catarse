@@ -32,6 +32,7 @@ var ModelView = Backbone.View.extend({
     this.el.slideUp()
   },
   errorDestroy: function(model, response){
+    // TODO internationalize
     alert("Ooops! Ocorreu um erro ao excluir seu comentário. Por favor, tente novamente.")
   }
 })
