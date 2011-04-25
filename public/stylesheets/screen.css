@@ -2370,7 +2370,7 @@ body#site #project_back_info #back_project .project_warning {
   text-transform: uppercase;
   text-align: center;
   color: white;
-  font-size: 12px;
+  font-size: 11px;
   text-shadow: #333333 1px 1px 0px;
 }
 /* line 418, ../../app/stylesheets/_projects.sass */

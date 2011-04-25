@@ -82,7 +82,7 @@ class Project < ActiveRecord::Base
     vimeo["thumbnail_large"]
   end
   def display_expires_at
-    expires_at.strftime('%d/%m')
+    I18n.l(expires_at.to_date)
   end
   def display_pledged
     number_to_currency pledged, :unit => 'R$', :precision => 0, :delimiter => '.'

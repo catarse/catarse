@@ -1,50 +1,43 @@
 = content_for :content_header do
-  %h1 Meus créditos
-  %h2 Quando um projeto que você apoiar não for financiado, você receberá créditos para apoiar outros projetos. Mas, caso você prefira, você pode solicitar o estorno de cada pagamento aqui.
+  %h1= t('.title')
+  %h2= t('.subtitle')
 #credits
-  %h1
-    Seu saldo atual é de
-    %span#current_credits= current_user.display_credits
-    em créditos.
-  -#buy_credits
-    %strong Você não precisa ter créditos para apoiar um projeto.
-    Você pode realizar o pagamento na hora. Mas se você gosta de apoiar vários projetos, é uma boa idéia comprar créditos antecipados: deste modo você não precisará fazer um pagamento cada vez que for apoiar.
+  %h1= t('.current_credits_html', :credits => current_user.display_credits)
+  #buy_credits
+    = t('.buy_credits_html')
     = form_tag(buy_credits_path, :method => :get) do
       %fieldset
-        = submit_tag 'Comprar créditos'
+        = submit_tag t('.buy_credits')
   - if @refund_backs.empty?
-    %h2 Você não possui nenhum apoio que possa ter estorno realizado
+    %h2= t('.no_refunds')
   - else
-    %h2 Apoios que podem ter estorno realizado
+    %h2= t('.refunds_title')
     %table
       %thead
         %tr
-          %th Projeto
-          %th Data do apoio
-          %th Valor
-          %th Prazo para estorno
-          %th Status
+          %th= t('.project')
+          %th= t('.created_at')
+          %th= t('.value')
+          %th= t('.refund_deadline')
+          %th= t('.status')
       %tbody
         - @refund_backs.each do |back|
           %tr{ :id => back.id, :class => cycle("even", "odd") }
             %td= link_to back.project.name, project_path(back.project)
-            %td= back.created_at.strftime('%d/%m/%Y')
+            %td= l back.created_at.to_date
             %td= back.display_value
-            %td= back.refund_deadline.strftime('%d/%m/%Y')
+            %td= l back.refund_deadline.to_date
             %td.status
               .text
                 - if back.refunded
-                  Estorno realizado
+                  = t('.refunded')
                 - elsif back.requested_refund
-                  Solicitado estorno
+                  = t('.requested_refund')
                 - else
-                  = link_to "Solicitar estorno", '#'
+                  = link_to t('.request_refund'), '#'
               .error.hide
               = image_tag "sites/#{current_site.path}/loading.gif", :class => 'loading hide'
-    .important
-      Você tem
-      %strong até 180 após a data de seu apoio
-      para solicitar o estorno do mesmo. Caso você opte pelo estorno, o valor do apoio será descontado dos seus créditos.
+    .important= t('.important_html')
 :javascript
-  var confirm_text = '#{t('credits.confirm')}'
+  var confirm_text = '#{t('.confirm')}'
 = javascript_include_tag 'credits'

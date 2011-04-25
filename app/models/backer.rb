@@ -1,6 +1,7 @@
 # coding: utf-8
 class Backer < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::DateHelper
   belongs_to :project
   belongs_to :user
   belongs_to :reward
@@ -50,7 +51,7 @@ class Backer < ActiveRecord::Base
     number_to_currency value, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
   def display_confirmed_at
-    confirmed_at.strftime('%d/%m') if confirmed_at
+    I18n.l(confirmed_at.to_date) if confirmed_at
   end
   def moip_value
     "%0.0f" % (value * 100)

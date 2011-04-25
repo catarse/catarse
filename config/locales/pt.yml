@@ -13,6 +13,7 @@ pt:
     reward_must_be_from_project: deve ser do mesmo projeto
     value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para a recompensa selecionada
     should_not_back_if_maximum_backers_been_reached: já atingiu seu número máximo de apoiadores
+    display_confirmed_at: Há %{time_ago}
   comment:
     display_time: Há %{time_ago}
   project:
@@ -51,16 +52,34 @@ pt:
       many: Apoiou este e mais outros %{total} projetos
   credits:
     title: Meus créditos
-    confirm: Você tem certeza que quer solicitar o estorno deste apoio?
     refund:
       cannot_refund: Este apoio não pode ser estornado.
       no_credits: Você não possui créditos suficientes para realizar este estorno.
       requested_refund: Você já solicitou estorno para este apoio.
       refunded: Este apoio já foi estornado.
       error: Oops. Ocorreu um erro ao solicitar seu estorno.
+    index:
+      title: Meus créditos
+      subtitle: Quando um projeto que você apoiar não for financiado, você receberá créditos para apoiar outros projetos. Mas, caso você prefira, você pode solicitar o estorno de cada pagamento aqui.
+      current_credits_html: Seu saldo atual é de <span id="current_credits">%{credits}</span> em créditos.
+      buy_credits_html: "<strong>Você não precisa ter créditos para apoiar um projeto</strong>. Você pode realizar o pagamento na hora. Mas se você gosta de apoiar vários projetos, é uma boa idéia comprar créditos antecipados: deste modo você não precisará fazer um pagamento cada vez que for apoiar."
+      buy_credits: Comprar créditos
+      no_refunds: Você não possui nenhum apoio que possa ter estorno realizado
+      refunds_title: Apoios que podem ter estorno realizado
+      project: Projeto
+      created_at: Data do apoio
+      value: Valor
+      refund_deadline: Prazo para estorno
+      status: Status
+      refunded: Estorno realizado
+      requested_refund: Solicitado estorno
+      request_refund: Solicitar estorno
+      important_html: Você tem <strong>até 180 após a data de seu apoio</strong> para solicitar o estorno do mesmo. Caso você opte pelo estorno, o valor do apoio será descontado dos seus créditos.
+      confirm: Você tem certeza que quer solicitar o estorno deste apoio?
   layouts:
-    application:
+    pre_header:
       back_notice_html: Você apoiou o projeto %{link}. Conte para todo mundo o que você fez!
+    application:
       menu_explore: Explore os projetos
       menu_submit: Envie seu projeto 
   projects:

@@ -86,7 +86,7 @@
     %ul
       - @backs.each do |back|
         %li
-          = back.confirmed_at.strftime('%d/%m') if back.confirmed_at
+          = l(back.confirmed_at.to_date) if back.confirmed_at
           = link_to project_path(back.project) do
             = image_tag back.project.display_image, :class => 'project'
             = back.project.name

@@ -32,8 +32,9 @@ en:
       in_the: on
       to_the: to
   layouts:
-    application:
+    pre_header:
       back_notice_html: You backed the project %{link}. Tell everyone what you just did!
+    application:
       menu_explore: Explore projects
       menu_submit: Submit your project
   projects:
