@@ -3641,6 +3641,58 @@ body#site #promo_video #promo_title .catarse {
   color: #222222;
   font-size: 42px;
 }
+/* line 26, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #correntedobem {
+  background: url(/images/sites/catarse/bg_correntedobem.gif) top left no-repeat;
+  width: 100%;
+}
+/* line 29, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #correntedobem .text {
+  color: #71a013;
+  margin-left: 80px;
+  border: 6px solid #9cc148;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  height: 201px;
+  width: 500px;
+  padding: 20px;
+  float: left;
+  background-color: white;
+}
+/* line 30, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #correntedobem .text h1 {
+  font-family: "museo-500" !important;
+  line-height: 30px !important;
+  color: #222222 !important;
+  padding: 0 !important;
+  padding-bottom: 20px !important;
+}
+/* line 36, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #correntedobem .text h1 a {
+  text-decoration: none;
+}
+/* line 47, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #correntedobem .image {
+  margin-right: 80px;
+  float: right;
+}
+/* line 50, ../../app/stylesheets/_promo_video.sass */
+body#site #promo_video #correntedobem .image a {
+  display: block;
+  border: 10px solid #e3ce70;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+}
 /* line 2, ../../app/stylesheets/_credits.sass */
 body#site #credits h1 {
   color: #222222 !important;
