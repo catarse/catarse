@@ -155,7 +155,7 @@ class Project < ActiveRecord::Base
           twitter_text = I18n.t('project.finish.successful.twitter_text', :name => name, :in_the_twitter => site.in_the_twitter, :short_url => short_url, :locale => backer.user.locale)
           facebook_text = I18n.t('project.finish.successful.facebook_text', :name => name, :in_the_name => site.in_the_name, :locale => backer.user.locale)
           email_subject = I18n.t('project.finish.successful.email_subject', :in_the_name => site.in_the_name, :locale => backer.user.locale)
-          email_text = I18n.t('project.finish.successful.email_text', :project_link => link_to(name, "http://#{site.host}/projects/#{self.to_param}", :style => 'color: #008800;'), :in_the_name => site.in_the_name, :user_link => link_to(user.display_name, "http://#{site.host}/users/#{user.to_param}", :style => 'color: #008800;'), :locale => backer.user.locale)
+          email_text = I18n.t('project.finish.successful.email_text', :project_link => link_to(name, site.full_url("/projects/#{self.to_param}"), :style => 'color: #008800;'), :in_the_name => site.in_the_name, :user_link => link_to(user.display_name, site.full_url("/users/#{user.to_param}"), :style => 'color: #008800;'), :locale => backer.user.locale)
           backer.user.notifications.create :site => site, :project => self, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
           if backer.reward
             notification_text = I18n.t('project.finish.successful.reward_notification_text', :link => link_to(truncate(user.display_name, :length => 32), "/users/#{user.to_param}"), :locale => backer.user.locale)
@@ -165,9 +165,9 @@ class Project < ActiveRecord::Base
           backer.generate_credits!
           notification_text = I18n.t('project.finish.unsuccessful.unsuccessful_text', :link => link_to(truncate(name, :length => 32), "/projects/#{self.to_param}"), :locale => backer.user.locale)
           backer.user.notifications.create :site => site, :project => self, :text => notification_text
-          notification_text = I18n.t('project.finish.unsuccessful.notification_text', :value => backer.display_value, :link => link_to(I18n.t('here', :locale => backer.user.locale), "http://#{site.host}/credits"), :locale => backer.user.locale)
+          notification_text = I18n.t('project.finish.unsuccessful.notification_text', :value => backer.display_value, :link => link_to(I18n.t('here', :locale => backer.user.locale), site.full_url("/credits")), :locale => backer.user.locale)
           email_subject = I18n.t('project.finish.unsuccessful.email_subject', :in_the_name => site.in_the_name, :locale => backer.user.locale)
-          email_text = I18n.t('project.finish.unsuccessful.email_text', :project_link => link_to(name, "http://#{site.host}/projects/#{self.to_param}", :style => 'color: #008800;'), :value => backer.display_value, :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "http://#{site.host}/credits", :style => 'color: #008800;'), :locale => backer.user.locale)
+          email_text = I18n.t('project.finish.unsuccessful.email_text', :project_link => link_to(name, site.full_url("/projects/#{self.to_param}"), :style => 'color: #008800;'), :value => backer.display_value, :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), site.full_url("/credits"), :style => 'color: #008800;'), :locale => backer.user.locale)
           backer.user.notifications.create :site => site, :project => self, :text => notification_text, :email_subject => email_subject, :email_text => email_text
         end
         backer.update_attribute :notified_finish, true

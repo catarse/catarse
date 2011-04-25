@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
   def pre_auth
     session[:return_to] = params[:return_to]
     session[:remember_me] = params[:remember_me]
-    # TODO change to http://catarse.me
-    redirect_to "http://localhost:3000/auth/?provider=#{params[:provider]}&return_site_id=#{params[:return_site_id]}&return_session_id=#{session[:session_id]}"
+    redirect_to Site.auth_gateway.full_url("/auth/?provider=#{params[:provider]}&return_site_id=#{params[:return_site_id]}&return_session_id=#{session[:session_id]}")
   end
   def auth
     session[:return_site_id] = params[:return_site_id]
@@ -26,7 +25,7 @@ class SessionsController < ApplicationController
     redirect_url = "/post_auth/?user_id=#{user.id}&new_user=#{new_user}"
     if session[:return_site_id] and session[:return_site_id].to_s != current_site.id.to_s
       site = Site.find(session[:return_site_id])
-      redirect_url = "http://#{site.host}#{redirect_url}"
+      redirect_url = site.full_url(redirect_url)
     end
     session[:return_site_id] = nil
     session[:return_session_id] = nil

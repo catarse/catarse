@@ -47,7 +47,7 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
         new this.modelView({el: listItem, model: model, contentView: this})        
       }, this)
     } else if(this.collection.page == 1) {
-      var empty = $('<div id="empty_text">').html(this.emptyText)
+      var empty = $('<div id="empty_text">').html($('#empty_template').html())
       $(this.el).append(empty)
     }
     $('#loading').waypoint(this.waypoint, {offset: "100%"})
@@ -91,7 +91,6 @@ var ProjectPaginatedContentView = ProjectContentView.extend({
   errorCreate: function(model, response){
     this.$('[type=submit]').attr('disabled', false)
     this.$('input[type=text],textarea')[0].focus()
-    // TODO internationalize
-    alert("Ooops! Ocorreu um erro. Por favor, tente novamente.")
+    alert($('#error_template').html())
   }
 })

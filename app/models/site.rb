@@ -1,5 +1,6 @@
 # coding: utf-8
 class Site < ActiveRecord::Base
+  
   validates_presence_of :name, :title, :path, :host
   validates_uniqueness_of :name, :path, :host
   has_many :projects
@@ -7,6 +8,15 @@ class Site < ActiveRecord::Base
   has_many :present_projects, :through => :projects_sites, :source => :project
   has_many :backers
   has_many :users
+  
+  def self.auth_gateway
+    where(:auth_gateway => true).first
+  end
+  
+  def full_url(path = "")
+    "http://#{host}#{port ? ":#{port}" : ""}#{path}"
+  end
+
   def the(capitalize = false)
     if gender == "male"
       text = I18n.t('site.male.the')

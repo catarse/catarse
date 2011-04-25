@@ -1,4 +1,5 @@
 script type="text/template" id="project_comments_template"
+  #empty_template.hide
   #project_comments
     -if current_user
       = semantic_form_for @comment, :html => { :id => 'new_comment_form' } do |form|

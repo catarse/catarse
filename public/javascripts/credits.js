@@ -1,7 +1,6 @@
-// TODO internationalize
 $('table a').click(function(e){
   e.preventDefault()
-  if(confirm("Você tem certeza que quer solicitar o estorno deste apoio?")){
+  if(confirm(confirm_text)){
     var backer_id = $(this).parent().parent().parent().attr('id')
     $('#' + backer_id + ' .text').hide()
     $('#' + backer_id + ' .loading').show()
