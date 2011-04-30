@@ -6,13 +6,10 @@ script type="text/template" id="project_comments_template"
         = form.inputs do
           = form.input :commentable_type, :as => :hidden
           = form.input :commentable_id, :as => :hidden
-          = form.input :comment, :label => "Deixe seu comentário sobre este projeto", :as => :text, :required => true
+          = form.input :comment, :required => true
         = render :partial => 'formatting_tips'
         = form.buttons do
-          = form.commit_button 'Enviar comentário'
+          = form.commit_button t('.submit')
     - else
-      em
-        | Quer enviar um comentário? 
-        = link_to 'Clique aqui', '#', :class => 'login_link'
-        |  para fazer login.
+      em= t('.require_login_html', :link => link_to(t('click_here'), '#', :class => 'login_link'))
     ul#collection_list

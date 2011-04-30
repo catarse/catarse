@@ -5,7 +5,7 @@
   = t('.reached_of')
   %strong= @project.display_goal
   #time_to_go.number= @project.time_to_go[:time]
-  #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('.left_singular'), t('.left_plural'))}
+  #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
   .project_progress
     .progress_bar
       .progress{ :style => "width: #{ @project.display_percent }%" }

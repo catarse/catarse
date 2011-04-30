@@ -31,12 +31,12 @@
         %li
           %strong #{project.percent}%
           %br
-          atingido
+          = t('.reached')
         %li
           %strong= project.display_pledged
           %br
-          levantados
+          = t('.backed')
         %li
           %strong #{project.time_to_go[:time]} #{project.time_to_go[:unit]}
           %br
-          #{pluralize_without_number(project.time_to_go[:time], 'restante')}
+          #{pluralize_without_number(project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}

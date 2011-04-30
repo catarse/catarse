@@ -5,6 +5,7 @@ pt:
   activerecord:
       models:
         backer: Apoiador
+        category: Categoria
         project: Projeto
         reward: Recompensa
       attributes:
@@ -12,20 +13,44 @@ pt:
           value: Valor
         project:
           name: Nome
+          headline: Frase de efeito
           expires_at: Prazo
           user_id: Id do usuário
+          category: Categoria
           image_url: URL da imagem
           video_url: URL do vídeo
+        reward:
+          description: Descrição
+          minimum_value: Valor mínimo
+          maximum_backers: Máximo de apoiadores
         user:
           email: Email
   formtastic:
+    optional: " (opcional)"
     labels:
       project:
-        new:
-          name: Nome do projeto
+        name: Nome do projeto
+        video_url: Vídeo
+        about: Sobre o seu projeto
+        goal: De quanto você precisa?
+        expires_at: Qual o prazo para atingir o mínimo?
+      comment:
+        comment: Deixe seu comentário sobre este projeto
     hints:
       project:
         name: Qual o nome do seu projeto? Escolha com carinho, pois isto irá influenciar as chances do seu projeto atingir o mínimo.
+        video_url: Cole a URL de um vídeo no <a href="http://vimeo.com" target="_blank">Vimeo</a>. Nós escolhemos o Vimeo pois ele é mais bonito e não tem propaganda. Assim, seu projeto fica mais bonito também! <strong>Produza seu vídeo o melhor possível e faça um vídeo específico para a sua campanha</strong>. Se há um ponto que diferencia os projetos que antingem o mínimo dos outros é o vídeo. Observe ;)
+        about: Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!
+        headline: Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)
+        category: Escolha em que categoria você quer que seu projeto apareça. Não se preocupe caso você ache que ele se enquadra em mais de uma. Escolha aquela onde você quer que as pessoas o encontrem.
+        goal: Pense bastante no valor que você vai solicitar. Ele deve ser o <strong>mínimo necessário para o projeto acontecer</strong>. Nada mais, nada menos. Se você pedir demais, suas chances de atingir o mínimo serão menores; se pedir de menos, não conseguirá realizar o projeto e, conseqüentemente terá sua reputação prejudicada, o que dificulta realizações futuras.
+        expires_at: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
+      reward:
+        description: Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!
+        minimum_value: Este é valor mínimo de apoio para escolher esta recompensa.
+        maximum_backers: Se sua recompensa é limitada, informe o máximo de pessoas.
+  accept_terms_html: Eu li e estou de acordo com os %{link}.
+  terms: termos de uso
   require_login: Você precisa estar logado para realizar esta ação.
   require_admin: Você precisa ser admin para realizar esta ação.
   require_permission: Você não tem permissão para realizar esta ação.
@@ -33,7 +58,13 @@ pt:
   error: Ooops! Ocorreu um erro. Por favor, tente novamente.
   here: aqui
   clicking_here: clicando aqui
+  click_here: Clique aqui
   not_informed: não informado
+  remove: remover
+  remaining_singular: restante
+  remaining_plural: restantes
+  backer_singular: apoiador
+  backer_plural: apoiadores
   backer:
     reward_must_be_from_project: deve ser do mesmo projeto
     value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para a recompensa selecionada
@@ -60,15 +91,17 @@ pt:
   reward:
     dont_want: Não quero recompensa
     sold_out: Esgotada
+    limited: Limitada
+    display_remaining: %{remaining} de %{maximum} disponíveis
   site:
     male:
-      the: o
+      the: "o"
       in_the: "no"
-      to_the: ao
+      to_the: "ao"
     female:
-      the: a
-      in_the: na
-      to_the: à
+      the: "a"
+      in_the: "na"
+      to_the: "à"
   user:
     no_name: Sem nome
     backs_text:
@@ -129,8 +162,6 @@ pt:
       backed_singular: apoiou
       backed_plural: apoiaram
       reached_of: Atingidos de
-      left_singular: restante
-      left_plural: restantes
       project_warning:
         successful:
           expired: Este projeto foi bem-sucedido e foi financiado em %{date}
@@ -145,7 +176,14 @@ pt:
       anonymous_description: Optou por permanecer incógnito
       no_reward: Este apoiador não selecionou nenhuma recompensa
     form:
-      
+      important_html: Lembre-se que %{site} ficará com 5%, e o %{link} cobra uma taxa que varia entre 6% e 7% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas, depois.
+      rewards_title: Recompensas
+      rewards_description: A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão.
+      add_reward: Adicionar recompensa
+      submit: Enviar o projeto
+    project:
+      reached: atingido
+      backed: levantados
     guidelines:
       title: Como funciona %{site_name}?
     faq:
@@ -168,8 +206,17 @@ pt:
       not_present: Este projeto não está disponível neste site. Confira os outros projetos incríveis que temos!
     project_backers:
       empty: Ninguém apoiou este projeto ainda. Que tal ser o primeiro?
+    project_comments:
+      submit: Enviar comentário
+      require_login_html: Quer enviar um comentário? %{link} para fazer login.
     project_updates:
       empty: Este projeto ainda não teve atualizações. Aguarde =D
+      title: Título da atualização
+      text: Texto da atualização
+      submit: Enviar atualização
+    rewards:
+      title: Apoie e ganhe...
+      reward_title: Para %{minimum} ou mais
     back:
       title: Apoie o %{name}
       no_reward: Obrigado. Eu só quero ajudar o projeto.

@@ -134,7 +134,7 @@ class Project < ActiveRecord::Base
       {:time => 0, :unit => pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
     end
   end
-  def present?(site)
+  def present_on_site?(site)
     projects_sites.where("site_id = #{site.id}").count > 0
   end
   def visible?(site)

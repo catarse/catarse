@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
   end
   def show
     show!{
-      unless @project.present?(current_site)
+      unless @project.present_on_site?(current_site)
         flash[:failure] = t('projects.show.not_present')
         return redirect_to :root
       end

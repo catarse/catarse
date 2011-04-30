@@ -22,7 +22,7 @@
 
 # Set the string that will be appended to the labels/fieldsets which are optional
 # Defaults to an empty string ("") and also accepts procs (see required_string above)
-# Formtastic::SemanticFormBuilder.optional_string = "(optional)"
+Formtastic::SemanticFormBuilder.optional_string = lambda {I18n.t('formtastic.optional')}
 
 # Set the way inline errors will be displayed.
 # Defaults to :sentence, valid options are :sentence, :list and :none
@@ -48,8 +48,10 @@
 # Specifies if labels/hints for input fields automatically be looked up using I18n.
 # Default value: false. Overridden for specific fields by setting value to true,
 # i.e. :label => true, or :hint => true (or opposite depending on initialized value)
-# Formtastic::SemanticFormBuilder.i18n_lookups_by_default = false
+Formtastic::SemanticFormBuilder.i18n_lookups_by_default = true
 
 # You can add custom inputs or override parts of Formtastic by subclassing SemanticFormBuilder and
 # specifying that class here.  Defaults to SemanticFormBuilder.
 # Formtastic::SemanticFormHelper.builder = MyCustomBuilder
+
+Formtastic::SemanticFormBuilder.escape_html_entities_in_hints_and_labels = false

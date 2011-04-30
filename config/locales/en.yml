@@ -25,12 +25,12 @@ en:
   site:
     male:
       the: ""
-      in_the: on
-      to_the: to
+      in_the: "on"
+      to_the: "to"
     female:
       the: ""
-      in_the: on
-      to_the: to
+      in_the: "on"
+      to_the: "to"
   layouts:
     pre_header:
       back_notice_html: You backed the project %{link}. Tell everyone what you just did!
