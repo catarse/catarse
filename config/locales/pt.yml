@@ -19,16 +19,10 @@ pt:
         user:
           email: Email
   formtastic:
-    titles:
-      post_details: "Post details"
     labels:
-      post:
-        title: "Your Title"
-        body: "Write something..."
-        edit:
-          title: "Edit title"
       project:
-        name: Nome do projeto
+        new:
+          name: Nome do projeto
     hints:
       project:
         name: Qual o nome do seu projeto? Escolha com carinho, pois isto irá influenciar as chances do seu projeto atingir o mínimo.
