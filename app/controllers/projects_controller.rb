@@ -130,7 +130,7 @@ class ProjectsController < ApplicationController
     @backer = @project.backers.new(params[:backer])
     unless @backer.save
       flash[:failure] = t('projects.review.error')
-      return redirect_to back_project_path(project)
+      return redirect_to back_project_path(@project)
     end
     session[:thank_you_id] = @project.id
   end
