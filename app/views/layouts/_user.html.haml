@@ -5,10 +5,10 @@
     = image_tag 'dropdown.png', :class => 'dropdown'
   #user_menu.hide
     %ul
-      %li= link_to "Meu perfil", user_path(current_user)
+      %li= link_to t('.my_profile'), user_path(current_user)
       %li
         = link_to credits_path do
-          Meus créditos
+          = t('.my_credits')
           .small (#{current_user.display_credits})
-      %li= link_to "Logout", logout_path
+      %li= link_to t('.logout'), logout_path
 = javascript_include_tag 'user'

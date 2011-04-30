@@ -4,18 +4,4 @@ script type="text/template" id="project_about_template"
       #{on_the_spot_edit @project, :about, :type => :textarea}
     - else
       == @project.about_html
-    - if current_user and current_user.admin
-      #project_admin
-        h2 Campos para o admin
-        .project_admin_field
-          strong Prazo:
-          #{on_the_spot_edit @project, :expires_at}
-        .project_admin_field
-          strong Id do usuário:
-          #{on_the_spot_edit @project, :user_id}
-        .project_admin_field
-          strong URL da imagem:
-          #{on_the_spot_edit @project, :image_url}
-        .project_admin_field
-          strong URL do vídeo:
-          #{on_the_spot_edit @project, :video_url}
+    = render "admin_fields" if current_user and current_user.admin

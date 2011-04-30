@@ -1,11 +1,11 @@
 .info
   .number= @project.total_backers
-  #{pluralize_without_number(@project.total_backers, 'Pessoa')} já #{pluralize_without_number(@project.total_backers, 'apoiou', 'apoiaram')}
+  #{pluralize_without_number(@project.total_backers, t('.person'))} #{t('.has')} #{pluralize_without_number(@project.total_backers, t('.backed_singular'), t('.backed_plural'))}
   .number= @project.display_pledged
-  Atingidos de
+  = t('.reached_of')
   %strong= @project.display_goal
   #time_to_go.number= @project.time_to_go[:time]
-  #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], 'restante')}
+  #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('.left_singular'), t('.left_plural'))}
   .project_progress
     .progress_bar
       .progress{ :style => "width: #{ @project.display_percent }%" }
@@ -14,21 +14,20 @@
   .project_warning.successful
     .text
       - if @project.expired?
-        Este projeto foi bem-sucedido e foi financiado em #{@project.display_expires_at}
+        = t('.project_warning.successful.expired', :date => @project.display_expires_at)
       - else
-        Este projeto será bem-sucedido e financiado em #{@project.display_expires_at}
+        = t('.project_warning.successful.not_expired', :date => @project.display_expires_at)
 - elsif @project.waiting_confirmation?
   .project_warning.waiting_confirmation
-    .text Aguardando a confirmação de boletos para saber se este projeto será financiado.
+    .text= t('.project_warning.waiting_confirmation')
 - else
   .project_warning.not_successful
     .text
       - if @project.expired?
-        Este projeto não atingiu o mínimo de #{@project.display_goal} até #{@project.display_expires_at} e não foi financiado
+        = t('.project_warning.not_successful.expired', :goal => @project.display_goal, :date => @project.display_expires_at)
       - else
-        Este projeto só será financiado se pelo menos #{@project.display_goal} forem atingidos até #{@project.display_expires_at}
+        = t('.project_warning.not_successful.not_expired', :goal => @project.display_goal, :date => @project.display_expires_at)
 .info
   = form_tag(back_project_path(@project), :method => :get, :id => 'back_project_form') do
     %fieldset
-      = submit_tag 'Quero apoiar este projeto', :disabled => (not @project.can_back?(current_site))
-
+      = submit_tag t('.submit'), :disabled => (not @project.can_back?(current_site))

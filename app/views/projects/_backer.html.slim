@@ -4,9 +4,10 @@ script type="text/template" id="backer_template"
 
   |{{#anonymous}}
   = image_tag 'user.png', :class => 'user'
-  |  Apoiador anônimo
+  | &nbsp;
+  = t('.anonymous_backer')
   = image_tag "sites/#{current_site.path}/badge.png", :class => "badge"
-  p Optou por permanecer incógnito
+  p= t('.anonymous_description')
   |{{/anonymous}}
 
   |{{^anonymous}}
@@ -22,25 +23,32 @@ script type="text/template" id="backer_template"
 
   - if current_user and (current_user == @project.user or current_user.admin)
     p.reward
-      | Valor: 
+      = t('activerecord.attributes.backer.value')
+      |: 
       |{{display_value}}
-      | . Email:
+      | . 
+      = t('activerecord.attributes.user.email')
+      |:
       |{{#user}} 
       |{{email}}
       |{{^email}}
-      | não informado.
+      | &nbsp;
+      = t('not_informed')
+      |.
       |{{/email}}
       |{{/user}} 
       br
       |{{#reward}}
-      | Recompensa: 
+      | &nbsp;
+      = t('activerecord.models.reward')
+      |: 
       |{{display_minimum}} - {{medium_description}}
       |{{/reward}}
       |{{^reward}}
-      | Este apoiador não selecionou nenhuma recompensa
+      | &nbsp;
+      = t('.no_reward')
       |{{/reward}}
  
   |{{/attributes}}
 
   .clear
-

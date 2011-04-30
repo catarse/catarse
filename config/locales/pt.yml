@@ -2,6 +2,36 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 pt:
+  activerecord:
+      models:
+        backer: Apoiador
+        project: Projeto
+        reward: Recompensa
+      attributes:
+        backer:
+          value: Valor
+        project:
+          name: Nome
+          expires_at: Prazo
+          user_id: Id do usuário
+          image_url: URL da imagem
+          video_url: URL do vídeo
+        user:
+          email: Email
+  formtastic:
+    titles:
+      post_details: "Post details"
+    labels:
+      post:
+        title: "Your Title"
+        body: "Write something..."
+        edit:
+          title: "Edit title"
+      project:
+        name: Nome do projeto
+    hints:
+      project:
+        name: Qual o nome do seu projeto? Escolha com carinho, pois isto irá influenciar as chances do seu projeto atingir o mínimo.
   require_login: Você precisa estar logado para realizar esta ação.
   require_admin: Você precisa ser admin para realizar esta ação.
   require_permission: Você não tem permissão para realizar esta ação.
@@ -9,6 +39,7 @@ pt:
   error: Ooops! Ocorreu um erro. Por favor, tente novamente.
   here: aqui
   clicking_here: clicando aqui
+  not_informed: não informado
   backer:
     reward_must_be_from_project: deve ser do mesmo projeto
     value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para a recompensa selecionada
@@ -38,7 +69,7 @@ pt:
   site:
     male:
       the: o
-      in_the: no
+      in_the: "no"
       to_the: ao
     female:
       the: a
@@ -79,10 +110,48 @@ pt:
   layouts:
     pre_header:
       back_notice_html: Você apoiou o projeto %{link}. Conte para todo mundo o que você fez!
+      i_backed: Eu apoiei o projeto
+    login:
+      title: Entre através de sua rede social favorita
+      remember_me: Lembre-se de mim e mantenha-me conectado.
+      description: Caso você ainda não seja cadastrado, sua conta será criada. Se você já é cadastrado, você entrará normalmente.
+      tips_html: <strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta.
+    user:
+      my_profile: Meu perfil
+      my_credits: Meus créditos
+      logout: Sair
     application:
-      menu_explore: Explore os projetos
-      menu_submit: Envie seu projeto 
+      menu:
+        explore: Explore os projetos
+        submit: Envie seu projeto 
+        signup: Cadastre-se
+        login: Entrar
   projects:
+    admin_fields:
+      title: Campos para o admin
+    back_project:
+      person: Pessoa
+      has: já
+      backed_singular: apoiou
+      backed_plural: apoiaram
+      reached_of: Atingidos de
+      left_singular: restante
+      left_plural: restantes
+      project_warning:
+        successful:
+          expired: Este projeto foi bem-sucedido e foi financiado em %{date}
+          not_expired: Este projeto será bem-sucedido e financiado em %{date}
+        waiting_confirmation: Aguardando a confirmação de boletos para saber se este projeto será financiado.
+        not_successful:
+          expired: Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado
+          not_expired: Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}
+      submit: Quero apoiar este projeto
+    backer:
+      anonymous_backer: Apoiador anônimo
+      anonymous_description: Optou por permanecer incógnito
+      no_reward: Este apoiador não selecionou nenhuma recompensa
+    form:
+      
     guidelines:
       title: Como funciona %{site_name}?
     faq:

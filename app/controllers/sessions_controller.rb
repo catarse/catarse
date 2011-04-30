@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def pre_auth
     session[:return_to] = params[:return_to]
     session[:remember_me] = params[:remember_me]
-    redirect_to Site.auth_gateway.full_url("/auth/?provider=#{params[:provider]}&return_site_id=#{params[:return_site_id]}&return_session_id=#{session[:session_id]}")
+    redirect_to Site.auth_gateway.full_url("/auth/?provider=#{params[:provider]}&return_site_id=#{current_site.id}&return_session_id=#{session[:session_id]}")
   end
   def auth
     session[:return_site_id] = params[:return_site_id]

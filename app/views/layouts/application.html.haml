@@ -12,11 +12,11 @@
           = render '/layouts/user' if current_user
           #menu
             %ul
-              %li= link_to t('.menu_explore'), explore_path
-              %li= link_to t('.menu_submit'), guidelines_path, :id => 'new_project_link'
+              %li= link_to t('.menu.explore'), explore_path
+              %li= link_to t('.menu.submit'), guidelines_path, :id => 'new_project_link'
               - unless current_user
-                %li= link_to "Cadastre-se", '#', :id => 'signup_link'
-                %li= link_to "Login", '#', :id => 'login_link'
+                %li= link_to t('.menu.signup'), '#', :id => 'signup_link'
+                %li= link_to t('.menu.login'), '#', :id => 'login_link'
           .clear
       #content_wrapper
         #content_header_wrapper
