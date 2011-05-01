@@ -34,7 +34,7 @@
                               }
                             </style>
                             <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:10px; line-height:22px; text-align:center; color:#444;" class="bar">
-                              <div class="edit" id="intro">Você está recebendo esta mensagem pois se cadastrou em nossa lista.</div>
+                              <div class="edit" id="intro"><%= t('.intro', :site => @notification.site.in_the_name) %></div>
                               <a href="#" class="weblink" style="
                                 border-radius: 3px 0 0 3px;
                                 -moz-border-radius: 3px 0 0 3px;
@@ -46,7 +46,7 @@
                                 padding:4px;
                                 margin:0;
                                 color:#333
-                              ">Ver na web</a>
+                              "><%= t('.weblink') %></a>
                               <a href="#" class="whitelist" style="
                                 border:1px outset #ccc;
                                 border-left:1px solid rgba(0,0,0,0);
@@ -57,7 +57,7 @@
                                 margin:0;
                                 border-radius:0;
                                 color:#333
-                              ">Adicionar contato</a>
+                              "><%= t('.whitelist') %></a>
                               <a href="#" class="forward" style="
                                 border:1px outset #ccc;
                                 border-left:1px solid rgba(0,0,0,0);
@@ -68,7 +68,7 @@
                                 margin:0;
                                 border-radius:0;
                                 color:#333
-                              ">Encaminhar para amigos</a>
+                              "><%= t('.forward') %></a>
                               <a href="#" class="unsubscribe" style="
                                 border-radius: 0 3px 3px 0;
                                 -moz-border-radius: 0 3px 3px 0;
@@ -81,7 +81,7 @@
                                 padding:4px;
                                 margin:0;
                                 color:#333
-                              ">Descadastrar da lista</a>
+                              "><%= t('.unsubscribe') %></a>
                               <br>
                               <br>
                             </div>
@@ -101,9 +101,9 @@
                                     <div class="repeat" id="paragraph" style="margin:0; padding:0px; border:0 none; font-size:14px; color:#666; text-align:left;">
                                       <p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-color: initial; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 17px; ">
                                         <% if @notification.user.name %>
-                                          Olá, <%= @notification.user.name %>!
+                                          <%= t('.hello') %>, <%= @notification.user.name %>!
                                         <% else %>
-                                          Olá!
+                                          <%= t('.hello') %>!
                                         <% end %>
                                         <br>
                                         <br>
@@ -140,11 +140,11 @@
                       <tbody style="margin:0; padding:0; border:0;">
                         <tr>
                           <td align="right" valign="top" style="margin:0; padding:20px 0; color:#333333; font-size:11px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; border:0 none; text-align:right;">
-                            <a href="#" id="whitelist" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 18px; ">Adicione nosso email a seus contatos</a>.
+                            <a href="#" id="whitelist" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 18px; "><%= t('.whitelist_long') %></a>
                             <br><br>
-                            Você está recebendo esta mensagem pois se cadastrou em nossa lista.<br>Se não quiser mais receber estes emails, <a href="#" id="unsubscribe" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 18px; ">clique aqui</a>.
+                            <%= t('.intro', :site => @notification.site.in_the_name) %><br><%= t('.unsubscribe_long') %>, <a href="#" id="unsubscribe" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal;"><%= t('click_here').downcase %></a>
                             <br><br>
-                            <a href="http://www.mailee.me/" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 18px; ">Mensagem entregue pelo Mailee.me</a>
+                            <a href="http://mailee.me/" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 18px; "><%= t('.mailee') %></a>
                           </td>
                         </tr>
                       </tbody>

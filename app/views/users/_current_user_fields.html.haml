@@ -1,0 +1,14 @@
+#gravatar_hint
+  = link_to 'http://gravatar.com/', :target => :_blank do
+    = image_tag 'gravatar.png', :id => 'gravatar_logo'
+  = t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
+%h1 Meus dados
+%ul
+  %li
+    #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
+    .hint= t('.email_hint', :site => current_site.the_name)
+  %li
+    = hidden_field_tag 'id', @user.id
+    = check_box_tag 'newsletter', '1', @user.newsletter
+    = label_tag 'newsletter', t('.newsletter', :site => current_site.the_name)
+%hr

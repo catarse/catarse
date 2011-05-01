@@ -1,0 +1,36 @@
+%h1
+  - if current_user and @user == current_user
+    = t('.title_current_user')
+  - else
+    = t('.title', :name => @user.display_name)
+- if @backs.empty?
+  #no_backs
+    - if current_user and @user == current_user
+      = t('.no_backs_current_user_html')
+    - else
+      = t('.no_backs', :name => @user.display_name)
+- else
+  %ul
+    - @backs.each do |back|
+      %li
+        = l(back.confirmed_at.to_date) if back.confirmed_at
+        = link_to project_path(back.project) do
+          = image_tag back.project.display_image, :class => 'project'
+          = back.project.name
+        - if current_user and @user == current_user
+          = link_to "http://twitter.com/?status=#{t('i_backed')} \"#{back.project.name}\" #{current_site.in_the_twitter} #{back.project.short_url}", :target => :_blank do
+            = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
+          = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}&t=#{t('i_backed')} \"#{back.project.name}\" #{current_site.in_the_name}&v=4", :target => :_blank do
+            = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
+        %p
+          - if current_user and @user == current_user
+            - if back.anonymous
+              = t('.anonymous')
+            #{t('activerecord.attributes.backer.value')}: #{back.display_value}.
+            - if back.reward
+              #{t('.your_reward')}: #{back.reward.display_minimum} - #{truncate(back.reward.description, :length => 104)}
+            - else
+              = t('.no_reward')
+          - else
+            = back.project.headline
+        .clear

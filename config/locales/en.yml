@@ -1,6 +1,7 @@
 en:
   here: here
   clicking_here: clicking here
+  click_here: Click here
   comment:
     display_time: %{time_ago} ago
   project:
@@ -37,3 +38,14 @@ en:
   projects:
     guidelines:
       title: How do I use %{site}?
+  users_mailer:
+    notification_email:
+      intro: You are receiving this message because you signed up %{site}
+      weblink: View on the web
+      whitelist: Add contact
+      whitelist_long: Add our email to your contacts
+      forward: Foward to your friends
+      unsubscribe: Unsubscribe
+      unsubscribe_long: If you don't want to receive these emails
+      hello: Hi
+      mailee: Message delivered by Mailee.me

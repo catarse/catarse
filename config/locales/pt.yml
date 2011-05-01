@@ -85,6 +85,8 @@ pt:
   backer_plural: apoiadores
   found_singular: Encontrado
   found_plural: Encontrados
+  i_backed: Eu apoiei o projeto
+  i_just_backed: Eu acabei de apoiar o projeto
   backer:
     reward_must_be_from_project: deve ser do mesmo projeto
     value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para a recompensa selecionada
@@ -157,7 +159,6 @@ pt:
   layouts:
     pre_header:
       back_notice_html: Você apoiou o projeto %{link}. Conte para todo mundo o que você fez!
-      i_backed: Eu apoiei o projeto
     login:
       title: Entre através de sua rede social favorita
       remember_me: Lembre-se de mim e mantenha-me conectado.
@@ -302,7 +303,6 @@ pt:
       header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!
       text_title_html: Você agora é parte do grupo que faz de tudo para o %{link} acontecer.
       text_subtitle: Conte para todo mundo o que você acabou de fazer
-      i_just_backed: Eu acabei de apoiar o projeto
       successful: Este projeto será financiado em %{expires_at}, graças a sua ajuda e de mais %{total_backers} pessoas. Muito obrigado!
       not_successful: Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{expires_at}. Caso ele não seja bem sucedido, você receberá seu dinheiro de volta na forma de créditos %{site}. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!
       error: Ooops. Você só pode acessar esta página depois de apoiar um projeto.
@@ -351,7 +351,44 @@ pt:
       success: Logout realizado com sucesso. Até logo!
     failure:
       error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
+  users:
+    admin_fields:
+      title: Dados de %{name}
+      no_email: ainda não preencheu seu email
+      credits: disponíveis em créditos
+    backs:
+      title: Projetos que %{name} já apoiou
+      title_current_user: Projetos que já apoiei
+      no_backs: %{name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D
+      no_backs_current_user_html: Você ainda não apoiou nenhum projeto. Que tal <a href="/">começar agora</a>?
+      anonymous: Apoio anônimo.
+      your_reward: Sua recompensa
+      no_reward: Você não selecionou nenhuma recompensa
+    current_user_fields:
+      gravatar_hint_html: Quer mudar sua foto? Use o %{link} com seu email. É tão simples quanto enviar uma imagem e já funciona para outros sites também ;)
+      email_tooltip: Clique aqui para preencher seu email...
+      email_hint: Seu email será utilizado apenas para envio de comunicações d%{site} e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas.
+      newsletter: Quero receber novidades d%{site} por email
+    header:
+      name_tooltip: Clique aqui para preencher seu nome...
+      bio_tooltip: Clique aqui para escrever sobre você...
+    projects:
+      title: Projetos de %{name}
+      title_current_user: Meus projetos
+      no_projects: %{name} ainda não realizou nenhum projeto %{site}. Será que a inspiração vai bater uma hora dessas?
+      no_projects_current_user_html: Você ainda não realizou nenhum projeto %{site}. Deixe a inspiração bater e %{link} para começar!
   projects_mailer:
     start_project_email:
       subject: Projeto enviado por %{name}
       subject_html: Projeto enviado por %{link}
+  users_mailer:
+    notification_email:
+      intro: Você está recebendo esta mensagem pois se cadastrou %{site}
+      weblink: Ver na web
+      whitelist: Adicionar contato
+      whitelist_long: Adicione nosso email a seus contatos
+      forward: Encaminhar para amigos
+      unsubscribe: Descadastrar da lista
+      unsubscribe_long: Se não quiser mais receber estes emails
+      hello: Olá
+      mailee: Mensagem entregue pelo Mailee.me

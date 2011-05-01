@@ -1,0 +1,21 @@
+= content_for :content_header do
+  = image_tag "sites/#{current_site.path}/badge.png", :id => "badge" if @user.backer?
+  #profile_header
+    .image
+      - if current_user and @user == current_user
+        = link_to 'http://gravatar.com/', :target => :_blank do
+          = image_tag @user.display_image
+      - else
+        = image_tag @user.display_image
+    .info
+      %h1
+        - if current_user and @user == current_user
+          #{on_the_spot_edit @user, :name, :tooltip => t('.name_tooltip')}
+        - else
+          = @user.display_name
+      %h2
+        - if current_user and @user == current_user
+          #{on_the_spot_edit @user, :bio, :type => :textarea, :tooltip => t('.bio_tooltip')}
+        - else
+          = @user.bio
+    .clear
