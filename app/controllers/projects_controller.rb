@@ -71,7 +71,7 @@ class ProjectsController < ApplicationController
     }
   end
   def guidelines
-    @title = t('projects.guidelines.title', :site_name => current_site.the_name)
+    @title = t('projects.guidelines.title', :site => current_site.the_name)
   end
   def faq
     @title = t('projects.faq.title')
@@ -241,7 +241,7 @@ class ProjectsController < ApplicationController
     @backers = @search.order("created_at DESC").paginate :page => params[:page]
     @total_backers = User.backers.count
     @total_backs = Backer.confirmed.count
-    @total_pledged = Backer.confirmed.sum(:value)
+    @total_backed = Backer.confirmed.sum(:value)
     @total_users = User.primary.count
   end
   private

@@ -1,51 +1,51 @@
 = content_for :content_header do
-  %h1 Gerenciamento dos projetos
+  %h1= t('.title')
 #pending_projects
   - form_for @search, :url => pending_projects_path do |f|
     %fieldset
-      = f.label :project_id_equals, "Id"
+      = f.label :project_id_equals, t('.id')
       = f.text_field :project_id_equals
-      = f.label :project_name_contains, "Nome"
+      = f.label :project_name_contains, t('.name')
       = f.text_field :project_name_contains
-      = f.label :project_user_name_contains, "Usuário"
+      = f.label :project_user_name_contains, t('.user')
       = f.text_field :project_user_name_contains
       = f.check_box :visible_is_true
-      = f.label :visible_is_true, "Visível?"
+      = f.label :visible_is_true, t('.visible')
       = f.check_box :rejected_is_true
-      = f.label :rejected_is_true, "Rejeitado?"
+      = f.label :rejected_is_true, t('.rejected')
     %fieldset
       = f.check_box :recommended_is_true
-      = f.label :recommended_is_true, "Recomendado?"
+      = f.label :recommended_is_true, t('.recommended')
       = f.check_box :home_page_is_true
-      = f.label :home_page_is_true, "Home page?"
+      = f.label :home_page_is_true, t('.home_page')
       = f.check_box :project_can_finish_is_true
-      = f.label :project_can_finish_is_true, "Pode finalizar?"
+      = f.label :project_can_finish_is_true, t('.can_finish')
       = f.check_box :project_finished_is_true
-      = f.label :project_finished_is_true, "Finalizado?"
-      = f.submit "Pesquisar"
+      = f.label :project_finished_is_true, t('.finished')
+      = f.submit t('.submit')
   #total_results
-    = pluralize_without_number @search.count, 'Encontrado'
+    = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
     %strong= @search.count
-    = pluralize_without_number @search.count, 'projeto'
+    = pluralize_without_number @search.count, t('activerecord.models.project').downcase
   = will_paginate @projects_sites
   .clear
   - if @projects_sites.empty?
-    Não há nenhum projeto com aprovação pendente
+    = t('.no_projects')
   - else
     %table
       %thead
         %tr
-          %th Id
-          %th Projeto
-          %th Site
-          %th Usuário
-          %th Visível?
-          %th Rejeitado?
-          %th Recomendado?
-          %th Home page?
-          %th Ordem
-          %th Pode finalizar?
-          %th Finalizado?
+          %th= t('.id')
+          %th= t('.project')
+          %th= t('.site')
+          %th= t('.user')
+          %th= t('.visible')
+          %th= t('.rejected')
+          %th= t('.recommended')
+          %th= t('.home_page')
+          %th= t('.order')
+          %th= t('.can_finish')
+          %th= t('.finished')
       %tbody
         - @projects_sites.each do |project_site|
           %tr{ :class => cycle("even", "odd") }
@@ -63,7 +63,6 @@
             %td= check_box_tag "projects_site__home_page__#{project_site.id}", '1', project_site.home_page
             %td= on_the_spot_edit project_site, :order, :tooltip => '-'
             %td= check_box_tag "project__can_finish__#{project_site.project.id}", '1', project_site.project.can_finish
-            %td= (project_site.project.finished ? "Sim" : "Não")
+            %td= (project_site.project.finished ? t('yes') : t('no'))
   = will_paginate @projects_sites
 = javascript_include_tag 'pending_projects'
-

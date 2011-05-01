@@ -1,39 +1,9 @@
 = render :partial => "/sites/#{current_site.path}/index_header"
 = render :partial => "/sites/#{current_site.path}/index_meta_tags"
 = render :partial => "/sites/#{current_site.path}/promo_video"
-- unless @recommended.empty?
-  .project_list_header Projetos em destaque
-  = render :partial => 'project', :collection => @recommended
-  .clear
-- unless @recent.empty?
-  %br
-  .project_list_header Projetos recentes
-  .project_list_wrapper
-    .project_list
-      .slider_wrapper
-        = hidden_field_tag 'total_projects', @recent.size
-        = hidden_field_tag 'position', 0
-        .slider{ :style => "width: #{@recent.count * 312}px" }
-          = render :partial => 'project', :collection => @recent
-          .clear
-    .navigation
-      = submit_tag "«", :class => 'prev', :disabled => true
-      = submit_tag "»", :class => 'next'
-- unless @successful.empty?
-  %br
-  .project_list_header Projetos bem-sucedidos
-  .project_list_wrapper
-    .project_list
-      .slider_wrapper
-        = hidden_field_tag 'total_projects', @successful.size
-        = hidden_field_tag 'position', 0
-        .slider{ :style => "width: #{@successful.count * 312}px" }
-          = render :partial => 'project', :collection => @successful
-          .clear
-    .navigation
-      = submit_tag "«", :class => 'prev', :disabled => true
-      = submit_tag "»", :class => 'next'
+= render 'home_page_projects'
+= render :partial => 'slider', :locals => {:title => t('.recent'), :collection => @recent} unless @recent.empty?
+= render :partial => 'slider', :locals => {:title => t('.successful'), :collection => @successful} unless @successful.empty?
 = render :partial => "/sites/#{current_site.path}/press"
 = javascript_include_tag 'slider'
 = javascript_include_tag 'press'
-

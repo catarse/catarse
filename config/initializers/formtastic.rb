@@ -22,7 +22,7 @@
 
 # Set the string that will be appended to the labels/fieldsets which are optional
 # Defaults to an empty string ("") and also accepts procs (see required_string above)
-Formtastic::SemanticFormBuilder.optional_string = lambda {I18n.t('formtastic.optional')}
+# Formtastic::SemanticFormBuilder.optional_string = lambda {I18n.t('formtastic.optional')}
 
 # Set the way inline errors will be displayed.
 # Defaults to :sentence, valid options are :sentence, :list and :none

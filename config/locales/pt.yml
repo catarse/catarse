@@ -1,6 +1,3 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 pt:
   activerecord:
       models:
@@ -34,8 +31,15 @@ pt:
         about: Sobre o seu projeto
         goal: De quanto você precisa?
         expires_at: Qual o prazo para atingir o mínimo?
+      reward:
+        maximum_backers: Máximo de apoiadores (opcional)
       comment:
         comment: Deixe seu comentário sobre este projeto
+      backer:
+        value: Com quanto você quer apoiar?
+        credits: Quero usar meus créditos para este apoio.
+        reward: Selecione sua recompensa
+        anonymous: Quero que meu apoio seja anônimo.
     hints:
       project:
         name: Qual o nome do seu projeto? Escolha com carinho, pois isto irá influenciar as chances do seu projeto atingir o mínimo.
@@ -49,6 +53,11 @@ pt:
         description: Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!
         minimum_value: Este é valor mínimo de apoio para escolher esta recompensa.
         maximum_backers: Se sua recompensa é limitada, informe o máximo de pessoas.
+      backer:
+        value: Você escolhe o valor ;) a partir de R$ 10 está ótimo.
+        credits: Você possui <strong>%{credits}</strong> em créditos e pode apoiar até este valor sem precisar realizar um novo pagamento.
+  "yes": Sim
+  "no": Não
   accept_terms_html: Eu li e estou de acordo com os %{link}.
   terms: termos de uso
   require_login: Você precisa estar logado para realizar esta ação.
@@ -65,6 +74,8 @@ pt:
   remaining_plural: restantes
   backer_singular: apoiador
   backer_plural: apoiadores
+  found_singular: Encontrado
+  found_plural: Encontrados
   backer:
     reward_must_be_from_project: deve ser do mesmo projeto
     value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para a recompensa selecionada
@@ -154,6 +165,11 @@ pt:
         signup: Cadastre-se
         login: Entrar
   projects:
+    index:
+      recent: Projetos recentes
+      successful: Projetos bem-sucedidos
+    home_page_projects:
+      title: Projetos em destaque
     admin_fields:
       title: Campos para o admin
     back_project:
@@ -185,7 +201,10 @@ pt:
       reached: atingido
       backed: levantados
     guidelines:
-      title: Como funciona %{site_name}?
+      title: Como funciona %{site}?
+      subtitle: Antes de enviar seu projeto, saiba um pouco mais sobre como funciona %{site}.
+      accept: Eu li e entendi como funciona %{site}.
+      submit: Quero enviar meu projeto
     faq:
       title: Perguntas frequentes
     terms:
@@ -194,12 +213,19 @@ pt:
       title: Política de privacidade
     explore:
       title: Explore os projetos
+      quick_explore: Busca rápida
+      recommended: Recomendados
+      expiring: Na reta final
+      recent: Recentes
+      successful: Bem-sucedidos
+      categories: Categorias
     start:
       title: Envie seu projeto
     send_mail:
       success: Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!
     new:
       title: Envie seu projeto
+      subtitle: A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando...
     create:
       success: Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!
     show:
@@ -221,6 +247,7 @@ pt:
       title: Apoie o %{name}
       no_reward: Obrigado. Eu só quero ajudar o projeto.
       cannot_back: Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos.
+      submit: Revisar e realizar pagamento
     review:
       title: Preencha e revise seus dados
       error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
@@ -233,8 +260,39 @@ pt:
       error: Ooops. Você só pode acessar esta página depois de apoiar um projeto.
     pending:
       title: Gerenciamento dos projetos
+      no_projects: Nenhum projeto encontrado.
+      id: Id
+      project: Projeto
+      site: Site
+      name: Nome      
+      user: Usuário
+      visible: Visível?
+      rejected: Rejeitado?
+      recommended: Recomendado?
+      home_page: Home page?
+      can_finish: Pode finalizar?
+      finished: Finalizado?
+      order: Ordem
+      submit: Pesquisar
     pending_backers:
       title: Gerenciamento de apoios
+      no_backers: Nenhum apoiador encontrado.
+      total_backers: apoiadores
+      total_backs: apoios
+      total_backed: arrecadados
+      total_users: usuários
+      id: Id
+      key: Chave
+      project: Projeto
+      user: Usuário
+      site: Site
+      value: Valor
+      reward: Recompensa
+      confirmed: Confirmado?
+      credits: Usou créditos?
+      requested_refund: Solicitou estorno?
+      refunded: Estorno realizado?
+      submit: Pesquisar
   sessions:
     post_auth:
       error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.

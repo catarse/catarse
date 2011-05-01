@@ -4,7 +4,7 @@ feature "Logout Feature" do
     fake_login
     page.should have_link(user.display_name)
     click_link user.display_name
-    click_link "Logout"
+    click_link "Sair"
     page.should have_no_link(user.display_name)
   end
 end

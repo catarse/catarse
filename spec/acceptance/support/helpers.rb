@@ -15,7 +15,7 @@ module HelperMethods
   def click_login
     visit homepage
     page.should have_no_css('#user')
-    click_link 'Login'
+    click_link 'Entrar'
   end
 end
 RSpec.configuration.include HelperMethods, :type => :acceptance
