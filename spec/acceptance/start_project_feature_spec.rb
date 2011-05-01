@@ -21,10 +21,10 @@ feature "Send Project Feature" do
       end
     end
     uncheck 'accept'
-    find_button('Enviar meu projeto')['disabled'].should == 'true'
+    find_button('Quero enviar meu projeto')['disabled'].should == 'true'
     check 'accept'
-    find_button('Enviar meu projeto')['disabled'].should == 'false'
-    click_button 'Enviar meu projeto'
+    find_button('Quero enviar meu projeto')['disabled'].should == 'false'
+    click_button 'Quero enviar meu projeto'
     current_path.should == start_projects_path
     within '#content_header' do
       within 'h1' do

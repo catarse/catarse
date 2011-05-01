@@ -1,71 +1,48 @@
-= content_for :content_header do
-  #project_header
-    %h1
-      - if current_user and current_user.admin
-        = on_the_spot_edit @project, :name
-      - else
-        = @project.name
-    %h2 Um projeto de #{link_to @project.user.display_name, user_path(@project.user)}
-    - if @project.site != current_site
-      = link_to @project.site.full_url, :target => :_blank do
-        = image_tag "sites/#{@project.site.path}/badge_site.png", :id => 'badge'
-= content_for :meta_tags do
-  %meta{:name => "description", :content => @project.headline}
-  -# Meta tags for facebook social graph
-  %meta{:property => "og:title", :content => @project.name}
-  %meta{:property => "og:type", :content => 'cause'}
-  %meta{:property => "og:url", :content => project_url(@project)}
-  %meta{:property => "og:image", :content => @project.display_image}
-  %meta{:property => "og:site_name", :content => current_site.name}
-  %meta{:property => "og:description", :content => @project.headline}
-- unless @project.visible?(current_site)
-  #project_warning
-    - if @project.rejected?(current_site)
-      Este projeto não foi selecionado para participar d#{current_site.the_name}. Quem sabe numa próxima vez? :)
-    - else
-      Este projeto está aguardando análise e logo saberemos se ele entrará #{current_site.in_the_name} ;)
+= render 'project_header'
+= render 'project_meta_tags'
+= render 'project_warning'
 #project_description
   #project_video
     %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "610", :height => "346"}
     #project_share
-      %h1 Faça parte disto e compartilhe este projeto
+      %h1= t('.share.title')
       %ul
         %li.social
-          = link_to "http://www.facebook.com/share.php?u=#{project_url(@project)}&t=Confira o projeto \"#{@project.name}\" #{current_site.in_the_name}&v=4", :target => :_blank do
+          = link_to "http://www.facebook.com/share.php?u=#{project_url(@project)}&t=#{t('.share.take_a_look')} \"#{@project.name}\" #{current_site.in_the_name}&v=4", :target => :_blank do
             = image_tag "sites/#{current_site.path}/facebook_share.png", :title => 'Facebook'
             Facebook
         %li.social
-          = link_to "http://twitter.com/?status=Confira o projeto \"#{@project.name}\" #{current_site.in_the_twitter} #{@project.short_url}", :target => :_blank do
+          = link_to "http://twitter.com/?status=#{t('.share.take_a_look')} \"#{@project.name}\" #{current_site.in_the_twitter} #{@project.short_url}", :target => :_blank do
             = image_tag "sites/#{current_site.path}/twitter_share.png", :title => 'Twitter'
             Twitter
         %li.link
-          = image_tag "sites/#{current_site.path}/link_share.png", :title => "Compartilhe o link"
-          Link
+          = image_tag "sites/#{current_site.path}/link_share.png", :title => t('.share.link_title')
+          = t('.share.link')
           = text_field_tag "project_link", @project.short_url
         %li.embed
           = link_to '#', :id => 'embed_link' do
-            = image_tag "sites/#{current_site.path}/embed_share.png", :title => "Incorpore este projeto no seu site"
-            Incorporar
+            = image_tag "sites/#{current_site.path}/embed_share.png", :title => t('.share.embed_title')
+            = t('.share.embed')
     = render 'embed'
   #project_menu
     %ul
       %li
         = link_to '#about', :id => 'about_link' do
-          Sobre
+          = t('.menu.about')
           = image_tag "sites/#{current_site.path}/project_menu_selected.png"
       %li
         = link_to '#updates', :id => 'updates_link' do
-          Atualizações
+          = t('.menu.updates')
           %span.count (#{@updates.count})
           = image_tag "sites/#{current_site.path}/project_menu_selected.png"
       %li
         = link_to '#backers', :id => 'backers_link' do
-          Apoiadores
+          = t('.menu.backers')
           %span.count (#{@project.total_backers})
           = image_tag "sites/#{current_site.path}/project_menu_selected.png"
       %li
         = link_to '#comments', :id => 'comments_link' do
-          Comentários
+          = t('.menu.comments')
           %span.count (#{@comments.count})
           = image_tag "sites/#{current_site.path}/project_menu_selected.png"
   #project_content

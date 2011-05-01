@@ -21,7 +21,16 @@ pt:
           minimum_value: Valor mínimo
           maximum_backers: Máximo de apoiadores
         user:
+          full_name: Nome completo
           email: Email
+          address_zip_code: CEP
+          address_street: Logradouro
+          address_number: Número
+          address_complement: Complemento
+          address_neighbourhood: Bairro
+          address_city: Cidade
+          address_state: Estado
+          phone_number: Telefone fixo
   formtastic:
     optional: " (opcional)"
     labels:
@@ -230,6 +239,23 @@ pt:
       success: Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!
     show:
       not_present: Este projeto não está disponível neste site. Confira os outros projetos incríveis que temos!
+      share:
+        title: Faça parte disto e compartilhe este projeto
+        take_a_look: Confira o projeto
+        link: Link
+        link_title: Compartilhe o link
+        embed: Incorporar
+        embed_title: Incorpore este projeto no seu site
+      menu:
+        about: Sobre
+        updates: Atualizações
+        backers: Apoiadores
+        comments: Comentários
+    project_header:
+      subtitle_html: Um projeto de %{link}
+    project_warning:
+      rejected: Este projeto não foi selecionado para participar d%{site}. Quem sabe numa próxima vez? :)
+      waiting: Este projeto está aguardando análise e logo saberemos se ele entrará %{site} ;)
     project_backers:
       empty: Ninguém apoiou este projeto ainda. Que tal ser o primeiro?
     project_comments:
@@ -250,7 +276,13 @@ pt:
       submit: Revisar e realizar pagamento
     review:
       title: Preencha e revise seus dados
+      subtitle: Último passo para fazer a diferença e se tornar parte deste projeto.
       error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
+      you_are_about_html: Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer.
+      review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa: <span class='reward'>%{reward}</span>"
+      review_without_reward_html: Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio.
+      credits_notice_html: Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos.
+      submit: Efetuar pagamento
     pay:
       no_credits: Você não possui créditos suficientes para realizar este apoio.
       success: Seu apoio foi realizado com sucesso. Muito obrigado!
