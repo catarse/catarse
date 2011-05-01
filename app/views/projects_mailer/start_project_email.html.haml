@@ -2,12 +2,12 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", 'http-equiv' => "Content-Type"}
   %body
-    %h1 Projeto enviado por #{link_to @user.display_name, @site.full_url(user_path(@user))}
-    %h2 Descreva seu projeto e quanto você precisa
+    %h1= t('.subject_html', :link => link_to(@user.display_name, @site.full_url(user_path(@user))))
+    %h2= t('projects.start.about')
     %p= @about
-    %h2 Que recompensas você quer oferecer?
+    %h2= t('projects.start.rewards')
     %p= @rewards
-    %h2 Onde podemos encontrar mais sobre você e seu projeto?
+    %h2= t('projects.start.links')
     %p= @links
-    %h2 Deixe seu email para entrarmos em contato
+    %h2= t('projects.start.contact')
     %p= @contact
