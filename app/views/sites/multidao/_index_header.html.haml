@@ -3,13 +3,7 @@
     .video
       %iframe{:src => "http://player.vimeo.com/video/22585599?title=0&amp;byline=0&amp;portrait=0&amp", :width => "620", :height => "350"}
     .text
-      %h1
-        Bem-vindo à Multidão!
-        %br
-        Apoie novas ideias e artistas inovadores
-      %h2
-        Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair do papel e faça ele virar realidade. Você é a peça que falta nesta história.
-        %br
-        %br
-        %strong Faça parte da multidão!
+      %h1= t('.title_html')
+      %h2= t('.subtitle_html')
     .clear
+

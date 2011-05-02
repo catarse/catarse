@@ -1,21 +1,5 @@
--#promo_video
-  #correntedobem
-    .text
-      %h1
-        O Catarse está junto com a
-        = link_to "Corrente do Bem", "http://www.acorrentedobem.org/", :target => :_blank
-        e esta quinta-feira é o dia mundial da boa ação.
-      A idéia é bem simples: fazer algo bom para alguém e pedir que a pessoa retribua passando uma boa ação adiante.
-      %br
-      %br
-      E se sua boa ação for apoiar projetos incríveis?
-    .image
-      = link_to "http://www.acorrentedobem.org/", :target => :_blank do
-        = image_tag "sites/catarse/correntedobem.jpg"
-    .clear
 #promo_video
   %iframe{:src => "http://player.vimeo.com/video/22585599?title=0&amp;byline=0&amp;portrait=0&amp;color=008800", :width => "620", :height => "350"}
-  #promo_title
-    =t('.title_html')
+  #promo_title= t('.title_html')
   .clear
 

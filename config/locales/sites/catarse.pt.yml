@@ -33,8 +33,12 @@ pt:
         signature: Diego Reeberg, Luís Otávio Ribeiro e os Softas
       notification_email_header:
         alt: Você deve habilitar imagens para visualizar corretamente essa mensagem.
+      project_warning:
+        content_html: Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}.
+        help_link: nosso guia
       promo_video:
         title_html: |
           Rá!<div class="retrospective">descubra finalmente</div> qual é a <div class="surprise">grande surpresa</div> do <div class="catarse">Catarse</div>
       press: 
         title: Confira o que estão falando do Catarse na imprensa
+
