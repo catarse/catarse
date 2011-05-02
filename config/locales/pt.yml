@@ -72,7 +72,7 @@ pt:
   require_login: Você precisa estar logado para realizar esta ação.
   require_admin: Você precisa ser admin para realizar esta ação.
   require_permission: Você não tem permissão para realizar esta ação.
-  notify_locale: Identificamos seu idioma automaticamente. Caso você prefira outro, clique em uma das bandeiras à direita.
+  notify_locale: Identificamos seu idioma pelo seu navegador. Caso você prefira outro, clique em uma das bandeiras à direita.
   error: Ooops! Ocorreu um erro. Por favor, tente novamente.
   here: aqui
   clicking_here: clicando aqui
@@ -154,7 +154,7 @@ pt:
       refunded: Estorno realizado
       requested_refund: Solicitado estorno
       request_refund: Solicitar estorno
-      important_html: Você tem <strong>até 180 após a data de seu apoio</strong> para solicitar o estorno do mesmo. Caso você opte pelo estorno, o valor do apoio será descontado dos seus créditos.
+      important_html: Você tem <strong>até 180 dias após a data de seu apoio</strong> para solicitar o estorno do mesmo. Caso você opte pelo estorno, o valor do apoio será descontado dos seus créditos.
       confirm: Você tem certeza que quer solicitar o estorno deste apoio?
   layouts:
     pre_header:
@@ -312,7 +312,7 @@ pt:
       id: Id
       project: Projeto
       site: Site
-      name: Nome      
+      name: Nome
       user: Usuário
       visible: Visível?
       rejected: Rejeitado?

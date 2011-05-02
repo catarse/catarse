@@ -3,7 +3,7 @@
   %h2= t('.subtitle')
 #credits
   %h1= t('.current_credits_html', :credits => current_user.display_credits)
-  #buy_credits
+  -#buy_credits
     = t('.buy_credits_html')
     = form_tag(buy_credits_path, :method => :get) do
       %fieldset
