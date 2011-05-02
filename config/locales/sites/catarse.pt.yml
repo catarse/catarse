@@ -1,6 +1,10 @@
 pt:
   sites:
     catarse:
+      title: A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil
+      back_header:
+        title: Oohh yeah!
+        subtitle: Você está a poucos passos de fazer a diferença e se tornar parte deste projeto.
       logo:
         title: Catarse
       pre_header:
@@ -12,6 +16,8 @@ pt:
       index_header:
         title: Faça acontecer os projetos em que você acredita!
         subtitle:  Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair do papel e faça ele virar realidade. Você é a peça que falta nesta história.
+      index_meta_tags:
+        description: Faça acontecer os projetos em que você acredita! Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história.
       footer:
         guidelines: Como funciona?
         faq: FAQ/Ajuda
@@ -21,6 +27,12 @@ pt:
         twitter: Siga no Twitter
         facebook: Curta no Facebook
         blog: Leia o blog
+        comum: Grupo Comum
+      notification_email_footer:
+        salutation: Um grande abraço,
+        signature: Diego Reeberg, Luís Otávio Ribeiro e os Softas
+      notification_email_header:
+        alt: Você deve habilitar imagens para visualizar corretamente essa mensagem.
       promo_video:
         title_html: |
           Rá!<div class="retrospective">descubra finalmente</div> qual é a <div class="surprise">grande surpresa</div> do <div class="catarse">Catarse</div>

@@ -1,10 +1,9 @@
 = content_for :meta_tags do
-  %meta{:name => "description", :content => "Faça acontecer os projetos em que você acredita! Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história."}
+  %meta{:name => "description", :content => t('.description')}
   -# Meta tags for facebook social graph
   %meta{:property => "og:title", :content => "#{@title}#{' · ' if @title}#{current_site.name}"}
   %meta{:property => "og:type", :content => 'cause'}
   %meta{:property => "og:url", :content => root_url}
   %meta{:property => "og:image", :content => 'http://catarse.me/images/home_small.png'}
   %meta{:property => "og:site_name", :content => current_site.name}
-  %meta{:property => "og:description", :content => "Faça acontecer os projetos em que você acredita! Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história."}
-
+  %meta{:property => "og:description", :content => t('.description')}

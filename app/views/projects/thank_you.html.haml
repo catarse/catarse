@@ -1,7 +1,7 @@
 = content_for :content_header do
   %h1= t('.header_title')
   %h2= t('.header_subtitle')
-  = image_tag "sites/#{current_site.path}/badge.png", :id => "badge"
+  = image_tag "sites/#{current_site.path}/badge.#{I18n.locale}.png", :id => "badge"
 #thank_you
   = image_tag @project.display_image, :id => 'project_image'
   %h1= t('.text_title_html', :link => link_to(@project.name, project_path(@project)))

@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
 
   def index
     index! do
-      @title = current_site.title
+      @title = t("sites.#{current_site.path}.title")
       @recommended = current_site.present_projects.visible.home_page.limit(6).order('projects_sites."order"').all
       @recent = current_site.present_projects.visible.not_home_page.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
       @successful = current_site.present_projects.visible.not_home_page.successful.order('expires_at DESC').limit(12).all
