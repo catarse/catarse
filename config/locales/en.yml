@@ -206,15 +206,15 @@ en:
       rewards_title: Rewards
       rewards_description: We believe that the best way to inspire people to back a project is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested.
       add_reward: Add reward
-      submit: Send project
+      submit: Submit project
     project:
       reached: reached
       backed: backed
     guidelines:
       title: How does %{site} work?
-      subtitle: Before sending your project, learn a little about how %{site} works.
+      subtitle: Before submitting your project, learn a little about how %{site} works.
       accept: I have read and understood how %{site} works.
-      submit: I want to send my project
+      submit: I want to submit my project
     faq:
       title: Frequent asked questions
     terms:
