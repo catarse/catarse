@@ -195,7 +195,7 @@ en:
         waiting_confirmation: Waiting confirmation from payments to know if this project will be funded.
         not_successful:
           expired: This project didn't reach the goal of %{goal} until %{date} and wasn't funded
-          not_expired: This project will only be funded if at least %{goal} are backed until %{date}
+          not_expired: This project will only be funded if at least %{goal} is backed until %{date}
       submit: Back this project
     backer:
       anonymous_backer: Anonymous backer
