@@ -7,9 +7,11 @@ You can see the software in action in http://catarse.me.
 
 == Internationalization
 
+This software was first created as Brazil's first crowdfunding platform. Thus, it was made in Portuguese and with a brazilian payment gateway. We are now internationalizing it. If you want to join us in this effort, please feel free to fork the repository and send us a pull request with your changes. If you have *any* doubt, please join our Google Group at http://groups.google.com/group/catarse-dev and we will help you.
+
 === Translations
 
-This software was first created as Brazil's first crowdfunding platform. Thus, it was made in Portuguese. We are now beginning to internationalize it. If you want to join us in this effort, please feel free to fork the repository and send as a pull request with your changes. If you have *any* doubt, please join our Google Group at http://groups.google.com/group/catarse-dev and we will help you.
+We're almost finished translating Catarse to English and will translate it to Spanish real soon. At the same time, there was a topic on our Google Group about translating it to Chinese as well. We hope to support a lot of languages in the future.
 
 Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the internationalization and beginning the english translation.
 
