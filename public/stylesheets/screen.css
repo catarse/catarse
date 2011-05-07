@@ -766,7 +766,7 @@ body#site #login {
 body#site #login h1 {
   font-family: "museo-500";
   font-size: 24px;
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 10px;
 }
 /* line 24, ../../app/stylesheets/_login.sass */
