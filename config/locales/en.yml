@@ -162,7 +162,7 @@ en:
     login:
       title: Enter with your favorite social network
       remember_me: Remember me and keep me connected.
-      description: If your not registered, your account will be created. Otherwise, we will log you in.
+      description_html: We will <strong>never</strong> know your password or any other secret data from the chosen social network. We will only have access to your basic information, like name, photo and email.
       tips_html: <strong>Remember with which social network you signed up</strong>. You will always access your account with it.
     user:
       my_profile: My profile
