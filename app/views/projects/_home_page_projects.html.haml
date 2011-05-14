@@ -1,4 +1,4 @@
-- unless @recommended.empty?
+- unless @home_page.empty?
   .project_list_header= t('.title')
-  = render :partial => 'project', :collection => @recommended
+  = render :partial => 'project', :collection => @home_page
   .clear

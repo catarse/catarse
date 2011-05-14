@@ -176,6 +176,7 @@ pt:
         login: Entrar
   projects:
     index:
+      recommended: Projetos recomendados
       recent: Projetos recentes
       successful: Projetos bem-sucedidos
     home_page_projects:

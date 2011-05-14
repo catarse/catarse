@@ -176,6 +176,7 @@ en:
         login: Login
   projects:
     index:
+      recommended: Recommended projects
       recent: Recent projects
       successful: Successful projects
     home_page_projects:
