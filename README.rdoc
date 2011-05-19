@@ -66,4 +66,4 @@ Contributors: Daniel Walmsley, Daniel Wildt, Diogo Biazus
 
 Copyright (c) 2011 Softa
 
-Licensed under the MIT (see MIT-LICENSE file)
+Licensed under the MIT license (see MIT-LICENSE file)
