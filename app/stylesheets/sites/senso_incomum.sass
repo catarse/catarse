@@ -1,12 +1,12 @@
 @import "compass/css3"
 @import "compass/utilities"
 body#site
-  background: #252525
+  background: #F90
   +text-shadow(transparent, 0px, 0px, 0px)
   a
-    color: #679C08
+    color: #f90
   a:hover
-    color: #87BC28
+    color: #fa0
   form
     input[type=submit]
       color: #fff
@@ -72,21 +72,27 @@ body#site
         background-color: #dff
 
   #pre_header
-    background-color: #6ab9e0
+    background-color: #f90
+    color: #515B64
+    +text-shadow(rgba(255,255,255,0.3), 1px, 1px, 1px)
+    a
+      color: #515B64
+      +text-shadow(rgba(255,255,255,0.3), 1px, 1px, 1px)
   #menu
-    text-transform: lowercase
     font-size: 16px
     a
-      color: #6ab9e0
+      color: #515B64
     a:hover
-      color: #7ecdf4
+      color: #616B74
   #user
+    margin-top: 5px
     a
       font-size: 16px
-      color: #aaa
+      color: #515B64
       img#display_image
         +box-shadow(transparent, 0, 0, 0)
-        border: 1px solid #aaa
+        border: 3px solid #515B64
+        +border-radius(3px)
     .hover
       color: #eee
       +text-shadow(rgba(0,0,0,0.9), 0px, 0px, 0px)
@@ -94,16 +100,23 @@ body#site
       background-color: rgba(12,12,12,0.9)
       img#display_image
         +box-shadow(transparent, 0, 0, 0)
+        border: 3px solid #fff
+        +border-radius(3px)
   #main
     width: 100%
   #header_wrapper
-    background: #222
+    background: #999
+    border-top: 5px solid #515B64
   #header
     width: 936px
     margin: 0 auto
     h1
+      background-color: #515B64
       font-family: "museo-500"
-      padding: 20px 0
+      padding: 0 0 4px 0
+      +border-bottom-left-radius(12px)
+      +border-bottom-right-radius(12px)
+      margin-bottom: 20px
       a
         color: #fff
         font-size: 36px
@@ -111,28 +124,27 @@ body#site
         &:hover
           +text-shadow(transparent, 0px, 0px, 0px)
   #content_header_wrapper
-    background: #e5e5e5
-    +box-shadow(rgba(0,0,0,0.2), 0px, -2px, 5px, 0px, inset)
+    background: #fff
+    //+box-shadow(rgba(0,0,0,0.2), 0px, -2px, 5px, 0px, inset)
   #content_wrapper
     background: #fff
     +border-radius(0px)
     #content_header
       width: 936px
-      padding: 24px 0 32px 0
+      padding: 24px 0 0 0
       margin: 0 auto
       +border-radius(0px)
       +box-shadow(transparent, 0, 0, 0)
       background-color: transparent
-      color: #3c3c3c
-      +text-shadow(transparent, 0px, 0px, 0px)
+      color: #f90
+      +text-shadow(rgba(0,0,0,0.3), 1px, 1px, 1px)
       h1
-        text-transform: lowercase
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
         font-size: 38px
         line-height: 38px
         text-align: left
         font-weight: bold
-        +text-shadow(transparent, 0px, 0px, 0px)
+        +text-shadow(rgba(0,0,0,0.3), 1px, 1px, 1px)
         letter-spacing: -2px
         padding-bottom: 16px
         a
@@ -143,7 +155,6 @@ body#site
             color: #7ecdf4
             +text-shadow(transparent, 0px, 0px, 0px)
       h2
-        text-transform: lowercase
         +text-shadow(transparent, 0px, 0px, 0px)
         text-align: left
         padding: 0
@@ -182,99 +193,109 @@ body#site
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
         color: #5D8838
   #footer
-    text-transform: lowercase
-    font-size: 16px
-    #footer_menu
-      width: 800px
-      padding-bottom: 40px
-      ul
-        +horizontal-list(56px)
-        li
-          a
-            font-weight: normal
-            color: #fff
-    #social_menu
-      width: 800px
+    background-color: #999
+    font-size: 14px
+    padding-bottom: 0
+    text-align: left
+    color: #fff
+    #footer_content_wrapper
+      width: 936px
+      margin: 0 auto
+      padding: 12px 0 32px 0
+      h1
+        font-size: 20px
+        color: #515B64
+        padding-bottom: 12px
+        font-weight: normal
+      a
+        color: #fff
+        text-decoration: none
+    #who_we_are
+      font-size: 18px
+      line-height: 26px
+      float: left
+      width: 290px
+      margin-right: 33px
+      font-weight: lighter
+    #learn_more
+      float: left
+      width: 290px
+      margin-right: 33px
+      ul li
+        line-height: 26px
+        border-bottom: 1px dotted #fff
+        &:last-child
+          border-bottom: none
+    #follow_us
+      float: left
+      width: 290px
+      ul li
+        line-height: 26px
+        img
+          margin-top: -4px
+          vertical-align: middle
+        border-bottom: 1px dotted #fff
+        &:last-child
+          border-bottom: none
+    #incomum_wrapper
+      color: #515B64
+      width: 480px
+      margin: 32px auto 12px auto
+      #incomum
+        margin-top: 14px
+        float: left
+      #incomum_text
+        font-size: 20px
       img
-        margin-right: 4px
-        height: 32px
-      ul
-        +horizontal-list(26px)
-        li
-          a
-            font-weight: normal
-            color: #aaa
+        float: right
+    #colophon_wrapper
+      background-color: #f90
+      padding: 4px 0
+      border-top: 5px solid #515B64
     #colophon
+      padding-top: 0
       width: 936px
       img
         vertical-align: middle
+      #grupo_comum
+        padding-top: 6px
+  #home_page_projects
+    background-color: #eee
+    +border-bottom-left-radius(16px)
+    +border-bottom-right-radius(16px)
+    padding-top: 0
+    margin-bottom: 20px
   .project_list_header
-    text-transform: lowercase
+    background-color: #eee
+    color: #515B64
+    margin: 0
+    padding: 24px
+    +border-top-left-radius(16px)
+    +border-top-right-radius(16px)
   .project_list_wrapper
-    height: 448px
+    background-color: #eee
+    +border-bottom-left-radius(16px)
+    +border-bottom-right-radius(16px)
+    height: 416px
+    margin-bottom: 20px
   .project_box
-    border: none
-    +border-radius(0px)
-    color: #999
-    margin-bottom: 48px
-    .status_image
-      top: 0
-      left: 0
+    border: 5px solid #fff
+    .project_progress
+      background-color: #515B64
+      color: #fff
     .project_header
       h1
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important
-        font-weight: bold
-        color: #4C525E !important
-        line-height: 14px !important
-      .project_image
-        +border-radius(0px)
-        height: 195px
-        width: 264px
-        margin: 0
-        margin-bottom: 6px
-        img
-          max-width: 264px
-          height: 195px
-          width: 264px
-      a:hover
-        +text-shadow(transparent, 0, 0, 0)
-    .project_category
-      text-align: left
-      text-transform: lowercase
-      font-size: 12px
-      top: 169px
-      width: 244px
-    .project_owner
-      padding-top: 4px
-    .project_wrap
-      min-height: 320px
-      width: 264px
-      padding: 0
+        color: #f90 !important
     .project_progress
-      text-transform: none
-      color: #999
-      background: transparent
-      padding: 10px 0
-      font-size: 11px
       .progress_bar
-        font-size: 4px
-        line-height: 10px
-        width: 264px
-      .progress_info
-        text-transform: uppercase
-        strong
-          color: #4C525E
-          text-transform: none
-        width: 264px
-        margin: 0 auto
-        ul
-          +horizontal-list(18px)
+        font-size: 8px
+        line-height: 16px
   .progress_bar
     background-color: #CED3CF
-    +border-radius(3px)
+    +border-radius(8px)
     .progress
       background-color: #8BCB53
-      +border-radius(3px)
+      +border-radius(8px)
   #embed
     .project_box
       background-color: #fff
@@ -295,44 +316,16 @@ body#site
             +horizontal-list(12px)
   .navigation
     .prev,.next
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important
-      font-weight: normal
-      top: 0
-      width: 20px
-      height: 388px
-      border: none
-      +border-radius(0px)
-      background-color: #6ab9e0
-      +linear-gradient(color_stops(#6ab9e0, #6ab9e0))
-      +box-shadow(transparent,0,0,0)
-      font-size: 20px
-      line-height: 20px
-      &:hover
-        +scale(1)
-        width: 24px
+      background-color: #f90
+      +linear-gradient(color_stops(#fb0,#f90,#f70))
       &:disabled
-        color: #a1a1a1
-        border: none
-        +text-shadow(transparent,0,0,0)
-        background-color: #c8c8c8
-        +linear-gradient(color_stops(#c8c8c8, #c8c8c8))
+        color: #888
+        border: 3px solid #ddd
+        +text-shadow(rgba(230,230,230,0.85), 1px, 1px, 0px)
+        background-color: #aaa
+        +linear-gradient(color_stops(#bbb,#888))
         &:hover
           +scale(1)
-          width: 20px
-    .prev
-      left: -6px !important
-      &:hover
-        left: -10px !important
-      &:disabled
-        &:hover
-          left: -6px !important
-    .next
-      right: -6px !important
-      &:hover
-        right: -10px !important
-      &:disabled
-        &:hover
-          right: -6px !important
   .on_the_spot_editing
     &:after
       content: " " url(/images/sites/multidao/pencil.png)  

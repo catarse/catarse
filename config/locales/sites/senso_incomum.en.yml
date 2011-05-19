@@ -9,15 +9,23 @@ en:
         title: Projects from the multitude
         subtitle: Ideas, creativities and affections. Explore and be part of it!
       footer:
+        who_we_are: Who we are
+        learn_more: Learn more
+        follow_us: Follow us
+        who_we_are_html: We are a crowdfunding network only for social projects. Because if you are not the change you want to see in the world, you should at least fund it.
+        about: About Senso Incomum
         guidelines: How does it work?
-        faq: FAQ/Help
+        faq: FAQ - Help
         terms: Terms of use
         privacy: Privacy policy
-        facebook: Facebook page
-        twitter: Twitter feed
-        blog: Read the blog
-        contact_title: Contact us
+        facebook: Like our Facebook page
+        twitter: Follow us on Twitter @senso_incomum_
+        blog: Read our blog
+        feed: Subscribe our feed
+        contact: Contact us
         comum: Comum Group
+        incomum: "[I n C o M u M ]"
+        incomum_text: Investimentos Coletivos Mudando o Mundo
       index_header:
         title_html: Welcome to Multidão!<br>Back new ideas and innovative artists
         subtitle_html: Fund projects in a collaborative manner and become part of something bigger. Join everyone who wants to see a project happening and make it come true. You're the missing part in this story.

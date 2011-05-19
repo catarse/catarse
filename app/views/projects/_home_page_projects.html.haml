@@ -1,4 +1,5 @@
 - unless @home_page.empty?
   .project_list_header= t('.title')
-  = render :partial => 'project', :collection => @home_page
-  .clear
+  #home_page_projects
+    = render :partial => 'project', :collection => @home_page
+    .clear
