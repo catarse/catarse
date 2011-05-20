@@ -34,12 +34,17 @@
           = image_tag("sites/#{current_site.path}/contact.png", :title => t('.contact'))
           = t('.contact')
   .clear
+  #facebook_wrapper
+    #fb-root
+    %script{ :src => "http://connect.facebook.net/en_US/all.js#appId=219271678101224&amp;xfbml=1" }
+    %fb:like{ :href => request.url, :send => "true", :width => "450", :show_faces => "true", :font => "arial" }
   #incomum_wrapper
     #incomum
       = t('.incomum')
       #incomum_text= t('.incomum_text')
     = image_tag("sites/#{current_site.path}/icon_incomum.png", :title => current_site.name)
     .clear
+  .clear
 #colophon_wrapper
   #colophon
     #powered_by
