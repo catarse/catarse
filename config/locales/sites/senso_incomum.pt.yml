@@ -6,14 +6,14 @@ pt:
         title: Ótimo!!!
         subtitle: Mais alguns passos e você vai fazer parte deste projeto...
       explore_header:
-        title: Projetos da multidão
+        title: Projetos do Senso Incomum
         subtitle: Idéias, criatividades e afetos. Explore e faça parte!
       footer:
         who_we_are: Quem somos
         who_we_are_html: Somos uma rede de financiamento coletivo [crowdfunding] exclusiva para projetos sociais. Pois se você não é a mudança que deseja ver no mundo, você deve ao menos financiá-la.
         learn_more: Saiba mais
         follow_us: Acompanhe
-        about: Sobre a Senso Incomum
+        about: Sobre o Senso Incomum
         guidelines: Como funciona?
         faq: FAQ - Ajuda
         terms: Termos de uso
@@ -30,12 +30,12 @@ pt:
         title_html: Senso Incomum<br>Investimentos coletivos mudando o mundo
         subtitle_html: Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair do papel e faça ele virar realidade. Você é a peça que falta nesta história.
       index_meta_tags:
-        description: A multidão é uma plataforma de financiamento colaborativo, ou crowdfunding. Ela permite que projetos criativos sejam realizados por meio de micro-patrocínios. Se você é um artista, produtor, criativo, empreendedor ou qualquer outro nome que se dê a quem quer levar um projeto cultural a frente, cadastre o seu projeto. Faça parte da multidão!
+        description: O Senso Incomum é uma plataforma de financiamento colaborativo, ou crowdfunding. Uma rede exclusiva para projetos sociais. Pois se você não é a mudança que deseja ver no mundo, você deve ao menos financiá-la.
       logo:
-        title: Multidão
+        title: Senso Incomum
       notification_email_footer:
         salutation: Um grande abraço,
-        signature: Equipe da Multidão
+        signature: Equipe Senso Incomum
       notification_email_header:
         alt: Você deve habilitar imagens para visualizar corretamente essa mensagem.
       pre_header:
