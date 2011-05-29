@@ -15,6 +15,11 @@ class ProjectsController < ApplicationController
     params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
   end
 
+  def banda
+    @title = "A Banda Mais Bonita da Cidade"
+    @projects = current_site.present_projects.visible.limit(12)#.where(:user_id => 7329).order('projects_sites."order"').all
+  end
+  
   def index
     index! do
       @title = t("sites.#{current_site.path}.title")

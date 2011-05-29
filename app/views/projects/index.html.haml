@@ -1,5 +1,6 @@
 = render :partial => "/sites/#{current_site.path}/index_header"
 = render :partial => "/sites/#{current_site.path}/index_meta_tags"
+= render :partial => "/sites/#{current_site.path}/promo_top"
 = render 'home_page_projects'
 = render :partial => 'slider', :locals => {:title => t('.recommended'), :collection => @recommended} unless @recommended.empty?
 = render :partial => 'slider', :locals => {:title => t('.recent'), :collection => @recent} unless @recent.empty?
@@ -8,3 +9,4 @@
 = render :partial => "/sites/#{current_site.path}/press"
 = javascript_include_tag 'slider'
 = javascript_include_tag 'press'
+

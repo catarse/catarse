@@ -1,6 +1,9 @@
 pt:
   sites:
     catarse:
+      promo_top:
+        text_html: <p>A Banda Mais Bonita da Cidade sempre foi coletiva. Por isso, o disco da banda será produzido com a colaboração de todos.</p><p>Apoiando financeiramente, você vai receber benefícios, acompanhar o processo de producão do disco e ajudar na escolha das músicas.</p>
+        submit: Clique aqui e veja como fazer parte deste disco
       title: A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil
       back_header:
         title: Oohh yeah!
