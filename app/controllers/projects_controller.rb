@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
 
   def banda
     @title = "A Banda Mais Bonita da Cidade"
-    @projects = current_site.present_projects.visible.limit(12)#.where(:user_id => 7329).order('projects_sites."order"').all
+    @projects = current_site.present_projects.visible.where(:user_id => 7329).order('projects_sites."order"').all
   end
   
   def index
