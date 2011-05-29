@@ -1,6 +1,9 @@
 en:
   sites:
     catarse:
+      promo_top:
+        text_html: <p>A Banda Mais Bonita da Cidade has always been a collective band. Thus, its album is going to be produced with everybody's collaboration.</p><p>With your support, you're going to receive rewards, follow the process of the album's production and help choosing the songs.</p>
+        submit: Click here and see how you can be part of this album
       title: The first crowdfunding platform from Brazil
       back_header:
         title: Oohh yeah!
