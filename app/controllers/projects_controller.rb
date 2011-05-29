@@ -18,10 +18,10 @@ class ProjectsController < ApplicationController
   def index
     index! do
       @title = t("sites.#{current_site.path}.title")
-      @home_page = current_site.present_projects.visible.home_page.limit(6).order('projects_sites."order"').all
-      @recommended = current_site.present_projects.visible.recommended.not_home_page.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
-      @recent = current_site.present_projects.visible.not_home_page.not_recommended.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
-      @successful = current_site.present_projects.visible.not_home_page.successful.order('expires_at DESC').limit(12).all
+      @home_page = current_site.present_projects.includes(:user, :category).visible.home_page.limit(6).order('projects_sites."order"').all
+      @recommended = current_site.present_projects.includes(:user, :category).visible.recommended.not_home_page.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
+      @recent = current_site.present_projects.includes(:user, :category).visible.not_home_page.not_recommended.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
+      @successful = current_site.present_projects.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(12).all
     end
   end
   def explore
