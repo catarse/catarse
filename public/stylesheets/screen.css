@@ -372,7 +372,7 @@ a img {
 
 /* line 37, ../../app/stylesheets/screen.sass */
 body#site {
-  background: url("/images/bg.png") repeat;
+  background: url("/images/bg.jpg") repeat;
   text-rendering: optimizeLegibility;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222222;
@@ -860,6 +860,7 @@ body#site #pre_header {
   background-color: #0084b9;
   text-align: center;
   padding: 8px 0;
+  margin-bottom: 8px;
   font-size: 16px;
   color: white;
   text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
@@ -868,20 +869,20 @@ body#site #pre_header {
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 3px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 3px 0;
 }
-/* line 9, ../../app/stylesheets/_pre_header.sass */
+/* line 10, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header a {
   color: white;
   text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
   font-weight: bold;
   text-decoration: none;
 }
-/* line 14, ../../app/stylesheets/_pre_header.sass */
+/* line 15, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice, body#site #pre_header .notification {
   width: 920px;
   margin: 0 auto;
   padding: 4px 0;
 }
-/* line 18, ../../app/stylesheets/_pre_header.sass */
+/* line 19, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice img.social, body#site #pre_header .notification img.social {
   float: right;
   vertical-align: middle;
@@ -896,14 +897,14 @@ body#site #pre_header .back_notice img.social, body#site #pre_header .notificati
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 24, ../../app/stylesheets/_pre_header.sass */
+/* line 25, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice img.social:hover, body#site #pre_header .notification img.social:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-/* line 26, ../../app/stylesheets/_pre_header.sass */
+/* line 27, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice a.close, body#site #pre_header .notification a.close {
   color: white;
   color: rgba(255, 255, 255, 0.7);
@@ -918,7 +919,7 @@ body#site #pre_header .back_notice a.close, body#site #pre_header .notification 
   margin-left: 8px;
   font-weight: bold;
 }
-/* line 39, ../../app/stylesheets/_pre_header.sass */
+/* line 40, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice a.close:hover, body#site #pre_header .back_notice a.close:focus, body#site #pre_header .notification a.close:hover, body#site #pre_header .notification a.close:focus {
   color: white;
 }
@@ -931,7 +932,7 @@ body#site #main {
 body#site #header h1 {
   font-family: "museo-700";
   font-size: 48px;
-  padding: 28px 0 20px 0;
+  padding: 8px 0 12px 0;
   float: left;
 }
 /* line 7, ../../app/stylesheets/_header.sass */
