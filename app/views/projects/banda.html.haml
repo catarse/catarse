@@ -1,0 +1,31 @@
+= content_for :content_header do
+  #banda
+    =link_to "http://www.facebook.com/abandamaisbonitadacidade", :target => :_blank do
+      = image_tag "sites/#{current_site.path}/banda.png"
+    .text
+      %h1= @title
+      %p
+        1.
+        %strong Escolha,
+        entre as músicas abaixo, qual você quer que entre no disco (ou quais: você pode apoiar quantas músicas quiser).
+      %p
+        2.
+        %strong Apoie
+        com a quantia que você quiser (e ganhe uma recompensa de acordo ao valor apoiado!)
+      %p
+        3.
+        %strong PRONTO!
+        Você colaborou com o primeiro disco d'#{link_to 'A Banda Mais Bonita da Cidade', 'http://www.facebook.com/abandamaisbonitadacidade', :target => :_blank}.
+      %p Ainda tem alguma dúvida? Dá uma olhada #{link_to 'aqui', '#', :id => 'banda_more_link'}.
+    .clear
+    #banda_more.hide
+      %p O primeiro disco d'A Banda Mais Bonita da Cidade será produzido via financiamento colaborativo. Isso significa que todos podem ajudar com uma quantia.
+      %p Além de contribuir e ganhar benefícios, você vai nos ajudar a escolher as músicas que entrarão no disco: nós vamos abrir 12 projetos, um pra cada música. A música que não atingir o custo mínimo de produção, cai fora do disco e os valores apoiados para aquela música são devolvidos.
+      %p Para organizar tudo isso, a gente usou o conhecimento e a ajuda do Catarse, uma plataforma segura e especializada em financiamento colaborativo.
+      %p Você escolhe a sua música preferida e o valor a ser apoiado. Cada valor dá direito a uma recompensa diferente.
+      %p Você pode apoiar quantas vezes quiser, inclusive para várias músicas diferentes.
+- unless @projects.empty?
+  #banda_projects
+    = render :partial => 'project', :collection => @projects
+    .clear
+= javascript_include_tag 'banda'

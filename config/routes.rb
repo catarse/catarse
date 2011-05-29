@@ -4,6 +4,9 @@ Catarse::Application.routes.draw do
   
   root :to => "projects#index"
 
+  match "/abandamaisbonitadacidade" => "projects#banda", :as => :banda
+
+
   match "/guidelines" => "projects#guidelines", :as => :guidelines
   match "/faq" => "projects#faq", :as => :faq
   match "/terms" => "projects#terms", :as => :terms
@@ -38,6 +41,7 @@ Catarse::Application.routes.draw do
       get 'thank_you'
       post 'moip'
       post 'update_attribute_on_the_spot'
+      get 'banda'
     end
     member do
       get 'back'
