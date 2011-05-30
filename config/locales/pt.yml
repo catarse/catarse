@@ -177,6 +177,7 @@ pt:
   projects:
     index:
       recommended: Projetos recomendados
+      expiring: Na reta final
       recent: Projetos recentes
       successful: Projetos bem-sucedidos
     home_page_projects:

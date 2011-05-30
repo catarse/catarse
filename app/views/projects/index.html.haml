@@ -2,7 +2,7 @@
 = render :partial => "/sites/#{current_site.path}/index_meta_tags"
 = render :partial => "/sites/#{current_site.path}/promo_top"
 = render 'home_page_projects'
-= render :partial => 'slider', :locals => {:title => t('.recommended'), :collection => @recommended} unless @recommended.empty?
+= render :partial => 'slider', :locals => {:title => t('.expiring'), :collection => @expiring} unless @expiring.empty?
 = render :partial => 'slider', :locals => {:title => t('.recent'), :collection => @recent} unless @recent.empty?
 = render :partial => 'slider', :locals => {:title => t('.successful'), :collection => @successful} unless @successful.empty?
 = render :partial => "/sites/#{current_site.path}/promo_video"
