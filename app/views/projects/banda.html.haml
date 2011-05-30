@@ -1,3 +1,13 @@
+= content_for :meta_tags do
+  %meta{:name => "description", :content => "A Banda Mais Bonita da Cidade sempre foi coletiva. Por isso, o disco da banda será produzido com a colaboração de todos.\n\nApoiando financeiramente, você vai receber benefícios, acompanhar o processo de producão do disco e ajudar na escolha das músicas."}
+  -# Meta tags for facebook social graph
+  %meta{:property => "og:title", :content => "A Banda Mais Bonita da Cidade no Catarse"}
+  %meta{:property => "og:type", :content => 'cause'}
+  %meta{:property => "og:url", :content => request.url}
+  %meta{:property => "og:image", :content => "http://catarse.me/sites/#{current_site.path}/banda.png"}
+  %meta{:property => "og:site_name", :content => current_site.name}
+  %meta{:property => "og:description", :content => "A Banda Mais Bonita da Cidade sempre foi coletiva. Por isso, o disco da banda será produzido com a colaboração de todos.\n\nApoiando financeiramente, você vai receber benefícios, acompanhar o processo de producão do disco e ajudar na escolha das músicas."}
+  %meta{:property => "fb:admins", :content => "567237711"}
 = content_for :content_header do
   #banda
     =link_to "http://www.facebook.com/abandamaisbonitadacidade", :target => :_blank do
@@ -17,6 +27,7 @@
         %strong PRONTO!
         Você colaborou com o primeiro disco d'#{link_to 'A Banda Mais Bonita da Cidade', 'http://www.facebook.com/abandamaisbonitadacidade', :target => :_blank}.
       %p Ainda tem alguma dúvida? Dá uma olhada #{link_to 'aqui', '#', :id => 'banda_more_link'}.
+    #facebook_share= render 'facebook'
     .clear
     #banda_more.hide
       %p O primeiro disco d'A Banda Mais Bonita da Cidade será produzido via financiamento colaborativo. Isso significa que todos podem ajudar com uma quantia.

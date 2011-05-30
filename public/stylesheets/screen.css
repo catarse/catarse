@@ -3871,6 +3871,12 @@ body#site #banda .text p {
   padding-bottom: 12px;
 }
 /* line 23, ../../app/stylesheets/_banda.sass */
+body#site #banda #facebook_share {
+  float: right;
+  margin-top: 8px;
+  margin-right: 72px;
+}
+/* line 27, ../../app/stylesheets/_banda.sass */
 body#site #banda #banda_more {
   margin-top: 16px;
   padding: 16px;
@@ -3884,7 +3890,7 @@ body#site #banda #banda_more {
   background-color: #003300 !important;
   background-color: rgba(0, 48, 0, 0.3) !important;
 }
-/* line 30, ../../app/stylesheets/_banda.sass */
+/* line 34, ../../app/stylesheets/_banda.sass */
 body#site #banda #banda_more p {
   padding-bottom: 12px;
 }
