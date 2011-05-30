@@ -177,6 +177,7 @@ en:
   projects:
     index:
       recommended: Recommended projects
+      expiring: Final countdown
       recent: Recent projects
       successful: Successful projects
     home_page_projects:

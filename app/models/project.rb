@@ -33,6 +33,7 @@ class Project < ActiveRecord::Base
   scope :not_recommended, where("projects_sites.recommended = false")
   scope :pending, where("projects_sites.visible = false AND projects_sites.rejected = false")
   scope :expiring, where("expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks')")
+  scope :not_expiring, where("NOT (expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("projects.created_at > (current_timestamp - interval '1 month')")
   scope :successful, where("goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
   scope :not_successful, where("NOT (goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
