@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
     index! do
       @title = t("sites.#{current_site.path}.title")
       @home_page = current_site.present_projects.includes(:user, :category).visible.home_page.limit(6).order('projects_sites."order"').all
-      @expiring = current_site.present_projects.includes(:user, :category).visible.expiring.not_home_page.not_successful.not_unsuccessful.order('created_at DESC').order('expires_at').limit(12).all
+      @expiring = current_site.present_projects.includes(:user, :category).visible.expiring.not_home_page.not_successful.not_unsuccessful.order('created_at DESC').order('expires_at, created_at DESC').limit(12).all
       @recent = current_site.present_projects.includes(:user, :category).visible.not_home_page.not_expiring.not_successful.not_unsuccessful.where("projects.user_id <> 7329").order('created_at DESC').limit(12).all
       @successful = current_site.present_projects.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(12).all
     end
