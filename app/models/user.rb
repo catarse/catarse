@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
-  before_save :store_primary_user
+  #before_save :store_primary_user
 
   def store_primary_user
     return if email.nil? or self.primary_user_id
