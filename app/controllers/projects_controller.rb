@@ -198,8 +198,8 @@ class ProjectsController < ApplicationController
   end
   def moip
     # TODO remove debug
-    #User.find(5).notifications.create :text => "MoIP #{params[:id_transacao]}", :email_subject => "MoIP #{params[:id_transacao]}", :email_text => "params: #{params.to_yaml}"
-    User.find(5).notifications.create :text => "MoIP #{params[:id_transacao]}", :email_subject => "MoIP", :email_text => "MoIP"
+    #User.find(5).notifications.create :text => "MoIP #{params[:id_transacao]}", :email_subject => "MoIP #{params[:id_transacao]}", :email_text => "params: #{params.to_yaml}", :site => current_site
+    User.find(5).notifications.create :text => "MoIP #{params[:id_transacao]}", :email_subject => "MoIP", :email_text => "MoIP", :site => current_site
     # TODO remove debug
     key = params[:id_transacao]
     status = params[:status_pagamento]
