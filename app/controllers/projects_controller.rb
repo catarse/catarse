@@ -197,13 +197,12 @@ class ProjectsController < ApplicationController
     session[:thank_you_id] = nil
   end
   def moip
-    # TODO remove debug
-    #User.find(5).notifications.create :text => "MoIP #{params[:id_transacao]}", :email_subject => "MoIP #{params[:id_transacao]}", :email_text => "params: #{params.to_yaml}", :site => current_site
-    User.find(5).notifications.create :text => "MoIP #{params[:id_transacao]}", :email_subject => "MoIP", :email_text => "MoIP", :site => current_site, :project_id => 127
-    # TODO remove debug
     key = params[:id_transacao]
     status = params[:status_pagamento]
     value = params[:valor]
+    # TODO remove debug
+    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value}", :site => current_site
+    # TODO remove debug
     backer = Backer.find_by_key key
     return render :nothing => true, :status => 200 if status != '1'
     return render :nothing => true, :status => 200 if backer.confirmed
