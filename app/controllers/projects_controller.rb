@@ -197,6 +197,9 @@ class ProjectsController < ApplicationController
     session[:thank_you_id] = nil
   end
   def moip
+    # TODO remove debug
+    User.find(5).notifications.create :text => "MoIP #{params[:id_transacao]}", :email_subject => "MoIP params[:id_transacao]", :email_text => params.to_yaml
+    # TODO remove debug
     key = params[:id_transacao]
     status = params[:status_pagamento]
     value = params[:valor]
