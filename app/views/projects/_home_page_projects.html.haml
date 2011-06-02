@@ -4,4 +4,9 @@
   #home_page_projects
     = render :partial => 'project', :collection => @home_page
     .clear
+  .explore_more
+    %hr
+    = link_to explore_quick_path("recommended") do
+      = t('.explore_recommended')
+      .explore_more_arrow >
 
