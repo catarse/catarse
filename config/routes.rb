@@ -14,6 +14,7 @@ Catarse::Application.routes.draw do
   match "/thank_you" => "projects#thank_you", :as => :thank_you
   match "/moip" => "projects#moip", :as => :moip
   match "/explore" => "projects#explore", :as => :explore
+  match "/explore/:quick" => "projects#explore", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
 
   post "/pre_auth" => "sessions#pre_auth", :as => :pre_auth

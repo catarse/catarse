@@ -44,4 +44,17 @@ en:
           Yey!<div class="retrospective">finally discover</div> what is the<div class="surprise">amazing surprise</div> from <div class="catarse">Catarse</div>
       press: 
         title: Check out what they are saying about Catarse on the press
+      projects:
+        home_page_projects:
+          title: Our cathartic selection!
+          subtitle: Meet the projects that caused us a catharsis :) every day a new selection.
+        expiring:
+          title: Final countdown
+          subtitle: Uh! Time's almost up for these ones...back'em while you can!
+        recent:
+          title: Fresh and new
+          subtitle: Projects that just arrived on Catarse. Smell as if they just came out of the oven...
+        successful:
+          title: Successful projects
+          subtitle: Meet our biggest pride :) tomorrow is your project that might be here!
 

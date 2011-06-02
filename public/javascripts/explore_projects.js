@@ -20,4 +20,8 @@ $('#explore_categories a').click(function(e){
   })
   $('#explore_all').show()
 })
+if($('#explore_projects .selected').length == 0){
+  $('#menu_recommended').addClass('selected')
+}
+$('#explore_projects .selected').click()
 
