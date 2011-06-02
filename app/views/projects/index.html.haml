@@ -2,9 +2,9 @@
 = render :partial => "/sites/#{current_site.path}/index_meta_tags"
 = render :partial => "/sites/#{current_site.path}/promo_top"
 = render 'home_page_projects'
-= render :partial => 'slider', :locals => {:title => t('.expiring'), :collection => @expiring} unless @expiring.empty?
-= render :partial => 'slider', :locals => {:title => t('.recent'), :collection => @recent} unless @recent.empty?
-= render :partial => 'slider', :locals => {:title => t('.successful'), :collection => @successful} unless @successful.empty?
+= render :partial => 'project_list', :locals => {:title => t("sites.#{current_site.path}.projects.expiring.title"), :subtitle => t("sites.#{current_site.path}.projects.expiring.subtitle"), :collection => @expiring} unless @expiring.empty?
+= render :partial => 'project_list', :locals => {:title => t("sites.#{current_site.path}.projects.recent.title"), :subtitle => t("sites.#{current_site.path}.projects.recent.subtitle"), :collection => @recent} unless @recent.empty?
+= render :partial => 'project_list', :locals => {:title => t("sites.#{current_site.path}.projects.successful.title"), :subtitle => t("sites.#{current_site.path}.projects.successful.subtitle"), :collection => @successful} unless @successful.empty?
 = render :partial => "/sites/#{current_site.path}/promo_video"
 = render :partial => "/sites/#{current_site.path}/press"
 = javascript_include_tag 'slider'

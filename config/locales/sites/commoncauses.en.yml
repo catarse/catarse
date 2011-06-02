@@ -37,4 +37,17 @@ en:
       project_warning:
         content_html: Want to make sure your project is selected? Don't forget to read %{link}.
         help_link: our guide
+      projects:
+        home_page_projects:
+          title: Our selection
+          subtitle: These are the projects we selected and recommend for you.
+        expiring:
+          title: Final countdown
+          subtitle: Time's almost up for these projects. Back them while you can!
+        recent:
+          title: Fresh and new
+          subtitle: Projects that just arrived. Smell as if they just came out of the oven...
+        successful:
+          title: Successful projects
+          subtitle: Meet our newest successes. Tomorrow your project might be here!
 

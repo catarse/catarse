@@ -44,4 +44,17 @@ pt:
           Rá!<div class="retrospective">descubra finalmente</div> qual é a <div class="surprise">grande surpresa</div> do <div class="catarse">Catarse</div>
       press: 
         title: Confira o que estão falando do Catarse na imprensa
+      projects:
+        home_page_projects:
+          title: Nossa seleção catártica!
+          subtitle: Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção.
+        expiring:
+          title: Na reta final
+          subtitle: Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!
+        recent:
+          title: Novos e fresquinhos
+          subtitle: Projetos recém-chegados no Catarse. Cheiro de que saiu do forno agorinha...
+        successful:
+          title: Projetos bem-sucedidos
+          subtitle: Conheça nossos maiores orgulhos :) amanhã seu projeto pode estar aqui!
 
