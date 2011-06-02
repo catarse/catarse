@@ -3334,23 +3334,24 @@ body#site #video_embed h1 a {
 /* line 17, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed h2 {
   font-size: 14px;
+  line-height: 16px;
   color: #666666;
   padding: 0;
   text-shadow: white 1px 1px 0px;
 }
-/* line 22, ../../app/stylesheets/_video_embed.sass */
+/* line 23, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed h2 a {
   text-decoration: none;
   text-shadow: white 1px 1px 0px;
 }
-/* line 26, ../../app/stylesheets/_video_embed.sass */
+/* line 27, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed #site_link h1 {
   font-family: "museo-700";
   font-size: 28px;
   line-height: 30px;
   padding: 0;
 }
-/* line 31, ../../app/stylesheets/_video_embed.sass */
+/* line 32, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed #site_link h1 a {
   color: #222222;
   text-decoration: none;
@@ -3363,11 +3364,11 @@ body#site #video_embed #site_link h1 a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 35, ../../app/stylesheets/_video_embed.sass */
+/* line 36, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed #site_link h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 37, ../../app/stylesheets/_video_embed.sass */
+/* line 38, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed #video_embed_footer {
   position: fixed;
   bottom: 4px;
@@ -3715,8 +3716,9 @@ body#site #promo_top img {
 body#site #promo_video {
   margin-bottom: 40px;
   margin-left: 24px;
+  margin-top: 24px;
 }
-/* line 4, ../../app/stylesheets/_promo_video.sass */
+/* line 5, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video iframe {
   border: 5px solid #bdbbb1;
   border: 5px solid rgba(173, 171, 151, 0.8);
@@ -3727,7 +3729,7 @@ body#site #promo_video iframe {
   -khtml-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 8, ../../app/stylesheets/_promo_video.sass */
+/* line 9, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #promo_title {
   float: right;
   padding-top: 16px;
@@ -3737,30 +3739,30 @@ body#site #promo_video #promo_title {
   line-height: 42px;
   color: #888888;
 }
-/* line 16, ../../app/stylesheets/_promo_video.sass */
+/* line 17, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #promo_title .retrospective, body#site #promo_video #promo_title .surprise {
   font-size: 40px;
 }
-/* line 18, ../../app/stylesheets/_promo_video.sass */
+/* line 19, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #promo_title .retrospective {
   color: #222222;
 }
-/* line 20, ../../app/stylesheets/_promo_video.sass */
+/* line 21, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #promo_title .surprise {
   color: #008800;
 }
-/* line 22, ../../app/stylesheets/_promo_video.sass */
+/* line 23, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #promo_title .catarse {
   font-family: "museo-700";
   color: #222222;
   font-size: 42px;
 }
-/* line 26, ../../app/stylesheets/_promo_video.sass */
+/* line 27, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #correntedobem {
   background: url(/images/sites/catarse/bg_correntedobem.gif) top left no-repeat;
   width: 100%;
 }
-/* line 29, ../../app/stylesheets/_promo_video.sass */
+/* line 30, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #correntedobem .text {
   color: #71a013;
   margin-left: 80px;
@@ -3777,7 +3779,7 @@ body#site #promo_video #correntedobem .text {
   float: left;
   background-color: white;
 }
-/* line 30, ../../app/stylesheets/_promo_video.sass */
+/* line 31, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #correntedobem .text h1 {
   font-family: "museo-500" !important;
   line-height: 30px !important;
@@ -3785,16 +3787,16 @@ body#site #promo_video #correntedobem .text h1 {
   padding: 0 !important;
   padding-bottom: 20px !important;
 }
-/* line 36, ../../app/stylesheets/_promo_video.sass */
+/* line 37, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #correntedobem .text h1 a {
   text-decoration: none;
 }
-/* line 47, ../../app/stylesheets/_promo_video.sass */
+/* line 48, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #correntedobem .image {
   margin-right: 80px;
   float: right;
 }
-/* line 50, ../../app/stylesheets/_promo_video.sass */
+/* line 51, ../../app/stylesheets/_promo_video.sass */
 body#site #promo_video #correntedobem .image a {
   display: block;
   border: 10px solid #e3ce70;

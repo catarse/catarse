@@ -1,3 +1,6 @@
 = content_for :content_header do
-  %h1= t('.title')
-  %h2= t('.subtitle')
+  #index_header
+    %h1= t('.title')
+    %h2= t('.subtitle_html')
+  #facebook_share= render "/sites/#{current_site.path}/index_facebook"
+  .clear
