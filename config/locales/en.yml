@@ -182,6 +182,11 @@ en:
       successful: Successful projects
     home_page_projects:
       title: Featured projects
+      explore_recommended: Explore more recommended projects
+    project_list:
+      explore_expiring: Explore more projects in the final countdown
+      explore_recent: Explore more recent projects
+      explore_successful: Explore more successful projects
     admin_fields:
       title: Admin fields
     back_project:

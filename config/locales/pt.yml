@@ -182,6 +182,11 @@ pt:
       successful: Projetos bem-sucedidos
     home_page_projects:
       title: Projetos em destaque
+      explore_recommended: Explore mais projetos recomendados
+    project_list:
+      explore_expiring: Explore mais projetos na reta final
+      explore_recent: Explore mais projetos recentes
+      explore_successful: Explore mais projetos bem-sucedidos
     admin_fields:
       title: Campos para o admin
     back_project:
