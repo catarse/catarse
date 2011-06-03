@@ -201,26 +201,26 @@ class ProjectsController < ApplicationController
     status = params[:status_pagamento]
     value = params[:valor]
     # TODO remove debug
-    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value}", :site => current_site
+    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value}", :site => current_site
     # TODO remove debug
     backer = Backer.find_by_key key
     # TODO remove debug
-    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id}", :site => current_site
+    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id}", :site => current_site
     # TODO remove debug
     return render :nothing => true, :status => 200 if status != '1'
     return render :nothing => true, :status => 200 if backer.confirmed
     return render :nothing => true, :status => 422 if backer.moip_value != value
     # TODO remove debug
-    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id} - before_confirm", :site => current_site
+    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id} - before_confirm", :site => current_site
     # TODO remove debug
     backer.confirm!
     # TODO remove debug
-    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id} - after_confirm", :site => current_site
+    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id} - after_confirm", :site => current_site
     # TODO remove debug
     return render :nothing => true, :status => 200
   rescue => e
     # TODO remove debug
-    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - error", :site => current_site
+    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - error", :site => current_site
     # TODO remove debug
     return render :nothing => true, :status => 422
   end
