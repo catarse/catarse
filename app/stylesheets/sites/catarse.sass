@@ -62,6 +62,7 @@ body#site
     h2
       padding-bottom: 4px !important
   #index_header
+    position: relative
     #index_header_text
       float: left
       width: 702px
@@ -69,10 +70,14 @@ body#site
         padding: 8px 24px !important
       h2
         padding: 8px 24px !important
-    #facebook_share
+    #index_share
       margin-top: 10px
       float: right
-      width: 186px
+      width: 224px
+      iframe.fb_ltr
+        width: 180px !important
+      .twitter-follow-button
+        margin-top: 16px
   .project_box
     +box-shadow(rgba(0,0,0,0.5), 0, 3px, 4px)
   .progress_bar

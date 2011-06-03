@@ -109,62 +109,74 @@ body#site #project_header h1 {
 body#site #project_header h2 {
   padding-bottom: 4px !important;
 }
-/* line 65, ../../../app/stylesheets/sites/catarse.sass */
+/* line 64, ../../../app/stylesheets/sites/catarse.sass */
+body#site #index_header {
+  position: relative;
+}
+/* line 66, ../../../app/stylesheets/sites/catarse.sass */
 body#site #index_header #index_header_text {
   float: left;
   width: 702px;
 }
-/* line 68, ../../../app/stylesheets/sites/catarse.sass */
+/* line 69, ../../../app/stylesheets/sites/catarse.sass */
 body#site #index_header #index_header_text h1 {
   padding: 8px 24px !important;
 }
-/* line 70, ../../../app/stylesheets/sites/catarse.sass */
+/* line 71, ../../../app/stylesheets/sites/catarse.sass */
 body#site #index_header #index_header_text h2 {
   padding: 8px 24px !important;
 }
-/* line 72, ../../../app/stylesheets/sites/catarse.sass */
-body#site #index_header #facebook_share {
+/* line 73, ../../../app/stylesheets/sites/catarse.sass */
+body#site #index_header #index_share {
   margin-top: 10px;
   float: right;
-  width: 186px;
+  width: 224px;
 }
-/* line 76, ../../../app/stylesheets/sites/catarse.sass */
+/* line 77, ../../../app/stylesheets/sites/catarse.sass */
+body#site #index_header #index_share iframe.fb_ltr {
+  width: 180px !important;
+}
+/* line 79, ../../../app/stylesheets/sites/catarse.sass */
+body#site #index_header #index_share .twitter-follow-button {
+  margin-top: 16px;
+}
+/* line 81, ../../../app/stylesheets/sites/catarse.sass */
 body#site .project_box {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 3px 4px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 3px 4px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 3px 4px 0;
   box-shadow: rgba(0, 0, 0, 0.5) 0 3px 4px 0;
 }
-/* line 79, ../../../app/stylesheets/sites/catarse.sass */
+/* line 84, ../../../app/stylesheets/sites/catarse.sass */
 body#site .progress_bar .progress {
   background-color: #68a852;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #498c36), color-stop(100%, #68a852));
   background-image: -moz-linear-gradient(top, #498c36 0%, #68a852 100%);
   background-image: linear-gradient(top, #498c36 0%, #68a852 100%);
 }
-/* line 87, ../../../app/stylesheets/sites/catarse.sass */
+/* line 92, ../../../app/stylesheets/sites/catarse.sass */
 body#site #project_description #project_menu ul li a:hover {
   background-color: #68a852;
 }
-/* line 90, ../../../app/stylesheets/sites/catarse.sass */
+/* line 95, ../../../app/stylesheets/sites/catarse.sass */
 body#site #project_description #project_menu ul li.selected a {
   background-color: #498c36;
 }
-/* line 96, ../../../app/stylesheets/sites/catarse.sass */
+/* line 101, ../../../app/stylesheets/sites/catarse.sass */
 body#site #explore_projects #explore_menu ul li a:hover {
   background-color: #68a852;
 }
-/* line 98, ../../../app/stylesheets/sites/catarse.sass */
+/* line 103, ../../../app/stylesheets/sites/catarse.sass */
 body#site #explore_projects #explore_menu ul li a.selected {
   background-color: #498c36;
 }
-/* line 103, ../../../app/stylesheets/sites/catarse.sass */
+/* line 108, ../../../app/stylesheets/sites/catarse.sass */
 body#site #project_back_info #back_project form input[type=submit] {
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #68a852), color-stop(100%, #498c36));
   background-image: -moz-linear-gradient(top, #68a852 0%, #498c36 100%);
   background-image: linear-gradient(top, #68a852 0%, #498c36 100%);
 }
-/* line 105, ../../../app/stylesheets/sites/catarse.sass */
+/* line 110, ../../../app/stylesheets/sites/catarse.sass */
 body#site #project_back_info #back_project form input[type=submit]:hover {
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #498c36), color-stop(100%, #68a852));
   background-image: -moz-linear-gradient(top, #498c36 0%, #68a852 100%);
