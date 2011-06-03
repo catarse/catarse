@@ -177,10 +177,16 @@ en:
   projects:
     index:
       recommended: Recommended projects
+      expiring: Final countdown
       recent: Recent projects
       successful: Successful projects
     home_page_projects:
       title: Featured projects
+      explore_recommended: Explore more recommended projects
+    project_list:
+      explore_expiring: Explore more projects in the final countdown
+      explore_recent: Explore more recent projects
+      explore_successful: Explore more successful projects
     admin_fields:
       title: Admin fields
     back_project:
@@ -255,7 +261,7 @@ en:
         take_a_look: Check out the project
         link: Link
         link_title: Share the link
-        embed: Embed
+        embed: Embed this project
         embed_title: Embed this project on your site
       menu:
         about: About

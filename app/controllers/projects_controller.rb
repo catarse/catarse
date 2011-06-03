@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   respond_to :json, :only => [:show, :backers, :comments, :updates]
   can_edit_on_the_spot
   skip_before_filter :verify_authenticity_token, :only => [:moip]
-  skip_before_filter :detect_locale, :only => [:backers, :comments, :updates]
+  skip_before_filter :detect_locale, :only => [:backers, :comments, :updates, :moip]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create]
   def date_format_convert
@@ -15,13 +15,18 @@ class ProjectsController < ApplicationController
     params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
   end
 
+  def banda
+    @title = "A Banda Mais Bonita da Cidade"
+    @projects = current_site.present_projects.visible.where(:user_id => 7329).order('projects_sites."order"').all
+  end
+  
   def index
     index! do
       @title = t("sites.#{current_site.path}.title")
-      @home_page = current_site.present_projects.visible.home_page.limit(6).order('projects_sites."order"').all
-      @recommended = current_site.present_projects.visible.recommended.not_home_page.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
-      @recent = current_site.present_projects.visible.not_home_page.not_recommended.not_successful.not_unsuccessful.order('created_at DESC').limit(12).all
-      @successful = current_site.present_projects.visible.not_home_page.successful.order('expires_at DESC').limit(12).all
+      @home_page = current_site.present_projects.includes(:user, :category).visible.home_page.limit(6).order('projects_sites."order"').all
+      @expiring = current_site.present_projects.includes(:user, :category).visible.expiring.not_home_page.not_successful.not_unsuccessful.order('expires_at, created_at DESC').limit(3).all
+      @recent = current_site.present_projects.includes(:user, :category).visible.not_home_page.not_expiring.not_successful.not_unsuccessful.where("projects.user_id <> 7329").order('created_at DESC').limit(3).all
+      @successful = current_site.present_projects.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
     end
   end
   def explore
@@ -195,13 +200,28 @@ class ProjectsController < ApplicationController
     key = params[:id_transacao]
     status = params[:status_pagamento]
     value = params[:valor]
+    # TODO remove debug
+    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value}", :site => current_site
+    # TODO remove debug
     backer = Backer.find_by_key key
+    # TODO remove debug
+    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id}", :site => current_site
+    # TODO remove debug
     return render :nothing => true, :status => 200 if status != '1'
     return render :nothing => true, :status => 200 if backer.confirmed
     return render :nothing => true, :status => 422 if backer.moip_value != value
+    # TODO remove debug
+    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id} - before_confirm", :site => current_site
+    # TODO remove debug
     backer.confirm!
+    # TODO remove debug
+    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id} - after_confirm", :site => current_site
+    # TODO remove debug
     return render :nothing => true, :status => 200
   rescue => e
+    # TODO remove debug
+    User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - error", :site => current_site
+    # TODO remove debug
     return render :nothing => true, :status => 422
   end
   def backers

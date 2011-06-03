@@ -177,10 +177,16 @@ pt:
   projects:
     index:
       recommended: Projetos recomendados
+      expiring: Na reta final
       recent: Projetos recentes
       successful: Projetos bem-sucedidos
     home_page_projects:
       title: Projetos em destaque
+      explore_recommended: Explore mais projetos recomendados
+    project_list:
+      explore_expiring: Explore mais projetos na reta final
+      explore_recent: Explore mais projetos recentes
+      explore_successful: Explore mais projetos bem-sucedidos
     admin_fields:
       title: Campos para o admin
     back_project:
@@ -255,7 +261,7 @@ pt:
         take_a_look: Confira o projeto
         link: Link
         link_title: Compartilhe o link
-        embed: Incorporar
+        embed: Incorpore este projeto
         embed_title: Incorpore este projeto no seu site
       menu:
         about: Sobre

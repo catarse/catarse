@@ -1,13 +1,33 @@
 =projects
   .project_list_header
     font-weight: bold
-    margin: -16px 0 18px 24px
+    margin: -16px 0 0 24px
+  .project_list_subheader
+    font-size: 14px
+    margin: 0 0 18px 24px
   .project_list_wrapper
     height: 424px
     position: relative
   .project_list
     width: 936px
     overflow: hidden
+  .explore_more
+    font-size: 16px
+    text-align: right
+    margin: -16px 24px 18px 24px
+    clear: both
+    hr
+      float: left
+      width: 580px
+      +opacity(0.4)
+      margin-top: 10px
+    a
+      text-decoration: none
+    .explore_more_arrow
+      float: right
+      font-size: 28px
+      font-weight: bold
+      margin-left: 8px
   .project_box
     font-size: 12px
     line-height: 14px
@@ -236,9 +256,15 @@
         text-align: center
         font-size: 14px
         line-height: 32px
+        #facebook_share
+          width: 542px
+          margin: 0 auto
+          padding-top: 16px
+          iframe
+            +box-shadow(rgba(0,0,0,0.5), 0px, 0px, 0px)
         ul
           +horizontal-list(6px)
-          width: 82%
+          width: 542px
           margin: 0 auto
         a
           text-decoration: none
@@ -253,7 +279,7 @@
         input
           border: 1px solid rgba(0,0,0,0.4)
           +border-radius(4px)
-          width: 116px
+          width: 140px
         h1
           color: #222
           font-size: 18px

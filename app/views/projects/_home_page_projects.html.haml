@@ -1,5 +1,12 @@
 - unless @home_page.empty?
-  .project_list_header= t('.title')
+  .project_list_header= t("sites.#{current_site.path}.projects.home_page_projects.title")
+  .project_list_subheader= t("sites.#{current_site.path}.projects.home_page_projects.subtitle")
   #home_page_projects
     = render :partial => 'project', :collection => @home_page
     .clear
+  .explore_more
+    %hr
+    = link_to explore_quick_path("recommended") do
+      = t('.explore_recommended')
+      .explore_more_arrow >
+
