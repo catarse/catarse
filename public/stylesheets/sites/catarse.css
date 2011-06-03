@@ -1,0 +1,94 @@
+/* line 4, ../../../app/stylesheets/sites/catarse.sass */
+body#site #main {
+  width: 100%;
+}
+/* line 6, ../../../app/stylesheets/sites/catarse.sass */
+body#site #header {
+  width: 936px;
+  margin: 0 auto;
+}
+/* line 9, ../../../app/stylesheets/sites/catarse.sass */
+body#site #header h1 {
+  margin-left: 8px;
+}
+/* line 11, ../../../app/stylesheets/sites/catarse.sass */
+body#site #content_header_wrapper {
+  background-color: #009600;
+  background-color: rgba(0, 150, 0, 0.7);
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px 0;
+}
+/* line 15, ../../../app/stylesheets/sites/catarse.sass */
+body#site #content_wrapper {
+  -moz-box-shadow: transparent 0 0 0 0;
+  -webkit-box-shadow: transparent 0 0 0 0;
+  -o-box-shadow: transparent 0 0 0 0;
+  box-shadow: transparent 0 0 0 0;
+  background-color: transparent;
+}
+/* line 18, ../../../app/stylesheets/sites/catarse.sass */
+body#site #content_wrapper #content_header {
+  width: 936px;
+  margin: 0 auto;
+  background-color: transparent;
+  text-align: left;
+  -moz-box-shadow: transparent 0 0 0 0;
+  -webkit-box-shadow: transparent 0 0 0 0;
+  -o-box-shadow: transparent 0 0 0 0;
+  box-shadow: transparent 0 0 0 0;
+  padding: 10px 0;
+}
+/* line 25, ../../../app/stylesheets/sites/catarse.sass */
+body#site #content_wrapper #content_header h1 {
+  padding: 8px;
+  font-size: 28px;
+}
+/* line 28, ../../../app/stylesheets/sites/catarse.sass */
+body#site #content_wrapper #content_header h2 {
+  padding: 8px;
+}
+/* line 30, ../../../app/stylesheets/sites/catarse.sass */
+body#site #content_wrapper #content {
+  width: 936px;
+  margin: 0 auto;
+  -moz-box-shadow: transparent 0 0 0 0;
+  -webkit-box-shadow: transparent 0 0 0 0;
+  -o-box-shadow: transparent 0 0 0 0;
+  box-shadow: transparent 0 0 0 0;
+}
+/* line 34, ../../../app/stylesheets/sites/catarse.sass */
+body#site #footer {
+  margin-top: 0;
+  padding-top: 0;
+}
+/* line 37, ../../../app/stylesheets/sites/catarse.sass */
+body#site #project_header h1 {
+  padding-left: 0 !important;
+}
+/* line 39, ../../../app/stylesheets/sites/catarse.sass */
+body#site #index_header {
+  float: left;
+  width: 692px;
+}
+/* line 42, ../../../app/stylesheets/sites/catarse.sass */
+body#site #index_header h1 {
+  padding: 8px 24px !important;
+}
+/* line 44, ../../../app/stylesheets/sites/catarse.sass */
+body#site #index_header h2 {
+  padding: 8px 24px !important;
+}
+/* line 46, ../../../app/stylesheets/sites/catarse.sass */
+body#site #facebook_share {
+  float: right;
+  width: 240px;
+}
+/* line 49, ../../../app/stylesheets/sites/catarse.sass */
+body#site .project_box {
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 3px 4px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 3px 4px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 3px 4px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 3px 4px 0;
+}

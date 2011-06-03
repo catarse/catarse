@@ -37,4 +37,17 @@ pt:
       project_warning:
         content_html: Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}.
         help_link: nosso guia
+      projects:
+        home_page_projects:
+          title: Nossa seleção
+          subtitle: Estes são os projetos que selecionamos e recomendamos para você.
+        expiring:
+          title: Na reta final
+          subtitle: O prazo está quase acabando para estes projetos. Apoie enquanto é tempo!
+        recent:
+          title: Projetos recentes
+          subtitle: Projetos recém-chegados. Cheiro de que saiu do forno...
+        successful:
+          title: Projetos bem-sucedidos
+          subtitle: Conheça nossos mais novos sucessos. Amanhã seu projeto pode estar aqui!
 
