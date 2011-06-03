@@ -1,6 +1,10 @@
 @import "compass/css3"
 @import "compass/utilities"
 body#site
+  a
+    color: rgb(73,140,54)
+    &:hover
+      color: rgb(104,168,82)
   #main
     width: 100%
   #header
@@ -9,9 +13,9 @@ body#site
     h1
       margin-left: 8px
   #content_header_wrapper
-    background-color: rgb(0,150,0)
-    background-color: rgba(0,150,0,0.7)
-    +box-shadow(rgba(0,0,0,0.5), 0, 0, 4px)
+    background-color: rgb(104,168,82)
+    +linear-gradient(color_stops(rgb(73,140,54), rgb(104,168,82)))
+    +box-shadow(rgba(0,0,0,0.5), 0, 0, 5px)
   #content_wrapper
     +box-shadow(transparent, 0, 0, 0)
     background-color: transparent
@@ -31,21 +35,71 @@ body#site
       width: 936px
       margin: 0 auto
       +box-shadow(transparent, 0, 0, 0)
+      h1
+        color: rgb(73,140,54)
+      h2
+        color: rgb(73,140,54)
+      #project_back_info
+        #rewards
+          h1
+            color: #fff
+          ul li h1
+            color: #222
   #footer
-    margin-top: 0
-    padding-top: 0
-  #project_header h1
-    padding-left: 0 !important
+    +text-shadow(transparent, 0, 0, 0)
+    margin-top: 40px
+    padding-top: 40px
+    background-color: #333
+    background-color: rgba(0,0,0,0.8)
+    color: #ccc
+    a
+      color: #ccc
+      &:hover
+        color: #eee
+  #project_header
+    h1
+      padding-left: 0 !important
+    h2
+      padding-bottom: 4px !important
   #index_header
     float: left
-    width: 692px
+    width: 702px
     h1
       padding: 8px 24px !important
     h2
       padding: 8px 24px !important
   #facebook_share
+    margin-top: 10px
     float: right
-    width: 240px
+    width: 186px
   .project_box
     +box-shadow(rgba(0,0,0,0.5), 0, 3px, 4px)
-
+  .progress_bar
+    .progress
+      background-color: rgb(104,168,82)
+      +linear-gradient(color_stops(rgb(73,140,54), rgb(104,168,82)))
+  #project_description
+    #project_menu
+      ul
+        li
+          a
+            &:hover
+              background-color: rgb(104,168,82)
+          &.selected
+            a
+              background-color: rgb(73,140,54)
+  #explore_projects
+    #explore_menu
+      ul
+        li a
+          &:hover
+            background-color: rgb(104,168,82)
+          &.selected
+            background-color: rgb(73,140,54)
+  #project_back_info
+    #back_project
+      form
+        input[type=submit]
+          +linear-gradient(color_stops(rgb(104,168,82), rgb(73,140,54)))
+        input[type=submit]:hover
+          +linear-gradient(color_stops(rgb(73,140,54), rgb(104,168,82)))
