@@ -1267,8 +1267,8 @@ body#site #profile_header .info h1, body#site #profile_header .info h2 {
 }
 /* line 16, ../../app/stylesheets/_profile.sass */
 body#site #profile_header .info h1 .on_the_spot_mouseover, body#site #profile_header .info h2 .on_the_spot_mouseover {
-  background-color: #009600;
-  background-color: rgba(0, 150, 0, 0.5);
+  background-color: #2b6e18;
+  background-color: rgba(43, 110, 24, 0.5);
 }
 /* line 21, ../../app/stylesheets/_profile.sass */
 body#site #profile_header .info h1 .on_the_spot_editing form input, body#site #profile_header .info h1 .on_the_spot_editing form textarea, body#site #profile_header .info h2 .on_the_spot_editing form input, body#site #profile_header .info h2 .on_the_spot_editing form textarea {
