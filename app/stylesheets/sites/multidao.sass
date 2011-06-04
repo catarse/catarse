@@ -408,15 +408,28 @@ body#site
           margin: 0 auto
           iframe
             +box-shadow(rgba(0,0,0,0.5), 0px, 0px, 0px)
+        #twitter_share
+          text-align: left
+          float: left
+          width: 124px
+          margin-top: 22px
+          height: 24px
+          overflow: hidden
+          iframe
+            margin-left: 16px
+            +border-radius(0px)
+            +box-shadow(rgba(0,0,0,0.5), 0px, 0px, 0px)
         ul
+          float: right
           +horizontal-list(12px)
-          width: 100%
+          width: 482px
           li
             padding-top: 16px
             padding-bottom: 16px
             border-right: 1px solid white
             &:first-child
               padding-left: 16px
+              border-left: 1px solid white
             &:last-child
               border: none
             &.social

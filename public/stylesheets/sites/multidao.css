@@ -368,7 +368,7 @@ body#site #footer #footer_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #footer_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -379,11 +379,11 @@ body#site #footer #footer_menu ul li {
   padding-left: 56px;
   padding-right: 56px;
 }
-/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #footer_menu ul li:first-child, body#site #footer #footer_menu ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #footer_menu ul li:last-child, body#site #footer #footer_menu ul li.last {
   padding-right: 0px;
 }
@@ -410,7 +410,7 @@ body#site #footer #social_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #social_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -421,11 +421,11 @@ body#site #footer #social_menu ul li {
   padding-left: 26px;
   padding-right: 26px;
 }
-/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #social_menu ul li:first-child, body#site #footer #social_menu ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #footer #social_menu ul li:last-child, body#site #footer #social_menu ul li.last {
   padding-right: 0px;
 }
@@ -549,7 +549,7 @@ body#site .project_box .project_progress .progress_info ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site .project_box .project_progress .progress_info ul li {
   list-style-image: none;
   list-style-type: none;
@@ -560,11 +560,11 @@ body#site .project_box .project_progress .progress_info ul li {
   padding-left: 18px;
   padding-right: 18px;
 }
-/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site .project_box .project_progress .progress_info ul li:first-child, body#site .project_box .project_progress .progress_info ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site .project_box .project_progress .progress_info ul li:last-child, body#site .project_box .project_progress .progress_info ul li.last {
   padding-right: 0px;
 }
@@ -623,7 +623,7 @@ body#site #embed .project_box .project_progress .progress_info ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #embed .project_box .project_progress .progress_info ul li {
   list-style-image: none;
   list-style-type: none;
@@ -634,11 +634,11 @@ body#site #embed .project_box .project_progress .progress_info ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #embed .project_box .project_progress .progress_info ul li:first-child, body#site #embed .project_box .project_progress .progress_info ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #embed .project_box .project_progress .progress_info ul li:last-child, body#site #embed .project_box .project_progress .progress_info ul li.last {
   padding-right: 0px;
 }
@@ -760,7 +760,7 @@ body#site #project_description #project_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #project_description #project_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -771,11 +771,11 @@ body#site #project_description #project_menu ul li {
   padding-left: 4px;
   padding-right: 4px;
 }
-/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #project_description #project_menu ul li:first-child, body#site #project_description #project_menu ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #project_description #project_menu ul li:last-child, body#site #project_description #project_menu ul li.last {
   padding-right: 0px;
 }
@@ -860,16 +860,40 @@ body#site #project_description #project_video #project_share #facebook_share ifr
   box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
 }
 /* line 411, ../../../app/stylesheets/sites/multidao.sass */
+body#site #project_description #project_video #project_share #twitter_share {
+  text-align: left;
+  float: left;
+  width: 124px;
+  margin-top: 22px;
+  height: 24px;
+  overflow: hidden;
+}
+/* line 418, ../../../app/stylesheets/sites/multidao.sass */
+body#site #project_description #project_video #project_share #twitter_share iframe {
+  margin-left: 16px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -o-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  border-radius: 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
+}
+/* line 422, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share ul {
+  float: right;
   margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
   overflow: hidden;
   *zoom: 1;
-  width: 100%;
+  width: 482px;
 }
-/* line 51, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 51, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #project_description #project_video #project_share ul li {
   list-style-image: none;
   list-style-type: none;
@@ -880,44 +904,45 @@ body#site #project_description #project_video #project_share ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 43, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 43, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #project_description #project_video #project_share ul li:first-child, body#site #project_description #project_video #project_share ul li.first {
   padding-left: 0px;
 }
-/* line 44, ../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 44, ../../../../../.rvm/gems/ruby-1.8.7-p302/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
 body#site #project_description #project_video #project_share ul li:last-child, body#site #project_description #project_video #project_share ul li.last {
   padding-right: 0px;
 }
-/* line 414, ../../../app/stylesheets/sites/multidao.sass */
+/* line 426, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share ul li {
   padding-top: 16px;
   padding-bottom: 16px;
   border-right: 1px solid white;
 }
-/* line 418, ../../../app/stylesheets/sites/multidao.sass */
+/* line 430, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share ul li:first-child {
   padding-left: 16px;
+  border-left: 1px solid white;
 }
-/* line 420, ../../../app/stylesheets/sites/multidao.sass */
+/* line 433, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share ul li:last-child {
   border: none;
 }
-/* line 423, ../../../app/stylesheets/sites/multidao.sass */
+/* line 436, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share ul li.social a {
   font-size: 14px;
   text-transform: lowercase;
   font-weight: bold;
   color: #1f4957;
 }
-/* line 428, ../../../app/stylesheets/sites/multidao.sass */
+/* line 441, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share ul li.social a:hover {
   color: #5f8997;
 }
-/* line 430, ../../../app/stylesheets/sites/multidao.sass */
+/* line 443, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share ul li.link {
   text-transform: uppercase;
 }
-/* line 432, ../../../app/stylesheets/sites/multidao.sass */
+/* line 445, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share a {
   text-transform: uppercase;
   color: #1f2935;
@@ -930,21 +955,21 @@ body#site #project_description #project_video #project_share a {
   -o-transition-duration: 1s;
   transition-duration: 1s;
 }
-/* line 436, ../../../app/stylesheets/sites/multidao.sass */
+/* line 449, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share a:hover {
   color: #5f6975;
   text-shadow: transparent 0 0 0;
 }
-/* line 439, ../../../app/stylesheets/sites/multidao.sass */
+/* line 452, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share img, body#site #project_description #project_video #project_share a img {
   width: 32px;
   margin-right: 4px;
 }
-/* line 442, ../../../app/stylesheets/sites/multidao.sass */
+/* line 455, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share input {
   border: 1px solid #cccccc;
 }
-/* line 444, ../../../app/stylesheets/sites/multidao.sass */
+/* line 457, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_video #project_share h1 {
   font-weight: normal;
   font-size: 16px;
@@ -952,18 +977,18 @@ body#site #project_description #project_video #project_share h1 {
   padding-left: 16px !important;
   border-bottom: 1px solid white;
 }
-/* line 450, ../../../app/stylesheets/sites/multidao.sass */
+/* line 463, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_description #project_about {
   font-size: 16px;
   line-height: 18px;
 }
-/* line 453, ../../../app/stylesheets/sites/multidao.sass */
+/* line 466, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info {
   margin-top: -20px;
   float: right;
   width: 308px;
 }
-/* line 457, ../../../app/stylesheets/sites/multidao.sass */
+/* line 470, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project {
   background-color: #e4e4e4;
   border: none;
@@ -978,13 +1003,13 @@ body#site #project_back_info #back_project {
   -o-box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 6px 0;
 }
-/* line 462, ../../../app/stylesheets/sites/multidao.sass */
+/* line 475, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project .info {
   font-size: 14px;
   text-transform: uppercase;
   padding: 10px 16px;
 }
-/* line 466, ../../../app/stylesheets/sites/multidao.sass */
+/* line 479, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project .number {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: bold;
@@ -992,30 +1017,30 @@ body#site #project_back_info #back_project .number {
   line-height: 34px;
   margin-top: 6px;
 }
-/* line 472, ../../../app/stylesheets/sites/multidao.sass */
+/* line 485, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project .project_progress {
   display: none;
 }
-/* line 474, ../../../app/stylesheets/sites/multidao.sass */
+/* line 487, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project .project_warning {
   margin: 0 8px;
   font-size: 11px;
   line-height: 14px;
   text-shadow: transparent 0 0 0;
 }
-/* line 479, ../../../app/stylesheets/sites/multidao.sass */
+/* line 492, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project .successful, body#site #project_back_info #back_project .not_successful, body#site #project_back_info #back_project .waiting_confirmation {
   background: #888888;
 }
-/* line 481, ../../../app/stylesheets/sites/multidao.sass */
+/* line 494, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project .successful .text, body#site #project_back_info #back_project .not_successful .text, body#site #project_back_info #back_project .waiting_confirmation .text {
   background-color: inherit;
 }
-/* line 483, ../../../app/stylesheets/sites/multidao.sass */
+/* line 496, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project form {
   text-align: center;
 }
-/* line 485, ../../../app/stylesheets/sites/multidao.sass */
+/* line 498, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project form input[type=submit] {
   text-shadow: transparent 0 0 0;
   background-color: #8aca52;
@@ -1027,7 +1052,7 @@ body#site #project_back_info #back_project form input[type=submit] {
   font-size: 20px;
   padding: 17px 24px;
 }
-/* line 493, ../../../app/stylesheets/sites/multidao.sass */
+/* line 506, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project form input[type=submit]:hover {
   background-color: #8aca52;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #8fcf57), color-stop(50%, #8fcf57), color-stop(51%, #79b249), color-stop(100%, #79b249));
@@ -1035,12 +1060,12 @@ body#site #project_back_info #back_project form input[type=submit]:hover {
   background-image: linear-gradient(top, #8fcf57 0%, #8fcf57 50%, #79b249 51%, #79b249 100%);
   text-shadow: transparent 0 0 0;
 }
-/* line 497, ../../../app/stylesheets/sites/multidao.sass */
+/* line 510, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project form input[type=submit]:active {
   padding: 18px 23px 16px 25px;
   text-shadow: transparent 0 0 0;
 }
-/* line 500, ../../../app/stylesheets/sites/multidao.sass */
+/* line 513, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #back_project form input[type=submit]:disabled {
   color: #888888;
   text-shadow: transparent 0 0 0;
@@ -1053,7 +1078,7 @@ body#site #project_back_info #back_project form input[type=submit]:disabled {
   font-size: 20px;
   padding: 17px 24px;
 }
-/* line 509, ../../../app/stylesheets/sites/multidao.sass */
+/* line 522, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards {
   -moz-box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) -2px 2px 6px 0;
@@ -1067,7 +1092,7 @@ body#site #project_back_info #rewards {
   border-radius: 8px;
   margin-top: 13px;
 }
-/* line 513, ../../../app/stylesheets/sites/multidao.sass */
+/* line 526, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards h1 {
   color: white;
   font-size: 18px;
@@ -1090,21 +1115,21 @@ body#site #project_back_info #rewards h1 {
   -khtml-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
 }
-/* line 524, ../../../app/stylesheets/sites/multidao.sass */
+/* line 537, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards h1 #rewards_left_border {
   top: 38px;
   left: 40px;
 }
-/* line 527, ../../../app/stylesheets/sites/multidao.sass */
+/* line 540, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards h1 #rewards_right_border {
   display: none;
 }
-/* line 529, ../../../app/stylesheets/sites/multidao.sass */
+/* line 542, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards ul {
   background-color: #e4e4e4;
   border: none;
 }
-/* line 532, ../../../app/stylesheets/sites/multidao.sass */
+/* line 545, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards ul h1 {
   text-transform: none;
   font-weight: bold;
@@ -1112,29 +1137,29 @@ body#site #project_back_info #rewards ul h1 {
   text-shadow: transparent 0 0 0;
   padding: 10px 0 !important;
 }
-/* line 538, ../../../app/stylesheets/sites/multidao.sass */
+/* line 551, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards ul li {
   border-bottom: 1px solid #cccccc;
   font-size: 14px;
   line-height: 18px;
 }
-/* line 542, ../../../app/stylesheets/sites/multidao.sass */
+/* line 555, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards ul li.clickable:hover {
   background-color: #c8dcb7;
 }
-/* line 544, ../../../app/stylesheets/sites/multidao.sass */
+/* line 557, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards .reward_backers {
   text-align: left;
   font-size: 10px;
   line-height: 25px;
 }
-/* line 548, ../../../app/stylesheets/sites/multidao.sass */
+/* line 561, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_back_info #rewards .reward_backers img {
   width: auto;
   float: left;
   margin: 0 4px 0 0;
 }
-/* line 552, ../../../app/stylesheets/sites/multidao.sass */
+/* line 565, ../../../app/stylesheets/sites/multidao.sass */
 body#site #how_it_works {
   background-color: #d3e9f4;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1144,72 +1169,72 @@ body#site #how_it_works {
   box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px 0;
   text-shadow: transparent 0 0 0;
 }
-/* line 557, ../../../app/stylesheets/sites/multidao.sass */
+/* line 570, ../../../app/stylesheets/sites/multidao.sass */
 body#site #how_it_works strong {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-/* line 559, ../../../app/stylesheets/sites/multidao.sass */
+/* line 572, ../../../app/stylesheets/sites/multidao.sass */
 body#site #how_it_works #show_tips {
   margin-top: 16px;
 }
-/* line 561, ../../../app/stylesheets/sites/multidao.sass */
+/* line 574, ../../../app/stylesheets/sites/multidao.sass */
 body#site #how_it_works #show_tips a {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #679c08;
   font-weight: normal;
 }
-/* line 565, ../../../app/stylesheets/sites/multidao.sass */
+/* line 578, ../../../app/stylesheets/sites/multidao.sass */
 body#site #how_it_works #show_tips a:hover {
   color: #87bc28;
 }
-/* line 568, ../../../app/stylesheets/sites/multidao.sass */
+/* line 581, ../../../app/stylesheets/sites/multidao.sass */
 body#site #guidelines_form label {
   color: #5d8838;
 }
-/* line 571, ../../../app/stylesheets/sites/multidao.sass */
+/* line 584, ../../../app/stylesheets/sites/multidao.sass */
 body#site #video_embed iframe {
   -moz-box-shadow: transparent 0 0 0 0;
   -webkit-box-shadow: transparent 0 0 0 0;
   -o-box-shadow: transparent 0 0 0 0;
   box-shadow: transparent 0 0 0 0;
 }
-/* line 573, ../../../app/stylesheets/sites/multidao.sass */
+/* line 586, ../../../app/stylesheets/sites/multidao.sass */
 body#site #video_embed h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 22px;
   padding: 4px 0 8px 0;
 }
-/* line 577, ../../../app/stylesheets/sites/multidao.sass */
+/* line 590, ../../../app/stylesheets/sites/multidao.sass */
 body#site #video_embed h1 a {
   color: #6ab9e0;
   text-shadow: transparent 0 0 0;
 }
-/* line 580, ../../../app/stylesheets/sites/multidao.sass */
+/* line 593, ../../../app/stylesheets/sites/multidao.sass */
 body#site #video_embed h1 a:hover {
   color: #7ecdf4;
 }
-/* line 582, ../../../app/stylesheets/sites/multidao.sass */
+/* line 595, ../../../app/stylesheets/sites/multidao.sass */
 body#site #video_embed h2 {
   text-shadow: transparent 0 0 0;
 }
-/* line 584, ../../../app/stylesheets/sites/multidao.sass */
+/* line 597, ../../../app/stylesheets/sites/multidao.sass */
 body#site #video_embed h2 a {
   color: #6ab9e0;
   text-shadow: transparent 0 0 0;
 }
-/* line 587, ../../../app/stylesheets/sites/multidao.sass */
+/* line 600, ../../../app/stylesheets/sites/multidao.sass */
 body#site #video_embed h2 a:hover {
   color: #7ecdf4;
 }
-/* line 592, ../../../app/stylesheets/sites/multidao.sass */
+/* line 605, ../../../app/stylesheets/sites/multidao.sass */
 body#site #video_embed #site_link h1 a img {
   height: 32px;
 }
-/* line 594, ../../../app/stylesheets/sites/multidao.sass */
+/* line 607, ../../../app/stylesheets/sites/multidao.sass */
 body#site #video_embed #site_link h1 a:hover {
   text-shadow: transparent 0 0 0;
 }
-/* line 596, ../../../app/stylesheets/sites/multidao.sass */
+/* line 609, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_warning {
   background-color: #d3e9f4;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1218,54 +1243,54 @@ body#site #project_warning {
   -o-box-shadow: rgba(0, 0, 0, 0.25) -1px 1px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.25) -1px 1px 6px 0;
 }
-/* line 601, ../../../app/stylesheets/sites/multidao.sass */
+/* line 614, ../../../app/stylesheets/sites/multidao.sass */
 body#site #profile_header .image {
   padding: 8px 20px 20px 20px;
 }
-/* line 603, ../../../app/stylesheets/sites/multidao.sass */
+/* line 616, ../../../app/stylesheets/sites/multidao.sass */
 body#site #profile_header .image img {
   -moz-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
 }
-/* line 606, ../../../app/stylesheets/sites/multidao.sass */
+/* line 619, ../../../app/stylesheets/sites/multidao.sass */
 body#site #profile_header .info h1, body#site #profile_header .info h2 {
   text-transform: none !important;
 }
-/* line 608, ../../../app/stylesheets/sites/multidao.sass */
+/* line 621, ../../../app/stylesheets/sites/multidao.sass */
 body#site #profile_header .info h1 .on_the_spot_mouseover, body#site #profile_header .info h2 .on_the_spot_mouseover {
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 612, ../../../app/stylesheets/sites/multidao.sass */
+/* line 625, ../../../app/stylesheets/sites/multidao.sass */
 body#site #profile_header .info h1 .on_the_spot_editing form input, body#site #profile_header .info h1 .on_the_spot_editing form textarea, body#site #profile_header .info h2 .on_the_spot_editing form input, body#site #profile_header .info h2 .on_the_spot_editing form textarea {
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 617, ../../../app/stylesheets/sites/multidao.sass */
+/* line 630, ../../../app/stylesheets/sites/multidao.sass */
 body#site #profile_header .info h1 .on_the_spot_editing form input {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: bold;
 }
-/* line 623, ../../../app/stylesheets/sites/multidao.sass */
+/* line 636, ../../../app/stylesheets/sites/multidao.sass */
 body#site #profile_header .info h2 .on_the_spot_editing form textarea.ok {
   background: rgba(0, 150, 0, 0.2) url("/images/sites/multidao/tick.png") no-repeat 96% center;
 }
-/* line 625, ../../../app/stylesheets/sites/multidao.sass */
+/* line 638, ../../../app/stylesheets/sites/multidao.sass */
 body#site #profile_header .info h2 .on_the_spot_editing form textarea.error {
   background: rgba(0, 150, 0, 0.2) url("/images/site/multidao/delete.png") no-repeat 96% center;
 }
-/* line 627, ../../../app/stylesheets/sites/multidao.sass */
+/* line 640, ../../../app/stylesheets/sites/multidao.sass */
 body#site #user_feed {
   color: #444444;
   font-size: 18px;
   line-height: 24px;
 }
-/* line 631, ../../../app/stylesheets/sites/multidao.sass */
+/* line 644, ../../../app/stylesheets/sites/multidao.sass */
 body#site #user_feed h1 {
   text-transform: lowercase;
   font-size: 22px !important;
 }
-/* line 634, ../../../app/stylesheets/sites/multidao.sass */
+/* line 647, ../../../app/stylesheets/sites/multidao.sass */
 body#site #user_feed img.project {
   width: 265px;
   -moz-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
@@ -1273,12 +1298,12 @@ body#site #user_feed img.project {
   -o-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
 }
-/* line 637, ../../../app/stylesheets/sites/multidao.sass */
+/* line 650, ../../../app/stylesheets/sites/multidao.sass */
 body#site #user_feed a {
   font-size: 18px;
   line-height: 24px;
 }
-/* line 640, ../../../app/stylesheets/sites/multidao.sass */
+/* line 653, ../../../app/stylesheets/sites/multidao.sass */
 body#site #user_feed #gravatar_hint {
   background-color: #d3e9f4;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1293,23 +1318,23 @@ body#site #user_feed #gravatar_hint {
   -khtml-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 645, ../../../app/stylesheets/sites/multidao.sass */
+/* line 658, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_review {
   text-align: center;
   font-size: 28px;
   line-height: 32px;
   margin: 0 10px;
 }
-/* line 650, ../../../app/stylesheets/sites/multidao.sass */
+/* line 663, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_review #review_text {
   font-size: 20px;
   margin: 20px 0;
 }
-/* line 653, ../../../app/stylesheets/sites/multidao.sass */
+/* line 666, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_review #review_text .reward {
   font-style: italic;
 }
-/* line 655, ../../../app/stylesheets/sites/multidao.sass */
+/* line 668, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_review #credits_notice {
   background-color: #d3e9f4;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1319,45 +1344,45 @@ body#site #project_review #credits_notice {
   -o-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px 0;
   box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px 0;
 }
-/* line 660, ../../../app/stylesheets/sites/multidao.sass */
+/* line 673, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_review img#project_image {
   -moz-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
 }
-/* line 662, ../../../app/stylesheets/sites/multidao.sass */
+/* line 675, ../../../app/stylesheets/sites/multidao.sass */
 body#site #project_review h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   padding-top: 0 !important;
   font-size: 26px !important;
 }
-/* line 667, ../../../app/stylesheets/sites/multidao.sass */
+/* line 680, ../../../app/stylesheets/sites/multidao.sass */
 body#site #thank_you img#project_image {
   -moz-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
 }
-/* line 669, ../../../app/stylesheets/sites/multidao.sass */
+/* line 682, ../../../app/stylesheets/sites/multidao.sass */
 body#site #thank_you h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   padding-top: 0 !important;
   font-size: 26px !important;
 }
-/* line 675, ../../../app/stylesheets/sites/multidao.sass */
+/* line 688, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form .important {
   background-color: #d3e9f4;
 }
-/* line 677, ../../../app/stylesheets/sites/multidao.sass */
+/* line 690, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form input.ok, body#site #back_options #backer_form textarea.ok {
   background: url("/images/sites/multidao/tick_big.png") no-repeat 96% center;
 }
-/* line 679, ../../../app/stylesheets/sites/multidao.sass */
+/* line 692, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form input.error, body#site #back_options #backer_form textarea.error {
   background: url("/images/sites/multidao/delete_big.png") no-repeat 96% center;
 }
-/* line 681, ../../../app/stylesheets/sites/multidao.sass */
+/* line 694, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form #backer_credits_input {
   background-color: #dddbd1;
   border: 3px solid #dddbd1;
@@ -1372,14 +1397,14 @@ body#site #back_options #backer_form #backer_credits_input {
   -o-box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
 }
-/* line 686, ../../../app/stylesheets/sites/multidao.sass */
+/* line 699, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form label {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 24px;
   color: #444444;
 }
-/* line 691, ../../../app/stylesheets/sites/multidao.sass */
+/* line 704, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form li.radio ol {
   background-color: transparent;
   -moz-border-radius: 0px;
@@ -1393,7 +1418,7 @@ body#site #back_options #backer_form li.radio ol {
   -o-box-shadow: transparent 0 0 0 0;
   box-shadow: transparent 0 0 0 0;
 }
-/* line 695, ../../../app/stylesheets/sites/multidao.sass */
+/* line 708, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form li.radio ol li {
   background-color: #e7f2d4;
   border: 1px solid #bfc4c0;
@@ -1409,7 +1434,7 @@ body#site #back_options #backer_form li.radio ol li {
   box-shadow: rgba(0, 0, 0, 0.25) -2px 2px 6px 0;
   margin-bottom: 12px;
 }
-/* line 701, ../../../app/stylesheets/sites/multidao.sass */
+/* line 714, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form li.radio ol li:first-child {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -1418,7 +1443,7 @@ body#site #back_options #backer_form li.radio ol li:first-child {
   -khtml-border-radius: 6px;
   border-radius: 6px;
 }
-/* line 703, ../../../app/stylesheets/sites/multidao.sass */
+/* line 716, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form li.radio ol li:last-child {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -1429,12 +1454,12 @@ body#site #back_options #backer_form li.radio ol li:last-child {
   border: 1px solid #bfc4c0;
   margin-bottom: 0;
 }
-/* line 707, ../../../app/stylesheets/sites/multidao.sass */
+/* line 720, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_options #backer_form li.radio ol li.selected, body#site #back_options #backer_form li.radio ol li:hover {
   background-color: #d5f0a3;
   border: 1px solid #7eae26;
 }
-/* line 711, ../../../app/stylesheets/sites/multidao.sass */
+/* line 724, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_info img {
   -moz-box-shadow: transparent 0 0 0 0;
   -webkit-box-shadow: transparent 0 0 0 0;
@@ -1443,11 +1468,11 @@ body#site #back_info img {
   border: 3px solid #dddddd;
   width: 140px;
 }
-/* line 716, ../../../app/stylesheets/sites/multidao.sass */
+/* line 729, ../../../app/stylesheets/sites/multidao.sass */
 body#site #back_info #project_info .project_expires_at {
   text-transform: lowercase;
 }
-/* line 719, ../../../app/stylesheets/sites/multidao.sass */
+/* line 732, ../../../app/stylesheets/sites/multidao.sass */
 body#site #credits #current_credits {
   color: #679c08;
 }

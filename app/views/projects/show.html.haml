@@ -5,17 +5,9 @@
   #project_video
     %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "610", :height => "346"}
     #project_share
-      -#%h1= t('.share.title')
       #facebook_share= render 'facebook'
+      #twitter_share= render 'twitter'
       %ul
-        -#%li.social
-          = link_to "http://www.facebook.com/share.php?u=#{project_url(@project)}&t=#{t('.share.take_a_look')} \"#{@project.name}\" #{current_site.in_the_name}&v=4", :target => :_blank do
-            = image_tag "sites/#{current_site.path}/facebook_share.png", :title => 'Facebook'
-            Facebook
-        %li.social
-          = link_to "http://twitter.com/?status=#{t('.share.take_a_look')} \"#{@project.name}\" #{current_site.in_the_twitter} #{@project.short_url}", :target => :_blank do
-            = image_tag "sites/#{current_site.path}/twitter_share.png", :title => 'Twitter'
-            Twitter
         %li.link
           = image_tag "sites/#{current_site.path}/link_share.png", :title => t('.share.link_title')
           = t('.share.link')
@@ -24,6 +16,7 @@
           = link_to '#', :id => 'embed_link' do
             = image_tag "sites/#{current_site.path}/embed_share.png", :title => t('.share.embed_title')
             = t('.share.embed')
+      .clear
     = render 'embed'
   #project_menu
     %ul
