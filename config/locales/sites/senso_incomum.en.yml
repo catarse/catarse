@@ -1,12 +1,12 @@
 en:
   sites:
     senso_incomum:
-      title: Collaborative Cultural Production
+      title: Colective investments changing the world
       back_header:
         title: Great!!!
         subtitle: Just a few more steps and you're gonna be part of this project...
       explore_header:
-        title: Projects from the multitude
+        title: Projects from Senso Incomum
         subtitle: Ideas, creativities and affections. Explore and be part of it!
       footer:
         who_we_are: Who we are
@@ -27,15 +27,15 @@ en:
         incomum: "[I n C o M u M ]"
         incomum_text: Investimentos Coletivos Mudando o Mundo
       index_header:
-        title_html: Welcome to Multidão!<br>Back new ideas and innovative artists
+        title_html: Welcome to Senso Incomum!<br>Back new ideas and innovative artists
         subtitle_html: Fund projects in a collaborative manner and become part of something bigger. Join everyone who wants to see a project happening and make it come true. You're the missing part in this story.
       index_meta_tags:
-        description: Multidão is a platform for collaborative financing, or crowdfunding. It allows creative projects to happen by means of micro-sponsorships. If you are an artist, producer, creative, entrepreneur or any other name they give to those who want to take a cultural project forward, submit your project. Be part of the multitude!
+        description: O Senso Incomum is a crowdfunding network only for social projects. Because if you are not the change you want to see in the world, you should at least fund it.
       logo:
-        title: Multidão
+        title: Senso Incomum
       notification_email_footer:
         salutation: With love,
-        signature: Multidão team
+        signature: Senso Incomum team
       notification_email_header:
         alt: You must enable images to correctly view this message.
       pre_header:
