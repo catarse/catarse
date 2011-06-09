@@ -7,26 +7,26 @@ describe User do
   end
   it "User.primary should return all primary users" do
     u = Factory(:user)
-    secondary = Factory(:user, :email => u.email)
+    secondary = Factory(:user, :primary_user_id => u.id)
     User.primary.all.should == [u]
   end
   it "primary should return the primary user for this instance" do
     u = Factory(:user)
-    secondary = Factory(:user, :email => u.email)
+    secondary = Factory(:user, :primary_user_id => u.id)
     secondary.primary.should == u
   end
   it "secondary_users should return the secondary users for this instance" do
     u = Factory(:user)
-    secondary = Factory(:user, :email => u.email)
-    another_user = Factory(:user, :email => u.email)
+    secondary = Factory(:user, :primary_user_id => u.id)
+    another_user = Factory(:user, :primary_user_id => u.id)
     Set.new(u.secondary_users).should == Set.new([secondary, another_user])
   end
-  it "if we already have a user with the same email it should be associated with the first user" do
+  it "even if we already have a user with the same email it should not be automatically associated with the first user" do
     u = Factory(:user)
     secondary = Factory(:user, :email => u.email)
-    secondary.primary_user_id.should == u.id
+    secondary.primary_user_id.should == nil
     another_user = Factory(:user, :email => u.email)
-    another_user.primary_user_id.should == u.id
+    another_user.primary_user_id.should == nil
   end
   it "should have a provider" do
     u = Factory.build(:user, :provider => nil)
@@ -68,25 +68,7 @@ describe User do
     u.bio = "a".center(141)
     u.should_not be_valid
   end
-  it "should create and not associate user passed as parameter if email association suvcceeds" do
-    primary = Factory(:user)
-    another_user = Factory(:user)
-    auth = {
-      'provider' => "twitter",
-      'uid' => "foobar",
-      'user_info' => {
-        'name' => "Foo bar",
-        'email' => primary.email,
-        'nickname' => "foobar",
-        'description' => "Foo bar's bio".ljust(200),
-        'image' => "user.png"
-      }
-    }
-    u = User.create_with_omniauth(Factory(:site), auth, another_user.id)
-    u.should == primary
-    User.count.should == 3
-  end
-  it "should create and associate user passed as parameter if email association fails" do
+  it "should create and associate user passed as parameter if passed" do
     primary = Factory(:user)
     auth = {
       'provider' => "twitter",
@@ -103,27 +85,9 @@ describe User do
     u.should == primary
     User.count.should == 2
   end
-
-  it "should create a new user receiving a omniauth hash and always return the primary user" do
-    primary = Factory(:user)
-    auth = {
-      'provider' => "twitter",
-      'uid' => "foobar",
-      'user_info' => {
-        'name' => "Foo bar",
-        'email' => primary.email,
-        'nickname' => "foobar",
-        'description' => "Foo bar's bio".ljust(200),
-        'image' => "user.png"
-      }
-    }
-    u = User.create_with_omniauth(Factory(:site), auth)
-    u.should == primary
-    User.count.should == 2
-  end
   it "should have a find_with_omniauth who finds always the primary" do
     primary = Factory(:user)
-    secondary = Factory(:user, :email => primary.email)
+    secondary = Factory(:user, :primary_user_id => primary.id)
     User.find_with_omni_auth(primary.provider, primary.uid).should == primary
     User.find_with_omni_auth(secondary.provider, secondary.uid).should == primary
     # If user does not exist just returns nil
