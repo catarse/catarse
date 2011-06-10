@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :backs, :class_name => "Backer"
   has_many :projects
   has_many :notifications
+  has_many :comments
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   belongs_to :site
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
@@ -89,6 +90,17 @@ class User < ActiveRecord::Base
   end
   def display_credits
     number_to_currency credits, :unit => 'R$', :precision => 0, :delimiter => '.'
+  end
+  def merge_into!(new_user)
+    self.primary = new_user
+    new_user.credits += self.credits
+    self.credits = 0
+    self.backs.update_all :user_id => new_user.id
+    self.projects.update_all :user_id => new_user.id
+    self.comments.update_all :user_id => new_user.id
+    self.notifications.update_all :user_id => new_user.id
+    self.save
+    new_user.save
   end
   def as_json(options={})
     {
