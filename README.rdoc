@@ -27,14 +27,6 @@ Even though you have the right to use this source code with freedom, according t
 
 Our goal is to spread crowdfunding across the world, in a collaborative and creative environment. Thus, if you want to use Catarse as a starting point to your website, please be sure to respect our visual identity and create a new SASS for your site :) we want to see your site go live, but with your personality, not ours.
 
-== Powered by Catarse
-
-We at http://comum.cc are willing to host your crowdfunding website at Catarse's infrastructure. We call this service a "powered by Catarse" website. It's basically a different SASS (CSS for grown-ups) and some HAML/Slim (HTML for grown-ups) for each site, and different projects on each site. But they run on the same Rails processes.
-
-If you want to host your website with us, please contact us at contato@comum.cc.
-
-You can learn how to create your own website powered by Catarse here: https://github.com/danielweinmann/catarse/wiki/How-to-create-a-site-powered-by-catarse.
-
 == Getting started
 
 We currently have a great blog post in Portuguese, written by Relsi Hur Maron, with a step-by-step guide on how to run and start developing Catarse on your environment. Check it on http://www.tuxtilt.com/catarse-plataforma-de-crowdfunding-open-source and have fun!
