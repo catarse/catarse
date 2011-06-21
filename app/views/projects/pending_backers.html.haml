@@ -69,6 +69,7 @@
             %td{ :title => backer.user.display_name }
               = link_to user_path(backer.user) do
                 = image_tag backer.user.display_image
+              .user_id= on_the_spot_edit backer, :user_id
             %td= backer.display_value
             %td{ :title => ("#{backer.reward.display_minimum} - #{backer.reward.description}" if backer.reward) }
               - if backer.reward

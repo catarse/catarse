@@ -278,7 +278,7 @@ class ProjectsController < ApplicationController
     projects_site_fields = []
     projects_site_admin_fields = ["visible", "rejected", "recommended", "home_page", "order"]
     backer_fields = ["display_notice"]
-    backer_admin_fields = ["confirmed", "requested_refund", "refunded", "anonymous"]
+    backer_admin_fields = ["confirmed", "requested_refund", "refunded", "anonymous", "user_id"]
     reward_fields = []
     reward_admin_fields = ["description"]
     def render_error; render :text => t('require_permission'), :status => 422; end
