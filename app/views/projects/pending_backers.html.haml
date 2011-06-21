@@ -54,6 +54,7 @@
           %th= t('.reward')
           %th= t('.key')
           %th= t('.confirmed')
+          %th= t('.anonymous')
           %th= t('.credits')
           %th= t('.requested_refund')
           %th= t('.refunded')
@@ -76,6 +77,7 @@
                 \-
             %td.key= backer.key
             %td= check_box_tag "confirmed__#{backer.id}", '1', backer.confirmed
+            %td= check_box_tag "anonymous__#{backer.id}", '1', backer.anonymous
             %td= (backer.credits ? t('yes') : t('no'))
             %td= (backer.requested_refund ? t('yes') : t('no'))
             %td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded

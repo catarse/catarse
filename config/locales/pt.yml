@@ -346,6 +346,7 @@ pt:
       value: Valor
       reward: Recompensa
       confirmed: Confirmado?
+      anonymous: Anônimo?
       credits: Usou créditos?
       requested_refund: Solicitou estorno?
       refunded: Estorno realizado?
