@@ -346,6 +346,7 @@ en:
       value: Value
       reward: Reward
       confirmed: Confirmed?
+      anonymous: Anonymous?
       credits: Used credits?
       requested_refund: Requested refund?
       refunded: Refunded?
