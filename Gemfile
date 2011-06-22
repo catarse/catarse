@@ -20,6 +20,7 @@ gem 'mailee', '>= 0.5.1', :git => 'https://github.com/softa/mailee-api.git'
 gem 'will_paginate'
 gem 'weekdays'
 gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git'
+gem 'paypal-express', :require => 'paypal'
 gem 'brcep'
 gem "meta_search"
 gem "RedCloth"

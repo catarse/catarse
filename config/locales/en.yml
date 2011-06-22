@@ -306,6 +306,9 @@ en:
       no_credits: You don't have enough credits to back this project.
       success: Your back was successfully made. Thanks a lot!
       moip_error: Ooops. There was an error while sending your payment to MoIP. Please try again.
+      paypal_error: Ooops. There was an error while sending your payment to PayPal. Please try again.
+      paypal_description: Back project
+      paypal_cancel: Your PayPal payment was canceled. Please try again.
     thank_you:
       title: Thank you
       header_title: Thank you! :D
