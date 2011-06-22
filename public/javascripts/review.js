@@ -116,3 +116,11 @@ $('#accept').click(everything_ok)
 $('select').change(everything_ok)
 verify_zip_code()
 
+$('#international_link').click(function(e){
+  e.preventDefault()
+  $('#international_link').parent().hide()
+  $('#international_expanded').slideDown()
+})
+$('#accept_international').click(function(){
+  $('#international_submit').attr('disabled', !$('#accept_international').is(':checked'))
+})
