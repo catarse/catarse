@@ -301,7 +301,12 @@ pt:
       review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa: <span class='reward'>%{reward}</span>"
       review_without_reward_html: Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio.
       credits_notice_html: Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos.
-      submit: Efetuar pagamento
+      submit: Efetuar pagamento pelo MoIP
+      international:
+        title: Quer fazer pagamento internacional?
+        description: Você pode usar o PayPal para realizar pagamentos internacionais
+        important_html: "<p>O uso do PayPal é destinado preferencialmente para apoios internacionais. Isto porque ao realizar o pagamento pelo PayPal, você tem apenas 60 dias para receber seu dinheiro de volta sem taxas.</p><p>Caso você possa realizar o pagamento normal pelo MoIP, nós recomendamos.</p><p>Mas se você não pode, não se preocupe: você sempre poderá receber seu dinheiro de volta. Apenas, caso o estorno seja realizado mais de 60 dias depois do seu pagamento, você terá que pagar a taxa do PayPal, que é de 5,4% + R$ 0,60 por transação.</p>"
+        submit: Efetuar pagamento pelo PayPal
     pay:
       no_credits: Você não possui créditos suficientes para realizar este apoio.
       success: Seu apoio foi realizado com sucesso. Muito obrigado!
