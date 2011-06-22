@@ -66,4 +66,11 @@ Catarse::Application.routes.draw do
   end
   resources :comments, :only => [:index, :show, :create, :destroy]
   resources :sites, :only => [:show]
+  resources :paypal, :only => [] do
+    member do
+      get 'pay'
+      get 'success'
+      get 'cancel'
+    end
+  end
 end
