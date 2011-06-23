@@ -12,11 +12,11 @@ class PaypalController < ApplicationController
         :no_shipping => true
       )
       redirect_to paypal_response.redirect_uri
-    rescue Paypal::Exception::APIError => e
-      raise "Message: #{e.message}<br/>Response: #{e.response.inspect}<br/>Details: #{e.response.details.inspect}"
-    #rescue
-    #  flash[:failure] = t('projects.pay.paypal_error')
-    #  return redirect_to back_project_path(backer.project)
+    #rescue Paypal::Exception::APIError => e
+    #  raise "Message: #{e.message}<br/>Response: #{e.response.inspect}<br/>Details: #{e.response.details.inspect}"
+    rescue
+      flash[:failure] = t('projects.pay.paypal_error')
+      return redirect_to back_project_path(backer.project)
     end
   end
 
