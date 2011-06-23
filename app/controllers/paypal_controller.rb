@@ -12,9 +12,11 @@ class PaypalController < ApplicationController
         :no_shipping => true
       )
       redirect_to paypal_response.redirect_uri
-    rescue
-      flash[:failure] = t('projects.pay.paypal_error')
-      return redirect_to back_project_path(backer.project)
+    rescue Paypal::Exception::APIError => e
+      raise "Message: #{e.message}<br/>Response: #{e.response.inspect}<br/>Details: #{e.response.details.inspect}"
+    #rescue
+    #  flash[:failure] = t('projects.pay.paypal_error')
+    #  return redirect_to back_project_path(backer.project)
     end
   end
 
@@ -53,7 +55,7 @@ class PaypalController < ApplicationController
   def initialize_paypal
 
     # TODO remove the sandbox! when ready
-    Paypal.sandbox!
+    #Paypal.sandbox!
     # TODO remove the sandbox! when ready
     
     @paypal = Paypal::Express::Request.new(
@@ -71,8 +73,8 @@ class PaypalController < ApplicationController
       :items => [{
           :name => backer.project.name,
           :description => t('projects.pay.paypal_description'),
-          :amount => backer.value,
-          :category => :Digital
+          :amount => backer.value#,
+          #:category => :Digital
         }]
     )
   end
