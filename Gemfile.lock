@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/danielweinmann/mailee-api.git
-  revision: e6b39f39151a1e91f727456e29e646be6b11f69e
+  revision: cd530ef488cb82f5ef01f2646c2b6222fab61c57
   specs:
-    mailee (0.5.3)
+    mailee (0.5.4)
 
 GIT
   remote: https://github.com/danielweinmann/moip-ruby.git
@@ -266,7 +266,7 @@ DEPENDENCIES
   http_accept_language
   inherited_resources (>= 1.1.2)
   launchy
-  mailee (= 0.5.3)!
+  mailee (= 0.5.4)!
   maxim-sexy_pg_constraints
   meta_search
   mocha
