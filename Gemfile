@@ -16,7 +16,7 @@ gem 'vimeo'
 gem 'wirble'
 gem "on_the_spot"
 gem 'unicorn'
-gem 'mailee', '>= 0.5.1', :git => 'https://github.com/softa/mailee-api.git'
+gem 'mailee', '>= 0.5.1', :git => 'https://github.com/danielweinmann/mailee-api.git'
 gem 'will_paginate'
 gem 'weekdays'
 gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git'

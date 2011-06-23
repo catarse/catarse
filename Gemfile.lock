@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/danielweinmann/mailee-api.git
+  revision: 8f91b75594c3a95853b37e94dac4d34334571003
+  specs:
+    mailee (0.5.1)
+
+GIT
   remote: https://github.com/danielweinmann/moip-ruby.git
   revision: db1b879358c623b597dc1c221b53336f9f06db0e
   specs:
@@ -6,12 +12,6 @@ GIT
       activesupport (>= 2.3.2)
       httparty (~> 0.6.1)
       nokogiri (~> 1.4.3)
-
-GIT
-  remote: https://github.com/softa/mailee-api.git
-  revision: 66588ec3d1299661f7e3dd9adce51d82f5f4de59
-  specs:
-    mailee (0.5.1)
 
 GEM
   remote: http://rubygems.org/
