@@ -48,7 +48,7 @@ class Project < ActiveRecord::Base
     self.image_url = vimeo["thumbnail_large"] unless self.image_url
   end
   def verify_if_video_exists_on_vimeo
-    unless vimeo and vimeo["id"] == vimeo_id
+    unless vimeo and vimeo["id"].to_s == vimeo_id
       errors.add(:video_url, I18n.t('project.verify_if_video_exists_on_vimeo'))
     end
   end
