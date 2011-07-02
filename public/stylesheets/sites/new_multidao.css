@@ -61,8 +61,8 @@ a img {
 /* line 5, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 20px;
   color: white;
   background: #333333 url(/images/multidao/bg_multidao.png);
 }
@@ -77,11 +77,11 @@ body#multidao .wrapper {
 }
 /* line 16, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #shares {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 /* line 18, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #box {
-  margin-top: 32px;
+  margin-top: 24px;
   -moz-border-radius: 12px;
   -webkit-border-radius: 12px;
   -o-border-radius: 12px;
@@ -89,11 +89,11 @@ body#multidao #box {
   -khtml-border-radius: 12px;
   border-radius: 12px;
   background-color: #7796c9;
-  padding: 32px;
+  padding: 28px;
 }
 /* line 23, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #box p {
-  padding-top: 20px;
+  padding-top: 18px;
 }
 /* line 25, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #box a {
@@ -115,13 +115,13 @@ body#multidao #catarse .logo {
 }
 /* line 35, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #catarse .click {
-  margin-top: 32px;
+  margin-top: 24px;
   margin-right: 60px;
   float: right;
 }
 /* line 39, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #comum {
-  padding-top: 42px;
+  padding-top: 36px;
   text-align: center;
   clear: both;
   font-size: 14px;
