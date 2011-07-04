@@ -120,6 +120,11 @@ body#multidao #catarse .click {
   float: right;
 }
 /* line 39, ../../../app/stylesheets/sites/new_multidao.sass */
+body#multidao #embeds {
+  padding-top: 20px;
+  clear: both;
+}
+/* line 42, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #comum {
   padding-top: 36px;
   text-align: center;
@@ -129,19 +134,19 @@ body#multidao #comum {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=45);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=45);
 }
-/* line 45, ../../../app/stylesheets/sites/new_multidao.sass */
+/* line 48, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #comum img {
   vertical-align: middle;
   margin-top: -4px;
   margin-right: 16px;
 }
-/* line 49, ../../../app/stylesheets/sites/new_multidao.sass */
+/* line 52, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #comum a {
   color: white;
   font-weight: bold;
   text-decoration: none;
 }
-/* line 53, ../../../app/stylesheets/sites/new_multidao.sass */
+/* line 56, ../../../app/stylesheets/sites/new_multidao.sass */
 body#multidao #comum a:hover {
   text-decoration: underline;
 }
