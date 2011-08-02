@@ -52,7 +52,7 @@ Currently, a lot (lot!) of functionality are not tested. If you don't know how t
 
 Author: Daniel Weinmann
 
-Contributors: Daniel Walmsley, Daniel Wildt, Diogo Biazus 
+Contributors: Daniel Walmsley, Daniel Wildt, Diogo Biazus, Paulo Geyer
 
 == License
 
