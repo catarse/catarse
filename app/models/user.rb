@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   #before_save :store_primary_user
 
+  def admin?
+    admin
+  end
+
   def store_primary_user
     return if email.nil? or self.primary_user_id
     primary_user = User.primary.where(:email => email).first
