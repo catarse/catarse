@@ -1,5 +1,9 @@
 Catarse::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   filter :locale
   
   root :to => "projects#index"
