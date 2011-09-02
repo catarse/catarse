@@ -15,6 +15,7 @@ ActiveAdmin.register Project do
     f.inputs do
       f.input :user
       f.input :category
+      f.input :curated_page
       f.input :name, :as => :string
       f.input :goal
       f.input :expires_at
