@@ -10,7 +10,6 @@ Catarse::Application.routes.draw do
 
   match "/abandamaisbonitadacidade" => "projects#banda", :as => :banda
 
-
   match "/guidelines" => "projects#guidelines", :as => :guidelines
   match "/faq" => "projects#faq", :as => :faq
   match "/terms" => "projects#terms", :as => :terms
@@ -77,4 +76,6 @@ Catarse::Application.routes.draw do
       get 'cancel'
     end
   end
+  resources :curated_page
+  match "/:permalink" => "curated_page#show"
 end
