@@ -1,4 +1,5 @@
 ActiveAdmin.register Project do
+  controller.authorize_resource
 
   scope_to :current_site
 

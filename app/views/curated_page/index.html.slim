@@ -1,0 +1,4 @@
+h1 Páginas curadas
+ul
+  - @curated_pages.each do |cp|
+    li= link_to cp.name, cp
