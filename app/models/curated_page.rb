@@ -1,5 +1,6 @@
 class CuratedPage < ActiveRecord::Base
   has_many :projects
+  belongs_to :site
 
   validates_uniqueness_of :permalink
   validates_presence_of :permalink, :name, :image_url

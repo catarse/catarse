@@ -1,8 +1,0 @@
-= content_for :content_header do
-  #index_header
-    #index_header_text
-      iframe(style="float:left;margin-right:10px" src="#{@curated_page.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width=305 height=173)
-      h1= @curated_page.name
-      h2= @curated_page.description
-    .clear
-= render :partial => 'projects/project_list', :locals => {:collection => @curated_page.projects} unless @curated_page.projects.empty?

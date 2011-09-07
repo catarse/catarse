@@ -74,7 +74,7 @@ Catarse::Application.routes.draw do
       get 'cancel'
     end
   end
-  resources :curated_page do
+  resources :curated_pages do
     collection do
       post 'update_attribute_on_the_spot'
     end
