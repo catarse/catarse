@@ -1,0 +1,22 @@
+= content_for :content_header do
+  #index_header
+    #index_header_text
+      iframe(style="float:left;margin-right:10px" src="#{@curated_page.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width=305 height=173)
+      h1= @curated_page.name
+      h2= @curated_page.description
+      #project_share
+        #facebook_share= render 'projects/facebook'
+        #twitter_share= render 'projects/twitter'
+        ul
+          li.link
+            = image_tag "sites/#{current_site.path}/link_share.png", :title => t('.share.link_title')
+            = t('.share.link')
+            = text_field_tag "project_link", @project.short_url
+          li.embed
+            = link_to '#', :id => 'embed_link' do
+              = image_tag "sites/#{current_site.path}/embed_share.png", :title => t('.share.embed_title')
+              = t('.share.embed')
+        .clear
+      = render 'embed'
+    .clear
+= render :partial => 'projects/project_list', :locals => {:collection => @curated_page.projects} unless @curated_page.projects.empty?
