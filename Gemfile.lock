@@ -70,6 +70,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    carrierwave (0.5.4)
+      activesupport (~> 3.0)
     childprocess (0.2.2)
       ffi (~> 1.0.6)
     compass (0.10.5)
@@ -277,6 +279,7 @@ DEPENDENCIES
   brcep
   cancan
   capybara (>= 0.4.0)
+  carrierwave
   compass
   database_cleaner
   factory_girl_rails

@@ -1,0 +1,6 @@
+- unless @curated_pages.empty?
+  h2 Canais Catárticos
+  p Descubra projetos selecionados por alguns dos parceiros catárticos
+  ul
+    - curated_pages.each do |cp|
+      li= link_to cp.name, curated_page_path(cp.permalink)
