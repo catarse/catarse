@@ -32,6 +32,7 @@ gem 'routing-filter'
 gem 'http_accept_language'
 gem 'cancan'
 gem 'activeadmin', "= 0.2.2"
+gem 'carrierwave'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'

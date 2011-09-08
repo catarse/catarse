@@ -79,5 +79,5 @@ Catarse::Application.routes.draw do
       post 'update_attribute_on_the_spot'
     end
   end
-  match "/:permalink" => "curated_page#show"
+  match "/:permalink" => "curated_pages#show", :as => :curated_page
 end

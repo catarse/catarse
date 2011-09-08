@@ -6,6 +6,7 @@ class Site < ActiveRecord::Base
   has_many :projects
   has_many :projects_sites
   has_many :present_projects, :through => :projects_sites, :source => :project
+  has_many :curated_pages
   has_many :backers
   has_many :users
   
