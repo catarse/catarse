@@ -34,8 +34,6 @@ feature "New Project Feature" do
     p.name.should == 'test project'
     p.expires_at.should == Time.parse('2012-12-21') + (23.hours + 59.minutes + 59.seconds)
     page.should have_content("test project")
-    visit p.short_url
-    page.should have_content("test project")
   end
 end
 
