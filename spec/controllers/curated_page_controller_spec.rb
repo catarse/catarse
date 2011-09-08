@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe CuratedPageController do
+describe CuratedPagesController do
 
 end
