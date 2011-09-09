@@ -3,10 +3,12 @@ class CuratedPage < ActiveRecord::Base
   belongs_to :site
 
   validates_uniqueness_of :permalink
-  validates_presence_of :permalink, :name, :image_url
+  validates_presence_of :permalink, :name
+
+  mount_uploader :logo, LogoUploader
 
   def to_param
-    permalink
+    "#{self.id}-#{self.name.parameterize}"
   end
 
   before_create :save_permalink
