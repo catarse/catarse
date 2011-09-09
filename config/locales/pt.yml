@@ -209,7 +209,7 @@ pt:
       anonymous_description: Optou por permanecer incógnito
       no_reward: Este apoiador não selecionou nenhuma recompensa
     form:
-      important_html: Lembre-se que %{site} ficará com 5%, e o %{link} cobra uma taxa que varia entre 6% e 7% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas, depois.
+      important_html: Lembre-se que %{site} ficará com 7,5%, e os meios de pagamento (MoIP e Paypal) cobram uma taxa que varia, em geral, entre 4% e 5% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas depois.
       rewards_title: Recompensas
       rewards_description: A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão.
       add_reward: Adicionar recompensa
