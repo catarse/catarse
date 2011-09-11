@@ -58,9 +58,13 @@ class ProjectsController < ApplicationController
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
     create!(:notice => t('projects.create.success'))
-    @project.reload
-    @project.update_attribute :short_url, bitly
-    @project.projects_sites.create :site => current_site
+    # When don't create the project the @project don't exists so causes a record not found
+    # because @project.reload *words only with created records*
+    unless @project.new_record?
+      @project.reload
+      @project.update_attribute :short_url, bitly
+      @project.projects_sites.create :site => current_site
+    end
   end
   def show
     show!{
