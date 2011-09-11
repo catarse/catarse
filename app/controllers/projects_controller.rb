@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
     @title = "A Banda Mais Bonita da Cidade"
     @projects = current_site.present_projects.visible.where(:user_id => 7329).order('projects_sites."order"').all
   end
-  
+
   def index
     index! do
       @title = t("sites.#{current_site.path}.title")
@@ -56,6 +56,7 @@ class ProjectsController < ApplicationController
   end
   def create
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
+    validate_rewards_attributes if params[:project][:rewards_attributes].present?
     create!(:notice => t('projects.create.success'))
     @project.reload
     @project.update_attribute :short_url, bitly
@@ -266,6 +267,16 @@ class ProjectsController < ApplicationController
     @total_users = User.primary.count
   end
   private
+
+  # Just to fix a minor bug,
+  # when user submit the project without some rewards.
+  def validate_rewards_attributes
+    rewards = params[:project][:rewards_attributes]
+    rewards.each do |r|
+      rewards.delete(r[0]) unless Reward.new(r[1]).valid?
+    end
+  end
+
   def bitly
     return unless Rails.env.production?
     require 'net/http'
