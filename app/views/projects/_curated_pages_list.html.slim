@@ -3,4 +3,4 @@
   p Descubra projetos selecionados por alguns dos parceiros catárticos
   ul
     - curated_pages.each do |cp|
-      li= link_to image_tag(cp.image_url.url, :width => 300, :heigth => 100), curated_page_path(cp.permalink)
+      li= link_to image_tag(cp.logo.thumb.url), curated_page_path(cp.permalink)

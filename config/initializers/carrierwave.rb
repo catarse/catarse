@@ -16,6 +16,6 @@ if Rails.env.production? and Configuration.find_by_name('aws_access_key')
 else
   CarrierWave.configure do |config|
     config.storage = :file
-    config.enable_processing = false
+    config.enable_processing = false if Rails.env.test? or Rails.env.cucumber?
   end
 end
