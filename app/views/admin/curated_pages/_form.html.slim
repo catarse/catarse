@@ -1,4 +1,4 @@
-= semantic_form_for [:admin, @curated_page] do |f|
+= semantic_form_for [:admin, @curated_page], :html => {:multipart => true} do |f|
   = f.inputs do
     = f.input :site_id, :as => :hidden, :value => current_site.id
     = f.input :name
