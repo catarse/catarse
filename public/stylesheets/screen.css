@@ -3335,6 +3335,19 @@ body#site #explore_projects #explore_results {
   float: right;
   width: 626px;
 }
+/* line 3, ../../app/stylesheets/_curated_pages.sass */
+body#site #curated_pages_list .curated_page {
+  width: 260px;
+  border: 5px solid #dddddd;
+}
+/* line 6, ../../app/stylesheets/_curated_pages.sass */
+body#site #curated_pages_list .curated_page a {
+  overflow: none;
+}
+/* line 8, ../../app/stylesheets/_curated_pages.sass */
+body#site #curated_pages_list .curated_page a img {
+  border: 0px;
+}
 /* line 2, ../../app/stylesheets/_embed.sass */
 body#site #embed .project_box {
   background-color: white;
