@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :site
+  belongs_to :curated_page
   has_many :backers
   has_many :rewards
   has_many :comments, :as => :commentable, :conditions => {:project_update => false}

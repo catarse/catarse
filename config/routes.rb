@@ -1,11 +1,12 @@
 Catarse::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   filter :locale
   
   root :to => "projects#index"
 
   match "/abandamaisbonitadacidade" => "projects#banda", :as => :banda
-
 
   match "/guidelines" => "projects#guidelines", :as => :guidelines
   match "/faq" => "projects#faq", :as => :faq
@@ -73,4 +74,10 @@ Catarse::Application.routes.draw do
       get 'cancel'
     end
   end
+  resources :curated_pages do
+    collection do
+      post 'update_attribute_on_the_spot'
+    end
+  end
+  match "/:permalink" => "curated_pages#show", :as => :curated_page
 end

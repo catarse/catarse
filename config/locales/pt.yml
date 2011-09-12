@@ -30,7 +30,7 @@ pt:
           address_neighbourhood: Bairro
           address_city: Cidade
           address_state: Estado
-          phone_number: Telefone fixo
+          phone_number: Telefone para contato
   formtastic:
     optional: " (opcional)"
     labels:
@@ -410,3 +410,8 @@ pt:
       unsubscribe_long: Se não quiser mais receber estes emails
       hello: Olá
       mailee: Mensagem entregue pelo Mailee.me
+  active_admin:
+    dashboard: Painel de controle
+    dashboard_welcome:
+      welcome: Bemvindo ao painel administrativo
+      call_to_action: foo
