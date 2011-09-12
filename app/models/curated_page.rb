@@ -3,7 +3,7 @@ class CuratedPage < ActiveRecord::Base
   belongs_to :site
 
   validates_uniqueness_of :permalink, :scope => :site_id
-  validates_presence_of :permalink, :name
+  validates_presence_of :permalink, :name, :site
 
   mount_uploader :logo, LogoUploader
 
