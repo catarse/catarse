@@ -17,7 +17,7 @@ gem 'wirble'
 gem "on_the_spot"
 gem 'unicorn'
 gem 'mailee', '0.5.4', :git => 'https://github.com/danielweinmann/mailee-api.git'
-gem 'will_paginate'
+gem 'will_paginate', ">= 3.0.pre2"
 gem 'weekdays'
 gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git'
 gem 'paypal-express', :require => 'paypal'
@@ -30,6 +30,10 @@ gem 'mustache'
 gem 'unicode'
 gem 'routing-filter'
 gem 'http_accept_language'
+gem 'cancan'
+gem 'activeadmin', "= 0.2.2"
+gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
+gem 'rmagick'
 group :test, :development do
   gem 'capybara', ">= 0.4.0"
   gem 'launchy'
