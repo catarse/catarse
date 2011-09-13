@@ -13,7 +13,8 @@ if Rails.env.production?
         config.storage :file
       end
     end
-  rescue
+  rescue Exception => e
+    Rails.logger.error "There is no configurations table: #{e.inspect}"
   end
 else
   CarrierWave.configure do |config|
