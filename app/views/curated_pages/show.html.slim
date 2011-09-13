@@ -5,4 +5,53 @@
       h1= @curated_page.name
       h2= @curated_page.description
     .clear
-= render :partial => 'projects/project_list', :locals => {:collection => @curated_page.projects} unless @curated_page.projects.empty?
+- unless @curated_page.projects.empty?
+  .project_list_wrapper
+    .project_list
+      - @curated_page.projects.each do |project|
+        .project_box
+          .project_wrap
+            - if project.expired?
+              .status_image
+                = link_to project_path(project) do
+                  - if project.successful?
+                    = image_tag "sites/#{current_site.path}/successful.#{I18n.locale}.png"
+                  - elsif project.waiting_confirmation?
+                    = image_tag "sites/#{current_site.path}/waiting_confirmation.#{I18n.locale}.png"
+                  - else
+                    = image_tag "sites/#{current_site.path}/not_successful.#{I18n.locale}.png"
+            .project_category= project.category.name
+            .project_header
+              = link_to project_path(project) do
+                .project_image= image_tag project.display_image
+                h1= project.name
+            .project_owner
+              por #{project.user.name}
+            .project_headline
+              - if current_user and current_user.admin
+                #{on_the_spot_edit project, :headline}
+              - else
+                = project.headline
+            .clear
+          .project_progress
+            .progress_bar
+              .progress{style="width: #{project.display_percent}%"}
+                nbsp;
+            .progress_info
+              ul
+                li
+                  strong #{project.percent}%
+                  br
+                  = t('.reached')
+                li
+                  strong= project.display_pledged
+                  br
+                  = t('.backed')
+                li
+                  strong #{project.time_to_go[:time]} #{project.time_to_go[:unit]}
+                  br
+                  #{pluralize_without_number(project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+          - unless project.curated_project_descriptions.empty?
+            .project_curator_description
+              span= project.curated_project_descriptions.first.description
+    .clear
