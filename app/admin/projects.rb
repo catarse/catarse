@@ -25,7 +25,6 @@ ActiveAdmin.register Project do
       f.input :video_url, :as => :string
       f.input :can_finish
       f.input :finished
-      f.input :about_html
     end
 
     f.buttons do
