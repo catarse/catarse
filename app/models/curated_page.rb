@@ -7,6 +7,16 @@ class CuratedPage < ActiveRecord::Base
 
   mount_uploader :logo, LogoUploader
 
+  auto_html_for :description do
+    html_escape :map => { 
+      '&' => '&amp;',  
+      '>' => '&gt;',
+      '<' => '&lt;',
+      '"' => '"' }
+    redcloth :target => :_blank
+    link :target => :_blank
+  end
+
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end
