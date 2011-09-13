@@ -11,11 +11,14 @@
 = content_for :content_header do
   #index_header
     #index_header_text
-      iframe(style="float:left;margin-right:10px" src="#{@curated_page.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width=305 height=173)
-      h1= @curated_page.name
-      h2= @curated_page.description
-      #facebook_share= render 'projects/facebook'
-      #twitter_share= render :partial => 'projects/twitter', :locals => { :text => @curated_page.name }
+      .curated_header
+        iframe(style="float:left;margin-right:10px" src="#{@curated_page.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width=375 height=203)
+        h1= @curated_page.name
+        h2= @curated_page.description
+        .curated_social
+          #facebook_share= render 'projects/facebook'
+          #twitter_share= render :partial => 'projects/twitter', :locals => { :text => @curated_page.name }
+        .clear
     .clear
 - unless @curated_page.projects.empty?
   .project_list_wrapper
