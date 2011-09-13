@@ -3553,41 +3553,57 @@ body#site #footer #colophon p#copyright img {
   width: 10px;
 }
 /* line 38, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon a#softa_logo {
+body#site #footer #colophon a#power_to_the_crowd {
   margin-top: -20px;
-  margin-right: 12px;
-  float: left;
+  margin-right: 50px;
+  float: right;
   background-color: transparent;
-  background-image: url("/images/softa_logo.png");
+  background-image: url("/images/power_to_the_crowd.png");
   background-attachment: scroll;
   background-repeat: no-repeat;
   border: 0 none;
   overflow: hidden;
   display: block;
-  height: 50px;
-  width: 110px;
-  -moz-transition-property: none;
-  -webkit-transition-property: none;
-  -o-transition-property: none;
-  transition-property: none;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  height: 43px;
+  width: 200px;
+  opacity: 0.7;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
 }
 /* line 47, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon a#softa_logo:hover {
-  background-position: 0 -50px;
+body#site #footer #colophon a#power_to_the_crowd:hover {
+  opacity: 1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
 }
 /* line 49, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon #grupo_comum {
-  float: right;
+body#site #footer #colophon a#grupo_comum_login {
+  float: left;
+  margin-top: 0px;
+  margin-left: 60px;
+  background-color: transparent;
+  background-image: url("/images/sites/catarse/logo_comum.png");
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  border: 0 none;
+  overflow: hidden;
+  height: 50px;
+  width: 130px;
+  opacity: 0.7;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
 }
-/* line 51, ../../app/stylesheets/_footer.sass */
+/* line 57, ../../app/stylesheets/_footer.sass */
+body#site #footer #colophon a#grupo_comum_login:hover {
+  opacity: 1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+}
+/* line 59, ../../app/stylesheets/_footer.sass */
 body#site #footer #powered_by {
   float: left;
 }
-/* line 53, ../../app/stylesheets/_footer.sass */
+/* line 61, ../../app/stylesheets/_footer.sass */
 body#site #footer #grupo_comum {
   float: right;
 }
