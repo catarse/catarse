@@ -11,11 +11,6 @@ class CuratedPage < ActiveRecord::Base
     "#{self.id}-#{self.name.parameterize}"
   end
 
-  before_create :save_permalink
-  def save_permalink
-    permalink = name.parameterize
-  end
-
   def vimeo
     return @vimeo if @vimeo
     return unless vimeo_id

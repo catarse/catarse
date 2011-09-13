@@ -17,7 +17,7 @@ ActiveAdmin.register CuratedPage do
   #     f.input :logo, :as => :file
   #     f.input :video_url
   #   end
-  #   
+  #
   #   f.buttons do
   #     f.submit
   #   end
