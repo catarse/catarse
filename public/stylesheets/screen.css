@@ -3347,17 +3347,35 @@ body#site .curated_page_header {
   padding: 0 0 0 23px;
 }
 /* line 4, ../../app/stylesheets/_curated_pages.sass */
+body#site .curated_header {
+  padding: 15px 0 15px 0;
+}
+/* line 6, ../../app/stylesheets/_curated_pages.sass */
+body#site .curated_header h1 {
+  float: left;
+}
+/* line 8, ../../app/stylesheets/_curated_pages.sass */
+body#site .curated_header h2 {
+  float: left;
+}
+/* line 10, ../../app/stylesheets/_curated_pages.sass */
+body#site .curated_header .curated_social {
+  float: left;
+  margin-left: 412px;
+  margin-top: -56px;
+}
+/* line 14, ../../app/stylesheets/_curated_pages.sass */
 body#site #curated_pages_list {
   padding: 0 0 0 4px;
 }
-/* line 6, ../../app/stylesheets/_curated_pages.sass */
+/* line 16, ../../app/stylesheets/_curated_pages.sass */
 body#site #curated_pages_list .curated_page {
   width: 260px;
   float: left;
   margin: 10px 20px;
   border: 5px solid #dddddd;
 }
-/* line 12, ../../app/stylesheets/_curated_pages.sass */
+/* line 22, ../../app/stylesheets/_curated_pages.sass */
 body#site #curated_pages_list .curated_page a img {
   border: 0px;
 }
