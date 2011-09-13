@@ -3388,6 +3388,7 @@ body#site #curated_pages_list {
 /* line 31, ../../app/stylesheets/_curated_pages.sass */
 body#site #curated_pages_list .curated_page {
   width: 260px;
+  height: 170px;
   float: left;
   margin: 10px 20px;
   border: 5px solid #dddddd;
@@ -3396,7 +3397,7 @@ body#site #curated_pages_list .curated_page {
   -o-box-shadow: #888888 3px 3px 6px 0;
   box-shadow: #888888 3px 3px 6px 0;
 }
-/* line 38, ../../app/stylesheets/_curated_pages.sass */
+/* line 39, ../../app/stylesheets/_curated_pages.sass */
 body#site #curated_pages_list .curated_page a img {
   border: 0px;
 }
