@@ -6,12 +6,16 @@ class ApplicationController < ActionController::Base
   # TODO this is a temporary thing while we don't build the new Multidão
   before_filter :multidao_redirect
   # TODO remove this when we launch the new Multidão
-  
-  helper_method :current_user, :current_site, :replace_locale
+
+  helper_method :current_user, :current_site, :replace_locale, :align_logo_when_home
   before_filter :set_locale
   before_filter :detect_locale
-  
+
   private
+
+  def align_logo_when_home
+    'home_logo' if controller_name == 'projects' && action_name == 'index'
+  end
 
   # TODO this is a temporary thing while we don't build the new Multidão
   def multidao_redirect
@@ -23,14 +27,14 @@ class ApplicationController < ActionController::Base
     return redirect_to catarse.full_url(request.fullpath)
   end
   # TODO remove this when we launch the new Multidão
-  
+
   def set_locale
     return unless params[:locale]
     I18n.locale = params[:locale]
     return unless current_user
     current_user.update_attribute :locale, params[:locale] if params[:locale] != current_user.locale
   end
-  
+
   def detect_locale
     return unless request.method == "GET"
     return if params[:locale]
@@ -43,7 +47,7 @@ class ApplicationController < ActionController::Base
     end
     return redirect_to replace_locale(new_locale)
   end
-  
+
   def replace_locale(new_locale)
     session[:locale] = new_locale
     new_url = "#{request.fullpath}"
@@ -58,7 +62,7 @@ class ApplicationController < ActionController::Base
     end
     new_url
   end
-  
+
   def current_site
     return @current_site if @current_site
     return @current_site = Site.find_by_path(session[:current_site]) if session[:current_site]
@@ -74,7 +78,7 @@ class ApplicationController < ActionController::Base
       return @current_user = User.find(session[:user_id])
     end
     if cookies[:remember_me_id] and cookies[:remember_me_hash]
-      @current_user = User.find(cookies[:remember_me_id]) 
+      @current_user = User.find(cookies[:remember_me_id])
       @current_user = nil unless @current_user.remember_me_hash == cookies[:remember_me_hash]
       session[:user_id] = @current_user.id
     end
