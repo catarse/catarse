@@ -137,7 +137,7 @@ body#site #index_header #index_header_text h2 {
 }
 /* line 78, ../../../app/stylesheets/sites/catarse.sass */
 body#site #index_header #index_share {
-  margin-top: 10px;
+  margin-top: -90px;
   float: right;
   width: 224px;
 }
