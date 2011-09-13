@@ -10,7 +10,7 @@ pt:
       pre_header:
         content_html: Quer saber como apoiar um projeto? %{link} um passo-a-passo que publicamos no nosso blog.
         help_link: Confira aqui
-      explore_header: 
+      explore_header:
         title: Encontre projetos incríveis
         subtitle: Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!
       index_header:
@@ -41,7 +41,7 @@ pt:
         submit: Clique aqui e veja como fazer parte deste disco
         title_html: |
           Rá!<div class="retrospective">descubra finalmente</div> qual é a <div class="surprise">grande surpresa</div> do <div class="catarse">Catarse</div>
-      press: 
+      press:
         title: Confira o que estão falando do Catarse na imprensa
       projects:
         home_page_projects:
@@ -56,4 +56,8 @@ pt:
         successful:
           title: Projetos bem-sucedidos
           subtitle: Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!
+      curated_pages:
+        home_page:
+          title: Páginas curadas
+          subtitle: Descubra projetos selecionados por alguns dos parceiros catárticos
 

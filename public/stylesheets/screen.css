@@ -3358,39 +3358,45 @@ body#site .project_curator_description {
 }
 /* line 13, ../../app/stylesheets/_curated_pages.sass */
 body#site .curated_page_header {
-  padding: 0 0 0 23px;
+  float: left;
+  width: 100%;
+  padding: 20px 0 0 0px;
 }
-/* line 15, ../../app/stylesheets/_curated_pages.sass */
+/* line 18, ../../app/stylesheets/_curated_pages.sass */
 body#site .curated_header {
   padding: 15px 0 15px 0;
 }
-/* line 17, ../../app/stylesheets/_curated_pages.sass */
+/* line 20, ../../app/stylesheets/_curated_pages.sass */
 body#site .curated_header h1 {
   float: left;
   width: 460px;
 }
-/* line 20, ../../app/stylesheets/_curated_pages.sass */
+/* line 23, ../../app/stylesheets/_curated_pages.sass */
 body#site .curated_header h2 {
   float: left;
   width: 460px;
 }
-/* line 23, ../../app/stylesheets/_curated_pages.sass */
+/* line 26, ../../app/stylesheets/_curated_pages.sass */
 body#site .curated_header .curated_social {
   float: left;
   margin-left: 25px;
 }
-/* line 26, ../../app/stylesheets/_curated_pages.sass */
+/* line 29, ../../app/stylesheets/_curated_pages.sass */
 body#site #curated_pages_list {
   padding: 0 0 0 4px;
 }
-/* line 28, ../../app/stylesheets/_curated_pages.sass */
+/* line 31, ../../app/stylesheets/_curated_pages.sass */
 body#site #curated_pages_list .curated_page {
   width: 260px;
   float: left;
   margin: 10px 20px;
   border: 5px solid #dddddd;
+  -moz-box-shadow: #888888 3px 3px 6px 0;
+  -webkit-box-shadow: #888888 3px 3px 6px 0;
+  -o-box-shadow: #888888 3px 3px 6px 0;
+  box-shadow: #888888 3px 3px 6px 0;
 }
-/* line 34, ../../app/stylesheets/_curated_pages.sass */
+/* line 38, ../../app/stylesheets/_curated_pages.sass */
 body#site #curated_pages_list .curated_page a img {
   border: 0px;
 }
