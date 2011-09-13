@@ -21,9 +21,8 @@ ActiveAdmin.register Project do
       f.input :expires_at
       f.input :about
       f.input :headline
+      f.input :curated_page_description
       f.input :video_url, :as => :string
-      f.input :image_url, :as => :string
-      f.input :short_url, :as => :string
       f.input :can_finish
       f.input :finished
       f.input :about_html
