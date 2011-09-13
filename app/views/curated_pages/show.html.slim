@@ -51,7 +51,7 @@
                   strong #{project.time_to_go[:time]} #{project.time_to_go[:unit]}
                   br
                   #{pluralize_without_number(project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
-          - unless project.curated_page_description.empty?
+          - if project.curated_page_description and not project.curated_page_description.empty?
             .project_curator_description
               span= project.curated_page_description
     .clear
