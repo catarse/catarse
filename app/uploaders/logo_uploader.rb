@@ -9,8 +9,8 @@ class LogoUploader < CarrierWave::Uploader::Base
     else
       storage :file
     end
-  else
-    Rails.logger.error "There is no configuratons table"
+  rescue Exception => e
+    Rails.logger.error "There is no configuratons table: #{e.inspect}"
   end
 
   def store_dir
