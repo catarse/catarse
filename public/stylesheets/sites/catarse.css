@@ -58,7 +58,7 @@ body#site #content_wrapper #notification_wrapper {
   box-shadow: #999999 0 0 3px 0;
   padding: 5px 0 5px 0;
   background: #e0e0e0;
-  margin: 10px auto 0;
+  margin: 20px auto 0;
 }
 /* line 33, ../../../app/stylesheets/sites/catarse.sass */
 body#site #content_wrapper #notification_wrapper div h1 {
