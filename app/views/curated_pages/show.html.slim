@@ -12,7 +12,10 @@
   #index_header
     #index_header_text
       .curated_header
-        iframe(style="float:left;margin-right:10px" src="#{@curated_page.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width=375 height=203)
+        - unless @curated_page.video_url.present?
+          = image_tag @curated_page.logo.thumb.url
+        - else
+          iframe(style="float:left;margin-right:10px" src="#{@curated_page.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width=375 height=203)
         h1= @curated_page.name
         h2== @curated_page.description_html
         .curated_social
