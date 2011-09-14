@@ -6,8 +6,8 @@
 = render :partial => 'project_list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
 = render :partial => 'project_list', :locals => {:quick => "successful", :collection => @successful} unless @successful.empty?
 = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
-
-= render :partial => "/sites/#{current_site.path}/promo_video"
+.clear
+=# render :partial => "/sites/#{current_site.path}/promo_video"
 = render :partial => "/sites/#{current_site.path}/press"
 = javascript_include_tag 'slider'
 = javascript_include_tag 'press'
