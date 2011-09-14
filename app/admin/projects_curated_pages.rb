@@ -1,0 +1,2 @@
+ActiveAdmin.register ProjectsCuratedPage do
+end
