@@ -35,19 +35,27 @@
       float: left
       img
         width: 10px
-    a#softa_logo
+    a#power_to_the_crowd
       margin-top: -20px
-      margin-right: 12px
-      float: left
-      +sprite("/images/softa_logo.png")
-      display: block
-      height: 50px
-      width: 110px
-      +transition(none)
-      &:hover
-        +position(0,-50px)
-    #grupo_comum
+      margin-right: 50px
       float: right
+      +sprite("/images/power_to_the_crowd.png")
+      display: block
+      height: 43px
+      width: 200px
+      +opacity(0.7)
+      &:hover
+        +opacity(1.0)
+    a#grupo_comum_login
+      float: left
+      margin-top: 0px
+      margin-left: 60px
+      +sprite("/images/sites/catarse/logo_comum.png")
+      height: 50px
+      width: 130px
+      +opacity(0.7)
+      &:hover
+        +opacity(1.0)
   #powered_by
     float: left
   #grupo_comum

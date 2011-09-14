@@ -3,10 +3,14 @@
 class LogoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
-  if Rails.env.production? and Configuration.find_by_name('aws_access_key')
-    storage :s3
-  else
-    storage :file
+  begin
+    if Rails.env.production? and Configuration.find_by_name('aws_access_key')
+      storage :s3
+    else
+      storage :file
+    end
+  rescue Exception => e
+    Rails.logger.error "There is no configuratons table: #{e.inspect}"
   end
 
   def store_dir

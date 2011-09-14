@@ -1,19 +1,26 @@
 class CuratedPage < ActiveRecord::Base
   has_many :projects
   belongs_to :site
+  has_many :projects_curated_pages
+  has_many :projects, :through => :projects_curated_pages
 
-  validates_uniqueness_of :permalink
-  validates_presence_of :permalink, :name
+  validates_uniqueness_of :permalink, :scope => :site_id
+  validates_presence_of :permalink, :name, :site, :logo
 
   mount_uploader :logo, LogoUploader
 
-  def to_param
-    "#{self.id}-#{self.name.parameterize}"
+  auto_html_for :description do
+    html_escape :map => { 
+      '&' => '&amp;',  
+      '>' => '&gt;',
+      '<' => '&lt;',
+      '"' => '"' }
+    redcloth :target => :_blank
+    link :target => :_blank
   end
 
-  before_create :save_permalink
-  def save_permalink
-    permalink = name.parameterize
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
   end
 
   def vimeo

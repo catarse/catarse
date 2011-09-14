@@ -15,18 +15,15 @@ ActiveAdmin.register Project do
     f.inputs do
       f.input :user
       f.input :category
-      f.input :curated_page
+      f.input :curated_pages
       f.input :name, :as => :string
       f.input :goal
       f.input :expires_at
       f.input :about
       f.input :headline
       f.input :video_url, :as => :string
-      f.input :image_url, :as => :string
-      f.input :short_url, :as => :string
       f.input :can_finish
       f.input :finished
-      f.input :about_html
     end
 
     f.buttons do
