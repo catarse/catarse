@@ -1,4 +1,4 @@
-if Rails.env.production? and Configuration.find_by_name('aws_access_key')
+if Rails.env.production?
   begin
     CarrierWave.configure do |config|
       access_key = Configuration.find_by_name('aws_access_key')
@@ -9,9 +9,12 @@ if Rails.env.production? and Configuration.find_by_name('aws_access_key')
         config.s3_access_key_id = access_key.value
         config.s3_secret_access_key = secret_key.value
         config.s3_bucket = bucket.value
+      else
+        config.storage :file
       end
     end
-  rescue
+  rescue Exception => e
+    Rails.logger.error "There is no configurations table: #{e.inspect}"
   end
 else
   CarrierWave.configure do |config|

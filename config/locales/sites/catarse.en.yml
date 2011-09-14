@@ -10,7 +10,7 @@ en:
       pre_header:
         content_html: Want to know how to back a project? %{link} for a step-by-step guide we published on our blog.
         help_link: Click here
-      explore_header: 
+      explore_header:
         title: Discover amazing projects
         subtitle: Explore the projects, find the ones that get into your heart, and make them happen!
       index_header:
@@ -41,7 +41,7 @@ en:
         submit: Click here and see how you can be part of this album
         title_html: |
           Yey!<div class="retrospective">finally discover</div> what is the<div class="surprise">amazing surprise</div> from <div class="catarse">Catarse</div>
-      press: 
+      press:
         title: Check out what they are saying about Catarse on the press
       projects:
         home_page_projects:
@@ -56,4 +56,8 @@ en:
         successful:
           title: Successful projects
           subtitle: Meet our newest prides :) tomorrow your project might be here!
+      curated_pages:
+        home_page:
+          title: Cathartic channels
+          subtitle: Discover projects selected by cathartic partners
 
