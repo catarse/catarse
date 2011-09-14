@@ -171,9 +171,11 @@ en:
     application:
       menu:
         explore: Explore the projects
-        submit: Submit your project 
+        submit: Submit your project
         signup: Signup
         login: Login
+      notifications:
+        new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check</a>!"
   projects:
     index:
       recommended: Recommended projects
