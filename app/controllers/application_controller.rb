@@ -7,14 +7,18 @@ class ApplicationController < ActionController::Base
   before_filter :multidao_redirect
   # TODO remove this when we launch the new Multidão
 
-  helper_method :current_user, :current_site, :replace_locale, :align_logo_when_home
+  helper_method :current_user, :current_site, :replace_locale, :align_logo_when_home, :is_homepage?
   before_filter :set_locale
   before_filter :detect_locale
 
   private
 
+  def is_homepage?
+    controller_name == 'projects' && action_name == 'index'
+  end
+
   def align_logo_when_home
-    'home_logo' if controller_name == 'projects' && action_name == 'index'
+    'home_logo' if is_homepage?
   end
 
   # TODO this is a temporary thing while we don't build the new Multidão
