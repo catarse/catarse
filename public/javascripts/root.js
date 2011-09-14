@@ -1,5 +1,5 @@
 $(function(){
   $('#curated_link').click(function(){
-    $(document).scrollTo('#curated_pages_list', 800);
+    $(document).scrollTo('.curated_page_header', 800);
   });
 });
