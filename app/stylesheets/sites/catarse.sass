@@ -21,6 +21,29 @@ body#site
   #content_wrapper
     +box-shadow(transparent, 0, 0, 0)
     background-color: transparent
+    #notification_wrapper
+      width: 880px
+      border: 1px #999 solid
+      +border-radius(3px, 3px)
+      +box-shadow(#999, 0, 0, 3px)
+      padding: 5px 0 5px 0
+      background: #E0E0E0
+      margin: 10px auto 0
+      div
+        h1
+          font-family: "museo-500"
+          padding: 8px 0 5px 10px
+          font-size: 20px
+          +text-shadow(none)
+          text-align: center
+          color: #333
+          a
+            color: #1976DA
+            text-decoration: none
+            &:hover
+              color: #15559B
+
+
     #content_header
       width: 936px
       margin: 0 auto

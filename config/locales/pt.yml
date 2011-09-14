@@ -171,9 +171,11 @@ pt:
     application:
       menu:
         explore: Explore os projetos
-        submit: Envie seu projeto 
+        submit: Envie seu projeto
         signup: Cadastre-se
         login: Entrar
+      notifications:
+        new_curated_pages: "agora temos canais catárticos, <a href='#curated_pages' id='curated_link'>confira</a>!"
   curated_pages:
     show:
       reached: atingido

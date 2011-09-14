@@ -22,6 +22,10 @@
         #content_header_wrapper
           #content_header
             = yield :content_header
+        - if is_homepage?
+          #notification_wrapper
+            %div
+              %h1= raw(t('.notifications.new_curated_pages'))
         #content
           = yield
       #footer= render :partial => "/sites/#{current_site.path}/footer"
