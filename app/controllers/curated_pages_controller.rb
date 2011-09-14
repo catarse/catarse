@@ -8,6 +8,7 @@ class CuratedPagesController < ApplicationController
   
   def show
     @curated_page = CuratedPage.find_by_permalink(params[:permalink])
+    @title = @curated_page.name
     show!
   end
 end
