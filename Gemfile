@@ -36,7 +36,9 @@ gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
 gem 'rmagick'
 gem 'fog'
 gem 'capybara', ">= 0.4.0"
+
 group :test, :development do
+  gem 'capybara-webkit', '0.6.1'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'steak', "~> 1.1.0"
