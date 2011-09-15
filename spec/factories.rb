@@ -63,3 +63,11 @@ Factory.define :configuration do |f|
   f.name 'Foo'
   f.value 'Bar'
 end
+Factory.define :curated_page do |f|
+  f.association :site, :factory => :site
+  f.name 'Foo Page'
+  f.permalink 'foo_page'
+  f.description 'foo description'
+  f.logo File.open("#{Rails.root.to_s}/lib/fixtures/engage.png")
+  f.video_url 'http://vimeo.com/28220980'
+end
