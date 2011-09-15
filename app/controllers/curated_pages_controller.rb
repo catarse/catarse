@@ -5,9 +5,10 @@ class CuratedPagesController < ApplicationController
   def index
     @curated_pages = current_site.curated_pages.all
   end
-  
+
   def show
     @curated_page = CuratedPage.find_by_permalink(params[:permalink])
+    return render_404 unless @curated_page.present?
     @title = @curated_page.name
     show!
   end

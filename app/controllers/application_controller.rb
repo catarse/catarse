@@ -108,4 +108,7 @@ class ApplicationController < ActionController::Base
   def require_admin
     require_condition((current_user and current_user.admin), t('require_admin'))
   end
+  def render_404
+    render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
+  end
 end
