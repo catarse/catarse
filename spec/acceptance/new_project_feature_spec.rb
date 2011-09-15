@@ -1,11 +1,13 @@
 # coding: utf-8
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
-feature "New Project Feature" do
+feature "New Project Feature", :driver => :selenium do
+
   scenario "I'm not logged in and I want to send a project. It should ask for login." do
     visit homepage
     click_link 'Envie seu projeto'
     find("#login").visible?.should be_true
   end
+
   scenario "I am logged in and I want to send a project" do
     c = Factory(:category)
     visit homepage
@@ -17,8 +19,11 @@ feature "New Project Feature" do
         page.should have_content("Envie seu projeto")
       end
     end
+
     within '#content' do
+      sleep 2
       fill_in 'project_name', :with => 'test project'
+
       fill_in 'project_video_url', :with => 'http://vimeo.com/18210052'
       fill_in 'project_about', :with => 'about this very cool project'
       fill_in 'project_headline', :with => 'this is our nice headline'
@@ -30,6 +35,7 @@ feature "New Project Feature" do
       check 'accept'
       click_button 'project_submit'
     end
+
     p = Project.first
     p.name.should == 'test project'
     p.expires_at.should == Time.parse('2012-12-21') + (23.hours + 59.minutes + 59.seconds)

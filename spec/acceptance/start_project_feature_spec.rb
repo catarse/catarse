@@ -1,20 +1,20 @@
 # coding: utf-8
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
-feature "Send Project Feature" do
+feature "Send Project Feature", :driver => :selenium do
   scenario "I'm not logged in and I want to send a project. It should ask for login." do
     visit homepage
     click_link 'Envie seu projeto'
     find("#login").visible?.should be_true
   end
   scenario "I am logged in and I want to send a project" do
-    c = Factory(:category) 
+    c = Factory(:category)
     visit homepage
     fake_login
     click_link 'Envie seu projeto'
     current_path.should == guidelines_path
     within 'head title' do
-      page.should have_content("Como funciona") 
-    end    
+      page.should have_content("Como funciona")
+    end
     within '#content_header' do
       within 'h1' do
         page.should have_content("Como funciona")
