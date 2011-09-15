@@ -52,6 +52,14 @@ module Capybara
  end
 end
 
+Capybara.register_driver :rack_test do |app|
+  Capybara::RackTest::Driver.new(app, :browser => :chrome)
+end
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
 Capybara.configure do |config|
  config.default_driver = :webkit
  config.ignore_hidden_elements = false
