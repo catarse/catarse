@@ -11,7 +11,7 @@
 = content_for :content_header do
   #index_header
     #index_header_text
-      .curated_header
+      .curated_page_header
         - unless @curated_page.video_url.present?
           = image_tag @curated_page.logo.thumb.url
         - else
