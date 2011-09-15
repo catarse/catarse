@@ -52,6 +52,8 @@ module Capybara
  end
 end
 
+Capybara.app = ::Rails.application
+
 Capybara.register_driver :rack_test do |app|
   Capybara::RackTest::Driver.new(app, :browser => :chrome)
 end
@@ -66,14 +68,6 @@ Capybara.configure do |config|
  # config.seletor :css
  config.server_port = 8200
  config.app_host = "http://localhost:8200"
-end
-
-Capybara.server do |app, port|
- Unicorn::Configurator::RACKUP[:port] = port
- Unicorn::Configurator::RACKUP[:set_listener] = true
-
- server = Unicorn::HttpServer.new(app)
- server.start
 end
 
 class ActionDispatch::IntegrationTest
