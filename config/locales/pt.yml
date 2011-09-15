@@ -175,7 +175,7 @@ pt:
         signup: Cadastre-se
         login: Entrar
       notifications:
-        new_curated_pages: "agora temos canais catárticos, <a href='#curated_pages' id='curated_link'>confira</a>!"
+        new_curated_pages: "Já conhece os Canais Catárticos? <a href='#curated_pages' id='curated_link'>Olha aqui</a>!"
   curated_pages:
     show:
       reached: atingido
