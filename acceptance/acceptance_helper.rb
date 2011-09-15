@@ -64,7 +64,7 @@ Capybara.register_driver :selenium do |app|
 end
 
 Capybara.configure do |config|
- config.default_driver = :selenium
+ config.default_driver = defined?(Capybara::Driver::Webkit) ? :webkit : :selenium
  config.ignore_hidden_elements = false
  # config.seletor :css
  config.server_port = 8200
