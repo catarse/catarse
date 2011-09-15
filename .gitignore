@@ -10,4 +10,6 @@ db/development_structure.sql
 coverage
 *.tmproj
 .DS_Store
-public/uploads/*
+public/uploads/*chromedriver.log
+public/uploads/
+chromedriver.log
