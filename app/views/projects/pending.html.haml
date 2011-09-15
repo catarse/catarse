@@ -1,7 +1,7 @@
 = content_for :content_header do
   %h1= t('.title')
 #pending_projects
-  - form_for @search, :url => pending_projects_path do |f|
+  = form_for @search, :url => pending_projects_path do |f|
     %fieldset
       = f.label :project_id_equals, t('.id')
       = f.text_field :project_id_equals
