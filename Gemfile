@@ -47,6 +47,9 @@ group :test, :development do
   gem 'mocha'
 end
 
-group :test do
-  gem 'capybara-webkit', "0.6.1" #comment this if you don't have QT
+# add .use_capybara_webkit in you project root folder to install this gem
+if File.exists?(File.join(File.dirname(__FILE__), '.use_capybara_webkit'))
+  group :test do
+    gem 'capybara-webkit', "0.6.1" #comment this if you don't have QT
+  end
 end
