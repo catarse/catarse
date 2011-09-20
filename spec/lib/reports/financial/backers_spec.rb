@@ -6,13 +6,16 @@ describe Reports::Financial::Backers do
       @project = create(:project)
       4.times do |n|
         user = create(:user)
-        create(:backer, :project => @project, :user => user)
+        create(:backer, :value => (10.00+n),:project => @project, :user => user)
       end
     end
 
-    it 'should have all backers' do
+    it 'should have the backers information' do
       report = Reports::Financial::Backers.report(@project.to_param)
-      report.should have(4).itens
+      report.should =~ /R\$ 10/
+      report.should =~ /R\$ 11/
+      report.should =~ /R\$ 12/
+      report.should =~ /person[\d]\@example\.com/
     end
   end
 end
