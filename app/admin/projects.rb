@@ -3,6 +3,14 @@ ActiveAdmin.register Project do
 
   scope_to :current_site
 
+  filter :site
+  filter :name
+  filter :category
+  filter :created_at
+  filter :updated_at
+  filter :can_finish
+  filter :finished
+
   index do
     column :name do |project|
       link_to project.name, admin_project_path(project)
@@ -16,7 +24,7 @@ ActiveAdmin.register Project do
 
   form do |f|
     f.inputs do
-      f.input :user
+      # f.input :user
       f.input :category
       f.input :curated_pages
       f.input :name, :as => :string
@@ -33,6 +41,4 @@ ActiveAdmin.register Project do
       f.submit
     end
   end
-
-
 end
