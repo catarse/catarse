@@ -53,6 +53,9 @@ class Backer < ActiveRecord::Base
   def display_confirmed_at
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
+  def display_moip_tax(tax=7.5)
+    number_to_currency ((value*tax)/100), :unit => 'R$', :precision => 2, :delimiter => '.'
+  end
   def moip_value
     "%0.0f" % (value * 100)
   end
