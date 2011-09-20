@@ -1,10 +1,10 @@
 Catarse::Application.routes.draw do
-
   ActiveAdmin.routes(self)
 
   filter :locale
-  
+
   root :to => "projects#index"
+  match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
   match "/abandamaisbonitadacidade" => "projects#banda", :as => :banda
 
