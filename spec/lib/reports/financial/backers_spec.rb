@@ -15,7 +15,7 @@ describe Reports::Financial::Backers do
       report.should =~ /R\$ 10/
       report.should =~ /R\$ 11/
       report.should =~ /R\$ 12/
-      report.should =~ /person[\d]\@example\.com/
+      report.should =~ /person\d+@example.com/
     end
   end
 end
