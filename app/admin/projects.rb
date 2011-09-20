@@ -8,6 +8,9 @@ ActiveAdmin.register Project do
       link_to project.name, admin_project_path(project)
     end
     column :headline
+    column "Financial report" do |project|
+      link_to 'backers report', backers_financial_report_path(project.to_param)
+    end
     default_actions
   end
 
@@ -30,6 +33,6 @@ ActiveAdmin.register Project do
       f.submit
     end
   end
-  
+
 
 end
