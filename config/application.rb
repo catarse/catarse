@@ -4,9 +4,10 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 module Catarse
   class Application < Rails::Application
     config.active_record.schema_format = :sql
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/**)
     config.encoding = "utf-8"
     config.filter_parameters += [:password, :password_confirmation]
-    config.time_zone = 'Brasilia' 
+    config.time_zone = 'Brasilia'
     config.generators do |g|
       g.template_engine :haml
       g.test_framework :rspec, :fixture => false, :views => false
