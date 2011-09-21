@@ -18,6 +18,7 @@ class Project < ActiveRecord::Base
   has_many :updates, :as => :commentable, :class_name => "Comment", :conditions => {:project_update => true}
   has_many :projects_sites
   has_many :sites_present, :through => :projects_sites, :source => :site
+  has_and_belongs_to_many :managers, :join_table => "projects_managers", :class_name => 'User'
   accepts_nested_attributes_for :rewards
   auto_html_for :about do
     html_escape :map => { 
