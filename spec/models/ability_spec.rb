@@ -31,7 +31,7 @@ describe Category do
   it "should enable users to manage only own projects" do
     user = Factory.build(:user)
     user.save
-    project = Factory.build(:project, :user => user)
+    project = Factory.build(:project, :managers => [user])
     project.save
     user2 = Factory.build(:user)
     user2.save
@@ -44,7 +44,7 @@ describe Category do
   it "should enable user manage his own project rewards" do
     user = Factory.build(:user)
     user.save
-    project = Factory.build(:project, :user => user)
+    project = Factory.build(:project, :managers => [user])
     project.save
     reward = Factory.build(:reward, :project => project)
     reward.save
