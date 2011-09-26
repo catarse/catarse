@@ -19,9 +19,12 @@ class Backer < ActiveRecord::Base
   def self.project_visible(site)
     joins(:project).joins("INNER JOIN projects_sites ON projects_sites.project_id = projects.id").where("projects_sites.site_id = #{site.id} AND projects_sites.visible = true")
   end
-  after_create :define_key
+  after_create :define_key, :define_payment_method
   def define_key
     self.update_attribute :key, Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s
+  end
+  def define_payment_method
+    self.update_attribute :payment_method, 'MoIP'
   end
   before_save :confirm?
   def confirm?

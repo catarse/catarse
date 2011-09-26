@@ -90,4 +90,8 @@ describe Backer do
     backer = Factory(:backer)
     backer.key.should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s
   end
+  it "after create should define 'MoIP' how default payment_method" do 
+    backer = Factory(:backer)
+    backer.payment_method.should == 'MoIP'
+  end
 end
