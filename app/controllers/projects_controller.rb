@@ -187,6 +187,7 @@ class ProjectsController < ApplicationController
           :url_retorno => thank_you_url
         }
         response = MoIP::Client.checkout(payment)
+        backer.update_attribute :payment_token, response["Token"]
         redirect_to MoIP::Client.moip_page(response["Token"])
       rescue
         flash[:failure] = t('projects.pay.moip_error')
