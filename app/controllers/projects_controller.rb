@@ -155,6 +155,7 @@ class ProjectsController < ApplicationController
       end
       unless backer.confirmed
         current_user.update_attribute :credits, current_user.credits - backer.value
+        backer.update_attribute :payment_method, 'Credits'
         backer.confirm!
       end
       flash[:success] = t('projects.pay.success')
