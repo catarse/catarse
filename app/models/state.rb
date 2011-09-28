@@ -10,3 +10,15 @@ class State < ActiveRecord::Base
     @array
   end
 end
+
+# == Schema Information
+#
+# Table name: states
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)     not null
+#  acronym    :string(255)     not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
