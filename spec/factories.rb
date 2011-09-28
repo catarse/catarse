@@ -71,6 +71,10 @@ Factory.define :curated_page do |f|
   f.logo File.open("#{Rails.root.to_s}/lib/fixtures/engage.png")
   f.video_url 'http://vimeo.com/28220980'
 end
+Factory.define :projects_curated_page do |f|
+  f.association :project, :factory => :project
+  f.association :curated_page, :factory => :curated_page
+end
 Factory.define :projects_site do |f|
   f.association :project, :factory => :project
   f.association :site, :factory => :site

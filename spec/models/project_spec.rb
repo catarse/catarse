@@ -186,5 +186,13 @@ describe Project do
     p.expires_at = 2.weekdays_ago
     p.waiting_confirmation?.should be_false
   end
+  
+  it "should be able to be in more than one curated page" do
+    cp = Factory.build(:curated_page)
+    cp2 = Factory.build(:curated_page)
+    p = Factory.build(:project, :curated_pages => [cp,cp2])
+    p.curated_pages.size.should be 2
+    p.should be_valid
+  end
 end
 
