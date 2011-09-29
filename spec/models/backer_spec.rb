@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Backer do
+  it { should have_many(:payment_logs) }
   it "should be valid from factory" do
     b = Factory(:backer)
     b.should be_valid
@@ -90,8 +91,35 @@ describe Backer do
     backer = Factory(:backer)
     backer.key.should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s
   end
-  it "after create should define 'MoIP' how default payment_method" do 
+  it "after create should define 'MoIP' how default payment_method" do
     backer = Factory(:backer)
     backer.payment_method.should == 'MoIP'
   end
 end
+
+# == Schema Information
+#
+# Table name: backers
+#
+#  id               :integer         not null, primary key
+#  project_id       :integer         not null
+#  user_id          :integer         not null
+#  reward_id        :integer
+#  value            :decimal(, )     not null
+#  confirmed        :boolean         default(FALSE), not null
+#  confirmed_at     :datetime
+#  created_at       :datetime
+#  updated_at       :datetime
+#  display_notice   :boolean         default(FALSE)
+#  anonymous        :boolean         default(FALSE)
+#  key              :text
+#  can_refund       :boolean         default(FALSE)
+#  requested_refund :boolean         default(FALSE)
+#  refunded         :boolean         default(FALSE)
+#  credits          :boolean         default(FALSE)
+#  notified_finish  :boolean         default(FALSE)
+#  site_id          :integer         default(1), not null
+#  payment_method   :text
+#  payment_token    :text
+#
+

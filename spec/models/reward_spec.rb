@@ -82,3 +82,17 @@ describe Reward do
   end
 end
 
+
+# == Schema Information
+#
+# Table name: rewards
+#
+#  id              :integer         not null, primary key
+#  project_id      :integer         not null
+#  minimum_value   :decimal(, )     not null
+#  maximum_backers :integer
+#  description     :text            not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
