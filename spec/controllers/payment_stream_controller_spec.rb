@@ -12,4 +12,9 @@ describe PaymentStreamController do
     response.should_not be_successful
     backer.reload.confirmed.should_not be_true
   end
+  it "should return 422 when moip params is empty" do
+    post :moip, {}
+    response.should_not be_successful
+    response.code.should == '422'
+  end
 end
