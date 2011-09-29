@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe ProjectsController do
+describe PaymentStreamController do
   it "should confirm backer in moip payment" do
     backer = Factory(:backer, :confirmed => false)
     post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '1', :valor => backer.moip_value})
