@@ -6,7 +6,6 @@ class ProjectsController < ApplicationController
   respond_to :html, :except => [:backers, :comments, :updates]
   respond_to :json, :only => [:show, :backers, :comments, :updates]
   can_edit_on_the_spot
-  skip_before_filter :verify_authenticity_token, :only => [:moip]
   skip_before_filter :detect_locale, :only => [:backers, :comments, :updates, :moip]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create]
@@ -203,10 +202,6 @@ class ProjectsController < ApplicationController
     @project = Project.find session[:thank_you_id]
     @title = t('projects.thank_you.title')
     session[:thank_you_id] = nil
-  end
-  def moip
-    moip_request = PaymentHistory::Moip.new(params).process_request!
-    return render :nothing => true, :status => moip_request.response_code
   end
   def backers
     @project = Project.find params[:id]
