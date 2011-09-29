@@ -36,6 +36,7 @@ gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
 gem 'rmagick'
 gem 'fog'
 gem 'capybara', ">= 0.4.0"
+gem 'enumerate_it'
 
 group :test, :development do
   gem 'annotate'
