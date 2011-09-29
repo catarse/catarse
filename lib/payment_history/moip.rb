@@ -1,6 +1,66 @@
 module PaymentHistory
   class Moip
 
+    attr_accessor :params, :response_code, :backer
+
+    def initialize(post_params)
+      @params = post_params
+    end
+
+    def process_request!
+      begin
+        @backer = find_backer
+        if @backer.moip_value == @params[:valor].to_s
+          build_log
+          if !@backer.confirmed && @params[:status_pagamento].to_i == TransactionStatus::AUTHORIZED
+            @backer.confirm!
+          end
+        else
+          @response_code = ResponseCode::NOT_PROCESSED
+        end
+
+      rescue
+        @response_code = ResponseCode::NOT_PROCESSED
+      end
+      self
+    end
+
+    def build_log
+      @backer.payment_logs.create!({
+        :moip_id => @params[:cod_moip],
+        :amount => @params[:valor],
+        :payment_status => @params[:status_pagamento],
+        :payment_type => @params[:tipo_pagamento],
+        :payment_method => @params[:forma_pagamento],
+        :consumer_email => @params[:email_consumidor]
+      })
+      @response_code = ResponseCode::SUCCESS
+    end
+
+    def find_backer
+      @backer = Backer.find_by_key! @params[:id_transacao]
+    end
+
+    class ResponseCode < EnumerateIt::Base
+      associate_values(
+        :not_processed => 422,
+        :success => 200
+      )
+    end
+
+    #MoIP API table:
+    class PaymentMethods < EnumerateIt::Base
+      associate_values(
+        :DebitoBancario         => 1,
+        :FinanciamentoBancario  => 2,
+        :BoletoBancario         => 3,
+        :CartaoDeCredito        => 4,
+        :CartaoDeDebito         => 5,
+        :CarteiraMoIP           => 6,
+        :NaoDefinida            => 7
+      )
+    end
+
     class TransactionStatus < EnumerateIt::Base
       associate_values(
         :authorized =>      1,
@@ -12,7 +72,5 @@ module PaymentHistory
         :written_back =>    7
       )
     end
-
-
   end
 end
