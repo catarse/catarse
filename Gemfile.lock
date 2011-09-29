@@ -95,6 +95,8 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
     diff-lcs (1.1.3)
+    enumerate_it (0.7.8)
+      activesupport (>= 2.3.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     excon (0.6.6)
@@ -325,6 +327,7 @@ DEPENDENCIES
   carrierwave!
   compass
   database_cleaner
+  enumerate_it
   factory_girl_rails
   fog
   formtastic (~> 1.1.0)
