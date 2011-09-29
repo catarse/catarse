@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Backer do
-  it { should have_many(:project_logs) }
+  it { should have_many(:payment_logs) }
   it "should be valid from factory" do
     b = Factory(:backer)
     b.should be_valid
