@@ -7,6 +7,7 @@ class Backer < ActiveRecord::Base
   belongs_to :reward
   belongs_to :site
   has_many :payment_logs
+  has_one :payment_detail
   validates_presence_of :project, :user, :value, :site
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
