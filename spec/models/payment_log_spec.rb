@@ -6,6 +6,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: payment_logs
@@ -17,9 +18,9 @@ end
 #  payment_status :integer
 #  moip_id        :integer
 #  payment_method :integer
+#  payment_type   :string(255)
 #  consumer_email :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
-#  payment_type   :string(255)
 #
 

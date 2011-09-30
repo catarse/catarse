@@ -45,6 +45,8 @@ Factory.define :reward do |f|
   f.minimum_value 1.00
   f.description "Foo bar"
 end
+Factory.define :payment_detail do |f|
+end
 Factory.define :backer do |f|
   f.association :project, :factory => :project
   f.association :user, :factory => :user

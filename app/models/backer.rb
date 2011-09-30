@@ -7,6 +7,7 @@ class Backer < ActiveRecord::Base
   belongs_to :reward
   belongs_to :site
   has_many :payment_logs
+  has_one :payment_detail
   validates_presence_of :project, :user, :value, :site
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
@@ -52,13 +53,13 @@ class Backer < ActiveRecord::Base
     errors.add(:reward, I18n.t('backer.should_not_back_if_maximum_backers_been_reached')) unless reward.backers.confirmed.count < reward.maximum_backers
   end
   def display_value
-    number_to_currency value, :unit => 'R$', :precision => 0, :delimiter => '.'
+    number_to_currency value, :unit => "R$ ", :precision => 0, :delimiter => '.'
   end
   def display_confirmed_at
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
   def display_moip_tax(tax=7.5)
-    number_to_currency ((value*tax)/100), :unit => 'R$', :precision => 2, :delimiter => '.'
+    number_to_currency ((value*tax)/100), :unit => "R$ ", :precision => 2, :delimiter => '.'
   end
   def moip_value
     "%0.0f" % (value * 100)
