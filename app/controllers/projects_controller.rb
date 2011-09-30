@@ -187,6 +187,7 @@ class ProjectsController < ApplicationController
         }
         response = MoIP::Client.checkout(payment)
         backer.update_attribute :payment_token, response["Token"]
+        session[:_payment_token] = response["Token"]
         redirect_to MoIP::Client.moip_page(response["Token"])
       rescue
         flash[:failure] = t('projects.pay.moip_error')
@@ -194,15 +195,7 @@ class ProjectsController < ApplicationController
       end
     end
   end
-  def thank_you
-    unless session[:thank_you_id]
-      flash[:failure] = t('projects.thank_you.error')
-      return redirect_to :root
-    end
-    @project = Project.find session[:thank_you_id]
-    @title = t('projects.thank_you.title')
-    session[:thank_you_id] = nil
-  end
+
   def backers
     @project = Project.find params[:id]
     @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10

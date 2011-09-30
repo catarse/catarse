@@ -176,6 +176,16 @@ en:
         login: Login
       notifications:
         new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check</a>!"
+  payment_stream:
+    thank_you:
+      title: Thank you
+      header_title: Thank you! :D
+      header_subtitle: Without you maybe this project wouldn't stand a chance. Welcome to the team!
+      text_title_html: You are now part of the group that does everything to make %{link} happen.
+      text_subtitle: Tell everyone what you just did
+      successful: This project will be funded on %{expires_at}, thanks to you and %{total_backers} more people. Thanks a lot!
+      not_successful: This project will only be funded if at least %{goal} is reached until %{expires_at}. In case it is not successful, you will receive your money back in credits %{site}. But you don't want this to happen, do you? Use this opportunity, then, to spread the word!
+      error: Ooops. You can only access this page after backing a project.
   projects:
     index:
       recommended: Recommended projects
@@ -316,15 +326,6 @@ en:
       paypal_error: Ooops. There was an error while sending your payment to PayPal. Please try again.
       paypal_description: Back project
       paypal_cancel: Your PayPal payment was canceled. Please try again.
-    thank_you:
-      title: Thank you
-      header_title: Thank you! :D
-      header_subtitle: Without you maybe this project wouldn't stand a chance. Welcome to the team!
-      text_title_html: You are now part of the group that does everything to make %{link} happen.
-      text_subtitle: Tell everyone what you just did
-      successful: This project will be funded on %{expires_at}, thanks to you and %{total_backers} more people. Thanks a lot!
-      not_successful: This project will only be funded if at least %{goal} is reached until %{expires_at}. In case it is not successful, you will receive your money back in credits %{site}. But you don't want this to happen, do you? Use this opportunity, then, to spread the word!
-      error: Ooops. You can only access this page after backing a project.
     pending:
       title: Project management
       no_projects: No projects found.
