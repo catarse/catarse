@@ -180,6 +180,16 @@ pt:
     show:
       reached: atingido
       backed: levantados
+  payment_stream:
+    thank_you:
+      title: Muito obrigado
+      header_title: Muito obrigado! :D
+      header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!
+      text_title_html: Você agora é parte do grupo que faz de tudo para o %{link} acontecer.
+      text_subtitle: Conte para todo mundo o que você acabou de fazer
+      successful: Este projeto será financiado em %{expires_at}, graças a sua ajuda e de mais %{total_backers} pessoas. Muito obrigado!
+      not_successful: Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{expires_at}. Caso ele não seja bem sucedido, você receberá seu dinheiro de volta na forma de créditos %{site}. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!
+      error: Ooops. Você só pode acessar esta página depois de apoiar um projeto.
   projects:
     index:
       recommended: Projetos recomendados
@@ -320,15 +330,6 @@ pt:
       paypal_error: Ooops. Ocorreu um erro ao enviar seu pagamento para o PayPal. Por favor, tente novamente.
       paypal_description: Apoio para projeto
       paypal_cancel: Seu pagamento no PayPal foi cancelado. Por favor, tente novamente.
-    thank_you:
-      title: Muito obrigado
-      header_title: Muito obrigado! :D
-      header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!
-      text_title_html: Você agora é parte do grupo que faz de tudo para o %{link} acontecer.
-      text_subtitle: Conte para todo mundo o que você acabou de fazer
-      successful: Este projeto será financiado em %{expires_at}, graças a sua ajuda e de mais %{total_backers} pessoas. Muito obrigado!
-      not_successful: Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{expires_at}. Caso ele não seja bem sucedido, você receberá seu dinheiro de volta na forma de créditos %{site}. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!
-      error: Ooops. Você só pode acessar esta página depois de apoiar um projeto.
     pending:
       title: Gerenciamento dos projetos
       no_projects: Nenhum projeto encontrado.

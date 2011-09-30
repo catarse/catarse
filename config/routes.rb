@@ -12,7 +12,7 @@ Catarse::Application.routes.draw do
   match "/faq" => "projects#faq", :as => :faq
   match "/terms" => "projects#terms", :as => :terms
   match "/privacy" => "projects#privacy", :as => :privacy
-  match "/thank_you" => "projects#thank_you", :as => :thank_you
+  match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/moip" => "payment_stream#moip", :as => :moip
   match "/explore" => "projects#explore", :as => :explore
   match "/explore/:quick" => "projects#explore", :as => :explore_quick

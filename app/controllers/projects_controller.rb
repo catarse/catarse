@@ -194,15 +194,7 @@ class ProjectsController < ApplicationController
       end
     end
   end
-  def thank_you
-    unless session[:thank_you_id]
-      flash[:failure] = t('projects.thank_you.error')
-      return redirect_to :root
-    end
-    @project = Project.find session[:thank_you_id]
-    @title = t('projects.thank_you.title')
-    session[:thank_you_id] = nil
-  end
+
   def backers
     @project = Project.find params[:id]
     @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
