@@ -1,11 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe PaymentHistory::Moip do
+  before(:each) do
+    MoIP::Client.stubs(:query).returns(moip_query_response)
+  end
 
   describe "When receive params of POST request" do
     context "when create log" do
+
       it 'should have a payment log in backer after receive request' do
-        backer = create(:backer, :value => 21.90)
+        backer = create(:backer, :value => 21.90, :confirmed => false)
         backer.update_attribute :key, 'ABCD'
         backer.reload
 
@@ -20,6 +24,8 @@ describe PaymentHistory::Moip do
         log.amount.should == 2190
         log.payment_status.should == PaymentHistory::Moip::TransactionStatus::AUTHORIZED
         log.payment_type.should == 'CartaoDeCredito'
+
+        backer.payment_detail.should_not be_nil
       end
     end
 
@@ -36,6 +42,8 @@ describe PaymentHistory::Moip do
         @params = post_moip_params
       end
 
+      subject { PaymentHistory::Moip.new(@params.merge!({:status_pagamento => PaymentHistory::Moip::TransactionStatus::AUTHORIZED})) }
+
       context 'with wrong backer' do
         subject { PaymentHistory::Moip.new(@params.merge!({:id_transacao => 'ABCDE'})) }
 
@@ -47,6 +55,8 @@ describe PaymentHistory::Moip do
         it 'should not call build log' do
           subject.expects(:find_backer).returns(@backer_with_wrong_value)
           subject.expects(:build_log).never
+          subject.backer.expects(:confirm!).never
+          subject.backer.expects(:build_payment_detail).never
         end
 
         after(:each) do
@@ -54,25 +64,26 @@ describe PaymentHistory::Moip do
         end
       end
 
-      context "confirm backer when payment_status is authorized" do
+      context "with confirmed backer" do
+        it "should not update a payment detail" do
+          subject.expects(:find_backer).returns(@backer)
+          subject.stubs(:backer).returns(@backer)
+          subject.backer.expects(:build_payment_detail).never
+          subject.backer.expects(:confirm!).never
+          subject.process_request!
+        end
+      end
+
+      context "with not confirmed backer and authorization request" do
         before(:each) do
           @backer.update_attribute :confirmed, false
-          @backer.reload
         end
 
-        subject { PaymentHistory::Moip.new(@params.merge!({:status_pagamento => PaymentHistory::Moip::TransactionStatus::AUTHORIZED})) }
-
-        it {
-          @backer.confirmed.should be_false
-          subject.process_request!
-          @backer.reload
-          @backer.confirmed.should be_true
-        }
-
-        it 'should confirm! when pass in conditions' do
+        it 'should confirm and update paymend detail' do
           subject.expects(:find_backer).returns(@backer)
           subject.stubs(:backer).returns(@backer)
           subject.backer.expects(:confirm!).returns(true)
+          # subject.backer.expects(:build_payment_detail)
           subject.process_request!
         end
       end
