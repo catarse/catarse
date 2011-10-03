@@ -22,6 +22,46 @@ describe PaymentStreamController do
       response.should_not be_successful
       response.code.should == '422'
     end
+
+    context "when have a payment detail" do
+      before(:each) do
+        project=create(:project)
+        @backer=create(:backer, :payment_token => 'ABCD', :project => project, :confirmed => false)
+        create(:payment_detail, :backer => @backer)
+        @backer.reload
+      end
+
+      context 'when receive aonther moip request' do
+        before(:each) do
+          moip_response = moip_query_response.dup
+          moip_response["Autorizacao"]["Pagamento"].merge!("Status" => 'BoletoPago')
+          MoIP::Client.stubs(:query).with('ABCD').returns(moip_response)
+        end
+
+        it 'should update info and confirm backer' do
+          @backer.confirmed.should_not be_true
+          @backer.payment_detail.payment_status.should == 'BoletoImpresso'
+
+          post :moip, post_moip_params.merge!({:id_transacao => @backer.key, :status_pagamento => '1', :valor => @backer.moip_value})
+
+          @backer.reload
+          @backer.payment_detail.payment_status.should == 'BoletoPago'
+          @backer.confirmed.should be_true
+        end
+
+        it "when confirmed backer don't update the backer payment detail" do
+          @backer.update_attribute :confirmed, true
+          @backer.reload
+          @backer.confirmed.should be_true
+          @backer.payment_detail.payment_status.should == 'BoletoImpresso'
+
+          post :moip, post_moip_params.merge!({:id_transacao => @backer.key, :status_pagamento => '1', :valor => @backer.moip_value})
+
+          @backer.reload
+          @backer.payment_detail.payment_status.should == 'BoletoImpresso'
+        end
+      end
+    end
   end
 
   describe '/thank_you' do
