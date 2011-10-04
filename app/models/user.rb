@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :notifications
   has_many :comments
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
+  has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
   belongs_to :site
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
@@ -135,3 +136,37 @@ class User < ActiveRecord::Base
     "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or "http://catarse.me/images/user.png"}"
   end
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                    :integer         not null, primary key
+#  primary_user_id       :integer
+#  provider              :text            not null
+#  uid                   :text            not null
+#  email                 :text
+#  name                  :text
+#  nickname              :text
+#  bio                   :text
+#  image_url             :text
+#  newsletter            :boolean         default(FALSE)
+#  project_updates       :boolean         default(FALSE)
+#  created_at            :datetime
+#  updated_at            :datetime
+#  admin                 :boolean         default(FALSE)
+#  full_name             :text
+#  address_street        :text
+#  address_number        :text
+#  address_complement    :text
+#  address_neighbourhood :text
+#  address_city          :text
+#  address_state         :text
+#  address_zip_code      :text
+#  phone_number          :text
+#  credits               :decimal(, )     default(0.0)
+#  site_id               :integer         default(1), not null
+#  session_id            :text
+#  locale                :text            default("pt"), not null
+#
+

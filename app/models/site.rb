@@ -55,3 +55,24 @@ class Site < ActiveRecord::Base
     "#{to_the} #{name}".strip
   end
 end
+
+# == Schema Information
+#
+# Table name: sites
+#
+#  id           :integer         not null, primary key
+#  name         :text            not null
+#  title        :text            not null
+#  path         :text            not null
+#  host         :text            not null
+#  gender       :text            not null
+#  email        :text            not null
+#  twitter      :text            not null
+#  facebook     :text            not null
+#  blog         :text            not null
+#  created_at   :datetime
+#  updated_at   :datetime
+#  auth_gateway :boolean         default(FALSE), not null
+#  port         :text
+#
+

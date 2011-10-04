@@ -119,7 +119,7 @@ describe User do
     u = Factory(:user, :name => nil, :nickname => "Nickname")
     u.display_name.should == "Nickname"
     u = Factory(:user, :name => nil, :nickname => nil)
-    u.display_name.should == "Sem nome"
+    u.display_name.should == I18n.t('user.no_name')
   end
   it "should have a display_image that shows the user's image or user.png when email is null" do
     u = Factory(:user, :image_url => "image.png", :email => nil)
@@ -136,7 +136,7 @@ describe User do
     u.remember_me_hash.should == "27fc6690fafccbb0fc0b8f84c6749644"
   end
   it "should merge into another account, taking the credits, backs, projects, comments and notifications with it" do
-    
+
     old_user = Factory(:user, :credits => 50)
     new_user = Factory(:user, :credits => 20)
     backed_project = Factory(:project)
@@ -148,7 +148,7 @@ describe User do
     new_user_comment = backed_project.comments.create!(:user => new_user, :comment => "Foo bar")
     old_user_notification = old_user.notifications.create!(:site => backed_project.site, :text => "Foo bar")
     new_user_notification = new_user.notifications.create!(:site => backed_project.site, :text => "Foo bar")
-    
+
     old_user.credits.should == 50
     new_user.credits.should == 20
     old_user.backs.should == [old_user_back]
@@ -159,11 +159,11 @@ describe User do
     new_user.comments.should == [new_user_comment]
     old_user.notifications.should == [old_user_notification]
     new_user.notifications.should == [new_user_notification]
-    
+
     old_user.merge_into!(new_user)
     old_user.reload
     new_user.reload
-    
+
     old_user.primary.should == new_user
     old_user.credits.should == 0
     new_user.credits.should == 70
@@ -175,7 +175,41 @@ describe User do
     new_user.comments.order(:created_at).should == [old_user_comment, new_user_comment]
     old_user.notifications.should == []
     new_user.notifications.order(:created_at).should == [old_user_notification, new_user_notification]
-    
+
   end
 end
+
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                    :integer         not null, primary key
+#  primary_user_id       :integer
+#  provider              :text            not null
+#  uid                   :text            not null
+#  email                 :text
+#  name                  :text
+#  nickname              :text
+#  bio                   :text
+#  image_url             :text
+#  newsletter            :boolean         default(FALSE)
+#  project_updates       :boolean         default(FALSE)
+#  created_at            :datetime
+#  updated_at            :datetime
+#  admin                 :boolean         default(FALSE)
+#  full_name             :text
+#  address_street        :text
+#  address_number        :text
+#  address_complement    :text
+#  address_neighbourhood :text
+#  address_city          :text
+#  address_state         :text
+#  address_zip_code      :text
+#  phone_number          :text
+#  credits               :decimal(, )     default(0.0)
+#  site_id               :integer         default(1), not null
+#  session_id            :text
+#  locale                :text            default("pt"), not null
+#
 

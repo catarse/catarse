@@ -10,3 +10,15 @@ describe Configuration do
     r.should_not be_valid
   end
 end
+
+# == Schema Information
+#
+# Table name: configurations
+#
+#  id         :integer         not null, primary key
+#  name       :text            not null
+#  value      :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+

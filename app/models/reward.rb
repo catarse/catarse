@@ -2,6 +2,7 @@
 class Reward < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
+
   include ERB::Util
   belongs_to :project
   has_many :backers
@@ -18,10 +19,10 @@ class Reward < ActiveRecord::Base
     maximum_backers - backers.confirmed.count
   end
   def display_remaining
-    I18n.t('reward.display_remaining', :remaining => remaining, :maximum => maximum_backers)    
+    I18n.t('reward.display_remaining', :remaining => remaining, :maximum => maximum_backers)
   end
   def name
-    "<div class='reward_minimum_value'>#{(minimum_value > 0 ? display_minimum + '+' : I18n.t('reward.dont_want'))}</div><div class='reward_description'>#{h(description)}</div>#{ '<div class="sold_out">' + I18n.t('reward.sold_out') + '</div>' if sold_out? }<div class='clear'></div>".html_safe
+    "<div class='reward_minimum_value'>#{(minimum_value > 0 ? display_minimum+'+' : I18n.t('reward.dont_want'))}</div><div class='reward_description'>#{h(description)}</div>#{'<div class="sold_out">' + I18n.t('reward.sold_out') + '</div>' if sold_out?}<div class='clear'></div>".html_safe
   end
   def display_minimum
     number_to_currency minimum_value, :unit => 'R$', :precision => 0, :delimiter => '.'
@@ -42,4 +43,18 @@ class Reward < ActiveRecord::Base
     }
   end
 end
+
+
+# == Schema Information
+#
+# Table name: rewards
+#
+#  id              :integer         not null, primary key
+#  project_id      :integer         not null
+#  minimum_value   :decimal(, )     not null
+#  maximum_backers :integer
+#  description     :text            not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#
 
