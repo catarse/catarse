@@ -6,7 +6,6 @@ class ProjectsController < ApplicationController
   respond_to :html, :except => [:backers, :comments, :updates]
   respond_to :json, :only => [:show, :backers, :comments, :updates]
   can_edit_on_the_spot
-  skip_before_filter :verify_authenticity_token, :only => [:moip]
   skip_before_filter :detect_locale, :only => [:backers, :comments, :updates, :moip]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create]
@@ -155,6 +154,7 @@ class ProjectsController < ApplicationController
       end
       unless backer.confirmed
         current_user.update_attribute :credits, current_user.credits - backer.value
+        backer.update_attribute :payment_method, 'Credits'
         backer.confirm!
       end
       flash[:success] = t('projects.pay.success')
@@ -186,6 +186,8 @@ class ProjectsController < ApplicationController
           :url_retorno => thank_you_url
         }
         response = MoIP::Client.checkout(payment)
+        backer.update_attribute :payment_token, response["Token"]
+        session[:_payment_token] = response["Token"]
         redirect_to MoIP::Client.moip_page(response["Token"])
       rescue
         flash[:failure] = t('projects.pay.moip_error')
@@ -193,43 +195,7 @@ class ProjectsController < ApplicationController
       end
     end
   end
-  def thank_you
-    unless session[:thank_you_id]
-      flash[:failure] = t('projects.thank_you.error')
-      return redirect_to :root
-    end
-    @project = Project.find session[:thank_you_id]
-    @title = t('projects.thank_you.title')
-    session[:thank_you_id] = nil
-  end
-  def moip
-    key = params[:id_transacao]
-    status = params[:status_pagamento]
-    value = params[:valor]
-    # TODO remove debug
-    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value}", :site => current_site
-    # TODO remove debug
-    backer = Backer.find_by_key key
-    # TODO remove debug
-    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id}", :site => current_site
-    # TODO remove debug
-    return render :nothing => true, :status => 200 if status != '1'
-    return render :nothing => true, :status => 200 if backer.confirmed
-    return render :nothing => true, :status => 422 if backer.moip_value != value
-    # TODO remove debug
-    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id} - before_confirm", :site => current_site
-    # TODO remove debug
-    backer.confirm!
-    # TODO remove debug
-    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - #{backer.id} - after_confirm", :site => current_site
-    # TODO remove debug
-    return render :nothing => true, :status => 200
-  rescue => e
-    # TODO remove debug
-    #User.find(5).notifications.create :text => "MoIP #{key} - #{status} - #{value} - error", :site => current_site
-    # TODO remove debug
-    return render :nothing => true, :status => 422
-  end
+
   def backers
     @project = Project.find params[:id]
     @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
