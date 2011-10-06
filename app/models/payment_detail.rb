@@ -1,4 +1,6 @@
 class PaymentDetail < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
+
   belongs_to :backer
 
   def update_from_service
@@ -40,7 +42,21 @@ class PaymentDetail < ActiveRecord::Base
     []
   end
 
+  def display_service_tax
+    number_to_currency service_tax_amount, :unit => "R$", :precision => 2, :delimiter => '.'
+  end
 
+  def display_net_amount
+    number_to_currency net_amount, :unit => "R$", :precision => 2, :delimiter => '.'
+  end
+
+  def display_total_amount
+    number_to_currency total_amount, :unit => "R$", :precision => 2, :delimiter => '.'
+  end
+
+  def display_payment_date
+    I18n.l(payment_date, :format => :simple) if payment_date.present?
+  end
 
 end
 

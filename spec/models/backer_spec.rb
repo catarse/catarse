@@ -95,6 +95,20 @@ describe Backer do
     backer = Factory(:backer)
     backer.payment_method.should == 'MoIP'
   end
+
+  describe "#display_catarse_tax" do
+    before(:each) do
+      @backer = create(:backer, :value => 100)
+    end
+
+    it 'with default tax 7.5%'do
+      @backer.display_catarse_tax.should == 'R$ 7,50'
+    end
+
+    it 'with another tax'do
+      @backer.display_catarse_tax(5).should == 'R$ 5,00'
+    end
+  end
 end
 
 # == Schema Information
