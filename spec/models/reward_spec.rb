@@ -14,11 +14,11 @@ describe Reward do
   it "should have a display_minimum" do
     r = Factory.build(:reward)
     r.minimum_value = 1
-    r.display_minimum.should == "R$1"
+    r.display_minimum.should == "R$ 1,00"
     r.minimum_value = 10
-    r.display_minimum.should == "R$10"
+    r.display_minimum.should == "R$ 10,00"
     r.minimum_value = 99
-    r.display_minimum.should == "R$99"
+    r.display_minimum.should == "R$ 99,00"
   end
   it "should have a greater than 1.00 minimum value" do
     r = Factory.build(:reward)
@@ -77,9 +77,9 @@ describe Reward do
     r.maximum_backers = 1
     r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class='clear'></div>"
     r.minimum_value = 1
-    r.name.should == "<div class='reward_minimum_value'>R$ 1+</div><div class='reward_description'>Description</div><div class='clear'></div>"
+    r.name.should == "<div class='reward_minimum_value'>R$ 1,00+</div><div class='reward_description'>Description</div><div class='clear'></div>"
     r.description = "Description<javascript>XSS()</javascript>"
-    r.name.should == "<div class='reward_minimum_value'>R$ 1+</div><div class='reward_description'>Description&lt;javascript&gt;XSS()&lt;/javascript&gt;</div><div class='clear'></div>"
+    r.name.should == "<div class='reward_minimum_value'>R$ 1,00+</div><div class='reward_description'>Description&lt;javascript&gt;XSS()&lt;/javascript&gt;</div><div class='clear'></div>"
   end
 end
 

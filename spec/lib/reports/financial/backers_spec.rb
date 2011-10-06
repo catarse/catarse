@@ -6,7 +6,8 @@ describe Reports::Financial::Backers do
       @project = create(:project)
       4.times do |n|
         user = create(:user)
-        create(:backer, :value => (10.00+n),:project => @project, :user => user)
+        backer = create(:backer, :value => (10.00+n),:project => @project, :user => user)
+        create(:payment_detail, :backer => backer)
       end
     end
 
@@ -16,6 +17,9 @@ describe Reports::Financial::Backers do
       report.should =~ /R\$ 11/
       report.should =~ /R\$ 12/
       report.should =~ /person\d+@example.com/
+      report.should =~ /R\$ 19,37/
+      report.should =~ /Lorem/
+      report.should =~ /BoletoBancario/
     end
   end
 end
