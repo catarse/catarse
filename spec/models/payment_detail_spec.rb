@@ -10,7 +10,14 @@ describe PaymentDetail do
     @backer.payment_detail||@backer.build_payment_detail
   }
 
-  describe '.update_from_service' do
+  describe "instance_methods" do
+    subject { create(:payment_detail) }
+    its(:display_service_tax) { should == 'R$ 19,37' }
+    its(:display_total_amount) { should == 'R$ 999,00' }
+    its(:display_net_amount) { should == 'R$ 979,63' }
+  end
+
+  describe "#update_from_service" do
     context "when MoIP" do
       before(:each) do
         @backer.update_attribute(:payment_method, 'MoIP')
