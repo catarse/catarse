@@ -1,4 +1,12 @@
 en:
+  time:
+    formats:
+      simple: "%d/%m/%Y, %H:%M h"
+      default: "%A, %d de %B de %Y, %H:%M h"
+      short: "%d/%m, %H:%M h"
+      long: "%A, %d de %B de %Y, %H:%M h"
+    am: ''
+    pm: ''
   activerecord:
       models:
         backer: Backer

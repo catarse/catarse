@@ -15,6 +15,7 @@ describe PaymentDetail do
     its(:display_service_tax) { should == 'R$ 19,37' }
     its(:display_total_amount) { should == 'R$ 999,00' }
     its(:display_net_amount) { should == 'R$ 979,63' }
+    its(:display_payment_date) { should == '30/09/2011, 09:33 h'}
   end
 
   describe "#update_from_service" do

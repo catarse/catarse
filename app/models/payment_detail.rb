@@ -54,6 +54,10 @@ class PaymentDetail < ActiveRecord::Base
     number_to_currency total_amount, :unit => "R$", :precision => 2, :delimiter => '.'
   end
 
+  def display_payment_date
+    I18n.l(payment_date, :format => :simple) if payment_date.present?
+  end
+
 end
 
 # == Schema Information

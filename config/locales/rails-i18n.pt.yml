@@ -17,9 +17,10 @@ pt:
       - :day
       - :month
       - :year
-  
+
   time:
     formats:
+      simple: "%d/%m/%Y, %H:%M h"
       default: "%A, %d de %B de %Y, %H:%M h"
       short: "%d/%m, %H:%M h"
       long: "%A, %d de %B de %Y, %H:%M h"
@@ -83,7 +84,7 @@ pt:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""     
+          unit: ""
           thousand: "mil"
           million:
             one: milhão
