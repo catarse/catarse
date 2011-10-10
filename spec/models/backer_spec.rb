@@ -109,6 +109,20 @@ describe Backer do
       @backer.display_catarse_tax(5).should == 'R$ 5,00'
     end
   end
+
+  describe "#catarse_tax" do
+    before(:each) do
+      @backer = create(:backer, :value => 100)
+    end
+
+    it 'with default tax 7.5%'do
+      @backer.catarse_tax.should == 7.50
+    end
+
+    it 'with another tax'do
+      @backer.catarse_tax(5).should == 5.00
+    end
+  end
 end
 
 # == Schema Information
