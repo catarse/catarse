@@ -1,6 +1,40 @@
 require 'spec_helper'
 
 describe Backer do
+
+  it "should update user.credits when save a backer" do
+    u = Factory(:user)
+    u.save
+    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :user => u)
+    b.save
+    u.credits.should == 10
+    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :user => u)
+    b2.save
+    u.credits.should == 20
+  end
+
+  it "should not add backer value as credits for user if could not be refunded" do
+    u = Factory(:user)
+    u.save
+    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => false, :user => u)
+    b.save
+    u.credits.should == 0
+    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => false, :user => u)
+    b2.save
+    u.credits.should == 0
+  end
+
+  it "should not add backer value as credits for user if not confirmed" do
+    u = Factory(:user)
+    u.save
+    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :confirmed => false, :user => u)
+    b.save
+    u.credits.should == 0
+    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :confirmed => false, :user => u)
+    b2.save
+    u.credits.should == 0
+  end
+
   it { should have_many(:payment_logs) }
   it "should be valid from factory" do
     b = Factory(:backer)
