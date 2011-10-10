@@ -1,6 +1,18 @@
 require 'spec_helper'
 
 describe User do
+  context "#display_nickname" do
+    it "when user don't have the nickname" do
+      user = create(:user,:name=>'Lorem Ipsum',:nickname=>'profile.php?id=1234')
+      user.display_nickname.should == 'Lorem Ipsum'
+    end
+
+    it 'user with nickname' do
+      user = create(:user,:name=>'Lorem Ipsum',:nickname=>'lorem.ipsum')
+      user.display_nickname.should == 'lorem.ipsum'
+    end
+  end
+
   it "should be valid from factory" do
     u = Factory(:user)
     u.should be_valid
@@ -137,11 +149,11 @@ describe User do
   end
   it "should merge into another account, taking the credits, backs, projects, comments and notifications with it" do
 
-    old_user = Factory(:user, :credits => 50)
-    new_user = Factory(:user, :credits => 20)
+    old_user = Factory(:user)
+    new_user = Factory(:user)
     backed_project = Factory(:project)
-    old_user_back = backed_project.backers.create!(:site => backed_project.site, :user => old_user, :value => 10)
-    new_user_back = backed_project.backers.create!(:site => backed_project.site, :user => new_user, :value => 10)
+    old_user_back = backed_project.backers.create!(:site => backed_project.site, :user => old_user, :value => 50, :confirmed => true, :credits => true, :can_refund => true)
+    new_user_back = backed_project.backers.create!(:site => backed_project.site, :user => new_user, :value => 10, :confirmed => true, :credits => true, :can_refund => true)
     old_user_project = Factory(:project, :user => old_user)
     new_user_project = Factory(:project, :user => new_user)
     old_user_comment = backed_project.comments.create!(:user => old_user, :comment => "Foo bar")
@@ -150,7 +162,7 @@ describe User do
     new_user_notification = new_user.notifications.create!(:site => backed_project.site, :text => "Foo bar")
 
     old_user.credits.should == 50
-    new_user.credits.should == 20
+    new_user.credits.should == 10
     old_user.backs.should == [old_user_back]
     new_user.backs.should == [new_user_back]
     old_user.projects.should == [old_user_project]
@@ -166,7 +178,7 @@ describe User do
 
     old_user.primary.should == new_user
     old_user.credits.should == 0
-    new_user.credits.should == 70
+    new_user.credits.should == 60
     old_user.backs.should == []
     new_user.backs.order(:created_at).should == [old_user_back, new_user_back]
     old_user.projects.should == []
