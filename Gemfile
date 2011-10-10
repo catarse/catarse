@@ -36,8 +36,10 @@ gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
 gem 'rmagick'
 gem 'fog'
 gem 'capybara', ">= 0.4.0"
+gem 'enumerate_it'
 
 group :test, :development do
+  gem 'annotate'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'steak', "~> 1.1.0"
@@ -45,6 +47,10 @@ group :test, :development do
   gem 'rcov'
   gem 'factory_girl_rails'
   gem 'mocha'
+end
+
+group :test do
+  gem 'shoulda'
 end
 
 # if you want use capybara-webkit, compile QT and be happy :)

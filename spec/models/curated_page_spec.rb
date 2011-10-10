@@ -21,3 +21,20 @@ describe CuratedPage do
     cp.should_not be_valid
   end
 end
+
+# == Schema Information
+#
+# Table name: curated_pages
+#
+#  id           :integer         not null, primary key
+#  name         :string(255)
+#  description  :string(255)
+#  analytics_id :string(255)
+#  logo         :string(255)
+#  video_url    :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  permalink    :string(255)
+#  site_id      :integer
+#
+

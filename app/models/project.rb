@@ -18,6 +18,7 @@ class Project < ActiveRecord::Base
   has_many :updates, :as => :commentable, :class_name => "Comment", :conditions => {:project_update => true}
   has_many :projects_sites
   has_many :sites_present, :through => :projects_sites, :source => :site
+  has_and_belongs_to_many :managers, :join_table => "projects_managers", :class_name => 'User'
   accepts_nested_attributes_for :rewards
   auto_html_for :about do
     html_escape :map => { 
@@ -186,3 +187,27 @@ class Project < ActiveRecord::Base
     }
   end
 end
+
+# == Schema Information
+#
+# Table name: projects
+#
+#  id          :integer         not null, primary key
+#  name        :text            not null
+#  user_id     :integer         not null
+#  category_id :integer         not null
+#  goal        :decimal(, )     not null
+#  expires_at  :datetime        not null
+#  about       :text            not null
+#  headline    :text            not null
+#  video_url   :text            not null
+#  image_url   :text
+#  short_url   :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  can_finish  :boolean         default(FALSE)
+#  finished    :boolean         default(FALSE)
+#  about_html  :text
+#  site_id     :integer         default(1), not null
+#
+
