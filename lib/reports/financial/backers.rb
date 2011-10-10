@@ -7,7 +7,7 @@ module Reports
           @project = Project.find(project_id)
           @backers = @project.backers
 
-          @csv = CSV.generate do |csv_string|
+          @csv = CSV.generate(:col_sep => ';') do |csv_string|
 
             # TODO: Change this later *order and names to use i18n*
             # for moment header only in portuguese.
