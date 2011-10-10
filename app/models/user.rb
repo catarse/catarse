@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
     if nickname =~ /profile\.php/
       name
     else
-      nickname
+      nickname||name
     end
   end
   def short_name
