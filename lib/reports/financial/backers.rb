@@ -42,15 +42,15 @@ module Reports
 
             @backers.each do |backer|
               csv_string << [
-                (backer.user.nickname||backer.user.name),
+                backer.user.display_nickname,
                 backer.user.id,
                 backer.user.name,
-                backer.display_value,
-                (backer.reward.display_minimum if backer.reward),
+                backer.value,
+                (backer.reward.minimum_value if backer.reward),
                 backer.project.name,
                 (backer.payment_detail.try(:payment_method) if backer.payment_detail),
-                backer.display_catarse_tax(7.5),
-                (backer.payment_detail.try(:display_service_tax)  if backer.payment_detail),
+                backer.catarse_tax(7.5),
+                (backer.payment_detail.try(:service_tax_amount)  if backer.payment_detail),
                 backer.key,
                 (backer.payment_detail.try(:service_code) if backer.payment_detail),
                 (backer.payment_detail.try(:display_payment_date) if backer.payment_detail),
