@@ -28,6 +28,10 @@ class Backer < ActiveRecord::Base
   def define_payment_method
     self.update_attribute :payment_method, 'MoIP'
   end
+  after_save :update_user_credits
+  def update_user_credits
+    self.user.update_attribute :credits, self.user.backs.where(:confirmed => true, :credits => true, :can_refund => true).sum(:value)
+  end
   before_save :confirm?
   def confirm?
     if confirmed and confirmed_at.nil?
@@ -37,6 +41,7 @@ class Backer < ActiveRecord::Base
   end
   def confirm!
     update_attribute :confirmed, true
+    update_attribute :confirmed_at, Time.now
   end
   def reward_must_be_from_project
     return unless reward
