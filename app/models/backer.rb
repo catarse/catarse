@@ -28,6 +28,10 @@ class Backer < ActiveRecord::Base
   def define_payment_method
     self.update_attribute :payment_method, 'MoIP'
   end
+  after_save :update_user_credits
+  def update_user_credits
+    self.user.update_attribute :credits, self.user.backs.where(:confirmed => true, :credits => true, :can_refund => true).sum(:value)
+  end
   before_save :confirm?
   def confirm?
     if confirmed and confirmed_at.nil?
@@ -37,6 +41,7 @@ class Backer < ActiveRecord::Base
   end
   def confirm!
     update_attribute :confirmed, true
+    update_attribute :confirmed_at, Time.now
   end
   def reward_must_be_from_project
     return unless reward
@@ -58,8 +63,11 @@ class Backer < ActiveRecord::Base
   def display_confirmed_at
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
+  def catarse_tax(tax=7.5)
+    (value*tax)/100
+  end
   def display_catarse_tax(tax=7.5)
-    number_to_currency ((value*tax)/100), :unit => "R$", :precision => 2, :delimiter => '.'
+    number_to_currency catarse_tax(tax), :unit => "R$", :precision => 2, :delimiter => '.'
   end
   def moip_value
     "%0.0f" % (value * 100)
