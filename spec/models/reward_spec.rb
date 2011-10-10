@@ -14,11 +14,11 @@ describe Reward do
   it "should have a display_minimum" do
     r = Factory.build(:reward)
     r.minimum_value = 1
-    r.display_minimum.should == "R$ 1"
+    r.display_minimum.should == "R$ 1,00"
     r.minimum_value = 10
-    r.display_minimum.should == "R$ 10"
+    r.display_minimum.should == "R$ 10,00"
     r.minimum_value = 99
-    r.display_minimum.should == "R$ 99"
+    r.display_minimum.should == "R$ 99,00"
   end
   it "should have a greater than 1.00 minimum value" do
     r = Factory.build(:reward)
@@ -71,14 +71,29 @@ describe Reward do
     r.remaining.should == 0
   end
   it "should have a HTML-safe name that is a HTML composition from minimum_value, description and sold_out" do
+    I18n.locale = :pt
     r = Factory.build(:reward, :minimum_value => 0, :description => "Description", :maximum_backers => 0)
     r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class=\"sold_out\">Esgotada</div><div class='clear'></div>"
     r.maximum_backers = 1
     r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class='clear'></div>"
     r.minimum_value = 1
-    r.name.should == "<div class='reward_minimum_value'>R$ 1+</div><div class='reward_description'>Description</div><div class='clear'></div>"
+    r.name.should == "<div class='reward_minimum_value'>R$ 1,00+</div><div class='reward_description'>Description</div><div class='clear'></div>"
     r.description = "Description<javascript>XSS()</javascript>"
-    r.name.should == "<div class='reward_minimum_value'>R$ 1+</div><div class='reward_description'>Description&lt;javascript&gt;XSS()&lt;/javascript&gt;</div><div class='clear'></div>"
+    r.name.should == "<div class='reward_minimum_value'>R$ 1,00+</div><div class='reward_description'>Description&lt;javascript&gt;XSS()&lt;/javascript&gt;</div><div class='clear'></div>"
   end
 end
+
+
+# == Schema Information
+#
+# Table name: rewards
+#
+#  id              :integer         not null, primary key
+#  project_id      :integer         not null
+#  minimum_value   :decimal(, )     not null
+#  maximum_backers :integer
+#  description     :text            not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#
 

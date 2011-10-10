@@ -6,6 +6,8 @@ class Backer < ActiveRecord::Base
   belongs_to :user
   belongs_to :reward
   belongs_to :site
+  has_many :payment_logs
+  has_one :payment_detail
   validates_presence_of :project, :user, :value, :site
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
@@ -19,9 +21,16 @@ class Backer < ActiveRecord::Base
   def self.project_visible(site)
     joins(:project).joins("INNER JOIN projects_sites ON projects_sites.project_id = projects.id").where("projects_sites.site_id = #{site.id} AND projects_sites.visible = true")
   end
-  after_create :define_key
+  after_create :define_key, :define_payment_method
   def define_key
     self.update_attribute :key, Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s
+  end
+  def define_payment_method
+    self.update_attribute :payment_method, 'MoIP'
+  end
+  after_save :update_user_credits
+  def update_user_credits
+    self.user.update_attribute :credits, self.user.backs.where(:confirmed => true, :credits => true, :can_refund => true).sum(:value)
   end
   before_save :confirm?
   def confirm?
@@ -32,6 +41,7 @@ class Backer < ActiveRecord::Base
   end
   def confirm!
     update_attribute :confirmed, true
+    update_attribute :confirmed_at, Time.now
   end
   def reward_must_be_from_project
     return unless reward
@@ -48,13 +58,16 @@ class Backer < ActiveRecord::Base
     errors.add(:reward, I18n.t('backer.should_not_back_if_maximum_backers_been_reached')) unless reward.backers.confirmed.count < reward.maximum_backers
   end
   def display_value
-    number_to_currency value, :unit => 'R$', :precision => 0, :delimiter => '.'
+    number_to_currency value, :unit => "R$", :precision => 0, :delimiter => '.'
   end
   def display_confirmed_at
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
-  def display_moip_tax(tax=7.5)
-    number_to_currency ((value*tax)/100), :unit => 'R$', :precision => 2, :delimiter => '.'
+  def catarse_tax(tax=7.5)
+    (value*tax)/100
+  end
+  def display_catarse_tax(tax=7.5)
+    number_to_currency catarse_tax(tax), :unit => "R$", :precision => 2, :delimiter => '.'
   end
   def moip_value
     "%0.0f" % (value * 100)
@@ -79,3 +92,30 @@ class Backer < ActiveRecord::Base
     }
   end
 end
+
+# == Schema Information
+#
+# Table name: backers
+#
+#  id               :integer         not null, primary key
+#  project_id       :integer         not null
+#  user_id          :integer         not null
+#  reward_id        :integer
+#  value            :decimal(, )     not null
+#  confirmed        :boolean         default(FALSE), not null
+#  confirmed_at     :datetime
+#  created_at       :datetime
+#  updated_at       :datetime
+#  display_notice   :boolean         default(FALSE)
+#  anonymous        :boolean         default(FALSE)
+#  key              :text
+#  can_refund       :boolean         default(FALSE)
+#  requested_refund :boolean         default(FALSE)
+#  refunded         :boolean         default(FALSE)
+#  credits          :boolean         default(FALSE)
+#  notified_finish  :boolean         default(FALSE)
+#  site_id          :integer         default(1), not null
+#  payment_method   :text
+#  payment_token    :text
+#
+

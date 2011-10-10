@@ -132,37 +132,37 @@ describe Project do
     Time.stubs(:now).returns(time)
     p.expires_at = 30.days.from_now
     p.time_to_go[:time].should == 30
-    p.time_to_go[:unit].should == "dias"
+    p.time_to_go[:unit].should == pluralize_without_number(30, I18n.t('datetime.prompts.day').downcase)
     p.expires_at = 1.day.from_now
     p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == "dia"
+    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.day').downcase)
     p.expires_at = 23.hours.from_now + 59.minutes + 59.seconds
     p.time_to_go[:time].should == 24
-    p.time_to_go[:unit].should == "horas"
+    p.time_to_go[:unit].should == pluralize_without_number(24, I18n.t('datetime.prompts.hour').downcase)
     p.expires_at = 1.hour.from_now
     p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == "hora"
+    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.hour').downcase)
     p.expires_at = 59.minutes.from_now
     p.time_to_go[:time].should == 59
-    p.time_to_go[:unit].should == "minutos"
+    p.time_to_go[:unit].should == pluralize_without_number(59, I18n.t('datetime.prompts.minute').downcase)
     p.expires_at = 1.minute.from_now
     p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == "minuto"
+    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.minute').downcase)
     p.expires_at = 59.seconds.from_now
     p.time_to_go[:time].should == 59
-    p.time_to_go[:unit].should == "segundos"
+    p.time_to_go[:unit].should == pluralize_without_number(59, I18n.t('datetime.prompts.second').downcase)
     p.expires_at = 1.second.from_now
     p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == "segundo"
+    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.second').downcase)
     p.expires_at = 0.seconds.from_now
     p.time_to_go[:time].should == 0
-    p.time_to_go[:unit].should == "segundos"
+    p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
     p.expires_at = 1.second.ago
     p.time_to_go[:time].should == 0
-    p.time_to_go[:unit].should == "segundos"
+    p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
     p.expires_at = 30.days.ago
     p.time_to_go[:time].should == 0
-    p.time_to_go[:unit].should == "segundos"
+    p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
   end
   it "should be waiting confirmation until 3 weekdays after the deadline unless it is already successful" do
     p = Factory(:project, :goal => 100)
@@ -186,5 +186,37 @@ describe Project do
     p.expires_at = 2.weekdays_ago
     p.waiting_confirmation?.should be_false
   end
+
+  it "should be able to be in more than one curated page" do
+    cp = Factory.build(:curated_page)
+    cp2 = Factory.build(:curated_page)
+    p = Factory.build(:project, :curated_pages => [cp,cp2])
+    p.curated_pages.size.should be 2
+    p.should be_valid
+  end
 end
+
+
+# == Schema Information
+#
+# Table name: projects
+#
+#  id          :integer         not null, primary key
+#  name        :text            not null
+#  user_id     :integer         not null
+#  category_id :integer         not null
+#  goal        :decimal(, )     not null
+#  expires_at  :datetime        not null
+#  about       :text            not null
+#  headline    :text            not null
+#  video_url   :text            not null
+#  image_url   :text
+#  short_url   :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  can_finish  :boolean         default(FALSE)
+#  finished    :boolean         default(FALSE)
+#  about_html  :text
+#  site_id     :integer         default(1), not null
+#
 

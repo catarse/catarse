@@ -11,6 +11,7 @@ class PaypalController < ApplicationController
         cancel_paypal_url(backer),
         :no_shipping => true
       )
+      backer.update_attribute :payment_method, 'PayPal'
       redirect_to paypal_response.redirect_uri
     #rescue Paypal::Exception::APIError => e
     #  raise "Message: #{e.message}<br/>Response: #{e.response.inspect}<br/>Details: #{e.response.details.inspect}"
@@ -31,6 +32,7 @@ class PaypalController < ApplicationController
       )
       if checkout.payment_info.first.payment_status == "Completed"
         backer.update_attribute :key, checkout.payment_info.first.transaction_id
+        backer.update_attribute :payment_token, params[:token]
         backer.confirm!
         flash[:success] = t('projects.pay.success')
         redirect_to thank_you_path

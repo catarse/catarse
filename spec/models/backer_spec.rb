@@ -1,6 +1,41 @@
 require 'spec_helper'
 
 describe Backer do
+
+  it "should update user.credits when save a backer" do
+    u = Factory(:user)
+    u.save
+    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :user => u)
+    b.save
+    u.credits.should == 10
+    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :user => u)
+    b2.save
+    u.credits.should == 20
+  end
+
+  it "should not add backer value as credits for user if could not be refunded" do
+    u = Factory(:user)
+    u.save
+    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => false, :user => u)
+    b.save
+    u.credits.should == 0
+    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => false, :user => u)
+    b2.save
+    u.credits.should == 0
+  end
+
+  it "should not add backer value as credits for user if not confirmed" do
+    u = Factory(:user)
+    u.save
+    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :confirmed => false, :user => u)
+    b.save
+    u.credits.should == 0
+    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :confirmed => false, :user => u)
+    b2.save
+    u.credits.should == 0
+  end
+
+  it { should have_many(:payment_logs) }
   it "should be valid from factory" do
     b = Factory(:backer)
     b.should be_valid
@@ -90,4 +125,63 @@ describe Backer do
     backer = Factory(:backer)
     backer.key.should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s
   end
+  it "after create should define 'MoIP' how default payment_method" do
+    backer = Factory(:backer)
+    backer.payment_method.should == 'MoIP'
+  end
+
+  describe "#display_catarse_tax" do
+    before(:each) do
+      @backer = create(:backer, :value => 100)
+    end
+
+    it 'with default tax 7.5%'do
+      @backer.display_catarse_tax.should == 'R$ 7,50'
+    end
+
+    it 'with another tax'do
+      @backer.display_catarse_tax(5).should == 'R$ 5,00'
+    end
+  end
+
+  describe "#catarse_tax" do
+    before(:each) do
+      @backer = create(:backer, :value => 100)
+    end
+
+    it 'with default tax 7.5%'do
+      @backer.catarse_tax.should == 7.50
+    end
+
+    it 'with another tax'do
+      @backer.catarse_tax(5).should == 5.00
+    end
+  end
 end
+
+# == Schema Information
+#
+# Table name: backers
+#
+#  id               :integer         not null, primary key
+#  project_id       :integer         not null
+#  user_id          :integer         not null
+#  reward_id        :integer
+#  value            :decimal(, )     not null
+#  confirmed        :boolean         default(FALSE), not null
+#  confirmed_at     :datetime
+#  created_at       :datetime
+#  updated_at       :datetime
+#  display_notice   :boolean         default(FALSE)
+#  anonymous        :boolean         default(FALSE)
+#  key              :text
+#  can_refund       :boolean         default(FALSE)
+#  requested_refund :boolean         default(FALSE)
+#  refunded         :boolean         default(FALSE)
+#  credits          :boolean         default(FALSE)
+#  notified_finish  :boolean         default(FALSE)
+#  site_id          :integer         default(1), not null
+#  payment_method   :text
+#  payment_token    :text
+#
+
