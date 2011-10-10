@@ -1,6 +1,18 @@
 require 'spec_helper'
 
 describe User do
+  context "#display_nickname" do
+    it "when user don't have the nickname" do
+      user = create(:user,:name=>'Lorem Ipsum',:nickname=>'profile.php?id=1234')
+      user.display_nickname.should == 'Lorem Ipsum'
+    end
+
+    it 'user with nickname' do
+      user = create(:user,:name=>'Lorem Ipsum',:nickname=>'lorem.ipsum')
+      user.display_nickname.should == 'lorem.ipsum'
+    end
+  end
+
   it "should be valid from factory" do
     u = Factory(:user)
     u.should be_valid
