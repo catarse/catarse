@@ -5,6 +5,24 @@ describe Project do
     p = Factory(:project)
     p.should be_valid
   end
+  it "should generate credits for users when project finishes and didn't succeed" do
+    user = Factory(:user)
+    user.save
+    project = Factory.build(:project, :can_finish => true, :finished => false, :goal => 1000, :expires_at => (Time.now - 1.day))
+    project.save
+    back = Factory.build(:backer, :project => project, :user => user, :value => 50, :notified_finish => false, :can_refund => false, :confirmed => true)
+    back.save
+    back.confirm!
+    project.finish!
+    project.reload
+    project.backers.size.should == 1
+    user.backs.size.should == 1
+    back.reload
+    back.value.should == 50
+    back.can_refund.should be_true
+    user.reload
+    user.credits.should == 50
+  end
   it "display_image should return image_url if it exists" do
     p = Factory(:project, :image_url => 'http://test.com/image')
     p.display_image.should == 'http://test.com/image'
