@@ -14,6 +14,7 @@ class Backer < ActiveRecord::Base
   scope :anonymous, where(:anonymous => true)
   scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(:confirmed => true)
+  scope :not_confirmed, where(:confirmed => false)
   scope :pending, where(:confirmed => false)
   scope :display_notice, where(:display_notice => true)
   scope :can_refund, where(:can_refund => true)
