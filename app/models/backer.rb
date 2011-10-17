@@ -14,6 +14,7 @@ class Backer < ActiveRecord::Base
   scope :anonymous, where(:anonymous => true)
   scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(:confirmed => true)
+  scope :not_confirmed, where(:confirmed => false)
   scope :pending, where(:confirmed => false)
   scope :display_notice, where(:display_notice => true)
   scope :can_refund, where(:can_refund => true)
@@ -64,7 +65,7 @@ class Backer < ActiveRecord::Base
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
   def catarse_tax(tax=7.5)
-    (value*tax)/100
+    (value.to_f*tax)/100
   end
   def display_catarse_tax(tax=7.5)
     number_to_currency catarse_tax(tax), :unit => "R$", :precision => 2, :delimiter => '.'
