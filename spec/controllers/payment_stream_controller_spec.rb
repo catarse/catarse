@@ -99,5 +99,19 @@ describe PaymentStreamController do
       backer.reload.payment_detail.should_not be_nil
     end
 
+    it 'when moip_response should have a array in payment information' do
+      project=create(:project)
+      backer=create(:backer, :payment_token => 'ABCD', :project => project)
+      request.session[:_payment_token] = 'ABCD'
+      request.session[:thank_you_id] = project.id
+      MoIP::Client.stubs(:query).returns(moip_query_response_with_array)
+      backer.payment_detail.should be_nil
+
+      get :thank_you, {:locale => :en}
+      response.should render_template("payment_stream/thank_you")
+      response.should be_success
+      backer.reload.payment_detail.should_not be_nil
+    end
+
   end
 end

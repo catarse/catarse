@@ -21,15 +21,27 @@ class PaymentDetail < ActiveRecord::Base
 
       if authorized["Pagamento"].present?
         payment                      = authorized["Pagamento"]
-        self.payment_method          = payment["FormaPagamento"]
-        self.net_amount              = payment["ValorLiquido"].to_f
-        self.total_amount            = payment["TotalPago"].to_f
-        self.service_tax_amount      = payment["TaxaMoIP"].to_f
-        self.backer_amount_tax       = payment["TaxaParaPagador"].to_f
-        self.payment_status          = payment["Status"]
-        self.service_code            = payment["CodigoMoIP"]
-        self.institution_of_payment  = payment["InstituicaoPagamento"]
-        self.payment_date            = payment["Data"]
+        if payment.kind_of?(Array) && payment.first.present?
+            self.payment_method          = payment.first["FormaPagamento"]
+            self.net_amount              = payment.first["ValorLiquido"].to_f
+            self.total_amount            = payment.first["TotalPago"].to_f
+            self.service_tax_amount      = payment.first["TaxaMoIP"].to_f
+            self.backer_amount_tax       = payment.first["TaxaParaPagador"].to_f
+            self.payment_status          = payment.first["Status"]
+            self.service_code            = payment.first["CodigoMoIP"]
+            self.institution_of_payment  = payment.first["InstituicaoPagamento"]
+            self.payment_date            = payment.first["Data"]
+          else
+            self.payment_method          = payment["FormaPagamento"]
+            self.net_amount              = payment["ValorLiquido"].to_f
+            self.total_amount            = payment["TotalPago"].to_f
+            self.service_tax_amount      = payment["TaxaMoIP"].to_f
+            self.backer_amount_tax       = payment["TaxaParaPagador"].to_f
+            self.payment_status          = payment["Status"]
+            self.service_code            = payment["CodigoMoIP"]
+            self.institution_of_payment  = payment["InstituicaoPagamento"]
+            self.payment_date            = payment["Data"]
+        end
       end
 
       self.save!
