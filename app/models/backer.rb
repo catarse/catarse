@@ -14,6 +14,7 @@ class Backer < ActiveRecord::Base
   scope :anonymous, where(:anonymous => true)
   scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(:confirmed => true)
+  scope :not_confirmed, where(:confirmed => false)
   scope :pending, where(:confirmed => false)
   scope :display_notice, where(:display_notice => true)
   scope :can_refund, where(:can_refund => true)
@@ -30,7 +31,7 @@ class Backer < ActiveRecord::Base
   end
   after_save :update_user_credits
   def update_user_credits
-    self.user.update_attribute :credits, self.user.backs.where(:confirmed => true, :credits => true, :can_refund => true).sum(:value)
+    self.user.update_attribute :credits, self.user.backs.where(:confirmed => true, :can_refund => true).sum(:value)
   end
   before_save :confirm?
   def confirm?
@@ -74,7 +75,7 @@ class Backer < ActiveRecord::Base
   end
   def generate_credits!
     return if self.can_refund
-    self.user.update_attribute :credits, self.user.credits + self.value
+    # self.user.update_attribute :credits, self.user.credits + self.value
     self.update_attribute :can_refund, true
   end
   def refund_deadline
