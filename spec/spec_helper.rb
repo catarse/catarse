@@ -66,3 +66,28 @@ def moip_query_response
     }
   }
 end
+
+def moip_query_response_with_array
+  {
+    "ID"=>"201109300946542390000012428473", "Status"=>"Sucesso",
+    "Autorizacao"=>{
+      "Pagador"=>{
+        "Nome"=>"Lorem Ipsum", "Email"=>"some@email.com"
+      },
+      "EnderecoCobranca"=>{
+        "Logradouro"=>"Some Address ,999", "Numero"=>"999",
+        "Complemento"=>"Address A", "Bairro"=>"Hello World", "CEP"=>"99999-000",
+        "Cidade"=>"Some City", "Estado"=>"MG", "Pais"=>"BRA",
+        "TelefoneFixo"=>"(31)3666-6666"
+      },
+      "Recebedor"=>{
+        "Nome"=>"Happy Guy", "Email"=>"happy@email.com"
+      },
+      "Pagamento"=>[{
+        "Data"=>"2011-09-30T09:33:37.000-03:00", "TotalPago"=>"999.00", "TaxaParaPagador"=>"0.00",
+        "TaxaMoIP"=>"19.37", "ValorLiquido"=>"979.63", "FormaPagamento"=>"BoletoBancario",
+        "InstituicaoPagamento"=>"Itau", "Status"=>"BoletoImpresso", "CodigoMoIP"=>"0000.0728.5285"
+      }]
+    }
+  }
+end
