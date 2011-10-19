@@ -31,7 +31,7 @@ class Backer < ActiveRecord::Base
   end
   after_save :update_user_credits
   def update_user_credits
-    self.user.update_attribute :credits, self.user.backs.where(:confirmed => true, :can_refund => true).sum(:value)
+    self.user.update_attribute :credits, self.user.backs.where(:requested_refund => false, :refunded => false, :confirmed => true, :can_refund => true).sum(:value)
   end
   before_save :confirm?
   def confirm?
