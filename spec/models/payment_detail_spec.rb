@@ -53,6 +53,47 @@ describe PaymentDetail do
         end
       end
 
+      context 'with valid Token and payment response contain a array' do
+        before(:each) do
+          @moip_response = MoIP::Client.stubs(:query).returns(moip_query_response_with_array)
+        end
+
+        it "should call process_moip_response" do
+          subject.expects(:process_moip_response)
+          subject.update_from_service
+        end
+
+        it "fill the payment_details" do
+          subject.payer_name.should be_nil
+          subject.payer_email.should be_nil
+          subject.city.should be_nil
+          subject.uf.should be_nil
+          subject.payment_method.should be_nil
+          subject.net_amount.should be_nil
+          subject.total_amount.should be_nil
+          subject.service_tax_amount.should be_nil
+          subject.payment_status.should be_nil
+          subject.service_code.should be_nil
+          subject.institution_of_payment.should be_nil
+          subject.payment_date.should be_nil
+
+          subject.update_from_service
+
+          subject.payer_name.should_not be_nil
+          subject.payer_email.should_not be_nil
+          subject.city.should_not be_nil
+          subject.uf.should_not be_nil
+          subject.payment_method.should_not be_nil
+          subject.net_amount.should_not be_nil
+          subject.total_amount.should_not be_nil
+          subject.service_tax_amount.should_not be_nil
+          subject.payment_status.should_not be_nil
+          subject.service_code.should_not be_nil
+          subject.institution_of_payment.should_not be_nil
+          subject.payment_date.should_not be_nil
+        end
+      end
+
       context "with valid Token" do
         before(:each) do
           @moip_response = MoIP::Client.stubs(:query).returns(moip_query_response)
