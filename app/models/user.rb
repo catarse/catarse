@@ -30,6 +30,16 @@ class User < ActiveRecord::Base
     admin
   end
 
+  def calculate_credits
+    credits = self.backs.where(:can_refund => true, :created_at => (180.days.ago)..Time.now).sum(:value)
+    used_credits = self.backs.where(:can_refund => false, :payment_method => 'Credits', :created_at => (180.days.ago)..Time.now).sum(:value)
+    credits - used_credits
+  end
+
+  def update_credits
+    self.update_attribute :credits, self.calculate_credits
+  end
+
   def store_primary_user
     return if email.nil? or self.primary_user_id
     primary_user = User.primary.where(:email => email).first
