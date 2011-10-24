@@ -30,10 +30,19 @@ class User < ActiveRecord::Base
     admin
   end
 
-  def calculate_credits
-    credits = self.backs.where(:confirmed => true, :refunded => false, :can_refund => true, :created_at => (180.days.ago)..Time.now).sum(:value)
-    used_credits = self.backs.where(:can_refund => false, :payment_method => 'Credits', :created_at => (180.days.ago)..Time.now).sum(:value)
-    credits - used_credits
+  def calculate_credits(sum = 0, backs = [], first = true)
+   # return sum if backs.size == 0 and not first
+   backs = self.backs.where(:confirmed => true, :requested_refund => false).order("created_at").all if backs == [] and first
+   back = backs.first
+   return sum unless back
+   sum -= back.value if back.credits
+   if back.project.finished?
+     unless back.project.successful?
+       sum += back.value
+       # puts "#{back.project.name}: +#{back.value}"
+     end
+   end
+   calculate_credits(sum, backs.drop(1), false)
   end
 
   def update_credits
