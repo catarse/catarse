@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def calculate_credits
-    credits = self.backs.where(:confirmed => true, :can_refund => true, :created_at => (180.days.ago)..Time.now).sum(:value)
+    credits = self.backs.where(:confirmed => true, :refunded => false, :can_refund => true, :created_at => (180.days.ago)..Time.now).sum(:value)
     used_credits = self.backs.where(:can_refund => false, :payment_method => 'Credits', :created_at => (180.days.ago)..Time.now).sum(:value)
     credits - used_credits
   end
