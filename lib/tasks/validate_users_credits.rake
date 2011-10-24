@@ -1,5 +1,5 @@
-desc "Check for inconsistencies in users credits, and fix incorrect ones"
-task :fix_credit => :environment do
+desc "Check for inconsistencies in users credits"
+task :validate_credits => :environment do
   # User.includes(:backs).each do |user|
   #   user.
   # end
@@ -17,13 +17,10 @@ task :fix_credit => :environment do
       if ucc < 0
         negative << user.id
         negative_sum += ucc
-        user.update_attribute :credits, 0
-      else
-        user.update_attribute :credits, ucc
       end
     end
   end
-  puts "total fixed: #{total}"
+  puts "total: #{total}"
   puts "negative: #{negative}"
   puts "loss: #{negative_sum}"
 end
