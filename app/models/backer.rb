@@ -29,10 +29,10 @@ class Backer < ActiveRecord::Base
   def define_payment_method
     self.update_attribute :payment_method, 'MoIP'
   end
-  after_save :update_user_credits
-  def update_user_credits
-    self.user.update_credits
-  end
+  # after_save :update_user_credits
+  # def update_user_credits
+  #   self.user.update_credits
+  # end
   before_save :confirm?
   def confirm?
     if confirmed and confirmed_at.nil?
