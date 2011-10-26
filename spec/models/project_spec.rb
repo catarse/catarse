@@ -5,6 +5,18 @@ describe Project do
     p = Factory(:project)
     p.should be_valid
   end
+
+  it "should correctly parse video_url" do
+    project = Factory.build(:project, :video_url => " http://vimeo.com/6428069 ")
+    project.save
+    project.persisted?.should be_true
+    project.vimeo_id.should == "6428069"
+    project = Factory.build(:project, :video_url => "xyzhttp://vimeo.com/6428069bar")
+    project.save
+    project.persisted?.should be_true
+    project.vimeo_id.should == "6428069"
+  end
+
   it "should generate credits for users when project finishes and didn't succeed" do
     user = Factory(:user)
     user.save

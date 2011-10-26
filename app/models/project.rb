@@ -1,5 +1,5 @@
 # coding: utf-8
-VIMEO_REGEX = /\Ahttp:\/\/(www\.)?vimeo.com\/(\d+)\z/
+VIMEO_REGEX = /http:\/\/(www\.)?vimeo.com\/(\d+)/
 class Project < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
