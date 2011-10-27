@@ -12,9 +12,9 @@ class Project < ActiveRecord::Base
   belongs_to :site
   has_many :projects_curated_pages
   has_many :curated_pages, :through => :projects_curated_pages
-  has_many :backers
-  has_many :rewards
-  has_many :comments, :as => :commentable, :conditions => {:project_update => false}
+  has_many :backers, :dependent => :destroy
+  has_many :rewards, :dependent => :destroy
+  has_many :comments, :as => :commentable, :conditions => {:project_update => false}, :dependent => :destroy
   has_many :updates, :as => :commentable, :class_name => "Comment", :conditions => {:project_update => true}
   has_many :projects_sites
   has_many :sites_present, :through => :projects_sites, :source => :site
