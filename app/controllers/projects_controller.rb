@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
       @expiring = current_site.present_projects.includes(:user, :category).visible.expiring.not_home_page.not_successful.not_unsuccessful.order('expires_at, created_at DESC').limit(3).all
       @recent = current_site.present_projects.includes(:user, :category).visible.not_home_page.not_expiring.not_successful.not_unsuccessful.where("projects.user_id <> 7329").order('created_at DESC').limit(3).all
       @successful = current_site.present_projects.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
-      @curated_pages = current_site.curated_pages.visible
+      @curated_pages = current_site.curated_pages.visible.order("created_at desc").limit(6)
     end
   end
   def explore
