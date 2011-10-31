@@ -7,6 +7,10 @@ class CuratedPage < ActiveRecord::Base
   validates_uniqueness_of :permalink, :scope => :site_id
   validates_presence_of :permalink, :name, :site, :logo
 
+  scope :visible, where("visible is true")
+  scope :not_visible, where("visible is not true")
+
+
   mount_uploader :logo, LogoUploader
 
   auto_html_for :description do
