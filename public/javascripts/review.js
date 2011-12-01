@@ -107,6 +107,12 @@ verify_zip_code = function(){
   everything_ok()
 }
 $('#user_address_zip_code').mask("99999-999")
+
+//Apply the mask when user use the browser autocomplete
+$('#user_address_zip_code').change(function(){
+  $(this).mask("99999-999");
+});
+
 $('#user_phone_number').mask("(99)9999-9999")
 $('input[type=text]').keyup(everything_ok)
 $('#user_address_zip_code').keyup(function(){ zip_code_valid = false; everything_ok() })
