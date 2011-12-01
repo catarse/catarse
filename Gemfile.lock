@@ -341,7 +341,7 @@ DEPENDENCIES
   mocha
   moip!
   mustache
-  omniauth
+  omniauth (< 1.0.0)
   on_the_spot
   paypal-express
   pg
