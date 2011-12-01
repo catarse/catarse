@@ -199,7 +199,13 @@ class ProjectsController < ApplicationController
   def backers
     @project = Project.find params[:id]
     @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
-    respond_with @backers
+    respond_with @backers do |format|
+      if current_user and current_user.admin?
+        format.json { render :json => @backers.as_json({:include => {:user => {:methods => [:display_image, :medium_name, :backs_text, :profile_path], :only => [:id,:full_name,:name,:email]}}, :only => [:id, :anonymous, :confirmed, :confirmed_at, :display_value, :reward]}) }
+      else
+        format.json { render :json => @backers.as_json({:include => {:user => {:methods => [:display_image, :medium_name, :backs_text, :profile_path], :only => [:id,:full_name,:name]}}, :only => [:id, :anonymous, :confirmed, :confirmed_at]}) }
+      end
+    end
   end
   def comments
     @project = Project.find params[:id]

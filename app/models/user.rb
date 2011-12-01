@@ -139,19 +139,28 @@ class User < ActiveRecord::Base
     self.save
     new_user.save
   end
+
+  def profile_path
+    user_path(self)
+  end
+
   def as_json(options={})
-    {
-      :id => id,
-      :email => email,
-      :name => display_name,
-      :short_name => short_name,
-      :medium_name => medium_name,
-      :image => display_image,
-      :total_backs => total_backs,
-      :backs_text => backs_text,
-      :url => user_path(self),
-      :admin => admin
-    }
+    unless options.empty?
+      super options
+    else
+      {
+        :id => id,
+        :email => email,
+        :name => display_name,
+        :short_name => short_name,
+        :medium_name => medium_name,
+        :image => display_image,
+        :total_backs => total_backs,
+        :backs_text => backs_text,
+        :url => profile_path,
+        :admin => admin
+      }
+    end
   end
 
   protected
