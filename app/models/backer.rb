@@ -82,15 +82,19 @@ class Backer < ActiveRecord::Base
     created_at + 180.days
   end
   def as_json(options={})
-    {
-      :id => id,
-      :anonymous => anonymous,
-      :confirmed => confirmed,
-      :confirmed_at => display_confirmed_at,
-      :display_value => display_value,
-      :user => user,
-      :reward => reward
-    }
+    unless options.empty?
+      super options
+    else
+      {
+        :id => id,
+        :anonymous => anonymous,
+        :confirmed => confirmed,
+        :confirmed_at => display_confirmed_at,
+        :display_value => display_value,
+        :user => user,
+        :reward => reward
+      }
+    end
   end
 end
 
