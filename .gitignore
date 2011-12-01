@@ -4,7 +4,6 @@ log/*.log
 tmp/**/*
 config/database.yml
 db/development_structure.sql
-.rvmrc
 # Vim
 *.swp
 coverage
@@ -14,4 +13,3 @@ public/uploads/*chromedriver.log
 public/uploads/
 chromedriver.log
 .use_capybara_webkit
-.rvmrc
