@@ -26,7 +26,7 @@
         = form.input :address_neighbourhood, :required => true, :as => :string
         = form.input :address_city, :required => true, :as => :string
         = form.input :address_state, :required => true, :as => :select, :collection => State.array
-        = form.input :phone_number, :required => true, :as => :string
+        = form.input :phone_number, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
     .submit
       %fieldset
         = check_box_tag 'accept'
