@@ -72,7 +72,7 @@ en:
           address_neighbourhood: Neighbourhood
           address_city: City
           address_state: State
-          phone_number: Phone number
+          phone_number: Mobile phone number
   formtastic:
     optional: " (optional)"
     labels:

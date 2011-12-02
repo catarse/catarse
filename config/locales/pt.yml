@@ -30,7 +30,7 @@ pt:
           address_neighbourhood: Bairro
           address_city: Cidade
           address_state: Estado
-          phone_number: Telefone para contato
+          phone_number: Telefone celular
   formtastic:
     optional: " (opcional)"
     labels:
