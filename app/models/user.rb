@@ -145,7 +145,7 @@ class User < ActiveRecord::Base
   end
 
   def as_json(options={})
-    unless options.empty?
+    if options and not options.empty?
       super options
     else
       {
