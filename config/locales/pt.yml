@@ -190,6 +190,15 @@ pt:
       successful: Este projeto será financiado em %{expires_at}, graças a sua ajuda e de mais %{total_backers} pessoas. Muito obrigado!
       not_successful: Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{expires_at}. Caso ele não seja bem sucedido, você receberá seu dinheiro de volta na forma de créditos %{site}. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!
       error: Ooops. Você só pode acessar esta página depois de apoiar um projeto.
+  explore:
+    title: Explore os projetos
+    index:
+      quick_explore: Busca rápida
+      recommended: Recomendados
+      expiring: Na reta final
+      recent: Recentes
+      successful: Bem-sucedidos
+      categories: Categorias
   projects:
     index:
       recommended: Projetos recomendados
@@ -244,14 +253,6 @@ pt:
       title: Termos de uso
     privacy:
       title: Política de privacidade
-    explore:
-      title: Explore os projetos
-      quick_explore: Busca rápida
-      recommended: Recomendados
-      expiring: Na reta final
-      recent: Recentes
-      successful: Bem-sucedidos
-      categories: Categorias
     start:
       title: Envie seu projeto
       subtitle: A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando...

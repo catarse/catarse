@@ -18,10 +18,10 @@
         - @categories.each do |category|
           %li= link_to category.name, '#', :id => "category_#{category.id}"
   #explore_results
-    #explore_recommended.results= render :partial => 'project', :collection => @recommended
-    #explore_expiring.results.hide= render :partial => 'project', :collection => @expiring
-    #explore_recent.results.hide= render :partial => 'project', :collection => @recent
-    #explore_successful.results.hide= render :partial => 'project', :collection => @successful
-    #explore_all.results.hide= render :partial => 'project', :collection => @all
+    #explore_recommended.results= render :partial => 'projects/project', :collection => @recommended
+    #explore_expiring.results.hide= render :partial => 'projects/project', :collection => @expiring
+    #explore_recent.results.hide= render :partial => 'projects/project', :collection => @recent
+    #explore_successful.results.hide= render :partial => 'projects/project', :collection => @successful
+    #explore_all.results.hide= render :partial => 'projects/project', :collection => @all
   .clear
 = javascript_include_tag 'explore_projects'
