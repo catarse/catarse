@@ -3141,31 +3141,51 @@ body#site #project_review h2 {
   margin-top: 20px;
 }
 /* line 804, ../../app/stylesheets/_projects.sass */
-body#site #international_payment {
-  text-align: center;
+body#site #project_review #international_payment {
+  background-color: #999999;
+  background-color: rgba(200, 200, 200, 0.6);
+  padding: 20px;
+  margin-bottom: 28px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   margin-top: 40px;
+  font-size: 18px;
+  line-height: 22px;
+  overflow: hidden;
+  *zoom: 1;
 }
-/* line 807, ../../app/stylesheets/_projects.sass */
-body#site #international_payment h1 {
+/* line 815, ../../app/stylesheets/_projects.sass */
+body#site #project_review #international_payment h1 {
   color: #222222 !important;
+  font-family: "museo-300" !important;
+  float: none !important;
+  text-align: center !important;
+  width: 100% !important;
+  padding-bottom: 4px !important;
 }
-/* line 809, ../../app/stylesheets/_projects.sass */
-body#site #international_payment h1 a {
+/* line 822, ../../app/stylesheets/_projects.sass */
+body#site #project_review #international_payment h1 a {
   text-decoration: none;
 }
-/* line 811, ../../app/stylesheets/_projects.sass */
-body#site #international_payment .important {
+/* line 824, ../../app/stylesheets/_projects.sass */
+body#site #project_review #international_payment .international_important {
   text-align: left;
-  padding-bottom: 0;
-  width: 800px;
-  margin: 20px auto;
+  margin-top: 26px;
 }
-/* line 816, ../../app/stylesheets/_projects.sass */
+/* line 827, ../../app/stylesheets/_projects.sass */
 body#site #thank_you {
   margin: 10px 20px;
   text-align: center;
 }
-/* line 819, ../../app/stylesheets/_projects.sass */
+/* line 830, ../../app/stylesheets/_projects.sass */
 body#site #thank_you img#project_image {
   float: left;
   width: 128px;
@@ -3175,7 +3195,7 @@ body#site #thank_you img#project_image {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin-right: 20px;
 }
-/* line 824, ../../app/stylesheets/_projects.sass */
+/* line 835, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h1 {
   text-align: left;
   font-family: "museo-500" !important;
@@ -3185,16 +3205,16 @@ body#site #thank_you h1 {
   padding-top: 4px !important;
   color: #222222 !important;
 }
-/* line 832, ../../app/stylesheets/_projects.sass */
+/* line 843, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
-/* line 835, ../../app/stylesheets/_projects.sass */
+/* line 846, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a {
   text-decoration: none;
 }
-/* line 837, ../../app/stylesheets/_projects.sass */
+/* line 848, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img {
   width: 116px;
   -moz-transition-property: all;
@@ -3206,7 +3226,7 @@ body#site #thank_you a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 840, ../../app/stylesheets/_projects.sass */
+/* line 851, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img:hover {
   -moz-transform: scale(1.1, 1.1);
   -webkit-transform: scale(1.1, 1.1);
@@ -3214,30 +3234,30 @@ body#site #thank_you a img:hover {
   -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
 }
-/* line 842, ../../app/stylesheets/_projects.sass */
+/* line 853, ../../app/stylesheets/_projects.sass */
 body#site #thank_you #how_it_works {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   margin-top: 40px;
 }
-/* line 846, ../../app/stylesheets/_projects.sass */
+/* line 857, ../../app/stylesheets/_projects.sass */
 body#site #empty_text {
   width: 600px;
 }
-/* line 848, ../../app/stylesheets/_projects.sass */
+/* line 859, ../../app/stylesheets/_projects.sass */
 body#site #project_backers {
   margin-top: 0;
   color: #444444;
   width: 610px;
 }
-/* line 852, ../../app/stylesheets/_projects.sass */
+/* line 863, ../../app/stylesheets/_projects.sass */
 body#site #project_backers h1 {
   font-size: 24px !important;
   color: #999999 !important;
   padding-bottom: 16px !important;
   padding-top: 0 !important;
 }
-/* line 857, ../../app/stylesheets/_projects.sass */
+/* line 868, ../../app/stylesheets/_projects.sass */
 body#site #project_backers img.user {
   float: left;
   margin-right: 12px;
@@ -3249,33 +3269,33 @@ body#site #project_backers img.user {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   background-color: white;
 }
-/* line 864, ../../app/stylesheets/_projects.sass */
+/* line 875, ../../app/stylesheets/_projects.sass */
 body#site #project_backers a {
   text-decoration: none !important;
 }
-/* line 866, ../../app/stylesheets/_projects.sass */
+/* line 877, ../../app/stylesheets/_projects.sass */
 body#site #project_backers #all_backers {
   text-align: center;
   margin-top: 16px;
 }
-/* line 869, ../../app/stylesheets/_projects.sass */
+/* line 880, ../../app/stylesheets/_projects.sass */
 body#site #project_backers p {
   font-size: 16px;
   color: #666666;
   padding-bottom: 0 !important;
 }
-/* line 873, ../../app/stylesheets/_projects.sass */
+/* line 884, ../../app/stylesheets/_projects.sass */
 body#site #project_backers p.reward {
   float: right;
   width: 500px;
   font-size: 12px;
   color: #333333;
 }
-/* line 878, ../../app/stylesheets/_projects.sass */
+/* line 889, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul {
   width: 600px;
 }
-/* line 880, ../../app/stylesheets/_projects.sass */
+/* line 891, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul li {
   background-color: #dddddd;
   margin-top: 16px;
@@ -3288,7 +3308,7 @@ body#site #project_backers ul li {
   border-radius: 8px;
   position: relative;
 }
-/* line 886, ../../app/stylesheets/_projects.sass */
+/* line 897, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul li .badge {
   position: absolute;
   top: -10px;
@@ -3303,7 +3323,7 @@ body#site #project_backers ul li .badge {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 892, ../../app/stylesheets/_projects.sass */
+/* line 903, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul li .badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
@@ -3311,61 +3331,61 @@ body#site #project_backers ul li .badge:hover {
   -ms-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 895, ../../app/stylesheets/_projects.sass */
+/* line 906, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form, body#site #pending_backers form {
   margin-bottom: 20px;
 }
-/* line 897, ../../app/stylesheets/_projects.sass */
+/* line 908, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form label, body#site #pending_backers form label {
   display: inline;
 }
-/* line 899, ../../app/stylesheets/_projects.sass */
+/* line 910, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form input[type=text], body#site #pending_backers form input[type=text] {
   margin-right: 8px;
   width: 120px;
   padding: 0 !important;
 }
-/* line 903, ../../app/stylesheets/_projects.sass */
+/* line 914, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form #search_id_equals, body#site #pending_backers form #search_id_equals {
   width: 40px;
 }
-/* line 905, ../../app/stylesheets/_projects.sass */
+/* line 916, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects #total_results, body#site #pending_backers #total_results {
   float: right;
 }
-/* line 907, ../../app/stylesheets/_projects.sass */
+/* line 918, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table, body#site #pending_backers table {
   margin: 20px 0;
 }
-/* line 909, ../../app/stylesheets/_projects.sass */
+/* line 920, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table img, body#site #pending_backers table img {
   width: 32px;
 }
-/* line 912, ../../app/stylesheets/_projects.sass */
+/* line 923, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table thead th, body#site #pending_backers table thead th {
   text-align: center;
   font-size: 14px;
 }
-/* line 917, ../../app/stylesheets/_projects.sass */
+/* line 928, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table tbody tr td, body#site #pending_backers table tbody tr td {
   text-align: center;
   font-size: 14px;
 }
-/* line 920, ../../app/stylesheets/_projects.sass */
+/* line 931, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table tbody tr td.key, body#site #pending_backers table tbody tr td.key {
   font-size: 8px;
 }
-/* line 923, ../../app/stylesheets/_projects.sass */
+/* line 934, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu {
   float: left;
   width: 280px;
   margin-left: 20px;
 }
-/* line 927, ../../app/stylesheets/_projects.sass */
+/* line 938, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul {
   margin-bottom: 20px;
 }
-/* line 929, ../../app/stylesheets/_projects.sass */
+/* line 940, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul li a {
   background-color: #dddddd;
   margin-bottom: 4px;
@@ -3391,13 +3411,13 @@ body#site #explore_projects #explore_menu ul li a {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 941, ../../app/stylesheets/_projects.sass */
+/* line 952, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul li a.selected, body#site #explore_projects #explore_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 945, ../../app/stylesheets/_projects.sass */
+/* line 956, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_results {
   float: right;
   width: 626px;
