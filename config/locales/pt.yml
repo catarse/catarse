@@ -30,7 +30,7 @@ pt:
           address_neighbourhood: Bairro
           address_city: Cidade
           address_state: Estado
-          phone_number: Telefone para contato
+          phone_number: Telefone celular
   formtastic:
     optional: " (opcional)"
     labels:
@@ -317,7 +317,9 @@ pt:
       review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa: <span class='reward'>%{reward}</span>"
       review_without_reward_html: Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio.
       credits_notice_html: Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos.
-      submit: Efetuar pagamento pelo MoIP
+      submit:
+        moip: Efetuar pagamento pelo MoIP
+        credits: Confirmar apoio com créditos
       international:
         title: Quer fazer pagamento internacional?
         description: Você pode usar o PayPal para realizar pagamentos internacionais

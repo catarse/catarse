@@ -72,7 +72,7 @@ en:
           address_neighbourhood: Neighbourhood
           address_city: City
           address_state: State
-          phone_number: Phone number
+          phone_number: Mobile phone number
   formtastic:
     optional: " (optional)"
     labels:
@@ -355,7 +355,9 @@ en:
       review_with_reward_html: "You will back with <strong>%{value}</strong> and receive the following reward: <span class='reward'>%{reward}</span>"
       review_without_reward_html: You will back with <strong>%{value}</strong> but you don't want any reward for that.
       credits_notice_html: This back will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to back other projects.
-      submit: "Proceed to MoIP's checkout"
+      submit:
+        moip: "Proceed to MoIP's checkout"
+        credits: Confirm backing with credits
       international:
         title: Want to make an international payment?
         description: You can use PayPal to make international payments

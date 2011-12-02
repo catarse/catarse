@@ -1,61 +1,66 @@
-/* line 14, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
+del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
-  font-weight: inherit;
-  font-style: inherit;
   font-size: 100%;
-  font-family: inherit;
+  font: inherit;
   vertical-align: baseline;
 }
 
-/* line 17, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
-  color: black;
-  background: white;
 }
 
-/* line 19, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 21, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
-  border-collapse: separate;
+  border-collapse: collapse;
   border-spacing: 0;
-  vertical-align: middle;
 }
 
-/* line 23, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 25, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
-  quotes: "" "";
+  quotes: none;
 }
-/* line 96, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
+  content: none;
 }
 
-/* line 27, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
+}
+
+/* line 114, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
 }
 
 /* line 1, ../../app/stylesheets/_datepicker.sass */
@@ -147,10 +152,10 @@ a img {
   -ms-border-radius: 6px;
   -khtml-border-radius: 6px;
   border-radius: 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   margin: 20px 0;
 }
 /* line 22, ../../app/stylesheets/_helpers.sass */
@@ -161,26 +166,26 @@ a img {
 @-webkit-keyframes pulse {
   /* line 2, ../../app/stylesheets/_locales.sass */
   0% {
-    -moz-box-shadow: rgba(0, 132, 185, 0.2) 0px 0px 12px 0;
-    -webkit-box-shadow: rgba(0, 132, 185, 0.2) 0px 0px 12px 0;
-    -o-box-shadow: rgba(0, 132, 185, 0.2) 0px 0px 12px 0;
-    box-shadow: rgba(0, 132, 185, 0.2) 0px 0px 12px 0;
+    -moz-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    -webkit-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    -o-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
   }
 
   /* line 4, ../../app/stylesheets/_locales.sass */
   50% {
-    -moz-box-shadow: rgba(0, 132, 185, 0.9) 0px 0px 12px 0;
-    -webkit-box-shadow: rgba(0, 132, 185, 0.9) 0px 0px 12px 0;
-    -o-box-shadow: rgba(0, 132, 185, 0.9) 0px 0px 12px 0;
-    box-shadow: rgba(0, 132, 185, 0.9) 0px 0px 12px 0;
+    -moz-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.9);
+    -webkit-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.9);
+    -o-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.9);
+    box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.9);
   }
 
   /* line 6, ../../app/stylesheets/_locales.sass */
   100% {
-    -moz-box-shadow: rgba(0, 132, 185, 0.2) 0px 0px 12px 0;
-    -webkit-box-shadow: rgba(0, 132, 185, 0.2) 0px 0px 12px 0;
-    -o-box-shadow: rgba(0, 132, 185, 0.2) 0px 0px 12px 0;
-    box-shadow: rgba(0, 132, 185, 0.2) 0px 0px 12px 0;
+    -moz-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    -webkit-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    -o-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
   }
 }
 
@@ -247,37 +252,46 @@ a img {
   -khtml-border-radius: 8px;
   border-radius: 8px;
   background-color: #cccccc;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #dddddd), color-stop(100%, #aaaaaa));
-  background-image: -moz-linear-gradient(top, #dddddd 0%, #aaaaaa 100%);
-  background-image: linear-gradient(top, #dddddd 0%, #aaaaaa 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 3px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #aaaaaa));
+  background-image: -webkit-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: -moz-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: -o-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: -ms-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: linear-gradient(top, #dddddd, #aaaaaa);
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
 }
 /* line 44, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:hover {
   background-color: #dddddd;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
-  background-image: -moz-linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
-  background-image: linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 2px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -moz-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: linear-gradient(top, #eeeeee, #bbbbbb);
+  -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
 /* line 48, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:active {
   padding: 6px 9px 4px 11px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
   background-color: #dddddd;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
-  background-image: -moz-linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
-  background-image: linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 1px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -moz-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: linear-gradient(top, #eeeeee, #bbbbbb);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
 }
 /* line 54, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:disabled {
@@ -285,13 +299,16 @@ a img {
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
   padding: 5px 10px;
   background-color: #aaaaaa;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
-  background-image: -moz-linear-gradient(top, #bbbbbb 0%, #888888 100%);
-  background-image: linear-gradient(top, #bbbbbb 0%, #888888 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
+  background-image: -webkit-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -moz-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -o-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
+  background-image: linear-gradient(top, #bbbbbb, #888888);
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 
 /* line 1, ../../app/stylesheets/_slider.sass */
@@ -317,13 +334,16 @@ a img {
   -khtml-border-radius: 48px;
   border-radius: 48px;
   background-color: #44a546;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  background-image: linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
+  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
+  -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-weight: bold;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -339,10 +359,11 @@ a img {
 }
 /* line 23, ../../app/stylesheets/_slider.sass */
 .navigation .prev:hover, .navigation .next:hover {
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  transform: scale(1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
 /* line 25, ../../app/stylesheets/_slider.sass */
 .navigation .prev:disabled, .navigation .next:disabled {
@@ -350,16 +371,20 @@ a img {
   border: 3px solid #dddddd;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
   background-color: #aaaaaa;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
-  background-image: -moz-linear-gradient(top, #bbbbbb 0%, #888888 100%);
-  background-image: linear-gradient(top, #bbbbbb 0%, #888888 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
+  background-image: -webkit-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -moz-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -o-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
+  background-image: linear-gradient(top, #bbbbbb, #888888);
 }
 /* line 31, ../../app/stylesheets/_slider.sass */
 .navigation .prev:disabled:hover, .navigation .next:disabled:hover {
-  -moz-transform: scale(1);
-  -webkit-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
+  -moz-transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 /* line 33, ../../app/stylesheets/_slider.sass */
 .navigation .prev {
@@ -394,14 +419,10 @@ body#site a {
   text-decoration: underline;
   color: #008800;
   font-size: 100%;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 /* line 19, ../../app/stylesheets/_body.sass */
 body#site a:hover {
@@ -475,37 +496,46 @@ body#site form input[type=submit] {
   -khtml-border-radius: 8px;
   border-radius: 8px;
   background-color: #cccccc;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #dddddd), color-stop(100%, #aaaaaa));
-  background-image: -moz-linear-gradient(top, #dddddd 0%, #aaaaaa 100%);
-  background-image: linear-gradient(top, #dddddd 0%, #aaaaaa 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #aaaaaa));
+  background-image: -webkit-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: -moz-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: -o-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: -ms-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: linear-gradient(top, #dddddd, #aaaaaa);
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 48, ../../app/stylesheets/_form.sass */
 body#site form input[type=submit]:hover {
   background-color: #dddddd;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
-  background-image: -moz-linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
-  background-image: linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -moz-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: linear-gradient(top, #eeeeee, #bbbbbb);
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 52, ../../app/stylesheets/_form.sass */
 body#site form input[type=submit]:active {
   padding: 11px 14px 9px 16px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
   background-color: #dddddd;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
-  background-image: -moz-linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
-  background-image: linear-gradient(top, #eeeeee 0%, #bbbbbb 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 1px 1px 3px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -moz-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: linear-gradient(top, #eeeeee, #bbbbbb);
+  -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
 }
 /* line 58, ../../app/stylesheets/_form.sass */
 body#site form input[type=submit]:disabled {
@@ -513,13 +543,16 @@ body#site form input[type=submit]:disabled {
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
   padding: 10px 15px;
   background-color: #aaaaaa;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
-  background-image: -moz-linear-gradient(top, #bbbbbb 0%, #888888 100%);
-  background-image: linear-gradient(top, #bbbbbb 0%, #888888 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
+  background-image: -webkit-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -moz-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -o-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
+  background-image: linear-gradient(top, #bbbbbb, #888888);
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 65, ../../app/stylesheets/_form.sass */
 body#site form input.ok, body#site form textarea.ok {
@@ -594,14 +627,10 @@ body#site table thead th {
 }
 /* line 11, ../../app/stylesheets/_table.sass */
 body#site table tbody tr {
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -moz-transition: all;
+  -webkit-transition: all;
+  -o-transition: all;
+  transition: all;
 }
 /* line 13, ../../app/stylesheets/_table.sass */
 body#site table tbody tr.odd {
@@ -619,10 +648,10 @@ body#site .flash {
   position: fixed;
   bottom: 0;
   width: 100%;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 0px -4px 20px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0px -4px 20px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 0px -4px 20px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 0px -4px 20px 0;
+  -moz-box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
   text-align: center;
   color: white;
   text-shadow: black 1px 1px 1px;
@@ -634,23 +663,32 @@ body#site .flash .wrapper {
 /* line 12, ../../app/stylesheets/_flash.sass */
 body#site .flash .success.wrapper, body#site .flash .notice.wrapper {
   background-color: #44a546;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  background-image: linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
+  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
 }
 /* line 15, ../../app/stylesheets/_flash.sass */
 body#site .flash .failure.wrapper, body#site .flash .error.wrapper {
   background-color: #aa3333;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #cc3333), color-stop(50%, #bb3333), color-stop(100%, #aa3333));
-  background-image: -moz-linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
-  background-image: linear-gradient(top, #cc3333 0%, #bb3333 50%, #aa3333 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cc3333), color-stop(50%, #bb3333), color-stop(100%, #aa3333));
+  background-image: -webkit-linear-gradient(top, #cc3333, #bb3333, #aa3333);
+  background-image: -moz-linear-gradient(top, #cc3333, #bb3333, #aa3333);
+  background-image: -o-linear-gradient(top, #cc3333, #bb3333, #aa3333);
+  background-image: -ms-linear-gradient(top, #cc3333, #bb3333, #aa3333);
+  background-image: linear-gradient(top, #cc3333, #bb3333, #aa3333);
 }
 /* line 18, ../../app/stylesheets/_flash.sass */
 body#site .flash .locale.wrapper {
   background-color: #0084b9;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #0da1c3), color-stop(50%, #0591bc), color-stop(100%, #0084b9));
-  background-image: -moz-linear-gradient(top, #0da1c3 0%, #0591bc 50%, #0084b9 100%);
-  background-image: linear-gradient(top, #0da1c3 0%, #0591bc 50%, #0084b9 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0da1c3), color-stop(50%, #0591bc), color-stop(100%, #0084b9));
+  background-image: -webkit-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
+  background-image: -moz-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
+  background-image: -o-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
+  background-image: -ms-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
+  background-image: linear-gradient(top, #0da1c3, #0591bc, #0084b9);
 }
 /* line 45, ../../app/stylesheets/screen.sass */
 body#site .overlay {
@@ -665,9 +703,8 @@ body#site .overlay {
 }
 /* line 47, ../../app/stylesheets/screen.sass */
 body#site #locales {
-  opacity: 0.6;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
   position: fixed;
   right: -32px;
   top: 50%;
@@ -701,16 +738,14 @@ body#site #locales {
 /* line 23, ../../app/stylesheets/_locales.sass */
 body#site #locales:hover {
   right: 0;
-  opacity: 1;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
 }
 /* line 26, ../../app/stylesheets/_locales.sass */
 body#site #locales.notify {
   right: 0;
-  opacity: 1;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
   -webkit-animation: pulse 1.5s infinite ease-in-out;
 }
 /* line 30, ../../app/stylesheets/_locales.sass */
@@ -727,17 +762,21 @@ body#site #locales img {
 }
 /* line 33, ../../app/stylesheets/_locales.sass */
 body#site #locales img:hover {
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  transform: scale(1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
 /* line 49, ../../app/stylesheets/screen.sass */
 body#site #login {
   background-color: #44a546;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  background-image: linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
+  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
   border: 5px solid white;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -745,10 +784,10 @@ body#site #login {
   -ms-border-radius: 8px;
   -khtml-border-radius: 8px;
   border-radius: 8px;
-  -moz-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  -webkit-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  -o-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
+  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -792,23 +831,24 @@ body#site #login a img {
 }
 /* line 33, ../../app/stylesheets/_login.sass */
 body#site #login a img:hover, body#site #login a img:focus {
-  -moz-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  transform: scale(1.2);
+  -moz-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  -o-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
 }
 /* line 36, ../../app/stylesheets/_login.sass */
 body#site #login a.disabled img {
-  opacity: 0.6;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
 }
 /* line 38, ../../app/stylesheets/_login.sass */
 body#site #login a.disabled img:hover, body#site #login a.disabled img:focus, body#site #login a.disabled img:active {
-  -moz-transform: scale(1);
-  -webkit-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
+  -moz-transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 /* line 40, ../../app/stylesheets/_login.sass */
 body#site #login a.close {
@@ -830,13 +870,16 @@ body#site #login a.close {
   margin-left: -15px;
   line-height: 22px;
   background-color: #44a546;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  background-image: linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  -moz-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  -webkit-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  -o-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
+  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
+  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   font-weight: bold;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -850,10 +893,11 @@ body#site #login a.close {
 /* line 58, ../../app/stylesheets/_login.sass */
 body#site #login a.close:hover, body#site #login a.close:focus {
   color: white;
-  -moz-transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  -o-transform: scale(1.05);
-  transform: scale(1.05);
+  -moz-transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
+  -o-transform: scale(1.05, 1.05);
+  -ms-transform: scale(1.05, 1.05);
+  transform: scale(1.05, 1.05);
 }
 /* line 51, ../../app/stylesheets/screen.sass */
 body#site #pre_header {
@@ -864,10 +908,10 @@ body#site #pre_header {
   font-size: 16px;
   color: white;
   text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 3px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 3px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 3px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 3px 0;
+  -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 }
 /* line 10, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header a {
@@ -899,10 +943,11 @@ body#site #pre_header .back_notice img.social, body#site #pre_header .notificati
 }
 /* line 25, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice img.social:hover, body#site #pre_header .notification img.social:hover {
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  transform: scale(1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
 /* line 27, ../../app/stylesheets/_pre_header.sass */
 body#site #pre_header .back_notice a.close, body#site #pre_header .notification a.close {
@@ -939,14 +984,10 @@ body#site #header h1 {
 body#site #header h1 a {
   color: #222222;
   text-decoration: none;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 /* line 11, ../../app/stylesheets/_header.sass */
 body#site #header h1 a:hover {
@@ -963,11 +1004,10 @@ body#site #menu ul {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -978,13 +1018,17 @@ body#site #menu ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 43, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #menu ul li:first-child, body#site #menu ul li.first {
-  padding-left: 0px;
+  padding-left: 0;
 }
-/* line 44, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site #menu ul li:last-child, body#site #menu ul li.last {
-  padding-right: 0px;
+/* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #menu ul li:last-child {
+  padding-right: 0;
+}
+/* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #menu ul li.last {
+  padding-right: 0;
 }
 /* line 8, ../../app/stylesheets/_menu.sass */
 body#site #menu ul li a {
@@ -1018,14 +1062,10 @@ body#site #user a {
   color: #333333;
   text-decoration: none;
   font-weight: bold;
-  -moz-transition-property: none;
-  -webkit-transition-property: none;
-  -o-transition-property: none;
-  transition-property: none;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -moz-transition: none;
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
 }
 /* line 15, ../../app/stylesheets/_user.sass */
 body#site #user a img.dropdown {
@@ -1035,10 +1075,10 @@ body#site #user a img.dropdown {
 /* line 18, ../../app/stylesheets/_user.sass */
 body#site #user a img#display_image {
   background-color: white;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   margin-right: 6px;
   height: 24px;
 }
@@ -1051,10 +1091,10 @@ body#site #user .hover {
 }
 /* line 29, ../../app/stylesheets/_user.sass */
 body#site #user .hover img#display_image {
-  -moz-box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
-  -webkit-box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
-  -o-box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
-  box-shadow: rgba(255, 255, 255, 0.7) 2px 2px 4px 0;
+  -moz-box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+  -o-box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
 }
 /* line 31, ../../app/stylesheets/_user.sass */
 body#site #user #user_menu {
@@ -1086,14 +1126,10 @@ body#site #user #user_menu ul li a {
   padding-right: 12px;
   color: #cccccc;
   text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 0px;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 /* line 50, ../../app/stylesheets/_user.sass */
 body#site #user #user_menu ul li a .small {
@@ -1122,10 +1158,10 @@ body#site #content_wrapper {
   -ms-border-radius: 6px;
   -khtml-border-radius: 6px;
   border-radius: 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 16px 0;
+  -moz-box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
 }
 /* line 63, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content_header {
@@ -1141,10 +1177,10 @@ body#site #content_wrapper #content_header {
   -ms-border-top-left-radius: 6px;
   -khtml-border-top-left-radius: 6px;
   border-top-left-radius: 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0;
+  -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
 }
 /* line 15, ../../app/stylesheets/_content.sass */
 body#site #content_wrapper #content_header h1 {
@@ -1212,6 +1248,7 @@ body#site #content_wrapper #content_header #badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
 /* line 65, ../../app/stylesheets/screen.sass */
@@ -1254,10 +1291,10 @@ body#site #profile_header .image {
 /* line 8, ../../app/stylesheets/_profile.sass */
 body#site #profile_header .image img {
   background-color: white;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 6px 0;
+  -moz-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
   max-width: 128px;
   max-height: 128px;
 }
@@ -1315,10 +1352,10 @@ body#site #user_feed img.project {
   float: left;
   margin-right: 12px;
   width: 160px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 /* line 55, ../../app/stylesheets/_profile.sass */
 body#site #user_feed img.social {
@@ -1336,10 +1373,11 @@ body#site #user_feed img.social {
 }
 /* line 60, ../../app/stylesheets/_profile.sass */
 body#site #user_feed img.social:hover {
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  transform: scale(1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
 /* line 62, ../../app/stylesheets/_profile.sass */
 body#site #user_feed a {
@@ -1389,10 +1427,10 @@ body#site #user_feed #gravatar_hint {
   -ms-border-radius: 12px;
   -khtml-border-radius: 12px;
   border-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   margin-top: -16px;
   color: #666666;
   position: relative;
@@ -1444,9 +1482,8 @@ body#site .explore_more {
 body#site .explore_more hr {
   float: left;
   width: 524px;
-  opacity: 0.4;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;
   margin-top: 10px;
 }
 /* line 24, ../../app/stylesheets/_projects.sass */
@@ -1532,14 +1569,10 @@ body#site .project_box .project_header a {
   text-decoration: none;
   text-shadow: none;
   color: black;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 /* line 74, ../../app/stylesheets/_projects.sass */
 body#site .project_box .project_header a:hover {
@@ -1610,11 +1643,10 @@ body#site .project_box .project_progress .progress_info ul {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site .project_box .project_progress .progress_info ul li {
   list-style-image: none;
   list-style-type: none;
@@ -1625,13 +1657,17 @@ body#site .project_box .project_progress .progress_info ul li {
   padding-left: 4px;
   padding-right: 4px;
 }
-/* line 43, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site .project_box .project_progress .progress_info ul li:first-child, body#site .project_box .project_progress .progress_info ul li.first {
-  padding-left: 0px;
+  padding-left: 0;
 }
-/* line 44, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site .project_box .project_progress .progress_info ul li:last-child, body#site .project_box .project_progress .progress_info ul li.last {
-  padding-right: 0px;
+/* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site .project_box .project_progress .progress_info ul li:last-child {
+  padding-right: 0;
+}
+/* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site .project_box .project_progress .progress_info ul li.last {
+  padding-right: 0;
 }
 /* line 116, ../../app/stylesheets/_projects.sass */
 body#site .progress_bar {
@@ -1674,10 +1710,10 @@ body#site #how_it_works {
   -ms-border-radius: 12px;
   -khtml-border-radius: 12px;
   border-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 138, ../../app/stylesheets/_projects.sass */
 body#site #how_it_works strong {
@@ -1854,10 +1890,10 @@ body#site #project_warning {
   -ms-border-radius: 12px;
   -khtml-border-radius: 12px;
   border-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   margin-top: -16px;
   color: #666666;
 }
@@ -1885,10 +1921,10 @@ body#site #project_description #project_video iframe {
   -ms-border-top-right-radius: 8px;
   -khtml-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 251, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share {
@@ -1910,10 +1946,10 @@ body#site #project_description #project_video #project_share {
   -khtml-border-bottom-right-radius: 12px;
   border-bottom-right-radius: 12px;
   border: 2px dotted rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
   font-size: 14px;
   line-height: 32px;
@@ -1926,10 +1962,10 @@ body#site #project_description #project_video #project_share #facebook_share {
 }
 /* line 268, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share #facebook_share iframe {
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
+  -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 /* line 270, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share #twitter_share {
@@ -1949,10 +1985,10 @@ body#site #project_description #project_video #project_share #twitter_share ifra
   -ms-border-radius: 0px;
   -khtml-border-radius: 0px;
   border-radius: 0px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px 0;
+  -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 /* line 281, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share ul {
@@ -1960,13 +1996,12 @@ body#site #project_description #project_video #project_share ul {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
   overflow: hidden;
   *zoom: 1;
   width: 452px;
   margin: 0 auto;
 }
-/* line 51, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #project_description #project_video #project_share ul li {
   list-style-image: none;
   list-style-type: none;
@@ -1977,13 +2012,17 @@ body#site #project_description #project_video #project_share ul li {
   padding-left: 6px;
   padding-right: 6px;
 }
-/* line 43, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #project_description #project_video #project_share ul li:first-child, body#site #project_description #project_video #project_share ul li.first {
-  padding-left: 0px;
+  padding-left: 0;
 }
-/* line 44, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site #project_description #project_video #project_share ul li:last-child, body#site #project_description #project_video #project_share ul li.last {
-  padding-right: 0px;
+/* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #project_description #project_video #project_share ul li:last-child {
+  padding-right: 0;
+}
+/* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #project_description #project_video #project_share ul li.last {
+  padding-right: 0;
 }
 /* line 286, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_share a {
@@ -2030,9 +2069,12 @@ body#site #project_description #project_video #project_share h1 {
 /* line 306, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_video #project_embed {
   background-color: #44a546;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  background-image: linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
+  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
   border: 5px solid white;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -2040,10 +2082,10 @@ body#site #project_description #project_video #project_embed {
   -ms-border-radius: 8px;
   -khtml-border-radius: 8px;
   border-radius: 8px;
-  -moz-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  -webkit-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  -o-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
+  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2091,13 +2133,16 @@ body#site #project_description #project_video #project_embed a.close {
   margin-left: -15px;
   line-height: 22px;
   background-color: #44a546;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -moz-linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  background-image: linear-gradient(top, #51c252 0%, #49b249 50%, #44a546 100%);
-  -moz-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  -webkit-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  -o-box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
-  box-shadow: rgba(0, 40, 0, 0.75) 4px -4px 10px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
+  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
+  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
+  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   font-weight: bold;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -2111,10 +2156,11 @@ body#site #project_description #project_video #project_embed a.close {
 /* line 47, ../../app/stylesheets/_embed_modal.sass */
 body#site #project_description #project_video #project_embed a.close:hover, body#site #project_description #project_video #project_embed a.close:focus {
   color: white;
-  -moz-transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  -o-transform: scale(1.05);
-  transform: scale(1.05);
+  -moz-transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
+  -o-transform: scale(1.05, 1.05);
+  -ms-transform: scale(1.05, 1.05);
+  transform: scale(1.05, 1.05);
 }
 /* line 50, ../../app/stylesheets/_embed_modal.sass */
 body#site #project_description #project_video #project_embed #project_box_embed {
@@ -2170,11 +2216,10 @@ body#site #project_description #project_menu ul {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #project_description #project_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -2185,13 +2230,17 @@ body#site #project_description #project_menu ul li {
   padding-left: 2px;
   padding-right: 2px;
 }
-/* line 43, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #project_description #project_menu ul li:first-child, body#site #project_description #project_menu ul li.first {
-  padding-left: 0px;
+  padding-left: 0;
 }
-/* line 44, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site #project_description #project_menu ul li:last-child, body#site #project_description #project_menu ul li.last {
-  padding-right: 0px;
+/* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #project_description #project_menu ul li:last-child {
+  padding-right: 0;
+}
+/* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #project_description #project_menu ul li.last {
+  padding-right: 0;
 }
 /* line 313, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_menu ul li {
@@ -2328,19 +2377,18 @@ body#site #project_description #project_comments #collection_list li .destroy a 
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
   width: 20px;
-  opacity: 0.8;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
 }
 /* line 389, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_comments #collection_list li .destroy a img:hover, body#site #project_description #project_updates #collection_list li .destroy a img:hover {
-  opacity: 1;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-  -moz-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  transform: scale(1.2);
+  opacity: 1;
+  -moz-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  -o-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
 }
 /* line 392, ../../app/stylesheets/_projects.sass */
 body#site #project_description #project_comments #collection_list li img.user, body#site #project_description #project_updates #collection_list li img.user {
@@ -2348,10 +2396,10 @@ body#site #project_description #project_comments #collection_list li img.user, b
   margin-right: 12px;
   margin-bottom: 0px;
   height: 38px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   background-color: white;
 }
 /* line 399, ../../app/stylesheets/_projects.sass */
@@ -2425,10 +2473,10 @@ body#site #project_back_info #back_project {
   background-color: rgba(179, 177, 157, 0.5);
   border: 3px solid #bdbbb1;
   border: 3px solid rgba(173, 171, 151, 0.5);
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
+  -moz-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   padding: 0px;
 }
 /* line 447, ../../app/stylesheets/_projects.sass */
@@ -2497,9 +2545,12 @@ body#site #project_back_info #back_project form input[type=submit] {
   color: white;
   text-shadow: green 1px 1px 1px;
   background-color: #49b249;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #59c259), color-stop(100%, #31a232));
-  background-image: -moz-linear-gradient(top, #59c259 0%, #31a232 100%);
-  background-image: linear-gradient(top, #59c259 0%, #31a232 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #59c259), color-stop(100%, #31a232));
+  background-image: -webkit-linear-gradient(top, #59c259, #31a232);
+  background-image: -moz-linear-gradient(top, #59c259, #31a232);
+  background-image: -o-linear-gradient(top, #59c259, #31a232);
+  background-image: -ms-linear-gradient(top, #59c259, #31a232);
+  background-image: linear-gradient(top, #59c259, #31a232);
   text-transform: uppercase;
   font-size: 16px;
   padding: 17px 10px;
@@ -2507,9 +2558,12 @@ body#site #project_back_info #back_project form input[type=submit] {
 /* line 490, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form input[type=submit]:hover {
   background-color: #59c259;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #59c259), color-stop(100%, #41b242));
-  background-image: -moz-linear-gradient(top, #59c259 0%, #41b242 100%);
-  background-image: linear-gradient(top, #59c259 0%, #41b242 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #59c259), color-stop(100%, #41b242));
+  background-image: -webkit-linear-gradient(top, #59c259, #41b242);
+  background-image: -moz-linear-gradient(top, #59c259, #41b242);
+  background-image: -o-linear-gradient(top, #59c259, #41b242);
+  background-image: -ms-linear-gradient(top, #59c259, #41b242);
+  background-image: linear-gradient(top, #59c259, #41b242);
 }
 /* line 493, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #back_project form input[type=submit]:active {
@@ -2523,13 +2577,16 @@ body#site #project_back_info #back_project form input[type=submit]:disabled {
   font-size: 16px;
   padding: 17px 10px;
   background-color: #aaaaaa;
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
-  background-image: -moz-linear-gradient(top, #bbbbbb 0%, #888888 100%);
-  background-image: linear-gradient(top, #bbbbbb 0%, #888888 100%);
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
+  background-image: -webkit-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -moz-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -o-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
+  background-image: linear-gradient(top, #bbbbbb, #888888);
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 504, ../../app/stylesheets/_projects.sass */
 body#site #project_back_info #rewards {
@@ -2723,10 +2780,10 @@ body#site #back_options #backer_form #backer_credits_input {
   -ms-border-radius: 12px;
   -khtml-border-radius: 12px;
   border-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
+  -moz-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   padding: 0 12px;
   margin-bottom: 32px;
 }
@@ -2761,10 +2818,10 @@ body#site #back_options #backer_form li.radio ol {
   -ms-border-radius: 12px;
   -khtml-border-radius: 12px;
   border-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 645, ../../app/stylesheets/_projects.sass */
 body#site #back_options #backer_form li.radio ol li {
@@ -2875,10 +2932,10 @@ body#site #back_info {
 body#site #back_info img {
   float: left;
   width: 128px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin-bottom: 16px;
 }
 /* line 704, ../../app/stylesheets/_projects.sass */
@@ -2946,10 +3003,10 @@ body#site #project_review #credits_notice {
   -ms-border-radius: 6px;
   -khtml-border-radius: 6px;
   border-radius: 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 2px 2px 6px 0;
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   margin: 32px auto 20px auto;
 }
 /* line 747, ../../app/stylesheets/_projects.sass */
@@ -3019,11 +3076,10 @@ body#site #project_review #review_form .inputs ol {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #project_review #review_form .inputs ol li {
   list-style-image: none;
   list-style-type: none;
@@ -3034,13 +3090,17 @@ body#site #project_review #review_form .inputs ol li {
   padding-left: 0px;
   padding-right: 0px;
 }
-/* line 43, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #project_review #review_form .inputs ol li:first-child, body#site #project_review #review_form .inputs ol li.first {
-  padding-left: 0px;
+  padding-left: 0;
 }
-/* line 44, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site #project_review #review_form .inputs ol li:last-child, body#site #project_review #review_form .inputs ol li.last {
-  padding-right: 0px;
+/* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #project_review #review_form .inputs ol li:last-child {
+  padding-right: 0;
+}
+/* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #project_review #review_form .inputs ol li.last {
+  padding-right: 0;
 }
 /* line 781, ../../app/stylesheets/_projects.sass */
 body#site #project_review #review_form .submit {
@@ -3059,10 +3119,10 @@ body#site #project_review #review_form fieldset label {
 body#site #project_review img#project_image {
   float: left;
   width: 128px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin-right: 20px;
 }
 /* line 793, ../../app/stylesheets/_projects.sass */
@@ -3081,41 +3141,61 @@ body#site #project_review h2 {
   margin-top: 20px;
 }
 /* line 804, ../../app/stylesheets/_projects.sass */
-body#site #international_payment {
-  text-align: center;
+body#site #project_review #international_payment {
+  background-color: #999999;
+  background-color: rgba(200, 200, 200, 0.6);
+  padding: 20px;
+  margin-bottom: 28px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   margin-top: 40px;
+  font-size: 18px;
+  line-height: 22px;
+  overflow: hidden;
+  *zoom: 1;
 }
-/* line 807, ../../app/stylesheets/_projects.sass */
-body#site #international_payment h1 {
+/* line 815, ../../app/stylesheets/_projects.sass */
+body#site #project_review #international_payment h1 {
   color: #222222 !important;
+  font-family: "museo-300" !important;
+  float: none !important;
+  text-align: center !important;
+  width: 100% !important;
+  padding-bottom: 4px !important;
 }
-/* line 809, ../../app/stylesheets/_projects.sass */
-body#site #international_payment h1 a {
+/* line 822, ../../app/stylesheets/_projects.sass */
+body#site #project_review #international_payment h1 a {
   text-decoration: none;
 }
-/* line 811, ../../app/stylesheets/_projects.sass */
-body#site #international_payment .important {
+/* line 824, ../../app/stylesheets/_projects.sass */
+body#site #project_review #international_payment .international_important {
   text-align: left;
-  padding-bottom: 0;
-  width: 800px;
-  margin: 20px auto;
+  margin-top: 26px;
 }
-/* line 816, ../../app/stylesheets/_projects.sass */
+/* line 827, ../../app/stylesheets/_projects.sass */
 body#site #thank_you {
   margin: 10px 20px;
   text-align: center;
 }
-/* line 819, ../../app/stylesheets/_projects.sass */
+/* line 830, ../../app/stylesheets/_projects.sass */
 body#site #thank_you img#project_image {
   float: left;
   width: 128px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 5px 0;
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin-right: 20px;
 }
-/* line 824, ../../app/stylesheets/_projects.sass */
+/* line 835, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h1 {
   text-align: left;
   font-family: "museo-500" !important;
@@ -3125,16 +3205,16 @@ body#site #thank_you h1 {
   padding-top: 4px !important;
   color: #222222 !important;
 }
-/* line 832, ../../app/stylesheets/_projects.sass */
+/* line 843, ../../app/stylesheets/_projects.sass */
 body#site #thank_you h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
-/* line 835, ../../app/stylesheets/_projects.sass */
+/* line 846, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a {
   text-decoration: none;
 }
-/* line 837, ../../app/stylesheets/_projects.sass */
+/* line 848, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img {
   width: 116px;
   -moz-transition-property: all;
@@ -3146,75 +3226,76 @@ body#site #thank_you a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 840, ../../app/stylesheets/_projects.sass */
+/* line 851, ../../app/stylesheets/_projects.sass */
 body#site #thank_you a img:hover {
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  transform: scale(1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
-/* line 842, ../../app/stylesheets/_projects.sass */
+/* line 853, ../../app/stylesheets/_projects.sass */
 body#site #thank_you #how_it_works {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   margin-top: 40px;
 }
-/* line 846, ../../app/stylesheets/_projects.sass */
+/* line 857, ../../app/stylesheets/_projects.sass */
 body#site #empty_text {
   width: 600px;
 }
-/* line 848, ../../app/stylesheets/_projects.sass */
+/* line 859, ../../app/stylesheets/_projects.sass */
 body#site #project_backers {
   margin-top: 0;
   color: #444444;
   width: 610px;
 }
-/* line 852, ../../app/stylesheets/_projects.sass */
+/* line 863, ../../app/stylesheets/_projects.sass */
 body#site #project_backers h1 {
   font-size: 24px !important;
   color: #999999 !important;
   padding-bottom: 16px !important;
   padding-top: 0 !important;
 }
-/* line 857, ../../app/stylesheets/_projects.sass */
+/* line 868, ../../app/stylesheets/_projects.sass */
 body#site #project_backers img.user {
   float: left;
   margin-right: 12px;
   margin-bottom: 0px;
   width: 48px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 3px 0;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   background-color: white;
 }
-/* line 864, ../../app/stylesheets/_projects.sass */
+/* line 875, ../../app/stylesheets/_projects.sass */
 body#site #project_backers a {
   text-decoration: none !important;
 }
-/* line 866, ../../app/stylesheets/_projects.sass */
+/* line 877, ../../app/stylesheets/_projects.sass */
 body#site #project_backers #all_backers {
   text-align: center;
   margin-top: 16px;
 }
-/* line 869, ../../app/stylesheets/_projects.sass */
+/* line 880, ../../app/stylesheets/_projects.sass */
 body#site #project_backers p {
   font-size: 16px;
   color: #666666;
   padding-bottom: 0 !important;
 }
-/* line 873, ../../app/stylesheets/_projects.sass */
+/* line 884, ../../app/stylesheets/_projects.sass */
 body#site #project_backers p.reward {
   float: right;
   width: 500px;
   font-size: 12px;
   color: #333333;
 }
-/* line 878, ../../app/stylesheets/_projects.sass */
+/* line 889, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul {
   width: 600px;
 }
-/* line 880, ../../app/stylesheets/_projects.sass */
+/* line 891, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul li {
   background-color: #dddddd;
   margin-top: 16px;
@@ -3227,7 +3308,7 @@ body#site #project_backers ul li {
   border-radius: 8px;
   position: relative;
 }
-/* line 886, ../../app/stylesheets/_projects.sass */
+/* line 897, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul li .badge {
   position: absolute;
   top: -10px;
@@ -3242,68 +3323,69 @@ body#site #project_backers ul li .badge {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 892, ../../app/stylesheets/_projects.sass */
+/* line 903, ../../app/stylesheets/_projects.sass */
 body#site #project_backers ul li .badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 895, ../../app/stylesheets/_projects.sass */
+/* line 906, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form, body#site #pending_backers form {
   margin-bottom: 20px;
 }
-/* line 897, ../../app/stylesheets/_projects.sass */
+/* line 908, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form label, body#site #pending_backers form label {
   display: inline;
 }
-/* line 899, ../../app/stylesheets/_projects.sass */
+/* line 910, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form input[type=text], body#site #pending_backers form input[type=text] {
   margin-right: 8px;
   width: 120px;
   padding: 0 !important;
 }
-/* line 903, ../../app/stylesheets/_projects.sass */
+/* line 914, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects form #search_id_equals, body#site #pending_backers form #search_id_equals {
   width: 40px;
 }
-/* line 905, ../../app/stylesheets/_projects.sass */
+/* line 916, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects #total_results, body#site #pending_backers #total_results {
   float: right;
 }
-/* line 907, ../../app/stylesheets/_projects.sass */
+/* line 918, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table, body#site #pending_backers table {
   margin: 20px 0;
 }
-/* line 909, ../../app/stylesheets/_projects.sass */
+/* line 920, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table img, body#site #pending_backers table img {
   width: 32px;
 }
-/* line 912, ../../app/stylesheets/_projects.sass */
+/* line 923, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table thead th, body#site #pending_backers table thead th {
   text-align: center;
   font-size: 14px;
 }
-/* line 917, ../../app/stylesheets/_projects.sass */
+/* line 928, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table tbody tr td, body#site #pending_backers table tbody tr td {
   text-align: center;
   font-size: 14px;
 }
-/* line 920, ../../app/stylesheets/_projects.sass */
+/* line 931, ../../app/stylesheets/_projects.sass */
 body#site #pending_projects table tbody tr td.key, body#site #pending_backers table tbody tr td.key {
   font-size: 8px;
 }
-/* line 923, ../../app/stylesheets/_projects.sass */
+/* line 934, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu {
   float: left;
   width: 280px;
   margin-left: 20px;
 }
-/* line 927, ../../app/stylesheets/_projects.sass */
+/* line 938, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul {
   margin-bottom: 20px;
 }
-/* line 929, ../../app/stylesheets/_projects.sass */
+/* line 940, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul li a {
   background-color: #dddddd;
   margin-bottom: 4px;
@@ -3329,13 +3411,13 @@ body#site #explore_projects #explore_menu ul li a {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 941, ../../app/stylesheets/_projects.sass */
+/* line 952, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_menu ul li a.selected, body#site #explore_projects #explore_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 945, ../../app/stylesheets/_projects.sass */
+/* line 956, ../../app/stylesheets/_projects.sass */
 body#site #explore_projects #explore_results {
   float: right;
   width: 626px;
@@ -3399,10 +3481,10 @@ body#site #curated_pages_list .curated_page {
   float: left;
   margin: 10px 20px;
   border: 5px solid #dddddd;
-  -moz-box-shadow: #888888 3px 3px 6px 0;
-  -webkit-box-shadow: #888888 3px 3px 6px 0;
-  -o-box-shadow: #888888 3px 3px 6px 0;
-  box-shadow: #888888 3px 3px 6px 0;
+  -moz-box-shadow: 3px 3px 6px #888888;
+  -webkit-box-shadow: 3px 3px 6px #888888;
+  -o-box-shadow: 3px 3px 6px #888888;
+  box-shadow: 3px 3px 6px #888888;
 }
 /* line 44, ../../app/stylesheets/_curated_pages.sass */
 body#site #curated_pages_list .curated_page a img {
@@ -3434,10 +3516,10 @@ body#site #video_embed iframe {
   -ms-border-top-right-radius: 8px;
   -khtml-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 9, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed h1 {
@@ -3475,14 +3557,10 @@ body#site #video_embed #site_link h1 {
 body#site #video_embed #site_link h1 a {
   color: #222222;
   text-decoration: none;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.5s;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 /* line 36, ../../app/stylesheets/_video_embed.sass */
 body#site #video_embed #site_link h1 a:hover {
@@ -3512,11 +3590,10 @@ body#site #footer #footer_menu ul {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #footer #footer_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -3527,13 +3604,17 @@ body#site #footer #footer_menu ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 43, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #footer #footer_menu ul li:first-child, body#site #footer #footer_menu ul li.first {
-  padding-left: 0px;
+  padding-left: 0;
 }
-/* line 44, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site #footer #footer_menu ul li:last-child, body#site #footer #footer_menu ul li.last {
-  padding-right: 0px;
+/* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #footer #footer_menu ul li:last-child {
+  padding-right: 0;
+}
+/* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #footer #footer_menu ul li.last {
+  padding-right: 0;
 }
 /* line 11, ../../app/stylesheets/_footer.sass */
 body#site #footer #footer_menu ul li a {
@@ -3558,11 +3639,10 @@ body#site #footer #social_menu ul {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 51, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #footer #social_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -3573,13 +3653,17 @@ body#site #footer #social_menu ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 43, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+/* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#site #footer #social_menu ul li:first-child, body#site #footer #social_menu ul li.first {
-  padding-left: 0px;
+  padding-left: 0;
 }
-/* line 44, ../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body#site #footer #social_menu ul li:last-child, body#site #footer #social_menu ul li.last {
-  padding-right: 0px;
+/* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #footer #social_menu ul li:last-child {
+  padding-right: 0;
+}
+/* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+body#site #footer #social_menu ul li.last {
+  padding-right: 0;
 }
 /* line 26, ../../app/stylesheets/_footer.sass */
 body#site #footer #social_menu ul li a {
@@ -3615,15 +3699,13 @@ body#site #footer #colophon a#power_to_the_crowd {
   display: block;
   height: 43px;
   width: 200px;
-  opacity: 0.7;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
 }
 /* line 47, ../../app/stylesheets/_footer.sass */
 body#site #footer #colophon a#power_to_the_crowd:hover {
-  opacity: 1;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
 }
 /* line 49, ../../app/stylesheets/_footer.sass */
 body#site #footer #colophon a#grupo_comum_login {
@@ -3638,15 +3720,13 @@ body#site #footer #colophon a#grupo_comum_login {
   overflow: hidden;
   height: 50px;
   width: 130px;
-  opacity: 0.7;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
 }
 /* line 57, ../../app/stylesheets/_footer.sass */
 body#site #footer #colophon a#grupo_comum_login:hover {
-  opacity: 1;
-  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
 }
 /* line 59, ../../app/stylesheets/_footer.sass */
 body#site #footer #powered_by {
@@ -3662,10 +3742,10 @@ body#site #teaser {
 }
 /* line 3, ../../app/stylesheets/_teaser.sass */
 body#site #teaser iframe {
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px 0;
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 /* line 5, ../../app/stylesheets/_teaser.sass */
 body#site #teaser h1 {
@@ -3744,10 +3824,10 @@ body#site #press {
   -ms-border-radius: 12px;
   -khtml-border-radius: 12px;
   border-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
+  -moz-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   width: 860px;
   margin: 0 auto;
   margin-top: 8px;
@@ -3783,10 +3863,11 @@ body#site #press a img {
 }
 /* line 27, ../../app/stylesheets/_press.sass */
 body#site #press a img:hover {
-  -moz-transform: scale(1.04);
-  -webkit-transform: scale(1.04);
-  -o-transform: scale(1.04);
-  transform: scale(1.04);
+  -moz-transform: scale(1.04, 1.04);
+  -webkit-transform: scale(1.04, 1.04);
+  -o-transform: scale(1.04, 1.04);
+  -ms-transform: scale(1.04, 1.04);
+  transform: scale(1.04, 1.04);
 }
 /* line 82, ../../app/stylesheets/screen.sass */
 body#site #promo_top {
@@ -3816,11 +3897,11 @@ body#site #promo_top .text {
   -ms-border-bottom-right-radius: 12px;
   -khtml-border-bottom-right-radius: 12px;
   border-bottom-right-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 8px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 8px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 8px 0;
-  box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 8px 0;
-  text-shadow: transparent 0 0 0;
+  -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  text-shadow: transparent, 0, 0, 0;
   margin-top: 20px;
   padding: 20px;
   height: 240px;
@@ -3843,10 +3924,10 @@ body#site #promo_top img {
   -ms-border-radius: 12px;
   -khtml-border-radius: 12px;
   border-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0;
+  -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 /* line 84, ../../app/stylesheets/screen.sass */
 body#site #promo_video {
@@ -3966,10 +4047,10 @@ body#site #credits #buy_credits {
   -ms-border-radius: 12px;
   -khtml-border-radius: 12px;
   border-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px 0;
+  -moz-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   padding: 20px;
   line-height: 24px;
   text-align: center;
@@ -4009,10 +4090,10 @@ body#site #banda img {
   -ms-border-radius: 12px;
   -khtml-border-radius: 12px;
   border-radius: 12px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0;
-  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 8px 0;
+  -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 /* line 12, ../../app/stylesheets/_banda.sass */
 body#site #banda .text {
