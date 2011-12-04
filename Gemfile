@@ -1,10 +1,16 @@
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 gem 'rails', '3.0.3'
 gem 'rake', '0.8.7'
 gem 'haml'
 gem 'slim'
-gem 'compass'
+gem 'sass', '3.1.7'
+gem 'compass', '0.11.5'
 gem 'omniauth', '0.1.6'
 gem 'formtastic', '~> 1.1.0'
 gem 'validation_reflection'
