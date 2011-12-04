@@ -82,19 +82,24 @@ class Backer < ActiveRecord::Base
     created_at + 180.days
   end
   def as_json(options={})
-    unless options.empty?
-      super options
-    else
-      {
-        :id => id,
-        :anonymous => anonymous,
-        :confirmed => confirmed,
-        :confirmed_at => display_confirmed_at,
+    
+    json_attributes = {
+      :id => id,
+      :anonymous => anonymous,
+      :confirmed => confirmed,
+      :confirmed_at => display_confirmed_at,
+      :user => user.as_json(options.merge(:anonymous => anonymous))
+    }
+    
+    if options and options[:can_manage]
+      json_attributes.merge!({
         :display_value => display_value,
-        :user => user,
         :reward => reward
-      }
+      })
     end
+    
+    json_attributes
+
   end
 end
 
