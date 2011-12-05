@@ -395,7 +395,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   right: -12px;
 }
 
-/* line 38, ../../app/stylesheets/screen.sass */
+/* line 37, ../../app/stylesheets/screen.sass */
 body#site {
   background: url("/images/bg.jpg") repeat;
   text-rendering: optimizeLegibility;
@@ -608,7 +608,7 @@ body#site form select.loading:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 41, ../../app/stylesheets/screen.sass */
+/* line 40, ../../app/stylesheets/screen.sass */
 body#site table {
   width: 100%;
 }
@@ -642,7 +642,7 @@ body#site table tbody tr:hover {
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.4);
 }
-/* line 43, ../../app/stylesheets/screen.sass */
+/* line 42, ../../app/stylesheets/screen.sass */
 body#site .flash {
   z-index: 500;
   position: fixed;
@@ -690,7 +690,7 @@ body#site .flash .locale.wrapper {
   background-image: -ms-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
   background-image: linear-gradient(top, #0da1c3, #0591bc, #0084b9);
 }
-/* line 45, ../../app/stylesheets/screen.sass */
+/* line 44, ../../app/stylesheets/screen.sass */
 body#site .overlay {
   background-color: #dddddd;
   background: rgba(180, 180, 180, 0.8);
@@ -701,7 +701,7 @@ body#site .overlay {
   height: 100%;
   z-index: 400;
 }
-/* line 47, ../../app/stylesheets/screen.sass */
+/* line 46, ../../app/stylesheets/screen.sass */
 body#site #locales {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
@@ -768,7 +768,7 @@ body#site #locales img:hover {
   -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
 }
-/* line 49, ../../app/stylesheets/screen.sass */
+/* line 48, ../../app/stylesheets/screen.sass */
 body#site #login {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -899,7 +899,7 @@ body#site #login a.close:hover, body#site #login a.close:focus {
   -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
-/* line 51, ../../app/stylesheets/screen.sass */
+/* line 50, ../../app/stylesheets/screen.sass */
 body#site #pre_header {
   background-color: #0084b9;
   text-align: center;
@@ -968,7 +968,7 @@ body#site #pre_header .back_notice a.close, body#site #pre_header .notification 
 body#site #pre_header .back_notice a.close:hover, body#site #pre_header .back_notice a.close:focus, body#site #pre_header .notification a.close:hover, body#site #pre_header .notification a.close:focus {
   color: white;
 }
-/* line 53, ../../app/stylesheets/screen.sass */
+/* line 52, ../../app/stylesheets/screen.sass */
 body#site #main {
   width: 980px;
   margin: 0 auto;
@@ -993,7 +993,7 @@ body#site #header h1 a {
 body#site #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 57, ../../app/stylesheets/screen.sass */
+/* line 56, ../../app/stylesheets/screen.sass */
 body#site #menu {
   float: right;
   margin-top: 38px;
@@ -1035,7 +1035,7 @@ body#site #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 59, ../../app/stylesheets/screen.sass */
+/* line 58, ../../app/stylesheets/screen.sass */
 body#site #user {
   float: right;
   margin-top: 12px;
@@ -1148,7 +1148,7 @@ body#site #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 61, ../../app/stylesheets/screen.sass */
+/* line 60, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
@@ -1163,7 +1163,7 @@ body#site #content_wrapper {
   -o-box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
 }
-/* line 63, ../../app/stylesheets/screen.sass */
+/* line 62, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content_header {
   position: relative;
   text-align: center;
@@ -1251,7 +1251,7 @@ body#site #content_wrapper #content_header #badge:hover {
   -ms-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 65, ../../app/stylesheets/screen.sass */
+/* line 64, ../../app/stylesheets/screen.sass */
 body#site #content_wrapper #content {
   padding: 40px 20px;
 }
@@ -3496,7 +3496,7 @@ body#site #embed .project_box {
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0 !important;
 }
-/* line 72, ../../app/stylesheets/screen.sass */
+/* line 71, ../../app/stylesheets/screen.sass */
 body#site #video_embed {
   text-align: center;
   padding: 16px;
@@ -3574,7 +3574,7 @@ body#site #video_embed #video_embed_footer {
   width: 220px;
   margin-left: -110px;
 }
-/* line 74, ../../app/stylesheets/screen.sass */
+/* line 73, ../../app/stylesheets/screen.sass */
 body#site #footer {
   text-align: center;
   padding: 20px 0 80px 0;
@@ -3736,7 +3736,7 @@ body#site #footer #powered_by {
 body#site #footer #grupo_comum {
   float: right;
 }
-/* line 76, ../../app/stylesheets/screen.sass */
+/* line 75, ../../app/stylesheets/screen.sass */
 body#site #teaser {
   text-align: center;
 }
@@ -3812,7 +3812,7 @@ body#site .text ul {
 body#site .text ul li {
   margin-bottom: 16px;
 }
-/* line 80, ../../app/stylesheets/screen.sass */
+/* line 79, ../../app/stylesheets/screen.sass */
 body#site #press {
   background-color: #dddbd1;
   background-color: rgba(179, 177, 157, 0.3);
@@ -3869,7 +3869,7 @@ body#site #press a img:hover {
   -ms-transform: scale(1.04, 1.04);
   transform: scale(1.04, 1.04);
 }
-/* line 82, ../../app/stylesheets/screen.sass */
+/* line 81, ../../app/stylesheets/screen.sass */
 body#site #promo_top {
   font-family: "museo-500";
   font-size: 22px;
@@ -3929,7 +3929,7 @@ body#site #promo_top img {
   -o-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
-/* line 84, ../../app/stylesheets/screen.sass */
+/* line 83, ../../app/stylesheets/screen.sass */
 body#site #promo_video {
   margin-bottom: 40px;
   margin-left: 24px;
@@ -4071,77 +4071,4 @@ body#site #credits table td.status {
 /* line 24, ../../app/stylesheets/_credits.sass */
 body#site #credits .error {
   color: #ff4444;
-}
-/* line 88, ../../app/stylesheets/screen.sass */
-body#site #banda {
-  width: 884px;
-  margin: 8px auto 0 auto;
-  text-align: left;
-  text-shadow: green 1px 1px 1px;
-}
-/* line 6, ../../app/stylesheets/_banda.sass */
-body#site #banda img {
-  float: left;
-  height: 248px;
-  margin-right: 24px;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  -o-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -khtml-border-radius: 12px;
-  border-radius: 12px;
-  -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  -o-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-/* line 12, ../../app/stylesheets/_banda.sass */
-body#site #banda .text {
-  font-size: 20px;
-  line-height: 22px;
-}
-/* line 15, ../../app/stylesheets/_banda.sass */
-body#site #banda .text a {
-  color: #ffffaa;
-  text-decoration: none;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.1s;
-  -webkit-transition-duration: 0.1s;
-  -o-transition-duration: 0.1s;
-  transition-duration: 0.1s;
-}
-/* line 19, ../../app/stylesheets/_banda.sass */
-body#site #banda .text a:hover {
-  text-shadow: green 3px 3px 3px;
-}
-/* line 21, ../../app/stylesheets/_banda.sass */
-body#site #banda .text p {
-  padding-bottom: 12px;
-}
-/* line 23, ../../app/stylesheets/_banda.sass */
-body#site #banda #facebook_share {
-  float: right;
-  margin-top: 8px;
-  margin-right: 72px;
-}
-/* line 27, ../../app/stylesheets/_banda.sass */
-body#site #banda #banda_more {
-  margin-top: 16px;
-  padding: 16px;
-  padding-bottom: 4px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  -o-border-radius: 6px;
-  -ms-border-radius: 6px;
-  -khtml-border-radius: 6px;
-  border-radius: 6px;
-  background-color: #003300 !important;
-  background-color: rgba(0, 48, 0, 0.3) !important;
-}
-/* line 34, ../../app/stylesheets/_banda.sass */
-body#site #banda #banda_more p {
-  padding-bottom: 12px;
 }

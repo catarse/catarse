@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  helper_method :current_user, :current_site, :replace_locale, :align_logo_when_home, :is_homepage?
+  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?
   before_filter :set_locale
   before_filter :detect_locale
 
@@ -52,15 +52,6 @@ class ApplicationController < ActionController::Base
     new_url
   end
 
-  def current_site
-    return @current_site if @current_site
-    return @current_site = Site.find_by_path(session[:current_site]) if session[:current_site]
-    site_host = request.host.gsub "www.", ""
-    @current_site = Site.find_by_host site_host
-    @current_site = Site.find_by_path("catarse") unless @current_site
-    @current_site = Factory(:site, :name => "Catarse", :path => "catarse") unless @current_site
-    @current_site
-  end
   def current_user
     return @current_user if @current_user
     if session[:user_id]

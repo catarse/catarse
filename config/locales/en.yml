@@ -142,30 +142,21 @@ en:
     finish:
       successful:
         notification_text: Hooray! The project %{link} that you backed was successful! Spread the word!
-        twitter_text: "Hooray! The project '%{name}', which I backed, was successful %{in_the_twitter}! %{short_url}"
-        facebook_text: "Hooray! The project '%{name}', which I backed, was successful %{in_the_name}!"
-        email_subject: Hooray! The project you backed was successful %{in_the_name}!
-        email_text: "The project %{project_link}, which you backed, was successfuly funded %{in_the_name}! Time to celebrate :D<br><br>Thank you very much, from the heart, for your support! Without you this would never have been possible. Soon, %{user_link} will contact you to deliver your reward. Meanwhile, share with everybody this success!"
+        twitter_text: "Hooray! The project '%{name}', which I backed, was successful on @Catarse_! %{short_url}"
+        facebook_text: "Hooray! The project '%{name}', which I backed, was successful on Catarse!"
+        email_subject: Hooray! The project you backed was successful on Catarse!
+        email_text: "The project %{project_link}, which you backed, was successfuly funded on Catarse! Time to celebrate :D<br><br>Thank you very much, from the heart, for your support! Without you this would never have been possible. Soon, %{user_link} will contact you to deliver your reward. Meanwhile, share with everybody this success!"
         reward_notification_text: "Soon, %{link} will contact you to deliver your reward. Enjoy!"
       unsuccessful:
         unsuccessful_text: "The project %{link} that you backed wasn't funded. Maybe next time!"
         notification_text: You received %{value} in credits to back other projects. If you prefer, you can request a refund %{link}.
-        email_subject: "The project you backed wasn't funded %{in_the_name}."
+        email_subject: "The project you backed wasn't funded on Catarse."
         email_text: "The project %{project_link}, that you backed, was not funded. Maybe next time!<br><br>Because of this, you received <strong>%{value}</strong> in credits to back other projects. If you prefer, you can ask for a refund %{credits_link}."
   reward:
     dont_want: I don't want a reward
     sold_out: Sold out
     limited: Limited
     display_remaining: %{remaining} of %{maximum} available
-  site:
-    male:
-      the: ""
-      in_the: "on"
-      to_the: "to"
-    female:
-      the: ""
-      in_the: "on"
-      to_the: "to"
   user:
     no_name: Unnamed
     backs_text:
@@ -218,6 +209,12 @@ en:
         login: Login
       notifications:
         new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check</a>!"
+  curated_pages:
+    index:
+      title: Páginas curadas
+    show:
+      reached: atingido
+      backed: levantados
   payment_stream:
     thank_you:
       title: Thank you
@@ -230,6 +227,7 @@ en:
       error: Ooops. You can only access this page after backing a project.
   projects:
     index:
+      title: The first crowdfunding platform from Brazil
       recommended: Recommended projects
       expiring: Final countdown
       recent: Recent projects
@@ -272,9 +270,9 @@ en:
       reached: reached
       backed: backed
     guidelines:
-      title: How does %{site} work?
+      title: How does Catarse work?
       subtitle: Before submitting your project, learn a little about how %{site} works.
-      accept: I have read and understood how %{site} works.
+      accept: I have read and understood how Catarse works.
       submit: I want to submit my project
     faq:
       title: Frequent asked questions
@@ -309,7 +307,6 @@ en:
     create:
       success: Your project was successfully created! We'll soon contact you. Thanks a lot!
     show:
-      not_present: This project is not available on this site. Check out the other amazing projects we have!
       share:
         title: Be part of it and share this project
         take_a_look: Check out the project
@@ -409,8 +406,7 @@ en:
     video_embed:
       a_project_by: A project by
   sessions:
-    post_auth:
-      error: There was an error while loggin in. Please try again.
+    auth:
       success: Successfully logged in. Welcome, %{name}!
     destroy:
       success: Successfully logged out. See you!

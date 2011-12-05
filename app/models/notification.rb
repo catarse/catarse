@@ -1,8 +1,7 @@
 class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
-  belongs_to :site
-  validates_presence_of :user, :text, :site
+  validates_presence_of :user, :text
   scope :not_dismissed, where(:dismissed => false)
   after_create :send_email
   def send_email
@@ -27,6 +26,5 @@ end
 #  dismissed     :boolean         default(FALSE), not null
 #  created_at    :datetime
 #  updated_at    :datetime
-#  site_id       :integer         default(1), not null
 #
 
