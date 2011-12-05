@@ -12,6 +12,21 @@
       = t('.review_without_reward_html', :value => @backer.display_value)
   - if @backer.credits
     #credits_notice= t('.credits_notice_html', :credits => number_to_currency((current_user.credits - @backer.value), :unit => 'R$', :precision => 0, :delimiter => '.'))
+  - else
+    #international_payment
+      %h1
+        = t('.international.title')
+        %a#international_link{ :href => '#' }
+          = t('click_here')
+      #international_expanded.hide
+        %h1= t('.international.description')
+        .international_important= t('.international.important_html')
+        = form_tag(pay_paypal_path(@backer), :method => :get) do
+          %fieldset
+            = check_box_tag 'accept_international'
+            = label_tag 'accept_international', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
+          %fieldset
+            = submit_tag t('.international.submit'), :disabled => true, :id => 'international_submit'
   = semantic_form_for current_user, :url => pay_project_path(@backer.project), :html => { :id => 'review_form' } do |form|
     = hidden_field_tag 'backer_id', @backer.id
     = hidden_field_tag 'backer_credits', @backer.credits
@@ -32,20 +47,6 @@
         = check_box_tag 'accept'
         = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
       = form.buttons do
-        = form.commit_button t('.submit'), :button_html => {:disabled => true}
-#international_payment
-  %h1
-    = t('.international.title')
-    %a#international_link{ :href => '#' }
-      = t('click_here')
-  #international_expanded.hide
-    %h1= t('.international.description')
-    .important= t('.international.important_html')
-    = form_tag(pay_paypal_path(@backer), :method => :get) do
-      %fieldset
-        = check_box_tag 'accept_international'
-        = label_tag 'accept_international', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
-      %fieldset
-        = submit_tag t('.international.submit'), :disabled => true, :id => 'international_submit'
+        = form.commit_button (@backer.credits ? t('.submit.credits') : t('.submit.moip')), :button_html => {:disabled => true}
 = javascript_include_tag 'jquery.maskedinput-1.2.2.min'
 = javascript_include_tag 'review'
