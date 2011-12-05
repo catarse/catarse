@@ -148,6 +148,7 @@ describe User do
     u.remember_me_hash.should == "27fc6690fafccbb0fc0b8f84c6749644"
   end
   it "should merge into another account, taking the credits, backs, projects, comments and notifications with it" do
+
     old_user = Factory(:user, :credits => 50)
     new_user = Factory(:user, :credits => 20)
     backed_project = Factory(:project)
