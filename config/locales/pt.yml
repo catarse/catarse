@@ -100,30 +100,21 @@ pt:
     finish:
       successful:
         notification_text: Uhuu! O projeto %{link} que você apoiou foi bem-sucedido! Espalhe por aí!
-        twitter_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido %{in_the_twitter}! %{short_url}"
-        facebook_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido %{in_the_name}!"
-        email_subject: Uhuu! O projeto que você apoiou foi bem-sucedido %{in_the_name}!
-        email_text: "O projeto %{project_link}, que você apoiou, foi financiado com sucesso %{in_the_name}! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, %{user_link} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
+        twitter_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido no @Catarse_! %{short_url}"
+        facebook_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido no Catarse!"
+        email_subject: Uhuu! O projeto que você apoiou foi bem-sucedido no Catarse!
+        email_text: "O projeto %{project_link}, que você apoiou, foi financiado com sucesso no Catarse! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, %{user_link} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
         reward_notification_text: "Em breve, %{link} irá entrar em contato com você para entregar sua recompensa. Desfrute!"
       unsuccessful:
         unsuccessful_text: O projeto %{link} que você apoiou não foi financiado. Quem sabe numa próxima vez?
         notification_text: Você recebeu %{value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{link}.
-        email_subject: O projeto que você apoiou não foi financiado %{in_the_name}.
+        email_subject: O projeto que você apoiou não foi financiado no Catarse.
         email_text: "O projeto %{project_link}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>%{value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{credits_link}."
   reward:
     dont_want: Não quero recompensa
     sold_out: Esgotada
     limited: Limitada
     display_remaining: %{remaining} de %{maximum} disponíveis
-  site:
-    male:
-      the: "o"
-      in_the: "no"
-      to_the: "ao"
-    female:
-      the: "a"
-      in_the: "na"
-      to_the: "à"
   user:
     no_name: Sem nome
     backs_text:
@@ -177,6 +168,8 @@ pt:
       notifications:
         new_curated_pages: "Já conhece os Canais Catárticos? <a href='#curated_pages' id='curated_link'>Olha aqui</a>!"
   curated_pages:
+    index:
+      title: Páginas curadas
     show:
       reached: atingido
       backed: levantados
@@ -201,6 +194,7 @@ pt:
       categories: Categorias
   projects:
     index:
+      title: A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil
       recommended: Projetos recomendados
       expiring: Na reta final
       recent: Projetos recentes
@@ -243,9 +237,9 @@ pt:
       reached: atingido
       backed: levantados
     guidelines:
-      title: Como funciona %{site}?
+      title: Como funciona o Catarse?
       subtitle: Antes de enviar seu projeto, saiba um pouco mais sobre como funciona %{site}.
-      accept: Eu li e entendi como funciona %{site}.
+      accept: Eu li e entendi como funciona o Catarse.
       submit: Quero enviar meu projeto
     faq:
       title: Perguntas frequentes
@@ -272,7 +266,6 @@ pt:
     create:
       success: Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!
     show:
-      not_present: Este projeto não está disponível neste site. Confira os outros projetos incríveis que temos!
       share:
         title: Faça parte disto e compartilhe este projeto
         take_a_look: Confira o projeto
@@ -372,8 +365,7 @@ pt:
     video_embed:
       a_project_by: Um projeto de
   sessions:
-    post_auth:
-      error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
+    auth:
       success: Login realizado com sucesso. Bem-vindo, %{name}!
     destroy:
       success: Logout realizado com sucesso. Até logo!

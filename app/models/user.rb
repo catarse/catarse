@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     Rails.logger.error "Error when syncing with mailee: #{e.inspect}"
   end
 
-  validates_presence_of :provider, :uid, :site
+  validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
-  belongs_to :site
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
@@ -68,7 +67,7 @@ class User < ActiveRecord::Base
     u.primary.nil? ? u : u.primary
   end
 
-  def self.create_with_omniauth(site, auth, primary_user_id = nil)
+  def self.create_with_omniauth(auth, primary_user_id = nil)
     u = create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
@@ -79,7 +78,6 @@ class User < ActiveRecord::Base
       user.nickname = auth["user_info"]["nickname"]
       user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
       user.image_url = auth["user_info"]["image"]
-      user.site = site
       user.locale = I18n.locale.to_s
     end
     # If we could not associate by email we try to use the parameter
@@ -204,7 +202,6 @@ end
 #  address_zip_code      :text
 #  phone_number          :text
 #  credits               :decimal(, )     default(0.0)
-#  site_id               :integer         default(1), not null
 #  session_id            :text
 #  locale                :text            default("pt"), not null
 #
