@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
   end
   def send_mail
     current_user.update_attribute :email, params[:contact] if current_user.email.nil?
-    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user, user_url(current_user)).deliver
+    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user, "#{I18n.t('site.base_url')}#{user_path(current_user)}").deliver
     flash[:success] = t('projects.send_mail.success')
     redirect_to :root
   end
