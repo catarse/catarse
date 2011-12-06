@@ -60,11 +60,11 @@ class Backer < ActiveRecord::Base
   def display_confirmed_at
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
-  def catarse_tax(tax=7.5)
-    (value.to_f*tax)/100
+  def platform_fee(fee=7.5)
+    (value.to_f * fee)/100
   end
-  def display_catarse_tax(tax=7.5)
-    number_to_currency catarse_tax(tax), :unit => "R$", :precision => 2, :delimiter => '.'
+  def display_platform_fee(fee=7.5)
+    number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => '.'
   end
   def moip_value
     "%0.0f" % (value * 100)
@@ -98,29 +98,3 @@ class Backer < ActiveRecord::Base
 
   end
 end
-
-# == Schema Information
-#
-# Table name: backers
-#
-#  id               :integer         not null, primary key
-#  project_id       :integer         not null
-#  user_id          :integer         not null
-#  reward_id        :integer
-#  value            :decimal(, )     not null
-#  confirmed        :boolean         default(FALSE), not null
-#  confirmed_at     :datetime
-#  created_at       :datetime
-#  updated_at       :datetime
-#  display_notice   :boolean         default(FALSE)
-#  anonymous        :boolean         default(FALSE)
-#  key              :text
-#  can_refund       :boolean         default(FALSE)
-#  requested_refund :boolean         default(FALSE)
-#  refunded         :boolean         default(FALSE)
-#  credits          :boolean         default(FALSE)
-#  notified_finish  :boolean         default(FALSE)
-#  payment_method   :text
-#  payment_token    :text
-#
-

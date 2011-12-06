@@ -23,8 +23,6 @@
       = f.text_field :project_name_contains
       = f.label :user_name_contains, t('.user')
       = f.text_field :user_name_contains
-      = f.label :site_name_contains, t('.site')
-      = f.text_field :site_name_contains
     %fieldset
       = f.check_box :confirmed_is_true
       = f.label :confirmed_is_true, t('.confirmed')
@@ -48,7 +46,6 @@
         %tr
           %th= t('.id')
           %th= t('.project')
-          %th= t('.site')
           %th= t('.user')
           %th= t('.value')
           %th= t('.reward')
@@ -65,7 +62,6 @@
             %td{ :title => backer.project.name }
               = link_to project_path(backer.project) do
                 = image_tag backer.project.display_image
-            %td= backer.site.name
             %td{ :title => backer.user.display_name }
               = link_to user_path(backer.user) do
                 = image_tag backer.user.display_image

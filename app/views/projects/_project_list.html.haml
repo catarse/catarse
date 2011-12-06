@@ -1,7 +1,7 @@
 %br
 - if defined?(quick)
-  .project_list_header= t("sites.#{current_site.path}.projects.#{quick}.title")
-  .project_list_subheader= t("sites.#{current_site.path}.projects.#{quick}.subtitle")
+  .project_list_header= t(".#{quick}.title")
+  .project_list_subheader= t(".#{quick}.subtitle")
 .project_list_wrapper
   .project_list
     = render :partial => 'projects/project', :collection => collection
@@ -9,6 +9,5 @@
   .explore_more
     %hr
     = link_to explore_quick_path(quick) do
-      = t(".explore_#{quick}")
+      = t(".#{quick}.explore")
       .explore_more_arrow >
-

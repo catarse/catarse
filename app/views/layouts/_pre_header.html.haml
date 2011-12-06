@@ -1,17 +1,17 @@
-- if current_user and (not current_user.backs.project_visible(current_site).display_notice.empty? or not current_user.notifications.where(:site_id => current_site.id).not_dismissed.empty?)
+- if current_user and (not current_user.backs.display_notice.empty? or not current_user.notifications.not_dismissed.empty?)
   #pre_header
-    - current_user.backs.project_visible(current_site).display_notice.each do |back|
+    - current_user.backs.display_notice.each do |back|
       %div{:id => "back_notice_#{back.id}", :class => "back_notice"}
 
         = t('.back_notice_html', :link => link_to(truncate(back.project.name, :length => 32), project_path(back.project)))
         &nbsp;
         %a.close{ :href => '#' } X
-        = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}&t=#{t('i_backed')} \"#{back.project.name}\" #{current_site.in_the_name}&v=4", :target => :_blank do
+        = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}", :target => :_blank do
           = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
-        = link_to "http://twitter.com/?status=#{t('i_backed')} \"#{back.project.name}\" #{current_site.in_the_twitter} #{back.project.short_url}", :target => :_blank do
+        = link_to "http://twitter.com/?status=#{t('i_backed', :name => back.project.name)} #{back.project.short_url}", :target => :_blank do
           = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
     = javascript_include_tag 'back_notices'
-    - current_user.notifications.where(:site_id => current_site.id).not_dismissed.order(:created_at).each do |notification|
+    - current_user.notifications.not_dismissed.order(:created_at).each do |notification|
       %div{:id => "notification_#{notification.id}", :class => "notification"}
         = notification.text.html_safe
         &nbsp;
@@ -24,4 +24,5 @@
             = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
     = javascript_include_tag 'notifications'
 - else
-  = render :partial => "/sites/#{current_site.path}/pre_header"
+  #pre_header 
+    = t('.content_html', :link => link_to( t('.help_link'),  "#{t('site.blog')}/post/2826297563/passo-a-passo-apoiar-projetos", :target => :_blank))

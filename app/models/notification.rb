@@ -10,21 +10,3 @@ class Notification < ActiveRecord::Base
   rescue
   end
 end
-
-# == Schema Information
-#
-# Table name: notifications
-#
-#  id            :integer         not null, primary key
-#  user_id       :integer         not null
-#  project_id    :integer
-#  text          :text            not null
-#  twitter_text  :text
-#  facebook_text :text
-#  email_subject :text
-#  email_text    :text
-#  dismissed     :boolean         default(FALSE), not null
-#  created_at    :datetime
-#  updated_at    :datetime
-#
-

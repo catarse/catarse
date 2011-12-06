@@ -137,26 +137,3 @@ describe PaymentDetail do
     end
   end
 end
-
-# == Schema Information
-#
-# Table name: payment_details
-#
-#  id                     :integer         not null, primary key
-#  backer_id              :integer
-#  payer_name             :string(255)
-#  payer_email            :string(255)
-#  city                   :string(255)
-#  uf                     :string(255)
-#  payment_method         :string(255)
-#  net_amount             :decimal(, )
-#  total_amount           :decimal(, )
-#  service_tax_amount     :decimal(, )
-#  payment_status         :string(255)
-#  service_code           :string(255)
-#  institution_of_payment :string(255)
-#  payment_date           :datetime
-#  created_at             :datetime
-#  updated_at             :datetime
-#
-
