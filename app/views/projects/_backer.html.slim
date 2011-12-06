@@ -12,8 +12,8 @@ script type="text/template" id="backer_template"
 
   |{{^anonymous}}
   |{{#user}}
-  a href="{{profile_path}}"
-    img src="{{display_image}}" class="user"
+  a href="{{url}}"
+    img src="{{image}}" class="user"
     |  {{medium_name}}
     = image_tag "sites/#{current_site.path}/badge.#{I18n.locale}.png", :class => "badge"
   p

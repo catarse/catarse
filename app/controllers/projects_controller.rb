@@ -199,34 +199,33 @@ class ProjectsController < ApplicationController
   def backers
     @project = Project.find params[:id]
     @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
-    respond_with @backers do |format|
-      if current_user and current_user.admin?
-        format.json { render :json => @backers.as_json({:include => {:user => {:methods => [:display_image, :medium_name, :backs_text, :profile_path], :only => [:id,:full_name,:name,:email]}}, :only => [:id, :anonymous, :confirmed, :confirmed_at, :display_value, :reward]}) }
-      else
-        format.json { render :json => @backers.as_json({:include => {:user => {:methods => [:display_image, :medium_name, :backs_text, :profile_path], :only => [:id,:full_name,:name]}}, :only => [:id, :anonymous, :confirmed, :confirmed_at]}) }
-      end
-    end
+    render :json => @backers.to_json(:can_manage => can?(:manage, @project))
   end
+  
   def comments
     @project = Project.find params[:id]
     @comments = @project.comments.order("created_at DESC").paginate :page => params[:page], :per_page => 5
     respond_with @comments
   end
+  
   def updates
     @project = Project.find params[:id]
     @updates = @project.updates.order("created_at DESC").paginate :page => params[:page], :per_page => 3
     respond_with @updates
   end
+  
   def embed
     @project = Project.find params[:id]
     @title = @project.name
     render :layout => 'embed'
   end
+  
   def video_embed
     @project = Project.find params[:id]
     @title = @project.name
     render :layout => 'embed'
   end
+  
   def pending
     return unless require_admin
     @title = t('projects.pending.title')
