@@ -7,31 +7,18 @@ end
 Factory.sequence :uid do |n|
   "#{n}"
 end
-Factory.define :site do |f|
-  f.name { Factory.next(:name) }
-  f.title { Factory.next(:name) }
-  f.path { Factory.next(:name) }
-  f.host { Factory.next(:name) }
-  f.gender "male"
-  f.email { Factory.next(:email) }
-  f.twitter "foobar"
-  f.facebook "http://www.facebook.com/FooBar"
-  f.blog "http://blog.foo.bar"
-end
 Factory.define :user do |f|
   f.provider "twitter"
   f.uid { Factory.next(:uid) }
   f.name "Foo bar"
   f.email { Factory.next(:email) }
   f.bio "This is Foo bar's biography."
-  f.association :site, :factory => :site
 end
 Factory.define :category do |f|
   f.name { Factory.next(:name) }
 end
 Factory.define :project do |f|
   f.name "Foo bar"
-  f.association :site, :factory => :site
   f.association :user, :factory => :user
   f.association :category, :factory => :category
   f.about "Foo bar"
@@ -63,7 +50,6 @@ end
 Factory.define :backer do |f|
   f.association :project, :factory => :project
   f.association :user, :factory => :user
-  f.association :site, :factory => :site
   f.payment_detail nil
   f.confirmed true
   f.value 10.00
@@ -80,7 +66,6 @@ Factory.define :configuration do |f|
   f.value 'Bar'
 end
 Factory.define :curated_page do |f|
-  f.association :site, :factory => :site
   f.name 'Foo Page'
   f.permalink 'foo_page'
   f.description 'foo description'
@@ -90,8 +75,4 @@ end
 Factory.define :projects_curated_page do |f|
   f.association :project, :factory => :project
   f.association :curated_page, :factory => :curated_page
-end
-Factory.define :projects_site do |f|
-  f.association :project, :factory => :project
-  f.association :site, :factory => :site
 end

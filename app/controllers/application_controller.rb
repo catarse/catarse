@@ -3,11 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  # TODO this is a temporary thing while we don't build the new Multidão
-  before_filter :multidao_redirect
-  # TODO remove this when we launch the new Multidão
-
-  helper_method :current_user, :current_site, :replace_locale, :align_logo_when_home, :is_homepage?
+  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?
   before_filter :set_locale
   before_filter :detect_locale
 
@@ -20,17 +16,6 @@ class ApplicationController < ActionController::Base
   def align_logo_when_home
     'home_logo' if is_homepage?
   end
-
-  # TODO this is a temporary thing while we don't build the new Multidão
-  def multidao_redirect
-    return unless current_site.path == "multidao"
-    if params[:controller] == "projects" and params[:action] == "index"
-      return render "sites/multidao/new_multidao", :layout => false
-    end
-    catarse = Site.find_by_path "catarse"
-    return redirect_to catarse.full_url(request.fullpath)
-  end
-  # TODO remove this when we launch the new Multidão
 
   def set_locale
     return unless params[:locale]
@@ -67,15 +52,6 @@ class ApplicationController < ActionController::Base
     new_url
   end
 
-  def current_site
-    return @current_site if @current_site
-    return @current_site = Site.find_by_path(session[:current_site]) if session[:current_site]
-    site_host = request.host.gsub "www.", ""
-    @current_site = Site.find_by_host site_host
-    @current_site = Site.find_by_path("catarse") unless @current_site
-    @current_site = Factory(:site, :name => "Catarse", :path => "catarse") unless @current_site
-    @current_site
-  end
   def current_user
     return @current_user if @current_user
     if session[:user_id]

@@ -1,4 +1,16 @@
 pt:
+  site:
+    name: Catarse
+    title: A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil
+    base_url: http://catarse.me
+    email:
+      contact: contato@catarse.me
+      system: system@catarse.me
+      projects: projetos@catarse.me
+      payments: financeiro@catarse.me
+    twitter: Catarse_
+    facebook: http://www.facebook.com/Catarse.me
+    blog: http://blog.catarse.me/
   activerecord:
       models:
         backer: Apoiador
@@ -85,8 +97,8 @@ pt:
   backer_plural: apoiadores
   found_singular: Encontrado
   found_plural: Encontrados
-  i_backed: Eu apoiei o projeto
-  i_just_backed: Eu acabei de apoiar o projeto
+  i_backed: Eu apoiei o projeto %{name} no @Catarse_
+  i_just_backed: Eu acabei de apoiar o projeto %{name} no @Catarse_
   backer:
     reward_must_be_from_project: deve ser do mesmo projeto
     value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para a recompensa selecionada
@@ -100,30 +112,21 @@ pt:
     finish:
       successful:
         notification_text: Uhuu! O projeto %{link} que você apoiou foi bem-sucedido! Espalhe por aí!
-        twitter_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido %{in_the_twitter}! %{short_url}"
-        facebook_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido %{in_the_name}!"
-        email_subject: Uhuu! O projeto que você apoiou foi bem-sucedido %{in_the_name}!
-        email_text: "O projeto %{project_link}, que você apoiou, foi financiado com sucesso %{in_the_name}! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, %{user_link} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
+        twitter_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido no @Catarse_! %{short_url}"
+        facebook_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido no Catarse!"
+        email_subject: Uhuu! O projeto que você apoiou foi bem-sucedido no Catarse!
+        email_text: "O projeto %{project_link}, que você apoiou, foi financiado com sucesso no Catarse! Hora de comemorar :D<br><br>Muito obrigado, de coração, pelo seu apoio! Sem ele, isto jamais seria possível. Em breve, %{user_link} irá entrar em contato com você para entregar sua recompensa. Enquanto isso, compartilhe com todo mundo este sucesso!"
         reward_notification_text: "Em breve, %{link} irá entrar em contato com você para entregar sua recompensa. Desfrute!"
       unsuccessful:
         unsuccessful_text: O projeto %{link} que você apoiou não foi financiado. Quem sabe numa próxima vez?
         notification_text: Você recebeu %{value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{link}.
-        email_subject: O projeto que você apoiou não foi financiado %{in_the_name}.
+        email_subject: O projeto que você apoiou não foi financiado no Catarse.
         email_text: "O projeto %{project_link}, que você apoiou, não foi financiado. Quem sabe numa próxima vez?<br><br>Em função disto, você recebeu <strong>%{value}</strong> em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{credits_link}."
   reward:
     dont_want: Não quero recompensa
     sold_out: Esgotada
     limited: Limitada
     display_remaining: %{remaining} de %{maximum} disponíveis
-  site:
-    male:
-      the: "o"
-      in_the: "no"
-      to_the: "ao"
-    female:
-      the: "a"
-      in_the: "na"
-      to_the: "à"
   user:
     no_name: Sem nome
     backs_text:
@@ -157,7 +160,19 @@ pt:
       important_html: Você tem <strong>até 180 dias após a data de seu apoio</strong> para solicitar o estorno do mesmo. Caso você opte pelo estorno, o valor do apoio será descontado dos seus créditos.
       confirm: Você tem certeza que quer solicitar o estorno deste apoio?
   layouts:
+    footer:
+      guidelines: Como funciona?
+      faq: FAQ/Ajuda
+      terms: Termos de uso
+      privacy: Política de privacidade
+      email: Contato
+      twitter: Siga no Twitter
+      facebook: Curta no Facebook
+      blog: Leia o blog
+      comum: Grupo Comum
     pre_header:
+      content_html: Quer saber como apoiar um projeto? %{link} um passo-a-passo que publicamos no nosso blog.
+      help_link: Confira aqui
       back_notice_html: Você apoiou o projeto %{link}. Conte para todo mundo o que você fez!
     login:
       title: Entre através de sua rede social favorita
@@ -177,6 +192,8 @@ pt:
       notifications:
         new_curated_pages: "Já conhece os Canais Catárticos? <a href='#curated_pages' id='curated_link'>Olha aqui</a>!"
   curated_pages:
+    index:
+      title: Páginas curadas
     show:
       reached: atingido
       backed: levantados
@@ -188,21 +205,52 @@ pt:
       text_title_html: Você agora é parte do grupo que faz de tudo para o %{link} acontecer.
       text_subtitle: Conte para todo mundo o que você acabou de fazer
       successful: Este projeto será financiado em %{expires_at}, graças a sua ajuda e de mais %{total_backers} pessoas. Muito obrigado!
-      not_successful: Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{expires_at}. Caso ele não seja bem sucedido, você receberá seu dinheiro de volta na forma de créditos %{site}. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!
+      not_successful: Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{expires_at}. Caso ele não seja bem sucedido, você receberá seu dinheiro de volta na forma de créditos no Catarse. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!
       error: Ooops. Você só pode acessar esta página depois de apoiar um projeto.
+  explore:
+    title: Explore os projetos
+    index:
+      title: Encontre projetos incríveis
+      subtitle: Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!
+      quick_explore: Busca rápida
+      recommended: Recomendados
+      expiring: Na reta final
+      recent: Recentes
+      successful: Bem-sucedidos
+      categories: Categorias
   projects:
     index:
       recommended: Projetos recomendados
       expiring: Na reta final
       recent: Projetos recentes
       successful: Projetos bem-sucedidos
+    index_header:
+      title: Faça acontecer os projetos em que você acredita
+      subtitle_html: Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história.
+    index_meta_tags:
+      description: Faça acontecer os projetos em que você acredita! Financie projetos de maneira colaborativa e torne-se parte de algo maior. Junte-se a todo mundo que quer ver um projeto sair e faça ele virar realidade. Você é a peça que falta nesta história.
+    press:
+      title: Confira o que estão falando do Catarse na imprensa
+    curated_pages_list:
+      title: Canais catárticos
+      subtitle: Descubra projetos selecionados por alguns dos parceiros catárticos      
     home_page_projects:
-      title: Projetos em destaque
+      title: Nossa seleção catártica!
+      subtitle: Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção.
       explore_recommended: Explore mais projetos recomendados
     project_list:
-      explore_expiring: Explore mais projetos na reta final
-      explore_recent: Explore mais projetos recentes
-      explore_successful: Explore mais projetos bem-sucedidos
+      expiring:
+        title: Na reta final
+        subtitle: Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!
+        explore: Explore mais projetos na reta final
+      recent:
+        title: Novos e fresquinhos
+        subtitle: Projetos recém-chegados no Catarse. Cheiro de que saiu do forno agorinha...
+        explore: Explore mais projetos recentes
+      successful:
+        title: Projetos bem-sucedidos
+        subtitle: Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!
+        explore: Explore mais projetos bem-sucedidos
     admin_fields:
       title: Campos para o admin
     back_project:
@@ -225,7 +273,10 @@ pt:
       anonymous_description: Optou por permanecer incógnito
       no_reward: Este apoiador não selecionou nenhuma recompensa
     form:
-      important_html: Lembre-se que %{site} ficará com 7,5%, e os meios de pagamento (MoIP e Paypal) cobram uma taxa que varia, em geral, entre 4% e 5% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas depois.
+      project_warning:
+        content_html: Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}.
+        help_link: nosso guia
+      important_html: Lembre-se que o Catarse ficará com 7,5%, e os meios de pagamento (MoIP e Paypal) cobram uma taxa que varia, em geral, entre 4% e 5% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas depois.
       rewards_title: Recompensas
       rewards_description: A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão.
       add_reward: Adicionar recompensa
@@ -234,9 +285,9 @@ pt:
       reached: atingido
       backed: levantados
     guidelines:
-      title: Como funciona %{site}?
-      subtitle: Antes de enviar seu projeto, saiba um pouco mais sobre como funciona %{site}.
-      accept: Eu li e entendi como funciona %{site}.
+      title: Como funciona o Catarse?
+      subtitle: Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse.
+      accept: Eu li e entendi como funciona o Catarse.
       submit: Quero enviar meu projeto
     faq:
       title: Perguntas frequentes
@@ -244,17 +295,12 @@ pt:
       title: Termos de uso
     privacy:
       title: Política de privacidade
-    explore:
-      title: Explore os projetos
-      quick_explore: Busca rápida
-      recommended: Recomendados
-      expiring: Na reta final
-      recent: Recentes
-      successful: Bem-sucedidos
-      categories: Categorias
     start:
       title: Envie seu projeto
       subtitle: A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando...
+      project_warning:
+        content_html: Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}.
+        help_link: nosso guia
       about: Descreva seu projeto e quanto você precisa
       about_hint: Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!
       rewards: Que recompensas você quer oferecer?
@@ -271,7 +317,6 @@ pt:
     create:
       success: Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!
     show:
-      not_present: Este projeto não está disponível neste site. Confira os outros projetos incríveis que temos!
       share:
         title: Faça parte disto e compartilhe este projeto
         take_a_look: Confira o projeto
@@ -285,12 +330,12 @@ pt:
         backers: Apoiadores
         comments: Comentários
     twitter:
-      take_a_look: Confira o projeto
+      take_a_look: Confira o projeto %{name} no @Catarse_
     project_header:
       subtitle_html: Um projeto de %{link}
     project_warning:
-      rejected: Este projeto não foi selecionado para participar d%{site}. Quem sabe numa próxima vez? :)
-      waiting: Este projeto está aguardando análise e logo saberemos se ele entrará %{site} ;)
+      rejected: Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)
+      waiting: Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)
     project_backers:
       empty: Ninguém apoiou este projeto ainda. Que tal ser o primeiro?
     project_comments:
@@ -309,6 +354,9 @@ pt:
       no_reward: Obrigado. Eu só quero ajudar o projeto.
       cannot_back: Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos.
       submit: Revisar e realizar pagamento
+      header:
+        title: Oohh yeah!
+        subtitle: Você está a poucos passos de fazer a diferença e se tornar parte deste projeto.
     review:
       title: Preencha e revise seus dados
       subtitle: Último passo para fazer a diferença e se tornar parte deste projeto.
@@ -337,7 +385,6 @@ pt:
       no_projects: Nenhum projeto encontrado.
       id: Id
       project: Projeto
-      site: Site
       name: Nome
       user: Usuário
       visible: Visível?
@@ -359,7 +406,6 @@ pt:
       key: Chave
       project: Projeto
       user: Usuário
-      site: Site
       value: Valor
       reward: Recompensa
       confirmed: Confirmado?
@@ -369,10 +415,9 @@ pt:
       refunded: Estorno realizado?
       submit: Pesquisar
     video_embed:
-      a_project_by: Um projeto de
+      a_project_by: Um projeto de %{link} no Catarse
   sessions:
-    post_auth:
-      error: Ocorreu um erro ao realizar o login. Por favor, tente novamente.
+    auth:
       success: Login realizado com sucesso. Bem-vindo, %{name}!
     destroy:
       success: Logout realizado com sucesso. Até logo!
@@ -394,23 +439,24 @@ pt:
     current_user_fields:
       gravatar_hint_html: Quer mudar sua foto? Use o %{link} com seu email. É tão simples quanto enviar uma imagem e já funciona para outros sites também ;)
       email_tooltip: Clique aqui para preencher seu email...
-      email_hint: Seu email será utilizado apenas para envio de comunicações d%{site} e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas.
-      newsletter: Quero receber novidades d%{site} por email
+      email_hint: Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas.
+      newsletter: Quero receber novidades do Catarse por email
     header:
       name_tooltip: Clique aqui para preencher seu nome...
       bio_tooltip: Clique aqui para escrever sobre você...
     projects:
       title: Projetos de %{name}
       title_current_user: Meus projetos
-      no_projects: %{name} ainda não realizou nenhum projeto %{site}. Será que a inspiração vai bater uma hora dessas?
-      no_projects_current_user_html: Você ainda não realizou nenhum projeto %{site}. Deixe a inspiração bater e %{link} para começar!
+      no_projects: %{name} ainda não realizou nenhum projeto no Catarse. Será que a inspiração vai bater uma hora dessas?
+      no_projects_current_user_html: Você ainda não realizou nenhum projeto no Catarse. Deixe a inspiração bater e %{link} para começar!
   projects_mailer:
     start_project_email:
       subject: Projeto enviado por %{name}
       subject_html: Projeto enviado por %{link}
   users_mailer:
     notification_email:
-      intro: Você está recebendo esta mensagem pois se cadastrou %{site}
+      alt: Você deve habilitar imagens para visualizar corretamente essa mensagem.
+      intro: Você está recebendo esta mensagem pois se cadastrou no Catarse
       weblink: Ver na web
       whitelist: Adicionar contato
       whitelist_long: Adicione nosso email a seus contatos
@@ -418,6 +464,8 @@ pt:
       unsubscribe: Descadastrar da lista
       unsubscribe_long: Se não quiser mais receber estes emails
       hello: Olá
+      salutation: Um grande abraço,
+      signature: Equipe do Catarse
       mailee: Mensagem entregue pelo Mailee.me
   active_admin:
     dashboard: Painel de controle

@@ -2,13 +2,11 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Show Project Feature", :driver => :selenium do
+
   include Rails.application.routes.url_helpers
-  # default_url_options[:host] = current_site.host
-  # default_url_options[:port] = current_site.port
 
   scenario "As a user, I want to see a project page" do
-    p = Factory.create(:project, :site => current_site)
-    create(:projects_site, :site => current_site, :project => p)
+    p = Factory.create(:project)
     visit project_path(p)
     within '#project_header' do
       within 'h1' do
