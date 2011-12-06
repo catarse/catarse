@@ -1,13 +1,9 @@
 ActiveAdmin.register CuratedPage do
   controller.authorize_resource
-  scope_to :current_site
   scope :visible
   scope :not_visible
 
   index do
-    column :name do |site|
-      link_to site.name, admin_site_path(site)
-    end
     default_actions
   end
 

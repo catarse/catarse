@@ -130,58 +130,31 @@ describe Backer do
     backer.payment_method.should == 'MoIP'
   end
 
-  describe "#display_catarse_tax" do
+  describe "#display_platform_fee" do
     before(:each) do
       @backer = create(:backer, :value => 100)
     end
 
     it 'with default tax 7.5%'do
-      @backer.display_catarse_tax.should == 'R$ 7,50'
+      @backer.display_platform_fee.should == 'R$ 7,50'
     end
 
     it 'with another tax'do
-      @backer.display_catarse_tax(5).should == 'R$ 5,00'
+      @backer.display_platform_fee(5).should == 'R$ 5,00'
     end
   end
 
-  describe "#catarse_tax" do
+  describe "#platform_fee" do
     before(:each) do
       @backer = create(:backer, :value => 100)
     end
 
     it 'with default tax 7.5%'do
-      @backer.catarse_tax.should == 7.50
+      @backer.platform_fee.should == 7.50
     end
 
     it 'with another tax'do
-      @backer.catarse_tax(5).should == 5.00
+      @backer.platform_fee(5).should == 5.00
     end
   end
 end
-
-# == Schema Information
-#
-# Table name: backers
-#
-#  id               :integer         not null, primary key
-#  project_id       :integer         not null
-#  user_id          :integer         not null
-#  reward_id        :integer
-#  value            :decimal(, )     not null
-#  confirmed        :boolean         default(FALSE), not null
-#  confirmed_at     :datetime
-#  created_at       :datetime
-#  updated_at       :datetime
-#  display_notice   :boolean         default(FALSE)
-#  anonymous        :boolean         default(FALSE)
-#  key              :text
-#  can_refund       :boolean         default(FALSE)
-#  requested_refund :boolean         default(FALSE)
-#  refunded         :boolean         default(FALSE)
-#  credits          :boolean         default(FALSE)
-#  notified_finish  :boolean         default(FALSE)
-#  site_id          :integer         default(1), not null
-#  payment_method   :text
-#  payment_token    :text
-#
-

@@ -5,10 +5,9 @@ class Backer < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   belongs_to :reward
-  belongs_to :site
   has_many :payment_logs
   has_one :payment_detail
-  validates_presence_of :project, :user, :value, :site
+  validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
   scope :anonymous, where(:anonymous => true)
@@ -19,9 +18,6 @@ class Backer < ActiveRecord::Base
   scope :display_notice, where(:display_notice => true)
   scope :can_refund, where(:can_refund => true)
   scope :within_refund_deadline, where("current_timestamp < (created_at + interval '180 days')")
-  def self.project_visible(site)
-    joins(:project).joins("INNER JOIN projects_sites ON projects_sites.project_id = projects.id").where("projects_sites.site_id = #{site.id} AND projects_sites.visible = true")
-  end
   after_create :define_key, :define_payment_method
   def define_key
     self.update_attribute :key, Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s
@@ -64,11 +60,11 @@ class Backer < ActiveRecord::Base
   def display_confirmed_at
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
-  def catarse_tax(tax=7.5)
-    (value.to_f*tax)/100
+  def platform_fee(fee=7.5)
+    (value.to_f * fee)/100
   end
-  def display_catarse_tax(tax=7.5)
-    number_to_currency catarse_tax(tax), :unit => "R$", :precision => 2, :delimiter => '.'
+  def display_platform_fee(fee=7.5)
+    number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => '.'
   end
   def moip_value
     "%0.0f" % (value * 100)
@@ -102,30 +98,3 @@ class Backer < ActiveRecord::Base
 
   end
 end
-
-# == Schema Information
-#
-# Table name: backers
-#
-#  id               :integer         not null, primary key
-#  project_id       :integer         not null
-#  user_id          :integer         not null
-#  reward_id        :integer
-#  value            :decimal(, )     not null
-#  confirmed        :boolean         default(FALSE), not null
-#  confirmed_at     :datetime
-#  created_at       :datetime
-#  updated_at       :datetime
-#  display_notice   :boolean         default(FALSE)
-#  anonymous        :boolean         default(FALSE)
-#  key              :text
-#  can_refund       :boolean         default(FALSE)
-#  requested_refund :boolean         default(FALSE)
-#  refunded         :boolean         default(FALSE)
-#  credits          :boolean         default(FALSE)
-#  notified_finish  :boolean         default(FALSE)
-#  site_id          :integer         default(1), not null
-#  payment_method   :text
-#  payment_token    :text
-#
-
