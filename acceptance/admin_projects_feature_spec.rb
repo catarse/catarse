@@ -20,7 +20,7 @@ feature "Manage pending projects" do
   end
 
   scenario "show a table with projects" do
-    add_some_projects_to_current_site(10)
+    add_some_projects(10)
     user_to_admin(current_user)
     visit pending_projects_path(:locale => 'en')
     page.should have_content "Found 10 projects"
@@ -28,13 +28,13 @@ feature "Manage pending projects" do
   end
 
   scenario 'show projects in home page' do
-    add_some_projects_to_current_site(1)
+    add_some_projects(1)
     user_to_admin(current_user)
     visit root_path(:locale => 'en')
     page.should_not have_css('.project_list_header')
     visit pending_projects_path(:locale => 'en')
-    check 'projects_site__visible__1'
-    check 'projects_site__home_page__1'
+    check 'projects__visible__1'
+    check 'projects__home_page__1'
     visit root_path(:locale => 'en')
 
     page.should have_css('.project_list_header', :text => "Our cathartic selection!")

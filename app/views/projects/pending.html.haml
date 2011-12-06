@@ -27,9 +27,9 @@
     = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
     %strong= @search.count
     = pluralize_without_number @search.count, t('activerecord.models.project').downcase
-  = will_paginate @projects_sites
+  = will_paginate @projects
   .clear
-  - if @projects_sites.empty?
+  - if @projects.empty?
     = t('.no_projects')
   - else
     %table
@@ -37,7 +37,6 @@
         %tr
           %th= t('.id')
           %th= t('.project')
-          %th= t('.site')
           %th= t('.user')
           %th= t('.visible')
           %th= t('.rejected')
@@ -47,22 +46,21 @@
           %th= t('.can_finish')
           %th= t('.finished')
       %tbody
-        - @projects_sites.each do |project_site|
+        - @projects.each do |project|
           %tr{ :class => cycle("even", "odd") }
-            %td= project_site.project.id
-            %td{ :title => project_site.project.name }
-              = link_to project_path(project_site.project) do
-                = image_tag project_site.project.display_image
-            %td= project_site.project.site.name
-            %td{ :title => project_site.project.user.display_name }
-              = link_to user_path(project_site.project.user) do
-                = image_tag project_site.project.user.display_image
-            %td= check_box_tag "projects_site__visible__#{project_site.id}", '1', project_site.visible
-            %td= check_box_tag "projects_site__rejected__#{project_site.id}", '1', project_site.rejected
-            %td= check_box_tag "projects_site__recommended__#{project_site.id}", '1', project_site.recommended
-            %td= check_box_tag "projects_site__home_page__#{project_site.id}", '1', project_site.home_page
-            %td= on_the_spot_edit project_site, :order, :tooltip => '-'
-            %td= check_box_tag "project__can_finish__#{project_site.project.id}", '1', project_site.project.can_finish
-            %td= (project_site.project.finished ? t('yes') : t('no'))
-  = will_paginate @projects_sites
+            %td= project.id
+            %td{ :title => project.name }
+              = link_to project_path(project) do
+                = image_tag project.display_image
+            %td{ :title => project.user.display_name }
+              = link_to user_path(project.user) do
+                = image_tag project.user.display_image
+            %td= check_box_tag "projects__visible__#{project.id}", '1', project.visible
+            %td= check_box_tag "projects__rejected__#{project.id}", '1', project.rejected
+            %td= check_box_tag "projects__recommended__#{project.id}", '1', project.recommended
+            %td= check_box_tag "projects__home_page__#{project.id}", '1', project.home_page
+            %td= on_the_spot_edit project, :order, :tooltip => '-'
+            %td= check_box_tag "project__can_finish__#{project.id}", '1', project.can_finish
+            %td= (project.finished ? t('yes') : t('no'))
+  = will_paginate @projects
 = javascript_include_tag 'pending_projects'

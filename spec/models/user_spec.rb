@@ -87,13 +87,13 @@ describe User do
       'uid' => "foobar",
       'user_info' => {
         'name' => "Foo bar",
-        'email' => 'another_email@catarse.me',
+        'email' => 'another_email@another_domain.com',
         'nickname' => "foobar",
         'description' => "Foo bar's bio".ljust(200),
         'image' => "user.png"
       }
     }
-    u = User.create_with_omniauth(Factory(:site), auth, primary.id)
+    u = User.create_with_omniauth(auth, primary.id)
     u.should == primary
     User.count.should == 2
   end
@@ -116,7 +116,7 @@ describe User do
         'image' => "user.png"
       }
     }
-    u = User.create_with_omniauth(Factory(:site), auth)
+    u = User.create_with_omniauth(auth)
     u.should be_valid
     u.provider.should == auth['provider']
     u.uid.should == auth['uid']
@@ -141,7 +141,7 @@ describe User do
   end
   it "should insert a gravatar in user's image if there is one available" do
     u = Factory(:user, :image_url => nil, :email => 'diogob@gmail.com')
-    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=http://catarse.me/images/user.png"
+    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{t('site.name')}/images/user.png"
   end
   it "should have a remember_me_hash with the MD5 of the provider + ## + uid" do
     u = Factory(:user, :provider => "foo", :uid => "bar")
@@ -152,14 +152,14 @@ describe User do
     old_user = Factory(:user, :credits => 50)
     new_user = Factory(:user, :credits => 20)
     backed_project = Factory(:project)
-    old_user_back = backed_project.backers.create!(:site => backed_project.site, :user => old_user, :value => 10)
-    new_user_back = backed_project.backers.create!(:site => backed_project.site, :user => new_user, :value => 10)
+    old_user_back = backed_project.backers.create!(:user => old_user, :value => 10)
+    new_user_back = backed_project.backers.create!(:user => new_user, :value => 10)
     old_user_project = Factory(:project, :user => old_user)
     new_user_project = Factory(:project, :user => new_user)
     old_user_comment = backed_project.comments.create!(:user => old_user, :comment => "Foo bar")
     new_user_comment = backed_project.comments.create!(:user => new_user, :comment => "Foo bar")
-    old_user_notification = old_user.notifications.create!(:site => backed_project.site, :text => "Foo bar")
-    new_user_notification = new_user.notifications.create!(:site => backed_project.site, :text => "Foo bar")
+    old_user_notification = old_user.notifications.create!(:text => "Foo bar")
+    new_user_notification = new_user.notifications.create!(:text => "Foo bar")
 
     old_user.credits.should == 50
     new_user.credits.should == 20
@@ -189,38 +189,3 @@ describe User do
     new_user.notifications.order(:created_at).should == [old_user_notification, new_user_notification]
   end
 end
-
-
-# == Schema Information
-#
-# Table name: users
-#
-#  id                    :integer         not null, primary key
-#  primary_user_id       :integer
-#  provider              :text            not null
-#  uid                   :text            not null
-#  email                 :text
-#  name                  :text
-#  nickname              :text
-#  bio                   :text
-#  image_url             :text
-#  newsletter            :boolean         default(FALSE)
-#  project_updates       :boolean         default(FALSE)
-#  created_at            :datetime
-#  updated_at            :datetime
-#  admin                 :boolean         default(FALSE)
-#  full_name             :text
-#  address_street        :text
-#  address_number        :text
-#  address_complement    :text
-#  address_neighbourhood :text
-#  address_city          :text
-#  address_state         :text
-#  address_zip_code      :text
-#  phone_number          :text
-#  credits               :decimal(, )     default(0.0)
-#  site_id               :integer         default(1), not null
-#  session_id            :text
-#  locale                :text            default("pt"), not null
-#
-

@@ -1,13 +1,13 @@
 = content_for :content_header do
-  %h1= t('.title', :site => current_site.the_name)
-  %h2= t('.subtitle', :site => current_site.the_name)
+  %h1= t('.title')
+  %h2= t('.subtitle')
 #how_it_works= render 'how_it_works'
 #more_tips.hide= render 'more_tips'
 = render 'guidelines_text'
 = form_tag(start_projects_path, :method => :get, :id => 'guidelines_form') do
   %fieldset
     = check_box_tag 'accept'
-    = label_tag 'accept', t('.accept', :site => current_site.the_name)
+    = label_tag 'accept', t('.accept')
   %fieldset
     = submit_tag t('.submit'), :disabled => true
 = javascript_include_tag 'guidelines'

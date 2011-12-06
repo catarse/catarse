@@ -30,4 +30,4 @@
 .info
   = form_tag(back_project_path(@project), :method => :get, :id => 'back_project_form') do
     %fieldset
-      = submit_tag t('.submit'), :disabled => (not @project.can_back?(current_site))
+      = submit_tag t('.submit'), :disabled => (not @project.can_back?)

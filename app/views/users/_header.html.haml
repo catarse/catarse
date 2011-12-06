@@ -1,5 +1,5 @@
 = content_for :content_header do
-  = image_tag "sites/#{current_site.path}/badge.#{I18n.locale}.png", :id => "badge" if @user.backer?
+  = image_tag "badge.#{I18n.locale}.png", :id => "badge" if @user.backer?
   #profile_header
     .image
       - if current_user and @user == current_user

@@ -6,9 +6,9 @@
 - if @projects.empty?
   #no_projects
     - if current_user and @user == current_user
-      = t('.no_projects_current_user_html', :site => current_site.in_the_name, :link => link_to(t('click_here').downcase, guidelines_path))
+      = t('.no_projects_current_user_html', :link => link_to(t('click_here').downcase, guidelines_path))
     - else
-      = t('.no_projects', :name => @user.display_name, :site => current_site.in_the_name)
+      = t('.no_projects', :name => @user.display_name)
 - else
   %ul
     - @projects.each do |project|

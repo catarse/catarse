@@ -1,4 +1,6 @@
-= render :partial => "/sites/#{current_site.path}/explore_header"
+= content_for :content_header do
+  %h1= t('.title')
+  %h2= t('.subtitle')
 #explore_projects
   #explore_menu
     - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?

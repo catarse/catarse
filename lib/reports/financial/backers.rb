@@ -49,7 +49,7 @@ module Reports
                 (backer.reward.minimum_value if backer.reward),
                 backer.project.name,
                 (backer.payment_detail.try(:payment_method) if backer.payment_detail),
-                backer.catarse_tax(7.5),
+                backer.platform_fee(7.5),
                 (backer.payment_detail.try(:service_tax_amount)  if backer.payment_detail),
                 backer.key,
                 (backer.payment_detail.try(:display_payment_date) if backer.payment_detail),
