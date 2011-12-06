@@ -2,3 +2,4 @@ pt:
   will_paginate:
     previous: « Anterior
     next: Próxima »
+    page_gap: ...

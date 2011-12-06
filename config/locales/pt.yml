@@ -298,6 +298,9 @@ pt:
     start:
       title: Envie seu projeto
       subtitle: A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando...
+      project_warning:
+        content_html: Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}.
+        help_link: nosso guia
       about: Descreva seu projeto e quanto você precisa
       about_hint: Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!
       rewards: Que recompensas você quer oferecer?

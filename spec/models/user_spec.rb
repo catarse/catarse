@@ -87,7 +87,7 @@ describe User do
       'uid' => "foobar",
       'user_info' => {
         'name' => "Foo bar",
-        'email' => 'another_email@another_domain.com',
+        'email' => 'another_email@anotherdomain.com',
         'nickname' => "foobar",
         'description' => "Foo bar's bio".ljust(200),
         'image' => "user.png"
@@ -141,7 +141,7 @@ describe User do
   end
   it "should insert a gravatar in user's image if there is one available" do
     u = Factory(:user, :image_url => nil, :email => 'diogob@gmail.com')
-    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{t('site.name')}/images/user.png"
+    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{I18n.t('site.base_url')}/images/user.png"
   end
   it "should have a remember_me_hash with the MD5 of the provider + ## + uid" do
     u = Factory(:user, :provider => "foo", :uid => "bar")

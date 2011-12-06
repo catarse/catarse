@@ -8,7 +8,7 @@ feature "Project Page Feature" do
     page.should have_css(%@meta [property="og:type"][content="cause"]@)
 #    page.should have_css(%@meta [property="og:url"][content="#{project_url(p.id)}"]@)
     page.should have_css(%@meta [property="og:image"][content="#{p.display_image}"]@)
-    page.should have_css(%@meta [property="og:site_name"][content="#{t('site.name')}"]@)
+    page.should have_css(%@meta [property="og:site_name"][content="#{I18n.t('site.name')}"]@)
     page.should have_css(%@meta [property="og:description"][content="#{p.about}"]@)
   end
 end

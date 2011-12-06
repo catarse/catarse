@@ -3,12 +3,12 @@
 #pending_projects
   = form_for @search, :url => pending_projects_path do |f|
     %fieldset
-      = f.label :project_id_equals, t('.id')
-      = f.text_field :project_id_equals
-      = f.label :project_name_contains, t('.name')
-      = f.text_field :project_name_contains
-      = f.label :project_user_name_contains, t('.user')
-      = f.text_field :project_user_name_contains
+      = f.label :id_equals, t('.id')
+      = f.text_field :id_equals
+      = f.label :name_contains, t('.name')
+      = f.text_field :name_contains
+      = f.label :user_name_contains, t('.user')
+      = f.text_field :user_name_contains
       = f.check_box :visible_is_true
       = f.label :visible_is_true, t('.visible')
       = f.check_box :rejected_is_true
@@ -18,10 +18,10 @@
       = f.label :recommended_is_true, t('.recommended')
       = f.check_box :home_page_is_true
       = f.label :home_page_is_true, t('.home_page')
-      = f.check_box :project_can_finish_is_true
-      = f.label :project_can_finish_is_true, t('.can_finish')
-      = f.check_box :project_finished_is_true
-      = f.label :project_finished_is_true, t('.finished')
+      = f.check_box :can_finish_is_true
+      = f.label :can_finish_is_true, t('.can_finish')
+      = f.check_box :finished_is_true
+      = f.label :finished_is_true, t('.finished')
       = f.submit t('.submit')
   #total_results
     = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
@@ -55,10 +55,10 @@
             %td{ :title => project.user.display_name }
               = link_to user_path(project.user) do
                 = image_tag project.user.display_image
-            %td= check_box_tag "projects__visible__#{project.id}", '1', project.visible
-            %td= check_box_tag "projects__rejected__#{project.id}", '1', project.rejected
-            %td= check_box_tag "projects__recommended__#{project.id}", '1', project.recommended
-            %td= check_box_tag "projects__home_page__#{project.id}", '1', project.home_page
+            %td= check_box_tag "project__visible__#{project.id}", '1', project.visible
+            %td= check_box_tag "project__rejected__#{project.id}", '1', project.rejected
+            %td= check_box_tag "project__recommended__#{project.id}", '1', project.recommended
+            %td= check_box_tag "project__home_page__#{project.id}", '1', project.home_page
             %td= on_the_spot_edit project, :order, :tooltip => '-'
             %td= check_box_tag "project__can_finish__#{project.id}", '1', project.can_finish
             %td= (project.finished ? t('yes') : t('no'))
