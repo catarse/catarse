@@ -1,5 +1,13 @@
 require 'spec_helper'
+class FakeResponse
+  def code
+    200
+  end
 
+  def body
+    paypal_transaction_details_fake_response
+  end
+end
 describe Backer do
 
   # it "should update user.credits when save a backer" do
@@ -128,6 +136,36 @@ describe Backer do
   it "after create should define 'MoIP' how default payment_method" do
     backer = Factory(:backer)
     backer.payment_method.should == 'MoIP'
+  end
+
+  describe "#payment_service_fee" do
+    before(:each) do
+      @project = create(:project)
+    end
+    context "when payment is MoIP" do
+      before(:each) do
+        @backer = create(:backer, :project => @project, :payment_method => 'MoIP')
+        create(:payment_detail, :backer => @backer)
+      end
+
+      it "get moip tax" do
+        @backer.payment_service_fee.should == 19.37
+      end
+    end
+
+    context "when payment is PayPal" do
+      before(:each) do
+        @backer = create(:backer, :project => @project, :payment_method => 'PayPal')
+        @backer.reload
+        HTTParty.stubs(:get).returns(FakeResponse.new)
+      end
+
+      it "get paypal tax" do
+        @backer.payment_method = 'PayPal'
+        @backer.save!
+        @backer.payment_service_fee.should == 5.72
+      end
+    end
   end
 
   describe "#display_catarse_tax" do

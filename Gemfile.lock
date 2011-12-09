@@ -328,6 +328,7 @@ DEPENDENCIES
   formtastic (~> 1.1.0)
   haml
   http_accept_language
+  httparty
   inherited_resources (= 1.1.2)
   launchy
   mailee (= 0.5.4)!
