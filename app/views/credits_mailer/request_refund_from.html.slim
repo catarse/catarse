@@ -1,0 +1,5 @@
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+  body
+    p= t('.subject_html', { :name => @user.display_name, :backer_key => @backer.key, :backer_project => @backer.project.name,  :backer_value => @backer.display_value, :backer_payment_service => @backer.payment_method} )
