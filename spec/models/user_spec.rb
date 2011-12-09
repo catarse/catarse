@@ -187,7 +187,6 @@ describe User do
     new_user.comments.order(:created_at).should == [old_user_comment, new_user_comment]
     old_user.notifications.should == []
     new_user.notifications.order(:created_at).should == [old_user_notification, new_user_notification]
-
   end
 end
 

@@ -6,6 +6,17 @@ describe Project do
     p.should be_valid
   end
 
+  it "should remove dependencies when destroy a project" do
+    p = Factory.build(:project)
+    p.save
+    r = Factory.build(:reward, :project_id => p.id)
+    r.save
+
+    p.destroy
+    p.destroyed?.should be_true
+    lambda { r.reload }.should raise_error
+  end
+
   it "should correctly parse video_url" do
     project = Factory.build(:project, :video_url => " http://vimeo.com/6428069 ")
     project.save
