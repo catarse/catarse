@@ -43,6 +43,7 @@ gem 'fog'
 gem 'capybara', ">= 0.4.0"
 gem 'enumerate_it'
 gem 'httparty'
+gem "rack-timeout"
 
 group :test, :development do
   gem 'annotate'

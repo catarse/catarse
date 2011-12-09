@@ -220,6 +220,7 @@ GEM
       ruby-openid (>= 2.1.8)
     rack-test (0.5.7)
       rack (>= 1.0)
+    rack-timeout (0.0.3)
     rails (3.0.3)
       actionmailer (= 3.0.3)
       actionpack (= 3.0.3)
@@ -341,6 +342,7 @@ DEPENDENCIES
   on_the_spot
   paypal-express
   pg
+  rack-timeout
   rails (= 3.0.3)
   rake (= 0.8.7)
   rcov
