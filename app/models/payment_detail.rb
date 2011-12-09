@@ -7,7 +7,16 @@ class PaymentDetail < ActiveRecord::Base
     if self.backer.payment_method == 'MoIP'
       response = request_to_moip
       process_moip_response(response) if response.present?
+    elsif self.backer.payment_method == 'PayPal'
+      response = PaypalApi.transaction_details(self.backer.key)
+      process_paypal_response(response) if response.present?
     end
+  end
+
+  def process_paypal_response(response)
+    # For moment only attribute persisted in database is the
+    # service fee.
+    self.update_attributes(response)
   end
 
   def process_moip_response(response)
