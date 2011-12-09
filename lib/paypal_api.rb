@@ -22,7 +22,7 @@ class PaypalApi
       request = HTTParty.get(build_url(transaction_id))
       if request.code.to_i == 200
         {
-          :service_fee => find_element_value("FEEAMT", request.body).to_f
+          :service_tax_amount => find_element_value("FEEAMT", request.body).to_f
         }
       else
         {}
