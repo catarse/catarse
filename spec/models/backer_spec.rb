@@ -1,13 +1,5 @@
 require 'spec_helper'
-class FakeResponse
-  def code
-    200
-  end
 
-  def body
-    paypal_transaction_details_fake_response
-  end
-end
 describe Backer do
 
   # it "should update user.credits when save a backer" do
