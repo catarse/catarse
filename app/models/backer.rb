@@ -71,11 +71,11 @@ class Backer < ActiveRecord::Base
     number_to_currency catarse_tax(tax), :unit => "R$", :precision => 2, :delimiter => '.'
   end
   def payment_service_fee
-    if payment_detail && payment_method == 'MoIP'
-      payment_detail.try(:service_tax_amount)
-    elsif payment_method == 'PayPal'
-      response = PaypalApi.transaction_details(key)
-      response[:service_fee]
+    if payment_detail
+      payment_detail.service_tax_amount.to_f
+    else
+      build_payment_detail.update_from_service
+      payment_detail.service_tax_amount.to_f
     end
   end
   def moip_value

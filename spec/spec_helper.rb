@@ -108,3 +108,13 @@ def paypal_transaction_details_fake_response
   L_NAME0=Loremipsumdolor&L_QTY0=1&
   L_SHIPPINGAMT0=0%2e00&L_HANDLINGAMT0=0%2e00&L_CURRENCYCODE0=BRL&L_AMT0=80%2e00"
 end
+
+class FakeResponse
+  def code
+    200
+  end
+
+  def body
+    paypal_transaction_details_fake_response
+  end
+end
