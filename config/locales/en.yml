@@ -446,6 +446,12 @@ en:
     start_project_email:
       subject: Project sent by %{name}
       subject_html: Project sent by %{link}
+  credits_mailer:
+    request_refund_from:
+      subject: Refund request for user %{name}
+      subject_html:
+        "User %{name} requested refund from backer %{backer_key} for the project %{backer_project}
+        in amount value %{backer_value} through the service %{backer_payment_service}."
   users_mailer:
     notification_email:
       intro: You are receiving this message because you signed up %{site}
