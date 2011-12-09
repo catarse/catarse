@@ -60,24 +60,36 @@ describe CreditsController do
               @user.credits.to_i.should == 20
               response.body.should =~ /R\$ 20/
             end
+
+            it "should send emails when user request refund" do
+              request.session[:user_id]=@user.id
+              post :refund, {:locale => :pt, :backer_id => @backer.id}
+
+              ActionMailer::Base.deliveries.should_not be_empty
+            end
           end
         end
-
-        # it "should send emails when user request refund" do
-        #   request.session[:user_id]=@user.id
-        #   post :refund, {:locale => :pt, :backer_id => @backer.id}
-        #
-        #   ActionMailer::Base.deliveries.should_not be_empty
-        # end
       end
     end
 
     context "without current user" do
+      before(:each) do
+        @backer = create(:backer, :user => @user, :value => 100, :can_refund => true, :refunded => false)
+        @user.update_attribute(:credits, 100)
+      end
+
       it "redirect" do
         request.session[:user_id]=nil
         get :index, {:locale => :pt}
 
         response.should be_redirect
+      end
+
+      it "should be display error" do
+        request.session[:user_id]=nil
+        post :refund, {:locale => :pt, :backer_id => @backer.id}
+
+        ActiveSupport::JSON.decode(response.body).to_s.should =~ /#{I18n.t('require_login')}/
       end
     end
   end
