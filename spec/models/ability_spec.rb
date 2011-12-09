@@ -1,7 +1,7 @@
 require 'spec_helper'
 require "cancan/matchers"
 
-describe Category do
+describe Ability do
   it "should enable admin to manage everything" do
     user = Factory.build(:user, :admin => true)
     site = Factory.build(:site)
