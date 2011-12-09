@@ -408,6 +408,12 @@ pt:
     start_project_email:
       subject: Projeto enviado por %{name}
       subject_html: Projeto enviado por %{link}
+  credits_mailer:
+    request_refund_from:
+      subject: Requisição de extorno feita por %{name}
+      subject_html:
+        "Usuário %{name} pediu extorno referente ao apoio %{backer_key} para o projeto %{backer_project}
+        no valor de %{backer_value} efetuado pelo serviço %{backer_payment_service}."
   users_mailer:
     notification_email:
       intro: Você está recebendo esta mensagem pois se cadastrou %{site}
