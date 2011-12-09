@@ -138,7 +138,7 @@ describe Backer do
     backer.payment_method.should == 'MoIP'
   end
 
-  describe "#payment_method_fee" do
+  describe "#payment_service_fee" do
     before(:each) do
       @project = create(:project)
     end
@@ -149,7 +149,7 @@ describe Backer do
       end
 
       it "get moip tax" do
-        @backer.payment_method_fee.should == 19.37
+        @backer.payment_service_fee.should == 19.37
       end
     end
 
@@ -163,7 +163,7 @@ describe Backer do
       it "get paypal tax" do
         @backer.payment_method = 'PayPal'
         @backer.save!
-        @backer.payment_method_fee.should == 5.72
+        @backer.payment_service_fee.should == 5.72
       end
     end
   end

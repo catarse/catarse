@@ -70,7 +70,7 @@ class Backer < ActiveRecord::Base
   def display_catarse_tax(tax=7.5)
     number_to_currency catarse_tax(tax), :unit => "R$", :precision => 2, :delimiter => '.'
   end
-  def payment_method_fee
+  def payment_service_fee
     if payment_detail && payment_method == 'MoIP'
       payment_detail.try(:service_tax_amount)
     elsif payment_method == 'PayPal'
