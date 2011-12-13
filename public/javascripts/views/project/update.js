@@ -1,3 +1,3 @@
-var UpdateView = ModelView.extend({
+var UpdateView = Backbone.View.extend({
   template: $('#update_template')
 })
