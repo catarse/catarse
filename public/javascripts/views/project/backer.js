@@ -1,9 +1,22 @@
 window.BackerView = Backbone.View.extend({
-  template: _.template($('#backer_template').html())
+	tagName: 'li',
+	className: "backer",
+  template: _.template($('#backer_template').html()),
+
+	initialize: function() {
+		_.bindAll(this, 'render');
+	},
+
+	render: function() {
+		$(this.el).html(this.template(this.model.toJSON()));
+		return this;
+	}
 });
 
 window.BackersView = Backbone.View.extend({
-  template: _.template($('#backer_template').html()),
+	id: 'project_backers',
+	fetched: false,
+  template: _.template($('#backers_template').html()),
 
 	initialize: function() {
 		_.bindAll(this, 'render');
@@ -11,15 +24,24 @@ window.BackersView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.collection.each(function(backer) {
-			var view = new BackerView({
-				model: backer,
-				collection: this.collection
+		if (this.fetched && (this.collection.length == 0)) {
+			// render template without backers
+		} else {
+			var $backers,
+					collection = this.collection;
+			$(this.el).html(this.template({}));
+			$backers = this.$("#collection_list");
+
+			this.collection.each(function(backer) {
+				var view = new BackerView({
+					model: backer,
+					collection: collection
+				});
+
+				$backers.append(view.render().el)
 			});
-			console.log("back:" + view.model.id)
-			$("#project_content").append(view.render().el)
-		});
-		// $(this.el).html(this.template(this.model.toJSON()));
+			this.fetched = true;
+		}
 		return this;
 	}
 });

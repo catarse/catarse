@@ -1,7 +1,13 @@
+script type="text/template" id="empty_backers_template"
+  p= t('.empty')
+
+script type="text/template" id="backers_template"
+  ul id="collection_list"
+
 script type="text/template" id="backer_template"
   |<%= confirmed_at %>
   |<% if(anonymous) { %>
-  img src="user.png" class="user"
+  img src="/images/user.png" class="user"
   | &nbsp;
   = t('.anonymous_backer')
   = image_tag "badge.#{I18n.locale}.png", :class => "badge"
