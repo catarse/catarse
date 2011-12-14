@@ -22,9 +22,10 @@ window.ProjectPage = Backbone.Router.extend({
 		this.container.empty();
 		this.container.append(this.aboutView.render().el);
 	},
-	
+
 	backers: function() {
-		console.log("chamou");
+		$("#loading img").show();
+		this.backersView.collection.fetch();
 		this.container.empty();
 		this.container.append(this.backersView.render().el)
 	}

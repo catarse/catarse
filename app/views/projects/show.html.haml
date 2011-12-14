@@ -72,10 +72,9 @@
 / = javascript_include_tag 'views/project/project_updates'
 = javascript_include_tag 'show_project'
 :javascript
-  var project = new Project(#{@project.to_json})
-  var projectPage = new ProjectPage({project: project})
-  projectPage.project.backers.fetch()
-  Backbone.history.start()
+  var project = new Project(#{@project.to_json});
+  var projectPage = new ProjectPage({project: project});
+  Backbone.history.start();
 / :javascript
 /   var project = new Project(#{@project.to_json})
 /   var currentUser = new User(#{current_user.to_json})
