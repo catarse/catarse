@@ -1,15 +1,13 @@
 class CuratedPage < ActiveRecord::Base
-  has_many :projects
-  belongs_to :site
+
   has_many :projects_curated_pages
   has_many :projects, :through => :projects_curated_pages
 
-  validates_uniqueness_of :permalink, :scope => :site_id
-  validates_presence_of :permalink, :name, :site, :logo
+  validates_uniqueness_of :permalink
+  validates_presence_of :permalink, :name, :logo
 
   scope :visible, where("visible is true")
   scope :not_visible, where("visible is not true")
-
 
   mount_uploader :logo, LogoUploader
 
@@ -51,20 +49,3 @@ class CuratedPage < ActiveRecord::Base
   end
 
 end
-
-# == Schema Information
-#
-# Table name: curated_pages
-#
-#  id           :integer         not null, primary key
-#  name         :string(255)
-#  description  :string(255)
-#  analytics_id :string(255)
-#  logo         :string(255)
-#  video_url    :string(255)
-#  created_at   :datetime
-#  updated_at   :datetime
-#  permalink    :string(255)
-#  site_id      :integer
-#
-

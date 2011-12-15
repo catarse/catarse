@@ -18,9 +18,9 @@
           = image_tag back.project.display_image, :class => 'project'
           = back.project.name
         - if current_user and @user == current_user
-          = link_to "http://twitter.com/?status=#{t('i_backed')} \"#{back.project.name}\" #{current_site.in_the_twitter} #{back.project.short_url}", :target => :_blank do
+          = link_to "http://twitter.com/?status=#{t('i_backed', :name => back.project.name)} #{back.project.short_url}", :target => :_blank do
             = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
-          = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}&t=#{t('i_backed')} \"#{back.project.name}\" #{current_site.in_the_name}&v=4", :target => :_blank do
+          = link_to "http://www.facebook.com/share.php?u=#{project_url(back.project)}", :target => :_blank do
             = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
         %p
           - if current_user and (@user == current_user or current_user.admin)

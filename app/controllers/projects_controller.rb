@@ -14,36 +14,22 @@ class ProjectsController < ApplicationController
     params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
   end
 
-  def banda
-    @title = "A Banda Mais Bonita da Cidade"
-    @projects = current_site.present_projects.visible.where(:user_id => 7329).order('projects_sites."order"').all
-  end
-
   def index
     index! do
-      @title = t("sites.#{current_site.path}.title")
-      @home_page = current_site.present_projects.includes(:user, :category).visible.home_page.limit(6).order('projects_sites."order"').all
-      @expiring = current_site.present_projects.includes(:user, :category).visible.expiring.not_home_page.not_successful.not_unsuccessful.order('expires_at, created_at DESC').limit(3).all
-      @recent = current_site.present_projects.includes(:user, :category).visible.not_home_page.not_expiring.not_successful.not_unsuccessful.where("projects.user_id <> 7329").order('created_at DESC').limit(3).all
-      @successful = current_site.present_projects.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
-      @curated_pages = current_site.curated_pages.visible.order("created_at desc").limit(6)
+      @title = t("site.title")
+      @home_page = Project.includes(:user, :category).visible.home_page.limit(6).order('"order"').all
+      @expiring = Project.includes(:user, :category).visible.expiring.not_home_page.not_successful.not_unsuccessful.order('expires_at, created_at DESC').limit(3).all
+      @recent = Project.includes(:user, :category).visible.not_home_page.not_expiring.not_successful.not_unsuccessful.where("projects.user_id <> 7329").order('created_at DESC').limit(3).all
+      @successful = Project.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
+      @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
     end
-  end
-  def explore
-    @title = t('projects.explore.title')
-    @categories = Category.with_projects(current_site).order(:name).all
-    @recommended = current_site.present_projects.visible.recommended.order('created_at DESC').all
-    @expiring = current_site.present_projects.visible.expiring.limit(16).order('expires_at').all
-    @recent = current_site.present_projects.visible.recent.limit(16).order('created_at DESC').all
-    @successful = current_site.present_projects.visible.successful.order('expires_at DESC').all
-    @all = current_site.present_projects.visible.order('created_at DESC').all
   end
   def start
     @title = t('projects.start.title')
   end
   def send_mail
     current_user.update_attribute :email, params[:contact] if current_user.email.nil?
-    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user, current_site).deliver
+    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user, "#{I18n.t('site.base_url')}#{user_path(current_user)}").deliver
     flash[:success] = t('projects.send_mail.success')
     redirect_to :root
   end
@@ -58,20 +44,15 @@ class ProjectsController < ApplicationController
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
     create!(:notice => t('projects.create.success'))
-    # When don't create the project the @project don't exists so causes a record not found
-    # because @project.reload *words only with created records*
+    # When it can't create the project the @project doesn't exist and then it causes a record not found
+    # because @project.reload *works only with created records*
     unless @project.new_record?
       @project.reload
       @project.update_attribute :short_url, bitly
-      @project.projects_sites.create :site => current_site
     end
   end
   def show
     show!{
-      unless @project.present_on_site?(current_site)
-        flash[:failure] = t('projects.show.not_present')
-        return redirect_to :root
-      end
       @title = @project.name
       @rewards = @project.rewards.order(:minimum_value).all
       @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
@@ -82,7 +63,7 @@ class ProjectsController < ApplicationController
     }
   end
   def guidelines
-    @title = t('projects.guidelines.title', :site => current_site.the_name)
+    @title = t('projects.guidelines.title')
   end
   def faq
     @title = t('projects.faq.title')
@@ -116,12 +97,12 @@ class ProjectsController < ApplicationController
   def back
     return unless require_login
     show! do
-      unless @project.can_back?(current_site)
+      unless @project.can_back?
         flash[:failure] = t('projects.back.cannot_back')
         return redirect_to :root
       end
       @title = t('projects.back.title', :name => @project.name)
-      @backer = @project.backers.new(:user => current_user, :site => current_site)
+      @backer = @project.backers.new(:user => current_user)
       empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => t('projects.back.no_reward'))
       @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
       @reward = @project.rewards.find params[:reward_id] if params[:reward_id]
@@ -136,7 +117,6 @@ class ProjectsController < ApplicationController
     @title = t('projects.review.title')
     params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
     params[:backer][:user_id] = current_user.id
-    params[:backer][:site_id] = current_site.id
     @project = Project.find params[:id]
     @backer = @project.backers.new(params[:backer])
     unless @backer.save
@@ -229,8 +209,8 @@ class ProjectsController < ApplicationController
   def pending
     return unless require_admin
     @title = t('projects.pending.title')
-    @search = current_site.projects_sites.includes(:project).search(params[:search])
-    @projects_sites = @search.order('projects.created_at DESC').paginate :page => params[:page]
+    @search = Project.search(params[:search])
+    @projects = @search.order('projects.created_at DESC').paginate :page => params[:page]
   end
   def pending_backers
     return unless require_admin
@@ -262,9 +242,7 @@ class ProjectsController < ApplicationController
   end
   def can_update_on_the_spot?
     project_fields = []
-    project_admin_fields = ["name", "about", "headline", "can_finish", "expires_at", "user_id", "image_url", "video_url"]
-    projects_site_fields = []
-    projects_site_admin_fields = ["visible", "rejected", "recommended", "home_page", "order"]
+    project_admin_fields = ["name", "about", "headline", "can_finish", "expires_at", "user_id", "image_url", "video_url", "visible", "rejected", "recommended", "home_page", "order"]
     backer_fields = ["display_notice"]
     backer_admin_fields = ["confirmed", "requested_refund", "refunded", "anonymous", "user_id"]
     reward_fields = []
@@ -272,15 +250,11 @@ class ProjectsController < ApplicationController
     def render_error; render :text => t('require_permission'), :status => 422; end
     return render_error unless current_user
     klass, field, id = params[:id].split('__')
-    return render_error unless klass == 'project' or klass == 'projects_site' or klass == 'backer' or klass == 'reward'
+    return render_error unless klass == 'project' or klass == 'backer' or klass == 'reward'
     if klass == 'project'
       return render_error unless project_fields.include?(field) or (current_user.admin and project_admin_fields.include?(field))
       project = Project.find id
       return render_error unless current_user.id == project.user.id or current_user.admin
-    elsif klass == 'projects_site'
-      return render_error unless projects_site_fields.include?(field) or (current_user.admin and projects_site_admin_fields.include?(field))
-      project_site = current_site.projects_sites.find id
-      return render_error unless current_user.id == project_site.project.user.id or current_user.admin
     elsif klass == 'backer'
       return render_error unless backer_fields.include?(field) or (current_user.admin and backer_admin_fields.include?(field))
       backer = Backer.find id

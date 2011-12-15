@@ -1,0 +1,24 @@
+#footer_menu
+  %ul
+    %li= link_to t('.guidelines'), guidelines_path
+    %li= link_to t('.faq'), faq_path
+    %li= link_to t('.terms'), terms_path
+    %li= link_to t('.privacy'), privacy_path
+    %li= mail_to t('site.email.contact'), t('.email')
+#social_menu
+  %ul
+    %li
+      = link_to "http://twitter.com/#{t('site.twitter')}", :target => :_blank do
+        = image_tag('social/twitter_32.png', :title => "Twitter")
+        = t('.twitter')
+    %li
+      = link_to t('site.facebook'), :target => :_blank do
+        = image_tag('social/facebook_32.png', :title => "Facebook")
+        = t('.facebook')
+    %li
+      = link_to t('site.blog'), :target => :_blank do
+        = image_tag('social/rss_32.png', :title => "Blog")
+        = t('.blog')
+#colophon
+  = link_to '', "http://comum.cc", :target => :_blank, :id => "grupo_comum_login"
+  = link_to '', "http://powertothecrowd.com", :target => :_blank, :id => "power_to_the_crowd"
