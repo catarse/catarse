@@ -30,6 +30,18 @@ RSpec.configure do |config|
   end
 end
 
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+Capybara.configure do |config|
+ config.default_driver = defined?(Capybara::Driver::Webkit) ? :webkit : :selenium
+ config.ignore_hidden_elements = false
+ # config.seletor :css
+ config.server_port = 8200
+ config.app_host = "http://localhost:8200"
+end
+
 def post_moip_params
   {
     :id_transacao => 'ABCD',
@@ -92,7 +104,6 @@ def moip_query_response_with_array
   }
 end
 
-
 def paypal_transaction_details_fake_response
   "RECEIVEREMAIL=some%40email%2ecom&RECEIVERID=ABCD&
   EMAIL=customer%40gmail%2ecom&PAYERID=EFGH&
@@ -118,3 +129,6 @@ class FakeResponse
     paypal_transaction_details_fake_response
   end
 end
+
+I18n.locale = :pt
+I18n.default_locale = :pt

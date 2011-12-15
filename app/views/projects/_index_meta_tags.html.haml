@@ -1,0 +1,9 @@
+= content_for :meta_tags do
+  %meta{:name => "description", :content => t('.description')}
+  -# Meta tags for facebook social graph
+  %meta{:property => "og:title", :content => "#{@title}#{' · ' if @title}#{t('site.name')}"}
+  %meta{:property => "og:type", :content => 'cause'}
+  %meta{:property => "og:url", :content => root_url}
+  %meta{:property => "og:image", :content => "#{t('site.base_url')}/images/home_small.png"}
+  %meta{:property => "og:site_name", :content => t('site.name')}
+  %meta{:property => "og:description", :content => t('.description')}

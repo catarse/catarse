@@ -4,9 +4,7 @@ require "cancan/matchers"
 describe Ability do
   it "should enable admin to manage everything" do
     user = Factory.build(:user, :admin => true)
-    site = Factory.build(:site)
     ability = Ability.new(user)
-    ability.should be_able_to(:manage, Site)
     ability.should be_able_to(:manage, Category)
     ability.should be_able_to(:manage, Configuration)
     ability.should be_able_to(:manage, Category)
@@ -20,7 +18,6 @@ describe Ability do
     project = Factory.build(:project)
     project.save
     ability = Ability.new(user)
-    ability.should_not be_able_to(:manage, Site)
     ability.should_not be_able_to(:manage, Category)
     ability.should_not be_able_to(:manage, Configuration)
     ability.should_not be_able_to(:manage, Category)
