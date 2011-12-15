@@ -1,12 +1,12 @@
 en:
-  "no": false
-  "yes": true
+  "no": "No"
+  "yes": "Yes"
   accept_terms_html: "I have read and accepted the %{link}."
   active_admin:
     dashboard: Dashboard
     dashboard_welcome:
-      call_to_action: ~
-      welcome: ~
+      call_to_action: foo
+      welcome: "Welcome to our admin dashboard"
   activerecord:
     attributes:
       backer:
@@ -78,26 +78,26 @@ en:
     title: "My credits"
   credits_mailer:
     request_refund_from:
-      subject: ~
-      subject_html: ~
+      subject: "Refund request by %{name}"
+      subject_html: "User %{name} requested refund for the back %{backer_key} to the project %{backer_project} in the amount of %{backer_value} made by %{backer_payment_service} gateway."
   curated_pages:
     index:
-      title: ~
+      title: "Curated pages"
     show:
-      backed: ~
-      reached: ~
+      backed: backed
+      reached: reached
   error: "Ooops! There was an error. Please try again."
   explore:
     index:
-      categories: ~
-      expiring: ~
-      quick_explore: ~
-      recent: ~
-      recommended: ~
-      subtitle: ~
-      successful: ~
-      title: ~
-    title: ~
+      categories: Categories
+      expiring: "Final countdown"
+      quick_explore: "Quick search"
+      recent: Recent
+      recommended: Recommended
+      subtitle: "Explore the projects, find the ones that touch you, and make them happen!"
+      successful: Successful
+      title: "Discover amazing projects"
+    title: "Explore the projects"
   formtastic:
     hints:
       backer:
@@ -147,15 +147,15 @@ en:
       notifications:
         new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check</a>!"
     footer:
-      blog: ~
-      comum: ~
-      email: ~
-      facebook: ~
-      faq: ~
-      guidelines: ~
-      privacy: ~
-      terms: ~
-      twitter: ~
+      blog: "Reed the blog"
+      comum: "Grupo Comum"
+      email: Contact
+      facebook: "Like on Facebook"
+      faq: FAQ/Help
+      guidelines: "How does it work?"
+      privacy: "Privacy policy"
+      terms: "Terms of use"
+      twitter: "Follow on Twitter"
     login:
       description_html: "We will <strong>never</strong> know your password or any other secret data from the chosen social network. We will only have access to your basic information, like name, photo and email."
       remember_me: "Remember me and keep me connected."
@@ -163,8 +163,8 @@ en:
       title: "Enter with your favorite social network"
     pre_header:
       back_notice_html: "You backed the project %{link}. Tell everyone what you just did!"
-      content_html: ~
-      help_link: ~
+      content_html: "Want to know how to back a project? %{link} a step-by-step guide that we published in our blog."
+      help_link: "Check out here"
     user:
       logout: Logout
       my_credits: "My credits"
@@ -203,15 +203,15 @@ en:
     back:
       cannot_back: "It's not possible to back this project right now. Please, back other projects."
       header:
-        subtitle: ~
-        title: ~
+        subtitle: "You are a few steps from making the difference and becoming part of this project."
+        title: "Oohh yeah!"
       no_reward: "Thanks. I just want to help the project."
       submit: "Review and proceed to checkout"
       title: "Back %{name}"
     back_project:
       backed_plural: backed
       backed_singular: backed
-      has: ~
+      has: have
       person: Person
       project_warning:
         not_successful:
@@ -230,16 +230,16 @@ en:
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
     curated_pages_list:
-      subtitle: ~
-      title: ~
+      subtitle: "Discover projects curated by some of our cathartic partners"
+      title: "Cathartic channels"
     faq:
       title: "Frequent asked questions"
     form:
       add_reward: "Add reward"
       important_html: "Please notice that Catarse will charge 7.5% if your project is successful, and our payment gateways (MoIP and Paypal) charge a fee that varies, usually, from 4% to 5% per transaction. Add this values to your budget in order to execute your project with no surprises."
       project_warning:
-        content_html: ~
-        help_link: ~
+        content_html: "Want to have your project selected? Don't forget to read %{link}."
+        help_link: "our guide"
       rewards_description: "We believe that the best way to inspire people to back a project is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested."
       rewards_title: Rewards
       submit: "Submit project"
@@ -250,7 +250,7 @@ en:
       title: "How does Catarse work?"
     home_page_projects:
       explore_recommended: "Explore more recommended projects"
-      subtitle: ~
+      subtitle: "Discover the projects that caused us a Catharsis :) every day a new selection."
       title: "Our cathartic selection!"
     index:
       expiring: "Final countdown"
@@ -258,10 +258,10 @@ en:
       recommended: "Recommended projects"
       successful: "Successful projects"
     index_header:
-      subtitle_html: ~
-      title: ~
+      subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
+      title: "Make the projects you believe in happen"
     index_meta_tags:
-      description: ~
+      description: "Fund projects collaboratively and become part of something bigger. Promote a collective catharsis! You're the missing part in this story."
     new:
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
       title: "Submit your project"
@@ -307,7 +307,7 @@ en:
       user: User
       value: Value
     press:
-      title: ~
+      title: "Check out what they're saying about Catarse in the press"
     privacy:
       title: "Privacy policy"
     project:
@@ -322,17 +322,17 @@ en:
       subtitle_html: "A project by %{link}"
     project_list:
       expiring:
-        explore: ~
-        subtitle: ~
-        title: ~
+        explore: "Explore more projects in the final countdown"
+        subtitle: "Uh! Time's almost up for these ones...back'em while you can!"
+        title: "Final countdown"
       recent:
-        explore: ~
-        subtitle: ~
-        title: ~
+        explore: "Explore more recent projects"
+        subtitle: "Projects that just arrived on Catarse. Smell as if they just came out of the oven..."
+        title: "Fresh and new"
       successful:
-        explore: ~
-        subtitle: ~
-        title: ~
+        explore: "Explore more successful projects"
+        subtitle: "Meet our newest prides :) tomorrow your project might be here!"
+        title: "Successful projects"
     project_updates:
       empty: "This project didn't have updates yet. But wait and see =D"
       submit: "Send update"
@@ -382,8 +382,8 @@ en:
       links: "Where can we find more about you and your project?"
       links_hint: "Leave us as many links as you have, so we can get to know your work and your project better. Doesn't have to be something formal or fancy, just a few useful links."
       project_warning:
-        content_html: ~
-        help_link: ~
+        content_html: "Want to have your project selected? Don't forget to read %{link}."
+        help_link: "our guide"
       rewards: "What rewards do you want to offer?"
       rewards_hint: "We believe that the best way to inspire people to back a project is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested."
       submit: "Submit the project"
@@ -412,23 +412,23 @@ en:
     sold_out: "Sold out"
   sessions:
     auth:
-      success: ~
+      success: "Successfully logged in. Welcome, %{name}!"
     destroy:
       success: "Successfully logged out. See you!"
     failure:
       error: "There was an error while loggin in. Please try again."
   site:
-    base_url: ~
-    blog: ~
+    base_url: "http://catarse.me"
+    blog: "http://blog.catarse.me/"
     email:
-      contact: ~
-      payments: ~
-      projects: ~
-      system: ~
-    facebook: ~
-    name: ~
-    title: ~
-    twitter: ~
+      contact: contato@catarse.me
+      payments: financeiro@catarse.me
+      projects: projetos@catarse.me
+      system: system@catarse.me
+    facebook: "http://www.facebook.com/Catarse.me"
+    name: Catarse
+    title: "The first crowdfunding platform from Brazil"
+    twitter: Catarse_
   terms: "terms of use"
   user:
     backs_text:
@@ -464,13 +464,13 @@ en:
       title_current_user: "My projects"
   users_mailer:
     notification_email:
-      alt: ~
+      alt: "You must enable images in order to correctly view this message."
       forward: "Foward to your friends"
       hello: Hi
       intro: "You are receiving this message because you signed up on Catarse"
       mailee: "Message delivered by Mailee.me"
-      salutation: ~
-      signature: ~
+      salutation: "Big hugs,"
+      signature: "Catarse's Team"
       unsubscribe: Unsubscribe
       unsubscribe_long: "If you don't want to receive these emails"
       weblink: "View on the web"
