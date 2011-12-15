@@ -1,11 +1,6 @@
 module HelperMethods
+
   # Put helper methods you need to be available in all tests here.
-  def current_site
-    return @current_site if @current_site
-    @current_site = Site.find_by_path("catarse")
-    @current_site = Factory(:site, :name => "Catarse", :path => "catarse") unless @current_site
-    @current_site
-  end
 
   def fake_login
     visit fake_login_path
@@ -28,10 +23,9 @@ module HelperMethods
     user.reload
   end
 
-  def add_some_projects_to_current_site(num_of_projects=5)
+  def add_some_projects(num_of_projects=5)
     num_of_projects.times do |n|
-      project = create(:project, :name => "Foo bar #{n}", :site => current_site)
-      create(:projects_site, :site => current_site, :project => project)
+      project = create(:project, :name => "Foo bar #{n}")
     end
   end
 end

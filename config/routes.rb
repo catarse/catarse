@@ -6,21 +6,17 @@ Catarse::Application.routes.draw do
   root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
-  match "/abandamaisbonitadacidade" => "projects#banda", :as => :banda
-
   match "/guidelines" => "projects#guidelines", :as => :guidelines
   match "/faq" => "projects#faq", :as => :faq
   match "/terms" => "projects#terms", :as => :terms
   match "/privacy" => "projects#privacy", :as => :privacy
   match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/moip" => "payment_stream#moip", :as => :moip
-  match "/explore" => "projects#explore", :as => :explore
-  match "/explore/:quick" => "projects#explore", :as => :explore_quick
+  match "/explore" => "explore#index", :as => :explore
+  match "/explore/:quick" => "explorer#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
 
-  post "/pre_auth" => "sessions#pre_auth", :as => :pre_auth
-  get "/auth" => "sessions#auth", :as => :auth
-  get "/post_auth" => "sessions#post_auth", :as => :post_auth
+  post "/auth" => "sessions#auth", :as => :auth
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
   match "/logout" => "sessions#destroy", :as => :logout
@@ -30,7 +26,6 @@ Catarse::Application.routes.draw do
   resources :projects, :only => [:index, :new, :create, :show] do
     resources :rewards
     collection do
-      get 'explore'
       get 'start'
       post 'send_mail'
       get 'guidelines'
@@ -44,7 +39,6 @@ Catarse::Application.routes.draw do
       get 'thank_you'
       post 'moip'
       post 'update_attribute_on_the_spot'
-      get 'banda'
     end
     member do
       get 'back'
@@ -67,7 +61,7 @@ Catarse::Application.routes.draw do
     end
   end
   resources :comments, :only => [:index, :show, :create, :destroy]
-  resources :sites, :only => [:show]
+
   resources :paypal, :only => [] do
     member do
       get 'pay'
@@ -75,6 +69,7 @@ Catarse::Application.routes.draw do
       get 'cancel'
     end
   end
+
   resources :curated_pages do
     collection do
       post 'update_attribute_on_the_spot'

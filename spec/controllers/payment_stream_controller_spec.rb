@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe PaymentStreamController do
   render_views
-
+  
   describe '/moip' do
     it "should confirm backer in moip payment" do
       backer = Factory(:backer, :confirmed => false)
@@ -67,7 +67,7 @@ describe PaymentStreamController do
   describe '/thank_you' do
     it "without project / session, should redirect" do
       request.session[:thank_you_id]=nil
-      get :thank_you, {:locale => :en}
+      get :thank_you, :locale => :pt
       request.flash[:failure].should == I18n.t('payment_stream.thank_you.error')
       response.should be_redirect
     end
@@ -75,7 +75,7 @@ describe PaymentStreamController do
     it "with project / session, should not redirect" do
       project=create(:project)
       request.session[:thank_you_id] = project.id
-      get :thank_you, {:locale => :en}
+      get :thank_you, :locale => :pt
 
       response.should render_template("payment_stream/thank_you")
       response.should be_success
@@ -93,7 +93,7 @@ describe PaymentStreamController do
       MoIP::Client.stubs(:query).returns(moip_query_response)
       backer.payment_detail.should be_nil
 
-      get :thank_you, {:locale => :en}
+      get :thank_you, :locale => :pt
       response.should render_template("payment_stream/thank_you")
       response.should be_success
       backer.reload.payment_detail.should_not be_nil
@@ -107,7 +107,7 @@ describe PaymentStreamController do
       MoIP::Client.stubs(:query).returns(moip_query_response_with_array)
       backer.payment_detail.should be_nil
 
-      get :thank_you, {:locale => :en}
+      get :thank_you, :locale => :pt
       response.should render_template("payment_stream/thank_you")
       response.should be_success
       backer.reload.payment_detail.should_not be_nil

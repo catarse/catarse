@@ -1,9 +1,6 @@
 ActiveAdmin.register Project do
   controller.authorize_resource
 
-  scope_to :current_site
-
-  filter :site
   filter :name
   filter :category
   filter :created_at

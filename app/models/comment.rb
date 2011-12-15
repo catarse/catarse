@@ -37,20 +37,3 @@ class Comment < ActiveRecord::Base
   end
   
 end
-
-# == Schema Information
-#
-# Table name: comments
-#
-#  id               :integer         not null, primary key
-#  title            :text
-#  comment          :text            not null
-#  comment_html     :text
-#  commentable_id   :integer         not null
-#  commentable_type :string(255)     not null
-#  user_id          :integer         not null
-#  project_update   :boolean         default(FALSE)
-#  created_at       :datetime
-#  updated_at       :datetime
-#
-

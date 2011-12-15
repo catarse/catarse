@@ -9,12 +9,12 @@
       #twitter_share= render 'twitter'
       %ul
         %li.link
-          = image_tag "sites/#{current_site.path}/link_share.png", :title => t('.share.link_title')
+          = image_tag "link_share.png", :title => t('.share.link_title')
           = t('.share.link')
           = text_field_tag "project_link", @project.short_url
         %li.embed
           = link_to '#', :id => 'embed_link' do
-            = image_tag "sites/#{current_site.path}/embed_share.png", :title => t('.share.embed_title')
+            = image_tag "embed_share.png", :title => t('.share.embed_title')
             = t('.share.embed')
       .clear
     = render 'embed'
@@ -23,24 +23,24 @@
       %li
         = link_to '#about', :id => 'about_link' do
           = t('.menu.about')
-          = image_tag "sites/#{current_site.path}/project_menu_selected.png"
+          = image_tag "project_menu_selected.png"
       %li
         = link_to '#updates', :id => 'updates_link' do
           = t('.menu.updates')
           %span.count (#{@updates.count})
-          = image_tag "sites/#{current_site.path}/project_menu_selected.png"
+          = image_tag "project_menu_selected.png"
       %li
         = link_to '#backers', :id => 'backers_link' do
           = t('.menu.backers')
           %span.count (#{@project.total_backers})
-          = image_tag "sites/#{current_site.path}/project_menu_selected.png"
+          = image_tag "project_menu_selected.png"
       %li
         = link_to '#comments', :id => 'comments_link' do
           = t('.menu.comments')
           %span.count (#{@comments.count})
-          = image_tag "sites/#{current_site.path}/project_menu_selected.png"
+          = image_tag "project_menu_selected.png"
   #project_content
-  #loading= image_tag "sites/#{current_site.path}/loading.gif"
+  #loading= image_tag "loading.gif"
 = render :partial => 'back_info'
 = render :partial => 'about'
 = render :partial => 'project_backers'
