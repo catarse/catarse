@@ -1,8 +1,7 @@
 - unless @curated_pages.empty?
   .curated_page_header
-    .project_list_header= t("sites.#{current_site.path}.curated_pages.home_page.title")
-    .project_list_subheader= t("sites.#{current_site.path}.curated_pages.home_page.subtitle")
-
+    .project_list_header= t(".title")
+    .project_list_subheader= t(".subtitle")
   ul#curated_pages_list
     - curated_pages.each do |cp|
       li.curated_page= link_to image_tag(cp.logo.thumb.url), curated_page_path(cp.permalink)

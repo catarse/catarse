@@ -1,4 +1,6 @@
-= render :partial => "/sites/#{current_site.path}/back_header"
+= content_for :content_header do
+  %h1= t('.header.title')
+  %h2= t('.header.subtitle')
 #back_options
   = semantic_form_for @backer, :url => review_project_path(@project), :html => { :id => 'backer_form' } do |form|
     = form.inputs do

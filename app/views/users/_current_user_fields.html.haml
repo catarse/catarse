@@ -6,9 +6,9 @@
 %ul
   %li
     #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
-    .hint= t('.email_hint', :site => current_site.the_name)
+    .hint= t('.email_hint')
   %li
     = hidden_field_tag 'id', @user.id
     = check_box_tag 'newsletter', '1', @user.newsletter
-    = label_tag 'newsletter', t('.newsletter', :site => current_site.the_name)
+    = label_tag 'newsletter', t('.newsletter')
 %hr

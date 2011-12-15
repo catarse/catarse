@@ -236,28 +236,3 @@ describe Project do
     p.should be_valid
   end
 end
-
-
-# == Schema Information
-#
-# Table name: projects
-#
-#  id          :integer         not null, primary key
-#  name        :text            not null
-#  user_id     :integer         not null
-#  category_id :integer         not null
-#  goal        :decimal(, )     not null
-#  expires_at  :datetime        not null
-#  about       :text            not null
-#  headline    :text            not null
-#  video_url   :text            not null
-#  image_url   :text
-#  short_url   :text
-#  created_at  :datetime
-#  updated_at  :datetime
-#  can_finish  :boolean         default(FALSE)
-#  finished    :boolean         default(FALSE)
-#  about_html  :text
-#  site_id     :integer         default(1), not null
-#
-

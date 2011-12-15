@@ -7,7 +7,7 @@ feature "My profile Feature" do
     click_link 'Meu perfil'
     current_path.should == user_path(user)
     within 'head title' do
-      page.should have_content("#{user.display_name} · Catarse") 
+      page.should have_content("#{user.display_name} · #{I18n.t('site.name')}") 
     end
     within '#content_header' do
       within 'h1' do

@@ -29,13 +29,9 @@
 @import "teaser"
 @import "on_the_spot"
 @import "text"
-@import "slider"
-@import "promo_top"
-@import "promo_video"
 @import "press"
-@import "banda"
 @import "credits"
-body#site
+body#platform
   +body
   +form
   table
@@ -79,12 +75,8 @@ body#site
     +text
   #press
     +press
-  #promo_top
-    +promo_top
-  #promo_video
-    +promo_video
   #credits
     +credits
-  #banda
-    +banda
 
+// Remove this line once we have merged _legacy.sass into the regular partials
+@import "legacy"
