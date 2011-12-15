@@ -135,8 +135,8 @@ en:
   found_plural: Found
   found_singular: Found
   here: here
-  i_backed: "I backed the project"
-  i_just_backed: "I just backed the project"
+  i_backed: "I backed the project %{name} on @Catarse_"
+  i_just_backed: "I just backed the project %{name} on @Catarse_"
   layouts:
     application:
       menu:
@@ -176,7 +176,7 @@ en:
       error: "Ooops. You can only access this page after backing a project."
       header_subtitle: "Without you maybe this project wouldn't stand a chance. Welcome to the team!"
       header_title: "Thank you! :D"
-      not_successful: "This project will only be funded if at least %{goal} is reached until %{expires_at}. In case it is not successful, you will receive your money back in credits %{site}. But you don't want this to happen, do you? Use this opportunity, then, to spread the word!"
+      not_successful: "This project will only be funded if at least %{goal} is reached until %{expires_at}. In case it is not successful, you will receive your money back in credits on Catarse. But you don't want this to happen, do you? Use this opportunity, then, to spread the word!"
       successful: "This project will be funded on %{expires_at}, thanks to you and %{total_backers} more people. Thanks a lot!"
       text_subtitle: "Tell everyone what you just did"
       text_title_html: "You are now part of the group that does everything to make %{link} happen."
@@ -184,14 +184,14 @@ en:
   project:
     finish:
       successful:
-        email_subject: "Hooray! The project you backed was successful %{in_the_name}!"
-        email_text: "The project %{project_link}, which you backed, was successfuly funded %{in_the_name}! Time to celebrate :D<br><br>Thank you very much, from the heart, for your support! Without you this would never have been possible. Soon, %{user_link} will contact you to deliver your reward. Meanwhile, share with everybody this success!"
-        facebook_text: "Hooray! The project '%{name}', which I backed, was successful %{in_the_name}!"
+        email_subject: "Hooray! The project you backed was successful on Catarse!"
+        email_text: "The project %{project_link}, which you backed, was successfuly funded on Catarse! Time to celebrate :D<br><br>Thank you very much, from the heart, for your support! Without you this would never have been possible. Soon, %{user_link} will contact you to deliver your reward. Meanwhile, share with everybody this success!"
+        facebook_text: "Hooray! The project '%{name}', which I backed, was successful on Catarse!"
         notification_text: "Hooray! The project %{link} that you backed was successful! Spread the word!"
         reward_notification_text: "Soon, %{link} will contact you to deliver your reward. Enjoy!"
-        twitter_text: "Hooray! The project '%{name}', which I backed, was successful %{in_the_twitter}! %{short_url}"
+        twitter_text: "Hooray! The project '%{name}', which I backed, was successful on @Catarse_! %{short_url}"
       unsuccessful:
-        email_subject: "The project you backed wasn't funded %{in_the_name}."
+        email_subject: "The project you backed wasn't funded on Catarse."
         email_text: "The project %{project_link}, that you backed, was not funded. Maybe next time!<br><br>Because of this, you received <strong>%{value}</strong> in credits to back other projects. If you prefer, you can ask for a refund %{credits_link}."
         notification_text: "You received %{value} in credits to back other projects. If you prefer, you can request a refund %{link}."
         unsuccessful_text: "The project %{link} that you backed wasn't funded. Maybe next time!"
@@ -236,7 +236,7 @@ en:
       title: "Frequent asked questions"
     form:
       add_reward: "Add reward"
-      important_html: "Please notice that %{site} will charge 5% if your project is successful, and %{link} charges between 6% and 7% per transaction. Add this values to your budget in order to execute the project with no surprises."
+      important_html: "Please notice that Catarse will charge 7.5% if your project is successful, and our payment gateways (MoIP and Paypal) charge a fee that varies, usually, from 4% to 5% per transaction. Add this values to your budget in order to execute your project with no surprises."
       project_warning:
         content_html: ~
         help_link: ~
@@ -244,14 +244,14 @@ en:
       rewards_title: Rewards
       submit: "Submit project"
     guidelines:
-      accept: "I have read and understood how %{site} works."
+      accept: "I have read and understood how Catarse works."
       submit: "I want to submit my project"
-      subtitle: "Before submitting your project, learn a little about how %{site} works."
-      title: "How does %{site} work?"
+      subtitle: "Before submitting your project, learn a little about how Catarse works."
+      title: "How does Catarse work?"
     home_page_projects:
       explore_recommended: "Explore more recommended projects"
       subtitle: ~
-      title: "Featured projects"
+      title: "Our cathartic selection!"
     index:
       expiring: "Final countdown"
       recent: "Recent projects"
@@ -339,8 +339,8 @@ en:
       text: "Text of the update"
       title: "Title of the update"
     project_warning:
-      rejected: "This project was not selected to participate on %{site}. Maybe next time! :)"
-      waiting: "This project is waiting for approval and soon we'll know if it will go online %{site} ;)"
+      rejected: "This project was not selected to participate on Catarse. Maybe next time! :)"
+      waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
     review:
       credits_notice_html: "This back will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to back other projects."
       error: "Ooops. There was an error while registering your back. Please try again."
@@ -392,9 +392,9 @@ en:
     terms:
       title: "Terms of use"
     twitter:
-      take_a_look: "Check out the project"
+      take_a_look: "Check out the project %{name} on @Catarse_"
     video_embed:
-      a_project_by: "A project by"
+      a_project_by: "A project by %{link} on Catarse"
   projects_mailer:
     start_project_email:
       subject: "Project sent by %{name}"
@@ -450,16 +450,16 @@ en:
       title_current_user: "Projects I've backed"
       your_reward: "Your reward"
     current_user_fields:
-      email_hint: "Your email will only be used for communications from %{site} and from the projects you back. It won't be visible in your profile. When you back a project, we will give your email to the project owner so he can arrange your reward."
+      email_hint: "Your email will only be used for communications from Catarse and from the projects you back. It won't be visible in your profile. When you back a project, we will give your email to the project owner so he can provide your rewards."
       email_tooltip: "Click here to fill your email..."
       gravatar_hint_html: "Want to change your picture? Use %{link} with your email. It's as simple as uploading an image and works for other sites as well ;)"
-      newsletter: "I want to receive news from %{site} via email"
+      newsletter: "I want to receive news from Catarse via email"
     header:
       bio_tooltip: "Click here to write about you..."
       name_tooltip: "Click here to fill your name..."
     projects:
-      no_projects: "%{name} haven't started any project %{site} yet. We wonder if inspiration will hit one of these days!"
-      no_projects_current_user_html: "You haven't submitted any project yet. Let the inspiration flow and %{link} to start!"
+      no_projects: "%{name} haven't started any project on Catarse yet. We wonder if inspiration will hit one of these days!"
+      no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
       title: "%{name}'s projects"
       title_current_user: "My projects"
   users_mailer:
@@ -467,7 +467,7 @@ en:
       alt: ~
       forward: "Foward to your friends"
       hello: Hi
-      intro: "You are receiving this message because you signed up %{site}"
+      intro: "You are receiving this message because you signed up on Catarse"
       mailee: "Message delivered by Mailee.me"
       salutation: ~
       signature: ~
