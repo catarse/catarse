@@ -76,6 +76,10 @@ en:
       refunded: "This payment has already been refunded."
       requested_refund: "You already requested a refund for this payment."
     title: "My credits"
+  credits_mailer:
+    request_refund_from:
+      subject: ~
+      subject_html: ~
   curated_pages:
     index:
       title: ~
@@ -454,20 +458,6 @@ en:
       bio_tooltip: "Click here to write about you..."
       name_tooltip: "Click here to fill your name..."
     projects:
-      title: %{name}'s projects
-      title_current_user: My projects
-      no_projects: %{name} haven't started any project %{site} yet. We wonder if inspiration will hit one of these days!
-      no_projects_current_user_html: You haven't submitted any project yet. Let the inspiration flow and %{link} to start!
-  projects_mailer:
-    start_project_email:
-      subject: Project sent by %{name}
-      subject_html: Project sent by %{link}
-  credits_mailer:
-    request_refund_from:
-      subject: Refund request for user %{name}
-      subject_html:
-        "User %{name} requested refund from backer %{backer_key} for the project %{backer_project}
-        in amount value %{backer_value} through the service %{backer_payment_service}."
       no_projects: "%{name} haven't started any project %{site} yet. We wonder if inspiration will hit one of these days!"
       no_projects_current_user_html: "You haven't submitted any project yet. Let the inspiration flow and %{link} to start!"
       title: "%{name}'s projects"
