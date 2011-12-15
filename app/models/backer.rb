@@ -66,6 +66,14 @@ class Backer < ActiveRecord::Base
   def display_platform_fee(fee=7.5)
     number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => '.'
   end
+  def payment_service_fee
+    if payment_detail
+      payment_detail.service_tax_amount.to_f
+    else
+      build_payment_detail.update_from_service
+      payment_detail.service_tax_amount.to_f
+    end
+  end
   def moip_value
     "%0.0f" % (value * 100)
   end
@@ -78,7 +86,7 @@ class Backer < ActiveRecord::Base
     created_at + 180.days
   end
   def as_json(options={})
-    
+
     json_attributes = {
       :id => id,
       :anonymous => anonymous,
@@ -86,14 +94,14 @@ class Backer < ActiveRecord::Base
       :confirmed_at => display_confirmed_at,
       :user => user.as_json(options.merge(:anonymous => anonymous))
     }
-    
+
     if options and options[:can_manage]
       json_attributes.merge!({
         :display_value => display_value,
         :reward => reward
       })
     end
-    
+
     json_attributes
 
   end

@@ -19,6 +19,30 @@ describe PaymentDetail do
   end
 
   describe "#update_from_service" do
+    context "when PayPal" do
+      before(:each) do
+        @backer.update_attribute(:payment_method, 'PayPal')
+        @backer.reload
+      end
+
+      it "with invalid response" do
+        PaypalApi.stubs(:transaction_details).returns({})
+        subject.expects(:process_paypal_response).never
+        subject.update_from_service
+      end
+
+      context "with valid response" do
+        before(:each) do
+          HTTParty.stubs(:get).returns(FakeResponse.new)
+        end
+
+        it "should update service_tax_amount" do
+          subject.update_from_service
+          subject.service_tax_amount.should == 5.72
+        end
+      end
+    end
+
     context "when MoIP" do
       before(:each) do
         @backer.update_attribute(:payment_method, 'MoIP')

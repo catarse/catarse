@@ -130,6 +130,36 @@ describe Backer do
     backer.payment_method.should == 'MoIP'
   end
 
+  describe "#payment_service_fee" do
+    before(:each) do
+      @project = create(:project)
+    end
+    context "when payment is MoIP" do
+      before(:each) do
+        @backer = create(:backer, :project => @project, :payment_method => 'MoIP')
+        create(:payment_detail, :backer => @backer)
+      end
+
+      it "get moip tax" do
+        @backer.payment_service_fee.should == 19.37
+      end
+    end
+
+    context "when payment is PayPal" do
+      before(:each) do
+        @backer = create(:backer, :project => @project, :payment_method => 'PayPal')
+        @backer.reload
+        HTTParty.stubs(:get).returns(FakeResponse.new)
+      end
+
+      it "get paypal tax" do
+        @backer.payment_method = 'PayPal'
+        @backer.save!
+        @backer.payment_service_fee.should == 5.72
+      end
+    end
+  end
+
   describe "#display_platform_fee" do
     before(:each) do
       @backer = create(:backer, :value => 100)
