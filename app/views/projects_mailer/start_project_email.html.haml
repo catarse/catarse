@@ -2,7 +2,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", 'http-equiv' => "Content-Type"}
   %body
-    %h1= t('.subject_html', :link => link_to(@user.display_name, @site.full_url(user_path(@user))))
+    %h1= t('.subject_html', :link => link_to(@user.display_name, @user_url))
     %h2= t('projects.start.about')
     %p= @about
     %h2= t('projects.start.rewards')

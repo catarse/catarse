@@ -6,7 +6,7 @@ script type="text/template" id="backer_template"
   = image_tag 'user.png', :class => 'user'
   | &nbsp;
   = t('.anonymous_backer')
-  = image_tag "sites/#{current_site.path}/badge.#{I18n.locale}.png", :class => "badge"
+  = image_tag "badge.#{I18n.locale}.png", :class => "badge"
   p= t('.anonymous_description')
   |{{/anonymous}}
 
@@ -15,7 +15,7 @@ script type="text/template" id="backer_template"
   a href="{{url}}"
     img src="{{image}}" class="user"
     |  {{medium_name}}
-    = image_tag "sites/#{current_site.path}/badge.#{I18n.locale}.png", :class => "badge"
+    = image_tag "badge.#{I18n.locale}.png", :class => "badge"
   p
     |{{backs_text}}
   |{{/user}}
