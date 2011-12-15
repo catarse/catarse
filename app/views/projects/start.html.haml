@@ -1,7 +1,8 @@
 = content_for :content_header do
   %h1= t('.title')
   %h2= t('.subtitle')
-= render :partial => "/sites/#{current_site.path}/project_warning"
+#project_warning
+  = t('.project_warning.content_html', :link => link_to(t('.project_warning.help_link'), "#{t('site.blog')}/post/2816685141/guia-colocar-projeto-catarse", :target => :_blank))
 = form_tag(send_mail_projects_path, :id => 'start_project_form') do
   %fieldset
     = label_tag 'about', t('.about')
@@ -21,5 +22,5 @@
       = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
     %fieldset
       = submit_tag t('.submit'), :disabled => true
-      = image_tag "sites/#{current_site.path}/loading.gif", :id => 'loading'
+      = image_tag "loading.gif", :id => 'loading'
 = javascript_include_tag 'start_project'

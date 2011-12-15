@@ -1,7 +1,7 @@
-- unless @project.visible?(current_site)
+- unless @project.visible?
   #project_warning
-    - if @project.rejected?(current_site)
-      = t('.rejected', :site => current_site.the_name)
+    - if @project.rejected?
+      = t('.rejected')
     - else
-      = t('.waiting', :site => current_site.in_the_name)
+      = t('.waiting')
 

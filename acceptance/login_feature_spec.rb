@@ -8,7 +8,7 @@ feature "Login Feature" do
     find("#login").visible?.should be_false
   end
 
-  scenario "I'm new to the site and I want to signup with a supported provider" do
+  scenario "I'm new to the platform and I want to signup with a supported provider" do
     click_login
     page.should have_link('Google')
     page.should_not have_link('Github')
