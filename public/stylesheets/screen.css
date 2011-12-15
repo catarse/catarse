@@ -311,92 +311,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 
-/* line 1, ../../app/stylesheets/_slider.sass */
-.slider_wrapper {
-  position: relative;
-}
-
-/* line 4, ../../app/stylesheets/_slider.sass */
-.navigation .prev, .navigation .next {
-  z-index: 400;
-  font-family: "museo-500" !important;
-  position: absolute;
-  top: 172px;
-  color: white;
-  text-decoration: none;
-  width: 48px;
-  height: 48px;
-  border: 3px solid white;
-  -moz-border-radius: 48px;
-  -webkit-border-radius: 48px;
-  -o-border-radius: 48px;
-  -ms-border-radius: 48px;
-  -khtml-border-radius: 48px;
-  border-radius: 48px;
-  background-color: #44a546;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
-  -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  -o-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-weight: bold;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.3s;
-  -webkit-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  font-size: 32px;
-  line-height: 32px;
-  text-align: center;
-}
-/* line 23, ../../app/stylesheets/_slider.sass */
-.navigation .prev:hover, .navigation .next:hover {
-  -moz-transform: scale(1.1, 1.1);
-  -webkit-transform: scale(1.1, 1.1);
-  -o-transform: scale(1.1, 1.1);
-  -ms-transform: scale(1.1, 1.1);
-  transform: scale(1.1, 1.1);
-}
-/* line 25, ../../app/stylesheets/_slider.sass */
-.navigation .prev:disabled, .navigation .next:disabled {
-  color: #888888;
-  border: 3px solid #dddddd;
-  text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
-  background-color: #aaaaaa;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
-  background-image: -webkit-linear-gradient(top, #bbbbbb, #888888);
-  background-image: -moz-linear-gradient(top, #bbbbbb, #888888);
-  background-image: -o-linear-gradient(top, #bbbbbb, #888888);
-  background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
-  background-image: linear-gradient(top, #bbbbbb, #888888);
-}
-/* line 31, ../../app/stylesheets/_slider.sass */
-.navigation .prev:disabled:hover, .navigation .next:disabled:hover {
-  -moz-transform: scale(1, 1);
-  -webkit-transform: scale(1, 1);
-  -o-transform: scale(1, 1);
-  -ms-transform: scale(1, 1);
-  transform: scale(1, 1);
-}
-/* line 33, ../../app/stylesheets/_slider.sass */
-.navigation .prev {
-  left: -16px;
-}
-/* line 35, ../../app/stylesheets/_slider.sass */
-.navigation .next {
-  right: -12px;
-}
-
-/* line 38, ../../app/stylesheets/screen.sass */
-body#site {
+/* line 34, ../../app/stylesheets/screen.sass */
+body#platform {
   background: url("/images/bg.jpg") repeat;
   text-rendering: optimizeLegibility;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -407,15 +323,15 @@ body#site {
   font-weight: normal;
 }
 /* line 10, ../../app/stylesheets/_body.sass */
-body#site em {
+body#platform em {
   font-style: italic;
 }
 /* line 12, ../../app/stylesheets/_body.sass */
-body#site strong {
+body#platform strong {
   font-weight: bold;
 }
 /* line 14, ../../app/stylesheets/_body.sass */
-body#site a {
+body#platform a {
   text-decoration: underline;
   color: #008800;
   font-size: 100%;
@@ -425,27 +341,27 @@ body#site a {
   transition: all 0.5s;
 }
 /* line 19, ../../app/stylesheets/_body.sass */
-body#site a:hover {
+body#platform a:hover {
   color: #00aa00;
 }
 /* line 3, ../../app/stylesheets/_form.sass */
-body#site form fieldset {
+body#platform form fieldset {
   padding: 8px 0;
 }
 /* line 5, ../../app/stylesheets/_form.sass */
-body#site form label {
+body#platform form label {
   display: block;
   margin-right: 8px;
   margin-top: 14px;
 }
 /* line 9, ../../app/stylesheets/_form.sass */
-body#site form label abbr[title=required] {
+body#platform form label abbr[title=required] {
   font-size: 16px;
   color: #dd3333;
   margin-left: 2px;
 }
 /* line 13, ../../app/stylesheets/_form.sass */
-body#site form input[type=text], body#site form textarea, body#site form select {
+body#platform form input[type=text], body#platform form textarea, body#platform form select {
   padding-left: 4px;
   padding-right: 24px;
   background-color: white;
@@ -462,24 +378,24 @@ body#site form input[type=text], body#site form textarea, body#site form select 
   text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
 }
 /* line 23, ../../app/stylesheets/_form.sass */
-body#site form input[type=text]:focus, body#site form textarea:focus, body#site form select:focus {
+body#platform form input[type=text]:focus, body#platform form textarea:focus, body#platform form select:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 26, ../../app/stylesheets/_form.sass */
-body#site form textarea {
+body#platform form textarea {
   padding-right: 28px;
   width: 96%;
   height: 200px;
 }
 /* line 30, ../../app/stylesheets/_form.sass */
-body#site form p.inline-hints {
+body#platform form p.inline-hints {
   color: #777777;
   font-size: 14px;
   padding-bottom: 0 !important;
 }
 /* line 34, ../../app/stylesheets/_form.sass */
-body#site form input[type=submit] {
+body#platform form input[type=submit] {
   text-rendering: optimizeLegibility;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333333;
@@ -508,7 +424,7 @@ body#site form input[type=submit] {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 48, ../../app/stylesheets/_form.sass */
-body#site form input[type=submit]:hover {
+body#platform form input[type=submit]:hover {
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
   background-image: -webkit-linear-gradient(top, #eeeeee, #bbbbbb);
@@ -522,7 +438,7 @@ body#site form input[type=submit]:hover {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 52, ../../app/stylesheets/_form.sass */
-body#site form input[type=submit]:active {
+body#platform form input[type=submit]:active {
   padding: 11px 14px 9px 16px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
   background-color: #dddddd;
@@ -538,7 +454,7 @@ body#site form input[type=submit]:active {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
 }
 /* line 58, ../../app/stylesheets/_form.sass */
-body#site form input[type=submit]:disabled {
+body#platform form input[type=submit]:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
   padding: 10px 15px;
@@ -555,95 +471,95 @@ body#site form input[type=submit]:disabled {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 65, ../../app/stylesheets/_form.sass */
-body#site form input.ok, body#site form textarea.ok {
+body#platform form input.ok, body#platform form textarea.ok {
   background: url("/images/tick_16.png") no-repeat 99% center;
 }
 /* line 67, ../../app/stylesheets/_form.sass */
-body#site form input.ok:focus, body#site form textarea.ok:focus {
+body#platform form input.ok:focus, body#platform form textarea.ok:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 70, ../../app/stylesheets/_form.sass */
-body#site form input.error, body#site form textarea.error {
+body#platform form input.error, body#platform form textarea.error {
   background: url("/images/delete_16.png") no-repeat 99% center;
 }
 /* line 72, ../../app/stylesheets/_form.sass */
-body#site form input.error:focus, body#site form textarea.error:focus {
+body#platform form input.error:focus, body#platform form textarea.error:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 75, ../../app/stylesheets/_form.sass */
-body#site form input.loading, body#site form textarea.loading {
-  background: url("/images/sites/catarse/loading.gif") no-repeat 99% center;
+body#platform form input.loading, body#platform form textarea.loading {
+  background: url("/images/loading.gif") no-repeat 99% center;
 }
 /* line 77, ../../app/stylesheets/_form.sass */
-body#site form input.loading:focus, body#site form textarea.loading:focus {
+body#platform form input.loading:focus, body#platform form textarea.loading:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 80, ../../app/stylesheets/_form.sass */
-body#site form select.ok {
+body#platform form select.ok {
   background: url("/images/tick_16.png") no-repeat 86% center;
 }
 /* line 82, ../../app/stylesheets/_form.sass */
-body#site form select.ok:focus {
+body#platform form select.ok:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 85, ../../app/stylesheets/_form.sass */
-body#site form select.error {
+body#platform form select.error {
   background: url("/images/delete_16.png") no-repeat 86% center;
 }
 /* line 87, ../../app/stylesheets/_form.sass */
-body#site form select.error:focus {
+body#platform form select.error:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 90, ../../app/stylesheets/_form.sass */
-body#site form select.loading {
-  background: url("/images/sites/catarse/loading.gif") no-repeat 86% center;
+body#platform form select.loading {
+  background: url("/images/loading.gif") no-repeat 86% center;
 }
 /* line 92, ../../app/stylesheets/_form.sass */
-body#site form select.loading:focus {
+body#platform form select.loading:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 41, ../../app/stylesheets/screen.sass */
-body#site table {
+/* line 37, ../../app/stylesheets/screen.sass */
+body#platform table {
   width: 100%;
 }
 /* line 3, ../../app/stylesheets/_table.sass */
-body#site table td, body#site table th {
+body#platform table td, body#platform table th {
   padding: 4px 8px;
 }
 /* line 5, ../../app/stylesheets/_table.sass */
-body#site table thead {
+body#platform table thead {
   background-color: #cccccc;
   background-color: rgba(0, 0, 0, 0.2);
 }
 /* line 8, ../../app/stylesheets/_table.sass */
-body#site table thead th {
+body#platform table thead th {
   font-weight: bold;
 }
 /* line 11, ../../app/stylesheets/_table.sass */
-body#site table tbody tr {
+body#platform table tbody tr {
   -moz-transition: all;
   -webkit-transition: all;
   -o-transition: all;
   transition: all;
 }
 /* line 13, ../../app/stylesheets/_table.sass */
-body#site table tbody tr.odd {
+body#platform table tbody tr.odd {
   background-color: #eeeeee;
   background-color: rgba(0, 0, 0, 0.08);
 }
 /* line 16, ../../app/stylesheets/_table.sass */
-body#site table tbody tr:hover {
+body#platform table tbody tr:hover {
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.4);
 }
-/* line 43, ../../app/stylesheets/screen.sass */
-body#site .flash {
+/* line 39, ../../app/stylesheets/screen.sass */
+body#platform .flash {
   z-index: 500;
   position: fixed;
   bottom: 0;
@@ -657,11 +573,11 @@ body#site .flash {
   text-shadow: black 1px 1px 1px;
 }
 /* line 10, ../../app/stylesheets/_flash.sass */
-body#site .flash .wrapper {
+body#platform .flash .wrapper {
   padding: 20px;
 }
 /* line 12, ../../app/stylesheets/_flash.sass */
-body#site .flash .success.wrapper, body#site .flash .notice.wrapper {
+body#platform .flash .success.wrapper, body#platform .flash .notice.wrapper {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
   background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
@@ -671,7 +587,7 @@ body#site .flash .success.wrapper, body#site .flash .notice.wrapper {
   background-image: linear-gradient(top, #51c252, #49b249, #44a546);
 }
 /* line 15, ../../app/stylesheets/_flash.sass */
-body#site .flash .failure.wrapper, body#site .flash .error.wrapper {
+body#platform .flash .failure.wrapper, body#platform .flash .error.wrapper {
   background-color: #aa3333;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cc3333), color-stop(50%, #bb3333), color-stop(100%, #aa3333));
   background-image: -webkit-linear-gradient(top, #cc3333, #bb3333, #aa3333);
@@ -681,7 +597,7 @@ body#site .flash .failure.wrapper, body#site .flash .error.wrapper {
   background-image: linear-gradient(top, #cc3333, #bb3333, #aa3333);
 }
 /* line 18, ../../app/stylesheets/_flash.sass */
-body#site .flash .locale.wrapper {
+body#platform .flash .locale.wrapper {
   background-color: #0084b9;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0da1c3), color-stop(50%, #0591bc), color-stop(100%, #0084b9));
   background-image: -webkit-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
@@ -690,8 +606,8 @@ body#site .flash .locale.wrapper {
   background-image: -ms-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
   background-image: linear-gradient(top, #0da1c3, #0591bc, #0084b9);
 }
-/* line 45, ../../app/stylesheets/screen.sass */
-body#site .overlay {
+/* line 41, ../../app/stylesheets/screen.sass */
+body#platform .overlay {
   background-color: #dddddd;
   background: rgba(180, 180, 180, 0.8);
   position: fixed;
@@ -701,8 +617,8 @@ body#site .overlay {
   height: 100%;
   z-index: 400;
 }
-/* line 47, ../../app/stylesheets/screen.sass */
-body#site #locales {
+/* line 43, ../../app/stylesheets/screen.sass */
+body#platform #locales {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
   position: fixed;
@@ -736,20 +652,20 @@ body#site #locales {
   transition-duration: 0.3s;
 }
 /* line 23, ../../app/stylesheets/_locales.sass */
-body#site #locales:hover {
+body#platform #locales:hover {
   right: 0;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 /* line 26, ../../app/stylesheets/_locales.sass */
-body#site #locales.notify {
+body#platform #locales.notify {
   right: 0;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   -webkit-animation: pulse 1.5s infinite ease-in-out;
 }
 /* line 30, ../../app/stylesheets/_locales.sass */
-body#site #locales img {
+body#platform #locales img {
   width: 32px;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -761,15 +677,15 @@ body#site #locales img {
   transition-duration: 0.3s;
 }
 /* line 33, ../../app/stylesheets/_locales.sass */
-body#site #locales img:hover {
+body#platform #locales img:hover {
   -moz-transform: scale(1.1, 1.1);
   -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
   -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
 }
-/* line 49, ../../app/stylesheets/screen.sass */
-body#site #login {
+/* line 45, ../../app/stylesheets/screen.sass */
+body#platform #login {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
   background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
@@ -802,23 +718,23 @@ body#site #login {
   text-shadow: black 1px 1px 1px;
 }
 /* line 19, ../../app/stylesheets/_login.sass */
-body#site #login h1 {
+body#platform #login h1 {
   font-family: "museo-500";
   font-size: 24px;
   padding: 10px;
   margin-bottom: 10px;
 }
 /* line 24, ../../app/stylesheets/_login.sass */
-body#site #login form fieldset {
+body#platform #login form fieldset {
   margin-top: 8px;
   padding: 0;
 }
 /* line 27, ../../app/stylesheets/_login.sass */
-body#site #login p {
+body#platform #login p {
   margin-top: 20px;
 }
 /* line 30, ../../app/stylesheets/_login.sass */
-body#site #login a img {
+body#platform #login a img {
   width: 60px;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -830,7 +746,7 @@ body#site #login a img {
   transition-duration: 0.3s;
 }
 /* line 33, ../../app/stylesheets/_login.sass */
-body#site #login a img:hover, body#site #login a img:focus {
+body#platform #login a img:hover, body#platform #login a img:focus {
   -moz-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
   -o-transform: scale(1.2, 1.2);
@@ -838,12 +754,12 @@ body#site #login a img:hover, body#site #login a img:focus {
   transform: scale(1.2, 1.2);
 }
 /* line 36, ../../app/stylesheets/_login.sass */
-body#site #login a.disabled img {
+body#platform #login a.disabled img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
 /* line 38, ../../app/stylesheets/_login.sass */
-body#site #login a.disabled img:hover, body#site #login a.disabled img:focus, body#site #login a.disabled img:active {
+body#platform #login a.disabled img:hover, body#platform #login a.disabled img:focus, body#platform #login a.disabled img:active {
   -moz-transform: scale(1, 1);
   -webkit-transform: scale(1, 1);
   -o-transform: scale(1, 1);
@@ -851,7 +767,7 @@ body#site #login a.disabled img:hover, body#site #login a.disabled img:focus, bo
   transform: scale(1, 1);
 }
 /* line 40, ../../app/stylesheets/_login.sass */
-body#site #login a.close {
+body#platform #login a.close {
   color: white;
   text-decoration: none;
   position: absolute;
@@ -891,7 +807,7 @@ body#site #login a.close {
   transition-duration: 0.3s;
 }
 /* line 58, ../../app/stylesheets/_login.sass */
-body#site #login a.close:hover, body#site #login a.close:focus {
+body#platform #login a.close:hover, body#platform #login a.close:focus {
   color: white;
   -moz-transform: scale(1.05, 1.05);
   -webkit-transform: scale(1.05, 1.05);
@@ -899,8 +815,8 @@ body#site #login a.close:hover, body#site #login a.close:focus {
   -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
-/* line 51, ../../app/stylesheets/screen.sass */
-body#site #pre_header {
+/* line 47, ../../app/stylesheets/screen.sass */
+body#platform #pre_header {
   background-color: #0084b9;
   text-align: center;
   padding: 8px 0;
@@ -914,20 +830,20 @@ body#site #pre_header {
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 }
 /* line 10, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header a {
+body#platform #pre_header a {
   color: white;
   text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
   font-weight: bold;
   text-decoration: none;
 }
 /* line 15, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice, body#site #pre_header .notification {
+body#platform #pre_header .back_notice, body#platform #pre_header .notification {
   width: 920px;
   margin: 0 auto;
   padding: 4px 0;
 }
 /* line 19, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice img.social, body#site #pre_header .notification img.social {
+body#platform #pre_header .back_notice img.social, body#platform #pre_header .notification img.social {
   float: right;
   vertical-align: middle;
   margin-top: -4px;
@@ -942,7 +858,7 @@ body#site #pre_header .back_notice img.social, body#site #pre_header .notificati
   transition-duration: 0.3s;
 }
 /* line 25, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice img.social:hover, body#site #pre_header .notification img.social:hover {
+body#platform #pre_header .back_notice img.social:hover, body#platform #pre_header .notification img.social:hover {
   -moz-transform: scale(1.1, 1.1);
   -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
@@ -950,7 +866,7 @@ body#site #pre_header .back_notice img.social:hover, body#site #pre_header .noti
   transform: scale(1.1, 1.1);
 }
 /* line 27, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice a.close, body#site #pre_header .notification a.close {
+body#platform #pre_header .back_notice a.close, body#platform #pre_header .notification a.close {
   color: white;
   color: rgba(255, 255, 255, 0.7);
   text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 2px;
@@ -965,23 +881,23 @@ body#site #pre_header .back_notice a.close, body#site #pre_header .notification 
   font-weight: bold;
 }
 /* line 40, ../../app/stylesheets/_pre_header.sass */
-body#site #pre_header .back_notice a.close:hover, body#site #pre_header .back_notice a.close:focus, body#site #pre_header .notification a.close:hover, body#site #pre_header .notification a.close:focus {
+body#platform #pre_header .back_notice a.close:hover, body#platform #pre_header .back_notice a.close:focus, body#platform #pre_header .notification a.close:hover, body#platform #pre_header .notification a.close:focus {
   color: white;
 }
-/* line 53, ../../app/stylesheets/screen.sass */
-body#site #main {
+/* line 49, ../../app/stylesheets/screen.sass */
+body#platform #main {
   width: 980px;
   margin: 0 auto;
 }
 /* line 2, ../../app/stylesheets/_header.sass */
-body#site #header h1 {
+body#platform #header h1 {
   font-family: "museo-700";
   font-size: 48px;
   padding: 8px 0 12px 0;
   float: left;
 }
 /* line 7, ../../app/stylesheets/_header.sass */
-body#site #header h1 a {
+body#platform #header h1 a {
   color: #222222;
   text-decoration: none;
   -moz-transition: all 0.5s;
@@ -990,17 +906,17 @@ body#site #header h1 a {
   transition: all 0.5s;
 }
 /* line 11, ../../app/stylesheets/_header.sass */
-body#site #header h1 a:hover {
+body#platform #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 57, ../../app/stylesheets/screen.sass */
-body#site #menu {
+/* line 53, ../../app/stylesheets/screen.sass */
+body#platform #menu {
   float: right;
   margin-top: 38px;
   margin-bottom: 20px;
 }
 /* line 5, ../../app/stylesheets/_menu.sass */
-body#site #menu ul {
+body#platform #menu ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1008,7 +924,7 @@ body#site #menu ul {
   *zoom: 1;
 }
 /* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #menu ul li {
+body#platform #menu ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -1019,24 +935,24 @@ body#site #menu ul li {
   padding-right: 12px;
 }
 /* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #menu ul li:first-child, body#site #menu ul li.first {
+body#platform #menu ul li:first-child, body#platform #menu ul li.first {
   padding-left: 0;
 }
 /* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #menu ul li:last-child {
+body#platform #menu ul li:last-child {
   padding-right: 0;
 }
 /* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #menu ul li.last {
+body#platform #menu ul li.last {
   padding-right: 0;
 }
 /* line 8, ../../app/stylesheets/_menu.sass */
-body#site #menu ul li a {
+body#platform #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 59, ../../app/stylesheets/screen.sass */
-body#site #user {
+/* line 55, ../../app/stylesheets/screen.sass */
+body#platform #user {
   float: right;
   margin-top: 12px;
   margin-left: 12px;
@@ -1044,7 +960,7 @@ body#site #user {
   position: relative;
 }
 /* line 7, ../../app/stylesheets/_user.sass */
-body#site #user a {
+body#platform #user a {
   display: block;
   padding: 20px 20px 21px 20px;
   -moz-border-radius-topleft: 16px;
@@ -1068,12 +984,12 @@ body#site #user a {
   transition: none;
 }
 /* line 15, ../../app/stylesheets/_user.sass */
-body#site #user a img.dropdown {
+body#platform #user a img.dropdown {
   margin-bottom: 3px;
   vertical_align: middle;
 }
 /* line 18, ../../app/stylesheets/_user.sass */
-body#site #user a img#display_image {
+body#platform #user a img#display_image {
   background-color: white;
   -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
@@ -1083,21 +999,21 @@ body#site #user a img#display_image {
   height: 24px;
 }
 /* line 24, ../../app/stylesheets/_user.sass */
-body#site #user .hover {
+body#platform #user .hover {
   color: #eeeeee;
   text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 0px;
   background-color: #0c0c0c;
   background-color: rgba(12, 12, 12, 0.9);
 }
 /* line 29, ../../app/stylesheets/_user.sass */
-body#site #user .hover img#display_image {
+body#platform #user .hover img#display_image {
   -moz-box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
   -webkit-box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
   -o-box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
   box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
 }
 /* line 31, ../../app/stylesheets/_user.sass */
-body#site #user #user_menu {
+body#platform #user #user_menu {
   text-align: right;
   padding: 0 20px;
   background-color: #0c0c0c;
@@ -1120,7 +1036,7 @@ body#site #user #user_menu {
   z-index: 100;
 }
 /* line 43, ../../app/stylesheets/_user.sass */
-body#site #user #user_menu ul li a {
+body#platform #user #user_menu ul li a {
   font-weight: normal;
   padding-top: 0;
   padding-right: 12px;
@@ -1132,15 +1048,15 @@ body#site #user #user_menu ul li a {
   transition: all 0.5s;
 }
 /* line 50, ../../app/stylesheets/_user.sass */
-body#site #user #user_menu ul li a .small {
+body#platform #user #user_menu ul li a .small {
   font-size: 14px;
 }
 /* line 52, ../../app/stylesheets/_user.sass */
-body#site #user #user_menu ul li a:hover {
+body#platform #user #user_menu ul li a:hover {
   color: white;
 }
 /* line 54, ../../app/stylesheets/_user.sass */
-body#site #user .user_menu_border {
+body#platform #user .user_menu_border {
   -moz-border-radius-topleft: 16px;
   -webkit-border-top-left-radius: 16px;
   -o-border-top-left-radius: 16px;
@@ -1148,8 +1064,8 @@ body#site #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 61, ../../app/stylesheets/screen.sass */
-body#site #content_wrapper {
+/* line 57, ../../app/stylesheets/screen.sass */
+body#platform #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
   -moz-border-radius: 6px;
@@ -1163,8 +1079,8 @@ body#site #content_wrapper {
   -o-box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
 }
-/* line 63, ../../app/stylesheets/screen.sass */
-body#site #content_wrapper #content_header {
+/* line 59, ../../app/stylesheets/screen.sass */
+body#platform #content_wrapper #content_header {
   position: relative;
   text-align: center;
   color: white;
@@ -1183,14 +1099,14 @@ body#site #content_wrapper #content_header {
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
 }
 /* line 15, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content_header h1 {
+body#platform #content_wrapper #content_header h1 {
   font-family: "museo-500";
   font-size: 32px;
   padding: 10px 0 20px 0;
   text-shadow: green 2px 2px 1px;
 }
 /* line 20, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content_header h1 a {
+body#platform #content_wrapper #content_header h1 a {
   color: #ffffaa;
   text-decoration: none;
   -moz-transition-property: all;
@@ -1203,16 +1119,16 @@ body#site #content_wrapper #content_header h1 a {
   transition-duration: 0.1s;
 }
 /* line 24, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content_header h1 a:hover {
+body#platform #content_wrapper #content_header h1 a:hover {
   text-shadow: green 3px 3px 3px;
 }
 /* line 26, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content_header h2 {
+body#platform #content_wrapper #content_header h2 {
   padding: 0 40px;
   text-shadow: green 1px 1px 1px;
 }
 /* line 29, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content_header h2 a {
+body#platform #content_wrapper #content_header h2 a {
   color: #ffffaa;
   text-decoration: none;
   -moz-transition-property: all;
@@ -1225,11 +1141,11 @@ body#site #content_wrapper #content_header h2 a {
   transition-duration: 0.1s;
 }
 /* line 33, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content_header h2 a:hover {
+body#platform #content_wrapper #content_header h2 a:hover {
   text-shadow: green 2px 2px 2px;
 }
 /* line 35, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content_header #badge {
+body#platform #content_wrapper #content_header #badge {
   position: absolute;
   top: 52px;
   right: 10px;
@@ -1244,52 +1160,52 @@ body#site #content_wrapper #content_header #badge {
   z-index: 10;
 }
 /* line 41, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content_header #badge:hover {
+body#platform #content_wrapper #content_header #badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
   -ms-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 65, ../../app/stylesheets/screen.sass */
-body#site #content_wrapper #content {
+/* line 61, ../../app/stylesheets/screen.sass */
+body#platform #content_wrapper #content {
   padding: 40px 20px;
 }
 /* line 46, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content h1 {
+body#platform #content_wrapper #content h1 {
   font-family: "museo-300";
   font-size: 28px;
   padding: 20px 0 30px 0;
   color: #008800;
 }
 /* line 51, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content h2 {
+body#platform #content_wrapper #content h2 {
   font-family: "museo-300";
   font-size: 24px;
   padding: 20px 0 30px 0;
   color: #008800;
 }
 /* line 56, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content h3 {
+body#platform #content_wrapper #content h3 {
   padding-bottom: 8px;
   font-weight: bold;
 }
 /* line 59, ../../app/stylesheets/_content.sass */
-body#site #content_wrapper #content p {
+body#platform #content_wrapper #content p {
   padding-bottom: 20px;
 }
 /* line 2, ../../app/stylesheets/_profile.sass */
-body#site #profile_header {
+body#platform #profile_header {
   width: 800px;
   min-height: 110px;
 }
 /* line 5, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .image {
+body#platform #profile_header .image {
   float: left;
   padding: 10px 20px 20px 20px;
 }
 /* line 8, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .image img {
+body#platform #profile_header .image img {
   background-color: white;
   -moz-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
@@ -1299,56 +1215,56 @@ body#site #profile_header .image img {
   max-height: 128px;
 }
 /* line 14, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .info h1, body#site #profile_header .info h2 {
+body#platform #profile_header .info h1, body#platform #profile_header .info h2 {
   text-align: left;
 }
 /* line 16, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .info h1 .on_the_spot_mouseover, body#site #profile_header .info h2 .on_the_spot_mouseover {
+body#platform #profile_header .info h1 .on_the_spot_mouseover, body#platform #profile_header .info h2 .on_the_spot_mouseover {
   background-color: #2b6e18;
   background-color: rgba(43, 110, 24, 0.5);
 }
 /* line 21, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .info h1 .on_the_spot_editing form input, body#site #profile_header .info h1 .on_the_spot_editing form textarea, body#site #profile_header .info h2 .on_the_spot_editing form input, body#site #profile_header .info h2 .on_the_spot_editing form textarea {
+body#platform #profile_header .info h1 .on_the_spot_editing form input, body#platform #profile_header .info h1 .on_the_spot_editing form textarea, body#platform #profile_header .info h2 .on_the_spot_editing form input, body#platform #profile_header .info h2 .on_the_spot_editing form textarea {
   background-color: #ccffcc;
 }
 /* line 26, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .info h1 .on_the_spot_editing form input {
+body#platform #profile_header .info h1 .on_the_spot_editing form input {
   font-family: "museo-500";
   font-size: 32px;
 }
 /* line 29, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .info h2 {
+body#platform #profile_header .info h2 {
   margin: 0 !important;
   padding: 0 !important;
 }
 /* line 34, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .info h2 .on_the_spot_editing form textarea {
+body#platform #profile_header .info h2 .on_the_spot_editing form textarea {
   width: 600px;
   height: 40px;
 }
 /* line 37, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .info h2 .on_the_spot_editing form textarea.ok {
+body#platform #profile_header .info h2 .on_the_spot_editing form textarea.ok {
   background: #ccffcc url("/images/tick_16.png") no-repeat 96% center;
 }
 /* line 39, ../../app/stylesheets/_profile.sass */
-body#site #profile_header .info h2 .on_the_spot_editing form textarea.error {
+body#platform #profile_header .info h2 .on_the_spot_editing form textarea.error {
   background: #ccffcc url("/images/delete_16.png") no-repeat 96% center;
 }
 /* line 41, ../../app/stylesheets/_profile.sass */
-body#site #user_feed {
+body#platform #user_feed {
   color: #444444;
   font-size: 22px;
   line-height: 28px;
 }
 /* line 45, ../../app/stylesheets/_profile.sass */
-body#site #user_feed h1 {
+body#platform #user_feed h1 {
   font-size: 26px !important;
   color: #999999 !important;
   padding-bottom: 0 !important;
   padding-top: 0 !important;
 }
 /* line 50, ../../app/stylesheets/_profile.sass */
-body#site #user_feed img.project {
+body#platform #user_feed img.project {
   float: left;
   margin-right: 12px;
   width: 160px;
@@ -1358,7 +1274,7 @@ body#site #user_feed img.project {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 /* line 55, ../../app/stylesheets/_profile.sass */
-body#site #user_feed img.social {
+body#platform #user_feed img.social {
   vertical-align: middle;
   margin-top: -4px;
   width: 28px;
@@ -1372,7 +1288,7 @@ body#site #user_feed img.social {
   transition-duration: 0.3s;
 }
 /* line 60, ../../app/stylesheets/_profile.sass */
-body#site #user_feed img.social:hover {
+body#platform #user_feed img.social:hover {
   -moz-transform: scale(1.1, 1.1);
   -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
@@ -1380,39 +1296,39 @@ body#site #user_feed img.social:hover {
   transform: scale(1.1, 1.1);
 }
 /* line 62, ../../app/stylesheets/_profile.sass */
-body#site #user_feed a {
+body#platform #user_feed a {
   text-decoration: none !important;
   font-size: 22px;
   line-height: 28px;
 }
 /* line 66, ../../app/stylesheets/_profile.sass */
-body#site #user_feed p {
+body#platform #user_feed p {
   font-size: 18px;
   color: #666666;
 }
 /* line 69, ../../app/stylesheets/_profile.sass */
-body#site #user_feed ul li {
+body#platform #user_feed ul li {
   margin-top: 32px;
 }
 /* line 71, ../../app/stylesheets/_profile.sass */
-body#site #user_feed ul li:first-child {
+body#platform #user_feed ul li:first-child {
   margin-top: 24px;
 }
 /* line 73, ../../app/stylesheets/_profile.sass */
-body#site #user_feed ul li:last-child {
+body#platform #user_feed ul li:last-child {
   margin-bottom: 24px;
 }
 /* line 75, ../../app/stylesheets/_profile.sass */
-body#site #user_feed div {
+body#platform #user_feed div {
   margin-top: 24px;
 }
 /* line 77, ../../app/stylesheets/_profile.sass */
-body#site #user_feed hr {
+body#platform #user_feed hr {
   margin: 20px 0;
   border: 1px dashed transparent;
 }
 /* line 80, ../../app/stylesheets/_profile.sass */
-body#site #user_feed #gravatar_hint {
+body#platform #user_feed #gravatar_hint {
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.6);
   font-family: "museo-300";
@@ -1436,50 +1352,50 @@ body#site #user_feed #gravatar_hint {
   position: relative;
 }
 /* line 94, ../../app/stylesheets/_profile.sass */
-body#site #user_feed #gravatar_hint #gravatar_logo {
+body#platform #user_feed #gravatar_hint #gravatar_logo {
   float: left;
   margin-right: 16px;
 }
 /* line 97, ../../app/stylesheets/_profile.sass */
-body#site #user_feed .hint {
+body#platform #user_feed .hint {
   margin-top: 4px;
   font-size: 16px;
   color: #666666;
   font-style: italic;
 }
 /* line 102, ../../app/stylesheets/_profile.sass */
-body#site #user_feed .loading {
+body#platform #user_feed .loading {
   display: none;
 }
 /* line 2, ../../app/stylesheets/_projects.sass */
-body#site .project_list_header {
+body#platform .project_list_header {
   font-weight: bold;
   margin: -16px 0 0 24px;
 }
 /* line 5, ../../app/stylesheets/_projects.sass */
-body#site .project_list_subheader {
+body#platform .project_list_subheader {
   font-size: 14px;
   margin: 0 0 18px 24px;
 }
 /* line 8, ../../app/stylesheets/_projects.sass */
-body#site .project_list_wrapper {
+body#platform .project_list_wrapper {
   height: 424px;
   position: relative;
 }
 /* line 11, ../../app/stylesheets/_projects.sass */
-body#site .project_list {
+body#platform .project_list {
   width: 936px;
   overflow: hidden;
 }
 /* line 14, ../../app/stylesheets/_projects.sass */
-body#site .explore_more {
+body#platform .explore_more {
   font-size: 16px;
   text-align: right;
   margin: -16px 24px 18px 24px;
   clear: both;
 }
 /* line 19, ../../app/stylesheets/_projects.sass */
-body#site .explore_more hr {
+body#platform .explore_more hr {
   float: left;
   width: 524px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
@@ -1487,12 +1403,12 @@ body#site .explore_more hr {
   margin-top: 10px;
 }
 /* line 24, ../../app/stylesheets/_projects.sass */
-body#site .explore_more a {
+body#platform .explore_more a {
   display: block;
   text-decoration: none;
 }
 /* line 27, ../../app/stylesheets/_projects.sass */
-body#site .explore_more .explore_more_arrow {
+body#platform .explore_more .explore_more_arrow {
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -1500,12 +1416,12 @@ body#site .explore_more .explore_more_arrow {
   margin-top: -2px;
 }
 /* line 33, ../../app/stylesheets/_projects.sass */
-body#site .project_curator_description {
+body#platform .project_curator_description {
   float: left;
   width: 150px;
 }
 /* line 36, ../../app/stylesheets/_projects.sass */
-body#site .project_box {
+body#platform .project_box {
   font-size: 12px;
   line-height: 14px;
   color: #666666;
@@ -1521,19 +1437,19 @@ body#site .project_box {
   border: 5px solid rgba(100, 100, 100, 0.3);
 }
 /* line 45, ../../app/stylesheets/_projects.sass */
-body#site .project_box .status_image {
+body#platform .project_box .status_image {
   position: absolute;
   top: -5px;
   left: -5px;
   z-index: 100;
 }
 /* line 50, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_header {
+body#platform .project_box .project_header {
   position: relative;
   text-align: center;
 }
 /* line 53, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_header .project_image {
+body#platform .project_box .project_header .project_image {
   margin: -10px 0 6px -10px;
   -moz-border-radius-topleft: 3px;
   -webkit-border-top-left-radius: 3px;
@@ -1552,11 +1468,11 @@ body#site .project_box .project_header .project_image {
   overflow: hidden;
 }
 /* line 60, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_header .project_image img {
+body#platform .project_box .project_header .project_image img {
   max-width: 254px;
 }
 /* line 62, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_header h1 {
+body#platform .project_box .project_header h1 {
   text-align: left;
   font-family: "museo-300";
   font-size: 16px !important;
@@ -1565,7 +1481,7 @@ body#site .project_box .project_header h1 {
   padding: 0 !important;
 }
 /* line 69, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_header a {
+body#platform .project_box .project_header a {
   text-decoration: none;
   text-shadow: none;
   color: black;
@@ -1575,11 +1491,11 @@ body#site .project_box .project_header a {
   transition: all 0.5s;
 }
 /* line 74, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_header a:hover {
+body#platform .project_box .project_header a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 4px;
 }
 /* line 76, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_category {
+body#platform .project_box .project_category {
   text-transform: uppercase;
   color: white;
   text-align: right;
@@ -1595,19 +1511,19 @@ body#site .project_box .project_category {
   z-index: 100;
 }
 /* line 90, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_owner {
+body#platform .project_box .project_owner {
   color: #999999;
   padding-bottom: 8px;
 }
 /* line 93, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_wrap {
+body#platform .project_box .project_wrap {
   min-height: 288px;
   width: 234px;
   padding: 10px;
   position: relative;
 }
 /* line 98, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_progress {
+body#platform .project_box .project_progress {
   text-transform: uppercase;
   color: #333333;
   background-color: #cccccc;
@@ -1628,18 +1544,18 @@ body#site .project_box .project_progress {
   font-size: 11px;
 }
 /* line 107, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_progress .progress_bar {
+body#platform .project_box .project_progress .progress_bar {
   font-size: 4px;
   line-height: 12px;
   width: 200px;
 }
 /* line 111, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_progress .progress_info {
+body#platform .project_box .project_progress .progress_info {
   width: 218px;
   margin: 0 auto;
 }
 /* line 114, ../../app/stylesheets/_projects.sass */
-body#site .project_box .project_progress .progress_info ul {
+body#platform .project_box .project_progress .progress_info ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1647,7 +1563,7 @@ body#site .project_box .project_progress .progress_info ul {
   *zoom: 1;
 }
 /* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site .project_box .project_progress .progress_info ul li {
+body#platform .project_box .project_progress .progress_info ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -1658,19 +1574,19 @@ body#site .project_box .project_progress .progress_info ul li {
   padding-right: 4px;
 }
 /* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site .project_box .project_progress .progress_info ul li:first-child, body#site .project_box .project_progress .progress_info ul li.first {
+body#platform .project_box .project_progress .progress_info ul li:first-child, body#platform .project_box .project_progress .progress_info ul li.first {
   padding-left: 0;
 }
 /* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site .project_box .project_progress .progress_info ul li:last-child {
+body#platform .project_box .project_progress .progress_info ul li:last-child {
   padding-right: 0;
 }
 /* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site .project_box .project_progress .progress_info ul li.last {
+body#platform .project_box .project_progress .progress_info ul li.last {
   padding-right: 0;
 }
 /* line 116, ../../app/stylesheets/_projects.sass */
-body#site .progress_bar {
+body#platform .progress_bar {
   margin: 0 auto;
   font-size: 8px;
   background-color: #999999;
@@ -1685,7 +1601,7 @@ body#site .progress_bar {
   border-radius: 32px;
 }
 /* line 124, ../../app/stylesheets/_projects.sass */
-body#site .progress_bar .progress {
+body#platform .progress_bar .progress {
   background-color: #009600;
   -moz-border-radius: 32px;
   -webkit-border-radius: 32px;
@@ -1695,7 +1611,7 @@ body#site .progress_bar .progress {
   border-radius: 32px;
 }
 /* line 127, ../../app/stylesheets/_projects.sass */
-body#site #how_it_works {
+body#platform #how_it_works {
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.6);
   font-family: "museo-300";
@@ -1716,76 +1632,76 @@ body#site #how_it_works {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 138, ../../app/stylesheets/_projects.sass */
-body#site #how_it_works strong {
+body#platform #how_it_works strong {
   font-family: "museo-500";
 }
 /* line 140, ../../app/stylesheets/_projects.sass */
-body#site #how_it_works #show_tips {
+body#platform #how_it_works #show_tips {
   margin-top: 8px;
 }
 /* line 142, ../../app/stylesheets/_projects.sass */
-body#site #how_it_works #show_tips a {
+body#platform #how_it_works #show_tips a {
   font-family: "museo-500";
   text-decoration: none;
   font-weight: bold;
   color: #ff9900;
 }
 /* line 147, ../../app/stylesheets/_projects.sass */
-body#site #how_it_works #show_tips a:hover {
+body#platform #how_it_works #show_tips a:hover {
   color: #ffaa00;
 }
 /* line 149, ../../app/stylesheets/_projects.sass */
-body#site #guidelines_form {
+body#platform #guidelines_form {
   text-align: center;
 }
 /* line 150, ../../app/stylesheets/_projects.sass */
-body#site #guidelines_form fieldset {
+body#platform #guidelines_form fieldset {
   padding-top: 20px;
 }
 /* line 152, ../../app/stylesheets/_projects.sass */
-body#site #guidelines_form label {
+body#platform #guidelines_form label {
   font-weight: bold;
   color: #dd3333;
   display: inline;
 }
 /* line 158, ../../app/stylesheets/_projects.sass */
-body#site #project_form p.inline-hints, body#site #start_project_form p.inline-hints {
+body#platform #project_form p.inline-hints, body#platform #start_project_form p.inline-hints {
   display: none;
 }
 /* line 160, ../../app/stylesheets/_projects.sass */
-body#site #project_form .submit, body#site #start_project_form .submit {
+body#platform #project_form .submit, body#platform #start_project_form .submit {
   text-align: center;
 }
 /* line 162, ../../app/stylesheets/_projects.sass */
-body#site #project_form .submit fieldset, body#site #start_project_form .submit fieldset {
+body#platform #project_form .submit fieldset, body#platform #start_project_form .submit fieldset {
   padding-top: 20px;
 }
 /* line 164, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_name, body#site #start_project_form #project_name {
+body#platform #project_form #project_name, body#platform #start_project_form #project_name {
   width: 432px;
 }
 /* line 166, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_video_url, body#site #start_project_form #project_video_url {
+body#platform #project_form #project_video_url, body#platform #start_project_form #project_video_url {
   width: 432px;
 }
 /* line 168, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_category_id, body#site #start_project_form #project_category_id {
+body#platform #project_form #project_category_id, body#platform #start_project_form #project_category_id {
   width: 220px;
 }
 /* line 170, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_goal, body#site #start_project_form #project_goal {
+body#platform #project_form #project_goal, body#platform #start_project_form #project_goal {
   width: 220px;
 }
 /* line 172, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_expires_at, body#site #start_project_form #project_expires_at {
+body#platform #project_form #project_expires_at, body#platform #start_project_form #project_expires_at {
   width: 340px;
 }
 /* line 174, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_headline, body#site #start_project_form #project_headline {
+body#platform #project_form #project_headline, body#platform #start_project_form #project_headline {
   height: 44px;
 }
 /* line 176, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards, body#site #start_project_form #project_rewards {
+body#platform #project_form #project_rewards, body#platform #start_project_form #project_rewards {
   margin-top: 20px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -1799,85 +1715,85 @@ body#site #project_form #project_rewards, body#site #start_project_form #project
   font-size: 16px;
 }
 /* line 183, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards h3, body#site #start_project_form #project_rewards h3 {
+body#platform #project_form #project_rewards h3, body#platform #start_project_form #project_rewards h3 {
   text-transform: uppercase;
   font-size: 18px;
 }
 /* line 186, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards p, body#site #start_project_form #project_rewards p {
+body#platform #project_form #project_rewards p, body#platform #start_project_form #project_rewards p {
   color: #777777;
   font-size: 14px;
   padding-bottom: 0;
 }
 /* line 190, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards input, body#site #start_project_form #project_rewards input {
+body#platform #project_form #project_rewards input, body#platform #start_project_form #project_rewards input {
   width: 364px;
 }
 /* line 192, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards textarea, body#site #start_project_form #project_rewards textarea {
+body#platform #project_form #project_rewards textarea, body#platform #start_project_form #project_rewards textarea {
   height: 44px;
 }
 /* line 194, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards .reward, body#site #start_project_form #project_rewards .reward {
+body#platform #project_form #project_rewards .reward, body#platform #start_project_form #project_rewards .reward {
   padding-bottom: 12px;
 }
 /* line 196, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards .reward p.inline-hints, body#site #start_project_form #project_rewards .reward p.inline-hints {
+body#platform #project_form #project_rewards .reward p.inline-hints, body#platform #start_project_form #project_rewards .reward p.inline-hints {
   padding-bottom: 8px;
 }
 /* line 198, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards #add_reward_wrapper, body#site #start_project_form #project_rewards #add_reward_wrapper {
+body#platform #project_form #project_rewards #add_reward_wrapper, body#platform #start_project_form #project_rewards #add_reward_wrapper {
   text-align: right;
 }
 /* line 200, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards .remove_reward_wrapper, body#site #start_project_form #project_rewards .remove_reward_wrapper {
+body#platform #project_form #project_rewards .remove_reward_wrapper, body#platform #start_project_form #project_rewards .remove_reward_wrapper {
   float: right;
 }
 /* line 202, ../../app/stylesheets/_projects.sass */
-body#site #project_form #project_rewards .remove_reward, body#site #start_project_form #project_rewards .remove_reward {
+body#platform #project_form #project_rewards .remove_reward, body#platform #start_project_form #project_rewards .remove_reward {
   display: none;
 }
 /* line 205, ../../app/stylesheets/_projects.sass */
-body#site #start_project_form #contact {
+body#platform #start_project_form #contact {
   width: 340px;
 }
 /* line 207, ../../app/stylesheets/_projects.sass */
-body#site #start_project_form .submit {
+body#platform #start_project_form .submit {
   position: relative;
 }
 /* line 209, ../../app/stylesheets/_projects.sass */
-body#site #start_project_form .submit #loading {
+body#platform #start_project_form .submit #loading {
   position: absolute;
   bottom: 22px;
   left: 520px;
   display: none;
 }
 /* line 214, ../../app/stylesheets/_projects.sass */
-body#site #project_header {
+body#platform #project_header {
   text-align: left;
   padding: 0 10px;
 }
 /* line 217, ../../app/stylesheets/_projects.sass */
-body#site #project_header h1 {
+body#platform #project_header h1 {
   padding-bottom: 8px !important;
 }
 /* line 219, ../../app/stylesheets/_projects.sass */
-body#site #project_header h1 .on_the_spot_mouseover {
+body#platform #project_header h1 .on_the_spot_mouseover {
   background-color: #009600;
   background-color: rgba(0, 150, 0, 0.5);
 }
 /* line 224, ../../app/stylesheets/_projects.sass */
-body#site #project_header h1 .on_the_spot_editing form input {
+body#platform #project_header h1 .on_the_spot_editing form input {
   background-color: #ccffcc;
   font-family: "museo-500";
   font-size: 32px;
 }
 /* line 228, ../../app/stylesheets/_projects.sass */
-body#site #project_header h2 {
+body#platform #project_header h2 {
   padding: 0 !important;
 }
 /* line 230, ../../app/stylesheets/_projects.sass */
-body#site #project_warning {
+body#platform #project_warning {
   text-align: center;
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.6);
@@ -1898,17 +1814,17 @@ body#site #project_warning {
   color: #666666;
 }
 /* line 241, ../../app/stylesheets/_projects.sass */
-body#site #project_description {
+body#platform #project_description {
   margin-top: -20px;
   float: left;
   width: 610px;
 }
 /* line 245, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video {
+body#platform #project_description #project_video {
   width: 610px;
 }
 /* line 247, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video iframe {
+body#platform #project_description #project_video iframe {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   -o-border-top-left-radius: 8px;
@@ -1927,7 +1843,7 @@ body#site #project_description #project_video iframe {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 251, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share {
+body#platform #project_description #project_video #project_share {
   background-color: #ffffaa;
   width: 96%;
   margin: 0 auto;
@@ -1955,20 +1871,20 @@ body#site #project_description #project_video #project_share {
   line-height: 32px;
 }
 /* line 264, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share #facebook_share {
+body#platform #project_description #project_video #project_share #facebook_share {
   width: 542px;
   margin: 0 auto;
   padding-top: 16px;
 }
 /* line 268, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share #facebook_share iframe {
+body#platform #project_description #project_video #project_share #facebook_share iframe {
   -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
   -o-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 /* line 270, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share #twitter_share {
+body#platform #project_description #project_video #project_share #twitter_share {
   text-align: left;
   float: left;
   width: 124px;
@@ -1977,7 +1893,7 @@ body#site #project_description #project_video #project_share #twitter_share {
   overflow: hidden;
 }
 /* line 277, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share #twitter_share iframe {
+body#platform #project_description #project_video #project_share #twitter_share iframe {
   margin-left: 21px;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
@@ -1991,7 +1907,7 @@ body#site #project_description #project_video #project_share #twitter_share ifra
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 /* line 281, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share ul {
+body#platform #project_description #project_video #project_share ul {
   float: right;
   margin: 0;
   padding: 0;
@@ -2002,7 +1918,7 @@ body#site #project_description #project_video #project_share ul {
   margin: 0 auto;
 }
 /* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_description #project_video #project_share ul li {
+body#platform #project_description #project_video #project_share ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -2013,19 +1929,19 @@ body#site #project_description #project_video #project_share ul li {
   padding-right: 6px;
 }
 /* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_description #project_video #project_share ul li:first-child, body#site #project_description #project_video #project_share ul li.first {
+body#platform #project_description #project_video #project_share ul li:first-child, body#platform #project_description #project_video #project_share ul li.first {
   padding-left: 0;
 }
 /* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_description #project_video #project_share ul li:last-child {
+body#platform #project_description #project_video #project_share ul li:last-child {
   padding-right: 0;
 }
 /* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_description #project_video #project_share ul li.last {
+body#platform #project_description #project_video #project_share ul li.last {
   padding-right: 0;
 }
 /* line 286, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share a {
+body#platform #project_description #project_video #project_share a {
   text-decoration: none;
   color: #222222;
   -moz-transition-property: all;
@@ -2038,17 +1954,17 @@ body#site #project_description #project_video #project_share a {
   transition-duration: 0.1s;
 }
 /* line 290, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share a:hover {
+body#platform #project_description #project_video #project_share a:hover {
   text-shadow: #ffff88 2px 2px 4px;
 }
 /* line 292, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share img, body#site #project_description #project_video #project_share a img {
+body#platform #project_description #project_video #project_share img, body#platform #project_description #project_video #project_share a img {
   margin-top: -4px;
   vertical-align: middle;
   width: 22px;
 }
 /* line 296, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share input {
+body#platform #project_description #project_video #project_share input {
   border: 1px solid rgba(0, 0, 0, 0.4);
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -2059,7 +1975,7 @@ body#site #project_description #project_video #project_share input {
   width: 140px;
 }
 /* line 300, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_share h1 {
+body#platform #project_description #project_video #project_share h1 {
   color: #222222;
   font-size: 18px;
   text-transform: lowercase;
@@ -2067,7 +1983,7 @@ body#site #project_description #project_video #project_share h1 {
   padding-bottom: 4px !important;
 }
 /* line 306, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_video #project_embed {
+body#platform #project_description #project_video #project_embed {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
   background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
@@ -2100,7 +2016,7 @@ body#site #project_description #project_video #project_embed {
   text-shadow: black 1px 1px 1px;
 }
 /* line 19, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed h1 {
+body#platform #project_description #project_video #project_embed h1 {
   font-family: "museo-500";
   font-size: 24px;
   padding: 0 20px;
@@ -2108,13 +2024,13 @@ body#site #project_description #project_video #project_embed h1 {
   color: white;
 }
 /* line 25, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed h2 {
+body#platform #project_description #project_video #project_embed h2 {
   padding: 0;
   margin-bottom: 16px;
   color: white;
 }
 /* line 29, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed a.close {
+body#platform #project_description #project_video #project_embed a.close {
   color: white;
   text-decoration: none;
   position: absolute;
@@ -2154,7 +2070,7 @@ body#site #project_description #project_video #project_embed a.close {
   transition-duration: 0.3s;
 }
 /* line 47, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed a.close:hover, body#site #project_description #project_video #project_embed a.close:focus {
+body#platform #project_description #project_video #project_embed a.close:hover, body#platform #project_description #project_video #project_embed a.close:focus {
   color: white;
   -moz-transform: scale(1.05, 1.05);
   -webkit-transform: scale(1.05, 1.05);
@@ -2163,11 +2079,11 @@ body#site #project_description #project_video #project_embed a.close:hover, body
   transform: scale(1.05, 1.05);
 }
 /* line 50, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed #project_box_embed {
+body#platform #project_description #project_video #project_embed #project_box_embed {
   float: left;
 }
 /* line 52, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed #project_box_embed iframe {
+body#platform #project_description #project_video #project_embed #project_box_embed iframe {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   -o-border-radius: 8px;
@@ -2176,7 +2092,7 @@ body#site #project_description #project_video #project_embed #project_box_embed 
   border-radius: 8px;
 }
 /* line 54, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed #project_box_embed textarea {
+body#platform #project_description #project_video #project_embed #project_box_embed textarea {
   padding-right: 4px;
   margin-top: 8px;
   height: 48px;
@@ -2185,11 +2101,11 @@ body#site #project_description #project_video #project_embed #project_box_embed 
   font-size: 14px;
 }
 /* line 61, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed #project_video_embed {
+body#platform #project_description #project_video #project_embed #project_video_embed {
   float: right;
 }
 /* line 63, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed #project_video_embed iframe {
+body#platform #project_description #project_video #project_embed #project_video_embed iframe {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   -o-border-radius: 8px;
@@ -2198,7 +2114,7 @@ body#site #project_description #project_video #project_embed #project_video_embe
   border-radius: 8px;
 }
 /* line 65, ../../app/stylesheets/_embed_modal.sass */
-body#site #project_description #project_video #project_embed #project_video_embed textarea {
+body#platform #project_description #project_video #project_embed #project_video_embed textarea {
   padding-right: 4px;
   margin-top: 8px;
   height: 48px;
@@ -2207,12 +2123,12 @@ body#site #project_description #project_video #project_embed #project_video_embe
   font-size: 14px;
 }
 /* line 308, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_menu {
+body#platform #project_description #project_menu {
   margin: 24px auto 0 auto;
   width: 604px;
 }
 /* line 311, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_menu ul {
+body#platform #project_description #project_menu ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -2220,7 +2136,7 @@ body#site #project_description #project_menu ul {
   *zoom: 1;
 }
 /* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_description #project_menu ul li {
+body#platform #project_description #project_menu ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -2231,24 +2147,24 @@ body#site #project_description #project_menu ul li {
   padding-right: 2px;
 }
 /* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_description #project_menu ul li:first-child, body#site #project_description #project_menu ul li.first {
+body#platform #project_description #project_menu ul li:first-child, body#platform #project_description #project_menu ul li.first {
   padding-left: 0;
 }
 /* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_description #project_menu ul li:last-child {
+body#platform #project_description #project_menu ul li:last-child {
   padding-right: 0;
 }
 /* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_description #project_menu ul li.last {
+body#platform #project_description #project_menu ul li.last {
   padding-right: 0;
 }
 /* line 313, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_menu ul li {
+body#platform #project_description #project_menu ul li {
   position: relative;
   padding-bottom: 16px;
 }
 /* line 316, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_menu ul li a {
+body#platform #project_description #project_menu ul li a {
   background-color: #dddddd;
   padding: 4px 8px;
   -moz-border-radius: 6px;
@@ -2274,35 +2190,35 @@ body#site #project_description #project_menu ul li a {
   transition-duration: 0.2s;
 }
 /* line 328, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_menu ul li a .count {
+body#platform #project_description #project_menu ul li a .count {
   font-size: 11px;
 }
 /* line 330, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_menu ul li a:hover {
+body#platform #project_description #project_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 334, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_menu ul li img {
+body#platform #project_description #project_menu ul li img {
   display: none;
 }
 /* line 337, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_menu ul li.selected a {
+body#platform #project_description #project_menu ul li.selected a {
   color: white;
   background-color: #00aa00;
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 341, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_menu ul li.selected img {
+body#platform #project_description #project_menu ul li.selected img {
   display: none;
 }
 /* line 343, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_about {
+body#platform #project_description #project_about {
   width: 610px;
 }
 /* line 345, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_about h1 {
+body#platform #project_description #project_about h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   font-weight: bold;
@@ -2312,36 +2228,36 @@ body#site #project_description #project_about h1 {
   padding-bottom: 16px;
 }
 /* line 353, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments, body#site #project_description #project_updates {
+body#platform #project_description #project_comments, body#platform #project_description #project_updates {
   width: 600px;
 }
 /* line 356, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments form input[type=text], body#site #project_description #project_updates form input[type=text] {
+body#platform #project_description #project_comments form input[type=text], body#platform #project_description #project_updates form input[type=text] {
   width: 560px;
 }
 /* line 358, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments form textarea, body#site #project_description #project_updates form textarea {
+body#platform #project_description #project_comments form textarea, body#platform #project_description #project_updates form textarea {
   width: 560px;
   height: 90px;
 }
 /* line 361, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments form .required abbr, body#site #project_description #project_updates form .required abbr {
+body#platform #project_description #project_comments form .required abbr, body#platform #project_description #project_updates form .required abbr {
   display: none;
 }
 /* line 363, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments form .buttons, body#site #project_description #project_updates form .buttons {
+body#platform #project_description #project_comments form .buttons, body#platform #project_description #project_updates form .buttons {
   text-align: right;
 }
 /* line 365, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments em, body#site #project_description #project_updates em {
+body#platform #project_description #project_comments em, body#platform #project_description #project_updates em {
   text-align: center;
 }
 /* line 367, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list, body#site #project_description #project_updates #collection_list {
+body#platform #project_description #project_comments #collection_list, body#platform #project_description #project_updates #collection_list {
   margin-top: 16px;
 }
 /* line 369, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list li, body#site #project_description #project_updates #collection_list li {
+body#platform #project_description #project_comments #collection_list li, body#platform #project_description #project_updates #collection_list li {
   background-color: #cdebff;
   background-color: rgba(0, 132, 185, 0.1);
   -moz-border-radius: 6px;
@@ -2355,19 +2271,19 @@ body#site #project_description #project_comments #collection_list li, body#site 
   position: relative;
 }
 /* line 376, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list li .time, body#site #project_description #project_updates #collection_list li .time {
+body#platform #project_description #project_comments #collection_list li .time, body#platform #project_description #project_updates #collection_list li .time {
   text-transform: uppercase;
   color: #999999;
   font-size: 14px;
 }
 /* line 380, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list li .destroy, body#site #project_description #project_updates #collection_list li .destroy {
+body#platform #project_description #project_comments #collection_list li .destroy, body#platform #project_description #project_updates #collection_list li .destroy {
   position: absolute;
   top: 12px;
   right: 12px;
 }
 /* line 385, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list li .destroy a img, body#site #project_description #project_updates #collection_list li .destroy a img {
+body#platform #project_description #project_comments #collection_list li .destroy a img, body#platform #project_description #project_updates #collection_list li .destroy a img {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -2381,7 +2297,7 @@ body#site #project_description #project_comments #collection_list li .destroy a 
   opacity: 0.8;
 }
 /* line 389, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list li .destroy a img:hover, body#site #project_description #project_updates #collection_list li .destroy a img:hover {
+body#platform #project_description #project_comments #collection_list li .destroy a img:hover, body#platform #project_description #project_updates #collection_list li .destroy a img:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   -moz-transform: scale(1.2, 1.2);
@@ -2391,7 +2307,7 @@ body#site #project_description #project_comments #collection_list li .destroy a 
   transform: scale(1.2, 1.2);
 }
 /* line 392, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list li img.user, body#site #project_description #project_updates #collection_list li img.user {
+body#platform #project_description #project_comments #collection_list li img.user, body#platform #project_description #project_updates #collection_list li img.user {
   float: left;
   margin-right: 12px;
   margin-bottom: 0px;
@@ -2403,72 +2319,72 @@ body#site #project_description #project_comments #collection_list li img.user, b
   background-color: white;
 }
 /* line 399, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list li a, body#site #project_description #project_updates #collection_list li a {
+body#platform #project_description #project_comments #collection_list li a, body#platform #project_description #project_updates #collection_list li a {
   text-decoration: none !important;
 }
 /* line 402, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list li .comment p, body#site #project_description #project_updates #collection_list li .comment p {
+body#platform #project_description #project_comments #collection_list li .comment p, body#platform #project_description #project_updates #collection_list li .comment p {
   padding: 12px 0 0 0;
   font-size: 16px;
 }
 /* line 405, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_comments #collection_list li .comment img, body#site #project_description #project_comments #collection_list li .comment iframe, body#site #project_description #project_updates #collection_list li .comment img, body#site #project_description #project_updates #collection_list li .comment iframe {
+body#platform #project_description #project_comments #collection_list li .comment img, body#platform #project_description #project_comments #collection_list li .comment iframe, body#platform #project_description #project_updates #collection_list li .comment img, body#platform #project_description #project_updates #collection_list li .comment iframe {
   max-width: 560px;
 }
 /* line 408, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_updates form textarea {
+body#platform #project_description #project_updates form textarea {
   height: 400px;
 }
 /* line 410, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_updates ul li {
+body#platform #project_description #project_updates ul li {
   background-color: transparent !important;
   border-bottom: 1px dashed #999999;
 }
 /* line 413, ../../app/stylesheets/_projects.sass */
-body#site #project_description #project_updates ul li:last-child {
+body#platform #project_description #project_updates ul li:last-child {
   border-bottom: none;
 }
 /* line 415, ../../app/stylesheets/_projects.sass */
-body#site #project_description #loading {
+body#platform #project_description #loading {
   width: 580px;
   text-align: center;
 }
 /* line 418, ../../app/stylesheets/_projects.sass */
-body#site #project_description #loading img {
+body#platform #project_description #loading img {
   margin: 16px;
   display: none;
 }
 /* line 421, ../../app/stylesheets/_projects.sass */
-body#site #show_formatting_tips {
+body#platform #show_formatting_tips {
   text-align: left !important;
   color: #666666;
   font-size: 16px;
   margin-bottom: 8px;
 }
 /* line 426, ../../app/stylesheets/_projects.sass */
-body#site #formatting_tips {
+body#platform #formatting_tips {
   display: none;
   text-align: left;
   font-size: 16px;
 }
 /* line 430, ../../app/stylesheets/_projects.sass */
-body#site #formatting_tips ul li {
+body#platform #formatting_tips ul li {
   padding-bottom: 8px;
   margin-bottom: 8px;
   border-bottom: 1px dotted #999999;
 }
 /* line 434, ../../app/stylesheets/_projects.sass */
-body#site #formatting_tips ul li:last-child {
+body#platform #formatting_tips ul li:last-child {
   border: none;
 }
 /* line 436, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info {
+body#platform #project_back_info {
   margin-top: -20px;
   float: right;
   width: 308px;
 }
 /* line 440, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project {
+body#platform #project_back_info #back_project {
   background-color: #dddbd1;
   background-color: rgba(179, 177, 157, 0.5);
   border: 3px solid #bdbbb1;
@@ -2480,26 +2396,26 @@ body#site #project_back_info #back_project {
   padding: 0px;
 }
 /* line 447, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .info {
+body#platform #project_back_info #back_project .info {
   padding: 16px;
 }
 /* line 449, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .number {
+body#platform #project_back_info #back_project .number {
   font-family: "museo-700";
   font-size: 36px;
   line-height: 40px;
 }
 /* line 453, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .project_progress {
+body#platform #project_back_info #back_project .project_progress {
   margin-top: 12px;
 }
 /* line 455, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .project_progress .progress_bar {
+body#platform #project_back_info #back_project .project_progress .progress_bar {
   margin-bottom: 0;
   margin-left: -5px;
 }
 /* line 458, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .project_warning {
+body#platform #project_back_info #back_project .project_warning {
   padding: 4px 0;
   text-transform: uppercase;
   text-align: center;
@@ -2508,40 +2424,40 @@ body#site #project_back_info #back_project .project_warning {
   text-shadow: #333333 1px 1px 0px;
 }
 /* line 465, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .project_warning .text {
+body#platform #project_back_info #back_project .project_warning .text {
   padding: 4px;
   margin: 0;
 }
 /* line 468, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .successful {
+body#platform #project_back_info #back_project .successful {
   background: url(/images/bg_top_green.png) top left repeat-x, url(/images/bg_bottom_green.png) bottom left repeat-x;
 }
 /* line 470, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .successful .text {
+body#platform #project_back_info #back_project .successful .text {
   background-color: #004400;
 }
 /* line 472, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .not_successful {
+body#platform #project_back_info #back_project .not_successful {
   background: url(/images/bg_top_red.png) top left repeat-x, url(/images/bg_bottom_red.png) bottom left repeat-x;
 }
 /* line 474, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .not_successful .text {
+body#platform #project_back_info #back_project .not_successful .text {
   background-color: #660000;
 }
 /* line 476, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .waiting_confirmation {
+body#platform #project_back_info #back_project .waiting_confirmation {
   background: url(/images/bg_top_yellow.png) top left repeat-x, url(/images/bg_bottom_yellow.png) bottom left repeat-x;
 }
 /* line 478, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project .waiting_confirmation .text {
+body#platform #project_back_info #back_project .waiting_confirmation .text {
   background-color: #aaaa00;
 }
 /* line 480, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project form {
+body#platform #project_back_info #back_project form {
   text-align: center;
 }
 /* line 482, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project form input[type=submit] {
+body#platform #project_back_info #back_project form input[type=submit] {
   color: white;
   text-shadow: green 1px 1px 1px;
   background-color: #49b249;
@@ -2556,7 +2472,7 @@ body#site #project_back_info #back_project form input[type=submit] {
   padding: 17px 10px;
 }
 /* line 490, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project form input[type=submit]:hover {
+body#platform #project_back_info #back_project form input[type=submit]:hover {
   background-color: #59c259;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #59c259), color-stop(100%, #41b242));
   background-image: -webkit-linear-gradient(top, #59c259, #41b242);
@@ -2566,12 +2482,12 @@ body#site #project_back_info #back_project form input[type=submit]:hover {
   background-image: linear-gradient(top, #59c259, #41b242);
 }
 /* line 493, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project form input[type=submit]:active {
+body#platform #project_back_info #back_project form input[type=submit]:active {
   padding: 18px 9px 16px 11px;
   text-shadow: green 2px 2px 1px;
 }
 /* line 496, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #back_project form input[type=submit]:disabled {
+body#platform #project_back_info #back_project form input[type=submit]:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
   font-size: 16px;
@@ -2589,16 +2505,16 @@ body#site #project_back_info #back_project form input[type=submit]:disabled {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 504, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards {
+body#platform #project_back_info #rewards {
   margin-top: 24px;
   font-size: 16px;
 }
 /* line 505, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards .on_the_spot_editing form textarea {
+body#platform #project_back_info #rewards .on_the_spot_editing form textarea {
   width: 280px;
 }
 /* line 509, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards h1 {
+body#platform #project_back_info #rewards h1 {
   background-color: #0084b9 !important;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -2611,20 +2527,20 @@ body#site #project_back_info #rewards h1 {
   position: relative;
 }
 /* line 520, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards h1 img {
+body#platform #project_back_info #rewards h1 img {
   position: absolute;
   top: 0;
 }
 /* line 523, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards h1 #rewards_left_border {
+body#platform #project_back_info #rewards h1 #rewards_left_border {
   left: -8px;
 }
 /* line 525, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards h1 #rewards_right_border {
+body#platform #project_back_info #rewards h1 #rewards_right_border {
   right: -8px;
 }
 /* line 527, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards ul {
+body#platform #project_back_info #rewards ul {
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
   -o-border-bottom-left-radius: 8px;
@@ -2642,7 +2558,7 @@ body#site #project_back_info #rewards ul {
   border-top: 0;
 }
 /* line 533, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards ul h1 {
+body#platform #project_back_info #rewards ul h1 {
   text-align: left;
   padding-bottom: 4px !important;
   background-color: transparent !important;
@@ -2650,27 +2566,27 @@ body#site #project_back_info #rewards ul h1 {
   text-shadow: white 1px 1px 0px;
 }
 /* line 539, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards ul li {
+body#platform #project_back_info #rewards ul li {
   padding: 20px;
   border-bottom: 1px solid #dddddd;
 }
 /* line 542, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards ul li h1 {
+body#platform #project_back_info #rewards ul li h1 {
   padding: 0;
   color: #222222;
 }
 /* line 545, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards ul li:last-child {
+body#platform #project_back_info #rewards ul li:last-child {
   border: none;
 }
 /* line 547, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards ul li.clickable:hover {
+body#platform #project_back_info #rewards ul li.clickable:hover {
   background-color: #0084b9;
   background-color: rgba(0, 132, 185, 0.2);
   cursor: pointer;
 }
 /* line 551, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards .reward_backers {
+body#platform #project_back_info #rewards .reward_backers {
   text-align: right;
   margin-top: 8px;
   font-size: 12px;
@@ -2679,25 +2595,25 @@ body#site #project_back_info #rewards .reward_backers {
   text-transform: uppercase;
 }
 /* line 558, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards .reward_backers img {
+body#platform #project_back_info #rewards .reward_backers img {
   width: 16px;
   margin-left: 4px;
   margin-top: -2px;
   vertical-align: middle;
 }
 /* line 563, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards .maximum_backers {
+body#platform #project_back_info #rewards .maximum_backers {
   margin-bottom: 8px;
   font-size: 12px;
 }
 /* line 566, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards .maximum_backers .limited {
+body#platform #project_back_info #rewards .maximum_backers .limited {
   float: left;
   font-weight: bold;
   text-transform: uppercase;
 }
 /* line 570, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards .maximum_backers .sold_out {
+body#platform #project_back_info #rewards .maximum_backers .sold_out {
   float: left;
   font-weight: bold;
   text-transform: uppercase;
@@ -2714,21 +2630,21 @@ body#site #project_back_info #rewards .maximum_backers .sold_out {
   padding: 0 8px;
 }
 /* line 580, ../../app/stylesheets/_projects.sass */
-body#site #project_back_info #rewards .maximum_backers .remaining {
+body#platform #project_back_info #rewards .maximum_backers .remaining {
   float: left;
   margin-left: 12px;
   font-size: 12px;
   font-weight: bold;
 }
 /* line 585, ../../app/stylesheets/_projects.sass */
-body#site #back_options {
+body#platform #back_options {
   float: left;
   width: 522px;
   margin-top: -14px;
   margin-left: 10px;
 }
 /* line 591, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form .important {
+body#platform #back_options #backer_form .important {
   font-size: 14px;
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.6);
@@ -2737,12 +2653,12 @@ body#site #back_options #backer_form .important {
   padding: 16px;
 }
 /* line 598, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form fieldset {
+body#platform #back_options #backer_form fieldset {
   padding: 0;
   margin: 0;
 }
 /* line 601, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form input[type=text] {
+body#platform #back_options #backer_form input[type=text] {
   font-size: 48px;
   width: 492px;
   padding: 12px;
@@ -2750,26 +2666,26 @@ body#site #back_options #backer_form input[type=text] {
   border: 3px solid rgba(0, 60, 0, 0.6);
 }
 /* line 607, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form input[type=text]:focus {
+body#platform #back_options #backer_form input[type=text]:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 /* line 610, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form input.ok, body#site #back_options #backer_form textarea.ok {
+body#platform #back_options #backer_form input.ok, body#platform #back_options #backer_form textarea.ok {
   background: url("/images/tick_32.png") no-repeat 96% center;
 }
 /* line 612, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form input.error, body#site #back_options #backer_form textarea.error {
+body#platform #back_options #backer_form input.error, body#platform #back_options #backer_form textarea.error {
   background: url("/images/delete_32.png") no-repeat 96% center;
 }
 /* line 614, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form p.inline-hints {
+body#platform #back_options #backer_form p.inline-hints {
   font-size: 18px;
   margin-top: 8px;
   margin-bottom: 28px;
 }
 /* line 618, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form #backer_credits_input {
+body#platform #back_options #backer_form #backer_credits_input {
   background-color: #dddbd1;
   background-color: rgba(179, 177, 157, 0.3);
   border: 3px solid #bdbbb1;
@@ -2788,29 +2704,29 @@ body#site #back_options #backer_form #backer_credits_input {
   margin-bottom: 32px;
 }
 /* line 627, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form #backer_credits_input label {
+body#platform #back_options #backer_form #backer_credits_input label {
   padding-top: 0;
 }
 /* line 629, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form #backer_credits_input p.inline-hints {
+body#platform #back_options #backer_form #backer_credits_input p.inline-hints {
   color: #222222;
   font-size: 16px;
   margin: 8px 0 16px 0;
 }
 /* line 633, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form input[type=radio] {
+body#platform #back_options #backer_form input[type=radio] {
   float: left;
   margin: 8px 16px 0 0;
 }
 /* line 636, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form label {
+body#platform #back_options #backer_form label {
   font-family: "museo-300";
   font-size: 24px;
   line-height: 28px;
   padding-bottom: 8px;
 }
 /* line 641, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.radio ol {
+body#platform #back_options #backer_form li.radio ol {
   background-color: #dddddd;
   -moz-border-radius: 12px;
   -webkit-border-radius: 12px;
@@ -2824,13 +2740,13 @@ body#site #back_options #backer_form li.radio ol {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 645, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.radio ol li {
+body#platform #back_options #backer_form li.radio ol li {
   line-height: 22px;
   border-bottom: 2px solid #eeeeee;
   padding: 10px 20px;
 }
 /* line 649, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.radio ol li:first-child {
+body#platform #back_options #backer_form li.radio ol li:first-child {
   -moz-border-radius-topleft: 12px;
   -webkit-border-top-left-radius: 12px;
   -o-border-top-left-radius: 12px;
@@ -2845,7 +2761,7 @@ body#site #back_options #backer_form li.radio ol li:first-child {
   border-top-right-radius: 12px;
 }
 /* line 652, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.radio ol li:last-child {
+body#platform #back_options #backer_form li.radio ol li:last-child {
   -moz-border-radius-bottomleft: 12px;
   -webkit-border-bottom-left-radius: 12px;
   -o-border-bottom-left-radius: 12px;
@@ -2861,18 +2777,18 @@ body#site #back_options #backer_form li.radio ol li:last-child {
   border: none;
 }
 /* line 656, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.radio ol li.selected, body#site #back_options #backer_form li.radio ol li:hover {
+body#platform #back_options #backer_form li.radio ol li.selected, body#platform #back_options #backer_form li.radio ol li:hover {
   background-color: #bbddbb;
 }
 /* line 658, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.radio ol li label {
+body#platform #back_options #backer_form li.radio ol li label {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
 /* line 663, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.radio ol li label .sold_out {
+body#platform #back_options #backer_form li.radio ol li label .sold_out {
   font-size: 14px;
   margin-bottom: 8px;
   float: right;
@@ -2891,45 +2807,45 @@ body#site #back_options #backer_form li.radio ol li label .sold_out {
   padding: 0 8px;
 }
 /* line 675, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.boolean {
+body#platform #back_options #backer_form li.boolean {
   text-align: center;
   padding-top: 16px;
   margin-bottom: 0;
 }
 /* line 679, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.boolean input {
+body#platform #back_options #backer_form li.boolean input {
   margin-right: 8px;
 }
 /* line 681, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form li.boolean label {
+body#platform #back_options #backer_form li.boolean label {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
 }
 /* line 684, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form .reward_minimum_value {
+body#platform #back_options #backer_form .reward_minimum_value {
   font-weight: bold;
   float: left;
 }
 /* line 687, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form .reward_description {
+body#platform #back_options #backer_form .reward_description {
   clear: both;
   float: left;
   margin-left: 28px;
 }
 /* line 691, ../../app/stylesheets/_projects.sass */
-body#site #back_options #backer_form .buttons {
+body#platform #back_options #backer_form .buttons {
   text-align: center;
   margin-top: 16px;
 }
 /* line 694, ../../app/stylesheets/_projects.sass */
-body#site #back_info {
+body#platform #back_info {
   float: right;
   width: 362px;
   font-size: 16px;
   margin-right: 10px;
 }
 /* line 699, ../../app/stylesheets/_projects.sass */
-body#site #back_info img {
+body#platform #back_info img {
   float: left;
   width: 128px;
   -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
@@ -2939,32 +2855,32 @@ body#site #back_info img {
   margin-bottom: 16px;
 }
 /* line 704, ../../app/stylesheets/_projects.sass */
-body#site #back_info #project_info {
+body#platform #back_info #project_info {
   float: right;
   width: 204px;
   margin-bottom: 16px;
 }
 /* line 708, ../../app/stylesheets/_projects.sass */
-body#site #back_info #project_info .project_name a {
+body#platform #back_info #project_info .project_name a {
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
 }
 /* line 712, ../../app/stylesheets/_projects.sass */
-body#site #back_info #project_info .project_owner {
+body#platform #back_info #project_info .project_owner {
   color: #777777;
 }
 /* line 714, ../../app/stylesheets/_projects.sass */
-body#site #back_info #project_info .project_owner a {
+body#platform #back_info #project_info .project_owner a {
   text-decoration: none;
   color: #222222;
 }
 /* line 717, ../../app/stylesheets/_projects.sass */
-body#site #back_info #project_info .project_owner a:hover {
+body#platform #back_info #project_info .project_owner a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 719, ../../app/stylesheets/_projects.sass */
-body#site #back_info #project_info .project_expires_at {
+body#platform #back_info #project_info .project_expires_at {
   font-size: 16px;
   margin-top: 8px;
   font-weight: bold;
@@ -2972,23 +2888,23 @@ body#site #back_info #project_info .project_expires_at {
   color: #666666;
 }
 /* line 725, ../../app/stylesheets/_projects.sass */
-body#site #project_review {
+body#platform #project_review {
   text-align: center;
   font-size: 28px;
   line-height: 32px;
   margin: 0 10px;
 }
 /* line 730, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_text {
+body#platform #project_review #review_text {
   font-size: 22px;
   margin: 20px 0;
 }
 /* line 733, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_text .reward {
+body#platform #project_review #review_text .reward {
   font-style: italic;
 }
 /* line 735, ../../app/stylesheets/_projects.sass */
-body#site #project_review #credits_notice {
+body#platform #project_review #credits_notice {
   font-size: 18px;
   width: 90%;
   text-align: center;
@@ -3010,69 +2926,69 @@ body#site #project_review #credits_notice {
   margin: 32px auto 20px auto;
 }
 /* line 747, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form {
+body#platform #project_review #review_form {
   text-align: left;
   margin: 0 auto;
   width: 476px;
 }
 /* line 751, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_full_name {
+body#platform #project_review #review_form #user_full_name {
   width: 432px;
 }
 /* line 753, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_email {
+body#platform #project_review #review_form #user_email {
   width: 432px;
 }
 /* line 755, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_zip_code {
+body#platform #project_review #review_form #user_address_zip_code {
   width: 120px;
 }
 /* line 757, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_street_input {
+body#platform #project_review #review_form #user_address_street_input {
   margin-left: 12px;
 }
 /* line 759, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_street {
+body#platform #project_review #review_form #user_address_street {
   width: 268px;
 }
 /* line 761, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_number {
+body#platform #project_review #review_form #user_address_number {
   width: 120px;
 }
 /* line 763, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_complement_input {
+body#platform #project_review #review_form #user_address_complement_input {
   margin-left: 12px;
 }
 /* line 765, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_complement {
+body#platform #project_review #review_form #user_address_complement {
   width: 268px;
 }
 /* line 767, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_neighbourhood {
+body#platform #project_review #review_form #user_address_neighbourhood {
   width: 192px;
 }
 /* line 769, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_city_input {
+body#platform #project_review #review_form #user_address_city_input {
   margin-left: 12px;
 }
 /* line 771, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_city {
+body#platform #project_review #review_form #user_address_city {
   width: 194px;
 }
 /* line 773, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_address_state {
+body#platform #project_review #review_form #user_address_state {
   width: 220px;
 }
 /* line 775, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_phone_number_input {
+body#platform #project_review #review_form #user_phone_number_input {
   margin-left: 12px;
 }
 /* line 777, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form #user_phone_number {
+body#platform #project_review #review_form #user_phone_number {
   width: 198px;
 }
 /* line 779, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form .inputs ol {
+body#platform #project_review #review_form .inputs ol {
   margin: 0;
   padding: 0;
   border: 0;
@@ -3080,7 +2996,7 @@ body#site #project_review #review_form .inputs ol {
   *zoom: 1;
 }
 /* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_review #review_form .inputs ol li {
+body#platform #project_review #review_form .inputs ol li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -3091,32 +3007,32 @@ body#site #project_review #review_form .inputs ol li {
   padding-right: 0px;
 }
 /* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_review #review_form .inputs ol li:first-child, body#site #project_review #review_form .inputs ol li.first {
+body#platform #project_review #review_form .inputs ol li:first-child, body#platform #project_review #review_form .inputs ol li.first {
   padding-left: 0;
 }
 /* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_review #review_form .inputs ol li:last-child {
+body#platform #project_review #review_form .inputs ol li:last-child {
   padding-right: 0;
 }
 /* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #project_review #review_form .inputs ol li.last {
+body#platform #project_review #review_form .inputs ol li.last {
   padding-right: 0;
 }
 /* line 781, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form .submit {
+body#platform #project_review #review_form .submit {
   text-align: center;
   margin-top: 20px;
 }
 /* line 784, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form fieldset {
+body#platform #project_review #review_form fieldset {
   margin-bottom: 10px;
 }
 /* line 786, ../../app/stylesheets/_projects.sass */
-body#site #project_review #review_form fieldset label {
+body#platform #project_review #review_form fieldset label {
   font-size: 18px;
 }
 /* line 788, ../../app/stylesheets/_projects.sass */
-body#site #project_review img#project_image {
+body#platform #project_review img#project_image {
   float: left;
   width: 128px;
   -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
@@ -3126,7 +3042,7 @@ body#site #project_review img#project_image {
   margin-right: 20px;
 }
 /* line 793, ../../app/stylesheets/_projects.sass */
-body#site #project_review h1 {
+body#platform #project_review h1 {
   text-align: left;
   font-family: "museo-500" !important;
   float: left;
@@ -3136,12 +3052,12 @@ body#site #project_review h1 {
   color: #222222 !important;
 }
 /* line 801, ../../app/stylesheets/_projects.sass */
-body#site #project_review h2 {
+body#platform #project_review h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
 /* line 804, ../../app/stylesheets/_projects.sass */
-body#site #project_review #international_payment {
+body#platform #project_review #international_payment {
   background-color: #999999;
   background-color: rgba(200, 200, 200, 0.6);
   padding: 20px;
@@ -3163,7 +3079,7 @@ body#site #project_review #international_payment {
   *zoom: 1;
 }
 /* line 815, ../../app/stylesheets/_projects.sass */
-body#site #project_review #international_payment h1 {
+body#platform #project_review #international_payment h1 {
   color: #222222 !important;
   font-family: "museo-300" !important;
   float: none !important;
@@ -3172,21 +3088,21 @@ body#site #project_review #international_payment h1 {
   padding-bottom: 4px !important;
 }
 /* line 822, ../../app/stylesheets/_projects.sass */
-body#site #project_review #international_payment h1 a {
+body#platform #project_review #international_payment h1 a {
   text-decoration: none;
 }
 /* line 824, ../../app/stylesheets/_projects.sass */
-body#site #project_review #international_payment .international_important {
+body#platform #project_review #international_payment .international_important {
   text-align: left;
   margin-top: 26px;
 }
 /* line 827, ../../app/stylesheets/_projects.sass */
-body#site #thank_you {
+body#platform #thank_you {
   margin: 10px 20px;
   text-align: center;
 }
 /* line 830, ../../app/stylesheets/_projects.sass */
-body#site #thank_you img#project_image {
+body#platform #thank_you img#project_image {
   float: left;
   width: 128px;
   -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
@@ -3196,7 +3112,7 @@ body#site #thank_you img#project_image {
   margin-right: 20px;
 }
 /* line 835, ../../app/stylesheets/_projects.sass */
-body#site #thank_you h1 {
+body#platform #thank_you h1 {
   text-align: left;
   font-family: "museo-500" !important;
   float: left;
@@ -3206,16 +3122,16 @@ body#site #thank_you h1 {
   color: #222222 !important;
 }
 /* line 843, ../../app/stylesheets/_projects.sass */
-body#site #thank_you h2 {
+body#platform #thank_you h2 {
   color: #222222 !important;
   margin-top: 20px;
 }
 /* line 846, ../../app/stylesheets/_projects.sass */
-body#site #thank_you a {
+body#platform #thank_you a {
   text-decoration: none;
 }
 /* line 848, ../../app/stylesheets/_projects.sass */
-body#site #thank_you a img {
+body#platform #thank_you a img {
   width: 116px;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -3227,7 +3143,7 @@ body#site #thank_you a img {
   transition-duration: 0.3s;
 }
 /* line 851, ../../app/stylesheets/_projects.sass */
-body#site #thank_you a img:hover {
+body#platform #thank_you a img:hover {
   -moz-transform: scale(1.1, 1.1);
   -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
@@ -3235,30 +3151,30 @@ body#site #thank_you a img:hover {
   transform: scale(1.1, 1.1);
 }
 /* line 853, ../../app/stylesheets/_projects.sass */
-body#site #thank_you #how_it_works {
+body#platform #thank_you #how_it_works {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   margin-top: 40px;
 }
 /* line 857, ../../app/stylesheets/_projects.sass */
-body#site #empty_text {
+body#platform #empty_text {
   width: 600px;
 }
 /* line 859, ../../app/stylesheets/_projects.sass */
-body#site #project_backers {
+body#platform #project_backers {
   margin-top: 0;
   color: #444444;
   width: 610px;
 }
 /* line 863, ../../app/stylesheets/_projects.sass */
-body#site #project_backers h1 {
+body#platform #project_backers h1 {
   font-size: 24px !important;
   color: #999999 !important;
   padding-bottom: 16px !important;
   padding-top: 0 !important;
 }
 /* line 868, ../../app/stylesheets/_projects.sass */
-body#site #project_backers img.user {
+body#platform #project_backers img.user {
   float: left;
   margin-right: 12px;
   margin-bottom: 0px;
@@ -3270,33 +3186,33 @@ body#site #project_backers img.user {
   background-color: white;
 }
 /* line 875, ../../app/stylesheets/_projects.sass */
-body#site #project_backers a {
+body#platform #project_backers a {
   text-decoration: none !important;
 }
 /* line 877, ../../app/stylesheets/_projects.sass */
-body#site #project_backers #all_backers {
+body#platform #project_backers #all_backers {
   text-align: center;
   margin-top: 16px;
 }
 /* line 880, ../../app/stylesheets/_projects.sass */
-body#site #project_backers p {
+body#platform #project_backers p {
   font-size: 16px;
   color: #666666;
   padding-bottom: 0 !important;
 }
 /* line 884, ../../app/stylesheets/_projects.sass */
-body#site #project_backers p.reward {
+body#platform #project_backers p.reward {
   float: right;
   width: 500px;
   font-size: 12px;
   color: #333333;
 }
 /* line 889, ../../app/stylesheets/_projects.sass */
-body#site #project_backers ul {
+body#platform #project_backers ul {
   width: 600px;
 }
 /* line 891, ../../app/stylesheets/_projects.sass */
-body#site #project_backers ul li {
+body#platform #project_backers ul li {
   background-color: #dddddd;
   margin-top: 16px;
   padding: 20px;
@@ -3309,7 +3225,7 @@ body#site #project_backers ul li {
   position: relative;
 }
 /* line 897, ../../app/stylesheets/_projects.sass */
-body#site #project_backers ul li .badge {
+body#platform #project_backers ul li .badge {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -3324,7 +3240,7 @@ body#site #project_backers ul li .badge {
   transition-duration: 0.2s;
 }
 /* line 903, ../../app/stylesheets/_projects.sass */
-body#site #project_backers ul li .badge:hover {
+body#platform #project_backers ul li .badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
@@ -3332,61 +3248,61 @@ body#site #project_backers ul li .badge:hover {
   transform: rotate(-4deg);
 }
 /* line 906, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects form, body#site #pending_backers form {
+body#platform #pending_projects form, body#platform #pending_backers form {
   margin-bottom: 20px;
 }
 /* line 908, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects form label, body#site #pending_backers form label {
+body#platform #pending_projects form label, body#platform #pending_backers form label {
   display: inline;
 }
 /* line 910, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects form input[type=text], body#site #pending_backers form input[type=text] {
+body#platform #pending_projects form input[type=text], body#platform #pending_backers form input[type=text] {
   margin-right: 8px;
   width: 120px;
   padding: 0 !important;
 }
 /* line 914, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects form #search_id_equals, body#site #pending_backers form #search_id_equals {
+body#platform #pending_projects form #search_id_equals, body#platform #pending_backers form #search_id_equals {
   width: 40px;
 }
 /* line 916, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects #total_results, body#site #pending_backers #total_results {
+body#platform #pending_projects #total_results, body#platform #pending_backers #total_results {
   float: right;
 }
 /* line 918, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects table, body#site #pending_backers table {
+body#platform #pending_projects table, body#platform #pending_backers table {
   margin: 20px 0;
 }
 /* line 920, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects table img, body#site #pending_backers table img {
+body#platform #pending_projects table img, body#platform #pending_backers table img {
   width: 32px;
 }
 /* line 923, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects table thead th, body#site #pending_backers table thead th {
+body#platform #pending_projects table thead th, body#platform #pending_backers table thead th {
   text-align: center;
   font-size: 14px;
 }
 /* line 928, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects table tbody tr td, body#site #pending_backers table tbody tr td {
+body#platform #pending_projects table tbody tr td, body#platform #pending_backers table tbody tr td {
   text-align: center;
   font-size: 14px;
 }
 /* line 931, ../../app/stylesheets/_projects.sass */
-body#site #pending_projects table tbody tr td.key, body#site #pending_backers table tbody tr td.key {
+body#platform #pending_projects table tbody tr td.key, body#platform #pending_backers table tbody tr td.key {
   font-size: 8px;
 }
 /* line 934, ../../app/stylesheets/_projects.sass */
-body#site #explore_projects #explore_menu {
+body#platform #explore_projects #explore_menu {
   float: left;
   width: 280px;
   margin-left: 20px;
 }
 /* line 938, ../../app/stylesheets/_projects.sass */
-body#site #explore_projects #explore_menu ul {
+body#platform #explore_projects #explore_menu ul {
   margin-bottom: 20px;
 }
 /* line 940, ../../app/stylesheets/_projects.sass */
-body#site #explore_projects #explore_menu ul li a {
+body#platform #explore_projects #explore_menu ul li a {
   background-color: #dddddd;
   margin-bottom: 4px;
   padding: 4px 8px;
@@ -3412,70 +3328,70 @@ body#site #explore_projects #explore_menu ul li a {
   transition-duration: 0.2s;
 }
 /* line 952, ../../app/stylesheets/_projects.sass */
-body#site #explore_projects #explore_menu ul li a.selected, body#site #explore_projects #explore_menu ul li a:hover {
+body#platform #explore_projects #explore_menu ul li a.selected, body#platform #explore_projects #explore_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 956, ../../app/stylesheets/_projects.sass */
-body#site #explore_projects #explore_results {
+body#platform #explore_projects #explore_results {
   float: right;
   width: 626px;
 }
 /* line 2, ../../app/stylesheets/_curated_pages.sass */
-body#site #index_header_text {
+body#platform #index_header_text {
   width: 950px !important;
 }
 /* line 4, ../../app/stylesheets/_curated_pages.sass */
-body#site .curated_project_list {
+body#platform .curated_project_list {
   float: left;
   margin-left: -20px;
 }
 /* line 7, ../../app/stylesheets/_curated_pages.sass */
-body#site .project_curator_description {
+body#platform .project_curator_description {
   font-family: Arial;
   font-size: 13px;
   font-style: italic;
   padding-top: 120px;
 }
 /* line 13, ../../app/stylesheets/_curated_pages.sass */
-body#site .curated_page_header {
+body#platform .curated_page_header {
   float: left;
   width: 100%;
   padding: 20px 0 0 0px;
 }
 /* line 18, ../../app/stylesheets/_curated_pages.sass */
-body#site .curated_page_header {
+body#platform .curated_page_header {
   padding: 15px 0 15px 0;
 }
 /* line 19, ../../app/stylesheets/_curated_pages.sass */
-body#site .curated_page_header img {
+body#platform .curated_page_header img {
   float: left;
   margin-right: 10px;
 }
 /* line 23, ../../app/stylesheets/_curated_pages.sass */
-body#site .curated_page_header h1 {
+body#platform .curated_page_header h1 {
   float: left;
   width: 460px;
 }
 /* line 26, ../../app/stylesheets/_curated_pages.sass */
-body#site .curated_page_header h2 {
+body#platform .curated_page_header h2 {
   float: left;
   width: 460px;
 }
 /* line 29, ../../app/stylesheets/_curated_pages.sass */
-body#site .curated_page_header .curated_social {
+body#platform .curated_page_header .curated_social {
   float: left;
   margin-left: 25px;
 }
 /* line 32, ../../app/stylesheets/_curated_pages.sass */
-body#site #curated_pages_list {
+body#platform #curated_pages_list {
   padding: 0 0 0 4px;
   margin-bottom: 50px;
   float: left;
 }
 /* line 36, ../../app/stylesheets/_curated_pages.sass */
-body#site #curated_pages_list .curated_page {
+body#platform #curated_pages_list .curated_page {
   width: 260px;
   height: 170px;
   float: left;
@@ -3487,23 +3403,23 @@ body#site #curated_pages_list .curated_page {
   box-shadow: 3px 3px 6px #888888;
 }
 /* line 44, ../../app/stylesheets/_curated_pages.sass */
-body#site #curated_pages_list .curated_page a img {
+body#platform #curated_pages_list .curated_page a img {
   border: 0px;
 }
 /* line 2, ../../app/stylesheets/_embed.sass */
-body#site #embed .project_box {
+body#platform #embed .project_box {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0 !important;
 }
-/* line 72, ../../app/stylesheets/screen.sass */
-body#site #video_embed {
+/* line 68, ../../app/stylesheets/screen.sass */
+body#platform #video_embed {
   text-align: center;
   padding: 16px;
   padding-bottom: 0;
 }
 /* line 5, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed iframe {
+body#platform #video_embed iframe {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   -o-border-top-left-radius: 8px;
@@ -3522,19 +3438,19 @@ body#site #video_embed iframe {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 9, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed h1 {
+body#platform #video_embed h1 {
   font-family: "museo-500";
   font-size: 24px;
   line-height: 26px;
   padding: 12px 0 8px 0;
 }
 /* line 14, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed h1 a {
+body#platform #video_embed h1 a {
   text-decoration: none;
   text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 3px;
 }
 /* line 17, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed h2 {
+body#platform #video_embed h2 {
   font-size: 14px;
   line-height: 16px;
   color: #666666;
@@ -3542,19 +3458,19 @@ body#site #video_embed h2 {
   text-shadow: white 1px 1px 0px;
 }
 /* line 23, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed h2 a {
+body#platform #video_embed h2 a {
   text-decoration: none;
   text-shadow: white 1px 1px 0px;
 }
 /* line 27, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed #site_link h1 {
+body#platform #video_embed #platform_link h1 {
   font-family: "museo-700";
   font-size: 28px;
   line-height: 30px;
   padding: 0;
 }
 /* line 32, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed #site_link h1 a {
+body#platform #video_embed #platform_link h1 a {
   color: #222222;
   text-decoration: none;
   -moz-transition: all 0.5s;
@@ -3563,30 +3479,30 @@ body#site #video_embed #site_link h1 a {
   transition: all 0.5s;
 }
 /* line 36, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed #site_link h1 a:hover {
+body#platform #video_embed #platform_link h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 38, ../../app/stylesheets/_video_embed.sass */
-body#site #video_embed #video_embed_footer {
+body#platform #video_embed #video_embed_footer {
   position: fixed;
   bottom: 4px;
   left: 50%;
   width: 220px;
   margin-left: -110px;
 }
-/* line 74, ../../app/stylesheets/screen.sass */
-body#site #footer {
+/* line 70, ../../app/stylesheets/screen.sass */
+body#platform #footer {
   text-align: center;
   padding: 20px 0 80px 0;
 }
 /* line 4, ../../app/stylesheets/_footer.sass */
-body#site #footer #footer_menu {
+body#platform #footer #footer_menu {
   margin: 0 auto;
   width: 742px;
   padding: 20px 0;
 }
 /* line 8, ../../app/stylesheets/_footer.sass */
-body#site #footer #footer_menu ul {
+body#platform #footer #footer_menu ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -3594,7 +3510,7 @@ body#site #footer #footer_menu ul {
   *zoom: 1;
 }
 /* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #footer #footer_menu ul li {
+body#platform #footer #footer_menu ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -3605,37 +3521,37 @@ body#site #footer #footer_menu ul li {
   padding-right: 12px;
 }
 /* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #footer #footer_menu ul li:first-child, body#site #footer #footer_menu ul li.first {
+body#platform #footer #footer_menu ul li:first-child, body#platform #footer #footer_menu ul li.first {
   padding-left: 0;
 }
 /* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #footer #footer_menu ul li:last-child {
+body#platform #footer #footer_menu ul li:last-child {
   padding-right: 0;
 }
 /* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #footer #footer_menu ul li.last {
+body#platform #footer #footer_menu ul li.last {
   padding-right: 0;
 }
 /* line 11, ../../app/stylesheets/_footer.sass */
-body#site #footer #footer_menu ul li a {
+body#platform #footer #footer_menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
 /* line 14, ../../app/stylesheets/_footer.sass */
-body#site #footer #social_menu {
+body#platform #footer #social_menu {
   margin: 0 auto;
   width: 488px;
   padding-bottom: 40px;
   font-size: 16px;
 }
 /* line 19, ../../app/stylesheets/_footer.sass */
-body#site #footer #social_menu img {
+body#platform #footer #social_menu img {
   vertical-align: middle;
   padding-bottom: 4px;
   height: 22px;
 }
 /* line 23, ../../app/stylesheets/_footer.sass */
-body#site #footer #social_menu ul {
+body#platform #footer #social_menu ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -3643,7 +3559,7 @@ body#site #footer #social_menu ul {
   *zoom: 1;
 }
 /* line 60, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #footer #social_menu ul li {
+body#platform #footer #social_menu ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -3654,39 +3570,39 @@ body#site #footer #social_menu ul li {
   padding-right: 12px;
 }
 /* line 48, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #footer #social_menu ul li:first-child, body#site #footer #social_menu ul li.first {
+body#platform #footer #social_menu ul li:first-child, body#platform #footer #social_menu ul li.first {
   padding-left: 0;
 }
 /* line 49, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #footer #social_menu ul li:last-child {
+body#platform #footer #social_menu ul li:last-child {
   padding-right: 0;
 }
 /* line 50, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
-body#site #footer #social_menu ul li.last {
+body#platform #footer #social_menu ul li.last {
   padding-right: 0;
 }
 /* line 26, ../../app/stylesheets/_footer.sass */
-body#site #footer #social_menu ul li a {
+body#platform #footer #social_menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
 /* line 29, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon {
+body#platform #footer #colophon {
   padding-top: 20px;
   margin: 0 auto;
   width: 980px;
   font-size: 14px;
 }
 /* line 34, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon p#copyright {
+body#platform #footer #colophon p#copyright {
   float: left;
 }
 /* line 36, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon p#copyright img {
+body#platform #footer #colophon p#copyright img {
   width: 10px;
 }
 /* line 38, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon a#power_to_the_crowd {
+body#platform #footer #colophon a#power_to_the_crowd {
   margin-top: -20px;
   margin-right: 50px;
   float: right;
@@ -3703,17 +3619,17 @@ body#site #footer #colophon a#power_to_the_crowd {
   opacity: 0.7;
 }
 /* line 47, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon a#power_to_the_crowd:hover {
+body#platform #footer #colophon a#power_to_the_crowd:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 /* line 49, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon a#grupo_comum_login {
+body#platform #footer #colophon a#grupo_comum_login {
   float: left;
   margin-top: 0px;
   margin-left: 60px;
   background-color: transparent;
-  background-image: url("/images/sites/catarse/logo_comum.png");
+  background-image: url("/images/logo_comum.png");
   background-attachment: scroll;
   background-repeat: no-repeat;
   border: 0 none;
@@ -3724,96 +3640,96 @@ body#site #footer #colophon a#grupo_comum_login {
   opacity: 0.7;
 }
 /* line 57, ../../app/stylesheets/_footer.sass */
-body#site #footer #colophon a#grupo_comum_login:hover {
+body#platform #footer #colophon a#grupo_comum_login:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
 /* line 59, ../../app/stylesheets/_footer.sass */
-body#site #footer #powered_by {
+body#platform #footer #powered_by {
   float: left;
 }
 /* line 61, ../../app/stylesheets/_footer.sass */
-body#site #footer #grupo_comum {
+body#platform #footer #grupo_comum {
   float: right;
 }
-/* line 76, ../../app/stylesheets/screen.sass */
-body#site #teaser {
+/* line 72, ../../app/stylesheets/screen.sass */
+body#platform #teaser {
   text-align: center;
 }
 /* line 3, ../../app/stylesheets/_teaser.sass */
-body#site #teaser iframe {
+body#platform #teaser iframe {
   -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   -o-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 /* line 5, ../../app/stylesheets/_teaser.sass */
-body#site #teaser h1 {
+body#platform #teaser h1 {
   margin-top: 32px;
   color: #dd3333 !important;
 }
 /* line 8, ../../app/stylesheets/_teaser.sass */
-body#site #teaser h2 {
+body#platform #teaser h2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   color: #666666 !important;
   line-height: 32px;
 }
 /* line 12, ../../app/stylesheets/_teaser.sass */
-body#site #teaser #mailee {
+body#platform #teaser #mailee {
   color: #666666;
   font-style: italic;
 }
 /* line 15, ../../app/stylesheets/_teaser.sass */
-body#site #teaser #mailee form {
+body#platform #teaser #mailee form {
   padding: 10px;
 }
 /* line 17, ../../app/stylesheets/_teaser.sass */
-body#site #teaser #mailee input[type=text] {
+body#platform #teaser #mailee input[type=text] {
   width: 320px;
 }
 /* line 19, ../../app/stylesheets/_teaser.sass */
-body#site #teaser #mailee input[type=submit] {
+body#platform #teaser #mailee input[type=submit] {
   font-size: 16px;
   line-height: 18px;
   padding: 5px 15px;
 }
 /* line 23, ../../app/stylesheets/_teaser.sass */
-body#site #teaser #mailee input[type=submit]:active {
+body#platform #teaser #mailee input[type=submit]:active {
   padding: 5px 15px;
 }
 /* line 25, ../../app/stylesheets/_teaser.sass */
-body#site #teaser #mailee input[type=submit]:disabled {
+body#platform #teaser #mailee input[type=submit]:disabled {
   padding: 5px 15px;
 }
 /* line 2, ../../app/stylesheets/_text.sass */
-body#site .text h3 {
+body#platform .text h3 {
   margin-bottom: 16px;
 }
 /* line 4, ../../app/stylesheets/_text.sass */
-body#site .text ol {
+body#platform .text ol {
   list-style-type: decimal;
   margin-left: 60px;
 }
 /* line 7, ../../app/stylesheets/_text.sass */
-body#site .text ol li {
+body#platform .text ol li {
   margin-bottom: 16px;
 }
 /* line 9, ../../app/stylesheets/_text.sass */
-body#site .text ol li ol {
+body#platform .text ol li ol {
   list-style-type: lower-alpha;
   margin-top: 16px;
 }
 /* line 12, ../../app/stylesheets/_text.sass */
-body#site .text ul {
+body#platform .text ul {
   list-style: disc;
   margin-left: 60px;
 }
 /* line 15, ../../app/stylesheets/_text.sass */
-body#site .text ul li {
+body#platform .text ul li {
   margin-bottom: 16px;
 }
-/* line 80, ../../app/stylesheets/screen.sass */
-body#site #press {
+/* line 76, ../../app/stylesheets/screen.sass */
+body#platform #press {
   background-color: #dddbd1;
   background-color: rgba(179, 177, 157, 0.3);
   border: 3px solid #bdbbb1;
@@ -3837,7 +3753,7 @@ body#site #press {
   text-align: center;
 }
 /* line 15, ../../app/stylesheets/_press.sass */
-body#site #press h1 {
+body#platform #press h1 {
   color: #554300 !important;
   padding: 8px !important;
   padding-bottom: 16px !important;
@@ -3845,11 +3761,11 @@ body#site #press h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 /* line 21, ../../app/stylesheets/_press.sass */
-body#site #press a {
+body#platform #press a {
   text-decoration: none;
 }
 /* line 23, ../../app/stylesheets/_press.sass */
-body#site #press a img {
+body#platform #press a img {
   margin: 0 1px;
   height: 78px;
   -moz-transition-property: all;
@@ -3862,181 +3778,24 @@ body#site #press a img {
   transition-duration: 0.3s;
 }
 /* line 27, ../../app/stylesheets/_press.sass */
-body#site #press a img:hover {
+body#platform #press a img:hover {
   -moz-transform: scale(1.04, 1.04);
   -webkit-transform: scale(1.04, 1.04);
   -o-transform: scale(1.04, 1.04);
   -ms-transform: scale(1.04, 1.04);
   transform: scale(1.04, 1.04);
 }
-/* line 82, ../../app/stylesheets/screen.sass */
-body#site #promo_top {
-  font-family: "museo-500";
-  font-size: 22px;
-  line-height: 24px;
-  margin-top: 40px;
-  margin-bottom: 48px;
-  margin-left: 24px;
-  width: 884px;
-  text-align: left;
-}
-/* line 10, ../../app/stylesheets/_promo_top.sass */
-body#site #promo_top .text {
-  float: right;
-  background-color: #28363e;
-  color: #e8f6fe;
-  -moz-border-radius-topright: 12px;
-  -webkit-border-top-right-radius: 12px;
-  -o-border-top-right-radius: 12px;
-  -ms-border-top-right-radius: 12px;
-  -khtml-border-top-right-radius: 12px;
-  border-top-right-radius: 12px;
-  -moz-border-radius-bottomright: 12px;
-  -webkit-border-bottom-right-radius: 12px;
-  -o-border-bottom-right-radius: 12px;
-  -ms-border-bottom-right-radius: 12px;
-  -khtml-border-bottom-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-  -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-  -o-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-  text-shadow: transparent, 0, 0, 0;
-  margin-top: 20px;
-  padding: 20px;
-  height: 240px;
-  width: 524px;
-  z-index: 100;
-}
-/* line 23, ../../app/stylesheets/_promo_top.sass */
-body#site #promo_top .text form {
-  text-align: center;
-}
-/* line 26, ../../app/stylesheets/_promo_top.sass */
-body#site #promo_top img {
-  z-index: 150;
-  float: left;
-  height: 320px;
-  width: 320px;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  -o-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -khtml-border-radius: 12px;
-  border-radius: 12px;
-  -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  -o-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-/* line 84, ../../app/stylesheets/screen.sass */
-body#site #promo_video {
-  margin-bottom: 40px;
-  margin-left: 24px;
-  margin-top: 36px;
-}
-/* line 5, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video iframe {
-  border: 5px solid #bdbbb1;
-  border: 5px solid rgba(173, 171, 151, 0.8);
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -khtml-border-radius: 4px;
-  border-radius: 4px;
-}
-/* line 9, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #promo_title {
-  float: right;
-  padding-top: 16px;
-  width: 260px;
-  font-family: "museo-500";
-  font-size: 32px;
-  line-height: 42px;
-  color: #888888;
-}
-/* line 17, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #promo_title .retrospective, body#site #promo_video #promo_title .surprise {
-  font-size: 40px;
-}
-/* line 19, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #promo_title .retrospective {
-  color: #222222;
-}
-/* line 21, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #promo_title .surprise {
-  color: #008800;
-}
-/* line 23, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #promo_title .catarse {
-  font-family: "museo-700";
-  color: #222222;
-  font-size: 42px;
-}
-/* line 27, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #correntedobem {
-  background: url(/images/sites/catarse/bg_correntedobem.gif) top left no-repeat;
-  width: 100%;
-}
-/* line 30, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #correntedobem .text {
-  color: #71a013;
-  margin-left: 80px;
-  border: 6px solid #9cc148;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  height: 201px;
-  width: 500px;
-  padding: 20px;
-  float: left;
-  background-color: white;
-}
-/* line 31, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #correntedobem .text h1 {
-  font-family: "museo-500" !important;
-  line-height: 30px !important;
-  color: #222222 !important;
-  padding: 0 !important;
-  padding-bottom: 20px !important;
-}
-/* line 37, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #correntedobem .text h1 a {
-  text-decoration: none;
-}
-/* line 48, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #correntedobem .image {
-  margin-right: 80px;
-  float: right;
-}
-/* line 51, ../../app/stylesheets/_promo_video.sass */
-body#site #promo_video #correntedobem .image a {
-  display: block;
-  border: 10px solid #e3ce70;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  background-color: white;
-  padding: 20px;
-}
 /* line 2, ../../app/stylesheets/_credits.sass */
-body#site #credits h1 {
+body#platform #credits h1 {
   color: #222222 !important;
 }
 /* line 4, ../../app/stylesheets/_credits.sass */
-body#site #credits #current_credits {
+body#platform #credits #current_credits {
   color: #008800;
   font-size: 32px;
 }
 /* line 7, ../../app/stylesheets/_credits.sass */
-body#site #credits #buy_credits {
+body#platform #credits #buy_credits {
   background-color: #dddbd1;
   background-color: rgba(179, 177, 157, 0.3);
   border: 3px solid #bdbbb1;
@@ -4057,91 +3816,282 @@ body#site #credits #buy_credits {
   margin-bottom: 20px;
 }
 /* line 18, ../../app/stylesheets/_credits.sass */
-body#site #credits #buy_credits form {
+body#platform #credits #buy_credits form {
   margin-top: 20px;
 }
 /* line 20, ../../app/stylesheets/_credits.sass */
-body#site #credits table {
+body#platform #credits table {
   margin-bottom: 32px;
 }
 /* line 22, ../../app/stylesheets/_credits.sass */
-body#site #credits table td.status {
+body#platform #credits table td.status {
   width: 200px;
 }
 /* line 24, ../../app/stylesheets/_credits.sass */
-body#site #credits .error {
+body#platform #credits .error {
   color: #ff4444;
 }
-/* line 88, ../../app/stylesheets/screen.sass */
-body#site #banda {
-  width: 884px;
-  margin: 8px auto 0 auto;
-  text-align: left;
-  text-shadow: green 1px 1px 1px;
+
+/* line 6, ../../app/stylesheets/_legacy.sass */
+body#platform a {
+  color: #498c36;
 }
-/* line 6, ../../app/stylesheets/_banda.sass */
-body#site #banda img {
-  float: left;
-  height: 248px;
-  margin-right: 24px;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  -o-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -khtml-border-radius: 12px;
-  border-radius: 12px;
-  -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  -o-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+/* line 8, ../../app/stylesheets/_legacy.sass */
+body#platform a:hover {
+  color: #68a852;
 }
-/* line 12, ../../app/stylesheets/_banda.sass */
-body#site #banda .text {
+/* line 10, ../../app/stylesheets/_legacy.sass */
+body#platform #main {
+  width: 100%;
+}
+/* line 12, ../../app/stylesheets/_legacy.sass */
+body#platform #header {
+  width: 936px;
+  margin: 0 auto;
+}
+/* line 15, ../../app/stylesheets/_legacy.sass */
+body#platform #header h1 {
+  margin-left: 8px;
+}
+/* line 17, ../../app/stylesheets/_legacy.sass */
+body#platform #header h1.home_logo {
+  margin-left: 27px;
+}
+/* line 19, ../../app/stylesheets/_legacy.sass */
+body#platform #content_header_wrapper {
+  background-color: #68a852;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #498c36), color-stop(100%, #68a852));
+  background-image: -webkit-linear-gradient(top, #498c36, #68a852);
+  background-image: -moz-linear-gradient(top, #498c36, #68a852);
+  background-image: -o-linear-gradient(top, #498c36, #68a852);
+  background-image: -ms-linear-gradient(top, #498c36, #68a852);
+  background-image: linear-gradient(top, #498c36, #68a852);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+/* line 23, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper {
+  -moz-box-shadow: 0 0 0 black;
+  -webkit-box-shadow: 0 0 0 black;
+  -o-box-shadow: 0 0 0 black;
+  box-shadow: 0 0 0 black;
+  background-color: transparent;
+}
+/* line 26, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #notification_wrapper {
+  width: 880px;
+  border: 1px #999999 solid;
+  -webkit-border-radius: 3px 3px;
+  -moz-border-radius: 3px / 3px;
+  -o-border-radius: 3px / 3px;
+  -ms-border-radius: 3px / 3px;
+  -khtml-border-radius: 3px / 3px;
+  border-radius: 3px / 3px;
+  -moz-box-shadow: 0 0 3px #999999;
+  -webkit-box-shadow: 0 0 3px #999999;
+  -o-box-shadow: 0 0 3px #999999;
+  box-shadow: 0 0 3px #999999;
+  padding: 5px 0 5px 0;
+  background: #e0e0e0;
+  margin: 20px auto 0;
+}
+/* line 35, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #notification_wrapper div h1 {
+  font-family: "museo-500";
+  padding: 8px 0 5px 10px;
   font-size: 20px;
-  line-height: 22px;
+  text-shadow: none;
+  text-align: center;
+  color: #333333;
 }
-/* line 15, ../../app/stylesheets/_banda.sass */
-body#site #banda .text a {
-  color: #ffffaa;
+/* line 42, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #notification_wrapper div h1 a {
   text-decoration: none;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.1s;
-  -webkit-transition-duration: 0.1s;
-  -o-transition-duration: 0.1s;
-  transition-duration: 0.1s;
 }
-/* line 19, ../../app/stylesheets/_banda.sass */
-body#site #banda .text a:hover {
-  text-shadow: green 3px 3px 3px;
+/* line 45, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #content_header {
+  width: 936px;
+  margin: 0 auto;
+  background-color: transparent;
+  text-align: left;
+  -moz-box-shadow: 0 0 0 black;
+  -webkit-box-shadow: 0 0 0 black;
+  -o-box-shadow: 0 0 0 black;
+  box-shadow: 0 0 0 black;
+  padding: 10px 0;
 }
-/* line 21, ../../app/stylesheets/_banda.sass */
-body#site #banda .text p {
-  padding-bottom: 12px;
+/* line 52, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #content_header h1 {
+  padding: 8px;
+  font-size: 28px;
 }
-/* line 23, ../../app/stylesheets/_banda.sass */
-body#site #banda #facebook_share {
+/* line 55, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #content_header h2 {
+  padding: 8px;
+}
+/* line 57, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #content {
+  width: 936px;
+  margin: 0 auto;
+  -moz-box-shadow: 0 0 0 black;
+  -webkit-box-shadow: 0 0 0 black;
+  -o-box-shadow: 0 0 0 black;
+  box-shadow: 0 0 0 black;
+}
+/* line 61, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #content h1 {
+  color: #498c36;
+}
+/* line 63, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #content h2 {
+  color: #498c36;
+}
+/* line 67, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #content #project_back_info #rewards h1 {
+  color: white;
+}
+/* line 69, ../../app/stylesheets/_legacy.sass */
+body#platform #content_wrapper #content #project_back_info #rewards ul li h1 {
+  color: #222222;
+}
+/* line 71, ../../app/stylesheets/_legacy.sass */
+body#platform #footer {
+  text-shadow: black 0 0 0;
+  margin-top: 40px;
+  padding-top: 40px;
+  background-color: #333333;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #cccccc;
+}
+/* line 78, ../../app/stylesheets/_legacy.sass */
+body#platform #footer a {
+  color: #cccccc;
+}
+/* line 80, ../../app/stylesheets/_legacy.sass */
+body#platform #footer a:hover {
+  color: #eeeeee;
+}
+/* line 83, ../../app/stylesheets/_legacy.sass */
+body#platform #project_header h1 {
+  padding-left: 0 !important;
+}
+/* line 85, ../../app/stylesheets/_legacy.sass */
+body#platform #project_header h1 .on_the_spot_mouseover {
+  background-color: #2b6e18;
+  background-color: rgba(43, 110, 24, 0.5);
+}
+/* line 88, ../../app/stylesheets/_legacy.sass */
+body#platform #project_header h2 {
+  padding-bottom: 4px !important;
+}
+/* line 90, ../../app/stylesheets/_legacy.sass */
+body#platform #index_header {
+  position: relative;
+}
+/* line 92, ../../app/stylesheets/_legacy.sass */
+body#platform #index_header #index_header_text {
+  float: left;
+  width: 702px;
+}
+/* line 95, ../../app/stylesheets/_legacy.sass */
+body#platform #index_header #index_header_text h1 {
+  padding: 8px 24px !important;
+}
+/* line 97, ../../app/stylesheets/_legacy.sass */
+body#platform #index_header #index_header_text h2 {
+  padding: 8px 24px !important;
+}
+/* line 99, ../../app/stylesheets/_legacy.sass */
+body#platform #index_header #index_share {
+  margin-top: -90px;
   float: right;
+  width: 224px;
+}
+/* line 103, ../../app/stylesheets/_legacy.sass */
+body#platform #index_header #index_share iframe {
+  width: 180px !important;
+}
+/* line 106, ../../app/stylesheets/_legacy.sass */
+body#platform #index_header #index_share span.fb_iframe_widget iframe {
+  width: 401px !important;
+}
+/* line 108, ../../app/stylesheets/_legacy.sass */
+body#platform #index_header #index_share iframe.twitter-follow-button {
+  margin-top: 4px;
+  width: 224px !important;
+}
+/* line 111, ../../app/stylesheets/_legacy.sass */
+body#platform #index_header #index_share iframe.twitter-share-button {
   margin-top: 8px;
-  margin-right: 72px;
 }
-/* line 27, ../../app/stylesheets/_banda.sass */
-body#site #banda #banda_more {
-  margin-top: 16px;
-  padding: 16px;
-  padding-bottom: 4px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  -o-border-radius: 6px;
-  -ms-border-radius: 6px;
-  -khtml-border-radius: 6px;
-  border-radius: 6px;
-  background-color: #003300 !important;
-  background-color: rgba(0, 48, 0, 0.3) !important;
+/* line 113, ../../app/stylesheets/_legacy.sass */
+body#platform .project_box {
+  -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
 }
-/* line 34, ../../app/stylesheets/_banda.sass */
-body#site #banda #banda_more p {
-  padding-bottom: 12px;
+/* line 116, ../../app/stylesheets/_legacy.sass */
+body#platform .progress_bar .progress {
+  background-color: #68a852;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #498c36), color-stop(100%, #68a852));
+  background-image: -webkit-linear-gradient(top, #498c36, #68a852);
+  background-image: -moz-linear-gradient(top, #498c36, #68a852);
+  background-image: -o-linear-gradient(top, #498c36, #68a852);
+  background-image: -ms-linear-gradient(top, #498c36, #68a852);
+  background-image: linear-gradient(top, #498c36, #68a852);
+}
+/* line 124, ../../app/stylesheets/_legacy.sass */
+body#platform #project_description #project_menu ul li a:hover {
+  background-color: #68a852;
+}
+/* line 127, ../../app/stylesheets/_legacy.sass */
+body#platform #project_description #project_menu ul li.selected a {
+  background-color: #498c36;
+}
+/* line 133, ../../app/stylesheets/_legacy.sass */
+body#platform #explore_projects #explore_menu ul li a:hover {
+  background-color: #68a852;
+}
+/* line 135, ../../app/stylesheets/_legacy.sass */
+body#platform #explore_projects #explore_menu ul li a.selected {
+  background-color: #498c36;
+}
+/* line 140, ../../app/stylesheets/_legacy.sass */
+body#platform #project_back_info #back_project form input[type=submit] {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #68a852), color-stop(100%, #498c36));
+  background-image: -webkit-linear-gradient(top, #68a852, #498c36);
+  background-image: -moz-linear-gradient(top, #68a852, #498c36);
+  background-image: -o-linear-gradient(top, #68a852, #498c36);
+  background-image: -ms-linear-gradient(top, #68a852, #498c36);
+  background-image: linear-gradient(top, #68a852, #498c36);
+}
+/* line 142, ../../app/stylesheets/_legacy.sass */
+body#platform #project_back_info #back_project form input[type=submit]:hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #498c36), color-stop(100%, #68a852));
+  background-image: -webkit-linear-gradient(top, #498c36, #68a852);
+  background-image: -moz-linear-gradient(top, #498c36, #68a852);
+  background-image: -o-linear-gradient(top, #498c36, #68a852);
+  background-image: -ms-linear-gradient(top, #498c36, #68a852);
+  background-image: linear-gradient(top, #498c36, #68a852);
+}
+/* line 144, ../../app/stylesheets/_legacy.sass */
+body#platform #project_back_info #back_project form input[type=submit]:hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #498c36), color-stop(100%, #68a852));
+  background-image: -webkit-linear-gradient(top, #498c36, #68a852);
+  background-image: -moz-linear-gradient(top, #498c36, #68a852);
+  background-image: -o-linear-gradient(top, #498c36, #68a852);
+  background-image: -ms-linear-gradient(top, #498c36, #68a852);
+  background-image: linear-gradient(top, #498c36, #68a852);
+}
+/* line 146, ../../app/stylesheets/_legacy.sass */
+body#platform #project_back_info #back_project form input[type=submit]:disabled {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
+  background-image: -webkit-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -moz-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -o-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
+  background-image: linear-gradient(top, #bbbbbb, #888888);
 }

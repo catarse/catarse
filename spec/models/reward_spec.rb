@@ -82,18 +82,3 @@ describe Reward do
     r.name.should == "<div class='reward_minimum_value'>R$ 1,00+</div><div class='reward_description'>Description&lt;javascript&gt;XSS()&lt;/javascript&gt;</div><div class='clear'></div>"
   end
 end
-
-
-# == Schema Information
-#
-# Table name: rewards
-#
-#  id              :integer         not null, primary key
-#  project_id      :integer         not null
-#  minimum_value   :decimal(, )     not null
-#  maximum_backers :integer
-#  description     :text            not null
-#  created_at      :datetime
-#  updated_at      :datetime
-#
-

@@ -4,11 +4,11 @@
       .status_image
         = link_to project_path(project) do
           - if project.successful?
-            = image_tag "sites/#{current_site.path}/successful.#{I18n.locale}.png"
+            = image_tag "successful.#{I18n.locale}.png"
           - elsif project.waiting_confirmation?
-            = image_tag "sites/#{current_site.path}/waiting_confirmation.#{I18n.locale}.png"
+            = image_tag "waiting_confirmation.#{I18n.locale}.png"
           - else
-            = image_tag "sites/#{current_site.path}/not_successful.#{I18n.locale}.png"
+            = image_tag "not_successful.#{I18n.locale}.png"
     .project_category= project.category.name
     .project_header
       = link_to project_path(project) do

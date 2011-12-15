@@ -1,6 +1,6 @@
 - unless @home_page.empty?
-  .project_list_header= t("sites.#{current_site.path}.projects.home_page_projects.title")
-  .project_list_subheader= t("sites.#{current_site.path}.projects.home_page_projects.subtitle")
+  .project_list_header= t(".title")
+  .project_list_subheader= t(".subtitle")
   #home_page_projects
     = render :partial => 'project', :collection => @home_page
     .clear

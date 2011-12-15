@@ -108,3 +108,6 @@ RSpec.configure do |config|
 end
 
 include Rails.application.routes.url_helpers
+
+I18n.locale = :pt
+I18n.default_locale = :pt
