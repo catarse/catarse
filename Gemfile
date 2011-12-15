@@ -42,6 +42,9 @@ gem 'rmagick'
 gem 'fog'
 gem 'capybara', ">= 0.4.0"
 gem 'enumerate_it'
+gem 'httparty'
+gem "rack-timeout"
+gem 'web_translate_it'
 
 group :test, :development do
   gem 'annotate'

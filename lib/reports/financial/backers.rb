@@ -5,7 +5,7 @@ module Reports
       class << self
         def report(project_id)
           @project = Project.find(project_id)
-          @backers = @project.backers.confirmed
+          @backers = @project.backers.includes(:payment_detail, :user).confirmed
 
           @csv = CSV.generate(:col_sep => ';') do |csv_string|
 
@@ -32,14 +32,14 @@ module Reports
                 backer.value.to_s.gsub(/\./,","),
                 (backer.reward.minimum_value.to_s.gsub(/\./,",") if backer.reward),
                 backer.payment_method,
-                (backer.payment_detail.try(:payment_method) if backer.payment_detail),
-                (backer.payment_detail.try(:service_tax_amount).to_s.gsub(/\./,",")  if backer.payment_detail),
+                (backer.payment_detail.payment_method if backer.payment_detail),
+                (backer.payment_service_fee).to_s.gsub(/\./,","),
                 backer.key,
-                backer.created_at,
-                backer.confirmed_at,
+                I18n.l(backer.created_at.to_date),
+                I18n.l(backer.confirmed_at.to_date),
                 backer.user.email,
-                (backer.payment_detail.try(:payer_email) if backer.payment_detail),
-                (backer.payment_detail.try(:payer_name) if backer.payment_detail),
+                (backer.payment_detail.payer_email if backer.payment_detail),
+                (backer.payment_detail.payer_name if backer.payment_detail),
               ]
             end
           end
