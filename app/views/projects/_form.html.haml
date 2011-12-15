@@ -1,15 +1,15 @@
-= render :partial => "/sites/#{current_site.path}/project_warning"
+#project_warning
+  = t('.project_warning.content_html', :link => link_to(t('.project_warning.help_link'), "#{t('site.blog')}/post/2816685141/guia-colocar-projeto-catarse", :target => :_blank))
 = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
   = form.inputs do
     = form.input :user_id, :as => :hidden, :value => current_user.id
-    = form.input :site_id, :as => :hidden, :value => current_site.id
     = form.input :name, :as => :string
     = form.input :video_url, :as => :string
     = form.input :about
     = form.input :headline, :input_html => { :maxlength => 140 }
     = form.input :category, :collection => Category.all(:order => :name)
     = form.input :goal
-    .important= t('.important_html', :site => current_site.the_name, :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))
+    .important= t('.important_html', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))
     = form.input :expires_at, :as => :string
     #project_rewards
       :javascript

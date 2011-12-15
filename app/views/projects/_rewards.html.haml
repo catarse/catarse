@@ -1,10 +1,10 @@
 %h1
   = t('.title')
-  = image_tag "sites/#{current_site.path}/rewards_left_border.png", :id => 'rewards_left_border'
-  = image_tag "sites/#{current_site.path}/rewards_right_border.png", :id => 'rewards_right_border'
+  = image_tag "rewards_left_border.png", :id => 'rewards_left_border'
+  = image_tag "rewards_right_border.png", :id => 'rewards_right_border'
 %ul
   - @rewards.each do |reward|
-    %li{:class => ('clickable' if @project.can_back?(current_site) and not reward.sold_out?)}
+    %li{:class => ('clickable' if @project.can_back? and not reward.sold_out?)}
       = hidden_field_tag 'url', "#{back_project_path(@project)}/?reward_id=#{reward.id}"
       %h1= t('.reward_title', :minimum => reward.display_minimum)
       - if reward.maximum_backers
@@ -22,4 +22,4 @@
       .clear
       .reward_backers
         = pluralize reward.backers.confirmed.count, t('backer_singular'), t('backer_plural')
-        = image_tag "sites/#{current_site.path}/reward_badge.png", :class => "badge"
+        = image_tag "reward_badge.png", :class => "badge"

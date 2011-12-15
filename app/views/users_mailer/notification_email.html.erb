@@ -34,7 +34,7 @@
                               }
                             </style>
                             <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:10px; line-height:22px; text-align:center; color:#444;" class="bar">
-                              <div class="edit" id="intro"><%= t('.intro', :site => @notification.site.in_the_name) %></div>
+                              <div class="edit" id="intro"><%= t('.intro') %></div>
                               <a href="#" class="weblink" style="
                                 border-radius: 3px 0 0 3px;
                                 -moz-border-radius: 3px 0 0 3px;
@@ -89,7 +89,15 @@
                         </tr>
                       </tbody>
                     </table>
-                    <%= render :partial => "/sites/#{@notification.site.path}/notification_email_header" %>
+                    <table border="0" cellspacing="0" cellpadding="0" frame="void" id="header" style="margin:0; padding:0; border:0 none; border-spacing:0; border-collapse:collapse;" width="100%">
+                      <tbody style="margin:0; padding:0; border:0;">
+                        <tr>
+                          <td align="left" style="margin:0; border:0 none;" valign="top">
+                            <img class="edit" width="600" src="<%= t('site.base_url') %>/images/email_header.<%= I18n.locale %>.png" style="border:0 none; display:block;" alt="<%= t('.alt') %>">
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                     <table border="0" cellspacing="0" cellpadding="0" frame="void" id="columns" style="margin:0; padding:0; border:0 none; border-spacing:0; border-collapse:collapse;" width="100%">
                       <tbody style="margin:0; padding:0; border:0;">
                         <tr>
@@ -113,19 +121,22 @@
                                         <% if @notification.facebook_text or @notification.twitter_text %>
                                           <div style="text-align: center;">
                                             <% if @notification.facebook_text %>
-                                              <%= link_to "http://www.facebook.com/share.php?u=#{@notification.site.full_url("/projects/#{@notification.project.to_param}")}&t=#{@notification.facebook_text}&v=4", :target => :_blank do %>
-                                                <%= image_tag @notification.site.full_url("/images/auth/facebook_64.png"), :title => 'Facebook', :class => 'social' %>
+                                              <%= link_to "http://www.facebook.com/share.php?u=#{t('site.base_url')}/projects/#{@notification.project.to_param}&t=#{@notification.facebook_text}", :target => :_blank do %>
+                                                <%= image_tag "#{t('site.base_url')}/images/auth/facebook_64.png", :title => 'Facebook', :class => 'social' %>
                                               <% end %>
                                             <% end %>
                                             <% if @notification.twitter_text %>
                                               <%= link_to "http://twitter.com/?status=#{@notification.twitter_text}", :target => :_blank do %>
-                                                <%= image_tag @notification.site.full_url("/images/auth/twitter_64.png"), :title => 'Twitter', :class => 'social' %>
+                                                <%= image_tag "#{t('site.base_url')}/images/auth/twitter_64.png", :title => 'Twitter', :class => 'social' %>
                                               <% end %>
                                             <% end %>
                                           </div>
                                           <br>
                                         <% end %>
-                                        <%= render :partial => "/sites/#{@notification.site.path}/notification_email_footer" %>
+                                        <%= t('.salutation') %>
+                                        <br/>
+                                        <br/>
+                                        <%= t('.signature') %>
                                       </p>
                                     </div>
                                   </td>
@@ -142,7 +153,7 @@
                           <td align="right" valign="top" style="margin:0; padding:20px 0; color:#333333; font-size:11px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; border:0 none; text-align:right;">
                             <a href="#" id="whitelist" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 18px; "><%= t('.whitelist_long') %></a>
                             <br><br>
-                            <%= t('.intro', :site => @notification.site.in_the_name) %><br><%= t('.unsubscribe_long') %>, <a href="#" id="unsubscribe" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal;"><%= t('click_here').downcase %></a>
+                            <%= t('.intro') %><br><%= t('.unsubscribe_long') %>, <a href="#" id="unsubscribe" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal;"><%= t('click_here').downcase %></a>
                             <br><br>
                             <a href="http://mailee.me/" style="color: #008800 !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 18px; "><%= t('.mailee') %></a>
                           </td>

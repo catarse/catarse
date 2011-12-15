@@ -6,6 +6,3 @@
       - else
         = @project.name
     %h2= t('.subtitle_html', :link => link_to(@project.user.display_name, user_path(@project.user)))
-    - if @project.site != current_site
-      = link_to @project.site.full_url, :target => :_blank do
-        = image_tag "sites/#{@project.site.path}/badge_site.#{I18n.locale}.png", :id => 'badge'
