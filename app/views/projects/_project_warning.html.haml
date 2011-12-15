@@ -1,7 +1,5 @@
-- unless @project.visible?
-  #project_warning
-    - if @project.rejected?
-      = t('.rejected')
-    - else
-      = t('.waiting')
-
+#project_warning
+  - if @project.rejected?
+    = t('.rejected')
+  - else
+    = t('.waiting')

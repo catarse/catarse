@@ -136,7 +136,7 @@ class Project < ActiveRecord::Base
     end
   end
   def can_back?
-    visible? and not expired? and not rejected?
+    not expired? and not rejected?
   end
   def finish!
     return unless expired? and can_finish and not finished
