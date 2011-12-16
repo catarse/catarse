@@ -28,5 +28,11 @@ module HelperMethods
       project = create(:project, :name => "Foo bar #{n}")
     end
   end
+  
+  def verify_translations
+    page.should_not have_css('.translation_missing')
+    page.should_not have_content('translation missing')
+  end
+  
 end
 RSpec.configuration.include HelperMethods, :type => :acceptance
