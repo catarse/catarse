@@ -172,9 +172,9 @@ en:
   not_informed: "not informed"
   notify_locale: "We identified your language by your browser. If you prefer another one, click on one of the flags on the right."
   on_the_spot:
-    cancel: ~
-    ok: ~
-    tooltip: ~
+    cancel: Cancel
+    ok: OK
+    tooltip: "Click to edit..."
   payment_stream:
     thank_you:
       error: "Ooops. You can only access this page after backing a project."
@@ -481,6 +481,6 @@ en:
       whitelist: "Add contact"
       whitelist_long: "Add our email to your contacts"
   will_paginate:
-    next: ~
-    page_gap: ~
-    previous: ~
+    next: "Next »"
+    page_gap: "..."
+    previous: "« Previous"
