@@ -62,18 +62,6 @@ class ProjectsController < ApplicationController
       @comment = @project.comments.new
     }
   end
-  def guidelines
-    @title = t('projects.guidelines.title')
-  end
-  def faq
-    @title = t('projects.faq.title')
-  end
-  def terms
-    @title = t('projects.terms.title')
-  end
-  def privacy
-    @title = t('projects.privacy.title')
-  end
   def vimeo
     project = Project.new(:video_url => params[:url])
     if project.vimeo
@@ -181,31 +169,31 @@ class ProjectsController < ApplicationController
     @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
     render :json => @backers.to_json(:can_manage => can?(:manage, @project))
   end
-  
+
   def comments
     @project = Project.find params[:id]
     @comments = @project.comments.order("created_at DESC").paginate :page => params[:page], :per_page => 5
     respond_with @comments
   end
-  
+
   def updates
     @project = Project.find params[:id]
     @updates = @project.updates.order("created_at DESC").paginate :page => params[:page], :per_page => 3
     respond_with @updates
   end
-  
+
   def embed
     @project = Project.find params[:id]
     @title = @project.name
     render :layout => 'embed'
   end
-  
+
   def video_embed
     @project = Project.find params[:id]
     @title = @project.name
     render :layout => 'embed'
   end
-  
+
   def pending
     return unless require_admin
     @title = t('projects.pending.title')
