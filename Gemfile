@@ -29,7 +29,7 @@ gem 'paypal-express', :require => 'paypal'
 gem 'brcep'
 gem "meta_search"
 gem "RedCloth"
-gem "auto_html", '>= 1.3.5'
+gem "auto_html", '= 1.3.6'
 gem "acts_as_commentable"
 gem 'mustache'
 gem 'unicode'
