@@ -1,4 +1,5 @@
 # coding: utf-8
+
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "Pending projects" do
@@ -17,7 +18,7 @@ feature "Pending projects" do
     user_to_admin(current_user)
     visit pending_projects_path
     verify_translations
-    page.should_not have_css('.failure.wrapper')
+    page.should have_no_css('.failure.wrapper')
     page.should have_css('#content_header', :text => 'Gerenciamento dos projetos')
   end
 
@@ -35,7 +36,7 @@ feature "Pending projects" do
     user_to_admin(current_user)
     visit root_path
     verify_translations
-    page.should_not have_css('.project_list_header')
+    page.should have_no_css('.project_list_header')
     visit pending_projects_path
     check 'project__visible__1'
     check 'project__home_page__1'
@@ -48,4 +49,5 @@ feature "Pending projects" do
       page.should have_css '.project_box .project_header', :text => 'Foo bar 0'
     end
   end
+
 end
