@@ -11,6 +11,7 @@ feature "Send Project Feature", :driver => :selenium do
     visit homepage
     fake_login
     click_link 'Envie seu projeto'
+    verify_translations
     current_path.should == guidelines_path
     within 'head title' do
       page.should have_content("Como funciona")
@@ -25,6 +26,7 @@ feature "Send Project Feature", :driver => :selenium do
     check 'accept'
     find_button('Quero enviar meu projeto')['disabled'].should == 'false'
     click_button 'Quero enviar meu projeto'
+    verify_translations
     current_path.should == start_projects_path
     within '#content_header' do
       within 'h1' do
@@ -37,7 +39,9 @@ feature "Send Project Feature", :driver => :selenium do
       fill_in 'links', :with => 'links of this very cool project'
       fill_in 'contact', :with => 'foo@bar.com'
       check 'accept'
+      verify_translations
       click_button 'Enviar o projeto'
+      verify_translations
     end
     ActionMailer::Base.deliveries.should_not be_empty
     current_path.should == homepage
