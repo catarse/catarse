@@ -3,7 +3,7 @@
   -# Meta tags for facebook social graph
   %meta{:property => "og:title", :content => @project.name}
   %meta{:property => "og:type", :content => 'cause'}
-  %meta{:property => "og:url", :content => project_url(@project)}
+  %meta{:property => "og:url", :content => "#{t('site.base_url')}#{project_path(@project)}"}
   %meta{:property => "og:image", :content => @project.display_image}
   %meta{:property => "og:site_name", :content => t('site.name')}
   %meta{:property => "og:description", :content => @project.headline}
