@@ -4,11 +4,11 @@
       .status_image
         = link_to project_path(project) do
           - if project.successful?
-            = image_tag "sites/#{current_site.path}/successful.#{I18n.locale}.png"
+            = image_tag "successful.#{I18n.locale}.png"
           - elsif project.waiting_confirmation?
-            = image_tag "sites/#{current_site.path}/waiting_confirmation.#{I18n.locale}.png"
+            = image_tag "waiting_confirmation.#{I18n.locale}.png"
           - else
-            = image_tag "sites/#{current_site.path}/not_successful.#{I18n.locale}.png"
+            = image_tag "not_successful.#{I18n.locale}.png"
     .project_category= project.category.name
     .project_header
       = link_to project_path(project) do
@@ -40,3 +40,6 @@
           %strong #{project.time_to_go[:time]} #{project.time_to_go[:unit]}
           %br
           #{pluralize_without_number(project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+- if defined?(project_curated_page) and project_curated_page.count > 0 and project_curated_page.first.description.present?
+  .project_curator_description
+    %span= project_curated_page.first.description

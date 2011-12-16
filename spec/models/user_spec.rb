@@ -1,6 +1,18 @@
 require 'spec_helper'
 
 describe User do
+  context "#display_nickname" do
+    it "when user don't have the nickname" do
+      user = create(:user,:name=>'Lorem Ipsum',:nickname=>'profile.php?id=1234')
+      user.display_nickname.should == 'Lorem Ipsum'
+    end
+
+    it 'user with nickname' do
+      user = create(:user,:name=>'Lorem Ipsum',:nickname=>'lorem.ipsum')
+      user.display_nickname.should == 'lorem.ipsum'
+    end
+  end
+
   it "should be valid from factory" do
     u = Factory(:user)
     u.should be_valid
@@ -75,13 +87,13 @@ describe User do
       'uid' => "foobar",
       'user_info' => {
         'name' => "Foo bar",
-        'email' => 'another_email@catarse.me',
+        'email' => 'another_email@anotherdomain.com',
         'nickname' => "foobar",
         'description' => "Foo bar's bio".ljust(200),
         'image' => "user.png"
       }
     }
-    u = User.create_with_omniauth(Factory(:site), auth, primary.id)
+    u = User.create_with_omniauth(auth, primary.id)
     u.should == primary
     User.count.should == 2
   end
@@ -104,7 +116,7 @@ describe User do
         'image' => "user.png"
       }
     }
-    u = User.create_with_omniauth(Factory(:site), auth)
+    u = User.create_with_omniauth(auth)
     u.should be_valid
     u.provider.should == auth['provider']
     u.uid.should == auth['uid']
@@ -119,7 +131,7 @@ describe User do
     u = Factory(:user, :name => nil, :nickname => "Nickname")
     u.display_name.should == "Nickname"
     u = Factory(:user, :name => nil, :nickname => nil)
-    u.display_name.should == "Sem nome"
+    u.display_name.should == I18n.t('user.no_name')
   end
   it "should have a display_image that shows the user's image or user.png when email is null" do
     u = Factory(:user, :image_url => "image.png", :email => nil)
@@ -129,26 +141,26 @@ describe User do
   end
   it "should insert a gravatar in user's image if there is one available" do
     u = Factory(:user, :image_url => nil, :email => 'diogob@gmail.com')
-    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=http://catarse.me/images/user.png"
+    u.display_image.should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{I18n.t('site.base_url')}/images/user.png"
   end
   it "should have a remember_me_hash with the MD5 of the provider + ## + uid" do
     u = Factory(:user, :provider => "foo", :uid => "bar")
     u.remember_me_hash.should == "27fc6690fafccbb0fc0b8f84c6749644"
   end
   it "should merge into another account, taking the credits, backs, projects, comments and notifications with it" do
-    
+
     old_user = Factory(:user, :credits => 50)
     new_user = Factory(:user, :credits => 20)
     backed_project = Factory(:project)
-    old_user_back = backed_project.backers.create!(:site => backed_project.site, :user => old_user, :value => 10)
-    new_user_back = backed_project.backers.create!(:site => backed_project.site, :user => new_user, :value => 10)
+    old_user_back = backed_project.backers.create!(:user => old_user, :value => 10)
+    new_user_back = backed_project.backers.create!(:user => new_user, :value => 10)
     old_user_project = Factory(:project, :user => old_user)
     new_user_project = Factory(:project, :user => new_user)
     old_user_comment = backed_project.comments.create!(:user => old_user, :comment => "Foo bar")
     new_user_comment = backed_project.comments.create!(:user => new_user, :comment => "Foo bar")
-    old_user_notification = old_user.notifications.create!(:site => backed_project.site, :text => "Foo bar")
-    new_user_notification = new_user.notifications.create!(:site => backed_project.site, :text => "Foo bar")
-    
+    old_user_notification = old_user.notifications.create!(:text => "Foo bar")
+    new_user_notification = new_user.notifications.create!(:text => "Foo bar")
+
     old_user.credits.should == 50
     new_user.credits.should == 20
     old_user.backs.should == [old_user_back]
@@ -159,11 +171,11 @@ describe User do
     new_user.comments.should == [new_user_comment]
     old_user.notifications.should == [old_user_notification]
     new_user.notifications.should == [new_user_notification]
-    
+
     old_user.merge_into!(new_user)
     old_user.reload
     new_user.reload
-    
+
     old_user.primary.should == new_user
     old_user.credits.should == 0
     new_user.credits.should == 70
@@ -175,7 +187,5 @@ describe User do
     new_user.comments.order(:created_at).should == [old_user_comment, new_user_comment]
     old_user.notifications.should == []
     new_user.notifications.order(:created_at).should == [old_user_notification, new_user_notification]
-    
   end
 end
-

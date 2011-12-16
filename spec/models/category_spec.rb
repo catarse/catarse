@@ -16,4 +16,3 @@ describe Category do
     c2.should_not be_valid
   end
 end
-

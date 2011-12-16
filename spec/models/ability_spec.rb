@@ -1,12 +1,10 @@
 require 'spec_helper'
 require "cancan/matchers"
 
-describe Category do
+describe Ability do
   it "should enable admin to manage everything" do
     user = Factory.build(:user, :admin => true)
-    site = Factory.build(:site)
     ability = Ability.new(user)
-    ability.should be_able_to(:manage, Site)
     ability.should be_able_to(:manage, Category)
     ability.should be_able_to(:manage, Configuration)
     ability.should be_able_to(:manage, Category)
@@ -20,7 +18,6 @@ describe Category do
     project = Factory.build(:project)
     project.save
     ability = Ability.new(user)
-    ability.should_not be_able_to(:manage, Site)
     ability.should_not be_able_to(:manage, Category)
     ability.should_not be_able_to(:manage, Configuration)
     ability.should_not be_able_to(:manage, Category)
@@ -31,7 +28,7 @@ describe Category do
   it "should enable users to manage only own projects" do
     user = Factory.build(:user)
     user.save
-    project = Factory.build(:project, :user => user)
+    project = Factory.build(:project, :managers => [user])
     project.save
     user2 = Factory.build(:user)
     user2.save
@@ -44,7 +41,7 @@ describe Category do
   it "should enable user manage his own project rewards" do
     user = Factory.build(:user)
     user.save
-    project = Factory.build(:project, :user => user)
+    project = Factory.build(:project, :managers => [user])
     project.save
     reward = Factory.build(:reward, :project => project)
     reward.save

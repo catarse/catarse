@@ -2,6 +2,8 @@
   %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "320", :height => "240"}
   %h1= link_to @project.name, project_path(@project)
   #video_embed_footer
-    %h2 #{t('.a_project_by')} #{link_to @project.user.display_name, user_path(@project.user)} #{current_site.in_the}
-    #site_link= render :partial => "/sites/#{current_site.path}/logo"
+    %h2 #{t('.a_project_by', :link => link_to(@project.user.display_name, user_path(@project.user)))}
+    #platform_link
+      = link_to root_path do
+        = image_tag "logo.png", :title => t('site.name')
 = javascript_include_tag 'embed'

@@ -1,0 +1,29 @@
+= content_for :content_header do
+  %h1= t('.title')
+  %h2= t('.subtitle')
+#explore_projects
+  #explore_menu
+    - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
+      %h3= t('.quick_explore')
+      %ul#explore_quick
+        - unless @recommended.empty?
+          %li= link_to t('.recommended'), '#', :id => 'menu_recommended', :class => (params[:quick] == 'recommended' ? 'selected' : nil)
+        - unless @expiring.empty?
+          %li= link_to t('.expiring'), '#', :id => 'menu_expiring', :class => (params[:quick] == 'expiring' ? 'selected' : nil)
+        - unless @recent.empty?
+          %li= link_to t('.recent'), '#', :id => 'menu_recent', :class => (params[:quick] == 'recent' ? 'selected' : nil)
+        - unless @successful.empty?
+          %li= link_to t('.successful'), '#', :id => 'menu_successful', :class => (params[:quick] == 'successful' ? 'selected' : nil)
+    - unless @categories.empty?
+      %h3= t('.categories')
+      %ul#explore_categories
+        - @categories.each do |category|
+          %li= link_to category.name, '#', :id => "category_#{category.id}"
+  #explore_results
+    #explore_recommended.results= render :partial => 'projects/project', :collection => @recommended
+    #explore_expiring.results.hide= render :partial => 'projects/project', :collection => @expiring
+    #explore_recent.results.hide= render :partial => 'projects/project', :collection => @recent
+    #explore_successful.results.hide= render :partial => 'projects/project', :collection => @successful
+    #explore_all.results.hide= render :partial => 'projects/project', :collection => @all
+  .clear
+= javascript_include_tag 'explore_projects'

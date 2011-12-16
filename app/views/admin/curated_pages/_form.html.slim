@@ -1,0 +1,10 @@
+= semantic_form_for [:admin, @curated_page], :html => {:multipart => true} do |f|
+  = f.inputs do
+    = f.input :name
+    = f.input :permalink
+    = f.input :description, :as => :text
+    = f.input :logo, :as => :file
+    = f.input :video_url
+    = f.input :visible
+  = f.buttons do
+    = f.submit

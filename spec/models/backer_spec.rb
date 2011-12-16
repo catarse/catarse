@@ -1,6 +1,41 @@
 require 'spec_helper'
 
 describe Backer do
+
+  # it "should update user.credits when save a backer" do
+  #   u = Factory(:user)
+  #   u.save
+  #   b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :user => u)
+  #   b.save
+  #   u.credits.should == 10
+  #   b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :user => u)
+  #   b2.save
+  #   u.credits.should == 20
+  # end
+
+  it "should not add backer value as credits for user if could not be refunded" do
+    u = Factory(:user)
+    u.save
+    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => false, :user => u)
+    b.save
+    u.credits.should == 0
+    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => false, :user => u)
+    b2.save
+    u.credits.should == 0
+  end
+
+  it "should not add backer value as credits for user if not confirmed" do
+    u = Factory(:user)
+    u.save
+    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :confirmed => false, :user => u)
+    b.save
+    u.credits.should == 0
+    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :confirmed => false, :user => u)
+    b2.save
+    u.credits.should == 0
+  end
+
+  it { should have_many(:payment_logs) }
   it "should be valid from factory" do
     b = Factory(:backer)
     b.should be_valid
@@ -89,5 +124,67 @@ describe Backer do
     Kernel.rand.should == 1
     backer = Factory(:backer)
     backer.key.should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s
+  end
+  it "after create should define 'MoIP' how default payment_method" do
+    backer = Factory(:backer)
+    backer.payment_method.should == 'MoIP'
+  end
+
+  describe "#payment_service_fee" do
+    before(:each) do
+      @project = create(:project)
+    end
+    context "when payment is MoIP" do
+      before(:each) do
+        @backer = create(:backer, :project => @project, :payment_method => 'MoIP')
+        create(:payment_detail, :backer => @backer)
+      end
+
+      it "get moip tax" do
+        @backer.payment_service_fee.should == 19.37
+      end
+    end
+
+    context "when payment is PayPal" do
+      before(:each) do
+        @backer = create(:backer, :project => @project, :payment_method => 'PayPal')
+        @backer.reload
+        HTTParty.stubs(:get).returns(FakeResponse.new)
+      end
+
+      it "get paypal tax" do
+        @backer.payment_method = 'PayPal'
+        @backer.save!
+        @backer.payment_service_fee.should == 5.72
+      end
+    end
+  end
+
+  describe "#display_platform_fee" do
+    before(:each) do
+      @backer = create(:backer, :value => 100)
+    end
+
+    it 'with default tax 7.5%'do
+      @backer.display_platform_fee.should == 'R$ 7,50'
+    end
+
+    it 'with another tax'do
+      @backer.display_platform_fee(5).should == 'R$ 5,00'
+    end
+  end
+
+  describe "#platform_fee" do
+    before(:each) do
+      @backer = create(:backer, :value => 100)
+    end
+
+    it 'with default tax 7.5%'do
+      @backer.platform_fee.should == 7.50
+    end
+
+    it 'with another tax'do
+      @backer.platform_fee(5).should == 5.00
+    end
   end
 end
