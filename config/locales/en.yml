@@ -145,17 +145,17 @@ en:
         signup: Signup
         submit: "Submit your project"
       notifications:
-        new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check</a>!"
+        new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check out</a>!"
     footer:
-      blog: "Reed the blog"
+      blog: "Our blog"
       comum: "Grupo Comum"
       email: Contact
-      facebook: "Like on Facebook"
+      facebook: "Our Facebook"
       faq: FAQ/Help
       guidelines: "How does it work?"
       privacy: "Privacy policy"
       terms: "Terms of use"
-      twitter: "Follow on Twitter"
+      twitter: "Our Twitter"
     login:
       description_html: "We will <strong>never</strong> know your password or any other secret data from the chosen social network. We will only have access to your basic information, like name, photo and email."
       remember_me: "Remember me and keep me connected."
@@ -171,6 +171,10 @@ en:
       my_profile: "My profile"
   not_informed: "not informed"
   notify_locale: "We identified your language by your browser. If you prefer another one, click on one of the flags on the right."
+  on_the_spot:
+    cancel: ~
+    ok: ~
+    tooltip: ~
   payment_stream:
     thank_you:
       error: "Ooops. You can only access this page after backing a project."
@@ -476,3 +480,7 @@ en:
       weblink: "View on the web"
       whitelist: "Add contact"
       whitelist_long: "Add our email to your contacts"
+  will_paginate:
+    next: ~
+    page_gap: ~
+    previous: ~

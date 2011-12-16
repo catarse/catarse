@@ -476,3 +476,11 @@ pt:
       weblink: "Ver na web"
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
+  will_paginate:
+    next: "Próxima »"
+    page_gap: "..."
+    previous: "« Anterior"
+  on_the_spot:
+    cancel: Cancelar
+    ok: OK
+    tooltip: "Clique para editar..."
