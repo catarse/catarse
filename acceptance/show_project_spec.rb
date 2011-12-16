@@ -1,6 +1,7 @@
-# encoding: utf-8
+# coding: utf-8
 
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
+
 feature "Show Project Feature", :driver => :selenium do
 
   include Rails.application.routes.url_helpers
@@ -34,32 +35,32 @@ feature "Show Project Feature", :driver => :selenium do
     within "#project_about" do
       page.should have_content(p.about)
     end
-    page.should_not have_css("#project_updates")
-    page.should_not have_css("#project_backers")
-    page.should_not have_css("#project_comments")
+    page.should have_no_css("#project_updates")
+    page.should have_no_css("#project_backers")
+    page.should have_no_css("#project_comments")
 
     click_link "Atualizações"
     verify_translations
     page.should have_css("#project_updates")
     page.should have_content("Este projeto ainda não teve atualizações. Aguarde =D")
-    page.should_not have_css("#project_about")
-    page.should_not have_css("#project_backers")
-    page.should_not have_css("#project_comments")
+    page.should have_no_css("#project_about")
+    page.should have_no_css("#project_backers")
+    page.should have_no_css("#project_comments")
 
     click_link "Apoiadores"
     verify_translations
     page.should have_css("#project_backers")
     page.should have_content "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
-    page.should_not have_css("#project_about")
-    page.should_not have_css("#project_updates")
-    page.should_not have_css("#project_comments")
+    page.should have_no_css("#project_about")
+    page.should have_no_css("#project_updates")
+    page.should have_no_css("#project_comments")
 
     click_link "Comentários"
     verify_translations
     page.should have_css("#project_comments")
-    page.should_not have_css("#project_about")
-    page.should_not have_css("#project_updates")
-    page.should_not have_css("#project_backers")
+    page.should have_no_css("#project_about")
+    page.should have_no_css("#project_updates")
+    page.should have_no_css("#project_backers")
 
     click_link("Sobre")
     verify_translations
@@ -67,9 +68,10 @@ feature "Show Project Feature", :driver => :selenium do
     within "#project_about" do
       page.should have_content(p.about)
     end
-    page.should_not have_css("#project_updates")
-    page.should_not have_css("#project_backers")
-    page.should_not have_css("#project_comments")
+    page.should have_no_css("#project_updates")
+    page.should have_no_css("#project_backers")
+    page.should have_no_css("#project_comments")
     
   end
+
 end
