@@ -1,5 +1,7 @@
 # coding: utf-8
+
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
+
 feature "New Project Feature", :driver => :selenium do
 
   scenario "I'm not logged in and I want to send a project. It should ask for login." do
@@ -10,6 +12,7 @@ feature "New Project Feature", :driver => :selenium do
   end
 
   scenario "I am logged in and I want to send a project" do
+
     c = Factory(:category)
     visit homepage
     fake_login
@@ -44,6 +47,8 @@ feature "New Project Feature", :driver => :selenium do
     p.name.should == 'test project'
     p.expires_at.should == Time.parse('2012-12-21') + (23.hours + 59.minutes + 59.seconds)
     page.should have_content("test project")
+
   end
+
 end
 
