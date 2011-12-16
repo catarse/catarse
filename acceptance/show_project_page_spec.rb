@@ -8,6 +8,7 @@ feature "Show Project Feature", :driver => :selenium do
   scenario "As a user, I want to see a project page" do
     p = Factory.create(:project)
     visit project_path(p)
+    verify_translations
     within '#project_header' do
       within 'h1' do
         page.should have_content(p.name)
@@ -26,6 +27,7 @@ feature "Show Project Feature", :driver => :selenium do
     page.should_not have_css("#project_comments")
 
     click_link "Atualizações"
+    verify_translations
     page.should have_css("#project_updates")
     # within "#project_updates" do
     #   page.should have_content("Este projeto ainda não teve atualizações. Aguarde =D")
@@ -35,6 +37,7 @@ feature "Show Project Feature", :driver => :selenium do
     page.should_not have_css("#project_comments")
 
     click_link "Apoiadores"
+    verify_translations
     page.should have_css("#project_backers")
     # within "#project_backers" do
     #   page.should have_content "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
@@ -44,12 +47,14 @@ feature "Show Project Feature", :driver => :selenium do
     page.should_not have_css("#project_comments")
 
     click_link "Comentários"
+    verify_translations
     page.should have_css("#project_comments")
     page.should_not have_css("#project_about")
     page.should_not have_css("#project_updates")
     page.should_not have_css("#project_backers")
 
     click_link("Sobre")
+    verify_translations
     page.should have_css("#project_about")
     within "#project_about" do
       page.should have_content(p.about)
