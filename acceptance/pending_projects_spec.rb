@@ -1,7 +1,7 @@
 # coding: utf-8
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
-feature "Manage pending projects" do
+feature "Pending projects" do
 
   before do
     fake_login
