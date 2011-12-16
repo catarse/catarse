@@ -6,10 +6,12 @@ Catarse::Application.routes.draw do
   root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
+  # Static Pages
   match "/guidelines" => "static#guidelines", :as => :guidelines
   match "/faq" => "static#faq", :as => :faq
   match "/terms" => "static#terms", :as => :terms
   match "/privacy" => "static#privacy", :as => :privacy
+
   match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/moip" => "payment_stream#moip", :as => :moip
   match "/explore" => "explore#index", :as => :explore
@@ -37,7 +39,6 @@ Catarse::Application.routes.draw do
       get 'pending'
       get 'pending_backers'
       get 'thank_you'
-      post 'moip'
       post 'update_attribute_on_the_spot'
     end
     member do

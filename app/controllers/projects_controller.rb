@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   respond_to :html, :except => [:backers, :comments, :updates]
   respond_to :json, :only => [:show, :backers, :comments, :updates]
   can_edit_on_the_spot
-  skip_before_filter :detect_locale, :only => [:backers, :comments, :updates, :moip]
+  skip_before_filter :detect_locale, :only => [:backers, :comments, :updates]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create]
   def date_format_convert
