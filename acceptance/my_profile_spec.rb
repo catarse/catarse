@@ -1,5 +1,7 @@
 # coding: utf-8
+
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
+
 feature "My profile Feature" do
 
   scenario "I should be able to see and edit my profile when I click on 'Meu perfil'" do
@@ -51,6 +53,47 @@ feature "My profile Feature" do
     backed_projects = lists.shift
     within backed_projects do
       all('li').should have(7).items
+    end
+    
+    # Testing on the spot edits
+    
+    within '#content_header' do
+      within 'h1' do
+        page.should have_no_content("New user name")
+        page.should have_content(user.display_name)
+        find("span").click
+        find("input").set("New user name")
+        click_on "OK"
+        page.should have_no_content(user.display_name)
+        page.should have_content("New user name")
+        user.reload
+        user.display_name.should == "New user name"
+      end
+      within 'h2' do
+        page.should have_no_content("New user biography")
+        page.should have_content(user.bio)
+        find("span").click
+        find("textarea").set("New user biography")
+        click_on "OK"
+        page.should have_no_content(user.bio)
+        page.should have_content("New user biography")
+        user.reload
+        user.bio.should == "New user biography"
+      end
+    end
+    
+    within first("#user_feed ul") do
+      within first("li") do
+        page.should have_no_content("new@email.com")
+        page.should have_content(user.email)
+        find("span").click
+        find("input").set("new@email.com")
+        click_on "OK"
+        page.should have_no_content(user.email)
+        page.should have_content("new@email.com")
+        user.reload
+        user.email.should == "new@email.com"
+      end
     end
     
   end
