@@ -1,6 +1,7 @@
 - unless @curated_pages.empty?
-  h2 Canais Catárticos
-  p Descubra projetos selecionados por alguns dos parceiros catárticos
-  ul
+  .curated_page_header
+    .project_list_header= t(".title")
+    .project_list_subheader= t(".subtitle")
+  ul#curated_pages_list
     - curated_pages.each do |cp|
-      li= link_to image_tag(cp.logo.thumb.url), curated_page_path(cp.permalink)
+      li.curated_page= link_to image_tag(cp.logo.thumb.url), curated_page_path(cp.permalink)

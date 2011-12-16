@@ -1,15 +1,20 @@
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 gem 'rails', '3.0.3'
 gem 'rake', '0.8.7'
-gem 'pg'
 gem 'haml'
 gem 'slim'
-gem 'compass'
-gem 'omniauth'
+gem 'sass', '3.1.7'
+gem 'compass', '0.11.5'
+gem 'omniauth', '0.1.6'
 gem 'formtastic', '~> 1.1.0'
 gem 'validation_reflection'
-gem 'inherited_resources', '>= 1.1.2'
+gem 'inherited_resources', '= 1.1.2'
 gem 'maxim-sexy_pg_constraints'
 gem 'spectator-validates_email', :require => 'validates_email'
 gem 'vimeo'
@@ -34,8 +39,15 @@ gem 'cancan'
 gem 'activeadmin', "= 0.2.2"
 gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
 gem 'rmagick'
+gem 'fog'
+gem 'capybara', ">= 0.4.0"
+gem 'enumerate_it'
+gem 'httparty'
+gem "rack-timeout"
+gem 'web_translate_it'
+
 group :test, :development do
-  gem 'capybara', ">= 0.4.0"
+  gem 'annotate'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'steak', "~> 1.1.0"
@@ -44,3 +56,15 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'mocha'
 end
+
+group :test do
+  gem 'shoulda'
+end
+
+# if you want use capybara-webkit, compile QT and be happy :)
+# group :test do
+#   gem 'capybara-webkit', "0.6.1"
+# end
+
+# Putting pg to the end because of a weird bug with Lion, pg and openssl
+gem 'pg'

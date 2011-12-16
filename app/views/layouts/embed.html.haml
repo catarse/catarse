@@ -2,15 +2,14 @@
 %html{:lang => :pt}
   %head
     %meta{:charset => 'utf-8'}
-    %title= "#{@title}#{' · ' if @title}#{current_site.name}"
+    %title= "#{@title}#{' · ' if @title}#{t('site.name')}"
     = stylesheet_link_tag 'le-frog/jquery-ui-1.8.6.custom.css', :media => 'screen, projection'
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
-    = stylesheet_link_tag "sites/#{current_site.path}.css", :media => 'screen, projection'
     /[if lt IE 9]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
     = javascript_include_tag 'jquery-1.4.4.min', 'jquery-ui-1.8.6.custom.min', 'jquery.ui.datepicker-pt-BR', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup'
     = csrf_meta_tag
-    %link{ :rel => 'shortcut icon', :href => "/images/sites/#{current_site.path}/favicon.ico" }
+    %link{ :rel => 'shortcut icon', :href => "/images/favicon.ico" }
     = render '/layouts/analytics'
-  %body#site
+  %body#platform
     = yield

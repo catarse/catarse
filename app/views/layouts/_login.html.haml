@@ -2,7 +2,7 @@
   #login.hide
     %a.close{ :href => '#' } X
     %h1= t('.title')
-    = form_tag(pre_auth_path) do
+    = form_tag(auth_path) do
       = hidden_field_tag 'provider'
       = hidden_field_tag 'return_to'
       = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'

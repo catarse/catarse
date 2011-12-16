@@ -5,6 +5,47 @@ describe Project do
     p = Factory(:project)
     p.should be_valid
   end
+
+  it "should remove dependencies when destroy a project" do
+    p = Factory.build(:project)
+    p.save
+    r = Factory.build(:reward, :project_id => p.id)
+    r.save
+
+    p.destroy
+    p.destroyed?.should be_true
+    lambda { r.reload }.should raise_error
+  end
+
+  it "should correctly parse video_url" do
+    project = Factory.build(:project, :video_url => " http://vimeo.com/6428069 ")
+    project.save
+    project.persisted?.should be_true
+    project.vimeo_id.should == "6428069"
+    project = Factory.build(:project, :video_url => "xyzhttp://vimeo.com/6428069bar")
+    project.save
+    project.persisted?.should be_true
+    project.vimeo_id.should == "6428069"
+  end
+
+  it "should generate credits for users when project finishes and didn't succeed" do
+    user = Factory(:user)
+    user.save
+    project = Factory.build(:project, :can_finish => true, :finished => false, :goal => 1000, :expires_at => (Time.now - 1.day))
+    project.save
+    back = Factory.build(:backer, :project => project, :user => user, :value => 50, :notified_finish => false, :can_refund => false, :confirmed => true)
+    back.save
+    back.confirm!
+    project.finish!
+    project.reload
+    project.backers.size.should == 1
+    user.backs.size.should == 1
+    back.reload
+    back.value.should == 50
+    back.can_refund.should be_true
+    user.reload
+    user.credits.should == 50
+  end
   it "display_image should return image_url if it exists" do
     p = Factory(:project, :image_url => 'http://test.com/image')
     p.display_image.should == 'http://test.com/image'
@@ -132,37 +173,37 @@ describe Project do
     Time.stubs(:now).returns(time)
     p.expires_at = 30.days.from_now
     p.time_to_go[:time].should == 30
-    p.time_to_go[:unit].should == "dias"
+    p.time_to_go[:unit].should == pluralize_without_number(30, I18n.t('datetime.prompts.day').downcase)
     p.expires_at = 1.day.from_now
     p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == "dia"
+    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.day').downcase)
     p.expires_at = 23.hours.from_now + 59.minutes + 59.seconds
     p.time_to_go[:time].should == 24
-    p.time_to_go[:unit].should == "horas"
+    p.time_to_go[:unit].should == pluralize_without_number(24, I18n.t('datetime.prompts.hour').downcase)
     p.expires_at = 1.hour.from_now
     p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == "hora"
+    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.hour').downcase)
     p.expires_at = 59.minutes.from_now
     p.time_to_go[:time].should == 59
-    p.time_to_go[:unit].should == "minutos"
+    p.time_to_go[:unit].should == pluralize_without_number(59, I18n.t('datetime.prompts.minute').downcase)
     p.expires_at = 1.minute.from_now
     p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == "minuto"
+    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.minute').downcase)
     p.expires_at = 59.seconds.from_now
     p.time_to_go[:time].should == 59
-    p.time_to_go[:unit].should == "segundos"
+    p.time_to_go[:unit].should == pluralize_without_number(59, I18n.t('datetime.prompts.second').downcase)
     p.expires_at = 1.second.from_now
     p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == "segundo"
+    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.second').downcase)
     p.expires_at = 0.seconds.from_now
     p.time_to_go[:time].should == 0
-    p.time_to_go[:unit].should == "segundos"
+    p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
     p.expires_at = 1.second.ago
     p.time_to_go[:time].should == 0
-    p.time_to_go[:unit].should == "segundos"
+    p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
     p.expires_at = 30.days.ago
     p.time_to_go[:time].should == 0
-    p.time_to_go[:unit].should == "segundos"
+    p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
   end
   it "should be waiting confirmation until 3 weekdays after the deadline unless it is already successful" do
     p = Factory(:project, :goal => 100)
@@ -186,5 +227,12 @@ describe Project do
     p.expires_at = 2.weekdays_ago
     p.waiting_confirmation?.should be_false
   end
-end
 
+  it "should be able to be in more than one curated page" do
+    cp = Factory.build(:curated_page)
+    cp2 = Factory.build(:curated_page)
+    p = Factory.build(:project, :curated_pages => [cp,cp2])
+    p.curated_pages.size.should be 2
+    p.should be_valid
+  end
+end

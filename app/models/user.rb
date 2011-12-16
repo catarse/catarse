@@ -3,8 +3,14 @@ class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
   include Rails.application.routes.url_helpers
-  sync_with_mailee :news => :newsletter, :list => "Newsletter"
-  validates_presence_of :provider, :uid, :site
+
+  begin
+    sync_with_mailee :news => :newsletter, :list => "Newsletter"
+  rescue Exception => e
+    Rails.logger.error "Error when syncing with mailee: #{e.inspect}"
+  end
+
+  validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
@@ -13,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :notifications
   has_many :comments
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
-  belongs_to :site
+  has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
@@ -21,6 +27,25 @@ class User < ActiveRecord::Base
 
   def admin?
     admin
+  end
+
+  def calculate_credits(sum = 0, backs = [], first = true)
+   # return sum if backs.size == 0 and not first
+   backs = self.backs.where(:confirmed => true, :requested_refund => false).order("created_at").all if backs == [] and first
+   back = backs.first
+   return sum unless back
+   sum -= back.value if back.credits
+   if back.project.finished?
+     unless back.project.successful?
+       sum += back.value
+       # puts "#{back.project.name}: +#{back.value}"
+     end
+   end
+   calculate_credits(sum, backs.drop(1), false)
+  end
+
+  def update_credits
+    self.update_attribute :credits, self.calculate_credits
   end
 
   def store_primary_user
@@ -42,7 +67,7 @@ class User < ActiveRecord::Base
     u.primary.nil? ? u : u.primary
   end
 
-  def self.create_with_omniauth(site, auth, primary_user_id = nil)
+  def self.create_with_omniauth(auth, primary_user_id = nil)
     u = create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
@@ -53,7 +78,6 @@ class User < ActiveRecord::Base
       user.nickname = auth["user_info"]["nickname"]
       user.bio = auth["user_info"]["description"][0..139] if auth["user_info"]["description"]
       user.image_url = auth["user_info"]["image"]
-      user.site = site
       user.locale = I18n.locale.to_s
     end
     # If we could not associate by email we try to use the parameter
@@ -64,6 +88,13 @@ class User < ActiveRecord::Base
   end
   def display_name
     name || nickname || I18n.t('user.no_name')
+  end
+  def display_nickname
+    if nickname =~ /profile\.php/
+      name
+    else
+      nickname||name
+    end
   end
   def short_name
     truncate display_name, :length => 26
@@ -106,19 +137,32 @@ class User < ActiveRecord::Base
     self.save
     new_user.save
   end
+
   def as_json(options={})
-    {
-      :id => id,
-      :email => email,
-      :name => display_name,
-      :short_name => short_name,
-      :medium_name => medium_name,
-      :image => display_image,
-      :total_backs => total_backs,
-      :backs_text => backs_text,
-      :url => user_path(self),
-      :admin => admin
-    }
+
+    json_attributes = {}
+    
+    if options and not options[:anonymous] 
+      json_attributes.merge!({
+        :id => id,
+        :name => display_name,
+        :short_name => short_name,
+        :medium_name => medium_name,
+        :image => display_image,
+        :total_backs => total_backs,
+        :backs_text => backs_text,
+        :url => user_path(self)
+      })
+    end
+
+    if options and options[:can_manage]
+      json_attributes.merge!({
+        :email => email
+      })
+    end
+    
+    json_attributes
+
   end
 
   protected
@@ -126,6 +170,6 @@ class User < ActiveRecord::Base
   # Returns a Gravatar URL associated with the email parameter
   def gravatar_url
     return unless email
-    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or "http://catarse.me/images/user.png"}"
+    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or "#{I18n.t('site.base_url')}/images/user.png"}"
   end
 end

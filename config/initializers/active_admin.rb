@@ -5,7 +5,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Catarse"
+  config.site_title = t('site.name')
 
 
   # == Default Namespace
@@ -74,7 +74,7 @@ ActiveAdmin.setup do |config|
   # by adding them to the comments array.
   #
   # Default:
-  # config.allow_comments_in = [:admin]
+  config.allow_comments_in = []
 
 
   # == Controller Filters
