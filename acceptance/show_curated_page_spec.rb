@@ -1,7 +1,7 @@
 # coding: utf-8
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
-feature "View curated page" do
+feature "Show curated page" do
   scenario "I should see a curated page" do
     p1 = Factory.build(:project)
     p1.save
@@ -17,6 +17,7 @@ feature "View curated page" do
     cp.save
     
     visit "/#{cp.permalink}"
+    verify_translations
     
     within '#index_header_text' do
       within 'h1' do
