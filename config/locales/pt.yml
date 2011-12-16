@@ -171,6 +171,10 @@ pt:
       my_profile: "Meu perfil"
   not_informed: "não informado"
   notify_locale: "Identificamos seu idioma pelo seu navegador. Caso você prefira outro, clique em uma das bandeiras à direita."
+  on_the_spot:
+    cancel: Cancelar
+    ok: OK
+    tooltip: "Clique para editar..."
   payment_stream:
     thank_you:
       error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
@@ -480,7 +484,3 @@ pt:
     next: "Próxima »"
     page_gap: "..."
     previous: "« Anterior"
-  on_the_spot:
-    cancel: Cancelar
-    ok: OK
-    tooltip: "Clique para editar..."
