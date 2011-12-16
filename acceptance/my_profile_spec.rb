@@ -1,5 +1,7 @@
 # coding: utf-8
+
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
+
 feature "My profile Feature" do
 
   scenario "I should be able to see and edit my profile when I click on 'Meu perfil'" do

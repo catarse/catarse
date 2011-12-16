@@ -1,4 +1,5 @@
 # coding: utf-8
+
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "Pending projects" do
@@ -48,4 +49,5 @@ feature "Pending projects" do
       page.should have_css '.project_box .project_header', :text => 'Foo bar 0'
     end
   end
+
 end
