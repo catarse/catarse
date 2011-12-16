@@ -1,7 +1,9 @@
 # coding: utf-8
+
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "Show curated page" do
+
   scenario "I should see a curated page" do
     p1 = Factory.build(:project)
     p1.save
@@ -32,4 +34,5 @@ feature "Show curated page" do
       page.should have_css(".project_box", :count => cp.projects.count)
     end
   end
+
 end

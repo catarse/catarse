@@ -1,5 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
+
 feature "Login Feature" do
+
   scenario "I open the login page but then I cancel" do
     click_login
     verify_translations
@@ -27,4 +29,5 @@ feature "Login Feature" do
     page.should have_link('Google')
     page.should have_link('Github')
   end
+
 end
