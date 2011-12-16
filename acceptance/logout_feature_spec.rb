@@ -6,5 +6,6 @@ feature "Logout Feature" do
     click_link user.display_name
     click_link "Sair"
     page.should have_no_link(user.display_name)
+    verify_translations
   end
 end

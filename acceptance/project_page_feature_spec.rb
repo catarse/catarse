@@ -4,6 +4,7 @@ feature "Project Page Feature" do
   scenario "when I access a project it should show me the facebook meta tags" do
     p = Factory(:project, :short_url => 'http://catr.se/teste')
     visit project_path(p.id)
+    verify_translations
     page.should have_css(%@meta [property="og:title"][content="#{p.name}"]@)
     page.should have_css(%@meta [property="og:type"][content="cause"]@)
 #    page.should have_css(%@meta [property="og:url"][content="#{project_url(p.id)}"]@)

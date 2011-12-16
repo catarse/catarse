@@ -17,6 +17,7 @@ feature "View curated page" do
     cp.save
     
     visit "/#{cp.permalink}"
+    verify_translations
     
     within '#index_header_text' do
       within 'h1' do
