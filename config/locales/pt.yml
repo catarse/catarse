@@ -218,6 +218,18 @@ pt:
       recent: Recentes
       successful: Bem-sucedidos
       categories: Categorias
+  static:
+    guidelines:
+      title: Como funciona o Catarse?
+      subtitle: Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse.
+      accept: Eu li e entendi como funciona o Catarse.
+      submit: Quero enviar meu projeto
+    faq:
+      title: Perguntas frequentes
+    terms:
+      title: Termos de uso
+    privacy:
+      title: Política de privacidade
   projects:
     index:
       recommended: Projetos recomendados
@@ -233,7 +245,7 @@ pt:
       title: Confira o que estão falando do Catarse na imprensa
     curated_pages_list:
       title: Canais catárticos
-      subtitle: Descubra projetos selecionados por alguns dos parceiros catárticos      
+      subtitle: Descubra projetos selecionados por alguns dos parceiros catárticos
     home_page_projects:
       title: Nossa seleção catártica!
       subtitle: Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção.
@@ -284,17 +296,6 @@ pt:
     project:
       reached: atingido
       backed: levantados
-    guidelines:
-      title: Como funciona o Catarse?
-      subtitle: Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse.
-      accept: Eu li e entendi como funciona o Catarse.
-      submit: Quero enviar meu projeto
-    faq:
-      title: Perguntas frequentes
-    terms:
-      title: Termos de uso
-    privacy:
-      title: Política de privacidade
     start:
       title: Envie seu projeto
       subtitle: A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando...
