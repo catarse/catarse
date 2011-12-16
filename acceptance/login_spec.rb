@@ -13,7 +13,7 @@ feature "Login Feature" do
   scenario "I'm new to the platform and I want to signup with a supported provider" do
     click_login
     page.should have_link('Google')
-    page.should_not have_link('Github')
+    page.should have_no_link('Github')
 
     fake_login
     verify_translations

@@ -30,8 +30,8 @@ module HelperMethods
   end
   
   def verify_translations
-    page.should_not have_css('.translation_missing')
-    page.should_not have_content('translation missing')
+    page.should have_no_css('.translation_missing')
+    page.should have_no_content('translation missing')
   end
   
 end
