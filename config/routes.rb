@@ -6,10 +6,10 @@ Catarse::Application.routes.draw do
   root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
-  match "/guidelines" => "projects#guidelines", :as => :guidelines
-  match "/faq" => "projects#faq", :as => :faq
-  match "/terms" => "projects#terms", :as => :terms
-  match "/privacy" => "projects#privacy", :as => :privacy
+  match "/guidelines" => "static#guidelines", :as => :guidelines
+  match "/faq" => "static#faq", :as => :faq
+  match "/terms" => "static#terms", :as => :terms
+  match "/privacy" => "static#privacy", :as => :privacy
   match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/moip" => "payment_stream#moip", :as => :moip
   match "/explore" => "explore#index", :as => :explore

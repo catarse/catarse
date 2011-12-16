@@ -193,6 +193,14 @@ en:
         unsuccessful_text: "The project %{link} that you backed wasn't funded. Maybe next time!"
     verify_if_video_exists_on_vimeo: "must exist on Vimeo"
     vimeo_regex_validation: "only Vimeo URLs are allowed"
+  static:
+    guidelines:
+      accept: "I have read and understood how %{site} works."
+      submit: "I want to submit my project"
+      subtitle: "Before submitting your project, learn a little about how %{site} works."
+      title: "How does %{site} work?"
+    faq:
+      title: "Frequent asked questions"
   projects:
     admin_fields:
       title: "Admin fields"
@@ -228,8 +236,6 @@ en:
     curated_pages_list:
       subtitle: ~
       title: ~
-    faq:
-      title: "Frequent asked questions"
     form:
       add_reward: "Add reward"
       important_html: "Please notice that %{site} will charge 5% if your project is successful, and %{link} charges between 6% and 7% per transaction. Add this values to your budget in order to execute the project with no surprises."
@@ -239,11 +245,6 @@ en:
       rewards_description: "We believe that the best way to inspire people to back a project is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested."
       rewards_title: Rewards
       submit: "Submit project"
-    guidelines:
-      accept: "I have read and understood how %{site} works."
-      submit: "I want to submit my project"
-      subtitle: "Before submitting your project, learn a little about how %{site} works."
-      title: "How does %{site} work?"
     home_page_projects:
       explore_recommended: "Explore more recommended projects"
       subtitle: ~
