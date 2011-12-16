@@ -5,6 +5,18 @@ feature "Show Project Feature", :driver => :selenium do
 
   include Rails.application.routes.url_helpers
 
+  scenario "when I access a project it should show me the facebook meta tags" do
+    p = Factory(:project, :short_url => 'http://catr.se/teste')
+    visit project_path(p.id)
+    verify_translations
+    page.should have_css(%@meta [property="og:title"][content="#{p.name}"]@)
+    page.should have_css(%@meta [property="og:type"][content="cause"]@)
+    page.should have_css(%@meta [property="og:url"][content="#{I18n.t('site.base_url')}#{project_path(p)}"]@)
+    page.should have_css(%@meta [property="og:image"][content="#{p.display_image}"]@)
+    page.should have_css(%@meta [property="og:site_name"][content="#{I18n.t('site.name')}"]@)
+    page.should have_css(%@meta [property="og:description"][content="#{p.about}"]@)
+  end
+
   scenario "As a user, I want to see a project page" do
     p = Factory.create(:project)
     visit project_path(p)
@@ -29,9 +41,7 @@ feature "Show Project Feature", :driver => :selenium do
     click_link "Atualizações"
     verify_translations
     page.should have_css("#project_updates")
-    # within "#project_updates" do
-    #   page.should have_content("Este projeto ainda não teve atualizações. Aguarde =D")
-    # end
+    page.should have_content("Este projeto ainda não teve atualizações. Aguarde =D")
     page.should_not have_css("#project_about")
     page.should_not have_css("#project_backers")
     page.should_not have_css("#project_comments")
@@ -39,9 +49,7 @@ feature "Show Project Feature", :driver => :selenium do
     click_link "Apoiadores"
     verify_translations
     page.should have_css("#project_backers")
-    # within "#project_backers" do
-    #   page.should have_content "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
-    # end
+    page.should have_content "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
     page.should_not have_css("#project_about")
     page.should_not have_css("#project_updates")
     page.should_not have_css("#project_comments")
