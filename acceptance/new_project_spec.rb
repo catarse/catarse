@@ -1,18 +1,23 @@
 # coding: utf-8
+
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
+
 feature "New Project Feature", :driver => :selenium do
 
   scenario "I'm not logged in and I want to send a project. It should ask for login." do
     visit homepage
     click_link 'Envie seu projeto'
+    verify_translations
     find("#login").visible?.should be_true
   end
 
   scenario "I am logged in and I want to send a project" do
+
     c = Factory(:category)
     visit homepage
     fake_login
     visit new_project_path
+    verify_translations
     current_path.should == new_project_path
     within '#content_header' do
       within 'h1' do
@@ -33,13 +38,17 @@ feature "New Project Feature", :driver => :selenium do
       fill_in 'project_rewards_attributes_0_minimum_value', :with => '10'
       select c.name, :from => 'project_category_id'
       check 'accept'
+      verify_translations
       click_button 'project_submit'
+      verify_translations
     end
 
     p = Project.first
     p.name.should == 'test project'
     p.expires_at.should == Time.parse('2012-12-21') + (23.hours + 59.minutes + 59.seconds)
     page.should have_content("test project")
+
   end
+
 end
 
