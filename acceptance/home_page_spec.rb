@@ -4,7 +4,7 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "Home Page Feature" do
 
-  scenario "I should be able to see and edit my profile when I click on 'Meu perfil'" do
+  scenario "When I visit home page, it should show a compilation of projects and curated pages" do
 
     home_page = [
       Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true),
