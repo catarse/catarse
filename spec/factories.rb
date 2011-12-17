@@ -7,6 +7,9 @@ end
 Factory.sequence :uid do |n|
   "#{n}"
 end
+Factory.sequence :permalink do |n|
+  "foo_page_#{n}"
+end
 Factory.define :user do |f|
   f.provider "twitter"
   f.uid { Factory.next(:uid) }
@@ -67,7 +70,7 @@ Factory.define :configuration do |f|
 end
 Factory.define :curated_page do |f|
   f.name 'Foo Page'
-  f.permalink 'foo_page'
+  f.permalink { Factory.next(:permalink) }
   f.description 'foo description'
   f.logo File.open("#{Rails.root.to_s}/lib/fixtures/engage.png")
   f.video_url 'http://vimeo.com/28220980'
