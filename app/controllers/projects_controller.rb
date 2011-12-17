@@ -164,12 +164,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def backers
-    @project = Project.find params[:id]
-    @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
-    render :json => @backers.to_json(:can_manage => can?(:manage, @project))
-  end
-
   def comments
     @project = Project.find params[:id]
     @comments = @project.comments.order("created_at DESC").paginate :page => params[:page], :per_page => 5

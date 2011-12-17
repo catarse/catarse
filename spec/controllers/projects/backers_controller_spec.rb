@@ -10,12 +10,7 @@ describe Projects::BackersController do
     @backer = create(:backer, :value=> 10.00, :user => @user_backer, :confirmed => true, :project => @project)
   end
 
-  context "with admin user" do
-    before(:each) do
-      @user.update_attribute :admin, true
-      @user.reload
-    end
-
+  shared_examples_for  "admin / owner" do
     it "should see all info from backer" do
       request.session[:user_id]=@user.id
       get :index, {:locale => :pt, :project_id => @project.id}
@@ -25,8 +20,8 @@ describe Projects::BackersController do
     end
   end
 
-  context "with normal user" do
-    it "should filtered info about backer" do
+  shared_examples_for "normal / guest" do
+    it "should see filtered info about backer" do
       request.session[:user_id]=@user.id
       get :index, {:locale => :pt, :project_id => @project.id}
 
@@ -35,9 +30,33 @@ describe Projects::BackersController do
     end
   end
 
-  context "with guest" do
+  context "with admin user" do
+    before(:each) do
+      @user.update_attribute :admin, true
+      @user.reload
+    end
+
+    it_should_behave_like "admin / owner"
   end
 
-  context "with project owner" do
+  context "with project owner user" do
+    before(:each) do
+      @project.update_attribute :user, @user
+      @project.reload
+    end
+
+    it_should_behave_like "admin / owner"
+  end
+
+  context "with normal user" do
+    it_should_behave_like "normal / guest"
+  end
+
+  context "guest user" do
+    before(:each) do
+      @user.id = nil
+    end
+
+    it_should_behave_like "normal / guest"
   end
 end

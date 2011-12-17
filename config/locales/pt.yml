@@ -201,7 +201,21 @@ pt:
         unsuccessful_text: "O projeto %{link} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
+  static:
+    privacy:
+      title: "Política de privacidade"
+    terms:
+      title: "Termos de uso"
+    faq:
+      title: "Perguntas frequentes"
+    guidelines:
+      accept: "Eu li e entendi como funciona o Catarse."
+      submit: "Quero enviar meu projeto"
+      subtitle: "Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse."
+      title: "Como funciona o Catarse?"
   projects:
+    press:
+      title: "Confira o que estão falando do Catarse na imprensa"
     admin_fields:
       title: "Campos para o admin"
     back:
@@ -236,8 +250,6 @@ pt:
     curated_pages_list:
       subtitle: "Descubra projetos selecionados por alguns dos parceiros catárticos"
       title: "Canais catárticos"
-    faq:
-      title: "Perguntas frequentes"
     form:
       add_reward: "Adicionar recompensa"
       important_html: "Lembre-se que o Catarse ficará com 7,5%, e os meios de pagamento (MoIP e Paypal) cobram uma taxa que varia, em geral, entre 4% e 5% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas depois."
@@ -247,11 +259,6 @@ pt:
       rewards_description: "A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão."
       rewards_title: Recompensas
       submit: "Enviar o projeto"
-    guidelines:
-      accept: "Eu li e entendi como funciona o Catarse."
-      submit: "Quero enviar meu projeto"
-      subtitle: "Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse."
-      title: "Como funciona o Catarse?"
     home_page_projects:
       explore_recommended: "Explore mais projetos recomendados"
       subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
@@ -310,10 +317,6 @@ pt:
       total_users: usuários
       user: Usuário
       value: Valor
-    press:
-      title: "Confira o que estão falando do Catarse na imprensa"
-    privacy:
-      title: "Política de privacidade"
     project:
       backed: levantados
       reached: atingido
@@ -393,8 +396,6 @@ pt:
       submit: "Enviar o projeto"
       subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
       title: "Envie seu projeto"
-    terms:
-      title: "Termos de uso"
     twitter:
       take_a_look: "Confira o projeto %{name} no @Catarse_"
     video_embed:
