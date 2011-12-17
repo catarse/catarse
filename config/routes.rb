@@ -27,13 +27,10 @@ Catarse::Application.routes.draw do
   end
   resources :projects, :only => [:index, :new, :create, :show] do
     resources :rewards
+    resources :backers, :only => [:index], :controller => 'projects/backers'
     collection do
       get 'start'
       post 'send_mail'
-      get 'guidelines'
-      get 'faq'
-      get 'terms'
-      get 'privacy'
       get 'vimeo'
       get 'cep'
       get 'pending'
@@ -45,7 +42,7 @@ Catarse::Application.routes.draw do
       get 'back'
       post 'review'
       put 'pay'
-      get 'backers'
+      # get 'backers'
       get 'embed'
       get 'video_embed'
       get 'comments'
