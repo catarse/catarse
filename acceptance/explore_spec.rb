@@ -5,30 +5,32 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Explore projects Feature" do
 
   before(:each) do
+
+    #Categories
+    category_1 = Factory(:category)
+    category_2 = Factory(:category)
+    
     # Recommended projects
-    Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true)
-    Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true)
-    Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true)
+    10.times do
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true, category: category_1)
+    end
 
     # Expiring projects
-    Factory(:project, created_at: 30.days.ago, expires_at: 2.days.from_now, visible: true, recommended: false)
-    Factory(:project, created_at: 30.days.ago, expires_at: 3.days.from_now, visible: true, recommended: false)
-    Factory(:project, created_at: 30.days.ago, expires_at: 4.days.from_now, visible: true, recommended: false)
+    for days in 1..10 do
+      Factory(:project, created_at: 30.days.ago, expires_at: days.days.from_now, visible: true, recommended: false, category: category_1)
+    end
 
     # Recent projects
-    Factory(:project, created_at: 2.days.ago, expires_at: 30.days.from_now, visible: true, recommended: false)
-    Factory(:project, created_at: 3.days.ago, expires_at: 30.days.from_now, visible: true, recommended: false)
-    Factory(:project, created_at: 4.days.ago, expires_at: 30.days.from_now, visible: true, recommended: false)
+    for days in 1..10 do
+      Factory(:project, created_at: days.days.ago, expires_at: 30.days.from_now, visible: true, recommended: false, category: category_2)
+    end
     
     # Successful projects
-    successful = [
-      Factory(:project, created_at: 30.days.ago, expires_at: 2.days.ago, visible: true, recommended: false),
-      Factory(:project, created_at: 30.days.ago, expires_at: 3.days.ago, visible: true, recommended: false),
-      Factory(:project, created_at: 30.days.ago, expires_at: 4.days.ago, visible: true, recommended: false)
-    ]
-    successful.each do |project|
+    for days in 1..10 do
+      project = Factory(:project, created_at: 30.days.ago, expires_at: days.days.ago, visible: true, recommended: false, category: category_2)
       Factory(:backer, project: project, value: project.goal, confirmed: true)
     end
+    
   end
   
   scenario "When I visit explore projects, it should show" do
