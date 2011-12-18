@@ -33,7 +33,7 @@ feature "Explore projects Feature" do
     
   end
   
-  scenario "When I visit explore projects, it should show" do
+  scenario "When I visit explore projects, it should show the correct projects" do
 
     categories = Category.with_projects.order(:name).all
     recommended = Project.visible.recommended.order('created_at DESC').all
@@ -140,10 +140,6 @@ feature "Explore projects Feature" do
       find('#explore_menu .selected').text.should == category.name.upcase
     end
     
-  end
-
-  scenario "I visit /pt/explore/recommended directly" do
-    
     visit "/pt/explore/recommended"
     verify_translations
 
@@ -156,11 +152,7 @@ feature "Explore projects Feature" do
       end
     end
     find('#explore_menu .selected').text.should == "Recomendados".upcase
-    
-  end
 
-  scenario "I visit /pt/explore/expiring directly" do
-    
     visit "/pt/explore/expiring"
     verify_translations
 
@@ -173,10 +165,6 @@ feature "Explore projects Feature" do
       end
     end
     find('#explore_menu .selected').text.should == "Na reta final".upcase
-    
-  end
-
-  scenario "I visit /pt/explore/recent directly" do
     
     visit "/pt/explore/recent"
     verify_translations
@@ -191,10 +179,6 @@ feature "Explore projects Feature" do
     end
     find('#explore_menu .selected').text.should == "Recentes".upcase
     
-  end
-
-  scenario "I visit /pt/explore/successful directly" do
-    
     visit "/pt/explore/successful"
     verify_translations
 
@@ -207,7 +191,7 @@ feature "Explore projects Feature" do
       end
     end
     find('#explore_menu .selected').text.should == "Bem-sucedidos".upcase
-    
+
   end
 
 end
