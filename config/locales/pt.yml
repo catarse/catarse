@@ -137,6 +137,8 @@ pt:
   here: aqui
   i_backed: "Eu apoiei o projeto %{name} no @Catarse_"
   i_just_backed: "Eu acabei de apoiar o projeto %{name} no @Catarse_"
+  just:
+    api_test: "no text"
   layouts:
     application:
       menu:
@@ -201,31 +203,18 @@ pt:
         unsuccessful_text: "O projeto %{link} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
-  static:
-    privacy:
-      title: "Política de privacidade"
-    terms:
-      title: "Termos de uso"
-    faq:
-      title: "Perguntas frequentes"
-    guidelines:
-      accept: "Eu li e entendi como funciona o Catarse."
-      submit: "Quero enviar meu projeto"
-      subtitle: "Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse."
-      title: "Como funciona o Catarse?"
   projects:
-    press:
-      title: "Confira o que estão falando do Catarse na imprensa"
+    backers:
+      new:
+        cannot_back: "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
+        header:
+          subtitle: "Você está a poucos passos de fazer a diferença e se tornar parte deste projeto."
+          title: "Oohh yeah!"
+        no_reward: "Obrigado. Eu só quero ajudar o projeto."
+        submit: "Revisar e realizar pagamento"
+        title: "Apoie o %{name}"
     admin_fields:
       title: "Campos para o admin"
-    back:
-      cannot_back: "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
-      header:
-        subtitle: "Você está a poucos passos de fazer a diferença e se tornar parte deste projeto."
-        title: "Oohh yeah!"
-      no_reward: "Obrigado. Eu só quero ajudar o projeto."
-      submit: "Revisar e realizar pagamento"
-      title: "Apoie o %{name}"
     back_project:
       backed_plural: apoiaram
       backed_singular: apoiou
@@ -317,6 +306,8 @@ pt:
       total_users: usuários
       user: Usuário
       value: Valor
+    press:
+      title: "Confira o que estão falando do Catarse na imprensa"
     project:
       backed: levantados
       reached: atingido
@@ -434,6 +425,18 @@ pt:
     name: Catarse
     title: "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
     twitter: Catarse_
+  static:
+    faq:
+      title: "Perguntas frequentes"
+    guidelines:
+      accept: "Eu li e entendi como funciona o Catarse."
+      submit: "Quero enviar meu projeto"
+      subtitle: "Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse."
+      title: "Como funciona o Catarse?"
+    privacy:
+      title: "Política de privacidade"
+    terms:
+      title: "Termos de uso"
   terms: "termos de uso"
   user:
     backs_text:

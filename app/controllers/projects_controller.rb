@@ -82,25 +82,7 @@ class ProjectsController < ApplicationController
   rescue
     render :json => {:ok => false}.to_json
   end
-  def back
-    return unless require_login
-    show! do
-      unless @project.can_back?
-        flash[:failure] = t('projects.back.cannot_back')
-        return redirect_to :root
-      end
-      @title = t('projects.back.title', :name => @project.name)
-      @backer = @project.backers.new(:user => current_user)
-      empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => t('projects.back.no_reward'))
-      @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
-      @reward = @project.rewards.find params[:reward_id] if params[:reward_id]
-      @reward = nil if @reward and @reward.sold_out?
-      if @reward
-        @backer.reward = @reward
-        @backer.value = "%0.0f" % @reward.minimum_value
-      end
-    end
-  end
+
   def review
     @title = t('projects.review.title')
     params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
