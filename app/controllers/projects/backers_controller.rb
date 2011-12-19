@@ -26,6 +26,19 @@ class Projects::BackersController < ApplicationController
     end
   end
 
+  def checkout
+    @title = t('projects.review.title')
+    params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
+    params[:backer][:user_id] = current_user.id
+    @project = Project.find params[:id]
+    @backer = @project.backers.new(params[:backer])
+    unless @backer.save
+      flash[:failure] = t('projects.review.error')
+      return redirect_to new_project_backer_path(@project)
+    end
+    session[:thank_you_id] = @project.id
+  end
+
   private
 
   def load_project
