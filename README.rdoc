@@ -1,3 +1,5 @@
+{<img src="http://travis-ci.org/danielweinmann/catarse.png?branch=master,dev" />}[http://travis-ci.org/danielweinmann/catarse]
+
 == Catarse
 === The first open source crowdfunding platform for creative projects in the world
 
