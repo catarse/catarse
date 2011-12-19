@@ -137,6 +137,8 @@ en:
   here: here
   i_backed: "I backed the project %{name} on @Catarse_"
   i_just_backed: "I just backed the project %{name} on @Catarse_"
+  just:
+    api_test: ~
   layouts:
     application:
       menu:
@@ -424,16 +426,16 @@ en:
     twitter: Catarse_
   static:
     faq:
-      title: ~
+      title: "Frequent asked questions"
     guidelines:
-      accept: ~
-      submit: ~
-      subtitle: ~
-      title: ~
+      accept: "I have read and understood how Catarse works."
+      submit: "I want to submit my project"
+      subtitle: "Before submitting your project, learn a little about how Catarse works."
+      title: "How does Catarse work?"
     privacy:
-      title: ~
+      title: "Privacy Policy"
     terms:
-      title: ~
+      title: "Terms of use"
   terms: "terms of use"
   user:
     backs_text:

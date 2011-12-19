@@ -28,7 +28,7 @@ Catarse::Application.routes.draw do
   end
   resources :projects, :only => [:index, :new, :create, :show] do
     resources :rewards
-    resources :backers, :only => [:index], :controller => 'projects/backers'
+    resources :backers, :controller => 'projects/backers'
     collection do
       get 'start'
       post 'send_mail'
