@@ -3,6 +3,7 @@ window.ProjectPage = Backbone.Router.extend({
 		'': 'about',
 		'about': 'about',
 		'updates': 'updates',
+		'backers': 'backers',
 		'backers/:page': 'backers',
 		'comments': 'comments'
 	},
