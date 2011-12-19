@@ -83,24 +83,24 @@ class ProjectsController < ApplicationController
     render :json => {:ok => false}.to_json
   end
 
-  def review
-    @title = t('projects.review.title')
-    params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
-    params[:backer][:user_id] = current_user.id
-    @project = Project.find params[:id]
-    @backer = @project.backers.new(params[:backer])
-    unless @backer.save
-      flash[:failure] = t('projects.review.error')
-      return redirect_to back_project_path(@project)
-    end
-    session[:thank_you_id] = @project.id
-  end
+  # def review
+  #   @title = t('projects.review.title')
+  #   params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
+  #   params[:backer][:user_id] = current_user.id
+  #   @project = Project.find params[:id]
+  #   @backer = @project.backers.new(params[:backer])
+  #   unless @backer.save
+  #     flash[:failure] = t('projects.review.error')
+  #     return redirect_to back_project_path(@project)
+  #   end
+  #   session[:thank_you_id] = @project.id
+  # end
   def pay
     backer = Backer.find params[:backer_id]
     if backer.credits
       if current_user.credits < backer.value
         flash[:failure] = t('projects.pay.no_credits')
-        return redirect_to back_project_path(backer.project)
+        return redirect_to new_project_backer_path(backer.project)
       end
       unless backer.confirmed
         current_user.update_attribute :credits, current_user.credits - backer.value
@@ -141,7 +141,7 @@ class ProjectsController < ApplicationController
         redirect_to MoIP::Client.moip_page(response["Token"])
       rescue
         flash[:failure] = t('projects.pay.moip_error')
-        return redirect_to back_project_path(backer.project)
+        return redirect_to new_project_backer_path(backer.project)
       end
     end
   end
