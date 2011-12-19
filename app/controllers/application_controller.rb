@@ -34,7 +34,6 @@ class ApplicationController < ActionController::Base
       new_locale = I18n.default_locale.to_s unless new_locale
       flash[:locale] = t('notify_locale', :locale => new_locale)
     end
-    new_locale = 'pt' if new_locale == 'pt-BR'
     return redirect_to replace_locale(new_locale)
   end
 
