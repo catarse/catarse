@@ -15,10 +15,11 @@ window.BackerView = Backbone.View.extend({
 
 window.BackersView = Backbone.View.extend({
 	id: 'project_backers',
-	fetched: false,
   template: _.template($('#backers_template').html()),
 
 	initialize: function() {
+		this.page = 1;
+		this.fetched = false;
 		_.bindAll(this, 'render');
 		this.collection.bind('reset', this.render);
 	},

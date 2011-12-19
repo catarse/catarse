@@ -3,7 +3,7 @@ window.ProjectPage = Backbone.Router.extend({
 		'': 'about',
 		'about': 'about',
 		'updates': 'updates',
-		'backers': 'backers',
+		'backers/:page': 'backers',
 		'comments': 'comments'
 	},
 	
@@ -26,6 +26,7 @@ window.ProjectPage = Backbone.Router.extend({
 	backers: function() {
 		$("#loading img").show();
 		this.backersView.collection.fetch();
+		// this.backersView.page = 2;
 		this.container.empty();
 		this.container.append(this.backersView.render().el)
 	}
