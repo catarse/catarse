@@ -15,7 +15,8 @@ Catarse::Application.routes.draw do
   match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/moip" => "payment_stream#moip", :as => :moip
   match "/explore" => "explore#index", :as => :explore
-  match "/explore/:quick" => "explorer#index", :as => :explore_quick
+  match "/explore/:quick" => "explore#index", :as => :explore_quick
+  post '/explore/update_attribute_on_the_spot' => "explore#update_attribute_on_the_spot"
   match "/credits" => "credits#index", :as => :credits
 
   post "/auth" => "sessions#auth", :as => :auth
