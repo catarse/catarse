@@ -54,14 +54,16 @@ module Capybara
  end
 end
 
+browser = (ENV['TRAVIS'] ? :firefox : :chrome)
+
 Capybara.app = ::Rails.application
 
 Capybara.register_driver :rack_test do |app|
-  Capybara::RackTest::Driver.new(app, :browser => :chrome)
+  Capybara::RackTest::Driver.new(app, :browser => browser)
 end
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  Capybara::Selenium::Driver.new(app, :browser => browser)
 end
 
 Capybara.configure do |config|
