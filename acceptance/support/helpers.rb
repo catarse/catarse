@@ -23,10 +23,17 @@ module HelperMethods
     user.reload
   end
 
-  def add_some_projects(num_of_projects=5)
+  def add_some_projects(num_of_projects=5, attributes={})
     num_of_projects.times do |n|
-      project = create(:project, :name => "Foo bar #{n}")
+      create(:project, {name: "Foo bar #{n}"}.merge(attributes))
     end
   end
+  
+  def verify_translations
+    page.should have_no_css('.translation_missing')
+    page.should have_no_content('translation missing')
+  end
+  
 end
+
 RSpec.configuration.include HelperMethods, :type => :acceptance

@@ -54,22 +54,20 @@ module Capybara
  end
 end
 
+browser = (ENV['TRAVIS'] ? :firefox : :chrome)
+
 Capybara.app = ::Rails.application
 
-Capybara.register_driver :rack_test do |app|
-  Capybara::RackTest::Driver.new(app, :browser => :chrome)
-end
-
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
-end
+#Capybara.register_driver :selenium do |app|
+#  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+#end
 
 Capybara.configure do |config|
- config.default_driver = defined?(Capybara::Driver::Webkit) ? :webkit : :selenium
- config.ignore_hidden_elements = false
- # config.seletor :css
- config.server_port = 8200
- config.app_host = "http://localhost:8200"
+  config.default_driver = defined?(Capybara::Driver::Webkit) ? :webkit : :selenium
+  config.ignore_hidden_elements = false
+  config.server_port = 8200
+  config.app_host = "http://localhost:8200"
+  config.default_wait_time = 5
 end
 
 class ActionDispatch::IntegrationTest
