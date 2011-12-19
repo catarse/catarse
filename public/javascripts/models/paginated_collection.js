@@ -1,11 +1,22 @@
 var PaginatedCollection = Backbone.Collection.extend({
-  action: "",
-  controller: "",
+  baseUrl: "",
+  search: "",
   initialize: function(options){
+    typeof(options) != 'undefined' || (options = {})
+    if(options.baseUrl)
+      this.baseUrl = options.baseUrl
+    if(options.search)
+      this.search = options.search
     this.initializePages()
   },
   url: function(){
-    return "/" + this.controller + "/" + this.action + ".json?page=" + this.page
+    var url = this.baseUrl
+    if(url.charAt(0) == "/")
+      url = url.slice(1)
+    url = "/" + app.locale + "/" + url + "?" + $.param({page: this.page})
+    if(this.search)
+      url = url + '&' + $.param({search: this.search})
+    return url
   },
   initializePages: function(){
     _.bindAll(this, "nextPage")
@@ -13,6 +24,6 @@ var PaginatedCollection = Backbone.Collection.extend({
   },
   nextPage: function(){
     this.page++
-    this.fetch()
+    return this.fetch()
   }
 })
