@@ -102,10 +102,9 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.clean
+    I18n.locale = :pt
+    I18n.default_locale = :pt
   end
 end
 
 include Rails.application.routes.url_helpers
-
-I18n.locale = :pt
-I18n.default_locale = :pt
