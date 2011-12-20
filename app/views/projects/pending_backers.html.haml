@@ -13,7 +13,7 @@
     %strong= @total_users
     = t('.total_users')
 #pending_backers
-  - form_for @search, :url => pending_backers_projects_path do |f|
+  = form_for @search, :url => pending_backers_projects_path do |f|
     %fieldset
       = f.label :id_equals, t('.id')
       = f.text_field :id_equals
