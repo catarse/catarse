@@ -213,6 +213,22 @@ pt:
         no_reward: "Obrigado. Eu só quero ajudar o projeto."
         submit: "Revisar e realizar pagamento"
         title: "Apoie o %{name}"
+      checkout:
+        credits_notice_html: "Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos."
+        error: "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
+        international:
+          description: "Você pode usar o PayPal para realizar pagamentos internacionais"
+          important_html: "<p>O uso do PayPal é destinado preferencialmente para apoios internacionais. Isto porque ao realizar o pagamento pelo PayPal, você tem apenas 60 dias para receber seu dinheiro de volta sem taxas.</p><p>Caso você possa realizar o pagamento normal pelo MoIP, nós recomendamos.</p><p>Mas se você não pode, não se preocupe: você sempre poderá receber seu dinheiro de volta. Apenas, caso o estorno seja realizado mais de 60 dias depois do seu pagamento, você terá que pagar a taxa do PayPal, que é de 5,4% + R$ 0,60 por transação.</p>"
+          submit: "Efetuar pagamento pelo PayPal"
+          title: "Quer fazer pagamento internacional?"
+        review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa: <span class='reward'>%{reward}</span>"
+        review_without_reward_html: "Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio."
+        submit:
+          credits: "Confirmar apoio com créditos"
+          moip: "Efetuar pagamento pelo MoIP"
+        subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
+        title: "Preencha e revise seus dados"
+        you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
     admin_fields:
       title: "Campos para o admin"
     back_project:
@@ -339,22 +355,6 @@ pt:
     project_warning:
       rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
       waiting: "Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)"
-    review:
-      credits_notice_html: "Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos."
-      error: "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
-      international:
-        description: "Você pode usar o PayPal para realizar pagamentos internacionais"
-        important_html: "<p>O uso do PayPal é destinado preferencialmente para apoios internacionais. Isto porque ao realizar o pagamento pelo PayPal, você tem apenas 60 dias para receber seu dinheiro de volta sem taxas.</p><p>Caso você possa realizar o pagamento normal pelo MoIP, nós recomendamos.</p><p>Mas se você não pode, não se preocupe: você sempre poderá receber seu dinheiro de volta. Apenas, caso o estorno seja realizado mais de 60 dias depois do seu pagamento, você terá que pagar a taxa do PayPal, que é de 5,4% + R$ 0,60 por transação.</p>"
-        submit: "Efetuar pagamento pelo PayPal"
-        title: "Quer fazer pagamento internacional?"
-      review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa: <span class='reward'>%{reward}</span>"
-      review_without_reward_html: "Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio."
-      submit:
-        credits: "Confirmar apoio com créditos"
-        moip: "Efetuar pagamento pelo MoIP"
-      subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
-      title: "Preencha e revise seus dados"
-      you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
     rewards:
       reward_title: "Para %{minimum} ou mais"
       title: "Apoie e ganhe..."

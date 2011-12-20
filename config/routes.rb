@@ -27,12 +27,12 @@ Catarse::Application.routes.draw do
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
   resources :projects, :only => [:index, :new, :create, :show] do
-    resources :rewards do
+    resources :rewards
+    resources :backers, :controller => 'projects/backers' do
       collection do
         post 'checkout'
       end
     end
-    resources :backers, :controller => 'projects/backers'
     collection do
       get 'start'
       post 'send_mail'
@@ -44,10 +44,7 @@ Catarse::Application.routes.draw do
       post 'update_attribute_on_the_spot'
     end
     member do
-      # get 'back'
-      post 'review'
       put 'pay'
-      # get 'backers'
       get 'embed'
       get 'video_embed'
       get 'comments'
