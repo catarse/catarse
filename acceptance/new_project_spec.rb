@@ -52,4 +52,3 @@ feature "New Project Feature", :driver => :selenium do
   end
 
 end
-
