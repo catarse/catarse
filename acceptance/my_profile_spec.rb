@@ -64,7 +64,6 @@ feature "My profile Feature" do
         find("span").click
         find("input").set("New user name")
         click_on "OK"
-        page.should have_no_content(user.display_name)
         page.should have_content("New user name")
         user.reload
         user.display_name.should == "New user name"
@@ -75,7 +74,6 @@ feature "My profile Feature" do
         find("span").click
         find("textarea").set("New user biography")
         click_on "OK"
-        page.should have_no_content(user.bio)
         page.should have_content("New user biography")
         user.reload
         user.bio.should == "New user biography"
@@ -89,7 +87,6 @@ feature "My profile Feature" do
         find("span").click
         find("input").set("new@email.com")
         click_on "OK"
-        page.should have_no_content(user.email)
         page.should have_content("new@email.com")
         user.reload
         user.email.should == "new@email.com"
