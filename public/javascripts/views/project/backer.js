@@ -16,7 +16,6 @@ window.BackerView = Backbone.View.extend({
 window.BackersView = PaginatedView.extend({
   tagName: 'ul',
 	id: 'collection_list',
-  // template: _.template($('#backers_template').html()),
 
 	initialize: function() {
 		_.bindAll(this, 'render');
@@ -26,7 +25,6 @@ window.BackersView = PaginatedView.extend({
 	render: function() {
 		var $backers,
 				collection = this.collection;
-		// $(this.el).html(this.template({}));
 		$backers = $(this.el);
 
 		this.collection.each(function(backer) {

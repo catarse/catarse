@@ -42,7 +42,6 @@ var PaginatedView = Backbone.View.extend({
 			$backers.append(view.render().el)
 		});
 		this.loader.children().hide();
-		this.loader.waypoint(this.waypoint, {offset: "100%"})
 		return this;
     // this.$('ul.items').html("")
     // this.$('.empty').hide()
