@@ -17,7 +17,7 @@ class PaypalController < ApplicationController
     #  raise "Message: #{e.message}<br/>Response: #{e.response.inspect}<br/>Details: #{e.response.details.inspect}"
     rescue
       flash[:failure] = t('projects.pay.paypal_error')
-      return redirect_to back_project_path(backer.project)
+      return redirect_to new_project_backer_path(backer.project)
     end
   end
 
@@ -39,18 +39,18 @@ class PaypalController < ApplicationController
         redirect_to thank_you_path
       else
         flash[:failure] = t('projects.pay.paypal_error')
-        return redirect_to back_project_path(backer.project)
+        return redirect_to new_project_backer_path(backer.project)
       end
     rescue
       flash[:failure] = t('projects.pay.paypal_error')
-      return redirect_to back_project_path(backer.project)
+      return redirect_to new_project_backer_path(backer.project)
     end
   end
 
   def cancel
     backer = Backer.find params[:id]
     flash[:failure] = t('projects.pay.paypal_cancel')
-    redirect_to back_project_path(backer.project)
+    redirect_to new_project_backer_path(backer.project)
   end
 
   protected

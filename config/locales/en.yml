@@ -137,6 +137,8 @@ en:
   here: here
   i_backed: "I backed the project %{name} on @Catarse_"
   i_just_backed: "I just backed the project %{name} on @Catarse_"
+  just:
+    api_test: ~
   layouts:
     application:
       menu:
@@ -204,14 +206,6 @@ en:
   projects:
     admin_fields:
       title: "Admin fields"
-    back:
-      cannot_back: "It's not possible to back this project right now. Please, back other projects."
-      header:
-        subtitle: "You are a few steps from making the difference and becoming part of this project."
-        title: "Oohh yeah!"
-      no_reward: "Thanks. I just want to help the project."
-      submit: "Review and proceed to checkout"
-      title: "Back %{name}"
     back_project:
       backed_plural: backed
       backed_singular: backed
@@ -231,13 +225,36 @@ en:
       anonymous_backer: "Anonymous backer"
       anonymous_description: "Opted to remain incognito"
       no_reward: "This backer has not picked a reward"
+    backers:
+      checkout:
+        credits_notice_html: ~
+        error: ~
+        international:
+          description: ~
+          important_html: ~
+          submit: ~
+          title: ~
+        review_with_reward_html: ~
+        review_without_reward_html: ~
+        submit:
+          credits: ~
+          moip: ~
+        subtitle: ~
+        title: ~
+        you_are_about_html: ~
+      new:
+        cannot_back: ~
+        header:
+          subtitle: ~
+          title: ~
+        no_reward: ~
+        submit: ~
+        title: ~
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
     curated_pages_list:
       subtitle: "Discover projects curated by some of our cathartic partners"
       title: "Cathartic channels"
-    faq:
-      title: "Frequent asked questions"
     form:
       add_reward: "Add reward"
       important_html: "Please notice that Catarse will charge 7.5% if your project is successful, and our payment gateways (MoIP and Paypal) charge a fee that varies, usually, from 4% to 5% per transaction. Add this values to your budget in order to execute your project with no surprises."
@@ -247,11 +264,6 @@ en:
       rewards_description: "We believe that the best way to inspire people to back a project is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested."
       rewards_title: Rewards
       submit: "Submit project"
-    guidelines:
-      accept: "I have read and understood how Catarse works."
-      submit: "I want to submit my project"
-      subtitle: "Before submitting your project, learn a little about how Catarse works."
-      title: "How does Catarse work?"
     home_page_projects:
       explore_recommended: "Explore more recommended projects"
       subtitle: "Discover the projects that caused us a Catharsis :) every day a new selection."
@@ -312,8 +324,6 @@ en:
       value: Value
     press:
       title: "Check out what they're saying about Catarse in the press"
-    privacy:
-      title: "Privacy policy"
     project:
       backed: backed
       reached: reached
@@ -345,22 +355,6 @@ en:
     project_warning:
       rejected: "This project was not selected to participate on Catarse. Maybe next time! :)"
       waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
-    review:
-      credits_notice_html: "This back will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to back other projects."
-      error: "Ooops. There was an error while registering your back. Please try again."
-      international:
-        description: "You can use PayPal to make international payments"
-        important_html: "<p>The use of PayPal is destinated mostly for international payments. That's because you'll have only 60 days to receive an eventual refund without paying any fee.</p><p>In case you can make the regular payment through MoIP, we recommend you to do it.</p><p>But if that's not possible, don't worry: you'll always be able to receive your money back. Only, in case your refund is made more than 60 days after your payment, you'll have to pay PayPal's fee, which is 5,4% + R$0,60 per transaction.</p>"
-        submit: "Proceed to PayPal's checkout"
-        title: "Want to make an international payment?"
-      review_with_reward_html: "You will back with <strong>%{value}</strong> and receive the following reward: <span class='reward'>%{reward}</span>"
-      review_without_reward_html: "You will back with <strong>%{value}</strong> but you don't want any reward for that."
-      submit:
-        credits: "Confirm backing with credits"
-        moip: "Proceed to MoIP's checkout"
-      subtitle: "This is the last step to make the difference and become part of this project."
-      title: "Fill in and review your data"
-      you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
     rewards:
       reward_title: "For %{minimum} or more"
       title: "Back and receive..."
@@ -393,8 +387,6 @@ en:
       submit: "Submit the project"
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
       title: "Submit your project"
-    terms:
-      title: "Terms of use"
     twitter:
       take_a_look: "Check out the project %{name} on @Catarse_"
     video_embed:
@@ -433,6 +425,18 @@ en:
     name: Catarse
     title: "The first crowdfunding platform from Brazil"
     twitter: Catarse_
+  static:
+    faq:
+      title: "Frequent asked questions"
+    guidelines:
+      accept: "I have read and understood how Catarse works."
+      submit: "I want to submit my project"
+      subtitle: "Before submitting your project, learn a little about how Catarse works."
+      title: "How does Catarse work?"
+    privacy:
+      title: "Privacy Policy"
+    terms:
+      title: "Terms of use"
   terms: "terms of use"
   user:
     backs_text:
