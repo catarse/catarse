@@ -2,7 +2,7 @@ window.Backer = Backbone.Model.extend({
 	url: '/backers'
 });
 
-window.Backers = Backbone.Collection.extend({
+window.Backers = PaginatedCollection.extend({
   model: Backer,
   action: "backers",
   controller: "projects"

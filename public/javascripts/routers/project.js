@@ -9,26 +9,33 @@ window.ProjectPage = Backbone.Router.extend({
 	},
 	
 	initialize: function() {
-		this.container = $('#project_content');
-		this.aboutView = new ProjectAboutView();
+		this.aboutView = new ProjectAboutView({});
+		this.aboutView.container = $("#project_content #about");
 		this.project = project;
 		
 		this.backersView = new BackersView({
 			collection: this.project.backers,
-			container: this.container
 		});
+		this.backersView.container = $("#project_content #backers")
+
+		this.selectItem("about");
 	},
 	
 	about: function() {
-		this.container.empty();
-		this.container.append(this.aboutView.render().el);
+		this.aboutView.container.append(this.aboutView.render().el);
 	},
 
 	backers: function() {
+		this.selectItem("backers");
 		$("#loading img").show();
 		this.backersView.collection.fetch();
-		// this.backersView.page = 2;
-		this.container.empty();
-		this.container.append(this.backersView.render().el)
+		this.backersView.loader = $("#loading img");
+		this.backersView.container.append(this.backersView.render().el)
+		$("#loading img").hide();
+	},
+	
+	selectItem: function(item) {
+		$("#project_content .content").hide();
+		$("#project_content #"+item+".content").show();
 	}
 })

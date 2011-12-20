@@ -13,7 +13,7 @@ window.BackerView = Backbone.View.extend({
 	}
 });
 
-window.BackersView = Backbone.View.extend({
+window.BackersView = PaginatedView.extend({
 	id: 'project_backers',
   template: _.template($('#backers_template').html()),
 
@@ -23,24 +23,19 @@ window.BackersView = Backbone.View.extend({
 	},
 
 	render: function() {
-		if (this.fetched && (this.collection.length == 0)) {
-			// render template without backers
-		} else {
-			var $backers,
-					collection = this.collection;
-			$(this.el).html(this.template({}));
-			$backers = this.$("#collection_list");
+		var $backers,
+				collection = this.collection;
+		$(this.el).html(this.template({}));
+		$backers = this.$("#collection_list");
 
-			this.collection.each(function(backer) {
-				var view = new BackerView({
-					model: backer,
-					collection: collection
-				});
-
-				$backers.append(view.render().el)
+		this.collection.each(function(backer) {
+			var view = new BackerView({
+				model: backer,
+				collection: collection
 			});
-			this.fetched = true;
-		}
+
+			$backers.append(view.render().el)
+		});
 		return this;
 	}
 });
