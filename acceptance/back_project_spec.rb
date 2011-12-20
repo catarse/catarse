@@ -44,13 +44,13 @@ feature "Back project" do
   
     click_on "Quero apoiar este projeto"
     verify_translations
-    current_path.should == back_project_path(@project)
+    current_path.should == new_project_backer_path(@project)
     
     fill_in "Com quanto você quer apoiar?", with: "10"
     
     click_on "Revisar e realizar pagamento"
     verify_translations
-    current_path.should == review_project_path(@project)
+    current_path.should == review_project_backers_path(@project)
     page.should have_content("Você irá apoiar com R$ 10 e não quer nenhuma recompensa por seu apoio.")
     
   end
@@ -82,7 +82,7 @@ feature "Back project" do
   
     click_on "Quero apoiar este projeto"
     verify_translations
-    current_path.should == back_project_path(@project)
+    current_path.should == new_project_backer_path(@project)
     
     fill_in "Com quanto você quer apoiar?", with: "10"
   
@@ -103,7 +103,7 @@ feature "Back project" do
   
     click_on "Revisar e realizar pagamento"
     verify_translations
-    current_path.should == review_project_path(@project)
+    current_path.should == review_project_backers_path(@project)
     page.should have_content("Você irá apoiar com R$ 20 e ganhará a seguinte recompensa: $20 reward")
     
     Backer.count.should == 1
@@ -154,7 +154,7 @@ feature "Back project" do
   
     within "#rewards ul" do
       rewards = all("li.clickable")
-      rewards[2].find("input[type=hidden]")[:value].should == "#{back_project_path(@project)}/?reward_id=#{@rewards[2].id}"
+      rewards[2].find("input[type=hidden]")[:value].should == "#{new_project_backer_path(@project)}/?reward_id=#{@rewards[2].id}"
       rewards[2].click
     end
   
@@ -167,7 +167,7 @@ feature "Back project" do
     
     click_on "Revisar e realizar pagamento"
     verify_translations
-    current_path.should == review_project_path(@project)
+    current_path.should == review_project_backers_path(@project)
     page.should have_content("Você irá apoiar com R$ 30 e ganhará a seguinte recompensa: $30 reward")
     
     Backer.count.should == 1
@@ -223,7 +223,7 @@ feature "Back project" do
   
     click_on "Quero apoiar este projeto"
     verify_translations
-    current_path.should == back_project_path(@project)
+    current_path.should == new_project_backer_path(@project)
     
     fill_in "Com quanto você quer apoiar?", with: "10"
     check "Quero usar meus créditos para este apoio."
@@ -237,7 +237,7 @@ feature "Back project" do
     backer = Backer.first
     backer.payment_method.should == "MoIP"
   
-    current_path.should == review_project_path(@project)
+    current_path.should == review_project_backers_path(@project)
     page.should have_content("Você irá apoiar com R$ 10 e não quer nenhuma recompensa por seu apoio.")
     page.should have_content("Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de R$ 0 em créditos para apoiar outros projetos.")
     
