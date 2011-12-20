@@ -14,8 +14,9 @@ window.BackerView = Backbone.View.extend({
 });
 
 window.BackersView = PaginatedView.extend({
-	id: 'project_backers',
-  template: _.template($('#backers_template').html()),
+  tagName: 'ul',
+	id: 'collection_list',
+  // template: _.template($('#backers_template').html()),
 
 	initialize: function() {
 		_.bindAll(this, 'render');
@@ -25,8 +26,8 @@ window.BackersView = PaginatedView.extend({
 	render: function() {
 		var $backers,
 				collection = this.collection;
-		$(this.el).html(this.template({}));
-		$backers = this.$("#collection_list");
+		// $(this.el).html(this.template({}));
+		$backers = $(this.el);
 
 		this.collection.each(function(backer) {
 			var view = new BackerView({
@@ -36,6 +37,7 @@ window.BackersView = PaginatedView.extend({
 
 			$backers.append(view.render().el)
 		});
+		this.loader.waypoint(this.waypoint, {offset: "100%"});
 		return this;
 	}
 });

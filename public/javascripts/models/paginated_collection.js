@@ -5,10 +5,6 @@ var PaginatedCollection = Backbone.Collection.extend({
 		this.baseUrl = this.url
     this.initializePages()
   },
-	url: function() {
-		console.log("url: "+this.page)
-		return this.document.url + '?' + $.param({page: this.page});
-	},
   // url: function(){
   //   var url = this.baseUrl
   //   if(url.charAt(0) == "/")
@@ -26,6 +22,6 @@ var PaginatedCollection = Backbone.Collection.extend({
   nextPage: function(){
     this.page++
 		// this.url = this.baseUrl + '?' + $.param({page: this.page});
-    return this.fetch()
+    return this.fetch({data: {page: this.page}})
   }
 })

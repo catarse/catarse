@@ -8,7 +8,7 @@ var PaginatedView = Backbone.View.extend({
     this.loader.waypoint('destroy')
     _.bindAll(this, "render", "update", "nextPage", "waypoint")
     this.render()
-    this.loader.show()
+    this.loader.children().show()
     this.collection.page = 1
     this.collection.bind("reset", this.update)
     this.collection.fetch()
@@ -22,9 +22,10 @@ var PaginatedView = Backbone.View.extend({
   },
   nextPage: function(){
     if(!this.collection.isEmpty()) {
-      this.loader.show();
+      this.loader.children().show();
       this.collection.nextPage();
     }
+		return this;
   },
   render: function() {
 		var $backers,
@@ -40,13 +41,15 @@ var PaginatedView = Backbone.View.extend({
 
 			$backers.append(view.render().el)
 		});
+		this.loader.children().hide();
+		this.loader.waypoint(this.waypoint, {offset: "100%"})
 		return this;
     // this.$('ul.items').html("")
     // this.$('.empty').hide()
     // return this
   },
   update: function(){
-    this.loader.$("img").hide()
+    this.loader.children().hide()
     if(!this.collection.isEmpty()) {
       this.collection.each(function(model){
         var item = $('<li>')

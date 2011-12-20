@@ -27,11 +27,9 @@ window.ProjectPage = Backbone.Router.extend({
 
 	backers: function() {
 		this.selectItem("backers");
-		$("#loading img").show();
 		this.backersView.collection.fetch();
-		this.backersView.loader = $("#loading img");
+		this.backersView.loader = $("#loading");
 		this.backersView.container.append(this.backersView.render().el)
-		$("#loading img").hide();
 	},
 	
 	selectItem: function(item) {

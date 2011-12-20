@@ -3161,20 +3161,20 @@ body#platform #empty_text {
   width: 600px;
 }
 /* line 859, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers {
+body#platform #backers.content {
   margin-top: 0;
   color: #444444;
   width: 610px;
 }
 /* line 863, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers h1 {
+body#platform #backers.content h1 {
   font-size: 24px !important;
   color: #999999 !important;
   padding-bottom: 16px !important;
   padding-top: 0 !important;
 }
 /* line 868, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers img.user {
+body#platform #backers.content img.user {
   float: left;
   margin-right: 12px;
   margin-bottom: 0px;
@@ -3186,33 +3186,33 @@ body#platform #project_backers img.user {
   background-color: white;
 }
 /* line 875, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers a {
+body#platform #backers.content a {
   text-decoration: none !important;
 }
 /* line 877, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers #all_backers {
+body#platform #backers.content #all_backers {
   text-align: center;
   margin-top: 16px;
 }
 /* line 880, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers p {
+body#platform #backers.content p {
   font-size: 16px;
   color: #666666;
   padding-bottom: 0 !important;
 }
 /* line 884, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers p.reward {
+body#platform #backers.content p.reward {
   float: right;
   width: 500px;
   font-size: 12px;
   color: #333333;
 }
 /* line 889, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers ul {
+body#platform #backers.content ul {
   width: 600px;
 }
 /* line 891, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers ul li {
+body#platform #backers.content ul li {
   background-color: #dddddd;
   margin-top: 16px;
   padding: 20px;
@@ -3225,7 +3225,7 @@ body#platform #project_backers ul li {
   position: relative;
 }
 /* line 897, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers ul li .badge {
+body#platform #backers.content ul li .badge {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -3240,7 +3240,7 @@ body#platform #project_backers ul li .badge {
   transition-duration: 0.2s;
 }
 /* line 903, ../../app/stylesheets/_projects.sass */
-body#platform #project_backers ul li .badge:hover {
+body#platform #backers.content ul li .badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
