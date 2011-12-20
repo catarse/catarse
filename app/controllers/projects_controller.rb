@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   respond_to :html, :except => [:backers, :comments, :updates]
   respond_to :json, :only => [:show, :backers, :comments, :updates]
   can_edit_on_the_spot
-  skip_before_filter :detect_locale, :only => [:backers, :comments, :updates, :moip]
+  skip_before_filter :detect_locale, :only => [:backers, :comments, :updates]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create]
   def date_format_convert
@@ -62,18 +62,6 @@ class ProjectsController < ApplicationController
       @comment = @project.comments.new
     }
   end
-  def guidelines
-    @title = t('projects.guidelines.title')
-  end
-  def faq
-    @title = t('projects.faq.title')
-  end
-  def terms
-    @title = t('projects.terms.title')
-  end
-  def privacy
-    @title = t('projects.privacy.title')
-  end
   def vimeo
     project = Project.new(:video_url => params[:url])
     if project.vimeo
@@ -94,118 +82,31 @@ class ProjectsController < ApplicationController
   rescue
     render :json => {:ok => false}.to_json
   end
-  def back
-    return unless require_login
-    show! do
-      unless @project.can_back?
-        flash[:failure] = t('projects.back.cannot_back')
-        return redirect_to :root
-      end
-      @title = t('projects.back.title', :name => @project.name)
-      @backer = @project.backers.new(:user => current_user)
-      empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => t('projects.back.no_reward'))
-      @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
-      @reward = @project.rewards.find params[:reward_id] if params[:reward_id]
-      @reward = nil if @reward and @reward.sold_out?
-      if @reward
-        @backer.reward = @reward
-        @backer.value = "%0.0f" % @reward.minimum_value
-      end
-    end
-  end
-  def review
-    @title = t('projects.review.title')
-    params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
-    params[:backer][:user_id] = current_user.id
-    @project = Project.find params[:id]
-    @backer = @project.backers.new(params[:backer])
-    unless @backer.save
-      flash[:failure] = t('projects.review.error')
-      return redirect_to back_project_path(@project)
-    end
-    session[:thank_you_id] = @project.id
-  end
-  def pay
-    backer = Backer.find params[:backer_id]
-    if backer.credits
-      if current_user.credits < backer.value
-        flash[:failure] = t('projects.pay.no_credits')
-        return redirect_to back_project_path(backer.project)
-      end
-      unless backer.confirmed
-        current_user.update_attribute :credits, current_user.credits - backer.value
-        backer.update_attribute :payment_method, 'Credits'
-        backer.confirm!
-      end
-      flash[:success] = t('projects.pay.success')
-      redirect_to thank_you_path
-    else
-      begin
-        current_user.update_attributes params[:user]
-        current_user.reload
-        payer = {
-          :nome => current_user.full_name,
-          :email => current_user.email,
-          :logradouro => current_user.address_street,
-          :numero => current_user.address_number,
-          :complemento => current_user.address_complement,
-          :bairro => current_user.address_neighbourhood,
-          :cidade => current_user.address_city,
-          :estado => current_user.address_state,
-          :pais => "BRA",
-          :cep => current_user.address_zip_code,
-          :tel_fixo => current_user.phone_number
-        }
-        payment = {
-          :valor => "%0.0f" % (backer.value),
-          :id_proprio => backer.key,
-          :razao => "Apoio para o projeto '#{backer.project.name}'",
-          :forma => "BoletoBancario",
-          :dias_expiracao => 2,
-          :pagador => payer,
-          :url_retorno => thank_you_url
-        }
-        response = MoIP::Client.checkout(payment)
-        backer.update_attribute :payment_token, response["Token"]
-        session[:_payment_token] = response["Token"]
-        redirect_to MoIP::Client.moip_page(response["Token"])
-      rescue
-        flash[:failure] = t('projects.pay.moip_error')
-        return redirect_to back_project_path(backer.project)
-      end
-    end
-  end
 
-  def backers
-    @project = Project.find params[:id]
-    @backers = @project.backers.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
-    render :json => @backers.to_json(:can_manage => can?(:manage, @project))
-  end
-  
   def comments
     @project = Project.find params[:id]
     @comments = @project.comments.order("created_at DESC").paginate :page => params[:page], :per_page => 5
     respond_with @comments
   end
-  
+
   def updates
     @project = Project.find params[:id]
     @updates = @project.updates.order("created_at DESC").paginate :page => params[:page], :per_page => 3
     respond_with @updates
   end
-  
+
   def embed
     @project = Project.find params[:id]
     @title = @project.name
     render :layout => 'embed'
   end
-  
+
   def video_embed
     @project = Project.find params[:id]
     @title = @project.name
     render :layout => 'embed'
   end
-  
+
   def pending
     return unless require_admin
     @title = t('projects.pending.title')
