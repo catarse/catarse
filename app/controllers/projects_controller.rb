@@ -83,57 +83,6 @@ class ProjectsController < ApplicationController
     render :json => {:ok => false}.to_json
   end
 
-  def pay
-    backer = Backer.find params[:backer_id]
-    if backer.credits
-      if current_user.credits < backer.value
-        flash[:failure] = t('projects.pay.no_credits')
-        return redirect_to new_project_backer_path(backer.project)
-      end
-      unless backer.confirmed
-        current_user.update_attribute :credits, current_user.credits - backer.value
-        backer.update_attribute :payment_method, 'Credits'
-        backer.confirm!
-      end
-      flash[:success] = t('projects.pay.success')
-      redirect_to thank_you_path
-    else
-      begin
-        current_user.update_attributes params[:user]
-        current_user.reload
-        payer = {
-          :nome => current_user.full_name,
-          :email => current_user.email,
-          :logradouro => current_user.address_street,
-          :numero => current_user.address_number,
-          :complemento => current_user.address_complement,
-          :bairro => current_user.address_neighbourhood,
-          :cidade => current_user.address_city,
-          :estado => current_user.address_state,
-          :pais => "BRA",
-          :cep => current_user.address_zip_code,
-          :tel_fixo => current_user.phone_number
-        }
-        payment = {
-          :valor => "%0.0f" % (backer.value),
-          :id_proprio => backer.key,
-          :razao => "Apoio para o projeto '#{backer.project.name}'",
-          :forma => "BoletoBancario",
-          :dias_expiracao => 2,
-          :pagador => payer,
-          :url_retorno => thank_you_url
-        }
-        response = MoIP::Client.checkout(payment)
-        backer.update_attribute :payment_token, response["Token"]
-        session[:_payment_token] = response["Token"]
-        redirect_to MoIP::Client.moip_page(response["Token"])
-      rescue
-        flash[:failure] = t('projects.pay.moip_error')
-        return redirect_to new_project_backer_path(backer.project)
-      end
-    end
-  end
-
   def comments
     @project = Project.find params[:id]
     @comments = @project.comments.order("created_at DESC").paginate :page => params[:page], :per_page => 5

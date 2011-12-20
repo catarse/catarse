@@ -26,22 +26,77 @@ class Projects::BackersController < ApplicationController
     end
   end
 
-  def checkout
+  def review
     return unless require_login
 
-    @title = t('projects.backers.checkout.title')
+    @title = t('projects.backers.review.title')
     params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
     params[:backer][:user_id] = current_user.id
     @project = Project.find params[:project_id]
     @backer = @project.backers.new(params[:backer])
 
     unless @backer.save
-      flash[:failure] = t('projects.backers.checkout.error')
+      flash[:failure] = t('projects.backers.review.error')
       return redirect_to new_project_backer_path(@project)
     end
 
     session[:thank_you_id] = @project.id
   end
+
+  def checkout
+    return unless require_login
+
+    backer = current_user.backs.find params[:id]
+    if backer.credits
+      if current_user.credits < backer.value
+        flash[:failure] = t('projects.backers.checkout.no_credits')
+        return redirect_to new_project_backer_path(backer.project)
+      end
+      unless backer.confirmed
+        current_user.update_attribute :credits, current_user.credits - backer.value
+        backer.update_attribute :payment_method, 'Credits'
+        backer.confirm!
+      end
+      flash[:success] = t('projects.backers.checkout.success')
+      redirect_to thank_you_path
+    else
+      begin
+        current_user.update_attributes params[:user]
+        current_user.reload
+        payer = {
+          :nome => current_user.full_name,
+          :email => current_user.email,
+          :logradouro => current_user.address_street,
+          :numero => current_user.address_number,
+          :complemento => current_user.address_complement,
+          :bairro => current_user.address_neighbourhood,
+          :cidade => current_user.address_city,
+          :estado => current_user.address_state,
+          :pais => "BRA",
+          :cep => current_user.address_zip_code,
+          :tel_fixo => current_user.phone_number
+        }
+        payment = {
+          :valor => "%0.0f" % (backer.value),
+          :id_proprio => backer.key,
+          :razao => "Apoio para o projeto '#{backer.project.name}'",
+          :forma => "BoletoBancario",
+          :dias_expiracao => 2,
+          :pagador => payer,
+          :url_retorno => thank_you_url
+        }
+        response = MoIP::Client.checkout(payment)
+        backer.update_attribute :payment_token, response["Token"]
+        session[:_payment_token] = response["Token"]
+        redirect_to MoIP::Client.moip_page(response["Token"])
+      rescue
+        flash[:failure] = t('projects.backers.checkout.moip_error')
+        return redirect_to new_project_backer_path(backer.project)
+      end
+    end
+  end
+
+
 
   private
 
