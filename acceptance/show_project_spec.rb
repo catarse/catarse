@@ -86,7 +86,7 @@ feature "Show Project Feature" do
     3.times { Factory(:backer, project: project) }
     4.times { Factory(:comment, commentable: project) }
 
-    visit project_path(project, locale: :pt)
+    visit project_path(project)
     
     find("#updates_link .count").should have_content("(2)")
     click_link "Atualizações"
