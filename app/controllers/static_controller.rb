@@ -1,4 +1,9 @@
 class StaticController < ApplicationController
+
+  def new_home
+    render :layout => 'redesign'
+  end
+
   def guidelines
     @title = t('static.guidelines.title')
   end

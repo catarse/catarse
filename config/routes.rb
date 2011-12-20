@@ -3,7 +3,8 @@ Catarse::Application.routes.draw do
 
   filter :locale
 
-  root :to => "projects#index"
+  root :to => 'static#new_home'
+  # root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
   # Static Pages
