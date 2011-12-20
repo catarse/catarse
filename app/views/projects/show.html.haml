@@ -44,6 +44,11 @@
           %span.count (#{@comments.count})
           = image_tag "project_menu_selected.png"
   #project_content
+    #about.content
+    #updates.content
+    #backers.content
+    #comments.content
+    
   #loading= image_tag "loading.gif"
 = render :partial => 'back_info'
 = render :partial => 'about'
@@ -54,7 +59,7 @@
 = render :partial => 'error'
 = javascript_include_tag 'models/project'
 = javascript_include_tag 'models/user'
-/ = javascript_include_tag 'models/paginated_collection'
+= javascript_include_tag 'models/paginated_collection'
 / = javascript_include_tag 'models/project_collection'
 = javascript_include_tag 'models/backer'
 = javascript_include_tag 'models/comment'
@@ -63,6 +68,7 @@
 = javascript_include_tag 'views/project/content'
 = javascript_include_tag 'views/project/model'
 = javascript_include_tag 'views/project/paginated_content'
+= javascript_include_tag 'views/paginated'
 = javascript_include_tag 'views/project/about'
 = javascript_include_tag 'views/project/backer'
 = javascript_include_tag 'views/project/project_backers'
@@ -75,9 +81,15 @@
   var project = new Project(#{@project.to_json});
   var projectPage = new ProjectPage({project: project});
   Backbone.history.start();
-  $("#loading").waypoint(function(event, direction) {
-    alert("waypoint!");
-  })
+  var $loader = $("#loading");
+  opts = { offset:"100%" };
+  $loader.waypoint(function(event, direction) {
+    if (direction == 'down') {
+      projectPage.backersView.nextPage();
+      $loader.waypoint('remove');
+      $loader.waypoint(opts);
+    }
+  }, opts);
 / :javascript
 /   var project = new Project(#{@project.to_json})
 /   var currentUser = new User(#{current_user.to_json})
