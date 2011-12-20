@@ -83,18 +83,6 @@ class ProjectsController < ApplicationController
     render :json => {:ok => false}.to_json
   end
 
-  # def review
-  #   @title = t('projects.review.title')
-  #   params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
-  #   params[:backer][:user_id] = current_user.id
-  #   @project = Project.find params[:id]
-  #   @backer = @project.backers.new(params[:backer])
-  #   unless @backer.save
-  #     flash[:failure] = t('projects.review.error')
-  #     return redirect_to back_project_path(@project)
-  #   end
-  #   session[:thank_you_id] = @project.id
-  # end
   def pay
     backer = Backer.find params[:backer_id]
     if backer.credits

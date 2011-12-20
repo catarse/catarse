@@ -10,7 +10,30 @@ describe Projects::BackersController do
     @backer = create(:backer, :value=> 10.00, :user => @user_backer, :confirmed => true, :project => @project)
   end
 
-  context "new" do
+  describe "checkout" do
+    it "should redirect when user not loged" do
+      post :checkout, {:locale => :pt, :project_id => @project.id}
+      response.should be_redirect
+    end
+
+    context "with user" do
+      it "when correct data" do
+        request.session[:user_id]=@user.id
+        request.session[:thank_you_id].should be_nil
+        post :checkout, {:locale => :pt, :project_id => @project.id, :backer => {
+          :value => '20.00',
+          :reward_id => '0',
+          :anonymous => '0'
+        }}
+        request.session[:thank_you_id].should == @project.id
+        response.body =~ /#{I18n.t('projects.backers.checkout.title')}/
+        response.body =~ /#{@project.name}/
+        response.body =~ /R\$ 20/
+      end
+    end
+  end
+
+  describe "new" do
     context "without user" do
       it "should redirect" do
         get :new, {:locale => :pt, :project_id => @project.id}
@@ -65,7 +88,7 @@ describe Projects::BackersController do
     end
   end
 
-  context "index" do
+  describe "index" do
     shared_examples_for  "admin / owner" do
       it "should see all info from backer" do
         request.session[:user_id]=@user.id
