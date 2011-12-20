@@ -11,8 +11,93 @@ describe Projects::BackersController do
   end
 
   describe "checkout" do
+    context "without user" do
+      it "should be redirect" do
+        put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
+        response.should be_redirect
+      end
+    end
+
+    it "when backer don't exist in current_user" do
+      request.session[:user_id]=@user.id
+      lambda {
+        put :checkout, {:locale => :pt, :project_id => @project.id, :id => @backer.id}
+      }.should raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    context "with user" do
+      it "when payment via MoIP" do
+        MoIP::Client.stubs(:checkout).returns({"Token" => 'ABCD'})
+        request.session[:user_id]=@user_backer.id
+
+        @user_backer.full_name.should be_nil
+        @user_backer.address_zip_code.should be_nil
+        @user_backer.phone_number.should be_nil
+
+        @backer.update_attributes({:value => 10, :confirmed => false})
+        put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id, :user => {
+          :full_name => 'Lorem Ipsum',
+          :email => 'lorem@lorem.com',
+          :address_zip_code => '33600-999',
+          :address_street => 'R. Ipsum',
+          :address_number => '666',
+          :address_complement => 'House',
+          :address_city => 'Some City',
+          :address_state => 'LP',
+          :phone_number => '(90) 9999-9999'
+        } }
+
+        @user_backer.reload
+
+        @user_backer.full_name.should_not be_nil
+        @user_backer.address_zip_code.should_not be_nil
+        @user_backer.phone_number.should_not be_nil
+
+        request.session[:_payment_token].should == 'ABCD'
+        response.should be_redirect
+      end
+
+      context "credits" do
+        it "when user don't have credits enough" do
+          request.session[:user_id]=@user_backer.id
+          @user_backer.update_attribute(:credits, 8)
+          @backer.update_attributes({:value => 10, :credits => true, :confirmed => false})
+
+          put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
+
+          @user_backer.reload
+          @backer.reload
+
+          @user_backer.credits.to_i.should == 8
+          @backer.confirmed.should be_false
+
+          request.flash[:failure].should == I18n.t('projects.backers.checkout.no_credits')
+          response.should be_redirect
+        end
+
+        it "when user have credits enough" do
+          request.session[:user_id]=@user_backer.id
+          @user_backer.update_attribute(:credits, 100)
+          @backer.update_attributes({:value => 10, :credits => true, :confirmed => false})
+
+          put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
+
+          @user_backer.reload
+          @backer.reload
+
+          @user_backer.credits.to_i.should == 90
+          @backer.confirmed.should be_true
+
+          request.flash[:success].should == I18n.t('projects.backers.checkout.success')
+          response.should be_redirect
+        end
+      end
+    end
+  end
+
+  describe "review" do
     it "should redirect when user not loged" do
-      post :checkout, {:locale => :pt, :project_id => @project.id}
+      post :review, {:locale => :pt, :project_id => @project.id}
       response.should be_redirect
     end
 
@@ -20,7 +105,7 @@ describe Projects::BackersController do
       it "when correct data" do
         request.session[:user_id]=@user.id
         request.session[:thank_you_id].should be_nil
-        post :checkout, {:locale => :pt, :project_id => @project.id, :backer => {
+        post :review, {:locale => :pt, :project_id => @project.id, :backer => {
           :value => '20.00',
           :reward_id => '0',
           :anonymous => '0'

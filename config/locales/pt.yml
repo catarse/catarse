@@ -205,6 +205,13 @@ pt:
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
   projects:
     backers:
+      checkout:
+        moip_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
+        no_credits: "Você não possui créditos suficientes para realizar este apoio."
+        paypal_cancel: "Seu pagamento no PayPal foi cancelado. Por favor, tente novamente."
+        paypal_description: "Apoio para projeto"
+        paypal_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o PayPal. Por favor, tente novamente."
+        success: "Seu apoio foi realizado com sucesso. Muito obrigado!"
       new:
         cannot_back: "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
         header:
@@ -213,7 +220,7 @@ pt:
         no_reward: "Obrigado. Eu só quero ajudar o projeto."
         submit: "Revisar e realizar pagamento"
         title: "Apoie o %{name}"
-      checkout:
+      review:
         credits_notice_html: "Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos."
         error: "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
         international:
@@ -281,13 +288,6 @@ pt:
     new:
       subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
       title: "Envie seu projeto"
-    pay:
-      moip_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
-      no_credits: "Você não possui créditos suficientes para realizar este apoio."
-      paypal_cancel: "Seu pagamento no PayPal foi cancelado. Por favor, tente novamente."
-      paypal_description: "Apoio para projeto"
-      paypal_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o PayPal. Por favor, tente novamente."
-      success: "Seu apoio foi realizado com sucesso. Muito obrigado!"
     pending:
       can_finish: "Pode finalizar?"
       finished: Finalizado?

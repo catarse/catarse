@@ -30,7 +30,10 @@ Catarse::Application.routes.draw do
     resources :rewards
     resources :backers, :controller => 'projects/backers' do
       collection do
-        post 'checkout'
+        post 'review'
+      end
+      member do
+        put 'checkout'
       end
     end
     collection do

@@ -27,7 +27,7 @@
             = label_tag 'accept_international', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
           %fieldset
             = submit_tag t('.international.submit'), :disabled => true, :id => 'international_submit'
-  = semantic_form_for current_user, :url => pay_project_path(@backer.project), :html => { :id => 'review_form' } do |form|
+  = semantic_form_for current_user, :url => checkout_project_backer_path(@backer.project, @backer), :html => { :id => 'review_form' } do |form|
     = hidden_field_tag 'backer_id', @backer.id
     = hidden_field_tag 'backer_credits', @backer.credits
     - unless @backer.credits
