@@ -1,0 +1,47 @@
+xml.instruct!
+xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+
+  xml.url do
+    xml.loc "http://catarse.me"
+    xml.priority 1.0
+  end
+
+  xml.url do
+    xml.loc "http://catarse.me/pt"
+    xml.priority 1.0
+  end
+
+  xml.url do
+    xml.loc "http://catarse.me/en"
+    xml.priority 1.0
+  end
+
+  @home_page.each do |project|
+    xml.url do
+      xml.loc project_url(project)
+      xml.priority 0.9
+    end
+  end
+  # 
+  # @products.each do |product|
+  #   xml.url do
+  #     xml.loc product_url(product)
+  #     xml.priority 0.8
+  #   end
+  # end
+  # 
+  # @pages.each do |page|
+  #   xml.url do
+  #     xml.loc page_url(page)
+  #     xml.priority 0.7
+  #   end
+  # end
+  # 
+  # @tags.each do |tag|
+  #   xml.url do
+  #     xml.loc tag_url(tag.name)
+  #     xml.priority 0.9
+  #   end
+  # end
+
+end
