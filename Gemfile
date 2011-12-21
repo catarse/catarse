@@ -46,6 +46,10 @@ gem 'httparty'
 gem "rack-timeout"
 gem 'web_translate_it'
 
+group :development do
+  gem 'thin'
+end
+
 group :test, :development do
   gem 'annotate'
   gem 'launchy'
@@ -65,8 +69,6 @@ end
 # group :test do
 #   gem 'capybara-webkit', "0.6.1"
 # end
-
-gem 'thin'
 
 # Putting pg to the end because of a weird bug with Lion, pg and openssl
 gem 'pg'
