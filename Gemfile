@@ -66,5 +66,7 @@ end
 #   gem 'capybara-webkit', "0.6.1"
 # end
 
+gem 'thin'
+
 # Putting pg to the end because of a weird bug with Lion, pg and openssl
 gem 'pg'
