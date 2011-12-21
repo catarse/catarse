@@ -1,0 +1,91 @@
+/*
+Syntax error: File to import not found or unreadable: partials/font.
+              Load paths:
+                Compass::SpriteImporter
+                /users/barbarawolffdick/engage/catarse/public/stylesheets/sass
+                /users/barbarawolffdick/engage/catarse/app/stylesheets
+                /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/blueprint/stylesheets
+                /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets
+                /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets
+                /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activeadmin-0.2.2/lib/active_admin/stylesheets
+        on line 1 of /users/barbarawolffdick/engage/catarse/app/stylesheets/miv/index.sass
+
+1: @import "partials/font"
+2: 
+3: $blue: #4383D1
+
+Backtrace:
+/users/barbarawolffdick/engage/catarse/app/stylesheets/miv/index.sass:1
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/import_node.rb:64:in `rescue in import'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/import_node.rb:42:in `import'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/import_node.rb:25:in `imported_file'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:148:in `rescue in visit_import'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:153:in `visit_import'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/root_node.rb:20:in `render'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/engine.rb:293:in `_render'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/engine.rb:241:in `block in render'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/util.rb:297:in `silence_sass_warnings'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/engine.rb:241:in `render'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/plugin/compiler.rb:319:in `update_stylesheet'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/plugin/compiler.rb:181:in `block (2 levels) in update_stylesheets'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/plugin/compiler.rb:175:in `each'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/plugin/compiler.rb:175:in `block in update_stylesheets'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/plugin/compiler.rb:173:in `each'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/plugin/compiler.rb:173:in `update_stylesheets'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/plugin/rack.rb:51:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/warden-1.1.0/lib/warden/manager.rb:35:in `block in call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/warden-1.1.0/lib/warden/manager.rb:34:in `catch'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/warden-1.1.0/lib/warden/manager.rb:34:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/methodoverride.rb:24:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `block in call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/sendfile.rb:106:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/runtime.rb:17:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/lock.rb:11:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/content_length.rb:13:in `call'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/handler/webrick.rb:52:in `service'
+/Users/barbarawolffdick/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/Users/barbarawolffdick/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/Users/barbarawolffdick/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: partials/font.\A               Load paths:\A                 Compass::SpriteImporter\A                 /users/barbarawolffdick/engage/catarse/public/stylesheets/sass\A                 /users/barbarawolffdick/engage/catarse/app/stylesheets\A                 /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/blueprint/stylesheets\A                 /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets\A                 /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets\A                 /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activeadmin-0.2.2/lib/active_admin/stylesheets\A         on line 1 of /users/barbarawolffdick/engage/catarse/app/stylesheets/miv/index.sass\A \A 1: @import \"partials/font\"\A 2: \A 3: $blue: #4383D1"; }
