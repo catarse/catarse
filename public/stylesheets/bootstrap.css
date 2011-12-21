@@ -1,4 +1,4 @@
-/* line 17, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 114, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 114, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -105,7 +105,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   src: url("/fonts/Lato-Regular.ttf");
 }
 
-/* line 8, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+/* line 8, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.3.2/stylesheets/eleven40_16/reset/_utilities.scss */
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
 address, cite, code, del, dfn, em, img, ins, q, small, strong, sub, sup, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -114,60 +114,60 @@ fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
   padding: 0;
 }
 
-/* line 14, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+/* line 14, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.3.2/stylesheets/eleven40_16/reset/_utilities.scss */
 article, aside, figure, figure img, figcaption, hgroup, footer, header, nav, section,
 video, object {
   display: block;
 }
 
-/* line 17, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+/* line 17, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.3.2/stylesheets/eleven40_16/reset/_utilities.scss */
 a img {
   border: 0;
 }
 
-/* line 20, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+/* line 20, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.3.2/stylesheets/eleven40_16/reset/_utilities.scss */
 figure {
   position: relative;
 }
 
-/* line 23, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+/* line 23, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.3.2/stylesheets/eleven40_16/reset/_utilities.scss */
 figure img {
   width: 100%;
 }
 
-/* line 27, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+/* line 27, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.3.2/stylesheets/eleven40_16/reset/_utilities.scss */
 img, object, embed {
   max-width: 100%;
 }
 
-/* line 7, ../../app/stylesheets/bootstrap.sass */
+/* line 8, ../../app/stylesheets/bootstrap.sass */
 body {
   font-size: 62.5%;
 }
 
-/* line 10, ../../app/stylesheets/bootstrap.sass */
+/* line 11, ../../app/stylesheets/bootstrap.sass */
 #top {
   background-color: #363636;
   padding: 15px 0;
   width: 100%;
   color: white;
 }
-/* line 16, ../../app/stylesheets/bootstrap.sass */
+/* line 17, ../../app/stylesheets/bootstrap.sass */
 #top menu {
   padding-left: 20px;
   padding-right: 20px;
   width: 100%;
-  max-width: 1140px;
+  max-width: 940px;
   margin: 0 auto;
   overflow: hidden;
 }
-/* line 20, ../../app/stylesheets/bootstrap.sass */
+/* line 21, ../../app/stylesheets/bootstrap.sass */
 #top menu nav {
   width: 16.8%;
-  margin-right: 2.4%;
+  margin-right: 2.5%;
   float: left;
 }
-/* line 22, ../../app/stylesheets/bootstrap.sass */
+/* line 23, ../../app/stylesheets/bootstrap.sass */
 #top menu nav a {
   display: inline-block;
   font-family: Lato-Regular;
@@ -176,13 +176,13 @@ body {
   text-decoration: none;
   margin: 5px 5px 5px 0;
 }
-/* line 30, ../../app/stylesheets/bootstrap.sass */
+/* line 31, ../../app/stylesheets/bootstrap.sass */
 #top menu nav a:last-child {
   margin-right: 0;
 }
-/* line 32, ../../app/stylesheets/bootstrap.sass */
+/* line 33, ../../app/stylesheets/bootstrap.sass */
 #top menu nav .actions {
   width: 16.8%;
-  margin-right: 2.4%;
+  margin-right: 2.5%;
   float: left;
 }
