@@ -6,6 +6,7 @@ Catarse::Application.routes.draw do
   root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
+  match '/sitemap' => "static#sitemap", :as => :sitemap
   # Static Pages
   match "/guidelines" => "static#guidelines", :as => :guidelines
   match "/faq" => "static#faq", :as => :faq
