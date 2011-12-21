@@ -27,4 +27,3 @@ ActiveRecord::Base.connection.execute "INSERT INTO categories (name) VALUES ('Ar
  ('Tecnologia'),
  ('Teatro'),
  ('Literatura');"
-
