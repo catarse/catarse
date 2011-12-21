@@ -62,3 +62,127 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
+
+/* IE Fonts */
+@font-face {
+  font-family: "museo-300";
+  src: url("/fonts/MUSEO300.eot");
+}
+
+@font-face {
+  font-family: "museo-500";
+  src: url("/fonts/MUSEO500.eot");
+}
+
+@font-face {
+  font-family: "museo-700";
+  src: url("/fonts/MUSEO700.eot");
+}
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("/fonts/Lato-Regular.eot");
+}
+
+/* TTF fonts for CSS3 */
+@font-face {
+  font-family: "museo-300";
+  src: url("/fonts/MUSEO300.TTF");
+}
+
+@font-face {
+  font-family: "museo-500";
+  src: url("/fonts/MUSEO500.TTF");
+}
+
+@font-face {
+  font-family: "museo-700";
+  src: url("/fonts/MUSEO700.TTF");
+}
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("/fonts/Lato-Regular.ttf");
+}
+
+/* line 8, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+address, cite, code, del, dfn, em, img, ins, q, small, strong, sub, sup, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 14, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+article, aside, figure, figure img, figcaption, hgroup, footer, header, nav, section,
+video, object {
+  display: block;
+}
+
+/* line 17, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+a img {
+  border: 0;
+}
+
+/* line 20, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+figure {
+  position: relative;
+}
+
+/* line 23, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+figure img {
+  width: 100%;
+}
+
+/* line 27, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/eleven40_16-1.2.6/stylesheets/eleven40_16/reset/_utilities.scss */
+img, object, embed {
+  max-width: 100%;
+}
+
+/* line 7, ../../app/stylesheets/bootstrap.sass */
+body {
+  font-size: 62.5%;
+}
+
+/* line 10, ../../app/stylesheets/bootstrap.sass */
+#top {
+  background-color: #363636;
+  padding: 15px 0;
+  width: 100%;
+  color: white;
+}
+/* line 16, ../../app/stylesheets/bootstrap.sass */
+#top menu {
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+/* line 20, ../../app/stylesheets/bootstrap.sass */
+#top menu nav {
+  width: 16.8%;
+  margin-right: 2.4%;
+  float: left;
+}
+/* line 22, ../../app/stylesheets/bootstrap.sass */
+#top menu nav a {
+  display: inline-block;
+  font-family: Lato-Regular;
+  font-size: 1.7em;
+  color: white;
+  text-decoration: none;
+  margin: 5px 5px 5px 0;
+}
+/* line 30, ../../app/stylesheets/bootstrap.sass */
+#top menu nav a:last-child {
+  margin-right: 0;
+}
+/* line 32, ../../app/stylesheets/bootstrap.sass */
+#top menu nav .actions {
+  width: 16.8%;
+  margin-right: 2.4%;
+  float: left;
+}

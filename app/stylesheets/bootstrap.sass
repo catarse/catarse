@@ -1,3 +1,35 @@
 @import "compass/reset"
 @import "compass/utilities"
 @import "compass/css3"
+@import "miv/index"
+@import "eleven40_16"
+
+body
+  font-size: 62.5%
+
+#top
+  background-color: $grafiti
+  padding: 15px 0 
+  width: 100%
+  color: white
+
+  menu
+    +container
+    +row
+    
+    nav
+      +grid(3)
+      a
+        display: inline-block
+        font-family: Lato-Regular
+        //font-weight: 900
+        font-size: 1.7em
+        color: white
+        text-decoration: none
+        margin: 5px 5px 5px 0
+        &:last-child
+          margin-right: 0
+      .actions
+        +grid(3)
+
+  
