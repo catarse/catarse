@@ -10,15 +10,16 @@ window.ProjectPage = Backbone.Router.extend({
 	
 	initialize: function() {
 		this.aboutView = new ProjectAboutView({});
-		this.aboutView.container = $("#project_content #about");
+		this.aboutView.container = $("#project_content #about_tab");
 		this.project = project;
 		
 		this.backersView = new BackersView({
 			collection: this.project.backers,
+			loader: $("#loading")
 		});
-		this.backersView.container = $("#project_content #backers")
+		this.backersView.container = $("#project_content #backers_tab");
 
-		this.selectItem("about");
+		this.selectItem("about_tab");
 	},
 	
 	about: function() {
@@ -26,9 +27,8 @@ window.ProjectPage = Backbone.Router.extend({
 	},
 
 	backers: function() {
-		this.selectItem("backers");
+		this.selectItem("backers_tab");
 		this.backersView.collection.fetch();
-		this.backersView.loader = $("#loading");
 		this.backersView.container.append(this.backersView.render().el)
 	},
 	

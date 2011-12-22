@@ -5,13 +5,14 @@ var PaginatedView = Backbone.View.extend({
       this.collection = options.collection
     if(options.modelView)
       this.modelView = options.modelView
+		// if(options.loader)
+		// 	this.loader = options.loader
+		this.loader = $("#loading")
     this.loader.waypoint('destroy')
     _.bindAll(this, "render", "update", "nextPage", "waypoint")
-    this.render()
-    this.loader.children().show()
-    this.collection.page = 1
-    this.collection.bind("reset", this.update)
-    this.collection.fetch()
+    this.render();
+		this.loader.show();
+    // this.collection.bind("reset", this.update);
   },
   waypoint: function(event, direction){
     if(!this.loader.is(":visible")){
@@ -22,33 +23,35 @@ var PaginatedView = Backbone.View.extend({
   },
   nextPage: function(){
     if(!this.collection.isEmpty()) {
-      this.loader.children().show();
+      // this.loader.children().show();
       this.collection.nextPage();
     }
 		return this;
   },
   render: function() {
-		var $backers,
+		var $list,
 				collection = this.collection;
-		$(this.el).append(this.template({}));
-		$backers = this.$("#collection_list");
+		// $(this.el).append(this.template({}));
+		$list = this.$(".collection_list");
 
-		this.collection.each(function(backer) {
-			var view = new BackerView({
-				model: backer,
+		this.collection.each(function(item) {
+			var view = new this.modelView({
+				model: item,
 				collection: collection
 			});
 
-			$backers.append(view.render().el)
+			$list.append(view.render().el)
 		});
-		this.loader.children().hide();
+		// 
+		// $(this.el).append($list);
+		// this.loader.children().hide();
 		return this;
     // this.$('ul.items').html("")
     // this.$('.empty').hide()
     // return this
   },
   update: function(){
-    this.loader.children().hide()
+    // this.loader.children().hide()
     if(!this.collection.isEmpty()) {
       this.collection.each(function(model){
         var item = $('<li>')
@@ -58,7 +61,7 @@ var PaginatedView = Backbone.View.extend({
     } else if(this.collection.page == 1) {
       this.$('.empty').show()
     }
-    this.loader.waypoint(this.waypoint, {offset: "100%"})
+    // this.loader.waypoint(this.waypoint, {offset: "100%"})
     return this
   }
 })
