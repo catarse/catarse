@@ -24,6 +24,7 @@ pt:
         maximum_backers: "Máximo de apoiadores"
         minimum_value: "Valor mínimo"
       user:
+        cpf: CPF
         address_city: Cidade
         address_complement: Complemento
         address_neighbourhood: Bairro
