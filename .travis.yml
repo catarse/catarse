@@ -14,4 +14,4 @@ script: "bundle exec rake db:migrate && bundle exec rspec spec/ && bundle exec r
 branches:
   only:
     - master
-    - dev
+    - develop
