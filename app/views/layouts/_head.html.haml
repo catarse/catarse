@@ -3,7 +3,12 @@
   %meta{:name => "robots", :content => "index, follow"}
   %meta{:name => "author", :content => "Softa"}
   = yield :meta_tags
-  %title= "#{@title}#{' · ' if @title}#{t('site.name')}"
+  %title
+    - if @title
+      == #{@title}#{' · ' if @title}#{t('site.name')}
+    - else
+      == #{yield :title} · #{t('site.name')}
+
   = stylesheet_link_tag 'le-frog/jquery-ui-1.8.6.custom.css', :media => 'screen, projection'
   = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
   /[if lt IE 9]

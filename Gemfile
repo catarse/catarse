@@ -47,6 +47,10 @@ gem "rack-timeout"
 gem 'web_translate_it'
 gem 'kaminari'
 
+group :development do
+  gem 'thin'
+end
+
 group :test, :development do
   gem 'annotate'
   gem 'launchy'

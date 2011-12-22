@@ -5,7 +5,7 @@
 %ul
   - @rewards.each do |reward|
     %li{:class => ('clickable' if @project.can_back? and not reward.sold_out?)}
-      = hidden_field_tag 'url', "#{back_project_path(@project)}/?reward_id=#{reward.id}"
+      = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
       %h1= t('.reward_title', :minimum => reward.display_minimum)
       - if reward.maximum_backers
         .maximum_backers

@@ -40,8 +40,9 @@ feature "New Project Feature", :driver => :selenium do
       check 'accept'
       verify_translations
       click_button 'project_submit'
-      verify_translations
     end
+
+    verify_translations
 
     p = Project.first
     p.name.should == 'test project'
@@ -51,4 +52,3 @@ feature "New Project Feature", :driver => :selenium do
   end
 
 end
-
