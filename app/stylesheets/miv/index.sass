@@ -1,11 +1,13 @@
-@import "fonts"
-@import "colors"
-
 $ninesixty-columns: 16
 
 @mixin default_grid
   +grid-container
   +grid-system(16)
+
+@import "fonts"
+@import "colors"
+@import "projects"
+@import "typography"
 
 body
   font-size: 62.5%
@@ -15,24 +17,6 @@ body
   width: 187px
   height: 45px
   background: url("/images/redesign/logo.png") left top no-repeat
-
-a
-  text-decoration: none
-  color: $blue
-  font-family: Lato-Regular
-  font-size: 1.7em
-
-// Titles
-
-h1
-  font-family: Lato-Regular
-  font-size: 3.3em
-  color: white
-
-h4
-  font-family: Lato-Regular
-  font-size: 1.6em
-  color: white
 
 form.search_input
   +border-radius(8px)
