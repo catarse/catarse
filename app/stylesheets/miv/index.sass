@@ -3,6 +3,10 @@
 
 $ninesixty-columns: 16
 
+@mixin default_grid
+  +grid-container
+  +grid-system(16)
+
 body
   font-size: 62.5%
   background: url("/images/redesign/body-background.png") left top repeat
