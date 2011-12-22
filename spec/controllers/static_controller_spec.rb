@@ -2,21 +2,31 @@
 require 'spec_helper'
 
 describe StaticController do
+
   render_views
+  subject{ response }
 
-  it "guidelines" do
-    get :guidelines, {:locale => :pt}
-    response.body.should =~ /#{I18n.t('static.guidelines.title')}/
-    response.body.should =~ /#{I18n.t('static.guidelines.subtitle')}/
+  describe 'GET guidelines' do
+    before{ get :guidelines, {:locale => :pt} }
+    it{ should be_success }
+    its(:body){ should =~ /#{I18n.t('static.guidelines.title')}/ }
+    its(:body){ should =~ /#{I18n.t('static.guidelines.subtitle')}/ }
   end
 
-  it "faq" do
-    get :faq, {:locale => :pt}
-    response.body.should =~ /#{I18n.t('static.faq.title')}/
+  describe 'GET faq' do
+    before{ get :faq, {:locale => :pt} }
+    it{ should be_success }
+    its(:body){ should =~ /#{I18n.t('static.faq.title')}/ }
   end
 
-  it "terms" do
-    get :terms, {:locale => :pt}
-    response.body.should =~ /#{I18n.t('static.terms.title')}/
+  describe "GET terms" do
+    before{ get :terms, {:locale => :pt} }
+    it{ should be_success }
+    its(:body){ should =~ /#{I18n.t('static.terms.title')}/ }
+  end
+
+  describe "GET sitemap" do
+    before{ get :sitemap, {:locale => :pt} }
+    it{ should be_success }
   end
 end
