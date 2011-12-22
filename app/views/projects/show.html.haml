@@ -44,10 +44,10 @@
           %span.count (#{@comments.count})
           = image_tag "project_menu_selected.png"
   #project_content
-    #about.content
-    #updates.content
-    #backers.content
-    #comments.content
+    #about_tab.content
+    #updates_tag.content
+    #backers_tab.content
+    #comments_tab.content
     
   #loading= image_tag "loading.gif"
 = render :partial => 'back_info'
@@ -77,18 +77,10 @@
 / = javascript_include_tag 'views/project/project_updates'
 = javascript_include_tag 'show_project'
 :javascript
+  var locale = "#{I18n.locale}";
   var project = new Project(#{@project.to_json});
   var projectPage = new ProjectPage({project: project});
   Backbone.history.start();
-  var $loader = $("#loading");
-  opts = { offset:"100%" };
-  $loader.waypoint(function(event, direction) {
-    if (direction == 'down') {
-      projectPage.backersView.nextPage();
-      $loader.waypoint('remove');
-      $loader.waypoint(opts);
-    }
-  }, opts);
 / :javascript
 /   var project = new Project(#{@project.to_json})
 /   var currentUser = new User(#{current_user.to_json})
