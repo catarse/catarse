@@ -5,8 +5,7 @@
   color: white
 
   menu
-    +grid-container
-    +grid-system(16)
+    +default_grid
     padding-bottom: 21px
     nav
       +grid-prefix(5)
@@ -50,8 +49,7 @@
 
 #header
   +clearfix
-  +grid-container
-  +grid-system(16)
+  +default_grid
   padding-top: 30px
   .logo
     text-indent:  -9999em
@@ -67,3 +65,4 @@
   .search
     padding-top: 15px
     +grid(5)
+
