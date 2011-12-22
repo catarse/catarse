@@ -1,4 +1,4 @@
-/* line 17, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,52 +20,52 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 114, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 114, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
 /* line 1, ../../app/stylesheets/_datepicker.sass */
 .ui-datepicker {
-  text-shadow: black, 0px, 0px, 0px;
+  text-shadow: black 0px 0px 0px;
 }
 /* line 3, ../../app/stylesheets/_datepicker.sass */
 .ui-datepicker table tbody tr td {
@@ -74,7 +74,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 5, ../../app/stylesheets/_datepicker.sass */
 .ui-datepicker table tbody tr td a {
   color: white !important;
-  text-shadow: rgba(0, 0, 0, 0.5), 1px, 1px, 0px;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 0px;
 }
 
 /* IE Fonts */
@@ -145,16 +145,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: #ffbbbb;
   background-color: rgba(255, 175, 175, 0.7);
   padding: 20px;
-  text-shadow: rgba(255, 255, 255, 0.6), 1px, 1px, 0px;
-  -webkit-border-radius: 6px;
+  text-shadow: rgba(255, 255, 255, 0.6) 1px 1px 0px;
   -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
+  -webkit-border-radius: 6px;
   -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
   border-radius: 6px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   margin: 20px 0;
 }
 /* line 22, ../../app/stylesheets/_helpers.sass */
@@ -165,26 +166,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 @-webkit-keyframes pulse {
   /* line 2, ../../app/stylesheets/_locales.sass */
   0% {
-    -webkit-box-shadow: rgba(0, 132, 185, 0.2), 0px, 0px, 12px;
-    -moz-box-shadow: rgba(0, 132, 185, 0.2), 0px, 0px, 12px;
-    -o-box-shadow: rgba(0, 132, 185, 0.2), 0px, 0px, 12px;
-    box-shadow: rgba(0, 132, 185, 0.2), 0px, 0px, 12px;
+    -moz-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    -webkit-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    -o-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
   }
 
   /* line 4, ../../app/stylesheets/_locales.sass */
   50% {
-    -webkit-box-shadow: rgba(0, 132, 185, 0.9), 0px, 0px, 12px;
-    -moz-box-shadow: rgba(0, 132, 185, 0.9), 0px, 0px, 12px;
-    -o-box-shadow: rgba(0, 132, 185, 0.9), 0px, 0px, 12px;
-    box-shadow: rgba(0, 132, 185, 0.9), 0px, 0px, 12px;
+    -moz-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.9);
+    -webkit-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.9);
+    -o-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.9);
+    box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.9);
   }
 
   /* line 6, ../../app/stylesheets/_locales.sass */
   100% {
-    -webkit-box-shadow: rgba(0, 132, 185, 0.2), 0px, 0px, 12px;
-    -moz-box-shadow: rgba(0, 132, 185, 0.2), 0px, 0px, 12px;
-    -o-box-shadow: rgba(0, 132, 185, 0.2), 0px, 0px, 12px;
-    box-shadow: rgba(0, 132, 185, 0.2), 0px, 0px, 12px;
+    -moz-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    -webkit-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    -o-box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
+    box-shadow: 0px 0px 12px rgba(0, 132, 185, 0.2);
   }
 }
 
@@ -212,12 +213,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 18px;
   border: 2px solid #003c00;
   border: 2px solid rgba(0, 60, 0, 0.6);
-  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
+  -webkit-border-radius: 5px;
   -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
   border-radius: 5px;
-  text-shadow: rgba(255, 255, 255, 0.85), 1px, 1px, 0px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
 }
 /* line 21, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form input:focus, .on_the_spot_editing form textarea:focus, .on_the_spot_editing form select:focus {
@@ -239,14 +241,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   color: #333333;
   font-size: 14px;
   line-height: 16px;
-  text-shadow: rgba(255, 255, 255, 0.85), 1px, 1px, 0px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
   font-weight: bold;
   padding: 5px 10px;
   border: none;
-  -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
+  -webkit-border-radius: 8px;
   -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
   border-radius: 8px;
   background-color: #cccccc;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #aaaaaa));
@@ -255,10 +258,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-image: -o-linear-gradient(top, #dddddd, #aaaaaa);
   background-image: -ms-linear-gradient(top, #dddddd, #aaaaaa);
   background-image: linear-gradient(top, #dddddd, #aaaaaa);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 3px;
-  box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 3px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
 }
 /* line 44, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:hover {
@@ -269,15 +272,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
   background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
   background-image: linear-gradient(top, #eeeeee, #bbbbbb);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 2px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 2px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 2px;
-  box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 2px;
+  -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
 /* line 48, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:active {
   padding: 6px 9px 4px 11px;
-  text-shadow: rgba(255, 255, 255, 0.85), 2px, 2px, 1px;
+  text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
   background-image: -webkit-linear-gradient(top, #eeeeee, #bbbbbb);
@@ -285,15 +288,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
   background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
   background-image: linear-gradient(top, #eeeeee, #bbbbbb);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 1px, 1px, 1px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 1px, 1px, 1px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 1px, 1px, 1px;
-  box-shadow: rgba(0, 0, 0, 0.75), 1px, 1px, 1px;
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
 }
 /* line 54, ../../app/stylesheets/_on_the_spot.sass */
 .on_the_spot_editing form button:disabled {
   color: #888888;
-  text-shadow: rgba(230, 230, 230, 0.85), 1px, 1px, 0px;
+  text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
   padding: 5px 10px;
   background-color: #aaaaaa;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
@@ -302,10 +305,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-image: -o-linear-gradient(top, #bbbbbb, #888888);
   background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
   background-image: linear-gradient(top, #bbbbbb, #888888);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 
 /* line 34, ../../app/stylesheets/screen.sass */
@@ -316,7 +319,7 @@ body#platform {
   color: #222222;
   font-size: 18px;
   line-height: 22px;
-  text-shadow: white, 1px, 1px, 0px;
+  text-shadow: white 1px 1px 0px;
   font-weight: normal;
 }
 /* line 10, ../../app/stylesheets/_body.sass */
@@ -332,8 +335,8 @@ body#platform a {
   text-decoration: underline;
   color: #008800;
   font-size: 100%;
-  -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -366,12 +369,13 @@ body#platform form input[type=text], body#platform form textarea, body#platform 
   font-size: 18px;
   border: 2px solid #003c00;
   border: 2px solid rgba(0, 60, 0, 0.6);
-  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
+  -webkit-border-radius: 5px;
   -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
   border-radius: 5px;
-  text-shadow: rgba(255, 255, 255, 0.85), 1px, 1px, 0px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
 }
 /* line 23, ../../app/stylesheets/_form.sass */
 body#platform form input[type=text]:focus, body#platform form textarea:focus, body#platform form select:focus {
@@ -397,14 +401,15 @@ body#platform form input[type=submit] {
   color: #333333;
   font-size: 18px;
   line-height: 22px;
-  text-shadow: rgba(255, 255, 255, 0.85), 1px, 1px, 0px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
   font-weight: bold;
   padding: 10px 15px;
   border: none;
-  -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
+  -webkit-border-radius: 8px;
   -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
   border-radius: 8px;
   background-color: #cccccc;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #aaaaaa));
@@ -413,10 +418,10 @@ body#platform form input[type=submit] {
   background-image: -o-linear-gradient(top, #dddddd, #aaaaaa);
   background-image: -ms-linear-gradient(top, #dddddd, #aaaaaa);
   background-image: linear-gradient(top, #dddddd, #aaaaaa);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 48, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit]:hover {
@@ -427,15 +432,15 @@ body#platform form input[type=submit]:hover {
   background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
   background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
   background-image: linear-gradient(top, #eeeeee, #bbbbbb);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 52, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit]:active {
   padding: 11px 14px 9px 16px;
-  text-shadow: rgba(255, 255, 255, 0.85), 2px, 2px, 1px;
+  text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
   background-image: -webkit-linear-gradient(top, #eeeeee, #bbbbbb);
@@ -443,15 +448,15 @@ body#platform form input[type=submit]:active {
   background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
   background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
   background-image: linear-gradient(top, #eeeeee, #bbbbbb);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 1px, 1px, 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 1px, 1px, 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 1px, 1px, 3px;
-  box-shadow: rgba(0, 0, 0, 0.75), 1px, 1px, 3px;
+  -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
 }
 /* line 58, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit]:disabled {
   color: #888888;
-  text-shadow: rgba(230, 230, 230, 0.85), 1px, 1px, 0px;
+  text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
   padding: 10px 15px;
   background-color: #aaaaaa;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
@@ -460,10 +465,10 @@ body#platform form input[type=submit]:disabled {
   background-image: -o-linear-gradient(top, #bbbbbb, #888888);
   background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
   background-image: linear-gradient(top, #bbbbbb, #888888);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 65, ../../app/stylesheets/_form.sass */
 body#platform form input.ok, body#platform form textarea.ok {
@@ -538,8 +543,8 @@ body#platform table thead th {
 }
 /* line 11, ../../app/stylesheets/_table.sass */
 body#platform table tbody tr {
-  -webkit-transition: all;
   -moz-transition: all;
+  -webkit-transition: all;
   -o-transition: all;
   transition: all;
 }
@@ -559,13 +564,13 @@ body#platform .flash {
   position: fixed;
   bottom: 0;
   width: 100%;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 0px, -4px, 20px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 0px, -4px, 20px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 0px, -4px, 20px;
-  box-shadow: rgba(0, 0, 0, 0.75), 0px, -4px, 20px;
+  -moz-box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.75);
   text-align: center;
   color: white;
-  text-shadow: black, 1px, 1px, 1px;
+  text-shadow: black 1px 1px 1px;
 }
 /* line 10, ../../app/stylesheets/_flash.sass */
 body#platform .flash .wrapper {
@@ -625,20 +630,26 @@ body#platform #locales {
   background-color: rgba(0, 0, 0, 0.8);
   -moz-border-radius-topleft: 6px;
   -webkit-border-top-left-radius: 6px;
-  -ms-border-top-left-radius: 6px;
   -o-border-top-left-radius: 6px;
+  -ms-border-top-left-radius: 6px;
+  -khtml-border-top-left-radius: 6px;
   border-top-left-radius: 6px;
   -moz-border-radius-bottomleft: 6px;
   -webkit-border-bottom-left-radius: 6px;
-  -ms-border-bottom-left-radius: 6px;
   -o-border-bottom-left-radius: 6px;
+  -ms-border-bottom-left-radius: 6px;
+  -khtml-border-bottom-left-radius: 6px;
   border-bottom-left-radius: 6px;
   padding: 12px;
   padding-bottom: 4px;
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* line 23, ../../app/stylesheets/_locales.sass */
 body#platform #locales:hover {
@@ -656,17 +667,21 @@ body#platform #locales.notify {
 /* line 30, ../../app/stylesheets/_locales.sass */
 body#platform #locales img {
   width: 32px;
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* line 33, ../../app/stylesheets/_locales.sass */
 body#platform #locales img:hover {
-  -webkit-transform: scale(1.1, 1.1);
   -moz-transform: scale(1.1, 1.1);
-  -ms-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
 }
 /* line 45, ../../app/stylesheets/screen.sass */
@@ -679,15 +694,16 @@ body#platform #login {
   background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
   background-image: linear-gradient(top, #51c252, #49b249, #44a546);
   border: 5px solid white;
-  -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
+  -webkit-border-radius: 8px;
   -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
   border-radius: 8px;
-  -webkit-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  -moz-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  -o-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
+  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -699,7 +715,7 @@ body#platform #login {
   padding: 20px;
   text-align: center;
   color: white;
-  text-shadow: black, 1px, 1px, 1px;
+  text-shadow: black 1px 1px 1px;
 }
 /* line 19, ../../app/stylesheets/_login.sass */
 body#platform #login h1 {
@@ -720,17 +736,21 @@ body#platform #login p {
 /* line 30, ../../app/stylesheets/_login.sass */
 body#platform #login a img {
   width: 60px;
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* line 33, ../../app/stylesheets/_login.sass */
 body#platform #login a img:hover, body#platform #login a img:focus {
-  -webkit-transform: scale(1.2, 1.2);
   -moz-transform: scale(1.2, 1.2);
-  -ms-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
   -o-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
 /* line 36, ../../app/stylesheets/_login.sass */
@@ -740,10 +760,10 @@ body#platform #login a.disabled img {
 }
 /* line 38, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img:hover, body#platform #login a.disabled img:focus, body#platform #login a.disabled img:active {
-  -webkit-transform: scale(1, 1);
   -moz-transform: scale(1, 1);
-  -ms-transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
   -o-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
   transform: scale(1, 1);
 }
 /* line 40, ../../app/stylesheets/_login.sass */
@@ -754,10 +774,11 @@ body#platform #login a.close {
   width: 24px;
   height: 24px;
   border: 3px solid white;
-  -webkit-border-radius: 24px;
   -moz-border-radius: 24px;
-  -ms-border-radius: 24px;
+  -webkit-border-radius: 24px;
   -o-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -khtml-border-radius: 24px;
   border-radius: 24px;
   top: 0;
   left: 100%;
@@ -771,23 +792,27 @@ body#platform #login a.close {
   background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
   background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
   background-image: linear-gradient(top, #51c252, #49b249, #44a546);
-  -webkit-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  -moz-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  -o-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
+  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   font-weight: bold;
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* line 58, ../../app/stylesheets/_login.sass */
 body#platform #login a.close:hover, body#platform #login a.close:focus {
   color: white;
-  -webkit-transform: scale(1.05, 1.05);
   -moz-transform: scale(1.05, 1.05);
-  -ms-transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
   -o-transform: scale(1.05, 1.05);
+  -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
 /* line 47, ../../app/stylesheets/screen.sass */
@@ -798,16 +823,16 @@ body#platform #pre_header {
   margin-bottom: 8px;
   font-size: 16px;
   color: white;
-  text-shadow: rgba(0, 0, 0, 0.5), 1px, 1px, 1px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 0px, 2px, 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 0px, 2px, 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 0px, 2px, 3px;
-  box-shadow: rgba(0, 0, 0, 0.5), 0px, 2px, 3px;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
+  -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
 }
 /* line 10, ../../app/stylesheets/_pre_header.sass */
 body#platform #pre_header a {
   color: white;
-  text-shadow: rgba(0, 0, 0, 0.5), 1px, 1px, 1px;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -823,24 +848,28 @@ body#platform #pre_header .back_notice img.social, body#platform #pre_header .no
   vertical-align: middle;
   margin-top: -4px;
   width: 28px;
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* line 25, ../../app/stylesheets/_pre_header.sass */
 body#platform #pre_header .back_notice img.social:hover, body#platform #pre_header .notification img.social:hover {
-  -webkit-transform: scale(1.1, 1.1);
   -moz-transform: scale(1.1, 1.1);
-  -ms-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
 }
 /* line 27, ../../app/stylesheets/_pre_header.sass */
 body#platform #pre_header .back_notice a.close, body#platform #pre_header .notification a.close {
   color: white;
   color: rgba(255, 255, 255, 0.7);
-  text-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 2px;
+  text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 2px;
   text-decoration: none;
   float: right;
   width: 16px;
@@ -871,14 +900,14 @@ body#platform #header h1 {
 body#platform #header h1 a {
   color: #222222;
   text-decoration: none;
-  -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
 /* line 11, ../../app/stylesheets/_header.sass */
 body#platform #header h1 a:hover {
-  text-shadow: rgba(0, 150, 0, 0.4), 1px, 1px, 10px;
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 53, ../../app/stylesheets/screen.sass */
 body#platform #menu {
@@ -894,26 +923,26 @@ body#platform #menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #menu ul li {
   list-style-image: none;
   list-style-type: none;
-  margin-left: 0;
+  margin-left: 0px;
   white-space: nowrap;
   display: inline;
   float: left;
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 48, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #menu ul li:first-child, body#platform #menu ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #menu ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #menu ul li.last {
   padding-right: 0;
 }
@@ -936,19 +965,21 @@ body#platform #user a {
   padding: 20px 20px 21px 20px;
   -moz-border-radius-topleft: 16px;
   -webkit-border-top-left-radius: 16px;
-  -ms-border-top-left-radius: 16px;
   -o-border-top-left-radius: 16px;
+  -ms-border-top-left-radius: 16px;
+  -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
   -moz-border-radius-topright: 16px;
   -webkit-border-top-right-radius: 16px;
-  -ms-border-top-right-radius: 16px;
   -o-border-top-right-radius: 16px;
+  -ms-border-top-right-radius: 16px;
+  -khtml-border-top-right-radius: 16px;
   border-top-right-radius: 16px;
   color: #333333;
   text-decoration: none;
   font-weight: bold;
-  -webkit-transition: none;
   -moz-transition: none;
+  -webkit-transition: none;
   -o-transition: none;
   transition: none;
 }
@@ -960,26 +991,26 @@ body#platform #user a img.dropdown {
 /* line 18, ../../app/stylesheets/_user.sass */
 body#platform #user a img#display_image {
   background-color: white;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   margin-right: 6px;
   height: 24px;
 }
 /* line 24, ../../app/stylesheets/_user.sass */
 body#platform #user .hover {
   color: #eeeeee;
-  text-shadow: rgba(0, 0, 0, 0.9), 0px, 0px, 0px;
+  text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 0px;
   background-color: #0c0c0c;
   background-color: rgba(12, 12, 12, 0.9);
 }
 /* line 29, ../../app/stylesheets/_user.sass */
 body#platform #user .hover img#display_image {
-  -webkit-box-shadow: rgba(255, 255, 255, 0.7), 2px, 2px, 4px;
-  -moz-box-shadow: rgba(255, 255, 255, 0.7), 2px, 2px, 4px;
-  -o-box-shadow: rgba(255, 255, 255, 0.7), 2px, 2px, 4px;
-  box-shadow: rgba(255, 255, 255, 0.7), 2px, 2px, 4px;
+  -moz-box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+  -o-box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
 }
 /* line 31, ../../app/stylesheets/_user.sass */
 body#platform #user #user_menu {
@@ -990,13 +1021,15 @@ body#platform #user #user_menu {
   position: absolute;
   -moz-border-radius-bottomleft: 16px;
   -webkit-border-bottom-left-radius: 16px;
-  -ms-border-bottom-left-radius: 16px;
   -o-border-bottom-left-radius: 16px;
+  -ms-border-bottom-left-radius: 16px;
+  -khtml-border-bottom-left-radius: 16px;
   border-bottom-left-radius: 16px;
   -moz-border-radius-bottomright: 16px;
   -webkit-border-bottom-right-radius: 16px;
-  -ms-border-bottom-right-radius: 16px;
   -o-border-bottom-right-radius: 16px;
+  -ms-border-bottom-right-radius: 16px;
+  -khtml-border-bottom-right-radius: 16px;
   border-bottom-right-radius: 16px;
   top: 68px;
   right: 0;
@@ -1008,9 +1041,9 @@ body#platform #user #user_menu ul li a {
   padding-top: 0;
   padding-right: 12px;
   color: #cccccc;
-  text-shadow: rgba(0, 0, 0, 0.9), 0px, 0px, 0px;
-  -webkit-transition: all 0.5s;
+  text-shadow: rgba(0, 0, 0, 0.9) 0px 0px 0px;
   -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -1026,23 +1059,25 @@ body#platform #user #user_menu ul li a:hover {
 body#platform #user .user_menu_border {
   -moz-border-radius-topleft: 16px;
   -webkit-border-top-left-radius: 16px;
-  -ms-border-top-left-radius: 16px;
   -o-border-top-left-radius: 16px;
+  -ms-border-top-left-radius: 16px;
+  -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
 /* line 57, ../../app/stylesheets/screen.sass */
 body#platform #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
-  -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
+  -webkit-border-radius: 6px;
   -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
   border-radius: 6px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 16px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 16px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 16px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 16px;
+  -moz-box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
 }
 /* line 59, ../../app/stylesheets/screen.sass */
 body#platform #content_wrapper #content_header {
@@ -1054,69 +1089,82 @@ body#platform #content_wrapper #content_header {
   background-color: rgba(0, 150, 0, 0.7);
   -moz-border-radius-topleft: 6px;
   -webkit-border-top-left-radius: 6px;
-  -ms-border-top-left-radius: 6px;
   -o-border-top-left-radius: 6px;
+  -ms-border-top-left-radius: 6px;
+  -khtml-border-top-left-radius: 6px;
   border-top-left-radius: 6px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 0px, 3px, 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 0px, 3px, 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 0px, 3px, 3px;
-  box-shadow: rgba(0, 0, 0, 0.5), 0px, 3px, 3px;
+  -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
 }
 /* line 15, ../../app/stylesheets/_content.sass */
 body#platform #content_wrapper #content_header h1 {
   font-family: "museo-500";
   font-size: 32px;
   padding: 10px 0 20px 0;
-  text-shadow: green, 2px, 2px, 1px;
+  text-shadow: green 2px 2px 1px;
 }
 /* line 20, ../../app/stylesheets/_content.sass */
 body#platform #content_wrapper #content_header h1 a {
   color: #ffffaa;
   text-decoration: none;
-  -webkit-transition: all, 0.1s;
-  -moz-transition: all, 0.1s;
-  -o-transition: all, 0.1s;
-  transition: all, 0.1s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
 }
 /* line 24, ../../app/stylesheets/_content.sass */
 body#platform #content_wrapper #content_header h1 a:hover {
-  text-shadow: green, 3px, 3px, 3px;
+  text-shadow: green 3px 3px 3px;
 }
 /* line 26, ../../app/stylesheets/_content.sass */
 body#platform #content_wrapper #content_header h2 {
   padding: 0 40px;
-  text-shadow: green, 1px, 1px, 1px;
+  text-shadow: green 1px 1px 1px;
 }
 /* line 29, ../../app/stylesheets/_content.sass */
 body#platform #content_wrapper #content_header h2 a {
   color: #ffffaa;
   text-decoration: none;
-  -webkit-transition: all, 0.1s;
-  -moz-transition: all, 0.1s;
-  -o-transition: all, 0.1s;
-  transition: all, 0.1s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
 }
 /* line 33, ../../app/stylesheets/_content.sass */
 body#platform #content_wrapper #content_header h2 a:hover {
-  text-shadow: green, 2px, 2px, 2px;
+  text-shadow: green 2px 2px 2px;
 }
 /* line 35, ../../app/stylesheets/_content.sass */
 body#platform #content_wrapper #content_header #badge {
   position: absolute;
   top: 52px;
   right: 10px;
-  -webkit-transition: all, 0.2s;
-  -moz-transition: all, 0.2s;
-  -o-transition: all, 0.2s;
-  transition: all, 0.2s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
   z-index: 10;
 }
 /* line 41, ../../app/stylesheets/_content.sass */
 body#platform #content_wrapper #content_header #badge:hover {
-  -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
-  -ms-transform: rotate(-4deg);
+  -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
 /* line 61, ../../app/stylesheets/screen.sass */
@@ -1159,10 +1207,10 @@ body#platform #profile_header .image {
 /* line 8, ../../app/stylesheets/_profile.sass */
 body#platform #profile_header .image img {
   background-color: white;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 6px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 6px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 6px;
+  -moz-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
   max-width: 128px;
   max-height: 128px;
 }
@@ -1220,27 +1268,31 @@ body#platform #user_feed img.project {
   float: left;
   margin-right: 12px;
   width: 160px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 /* line 55, ../../app/stylesheets/_profile.sass */
 body#platform #user_feed img.social {
   vertical-align: middle;
   margin-top: -4px;
   width: 28px;
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* line 60, ../../app/stylesheets/_profile.sass */
 body#platform #user_feed img.social:hover {
-  -webkit-transform: scale(1.1, 1.1);
   -moz-transform: scale(1.1, 1.1);
-  -ms-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
 }
 /* line 62, ../../app/stylesheets/_profile.sass */
@@ -1285,15 +1337,16 @@ body#platform #user_feed #gravatar_hint {
   padding: 20px;
   margin-bottom: 28px;
   color: black;
-  -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
+  -webkit-border-radius: 12px;
   -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
   border-radius: 12px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   margin-top: -16px;
   color: #666666;
   position: relative;
@@ -1374,10 +1427,11 @@ body#platform .project_box {
   color: #666666;
   float: left;
   margin: 0 24px 24px 24px;
-  -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
+  -webkit-border-radius: 8px;
   -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
   border-radius: 8px;
   border: 5px solid #eeeeee;
   border: 5px solid rgba(100, 100, 100, 0.3);
@@ -1399,13 +1453,15 @@ body#platform .project_box .project_header .project_image {
   margin: -10px 0 6px -10px;
   -moz-border-radius-topleft: 3px;
   -webkit-border-top-left-radius: 3px;
-  -ms-border-top-left-radius: 3px;
   -o-border-top-left-radius: 3px;
+  -ms-border-top-left-radius: 3px;
+  -khtml-border-top-left-radius: 3px;
   border-top-left-radius: 3px;
   -moz-border-radius-topright: 3px;
   -webkit-border-top-right-radius: 3px;
-  -ms-border-top-right-radius: 3px;
   -o-border-top-right-radius: 3px;
+  -ms-border-top-right-radius: 3px;
+  -khtml-border-top-right-radius: 3px;
   border-top-right-radius: 3px;
   height: 165px;
   width: 254px;
@@ -1429,14 +1485,14 @@ body#platform .project_box .project_header a {
   text-decoration: none;
   text-shadow: none;
   color: black;
-  -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
 /* line 74, ../../app/stylesheets/_projects.sass */
 body#platform .project_box .project_header a:hover {
-  text-shadow: rgba(0, 150, 0, 0.4), 1px, 1px, 4px;
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 4px;
 }
 /* line 76, ../../app/stylesheets/_projects.sass */
 body#platform .project_box .project_category {
@@ -1445,7 +1501,7 @@ body#platform .project_box .project_category {
   text-align: right;
   background-color: #555555;
   background-color: rgba(0, 0, 0, 0.6);
-  text-shadow: black, 0px, 0px, 0px;
+  text-shadow: black 0px 0px 0px;
   padding: 6px 10px;
   font-size: 10px;
   position: absolute;
@@ -1474,13 +1530,15 @@ body#platform .project_box .project_progress {
   background-color: rgba(100, 100, 100, 0.2);
   -moz-border-radius-bottomleft: 4px;
   -webkit-border-bottom-left-radius: 4px;
-  -ms-border-bottom-left-radius: 4px;
   -o-border-bottom-left-radius: 4px;
+  -ms-border-bottom-left-radius: 4px;
+  -khtml-border-bottom-left-radius: 4px;
   border-bottom-left-radius: 4px;
   -moz-border-radius-bottomright: 4px;
   -webkit-border-bottom-right-radius: 4px;
-  -ms-border-bottom-right-radius: 4px;
   -o-border-bottom-right-radius: 4px;
+  -ms-border-bottom-right-radius: 4px;
+  -khtml-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
   padding: 10px 0;
   font-size: 11px;
@@ -1504,26 +1562,26 @@ body#platform .project_box .project_progress .progress_info ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform .project_box .project_progress .progress_info ul li {
   list-style-image: none;
   list-style-type: none;
-  margin-left: 0;
+  margin-left: 0px;
   white-space: nowrap;
   display: inline;
   float: left;
   padding-left: 4px;
   padding-right: 4px;
 }
-/* line 48, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform .project_box .project_progress .progress_info ul li:first-child, body#platform .project_box .project_progress .progress_info ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform .project_box .project_progress .progress_info ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform .project_box .project_progress .progress_info ul li.last {
   padding-right: 0;
 }
@@ -1535,19 +1593,21 @@ body#platform .progress_bar {
   background-color: rgba(0, 0, 0, 0.3);
   width: 280px;
   margin-bottom: 10px;
-  -webkit-border-radius: 32px;
   -moz-border-radius: 32px;
-  -ms-border-radius: 32px;
+  -webkit-border-radius: 32px;
   -o-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -khtml-border-radius: 32px;
   border-radius: 32px;
 }
 /* line 124, ../../app/stylesheets/_projects.sass */
 body#platform .progress_bar .progress {
   background-color: #009600;
-  -webkit-border-radius: 32px;
   -moz-border-radius: 32px;
-  -ms-border-radius: 32px;
+  -webkit-border-radius: 32px;
   -o-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -khtml-border-radius: 32px;
   border-radius: 32px;
 }
 /* line 127, ../../app/stylesheets/_projects.sass */
@@ -1560,15 +1620,16 @@ body#platform #how_it_works {
   padding: 20px;
   margin-bottom: 28px;
   color: black;
-  -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
+  -webkit-border-radius: 12px;
   -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
   border-radius: 12px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 138, ../../app/stylesheets/_projects.sass */
 body#platform #how_it_works strong {
@@ -1642,10 +1703,11 @@ body#platform #project_form #project_headline, body#platform #start_project_form
 /* line 176, ../../app/stylesheets/_projects.sass */
 body#platform #project_form #project_rewards, body#platform #start_project_form #project_rewards {
   margin-top: 20px;
-  -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
+  -webkit-border-radius: 8px;
   -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
   border-radius: 8px;
   border: 5px solid #eeeeee;
   border: 5px solid rgba(100, 100, 100, 0.1);
@@ -1738,15 +1800,16 @@ body#platform #project_warning {
   padding: 20px;
   margin-bottom: 36px;
   color: black;
-  -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
+  -webkit-border-radius: 12px;
   -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
   border-radius: 12px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   margin-top: -16px;
   color: #666666;
 }
@@ -1764,18 +1827,20 @@ body#platform #project_description #project_video {
 body#platform #project_description #project_video iframe {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
-  -ms-border-top-left-radius: 8px;
   -o-border-top-left-radius: 8px;
+  -ms-border-top-left-radius: 8px;
+  -khtml-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
-  -ms-border-top-right-radius: 8px;
   -o-border-top-right-radius: 8px;
+  -ms-border-top-right-radius: 8px;
+  -khtml-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 251, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_video #project_share {
@@ -1786,19 +1851,21 @@ body#platform #project_description #project_video #project_share {
   padding-bottom: 4px;
   -moz-border-radius-bottomleft: 12px;
   -webkit-border-bottom-left-radius: 12px;
-  -ms-border-bottom-left-radius: 12px;
   -o-border-bottom-left-radius: 12px;
+  -ms-border-bottom-left-radius: 12px;
+  -khtml-border-bottom-left-radius: 12px;
   border-bottom-left-radius: 12px;
   -moz-border-radius-bottomright: 12px;
   -webkit-border-bottom-right-radius: 12px;
-  -ms-border-bottom-right-radius: 12px;
   -o-border-bottom-right-radius: 12px;
+  -ms-border-bottom-right-radius: 12px;
+  -khtml-border-bottom-right-radius: 12px;
   border-bottom-right-radius: 12px;
   border: 2px dotted rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
   font-size: 14px;
   line-height: 32px;
@@ -1811,10 +1878,10 @@ body#platform #project_description #project_video #project_share #facebook_share
 }
 /* line 268, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_video #project_share #facebook_share iframe {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 0px, 0px, 0px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 0px, 0px, 0px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 0px, 0px, 0px;
-  box-shadow: rgba(0, 0, 0, 0.5), 0px, 0px, 0px;
+  -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 /* line 270, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_video #project_share #twitter_share {
@@ -1828,15 +1895,16 @@ body#platform #project_description #project_video #project_share #twitter_share 
 /* line 277, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_video #project_share #twitter_share iframe {
   margin-left: 21px;
-  -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
-  -ms-border-radius: 0px;
+  -webkit-border-radius: 0px;
   -o-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -khtml-border-radius: 0px;
   border-radius: 0px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 0px, 0px, 0px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 0px, 0px, 0px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 0px, 0px, 0px;
-  box-shadow: rgba(0, 0, 0, 0.5), 0px, 0px, 0px;
+  -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
 /* line 281, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_video #project_share ul {
@@ -1849,26 +1917,26 @@ body#platform #project_description #project_video #project_share ul {
   width: 452px;
   margin: 0 auto;
 }
-/* line 60, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_video #project_share ul li {
   list-style-image: none;
   list-style-type: none;
-  margin-left: 0;
+  margin-left: 0px;
   white-space: nowrap;
   display: inline;
   float: left;
   padding-left: 6px;
   padding-right: 6px;
 }
-/* line 48, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_video #project_share ul li:first-child, body#platform #project_description #project_video #project_share ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_video #project_share ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_video #project_share ul li.last {
   padding-right: 0;
 }
@@ -1876,14 +1944,18 @@ body#platform #project_description #project_video #project_share ul li.last {
 body#platform #project_description #project_video #project_share a {
   text-decoration: none;
   color: #222222;
-  -webkit-transition: all, 0.1s;
-  -moz-transition: all, 0.1s;
-  -o-transition: all, 0.1s;
-  transition: all, 0.1s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  -o-transition-duration: 0.1s;
+  transition-duration: 0.1s;
 }
 /* line 290, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_video #project_share a:hover {
-  text-shadow: #ffff88, 2px, 2px, 4px;
+  text-shadow: #ffff88 2px 2px 4px;
 }
 /* line 292, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_video #project_share img, body#platform #project_description #project_video #project_share a img {
@@ -1894,10 +1966,11 @@ body#platform #project_description #project_video #project_share img, body#platf
 /* line 296, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_video #project_share input {
   border: 1px solid rgba(0, 0, 0, 0.4);
-  -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
+  -webkit-border-radius: 4px;
   -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
   border-radius: 4px;
   width: 140px;
 }
@@ -1919,15 +1992,16 @@ body#platform #project_description #project_video #project_embed {
   background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
   background-image: linear-gradient(top, #51c252, #49b249, #44a546);
   border: 5px solid white;
-  -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
+  -webkit-border-radius: 8px;
   -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
   border-radius: 8px;
-  -webkit-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  -moz-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  -o-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
+  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1939,7 +2013,7 @@ body#platform #project_description #project_video #project_embed {
   padding: 20px;
   text-align: center;
   color: white;
-  text-shadow: black, 1px, 1px, 1px;
+  text-shadow: black 1px 1px 1px;
 }
 /* line 19, ../../app/stylesheets/_embed_modal.sass */
 body#platform #project_description #project_video #project_embed h1 {
@@ -1963,10 +2037,11 @@ body#platform #project_description #project_video #project_embed a.close {
   width: 24px;
   height: 24px;
   border: 3px solid white;
-  -webkit-border-radius: 24px;
   -moz-border-radius: 24px;
-  -ms-border-radius: 24px;
+  -webkit-border-radius: 24px;
   -o-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -khtml-border-radius: 24px;
   border-radius: 24px;
   top: 0;
   left: 100%;
@@ -1980,23 +2055,27 @@ body#platform #project_description #project_video #project_embed a.close {
   background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
   background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
   background-image: linear-gradient(top, #51c252, #49b249, #44a546);
-  -webkit-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  -moz-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  -o-box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
-  box-shadow: rgba(0, 40, 0, 0.75), 4px, -4px, 10px;
+  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   font-weight: bold;
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* line 47, ../../app/stylesheets/_embed_modal.sass */
 body#platform #project_description #project_video #project_embed a.close:hover, body#platform #project_description #project_video #project_embed a.close:focus {
   color: white;
-  -webkit-transform: scale(1.05, 1.05);
   -moz-transform: scale(1.05, 1.05);
-  -ms-transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
   -o-transform: scale(1.05, 1.05);
+  -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
 /* line 50, ../../app/stylesheets/_embed_modal.sass */
@@ -2005,10 +2084,11 @@ body#platform #project_description #project_video #project_embed #project_box_em
 }
 /* line 52, ../../app/stylesheets/_embed_modal.sass */
 body#platform #project_description #project_video #project_embed #project_box_embed iframe {
-  -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
+  -webkit-border-radius: 8px;
   -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
   border-radius: 8px;
 }
 /* line 54, ../../app/stylesheets/_embed_modal.sass */
@@ -2026,10 +2106,11 @@ body#platform #project_description #project_video #project_embed #project_video_
 }
 /* line 63, ../../app/stylesheets/_embed_modal.sass */
 body#platform #project_description #project_video #project_embed #project_video_embed iframe {
-  -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
+  -webkit-border-radius: 8px;
   -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
   border-radius: 8px;
 }
 /* line 65, ../../app/stylesheets/_embed_modal.sass */
@@ -2054,26 +2135,26 @@ body#platform #project_description #project_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_menu ul li {
   list-style-image: none;
   list-style-type: none;
-  margin-left: 0;
+  margin-left: 0px;
   white-space: nowrap;
   display: inline;
   float: left;
   padding-left: 2px;
   padding-right: 2px;
 }
-/* line 48, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_menu ul li:first-child, body#platform #project_description #project_menu ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_menu ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_menu ul li.last {
   padding-right: 0;
 }
@@ -2086,10 +2167,11 @@ body#platform #project_description #project_menu ul li {
 body#platform #project_description #project_menu ul li a {
   background-color: #dddddd;
   padding: 4px 8px;
-  -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
+  -webkit-border-radius: 6px;
   -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
   border-radius: 6px;
   text-align: center;
   text-decoration: none;
@@ -2098,10 +2180,14 @@ body#platform #project_description #project_menu ul li a {
   font-size: 12px;
   display: block;
   width: 132px;
-  -webkit-transition: all, 0.2s;
-  -moz-transition: all, 0.2s;
-  -o-transition: all, 0.2s;
-  transition: all, 0.2s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 /* line 328, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_menu ul li a .count {
@@ -2111,7 +2197,7 @@ body#platform #project_description #project_menu ul li a .count {
 body#platform #project_description #project_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
-  text-shadow: rgba(0, 150, 0, 0.4), 1px, 1px, 10px;
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 334, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_menu ul li img {
@@ -2121,7 +2207,7 @@ body#platform #project_description #project_menu ul li img {
 body#platform #project_description #project_menu ul li.selected a {
   color: white;
   background-color: #00aa00;
-  text-shadow: rgba(0, 150, 0, 0.4), 1px, 1px, 10px;
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 341, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_menu ul li.selected img {
@@ -2174,10 +2260,11 @@ body#platform #project_description #project_comments #collection_list, body#plat
 body#platform #project_description #project_comments #collection_list li, body#platform #project_description #project_updates #collection_list li {
   background-color: #cdebff;
   background-color: rgba(0, 132, 185, 0.1);
-  -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
+  -webkit-border-radius: 6px;
   -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
   border-radius: 6px;
   padding: 20px;
   margin-bottom: 4px;
@@ -2197,10 +2284,14 @@ body#platform #project_description #project_comments #collection_list li .destro
 }
 /* line 385, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #project_comments #collection_list li .destroy a img, body#platform #project_description #project_updates #collection_list li .destroy a img {
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
   width: 20px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
@@ -2209,10 +2300,10 @@ body#platform #project_description #project_comments #collection_list li .destro
 body#platform #project_description #project_comments #collection_list li .destroy a img:hover, body#platform #project_description #project_updates #collection_list li .destroy a img:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
-  -webkit-transform: scale(1.2, 1.2);
   -moz-transform: scale(1.2, 1.2);
-  -ms-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
   -o-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
 /* line 392, ../../app/stylesheets/_projects.sass */
@@ -2221,10 +2312,10 @@ body#platform #project_description #project_comments #collection_list li img.use
   margin-right: 12px;
   margin-bottom: 0px;
   height: 38px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   background-color: white;
 }
 /* line 399, ../../app/stylesheets/_projects.sass */
@@ -2298,10 +2389,10 @@ body#platform #project_back_info #back_project {
   background-color: rgba(179, 177, 157, 0.5);
   border: 3px solid #bdbbb1;
   border: 3px solid rgba(173, 171, 151, 0.5);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
+  -moz-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   padding: 0px;
 }
 /* line 447, ../../app/stylesheets/_projects.sass */
@@ -2330,7 +2421,7 @@ body#platform #project_back_info #back_project .project_warning {
   text-align: center;
   color: white;
   font-size: 11px;
-  text-shadow: #333333, 1px, 1px, 0px;
+  text-shadow: #333333 1px 1px 0px;
 }
 /* line 465, ../../app/stylesheets/_projects.sass */
 body#platform #project_back_info #back_project .project_warning .text {
@@ -2368,7 +2459,7 @@ body#platform #project_back_info #back_project form {
 /* line 482, ../../app/stylesheets/_projects.sass */
 body#platform #project_back_info #back_project form input[type=submit] {
   color: white;
-  text-shadow: green, 1px, 1px, 1px;
+  text-shadow: green 1px 1px 1px;
   background-color: #49b249;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #59c259), color-stop(100%, #31a232));
   background-image: -webkit-linear-gradient(top, #59c259, #31a232);
@@ -2393,12 +2484,12 @@ body#platform #project_back_info #back_project form input[type=submit]:hover {
 /* line 493, ../../app/stylesheets/_projects.sass */
 body#platform #project_back_info #back_project form input[type=submit]:active {
   padding: 18px 9px 16px 11px;
-  text-shadow: green, 2px, 2px, 1px;
+  text-shadow: green 2px 2px 1px;
 }
 /* line 496, ../../app/stylesheets/_projects.sass */
 body#platform #project_back_info #back_project form input[type=submit]:disabled {
   color: #888888;
-  text-shadow: rgba(230, 230, 230, 0.85), 1px, 1px, 0px;
+  text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
   font-size: 16px;
   padding: 17px 10px;
   background-color: #aaaaaa;
@@ -2408,10 +2499,10 @@ body#platform #project_back_info #back_project form input[type=submit]:disabled 
   background-image: -o-linear-gradient(top, #bbbbbb, #888888);
   background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
   background-image: linear-gradient(top, #bbbbbb, #888888);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 /* line 504, ../../app/stylesheets/_projects.sass */
 body#platform #project_back_info #rewards {
@@ -2432,7 +2523,7 @@ body#platform #project_back_info #rewards h1 {
   padding: 8px 0;
   font-size: 16px;
   color: white;
-  text-shadow: rgba(0, 0, 0, 0.5), 1px, 1px, 1px;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
   position: relative;
 }
 /* line 520, ../../app/stylesheets/_projects.sass */
@@ -2452,13 +2543,15 @@ body#platform #project_back_info #rewards h1 #rewards_right_border {
 body#platform #project_back_info #rewards ul {
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
-  -ms-border-bottom-left-radius: 8px;
   -o-border-bottom-left-radius: 8px;
+  -ms-border-bottom-left-radius: 8px;
+  -khtml-border-bottom-left-radius: 8px;
   border-bottom-left-radius: 8px;
   -moz-border-radius-bottomright: 8px;
   -webkit-border-bottom-right-radius: 8px;
-  -ms-border-bottom-right-radius: 8px;
   -o-border-bottom-right-radius: 8px;
+  -ms-border-bottom-right-radius: 8px;
+  -khtml-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
   border: 2px solid #dddddd;
   border: 2px solid rgba(100, 100, 100, 0.2);
@@ -2470,7 +2563,7 @@ body#platform #project_back_info #rewards ul h1 {
   padding-bottom: 4px !important;
   background-color: transparent !important;
   background-image: none !important;
-  text-shadow: white, 1px, 1px, 0px;
+  text-shadow: white 1px 1px 0px;
 }
 /* line 539, ../../app/stylesheets/_projects.sass */
 body#platform #project_back_info #rewards ul li {
@@ -2527,12 +2620,13 @@ body#platform #project_back_info #rewards .maximum_backers .sold_out {
   color: white;
   background-color: #555555;
   background-color: rgba(0, 0, 0, 0.7);
-  -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
+  -webkit-border-radius: 4px;
   -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
   border-radius: 4px;
-  text-shadow: black, 1px, 1px, 0px;
+  text-shadow: black 1px 1px 0px;
   padding: 0 8px;
 }
 /* line 580, ../../app/stylesheets/_projects.sass */
@@ -2596,15 +2690,16 @@ body#platform #back_options #backer_form #backer_credits_input {
   background-color: rgba(179, 177, 157, 0.3);
   border: 3px solid #bdbbb1;
   border: 3px solid rgba(173, 171, 151, 0.2);
-  -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
+  -webkit-border-radius: 12px;
   -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
   border-radius: 12px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
+  -moz-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   padding: 0 12px;
   margin-bottom: 32px;
 }
@@ -2633,15 +2728,16 @@ body#platform #back_options #backer_form label {
 /* line 641, ../../app/stylesheets/_projects.sass */
 body#platform #back_options #backer_form li.radio ol {
   background-color: #dddddd;
-  -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
+  -webkit-border-radius: 12px;
   -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
   border-radius: 12px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 645, ../../app/stylesheets/_projects.sass */
 body#platform #back_options #backer_form li.radio ol li {
@@ -2653,26 +2749,30 @@ body#platform #back_options #backer_form li.radio ol li {
 body#platform #back_options #backer_form li.radio ol li:first-child {
   -moz-border-radius-topleft: 12px;
   -webkit-border-top-left-radius: 12px;
-  -ms-border-top-left-radius: 12px;
   -o-border-top-left-radius: 12px;
+  -ms-border-top-left-radius: 12px;
+  -khtml-border-top-left-radius: 12px;
   border-top-left-radius: 12px;
   -moz-border-radius-topright: 12px;
   -webkit-border-top-right-radius: 12px;
-  -ms-border-top-right-radius: 12px;
   -o-border-top-right-radius: 12px;
+  -ms-border-top-right-radius: 12px;
+  -khtml-border-top-right-radius: 12px;
   border-top-right-radius: 12px;
 }
 /* line 652, ../../app/stylesheets/_projects.sass */
 body#platform #back_options #backer_form li.radio ol li:last-child {
   -moz-border-radius-bottomleft: 12px;
   -webkit-border-bottom-left-radius: 12px;
-  -ms-border-bottom-left-radius: 12px;
   -o-border-bottom-left-radius: 12px;
+  -ms-border-bottom-left-radius: 12px;
+  -khtml-border-bottom-left-radius: 12px;
   border-bottom-left-radius: 12px;
   -moz-border-radius-bottomright: 12px;
   -webkit-border-bottom-right-radius: 12px;
-  -ms-border-bottom-right-radius: 12px;
   -o-border-bottom-right-radius: 12px;
+  -ms-border-bottom-right-radius: 12px;
+  -khtml-border-bottom-right-radius: 12px;
   border-bottom-right-radius: 12px;
   border: none;
 }
@@ -2697,12 +2797,13 @@ body#platform #back_options #backer_form li.radio ol li label .sold_out {
   color: white;
   background-color: #555555;
   background-color: rgba(0, 0, 0, 0.7);
-  -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
+  -webkit-border-radius: 4px;
   -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
   border-radius: 4px;
-  text-shadow: black, 1px, 1px, 0px;
+  text-shadow: black 1px 1px 0px;
   padding: 0 8px;
 }
 /* line 675, ../../app/stylesheets/_projects.sass */
@@ -2747,10 +2848,10 @@ body#platform #back_info {
 body#platform #back_info img {
   float: left;
   width: 128px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
-  box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin-bottom: 16px;
 }
 /* line 704, ../../app/stylesheets/_projects.sass */
@@ -2776,7 +2877,7 @@ body#platform #back_info #project_info .project_owner a {
 }
 /* line 717, ../../app/stylesheets/_projects.sass */
 body#platform #back_info #project_info .project_owner a:hover {
-  text-shadow: rgba(0, 150, 0, 0.4), 1px, 1px, 10px;
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 719, ../../app/stylesheets/_projects.sass */
 body#platform #back_info #project_info .project_expires_at {
@@ -2811,16 +2912,17 @@ body#platform #project_review #credits_notice {
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.6);
   padding: 12px;
-  text-shadow: rgba(255, 255, 255, 0.6), 1px, 1px, 0px;
-  -webkit-border-radius: 6px;
+  text-shadow: rgba(255, 255, 255, 0.6) 1px 1px 0px;
   -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
+  -webkit-border-radius: 6px;
   -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
   border-radius: 6px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  -o-box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
-  box-shadow: rgba(0, 0, 0, 0.75), 2px, 2px, 6px;
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   margin: 32px auto 20px auto;
 }
 /* line 747, ../../app/stylesheets/_projects.sass */
@@ -2893,26 +2995,26 @@ body#platform #project_review #review_form .inputs ol {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_review #review_form .inputs ol li {
   list-style-image: none;
   list-style-type: none;
-  margin-left: 0;
+  margin-left: 0px;
   white-space: nowrap;
   display: inline;
   float: left;
   padding-left: 0px;
   padding-right: 0px;
 }
-/* line 48, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_review #review_form .inputs ol li:first-child, body#platform #project_review #review_form .inputs ol li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_review #review_form .inputs ol li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_review #review_form .inputs ol li.last {
   padding-right: 0;
 }
@@ -2933,10 +3035,10 @@ body#platform #project_review #review_form fieldset label {
 body#platform #project_review img#project_image {
   float: left;
   width: 128px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
-  box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin-right: 20px;
 }
 /* line 793, ../../app/stylesheets/_projects.sass */
@@ -2960,15 +3062,16 @@ body#platform #project_review #international_payment {
   background-color: rgba(200, 200, 200, 0.6);
   padding: 20px;
   margin-bottom: 28px;
-  -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
+  -webkit-border-radius: 12px;
   -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
   border-radius: 12px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   margin-top: 40px;
   font-size: 18px;
   line-height: 22px;
@@ -3002,10 +3105,10 @@ body#platform #thank_you {
 body#platform #thank_you img#project_image {
   float: left;
   width: 128px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
-  box-shadow: rgba(0, 0, 0, 0.5), 3px, 3px, 5px;
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin-right: 20px;
 }
 /* line 835, ../../app/stylesheets/_projects.sass */
@@ -3030,17 +3133,21 @@ body#platform #thank_you a {
 /* line 848, ../../app/stylesheets/_projects.sass */
 body#platform #thank_you a img {
   width: 116px;
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* line 851, ../../app/stylesheets/_projects.sass */
 body#platform #thank_you a img:hover {
-  -webkit-transform: scale(1.1, 1.1);
   -moz-transform: scale(1.1, 1.1);
-  -ms-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
 }
 /* line 853, ../../app/stylesheets/_projects.sass */
@@ -3072,10 +3179,10 @@ body#platform #project_backers img.user {
   margin-right: 12px;
   margin-bottom: 0px;
   width: 48px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
-  box-shadow: rgba(0, 0, 0, 0.5), 2px, 2px, 3px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   background-color: white;
 }
 /* line 875, ../../app/stylesheets/_projects.sass */
@@ -3109,10 +3216,11 @@ body#platform #project_backers ul li {
   background-color: #dddddd;
   margin-top: 16px;
   padding: 20px;
-  -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
+  -webkit-border-radius: 8px;
   -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
   border-radius: 8px;
   position: relative;
 }
@@ -3122,17 +3230,21 @@ body#platform #project_backers ul li .badge {
   top: -10px;
   right: -10px;
   width: 72px;
-  -webkit-transition: all, 0.2s;
-  -moz-transition: all, 0.2s;
-  -o-transition: all, 0.2s;
-  transition: all, 0.2s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 /* line 903, ../../app/stylesheets/_projects.sass */
 body#platform #project_backers ul li .badge:hover {
-  -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
-  -ms-transform: rotate(-4deg);
+  -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
 /* line 906, ../../app/stylesheets/_projects.sass */
@@ -3194,10 +3306,11 @@ body#platform #explore_projects #explore_menu ul li a {
   background-color: #dddddd;
   margin-bottom: 4px;
   padding: 4px 8px;
-  -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
+  -webkit-border-radius: 4px;
   -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
   border-radius: 4px;
   text-align: center;
   text-decoration: none;
@@ -3205,16 +3318,20 @@ body#platform #explore_projects #explore_menu ul li a {
   font-weight: bold;
   font-size: 16px;
   display: block;
-  -webkit-transition: all, 0.2s;
-  -moz-transition: all, 0.2s;
-  -o-transition: all, 0.2s;
-  transition: all, 0.2s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 /* line 952, ../../app/stylesheets/_projects.sass */
 body#platform #explore_projects #explore_menu ul li a.selected, body#platform #explore_projects #explore_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
-  text-shadow: rgba(0, 150, 0, 0.4), 1px, 1px, 10px;
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 956, ../../app/stylesheets/_projects.sass */
 body#platform #explore_projects #explore_results {
@@ -3280,10 +3397,10 @@ body#platform #curated_pages_list .curated_page {
   float: left;
   margin: 10px 20px;
   border: 5px solid #dddddd;
-  -webkit-box-shadow: #888888, 3px, 3px, 6px;
-  -moz-box-shadow: #888888, 3px, 3px, 6px;
-  -o-box-shadow: #888888, 3px, 3px, 6px;
-  box-shadow: #888888, 3px, 3px, 6px;
+  -moz-box-shadow: 3px 3px 6px #888888;
+  -webkit-box-shadow: 3px 3px 6px #888888;
+  -o-box-shadow: 3px 3px 6px #888888;
+  box-shadow: 3px 3px 6px #888888;
 }
 /* line 44, ../../app/stylesheets/_curated_pages.sass */
 body#platform #curated_pages_list .curated_page a img {
@@ -3305,18 +3422,20 @@ body#platform #video_embed {
 body#platform #video_embed iframe {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
-  -ms-border-top-left-radius: 8px;
   -o-border-top-left-radius: 8px;
+  -ms-border-top-left-radius: 8px;
+  -khtml-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
-  -ms-border-top-right-radius: 8px;
   -o-border-top-right-radius: 8px;
+  -ms-border-top-right-radius: 8px;
+  -khtml-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 10px;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 /* line 9, ../../app/stylesheets/_video_embed.sass */
 body#platform #video_embed h1 {
@@ -3328,7 +3447,7 @@ body#platform #video_embed h1 {
 /* line 14, ../../app/stylesheets/_video_embed.sass */
 body#platform #video_embed h1 a {
   text-decoration: none;
-  text-shadow: rgba(0, 0, 0, 0.3), 2px, 2px, 3px;
+  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 3px;
 }
 /* line 17, ../../app/stylesheets/_video_embed.sass */
 body#platform #video_embed h2 {
@@ -3336,12 +3455,12 @@ body#platform #video_embed h2 {
   line-height: 16px;
   color: #666666;
   padding: 0;
-  text-shadow: white, 1px, 1px, 0px;
+  text-shadow: white 1px 1px 0px;
 }
 /* line 23, ../../app/stylesheets/_video_embed.sass */
 body#platform #video_embed h2 a {
   text-decoration: none;
-  text-shadow: white, 1px, 1px, 0px;
+  text-shadow: white 1px 1px 0px;
 }
 /* line 27, ../../app/stylesheets/_video_embed.sass */
 body#platform #video_embed #platform_link h1 {
@@ -3354,14 +3473,14 @@ body#platform #video_embed #platform_link h1 {
 body#platform #video_embed #platform_link h1 a {
   color: #222222;
   text-decoration: none;
-  -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
 /* line 36, ../../app/stylesheets/_video_embed.sass */
 body#platform #video_embed #platform_link h1 a:hover {
-  text-shadow: rgba(0, 150, 0, 0.4), 1px, 1px, 10px;
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
 /* line 38, ../../app/stylesheets/_video_embed.sass */
 body#platform #video_embed #video_embed_footer {
@@ -3390,26 +3509,26 @@ body#platform #footer #footer_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #footer_menu ul li {
   list-style-image: none;
   list-style-type: none;
-  margin-left: 0;
+  margin-left: 0px;
   white-space: nowrap;
   display: inline;
   float: left;
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 48, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #footer_menu ul li:first-child, body#platform #footer #footer_menu ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #footer_menu ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #footer_menu ul li.last {
   padding-right: 0;
 }
@@ -3439,26 +3558,26 @@ body#platform #footer #social_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #social_menu ul li {
   list-style-image: none;
   list-style-type: none;
-  margin-left: 0;
+  margin-left: 0px;
   white-space: nowrap;
   display: inline;
   float: left;
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 48, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #social_menu ul li:first-child, body#platform #footer #social_menu ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #social_menu ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../../Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.12.alpha.2/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #social_menu ul li.last {
   padding-right: 0;
 }
@@ -3539,10 +3658,10 @@ body#platform #teaser {
 }
 /* line 3, ../../app/stylesheets/_teaser.sass */
 body#platform #teaser iframe {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 5px;
-  box-shadow: rgba(0, 0, 0, 0.5), 5px, 5px, 5px;
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 /* line 5, ../../app/stylesheets/_teaser.sass */
 body#platform #teaser h1 {
@@ -3615,15 +3734,16 @@ body#platform #press {
   background-color: rgba(179, 177, 157, 0.3);
   border: 3px solid #bdbbb1;
   border: 3px solid rgba(173, 171, 151, 0.2);
-  -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
+  -webkit-border-radius: 12px;
   -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
   border-radius: 12px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
+  -moz-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   width: 860px;
   margin: 0 auto;
   margin-top: 8px;
@@ -3648,17 +3768,21 @@ body#platform #press a {
 body#platform #press a img {
   margin: 0 1px;
   height: 78px;
-  -webkit-transition: all, 0.3s;
-  -moz-transition: all, 0.3s;
-  -o-transition: all, 0.3s;
-  transition: all, 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 /* line 27, ../../app/stylesheets/_press.sass */
 body#platform #press a img:hover {
-  -webkit-transform: scale(1.04, 1.04);
   -moz-transform: scale(1.04, 1.04);
-  -ms-transform: scale(1.04, 1.04);
+  -webkit-transform: scale(1.04, 1.04);
   -o-transform: scale(1.04, 1.04);
+  -ms-transform: scale(1.04, 1.04);
   transform: scale(1.04, 1.04);
 }
 /* line 2, ../../app/stylesheets/_credits.sass */
@@ -3676,15 +3800,16 @@ body#platform #credits #buy_credits {
   background-color: rgba(179, 177, 157, 0.3);
   border: 3px solid #bdbbb1;
   border: 3px solid rgba(173, 171, 151, 0.2);
-  -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
+  -webkit-border-radius: 12px;
   -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
   border-radius: 12px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
-  box-shadow: rgba(0, 0, 0, 0.5), 4px, 4px, 5px;
+  -moz-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   padding: 20px;
   line-height: 24px;
   text-align: center;
@@ -3741,17 +3866,17 @@ body#platform #content_header_wrapper {
   background-image: -o-linear-gradient(top, #498c36, #68a852);
   background-image: -ms-linear-gradient(top, #498c36, #68a852);
   background-image: linear-gradient(top, #498c36, #68a852);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 0, 0, 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 0, 0, 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 0, 0, 5px;
-  box-shadow: rgba(0, 0, 0, 0.5), 0, 0, 5px;
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 /* line 23, ../../app/stylesheets/_legacy.sass */
 body#platform #content_wrapper {
-  -webkit-box-shadow: black, 0, 0, 0;
-  -moz-box-shadow: black, 0, 0, 0;
-  -o-box-shadow: black, 0, 0, 0;
-  box-shadow: black, 0, 0, 0;
+  -moz-box-shadow: 0 0 0 black;
+  -webkit-box-shadow: 0 0 0 black;
+  -o-box-shadow: 0 0 0 black;
+  box-shadow: 0 0 0 black;
   background-color: transparent;
 }
 /* line 26, ../../app/stylesheets/_legacy.sass */
@@ -3760,13 +3885,14 @@ body#platform #content_wrapper #notification_wrapper {
   border: 1px #999999 solid;
   -webkit-border-radius: 3px 3px;
   -moz-border-radius: 3px / 3px;
-  -ms-border-radius: 3px / 3px;
   -o-border-radius: 3px / 3px;
+  -ms-border-radius: 3px / 3px;
+  -khtml-border-radius: 3px / 3px;
   border-radius: 3px / 3px;
-  -webkit-box-shadow: #999999, 0, 0, 3px;
-  -moz-box-shadow: #999999, 0, 0, 3px;
-  -o-box-shadow: #999999, 0, 0, 3px;
-  box-shadow: #999999, 0, 0, 3px;
+  -moz-box-shadow: 0 0 3px #999999;
+  -webkit-box-shadow: 0 0 3px #999999;
+  -o-box-shadow: 0 0 3px #999999;
+  box-shadow: 0 0 3px #999999;
   padding: 5px 0 5px 0;
   background: #e0e0e0;
   margin: 20px auto 0;
@@ -3790,10 +3916,10 @@ body#platform #content_wrapper #content_header {
   margin: 0 auto;
   background-color: transparent;
   text-align: left;
-  -webkit-box-shadow: black, 0, 0, 0;
-  -moz-box-shadow: black, 0, 0, 0;
-  -o-box-shadow: black, 0, 0, 0;
-  box-shadow: black, 0, 0, 0;
+  -moz-box-shadow: 0 0 0 black;
+  -webkit-box-shadow: 0 0 0 black;
+  -o-box-shadow: 0 0 0 black;
+  box-shadow: 0 0 0 black;
   padding: 10px 0;
 }
 /* line 52, ../../app/stylesheets/_legacy.sass */
@@ -3809,10 +3935,10 @@ body#platform #content_wrapper #content_header h2 {
 body#platform #content_wrapper #content {
   width: 936px;
   margin: 0 auto;
-  -webkit-box-shadow: black, 0, 0, 0;
-  -moz-box-shadow: black, 0, 0, 0;
-  -o-box-shadow: black, 0, 0, 0;
-  box-shadow: black, 0, 0, 0;
+  -moz-box-shadow: 0 0 0 black;
+  -webkit-box-shadow: 0 0 0 black;
+  -o-box-shadow: 0 0 0 black;
+  box-shadow: 0 0 0 black;
 }
 /* line 61, ../../app/stylesheets/_legacy.sass */
 body#platform #content_wrapper #content h1 {
@@ -3832,7 +3958,7 @@ body#platform #content_wrapper #content #project_back_info #rewards ul li h1 {
 }
 /* line 71, ../../app/stylesheets/_legacy.sass */
 body#platform #footer {
-  text-shadow: black, 0, 0, 0;
+  text-shadow: black 0 0 0;
   margin-top: 40px;
   padding-top: 40px;
   background-color: #333333;
@@ -3902,10 +4028,10 @@ body#platform #index_header #index_share iframe.twitter-share-button {
 }
 /* line 113, ../../app/stylesheets/_legacy.sass */
 body#platform .project_box {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5), 0, 3px, 4px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5), 0, 3px, 4px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5), 0, 3px, 4px;
-  box-shadow: rgba(0, 0, 0, 0.5), 0, 3px, 4px;
+  -moz-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.5);
 }
 /* line 116, ../../app/stylesheets/_legacy.sass */
 body#platform .progress_bar .progress {
