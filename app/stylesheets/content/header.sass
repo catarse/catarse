@@ -1,0 +1,69 @@
+#top
+  background-color: $grafiti
+  padding: 15px 0
+  width: 100%
+  color: white
+
+  menu
+    +grid-container
+    +grid-system(16)
+    padding-bottom: 21px
+    nav
+      +grid-prefix(5)
+      +grid(4)
+      +grid-suffix(1)
+
+      a
+        display: inline-block
+        font-family: Lato-Bold
+        //font-weight: 900
+        font-size: 1.7em
+        color: white
+        text-decoration: none
+        margin: 0 34px 5px 0
+        &:last-child
+          margin-right: 0
+
+    .actions
+      +grid(2)
+      img
+        float: left
+        margin-right: 24px
+      a
+        font-family: Lato-Bold
+        font-size: 1.5em
+        color: white
+        img
+          margin-right: 10px
+        p
+          float: left
+          padding-top: 5px
+    .social
+      +grid(4)
+      .fb_root
+        float: left
+      .twitter_root
+        float: right
+        iframe
+          width: 118px !important
+
+
+#header
+  +clearfix
+  +grid-container
+  +grid-system(16)
+  padding-top: 30px
+  .logo
+    text-indent:  -9999em
+    +grid(4)
+  nav
+    +grid(6)
+    +grid-suffix(1)
+    padding-top: 24px
+    a
+      margin-right: 25px
+      &:last-child
+        margin-right: none
+  .search
+    padding-top: 15px
+    +grid(5)
