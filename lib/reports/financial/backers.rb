@@ -24,6 +24,7 @@ module Reports
               'Email (conta do apoiador)',
               'Email (conta em que fez o pagamento)',
               'Login do usuario no MoIP',
+              'CPF'
             ]
 
             @backers.each do |backer|
@@ -40,6 +41,7 @@ module Reports
                 backer.user.email,
                 (backer.payment_detail.payer_email if backer.payment_detail),
                 (backer.payment_detail.payer_name if backer.payment_detail),
+                backer.user.cpf
               ]
             end
           end
