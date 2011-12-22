@@ -2371,8 +2371,8 @@ body#platform #project_description #loading {
 }
 /* line 418, ../../app/stylesheets/_projects.sass */
 body#platform #project_description #loading img {
-  margin: 16px;
   display: none;
+  margin: 16px;
 }
 /* line 421, ../../app/stylesheets/_projects.sass */
 body#platform #show_formatting_tips {
@@ -3162,20 +3162,20 @@ body#platform #empty_text {
   width: 600px;
 }
 /* line 864, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content {
+body#platform #project_backers {
   margin-top: 0;
   color: #444444;
   width: 610px;
 }
 /* line 868, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content h1 {
+body#platform #project_backers h1 {
   font-size: 24px !important;
   color: #999999 !important;
   padding-bottom: 16px !important;
   padding-top: 0 !important;
 }
 /* line 873, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content img.user {
+body#platform #project_backers img.user {
   float: left;
   margin-right: 12px;
   margin-bottom: 0px;
@@ -3187,33 +3187,33 @@ body#platform #backers.content img.user {
   background-color: white;
 }
 /* line 880, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content a {
+body#platform #project_backers a {
   text-decoration: none !important;
 }
 /* line 882, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content #all_backers {
+body#platform #project_backers #all_backers {
   text-align: center;
   margin-top: 16px;
 }
 /* line 885, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content p {
+body#platform #project_backers p {
   font-size: 16px;
   color: #666666;
   padding-bottom: 0 !important;
 }
 /* line 889, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content p.reward {
+body#platform #project_backers p.reward {
   float: right;
   width: 500px;
   font-size: 12px;
   color: #333333;
 }
 /* line 894, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content ul {
+body#platform #project_backers ul {
   width: 600px;
 }
 /* line 896, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content ul li {
+body#platform #project_backers ul li {
   background-color: #dddddd;
   margin-top: 16px;
   padding: 20px;
@@ -3226,7 +3226,7 @@ body#platform #backers.content ul li {
   position: relative;
 }
 /* line 902, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content ul li .badge {
+body#platform #project_backers ul li .badge {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -3241,7 +3241,7 @@ body#platform #backers.content ul li .badge {
   transition-duration: 0.2s;
 }
 /* line 908, ../../app/stylesheets/_projects.sass */
-body#platform #backers.content ul li .badge:hover {
+body#platform #project_backers ul li .badge:hover {
   -moz-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);

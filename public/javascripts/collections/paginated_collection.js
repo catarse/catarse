@@ -1,7 +1,5 @@
 var PaginatedCollection = Backbone.Collection.extend({
-	
   initialize: function(options){
-    typeof(options) != 'undefined' || (options = {})
     this.initializePages()
   },
   initializePages: function(){

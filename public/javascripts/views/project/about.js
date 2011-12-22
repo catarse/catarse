@@ -1,4 +1,4 @@
-window.ProjectAboutView = Backbone.View.extend({
+var ProjectAboutView = Backbone.View.extend({
 
 	initialize: function() {
 		_.bindAll(this, 'render');
