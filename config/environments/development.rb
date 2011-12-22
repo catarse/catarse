@@ -24,6 +24,5 @@ Catarse::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
   config.active_record.schema_format = :sql
 
-  config.action_mailer.delivery_method = Mailee::Mailer
 end
 
