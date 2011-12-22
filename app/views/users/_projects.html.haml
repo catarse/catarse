@@ -13,6 +13,15 @@
   %ul
     - @projects.each do |project|
       %li
+        - if project.visible
+          .status_image
+            = link_to project_path(project) do
+              - if project.successful?
+                = image_tag "successful.#{I18n.locale}.png"
+              - elsif project.waiting_confirmation?
+                = image_tag "waiting_confirmation.#{I18n.locale}.png"
+              - else
+                = image_tag "not_successful.#{I18n.locale}.png"
         = link_to project_path(project) do
           = image_tag project.display_image, :class => 'project'
           = project.name

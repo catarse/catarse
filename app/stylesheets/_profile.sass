@@ -42,15 +42,26 @@
     color: #444
     font-size: 22px
     line-height: 28px
+    ul li
+      position: relative
     h1
       font-size: 26px !important
       color: #999 !important
       padding-bottom: 0 !important
       padding-top: 0 !important
+    .status_image
+      position: absolute
+      top: -25px
+      left: 0
+      z-index: 100
     img.project
       float: left
       margin-right: 12px
-      width: 160px
+      width: 288px
+      min-height: 120px
+      +border-radius(8px)
+      border: 5px solid #eee
+      border: 5px solid rgba(100,100,100,0.3)
       +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
     img.social
       vertical-align: middle

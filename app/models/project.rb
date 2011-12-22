@@ -32,6 +32,8 @@ class Project < ActiveRecord::Base
   scope :recommended, where(:recommended => true)
   scope :not_recommended, where(:recommended => false)
   scope :pending, where("visible = false AND rejected = false")
+  scope :expired, where("expires_at < current_timestamp)")
+  scope :not_expired, where("expires_at >= current_timestamp")
   scope :expiring, where("expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks')")
   scope :not_expiring, where("NOT (expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("projects.created_at > (current_timestamp - interval '1 month')")
