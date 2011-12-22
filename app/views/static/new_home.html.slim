@@ -15,3 +15,13 @@
       .twitter_root
         a href="https://twitter.com/catarse_" class="twitter-follow-button" data-show-count="false" data-lang="en"
           Follow @twitterapi
+
+#header
+  = link_to "Home", root_path, :class => 'logo'
+  nav
+    = link_to "explore projetos", "#"
+    = link_to "envie seu projeto", "#"
+  .search
+    = form_tag '/', :class=>'search_input' do
+      = text_field_tag 'search'
+      = submit_tag
