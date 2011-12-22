@@ -10,8 +10,7 @@ gem 'rake', '0.8.7'
 gem 'haml'
 gem 'slim'
 gem 'sass', '3.1.7'
-gem 'compass', '0.10.2'
-gem 'compass-960-plugin', :require => 'ninesixty'
+gem 'compass'
 gem 'omniauth', '0.1.6'
 gem 'formtastic', '~> 1.1.0'
 gem 'validation_reflection'
@@ -46,6 +45,7 @@ gem 'enumerate_it'
 gem 'httparty'
 gem "rack-timeout"
 gem 'web_translate_it'
+gem 'compass-960-plugin'
 
 group :test, :development do
   gem 'annotate'

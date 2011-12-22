@@ -1,9 +1,10 @@
-@import "compass/reset"
-@import "compass/utilities"
-@import "compass/css3"
-@import "miv/index"
-@import "eleven40_16"
-@import "eleven40_16/grid960"
+@import compass/reset
+@import compass/utilities
+@import compass/css3
+@import 960/grid
+@import miv/index
+
+$ninesixty-columns: 16
 
 body
   font-size: 62.5%
@@ -15,9 +16,8 @@ body
   color: white
 
   menu
-    +container
-    +row
-
+    +grid-container
+    +grid-system(16)
     nav
       +grid(3)
       a
