@@ -13,7 +13,7 @@
   %ul
     - @projects.each do |project|
       %li
-        - if project.visible
+        - if project.visible? and project.expired?
           .status_image
             = link_to project_path(project) do
               - if project.successful?
