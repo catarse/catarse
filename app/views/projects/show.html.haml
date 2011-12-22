@@ -1,7 +1,5 @@
 - content_for :js_templates do
-  = render :partial => 'project_comments'
   = render :partial => 'backer'
-
 = render 'project_header'
 = render 'project_meta_tags'
 = render 'project_warning'
@@ -44,45 +42,30 @@
           %span.count (#{@comments.count})
           = image_tag "project_menu_selected.png"
   #project_content
-    #about_tab.content
-    #updates_tag.content
-    #backers_tab.content
-    #comments_tab.content
-    
+    #project_about.content
+      - if current_user and current_user.admin
+        #{on_the_spot_edit @project, :about, :type => :textarea}
+      - else
+        = @project.about_html.html_safe
+      = render "admin_fields" if current_user and current_user.admin
+    #project_updates.content
+    #project_backers.content
+    #project_comments.content
   #loading= image_tag "loading.gif"
 = render :partial => 'back_info'
-= render :partial => 'about'
-= render :partial => 'comment'
-= render :partial => 'project_updates'
-= render :partial => 'update'
-= render :partial => 'error'
 = javascript_include_tag 'models/project'
 = javascript_include_tag 'models/user'
-= javascript_include_tag 'models/paginated_collection'
-/ = javascript_include_tag 'models/project_collection'
 = javascript_include_tag 'models/backer'
-= javascript_include_tag 'models/comment'
-/ = javascript_include_tag 'models/update'
-= javascript_include_tag 'routers/project'
-= javascript_include_tag 'views/project/content'
-= javascript_include_tag 'views/project/model'
-= javascript_include_tag 'views/project/paginated_content'
-= javascript_include_tag 'views/paginated'
-= javascript_include_tag 'views/project/about'
+= javascript_include_tag 'collections/paginated_collection'
+= javascript_include_tag 'collections/backers'
+= javascript_include_tag 'views/model_view'
+= javascript_include_tag 'views/paginated_view'
 = javascript_include_tag 'views/project/backer'
-= javascript_include_tag 'views/project/project_backers'
-= javascript_include_tag 'views/project/comment'
-= javascript_include_tag 'views/project/project_comments'
-/ = javascript_include_tag 'views/project/update'
-/ = javascript_include_tag 'views/project/project_updates'
+= javascript_include_tag 'views/project/backers'
+= javascript_include_tag 'routers/project'
 = javascript_include_tag 'show_project'
 :javascript
   var locale = "#{I18n.locale}";
   var project = new Project(#{@project.to_json});
-  var projectPage = new ProjectPage({project: project});
+  var projectRouter = new ProjectRouter({project: project, locale: locale});
   Backbone.history.start();
-/ :javascript
-/   var project = new Project(#{@project.to_json})
-/   var currentUser = new User(#{current_user.to_json})
-/   var projectController = new ProjectController({project: project})
-/   Backbone.history.start()

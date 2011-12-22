@@ -2,7 +2,7 @@ script type="text/template" id="empty_backers_template"
   p= t('.empty')
 
 script type="text/template" id="backer_template"
-  |<%= confirmed_at %>
+  |<%= confirmed_at %> 
   |<% if(anonymous) { %>
   img src="/images/user.png" class="user"
   | &nbsp;
@@ -25,7 +25,7 @@ script type="text/template" id="backer_template"
       | <%= display_value %>
       | . 
       = t('activerecord.attributes.user.email')
-      |:
+      |: 
       | <% if(user['email']) { %>
       | <%= user['email'] %>
       | <% } else { %>

@@ -1,39 +1,46 @@
-window.ProjectPage = Backbone.Router.extend({
+var ProjectRouter = Backbone.Router.extend({
 	routes: {
 		'': 'about',
 		'about': 'about',
 		'updates': 'updates',
 		'backers': 'backers',
-		'backers/:page': 'backers',
 		'comments': 'comments'
 	},
 	
-	initialize: function() {
-		this.aboutView = new ProjectAboutView({});
-		this.aboutView.container = $("#project_content #about_tab");
-		this.project = project;
-		
-		this.backersView = new BackersView({
-			collection: this.project.backers,
-			loader: $("#loading")
-		});
-		this.backersView.container = $("#project_content #backers_tab");
-
-		this.selectItem("about_tab");
+	initialize: function(options) {
+    typeof(options) != 'undefined' || (options = {})
+		this.project = options.project
+		this.locale = options.locale
 	},
 	
 	about: function() {
-		this.aboutView.container.append(this.aboutView.render().el);
+		this.selectItem("about")
+	},
+
+	updates: function() {
+		this.selectItem("updates")
+	},
+
+	comments: function() {
+		this.selectItem("comments")
 	},
 
 	backers: function() {
-		this.selectItem("backers_tab");
-		this.backersView.collection.fetch();
-		this.backersView.container.append(this.backersView.render().el)
+		this.selectItem("backers")
+		this.backersView = new BackersView({
+			collection: this.project.backers,
+			loading: $("#loading"),
+			locale: this.locale,
+			el: $("#project_backers")
+		})
 	},
 	
 	selectItem: function(item) {
-		$("#project_content .content").hide();
-		$("#project_content #"+item+".content").show();
+		$("#project_content .content").hide()
+		$("#project_content #project_" + item + ".content").show()
+		var link = $("#project_menu #" + item + "_link")
+		link.parent().parent().find('li').removeClass('selected')
+    link.parent().addClass('selected')
 	}
+
 })
