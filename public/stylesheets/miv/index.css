@@ -39,3 +39,13 @@
   font-family: "Lato-Regular";
   src: url("/fonts/Lato-Regular.ttf");
 }
+
+@font-face {
+  font-family: "Lato-Bold";
+  src: url("/fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Lato-Italic";
+  src: url("/fonts/Lato-Italic.ttf");
+}

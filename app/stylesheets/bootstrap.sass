@@ -18,19 +18,44 @@ body
   menu
     +grid-container
     +grid-system(16)
+    +grid-push(5)
+    padding-bottom: 21px
     nav
-      +grid(3)
+      +grid(4)
+      +grid-suffix(1)
+
       a
         display: inline-block
-        font-family: Lato-Regular
+        font-family: Lato-Bold
         //font-weight: 900
         font-size: 1.7em
         color: white
         text-decoration: none
-        margin: 5px 5px 5px 0
+        margin: 0 34px 5px 0
         &:last-child
           margin-right: 0
-      .actions
-        +grid(3)
+
+    .actions
+      +grid(2)
+      img
+        float: left
+        margin-right: 24px
+      a
+        img
+          margin-right: 10px
+        p
+          float: left
+          font-family: Lato-Bold
+          font-size: 1.5em
+          color: white
+          padding-top: 5px
+    .social
+      +grid(4)
+      .fb_root
+        float: left
+      .twitter_root
+        float: right
+        iframe
+          width: 150px !important      
 
 
