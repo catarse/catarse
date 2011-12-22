@@ -137,6 +137,8 @@ pt:
   here: aqui
   i_backed: "Eu apoiei o projeto %{name} no @Catarse_"
   i_just_backed: "Eu acabei de apoiar o projeto %{name} no @Catarse_"
+  just:
+    api_test: "no text"
   layouts:
     application:
       menu:
@@ -202,16 +204,40 @@ pt:
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
   projects:
+    backers:
+      checkout:
+        moip_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
+        no_credits: "Você não possui créditos suficientes para realizar este apoio."
+        paypal_cancel: "Seu pagamento no PayPal foi cancelado. Por favor, tente novamente."
+        paypal_description: "Apoio para projeto"
+        paypal_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o PayPal. Por favor, tente novamente."
+        success: "Seu apoio foi realizado com sucesso. Muito obrigado!"
+      new:
+        cannot_back: "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
+        header:
+          subtitle: "Você está a poucos passos de fazer a diferença e se tornar parte deste projeto."
+          title: "Oohh yeah!"
+        no_reward: "Obrigado. Eu só quero ajudar o projeto."
+        submit: "Revisar e realizar pagamento"
+        title: "Apoie o %{name}"
+      review:
+        credits_notice_html: "Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos."
+        error: "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
+        international:
+          description: "Você pode usar o PayPal para realizar pagamentos internacionais"
+          important_html: "<p>O uso do PayPal é destinado preferencialmente para apoios internacionais. Isto porque ao realizar o pagamento pelo PayPal, você tem apenas 60 dias para receber seu dinheiro de volta sem taxas.</p><p>Caso você possa realizar o pagamento normal pelo MoIP, nós recomendamos.</p><p>Mas se você não pode, não se preocupe: você sempre poderá receber seu dinheiro de volta. Apenas, caso o estorno seja realizado mais de 60 dias depois do seu pagamento, você terá que pagar a taxa do PayPal, que é de 5,4% + R$ 0,60 por transação.</p>"
+          submit: "Efetuar pagamento pelo PayPal"
+          title: "Quer fazer pagamento internacional?"
+        review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa: <span class='reward'>%{reward}</span>"
+        review_without_reward_html: "Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio."
+        submit:
+          credits: "Confirmar apoio com créditos"
+          moip: "Efetuar pagamento pelo MoIP"
+        subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
+        title: "Preencha e revise seus dados"
+        you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
     admin_fields:
       title: "Campos para o admin"
-    back:
-      cannot_back: "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
-      header:
-        subtitle: "Você está a poucos passos de fazer a diferença e se tornar parte deste projeto."
-        title: "Oohh yeah!"
-      no_reward: "Obrigado. Eu só quero ajudar o projeto."
-      submit: "Revisar e realizar pagamento"
-      title: "Apoie o %{name}"
     back_project:
       backed_plural: apoiaram
       backed_singular: apoiou
@@ -236,8 +262,6 @@ pt:
     curated_pages_list:
       subtitle: "Descubra projetos selecionados por alguns dos parceiros catárticos"
       title: "Canais catárticos"
-    faq:
-      title: "Perguntas frequentes"
     form:
       add_reward: "Adicionar recompensa"
       important_html: "Lembre-se que o Catarse ficará com 7,5%, e os meios de pagamento (MoIP e Paypal) cobram uma taxa que varia, em geral, entre 4% e 5% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas depois."
@@ -247,11 +271,6 @@ pt:
       rewards_description: "A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão."
       rewards_title: Recompensas
       submit: "Enviar o projeto"
-    guidelines:
-      accept: "Eu li e entendi como funciona o Catarse."
-      submit: "Quero enviar meu projeto"
-      subtitle: "Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse."
-      title: "Como funciona o Catarse?"
     home_page_projects:
       explore_recommended: "Explore mais projetos recomendados"
       subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
@@ -269,13 +288,6 @@ pt:
     new:
       subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
       title: "Envie seu projeto"
-    pay:
-      moip_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
-      no_credits: "Você não possui créditos suficientes para realizar este apoio."
-      paypal_cancel: "Seu pagamento no PayPal foi cancelado. Por favor, tente novamente."
-      paypal_description: "Apoio para projeto"
-      paypal_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o PayPal. Por favor, tente novamente."
-      success: "Seu apoio foi realizado com sucesso. Muito obrigado!"
     pending:
       can_finish: "Pode finalizar?"
       finished: Finalizado?
@@ -312,8 +324,6 @@ pt:
       value: Valor
     press:
       title: "Confira o que estão falando do Catarse na imprensa"
-    privacy:
-      title: "Política de privacidade"
     project:
       backed: levantados
       reached: atingido
@@ -345,22 +355,6 @@ pt:
     project_warning:
       rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
       waiting: "Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)"
-    review:
-      credits_notice_html: "Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos."
-      error: "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
-      international:
-        description: "Você pode usar o PayPal para realizar pagamentos internacionais"
-        important_html: "<p>O uso do PayPal é destinado preferencialmente para apoios internacionais. Isto porque ao realizar o pagamento pelo PayPal, você tem apenas 60 dias para receber seu dinheiro de volta sem taxas.</p><p>Caso você possa realizar o pagamento normal pelo MoIP, nós recomendamos.</p><p>Mas se você não pode, não se preocupe: você sempre poderá receber seu dinheiro de volta. Apenas, caso o estorno seja realizado mais de 60 dias depois do seu pagamento, você terá que pagar a taxa do PayPal, que é de 5,4% + R$ 0,60 por transação.</p>"
-        submit: "Efetuar pagamento pelo PayPal"
-        title: "Quer fazer pagamento internacional?"
-      review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa: <span class='reward'>%{reward}</span>"
-      review_without_reward_html: "Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio."
-      submit:
-        credits: "Confirmar apoio com créditos"
-        moip: "Efetuar pagamento pelo MoIP"
-      subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
-      title: "Preencha e revise seus dados"
-      you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
     rewards:
       reward_title: "Para %{minimum} ou mais"
       title: "Apoie e ganhe..."
@@ -393,8 +387,6 @@ pt:
       submit: "Enviar o projeto"
       subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
       title: "Envie seu projeto"
-    terms:
-      title: "Termos de uso"
     twitter:
       take_a_look: "Confira o projeto %{name} no @Catarse_"
     video_embed:
@@ -433,6 +425,18 @@ pt:
     name: Catarse
     title: "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
     twitter: Catarse_
+  static:
+    faq:
+      title: "Perguntas frequentes"
+    guidelines:
+      accept: "Eu li e entendi como funciona o Catarse."
+      submit: "Quero enviar meu projeto"
+      subtitle: "Antes de enviar seu projeto, saiba um pouco mais sobre como funciona o Catarse."
+      title: "Como funciona o Catarse?"
+    privacy:
+      title: "Política de privacidade"
+    terms:
+      title: "Termos de uso"
   terms: "termos de uso"
   user:
     backs_text:

@@ -10,9 +10,12 @@ feature "Explore projects Feature" do
     category_1 = Factory(:category)
     category_2 = Factory(:category)
     
-    # Recommended projects
+    # Recommended projects (some of them expired)
     10.times do
       Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true, category: category_1)
+    end
+    5.times do
+      Factory(:project, created_at: 30.days.ago, expires_at: 10.days.ago, visible: true, recommended: true, category: category_1)
     end
 
     # Expiring projects
@@ -36,7 +39,7 @@ feature "Explore projects Feature" do
   scenario "When I visit explore projects, it should show the correct projects" do
 
     categories = Category.with_projects.order(:name).all
-    recommended = Project.visible.recommended.order('created_at DESC').all
+    recommended = Project.visible.not_expired.recommended.order('expires_at').all
     expiring = Project.visible.expiring.limit(16).order('expires_at').all
     recent = Project.visible.recent.limit(16).order('created_at DESC').all
     successful = Project.visible.successful.order('expires_at DESC').all
@@ -143,7 +146,7 @@ feature "Explore projects Feature" do
     visit "/pt/explore/recommended"
     verify_translations
 
-    projects = Project.visible.recommended.order('created_at DESC').all
+    projects = Project.visible.not_expired.recommended.order('expires_at').all
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|

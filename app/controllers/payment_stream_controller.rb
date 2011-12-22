@@ -15,7 +15,7 @@ class PaymentStreamController < ApplicationController
 
     if session[:_payment_token]
       backer = Backer.find_by_payment_token session[:_payment_token]
-      backer.build_payment_detail.update_from_service
+      backer.build_payment_detail.update_from_service if backer
       session[:_payment_token] = nil
     end
 
