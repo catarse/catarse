@@ -14,14 +14,15 @@
     - @backs.each do |back|
       %li
         = l(back.confirmed_at.to_date) if back.confirmed_at
-        .status_image
-          = link_to project_path(back.project) do
-            - if back.project.successful?
-              = image_tag "successful.#{I18n.locale}.png"
-            - elsif back.project.waiting_confirmation?
-              = image_tag "waiting_confirmation.#{I18n.locale}.png"
-            - else
-              = image_tag "not_successful.#{I18n.locale}.png"
+        - if back.project.expired?
+          .status_image
+            = link_to project_path(back.project) do
+              - if back.project.successful?
+                = image_tag "successful.#{I18n.locale}.png"
+              - elsif back.project.waiting_confirmation?
+                = image_tag "waiting_confirmation.#{I18n.locale}.png"
+              - else
+                = image_tag "not_successful.#{I18n.locale}.png"
         = link_to project_path(back.project) do
           = image_tag back.project.display_image, :class => 'project'
           = back.project.name
