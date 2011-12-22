@@ -31,6 +31,8 @@ feature "Back project" do
     
     find("#rewards li.clickable").click
     verify_translations
+    # Had to add a sleep for the tests to pass on Travis-CI
+    sleep 2
     find("#login").visible?.should be_true
     
   end
@@ -142,7 +144,7 @@ feature "Back project" do
     
   end
   
-  scenario "As a user without credits, I want to back a project by clicking on a reward on the project page, and pay using MoIP" do
+  scenario "As a user without credits, I want to back a project by clicking on a reward on the project page, and pay using MoIP", :now => true do
   
     MoIP::Client.stubs(:checkout).returns({"Token" => "foobar"})
     MoIP::Client.stubs(:moip_page).returns("http://www.moip.com.br")
@@ -179,6 +181,7 @@ feature "Back project" do
     
     fill_in "Nome completo", with: "Foo bar"
     fill_in "Email", with: "foo@bar.com"
+    fill_in "CPF", with: "815.587.240-87"
     fill_in "CEP", with: "90050-004"
     
     # Sleep to wait for the loading of zip code data
@@ -193,6 +196,7 @@ feature "Back project" do
     
     page.should have_css("#user_full_name.ok")
     page.should have_css("#user_email.ok")
+    page.should have_css("#user_cpf.ok")
     page.should have_css("#user_address_zip_code.ok")
     page.should have_css("#user_address_street.ok")
     page.should have_css("#user_address_number.ok")
