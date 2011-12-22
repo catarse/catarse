@@ -41,9 +41,7 @@ feature "Pending projects" do
     check 'project__visible__1'
     check 'project__home_page__1'
     verify_translations
-    # Added a sleep to see if this spec pass on Travis-CI
-    sleep 2
-    visit root_path
+    visit homepage
     verify_translations
     page.should have_css('.project_list_header', :text => "Nossa seleção catártica!")
     page.should have_css('#home_page_projects')
