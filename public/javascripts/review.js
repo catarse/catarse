@@ -4,6 +4,8 @@ everything_ok = function(){
   if($('#backer_credits').val() == "false"){
     if(!ok('#user_full_name'))
       all_ok = false
+    if(!cpf_ok())
+      all_ok = false
     if(!email_ok())
       all_ok = false
     if(!zip_code_ok())
@@ -36,6 +38,15 @@ ok = function(id){
     return true
   } else {
     $(id).addClass("error").removeClass("ok")
+    return false
+  }
+}
+cpf_ok = function(){
+  if($('#user_cpf').isValidCPF()){
+    $('#user_cpf').addClass("ok").removeClass("error")
+    return true
+  } else {
+    $('#user_cpf').addClass("error").removeClass("ok")
     return false
   }
 }
@@ -106,14 +117,24 @@ verify_zip_code = function(){
   }
   everything_ok()
 }
-$('#user_address_zip_code').mask("99999-999")
+$('#user_cpf').mask("999.999.999-99")
+//Apply the mask when user use the browser autocomplete
+$('#user_cpf').change(function(){
+  $(this).mask("999.999.999-99");
+});
 
+$('#user_address_zip_code').mask("99999-999")
 //Apply the mask when user use the browser autocomplete
 $('#user_address_zip_code').change(function(){
   $(this).mask("99999-999");
 });
 
 $('#user_phone_number').mask("(99)9999-9999")
+//Apply the mask when user use the browser autocomplete
+$('#user_phone_number').change(function(){
+  $(this).mask("(99)9999-9999");
+});
+
 $('input[type=text]').keyup(everything_ok)
 $('#user_address_zip_code').keyup(function(){ zip_code_valid = false; everything_ok() })
 $('#user_address_zip_code').timedKeyup(verify_zip_code)
