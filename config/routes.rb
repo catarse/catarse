@@ -51,8 +51,6 @@ Catarse::Application.routes.draw do
       put 'pay'
       get 'embed'
       get 'video_embed'
-      get 'comments'
-      get 'updates'
     end
   end
   resources :users, :only => [:show] do
@@ -64,7 +62,6 @@ Catarse::Application.routes.draw do
       post 'refund'
     end
   end
-  resources :comments, :only => [:index, :show, :create, :destroy]
 
   resources :paypal, :only => [] do
     member do
