@@ -3,10 +3,10 @@ class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
   inherit_resources
   actions :index, :show, :new, :create
-  respond_to :html, :except => [:backers, :comments, :updates]
-  respond_to :json, :only => [:show, :backers, :comments, :updates]
+  respond_to :html, :except => [:backers]
+  respond_to :json, :only => [:show, :backers]
   can_edit_on_the_spot
-  skip_before_filter :detect_locale, :only => [:backers, :comments, :updates]
+  skip_before_filter :detect_locale, :only => [:backers]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create]
   def date_format_convert
@@ -56,10 +56,6 @@ class ProjectsController < ApplicationController
       @title = @project.name
       @rewards = @project.rewards.order(:minimum_value).all
       @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
-      @updates = @project.updates.all
-      @update = @project.comments.new :project_update => true
-      @comments = @project.comments.all
-      @comment = @project.comments.new
     }
   end
   def vimeo
@@ -81,18 +77,6 @@ class ProjectsController < ApplicationController
     }.to_json
   rescue
     render :json => {:ok => false}.to_json
-  end
-
-  def comments
-    @project = Project.find params[:id]
-    @comments = @project.comments.order("created_at DESC").paginate :page => params[:page], :per_page => 5
-    respond_with @comments
-  end
-
-  def updates
-    @project = Project.find params[:id]
-    @updates = @project.updates.order("created_at DESC").paginate :page => params[:page], :per_page => 3
-    respond_with @updates
   end
 
   def embed
