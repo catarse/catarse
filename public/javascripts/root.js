@@ -1,5 +1,7 @@
-$(function(){
-  $('#curated_link').click(function(){
-    $(document).scrollTo('.curated_page_header', 800);
+$script.ready('final', function(){
+  $(function(){
+    $('#curated_link').click(function(){
+      $(document).scrollTo('.curated_page_header', 800);
+    });
   });
-});
+})

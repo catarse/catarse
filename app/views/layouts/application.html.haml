@@ -1,7 +1,7 @@
 !!! 5
 %html{:lang => I18n.locale}
   = render :partial => 'layouts/head'
-  %body#platform
+  %body#platform{ "data-namespace" => namespace, "data-controller" => controller_name, "data-action" => action_name }
     = render :partial => 'layouts/flash', :locals => { :flash => flash } unless flash.empty?
     = render :partial => 'layouts/locales'
     = render :partial => 'layouts/pre_header'
