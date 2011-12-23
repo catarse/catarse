@@ -15,9 +15,17 @@ var CATARSE_LOADER = {
 
   initial: ['jquery-1.4.4.min', 'underscore-min'],
   
-  intermediate: ['backbone-min', 'mustache', 'jquery-ui-1.8.6.custom.min', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'waypoints.min', 'jquery.scrollto', 'jquery.jeditable.mini'],
+  intermediate: ['backbone-min', 'mustache', 'jquery-ui-1.8.6.custom.min', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'waypoints.min', 'jquery.scrollto', 'jquery.jeditable.mini', 'jquery.maskedinput-1.2.2.min', 'jquery.cpf'],
   
   final: ['jquery.ui.datepicker-pt-BR', 'on_the_spot'],
+  
+  catarse: [
+    'app/catarse',
+    'app/views/layouts/pre_header',
+    'app/views/layouts/flash',
+    'app/views/layouts/login',
+    'app/views/layouts/user',
+  ],
   
   scriptURI: function(path){
     return '/javascripts/' + path + '.js';
@@ -47,7 +55,7 @@ var CATARSE_LOADER = {
       $script.ready('intermediate', function(){
         CATARSE_LOADER.load(CATARSE_LOADER.final, 'final')
         $script.ready('final', function(){
-          CATARSE_LOADER.load('app/catarse', 'catarse')
+          CATARSE_LOADER.load(CATARSE_LOADER.catarse, 'catarse')
           $script.ready('catarse', function(){
             $(document).ready(CATARSE_LOADER.loadAction);
           })
@@ -107,11 +115,10 @@ var CATARSE_LOADER = {
     if (namespace_folder.length > 0)
       namespace_folder = namespace_folder + "/"
       
-    CATARSE_LOADER.load("app/" + namespace_folder + controller + "/" + action, 'action')
+    CATARSE_LOADER.load("app/views/" + namespace_folder + controller + "/" + action, 'action')
     
     $script.ready('action', function() {
       if (CATARSE.loader.dependencies) {
-        CATARSE_LOADER.load(CATARSE.loader.dependencies, 'dependencies')
         $script.ready('dependencies', function() {
           execAction()
         })
