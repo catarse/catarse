@@ -40,7 +40,8 @@ feature "Pending projects" do
     visit pending_projects_path
     check 'project__visible__1'
     check 'project__home_page__1'
-    visit root_path
+    verify_translations
+    visit homepage
     verify_translations
     page.should have_css('.project_list_header', :text => "Nossa seleção catártica!")
     page.should have_css('#home_page_projects')
