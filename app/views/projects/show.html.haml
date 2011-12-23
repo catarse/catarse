@@ -29,7 +29,6 @@
       %li
         = link_to '#updates', :id => 'updates_link' do
           = t('.menu.updates')
-          %span.count (#{@updates.count})
           = image_tag "project_menu_selected.png"
       %li
         = link_to '#backers', :id => 'backers_link' do
@@ -39,7 +38,6 @@
       %li
         = link_to '#comments', :id => 'comments_link' do
           = t('.menu.comments')
-          %span.count (#{@comments.count})
           = image_tag "project_menu_selected.png"
   #project_content
     #project_about.content

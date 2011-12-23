@@ -6,15 +6,12 @@ class Project < ActiveRecord::Base
   include ActionView::Helpers::UrlHelper
   include ERB::Util
   include Rails.application.routes.url_helpers
-  acts_as_commentable
   belongs_to :user
   belongs_to :category
   has_many :projects_curated_pages
   has_many :curated_pages, :through => :projects_curated_pages
   has_many :backers, :dependent => :destroy
   has_many :rewards, :dependent => :destroy
-  has_many :comments, :as => :commentable, :conditions => {:project_update => false}, :dependent => :destroy
-  has_many :updates, :as => :commentable, :class_name => "Comment", :conditions => {:project_update => true}
   has_and_belongs_to_many :managers, :join_table => "projects_managers", :class_name => 'User'
   accepts_nested_attributes_for :rewards
   auto_html_for :about do

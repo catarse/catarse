@@ -41,6 +41,8 @@ feature "Pending projects" do
     check 'project__visible__1'
     check 'project__home_page__1'
     verify_translations
+    # Had to add this sleep to wait for ajax to update the records
+    sleep 2
     visit homepage
     verify_translations
     page.should have_css('.project_list_header', :text => "Nossa seleção catártica!")

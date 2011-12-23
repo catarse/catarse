@@ -350,89 +350,12 @@
         text-transform: uppercase
         padding: 0
         padding-bottom: 16px
-    #project_comments,#project_updates
-      width: 600px
-      form
-        input[type=text]
-          width: 560px
-        textarea
-          width: 560px
-          height: 90px
-        .required abbr
-          display: none
-        .buttons
-          text-align: right
-      em
-        text-align: center
-      #collection_list
-        margin-top: 16px
-        li
-          background-color: rgb(205,235,255)
-          background-color: rgba(0,132,185,0.1)
-          +border-radius(6px)
-          padding: 20px
-          margin-bottom: 4px
-          position: relative
-          .time
-            text-transform: uppercase
-            color: #999
-            font-size: 14px
-          .destroy
-            position: absolute
-            top: 12px
-            right: 12px
-            a
-              img
-                +transition(all, 0.3s)
-                width: 20px
-                +opacity(0.8)
-                &:hover
-                  +opacity(1)
-                  +scale(1.2)
-          img.user
-            float: left
-            margin-right: 12px
-            margin-bottom: 0px
-            height: 38px
-            +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
-            background-color: #fff
-          a
-            text-decoration: none !important
-          .comment
-            p
-              padding: 12px 0 0 0
-              font-size: 16px
-            img,iframe
-              max-width: 560px
-    #project_updates
-      form textarea
-        height: 400px
-      ul li
-        background-color: transparent !important
-        border-bottom: 1px dashed #999
-        &:last-child
-          border-bottom: none
     #loading
       width: 580px
       text-align: center
       img
         display: none
         margin: 16px
-  #show_formatting_tips
-    text-align: left !important
-    color: #666
-    font-size: 16px
-    margin-bottom: 8px
-  #formatting_tips
-    display: none
-    text-align: left
-    font-size: 16px
-    ul li
-      padding-bottom: 8px
-      margin-bottom: 8px
-      border-bottom: 1px dotted #999
-      &:last-child
-        border: none
   #project_back_info
     margin-top: -20px
     float: right

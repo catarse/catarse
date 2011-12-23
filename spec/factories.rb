@@ -20,12 +20,6 @@ end
 Factory.define :category do |f|
   f.name { Factory.next(:name) }
 end
-Factory.define :comment do |f|
-  f.association :user, :factory => :user
-  f.association :commentable, :factory => :project
-  f.title "Foo bar"
-  f.comment "Foo bar"
-end
 Factory.define :project do |f|
   f.name "Foo bar"
   f.association :user, :factory => :user
