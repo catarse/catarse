@@ -11,5 +11,5 @@
     = csrf_meta_tag
     %link{ :rel => 'shortcut icon', :href => "/images/favicon.ico" }
     = render '/layouts/analytics'
-  %body#platform
+  %body#platform{ "data-namespace" => namespace, "data-controller" => controller_name, "data-action" => action_name }
     = yield
