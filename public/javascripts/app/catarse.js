@@ -1,5 +1,7 @@
-CATARSE = {
+var CATARSE = {
 
+  loader: CATARSE_LOADER,
+  
   common:{
     init: function(){
       // Common init for every action

@@ -11,15 +11,13 @@
  * Should be the only file included from views
  */
 
-var CATARSE = {}
-
-CATARSE_LOADER = {
+var CATARSE_LOADER = {
 
   initial: ['jquery-1.4.4.min', 'underscore-min'],
   
-  intermediate: ['backbone-min', 'mustache', 'jquery-ui-1.8.6.custom.min', 'jquery.ui.datepicker-pt-BR', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'waypoints.min', 'jquery.scrollto', 'jquery.jeditable.mini'],
+  intermediate: ['backbone-min', 'mustache', 'jquery-ui-1.8.6.custom.min', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'waypoints.min', 'jquery.scrollto', 'jquery.jeditable.mini'],
   
-  final: ['on_the_spot', 'app/catarse'],
+  final: ['jquery.ui.datepicker-pt-BR', 'on_the_spot'],
   
   scriptURI: function(path){
     return '/javascripts/' + path + '.js';
@@ -49,7 +47,10 @@ CATARSE_LOADER = {
       $script.ready('intermediate', function(){
         CATARSE_LOADER.load(CATARSE_LOADER.final, 'final')
         $script.ready('final', function(){
-          $(document).ready(CATARSE_LOADER.loadAction);
+          CATARSE_LOADER.load('app/catarse', 'catarse')
+          $script.ready('catarse', function(){
+            $(document).ready(CATARSE_LOADER.loadAction);
+          })
         })
       })
     })
@@ -82,6 +83,18 @@ CATARSE_LOADER = {
       }
       return result
     }
+    
+    function execAction() {
+      exec(CATARSE, "common", "init");
+      exec(ns, controller, "init");
+      if ( !exec(ns, controller, action) ) {
+        var View = CATARSE[viewName(namespace_list, controller, action)]
+        if (View) {
+          new View()
+        }
+      }
+      exec(CATARSE, "common", "finish");
+    }
 
     var body = $(document.body),
       namespace = body.data("namespace"),
@@ -97,15 +110,14 @@ CATARSE_LOADER = {
     CATARSE_LOADER.load("app/" + namespace_folder + controller + "/" + action, 'action')
     
     $script.ready('action', function() {
-      exec(CATARSE, "common", "init");
-      exec(ns, controller, "init");
-      if ( !exec(ns, controller, action) ) {
-        var view = CATARSE[viewName(namespace_list, controller, action)]
-        if (view) {
-          new view()
-        }
+      if (CATARSE.loader.dependencies) {
+        CATARSE_LOADER.load(CATARSE.loader.dependencies, 'dependencies')
+        $script.ready('dependencies', function() {
+          execAction()
+        })
+      } else {
+        execAction()
       }
-      exec(CATARSE, "common", "finish");
     })
 
   }
