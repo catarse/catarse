@@ -64,66 +64,71 @@ var CATARSE_LOADER = {
     })
   },
   
+  exec: function(namespace, controller, action) {
+    if ( namespace && namespace[controller] && typeof namespace[controller][action] == "function" ) {
+      namespace[controller][action]();
+      return true;
+    } else {
+      return false;
+    }
+  },
+  
+  expandNamespace: function(object, list) {
+    var name = list.shift()
+    if (object[name])
+      return CATARSE_LOADER.expandNamespace(object[name], list)
+    else
+      return object
+  },
+  
+  viewName: function() {
+    var len = CATARSE_LOADER.namespace.list.push(CATARSE_LOADER.controller, CATARSE_LOADER.action, "View")
+    var result = ""
+    for(var i=0; i<len; i++) {
+      result = result + CATARSE_LOADER.namespace.list[i].charAt(0).toUpperCase() + CATARSE_LOADER.namespace.list[i].slice(1)
+    }
+    return result
+  },
+  
+  execAction: function() {
+    CATARSE_LOADER.exec(CATARSE, "common", "init");
+    CATARSE_LOADER.exec(CATARSE_LOADER.namespace.object, CATARSE_LOADER.controller, "init");
+    if ( !CATARSE_LOADER.exec(CATARSE_LOADER.namespace.object, CATARSE_LOADER.controller, CATARSE_LOADER.action) ) {
+      var View = CATARSE[CATARSE_LOADER.viewName()]
+      if (View) {
+        var controller = CATARSE_LOADER.namespace[CATARSE_LOADER.controller]
+        if(!controller)
+          controller = {}
+        controller[CATARSE_LOADER.action] = new View()
+      }
+    }
+    CATARSE_LOADER.exec(CATARSE, "common", "finish");
+  },
+
   loadAction: function(){
 
-    function exec(namespace, controller, action) {
-      if ( namespace && namespace[controller] && typeof namespace[controller][action] == "function" ) {
-        namespace[controller][action]();
-        return true;
-      } else {
-        return false;
-      }
-    }
+    var body = $(document.body)
     
-    function mountNamespace(object, list) {
-      var name = list.shift()
-      if (object[name])
-        return mountNamespace(object[name], list)
-      else
-        return object
-    }
+    CATARSE_LOADER.namespace = {}
+    CATARSE_LOADER.namespace.text = body.data("namespace")
+    CATARSE_LOADER.namespace.list = CATARSE_LOADER.namespace.text.split("_")
+    CATARSE_LOADER.namespace.folder = CATARSE_LOADER.namespace.list.join("/")
+    if (CATARSE_LOADER.namespace.folder.length > 0)
+      CATARSE_LOADER.namespace.folder = CATARSE_LOADER.namespace.folder + "/"
+    CATARSE_LOADER.namespace.object = CATARSE_LOADER.expandNamespace(CATARSE, CATARSE_LOADER.namespace.list)
     
-    function viewName(list, controller, action) {
-      var len = list.push(controller, action, "View")
-      var result = ""
-      for(var i=0; i<len; i++) {
-        result = result + list[i].charAt(0).toUpperCase() + list[i].slice(1)
-      }
-      return result
-    }
+    CATARSE_LOADER.controller = body.data("controller")
+    CATARSE_LOADER.action = body.data("action")
     
-    function execAction() {
-      exec(CATARSE, "common", "init");
-      exec(ns, controller, "init");
-      if ( !exec(ns, controller, action) ) {
-        var View = CATARSE[viewName(namespace_list, controller, action)]
-        if (View) {
-          new View()
-        }
-      }
-      exec(CATARSE, "common", "finish");
-    }
-
-    var body = $(document.body),
-      namespace = body.data("namespace"),
-      namespace_list = namespace.split("_"),
-      namespace_folder = namespace_list.join("/"),
-      ns = mountNamespace(CATARSE, namespace_list),
-      controller = body.data("controller"),
-      action = body.data("action");
-
-    if (namespace_folder.length > 0)
-      namespace_folder = namespace_folder + "/"
-      
-    CATARSE_LOADER.load("app/views/" + namespace_folder + controller + "/" + action, 'action')
+    CATARSE_LOADER.load("app/views/" + CATARSE_LOADER.namespace.folder + CATARSE_LOADER.controller + "/" + CATARSE_LOADER.action, 'action')
     
     $script.ready('action', function() {
       if (CATARSE.loader.dependencies) {
         $script.ready('dependencies', function() {
-          execAction()
+          CATARSE_LOADER.execAction()
         })
       } else {
-        execAction()
+        CATARSE_LOADER.execAction()
       }
     })
 

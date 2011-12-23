@@ -1,1 +1,1 @@
-var User = Backbone.Model.extend({})
+CATARSE.User = Backbone.Model.extend({})

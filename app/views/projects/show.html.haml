@@ -3,7 +3,7 @@
 = render 'project_header'
 = render 'project_meta_tags'
 = render 'project_warning'
-#project_description
+#project_description{ "data-project"=> @project.to_json }
   #project_video
     %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "610", :height => "346"}
     #project_share

@@ -1,3 +1,3 @@
-var Backers = PaginatedCollection.extend({
-  model: Backer
+CATARSE.Backers = CATARSE.PaginatedCollection.extend({
+  model: CATARSE.Backer
 })

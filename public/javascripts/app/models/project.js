@@ -1,7 +1,6 @@
-var Project = Backbone.Model.extend({
-	url: '/projects',
+CATARSE.Project = Backbone.Model.extend({
 	initialize: function() {
-		this.backers = new Backers
-		this.backers.url = '/projects/' + this.id + '/backers'
+		this.backers = new CATARSE.Backers()
+		this.backers.url = '/' + CATARSE.locale + '/projects/' + this.id + '/backers'
 	}
 })
