@@ -80,3 +80,52 @@
       - 8.times do
         li
           = link_to image_tag('redesign/channels_cover220x144.png'), '#'
+
+#blog_footer
+  .home_blog
+    h3 O que anda acontecendo aqui
+    = link_to image_tag("redesign/blog_banner699x239.png"), '#', :class => 'blog_banner'
+    .blog_post
+      h4
+        | No Blog
+      h6
+        | Aqui é o título do Blog que
+        | deve ter somente 02 linhas
+      p
+        | O Catarse é um site que tem  um
+        | modelo de funcionar diferente do que a gente tá  acostumado por aí.
+
+      p
+        | O Catarse é um site que tem  um  modelo de funcionar diferente do que a gente tá  acostumado por aí.
+    .twitter_message
+      p
+        | Global famine and disease always made me wonder about the existence of God, but this
+        br/
+        | Tebow business has me wondering. http://ctr.se/443kd0
+
+#footer
+  .footer_content
+    .open_data
+      h3
+        | estatísticas bacanas
+      ul
+        li
+          h5 9358
+          p Apoiadores
+        li
+          h5 11633
+          p Apios
+        li
+          h5 R$ 1.139.334,50
+          p Arrecadados
+        li
+          h5 30994
+          p Usuários
+        li
+          h5 109
+          p Projetos bem sucedidos
+        li
+          h5 250
+          p Projetos no ar
+
+        = link_to '>> veja mais estatísticas aqui na OPENDATA', '#'
