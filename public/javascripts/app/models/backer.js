@@ -1,3 +1,1 @@
-var Backer = Backbone.Model.extend({
-	url: '/backers'
-});
+CATARSE.Backer = Backbone.Model.extend({})

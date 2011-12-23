@@ -1,4 +1,4 @@
-var ProjectRouter = Backbone.Router.extend({
+CATARSE.ProjectRouter = Backbone.Router.extend({
 	routes: {
 		'': 'about',
 		'about': 'about',
@@ -9,8 +9,6 @@ var ProjectRouter = Backbone.Router.extend({
 	
 	initialize: function(options) {
     typeof(options) != 'undefined' || (options = {})
-		this.project = options.project
-		this.locale = options.locale
 	},
 	
 	about: function() {
@@ -27,10 +25,9 @@ var ProjectRouter = Backbone.Router.extend({
 
 	backers: function() {
 		this.selectItem("backers")
-		this.backersView = new BackersView({
-			collection: this.project.backers,
+		this.backersView = new CATARSE.BackersView({
+			collection: CATARSE.project.backers,
 			loading: $("#loading"),
-			locale: this.locale,
 			el: $("#project_backers")
 		})
 	},

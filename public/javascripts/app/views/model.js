@@ -1,4 +1,4 @@
-var ModelView = Backbone.View.extend({
+CATARSE.ModelView = Backbone.View.extend({
   initialize: function(){
     typeof(options) != 'undefined' || (options = {})
     if(options.template)

@@ -1,4 +1,4 @@
-var PaginatedCollection = Backbone.Collection.extend({
+CATARSE.PaginatedCollection = Backbone.Collection.extend({
   initialize: function(options){
     this.initializePages()
   },
@@ -8,6 +8,6 @@ var PaginatedCollection = Backbone.Collection.extend({
   },
   nextPage: function(){
     this.page++
-    return this.fetch({data: {page: this.page, locale: locale}})
+    return this.fetch({data: {page: this.page, locale: CATARSE.locale}})
   }
 })

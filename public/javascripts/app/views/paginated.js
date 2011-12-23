@@ -1,4 +1,4 @@
-var PaginatedView = Backbone.View.extend({
+CATARSE.PaginatedView = Backbone.View.extend({
   initialize: function(){
     typeof(options) != 'undefined' || (options = {})
     if(options.collection)
@@ -9,8 +9,6 @@ var PaginatedView = Backbone.View.extend({
       this.emptyTemplate = options.emptyTemplate
     if(options.loading)
       this.loading = options.loading
-    if(options.locale)
-      this.locale = options.locale
 		this.loading = $("#loading")
     this.loading.waypoint('destroy')
     _.bindAll(this, "render", "update", "nextPage", "waypoint")
@@ -18,7 +16,7 @@ var PaginatedView = Backbone.View.extend({
 		this.loading.children().show()
     this.collection.page = 1
     this.collection.bind("reset", this.update)
-    this.collection.fetch({data: {page: this.collection.page, locale: this.locale}})
+    this.collection.fetch({data: {page: this.collection.page, locale: CATARSE.locale}})
   },
   waypoint: function(event, direction){
     if(!this.loading.children().is(":visible")){

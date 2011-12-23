@@ -17,26 +17,6 @@ feature "Back project" do
     State.create! name: "Foo bar", acronym: "FB"
   end
 
-  scenario "As an unlogged user, before I back a project I need to be asked to log in" do
-    
-    visit project_path(@project)
-    verify_translations
-  
-    click_on "Quero apoiar este projeto"
-    verify_translations
-    find("#login").visible?.should be_true
-    click_link 'X'
-    verify_translations
-    find("#login").visible?.should be_false
-    
-    find("#rewards li.clickable").click
-    verify_translations
-    # Had to add a sleep for the tests to pass on Travis-CI
-    sleep 2
-    find("#login").visible?.should be_true
-    
-  end
-  
   scenario "As a user without credits, I want to back a project by entering the value and selecting no reward" do
   
     fake_login
@@ -161,6 +141,7 @@ feature "Back project" do
     end
   
     verify_translations
+    sleep 2
     
     find("#backer_reward_id_#{@rewards[2].id}")[:checked].should == "true"
     find("#backer_value")[:value].should == "30"
@@ -295,6 +276,26 @@ feature "Back project" do
     current_path.should == root_path
     page.should have_css('.failure.wrapper')
   
+  end
+  
+  scenario "As an unlogged user, before I back a project I need to be asked to log in" do
+    
+    visit project_path(@project)
+    verify_translations
+  
+    click_on "Quero apoiar este projeto"
+    verify_translations
+    find("#login").visible?.should be_true
+    within "#login" do
+      click_link 'X'
+    end
+    verify_translations
+    find("#login").visible?.should be_false
+    
+    find("#rewards li.clickable").click
+    verify_translations
+    find("#login").visible?.should be_true
+    
   end
   
 end

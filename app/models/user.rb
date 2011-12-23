@@ -140,7 +140,7 @@ class User < ActiveRecord::Base
 
     json_attributes = {}
     
-    if options and not options[:anonymous] 
+    if not options or (options and not options[:anonymous]) 
       json_attributes.merge!({
         :id => id,
         :name => display_name,

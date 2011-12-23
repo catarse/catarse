@@ -1,6 +1,6 @@
 $('table a').click(function(e){
   e.preventDefault()
-  if(confirm(confirm_text)){
+  if(confirm($("#credits").data("confirm"))){
     var backer_id = $(this).parent().parent().parent().attr('id')
     $('#' + backer_id + ' .text').hide()
     $('#' + backer_id + ' .loading').show()

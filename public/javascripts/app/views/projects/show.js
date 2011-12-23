@@ -16,17 +16,16 @@ $script.ready('initial_dependencies', function() {
 
 $script.ready('dependencies', function() {
 
-  var BackerView = ModelView.extend({
+  CATARSE.BackerView = CATARSE.ModelView.extend({
     template: _.template($('#backer_template').html())
   })
-  var BackersView = PaginatedView.extend({
-  	modelView: BackerView,
+  CATARSE.BackersView = CATARSE.PaginatedView.extend({
+  	modelView: CATARSE.BackerView,
   	emptyTemplate: _.template($('#empty_backers_template').html()),
   });
 
-  //   var locale = "#{I18n.locale}";
-  //   var project = new Project(#{@project.to_json});
-  //   var projectRouter = new ProjectRouter({project: project, locale: locale});
+  CATARSE.project = new CATARSE.Project($('#project_description').data("project"))
+  CATARSE.projectRouter = new CATARSE.ProjectRouter()
 
   $("#project_link").click(function(e){
     e.preventDefault()
@@ -40,7 +39,7 @@ $script.ready('dependencies', function() {
   $('#project_embed .close').click(function(e){
     e.preventDefault()
     $('#project_embed').hide()
-    $('.overlay').hide()
+    $('#embed_overlay').hide()
   })
   $("#project_embed textarea").click(function(e){
     e.preventDefault()
