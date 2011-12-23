@@ -1,6 +1,6 @@
 .project
   .box
-    padding: 6px 5px
+    padding: 5px
     .black_box
       text-transform: uppercase
       position: absolute
@@ -55,6 +55,7 @@
           font-size: 1.1em
           color: black
           +opacity(0.7)
+          margin-bottom: 3px 
         p
           text-transform: uppercase
           color: $super_minimal_gryn
@@ -63,7 +64,7 @@
     .follow_project
       clear: both
       display: block
-      margin-top: 30px
+      margin-top: 35px
       padding: 4px 0 4px 0
       text-align: center
       font-family: Lato-Bold
@@ -73,6 +74,9 @@
       +border-radius(3px)
       background: url("/images/redesign/follow_project_start12x11.png") 4px 4px no-repeat $minimal_gryn
       text-transform: uppercase
+      &:hover
+        +box-shadow($grafiti 0 0 6px)
+
 
 .compost_project
   +grid(8)
