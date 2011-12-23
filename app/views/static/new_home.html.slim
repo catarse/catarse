@@ -70,5 +70,13 @@
           | comentário de
           br/
           | Casa de Cultura Digital
-  .slice_bar.blue
-  = link_to '>> explore mais projetos recomendados', '#', :class => 'sliced_link blue'
+
+  .reference_link
+    .slice_bar.blue
+    = link_to '>> explore mais projetos recomendados', '#', :class => 'sliced_link blue'
+  .channels_list_widget
+    h3 Canais
+    ul
+      - 8.times do
+        li
+          = link_to image_tag('redesign/channels_cover220x144.png'), '#'

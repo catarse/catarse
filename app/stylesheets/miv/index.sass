@@ -4,10 +4,11 @@ $ninesixty-columns: 16
   +grid-container
   +grid-system(16)
 
-@import "fonts"
-@import "colors"
-@import "projects"
-@import "typography"
+@import fonts
+@import colors
+@import projects
+@import typography
+@import channels
 
 .clearfix
   clear: both
@@ -48,15 +49,23 @@ form.search_input
   background-color: $green
   +border-radius(6px)
 
-.slice_bar
-  margin: 30px 0
-  padding-bottom: 4px
-  &.blue
-    border-bottom: 2px $blue solid
+.reference_link
+  +clearfix
+  +default_grid
+  .slice_bar
+    +grid(12)
+    margin-top: 40px
+    margin-bottom: 40px
+    padding-bottom: 4px
+    &.blue
+      border-bottom: 2px $blue solid
 
-.sliced_link
-  margin: 30px 0
-  font-family: Arial
-  font-size: 1.2em
-  &.blue
-    color: $blue
+  .sliced_link
+    +grid(4)
+    margin-top: 40px
+    margin-bottom: 40px
+    padding: 0
+    font-family: Arial
+    font-size: 1.2em
+    &.blue
+      color: $blue
