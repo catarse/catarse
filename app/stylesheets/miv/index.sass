@@ -9,9 +9,13 @@ $ninesixty-columns: 16
 @import "projects"
 @import "typography"
 
+.clearfix
+  clear: both
+
 body
   font-size: 62.5%
   background: url("/images/redesign/body-background.png") left top repeat
+  padding-bottom: 80px
 
 .logo
   width: 187px
@@ -43,3 +47,16 @@ form.search_input
 .section_header
   background-color: $green
   +border-radius(6px)
+
+.slice_bar
+  margin: 30px 0
+  padding-bottom: 4px
+  &.blue
+    border-bottom: 2px $blue solid
+
+.sliced_link
+  margin: 30px 0
+  font-family: Arial
+  font-size: 1.2em
+  &.blue
+    color: $blue

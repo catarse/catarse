@@ -31,6 +31,44 @@
     h1 Faça acontecer os projetos em que você acredita
     h4 Financie projetos de maneira colaborativa e torne-se parte de algo maior.
 
-  .compost_project
-    .project
-    .comment
+  - 4.times do
+    .compost_project
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+          h4
+            | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+      .comment
+        h3
+          | Categoria
+        p
+          | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.
+        p
+          | 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived.
+        p.author
+          | comentário de
+          br/
+          | Casa de Cultura Digital
+  .slice_bar.blue
+  = link_to '>> explore mais projetos recomendados', '#', :class => 'sliced_link blue'
