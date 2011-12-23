@@ -1,3 +1,3 @@
 var BackerView = ModelView.extend({
-  template: $('#backer_template')
+  template: _.template($('#backer_template').html())
 })

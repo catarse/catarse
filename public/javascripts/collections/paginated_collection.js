@@ -1,11 +1,6 @@
 var PaginatedCollection = Backbone.Collection.extend({
-  action: "",
-  controller: "",
   initialize: function(options){
     this.initializePages()
-  },
-  url: function(){
-    return "/" + this.controller + "/" + this.action + ".json?page=" + this.page
   },
   initializePages: function(){
     _.bindAll(this, "nextPage")
@@ -13,6 +8,6 @@ var PaginatedCollection = Backbone.Collection.extend({
   },
   nextPage: function(){
     this.page++
-    this.fetch()
+    return this.fetch({data: {page: this.page, locale: locale}})
   }
 })

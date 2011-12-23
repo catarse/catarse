@@ -257,6 +257,7 @@ pt:
     backer:
       anonymous_backer: "Apoiador anônimo"
       anonymous_description: "Optou por permanecer incógnito"
+      empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
@@ -328,8 +329,6 @@ pt:
     project:
       backed: levantados
       reached: atingido
-    project_backers:
-      empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
     project_comments:
       require_login_html: "Quer enviar um comentário? %{link} para fazer login."
       submit: "Enviar comentário"
