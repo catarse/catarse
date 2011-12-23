@@ -225,6 +225,7 @@ en:
     backer:
       anonymous_backer: "Anonymous backer"
       anonymous_description: "Opted to remain incognito"
+      empty: "Nobody backed this project so far. How about being the first one?"
       no_reward: "This backer has not picked a reward"
     backers:
       checkout:
@@ -328,8 +329,6 @@ en:
     project:
       backed: backed
       reached: reached
-    project_backers:
-      empty: "Nobody backed this project so far. How about being the first one?"
     project_comments:
       require_login_html: "Want to send a comment? %{link} to login."
       submit: "Send comment"
