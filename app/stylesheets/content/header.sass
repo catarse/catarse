@@ -20,8 +20,12 @@
         color: white
         text-decoration: none
         margin: 0 34px 5px 0
+        +transition(all, 0.3s)
         &:last-child
           margin-right: 0
+        &:hover
+          +opacity(0.4)
+        
 
     .actions
       +grid(2)
@@ -60,8 +64,11 @@
     padding-top: 24px
     a
       margin-right: 25px
+      +transition(all, 0.3s)
       &:last-child
         margin-right: none
+      &:hover
+        +opacity(0.7)
   .search
     padding-top: 15px
     +grid(5)
