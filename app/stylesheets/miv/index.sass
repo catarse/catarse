@@ -51,21 +51,23 @@ form.search_input
 
 .reference_link
   +clearfix
-  +default_grid
-  .slice_bar
-    +grid(12)
-    margin-top: 40px
-    margin-bottom: 40px
-    padding-bottom: 4px
-    &.blue
-      border-bottom: 2px $blue solid
+  +grid(16)
 
   .sliced_link
-    +grid(4)
+    +border-radius(5px)
+    +box-shadow(#52A0FF 1px 1px 1px inset)
+    font-family: Lato-Regular
+    font-size: 1.6em
+    display: block
+    color: white
+    padding: 10px 15px
+    background-color: $blue
     margin-top: 40px
     margin-bottom: 40px
-    padding: 0
-    font-family: Arial
-    font-size: 1.2em
-    &.blue
-      color: $blue
+    border: 1px $blue solid
+    +transition(all, 0.4s)
+    &:hover
+      +box-shadow($grafiti 0 0 3px, #52A0FF 1px 1px 1px inset)
+    &:active
+      +box-shadow(#2C5689 0 0 10px inset)
+
