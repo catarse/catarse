@@ -9,4 +9,3 @@
       %iframe{ :frameborder => '0', :height => '388px', :width => '364px', :src => video_embed_project_path(@project)}
       %form.html= text_area_tag 'project_video_embed_html', '<iframe frameborder="0" height="388px" src="' + video_embed_project_url(@project) + '" width="364px" style="' + style + '"></iframe>', :readonly => true
     .clear
-= javascript_include_tag 'project_embed'

@@ -7,7 +7,7 @@
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     /[if lt IE 9]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
-    = javascript_include_tag 'loader'
+    = javascript_include_tag 'app/loader'
     = csrf_meta_tag
     %link{ :rel => 'shortcut icon', :href => "/images/favicon.ico" }
     = render '/layouts/analytics'
