@@ -30,7 +30,6 @@ gem 'brcep'
 gem "meta_search"
 gem "RedCloth"
 gem "auto_html", '= 1.3.6'
-gem "acts_as_commentable"
 gem 'mustache'
 gem 'unicode'
 gem 'routing-filter'
