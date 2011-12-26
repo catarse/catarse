@@ -98,6 +98,8 @@ en:
       subtitle: "Explore the projects, find the ones that touch you, and make them happen!"
       successful: Successful
       title: "Discover amazing projects"
+    project:
+      empty: ~
     title: "Explore the projects"
   formtastic:
     hints:
@@ -328,6 +330,7 @@ en:
       title: "Check out what they're saying about Catarse in the press"
     project:
       backed: backed
+      by: ~
       reached: reached
     project_comments:
       require_login_html: "Want to send a comment? %{link} to login."

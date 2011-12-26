@@ -15,11 +15,7 @@
         .project_image= image_tag project.display_image
         %h1= project.name
     .project_owner= "#{t('.by')} #{project.user.name}"
-    .project_headline
-      - if current_user and current_user.admin
-        #{on_the_spot_edit project, :headline}
-      - else
-        = project.headline
+    .project_headline= project.headline
     .clear
   .project_progress
     .progress_bar
