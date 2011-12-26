@@ -6,7 +6,7 @@ script type="text/template" id="project_template"
     .project_wrap
       |<% if(expired) { %>
       .status_image
-        = link_to "<%= url %>" do
+        a href="<%= url %>"
           |<% if(successful) { %>
           = image_tag "successful.#{I18n.locale}.png"
           |<% } else if(waiting_confirmation) { %>
@@ -17,7 +17,7 @@ script type="text/template" id="project_template"
       |<% } %>
       .project_category <%= category['name'] %>
       .project_header
-        = link_to "<%= url %>" do
+        a href="<%= url %>"
           .project_image
             img src="<%= image %>"
           h1 <%= name %>

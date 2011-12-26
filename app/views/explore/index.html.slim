@@ -5,6 +5,10 @@
   h2= t('.subtitle')
 #explore_projects
   #explore_menu
+    h3= t('.search')
+    .search
+      = form_tag(explore_path) do
+        = text_field_tag :search
     - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
       h3= t('.quick_explore')
       ul#explore_quick

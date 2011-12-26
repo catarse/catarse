@@ -1,13 +1,14 @@
 CATARSE.ExploreIndexView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "recommended", "expiring", "recent", "successful", "category")
+    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "index", "recommended", "expiring", "recent", "successful", "category", "search", "updateSearch")
     CATARSE.router.route(":name", "category", this.category)
     CATARSE.router.route("recommended", "recommended", this.recommended)
     CATARSE.router.route("expiring", "expiring", this.expiring)
     CATARSE.router.route("recent", "recent", this.recent)
     CATARSE.router.route("successful", "successful", this.successful)
-    CATARSE.router.route("", "index", this.recommended)
+    CATARSE.router.route("search/:search", "all", this.search)
+    CATARSE.router.route("", "index", this.index)
     this.render()
   },
 
@@ -18,6 +19,29 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   ProjectsView: CATARSE.PaginatedView.extend({
   	emptyTemplate: _.template(this.$('#empty_projects_template').html())
   }),
+  
+  index: function(){
+    this.recommended()
+    CATARSE.router.navigate("recommended")
+  },
+
+  search: function(search){
+    search = decodeURIComponent(search)
+    this.selectItem("")
+    this.initializeView({
+      meta_sort: "created_at.desc",
+      name_or_headline_or_about_contains: search
+    })
+    var input = this.$('#search')
+    if(input.val() != search)
+      input.val(search)
+  },
+
+  updateSearch: function(){
+    var search = encodeURIComponent(this.$('#search').val())
+    this.search(search)
+    CATARSE.router.navigate("search/" + search)
+  },
 
   recommended: function(){
     this.selectItem("recommended")
@@ -74,6 +98,10 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.selectedItem = $('#explore_menu a[href=#' + name + ']')
     $('#explore_menu .selected').removeClass('selected')
     this.selectedItem.addClass('selected')
+  },
+  
+  render: function(){
+    this.$('#explore_menu .search input').timedKeyup(this.updateSearch)
   }
 
 })

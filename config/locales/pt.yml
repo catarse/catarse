@@ -92,14 +92,16 @@ pt:
     index:
       categories: Categorias
       expiring: "Na reta final"
+      search: "O que você procura?"
       quick_explore: "Busca rápida"
       recent: Recentes
       recommended: Recomendados
       subtitle: "Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!"
       successful: Bem-sucedidos
+      all: Todos
       title: "Encontre projetos incríveis"
     project:
-      empty: "Hey, não encontramos nenhum projeto com estes critérios."
+      empty: "Ei, não encontramos nenhum projeto com estes critérios."
     title: "Explore os projetos"
   formtastic:
     hints:
