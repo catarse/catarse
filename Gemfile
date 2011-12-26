@@ -44,7 +44,6 @@ gem 'enumerate_it'
 gem 'httparty'
 gem "rack-timeout"
 gem 'web_translate_it'
-gem 'kaminari'
 
 group :development do
   gem 'thin'

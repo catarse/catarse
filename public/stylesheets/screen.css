@@ -3199,6 +3199,17 @@ body#platform #explore_projects #explore_results {
   float: right;
   width: 626px;
 }
+/* line 887, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_results #loading {
+  overflow: hidden;
+  *zoom: 1;
+  width: 626px;
+  text-align: center;
+}
+/* line 891, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_results #loading img {
+  display: none;
+}
 /* line 2, ../../app/stylesheets/_curated_pages.sass */
 body#platform #index_header_text {
   width: 950px !important;

@@ -98,6 +98,8 @@ pt:
       subtitle: "Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!"
       successful: Bem-sucedidos
       title: "Encontre projetos incríveis"
+    project:
+      empty: "Hey, não encontramos nenhum projeto com estes critérios."
     title: "Explore os projetos"
   formtastic:
     hints:
@@ -327,6 +329,7 @@ pt:
     press:
       title: "Confira o que estão falando do Catarse na imprensa"
     project:
+      by: por
       backed: levantados
       reached: atingido
     project_comments:

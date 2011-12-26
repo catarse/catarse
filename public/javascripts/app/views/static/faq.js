@@ -1,3 +1,5 @@
+// Just an example of a view with dependencies
+
 CATARSE.loader.dependencies = ["app/views/static/base"]
 CATARSE.loader.load(CATARSE.loader.dependencies, 'dependencies')
 

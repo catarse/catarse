@@ -1,0 +1,45 @@
+script type="text/template" id="empty_projects_template"
+  p= t('.empty')
+
+script type="text/template" id="project_template"
+  .project_box
+    .project_wrap
+      |<% if(expired) { %>
+      .status_image
+        = link_to "<%= url %>" do
+          |<% if(successful) { %>
+          = image_tag "successful.#{I18n.locale}.png"
+          |<% } else if(waiting_confirmation) { %>
+          = image_tag "waiting_confirmation.#{I18n.locale}.png"
+          |<% } else { %>
+          = image_tag "not_successful.#{I18n.locale}.png"
+          |<% } %>
+      |<% } %>
+      .project_category <%= category['name'] %>
+      .project_header
+        = link_to "<%= url %>" do
+          .project_image
+            img src="<%= image %>"
+          h1 <%= name %>
+      .project_owner
+        = "#{t('projects.project.by')}"
+        |  <%= user['name'] %>
+      .project_headline <%= headline %>
+      .clear
+    .project_progress
+      .progress_bar
+        .progress style="width: <%= display_progress %>%" &nbsp;
+      .progress_info
+        ul
+          li
+            strong <%= progress %>
+            br
+            = t('projects.project.reached')
+          li
+            strong <%= pledged %>
+            br
+            = t('projects.project.backed')
+          li
+            strong <%= time_to_go['time'] %> <%= time_to_go['unit'] %>
+            br
+            |<%= remaining_text %>

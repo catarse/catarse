@@ -1,26 +1,79 @@
-$('#explore_quick a').click(function(e){
-  e.preventDefault()
-  $('a.selected').removeClass('selected')
-  $(this).addClass('selected')
-  var id = /^menu_(\w+)$/.exec($(this).attr('id'))
-  id = id[1]
-  $('#explore_results .results').hide()
-  $('#explore_'+id).show()
+CATARSE.ExploreIndexView = Backbone.View.extend({
+
+  initialize: function() {
+    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "recommended", "expiring", "recent", "successful", "category")
+    CATARSE.router.route(":name", "category", this.category)
+    CATARSE.router.route("recommended", "recommended", this.recommended)
+    CATARSE.router.route("expiring", "expiring", this.expiring)
+    CATARSE.router.route("recent", "recent", this.recent)
+    CATARSE.router.route("successful", "successful", this.successful)
+    CATARSE.router.route("", "index", this.recommended)
+    this.render()
+  },
+
+  ProjectView: CATARSE.ModelView.extend({
+    template: _.template(this.$('#project_template').html())
+  }),
+
+  ProjectsView: CATARSE.PaginatedView.extend({
+  	emptyTemplate: _.template(this.$('#empty_projects_template').html())
+  }),
+
+  recommended: function(){
+    this.selectItem("recommended")
+    this.initializeView({
+      recommended: true,
+      not_expired: true,
+      meta_sort: "expires_at"
+    })
+  },
+
+  expiring: function(){
+    this.selectItem("expiring")
+    this.initializeView({
+      expiring: true,
+      meta_sort: "expires_at"
+    })
+  },
+
+  recent: function(){
+    this.selectItem("recent")
+    this.initializeView({
+      recent: true,
+      not_expired: true,
+      meta_sort: "created_at.desc"
+    })
+  },
+
+  successful: function(){
+    this.selectItem("successful")
+    this.initializeView({
+      successful: true,
+      meta_sort: "expires_at.desc"
+    })
+  },
+
+  category: function(name){
+    this.selectItem(name)
+    this.initializeView({
+      category_id_equals: this.selectedItem.data("id"),
+      meta_sort: "created_at.desc"
+    })
+  },
+
+  initializeView: function(search){
+		this.projectsView = new this.ProjectsView({
+    	modelView: this.ProjectView,
+			collection: new CATARSE.Projects({search: search}),
+		  loading: this.$("#loading"),
+			el: this.$("#explore_results .results")
+		})
+  },
+
+  selectItem: function(name) {
+    this.selectedItem = $('#explore_menu a[href=#' + name + ']')
+    $('#explore_menu .selected').removeClass('selected')
+    this.selectedItem.addClass('selected')
+  }
+
 })
-$('#explore_categories a').click(function(e){
-  e.preventDefault()
-  $('a.selected').removeClass('selected')
-  $(this).addClass('selected')
-  var category = $(this).html()
-  $('#explore_results .results').hide()
-  $('#explore_all .project_box').show()
-  $('#explore_all .project_category').each(function(){
-    if($(this).html() != category)
-      $(this).parent().parent().hide()
-  })
-  $('#explore_all').show()
-})
-if($('#explore_projects .selected').length == 0){
-  $('#menu_recommended').addClass('selected')
-}
-$('#explore_projects .selected').click()
