@@ -17,6 +17,6 @@ html lang="#{I18n.locale}"
     = render '/layouts/analytics'
     = render "/layouts/uservoice"
 
-  body
+  body data-controller="#{controller_name}" data-action="#{action_name}"
     =yield
     .clearfix
