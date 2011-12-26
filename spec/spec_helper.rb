@@ -31,6 +31,11 @@ RSpec.configure do |config|
 
     DatabaseCleaner.clean
   end
+
+  def mock_tumblr
+    require "#{Rails.root}/spec/fixtures/tumblr_data" # just a fixture
+    Tumblr::Post.stubs(:all).returns(TumblrData.data)
+  end
 end
 
 Capybara.register_driver :selenium do |app|
