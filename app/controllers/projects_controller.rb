@@ -52,6 +52,8 @@ class ProjectsController < ApplicationController
     end
   end
   def show
+    # expire_fragment(controller: "projects", action: "show", action_suffix: "updates")
+
     show!{
       @title = @project.name
       @rewards = @project.rewards.order(:minimum_value).all
