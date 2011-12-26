@@ -15,7 +15,6 @@ Catarse::Application.routes.draw do
   match '/new_opendata' => 'static#new_opendata'
 
 
-
   # root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
