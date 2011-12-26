@@ -1,8 +1,10 @@
+
 - content_for :js_templates do
   = render :partial => 'backer'
 = render 'project_header'
 = render 'project_meta_tags'
 = render 'project_warning'
+= render 'facebook_sdk'
 #project_description{ "data-project"=> @project.to_json }
   #project_video
     %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "610", :height => "346"}
@@ -48,6 +50,6 @@
       = render "admin_fields" if current_user and current_user.admin
     #project_updates.content
     #project_backers.content
-    #project_comments.content
+    #project_comments.content= render :partial => 'comments'
   #loading= image_tag "loading.gif"
 = render :partial => 'back_info'
