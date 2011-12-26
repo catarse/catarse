@@ -1,14 +1,15 @@
-div[itemscope itemtype="http://schema.org/Blog"]
-  - for post in @project.posts
-    - if post["type"] == "regular"
-      div[itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting"]
-        h1[itemprop="name"] = post["regular_title"]
-        .post_info
-          span[itemprop="datePublished"] = l Time.at(post["unix_timestamp"].to_i).to_date, format: :short
-          |  &bull;  
-          span[itemprop="url"] = link_to nil, post["url"], target: :_blank
+- cache(action_suffix: 'updates') do
+  div[itemscope itemtype="http://schema.org/Blog"]
+    - for post in @project.posts
+      - if post["type"] == "regular"
+        div[itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting"]
+          h1[itemprop="name"] = post["regular_title"]
+          .post_info
+            span[itemprop="datePublished"] = l Time.at(post["unix_timestamp"].to_i).to_date, format: :short
+            |  &bull;  
+            span[itemprop="url"] = link_to nil, post["url"], target: :_blank
         
-        p[itemprop="description"] = raw post["regular_body"]
-        //p[itemprop="author"] = post["author"]
+          p[itemprop="description"] = raw post["regular_body"]
+          //p[itemprop="author"] = post["author"]
         
-        .fb-comments[data-href=post["url"] data-num-posts=5 data-width="570"]
+          .fb-comments[data-href=post["url"] data-num-posts=5 data-width="570"]
