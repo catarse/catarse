@@ -173,4 +173,8 @@ class Project < ActiveRecord::Base
       :user => user
     }
   end
+  def posts
+    # raise to_param.inspect
+    @posts ||= Tumblr::Post.all(:tagged => to_param)
+  end
 end
