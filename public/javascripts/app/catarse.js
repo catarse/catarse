@@ -7,6 +7,7 @@ var CATARSE = {
   common:{
     init: function(){
       // Common init for every action
+      CATARSE.router = new CATARSE.Router()
     },
 
     finish: function(){

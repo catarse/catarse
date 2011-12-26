@@ -1,5 +1,6 @@
 CATARSE.PaginatedView = Backbone.View.extend({
-  initialize: function(){
+
+  initialize: function(options){
     typeof(options) != 'undefined' || (options = {})
     if(options.collection)
       this.collection = options.collection
@@ -16,8 +17,9 @@ CATARSE.PaginatedView = Backbone.View.extend({
 		this.loading.children().show()
     this.collection.page = 1
     this.collection.bind("reset", this.update)
-    this.collection.fetch({data: {page: this.collection.page, locale: CATARSE.locale}})
+    this.collection.fetchPage()
   },
+
   waypoint: function(event, direction){
     if(!this.loading.children().is(":visible")){
       this.loading.waypoint('remove')
@@ -25,6 +27,7 @@ CATARSE.PaginatedView = Backbone.View.extend({
         this.nextPage()
     }
   },
+
   nextPage: function(){
     if(!this.collection.isEmpty()) {
       this.loading.children().show()
@@ -32,10 +35,12 @@ CATARSE.PaginatedView = Backbone.View.extend({
     }
 		return this
   },
+
   render: function() {
     this.el.html("")
     return this
   },
+
   update: function(){
     this.loading.children().hide()
     if(!this.collection.isEmpty()) {
@@ -52,4 +57,5 @@ CATARSE.PaginatedView = Backbone.View.extend({
     this.loading.waypoint(this.waypoint, {offset: "100%"})
     return this
   }
+
 })
