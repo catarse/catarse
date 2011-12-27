@@ -32,9 +32,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  def mock_tumblr
+  def mock_tumblr method=:two
     require "#{Rails.root}/spec/fixtures/tumblr_data" # just a fixture
-    Tumblr::Post.stubs(:all).returns(TumblrData.data)
+    Tumblr::Post.stubs(:all).returns(TumblrData.send(method))
   end
 end
 

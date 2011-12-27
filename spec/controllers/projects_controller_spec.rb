@@ -5,9 +5,6 @@ describe ProjectsController do
   render_views
   subject{ response }
 
-  before(:each) do
-  end
-
   describe "GET show" do
     let(:project){ Factory(:project) }
     before{
@@ -15,9 +12,9 @@ describe ProjectsController do
       get :show, id: project, locale: :pt
     }
 
+    it{ should be_success }
     context "with posts" do
-      it{ should be_success}
-      it{ response.body.to_s.should =~ /Belo Monte de Vozes/ }
+      its(:body){ should =~ /Belo Monte de Vozes/ }
     end
   end
 end
