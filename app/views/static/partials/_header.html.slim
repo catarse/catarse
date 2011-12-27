@@ -2,7 +2,6 @@
   menu
     nav
       a blog
-      a opendata
       a ajuda
     .actions
       = image_tag "redesign/notification.png"
@@ -17,7 +16,7 @@
           Follow @twitterapi
 
 #header
-  = link_to "Home", root_path, :class => 'logo'
+  = link_to "Home", root_path, :class => 'logo', :title => 'Catarse'
   nav
     = link_to "explore projetos", "#"
     = link_to "envie seu projeto", "#"
