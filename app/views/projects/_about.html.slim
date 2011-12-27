@@ -1,7 +1,0 @@
-script type="text/template" id="project_about_template"
-  #project_about
-    - if current_user and current_user.admin
-      #{on_the_spot_edit @project, :about, :type => :textarea}
-    - else
-      == @project.about_html
-    = render "admin_fields" if current_user and current_user.admin

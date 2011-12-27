@@ -24,6 +24,7 @@ pt:
         maximum_backers: "Máximo de apoiadores"
         minimum_value: "Valor mínimo"
       user:
+        cpf: CPF
         address_city: Cidade
         address_complement: Complemento
         address_neighbourhood: Bairro
@@ -91,12 +92,16 @@ pt:
     index:
       categories: Categorias
       expiring: "Na reta final"
+      search: "O que você procura?"
       quick_explore: "Busca rápida"
       recent: Recentes
       recommended: Recomendados
       subtitle: "Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!"
       successful: Bem-sucedidos
+      all: Todos
       title: "Encontre projetos incríveis"
+    project:
+      empty: "Ei, não encontramos nenhum projeto com o texto que você procurou. Que tal experimentar com outras palavras? =D"
     title: "Explore os projetos"
   formtastic:
     hints:
@@ -256,6 +261,7 @@ pt:
     backer:
       anonymous_backer: "Apoiador anônimo"
       anonymous_description: "Optou por permanecer incógnito"
+      empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
@@ -325,10 +331,9 @@ pt:
     press:
       title: "Confira o que estão falando do Catarse na imprensa"
     project:
+      by: por
       backed: levantados
       reached: atingido
-    project_backers:
-      empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
     project_comments:
       require_login_html: "Quer enviar um comentário? %{link} para fazer login."
       submit: "Enviar comentário"
@@ -390,7 +395,7 @@ pt:
     twitter:
       take_a_look: "Confira o projeto %{name} no @Catarse_"
     video_embed:
-      a_project_by: "Um projeto de %{link} no Catarse"
+      a_project_by_html: "Um projeto de %{link} no Catarse"
   projects_mailer:
     start_project_email:
       subject: "Projeto enviado por %{name}"

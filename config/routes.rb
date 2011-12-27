@@ -18,6 +18,7 @@ Catarse::Application.routes.draw do
   # root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
+  match '/sitemap' => "static#sitemap", :as => :sitemap
   # Static Pages
   match "/guidelines" => "static#guidelines", :as => :guidelines
   match "/faq" => "static#faq", :as => :faq
@@ -27,8 +28,7 @@ Catarse::Application.routes.draw do
   match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/moip" => "payment_stream#moip", :as => :moip
   match "/explore" => "explore#index", :as => :explore
-  match "/explore/:quick" => "explore#index", :as => :explore_quick
-  post '/explore/update_attribute_on_the_spot' => "explore#update_attribute_on_the_spot"
+  match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
 
   post "/auth" => "sessions#auth", :as => :auth
@@ -62,8 +62,6 @@ Catarse::Application.routes.draw do
       put 'pay'
       get 'embed'
       get 'video_embed'
-      get 'comments'
-      get 'updates'
     end
   end
   resources :users, :only => [:show] do
@@ -75,7 +73,6 @@ Catarse::Application.routes.draw do
       post 'refund'
     end
   end
-  resources :comments, :only => [:index, :show, :create, :destroy]
 
   resources :paypal, :only => [] do
     member do

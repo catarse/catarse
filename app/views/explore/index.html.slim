@@ -1,0 +1,41 @@
+- content_for :js_templates do
+  = render :partial => 'project'
+= content_for :content_header do
+  h1= t('.title')
+  h2= t('.subtitle')
+#explore_projects
+  #explore_menu
+    h3= t('.search')
+    .search
+      = form_tag(explore_path) do
+        = text_field_tag :search, nil, autocomplete: "off"
+    - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
+      h3= t('.quick_explore')
+      ul#explore_quick
+        - unless @recommended.empty?
+          li
+            a href='#recommended'
+              = t('.recommended')
+        - unless @expiring.empty?
+          li
+            a href='#expiring'
+              = t('.expiring')
+        - unless @recent.empty?
+          li
+            a href='#recent'
+              = t('.recent')
+        - unless @successful.empty?
+          li
+            a href='#successful'
+              = t('.successful')
+    - unless @categories.empty?
+      h3= t('.categories')
+      ul#explore_categories
+        - @categories.each do |category|
+          li
+            a href="##{category.name.parameterize}" data-id=category.id
+              = category.name
+  #explore_results
+    .results
+    #loading= image_tag "loading.gif"
+  .clear

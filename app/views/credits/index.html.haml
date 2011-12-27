@@ -1,7 +1,7 @@
 = content_for :content_header do
   %h1= t('.title')
   %h2= t('.subtitle')
-#credits
+#credits{ "data-confirm" => t('.confirm') }
   %h1= t('.current_credits_html', :credits => current_user.display_credits)
   -#buy_credits
     = t('.buy_credits_html')
@@ -38,6 +38,3 @@
               .error.hide
               = image_tag "loading.gif", :class => 'loading hide'
     .important= t('.important_html')
-:javascript
-  var confirm_text = '#{t('.confirm')}'
-= javascript_include_tag 'credits'

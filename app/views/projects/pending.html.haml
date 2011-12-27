@@ -63,4 +63,3 @@
             %td= check_box_tag "project__can_finish__#{project.id}", '1', project.can_finish
             %td= (project.finished ? t('yes') : t('no'))
   = will_paginate @projects
-= javascript_include_tag 'pending_projects'

@@ -1,3 +1,4 @@
+= content_for :title, t('.title')
 = content_for :content_header do
   %h1= t('.title')
   %h2= t('.subtitle')
@@ -10,4 +11,3 @@
     = label_tag 'accept', t('.accept')
   %fieldset
     = submit_tag t('.submit'), :disabled => true
-= javascript_include_tag 'guidelines'

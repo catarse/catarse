@@ -21,7 +21,7 @@ describe Reports::Financial::Backers do
     before do
       @project = create(:project)
       4.times do |n|
-        user = create(:user)
+        user = create(:user, :cpf => '111.111.111-11')
         backer = create(:backer, :value => (10.00+n),:project => @project, :user => user, :confirmed => true)
         create(:payment_detail, :backer => backer)
       end
@@ -36,6 +36,7 @@ describe Reports::Financial::Backers do
       report.should_not =~ /R\$ 12/
       report.should =~ /\;12/
       report.should =~ /person\d+@example.com/
+      report.should =~ /111.111.111-11/
       report.should_not =~ /R\$ 19,37/
       report.should =~ /\;19.37/
       report.should =~ /Foo bar/

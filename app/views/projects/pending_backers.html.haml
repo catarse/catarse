@@ -79,5 +79,4 @@
             %td= (backer.requested_refund ? t('yes') : t('no'))
             %td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded
   = will_paginate @backers
-= javascript_include_tag 'pending_backers'
 
