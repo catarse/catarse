@@ -33,7 +33,7 @@
               p Atigindos
           = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
 
-      .comment
+      .project_comment
         h3
           | Categoria
         p
@@ -47,6 +47,72 @@
 
   .reference_link
     = link_to 'explore mais projetos recomendados', '#', :class => 'sliced_link'
+  .recently_projects
+    - 3.times do
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+          h4
+            | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+    .project_comment
+      h3
+        | Projetos Recentes
+      p
+        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.
+
+  .final_stage_projects
+    - 3.times do
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+          h4
+            | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+    .project_comment
+      h3
+        | Na reta final!
+      p
+        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.
+
   .channels_list_widget
     h3 Canais Catárticos
     ul
