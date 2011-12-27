@@ -1,6 +1,7 @@
 #page_content
   +default_grid
   padding-top: 40px
+  position: relative
 
   .section_header
     +grid(16)
@@ -9,9 +10,23 @@
     h1
       padding: 22px 0 10px 25px
       .profile
-        padding: 0 0 10px 275px
+        padding: 0 0 10px 215px
     h4
       padding: 0 0 22px 25px
       .about
-        padding: 0 0 10px 275px
+        padding: 0 30px 10px 215px
+
+  .profile_share
+    .profile_pic
+      float: left
+      position: absolute
+      top: 65px
+      left: 30px
+      +box-shadow(black 2px 2px 8px)
+    ul
+      position: relative
+      margin-top: 50px
+      li
+        
+      
 
