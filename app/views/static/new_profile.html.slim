@@ -31,6 +31,37 @@
       li
         = image_tag ('redesign/twitter15x15.png'), :class => 'profile_icons'
         = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
+  
+  .profile_projects
+    .compost_project
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+          h4
+            a href='#'
+              | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
 
 == render 'static/partials/footer'
 
