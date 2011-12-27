@@ -14,3 +14,4 @@ public/uploads/
 chromedriver.log
 .use_capybara_webkit
 config/locales/.wti
+public/stylesheets/
