@@ -101,7 +101,7 @@ pt:
       all: Todos
       title: "Encontre projetos incríveis"
     project:
-      empty: "Ei, não encontramos nenhum projeto com estes critérios."
+      empty: "Ei, não encontramos nenhum projeto com o texto que você procurou. Que tal experimentar com outras palavras? =D"
     title: "Explore os projetos"
   formtastic:
     hints:

@@ -86,6 +86,8 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   initializeView: function(search){
+    if(this.projectsView)
+      this.projectsView.destroy()
 		this.projectsView = new this.ProjectsView({
     	modelView: this.ProjectView,
 			collection: new CATARSE.Projects({search: search}),
@@ -101,7 +103,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
   
   render: function(){
-    this.$('#explore_menu .search input').timedKeyup(this.updateSearch)
+    this.$('#explore_menu .search input').timedKeyup(this.updateSearch, 1000)
   }
 
 })

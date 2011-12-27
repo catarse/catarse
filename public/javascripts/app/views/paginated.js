@@ -12,12 +12,17 @@ CATARSE.PaginatedView = Backbone.View.extend({
       this.loading = options.loading
 		this.loading = $("#loading")
     this.loading.waypoint('destroy')
-    _.bindAll(this, "render", "update", "nextPage", "waypoint")
+    _.bindAll(this, "render", "update", "nextPage", "waypoint", "destroy")
     this.render()
 		this.loading.children().show()
     this.collection.page = 1
     this.collection.bind("reset", this.update)
     this.collection.fetchPage()
+  },
+  
+  destroy: function() {
+    this.loading.waypoint('destroy')
+    this.collection.unbind("reset")
   },
 
   waypoint: function(event, direction){
