@@ -22,7 +22,7 @@
           h6= "#{project.percent}%"
           p= "#{t('.reached')}"
       = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
-  - if has_comments
+  - if defined?(has_comments)
     .project_comment
       h3= "#{project.category.name}"
       p

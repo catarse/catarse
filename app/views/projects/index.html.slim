@@ -3,7 +3,14 @@
     h1 Faça acontecer os projetos em que você acredita
     h4 Financie projetos de maneira colaborativa e torne-se parte de algo maior.
 
-  = render :partial => 'project', :collection => @home_page, :locals => {:has_comments => true} unless @home_page.empty?
+  = render :partial => 'project', :collection => @home_page, :locals => {:has_comments => true} if defined?(@home_page) and not @home_page.empty?
+
+  .reference_link
+    = link_to 'explore mais projetos recomendados', '#', :class => 'sliced_link'
+
+  .recent_projects
+    = render :partial => 'project_list', :collection => @expiring
+
   / = render :partial => 'project_list', :locals => {:quick => "expiring", :collection => @expiring} unless @expiring.empty?
 
   / - 4.times do
