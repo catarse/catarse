@@ -1,46 +1,22 @@
 /*
-Syntax error: Undefined mixin 'opacity'.
-        on line 29 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `opacity'
-        from line 29 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass
+Syntax error: Undefined mixin 'grid'.
+        on line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `grid'
+        from line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass
         from line 9 of /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass
 
-24:   background: url("/images/redesign/logo.png") left top no-repeat
-25: 
-26: form.search_input
-27:   +border-radius(8px)
-28:   width:  278px
-29:   height: 28px
-30:   background-color: white
-31:   border: 1px $minimal_gryn solid
-32:   input[type="text"]
-33:     width: 240px
-34:     padding: 4px 5px 3px 5px
+1: $ninesixty-columns: 16
+2: 
+3: @mixin default_grid
+4:   +grid-container
+5:   +grid-system(16)
+6: 
+7: @import fonts
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass:29:in `opacity'
-/Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass:29
+/Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass:2:in `grid'
+/Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass:2
 /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass:9
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:235:in `visit_rule'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:235:in `visit_rule'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -123,4 +99,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'opacity'.\A         on line 29 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `opacity'\A         from line 29 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass\A         from line 9 of /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass\A \A 24:   background: url(\"/images/redesign/logo.png\") left top no-repeat\A 25: \A 26: form.search_input\A 27:   +border-radius(8px)\A 28:   width:  278px\A 29:   height: 28px\A 30:   background-color: white\A 31:   border: 1px $minimal_gryn solid\A 32:   input[type=\"text\"]\A 33:     width: 240px\A 34:     padding: 4px 5px 3px 5px"; }
+  content: "Syntax error: Undefined mixin 'grid'.\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `grid'\A         from line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass\A         from line 9 of /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass\A \A 1: $ninesixty-columns: 16\A 2: \A 3: @mixin default_grid\A 4:   +grid-container\A 5:   +grid-system(16)\A 6: \A 7: @import fonts"; }

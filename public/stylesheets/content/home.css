@@ -1,20 +1,31 @@
 /*
-Syntax error: Undefined mixin 'grid'.
-        on line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `grid'
-        from line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass
+Syntax error: Undefined mixin 'default_grid'.
+        on line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass, in `default_grid'
+        from line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass
 
-1: .project
-2:   +grid(4)
-3:   background-color: white
-4:   +box-shadow($shadow_gryn 2px 2px 5px)
-5:   .box
-6:     padding: 5px
-7:     .black_box
+1: body[data-action="new_home"][data-controller="static"]
+2:   .recently_projects
+3:     +default_grid
+4:     float: left
+5:     margin-bottom: 30px
+6: 
+7:   .final_stage_projects
+8:     +default_grid
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass:2:in `grid'
-/Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass:2
+/Users/ton/code/store/catarse/app/stylesheets/content/home.sass:3:in `default_grid'
+/Users/ton/code/store/catarse/app/stylesheets/content/home.sass:3
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:235:in `visit_rule'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -92,4 +103,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'grid'.\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `grid'\A         from line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass\A \A 1: .project\A 2:   +grid(4)\A 3:   background-color: white\A 4:   +box-shadow($shadow_gryn 2px 2px 5px)\A 5:   .box\A 6:     padding: 5px\A 7:     .black_box"; }
+  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass, in `default_grid'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass\A \A 1: body[data-action=\"new_home\"][data-controller=\"static\"]\A 2:   .recently_projects\A 3:     +default_grid\A 4:     float: left\A 5:     margin-bottom: 30px\A 6: \A 7:   .final_stage_projects\A 8:     +default_grid"; }
