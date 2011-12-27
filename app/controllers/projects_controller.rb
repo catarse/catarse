@@ -52,10 +52,10 @@ class ProjectsController < ApplicationController
     end
   end
   def show
-    # expire_fragment(controller: "projects", action: "show", action_suffix: "updates")
-
     show!{
       @title = @project.name
+      expire_fragment(controller: "projects", action: "show", action_suffix: "updates_#{@project.id}")
+
       @rewards = @project.rewards.order(:minimum_value).all
       @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
     }

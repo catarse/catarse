@@ -1,7 +1,7 @@
 require 'tumblr'
 # Who the fuck removed the aweson refactoring in Configuration???
 # user = Tumblr::User.new(*Configuration[:tumblr_email, :tumblr_password])
-Tumblr::User.new(Configuration.find_by_name('tumblr_user').value, Configuration.find_by_name('tumblr_password').value)
+TumblrUser = Tumblr::User.new(Configuration.find_by_name('tumblr_user').value, Configuration.find_by_name('tumblr_password').value, false)
 Tumblr.blog = 'blog.catarse.me'
 
 class Tumblr
