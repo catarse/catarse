@@ -62,9 +62,9 @@ class PaypalController < ApplicationController
     # TODO remove the sandbox! when ready
 
     @paypal = Paypal::Express::Request.new(
-      :username   => Configuration.find_by_name('paypal_username').value,
-      :password   => Configuration.find_by_name('paypal_password').value,
-      :signature  => Configuration.find_by_name('paypal_signature').value
+      :username   => Configuration[:paypal_username],
+      :password   => Configuration[:paypal_password],
+      :signature  => Configuration[:paypal_signature]
     )
   end
 
