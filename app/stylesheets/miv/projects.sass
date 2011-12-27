@@ -1,0 +1,105 @@
+.project
+  .box
+    padding: 5px
+    .black_box
+      text-transform: uppercase
+      position: absolute
+      background-color: rgba(0,0,0,.8)
+      height: 16px
+      margin-top: 148px
+      padding: 7px 0 1px 5px
+      color: white
+      font-family: Lato-Regular
+      font-size: 1.0em
+      width: 205px
+    .cover
+      width: 210px
+      height: 172px
+      padding-bottom: 8px
+    h4
+      padding: 0 0 10px 3px
+      color: $blue
+      font-size: 1.4em
+      font-family Lato-Bold
+    .author, .where, .description
+      padding-left: 3px
+      font-family: Arial
+      color: black
+      font-size: 1.1em
+      +opacity(0.7)
+    .description
+      line-height: 120%
+      font-size: 1.2em
+      padding: 10px 0 15px 3px
+      +opacity(0.5)
+    .status_bar
+      width: 202px
+      height: 10px
+      border: 1px $minimal_gryn solid
+      +border-radius(5px)
+      .progress
+        +border-radius(4px)
+        background-color: $green
+        height: 10px
+    ul
+      padding-top: 10px
+      display: block
+      li
+        float: left
+        max-width: 69px
+        margin-right: 7px
+        &:last-child
+          margin-left: 0px
+        h6
+          font-family: Lato-Bold
+          font-size: 1.1em
+          color: black
+          +opacity(0.7)
+          margin-bottom: 3px 
+        p
+          text-transform: uppercase
+          color: $super_minimal_gryn
+          font-family: Arial
+          font-size: 1.0em
+    .follow_project
+      clear: both
+      display: block
+      margin-top: 35px
+      padding: 4px 0 4px 0
+      text-align: center
+      font-family: Lato-Bold
+      font-size: 1.0em
+      color: black
+      +opacity(0.5)
+      +border-radius(3px)
+      background: url("/images/redesign/follow_project_start12x11.png") 4px 4px no-repeat $minimal_gryn
+      text-transform: uppercase
+      &:hover
+        +box-shadow($grafiti 0 0 6px)
+
+
+.compost_project
+  +grid(8)
+  padding-top: 30px
+  .project
+    +grid(4)
+    +alpha
+    background-color: white
+    +box-shadow($shadow_gryn 2px 2px 5px)
+  .comment
+    +grid(4)
+    +omega
+    h3
+      +opacity(0.8)
+      padding: 40px 0 20px
+    p
+      font-family:  Arial
+      font-size: 1.3em
+      color: black
+      line-height: 129%
+      padding-bottom: 20px
+      +opacity(0.7)
+      &.author
+        font-size: 1.1em
+        font-style:  italic
+        +opacity(0.5)
