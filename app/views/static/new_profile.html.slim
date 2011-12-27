@@ -2,10 +2,15 @@
 
 #page_content
   .section_header
-    h1
-      .profile Thiago Maia 
-    h4 
-      .about Saiba que o meu grande amor, hoje vai se casar, mandou uma carta pra me avisar, deixou em pedaços meu coração. E pra matar a tristeza, só mesa de bar, quero tomar todas, vou me embriagar, se eu pegar no sono, me deite no chão.
+    h1.profile Thiago Maia 
+    h4.about Saiba que o meu grande amor, hoje vai se casar, mandou uma carta pra me avisar, deixou em pedaços meu coração. E pra matar a tristeza, só mesa de bar, quero tomar todas, vou me embriagar, se eu pegar no sono, me deite no chão.
+
+    .profile_categories
+      form[method="get" id="order-form"]
+        input[type="radio" value="pops" name="by" id="by_pops" checked=(params[:by].nil? || params[:by] == 'pops')]
+        label[for="by_pops"] Mais populares
+        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
+        label[for="by_recent"] Mais recentes
 
   .profile_share
     = image_tag ('redesign/profile200x200.jpg'), :class => 'profile_pic'

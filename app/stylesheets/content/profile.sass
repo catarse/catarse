@@ -1,0 +1,57 @@
+body[data-action="new_profile"][data-controller="static"]
+  #page_content
+    +default_grid
+    padding-top: 40px
+    position: relative
+
+    .section_header
+      +grid(16)
+      +clearfix
+      margin-bottom: 20px
+      h1
+        padding: 22px 0 10px 25px
+
+      h1.profile, h4.about
+        +alpha
+        +grid(12)
+        +grid-push(4)
+        margin-top: 25px
+        padding: 0
+
+      h4.about
+        margin-bottom: 15px
+      
+      h4
+        padding: 0 0 22px 25px
+            
+      .profile_categories
+        #order-form
+          
+    .profile_share
+      .profile_pic
+        float: left
+        position: absolute
+        top: 65px
+        left: 30px
+        +box-shadow(black 2px 2px 8px)
+    
+    .my_links
+      +grid(4)
+      position: relative
+      margin-top: 65px
+      margin-bottom: 50px
+      
+      ul
+        li
+          margin-top: 5px
+          .profile_info
+            display: block
+            font-family: "Lato", sans-serif
+            font-size: 1.5em
+            margin-top: 10px
+            float: right
+            color: $grafiti 
+          .profile_icons
+            float: left
+            margin: 10px 0 0 24px
+
