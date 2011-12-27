@@ -67,7 +67,7 @@ Capybara.configure do |config|
   config.ignore_hidden_elements = false
   config.server_port = 8200
   config.app_host = "http://localhost:8200"
-  config.default_wait_time = 5
+  config.default_wait_time = 20
 end
 
 class ActionDispatch::IntegrationTest

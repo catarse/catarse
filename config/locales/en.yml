@@ -31,6 +31,7 @@ en:
         address_state: State
         address_street: Street
         address_zip_code: "Zip code"
+        cpf: CPF
         email: Email
         full_name: "Full name"
         phone_number: "Mobile phone number"
@@ -89,14 +90,18 @@ en:
   error: "Ooops! There was an error. Please try again."
   explore:
     index:
+      all: All
       categories: Categories
       expiring: "Final countdown"
       quick_explore: "Quick search"
       recent: Recent
       recommended: Recommended
+      search: "What are you looking for?"
       subtitle: "Explore the projects, find the ones that touch you, and make them happen!"
       successful: Successful
       title: "Discover amazing projects"
+    project:
+      empty: "Hey, we didn't find any project with the text you searched. Wanna try some new words? =D"
     title: "Explore the projects"
   formtastic:
     hints:
@@ -138,7 +143,7 @@ en:
   i_backed: "I backed the project %{name} on @Catarse_"
   i_just_backed: "I just backed the project %{name} on @Catarse_"
   just:
-    api_test: ~
+    api_test: "no text"
   layouts:
     application:
       menu:
@@ -224,32 +229,40 @@ en:
     backer:
       anonymous_backer: "Anonymous backer"
       anonymous_description: "Opted to remain incognito"
+      empty: "Nobody backed this project so far. How about being the first one?"
       no_reward: "This backer has not picked a reward"
     backers:
       checkout:
-        credits_notice_html: ~
-        error: ~
-        international:
-          description: ~
-          important_html: ~
-          submit: ~
-          title: ~
-        review_with_reward_html: ~
-        review_without_reward_html: ~
-        submit:
-          credits: ~
-          moip: ~
-        subtitle: ~
-        title: ~
-        you_are_about_html: ~
+        moip_error: "Ooops. There was an error while sending your payment to MoIP. Please try again."
+        no_credits: "You don't have enough credits to back this project."
+        paypal_cancel: "Your PayPal payment was canceled. Please try again."
+        paypal_description: "Back project"
+        paypal_error: "Ooops. There was an error while sending your payment to PayPal. Please try again."
+        success: "Your back was successfully made. Thanks a lot!"
       new:
-        cannot_back: ~
+        cannot_back: "It's not possible to back this project right now. Please, back other projects."
         header:
-          subtitle: ~
-          title: ~
-        no_reward: ~
-        submit: ~
-        title: ~
+          subtitle: "You are a few steps from making the difference and becoming part of this project."
+          title: "Oohh yeah!"
+        no_reward: "Thanks. I just want to help the project."
+        submit: "Review and proceed to checkout"
+        title: "Back %{name}"
+      review:
+        credits_notice_html: "This back will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to back other projects."
+        error: "Ooops. There was an error while registering your back. Please try again."
+        international:
+          description: "You can use PayPal to make international payments"
+          important_html: "<p>The use of PayPal is destinated mostly for international payments. That's because you'll have only 60 days to receive an eventual refund without paying any fee.</p><p>In case you can make the regular payment through MoIP, we recommend you to do it.</p><p>But if that's not possible, don't worry: you'll always be able to receive your money back. Only, in case your refund is made more than 60 days after your payment, you'll have to pay PayPal's fee, which is 5,4% + R$0,60 per transaction.</p>"
+          submit: "Proceed to PayPal's checkout"
+          title: "Want to make an international payment?"
+        review_with_reward_html: "You will back with <strong>%{value}</strong> and receive the following reward: <span class='reward'>%{reward}</span>"
+        review_without_reward_html: "You will back with <strong>%{value}</strong> but you don't want any reward for that."
+        submit:
+          credits: "Confirm backing with credits"
+          moip: "Proceed to MoIP's checkout"
+        subtitle: "This is the last step to make the difference and become part of this project."
+        title: "Fill in and review your data"
+        you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
     curated_pages_list:
@@ -281,13 +294,6 @@ en:
     new:
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
       title: "Submit your project"
-    pay:
-      moip_error: "Ooops. There was an error while sending your payment to MoIP. Please try again."
-      no_credits: "You don't have enough credits to back this project."
-      paypal_cancel: "Your PayPal payment was canceled. Please try again."
-      paypal_description: "Back project"
-      paypal_error: "Ooops. There was an error while sending your payment to PayPal. Please try again."
-      success: "Your back was successfully made. Thanks a lot!"
     pending:
       can_finish: "Can finish?"
       finished: Finished?
@@ -326,9 +332,8 @@ en:
       title: "Check out what they're saying about Catarse in the press"
     project:
       backed: backed
+      by: by
       reached: reached
-    project_backers:
-      empty: "Nobody backed this project so far. How about being the first one?"
     project_comments:
       require_login_html: "Want to send a comment? %{link} to login."
       submit: "Send comment"
@@ -390,7 +395,7 @@ en:
     twitter:
       take_a_look: "Check out the project %{name} on @Catarse_"
     video_embed:
-      a_project_by: "A project by %{link} on Catarse"
+      a_project_by_html: "A project by %{link} on Catarse"
   projects_mailer:
     start_project_email:
       subject: "Project sent by %{name}"

@@ -33,8 +33,9 @@
     - unless @backer.credits
       = form.inputs do
         = form.input :full_name, :required => true, :as => :string
+        = form.input :cpf, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
         = form.input :email, :required => true, :as => :string
-        = form.input :address_zip_code, :required => true, :as => :string
+        = form.input :address_zip_code, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
         = form.input :address_street, :required => true, :as => :string
         = form.input :address_number, :required => true, :as => :string
         = form.input :address_complement, :required => false, :as => :string
@@ -48,5 +49,3 @@
         = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
       = form.buttons do
         = form.commit_button (@backer.credits ? t('.submit.credits') : t('.submit.moip')), :button_html => {:disabled => true}
-= javascript_include_tag 'jquery.maskedinput-1.2.2.min'
-= javascript_include_tag 'review'

@@ -10,7 +10,6 @@
           = image_tag 'auth/facebook_64.png', :title => 'Facebook', :class => 'social'
         = link_to "http://twitter.com/?status=#{t('i_backed', :name => back.project.name)} #{back.project.short_url}", :target => :_blank do
           = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
-    = javascript_include_tag 'back_notices'
     - current_user.notifications.not_dismissed.order(:created_at).each do |notification|
       %div{:id => "notification_#{notification.id}", :class => "notification"}
         = notification.text.html_safe
@@ -22,7 +21,6 @@
         - if notification.twitter_text
           = link_to "http://twitter.com/?status=#{notification.twitter_text}", :target => :_blank do
             = image_tag 'auth/twitter_64.png', :title => 'Twitter', :class => 'social'
-    = javascript_include_tag 'notifications'
 - else
   #pre_header 
     = t('.content_html', :link => link_to( t('.help_link'),  "#{t('site.blog')}/post/2826297563/passo-a-passo-apoiar-projetos", :target => :_blank))

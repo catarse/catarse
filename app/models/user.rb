@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   has_many :backs, :class_name => "Backer"
   has_many :projects
   has_many :notifications
-  has_many :comments
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
@@ -132,7 +131,6 @@ class User < ActiveRecord::Base
     self.credits = 0
     self.backs.update_all :user_id => new_user.id
     self.projects.update_all :user_id => new_user.id
-    self.comments.update_all :user_id => new_user.id
     self.notifications.update_all :user_id => new_user.id
     self.save
     new_user.save
@@ -142,7 +140,7 @@ class User < ActiveRecord::Base
 
     json_attributes = {}
     
-    if options and not options[:anonymous] 
+    if not options or (options and not options[:anonymous]) 
       json_attributes.merge!({
         :id => id,
         :name => display_name,

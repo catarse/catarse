@@ -17,24 +17,6 @@ feature "Back project" do
     State.create! name: "Foo bar", acronym: "FB"
   end
 
-  scenario "As an unlogged user, before I back a project I need to be asked to log in" do
-    
-    visit project_path(@project)
-    verify_translations
-  
-    click_on "Quero apoiar este projeto"
-    verify_translations
-    find("#login").visible?.should be_true
-    click_link 'X'
-    verify_translations
-    find("#login").visible?.should be_false
-    
-    find("#rewards li.clickable").click
-    verify_translations
-    find("#login").visible?.should be_true
-    
-  end
-  
   scenario "As a user without credits, I want to back a project by entering the value and selecting no reward" do
   
     fake_login
@@ -142,7 +124,7 @@ feature "Back project" do
     
   end
   
-  scenario "As a user without credits, I want to back a project by clicking on a reward on the project page, and pay using MoIP" do
+  scenario "As a user without credits, I want to back a project by clicking on a reward on the project page, and pay using MoIP", :now => true do
   
     MoIP::Client.stubs(:checkout).returns({"Token" => "foobar"})
     MoIP::Client.stubs(:moip_page).returns("http://www.moip.com.br")
@@ -159,6 +141,7 @@ feature "Back project" do
     end
   
     verify_translations
+    sleep 2
     
     find("#backer_reward_id_#{@rewards[2].id}")[:checked].should == "true"
     find("#backer_value")[:value].should == "30"
@@ -179,6 +162,7 @@ feature "Back project" do
     
     fill_in "Nome completo", with: "Foo bar"
     fill_in "Email", with: "foo@bar.com"
+    fill_in "CPF", with: "815.587.240-87"
     fill_in "CEP", with: "90050-004"
     
     # Sleep to wait for the loading of zip code data
@@ -193,6 +177,7 @@ feature "Back project" do
     
     page.should have_css("#user_full_name.ok")
     page.should have_css("#user_email.ok")
+    page.should have_css("#user_cpf.ok")
     page.should have_css("#user_address_zip_code.ok")
     page.should have_css("#user_address_street.ok")
     page.should have_css("#user_address_number.ok")
@@ -291,6 +276,26 @@ feature "Back project" do
     current_path.should == root_path
     page.should have_css('.failure.wrapper')
   
+  end
+  
+  scenario "As an unlogged user, before I back a project I need to be asked to log in" do
+    
+    visit project_path(@project)
+    verify_translations
+  
+    click_on "Quero apoiar este projeto"
+    verify_translations
+    find("#login").visible?.should be_true
+    within "#login" do
+      click_link 'X'
+    end
+    verify_translations
+    find("#login").visible?.should be_false
+    
+    find("#rewards li.clickable").click
+    verify_translations
+    find("#login").visible?.should be_true
+    
   end
   
 end

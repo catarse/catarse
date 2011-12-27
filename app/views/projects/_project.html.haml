@@ -1,0 +1,40 @@
+.project_box
+  .project_wrap
+    - if project.expired?
+      .status_image
+        = link_to project_path(project) do
+          - if project.successful?
+            = image_tag "successful.#{I18n.locale}.png"
+          - elsif project.waiting_confirmation?
+            = image_tag "waiting_confirmation.#{I18n.locale}.png"
+          - else
+            = image_tag "not_successful.#{I18n.locale}.png"
+    .project_category= project.category.name
+    .project_header
+      = link_to project_path(project) do
+        .project_image= image_tag project.display_image
+        %h1= project.name
+    .project_owner= "#{t('.by')} #{project.user.name}"
+    .project_headline= project.headline
+    .clear
+  .project_progress
+    .progress_bar
+      .progress{ :style => "width: #{project.display_progress}%" }
+        &nbsp;
+    .progress_info
+      %ul
+        %li
+          %strong #{project.progress}%
+          %br
+          = t('.reached')
+        %li
+          %strong= project.display_pledged
+          %br
+          = t('.backed')
+        %li
+          %strong #{project.time_to_go[:time]} #{project.time_to_go[:unit]}
+          %br
+          #{project.remaining_text}
+- if defined?(project_curated_page) and project_curated_page.count > 0 and project_curated_page.first.description.present?
+  .project_curator_description
+    %span= project_curated_page.first.description

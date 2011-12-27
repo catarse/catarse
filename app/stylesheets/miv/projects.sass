@@ -1,4 +1,10 @@
 .project
+  +grid(4)
+  background-color: white
+  +box-shadow($shadow_gryn 2px 2px 5px)
+  +transition(all, 0.3s)
+  &:hover
+    +box-shadow($green 2px 2px 10px)
   .box
     padding: 5px
     .black_box
@@ -17,10 +23,14 @@
       height: 172px
       padding-bottom: 8px
     h4
-      padding: 0 0 10px 3px
+      font-size: 1.2em
       color: $blue
-      font-size: 1.4em
-      font-family Lato-Bold
+      padding: 0 0 10px 3px
+      font-family: Lato-Bold
+      a
+        color: $blue
+        font-family: Lato-Bold
+        font-size: 1.1em
     .author, .where, .description
       padding-left: 3px
       font-family: Arial
@@ -55,7 +65,7 @@
           font-size: 1.1em
           color: black
           +opacity(0.7)
-          margin-bottom: 3px 
+          margin-bottom: 3px
         p
           text-transform: uppercase
           color: $super_minimal_gryn
@@ -77,29 +87,28 @@
       &:hover
         +box-shadow($grafiti 0 0 6px)
 
+.project_comment
+  +grid(4)
+  h3
+    +opacity(0.8)
+    padding: 40px 0 20px
+  p
+    font-family:  Arial
+    font-size: 1.3em
+    color: black
+    line-height: 129%
+    padding-bottom: 20px
+    +opacity(0.7)
+    &.author
+      font-size: 1.1em
+      font-style:  italic
+      +opacity(0.5)
+
 
 .compost_project
   +grid(8)
   padding-top: 30px
   .project
-    +grid(4)
     +alpha
-    background-color: white
-    +box-shadow($shadow_gryn 2px 2px 5px)
-  .comment
-    +grid(4)
+  .project_comment
     +omega
-    h3
-      +opacity(0.8)
-      padding: 40px 0 20px
-    p
-      font-family:  Arial
-      font-size: 1.3em
-      color: black
-      line-height: 129%
-      padding-bottom: 20px
-      +opacity(0.7)
-      &.author
-        font-size: 1.1em
-        font-style:  italic
-        +opacity(0.5)

@@ -30,7 +30,6 @@ gem 'brcep'
 gem "meta_search"
 gem "RedCloth"
 gem "auto_html", '= 1.3.6'
-gem "acts_as_commentable"
 gem 'mustache'
 gem 'unicode'
 gem 'routing-filter'
@@ -46,6 +45,10 @@ gem 'httparty'
 gem "rack-timeout"
 gem 'web_translate_it'
 gem 'compass-960-plugin'
+
+group :development do
+  gem 'thin'
+end
 
 group :test, :development do
   gem 'annotate'

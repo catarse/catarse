@@ -1,0 +1,11 @@
+- style = "-moz-border-radius: 8px;-webkit-border-radius: 8px;-o-border-radius: 8px;-ms-border-radius: 8px;-khtml-border-radius: 8px;border-radius: 8px;-moz-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;-webkit-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;-o-box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 10px 0;"
+#embed_overlay.overlay.hide
+  #project_embed.hide
+    %a.close{ :href => '#' } X
+    #project_box_embed
+      %iframe{ :frameborder => '0', :height => '388px', :width => '264px', :src => embed_project_path(@project)}
+      %form.html= text_area_tag 'project_box_embed_html', '<iframe frameborder="0" height="388px" src="' + embed_project_url(@project) + '" width="264px" style="' + style + '"></iframe>', :readonly => true
+    #project_video_embed
+      %iframe{ :frameborder => '0', :height => '388px', :width => '364px', :src => video_embed_project_path(@project)}
+      %form.html= text_area_tag 'project_video_embed_html', '<iframe frameborder="0" height="388px" src="' + video_embed_project_url(@project) + '" width="364px" style="' + style + '"></iframe>', :readonly => true
+    .clear
