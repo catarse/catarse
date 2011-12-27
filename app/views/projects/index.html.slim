@@ -1,0 +1,34 @@
+#page_content
+  .section_header
+    h1 Faça acontecer os projetos em que você acredita
+    h4 Financie projetos de maneira colaborativa e torne-se parte de algo maior.
+
+  = render :partial => 'project', :collection => @home_page, :locals => {:has_comments => true} unless @home_page.empty?
+  / = render :partial => 'project_list', :locals => {:quick => "expiring", :collection => @expiring} unless @expiring.empty?
+
+  / - 4.times do
+  /   = render :partial => 'project'
+
+  / = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
+
+#blog_footer
+  .home_blog
+    h3 O que anda acontecendo aqui
+    = link_to image_tag("redesign/blog_banner699x239.png"), '#', :class => 'blog_banner'
+    .blog_post
+      h4
+        | No Blog
+      h6
+        | Aqui é o título do Blog que
+        | deve ter somente 02 linhas
+      p
+        | O Catarse é um site que tem  um
+        | modelo de funcionar diferente do que a gente tá  acostumado por aí.
+
+      p
+        | O Catarse é um site que tem  um  modelo de funcionar diferente do que a gente tá  acostumado por aí.
+    .twitter_message
+      p
+        | Global famine and disease always made me wonder about the existence of God, but this
+        br/
+        | Tebow business has me wondering. http://ctr.se/443kd0
