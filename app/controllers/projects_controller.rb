@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :create
   respond_to :html, :except => [:backers]
-  respond_to :json, :only => [:show, :backers]
+  respond_to :json, :only => [:index, :show, :backers]
   can_edit_on_the_spot
   skip_before_filter :detect_locale, :only => [:backers]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
@@ -15,13 +15,19 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    index! do
-      @title = t("site.title")
-      @home_page = Project.includes(:user, :category).visible.home_page.limit(6).order('"order"').all
-      @expiring = Project.includes(:user, :category).visible.expiring.not_home_page.not_expired.order('expires_at, created_at DESC').limit(3).all
-      @recent = Project.includes(:user, :category).visible.not_home_page.not_expiring.not_expired.where("projects.user_id <> 7329").order('created_at DESC').limit(3).all
-      @successful = Project.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
-      @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
+    index! do |format|
+      format.html do
+        @title = t("site.title")
+        @home_page = Project.includes(:user, :category).visible.home_page.limit(6).order('"order"').all
+        @expiring = Project.includes(:user, :category).visible.expiring.not_home_page.not_expired.order('expires_at, created_at DESC').limit(3).all
+        @recent = Project.includes(:user, :category).visible.not_home_page.not_expiring.not_expired.where("projects.user_id <> 7329").order('created_at DESC').limit(3).all
+        @successful = Project.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
+        @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
+      end
+      format.json do
+        @projects = Project.visible.search(params[:search]).paginate :page => params[:page], :per_page => 6
+        respond_with(@projects)
+      end
     end
   end
   def start

@@ -90,14 +90,18 @@ en:
   error: "Ooops! There was an error. Please try again."
   explore:
     index:
+      all: All
       categories: Categories
       expiring: "Final countdown"
       quick_explore: "Quick search"
       recent: Recent
       recommended: Recommended
+      search: "What are you looking for?"
       subtitle: "Explore the projects, find the ones that touch you, and make them happen!"
       successful: Successful
       title: "Discover amazing projects"
+    project:
+      empty: "Hey, we didn't find any project with the text you searched. Wanna try some new words? =D"
     title: "Explore the projects"
   formtastic:
     hints:
@@ -328,6 +332,7 @@ en:
       title: "Check out what they're saying about Catarse in the press"
     project:
       backed: backed
+      by: by
       reached: reached
     project_comments:
       require_login_html: "Want to send a comment? %{link} to login."

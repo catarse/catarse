@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/jnicklas/carrierwave.git
-  revision: e9260c93f3b92ccf686e0cd43203619b26b9ef8c
+  revision: 2d04fa3d41d27b792d2606cf907ead1ef209ab7b
   specs:
     carrierwave (0.5.8)
       activesupport (~> 3.0)
@@ -84,10 +84,12 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    compass-960-plugin (0.10.4)
+      compass (>= 0.10.0)
     crack (0.1.8)
     daemons (1.1.5)
     database_cleaner (0.7.0)
-    devise (1.5.2)
+    devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
@@ -129,7 +131,7 @@ GEM
     http_accept_language (1.0.2)
     httparty (0.6.1)
       crack (= 0.1.8)
-    httpclient (2.2.3)
+    httpclient (2.2.4)
     i18n (0.6.0)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
@@ -140,9 +142,7 @@ GEM
       will_paginate (>= 2.3.12)
     json (1.6.3)
     json_pure (1.6.3)
-    kaminari (0.12.4)
-      rails (>= 3.0.0)
-    kgio (2.6.0)
+    kgio (2.7.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     mail (2.2.19)
@@ -201,15 +201,16 @@ GEM
       oa-enterprise (= 0.1.6)
       oa-oauth (= 0.1.6)
       oa-openid (= 0.1.6)
-    on_the_spot (0.0.17)
+    on_the_spot (0.0.18)
       json_pure (>= 1.4.6)
     orm_adapter (0.0.5)
-    paypal-express (0.4.1)
+    paypal-express (0.4.2)
       activesupport (>= 2.3)
       attr_required (>= 0.0.3)
       i18n
       restclient_with_cert
-    pg (0.11.0)
+    pg (0.12.0)
+      rake-compiler (~> 0.7)
     polyglot (0.3.3)
     pyu-ruby-sasl (0.0.3.3)
     rack (1.2.4)
@@ -236,6 +237,8 @@ GEM
       thor (~> 0.14.4)
     raindrops (0.8.0)
     rake (0.8.7)
+    rake-compiler (0.7.9)
+      rake
     rcov (0.9.11)
     responders (0.6.4)
     rest-client (1.6.7)
@@ -307,7 +310,7 @@ GEM
       oauth (>= 0.4.3)
     warden (1.1.0)
       rack (>= 1.0)
-    web_translate_it (1.9.0)
+    web_translate_it (1.9.3)
       multipart-post (~> 1.1.3)
       trollop (~> 1.16.2)
     weekdays (1.0.2)
@@ -328,7 +331,8 @@ DEPENDENCIES
   cancan
   capybara (>= 0.4.0)
   carrierwave!
-  compass (= 0.11.5)
+  compass
+  compass-960-plugin
   database_cleaner
   enumerate_it
   factory_girl_rails
@@ -338,7 +342,6 @@ DEPENDENCIES
   http_accept_language
   httparty
   inherited_resources (= 1.1.2)
-  kaminari
   launchy
   mailee (= 0.5.4)!
   maxim-sexy_pg_constraints

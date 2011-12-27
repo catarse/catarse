@@ -311,7 +311,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 
-/* line 34, ../../app/stylesheets/screen.sass */
+/* line 35, ../../app/stylesheets/screen.sass */
 body#platform {
   background: url("/images/bg.jpg") repeat;
   text-rendering: optimizeLegibility;
@@ -344,26 +344,10 @@ body#platform a {
 body#platform a:hover {
   color: #00aa00;
 }
-/* line 3, ../../app/stylesheets/_form.sass */
-body#platform form fieldset {
-  padding: 8px 0;
-}
-/* line 5, ../../app/stylesheets/_form.sass */
-body#platform form label {
-  display: block;
-  margin-right: 8px;
-  margin-top: 14px;
-}
-/* line 9, ../../app/stylesheets/_form.sass */
-body#platform form label abbr[title=required] {
-  font-size: 16px;
-  color: #dd3333;
-  margin-left: 2px;
-}
-/* line 13, ../../app/stylesheets/_form.sass */
-body#platform form input[type=text], body#platform form textarea, body#platform form select {
+/* line 2, ../../app/stylesheets/_form.sass */
+body#platform input[type=text], body#platform textarea, body#platform select {
   padding-left: 4px;
-  padding-right: 24px;
+  padding-right: 4px;
   background-color: white;
   background-color: rgba(255, 255, 255, 0.2);
   font-size: 18px;
@@ -377,24 +361,44 @@ body#platform form input[type=text], body#platform form textarea, body#platform 
   border-radius: 5px;
   text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
 }
-/* line 23, ../../app/stylesheets/_form.sass */
-body#platform form input[type=text]:focus, body#platform form textarea:focus, body#platform form select:focus {
+/* line 12, ../../app/stylesheets/_form.sass */
+body#platform input[type=text]:focus, body#platform textarea:focus, body#platform select:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
+/* line 16, ../../app/stylesheets/_form.sass */
+body#platform form fieldset {
+  padding: 8px 0;
+}
+/* line 18, ../../app/stylesheets/_form.sass */
+body#platform form label {
+  display: block;
+  margin-right: 8px;
+  margin-top: 14px;
+}
+/* line 22, ../../app/stylesheets/_form.sass */
+body#platform form label abbr[title=required] {
+  font-size: 16px;
+  color: #dd3333;
+  margin-left: 2px;
+}
 /* line 26, ../../app/stylesheets/_form.sass */
+body#platform form input[type=text], body#platform form textarea, body#platform form select {
+  padding-right: 24px;
+}
+/* line 28, ../../app/stylesheets/_form.sass */
 body#platform form textarea {
   padding-right: 28px;
   width: 96%;
   height: 200px;
 }
-/* line 30, ../../app/stylesheets/_form.sass */
+/* line 32, ../../app/stylesheets/_form.sass */
 body#platform form p.inline-hints {
   color: #777777;
   font-size: 14px;
   padding-bottom: 0 !important;
 }
-/* line 34, ../../app/stylesheets/_form.sass */
+/* line 36, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit] {
   text-rendering: optimizeLegibility;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -423,7 +427,7 @@ body#platform form input[type=submit] {
   -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
-/* line 48, ../../app/stylesheets/_form.sass */
+/* line 50, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit]:hover {
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
@@ -437,7 +441,7 @@ body#platform form input[type=submit]:hover {
   -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
-/* line 52, ../../app/stylesheets/_form.sass */
+/* line 54, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit]:active {
   padding: 11px 14px 9px 16px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
@@ -453,7 +457,7 @@ body#platform form input[type=submit]:active {
   -o-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
 }
-/* line 58, ../../app/stylesheets/_form.sass */
+/* line 60, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit]:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
@@ -470,61 +474,61 @@ body#platform form input[type=submit]:disabled {
   -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
-/* line 65, ../../app/stylesheets/_form.sass */
+/* line 67, ../../app/stylesheets/_form.sass */
 body#platform form input.ok, body#platform form textarea.ok {
   background: url("/images/tick_16.png") no-repeat 99% center;
 }
-/* line 67, ../../app/stylesheets/_form.sass */
+/* line 69, ../../app/stylesheets/_form.sass */
 body#platform form input.ok:focus, body#platform form textarea.ok:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 70, ../../app/stylesheets/_form.sass */
+/* line 72, ../../app/stylesheets/_form.sass */
 body#platform form input.error, body#platform form textarea.error {
   background: url("/images/delete_16.png") no-repeat 99% center;
 }
-/* line 72, ../../app/stylesheets/_form.sass */
+/* line 74, ../../app/stylesheets/_form.sass */
 body#platform form input.error:focus, body#platform form textarea.error:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 75, ../../app/stylesheets/_form.sass */
+/* line 77, ../../app/stylesheets/_form.sass */
 body#platform form input.loading, body#platform form textarea.loading {
   background: url("/images/loading.gif") no-repeat 99% center;
 }
-/* line 77, ../../app/stylesheets/_form.sass */
+/* line 79, ../../app/stylesheets/_form.sass */
 body#platform form input.loading:focus, body#platform form textarea.loading:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 80, ../../app/stylesheets/_form.sass */
+/* line 82, ../../app/stylesheets/_form.sass */
 body#platform form select.ok {
   background: url("/images/tick_16.png") no-repeat 86% center;
 }
-/* line 82, ../../app/stylesheets/_form.sass */
+/* line 84, ../../app/stylesheets/_form.sass */
 body#platform form select.ok:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 85, ../../app/stylesheets/_form.sass */
+/* line 87, ../../app/stylesheets/_form.sass */
 body#platform form select.error {
   background: url("/images/delete_16.png") no-repeat 86% center;
 }
-/* line 87, ../../app/stylesheets/_form.sass */
+/* line 89, ../../app/stylesheets/_form.sass */
 body#platform form select.error:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 90, ../../app/stylesheets/_form.sass */
+/* line 92, ../../app/stylesheets/_form.sass */
 body#platform form select.loading {
   background: url("/images/loading.gif") no-repeat 86% center;
 }
-/* line 92, ../../app/stylesheets/_form.sass */
+/* line 94, ../../app/stylesheets/_form.sass */
 body#platform form select.loading:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 37, ../../app/stylesheets/screen.sass */
+/* line 38, ../../app/stylesheets/screen.sass */
 body#platform table {
   width: 100%;
 }
@@ -558,7 +562,7 @@ body#platform table tbody tr:hover {
   background-color: #ffffaa;
   background-color: rgba(255, 255, 160, 0.4);
 }
-/* line 39, ../../app/stylesheets/screen.sass */
+/* line 40, ../../app/stylesheets/screen.sass */
 body#platform .flash {
   z-index: 500;
   position: fixed;
@@ -606,7 +610,7 @@ body#platform .flash .locale.wrapper {
   background-image: -ms-linear-gradient(top, #0da1c3, #0591bc, #0084b9);
   background-image: linear-gradient(top, #0da1c3, #0591bc, #0084b9);
 }
-/* line 41, ../../app/stylesheets/screen.sass */
+/* line 42, ../../app/stylesheets/screen.sass */
 body#platform .overlay {
   background-color: #dddddd;
   background: rgba(180, 180, 180, 0.8);
@@ -617,7 +621,7 @@ body#platform .overlay {
   height: 100%;
   z-index: 400;
 }
-/* line 43, ../../app/stylesheets/screen.sass */
+/* line 44, ../../app/stylesheets/screen.sass */
 body#platform #locales {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
@@ -684,7 +688,7 @@ body#platform #locales img:hover {
   -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
 }
-/* line 45, ../../app/stylesheets/screen.sass */
+/* line 46, ../../app/stylesheets/screen.sass */
 body#platform #login {
   background-color: #44a546;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
@@ -815,7 +819,7 @@ body#platform #login a.close:hover, body#platform #login a.close:focus {
   -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
-/* line 47, ../../app/stylesheets/screen.sass */
+/* line 48, ../../app/stylesheets/screen.sass */
 body#platform #pre_header {
   background-color: #0084b9;
   text-align: center;
@@ -884,7 +888,7 @@ body#platform #pre_header .back_notice a.close, body#platform #pre_header .notif
 body#platform #pre_header .back_notice a.close:hover, body#platform #pre_header .back_notice a.close:focus, body#platform #pre_header .notification a.close:hover, body#platform #pre_header .notification a.close:focus {
   color: white;
 }
-/* line 49, ../../app/stylesheets/screen.sass */
+/* line 50, ../../app/stylesheets/screen.sass */
 body#platform #main {
   width: 980px;
   margin: 0 auto;
@@ -909,7 +913,7 @@ body#platform #header h1 a {
 body#platform #header h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 53, ../../app/stylesheets/screen.sass */
+/* line 54, ../../app/stylesheets/screen.sass */
 body#platform #menu {
   float: right;
   margin-top: 38px;
@@ -951,7 +955,7 @@ body#platform #menu ul li a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 55, ../../app/stylesheets/screen.sass */
+/* line 56, ../../app/stylesheets/screen.sass */
 body#platform #user {
   float: right;
   margin-top: 12px;
@@ -1064,7 +1068,7 @@ body#platform #user .user_menu_border {
   -khtml-border-top-left-radius: 16px;
   border-top-left-radius: 16px;
 }
-/* line 57, ../../app/stylesheets/screen.sass */
+/* line 58, ../../app/stylesheets/screen.sass */
 body#platform #content_wrapper {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.5);
@@ -1079,7 +1083,7 @@ body#platform #content_wrapper {
   -o-box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.5);
 }
-/* line 59, ../../app/stylesheets/screen.sass */
+/* line 60, ../../app/stylesheets/screen.sass */
 body#platform #content_wrapper #content_header {
   position: relative;
   text-align: center;
@@ -1167,7 +1171,7 @@ body#platform #content_wrapper #content_header #badge:hover {
   -ms-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
-/* line 61, ../../app/stylesheets/screen.sass */
+/* line 62, ../../app/stylesheets/screen.sass */
 body#platform #content_wrapper #content {
   padding: 40px 20px;
 }
@@ -3187,11 +3191,21 @@ body#platform #explore_projects #explore_menu {
   width: 280px;
   margin-left: 20px;
 }
-/* line 884, ../../app/stylesheets/_projects.sass */
+
+/* line 866, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_menu .search {
+  margin-bottom: 20px;
+}
+/* line 868, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_menu .search input {
+  width: 268px;
+}
+/* line 870, ../../app/stylesheets/_projects.sass */
 body#platform #explore_projects #explore_menu ul {
   margin-bottom: 20px;
 }
-/* line 886, ../../app/stylesheets/_projects.sass */
+/* line 872, ../../app/stylesheets/_projects.sass */
+
 body#platform #explore_projects #explore_menu ul li a {
   background-color: #dddddd;
   margin-bottom: 4px;
@@ -3217,16 +3231,52 @@ body#platform #explore_projects #explore_menu ul li a {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
+<<<<<<< HEAD
 /* line 898, ../../app/stylesheets/_projects.sass */
+=======
+/* line 884, ../../app/stylesheets/_projects.sass */
+>>>>>>> 38ec5af023b47e4fbe8484104ac0977c370eb54c
 body#platform #explore_projects #explore_menu ul li a.selected, body#platform #explore_projects #explore_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
+<<<<<<< HEAD
 /* line 902, ../../app/stylesheets/_projects.sass */
+=======
+/* line 888, ../../app/stylesheets/_projects.sass */
+>>>>>>> 38ec5af023b47e4fbe8484104ac0977c370eb54c
 body#platform #explore_projects #explore_results {
   float: right;
   width: 626px;
+}
+/* line 891, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_results .empty {
+  margin-left: 20px;
+  background-color: #ffffaa;
+  background-color: rgba(255, 255, 160, 0.6);
+  padding: 16px 20px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+/* line 898, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_results #loading {
+  overflow: hidden;
+  *zoom: 1;
+  width: 626px;
+  text-align: center;
+}
+/* line 902, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_results #loading img {
+  display: none;
 }
 /* line 2, ../../app/stylesheets/_curated_pages.sass */
 body#platform #index_header_text {
@@ -3302,7 +3352,7 @@ body#platform #embed .project_box {
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0 !important;
 }
-/* line 68, ../../app/stylesheets/screen.sass */
+/* line 69, ../../app/stylesheets/screen.sass */
 body#platform #video_embed {
   text-align: center;
   padding: 16px;
@@ -3380,7 +3430,7 @@ body#platform #video_embed #video_embed_footer {
   width: 220px;
   margin-left: -110px;
 }
-/* line 70, ../../app/stylesheets/screen.sass */
+/* line 71, ../../app/stylesheets/screen.sass */
 body#platform #footer {
   text-align: center;
   padding: 20px 0 80px 0;
@@ -3542,7 +3592,7 @@ body#platform #footer #powered_by {
 body#platform #footer #grupo_comum {
   float: right;
 }
-/* line 72, ../../app/stylesheets/screen.sass */
+/* line 73, ../../app/stylesheets/screen.sass */
 body#platform #teaser {
   text-align: center;
 }
@@ -3618,7 +3668,7 @@ body#platform .text ul {
 body#platform .text ul li {
   margin-bottom: 16px;
 }
-/* line 76, ../../app/stylesheets/screen.sass */
+/* line 77, ../../app/stylesheets/screen.sass */
 body#platform #press {
   background-color: #dddbd1;
   background-color: rgba(179, 177, 157, 0.3);

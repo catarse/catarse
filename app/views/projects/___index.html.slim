@@ -1,0 +1,103 @@
+#top
+  menu
+    nav
+      a blog
+      a opendata
+      a ajuda
+    .actions
+      = image_tag "redesign/notification.png"
+      a
+        = image_tag "redesign/barbarella.png"
+        p EU
+    .social
+      .fb_root
+        iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=233819696673790" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:21px;" allowTransparency="true"
+      .twitter_root
+        a href="https://twitter.com/catarse_" class="twitter-follow-button" data-show-count="false" data-lang="en"
+          Follow @twitterapi
+
+#header
+  = link_to "Home", root_path, :class => 'logo'
+  nav
+    = link_to "explore projetos", "#"
+    = link_to "envie seu projeto", "#"
+  .search
+    = form_tag '/', :class=>'search_input' do
+      = text_field_tag 'search'
+      = submit_tag
+
+#page_content
+  .section_header
+    h1 Faça acontecer os projetos em que você acredita
+    h4 Financie projetos de maneira colaborativa e torne-se parte de algo maior.
+
+  = render :partial => 'project_list', :locals => {:quick => "expiring", :collection => @expiring} unless @expiring.empty?
+
+  / - 4.times do
+  /   = render :partial => 'project'
+
+  .reference_link
+    = link_to 'explore mais projetos recomendados', '#', :class => 'sliced_link'
+
+  = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
+
+#blog_footer
+  .home_blog
+    h3 O que anda acontecendo aqui
+    = link_to image_tag("redesign/blog_banner699x239.png"), '#', :class => 'blog_banner'
+    .blog_post
+      h4
+        | No Blog
+      h6
+        | Aqui é o título do Blog que
+        | deve ter somente 02 linhas
+      p
+        | O Catarse é um site que tem  um
+        | modelo de funcionar diferente do que a gente tá  acostumado por aí.
+
+      p
+        | O Catarse é um site que tem  um  modelo de funcionar diferente do que a gente tá  acostumado por aí.
+    .twitter_message
+      p
+        | Global famine and disease always made me wonder about the existence of God, but this
+        br/
+        | Tebow business has me wondering. http://ctr.se/443kd0
+
+#footer
+  .footer_content
+    .open_data
+      h3
+        | estatísticas bacanas
+      ul
+        li
+          h5 9358
+          p Apoiadores
+        li
+          h5 11633
+          p Apios
+        li
+          h5 R$ 1.139.334,50
+          p Arrecadados
+        li
+          h5 30994
+          p Usuários
+        li
+          h5 109
+          p Projetos bem sucedidos
+        li
+          h5 250
+          p Projetos no ar
+
+        = link_to '>> veja mais estatísticas aqui na OPENDATA', '#'
+
+/ = render :partial => "index_header"
+/ = render :partial => "index_meta_tags"
+/ = render 'home_page_projects'
+/ = render :partial => 'project_list', :locals => {:quick => "expiring", :collection => @expiring} unless @expiring.empty?
+/ = render :partial => 'project_list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
+/ = render :partial => 'project_list', :locals => {:quick => "successful", :collection => @successful} unless @successful.empty?
+/ = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
+/ .clear
+/ = render :partial => "press"
+/ = javascript_include_tag 'press'
+/ = javascript_include_tag 'root'

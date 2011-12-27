@@ -1,0 +1,6 @@
+/* line 1, ../../../app/stylesheets/miv/profile.sass */
+.profile_pic {
+  position: relative;
+  float: left;
+  z-index: 500;
+}
