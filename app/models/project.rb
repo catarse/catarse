@@ -166,11 +166,13 @@ class Project < ActiveRecord::Base
     end
     self.update_attribute :finished, true
   end
+
   def as_json(options={})
-    {
-      :id => id,
-      :name => name,
-      :user => user
-    }
+    { id: id, name: name, user: user }
   end
+
+  def posts
+    @posts ||= Post.all(self)
+  end
+
 end

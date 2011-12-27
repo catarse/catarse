@@ -45,6 +45,7 @@ gem 'httparty'
 gem "rack-timeout"
 gem 'web_translate_it'
 gem 'kaminari'
+gem 'tumblr-api'
 
 group :development do
   gem 'thin'
