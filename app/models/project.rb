@@ -114,6 +114,14 @@ class Project < ActiveRecord::Base
   def in_time?
     expires_at >= Time.now
   end
+  def percent
+    ((pledged / goal * 100).abs).round.to_i
+  end
+  def display_percent
+    return 100 if successful?
+    return 8 if percent > 0 and percent < 8
+    percent
+  end
   def progress
     ((pledged / goal * 100).abs).round.to_i
   end
