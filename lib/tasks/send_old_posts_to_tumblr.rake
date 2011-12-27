@@ -15,7 +15,7 @@ task :send_old_posts_to_tumblr => :environment do
     belongs_to :project, foreign_key: :commentable_id
   end
 
-  user = Tumblr::User.new(Configuration.find_by_name('tumblr_user').value, Configuration.find_by_name('tumblr_password').value, false)
+  user = Tumblr::User.new(Configuration[:tumblr_user], Configuration[:tumblr_password], false)
   Tumblr.blog = 'blog.catarse.me'
   Comment.posts.each do |post|
     Tumblr::Post.create(user, title: post.title, body: post.comment, date: post.created_at, :tags => post.project.to_param)
