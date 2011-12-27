@@ -6,10 +6,12 @@
     background-color: $pink
     p
       padding: 10px 0 10px 65px
-      font-family: Lato-Regular
-      font-size: 1.9em
-      color: white
+      font-size: 1.5em
       line-height: 120%
+      a
+        color: white
+        font-size: 1.4em
+        font-family: Lato-Regular
   h3
     +grid(16)
     padding-top: 30px
@@ -27,20 +29,23 @@
       padding-bottom: 20px
 
     h6
-      font-family: Myriad Pro
-      font-weight: bold
-      font-size: 1.3em
-      color: $super_minimal_gryn
       padding-bottom: 20px
-
-    p
-      font-family: Myriad Pro
       font-size: 1.3em
-      color: $super_minimal_gryn
+      a
+        font-weight: bold
+        font-size: 1.1em
+        font-family: Myriad Pro
+        color: $super_minimal_gryn
+    p
       line-height: 129%
       padding-bottom: 20px
+      font-size: 1.3em
       &:last-child
         padding-bottom: none
+      a
+        font-family: Myriad Pro
+        font-size: 1.1em
+        color: $super_minimal_gryn
 
 
 #blog_footer
