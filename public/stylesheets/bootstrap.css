@@ -3955,6 +3955,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content {
   width: 960px;
   padding-top: 40px;
   position: relative;
+  font-family: "Lato", sans-serif;
 }
 /* line 35, ../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .grid_1, body[data-action="new_profile"][data-controller="static"] #page_content .grid_2, body[data-action="new_profile"][data-controller="static"] #page_content .grid_3, body[data-action="new_profile"][data-controller="static"] #page_content .grid_4, body[data-action="new_profile"][data-controller="static"] #page_content .grid_5, body[data-action="new_profile"][data-controller="static"] #page_content .grid_6, body[data-action="new_profile"][data-controller="static"] #page_content .grid_7, body[data-action="new_profile"][data-controller="static"] #page_content .grid_8, body[data-action="new_profile"][data-controller="static"] #page_content .grid_9, body[data-action="new_profile"][data-controller="static"] #page_content .grid_10, body[data-action="new_profile"][data-controller="static"] #page_content .grid_11, body[data-action="new_profile"][data-controller="static"] #page_content .grid_12, body[data-action="new_profile"][data-controller="static"] #page_content .grid_13, body[data-action="new_profile"][data-controller="static"] #page_content .grid_14, body[data-action="new_profile"][data-controller="static"] #page_content .grid_15, body[data-action="new_profile"][data-controller="static"] #page_content .grid_16 {
@@ -4280,7 +4281,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content .push_15
 body[data-action="new_profile"][data-controller="static"] #page_content .pull_15 {
   left: -900px;
 }
-/* line 7, ../../app/stylesheets/content/profile.sass */
+/* line 8, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .section_header {
   display: inline;
   float: left;
@@ -4292,7 +4293,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   padding-bottom: 30px;
   margin-bottom: 20px;
 }
-/* line 13, ../../app/stylesheets/content/profile.sass */
+/* line 14, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .section_header h1.profile {
   margin-left: 0;
   display: inline;
@@ -4306,7 +4307,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   margin-left: 0;
   padding: 0;
 }
-/* line 21, ../../app/stylesheets/content/profile.sass */
+/* line 22, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .section_header h4.about {
   margin-left: 0;
   display: inline;
@@ -4319,7 +4320,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   margin: 15px 0;
   padding: 0;
 }
-/* line 28, ../../app/stylesheets/content/profile.sass */
+/* line 29, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .section_header .profile_categories {
   margin-left: 0;
   display: inline;
@@ -4332,16 +4333,16 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   margin-left: 0;
   margin-top: 15px;
 }
-/* line 36, ../../app/stylesheets/content/profile.sass */
+/* line 37, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .section_header .profile_categories form input {
   display: none;
 }
-/* line 38, ../../app/stylesheets/content/profile.sass */
+/* line 39, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .section_header .profile_categories form input[type="radio"]:checked + label {
   background: white;
   color: #4383d1;
 }
-/* line 41, ../../app/stylesheets/content/profile.sass */
+/* line 42, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .section_header .profile_categories form label {
   color: white;
   cursor: pointer;
@@ -4359,11 +4360,11 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   margin-right: 8px;
   margin-top: 10px;
 }
-/* line 52, ../../app/stylesheets/content/profile.sass */
+/* line 53, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .section_header .profile_categories form label:hover {
   background: rgba(255, 255, 255, 0.4);
 }
-/* line 56, ../../app/stylesheets/content/profile.sass */
+/* line 57, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .profile_share .profile_pic {
   float: left;
   position: absolute;
@@ -4374,7 +4375,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   -o-box-shadow: black 2px 2px 8px;
   box-shadow: black 2px 2px 8px;
 }
-/* line 63, ../../app/stylesheets/content/profile.sass */
+/* line 64, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .my_links {
   display: inline;
   float: left;
@@ -4385,11 +4386,11 @@ body[data-action="new_profile"][data-controller="static"] #page_content .my_link
   margin-top: 20px;
   margin-bottom: 50px;
 }
-/* line 70, ../../app/stylesheets/content/profile.sass */
+/* line 71, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .my_links ul li {
   margin-top: 5px;
 }
-/* line 72, ../../app/stylesheets/content/profile.sass */
+/* line 73, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .my_links ul li .profile_info {
   display: block;
   font-family: "Lato", sans-serif;
@@ -4398,8 +4399,86 @@ body[data-action="new_profile"][data-controller="static"] #page_content .my_link
   float: right;
   color: #363636;
 }
-/* line 79, ../../app/stylesheets/content/profile.sass */
+/* line 80, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .my_links ul li .profile_icons {
   float: left;
   margin: 10px 0 0 24px;
+}
+/* line 84, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 700px;
+  margin-bottom: 30px;
+  border-bottom: #363636 solid 2px;
+}
+/* line 90, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .project {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px;
+  margin-left: 0;
+}
+/* line 93, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .project_about {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 460px;
+  margin-right: 0;
+}
+/* line 97, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .status {
+  border-bottom: #999999 solid 1px;
+}
+/* line 100, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .when {
+  font-size: 1.3em;
+  color: #363636;
+  margin-bottom: 15px;
+}
+/* line 105, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .when span {
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 1.2em;
+  color: #4383d1;
+}
+/* line 110, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .reward {
+  font-size: 1.3em;
+  color: #666666;
+  margin-bottom: 25px;
+  line-height: 160%;
+}
+/* line 116, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .reward span {
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 1.2em;
+  color: black;
+  text-transform: uppercase;
+}
+/* line 122, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project {
+  margin-top: 25px;
+  font-size: 1.1em;
+  line-height: 180%;
+  color: #363636;
+  margin-bottom: 30px;
+}
+/* line 129, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project span {
+  color: #4383d1;
+}
+/* line 132, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .comments {
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 1.6em;
+  color: #4a4a4a;
+  background: url("/images/redesign/ballon15x15.png") no-repeat;
+  text-indent: 24px;
 }
