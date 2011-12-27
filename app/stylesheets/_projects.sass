@@ -863,6 +863,10 @@
       float: left
       width: 280px
       margin-left: 20px
+      .search
+        margin-bottom: 20px
+        input
+          width: 250px
       ul
         margin-bottom: 20px
         li a
@@ -884,3 +888,16 @@
     #explore_results
       float: right
       width: 626px
+      .empty
+        margin-left: 20px
+        background-color: #FFA
+        background-color: rgba(255, 255, 160, 0.6)
+        padding: 16px 20px
+        +border-radius(12px)
+        +box-shadow(rgba(0,0,0,0.5), 2px, 2px, 3px)
+      #loading
+        +clearfix
+        width: 626px
+        text-align: center
+        img
+          display: none

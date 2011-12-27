@@ -3159,10 +3159,18 @@ body#platform #explore_projects #explore_menu {
   margin-left: 20px;
 }
 /* line 866, ../../app/stylesheets/_projects.sass */
-body#platform #explore_projects #explore_menu ul {
+body#platform #explore_projects #explore_menu .search {
   margin-bottom: 20px;
 }
 /* line 868, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_menu .search input {
+  width: 250px;
+}
+/* line 870, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_menu ul {
+  margin-bottom: 20px;
+}
+/* line 872, ../../app/stylesheets/_projects.sass */
 body#platform #explore_projects #explore_menu ul li a {
   background-color: #dddddd;
   margin-bottom: 4px;
@@ -3188,16 +3196,44 @@ body#platform #explore_projects #explore_menu ul li a {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 880, ../../app/stylesheets/_projects.sass */
+/* line 884, ../../app/stylesheets/_projects.sass */
 body#platform #explore_projects #explore_menu ul li a.selected, body#platform #explore_projects #explore_menu ul li a:hover {
   color: white;
   background-color: #00aa00;
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 884, ../../app/stylesheets/_projects.sass */
+/* line 888, ../../app/stylesheets/_projects.sass */
 body#platform #explore_projects #explore_results {
   float: right;
   width: 626px;
+}
+/* line 891, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_results .empty {
+  margin-left: 20px;
+  background-color: #ffffaa;
+  background-color: rgba(255, 255, 160, 0.6);
+  padding: 16px 20px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+/* line 898, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_results #loading {
+  overflow: hidden;
+  *zoom: 1;
+  width: 626px;
+  text-align: center;
+}
+/* line 902, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_results #loading img {
+  display: none;
 }
 /* line 2, ../../app/stylesheets/_curated_pages.sass */
 body#platform #index_header_text {
