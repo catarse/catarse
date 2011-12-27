@@ -7,26 +7,51 @@ body[data-action="new_profile"][data-controller="static"]
     .section_header
       +grid(16)
       +clearfix
+      padding-bottom: 30px
       margin-bottom: 20px
-      h1
-        padding: 22px 0 10px 25px
 
-      h1.profile, h4.about
+      h1.profile
         +alpha
         +grid(12)
         +grid-push(4)
         margin-top: 25px
+        margin-left: 0
         padding: 0
 
       h4.about
-        margin-bottom: 15px
+        +alpha
+        +grid(11)
+        +grid-push(4)
+        margin: 15px 0
+        padding: 0
       
-      h4
-        padding: 0 0 22px 25px
-            
       .profile_categories
-        #order-form
-          
+        +alpha
+        +grid(12)
+        +grid-push(4)
+        margin-left: 0
+        margin-top: 15px
+        
+        form
+          input
+            display: none
+          input[type="radio"]:checked + label 
+            background: rgb(255,255,255)
+            color: $blue
+          label
+            color: white
+            cursor: pointer
+            font-size: 1.2em
+            font-family: "Lato-Bold", sans-serif
+            padding: 3px 15px 0 0
+            background-color: rgba($gryn,0.3)
+            +border-radius(4px)
+            padding: 5px 10px
+            margin-right: 8px
+            margin-top: 10px 
+            &:hover
+              background: rgba(255,255,255,0.4)
+ 
     .profile_share
       .profile_pic
         float: left
@@ -38,7 +63,7 @@ body[data-action="new_profile"][data-controller="static"]
     .my_links
       +grid(4)
       position: relative
-      margin-top: 65px
+      margin-top: 20px
       margin-bottom: 50px
       
       ul

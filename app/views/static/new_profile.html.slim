@@ -8,9 +8,11 @@
     .profile_categories
       form[method="get" id="order-form"]
         input[type="radio" value="pops" name="by" id="by_pops" checked=(params[:by].nil? || params[:by] == 'pops')]
-        label[for="by_pops"] Mais populares
+        label[for="by_pops"] PROJETOS APOIADOS
         input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] Mais recentes
+        label[for="by_recent"] PROJETOS CRIADOS
+        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
+        label[for="by_recent"] COMENTÁRIOS
 
   .profile_share
     = image_tag ('redesign/profile200x200.jpg'), :class => 'profile_pic'
