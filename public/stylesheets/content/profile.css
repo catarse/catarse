@@ -8,9 +8,9 @@ Syntax error: Undefined mixin 'default_grid'.
 3:     +default_grid
 4:     padding-top: 40px
 5:     position: relative
-6: 
-7:     .section_header
-8:       +grid(16)
+6:     font-family: "Lato", sans-serif
+7: 
+8:     .section_header
 
 Backtrace:
 /Users/barbarawolffdick/engage/catarse/app/stylesheets/content/profile.sass:3:in `default_grid'
@@ -103,4 +103,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/barbarawolffdick/engage/catarse/app/stylesheets/content/profile.sass, in `default_grid'\A         from line 3 of /Users/barbarawolffdick/engage/catarse/app/stylesheets/content/profile.sass\A \A 1: body[data-action=\"new_profile\"][data-controller=\"static\"]\A 2:   #page_content\A 3:     +default_grid\A 4:     padding-top: 40px\A 5:     position: relative\A 6: \A 7:     .section_header\A 8:       +grid(16)"; }
+  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/barbarawolffdick/engage/catarse/app/stylesheets/content/profile.sass, in `default_grid'\A         from line 3 of /Users/barbarawolffdick/engage/catarse/app/stylesheets/content/profile.sass\A \A 1: body[data-action=\"new_profile\"][data-controller=\"static\"]\A 2:   #page_content\A 3:     +default_grid\A 4:     padding-top: 40px\A 5:     position: relative\A 6:     font-family: \"Lato\", sans-serif\A 7: \A 8:     .section_header"; }
