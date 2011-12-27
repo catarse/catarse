@@ -23,6 +23,7 @@ class Project < ActiveRecord::Base
     redcloth :target => :_blank
     link :target => :_blank
   end
+
   scope :visible, where(:visible => true)
   scope :home_page, where(:home_page => true)
   scope :not_home_page, where(:home_page => false)
@@ -38,11 +39,15 @@ class Project < ActiveRecord::Base
   scope :not_successful, where("NOT (goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
   scope :unsuccessful, where("goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
   scope :not_unsuccessful, where("NOT (goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
+
+  search_methods :visible, :home_page, :not_home_page, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful, :not_successful, :unsuccessful, :not_unsuccessful
+  
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   validates_format_of :video_url, :with => VIMEO_REGEX, :message => I18n.t('project.vimeo_regex_validation')
   validate :verify_if_video_exists_on_vimeo
   before_create :store_image_url
+  
   def store_image_url
     self.image_url = vimeo["thumbnail_large"] unless self.image_url
   end
@@ -109,13 +114,13 @@ class Project < ActiveRecord::Base
   def in_time?
     expires_at >= Time.now
   end
-  def percent
+  def progress
     ((pledged / goal * 100).abs).round.to_i
   end
-  def display_percent
+  def display_progress
     return 100 if successful?
-    return 8 if percent > 0 and percent < 8
-    percent
+    return 8 if progress > 0 and progress < 8
+    progress
   end
   def time_to_go
     if expires_at >= 1.day.from_now
@@ -133,6 +138,9 @@ class Project < ActiveRecord::Base
     else
       {:time => 0, :unit => pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
     end
+  end
+  def remaining_text
+    pluralize_without_number(time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
   end
   def can_back?
     visible? and not expired? and not rejected?
@@ -168,7 +176,23 @@ class Project < ActiveRecord::Base
   end
 
   def as_json(options={})
-    { id: id, name: name, user: user }
+    {
+      id: id,
+      name: name,
+      user: user,
+      category: category,
+      image: display_image,
+      headline: headline,
+      progress: progress,
+      display_progress: display_progress,
+      pledged: display_pledged,
+      time_to_go: time_to_go,
+      remaining_text: remaining_text,
+      url: "/projects/#{self.to_param}",
+      expired: expired?,
+      successful: successful?,
+      waiting_confirmation: waiting_confirmation?
+    }
   end
 
   def posts

@@ -10,7 +10,7 @@ gem 'rake', '0.8.7'
 gem 'haml'
 gem 'slim'
 gem 'sass', '3.1.7'
-gem 'compass', '0.11.5'
+gem 'compass'
 gem 'omniauth', '0.1.6'
 gem 'formtastic', '~> 1.1.0'
 gem 'validation_reflection'
@@ -46,6 +46,7 @@ gem "rack-timeout"
 gem 'web_translate_it'
 gem 'kaminari'
 gem 'tumblr-api'
+gem 'compass-960-plugin'
 
 group :development do
   gem 'thin'

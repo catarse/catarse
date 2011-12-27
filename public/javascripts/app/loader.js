@@ -4,7 +4,14 @@
   * (c) Dustin Diaz, Jacob Thornton 2011
   * License: MIT
   */
-!function(a,b){typeof define=="function"?define(b):typeof module!="undefined"?module.exports=b():this[a]=b()}("$script",function(){function s(a,b,c){for(c=0,j=a.length;c<j;++c)if(!b(a[c]))return m;return 1}function t(a,b){s(a,function(a){return!b(a)})}function u(a,b,c){function o(a){return a.call?a():f[a]}function p(){if(!--m){f[l]=1,j&&j();for(var a in h)s(a.split("|"),o)&&!t(h[a],o)&&(h[a]=[])}}a=a[n]?a:[a];var e=b&&b.call,j=e?b:c,l=e?a.join(""):b,m=a.length;return setTimeout(function(){t(a,function(a){if(k[a])return l&&(g[l]=1),k[a]==2&&p();k[a]=1,l&&(g[l]=1),v(!d.test(a)&&i?i+a+".js":a,p)})},0),u}function v(a,d){var e=b.createElement("script"),f=m;e.onload=e.onerror=e[r]=function(){if(e[p]&&!/^c|loade/.test(e[p])||f)return;e.onload=e[r]=null,f=1,k[a]=2,d()},e.async=1,e.src=a,c.insertBefore(e,c.firstChild)}var a=this,b=document,c=b.getElementsByTagName("head")[0],d=/^https?:\/\//,e=a.$script,f={},g={},h={},i,k={},l="string",m=!1,n="push",o="DOMContentLoaded",p="readyState",q="addEventListener",r="onreadystatechange";return!b[p]&&b[q]&&(b[q](o,function w(){b.removeEventListener(o,w,m),b[p]="complete"},m),b[p]="loading"),u.get=v,u.order=function(a,b,c){(function d(e){e=a.shift(),a.length?u(e,d):u(e,b,c)})()},u.path=function(a){i=a},u.ready=function(a,b,c){a=a[n]?a:[a];var d=[];return!t(a,function(a){f[a]||d[n](a)})&&s(a,function(a){return f[a]})?b():!function(a){h[a]=h[a]||[],h[a][n](b),c&&c(d)}(a.join("|")),u},u.noConflict=function(){return a.$script=e,this},u})
+  
+// Commented this line and created my own withou cacheing. Good for dev environment
+
+// !function(a,b){typeof define=="function"?define(b):typeof module!="undefined"?module.exports=b():this[a]=b()}("$script",function(){function s(a,b,c){for(c=0,j=a.length;c<j;++c)if(!b(a[c]))return m;return 1}function t(a,b){s(a,function(a){return!b(a)})}function u(a,b,c){function o(a){return a.call?a():f[a]}function p(){if(!--m){f[l]=1,j&&j();for(var a in h)s(a.split("|"),o)&&!t(h[a],o)&&(h[a]=[])}}a=a[n]?a:[a];var e=b&&b.call,j=e?b:c,l=e?a.join(""):b,m=a.length;return setTimeout(function(){t(a,function(a){if(k[a])return l&&(g[l]=1),k[a]==2&&p();k[a]=1,l&&(g[l]=1),v(!d.test(a)&&i?i+a+".js":a,p)})},0),u}function v(a,d){var e=b.createElement("script"),f=m;e.onload=e.onerror=e[r]=function(){if(e[p]&&!/^c|loade/.test(e[p])||f)return;e.onload=e[r]=null,f=1,k[a]=2,d()},e.async=1,e.src=a,c.insertBefore(e,c.firstChild)}var a=this,b=document,c=b.getElementsByTagName("head")[0],d=/^https?:\/\//,e=a.$script,f={},g={},h={},i,k={},l="string",m=!1,n="push",o="DOMContentLoaded",p="readyState",q="addEventListener",r="onreadystatechange";return!b[p]&&b[q]&&(b[q](o,function w(){b.removeEventListener(o,w,m),b[p]="complete"},m),b[p]="loading"),u.get=v,u.order=function(a,b,c){(function d(e){e=a.shift(),a.length?u(e,d):u(e,b,c)})()},u.path=function(a){i=a},u.ready=function(a,b,c){a=a[n]?a:[a];var d=[];return!t(a,function(a){f[a]||d[n](a)})&&s(a,function(a){return f[a]})?b():!function(a){h[a]=h[a]||[],h[a][n](b),c&&c(d)}(a.join("|")),u},u.noConflict=function(){return a.$script=e,this},u})
+
+// Commented the line above and created my own withou cacheing. Good for dev environment
+
+!function(a,b){typeof define=="function"?define(b):typeof module!="undefined"?module.exports=b():this[a]=b()}("$script",function(){function s(a,b,c){for(c=0,j=a.length;c<j;++c)if(!b(a[c]))return m;return 1}function t(a,b){s(a,function(a){return!b(a)})}function u(a,b,c){function o(a){return a.call?a():f[a]}function p(){if(!--m){f[l]=1,j&&j();for(var a in h)s(a.split("|"),o)&&!t(h[a],o)&&(h[a]=[])}}a=a[n]?a:[a];var e=b&&b.call,j=e?b:c,l=e?a.join(""):b,m=a.length;return setTimeout(function(){t(a,function(a){if(k[a])return l&&(g[l]=1),k[a]==2&&p();k[a]=1,l&&(g[l]=1),v(!d.test(a)&&i?i+a+".js":a,p)})},0),u}function v(a,d){var e=b.createElement("script"),f=m;e.onload=e.onerror=e[r]=function(){e.onload=e[r]=null,k[a]=2,d()},e.async=1,e.src=a,c.insertBefore(e,c.firstChild)}var a=this,b=document,c=b.getElementsByTagName("head")[0],d=/^https?:\/\//,e=a.$script,f={},g={},h={},i,k={},l="string",m=!1,n="push",o="DOMContentLoaded",p="readyState",q="addEventListener",r="onreadystatechange";return!b[p]&&b[q]&&(b[q](o,function w(){b.removeEventListener(o,w,m),b[p]="complete"},m),b[p]="loading"),u.get=v,u.order=function(a,b,c){(function d(e){e=a.shift(),a.length?u(e,d):u(e,b,c)})()},u.path=function(a){i=a},u.ready=function(a,b,c){a=a[n]?a:[a];var d=[];return!t(a,function(a){f[a]||d[n](a)})&&s(a,function(a){return f[a]})?b():!function(a){h[a]=h[a]||[],h[a][n](b),c&&c(d)}(a.join("|")),u},u.noConflict=function(){return a.$script=e,this},u})
 
 /*
  * Catarse JS loader
@@ -19,16 +26,35 @@ var CATARSE_LOADER = {
   
   final: ['jquery.ui.datepicker-pt-BR', 'on_the_spot'],
   
-  catarse: [
-    'app/catarse',
-    'app/views/layouts/pre_header',
-    'app/views/layouts/flash',
-    'app/views/layouts/login',
-    'app/views/layouts/user',
-  ],
+  catarse: {
+    
+    initial: [
+      'app/catarse'
+    ],
+    
+    intermediate: [
+      'app/views/layouts/pre_header',
+      'app/views/layouts/flash',
+      'app/views/layouts/login',
+      'app/views/layouts/user',
+      'app/routers/router',
+      'app/models/project', 
+      'app/models/backer', 
+      'app/models/user', 
+      'app/collections/paginated', 
+      'app/views/model', 
+      'app/views/paginated'
+    ],
+    
+    final: [
+      'app/collections/projects',
+      'app/collections/backers'
+    ]
+    
+  },
   
   scriptURI: function(path){
-    return '/javascripts/' + path + '.js';
+    return '/javascripts/' + path + '.js?' + new Date().getTime();
   },
 
   scriptURIs: function(paths){
@@ -55,9 +81,15 @@ var CATARSE_LOADER = {
       $script.ready('intermediate', function(){
         CATARSE_LOADER.load(CATARSE_LOADER.final, 'final')
         $script.ready('final', function(){
-          CATARSE_LOADER.load(CATARSE_LOADER.catarse, 'catarse')
-          $script.ready('catarse', function(){
-            $(document).ready(CATARSE_LOADER.loadAction);
+          CATARSE_LOADER.load(CATARSE_LOADER.catarse.initial, 'catarse.initial')
+          $script.ready('catarse.initial', function(){
+            CATARSE_LOADER.load(CATARSE_LOADER.catarse.intermediate, 'catarse.intermediate')
+            $script.ready('catarse.intermediate', function(){
+              CATARSE_LOADER.load(CATARSE_LOADER.catarse.final, 'catarse.final')
+              $script.ready('catarse.final', function(){
+                $(document).ready(CATARSE_LOADER.loadAction);
+              })
+            })
           })
         })
       })
@@ -96,10 +128,9 @@ var CATARSE_LOADER = {
     if ( !CATARSE_LOADER.exec(CATARSE_LOADER.namespace.object, CATARSE_LOADER.controller, CATARSE_LOADER.action) ) {
       var View = CATARSE[CATARSE_LOADER.viewName()]
       if (View) {
-        var controller = CATARSE_LOADER.namespace[CATARSE_LOADER.controller]
-        if(!controller)
-          controller = {}
-        controller[CATARSE_LOADER.action] = new View()
+        if(!CATARSE_LOADER.namespace.object[CATARSE_LOADER.controller])
+          CATARSE_LOADER.namespace.object[CATARSE_LOADER.controller] = {}
+        CATARSE_LOADER.namespace.object[CATARSE_LOADER.controller][CATARSE_LOADER.action] = new View({el: $("body") })
       }
     }
     CATARSE_LOADER.exec(CATARSE, "common", "finish");

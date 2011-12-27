@@ -92,12 +92,16 @@ pt:
     index:
       categories: Categorias
       expiring: "Na reta final"
+      search: "O que você procura?"
       quick_explore: "Busca rápida"
       recent: Recentes
       recommended: Recomendados
       subtitle: "Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!"
       successful: Bem-sucedidos
+      all: Todos
       title: "Encontre projetos incríveis"
+    project:
+      empty: "Ei, não encontramos nenhum projeto com o texto que você procurou. Que tal experimentar com outras palavras? =D"
     title: "Explore os projetos"
   formtastic:
     hints:
@@ -327,6 +331,7 @@ pt:
     press:
       title: "Confira o que estão falando do Catarse na imprensa"
     project:
+      by: por
       backed: levantados
       reached: atingido
     project_comments:

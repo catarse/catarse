@@ -1,0 +1,187 @@
+body[data-action="new_blog"][data-controller="static"]
+  #page_content
+    .section_header
+      .titles
+        +grid(10)
+        +grid-suffix(1)
+        +alpha
+        h1
+          font-size: 2.7em
+      .actions
+        +grid(5)
+        +omega
+        p
+          font-family: Arial
+          font-size: 1.4em
+          color: white
+          padding-top: 30px
+        nav
+          text-transform: uppercase
+          margin-top: 15px
+          a
+            font-family: Arial
+            font-weight: bold
+            font-size: 1.1em
+            color: white
+            padding: 5px 10px
+            margin-right: 10px
+            background: rgba(255, 255, 255, 0.3)
+            +border-radius(4px)
+            +transition(all, 0.3s)
+            &:last-child
+              margin-right: 0
+            &:hover
+              color: $minimal_blue
+              background: rgba(255, 255, 255, 1)
+
+    .blog_posts
+      +grid(11)
+      list-style: none
+      li
+        float: left
+        width: 100%
+        padding-bottom: 10px
+        border-bottom: 2px rgba(0,0,0,0.8) solid
+        margin-bottom: 40px
+        .author_avatar
+          width: 59px
+          height: 59px
+          margin-right: 15px
+          float: left
+        a
+          h2
+            float: left
+            width: 540px
+            font-size: 1.6em
+            font-family: Lato-Bold
+            color: black
+            +opacity(0.7)
+        .actions
+          margin-top: 10px
+          +grid(7)
+          +grid-prefix(1)
+          +alpha
+          font-family: Arial
+          font-size: 1.3em
+          p
+            padding-left: 13px
+          a
+            font-size: 1.3em
+            color: $green
+            display: inline
+            margin-right: 20px
+          .comments_count
+            padding: 0 0 0 24px
+            background: url('/images/redesign/comment_icon18x16.png') left top no-repeat
+            margin-left: 20px
+        .social
+          margin-top: 10px
+          +grid(3)
+          +omega
+          .fb_root
+            display: inline-block
+            margin-right: 20px
+          .twitter_root
+            display: inline-block
+
+        .content
+          padding: 30px 0 20px 0
+          +grid(11)
+          +alpha
+          .some_image
+            width: 640px
+            height: 369px
+            background: rgba(0,0,0, 0.3)
+          .post_resume
+            margin-top: 20px
+            height: 90px
+            overflow: hidden
+            background: url("/images/redesign/post_resume_background.png") left bottom repeat-x
+            p
+              font-family: Arial
+              font-size: 1.4em
+              color: black
+              +opacity(0.8)
+              line-height: 150%
+        .show_more
+          padding-top: 10px
+          margin-top: 2px
+          border-top: 1px $minimal_gryn solid
+          width: 100%
+          text-align: center
+          a
+            font-size: 1.2em
+            font-family: Arial
+        .comments
+          padding-top: 10px
+          width: 100%
+          float: left
+          h4
+            background: url('/images/redesign/comment_icon18x16.png') left top no-repeat
+            font-family: Lato-Bold
+            font-size: 1.5em
+            color: black
+            +opacity(0.8)
+            padding-left: 24px
+            margin-bottom: 10px
+          .comments_content
+            width: 100%
+            height: 30px
+            background: rgba(0,0,0, 0.1)
+
+    .sidebar
+      +grid(5)
+      +omega
+      border: 1px $gryn_almost_ccc solid
+      section
+        padding: 20px 0 10px 20px
+        h5
+          font-family: Lato-Bold
+          font-size: 1.5em
+          padding-left: 24px
+          padding-bottom: 10px
+        &.categories
+          h5
+            background: url('/images/redesign/category_icon14x14.png') left top no-repeat
+          ul
+            li
+              margin-bottom: 5px
+              a
+                font-size: 1.3em
+                color: $green
+        &.newsletter
+          h5
+            background: url('/images/redesign/newsletter_icon18x15.png') left top no-repeat
+          p
+            font-family: Arial
+            font-size:  1.2em
+            color: black
+            +opacity(0.7)
+          form
+            padding-top: 10px
+            input[type='text']
+              +border-radius(15px 0px 0px 15px)
+              border: 1px $gryn solid
+              height: 20px
+              width: 165px
+              padding: 3px 0 3px 5px
+              background: url("/images/redesign/newsletter_input_bg10x28.png") left top repeat-x
+              border-right: 0
+              font-size: 1.1em
+              &:focus
+                outline: none
+            input[type='submit']
+              font-weight: bold
+              margin-top: -1px
+              border-left: 0
+              +border-radius(0px 15px 15px 0px)
+              border: 1px $gryn solid
+              height: 29px
+              width: 80px
+              text-transform: uppercase
+              color: white
+              background: url("/images/redesign/submit_newsletter6x28.jpg") left top repeat-x
+        &.facebook
+          h5
+            background: url('/images/redesign/facebook_icon18x15.png') left top no-repeat
+

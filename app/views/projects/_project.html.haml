@@ -14,22 +14,17 @@
       = link_to project_path(project) do
         .project_image= image_tag project.display_image
         %h1= project.name
-    .project_owner
-      por #{project.user.name}
-    .project_headline
-      - if current_user and current_user.admin
-        #{on_the_spot_edit project, :headline}
-      - else
-        = project.headline
+    .project_owner= "#{t('.by')} #{project.user.name}"
+    .project_headline= project.headline
     .clear
   .project_progress
     .progress_bar
-      .progress{ :style => "width: #{project.display_percent}%" }
+      .progress{ :style => "width: #{project.display_progress}%" }
         &nbsp;
     .progress_info
       %ul
         %li
-          %strong #{project.percent}%
+          %strong #{project.progress}%
           %br
           = t('.reached')
         %li
@@ -39,7 +34,7 @@
         %li
           %strong #{project.time_to_go[:time]} #{project.time_to_go[:unit]}
           %br
-          #{pluralize_without_number(project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+          #{project.remaining_text}
 - if defined?(project_curated_page) and project_curated_page.count > 0 and project_curated_page.first.description.present?
   .project_curator_description
     %span= project_curated_page.first.description
