@@ -8,7 +8,7 @@
   #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
   .project_progress
     .progress_bar
-      .progress{ :style => "width: #{ @project.display_percent }%" }
+      .progress{ :style => "width: #{ @project.display_progress }%" }
         &nbsp;
 - if @project.successful?
   .project_warning.successful
