@@ -7,9 +7,9 @@ Syntax error: Undefined variable: "$blue".
 3:   color: $blue
 4:   font-family: Lato-Regular
 5:   font-size: 1.7em
-6: 
-7: h1
-8:   font-family: Lato-Regular
+6:   +transition(all, 0.3s)
+7:   &:hover
+8:     +opacity(0.4)
 
 Backtrace:
 /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass:3
@@ -93,4 +93,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$blue\".\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass\A \A 1: a\A 2:   text-decoration: none\A 3:   color: $blue\A 4:   font-family: Lato-Regular\A 5:   font-size: 1.7em\A 6: \A 7: h1\A 8:   font-family: Lato-Regular"; }
+  content: "Syntax error: Undefined variable: \"$blue\".\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass\A \A 1: a\A 2:   text-decoration: none\A 3:   color: $blue\A 4:   font-family: Lato-Regular\A 5:   font-size: 1.7em\A 6:   +transition(all, 0.3s)\A 7:   &:hover\A 8:     +opacity(0.4)"; }

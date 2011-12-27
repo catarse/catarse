@@ -1,7 +1,7 @@
 /*
-Syntax error: Undefined mixin 'grid'.
-        on line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `grid'
-        from line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass
+Syntax error: Undefined mixin 'transition'.
+        on line 6 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass, in `transition'
+        from line 6 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass
         from line 9 of /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass
 
 1: $ninesixty-columns: 16
@@ -11,10 +11,14 @@ Syntax error: Undefined mixin 'grid'.
 5:   +grid-system(16)
 6: 
 7: @import fonts
+8: @import colors
+9: @import typography
+10: @import channels
+11: @import blog
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass:2:in `grid'
-/Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass:2
+/Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass:6:in `transition'
+/Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass:6
 /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass:9
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
@@ -99,4 +103,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'grid'.\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `grid'\A         from line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass\A         from line 9 of /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass\A \A 1: $ninesixty-columns: 16\A 2: \A 3: @mixin default_grid\A 4:   +grid-container\A 5:   +grid-system(16)\A 6: \A 7: @import fonts"; }
+  content: "Syntax error: Undefined mixin 'transition'.\A         on line 6 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass, in `transition'\A         from line 6 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass\A         from line 9 of /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass\A \A 1: $ninesixty-columns: 16\A 2: \A 3: @mixin default_grid\A 4:   +grid-container\A 5:   +grid-system(16)\A 6: \A 7: @import fonts\A 8: @import colors\A 9: @import typography\A 10: @import channels\A 11: @import blog"; }

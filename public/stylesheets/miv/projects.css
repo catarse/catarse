@@ -7,9 +7,9 @@ Syntax error: Undefined mixin 'grid'.
 2:   +grid(4)
 3:   background-color: white
 4:   +box-shadow($shadow_gryn 2px 2px 5px)
-5:   .box
-6:     padding: 5px
-7:     .black_box
+5:   +transition(all, 0.3s)
+6:   &:hover
+7:     +box-shadow($green 2px 2px 10px)
 
 Backtrace:
 /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass:2:in `grid'
@@ -92,4 +92,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'grid'.\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `grid'\A         from line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass\A \A 1: .project\A 2:   +grid(4)\A 3:   background-color: white\A 4:   +box-shadow($shadow_gryn 2px 2px 5px)\A 5:   .box\A 6:     padding: 5px\A 7:     .black_box"; }
+  content: "Syntax error: Undefined mixin 'grid'.\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass, in `grid'\A         from line 2 of /Users/ton/code/store/catarse/app/stylesheets/miv/projects.sass\A \A 1: .project\A 2:   +grid(4)\A 3:   background-color: white\A 4:   +box-shadow($shadow_gryn 2px 2px 5px)\A 5:   +transition(all, 0.3s)\A 6:   &:hover\A 7:     +box-shadow($green 2px 2px 10px)"; }
