@@ -1,10 +1,7 @@
-begin
-  unless Rails.env == 'test'
-    PaypalApi.configure do |config|
-      config.username   = Configuration.find_by_name('paypal_username').value
-      config.password   = Configuration.find_by_name('paypal_password').value
-      config.signature  = Configuration.find_by_name('paypal_signature').value
-    end
+unless Rails.env.test?
+  PaypalApi.configure do |config|
+    config.username = Configuration[:paypal_username]
+    config.password = Configuration[:paypal_password]
+    config.signature = Configuration[:paypal_signature]
   end
-rescue
 end
