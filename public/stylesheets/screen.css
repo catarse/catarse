@@ -3208,13 +3208,30 @@ body#platform #explore_projects #explore_results {
   width: 626px;
 }
 /* line 891, ../../app/stylesheets/_projects.sass */
+body#platform #explore_projects #explore_results .empty {
+  margin-left: 20px;
+  background-color: #ffffaa;
+  background-color: rgba(255, 255, 160, 0.6);
+  padding: 16px 20px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+/* line 898, ../../app/stylesheets/_projects.sass */
 body#platform #explore_projects #explore_results #loading {
   overflow: hidden;
   *zoom: 1;
   width: 626px;
   text-align: center;
 }
-/* line 895, ../../app/stylesheets/_projects.sass */
+/* line 902, ../../app/stylesheets/_projects.sass */
 body#platform #explore_projects #explore_results #loading img {
   display: none;
 }
