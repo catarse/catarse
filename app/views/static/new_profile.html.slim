@@ -9,14 +9,21 @@
 
   .profile_share
     = image_tag ('redesign/profile200x200.jpg'), :class => 'profile_pic'
+  
+  .my_links
     ul
       li
-        meuemail@email.com.br
+        = image_tag ('redesign/email15x15.png'), :class => 'profile_icons'
+        = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
       li
-        Meu nome no Facebook
+        = image_tag ('redesign/facebook15x15.png'), :class => 'profile_icons'
+        = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
       li
-        Meu nome no Twitter
+        = image_tag ('redesign/twitter15x15.png'), :class => 'profile_icons'
+        = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
       li
-        fibradesign.com
-  
+        = image_tag ('redesign/twitter15x15.png'), :class => 'profile_icons'
+        = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
+
+== render 'static/partials/footer'
 
