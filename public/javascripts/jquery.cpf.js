@@ -57,7 +57,7 @@ jQuery.fn.isValidCPF = function() {
   var cpf, numbers, firstNumber, firstRemainder, firstResult,
   secondNumber, secondRemainder, secondResult,
   firstSum = 0, secondSum = 0,
-  i, multiplier;
+  i, len, multiplier;
   
   var value = $(this).val()
 
@@ -80,7 +80,12 @@ jQuery.fn.isValidCPF = function() {
   // Os primeiros 9 números que serão calculados. Para fins
   // de comparação com os resultados, já são convertidos de
   // string para inteiros.
-  numbers = cpf.split('').map(function (n) { return Number(n); });
+  numbers = cpf.split('');
+  len = numbers.length;
+  for(i = 0; i<len; i++) {
+    numbers[i] = Number(numbers[i]);
+  }
+  
   secondNumber = numbers.pop();
   firstNumber = numbers.pop();
 
