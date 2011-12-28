@@ -142,6 +142,10 @@ GEM
       will_paginate (>= 2.3.12)
     json (1.6.3)
     json_pure (1.6.3)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     kgio (2.7.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
@@ -342,6 +346,7 @@ DEPENDENCIES
   http_accept_language
   httparty
   inherited_resources (= 1.1.2)
+  kaminari
   launchy
   mailee (= 0.5.4)!
   maxim-sexy_pg_constraints
