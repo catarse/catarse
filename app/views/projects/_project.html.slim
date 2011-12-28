@@ -1,49 +1,17 @@
-- if defined?(has_comments) 
-  .compost_project  
-    .project
-      .box
-        p.black_box Lorem Ipsum Dolor
-        = image_tag project.display_image, :class => 'cover'
-
-        h4= link_to project.name, project
-        p.author= "por #{project.user.name}"
-        p.where= "#{project.user.address_city}/#{project.user.address_state}"
-        p.description= "#{project.headline}"
-        .status_bar
-          .progress style="width: #{project.display_percent}%;"
-        ul
-          li
-            h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
-            p= "#{project.remaining_text}"
-          li
-            h6= "#{project.display_pledged}"
-            p= "#{t('.backed')}"
-
-          li
-            h6= "#{project.percent}%"
-            p= "#{t('.reached')}"
-        = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
-    .project_comment
-      h3= "#{project.category.name}"
-      p
-        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.
-      p
-        | 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived.
-      p.author
-        | comentário de
-        br/
-        | Casa de Cultura Digital
-
-- else
-  .project
+div class=(defined?(has_comments) ? :compost_project : '')
+  .project[itemscope itemtype="http://schema.org/CreativeWork"]
+    meta[itemprop="dateCreated" content=project.created_at.to_date]
     .box
-      p.black_box Lorem Ipsum Dolor
-      = image_tag project.display_image, :class => 'cover'
+      p.black_box= project.category.name
+      = image_tag project.display_image, :class => 'cover', :itemprop => 'image'
 
-      h4= link_to project.name, project
-      p.author= "por #{project.user.name}"
-      p.where= "#{project.user.address_city}/#{project.user.address_state}"
-      p.description= "#{project.headline}"
+      h4= link_to project, :itemprop => 'url' do
+        span[itemprop="name"]= project.name
+      p.author
+        | por 
+        span[itemprop="author"]= project.user.name
+      p.where[itemprop="contentLocation"]= "#{project.user.address_city}/#{project.user.address_state}"
+      p.description[itemprop="description"]= "#{project.headline}"
       .status_bar
         .progress style="width: #{project.display_percent}%;"
       ul
@@ -58,6 +26,18 @@
           h6= "#{project.percent}%"
           p= "#{t('.reached')}"
       = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+  - if defined?(has_comments)
+    .project_comment
+      h3= "#{project.category.name}"
+      p
+        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.
+      p
+        | 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived.
+      p.author
+        | comentário de
+        br/
+        | Casa de Cultura Digital
+
 / .project_box
 /   .project_wrap
 /     - if project.expired?
