@@ -2968,7 +2968,7 @@ form.search_input input[type="submit"] {
   color: #59af6d;
 }
 
-/* line 3, ../../app/stylesheets/content/home.sass */
+/* line 2, ../../app/stylesheets/content/home.sass */
 body .recent_projects {
   margin-left: auto;
   margin-right: auto;
@@ -3303,7 +3303,7 @@ body .recent_projects .push_15 {
 body .recent_projects .pull_15 {
   left: -900px;
 }
-/* line 8, ../../app/stylesheets/content/home.sass */
+/* line 7, ../../app/stylesheets/content/home.sass */
 body .ending_projects {
   margin-left: auto;
   margin-right: auto;

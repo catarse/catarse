@@ -18,9 +18,9 @@
 #header
   = link_to "Home", root_path, :class => 'logo', :title => 'Catarse'
   nav
-    = link_to "explore projetos", "#"
-    = link_to "envie seu projeto", "#"
-    = link_to "canais", "#"
+    = link_to "explore projetos", explore_path
+    = link_to "envie seu projeto", guidelines_path
+    = link_to "canais", curated_pages_path
   .search
     = form_tag '/', :class=>'search_input' do
       = text_field_tag 'search'
