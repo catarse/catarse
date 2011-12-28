@@ -85,6 +85,17 @@ class User < ActiveRecord::Base
     end
     u.primary.nil? ? u : u.primary
   end
+
+  def last_backed_project
+    Backer.where(:user_id => id).order('created_at desc').limit(1).first.project
+  end
+
+  def recommended_project
+    # It returns the project that have the greatest quantity of backers 
+    # that contributed to the last project the user contributed.
+    p = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE project_id = #{last_backed_project.id}) GROUP BY 2 ORDER BY 1 desc LIMIT 1")
+    Project.find_by_id(p[0]["project_id"])
+  end
   def display_name
     name || nickname || I18n.t('user.no_name')
   end
