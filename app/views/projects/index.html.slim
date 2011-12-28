@@ -6,7 +6,7 @@
   = render :partial => 'project', :collection => @home_page, :locals => {:has_comments => true} if defined?(@home_page) and not @home_page.empty?
 
   .reference_link
-    = link_to 'explore mais projetos recomendados', '#', :class => 'sliced_link'
+    = link_to 'explore mais projetos recomendados', explore_path(:anchor => 'recommended'), :class => 'sliced_link'
 
 
   .recent_projects
@@ -14,11 +14,6 @@
   
   .ending_projects
     = render :partial => 'project_list', :locals => {:collection => @expiring, :title => 'Na reta final!', :description => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."}
-
-  / = render :partial => 'project_list', :locals => {:quick => "expiring", :collection => @expiring} unless @expiring.empty?
-
-  / - 4.times do
-  /   = render :partial => 'project'
 
   = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
 

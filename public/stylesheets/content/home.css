@@ -1,21 +1,20 @@
 /*
 Syntax error: Undefined mixin 'default_grid'.
-        on line 4 of /home/pedro/Projects/catarse/app/stylesheets/content/home.sass, in `default_grid'
-        from line 4 of /home/pedro/Projects/catarse/app/stylesheets/content/home.sass
+        on line 3 of /home/pedro/Projects/catarse/app/stylesheets/content/home.sass, in `default_grid'
+        from line 3 of /home/pedro/Projects/catarse/app/stylesheets/content/home.sass
 
-1: //body[data-action="new_home"][data-controller="static"]
-2: body
-3:   .recent_projects
-4:     +default_grid
-5:     float: left
-6:     margin-bottom: 30px
-7: 
-8:   .ending_projects
-9:     +default_grid
+1: body
+2:   .recent_projects
+3:     +default_grid
+4:     float: left
+5:     margin-bottom: 30px
+6: 
+7:   .ending_projects
+8:     +default_grid
 
 Backtrace:
-/home/pedro/Projects/catarse/app/stylesheets/content/home.sass:4:in `default_grid'
-/home/pedro/Projects/catarse/app/stylesheets/content/home.sass:4
+/home/pedro/Projects/catarse/app/stylesheets/content/home.sass:3:in `default_grid'
+/home/pedro/Projects/catarse/app/stylesheets/content/home.sass:3
 /home/pedro/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
 /home/pedro/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /home/pedro/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -104,4 +103,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 4 of /home/pedro/Projects/catarse/app/stylesheets/content/home.sass, in `default_grid'\A         from line 4 of /home/pedro/Projects/catarse/app/stylesheets/content/home.sass\A \A 1: //body[data-action=\"new_home\"][data-controller=\"static\"]\A 2: body\A 3:   .recent_projects\A 4:     +default_grid\A 5:     float: left\A 6:     margin-bottom: 30px\A 7: \A 8:   .ending_projects\A 9:     +default_grid"; }
+  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /home/pedro/Projects/catarse/app/stylesheets/content/home.sass, in `default_grid'\A         from line 3 of /home/pedro/Projects/catarse/app/stylesheets/content/home.sass\A \A 1: body\A 2:   .recent_projects\A 3:     +default_grid\A 4:     float: left\A 5:     margin-bottom: 30px\A 6: \A 7:   .ending_projects\A 8:     +default_grid"; }
