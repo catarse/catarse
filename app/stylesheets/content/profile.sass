@@ -1,0 +1,138 @@
+body[data-action="new_profile"][data-controller="static"]
+  #page_content
+    +default_grid
+    padding-top: 40px
+    position: relative
+    font-family: "Lato", sans-serif
+
+    .section_header
+      +grid(16)
+      +clearfix
+      padding-bottom: 30px
+      margin-bottom: 20px
+
+      h1.profile
+        +alpha
+        +grid(12)
+        +grid-push(4)
+        margin-top: 25px
+        margin-left: 0
+        padding: 0
+
+      h4.about
+        +alpha
+        +grid(11)
+        +grid-push(4)
+        margin: 15px 0
+        padding: 0
+      
+      .profile_categories
+        +alpha
+        +grid(12)
+        +grid-push(4)
+        margin-left: 0
+        margin-top: 15px
+        
+        form
+          input
+            display: none
+          input[type="radio"]:checked + label 
+            background: rgb(255,255,255)
+            color: $blue
+          label
+            color: white
+            cursor: pointer
+            font-size: 1.2em
+            font-family: "Lato-Bold", sans-serif
+            padding: 3px 15px 0 0
+            background-color: rgba($gryn,0.3)
+            +border-radius(4px)
+            padding: 5px 10px
+            margin-right: 8px
+            margin-top: 10px 
+            &:hover
+              background: rgba(255,255,255,0.4)
+ 
+    .profile_share
+      .profile_pic
+        float: left
+        position: absolute
+        top: 65px
+        left: 30px
+        +box-shadow(black 2px 2px 8px)
+    
+    .my_links
+      +grid(4)
+      position: relative
+      margin-top: 20px
+      margin-bottom: 50px
+      
+      ul
+        li
+          margin-top: 5px
+          .profile_info
+            display: block
+            font-family: "Lato", sans-serif
+            font-size: 1.5em
+            margin-top: 10px
+            float: right
+            color: $grafiti 
+          .profile_icons
+            float: left
+            margin: 10px 0 0 24px
+
+    .profile_projects
+      +grid(12)
+      margin-bottom: 30px
+      border-bottom: $grafiti solid 2px
+
+
+      .project
+        +grid(4)
+        +alpha
+      .project_about
+        +grid(8)
+        +omega
+
+      .status
+        border-bottom: #999 solid 1px
+
+      .when
+        font-size: 1.3em
+        color: $grafiti
+        margin-bottom: 15px
+
+        span
+          font-family: "Lato-Bold", sans-serif
+          font-size: 1.2em
+          color: $blue
+
+      .reward
+        font-size: 1.3em
+        color: #666
+        margin-bottom: 25px
+        line-height: 160%
+
+        span
+          font-family: "Lato-Bold", sans-serif
+          font-size: 1.2em
+          color: black
+          text-transform: uppercase
+    
+    .about_project
+      margin-top: 25px
+      font-size: 1.1em
+      line-height: 180%
+      color: $grafiti
+      margin-bottom: 30px
+        
+      span
+        color: $blue
+
+    .comments
+      font-family: "Lato-Bold", sans-serif
+      font-size: 1.6em
+      color: #4a4a4a
+      background: url('/images/redesign/ballon15x15.png') no-repeat
+      text-indent: 24px
+        

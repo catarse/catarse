@@ -142,6 +142,10 @@ GEM
       will_paginate (>= 2.3.12)
     json (1.6.3)
     json_pure (1.6.3)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     kgio (2.7.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
@@ -292,6 +296,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     trollop (1.16.2)
+    tumblr-api (0.1.4)
+      activesupport
+      httparty
     tzinfo (0.3.31)
     unicode (0.4.0)
     unicorn (4.1.1)
@@ -339,6 +346,7 @@ DEPENDENCIES
   http_accept_language
   httparty
   inherited_resources (= 1.1.2)
+  kaminari
   launchy
   mailee (= 0.5.4)!
   maxim-sexy_pg_constraints
@@ -363,6 +371,7 @@ DEPENDENCIES
   spectator-validates_email
   steak (~> 1.1.0)
   thin
+  tumblr-api
   unicode
   unicorn
   validation_reflection

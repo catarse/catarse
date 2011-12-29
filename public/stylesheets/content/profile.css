@@ -1,20 +1,31 @@
 /*
-Syntax error: Undefined variable: "$grafiti".
-        on line 2 of /Users/ton/code/store/catarse/app/stylesheets/content/header.sass
+Syntax error: Undefined mixin 'default_grid'.
+        on line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/profile.sass, in `default_grid'
+        from line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/profile.sass
 
-1: #top
-2:   background-color: $grafiti
-3:   padding: 15px 0
-4:   width: 100%
-5:   color: white
-6: 
-7:   menu
+1: body[data-action="new_profile"][data-controller="static"]
+2:   #page_content
+3:     +default_grid
+4:     padding-top: 40px
+5:     position: relative
+6:     font-family: "Lato", sans-serif
+7: 
+8:     .section_header
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/content/header.sass:2
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/script/variable.rb:50:in `_perform'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/script/node.rb:40:in `perform'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:215:in `visit_prop'
+/Users/ton/code/store/catarse/app/stylesheets/content/profile.sass:3:in `default_grid'
+/Users/ton/code/store/catarse/app/stylesheets/content/profile.sass:3
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:235:in `visit_rule'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -92,4 +103,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$grafiti\".\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/content/header.sass\A \A 1: #top\A 2:   background-color: $grafiti\A 3:   padding: 15px 0\A 4:   width: 100%\A 5:   color: white\A 6: \A 7:   menu"; }
+  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/profile.sass, in `default_grid'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/profile.sass\A \A 1: body[data-action=\"new_profile\"][data-controller=\"static\"]\A 2:   #page_content\A 3:     +default_grid\A 4:     padding-top: 40px\A 5:     position: relative\A 6:     font-family: \"Lato\", sans-serif\A 7: \A 8:     .section_header"; }
