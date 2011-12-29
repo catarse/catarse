@@ -45,16 +45,10 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   validates_format_of :video_url, :with => VIMEO_REGEX, :message => I18n.t('project.vimeo_regex_validation')
-  validate :verify_if_video_exists_on_vimeo
   before_create :store_image_url
   
   def store_image_url
     self.image_url = vimeo["thumbnail_large"] unless self.image_url
-  end
-  def verify_if_video_exists_on_vimeo
-    unless vimeo and vimeo["id"].to_s == vimeo_id
-      errors.add(:video_url, I18n.t('project.verify_if_video_exists_on_vimeo'))
-    end
   end
   def to_param
     "#{self.id}-#{self.name.parameterize}"
