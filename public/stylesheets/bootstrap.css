@@ -2896,8 +2896,6 @@ form.search_input input[type="submit"] {
 }
 /* line 9, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .open_data {
-  overflow: hidden;
-  *zoom: 1;
   display: inline;
   float: left;
   margin-left: 10px;
@@ -2905,11 +2903,11 @@ form.search_input input[type="submit"] {
   width: 280px;
   padding-right: 60px;
 }
-/* line 13, ../../app/stylesheets/content/footer.sass */
+/* line 12, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .open_data #comum {
   margin-top: 35px;
 }
-/* line 15, ../../app/stylesheets/content/footer.sass */
+/* line 14, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .open_data h3 {
   overflow: hidden;
   *zoom: 1;
@@ -2919,20 +2917,20 @@ form.search_input input[type="submit"] {
   color: #59af6d;
   background: url("/images/redesign/opendata_icon60x31.png") 3px top no-repeat;
 }
-/* line 22, ../../app/stylesheets/content/footer.sass */
+/* line 21, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .open_data ul {
   display: block;
   overflow: hidden;
   *zoom: 1;
   padding-top: 30px;
 }
-/* line 26, ../../app/stylesheets/content/footer.sass */
+/* line 25, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .open_data ul li {
   width: 100%;
   float: left;
   margin-bottom: 20px;
 }
-/* line 30, ../../app/stylesheets/content/footer.sass */
+/* line 29, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .open_data ul li h5 {
   float: left;
   font-family: museo-700;
@@ -2942,7 +2940,7 @@ form.search_input input[type="submit"] {
   opacity: 0.8;
   padding-right: 10px;
 }
-/* line 37, ../../app/stylesheets/content/footer.sass */
+/* line 36, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .open_data ul li p {
   padding-top: 3px;
   float: left;
@@ -2953,25 +2951,23 @@ form.search_input input[type="submit"] {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 45, ../../app/stylesheets/content/footer.sass */
+/* line 44, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .open_data a {
   font-family: Arial;
   font-size: 1.1em;
   color: #59af6d;
 }
-/* line 50, ../../app/stylesheets/content/footer.sass */
+/* line 49, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .footer_menu {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 220px;
-  overflow: hidden;
-  *zoom: 1;
   display: block;
   margin-top: 30px;
 }
-/* line 55, ../../app/stylesheets/content/footer.sass */
+/* line 53, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .footer_menu a {
   display: inline;
   float: left;
@@ -2986,7 +2982,7 @@ form.search_input input[type="submit"] {
   margin-top: 30px;
   cursor: pointer;
 }
-/* line 65, ../../app/stylesheets/content/footer.sass */
+/* line 63, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu {
   display: inline;
   float: left;
@@ -2995,18 +2991,16 @@ form.search_input input[type="submit"] {
   width: 220px;
   margin-right: 0;
   padding-left: 120px;
-  overflow: hidden;
-  *zoom: 1;
 }
-/* line 70, ../../app/stylesheets/content/footer.sass */
+/* line 67, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu #engage {
   margin-top: 110px;
 }
-/* line 72, ../../app/stylesheets/content/footer.sass */
+/* line 69, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu ul {
   margin-top: 50px;
 }
-/* line 74, ../../app/stylesheets/content/footer.sass */
+/* line 71, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu ul li {
   display: inline;
   float: left;
@@ -3019,7 +3013,7 @@ form.search_input input[type="submit"] {
   -o-transition: 0.3, all;
   transition: 0.3, all;
 }
-/* line 78, ../../app/stylesheets/content/footer.sass */
+/* line 75, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu ul li p {
   display: inline;
   float: left;
@@ -3031,13 +3025,14 @@ form.search_input input[type="submit"] {
   font-size: 1.8em;
   color: #cccccc;
   margin-top: 5px;
+  cursor: pointer;
 }
-/* line 85, ../../app/stylesheets/content/footer.sass */
+/* line 83, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu ul li p:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
   opacity: 0.4;
 }
-/* line 88, ../../app/stylesheets/content/footer.sass */
+/* line 86, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu ul li .social_img {
   width: 32px;
 }
