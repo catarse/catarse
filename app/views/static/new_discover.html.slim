@@ -7,11 +7,186 @@
       h4 Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!
 
   .projects_list
-    h2.selected_list
-      | seleção
-      span
-        | Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção.
+    .selected_list
+      h2
+        | seleção
+        span
+          | Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção.
+      - 3.times do |i|
+        div class="project #{(i%3==0 ? 'first' : '')} #{(i%3==2 ? 'last' : '')}"
+          .box
+            p.black_box Lorem Ipsum Dolor
+            = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+            h4
+              a href='#'
+                | Aqui vai o nome do seu  projeto em até 02 linhas
+            p.author
+              | por Autor do Projeto
+            p.where
+              | Rio de Janeiro
+            p.description
+              | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+            .status_bar
+              .progress style="width: 80%;"
+            ul
+              li
+                h6 90 dias
+                p Restantes
+              li
+                h6 90%
+                p Levantados
+              li
+                h6 R$ 120.000
+                p Atigindos
+            = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+      = link_to ">> explore mais projetos recomendados", '#', :class => 'discover'
+
+    .final_stage_list
+      h2
+        | na reta final
+        span
+          | Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!
+      - 3.times do |i|
+        div class="project #{(i%3==0 ? 'first' : '')} #{(i%3==2 ? 'last' : '')}"
+          .box
+            p.black_box Lorem Ipsum Dolor
+            = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+            h4
+              a href='#'
+                | Aqui vai o nome do seu  projeto em até 02 linhas
+            p.author
+              | por Autor do Projeto
+            p.where
+              | Rio de Janeiro
+            p.description
+              | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+            .status_bar
+              .progress style="width: 80%;"
+            ul
+              li
+                h6 90 dias
+                p Restantes
+              li
+                h6 90%
+                p Levantados
+              li
+                h6 R$ 120.000
+                p Atigindos
+            = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+      = link_to ">> explore mais projetos na reta final", '#', :class => 'discover'
+
+    .new_projects_list
+      h2
+        | novos e fresquinhos
+        span
+          | Recém-chegados. O sol começou a brilhar para eles agorinha...
+      - 3.times do |i|
+        div class="project #{(i%3==0 ? 'first' : '')} #{(i%3==2 ? 'last' : '')}"
+          .box
+            p.black_box Lorem Ipsum Dolor
+            = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+            h4
+              a href='#'
+                | Aqui vai o nome do seu  projeto em até 02 linhas
+            p.author
+              | por Autor do Projeto
+            p.where
+              | Rio de Janeiro
+            p.description
+              | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+            .status_bar
+              .progress style="width: 80%;"
+            ul
+              li
+                h6 90 dias
+                p Restantes
+              li
+                h6 90%
+                p Levantados
+              li
+                h6 R$ 120.000
+                p Atigindos
+            = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+      = link_to ">> explore mais projetos na recentes", '#', :class => 'discover'
+
+    .finished_projects_list
+      h2
+        | bem-sucedidos
+        span
+          | Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!
+      - 3.times do |i|
+        div class="project #{(i%3==0 ? 'first' : '')} #{(i%3==2 ? 'last' : '')}"
+          .success_slice.pt
+          .box
+            p.black_box Lorem Ipsum Dolor
+            = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+            h4
+              a href='#'
+                | Aqui vai o nome do seu  projeto em até 02 linhas
+            p.author
+              | por Autor do Projeto
+            p.where
+              | Rio de Janeiro
+            p.description
+              | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+            .status_bar
+              .progress style="width: 80%;"
+            ul
+              li
+                h6 90 dias
+                p Restantes
+              li
+                h6 90%
+                p Levantados
+              li
+                h6 R$ 120.000
+                p Atigindos
+            = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+      = link_to ">> explore mais projetos bem-sucedidos", '#', :class => 'discover'
   .sidebar
+    section.highlights
+      h2
+        | destaques
+      ul
+        li= link_to 'Recomendados', '#'
+        li.no_margin= link_to 'Populares', '#'
+        li= link_to 'Recém-lançados', '#'
+        li.no_margin= link_to 'Na reta final', '#'
+        li= link_to 'Bem-sucedidos', '#'
+        li.no_margin= link_to 'Canais', '#'
+
+    section.categories
+      h2
+        | categorias
+      ul
+        li= link_to 'Arquitetura', '#'
+        li.no_margin= link_to 'Arte', '#'
+        li= link_to 'Cinema e Video', '#'
+        li.no_margin= link_to 'Circo', '#'
+        li= link_to 'Comida', '#'
+        li.no_margin= link_to 'Comunidade', '#'
+        li= link_to 'Dança', '#'
+        li.no_margin= link_to 'Design', '#'
+        li= link_to 'Esporte', '#'
+        li.no_margin= link_to 'Eventos', '#'
+        li= link_to 'Feito á mão', '#'
+        li.no_margin= link_to 'Fotografia', '#'
+        li= link_to 'Humor', '#'
+        li.no_margin= link_to 'Jogos', '#'
+        li= link_to 'Jornalismo', '#'
+        li.no_margin= link_to 'Literatura', '#'
+
+    section.cities
+      h2
+        | cidades
+      ul
+        li= link_to 'Rio de Janeiro', '#'
+        li.no_margin= link_to 'São Paulo', '#'
+        li= link_to 'Porto Alegre', '#'
+        li.no_margin= link_to 'Belo Horizonte', '#'
+        li= link_to 'Florianópolis', '#'
+        li.no_margin= link_to 'Recife', '#'
+
 
 
 == render 'static/partials/footer'

@@ -1,23 +1,21 @@
 /*
-Syntax error: Undefined mixin 'opacity'.
-        on line 7 of /Users/ton/code/store/catarse/app/stylesheets/content/discover.sass, in `opacity'
-        from line 7 of /Users/ton/code/store/catarse/app/stylesheets/content/discover.sass
+Syntax error: Undefined mixin 'grid'.
+        on line 4 of /Users/ton/code/store/catarse/app/stylesheets/content/discover.sass, in `grid'
+        from line 4 of /Users/ton/code/store/catarse/app/stylesheets/content/discover.sass
 
-2:   .projects_list
-3:     h2
-4:       font-family: Lato-Bold
-5:       font-size: 1.8em
-6:       color: black
-7:       +opacity(0.8)
-8:       span
-9:         font-family: Arial
-10:         font-size: 1.1em !important
-11:         +opacity(0.6)
-12:       &.selected
+1: body[data-action="new_discover"][data-controller="static"]
+2:   #page_content
+3:     .projects_list
+4:       +grid(12)
+5:       a.discover
+6:         +clearfix
+7:         float: right
+8:         font-size: 1.2em
+9:         font-family: Lato-Regular
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/content/discover.sass:7:in `opacity'
-/Users/ton/code/store/catarse/app/stylesheets/content/discover.sass:7
+/Users/ton/code/store/catarse/app/stylesheets/content/discover.sass:4:in `grid'
+/Users/ton/code/store/catarse/app/stylesheets/content/discover.sass:4
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -116,4 +114,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'opacity'.\A         on line 7 of /Users/ton/code/store/catarse/app/stylesheets/content/discover.sass, in `opacity'\A         from line 7 of /Users/ton/code/store/catarse/app/stylesheets/content/discover.sass\A \A 2:   .projects_list\A 3:     h2\A 4:       font-family: Lato-Bold\A 5:       font-size: 1.8em\A 6:       color: black\A 7:       +opacity(0.8)\A 8:       span\A 9:         font-family: Arial\A 10:         font-size: 1.1em !important\A 11:         +opacity(0.6)\A 12:       &.selected"; }
+  content: "Syntax error: Undefined mixin 'grid'.\A         on line 4 of /Users/ton/code/store/catarse/app/stylesheets/content/discover.sass, in `grid'\A         from line 4 of /Users/ton/code/store/catarse/app/stylesheets/content/discover.sass\A \A 1: body[data-action=\"new_discover\"][data-controller=\"static\"]\A 2:   #page_content\A 3:     .projects_list\A 4:       +grid(12)\A 5:       a.discover\A 6:         +clearfix\A 7:         float: right\A 8:         font-size: 1.2em\A 9:         font-family: Lato-Regular"; }
