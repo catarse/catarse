@@ -50,7 +50,7 @@ describe Project do
     its(:video_embed_url){ should == "http://player.vimeo.com/video/17298435" }
 
     it "should have a nil vimeo object if the video doesn't exist" do
-      Project.any_instance.unstub(:store_image_url, :verify_if_video_exists_on_vimeo)
+      Project.any_instance.unstub(:store_image_url)
       Vimeo::Simple::Video.stubs(:info).returns(nil)
       build_with_video("http://vimeo.com/000000000").vimeo.should be_nil
     end
@@ -61,7 +61,7 @@ describe Project do
     end
 
     it "should get vimeo image URL and store it" do
-      Project.any_instance.unstub(:store_image_url, :verify_if_video_exists_on_vimeo)
+      Project.any_instance.unstub(:store_image_url)
 
       p = Factory.build(:project)
       p.stubs(:vimeo).returns({'id' => '1', 'thumbnail_large' => 'http://b.vimeocdn.com/ts/117/614/117614276_200.jpg'})
@@ -72,11 +72,10 @@ describe Project do
     end
 
     it "should have a valid Vimeo video URL" do
-      Project.any_instance.unstub(:verify_if_video_exists_on_vimeo)
       Project.any_instance.stubs(:vimeo).returns({'id' => '123'})
 
-      build_with_video("http://www.vimeo.com/172984359999999").should_not be_valid
-      build_with_video("http://vimeo.com/172984359999999").should_not be_valid      
+      build_with_video("http://www.vimeo.com/foobar").should_not be_valid
+      build_with_video("http://vimeo.com/foobar").should_not be_valid      
 
       Project.any_instance.stubs(:vimeo).returns({'id' => '17298435'})
       build_with_video("http://www.vimeo.com/17298435").should be_valid
