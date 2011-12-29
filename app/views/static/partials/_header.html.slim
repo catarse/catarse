@@ -22,6 +22,6 @@
     = link_to "envie seu projeto", guidelines_path
     = link_to "canais", curated_pages_path
   .search
-    = form_tag '/', :class=>'search_input' do
+    = form_tag explore_path(:anchor => "search"),:method => 'GET', :class=>'search_input' do
       = text_field_tag 'search'
       = submit_tag
