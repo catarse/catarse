@@ -10,7 +10,7 @@ Syntax error: Undefined variable: "$ultra_gryn".
 6:   .footer_content
 7:     +default_grid
 8:     .co_logo
-9:       margin-top: 20px
+9:       margin-top: 40px
 
 Backtrace:
 /Users/barbarawolffdick/engage/catarse/app/stylesheets/content/footer.sass:4
@@ -94,4 +94,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$ultra_gryn\".\A         on line 4 of /Users/barbarawolffdick/engage/catarse/app/stylesheets/content/footer.sass\A \A 1: #footer\A 2:   width: 100%\A 3:   float: left\A 4:   background-color: $ultra_gryn\A 5:   padding: 30px 0\A 6:   .footer_content\A 7:     +default_grid\A 8:     .co_logo\A 9:       margin-top: 20px"; }
+  content: "Syntax error: Undefined variable: \"$ultra_gryn\".\A         on line 4 of /Users/barbarawolffdick/engage/catarse/app/stylesheets/content/footer.sass\A \A 1: #footer\A 2:   width: 100%\A 3:   float: left\A 4:   background-color: $ultra_gryn\A 5:   padding: 30px 0\A 6:   .footer_content\A 7:     +default_grid\A 8:     .co_logo\A 9:       margin-top: 40px"; }

@@ -2894,7 +2894,7 @@ form.search_input input[type="submit"] {
 }
 /* line 8, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .co_logo {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 /* line 10, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .open_data {
@@ -2990,24 +2990,35 @@ form.search_input input[type="submit"] {
   margin-right: 0;
   padding-left: 120px;
 }
-/* line 67, ../../app/stylesheets/content/footer.sass */
+/* line 66, ../../app/stylesheets/content/footer.sass */
+#footer .footer_content .social_menu ul {
+  margin-top: 50px;
+}
+/* line 68, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu ul li {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px;
   margin-bottom: 20px;
 }
-/* line 69, ../../app/stylesheets/content/footer.sass */
+/* line 71, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu ul li p {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 160px;
   display: block;
-  font-family: "Lato", sans-serif;
-  font-size: 1.6em;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 1.8em;
   color: #cccccc;
-  float: right;
-  width: 200px;
+  margin-top: 5px;
 }
-/* line 77, ../../app/stylesheets/content/footer.sass */
+/* line 79, ../../app/stylesheets/content/footer.sass */
 #footer .footer_content .social_menu ul li .social_img {
   width: 32px;
-  float: left;
-  margin-right: 15px;
 }
 
 /* line 2, ../../app/stylesheets/content/home.sass */
