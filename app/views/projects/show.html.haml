@@ -48,7 +48,7 @@
       - else
         = @project.about_html.html_safe
       = render "admin_fields" if current_user and current_user.admin
-    #project_updates.content
+    #project_updates.content= render :partial => 'updates'
     #project_backers.content
     #project_comments.content= render :partial => 'comments'
   #loading= image_tag "loading.gif"
