@@ -1,15 +1,17 @@
 #footer
   width: 100%
   float: left
-  background-color: $ultra_gryn
+  background-color: $grafiti
   padding: 30px 0
   .footer_content
     +default_grid
-    .co_logo
-      margin-top: 40px
+    +clearfix
     .open_data
+      +clearfix
       +grid(5)
       +grid-suffix(1)
+      #comum
+        margin-top: 35px
       h3
         +clearfix
         padding: 5px 0 5px 75px
@@ -47,6 +49,7 @@
 
     .footer_menu
       +grid(4)
+      +clearfix
       display: block
       margin-top: 30px
       a
@@ -63,11 +66,15 @@
       +grid(4)
       +omega
       +grid-prefix(2)
+      +clearfix
+      #engage
+        margin-top: 110px
       ul
         margin-top: 50px
         li
           +grid(4)
           margin-bottom: 20px
+          +transition(0.3, all)
           p
             +grid(3)
             display: block
@@ -75,6 +82,9 @@
             font-size: 1.8em
             color: #ccc
             margin-top: 5px
+            cursor: pointer
+            &:hover
+              +opacity(0.4)
 
           .social_img
             width: 32px
