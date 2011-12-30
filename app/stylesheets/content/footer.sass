@@ -61,27 +61,52 @@
         cursor: pointer
 
     .social_menu
-      +grid(4)
+      +grid(5)
       +omega
-      +grid-prefix(2)
-      #engage
-        margin-top: 110px
-      ul
-        margin-top: 50px
-        li
-          +grid(4)
-          margin-bottom: 20px
-          +transition(0.3, all)
-          p
-            +grid(3)
-            display: block
-            font-family: 'Lato-Bold', sans-serif
-            font-size: 1.8em
-            color: #ccc
-            margin-top: 5px
-            cursor: pointer
-            &:hover
-              +opacity(0.4)
+      +grid-prefix(1)
+      h3.cat
+        +clearfix
+        font-family: museo-500
+        display: block
+        color: $green
+        background: url("/images/redesign/like13x11.png") 3px top no-repeat
+        padding: 5px 0 35px 25px
+        font-family: museo-500
 
-          .social_img
-            width: 32px
+      .subscribe 
+        +border-radius(5px)
+        background-color: #434343
+        padding: 5px 10px
+        margin-top: 30px
+        h3
+          background: url("/images/redesign/news13x11.png") 1px top no-repeat
+          text-indent: 15px
+          padding: 5px 0 15px 25px
+          font-family: museo-500
+          display: block
+          color: white
+
+        input[type=submit]
+          +border-radius(3px)
+          //+linear-gradient(top, rgb(232,83,150) 3%, rgb(199,40,149) 52%)
+          //+linear-gradient(color-stops(white, blue 33%, black))
+          +background-image(linear-gradient(top, lighten($pink, 8%%), $pink))
+          color: white
+          padding: 5px 10px
+          border: $pink 1px solid
+          cursor: pointer
+          font-family: 'Lato', sans-serif
+          font-size: 1.3em
+          margin-left: 8px
+          &:hover
+            +background-image(linear-gradient(bottom, lighten($pink, 8%), $pink))
+        input[type=text]
+          font-size: 1.5em
+          padding: 3px
+          width: 175px
+          margin-right: 5px
+
+      
+      #engage
+        margin-top: 80px
+        margin-left: 80px
