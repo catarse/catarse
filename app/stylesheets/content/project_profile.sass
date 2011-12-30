@@ -1,2 +1,27 @@
 body[data-action="new_project_profile"][data-controller="static"]
+  #page_content
+    +default_grid
+    .section_header
+      span
+        font-family: 'Lato-Bold', sans-serif
+    
+    .midia
+      +grid(11)
 
+    .info
+      +grid(5)
+      +omega
+      background-color: white
+      border: 1px solid #ccc
+
+      .statistic
+        padding: 5px
+        color: black
+        p
+          font-family: "Lato-Regular", sans-serif
+          font-size: 1.5em
+          text-transform: uppercase
+        span
+          font-family: "Lato-Bold", sans-serif
+          font-size: 2.3em
+          
