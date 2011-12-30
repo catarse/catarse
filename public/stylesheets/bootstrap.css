@@ -5096,6 +5096,15 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   width: 640px;
 }
 /* line 11, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .video iframe {
+  -moz-border-radius: 10px 10px 0 0;
+  -webkit-border-radius: 10px 10px 0 0;
+  -o-border-radius: 10px 10px 0 0;
+  -ms-border-radius: 10px 10px 0 0;
+  -khtml-border-radius: 10px 10px 0 0;
+  border-radius: 10px 10px 0 0;
+}
+/* line 14, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info {
   display: inline;
   float: left;
@@ -5103,22 +5112,110 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   margin-right: 10px;
   width: 280px;
   margin-right: 0;
-  background-color: white;
+  font-family: "Lato-Regular", sans-serif;
+}
+/* line 19, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics {
   border: 1px solid #cccccc;
 }
-/* line 17, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .info .statistic {
-  padding: 5px;
+/* line 21, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics .statistics {
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.4);
   color: black;
+  overflow: hidden;
+  *zoom: 1;
 }
-/* line 20, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .info .statistic p {
-  font-family: "Lato-Regular", sans-serif;
-  font-size: 1.5em;
+/* line 26, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics .statistics .iten {
+  margin-bottom: 15px;
+}
+/* line 28, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics .statistics .iten p {
+  font-size: 4.5em;
+  font-family: "Lato-Bold";
   text-transform: uppercase;
 }
-/* line 24, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .info .statistic span {
+/* line 32, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics .statistics .iten em {
+  font-size: 2.2em;
+  color: #666666;
+}
+/* line 36, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #condition {
+  background-color: #999999;
+  padding: 5px 10px;
+}
+/* line 39, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #condition p {
+  color: white;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  line-height: 150%;
+  letter-spacing: 1px;
+}
+/* line 46, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #support {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  -moz-box-shadow: #999999 1px 3px 6px;
+  -webkit-box-shadow: #999999 1px 3px 6px;
+  -o-box-shadow: #999999 1px 3px 6px;
+  box-shadow: #999999 1px 3px 6px;
+  background-color: #59af6d;
+  padding: 20px 10px;
+  margin: 10px 15px;
+  cursor: pointer;
+}
+/* line 53, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #support p {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  color: white;
+}
+/* line 57, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #support:hover {
+  background-color: #34b253;
+}
+/* line 59, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #support:active {
+  -moz-box-shadow: #999999 1px 1px 6px;
+  -webkit-box-shadow: #999999 1px 1px 6px;
+  -o-box-shadow: #999999 1px 1px 6px;
+  box-shadow: #999999 1px 1px 6px;
+  background-color: #34b253;
+}
+/* line 64, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #rewards .box {
+  background-color: rgba(242, 242, 242, 0.6);
+  border: 1px solid #cccccc;
+  margin: 3px 0;
+  padding: 20px 10px 10px 10px;
+}
+/* line 69, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #rewards .box h2 {
+  font-size: 1.7em;
   font-family: "Lato-Bold", sans-serif;
-  font-size: 2.3em;
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 5px;
+}
+/* line 75, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #rewards .box p {
+  font-size: 1.5em;
+  color: #666666;
+  margin-bottom: 10px;
+  line-height: 150%;
+}
+/* line 80, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #rewards .box em {
+  display: block;
+  font-size: 1.4em;
+  text-indent: 30px;
+  background: url("/images/redesign/support23x23.png") center left no-repeat;
+  height: 30px;
 }
