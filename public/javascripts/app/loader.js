@@ -37,7 +37,7 @@ var CATARSE_LOADER = {
       'app/views/layouts/flash',
       'app/views/layouts/login',
       'app/views/layouts/user',
-      'app/routers/router',
+      'app/router',
       'app/models/project', 
       'app/models/backer', 
       'app/models/user', 
