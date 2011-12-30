@@ -5155,7 +5155,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   letter-spacing: 1px;
 }
 /* line 46, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .info #support {
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #pledge {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   -o-border-radius: 8px;
@@ -5172,17 +5172,17 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   cursor: pointer;
 }
 /* line 53, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .info #support p {
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #pledge p {
   font-size: 1.5em;
   text-transform: uppercase;
   color: white;
 }
 /* line 57, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .info #support:hover {
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #pledge:hover {
   background-color: #34b253;
 }
 /* line 59, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .info #support:active {
+body[data-action="new_project_profile"][data-controller="static"] #page_content .info #pledge:active {
   -moz-box-shadow: #999999 1px 1px 6px;
   -webkit-box-shadow: #999999 1px 1px 6px;
   -o-box-shadow: #999999 1px 1px 6px;
@@ -5218,4 +5218,59 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   text-indent: 30px;
   background: url("/images/redesign/support23x23.png") center left no-repeat;
   height: 30px;
+}
+/* line 87, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 280px;
+  margin-right: 0;
+  margin-left: 0;
+  margin: 10px 0;
+}
+/* line 92, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile h3 {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 280px;
+  margin-right: 0;
+  margin-left: 0;
+  background: url("/images/redesign/profile19x14.png") no-repeat;
+  display: block;
+  text-indent: 24px;
+}
+/* line 99, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .avatar {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100px;
+  margin-left: 0;
+  margin-top: 10px;
+  height: 105px;
+  background: url("/images/redesign/avatar100x105.png");
+}
+/* line 105, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 160px;
+  margin-right: 0;
+  margin-top: 10px;
+}
+/* line 109, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #name {
+  color: #4383d1;
+  font-size: 1.5em;
+}
+/* line 112, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #city, body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #projects {
+  margin-top: 5px;
 }
