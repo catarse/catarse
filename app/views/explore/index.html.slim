@@ -8,22 +8,22 @@
     h3= t('.search')
     .search
       = text_field_tag :search, nil, autocomplete: "off"
-    - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
+    - unless @recommended and @expiring and @recent and @successful
       h3= t('.quick_explore')
       ul#explore_quick
-        - unless @recommended.empty?
+        - if @recommended
           li
             a href='#recommended'
               = t('.recommended')
-        - unless @expiring.empty?
+        - if @expiring
           li
             a href='#expiring'
               = t('.expiring')
-        - unless @recent.empty?
+        - if @recent
           li
             a href='#recent'
               = t('.recent')
-        - unless @successful.empty?
+        - if @successful
           li
             a href='#successful'
               = t('.successful')
