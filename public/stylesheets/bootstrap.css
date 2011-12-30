@@ -2988,53 +2988,84 @@ form.search_input input[type="submit"] {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 220px;
+  width: 280px;
   margin-right: 0;
-  padding-left: 120px;
+  padding-left: 60px;
 }
 /* line 67, ../../app/stylesheets/content/footer.sass */
-#footer .footer_content .social_menu #engage {
-  margin-top: 110px;
-}
-/* line 69, ../../app/stylesheets/content/footer.sass */
-#footer .footer_content .social_menu ul {
-  margin-top: 50px;
-}
-/* line 71, ../../app/stylesheets/content/footer.sass */
-#footer .footer_content .social_menu ul li {
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 220px;
-  margin-bottom: 20px;
-  -moz-transition: 0.3, all;
-  -webkit-transition: 0.3, all;
-  -o-transition: 0.3, all;
-  transition: 0.3, all;
-}
-/* line 75, ../../app/stylesheets/content/footer.sass */
-#footer .footer_content .social_menu ul li p {
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 160px;
+#footer .footer_content .social_menu h3.cat {
+  overflow: hidden;
+  *zoom: 1;
+  font-family: museo-500;
   display: block;
-  font-family: "Lato-Bold", sans-serif;
-  font-size: 1.8em;
-  color: #cccccc;
-  margin-top: 5px;
+  color: #59af6d;
+  background: url("/images/redesign/like13x11.png") 3px top no-repeat;
+  padding: 5px 0 35px 25px;
+  font-family: museo-500;
+}
+/* line 76, ../../app/stylesheets/content/footer.sass */
+#footer .footer_content .social_menu .subscribe {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #434343;
+  padding: 5px 10px;
+  margin-top: 30px;
+}
+/* line 81, ../../app/stylesheets/content/footer.sass */
+#footer .footer_content .social_menu .subscribe h3 {
+  background: url("/images/redesign/news13x11.png") 1px top no-repeat;
+  text-indent: 15px;
+  padding: 5px 0 15px 25px;
+  font-family: museo-500;
+  display: block;
+  color: white;
+}
+/* line 89, ../../app/stylesheets/content/footer.sass */
+#footer .footer_content .social_menu .subscribe input[type=submit] {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ed77ad), color-stop(100%, #e85397));
+  background-image: -webkit-linear-gradient(top, #ed77ad, #e85397);
+  background-image: -moz-linear-gradient(top, #ed77ad, #e85397);
+  background-image: -o-linear-gradient(top, #ed77ad, #e85397);
+  background-image: -ms-linear-gradient(top, #ed77ad, #e85397);
+  background-image: linear-gradient(top, #ed77ad, #e85397);
+  color: white;
+  padding: 5px 10px;
+  border: #e85397 1px solid;
   cursor: pointer;
+  font-family: "Lato", sans-serif;
+  font-size: 1.3em;
+  margin-left: 8px;
 }
-/* line 83, ../../app/stylesheets/content/footer.sass */
-#footer .footer_content .social_menu ul li p:hover {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
-  opacity: 0.4;
+/* line 101, ../../app/stylesheets/content/footer.sass */
+#footer .footer_content .social_menu .subscribe input[type=submit]:hover {
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ed77ad), color-stop(100%, #e85397));
+  background-image: -webkit-linear-gradient(bottom, #ed77ad, #e85397);
+  background-image: -moz-linear-gradient(bottom, #ed77ad, #e85397);
+  background-image: -o-linear-gradient(bottom, #ed77ad, #e85397);
+  background-image: -ms-linear-gradient(bottom, #ed77ad, #e85397);
+  background-image: linear-gradient(bottom, #ed77ad, #e85397);
 }
-/* line 86, ../../app/stylesheets/content/footer.sass */
-#footer .footer_content .social_menu ul li .social_img {
-  width: 32px;
+/* line 103, ../../app/stylesheets/content/footer.sass */
+#footer .footer_content .social_menu .subscribe input[type=text] {
+  font-size: 1.5em;
+  padding: 3px;
+  width: 175px;
+  margin-right: 5px;
+}
+/* line 110, ../../app/stylesheets/content/footer.sass */
+#footer .footer_content .social_menu #engage {
+  margin-top: 80px;
+  margin-left: 80px;
 }
 
 /* line 2, ../../app/stylesheets/content/home.sass */
