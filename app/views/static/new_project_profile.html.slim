@@ -12,26 +12,35 @@
   
   .midia
     .video
-      iframe src="http://player.vimeo.com/video/20664159?byline=0&amp;portrait=0&amp;color=ffffff" width="640" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+      iframe src="http://player.vimeo.com/video/20664159?byline=0&amp;portrait=0&amp;color=ffffff" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
     .tabs
     .social
     .midia_content
  
   .info
-    .statistic 
-      p
-      | 119
-      span apoiadores
-      | R$ 14.210
-      span atingidos de R$25.150
-      | 19
-      span dias restantes
-    .condition
-      p ESTE PROJETO SÓ SERÁ FINANCIADO SE PELO MENOS R$ 26.000 FOREM ATINGIDOS ATÉ 14/10/2011
-    .support
-      p QUERO APOIAR ESSE PROJETO
+    #statistics
+      .statistics
+        .iten 
+          p
+            |119
+          em apoiadores
+        .iten 
+          p
+            | R$ 14.210
+          em atingidos de R$25.150
+        .iten 
+          p
+            |19
+          em dias restantes
+
+      #condition
+        p 
+          | ESTE PROJETO SÓ SERÁ FINANCIADO SE PELO MENOS R$ 26.000 FOREM ATINGIDOS ATÉ 14/10/2011
+      #support
+        p 
+          | QUERO APOIAR ESSE PROJETO
     
-    .rewards
+    #rewards
       .box
         h2 PARA R$10,00 OU MAIS
         p 
@@ -52,8 +61,9 @@
         p
           | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
         em 28 apoiadores
+
       
-    .creator_profile
+    #creator_profile
       h3 Projeto por
       .avatar
       .personal_info
