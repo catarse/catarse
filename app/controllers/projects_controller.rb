@@ -71,7 +71,7 @@ class ProjectsController < ApplicationController
   end
   def vimeo
     project = Project.new(:video_url => params[:url])
-    if project.vimeo and project.vimeo.info
+    if project.vimeo.info
       render :json => project.vimeo.info.to_json
     else
       render :json => {:id => false}.to_json
