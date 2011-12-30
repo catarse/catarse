@@ -43,7 +43,7 @@ body[data-action="new_project_profile"][data-controller="static"]
           line-height: 150%
           letter-spacing: 1px
       
-      #support
+      #pledge
         +border-radius(8px)
         +box-shadow(#999 1px 3px 6px)
         background-color: $green
@@ -83,4 +83,33 @@ body[data-action="new_project_profile"][data-controller="static"]
           text-indent: 30px
           background: url('/images/redesign/support23x23.png') center left no-repeat
           height: 30px
+    
+    #creator_profile
+      +grid(5)
+      +omega
+      +alpha
+      margin: 10px 0
+      h3
+        +grid(5)
+        +omega
+        +alpha
+        background: url('/images/redesign/profile19x14.png') no-repeat
+        display: block
+        text-indent: 24px
+      .avatar
+        +grid(2)
+        +alpha
+        margin-top: 10px
+        height: 105px
+        background: url('/images/redesign/avatar100x105.png') 
+      .personal_info
+        +grid(3)
+        +omega
+        margin-top: 10px
+        #name
+          color: $blue
+          font-size: 1.5em
+        #city, #projects
+          margin-top: 5px
+
 
