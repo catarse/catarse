@@ -1,2 +1,85 @@
-h1
-  | Hello world!
+== render 'static/partials/header'
+
+#page_content
+  .section_header
+    h1
+      | Tellus Inspira
+    h4
+      | um projeto de Teatro, no 
+      span Rio de Janeiro, RJ, 
+      | por 
+      span Bárbara Wolff Dick
+  
+  .midia
+    .video
+      iframe src="http://player.vimeo.com/video/20664159?byline=0&amp;portrait=0&amp;color=ffffff" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+    .tabs
+    .social
+    .midia_content
+ 
+  .info
+    #statistics
+      .statistics
+        .iten 
+          p
+            |119
+          em apoiadores
+        .iten 
+          p
+            | R$ 14.210
+          em atingidos de R$25.150
+        .iten 
+          p
+            |19
+          em dias restantes
+
+      #condition
+        p 
+          | ESTE PROJETO SÓ SERÁ FINANCIADO SE PELO MENOS R$ 26.000 FOREM ATINGIDOS ATÉ 14/10/2011
+      #pledge
+        p 
+          | QUERO APOIAR ESSE PROJETO
+    
+    #rewards
+      .box
+        h2 PARA R$10,00 OU MAIS
+        p 
+          | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
+        em 28 apoiadores
+      .box
+        h2 PARA R$50,00 OU MAIS
+        p
+          | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
+        em 28 apoiadores
+      .box
+        h2 PARA R$100,00 OU MAIS
+        p
+          | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
+        em 28 apoiadores
+      .box
+        h2 PARA R$300,00 OU MAIS
+        p
+          | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
+        em 28 apoiadores
+
+      
+    #creator_profile
+      h3 projeto por
+      .avatar
+      .personal_info
+        #name 
+          p Bárbara Wolff Dick
+        #city 
+          p de Porto Alegre
+        #projects
+          p 
+            | apoiou
+            span 00
+            | projetos
+
+
+
+   
+
+
+== render 'static/partials/footer'
