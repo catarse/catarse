@@ -3,7 +3,17 @@ script type="text/template" id="empty_projects_template"
 
 script type="text/template" id="project_template"
   div class="project"
-    / .success_slice.pt
+    | <% if(expired) { %>
+    .status_image
+      a href="<%= url %>"
+        |<% if(successful) { %>
+        = image_tag "successful.#{I18n.locale}.png"
+        |<% } else if(waiting_confirmation) { %>
+        = image_tag "waiting_confirmation.#{I18n.locale}.png"
+        |<% } else { %>
+        = image_tag "not_successful.#{I18n.locale}.png"
+        |<% } %>
+    | <% } %>
     .box
       p.black_box <%= category['name'] %>
       img src="<%= image %>" width="210px" height="172px"
