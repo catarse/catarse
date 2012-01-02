@@ -21,8 +21,21 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   }),
 
   index: function(){
-    this.recommended()
-    CATARSE.router.navigate("recommended")
+    var HomeView = Backbone.View.extend({
+      template: _.template($('#discover_home').html()),
+      el: $("#explore_results .results"),
+
+      render: function() {
+        $(this.el).html(this.template);
+        return this;
+      }
+    })
+
+    home = new HomeView();
+    home.render();
+
+
+    // this.recommended()
   },
 
   search: function(search){
