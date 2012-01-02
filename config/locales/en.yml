@@ -192,6 +192,9 @@ en:
       text_subtitle: "Tell everyone what you just did"
       text_title_html: "You are now part of the group that does everything to make %{link} happen."
       title: "Thank you"
+  posts:
+    create:
+      success: "Your update have been successfully created! Now is time to spread it and keep making it happen :D"
   project:
     finish:
       successful:
@@ -395,7 +398,10 @@ en:
     twitter:
       take_a_look: "Check out the project %{name} on @Catarse_"
     updates:
+      body: "Text of the update"
       empty: "This project didn't have updates yet. But wait and see =D"
+      submit: "Send update"
+      title: "Title of the update"
     video_embed:
       a_project_by_html: "A project by %{link} on Catarse"
   projects_mailer:
