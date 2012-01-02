@@ -13,8 +13,18 @@
   .midia
     .video
       iframe src="http://player.vimeo.com/video/20664159?byline=0&amp;portrait=0&amp;color=ffffff" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
-    .tabs
     .social
+      
+    .tabs
+      form[method="get" id="order-form"]
+        input[type="radio" value="pops" name="by" id="by_pops" checked=(params[:by].nil? || params[:by] == 'pops')]
+        label[for="by_pops"] início
+        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
+        label[for="by_recent"] atualizações (12)
+        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
+        label[for="by_recent"] apoiadores (12358)
+        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
+        label[for="by_recent"] comentários
     .midia_content
  
   .info
