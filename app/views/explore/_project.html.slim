@@ -1,6 +1,28 @@
 script type="text/template" id="empty_projects_template"
   .empty= t('.empty')
 
+script type="text/template" id="discover_home"
+  .selected_list
+    h2
+      | seleção
+      span
+        | Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção.
+  .final_stage_list
+    h2
+      | na reta final
+      span
+        | Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!
+  .new_projects_list
+    h2
+      | novos e fresquinhos
+      span
+        | Recém-chegados. O sol começou a brilhar para eles agorinha...
+  .finished_projects_list
+    h2
+      | bem-sucedidos
+      span
+        | Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!
+
 script type="text/template" id="project_template"
   div class="project"
     | <% if(expired) { %>
