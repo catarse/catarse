@@ -67,10 +67,5 @@ group :test do
   gem 'shoulda'
 end
 
-# if you want use capybara-webkit, compile QT and be happy :)
-# group :test do
-#   gem 'capybara-webkit', "0.6.1"
-# end
-
 # Putting pg to the end because of a weird bug with Lion, pg and openssl
 gem 'pg'
