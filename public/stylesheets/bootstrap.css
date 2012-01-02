@@ -4198,10 +4198,10 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
 }
 /* line 89, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li a {
-  padding-top: 10px;
+  vertical-align: middle;
   width: 100px;
-  height: 21px;
-  display: block;
+  height: 31px;
+  display: table-cell;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -4219,7 +4219,7 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   font-size: 1.2em;
   color: #6498d8;
 }
-/* line 102, ../../app/stylesheets/content/discover.sass */
+/* line 103, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li a:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -4228,7 +4228,7 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   -o-box-shadow: #4383d1 2px 2px 2px;
   box-shadow: #4383d1 2px 2px 2px;
 }
-/* line 105, ../../app/stylesheets/content/discover.sass */
+/* line 106, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li a.selected {
   -moz-box-shadow: #4383d1 2px 2px 2px;
   -webkit-box-shadow: #4383d1 2px 2px 2px;
