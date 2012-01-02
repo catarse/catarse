@@ -394,6 +394,8 @@ en:
       title: "Submit your project"
     twitter:
       take_a_look: "Check out the project %{name} on @Catarse_"
+    updates:
+      empty: "This project didn't have updates yet. But wait and see =D"
     video_embed:
       a_project_by_html: "A project by %{link} on Catarse"
   projects_mailer:

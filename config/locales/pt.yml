@@ -352,6 +352,8 @@ pt:
         explore: "Explore mais projetos bem-sucedidos"
         subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
         title: "Projetos bem-sucedidos"
+    updates:
+      empty: "Este projeto ainda não teve atualizações. Aguarde =D"
     project_updates:
       empty: "Este projeto ainda não teve atualizações. Aguarde =D"
       submit: "Enviar atualização"
