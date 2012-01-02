@@ -4,8 +4,9 @@
       = form.input :title, as: :string, label: t('.title')
       = form.input :body, as: :text, label: t('.body')
       = form.input :project_id, as: :hidden
+    = render :partial => 'formatting_tips'
     = form.buttons do
-      = form.commit_button t('.submit')
+      = form.commit_button t('.submit'), disabled: true
 
 - cache(action_suffix: "updates_#{@project.id}") do
   div[itemscope itemtype="http://schema.org/Blog"]

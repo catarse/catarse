@@ -47,11 +47,24 @@ CATARSE.ProjectRouter = Backbone.Router.extend({
 		link.parent().parent().find('li').removeClass('selected')
     link.parent().addClass('selected')
 	}
-
+	
 })
 
 CATARSE.project = new CATARSE.Project($('#project_description').data("project"))
 CATARSE.projectRouter = new CATARSE.ProjectRouter()
+
+$('#show_formatting_tips').click(function(event){
+  event.preventDefault()
+  $('#show_formatting_tips').hide()
+  $('#formatting_tips').slideDown()
+})
+$('#project_updates [type=submit]').attr('disabled', true)
+$('#project_updates [type=text],textarea').keyup(function(){
+  if($('#project_updates [type=text]').val().length > 0 && $('#project_updates textarea').val().length > 0)
+    $('#project_updates [type=submit]').attr('disabled', false)
+  else
+    $('#project_updates [type=submit]').attr('disabled', true)
+})
 
 $("#project_link").click(function(e){
   e.preventDefault()
