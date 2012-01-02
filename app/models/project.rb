@@ -1,5 +1,4 @@
 # coding: utf-8
-VIMEO_REGEX = /http:\/\/(www\.)?vimeo.com\/(\d+)/
 class Project < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
@@ -14,6 +13,9 @@ class Project < ActiveRecord::Base
   has_many :rewards, :dependent => :destroy
   has_and_belongs_to_many :managers, :join_table => "projects_managers", :class_name => 'User'
   accepts_nested_attributes_for :rewards
+  
+  has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
+  
   auto_html_for :about do
     html_escape :map => { 
       '&' => '&amp;',  
@@ -44,47 +46,18 @@ class Project < ActiveRecord::Base
   
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
-  validates_format_of :video_url, :with => VIMEO_REGEX, :message => I18n.t('project.vimeo_regex_validation')
-  validate :verify_if_video_exists_on_vimeo
   before_create :store_image_url
   
   def store_image_url
-    self.image_url = vimeo["thumbnail_large"] unless self.image_url
-  end
-  def verify_if_video_exists_on_vimeo
-    unless vimeo and vimeo["id"].to_s == vimeo_id
-      errors.add(:video_url, I18n.t('project.verify_if_video_exists_on_vimeo'))
-    end
+    self.image_url = vimeo.thumbnail unless self.image_url
   end
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end
-  def vimeo
-    return @vimeo if @vimeo
-    return unless vimeo_id
-    @vimeo = Vimeo::Simple::Video.info(vimeo_id)
-    if @vimeo.parsed_response and @vimeo.parsed_response[0]
-      @vimeo = @vimeo.parsed_response[0]
-    else
-      @vimeo = nil
-    end
-  rescue
-    @vimeo = nil
-  end
-  def vimeo_id
-    return @vimeo_id if @vimeo_id
-    return unless video_url
-    if result = video_url.match(VIMEO_REGEX)
-      @vimeo_id = result[2]
-    end
-  end
-  def video_embed_url
-    "http://player.vimeo.com/video/#{vimeo_id}"
-  end
   def display_image
     return image_url if image_url
-    return "user.png" unless vimeo and vimeo["thumbnail_large"]
-    vimeo["thumbnail_large"]
+    return "user.png" unless vimeo.thumbnail
+    vimeo.thumbnail
   end
   def display_expires_at
     I18n.l(expires_at.to_date)
