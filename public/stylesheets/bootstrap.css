@@ -2968,7 +2968,7 @@ form.search_input input[type="submit"] {
   margin-top: 30px;
 }
 /* line 53, ../../app/stylesheets/content/footer.sass */
-#footer .footer_content .footer_menu a {
+#footer .footer_content .footer_menu .iten {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5218,8 +5218,9 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   text-indent: 30px;
   background: url("/images/redesign/support23x23.png") center left no-repeat;
   height: 30px;
+  vertical-align: middle;
 }
-/* line 87, ../../app/stylesheets/content/project_profile.sass */
+/* line 88, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile {
   display: inline;
   float: left;
@@ -5230,7 +5231,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   margin-left: 0;
   margin: 10px 0;
 }
-/* line 92, ../../app/stylesheets/content/project_profile.sass */
+/* line 93, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile h3 {
   display: inline;
   float: left;
@@ -5243,7 +5244,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   display: block;
   text-indent: 24px;
 }
-/* line 99, ../../app/stylesheets/content/project_profile.sass */
+/* line 100, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .avatar {
   display: inline;
   float: left;
@@ -5255,7 +5256,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   height: 105px;
   background: url("/images/redesign/avatar100x105.png");
 }
-/* line 105, ../../app/stylesheets/content/project_profile.sass */
+/* line 106, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info {
   display: inline;
   float: left;
@@ -5265,12 +5266,12 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   margin-right: 0;
   margin-top: 10px;
 }
-/* line 109, ../../app/stylesheets/content/project_profile.sass */
+/* line 110, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #name {
   color: #4383d1;
   font-size: 1.5em;
 }
-/* line 112, ../../app/stylesheets/content/project_profile.sass */
+/* line 113, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #city, body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #projects {
   margin-top: 5px;
 }
