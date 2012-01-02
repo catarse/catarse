@@ -10,7 +10,7 @@ html lang="#{I18n.locale}"
     = stylesheet_link_tag 'bootstrap.css', :media => 'screen, projection'
     /[if lt IE 9]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
-    = javascript_include_tag 'app/loader'
+    = javascript_include_tag 'app/loader', 'redesign/application.js'
 
     = csrf_meta_tag
     link rel='shortcut icon' href="/images/favicon.ico"
