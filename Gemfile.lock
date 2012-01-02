@@ -128,6 +128,9 @@ GEM
     fssm (0.2.7)
     haml (3.1.4)
     has_scope (0.5.1)
+    has_vimeo_video (0.0.3)
+      supermodel
+      vimeo
     http_accept_language (1.0.2)
     httparty (0.6.1)
       crack (= 0.1.8)
@@ -285,6 +288,8 @@ GEM
       activemodel (>= 3.0.0)
     steak (1.1.0)
       rspec (>= 1.3)
+    supermodel (0.1.6)
+      activemodel (~> 3.0.0)
     temple (0.3.4)
     thin (1.3.1)
       daemons (>= 1.0.9)
@@ -343,6 +348,7 @@ DEPENDENCIES
   fog
   formtastic (~> 1.1.0)
   haml
+  has_vimeo_video (>= 0.0.3)
   http_accept_language
   httparty
   inherited_resources (= 1.1.2)
@@ -375,7 +381,6 @@ DEPENDENCIES
   unicode
   unicorn
   validation_reflection
-  vimeo
   web_translate_it
   weekdays
   will_paginate (>= 3.0.pre2)

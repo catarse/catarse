@@ -24,3 +24,35 @@
           p Projetos no ar
 
         = link_to '>> veja mais estatísticas aqui na OPENDATA', '#'
+      = link_to image_tag ('redesign/comum.png'), :id => 'comum' 
+
+    .footer_menu
+      a Como funciona
+      a F.A.Q./Ajuda
+      a Termos de Uso
+      a Política de Privacidade
+      a Contato
+
+    
+    .social_menu
+      h3.cat 
+        | curtiu o catarse?
+      iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.catarse.me&amp;send=false&amp;layout=standard&amp;width=250&amp;show_faces=true&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=80&amp;appId=233819696673790" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:80px;" allowTransparency="true"
+      //ul
+        li
+          = image_tag ('redesign/facebook32x32.png'), :class => 'social_img'
+          p Curta no Facebook
+        li
+          = image_tag ('redesign/twitter32x32.png'), :class => 'social_img'
+          p Siga no Twitter
+        li
+          = image_tag ('redesign/rss32x32.png'), :class => 'social_img'
+          p Leia nosso blog
+      .subscribe
+        h3 
+          | quer receber novidades?
+        input type="text" name="user" value="email@email.com.br"
+        input type="submit" value="enviar"
+            
+      = link_to image_tag ('redesign/engage.png'), :id => 'engage'
+

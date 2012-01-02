@@ -17,7 +17,7 @@ gem 'validation_reflection'
 gem 'inherited_resources', '= 1.1.2'
 gem 'maxim-sexy_pg_constraints'
 gem 'spectator-validates_email', :require => 'validates_email'
-gem 'vimeo'
+gem 'has_vimeo_video', '>= 0.0.3'
 gem 'wirble'
 gem "on_the_spot"
 gem 'unicorn'

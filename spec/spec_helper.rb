@@ -26,9 +26,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    Project.any_instance.stubs(:verify_if_video_exists_on_vimeo).returns(true)
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
-
     DatabaseCleaner.clean
   end
 

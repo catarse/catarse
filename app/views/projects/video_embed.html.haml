@@ -1,5 +1,5 @@
 #video_embed
-  %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "264", :height => "198"}
+  %iframe{:src => "#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "264", :height => "198"}
   %h1= link_to @project.name, project_path(@project)
   #video_embed_footer
     %h2 #{t('.a_project_by_html', :link => link_to(@project.user.display_name, user_path(@project.user)))}
