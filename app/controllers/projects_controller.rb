@@ -18,23 +18,19 @@ class ProjectsController < ApplicationController
     index! do |format|
       format.html do
         @title = t("site.title")
-<<<<<<< HEAD
-        @home_page = Project.includes(:user, :category, :backers).visible.home_page.limit(4).order('"order"').all
-        @expiring = Project.includes(:user, :category, :backers).visible.expiring.not_home_page.not_expired.order('expires_at, created_at DESC').limit(3).all
-        @recent = Project.includes(:user, :category, :backers).visible.not_home_page.not_expiring.not_expired.where("projects.user_id <> 7329").order('created_at DESC').limit(3).all
-        # @successful = Project.includes(:user, :category, :backers).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
-=======
         home_page_projects = Project.includes(:user, :category).visible.home_page.order('"order"')
         if current_user and current_user.recommeded_project
           @home_page = current_user.recommended_project + home_page_projects.limit(5).where("id != #{current_user.recommended_project.id}").all
         else
-          @home_page = home_page_projects.limit(6).all
+          @home_page = home_page_projects.limit(4).all
         end
         @expiring = Project.includes(:user, :category).visible.expiring.not_home_page.not_expired.order('expires_at, created_at DESC').limit(3).all
-        @recent = Project.includes(:user, :category).visible.not_home_page.not_expiring.not_expired.where("projects.user_id <> 7329").order('created_at DESC').limit(3).all
+        @recent = Project.includes(:user, :category).recent.visible.not_home_page.not_expiring.not_expired.where("projects.user_id <> 7329").order('random()').limit(3).all
         @successful = Project.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
->>>>>>> develop
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
+        @last_tweet = Rails.cache.fetch('last_tweet', :expires_in => 30.minutes) do
+          JSON.parse(Net::HTTP.get(URI('http://api.twitter.com/1/statuses/user_timeline.json?screen_name=catarse_'))).first
+        end
       end
       format.json do
         @projects = Project.visible.search(params[:search]).paginate :page => params[:page], :per_page => 6

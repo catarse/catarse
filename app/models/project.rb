@@ -35,6 +35,7 @@ class Project < ActiveRecord::Base
   scope :expiring, where("expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks')")
   scope :not_expiring, where("NOT (expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("projects.created_at > (current_timestamp - interval '1 month')")
+  scope :last_week, where("projects.created_at > (current_timestamp - interval '1 week')")
   scope :successful, where("goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
   scope :not_successful, where("NOT (goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
   scope :unsuccessful, where("goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")

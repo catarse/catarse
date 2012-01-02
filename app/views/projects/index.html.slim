@@ -25,16 +25,12 @@
       h4
         | No Blog
       h6
-        | Aqui é o título do Blog que
-        | deve ter somente 02 linhas
+        a Aqui é o título do Blog que deve ter somente 02 linhas
       p
-        | O Catarse é um site que tem  um
-        | modelo de funcionar diferente do que a gente tá  acostumado por aí.
+        a O Catarse é um site que tem um modelo de funcionar diferente do que a gente tá  acostumado por aí.
 
       p
-        | O Catarse é um site que tem  um  modelo de funcionar diferente do que a gente tá  acostumado por aí.
+        a O Catarse é um site que tem  um  modelo de funcionar diferente do que a gente tá  acostumado por aí.
     .twitter_message
       p
-        | Global famine and disease always made me wonder about the existence of God, but this
-        br/
-        | Tebow business has me wondering. http://ctr.se/443kd0
+        a= link_to @last_tweet['text'], "https://twitter.com/#!/Catarse_/status/#{@last_tweet['id_str']}"

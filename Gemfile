@@ -47,6 +47,7 @@ gem 'web_translate_it'
 gem 'kaminari'
 gem 'tumblr-api'
 gem 'compass-960-plugin'
+gem 'dalli'
 
 group :development do
   gem 'thin'
