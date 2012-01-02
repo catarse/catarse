@@ -1,4 +1,4 @@
-body[data-action="new_discover"][data-controller="static"]
+body[data-action="index"][data-controller="explore"]
   #page_content
     .projects_list
       +grid(12)
@@ -41,12 +41,16 @@ body[data-action="new_discover"][data-controller="static"]
           font-family: Arial
           font-size: 0.8em
           +opacity(0.6)
-      .project
-        margin-bottom: 20px
-        &.first
-          +alpha
-        &.last
-          +omega
+      ul.collection_list
+        li
+          .project
+            margin-bottom: 20px
+          &.first
+            .project
+              +alpha
+          &.last
+            .project
+              +omega
     .sidebar
       +grid(4)
       section
@@ -96,4 +100,7 @@ body[data-action="new_discover"][data-controller="static"]
               font-size: 1.2em
               color: $minimal_blue
               &:hover
+                +opacity(1.0)
+                +box-shadow($blue 2px 2px 2px)
+              &.selected
                 +box-shadow($blue 2px 2px 2px)
