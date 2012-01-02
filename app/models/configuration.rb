@@ -16,10 +16,25 @@ class Configuration < ActiveRecord::Base
         keys.map{|key| get key }
       end
     end
+    def []= key, value
+      set key, value
+    end
   private
+
     def get key
       find_by_name(key).value rescue nil
     end
     memoize :get
+
+    def set key, value
+      begin
+        find_by_name(key).update_attribute :value, value
+      rescue
+        create!(name: key, value: value)
+      end
+      flush_cache(:get)
+      value
+    end
+
   end
 end
