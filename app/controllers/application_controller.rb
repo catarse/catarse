@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
 
   def namespace
     names = self.class.to_s.split('::')
-    return "" if names.length < 2
+    return "null" if names.length < 2
     names[0..(names.length-2)].map(&:downcase).join('_')
   end
-  
+
   def is_homepage?
     controller_name == 'projects' && action_name == 'index'
   end
