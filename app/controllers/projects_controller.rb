@@ -19,8 +19,8 @@ class ProjectsController < ApplicationController
       format.html do
         @title = t("site.title")
         home_page_projects = Project.includes(:user, :category).visible.home_page.order('"order"')
-        if current_user and current_user.recommeded_project
-          @home_page = current_user.recommended_project + home_page_projects.limit(5).where("id != #{current_user.recommended_project.id}").all
+        if current_user and current_user.recommended_project
+         @home_page = current_user.recommended_project + home_page_projects.limit(3).where("id != #{current_user.recommended_project.id}").all
         else
           @home_page = home_page_projects.limit(4).all
         end
