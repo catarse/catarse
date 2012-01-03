@@ -7,21 +7,33 @@ script type="text/template" id="discover_home"
       | seleção
       span
         | Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção.
+    - @recommended.each_with_index do |item, i|
+      == render 'project_box', :project => item, :index => i
+    = link_to ">> explore mais projetos recomendados", '#recommended', :class => 'discover'
   .final_stage_list
     h2
       | na reta final
       span
         | Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!
+    - @expiring.each_with_index do |item, i|
+      == render 'project_box', :project => item, :index => i
+    = link_to ">> explore mais projetos na reta final", '#expiring', :class => 'discover'
   .new_projects_list
     h2
       | novos e fresquinhos
       span
         | Recém-chegados. O sol começou a brilhar para eles agorinha...
+    - @recent.each_with_index do |item, i|
+      == render 'project_box', :project => item, :index => i
+    = link_to ">> explore mais projetos recentes", '#recent', :class => 'discover'
   .finished_projects_list
     h2
       | bem-sucedidos
       span
         | Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!
+    - @successful.each_with_index do |item, i|
+      == render 'project_box', :project => item, :index => i
+    = link_to ">> explore mais projetos bem-sucedidos", '#successful', :class => 'discover'
 
 script type="text/template" id="project_template"
   div class="project"

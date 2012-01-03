@@ -21,21 +21,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   }),
 
   index: function(){
-    var HomeView = Backbone.View.extend({
-      template: _.template($('#discover_home').html()),
-      el: $("#explore_results .results"),
-
-      render: function() {
-        $(this.el).html(this.template);
-        return this;
-      }
-    })
-
-    home = new HomeView();
-    home.render();
-
-
-    // this.recommended()
+    this.$("#explore_results .results").html($('#discover_home').html())
   },
 
   search: function(search){
@@ -116,7 +102,10 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   render: function(){
-    this.$('#explore_menu .search input').timedKeyup(this.updateSearch, 1000)
+    this.$('#header .search form').submit(function(){
+      return false;
+    })
+    this.$('#header .search input').timedKeyup(this.updateSearch, 1000)
   }
 
 })
