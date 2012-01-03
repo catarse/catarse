@@ -88,21 +88,22 @@
 
         input[type=submit]
           +border-radius(3px)
-          //+linear-gradient(top, rgb(232,83,150) 3%, rgb(199,40,149) 52%)
-          //+linear-gradient(color-stops(white, blue 33%, black))
-          +background-image(linear-gradient(top, lighten($pink, 8%%), $pink))
+          +transition(all, 0.3s)  
+          background-color: $pink
           color: white
           padding: 5px 10px
           border: $pink 1px solid
           cursor: pointer
           font-family: 'Lato', sans-serif
-          font-size: 1.3em
-          margin-left: 8px
+          font-size: 1.2em
+          margin-left: 7px
+          text-transform: uppercase
           &:hover
-            +background-image(linear-gradient(bottom, lighten($pink, 8%), $pink))
+            +box-shadow($pink 0 0 6px)
+
         input[type=text]
           font-size: 1.5em
-          padding: 3px
+          padding: 5px 0 5px 0 
           width: 175px
           margin-right: 5px
 
