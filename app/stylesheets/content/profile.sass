@@ -126,7 +126,7 @@ body[data-action="new_profile"][data-controller="static"]
           color: black
           text-transform: uppercase
     
-    .about_project
+    .about_project, .about_my_project
       +grid(8)
       +omega
       margin-top: 25px
@@ -141,8 +141,8 @@ body[data-action="new_profile"][data-controller="static"]
         cursor: pointer
         &:hover
           +text-shadow($blue 0 0 5px)
-        color: $blue
-
+          color: $blue
+    
     .comments
       +grid(8)
       +omega
@@ -152,13 +152,14 @@ body[data-action="new_profile"][data-controller="static"]
       background: url('/images/redesign/ballon15x15.png') no-repeat
       text-indent: 24px
         
-    .about_project_my_comments
+    .about_project_my_comments, .about_my_project
       +grid(8)
       +omega
       font-size: 1.5em
       line-height: 180%
       color: $grafiti
       margin-bottom: 30px
+      margin-top: 0
         
       em
         +transition(all, 0.3s)
