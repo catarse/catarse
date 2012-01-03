@@ -21,15 +21,11 @@ body[data-action="new_project_profile"][data-controller="static"]
         background-color: #999
         background-color: rgba(153,153,153, 0.8)
         +border-radius (5px)
-        form
+        nav
           margin-left: 10px
-          input
-            display: none
-          input[type="radio"]:checked + label 
-            background: rgb(255,255,255)
-            color: $blue
-          label
+          a
             +transition(all, 0.3s)
+            +border-radius(4px)
             color: white
             cursor: pointer
             font-size: 1.2em
@@ -37,14 +33,16 @@ body[data-action="new_project_profile"][data-controller="static"]
             text-transform: uppercase
             padding: 3px 15px 0 0
             background-color: rgba($gryn,0.3)
-            +border-radius(4px)
             padding: 5px 10px
             margin-right: 8px
             margin-top: 10px 
             &:hover
-              background: rgba(255,255,255,0.4)
+              background: rgba(255,255,255,0.7)
+            &:active
+              background: rgb(255,255,255)
+              color: $blue
       
-      .midia_content
+      .midia_content_home, .midia_content_update, .midia_content_backers, .midia_content_comments
         margin: 20px 0
         .image
           border: 2px solid $orange
@@ -61,6 +59,38 @@ body[data-action="new_project_profile"][data-controller="static"]
             cursor: pointer
             &:hover
               +text-shadow($blue 0 0 6px)
+      
+      .midia_content_update
+        border-bottom: 1px dashed #999
+        padding-bottom: 30px
+
+      .midia_content_backers
+        .backer
+          border-bottom: 1px dashed #999
+          margin: 20px 0
+          .backer_avatar
+            +grid(1)
+            +alpha
+            +box-shadow(#333 1px 1px 2px)
+            margin-top: 6px
+
+          p
+            font-family: 'Lato', sans-serif
+            font-size: 1.5em
+            color: #333
+            line-height: 160%
+            margin-bottom: 20px
+            em
+              +transition(all, 0.3s)
+              color: $blue
+              cursor: pointer
+
+              &:hover
+                +text-shadow($blue 0 0 6px)
+          
+          p#text
+            margin-bottom: 4px
+     
 
 
     .info

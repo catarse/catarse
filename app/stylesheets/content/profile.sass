@@ -33,25 +33,26 @@ body[data-action="new_profile"][data-controller="static"]
         margin-left: 0
         margin-top: 15px
         
-        form
-          input
-            display: none
-          input[type="radio"]:checked + label 
-            background: rgb(255,255,255)
-            color: $blue
-          label
+        nav
+          a
+            +border-radius(4px)
             color: white
             cursor: pointer
             font-size: 1.2em
             font-family: "Lato-Bold", sans-serif
             padding: 3px 15px 0 0
             background-color: rgba($gryn,0.3)
-            +border-radius(4px)
             padding: 5px 10px
             margin-right: 8px
-            margin-top: 10px 
+            margin-top: 10px
+            text-transform: uppercase
             &:hover
               background: rgba(255,255,255,0.4)
+            &:active            
+              background: rgb(255,255,255)
+              color: $blue
+
+
  
     .profile_share
       .profile_pic
@@ -81,10 +82,16 @@ body[data-action="new_profile"][data-controller="static"]
             float: left
             margin: 10px 0 0 24px
 
-    .profile_projects
+    .profile_my_projects, .profile_my_comments
+      +grid(12)
+      +grid-push(4)
+      +omega
+      +alpha
+    .profile_projects_backed, .profile_my_projects, .profile_my_comments
       +grid(12)
       margin-bottom: 30px
       border-bottom: $grafiti solid 2px
+      padding-bottom: 30px
 
 
       .project
@@ -119,7 +126,9 @@ body[data-action="new_profile"][data-controller="static"]
           color: black
           text-transform: uppercase
     
-    .about_project
+    .about_project, .about_my_project
+      +grid(8)
+      +omega
       margin-top: 25px
       font-size: 1.1em
       line-height: 180%
@@ -127,12 +136,36 @@ body[data-action="new_profile"][data-controller="static"]
       margin-bottom: 30px
         
       span
+        +transition(all, 0.3s)
         color: $blue
-
+        cursor: pointer
+        &:hover
+          +text-shadow($blue 0 0 5px)
+          color: $blue
+    
     .comments
+      +grid(8)
+      +omega
       font-family: "Lato-Bold", sans-serif
       font-size: 1.6em
       color: #4a4a4a
       background: url('/images/redesign/ballon15x15.png') no-repeat
       text-indent: 24px
+        
+    .about_project_my_comments, .about_my_project
+      +grid(8)
+      +omega
+      font-size: 1.5em
+      line-height: 180%
+      color: $grafiti
+      margin-bottom: 30px
+      margin-top: 0
+        
+      em
+        +transition(all, 0.3s)
+        color: $blue
+        cursor: pointer
+        &:hover
+          +text-shadow($blue 0 0 5px)
+
         
