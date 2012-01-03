@@ -1,12 +1,18 @@
-body[data-action="new_discover"][data-controller="static"]
+body[data-action="index"][data-controller="explore"]
   #page_content
     .projects_list
       +grid(12)
+      .project
+        &.first
+          +alpha
+        &.last
+          +omega
       a.discover
         +clearfix
         float: right
         font-size: 1.2em
         font-family: Lato-Regular
+        margin-top: 15px
       .selected_list, .final_stage_list, .new_projects_list, .finished_projects_list
         float: left
         padding-bottom: 10px
@@ -41,12 +47,16 @@ body[data-action="new_discover"][data-controller="static"]
           font-family: Arial
           font-size: 0.8em
           +opacity(0.6)
-      .project
-        margin-bottom: 20px
-        &.first
-          +alpha
-        &.last
-          +omega
+      ul.collection_list
+        li
+          .project
+            margin-bottom: 20px
+          &.first
+            .project
+              +alpha
+          &.last
+            .project
+              +omega
     .sidebar
       +grid(4)
       section
@@ -83,10 +93,11 @@ body[data-action="new_discover"][data-controller="static"]
             &.no_margin
               margin-left: none
             a
-              padding-top: 10px
+              // padding-top: 10px
+              vertical-align: middle
               width: 100px
-              height: 21px
-              display: block
+              height: 31px
+              display: table-cell
               +border-radius(5px)
               +box-shadow(rgba(black, 0.15) 2px 2px 2px)
               background: white
@@ -96,4 +107,7 @@ body[data-action="new_discover"][data-controller="static"]
               font-size: 1.2em
               color: $minimal_blue
               &:hover
+                +opacity(1.0)
+                +box-shadow($blue 2px 2px 2px)
+              &.selected
                 +box-shadow($blue 2px 2px 2px)
