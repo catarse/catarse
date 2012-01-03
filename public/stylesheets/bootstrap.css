@@ -4781,7 +4781,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   text-transform: uppercase;
 }
 /* line 129, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project {
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -4795,7 +4795,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content .about_p
   margin-bottom: 30px;
 }
 /* line 138, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project span {
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project span, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -4806,11 +4806,11 @@ body[data-action="new_profile"][data-controller="static"] #page_content .about_p
   transition-duration: 0.3s;
   color: #4383d1;
   cursor: pointer;
-  color: #4383d1;
 }
 /* line 142, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project span:hover {
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project span:hover, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project span:hover {
   text-shadow: #4383d1 0 0 5px;
+  color: #4383d1;
 }
 /* line 146, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .comments {
@@ -4827,7 +4827,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content .comment
   text-indent: 24px;
 }
 /* line 155, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments {
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -4838,9 +4838,10 @@ body[data-action="new_profile"][data-controller="static"] #page_content .about_p
   line-height: 180%;
   color: #363636;
   margin-bottom: 30px;
+  margin-top: 0;
 }
-/* line 163, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments em {
+/* line 164, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments em, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project em {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -4852,8 +4853,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .about_p
   color: #4383d1;
   cursor: pointer;
 }
-/* line 167, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments em:hover {
+/* line 168, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments em:hover, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project em:hover {
   text-shadow: #4383d1 0 0 5px;
 }
 
@@ -5233,7 +5234,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
 body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .tabs nav {
   margin-left: 10px;
 }
-/* line 29, ../../app/stylesheets/content/project_profile.sass */
+/* line 26, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .tabs nav a {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -5260,33 +5261,33 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   margin-right: 8px;
   margin-top: 10px;
 }
-/* line 42, ../../app/stylesheets/content/project_profile.sass */
+/* line 39, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .tabs nav a:hover {
   background: rgba(255, 255, 255, 0.7);
 }
-/* line 44, ../../app/stylesheets/content/project_profile.sass */
+/* line 41, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .tabs nav a:active {
   background: white;
   color: #4383d1;
 }
-/* line 48, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content {
+/* line 45, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_home, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_update, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_comments {
   margin: 20px 0;
 }
-/* line 50, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content .image {
+/* line 47, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_home .image, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_update .image, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers .image, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_comments .image {
   border: 2px solid #f69b0e;
 }
-/* line 53, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content p {
+/* line 50, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_home p, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_update p, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers p, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_comments p {
   font-family: "Lato", sans-serif;
   font-size: 1.5em;
   color: #333333;
   line-height: 160%;
   margin-bottom: 10px;
 }
-/* line 59, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content p em {
+/* line 56, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_home p em, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_update p em, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers p em, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_comments p em {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -5298,11 +5299,64 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   color: #4383d1;
   cursor: pointer;
 }
-/* line 63, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content p em:hover {
+/* line 60, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_home p em:hover, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_update p em:hover, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers p em:hover, body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_comments p em:hover {
   text-shadow: #4383d1 0 0 6px;
 }
-/* line 67, ../../app/stylesheets/content/project_profile.sass */
+/* line 63, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_update {
+  border-bottom: 1px dashed #999999;
+  padding-bottom: 30px;
+}
+/* line 68, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers .backer {
+  border-bottom: 1px dashed #999999;
+  margin: 20px 0;
+}
+/* line 71, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers .backer .backer_avatar {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 40px;
+  margin-left: 0;
+  -moz-box-shadow: #333333 1px 1px 2px;
+  -webkit-box-shadow: #333333 1px 1px 2px;
+  -o-box-shadow: #333333 1px 1px 2px;
+  box-shadow: #333333 1px 1px 2px;
+  margin-top: 6px;
+}
+/* line 77, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers .backer p {
+  font-family: "Lato", sans-serif;
+  font-size: 1.5em;
+  color: #333333;
+  line-height: 160%;
+  margin-bottom: 20px;
+}
+/* line 83, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers .backer p em {
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  color: #4383d1;
+  cursor: pointer;
+}
+/* line 88, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers .backer p em:hover {
+  text-shadow: #4383d1 0 0 6px;
+}
+/* line 91, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="new_project_profile"][data-controller="static"] #page_content .midia .midia_content_backers .backer p#text {
+  margin-bottom: 4px;
+}
+/* line 96, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info {
   display: inline;
   float: left;
@@ -5312,11 +5366,11 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   margin-right: 0;
   font-family: "Lato-Regular", sans-serif;
 }
-/* line 72, ../../app/stylesheets/content/project_profile.sass */
+/* line 101, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics {
   border: 1px solid #cccccc;
 }
-/* line 74, ../../app/stylesheets/content/project_profile.sass */
+/* line 103, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics .statistics {
   padding: 5px 10px;
   background-color: rgba(255, 255, 255, 0.4);
@@ -5324,27 +5378,27 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   overflow: hidden;
   *zoom: 1;
 }
-/* line 79, ../../app/stylesheets/content/project_profile.sass */
+/* line 108, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics .statistics .iten {
   margin-bottom: 15px;
 }
-/* line 81, ../../app/stylesheets/content/project_profile.sass */
+/* line 110, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics .statistics .iten p {
   font-size: 4.5em;
   font-family: "Lato-Bold";
   text-transform: uppercase;
 }
-/* line 85, ../../app/stylesheets/content/project_profile.sass */
+/* line 114, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #statistics .statistics .iten em {
   font-size: 2.2em;
   color: #666666;
 }
-/* line 89, ../../app/stylesheets/content/project_profile.sass */
+/* line 118, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #condition {
   background-color: #999999;
   padding: 5px 10px;
 }
-/* line 92, ../../app/stylesheets/content/project_profile.sass */
+/* line 121, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #condition p {
   color: white;
   font-size: 1.1em;
@@ -5352,7 +5406,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   line-height: 150%;
   letter-spacing: 1px;
 }
-/* line 99, ../../app/stylesheets/content/project_profile.sass */
+/* line 128, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #pledge {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -5377,13 +5431,13 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   margin: 10px 15px;
   cursor: pointer;
 }
-/* line 107, ../../app/stylesheets/content/project_profile.sass */
+/* line 136, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #pledge p {
   font-size: 1.5em;
   text-transform: uppercase;
   color: white;
 }
-/* line 111, ../../app/stylesheets/content/project_profile.sass */
+/* line 140, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #pledge:hover {
   background-color: #3889e9;
   -moz-box-shadow: #4383d1 0 0 10px;
@@ -5391,7 +5445,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   -o-box-shadow: #4383d1 0 0 10px;
   box-shadow: #4383d1 0 0 10px;
 }
-/* line 115, ../../app/stylesheets/content/project_profile.sass */
+/* line 144, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content .info #pledge:active {
   -moz-box-shadow: #999999 1px 1px 6px;
   -webkit-box-shadow: #999999 1px 1px 6px;
@@ -5399,18 +5453,18 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   box-shadow: #999999 1px 1px 6px;
   background-color: #3889e9;
 }
-/* line 119, ../../app/stylesheets/content/project_profile.sass */
+/* line 148, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #rewards {
   margin-bottom: 20px;
 }
-/* line 121, ../../app/stylesheets/content/project_profile.sass */
+/* line 150, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #rewards .box {
   background-color: rgba(242, 242, 242, 0.6);
   border: 1px solid #cccccc;
   margin: 3px 0;
   padding: 20px 10px 10px 10px;
 }
-/* line 126, ../../app/stylesheets/content/project_profile.sass */
+/* line 155, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #rewards .box h2 {
   font-size: 1.7em;
   font-family: "Lato-Bold", sans-serif;
@@ -5418,14 +5472,14 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   color: black;
   margin-bottom: 5px;
 }
-/* line 132, ../../app/stylesheets/content/project_profile.sass */
+/* line 161, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #rewards .box p {
   font-size: 1.5em;
   color: #666666;
   margin-bottom: 10px;
   line-height: 150%;
 }
-/* line 137, ../../app/stylesheets/content/project_profile.sass */
+/* line 166, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #rewards .box em {
   display: block;
   font-size: 1.4em;
@@ -5434,7 +5488,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   height: 30px;
   vertical-align: middle;
 }
-/* line 145, ../../app/stylesheets/content/project_profile.sass */
+/* line 174, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile {
   display: inline;
   float: left;
@@ -5447,7 +5501,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   margin: 10px 0;
   padding-top: 20px;
 }
-/* line 152, ../../app/stylesheets/content/project_profile.sass */
+/* line 181, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile h3 {
   display: inline;
   float: left;
@@ -5461,7 +5515,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   text-indent: 24px;
   margin-bottom: 6px;
 }
-/* line 160, ../../app/stylesheets/content/project_profile.sass */
+/* line 189, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .avatar {
   display: inline;
   float: left;
@@ -5473,7 +5527,7 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   height: 105px;
   background: url("/images/redesign/profile100x100.png");
 }
-/* line 166, ../../app/stylesheets/content/project_profile.sass */
+/* line 195, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info {
   display: inline;
   float: left;
@@ -5484,12 +5538,12 @@ body[data-action="new_project_profile"][data-controller="static"] #page_content 
   margin: 10px 0 20px 0;
   font-size: 1em;
 }
-/* line 171, ../../app/stylesheets/content/project_profile.sass */
+/* line 200, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #name {
   color: #4383d1;
   font-size: 1.5em;
 }
-/* line 174, ../../app/stylesheets/content/project_profile.sass */
+/* line 203, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #city, body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #projects, body[data-action="new_project_profile"][data-controller="static"] #page_content #creator_profile .personal_info #about {
   margin-top: 5px;
   font-size: 1.2em;
