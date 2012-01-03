@@ -10,16 +10,16 @@ CATARSE.PaginatedView = Backbone.View.extend({
       this.emptyTemplate = options.emptyTemplate
     if(options.loading)
       this.loading = options.loading
-		this.loading = $("#loading")
+    this.loading = $("#loading")
     this.loading.waypoint('destroy')
     _.bindAll(this, "render", "update", "nextPage", "waypoint", "destroy")
     this.render()
-		this.loading.children().show()
+    this.loading.children().show()
     this.collection.page = 1
     this.collection.bind("reset", this.update)
     this.collection.fetchPage()
   },
-  
+
   destroy: function() {
     this.loading.waypoint('destroy')
     this.collection.unbind("reset")
@@ -38,7 +38,7 @@ CATARSE.PaginatedView = Backbone.View.extend({
       this.loading.children().show()
       this.collection.nextPage()
     }
-		return this
+    return this
   },
 
   render: function() {
@@ -51,10 +51,10 @@ CATARSE.PaginatedView = Backbone.View.extend({
     if(!this.collection.isEmpty()) {
       this.collection_list = $('<ul class="collection_list">')
       this.el.append(this.collection_list)
-      this.collection.each(function(model){
-        var item = $('<li>')
+      this.collection.each(function(model, i){
+        var item = $("<li class='"+(i%3==0?'first':'')+""+(i%3==2?'last':'')+"'>")
         this.collection_list.append(item)
-        new this.modelView({el: item, model: model})        
+        new this.modelView({el: item, model: model})
       }, this)
     } else if(this.collection.page == 1) {
       this.el.html(this.emptyTemplate())

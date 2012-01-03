@@ -10,14 +10,15 @@ html lang="#{I18n.locale}"
     = stylesheet_link_tag 'bootstrap.css', :media => 'screen, projection'
     /[if lt IE 9]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
-    = javascript_include_tag 'jquery-1.4.4.min', 'jquery-ui-1.8.6.custom.min', 'jquery.ui.datepicker-pt-BR', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'underscore-min', 'backbone-min', 'mustache', 'waypoints.min', 'jquery.jeditable.mini','on_the_spot'
-    = javascript_include_tag 'jquery.scrollto', 'redesign/application'
+    = javascript_include_tag 'app/loader', 'redesign/application.js'
+
     = csrf_meta_tag
     link rel='shortcut icon' href="/images/favicon.ico"
     = render '/layouts/analytics'
     = render "/layouts/uservoice"
+    = yield :js_templates
 
-  body data-controller="#{controller_name}" data-action="#{action_name}"
+  body[id="platform" data-namespace="#{namespace}" data-controller="#{controller_name}" data-action="#{action_name}" data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]
     = render :partial => 'layouts/locales'
     =yield
     .clearfix

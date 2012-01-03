@@ -7,7 +7,7 @@
 = render 'facebook_sdk'
 #project_description{ "data-project"=> @project.to_json }
   #project_video
-    %iframe{:src => "#{@project.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "610", :height => "346"}
+    %iframe{:src => "#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "610", :height => "346"}
     #project_share
       #facebook_share= render 'facebook'
       #twitter_share= render 'twitter'
@@ -17,7 +17,7 @@
           = t('.share.link')
           = text_field_tag "project_link", @project.short_url
         %li.embed
-          = link_to '#', :id => 'embed_link' do
+          = link_to '#embed', :id => 'embed_link' do
             = image_tag "embed_share.png", :title => t('.share.embed_title')
             = t('.share.embed')
       .clear
