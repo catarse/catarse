@@ -1,45 +1,115 @@
 script type="text/template" id="empty_projects_template"
   .empty= t('.empty')
 
+script type="text/template" id="discover_home"
+  .selected_list
+    h2
+      = t("projects.home_page_projects.title")
+      span= t("projects.home_page_projects.subtitle")
+
+    - @recommended.each_with_index do |item, i|
+      == render 'project_box', :project => item, :index => i
+    = link_to ">> #{t('projects.home_page_projects.explore_recommended')}", '#recommended', :class => 'discover'
+  .final_stage_list
+    h2
+      = t("projects.project_list.expiring.title")
+      span= t("projects.project_list.expiring.subtitle")
+    - @expiring.each_with_index do |item, i|
+      == render 'project_box', :project => item, :index => i
+    = link_to ">> #{t('projects.project_list.expiring.explore')}", '#expiring', :class => 'discover'
+  .new_projects_list
+    h2
+      = t("projects.project_list.recent.title")
+      span= t("projects.project_list.recent.subtitle")
+    - @recent.each_with_index do |item, i|
+      == render 'project_box', :project => item, :index => i
+    = link_to ">> #{t('projects.project_list.recent.explore')}", '#recent', :class => 'discover'
+  .finished_projects_list
+    h2
+      = t("projects.project_list.successful.title")
+      span= t("projects.project_list.successful.subtitle")
+    - @successful.each_with_index do |item, i|
+      == render 'project_box', :project => item, :index => i
+    = link_to ">> #{t('projects.project_list.successful.explore')}", '#successful', :class => 'discover'
+
 script type="text/template" id="project_template"
-  .project_box
-    .project_wrap
-      |<% if(expired) { %>
-      .status_image
+  div class="project"
+    | <% if(expired) { %>
+    .status_image
+      a href="<%= url %>"
+        |<% if(successful) { %>
+        = image_tag "successful.#{I18n.locale}.png"
+        |<% } else if(waiting_confirmation) { %>
+        = image_tag "waiting_confirmation.#{I18n.locale}.png"
+        |<% } else { %>
+        = image_tag "not_successful.#{I18n.locale}.png"
+        |<% } %>
+    | <% } %>
+    .box
+      p.black_box <%= category['name'] %>
+      img src="<%= image %>" width="210px" height="172px"
+      h4
         a href="<%= url %>"
-          |<% if(successful) { %>
-          = image_tag "successful.#{I18n.locale}.png"
-          |<% } else if(waiting_confirmation) { %>
-          = image_tag "waiting_confirmation.#{I18n.locale}.png"
-          |<% } else { %>
-          = image_tag "not_successful.#{I18n.locale}.png"
-          |<% } %>
-      |<% } %>
-      .project_category <%= category['name'] %>
-      .project_header
-        a href="<%= url %>"
-          .project_image
-            img src="<%= image %>"
-          h1 <%= name %>
-      .project_owner
-        = "#{t('projects.project.by')}"
-        |  <%= user['name'] %>
-      .project_headline <%= headline %>
-      .clear
-    .project_progress
-      .progress_bar
-        .progress style="width: <%= display_progress %>%" &nbsp;
-      .progress_info
-        ul
-          li
-            strong <%= progress %>
-            br
-            = t('projects.project.reached')
-          li
-            strong <%= pledged %>
-            br
-            = t('projects.project.backed')
-          li
-            strong <%= time_to_go['time'] %> <%= time_to_go['unit'] %>
-            br
-            |<%= remaining_text %>
+          | <%= name %>
+      p.author
+        = "#{t('projects.project.by')} "
+        | <%= user['name'] %>
+      p.where
+        | <%= user['city'] %>
+      p.description
+        | <%= headline %>
+      .status_bar
+        .progress style="width: <%= display_progress %>%;"
+      ul
+        li
+          h6 <%= time_to_go['time'] %> <%= time_to_go['unit'] %>
+          p <%= remaining_text %>
+        li
+          h6 <%= pledged %>
+          p=t('projects.project.backed')
+        li
+          h6 <%= progress %> %
+          p= t('projects.project.reached')
+      = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+  / .project_box
+  /   .project_wrap
+  /     |<% if(expired) { %>
+  /     .status_image
+  /       a href="<%= url %>"
+  /         |<% if(successful) { %>
+  /         = image_tag "successful.#{I18n.locale}.png"
+  /         |<% } else if(waiting_confirmation) { %>
+  /         = image_tag "waiting_confirmation.#{I18n.locale}.png"
+  /         |<% } else { %>
+  /         = image_tag "not_successful.#{I18n.locale}.png"
+  /         |<% } %>
+  /     |<% } %>
+  /     .project_category <%= category['name'] %>
+  /     .project_header
+  /       a href="<%= url %>"
+  /         .project_image
+  /           img src="<%= image %>"
+  /         h1 <%= name %>
+  /     .project_owner
+  /       = "#{t('projects.project.by')}"
+  /       |  <%= user['name'] %>
+  /     .project_headline <%= headline %>
+  /     .clear
+  /   .project_progress
+  /     .progress_bar
+  /       .progress style="width: <%= display_progress %>%" &nbsp;
+  /     .progress_info
+  /       ul
+  /         li
+  /           strong <%= progress %>
+  /           br
+  /           = t('projects.project.reached')
+  /         li
+  /           strong <%= pledged %>
+  /           br
+  /           = t('projects.project.backed')
+  /         li
+  /           strong <%= time_to_go['time'] %> <%= time_to_go['unit'] %>
+  /           br
+  /           |<%= remaining_text %>
