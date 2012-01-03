@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
             home_page_projects = home_page_projects.where("id != #{current_user.recommended_project.id}")
             collection_projects = collection_projects.where("id != #{current_user.recommended_project.id}")
           else
-            @recommended_project = collection_projects.all[rand(collection_projects.length)]
+            @recommended_project = collection_projects[rand(collection_projects.length)]
           end
 
           @project_of_day = home_page_projects[0]
