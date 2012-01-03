@@ -98,7 +98,7 @@ class User < ActiveRecord::Base
   memoize :last_backed_project
 
   def recommended_project
-    # It returns the project that have the greatest quantity of backers 
+    # It returns the project that have the greatest quantity of backers
     # that contributed to the last project the user contributed.
     return nil unless last_backed_project
     p = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE project_id = #{last_backed_project.id.to_i}) GROUP BY 2 ORDER BY 1 desc LIMIT 1")
@@ -161,8 +161,8 @@ class User < ActiveRecord::Base
   def as_json(options={})
 
     json_attributes = {}
-    
-    if not options or (options and not options[:anonymous]) 
+
+    if not options or (options and not options[:anonymous])
       json_attributes.merge!({
         :id => id,
         :name => display_name,
@@ -171,7 +171,8 @@ class User < ActiveRecord::Base
         :image => display_image,
         :total_backs => total_backs,
         :backs_text => backs_text,
-        :url => user_path(self)
+        :url => user_path(self),
+        :city => address_city
       })
     end
 
@@ -180,7 +181,7 @@ class User < ActiveRecord::Base
         :email => email
       })
     end
-    
+
     json_attributes
 
   end

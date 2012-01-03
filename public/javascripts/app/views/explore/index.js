@@ -17,12 +17,11 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   }),
 
   ProjectsView: CATARSE.PaginatedView.extend({
-  	emptyTemplate: _.template(this.$('#empty_projects_template').html())
+    emptyTemplate: _.template(this.$('#empty_projects_template').html())
   }),
-  
+
   index: function(){
-    this.recommended()
-    CATARSE.router.navigate("recommended")
+    this.$("#explore_results .results").html($('#discover_home').html())
   },
 
   search: function(search){
@@ -88,22 +87,25 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   initializeView: function(search){
     if(this.projectsView)
       this.projectsView.destroy()
-		this.projectsView = new this.ProjectsView({
-    	modelView: this.ProjectView,
-			collection: new CATARSE.Projects({search: search}),
-		  loading: this.$("#loading"),
-			el: this.$("#explore_results .results")
-		})
+    this.projectsView = new this.ProjectsView({
+      modelView: this.ProjectView,
+      collection: new CATARSE.Projects({search: search}),
+      loading: this.$("#loading"),
+      el: this.$("#explore_results .results")
+    })
   },
 
   selectItem: function(name) {
-    this.selectedItem = $('#explore_menu a[href=#' + name + ']')
-    $('#explore_menu .selected').removeClass('selected')
+    this.selectedItem = $('.sidebar a[href=#' + name + ']')
+    $('.sidebar .selected').removeClass('selected')
     this.selectedItem.addClass('selected')
   },
-  
+
   render: function(){
-    this.$('#explore_menu .search input').timedKeyup(this.updateSearch, 1000)
+    this.$('#header .search form').submit(function(){
+      return false;
+    })
+    this.$('#header .search input').timedKeyup(this.updateSearch, 1000)
   }
 
 })

@@ -1,0 +1,176 @@
+body[data-action="new_project_profile"][data-controller="static"]
+  #page_content
+    +default_grid
+    .section_header
+      span
+        font-family: 'Lato-Bold', sans-serif
+    
+    .midia
+      +grid(11)
+      .video
+        iframe
+          +border-radius(10px 10px 0 0)
+      .video
+      .social
+        padding: 20px 0
+        margin: 8px 0
+        //background-color: red
+      .tabs
+        padding: 20px 0
+        margin: 8px 0
+        background-color: #999
+        background-color: rgba(153,153,153, 0.8)
+        +border-radius (5px)
+        form
+          margin-left: 10px
+          input
+            display: none
+          input[type="radio"]:checked + label 
+            background: rgb(255,255,255)
+            color: $blue
+          label
+            +transition(all, 0.3s)
+            color: white
+            cursor: pointer
+            font-size: 1.2em
+            font-family: "Lato-Bold", sans-serif
+            text-transform: uppercase
+            padding: 3px 15px 0 0
+            background-color: rgba($gryn,0.3)
+            +border-radius(4px)
+            padding: 5px 10px
+            margin-right: 8px
+            margin-top: 10px 
+            &:hover
+              background: rgba(255,255,255,0.4)
+      
+      .midia_content
+        margin: 20px 0
+        .image
+          border: 2px solid $orange
+
+        p
+          font-family: 'Lato', sans-serif
+          font-size: 1.5em
+          color: #333
+          line-height: 160%
+          margin-bottom: 10px
+          em
+            +transition(all, 0.3s)
+            color: $blue
+            cursor: pointer
+            &:hover
+              +text-shadow($blue 0 0 6px)
+
+
+    .info
+      +grid(5)
+      +omega
+      font-family: "Lato-Regular", sans-serif
+
+      #statistics
+        border: 1px solid #ccc
+        .statistics
+          padding: 5px 10px
+          background-color: rgba(255,255,255,0.4)
+          color: black
+          +clearfix
+          .iten
+            margin-bottom: 15px
+            p
+              font-size: 4.5em
+              font-family: "Lato-Bold"
+              text-transform: uppercase
+            em
+              font-size: 2.2em
+              color: #666
+      
+      #condition
+        background-color: #999
+        padding: 5px 10px
+        p
+          color: white
+          font-size: 1.1em
+          text-transform: uppercase
+          line-height: 150%
+          letter-spacing: 1px
+      
+      #pledge
+        +border-radius(8px)
+        +box-shadow(#999 1px 3px 6px)
+        +transition(all, 0.3s)
+        background-color: $blue
+        padding: 20px 10px
+        margin: 10px 15px
+        cursor: pointer
+        p
+          font-size: 1.5em
+          text-transform: uppercase
+          color: white
+        &:hover
+          background-color: #3889e9
+          +box-shadow($blue 0 0 10px)
+
+        &:active
+          +box-shadow(#999 1px 1px 6px)
+          background-color: #3889e9
+    
+    #rewards
+      margin-bottom: 20px
+      .box
+        background-color: rgba(242,242,242,0.6)
+        border: 1px solid #ccc
+        margin: 3px 0
+        padding: 20px 10px 10px 10px
+        h2
+          font-size: 1.7em
+          font-family: "Lato-Bold", sans-serif
+          text-transform: uppercase
+          color: black
+          margin-bottom: 5px
+        p
+          font-size: 1.5em
+          color: #666
+          margin-bottom: 10px
+          line-height: 150%
+        em
+          display: block
+          font-size: 1.4em
+          text-indent: 30px
+          background: url('/images/redesign/support23x23.png') center left no-repeat
+          height: 30px
+          vertical-align: middle
+    
+    #creator_profile
+      +grid(5)
+      +omega
+      +alpha
+      border-top: 1px dashed #999
+      margin: 10px 0
+      padding-top: 20px
+      h3
+        +grid(5)
+        +omega
+        +alpha
+        background: url('/images/redesign/profile19x14.png') no-repeat
+        display: block
+        text-indent: 24px
+        margin-bottom: 6px
+      .avatar
+        +grid(2)
+        +alpha
+        margin-top: 10px
+        height: 105px
+        background: url('/images/redesign/profile100x100.png') 
+      .personal_info
+        +grid(3)
+        +omega
+        margin: 10px 0 20px 0
+        font-size: 1em
+        #name
+          color: $blue
+          font-size: 1.5em
+        #city, #projects, #about
+          margin-top: 5px
+          font-size: 1.2em
+          
