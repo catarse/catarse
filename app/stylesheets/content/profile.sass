@@ -82,10 +82,12 @@ body[data-action="new_profile"][data-controller="static"]
             float: left
             margin: 10px 0 0 24px
 
-    .profile_my_projects
+    .profile_my_projects, .profile_my_comments
       +grid(12)
       +grid-push(4)
-    .profile_projects_backed, .profile_my_projects
+      +omega
+      +alpha
+    .profile_projects_backed, .profile_my_projects, .profile_my_comments
       +grid(12)
       margin-bottom: 30px
       border-bottom: $grafiti solid 2px
@@ -125,6 +127,8 @@ body[data-action="new_profile"][data-controller="static"]
           text-transform: uppercase
     
     .about_project
+      +grid(8)
+      +omega
       margin-top: 25px
       font-size: 1.1em
       line-height: 180%
@@ -132,12 +136,35 @@ body[data-action="new_profile"][data-controller="static"]
       margin-bottom: 30px
         
       span
+        +transition(all, 0.3s)
+        color: $blue
+        cursor: pointer
+        &:hover
+          +text-shadow($blue 0 0 5px)
         color: $blue
 
     .comments
+      +grid(8)
+      +omega
       font-family: "Lato-Bold", sans-serif
       font-size: 1.6em
       color: #4a4a4a
       background: url('/images/redesign/ballon15x15.png') no-repeat
       text-indent: 24px
+        
+    .about_project_my_comments
+      +grid(8)
+      +omega
+      font-size: 1.5em
+      line-height: 180%
+      color: $grafiti
+      margin-bottom: 30px
+        
+      em
+        +transition(all, 0.3s)
+        color: $blue
+        cursor: pointer
+        &:hover
+          +text-shadow($blue 0 0 5px)
+
         
