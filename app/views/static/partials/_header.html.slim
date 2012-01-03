@@ -5,9 +5,12 @@
       a ajuda
     .actions
       = image_tag "redesign/notification.png"
-      a
-        = image_tag "redesign/barbarella.png"
-        p EU
+      - if current_user
+        = image_tag current_user.display_image, :size => "23x23"
+      - else
+        a
+          = image_tag "redesign/barbarella.png"
+          p EU
     .social
       .fb_root
         iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=233819696673790" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"

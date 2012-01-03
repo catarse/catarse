@@ -29,14 +29,11 @@ div class=(defined?(has_comments) ? :compost_project : '')
   - if defined?(has_comments)
     .project_comment
       h3= "#{(defined?(comments_title) ? comments_title : project.category.name)}"
-      p
-        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.
-      p
-        | 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived.
+      p= "#{project.home_page_comment}"
       p.author
         | comentário de
         br/
-        | Casa de Cultura Digital
+        | Catarse
 
 / .project_box
 /   .project_wrap
