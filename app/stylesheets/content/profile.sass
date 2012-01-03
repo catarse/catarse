@@ -33,25 +33,26 @@ body[data-action="new_profile"][data-controller="static"]
         margin-left: 0
         margin-top: 15px
         
-        form
-          input
-            display: none
-          input[type="radio"]:checked + label 
-            background: rgb(255,255,255)
-            color: $blue
-          label
+        nav
+          a
+            +border-radius(4px)
             color: white
             cursor: pointer
             font-size: 1.2em
             font-family: "Lato-Bold", sans-serif
             padding: 3px 15px 0 0
             background-color: rgba($gryn,0.3)
-            +border-radius(4px)
             padding: 5px 10px
             margin-right: 8px
-            margin-top: 10px 
+            margin-top: 10px
+            text-transform: uppercase
             &:hover
               background: rgba(255,255,255,0.4)
+            &:active            
+              background: rgb(255,255,255)
+              color: $blue
+
+
  
     .profile_share
       .profile_pic

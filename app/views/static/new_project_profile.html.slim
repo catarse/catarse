@@ -16,15 +16,12 @@
     .social
       
     .tabs
-      form[method="get" id="order-form"]
-        input[type="radio" value="pops" name="by" id="by_pops" checked=(params[:by].nil? || params[:by] == 'pops')]
-        label[for="by_pops"] início
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] atualizações (12)
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] apoiadores (12358)
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] comentários
+      nav
+        a início
+        a atualizações
+        a apoiadores
+        a comentários
+    
     .midia_content
       p
         | Enim put a bird on it high life exercitation pitchfork thundercats, williamsburg magna 
