@@ -19,6 +19,7 @@ body[data-action="new_project_profile"][data-controller="static"]
         padding: 20px 0
         margin: 8px 0
         background-color: #999
+        background-color: rgba(153,153,153, 0.8)
         +border-radius (5px)
         form
           margin-left: 10px
@@ -44,6 +45,23 @@ body[data-action="new_project_profile"][data-controller="static"]
               background: rgba(255,255,255,0.4)
       
       .midia_content
+        margin: 20px 0
+        .image
+          border: 2px solid $orange
+
+        p
+          font-family: 'Lato', sans-serif
+          font-size: 1.5em
+          color: #333
+          line-height: 160%
+          margin-bottom: 10px
+          em
+            +transition(all, 0.3s)
+            color: $blue
+            cursor: pointer
+            &:hover
+              +text-shadow($blue 0 0 10px)
+
 
     .info
       +grid(5)
