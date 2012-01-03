@@ -4710,7 +4710,17 @@ body[data-action="new_profile"][data-controller="static"] #page_content .my_link
   margin: 10px 0 0 24px;
 }
 /* line 85, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects {
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 700px;
+  position: relative;
+  left: 240px;
+}
+/* line 88, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -4718,9 +4728,10 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   width: 700px;
   margin-bottom: 30px;
   border-bottom: #363636 solid 2px;
+  padding-bottom: 30px;
 }
-/* line 91, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .project {
+/* line 95, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .project, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .project {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -4728,8 +4739,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   width: 220px;
   margin-left: 0;
 }
-/* line 94, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .project_about {
+/* line 98, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .project_about, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .project_about {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -4737,37 +4748,37 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   width: 460px;
   margin-right: 0;
 }
-/* line 98, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .status {
+/* line 102, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .status, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .status {
   border-bottom: #999999 solid 1px;
 }
-/* line 101, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .when {
+/* line 105, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .when, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .when {
   font-size: 1.3em;
   color: #363636;
   margin-bottom: 15px;
 }
-/* line 106, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .when span {
+/* line 110, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .when span, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .when span {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.2em;
   color: #4383d1;
 }
-/* line 111, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .reward {
+/* line 115, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .reward, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .reward {
   font-size: 1.3em;
   color: #666666;
   margin-bottom: 25px;
   line-height: 160%;
 }
-/* line 117, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects .reward span {
+/* line 121, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .reward span, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .reward span {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.2em;
   color: black;
   text-transform: uppercase;
 }
-/* line 123, ../../app/stylesheets/content/profile.sass */
+/* line 127, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .about_project {
   margin-top: 25px;
   font-size: 1.1em;
@@ -4775,11 +4786,11 @@ body[data-action="new_profile"][data-controller="static"] #page_content .about_p
   color: #363636;
   margin-bottom: 30px;
 }
-/* line 130, ../../app/stylesheets/content/profile.sass */
+/* line 134, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .about_project span {
   color: #4383d1;
 }
-/* line 133, ../../app/stylesheets/content/profile.sass */
+/* line 137, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .comments {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.6em;
