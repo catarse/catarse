@@ -4,13 +4,13 @@
     h4 Financie projetos de maneira colaborativa e torne-se parte de algo maior.
 
   / Project of day
-  = render :partial => 'project', :locals => {:project => @project_of_day, :has_comments => true, :comments_title => 'Projeto do Dia'}
+  = render :partial => 'project', :locals => {:project => @project_of_day, :has_comments => true, :comments_title => 'Projeto do Dia'} if @project_of_day
   / Second Project
-  = render :partial => 'project', :locals => {:project => @second_project, :has_comments => true}
+  = render :partial => 'project', :locals => {:project => @second_project, :has_comments => true} if @second_project
   / Third Project
-  = render :partial => 'project', :locals => {:project => @third_project, :has_comments => true}
+  = render :partial => 'project', :locals => {:project => @third_project, :has_comments => true} if @third_project
   / Recommended Project
-  = render :partial => 'project', :locals => {:project => @recommended_project, :has_comments => true, :comments_title => 'Projeto Recomendado'}
+  = render :partial => 'project', :locals => {:project => @recommended_project, :has_comments => true, :comments_title => ((current_user.present? and current_user.recommended_project.present?) ? 'Projeto Recomendado' : @recommended_project.category.name)} if @recommended_project
   / = render :partial => 'project', :collection => @home_page, :locals => {:has_comments => true} if defined?(@home_page) and not @home_page.empty?
 
   .reference_link
