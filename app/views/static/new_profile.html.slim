@@ -6,15 +6,11 @@
     h4.about Saiba que o meu grande amor, hoje vai se casar, mandou uma carta pra me avisar, deixou em pedaços meu coração. E pra matar a tristeza, só mesa de bar, quero tomar todas, vou me embriagar, se eu pegar no sono, me deite no chão.
 
     .profile_categories
-      form[method="get" id="order-form"]
-        input[type="radio" value="pops" name="by" id="by_pops" checked=(params[:by].nil? || params[:by] == 'pops')]
-        label[for="by_pops"] PROJETOS APOIADOS
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] PROJETOS CRIADOS
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] COMENTÁRIOS
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] CRÉDITOS
+      nav
+        a projetos apoiados
+        a projetos criados
+        a comentários
+        a créditos
 
   .profile_share
     = image_tag ('redesign/profile200x200.jpg'), :class => 'profile_pic'
