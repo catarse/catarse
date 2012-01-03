@@ -10,6 +10,58 @@ body[data-action="new_project_profile"][data-controller="static"]
       .video
         iframe
           +border-radius(10px 10px 0 0)
+      .video
+      .social
+        padding: 20px 0
+        margin: 8px 0
+        //background-color: red
+      .tabs
+        padding: 20px 0
+        margin: 8px 0
+        background-color: #999
+        background-color: rgba(153,153,153, 0.8)
+        +border-radius (5px)
+        form
+          margin-left: 10px
+          input
+            display: none
+          input[type="radio"]:checked + label 
+            background: rgb(255,255,255)
+            color: $blue
+          label
+            +transition(all, 0.3s)
+            color: white
+            cursor: pointer
+            font-size: 1.2em
+            font-family: "Lato-Bold", sans-serif
+            text-transform: uppercase
+            padding: 3px 15px 0 0
+            background-color: rgba($gryn,0.3)
+            +border-radius(4px)
+            padding: 5px 10px
+            margin-right: 8px
+            margin-top: 10px 
+            &:hover
+              background: rgba(255,255,255,0.4)
+      
+      .midia_content
+        margin: 20px 0
+        .image
+          border: 2px solid $orange
+
+        p
+          font-family: 'Lato', sans-serif
+          font-size: 1.5em
+          color: #333
+          line-height: 160%
+          margin-bottom: 10px
+          em
+            +transition(all, 0.3s)
+            color: $blue
+            cursor: pointer
+            &:hover
+              +text-shadow($blue 0 0 6px)
+
 
     .info
       +grid(5)
@@ -46,7 +98,8 @@ body[data-action="new_project_profile"][data-controller="static"]
       #pledge
         +border-radius(8px)
         +box-shadow(#999 1px 3px 6px)
-        background-color: $green
+        +transition(all, 0.3s)
+        background-color: $blue
         padding: 20px 10px
         margin: 10px 15px
         cursor: pointer
@@ -55,12 +108,15 @@ body[data-action="new_project_profile"][data-controller="static"]
           text-transform: uppercase
           color: white
         &:hover
-          background-color: rgb(52,178,83)
+          background-color: #3889e9
+          +box-shadow($blue 0 0 10px)
+
         &:active
           +box-shadow(#999 1px 1px 6px)
-          background-color: rgb(52,178,83)
+          background-color: #3889e9
     
     #rewards
+      margin-bottom: 20px
       .box
         background-color: rgba(242,242,242,0.6)
         border: 1px solid #ccc
@@ -83,12 +139,15 @@ body[data-action="new_project_profile"][data-controller="static"]
           text-indent: 30px
           background: url('/images/redesign/support23x23.png') center left no-repeat
           height: 30px
+          vertical-align: middle
     
     #creator_profile
       +grid(5)
       +omega
       +alpha
+      border-top: 1px dashed #999
       margin: 10px 0
+      padding-top: 20px
       h3
         +grid(5)
         +omega
@@ -96,20 +155,22 @@ body[data-action="new_project_profile"][data-controller="static"]
         background: url('/images/redesign/profile19x14.png') no-repeat
         display: block
         text-indent: 24px
+        margin-bottom: 6px
       .avatar
         +grid(2)
         +alpha
         margin-top: 10px
         height: 105px
-        background: url('/images/redesign/avatar100x105.png') 
+        background: url('/images/redesign/profile100x100.png') 
       .personal_info
         +grid(3)
         +omega
-        margin-top: 10px
+        margin: 10px 0 20px 0
+        font-size: 1em
         #name
           color: $blue
           font-size: 1.5em
-        #city, #projects
+        #city, #projects, #about
           margin-top: 5px
-
-
+          font-size: 1.2em
+          

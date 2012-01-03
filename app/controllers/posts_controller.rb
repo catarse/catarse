@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def create
     create! do
       # Expire the project's blog
+      flash[:success] = t('posts.create.success')
       expire_fragment(controller: "projects", action: "show", action_suffix: "updates_#{@post.project.id}")
       return redirect_to controller: :projects, action: :show, id: @post.project.to_param, anchor: 'updates'
     end
