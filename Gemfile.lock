@@ -88,6 +88,7 @@ GEM
       compass (>= 0.10.0)
     crack (0.1.8)
     daemons (1.1.5)
+    dalli (1.1.4)
     database_cleaner (0.7.0)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
@@ -342,6 +343,7 @@ DEPENDENCIES
   carrierwave!
   compass
   compass-960-plugin
+  dalli
   database_cleaner
   enumerate_it
   factory_girl_rails

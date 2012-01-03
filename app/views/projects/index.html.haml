@@ -1,9 +1,0 @@
-= render :partial => "index_header"
-= render :partial => "index_meta_tags"
-= render 'home_page_projects'
-= render :partial => 'project_list', :locals => {:quick => "expiring", :collection => @expiring} unless @expiring.empty?
-= render :partial => 'project_list', :locals => {:quick => "recent", :collection => @recent} unless @recent.empty?
-= render :partial => 'project_list', :locals => {:quick => "successful", :collection => @successful} unless @successful.empty?
-= render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
-.clear
-= render :partial => "press"

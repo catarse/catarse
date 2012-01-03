@@ -5,26 +5,25 @@
         | estatísticas bacanas
       ul
         li
-          h5 9358
+          h5= @total_backers
           p Apoiadores
         li
-          h5 11633
+          h5= @total_backs
           p Apoios
         li
-          h5 R$ 1.139.334,50
+          h5= number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
           p Arrecadados
         li
-          h5 30994
+          h5= @total_users
           p Usuários
         li
-          h5 109
+          h5= @total_projects_success
           p Projetos bem sucedidos
         li
-          h5 250
+          h5= @total_projects_online
           p Projetos no ar
 
-        //= link_to '>> veja mais aqui na OPENDATA', '#'
-      = link_to image_tag ('redesign/comum.png'), :id => 'comum' 
+      = link_to image_tag ('redesign/comum.png'), :id => 'comum'
 
     .footer_menu
       = link_to 'Como funciona', '#', :class => 'iten'
@@ -32,16 +31,15 @@
       = link_to 'Termos de Uso', '#', :class => 'iten'
       = link_to 'Política de Privacidade', '#', :class => 'iten'
       = link_to 'Contato', '#', :class => 'iten'
-    
+
     .social_menu
-      h3.cat 
+      h3.cat
         | curtiu o catarse?
       iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.catarse.me&amp;send=false&amp;layout=standard&amp;width=250&amp;show_faces=true&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=80&amp;appId=233819696673790" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:80px;" allowTransparency="true"
       .subscribe
-        h3 
+        h3
           | quer receber novidades?
         input type="text" name="user" value="email@email.com.br"
         input type="submit" value="enviar"
-            
-      = link_to image_tag ('redesign/engage.png'), :id => 'engage'
 
+      = link_to image_tag ('redesign/engage.png'), :id => 'engage'
