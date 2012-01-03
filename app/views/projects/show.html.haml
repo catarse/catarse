@@ -17,7 +17,7 @@
           = t('.share.link')
           = text_field_tag "project_link", @project.short_url
         %li.embed
-          = link_to '#', :id => 'embed_link' do
+          = link_to '#embed', :id => 'embed_link' do
             = image_tag "embed_share.png", :title => t('.share.embed_title')
             = t('.share.embed')
       .clear

@@ -24,12 +24,12 @@ var CATARSE_LOADER = {
 
   intermediate: ['backbone-min', 'mustache', 'jquery-ui-1.8.6.custom.min', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'waypoints.min', 'jquery.scrollto', 'jquery.jeditable.mini', 'jquery.maskedinput-1.2.2.min', 'jquery.cpf'],
 
-  final: ['jquery.ui.datepicker-pt-BR', 'on_the_spot'],
+  final: ['jquery.ui.datepicker-pt-BR', 'on_the_spot', 'app/catarse'],
 
   catarse: {
 
     initial: [
-      'app/catarse'
+      'app/router'
     ],
 
     intermediate: [
@@ -37,7 +37,6 @@ var CATARSE_LOADER = {
       'app/views/layouts/flash',
       'app/views/layouts/login',
       'app/views/layouts/user',
-      'app/router',
       'app/models/project',
       'app/models/backer',
       'app/models/user',

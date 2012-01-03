@@ -1,15 +1,3 @@
-require_login = function(e){
-  e.preventDefault()
-  var url = null
-  if($(this).is('a')){
-    url = $(this).attr('href')
-  } else {
-    url = $('input[type=submit]').parentsUntil('form').parent().attr('action')
-  }
-  $('#return_to').val(url)
-  $('#login_overlay').show()
-  $('#login').fadeIn()
-}
 var return_to = null
 $('#login_link,#signup_link,.login_link').live('click', function(e){
   e.preventDefault()
@@ -18,7 +6,7 @@ $('#login_link,#signup_link,.login_link').live('click', function(e){
   $('#login').fadeIn()
 })
 if($('#login').length > 0){
-  $('#new_project_link,#ghost_project_link').click(require_login)
+  $('#new_project_link').click(CATARSE.requireLogin)
 }
 $('#login .close').click(function(e){
   e.preventDefault()
