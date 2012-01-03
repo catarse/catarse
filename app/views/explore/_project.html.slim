@@ -4,36 +4,33 @@ script type="text/template" id="empty_projects_template"
 script type="text/template" id="discover_home"
   .selected_list
     h2
-      | seleção
-      span
-        | Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção.
+      = t("projects.home_page_projects.title")
+      span= t("projects.home_page_projects.subtitle")
+
     - @recommended.each_with_index do |item, i|
       == render 'project_box', :project => item, :index => i
-    = link_to ">> explore mais projetos recomendados", '#recommended', :class => 'discover'
+    = link_to ">> #{t('projects.home_page_projects.explore_recommended')}", '#recommended', :class => 'discover'
   .final_stage_list
     h2
-      | na reta final
-      span
-        | Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!
+      = t("projects.project_list.expiring.title")
+      span= t("projects.project_list.expiring.subtitle")
     - @expiring.each_with_index do |item, i|
       == render 'project_box', :project => item, :index => i
-    = link_to ">> explore mais projetos na reta final", '#expiring', :class => 'discover'
+    = link_to ">> #{t('projects.project_list.expiring.explore')}", '#expiring', :class => 'discover'
   .new_projects_list
     h2
-      | novos e fresquinhos
-      span
-        | Recém-chegados. O sol começou a brilhar para eles agorinha...
+      = t("projects.project_list.recent.title")
+      span= t("projects.project_list.recent.subtitle")
     - @recent.each_with_index do |item, i|
       == render 'project_box', :project => item, :index => i
-    = link_to ">> explore mais projetos recentes", '#recent', :class => 'discover'
+    = link_to ">> #{t('projects.project_list.recent.explore')}", '#recent', :class => 'discover'
   .finished_projects_list
     h2
-      | bem-sucedidos
-      span
-        | Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!
+      = t("projects.project_list.successful.title")
+      span= t("projects.project_list.successful.subtitle")
     - @successful.each_with_index do |item, i|
       == render 'project_box', :project => item, :index => i
-    = link_to ">> explore mais projetos bem-sucedidos", '#successful', :class => 'discover'
+    = link_to ">> #{t('projects.project_list.successful.explore')}", '#successful', :class => 'discover'
 
 script type="text/template" id="project_template"
   div class="project"
