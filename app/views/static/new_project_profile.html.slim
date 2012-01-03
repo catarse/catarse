@@ -16,16 +16,13 @@
     .social
       
     .tabs
-      form[method="get" id="order-form"]
-        input[type="radio" value="pops" name="by" id="by_pops" checked=(params[:by].nil? || params[:by] == 'pops')]
-        label[for="by_pops"] início
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] atualizações (12)
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] apoiadores (12358)
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] comentários
-    .midia_content
+      nav
+        a início
+        a atualizações
+        a apoiadores
+        a comentários
+    
+    .midia_content_home
       p
         | Enim put a bird on it high life exercitation pitchfork thundercats, williamsburg magna 
         em Vsingle-origin 
@@ -39,7 +36,95 @@
         | mollit helvetica. Ethical next level sint, put a bird on it VHS id keffiyeh voluptate 
       
       = image_tag ('/images/redesign/test.png'), :class => 'image'
+
+    .midia_content_update
+      h3 
+        | Título da Atualização
+      #date
+        p
+          | 02/01/2012
+      p
+        | Enim put a bird on it high life exercitation pitchfork thundercats, williamsburg magna 
+        em Vsingle-origin 
+        | coffee fixie tempor fap. Locavore Austin scenester readymade, aliquip dolor vero adipisicing irony you probably haven't heard of them mollit. Carles banksy single-origin coffee, four loko aute fixie scenester enim voluptate odio mixtape 
+        em Terry Richardson 
+      p
+        | Enim put a bird on it high life exercitation pitchfork thundercats, williamsburg magna 
+        em Vsingle-origin 
+        | coffee fixie tempor fap. Locavore Austin scenester readymade, aliquip dolor vero adipisicing irony you probably haven't heard of them mollit. Carles banksy single-origin coffee, four loko aute fixie scenester enim voluptate odio mixtape 
+        em Terry Richardson 
+        | mollit helvetica. Ethical next level sint, put a bird on it VHS id keffiyeh voluptate 
       
+      = image_tag ('/images/redesign/test.png'), :class => 'image'
+
+    .midia_content_update
+      h3 
+        | Título da Atualização
+      #date
+        p
+          | 02/01/2012
+      p
+        | Enim put a bird on it high life exercitation pitchfork thundercats, williamsburg magna 
+        em Vsingle-origin 
+        | coffee fixie tempor fap. Locavore Austin scenester readymade, aliquip dolor vero adipisicing irony you probably haven't heard of them mollit. Carles banksy single-origin coffee, four loko aute fixie scenester enim voluptate odio mixtape 
+        em Terry Richardson 
+      p
+        | Enim put a bird on it high life exercitation pitchfork thundercats, williamsburg magna 
+        em Vsingle-origin 
+        | coffee fixie tempor fap. Locavore Austin scenester readymade, aliquip dolor vero adipisicing irony you probably haven't heard of them mollit. Carles banksy single-origin coffee, four loko aute fixie scenester enim voluptate odio mixtape 
+        em Terry Richardson 
+        | mollit helvetica. Ethical next level sint, put a bird on it VHS id keffiyeh voluptate 
+      
+      = image_tag ('/images/redesign/test.png'), :class => 'image'
+    
+    .midia_content_backers
+      .backer
+        = image_tag ('/images/redesign/avatar50x50.png'), :class => 'backer_avatar'
+        p#text
+          | 02/01/2012 
+          em Calvin Nolastname
+        #backed
+          p
+            | Calvin já apoiou 45 projetos.
+      .backer
+        = image_tag ('/images/redesign/avatar50x50.png'), :class => 'backer_avatar'
+        p#text
+          | 02/01/2012 
+          em Calvin Nolastname
+        #backed
+          p
+            | Calvin já apoiou 45 projetos.
+      .backer
+        = image_tag ('/images/redesign/avatar50x50.png'), :class => 'backer_avatar'
+        p#text
+          | 02/01/2012 
+          em Calvin Nolastname
+        #backed
+          p
+            | Calvin já apoiou 45 projetos.
+      .backer
+        = image_tag ('/images/redesign/avatar50x50.png'), :class => 'backer_avatar'
+        p#text
+          | 02/01/2012 
+          em Calvin Nolastname
+        #backed
+          p
+            | Calvin já apoiou 45 projetos.
+      .backer
+        = image_tag ('/images/redesign/avatar50x50.png'), :class => 'backer_avatar'
+        p#text
+          | 02/01/2012 
+          em Calvin Nolastname
+        #backed
+          p
+            | Calvin já apoiou 45 projetos.
+
+    .midia_content_comments
+      p
+        | Deixe aqui seu comentário 
+
+      //Os comentários vão ser aqueles do face, right?
+
   .info
     #statistics
       .statistics

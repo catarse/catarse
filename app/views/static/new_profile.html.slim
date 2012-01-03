@@ -6,15 +6,11 @@
     h4.about Saiba que o meu grande amor, hoje vai se casar, mandou uma carta pra me avisar, deixou em pedaços meu coração. E pra matar a tristeza, só mesa de bar, quero tomar todas, vou me embriagar, se eu pegar no sono, me deite no chão.
 
     .profile_categories
-      form[method="get" id="order-form"]
-        input[type="radio" value="pops" name="by" id="by_pops" checked=(params[:by].nil? || params[:by] == 'pops')]
-        label[for="by_pops"] PROJETOS APOIADOS
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] PROJETOS CRIADOS
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] COMENTÁRIOS
-        input[type="radio" value="recent" name="by" id="by_recent" checked=(params[:by] == 'recent')]
-        label[for="by_recent"] CRÉDITOS
+      nav
+        a projetos apoiados
+        a projetos criados
+        a comentários
+        a créditos
 
   .profile_share
     = image_tag ('redesign/profile200x200.jpg'), :class => 'profile_pic'
@@ -34,7 +30,7 @@
         = image_tag ('redesign/twitter15x15.png'), :class => 'profile_icons'
         = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
   
-  .profile_projects
+  .profile_projects_backed
     .project
       .box
         p.black_box Lorem Ipsum Dolor
@@ -83,5 +79,83 @@
           span Nome do Projeto
           | aqui no Catarse para se informar e para manter o contato com o realizador. É super importante que a própria comunidade cuide do bom andamento dos projetos! Se quiser, escreva um comentário para ele aqui embaixo: 
       .comments comentários
+
+  .profile_my_projects
+      p
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+          h4
+            a href='#'
+              | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+      .project_about        
+        .about_my_project
+          p
+            | Aqui entra o texto 
+            span sobre o projeto 
+            | que você criou. Como eu não faço a mínima ideia do que tem hoje em dia no catarse, eu vou só encher de coisa aqui até que alguém decida mudar. 
+            span Basicamente 
+            | é só pra encher o espaço e testar o tamanho das fontes coisas assim. Um lorem ipsum, só que com uma enrolada e uma informação importante. Viu como é fácil ? 
+        .comments últimos comentários
+
+  .profile_my_comments
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+          h4
+            a href='#'
+              | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+      .about_project_my_comments
+        p
+          | O que você ja falou sobre o projeto 
+          em Nome do Projeto
+
+      .comments comentários
+
+
 == render 'static/partials/footer'
 
