@@ -22,6 +22,6 @@
     = link_to "envie seu projeto", "#"
     = link_to "canais", "#"
   .search
-    = form_tag '/', :class=>'search_input' do
-      = text_field_tag 'search'
+    = form_tag '/explore#search/', :class=>'search_input', :method => :get do
+      = text_field_tag :search, nil, autocomplete: "off"
       = submit_tag

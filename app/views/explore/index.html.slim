@@ -15,23 +15,23 @@
       #loading= image_tag "loading.gif"
     .clear
   .sidebar
-    - unless @recommended and @expiring and @recent and @successful
+    - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
       section.highlights
         h2= t('.quick_explore')
         ul#explore_quick
-          - if @recommended
+          - unless @recommended.empty?
             li
               a href='#recommended'
                 = t('.recommended')
-          - if @expiring
+          - unless @expiring.empty?
             li.no_margin
               a href='#expiring'
                 = t('.expiring')
-          - if @recent
+          - unless @recent.empty?
             li
               a href='#recent'
                 = t('.recent')
-          - if @successful
+          - unless @successful.empty?
             li.no_margin
               a href='#successful'
                 = t('.successful')
