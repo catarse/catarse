@@ -103,7 +103,7 @@ class User < ActiveRecord::Base
     return nil unless last_backed_project
     p = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE project_id = #{last_backed_project.id.to_i}) GROUP BY 2 ORDER BY 1 desc LIMIT 1")
     return nil if p.count == 0
-    Project.find(p["project_id"])
+    Project.find(p[0]["project_id"])
   end
   memoize :recommended_project
 
