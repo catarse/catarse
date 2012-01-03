@@ -3,7 +3,8 @@ Catarse::Application.routes.draw do
 
   filter :locale
 
-  root :to => 'static#new_home'
+  # root :to => 'static#new_home'
+  root :to => 'projects#index'
 
   # New design routes
 
