@@ -82,10 +82,14 @@ body[data-action="new_profile"][data-controller="static"]
             float: left
             margin: 10px 0 0 24px
 
-    .profile_projects
+    .profile_my_projects
+      +grid(12)
+      +grid-push(4)
+    .profile_projects_backed, .profile_my_projects
       +grid(12)
       margin-bottom: 30px
       border-bottom: $grafiti solid 2px
+      padding-bottom: 30px
 
 
       .project

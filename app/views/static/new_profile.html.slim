@@ -30,7 +30,7 @@
         = image_tag ('redesign/twitter15x15.png'), :class => 'profile_icons'
         = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
   
-  .profile_projects
+  .profile_projects_backed
     .project
       .box
         p.black_box Lorem Ipsum Dolor
@@ -79,5 +79,56 @@
           span Nome do Projeto
           | aqui no Catarse para se informar e para manter o contato com o realizador. É super importante que a própria comunidade cuide do bom andamento dos projetos! Se quiser, escreva um comentário para ele aqui embaixo: 
       .comments comentários
+
+  .profile_my_projects
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+          h4
+            a href='#'
+              | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+      .project_about
+        .status
+          .when 
+            p 
+              | Em 07/04/2011 você apoiou com 
+              span RS 10,00 
+              | e selecionou esta recompensa:
+          .reward
+            p
+              span Para R$10,00 ou mais                                          
+              | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
+        
+        .about_project
+          p
+            | O 
+            span Autor do Projeto 
+            | já entrou em contato com você para falar sobre a produção das recompensas? Você está acompanhando o projeto depois que ele foi bem-sucedido? Não deixa de visitar a página do 
+            span Nome do Projeto
+            | aqui no Catarse para se informar e para manter o contato com o realizador. É super importante que a própria comunidade cuide do bom andamento dos projetos! Se quiser, escreva um comentário para ele aqui embaixo: 
+        .comments comentários
+
 == render 'static/partials/footer'
 
