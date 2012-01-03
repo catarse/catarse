@@ -37,8 +37,8 @@ class ProjectsController < ApplicationController
           end
 
           @project_of_day = home_page_projects[0]
-          @second_project = collection_projects.where("category_id != #{@recommended_project.category_id}").all[rand(collection_projects.length)]
-          @third_project = collection_projects.where("category_id != #{@second_project.category_id}").all[rand(collection_projects.length)]
+          @second_project = collection_projects.where("category_id != #{@recommended_project.category_id}").all[rand(collection_projects.length)] if @recommended_project
+          @third_project = collection_projects.where("category_id != #{@second_project.category_id}").all[rand(collection_projects.length)] if @second_project
         end
 
         @expiring = Project.includes(:user, :category).visible.expiring.not_home_page.not_expired.order('expires_at, created_at DESC').limit(3).all
