@@ -4710,7 +4710,7 @@ body[data-action="new_profile"][data-controller="static"] #page_content .my_link
   margin: 10px 0 0 24px;
 }
 /* line 85, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects {
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -4718,9 +4718,11 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   width: 700px;
   position: relative;
   left: 240px;
+  margin-right: 0;
+  margin-left: 0;
 }
-/* line 88, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects {
+/* line 90, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -4730,8 +4732,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   border-bottom: #363636 solid 2px;
   padding-bottom: 30px;
 }
-/* line 95, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .project, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .project {
+/* line 97, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .project, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .project, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .project {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -4739,8 +4741,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   width: 220px;
   margin-left: 0;
 }
-/* line 98, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .project_about, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .project_about {
+/* line 100, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .project_about, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .project_about, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .project_about {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -4748,55 +4750,111 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   width: 460px;
   margin-right: 0;
 }
-/* line 102, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .status, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .status {
+/* line 104, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .status, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .status, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .status {
   border-bottom: #999999 solid 1px;
 }
-/* line 105, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .when, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .when {
+/* line 107, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .when, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .when, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .when {
   font-size: 1.3em;
   color: #363636;
   margin-bottom: 15px;
 }
-/* line 110, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .when span, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .when span {
+/* line 112, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .when span, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .when span, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .when span {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.2em;
   color: #4383d1;
 }
-/* line 115, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .reward, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .reward {
+/* line 117, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .reward, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .reward, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .reward {
   font-size: 1.3em;
   color: #666666;
   margin-bottom: 25px;
   line-height: 160%;
 }
-/* line 121, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .reward span, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .reward span {
+/* line 123, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .reward span, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .reward span, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .reward span {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.2em;
   color: black;
   text-transform: uppercase;
 }
-/* line 127, ../../app/stylesheets/content/profile.sass */
+/* line 129, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .about_project {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 460px;
+  margin-right: 0;
   margin-top: 25px;
   font-size: 1.1em;
   line-height: 180%;
   color: #363636;
   margin-bottom: 30px;
 }
-/* line 134, ../../app/stylesheets/content/profile.sass */
+/* line 138, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .about_project span {
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  color: #4383d1;
+  cursor: pointer;
   color: #4383d1;
 }
-/* line 137, ../../app/stylesheets/content/profile.sass */
+/* line 142, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project span:hover {
+  text-shadow: #4383d1 0 0 5px;
+}
+/* line 146, ../../app/stylesheets/content/profile.sass */
 body[data-action="new_profile"][data-controller="static"] #page_content .comments {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 460px;
+  margin-right: 0;
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.6em;
   color: #4a4a4a;
   background: url("/images/redesign/ballon15x15.png") no-repeat;
   text-indent: 24px;
+}
+/* line 155, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 460px;
+  margin-right: 0;
+  font-size: 1.5em;
+  line-height: 180%;
+  color: #363636;
+  margin-bottom: 30px;
+}
+/* line 163, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments em {
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  color: #4383d1;
+  cursor: pointer;
+}
+/* line 167, ../../app/stylesheets/content/profile.sass */
+body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments em:hover {
+  text-shadow: #4383d1 0 0 5px;
 }
 
 /* line 2, ../../app/stylesheets/content/project_profile.sass */
