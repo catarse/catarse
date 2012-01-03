@@ -19,11 +19,18 @@ class ProjectsController < ApplicationController
       format.html do
         @title = t("site.title")
         home_page_projects = Project.includes(:user, :category).visible.home_page.order('"order"')
+
         if current_user and current_user.recommended_project
-         @home_page = current_user.recommended_project + home_page_projects.limit(3).where("id != #{current_user.recommended_project.id}").all
+         @recommended_project = current_user.recommended_project
+         home_page_projects = home_page_projects.limit(3).where("id != #{current_user.recommended_project.id}")
         else
-          @home_page = home_page_projects.limit(4).all
+          @recommended_project = home_page_projects[3]
         end
+
+        @project_of_day = home_page_projects[0]
+        @second_project = home_page_projects[1]
+        @third_project = home_page_projects[2]
+
         @expiring = Project.includes(:user, :category).visible.expiring.not_home_page.not_expired.order('expires_at, created_at DESC').limit(3).all
         @recent = Project.includes(:user, :category).recent.visible.not_home_page.not_expiring.not_expired.where("projects.user_id <> 7329").order('random()').limit(3).all
         @successful = Project.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
