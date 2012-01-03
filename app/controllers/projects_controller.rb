@@ -24,20 +24,22 @@ class ProjectsController < ApplicationController
                                   visible.
                                   order('"order"')
 
-        home_page_projects = collection_projects.home_page
+        if collection_projects.length > 0
+          home_page_projects = collection_projects.home_page
 
 
-        if current_user and current_user.recommended_project
-          @recommended_project = current_user.recommended_project
-          home_page_projects = home_page_projects.where("id != #{current_user.recommended_project.id}")
-          collection_projects = collection_projects.where("id != #{current_user.recommended_project.id}")
-        else
-          @recommended_project = collection_projects[rand(collection_projects.length)]
+          if current_user and current_user.recommended_project
+            @recommended_project = current_user.recommended_project
+            home_page_projects = home_page_projects.where("id != #{current_user.recommended_project.id}")
+            collection_projects = collection_projects.where("id != #{current_user.recommended_project.id}")
+          else
+            @recommended_project = collection_projects.all[rand(collection_projects.length)]
+          end
+
+          @project_of_day = home_page_projects[0]
+          @second_project = collection_projects.where("category_id != #{@recommended_project.category_id}").all[rand(collection_projects.length)]
+          @third_project = collection_projects.where("category_id != #{@second_project.category_id}").all[rand(collection_projects.length)]
         end
-
-        @project_of_day = home_page_projects[0]
-        @second_project = collection_projects.where("category_id != #{@recommended_project.category_id}").all[rand(collection_projects.length)]
-        @third_project = collection_projects.where("category_id != #{@second_project.category_id}").all[rand(collection_projects.length)]
 
         @expiring = Project.includes(:user, :category).visible.expiring.not_home_page.not_expired.order('expires_at, created_at DESC').limit(3).all
         @recent = Project.includes(:user, :category).recent.visible.not_home_page.not_expiring.not_expired.where("projects.user_id <> 7329").order('random()').limit(3).all
