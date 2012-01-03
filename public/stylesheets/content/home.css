@@ -3,13 +3,13 @@ Syntax error: Undefined mixin 'default_grid'.
         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass, in `default_grid'
         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass
 
-1: body[data-action="new_home"][data-controller="static"]
-2:   .recently_projects
+1: body
+2:   .recent_projects
 3:     +default_grid
 4:     float: left
 5:     margin-bottom: 30px
 6: 
-7:   .final_stage_projects
+7:   .ending_projects
 8:     +default_grid
 
 Backtrace:
@@ -103,4 +103,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass, in `default_grid'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass\A \A 1: body[data-action=\"new_home\"][data-controller=\"static\"]\A 2:   .recently_projects\A 3:     +default_grid\A 4:     float: left\A 5:     margin-bottom: 30px\A 6: \A 7:   .final_stage_projects\A 8:     +default_grid"; }
+  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass, in `default_grid'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/home.sass\A \A 1: body\A 2:   .recent_projects\A 3:     +default_grid\A 4:     float: left\A 5:     margin-bottom: 30px\A 6: \A 7:   .ending_projects\A 8:     +default_grid"; }

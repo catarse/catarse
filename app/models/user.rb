@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
   include Rails.application.routes.url_helpers
+  extend ActiveSupport::Memoizable
 
   begin
     sync_with_mailee :news => :newsletter, :list => "Newsletter"
@@ -87,15 +88,25 @@ class User < ActiveRecord::Base
   end
 
   def last_backed_project
-    Backer.where(:user_id => id).order('created_at desc').limit(1).first.project
+    back = Backer.where(:user_id => id).order('created_at desc').limit(1).first
+    if back
+      return back.project
+    else
+      return nil
+    end
   end
+  memoize :last_backed_project
 
   def recommended_project
     # It returns the project that have the greatest quantity of backers
     # that contributed to the last project the user contributed.
-    p = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE project_id = #{last_backed_project.id}) GROUP BY 2 ORDER BY 1 desc LIMIT 1")
-    Project.find_by_id(p[0]["project_id"])
+    return nil unless last_backed_project
+    p = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE project_id = #{last_backed_project.id.to_i}) GROUP BY 2 ORDER BY 1 desc LIMIT 1")
+    return nil if p.count == 0
+    Project.find(p[0]["project_id"])
   end
+  memoize :recommended_project
+
   def display_name
     name || nickname || I18n.t('user.no_name')
   end

@@ -13,12 +13,12 @@ class Project < ActiveRecord::Base
   has_many :rewards, :dependent => :destroy
   has_and_belongs_to_many :managers, :join_table => "projects_managers", :class_name => 'User'
   accepts_nested_attributes_for :rewards
-  
+
   has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
-  
+
   auto_html_for :about do
-    html_escape :map => { 
-      '&' => '&amp;',  
+    html_escape :map => {
+      '&' => '&amp;',
       '>' => '&gt;',
       '<' => '&lt;',
       '"' => '"' }
@@ -31,23 +31,25 @@ class Project < ActiveRecord::Base
   scope :not_home_page, where(:home_page => false)
   scope :recommended, where(:recommended => true)
   scope :not_recommended, where(:recommended => false)
+  scope :with_homepage_comment, where("home_page_comment is not null")
   scope :pending, where("visible = false AND rejected = false")
   scope :expired, where("expires_at < current_timestamp)")
   scope :not_expired, where("expires_at >= current_timestamp")
   scope :expiring, where("expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks')")
   scope :not_expiring, where("NOT (expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("projects.created_at > (current_timestamp - interval '1 month')")
+  scope :last_week, where("projects.created_at > (current_timestamp - interval '1 week')")
   scope :successful, where("goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
   scope :not_successful, where("NOT (goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
   scope :unsuccessful, where("goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
   scope :not_unsuccessful, where("NOT (goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
 
   search_methods :visible, :home_page, :not_home_page, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful, :not_successful, :unsuccessful, :not_unsuccessful
-  
+
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   before_create :store_image_url
-  
+
   def store_image_url
     self.image_url = vimeo.thumbnail unless self.image_url
   end
@@ -86,6 +88,14 @@ class Project < ActiveRecord::Base
   end
   def in_time?
     expires_at >= Time.now
+  end
+  def percent
+    ((pledged / goal * 100).abs).round.to_i
+  end
+  def display_percent
+    return 100 if successful?
+    return 8 if percent > 0 and percent < 8
+    percent
   end
   def progress
     ((pledged / goal * 100).abs).round.to_i
