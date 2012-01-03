@@ -1,30 +1,46 @@
-CATARSE.BackerView = CATARSE.ModelView.extend({
-  template: _.template($('#backer_template').html())
-})
-CATARSE.BackersView = CATARSE.PaginatedView.extend({
-	modelView: CATARSE.BackerView,
-	emptyTemplate: _.template($('#empty_backers_template').html()),
-})
+CATARSE.ProjectsShowView = Backbone.View.extend({
 
-CATARSE.ProjectRouter = Backbone.Router.extend({
-	routes: {
-		'': 'about',
-		'about': 'about',
-		'updates': 'updates',
-		'backers': 'backers',
-		'comments': 'comments'
-	},
-	
-	initialize: function(options) {
-    typeof(options) != 'undefined' || (options = {})
-	},
-	
+  initialize: function() {
+    _.bindAll(this, "render", "BackerView", "BackersView", "about", "updates", "backers", "comments", "embed","index", "isValid", "backWithReward")
+    CATARSE.router.route("", "index", this.index)
+    CATARSE.router.route("about", "about", this.about)
+    CATARSE.router.route("updates", "updates", this.updates)
+    CATARSE.router.route("backers", "backers", this.backers)
+    CATARSE.router.route("comments", "comments", this.comments)
+    CATARSE.router.route("embed", "embed", this.embed)
+    this.render()
+  },
+  
+  events: {
+    "click #show_formatting_tips": "showFormattingTips",
+    "keyup form input[type=text],textarea": "validate",
+    "click #project_link": "selectTarget",
+    "click #project_embed textarea": "selectTarget",
+    "click #rewards li.clickable": "backWithReward"
+  },
+
+  project: new CATARSE.Project($('#project_description').data("project")),
+  
+  BackerView: CATARSE.ModelView.extend({
+    template: _.template(this.$('#backer_template').html())
+  }),
+  
+  BackersView: CATARSE.PaginatedView.extend({
+  	emptyTemplate: _.template(this.$('#empty_backers_template').html())
+  }),
+
+  index: function(){
+    this.about()
+    CATARSE.router.navigate("about")
+  },
+
 	about: function() {
 		this.selectItem("about")
 	},
 
 	updates: function() {
 		this.selectItem("updates")
+		this.$("#project_updates [type=submit]").attr('disabled', true)
 	},
 
 	comments: function() {
@@ -33,71 +49,77 @@ CATARSE.ProjectRouter = Backbone.Router.extend({
 
 	backers: function() {
 		this.selectItem("backers")
-		this.backersView = new CATARSE.BackersView({
-			collection: CATARSE.project.backers,
-			loading: $("#loading"),
-			el: $("#project_backers")
+		this.backersView = new this.BackersView({
+		  modelView: this.BackerView,
+			collection: this.project.backers,
+			loading: this.$("#loading"),
+			el: this.$("#project_backers")
 		})
 	},
 	
+	embed: function(){
+    this.$('#embed_overlay').show()
+    this.$('#project_embed').fadeIn()
+	},
+	
 	selectItem: function(item) {
-		$("#project_content .content").hide()
-		$("#project_content #project_" + item + ".content").show()
-		var link = $("#project_menu #" + item + "_link")
+    this.$('#project_embed').hide()
+    this.$('#embed_overlay').hide()
+		this.$("#project_content .content").hide()
+		this.$("#project_content #project_" + item + ".content").show()
+		var link = this.$("#project_menu #" + item + "_link")
 		link.parent().parent().find('li').removeClass('selected')
     link.parent().addClass('selected')
-	}
+	},
 	
-})
-
-CATARSE.project = new CATARSE.Project($('#project_description').data("project"))
-CATARSE.projectRouter = new CATARSE.ProjectRouter()
-
-$('#show_formatting_tips').click(function(event){
-  event.preventDefault()
-  $('#show_formatting_tips').hide()
-  $('#formatting_tips').slideDown()
-})
-$('#project_updates [type=submit]').attr('disabled', true)
-$('#project_updates [type=text],textarea').keyup(function(){
-  if($('#project_updates [type=text]').val().length > 0 && $('#project_updates textarea').val().length > 0)
-    $('#project_updates [type=submit]').attr('disabled', false)
-  else
-    $('#project_updates [type=submit]').attr('disabled', true)
-})
-
-$("#project_link").click(function(e){
-  e.preventDefault()
-  $(this).select()
-})
-$('#embed_link').click(function(e){
-  e.preventDefault()
-  $('#embed_overlay').show()
-  $('#project_embed').fadeIn()
-})
-$('#project_embed .close').click(function(e){
-  e.preventDefault()
-  $('#project_embed').hide()
-  $('#embed_overlay').hide()
-})
-$("#project_embed textarea").click(function(e){
-  e.preventDefault()
-  $(this).select()
-})
-$(document).ready(function(){
-  if($('#login').length > 0){
-    $('input[type=submit]').click(require_login)
+	showFormattingTips: function(event){
+    event.preventDefault()
+    this.$('#show_formatting_tips').hide()
+    this.$('#formatting_tips').slideDown()
+  },
+  
+  isValid: function(form){
+    var valid = true
+    form.find('input[type=text],textarea').each(function(){
+      if($(this).parent().hasClass('required') && $.trim($(this).val()) == "") {
+        valid = false
+      }
+    })
+    return valid
+  },
+  
+  validate: function(event){
+    var form = $(event.target).parentsUntil('form')
+    var submit = form.find('[type=submit]')
+    if(this.isValid(form))
+      submit.attr('disabled', false)
+    else
+      submit.attr('disabled', true)
+  },
+  
+  selectTarget: function(event){
+    event.preventDefault()
+    $(event.target).select()
+  },
+  
+  backWithReward: function(event){
+    var element = $(event.target)
+    if(element.is('a') || element.is('textarea') || element.is('button'))
+      return true
+    if(!element.is('li'))
+      element = element.parentsUntil('li')
+    var url = element.find('input[type=hidden]').val()
+    if(this.$('#login').length > 0){
+      CATARSE.requireLogin(event, url)
+    } else {
+      window.location.href = url
+    }
+  },
+  
+  render: function(){
+    if(this.$('#login').length > 0){
+      this.$('#back_project input[type=submit]').click(CATARSE.requireLogin)
+    }
   }
-})
-$('#rewards li.clickable').click(function(e){
-  if($(e.target).is('a') || $(e.target).is('textarea') || $(e.target).is('button'))
-    return true
-  var url = $(this).find('input[type=hidden]').val()
-  if($('#login').length > 0){
-    $('#return_to').val(url)
-    $('#login_overlay').show()
-    $('#login').fadeIn()
-  } else {
-    window.location.href = url
-  }
+	
 })
