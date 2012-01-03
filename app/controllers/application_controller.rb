@@ -7,6 +7,16 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :detect_locale
 
+  # TODO: Change this way to get the opendata
+  before_filter do
+    @total_backers = User.backers.count
+    @total_backs = Backer.confirmed.count
+    @total_backed = Backer.confirmed.sum(:value)
+    @total_users = User.primary.count
+    @total_projects_success = Project.successful.count
+    @total_projects_online = Project.visible.count
+  end
+
   private
 
   def namespace
@@ -14,7 +24,7 @@ class ApplicationController < ActionController::Base
     return "" if names.length < 2
     names[0..(names.length-2)].map(&:downcase).join('_')
   end
-  
+
   def is_homepage?
     controller_name == 'projects' && action_name == 'index'
   end

@@ -116,10 +116,6 @@ class ProjectsController < ApplicationController
     @title = t('projects.pending_backers.title')
     @search = Backer.search(params[:search])
     @backers = @search.order("created_at DESC").paginate :page => params[:page]
-    @total_backers = User.backers.count
-    @total_backs = Backer.confirmed.count
-    @total_backed = Backer.confirmed.sum(:value)
-    @total_users = User.primary.count
   end
   private
 

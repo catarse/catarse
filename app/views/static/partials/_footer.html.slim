@@ -5,22 +5,20 @@
         | estatísticas bacanas
       ul
         li
-          h5 9358
+          h5= @total_backers
           p Apoiadores
         li
-          h5 11633
+          h5= @total_backs
           p Apoios
         li
-          h5 R$ 1.139.334,50
+          h5= number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
           p Arrecadados
         li
-          h5 30994
+          h5= @total_users
           p Usuários
         li
-          h5 109
+          h5= @total_projects_success
           p Projetos bem sucedidos
         li
-          h5 250
+          h5= @total_projects_online
           p Projetos no ar
-
-        = link_to '>> veja mais estatísticas aqui na OPENDATA', '#'
