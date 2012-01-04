@@ -1,31 +1,24 @@
 /*
-Syntax error: Undefined mixin 'default_grid'.
-        on line 3 of /users/danielweinmann/Projects/catarse/app/stylesheets/content/home.sass, in `default_grid'
-        from line 3 of /users/danielweinmann/Projects/catarse/app/stylesheets/content/home.sass
+Syntax error: Undefined mixin 'box-shadow'.
+        on line 7 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass, in `box-shadow'
+        from line 7 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass
 
-1: body
-2:   .recent_projects
-3:     +default_grid
-4:     float: left
-5: 
-6:   .ending_projects
-7:     +default_grid
-8:     float: left
+2:   display: none
+3:   z-index: 500
+4:   position: fixed
+5:   bottom: 0
+6:   width: 100%
+7:   +box-shadow(rgba(0,0,0,0.75),0px,-4px,20px)
+8:   text-align: center
+9:   color: #fff
+10:   +text-shadow(black, 1px, 1px, 1px)
+11:   .wrapper
+12:     padding: 20px
 
 Backtrace:
-/users/danielweinmann/Projects/catarse/app/stylesheets/content/home.sass:3:in `default_grid'
-/users/danielweinmann/Projects/catarse/app/stylesheets/content/home.sass:3
+/users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass:7:in `box-shadow'
+/users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass:7
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:235:in `visit_rule'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -109,4 +102,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /users/danielweinmann/Projects/catarse/app/stylesheets/content/home.sass, in `default_grid'\A         from line 3 of /users/danielweinmann/Projects/catarse/app/stylesheets/content/home.sass\A \A 1: body\A 2:   .recent_projects\A 3:     +default_grid\A 4:     float: left\A 5: \A 6:   .ending_projects\A 7:     +default_grid\A 8:     float: left"; }
+  content: "Syntax error: Undefined mixin 'box-shadow'.\A         on line 7 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass, in `box-shadow'\A         from line 7 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass\A \A 2:   display: none\A 3:   z-index: 500\A 4:   position: fixed\A 5:   bottom: 0\A 6:   width: 100%\A 7:   +box-shadow(rgba(0,0,0,0.75),0px,-4px,20px)\A 8:   text-align: center\A 9:   color: #fff\A 10:   +text-shadow(black, 1px, 1px, 1px)\A 11:   .wrapper\A 12:     padding: 20px"; }

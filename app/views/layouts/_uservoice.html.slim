@@ -1,4 +1,4 @@
-:javascript
+javascript:
   var uservoiceOptions = {
     key: 'catarse',
     host: 'catarse.uservoice.com',
@@ -17,4 +17,3 @@
   }
   _loadSuper = window.onload;
   window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
-

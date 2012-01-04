@@ -13,8 +13,9 @@ class ApplicationController < ActionController::Base
     @total_backs = Backer.confirmed.count
     @total_backed = Backer.confirmed.sum(:value)
     @total_users = User.primary.count
+    @total_projects = Project.visible.count
     @total_projects_success = Project.successful.count
-    @total_projects_online = Project.visible.count
+    @total_projects_online = Project.visible.not_expired.count
   end
 
   private

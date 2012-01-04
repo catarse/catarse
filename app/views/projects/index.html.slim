@@ -3,25 +3,28 @@
     h1 Faça acontecer os projetos em que você acredita
     h4 Financie projetos de maneira colaborativa e torne-se parte de algo maior.
 
-  / Project of day
-  = render :partial => 'project', :locals => {:project => @project_of_day, :has_comments => true, :comments_title => 'Projeto do Dia'} if @project_of_day
-  / Second Project
+  = render :partial => 'project', :locals => {:project => @project_of_day, :has_comments => true, :comments_title => 'Projeto do dia'} if @project_of_day
   = render :partial => 'project', :locals => {:project => @second_project, :has_comments => true} if @second_project
-  / Third Project
   = render :partial => 'project', :locals => {:project => @third_project, :has_comments => true} if @third_project
-  / Recommended Project
-  = render :partial => 'project', :locals => {:project => @recommended_project, :has_comments => true, :comments_title => ((current_user.present? and current_user.recommended_project.present?) ? 'Projeto Recomendado' : @recommended_project.category.name)} if @recommended_project
-  / = render :partial => 'project', :collection => @home_page, :locals => {:has_comments => true} if defined?(@home_page) and not @home_page.empty?
+  - if @recommended_project
+    = render :partial => 'project', :locals => {:project => @recommended_project, :has_comments => true, :comments_title => 'Recomendado para você'}
+  - else
+    = render :partial => 'project', :locals => {:project => @fourth_project, :has_comments => true} if @fourth_project
 
   .reference_link
-    = link_to 'explore mais projetos recomendados', explore_path(:anchor => 'recommended'), :class => 'sliced_link'
-
-
-  .recent_projects
-    = render :partial => 'project_list', :locals => {:collection => @recent, :title => 'Projetos Recentes', :description => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."}
+    = link_to t('.recommended.explore'), explore_path(:anchor => 'recommended'), :class => 'sliced_link'
 
   .ending_projects
-    = render :partial => 'project_list', :locals => {:collection => @expiring, :title => 'Na reta final!', :description => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy."}
+    = render :partial => 'project_list', :locals => {:collection => @expiring, :title => t('.expiring.title'), :description => t('.expiring.subtitle')}
+
+  .reference_link
+    = link_to t('.expiring.explore'), explore_path(:anchor => 'expiring'), :class => 'sliced_link'
+
+  .recent_projects
+    = render :partial => 'project_list', :locals => {:collection => @recent, :title => t('.recent.title'), :description => t('.recent.subtitle')}
+
+  .reference_link
+    = link_to t('.recent.explore'), explore_path(:anchor => 'recent'), :class => 'sliced_link'
 
   = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
 
@@ -41,4 +44,4 @@
         a O Catarse é um site que tem  um  modelo de funcionar diferente do que a gente tá  acostumado por aí.
     .twitter_message
       p
-        a= link_to @last_tweet['text'], "https://twitter.com/#!/Catarse_/status/#{@last_tweet['id_str']}"
+        a= link_to @last_tweet['text'], "https://twitter.com/#!/Catarse_/status/#{@last_tweet['id_str']}", target: :_blank

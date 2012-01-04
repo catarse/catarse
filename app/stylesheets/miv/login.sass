@@ -1,0 +1,60 @@
+#login
+  display: none
+  background-color: #44A546
+  +linear-gradient(color_stops(#51C252,#49B249,#44A546))
+  border: 5px solid #fff
+  +border-radius(8px)
+  +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 500px
+  height: 300px
+  margin-top: -170px
+  margin-left: -270px
+  z-index: 500
+  padding: 20px
+  text-align: center
+  color: #fff
+  +text-shadow(black, 1px, 1px, 1px)
+  h1
+    font-size: 24px
+    padding: 10px
+    margin-bottom: 10px
+  form fieldset
+    margin-top: 8px
+    padding: 0
+  p
+    margin-top: 20px
+  a
+    img
+      width: 60px
+      +transition(all, 0.3s)
+    img:hover, img:focus
+      +scale(1.2)
+  a.disabled
+    img
+      +opacity(0.6)
+    img:hover, img:focus, img:active
+      +scale(1)
+  a.close
+    color: #fff
+    text-decoration: none
+    position: absolute
+    width: 24px
+    height: 24px
+    border: 3px solid #fff
+    +border-radius(24px)
+    top: 0
+    left: 100%
+    margin-top: -15px
+    margin-left: -15px
+    line-height: 22px
+    background-color: #44A546
+    +linear-gradient(color_stops(#51C252,#49B249,#44A546))
+    +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)
+    font-weight: bold
+    +transition(all, 0.3s)
+  a.close:hover, a.close:focus
+    color: #fff
+    +scale(1.05)

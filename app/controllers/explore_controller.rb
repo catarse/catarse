@@ -1,5 +1,4 @@
 class ExploreController < ApplicationController
-  layout 'redesign'
 
   def index
     @title = t('explore.title')
