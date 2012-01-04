@@ -184,16 +184,6 @@ describe User do
     new_user.notifications.order(:created_at).should == [old_user_notification, new_user_notification]
   end
 
-  describe "#last_backed_project" do
-    subject{ user.last_backed_project }
-    before do
-      p1, @p2 = Factory(:project), Factory(:project)
-      Factory(:backer, :user => user, :project => p1, :created_at => Time.now - 1.month)
-      Factory(:backer, :user => user, :project => @p2, :created_at => Time.now)
-    end
-    it{ should == @p2 }
-  end
-
   describe "#recommended_project" do
     subject{user.recommended_project}
     before do
