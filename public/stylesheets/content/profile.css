@@ -4,7 +4,7 @@ Syntax error: Undefined mixin 'default_grid'.
         from line 3 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass
 
 1: body[data-action="show"][data-controller="users"]
-2:   #page_content
+2:   #user_profile
 3:     +default_grid
 4:     padding-top: 40px
 5:     position: relative
@@ -110,4 +110,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass, in `default_grid'\A         from line 3 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass\A \A 1: body[data-action=\"show\"][data-controller=\"users\"]\A 2:   #page_content\A 3:     +default_grid\A 4:     padding-top: 40px\A 5:     position: relative\A 6:     font-family: \"Lato\", sans-serif\A 7: \A 8:     .section_header"; }
+  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass, in `default_grid'\A         from line 3 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass\A \A 1: body[data-action=\"show\"][data-controller=\"users\"]\A 2:   #user_profile\A 3:     +default_grid\A 4:     padding-top: 40px\A 5:     position: relative\A 6:     font-family: \"Lato\", sans-serif\A 7: \A 8:     .section_header"; }

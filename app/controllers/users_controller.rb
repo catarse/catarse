@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   actions :show
   can_edit_on_the_spot
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
+  respond_to :json, :only => [:backs]
   def show
     show!{
       return redirect_to(user_path(@user.primary)) if @user.primary
@@ -16,6 +17,12 @@ class UsersController < ApplicationController
       @projects = @projects.all
     }
   end
+
+  def backs
+    @user = User.find(params[:id])
+    render :json => @user.backs
+  end
+
   private
   def can_update_on_the_spot?
     user_fields = ["email", "name", "bio", "newsletter", "project_updates"]

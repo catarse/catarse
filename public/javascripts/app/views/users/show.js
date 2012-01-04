@@ -8,6 +8,16 @@ CATARSE.UsersShowView = Backbone.View.extend({
 		CATARSE.router.route("credits", "credits", this.credits)
 	},
 
+  user: new CATARSE.User($('#user_profile').data("user")),
+
+  BackView: CATARSE.ModelView.extend({
+    template: _.template(this.$('#user_back_template').html())
+  }),
+  
+  BacksView: CATARSE.PaginatedView.extend({
+  	emptyTemplate: _.template(this.$('#empty_user_back_template').html())
+  }),
+
 	index: function() {
 		this.backs()
     CATARSE.router.navigate("backs")
