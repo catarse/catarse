@@ -1,0 +1,74 @@
+script type="text/template" id="empty_user_back_template"
+  p= t('.empty')
+
+script type="text/template" id="user_back_template"
+  .project
+    .box
+      p.black_box Lorem Ipsum Dolor
+      = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+      h4
+        a href='#'
+          | Aqui vai o nome do seu  projeto em até 02 linhas
+      p.author
+        | por Autor do Projeto
+      p.where
+        | Rio de Janeiro
+      p.description
+        | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+      .status_bar
+        .progress style="width: 80%;"
+      ul
+        li
+          h6 90 dias
+          p Restantes
+        li
+          h6 90%
+          p Levantados
+        li
+          h6 R$ 120.000
+          p Atigindos
+      = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+  
+  / |<%= confirmed_at %> 
+  / |<% if(anonymous) { %>
+  / img src="/images/user.png" class="user"
+  / | &nbsp;
+  / = t('.anonymous_backer')
+  / = image_tag "badge.#{I18n.locale}.png", :class => "badge"
+  / p= t('.anonymous_description')
+  / | <% } else { %>
+  / a href="<%= user['url'] %>"
+  /   img src="<%= user['image'] %>" class="user"
+  /   | <%= user['medium_name'] %>
+  /   = image_tag "badge.#{I18n.locale}.png", :class => "badge"
+  / p
+  /   | <%= user['backs_text'] %>
+  / | <% } %>
+  / 
+  / - if current_user and (current_user == @project.user or current_user.admin)
+  /   p.reward
+  /     = t('activerecord.attributes.backer.value')
+  /     |: 
+  /     | <%= display_value %>
+  /     | . 
+  /     = t('activerecord.attributes.user.email')
+  /     |: 
+  /     | <% if(user['email']) { %>
+  /     | <%= user['email'] %>
+  /     | <% } else { %>
+  /     | &nbsp;
+  /     = t('not_informed')
+  /     |.
+  /     | <% } %>
+  /     br
+  /     | <% if (reward) { %>
+  /     | &nbsp;
+  /     = t('activerecord.models.reward')
+  /     |: 
+  /     | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
+  /     | <% } else { %>
+  /     | &nbsp;
+  /     = t('.no_reward')
+  /     | <% } %>
+  / .clear

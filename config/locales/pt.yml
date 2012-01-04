@@ -283,24 +283,12 @@ pt:
     home_page_projects:
       explore_recommended: "explore mais projetos recomendados"
       subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
-      title: "seleção"
+      title: seleção
     index:
-      expiring:
-        title: "Na reta final!"
-        subtitle: "Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!"
-        explore: "explore mais projetos na reta final"
-      recent:
-        title: "Projetos recentes"
-        subtitle: "Recém-chegados. O sol começou a brilhar para eles agorinha..."
-        explore: "explore mais projetos recentes"
-      recommended:
-        title: "Seleção"
-        subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
-        explore: "explore mais projetos recomendados"
-      successful:
-        title: "Bem-sucedidos"
-        subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
-        explore: "explore mais projetos bem-sucedidos"
+      expiring: "Na reta final"
+      recent: "Projetos recentes"
+      recommended: "Projetos recomendados"
+      successful: "Projetos bem-sucedidos"
     index_header:
       subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história."
       title: "Faça acontecer os projetos em que você acredita"
@@ -349,10 +337,6 @@ pt:
       backed: levantados
       by: por
       reached: atingido
-    box:
-      backed: levantados
-      by: por
-      reached: atingido
     project_comments:
       require_login_html: "Quer enviar um comentário? %{link} para fazer login."
       submit: "Enviar comentário"
@@ -370,7 +354,7 @@ pt:
       successful:
         explore: "explore mais projetos bem-sucedidos"
         subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
-        title: "bem-sucedidos"
+        title: bem-sucedidos
     project_updates:
       empty: "Este projeto ainda não teve atualizações. Aguarde =D"
       submit: "Enviar atualização"
@@ -499,6 +483,11 @@ pt:
       no_projects_current_user_html: "Você ainda não realizou nenhum projeto no Catarse. Deixe a inspiração bater e %{link} para começar!"
       title: "Projetos de %{name}"
       title_current_user: "Meus projetos"
+    show:
+      backed_projects: "projetos apoiados"
+      comments: comentários
+      created_projects: "projetos criados"
+      credits: créditos
   users_mailer:
     notification_email:
       alt: "Você deve habilitar imagens para visualizar corretamente essa mensagem."
