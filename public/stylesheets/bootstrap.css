@@ -4349,28 +4349,32 @@ body[data-action="index"][data-controller="explore"] #page_content .projects_lis
   margin-bottom: 20px;
   border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
 }
-/* line 22, ../../app/stylesheets/content/discover.sass */
+/* line 21, ../../app/stylesheets/content/discover.sass */
+body[data-action="index"][data-controller="explore"] #page_content .projects_list .selected_list h2, body[data-action="index"][data-controller="explore"] #page_content .projects_list .final_stage_list h2, body[data-action="index"][data-controller="explore"] #page_content .projects_list .new_projects_list h2, body[data-action="index"][data-controller="explore"] #page_content .projects_list .finished_projects_list h2 {
+  text-transform: lowercase;
+}
+/* line 24, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .selected_list h2 {
   background: url("/images/redesign/nice.png") left 3px no-repeat;
 }
-/* line 25, ../../app/stylesheets/content/discover.sass */
+/* line 27, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .final_stage_list h2 {
   background: url("/images/redesign/final_stage_icon18x15.png") left 3px no-repeat;
 }
-/* line 28, ../../app/stylesheets/content/discover.sass */
+/* line 30, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .new_projects_list h2 {
   background: url("/images/redesign/new_projects_icon35x20.png") left 1px no-repeat;
   text-indent: 45px;
 }
-/* line 31, ../../app/stylesheets/content/discover.sass */
+/* line 33, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .finished_projects_list {
   border-bottom: none;
 }
-/* line 33, ../../app/stylesheets/content/discover.sass */
+/* line 35, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .finished_projects_list h2 {
   background: url("/images/redesign/success_project_icon16x31.png") left top no-repeat;
 }
-/* line 36, ../../app/stylesheets/content/discover.sass */
+/* line 38, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list h2 {
   padding-bottom: 20px;
   width: 100%;
@@ -4382,7 +4386,7 @@ body[data-action="index"][data-controller="explore"] #page_content .projects_lis
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
-/* line 45, ../../app/stylesheets/content/discover.sass */
+/* line 47, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list h2 span {
   padding-left: 20px;
   font-family: Arial;
@@ -4390,19 +4394,19 @@ body[data-action="index"][data-controller="explore"] #page_content .projects_lis
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 52, ../../app/stylesheets/content/discover.sass */
+/* line 54, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list ul.collection_list li .project {
   margin-bottom: 20px;
 }
-/* line 55, ../../app/stylesheets/content/discover.sass */
+/* line 57, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list ul.collection_list li.first .project {
   margin-left: 0;
 }
-/* line 58, ../../app/stylesheets/content/discover.sass */
+/* line 60, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list ul.collection_list li.last .project {
   margin-right: 0;
 }
-/* line 60, ../../app/stylesheets/content/discover.sass */
+/* line 62, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar {
   display: inline;
   float: left;
@@ -4410,7 +4414,7 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar {
   margin-right: 10px;
   width: 220px;
 }
-/* line 62, ../../app/stylesheets/content/discover.sass */
+/* line 64, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section {
   border-bottom: 1px rgba(0, 0, 0, 0.3) solid;
   float: left;
@@ -4418,23 +4422,23 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
-/* line 68, ../../app/stylesheets/content/discover.sass */
+/* line 70, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section:last-child {
   border-bottom: none;
 }
-/* line 71, ../../app/stylesheets/content/discover.sass */
+/* line 73, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section.highlights h2 {
   background: url("/images/redesign/highlight_icon12x12.png") left 6px no-repeat;
 }
-/* line 74, ../../app/stylesheets/content/discover.sass */
+/* line 76, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section.categories h2 {
   background: url("/images/redesign/categories_icon14x14.png") left 3px no-repeat;
 }
-/* line 77, ../../app/stylesheets/content/discover.sass */
+/* line 79, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section.cities h2 {
   background: url("/images/redesign/cities_icon9x16.png") left 2px no-repeat;
 }
-/* line 79, ../../app/stylesheets/content/discover.sass */
+/* line 81, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section h2 {
   font-size: 1.4em;
   color: black;
@@ -4446,17 +4450,17 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   float: left;
   width: 100%;
 }
-/* line 89, ../../app/stylesheets/content/discover.sass */
+/* line 91, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li {
   margin-bottom: 10px;
   float: left;
   margin-right: 8px;
 }
-/* line 93, ../../app/stylesheets/content/discover.sass */
+/* line 95, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li.no_margin {
   margin-left: none;
 }
-/* line 95, ../../app/stylesheets/content/discover.sass */
+/* line 97, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li a {
   vertical-align: middle;
   width: 100px;
@@ -4479,7 +4483,7 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   font-size: 1.2em;
   color: #6498d8;
 }
-/* line 109, ../../app/stylesheets/content/discover.sass */
+/* line 111, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li a:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -4488,7 +4492,7 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   -o-box-shadow: #4383d1 2px 2px 2px;
   box-shadow: #4383d1 2px 2px 2px;
 }
-/* line 112, ../../app/stylesheets/content/discover.sass */
+/* line 114, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li a.selected {
   -moz-box-shadow: #4383d1 2px 2px 2px;
   -webkit-box-shadow: #4383d1 2px 2px 2px;
