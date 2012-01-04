@@ -1,3 +1,18 @@
+CATARSE.UsersShowView = Backbone.View.extend({
+
+	initialize: function() {
+		CATARSE.router.route("", "index", this.index)
+		CATARSE.router.route("backs", "backs", this.backs)
+	},
+	
+	index: function() {
+	},
+	
+	backs: function() {
+		
+	}
+})
+
 $('input,textarea').live('keypress', function(e){
   if (e.which == '13' && $("button:contains('OK')").attr('disabled')) {
     e.preventDefault();

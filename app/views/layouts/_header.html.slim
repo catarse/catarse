@@ -9,7 +9,7 @@
     .actions
       - if current_user
         = image_tag "redesign/notification.png"
-        = image_tag current_user.display_image, :size => "23x23"
+        = link_to image_tag(current_user.display_image, :size => "23x23"), current_user
     .social
       .fb_root
         iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=233819696673790" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"

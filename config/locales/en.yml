@@ -483,6 +483,10 @@ en:
       no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
       title: "%{name}'s projects"
       title_current_user: "My projects"
+    show:
+      backed_projects: ~
+      comments: ~
+      created_projects: ~
   users_mailer:
     notification_email:
       alt: "You must enable images in order to correctly view this message."

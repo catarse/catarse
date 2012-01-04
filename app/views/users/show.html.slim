@@ -1,0 +1,168 @@
+#page_content
+  .section_header
+    h1.profile= @user.name
+    h4.bio= @user.bio
+
+    .profile_categories
+      nav
+        = link_to t('.backed_projects'), '#backed_projects'
+        = link_to t('.created_projects'), '#created_projects'
+        / = link_to t('.comments'), '#comments'
+        = link_to t('.credits'), '#credits'
+
+  .profile_share
+    = image_tag @user.display_image, :class => 'profile_pic', :size => '100x100'
+  
+  .my_links
+    ul
+      - if @user.email.present?
+        li
+          = image_tag ('redesign/email15x15.png'), :class => 'profile_icons'
+          = mail_to @user.email, @user.email, :class => 'profile_info'
+      / li
+      /   = image_tag ('redesign/facebook15x15.png'), :class => 'profile_icons'
+      /   = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
+      / li
+      /   = image_tag ('redesign/twitter15x15.png'), :class => 'profile_icons'
+      /   = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
+      / li
+      /   = image_tag ('redesign/twitter15x15.png'), :class => 'profile_icons'
+      /   = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
+  
+  ul#backed_projects
+  ul#created_projects
+  ul#credits
+  .profile_projects_backed
+    .project
+      .box
+        p.black_box Lorem Ipsum Dolor
+        = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+        h4
+          a href='#'
+            | Aqui vai o nome do seu  projeto em até 02 linhas
+        p.author
+          | por Autor do Projeto
+        p.where
+          | Rio de Janeiro
+        p.description
+          | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+        .status_bar
+          .progress style="width: 80%;"
+        ul
+          li
+            h6 90 dias
+            p Restantes
+          li
+            h6 90%
+            p Levantados
+          li
+            h6 R$ 120.000
+            p Atigindos
+        = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+    .project_about
+      .status
+        .when 
+          p 
+            | Em 07/04/2011 você apoiou com 
+            span RS 10,00 
+            | e selecionou esta recompensa:
+        .reward
+          p
+            span Para R$10,00 ou mais                                          
+            | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
+      
+      .about_project
+        p
+          | O 
+          span Autor do Projeto 
+          | já entrou em contato com você para falar sobre a produção das recompensas? Você está acompanhando o projeto depois que ele foi bem-sucedido? Não deixa de visitar a página do 
+          span Nome do Projeto
+          | aqui no Catarse para se informar e para manter o contato com o realizador. É super importante que a própria comunidade cuide do bom andamento dos projetos! Se quiser, escreva um comentário para ele aqui embaixo: 
+      .comments comentários
+
+  .profile_my_projects
+      p
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+          h4
+            a href='#'
+              | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+      .project_about        
+        .about_my_project
+          p
+            | Aqui entra o texto 
+            span sobre o projeto 
+            | que você criou. Como eu não faço a mínima ideia do que tem hoje em dia no catarse, eu vou só encher de coisa aqui até que alguém decida mudar. 
+            span Basicamente 
+            | é só pra encher o espaço e testar o tamanho das fontes coisas assim. Um lorem ipsum, só que com uma enrolada e uma informação importante. Viu como é fácil ? 
+        .comments últimos comentários
+
+  .profile_my_comments
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+          h4
+            a href='#'
+              | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+      .about_project_my_comments
+        p
+          | O que você ja falou sobre o projeto 
+          em Nome do Projeto
+
+      .comments comentários
+
+/ = render 'header'
+/ #user_feed
+/   - if current_user and @user == current_user
+/     = render 'current_user_fields'
+/   - elsif current_user and current_user.admin
+/     = render 'admin_fields'
+/   = render 'projects'
+/   = render 'backs'
