@@ -294,8 +294,13 @@ pt:
         subtitle: "Recém-chegados. O sol começou a brilhar para eles agorinha..."
         explore: "explore mais projetos recentes"
       recommended:
+        title: "Seleção"
+        subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
         explore: "explore mais projetos recomendados"
-      successful: "Projetos bem-sucedidos"
+      successful:
+        title: "Bem-sucedidos"
+        subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
+        explore: "explore mais projetos bem-sucedidos"
     index_header:
       subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história."
       title: "Faça acontecer os projetos em que você acredita"
@@ -341,6 +346,10 @@ pt:
     press:
       title: "Confira o que estão falando do Catarse na imprensa"
     project:
+      backed: levantados
+      by: por
+      reached: atingido
+    box:
       backed: levantados
       by: por
       reached: atingido

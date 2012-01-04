@@ -1,37 +1,5 @@
 div class=(defined?(has_comments) ? :compost_project : '')
-  .project[itemscope itemtype="http://schema.org/CreativeWork"]
-    meta[itemprop="dateCreated" content=project.created_at.to_date]
-    .box
-      p.black_box= project.category.name
-      = link_to project do
-        = image_tag project.display_image, :class => 'cover', :itemprop => 'image'
-      h4= link_to project, :itemprop => 'url' do
-        span[itemprop="name"]= project.name
-      p.author
-        = t('.by')
-        |&nbsp;
-        span[itemprop="author"]= project.user.name
-        p.where[itemprop="contentLocation"]
-          - unless project.user.address_city.blank?
-            = project.user.address_city
-            - unless project.user.address_state.blank?
-              | /
-              = project.user.address_state
-      p.description[itemprop="description"]= project.headline
-      .status_bar
-        .progress style="width: #{project.display_percent}%;"
-      ul
-        li
-          h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
-          p= "#{project.remaining_text}"
-        li
-          h6= "#{project.display_pledged}"
-          p= "#{t('.backed')}"
-
-        li
-          h6= "#{project.percent}%"
-          p= "#{t('.reached')}"
-      = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+  = render 'box', project: project, custom_class: (custom_class if defined?(custom_class))
   - if defined?(has_comments)
     .project_comment
       h3= "#{(defined?(comments_title) ? comments_title : project.category.name)}"

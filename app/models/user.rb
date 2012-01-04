@@ -163,7 +163,8 @@ class User < ActiveRecord::Base
         :total_backs => total_backs,
         :backs_text => backs_text,
         :url => user_path(self),
-        :city => address_city
+        :city => address_city,
+        :state => address_state
       })
     end
 
