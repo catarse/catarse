@@ -4916,7 +4916,12 @@ body[data-action="show"][data-controller="users"] #page_content .section_header 
   background: white;
   color: #4383d1;
 }
-/* line 58, ../../app/stylesheets/content/profile.sass */
+/* line 54, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #page_content .section_header .profile_categories nav .selected {
+  background: white;
+  color: #4383d1;
+}
+/* line 59, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .profile_share .profile_pic {
   float: left;
   position: absolute;
@@ -4927,7 +4932,7 @@ body[data-action="show"][data-controller="users"] #page_content .profile_share .
   -o-box-shadow: black 2px 2px 8px;
   box-shadow: black 2px 2px 8px;
 }
-/* line 65, ../../app/stylesheets/content/profile.sass */
+/* line 66, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .my_links {
   display: inline;
   float: left;
@@ -4938,11 +4943,11 @@ body[data-action="show"][data-controller="users"] #page_content .my_links {
   margin-top: 20px;
   margin-bottom: 50px;
 }
-/* line 72, ../../app/stylesheets/content/profile.sass */
+/* line 73, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .my_links ul li {
   margin-top: 5px;
 }
-/* line 74, ../../app/stylesheets/content/profile.sass */
+/* line 75, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .my_links ul li .profile_info {
   display: block;
   font-family: "Lato", sans-serif;
@@ -4951,24 +4956,12 @@ body[data-action="show"][data-controller="users"] #page_content .my_links ul li 
   float: right;
   color: #363636;
 }
-/* line 81, ../../app/stylesheets/content/profile.sass */
+/* line 82, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .my_links ul li .profile_icons {
   float: left;
   margin: 10px 0 0 24px;
 }
-/* line 85, ../../app/stylesheets/content/profile.sass */
-body[data-action="show"][data-controller="users"] #page_content .profile_my_projects, body[data-action="show"][data-controller="users"] #page_content .profile_my_comments {
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 700px;
-  position: relative;
-  left: 240px;
-  margin-right: 0;
-  margin-left: 0;
-}
-/* line 90, ../../app/stylesheets/content/profile.sass */
+/* line 86, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .profile_projects_backed, body[data-action="show"][data-controller="users"] #page_content .profile_my_projects, body[data-action="show"][data-controller="users"] #page_content .profile_my_comments {
   display: inline;
   float: left;
@@ -4979,7 +4972,7 @@ body[data-action="show"][data-controller="users"] #page_content .profile_project
   border-bottom: #363636 solid 2px;
   padding-bottom: 30px;
 }
-/* line 97, ../../app/stylesheets/content/profile.sass */
+/* line 93, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .profile_projects_backed .project, body[data-action="show"][data-controller="users"] #page_content .profile_my_projects .project, body[data-action="show"][data-controller="users"] #page_content .profile_my_comments .project {
   display: inline;
   float: left;
@@ -4988,7 +4981,7 @@ body[data-action="show"][data-controller="users"] #page_content .profile_project
   width: 220px;
   margin-left: 0;
 }
-/* line 100, ../../app/stylesheets/content/profile.sass */
+/* line 96, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .profile_projects_backed .project_about, body[data-action="show"][data-controller="users"] #page_content .profile_my_projects .project_about, body[data-action="show"][data-controller="users"] #page_content .profile_my_comments .project_about {
   display: inline;
   float: left;
@@ -4997,37 +4990,37 @@ body[data-action="show"][data-controller="users"] #page_content .profile_project
   width: 460px;
   margin-right: 0;
 }
-/* line 104, ../../app/stylesheets/content/profile.sass */
+/* line 100, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .profile_projects_backed .status, body[data-action="show"][data-controller="users"] #page_content .profile_my_projects .status, body[data-action="show"][data-controller="users"] #page_content .profile_my_comments .status {
   border-bottom: #999999 solid 1px;
 }
-/* line 107, ../../app/stylesheets/content/profile.sass */
+/* line 103, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .profile_projects_backed .when, body[data-action="show"][data-controller="users"] #page_content .profile_my_projects .when, body[data-action="show"][data-controller="users"] #page_content .profile_my_comments .when {
   font-size: 1.3em;
   color: #363636;
   margin-bottom: 15px;
 }
-/* line 112, ../../app/stylesheets/content/profile.sass */
+/* line 108, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .profile_projects_backed .when span, body[data-action="show"][data-controller="users"] #page_content .profile_my_projects .when span, body[data-action="show"][data-controller="users"] #page_content .profile_my_comments .when span {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.2em;
   color: #4383d1;
 }
-/* line 117, ../../app/stylesheets/content/profile.sass */
+/* line 113, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .profile_projects_backed .reward, body[data-action="show"][data-controller="users"] #page_content .profile_my_projects .reward, body[data-action="show"][data-controller="users"] #page_content .profile_my_comments .reward {
   font-size: 1.3em;
   color: #666666;
   margin-bottom: 25px;
   line-height: 160%;
 }
-/* line 123, ../../app/stylesheets/content/profile.sass */
+/* line 119, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .profile_projects_backed .reward span, body[data-action="show"][data-controller="users"] #page_content .profile_my_projects .reward span, body[data-action="show"][data-controller="users"] #page_content .profile_my_comments .reward span {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.2em;
   color: black;
   text-transform: uppercase;
 }
-/* line 129, ../../app/stylesheets/content/profile.sass */
+/* line 125, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .about_project, body[data-action="show"][data-controller="users"] #page_content .about_my_project {
   display: inline;
   float: left;
@@ -5041,7 +5034,7 @@ body[data-action="show"][data-controller="users"] #page_content .about_project, 
   color: #363636;
   margin-bottom: 30px;
 }
-/* line 138, ../../app/stylesheets/content/profile.sass */
+/* line 134, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .about_project span, body[data-action="show"][data-controller="users"] #page_content .about_my_project span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -5054,12 +5047,12 @@ body[data-action="show"][data-controller="users"] #page_content .about_project s
   color: #4383d1;
   cursor: pointer;
 }
-/* line 142, ../../app/stylesheets/content/profile.sass */
+/* line 138, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .about_project span:hover, body[data-action="show"][data-controller="users"] #page_content .about_my_project span:hover {
   text-shadow: #4383d1 0 0 5px;
   color: #4383d1;
 }
-/* line 146, ../../app/stylesheets/content/profile.sass */
+/* line 142, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .comments {
   display: inline;
   float: left;
@@ -5073,7 +5066,7 @@ body[data-action="show"][data-controller="users"] #page_content .comments {
   background: url("/images/redesign/ballon15x15.png") no-repeat;
   text-indent: 24px;
 }
-/* line 155, ../../app/stylesheets/content/profile.sass */
+/* line 151, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .about_project_my_comments, body[data-action="show"][data-controller="users"] #page_content .about_my_project {
   display: inline;
   float: left;
@@ -5087,7 +5080,7 @@ body[data-action="show"][data-controller="users"] #page_content .about_project_m
   margin-bottom: 30px;
   margin-top: 0;
 }
-/* line 164, ../../app/stylesheets/content/profile.sass */
+/* line 160, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .about_project_my_comments em, body[data-action="show"][data-controller="users"] #page_content .about_my_project em {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -5100,7 +5093,7 @@ body[data-action="show"][data-controller="users"] #page_content .about_project_m
   color: #4383d1;
   cursor: pointer;
 }
-/* line 168, ../../app/stylesheets/content/profile.sass */
+/* line 164, ../../app/stylesheets/content/profile.sass */
 body[data-action="show"][data-controller="users"] #page_content .about_project_my_comments em:hover, body[data-action="show"][data-controller="users"] #page_content .about_my_project em:hover {
   text-shadow: #4383d1 0 0 5px;
 }

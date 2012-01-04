@@ -48,11 +48,12 @@ body[data-action="show"][data-controller="users"]
             text-transform: uppercase
             &:hover
               background: rgba(255,255,255,0.4)
-            &:active            
+            &:active
               background: rgb(255,255,255)
               color: $blue
-
-
+          .selected
+            background: rgb(255,255,255)
+            color: $blue
  
     .profile_share
       .profile_pic
@@ -82,11 +83,6 @@ body[data-action="show"][data-controller="users"]
             float: left
             margin: 10px 0 0 24px
 
-    .profile_my_projects, .profile_my_comments
-      +grid(12)
-      +grid-push(4)
-      +omega
-      +alpha
     .profile_projects_backed, .profile_my_projects, .profile_my_comments
       +grid(12)
       margin-bottom: 30px
