@@ -285,9 +285,16 @@ pt:
       subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
       title: "seleção"
     index:
-      expiring: "Na reta final"
-      recent: "Projetos recentes"
-      recommended: "Projetos recomendados"
+      expiring:
+        title: "Na reta final!"
+        subtitle: "Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!"
+        explore: "explore mais projetos na reta final"
+      recent:
+        title: "Projetos recentes"
+        subtitle: "Recém-chegados. O sol começou a brilhar para eles agorinha..."
+        explore: "explore mais projetos recentes"
+      recommended:
+        explore: "explore mais projetos recomendados"
       successful: "Projetos bem-sucedidos"
     index_header:
       subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história."

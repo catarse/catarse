@@ -10,7 +10,11 @@
       +grid(5)
       +grid-suffix(1)
       #comum
-        margin-top: 50px
+        img
+          margin-top: 20px
+        +opacity(0.8)
+        &:hover
+          +opacity(1)
       h3
         +clearfix
         padding: 5px 0 5px 75px
@@ -56,9 +60,10 @@
         display: block
         font-size: 1.9em
         font-family: "Lato-Bold"
-        color: #ccc
+        color: $minimal_gryn
         margin-top: 30px
-        cursor: pointer
+        &:hover
+          color: $super_minimal_gryn
 
     .social_menu
       +grid(5)
@@ -109,5 +114,9 @@
 
       
       #engage
-        margin-top: 80px
-        margin-left: 80px
+        img
+          margin-top: 80px
+          margin-left: 80px
+        +opacity(0.8)
+        &:hover
+          +opacity(1)

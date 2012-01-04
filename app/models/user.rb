@@ -87,23 +87,14 @@ class User < ActiveRecord::Base
     u.primary.nil? ? u : u.primary
   end
 
-  def last_backed_project
-    back = Backer.where(:user_id => id).order('created_at desc').limit(1).first
-    if back
-      return back.project
-    else
-      return nil
-    end
-  end
-  memoize :last_backed_project
-
   def recommended_project
-    # It returns the project that have the greatest quantity of backers
-    # that contributed to the last project the user contributed.
-    return nil unless last_backed_project
-    p = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE project_id = #{last_backed_project.id.to_i}) GROUP BY 2 ORDER BY 1 desc LIMIT 1")
-    return nil if p.count == 0
-    Project.find(p[0]["project_id"])
+    # It returns the project that have the biggest amount of backers
+    # that contributed to the last project the user contributed that has common backers.
+    backs.confirmed.order('confirmed_at DESC').each do |back|
+      project = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE project_id = #{back.project.id.to_i}) GROUP BY 2 ORDER BY 1 DESC LIMIT 1")
+      return Project.find(project[0]["project_id"]) unless project.count == 0
+    end
+    nil
   end
   memoize :recommended_project
 

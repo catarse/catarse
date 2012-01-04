@@ -3,15 +3,21 @@ div class=(defined?(has_comments) ? :compost_project : '')
     meta[itemprop="dateCreated" content=project.created_at.to_date]
     .box
       p.black_box= project.category.name
-      = image_tag project.display_image, :class => 'cover', :itemprop => 'image'
-
+      = link_to project do
+        = image_tag project.display_image, :class => 'cover', :itemprop => 'image'
       h4= link_to project, :itemprop => 'url' do
         span[itemprop="name"]= project.name
       p.author
-        | por
+        = t('.by')
+        |&nbsp;
         span[itemprop="author"]= project.user.name
-      p.where[itemprop="contentLocation"]= "#{project.user.address_city}/#{project.user.address_state}"
-      p.description[itemprop="description"]= "#{project.headline}"
+        p.where[itemprop="contentLocation"]
+          - unless project.user.address_city.blank?
+            = project.user.address_city
+            - unless project.user.address_state.blank?
+              | /
+              = project.user.address_state
+      p.description[itemprop="description"]= project.headline
       .status_bar
         .progress style="width: #{project.display_percent}%;"
       ul
@@ -30,7 +36,3 @@ div class=(defined?(has_comments) ? :compost_project : '')
     .project_comment
       h3= "#{(defined?(comments_title) ? comments_title : project.category.name)}"
       p= "#{project.home_page_comment}"
-      p.author
-        | comentário de
-        br/
-        | Catarse
