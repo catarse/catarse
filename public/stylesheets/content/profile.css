@@ -1,20 +1,23 @@
 /*
 Syntax error: Undefined mixin 'default_grid'.
-        on line 3 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass, in `default_grid'
-        from line 3 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass
+        on line 6 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass, in `default_grid'
+        from line 6 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass
 
 1: body[data-action="show"][data-controller="users"]
 2:   #user_profile
-3:     +default_grid
-4:     padding-top: 40px
-5:     position: relative
-6:     font-family: "Lato", sans-serif
-7: 
-8:     .section_header
+3:     #loading img
+4:       display: none
+5:   
+6:     +default_grid
+7:     padding-top: 40px
+8:     position: relative
+9:     font-family: "Lato", sans-serif
+10: 
+11:     .section_header
 
 Backtrace:
-/Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass:3:in `default_grid'
-/Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass:3
+/Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass:6:in `default_grid'
+/Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass:6
 /Users/paulogeyer/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
 /Users/paulogeyer/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/paulogeyer/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -110,4 +113,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass, in `default_grid'\A         from line 3 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass\A \A 1: body[data-action=\"show\"][data-controller=\"users\"]\A 2:   #user_profile\A 3:     +default_grid\A 4:     padding-top: 40px\A 5:     position: relative\A 6:     font-family: \"Lato\", sans-serif\A 7: \A 8:     .section_header"; }
+  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 6 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass, in `default_grid'\A         from line 6 of /Users/paulogeyer/Dropbox/Projects/catarse/app/stylesheets/content/profile.sass\A \A 1: body[data-action=\"show\"][data-controller=\"users\"]\A 2:   #user_profile\A 3:     #loading img\A 4:       display: none\A 5:   \A 6:     +default_grid\A 7:     padding-top: 40px\A 8:     position: relative\A 9:     font-family: \"Lato\", sans-serif\A 10: \A 11:     .section_header"; }
