@@ -10,7 +10,7 @@
       nav#user_profile_menu
         = link_to t('.backed_projects'), '#backs', :id => 'backed_projects_link', :class => 'selected'
         = link_to t('.created_projects'), '#projects', :id => 'created_projects_link'
-        / = link_to t('.comments'), '#comments'
+        = link_to t('.comments'), '#comments', :id => 'comments_link'
         = link_to t('.credits'), '#credits', :id => 'credits_link'
 
   .profile_share
@@ -73,7 +73,8 @@
                 span Basicamente 
                 | é só pra encher o espaço e testar o tamanho das fontes coisas assim. Um lorem ipsum, só que com uma enrolada e uma informação importante. Viu como é fácil ? 
             .comments últimos comentários
-
+    #user_comments.content
+      .fb-comments[data-href=request.url data-num-posts=50 data-width="610"]
     #user_credits.content
   #loading= image_tag "loading.gif"
   / .profile_my_comments
