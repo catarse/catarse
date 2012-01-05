@@ -1,11 +1,12 @@
 CATARSE.UsersShowView = Backbone.View.extend({
 
 	initialize: function() {
-		_.bindAll(this, "index", "backs", "projects", "credits")
+		_.bindAll(this, "index", "backs", "projects", "credits", "comments")
 		CATARSE.router.route("", "index", this.index)
 		CATARSE.router.route("backs", "backs", this.backs)
 		CATARSE.router.route("projects", "projects", this.projects)
 		CATARSE.router.route("credits", "credits", this.credits)
+		CATARSE.router.route("comments", "comments", this.comments)
 		this.render()
 	},
 
@@ -40,6 +41,10 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
 	credits: function() {
 		this.selectItem("credits")
+	},
+
+	comments: function() {
+		this.selectItem("comments")
 	},
 
 	selectItem: function(item) {

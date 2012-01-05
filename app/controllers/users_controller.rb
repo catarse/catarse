@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def backs
     @user = User.find(params[:id])
-    @backs = @user.backs.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
+    @backs = @user.backs.not_anonymous.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
     render :json => @backs.to_json({:include_project => true, :include_reward => true})
   end
 

@@ -50,12 +50,13 @@ script type="text/template" id="user_back_template"
         p
           | O 
           span
-            | <%= project['user']['name'] %>
+            | <%= project['user']['name'] %> 
           | já entrou em contato com você para falar sobre a produção das recompensas? Você está acompanhando o projeto depois que ele foi bem-sucedido? Não deixa de visitar a página do 
-          span== "<%= project['name] %>"
+          span
+            | <%= project['name'] %> 
           | aqui no Catarse para se informar e para manter o contato com o realizador. É super importante que a própria comunidade cuide do bom andamento dos projetos! Se quiser, escreva um comentário para ele aqui embaixo: 
       .comments comentários
-
+    .clearfix
   / |<%= confirmed_at %> 
   / |<% if(anonymous) { %>
   / img src="/images/user.png" class="user"
