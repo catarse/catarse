@@ -1,10 +1,10 @@
-body[data-action="new_project_profile"][data-controller="static"]
+body[data-action="show"][data-controller="projects"]
   #page_content
     +default_grid
     .section_header
       span
         font-family: 'Lato-Bold', sans-serif
-    
+
     .midia
       +grid(11)
       .video
@@ -35,13 +35,13 @@ body[data-action="new_project_profile"][data-controller="static"]
             background-color: rgba($gryn,0.3)
             padding: 5px 10px
             margin-right: 8px
-            margin-top: 10px 
+            margin-top: 10px
             &:hover
               background: rgba(255,255,255,0.7)
             &:active
               background: rgb(255,255,255)
               color: $blue
-      
+
       .midia_content_home, .midia_content_update, .midia_content_backers, .midia_content_comments
         margin: 20px 0
         .image
@@ -59,7 +59,7 @@ body[data-action="new_project_profile"][data-controller="static"]
             cursor: pointer
             &:hover
               +text-shadow($blue 0 0 6px)
-      
+
       .midia_content_update
         border-bottom: 1px dashed #999
         padding-bottom: 30px
@@ -87,10 +87,10 @@ body[data-action="new_project_profile"][data-controller="static"]
 
               &:hover
                 +text-shadow($blue 0 0 6px)
-          
+
           p#text
             margin-bottom: 4px
-     
+
 
 
     .info
@@ -114,7 +114,7 @@ body[data-action="new_project_profile"][data-controller="static"]
             em
               font-size: 2.2em
               color: #666
-      
+
       #condition
         background-color: #999
         padding: 5px 10px
@@ -124,27 +124,28 @@ body[data-action="new_project_profile"][data-controller="static"]
           text-transform: uppercase
           line-height: 150%
           letter-spacing: 1px
-      
-      #pledge
-        +border-radius(8px)
-        +box-shadow(#999 1px 3px 6px)
-        +transition(all, 0.3s)
-        background-color: $blue
-        padding: 20px 10px
-        margin: 10px 15px
-        cursor: pointer
-        p
-          font-size: 1.5em
-          text-transform: uppercase
-          color: white
-        &:hover
-          background-color: #3889e9
-          +box-shadow($blue 0 0 10px)
 
-        &:active
-          +box-shadow(#999 1px 1px 6px)
-          background-color: #3889e9
-    
+      #pledge
+        form
+          input[type="submit"]
+            +border-radius(8px)
+            +box-shadow(#999 1px 3px 6px)
+            +transition(all, 0.3s)
+            border: none
+            background-color: $blue
+            padding: 20px 10px
+            margin: 10px 15px
+            cursor: pointer
+            font-size: 1.5em
+            text-transform: uppercase
+            color: white
+            &:hover
+              background-color: #3889e9
+              +box-shadow($blue 0 0 10px)
+            &:active
+              +box-shadow(#999 1px 1px 6px)
+              background-color: #3889e9
+
     #rewards
       margin-bottom: 20px
       .box
@@ -169,8 +170,13 @@ body[data-action="new_project_profile"][data-controller="static"]
           text-indent: 30px
           background: url('/images/redesign/support23x23.png') center left no-repeat
           height: 30px
+          padding-top: 15px
           vertical-align: middle
-    
+        a
+          font-size: 1.0em
+          &:hover
+            text-decoration: underline
+
     #creator_profile
       +grid(5)
       +omega
@@ -191,7 +197,7 @@ body[data-action="new_project_profile"][data-controller="static"]
         +alpha
         margin-top: 10px
         height: 105px
-        background: url('/images/redesign/profile100x100.png') 
+        // background: url('/images/redesign/profile100x100.png')
       .personal_info
         +grid(3)
         +omega
@@ -203,4 +209,4 @@ body[data-action="new_project_profile"][data-controller="static"]
         #city, #projects, #about
           margin-top: 5px
           font-size: 1.2em
-          
+

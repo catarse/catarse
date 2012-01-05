@@ -1,0 +1,81 @@
+- content_for :js_templates do
+  = render :partial => 'backer'
+
+= render 'project_meta_tags'
+= render 'project_warning'
+= render 'facebook_sdk'
+
+#page_content
+  .section_header
+    .titles
+      h1
+        - if current_user and current_user.admin
+          = on_the_spot_edit @project, :name
+        - else
+          = @project.name
+      h4= t('.subtitle_html', :category_name => @project.category.name, :city => @project.user.address_city, :author => @project.user.display_name)
+  .midia
+    .video
+      iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+    .social
+
+  .info
+    #statistics
+      .statistics
+        .iten
+          p= @project.total_backers
+          em apoiadores
+        .iten
+          p= @project.display_pledged
+          em atingidos de #{@project.display_goal}
+        .iten
+          p= @project.time_to_go[:time]
+          em #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+
+      #condition
+        p
+          - if @project.successful?
+            - if @project.expired?
+              = t('projects.back_project.project_warning.successful.expired', :date => @project.display_expires_at)
+            - else
+              = t('projects.back_project.project_warning.successful.not_expired', :date => @project.display_expires_at)
+          - elsif @project.waiting_confirmation?
+            = t('projects.back_project.project_warning.waiting_confirmation')
+          - else
+            - if @project.expired?
+              = t('projects.back_project.project_warning.not_successful.expired', :goal => @project.display_goal, :date => @project.display_expires_at)
+            - else
+              = t('projects.back_project.project_warning.not_successful.not_expired', :goal => @project.display_goal, :date => @project.display_expires_at)
+
+      #pledge
+        = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
+          fieldset
+            = submit_tag t('projects.back_project.submit'), :disabled => (not @project.can_back?)
+        / p
+        /   | QUERO APOIAR ESSE PROJETO
+
+    #rewards
+      - @rewards.each do |reward|
+        .box
+          = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
+          h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum)
+          p
+            - if current_user and current_user.admin
+              #{on_the_spot_edit reward, :description, :type => :textarea}
+            - else
+              = auto_link(reward.description, :html => {:target => :_blank})
+          em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
+
+    #creator_profile
+      h3 projeto por
+      .avatar= image_tag @project.user.display_image, :width => '100px', :heigth => '100px'
+      .personal_info
+        p
+         = link_to @project.user.display_name, user_path(@project.user)
+        #city
+          p
+            | de #{@project.user.address_city}, apoiou
+            span= " #{@project.user.total_backs}"
+            |  projetos
+        #about
+          p= @project.user.bio
