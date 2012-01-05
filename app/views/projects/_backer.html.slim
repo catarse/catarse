@@ -2,30 +2,51 @@ script type="text/template" id="empty_backers_template"
   p= t('.empty')
 
 script type="text/template" id="backer_template"
-  |<%= confirmed_at %> 
-  |<% if(anonymous) { %>
-  img src="/images/user.png" class="user"
-  | &nbsp;
-  = t('.anonymous_backer')
-  = image_tag "badge.#{I18n.locale}.png", :class => "badge"
-  p= t('.anonymous_description')
-  | <% } else { %>
-  a href="<%= user['url'] %>"
-    img src="<%= user['image'] %>" class="user"
-    | <%= user['medium_name'] %>
-    = image_tag "badge.#{I18n.locale}.png", :class => "badge"
-  p
-    | <%= user['backs_text'] %>
-  | <% } %>
+  .backer
+    | <% if(anonymous) { %>
+    img src="/images/user.png" class="backer_avatar"
+    p#text
+      |<%= confirmed_at %>
+      em t('.anonymous_backer')
+    #backed
+      p= t('.anonymous_description')
+    | <% } else { %>
+    a href="<%= user['url'] %>"
+      img src="<%= user['image'] %>" class="backer_avatar"
+    p#text
+      | <%= confirmed_at %> &nbsp;
+      a href="<%= user['url'] %>"
+       | <%= user['medium_name'] %>
+    #backed
+      p
+        | <%= user['backs_text'] %>
+    | <% } %>
+
+
+  / |<%= confirmed_at %>
+  / |<% if(anonymous) { %>
+  / img src="/images/user.png" class="user"
+  / | &nbsp;
+  / = t('.anonymous_backer')
+  / = image_tag "badge.#{I18n.locale}.png", :class => "badge"
+  / p= t('.anonymous_description')
+  / | <% } else { %>
+  / a href="<%= user['url'] %>"
+  /   img src="<%= user['image'] %>" class="user"
+  /   | <%= user['medium_name'] %>
+  /   = image_tag "badge.#{I18n.locale}.png", :class => "badge"
+  / p
+  /   | <%= user['backs_text'] %>
+  / | <% } %>
 
   - if current_user and (current_user == @project.user or current_user.admin)
     p.reward
       = t('activerecord.attributes.backer.value')
-      |: 
+      |:
       | <%= display_value %>
-      | . 
+      | .
       = t('activerecord.attributes.user.email')
-      |: 
+      |:
       | <% if(user['email']) { %>
       | <%= user['email'] %>
       | <% } else { %>
@@ -37,7 +58,7 @@ script type="text/template" id="backer_template"
       | <% if (reward) { %>
       | &nbsp;
       = t('activerecord.models.reward')
-      |: 
+      |:
       | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
       | <% } else { %>
       | &nbsp;

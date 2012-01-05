@@ -6,6 +6,7 @@
 = render 'facebook_sdk'
 
 #page_content
+  #project_description[data-project=@project.to_json]
   .section_header
     .titles
       h1
@@ -18,6 +19,29 @@
     .video
       iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
     .social
+    .tabs
+      nav#project_menu
+        = link_to '#about', :id => 'about_link' do
+          = t('.menu.about')
+        = link_to '#updates', :id => 'updates_link' do
+          = t('.menu.updates')
+        = link_to '#backers', :id => 'backers_link' do
+          = t('.menu.backers')
+        = link_to '#comments', :id => 'comments_link' do
+          = t('.menu.comments')
+    #project_content
+      #project_about.content
+        .midia_content_home
+          - if current_user and current_user.admin
+            #{on_the_spot_edit @project, :about, :type => :textarea}
+          - else
+            = @project.about_html.html_safe
+          = render "admin_fields" if current_user and current_user.admin
+      #project_updates.content= render :partial => 'updates'
+      .midia_content_backers
+        #project_backers.content
+      #project_comments.content= render :partial => 'comments'
+    #loading= image_tag "loading.gif"
 
   .info
     #statistics
@@ -51,12 +75,10 @@
         = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
           fieldset
             = submit_tag t('projects.back_project.submit'), :disabled => (not @project.can_back?)
-        / p
-        /   | QUERO APOIAR ESSE PROJETO
 
     #rewards
       - @rewards.each do |reward|
-        .box
+        div[class="box #{('clickable' if @project.can_back? and not reward.sold_out?)}"]
           = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
           h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum)
           p
@@ -77,5 +99,5 @@
             | de #{@project.user.address_city}, apoiou
             span= " #{@project.user.total_backs}"
             |  projetos
-        #about
+        #bio
           p= @project.user.bio

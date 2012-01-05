@@ -9,7 +9,7 @@
       = form.commit_button t('.submit'), disabled: true
 
 - cache(action_suffix: "updates_#{@project.id}") do
-  div[itemscope itemtype="http://schema.org/Blog"]
+  .midia_content_update[itemscope itemtype="http://schema.org/Blog"]
     - if @project.posts.empty?
       em = t('.empty')
     - else
@@ -19,7 +19,7 @@
             h1[itemprop="name"] = post["regular_title"]
             .post_info
               span[itemprop="datePublished"] = l Time.at(post["unix_timestamp"].to_i).to_date, format: :short
-              |  &bull;  
+              |  &bull;
               span[itemprop="url"] = link_to nil, post["url"], target: :_blank
 
             p[itemprop="description"] = raw post["regular_body"]
