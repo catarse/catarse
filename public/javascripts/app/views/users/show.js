@@ -6,6 +6,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
 		CATARSE.router.route("backs", "backs", this.backs)
 		CATARSE.router.route("projects", "projects", this.projects)
 		CATARSE.router.route("credits", "credits", this.credits)
+		this.render()
 	},
 
   user: new CATARSE.User($('#user_profile').data("user")),
@@ -25,6 +26,12 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
 	backs: function() {
 		this.selectItem("backed_projects")
+		this.backsView = new this.BacksView({
+			modelView: this.BackView,
+			collection: this.user.backs,
+			loading: this.$("#loading"),
+			el: this.$("#user_backed_projects")
+		})
 	},
 
 	projects: function() {

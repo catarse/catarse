@@ -92,6 +92,7 @@ class Backer < ActiveRecord::Base
       :anonymous => anonymous,
       :confirmed => confirmed,
       :confirmed_at => display_confirmed_at,
+      :value => display_value,
       :user => user.as_json(options.merge(:anonymous => anonymous))
     }
 
@@ -100,6 +101,14 @@ class Backer < ActiveRecord::Base
         :display_value => display_value,
         :reward => reward
       })
+    end
+
+    if options and options[:include_project]
+      json_attributes.merge!({:project => project})
+    end
+
+    if options and options[:include_reward]
+      json_attributes.merge!({:reward => reward})
     end
 
     json_attributes
