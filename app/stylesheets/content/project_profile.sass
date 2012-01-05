@@ -5,6 +5,9 @@ body[data-action="show"][data-controller="projects"]
       span
         font-family: 'Lato-Bold', sans-serif
 
+    #project_content
+      .content
+        display: none
     .midia
       +grid(11)
       .video
@@ -38,7 +41,7 @@ body[data-action="show"][data-controller="projects"]
             margin-top: 10px
             &:hover
               background: rgba(255,255,255,0.7)
-            &:active
+            &:active, &.selected
               background: rgb(255,255,255)
               color: $blue
 
@@ -47,13 +50,20 @@ body[data-action="show"][data-controller="projects"]
         .image
           border: 2px solid $orange
 
+        h2
+          font-family: Lato-Bold
+          font-size: 2.0em
+          color: black
+
         p
           font-family: 'Lato', sans-serif
           font-size: 1.5em
           color: #333
           line-height: 160%
           margin-bottom: 10px
-          em
+          a
+            font-size: 1.0em
+          em, a
             +transition(all, 0.3s)
             color: $blue
             cursor: pointer
@@ -63,6 +73,10 @@ body[data-action="show"][data-controller="projects"]
       .midia_content_update
         border-bottom: 1px dashed #999
         padding-bottom: 30px
+        em
+          font-family: 'Lato', sans-serif
+          font-size: 1.5em
+          color: #333
 
       .midia_content_backers
         .backer
@@ -206,7 +220,7 @@ body[data-action="show"][data-controller="projects"]
         #name
           color: $blue
           font-size: 1.5em
-        #city, #projects, #about
+        #city, #projects, #bio
           margin-top: 5px
           font-size: 1.2em
 

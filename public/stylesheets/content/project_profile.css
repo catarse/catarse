@@ -10,7 +10,7 @@ Syntax error: Undefined mixin 'default_grid'.
 5:       span
 6:         font-family: 'Lato-Bold', sans-serif
 7: 
-8:     .midia
+8:     #project_content
 
 Backtrace:
 /Users/ton/code/store/catarse/app/stylesheets/content/project_profile.sass:3:in `default_grid'
@@ -103,4 +103,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/project_profile.sass, in `default_grid'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/project_profile.sass\A \A 1: body[data-action=\"show\"][data-controller=\"projects\"]\A 2:   #page_content\A 3:     +default_grid\A 4:     .section_header\A 5:       span\A 6:         font-family: 'Lato-Bold', sans-serif\A 7: \A 8:     .midia"; }
+  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/project_profile.sass, in `default_grid'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/content/project_profile.sass\A \A 1: body[data-action=\"show\"][data-controller=\"projects\"]\A 2:   #page_content\A 3:     +default_grid\A 4:     .section_header\A 5:       span\A 6:         font-family: 'Lato-Bold', sans-serif\A 7: \A 8:     #project_content"; }
