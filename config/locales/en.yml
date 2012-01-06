@@ -489,6 +489,10 @@ en:
       created_projects: ~
       credits: ~
       project_relationship_text: ~
+      when:
+        backed_value: ~
+        did_not_selected_reward: ~
+        selected_reward: ~
   users_mailer:
     notification_email:
       alt: "You must enable images in order to correctly view this message."
