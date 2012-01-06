@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     show!{
       return redirect_to(user_path(@user.primary)) if @user.primary
       @title = "#{@user.display_name}"
-      @backs = @user.backs.confirmed.order(:confirmed_at)
-      @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
-      @backs = @backs.all
+      # @backs = @user.backs.confirmed.order(:confirmed_at)
+      # @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
+      # @backs = @backs.all
       @projects = @user.projects.order("updated_at DESC")
       @projects = @projects.visible unless @user == current_user
       @projects = @projects.all
@@ -20,7 +20,9 @@ class UsersController < ApplicationController
 
   def backs
     @user = User.find(params[:id])
-    @backs = @user.backs.not_anonymous.confirmed.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
+    @backs = @user.backs.confirmed
+    @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
+    @backs = @backs.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
     render :json => @backs.to_json({:include_project => true, :include_reward => true})
   end
 
