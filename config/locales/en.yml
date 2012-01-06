@@ -391,7 +391,7 @@ en:
     twitter:
       take_a_look: "Check out the project %{name} on @Catarse_"
     video_embed:
-      a_project_by: "A project by %{link} on Catarse"
+      a_project_by_html: "A project by %{link} on Catarse"
   projects_mailer:
     start_project_email:
       subject: "Project sent by %{name}"
