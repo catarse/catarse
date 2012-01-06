@@ -5,7 +5,7 @@ script type="text/template" id="user_back_template"
   .project
     .box
       p.black_box Lorem Ipsum Dolor
-      img[src="<%= project['image'] %>" width="210px" heigth="172px"].cover
+      img.cover[src="<%= project['image'] %>" width="210px" heigth="172px"]
 
       h4
         a href='<%= project["url"] %>'
@@ -33,17 +33,18 @@ script type="text/template" id="user_back_template"
     .status
       .when 
         p 
-          | Em <%= confirmed_at %> você apoiou com 
-          span <%= value %> 
-          | <% if(project['reward']) { %>
-          | e selecionou esta recompensa:
+          == t('users.show.when.backed_value', :confirmed_at => "<%= confirmed_at %>", :value => "<%= value %>")
+          | <% if (reward) { %>
+          == " #{t('users.show.when.selected_reward')} "
           | <% } else { %>
-          | e não selecionou recompensa
+          == " #{t('users.show.when.did_not_selected_reward')} "
           | <% } %>
       .reward
         p
-          span Para R$10,00 ou mais                                          
-          | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
+          | <% if (reward) { %>
+          span== "#{t('projects.rewards.reward_title', :minimum => "<%= reward['display_minimum'] %>")} "
+          == "<%= reward['description'] %>"
+          | <% } %>
 
     .about_project
       p== t('users.show.project_relationship_text', :project_author => "<%= project['user']['name'] %>", :project_name => "<%= project['name'] %>")
