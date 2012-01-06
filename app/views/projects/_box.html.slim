@@ -27,7 +27,7 @@
             = project.user.address_state
     p.description[itemprop="description"]= project.headline
     .status_bar
-      .progress style="width: #{project.display_percent}%;"
+      .progress style="width: #{project.display_progress}%;"
     ul
       li
         h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
@@ -37,6 +37,6 @@
         p= "#{t('.backed')}"
 
       li
-        h6= "#{project.percent}%"
+        h6= "#{project.progress}%"
         p= "#{t('.reached')}"
     = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
