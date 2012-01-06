@@ -231,4 +231,37 @@ describe Project do
 
   end
 
+  context "scopes" do
+    
+    it "should have a special order for exploring projects" do
+      
+      projects = [
+        # First come active projects, ordered by expires_at ASC
+        Factory(:project, expires_at: 2.days.from_now),
+        Factory(:project, expires_at: 3.days.from_now),
+        Factory(:project, expires_at: 4.days.from_now),
+        Factory(:project, expires_at: 5.days.from_now),
+        # Then come successful projects, ordered by expires_at DESC
+        Factory(:project, expires_at: 2.days.ago, finished: true, successful: true),
+        Factory(:project, expires_at: 3.days.ago, finished: true, successful: true),
+        Factory(:project, expires_at: 4.days.ago, finished: true, successful: true),
+        Factory(:project, expires_at: 5.days.ago, finished: true, successful: true),
+        # Then come unsuccesful projects, ordered by expires_at DESC
+        Factory(:project, expires_at: 2.days.ago, finished: true, successful: false),
+        Factory(:project, expires_at: 3.days.ago, finished: true, successful: false),
+        Factory(:project, expires_at: 4.days.ago, finished: true, successful: false),
+        Factory(:project, expires_at: 5.days.ago, finished: true, successful: false),
+        # Then come expired but not finished projects, ordered by expires_at DESC
+        Factory(:project, expires_at: 2.days.ago, finished: false, successful: false),
+        Factory(:project, expires_at: 3.days.ago, finished: false, successful: false),
+        Factory(:project, expires_at: 4.days.ago, finished: false, successful: false),
+        Factory(:project, expires_at: 5.days.ago, finished: false, successful: false)
+      ]
+      
+      Project.sort_by_explore_asc.all.map(&:id).should == projects.map(&:id)
+      
+    end
+    
+  end
+  
 end

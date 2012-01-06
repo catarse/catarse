@@ -42,9 +42,10 @@ class Project < ActiveRecord::Base
   scope :recent, where("projects.created_at > (current_timestamp - interval '1 month')")
   scope :last_week, where("projects.created_at > (current_timestamp - interval '1 week')")
   scope :successful, where(successful: true)
+  scope :sort_by_explore_asc, order('(expires_at < current_timestamp) ASC, successful DESC, finished DESC, abs(EXTRACT(epoch FROM current_timestamp - expires_at)), created_at DESC')
 
   search_methods :visible, :home_page, :not_home_page, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
-
+  
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   before_create :store_image_url
