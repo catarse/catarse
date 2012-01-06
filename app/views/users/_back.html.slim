@@ -2,61 +2,53 @@ script type="text/template" id="empty_user_back_template"
   p= t('.empty')
 
 script type="text/template" id="user_back_template"
-  .profile_projects_backed
-    .project
-      .box
-        p.black_box Lorem Ipsum Dolor
-        img[src="<%= project['image'] %>" width="210px" heigth="172px"].cover
+  .project
+    .box
+      p.black_box Lorem Ipsum Dolor
+      img[src="<%= project['image'] %>" width="210px" heigth="172px"].cover
 
-        h4
-          a href='<%= project["url"] %>'
-            | <%= project['name'] %>
-        p.author== "#{t('projects.project.by')} <%= project['user']['name'] %>"
-        p.where
-          | <%= project['user']['city'] %>/<%= project['user']['state'] %>
-        p.description
-          | <%= project['headline'] %>
-        .status_bar
-          .progress style="width: <%= project['display_progress'] %>%;"
-        ul
-          li
-            h6 <%= project['time_to_go']['time'] %> <%= project['time_to_go']['unit'] %>
-            p <%= project['remaining_text'] %>
-          li
-            h6 <%= project['progress'] %>%
-            p= t('projects.project.backed')
-          li
-            h6 <%= project['pledged'] %>
-            p= t('projects.project.reached')
-        = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+      h4
+        a href='<%= project["url"] %>'
+          | <%= project['name'] %>
+      p.author== "#{t('projects.project.by')} <%= project['user']['name'] %>"
+      p.where
+        | <%= project['user']['city'] %>/<%= project['user']['state'] %>
+      p.description
+        | <%= project['headline'] %>
+      .status_bar
+        .progress style="width: <%= project['display_progress'] %>%;"
+      ul
+        li
+          h6 <%= project['time_to_go']['time'] %> <%= project['time_to_go']['unit'] %>
+          p <%= project['remaining_text'] %>
+        li
+          h6 <%= project['progress'] %>%
+          p= t('projects.project.backed')
+        li
+          h6 <%= project['pledged'] %>
+          p= t('projects.project.reached')
+      = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
 
-    .project_about
-      .status
-        .when 
-          p 
-            | Em <%= confirmed_at %> você apoiou com 
-            span <%= value %> 
-            | <% if(project['reward']) { %>
-            | e selecionou esta recompensa:
-            | <% } else { %>
-            | e não selecionou recompensa
-            | <% } %>
-        .reward
-          p
-            span Para R$10,00 ou mais                                          
-            | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
-
-      .about_project
+  .project_about
+    .status
+      .when 
+        p 
+          | Em <%= confirmed_at %> você apoiou com 
+          span <%= value %> 
+          | <% if(project['reward']) { %>
+          | e selecionou esta recompensa:
+          | <% } else { %>
+          | e não selecionou recompensa
+          | <% } %>
+      .reward
         p
-          | O 
-          span
-            | <%= project['user']['name'] %> 
-          | já entrou em contato com você para falar sobre a produção das recompensas? Você está acompanhando o projeto depois que ele foi bem-sucedido? Não deixa de visitar a página do 
-          span
-            | <%= project['name'] %> 
-          | aqui no Catarse para se informar e para manter o contato com o realizador. É super importante que a própria comunidade cuide do bom andamento dos projetos! Se quiser, escreva um comentário para ele aqui embaixo: 
-      .comments comentários
-    .clearfix
+          span Para R$10,00 ou mais                                          
+          | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
+
+    .about_project
+      p== t('users.show.project_relationship_text', :project_author => "<%= project['user']['name'] %>", :project_name => "<%= project['name'] %>")
+    .comments comentários
+  .clearfix
   / |<%= confirmed_at %> 
   / |<% if(anonymous) { %>
   / img src="/images/user.png" class="user"

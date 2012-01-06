@@ -487,6 +487,8 @@ en:
       backed_projects: ~
       comments: ~
       created_projects: ~
+      credits: ~
+      project_relationship_text: ~
   users_mailer:
     notification_email:
       alt: "You must enable images in order to correctly view this message."

@@ -488,6 +488,7 @@ pt:
       comments: comentários
       created_projects: "projetos criados"
       credits: créditos
+      project_relationship_text: "O <span>%{project_author}</span> já entrou em contato com você para falar sobre a produção das recompensas? Você está acompanhando o projeto depois que ele foi bem-sucedido? Não deixa de visitar a página do <span>%{project_name}</span> aqui no Catarse para se informar e para manter o contato com o realizador. É super importante que a própria comunidade cuide do bom andamento dos projetos! Se quiser, escreva um comentário para ele aqui embaixo:"
   users_mailer:
     notification_email:
       alt: "Você deve habilitar imagens para visualizar corretamente essa mensagem."
