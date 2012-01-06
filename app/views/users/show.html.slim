@@ -18,7 +18,7 @@
   
   .my_links
     ul
-      - if @user.email.present?
+      - if @user.email.present? and @user == current_user
         li
           = image_tag ('redesign/email15x15.png'), :class => 'profile_icons'
           = mail_to @user.email, @user.email, :class => 'profile_info'
