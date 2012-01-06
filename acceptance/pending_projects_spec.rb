@@ -34,13 +34,15 @@ feature "Pending projects" do
   scenario 'show projects in home page' do
     add_some_projects(1)
     user_to_admin(current_user)
-    visit root_path
+    visit homepage
     verify_translations
     page.should have_no_css('.project_list_header')
     visit pending_projects_path
     check 'project__visible__1'
     check 'project__home_page__1'
     verify_translations
+    # Had to add this sleep to wait for ajax to update the records
+    sleep 2
     visit homepage
     verify_translations
     page.should have_css('.project_list_header', :text => "Nossa seleção catártica!")
