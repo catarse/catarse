@@ -1,0 +1,42 @@
+script type="text/template" id="empty_user_project_template"
+  p= t('.empty')
+
+script type="text/template" id="user_project_template"
+  .profile_my_projects
+      p
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+  
+          h4
+            a href="<%= url %>"
+              | <%= name %>
+          p.author== "#{t('projects.project.by')} <%= user['name'] %>"
+          p.where
+            | <%= user['address_city'] %>
+          p.description
+            | <%= headline %>
+          .status_bar
+            .progress style="width: <%= display_progress %>%;"
+          ul
+            li
+              h6 <%= time_to_go['time'] %> <%= time_to_go['unit'] %>
+              p <%= remaining_text %>
+            li
+              h6 <%= progress %>%
+              p= t('projects.project.backed')
+            li
+              h6 <%= pledged %>
+              p= t('projects.project.reached')
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+  
+      .project_about        
+        .about_my_project
+          p
+            | Aqui entra o texto 
+            span sobre o projeto 
+            | que você criou. Como eu não faço a mínima ideia do que tem hoje em dia no catarse, eu vou só encher de coisa aqui até que alguém decida mudar. 
+            span Basicamente 
+            | é só pra encher o espaço e testar o tamanho das fontes coisas assim. Um lorem ipsum, só que com uma enrolada e uma informação importante. Viu como é fácil ? 
+        .comments últimos comentários

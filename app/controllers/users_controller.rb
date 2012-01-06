@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   actions :show
   can_edit_on_the_spot
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
-  respond_to :json, :only => [:backs]
+  respond_to :json, :only => [:backs, :projects]
   def show
     show!{
       return redirect_to(user_path(@user.primary)) if @user.primary
@@ -24,6 +24,14 @@ class UsersController < ApplicationController
     @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
     @backs = @backs.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
     render :json => @backs.to_json({:include_project => true, :include_reward => true})
+  end
+
+  def projects
+    @user = User.find(params[:id])
+    @projects = @user.projects.order("updated_at DESC")
+    @projects = @projects.visible unless @user == current_user
+    @projects = @projects.paginate :page => params[:page], :per_page => 10
+    render :json => @projects
   end
 
   private

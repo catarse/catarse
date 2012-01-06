@@ -69,6 +69,7 @@ Catarse::Application.routes.draw do
   resources :users, :only => [:show] do
     member do
       get 'backs'
+      get 'projects'
     end
     post 'update_attribute_on_the_spot', :on => :collection
   end
