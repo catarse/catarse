@@ -27,7 +27,7 @@ gem 'weekdays'
 gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git'
 gem 'paypal-express', :require => 'paypal'
 gem 'brcep'
-gem "meta_search"
+gem "meta_search", "1.0.6"
 gem "RedCloth"
 gem "auto_html", '= 1.3.6'
 gem 'mustache'

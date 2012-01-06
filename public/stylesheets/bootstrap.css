@@ -1032,9 +1032,15 @@ h4 {
   width: 210px;
   height: 172px;
   overflow: hidden;
-  padding-bottom: 8px;
+  margin-bottom: 8px;
+  background-color: black;
 }
-/* line 39, ../../app/stylesheets/miv/projects.sass */
+/* line 40, ../../app/stylesheets/miv/projects.sass */
+.project .box .cover img {
+  width: 210px;
+  vertical-align: middle;
+}
+/* line 43, ../../app/stylesheets/miv/projects.sass */
 .project .box h4 {
   font-size: 1.2em;
   color: #4383d1;
@@ -1044,17 +1050,17 @@ h4 {
   overflow: hidden;
   margin-bottom: 3px;
 }
-/* line 47, ../../app/stylesheets/miv/projects.sass */
+/* line 51, ../../app/stylesheets/miv/projects.sass */
 .project .box h4 a {
   color: #4383d1;
   font-family: Lato-Bold;
   font-size: 1.1em;
 }
-/* line 51, ../../app/stylesheets/miv/projects.sass */
+/* line 55, ../../app/stylesheets/miv/projects.sass */
 .project .box h4 a:hover {
   color: #6498d8;
 }
-/* line 53, ../../app/stylesheets/miv/projects.sass */
+/* line 57, ../../app/stylesheets/miv/projects.sass */
 .project .box .author, .project .box .where, .project .box .description {
   padding-left: 3px;
   font-family: Arial;
@@ -1065,7 +1071,7 @@ h4 {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 61, ../../app/stylesheets/miv/projects.sass */
+/* line 65, ../../app/stylesheets/miv/projects.sass */
 .project .box .description {
   height: 80px;
   overflow: hidden;
@@ -1076,7 +1082,7 @@ h4 {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 69, ../../app/stylesheets/miv/projects.sass */
+/* line 73, ../../app/stylesheets/miv/projects.sass */
 .project .box .status_bar {
   width: 202px;
   height: 10px;
@@ -1089,7 +1095,7 @@ h4 {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 75, ../../app/stylesheets/miv/projects.sass */
+/* line 79, ../../app/stylesheets/miv/projects.sass */
 .project .box .status_bar .progress {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1101,22 +1107,22 @@ h4 {
   height: 10px;
   overflow: hidden;
 }
-/* line 80, ../../app/stylesheets/miv/projects.sass */
+/* line 84, ../../app/stylesheets/miv/projects.sass */
 .project .box ul {
   padding-top: 10px;
   display: block;
 }
-/* line 83, ../../app/stylesheets/miv/projects.sass */
+/* line 87, ../../app/stylesheets/miv/projects.sass */
 .project .box ul li {
   float: left;
   max-width: 69px;
   margin-right: 7px;
 }
-/* line 87, ../../app/stylesheets/miv/projects.sass */
+/* line 91, ../../app/stylesheets/miv/projects.sass */
 .project .box ul li:last-child {
   margin-left: 0px;
 }
-/* line 89, ../../app/stylesheets/miv/projects.sass */
+/* line 93, ../../app/stylesheets/miv/projects.sass */
 .project .box ul li h6 {
   font-family: Lato-Bold;
   font-size: 1.1em;
@@ -1125,14 +1131,14 @@ h4 {
   opacity: 0.7;
   margin-bottom: 3px;
 }
-/* line 95, ../../app/stylesheets/miv/projects.sass */
+/* line 99, ../../app/stylesheets/miv/projects.sass */
 .project .box ul li p {
   text-transform: uppercase;
   color: #838383;
   font-family: Arial;
   font-size: 1em;
 }
-/* line 100, ../../app/stylesheets/miv/projects.sass */
+/* line 104, ../../app/stylesheets/miv/projects.sass */
 .project .box .follow_project {
   clear: both;
   display: block;
@@ -1153,7 +1159,7 @@ h4 {
   background: url("/images/redesign/follow_project_start12x11.png") 4px 4px no-repeat #cccccc;
   text-transform: uppercase;
 }
-/* line 113, ../../app/stylesheets/miv/projects.sass */
+/* line 117, ../../app/stylesheets/miv/projects.sass */
 .project .box .follow_project:hover {
   -moz-box-shadow: #363636 0 0 6px;
   -webkit-box-shadow: #363636 0 0 6px;
@@ -1161,7 +1167,7 @@ h4 {
   box-shadow: #363636 0 0 6px;
 }
 
-/* line 116, ../../app/stylesheets/miv/projects.sass */
+/* line 120, ../../app/stylesheets/miv/projects.sass */
 .project_comment {
   display: inline;
   float: left;
@@ -1169,13 +1175,13 @@ h4 {
   margin-right: 10px;
   width: 220px;
 }
-/* line 118, ../../app/stylesheets/miv/projects.sass */
+/* line 122, ../../app/stylesheets/miv/projects.sass */
 .project_comment h3 {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
   padding: 40px 0 20px;
 }
-/* line 121, ../../app/stylesheets/miv/projects.sass */
+/* line 125, ../../app/stylesheets/miv/projects.sass */
 .project_comment p {
   font-family: Arial;
   font-size: 1.3em;
@@ -1185,7 +1191,7 @@ h4 {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 128, ../../app/stylesheets/miv/projects.sass */
+/* line 132, ../../app/stylesheets/miv/projects.sass */
 .project_comment p.author {
   font-size: 1.1em;
   font-style: italic;
@@ -1193,7 +1199,7 @@ h4 {
   opacity: 0.5;
 }
 
-/* line 134, ../../app/stylesheets/miv/projects.sass */
+/* line 138, ../../app/stylesheets/miv/projects.sass */
 .compost_project {
   display: inline;
   float: left;
@@ -1202,11 +1208,11 @@ h4 {
   width: 460px;
   padding-top: 30px;
 }
-/* line 137, ../../app/stylesheets/miv/projects.sass */
+/* line 141, ../../app/stylesheets/miv/projects.sass */
 .compost_project .project {
   margin-left: 0;
 }
-/* line 139, ../../app/stylesheets/miv/projects.sass */
+/* line 143, ../../app/stylesheets/miv/projects.sass */
 .compost_project .project_comment {
   margin-right: 0;
 }
