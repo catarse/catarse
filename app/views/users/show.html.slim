@@ -1,5 +1,6 @@
 - content_for :js_templates do
   = render :partial => 'back'
+  = render :partial => 'project'
 
 #user_profile[data-user="#{@user.to_json}"]
   .section_header
@@ -34,45 +35,6 @@
   #user_profile_content
     #user_backed_projects.content
     #user_created_projects.content
-      .profile_my_projects
-          p
-          .project
-            .box
-              p.black_box Lorem Ipsum Dolor
-              = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
-
-              h4
-                a href='#'
-                  | Aqui vai o nome do seu  projeto em até 02 linhas
-              p.author
-                | por Autor do Projeto
-              p.where
-                | Rio de Janeiro
-              p.description
-                | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
-              .status_bar
-                .progress style="width: 80%;"
-              ul
-                li
-                  h6 90 dias
-                  p Restantes
-                li
-                  h6 90%
-                  p Levantados
-                li
-                  h6 R$ 120.000
-                  p Atigindos
-              = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
-
-          .project_about        
-            .about_my_project
-              p
-                | Aqui entra o texto 
-                span sobre o projeto 
-                | que você criou. Como eu não faço a mínima ideia do que tem hoje em dia no catarse, eu vou só encher de coisa aqui até que alguém decida mudar. 
-                span Basicamente 
-                | é só pra encher o espaço e testar o tamanho das fontes coisas assim. Um lorem ipsum, só que com uma enrolada e uma informação importante. Viu como é fácil ? 
-            .comments últimos comentários
     #user_comments.content
       .fb-comments[data-href=request.url data-num-posts=50 data-width="610"]
     #user_credits.content

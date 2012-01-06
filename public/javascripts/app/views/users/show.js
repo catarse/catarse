@@ -15,10 +15,19 @@ CATARSE.UsersShowView = Backbone.View.extend({
   BackView: CATARSE.ModelView.extend({
     template: _.template(this.$('#user_back_template').html())
   }),
-  
+
   BacksView: CATARSE.PaginatedView.extend({
   	emptyTemplate: _.template(this.$('#empty_user_back_template').html())
   }),
+
+  ProjectView: CATARSE.ModelView.extend({
+    template: _.template(this.$('#user_project_template').html())
+  }),
+  
+  ProjectsView: CATARSE.PaginatedView.extend({
+  	emptyTemplate: _.template(this.$('#empty_user_project_template').html())
+  }),
+
 
 	index: function() {
 		this.backs()
@@ -37,6 +46,12 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
 	projects: function() {
 		this.selectItem("created_projects")
+		this.projectsView = new this.ProjectsView({
+			modelView: this.ProjectView,
+			collection: this.user.projects,
+			loading: this.$("#loading"),
+			el: this.$("#user_created_projects")
+		})
 	},
 
 	credits: function() {
