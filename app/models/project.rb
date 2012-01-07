@@ -1,10 +1,12 @@
 # coding: utf-8
 class Project < ActiveRecord::Base
+
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
   include ActionView::Helpers::UrlHelper
   include ERB::Util
   include Rails.application.routes.url_helpers
+  
   belongs_to :user
   belongs_to :category
   has_many :projects_curated_pages
@@ -26,26 +28,24 @@ class Project < ActiveRecord::Base
     link :target => :_blank
   end
 
-  scope :visible, where(:visible => true)
-  scope :home_page, where(:home_page => true)
-  scope :not_home_page, where(:home_page => false)
-  scope :recommended, where(:recommended => true)
-  scope :not_recommended, where(:recommended => false)
-  scope :with_homepage_comment, where("home_page_comment is not null")
+  scope :visible, where(visible: true)
+  scope :home_page, where(home_page: true)
+  scope :not_home_page, where(home_page: false)
+  scope :recommended, where(recommended: true)
+  scope :not_recommended, where(recommended: false)
+  scope :with_homepage_comment, where("home_page_comment IS NOT NULL AND home_page_comment <> ''")
   scope :pending, where("visible = false AND rejected = false")
-  scope :expired, where("expires_at < current_timestamp)")
-  scope :not_expired, where("expires_at >= current_timestamp")
-  scope :expiring, where("expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks')")
-  scope :not_expiring, where("NOT (expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks'))")
+  scope :expired, where("finished OR expires_at < current_timestamp")
+  scope :not_expired, where("finished = false AND expires_at >= current_timestamp")
+  scope :expiring, where("finished = false AND expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks')")
+  scope :not_expiring, where("NOT (finished = false AND expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("projects.created_at > (current_timestamp - interval '1 month')")
   scope :last_week, where("projects.created_at > (current_timestamp - interval '1 week')")
-  scope :successful, where("goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
-  scope :not_successful, where("NOT (goal <= (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
-  scope :unsuccessful, where("goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp")
-  scope :not_unsuccessful, where("NOT (goal > (SELECT sum(value) FROM backers WHERE project_id = projects.id AND confirmed) AND expires_at < current_timestamp)")
+  scope :successful, where(successful: true)
+  scope :sort_by_explore_asc, order('(expires_at < current_timestamp) ASC, successful DESC, finished DESC, abs(EXTRACT(epoch FROM current_timestamp - expires_at)), created_at DESC')
 
-  search_methods :visible, :home_page, :not_home_page, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful, :not_successful, :unsuccessful, :not_unsuccessful
-
+  search_methods :visible, :home_page, :not_home_page, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
+  
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   before_create :store_image_url
@@ -53,58 +53,67 @@ class Project < ActiveRecord::Base
   def store_image_url
     self.image_url = vimeo.thumbnail unless self.image_url
   end
+
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end
+
   def display_image
     return image_url if image_url
     return "user.png" unless vimeo.thumbnail
     vimeo.thumbnail
   end
+
   def display_expires_at
     I18n.l(expires_at.to_date)
   end
+
   def display_pledged
     number_to_currency pledged, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
+
   def display_goal
     number_to_currency goal, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
+
   def pledged
     backers.confirmed.sum(:value)
   end
+
   def total_backers
     backers.confirmed.count
   end
+
   def successful?
+    return successful if finished
     pledged >= goal
   end
+
   def expired?
+    return true if finished
     expires_at < Time.now
   end
+
   def waiting_confirmation?
-    return false if successful?
+    return false if finished or successful?
     expired? and Time.now < 3.weekdays_from(expires_at)
   end
+
   def in_time?
+    return false if finished
     expires_at >= Time.now
   end
-  def percent
-    ((pledged / goal * 100).abs).round.to_i
-  end
-  def display_percent
-    return 100 if successful?
-    return 8 if percent > 0 and percent < 8
-    percent
-  end
+
   def progress
     ((pledged / goal * 100).abs).round.to_i
   end
+
   def display_progress
     return 100 if successful?
     return 8 if progress > 0 and progress < 8
     progress
   end
+
   def time_to_go
     if expires_at >= 1.day.from_now
       time = ((expires_at - Time.now).abs/60/60/24).round
@@ -122,12 +131,15 @@ class Project < ActiveRecord::Base
       {:time => 0, :unit => pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
     end
   end
+
   def remaining_text
     pluralize_without_number(time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
   end
+
   def can_back?
     visible? and not expired? and not rejected?
   end
+
   def finish!
     return unless expired? and can_finish and not finished
     backers.confirmed.each do |backer|
@@ -155,7 +167,7 @@ class Project < ActiveRecord::Base
         backer.update_attribute :notified_finish, true
       end
     end
-    self.update_attribute :finished, true
+    self.update_attributes finished: true, successful: successful?
   end
 
   def as_json(options={})
