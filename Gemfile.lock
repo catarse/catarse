@@ -358,7 +358,7 @@ DEPENDENCIES
   launchy
   mailee (= 0.5.4)!
   maxim-sexy_pg_constraints
-  meta_search
+  meta_search (= 1.0.6)
   mocha
   moip!
   mustache
