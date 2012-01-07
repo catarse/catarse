@@ -34,7 +34,7 @@ feature "Pending projects" do
   scenario 'show projects in home page' do
     add_some_projects(1)
     user_to_admin(current_user)
-    visit root_path
+    visit homepage
     verify_translations
     page.should have_no_css('.project_list_header')
     visit pending_projects_path
