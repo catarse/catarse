@@ -1,13 +1,12 @@
 Catarse::Application.routes.draw do
+
   ActiveAdmin.routes(self)
 
   filter :locale
 
-  # root :to => 'static#new_home'
   root :to => 'projects#index'
 
   # New design routes
-
   match '/new_blog' => 'static#new_blog'
   match '/new_profile' => 'static#new_profile'
   match '/new_project_profile' => 'static#new_project_profile'
@@ -15,12 +14,10 @@ Catarse::Application.routes.draw do
   match '/new_payment' => 'static#new_payment'
   match '/new_opendata' => 'static#new_opendata'
 
-
-  # root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
-  match '/sitemap' => "static#sitemap", :as => :sitemap
   # Static Pages
+  match '/sitemap' => "static#sitemap", :as => :sitemap
   match "/guidelines" => "static#guidelines", :as => :guidelines
   match "/faq" => "static#faq", :as => :faq
   match "/terms" => "static#terms", :as => :terms
@@ -84,6 +81,9 @@ Catarse::Application.routes.draw do
     end
   end
 
+  resources :blog, only: :index do
+  end
+  
   resources :curated_pages do
     collection do
       post 'update_attribute_on_the_spot'
