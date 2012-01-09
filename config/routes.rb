@@ -14,6 +14,7 @@ Catarse::Application.routes.draw do
   match '/new_discover' => 'static#new_discover'
   match '/new_payment' => 'static#new_payment'
   match '/new_opendata' => 'static#new_opendata'
+  match '/new_curated_page' => 'static#new_curated_page'
 
 
   # root :to => "projects#index"
