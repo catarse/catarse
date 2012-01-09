@@ -369,7 +369,10 @@ pt:
     send_mail:
       success: "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
     show:
-      subtitle_html: "um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
+      with_city:
+        subtitle_html: "um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
+      without_city:
+        subtitle_html: "um projeto de <span>%{category_name}</span>, por <span>%{author}</span>"
       menu:
         about: Sobre
         backers: Apoiadores

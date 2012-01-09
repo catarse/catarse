@@ -1861,6 +1861,27 @@ form.search_input input[type="submit"] {
   cursor: pointer;
 }
 
+/* line 127, ../../app/stylesheets/miv/index.sass */
+.project_admin_field {
+  font-size: 1.2em;
+  font-family: Lato-Regular;
+}
+
+/* line 131, ../../app/stylesheets/miv/index.sass */
+.on_the_spot_editing {
+  background: url("/images/pencil_16.png") left top no-repeat;
+  padding-left: 20px;
+  min-height: 30px;
+  font-size: 1.2em;
+  font-family: Lato-Regular;
+}
+
+/* line 139, ../../app/stylesheets/miv/index.sass */
+.on_the_spot_mouseover {
+  background-color: #c8dcc8;
+  background-color: rgba(0, 150, 0, 0.2);
+}
+
 /* line 1, ../../app/stylesheets/content/header.sass */
 #top {
   background-color: #363636;
@@ -5947,12 +5968,27 @@ body[data-action="show"][data-controller="projects"] #page_content .midia .midia
   font-size: 1.5em;
   color: #333333;
 }
-/* line 109, ../../app/stylesheets/content/project_profile.sass */
-body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer {
-  border-bottom: 1px dashed #999999;
-  margin: 20px 0;
+/* line 107, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_update:last-child {
+  border-bottom: none !important;
 }
 /* line 112, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers ul.collection_list li {
+  border-bottom: 1px dashed #999999;
+}
+/* line 114, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers ul.collection_list li:last-child {
+  border-bottom: none;
+}
+/* line 116, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer {
+  margin: 20px 0;
+}
+/* line 118, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer:last-child {
+  border-bottom: none !important;
+}
+/* line 120, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer .backer_avatar {
   display: inline;
   float: left;
@@ -5966,7 +6002,12 @@ body[data-action="show"][data-controller="projects"] #page_content .midia .midia
   box-shadow: #333333 1px 1px 2px;
   margin-top: 6px;
 }
-/* line 118, ../../app/stylesheets/content/project_profile.sass */
+/* line 125, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer .reward {
+  font-size: 1.2em;
+  color: #333333;
+}
+/* line 129, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer p {
   font-family: "Lato", sans-serif;
   font-size: 1.5em;
@@ -5974,7 +6015,7 @@ body[data-action="show"][data-controller="projects"] #page_content .midia .midia
   line-height: 160%;
   margin-bottom: 20px;
 }
-/* line 124, ../../app/stylesheets/content/project_profile.sass */
+/* line 135, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer p em {
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -5987,15 +6028,24 @@ body[data-action="show"][data-controller="projects"] #page_content .midia .midia
   color: #4383d1;
   cursor: pointer;
 }
-/* line 129, ../../app/stylesheets/content/project_profile.sass */
+/* line 139, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer p em.anon {
+  color: #333333;
+  cursor: default;
+}
+/* line 142, ../../app/stylesheets/content/project_profile.sass */
+body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer p em.anon:hover {
+  text-shadow: none;
+}
+/* line 144, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer p em:hover {
   text-shadow: #4383d1 0 0 6px;
 }
-/* line 132, ../../app/stylesheets/content/project_profile.sass */
+/* line 147, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer p#text {
   margin-bottom: 4px;
 }
-/* line 137, ../../app/stylesheets/content/project_profile.sass */
+/* line 152, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info {
   display: inline;
   float: left;
@@ -6005,11 +6055,11 @@ body[data-action="show"][data-controller="projects"] #page_content .info {
   margin-right: 0;
   font-family: "Lato-Regular", sans-serif;
 }
-/* line 142, ../../app/stylesheets/content/project_profile.sass */
+/* line 157, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #statistics {
   border: 1px solid #cccccc;
 }
-/* line 144, ../../app/stylesheets/content/project_profile.sass */
+/* line 159, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #statistics .statistics {
   padding: 5px 10px;
   background-color: rgba(255, 255, 255, 0.4);
@@ -6017,27 +6067,27 @@ body[data-action="show"][data-controller="projects"] #page_content .info #statis
   overflow: hidden;
   *zoom: 1;
 }
-/* line 149, ../../app/stylesheets/content/project_profile.sass */
+/* line 164, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #statistics .statistics .iten {
   margin-bottom: 15px;
 }
-/* line 151, ../../app/stylesheets/content/project_profile.sass */
+/* line 166, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #statistics .statistics .iten p {
   font-size: 4.5em;
   font-family: "Lato-Bold";
   text-transform: uppercase;
 }
-/* line 155, ../../app/stylesheets/content/project_profile.sass */
+/* line 170, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #statistics .statistics .iten em {
   font-size: 2.2em;
   color: #666666;
 }
-/* line 159, ../../app/stylesheets/content/project_profile.sass */
+/* line 174, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #condition {
   background-color: #999999;
   padding: 5px 10px;
 }
-/* line 162, ../../app/stylesheets/content/project_profile.sass */
+/* line 177, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #condition p {
   color: white;
   font-size: 1.1em;
@@ -6045,7 +6095,7 @@ body[data-action="show"][data-controller="projects"] #page_content .info #condit
   line-height: 150%;
   letter-spacing: 1px;
 }
-/* line 171, ../../app/stylesheets/content/project_profile.sass */
+/* line 186, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #pledge form input[type="submit"] {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -6074,7 +6124,7 @@ body[data-action="show"][data-controller="projects"] #page_content .info #pledge
   text-transform: uppercase;
   color: white;
 }
-/* line 183, ../../app/stylesheets/content/project_profile.sass */
+/* line 198, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #pledge form input[type="submit"]:hover {
   background-color: #3889e9;
   -moz-box-shadow: #4383d1 0 0 10px;
@@ -6082,7 +6132,7 @@ body[data-action="show"][data-controller="projects"] #page_content .info #pledge
   -o-box-shadow: #4383d1 0 0 10px;
   box-shadow: #4383d1 0 0 10px;
 }
-/* line 186, ../../app/stylesheets/content/project_profile.sass */
+/* line 201, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .info #pledge form input[type="submit"]:active {
   -moz-box-shadow: #999999 1px 1px 6px;
   -webkit-box-shadow: #999999 1px 1px 6px;
@@ -6090,18 +6140,18 @@ body[data-action="show"][data-controller="projects"] #page_content .info #pledge
   box-shadow: #999999 1px 1px 6px;
   background-color: #3889e9;
 }
-/* line 190, ../../app/stylesheets/content/project_profile.sass */
+/* line 205, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #rewards {
   margin-bottom: 20px;
 }
-/* line 192, ../../app/stylesheets/content/project_profile.sass */
+/* line 207, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #rewards .box {
   background-color: rgba(242, 242, 242, 0.6);
   border: 1px solid #cccccc;
   margin: 3px 0;
   padding: 20px 10px 10px 10px;
 }
-/* line 197, ../../app/stylesheets/content/project_profile.sass */
+/* line 212, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #rewards .box h2 {
   font-size: 1.7em;
   font-family: "Lato-Bold", sans-serif;
@@ -6109,14 +6159,14 @@ body[data-action="show"][data-controller="projects"] #page_content #rewards .box
   color: black;
   margin-bottom: 5px;
 }
-/* line 203, ../../app/stylesheets/content/project_profile.sass */
+/* line 218, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #rewards .box p {
   font-size: 1.5em;
   color: #666666;
   margin-bottom: 10px;
   line-height: 150%;
 }
-/* line 208, ../../app/stylesheets/content/project_profile.sass */
+/* line 223, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #rewards .box em {
   display: block;
   font-size: 1.4em;
@@ -6126,15 +6176,15 @@ body[data-action="show"][data-controller="projects"] #page_content #rewards .box
   padding-top: 15px;
   vertical-align: middle;
 }
-/* line 216, ../../app/stylesheets/content/project_profile.sass */
+/* line 231, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #rewards .box a {
   font-size: 1em;
 }
-/* line 218, ../../app/stylesheets/content/project_profile.sass */
+/* line 233, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #rewards .box a:hover {
   text-decoration: underline;
 }
-/* line 221, ../../app/stylesheets/content/project_profile.sass */
+/* line 236, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #creator_profile {
   display: inline;
   float: left;
@@ -6147,7 +6197,7 @@ body[data-action="show"][data-controller="projects"] #page_content #creator_prof
   margin: 10px 0;
   padding-top: 20px;
 }
-/* line 228, ../../app/stylesheets/content/project_profile.sass */
+/* line 243, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #creator_profile h3 {
   display: inline;
   float: left;
@@ -6156,12 +6206,12 @@ body[data-action="show"][data-controller="projects"] #page_content #creator_prof
   width: 280px;
   margin-right: 0;
   margin-left: 0;
-  background: url("/images/redesign/profile19x14.png") no-repeat;
+  background: url("/images/redesign/profile19x14.png") left 4px no-repeat;
   display: block;
   text-indent: 24px;
   margin-bottom: 6px;
 }
-/* line 236, ../../app/stylesheets/content/project_profile.sass */
+/* line 251, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #creator_profile .avatar {
   display: inline;
   float: left;
@@ -6172,7 +6222,7 @@ body[data-action="show"][data-controller="projects"] #page_content #creator_prof
   margin-top: 10px;
   height: 105px;
 }
-/* line 242, ../../app/stylesheets/content/project_profile.sass */
+/* line 257, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #creator_profile .personal_info {
   display: inline;
   float: left;
@@ -6183,17 +6233,17 @@ body[data-action="show"][data-controller="projects"] #page_content #creator_prof
   margin: 10px 0 20px 0;
   font-size: 1em;
 }
-/* line 247, ../../app/stylesheets/content/project_profile.sass */
+/* line 262, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #creator_profile .personal_info #name {
   color: #4383d1;
   font-size: 1.5em;
 }
-/* line 250, ../../app/stylesheets/content/project_profile.sass */
+/* line 265, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #creator_profile .personal_info #city, body[data-action="show"][data-controller="projects"] #page_content #creator_profile .personal_info #projects, body[data-action="show"][data-controller="projects"] #page_content #creator_profile .personal_info #bio {
   margin-top: 5px;
   font-size: 1.2em;
 }
-/* line 254, ../../app/stylesheets/content/project_profile.sass */
+/* line 269, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share {
   width: 100%;
   margin: 0 auto 20px;
@@ -6203,19 +6253,19 @@ body[data-action="show"][data-controller="projects"] #page_content #project_shar
   font-size: 14px;
   line-height: 32px;
 }
-/* line 262, ../../app/stylesheets/content/project_profile.sass */
+/* line 277, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share #facebook_share {
   width: 542px;
   padding-top: 16px;
 }
-/* line 265, ../../app/stylesheets/content/project_profile.sass */
+/* line 280, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share #facebook_share iframe {
   -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
   -o-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
-/* line 267, ../../app/stylesheets/content/project_profile.sass */
+/* line 282, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share #twitter_share {
   text-align: left;
   float: left;
@@ -6224,7 +6274,7 @@ body[data-action="show"][data-controller="projects"] #page_content #project_shar
   height: 24px;
   overflow: hidden;
 }
-/* line 274, ../../app/stylesheets/content/project_profile.sass */
+/* line 289, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share #twitter_share iframe {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
@@ -6237,24 +6287,24 @@ body[data-action="show"][data-controller="projects"] #page_content #project_shar
   -o-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
-/* line 277, ../../app/stylesheets/content/project_profile.sass */
+/* line 292, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share ul {
   float: left;
   width: 452px;
   margin: 0 auto;
 }
-/* line 281, ../../app/stylesheets/content/project_profile.sass */
+/* line 296, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share ul li {
   float: left;
   font-family: Lato-Regular;
   font-size: 1.2em;
   margin-right: 6px;
 }
-/* line 286, ../../app/stylesheets/content/project_profile.sass */
+/* line 301, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share ul li:last-child {
   margin-right: none;
 }
-/* line 288, ../../app/stylesheets/content/project_profile.sass */
+/* line 303, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share a {
   font-size: 1.2em;
   text-decoration: none;
@@ -6268,17 +6318,17 @@ body[data-action="show"][data-controller="projects"] #page_content #project_shar
   -o-transition-duration: 0.1s;
   transition-duration: 0.1s;
 }
-/* line 293, ../../app/stylesheets/content/project_profile.sass */
+/* line 308, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share a:hover {
   text-shadow: #ffff88 2px 2px 4px;
 }
-/* line 295, ../../app/stylesheets/content/project_profile.sass */
+/* line 310, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share img, body[data-action="show"][data-controller="projects"] #page_content #project_share a img {
   margin-top: -4px;
   vertical-align: middle;
   width: 22px;
 }
-/* line 299, ../../app/stylesheets/content/project_profile.sass */
+/* line 314, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share input {
   border: 1px solid rgba(0, 0, 0, 0.4);
   -moz-border-radius: 4px;
@@ -6289,7 +6339,7 @@ body[data-action="show"][data-controller="projects"] #page_content #project_shar
   border-radius: 4px;
   width: 140px;
 }
-/* line 303, ../../app/stylesheets/content/project_profile.sass */
+/* line 318, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content #project_share h1 {
   color: #222222;
   font-size: 0.6em;

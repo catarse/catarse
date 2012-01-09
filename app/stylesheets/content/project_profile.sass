@@ -28,7 +28,7 @@ body[data-action="show"][data-controller="projects"]
           +alpha
           +border-radius(2px)
           +linear-gradient(color-stops(white, #ccc))
-          margin-top: 1px 
+          margin-top: 1px
           padding: 4px 6px
           width: 55px
           border: 1px solid #ccc
@@ -104,16 +104,27 @@ body[data-action="show"][data-controller="projects"]
           font-family: 'Lato', sans-serif
           font-size: 1.5em
           color: #333
+        &:last-child
+          border-bottom: none !important
 
       .midia_content_backers
+        ul.collection_list
+          li
+            border-bottom: 1px dashed #999
+            &:last-child
+              border-bottom: none
         .backer
-          border-bottom: 1px dashed #999
           margin: 20px 0
+          &:last-child
+            border-bottom: none !important
           .backer_avatar
             +grid(1)
             +alpha
             +box-shadow(#333 1px 1px 2px)
             margin-top: 6px
+          .reward
+            font-size: 1.2em
+            color: $ultra_gryn
 
           p
             font-family: 'Lato', sans-serif
@@ -125,7 +136,11 @@ body[data-action="show"][data-controller="projects"]
               +transition(all, 0.3s)
               color: $blue
               cursor: pointer
-
+              &.anon
+                color: #333
+                cursor: default
+                &:hover
+                  +text-shadow(none)
               &:hover
                 +text-shadow($blue 0 0 6px)
 
@@ -229,7 +244,7 @@ body[data-action="show"][data-controller="projects"]
         +grid(5)
         +omega
         +alpha
-        background: url('/images/redesign/profile19x14.png') no-repeat
+        background: url('/images/redesign/profile19x14.png') left 4px no-repeat
         display: block
         text-indent: 24px
         margin-bottom: 6px

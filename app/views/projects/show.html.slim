@@ -14,7 +14,10 @@
           = on_the_spot_edit @project, :name
         - else
           = @project.name
-      h4= t('.subtitle_html', :category_name => @project.category.name, :city => @project.user.address_city, :author => @project.user.display_name)
+      - if @project.user.address_city
+        h4= t('.with_city.subtitle_html', :category_name => @project.category.name, :city => @project.user.address_city, :author => @project.user.display_name)
+      - else
+        h4= t('.without_city.subtitle_html', :category_name => @project.category.name, :author => @project.user.display_name)
   .midia
     .video
       iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
@@ -45,11 +48,12 @@
     #project_content
       #project_about.content
         .midia_content_home
-          - if current_user and current_user.admin
-            #{on_the_spot_edit @project, :about, :type => :textarea}
-          - else
-            = @project.about_html.html_safe
-          = render "admin_fields" if current_user and current_user.admin
+          p
+            - if current_user and current_user.admin
+              | #{on_the_spot_edit @project, :about, :type => :textarea}
+            - else
+              = @project.about_html.html_safe
+            = render "admin_fields" if current_user and current_user.admin
       #project_updates.content= render :partial => 'updates'
       .midia_content_backers
         #project_backers.content
