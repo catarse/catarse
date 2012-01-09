@@ -369,6 +369,7 @@ en:
     send_mail:
       success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
     show:
+      subtitle_html: "a project in <span>%{category_name}</span>, from <span>%{city}</span>, by <span>%{author}</span>"
       menu:
         about: About
         backers: Backers
@@ -488,6 +489,11 @@ en:
       comments: ~
       created_projects: ~
       credits: ~
+      project_relationship_text: ~
+      when:
+        backed_value: ~
+        did_not_selected_reward: ~
+        selected_reward: ~
   users_mailer:
     notification_email:
       alt: "You must enable images in order to correctly view this message."
