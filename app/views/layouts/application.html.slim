@@ -1,10 +1,11 @@
 doctype 5
-html lang="#{I18n.locale}"
+html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
   head
     meta charset='utf-8'
     meta name="robots" content="index, follow"
     meta name="author" content="Engage"
     = yield :meta_tags
+    = render :partial => 'projects/facebook_sdk'
     title
       - if @title
         == "#{@title}#{' · ' if @title}#{t('site.name')}"
