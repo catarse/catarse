@@ -82,12 +82,12 @@ body[data-action="new_profile"][data-controller="static"]
             float: left
             margin: 10px 0 0 24px
 
-    .profile_my_projects, .profile_my_comments
+    .profile_my_projects, .profile_my_comments, .profile_my_credits
       +grid(12)
       +grid-push(4)
       +omega
       +alpha
-    .profile_projects_backed, .profile_my_projects, .profile_my_comments
+    .profile_projects_backed, .profile_my_projects, .profile_my_comments, .profile_my_credits
       +grid(12)
       margin-bottom: 30px
       border-bottom: $grafiti solid 2px
@@ -104,12 +104,12 @@ body[data-action="new_profile"][data-controller="static"]
       .status
         border-bottom: #999 solid 1px
 
-      .when
+      .when, .credits
         font-size: 1.3em
         color: $grafiti
         margin-bottom: 15px
 
-        span
+        em
           font-family: "Lato-Bold", sans-serif
           font-size: 1.2em
           color: $blue
@@ -120,7 +120,7 @@ body[data-action="new_profile"][data-controller="static"]
         margin-bottom: 25px
         line-height: 160%
 
-        span
+        em
           font-family: "Lato-Bold", sans-serif
           font-size: 1.2em
           color: black
@@ -135,7 +135,7 @@ body[data-action="new_profile"][data-controller="static"]
       color: $grafiti
       margin-bottom: 30px
         
-      span
+      em
         +transition(all, 0.3s)
         color: $blue
         cursor: pointer
@@ -167,5 +167,65 @@ body[data-action="new_profile"][data-controller="static"]
         cursor: pointer
         &:hover
           +text-shadow($blue 0 0 5px)
+    
+    
+  .profile_my_credits    
+    .credits
+      +border-radius(4px)
+      background-color: rgba(153,153,153,0.1)
+      border: 2px solid white
+      padding: 20px 100px
 
+      p
+        font-size: 1.8em
+        color: $grafiti
+
+        em
+          font-family: "Lato-Bold", sans-serif
+          font-size: 1.2em
+          color: $blue
+      
+    .table_title
+      font-size: 1.8em
+      color: $pink
+      margin-top: 50px
+      font-family: 'Lato-Bold', sans-serif
+    
+    table
+      margin: 20px 0
+      padding: 5px
+      tr
+        th
+          padding: 15px 10px 15px 5px
+          background-color: rgba(153,153,153,0.2)
+          font-family: 'Lato-Bold'
+          font-size: 1.5em
+        td
+          font-family: 'Lato-Regular'
+          font-size: 1.5em
+          padding: 15px 10px 15px 5px
+          background-color: rgba(255,255,255,0.5)
+          border-bottom: 1px dashed $gryn
+          .link_project
+            +transition(all, 0.3s)
+            font-size: 1.2em
+            text-decoration: underline
+            &:hover
+              +text-shadow ($blue 0 0 4px)
+
+        .project_name
+          width: 165px
+        .date
+          width: 115px
+        .value
+          width: 90px
+        .term
+          width: 140px
+        .reversal
+          width: 150px
+
+
+
+    
+          
         

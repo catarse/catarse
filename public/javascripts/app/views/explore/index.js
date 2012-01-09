@@ -47,7 +47,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.initializeView({
       recommended: true,
       not_expired: true,
-      meta_sort: "expires_at"
+      meta_sort: "explore"
     })
   },
 
@@ -80,7 +80,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.selectItem(name)
     this.initializeView({
       category_id_equals: this.selectedItem.data("id"),
-      meta_sort: "created_at.desc"
+      meta_sort: "explore"
     })
   },
 

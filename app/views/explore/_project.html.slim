@@ -48,8 +48,9 @@ script type="text/template" id="project_template"
     | <% } %>
     .box
       p.black_box <%= category['name'] %>
-      a href="<%= url %>"
-        img src="<%= image %>" class="cover" itemprop="image"
+      .cover
+        a href="<%= url %>"
+          img src="<%= image %>" itemprop="image"
       h4
         a href="<%= url %>" itemprop="url"
           | <%= name %>
