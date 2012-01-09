@@ -7,7 +7,7 @@ script type="text/template" id="backer_template"
     img src="/images/user.png" class="backer_avatar"
     p#text
       |<%= confirmed_at %>
-      em=" #{t('.anonymous_backer')}"
+      em.anon=" #{t('.anonymous_backer')}"
     #backed
       p= t('.anonymous_description')
     | <% } else { %>
@@ -21,6 +21,32 @@ script type="text/template" id="backer_template"
       p
         | <%= user['backs_text'] %>
     | <% } %>
+    - if current_user and (current_user == @project.user or current_user.admin)
+      p.reward
+        = t('activerecord.attributes.backer.value')
+        |:
+        | <%= display_value %>
+        | .
+        = t('activerecord.attributes.user.email')
+        |:
+        | <% if(user['email']) { %>
+        | <%= user['email'] %>
+        | <% } else { %>
+        | &nbsp;
+        = t('not_informed')
+        |.
+        | <% } %>
+        br
+        | <% if (reward) { %>
+        | &nbsp;
+        = t('activerecord.models.reward')
+        |:
+        | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
+        | <% } else { %>
+        | &nbsp;
+        = t('.no_reward')
+        | <% } %>
+    .clear
 
 
   / |<%= confirmed_at %>
@@ -38,30 +64,3 @@ script type="text/template" id="backer_template"
   / p
   /   | <%= user['backs_text'] %>
   / | <% } %>
-
-  - if current_user and (current_user == @project.user or current_user.admin)
-    p.reward
-      = t('activerecord.attributes.backer.value')
-      |:
-      | <%= display_value %>
-      | .
-      = t('activerecord.attributes.user.email')
-      |:
-      | <% if(user['email']) { %>
-      | <%= user['email'] %>
-      | <% } else { %>
-      | &nbsp;
-      = t('not_informed')
-      |.
-      | <% } %>
-      br
-      | <% if (reward) { %>
-      | &nbsp;
-      = t('activerecord.models.reward')
-      |:
-      | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
-      | <% } else { %>
-      | &nbsp;
-      = t('.no_reward')
-      | <% } %>
-  .clear
