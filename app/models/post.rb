@@ -44,11 +44,11 @@ class Post
   def self.all(options = {})
     project = options[:project]
     curated_page = options[:curated_page]
-    type = options[:type]
-    per_page = options[:per_page] || 2
-    page = options[:page] || 1
+    type = (options[:type] || :platform).to_sym
+    per_page = (options[:per_page] || 4).to_i
+    page = (options[:page] || 1).to_i
     start = (page-1) * per_page
-    params = {start: start, num: per_page}
+    params = {start: start, num: per_page, type: :text}
     if project
       params[:tagged] = "project_#{project.id}"
     elsif curated_page

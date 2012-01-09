@@ -1,0 +1,44 @@
+= content_for :title, t('.title')
+
+- content_for :js_templates do
+  = render :partial => 'post'
+
+#page_content
+  .section_header
+    .titles
+      h1= t('.title')
+      h4= t('.subtitle')
+    .actions
+      p= t('.menu.title')
+      nav
+        = link_to t('.menu.platform'), '#platform'
+        = link_to t('.menu.projects'), '#projects'
+        = link_to t('.menu.curated_pages'), '#curated_pages'
+  ul.blog_posts
+    .results &nbsp;
+    #loading= image_tag "loading.gif"
+  .sidebar
+    section.categories
+      h5
+        | categorias
+      ul
+        li= link_to 'Novidades', '#'
+        li= link_to 'Entrevistas', '#'
+        li= link_to 'Videos', '#'
+        li= link_to 'Calendário', '#'
+        li= link_to 'Avisos', '#'
+        li= link_to 'Premios', '#'
+    section.newsletter
+      h5
+        | newsletter
+      p
+        | Assine a newsletter do Catarse e fique por dentro de projetos e novidades da rede
+      = form_tag '/' do
+        = text_field_tag 'email', 'seu email'
+        = submit_tag 'Assine'
+    section.facebook
+      h5
+        | catarse no facebook
+      .like_box
+        iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fcatarse.me&amp;width=250&amp;height=168&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23ccc&amp;stream=false&amp;header=false&amp;appId=#{t('site.facebook_app_id')}" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:168px;" allowTransparency="true"
+    .clearfix

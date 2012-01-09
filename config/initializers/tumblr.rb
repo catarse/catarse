@@ -15,7 +15,8 @@ class Tumblr
   WRITE_URL = "http://www.tumblr.com/api/write"
   class Request
     def self.read(options = {})
-      response = HTTParty.get(READ_URL%[Tumblr::blog,options.to_params], {})
+      url = READ_URL%[Tumblr::blog,options.to_params]
+      response = HTTParty.get(url, {})
       return response unless raise_errors(response)
     end
     def self.write(options = {})

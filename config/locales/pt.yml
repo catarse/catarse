@@ -1,4 +1,15 @@
 pt:
+  blog:
+    index:
+      title: "Notícias, atualizações e otras cositas mas..."
+      subtitle: Saiba o que de mais quente está rolando na rede do Catarse!
+      menu:
+        title: Ver posts publicados por
+        platform: Catarse
+        projects: Realizadores
+        curated_pages: Canais
+    post:
+      empty: "Ei, ainda não temos nenhum post nesta seção. Que tal ler as outras por enquanto? =D"
   "no": Não
   "yes": Sim
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
@@ -451,6 +462,7 @@ pt:
       projects: projetos@catarse.me
       system: system@catarse.me
     facebook: "http://www.facebook.com/Catarse.me"
+    facebook_app_id: "173747042661491"
     name: Catarse
     title: "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
     twitter: Catarse_
