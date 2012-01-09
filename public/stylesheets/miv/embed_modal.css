@@ -1,25 +1,20 @@
 /*
-Syntax error: Undefined mixin 'transition'.
-        on line 6 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass, in `transition'
-        from line 6 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass
-        from line 9 of /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass
+Syntax error: Undefined mixin 'linear-gradient'.
+        on line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass, in `linear-gradient'
+        from line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass
 
-1: $ninesixty-columns: 16
-2: 
-3: @mixin default_grid
-4:   +grid-container
-5:   +grid-system(16)
-6: 
-7: @import fonts
-8: @import colors
-9: @import typography
-10: @import channels
-11: @import blog
+1: #project_embed
+2:   background-color: #44A546
+3:   +linear-gradient(color_stops(#51C252,#49B249,#44A546))
+4:   border: 5px solid #fff
+5:   +border-radius(8px)
+6:   +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)
+7:   position: absolute
+8:   top: 50%
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass:6:in `transition'
-/Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass:6
-/Users/ton/code/store/catarse/app/stylesheets/miv/index.sass:9
+/Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass:3:in `linear-gradient'
+/Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass:3
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -31,11 +26,6 @@ Backtrace:
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:235:in `visit_rule'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:145:in `block in visit_import'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:145:in `map'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:145:in `visit_import'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -103,4 +93,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'transition'.\A         on line 6 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass, in `transition'\A         from line 6 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass\A         from line 9 of /Users/ton/code/store/catarse/app/stylesheets/miv/index.sass\A \A 1: $ninesixty-columns: 16\A 2: \A 3: @mixin default_grid\A 4:   +grid-container\A 5:   +grid-system(16)\A 6: \A 7: @import fonts\A 8: @import colors\A 9: @import typography\A 10: @import channels\A 11: @import blog"; }
+  content: "Syntax error: Undefined mixin 'linear-gradient'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass, in `linear-gradient'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass\A \A 1: #project_embed\A 2:   background-color: #44A546\A 3:   +linear-gradient(color_stops(#51C252,#49B249,#44A546))\A 4:   border: 5px solid #fff\A 5:   +border-radius(8px)\A 6:   +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)\A 7:   position: absolute\A 8:   top: 50%"; }
