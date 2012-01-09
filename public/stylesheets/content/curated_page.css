@@ -1,20 +1,31 @@
 /*
-Syntax error: Undefined mixin 'grid'.
-        on line 2 of /users/barbarawolffdick/engage/catarse/app/stylesheets/miv/projects.sass, in `grid'
-        from line 2 of /users/barbarawolffdick/engage/catarse/app/stylesheets/miv/projects.sass
+Syntax error: Undefined mixin 'default_grid'.
+        on line 3 of /users/barbarawolffdick/engage/catarse/app/stylesheets/content/curated_page.sass, in `default_grid'
+        from line 3 of /users/barbarawolffdick/engage/catarse/app/stylesheets/content/curated_page.sass
 
-1: .project
-2:   +grid(4)
-3:   background-color: white
-4:   +box-shadow($shadow_gryn 2px 2px 5px)
-5:   +transition(all, 0.3s)
-6:   height: 405px
-7:   overflow: hidden
+1: body[data-action="new_curated_page"][data-controller="static"]
+2:   #page_content
+3:     +default_grid
+4:     padding-top: 40px
+5:     position: relative
+6:     font-family: "Lato", sans-serif
+7: 
+8:     .section_header
 
 Backtrace:
-/users/barbarawolffdick/engage/catarse/app/stylesheets/miv/projects.sass:2:in `grid'
-/users/barbarawolffdick/engage/catarse/app/stylesheets/miv/projects.sass:2
+/users/barbarawolffdick/engage/catarse/app/stylesheets/content/curated_page.sass:3:in `default_grid'
+/users/barbarawolffdick/engage/catarse/app/stylesheets/content/curated_page.sass:3
 /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:235:in `visit_rule'
 /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/barbarawolffdick/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -92,4 +103,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'grid'.\A         on line 2 of /users/barbarawolffdick/engage/catarse/app/stylesheets/miv/projects.sass, in `grid'\A         from line 2 of /users/barbarawolffdick/engage/catarse/app/stylesheets/miv/projects.sass\A \A 1: .project\A 2:   +grid(4)\A 3:   background-color: white\A 4:   +box-shadow($shadow_gryn 2px 2px 5px)\A 5:   +transition(all, 0.3s)\A 6:   height: 405px\A 7:   overflow: hidden"; }
+  content: "Syntax error: Undefined mixin 'default_grid'.\A         on line 3 of /users/barbarawolffdick/engage/catarse/app/stylesheets/content/curated_page.sass, in `default_grid'\A         from line 3 of /users/barbarawolffdick/engage/catarse/app/stylesheets/content/curated_page.sass\A \A 1: body[data-action=\"new_curated_page\"][data-controller=\"static\"]\A 2:   #page_content\A 3:     +default_grid\A 4:     padding-top: 40px\A 5:     position: relative\A 6:     font-family: \"Lato\", sans-serif\A 7: \A 8:     .section_header"; }

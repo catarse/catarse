@@ -15,9 +15,36 @@ body[data-action="show"][data-controller="projects"]
           +border-radius(10px 10px 0 0)
       .video
       .social
+        vertical-align: middle
         padding: 20px 0
         margin: 8px 0
-        //background-color: red
+
+        input
+          +border-radius(3px)
+          border: 1px solid #999
+
+        #embeed_button
+          +grid(3)
+          +alpha
+          +border-radius(2px)
+          +linear-gradient(color-stops(white, #ccc))
+          margin-top: 1px 
+          padding: 4px 6px
+          width: 55px
+          border: 1px solid #ccc
+          cursor: pointer
+          &:hover
+            border: 1px solid #666
+          #button
+            margin-top: 1px
+          p
+            font-family: 'Lato-Bold', sans-serif
+            font-size: 1em
+            color: #808080
+            float: right
+            text-transform: uppercase
+
+
       .tabs
         padding: 20px 0
         margin: 8px 0
