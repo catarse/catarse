@@ -1,0 +1,32 @@
+script type="text/template" id="empty_posts_template"
+  p.empty= t('.empty')
+
+script type="text/template" id="post_template"
+  = image_tag("redesign/blog_avatar.png", :class => 'author_avatar')
+  = link_to '#' do
+    h2
+      |<%= regular_title %>
+  .clearfix
+  .actions
+    p
+      = link_to 'Nome do autor', '#'
+      | 24 NOV 2011
+      span.comments_count
+        | 2 comentários
+  .social
+    .fb_root
+      iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=60&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=#{t('site.facebook_app_id')}" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"
+    .twitter_root
+      a href="https://twitter.com/share" class="twitter-share-button" data-via="catarse" data-lang="pt" data-count="none"
+  .content
+    .some_image
+    .post_resume
+      p
+        | Enim put a bird on it high life exercitation pitchfork thundercats, williamsburg magna Vsingle-origin coffee fixie tempor fap. Locavore Austin scenester readymade, aliquip dolor vero adipisicing irony you probably haven't heard of them mollit. Carles banksy single-origin coffee, four loko aute fixie scenester enim voluptate odio mixtape terry richardson mollit helvetica. Ethical next level sint, put a bird on it VHS id keffiyeh voluptate
+    .show_more
+      = link_to 'Mostrar Mais', '#'
+  .comments
+    h4
+      | comentários
+    .comments_content
+  .clearfix

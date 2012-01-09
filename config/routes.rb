@@ -4,7 +4,7 @@ Catarse::Application.routes.draw do
 
   filter :locale
 
-  root :to => 'projects#index'
+  root to: 'projects#index'
 
   # New design routes
   match '/new_blog' => 'static#new_blog'
@@ -36,10 +36,10 @@ Catarse::Application.routes.draw do
   if Rails.env == "test"
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
-  resources :posts
-  resources :projects, :only => [:index, :new, :create, :show] do
+  resources :posts, only: [:index, :create]
+  resources :projects, only: [:index, :new, :create, :show] do
     resources :rewards
-    resources :backers, :controller => 'projects/backers' do
+    resources :backers, controller: 'projects/backers' do
       collection do
         post 'review'
       end
@@ -63,17 +63,17 @@ Catarse::Application.routes.draw do
       get 'video_embed'
     end
   end
-  resources :users, :only => [:show] do
-    post 'update_attribute_on_the_spot', :on => :collection
+  resources :users, only: [:show] do
+    post 'update_attribute_on_the_spot', on: :collection
   end
-  resources :credits, :only => [:index] do
+  resources :credits, only: [:index] do
     collection do
       get 'buy'
       post 'refund'
     end
   end
 
-  resources :paypal, :only => [] do
+  resources :paypal, only: [] do
     member do
       get 'pay'
       get 'success'
@@ -89,5 +89,5 @@ Catarse::Application.routes.draw do
       post 'update_attribute_on_the_spot'
     end
   end
-  match "/:permalink" => "curated_pages#show", :as => :curated_page
+  match "/:permalink" => "curated_pages#show", as: :curated_page
 end
