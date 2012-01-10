@@ -23,12 +23,9 @@ script type="text/template" id="backer_template"
     | <% } %>
     - if current_user and (current_user == @project.user or current_user.admin)
       p.reward
-        = t('activerecord.attributes.backer.value')
-        |:
-        | <%= display_value %>
-        | .
-        = t('activerecord.attributes.user.email')
-        |:
+        = "#{t('activerecord.attributes.backer.value')}: "
+        | <%= display_value %> .
+        = " #{t('activerecord.attributes.user.email')}: "
         | <% if(user['email']) { %>
         | <%= user['email'] %>
         | <% } else { %>
@@ -39,8 +36,7 @@ script type="text/template" id="backer_template"
         br
         | <% if (reward) { %>
         | &nbsp;
-        = t('activerecord.models.reward')
-        |:
+        = "#{t('activerecord.models.reward')}: "
         | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
         | <% } else { %>
         | &nbsp;
