@@ -6042,7 +6042,7 @@ body[data-action="show"][data-controller="projects"] #page_content .midia .midia
 /* line 143, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer p em.anon {
   color: #333333;
-  cursor: default;
+  cursor: text;
 }
 /* line 146, ../../app/stylesheets/content/project_profile.sass */
 body[data-action="show"][data-controller="projects"] #page_content .midia .midia_content_backers .backer p em.anon:hover {
