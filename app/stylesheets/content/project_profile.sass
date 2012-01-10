@@ -1,10 +1,13 @@
-body[data-action="new_project_profile"][data-controller="static"]
+body[data-action="show"][data-controller="projects"]
   #page_content
     +default_grid
     .section_header
       span
         font-family: 'Lato-Bold', sans-serif
-    
+
+    #project_content
+      .content
+        display: none
     .midia
       +grid(11)
       .video
@@ -62,17 +65,22 @@ body[data-action="new_project_profile"][data-controller="static"]
             background-color: rgba($gryn,0.3)
             padding: 5px 10px
             margin-right: 8px
-            margin-top: 10px 
+            margin-top: 10px
             &:hover
               background: rgba(255,255,255,0.7)
-            &:active
+            &:active, &.selected
               background: rgb(255,255,255)
               color: $blue
-      
+
       .midia_content_home, .midia_content_update, .midia_content_backers, .midia_content_comments
         margin: 20px 0
         .image
           border: 2px solid $orange
+
+        h2
+          font-family: Lato-Bold
+          font-size: 2.0em
+          color: black
 
         p
           font-family: 'Lato', sans-serif
@@ -80,16 +88,22 @@ body[data-action="new_project_profile"][data-controller="static"]
           color: #333
           line-height: 160%
           margin-bottom: 10px
-          em
+          a
+            font-size: 1.0em
+          em, a
             +transition(all, 0.3s)
             color: $blue
             cursor: pointer
             &:hover
               +text-shadow($blue 0 0 6px)
-      
+
       .midia_content_update
         border-bottom: 1px dashed #999
         padding-bottom: 30px
+        em
+          font-family: 'Lato', sans-serif
+          font-size: 1.5em
+          color: #333
 
       .midia_content_backers
         .backer
@@ -114,10 +128,10 @@ body[data-action="new_project_profile"][data-controller="static"]
 
               &:hover
                 +text-shadow($blue 0 0 6px)
-          
+
           p#text
             margin-bottom: 4px
-     
+
 
 
     .info
@@ -141,7 +155,7 @@ body[data-action="new_project_profile"][data-controller="static"]
             em
               font-size: 2.2em
               color: #666
-      
+
       #condition
         background-color: #999
         padding: 5px 10px
@@ -151,27 +165,28 @@ body[data-action="new_project_profile"][data-controller="static"]
           text-transform: uppercase
           line-height: 150%
           letter-spacing: 1px
-      
-      #pledge
-        +border-radius(8px)
-        +box-shadow(#999 1px 3px 6px)
-        +transition(all, 0.3s)
-        background-color: $blue
-        padding: 20px 10px
-        margin: 10px 15px
-        cursor: pointer
-        p
-          font-size: 1.5em
-          text-transform: uppercase
-          color: white
-        &:hover
-          background-color: #3889e9
-          +box-shadow($blue 0 0 10px)
 
-        &:active
-          +box-shadow(#999 1px 1px 6px)
-          background-color: #3889e9
-    
+      #pledge
+        form
+          input[type="submit"]
+            +border-radius(8px)
+            +box-shadow(#999 1px 3px 6px)
+            +transition(all, 0.3s)
+            border: none
+            background-color: $blue
+            padding: 20px 10px
+            margin: 10px 15px
+            cursor: pointer
+            font-size: 1.5em
+            text-transform: uppercase
+            color: white
+            &:hover
+              background-color: #3889e9
+              +box-shadow($blue 0 0 10px)
+            &:active
+              +box-shadow(#999 1px 1px 6px)
+              background-color: #3889e9
+
     #rewards
       margin-bottom: 20px
       .box
@@ -196,8 +211,13 @@ body[data-action="new_project_profile"][data-controller="static"]
           text-indent: 30px
           background: url('/images/redesign/support23x23.png') center left no-repeat
           height: 30px
+          padding-top: 15px
           vertical-align: middle
-    
+        a
+          font-size: 1.0em
+          &:hover
+            text-decoration: underline
+
     #creator_profile
       +grid(5)
       +omega
@@ -218,7 +238,7 @@ body[data-action="new_project_profile"][data-controller="static"]
         +alpha
         margin-top: 10px
         height: 105px
-        background: url('/images/redesign/profile100x100.png') 
+        // background: url('/images/redesign/profile100x100.png')
       .personal_info
         +grid(3)
         +omega
@@ -227,7 +247,62 @@ body[data-action="new_project_profile"][data-controller="static"]
         #name
           color: $blue
           font-size: 1.5em
-        #city, #projects, #about
+        #city, #projects, #bio
           margin-top: 5px
           font-size: 1.2em
-          
+
+    #project_share
+      width: 100%
+      margin: 0 auto 20px
+      margin-top: -20px
+      padding-bottom: 4px
+      text-align: left
+      font-size: 14px
+      line-height: 32px
+      #facebook_share
+        width: 542px
+        padding-top: 16px
+        iframe
+          +box-shadow(rgba(0,0,0,0.5), 0px, 0px, 0px)
+      #twitter_share
+        text-align: left
+        float: left
+        width: 124px
+        margin-top: 4px
+        height: 24px
+        overflow: hidden
+        iframe
+          +border-radius(0px)
+          +box-shadow(rgba(0,0,0,0.5), 0px, 0px, 0px)
+      ul
+        float: left
+        width: 452px
+        margin: 0 auto
+        li
+          float: left
+          font-family: Lato-Regular
+          font-size: 1.2em
+          margin-right: 6px
+          &:last-child
+            margin-right: none
+      a
+        font-size: 1.2em
+        text-decoration: none
+        color: #222
+        +transition(all, 0.1s)
+        &:hover
+          +text-shadow(#FFFF88, 2px, 2px, 4px)
+      img, a img
+        margin-top: -4px
+        vertical-align: middle
+        width: 22px
+      input
+        border: 1px solid rgba(0,0,0,0.4)
+        +border-radius(4px)
+        width: 140px
+      h1
+        color: #222
+        font-size: 0.6em
+        text-transform: lowercase
+        padding-top: 8px !important
+        padding-bottom: 4px !important
