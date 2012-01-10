@@ -28,7 +28,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     search = decodeURIComponent(search)
     this.selectItem("")
     this.initializeView({
-      meta_sort: "created_at.desc",
+      meta_sort: "explore",
       name_or_headline_or_about_or_user_name_contains: search
     })
     var input = this.$('#search')
