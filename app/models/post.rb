@@ -50,14 +50,17 @@ class Post
     start = (page-1) * per_page
     params = {start: start, num: per_page, type: :text}
     if project
+      type = :project
       params[:tagged] = "project_#{project.id}"
     elsif curated_page
+      type = :curated_page
       params[:tagged] = "curated_page_#{curated_page.id}"
     elsif type == :projects
       params[:tagged] = "project_post"
     elsif type == :curated_pages
       params[:tagged] = "curated_page_post"
     end
+    raise params.inspect
     posts = Tumblr::Post.all(params).delete_if(&:nil?) || [] #rescue []
     if type == :platform
       posts = posts.delete_if do |post|
