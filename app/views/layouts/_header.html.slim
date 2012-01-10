@@ -4,8 +4,8 @@
       a blog
       a ajuda
       - unless current_user
-        = link_to 'cadastre-se', '#', :id => 'signup_link'
-        = link_to 'entrar', '#', :id => 'login_link'
+        = link_to 'cadastre-se', '#login'
+        = link_to 'entrar', '#login'
     .actions
       - if current_user
         = image_tag "redesign/notification.png"

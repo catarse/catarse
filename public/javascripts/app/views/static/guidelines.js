@@ -11,7 +11,5 @@ $('#show_tips a').click(function(e){
   $(this).hide()
 })
 $(document).ready(function(){
-  if($('#login').length > 0){
-    $('input[type=submit]').click(CATARSE.requireLogin)
-  }
+  $('input[type=submit]').click(CATARSE.requireLogin)
 })
