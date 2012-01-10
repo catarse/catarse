@@ -23,6 +23,6 @@
     = link_to "explore projetos", explore_path
     = link_to "envie seu projeto", guidelines_path
   .search
-    = form_tag explore_path(:anchor => "search"),:method => 'GET', :class=>'search_input' do
+    = form_tag explore_path(:anchor => "search"), :method => 'GET', :class=>'search_input' do
       = text_field_tag :search, nil, autocomplete: "off"
       = submit_tag

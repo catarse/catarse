@@ -1244,7 +1244,6 @@ h4 {
 /* line 17, ../../app/stylesheets/miv/flash.sass */
 .flash .locale.wrapper {
   background-color: #4383d1;
-  background-color: #cc1529;
 }
 
 /* line 1, ../../app/stylesheets/miv/overlay.sass */
@@ -4557,6 +4556,11 @@ body[data-action="index"][data-controller="blog"] #page_content .sidebar section
 }
 
 /* line 3, ../../app/stylesheets/content/discover.sass */
+body[data-action="index"][data-controller="explore"] #page_content .empty {
+  font-family: Arial;
+  font-size: 1.6em;
+}
+/* line 6, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list {
   display: inline;
   float: left;
@@ -4564,15 +4568,15 @@ body[data-action="index"][data-controller="explore"] #page_content .projects_lis
   margin-right: 10px;
   width: 700px;
 }
-/* line 6, ../../app/stylesheets/content/discover.sass */
+/* line 9, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .project.first {
   margin-left: 0;
 }
-/* line 8, ../../app/stylesheets/content/discover.sass */
+/* line 11, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .project.last {
   margin-right: 0;
 }
-/* line 10, ../../app/stylesheets/content/discover.sass */
+/* line 13, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list a.discover {
   overflow: hidden;
   *zoom: 1;
@@ -4581,39 +4585,39 @@ body[data-action="index"][data-controller="explore"] #page_content .projects_lis
   font-family: Lato-Regular;
   margin-top: 15px;
 }
-/* line 16, ../../app/stylesheets/content/discover.sass */
+/* line 19, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .selected_list, body[data-action="index"][data-controller="explore"] #page_content .projects_list .final_stage_list, body[data-action="index"][data-controller="explore"] #page_content .projects_list .new_projects_list, body[data-action="index"][data-controller="explore"] #page_content .projects_list .finished_projects_list {
   float: left;
   padding-bottom: 10px;
   margin-bottom: 20px;
   border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
 }
-/* line 21, ../../app/stylesheets/content/discover.sass */
+/* line 24, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .selected_list h2, body[data-action="index"][data-controller="explore"] #page_content .projects_list .final_stage_list h2, body[data-action="index"][data-controller="explore"] #page_content .projects_list .new_projects_list h2, body[data-action="index"][data-controller="explore"] #page_content .projects_list .finished_projects_list h2 {
   text-transform: lowercase;
 }
-/* line 24, ../../app/stylesheets/content/discover.sass */
+/* line 27, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .selected_list h2 {
   background: url("/images/redesign/nice.png") left 3px no-repeat;
 }
-/* line 27, ../../app/stylesheets/content/discover.sass */
+/* line 30, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .final_stage_list h2 {
   background: url("/images/redesign/final_stage_icon18x15.png") left 3px no-repeat;
 }
-/* line 30, ../../app/stylesheets/content/discover.sass */
+/* line 33, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .new_projects_list h2 {
   background: url("/images/redesign/new_projects_icon35x20.png") left 1px no-repeat;
   text-indent: 45px;
 }
-/* line 33, ../../app/stylesheets/content/discover.sass */
+/* line 36, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .finished_projects_list {
   border-bottom: none;
 }
-/* line 35, ../../app/stylesheets/content/discover.sass */
+/* line 38, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list .finished_projects_list h2 {
   background: url("/images/redesign/success_project_icon16x31.png") left top no-repeat;
 }
-/* line 38, ../../app/stylesheets/content/discover.sass */
+/* line 41, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list h2 {
   padding-bottom: 20px;
   width: 100%;
@@ -4625,7 +4629,7 @@ body[data-action="index"][data-controller="explore"] #page_content .projects_lis
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
-/* line 47, ../../app/stylesheets/content/discover.sass */
+/* line 50, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list h2 span {
   padding-left: 20px;
   font-family: Arial;
@@ -4633,19 +4637,19 @@ body[data-action="index"][data-controller="explore"] #page_content .projects_lis
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 54, ../../app/stylesheets/content/discover.sass */
+/* line 57, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list ul.collection_list li .project {
   margin-bottom: 20px;
 }
-/* line 57, ../../app/stylesheets/content/discover.sass */
+/* line 60, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list ul.collection_list li.first .project {
   margin-left: 0;
 }
-/* line 60, ../../app/stylesheets/content/discover.sass */
+/* line 63, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .projects_list ul.collection_list li.last .project {
   margin-right: 0;
 }
-/* line 62, ../../app/stylesheets/content/discover.sass */
+/* line 65, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar {
   display: inline;
   float: left;
@@ -4653,7 +4657,7 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar {
   margin-right: 10px;
   width: 220px;
 }
-/* line 64, ../../app/stylesheets/content/discover.sass */
+/* line 67, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section {
   border-bottom: 1px rgba(0, 0, 0, 0.3) solid;
   float: left;
@@ -4661,23 +4665,23 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
-/* line 70, ../../app/stylesheets/content/discover.sass */
+/* line 73, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section:last-child {
   border-bottom: none;
 }
-/* line 73, ../../app/stylesheets/content/discover.sass */
+/* line 76, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section.highlights h2 {
   background: url("/images/redesign/highlight_icon12x12.png") left 6px no-repeat;
 }
-/* line 76, ../../app/stylesheets/content/discover.sass */
+/* line 79, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section.categories h2 {
   background: url("/images/redesign/categories_icon14x14.png") left 3px no-repeat;
 }
-/* line 79, ../../app/stylesheets/content/discover.sass */
+/* line 82, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section.cities h2 {
   background: url("/images/redesign/cities_icon9x16.png") left 2px no-repeat;
 }
-/* line 81, ../../app/stylesheets/content/discover.sass */
+/* line 84, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section h2 {
   font-size: 1.4em;
   color: black;
@@ -4689,17 +4693,17 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   float: left;
   width: 100%;
 }
-/* line 91, ../../app/stylesheets/content/discover.sass */
+/* line 94, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li {
   margin-bottom: 10px;
   float: left;
   margin-right: 8px;
 }
-/* line 95, ../../app/stylesheets/content/discover.sass */
+/* line 98, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li.no_margin {
   margin-left: none;
 }
-/* line 97, ../../app/stylesheets/content/discover.sass */
+/* line 100, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li a {
   vertical-align: middle;
   width: 100px;
@@ -4722,7 +4726,7 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   font-size: 1.2em;
   color: #6498d8;
 }
-/* line 111, ../../app/stylesheets/content/discover.sass */
+/* line 114, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li a:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -4731,7 +4735,7 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
   -o-box-shadow: #4383d1 2px 2px 2px;
   box-shadow: #4383d1 2px 2px 2px;
 }
-/* line 114, ../../app/stylesheets/content/discover.sass */
+/* line 117, ../../app/stylesheets/content/discover.sass */
 body[data-action="index"][data-controller="explore"] #page_content .sidebar section ul li a.selected {
   -moz-box-shadow: #4383d1 2px 2px 2px;
   -webkit-box-shadow: #4383d1 2px 2px 2px;
