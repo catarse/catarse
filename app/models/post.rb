@@ -61,7 +61,7 @@ class Post
       params[:tagged] = "curated_page_post"
     end
     raise params.inspect
-    posts = Tumblr::Post.all(params).delete_if(&:nil?) || [] #rescue []
+    posts = Tumblr::Post.all(params).delete_if(&:nil?) || [] rescue []
     if type == :platform
       posts = posts.delete_if do |post|
         post["tag"].include?("project_post") || post["tag"].include?("curated_page_post") rescue false
