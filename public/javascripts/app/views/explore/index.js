@@ -1,14 +1,14 @@
 CATARSE.ExploreIndexView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "index", "recommended", "expiring", "recent", "successful", "category", "search", "updateSearch")
+    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "recommended", "expiring", "recent", "successful", "category", "search", "updateSearch")
     CATARSE.router.route(":name", "category", this.category)
     CATARSE.router.route("recommended", "recommended", this.recommended)
     CATARSE.router.route("expiring", "expiring", this.expiring)
     CATARSE.router.route("recent", "recent", this.recent)
     CATARSE.router.route("successful", "successful", this.successful)
     CATARSE.router.route("search/*search", "search", this.search)
-    CATARSE.router.route("", "index", this.index)
+    CATARSE.router.route("", "index", this.recommended)
     this.render()
   },
 
@@ -19,10 +19,6 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   ProjectsView: CATARSE.PaginatedView.extend({
     emptyTemplate: _.template(this.$('#empty_projects_template').html())
   }),
-
-  index: function(){
-    this.$("#explore_results .results").html($('#discover_home').html())
-  },
 
   search: function(search){
     this.selectItem("")
