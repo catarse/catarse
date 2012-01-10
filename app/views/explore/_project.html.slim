@@ -1,37 +1,6 @@
 script type="text/template" id="empty_projects_template"
   .empty= t('.empty')
 
-script type="text/template" id="discover_home"
-  .selected_list
-    h2
-      = t("projects.index.recommended.title")
-      span= t("projects.index.recommended.subtitle")
-
-    - @recommended.each_with_index do |item, index|
-      == render 'projects/box', :project => item, :custom_class => "#{(index%3==0 ? 'first' : '')} #{(index%3==2 ? 'last' : '')}"
-    = link_to ">> #{t('projects.index.recommended.explore')}", '#recommended', :class => 'discover'
-  .final_stage_list
-    h2
-      = t("projects.index.expiring.title")
-      span= t("projects.index.expiring.subtitle")
-    - @expiring.each_with_index do |item, index|
-      == render 'projects/box', :project => item, :custom_class => "#{(index%3==0 ? 'first' : '')} #{(index%3==2 ? 'last' : '')}"
-    = link_to ">> #{t('projects.index.expiring.explore')}", '#expiring', :class => 'discover'
-  .new_projects_list
-    h2
-      = t("projects.index.recent.title")
-      span= t("projects.index.recent.subtitle")
-    - @recent.each_with_index do |item, index|
-      == render 'projects/box', :project => item, :custom_class => "#{(index%3==0 ? 'first' : '')} #{(index%3==2 ? 'last' : '')}"
-    = link_to ">> #{t('projects.index.recent.explore')}", '#recent', :class => 'discover'
-  .finished_projects_list
-    h2
-      = t("projects.index.successful.title")
-      span= t("projects.index.successful.subtitle")
-    - @successful.each_with_index do |item, index|
-      == render 'projects/box', :project => item, :custom_class => "#{(index%3==0 ? 'first' : '')} #{(index%3==2 ? 'last' : '')}"
-    = link_to ">> #{t('projects.index.successful.explore')}", '#successful', :class => 'discover'
-
 script type="text/template" id="project_template"
   .project[itemscope itemtype="http://schema.org/CreativeWork"]
     meta[itemprop="dateCreated" content="<%= created_at %>"]
