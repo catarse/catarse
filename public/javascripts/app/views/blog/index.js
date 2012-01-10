@@ -10,7 +10,13 @@ CATARSE.BlogIndexView = Backbone.View.extend({
   },
 
   PostView: CATARSE.ModelView.extend({
-    template: _.template(this.$('#post_template').html())
+    template: _.template(this.$('#post_template').html()),
+    afterRender: function() {
+      this.el.find('a.twitter-share-button').each(function(i) {
+        var loadedTweetButton = new twttr.TweetButton($(this).get(0))
+        loadedTweetButton.render()
+      })
+    }
   }),
 
   PostsView: CATARSE.PaginatedView.extend({
