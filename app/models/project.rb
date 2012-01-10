@@ -192,7 +192,7 @@ class Project < ActiveRecord::Base
   end
 
   def posts
-    @posts ||= Post.all(self)
+    @posts ||= Post.all(project: self)
   end
 
 end
