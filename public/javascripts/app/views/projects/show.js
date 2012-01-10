@@ -65,6 +65,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   selectItem: function(item) {
     this.$('#project_embed').hide()
     this.$('#embed_overlay').hide()
+    this.$('#loading img').hide()
     this.$("#project_content .content").hide()
     this.$("#project_content #project_" + item + ".content").show()
     var link = this.$("#project_menu #" + item + "_link")
