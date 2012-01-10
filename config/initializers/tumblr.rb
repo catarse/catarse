@@ -11,15 +11,16 @@ class Tumblr
       posts.is_a?(Array) ? posts : [posts]
     end
   end
-  READ_URL = "http://%s/api/read?%s"
+  READ_URL = "http://%s/api/read"
   WRITE_URL = "http://www.tumblr.com/api/write"
   class Request
     def self.read(options = {})
-      response = HTTParty.get(READ_URL%[Tumblr::blog,options.to_params], {})
+      url = Tumblr::READ_URL%[Tumblr::blog]
+      response = HTTParty.get(url, options)
       return response unless raise_errors(response)
     end
     def self.write(options = {})
-      response = HTTParty.post(WRITE_URL, :body => options)
+      response = HTTParty.post(Tumblr::WRITE_URL, :body => options)
       return(response) unless raise_errors(response)
     end
   end
