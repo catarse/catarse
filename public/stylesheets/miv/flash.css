@@ -12,7 +12,6 @@ Syntax error: Undefined variable: "$green".
 16:     background-color: $red
 17:   .locale.wrapper
 18:     background-color: $blue
-19:     background-color: $red
 
 Backtrace:
 /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass:14
@@ -113,4 +112,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$green\".\A         on line 14 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass\A \A 9:   width: 100%\A 10:   text-align: center\A 11:   .wrapper\A 12:     padding: 20px\A 13:   .success.wrapper,.notice.wrapper\A 14:     background-color: $green\A 15:   .failure.wrapper,.error.wrapper\A 16:     background-color: $red\A 17:   .locale.wrapper\A 18:     background-color: $blue\A 19:     background-color: $red"; }
+  content: "Syntax error: Undefined variable: \"$green\".\A         on line 14 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass\A \A 9:   width: 100%\A 10:   text-align: center\A 11:   .wrapper\A 12:     padding: 20px\A 13:   .success.wrapper,.notice.wrapper\A 14:     background-color: $green\A 15:   .failure.wrapper,.error.wrapper\A 16:     background-color: $red\A 17:   .locale.wrapper\A 18:     background-color: $blue"; }

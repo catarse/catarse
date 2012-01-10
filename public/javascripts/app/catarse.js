@@ -25,6 +25,7 @@ var CATARSE = {
     init: function(){
       // Common init for every action
       CATARSE.router = new CATARSE.Router()
+      CATARSE.layoutsApplicationView = new CATARSE.LayoutsApplicationView({el: $('html')})
     },
 
     finish: function(){
