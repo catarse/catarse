@@ -33,11 +33,7 @@ var CATARSE_LOADER = {
     ],
 
     intermediate: [
-      'app/views/layouts/pre_header',
       'app/views/layouts/application',
-      'app/views/layouts/flash',
-      'app/views/layouts/login',
-      'app/views/layouts/user',
       'app/models/project',
       'app/models/backer',
       'app/models/user',

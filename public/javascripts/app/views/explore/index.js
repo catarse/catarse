@@ -7,7 +7,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     CATARSE.router.route("expiring", "expiring", this.expiring)
     CATARSE.router.route("recent", "recent", this.recent)
     CATARSE.router.route("successful", "successful", this.successful)
-    CATARSE.router.route("search/:search", "all", this.search)
+    CATARSE.router.route("search/*search", "search", this.search)
     CATARSE.router.route("", "index", this.index)
     this.render()
   },
@@ -25,7 +25,6 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   search: function(search){
-    search = decodeURIComponent(search)
     this.selectItem("")
     this.initializeView({
       meta_sort: "explore",
@@ -38,8 +37,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
 
   updateSearch: function(){
     var search = encodeURIComponent(this.$('#search').val())
-    this.search(search)
-    CATARSE.router.navigate("search/" + search)
+    CATARSE.router.navigate("search/" + search, true)
   },
 
   recommended: function(){
