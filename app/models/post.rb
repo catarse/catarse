@@ -60,7 +60,6 @@ class Post
     elsif type == :curated_pages
       params[:tagged] = "curated_page_post"
     end
-    raise params.inspect
     posts = Tumblr::Post.all(params).delete_if(&:nil?) || [] rescue []
     if type == :platform
       posts = posts.delete_if do |post|
