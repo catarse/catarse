@@ -1,4 +1,4 @@
-body[data-action="new_blog"][data-controller="static"]
+body[data-action="index"][data-controller="blog"]
   #page_content
     .section_header
       .titles
@@ -30,13 +30,16 @@ body[data-action="new_blog"][data-controller="static"]
             +transition(all, 0.3s)
             &:last-child
               margin-right: 0
-            &:hover
+            &:hover, &.selected
               color: $minimal_blue
               background: rgba(255, 255, 255, 1)
 
     .blog_posts
       +grid(11)
       list-style: none
+      .empty
+        font-family: Arial
+        font-size: 1.4em
       li
         float: left
         width: 100%
@@ -133,6 +136,7 @@ body[data-action="new_blog"][data-controller="static"]
       +grid(5)
       +omega
       border: 1px $gryn_almost_ccc solid
+      margin-bottom: 20px
       section
         padding: 20px 0 10px 20px
         h5

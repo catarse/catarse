@@ -12,7 +12,7 @@ CATARSE.PaginatedView = Backbone.View.extend({
       this.loading = options.loading
     this.loading = $("#loading")
     this.loading.waypoint('destroy')
-    _.bindAll(this, "render", "update", "nextPage", "waypoint", "destroy")
+    _.bindAll(this, "render", "update", "nextPage", "waypoint", "destroy", "beforeUpdate", "afterUpdate")
     this.render()
     this.loading.children().show()
     this.collection.page = 1
@@ -46,7 +46,14 @@ CATARSE.PaginatedView = Backbone.View.extend({
     return this
   },
 
+  afterUpdate: function(){
+  },
+  
+  beforeUpdate: function(){
+  },
+  
   update: function(){
+    this.beforeUpdate()
     this.loading.children().hide()
     if(!this.collection.isEmpty()) {
       this.collection_list = $('<ul class="collection_list">')
@@ -59,6 +66,7 @@ CATARSE.PaginatedView = Backbone.View.extend({
     } else if(this.collection.page == 1) {
       this.el.html(this.emptyTemplate())
     }
+    this.afterUpdate()
     this.loading.waypoint(this.waypoint, {offset: "100%"})
     return this
   }
