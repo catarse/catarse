@@ -93,6 +93,7 @@ body[data-action="show"][data-controller="users"]
         margin-bottom: 15px
         display: block
       .content
+        display: none
         +grid(12)
         margin-bottom: 30px
         padding-bottom: 30px
@@ -170,3 +171,60 @@ body[data-action="show"][data-controller="users"]
           cursor: pointer
           &:hover
             +text-shadow($blue 0 0 5px)
+
+      #user_credits    
+        .credits
+          +border-radius(4px)
+          background-color: rgba(153,153,153,0.1)
+          border: 2px solid white
+          padding: 20px 100px
+
+          p
+            font-size: 1.8em
+            color: $grafiti
+
+            em
+              font-family: "Lato-Bold", sans-serif
+              font-size: 1.2em
+              color: $blue
+
+        .table_title
+          font-size: 1.8em
+          color: $pink
+          margin-top: 50px
+          font-family: 'Lato-Bold', sans-serif
+
+        table
+          margin: 20px 0
+          padding: 5px
+          thead
+            th
+              padding: 15px 10px 15px 5px
+              background-color: rgba(153,153,153,0.2)
+              font-family: 'Lato-Bold'
+              font-size: 1.5em
+          tr
+            td
+              font-family: 'Lato-Regular'
+              font-size: 1.5em
+              padding: 15px 10px 15px 5px
+              background-color: rgba(255,255,255,0.5)
+              border-bottom: 1px dashed $gryn
+              .link_project
+                +transition(all, 0.3s)
+                font-size: 1.2em
+                text-decoration: underline
+                &:hover
+                  +text-shadow ($blue 0 0 4px)
+
+            .project_name
+              width: 165px
+            .date
+              width: 115px
+            .value
+              width: 90px
+            .term
+              width: 140px
+            .reversal
+              width: 150px
+

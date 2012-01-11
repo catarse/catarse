@@ -28,7 +28,6 @@ CATARSE.UsersShowView = Backbone.View.extend({
   	emptyTemplate: _.template(this.$('#empty_user_project_template').html())
   }),
 
-
 	index: function() {
 		this.backs()
     CATARSE.router.navigate("backs")
@@ -56,6 +55,12 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
 	credits: function() {
 		this.selectItem("credits")
+		// this.creditsView = new this.CreditsView({
+		// 	modelView: this.CreditView,
+		// 	collection: this.user.credits,
+		// 	loading: this.$("#loading"),
+		// 	el: this.$("#user_credits table tbody")
+		// })
 	},
 
 	comments: function() {

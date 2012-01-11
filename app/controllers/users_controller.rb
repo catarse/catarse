@@ -9,12 +9,14 @@ class UsersController < ApplicationController
     show!{
       return redirect_to(user_path(@user.primary)) if @user.primary
       @title = "#{@user.display_name}"
+      @credits = @user.backs.can_refund.within_refund_deadline.all
+
       # @backs = @user.backs.confirmed.order(:confirmed_at)
       # @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
       # @backs = @backs.all
-      @projects = @user.projects.order("updated_at DESC")
-      @projects = @projects.visible unless @user == current_user
-      @projects = @projects.all
+      # @projects = @user.projects.order("updated_at DESC")
+      # @projects = @projects.visible unless @user == current_user
+      # @projects = @projects.all
     }
   end
 
@@ -32,6 +34,12 @@ class UsersController < ApplicationController
     @projects = @projects.visible unless @user == current_user
     @projects = @projects.paginate :page => params[:page], :per_page => 10
     render :json => @projects
+  end
+
+  def credits
+    @user = User.find(params[:id])
+    @credits = @user.backs.can_refund.within_refund_deadline.all
+    render :json => @credits
   end
 
   private
