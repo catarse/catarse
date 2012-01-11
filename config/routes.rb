@@ -64,17 +64,12 @@ Catarse::Application.routes.draw do
       get 'video_embed'
     end
   end
-<<<<<<< HEAD
   resources :users, :only => [:show] do
     member do
       get 'backs'
       get 'projects'
     end
     post 'update_attribute_on_the_spot', :on => :collection
-=======
-  resources :users, only: [:show] do
-    post 'update_attribute_on_the_spot', on: :collection
->>>>>>> develop
   end
   resources :credits, only: [:index] do
     collection do

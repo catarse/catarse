@@ -300,12 +300,6 @@ pt:
       subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
       title: seleção
     index:
-<<<<<<< HEAD
-      expiring: "Na reta final"
-      recent: "Projetos recentes"
-      recommended: "Projetos recomendados"
-      successful: "Projetos bem-sucedidos"
-=======
       expiring:
         explore: "explore mais projetos na reta final"
         subtitle: "Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!"
@@ -322,7 +316,6 @@ pt:
         explore: "explore mais projetos bem-sucedidos"
         subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
         title: Bem-sucedidos
->>>>>>> develop
     index_header:
       subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história."
       title: "Faça acontecer os projetos em que você acredita"
@@ -523,16 +516,6 @@ pt:
       no_projects_current_user_html: "Você ainda não realizou nenhum projeto no Catarse. Deixe a inspiração bater e %{link} para começar!"
       title: "Projetos de %{name}"
       title_current_user: "Meus projetos"
-    show:
-      backed_projects: "projetos apoiados"
-      comments: comentários
-      created_projects: "projetos criados"
-      credits: créditos
-      project_relationship_text: "O <span>%{project_author}</span> já entrou em contato com você para falar sobre a produção das recompensas? Você está acompanhando o projeto depois que ele foi bem-sucedido? Não deixa de visitar a página do <span>%{project_name}</span> aqui no Catarse para se informar e para manter o contato com o realizador. É super importante que a própria comunidade cuide do bom andamento dos projetos! Se quiser, escreva um comentário para ele aqui embaixo:"
-      when:
-        backed_value: "Em %{confirmed_at} você apoiou com <span>%{value}</span>"
-        did_not_selected_reward: "e não selecionou recompensa"
-        selected_reward: "e selecionou esta recompensa"
   users_mailer:
     notification_email:
       alt: "Você deve habilitar imagens para visualizar corretamente essa mensagem."
