@@ -47,6 +47,17 @@ en:
     value_must_be_at_least_rewards_value: "must be at least %{minimum_value} for the selected reward"
   backer_plural: backers
   backer_singular: backer
+  blog:
+    index:
+      menu:
+        curated_pages: Channels
+        platform: Catarse
+        projects: Creators
+        title: "See posts published by"
+      subtitle: "Discover what is happening in Catarse's network!"
+      title: "News, updates and otras cositas más..."
+    post:
+      empty: "Hey, we still don't have any post in this section. Wanna try the other sections in the mean time? =D"
   click_here: "Click here"
   clicking_here: "clicking here"
   comment:
@@ -90,14 +101,18 @@ en:
   error: "Ooops! There was an error. Please try again."
   explore:
     index:
+      all: All
       categories: Categories
       expiring: "Final countdown"
       quick_explore: "Quick search"
       recent: Recent
       recommended: Recommended
+      search: "What are you looking for?"
       subtitle: "Explore the projects, find the ones that touch you, and make them happen!"
       successful: Successful
       title: "Discover amazing projects"
+    project:
+      empty: "Hey, we didn't find any project with the text you searched. Wanna try some new words? =D"
     title: "Explore the projects"
   formtastic:
     hints:
@@ -188,6 +203,9 @@ en:
       text_subtitle: "Tell everyone what you just did"
       text_title_html: "You are now part of the group that does everything to make %{link} happen."
       title: "Thank you"
+  posts:
+    create:
+      success: "Your update have been successfully created! Now is time to spread it and keep making it happen :D"
   project:
     finish:
       successful:
@@ -225,6 +243,7 @@ en:
     backer:
       anonymous_backer: "Anonymous backer"
       anonymous_description: "Opted to remain incognito"
+      empty: "Nobody backed this project so far. How about being the first one?"
       no_reward: "This backer has not picked a reward"
     backers:
       checkout:
@@ -258,6 +277,10 @@ en:
         subtitle: "This is the last step to make the difference and become part of this project."
         title: "Fill in and review your data"
         you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
+    box:
+      backed: backed
+      by: by
+      reached: reached
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
     curated_pages_list:
@@ -277,10 +300,22 @@ en:
       subtitle: "Discover the projects that caused us a Catharsis :) every day a new selection."
       title: "Our cathartic selection!"
     index:
-      expiring: "Final countdown"
-      recent: "Recent projects"
-      recommended: "Recommended projects"
-      successful: "Successful projects"
+      expiring:
+        explore: "explore more projects in the final countdown"
+        subtitle: "Uh! Time's almost up for these ones...back'em while you can!"
+        title: "Final countdown"
+      recent:
+        explore: "explore more recent projects"
+        subtitle: "Projects that just arrived on Catarse. Smell as if they just came out of the oven..."
+        title: "Recent projects"
+      recommended:
+        explore: "explore more recommended projects"
+        subtitle: "Discover the projects that caused us a Catharsis :) every day a new selection."
+        title: "Our picks"
+      successful:
+        explore: "explore more successful projects"
+        subtitle: "Meet our newest prides :) tomorrow your project might be here!"
+        title: Successful
     index_header:
       subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
       title: "Make the projects you believe in happen"
@@ -327,9 +362,8 @@ en:
       title: "Check out what they're saying about Catarse in the press"
     project:
       backed: backed
+      by: by
       reached: reached
-    project_backers:
-      empty: "Nobody backed this project so far. How about being the first one?"
     project_comments:
       require_login_html: "Want to send a comment? %{link} to login."
       submit: "Send comment"
@@ -374,6 +408,11 @@ en:
         link_title: "Share the link"
         take_a_look: "Check out the project"
         title: "Be part of it and share this project"
+      subtitle_html: "A project in <span>%{category_name}</span>, from <span>%{city}</span>, by <span>%{author}</span>"
+      with_city:
+        subtitle_html: "A project in <span>%{category_name}</span>, from <span>%{city}</span>, by <span>%{author}</span>"
+      without_city:
+        subtitle_html: "A project in <span>%{category_name}</span>, by <span>%{author}</span>"
     start:
       about: "Describe your project and how much do you need"
       about_hint: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
@@ -390,6 +429,11 @@ en:
       title: "Submit your project"
     twitter:
       take_a_look: "Check out the project %{name} on @Catarse_"
+    updates:
+      body: "Text of the update"
+      empty: "This project didn't have updates yet. But wait and see =D"
+      submit: "Send update"
+      title: "Title of the update"
     video_embed:
       a_project_by_html: "A project by %{link} on Catarse"
   projects_mailer:
@@ -423,6 +467,7 @@ en:
       projects: projetos@catarse.me
       system: system@catarse.me
     facebook: "http://www.facebook.com/Catarse.me"
+    facebook_app_id: 173747042661491
     name: Catarse
     title: "The first crowdfunding platform from Brazil"
     twitter: Catarse_

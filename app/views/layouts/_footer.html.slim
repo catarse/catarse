@@ -1,0 +1,50 @@
+#footer
+  .footer_content
+    .open_data
+      h3
+        | estatísticas bacanas
+      ul
+        li
+          h5= @total_backers
+          p Apoiadores
+        li
+          h5= @total_backs
+          p Apoios
+        li
+          h5= number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
+          p Arrecadados
+        li
+          h5= @total_users
+          p Usuários
+        li
+          h5= @total_projects
+          p Projetos desde que lançamos
+        li
+          h5= @total_projects_success
+          p Projetos bem sucedidos
+        li
+          h5= @total_projects_online
+          p Projetos no ar hoje
+
+      = link_to "http://comum.cc", id: 'comum', target: :_blank do
+        = image_tag ('redesign/comum.png')
+
+    .footer_menu
+      = link_to 'Como funciona', guidelines_path, :class => 'iten'
+      = link_to 'F.A.Q/Ajuda', faq_path, :class => 'iten'
+      = link_to 'Termos de Uso', terms_path, :class => 'iten'
+      = link_to 'Política de Privacidade', privacy_path, :class => 'iten'
+      = mail_to t('site.email.contact'), 'Contato', :class => 'iten'
+
+    .social_menu
+      h3.cat
+        | curtiu o catarse?
+      iframe src="//www.facebook.com/plugins/like.php?href=#{t('site.facebook')}&amp;send=false&amp;layout=standard&amp;width=280&amp;show_faces=true&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=100&amp;appId=#{t('site.facebook_app_id')}" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:280px; height:100px;" allowTransparency="true"
+      .subscribe
+        h3
+          | quer receber novidades?
+        input type="text" name="user" value="email@email.com.br"
+        input type="submit" value="enviar"
+
+      = link_to "http://powertothecrowd.com", id: 'engage', target: :_blank do
+        = image_tag ('redesign/engage.png')

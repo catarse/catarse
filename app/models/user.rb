@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
   include Rails.application.routes.url_helpers
+  extend ActiveSupport::Memoizable
 
   begin
     sync_with_mailee :news => :newsletter, :list => "Newsletter"
@@ -17,7 +18,6 @@ class User < ActiveRecord::Base
   has_many :backs, :class_name => "Backer"
   has_many :projects
   has_many :notifications
-  has_many :comments
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
@@ -86,6 +86,18 @@ class User < ActiveRecord::Base
     end
     u.primary.nil? ? u : u.primary
   end
+
+  def recommended_project
+    # It returns the project that have the biggest amount of backers
+    # that contributed to the last project the user contributed that has common backers.
+    backs.confirmed.order('confirmed_at DESC').each do |back|
+      project = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE confirmed AND user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE confirmed AND project_id = #{back.project.id.to_i}) GROUP BY 2 ORDER BY 1 DESC LIMIT 1")
+      return Project.find(project[0]["project_id"]) unless project.count == 0
+    end
+    nil
+  end
+  memoize :recommended_project
+
   def display_name
     name || nickname || I18n.t('user.no_name')
   end
@@ -132,7 +144,6 @@ class User < ActiveRecord::Base
     self.credits = 0
     self.backs.update_all :user_id => new_user.id
     self.projects.update_all :user_id => new_user.id
-    self.comments.update_all :user_id => new_user.id
     self.notifications.update_all :user_id => new_user.id
     self.save
     new_user.save
@@ -141,8 +152,8 @@ class User < ActiveRecord::Base
   def as_json(options={})
 
     json_attributes = {}
-    
-    if options and not options[:anonymous] 
+
+    if not options or (options and not options[:anonymous])
       json_attributes.merge!({
         :id => id,
         :name => display_name,
@@ -151,7 +162,9 @@ class User < ActiveRecord::Base
         :image => display_image,
         :total_backs => total_backs,
         :backs_text => backs_text,
-        :url => user_path(self)
+        :url => user_path(self),
+        :city => address_city,
+        :state => address_state
       })
     end
 
@@ -160,7 +173,7 @@ class User < ActiveRecord::Base
         :email => email
       })
     end
-    
+
     json_attributes
 
   end

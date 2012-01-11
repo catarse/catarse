@@ -44,9 +44,7 @@ feature "Pending Backers" do
     verify_translations
 
     page.should have_css("#project_backers")
-    within "#empty_text" do
-      page.should have_content "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
-    end
+    page.should have_content "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
 
     visit pending_backers_projects_path
 
