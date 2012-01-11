@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?, :namespace
+  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?, :namespace, :user_facebook_id
   before_filter :set_locale
   before_filter :detect_locale
 
@@ -67,6 +67,15 @@ class ApplicationController < ActionController::Base
       end
     end
     new_url
+  end
+
+  def user_facebook_id(user)
+    secondary = user.secondary_users.where(provider: 'facebook').first
+    if secondary
+      return secondary.uid
+    else
+      return user.uid if user.provider == 'facebook'
+    end
   end
 
   def current_user

@@ -1,24 +1,33 @@
 /*
-Syntax error: Undefined mixin 'box-shadow'.
-        on line 7 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass, in `box-shadow'
-        from line 7 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass
+Syntax error: Undefined variable: "$green".
+        on line 14 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass
 
-2:   display: none
-3:   z-index: 500
-4:   position: fixed
-5:   bottom: 0
-6:   width: 100%
-7:   +box-shadow(rgba(0,0,0,0.75),0px,-4px,20px)
-8:   text-align: center
-9:   color: #fff
-10:   +text-shadow(black, 1px, 1px, 1px)
+9:   width: 100%
+10:   text-align: center
 11:   .wrapper
 12:     padding: 20px
+13:   .success.wrapper,.notice.wrapper
+14:     background-color: $green
+15:   .failure.wrapper,.error.wrapper
+16:     background-color: $red
+17:   .locale.wrapper
+18:     background-color: $blue
 
 Backtrace:
-/users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass:7:in `box-shadow'
-/users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass:7
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
+/users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass:14
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/script/variable.rb:50:in `_perform'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/script/node.rb:40:in `perform'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:215:in `visit_prop'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:235:in `visit_rule'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -61,7 +70,7 @@ Backtrace:
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/warden-1.1.0/lib/warden/manager.rb:34:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/methodoverride.rb:24:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/methodoverride.rb:24:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
@@ -74,23 +83,24 @@ Backtrace:
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/sendfile.rb:106:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/sendfile.rb:106:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/runtime.rb:17:in `call'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/lock.rb:11:in `block in call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/runtime.rb:17:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/lock.rb:13:in `block in call'
 <internal:prelude>:10:in `synchronize'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/lock.rb:11:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/lock.rb:13:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/lint.rb:48:in `_call'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/lint.rb:36:in `call'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/showexceptions.rb:24:in `call'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/commonlogger.rb:18:in `call'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/chunked.rb:15:in `call'
-/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.4/lib/rack/content_length.rb:13:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/lint.rb:48:in `_call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/lint.rb:36:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/showexceptions.rb:24:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/commonlogger.rb:18:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/chunked.rb:15:in `call'
+/Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/content_length.rb:13:in `call'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.1.1/lib/unicorn/http_server.rb:528:in `process_client'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.1.1/lib/unicorn/http_server.rb:600:in `worker_loop'
 /Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.1.1/lib/unicorn/http_server.rb:485:in `spawn_missing_workers'
@@ -102,4 +112,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'box-shadow'.\A         on line 7 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass, in `box-shadow'\A         from line 7 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass\A \A 2:   display: none\A 3:   z-index: 500\A 4:   position: fixed\A 5:   bottom: 0\A 6:   width: 100%\A 7:   +box-shadow(rgba(0,0,0,0.75),0px,-4px,20px)\A 8:   text-align: center\A 9:   color: #fff\A 10:   +text-shadow(black, 1px, 1px, 1px)\A 11:   .wrapper\A 12:     padding: 20px"; }
+  content: "Syntax error: Undefined variable: \"$green\".\A         on line 14 of /users/danielweinmann/Projects/catarse/app/stylesheets/miv/flash.sass\A \A 9:   width: 100%\A 10:   text-align: center\A 11:   .wrapper\A 12:     padding: 20px\A 13:   .success.wrapper,.notice.wrapper\A 14:     background-color: $green\A 15:   .failure.wrapper,.error.wrapper\A 16:     background-color: $red\A 17:   .locale.wrapper\A 18:     background-color: $blue"; }

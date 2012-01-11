@@ -47,6 +47,17 @@ pt:
     value_must_be_at_least_rewards_value: "deve ser pelo menos %{minimum_value} para a recompensa selecionada"
   backer_plural: apoiadores
   backer_singular: apoiador
+  blog:
+    index:
+      menu:
+        curated_pages: Canais
+        platform: Catarse
+        projects: Realizadores
+        title: "Ver posts publicados por"
+      subtitle: "Saiba o que de mais quente está rolando na rede do Catarse!"
+      title: "Notícias, atualizações e otras cositas más..."
+    post:
+      empty: "Ei, ainda não temos nenhum post nesta seção. Que tal ler as outras por enquanto? =D"
   click_here: "Clique aqui"
   clicking_here: "clicando aqui"
   comment:
@@ -266,6 +277,10 @@ pt:
         subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
         title: "Preencha e revise seus dados"
         you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
+    box:
+      backed: levantados
+      by: por
+      reached: atingido
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
     curated_pages_list:
@@ -285,10 +300,29 @@ pt:
       subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
       title: seleção
     index:
+<<<<<<< HEAD
       expiring: "Na reta final"
       recent: "Projetos recentes"
       recommended: "Projetos recomendados"
       successful: "Projetos bem-sucedidos"
+=======
+      expiring:
+        explore: "explore mais projetos na reta final"
+        subtitle: "Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!"
+        title: "Na reta final!"
+      recent:
+        explore: "explore mais projetos recentes"
+        subtitle: "Recém-chegados. O sol começou a brilhar para eles agorinha..."
+        title: "Projetos recentes"
+      recommended:
+        explore: "explore mais projetos recomendados"
+        subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
+        title: Seleção
+      successful:
+        explore: "explore mais projetos bem-sucedidos"
+        subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
+        title: Bem-sucedidos
+>>>>>>> develop
     index_header:
       subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história."
       title: "Faça acontecer os projetos em que você acredita"
@@ -381,6 +415,11 @@ pt:
         link_title: "Compartilhe o link"
         take_a_look: "Confira o projeto"
         title: "Faça parte disto e compartilhe este projeto"
+      subtitle_html: "Um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
+      with_city:
+        subtitle_html: "Um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
+      without_city:
+        subtitle_html: "Um projeto de <span>%{category_name}</span>, por <span>%{author}</span>"
     start:
       about: "Descreva seu projeto e quanto você precisa"
       about_hint: "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!"
@@ -435,6 +474,7 @@ pt:
       projects: projetos@catarse.me
       system: system@catarse.me
     facebook: "http://www.facebook.com/Catarse.me"
+    facebook_app_id: 173747042661491
     name: Catarse
     title: "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
     twitter: Catarse_

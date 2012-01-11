@@ -1,21 +1,21 @@
 /*
-Syntax error: Undefined variable: "$blue".
-        on line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass
+Syntax error: Undefined mixin 'linear-gradient'.
+        on line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass, in `linear-gradient'
+        from line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass
 
-1: a
-2:   text-decoration: none
-3:   color: $blue
-4:   font-family: Lato-Regular
-5:   font-size: 1.7em
-6:   +transition(all, 0.3s)
-7: 
-8: 
+1: #project_embed
+2:   background-color: #44A546
+3:   +linear-gradient(color_stops(#51C252,#49B249,#44A546))
+4:   border: 5px solid #fff
+5:   +border-radius(8px)
+6:   +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)
+7:   position: absolute
+8:   top: 50%
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass:3
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/script/variable.rb:50:in `_perform'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/script/node.rb:40:in `perform'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:215:in `visit_prop'
+/Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass:3:in `linear-gradient'
+/Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass:3
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:169:in `visit_mixin'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -93,4 +93,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$blue\".\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/typography.sass\A \A 1: a\A 2:   text-decoration: none\A 3:   color: $blue\A 4:   font-family: Lato-Regular\A 5:   font-size: 1.7em\A 6:   +transition(all, 0.3s)\A 7: \A 8: "; }
+  content: "Syntax error: Undefined mixin 'linear-gradient'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass, in `linear-gradient'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/miv/embed_modal.sass\A \A 1: #project_embed\A 2:   background-color: #44A546\A 3:   +linear-gradient(color_stops(#51C252,#49B249,#44A546))\A 4:   border: 5px solid #fff\A 5:   +border-radius(8px)\A 6:   +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)\A 7:   position: absolute\A 8:   top: 50%"; }
