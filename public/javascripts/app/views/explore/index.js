@@ -1,14 +1,14 @@
 CATARSE.ExploreIndexView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "index", "recommended", "expiring", "recent", "successful", "category", "search", "updateSearch")
+    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "recommended", "expiring", "recent", "successful", "category", "search", "updateSearch")
     CATARSE.router.route(":name", "category", this.category)
     CATARSE.router.route("recommended", "recommended", this.recommended)
     CATARSE.router.route("expiring", "expiring", this.expiring)
     CATARSE.router.route("recent", "recent", this.recent)
     CATARSE.router.route("successful", "successful", this.successful)
-    CATARSE.router.route("search/:search", "all", this.search)
-    CATARSE.router.route("", "index", this.index)
+    CATARSE.router.route("search/*search", "search", this.search)
+    CATARSE.router.route("", "index", this.recommended)
     this.render()
   },
 
@@ -20,15 +20,10 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     emptyTemplate: _.template(this.$('#empty_projects_template').html())
   }),
 
-  index: function(){
-    this.$("#explore_results .results").html($('#discover_home').html())
-  },
-
   search: function(search){
-    search = decodeURIComponent(search)
     this.selectItem("")
     this.initializeView({
-      meta_sort: "created_at.desc",
+      meta_sort: "explore",
       name_or_headline_or_about_or_user_name_contains: search
     })
     var input = this.$('#search')
@@ -38,8 +33,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
 
   updateSearch: function(){
     var search = encodeURIComponent(this.$('#search').val())
-    this.search(search)
-    CATARSE.router.navigate("search/" + search)
+    CATARSE.router.navigate("search/" + search, true)
   },
 
   recommended: function(){
@@ -102,9 +96,6 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   render: function(){
-    this.$('#header .search form').submit(function(){
-      return false;
-    })
     this.$('#header .search input').timedKeyup(this.updateSearch, 1000)
   }
 

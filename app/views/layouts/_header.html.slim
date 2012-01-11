@@ -4,8 +4,8 @@
       a blog
       a ajuda
       - unless current_user
-        = link_to 'cadastre-se', '#', :id => 'signup_link'
-        = link_to 'entrar', '#', :id => 'login_link'
+        = link_to 'cadastre-se', '#login'
+        = link_to 'entrar', '#login'
     .actions
       - if current_user
         = image_tag "redesign/notification.png"
@@ -22,8 +22,7 @@
   nav
     = link_to "explore projetos", explore_path
     = link_to "envie seu projeto", guidelines_path
-    = link_to "canais", curated_pages_path
   .search
-    = form_tag explore_path(:anchor => "search"),:method => 'GET', :class=>'search_input' do
+    = form_tag explore_path(:anchor => "search"), :method => 'GET', :class=>'search_input' do
       = text_field_tag :search, nil, autocomplete: "off"
       = submit_tag
