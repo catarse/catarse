@@ -12,9 +12,9 @@ describe Reports::Financial::Backers do
 
     report = Reports::Financial::Backers.report(@project.to_param)
     report.should_not =~ /R\$ 199/
-    report.should_not =~ /\;199/
+    report.should_not =~ /\,199/
     report.should_not =~ /R\$ 13/
-    report.should =~ /\;13/
+    report.should =~ /\,\\"13/
   end
 
   context "project with some backers" do
@@ -30,15 +30,15 @@ describe Reports::Financial::Backers do
     it 'should have the backers information' do
       report = Reports::Financial::Backers.report(@project.to_param)
       report.should_not =~ /R\$ 10/
-      report.should =~ /\;10/
+      report.should =~ /\,\\"10/
       report.should_not =~ /R\$ 11/
-      report.should =~ /\;11/
+      report.should =~ /\,\\"11/
       report.should_not =~ /R\$ 12/
-      report.should =~ /\;12/
+      report.should =~ /\,\\"12/
       report.should =~ /person\d+@example.com/
       report.should =~ /111.111.111-11/
       report.should_not =~ /R\$ 19,37/
-      report.should =~ /\;19.37/
+      report.should =~ /\,\\"19\,37/
       report.should =~ /Foo bar/
       report.should =~ /BoletoBancario/
     end
