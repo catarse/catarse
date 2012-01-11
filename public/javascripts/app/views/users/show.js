@@ -55,12 +55,6 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
 	credits: function() {
 		this.selectItem("credits")
-		// this.creditsView = new this.CreditsView({
-		// 	modelView: this.CreditView,
-		// 	collection: this.user.credits,
-		// 	loading: this.$("#loading"),
-		// 	el: this.$("#user_credits table tbody")
-		// })
 	},
 
 	comments: function() {
