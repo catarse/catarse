@@ -408,11 +408,6 @@ en:
         link_title: "Share the link"
         take_a_look: "Check out the project"
         title: "Be part of it and share this project"
-      subtitle_html: "A project in <span>%{category_name}</span>, from <span>%{city}</span>, by <span>%{author}</span>"
-      with_city:
-        subtitle_html: "A project in <span>%{category_name}</span>, from <span>%{city}</span>, by <span>%{author}</span>"
-      without_city:
-        subtitle_html: "A project in <span>%{category_name}</span>, by <span>%{author}</span>"
     start:
       about: "Describe your project and how much do you need"
       about_hint: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
@@ -516,6 +511,16 @@ en:
       no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
       title: "%{name}'s projects"
       title_current_user: "My projects"
+    show:
+      backed_projects: ~
+      comments: ~
+      created_projects: ~
+      credits: ~
+      project_relationship_text: ~
+      when:
+        backed_value: ~
+        did_not_selected_reward: ~
+        selected_reward: ~
   users_mailer:
     notification_email:
       alt: "You must enable images in order to correctly view this message."

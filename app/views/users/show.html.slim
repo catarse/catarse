@@ -29,4 +29,31 @@
     #user_comments.content
       .fb-comments[data-href=request.url data-num-posts=50 data-width="610"]
     #user_credits.content
+      .credits
+        p
+          | Seu saldo atual é de 
+          em R$ #{@user.credits} reais 
+          | em créditos
+
+      .table_title 
+        p 
+          | Apoios que podem ter estorno realizado:
+      table
+        thead
+          th Projeto
+          th Data de apoio
+          th Valor
+          th Prazo para estorno
+          th Status
+        - @credits.each do |credit|
+          tr
+            td.project_name
+              = link_to credit.project.name, '#', :class => 'link_project'
+            td.date= I18n.l(credit.created_at.to_date)
+            td.value= credit.display_value
+            td.term= I18n.l(credit.refund_deadline.to_date)
+            td.reversal
+              = link_to 'Solicitar extorno', '#', :class => 'link_project'
+        
+
   #loading= image_tag "loading.gif"
