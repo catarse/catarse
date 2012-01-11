@@ -41,10 +41,15 @@
           = t('.menu.about')
         = link_to '#updates', :id => 'updates_link' do
           = t('.menu.updates')
+          span.count=" (#{@project.posts.count})"
         = link_to '#backers', :id => 'backers_link' do
           = t('.menu.backers')
+          span.count=" (#{@project.total_backers})"
         = link_to '#comments', :id => 'comments_link' do
           = t('.menu.comments')
+          | &nbsp; ( &nbsp;
+          fb:comments-count href="#{request.url}"
+          | &nbsp; )
     #project_content
       #project_about.content
         .midia_content_home
