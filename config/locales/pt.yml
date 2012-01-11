@@ -396,10 +396,6 @@ pt:
     send_mail:
       success: "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
     show:
-      with_city:
-        subtitle_html: "um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
-      without_city:
-        subtitle_html: "um projeto de <span>%{category_name}</span>, por <span>%{author}</span>"
       menu:
         about: Sobre
         backers: Apoiadores
@@ -412,6 +408,11 @@ pt:
         link_title: "Compartilhe o link"
         take_a_look: "Confira o projeto"
         title: "Faça parte disto e compartilhe este projeto"
+      subtitle_html: "Um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
+      with_city:
+        subtitle_html: "Um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
+      without_city:
+        subtitle_html: "Um projeto de <span>%{category_name}</span>, por <span>%{author}</span>"
     start:
       about: "Descreva seu projeto e quanto você precisa"
       about_hint: "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!"
@@ -515,11 +516,6 @@ pt:
       no_projects_current_user_html: "Você ainda não realizou nenhum projeto no Catarse. Deixe a inspiração bater e %{link} para começar!"
       title: "Projetos de %{name}"
       title_current_user: "Meus projetos"
-    show:
-      backed_projects: "projetos apoiados"
-      comments: comentários
-      created_projects: "projetos criados"
-      credits: créditos
   users_mailer:
     notification_email:
       alt: "Você deve habilitar imagens para visualizar corretamente essa mensagem."
