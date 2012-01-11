@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   include ActionView::Helpers::UrlHelper
   include ERB::Util
   include Rails.application.routes.url_helpers
-  
+
   belongs_to :user
   belongs_to :category
   has_many :projects_curated_pages
@@ -45,7 +45,7 @@ class Project < ActiveRecord::Base
   scope :sort_by_explore_asc, order('(expires_at < current_timestamp) ASC, successful DESC, finished DESC, abs(EXTRACT(epoch FROM current_timestamp - expires_at)), created_at DESC')
 
   search_methods :visible, :home_page, :not_home_page, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
-  
+
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   before_create :store_image_url
@@ -193,6 +193,8 @@ class Project < ActiveRecord::Base
 
   def posts
     @posts ||= Post.all(project: self)
+  rescue
+    []
   end
 
 end
