@@ -33,15 +33,16 @@ var CATARSE_LOADER = {
     ],
 
     intermediate: [
-      'app/views/layouts/pre_header',
-      'app/views/layouts/flash',
-      'app/views/layouts/login',
-      'app/views/layouts/user',
+      'app/views/layouts/application',
       'app/models/project',
       'app/models/backer',
       'app/models/user',
+<<<<<<< HEAD
       'app/models/user_back',
       'app/models/user_project',
+=======
+      'app/models/post',
+>>>>>>> develop
       'app/collections/paginated',
       'app/views/model',
       'app/views/paginated'
@@ -50,8 +51,12 @@ var CATARSE_LOADER = {
     final: [
       'app/collections/projects',
       'app/collections/backers',
+<<<<<<< HEAD
       'app/collections/user_backs',
       'app/collections/user_projects'
+=======
+      'app/collections/posts'
+>>>>>>> develop
     ]
 
   },

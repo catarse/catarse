@@ -1,13 +1,12 @@
 Catarse::Application.routes.draw do
+
   ActiveAdmin.routes(self)
 
   filter :locale
 
-  # root :to => 'static#new_home'
-  root :to => 'projects#index'
+  root to: 'projects#index'
 
   # New design routes
-
   match '/new_blog' => 'static#new_blog'
   match '/new_profile' => 'static#new_profile'
   match '/new_project_profile' => 'static#new_project_profile'
@@ -16,12 +15,10 @@ Catarse::Application.routes.draw do
   match '/new_opendata' => 'static#new_opendata'
   match '/new_curated_page' => 'static#new_curated_page'
 
-
-  # root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
 
-  match '/sitemap' => "static#sitemap", :as => :sitemap
   # Static Pages
+  match '/sitemap' => "static#sitemap", :as => :sitemap
   match "/guidelines" => "static#guidelines", :as => :guidelines
   match "/faq" => "static#faq", :as => :faq
   match "/terms" => "static#terms", :as => :terms
@@ -40,10 +37,10 @@ Catarse::Application.routes.draw do
   if Rails.env == "test"
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
-  resources :posts
-  resources :projects, :only => [:index, :new, :create, :show] do
+  resources :posts, only: [:index, :create]
+  resources :projects, only: [:index, :new, :create, :show] do
     resources :rewards
-    resources :backers, :controller => 'projects/backers' do
+    resources :backers, controller: 'projects/backers' do
       collection do
         post 'review'
       end
@@ -67,21 +64,26 @@ Catarse::Application.routes.draw do
       get 'video_embed'
     end
   end
+<<<<<<< HEAD
   resources :users, :only => [:show] do
     member do
       get 'backs'
       get 'projects'
     end
     post 'update_attribute_on_the_spot', :on => :collection
+=======
+  resources :users, only: [:show] do
+    post 'update_attribute_on_the_spot', on: :collection
+>>>>>>> develop
   end
-  resources :credits, :only => [:index] do
+  resources :credits, only: [:index] do
     collection do
       get 'buy'
       post 'refund'
     end
   end
 
-  resources :paypal, :only => [] do
+  resources :paypal, only: [] do
     member do
       get 'pay'
       get 'success'
@@ -89,10 +91,13 @@ Catarse::Application.routes.draw do
     end
   end
 
+  resources :blog, only: :index do
+  end
+  
   resources :curated_pages do
     collection do
       post 'update_attribute_on_the_spot'
     end
   end
-  match "/:permalink" => "curated_pages#show", :as => :curated_page
+  match "/:permalink" => "curated_pages#show", as: :curated_page
 end

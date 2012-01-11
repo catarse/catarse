@@ -10,21 +10,23 @@ var CATARSE = {
     if(typeof(customUrl) != 'undefined') {
       url = customUrl
     } else {
-      if($(this).is('a')){
-        url = $(this).attr('href')
+      if($(event.target).is('a')){
+        url = $(event.target).attr('href')
       } else {
-        url = $(this).parentsUntil('form').parent().attr('action')
+        url = $(event.target).parentsUntil('form').parent().attr('action')
       }
     }
-    $('#return_to').val(url)
-    $('#login_overlay').show()
-    $('#login').fadeIn()
+    if(CATARSE.currentUser)
+      location.href = url
+    else
+      CATARSE.router.navigate("login/" + encodeURIComponent(url), true)
   },
   
   common: {
     init: function(){
       // Common init for every action
       CATARSE.router = new CATARSE.Router()
+      CATARSE.layout = new CATARSE.LayoutsApplicationView({el: $('html')})
     },
 
     finish: function(){
