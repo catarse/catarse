@@ -38,7 +38,7 @@ describe Reports::Financial::Backers do
       report.should =~ /person\d+@example.com/
       report.should =~ /111.111.111-11/
       report.should_not =~ /R\$ 19,37/
-      report.should =~ /19\,37/
+      report.should =~ /19\.37/
       report.should =~ /Foo bar/
       report.should =~ /BoletoBancario/
     end
