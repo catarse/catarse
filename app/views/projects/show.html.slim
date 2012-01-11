@@ -98,6 +98,14 @@
         div[class="box #{('clickable' if @project.can_back? and not reward.sold_out?)}"]
           = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
           h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum)
+          - if reward.maximum_backers
+            .maximum_backers
+              - if reward.sold_out?
+                .sold_out= t('reward.sold_out')
+              - else
+                .limited= t('reward.limited')
+              .remaining= reward.display_remaining
+            .clear
           p
             - if current_user and current_user.admin
               #{on_the_spot_edit reward, :description, :type => :textarea}
