@@ -3,10 +3,10 @@ class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
   inherit_resources
   actions :index, :show, :new, :create
-  respond_to :html, :except => [:backers, :comments, :updates]
-  respond_to :json, :only => [:show, :backers, :comments, :updates]
+  respond_to :html, :except => [:backers]
+  respond_to :json, :only => [:index, :show, :backers]
   can_edit_on_the_spot
-  skip_before_filter :detect_locale, :only => [:backers, :comments, :updates]
+  skip_before_filter :detect_locale, :only => [:backers]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create]
   def date_format_convert
@@ -15,13 +15,56 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    index! do
-      @title = t("site.title")
-      @home_page = Project.includes(:user, :category).visible.home_page.limit(6).order('"order"').all
-      @expiring = Project.includes(:user, :category).visible.expiring.not_home_page.not_expired.order('expires_at, created_at DESC').limit(3).all
-      @recent = Project.includes(:user, :category).visible.not_home_page.not_expiring.not_expired.where("projects.user_id <> 7329").order('created_at DESC').limit(3).all
-      @successful = Project.includes(:user, :category).visible.not_home_page.successful.order('expires_at DESC').limit(3).all
-      @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
+    index! do |format|
+      format.html do
+        @title = t("site.title")
+        collection_projects = Project.includes(:user, :category).
+                                  with_homepage_comment.
+                                  recommended.
+                                  visible.
+                                  not_expired.
+                                  order('"order"')
+
+        unless collection_projects.empty?
+          home_page_projects = collection_projects.home_page
+          if current_user and current_user.recommended_project
+            @recommended_project = current_user.recommended_project
+            home_page_projects = home_page_projects.where("id != #{current_user.recommended_project.id}")
+            collection_projects = collection_projects.where("id != #{current_user.recommended_project.id}")
+          end
+          category_projects = collection_projects
+          category_projects = category_projects.where("category_id != #{@recommended_project.category_id}") if @recommended_project
+          @project_of_day = home_page_projects.first
+          category_projects = category_projects.where("id != #{@project_of_day.id}") if @project_of_day
+          @second_project = category_projects.all[rand(category_projects.length)]
+          category_projects = category_projects.where("category_id != #{@second_project.category_id}") if @second_project
+          @third_project = category_projects.all[rand(category_projects.length)]
+          unless @recommended_project
+            category_projects = category_projects.where("category_id != #{@third_project.category_id}") if @third_project
+            @fourth_project = category_projects.all[rand(category_projects.length)]
+          end
+        end
+
+        project_ids = []
+        project_ids << @recommended_project.id if @recommended_project
+        project_ids << @project_of_the_day.id if @project_of_the_day
+        project_ids << @second_project.id if @second_project
+        project_ids << @third_project.id if @third_project
+        project_ids << @fourth_project.id if @fourth_project
+        project_ids = project_ids.join(',')
+        project_ids = "id NOT IN (#{project_ids})" unless project_ids.blank?
+
+        @expiring = Project.includes(:user, :category).where(project_ids).visible.expiring.not_expired.order('date(expires_at), random()').limit(3).all
+        @recent = Project.includes(:user, :category).where(project_ids).recent.visible.not_expiring.not_expired.order('date(created_at), random()').limit(3).all
+        @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
+        @last_tweet = Rails.cache.fetch('last_tweet', :expires_in => 30.minutes) do
+            JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}"))).first
+        end
+      end
+      format.json do
+        @projects = Project.visible.search(params[:search]).paginate :page => params[:page], :per_page => 6
+        respond_with(@projects)
+      end
     end
   end
   def start
@@ -56,16 +99,12 @@ class ProjectsController < ApplicationController
       @title = @project.name
       @rewards = @project.rewards.order(:minimum_value).all
       @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
-      @updates = @project.updates.all
-      @update = @project.comments.new :project_update => true
-      @comments = @project.comments.all
-      @comment = @project.comments.new
     }
   end
   def vimeo
     project = Project.new(:video_url => params[:url])
-    if project.vimeo
-      render :json => project.vimeo.to_json
+    if project.vimeo.info
+      render :json => project.vimeo.info.to_json
     else
       render :json => {:id => false}.to_json
     end
@@ -81,18 +120,6 @@ class ProjectsController < ApplicationController
     }.to_json
   rescue
     render :json => {:ok => false}.to_json
-  end
-
-  def comments
-    @project = Project.find params[:id]
-    @comments = @project.comments.order("created_at DESC").paginate :page => params[:page], :per_page => 5
-    respond_with @comments
-  end
-
-  def updates
-    @project = Project.find params[:id]
-    @updates = @project.updates.order("created_at DESC").paginate :page => params[:page], :per_page => 3
-    respond_with @updates
   end
 
   def embed
@@ -118,10 +145,6 @@ class ProjectsController < ApplicationController
     @title = t('projects.pending_backers.title')
     @search = Backer.search(params[:search])
     @backers = @search.order("created_at DESC").paginate :page => params[:page]
-    @total_backers = User.backers.count
-    @total_backs = Backer.confirmed.count
-    @total_backed = Backer.confirmed.sum(:value)
-    @total_users = User.primary.count
   end
   private
 

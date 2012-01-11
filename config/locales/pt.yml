@@ -24,7 +24,6 @@ pt:
         maximum_backers: "Máximo de apoiadores"
         minimum_value: "Valor mínimo"
       user:
-        cpf: CPF
         address_city: Cidade
         address_complement: Complemento
         address_neighbourhood: Bairro
@@ -32,6 +31,7 @@ pt:
         address_state: Estado
         address_street: Logradouro
         address_zip_code: CEP
+        cpf: CPF
         email: Email
         full_name: "Nome completo"
         phone_number: "Telefone celular"
@@ -47,6 +47,17 @@ pt:
     value_must_be_at_least_rewards_value: "deve ser pelo menos %{minimum_value} para a recompensa selecionada"
   backer_plural: apoiadores
   backer_singular: apoiador
+  blog:
+    index:
+      menu:
+        curated_pages: Canais
+        platform: Catarse
+        projects: Realizadores
+        title: "Ver posts publicados por"
+      subtitle: "Saiba o que de mais quente está rolando na rede do Catarse!"
+      title: "Notícias, atualizações e otras cositas más..."
+    post:
+      empty: "Ei, ainda não temos nenhum post nesta seção. Que tal ler as outras por enquanto? =D"
   click_here: "Clique aqui"
   clicking_here: "clicando aqui"
   comment:
@@ -90,14 +101,18 @@ pt:
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
   explore:
     index:
+      all: Todos
       categories: Categorias
       expiring: "Na reta final"
       quick_explore: "Busca rápida"
       recent: Recentes
       recommended: Recomendados
+      search: "O que você procura?"
       subtitle: "Explore os projetos, encontre aqueles que mexem com seu coração, e faça acontecer!"
       successful: Bem-sucedidos
       title: "Encontre projetos incríveis"
+    project:
+      empty: "Ei, não encontramos nenhum projeto com o texto que você procurou. Que tal experimentar com outras palavras? =D"
     title: "Explore os projetos"
   formtastic:
     hints:
@@ -188,6 +203,9 @@ pt:
       text_subtitle: "Conte para todo mundo o que você acabou de fazer"
       text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
       title: "Muito obrigado"
+  posts:
+    create:
+      success: "Sua atualização foi criada com sucesso! Agora é divulgar e continuar fazendo acontecer :D"
   project:
     finish:
       successful:
@@ -205,6 +223,28 @@ pt:
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
   projects:
+    admin_fields:
+      title: "Campos para o admin"
+    back_project:
+      backed_plural: apoiaram
+      backed_singular: apoiou
+      has: já
+      person: Pessoa
+      project_warning:
+        not_successful:
+          expired: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
+          not_expired: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
+        successful:
+          expired: "Este projeto foi bem-sucedido e foi financiado em %{date}"
+          not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
+        waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
+      reached_of: "Atingidos de"
+      submit: "Quero apoiar este projeto"
+    backer:
+      anonymous_backer: "Apoiador anônimo"
+      anonymous_description: "Optou por permanecer incógnito"
+      empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
+      no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
       checkout:
         moip_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
@@ -237,27 +277,10 @@ pt:
         subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
         title: "Preencha e revise seus dados"
         you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
-    admin_fields:
-      title: "Campos para o admin"
-    back_project:
-      backed_plural: apoiaram
-      backed_singular: apoiou
-      has: já
-      person: Pessoa
-      project_warning:
-        not_successful:
-          expired: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
-          not_expired: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
-        successful:
-          expired: "Este projeto foi bem-sucedido e foi financiado em %{date}"
-          not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
-        waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
-      reached_of: "Atingidos de"
-      submit: "Quero apoiar este projeto"
-    backer:
-      anonymous_backer: "Apoiador anônimo"
-      anonymous_description: "Optou por permanecer incógnito"
-      no_reward: "Este apoiador não selecionou nenhuma recompensa"
+    box:
+      backed: levantados
+      by: por
+      reached: atingido
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
     curated_pages_list:
@@ -273,14 +296,26 @@ pt:
       rewards_title: Recompensas
       submit: "Enviar o projeto"
     home_page_projects:
-      explore_recommended: "Explore mais projetos recomendados"
+      explore_recommended: "explore mais projetos recomendados"
       subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
-      title: "Nossa seleção catártica!"
+      title: seleção
     index:
-      expiring: "Na reta final"
-      recent: "Projetos recentes"
-      recommended: "Projetos recomendados"
-      successful: "Projetos bem-sucedidos"
+      expiring:
+        explore: "explore mais projetos na reta final"
+        subtitle: "Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!"
+        title: "Na reta final!"
+      recent:
+        explore: "explore mais projetos recentes"
+        subtitle: "Recém-chegados. O sol começou a brilhar para eles agorinha..."
+        title: "Projetos recentes"
+      recommended:
+        explore: "explore mais projetos recomendados"
+        subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
+        title: Seleção
+      successful:
+        explore: "explore mais projetos bem-sucedidos"
+        subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
+        title: Bem-sucedidos
     index_header:
       subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história."
       title: "Faça acontecer os projetos em que você acredita"
@@ -327,9 +362,8 @@ pt:
       title: "Confira o que estão falando do Catarse na imprensa"
     project:
       backed: levantados
+      by: por
       reached: atingido
-    project_backers:
-      empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
     project_comments:
       require_login_html: "Quer enviar um comentário? %{link} para fazer login."
       submit: "Enviar comentário"
@@ -337,17 +371,17 @@ pt:
       subtitle_html: "Um projeto de %{link}"
     project_list:
       expiring:
-        explore: "Explore mais projetos na reta final"
+        explore: "explore mais projetos na reta final"
         subtitle: "Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!"
-        title: "Na reta final"
+        title: "na reta final"
       recent:
-        explore: "Explore mais projetos recentes"
-        subtitle: "Projetos recém-chegados no Catarse. Cheiro de que saiu do forno agorinha..."
-        title: "Novos e fresquinhos"
+        explore: "explore mais projetos recentes"
+        subtitle: "Recém-chegados. O sol começou a brilhar para eles agorinha..."
+        title: "novos e fresquinhos"
       successful:
-        explore: "Explore mais projetos bem-sucedidos"
+        explore: "explore mais projetos bem-sucedidos"
         subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
-        title: "Projetos bem-sucedidos"
+        title: bem-sucedidos
     project_updates:
       empty: "Este projeto ainda não teve atualizações. Aguarde =D"
       submit: "Enviar atualização"
@@ -374,6 +408,11 @@ pt:
         link_title: "Compartilhe o link"
         take_a_look: "Confira o projeto"
         title: "Faça parte disto e compartilhe este projeto"
+      subtitle_html: "Um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
+      with_city:
+        subtitle_html: "Um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
+      without_city:
+        subtitle_html: "Um projeto de <span>%{category_name}</span>, por <span>%{author}</span>"
     start:
       about: "Descreva seu projeto e quanto você precisa"
       about_hint: "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!"
@@ -390,6 +429,11 @@ pt:
       title: "Envie seu projeto"
     twitter:
       take_a_look: "Confira o projeto %{name} no @Catarse_"
+    updates:
+      body: "Texto da atualização"
+      empty: "Este projeto ainda não teve atualizações. Aguarde =D"
+      submit: "Enviar atualização"
+      title: "Título da atualização"
     video_embed:
       a_project_by_html: "Um projeto de %{link} no Catarse"
   projects_mailer:
@@ -423,6 +467,7 @@ pt:
       projects: projetos@catarse.me
       system: system@catarse.me
     facebook: "http://www.facebook.com/Catarse.me"
+    facebook_app_id: 173747042661491
     name: Catarse
     title: "A primeira plataforma de financiamento colaborativo de projetos criativos do Brasil"
     twitter: Catarse_

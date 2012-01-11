@@ -1,0 +1,122 @@
+#footer
+  width: 100%
+  float: left
+  background-color: $grafiti
+  padding: 30px 0
+  .footer_content
+    +default_grid
+    +clearfix
+    .open_data
+      +grid(5)
+      +grid-suffix(1)
+      #comum
+        img
+          margin-top: 20px
+        +opacity(0.8)
+        &:hover
+          +opacity(1)
+      h3
+        +clearfix
+        padding: 5px 0 5px 75px
+        font-family: museo-500
+        display: block
+        color: $green
+        background: url("/images/redesign/opendata_icon60x31.png") 3px top no-repeat
+      ul
+        display: block
+        +clearfix
+        padding-top: 30px
+        li
+          width: 100%
+          float: left
+          margin-bottom: 20px
+          h5
+            float: left
+            font-family: museo-700
+            font-size: 1.9em
+            color: white
+            +opacity(0.8)
+            padding-right: 10px
+          p
+            padding-top: 3px
+            float: left
+            text-transform: uppercase
+            font-family: Myriad Pro
+            font-size: 1.4em
+            color: white
+            +opacity(0.5)
+      a
+        font-family: Arial
+        font-size: 1.1em
+        color: $green
+
+    .footer_menu
+      +grid(4)
+      display: block
+      margin-top: 30px
+      .iten
+        +grid(4)
+        +alpha
+        display: block
+        font-size: 1.9em
+        font-family: "Lato-Bold"
+        color: $minimal_gryn
+        margin-top: 30px
+        &:hover
+          color: $super_minimal_gryn
+
+    .social_menu
+      +grid(5)
+      +omega
+      +grid-prefix(1)
+      h3.cat
+        +clearfix
+        font-family: museo-500
+        display: block
+        color: $green
+        background: url("/images/redesign/like13x11.png") 3px top no-repeat
+        padding: 5px 0 35px 25px
+        font-family: museo-500
+
+      .subscribe 
+        +border-radius(5px)
+        background-color: #434343
+        padding: 5px 10px
+        margin-top: 30px
+        h3
+          background: url("/images/redesign/news13x11.png") 1px top no-repeat
+          text-indent: 15px
+          padding: 5px 0 15px 25px
+          font-family: museo-500
+          display: block
+          color: white
+
+        input[type=submit]
+          +border-radius(3px)
+          +transition(all, 0.3s)  
+          background-color: $pink
+          color: white
+          padding: 5px 10px
+          border: $pink 1px solid
+          cursor: pointer
+          font-family: 'Lato', sans-serif
+          font-size: 1.2em
+          margin-left: 7px
+          text-transform: uppercase
+          &:hover
+            +box-shadow($pink 0 0 6px)
+
+        input[type=text]
+          font-size: 1.5em
+          padding: 5px 0 5px 0 
+          width: 175px
+          margin-right: 5px
+
+      
+      #engage
+        img
+          margin-top: 60px
+          margin-left: 80px
+        +opacity(0.8)
+        &:hover
+          +opacity(1)

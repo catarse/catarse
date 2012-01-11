@@ -26,23 +26,14 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    Project.any_instance.stubs(:verify_if_video_exists_on_vimeo).returns(true)
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
-
     DatabaseCleaner.clean
   end
-end
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
-end
-
-Capybara.configure do |config|
- config.default_driver = defined?(Capybara::Driver::Webkit) ? :webkit : :selenium
- config.ignore_hidden_elements = false
- # config.seletor :css
- config.server_port = 8200
- config.app_host = "http://localhost:8200"
+  def mock_tumblr method=:two
+    require "#{Rails.root}/spec/fixtures/tumblr_data" # just a fixture
+    Tumblr::Post.stubs(:all).returns(TumblrData.send(method))
+  end
 end
 
 def post_moip_params

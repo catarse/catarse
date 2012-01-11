@@ -15,7 +15,7 @@ feature "Explore projects Feature" do
       Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true, category: category_1)
     end
     5.times do
-      Factory(:project, created_at: 30.days.ago, expires_at: 10.days.ago, visible: true, recommended: true, category: category_1)
+      Factory(:project, created_at: 30.days.ago, expires_at: 10.days.ago, visible: true, recommended: true, category: category_1, name: "Weird name")
     end
 
     # Expiring projects
@@ -41,9 +41,10 @@ feature "Explore projects Feature" do
     categories = Category.with_projects.order(:name).all
     recommended = Project.visible.not_expired.recommended.order('expires_at').all
     expiring = Project.visible.expiring.limit(16).order('expires_at').all
-    recent = Project.visible.recent.limit(16).order('created_at DESC').all
+    recent = Project.visible.recent.not_expired.limit(16).order('created_at DESC').all
     successful = Project.visible.successful.order('expires_at DESC').all
-
+    search = Project.visible.where("name ILIKE '%eird%'").order('created_at DESC').all
+    
     visit homepage
     verify_translations
     
@@ -69,7 +70,6 @@ feature "Explore projects Feature" do
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
-        next unless list[index].visible?
         list[index].find("a")[:href].should match(/\/projects\/#{recommended[index].to_param}/)
       end
     end
@@ -79,10 +79,10 @@ feature "Explore projects Feature" do
     within "#explore_menu" do
       click_on "Na reta final"
     end
+    verify_translations
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
-        next unless list[index].visible?
         list[index].find("a")[:href].should match(/\/projects\/#{expiring[index].to_param}/)
       end
     end
@@ -92,10 +92,10 @@ feature "Explore projects Feature" do
     within "#explore_menu" do
       click_on "Recentes"
     end
+    verify_translations
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
-        next unless list[index].visible?
         list[index].find("a")[:href].should match(/\/projects\/#{recent[index].to_param}/)
       end
     end
@@ -105,10 +105,10 @@ feature "Explore projects Feature" do
     within "#explore_menu" do
       click_on "Bem-sucedidos"
     end
+    verify_translations
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
-        next unless list[index].visible?
         list[index].find("a")[:href].should match(/\/projects\/#{successful[index].to_param}/)
       end
     end
@@ -118,14 +118,40 @@ feature "Explore projects Feature" do
     within "#explore_menu" do
       click_on "Recomendados"
     end
+    verify_translations
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
-        next unless list[index].visible?
         list[index].find("a")[:href].should match(/\/projects\/#{recommended[index].to_param}/)
       end
     end
     find('#explore_menu .selected').text.should == "Recomendados".upcase
+
+    # Now I search for "eird"
+    within "#explore_menu" do
+      fill_in "search", with: "eird"
+    end
+    sleep 2
+    verify_translations
+    within "#explore_results" do
+      list = all(".project_box")
+      list.each_index do |index|
+        list[index].find("a")[:href].should match(/\/projects\/#{search[index].to_param}/)
+      end
+    end
+    page.should have_no_css('#explore_menu .selected')
+
+    # Now I search for "empty search"
+    within "#explore_menu" do
+      fill_in "search", with: "empty search"
+    end
+    sleep 2
+    verify_translations
+    within "#explore_results" do
+      all(".project_box").empty?.should == true
+      page.should have_content("Ei, não encontramos nenhum projeto com o texto que você procurou. Que tal experimentar com outras palavras? =D")
+    end
+    page.should have_no_css('#explore_menu .selected')
 
     # Now I go through every category
     categories.each do |category|
@@ -136,60 +162,55 @@ feature "Explore projects Feature" do
       within "#explore_results" do
         list = all(".project_box")
         list.each_index do |index|
-          next unless list[index].visible?
           list[index].find("a")[:href].should match(/\/projects\/#{projects[index].to_param}/)
         end
       end
       find('#explore_menu .selected').text.should == category.name.upcase
     end
     
-    visit "/pt/explore/recommended"
+    visit "/pt/explore#recommended"
     verify_translations
 
     projects = Project.visible.not_expired.recommended.order('expires_at').all
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
-        next unless list[index].visible?
         list[index].find("a")[:href].should match(/\/projects\/#{projects[index].to_param}/)
       end
     end
     find('#explore_menu .selected').text.should == "Recomendados".upcase
 
-    visit "/pt/explore/expiring"
+    visit "/pt/explore#expiring"
     verify_translations
 
     projects = Project.visible.expiring.limit(16).order('expires_at').all
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
-        next unless list[index].visible?
         list[index].find("a")[:href].should match(/\/projects\/#{projects[index].to_param}/)
       end
     end
     find('#explore_menu .selected').text.should == "Na reta final".upcase
     
-    visit "/pt/explore/recent"
+    visit "/pt/explore#recent"
     verify_translations
 
     projects = Project.visible.recent.limit(16).order('created_at DESC').all
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
-        next unless list[index].visible?
         list[index].find("a")[:href].should match(/\/projects\/#{projects[index].to_param}/)
       end
     end
     find('#explore_menu .selected').text.should == "Recentes".upcase
     
-    visit "/pt/explore/successful"
+    visit "/pt/explore#successful"
     verify_translations
 
     projects = Project.visible.successful.order('expires_at DESC').all
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
-        next unless list[index].visible?
         list[index].find("a")[:href].should match(/\/projects\/#{projects[index].to_param}/)
       end
     end

@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe User do
-  context "#display_nickname" do
+  let(:user){ Factory(:user, :provider => "foo", :uid => "bar") }
+  describe "#display_nickname" do
     it "when user don't have the nickname" do
       user = create(:user,:name=>'Lorem Ipsum',:nickname=>'profile.php?id=1234')
       user.display_nickname.should == 'Lorem Ipsum'
@@ -86,12 +87,12 @@ describe User do
       'provider' => "twitter",
       'uid' => "foobar",
       'user_info' => {
-        'name' => "Foo bar",
-        'email' => 'another_email@anotherdomain.com',
-        'nickname' => "foobar",
-        'description' => "Foo bar's bio".ljust(200),
-        'image' => "user.png"
-      }
+      'name' => "Foo bar",
+      'email' => 'another_email@anotherdomain.com',
+      'nickname' => "foobar",
+      'description' => "Foo bar's bio".ljust(200),
+      'image' => "user.png"
+    }
     }
     u = User.create_with_omniauth(auth, primary.id)
     u.should == primary
@@ -110,11 +111,11 @@ describe User do
       'provider' => "twitter",
       'uid' => "foobar",
       'user_info' => {
-        'name' => "Foo bar",
-        'nickname' => "foobar",
-        'description' => "Foo bar's bio".ljust(200),
-        'image' => "user.png"
-      }
+      'name' => "Foo bar",
+      'nickname' => "foobar",
+      'description' => "Foo bar's bio".ljust(200),
+      'image' => "user.png"
+    }
     }
     u = User.create_with_omniauth(auth)
     u.should be_valid
@@ -147,7 +148,7 @@ describe User do
     u = Factory(:user, :provider => "foo", :uid => "bar")
     u.remember_me_hash.should == "27fc6690fafccbb0fc0b8f84c6749644"
   end
-  it "should merge into another account, taking the credits, backs, projects, comments and notifications with it" do
+  it "should merge into another account, taking the credits, backs, projects and notifications with it" do
 
     old_user = Factory(:user, :credits => 50)
     new_user = Factory(:user, :credits => 20)
@@ -156,8 +157,6 @@ describe User do
     new_user_back = backed_project.backers.create!(:user => new_user, :value => 10)
     old_user_project = Factory(:project, :user => old_user)
     new_user_project = Factory(:project, :user => new_user)
-    old_user_comment = backed_project.comments.create!(:user => old_user, :comment => "Foo bar")
-    new_user_comment = backed_project.comments.create!(:user => new_user, :comment => "Foo bar")
     old_user_notification = old_user.notifications.create!(:text => "Foo bar")
     new_user_notification = new_user.notifications.create!(:text => "Foo bar")
 
@@ -167,8 +166,6 @@ describe User do
     new_user.backs.should == [new_user_back]
     old_user.projects.should == [old_user_project]
     new_user.projects.should == [new_user_project]
-    old_user.comments.should == [old_user_comment]
-    new_user.comments.should == [new_user_comment]
     old_user.notifications.should == [old_user_notification]
     new_user.notifications.should == [new_user_notification]
 
@@ -183,9 +180,18 @@ describe User do
     new_user.backs.order(:created_at).should == [old_user_back, new_user_back]
     old_user.projects.should == []
     new_user.projects.order(:created_at).should == [old_user_project, new_user_project]
-    old_user.comments.should == []
-    new_user.comments.order(:created_at).should == [old_user_comment, new_user_comment]
     old_user.notifications.should == []
     new_user.notifications.order(:created_at).should == [old_user_notification, new_user_notification]
+  end
+
+  describe "#recommended_project" do
+    subject{user.recommended_project}
+    before do
+      user2, p1, @p2 = Factory(:user),Factory(:project), Factory(:project)
+      Factory(:backer, :user => user2, :project => p1)
+      Factory(:backer, :user => user2, :project => @p2)
+      Factory(:backer, :user => user, :project => p1)
+    end
+    it{ should == @p2}
   end
 end
