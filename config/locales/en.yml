@@ -512,11 +512,17 @@ en:
       title: "%{name}'s projects"
       title_current_user: "My projects"
     show:
+      back_date: ~
       backed_projects: ~
       comments: ~
       created_projects: ~
       credits: ~
+      credits_balance: "Seu saldo atual é de R$ %{credits} em créditos"
+      project: ~
       project_relationship_text: ~
+      refund_expration_date: ~
+      status: ~
+      value: ~
       when:
         backed_value: ~
         did_not_selected_reward: ~

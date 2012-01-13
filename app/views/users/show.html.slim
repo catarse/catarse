@@ -32,21 +32,18 @@
     - if can? :manage, @user
       #user_credits.content
         .credits
-          p
-            | Seu saldo atual é de 
-            em R$ #{@user.credits} reais 
-            | em créditos
+          p= t('.credits_balance', :credits => @user.credits)
 
         .table_title 
           p 
             | Apoios que podem ter estorno realizado:
         table
           thead
-            th Projeto
-            th Data de apoio
-            th Valor
-            th Prazo para estorno
-            th Status
+            th= t('.project')
+            th= t('.back_date')
+            th= t('.value')
+            th= t('.refund_expration_date')
+            th= t('.status')
           - @credits.each do |credit|
             tr
               td.project_name
