@@ -32,11 +32,6 @@ script type="text/template" id="user_project_template"
           = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
   
       .project_about        
-        .about_my_project
-          p
-            | Aqui entra o texto 
-            span sobre o projeto 
-            | que você criou. Como eu não faço a mínima ideia do que tem hoje em dia no catarse, eu vou só encher de coisa aqui até que alguém decida mudar. 
-            span Basicamente 
-            | é só pra encher o espaço e testar o tamanho das fontes coisas assim. Um lorem ipsum, só que com uma enrolada e uma informação importante. Viu como é fácil ? 
-        .comments últimos comentários
+        .comments
+          p Compartilhe
+          fb:like data-send="true" data-show-faces="true" data-width="450" href="/#{I18n.locale}/<%= url %>"

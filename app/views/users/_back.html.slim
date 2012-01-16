@@ -49,8 +49,8 @@ script type="text/template" id="user_back_template"
     .about_project
       p== t('users.show.project_relationship_text', :project_author => "<%= project['user']['name'] %>", :project_name => "<%= project['name'] %>")
     .comments
-      | comentários
-      .fb-comments[data-href="<%= project['url'] %>" data-num-posts=50 data-width="610"]
+      p compartilhe!
+      fb:like data-send="true" data-show-faces="true" data-width="450" href="/#{I18n.locale}/<%= project['url'] %>"
   .clearfix
   / |<%= confirmed_at %> 
   / |<% if(anonymous) { %>
