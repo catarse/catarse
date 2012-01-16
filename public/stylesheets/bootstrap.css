@@ -4744,7 +4744,7 @@ body[data-action="index"][data-controller="explore"] #page_content .sidebar sect
 }
 
 /* line 2, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content {
+body[data-action="show"][data-controller="users"] #user_profile {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
@@ -4755,332 +4755,341 @@ body[data-action="new_profile"][data-controller="static"] #page_content {
   position: relative;
   font-family: "Lato", sans-serif;
 }
+/* line 3, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #loading {
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 5, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #loading img {
+  display: none;
+}
 /* line 35, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_1, body[data-action="new_profile"][data-controller="static"] #page_content .grid_2, body[data-action="new_profile"][data-controller="static"] #page_content .grid_3, body[data-action="new_profile"][data-controller="static"] #page_content .grid_4, body[data-action="new_profile"][data-controller="static"] #page_content .grid_5, body[data-action="new_profile"][data-controller="static"] #page_content .grid_6, body[data-action="new_profile"][data-controller="static"] #page_content .grid_7, body[data-action="new_profile"][data-controller="static"] #page_content .grid_8, body[data-action="new_profile"][data-controller="static"] #page_content .grid_9, body[data-action="new_profile"][data-controller="static"] #page_content .grid_10, body[data-action="new_profile"][data-controller="static"] #page_content .grid_11, body[data-action="new_profile"][data-controller="static"] #page_content .grid_12, body[data-action="new_profile"][data-controller="static"] #page_content .grid_13, body[data-action="new_profile"][data-controller="static"] #page_content .grid_14, body[data-action="new_profile"][data-controller="static"] #page_content .grid_15, body[data-action="new_profile"][data-controller="static"] #page_content .grid_16 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_1, body[data-action="show"][data-controller="users"] #user_profile .grid_2, body[data-action="show"][data-controller="users"] #user_profile .grid_3, body[data-action="show"][data-controller="users"] #user_profile .grid_4, body[data-action="show"][data-controller="users"] #user_profile .grid_5, body[data-action="show"][data-controller="users"] #user_profile .grid_6, body[data-action="show"][data-controller="users"] #user_profile .grid_7, body[data-action="show"][data-controller="users"] #user_profile .grid_8, body[data-action="show"][data-controller="users"] #user_profile .grid_9, body[data-action="show"][data-controller="users"] #user_profile .grid_10, body[data-action="show"][data-controller="users"] #user_profile .grid_11, body[data-action="show"][data-controller="users"] #user_profile .grid_12, body[data-action="show"][data-controller="users"] #user_profile .grid_13, body[data-action="show"][data-controller="users"] #user_profile .grid_14, body[data-action="show"][data-controller="users"] #user_profile .grid_15, body[data-action="show"][data-controller="users"] #user_profile .grid_16 {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_1 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_1 {
   width: 40px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_2 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_2 {
   width: 100px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_3 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_3 {
   width: 160px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_4 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_4 {
   width: 220px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_5 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_5 {
   width: 280px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_6 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_6 {
   width: 340px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_7 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_7 {
   width: 400px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_8 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_8 {
   width: 460px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_9 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_9 {
   width: 520px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_10 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_10 {
   width: 580px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_11 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_11 {
   width: 640px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_12 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_12 {
   width: 700px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_13 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_13 {
   width: 760px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_14 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_14 {
   width: 820px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_15 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_15 {
   width: 880px;
 }
 /* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .grid_16 {
+body[data-action="show"][data-controller="users"] #user_profile .grid_16 {
   width: 940px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_1 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_1 {
   padding-left: 60px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_2 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_2 {
   padding-left: 120px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_3 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_3 {
   padding-left: 180px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_4 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_4 {
   padding-left: 240px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_5 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_5 {
   padding-left: 300px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_6 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_6 {
   padding-left: 360px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_7 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_7 {
   padding-left: 420px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_8 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_8 {
   padding-left: 480px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_9 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_9 {
   padding-left: 540px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_10 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_10 {
   padding-left: 600px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_11 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_11 {
   padding-left: 660px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_12 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_12 {
   padding-left: 720px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_13 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_13 {
   padding-left: 780px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_14 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_14 {
   padding-left: 840px;
 }
 /* line 46, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .prefix_15 {
+body[data-action="show"][data-controller="users"] #user_profile .prefix_15 {
   padding-left: 900px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_1 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_1 {
   padding-right: 60px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_2 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_2 {
   padding-right: 120px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_3 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_3 {
   padding-right: 180px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_4 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_4 {
   padding-right: 240px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_5 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_5 {
   padding-right: 300px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_6 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_6 {
   padding-right: 360px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_7 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_7 {
   padding-right: 420px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_8 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_8 {
   padding-right: 480px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_9 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_9 {
   padding-right: 540px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_10 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_10 {
   padding-right: 600px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_11 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_11 {
   padding-right: 660px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_12 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_12 {
   padding-right: 720px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_13 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_13 {
   padding-right: 780px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_14 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_14 {
   padding-right: 840px;
 }
 /* line 54, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .suffix_15 {
+body[data-action="show"][data-controller="users"] #user_profile .suffix_15 {
   padding-right: 900px;
 }
 /* line 58, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .alpha {
+body[data-action="show"][data-controller="users"] #user_profile .alpha {
   margin-left: 0;
 }
 /* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .omega {
+body[data-action="show"][data-controller="users"] #user_profile .omega {
   margin-right: 0;
 }
 /* line 81, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_1, body[data-action="new_profile"][data-controller="static"] #page_content .push_2, body[data-action="new_profile"][data-controller="static"] #page_content .push_3, body[data-action="new_profile"][data-controller="static"] #page_content .push_4, body[data-action="new_profile"][data-controller="static"] #page_content .push_5, body[data-action="new_profile"][data-controller="static"] #page_content .push_6, body[data-action="new_profile"][data-controller="static"] #page_content .push_7, body[data-action="new_profile"][data-controller="static"] #page_content .push_8, body[data-action="new_profile"][data-controller="static"] #page_content .push_9, body[data-action="new_profile"][data-controller="static"] #page_content .push_10, body[data-action="new_profile"][data-controller="static"] #page_content .push_11, body[data-action="new_profile"][data-controller="static"] #page_content .push_12, body[data-action="new_profile"][data-controller="static"] #page_content .push_13, body[data-action="new_profile"][data-controller="static"] #page_content .push_14, body[data-action="new_profile"][data-controller="static"] #page_content .push_15,
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_1, body[data-action="new_profile"][data-controller="static"] #page_content .pull_2, body[data-action="new_profile"][data-controller="static"] #page_content .pull_3, body[data-action="new_profile"][data-controller="static"] #page_content .pull_4, body[data-action="new_profile"][data-controller="static"] #page_content .pull_5, body[data-action="new_profile"][data-controller="static"] #page_content .pull_6, body[data-action="new_profile"][data-controller="static"] #page_content .pull_7, body[data-action="new_profile"][data-controller="static"] #page_content .pull_8, body[data-action="new_profile"][data-controller="static"] #page_content .pull_9, body[data-action="new_profile"][data-controller="static"] #page_content .pull_10, body[data-action="new_profile"][data-controller="static"] #page_content .pull_11, body[data-action="new_profile"][data-controller="static"] #page_content .pull_12, body[data-action="new_profile"][data-controller="static"] #page_content .pull_13, body[data-action="new_profile"][data-controller="static"] #page_content .pull_14, body[data-action="new_profile"][data-controller="static"] #page_content .pull_15 {
+body[data-action="show"][data-controller="users"] #user_profile .push_1, body[data-action="show"][data-controller="users"] #user_profile .push_2, body[data-action="show"][data-controller="users"] #user_profile .push_3, body[data-action="show"][data-controller="users"] #user_profile .push_4, body[data-action="show"][data-controller="users"] #user_profile .push_5, body[data-action="show"][data-controller="users"] #user_profile .push_6, body[data-action="show"][data-controller="users"] #user_profile .push_7, body[data-action="show"][data-controller="users"] #user_profile .push_8, body[data-action="show"][data-controller="users"] #user_profile .push_9, body[data-action="show"][data-controller="users"] #user_profile .push_10, body[data-action="show"][data-controller="users"] #user_profile .push_11, body[data-action="show"][data-controller="users"] #user_profile .push_12, body[data-action="show"][data-controller="users"] #user_profile .push_13, body[data-action="show"][data-controller="users"] #user_profile .push_14, body[data-action="show"][data-controller="users"] #user_profile .push_15,
+body[data-action="show"][data-controller="users"] #user_profile .pull_1, body[data-action="show"][data-controller="users"] #user_profile .pull_2, body[data-action="show"][data-controller="users"] #user_profile .pull_3, body[data-action="show"][data-controller="users"] #user_profile .pull_4, body[data-action="show"][data-controller="users"] #user_profile .pull_5, body[data-action="show"][data-controller="users"] #user_profile .pull_6, body[data-action="show"][data-controller="users"] #user_profile .pull_7, body[data-action="show"][data-controller="users"] #user_profile .pull_8, body[data-action="show"][data-controller="users"] #user_profile .pull_9, body[data-action="show"][data-controller="users"] #user_profile .pull_10, body[data-action="show"][data-controller="users"] #user_profile .pull_11, body[data-action="show"][data-controller="users"] #user_profile .pull_12, body[data-action="show"][data-controller="users"] #user_profile .pull_13, body[data-action="show"][data-controller="users"] #user_profile .pull_14, body[data-action="show"][data-controller="users"] #user_profile .pull_15 {
   position: relative;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_1 {
+body[data-action="show"][data-controller="users"] #user_profile .push_1 {
   left: 60px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_1 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_1 {
   left: -60px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_2 {
+body[data-action="show"][data-controller="users"] #user_profile .push_2 {
   left: 120px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_2 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_2 {
   left: -120px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_3 {
+body[data-action="show"][data-controller="users"] #user_profile .push_3 {
   left: 180px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_3 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_3 {
   left: -180px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_4 {
+body[data-action="show"][data-controller="users"] #user_profile .push_4 {
   left: 240px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_4 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_4 {
   left: -240px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_5 {
+body[data-action="show"][data-controller="users"] #user_profile .push_5 {
   left: 300px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_5 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_5 {
   left: -300px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_6 {
+body[data-action="show"][data-controller="users"] #user_profile .push_6 {
   left: 360px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_6 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_6 {
   left: -360px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_7 {
+body[data-action="show"][data-controller="users"] #user_profile .push_7 {
   left: 420px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_7 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_7 {
   left: -420px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_8 {
+body[data-action="show"][data-controller="users"] #user_profile .push_8 {
   left: 480px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_8 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_8 {
   left: -480px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_9 {
+body[data-action="show"][data-controller="users"] #user_profile .push_9 {
   left: 540px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_9 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_9 {
   left: -540px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_10 {
+body[data-action="show"][data-controller="users"] #user_profile .push_10 {
   left: 600px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_10 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_10 {
   left: -600px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_11 {
+body[data-action="show"][data-controller="users"] #user_profile .push_11 {
   left: 660px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_11 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_11 {
   left: -660px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_12 {
+body[data-action="show"][data-controller="users"] #user_profile .push_12 {
   left: 720px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_12 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_12 {
   left: -720px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_13 {
+body[data-action="show"][data-controller="users"] #user_profile .push_13 {
   left: 780px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_13 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_13 {
   left: -780px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_14 {
+body[data-action="show"][data-controller="users"] #user_profile .push_14 {
   left: 840px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_14 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_14 {
   left: -840px;
 }
 /* line 85, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .push_15 {
+body[data-action="show"][data-controller="users"] #user_profile .push_15 {
   left: 900px;
 }
 /* line 87, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .pull_15 {
+body[data-action="show"][data-controller="users"] #user_profile .pull_15 {
   left: -900px;
 }
-/* line 8, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .section_header {
+/* line 13, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .section_header {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5091,8 +5100,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   padding-bottom: 30px;
   margin-bottom: 20px;
 }
-/* line 14, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .section_header h1.profile {
+/* line 19, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .section_header h1.profile {
   margin-left: 0;
   display: inline;
   float: left;
@@ -5105,8 +5114,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   margin-left: 0;
   padding: 0;
 }
-/* line 22, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .section_header h4.about {
+/* line 27, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .section_header h4.bio {
   margin-left: 0;
   display: inline;
   float: left;
@@ -5118,8 +5127,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   margin: 15px 0;
   padding: 0;
 }
-/* line 29, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .section_header .profile_categories {
+/* line 34, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .section_header .profile_categories {
   margin-left: 0;
   display: inline;
   float: left;
@@ -5131,8 +5140,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   margin-left: 0;
   margin-top: 15px;
 }
-/* line 37, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .section_header .profile_categories nav a {
+/* line 42, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .section_header .profile_categories nav a {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -5150,17 +5159,22 @@ body[data-action="new_profile"][data-controller="static"] #page_content .section
   margin-top: 10px;
   text-transform: uppercase;
 }
-/* line 49, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .section_header .profile_categories nav a:hover {
+/* line 54, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .section_header .profile_categories nav a:hover {
   background: rgba(255, 255, 255, 0.4);
 }
-/* line 51, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .section_header .profile_categories nav a:active {
+/* line 56, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .section_header .profile_categories nav a:active {
   background: white;
   color: #4383d1;
 }
-/* line 58, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_share .profile_pic {
+/* line 59, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .section_header .profile_categories nav .selected {
+  background: white;
+  color: #4383d1;
+}
+/* line 64, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .profile_share .profile_pic {
   float: left;
   position: absolute;
   top: 65px;
@@ -5170,8 +5184,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   -o-box-shadow: black 2px 2px 8px;
   box-shadow: black 2px 2px 8px;
 }
-/* line 65, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .my_links {
+/* line 71, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .my_links {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5181,12 +5195,12 @@ body[data-action="new_profile"][data-controller="static"] #page_content .my_link
   margin-top: 20px;
   margin-bottom: 50px;
 }
-/* line 72, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .my_links ul li {
+/* line 78, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .my_links ul li {
   margin-top: 5px;
 }
-/* line 74, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .my_links ul li .profile_info {
+/* line 80, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .my_links ul li .profile_info {
   display: block;
   font-family: "Lato", sans-serif;
   font-size: 1.5em;
@@ -5194,36 +5208,33 @@ body[data-action="new_profile"][data-controller="static"] #page_content .my_link
   float: right;
   color: #363636;
 }
-/* line 81, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .my_links ul li .profile_icons {
+/* line 87, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile .my_links ul li .profile_icons {
   float: left;
   margin: 10px 0 0 24px;
 }
-/* line 85, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits {
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 700px;
-  position: relative;
-  left: 240px;
-  margin-right: 0;
-  margin-left: 0;
+/* line 92, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content fb:like {
+  padding-top: 10px;
 }
-/* line 90, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits {
+/* line 95, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content ul li {
+  margin-bottom: 15px;
+  display: block;
+}
+/* line 98, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .content {
+  display: none;
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 700px;
   margin-bottom: 30px;
-  border-bottom: #363636 solid 2px;
   padding-bottom: 30px;
 }
-/* line 97, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .project, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .project, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .project, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits .project {
+/* line 104, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .content .project {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5231,8 +5242,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   width: 220px;
   margin-left: 0;
 }
-/* line 100, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .project_about, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .project_about, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .project_about, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits .project_about {
+/* line 107, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .content .project_about {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5240,38 +5251,38 @@ body[data-action="new_profile"][data-controller="static"] #page_content .profile
   width: 460px;
   margin-right: 0;
 }
-/* line 104, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .status, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .status, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .status, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits .status {
+/* line 111, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .content .status {
   border-bottom: #999999 solid 1px;
 }
-/* line 107, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .when, body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .credits, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .when, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .credits, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .when, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .credits, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits .when, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits .credits {
+/* line 114, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .content .when {
   font-size: 1.3em;
   color: #363636;
   margin-bottom: 15px;
 }
-/* line 112, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .when em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .credits em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .when em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .credits em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .when em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .credits em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits .when em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits .credits em {
+/* line 119, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .content .when span {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.2em;
   color: #4383d1;
 }
-/* line 117, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .reward, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .reward, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .reward, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits .reward {
+/* line 124, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .content .reward {
   font-size: 1.3em;
   color: #666666;
   margin-bottom: 25px;
   line-height: 160%;
 }
-/* line 123, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .profile_projects_backed .reward em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_projects .reward em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_comments .reward em, body[data-action="new_profile"][data-controller="static"] #page_content .profile_my_credits .reward em {
+/* line 130, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .content .reward span {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.2em;
   color: black;
   text-transform: uppercase;
 }
-/* line 129, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project {
+/* line 136, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_project, body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_my_project {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5284,8 +5295,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .about_p
   color: #363636;
   margin-bottom: 30px;
 }
-/* line 138, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project em, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project em {
+/* line 145, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_project span, body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_my_project span {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -5297,13 +5308,13 @@ body[data-action="new_profile"][data-controller="static"] #page_content .about_p
   color: #4383d1;
   cursor: pointer;
 }
-/* line 142, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project em:hover, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project em:hover {
+/* line 149, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_project span:hover, body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_my_project span:hover {
   text-shadow: #4383d1 0 0 5px;
   color: #4383d1;
 }
-/* line 146, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .comments {
+/* line 153, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .comments {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5316,8 +5327,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .comment
   background: url("/images/redesign/ballon15x15.png") no-repeat;
   text-indent: 24px;
 }
-/* line 155, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project {
+/* line 162, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_project_my_comments, body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_my_project {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5330,8 +5341,8 @@ body[data-action="new_profile"][data-controller="static"] #page_content .about_p
   margin-bottom: 30px;
   margin-top: 0;
 }
-/* line 164, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments em, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project em {
+/* line 171, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_project_my_comments em, body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_my_project em {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -5343,12 +5354,12 @@ body[data-action="new_profile"][data-controller="static"] #page_content .about_p
   color: #4383d1;
   cursor: pointer;
 }
-/* line 168, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] #page_content .about_project_my_comments em:hover, body[data-action="new_profile"][data-controller="static"] #page_content .about_my_project em:hover {
+/* line 175, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_project_my_comments em:hover, body[data-action="show"][data-controller="users"] #user_profile #user_profile_content .about_my_project em:hover {
   text-shadow: #4383d1 0 0 5px;
 }
-/* line 173, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits .credits {
+/* line 179, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits .credits {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -5359,46 +5370,46 @@ body[data-action="new_profile"][data-controller="static"] .profile_my_credits .c
   border: 2px solid white;
   padding: 20px 100px;
 }
-/* line 179, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits .credits p {
+/* line 185, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits .credits p {
   font-size: 1.8em;
   color: #363636;
 }
-/* line 183, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits .credits p em {
+/* line 189, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits .credits p em {
   font-family: "Lato-Bold", sans-serif;
   font-size: 1.2em;
   color: #4383d1;
 }
-/* line 188, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits .table_title {
+/* line 194, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits .table_title {
   font-size: 1.8em;
   color: #e85397;
   margin-top: 50px;
   font-family: "Lato-Bold", sans-serif;
 }
-/* line 194, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table {
+/* line 200, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table {
   margin: 20px 0;
   padding: 5px;
 }
-/* line 198, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table tr th {
+/* line 204, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table thead th {
   padding: 15px 10px 15px 5px;
   background-color: rgba(153, 153, 153, 0.2);
   font-family: "Lato-Bold";
   font-size: 1.5em;
 }
-/* line 203, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table tr td {
+/* line 210, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table tr td {
   font-family: "Lato-Regular";
   font-size: 1.5em;
   padding: 15px 10px 15px 5px;
   background-color: rgba(255, 255, 255, 0.5);
   border-bottom: 1px dashed #e3e2dc;
 }
-/* line 209, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table tr td .link_project {
+/* line 216, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table tr td .link_project {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -5410,28 +5421,28 @@ body[data-action="new_profile"][data-controller="static"] .profile_my_credits ta
   font-size: 1.2em;
   text-decoration: underline;
 }
-/* line 213, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table tr td .link_project:hover {
+/* line 220, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table tr td .link_project:hover {
   text-shadow: #4383d1 0 0 4px;
 }
-/* line 216, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table tr .project_name {
+/* line 223, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table tr .project_name {
   width: 165px;
 }
-/* line 218, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table tr .date {
+/* line 225, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table tr .date {
   width: 115px;
 }
-/* line 220, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table tr .value {
+/* line 227, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table tr .value {
   width: 90px;
 }
-/* line 222, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table tr .term {
+/* line 229, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table tr .term {
   width: 140px;
 }
-/* line 224, ../../app/stylesheets/content/profile.sass */
-body[data-action="new_profile"][data-controller="static"] .profile_my_credits table tr .reversal {
+/* line 231, ../../app/stylesheets/content/profile.sass */
+body[data-action="show"][data-controller="users"] #user_profile #user_profile_content #user_credits table tr .reversal {
   width: 150px;
 }
 

@@ -1,5 +1,10 @@
-body[data-action="new_profile"][data-controller="static"]
-  #page_content
+body[data-action="show"][data-controller="users"]
+  #user_profile
+    #loading
+      +clearfix
+      img
+        display: none
+  
     +default_grid
     padding-top: 40px
     position: relative
@@ -19,7 +24,7 @@ body[data-action="new_profile"][data-controller="static"]
         margin-left: 0
         padding: 0
 
-      h4.about
+      h4.bio
         +alpha
         +grid(11)
         +grid-push(4)
@@ -48,11 +53,12 @@ body[data-action="new_profile"][data-controller="static"]
             text-transform: uppercase
             &:hover
               background: rgba(255,255,255,0.4)
-            &:active            
+            &:active
               background: rgb(255,255,255)
               color: $blue
-
-
+          .selected
+            background: rgb(255,255,255)
+            color: $blue
  
     .profile_share
       .profile_pic
@@ -82,150 +88,146 @@ body[data-action="new_profile"][data-controller="static"]
             float: left
             margin: 10px 0 0 24px
 
-    .profile_my_projects, .profile_my_comments, .profile_my_credits
-      +grid(12)
-      +grid-push(4)
-      +omega
-      +alpha
-    .profile_projects_backed, .profile_my_projects, .profile_my_comments, .profile_my_credits
-      +grid(12)
-      margin-bottom: 30px
-      border-bottom: $grafiti solid 2px
-      padding-bottom: 30px
+    #user_profile_content
+      fb:like
+        padding-top: 10px
 
+      ul li
+        margin-bottom: 15px
+        display: block
+      .content
+        display: none
+        +grid(12)
+        margin-bottom: 30px
+        padding-bottom: 30px
 
-      .project
-        +grid(4)
-        +alpha
-      .project_about
+        .project
+          +grid(4)
+          +alpha
+        .project_about
+          +grid(8)
+          +omega
+
+        .status
+          border-bottom: #999 solid 1px
+
+        .when
+          font-size: 1.3em
+          color: $grafiti
+          margin-bottom: 15px
+
+          span
+            font-family: "Lato-Bold", sans-serif
+            font-size: 1.2em
+            color: $blue
+
+        .reward
+          font-size: 1.3em
+          color: #666
+          margin-bottom: 25px
+          line-height: 160%
+
+          span
+            font-family: "Lato-Bold", sans-serif
+            font-size: 1.2em
+            color: black
+            text-transform: uppercase
+    
+      .about_project, .about_my_project
         +grid(8)
         +omega
-
-      .status
-        border-bottom: #999 solid 1px
-
-      .when, .credits
-        font-size: 1.3em
+        margin-top: 25px
+        font-size: 1.1em
+        line-height: 180%
         color: $grafiti
-        margin-bottom: 15px
-
-        em
-          font-family: "Lato-Bold", sans-serif
-          font-size: 1.2em
+        margin-bottom: 30px
+        
+        span
+          +transition(all, 0.3s)
           color: $blue
-
-      .reward
-        font-size: 1.3em
-        color: #666
-        margin-bottom: 25px
-        line-height: 160%
-
-        em
-          font-family: "Lato-Bold", sans-serif
-          font-size: 1.2em
-          color: black
-          text-transform: uppercase
+          cursor: pointer
+          &:hover
+            +text-shadow($blue 0 0 5px)
+            color: $blue
     
-    .about_project, .about_my_project
-      +grid(8)
-      +omega
-      margin-top: 25px
-      font-size: 1.1em
-      line-height: 180%
-      color: $grafiti
-      margin-bottom: 30px
+      .comments
+        +grid(8)
+        +omega
+        font-family: "Lato-Bold", sans-serif
+        font-size: 1.6em
+        color: #4a4a4a
+        background: url('/images/redesign/ballon15x15.png') no-repeat
+        text-indent: 24px
         
-      em
-        +transition(all, 0.3s)
-        color: $blue
-        cursor: pointer
-        &:hover
-          +text-shadow($blue 0 0 5px)
-          color: $blue
-    
-    .comments
-      +grid(8)
-      +omega
-      font-family: "Lato-Bold", sans-serif
-      font-size: 1.6em
-      color: #4a4a4a
-      background: url('/images/redesign/ballon15x15.png') no-repeat
-      text-indent: 24px
-        
-    .about_project_my_comments, .about_my_project
-      +grid(8)
-      +omega
-      font-size: 1.5em
-      line-height: 180%
-      color: $grafiti
-      margin-bottom: 30px
-      margin-top: 0
-        
-      em
-        +transition(all, 0.3s)
-        color: $blue
-        cursor: pointer
-        &:hover
-          +text-shadow($blue 0 0 5px)
-    
-    
-  .profile_my_credits    
-    .credits
-      +border-radius(4px)
-      background-color: rgba(153,153,153,0.1)
-      border: 2px solid white
-      padding: 20px 100px
-
-      p
-        font-size: 1.8em
+      .about_project_my_comments, .about_my_project
+        +grid(8)
+        +omega
+        font-size: 1.5em
+        line-height: 180%
         color: $grafiti
-
-        em
-          font-family: "Lato-Bold", sans-serif
-          font-size: 1.2em
-          color: $blue
-      
-    .table_title
-      font-size: 1.8em
-      color: $pink
-      margin-top: 50px
-      font-family: 'Lato-Bold', sans-serif
-    
-    table
-      margin: 20px 0
-      padding: 5px
-      tr
-        th
-          padding: 15px 10px 15px 5px
-          background-color: rgba(153,153,153,0.2)
-          font-family: 'Lato-Bold'
-          font-size: 1.5em
-        td
-          font-family: 'Lato-Regular'
-          font-size: 1.5em
-          padding: 15px 10px 15px 5px
-          background-color: rgba(255,255,255,0.5)
-          border-bottom: 1px dashed $gryn
-          .link_project
-            +transition(all, 0.3s)
-            font-size: 1.2em
-            text-decoration: underline
-            &:hover
-              +text-shadow ($blue 0 0 4px)
-
-        .project_name
-          width: 165px
-        .date
-          width: 115px
-        .value
-          width: 90px
-        .term
-          width: 140px
-        .reversal
-          width: 150px
-
-
-
-    
-          
+        margin-bottom: 30px
+        margin-top: 0
         
+        em
+          +transition(all, 0.3s)
+          color: $blue
+          cursor: pointer
+          &:hover
+            +text-shadow($blue 0 0 5px)
+
+      #user_credits    
+        .credits
+          +border-radius(4px)
+          background-color: rgba(153,153,153,0.1)
+          border: 2px solid white
+          padding: 20px 100px
+
+          p
+            font-size: 1.8em
+            color: $grafiti
+
+            em
+              font-family: "Lato-Bold", sans-serif
+              font-size: 1.2em
+              color: $blue
+
+        .table_title
+          font-size: 1.8em
+          color: $pink
+          margin-top: 50px
+          font-family: 'Lato-Bold', sans-serif
+
+        table
+          margin: 20px 0
+          padding: 5px
+          thead
+            th
+              padding: 15px 10px 15px 5px
+              background-color: rgba(153,153,153,0.2)
+              font-family: 'Lato-Bold'
+              font-size: 1.5em
+          tr
+            td
+              font-family: 'Lato-Regular'
+              font-size: 1.5em
+              padding: 15px 10px 15px 5px
+              background-color: rgba(255,255,255,0.5)
+              border-bottom: 1px dashed $gryn
+              .link_project
+                +transition(all, 0.3s)
+                font-size: 1.2em
+                text-decoration: underline
+                &:hover
+                  +text-shadow ($blue 0 0 4px)
+
+            .project_name
+              width: 165px
+            .date
+              width: 115px
+            .value
+              width: 90px
+            .term
+              width: 140px
+            .reversal
+              width: 150px
+

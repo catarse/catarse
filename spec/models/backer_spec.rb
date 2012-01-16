@@ -13,6 +13,27 @@ describe Backer do
   #   u.credits.should == 20
   # end
 
+  it "should raise an error when request refund for an already refunded credit" do
+    back = Factory.build(:backer, :refunded => true, :can_refund => true)
+    back.save
+    lambda {back.refund!}.should raise_error I18n.t('credits.refund.refunded')
+  end
+
+  it "should raise an error when request refund for an already requested refund" do
+    back = Factory.build(:backer, :requested_refund => true, :refunded => false, :can_refund => true)
+    back.save
+    lambda {back.refund!}.should raise_error I18n.t('credits.refund.requested_refund')
+  end
+
+  it "should not be able to request refund without sufficient credits" do
+    back = Factory.build(:backer, :requested_refund => false, :refunded => false, :can_refund => true)
+    back.save
+    back.update_attribute :value, 100
+    back.user.update_attribute :credits, 50
+    lambda {back.refund!}.should raise_error I18n.t('credits.refund.no_credits')
+    
+  end
+
   it "should not add backer value as credits for user if could not be refunded" do
     u = Factory(:user)
     u.save

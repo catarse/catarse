@@ -37,6 +37,8 @@ var CATARSE_LOADER = {
       'app/models/project',
       'app/models/backer',
       'app/models/user',
+      'app/models/user_back',
+      'app/models/user_project',
       'app/models/post',
       'app/collections/paginated',
       'app/views/model',
@@ -46,6 +48,8 @@ var CATARSE_LOADER = {
     final: [
       'app/collections/projects',
       'app/collections/backers',
+      'app/collections/user_backs',
+      'app/collections/user_projects',
       'app/collections/posts'
     ]
 
