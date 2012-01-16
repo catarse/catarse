@@ -52,7 +52,7 @@
               td.value= credit.display_value
               td.term= I18n.l(credit.refund_deadline.to_date)
               td.reversal
-                = link_to 'Solicitar extorno', '#', :class => 'link_project'
-        
+                - if can? :request_refund, credit
+                  = link_to 'Solicitar extorno', "#request_refund/#{credit.id}", :class => 'link_project'
 
   #loading= image_tag "loading.gif"

@@ -69,6 +69,9 @@ Catarse::Application.routes.draw do
       get 'backs'
       get 'projects'
       get 'credits'
+      post 'request_refund/:id', :action => :request_refund do
+        super
+      end
     end
     post 'update_attribute_on_the_spot', :on => :collection
   end

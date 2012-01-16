@@ -42,6 +42,23 @@ class UsersController < ApplicationController
     render :json => @credits
   end
 
+  def request_refund
+    back = Backer.find(params[:id])
+    if back.nil?
+      status = 'not found'
+    elsif not authorize!(:request_refund, back)
+      status = I18n.t('credits.refund.cannot_refund')
+    else
+      begin
+        back.refund!
+        status = 'Pedido de estorno enviado'
+      rescue Exception => e
+        status = e.message
+      end
+    end
+    render :json => {:status => status}
+  end
+
   private
   def can_update_on_the_spot?
     user_fields = ["email", "name", "bio", "newsletter", "project_updates"]

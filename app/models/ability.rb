@@ -6,7 +6,8 @@ class Ability
     user ||= User.new
 
     can :manage, User, :id => current_user.id
-    
+    can :request_refund, Backer, :user_id => current_user.id
+
     if user.admin?
       can :manage, :all
     elsif current_user.projects.present? or current_user.manages_projects.present?
