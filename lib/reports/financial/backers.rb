@@ -30,11 +30,11 @@ module Reports
             @backers.each do |backer|
               csv_string << [
                 backer.user.name,
-                backer.value.to_s.gsub(/\./,","),
-                (backer.reward.minimum_value.to_s.gsub(/\./,",") if backer.reward),
+                backer.value,
+                (backer.reward.minimum_value if backer.reward),
                 backer.payment_method,
                 (backer.payment_detail.payment_method if backer.payment_detail),
-                (backer.payment_service_fee).to_s.gsub(/\./,","),
+                (backer.payment_service_fee),
                 backer.key,
                 I18n.l(backer.created_at.to_date),
                 I18n.l(backer.confirmed_at.to_date),
