@@ -1,0 +1,62 @@
+- content_for :js_templates do
+  = render :partial => 'back'
+  = render :partial => 'project'
+
+#user_profile[data-user="#{@user.to_json}"]
+  .section_header
+    h1.profile= @user.name
+    h4.bio= @user.bio
+
+    .profile_categories
+      nav#user_profile_menu
+        = link_to t('.backed_projects'), '#backs', :id => 'backed_projects_link', :class => 'selected'
+        = link_to t('.created_projects'), '#projects', :id => 'created_projects_link'
+        = link_to t('.comments'), '#comments', :id => 'comments_link'
+        - if can? :manage, @user
+          = link_to t('.credits'), '#credits', :id => 'credits_link'
+
+  .profile_share
+    = image_tag @user.display_image, :class => 'profile_pic', :size => '100x100'
+  
+  .my_links
+    ul
+      - if can? :manage, @user
+        li
+          = image_tag ('redesign/email15x15.png'), :class => 'profile_icons'
+          = mail_to @user.email, @user.email, :class => 'profile_info'
+  #user_profile_content
+    #user_backed_projects.content
+    #user_created_projects.content
+    #user_comments.content
+      .fb-comments[data-href=request.url data-num-posts=50 data-width="610"]
+    - if can? :manage, @user
+      #user_credits.content
+        .credits
+          p= t('.credits_balance', :credits => @user.credits)
+
+        .table_title 
+          p= I18n.t('credits.index.refunds_title')
+        table
+          thead
+            th= t('.project')
+            th= t('.back_date')
+            th= t('.value')
+            th= t('.refund_expration_date')
+            th= t('.status')
+          - @credits.each do |credit|
+            tr[id="back_#{credit.id}"]
+              td.project_name
+                = link_to credit.project.name, '#', :class => 'link_project'
+              td.date= I18n.l(credit.created_at.to_date)
+              td.value= credit.display_value
+              td.term= I18n.l(credit.refund_deadline.to_date)
+              td.status
+                - if credit.requested_refund
+                  = t('credits.index.requested_refund')
+                - elsif credit.refunded
+                  = t('credits.index.refunded')
+                - else
+                  - if can? :request_refund, credit
+                    = link_to t('credits.index.request_refund'), "#request_refund/#{credit.id}", :class => 'link_project'
+
+  #loading= image_tag "loading.gif"

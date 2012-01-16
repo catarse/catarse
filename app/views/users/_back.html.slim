@@ -1,0 +1,97 @@
+script type="text/template" id="empty_user_back_template"
+  p= t('.empty')
+
+script type="text/template" id="user_back_template"
+  .project
+    .box
+      p.black_box Lorem Ipsum Dolor
+      img.cover[src="<%= project['image'] %>" width="210px" heigth="172px"]
+
+      h4
+        a href='<%= project["url"] %>'
+          | <%= project['name'] %>
+      p.author== "#{t('projects.project.by')} <%= project['user']['name'] %>"
+      p.where
+        | <%= project['user']['city'] %>/<%= project['user']['state'] %>
+      p.description
+        | <%= project['headline'] %>
+      .status_bar
+        .progress style="width: <%= project['display_progress'] %>%;"
+      ul
+        li
+          h6 <%= project['time_to_go']['time'] %> <%= project['time_to_go']['unit'] %>
+          p <%= project['remaining_text'] %>
+        li
+          h6 <%= project['progress'] %>%
+          p= t('projects.project.backed')
+        li
+          h6 <%= project['pledged'] %>
+          p= t('projects.project.reached')
+      = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+  .project_about
+    .status
+      .when 
+        p 
+          == t('users.show.when.backed_value', :confirmed_at => "<%= confirmed_at %>", :value => "<%= value %>")
+          | <% if (reward) { %>
+          == " #{t('users.show.when.selected_reward')} "
+          | <% } else { %>
+          == " #{t('users.show.when.did_not_selected_reward')} "
+          | <% } %>
+      .reward
+        p
+          | <% if (reward) { %>
+          span== "#{t('projects.rewards.reward_title', :minimum => "<%= reward['display_minimum'] %>")} "
+          == "<%= reward['description'] %>"
+          | <% } %>
+
+    .about_project
+      p== t('users.show.project_relationship_text', :project_author => "<%= project['user']['name'] %>", :project_name => "<%= project['name'] %>")
+    .comments
+      p compartilhe!
+      p
+        fb:like data-send="true" data-show-faces="true" data-width="450" href="/#{I18n.locale}<%= project['url'] %>"
+  .clearfix
+  / |<%= confirmed_at %> 
+  / |<% if(anonymous) { %>
+  / img src="/images/user.png" class="user"
+  / | &nbsp;
+  / = t('.anonymous_backer')
+  / = image_tag "badge.#{I18n.locale}.png", :class => "badge"
+  / p= t('.anonymous_description')
+  / | <% } else { %>
+  / a href="<%= user['url'] %>"
+  /   img src="<%= user['image'] %>" class="user"
+  /   | <%= user['medium_name'] %>
+  /   = image_tag "badge.#{I18n.locale}.png", :class => "badge"
+  / p
+  /   | <%= user['backs_text'] %>
+  / | <% } %>
+  / 
+  / - if current_user and (current_user == @project.user or current_user.admin)
+  /   p.reward
+  /     = t('activerecord.attributes.backer.value')
+  /     |: 
+  /     | <%= display_value %>
+  /     | . 
+  /     = t('activerecord.attributes.user.email')
+  /     |: 
+  /     | <% if(user['email']) { %>
+  /     | <%= user['email'] %>
+  /     | <% } else { %>
+  /     | &nbsp;
+  /     = t('not_informed')
+  /     |.
+  /     | <% } %>
+  /     br
+  /     | <% if (reward) { %>
+  /     | &nbsp;
+  /     = t('activerecord.models.reward')
+  /     |: 
+  /     | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
+  /     | <% } else { %>
+  /     | &nbsp;
+  /     = t('.no_reward')
+  /     | <% } %>
+  / .clear
