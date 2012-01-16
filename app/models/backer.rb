@@ -77,6 +77,17 @@ class Backer < ActiveRecord::Base
   def moip_value
     "%0.0f" % (value * 100)
   end
+
+  def refund!
+    raise I18n.t('credits.refund.refunded') if self.refunded
+    raise I18n.t('credits.refund.requested_refund') if self.requested_refund
+    raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
+    raise I18n.t('credits.refund.cannot_refund') unless self.can_refund
+    self.update_attribute :requested_refund, true
+    self.user.update_attribute :credits, self.user.credits - self.value
+    CreditsMailer.request_refund_from(self).deliver
+  end
+
   def generate_credits!
     return if self.can_refund
     self.user.update_attribute :credits, self.user.credits + self.value
