@@ -35,8 +35,7 @@
           p= t('.credits_balance', :credits => @user.credits)
 
         .table_title 
-          p 
-            | Apoios que podem ter estorno realizado:
+          p= I18n.t('credits.index.refunds_title')
         table
           thead
             th= t('.project')
@@ -45,14 +44,19 @@
             th= t('.refund_expration_date')
             th= t('.status')
           - @credits.each do |credit|
-            tr
+            tr[id="back_#{credit.id}"]
               td.project_name
                 = link_to credit.project.name, '#', :class => 'link_project'
               td.date= I18n.l(credit.created_at.to_date)
               td.value= credit.display_value
               td.term= I18n.l(credit.refund_deadline.to_date)
-              td.reversal
-                - if can? :request_refund, credit
-                  = link_to 'Solicitar extorno', "#request_refund/#{credit.id}", :class => 'link_project'
+              td.status
+                - if credit.requested_refund
+                  = t('credits.index.requested_refund')
+                - elsif credit.refunded
+                  = t('credits.index.refunded')
+                - else
+                  - if can? :request_refund, credit
+                    = link_to t('credits.index.request_refund'), "#request_refund/#{credit.id}", :class => 'link_project'
 
   #loading= image_tag "loading.gif"
