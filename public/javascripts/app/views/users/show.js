@@ -72,6 +72,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
 		url = '/users/'+this.user.id+'/request_refund/'+back_id;
 		$.post(url, function(result) {
 			alert(result['status'])
+			$("tr#back_"+back_id+" td.status").text(result['status'])
 		})
 	},
 
