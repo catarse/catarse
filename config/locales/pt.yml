@@ -24,7 +24,6 @@ pt:
         maximum_backers: "Máximo de apoiadores"
         minimum_value: "Valor mínimo"
       user:
-        cpf: CPF
         address_city: Cidade
         address_complement: Complemento
         address_neighbourhood: Bairro
@@ -32,6 +31,7 @@ pt:
         address_state: Estado
         address_street: Logradouro
         address_zip_code: CEP
+        cpf: CPF
         email: Email
         full_name: "Nome completo"
         phone_number: "Telefone celular"
@@ -160,6 +160,7 @@ pt:
       terms: "Termos de uso"
       twitter: "Siga no Twitter"
     login:
+      another_social: "Não tem registro no facebook? entre com outra <a href='javascript:void(0);' id='login_with_another_social'>rede social</a> ou com <a href='javascript:void(0);' id='login_with_mail'>seu email</a>."
       description_html: "Nós <strong>nunca</strong> iremos saber sua senha ou qualquer outro dado sigiloso de sua conta na rede social escolhida. Só teremos acesso a informações básicas, como nome, foto e email."
       remember_me: "Lembre-se de mim e mantenha-me conectado."
       tips_html: "<strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta."
@@ -205,6 +206,27 @@ pt:
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
   projects:
+    admin_fields:
+      title: "Campos para o admin"
+    back_project:
+      backed_plural: apoiaram
+      backed_singular: apoiou
+      has: já
+      person: Pessoa
+      project_warning:
+        not_successful:
+          expired: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
+          not_expired: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
+        successful:
+          expired: "Este projeto foi bem-sucedido e foi financiado em %{date}"
+          not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
+        waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
+      reached_of: "Atingidos de"
+      submit: "Quero apoiar este projeto"
+    backer:
+      anonymous_backer: "Apoiador anônimo"
+      anonymous_description: "Optou por permanecer incógnito"
+      no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
       checkout:
         moip_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
@@ -237,27 +259,6 @@ pt:
         subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
         title: "Preencha e revise seus dados"
         you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
-    admin_fields:
-      title: "Campos para o admin"
-    back_project:
-      backed_plural: apoiaram
-      backed_singular: apoiou
-      has: já
-      person: Pessoa
-      project_warning:
-        not_successful:
-          expired: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
-          not_expired: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
-        successful:
-          expired: "Este projeto foi bem-sucedido e foi financiado em %{date}"
-          not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
-        waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
-      reached_of: "Atingidos de"
-      submit: "Quero apoiar este projeto"
-    backer:
-      anonymous_backer: "Apoiador anônimo"
-      anonymous_description: "Optou por permanecer incógnito"
-      no_reward: "Este apoiador não selecionou nenhuma recompensa"
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
     curated_pages_list:
