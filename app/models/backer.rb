@@ -77,6 +77,17 @@ class Backer < ActiveRecord::Base
   def moip_value
     "%0.0f" % (value * 100)
   end
+
+  def refund!
+    raise I18n.t('credits.refund.refunded') if self.refunded
+    raise I18n.t('credits.refund.requested_refund') if self.requested_refund
+    raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
+    raise I18n.t('credits.refund.cannot_refund') unless self.can_refund
+    self.update_attribute :requested_refund, true
+    self.user.update_attribute :credits, self.user.credits - self.value
+    CreditsMailer.request_refund_from(self).deliver
+  end
+
   def generate_credits!
     return if self.can_refund
     self.user.update_attribute :credits, self.user.credits + self.value
@@ -92,6 +103,7 @@ class Backer < ActiveRecord::Base
       :anonymous => anonymous,
       :confirmed => confirmed,
       :confirmed_at => display_confirmed_at,
+      :value => display_value,
       :user => user.as_json(options.merge(:anonymous => anonymous))
     }
 
@@ -100,6 +112,14 @@ class Backer < ActiveRecord::Base
         :display_value => display_value,
         :reward => reward
       })
+    end
+
+    if options and options[:include_project]
+      json_attributes.merge!({:project => project})
+    end
+
+    if options and options[:include_reward]
+      json_attributes.merge!({:reward => reward})
     end
 
     json_attributes
