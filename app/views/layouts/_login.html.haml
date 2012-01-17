@@ -13,7 +13,7 @@
           - OauthProvider.order('"order"').all.each do |p|
             = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
         %p
-          = "Não tem registro no facebook? entre com outra <a href='javascript:void(0);' id='login_with_another_social'>rede social</a> ou com <a href='javascript:void(0);' id='login_with_mail'>seu email</a>.".html_safe
+          = t('.another_social').html_safe
         %fieldset
           = check_box_tag 'remember_me', "1", true
           = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
