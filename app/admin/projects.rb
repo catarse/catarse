@@ -15,6 +15,8 @@ ActiveAdmin.register Project do
     column :headline
     column "Financial report" do |project|
       link_to 'backers report', backers_financial_report_path(project.to_param)
+    end
+    column "Location report" do |project|
       link_to 'backers location report', backers_location_report_path(project.to_param)
     end
     default_actions
