@@ -408,6 +408,8 @@ en:
         link_title: "Share the link"
         take_a_look: "Check out the project"
         title: "Be part of it and share this project"
+      with_city:
+        subtitle_html: "A project in <span>%{category_name}</span>, from <span>%{city}</span>, by <span>%{author}</span>"
     start:
       about: "Describe your project and how much do you need"
       about_hint: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
