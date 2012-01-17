@@ -99,6 +99,7 @@ class ProjectsController < ApplicationController
       @title = @project.name
       @rewards = @project.rewards.order(:minimum_value).all
       @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
+      fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
     }
   end
   def vimeo

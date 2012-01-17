@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?, :namespace, :user_facebook_id
+  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?, :namespace, :fb_admins
   before_filter :set_locale
   before_filter :detect_locale
 
@@ -16,9 +16,23 @@ class ApplicationController < ActionController::Base
     @total_projects = Project.visible.count
     @total_projects_success = Project.successful.count
     @total_projects_online = Project.visible.not_expired.count
+    @fb_admins = [567237711]
   end
 
   private
+
+  def fb_admins
+    @fb_admins.join(',')
+  end
+
+  def fb_admins_add(ids)
+    case ids.class
+    when Array
+      ids.each {|id| @fb_admins << ids.to_i}
+    else
+      @fb_admins << ids.to_i
+    end
+  end
 
   def namespace
     names = self.class.to_s.split('::')
@@ -67,15 +81,6 @@ class ApplicationController < ActionController::Base
       end
     end
     new_url
-  end
-
-  def user_facebook_id(user)
-    secondary = user.secondary_users.where(provider: 'facebook').first
-    if secondary
-      return secondary.uid
-    else
-      return user.uid if user.provider == 'facebook'
-    end
   end
 
   def current_user
