@@ -180,6 +180,7 @@ pt:
       notifications:
         new_curated_pages: "Já conhece os Canais Catárticos? <a href='#curated_pages' id='curated_link'>Olha aqui</a>!"
     footer:
+      like: curtiu o catarse?
       blog: "Leia o blog"
       comum: "Grupo Comum"
       email: Contato
@@ -189,6 +190,8 @@ pt:
       privacy: "Política de privacidade"
       terms: "Termos de uso"
       twitter: "Siga no Twitter"
+      newsletter: quer receber novidades?
+      newsletter_subscribe: Enviar
       stats:
         title: estatísticas bacanas
         backers: Apoiadores
