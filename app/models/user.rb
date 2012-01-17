@@ -44,6 +44,13 @@ class User < ActiveRecord::Base
    calculate_credits(sum, backs.drop(1), false)
   end
 
+  def facebook_id
+    return uid if provider == 'facebook'
+    if secondary = secondary_users.where(provider: 'facebook').first
+      return secondary.uid
+    end
+  end
+
   def update_credits
     self.update_attribute :credits, self.calculate_credits
   end
