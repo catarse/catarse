@@ -4,18 +4,61 @@ class UsersController < ApplicationController
   actions :show
   can_edit_on_the_spot
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
+  respond_to :json, :only => [:backs, :projects]
   def show
     show!{
       return redirect_to(user_path(@user.primary)) if @user.primary
       @title = "#{@user.display_name}"
-      @backs = @user.backs.confirmed.order(:confirmed_at)
-      @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
-      @backs = @backs.all
-      @projects = @user.projects.order("updated_at DESC")
-      @projects = @projects.visible unless @user == current_user
-      @projects = @projects.all
+      @credits = @user.backs.can_refund.within_refund_deadline.all
+
+      # @backs = @user.backs.confirmed.order(:confirmed_at)
+      # @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
+      # @backs = @backs.all
+      # @projects = @user.projects.order("updated_at DESC")
+      # @projects = @projects.visible unless @user == current_user
+      # @projects = @projects.all
     }
   end
+
+  def backs
+    @user = User.find(params[:id])
+    @backs = @user.backs.confirmed
+    @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
+    @backs = @backs.order("confirmed_at DESC").paginate :page => params[:page], :per_page => 10
+    render :json => @backs.to_json({:include_project => true, :include_reward => true})
+  end
+
+  def projects
+    @user = User.find(params[:id])
+    @projects = @user.projects.order("updated_at DESC")
+    @projects = @projects.visible unless @user == current_user
+    @projects = @projects.paginate :page => params[:page], :per_page => 10
+    render :json => @projects
+  end
+
+  def credits
+    @user = User.find(params[:id])
+    @credits = @user.backs.can_refund.within_refund_deadline.all
+    render :json => @credits
+  end
+
+  def request_refund
+    back = Backer.find(params[:id])
+    if back.nil?
+      status = 'not found'
+    elsif not authorize!(:request_refund, back)
+      status = I18n.t('credits.refund.cannot_refund')
+    else
+      begin
+        back.refund!
+        status = 'Pedido de estorno enviado'
+      rescue Exception => e
+        status = e.message
+      end
+    end
+    render :json => {:status => status}
+  end
+
   private
   def can_update_on_the_spot?
     user_fields = ["email", "name", "bio", "newsletter", "project_updates"]
