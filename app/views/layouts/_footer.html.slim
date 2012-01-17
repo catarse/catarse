@@ -1,40 +1,39 @@
 #footer
   .footer_content
     .open_data
-      h3
-        | estatísticas bacanas
+      h3= t('layouts.footer.stats.title')
       ul
         li
           h5= @total_backers
-          p Apoiadores
+          p= t('layouts.footer.stats.backers')
         li
           h5= @total_backs
-          p Apoios
+          p= t('layouts.footer.stats.backs')
         li
           h5= number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
-          p Arrecadados
+          p= t('layouts.footer.stats.total_backed')
         li
           h5= @total_users
-          p Usuários
+          p= t('layouts.footer.stats.users')
         li
           h5= @total_projects
-          p Projetos desde que lançamos
+          p= t('layouts.footer.stats.total_projects')
         li
           h5= @total_projects_success
-          p Projetos bem sucedidos
+          p= t('layouts.footer.stats.funded_projects')
         li
           h5= @total_projects_online
-          p Projetos no ar hoje
+          p= t('layouts.footer.stats.active_projects')
 
       = link_to "http://comum.cc", id: 'comum', target: :_blank do
         = image_tag ('redesign/comum.png')
 
     .footer_menu
-      = link_to 'Como funciona', guidelines_path, :class => 'iten'
-      = link_to 'F.A.Q/Ajuda', faq_path, :class => 'iten'
-      = link_to 'Termos de Uso', terms_path, :class => 'iten'
-      = link_to 'Política de Privacidade', privacy_path, :class => 'iten'
-      = mail_to t('site.email.contact'), 'Contato', :class => 'iten'
+      = link_to t('layouts.footer.guidelines'), guidelines_path, :class => 'iten'
+      = link_to t('layouts.footer.faq'), faq_path, :class => 'iten'
+      = link_to t('layouts.footer.terms'), terms_path, :class => 'iten'
+      = link_to t('layouts.footer.privacy'), privacy_path, :class => 'iten'
+      = mail_to t('site.email.contact'), t('layouts.footer.email'), :class => 'iten'
 
     .social_menu
       h3.cat
