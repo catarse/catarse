@@ -1,17 +1,23 @@
 #login_overlay.overlay.hide
   #login.hide
     %a.close{ :href => '#' } X
-    %h1= t('.title')
-    = form_tag(auth_path) do
-      = hidden_field_tag 'provider'
-      = hidden_field_tag 'return_to'
-      = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
-      = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), 'google', :class => 'provider'
-      - OauthProvider.order('"order"').all.each do |p|
-        = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
-      %fieldset
-        = check_box_tag 'remember_me', "1", true
-        = label_tag 'remember_me', t('.remember_me'), :class => 'inline'
-    %p= t('.description_html')
-    %p= t('.tips_html')
+    #social_info
+      %h1= t('.title')
+      = form_tag(auth_path) do
+        = hidden_field_tag 'provider'
+        = hidden_field_tag 'return_to'
+        = link_to image_tag('auth/facebook_128.png', :title => 'Facebook'), 'facebook', :class => 'provider facebook_start'
+        %div.another_social
+          = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
+          = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), 'google', :class => 'provider'
+          - OauthProvider.order('"order"').all.each do |p|
+            = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
+        %p
+          = "Não tem registro no facebook? entre com outra <a href='javascript:void(0);' id='login_with_another_social'>rede social</a> ou com <a href='javascript:void(0);' id='login_with_mail'>seu email</a>.".html_safe
+        %fieldset
+          = check_box_tag 'remember_me', "1", true
+          = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
+      %p= t('.description_html')
+      %p= t('.tips_html')
+    #email_login
 = javascript_include_tag 'login'
