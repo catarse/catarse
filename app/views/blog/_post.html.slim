@@ -26,9 +26,8 @@ script type="text/template" id="post_template"
       p
         |<%= regular_body %>
     .show_more
-      = link_to 'Mostrar Mais', '#'
+      = link_to t('blog.index.post.more'), '#'
   .comments
-    h4
-      | comentários
+    h4= t('blog.index.post.comments')
     .comments_content
   .clearfix
