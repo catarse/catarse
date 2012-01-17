@@ -36,14 +36,12 @@
       = mail_to t('site.email.contact'), t('layouts.footer.email'), :class => 'iten'
 
     .social_menu
-      h3.cat
-        | curtiu o catarse?
+      h3.cat= t('layouts.footer.like')
       iframe src="//www.facebook.com/plugins/like.php?href=#{t('site.facebook')}&amp;send=false&amp;layout=standard&amp;width=280&amp;show_faces=true&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=100&amp;appId=#{t('site.facebook_app_id')}" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:280px; height:100px;" allowTransparency="true"
       .subscribe
-        h3
-          | quer receber novidades?
+        h3= t('layouts.footer.newsletter')
         input type="text" name="user" value="email@email.com.br"
-        input type="submit" value="enviar"
+        input type="submit" value="#{t('layouts.footer.newsletter_subscribe')}"
 
       = link_to "http://powertothecrowd.com", id: 'engage', target: :_blank do
         = image_tag ('redesign/engage.png')
