@@ -410,6 +410,8 @@ pt:
         title: "Faça parte disto e compartilhe este projeto"
       with_city:
         subtitle_html: "Um projeto de <span>%{category_name}</span>, em <span>%{city}</span>, por <span>%{author}</span>"
+      without_city:
+        subtitle_html: "Um projeto de <span>%{category_name}</span>, por <span>%{author}</span>"
     start:
       about: "Descreva seu projeto e quanto você precisa"
       about_hint: "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!"
