@@ -119,7 +119,7 @@
           em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
 
     #creator_profile
-      h3 projeto por
+      h3= t('project_by')
       .avatar= image_tag @project.user.display_image, :width => '100px', :heigth => '100px'
       .personal_info
         p
