@@ -54,6 +54,9 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return @current_user if @current_user
+    if request.env['warden'] && request.env['warden'].authenticate(:user)
+      @current_user = request.env['warden'].authenticate(:user)
+    end
     if session[:user_id]
       return @current_user = User.find(session[:user_id])
     end
