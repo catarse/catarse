@@ -1,11 +1,11 @@
 #top
   menu
     nav
-      a blog
+      = link_to t('layouts.header.blog'), blog_index_path
       a ajuda
       - unless current_user
-        = link_to 'cadastre-se', '#login'
-        = link_to 'entrar', '#login'
+        = link_to t('layouts.header.signup'), '#login'
+        = link_to t('layouts.header.signin'), '#login'
     .actions
       - if current_user
         = image_tag "redesign/notification.png"

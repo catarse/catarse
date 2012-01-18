@@ -179,6 +179,11 @@ pt:
         submit: "Envie seu projeto"
       notifications:
         new_curated_pages: "Já conhece os Canais Catárticos? <a href='#curated_pages' id='curated_link'>Olha aqui</a>!"
+    header:
+      blog: blog
+      help: ajuda
+      signup: cadastre-se
+      signin: entrar
     footer:
       like: curtiu o catarse?
       blog: "Leia o blog"

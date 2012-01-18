@@ -65,17 +65,16 @@ Catarse::Application.routes.draw do
       get 'video_embed'
     end
   end
-  resources :users, :only => [:show] do
+  resources :users do
     member do
       get 'backs'
       get 'projects'
       get 'credits'
-      post 'request_refund/:id', :action => :request_refund do
-        super
-      end
     end
     post 'update_attribute_on_the_spot', :on => :collection
   end
+  match "/users/:id/request_refund/:back_id" => 'users#request_refund'
+
   resources :credits, only: [:index] do
     collection do
       get 'buy'
