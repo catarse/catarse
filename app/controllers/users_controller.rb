@@ -1,13 +1,15 @@
 # coding: utf-8
 class UsersController < ApplicationController
+  load_and_authorize_resource
   inherit_resources
   actions :show
   can_edit_on_the_spot
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
-  respond_to :json, :only => [:backs, :projects]
+  respond_to :json, :only => [:backs, :projects, :request_refund]
   def show
     show!{
       return redirect_to(user_path(@user.primary)) if @user.primary
+      fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
       @credits = @user.backs.can_refund.within_refund_deadline.all
 

@@ -1,3 +1,12 @@
+= content_for :meta_tags do
+  -# Meta tags for facebook social graph
+  meta property="og:title" content=@user.name
+  meta property="og:url" content=="#{t('site.base_url')}#{user_path(@user)}"
+  meta property="og:image" content==@user.display_image
+  meta property="og:site_name" content=t('site.name')
+  meta property="og:description" content=@user.bio
+  meta property="fb:admins" content="#{fb_admins}"
+
 - content_for :js_templates do
   = render :partial => 'back'
   = render :partial => 'project'
