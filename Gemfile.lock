@@ -327,6 +327,7 @@ DEPENDENCIES
   carrierwave!
   compass (= 0.11.5)
   database_cleaner
+  devise
   enumerate_it
   factory_girl_rails
   fog
