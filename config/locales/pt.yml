@@ -184,6 +184,8 @@ pt:
       help: ajuda
       signup: cadastre-se
       signin: entrar
+      explore: explore projetos
+      submit_project: envie seu projeto
     footer:
       like: curtiu o catarse?
       blog: "Leia o blog"
@@ -349,7 +351,7 @@ pt:
         subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
         title: Bem-sucedidos
     index_header:
-      subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história."
+      subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior."
       title: "Faça acontecer os projetos em que você acredita"
     index_meta_tags:
       description: "Financie projetos de maneira colaborativa e torne-se parte de algo maior. Promova uma catarse coletiva! Você é a peça que falta nesta história."
@@ -477,6 +479,7 @@ pt:
   require_admin: "Você precisa ser admin para realizar esta ação."
   require_login: "Você precisa estar logado para realizar esta ação."
   require_permission: "Você não tem permissão para realizar esta ação."
+  project_by: projeto por
   reward:
     display_remaining: "%{remaining} de %{maximum} disponíveis"
     dont_want: "Não quero recompensa"

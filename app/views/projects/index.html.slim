@@ -1,7 +1,7 @@
 #page_content
   .section_header
-    h1 Faça acontecer os projetos em que você acredita
-    h4 Financie projetos de maneira colaborativa e torne-se parte de algo maior.
+    h1= t('projects.index_header.title')
+    h4= t('projects.index_header.subtitle_html')
 
   = render :partial => 'project', :locals => {:project => @recommended_project, :has_comments => true, :comments_title => 'Recomendado para você'} if @recommended_project
   = render :partial => 'project', :locals => {:project => @project_of_day, :has_comments => true, :comments_title => 'Projeto do dia'} if @project_of_day

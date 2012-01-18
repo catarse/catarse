@@ -33,5 +33,5 @@ script type="text/template" id="user_project_template"
   
       .project_about        
         .comments
-          p Compartilhe
+          p= t('projects.show.share.title')
           fb:like data-send="true" data-show-faces="true" data-width="450" href="/#{I18n.locale}<%= url %>"
