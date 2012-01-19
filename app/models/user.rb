@@ -198,14 +198,14 @@ class User < ActiveRecord::Base
 
   end
 
+  def is_devise?
+    provider == 'devise'
+  end
+
   protected
 
   def password_required?
     provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
-  end
-
-  def is_devise?
-    provider == 'devise'
   end
 
   # Returns a Gravatar URL associated with the email parameter
