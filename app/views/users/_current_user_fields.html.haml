@@ -12,15 +12,20 @@
     = check_box_tag 'newsletter', '1', @user.newsletter
     = label_tag 'newsletter', t('.newsletter')
 %hr
-%h1 Alterar minha senha
-%hr
-%ul
-  %li
-    = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put, :class => 'skip_feed_event' }) do |f|
-      = f.label :password
-      = f.password_field :password, :class=>'empty',:hint => "<i>(leave blank if you don't want to change it)</i>".html_safe
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation, :class=>'empty'
-      = f.label :current_password,:hint => "<i>(we need your current password to confirm your changes)</i>".html_safe
-      = f.password_field :current_password, :class=>'empty'
-      = f.submit 'OK'
+- if @user.is_devise?
+  %h1 Alterar minha senha
+  %hr
+  %ul
+    %li
+      = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put, :class => 'skip_feed_event' }) do |f|
+        = f.label :password
+        = f.password_field :password, :class=>'empty'
+        %br/
+        %span.hint= t('.password_hint').html_safe
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, :class=>'empty'
+        = f.label :current_password
+        = f.password_field :current_password, :class=>'empty'
+        %br/
+        %span.hint= t('.current_password_hint').html_safe
+        %p= f.submit 'OK'
