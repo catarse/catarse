@@ -1,4 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
+  def edit
+    redirect_to user_path(current_user)
+  end
+
   def create
     build_resource
     resource.provider = 'devise'
