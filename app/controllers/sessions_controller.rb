@@ -2,7 +2,7 @@
 class SessionsController < ApplicationController
 
   skip_before_filter :detect_locale
-  
+
   def auth
     session[:return_to] = params[:return_to]
     session[:remember_me] = params[:remember_me]
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     unless user
       user = User.create_with_omniauth(auth)
       if session[:return_to].nil? or session[:return_to].empty?
-        session[:return_to] = user_path(user) 
+        session[:return_to] = user_path(user)
       end
     end
     session[:user_id] = user.id
@@ -28,18 +28,19 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    return redirect_to destroy_user_session_path if current_user.provider == 'devise'
     session[:user_id] = nil
     cookies.delete :remember_me_id if cookies[:remember_me_id]
     cookies.delete :remember_me_hash if cookies[:remember_me_hash]
     flash[:success] = t('sessions.destroy.success')
     redirect_to :root
   end
-  
+
   def failure
     flash[:failure] = t('sessions.failure.error')
     redirect_to :root
   end
-  
+
   def fake_create
     raise "Forbiden" unless Rails.env == "test"
     user = Factory(:user, :uid => 'fake_login')
@@ -47,5 +48,5 @@ class SessionsController < ApplicationController
     flash[:success] = t('sessions.auth.success', :name => user.display_name)
     redirect_to :root
   end
-  
+
 end
