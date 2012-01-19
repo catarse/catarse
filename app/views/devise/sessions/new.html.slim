@@ -1,0 +1,15 @@
+= content_for :content_header do
+  h1=t('.title')
+= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
+  p.input
+    = f.label :email
+    = f.text_field :email
+  p.input
+    = f.label :password
+    = f.password_field :password
+  p.input.check
+    = f.check_box :remember_me
+    = f.label :remember_me, t('layouts.login.remember_me')
+  p.action
+    = f.submit t('.submit')
+= render :partial => "devise/shared/links"
