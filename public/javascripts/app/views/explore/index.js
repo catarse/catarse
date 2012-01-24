@@ -24,7 +24,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.selectItem("")
     this.initializeView({
       meta_sort: "explore",
-      name_or_headline_or_about_or_user_name_contains: search
+      name_or_headline_or_about_or_user_name_or_user_address_city_contains: search
     })
     var input = this.$('#search')
     if(input.val() != search)
