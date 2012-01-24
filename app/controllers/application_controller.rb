@@ -54,9 +54,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return @current_user if @current_user
-    if request.env['warden'] && request.env['warden'].authenticate(:user)
-      @current_user = request.env['warden'].authenticate(:user)
-    end
     if session[:user_id]
       return @current_user = User.find(session[:user_id])
     end
@@ -65,7 +62,8 @@ class ApplicationController < ActionController::Base
       @current_user = nil unless @current_user.remember_me_hash == cookies[:remember_me_hash]
       session[:user_id] = @current_user.id
     end
-  rescue
+    return @current_user = request.env['warden'].authenticate(:user) rescue nil
+  rescue Exception => e
     session[:user_id] = nil
   end
   def redirect_back_or_default(default)
