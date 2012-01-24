@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
                   :address_state,
                   :address_zip_code,
                   :phone_number,
+                  :cpf,
                   :locale
 
   include ActionView::Helpers::NumberHelper
