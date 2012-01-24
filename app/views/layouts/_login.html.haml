@@ -13,7 +13,7 @@
           - OauthProvider.order('"order"').all.each do |p|
             = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
         %p
-          = t('.another_social').html_safe
+          = t('.another_social', :login_path => new_user_session_path).html_safe
         %fieldset
           = check_box_tag 'remember_me', "1", true
           = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
