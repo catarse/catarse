@@ -59,6 +59,11 @@ class User < ActiveRecord::Base
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   #before_save :store_primary_user
 
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    where(conditions).where(:provider => 'devise').first
+  end
+
   def admin?
     admin
   end
