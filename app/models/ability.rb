@@ -3,12 +3,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(current_user)
-    user ||= User.new
+    current_user ||= User.new
 
     can :manage, User, :id => current_user.id
     can :request_refund, Backer, :user_id => current_user.id
 
-    if user.admin?
+    if current_user.admin?
       can :manage, :all
     elsif current_user.projects.present? or current_user.manages_projects.present?
       can :manage, Project do |project|
