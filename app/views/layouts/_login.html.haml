@@ -2,22 +2,22 @@
   #login.hide
     %a.close{ :href => '#' } X
     #social_info
-      %h1= t('.title')
       = form_tag(auth_path) do
         = hidden_field_tag 'provider'
         = hidden_field_tag 'return_to'
-        = link_to image_tag('auth/facebook_128.png', :title => 'Facebook'), 'facebook', :class => 'provider facebook_start'
+        = link_to t('.login_with_facebook'), 'facebook', :class => 'provider facebook_start'
+        %p= t('.have_facebook_account')
+        %p.another_login_text
+          = t('.another_social').html_safe
+          %span= t('.or')
+          = t('.new_user_from_email', :login_path => new_user_session_path).html_safe
         %div.another_social
           = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
           = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), 'google', :class => 'provider'
-          - OauthProvider.order('"order"').all.each do |p|
+          - OauthProvider.where("path <> 'facebook'").order('"order"').all.each do |p|
             = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
-        %p
-          = t('.another_social', :login_path => new_user_session_path).html_safe
-        %fieldset
-          = check_box_tag 'remember_me', "1", true
-          = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
-      %p= t('.description_html')
-      %p= t('.tips_html')
+          %fieldset
+            = check_box_tag 'remember_me', "1", true
+            = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
     #email_login
 = javascript_include_tag 'login'

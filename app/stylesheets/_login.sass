@@ -8,7 +8,7 @@
   top: 50%
   left: 50%
   width: 500px
-  height: 370px
+  height: auto
   margin-top: -170px
   margin-left: -270px
   z-index: 500
@@ -16,8 +16,20 @@
   text-align: center
   color: #fff
   +text-shadow(black, 1px, 1px, 1px)
+  .another_login_text
+    a
+      color: white
+      font-weight: bold
+      +text-shadow(black, 1px, 1px, 1px)
+      text-decoration: none
+      &:hover
+        text-decoration: underline
+    span
+      margin: 0 20px 0 20px
+      display: inline-block
   .another_social
     display: none
+    margin-top: 20px
   h1
     font-family: "museo-500"
     font-size: 24px
@@ -60,3 +72,21 @@
   a.close:hover, a.close:focus
     color: #fff
     +scale(1.05)
+  .facebook_start
+    +border-radius(4px)
+    margin: 0 auto
+    width: 292px
+    height: 27px
+    background: url("/images/login_with_facebook_button356x60.png") left top no-repeat
+    display: block
+    padding: 33px 0 0 64px
+    color: white
+    font-size: 13px
+    font-family: Arial
+    text-decoration: none
+    +text-shadow(black, 1px, 1px, 1px)
+    text-align: left
+    &:hover, &:focus
+      +box-shadow(rgba(black,0.75) 0px 0px 5px inset !important)
+    &:active
+      +box-shadow(rgba(black, 1) 0px 0px 15px inset !important)
