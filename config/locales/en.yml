@@ -226,6 +226,10 @@ en:
     login:
       another_social: "Don't have facebook account? sign in with another <a href='javascript:void(0);' id='login_with_another_social'>social network</a> or <a href='%{login_path}' id='login_with_mail'>your email</a>."
       description_html: "We will <strong>never</strong> know your password or any other secret data from the chosen social network. We will only have access to your basic information, like name, photo and email."
+      have_facebook_account: "Don't have an facebook account?"
+      login_with_facebook: "sign in with your facebook account"
+      new_user_from_email: "Sign in with <a href='%{login_path}' id='login_with_mail'>your email</a>"
+      or: or
       remember_me: "Remember me and keep me connected."
       tips_html: "<strong>Remember with which social network you signed up</strong>. You will always access your account with it."
       title: "Enter with your favorite social network"
