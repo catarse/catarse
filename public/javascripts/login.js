@@ -1,10 +1,3 @@
-var start_with_facebook_button = function() {
-  if($('.facebook_start').css('display') == 'none') {
-    $('.another_social').hide();
-    $('.facebook_start').show();
-  }
-}
-
 require_login = function(e){
   e.preventDefault()
   var url = null
@@ -15,7 +8,7 @@ require_login = function(e){
   }
   $('#return_to').val(url)
   $('#login_overlay').show()
-  start_with_facebook_button();
+  $('.another_social').hide();
   $('#login').fadeIn()
 }
 var return_to = null
@@ -23,7 +16,7 @@ $('#login_link,#signup_link,.login_link').live('click', function(e){
   e.preventDefault()
   $('#return_to').val(location.href)
   $('#login_overlay').show()
-  start_with_facebook_button();
+  $('.another_social').hide();
   $('#login').fadeIn()
 })
 if($('#login').length > 0){
@@ -46,6 +39,5 @@ $('a.provider').click(function(e){
 
 $("#login_with_another_social").click(function(e){
   e.preventDefault();
-  $('.another_social').toggle();
-  $('.facebook_start').toggle();
+  $('.another_social').slideDown('fast');
 });

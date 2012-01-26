@@ -723,7 +723,7 @@ body#platform #login {
   top: 50%;
   left: 50%;
   width: 500px;
-  height: 370px;
+  height: auto;
   margin-top: -170px;
   margin-left: -270px;
   z-index: 500;
@@ -732,27 +732,44 @@ body#platform #login {
   color: white;
   text-shadow: black 1px 1px 1px;
 }
-/* line 19, ../../app/stylesheets/_login.sass */
+/* line 20, ../../app/stylesheets/_login.sass */
+body#platform #login .another_login_text a {
+  color: white;
+  font-weight: bold;
+  text-shadow: black 1px 1px 1px;
+  text-decoration: none;
+}
+/* line 25, ../../app/stylesheets/_login.sass */
+body#platform #login .another_login_text a:hover {
+  text-decoration: underline;
+}
+/* line 27, ../../app/stylesheets/_login.sass */
+body#platform #login .another_login_text span {
+  margin: 0 20px 0 20px;
+  display: inline-block;
+}
+/* line 30, ../../app/stylesheets/_login.sass */
 body#platform #login .another_social {
   display: none;
+  margin-top: 20px;
 }
-/* line 21, ../../app/stylesheets/_login.sass */
+/* line 33, ../../app/stylesheets/_login.sass */
 body#platform #login h1 {
   font-family: "museo-500";
   font-size: 24px;
   padding: 10px;
   margin-bottom: 10px;
 }
-/* line 26, ../../app/stylesheets/_login.sass */
+/* line 38, ../../app/stylesheets/_login.sass */
 body#platform #login form fieldset {
   margin-top: 8px;
   padding: 0;
 }
-/* line 29, ../../app/stylesheets/_login.sass */
+/* line 41, ../../app/stylesheets/_login.sass */
 body#platform #login p {
   margin-top: 20px;
 }
-/* line 32, ../../app/stylesheets/_login.sass */
+/* line 44, ../../app/stylesheets/_login.sass */
 body#platform #login a img {
   width: 60px;
   -moz-transition-property: all;
@@ -764,7 +781,7 @@ body#platform #login a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 35, ../../app/stylesheets/_login.sass */
+/* line 47, ../../app/stylesheets/_login.sass */
 body#platform #login a img:hover, body#platform #login a img:focus {
   -moz-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
@@ -772,12 +789,12 @@ body#platform #login a img:hover, body#platform #login a img:focus {
   -ms-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
-/* line 38, ../../app/stylesheets/_login.sass */
+/* line 50, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 40, ../../app/stylesheets/_login.sass */
+/* line 52, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img:hover, body#platform #login a.disabled img:focus, body#platform #login a.disabled img:active {
   -moz-transform: scale(1, 1);
   -webkit-transform: scale(1, 1);
@@ -785,7 +802,7 @@ body#platform #login a.disabled img:hover, body#platform #login a.disabled img:f
   -ms-transform: scale(1, 1);
   transform: scale(1, 1);
 }
-/* line 42, ../../app/stylesheets/_login.sass */
+/* line 54, ../../app/stylesheets/_login.sass */
 body#platform #login a.close {
   color: white;
   text-decoration: none;
@@ -825,7 +842,7 @@ body#platform #login a.close {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 60, ../../app/stylesheets/_login.sass */
+/* line 72, ../../app/stylesheets/_login.sass */
 body#platform #login a.close:hover, body#platform #login a.close:focus {
   color: white;
   -moz-transform: scale(1.05, 1.05);
@@ -833,6 +850,41 @@ body#platform #login a.close:hover, body#platform #login a.close:focus {
   -o-transform: scale(1.05, 1.05);
   -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
+}
+/* line 75, ../../app/stylesheets/_login.sass */
+body#platform #login .facebook_start {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  margin: 0 auto;
+  width: 292px;
+  height: 27px;
+  background: url("/images/login_with_facebook_button356x60.png") left top no-repeat;
+  display: block;
+  padding: 33px 0 0 64px;
+  color: white;
+  font-size: 13px;
+  font-family: Arial;
+  text-decoration: none;
+  text-shadow: black 1px 1px 1px;
+  text-align: left;
+}
+/* line 89, ../../app/stylesheets/_login.sass */
+body#platform #login .facebook_start:hover, body#platform #login .facebook_start:focus {
+  -moz-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
+  -o-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
+}
+/* line 91, ../../app/stylesheets/_login.sass */
+body#platform #login .facebook_start:active {
+  -moz-box-shadow: black 0px 0px 15px inset !important;
+  -webkit-box-shadow: black 0px 0px 15px inset !important;
+  -o-box-shadow: black 0px 0px 15px inset !important;
+  box-shadow: black 0px 0px 15px inset !important;
 }
 /* line 47, ../../app/stylesheets/screen.sass */
 body#platform #pre_header {

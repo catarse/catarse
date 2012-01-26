@@ -224,12 +224,16 @@ pt:
       terms: "Termos de uso"
       twitter: "Siga no Twitter"
     login:
-      another_social: "Não tem registro no facebook? entre com outra <a href='javascript:void(0);' id='login_with_another_social'>rede social</a> ou com <a href='%{login_path}' id='login_with_mail'>seu email</a>."
+      another_social: "Entre com <a href='javascript:void(0);' id='login_with_another_social'>outra rede social</a>"
+      or: 'ou'
+      new_user_from_email: "Entre com <a href='%{login_path}' id='login_with_mail'>seu email</a>"
       description_html: "Nós <strong>nunca</strong> iremos saber sua senha ou qualquer outro dado sigiloso de sua conta na rede social escolhida. Só teremos acesso a informações básicas, como nome, foto e email."
       remember_me: "Lembre-se de mim e mantenha-me conectado."
       tips_html: "<strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta."
       title: "Entre através de sua rede social favorita"
       title_with_email: "Entre utilizando o seu endereço de email"
+      login_with_facebook: 'entre com sua conta do facebook'
+      have_facebook_account: "Não possui conta no facebook?"
     pre_header:
       back_notice_html: "Você apoiou o projeto %{link}. Conte para todo mundo o que você fez!"
       content_html: "Quer saber como apoiar um projeto? %{link} um passo-a-passo que publicamos no nosso blog."
