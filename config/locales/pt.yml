@@ -772,7 +772,11 @@ pt:
       weblink: "Ver na web"
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
-  will_paginate:
-    next: "Próxima »"
-    page_gap: "..."
+  views:
+    pagination:
+      next: "Próxima »"
+      previous: "« Anterior"
+      last: Última
+      first: Primeira
+      truncate: "..."
     previous: "« Anterior"
