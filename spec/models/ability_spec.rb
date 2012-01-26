@@ -15,6 +15,8 @@ describe Ability do
   it "should not enable users to have admin privileges" do
     user = Factory.build(:user)
     user.save
+    user2 = Factory.build(:user)
+    user2.save
     project = Factory.build(:project)
     project.save
     ability = Ability.new(user)
@@ -22,7 +24,7 @@ describe Ability do
     ability.should_not be_able_to(:manage, Configuration)
     ability.should_not be_able_to(:manage, Category)
     ability.should_not be_able_to(:manage, project)
-    ability.should_not be_able_to(:manage, User)        
+    ability.should_not be_able_to(:manage, user2)
   end
 
   it "should enable users to manage only own projects" do

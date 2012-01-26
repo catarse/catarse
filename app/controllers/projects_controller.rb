@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
         end
       end
       format.json do
-        @projects = Project.visible.search(params[:search]).paginate :page => params[:page], :per_page => 6
+        @projects = Project.visible.search(params[:search]).page(params[:page]).per(6)
         respond_with(@projects)
       end
     end
@@ -139,13 +139,13 @@ class ProjectsController < ApplicationController
     return unless require_admin
     @title = t('projects.pending.title')
     @search = Project.search(params[:search])
-    @projects = @search.order('projects.created_at DESC').paginate :page => params[:page]
+    @projects = @search.order('projects.created_at DESC').page(params[:page])
   end
   def pending_backers
     return unless require_admin
     @title = t('projects.pending_backers.title')
     @search = Backer.search(params[:search])
-    @backers = @search.order("created_at DESC").paginate :page => params[:page]
+    @backers = @search.order("created_at DESC").page(params[:page])
   end
   private
 
