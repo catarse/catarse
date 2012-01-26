@@ -5,7 +5,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = I18n.t('site.name')
+  config.site_title = "Catarse"
 
 
   # == Default Namespace

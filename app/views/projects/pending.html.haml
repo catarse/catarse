@@ -27,7 +27,7 @@
     = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
     %strong= @search.count
     = pluralize_without_number @search.count, t('activerecord.models.project').downcase
-  = will_paginate @projects
+  = paginate @projects
   .clear
   - if @projects.empty?
     = t('.no_projects')
@@ -62,4 +62,4 @@
             %td= on_the_spot_edit project, :order, :tooltip => '-'
             %td= check_box_tag "project__can_finish__#{project.id}", '1', project.can_finish
             %td= (project.finished ? t('yes') : t('no'))
-  = will_paginate @projects
+  = paginate @projects

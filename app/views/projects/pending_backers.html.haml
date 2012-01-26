@@ -37,7 +37,7 @@
     = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
     %strong= @search.count
     = pluralize_without_number(@search.count, t('backer_singular'), t('backer_plural')).downcase
-  = will_paginate @backers
+  = paginate @backers
   - if @backers.empty?
     = t('.no_backers')
   - else
@@ -78,5 +78,5 @@
             %td= (backer.credits ? t('yes') : t('no'))
             %td= (backer.requested_refund ? t('yes') : t('no'))
             %td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded
-  = will_paginate @backers
+  = paginate @backers
 

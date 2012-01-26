@@ -184,14 +184,25 @@ pt:
   "yes": Sim
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
   active_admin:
+    logout: Sair
+    view: Ver
+    edit: Editar
+    delete: Remover
+    new_model: Novo item
+    search_field: "Buscar: %{field}"
     dashboard: "Painel de controle"
+    clear_filters: Limpar filtros
+    filter: Buscar
+    blank_slate:
+      content: Sem conteudo
+      link: Adicionar
     dashboard_welcome:
       call_to_action: foo
       welcome: "Bem-vindo ao painel administrativo"
   activerecord:
     attributes:
       backer:
-        value: Valor
+        one: apoio
       project:
         category: Categoria
         expires_at: Prazo
@@ -217,7 +228,7 @@ pt:
         full_name: "Nome completo"
         phone_number: "Telefone celular"
     models:
-      backer: Apoiador
+      backer: Apoio
       category: Categoria
       project: Projeto
       reward: Recompensa
