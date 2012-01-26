@@ -224,7 +224,7 @@ en:
       terms: "Terms of use"
       twitter: "Our Twitter"
     login:
-      another_social: "Don't have facebook account? sign in with another <a href='javascript:void(0);' id='login_with_another_social'>social network</a> or <a href='%{login_path}' id='login_with_mail'>your email</a>."
+      another_social: "Sign in with <a href='javascript:void(0);' id='login_with_another_social'>another social network</a>"
       description_html: "We will <strong>never</strong> know your password or any other secret data from the chosen social network. We will only have access to your basic information, like name, photo and email."
       have_facebook_account: "Don't have an facebook account?"
       login_with_facebook: "sign in with your facebook account"
