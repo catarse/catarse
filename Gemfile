@@ -9,10 +9,10 @@ gem 'rails', '3.0.3'
 gem 'rake', '0.8.7'
 gem 'haml'
 gem 'slim'
-gem 'sass', '3.1.7'
+gem 'sass'
 gem 'compass'
 gem 'omniauth', '0.1.6'
-gem 'formtastic', '~> 1.1.0'
+gem 'formtastic'
 gem 'validation_reflection'
 gem 'inherited_resources', '= 1.1.2'
 gem 'maxim-sexy_pg_constraints'
@@ -22,7 +22,7 @@ gem 'wirble'
 gem "on_the_spot"
 gem 'unicorn'
 gem 'mailee', '0.5.4', :git => 'https://github.com/danielweinmann/mailee-api.git'
-gem 'will_paginate', ">= 3.0.pre2"
+# gem 'will_paginate', ">= 3.0.pre2"
 gem 'weekdays'
 gem 'moip', '1.0.5', :git => 'https://github.com/danielweinmann/moip-ruby.git'
 gem 'paypal-express', :require => 'paypal'
@@ -35,8 +35,8 @@ gem 'unicode'
 gem 'routing-filter'
 gem 'http_accept_language'
 gem 'cancan'
-gem 'activeadmin', "= 0.2.2"
-gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
+gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
+gem 'carrierwave', '= 0.5.8'
 gem 'rmagick'
 gem 'fog'
 gem 'capybara', ">= 0.4.0"
@@ -59,7 +59,7 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'steak', "~> 1.1.0"
   gem 'rspec-rails', "~> 2.0.1"
-  gem 'rcov'
+  gem 'rcov', '= 0.9.11'
   gem 'factory_girl_rails'
   gem 'mocha'
 end
