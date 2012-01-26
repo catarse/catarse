@@ -105,7 +105,7 @@ pt:
       unauthenticated: "Você precisa fazer login ou inscreva-se antes de continuar."
       unconfirmed: "Você tem que confirmar a sua conta antes de continuar."
     links:
-      forgot_password: "Esqueçi minha senha"
+      forgot_password: "Esqueci minha senha"
       sign_in: "Efetuar login"
       sign_up: Registre-se
     mailer:
