@@ -19,7 +19,9 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords(resource)
-      respond_with_navigational(resource) { render_with_scope :new }
+      flash[:failure] = resource.errors.full_messages.to_sentence
+      redirect_to root_url(:show_new_user => true)
+      # respond_with_navigational(resource) { render_with_scope :new }
     end
   end
 
