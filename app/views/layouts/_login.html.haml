@@ -10,7 +10,7 @@
         %p.another_login_text
           = t('.another_social').html_safe
           %span= t('.or')
-          = t('.new_user_from_email', :login_path => new_user_session_path).html_safe
+          = t('.new_user_from_email', :login_path => 'javascript:void(0);').html_safe
         %div.another_social
           = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
           = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), 'google', :class => 'provider'
@@ -19,5 +19,49 @@
           %fieldset
             = check_box_tag 'remember_me', "1", true
             = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
-    #email_login
+    #new_email_account.hide
+      = form_for(User.new, :as => :user, :url => registration_path(:user), :html => {:class => 'login_with_email_form'}) do |f|
+        %p.input
+          = f.label :email
+          = f.text_field :email
+        %p.input
+          = f.label :password
+          = f.password_field :password
+        %p.input
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+        %p.action
+          = f.submit t('registrations.new.submit')
+        .links
+          = link_to t('devise.links.sign_in'), 'javascript:void(0);', :class => 'new_session_link'
+          %br/
+          = link_to t('devise.links.forgot_password'), new_password_path(:user), :class => 'forgot_password_link'
+    #login_form_with_email.hide
+      = form_for(User.new, :as => :user, :url => session_path(:user), :html => {:class => 'login_with_email_form'}) do |f|
+        %p.input
+          = f.label :email
+          = f.text_field :email
+        %p.input
+          = f.label :password
+          = f.password_field :password
+        %p.input.check
+          = f.check_box :remember_me
+          = f.label :remember_me, t('layouts.login.remember_me')
+        %p.action
+          = f.submit t('devise.sessions.new.submit')
+        .links
+          = link_to t('devise.links.sign_up'), 'javascript:void(0);', :class => 'new_registration_link'
+          %br/
+          = link_to t('devise.links.forgot_password'), new_password_path(:user), :class => 'forgot_password_link'
+    #forgot_password_form.hide
+      = form_for(User.new, :as => :user, :url => password_path(:user), :html => {:method => :post, :class => 'login_with_email_form'}) do |f|
+        %p.input
+          = f.label :email
+          = f.text_field :email
+        %p.action
+          = f.submit t('passwords.new.submit')
+        .links
+          = link_to t('devise.links.sign_up'), 'javascript:void(0);', :class => 'new_registration_link'
+          %br/
+          = link_to t('devise.links.sign_in'), 'javascript:void(0);', :class => 'new_session_link'
 = javascript_include_tag 'login'

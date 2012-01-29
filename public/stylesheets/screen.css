@@ -344,38 +344,42 @@ body#platform a {
 body#platform a:hover {
   color: #00aa00;
 }
-/* line 5, ../../app/stylesheets/_form.sass */
+/* line 3, ../../app/stylesheets/_form.sass */
+body#platform form.login_with_email_form {
+  text-align: left;
+}
+/* line 6, ../../app/stylesheets/_form.sass */
 body#platform form.login_with_email_form .input.check input {
   margin: 5px 10px 0 0;
   float: left;
 }
-/* line 8, ../../app/stylesheets/_form.sass */
+/* line 9, ../../app/stylesheets/_form.sass */
 body#platform form.login_with_email_form .input.check label {
   margin-top: -2px;
   float: left;
 }
-/* line 11, ../../app/stylesheets/_form.sass */
+/* line 12, ../../app/stylesheets/_form.sass */
 body#platform form.login_with_email_form .action {
   clear: both;
   margin-top: 15px;
 }
-/* line 14, ../../app/stylesheets/_form.sass */
+/* line 15, ../../app/stylesheets/_form.sass */
 body#platform form fieldset {
   padding: 8px 0;
 }
-/* line 16, ../../app/stylesheets/_form.sass */
+/* line 17, ../../app/stylesheets/_form.sass */
 body#platform form label {
   display: block;
   margin-right: 8px;
   margin-top: 14px;
 }
-/* line 20, ../../app/stylesheets/_form.sass */
+/* line 21, ../../app/stylesheets/_form.sass */
 body#platform form label abbr[title=required] {
   font-size: 16px;
   color: #dd3333;
   margin-left: 2px;
 }
-/* line 24, ../../app/stylesheets/_form.sass */
+/* line 25, ../../app/stylesheets/_form.sass */
 body#platform form input[type=text], body#platform form input[type=password], body#platform form textarea, body#platform form select {
   padding-left: 4px;
   padding-right: 24px;
@@ -392,24 +396,24 @@ body#platform form input[type=text], body#platform form input[type=password], bo
   border-radius: 5px;
   text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
 }
-/* line 34, ../../app/stylesheets/_form.sass */
+/* line 35, ../../app/stylesheets/_form.sass */
 body#platform form input[type=text]:focus, body#platform form input[type=password]:focus, body#platform form textarea:focus, body#platform form select:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 37, ../../app/stylesheets/_form.sass */
+/* line 38, ../../app/stylesheets/_form.sass */
 body#platform form textarea {
   padding-right: 28px;
   width: 96%;
   height: 200px;
 }
-/* line 41, ../../app/stylesheets/_form.sass */
+/* line 42, ../../app/stylesheets/_form.sass */
 body#platform form p.inline-hints {
   color: #777777;
   font-size: 14px;
   padding-bottom: 0 !important;
 }
-/* line 45, ../../app/stylesheets/_form.sass */
+/* line 46, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit] {
   text-rendering: optimizeLegibility;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -438,7 +442,7 @@ body#platform form input[type=submit] {
   -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
-/* line 59, ../../app/stylesheets/_form.sass */
+/* line 60, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit]:hover {
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
@@ -452,7 +456,7 @@ body#platform form input[type=submit]:hover {
   -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
-/* line 63, ../../app/stylesheets/_form.sass */
+/* line 64, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit]:active {
   padding: 11px 14px 9px 16px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
@@ -468,7 +472,7 @@ body#platform form input[type=submit]:active {
   -o-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
 }
-/* line 69, ../../app/stylesheets/_form.sass */
+/* line 70, ../../app/stylesheets/_form.sass */
 body#platform form input[type=submit]:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
@@ -485,56 +489,56 @@ body#platform form input[type=submit]:disabled {
   -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
-/* line 76, ../../app/stylesheets/_form.sass */
+/* line 77, ../../app/stylesheets/_form.sass */
 body#platform form input.ok, body#platform form textarea.ok {
   background: url("/images/tick_16.png") no-repeat 99% center;
 }
-/* line 78, ../../app/stylesheets/_form.sass */
+/* line 79, ../../app/stylesheets/_form.sass */
 body#platform form input.ok:focus, body#platform form textarea.ok:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 81, ../../app/stylesheets/_form.sass */
+/* line 82, ../../app/stylesheets/_form.sass */
 body#platform form input.error, body#platform form textarea.error {
   background: url("/images/delete_16.png") no-repeat 99% center;
 }
-/* line 83, ../../app/stylesheets/_form.sass */
+/* line 84, ../../app/stylesheets/_form.sass */
 body#platform form input.error:focus, body#platform form textarea.error:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 86, ../../app/stylesheets/_form.sass */
+/* line 87, ../../app/stylesheets/_form.sass */
 body#platform form input.loading, body#platform form textarea.loading {
   background: url("/images/loading.gif") no-repeat 99% center;
 }
-/* line 88, ../../app/stylesheets/_form.sass */
+/* line 89, ../../app/stylesheets/_form.sass */
 body#platform form input.loading:focus, body#platform form textarea.loading:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 91, ../../app/stylesheets/_form.sass */
+/* line 92, ../../app/stylesheets/_form.sass */
 body#platform form select.ok {
   background: url("/images/tick_16.png") no-repeat 86% center;
 }
-/* line 93, ../../app/stylesheets/_form.sass */
+/* line 94, ../../app/stylesheets/_form.sass */
 body#platform form select.ok:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 96, ../../app/stylesheets/_form.sass */
+/* line 97, ../../app/stylesheets/_form.sass */
 body#platform form select.error {
   background: url("/images/delete_16.png") no-repeat 86% center;
 }
-/* line 98, ../../app/stylesheets/_form.sass */
+/* line 99, ../../app/stylesheets/_form.sass */
 body#platform form select.error:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 101, ../../app/stylesheets/_form.sass */
+/* line 102, ../../app/stylesheets/_form.sass */
 body#platform form select.loading {
   background: url("/images/loading.gif") no-repeat 86% center;
 }
-/* line 103, ../../app/stylesheets/_form.sass */
+/* line 104, ../../app/stylesheets/_form.sass */
 body#platform form select.loading:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
@@ -720,7 +724,7 @@ body#platform #login {
   -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   width: 500px;
   height: auto;
@@ -732,44 +736,62 @@ body#platform #login {
   color: white;
   text-shadow: black 1px 1px 1px;
 }
-/* line 20, ../../app/stylesheets/_login.sass */
+/* line 19, ../../app/stylesheets/_login.sass */
+body#platform #login .login_with_email_form {
+  text-align: left;
+}
+/* line 21, ../../app/stylesheets/_login.sass */
+body#platform #login .login_with_email_form .links {
+  padding-top: 10px;
+}
+/* line 23, ../../app/stylesheets/_login.sass */
+body#platform #login .login_with_email_form .links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 27, ../../app/stylesheets/_login.sass */
+body#platform #login .login_with_email_form .links a:hover {
+  text-decoration: underline;
+}
+/* line 30, ../../app/stylesheets/_login.sass */
 body#platform #login .another_login_text a {
   color: white;
   font-weight: bold;
   text-shadow: black 1px 1px 1px;
   text-decoration: none;
 }
-/* line 25, ../../app/stylesheets/_login.sass */
+/* line 35, ../../app/stylesheets/_login.sass */
 body#platform #login .another_login_text a:hover {
   text-decoration: underline;
 }
-/* line 27, ../../app/stylesheets/_login.sass */
+/* line 37, ../../app/stylesheets/_login.sass */
 body#platform #login .another_login_text span {
   margin: 0 20px 0 20px;
   display: inline-block;
 }
-/* line 30, ../../app/stylesheets/_login.sass */
+/* line 40, ../../app/stylesheets/_login.sass */
 body#platform #login .another_social {
   display: none;
   margin-top: 20px;
 }
-/* line 33, ../../app/stylesheets/_login.sass */
+/* line 43, ../../app/stylesheets/_login.sass */
 body#platform #login h1 {
   font-family: "museo-500";
   font-size: 24px;
   padding: 10px;
   margin-bottom: 10px;
 }
-/* line 38, ../../app/stylesheets/_login.sass */
+/* line 48, ../../app/stylesheets/_login.sass */
 body#platform #login form fieldset {
   margin-top: 8px;
   padding: 0;
 }
-/* line 41, ../../app/stylesheets/_login.sass */
+/* line 51, ../../app/stylesheets/_login.sass */
 body#platform #login p {
   margin-top: 20px;
 }
-/* line 44, ../../app/stylesheets/_login.sass */
+/* line 54, ../../app/stylesheets/_login.sass */
 body#platform #login a img {
   width: 60px;
   -moz-transition-property: all;
@@ -781,7 +803,7 @@ body#platform #login a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 47, ../../app/stylesheets/_login.sass */
+/* line 57, ../../app/stylesheets/_login.sass */
 body#platform #login a img:hover, body#platform #login a img:focus {
   -moz-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
@@ -789,12 +811,12 @@ body#platform #login a img:hover, body#platform #login a img:focus {
   -ms-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
-/* line 50, ../../app/stylesheets/_login.sass */
+/* line 60, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 52, ../../app/stylesheets/_login.sass */
+/* line 62, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img:hover, body#platform #login a.disabled img:focus, body#platform #login a.disabled img:active {
   -moz-transform: scale(1, 1);
   -webkit-transform: scale(1, 1);
@@ -802,7 +824,7 @@ body#platform #login a.disabled img:hover, body#platform #login a.disabled img:f
   -ms-transform: scale(1, 1);
   transform: scale(1, 1);
 }
-/* line 54, ../../app/stylesheets/_login.sass */
+/* line 64, ../../app/stylesheets/_login.sass */
 body#platform #login a.close {
   color: white;
   text-decoration: none;
@@ -842,7 +864,7 @@ body#platform #login a.close {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 72, ../../app/stylesheets/_login.sass */
+/* line 82, ../../app/stylesheets/_login.sass */
 body#platform #login a.close:hover, body#platform #login a.close:focus {
   color: white;
   -moz-transform: scale(1.05, 1.05);
@@ -851,7 +873,7 @@ body#platform #login a.close:hover, body#platform #login a.close:focus {
   -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
-/* line 75, ../../app/stylesheets/_login.sass */
+/* line 85, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -872,14 +894,14 @@ body#platform #login .facebook_start {
   text-shadow: black 1px 1px 1px;
   text-align: left;
 }
-/* line 89, ../../app/stylesheets/_login.sass */
+/* line 99, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start:hover, body#platform #login .facebook_start:focus {
   -moz-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -o-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
 }
-/* line 91, ../../app/stylesheets/_login.sass */
+/* line 101, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start:active {
   -moz-box-shadow: black 0px 0px 15px inset !important;
   -webkit-box-shadow: black 0px 0px 15px inset !important;
