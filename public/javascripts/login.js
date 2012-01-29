@@ -42,6 +42,7 @@ $("#login_with_another_social").click(function(e){
   if($('#login_form_with_email').css('display') == 'block') {
     $('#login_form_with_email').slideUp('fast', function(){
       $('.another_social').slideDown('fast');
+      $('fieldset.remember_me_social').show();
     })
   } else if ($('#new_email_account').css('display') == 'block') {
     $('#new_email_account').slideUp('fast', function(){
@@ -54,12 +55,14 @@ $("#login_with_another_social").click(function(e){
   } else {
     $('.another_social').slideDown('fast');
   }
+  $('fieldset.remember_me_social').show();
 });
 
 $("#login_with_mail").click(function(e){
   e.preventDefault();
   if($('.another_social').css('display') == 'block') {
     $('.another_social').slideUp('fast', function(){
+      $('fieldset.remember_me_social').hide();
       $('#login_form_with_email').slideDown('fast');
     })
   } else {
