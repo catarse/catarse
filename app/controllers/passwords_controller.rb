@@ -5,7 +5,8 @@ class PasswordsController < Devise::PasswordsController
     if successfully_sent?(resource)
       respond_with({}, :location => after_sending_reset_password_instructions_path_for(resource_name))
     else
-      respond_with_navigational(resource){ render_with_scope :new }
+      flash[:failure] = resource.errors.full_messages.to_sentence
+      redirect_to root_url(:show_forgot_password => true)
     end
   end
 end
