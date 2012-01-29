@@ -16,9 +16,9 @@
           = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), 'google', :class => 'provider'
           - OauthProvider.where("path <> 'facebook'").order('"order"').all.each do |p|
             = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), p.path, :class => 'provider'
-          %fieldset
-            = check_box_tag 'remember_me', "1", true
-            = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
+        %fieldset.remember_me_social
+          = check_box_tag 'remember_me', "1", true
+          = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
     #new_email_account.hide
       = form_for(User.new, :as => :user, :url => registration_path(:user), :html => {:class => 'login_with_email_form'}) do |f|
         %p.input
