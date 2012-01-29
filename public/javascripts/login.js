@@ -62,12 +62,12 @@ $("#login_with_mail").click(function(e){
   e.preventDefault();
   if($('.another_social').css('display') == 'block') {
     $('.another_social').slideUp('fast', function(){
-      $('fieldset.remember_me_social').hide();
       $('#login_form_with_email').slideDown('fast');
     })
   } else {
     $('#login_form_with_email').slideDown('fast');
   }
+  $('fieldset.remember_me_social').hide();
 });
 
 $('a.new_registration_link').click(function(e){
