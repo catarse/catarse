@@ -77,6 +77,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 0px;
 }
 
+/* Google API fonts */
+@import url("http://fonts.googleapis.com/css?family=Dancing+Script");
 /* IE Fonts */
 @font-face {
   font-family: "museo-300";
@@ -769,29 +771,30 @@ body#platform #login .another_login_text a:hover {
 body#platform #login .another_login_text span {
   margin: 0 20px 0 20px;
   display: inline-block;
+  font-family: "Dancing Script", cursive;
 }
-/* line 40, ../../app/stylesheets/_login.sass */
+/* line 41, ../../app/stylesheets/_login.sass */
 body#platform #login .another_social {
   display: none;
   margin-top: 20px;
 }
-/* line 43, ../../app/stylesheets/_login.sass */
+/* line 44, ../../app/stylesheets/_login.sass */
 body#platform #login h1 {
   font-family: "museo-500";
   font-size: 24px;
   padding: 10px;
   margin-bottom: 10px;
 }
-/* line 48, ../../app/stylesheets/_login.sass */
+/* line 49, ../../app/stylesheets/_login.sass */
 body#platform #login form fieldset {
   margin-top: 8px;
   padding: 0;
 }
-/* line 51, ../../app/stylesheets/_login.sass */
+/* line 52, ../../app/stylesheets/_login.sass */
 body#platform #login p {
   margin-top: 20px;
 }
-/* line 54, ../../app/stylesheets/_login.sass */
+/* line 55, ../../app/stylesheets/_login.sass */
 body#platform #login a img {
   width: 60px;
   -moz-transition-property: all;
@@ -803,7 +806,7 @@ body#platform #login a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 57, ../../app/stylesheets/_login.sass */
+/* line 58, ../../app/stylesheets/_login.sass */
 body#platform #login a img:hover, body#platform #login a img:focus {
   -moz-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
@@ -811,12 +814,12 @@ body#platform #login a img:hover, body#platform #login a img:focus {
   -ms-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
-/* line 60, ../../app/stylesheets/_login.sass */
+/* line 61, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 62, ../../app/stylesheets/_login.sass */
+/* line 63, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img:hover, body#platform #login a.disabled img:focus, body#platform #login a.disabled img:active {
   -moz-transform: scale(1, 1);
   -webkit-transform: scale(1, 1);
@@ -824,7 +827,7 @@ body#platform #login a.disabled img:hover, body#platform #login a.disabled img:f
   -ms-transform: scale(1, 1);
   transform: scale(1, 1);
 }
-/* line 64, ../../app/stylesheets/_login.sass */
+/* line 65, ../../app/stylesheets/_login.sass */
 body#platform #login a.close {
   color: white;
   text-decoration: none;
@@ -864,7 +867,7 @@ body#platform #login a.close {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 82, ../../app/stylesheets/_login.sass */
+/* line 83, ../../app/stylesheets/_login.sass */
 body#platform #login a.close:hover, body#platform #login a.close:focus {
   color: white;
   -moz-transform: scale(1.05, 1.05);
@@ -873,7 +876,7 @@ body#platform #login a.close:hover, body#platform #login a.close:focus {
   -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
-/* line 85, ../../app/stylesheets/_login.sass */
+/* line 86, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -894,14 +897,14 @@ body#platform #login .facebook_start {
   text-shadow: black 1px 1px 1px;
   text-align: left;
 }
-/* line 99, ../../app/stylesheets/_login.sass */
+/* line 100, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start:hover, body#platform #login .facebook_start:focus {
   -moz-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -o-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
 }
-/* line 101, ../../app/stylesheets/_login.sass */
+/* line 102, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start:active {
   -moz-box-shadow: black 0px 0px 15px inset !important;
   -webkit-box-shadow: black 0px 0px 15px inset !important;
