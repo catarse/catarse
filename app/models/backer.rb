@@ -88,6 +88,14 @@ class Backer < ActiveRecord::Base
     CreditsMailer.request_refund_from(self).deliver
   end
 
+  def cancel_refund_request!
+    raise I18n.t('credits.cannot_cancel_refund_reques') unless self.requested_refund
+    raise I18n.t('credits.refund.refunded') if self.refunded
+    raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
+    self.update_attribute :requested_refund, false
+    self.user.update_attribute :credits, self.user.credits + self.value    
+  end
+
   def generate_credits!
     return if self.can_refund
     self.user.update_attribute :credits, self.user.credits + self.value

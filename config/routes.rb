@@ -1,5 +1,4 @@
 Catarse::Application.routes.draw do
-
   ActiveAdmin.routes(self)
 
   filter :locale

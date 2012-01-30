@@ -189,6 +189,8 @@ pt:
     edit: Editar
     delete: Remover
     new_model: Novo item
+    edit_model: Editar
+    delete_model: Remover
     search_field: "Buscar: %{field}"
     dashboard: "Painel de controle"
     clear_filters: Limpar filtros
@@ -202,7 +204,7 @@ pt:
   activerecord:
     attributes:
       backer:
-        one: apoio
+        value: valor
       project:
         category: Categoria
         expires_at: Prazo
@@ -228,11 +230,18 @@ pt:
         full_name: "Nome completo"
         phone_number: "Telefone celular"
     models:
+      user: Usuário
       backer: Apoio
       category: Categoria
       project: Projeto
       reward: Recompensa
   backer:
+    value: valor
+    key: chave
+    requested_refund: Estorno solicitado
+    refunded: Estornado
+    cancel_refund_request: Cancelar solicitação de estorno
+    refund_request: Solicitar estorno
     display_confirmed_at: "Há %{time_ago}"
     reward_must_be_from_project: "deve ser do mesmo projeto"
     should_not_back_if_maximum_backers_been_reached: "já atingiu seu número máximo de apoiadores"
