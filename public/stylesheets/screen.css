@@ -739,62 +739,75 @@ body#platform #login {
   text-shadow: black 1px 1px 1px;
 }
 /* line 19, ../../app/stylesheets/_login.sass */
+body#platform #login .hide form {
+  padding: 0 0 0 15px;
+}
+/* line 21, ../../app/stylesheets/_login.sass */
+body#platform #login .hide input[type="text"], body#platform #login .hide input[type="password"] {
+  background: white;
+}
+/* line 26, ../../app/stylesheets/_login.sass */
+body#platform #login #login_form_with_email form .input.check {
+  margin-top: 7px;
+  padding-bottom: 15px;
+}
+/* line 29, ../../app/stylesheets/_login.sass */
 body#platform #login .login_with_email_form {
   text-align: left;
 }
-/* line 21, ../../app/stylesheets/_login.sass */
+/* line 31, ../../app/stylesheets/_login.sass */
 body#platform #login .login_with_email_form .links {
   padding-top: 10px;
 }
-/* line 23, ../../app/stylesheets/_login.sass */
+/* line 33, ../../app/stylesheets/_login.sass */
 body#platform #login .login_with_email_form .links a {
   color: white;
   text-decoration: none;
   font-weight: bold;
 }
-/* line 27, ../../app/stylesheets/_login.sass */
+/* line 37, ../../app/stylesheets/_login.sass */
 body#platform #login .login_with_email_form .links a:hover {
   text-decoration: underline;
 }
-/* line 30, ../../app/stylesheets/_login.sass */
+/* line 40, ../../app/stylesheets/_login.sass */
 body#platform #login .another_login_text a {
   color: white;
   font-weight: bold;
   text-shadow: black 1px 1px 1px;
   text-decoration: none;
 }
-/* line 35, ../../app/stylesheets/_login.sass */
+/* line 45, ../../app/stylesheets/_login.sass */
 body#platform #login .another_login_text a:hover {
   text-decoration: underline;
 }
-/* line 37, ../../app/stylesheets/_login.sass */
+/* line 47, ../../app/stylesheets/_login.sass */
 body#platform #login .another_login_text span {
   margin: 0 20px 0 20px;
   display: inline-block;
   font-family: "Dancing Script", cursive;
 }
-/* line 41, ../../app/stylesheets/_login.sass */
+/* line 51, ../../app/stylesheets/_login.sass */
 body#platform #login .another_social {
   display: none;
   margin-top: 20px;
 }
-/* line 44, ../../app/stylesheets/_login.sass */
+/* line 54, ../../app/stylesheets/_login.sass */
 body#platform #login h1 {
   font-family: "museo-500";
   font-size: 24px;
   padding: 10px;
   margin-bottom: 10px;
 }
-/* line 49, ../../app/stylesheets/_login.sass */
+/* line 59, ../../app/stylesheets/_login.sass */
 body#platform #login form fieldset {
   margin-top: 8px;
   padding: 0;
 }
-/* line 52, ../../app/stylesheets/_login.sass */
+/* line 62, ../../app/stylesheets/_login.sass */
 body#platform #login p {
   margin-top: 20px;
 }
-/* line 55, ../../app/stylesheets/_login.sass */
+/* line 65, ../../app/stylesheets/_login.sass */
 body#platform #login a img {
   width: 60px;
   -moz-transition-property: all;
@@ -806,7 +819,7 @@ body#platform #login a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 58, ../../app/stylesheets/_login.sass */
+/* line 68, ../../app/stylesheets/_login.sass */
 body#platform #login a img:hover, body#platform #login a img:focus {
   -moz-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
@@ -814,12 +827,12 @@ body#platform #login a img:hover, body#platform #login a img:focus {
   -ms-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
-/* line 61, ../../app/stylesheets/_login.sass */
+/* line 71, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 63, ../../app/stylesheets/_login.sass */
+/* line 73, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img:hover, body#platform #login a.disabled img:focus, body#platform #login a.disabled img:active {
   -moz-transform: scale(1, 1);
   -webkit-transform: scale(1, 1);
@@ -827,7 +840,7 @@ body#platform #login a.disabled img:hover, body#platform #login a.disabled img:f
   -ms-transform: scale(1, 1);
   transform: scale(1, 1);
 }
-/* line 65, ../../app/stylesheets/_login.sass */
+/* line 75, ../../app/stylesheets/_login.sass */
 body#platform #login a.close {
   color: white;
   text-decoration: none;
@@ -867,7 +880,7 @@ body#platform #login a.close {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 83, ../../app/stylesheets/_login.sass */
+/* line 93, ../../app/stylesheets/_login.sass */
 body#platform #login a.close:hover, body#platform #login a.close:focus {
   color: white;
   -moz-transform: scale(1.05, 1.05);
@@ -876,7 +889,7 @@ body#platform #login a.close:hover, body#platform #login a.close:focus {
   -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
-/* line 86, ../../app/stylesheets/_login.sass */
+/* line 96, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -897,14 +910,14 @@ body#platform #login .facebook_start {
   text-shadow: black 1px 1px 1px;
   text-align: left;
 }
-/* line 100, ../../app/stylesheets/_login.sass */
+/* line 110, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start:hover, body#platform #login .facebook_start:focus {
   -moz-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -o-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
 }
-/* line 102, ../../app/stylesheets/_login.sass */
+/* line 112, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start:active {
   -moz-box-shadow: black 0px 0px 15px inset !important;
   -webkit-box-shadow: black 0px 0px 15px inset !important;
