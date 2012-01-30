@@ -60,13 +60,29 @@ $("#login_with_another_social").click(function(e){
 
 $("#login_with_mail").click(function(e){
   e.preventDefault();
-  if($('.another_social').css('display') == 'block') {
+  if ($('.another_social').css('display') == 'block') {
     $('.another_social').slideUp('fast', function(){
+      $('#login_form_with_email').slideDown('fast');
+    })
+  } else if ($('#new_email_account').css('display') == 'block') {
+    $('#new_email_account').slideUp('fast', function(){
+      $('#login_form_with_email').slideDown('fast');
+    })
+  } else if ($('#forgot_password_form').css('display') == 'block') {
+    $('#forgot_password_form').slideUp('fast', function(){
       $('#login_form_with_email').slideDown('fast');
     })
   } else {
     $('#login_form_with_email').slideDown('fast');
   }
+
+  // if($('.another_social').css('display') == 'block') {
+  //   $('.another_social').slideUp('fast', function(){
+  //     $('#login_form_with_email').slideDown('fast');
+  //   })
+  // } else {
+  //   $('#login_form_with_email').slideDown('fast');
+  // }
   $('fieldset.remember_me_social').hide();
 });
 

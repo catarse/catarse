@@ -102,12 +102,12 @@ pt:
       invalid_token: "Token de autenticação invalido."
       locked: "Sua conta está bloqueada."
       timeout: "Sua sessão expirou, loge-se novamente para continuar."
-      unauthenticated: "Você precisa fazer login ou inscreva-se antes de continuar."
+      unauthenticated: "Você precisa fazer login ou crie uma conta antes de continuar."
       unconfirmed: "Você tem que confirmar a sua conta antes de continuar."
     links:
-      forgot_password: "Esqueci minha senha"
+      forgot_password: "Esqueceu sua senha?"
       sign_in: "Efetuar login"
-      sign_up: Registre-se
+      sign_up: Cadastre-se
     mailer:
       confirmation_instructions:
         subject: "Instruções de confirmação"
@@ -134,7 +134,7 @@ pt:
       updated: "Você atualizou a sua conta com sucesso."
     sessions:
       new:
-        submit: "Efetuar Acesso"
+        submit: "Efetuar login"
         title: "Entre utilizando o seu endereço de email"
       signed_in: "Logado com sucesso."
       signed_out: "Saiu com sucesso."
@@ -250,7 +250,7 @@ pt:
     tooltip: "Clique para editar..."
   passwords:
     new:
-      submit: "Enviar as intruções para recuperar senha."
+      submit: "Enviar as intruções para recuperar senha"
       title: "Esqueceu sua senha?"
     edit:
       title: 'Definir uma nova senha'
@@ -484,7 +484,7 @@ pt:
       subject_html: "Projeto enviado por %{link}"
   registrations:
     new:
-      submit: "Efetuar Registro"
+      submit: "Efetuar registro"
       title: "Cria uma conta utilizando o seu endereço de email"
   remaining_plural: restantes
   remaining_singular: restante
