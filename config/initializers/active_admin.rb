@@ -74,7 +74,7 @@ ActiveAdmin.setup do |config|
   # by adding them to the comments array.
   #
   # Default:
-  config.allow_comments_in = false
+  config.allow_comments_in = []
 
 
   # == Controller Filters
