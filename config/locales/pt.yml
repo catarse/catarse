@@ -385,8 +385,8 @@ pt:
       help: ajuda
       signup: cadastre-se
       signin: entrar
-      explore: explore projetos
-      submit_project: envie seu projeto
+      explore: explore
+      submit_project: envie
     footer:
       like: curtiu o catarse?
       blog: "Leia o blog"

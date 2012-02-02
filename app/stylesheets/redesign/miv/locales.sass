@@ -1,0 +1,34 @@
+@-webkit-keyframes pulse
+  0%
+    +box-shadow(rgba(0,132,185,.2), 0px, 0px, 12px)
+  50%
+    +box-shadow(rgba(0,132,185,.9), 0px, 0px, 12px)
+  100%
+    +box-shadow(rgba(0,132,185,.2), 0px, 0px, 12px)
+
+#locales
+  +opacity(0.6)
+  position: fixed
+  right: -32px
+  top: 50%
+  margin-top: -94px
+  z-index: 450
+  background-color: #333
+  background-color: rgba(0,0,0,0.8)
+  +border-top-left-radius(6px)
+  +border-bottom-left-radius(6px)
+  padding: 12px
+  padding-bottom: 4px
+  +transition(all,0.3s)
+  &:hover
+    right: 0
+    +opacity(1)
+  &.notify
+    right: 0
+    +opacity(1)
+    -webkit-animation: pulse 1.5s infinite ease-in-out
+  img
+    width: 32px
+    +transition(all,0.3s)
+    &:hover
+      +scale(1.1)
