@@ -376,7 +376,7 @@ pt:
       menu:
         explore: "Explore os projetos"
         login: Entrar
-        signup: Cadastre-se
+        signup: Cadastre-setre-se
         submit: "Envie seu projeto"
       notifications:
         new_curated_pages: "Já conhece os Canais Catárticos? <a href='#curated_pages' id='curated_link'>Olha aqui</a>!"
@@ -387,6 +387,8 @@ pt:
       signin: entrar
       explore: explore
       submit_project: envie
+    recommended_header:
+      title_for_you: recomendado para você
     footer:
       like: curtiu o catarse?
       blog: "Leia o blog"
