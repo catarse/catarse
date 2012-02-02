@@ -1,0 +1,66 @@
+#header
+  width: 981px
+  margin: 0 auto
+  padding-top: 17px
+  display: block
+  .logo
+    width: 164px
+    height: 54px    
+    float: left
+    border: none
+    background: url($images_path+"logo164x54.png") left top no-repeat
+    text-indent: -9999em
+    margin-right: 99px
+  nav
+    a
+      display: inline-block
+      font-family: "Lato-Regular"    
+      text-decoration: none      
+    &.actions
+      float: left
+      margin-top: 19px
+      a        
+        color: $pink
+        font-size: 18px
+        margin-right: 33px
+        &:hover
+          text-decoration: underline
+        &.explore
+          background: url($images_path+"explore_icon21x14.png") left 3px no-repeat
+          text-indent: 30px
+        &.submit_project
+          background: url($images_path+"submit_project_icon25x13.png") left 4px no-repeat
+          text-indent: 30px
+    &.menu
+      float: left
+      margin-top: 19px
+      a
+        color: $ultra_gryn
+        font-size: 14px
+        margin-left: 22px
+        &:hover
+          text-decoration: underline
+  .search
+    float: left
+    margin-top: 18px
+    margin-right: 10px
+    form
+      width: 220px
+      height: 22px
+      +border-radius(5px)
+      border: 1px #ECECEC solid
+      background: white
+      input[type="text"]
+        border: none
+        width: 190px
+        float: left
+        &:focus
+          outline: none        
+      input[type="submit"]
+        background: url($images_path+"search_submit15x15.png") left top no-repeat
+        width: 15px
+        height: 15px
+        border: none
+        text-indent: -9999em
+        float: right
+        margin: 3px 5px 0 0px
