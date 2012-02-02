@@ -377,3 +377,232 @@ body {
   float: right;
   margin: 3px 5px 0 0px;
 }
+
+/* line 1, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header {
+  width: 980px;
+  margin: 15px auto;
+  display: block;
+  clear: both;
+  -moz-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
+  -o-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
+  box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -o-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -khtml-border-radius: 25px;
+  border-radius: 25px;
+}
+/* line 8, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .resume_about {
+  float: left;
+  height: 330px;
+  width: 260px;
+  -moz-border-radius: 25px 0 0 25px;
+  -webkit-border-radius: 25px 0 0 25px;
+  -o-border-radius: 25px 0 0 25px;
+  -ms-border-radius: 25px 0 0 25px;
+  -khtml-border-radius: 25px 0 0 25px;
+  border-radius: 25px 0 0 25px;
+  background: #59af6d;
+}
+/* line 14, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .resume_about h1, #recommended_header .resume_about h4 {
+  margin-left: 28px;
+  width: 220px;
+}
+/* line 17, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .resume_about h1 {
+  margin-top: 28px;
+  display: inline-block;
+  font-family: "Lato-Bold";
+  font-size: 28px;
+  color: white;
+  line-height: 110%;
+}
+/* line 24, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .resume_about h4 {
+  display: inline-block;
+  font-family: Arial;
+  font-size: 16px;
+  color: #333333;
+  line-height: 150%;
+  margin-top: 35px;
+}
+/* line 31, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project {
+  width: 720px;
+  height: 330px;
+  float: left;
+}
+/* line 35, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .video_sample {
+  float: left;
+}
+/* line 37, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .video_sample .video_play {
+  position: absolute;
+  width: 89px;
+  height: 89px;
+  margin: 113px 0 0 206px;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+/* line 43, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .video_sample .video_play:hover {
+  -moz-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  -o-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+}
+/* line 45, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .info {
+  float: left;
+  width: 223px;
+  padding: 23px 0 0 20px;
+  height: 307px;
+  background: #333333;
+  -moz-border-radius: 0 25px 25px 0;
+  -webkit-border-radius: 0 25px 25px 0;
+  -o-border-radius: 0 25px 25px 0;
+  -ms-border-radius: 0 25px 25px 0;
+  -khtml-border-radius: 0 25px 25px 0;
+  border-radius: 0 25px 25px 0;
+}
+/* line 52, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .info h3 {
+  font-family: "Lato-Regular";
+  font-size: 14px;
+  color: #e75297;
+  background: url("/images/catarse/min_star12x11.png") left 3px no-repeat;
+  text-indent: 18px;
+  padding-bottom: 15px;
+}
+/* line 59, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .info h2 {
+  font-family: "Lato-Bold";
+  font-size: 18px;
+}
+/* line 62, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .info h2 a {
+  color: white;
+  text-decoration: none;
+  text-shadow: rgba(0, 0, 0, 0.7) 1px 1px 2px;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+/* line 67, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .info h2 a:hover {
+  text-shadow: #e75297 1px 1px 2px;
+}
+/* line 69, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .info .author {
+  padding: 20px 0;
+}
+/* line 71, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .info .author p {
+  font-family: Arial;
+  font-size: 12px;
+  color: white;
+  line-height: 160%;
+}
+/* line 76, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .info .author p a {
+  color: white;
+  text-decoration: none;
+}
+/* line 79, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .info .author p a:hover {
+  color: #59af6d;
+}
+/* line 82, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .statistics .progress {
+  margin-bottom: 10px;
+  width: 205px;
+  height: 12px;
+  background: white;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  border: 1px #999999 solid;
+}
+/* line 90, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .statistics .progress .bar {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  height: 12px;
+  background: #59af6d;
+}
+/* line 95, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .statistics ul li {
+  float: left;
+  margin-right: 7px;
+  color: white;
+}
+/* line 99, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .statistics ul li strong {
+  font-family: "Lato-Bold";
+  font-size: 12px;
+}
+/* line 102, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .statistics ul li p {
+  font-family: Arial;
+  font-size: 10px;
+  text-transform: upercase;
+}
+/* line 106, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .statistics ul li:last-child, #recommended_header .statistics ul li .last {
+  margin-right: 0;
+}
+/* line 108, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header nav.pagination {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  float: left;
+  width: 100%;
+  margin-top: 70px;
+  padding-top: 15px;
+  border-top: 1px rgba(255, 255, 255, 0.1) solid;
+}
+/* line 118, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header nav.pagination a {
+  color: white;
+  text-decoration: none;
+}
+/* line 121, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header nav.pagination a.prev {
+  float: left;
+}
+/* line 123, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header nav.pagination a.next {
+  margin-right: 15px;
+  float: right;
+}
+/* line 126, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header nav.pagination a:hover {
+  color: #59af6d;
+}

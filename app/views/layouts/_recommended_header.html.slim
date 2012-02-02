@@ -1,0 +1,40 @@
+#recommended_header
+  .resume_about
+    h1= t('projects.index_header.title')
+    h4= t('projects.index_header.subtitle_html')
+  .project
+    .video_sample
+      = link_to image_tag("catarse/play89x89.png"), 'javascript:void(0);', :class => 'video_play'
+      = image_tag "catarse/video_sample_cover477x330.jpg", :width => "477px", :height => "330px"
+    .info
+      h3= t('layouts.recommended_header.title_for_you')
+      h2 
+        = link_to 'javascript:void(0);' do      
+          | Aqui vai o nome do seu 
+          br/
+          | projeto em até 02 linhas
+      .author
+        p
+          | por
+          = link_to " Autor do projeto", 'javascript:void(0);'
+        p= link_to "Rio de janeiro", 'javascript:void(0);'
+      .statistics
+        .progress
+          .bar[style="width: 40%"]
+        ul
+          li
+            strong 90 dias
+            p RESTANTES
+          li
+            strong 40%
+            p LEVANTADOS
+          li.last
+            strong R$ 120.000
+            p ATINGIDOS
+      nav.pagination
+        = link_to "<< Anterior", 'javascript:void(0);', :class => 'prev'
+        = link_to "Próximo >>", 'javascript:void(0);', :class => 'next'
+          
+        
+
+  .clearfix

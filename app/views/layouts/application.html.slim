@@ -27,5 +27,6 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
     = render partial: 'layouts/flash', locals: { flash: flash } unless flash.empty?
     = render 'layouts/locales'
     
-    = render 'layouts/header'    
+    = render 'layouts/header'
+    = render 'layouts/recommended_header'    
     =yield
