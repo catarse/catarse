@@ -32,20 +32,6 @@
           = yield
       #footer= render :partial => "layouts/footer"
     = render '/layouts/login' unless current_user
-- if params[:require_login].present? and params[:require_login].to_s == 'true'
+- if params[:require_login].present? or params[:show_new_user].present?  or params[:show_forgot_password].present?
   :javascript
     $(function(){$("#login_link").click();});
-- elsif params[:show_new_user].present? and params[:show_new_user].to_s == 'true'
-  :javascript
-    $(function(){
-      $("#login_link").click();
-      $('#login_with_mail').click();
-      $('a.new_registration_link').click();
-    });
-- elsif params[:show_forgot_password].present? and params[:show_forgot_password].to_s == 'true'
-  :javascript
-    $(function(){
-      $("#login_link").click();
-      $('#login_with_mail').click();
-      $('a.forgot_password_link').click();
-    });
