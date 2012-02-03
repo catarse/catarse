@@ -102,7 +102,7 @@ pt:
       invalid_token: "Token de autenticação invalido."
       locked: "Sua conta está bloqueada."
       timeout: "Sua sessão expirou, loge-se novamente para continuar."
-      unauthenticated: "Você precisa fazer login ou crie uma conta antes de continuar."
+      unauthenticated: "Você precisa fazer login ou criar uma conta antes de continuar."
       unconfirmed: "Você tem que confirmar a sua conta antes de continuar."
     links:
       forgot_password: "Esqueceu sua senha?"
@@ -225,15 +225,15 @@ pt:
       twitter: "Siga no Twitter"
     login:
       another_social: "Entre com <a href='javascript:void(0);' id='login_with_another_social'>outra rede social</a>"
-      or: 'ou'
-      new_user_from_email: "Entre com <a href='%{login_path}' id='login_with_mail'>seu email</a>"
       description_html: "Nós <strong>nunca</strong> iremos saber sua senha ou qualquer outro dado sigiloso de sua conta na rede social escolhida. Só teremos acesso a informações básicas, como nome, foto e email."
+      have_facebook_account: "Não possui conta no facebook?"
+      login_with_facebook: "entre com sua conta do facebook"
+      new_user_from_email: "Entre com <a href='%{login_path}' id='login_with_mail'>seu email</a>"
+      or: ou
       remember_me: "Lembre-se de mim e mantenha-me conectado."
       tips_html: "<strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta."
       title: "Entre através de sua rede social favorita"
       title_with_email: "Entre utilizando o seu endereço de email"
-      login_with_facebook: 'entre com sua conta do facebook'
-      have_facebook_account: "Não possui conta no facebook?"
     pre_header:
       back_notice_html: "Você apoiou o projeto %{link}. Conte para todo mundo o que você fez!"
       content_html: "Quer saber como apoiar um projeto? %{link} um passo-a-passo que publicamos no nosso blog."
@@ -249,21 +249,16 @@ pt:
     ok: OK
     tooltip: "Clique para editar..."
   passwords:
+    edit:
+      label_new_password: "Nova senha"
+      submit: "Trocar senha"
+      title: "Definir uma nova senha"
+    email:
+      content_html: " <p>Alguém pediu um link para alterar sua senha, e você pode fazer isso através do link abaixo.</p> <p>%{link}</p> <p>Se você não solicitou, por favor ignore este e-mail.</p> <p>Sua senha não vai mudar até que você acessar o link acima e criar um novo.</p> "
+      title: "Instruções para trocar a sua senha."
     new:
       submit: "Enviar as intruções para recuperar senha"
       title: "Esqueceu sua senha?"
-    edit:
-      title: 'Definir uma nova senha'
-      label_new_password: 'Nova senha'
-      submit: 'Trocar senha'
-    email:
-      title: 'Instruções para trocar a sua senha.'
-      content_html: "
-      <p>Alguém pediu um link para alterar sua senha, e você pode fazer isso através do link abaixo.</p>
-      <p>%{link}</p>
-      <p>Se você não solicitou, por favor ignore este e-mail.</p>
-      <p>Sua senha não vai mudar até que você acessar o link acima e criar um novo.</p>
-      "
   payment_stream:
     thank_you:
       error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
@@ -484,8 +479,8 @@ pt:
       subject_html: "Projeto enviado por %{link}"
   registrations:
     new:
-      submit: "Efetuar registro"
-      title: "Cria uma conta utilizando o seu endereço de email"
+      submit: "Criar conta"
+      title: "Criar uma conta utilizando o seu endereço de email"
   remaining_plural: restantes
   remaining_singular: restante
   remove: remover
