@@ -1,4 +1,4 @@
-/* line 17, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 114, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 114, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -707,24 +707,18 @@ body#platform #locales img:hover {
 }
 /* line 45, ../../app/stylesheets/screen.sass */
 body#platform #login {
-  background-color: #44a546;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
-  border: 5px solid white;
+  background: url("/images/bg.jpg") repeat;
+  border: 5px solid #cccccc;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   -o-border-radius: 8px;
   -ms-border-radius: 8px;
   -khtml-border-radius: 8px;
   border-radius: 8px;
-  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
-  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
-  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
-  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -moz-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
   position: absolute;
   top: 30%;
   left: 50%;
@@ -735,79 +729,57 @@ body#platform #login {
   z-index: 500;
   padding: 20px;
   text-align: center;
-  color: white;
-  text-shadow: black 1px 1px 1px;
 }
-/* line 19, ../../app/stylesheets/_login.sass */
+/* line 17, ../../app/stylesheets/_login.sass */
 body#platform #login .hide form {
   padding: 0 0 0 15px;
 }
-/* line 21, ../../app/stylesheets/_login.sass */
-body#platform #login .hide input[type="text"], body#platform #login .hide input[type="password"] {
-  background: white;
-}
-/* line 26, ../../app/stylesheets/_login.sass */
+/* line 22, ../../app/stylesheets/_login.sass */
 body#platform #login #login_form_with_email form .input.check {
   margin-top: 7px;
   padding-bottom: 15px;
 }
-/* line 29, ../../app/stylesheets/_login.sass */
+/* line 25, ../../app/stylesheets/_login.sass */
 body#platform #login .login_with_email_form {
   text-align: left;
 }
-/* line 31, ../../app/stylesheets/_login.sass */
+/* line 27, ../../app/stylesheets/_login.sass */
 body#platform #login .login_with_email_form .links {
   padding-top: 10px;
 }
-/* line 33, ../../app/stylesheets/_login.sass */
-body#platform #login .login_with_email_form .links a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-/* line 37, ../../app/stylesheets/_login.sass */
-body#platform #login .login_with_email_form .links a:hover {
-  text-decoration: underline;
-}
-/* line 40, ../../app/stylesheets/_login.sass */
-body#platform #login .another_login_text a {
-  color: white;
-  font-weight: bold;
-  text-shadow: black 1px 1px 1px;
-  text-decoration: none;
-}
-/* line 45, ../../app/stylesheets/_login.sass */
-body#platform #login .another_login_text a:hover {
-  text-decoration: underline;
-}
-/* line 47, ../../app/stylesheets/_login.sass */
+/* line 30, ../../app/stylesheets/_login.sass */
 body#platform #login .another_login_text span {
   margin: 0 20px 0 20px;
   display: inline-block;
   font-family: "Dancing Script", cursive;
 }
-/* line 51, ../../app/stylesheets/_login.sass */
+/* line 34, ../../app/stylesheets/_login.sass */
 body#platform #login .another_social {
   display: none;
   margin-top: 20px;
 }
-/* line 54, ../../app/stylesheets/_login.sass */
+/* line 37, ../../app/stylesheets/_login.sass */
 body#platform #login h1 {
   font-family: "museo-500";
   font-size: 24px;
   padding: 10px;
   margin-bottom: 10px;
 }
-/* line 59, ../../app/stylesheets/_login.sass */
+/* line 42, ../../app/stylesheets/_login.sass */
 body#platform #login form fieldset {
   margin-top: 8px;
   padding: 0;
 }
-/* line 62, ../../app/stylesheets/_login.sass */
+/* line 45, ../../app/stylesheets/_login.sass */
 body#platform #login p {
   margin-top: 20px;
 }
-/* line 65, ../../app/stylesheets/_login.sass */
+/* line 47, ../../app/stylesheets/_login.sass */
+body#platform #login a {
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 50, ../../app/stylesheets/_login.sass */
 body#platform #login a img {
   width: 60px;
   -moz-transition-property: all;
@@ -819,7 +791,7 @@ body#platform #login a img {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 68, ../../app/stylesheets/_login.sass */
+/* line 53, ../../app/stylesheets/_login.sass */
 body#platform #login a img:hover, body#platform #login a img:focus {
   -moz-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
@@ -827,12 +799,12 @@ body#platform #login a img:hover, body#platform #login a img:focus {
   -ms-transform: scale(1.2, 1.2);
   transform: scale(1.2, 1.2);
 }
-/* line 71, ../../app/stylesheets/_login.sass */
+/* line 56, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 73, ../../app/stylesheets/_login.sass */
+/* line 58, ../../app/stylesheets/_login.sass */
 body#platform #login a.disabled img:hover, body#platform #login a.disabled img:focus, body#platform #login a.disabled img:active {
   -moz-transform: scale(1, 1);
   -webkit-transform: scale(1, 1);
@@ -840,14 +812,15 @@ body#platform #login a.disabled img:hover, body#platform #login a.disabled img:f
   -ms-transform: scale(1, 1);
   transform: scale(1, 1);
 }
-/* line 75, ../../app/stylesheets/_login.sass */
+/* line 60, ../../app/stylesheets/_login.sass */
 body#platform #login a.close {
-  color: white;
+  background: url("/images/bg.jpg") repeat;
   text-decoration: none;
   position: absolute;
   width: 24px;
   height: 24px;
-  border: 3px solid white;
+  border: 3px solid #cccccc;
+  color: #999999;
   -moz-border-radius: 24px;
   -webkit-border-radius: 24px;
   -o-border-radius: 24px;
@@ -859,17 +832,10 @@ body#platform #login a.close {
   margin-top: -15px;
   margin-left: -15px;
   line-height: 22px;
-  background-color: #44a546;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #51c252), color-stop(50%, #49b249), color-stop(100%, #44a546));
-  background-image: -webkit-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: -moz-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: -o-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: -ms-linear-gradient(top, #51c252, #49b249, #44a546);
-  background-image: linear-gradient(top, #51c252, #49b249, #44a546);
-  -moz-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
-  -webkit-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
-  -o-box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
-  box-shadow: 4px -4px 10px rgba(0, 40, 0, 0.75);
+  -moz-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
   font-weight: bold;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -880,16 +846,15 @@ body#platform #login a.close {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 93, ../../app/stylesheets/_login.sass */
+/* line 77, ../../app/stylesheets/_login.sass */
 body#platform #login a.close:hover, body#platform #login a.close:focus {
-  color: white;
   -moz-transform: scale(1.05, 1.05);
   -webkit-transform: scale(1.05, 1.05);
   -o-transform: scale(1.05, 1.05);
   -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
-/* line 96, ../../app/stylesheets/_login.sass */
+/* line 79, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -910,14 +875,14 @@ body#platform #login .facebook_start {
   text-shadow: black 1px 1px 1px;
   text-align: left;
 }
-/* line 110, ../../app/stylesheets/_login.sass */
+/* line 93, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start:hover, body#platform #login .facebook_start:focus {
   -moz-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -o-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
 }
-/* line 112, ../../app/stylesheets/_login.sass */
+/* line 95, ../../app/stylesheets/_login.sass */
 body#platform #login .facebook_start:active {
   -moz-box-shadow: black 0px 0px 15px inset !important;
   -webkit-box-shadow: black 0px 0px 15px inset !important;
@@ -1032,7 +997,7 @@ body#platform #menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -1043,15 +1008,15 @@ body#platform #menu ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #menu ul li:first-child, body#platform #menu ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #menu ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #menu ul li.last {
   padding-right: 0;
 }
@@ -1691,7 +1656,7 @@ body#platform .project_box .project_progress .progress_info ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform .project_box .project_progress .progress_info ul li {
   list-style-image: none;
   list-style-type: none;
@@ -1702,15 +1667,15 @@ body#platform .project_box .project_progress .progress_info ul li {
   padding-left: 4px;
   padding-right: 4px;
 }
-/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform .project_box .project_progress .progress_info ul li:first-child, body#platform .project_box .project_progress .progress_info ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform .project_box .project_progress .progress_info ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform .project_box .project_progress .progress_info ul li.last {
   padding-right: 0;
 }
@@ -2046,7 +2011,7 @@ body#platform #project_description #project_video #project_share ul {
   width: 452px;
   margin: 0 auto;
 }
-/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_video #project_share ul li {
   list-style-image: none;
   list-style-type: none;
@@ -2057,15 +2022,15 @@ body#platform #project_description #project_video #project_share ul li {
   padding-left: 6px;
   padding-right: 6px;
 }
-/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_video #project_share ul li:first-child, body#platform #project_description #project_video #project_share ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_video #project_share ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_video #project_share ul li.last {
   padding-right: 0;
 }
@@ -2264,7 +2229,7 @@ body#platform #project_description #project_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -2275,15 +2240,15 @@ body#platform #project_description #project_menu ul li {
   padding-left: 2px;
   padding-right: 2px;
 }
-/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_menu ul li:first-child, body#platform #project_description #project_menu ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_menu ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #project_description #project_menu ul li.last {
   padding-right: 0;
 }
@@ -3619,7 +3584,7 @@ body#platform #footer #footer_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #footer_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -3630,15 +3595,15 @@ body#platform #footer #footer_menu ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #footer_menu ul li:first-child, body#platform #footer #footer_menu ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #footer_menu ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #footer_menu ul li.last {
   padding-right: 0;
 }
@@ -3668,7 +3633,7 @@ body#platform #footer #social_menu ul {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 60, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 60, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #social_menu ul li {
   list-style-image: none;
   list-style-type: none;
@@ -3679,15 +3644,15 @@ body#platform #footer #social_menu ul li {
   padding-left: 12px;
   padding-right: 12px;
 }
-/* line 48, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 48, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #social_menu ul li:first-child, body#platform #footer #social_menu ul li.first {
   padding-left: 0;
 }
-/* line 49, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 49, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #social_menu ul li:last-child {
   padding-right: 0;
 }
-/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
+/* line 50, ../../../../../../Users/danielweinmann/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body#platform #footer #social_menu ul li.last {
   padding-right: 0;
 }

@@ -1,9 +1,8 @@
 =login
-  background-color: #44A546
-  +linear-gradient(color_stops(#51C252,#49B249,#44A546))
-  border: 5px solid #fff
+  background: url('/images/bg.jpg') repeat
+  border: 5px solid #ccc
   +border-radius(8px)
-  +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)
+  +box-shadow(rgba(0,0,0,0.75),4px,-4px,10px)
   position: absolute
   top: 30%
   left: 50%
@@ -14,13 +13,10 @@
   z-index: 500
   padding: 20px
   text-align: center
-  color: #fff
   .hide
     form
       padding: 0 0 0 15px
     input[type="text"], input[type="password"]
-      background: #fff
-  +text-shadow(black, 1px, 1px, 1px)
   #login_form_with_email
     form
       .input.check
@@ -30,20 +26,7 @@
     text-align: left
     .links
       padding-top: 10px
-      a
-        color: white
-        text-decoration: none
-        font-weight: bold
-        &:hover
-          text-decoration: underline
   .another_login_text
-    a
-      color: white
-      font-weight: bold
-      +text-shadow(black, 1px, 1px, 1px)
-      text-decoration: none
-      &:hover
-        text-decoration: underline
     span
       margin: 0 20px 0 20px
       display: inline-block
@@ -62,6 +45,8 @@
   p
     margin-top: 20px
   a
+    text-decoration: none
+    font-weight: bold
     img
       width: 60px
       +transition(all, 0.3s)
@@ -73,25 +58,23 @@
     img:hover, img:focus, img:active
       +scale(1)
   a.close
-    color: #fff
+    background: url('/images/bg.jpg') repeat
     text-decoration: none
     position: absolute
     width: 24px
     height: 24px
-    border: 3px solid #fff
+    border: 3px solid #ccc
+    color: #999
     +border-radius(24px)
     top: 0
     left: 100%
     margin-top: -15px
     margin-left: -15px
     line-height: 22px
-    background-color: #44A546
-    +linear-gradient(color_stops(#51C252,#49B249,#44A546))
-    +box-shadow(rgba(0,40,0,0.75),4px,-4px,10px)
+    +box-shadow(rgba(0,0,0,0.75),4px,-4px,10px)
     font-weight: bold
     +transition(all, 0.3s)
   a.close:hover, a.close:focus
-    color: #fff
     +scale(1.05)
   .facebook_start
     +border-radius(4px)
