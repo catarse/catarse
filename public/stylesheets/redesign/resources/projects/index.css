@@ -1,0 +1,5 @@
+/* line 2, ../../../../../app/stylesheets/redesign/resources/projects/index.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content {
+  width: 740px;
+  float: left;
+}

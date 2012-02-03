@@ -4,6 +4,10 @@ Syntax error: Undefined variable: "$images_path".
 
 1: body
 2:   background: url($images_path+'background_full.jpg') left top repeat-x #E7E7DE
+3:   #main_content
+4:     width: 981px
+5:     margin: 0 auto
+6:     display: block
 
 Backtrace:
 /Users/ton/code/store/catarse/app/stylesheets/redesign/content/body.sass:2
@@ -95,4 +99,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$images_path\".\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/body.sass\A \A 1: body\A 2:   background: url($images_path+'background_full.jpg') left top repeat-x #E7E7DE"; }
+  content: "Syntax error: Undefined variable: \"$images_path\".\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/body.sass\A \A 1: body\A 2:   background: url($images_path+'background_full.jpg') left top repeat-x #E7E7DE\A 3:   #main_content\A 4:     width: 981px\A 5:     margin: 0 auto\A 6:     display: block"; }

@@ -1,12 +1,8 @@
 #page_content
-  .section_header
-    h1= t('projects.index_header.title')
-    h4= t('projects.index_header.subtitle_html')
-
-  = render :partial => 'project', :locals => {:project => @recommended_project, :has_comments => true, :comments_title => 'Recomendado para você'} if @recommended_project
-  = render :partial => 'project', :locals => {:project => @project_of_day, :has_comments => true, :comments_title => 'Projeto do dia'} if @project_of_day
-  = render :partial => 'project', :locals => {:project => @second_project, :has_comments => true} if @second_project
-  = render :partial => 'project', :locals => {:project => @third_project, :has_comments => true} if @third_project
+  /= render :partial => 'project', :locals => {:project => @recommended_project, :has_comments => true, :comments_title => 'Recomendado para você'} if @recommended_project
+  /= render :partial => 'project', :locals => {:project => @project_of_day, :has_comments => true, :comments_title => 'Projeto do dia'} if @project_of_day
+  /= render :partial => 'project', :locals => {:project => @second_project, :has_comments => true} if @second_project
+  /= render :partial => 'project', :locals => {:project => @third_project, :has_comments => true} if @third_project
   - unless @recommended_project
     = render :partial => 'project', :locals => {:project => @fourth_project, :has_comments => true} if @fourth_project
 

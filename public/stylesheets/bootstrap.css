@@ -274,6 +274,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {
   background: url("/images/catarse/background_full.jpg") left top repeat-x #e7e7de;
 }
+/* line 3, ../../app/stylesheets/redesign/content/body.sass */
+body #main_content {
+  width: 981px;
+  margin: 0 auto;
+  display: block;
+}
 
 /* line 1, ../../app/stylesheets/redesign/content/header.sass */
 #header {
@@ -605,4 +611,10 @@ body {
 /* line 126, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header nav.pagination a:hover {
   color: #59af6d;
+}
+
+/* line 2, ../../app/stylesheets/redesign/resources/projects/index.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content {
+  width: 740px;
+  float: left;
 }
