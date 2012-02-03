@@ -102,7 +102,7 @@ en:
       invalid_token: "Invalid authentication token."
       locked: "Your account is locked."
       timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need authenticate before you continue."
+      unauthenticated: "You need to sign up or sign in to continue."
       unconfirmed: "You have to confirm your account before continuing."
     links:
       forgot_password: "Forgot your password?"
@@ -208,8 +208,8 @@ en:
     application:
       menu:
         explore: "Explore the projects"
-        login: Login
-        signup: Signup
+        login: "Sign in"
+        signup: "Sign up"
         submit: "Submit your project"
       notifications:
         new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check out</a>!"
@@ -224,9 +224,9 @@ en:
       terms: "Terms of use"
       twitter: "Our Twitter"
     login:
-      another_social: "Sign in with <a href='javascript:void(0);' id='login_with_another_social'>another social network</a>"
+      another_social: "Sign in with <a href='javascript:void(0);' id='login_with_another_social'>another service</a>"
       description_html: "We will <strong>never</strong> know your password or any other secret data from the chosen social network. We will only have access to your basic information, like name, photo and email."
-      have_facebook_account: "Don't have a facebook account?"
+      have_facebook_account: "Does not have a facebook account?"
       login_with_facebook: "sign in with your facebook account"
       new_user_from_email: "Sign in with <a href='%{login_path}' id='login_with_mail'>your email</a>"
       or: or
@@ -257,7 +257,7 @@ en:
       content_html: " <p>Someone has requested a link to change your password, and you can do this through the link below.</p><p>%{link}</p><p>If you didn't request this, please ignore this email.</p><p>Your password won't change until you access the link above and create a new one.</p> "
       title: "Reset password instructions."
     new:
-      submit: "Send reset password instructions."
+      submit: "Send instructions to reset my password"
       title: "Forgot password?"
   payment_stream:
     thank_you:
