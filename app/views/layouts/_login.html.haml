@@ -19,7 +19,7 @@
         %fieldset.remember_me_social
           = check_box_tag 'remember_me', "1", true
           = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
-    #new_email_account.hide
+    #new_email_account{:class=>"#{(params[:show_new_user].present? ? "" : "hide")}"}
       = form_for(User.new, :as => :user, :url => registration_path(:user), :html => {:class => 'login_with_email_form'}) do |f|
         %p.input
           = f.label :email
@@ -36,7 +36,7 @@
           = link_to t('devise.links.sign_in'), 'javascript:void(0);', :class => 'new_session_link'
           %br/
           = link_to t('devise.links.forgot_password'), new_password_path(:user), :class => 'forgot_password_link'
-    #login_form_with_email.hide
+    #login_form_with_email{:class=>"#{(params[:require_login].present? ? "" : "hide")}"}
       = form_for(User.new, :as => :user, :url => session_path(:user), :html => {:class => 'login_with_email_form'}) do |f|
         %p.input
           = f.label :email
@@ -53,7 +53,7 @@
           = link_to t('devise.links.sign_up'), 'javascript:void(0);', :class => 'new_registration_link'
           %br/
           = link_to t('devise.links.forgot_password'), new_password_path(:user), :class => 'forgot_password_link'
-    #forgot_password_form.hide
+    #forgot_password_form{:class=>"#{(params[:show_forgot_password].present? ? "" : "hide")}"}
       = form_for(User.new, :as => :user, :url => password_path(:user), :html => {:method => :post, :class => 'login_with_email_form'}) do |f|
         %p.input
           = f.label :email
