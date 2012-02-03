@@ -34,7 +34,7 @@ $('a.provider').click(function(e){
     return
   $('a.provider').addClass('disabled')
   $('#provider').val($(this).attr('href'))
-  $('#login form').submit()
+  $('#login #social_info form').submit()
 })
 
 $("#login_with_another_social").click(function(e){
