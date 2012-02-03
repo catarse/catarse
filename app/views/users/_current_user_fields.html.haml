@@ -2,7 +2,7 @@
   = link_to 'http://gravatar.com/', :target => :_blank do
     = image_tag 'gravatar.png', :id => 'gravatar_logo'
   = t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
-%h1 Meus dados
+%h1= t('.my_data')
 %ul
   %li
     #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
@@ -13,8 +13,7 @@
     = label_tag 'newsletter', t('.newsletter')
 %hr
 - if @user.is_devise?
-  %h1 Alterar minha senha
-  %hr
+  %h1= t('.change_password')
   %ul
     %li
       = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put, :class => 'skip_feed_event' }) do |f|
