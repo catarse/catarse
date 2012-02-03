@@ -479,8 +479,8 @@ pt:
       subject_html: "Projeto enviado por %{link}"
   registrations:
     new:
-      submit: "Criar conta"
-      title: "Criar uma conta utilizando o seu endereço de email"
+      submit: "Efetuar registro"
+      title: "Cria uma conta utilizando o seu endereço de email"
   remaining_plural: restantes
   remaining_singular: restante
   remove: remover
@@ -544,12 +544,14 @@ pt:
       title_current_user: "Projetos que já apoiei"
       your_reward: "Sua recompensa"
     current_user_fields:
-      current_password_hint: "<i>(para que a senha seja alterada você precisa confirmar a sua senha atual.)</i>"
+      current_password_hint: "<i>Para que a senha seja alterada você precisa confirmar a sua senha atual.</i>"
       email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas."
       email_tooltip: "Clique aqui para preencher seu email..."
       gravatar_hint_html: "Quer mudar sua foto? Use o %{link} com seu email. É tão simples quanto enviar uma imagem e já funciona para outros sites também ;)"
       newsletter: "Quero receber novidades do Catarse por email"
-      password_hint: "<i>(deixe em branco caso você não queira trocar sua senha.)</i>"
+      password_hint: "<i>Deixe em branco caso você não queira trocar sua senha.</i>"
+      change_password: "Alterar minha senha"
+      my_data: "Meus dados"
     header:
       bio_tooltip: "Clique aqui para escrever sobre você..."
       name_tooltip: "Clique aqui para preencher seu nome..."
