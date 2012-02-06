@@ -134,6 +134,7 @@ pt:
       updated: "Você atualizou a sua conta com sucesso."
     sessions:
       new:
+        site_title: "Efetuar login"        
         submit: "Efetuar login"
         title: "Entre utilizando o seu endereço de email"
       signed_in: "Login realizado com sucesso. Seja bem-vindo!"
@@ -253,12 +254,14 @@ pt:
       label_new_password: "Nova senha"
       submit: "Trocar senha"
       title: "Definir uma nova senha"
+      site_title: "Definir nova senha"
     email:
       content_html: " <p>Para redefinir sua senha, clique no link abaixo.</p> <p>%{link}</p> <p>Se você não solicitou esta alteração, por favor ignore este email.</p> <p>Sua senha não vai mudar até você acessar o link acima e definir uma nova senha.</p> "
       title: "Instruções para trocar a sua senha"
     new:
       submit: "Enviar as intruções para recuperar senha"
       title: "Esqueceu sua senha?"
+      site_title: "Recuperar senha"
   payment_stream:
     thank_you:
       error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
@@ -479,8 +482,9 @@ pt:
       subject_html: "Projeto enviado por %{link}"
   registrations:
     new:
+      site_title: "Cadastre-se"
       submit: "Efetuar cadastro"
-      title: "Cria uma conta utilizando o seu endereço de email"
+      title: "Criar uma conta utilizando o seu endereço de email"
   remaining_plural: restantes
   remaining_singular: restante
   remove: remover
