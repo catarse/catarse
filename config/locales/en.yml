@@ -545,13 +545,13 @@ en:
       your_reward: "Your reward"
     current_user_fields:
       change_password: "Change my password"
-      current_password_hint: "<i>(we need your current password to confirm your changes)</i>"
+      current_password_hint: "<i>We need your current password to confirm your changes.</i>"
       email_hint: "Your email will only be used for communications from Catarse and from the projects you back. It won't be visible in your profile. When you back a project, we will give your email to the project owner so he can provide your rewards."
       email_tooltip: "Click here to fill your email..."
       gravatar_hint_html: "Want to change your picture? Use %{link} with your email. It's as simple as uploading an image and works for other sites as well ;)"
       my_data: "My profile"
       newsletter: "I want to receive news from Catarse via email"
-      password_hint: "<i>(leave blank if you don't want to change it)</i>"
+      password_hint: "<i>Leave blank if you don't want to change it.</i>"
     header:
       bio_tooltip: "Click here to write about you..."
       name_tooltip: "Click here to fill your name..."
