@@ -36,7 +36,7 @@
           = link_to t('devise.links.sign_in'), 'javascript:void(0);', :class => 'new_session_link'
           %br/
           = link_to t('devise.links.forgot_password'), new_password_path(:user), :class => 'forgot_password_link'
-    #login_form_with_email{:class=>"#{(params[:require_login].present? ? "" : "hide")}"}
+    #login_form_with_email.hide
       = form_for(User.new, :as => :user, :url => session_path(:user), :html => {:class => 'login_with_email_form'}) do |f|
         %p.input
           = f.label :email
