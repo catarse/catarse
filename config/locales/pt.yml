@@ -92,13 +92,13 @@ pt:
       reached: atingido
   devise:
     confirmations:
-      confirmed: "Sua conta foi confirmada com sucesso. Você está logado agora."
+      confirmed: "Sua conta foi confirmada com sucesso. Você está logado a partir de agora."
       send_instructions: "Você receberá um email com instruções sobre como confirmar a sua conta em poucos minutos."
       send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um email com instruções sobre como confirmar a sua conta em poucos minutos."
     failure:
       already_authenticated: "Você já está logado."
       inactive: "Sua conta ainda não foi ativada."
-      invalid: "Email ou Senha invalidos."
+      invalid: "Email ou senha inválidos."
       invalid_token: "Token de autenticação invalido."
       locked: "Sua conta está bloqueada."
       timeout: "Sua sessão expirou, loge-se novamente para continuar."
@@ -112,16 +112,16 @@ pt:
       confirmation_instructions:
         subject: "Instruções de confirmação"
       reset_password_instructions:
-        subject: "Instruções para resetar sua senha"
+        subject: "Instruções para redefinir sua senha"
       unlock_instructions:
         subject: "Instruções para desbloquear conta"
     omniauth_callbacks:
-      failure: "Não poderia autorizá-lo a partir de %{kind} porque \"%{reason}\"."
-      success: "Autorizado com sucesso a partir de %{kind} conta."
+      failure: "Não foi possível autenticá-lo a partir de %{kind} porque \"%{reason}\"."
+      success: "Autenticado com sucesso a partir de %{kind} conta."
     passwords:
-      send_instructions: "Você receberá um email com instruções sobre como redefinir sua senha em alguns minutos."
-      send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um link de recuperação de senha em seu e-mail."
-      updated: "Sua senha foi alterada com sucesso. Você está logado agora."
+      send_instructions: "Você receberá um email com instruções para redefinir sua senha em alguns minutos."
+      send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um link para recuperação de senha em seu e-mail."
+      updated: "Sua senha foi alterada com sucesso. Você está logado a partir de agora."
       updated_not_active: "Sua senha foi alterada com sucesso."
     registrations:
       destroyed: "Bye! Sua conta foi cancelada com sucesso. Nós esperamos vê-lo novamente em breve."
@@ -136,12 +136,12 @@ pt:
       new:
         submit: "Efetuar login"
         title: "Entre utilizando o seu endereço de email"
-      signed_in: "Logado com sucesso."
-      signed_out: "Saiu com sucesso."
+      signed_in: "Login realizado com sucesso. Seja bem-vindo!"
+      signed_out: "Logout realizado com sucesso. Até logo!"
     unlocks:
       send_instructions: "Você receberá um email com instruções sobre como desbloquear a sua conta em poucos minutos."
       send_paranoid_instructions: "Se a sua conta existe, você receberá um email com instruções sobre como desbloqueá-lo em poucos minutos."
-      unlocked: "Sua conta foi desbloqueado com sucesso. Você está logado agora."
+      unlocked: "Sua conta foi desbloqueada com sucesso. Você está logado a partir de agora."
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
   errors:
     messages:
@@ -254,8 +254,8 @@ pt:
       submit: "Trocar senha"
       title: "Definir uma nova senha"
     email:
-      content_html: " <p>Alguém pediu um link para alterar sua senha, e você pode fazer isso através do link abaixo.</p> <p>%{link}</p> <p>Se você não solicitou, por favor ignore este e-mail.</p> <p>Sua senha não vai mudar até que você acessar o link acima e criar um novo.</p> "
-      title: "Instruções para trocar a sua senha."
+      content_html: " <p>Para redefinir sua senha, clique no link abaixo.</p> <p>%{link}</p> <p>Se você não solicitou esta alteração, por favor ignore este email.</p> <p>Sua senha não vai mudar até você acessar o link acima e definir uma nova senha.</p> "
+      title: "Instruções para trocar a sua senha"
     new:
       submit: "Enviar as intruções para recuperar senha"
       title: "Esqueceu sua senha?"
@@ -479,13 +479,13 @@ pt:
       subject_html: "Projeto enviado por %{link}"
   registrations:
     new:
-      submit: "Efetuar registro"
+      submit: "Efetuar cadastro"
       title: "Cria uma conta utilizando o seu endereço de email"
   remaining_plural: restantes
   remaining_singular: restante
   remove: remover
   require_admin: "Você precisa ser admin para realizar esta ação."
-  require_login: "Você precisa estar logado para realizar esta ação."
+  require_login: "Você precisa estar autenticado para realizar esta ação."
   require_permission: "Você não tem permissão para realizar esta ação."
   reward:
     display_remaining: "%{remaining} de %{maximum} disponíveis"
@@ -544,14 +544,14 @@ pt:
       title_current_user: "Projetos que já apoiei"
       your_reward: "Sua recompensa"
     current_user_fields:
+      change_password: "Alterar minha senha"
       current_password_hint: "<i>Para que a senha seja alterada você precisa confirmar a sua senha atual.</i>"
       email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas."
       email_tooltip: "Clique aqui para preencher seu email..."
       gravatar_hint_html: "Quer mudar sua foto? Use o %{link} com seu email. É tão simples quanto enviar uma imagem e já funciona para outros sites também ;)"
+      my_data: "Meus dados"
       newsletter: "Quero receber novidades do Catarse por email"
       password_hint: "<i>Deixe em branco caso você não queira trocar sua senha.</i>"
-      change_password: "Alterar minha senha"
-      my_data: "Meus dados"
     header:
       bio_tooltip: "Clique aqui para escrever sobre você..."
       name_tooltip: "Clique aqui para preencher seu nome..."
