@@ -27,6 +27,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   }),
 
   BackersView: CATARSE.PaginatedView.extend({
+		template: _.template(this.$('#backers_template').html()),
     emptyTemplate: _.template(this.$('#empty_backers_template').html())
   }),
 
@@ -47,7 +48,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     this.selectItem("backers")
     this.backersView = new this.BackersView({
       modelView: this.BackerView,
-      collection: this.project.backers,
+      collection: new CATARSE.Backers({url: '/' + CATARSE.locale + '/projects/' + this.project.id + '/backers'}),
       loading: this.$("#loading"),
       el: this.$("#project_backers")
     })

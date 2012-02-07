@@ -42,7 +42,7 @@ CATARSE.PaginatedView = Backbone.View.extend({
   },
 
   render: function() {
-    this.el.html("")
+    this.el.html(this.template())
     return this
   },
 
@@ -55,12 +55,11 @@ CATARSE.PaginatedView = Backbone.View.extend({
   update: function(){
     this.beforeUpdate()
     this.loading.children().hide()
+		ul_element = this.el.find("ul.collection_list")
     if(!this.collection.isEmpty()) {
-      this.collection_list = $('<ul class="collection_list">')
-      this.el.append(this.collection_list)
       this.collection.each(function(model, i){
         var item = $("<li class='"+(i%3==0?'first':'')+""+(i%3==2?'last':'')+"'>")
-        this.collection_list.append(item)
+        ul_element.append(item)
         new this.modelView({el: item, model: model})
       }, this)
     } else if(this.collection.page == 1) {
