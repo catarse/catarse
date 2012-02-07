@@ -24,7 +24,6 @@ pt:
         maximum_backers: "Máximo de apoiadores"
         minimum_value: "Valor mínimo"
       user:
-        cpf: CPF
         address_city: Cidade
         address_complement: Complemento
         address_neighbourhood: Bairro
@@ -32,8 +31,12 @@ pt:
         address_state: Estado
         address_street: Logradouro
         address_zip_code: CEP
+        cpf: CPF
+        current_password: "Senha atual"
         email: Email
         full_name: "Nome completo"
+        password: Senha
+        password_confirmation: "Confirmação de senha"
         phone_number: "Telefone celular"
     models:
       backer: Apoiador
@@ -87,7 +90,70 @@ pt:
     show:
       backed: levantados
       reached: atingido
+  devise:
+    confirmations:
+      confirmed: "Sua conta foi confirmada com sucesso. Você está logado a partir de agora."
+      send_instructions: "Você receberá um email com instruções sobre como confirmar a sua conta em poucos minutos."
+      send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um email com instruções sobre como confirmar a sua conta em poucos minutos."
+    failure:
+      already_authenticated: "Você já está logado."
+      inactive: "Sua conta ainda não foi ativada."
+      invalid: "Email ou senha inválidos."
+      invalid_token: "Token de autenticação invalido."
+      locked: "Sua conta está bloqueada."
+      timeout: "Sua sessão expirou, loge-se novamente para continuar."
+      unauthenticated: "Você precisa fazer login ou criar uma conta antes de continuar."
+      unconfirmed: "Você tem que confirmar a sua conta antes de continuar."
+    links:
+      forgot_password: "Esqueceu sua senha?"
+      sign_in: "Efetuar login"
+      sign_up: Cadastre-se
+    mailer:
+      confirmation_instructions:
+        subject: "Instruções de confirmação"
+      reset_password_instructions:
+        subject: "Instruções para redefinir sua senha"
+        alt: "Instruções para redefinir sua senha"
+      unlock_instructions:
+        subject: "Instruções para desbloquear conta"
+    omniauth_callbacks:
+      failure: "Não foi possível autenticá-lo a partir de %{kind} porque \"%{reason}\"."
+      success: "Autenticado com sucesso a partir de %{kind} conta."
+    passwords:
+      send_instructions: "Você receberá um email com instruções para redefinir sua senha em alguns minutos."
+      send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um link para recuperação de senha em seu e-mail."
+      updated: "Sua senha foi alterada com sucesso. Você está logado a partir de agora."
+      updated_not_active: "Sua senha foi alterada com sucesso."
+    registrations:
+      destroyed: "Bye! Sua conta foi cancelada com sucesso. Nós esperamos vê-lo novamente em breve."
+      inactive_signed_up: "Você se registrou com sucesso. No entanto, não poderia efetuar login porque a sua conta é %{reason}."
+      reasons:
+        inactive: inativo
+        locked: bloqueado
+        unconfirmed: "não confirmado"
+      signed_up: "Bem vindo! Você se registrou com sucesso."
+      updated: "Você atualizou a sua conta com sucesso."
+    sessions:
+      new:
+        site_title: "Efetuar login"        
+        submit: "Efetuar login"
+        title: "Entre utilizando o seu endereço de email"
+      signed_in: "Login realizado com sucesso. Seja bem-vindo!"
+      signed_out: "Logout realizado com sucesso. Até logo!"
+    unlocks:
+      send_instructions: "Você receberá um email com instruções sobre como desbloquear a sua conta em poucos minutos."
+      send_paranoid_instructions: "Se a sua conta existe, você receberá um email com instruções sobre como desbloqueá-lo em poucos minutos."
+      unlocked: "Sua conta foi desbloqueada com sucesso. Você está logado a partir de agora."
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
+  errors:
+    messages:
+      already_confirmed: "já foi confirmado, por favor tente entrar"
+      expired: "expirou, por favor, solicitar uma nova"
+      not_found: "não encontrado"
+      not_locked: "não foi bloqueado"
+      not_saved:
+        one: "1 erro proibido este %{resource} de ser salvo:"
+        other: "%{count} erros proibido este %{resource} de ser salvo:"
   explore:
     index:
       categories: Categorias
@@ -160,10 +226,16 @@ pt:
       terms: "Termos de uso"
       twitter: "Siga no Twitter"
     login:
+      another_social: "Entre com <a href='javascript:void(0);' id='login_with_another_social'>outra rede social</a>"
       description_html: "Nós <strong>nunca</strong> iremos saber sua senha ou qualquer outro dado sigiloso de sua conta na rede social escolhida. Só teremos acesso a informações básicas, como nome, foto e email."
+      have_facebook_account: "Não possui conta no facebook?"
+      login_with_facebook: "entre com sua conta do facebook"
+      new_user_from_email: "Entre com <a href='%{login_path}' id='login_with_mail'>seu email</a>"
+      or: ou
       remember_me: "Lembre-se de mim e mantenha-me conectado."
       tips_html: "<strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta."
       title: "Entre através de sua rede social favorita"
+      title_with_email: "Entre utilizando o seu endereço de email"
     pre_header:
       back_notice_html: "Você apoiou o projeto %{link}. Conte para todo mundo o que você fez!"
       content_html: "Quer saber como apoiar um projeto? %{link} um passo-a-passo que publicamos no nosso blog."
@@ -178,6 +250,20 @@ pt:
     cancel: Cancelar
     ok: OK
     tooltip: "Clique para editar..."
+  passwords:
+    edit:
+      label_new_password: "Nova senha"
+      submit: "Trocar senha"
+      title: "Definir uma nova senha"
+      site_title: "Definir nova senha"
+      subtitle: "Você solicitou para redefinir sua senha. Preencha sua nova senha abaixo e clique em \"Trocar senha\". Caso você não tenha solicitado esta redefinição de senha, apenas ignore esta página e sua senha permanecerá a mesma."
+    email:
+      content_html: " <p>Para redefinir sua senha, clique no link abaixo.</p> <p>%{link}</p> <p>Se você não solicitou esta alteração, por favor ignore este email.</p> <p>Sua senha não vai mudar até você acessar o link acima e definir uma nova senha.</p> "
+      title: "Instruções para trocar a sua senha"
+    new:
+      submit: "Enviar as instruções para recuperar senha"
+      title: "Esqueceu sua senha?"
+      site_title: "Recuperar senha"
   payment_stream:
     thank_you:
       error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
@@ -205,6 +291,27 @@ pt:
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
   projects:
+    admin_fields:
+      title: "Campos para o admin"
+    back_project:
+      backed_plural: apoiaram
+      backed_singular: apoiou
+      has: já
+      person: Pessoa
+      project_warning:
+        not_successful:
+          expired: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
+          not_expired: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
+        successful:
+          expired: "Este projeto foi bem-sucedido e foi financiado em %{date}"
+          not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
+        waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
+      reached_of: "Atingidos de"
+      submit: "Quero apoiar este projeto"
+    backer:
+      anonymous_backer: "Apoiador anônimo"
+      anonymous_description: "Optou por permanecer incógnito"
+      no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
       checkout:
         moip_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
@@ -237,27 +344,6 @@ pt:
         subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
         title: "Preencha e revise seus dados"
         you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
-    admin_fields:
-      title: "Campos para o admin"
-    back_project:
-      backed_plural: apoiaram
-      backed_singular: apoiou
-      has: já
-      person: Pessoa
-      project_warning:
-        not_successful:
-          expired: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
-          not_expired: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
-        successful:
-          expired: "Este projeto foi bem-sucedido e foi financiado em %{date}"
-          not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
-        waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
-      reached_of: "Atingidos de"
-      submit: "Quero apoiar este projeto"
-    backer:
-      anonymous_backer: "Apoiador anônimo"
-      anonymous_description: "Optou por permanecer incógnito"
-      no_reward: "Este apoiador não selecionou nenhuma recompensa"
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
     curated_pages_list:
@@ -396,11 +482,16 @@ pt:
     start_project_email:
       subject: "Projeto enviado por %{name}"
       subject_html: "Projeto enviado por %{link}"
+  registrations:
+    new:
+      site_title: "Cadastre-se"
+      submit: "Efetuar cadastro"
+      title: "Criar uma conta utilizando o seu endereço de email"
   remaining_plural: restantes
   remaining_singular: restante
   remove: remover
   require_admin: "Você precisa ser admin para realizar esta ação."
-  require_login: "Você precisa estar logado para realizar esta ação."
+  require_login: "Você precisa estar autenticado para realizar esta ação."
   require_permission: "Você não tem permissão para realizar esta ação."
   reward:
     display_remaining: "%{remaining} de %{maximum} disponíveis"
@@ -415,6 +506,7 @@ pt:
     failure:
       error: "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
   site:
+    host: "catarse.me"
     base_url: "http://catarse.me"
     blog: "http://blog.catarse.me/"
     email:
@@ -459,10 +551,14 @@ pt:
       title_current_user: "Projetos que já apoiei"
       your_reward: "Sua recompensa"
     current_user_fields:
+      change_password: "Alterar minha senha"
+      current_password_hint: "<i>Para que a senha seja alterada você precisa confirmar a sua senha atual.</i>"
       email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas."
       email_tooltip: "Clique aqui para preencher seu email..."
       gravatar_hint_html: "Quer mudar sua foto? Use o %{link} com seu email. É tão simples quanto enviar uma imagem e já funciona para outros sites também ;)"
+      my_data: "Meus dados"
       newsletter: "Quero receber novidades do Catarse por email"
+      password_hint: "<i>Deixe em branco caso você não queira trocar sua senha.</i>"
     header:
       bio_tooltip: "Clique aqui para escrever sobre você..."
       name_tooltip: "Clique aqui para preencher seu nome..."
