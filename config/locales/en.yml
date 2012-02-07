@@ -505,6 +505,7 @@ en:
     failure:
       error: "There was an error while loggin in. Please try again."
   site:
+    host: catarse.me
     base_url: "http://catarse.me"
     blog: "http://blog.catarse.me/"
     email:
