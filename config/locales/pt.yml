@@ -113,6 +113,7 @@ pt:
         subject: "Instruções de confirmação"
       reset_password_instructions:
         subject: "Instruções para redefinir sua senha"
+        alt: "Instruções para redefinir sua senha"
       unlock_instructions:
         subject: "Instruções para desbloquear conta"
     omniauth_callbacks:
@@ -260,7 +261,7 @@ pt:
       content_html: " <p>Para redefinir sua senha, clique no link abaixo.</p> <p>%{link}</p> <p>Se você não solicitou esta alteração, por favor ignore este email.</p> <p>Sua senha não vai mudar até você acessar o link acima e definir uma nova senha.</p> "
       title: "Instruções para trocar a sua senha"
     new:
-      submit: "Enviar as intruções para recuperar senha"
+      submit: "Enviar as instruções para recuperar senha"
       title: "Esqueceu sua senha?"
       site_title: "Recuperar senha"
   payment_stream:
