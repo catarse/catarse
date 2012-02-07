@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    return redirect_to destroy_user_session_path if current_user.provider == 'devise'
+    return redirect_to destroy_user_session_path if current_user and current_user.provider == 'devise'
     session[:user_id] = nil
     cookies.delete :remember_me_id if cookies[:remember_me_id]
     cookies.delete :remember_me_hash if cookies[:remember_me_hash]
