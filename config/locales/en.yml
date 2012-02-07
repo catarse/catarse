@@ -113,6 +113,7 @@ en:
         subject: "Confirmation instructions"
       reset_password_instructions:
         subject: "Reset password instructions"
+        alt: ~
       unlock_instructions:
         subject: "Unlock Instructions"
     omniauth_callbacks:
