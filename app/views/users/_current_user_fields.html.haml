@@ -19,8 +19,6 @@
       = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put, :class => 'skip_feed_event' }) do |f|
         = f.label :password, t('passwords.edit.label_new_password')
         = f.password_field :password, :class=>'empty'
-        %br/
-        %span.hint= t('.password_hint').html_safe
         = f.label :password_confirmation
         = f.password_field :password_confirmation, :class=>'empty'
         = f.label :current_password
