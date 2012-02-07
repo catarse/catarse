@@ -44,10 +44,14 @@ gem 'enumerate_it'
 gem 'httparty', '~> 0.8.1'
 gem "rack-timeout"
 gem 'web_translate_it'
+
 gem 'kaminari'
 gem 'tumblr-api'
 gem 'compass-960-plugin'
 gem 'dalli'
+
+gem "devise"
+
 
 group :development do
   gem 'thin'
