@@ -134,6 +134,7 @@ en:
       updated: "You updated your account successfully."
     sessions:
       new:
+        site_title: "Sign in"
         submit: "Sign in"
         title: "Sign in using your email"
       signed_in: "Signed in successfully."
@@ -253,12 +254,15 @@ en:
       label_new_password: "New password"
       submit: "Change password"
       title: "Reset password"
+      site_title: "Change password"
+      subtitle: "You requested to reset your password. Fill your new password below and click \"Change Password\". If you did not request this password reset, just skip this page and your password will remain the same."
     email:
       content_html: " <p>Someone has requested a link to change your password, and you can do this through the link below.</p><p>%{link}</p><p>If you didn't request this, please ignore this email.</p><p>Your password won't change until you access the link above and create a new one.</p> "
       title: "Reset password instructions."
     new:
       submit: "Send instructions to reset my password"
       title: "Forgot password?"
+      site_title: "Recover password"
   payment_stream:
     thank_you:
       error: "Ooops. You can only access this page after backing a project."
@@ -479,6 +483,7 @@ en:
       subject_html: "Project sent by %{link}"
   registrations:
     new:
+      site_title: "Sign up"
       submit: "Sign Up"
       title: "Sign up using you email"
   remaining_plural: left
