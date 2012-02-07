@@ -1,5 +1,32 @@
 # coding: utf-8
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable#, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email,
+                  :password,
+                  :password_confirmation,
+                  :remember_me,
+                  :name,
+                  :nickname,
+                  :bio,
+                  :image_url,
+                  :newsletter,
+                  :full_name,
+                  :address_street,
+                  :address_number,
+                  :address_complement,
+                  :address_neighbourhood,
+                  :address_city,
+                  :address_state,
+                  :address_zip_code,
+                  :phone_number,
+                  :cpf,
+                  :locale
+
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
   include Rails.application.routes.url_helpers
@@ -14,6 +41,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
+
+  validates_presence_of     :email, :if => :is_devise?
+  validates_uniqueness_of   :email, :scope => :provider, :if => :is_devise?
+  validates_presence_of     :password, :if => :password_required?
+  validates_confirmation_of :password, :if => :password_required?
+  validates_length_of       :password, :within => 6..128, :allow_blank => true
+
   has_many :backs, :class_name => "Backer"
   has_many :projects
   has_many :notifications
@@ -24,6 +58,11 @@ class User < ActiveRecord::Base
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   #before_save :store_primary_user
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    where(conditions).where(:provider => 'devise').first
+  end
 
   def admin?
     admin
@@ -141,8 +180,8 @@ class User < ActiveRecord::Base
   def as_json(options={})
 
     json_attributes = {}
-    
-    if options and not options[:anonymous] 
+
+    if options and not options[:anonymous]
       json_attributes.merge!({
         :id => id,
         :name => display_name,
@@ -160,12 +199,20 @@ class User < ActiveRecord::Base
         :email => email
       })
     end
-    
+
     json_attributes
 
   end
 
+  def is_devise?
+    provider == 'devise'
+  end
+
   protected
+
+  def password_required?
+    provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
+  end
 
   # Returns a Gravatar URL associated with the email parameter
   def gravatar_url
