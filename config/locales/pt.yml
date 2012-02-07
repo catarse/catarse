@@ -505,6 +505,7 @@ pt:
     failure:
       error: "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
   site:
+    host: "catarse.me"
     base_url: "http://catarse.me"
     blog: "http://blog.catarse.me/"
     email:
