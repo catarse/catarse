@@ -345,6 +345,7 @@ DEPENDENCIES
   compass-960-plugin
   dalli
   database_cleaner
+  devise
   enumerate_it
   factory_girl_rails
   fog
