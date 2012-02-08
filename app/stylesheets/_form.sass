@@ -13,6 +13,18 @@
     background-color: rgb(200,220,200)
     background-color: rgba(0,150,0,0.2)
   form
+    &.login_with_email_form
+      text-align: left
+      .input.check
+        input
+          margin: 5px 10px 0 0
+          float: left
+        label
+          margin-top: -2px
+          float: left
+      .action
+        clear: both
+        margin-top: 15px
     fieldset
       padding: 8px 0
     label
@@ -23,8 +35,19 @@
         font-size: 16px
         color: #DD3333
         margin-left: 2px
-    input[type=text],textarea,select
+    input[type=text], input[type=password],textarea,select
+      padding-left: 4px
       padding-right: 24px
+      background-color: rgb(255,255,255)
+      background-color: rgba(255,255,255,0.2)
+      font-size: 18px
+      border: 2px solid rgb(0,60,0)
+      border: 2px solid rgba(0,60,0,0.6)
+      +border-radius(5px)
+      +text-shadow(rgba(255,255,255,0.85), 1px, 1px, 0px)
+    input[type=text]:focus, input[type=password]:focus,textarea:focus,select:focus
+      background-color: rgb(200,220,200)
+      background-color: rgba(0,150,0,0.2)
     textarea
       padding-right: 28px
       width: 96%
