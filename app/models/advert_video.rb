@@ -3,5 +3,5 @@ class AdvertVideo < ActiveRecord::Base
   validates :title, :description, :video_url, :presence => true
   
   scope :visibles, where("visible is true")
-  scope :random, order("randon()")
+  scope :random, order("random()")
 end
