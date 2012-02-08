@@ -1,3 +1,4 @@
+$recommended_header_height: 258px
 #recommended_header
   width: 980px
   margin: 15px auto
@@ -7,7 +8,7 @@
   +border-radius(25px)
   .resume_about
     float: left
-    height: 330px
+    height: $recommended_header_height
     width: 260px
     +border-radius(25px 0 0 25px)
     background: $green
@@ -17,36 +18,30 @@
     h1
       margin-top: 28px
       display: inline-block
-      font-family: "Lato-Bold"
+      font-family: "Lato-Regular"
       font-size: 28px
       color: white
       line-height: 110%
+      font-weight: 900
     h4
       display: inline-block
       font-family: Arial
       font-size: 16px
-      color: $ultra_gryn
+      color: rgba(white, 0.7)
       line-height: 150%
       margin-top: 35px
   .project
     width: 720px
-    height: 330px
+    height: $recommended_header_height
     float: left
     .video_sample
+      width: 461px
       float: left
-      .video_play
-        position: absolute
-        width: 89px
-        height: 89px
-        margin: 113px 0 0 206px
-        +transition(all, 0.5s)
-        &:hover
-          +scale(1.2)
     .info
       float: left
-      width: 223px
+      width: 239px
       padding: 23px 0 0 20px
-      height: 307px
+      height: 235px
       background: $ultra_gryn
       +border-radius(0 25px 25px 0)
       h3
