@@ -4,8 +4,7 @@
     h4= t('projects.index_header.subtitle_html')
   .project
     .video_sample
-      = link_to image_tag("catarse/play89x89.png"), 'javascript:void(0);', :class => 'video_play'
-      = image_tag "catarse/video_sample_cover477x330.jpg", :width => "477px", :height => "330px"
+      iframe src="http://player.vimeo.com/video/29166192?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="461" height="258" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
     .info
       h3= t('layouts.recommended_header.title_for_you')
       h2 
@@ -31,7 +30,4 @@
           li.last
             strong R$ 120.000
             p ATINGIDOS
-      nav.pagination
-        = link_to "<< Anterior", 'javascript:void(0);', :class => 'prev'
-        = link_to "Próximo >>", 'javascript:void(0);', :class => 'next'          
   .clearfix
