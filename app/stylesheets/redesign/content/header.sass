@@ -1,54 +1,58 @@
 #header
-  width: 981px
+  +grid-container
+  +grid-system(16)
+  padding: 17px 10px 0 10px
   margin: 0 auto
-  padding-top: 17px
   display: block
   .logo
-    width: 164px
-    height: 54px    
-    float: left
+    +grid(4)
+    height: 54px
     border: none
     background: url($images_path+"logo164x54.png") left top no-repeat
     text-indent: -9999em
-    margin-right: 99px
   nav
     a
       display: inline-block
       font-family: "Lato-Regular"    
       text-decoration: none      
     &.actions
-      float: left
-      margin-top: 19px
+      +grid(4)
+      margin-top: 20px
       a        
         color: $pink
         font-size: 18px
         margin-right: 33px
+        &:last-child
+          margin-right: 0
         &:hover
           text-decoration: underline
         &.explore
-          background: url($images_path+"explore_icon21x14.png") left 3px no-repeat
+          background: url($images_path+"explore_icon23x15.png") left 3px no-repeat
           text-indent: 30px
         &.submit_project
           background: url($images_path+"submit_project_icon25x13.png") left 4px no-repeat
           text-indent: 30px
     &.menu
-      float: left
-      margin-top: 19px
+      +grid(4)
+      margin-top: 20px
       a
+        font-family: "Lato-Regular"
         color: $ultra_gryn
         font-size: 14px
-        margin-left: 22px
+        margin-right: 12px
+        &:last-child
+          margin-right: none
         &:hover
-          text-decoration: underline
+          color: $pink
   .search
-    float: left
+    +grid(4)
     margin-top: 18px
-    margin-right: 10px
     form
       width: 220px
       height: 22px
-      +border-radius(5px)
+      +border-radius(8px)
       border: 1px #ECECEC solid
+      +box-shadow(rgba(black, 0.1) 1px 1px 2px)
       background: white
       input[type="text"]
         border: none
