@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
       format.html do
         @title = t("site.title")
         presenter = ProjectPresenter::Home.new({:current_user => current_user})
-        presenter.fetch_projects        
+        presenter.fetch_projects
         
         @recommended_project  = presenter.recommended_project
         @project_of_day       = presenter.project_of_day
