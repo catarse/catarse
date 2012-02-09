@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?, :namespace, :fb_admins
+  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?, :namespace,
+                :fb_admins, :has_advert_videos?, :advert_video
   before_filter :set_locale
   before_filter :detect_locale
 
@@ -20,6 +21,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def has_advert_videos?
+    AdvertVideo.visibles.present?
+  end
+  
+  def advert_video
+    AdvertVideo.visibles.random.first
+  end
 
   def fb_admins
     @fb_admins.join(',')
