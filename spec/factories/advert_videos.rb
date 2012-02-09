@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :advert_video do
-    title "MyString"
-    description "MyText"
-    video_url "MyString"
+    title "My title"
+    description "Some Description"
+    video_url "http://vimeo.com/35492726"
     visible false
   end
 end
