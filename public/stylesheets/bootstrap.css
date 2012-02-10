@@ -805,7 +805,7 @@ body #main_content {
   float: left;
 }
 /* line 40, ../../app/stylesheets/redesign/content/recommended_header.sass */
-#recommended_header .project .info {
+#recommended_header .project .info, #recommended_header .project .institutional {
   float: left;
   width: 239px;
   padding: 23px 0 0 20px;
@@ -818,7 +818,24 @@ body #main_content {
   -khtml-border-radius: 0 25px 25px 0;
   border-radius: 0 25px 25px 0;
 }
-/* line 47, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 48, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .institutional h3 {
+  font-family: "Lato-Bold";
+  font-size: 18px;
+  color: #e75297;
+  background: url("/images/catarse/institutional_video_icon16x16.png") left top no-repeat;
+  text-indent: 25px;
+  padding-bottom: 25px;
+}
+/* line 55, ../../app/stylesheets/redesign/content/recommended_header.sass */
+#recommended_header .project .institutional p {
+  width: 200px;
+  font-family: Arial;
+  font-size: 13px;
+  color: white;
+  line-height: 159%;
+}
+/* line 62, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .project .info h3 {
   font-family: "Lato-Regular";
   font-size: 14px;
@@ -827,12 +844,12 @@ body #main_content {
   text-indent: 18px;
   padding-bottom: 15px;
 }
-/* line 54, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 69, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .project .info h2 {
   font-family: "Lato-Bold";
   font-size: 18px;
 }
-/* line 57, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 72, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .project .info h2 a {
   color: white;
   text-decoration: none;
@@ -846,31 +863,31 @@ body #main_content {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 62, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 77, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .project .info h2 a:hover {
   text-shadow: #e75297 1px 1px 2px;
 }
-/* line 64, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 79, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .project .info .author {
   padding: 20px 0;
 }
-/* line 66, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 81, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .project .info .author p {
   font-family: Arial;
   font-size: 12px;
   color: white;
   line-height: 160%;
 }
-/* line 71, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 86, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .project .info .author p a {
   color: white;
   text-decoration: none;
 }
-/* line 74, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 89, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .project .info .author p a:hover {
   color: #59af6d;
 }
-/* line 77, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 92, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .statistics .progress {
   margin-bottom: 10px;
   width: 205px;
@@ -885,7 +902,7 @@ body #main_content {
   display: block;
   border: 1px #999999 solid;
 }
-/* line 85, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 100, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .statistics .progress .bar {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -896,28 +913,28 @@ body #main_content {
   height: 12px;
   background: #59af6d;
 }
-/* line 90, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 105, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .statistics ul li {
   float: left;
   margin-right: 7px;
   color: white;
 }
-/* line 94, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 109, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .statistics ul li strong {
   font-family: "Lato-Bold";
   font-size: 12px;
 }
-/* line 97, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 112, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .statistics ul li p {
   font-family: Arial;
   font-size: 10px;
   text-transform: upercase;
 }
-/* line 101, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 116, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .statistics ul li:last-child, #recommended_header .statistics ul li .last {
   margin-right: 0;
 }
-/* line 103, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 118, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header nav.pagination {
   font-family: Arial;
   font-size: 12px;
@@ -928,21 +945,21 @@ body #main_content {
   padding-top: 15px;
   border-top: 1px rgba(255, 255, 255, 0.1) solid;
 }
-/* line 113, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 128, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header nav.pagination a {
   color: white;
   text-decoration: none;
 }
-/* line 116, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 131, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header nav.pagination a.prev {
   float: left;
 }
-/* line 118, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 133, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header nav.pagination a.next {
   margin-right: 15px;
   float: right;
 }
-/* line 121, ../../app/stylesheets/redesign/content/recommended_header.sass */
+/* line 136, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header nav.pagination a:hover {
   color: #59af6d;
 }
