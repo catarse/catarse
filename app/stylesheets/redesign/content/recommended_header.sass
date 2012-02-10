@@ -37,13 +37,28 @@ $recommended_header_height: 258px
     .video_sample
       width: 461px
       float: left
-    .info
+    .info, .institutional
       float: left
       width: 239px
       padding: 23px 0 0 20px
       height: 235px
       background: $ultra_gryn
-      +border-radius(0 25px 25px 0)
+      +border-radius(0 25px 25px 0)    
+    .institutional
+      h3
+        font-family: "Lato-Bold"
+        font-size: 18px
+        color: $pink
+        background: url($images_path+"institutional_video_icon16x16.png") left top no-repeat
+        text-indent: 25px
+        padding-bottom: 25px
+      p
+        width: 200px
+        font-family: Arial
+        font-size: 13px
+        color: white
+        line-height: 159%
+    .info
       h3
         font-family: "Lato-Regular"
         font-size: 14px

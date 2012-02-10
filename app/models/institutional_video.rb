@@ -1,4 +1,4 @@
-class AdvertVideo < ActiveRecord::Base
+class InstitutionalVideo < ActiveRecord::Base
   has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
   validates :title, :description, :video_url, :presence => true
   

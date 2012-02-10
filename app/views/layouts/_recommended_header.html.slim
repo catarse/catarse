@@ -3,8 +3,8 @@
     h1= t('projects.index_header.title')
     h4= t('projects.index_header.subtitle_html')
   .project
-    - if has_advert_videos?
-      == render 'layouts/advert_video_header'
+    - if has_institutional_videos?
+      == render 'layouts/institutional_video_header'
     - else
       .video_sample
         iframe src="http://player.vimeo.com/video/29166192?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="461" height="258" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
