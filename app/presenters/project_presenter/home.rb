@@ -1,26 +1,24 @@
 module ProjectPresenter
   class Home
-    
-    attr_accessor :recommended_project, :project_of_day, :second_project, 
+
+    attr_accessor :recommended_project, :project_of_day, :second_project,
                   :third_project, :fourth_project, :expiring, :recent, :current_user
-    
-    
+
+
     def initialize(options)
       @current_user ||= options[:current_user]
     end
-    
+
     def current_user
       @current_user
     end
-    
+
     def fetch_projects
       collection_projects = Project.includes(:user, :category).
-                                    with_homepage_comment.
                                     recommended.
                                     visible.
                                     not_expired.
                                     order('"order"')
-          
       unless collection_projects.empty?
         home_page_projects = collection_projects.home_page
         if current_user and current_user.recommended_project
@@ -40,7 +38,7 @@ module ProjectPresenter
           @fourth_project = category_projects.all[rand(category_projects.length)]
         end
       end
-      
+
       project_ids = []
       project_ids << @recommended_project.id if @recommended_project
       project_ids << @project_of_the_day.id if @project_of_the_day
@@ -49,9 +47,9 @@ module ProjectPresenter
       project_ids << @fourth_project.id if @fourth_project
       project_ids = project_ids.join(',')
       project_ids = "id NOT IN (#{project_ids})" unless project_ids.blank?
-      
+
       @expiring = Project.includes(:user, :category).where(project_ids).visible.expiring.not_expired.order('date(expires_at), random()').limit(3).all
       @recent = Project.includes(:user, :category).where(project_ids).recent.visible.not_expiring.not_expired.order('date(created_at), random()').limit(3).all
-    end    
+    end
   end
 end
