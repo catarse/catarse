@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
 
         @recommended_project  = presenter.recommended_project
         @project_of_day       = presenter.project_of_day
+        @first_project       = presenter.first_project
         @second_project       = presenter.second_project
         @third_project        = presenter.third_project
         @fourth_project       = presenter.fourth_project

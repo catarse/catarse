@@ -6,8 +6,11 @@
           .title
             h2= t('sections.selection.title')
         .projects
+          = render :partial => 'project', :locals => {:project => @first_project }
+          = render :partial => 'project', :locals => {:project => @second_project }
+          = render :partial => 'project', :locals => {:project => @third_project }
           /= raise @expiring.inspect
-          = render :partial => 'project', :collection => @expiring
+          / = render :partial => 'project', :collection => @expiring
           / - @expiring.each_with_index do |item,i|
           /   == render 'project', :project => item, :custom_class => (@expiring.length == (i+1) ? 'without_omega' : '')
         .explore_link
