@@ -1,12 +1,94 @@
 en:
+  footer:
+    titles:
+      info: "Useful Information"
+      opendata: "nice statistics"
+      social: "like the catarse?"
+      newsletter: "receive our newslatter"
+    stats:
+      backers: Backers
+      backs: Backs
+      total_backed: Backed
+      users: Users
+      funded_projects: "Successful projects"
+      active_projects: "Projects on air now"
+    links:
+      how_works: "How It works"
+      faq: F.A.Q./Help
+      terms: "Terms of use"
+      policy: "Privacy Policy"
+      contact: Contact
+  main:
+    links:
+      selected: "explore more projects selected"
+      expiring: "explore more expiring projects"
+      recents: "explore more recent projects"
+  sidebar:
+    titles:
+      blog: blog
+      facebook: "have enjoyed our face?"
+      twitter: "@catarse_"
+      newsletter: "want to receive news?"
+      faq: "have any doubt?"
+      schedule: calendar
+    buttons:
+      newsletter: submit
+  sections:
+    selection:
+      title: selection
+    expiring:
+      title: expiring
+    recents:
+      title: recents
+    partners:
+      title: partners
   "no": "No"
   "yes": "Yes"
   accept_terms_html: "I have read and accepted the %{link}."
   active_admin:
     dashboard: Dashboard
     dashboard_welcome:
-      call_to_action: foo
       welcome: "Welcome to our admin dashboard"
+      call_to_action: foo
+    view: View
+    edit: Edit
+    delete: Remove
+    delete_confirmation: ~
+    new_model: ~
+    create_model: ~
+    edit_model: ~
+    update_model: ~
+    delete_model: ~
+    details: ~
+    cancel: ~
+    empty: ~
+    previous: ~
+    next: ~
+    download: ~
+    has_many_new: ~
+    has_many_delete: ~
+    filter: ~
+    clear_filters: ~
+    search_field: ~
+    equal_to: ~
+    greater_than: ~
+    less_than: ~
+    main_content: ~
+    logout: ~
+    sidebars:
+      filters: ~
+    pagination:
+      empty: ~
+      one: ~
+      one_page: ~
+      multiple: ~
+      entry:
+        one: ~
+        other: ~
+    any: ~
+    blank_slate:
+      content: ~
+      link: ~
   activerecord:
     attributes:
       backer:
@@ -113,7 +195,7 @@ en:
         subject: "Confirmation instructions"
       reset_password_instructions:
         subject: "Reset password instructions"
-        alt: ~
+        alt: "Reset password instructions"
       unlock_instructions:
         subject: "Unlock Instructions"
     omniauth_callbacks:
@@ -146,14 +228,34 @@ en:
       unlocked: "Your account was successfully unlocked. You are now signed in."
   error: "Ooops! There was an error. Please try again."
   errors:
+    format: ~
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
-      not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+      accepted: ~
+      blank: ~
+      confirmation: ~
+      empty: ~
+      equal_to: ~
+      even: ~
+      exclusion: ~
+      greater_than: ~
+      greater_than_or_equal_to: ~
+      inclusion: ~
+      invalid: ~
+      less_than: ~
+      less_than_or_equal_to: ~
+      not_a_number: ~
+      not_an_integer: ~
+      odd: ~
+      record_invalid: ~
+      taken: ~
+      too_long: ~
+      too_short: ~
+      wrong_length: ~
+    template:
+      body: ~
+      header:
+        one: ~
+        other: ~
   explore:
     index:
       categories: Categories
@@ -215,6 +317,17 @@ en:
         submit: "Submit your project"
       notifications:
         new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check out</a>!"
+    header:
+      blog: blog
+      help: help
+      signup: "sign up"
+      signin: login
+      explore: explore
+      submit_project: submit
+    recommended_header:
+      sugest_for_you: "suggested for you"
+      highlight_project: "featured project"
+      title_for_you: "recommended for you"
     footer:
       blog: "Our blog"
       comum: "Grupo Comum"
@@ -291,6 +404,8 @@ en:
     verify_if_video_exists_on_vimeo: "must exist on Vimeo"
     vimeo_regex_validation: "only Vimeo URLs are allowed"
   projects:
+    box:
+      by: by
     admin_fields:
       title: "Admin fields"
     back_project:
@@ -585,3 +700,130 @@ en:
     next: "Next »"
     page_gap: "..."
     previous: "« Previous"
+  date:
+    abbr_day_names: ~
+    abbr_month_names: ~
+    day_names: ~
+    formats:
+      default: ~
+      long: ~
+      short: ~
+    month_names: ~
+    order: ~
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: ~
+        other: ~
+      about_x_months:
+        one: ~
+        other: ~
+      about_x_years:
+        one: ~
+        other: ~
+      almost_x_years:
+        one: ~
+        other: ~
+      half_a_minute: ~
+      less_than_x_minutes:
+        one: ~
+        other: ~
+      less_than_x_seconds:
+        one: ~
+        other: ~
+      over_x_years:
+        one: ~
+        other: ~
+      x_days:
+        one: ~
+        other: ~
+      x_minutes:
+        one: ~
+        other: ~
+      x_months:
+        one: ~
+        other: ~
+      x_seconds:
+        one: ~
+        other: ~
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Second
+      year: Year
+  helpers:
+    select:
+      prompt: ~
+    submit:
+      create: ~
+      submit: ~
+      update: ~
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%u%n"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: R$
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion:
+            one: ~
+            other: ~
+          million:
+            one: ~
+            other: ~
+          quadrillion:
+            one: ~
+            other: ~
+          thousand: ~
+          trillion:
+            one: ~
+            other: ~
+          unit: ~
+      format:
+        delimiter: "."
+        precision: ~
+        significant: ~
+        strip_insignificant_zeros: ~
+      storage_units:
+        format: ~
+        units:
+          byte:
+            one: ~
+            other: ~
+          gb: ~
+          kb: ~
+          mb: ~
+          tb: ~
+    percentage:
+      format:
+        delimiter: "."
+    precision:
+      format:
+        delimiter: "."
+  support:
+    array:
+      last_word_connector: ~
+      two_words_connector: ~
+      words_connector: ~
+  time:
+    am: ~
+    formats:
+      default: ~
+      long: ~
+      short: ~
+    pm: ~
