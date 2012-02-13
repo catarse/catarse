@@ -1,0 +1,165 @@
+.sidebar
+  border-left: 1px $df_gryn solid
+  .content
+    padding: 33px 0 0 22px
+    .blog
+      h3
+        font-family: "Lato-Bold"
+        font-size: 18px
+        background: url($images_path+'blog_icon17x14.png') left 5px no-repeat
+        text-indent: 28px
+        color: black
+        padding-bottom: 25px
+      ul
+        li
+          padding-bottom: 30px
+          &:last-child
+            border-bottom: 1px rgba(black, 0.1) solid
+          h2
+            float: left
+            width: 100%
+            font-family: "Lato-Bold"
+            font-size: 14px
+            padding-top: 4px
+            a
+              color: $ultra_gryn
+              text-decoration: none
+              &:hover
+                color: $pink
+            img
+              margin-top: -4px
+              margin-right: 10px
+              float: left
+              width: 48px
+              height: 39px
+          p.author
+            clear: both
+            font-family: Arial
+            font-size: 12px
+            color: $ultra_gryn
+            padding: 8px 0 10px 0
+          a.resume
+            font-family: Arial
+            font-size: 12px
+            color: $ultra_gryn
+            text-decoration: none
+            &:hover
+              color: $pink
+    .facebook
+      margin-top: 30px
+      padding-bottom: 30px
+      border-bottom: 1px rgba(black, 0.1) solid
+      h3
+        font-family: "Lato-Bold"
+        font-size: 18px
+        background: url($images_path+'facebook_icon13x26.png') left top no-repeat
+        text-indent: 28px
+        color: black
+        padding-top: 6px
+        padding-bottom:  25px
+
+    .twitter
+      margin-top: 30px
+      padding-bottom: 30px
+      border-bottom: 1px rgba(black, 0.1) solid
+      h3
+        font-family: "Lato-Bold"
+        font-size: 18px
+        background: url($images_path+'twitter_icon28x24.png') left top no-repeat
+        text-indent: 28px
+        color: black
+        padding-top: 6px
+        padding-bottom:  15px
+      p
+        font-family: Arial
+        font-size:  12px
+        color: $ultra_gryn
+        line-height:  133%
+        margin-bottom: 20px
+
+    .newsletter
+      float: left
+      padding-bottom: 30px
+      margin-top: 30px
+      border-bottom: 1px rgba(black, 0.1) solid
+      h3
+        font-family: "Lato-Bold"
+        font-size: 18px
+        background: url($images_path+'newsletter_icon18x15.png') left 2px no-repeat
+        text-indent: 28px
+        color: black
+        padding-bottom:  15px
+      form
+        input[type='text']
+          width:  183px
+          height: 27px
+          border: 1px $minimal_gryn solid
+          text-align: center
+          +border-radius(8px)
+        input[type="submit"]
+          +border-radius(8px)
+          background: $pink
+          color: white
+          border: none
+          margin-top: 5px
+          padding: 3px 10px
+          float:  right
+          margin-right:  12px
+          &:active
+            +box-shadow(rgba(black, 0.5) 0 0 5px inset)
+
+    .faq
+      display: block
+      clear: both
+      padding-top: 30px
+      padding-bottom: 30px
+      border-bottom: 1px rgba(black, 0.1) solid
+      h3
+        font-family: "Lato-Bold"
+        font-size: 18px
+        background: url($images_path+'faq_icon18x18.png') left 2px no-repeat
+        text-indent: 28px
+        color: black
+        padding-bottom:  15px
+
+    .schedule
+      display: block
+      clear: both
+      padding-top: 30px
+      padding-bottom: 30px
+      h3
+        font-family: "Lato-Bold"
+        font-size: 18px
+        background: url($images_path+'schedule_icon19x22.png') left top no-repeat
+        text-indent: 28px
+        color: black
+        padding-top: 4px
+        padding-bottom:  25px
+      ul.events
+        li
+          width: 100%
+          margin-bottom: 25px
+          padding-bottom: 25px
+          float: left
+          border-bottom: 1px rgba(black, 0.1) solid
+          &:last-child
+            border-bottom: none
+          a
+            text-decoration: none
+            &:hover
+              color: $pink !important
+          h4
+            float: left
+            color: black
+            font-family: 'museo-700'
+            font-size: 20px
+            margin-right: 10px
+            span
+              display: block
+              font-family:  Arial
+              font-size:  12px
+          p
+            padding-top: 4px
+            font-family: Arial
+            font-size: 12px
+            color: black

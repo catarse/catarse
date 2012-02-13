@@ -14,30 +14,31 @@
     .cover
       = link_to project do
         = image_tag project.display_image, :itemprop => 'image'
-    h4= link_to project, :itemprop => 'url' do
-      span[itemprop="name"]= project.name
-    p.author
-      = t('.by')
-      |&nbsp;
-      span[itemprop="author"]= project.user.name
+    .project_content
+      h4= link_to project, :itemprop => 'url' do
+        span[itemprop="name"]= project.name
+      p.author
+        = t('.by')
+        |&nbsp;
+        span[itemprop="author"]= project.user.name
+      p.description[itemprop="description"]= project.headline
       p.where[itemprop="contentLocation"]
         - unless project.user.address_city.blank?
           = project.user.address_city
           - unless project.user.address_state.blank?
             | /
             = project.user.address_state
-    p.description[itemprop="description"]= project.headline
-    .status_bar
-      .progress style="width: #{project.display_progress}%;"
-    ul
-      li
-        h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
-        p= "#{project.remaining_text}"
-      li
-        h6= "#{project.display_pledged}"
-        p= "#{t('projects.project.backed')}"
+    .info_bar
+      .status_bar
+        .progress style="width: #{project.display_progress}%;"
+      ul
+        li
+          h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
+          p= "#{project.remaining_text}"
+        li
+          h6= "#{project.display_pledged}"
+          p= "#{t('projects.project.backed')}"
 
-      li
-        h6= "#{project.progress}%"
-        p= "#{t('projects.project.reached')}"
-    = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+        li
+          h6= "#{project.progress}%"
+          p= "#{t('projects.project.reached')}"

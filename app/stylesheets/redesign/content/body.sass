@@ -1,6 +1,65 @@
 body
-  background: url($images_path+'background_full.jpg') left top repeat-x #E7E7DE
-  #main_content
-    width: 981px
-    margin: 0 auto
-    display: block
+  background: url($images_path+'bg_s3.png') left top repeat
+
+  #page_content
+    .container
+      +grid-container
+      +grid-system(16)
+      +border-radius(8px)
+      padding: 0 10px 0 10px
+      background: white
+      border: 1px $df_gryn solid
+
+      .main
+        padding-top: 17px
+        +grid(12)
+        +alpha
+      .sidebar
+        +grid(4)
+        +omega
+
+      .list
+        float: left
+
+      .list_title
+        margin: 0 0 15px -20px
+        float: left
+        clear: both
+        width: 100%
+        .title
+          float: left
+          min-width: 103px
+          max-width: 206px
+          height: 30px
+          padding: 5px 10px 5px 15px
+          background: url($images_path+"title_component241x40.png") left top no-repeat
+          // position: absolute
+          h2
+            float: right
+            color: white
+            font-family: "Lato-Bold"
+            font-size: 18px
+      .projects
+        padding-top: 20px
+  #logos
+    +grid-container
+    +grid-system(16)
+    +border-radius(8px)
+    padding: 0 10px 10px 10px
+    margin-top: 30px
+    .multide
+      +grid(2)
+      +grid-suffix(4)
+      a
+        margin-left: 10px
+    .comum
+      +grid(3)
+      +grid-suffix(3)
+      a
+        float: left
+        margin-top: 10px
+        margin-left: 10px
+    .power
+      +grid(4)
+      a
+        float:  right

@@ -1,4 +1,64 @@
 body[data-namespace="null"][data-controller="projects"][data-action="index"]
   #page_content
-    width: 740px
-    float: left
+    .selected_projects
+      h2
+        background: url($images_path+"thumbs_up_icon16x16.png") left top no-repeat
+        text-indent: 20px
+    .expiring_projects
+      h2
+        background: url($images_path+"expiring_icon20x22.png") left top no-repeat
+        text-indent: 28px
+        padding-bottom: 3px
+    .recents_projects
+      h2
+        background: url($images_path+"recents_icon18x23.png") left top no-repeat
+        text-indent: 28px
+        padding-bottom: 3px
+    .explore_link
+      padding-top: 20px
+      padding-bottom: 30px
+      float: left
+      hr
+        +grid(8)
+        border: none
+        border-bottom: 1px rgba(black, 0.1) solid
+        +omega
+        padding-top: 2px
+      a
+        +grid(4)
+        +omega
+        font-family: "Lato-Regular"
+        font-size: 14px
+        color: $pink
+        text-decoration: none
+        &:hover
+          color: $green
+
+    .partners
+      margin-top: 50px
+      padding-top: 20px
+      padding-bottom: 10px
+      h2
+        background: url($images_path+"partners_icon26x26.png") left top no-repeat
+        text-indent: 35px
+        padding-bottom: 9px
+        margin-top: -5px
+        padding-top: 5px
+      .channels_list_widget
+        ul
+          width: 100%
+          li
+            width: 220px
+            margin-bottom: 20px
+            margin-right: 10px
+            margin-left: 10px
+            float: left
+            border: none
+            +transition(all, 0.5s)
+            &:hover
+              +border-radius(10px)
+              +box-shadow(rgba(black, 0.3) 0px 3px 10px)
+              img
+                +border-radius(10px)
+
+

@@ -2,35 +2,19 @@
   .resume_about
     h1= t('projects.index_header.title')
     h4= t('projects.index_header.subtitle_html')
-  .project
+  .project_info
     - if has_institutional_videos?
       == render 'layouts/institutional_video_header'
+    - elsif current_user
+      - if @recommended_project
+        = render "layouts/project_header", :title => t('layouts.recommended_header.sugest_for_you'), :project => @recommended_project
+      - elsif @project_of_day
+        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @project_of_day
+      - else
+        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @fourth_project
     - else
-      .video_sample
-        iframe src="http://player.vimeo.com/video/29166192?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="461" height="258" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
-      .info
-        h3= t('layouts.recommended_header.title_for_you')
-        h2 
-          = link_to 'javascript:void(0);' do      
-            | Aqui vai o nome do seu 
-            br/
-            | projeto em até 02 linhas
-        .author
-          p
-            | por
-            = link_to " Autor do projeto", 'javascript:void(0);'
-          p= link_to "Rio de janeiro", 'javascript:void(0);'
-        .statistics
-          .progress
-            .bar[style="width: 40%"]
-          ul
-            li
-              strong 90 dias
-              p RESTANTES
-            li
-              strong 40%
-              p LEVANTADOS
-            li.last
-              strong R$ 120.000
-              p ATINGIDOS
+      - if @project_of_day
+        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @project_of_day
+      - else
+        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @fourth_project
   .clearfix

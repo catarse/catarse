@@ -1,4 +1,48 @@
 pt:
+  footer:
+    titles:
+      info: "informações úteis"
+      opendata: "estatísticas bacanas"
+      social: 'curtiu o catarse?'
+      newsletter: receba nossa newsletter
+    stats:
+      backers: 'Apoiadores'
+      backs: 'Apoios'
+      total_backed: 'Arrecadados'
+      users: 'Usuários'
+      funded_projects: 'Projetos bem sucedidos'
+      active_projects: 'Projetos no ar agora'
+    links:
+      how_works: Como funciona
+      faq: F.A.Q./Ajuda
+      terms: Termos de Uso
+      policy: Política de Privacidade
+      contact: Contato
+
+  main:
+    links:
+      selected: "explore mais projetos selecionados"
+      expiring: "explore mais projetos na reta final"
+      recents: "explore mais projetos recentes"
+  sidebar:
+    titles:
+      blog: "blog"
+      facebook: "já curtiu nosso face?"
+      twitter: "@catarse_"
+      newsletter: "quer novidades?"
+      faq: "tá com dúvida?"
+      schedule: "agenda"
+    buttons:
+      newsletter: 'assinar'
+  sections:
+    selection:
+      title: 'seleção'
+    expiring:
+      title: 'na reta final'
+    recents:
+      title: 'novos e fresquinhos'
+    partners:
+      title: 'parceiros'
   "no": Não
   "yes": Sim
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
@@ -262,7 +306,8 @@ pt:
       explore: explore
       submit_project: envie
     recommended_header:
-      title_for_you: "recomendado para você"
+      sugest_for_you: "sugerido para você"
+      highlight_project: "projeto em destaque"
     footer:
       blog: "Leia o blog"
       comum: "Grupo Comum"
@@ -339,6 +384,8 @@ pt:
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
   projects:
+    box:
+      by: "por:"
     admin_fields:
       title: "Campos para o admin"
     back_project:
@@ -643,7 +690,7 @@ pt:
     - Sex
     - Sáb
     abbr_month_names:
-    - 
+    -
     - Jan
     - Fev
     - Mar
@@ -669,7 +716,7 @@ pt:
       long: ! '%d de %B de %Y'
       short: ! '%d de %B'
     month_names:
-    - 
+    -
     - Janeiro
     - Fevereiro
     - Março
@@ -831,4 +878,4 @@ pt:
       default: ! '%A, %d de %B de %Y, %H:%M h'
       long: ! '%A, %d de %B de %Y, %H:%M h'
       short: ! '%d/%m, %H:%M h'
-    pm: ''    
+    pm: ''

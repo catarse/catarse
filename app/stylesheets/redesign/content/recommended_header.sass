@@ -22,7 +22,6 @@ $recommended_header_height: 258px
       font-size: 28px
       color: white
       line-height: 110%
-      font-weight: 900
     h4
       display: inline-block
       font-family: Arial
@@ -30,7 +29,7 @@ $recommended_header_height: 258px
       color: rgba(white, 0.7)
       line-height: 150%
       margin-top: 15px
-  .project
+  .project_info
     width: 720px
     height: $recommended_header_height
     float: left
@@ -40,13 +39,13 @@ $recommended_header_height: 258px
     .info, .institutional
       float: left
       width: 239px
-      padding: 23px 0 0 20px
-      height: 235px
+      padding: 13px 0 0 20px
+      height: 245px
       background: $ultra_gryn
-      +border-radius(0 25px 25px 0)    
+      +border-radius(0 25px 25px 0)
     .institutional
       h3
-        font-family: "Lato-Bold"
+        font-family: "Lato-Regular"
         font-size: 18px
         color: $pink
         background: url($images_path+"institutional_video_icon16x16.png") left top no-repeat
@@ -61,14 +60,14 @@ $recommended_header_height: 258px
     .info
       h3
         font-family: "Lato-Regular"
-        font-size: 14px
+        font-size: 18px
         color: $pink
-        background: url($images_path+"min_star12x11.png") left 3px no-repeat
+        background: url($images_path+"min_star12x11.png") left 2px no-repeat
         text-indent: 18px
-        padding-bottom: 15px
+        padding-bottom: 10px
       h2
         font-family: "Lato-Bold"
-        font-size: 18px
+        font-size: 14px
         a
           color: white
           text-decoration: none
@@ -76,18 +75,22 @@ $recommended_header_height: 258px
           +transition(all, 0.5s)
           &:hover
             +text-shadow(rgba($pink, 1) 1px 1px 2px)
-      .author
-        padding: 20px 0
+      .author, .description
+        padding: 4px 0 10px 0
         p
           font-family: Arial
-          font-size: 12px
-          color: white
-          line-height: 160%          
+          font-size: 11px
+          color: $gryn_almost_ccc
           a
-            color: white
+            color: $gryn_almost_ccc
             text-decoration: none
             &:hover
               color: $green
+      .description
+        width: 200px
+        p
+          font-size: 13px
+          line-height: 120%
   .statistics
     .progress
       margin-bottom: 10px
@@ -98,13 +101,13 @@ $recommended_header_height: 258px
       display: block
       border: 1px $gryn_almost_ccc solid
       .bar
-        +border-radius(3px)      
+        +border-radius(3px)
         height: 12px
         background: $green
     ul
       li
         float: left
-        margin-right: 7px
+        margin-right: 10px
         color: white
         strong
           font-family: "Lato-Bold"
@@ -112,12 +115,12 @@ $recommended_header_height: 258px
         p
           font-family: Arial
           font-size: 10px
-          text-transform: upercase
+          text-transform: uppercase
         &:last-child, .last
           margin-right: 0
   nav.pagination
-    
-    font-family: Arial  
+
+    font-family: Arial
     font-size: 12px
     font-weight: bold
     float: left
@@ -125,7 +128,7 @@ $recommended_header_height: 258px
     margin-top: 70px
     padding-top: 15px
     border-top: 1px rgba(white, 0.1) solid
-    a  
+    a
       color: white
       text-decoration: none
       &.prev
@@ -135,4 +138,3 @@ $recommended_header_height: 258px
         float: right
       &:hover
         color: $green
-  
