@@ -1,5 +1,4 @@
 .channels_list_widget
-  h3= t(".title")
   ul
     - curated_pages.each do |curated_page|
       li= link_to image_tag(curated_page.logo.thumb.url, :width => '220px', :height => '144px'), curated_page_path(curated_page.permalink)

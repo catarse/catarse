@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
         @third_project        = presenter.third_project
         @fourth_project       = presenter.fourth_project
         @expiring             = presenter.expiring
-        @recend               = presenter.recent
+        @recent               = presenter.recent
 
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
         @last_tweet = Rails.cache.fetch('last_tweet', :expires_in => 30.minutes) do

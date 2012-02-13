@@ -1,23 +1,24 @@
 /*
-Syntax error: Undefined mixin 'box-shadow'.
-        on line 3 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass, in `box-shadow'
-        from line 3 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass
-        from line 8 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/index.sass
+Syntax error: Undefined variable: "$df_gryn".
+        on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/sidebar.sass
 
-1: $ninesixty-columns: 16
-2: $images_path: "/images/catarse/"
-3: 
-4: @import fonts
-5: @import colors
-6: 
-7: @import flash
-8: @import locales
+1: .sidebar
+2:   border-left: 1px $df_gryn solid
+3:   .content
+4:     padding: 33px 0 0 22px
+5:     .blog
+6:       h3
+7:         font-family: "Lato-Bold"
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass:3:in `box-shadow'
-/Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass:3
-/Users/ton/code/store/catarse/app/stylesheets/redesign/miv/index.sass:8
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/ton/code/store/catarse/app/stylesheets/redesign/content/sidebar.sass:2
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/script/variable.rb:49:in `_perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/script/node.rb:40:in `perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/script/list.rb:69:in `block in _perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/script/list.rb:69:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/script/list.rb:69:in `_perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/script/node.rb:40:in `perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:216:in `visit_prop'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -28,21 +29,6 @@ Backtrace:
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:37:in `block in visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:236:in `visit_rule'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:275:in `visit_directive'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:146:in `block in visit_import'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:146:in `map'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:146:in `visit_import'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -108,4 +94,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'box-shadow'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass, in `box-shadow'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass\A         from line 8 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/index.sass\A \A 1: $ninesixty-columns: 16\A 2: $images_path: \"/images/catarse/\"\A 3: \A 4: @import fonts\A 5: @import colors\A 6: \A 7: @import flash\A 8: @import locales"; }
+  content: "Syntax error: Undefined variable: \"$df_gryn\".\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/sidebar.sass\A \A 1: .sidebar\A 2:   border-left: 1px $df_gryn solid\A 3:   .content\A 4:     padding: 33px 0 0 22px\A 5:     .blog\A 6:       h3\A 7:         font-family: \"Lato-Bold\""; }
