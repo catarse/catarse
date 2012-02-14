@@ -1783,7 +1783,6 @@ body #logos .power a {
   border: 1px #dfdfdf solid;
   background: #333333 !important;
   margin-top: 50px;
-  margin-bottom: 20px;
 }
 /* line 35, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
 .footer .grid_1, .footer .grid_2, .footer .grid_3, .footer .grid_4, .footer .grid_5, .footer .grid_6, .footer .grid_7, .footer .grid_8, .footer .grid_9, .footer .grid_10, .footer .grid_11, .footer .grid_12, .footer .grid_13, .footer .grid_14, .footer .grid_15, .footer .grid_16 {
@@ -2109,12 +2108,12 @@ body #logos .power a {
 .footer .pull_15 {
   left: -900px;
 }
-/* line 10, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 9, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 10px;
 }
-/* line 13, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 12, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content h3 {
   font-family: "Lato-Bold";
   font-size: 18px;
@@ -2122,7 +2121,7 @@ body #logos .power a {
   padding-bottom: 40px;
   padding-top: 5px;
 }
-/* line 19, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 18, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info {
   display: inline;
   float: left;
@@ -2131,16 +2130,16 @@ body #logos .power a {
   width: 220px;
   padding-right: 60px;
 }
-/* line 22, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 21, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info h3 {
   background: url("/images/catarse/faq_icon18x18.png") left 5px no-repeat;
   text-indent: 34px;
 }
-/* line 26, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 25, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li {
   margin-bottom: 34px;
 }
-/* line 28, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 27, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li a {
   font-family: "Lato-Regular";
   font-size: 18px;
@@ -2148,11 +2147,11 @@ body #logos .power a {
   color: white;
   text-decoration: none;
 }
-/* line 34, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 33, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li a:hover {
   color: #e75297;
 }
-/* line 37, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 36, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata {
   display: inline;
   float: left;
@@ -2161,22 +2160,22 @@ body #logos .power a {
   width: 280px;
   padding-right: 60px;
 }
-/* line 40, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 39, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata h3 {
   background: url("/images/catarse/opendata_icon26x26.png") left top no-repeat;
   text-indent: 44px;
 }
-/* line 43, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 42, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul {
   display: block;
 }
-/* line 45, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 44, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul li {
   width: 100%;
   float: left;
   margin-bottom: 20px;
 }
-/* line 49, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 48, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul li h5 {
   float: left;
   font-family: "Lato-Bold";
@@ -2184,7 +2183,7 @@ body #logos .power a {
   color: white;
   padding-right: 10px;
 }
-/* line 55, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 54, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul li p {
   padding-top: 3px;
   float: left;
@@ -2195,7 +2194,7 @@ body #logos .power a {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 64, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 63, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social {
   display: inline;
   float: left;
@@ -2203,22 +2202,22 @@ body #logos .power a {
   margin-right: 10px;
   width: 280px;
 }
-/* line 66, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 65, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social h3 {
   background: url("/images/catarse/heart_icon17x14.png") left 6px no-repeat;
   text-indent: 32px;
 }
-/* line 69, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 68, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social h3.newsletter {
   padding-top: 30px;
   padding-bottom: 20px;
   background: url("/images/catarse/newsletter_icon18x15.png") left 32px no-repeat;
 }
-/* line 73, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 72, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social .twitter {
   margin-bottom: 20px;
 }
-/* line 76, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 75, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="text"] {
   float: left;
   width: 170px;
@@ -2232,13 +2231,13 @@ body #logos .power a {
   border: 1px #dfdfdf solid;
   border-right: none;
 }
-/* line 83, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 82, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="text"]:focus {
   outline: none;
   border: 1px #e75297 solid;
   border-right: none;
 }
-/* line 87, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 86, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="submit"] {
   float: left;
   background: #e75297;
@@ -2264,7 +2263,7 @@ body #logos .power a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 99, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 98, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="submit"]:active {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
@@ -2720,26 +2719,26 @@ body #logos .power a {
 .sidebar .content .schedule ul.events li a {
   text-decoration: none;
 }
-/* line 149, ../../app/stylesheets/redesign/content/sidebar.sass */
-.sidebar .content .schedule ul.events li a:hover {
+/* line 150, ../../app/stylesheets/redesign/content/sidebar.sass */
+.sidebar .content .schedule ul.events li a:hover h4, .sidebar .content .schedule ul.events li a:hover p {
   color: #e75297 !important;
 }
-/* line 151, ../../app/stylesheets/redesign/content/sidebar.sass */
-.sidebar .content .schedule ul.events li h4 {
+/* line 152, ../../app/stylesheets/redesign/content/sidebar.sass */
+.sidebar .content .schedule ul.events li a h4 {
   float: left;
   color: black;
   font-family: "museo-700";
   font-size: 20px;
   margin-right: 10px;
 }
-/* line 157, ../../app/stylesheets/redesign/content/sidebar.sass */
-.sidebar .content .schedule ul.events li h4 span {
+/* line 158, ../../app/stylesheets/redesign/content/sidebar.sass */
+.sidebar .content .schedule ul.events li a h4 span {
   display: block;
   font-family: Arial;
   font-size: 12px;
 }
-/* line 161, ../../app/stylesheets/redesign/content/sidebar.sass */
-.sidebar .content .schedule ul.events li p {
+/* line 162, ../../app/stylesheets/redesign/content/sidebar.sass */
+.sidebar .content .schedule ul.events li a p {
   padding-top: 4px;
   font-family: Arial;
   font-size: 12px;
