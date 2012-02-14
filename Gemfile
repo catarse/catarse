@@ -64,7 +64,7 @@ group :test, :development do
   gem 'steak', "~> 1.1.0"
   gem 'rspec-rails', "~> 2.0.1"
   gem 'rcov', '= 0.9.11'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '1.5.0'
   gem 'mocha'
 end
 
