@@ -13,12 +13,12 @@
   nav
     a
       display: inline-block
-      font-family: "Lato-Regular"    
-      text-decoration: none      
+      font-family: "Lato-Regular"
+      text-decoration: none
     &.actions
       +grid(4)
       margin-top: 20px
-      a        
+      a
         color: $pink
         font-size: 18px
         margin-right: 33px
@@ -51,15 +51,15 @@
       width: 220px
       height: 22px
       +border-radius(8px)
-      border: 1px #ECECEC solid
-      +box-shadow(rgba(black, 0.1) 1px 1px 2px)
+      border: 1px $minimal_gryn solid
+      // +box-shadow(rgba(black, 0.1) 1px 1px 2px)
       background: white
       input[type="text"]
         border: none
         width: 190px
         float: left
         &:focus
-          outline: none        
+          outline: none
       input[type="submit"]
         background: url($images_path+"search_submit15x15.png") left top no-repeat
         width: 15px
