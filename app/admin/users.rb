@@ -4,8 +4,10 @@ ActiveAdmin.register User do
   scope :primary
   scope :backers
 
+  filter :id
   filter :name
   filter :full_name
+  filter :email
   filter :nickname
   filter :provider
 
