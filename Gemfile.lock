@@ -347,7 +347,7 @@ DEPENDENCIES
   database_cleaner
   devise
   enumerate_it
-  factory_girl_rails (= 1.5.0)
+  factory_girl_rails
   fog
   formtastic
   haml
