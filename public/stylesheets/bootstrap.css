@@ -1741,11 +1741,7 @@ body #logos .power a {
   -ms-border-radius: 8px;
   -khtml-border-radius: 8px;
   border-radius: 8px;
-  border: 1px #ececec solid;
-  -moz-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
-  -o-box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
-  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px;
+  border: 1px #cccccc solid;
   background: white;
 }
 /* line 57, ../../app/stylesheets/redesign/content/header.sass */
