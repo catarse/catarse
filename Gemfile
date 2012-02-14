@@ -69,7 +69,7 @@ end
 
 group :test do
   gem 'shoulda'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '1.3.0'
 end
 
 # Putting pg to the end because of a weird bug with Lion, pg and openssl
