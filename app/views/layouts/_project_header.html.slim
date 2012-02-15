@@ -9,14 +9,15 @@
       = t('projects.box.by')
       = link_to project.user.name, 'javascript:void(0);'
   .description
-    p= link_to truncate(project.headline, :length => 129), '#'
+    p= link_to truncate(project.headline, :length => 120), '#'
   .author
-    p= link_to 'javascript:void(0);' do
-      - unless project.user.address_city.blank?
-        = project.user.address_city
-      - unless project.user.address_state.blank?
-          | &nbsp; / &nbsp;
-          = project.user.address_state
+    - if project.user.address_city || project.user.address_state
+      p= link_to 'javascript:void(0)' do
+        - unless project.user.address_city.blank?
+          = project.user.address_city
+        - unless project.user.address_state.blank?
+            | &nbsp; / &nbsp;
+            = project.user.address_state
   .statistics
     .progress
       .bar[style="width: #{project.display_progress}%"]

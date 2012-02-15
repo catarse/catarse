@@ -8,13 +8,8 @@
     - elsif current_user
       - if @recommended_project
         = render "layouts/project_header", :title => t('layouts.recommended_header.sugest_for_you'), :project => @recommended_project
-      - elsif @project_of_day
-        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @project_of_day
       - else
         = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @fourth_project
     - else
-      - if @project_of_day
-        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @project_of_day
-      - else
         = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @fourth_project
   .clearfix
