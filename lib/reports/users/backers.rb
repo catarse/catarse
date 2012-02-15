@@ -4,17 +4,7 @@ module Reports
     class Backers
       class << self
         def most_backed(limit=20)
-          @users = User.joins(:backs).select(
-          <<-SQL
-            users.id,
-            users.name,
-            count(backers.id) as count_backs
-          SQL
-          ).
-          where("backers.confirmed is true").
-          order("count_backs desc").
-          group("users.name, users.id").
-          limit(limit)
+          @users = User.most_backeds.limit(limit)
 
           @csv = CSV.generate(:col_sep => ',') do |csv_string|
 
