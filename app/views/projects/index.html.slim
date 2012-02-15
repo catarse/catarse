@@ -48,7 +48,7 @@
         .blog
           h3= t('sidebar.titles.blog')
           ul.posts
-            - 3.times do
+            - 2.times do
               li
                 h2
                   = link_to '#' do
@@ -63,7 +63,8 @@
           .fb-like data-href="http://facebook.com/catarse.me" data-send="false" data-width="171" data-show-faces="true"
         .twitter
           h3= t('sidebar.titles.twitter')
-          p= @last_tweet['text']
+          - @last_tweets.each do |tweet|
+            p= tweet['text']
           = link_to "Follow @#{t('site.twitter')}", "http://twitter.com/#{t('site.twitter')}", :class => 'twitter-follow-button', :"data-show-count" => "false" , :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
         .newsletter
           h3= t('sidebar.titles.newsletter')
