@@ -21,7 +21,7 @@
         = t('.by')
         |&nbsp;
         span[itemprop="author"]= project.user.name
-      p.description[itemprop="description"]= project.headline
+      p.description[itemprop="description"]= truncate(project.headline, :length => 140)
       p.where[itemprop="contentLocation"]
         - unless project.user.address_city.blank?
           = project.user.address_city
