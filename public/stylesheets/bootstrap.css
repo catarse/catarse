@@ -1654,18 +1654,20 @@ body #logos .power a {
   margin-left: 10px;
   margin-right: 10px;
   width: 220px;
+  margin-left: 0;
+  margin-right: 20px;
   height: 54px;
   border: none;
   background: url("/images/catarse/logo164x54.png") left top no-repeat;
   text-indent: -9999em;
 }
-/* line 14, ../../app/stylesheets/redesign/content/header.sass */
+/* line 16, ../../app/stylesheets/redesign/content/header.sass */
 #header nav a {
   display: inline-block;
   font-family: "Lato-Regular";
   text-decoration: none;
 }
-/* line 18, ../../app/stylesheets/redesign/content/header.sass */
+/* line 20, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.actions {
   display: inline;
   float: left;
@@ -1674,31 +1676,31 @@ body #logos .power a {
   width: 220px;
   margin-top: 20px;
 }
-/* line 21, ../../app/stylesheets/redesign/content/header.sass */
+/* line 23, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.actions a {
   color: #e75297;
   font-size: 18px;
   margin-right: 33px;
 }
-/* line 25, ../../app/stylesheets/redesign/content/header.sass */
+/* line 27, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.actions a:last-child {
   margin-right: 0;
 }
-/* line 27, ../../app/stylesheets/redesign/content/header.sass */
+/* line 29, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.actions a:hover {
   text-decoration: underline;
 }
-/* line 29, ../../app/stylesheets/redesign/content/header.sass */
+/* line 31, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.actions a.explore {
   background: url("/images/catarse/explore_icon23x15.png") left 3px no-repeat;
   text-indent: 30px;
 }
-/* line 32, ../../app/stylesheets/redesign/content/header.sass */
+/* line 34, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.actions a.submit_project {
   background: url("/images/catarse/submit_project_icon25x13.png") left 4px no-repeat;
   text-indent: 30px;
 }
-/* line 35, ../../app/stylesheets/redesign/content/header.sass */
+/* line 37, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.menu {
   display: inline;
   float: left;
@@ -1707,22 +1709,22 @@ body #logos .power a {
   width: 220px;
   margin-top: 20px;
 }
-/* line 38, ../../app/stylesheets/redesign/content/header.sass */
+/* line 40, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.menu a {
   font-family: "Lato-Regular";
   color: #333333;
   font-size: 14px;
   margin-right: 12px;
 }
-/* line 43, ../../app/stylesheets/redesign/content/header.sass */
+/* line 45, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.menu a:last-child {
   margin-right: none;
 }
-/* line 45, ../../app/stylesheets/redesign/content/header.sass */
+/* line 47, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.menu a:hover {
   color: #e75297;
 }
-/* line 47, ../../app/stylesheets/redesign/content/header.sass */
+/* line 49, ../../app/stylesheets/redesign/content/header.sass */
 #header .search {
   display: inline;
   float: left;
@@ -1731,7 +1733,7 @@ body #logos .power a {
   width: 220px;
   margin-top: 18px;
 }
-/* line 50, ../../app/stylesheets/redesign/content/header.sass */
+/* line 52, ../../app/stylesheets/redesign/content/header.sass */
 #header .search form {
   width: 220px;
   height: 22px;
@@ -1744,17 +1746,17 @@ body #logos .power a {
   border: 1px #cccccc solid;
   background: white;
 }
-/* line 57, ../../app/stylesheets/redesign/content/header.sass */
+/* line 59, ../../app/stylesheets/redesign/content/header.sass */
 #header .search form input[type="text"] {
   border: none;
   width: 190px;
   float: left;
 }
-/* line 61, ../../app/stylesheets/redesign/content/header.sass */
+/* line 63, ../../app/stylesheets/redesign/content/header.sass */
 #header .search form input[type="text"]:focus {
   outline: none;
 }
-/* line 63, ../../app/stylesheets/redesign/content/header.sass */
+/* line 65, ../../app/stylesheets/redesign/content/header.sass */
 #header .search form input[type="submit"] {
   background: url("/images/catarse/search_submit15x15.png") left top no-repeat;
   width: 15px;
