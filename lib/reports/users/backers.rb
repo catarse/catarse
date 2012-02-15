@@ -10,7 +10,11 @@ module Reports
             users.name,
             count(backers.id) as count_backs
           SQL
-          ).order("count_backs desc").group("users.name, users.id").limit(limit)
+          ).
+          where("backers.confirmed is true").
+          order("count_backs desc").
+          group("users.name, users.id").
+          limit(limit)
 
           @csv = CSV.generate(:col_sep => ',') do |csv_string|
 
