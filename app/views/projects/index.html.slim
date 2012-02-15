@@ -6,9 +6,9 @@
           .title
             h2= t('sections.selection.title')
         .projects
-          = render :partial => 'project', :locals => {:project => @first_project }
+          = render :partial => 'project', :locals => {:project => @first_project, :custom_class => 'first' }
           = render :partial => 'project', :locals => {:project => @second_project }
-          = render :partial => 'project', :locals => {:project => @third_project }
+          = render :partial => 'project', :locals => {:project => @third_project, :custom_class => 'last' }
           /= raise @expiring.inspect
           / = render :partial => 'project', :collection => @expiring
           / - @expiring.each_with_index do |item,i|
@@ -23,9 +23,9 @@
             h2= t('sections.expiring.title')
         .projects
           /= raise @expiring.inspect
-          = render :partial => 'project', :collection => @expiring
-          / - @expiring.each_with_index do |item,i|
-          /   == render 'project', :project => item, :custom_class => (@expiring.length == (i+1) ? 'without_omega' : '')
+          /= render :partial => 'project', :collection => @expiring
+          - @expiring.each_with_index do |item,i|
+            == render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
           hr
           = link_to t('main.links.expiring')
@@ -36,9 +36,9 @@
             h2= t('sections.recents.title')
         .projects
           /= raise @expiring.inspect
-          = render :partial => 'project', :collection => @recent
-          / - @expiring.each_with_index do |item,i|
-          /   == render 'project', :project => item, :custom_class => (@expiring.length == (i+1) ? 'without_omega' : '')
+          / = render :partial => 'project', :collection => @recent
+          - @recent.each_with_index do |item,i|
+            == render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
           hr
           = link_to t('main.links.recents')

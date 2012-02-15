@@ -256,37 +256,44 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   transition-duration: 0.3s;
   height: 415px;
   overflow: hidden;
+}
+/* line 7, ../../app/stylesheets/redesign/miv/projects.sass */
+.project.first {
+  margin-left: 0;
+}
+/* line 9, ../../app/stylesheets/redesign/miv/projects.sass */
+.project.last {
   margin-right: 0;
 }
-/* line 10, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 14, ../../app/stylesheets/redesign/miv/projects.sass */
 .project:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 4px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 4px;
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 4px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 4px;
 }
-/* line 12, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 16, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .status_image {
   position: absolute;
   z-index: 100;
 }
-/* line 15, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 19, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .success_slice {
   width: 110px;
   height: 110px;
   overflow: hidden;
   position: absolute;
 }
-/* line 20, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 24, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .success_slice.pt {
   background: url("/images/redesign/success_pt110x110.png") left top no-repeat;
 }
-/* line 23, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 27, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .project_content {
   padding: 5px;
   border-bottom: 1px rgba(255, 255, 255, 0.2) solid;
 }
-/* line 26, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 30, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .black_box {
   text-transform: uppercase;
   position: absolute;
@@ -300,20 +307,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 11px;
   width: 215px;
 }
-/* line 38, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 42, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .cover {
   width: 220px;
   height: 172px;
   overflow: hidden;
   margin-bottom: 8px;
 }
-/* line 43, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 47, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .cover img {
   width: 220px;
   height: 172px;
   vertical-align: middle;
 }
-/* line 47, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 51, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box h4 {
   font-size: 14px;
   color: #4383d1;
@@ -323,18 +330,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   overflow: hidden;
   margin-bottom: 3px;
 }
-/* line 55, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 59, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box h4 a {
   color: black;
   font-family: Lato-Bold;
   font-size: 14px;
   text-decoration: none;
 }
-/* line 60, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 64, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box h4 a:hover {
   color: #59af6d;
 }
-/* line 62, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 66, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .author, .project .box .where, .project .box .description {
   padding-left: 3px;
   font-family: Arial;
@@ -345,7 +352,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 70, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 74, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .description {
   overflow: hidden;
   line-height: 120%;
@@ -355,11 +362,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 77, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 81, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .where {
   padding: 10px 0;
 }
-/* line 79, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 83, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .status_bar {
   width: 202px;
   height: 10px;
@@ -372,7 +379,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 85, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 89, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .status_bar .progress {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -384,29 +391,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 10px;
   overflow: hidden;
 }
-/* line 90, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 94, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .info_bar {
   background: #dcdcdc;
   float: left;
   width: 210px;
   padding: 5px 5px 10px;
 }
-/* line 96, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 100, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box ul {
   padding-top: 10px;
   display: block;
 }
-/* line 99, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 103, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box ul li {
   float: left;
   min-width: 60px;
   margin-right: 10px;
 }
-/* line 103, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 107, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box ul li:last-child {
   margin-left: 0px;
 }
-/* line 105, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 109, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box ul li h6 {
   font-family: Lato-Bold;
   font-size: 12px;
@@ -415,14 +422,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   opacity: 0.7;
   margin-bottom: 3px;
 }
-/* line 111, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 115, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box ul li p {
   text-transform: uppercase;
   color: #838383;
   font-family: Arial;
   font-size: 9px;
 }
-/* line 116, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 120, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .follow_project {
   clear: both;
   display: block;
@@ -443,7 +450,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background: url("/images/redesign/follow_project_start12x11.png") 4px 4px no-repeat #cccccc;
   text-transform: uppercase;
 }
-/* line 129, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 133, ../../app/stylesheets/redesign/miv/projects.sass */
 .project .box .follow_project:hover {
   -moz-box-shadow: #363636 0 0 6px;
   -webkit-box-shadow: #363636 0 0 6px;
@@ -451,7 +458,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-shadow: #363636 0 0 6px;
 }
 
-/* line 132, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 136, ../../app/stylesheets/redesign/miv/projects.sass */
 .project_comment {
   display: inline;
   float: left;
@@ -459,13 +466,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: 10px;
   width: 220px;
 }
-/* line 134, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 138, ../../app/stylesheets/redesign/miv/projects.sass */
 .project_comment h3 {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
   padding: 40px 0 20px;
 }
-/* line 137, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 141, ../../app/stylesheets/redesign/miv/projects.sass */
 .project_comment p {
   font-family: Arial;
   font-size: 1.3em;
@@ -475,7 +482,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 144, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 148, ../../app/stylesheets/redesign/miv/projects.sass */
 .project_comment p.author {
   font-size: 1.1em;
   font-style: italic;
@@ -483,7 +490,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   opacity: 0.5;
 }
 
-/* line 150, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 154, ../../app/stylesheets/redesign/miv/projects.sass */
 .compost_project {
   display: inline;
   float: left;
@@ -492,11 +499,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 460px;
   padding-top: 30px;
 }
-/* line 153, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 157, ../../app/stylesheets/redesign/miv/projects.sass */
 .compost_project .project {
   margin-left: 0;
 }
-/* line 155, ../../app/stylesheets/redesign/miv/projects.sass */
+/* line 159, ../../app/stylesheets/redesign/miv/projects.sass */
 .compost_project .project_comment {
   margin-right: 0;
 }
@@ -539,9 +546,6 @@ body {
 }
 /* line 5, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container {
-  margin-left: auto;
-  margin-right: auto;
-  width: 960px;
   margin-left: auto;
   margin-right: auto;
   width: 960px;
@@ -880,7 +884,7 @@ body #page_content .container .push_15 {
 body #page_content .container .pull_15 {
   left: -900px;
 }
-/* line 14, ../../app/stylesheets/redesign/content/body.sass */
+/* line 13, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .main {
   padding-top: 17px;
   display: inline;
@@ -888,9 +892,8 @@ body #page_content .container .main {
   margin-left: 10px;
   margin-right: 10px;
   width: 700px;
-  margin-left: 0;
 }
-/* line 18, ../../app/stylesheets/redesign/content/body.sass */
+/* line 16, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .sidebar {
   display: inline;
   float: left;
@@ -899,18 +902,18 @@ body #page_content .container .sidebar {
   width: 220px;
   margin-right: 0;
 }
-/* line 22, ../../app/stylesheets/redesign/content/body.sass */
+/* line 20, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .list {
   float: left;
 }
-/* line 25, ../../app/stylesheets/redesign/content/body.sass */
+/* line 23, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .list_title {
-  margin: 0 0 15px -20px;
+  margin: 0 0 15px -30px;
   float: left;
   clear: both;
   width: 100%;
 }
-/* line 30, ../../app/stylesheets/redesign/content/body.sass */
+/* line 28, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .list_title .title {
   float: left;
   min-width: 103px;
@@ -919,7 +922,7 @@ body #page_content .container .list_title .title {
   padding: 5px 10px 5px 9px;
   background: url("/images/catarse/title_component241x40.png") left top no-repeat;
 }
-/* line 38, ../../app/stylesheets/redesign/content/body.sass */
+/* line 36, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .list_title .title h2 {
   margin-left: 20px;
   float: left;
@@ -927,11 +930,11 @@ body #page_content .container .list_title .title h2 {
   font-family: "Lato-Regular";
   font-size: 18px;
 }
-/* line 44, ../../app/stylesheets/redesign/content/body.sass */
+/* line 42, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .projects {
   padding-top: 20px;
 }
-/* line 46, ../../app/stylesheets/redesign/content/body.sass */
+/* line 44, ../../app/stylesheets/redesign/content/body.sass */
 body #logos {
   margin-left: auto;
   margin-right: auto;
@@ -1272,7 +1275,7 @@ body #logos .push_15 {
 body #logos .pull_15 {
   left: -900px;
 }
-/* line 52, ../../app/stylesheets/redesign/content/body.sass */
+/* line 50, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .multide {
   display: inline;
   float: left;
@@ -1281,11 +1284,11 @@ body #logos .multide {
   width: 100px;
   padding-right: 240px;
 }
-/* line 55, ../../app/stylesheets/redesign/content/body.sass */
+/* line 53, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .multide a {
   margin-left: 10px;
 }
-/* line 57, ../../app/stylesheets/redesign/content/body.sass */
+/* line 55, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .comum {
   display: inline;
   float: left;
@@ -1294,13 +1297,13 @@ body #logos .comum {
   width: 160px;
   padding-right: 180px;
 }
-/* line 60, ../../app/stylesheets/redesign/content/body.sass */
+/* line 58, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .comum a {
   float: left;
   margin-top: 10px;
   margin-left: 10px;
 }
-/* line 64, ../../app/stylesheets/redesign/content/body.sass */
+/* line 62, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .power {
   display: inline;
   float: left;
@@ -1308,7 +1311,7 @@ body #logos .power {
   margin-right: 10px;
   width: 220px;
 }
-/* line 66, ../../app/stylesheets/redesign/content/body.sass */
+/* line 64, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .power a {
   float: right;
 }
@@ -1774,9 +1777,6 @@ body #logos .power a {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 960px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   -o-border-radius: 8px;
@@ -2111,12 +2111,12 @@ body #logos .power a {
 .footer .pull_15 {
   left: -900px;
 }
-/* line 8, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 7, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content {
   padding-top: 30px;
   padding-bottom: 10px;
 }
-/* line 11, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 10, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content h3 {
   font-family: "Lato-Bold";
   font-size: 18px;
@@ -2124,7 +2124,7 @@ body #logos .power a {
   padding-bottom: 40px;
   padding-top: 5px;
 }
-/* line 17, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 16, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info {
   display: inline;
   float: left;
@@ -2133,16 +2133,16 @@ body #logos .power a {
   width: 220px;
   padding-right: 60px;
 }
-/* line 20, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 19, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info h3 {
   background: url("/images/catarse/faq_icon18x18.png") left 5px no-repeat;
   text-indent: 34px;
 }
-/* line 24, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 23, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li {
   margin-bottom: 34px;
 }
-/* line 26, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 25, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li a {
   font-family: "Lato-Regular";
   font-size: 18px;
@@ -2150,11 +2150,11 @@ body #logos .power a {
   color: white;
   text-decoration: none;
 }
-/* line 32, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 31, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li a:hover {
   color: #e75297;
 }
-/* line 35, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 34, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata {
   display: inline;
   float: left;
@@ -2163,22 +2163,22 @@ body #logos .power a {
   width: 280px;
   padding-right: 60px;
 }
-/* line 38, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 37, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata h3 {
   background: url("/images/catarse/opendata_icon26x26.png") left top no-repeat;
   text-indent: 44px;
 }
-/* line 41, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 40, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul {
   display: block;
 }
-/* line 43, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 42, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul li {
   width: 100%;
   float: left;
   margin-bottom: 20px;
 }
-/* line 47, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 46, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul li h5 {
   float: left;
   font-family: "Lato-Bold";
@@ -2186,7 +2186,7 @@ body #logos .power a {
   color: white;
   padding-right: 10px;
 }
-/* line 53, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 52, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul li p {
   padding-top: 3px;
   float: left;
@@ -2197,7 +2197,7 @@ body #logos .power a {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 62, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 61, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social {
   display: inline;
   float: left;
@@ -2205,22 +2205,22 @@ body #logos .power a {
   margin-right: 10px;
   width: 280px;
 }
-/* line 64, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 63, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social h3 {
   background: url("/images/catarse/heart_icon17x14.png") left 6px no-repeat;
   text-indent: 32px;
 }
-/* line 67, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 66, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social h3.newsletter {
   padding-top: 30px;
   padding-bottom: 20px;
   background: url("/images/catarse/newsletter_icon18x15.png") left 32px no-repeat;
 }
-/* line 71, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 70, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social .twitter {
   margin-bottom: 20px;
 }
-/* line 74, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 73, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="text"] {
   float: left;
   width: 170px;
@@ -2234,13 +2234,13 @@ body #logos .power a {
   border: 1px #dfdfdf solid;
   border-right: none;
 }
-/* line 81, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 80, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="text"]:focus {
   outline: none;
   border: 1px #e75297 solid;
   border-right: none;
 }
-/* line 85, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 84, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="submit"] {
   float: left;
   background: #e75297;
@@ -2266,7 +2266,7 @@ body #logos .power a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 97, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 96, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="submit"]:active {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
