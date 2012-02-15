@@ -8,6 +8,7 @@ Catarse::Application.routes.draw do
   root :to => "projects#index"
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
   match "/reports/location/:project_id/backers" => "reports#location_by_project", :as => :backers_location_report
+  match "/reports/users_most_backed" => "reports#users_most_backed", :as => :most_backed_report
 
   match '/sitemap' => "static#sitemap", :as => :sitemap
   # Static Pages
