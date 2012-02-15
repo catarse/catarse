@@ -3,7 +3,7 @@ module Reports
   module Users
     class Backers
       class << self
-        def most_backed(limit=20)
+        def most_backed(limit=50)
           @users = User.most_backeds.limit(limit)
 
           @csv = CSV.generate(:col_sep => ',') do |csv_string|
