@@ -915,21 +915,22 @@ body #page_content .container .list_title .title {
   min-width: 103px;
   max-width: 206px;
   height: 30px;
-  padding: 5px 10px 5px 15px;
+  padding: 5px 10px 5px 9px;
   background: url("/images/catarse/title_component241x40.png") left top no-repeat;
 }
 /* line 37, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .list_title .title h2 {
-  float: right;
+  margin-left: 20px;
+  float: left;
   color: white;
   font-family: "Lato-Bold";
   font-size: 18px;
 }
-/* line 42, ../../app/stylesheets/redesign/content/body.sass */
+/* line 43, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .projects {
   padding-top: 20px;
 }
-/* line 44, ../../app/stylesheets/redesign/content/body.sass */
+/* line 45, ../../app/stylesheets/redesign/content/body.sass */
 body #logos {
   margin-left: auto;
   margin-right: auto;
@@ -1270,7 +1271,7 @@ body #logos .push_15 {
 body #logos .pull_15 {
   left: -900px;
 }
-/* line 50, ../../app/stylesheets/redesign/content/body.sass */
+/* line 51, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .multide {
   display: inline;
   float: left;
@@ -1279,11 +1280,11 @@ body #logos .multide {
   width: 100px;
   padding-right: 240px;
 }
-/* line 53, ../../app/stylesheets/redesign/content/body.sass */
+/* line 54, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .multide a {
   margin-left: 10px;
 }
-/* line 55, ../../app/stylesheets/redesign/content/body.sass */
+/* line 56, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .comum {
   display: inline;
   float: left;
@@ -1292,13 +1293,13 @@ body #logos .comum {
   width: 160px;
   padding-right: 180px;
 }
-/* line 58, ../../app/stylesheets/redesign/content/body.sass */
+/* line 59, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .comum a {
   float: left;
   margin-top: 10px;
   margin-left: 10px;
 }
-/* line 62, ../../app/stylesheets/redesign/content/body.sass */
+/* line 63, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .power {
   display: inline;
   float: left;
@@ -1306,7 +1307,7 @@ body #logos .power {
   margin-right: 10px;
   width: 220px;
 }
-/* line 64, ../../app/stylesheets/redesign/content/body.sass */
+/* line 65, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .power a {
   float: right;
 }
