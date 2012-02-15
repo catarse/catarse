@@ -917,7 +917,7 @@ body #page_content .container .list_title {
 body #page_content .container .list_title .title {
   float: left;
   min-width: 103px;
-  max-width: 206px;
+  max-width: 236px;
   height: 30px;
   padding: 5px 10px 5px 9px;
   background: url("/images/catarse/title_component241x40.png") left top no-repeat;
@@ -2761,8 +2761,8 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
 }
 /* line 13, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .recents_projects h2 {
-  background: url("/images/catarse/recents_icon18x23.png") left top no-repeat;
-  text-indent: 28px;
+  background: url("/images/catarse/recents_icon31x17.png") left top no-repeat;
+  text-indent: 38px;
   padding-bottom: 3px;
 }
 /* line 17, ../../app/stylesheets/redesign/resources/projects/index.sass */
