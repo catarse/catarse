@@ -33,8 +33,13 @@ class ProjectsController < ApplicationController
         @recent               = presenter.recent
 
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
-        @last_tweet = Rails.cache.fetch('last_tweet', :expires_in => 30.minutes) do
-            JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}"))).first
+        @last_tweets = Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
+            JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}"))).inject([]) do |total, item|
+              if total.size <= 2
+                total << item
+              end
+              total
+            end
         end
       end
       format.json do
