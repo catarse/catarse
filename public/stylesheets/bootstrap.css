@@ -948,8 +948,8 @@ body #logos {
   -ms-border-radius: 8px;
   -khtml-border-radius: 8px;
   border-radius: 8px;
-  padding: 0 10px 10px 10px;
-  margin-top: 30px;
+  padding: 0 10px 30px 10px;
+  margin-top: 60px;
 }
 /* line 35, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
 body #logos .grid_1, body #logos .grid_2, body #logos .grid_3, body #logos .grid_4, body #logos .grid_5, body #logos .grid_6, body #logos .grid_7, body #logos .grid_8, body #logos .grid_9, body #logos .grid_10, body #logos .grid_11, body #logos .grid_12, body #logos .grid_13, body #logos .grid_14, body #logos .grid_15, body #logos .grid_16 {
@@ -1300,7 +1300,7 @@ body #logos .comum {
 /* line 58, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .comum a {
   float: left;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-left: 10px;
 }
 /* line 62, ../../app/stylesheets/redesign/content/body.sass */
@@ -1313,6 +1313,7 @@ body #logos .power {
 }
 /* line 64, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .power a {
+  margin-top: -15px;
   float: right;
 }
 
