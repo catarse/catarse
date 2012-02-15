@@ -2634,7 +2634,7 @@ body #logos .power a {
   background: url("/images/catarse/newsletter_icon18x15.png") left 2px no-repeat;
   text-indent: 28px;
   color: black;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
 }
 /* line 93, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .newsletter form input[type='text'] {
@@ -2660,19 +2660,21 @@ body #logos .power a {
   background: #e75297;
   color: white;
   border: none;
-  margin-top: 5px;
-  padding: 3px 10px;
+  margin-top: 10px;
+  padding: 3px 15px;
   float: right;
   margin-right: 12px;
+  font-family: "Lato-Regular";
+  font-size: 16px;
 }
-/* line 108, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 110, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .newsletter form input[type="submit"]:active {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
 }
-/* line 111, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 113, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .faq {
   display: block;
   clear: both;
@@ -2680,7 +2682,7 @@ body #logos .power a {
   padding-bottom: 30px;
   border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
 }
-/* line 117, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 119, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .faq h3 {
   font-family: "Lato-Bold";
   font-size: 18px;
@@ -2689,14 +2691,14 @@ body #logos .power a {
   color: black;
   padding-bottom: 15px;
 }
-/* line 125, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 127, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule {
   display: block;
   clear: both;
   padding-top: 30px;
   padding-bottom: 30px;
 }
-/* line 130, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 132, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule h3 {
   font-family: "Lato-Bold";
   font-size: 18px;
@@ -2706,7 +2708,7 @@ body #logos .power a {
   padding-top: 4px;
   padding-bottom: 25px;
 }
-/* line 139, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 141, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li {
   width: 100%;
   margin-bottom: 25px;
@@ -2714,19 +2716,19 @@ body #logos .power a {
   float: left;
   border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
 }
-/* line 145, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 147, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li:last-child {
   border-bottom: none;
 }
-/* line 147, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 149, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a {
   text-decoration: none;
 }
-/* line 150, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 152, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a:hover h4, .sidebar .content .schedule ul.events li a:hover p {
   color: #e75297 !important;
 }
-/* line 152, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 154, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a h4 {
   float: left;
   color: black;
@@ -2734,13 +2736,13 @@ body #logos .power a {
   font-size: 20px;
   margin-right: 10px;
 }
-/* line 158, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 160, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a h4 span {
   display: block;
   font-family: Arial;
   font-size: 12px;
 }
-/* line 162, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 164, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a p {
   padding-top: 4px;
   font-family: Arial;
