@@ -5,7 +5,7 @@ Syntax error: Undefined mixin 'box-shadow'.
 
 2: #recommended_header
 3:   width: 980px
-4:   margin: 15px auto 30px
+4:   margin: 15px auto 40px
 5:   display: block
 6:   clear: both
 7:   +box-shadow(rgba(black, 0.6) 1px 1px 2px)
@@ -94,4 +94,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'box-shadow'.\A         on line 7 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/recommended_header.sass, in `box-shadow'\A         from line 7 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/recommended_header.sass\A \A 2: #recommended_header\A 3:   width: 980px\A 4:   margin: 15px auto 30px\A 5:   display: block\A 6:   clear: both\A 7:   +box-shadow(rgba(black, 0.6) 1px 1px 2px)\A 8:   +border-radius(25px)\A 9:   .resume_about\A 10:     float: left\A 11:     height: $recommended_header_height\A 12:     width: 260px"; }
+  content: "Syntax error: Undefined mixin 'box-shadow'.\A         on line 7 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/recommended_header.sass, in `box-shadow'\A         from line 7 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/recommended_header.sass\A \A 2: #recommended_header\A 3:   width: 980px\A 4:   margin: 15px auto 40px\A 5:   display: block\A 6:   clear: both\A 7:   +box-shadow(rgba(black, 0.6) 1px 1px 2px)\A 8:   +border-radius(25px)\A 9:   .resume_about\A 10:     float: left\A 11:     height: $recommended_header_height\A 12:     width: 260px"; }

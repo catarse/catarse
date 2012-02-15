@@ -558,7 +558,7 @@ body #page_content .container {
   padding: 0 10px 0 10px;
   background: white;
   border: 1px #dfdfdf solid;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 /* line 35, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
 body #page_content .container .grid_1, body #page_content .container .grid_2, body #page_content .container .grid_3, body #page_content .container .grid_4, body #page_content .container .grid_5, body #page_content .container .grid_6, body #page_content .container .grid_7, body #page_content .container .grid_8, body #page_content .container .grid_9, body #page_content .container .grid_10, body #page_content .container .grid_11, body #page_content .container .grid_12, body #page_content .container .grid_13, body #page_content .container .grid_14, body #page_content .container .grid_15, body #page_content .container .grid_16 {
@@ -2277,7 +2277,7 @@ body #logos .power a {
 /* line 2, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header {
   width: 980px;
-  margin: 15px auto 30px;
+  margin: 15px auto 40px;
   display: block;
   clear: both;
   -moz-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
