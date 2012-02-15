@@ -1,18 +1,18 @@
 /*
-Syntax error: Undefined mixin 'grid-container'.
-        on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass, in `grid-container'
+Syntax error: Undefined mixin 'grid-system'.
+        on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass, in `grid-system'
         from line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass
 
 1: .footer
-2:   +grid-container
-3:   +grid-system(16)
-4:   +border-radius(8px)
-5:   padding: 0 10px 0 10px
-6:   border: 1px $df_gryn solid
-7:   background: $ultra_gryn !important
+2:   +grid-system(16)
+3:   +border-radius(8px)
+4:   padding: 0 10px 0 10px
+5:   border: 1px $df_gryn solid
+6:   background: $ultra_gryn !important
+7:   .content
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass:2:in `grid-container'
+/Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass:2:in `grid-system'
 /Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass:2
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
@@ -90,4 +90,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'grid-container'.\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass, in `grid-container'\A         from line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass\A \A 1: .footer\A 2:   +grid-container\A 3:   +grid-system(16)\A 4:   +border-radius(8px)\A 5:   padding: 0 10px 0 10px\A 6:   border: 1px $df_gryn solid\A 7:   background: $ultra_gryn !important"; }
+  content: "Syntax error: Undefined mixin 'grid-system'.\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass, in `grid-system'\A         from line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/footer.sass\A \A 1: .footer\A 2:   +grid-system(16)\A 3:   +border-radius(8px)\A 4:   padding: 0 10px 0 10px\A 5:   border: 1px $df_gryn solid\A 6:   background: $ultra_gryn !important\A 7:   .content"; }

@@ -7,8 +7,8 @@ Syntax error: Undefined variable: "$images_path".
 3: 
 4:   #page_content
 5:     .container
-6:       +grid-container
-7:       +grid-system(16)
+6:       +grid-system(16)
+7:       +border-radius(8px)
 
 Backtrace:
 /Users/ton/code/store/catarse/app/stylesheets/redesign/content/body.sass:2
@@ -100,4 +100,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$images_path\".\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/body.sass\A \A 1: body\A 2:   background: url($images_path+'bg_s3.png') left top repeat\A 3: \A 4:   #page_content\A 5:     .container\A 6:       +grid-container\A 7:       +grid-system(16)"; }
+  content: "Syntax error: Undefined variable: \"$images_path\".\A         on line 2 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/body.sass\A \A 1: body\A 2:   background: url($images_path+'bg_s3.png') left top repeat\A 3: \A 4:   #page_content\A 5:     .container\A 6:       +grid-system(16)\A 7:       +border-radius(8px)"; }
