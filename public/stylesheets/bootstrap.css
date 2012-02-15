@@ -554,6 +554,7 @@ body #page_content .container {
   padding: 0 10px 0 10px;
   background: white;
   border: 1px #dfdfdf solid;
+  margin-bottom: 30px;
 }
 /* line 35, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
 body #page_content .container .grid_1, body #page_content .container .grid_2, body #page_content .container .grid_3, body #page_content .container .grid_4, body #page_content .container .grid_5, body #page_content .container .grid_6, body #page_content .container .grid_7, body #page_content .container .grid_8, body #page_content .container .grid_9, body #page_content .container .grid_10, body #page_content .container .grid_11, body #page_content .container .grid_12, body #page_content .container .grid_13, body #page_content .container .grid_14, body #page_content .container .grid_15, body #page_content .container .grid_16 {
@@ -879,7 +880,7 @@ body #page_content .container .push_15 {
 body #page_content .container .pull_15 {
   left: -900px;
 }
-/* line 13, ../../app/stylesheets/redesign/content/body.sass */
+/* line 14, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .main {
   padding-top: 17px;
   display: inline;
@@ -889,7 +890,7 @@ body #page_content .container .main {
   width: 700px;
   margin-left: 0;
 }
-/* line 17, ../../app/stylesheets/redesign/content/body.sass */
+/* line 18, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .sidebar {
   display: inline;
   float: left;
@@ -898,18 +899,18 @@ body #page_content .container .sidebar {
   width: 220px;
   margin-right: 0;
 }
-/* line 21, ../../app/stylesheets/redesign/content/body.sass */
+/* line 22, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .list {
   float: left;
 }
-/* line 24, ../../app/stylesheets/redesign/content/body.sass */
+/* line 25, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .list_title {
   margin: 0 0 15px -20px;
   float: left;
   clear: both;
   width: 100%;
 }
-/* line 29, ../../app/stylesheets/redesign/content/body.sass */
+/* line 30, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .list_title .title {
   float: left;
   min-width: 103px;
@@ -918,7 +919,7 @@ body #page_content .container .list_title .title {
   padding: 5px 10px 5px 9px;
   background: url("/images/catarse/title_component241x40.png") left top no-repeat;
 }
-/* line 37, ../../app/stylesheets/redesign/content/body.sass */
+/* line 38, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .list_title .title h2 {
   margin-left: 20px;
   float: left;
@@ -926,11 +927,11 @@ body #page_content .container .list_title .title h2 {
   font-family: "Lato-Regular";
   font-size: 18px;
 }
-/* line 43, ../../app/stylesheets/redesign/content/body.sass */
+/* line 44, ../../app/stylesheets/redesign/content/body.sass */
 body #page_content .container .projects {
   padding-top: 20px;
 }
-/* line 45, ../../app/stylesheets/redesign/content/body.sass */
+/* line 46, ../../app/stylesheets/redesign/content/body.sass */
 body #logos {
   margin-left: auto;
   margin-right: auto;
@@ -1271,7 +1272,7 @@ body #logos .push_15 {
 body #logos .pull_15 {
   left: -900px;
 }
-/* line 51, ../../app/stylesheets/redesign/content/body.sass */
+/* line 52, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .multide {
   display: inline;
   float: left;
@@ -1280,11 +1281,11 @@ body #logos .multide {
   width: 100px;
   padding-right: 240px;
 }
-/* line 54, ../../app/stylesheets/redesign/content/body.sass */
+/* line 55, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .multide a {
   margin-left: 10px;
 }
-/* line 56, ../../app/stylesheets/redesign/content/body.sass */
+/* line 57, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .comum {
   display: inline;
   float: left;
@@ -1293,13 +1294,13 @@ body #logos .comum {
   width: 160px;
   padding-right: 180px;
 }
-/* line 59, ../../app/stylesheets/redesign/content/body.sass */
+/* line 60, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .comum a {
   float: left;
   margin-top: 10px;
   margin-left: 10px;
 }
-/* line 63, ../../app/stylesheets/redesign/content/body.sass */
+/* line 64, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .power {
   display: inline;
   float: left;
@@ -1307,7 +1308,7 @@ body #logos .power {
   margin-right: 10px;
   width: 220px;
 }
-/* line 65, ../../app/stylesheets/redesign/content/body.sass */
+/* line 66, ../../app/stylesheets/redesign/content/body.sass */
 body #logos .power a {
   float: right;
 }
@@ -1785,7 +1786,6 @@ body #logos .power a {
   padding: 0 10px 0 10px;
   border: 1px #dfdfdf solid;
   background: #333333 !important;
-  margin-top: 50px;
 }
 /* line 35, ../../../../../.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets/960/_grid.sass */
 .footer .grid_1, .footer .grid_2, .footer .grid_3, .footer .grid_4, .footer .grid_5, .footer .grid_6, .footer .grid_7, .footer .grid_8, .footer .grid_9, .footer .grid_10, .footer .grid_11, .footer .grid_12, .footer .grid_13, .footer .grid_14, .footer .grid_15, .footer .grid_16 {
@@ -2111,12 +2111,12 @@ body #logos .power a {
 .footer .pull_15 {
   left: -900px;
 }
-/* line 9, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 8, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content {
   padding-top: 30px;
   padding-bottom: 10px;
 }
-/* line 12, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 11, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content h3 {
   font-family: "Lato-Bold";
   font-size: 18px;
@@ -2124,7 +2124,7 @@ body #logos .power a {
   padding-bottom: 40px;
   padding-top: 5px;
 }
-/* line 18, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 17, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info {
   display: inline;
   float: left;
@@ -2133,16 +2133,16 @@ body #logos .power a {
   width: 220px;
   padding-right: 60px;
 }
-/* line 21, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 20, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info h3 {
   background: url("/images/catarse/faq_icon18x18.png") left 5px no-repeat;
   text-indent: 34px;
 }
-/* line 25, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 24, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li {
   margin-bottom: 34px;
 }
-/* line 27, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 26, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li a {
   font-family: "Lato-Regular";
   font-size: 18px;
@@ -2150,11 +2150,11 @@ body #logos .power a {
   color: white;
   text-decoration: none;
 }
-/* line 33, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 32, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li a:hover {
   color: #e75297;
 }
-/* line 36, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 35, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata {
   display: inline;
   float: left;
@@ -2163,22 +2163,22 @@ body #logos .power a {
   width: 280px;
   padding-right: 60px;
 }
-/* line 39, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 38, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata h3 {
   background: url("/images/catarse/opendata_icon26x26.png") left top no-repeat;
   text-indent: 44px;
 }
-/* line 42, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 41, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul {
   display: block;
 }
-/* line 44, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 43, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul li {
   width: 100%;
   float: left;
   margin-bottom: 20px;
 }
-/* line 48, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 47, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul li h5 {
   float: left;
   font-family: "Lato-Bold";
@@ -2186,7 +2186,7 @@ body #logos .power a {
   color: white;
   padding-right: 10px;
 }
-/* line 54, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 53, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .opendata ul li p {
   padding-top: 3px;
   float: left;
@@ -2197,7 +2197,7 @@ body #logos .power a {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 63, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 62, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social {
   display: inline;
   float: left;
@@ -2205,22 +2205,22 @@ body #logos .power a {
   margin-right: 10px;
   width: 280px;
 }
-/* line 65, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 64, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social h3 {
   background: url("/images/catarse/heart_icon17x14.png") left 6px no-repeat;
   text-indent: 32px;
 }
-/* line 68, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 67, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social h3.newsletter {
   padding-top: 30px;
   padding-bottom: 20px;
   background: url("/images/catarse/newsletter_icon18x15.png") left 32px no-repeat;
 }
-/* line 72, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 71, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social .twitter {
   margin-bottom: 20px;
 }
-/* line 75, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 74, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="text"] {
   float: left;
   width: 170px;
@@ -2234,13 +2234,13 @@ body #logos .power a {
   border: 1px #dfdfdf solid;
   border-right: none;
 }
-/* line 82, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 81, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="text"]:focus {
   outline: none;
   border: 1px #e75297 solid;
   border-right: none;
 }
-/* line 86, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 85, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="submit"] {
   float: left;
   background: #e75297;
@@ -2266,7 +2266,7 @@ body #logos .power a {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 98, ../../app/stylesheets/redesign/content/footer.sass */
+/* line 97, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .social form input[type="submit"]:active {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
@@ -2277,7 +2277,7 @@ body #logos .power a {
 /* line 2, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header {
   width: 980px;
-  margin: 15px auto;
+  margin: 15px auto 30px;
   display: block;
   clear: both;
   -moz-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
@@ -2802,11 +2802,10 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
 }
 /* line 37, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners {
-  margin-top: 50px;
   padding-top: 20px;
   padding-bottom: 10px;
 }
-/* line 41, ../../app/stylesheets/redesign/resources/projects/index.sass */
+/* line 40, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners h2 {
   background: url("/images/catarse/partners_icon26x26.png") left top no-repeat;
   text-indent: 35px;
@@ -2814,11 +2813,11 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   margin-top: -5px;
   padding-top: 5px;
 }
-/* line 48, ../../app/stylesheets/redesign/resources/projects/index.sass */
+/* line 47, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul {
   width: 100%;
 }
-/* line 50, ../../app/stylesheets/redesign/resources/projects/index.sass */
+/* line 49, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li {
   width: 220px;
   margin-bottom: 20px;
@@ -2835,7 +2834,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 58, ../../app/stylesheets/redesign/resources/projects/index.sass */
+/* line 57, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li:hover {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -2848,7 +2847,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
 }
-/* line 61, ../../app/stylesheets/redesign/resources/projects/index.sass */
+/* line 60, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li:hover img {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
