@@ -15,7 +15,7 @@
           /   == render 'project', :project => item, :custom_class => (@expiring.length == (i+1) ? 'without_omega' : '')
         .explore_link
           hr
-          = link_to t('main.links.selected')
+          = link_to t('main.links.selected'), explore_path()+"#recommended"
 
       .expiring_projects.list
         .list_title
@@ -28,7 +28,7 @@
             == render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
           hr
-          = link_to t('main.links.expiring')
+          = link_to t('main.links.expiring'), explore_path()+'#expiring'
 
       .recents_projects.list
         .list_title
@@ -41,7 +41,7 @@
             == render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
           hr
-          = link_to t('main.links.recents')
+          = link_to t('main.links.recents'), explore_path()+'#recent'
 
     .sidebar
       .content
