@@ -2755,6 +2755,104 @@ body #logos .power a {
   color: black;
 }
 
+/* line 2, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content {
+  margin-top: 30px;
+}
+/* line 5, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .sidebar {
+  margin-top: 123px;
+}
+/* line 7, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .sidebar .content {
+  padding-top: 10px;
+}
+/* line 10, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section h2 {
+  font-size: 16px;
+  color: black;
+  font-family: "Lato-Bold";
+  margin-bottom: 10px;
+  text-transform: lowercase;
+  padding-left: 20px;
+}
+/* line 18, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section.highlights h2 {
+  background: url("/images/catarse/min_star12x11.png") left 3px no-repeat;
+}
+/* line 21, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section.categories h2 {
+  background: url("/images/catarse/category_icon14x14.png") left 2px no-repeat;
+}
+/* line 23, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul {
+  margin-bottom: 20px;
+}
+/* line 25, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li {
+  margin-bottom: 5px;
+}
+/* line 27, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li a {
+  color: #333333;
+  font-size: 14px;
+  font-family: Arial;
+  background: rgba(204, 204, 204, 0.3);
+  display: block;
+  padding: 1px 10px;
+  text-decoration: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 36, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li a:hover, body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li a.selected {
+  background: rgba(231, 82, 151, 0.3);
+}
+/* line 39, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .main .section_header {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px;
+  margin-left: 0;
+  padding-bottom: 60px;
+}
+/* line 43, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h1 {
+  font-family: "Lato-Bold";
+  font-size: 28px;
+  color: #333333;
+  padding-bottom: 5px;
+}
+/* line 48, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h4 {
+  font-family: Arial;
+  font-size: 16px;
+  color: #333333;
+}
+/* line 54, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list {
+  float: left;
+}
+/* line 56, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li {
+  float: left;
+  margin-bottom: 20px;
+}
+/* line 60, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li.first .project {
+  margin-left: 0;
+}
+/* line 63, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li.last .project {
+  margin-right: 0;
+}
+
 /* line 4, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .selected_projects h2 {
   background: url("/images/catarse/thumbs_up_icon16x16.png") left top no-repeat;
