@@ -27,6 +27,11 @@ $('#login .close').click(function(e){
   $('#return_to').val(null)
   $('#login').hide()
   $('#login_overlay').hide()
+  $('#login_form_with_email').hide()
+  $('.another_social').hide()
+  $('fieldset.remember_me_social').show()
+  $('#new_email_account').hide()
+  $('#forgot_password_form').hide()
 })
 $('a.provider').click(function(e){
   e.preventDefault()
