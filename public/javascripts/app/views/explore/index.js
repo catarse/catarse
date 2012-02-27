@@ -37,6 +37,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   recommended: function(){
+    this.changeReplacedTitle();
     this.selectItem("recommended")
     this.initializeView({
       recommended: true,
@@ -46,6 +47,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   expiring: function(){
+    this.changeReplacedTitle();
     this.selectItem("expiring")
     this.initializeView({
       expiring: true,
@@ -54,6 +56,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   recent: function(){
+    this.changeReplacedTitle();
     this.selectItem("recent")
     this.initializeView({
       recent: true,
@@ -63,6 +66,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   successful: function(){
+    this.changeReplacedTitle();
     this.selectItem("successful")
     this.initializeView({
       successful: true,
@@ -71,6 +75,13 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   category: function(name){
+    if(this.$('.section_header .replaced_header')) {
+      this.$('.section_header .replaced_header').remove();
+    }
+    this.$('.section_header .original_title').fadeOut(300, function() {
+      $('.section_header').append('<div class="replaced_header"></div>');
+      $('.section_header .replaced_header').html('<h1><span>Explore</span> '+$('.sidebar a[href=#' + name + ']').text()+'</h1>');
+    })
     this.selectItem(name)
     this.initializeView({
       category_id_equals: this.selectedItem.data("id"),
@@ -87,6 +98,15 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
       loading: this.$("#loading"),
       el: this.$("#explore_results .results")
     })
+  },
+
+  changeReplacedTitle: function() {
+    if(this.$('.section_header .replaced_header')) {
+      this.$('.section_header .replaced_header').fadeOut(300, function(){
+        $(this).remove();
+        $('.section_header .original_title').fadeIn(300);
+      });
+    }
   },
 
   selectItem: function(name) {
