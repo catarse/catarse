@@ -2830,25 +2830,29 @@ body[data-action="index"][data-controller="explore"] #page_content .container .m
   padding-bottom: 5px;
 }
 /* line 48, ../../app/stylesheets/redesign/content/explore.sass */
+body[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h1 span {
+  color: #cccccc;
+}
+/* line 50, ../../app/stylesheets/redesign/content/explore.sass */
 body[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h4 {
   font-family: Arial;
   font-size: 16px;
   color: #333333;
 }
-/* line 54, ../../app/stylesheets/redesign/content/explore.sass */
+/* line 56, ../../app/stylesheets/redesign/content/explore.sass */
 body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list {
   float: left;
 }
-/* line 56, ../../app/stylesheets/redesign/content/explore.sass */
+/* line 58, ../../app/stylesheets/redesign/content/explore.sass */
 body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li {
   float: left;
   margin-bottom: 20px;
 }
-/* line 60, ../../app/stylesheets/redesign/content/explore.sass */
+/* line 62, ../../app/stylesheets/redesign/content/explore.sass */
 body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li.first .project {
   margin-left: 0;
 }
-/* line 63, ../../app/stylesheets/redesign/content/explore.sass */
+/* line 65, ../../app/stylesheets/redesign/content/explore.sass */
 body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li.last .project {
   margin-right: 0;
 }
