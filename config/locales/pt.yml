@@ -551,7 +551,7 @@ pt:
         comments: Comentários
         updates: Atualizações
       share:
-        embed: "Incorpore este projeto"
+        embed: "embed"
         embed_title: "Incorpore este projeto no seu site"
         link: Link
         link_title: "Compartilhe o link"

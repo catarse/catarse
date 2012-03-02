@@ -3007,7 +3007,6 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding: 11px 10px;
   border-bottom: 1px #dfdfdf solid;
   margin-left: -10px;
-  margin-bottom: 30px;
 }
 /* line 29, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .tab_container nav a {
@@ -3063,4 +3062,102 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   margin-left: 10px;
   margin-right: 10px;
   width: 640px;
+}
+/* line 52, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia {
+  width: 100%;
+  float: left;
+}
+/* line 55, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social {
+  padding-top: 10px;
+}
+/* line 57, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #facebook_share, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #facebook_share iframe {
+  width: 271px !important;
+  float: left;
+}
+/* line 60, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #twitter_share {
+  width: 89px !important;
+  float: left;
+}
+/* line 63, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul {
+  margin-left: 20px;
+  float: left;
+}
+/* line 66, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li {
+  float: left;
+}
+/* line 68, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed {
+  margin-right: 15px;
+}
+/* line 70, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a {
+  background: rgba(51, 51, 51, 0.2);
+  padding: 2px 10px;
+  text-decoration: none;
+  color: black;
+  font-family: Lato;
+  font-size: 12px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+/* line 79, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a img {
+  padding: 0 7px 0 0;
+}
+/* line 81, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a:hover {
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
+}
+/* line 83, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a:active {
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
+}
+/* line 86, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.link input[type="text"] {
+  margin-top: -2px;
+  color: black;
+  font-family: Lato;
+  font-size: 12px;
+  border: 1px #cccccc solid;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding: 1px 3px 1px 20px;
+  text-align: center;
+  background: url("/images/catarse/link_icon14x14.png") 6px 1px no-repeat;
+}
+/* line 96, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 280px;
 }

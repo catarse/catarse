@@ -35,6 +35,24 @@
           | &nbsp; ( &nbsp;
           fb:comments-count href="#{request.url}"
           | &nbsp; )
+    .main
+      .midia
+        .video
+          iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+        .social
+          #project_share
+            #facebook_share= render 'facebook'
+            #twitter_share= render 'twitter'
+            ul
+              li.embed
+                = link_to '#embed', :id => 'embed_link' do
+                  = image_tag "catarse/embed_icon19x9.png", :title => t('.share.embed_title')
+                  = t('.share.embed')
+              li.link
+                = text_field_tag "project_link", @project.short_url
+            .clear
+
+    .sidebar
     .clearfix
 /   .midia
 /     .video
