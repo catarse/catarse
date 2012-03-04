@@ -37,11 +37,11 @@
           | &nbsp; )
     .main
       #project_content
-        #project_updates.content
+        #project_updates.content.hide
           = render :partial => 'updates'
         .midia_content_backers
-          #project_backers.content
-        #project_comments.content= render :partial => 'comments'
+          #project_backers.content.hide
+        #project_comments.content.hide= render :partial => 'comments'
         #project_about.content
           .midia
             .video
