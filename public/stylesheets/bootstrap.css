@@ -3332,7 +3332,18 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   font-size: 12px;
   color: #333333;
 }
-/* line 144, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 142, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia_content_backers ul.collection_list li .reward {
+  clear: both;
+  padding: 10px;
+  font-size: 12px;
+  font-family: Lato-Regular;
+  background: #ededed;
+  margin-top: 10px;
+  float: left;
+  width: 620px;
+}
+/* line 152, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar {
   display: inline;
   float: left;
@@ -3343,7 +3354,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   border: none;
   padding-top: 15px;
 }
-/* line 150, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 158, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box {
   background: #ededed;
   width: 240px;
@@ -3359,11 +3370,11 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 157, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 165, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box.clickable:hover {
   background: rgba(100, 203, 100, 0.3);
 }
-/* line 159, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 167, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box h2 {
   font-family: "Lato-Bold";
   font-size: 18px;
@@ -3371,7 +3382,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   text-transform: uppercase;
   padding-bottom: 5px;
 }
-/* line 165, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 173, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box em {
   background: url("/images/catarse/reward_count_icon18x17.png") left top no-repeat;
   color: #4d535d;
@@ -3383,7 +3394,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   clear: both;
   display: block;
 }
-/* line 175, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 183, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing {
   color: #333333;
   font-family: Arial;
@@ -3391,11 +3402,11 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   line-height: 130%;
   padding-bottom: 10px;
 }
-/* line 181, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 189, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p a, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing a {
   color: #6498d8;
 }
-/* line 183, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 191, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .maximum_backers {
   color: #4d535d;
   font-family: Arial;
@@ -3403,17 +3414,17 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   font-size: 11px;
   text-transform: uppercase;
 }
-/* line 190, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 198, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge {
   background: #ededed;
 }
-/* line 192, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 200, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics {
   background: #ededed;
   width: 240px;
   padding: 20px;
 }
-/* line 196, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 204, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item {
   font-family: Arial;
   font-size: 16px;
@@ -3421,31 +3432,31 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding-left: 55px;
   margin-bottom: 20px;
 }
-/* line 202, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 210, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item p {
   font-family: "Lato-Bold";
   font-size: 34px;
   color: black;
 }
-/* line 206, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 214, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.backers {
   background: url("/images/catarse/sidebar_backers_icon26x19.png") 4px center no-repeat;
 }
-/* line 208, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 216, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.goal {
   background: url("/images/catarse/goal_icon36x17.png") left center no-repeat;
 }
-/* line 210, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 218, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.time {
   background: url("/images/catarse/time_icon19x30.png") 10px center no-repeat;
 }
-/* line 212, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 220, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition {
   background: #6f6f6f;
   width: 240px;
   padding: 10px 20px;
 }
-/* line 216, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 224, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition p {
   line-height: 130%;
   font-family: Arial;
@@ -3453,13 +3464,13 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   text-transform: uppercase;
   color: white;
 }
-/* line 222, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 230, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge {
   width: 280px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 226, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 234, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"] {
   display: block;
   margin: 0 auto;
@@ -3487,27 +3498,27 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   font-size: 15px;
   color: white;
 }
-/* line 240, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 248, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
 }
-/* line 242, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 250, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:active {
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
 }
-/* line 244, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 252, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile {
   padding-top: 20px;
   float: left;
   padding-bottom: 20px;
 }
-/* line 248, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 256, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile h3 {
   background: url("/images/catarse/profile_icon19x14.png") left 4px no-repeat;
   color: #333333;
@@ -3517,7 +3528,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   display: block;
   padding-bottom: 15px;
 }
-/* line 256, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 264, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar {
   display: inline;
   float: left;
@@ -3526,14 +3537,14 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   width: 100px;
   margin-left: 0;
 }
-/* line 259, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 267, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar img {
   -moz-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
   -o-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
 }
-/* line 261, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 269, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info {
   display: inline;
   float: left;
@@ -3542,25 +3553,25 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   width: 160px;
   margin-right: 0;
 }
-/* line 264, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 272, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name {
   padding-bottom: 5px;
 }
-/* line 266, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 274, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name a {
   font-family: "Lato-Bold";
   font-size: 14px;
   color: #e75297;
   text-decoration: none;
 }
-/* line 271, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 279, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p {
   font-family: Arial;
   font-size: 12px;
   color: #333333;
   line-height: 140%;
 }
-/* line 276, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 284, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio {
   display: inline;
   float: left;
@@ -3569,7 +3580,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   width: 280px;
   margin-left: 0;
 }
-/* line 279, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 287, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio p {
   padding: 10px 0;
   font-family: Arial;
