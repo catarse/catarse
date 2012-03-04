@@ -98,12 +98,13 @@ Backtrace:
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/content_length.rb:13:in `call'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/handler/webrick.rb:52:in `service'
-/Users/ton/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
-/Users/ton/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
-/Users/ton/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/lib/unicorn/http_server.rb:530:in `process_client'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/lib/unicorn/http_server.rb:604:in `worker_loop'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/lib/unicorn/http_server.rb:487:in `spawn_missing_workers'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/lib/unicorn/http_server.rb:137:in `start'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/bin/unicorn_rails:209:in `<top (required)>'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/bin/unicorn_rails:19:in `load'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/bin/unicorn_rails:19:in `<main>'
 */
 body:before {
   white-space: pre;

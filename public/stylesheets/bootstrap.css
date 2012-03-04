@@ -513,30 +513,147 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   clear: both;
 }
 
-/* line 17, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 14, ../../app/stylesheets/redesign/miv/index.sass */
+.hide {
+  display: none;
+}
+
+/* line 19, ../../app/stylesheets/redesign/miv/index.sass */
 .clickable:hover {
   cursor: pointer;
 }
 
-/* line 20, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 22, ../../app/stylesheets/redesign/miv/index.sass */
 .project_admin_field {
-  font-size: 1.2em;
+  font-size: 14px;
   font-family: Lato-Regular;
 }
 
-/* line 24, ../../app/stylesheets/redesign/miv/index.sass */
-.on_the_spot_editing {
-  background: url("/images/pencil_16.png") left top no-repeat;
-  padding-left: 20px;
-  min-height: 30px;
-  font-size: 1.2em;
-  font-family: Lato-Regular;
+/* line 37, ../../app/stylesheets/redesign/miv/index.sass */
+#project_admin {
+  padding-top: 30px;
 }
 
-/* line 32, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 40, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_mouseover {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
+}
+
+/* line 44, ../../app/stylesheets/redesign/miv/index.sass */
+.on_the_spot_form:after {
+  content: "" !important;
+}
+
+/* line 47, ../../app/stylesheets/redesign/miv/index.sass */
+.on_the_spot_editing:after {
+  content: " " url(/images/pencil_16.png);
+}
+/* line 50, ../../app/stylesheets/redesign/miv/index.sass */
+.on_the_spot_editing form input, .on_the_spot_editing form textarea, .on_the_spot_editing form select {
+  padding-left: 4px;
+  padding-right: 24px;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  border: 2px solid #003c00;
+  border: 2px solid rgba(0, 60, 0, 0.6);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
+}
+/* line 60, ../../app/stylesheets/redesign/miv/index.sass */
+.on_the_spot_editing form input:focus, .on_the_spot_editing form textarea:focus, .on_the_spot_editing form select:focus {
+  background-color: #c8dcc8;
+  background-color: rgba(0, 150, 0, 0.2);
+}
+/* line 63, ../../app/stylesheets/redesign/miv/index.sass */
+.on_the_spot_editing form textarea {
+  padding-right: 28px;
+  width: 96%;
+  height: 200px;
+  overflow: auto;
+}
+/* line 68, ../../app/stylesheets/redesign/miv/index.sass */
+.on_the_spot_editing form button {
+  margin-left: 4px;
+  text-rendering: optimizeLegibility;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333333;
+  font-size: 14px;
+  line-height: 16px;
+  text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: none;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #cccccc;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #aaaaaa));
+  background-image: -webkit-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: -moz-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: -o-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: -ms-linear-gradient(top, #dddddd, #aaaaaa);
+  background-image: linear-gradient(top, #dddddd, #aaaaaa);
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
+}
+/* line 83, ../../app/stylesheets/redesign/miv/index.sass */
+.on_the_spot_editing form button:hover {
+  background-color: #dddddd;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -moz-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: linear-gradient(top, #eeeeee, #bbbbbb);
+  -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+}
+/* line 87, ../../app/stylesheets/redesign/miv/index.sass */
+.on_the_spot_editing form button:active {
+  padding: 6px 9px 4px 11px;
+  text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
+  background-color: #dddddd;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -moz-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -o-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: -ms-linear-gradient(top, #eeeeee, #bbbbbb);
+  background-image: linear-gradient(top, #eeeeee, #bbbbbb);
+  -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+/* line 93, ../../app/stylesheets/redesign/miv/index.sass */
+.on_the_spot_editing form button:disabled {
+  color: #888888;
+  text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
+  padding: 5px 10px;
+  background-color: #aaaaaa;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bbbbbb), color-stop(100%, #888888));
+  background-image: -webkit-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -moz-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -o-linear-gradient(top, #bbbbbb, #888888);
+  background-image: -ms-linear-gradient(top, #bbbbbb, #888888);
+  background-image: linear-gradient(top, #bbbbbb, #888888);
+  -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
 }
 
 /* line 1, ../../app/stylesheets/redesign/content/body.sass */
@@ -3267,7 +3384,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   display: block;
 }
 /* line 175, ../../app/stylesheets/redesign/resources/projects/show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p {
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing {
   color: #333333;
   font-family: Arial;
   font-size: 16px;
@@ -3275,7 +3392,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding-bottom: 10px;
 }
 /* line 181, ../../app/stylesheets/redesign/resources/projects/show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p a {
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p a, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing a {
   color: #6498d8;
 }
 /* line 183, ../../app/stylesheets/redesign/resources/projects/show.sass */
