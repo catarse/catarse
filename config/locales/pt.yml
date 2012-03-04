@@ -1,4 +1,5 @@
 pt:
+  project_by: projeto por
   footer:
     titles:
       info: "informações úteis"
@@ -402,7 +403,7 @@ pt:
           not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
         waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
       reached_of: "Atingidos de"
-      submit: "Quero apoiar este projeto"
+      submit: "Apoiar este projeto"
     backer:
       anonymous_backer: "Apoiador anônimo"
       anonymous_description: "Optou por permanecer incógnito"
@@ -545,6 +546,7 @@ pt:
     send_mail:
       success: "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
     show:
+      about_title: Sobre o projeto
       menu:
         about: Sobre
         backers: Apoiadores

@@ -2,11 +2,11 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"]
   #page_content
     .project_image
       +grid(2)
-      padding-top:  10px
+      padding-top:  20px
       padding-bottom: 10px
     .section_header
       +grid(14)
-      padding-top:  10px
+      padding-top:  20px
       padding-bottom: 10px
       h1
         color: $ultra_gryn
@@ -49,9 +49,11 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"]
               +box-shadow(none)
     .main
       +grid(11)
+      padding-bottom: 20px
       .midia
         width: 100%
         float: left
+        padding-bottom: 20px
         .social
           padding-top: 10px
           #facebook_share, #facebook_share iframe
@@ -93,5 +95,156 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"]
                   padding: 1px 3px 1px 20px
                   text-align: center
                   background: url($images_path+'link_icon14x14.png') 6px 1px no-repeat
+
+      #project_about
+        .text
+          font-family: Arial
+          font-size: 16px
+          color: rgba(black, 0.6)
+          h5
+            font-weight: bold
+            padding-bottom: 20px
+          p
+            line-height: 140%
     .sidebar
       +grid(5)
+      +omega
+      border: none
+      padding-top: 15px
+      #rewards
+        .box
+          background: $ed_gryn
+          width: 240px
+          padding: 20px
+          margin-top: 3px
+          float: left
+          +transition(all, 0.3s)
+          &.clickable:hover
+            background: rgba($light_green, 0.3)
+          h2
+            font-family: "Lato-Bold"
+            font-size: 18px
+            color: rgba(black, 0.8)
+            text-transform: uppercase
+            padding-bottom: 5px
+          em
+            background: url($images_path+"reward_count_icon18x17.png") left top no-repeat
+            color: $_4d_gryn
+            font-family: Arial
+            font-weight: bold
+            font-size: 11px
+            padding: 3px 3px 10px 25px
+            text-transform: uppercase
+            clear: both
+            display: block
+          p
+            color: $ultra_gryn
+            font-family: Arial
+            font-size: 16px
+            line-height: 130%
+            padding-bottom: 10px
+            a
+              color: $minimal_blue
+          .maximum_backers
+            color: $_4d_gryn
+            font-family: Arial
+            font-weight: bold
+            font-size: 11px
+            text-transform: uppercase
+      .info
+        #pledge
+          background: $ed_gryn
+        .statistics
+          background: $ed_gryn
+          width: 240px
+          padding: 20px
+          .item
+            font-family: Arial
+            font-size: 16px
+            color: rgba(black, 0.8)
+            padding-left: 55px
+            margin-bottom: 20px
+            p
+              font-family: "Lato-Bold"
+              font-size: 34px
+              color: black
+            &.backers
+              background: url($images_path+"sidebar_backers_icon26x19.png") 4px center no-repeat
+            &.goal
+              background: url($images_path+"goal_icon36x17.png") left center no-repeat
+            &.time
+              background: url($images_path+"time_icon19x30.png") 10px center no-repeat
+        #condition
+          background: $_6f_gryn
+          width: 240px
+          padding: 10px 20px
+          p
+            line-height: 130%
+            font-family: Arial
+            font-size: 11px
+            text-transform: uppercase
+            color: white
+        #pledge
+          width: 280px
+          padding-top: 20px
+          padding-bottom: 20px
+          input[type="submit"]
+            display: block
+            margin: 0 auto
+            background: url($images_path+"submit_back_icon25x22.png") 10px center no-repeat $light_green
+            width: 226px
+            height: 55px
+            border: none
+            text-indent: 25px
+            +border-radius(20px)
+            +transition(all, 0.3s)
+            text-transform: uppercase
+            font-family: "Lato-Bold"
+            font-size: 15px
+            color: white
+            &:hover
+              +box-shadow(rgba(black, 0.3) 0 0 4px inset)
+            &:active
+              +box-shadow(rgba(black, 0.3) 0 0 10px inset)
+        #creator_profile
+          padding-top: 20px
+          float: left
+          padding-bottom: 20px
+          h3
+            background: url($images_path+"profile_icon19x14.png") left 4px no-repeat
+            color: $ultra_gryn
+            font-family: "Lato-Bold"
+            font-size: 18px
+            padding-left: 30px
+            display: block
+            padding-bottom: 15px
+          .avatar
+            +grid(2)
+            +alpha
+            img
+              +box-shadow(rgba(black, 0.8) 2px 2px 4px)
+          .personal_info
+            +grid(3)
+            +omega
+            p.name
+              padding-bottom: 5px
+              a
+                font-family: "Lato-Bold"
+                font-size: 14px
+                color: $pink
+                text-decoration: none
+            p
+              font-family: Arial
+              font-size: 12px
+              color: $ultra_gryn
+              line-height: 140%
+          #bio
+            +grid(5)
+            +alpha
+            p
+              padding: 10px 0
+              font-family: Arial
+              font-size: 12px
+              color: $ultra_gryn
+              line-height: 140%
+

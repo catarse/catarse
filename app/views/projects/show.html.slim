@@ -36,24 +36,107 @@
           fb:comments-count href="#{request.url}"
           | &nbsp; )
     .main
-      .midia
-        .video
-          iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
-        .social
-          #project_share
-            #facebook_share= render 'facebook'
-            #twitter_share= render 'twitter'
-            ul
-              li.embed
-                = link_to '#embed', :id => 'embed_link' do
-                  = image_tag "catarse/embed_icon19x9.png", :title => t('.share.embed_title')
-                  = t('.share.embed')
-              li.link
-                = text_field_tag "project_link", @project.short_url
-            .clear
+      #project_content
+        #project_about.content
+          .midia
+            .video
+              iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+            .social
+              #project_share
+                #facebook_share= render 'facebook'
+                #twitter_share= render 'twitter'
+                ul
+                  li.embed
+                    = link_to '#embed', :id => 'embed_link' do
+                      = image_tag "catarse/embed_icon19x9.png", :title => t('.share.embed_title')
+                      = t('.share.embed')
+                  li.link
+                    = text_field_tag "project_link", @project.short_url
+                .clear
+          .text
+            h5= t('.about_title')
+            p
+              - if current_user and current_user.admin
+                | #{on_the_spot_edit @project, :about, :type => :textarea}
+              - else
+                = @project.about_html.html_safe
+              = render "admin_fields" if current_user and current_user.admin
 
+      .clearfix
     .sidebar
+      .info
+        #statistics
+          .statistics
+            .item.backers
+              p= @project.total_backers
+              em apoiadores
+            .item.goal
+              p= @project.display_pledged
+              em atingidos de #{@project.display_goal}
+            .item.time
+              p= @project.time_to_go[:time]
+              em #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+
+          #condition
+            p
+              - if @project.successful?
+                - if @project.expired?
+                  = t('projects.back_project.project_warning.successful.expired', :date => @project.display_expires_at)
+                - else
+                  = t('projects.back_project.project_warning.successful.not_expired', :date => @project.display_expires_at)
+              - elsif @project.waiting_confirmation?
+                = t('projects.back_project.project_warning.waiting_confirmation')
+              - else
+                - if @project.expired?
+                  = t('projects.back_project.project_warning.not_successful.expired', :goal => @project.display_goal, :date => @project.display_expires_at)
+                - else
+                  = t('projects.back_project.project_warning.not_successful.not_expired', :goal => @project.display_goal, :date => @project.display_expires_at)
+
+          #pledge
+            = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
+              fieldset
+                = submit_tag t('projects.back_project.submit'), :disabled => (not @project.can_back?)
+
+        #rewards
+          - @rewards.each do |reward|
+            div[class="box #{('clickable' if @project.can_back? and not reward.sold_out?)}"]
+              = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
+              h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum)
+              em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
+              .clearfix
+              p
+                - if current_user and current_user.admin
+                  #{on_the_spot_edit reward, :description, :type => :textarea}
+                - else
+                  = auto_link(reward.description, :html => {:target => :_blank})
+              - if reward.maximum_backers
+                .maximum_backers
+                  - if reward.sold_out?
+                    .sold_out= t('reward.sold_out')
+                  - else
+                    .limited= t('reward.limited')
+                  .remaining= reward.display_remaining
+                .clearfix
+
+        #creator_profile
+          h3= t('project_by')
+          .avatar= image_tag @project.user.display_image, :width => '100px', :heigth => '100px'
+          .personal_info
+            p.name
+             = link_to @project.user.display_name, user_path(@project.user)
+            #city
+              p
+                | #{@project.user.address_city}
+              p
+                | apoiou
+                span= " #{@project.user.total_backs}"
+                | projetos
+          #bio
+            p= @project.user.bio
+          .clearfix
+
     .clearfix
+/ = render 'show_embed'
 /   .midia
 /     .video
 /       iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
