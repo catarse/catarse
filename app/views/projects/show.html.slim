@@ -37,6 +37,11 @@
           | &nbsp; )
     .main
       #project_content
+        #project_updates.content
+          = render :partial => 'updates'
+        .midia_content_backers
+          #project_backers.content
+        #project_comments.content= render :partial => 'comments'
         #project_about.content
           .midia
             .video
@@ -61,7 +66,7 @@
               - else
                 = @project.about_html.html_safe
               = render "admin_fields" if current_user and current_user.admin
-
+        #loading= image_tag "loading.gif"
       .clearfix
     .sidebar
       .info
@@ -69,10 +74,10 @@
           .statistics
             .item.backers
               p= @project.total_backers
-              em apoiadores
+              em= t('statistics.backers.subtitle')
             .item.goal
               p= @project.display_pledged
-              em atingidos de #{@project.display_goal}
+              em= t('statistics.goal.subtitle', :total => @project.display_goal)
             .item.time
               p= @project.time_to_go[:time]
               em #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
@@ -127,10 +132,7 @@
             #city
               p
                 | #{@project.user.address_city}
-              p
-                | apoiou
-                span= " #{@project.user.total_backs}"
-                | projetos
+              p= t('count_backed_projects', :total => @project.user.total_backs)
           #bio
             p= @project.user.bio
           .clearfix

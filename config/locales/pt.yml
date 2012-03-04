@@ -1,5 +1,11 @@
 pt:
+  statistics:
+    backers:
+      subtitle: "apoiadores"
+    goal:
+      subtitle: "atingidos de %{total}"
   project_by: projeto por
+  count_backed_projects: "apoiou %{total} projetos"
   footer:
     titles:
       info: "informações úteis"
