@@ -515,17 +515,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 17, ../../app/stylesheets/redesign/miv/index.sass */
 .clickable:hover {
-  border: black 1px solid !important;
   cursor: pointer;
 }
 
-/* line 21, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 20, ../../app/stylesheets/redesign/miv/index.sass */
 .project_admin_field {
   font-size: 1.2em;
   font-family: Lato-Regular;
 }
 
-/* line 25, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 24, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing {
   background: url("/images/pencil_16.png") left top no-repeat;
   padding-left: 20px;
@@ -534,7 +533,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-family: Lato-Regular;
 }
 
-/* line 33, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 32, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_mouseover {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
@@ -549,12 +548,12 @@ body #page_content .container {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -o-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -khtml-border-radius: 8px;
-  border-radius: 8px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   padding: 0 10px 0 10px;
   background: white;
   border: 1px #dfdfdf solid;
@@ -2285,24 +2284,24 @@ body #logos .power a {
   -webkit-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
   -o-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
   box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
-  -moz-border-radius: 25px;
-  -webkit-border-radius: 25px;
-  -o-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -khtml-border-radius: 25px;
-  border-radius: 25px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
 }
 /* line 9, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .resume_about {
   float: left;
   height: 258px;
   width: 260px;
-  -moz-border-radius: 25px 0 0 25px;
-  -webkit-border-radius: 25px 0 0 25px;
-  -o-border-radius: 25px 0 0 25px;
-  -ms-border-radius: 25px 0 0 25px;
-  -khtml-border-radius: 25px 0 0 25px;
-  border-radius: 25px 0 0 25px;
+  -moz-border-radius: 10px 0 0 10px;
+  -webkit-border-radius: 10px 0 0 10px;
+  -o-border-radius: 10px 0 0 10px;
+  -ms-border-radius: 10px 0 0 10px;
+  -khtml-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
   background: #59af6d;
 }
 /* line 15, ../../app/stylesheets/redesign/content/recommended_header.sass */
@@ -2346,12 +2345,12 @@ body #logos .power a {
   padding: 13px 0 0 20px;
   height: 245px;
   background: #333333;
-  -moz-border-radius: 0 25px 25px 0;
-  -webkit-border-radius: 0 25px 25px 0;
-  -o-border-radius: 0 25px 25px 0;
-  -ms-border-radius: 0 25px 25px 0;
-  -khtml-border-radius: 0 25px 25px 0;
-  border-radius: 0 25px 25px 0;
+  -moz-border-radius: 0 10px 10px 0;
+  -webkit-border-radius: 0 10px 10px 0;
+  -o-border-radius: 0 10px 10px 0;
+  -ms-border-radius: 0 10px 10px 0;
+  -khtml-border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
 }
 /* line 47, ../../app/stylesheets/redesign/content/recommended_header.sass */
 #recommended_header .project_info .institutional h3 {
@@ -2973,7 +2972,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   margin-left: 10px;
   margin-right: 10px;
   width: 100px;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 10px;
 }
 /* line 7, ../../app/stylesheets/redesign/resources/projects/show.sass */
@@ -2983,7 +2982,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   margin-left: 10px;
   margin-right: 10px;
   width: 820px;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 10px;
 }
 /* line 11, ../../app/stylesheets/redesign/resources/projects/show.sass */
@@ -3062,40 +3061,42 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   margin-left: 10px;
   margin-right: 10px;
   width: 640px;
+  padding-bottom: 20px;
 }
-/* line 52, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 53, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia {
   width: 100%;
   float: left;
+  padding-bottom: 20px;
 }
-/* line 55, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 57, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social {
   padding-top: 10px;
 }
-/* line 57, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 59, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #facebook_share, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #facebook_share iframe {
   width: 271px !important;
   float: left;
 }
-/* line 60, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 62, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #twitter_share {
   width: 89px !important;
   float: left;
 }
-/* line 63, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 65, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul {
   margin-left: 20px;
   float: left;
 }
-/* line 66, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 68, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li {
   float: left;
 }
-/* line 68, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 70, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed {
   margin-right: 15px;
 }
-/* line 70, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 72, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a {
   background: rgba(51, 51, 51, 0.2);
   padding: 2px 10px;
@@ -3118,25 +3119,25 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 79, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 81, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a img {
   padding: 0 7px 0 0;
 }
-/* line 81, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 83, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
 }
-/* line 83, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 85, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a:active {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
 }
-/* line 86, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 88, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.link input[type="text"] {
   margin-top: -2px;
   color: black;
@@ -3153,11 +3154,263 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   text-align: center;
   background: url("/images/catarse/link_icon14x14.png") 6px 1px no-repeat;
 }
-/* line 96, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 100, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text {
+  font-family: Arial;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+}
+/* line 104, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text h5 {
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+/* line 107, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text p {
+  line-height: 140%;
+}
+/* line 109, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 280px;
+  margin-right: 0;
+  border: none;
+  padding-top: 15px;
+}
+/* line 115, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box {
+  background: #ededed;
+  width: 240px;
+  padding: 20px;
+  margin-top: 3px;
+  float: left;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+/* line 122, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box.clickable:hover {
+  background: rgba(100, 203, 100, 0.3);
+}
+/* line 124, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box h2 {
+  font-family: "Lato-Bold";
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+/* line 130, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box em {
+  background: url("/images/catarse/reward_count_icon18x17.png") left top no-repeat;
+  color: #4d535d;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 3px 3px 10px 25px;
+  text-transform: uppercase;
+  clear: both;
+  display: block;
+}
+/* line 140, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p {
+  color: #333333;
+  font-family: Arial;
+  font-size: 16px;
+  line-height: 130%;
+  padding-bottom: 10px;
+}
+/* line 146, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p a {
+  color: #6498d8;
+}
+/* line 148, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .maximum_backers {
+  color: #4d535d;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+/* line 155, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge {
+  background: #ededed;
+}
+/* line 157, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics {
+  background: #ededed;
+  width: 240px;
+  padding: 20px;
+}
+/* line 161, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item {
+  font-family: Arial;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.8);
+  padding-left: 55px;
+  margin-bottom: 20px;
+}
+/* line 167, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item p {
+  font-family: "Lato-Bold";
+  font-size: 34px;
+  color: black;
+}
+/* line 171, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.backers {
+  background: url("/images/catarse/sidebar_backers_icon26x19.png") 4px center no-repeat;
+}
+/* line 173, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.goal {
+  background: url("/images/catarse/goal_icon36x17.png") left center no-repeat;
+}
+/* line 175, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.time {
+  background: url("/images/catarse/time_icon19x30.png") 10px center no-repeat;
+}
+/* line 177, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition {
+  background: #6f6f6f;
+  width: 240px;
+  padding: 10px 20px;
+}
+/* line 181, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition p {
+  line-height: 130%;
+  font-family: Arial;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: white;
+}
+/* line 187, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge {
+  width: 280px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+/* line 191, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  background: url("/images/catarse/submit_back_icon25x22.png") 10px center no-repeat #64cb64;
+  width: 226px;
+  height: 55px;
+  border: none;
+  text-indent: 25px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  text-transform: uppercase;
+  font-family: "Lato-Bold";
+  font-size: 15px;
+  color: white;
+}
+/* line 205, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:hover {
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
+}
+/* line 207, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:active {
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
+}
+/* line 209, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile {
+  padding-top: 20px;
+  float: left;
+  padding-bottom: 20px;
+}
+/* line 213, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile h3 {
+  background: url("/images/catarse/profile_icon19x14.png") left 4px no-repeat;
+  color: #333333;
+  font-family: "Lato-Bold";
+  font-size: 18px;
+  padding-left: 30px;
+  display: block;
+  padding-bottom: 15px;
+}
+/* line 221, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100px;
+  margin-left: 0;
+}
+/* line 224, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar img {
+  -moz-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
+  -o-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
+}
+/* line 226, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 160px;
+  margin-right: 0;
+}
+/* line 229, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name {
+  padding-bottom: 5px;
+}
+/* line 231, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name a {
+  font-family: "Lato-Bold";
+  font-size: 14px;
+  color: #e75297;
+  text-decoration: none;
+}
+/* line 236, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p {
+  font-family: Arial;
+  font-size: 12px;
+  color: #333333;
+  line-height: 140%;
+}
+/* line 241, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 280px;
+  margin-left: 0;
+}
+/* line 244, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio p {
+  padding: 10px 0;
+  font-family: Arial;
+  font-size: 12px;
+  color: #333333;
+  line-height: 140%;
 }

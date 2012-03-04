@@ -1,4 +1,5 @@
 en:
+  project_by: ~
   footer:
     titles:
       info: "Useful Information"
@@ -327,7 +328,6 @@ en:
     recommended_header:
       sugest_for_you: "suggested for you"
       highlight_project: "featured project"
-      title_for_you: "recommended for you"
     footer:
       blog: "Our blog"
       comum: "Grupo Comum"
@@ -536,6 +536,8 @@ en:
       submit: "Send comment"
     project_header:
       subtitle_html: "A project by %{link}"
+      without_city: ~
+      with_city: ~
     project_list:
       expiring:
         explore: "Explore more projects in the final countdown"
@@ -563,6 +565,7 @@ en:
     send_mail:
       success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
     show:
+      about_title: ~
       menu:
         about: About
         backers: Backers
