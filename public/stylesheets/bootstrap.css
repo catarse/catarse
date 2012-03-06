@@ -3033,6 +3033,10 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   padding-bottom: 10px;
 }
 /* line 40, ../../app/stylesheets/redesign/resources/projects/index.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .title {
+  margin-left: 10px;
+}
+/* line 42, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners h2 {
   background: url("/images/catarse/partners_icon26x26.png") left top no-repeat;
   text-indent: 35px;
@@ -3040,11 +3044,11 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   margin-top: -5px;
   padding-top: 5px;
 }
-/* line 47, ../../app/stylesheets/redesign/resources/projects/index.sass */
+/* line 49, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul {
   width: 100%;
 }
-/* line 49, ../../app/stylesheets/redesign/resources/projects/index.sass */
+/* line 51, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li {
   width: 220px;
   margin-bottom: 20px;
@@ -3061,7 +3065,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 57, ../../app/stylesheets/redesign/resources/projects/index.sass */
+/* line 59, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li:hover {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -3074,7 +3078,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
 }
-/* line 60, ../../app/stylesheets/redesign/resources/projects/index.sass */
+/* line 62, ../../app/stylesheets/redesign/resources/projects/index.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li:hover img {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
