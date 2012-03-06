@@ -2257,7 +2257,7 @@ body #logos .power a {
 }
 /* line 23, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li {
-  margin-bottom: 34px;
+  margin-bottom: 32px;
 }
 /* line 25, ../../app/stylesheets/redesign/content/footer.sass */
 .footer .content .info ul li a {
@@ -2840,16 +2840,18 @@ body #logos .power a {
 /* line 147, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li:last-child {
   border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
-/* line 149, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 151, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a {
   text-decoration: none;
 }
-/* line 152, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 154, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a:hover h4, .sidebar .content .schedule ul.events li a:hover p {
   color: #e75297 !important;
 }
-/* line 154, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 156, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a h4 {
   float: left;
   color: black;
@@ -2857,13 +2859,13 @@ body #logos .power a {
   font-size: 20px;
   margin-right: 10px;
 }
-/* line 160, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 162, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a h4 span {
   display: block;
   font-family: Arial;
   font-size: 12px;
 }
-/* line 164, ../../app/stylesheets/redesign/content/sidebar.sass */
+/* line 166, ../../app/stylesheets/redesign/content/sidebar.sass */
 .sidebar .content .schedule ul.events li a p {
   padding-top: 4px;
   font-family: Arial;
