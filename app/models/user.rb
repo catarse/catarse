@@ -57,6 +57,18 @@ class User < ActiveRecord::Base
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
+  scope :most_backeds, lambda {
+    joins(:backs).select(
+    <<-SQL
+      users.id,
+      users.name,
+      count(backers.id) as count_backs
+    SQL
+    ).
+    where("backers.confirmed is true").
+    order("count_backs desc").
+    group("users.name, users.id")
+  }
   #before_save :store_primary_user
 
   def self.find_for_database_authentication(warden_conditions)
