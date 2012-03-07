@@ -1,3 +1,4 @@
+var showRegisterForm = false;
 require_login = function(e){
   e.preventDefault()
   var url = null
@@ -14,6 +15,11 @@ require_login = function(e){
 var return_to = null
 $('#login_link,#signup_link,.login_link').live('click', function(e){
   e.preventDefault()
+  if($(this).attr('id') == 'signup_link') {
+    showRegisterForm = true;
+  } else {
+    showRegisterForm = false;
+  }
   $('#return_to').val(location.href)
   $('#login_overlay').show()
   $('.another_social').hide();
@@ -65,43 +71,18 @@ $("#login_with_another_social").click(function(e){
 
 $("#login_with_mail").click(function(e){
   e.preventDefault();
-  if ($('.another_social').css('display') == 'block') {
-    $('.another_social').slideUp('fast', function(){
-      $('#login_form_with_email').slideDown('fast');
-    })
-  } else if ($('#new_email_account').css('display') == 'block') {
-    $('#new_email_account').slideUp('fast', function(){
-      $('#login_form_with_email').slideDown('fast');
-    })
-  } else if ($('#forgot_password_form').css('display') == 'block') {
-    $('#forgot_password_form').slideUp('fast', function(){
-      $('#login_form_with_email').slideDown('fast');
-    })
+  if(showRegisterForm) {
+    actionsOfRegisterForm();
   } else {
-    $('#login_form_with_email').slideDown('fast');
+    actionsOfLoginForm()
   }
 
-  // if($('.another_social').css('display') == 'block') {
-  //   $('.another_social').slideUp('fast', function(){
-  //     $('#login_form_with_email').slideDown('fast');
-  //   })
-  // } else {
-  //   $('#login_form_with_email').slideDown('fast');
-  // }
   $('fieldset.remember_me_social').hide();
 });
 
 $('a.new_registration_link').click(function(e){
   e.preventDefault();
-  if($('#login_form_with_email').css('display') == 'block') {
-    $('#login_form_with_email').slideUp('fast', function(){
-      $('#new_email_account').slideDown('fast');
-    });
-  } else if($('#forgot_password_form').css('display') == 'block') {
-    $('#forgot_password_form').slideUp('fast', function(){
-      $('#new_email_account').slideDown('fast');
-    });
-  } else { $('#new_email_account').slideDown('fast'); }
+  actionsOfRegisterForm();
 });
 
 $('a.new_session_link').click(function(e){
@@ -129,3 +110,33 @@ $('a.forgot_password_link').click(function(e){
     });
   } else { $('#forgot_password_form').slideDown('fast'); }
 });
+
+var actionsOfRegisterForm = function(){
+  if($('#login_form_with_email').css('display') == 'block') {
+    $('#login_form_with_email').slideUp('fast', function(){
+      $('#new_email_account').slideDown('fast');
+    });
+  } else if($('#forgot_password_form').css('display') == 'block') {
+    $('#forgot_password_form').slideUp('fast', function(){
+      $('#new_email_account').slideDown('fast');
+    });
+  } else { $('#new_email_account').slideDown('fast'); }
+}
+
+var actionsOfLoginForm = function(){
+  if ($('.another_social').css('display') == 'block') {
+    $('.another_social').slideUp('fast', function(){
+      $('#login_form_with_email').slideDown('fast');
+    })
+  } else if ($('#new_email_account').css('display') == 'block') {
+    $('#new_email_account').slideUp('fast', function(){
+      $('#login_form_with_email').slideDown('fast');
+    })
+  } else if ($('#forgot_password_form').css('display') == 'block') {
+    $('#forgot_password_form').slideUp('fast', function(){
+      $('#login_form_with_email').slideDown('fast');
+    })
+  } else {
+    $('#login_form_with_email').slideDown('fast');
+  }
+}
