@@ -1,5 +1,11 @@
 en:
+  statistics:
+    backers:
+      subtitle: backers
+    goal:
+      subtitle: "total of %{total}"
   project_by: ~
+  count_backed_projects: ~
   footer:
     titles:
       info: "Useful Information"
@@ -572,7 +578,7 @@ en:
         comments: Comments
         updates: Updates
       share:
-        embed: "Embed this project"
+        embed: embed
         embed_title: "Embed this project on your site"
         link: Link
         link_title: "Share the link"
