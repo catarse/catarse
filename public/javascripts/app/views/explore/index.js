@@ -8,8 +8,9 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     CATARSE.router.route("recent", "recent", this.recent)
     CATARSE.router.route("successful", "successful", this.successful)
     CATARSE.router.route("search/*search", "search", this.search)
-    CATARSE.router.route("", "index", this.recommended)
+    CATARSE.router.route("", "index", this.index)
     this.render()
+    _this = this;
   },
 
   ProjectView: CATARSE.ModelView.extend({
@@ -21,6 +22,13 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   }),
 
   search: function(search){
+    if(this.$('.section_header .replaced_header')) {
+      this.$('.section_header .replaced_header').remove();
+    }
+    this.$('.section_header .original_title').fadeOut(300, function() {
+      $('.section_header').append('<div class="replaced_header"></div>');
+      $('.section_header .replaced_header').html('<h1><span>Explore</span> / '+search+'</h1>');
+    })
     this.selectItem("")
     this.initializeView({
       meta_sort: "explore",
@@ -37,9 +45,9 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   index: function(){
-    this.changeReplacedTitle()
-    this.selectItem("recommended")
-    this.initializeView({
+    _this.changeReplacedTitle()
+    _this.selectItem("recommended")
+    _this.initializeView({
       recommended: true,
       not_expired: true,
       meta_sort: "explore"
