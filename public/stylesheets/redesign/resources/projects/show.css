@@ -1,21 +1,23 @@
 /*
 Syntax error: Undefined mixin 'grid'.
-        on line 4 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass, in `grid'
-        from line 4 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass
+        on line 10 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass, in `grid'
+        from line 10 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass
 
-1: body[data-namespace="null"][data-controller="projects"][data-action="show"]
-2:   #page_content
-3:     .project_image
-4:       +grid(2)
-5:       padding-top:  20px
-6:       padding-bottom: 10px
-7:     .section_header
-8:       +grid(14)
-9:       padding-top:  20px
+5:       em
+6:         font-family: "Lato-Regular"
+7:         font-size: 16px
+8:         color: black
+9:     .project_image
+10:       +grid(2)
+11:       padding-top:  20px
+12:       padding-bottom: 10px
+13:     .section_header
+14:       +grid(14)
+15:       padding-top:  20px
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass:4:in `grid'
-/Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass:4
+/Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass:10:in `grid'
+/Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass:10
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -102,15 +104,14 @@ Backtrace:
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/lib/unicorn/http_server.rb:530:in `process_client'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/lib/unicorn/http_server.rb:604:in `worker_loop'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/lib/unicorn/http_server.rb:487:in `spawn_missing_workers'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/lib/unicorn/http_server.rb:137:in `start'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/unicorn-4.2.0/bin/unicorn_rails:209:in `<top (required)>'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/bin/unicorn_rails:19:in `load'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/bin/unicorn_rails:19:in `<main>'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/content_length.rb:13:in `call'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/rack-1.2.5/lib/rack/handler/webrick.rb:52:in `service'
+/Users/ton/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/Users/ton/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/Users/ton/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'grid'.\A         on line 4 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass, in `grid'\A         from line 4 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass\A \A 1: body[data-namespace=\"null\"][data-controller=\"projects\"][data-action=\"show\"]\A 2:   #page_content\A 3:     .project_image\A 4:       +grid(2)\A 5:       padding-top:  20px\A 6:       padding-bottom: 10px\A 7:     .section_header\A 8:       +grid(14)\A 9:       padding-top:  20px"; }
+  content: "Syntax error: Undefined mixin 'grid'.\A         on line 10 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass, in `grid'\A         from line 10 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/projects/show.sass\A \A 5:       em\A 6:         font-family: \"Lato-Regular\"\A 7:         font-size: 16px\A 8:         color: black\A 9:     .project_image\A 10:       +grid(2)\A 11:       padding-top:  20px\A 12:       padding-bottom: 10px\A 13:     .section_header\A 14:       +grid(14)\A 15:       padding-top:  20px"; }

@@ -11,7 +11,7 @@
 - cache(action_suffix: "updates_#{@project.id}") do
   .midia_content_update[itemscope itemtype="http://schema.org/Blog"]
     - if @project.posts.empty?
-      em = t('.empty')
+      em = t('projects.project_updates.empty')
     - else
       - for post in @project.posts
         - if post["type"] == "regular"
