@@ -5,6 +5,8 @@ pt:
     goal:
       subtitle: "atingidos de %{total}"
   project_by: projeto por
+  tell_about_this_back: Conte para o mundo sobre o seu apoio!
+  share_my_backs: Veja os projetos que já apoiei no Catarse!
   count_backed_projects: "apoiou %{total} projetos"
   footer:
     titles:
@@ -312,6 +314,7 @@ pt:
       signin: entrar
       explore: explore
       submit_project: envie
+      profile: meu perfil
     recommended_header:
       sugest_for_you: "sugerido para você"
       highlight_project: "projeto em destaque"
@@ -643,6 +646,14 @@ pt:
       two: "Apoiou este e mais 1 outro projeto"
     no_name: "Sem nome"
   users:
+    show:
+      tabs:
+        backed_projects: Projetos apoiados
+        created_projects: Projetos criados
+        comments: Comentários
+        credits: Creditos
+        settings: Preferências
+
     admin_fields:
       credits: "disponíveis em créditos"
       no_email: "ainda não preencheu seu email"
