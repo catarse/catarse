@@ -10,8 +10,12 @@
   nav.menu
     = link_to t('layouts.header.blog'), blog_index_path
     = link_to t('layouts.header.help'), faq_path
-    = link_to t('layouts.header.signup'), '#login'
-    = link_to t('layouts.header.signin'), '#login'
+    - if current_user
+      = link_to t('layouts.header.profile'), current_user
+      = link_to t('layouts.user.logout'), logout_path
+    - else
+      = link_to t('layouts.header.signup'), '#login'
+      = link_to t('layouts.header.signin'), '#login'
   .clearfix
 
 / #top
