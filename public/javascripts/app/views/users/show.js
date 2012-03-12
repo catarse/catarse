@@ -61,6 +61,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
   credits: function() {
     this.selectItem("credits")
+    this.$("#loading").children().hide();
   },
 
   comments: function() {

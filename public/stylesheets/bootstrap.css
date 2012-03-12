@@ -843,48 +843,240 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-shadow: none;
 }
 
-/* line 14, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 1, ../../app/stylesheets/redesign/miv/table.scss */
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 6, ../../app/stylesheets/redesign/miv/table.scss */
+.table {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+/* line 10, ../../app/stylesheets/redesign/miv/table.scss */
+.table th, .table td {
+  padding: 8px;
+  line-height: 18px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+
+/* line 17, ../../app/stylesheets/redesign/miv/table.scss */
+.table th {
+  font-weight: bold;
+}
+
+/* line 20, ../../app/stylesheets/redesign/miv/table.scss */
+.table thead th {
+  vertical-align: bottom;
+}
+
+/* line 23, ../../app/stylesheets/redesign/miv/table.scss */
+.table thead:first-child tr th, .table thead:first-child tr td {
+  border-top: 0;
+}
+
+/* line 26, ../../app/stylesheets/redesign/miv/table.scss */
+.table tbody + tbody {
+  border-top: 2px solid #ddd;
+}
+
+/* line 29, ../../app/stylesheets/redesign/miv/table.scss */
+.table-condensed th, .table-condensed td {
+  padding: 4px 5px;
+}
+
+/* line 32, ../../app/stylesheets/redesign/miv/table.scss */
+.table-bordered {
+  border: 1px solid #ddd;
+  border-collapse: separate;
+  *border-collapse: collapsed;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 43, ../../app/stylesheets/redesign/miv/table.scss */
+.table-bordered th + th,
+.table-bordered td + td,
+.table-bordered th + td,
+.table-bordered td + th {
+  border-left: 1px solid #ddd;
+}
+
+/* line 46, ../../app/stylesheets/redesign/miv/table.scss */
+.table-bordered thead:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child td {
+  border-top: 0;
+}
+
+/* line 49, ../../app/stylesheets/redesign/miv/table.scss */
+.table-bordered thead:first-child tr:first-child th:first-child, .table-bordered tbody:first-child tr:first-child td:first-child {
+  -webkit-border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  border-radius: 4px 0 0 0;
+}
+
+/* line 54, ../../app/stylesheets/redesign/miv/table.scss */
+.table-bordered thead:first-child tr:first-child th:last-child, .table-bordered tbody:first-child tr:first-child td:last-child {
+  -webkit-border-radius: 0 4px 0 0;
+  -moz-border-radius: 0 4px 0 0;
+  border-radius: 0 4px 0 0;
+}
+
+/* line 59, ../../app/stylesheets/redesign/miv/table.scss */
+.table-bordered thead:last-child tr:last-child th:first-child, .table-bordered tbody:last-child tr:last-child td:first-child {
+  -webkit-border-radius: 0 0 0 4px;
+  -moz-border-radius: 0 0 0 4px;
+  border-radius: 0 0 0 4px;
+}
+
+/* line 64, ../../app/stylesheets/redesign/miv/table.scss */
+.table-bordered thead:last-child tr:last-child th:last-child, .table-bordered tbody:last-child tr:last-child td:last-child {
+  -webkit-border-radius: 0 0 4px 0;
+  -moz-border-radius: 0 0 4px 0;
+  border-radius: 0 0 4px 0;
+}
+
+/* line 69, ../../app/stylesheets/redesign/miv/table.scss */
+.table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th {
+  background-color: #f9f9f9;
+}
+
+/* line 72, ../../app/stylesheets/redesign/miv/table.scss */
+.table tbody tr:hover td, .table tbody tr:hover th {
+  background-color: #f5f5f5;
+}
+
+/* line 75, ../../app/stylesheets/redesign/miv/table.scss */
+table .span1 {
+  float: none;
+  width: 44px;
+  margin-left: 0;
+}
+
+/* line 80, ../../app/stylesheets/redesign/miv/table.scss */
+table .span2 {
+  float: none;
+  width: 124px;
+  margin-left: 0;
+}
+
+/* line 85, ../../app/stylesheets/redesign/miv/table.scss */
+table .span3 {
+  float: none;
+  width: 204px;
+  margin-left: 0;
+}
+
+/* line 90, ../../app/stylesheets/redesign/miv/table.scss */
+table .span4 {
+  float: none;
+  width: 284px;
+  margin-left: 0;
+}
+
+/* line 95, ../../app/stylesheets/redesign/miv/table.scss */
+table .span5 {
+  float: none;
+  width: 364px;
+  margin-left: 0;
+}
+
+/* line 100, ../../app/stylesheets/redesign/miv/table.scss */
+table .span6 {
+  float: none;
+  width: 444px;
+  margin-left: 0;
+}
+
+/* line 105, ../../app/stylesheets/redesign/miv/table.scss */
+table .span7 {
+  float: none;
+  width: 524px;
+  margin-left: 0;
+}
+
+/* line 110, ../../app/stylesheets/redesign/miv/table.scss */
+table .span8 {
+  float: none;
+  width: 604px;
+  margin-left: 0;
+}
+
+/* line 115, ../../app/stylesheets/redesign/miv/table.scss */
+table .span9 {
+  float: none;
+  width: 684px;
+  margin-left: 0;
+}
+
+/* line 120, ../../app/stylesheets/redesign/miv/table.scss */
+table .span10 {
+  float: none;
+  width: 764px;
+  margin-left: 0;
+}
+
+/* line 125, ../../app/stylesheets/redesign/miv/table.scss */
+table .span11 {
+  float: none;
+  width: 844px;
+  margin-left: 0;
+}
+
+/* line 130, ../../app/stylesheets/redesign/miv/table.scss */
+table .span12 {
+  float: none;
+  width: 924px;
+  margin-left: 0;
+}
+
+/* line 15, ../../app/stylesheets/redesign/miv/index.sass */
 .clearfix {
   clear: both;
 }
 
-/* line 16, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 17, ../../app/stylesheets/redesign/miv/index.sass */
 .hide {
   display: none;
 }
 
-/* line 21, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 22, ../../app/stylesheets/redesign/miv/index.sass */
 .clickable:hover {
   cursor: pointer;
 }
 
-/* line 24, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 25, ../../app/stylesheets/redesign/miv/index.sass */
 .project_admin_field {
   font-size: 14px;
   font-family: Lato-Regular;
 }
 
-/* line 39, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 40, ../../app/stylesheets/redesign/miv/index.sass */
 #project_admin {
   padding-top: 30px;
 }
 
-/* line 42, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 43, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_mouseover {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 
-/* line 46, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 47, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_form:after {
   content: "" !important;
 }
 
-/* line 49, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 50, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing:after {
   content: " " url(/images/pencil_16.png);
 }
-/* line 52, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 53, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form input, .on_the_spot_editing form textarea, .on_the_spot_editing form select {
   padding-left: 4px;
   padding-right: 24px;
@@ -901,19 +1093,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border-radius: 5px;
   text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
 }
-/* line 62, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 63, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form input:focus, .on_the_spot_editing form textarea:focus, .on_the_spot_editing form select:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 65, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 66, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form textarea {
   padding-right: 28px;
   width: 96%;
   height: 200px;
   overflow: auto;
 }
-/* line 70, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 71, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button {
   margin-left: 4px;
   text-rendering: optimizeLegibility;
@@ -943,7 +1135,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
 }
-/* line 85, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 86, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button:hover {
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
@@ -957,7 +1149,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
-/* line 89, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 90, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button:active {
   padding: 6px 9px 4px 11px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
@@ -973,7 +1165,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
 }
-/* line 95, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 96, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
@@ -3995,4 +4187,59 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
 /* line 54, ../../app/stylesheets/redesign/resources/users/show.sass */
 body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_backed_projects ul.collection_list li {
   margin-bottom: 30px;
+}
+/* line 56, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px;
+  margin-right: 0;
+}
+/* line 60, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .current_credits p {
+  font-size: 24px;
+  font-family: Lato-Bold;
+  color: #333333;
+  padding-bottom: 5px;
+}
+/* line 65, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits #current_credits {
+  color: #64cb64;
+}
+/* line 67, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_title {
+  font-family: Lato-Regular;
+  font-size: 20px;
+  color: #284f31;
+  padding-top: 14px;
+  padding-bottom: 10px;
+}
+/* line 74, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content th {
+  font-family: Lato-Bold;
+  font-size: 16px;
+}
+/* line 77, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content td {
+  font-family: Lato-Regular;
+  font-size: 14px;
+}
+/* line 80, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content td a {
+  text-decoration: none;
+  color: #4383d1;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+/* line 84, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content td a:hover {
+  color: #e75297;
 }
