@@ -1,0 +1,55 @@
+body[data-namespace="null"][data-controller="users"][data-action="show"]
+  #user_profile
+    padding-top: 20px
+    padding-bottom: 20px
+    float: left
+    .section_header
+      +grid(12)
+      +grid-suffix(1)
+      .profile_image
+        +grid(3)
+        +alpha
+        img
+          +box-shadow(rgba(black, 0.4) 2px 2px 5px)
+      .profile_title
+        +grid(9)
+        +omega
+        h1
+          color: $ultra_gryn
+          font-size: 28px
+          font-family: 'Lato-Bold'
+          padding: 4px 0 10px
+        h4
+          color: $ultra_gryn
+          font-size: 16px
+          font-family: Arial
+          line-height: 140%
+    .user_social
+      +grid(3)
+      li
+        font-family: 'Lato-Regular'
+        font-size: 12px
+        padding: 0 0 5px 25px
+        margin-bottom: 10px
+        +opacity(0.8)
+        a
+          color: black
+          +transition(all, 0.5s)
+          text-decoration: none
+          &:hover
+            color: $pink
+        &.email
+          background: url($images_path+'social_icons.png') left top no-repeat
+        &.facebook
+          padding-top: 2px
+          background: url($images_path+'social_icons.png') left -25px no-repeat
+        &.twitter
+          padding-top: 2px
+          background: url($images_path+'social_icons.png') left -54px no-repeat
+    .tab_container
+      padding-top: 20px
+      margin-bottom:  20px
+    #user_backed_projects
+      ul.collection_list
+        li
+          margin-bottom: 30px
