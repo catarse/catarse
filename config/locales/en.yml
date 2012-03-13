@@ -674,6 +674,8 @@ en:
         comments: Comments
         credits: Credits
         settings: Settings
+      back_date: "Back date"
+      refund_expration_date: "Refund deadline"
     admin_fields:
       credits: "available in credits"
       no_email: "haven't filled the email yet"
@@ -722,15 +724,58 @@ en:
     page_gap: "..."
     previous: "« Previous"
   date:
-    abbr_day_names: ~
-    abbr_month_names: ~
-    day_names: ~
+    abbr_day_names:
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
+    abbr_month_names:
+      - ~
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
+    day_names:
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
     formats:
-      default: ~
-      long: ~
-      short: ~
-    month_names: ~
-    order: ~
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    month_names:
+      - ~
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+    order:
+      - :day
+      - :month
+      - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -844,7 +889,7 @@ en:
   time:
     am: ~
     formats:
-      default: ~
-      long: ~
-      short: ~
+      default: "%B %d, %Y %H:%M"
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %H:%M"
     pm: ~
