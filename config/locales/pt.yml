@@ -7,6 +7,8 @@ pt:
   project_by: projeto por
   tell_about_this_back: Conte para o mundo sobre o seu apoio!
   share_my_backs: Veja os projetos que já apoiei no Catarse!
+  tell_about_this_project: Conte para o mundo sobre o seu projeto!
+  share_my_projects: Veja meus projetos criados no Catarse!
   count_backed_projects: "apoiou %{total} projetos"
   footer:
     titles:

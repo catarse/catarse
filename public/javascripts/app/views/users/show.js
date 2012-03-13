@@ -1,12 +1,13 @@
 CATARSE.UsersShowView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "index", "backs", "projects", "credits", "comments", "request_refund")
+    _.bindAll(this, "index", "backs", "projects", "credits", "comments", "request_refund", 'settings')
     CATARSE.router.route("", "index", this.index)
     CATARSE.router.route("backs", "backs", this.backs)
     CATARSE.router.route("projects", "projects", this.projects)
     CATARSE.router.route("credits", "credits", this.credits)
     CATARSE.router.route("comments", "comments", this.comments)
+    CATARSE.router.route("settings", "settings", this.settings)
     CATARSE.router.route("request_refund/:back_id", "request_refund", this.request_refund)
     this.render()
   },
@@ -61,6 +62,11 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
   credits: function() {
     this.selectItem("credits")
+    this.$("#loading").children().hide();
+  },
+
+  settings: function() {
+    this.selectItem("settings")
     this.$("#loading").children().hide();
   },
 

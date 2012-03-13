@@ -1,0 +1,707 @@
+/* line 2, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form form {
+  margin: 0 0 18px;
+}
+/* line 5, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+/* line 10, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 27px;
+  font-size: 19.5px;
+  line-height: 36px;
+  color: #333333;
+  border: 0;
+  border-bottom: 1px solid #eee;
+}
+/* line 21, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form legend small {
+  font-size: 13.5px;
+  color: #999999;
+}
+/* line 29, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form label,
+#bootstrap-form input,
+#bootstrap-form button,
+#bootstrap-form select,
+#bootstrap-form textarea {
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+}
+/* line 37, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input,
+#bootstrap-form button,
+#bootstrap-form select,
+#bootstrap-form textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* line 40, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333333;
+}
+/* line 48, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input,
+#bootstrap-form textarea,
+#bootstrap-form select,
+#bootstrap-form .uneditable-input {
+  display: inline-block;
+  width: 210px;
+  height: 18px;
+  padding: 4px;
+  margin-bottom: 9px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #555555;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 62, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .uneditable-textarea {
+  width: auto;
+  height: auto;
+}
+/* line 68, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form label input,
+#bootstrap-form label textarea,
+#bootstrap-form label select {
+  display: block;
+}
+/* line 73, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[type="image"],
+#bootstrap-form input[type="checkbox"],
+#bootstrap-form input[type="radio"] {
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 3px 0;
+  *margin-top: 0;
+  /* IE7 */
+  line-height: normal;
+  cursor: pointer;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border: 0 \9;
+  /* IE9 and down */
+}
+/* line 90, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[type="image"] {
+  border: 0;
+}
+/* line 93, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[type="file"] {
+  width: auto;
+  padding: initial;
+  line-height: initial;
+  border: initial;
+  background-color: #ffffff;
+  background-color: initial;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+/* line 106, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[type="button"],
+#bootstrap-form input[type="reset"],
+#bootstrap-form input[type="submit"] {
+  width: auto;
+  height: auto;
+}
+/* line 111, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form select,
+#bootstrap-form input[type="file"] {
+  height: 28px;
+  /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  *margin-top: 4px;
+  /* For IE7, add top margin to align select with labels */
+  line-height: 28px;
+}
+/* line 120, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[type="file"] {
+  line-height: 18px \9;
+}
+/* line 123, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form select {
+  width: 220px;
+  background-color: #ffffff;
+}
+/* line 128, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form select[multiple],
+#bootstrap-form select[size] {
+  height: auto;
+}
+/* line 131, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[type="image"] {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+/* line 136, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form textarea {
+  height: auto;
+}
+/* line 139, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[type="hidden"] {
+  display: none;
+}
+/* line 143, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .radio,
+#bootstrap-form .checkbox {
+  padding-left: 18px;
+}
+/* line 147, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .radio input[type="radio"],
+#bootstrap-form .checkbox input[type="checkbox"] {
+  float: left;
+  margin-left: -18px;
+}
+/* line 152, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .controls > .radio:first-child,
+#bootstrap-form .controls > .checkbox:first-child {
+  padding-top: 5px;
+}
+/* line 156, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .radio.inline,
+#bootstrap-form .checkbox.inline {
+  display: inline-block;
+  padding-top: 5px;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+/* line 163, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .radio.inline + .radio.inline,
+#bootstrap-form .checkbox.inline + .checkbox.inline {
+  margin-left: 10px;
+}
+/* line 167, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input,
+#bootstrap-form textarea {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+/* line 178, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input:focus,
+#bootstrap-form textarea:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+}
+/* line 191, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[type="file"]:focus,
+#bootstrap-form input[type="radio"]:focus,
+#bootstrap-form input[type="checkbox"]:focus,
+#bootstrap-form select:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+/* line 199, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-mini {
+  width: 60px;
+}
+/* line 202, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-small {
+  width: 90px;
+}
+/* line 205, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-medium {
+  width: 150px;
+}
+/* line 208, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-large {
+  width: 210px;
+}
+/* line 211, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-xlarge {
+  width: 270px;
+}
+/* line 214, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-xxlarge {
+  width: 530px;
+}
+/* line 220, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[class*="span"],
+#bootstrap-form select[class*="span"],
+#bootstrap-form textarea[class*="span"],
+#bootstrap-form .uneditable-input {
+  float: none;
+  margin-left: 0;
+}
+/* line 226, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input,
+#bootstrap-form textarea,
+#bootstrap-form .uneditable-input {
+  margin-left: 0;
+}
+/* line 229, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span12, #bootstrap-form textarea.span12, #bootstrap-form .uneditable-input.span12 {
+  width: 930px;
+}
+/* line 232, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span11, #bootstrap-form textarea.span11, #bootstrap-form .uneditable-input.span11 {
+  width: 850px;
+}
+/* line 235, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span10, #bootstrap-form textarea.span10, #bootstrap-form .uneditable-input.span10 {
+  width: 770px;
+}
+/* line 238, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span9, #bootstrap-form textarea.span9, #bootstrap-form .uneditable-input.span9 {
+  width: 690px;
+}
+/* line 241, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span8, #bootstrap-form textarea.span8, #bootstrap-form .uneditable-input.span8 {
+  width: 610px;
+}
+/* line 244, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span7, #bootstrap-form textarea.span7, #bootstrap-form .uneditable-input.span7 {
+  width: 530px;
+}
+/* line 247, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span6, #bootstrap-form textarea.span6, #bootstrap-form .uneditable-input.span6 {
+  width: 450px;
+}
+/* line 250, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span5, #bootstrap-form textarea.span5, #bootstrap-form .uneditable-input.span5 {
+  width: 370px;
+}
+/* line 253, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span4, #bootstrap-form textarea.span4, #bootstrap-form .uneditable-input.span4 {
+  width: 290px;
+}
+/* line 256, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span3, #bootstrap-form textarea.span3, #bootstrap-form .uneditable-input.span3 {
+  width: 210px;
+}
+/* line 259, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span2, #bootstrap-form textarea.span2, #bootstrap-form .uneditable-input.span2 {
+  width: 130px;
+}
+/* line 262, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input.span1, #bootstrap-form textarea.span1, #bootstrap-form .uneditable-input.span1 {
+  width: 50px;
+}
+/* line 270, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input[disabled],
+#bootstrap-form select[disabled],
+#bootstrap-form textarea[disabled],
+#bootstrap-form input[readonly],
+#bootstrap-form select[readonly],
+#bootstrap-form textarea[readonly] {
+  background-color: #eeeeee;
+  border-color: #ddd;
+  cursor: not-allowed;
+}
+/* line 277, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.warning > label,
+#bootstrap-form .control-group.warning .help-block,
+#bootstrap-form .control-group.warning .help-inline {
+  color: #c09853;
+}
+/* line 282, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.warning input,
+#bootstrap-form .control-group.warning select,
+#bootstrap-form .control-group.warning textarea {
+  color: #c09853;
+  border-color: #c09853;
+}
+/* line 288, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.warning input:focus,
+#bootstrap-form .control-group.warning select:focus,
+#bootstrap-form .control-group.warning textarea:focus {
+  border-color: #a47e3c;
+  -webkit-box-shadow: 0 0 6px #dbc59e;
+  -moz-box-shadow: 0 0 6px #dbc59e;
+  box-shadow: 0 0 6px #dbc59e;
+}
+/* line 295, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.warning .input-prepend .add-on,
+#bootstrap-form .control-group.warning .input-append .add-on {
+  color: #c09853;
+  background-color: #fcf8e3;
+  border-color: #c09853;
+}
+/* line 302, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.error > label,
+#bootstrap-form .control-group.error .help-block,
+#bootstrap-form .control-group.error .help-inline {
+  color: #b94a48;
+}
+/* line 307, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.error input,
+#bootstrap-form .control-group.error select,
+#bootstrap-form .control-group.error textarea {
+  color: #b94a48;
+  border-color: #b94a48;
+}
+/* line 313, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.error input:focus,
+#bootstrap-form .control-group.error select:focus,
+#bootstrap-form .control-group.error textarea:focus {
+  border-color: #953b39;
+  -webkit-box-shadow: 0 0 6px #d59392;
+  -moz-box-shadow: 0 0 6px #d59392;
+  box-shadow: 0 0 6px #d59392;
+}
+/* line 320, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.error .input-prepend .add-on,
+#bootstrap-form .control-group.error .input-append .add-on {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #b94a48;
+}
+/* line 327, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.success > label,
+#bootstrap-form .control-group.success .help-block,
+#bootstrap-form .control-group.success .help-inline {
+  color: #468847;
+}
+/* line 332, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.success input,
+#bootstrap-form .control-group.success select,
+#bootstrap-form .control-group.success textarea {
+  color: #468847;
+  border-color: #468847;
+}
+/* line 338, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.success input:focus,
+#bootstrap-form .control-group.success select:focus,
+#bootstrap-form .control-group.success textarea:focus {
+  border-color: #356635;
+  -webkit-box-shadow: 0 0 6px #7aba7b;
+  -moz-box-shadow: 0 0 6px #7aba7b;
+  box-shadow: 0 0 6px #7aba7b;
+}
+/* line 345, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group.success .input-prepend .add-on,
+#bootstrap-form .control-group.success .input-append .add-on {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #468847;
+}
+/* line 352, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input:focus:required:invalid,
+#bootstrap-form textarea:focus:required:invalid,
+#bootstrap-form select:focus:required:invalid {
+  color: #b94a48;
+  border-color: #ee5f5b;
+}
+/* line 358, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form input:focus:required:invalid:focus,
+#bootstrap-form textarea:focus:required:invalid:focus,
+#bootstrap-form select:focus:required:invalid:focus {
+  border-color: #e9322d;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #f8b9b7;
+}
+/* line 364, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-actions {
+  padding: 17px 20px 18px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  background-color: #eeeeee;
+  border-top: 1px solid #ddd;
+  *zoom: 1;
+}
+/* line 373, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-actions:before,
+#bootstrap-form .form-actions:after {
+  display: table;
+  content: "";
+}
+/* line 377, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-actions:after {
+  clear: both;
+}
+/* line 380, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .uneditable-input {
+  display: block;
+  background-color: #ffffff;
+  border-color: #eee;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+  cursor: not-allowed;
+}
+/* line 389, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form :-moz-placeholder {
+  color: #999999;
+}
+/* line 392, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form ::-webkit-input-placeholder {
+  color: #999999;
+}
+/* line 396, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .help-block,
+#bootstrap-form .help-inline {
+  color: #555555;
+}
+/* line 399, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .help-block {
+  display: block;
+  margin-bottom: 9px;
+}
+/* line 403, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .help-inline {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+  *zoom: 1;
+  vertical-align: middle;
+  padding-left: 5px;
+}
+/* line 413, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend,
+#bootstrap-form .input-append {
+  margin-bottom: 5px;
+}
+/* line 421, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend input,
+#bootstrap-form .input-append input,
+#bootstrap-form .input-prepend select,
+#bootstrap-form .input-append select,
+#bootstrap-form .input-prepend .uneditable-input,
+#bootstrap-form .input-append .uneditable-input {
+  *margin-left: 0;
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+/* line 432, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend input:focus,
+#bootstrap-form .input-append input:focus,
+#bootstrap-form .input-prepend select:focus,
+#bootstrap-form .input-append select:focus,
+#bootstrap-form .input-prepend .uneditable-input:focus,
+#bootstrap-form .input-append .uneditable-input:focus {
+  position: relative;
+  z-index: 2;
+}
+/* line 437, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend .uneditable-input,
+#bootstrap-form .input-append .uneditable-input {
+  border-left-color: #ccc;
+}
+/* line 441, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend .add-on,
+#bootstrap-form .input-append .add-on {
+  display: inline-block;
+  width: auto;
+  min-width: 16px;
+  height: 18px;
+  padding: 4px 5px;
+  font-weight: normal;
+  line-height: 18px;
+  text-align: center;
+  text-shadow: 0 1px 0 #ffffff;
+  vertical-align: middle;
+  background-color: #eeeeee;
+  border: 1px solid #ccc;
+}
+/* line 458, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend .add-on,
+#bootstrap-form .input-append .add-on,
+#bootstrap-form .input-prepend .btn,
+#bootstrap-form .input-append .btn {
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+/* line 464, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend .active,
+#bootstrap-form .input-append .active {
+  background-color: #a9dba9;
+  border-color: #46a546;
+}
+/* line 469, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend .add-on,
+#bootstrap-form .input-prepend .btn {
+  margin-right: -1px;
+}
+/* line 473, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-append input,
+#bootstrap-form .input-append select .uneditable-input {
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+/* line 478, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-append .uneditable-input {
+  border-left-color: #eee;
+  border-right-color: #ccc;
+}
+/* line 483, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-append .add-on,
+#bootstrap-form .input-append .btn {
+  margin-left: -1px;
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+/* line 491, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend.input-append input,
+#bootstrap-form .input-prepend.input-append select,
+#bootstrap-form .input-prepend.input-append .uneditable-input {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+/* line 497, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend.input-append .add-on:first-child,
+#bootstrap-form .input-prepend.input-append .btn:first-child {
+  margin-right: -1px;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+/* line 504, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .input-prepend.input-append .add-on:last-child,
+#bootstrap-form .input-prepend.input-append .btn:last-child {
+  margin-left: -1px;
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+/* line 510, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .search-query {
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-bottom: 0;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  border-radius: 14px;
+}
+/* line 538, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-search input,
+#bootstrap-form .form-inline input,
+#bootstrap-form .form-horizontal input,
+#bootstrap-form .form-search textarea,
+#bootstrap-form .form-inline textarea,
+#bootstrap-form .form-horizontal textarea,
+#bootstrap-form .form-search select,
+#bootstrap-form .form-inline select,
+#bootstrap-form .form-horizontal select,
+#bootstrap-form .form-search .help-inline,
+#bootstrap-form .form-inline .help-inline,
+#bootstrap-form .form-horizontal .help-inline,
+#bootstrap-form .form-search .uneditable-input,
+#bootstrap-form .form-inline .uneditable-input,
+#bootstrap-form .form-horizontal .uneditable-input,
+#bootstrap-form .form-search .input-prepend,
+#bootstrap-form .form-inline .input-prepend,
+#bootstrap-form .form-horizontal .input-prepend,
+#bootstrap-form .form-search .input-append,
+#bootstrap-form .form-inline .input-append,
+#bootstrap-form .form-horizontal .input-append {
+  display: inline-block;
+  margin-bottom: 0;
+}
+/* line 544, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-search .hide,
+#bootstrap-form .form-inline .hide,
+#bootstrap-form .form-horizontal .hide {
+  display: none;
+}
+/* line 548, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-search label,
+#bootstrap-form .form-inline label {
+  display: inline-block;
+}
+/* line 554, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-search .input-append,
+#bootstrap-form .form-inline .input-append,
+#bootstrap-form .form-search .input-prepend,
+#bootstrap-form .form-inline .input-prepend {
+  margin-bottom: 0;
+}
+/* line 560, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-search .radio,
+#bootstrap-form .form-search .checkbox,
+#bootstrap-form .form-inline .radio,
+#bootstrap-form .form-inline .checkbox {
+  padding-left: 0;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+/* line 568, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-search .radio input[type="radio"],
+#bootstrap-form .form-search .checkbox input[type="checkbox"],
+#bootstrap-form .form-inline .radio input[type="radio"],
+#bootstrap-form .form-inline .checkbox input[type="checkbox"] {
+  float: left;
+  margin-left: 0;
+  margin-right: 3px;
+}
+/* line 573, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .control-group {
+  margin-bottom: 9px;
+}
+/* line 576, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form legend + .control-group {
+  margin-top: 18px;
+  -webkit-margin-top-collapse: separate;
+}
+/* line 580, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-horizontal .control-group {
+  margin-bottom: 18px;
+  *zoom: 1;
+}
+/* line 585, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-horizontal .control-group:before,
+#bootstrap-form .form-horizontal .control-group:after {
+  display: table;
+  content: "";
+}
+/* line 589, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-horizontal .control-group:after {
+  clear: both;
+}
+/* line 592, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-horizontal .control-label {
+  float: left;
+  width: 140px;
+  padding-top: 5px;
+  text-align: right;
+}
+/* line 598, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-horizontal .controls {
+  margin-left: 160px;
+  /* Super jank IE7 fix to ensure the inputs in .input-append and input-prepend don't inherit the margin of the parent, in this case .controls */
+  *display: inline-block;
+  *margin-left: 0;
+  *padding-left: 20px;
+}
+/* line 606, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-horizontal .help-block {
+  margin-top: 9px;
+  margin-bottom: 0;
+}
+/* line 610, ../../../../app/stylesheets/redesign/miv/form.scss */
+#bootstrap-form .form-horizontal .form-actions {
+  padding-left: 160px;
+}
