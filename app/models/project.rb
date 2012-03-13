@@ -84,6 +84,18 @@ class Project < ActiveRecord::Base
     backers.confirmed.count
   end
 
+  def display_status
+    if successful?
+      'successful'
+    elsif expired?
+      'expired'
+    elsif waiting_confirmation?
+      'waiting_confirmation'
+    elsif in_time?
+      'in_time'
+    end
+  end
+
   def successful?
     return successful if finished
     pledged >= goal

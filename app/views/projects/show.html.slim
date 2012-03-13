@@ -82,7 +82,7 @@
               p= @project.time_to_go[:time]
               em #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
-          #condition
+          #condition[class="#{@project.display_status}"]
             p
               - if @project.successful?
                 - if @project.expired?
@@ -113,7 +113,7 @@
                 - if current_user and current_user.admin
                   #{on_the_spot_edit reward, :description, :type => :textarea}
                 - else
-                  = auto_link(reward.description, :html => {:target => :_blank})
+                  = auto_link(simple_format(reward.description), :html => {:target => :_blank})
               - if reward.maximum_backers
                 .maximum_backers
                   - if reward.sold_out?

@@ -37,7 +37,6 @@ script type="text/template" id="backer_template"
         | <% } %>
         br
         | <% if (reward) { %>
-        | &nbsp;
         = "#{t('activerecord.models.reward')}: "
         | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
         | <% } else { %>

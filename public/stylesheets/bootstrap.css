@@ -4728,6 +4728,10 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding: 10px 20px;
 }
 /* line 200, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition.successful {
+  background: #59af6d;
+}
+/* line 202, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition p {
   line-height: 130%;
   font-family: Arial;
@@ -4735,61 +4739,72 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   text-transform: uppercase;
   color: white;
 }
-/* line 206, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 208, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge {
   width: 280px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 210, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 212, ../../app/stylesheets/redesign/resources/projects/show.sass */
+body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"][disabled="disabled"] {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  background: url("/images/catarse/submit_back_icon25x22.png") 6px center no-repeat #333333;
+}
+/* line 215, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"] {
   display: block;
   margin: 0 auto;
-  background: url("/images/catarse/submit_back_icon25x22.png") 10px center no-repeat #64cb64;
-  width: 226px;
+  background: url("/images/catarse/submit_back_icon25x22.png") 6px center no-repeat #64cb64;
+  width: 266px;
   height: 55px;
   border: none;
-  text-indent: 25px;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
-  border-radius: 20px;
+  text-indent: 28px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
   transition-property: all;
-  -moz-transition-duration: 0.3s;
-  -webkit-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
   text-transform: uppercase;
   font-family: "Lato-Bold";
   font-size: 15px;
   color: white;
 }
-/* line 224, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 231, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
 }
-/* line 226, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 233, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:active {
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
 }
-/* line 228, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 235, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile {
   padding-top: 20px;
   float: left;
   padding-bottom: 20px;
 }
-/* line 232, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 239, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile h3 {
   background: url("/images/catarse/profile_icon19x14.png") left 4px no-repeat;
   color: #333333;
@@ -4799,7 +4814,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   display: block;
   padding-bottom: 15px;
 }
-/* line 240, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 247, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar {
   display: inline;
   float: left;
@@ -4808,14 +4823,14 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   width: 100px;
   margin-left: 0;
 }
-/* line 243, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 250, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar img {
   -moz-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
   -o-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
 }
-/* line 245, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 252, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info {
   display: inline;
   float: left;
@@ -4824,25 +4839,25 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   width: 160px;
   margin-right: 0;
 }
-/* line 248, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 255, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name {
   padding-bottom: 5px;
 }
-/* line 250, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 257, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name a {
   font-family: "Lato-Bold";
   font-size: 14px;
   color: #e75297;
   text-decoration: none;
 }
-/* line 255, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 262, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p {
   font-family: Arial;
   font-size: 12px;
   color: #333333;
   line-height: 140%;
 }
-/* line 260, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 267, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio {
   display: inline;
   float: left;
@@ -4851,7 +4866,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   width: 280px;
   margin-left: 0;
 }
-/* line 263, ../../app/stylesheets/redesign/resources/projects/show.sass */
+/* line 270, ../../app/stylesheets/redesign/resources/projects/show.sass */
 body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio p {
   padding: 10px 0;
   font-family: Arial;

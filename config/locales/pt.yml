@@ -414,7 +414,7 @@ pt:
           not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
         waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
       reached_of: "Atingidos de"
-      submit: "Apoiar este projeto"
+      submit: "Quero apoiar este projeto"
     backer:
       anonymous_backer: "Apoiador anônimo"
       anonymous_description: "Optou por permanecer incógnito"
