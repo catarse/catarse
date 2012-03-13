@@ -529,7 +529,7 @@ pt:
     project_header:
       subtitle_html: "Um projeto de %{link}"
       without_city: "Um projeto de %{category_name}, por %{author}"
-      with_city: "Um projeto de %{category_name}, no %{city}, por %{author}"
+      with_city: "Um projeto de %{category_name}, em %{city}, por %{author}"
     project_list:
       expiring:
         explore: "Explore mais projetos na reta final"
