@@ -35,14 +35,17 @@
         nav#user_profile_menu
           = link_to t('.tabs.backed_projects'), '#backs', :id => 'backed_projects_link', :class => 'selected'
           = link_to t('.tabs.created_projects'), '#projects', :id => 'created_projects_link'
-          = link_to t('.tabs.comments'), '#comments', :id => 'comments_link'
+          / = link_to t('.tabs.comments'), '#comments', :id => 'comments_link'
           - if can? :manage, @user
             = link_to t('.tabs.credits'), '#credits', :id => 'credits_link'
             = link_to t('.tabs.settings'), '#settings', :id => 'settings_link'
       .clearfix
       #user_profile_content
         #user_backed_projects.content
+        #user_created_projects.content
         - if can? :manage, @user
+          #user_settings.content
+            = render 'current_user_fields'
           #user_credits.content
             .current_credits
               p= t('credits.index.current_credits_html', :credits => @user.display_credits)

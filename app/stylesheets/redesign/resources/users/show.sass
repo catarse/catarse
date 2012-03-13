@@ -53,6 +53,13 @@ body[data-namespace="null"][data-controller="users"][data-action="show"]
       ul.collection_list
         li
           margin-bottom: 30px
+    #user_created_projects
+      float: left
+      ul.collection_list
+        float: left
+        li
+          float: left
+          margin-bottom: 30px
     #user_credits
       +grid(16)
       +omega
@@ -83,6 +90,58 @@ body[data-namespace="null"][data-controller="users"][data-action="show"]
             +transition(all, 0.5s)
             &:hover
               color: $pink
+  #gravatar_hint.alert.alert-info
+    font-family: Lato-Regular
+    font-size: 16px
+    // color: rgba(black, 0.5)
+    p
+      padding: 10px 0 0
+      a
+        color: black
+        text-decoration: none
+        font-family: Lato-Bold
+        +transition(all, 0.5s)
+        &:hover
+          color: $pink
+    a
+      img
+        float: left
+        margin-right: 20px
+  #my_data
+    h1
+      font-family: Lato-Bold
+      font-size: 25px
+      color: $ultra_gryn
+    ul
+      padding-top: 15px
+      li
+        font-family: Lato-Regular
+        font-size: 15px
+        margin-bottom: 15px
+        .on_the_spot_editing
+          color: $pink
+        .hint
+          padding-top: 5px
+          font-size: 13px
+
+  #change_password
+    h1
+      font-family: Lato-Bold
+      font-size: 25px
+      color: $ultra_gryn
+      padding-top: 20px
+    ul
+      padding-top: 15px
+      li
+        font-family: Lato-Regular
+        font-size: 15px
+        margin-bottom: 15px
+        .on_the_spot_editing
+          color: $pink
+        .hint
+          padding-top: 5px
+          font-size: 13px
+
 
 
       // #buy_credits

@@ -95,6 +95,11 @@
     padding-left: 19px
     height: 175px
     padding-top: 14px
+    .headline
+      font-family: Arial
+      font-size: 12px
+      line-height: 130%
+      color: black
     ul
       li
         padding-left: 40px
@@ -103,7 +108,7 @@
         margin-bottom: 24px !important
         h5
           font-family: Lato-Bold
-          font-size: 18px
+          font-size: 17px
           color: black
         p
           font-family: Arial
@@ -119,6 +124,9 @@
           h5
             padding-top: 4px
             padding-bottom: 5px
+          p
+            height: 30px
+            overflow: hidden
 
   .tell_about
     +grid(3)
@@ -138,6 +146,7 @@
     ul
       padding-top: 15px
       li
+        float: none !important
         margin-bottom: 3px !important
         a
           +transition(all, 0.5s)
