@@ -4,8 +4,12 @@ en:
       subtitle: backers
     goal:
       subtitle: "total of %{total}"
-  project_by: ~
-  count_backed_projects: ~
+  project_by: "project by"
+  tell_about_this_back: "Tell the world about your support!"
+  share_my_backs: "See the projects that i support in Catarse!"
+  tell_about_this_project: "Tell the world about your project!"
+  share_my_projects: "See my created projects in Catarse!"
+  count_backed_projects: "backed %{total} projects"
   footer:
     titles:
       info: "Useful Information"
@@ -148,12 +152,12 @@ en:
       buy_credits: "Buy credits"
       buy_credits_html: "<strong>You don't need to have credits to back a project</strong>. You can pay online when you proceed to back the project. But if you like to back many projects, it's a good idea to buy credits in advance: this way you won't need to make a payment each time you back a project."
       confirm: "Are you sure you want to request a refund for this payment?"
-      created_at: "Payment date"
+      back_date: "Back date"
       current_credits_html: "Your current balance is <span id=\"current_credits\">%{credits}</span> in credits."
       important_html: "You have <strong>up to 180 days after the payment date</strong> to ask for a refund. If you ask for a refund, the value of your payment will be deducted from your credits."
       no_refunds: "You don't have any payment that can be refunded"
       project: Project
-      refund_deadline: "Refund deadline"
+      refund_expration_date: "Refund deadline"
       refunded: Refunded
       refunds_title: "Payments that can be refunded"
       request_refund: "Request refund"
@@ -331,6 +335,7 @@ en:
       signin: login
       explore: explore
       submit_project: submit
+      profile: "my profile"
     recommended_header:
       sugest_for_you: "suggested for you"
       highlight_project: "featured project"
@@ -542,8 +547,8 @@ en:
       submit: "Send comment"
     project_header:
       subtitle_html: "A project by %{link}"
-      without_city: ~
-      with_city: ~
+      without_city: "A project in %{category_name}, by %{author}"
+      with_city: "A project in %{category_name}, in %{city}, by %{author}"
     project_list:
       expiring:
         explore: "Explore more projects in the final countdown"
@@ -571,7 +576,7 @@ en:
     send_mail:
       success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
     show:
-      about_title: ~
+      about_title: "About this project"
       menu:
         about: About
         backers: Backers
@@ -662,6 +667,13 @@ en:
       two: "Backed this and 1 other project"
     no_name: Unnamed
   users:
+    show:
+      tabs:
+        backed_projects: "Backed projects"
+        created_projects: "Created projects"
+        comments: Comments
+        credits: Credits
+        settings: Settings
     admin_fields:
       credits: "available in credits"
       no_email: "haven't filled the email yet"
