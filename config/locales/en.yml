@@ -674,8 +674,6 @@ en:
         comments: Comments
         credits: Credits
         settings: Settings
-      back_date: "Back date"
-      refund_expration_date: "Refund deadline"
     admin_fields:
       credits: "available in credits"
       no_email: "haven't filled the email yet"
