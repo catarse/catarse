@@ -17,8 +17,16 @@
         .profile_image
           = image_tag @user.display_image, :class => 'profile_pic', :size => '119x121'
         .profile_title
-          h1.profile= @user.name
-          h4.bio= @user.bio
+          h1.profile
+            - if current_user and @user == current_user
+              = on_the_spot_edit @user, :name, :tooltip => t('users.header.name_tooltip')
+            - else
+              = @user.display_name
+          h4.bio
+            - if current_user and @user == current_user
+              = on_the_spot_edit @user, :bio, :type => :textarea, :tooltip => t('users.header.bio_tooltip')
+            - else
+              = @user.bio
       .user_social
         ul
           - if can? :manage, @user
