@@ -197,6 +197,8 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"]
           background: $_6f_gryn
           width: 240px
           padding: 10px 20px
+          &.successful
+            background: $green
           p
             line-height: 130%
             font-family: Arial
@@ -207,16 +209,21 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"]
           width: 280px
           padding-top: 20px
           padding-bottom: 20px
+          input[type="submit"][disabled="disabled"]
+            +opacity(0.6)
+            background: url($images_path+"submit_back_icon25x22.png") 6px center no-repeat $ultra_gryn
           input[type="submit"]
             display: block
             margin: 0 auto
-            background: url($images_path+"submit_back_icon25x22.png") 10px center no-repeat $light_green
-            width: 226px
+            background: url($images_path+"submit_back_icon25x22.png") 6px center no-repeat $light_green
+            width: 266px
             height: 55px
             border: none
-            text-indent: 25px
-            +border-radius(20px)
-            +transition(all, 0.3s)
+            text-indent: 28px
+            +border-radius(10px)
+            +transition(all, 0.5s)
+            +text-shadow(rgba(black, 0.3) 1px 1px 1px)
+            +box-shadow(rgba(black, 0.3) 1px 1px 1px)
             text-transform: uppercase
             font-family: "Lato-Bold"
             font-size: 15px
