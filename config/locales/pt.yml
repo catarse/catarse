@@ -1,6 +1,7 @@
 pt:
   "no": Não
   "yes": Sim
+  or_sign_in_with_google: Ou entre utilizando o google
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
   active_admin:
     dashboard: "Painel de controle"

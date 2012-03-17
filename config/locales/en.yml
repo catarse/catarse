@@ -1,6 +1,7 @@
 en:
   "no": "No"
   "yes": "Yes"
+  or_sign_in_with_google: "Or sign in with google"
   accept_terms_html: "I have read and accepted the %{link}."
   active_admin:
     dashboard: Dashboard
@@ -113,7 +114,7 @@ en:
         subject: "Confirmation instructions"
       reset_password_instructions:
         subject: "Reset password instructions"
-        alt: ~
+        alt: "Reset password instructions"
       unlock_instructions:
         subject: "Unlock Instructions"
     omniauth_callbacks:
@@ -454,7 +455,7 @@ en:
         comments: Comments
         updates: Updates
       share:
-        embed: "Embed this project"
+        embed: embed
         embed_title: "Embed this project on your site"
         link: Link
         link_title: "Share the link"

@@ -30,8 +30,13 @@
         %p.input
           = f.label :password_confirmation
           = f.password_field :password_confirmation
-        %p.action
+        .action.with_google
           = f.submit t('registrations.new.submit')
+          %div.login_with_google
+            = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
+            %p= t('or_sign_in_with_google')
+          .clearfix
+        .clearfix
         .links
           = link_to t('devise.links.sign_in'), 'javascript:void(0);', :class => 'new_session_link'
           %br/
@@ -47,8 +52,13 @@
         %p.input.check
           = f.check_box :remember_me, :checked => 'checked'
           = f.label :remember_me, t('layouts.login.remember_me')
-        %p.action
+        .action.with_google
           = f.submit t('devise.sessions.new.submit')
+          %div.login_with_google
+            = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
+            %p= t('or_sign_in_with_google')
+          .clearfix
+        .clearfix
         .links
           = link_to t('devise.links.sign_up'), 'javascript:void(0);', :class => 'new_registration_link'
           %br/
