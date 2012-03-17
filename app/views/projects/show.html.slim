@@ -96,11 +96,11 @@
                   = t('projects.back_project.project_warning.not_successful.expired', :goal => @project.display_goal, :date => @project.display_expires_at)
                 - else
                   = t('projects.back_project.project_warning.not_successful.not_expired', :goal => @project.display_goal, :date => @project.display_expires_at)
-
-          #pledge
-            = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
-              fieldset
-                = submit_tag t('projects.back_project.submit'), :disabled => (not @project.can_back?)
+          - if @project.can_back?
+            #pledge
+              = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
+                fieldset
+                  = submit_tag t('projects.back_project.submit'), :disabled => (not @project.can_back?)
 
         #rewards
           - @rewards.each do |reward|
