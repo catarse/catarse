@@ -1,5 +1,13 @@
-#bootstrap-alert {
+#bootstrap-alert, .bootstrap-alert {
+  &.with_small_font {
+    margin-top: 30px;
+    .alert {
+      font-size: 14px !important;
+    }
+  }
   .alert {
+    font-size: 14px;
+    font-family: Lato-Regular;
     padding: 8px 35px 8px 14px;
     margin-bottom: 18px;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -13,7 +21,7 @@
   .alert-heading {
     color: inherit;
   }
-  .alert .close {
+  .alert .closeAlert {
     position: relative;
     top: -2px;
     right: -21px;

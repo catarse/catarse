@@ -182,5 +182,4 @@ class ProjectsController < ApplicationController
       return render_error unless current_user.admin
     end
   end
-
 end

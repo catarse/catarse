@@ -1,5 +1,15 @@
 /* line 2, ../../../../app/stylesheets/redesign/miv/alert.scss */
-#bootstrap-alert .alert {
+#bootstrap-alert.with_small_font, .bootstrap-alert.with_small_font {
+  margin-top: 30px;
+}
+/* line 4, ../../../../app/stylesheets/redesign/miv/alert.scss */
+#bootstrap-alert.with_small_font .alert, .bootstrap-alert.with_small_font .alert {
+  font-size: 14px !important;
+}
+/* line 8, ../../../../app/stylesheets/redesign/miv/alert.scss */
+#bootstrap-alert .alert, .bootstrap-alert .alert {
+  font-size: 14px;
+  font-family: Lato-Regular;
   padding: 8px 35px 8px 14px;
   margin-bottom: 18px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -10,47 +20,47 @@
   border-radius: 4px;
   color: #c09853;
 }
-/* line 13, ../../../../app/stylesheets/redesign/miv/alert.scss */
-#bootstrap-alert .alert-heading {
+/* line 21, ../../../../app/stylesheets/redesign/miv/alert.scss */
+#bootstrap-alert .alert-heading, .bootstrap-alert .alert-heading {
   color: inherit;
 }
-/* line 16, ../../../../app/stylesheets/redesign/miv/alert.scss */
-#bootstrap-alert .alert .close {
+/* line 24, ../../../../app/stylesheets/redesign/miv/alert.scss */
+#bootstrap-alert .alert .closeAlert, .bootstrap-alert .alert .closeAlert {
   position: relative;
   top: -2px;
   right: -21px;
   line-height: 18px;
 }
-/* line 22, ../../../../app/stylesheets/redesign/miv/alert.scss */
-#bootstrap-alert .alert-success {
+/* line 30, ../../../../app/stylesheets/redesign/miv/alert.scss */
+#bootstrap-alert .alert-success, .bootstrap-alert .alert-success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
 }
-/* line 28, ../../../../app/stylesheets/redesign/miv/alert.scss */
+/* line 36, ../../../../app/stylesheets/redesign/miv/alert.scss */
 #bootstrap-alert .alert-danger,
-#bootstrap-alert .alert-error {
+#bootstrap-alert .alert-error, .bootstrap-alert .alert-danger, .bootstrap-alert .alert-error {
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
 }
-/* line 33, ../../../../app/stylesheets/redesign/miv/alert.scss */
-#bootstrap-alert .alert-info {
+/* line 41, ../../../../app/stylesheets/redesign/miv/alert.scss */
+#bootstrap-alert .alert-info, .bootstrap-alert .alert-info {
   background-color: #d9edf7;
   border-color: #bce8f1;
   color: #3a87ad;
 }
-/* line 38, ../../../../app/stylesheets/redesign/miv/alert.scss */
-#bootstrap-alert .alert-block {
+/* line 46, ../../../../app/stylesheets/redesign/miv/alert.scss */
+#bootstrap-alert .alert-block, .bootstrap-alert .alert-block {
   padding-top: 14px;
   padding-bottom: 14px;
 }
-/* line 43, ../../../../app/stylesheets/redesign/miv/alert.scss */
+/* line 51, ../../../../app/stylesheets/redesign/miv/alert.scss */
 #bootstrap-alert .alert-block > p,
-#bootstrap-alert .alert-block > ul {
+#bootstrap-alert .alert-block > ul, .bootstrap-alert .alert-block > p, .bootstrap-alert .alert-block > ul {
   margin-bottom: 0;
 }
-/* line 46, ../../../../app/stylesheets/redesign/miv/alert.scss */
-#bootstrap-alert .alert-block p + p {
+/* line 54, ../../../../app/stylesheets/redesign/miv/alert.scss */
+#bootstrap-alert .alert-block p + p, .bootstrap-alert .alert-block p + p {
   margin-top: 5px;
 }

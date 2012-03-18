@@ -10,6 +10,16 @@
 - content_for :js_templates do
   = render :partial => 'back'
   = render :partial => 'project'
+
+.bootstrap-twitter
+  #creditsModal.hide.modal
+    .modal-header
+      h3 Atenção
+    .modal-body
+    .modal-footer
+      a href="javascript:void(0);" class="btn" data-dimiss="modal"
+        | OK
+
 #page_content
   .container
     #user_profile[data-user="#{@user.to_json}"]
@@ -27,17 +37,17 @@
               = on_the_spot_edit @user, :bio, :type => :textarea, :tooltip => t('users.header.bio_tooltip')
             - else
               = @user.bio
-      .user_social
-        ul
-          - if can? :manage, @user
-            li.email
-              = mail_to @user.email, "Me envie um email"
-          li.facebook
-            = link_to "Perfil no facebook", '#'
-          li.twitter
-            = link_to "Perfil no twitter", '#'
-          li.other
-            = link_to "www.lorem.ipsum", '#'
+      /.user_social
+        /ul
+          /- if can? :manage, @user
+            /li.email
+              /= mail_to @user.email, "Me envie um email"
+          /li.facebook
+            /= link_to "Perfil no facebook", '#'
+          /li.twitter
+            /= link_to "Perfil no twitter", '#'
+          /li.other
+            /= link_to "www.lorem.ipsum", '#'
 
       .tab_container
         nav#user_profile_menu
@@ -52,9 +62,9 @@
         #user_backed_projects.content
         #user_created_projects.content
         - if can? :manage, @user
-          #user_settings.content
+          #user_settings.content.hide
             = render 'current_user_fields'
-          #user_credits.content
+          #user_credits.content.hide
             .current_credits
               p= t('credits.index.current_credits_html', :credits => @user.display_credits)
 
@@ -83,6 +93,9 @@
                       - else
                         - if can? :request_refund, credit
                           = link_to t('credits.index.request_refund'), "#request_refund/#{credit.id}", :class => 'link_project'
+            .bootstrap-alert
+              .alert.alert-info
+                = t('credits.index.important_html')
       #loading= image_tag "loading.gif"
     .clearfix
 
