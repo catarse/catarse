@@ -1,5 +1,8 @@
 script type="text/template" id="empty_user_project_template"
-  p= t('.empty')
+  - if current_user != @user
+    p.empty= t('users.projects.no_projects', name: @user.display_name)
+  - else
+    p.empty= t('users.projects.no_projects_current_user_html', link: t('site.base_url'))
 
 script type="text/template" id="user_project_template"
   .project_land

@@ -1,7 +1,7 @@
 CATARSE.UsersShowView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "index", "backs", "projects", "credits", "comments", "request_refund", 'settings')
+    _.bindAll(this, "index", "backs", "projects", "credits", "comments", "request_refund", 'settings', 'closeCreditsModal')
     CATARSE.router.route("", "index", this.index)
     CATARSE.router.route("backs", "backs", this.backs)
     CATARSE.router.route("projects", "projects", this.projects)
@@ -10,6 +10,15 @@ CATARSE.UsersShowView = Backbone.View.extend({
     CATARSE.router.route("settings", "settings", this.settings)
     CATARSE.router.route("request_refund/:back_id", "request_refund", this.request_refund)
     this.render()
+  },
+
+  events: {
+    'click #creditsModal .modal-footer a':'closeCreditsModal',
+  },
+
+  closeCreditsModal: function(e) {
+    e.preventDefault();
+    this.$('#creditsModal').modal('hide');
   },
 
   user: new CATARSE.User($('#user_profile').data("user")),
@@ -77,7 +86,20 @@ CATARSE.UsersShowView = Backbone.View.extend({
   request_refund: function(back_id) {
     url = '/users/'+this.user.id+'/request_refund/'+back_id;
     $.post(url, function(result) {
-      alert(result['status'])
+      //alert(result['status']);
+      //notificationHtml = '<div class="bootstrap-alert with_small_font">';
+        //notificationHtml += '<div class="alert alert-block">';
+        //notificationHtml += '<a class="closeAlert" data-dismiss="alert">×</a>';
+        //notificationHtml += result['status'];
+        //notificationHtml += '</div>';
+      //notificationHtml +='</div>';
+      $('#creditsModal .modal-body').html(result['status']);
+      $('#creditsModal').modal({
+        backdrop: true,
+      })
+
+      //console.log($('.table_title').append(notificationHtml));
+
       $("tr#back_"+back_id+" td.status").text(result['status'])
     })
   },

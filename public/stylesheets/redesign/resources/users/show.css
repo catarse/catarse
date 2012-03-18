@@ -1,23 +1,23 @@
 /*
 Syntax error: Undefined mixin 'grid'.
-        on line 7 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass, in `grid'
-        from line 7 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass
+        on line 21 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass, in `grid'
+        from line 21 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass
 
-2:   #user_profile
-3:     padding-top: 20px
-4:     padding-bottom: 20px
-5:     float: left
-6:     .section_header
-7:       +grid(12)
-8:       +grid-suffix(1)
-9:       .profile_image
-10:         +grid(3)
-11:         +alpha
-12:         img
+16:         p.empty
+17:           text-align: center
+18:           font-family: Lato-Regular
+19:           font-size: 14px
+20:     .section_header
+21:       +grid(12)
+22:       +grid-suffix(1)
+23:       .profile_image
+24:         +grid(3)
+25:         +alpha
+26:         img
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass:7:in `grid'
-/Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass:7
+/Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass:21:in `grid'
+/Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass:21
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
@@ -114,4 +114,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'grid'.\A         on line 7 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass, in `grid'\A         from line 7 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass\A \A 2:   #user_profile\A 3:     padding-top: 20px\A 4:     padding-bottom: 20px\A 5:     float: left\A 6:     .section_header\A 7:       +grid(12)\A 8:       +grid-suffix(1)\A 9:       .profile_image\A 10:         +grid(3)\A 11:         +alpha\A 12:         img"; }
+  content: "Syntax error: Undefined mixin 'grid'.\A         on line 21 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass, in `grid'\A         from line 21 of /Users/ton/code/store/catarse/app/stylesheets/redesign/resources/users/show.sass\A \A 16:         p.empty\A 17:           text-align: center\A 18:           font-family: Lato-Regular\A 19:           font-size: 14px\A 20:     .section_header\A 21:       +grid(12)\A 22:       +grid-suffix(1)\A 23:       .profile_image\A 24:         +grid(3)\A 25:         +alpha\A 26:         img"; }

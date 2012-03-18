@@ -45,7 +45,8 @@ class UsersController < ApplicationController
   end
 
   def request_refund
-    back = Backer.find(params[:id])
+    # TODO: refact to another class ( RefundProcess )
+    back = Backer.find(params[:back_id])
     if back.nil?
       status = 'not found'
     elsif not authorize!(:request_refund, back)

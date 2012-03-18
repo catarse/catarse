@@ -1,8 +1,22 @@
 body[data-namespace="null"][data-controller="users"][data-action="show"]
+  #creditsModal
+    h3
+      font-family: Lato-Bold
+    .modal-body
+      font-family: Lato-Regular
+    .modal-footer
+      a
+        font-family: Lato-Regular
   #user_profile
     padding-top: 20px
     padding-bottom: 20px
     float: left
+    #user_profile_content
+      .content
+        p.empty
+          text-align: center
+          font-family: Lato-Regular
+          font-size: 14px
     .section_header
       +grid(12)
       +grid-suffix(1)
@@ -60,9 +74,15 @@ body[data-namespace="null"][data-controller="users"][data-action="show"]
         li
           float: left
           margin-bottom: 30px
+    #user_settings
+      +grid(16)
+      +omega
+      display: none
+
     #user_credits
       +grid(16)
       +omega
+      display: none
       .current_credits
         p
           font-size: 24px
