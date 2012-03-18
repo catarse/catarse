@@ -238,6 +238,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   transform: scale(1.1, 1.1);
 }
 
+/* line 1, ../../app/stylesheets/redesign/miv/overlay.sass */
+.overlay {
+  display: none;
+  background-color: #dddddd;
+  background: rgba(180, 180, 180, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 400;
+}
+
 /* line 1, ../../app/stylesheets/redesign/miv/projects.sass */
 .project {
   display: inline;
@@ -797,6 +810,215 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transform: scale(1.1, 1.1);
   -ms-transform: scale(1.1, 1.1);
   transform: scale(1.1, 1.1);
+}
+
+/* line 1, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed {
+  background: url("/images/catarse/bg_s3.png") left top repeat;
+  border: 5px solid white;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  -moz-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 660px;
+  height: 460px;
+  margin-top: -240px;
+  margin-left: -340px;
+  z-index: 500;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  text-shadow: black 1px 1px 1px;
+}
+/* line 21, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed h1 {
+  font-family: "museo-500";
+  font-size: 24px;
+  padding: 0 20px;
+  margin-bottom: 24px;
+  color: white;
+}
+/* line 27, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed h2 {
+  padding: 0;
+  margin-bottom: 16px;
+  color: white;
+}
+/* line 31, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed a.close {
+  font-family: "Lato-Bold";
+  color: white;
+  text-decoration: none;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid white;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -o-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -khtml-border-radius: 24px;
+  border-radius: 24px;
+  top: 0;
+  left: 100%;
+  margin-top: -15px;
+  margin-left: -15px;
+  line-height: 22px;
+  background-color: #333333;
+  -moz-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  -o-box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.75);
+  font-weight: bold;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+/* line 50, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed a.close:hover, #project_embed a.close:focus {
+  color: white;
+  -moz-transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
+  -o-transform: scale(1.05, 1.05);
+  -ms-transform: scale(1.05, 1.05);
+  transform: scale(1.05, 1.05);
+}
+/* line 53, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed #project_box_embed {
+  float: left;
+}
+/* line 55, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed #project_box_embed iframe {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+}
+/* line 57, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed #project_box_embed textarea {
+  padding-right: 4px;
+  margin-top: 8px;
+  height: 48px;
+  width: 244px;
+  background-color: #e3e2dc;
+  font-size: 14px;
+}
+/* line 64, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed #project_video_embed {
+  float: right;
+}
+/* line 66, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed #project_video_embed iframe {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+}
+/* line 68, ../../app/stylesheets/redesign/miv/embed.sass */
+#project_embed #project_video_embed textarea {
+  padding-right: 4px;
+  margin-top: 8px;
+  height: 48px;
+  width: 344px;
+  background-color: #e3e2dc;
+  font-size: 14px;
+}
+
+/* line 76, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed {
+  text-align: center;
+  padding: 16px;
+  padding-bottom: 0;
+}
+/* line 80, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed iframe {
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  -o-border-top-left-radius: 8px;
+  -ms-border-top-left-radius: 8px;
+  -khtml-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  -o-border-top-right-radius: 8px;
+  -ms-border-top-right-radius: 8px;
+  -khtml-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+/* line 84, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed h1 {
+  font-family: "museo-500";
+  font-size: 24px;
+  line-height: 26px;
+  padding: 12px 0 8px 0;
+}
+/* line 89, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed h1 a {
+  text-decoration: none;
+  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 3px;
+}
+/* line 92, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed h2 {
+  font-size: 14px;
+  line-height: 16px;
+  color: #666666;
+  padding: 0;
+  text-shadow: white 1px 1px 0px;
+}
+/* line 98, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed h2 a {
+  text-decoration: none;
+  text-shadow: white 1px 1px 0px;
+}
+/* line 102, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed #platform_link h1 {
+  font-family: "museo-700";
+  font-size: 28px;
+  line-height: 30px;
+  padding: 0;
+}
+/* line 107, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed #platform_link h1 a {
+  color: #222222;
+  text-decoration: none;
+  -moz-transition: all 1s;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+}
+/* line 111, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed #platform_link h1 a:hover {
+  text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
+}
+/* line 113, ../../app/stylesheets/redesign/miv/embed.sass */
+#video_embed #video_embed_footer {
+  position: fixed;
+  bottom: 4px;
+  left: 50%;
+  width: 220px;
+  margin-left: -110px;
 }
 
 /* line 1, ../../app/stylesheets/redesign/miv/tabs.sass */
@@ -1813,53 +2035,53 @@ table .span12 {
   padding-left: 160px;
 }
 
-/* line 17, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 19, ../../app/stylesheets/redesign/miv/index.sass */
 .clearfix {
   clear: both;
 }
 
-/* line 19, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 21, ../../app/stylesheets/redesign/miv/index.sass */
 .hide {
   display: none;
 }
 
-/* line 22, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 24, ../../app/stylesheets/redesign/miv/index.sass */
 #loading {
   text-align: center;
 }
 
-/* line 27, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 29, ../../app/stylesheets/redesign/miv/index.sass */
 .clickable:hover {
   cursor: pointer;
 }
 
-/* line 30, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 32, ../../app/stylesheets/redesign/miv/index.sass */
 .project_admin_field {
   font-size: 14px;
   font-family: Lato-Regular;
 }
 
-/* line 45, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 47, ../../app/stylesheets/redesign/miv/index.sass */
 #project_admin {
   padding-top: 30px;
 }
 
-/* line 48, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 50, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_mouseover {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 
-/* line 52, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 54, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_form:after {
   content: "" !important;
 }
 
-/* line 55, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 57, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing:after {
   content: " " url(/images/pencil_16.png);
 }
-/* line 58, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 60, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form input, .on_the_spot_editing form textarea, .on_the_spot_editing form select {
   padding-left: 4px;
   padding-right: 24px;
@@ -1876,19 +2098,19 @@ table .span12 {
   border-radius: 5px;
   text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
 }
-/* line 68, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 70, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form input:focus, .on_the_spot_editing form textarea:focus, .on_the_spot_editing form select:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 71, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 73, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form textarea {
   padding-right: 28px;
   width: 96%;
   height: 200px;
   overflow: auto;
 }
-/* line 76, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 78, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button {
   margin-left: 4px;
   text-rendering: optimizeLegibility;
@@ -1918,7 +2140,7 @@ table .span12 {
   -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
 }
-/* line 91, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 93, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button:hover {
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
@@ -1932,7 +2154,7 @@ table .span12 {
   -o-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
-/* line 95, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 97, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button:active {
   padding: 6px 9px 4px 11px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
@@ -1948,7 +2170,7 @@ table .span12 {
   -o-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
 }
-/* line 101, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 103, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;

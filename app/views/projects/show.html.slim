@@ -32,9 +32,9 @@
           span.count=" (#{@project.total_backers})"
         = link_to '#comments', :id => 'comments_link' do
           = t('.menu.comments')
-          | &nbsp; ( &nbsp;
+          | &nbsp; (
           fb:comments-count href="#{request.url}"
-          | &nbsp; )
+          | )
     .main
       #project_content
         #project_updates.content.hide
@@ -138,7 +138,7 @@
           .clearfix
 
     .clearfix
-/ = render 'show_embed'
+= render 'show_embed'
 /   .midia
 /     .video
 /       iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
@@ -252,4 +252,3 @@
 /             |  projetos
 /         #bio
 /           p= @project.user.bio
-/ = render 'show_embed'
