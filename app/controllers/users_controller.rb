@@ -45,20 +45,15 @@ class UsersController < ApplicationController
   end
 
   def request_refund
-    # TODO: refact to another class ( RefundProcess )
     back = Backer.find(params[:back_id])
-    if back.nil?
-      status = 'not found'
-    elsif not authorize!(:request_refund, back)
-      status = I18n.t('credits.refund.cannot_refund')
-    else
-      begin
-        back.refund!
-        status = 'Pedido de estorno enviado'
-      rescue Exception => e
-        status = e.message
-      end
+    begin
+      refund = Credits::Refund.new(back, current_user)
+      refund.make_request!
+      status = refund.message
+    rescue Exception => e
+      status = e.message
     end
+
     render :json => {:status => status}
   end
 
