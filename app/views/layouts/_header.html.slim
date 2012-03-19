@@ -11,8 +11,15 @@
     = link_to t('layouts.header.blog'), blog_index_path
     = link_to t('layouts.header.help'), faq_path
     - if current_user
-      = link_to t('layouts.header.profile'), current_user
-      = link_to t('layouts.user.logout'), logout_path
+      = link_to '#', class: 'my_profile_link' do
+        = image_tag(current_user.display_image, :size => "30x30")
+      ul.dropdown.user
+        li= link_to t('layouts.header.profile'), current_user
+        li
+          = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
+          .small (#{current_user.display_credits})
+        li.divider
+        li= link_to t('layouts.user.logout'), logout_path
     - else
       = link_to t('layouts.header.signup'), '#login'
       = link_to t('layouts.header.signin'), '#login'
