@@ -1,6 +1,6 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: :update_attribute_on_the_spot
   inherit_resources
   actions :show
   can_edit_on_the_spot
