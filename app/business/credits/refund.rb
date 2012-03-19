@@ -13,7 +13,8 @@ module Credits
       check_total_of_credits
       check_can_refund
       @backer.update_attribute :requested_refund, true
-      @backer.user.update_attribute :credits, @backer.user.credits - @backer.value
+      @backer.user.credits = @backer.user.credits - @backer.value
+      @backer.user.save
       CreditsMailer.request_refund_from(@backer).deliver
       @message = I18n.t('credits.index.refunded')
     end
