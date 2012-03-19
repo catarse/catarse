@@ -2045,6 +2045,49 @@ table .span12 {
   padding-left: 160px;
 }
 
+/* line 1, ../../app/stylesheets/redesign/miv/dropdown.sass */
+.dropdown {
+  display: none;
+  list-style: none;
+  width: 100px;
+  background: white;
+  padding: 5px;
+  position: absolute;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+}
+/* line 10, ../../app/stylesheets/redesign/miv/dropdown.sass */
+.dropdown.user {
+  margin-left: 50px;
+  margin-top: 15px;
+}
+/* line 13, ../../app/stylesheets/redesign/miv/dropdown.sass */
+.dropdown li {
+  width: 100%;
+  text-align: left;
+  margin-top: 5px;
+}
+/* line 17, ../../app/stylesheets/redesign/miv/dropdown.sass */
+.dropdown li .small {
+  font-family: Lato-Bold;
+  font-size: 11px;
+  color: #59af6d;
+}
+/* line 21, ../../app/stylesheets/redesign/miv/dropdown.sass */
+.dropdown li.divider {
+  border-bottom: 1px #e3e2dc solid;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
 /*
  * Bootstrap v2.0.2
  *
@@ -7644,53 +7687,53 @@ table .span12 {
   }
 }
 
-/* line 20, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 21, ../../app/stylesheets/redesign/miv/index.sass */
 .clearfix {
   clear: both;
 }
 
-/* line 22, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 23, ../../app/stylesheets/redesign/miv/index.sass */
 .hide {
   display: none;
 }
 
-/* line 25, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 26, ../../app/stylesheets/redesign/miv/index.sass */
 #loading {
   text-align: center;
 }
 
-/* line 30, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 31, ../../app/stylesheets/redesign/miv/index.sass */
 .clickable:hover {
   cursor: pointer;
 }
 
-/* line 33, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 34, ../../app/stylesheets/redesign/miv/index.sass */
 .project_admin_field {
   font-size: 14px;
   font-family: Lato-Regular;
 }
 
-/* line 48, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 49, ../../app/stylesheets/redesign/miv/index.sass */
 #project_admin {
   padding-top: 30px;
 }
 
-/* line 51, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 52, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_mouseover {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
 
-/* line 55, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 56, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_form:after {
   content: "" !important;
 }
 
-/* line 58, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 59, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing:after {
   content: " " url(/images/pencil_16.png);
 }
-/* line 61, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 62, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form input, .on_the_spot_editing form textarea, .on_the_spot_editing form select {
   padding-left: 4px;
   padding-right: 24px;
@@ -7707,19 +7750,19 @@ table .span12 {
   border-radius: 5px;
   text-shadow: rgba(255, 255, 255, 0.85) 1px 1px 0px;
 }
-/* line 71, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 72, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form input:focus, .on_the_spot_editing form textarea:focus, .on_the_spot_editing form select:focus {
   background-color: #c8dcc8;
   background-color: rgba(0, 150, 0, 0.2);
 }
-/* line 74, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 75, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form textarea {
   padding-right: 28px;
   width: 96%;
   height: 200px;
   overflow: auto;
 }
-/* line 79, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 80, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button {
   margin-left: 4px;
   text-rendering: optimizeLegibility;
@@ -7749,7 +7792,7 @@ table .span12 {
   -o-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.75);
 }
-/* line 94, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 95, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button:hover {
   background-color: #dddddd;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #bbbbbb));
@@ -7763,7 +7806,7 @@ table .span12 {
   -o-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
-/* line 98, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 99, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button:active {
   padding: 6px 9px 4px 11px;
   text-shadow: rgba(255, 255, 255, 0.85) 2px 2px 1px;
@@ -7779,7 +7822,7 @@ table .span12 {
   -o-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
 }
-/* line 104, ../../app/stylesheets/redesign/miv/index.sass */
+/* line 105, ../../app/stylesheets/redesign/miv/index.sass */
 .on_the_spot_editing form button:disabled {
   color: #888888;
   text-shadow: rgba(230, 230, 230, 0.85) 1px 1px 0px;
@@ -8981,14 +9024,44 @@ body #logos .power a {
   margin-right: 12px;
 }
 /* line 46, ../../app/stylesheets/redesign/content/header.sass */
+#header nav.menu a.my_profile_link {
+  width: 30px;
+}
+/* line 48, ../../app/stylesheets/redesign/content/header.sass */
+#header nav.menu a.my_profile_link img {
+  border: 1px #333333;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  position: absolute;
+  float: left;
+  margin-top: -20px;
+}
+/* line 55, ../../app/stylesheets/redesign/content/header.sass */
+#header nav.menu a.my_profile_link img:hover {
+  -moz-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px inset;
+  box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px inset;
+}
+/* line 57, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.menu a:last-child {
   margin-right: none;
 }
-/* line 48, ../../app/stylesheets/redesign/content/header.sass */
+/* line 59, ../../app/stylesheets/redesign/content/header.sass */
 #header nav.menu a:hover {
   color: #e75297;
 }
-/* line 50, ../../app/stylesheets/redesign/content/header.sass */
+/* line 61, ../../app/stylesheets/redesign/content/header.sass */
 #header .search {
   display: inline;
   float: left;
@@ -8997,7 +9070,7 @@ body #logos .power a {
   width: 220px;
   margin-top: 18px;
 }
-/* line 53, ../../app/stylesheets/redesign/content/header.sass */
+/* line 64, ../../app/stylesheets/redesign/content/header.sass */
 #header .search form {
   width: 220px;
   height: 22px;
@@ -9010,17 +9083,17 @@ body #logos .power a {
   border: 1px #cccccc solid;
   background: white;
 }
-/* line 60, ../../app/stylesheets/redesign/content/header.sass */
+/* line 71, ../../app/stylesheets/redesign/content/header.sass */
 #header .search form input[type="text"] {
   border: none;
   width: 190px;
   float: left;
 }
-/* line 64, ../../app/stylesheets/redesign/content/header.sass */
+/* line 75, ../../app/stylesheets/redesign/content/header.sass */
 #header .search form input[type="text"]:focus {
   outline: none;
 }
-/* line 66, ../../app/stylesheets/redesign/content/header.sass */
+/* line 77, ../../app/stylesheets/redesign/content/header.sass */
 #header .search form input[type="submit"] {
   background: url("/images/catarse/search_submit15x15.png") left top no-repeat;
   width: 15px;
