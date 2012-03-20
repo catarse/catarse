@@ -9,7 +9,7 @@ $('#embed_link').click(function(e){
 })
 $(document).ready(function(){
   if($('#login').length > 0){
-    ('#back_project_form input[type=submit]').click(require_login)
+    $('#back_project_form input[type=submit]').click(require_login)
   }
 })
 $('#rewards li.clickable').click(function(e){

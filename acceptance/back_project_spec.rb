@@ -17,18 +17,39 @@ feature "Back project" do
     State.create! name: "Foo bar", acronym: "FB"
   end
 
-  scenario "As an unlogged user, before I back a project I need to be asked to log in" do
-    
+  scenario "As an unlogged user, before I back a project I need to be register" do
+
     visit project_path(@project)
     verify_translations
-  
+
+    click_on "Quero apoiar este projeto"
+    sleep 2
+    verify_translations
+    find("#login").visible?.should be_true
+
+    find("a#login_with_mail").click
+    verify_translations
+
+    fill_in 'user_email', :with => 'lorem@lorem.com'
+    fill_in 'user_password', :with => '123lorem'
+    fill_in 'user_password_confirmation', :with => '123lorem'
+
+    click_button 'user_submit'
+    page.should have_css('#user')
+  end
+
+  scenario "As an unlogged user, before I back a project I need to be asked to log in" do
+
+    visit project_path(@project)
+    verify_translations
+
     click_on "Quero apoiar este projeto"
     verify_translations
     find("#login").visible?.should be_true
     click_link 'X'
     verify_translations
     find("#login").visible?.should be_false
-    
+
     find("#rewards li.clickable").click
     verify_translations
     # Had to add a sleep for the tests to pass on Travis-CI
