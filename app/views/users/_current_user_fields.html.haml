@@ -14,7 +14,18 @@
       = hidden_field_tag 'id', @user.id
       = check_box_tag 'newsletter', '1', @user.newsletter
       = label_tag 'newsletter', t('.newsletter')
-
+#social_info
+  %h1= t('.social_info')
+  %ul
+    %li
+      #bootstrap-form
+        = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put }) do |f|
+          = f.label :twitter, t('.twitter')
+          = f.text_field :twitter
+          = f.label :facebook_link, t('.facebook_link')
+          = f.text_field :facebook_link
+          = f.label :other_link, t('.other_link')
+          = f.text_field :other_link
 - if @user.is_devise?
   #change_password
     %h1= t('.change_password')
