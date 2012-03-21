@@ -11023,53 +11023,57 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #gravat
   float: left;
   margin-right: 20px;
 }
-/* line 131, ../../app/stylesheets/redesign/resources/users/show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data h1 {
+/* line 130, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info {
+  margin-top: 20px;
+}
+/* line 133, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data h1, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info h1 {
   font-family: Lato-Bold;
   font-size: 25px;
   color: #333333;
 }
-/* line 135, ../../app/stylesheets/redesign/resources/users/show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul {
+/* line 137, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul {
   padding-top: 15px;
 }
-/* line 137, ../../app/stylesheets/redesign/resources/users/show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li {
+/* line 139, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul li {
   font-family: Lato-Regular;
   font-size: 15px;
   margin-bottom: 15px;
 }
-/* line 141, ../../app/stylesheets/redesign/resources/users/show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li .on_the_spot_editing {
+/* line 143, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li .on_the_spot_editing, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul li .on_the_spot_editing {
   color: #e75297;
 }
-/* line 143, ../../app/stylesheets/redesign/resources/users/show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li .hint {
+/* line 145, ../../app/stylesheets/redesign/resources/users/show.sass */
+body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li .hint, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul li .hint {
   padding-top: 5px;
   font-size: 13px;
 }
-/* line 148, ../../app/stylesheets/redesign/resources/users/show.sass */
+/* line 150, ../../app/stylesheets/redesign/resources/users/show.sass */
 body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password h1 {
   font-family: Lato-Bold;
   font-size: 25px;
   color: #333333;
   padding-top: 20px;
 }
-/* line 153, ../../app/stylesheets/redesign/resources/users/show.sass */
+/* line 155, ../../app/stylesheets/redesign/resources/users/show.sass */
 body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul {
   padding-top: 15px;
 }
-/* line 155, ../../app/stylesheets/redesign/resources/users/show.sass */
+/* line 157, ../../app/stylesheets/redesign/resources/users/show.sass */
 body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul li {
   font-family: Lato-Regular;
   font-size: 15px;
   margin-bottom: 15px;
 }
-/* line 159, ../../app/stylesheets/redesign/resources/users/show.sass */
+/* line 161, ../../app/stylesheets/redesign/resources/users/show.sass */
 body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul li .on_the_spot_editing {
   color: #e75297;
 }
-/* line 161, ../../app/stylesheets/redesign/resources/users/show.sass */
+/* line 163, ../../app/stylesheets/redesign/resources/users/show.sass */
 body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul li .hint {
   padding-top: 5px;
   font-size: 13px;

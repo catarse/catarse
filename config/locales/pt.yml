@@ -669,6 +669,11 @@ pt:
       title_current_user: "Projetos que já apoiei"
       your_reward: "Sua recompensa"
     current_user_fields:
+      update_social_info: 'Atualizar informações'
+      social_info: 'Informações para contato'
+      twitter: 'twitter ( usuário )'
+      facebook_link: 'perfil do facebook'
+      other_link: 'link da sua página na internet'
       change_password: "Alterar minha senha"
       current_password_hint: "<i>Para que a senha seja alterada você precisa confirmar a sua senha atual.</i>"
       email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas."

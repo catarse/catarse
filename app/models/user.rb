@@ -25,7 +25,10 @@ class User < ActiveRecord::Base
                   :address_zip_code,
                   :phone_number,
                   :cpf,
-                  :locale
+                  :locale,
+                  :twitter,
+                  :facebook_link,
+                  :other_link
 
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
