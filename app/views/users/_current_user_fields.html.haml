@@ -18,7 +18,7 @@
   %h1= t('.social_info')
   %ul
     %li
-      #bootstrap-form
+      .bootstrap-form
         = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put }) do |f|
           = f.label :twitter, t('.twitter')
           = f.text_field :twitter
@@ -33,7 +33,7 @@
     %h1= t('.change_password')
     %ul
       %li
-        #bootstrap-form
+        .bootstrap-form
           = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put, :class => 'skip_feed_event' }) do |f|
             = f.label :password, t('passwords.edit.label_new_password')
             = f.password_field :password, :class=>'empty'

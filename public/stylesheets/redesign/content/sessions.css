@@ -1,23 +1,28 @@
 /*
-Syntax error: Undefined mixin 'box-shadow'.
-        on line 3 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass, in `box-shadow'
-        from line 3 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass
-        from line 8 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/index.sass
+Syntax error: Undefined variable: "$df_gryn".
+        on line 10 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/sessions.sass
 
-1: $ninesixty-columns: 16
-2: $images_path: "/images/catarse/"
-3: 
-4: @import fonts
-5: @import colors
-6: 
-7: @import flash
-8: @import locales
+5:       padding-bottom: 30px
+6:       &.actived
+7:         padding-top: 17px !important
+8:         .content_form
+9:           float: left
+10:           border: 3px $df_gryn solid
+11:           padding: 20px 20px 0 20px
+12:           background: rgba($ed_gryn, 0.4)
+13:       h1
+14:         font-family: Lato-Bold
+15:         font-size: 20px
 
 Backtrace:
-/Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass:3:in `box-shadow'
-/Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass:3
-/Users/ton/code/store/catarse/app/stylesheets/redesign/miv/index.sass:8
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/ton/code/store/catarse/app/stylesheets/redesign/content/sessions.sass:10
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/script/variable.rb:49:in `_perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/script/node.rb:40:in `perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/script/list.rb:69:in `block in _perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/script/list.rb:69:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/script/list.rb:69:in `_perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/script/node.rb:40:in `perform'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:216:in `visit_prop'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -37,12 +42,37 @@ Backtrace:
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:286:in `visit_directive'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:146:in `block in visit_import'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:146:in `map'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:146:in `visit_import'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@global/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -108,4 +138,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'box-shadow'.\A         on line 3 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass, in `box-shadow'\A         from line 3 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/locales.sass\A         from line 8 of /Users/ton/code/store/catarse/app/stylesheets/redesign/miv/index.sass\A \A 1: $ninesixty-columns: 16\A 2: $images_path: \"/images/catarse/\"\A 3: \A 4: @import fonts\A 5: @import colors\A 6: \A 7: @import flash\A 8: @import locales"; }
+  content: "Syntax error: Undefined variable: \"$df_gryn\".\A         on line 10 of /Users/ton/code/store/catarse/app/stylesheets/redesign/content/sessions.sass\A \A 5:       padding-bottom: 30px\A 6:       &.actived\A 7:         padding-top: 17px !important\A 8:         .content_form\A 9:           float: left\A 10:           border: 3px $df_gryn solid\A 11:           padding: 20px 20px 0 20px\A 12:           background: rgba($ed_gryn, 0.4)\A 13:       h1\A 14:         font-family: Lato-Bold\A 15:         font-size: 20px"; }
