@@ -1,4 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
+  def new
+    redirect_to login_path(active_register: true)
+  end
+
   def edit
     redirect_to user_path(current_user)
   end

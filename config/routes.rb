@@ -1,5 +1,7 @@
 Catarse::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"}
+  devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"} do
+    get "/login" => "devise/sessions#new"
+  end
 
   ActiveAdmin.routes(self)
 
