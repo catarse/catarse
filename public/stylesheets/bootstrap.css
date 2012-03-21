@@ -136,7 +136,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: #59af6d;
 }
 /* line 15, ../../app/stylesheets/redesign/miv/flash.sass */
-.flash .failure.wrapper, .flash .error.wrapper {
+.flash .failure.wrapper, .flash .error.wrapper, .flash .alert.wrapper {
   background-color: #cc1529;
 }
 /* line 17, ../../app/stylesheets/redesign/miv/flash.sass */

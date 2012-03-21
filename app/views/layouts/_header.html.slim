@@ -21,8 +21,8 @@
         li.divider
         li= link_to t('layouts.user.logout'), logout_path
     - else
-      = link_to t('layouts.header.signup'), '#login'
-      = link_to t('layouts.header.signin'), '#login'
+      = link_to t('layouts.header.signup'), login_path(active_register: true)
+      = link_to t('layouts.header.signin'), login_path
   .clearfix
 
 / #top
