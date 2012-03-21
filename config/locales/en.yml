@@ -231,6 +231,14 @@ en:
         site_title: "Sign in"
         submit: "Sign in"
         title: "Sign in using your email"
+        login_title: Login
+        login_subtitle: "If already have an account"
+        register_title: "Sign Up"
+        register_subtitle: "Use your e-mail account"
+        with_facebook: "Sign in with your facebook account"
+        with_facebook_subtitle: "A quick way to access"
+        with_another_social: "Don't have facebook account?"
+        with_another_social_subtitle: "Sign in with another social network"
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
     unlocks:
@@ -687,6 +695,11 @@ en:
       title_current_user: "Projects I've backed"
       your_reward: "Your reward"
     current_user_fields:
+      update_social_info: "Update info"
+      social_info: "Contact info"
+      twitter: "twitter ( username )"
+      facebook_link: "facebook profile link"
+      other_link: "another internet page"
       change_password: "Change my password"
       current_password_hint: "<i>We need your current password to confirm your changes.</i>"
       email_hint: "Your email will only be used for communications from Catarse and from the projects you back. It won't be visible in your profile. When you back a project, we will give your email to the project owner so he can provide your rewards."

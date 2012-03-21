@@ -234,7 +234,7 @@ pt:
         title: "Entre utilizando o seu endereço de email"
         login_title: "Login"
         login_subtitle: "Caso já possua uma conta"
-        register_title: "Registre-se"
+        register_title: "Cadastre-se"
         register_subtitle: "Utilize seu endereço de e-mail"
         with_facebook: "Entre utilizando o facebook"
         with_facebook_subtitle: "Uma maneira muito rapida de acessar"
