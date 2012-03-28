@@ -22,6 +22,9 @@
     #new_email_account{:class=>"#{(params[:show_new_user].present? ? "" : "hide")}"}
       = form_for(User.new, :as => :user, :url => registration_path(:user), :html => {:class => 'login_with_email_form'}) do |f|
         %p.input
+          = f.label :name
+          = f.text_field :name
+        %p.input
           = f.label :email
           = f.text_field :email
         %p.input
