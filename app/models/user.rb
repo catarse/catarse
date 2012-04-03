@@ -63,6 +63,7 @@ class User < ActiveRecord::Base
     <<-SQL
       users.id,
       users.name,
+      users.email,
       count(backers.id) as count_backs
     SQL
     ).
