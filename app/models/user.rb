@@ -178,6 +178,9 @@ class User < ActiveRecord::Base
   def display_credits
     number_to_currency credits, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
+  def display_total_of_backs
+    number_to_currency backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
+  end
   def merge_into!(new_user)
     self.primary = new_user
     new_user.credits += self.credits

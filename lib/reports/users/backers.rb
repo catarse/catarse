@@ -13,14 +13,18 @@ module Reports
             csv_string << [
               'ID',
               'Nome do apoiador',
-              'Total de apoios'
+              'Email',
+              'Total de apoios',
+              'Valor total'
             ]
 
             @users.each do |user|
               csv_string << [
                 user.id,
                 user.display_name,
-                user.count_backs
+                user.email,
+                user.count_backs,
+                user.display_total_of_backs
               ]
             end
           end
