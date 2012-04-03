@@ -63,12 +63,13 @@ class User < ActiveRecord::Base
     <<-SQL
       users.id,
       users.name,
+      users.email,
       count(backers.id) as count_backs
     SQL
     ).
     where("backers.confirmed is true").
     order("count_backs desc").
-    group("users.name, users.id")
+    group("users.name, users.id, users.email")
   }
   #before_save :store_primary_user
 
