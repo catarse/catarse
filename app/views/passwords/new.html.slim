@@ -1,0 +1,12 @@
+= content_for :title do 
+  = t('.site_title')
+= content_for :content_header do
+  h1=t('.title')
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :class => 'login_with_email_form'}) do |f|
+  = devise_error_messages!
+  p.input
+    = f.label :email
+    = f.text_field :email
+  p.action
+    = f.submit t('.submit')
+= render :partial => "devise/shared/links"

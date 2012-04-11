@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 70dd95c6a4b2bcea31fcabb9c1fbf8a93cb8e824
+  revision: 1f033aff5ed912faa5dfb6a0c013409e3e78b200
   specs:
-    activeadmin (0.3.4)
+    activeadmin (0.4.0)
       bourbon (>= 1.0.0)
       devise (>= 1.1.2)
       fastercsv
@@ -68,7 +68,7 @@ GEM
     auto_html (1.3.6)
       RedCloth
     bcrypt-ruby (3.0.1)
-    bourbon (1.3.5)
+    bourbon (1.3.6)
       sass (>= 3.1)
     brcep (3.0.8)
     builder (2.1.2)
@@ -82,7 +82,7 @@ GEM
       xpath (~> 0.1.4)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
-    childprocess (0.3.0)
+    childprocess (0.3.1)
       ffi (~> 1.0.6)
     chunky_png (1.2.5)
     compass (0.11.7)
@@ -91,7 +91,7 @@ GEM
       sass (~> 3.1)
     compass-960-plugin (0.10.4)
       compass (>= 0.10.0)
-    daemons (1.1.6)
+    daemons (1.1.8)
     dalli (1.1.4)
     database_cleaner (0.7.1)
     devise (1.5.3)
@@ -99,16 +99,16 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
     diff-lcs (1.1.3)
-    enumerate_it (0.7.10)
+    enumerate_it (0.7.11)
       activesupport (>= 2.3.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
     excon (0.6.6)
-    factory_girl (2.5.0)
+    factory_girl (2.2.0)
       activesupport
-    factory_girl_rails (1.6.0)
-      factory_girl (~> 2.5.0)
+    factory_girl_rails (1.3.0)
+      factory_girl (~> 2.2.0)
       railties (>= 3.0.0)
     faraday (0.5.7)
       addressable (~> 2.2.4)
@@ -169,11 +169,11 @@ GEM
       arel (~> 2.0.2)
     metaclass (0.0.1)
     mime-types (1.17.2)
-    mocha (0.10.3)
+    mocha (0.10.4)
       metaclass (~> 0.0.1)
     multi_json (0.0.5)
     multi_xml (0.4.1)
-    multipart-post (1.1.4)
+    multipart-post (1.1.5)
     mustache (0.99.4)
     net-ldap (0.1.1)
     net-scp (1.0.4)
@@ -216,12 +216,12 @@ GEM
     on_the_spot (1.0.0)
       json_pure (>= 1.4.6)
     orm_adapter (0.0.6)
-    paypal-express (0.4.2)
+    paypal-express (0.4.3)
       activesupport (>= 2.3)
       attr_required (>= 0.0.3)
       i18n
       restclient_with_cert
-    pg (0.12.2)
+    pg (0.13.1)
     polyglot (0.3.3)
     pyu-ruby-sasl (0.0.3.3)
     rack (1.2.5)
@@ -274,8 +274,8 @@ GEM
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
     rubyntlm (0.1.1)
-    rubyzip (0.9.5)
-    sass (3.1.12)
+    rubyzip (0.9.6.1)
+    sass (3.1.15)
     selenium-webdriver (2.13.0)
       childprocess (>= 0.2.1)
       ffi (~> 1.0.9)
@@ -307,13 +307,13 @@ GEM
       activesupport
       httparty
     tzinfo (0.3.31)
-    unicode (0.4.0)
-    unicorn (4.1.1)
-      kgio (~> 2.4)
+    unicode (0.4.1)
+    unicorn (4.2.0)
+      kgio (~> 2.6)
       rack
-      raindrops (~> 0.6)
+      raindrops (~> 0.7)
     validation_reflection (1.0.0)
-    vimeo (1.4.3)
+    vimeo (1.5.1)
       httparty (>= 0.4.5)
       httpclient (>= 2.1.5.2)
       json (>= 1.1.9)
@@ -321,7 +321,7 @@ GEM
       oauth (>= 0.4.3)
     warden (1.1.0)
       rack (>= 1.0)
-    web_translate_it (1.9.4)
+    web_translate_it (1.9.5)
       multipart-post (~> 1.1.3)
       trollop (~> 1.16.2)
     weekdays (1.0.2)
@@ -345,8 +345,9 @@ DEPENDENCIES
   compass-960-plugin
   dalli
   database_cleaner
+  devise
   enumerate_it
-  factory_girl_rails
+  factory_girl_rails (= 1.3.0)
   fog
   formtastic
   haml

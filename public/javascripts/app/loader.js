@@ -20,11 +20,11 @@
 
 var CATARSE_LOADER = {
 
-  initial: ['jquery-1.4.4.min', 'underscore-min'],
+  initial: ['jquery-1.7.1.min', 'underscore-min'],
 
   intermediate: ['backbone-min', 'mustache', 'jquery-ui-1.8.6.custom.min', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'waypoints.min', 'jquery.scrollto', 'jquery.jeditable.mini', 'jquery.maskedinput-1.2.2.min', 'jquery.cpf', 'twitter'],
 
-  final: ['jquery.ui.datepicker-pt-BR', 'on_the_spot', 'app/catarse'],
+  final: ['jquery.ui.datepicker-pt-BR', 'on_the_spot', 'app/catarse', 'bootstrap'],
 
   catarse: {
 

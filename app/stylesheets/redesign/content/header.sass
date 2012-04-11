@@ -1,0 +1,84 @@
+#header
+  +grid-container
+  +grid-system(16)
+  padding: 17px 10px 0 10px
+  margin: 0 auto 30px
+  display: block
+  .logo
+    +grid(4)
+    +alpha
+    margin-right: 20px
+    height: 54px
+    border: none
+    background: url($images_path+"logo164x54.png") left top no-repeat
+    text-indent: -9999em
+  nav
+    a
+      display: inline-block
+      font-family: "Lato-Regular"
+      text-decoration: none
+    &.actions
+      +grid(4)
+      margin-top: 20px
+      a
+        color: $pink
+        font-size: 18px
+        margin-right: 33px
+        &:last-child
+          margin-right: 0
+        &:hover
+          text-decoration: underline
+        &.explore
+          background: url($images_path+"explore_icon23x15.png") left 3px no-repeat
+          text-indent: 30px
+        &.submit_project
+          background: url($images_path+"submit_project_icon25x13.png") left 4px no-repeat
+          text-indent: 30px
+    &.menu
+      +grid(4)
+      margin-top: 20px
+      a
+        font-family: "Lato-Regular"
+        text-transform: lowercase
+        color: $ultra_gryn
+        font-size: 14px
+        margin-right: 12px
+        &.my_profile_link
+          width: 30px
+          img
+            border: 1px $ultra_gryn
+            +box-shadow(rgba(black, 0.3) 1px 1px 2px)
+            +transition(all, 0.5s)
+            position: absolute
+            float: left
+            margin-top: -20px
+            &:hover
+              +box-shadow(rgba(black, 0.6) 1px 1px 2px inset)
+        &:last-child
+          margin-right: none
+        &:hover
+          color: $pink
+  .search
+    +grid(4)
+    margin-top: 18px
+    form
+      width: 220px
+      height: 22px
+      +border-radius(8px)
+      border: 1px $minimal_gryn solid
+      // +box-shadow(rgba(black, 0.1) 1px 1px 2px)
+      background: white
+      input[type="text"]
+        border: none
+        width: 190px
+        float: left
+        &:focus
+          outline: none
+      input[type="submit"]
+        background: url($images_path+"search_submit15x15.png") left top no-repeat
+        width: 15px
+        height: 15px
+        border: none
+        text-indent: -9999em
+        float: right
+        margin: 3px 5px 0 0px

@@ -1,6 +1,6 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: :update_attribute_on_the_spot
   inherit_resources
   actions :show
   can_edit_on_the_spot
@@ -45,19 +45,15 @@ class UsersController < ApplicationController
   end
 
   def request_refund
-    back = Backer.find(params[:id])
-    if back.nil?
-      status = 'not found'
-    elsif not authorize!(:request_refund, back)
-      status = I18n.t('credits.refund.cannot_refund')
-    else
-      begin
-        back.refund!
-        status = 'Pedido de estorno enviado'
-      rescue Exception => e
-        status = e.message
-      end
+    back = Backer.find(params[:back_id])
+    begin
+      refund = Credits::Refund.new(back, current_user)
+      refund.make_request!
+      status = refund.message
+    rescue Exception => e
+      status = e.message
     end
+
     render :json => {:status => status}
   end
 

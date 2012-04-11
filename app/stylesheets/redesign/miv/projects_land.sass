@@ -1,0 +1,158 @@
+.project_land
+  +grid(16)
+  &.with_alpha
+    +alpha
+  &.with_omega
+    +omega
+  +transition(all, 0.3s)
+  background-color: $ed_gryn
+  height: 175px
+  .status_image
+    position: absolute
+    z-index: 100
+  .cover
+    +grid(4)
+    +alpha
+    .black_box
+      text-transform: uppercase
+      position: absolute
+      background-color: rgba(0,0,0,.6)
+      height: 16px
+      overflow: hidden
+      margin-top: 151px
+      padding: 7px 0 1px 5px
+      color: white
+      font-family: Lato-Regular
+      font-size: 11px
+      width: 213px
+  .project_infos
+    +grid(4)
+    .title
+      height: 120px
+    h4
+      font-size: 18px
+      color: $blue
+      padding: 7px 0 0 0
+      font-family: Lato-Bold
+      overflow: hidden
+      margin-bottom: 3px
+      a
+        color: black
+        font-family: Lato-Bold
+        font-size: 18px
+        text-decoration: none
+        +transition(all, 0.5s)
+        &:hover
+          color: $green
+    .author
+      font-family: Arial
+      color: black
+      font-size: 13px
+      overflow: hidden
+      // margin-bottom: 30px
+      +opacity(0.5)
+    .status_bar
+      width: 202px
+      height: 10px
+      overflow: hidden
+      border: 1px $minimal_gryn solid
+      +border-radius(5px)
+      .progress
+        +border-radius(4px)
+        background-color: $light_green
+        height: 10px
+        overflow: hidden
+    .info_bar
+      background: $dc_gryn
+      float: left
+      width: 210px
+      padding: 5px 5px 10px
+
+    ul
+      padding-top: 10px
+      display: block
+      li
+        float: left
+        min-width: 60px
+        margin-right: 10px
+        &:last-child
+          margin-left: 0px
+        h6
+          font-family: Lato-Bold
+          font-size: 12px
+          color: black
+          +opacity(0.7)
+          margin-bottom: 3px
+        p
+          text-transform: uppercase
+          color: $super_minimal_gryn
+          font-family: Arial
+          font-size: 9px
+  .back_info
+    +grid(4)
+    +alpha
+    border-left: 1px rgba(white, 0.5) solid
+    padding-left: 19px
+    height: 175px
+    padding-top: 14px
+    .headline
+      font-family: Arial
+      font-size: 12px
+      line-height: 130%
+      color: black
+    ul
+      li
+        padding-left: 40px
+        padding-top: 2px
+        padding-bottom: 2px
+        margin-bottom: 24px !important
+        h5
+          font-family: Lato-Bold
+          font-size: 17px
+          color: black
+        p
+          font-family: Arial
+          font-size: 12px
+          line-height: 130%
+          color: black
+        &.date
+          background: url($images_path+'back_icons.png') left top no-repeat
+        &.value
+          background: url($images_path+'back_icons.png') left -35px no-repeat
+        &.reward
+          background: url($images_path+'back_icons.png') left -68px no-repeat
+          h5
+            padding-top: 4px
+            padding-bottom: 5px
+          p
+            height: 30px
+            overflow: hidden
+
+  .tell_about
+    +grid(3)
+    +omega
+    // +alpha
+    height: 175px
+    border-left: 1px rgba(white, 0.5) solid
+    padding-left: 29px
+    margin-left: 30px
+    p
+      padding-top: 10px
+      width: 130px
+      font-family: Arial
+      font-size: 12px
+      color: $pink
+      font-weight: bold
+    ul
+      padding-top: 15px
+      li
+        float: none !important
+        margin-bottom: 3px !important
+        a
+          +transition(all, 0.5s)
+          margin-left: 30px
+          img
+            +transition(all, 0.5s)
+          &:hover
+            img
+              +scale(1.1)

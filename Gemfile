@@ -44,10 +44,14 @@ gem 'enumerate_it'
 gem 'httparty', '~> 0.8.1'
 gem "rack-timeout"
 gem 'web_translate_it'
+
 gem 'kaminari'
 gem 'tumblr-api'
 gem 'compass-960-plugin'
 gem 'dalli'
+
+gem "devise"
+
 
 group :development do
   gem 'thin'
@@ -60,12 +64,12 @@ group :test, :development do
   gem 'steak', "~> 1.1.0"
   gem 'rspec-rails', "~> 2.0.1"
   gem 'rcov', '= 0.9.11'
-  gem 'factory_girl_rails'
   gem 'mocha'
 end
 
 group :test do
   gem 'shoulda'
+  gem 'factory_girl_rails', '1.3.0'
 end
 
 # Putting pg to the end because of a weird bug with Lion, pg and openssl

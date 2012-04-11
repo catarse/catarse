@@ -25,6 +25,6 @@
     .clear
 - unless @curated_page.projects.empty?
   .curated_project_list
-    - @curated_page.projects.each do |project|
+    - @curated_page.projects.order("finished").each do |project|
       = render :partial => 'projects/project', :locals => { :project => project, :project_curated_page => project.projects_curated_pages.where(:curated_page_id => @curated_page)}
   .clear

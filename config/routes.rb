@@ -1,4 +1,8 @@
 Catarse::Application.routes.draw do
+  devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"} do
+    get "/login" => "devise/sessions#new"
+  end
+
   ActiveAdmin.routes(self)
 
   filter :locale
@@ -16,6 +20,7 @@ Catarse::Application.routes.draw do
 
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
   match "/reports/location/:project_id/backers" => "reports#location_by_project", :as => :backers_location_report
+  match "/reports/users_most_backed" => "reports#users_most_backed", :as => :most_backed_report
 
   # Static Pages
   match '/sitemap' => "static#sitemap", :as => :sitemap
