@@ -24,9 +24,9 @@ class Project < ActiveRecord::Base
       '<' => '&lt;',
       '"' => '"' }
     redcloth :target => :_blank
-    link :target => :_blank
     youtube :width => 580, :height => 378
     vimeo :width => 580, :height => 378
+    link :target => :_blank
   end
   scope :visible, where(:visible => true)
   scope :home_page, where(:home_page => true)
