@@ -1,35 +1,63 @@
 /*
-Syntax error: File to import not found or unreadable: colors.
-              Load paths:
-                Compass::SpriteImporter
-                /Users/ton/store/code/catarse/public/stylesheets/sass
-                /Users/ton/store/code/catarse/app/stylesheets
-                /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.7/frameworks/blueprint/stylesheets
-                /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.7/frameworks/compass/stylesheets
-                /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets
-                /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets
-                /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/bundler/gems/active_admin-1f033aff5ed9/lib/active_admin/sass
-        on line 8 of /Users/ton/store/code/catarse/app/stylesheets/old/miv/index.sass
+Syntax error: Undefined mixin 'grid'.
+        on line 5 of /Users/ton/store/code/catarse/app/stylesheets/redesign/resources/backers/new.sass, in `grid'
+        from line 5 of /Users/ton/store/code/catarse/app/stylesheets/redesign/resources/backers/new.sass
 
-3: @mixin default_grid
-4:   +grid-container
-5:   +grid-system(16)
-6: 
-7: @import fonts
-8: @import colors
-9: @import typography
-10: @import channels
-11: @import blog
-12: @import projects
-13: @import flash
+1: body[data-controller="backers"][data-namespace="projects"][data-action="new"]
+2:   #page_content
+3:     .container
+4:       .backer_content
+5:         +grid(16)
+6:         padding-top: 15px
+7:         .title
+8:           +grid(16)
+9:           +alpha
+10:           padding-bottom: 40px
 
 Backtrace:
-/Users/ton/store/code/catarse/app/stylesheets/old/miv/index.sass:8
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/import_node.rb:64:in `rescue in import'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/import_node.rb:42:in `import'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/import_node.rb:25:in `imported_file'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:149:in `rescue in visit_import'
-/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:154:in `visit_import'
+/Users/ton/store/code/catarse/app/stylesheets/redesign/resources/backers/new.sass:5:in `grid'
+/Users/ton/store/code/catarse/app/stylesheets/redesign/resources/backers/new.sass:5
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -96,4 +124,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: colors.\A               Load paths:\A                 Compass::SpriteImporter\A                 /Users/ton/store/code/catarse/public/stylesheets/sass\A                 /Users/ton/store/code/catarse/app/stylesheets\A                 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.7/frameworks/blueprint/stylesheets\A                 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-0.11.7/frameworks/compass/stylesheets\A                 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/gems/compass-960-plugin-0.10.4/stylesheets\A                 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets\A                 /Users/ton/.rvm/gems/ruby-1.9.2-p290@catarse/bundler/gems/active_admin-1f033aff5ed9/lib/active_admin/sass\A         on line 8 of /Users/ton/store/code/catarse/app/stylesheets/old/miv/index.sass\A \A 3: @mixin default_grid\A 4:   +grid-container\A 5:   +grid-system(16)\A 6: \A 7: @import fonts\A 8: @import colors\A 9: @import typography\A 10: @import channels\A 11: @import blog\A 12: @import projects\A 13: @import flash"; }
+  content: "Syntax error: Undefined mixin 'grid'.\A         on line 5 of /Users/ton/store/code/catarse/app/stylesheets/redesign/resources/backers/new.sass, in `grid'\A         from line 5 of /Users/ton/store/code/catarse/app/stylesheets/redesign/resources/backers/new.sass\A \A 1: body[data-controller=\"backers\"][data-namespace=\"projects\"][data-action=\"new\"]\A 2:   #page_content\A 3:     .container\A 4:       .backer_content\A 5:         +grid(16)\A 6:         padding-top: 15px\A 7:         .title\A 8:           +grid(16)\A 9:           +alpha\A 10:           padding-bottom: 40px"; }

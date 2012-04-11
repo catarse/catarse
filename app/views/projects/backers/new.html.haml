@@ -1,29 +1,39 @@
-= content_for :content_header do
-  %h1= t('.header.title')
-  %h2= t('.header.subtitle')
-#back_options
-  = semantic_form_for @backer, :url => review_project_backers_path(@project), :html => { :id => 'backer_form' } do |form|
-    = form.inputs do
-      = hidden_field_tag 'credits', ("%0.0f" % current_user.credits)
-      = form.input :value, :required => false
-      - if current_user.credits >= 10
-        = form.input :credits, :hint => t('formtastic.hints.backer.credits', :credits => current_user.display_credits)
-      - @rewards[0].id = 0
-      %script
-        var rewards = new Array()
-        - @rewards.each do |reward|
-          rewards[#{reward.id || 0}] = #{reward.minimum_value}
-      = form.input :reward, :as => :radio, :collection => @rewards
-      = form.input :anonymous
-      #anonymous_warning.important.hide= render 'anonymous_warning'
-    = form.buttons do
-      = form.commit_button t('.submit'), :button_html => {:disabled => true}
-#back_info
-  = image_tag @project.display_image
-  #project_info
-    .project_name= link_to @project.name, project_path(@project)
-    .project_owner por #{link_to @project.user.display_name, user_path(@project.user)}
-    .project_expires_at #{@project.time_to_go[:time]} #{@project.time_to_go[:unit]} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
-  .clear
-  = render 'back_text'
-.clear
+#page_content
+  .container
+    .backer_content
+      .title
+        %h1= t('.header.title')
+        %h2= t('.header.subtitle')
+      #back_options.bootstrap-form
+        = semantic_form_for @backer, :url => review_project_backers_path(@project), :html => { :id => 'backer_form' } do |form|
+          = form.inputs do
+            = hidden_field_tag 'credits', ("%0.0f" % current_user.credits)
+            = form.input :value, :required => false, :as => :string
+            - if current_user.credits >= 10
+              .bootstrap-alert
+                .alert.alert-info
+                  = form.input :credits, :hint => t('formtastic.hints.backer.credits', :credits => current_user.display_credits).html_safe
+            - @rewards[0].id = 0
+            %script
+              var rewards = new Array()
+              - @rewards.each do |reward|
+                rewards[#{reward.id || 0}] = #{reward.minimum_value}
+            = form.input :reward, :as => :radio, :collection => @rewards
+            = form.input :anonymous
+            #anonymous_warning.important.hide
+              .bootstrap-alert
+                .alert
+                  = render 'anonymous_warning'
+          = form.buttons do
+            .bootstrap-twitter
+              = form.commit_button t('.submit'), :button_html => {:disabled => true, :class => 'btn btn-primary btn-large'}
+      #back_info
+        = image_tag @project.display_image
+        #project_info
+          .project_name= link_to @project.name, project_path(@project)
+          .project_owner por #{link_to @project.user.display_name, user_path(@project.user)}
+          .project_expires_at #{@project.time_to_go[:time]} #{@project.time_to_go[:unit]} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+        .clearfix
+        = render 'back_text'
+      .clearfix
+    .clearfix
