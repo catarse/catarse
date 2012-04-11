@@ -10939,6 +10939,170 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   line-height: 140%;
 }
 
+/* line 4, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px;
+  padding-top: 15px;
+}
+/* line 7, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .title {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px;
+  margin-left: 0;
+  padding-bottom: 40px;
+}
+/* line 11, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .title h1 {
+  color: #333333;
+  font-family: "Lato-Regular";
+  font-size: 28px;
+  padding: 5px 0;
+}
+/* line 16, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .title h2 {
+  color: rgba(51, 51, 51, 0.7);
+  font-family: Arial;
+  font-size: 18px;
+}
+/* line 20, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 640px;
+  margin-left: 0;
+}
+/* line 24, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .inline-hints {
+  font-family: "Lato-Regular";
+  font-size: 16px;
+  color: rgba(51, 51, 51, 0.9);
+}
+/* line 28, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form label {
+  font-family: "Lato-Regular";
+  font-size: 18px;
+  display: block;
+}
+/* line 32, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form input[type="text"] {
+  height: 60px;
+  width: 600px;
+  font-size: 38px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-family: "Lato-Bold";
+}
+/* line 39, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info {
+  margin-top: 20px;
+}
+/* line 41, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info label {
+  font-family: "Lato-Bold";
+}
+/* line 43, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info label input {
+  display: inline;
+  margin-right: 10px;
+  vertical-align: top;
+}
+/* line 48, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info .inline-hints strong {
+  font-family: "Lato-Bold";
+}
+/* line 50, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input {
+  padding-left: 0 !important;
+}
+/* line 52, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input legend {
+  float: left;
+  border-bottom: none;
+  margin-top: 40px;
+  background: url("/images/catarse/recompensa24x20.png") left top no-repeat;
+}
+/* line 57, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input legend label {
+  padding-left: 34px;
+  font-family: "Lato-Regular";
+  color: #333333;
+  font-size: 24px;
+}
+/* line 62, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol {
+  float: left;
+}
+/* line 64, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice {
+  padding: 10px 5px 5px;
+  padding-left: 24px;
+  margin-bottom: 15px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
+  -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  background: rgba(242, 242, 242, 0.3);
+}
+/* line 71, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice.selected {
+  background: rgba(100, 203, 100, 0.2);
+  -moz-box-shadow: rgba(0, 0, 0, 0.6) 0 0 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.6) 0 0 3px;
+  -o-box-shadow: rgba(0, 0, 0, 0.6) 0 0 3px;
+  box-shadow: rgba(0, 0, 0, 0.6) 0 0 3px;
+}
+/* line 74, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice .reward_minimum_value {
+  color: #59af6d;
+  font-family: "Lato-Regular";
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+/* line 79, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice .reward_description {
+  font-family: "Lato-Regular";
+  font-size: 14px;
+}
+/* line 82, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_anonymous_input {
+  margin: 20px 0;
+  font-size: 14px;
+}
+/* line 85, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_anonymous_input input {
+  display: inline;
+  margin-right: 10px;
+  vertical-align: top;
+}
+/* line 89, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #backer_submit {
+  width: 100%;
+}
+/* line 91, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 280px;
+  margin-right: 0;
+}
+
 /* line 3, ../../app/stylesheets/redesign/resources/users/show.sass */
 body[data-namespace="null"][data-controller="users"][data-action="show"] #creditsModal h3 {
   font-family: Lato-Bold;
