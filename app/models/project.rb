@@ -27,6 +27,8 @@ class Project < ActiveRecord::Base
     youtube :width => 580, :height => 378
     vimeo :width => 580, :height => 378
     link :target => :_blank
+    youtube :width => 580, :height => 378
+    vimeo :width => 580, :height => 378
   end
   scope :visible, where(:visible => true)
   scope :home_page, where(:home_page => true)
