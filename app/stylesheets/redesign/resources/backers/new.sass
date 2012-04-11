@@ -62,9 +62,9 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"]
               ol
                 float: left
                 li.choice
-                  padding: 10px 5px 5px
-                  padding-left: 24px
-                  margin-bottom: 15px
+                  padding: 30px 20px 25px
+                  padding-left: 34px
+                  margin-bottom: 25px
                   @include box-shadow(rgba(black, 0.3) 0 0 3px)
                   @include border-radius(5px)
                   background: rgba($minimal_white, 0.3)
@@ -75,10 +75,11 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"]
                     color: $green
                     font-family: 'Lato-Regular'
                     font-size: 20px
-                    padding-bottom: 5px
+                    padding-bottom: 10px
                   .reward_description
-                    font-family: 'Lato-Regular'
-                    font-size: 14px
+                    font-family: Arial
+                    font-size: 15px
+                    line-height: 130%
             #backer_anonymous_input
               margin: 20px 0
               font-size: 14px
@@ -91,3 +92,42 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"]
         #back_info
           +grid(5)
           +omega
+          img.project_image
+            @include box-shadow(rgba(black, 0.4) 1px 1px 3px)
+          .project_name
+            padding-top: 20px
+            font-family: 'Lato-Bold'
+            font-size: 18px
+            a
+              color: black
+              text-decoration: none
+              @include transition(all, 0.5s)
+              &:hover
+                color: $pink
+          .project_owner
+            padding-top: 5px
+            padding-bottom: 5px
+            font-family: 'Lato-Regular'
+            font-size: 14px
+            a
+              color: $pink
+              text-decoration: none
+              @include transition(all, 0.5s)
+              &:hover
+                color: black
+          .project_expires_at
+            font-family: 'Lato-Regular'
+            font-size: 14px
+            padding-bottom: 20px
+        .back_faq
+          h3
+            font-family: 'Lato-Bold'
+            font-size: 16px
+            padding-bottom: 8px
+            color: rgba(black, 0.8)
+          p
+            padding-bottom: 30px
+            font-family: Arial
+            line-height: 130%
+            font-size: 14px
+            color: rgba(black, 0.6)
