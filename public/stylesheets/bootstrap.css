@@ -11043,9 +11043,9 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
 }
 /* line 64, ../../app/stylesheets/redesign/resources/backers/new.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice {
-  padding: 10px 5px 5px;
-  padding-left: 24px;
-  margin-bottom: 15px;
+  padding: 30px 20px 25px;
+  padding-left: 34px;
+  margin-bottom: 25px;
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px;
@@ -11071,29 +11071,30 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   color: #59af6d;
   font-family: "Lato-Regular";
   font-size: 20px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 /* line 79, ../../app/stylesheets/redesign/resources/backers/new.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice .reward_description {
-  font-family: "Lato-Regular";
-  font-size: 14px;
+  font-family: Arial;
+  font-size: 15px;
+  line-height: 130%;
 }
-/* line 82, ../../app/stylesheets/redesign/resources/backers/new.sass */
+/* line 83, ../../app/stylesheets/redesign/resources/backers/new.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_anonymous_input {
   margin: 20px 0;
   font-size: 14px;
 }
-/* line 85, ../../app/stylesheets/redesign/resources/backers/new.sass */
+/* line 86, ../../app/stylesheets/redesign/resources/backers/new.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_anonymous_input input {
   display: inline;
   margin-right: 10px;
   vertical-align: top;
 }
-/* line 89, ../../app/stylesheets/redesign/resources/backers/new.sass */
+/* line 90, ../../app/stylesheets/redesign/resources/backers/new.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #backer_submit {
   width: 100%;
 }
-/* line 91, ../../app/stylesheets/redesign/resources/backers/new.sass */
+/* line 92, ../../app/stylesheets/redesign/resources/backers/new.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info {
   display: inline;
   float: left;
@@ -11101,6 +11102,81 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   margin-right: 10px;
   width: 280px;
   margin-right: 0;
+}
+/* line 95, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info img.project_image {
+  -moz-box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
+  -o-box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
+  box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
+}
+/* line 97, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_name {
+  padding-top: 20px;
+  font-family: "Lato-Bold";
+  font-size: 18px;
+}
+/* line 101, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_name a {
+  color: black;
+  text-decoration: none;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+/* line 105, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_name a:hover {
+  color: #e75297;
+}
+/* line 107, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_owner {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: "Lato-Regular";
+  font-size: 14px;
+}
+/* line 112, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_owner a {
+  color: #e75297;
+  text-decoration: none;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+/* line 116, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_owner a:hover {
+  color: black;
+}
+/* line 118, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_expires_at {
+  font-family: "Lato-Regular";
+  font-size: 14px;
+  padding-bottom: 20px;
+}
+/* line 123, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq h3 {
+  font-family: "Lato-Bold";
+  font-size: 16px;
+  padding-bottom: 8px;
+  color: rgba(0, 0, 0, 0.8);
+}
+/* line 128, ../../app/stylesheets/redesign/resources/backers/new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq p {
+  padding-bottom: 30px;
+  font-family: Arial;
+  line-height: 130%;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 /* line 3, ../../app/stylesheets/redesign/resources/users/show.sass */

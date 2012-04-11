@@ -28,12 +28,13 @@
             .bootstrap-twitter
               = form.commit_button t('.submit'), :button_html => {:disabled => true, :class => 'btn btn-primary btn-large'}
       #back_info
-        = image_tag @project.display_image
+        = image_tag @project.display_image, alt: @project.name, class: 'project_image', width: 280
         #project_info
           .project_name= link_to @project.name, project_path(@project)
           .project_owner por #{link_to @project.user.display_name, user_path(@project.user)}
           .project_expires_at #{@project.time_to_go[:time]} #{@project.time_to_go[:unit]} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
         .clearfix
-        = render 'back_text'
+        .back_faq
+          = render 'back_text'
       .clearfix
     .clearfix
