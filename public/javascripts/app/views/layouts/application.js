@@ -1,7 +1,8 @@
 CATARSE.LayoutsApplicationView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "render", "flash", "openLogin", "closeLogin", "submitLogin")
+    this.dropDownOpened = false;
+    _.bindAll(this, "render", "flash", "openLogin", "closeLogin", "submitLogin", "currentUserDropDown")
     CATARSE.router.route("login/*url", "login_with_url", this.openLogin)
     CATARSE.router.route("login", "login", this.openLogin)
     this.render()
@@ -10,7 +11,26 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
   events: {
     "submit .search": "search",
     "click #login .close": "closeLogin",
-    "click #login a.provider": "submitLogin"
+    "click #login a.provider": "submitLogin",
+    "click a.my_profile_link img":"currentUserDropDown",
+    "focus .form_login.bootstrap-form input":"markLoginForm",
+    "focus .form_register.bootstrap-form input":"markRegisterForm",
+  },
+
+  markRegisterForm: function(e){
+    rootElement = $(e.currentTarget).closest('.bootstrap-form')
+    if(!rootElement.hasClass('actived')) {
+      $('.bootstrap-form').removeClass('actived');
+      rootElement.addClass('actived');
+    }
+  },
+
+  markLoginForm: function(e){
+    rootElement = $(e.currentTarget).closest('.bootstrap-form')
+    if(!rootElement.hasClass('actived')) {
+      $('.bootstrap-form').removeClass('actived');
+      rootElement.addClass('actived');
+    }
   },
   
   openLogin: function(returnUrl) {
@@ -53,6 +73,19 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
     setTimeout( function(){ this.$('.flash').slideDown('slow') }, 100)
     if( ! this.$('.flash a').length) setTimeout( function(){ this.$('.flash').slideUp('slow') }, 16000)
     $(window).click(function(){ this.$('.flash').slideUp() })
+  },
+
+  currentUserDropDown: function(e) {
+    e.preventDefault();
+    $dropdown = this.$('.dropdown.user');
+    if(!this.dropDownOpened) {
+      $dropdown.show();
+      this.dropDownOpened = true;
+    } else {
+      this.dropDownOpened = false;
+      $dropdown.hide();
+    }
+
   },
   
   render: function(){

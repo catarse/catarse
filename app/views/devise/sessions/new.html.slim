@@ -1,0 +1,54 @@
+= content_for :title do 
+  = t('.site_title')
+
+#page_content
+  .container
+    .form_login.bootstrap-form
+      .content_form
+        h1=t('.login_title')
+        h3=t('.login_subtitle')
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
+          p.input
+            = f.label :email
+            = f.text_field :email
+          p.input
+            = f.label :password
+            = f.password_field :password
+          p.input.check
+            = f.check_box :remember_me
+            = f.label :remember_me, t('layouts.login.remember_me')
+          p.action
+            = f.submit t('.submit')
+    .form_login.bootstrap-form[class="#{('actived' if params[:active_register])}"]
+      .content_form
+        h1=t('.register_title')
+        h3=t('.register_subtitle')
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
+          = devise_error_messages!
+          p.input
+            = f.label :email
+            = f.text_field :email
+          p.input
+            = f.label :password
+            = f.password_field :password
+          p.input
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation
+          p.input.check
+            = f.check_box :newsletter
+            = f.label :newsletter, t('users.current_user_fields.newsletter')
+          p.action
+            = f.submit t('registrations.new.submit')
+    .login_with_social
+      .content_form
+        h1=t('.with_facebook')
+        h3=t('.with_facebook_subtitle')
+        = link_to t('layouts.login.login_with_facebook'), '/auth/facebook', :class => 'facebook_start'
+        h1=t('.with_another_social')
+        h3=t('.with_another_social_subtitle')
+        .another_social
+          = link_to image_tag('auth/google_128.png', :title => 'Google'), '/auth/google', :class => 'provider first'
+          = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), '/auth/google', :class => 'provider'
+          - OauthProvider.where("path <> 'facebook'").order('"order"').all.each do |p|
+            = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), "/auth/#{p.path}", :class => 'provider'
+    .clearfix

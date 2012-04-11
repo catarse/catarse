@@ -1,5 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
+
   include ActionView::Helpers::DateHelper
   inherit_resources
   actions :index, :show, :new, :create
@@ -9,6 +10,7 @@ class ProjectsController < ApplicationController
   skip_before_filter :detect_locale, :only => [:backers]
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   before_filter :date_format_convert, :only => [:create]
+
   def date_format_convert
     # TODO localize here and on the datepicker on project_form.js
     params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
@@ -18,47 +20,26 @@ class ProjectsController < ApplicationController
     index! do |format|
       format.html do
         @title = t("site.title")
-        collection_projects = Project.includes(:user, :category).
-                                  with_homepage_comment.
-                                  recommended.
-                                  visible.
-                                  not_expired.
-                                  order('"order"')
+        presenter = ProjectPresenter::Home.new({:current_user => current_user})
+        presenter.fetch_projects
 
-        unless collection_projects.empty?
-          home_page_projects = collection_projects.home_page
-          if current_user and current_user.recommended_project
-            @recommended_project = current_user.recommended_project
-            home_page_projects = home_page_projects.where("id != #{current_user.recommended_project.id}")
-            collection_projects = collection_projects.where("id != #{current_user.recommended_project.id}")
-          end
-          category_projects = collection_projects
-          category_projects = category_projects.where("category_id != #{@recommended_project.category_id}") if @recommended_project
-          @project_of_day = home_page_projects.first
-          category_projects = category_projects.where("id != #{@project_of_day.id}") if @project_of_day
-          @second_project = category_projects.all[rand(category_projects.length)]
-          category_projects = category_projects.where("category_id != #{@second_project.category_id}") if @second_project
-          @third_project = category_projects.all[rand(category_projects.length)]
-          unless @recommended_project
-            category_projects = category_projects.where("category_id != #{@third_project.category_id}") if @third_project
-            @fourth_project = category_projects.all[rand(category_projects.length)]
-          end
-        end
+        @recommended_project  = presenter.recommended_project
+        @project_of_day       = presenter.project_of_day
+        @first_project       = presenter.first_project
+        @second_project       = presenter.second_project
+        @third_project        = presenter.third_project
+        @fourth_project       = presenter.fourth_project
+        @expiring             = presenter.expiring
+        @recent               = presenter.recent
 
-        project_ids = []
-        project_ids << @recommended_project.id if @recommended_project
-        project_ids << @project_of_the_day.id if @project_of_the_day
-        project_ids << @second_project.id if @second_project
-        project_ids << @third_project.id if @third_project
-        project_ids << @fourth_project.id if @fourth_project
-        project_ids = project_ids.join(',')
-        project_ids = "id NOT IN (#{project_ids})" unless project_ids.blank?
-
-        @expiring = Project.includes(:user, :category).where(project_ids).visible.expiring.not_expired.order('date(expires_at), random()').limit(3).all
-        @recent = Project.includes(:user, :category).where(project_ids).recent.visible.not_expiring.not_expired.order('date(created_at), random()').limit(3).all
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
-        @last_tweet = Rails.cache.fetch('last_tweet', :expires_in => 30.minutes) do
-            JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}"))).first
+        @last_tweets = Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
+            JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}"))).inject([]) do |total, item|
+              if total.size <= 1
+                total << item
+              end
+              total
+            end
         end
       end
       format.json do
@@ -67,15 +48,18 @@ class ProjectsController < ApplicationController
       end
     end
   end
+
   def start
     @title = t('projects.start.title')
   end
+
   def send_mail
     current_user.update_attribute :email, params[:contact] if current_user.email.nil?
     ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user, "#{I18n.t('site.base_url')}#{user_path(current_user)}").deliver
     flash[:success] = t('projects.send_mail.success')
     redirect_to :root
   end
+
   def new
     return unless require_login
     new! do
@@ -83,6 +67,7 @@ class ProjectsController < ApplicationController
       @project.rewards.build
     end
   end
+
   def create
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
@@ -94,6 +79,7 @@ class ProjectsController < ApplicationController
       @project.update_attribute :short_url, bitly
     end
   end
+
   def show
     show!{
       @title = @project.name
@@ -102,6 +88,7 @@ class ProjectsController < ApplicationController
       fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
     }
   end
+
   def vimeo
     project = Project.new(:video_url => params[:url])
     if project.vimeo.info
@@ -110,6 +97,7 @@ class ProjectsController < ApplicationController
       render :json => {:id => false}.to_json
     end
   end
+
   def cep
     address = BuscaEndereco.por_cep(params[:cep])
     render :json => {
@@ -141,12 +129,15 @@ class ProjectsController < ApplicationController
     @search = Project.search(params[:search])
     @projects = @search.order('projects.created_at DESC').page(params[:page])
   end
+
   def pending_backers
     return unless require_admin
     @title = t('projects.pending_backers.title')
     @search = Backer.search(params[:search])
     @backers = @search.order("created_at DESC").page(params[:page])
   end
+
+
   private
 
   # Just to fix a minor bug,
@@ -165,6 +156,7 @@ class ProjectsController < ApplicationController
     data = JSON.parse(res.body)['data']
     data['url'] if data
   end
+
   def can_update_on_the_spot?
     project_fields = []
     project_admin_fields = ["name", "about", "headline", "can_finish", "expires_at", "user_id", "image_url", "video_url", "visible", "rejected", "recommended", "home_page", "order"]

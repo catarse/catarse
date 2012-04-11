@@ -1,12 +1,105 @@
 en:
+  statistics:
+    backers:
+      subtitle: backers
+    goal:
+      subtitle: "total of %{total}"
+  project_by: "project by"
+  tell_about_this_back: "Tell the world about your support!"
+  share_my_backs: "See the projects that i support in Catarse!"
+  tell_about_this_project: "Tell the world about your project!"
+  share_my_projects: "See my created projects in Catarse!"
+  count_backed_projects: "backed %{total} projects"
+  footer:
+    titles:
+      info: "Useful Information"
+      opendata: "nice statistics"
+      social: "like the catarse?"
+      newsletter: "receive our newslatter"
+    stats:
+      backers: Backers
+      backs: Backs
+      total_backed: Backed
+      users: Users
+      funded_projects: "Successful projects"
+      active_projects: "Projects on air now"
+    links:
+      how_works: "How It works"
+      faq: F.A.Q./Help
+      terms: "Terms of use"
+      policy: "Privacy Policy"
+      contact: Contact
+  main:
+    links:
+      selected: "explore more projects selected"
+      expiring: "explore more expiring projects"
+      recents: "explore more recent projects"
+  sidebar:
+    titles:
+      blog: blog
+      facebook: "have enjoyed our face?"
+      twitter: "@catarse_"
+      newsletter: "want to receive news?"
+      faq: "have any doubt?"
+      schedule: calendar
+    buttons:
+      newsletter: submit
+  sections:
+    selection:
+      title: selection
+    expiring:
+      title: expiring
+    recents:
+      title: recents
+    partners:
+      title: partners
   "no": "No"
   "yes": "Yes"
   accept_terms_html: "I have read and accepted the %{link}."
   active_admin:
     dashboard: Dashboard
     dashboard_welcome:
-      call_to_action: foo
       welcome: "Welcome to our admin dashboard"
+      call_to_action: foo
+    view: View
+    edit: Edit
+    delete: Remove
+    delete_confirmation: ~
+    new_model: ~
+    create_model: ~
+    edit_model: ~
+    update_model: ~
+    delete_model: ~
+    details: ~
+    cancel: ~
+    empty: ~
+    previous: ~
+    next: ~
+    download: ~
+    has_many_new: ~
+    has_many_delete: ~
+    filter: ~
+    clear_filters: ~
+    search_field: ~
+    equal_to: ~
+    greater_than: ~
+    less_than: ~
+    main_content: ~
+    logout: ~
+    sidebars:
+      filters: ~
+    pagination:
+      empty: ~
+      one: ~
+      one_page: ~
+      multiple: ~
+      entry:
+        one: ~
+        other: ~
+    any: ~
+    blank_slate:
+      content: ~
+      link: ~
   activerecord:
     attributes:
       backer:
@@ -32,8 +125,11 @@ en:
         address_street: Street
         address_zip_code: "Zip code"
         cpf: CPF
+        current_password: "Current password"
         email: Email
         full_name: "Full name"
+        password: Password
+        password_confirmation: "Password Confirmation"
         phone_number: "Mobile phone number"
     models:
       backer: Backer
@@ -47,17 +143,6 @@ en:
     value_must_be_at_least_rewards_value: "must be at least %{minimum_value} for the selected reward"
   backer_plural: backers
   backer_singular: backer
-  blog:
-    index:
-      menu:
-        curated_pages: Channels
-        platform: Catarse
-        projects: Creators
-        title: "See posts published by"
-      subtitle: "Discover what is happening in Catarse's network!"
-      title: "News, updates and otras cositas más..."
-    post:
-      empty: "Hey, we still don't have any post in this section. Wanna try the other sections in the mean time? =D"
   click_here: "Click here"
   clicking_here: "clicking here"
   comment:
@@ -67,12 +152,12 @@ en:
       buy_credits: "Buy credits"
       buy_credits_html: "<strong>You don't need to have credits to back a project</strong>. You can pay online when you proceed to back the project. But if you like to back many projects, it's a good idea to buy credits in advance: this way you won't need to make a payment each time you back a project."
       confirm: "Are you sure you want to request a refund for this payment?"
-      created_at: "Payment date"
+      back_date: "Back date"
       current_credits_html: "Your current balance is <span id=\"current_credits\">%{credits}</span> in credits."
       important_html: "You have <strong>up to 180 days after the payment date</strong> to ask for a refund. If you ask for a refund, the value of your payment will be deducted from your credits."
       no_refunds: "You don't have any payment that can be refunded"
       project: Project
-      refund_deadline: "Refund deadline"
+      refund_expration_date: "Refund deadline"
       refunded: Refunded
       refunds_title: "Payments that can be refunded"
       request_refund: "Request refund"
@@ -98,21 +183,108 @@ en:
     show:
       backed: backed
       reached: reached
+  devise:
+    confirmations:
+      confirmed: "Your account was successfully confirmed. You are now signed in."
+      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+    failure:
+      already_authenticated: "You are already signed in."
+      inactive: "Your account was not activated yet."
+      invalid: "Invalid email or password."
+      invalid_token: "Invalid authentication token."
+      locked: "Your account is locked."
+      timeout: "Your session expired, please sign in again to continue."
+      unauthenticated: "You need to sign up or sign in to continue."
+      unconfirmed: "You have to confirm your account before continuing."
+    links:
+      forgot_password: "Forgot your password?"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+      reset_password_instructions:
+        subject: "Reset password instructions"
+        alt: "Reset password instructions"
+      unlock_instructions:
+        subject: "Unlock Instructions"
+    omniauth_callbacks:
+      failure: "Could not authorize you from %{kind} because \"%{reason}\"."
+      success: "Successfully authorized from %{kind} account."
+    passwords:
+      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
+      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+      updated: "Your password was changed successfully. You are now signed in."
+      updated_not_active: "Your password was changed successfully."
+    registrations:
+      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      inactive_signed_up: "You have signed up successfully. However, we could not sign you in because your account is %{reason}."
+      reasons:
+        inactive: inactive
+        locked: locked
+        unconfirmed: unconfirmed
+      signed_up: "Welcome! You have signed up successfully."
+      updated: "You updated your account successfully."
+    sessions:
+      new:
+        site_title: "Sign in"
+        submit: "Sign in"
+        title: "Sign in using your email"
+        login_title: Login
+        login_subtitle: "If already have an account"
+        register_title: "Sign Up"
+        register_subtitle: "Use your e-mail account"
+        with_facebook: "Sign in with your facebook account"
+        with_facebook_subtitle: "A quick way to access"
+        with_another_social: "Don't have facebook account?"
+        with_another_social_subtitle: "Sign in with another social network"
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+    unlocks:
+      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
+      unlocked: "Your account was successfully unlocked. You are now signed in."
   error: "Ooops! There was an error. Please try again."
+  errors:
+    format: ~
+    messages:
+      accepted: ~
+      blank: ~
+      confirmation: ~
+      empty: ~
+      equal_to: ~
+      even: ~
+      exclusion: ~
+      greater_than: ~
+      greater_than_or_equal_to: ~
+      inclusion: ~
+      invalid: ~
+      less_than: ~
+      less_than_or_equal_to: ~
+      not_a_number: ~
+      not_an_integer: ~
+      odd: ~
+      record_invalid: ~
+      taken: ~
+      too_long: ~
+      too_short: ~
+      wrong_length: ~
+    template:
+      body: ~
+      header:
+        one: ~
+        other: ~
   explore:
     index:
-      all: All
       categories: Categories
       expiring: "Final countdown"
       quick_explore: "Quick search"
       recent: Recent
       recommended: Recommended
-      search: "What are you looking for?"
       subtitle: "Explore the projects, find the ones that touch you, and make them happen!"
       successful: Successful
       title: "Discover amazing projects"
-    project:
-      empty: "Hey, we didn't find any project with the text you searched. Wanna try some new words? =D"
     title: "Explore the projects"
   formtastic:
     hints:
@@ -159,11 +331,22 @@ en:
     application:
       menu:
         explore: "Explore the projects"
-        login: Login
-        signup: Signup
+        login: "Sign in"
+        signup: "Sign up"
         submit: "Submit your project"
       notifications:
         new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check out</a>!"
+    header:
+      blog: blog
+      help: help
+      signup: "sign up"
+      signin: login
+      explore: explore
+      submit_project: submit
+      profile: "my profile"
+    recommended_header:
+      sugest_for_you: "suggested for you"
+      highlight_project: "featured project"
     footer:
       blog: "Our blog"
       comum: "Grupo Comum"
@@ -175,10 +358,16 @@ en:
       terms: "Terms of use"
       twitter: "Our Twitter"
     login:
+      another_social: "Sign in with <a href='javascript:void(0);' id='login_with_another_social'>another service</a>"
       description_html: "We will <strong>never</strong> know your password or any other secret data from the chosen social network. We will only have access to your basic information, like name, photo and email."
+      have_facebook_account: "Does not have a facebook account?"
+      login_with_facebook: "sign in with your facebook account"
+      new_user_from_email: "Sign in with <a href='%{login_path}' id='login_with_mail'>your email</a>"
+      or: or
       remember_me: "Remember me and keep me connected."
       tips_html: "<strong>Remember with which social network you signed up</strong>. You will always access your account with it."
       title: "Enter with your favorite social network"
+      title_with_email: "Sign in using your email"
     pre_header:
       back_notice_html: "You backed the project %{link}. Tell everyone what you just did!"
       content_html: "Want to know how to back a project? %{link} a step-by-step guide that we published in our blog."
@@ -193,6 +382,20 @@ en:
     cancel: Cancel
     ok: OK
     tooltip: "Click to edit..."
+  passwords:
+    edit:
+      label_new_password: "New password"
+      submit: "Change password"
+      title: "Reset password"
+      site_title: "Change password"
+      subtitle: "You requested to reset your password. Fill your new password below and click \"Change Password\". If you did not request this password reset, just skip this page and your password will remain the same."
+    email:
+      content_html: " <p>Someone has requested a link to change your password, and you can do this through the link below.</p><p>%{link}</p><p>If you didn't request this, please ignore this email.</p><p>Your password won't change until you access the link above and create a new one.</p> "
+      title: "Reset password instructions."
+    new:
+      submit: "Send instructions to reset my password"
+      title: "Forgot password?"
+      site_title: "Recover password"
   payment_stream:
     thank_you:
       error: "Ooops. You can only access this page after backing a project."
@@ -203,9 +406,6 @@ en:
       text_subtitle: "Tell everyone what you just did"
       text_title_html: "You are now part of the group that does everything to make %{link} happen."
       title: "Thank you"
-  posts:
-    create:
-      success: "Your update have been successfully created! Now is time to spread it and keep making it happen :D"
   project:
     finish:
       successful:
@@ -223,6 +423,8 @@ en:
     verify_if_video_exists_on_vimeo: "must exist on Vimeo"
     vimeo_regex_validation: "only Vimeo URLs are allowed"
   projects:
+    box:
+      by: by
     admin_fields:
       title: "Admin fields"
     back_project:
@@ -243,7 +445,6 @@ en:
     backer:
       anonymous_backer: "Anonymous backer"
       anonymous_description: "Opted to remain incognito"
-      empty: "Nobody backed this project so far. How about being the first one?"
       no_reward: "This backer has not picked a reward"
     backers:
       checkout:
@@ -277,10 +478,6 @@ en:
         subtitle: "This is the last step to make the difference and become part of this project."
         title: "Fill in and review your data"
         you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
-    box:
-      backed: backed
-      by: by
-      reached: reached
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
     curated_pages_list:
@@ -300,22 +497,10 @@ en:
       subtitle: "Discover the projects that caused us a Catharsis :) every day a new selection."
       title: "Our cathartic selection!"
     index:
-      expiring:
-        explore: "explore more projects in the final countdown"
-        subtitle: "Uh! Time's almost up for these ones...back'em while you can!"
-        title: "Final countdown"
-      recent:
-        explore: "explore more recent projects"
-        subtitle: "Projects that just arrived on Catarse. Smell as if they just came out of the oven..."
-        title: "Recent projects"
-      recommended:
-        explore: "explore more recommended projects"
-        subtitle: "Discover the projects that caused us a Catharsis :) every day a new selection."
-        title: "Our picks"
-      successful:
-        explore: "explore more successful projects"
-        subtitle: "Meet our newest prides :) tomorrow your project might be here!"
-        title: Successful
+      expiring: "Final countdown"
+      recent: "Recent projects"
+      recommended: "Recommended projects"
+      successful: "Successful projects"
     index_header:
       subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
       title: "Make the projects you believe in happen"
@@ -362,13 +547,16 @@ en:
       title: "Check out what they're saying about Catarse in the press"
     project:
       backed: backed
-      by: by
       reached: reached
+    project_backers:
+      empty: "Nobody backed this project so far. How about being the first one?"
     project_comments:
       require_login_html: "Want to send a comment? %{link} to login."
       submit: "Send comment"
     project_header:
       subtitle_html: "A project by %{link}"
+      without_city: "A project in %{category_name}, by %{author}"
+      with_city: "A project in %{category_name}, in %{city}, by %{author}"
     project_list:
       expiring:
         explore: "Explore more projects in the final countdown"
@@ -396,22 +584,19 @@ en:
     send_mail:
       success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
     show:
+      about_title: "About this project"
       menu:
         about: About
         backers: Backers
         comments: Comments
         updates: Updates
       share:
-        embed: "Embed this project"
+        embed: embed
         embed_title: "Embed this project on your site"
         link: Link
         link_title: "Share the link"
         take_a_look: "Check out the project"
         title: "Be part of it and share this project"
-      with_city:
-        subtitle_html: "A project in <span>%{category_name}</span>, from <span>%{city}</span>, by <span>%{author}</span>"
-      without_city:
-        subtitle_html: "A project in <span>%{category_name}</span>, by <span>%{author}</span>"
     start:
       about: "Describe your project and how much do you need"
       about_hint: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
@@ -428,17 +613,17 @@ en:
       title: "Submit your project"
     twitter:
       take_a_look: "Check out the project %{name} on @Catarse_"
-    updates:
-      body: "Text of the update"
-      empty: "This project didn't have updates yet. But wait and see =D"
-      submit: "Send update"
-      title: "Title of the update"
     video_embed:
       a_project_by_html: "A project by %{link} on Catarse"
   projects_mailer:
     start_project_email:
       subject: "Project sent by %{name}"
       subject_html: "Project sent by %{link}"
+  registrations:
+    new:
+      site_title: "Sign up"
+      submit: "Sign Up"
+      title: "Sign up using you email"
   remaining_plural: left
   remaining_singular: left
   remove: remove
@@ -458,6 +643,7 @@ en:
     failure:
       error: "There was an error while loggin in. Please try again."
   site:
+    host: catarse.me
     base_url: "http://catarse.me"
     blog: "http://blog.catarse.me/"
     email:
@@ -466,7 +652,6 @@ en:
       projects: projetos@catarse.me
       system: system@catarse.me
     facebook: "http://www.facebook.com/Catarse.me"
-    facebook_app_id: 173747042661491
     name: Catarse
     title: "The first crowdfunding platform from Brazil"
     twitter: Catarse_
@@ -490,6 +675,13 @@ en:
       two: "Backed this and 1 other project"
     no_name: Unnamed
   users:
+    show:
+      tabs:
+        backed_projects: "Backed projects"
+        created_projects: "Created projects"
+        comments: Comments
+        credits: Credits
+        settings: Settings
     admin_fields:
       credits: "available in credits"
       no_email: "haven't filled the email yet"
@@ -503,10 +695,19 @@ en:
       title_current_user: "Projects I've backed"
       your_reward: "Your reward"
     current_user_fields:
+      update_social_info: "Update info"
+      social_info: "Contact info"
+      twitter: "twitter ( username )"
+      facebook_link: "facebook profile link"
+      other_link: "another internet page"
+      change_password: "Change my password"
+      current_password_hint: "<i>We need your current password to confirm your changes.</i>"
       email_hint: "Your email will only be used for communications from Catarse and from the projects you back. It won't be visible in your profile. When you back a project, we will give your email to the project owner so he can provide your rewards."
       email_tooltip: "Click here to fill your email..."
       gravatar_hint_html: "Want to change your picture? Use %{link} with your email. It's as simple as uploading an image and works for other sites as well ;)"
+      my_data: "My profile"
       newsletter: "I want to receive news from Catarse via email"
+      password_hint: "<i>Leave blank if you don't want to change it.</i>"
     header:
       bio_tooltip: "Click here to write about you..."
       name_tooltip: "Click here to fill your name..."
@@ -515,22 +716,6 @@ en:
       no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
       title: "%{name}'s projects"
       title_current_user: "My projects"
-    show:
-      back_date: ~
-      backed_projects: ~
-      comments: ~
-      created_projects: ~
-      credits: ~
-      credits_balance: "Seu saldo atual é de R$ %{credits} em créditos"
-      project: ~
-      project_relationship_text: ~
-      refund_expration_date: ~
-      status: ~
-      value: ~
-      when:
-        backed_value: ~
-        did_not_selected_reward: ~
-        selected_reward: ~
   users_mailer:
     notification_email:
       alt: "You must enable images in order to correctly view this message."
@@ -549,3 +734,173 @@ en:
     next: "Next »"
     page_gap: "..."
     previous: "« Previous"
+  date:
+    abbr_day_names:
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
+    abbr_month_names:
+      - ~
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
+    day_names:
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+    formats:
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    month_names:
+      - ~
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+    order:
+      - :day
+      - :month
+      - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: ~
+        other: ~
+      about_x_months:
+        one: ~
+        other: ~
+      about_x_years:
+        one: ~
+        other: ~
+      almost_x_years:
+        one: ~
+        other: ~
+      half_a_minute: ~
+      less_than_x_minutes:
+        one: ~
+        other: ~
+      less_than_x_seconds:
+        one: ~
+        other: ~
+      over_x_years:
+        one: ~
+        other: ~
+      x_days:
+        one: ~
+        other: ~
+      x_minutes:
+        one: ~
+        other: ~
+      x_months:
+        one: ~
+        other: ~
+      x_seconds:
+        one: ~
+        other: ~
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Second
+      year: Year
+  helpers:
+    select:
+      prompt: ~
+    submit:
+      create: ~
+      submit: ~
+      update: ~
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%u%n"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: R$
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion:
+            one: ~
+            other: ~
+          million:
+            one: ~
+            other: ~
+          quadrillion:
+            one: ~
+            other: ~
+          thousand: ~
+          trillion:
+            one: ~
+            other: ~
+          unit: ~
+      format:
+        delimiter: "."
+        precision: ~
+        significant: ~
+        strip_insignificant_zeros: ~
+      storage_units:
+        format: ~
+        units:
+          byte:
+            one: ~
+            other: ~
+          gb: ~
+          kb: ~
+          mb: ~
+          tb: ~
+    percentage:
+      format:
+        delimiter: "."
+    precision:
+      format:
+        delimiter: "."
+  support:
+    array:
+      last_word_connector: ~
+      two_words_connector: ~
+      words_connector: ~
+  time:
+    am: ~
+    formats:
+      default: "%B %d, %Y %H:%M"
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %H:%M"
+    pm: ~

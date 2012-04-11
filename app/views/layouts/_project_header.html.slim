@@ -1,0 +1,33 @@
+.video_sample
+  iframe src="#{project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="461" height="258" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+.info
+  h3= title
+  h2
+    = link_to project.name, 'javascript:void(0);'
+  .author
+    p
+      = t('projects.box.by')
+      = link_to project.user.name, 'javascript:void(0);'
+  .description
+    p= link_to truncate(project.headline, :length => 120), '#'
+  .author
+    - if project.user.address_city || project.user.address_state
+      p= link_to 'javascript:void(0)' do
+        - unless project.user.address_city.blank?
+          = project.user.address_city
+        - unless project.user.address_state.blank?
+            | &nbsp; / &nbsp;
+            = project.user.address_state
+  .statistics
+    .progress
+      .bar[style="width: #{project.display_progress}%"]
+    ul
+      li
+        strong= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
+        p= "#{project.remaining_text}"
+      li
+        strong= "#{project.progress}%"
+        p="#{t('projects.project.reached')}"
+      li.last
+        strong= "#{project.display_pledged}"
+        p= "#{t('projects.project.backed')}"

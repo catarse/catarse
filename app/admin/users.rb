@@ -4,6 +4,13 @@ ActiveAdmin.register User do
   scope :primary
   scope :backers
 
+  filter :id
+  filter :name
+  filter :full_name
+  filter :email
+  filter :nickname
+  filter :provider
+
   index do
     column :name do |user|
       link_to user.name, admin_user_path(user)

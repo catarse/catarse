@@ -1,46 +1,139 @@
 #page_content
-  .section_header
-    h1= t('projects.index_header.title')
-    h4= t('projects.index_header.subtitle_html')
+  .container
+    .main
+      .selected_projects.list
+        .list_title
+          .title
+            h2= t('sections.selection.title')
+        .projects
+          = render :partial => 'project', :locals => {:project => @first_project, :custom_class => 'first' }
+          = render :partial => 'project', :locals => {:project => @second_project }
+          = render :partial => 'project', :locals => {:project => @third_project, :custom_class => 'last' }
+          /= raise @expiring.inspect
+          / = render :partial => 'project', :collection => @expiring
+          / - @expiring.each_with_index do |item,i|
+          /   == render 'project', :project => item, :custom_class => (@expiring.length == (i+1) ? 'without_omega' : '')
+        .explore_link
+          hr
+          = link_to t('main.links.selected'), explore_path()+"#recommended"
 
-  = render :partial => 'project', :locals => {:project => @recommended_project, :has_comments => true, :comments_title => 'Recomendado para você'} if @recommended_project
-  = render :partial => 'project', :locals => {:project => @project_of_day, :has_comments => true, :comments_title => 'Projeto do dia'} if @project_of_day
-  = render :partial => 'project', :locals => {:project => @second_project, :has_comments => true} if @second_project
-  = render :partial => 'project', :locals => {:project => @third_project, :has_comments => true} if @third_project
-  - unless @recommended_project
-    = render :partial => 'project', :locals => {:project => @fourth_project, :has_comments => true} if @fourth_project
+      .expiring_projects.list
+        .list_title
+          .title
+            h2= t('sections.expiring.title')
+        .projects
+          /= raise @expiring.inspect
+          /= render :partial => 'project', :collection => @expiring
+          - @expiring.each_with_index do |item,i|
+            == render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+        .explore_link
+          hr
+          = link_to t('main.links.expiring'), explore_path()+'#expiring'
 
-  .reference_link
-    = link_to t('.recommended.explore'), explore_path(:anchor => 'recommended'), :class => 'sliced_link'
+      .recents_projects.list
+        .list_title
+          .title
+            h2= t('sections.recents.title')
+        .projects
+          /= raise @expiring.inspect
+          / = render :partial => 'project', :collection => @recent
+          - @recent.each_with_index do |item,i|
+            == render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+        .explore_link
+          hr
+          = link_to t('main.links.recents'), explore_path()+'#recent'
 
-  .ending_projects
-    = render :partial => 'project_list', :locals => {:collection => @expiring, :title => t('.expiring.title'), :description => t('.expiring.subtitle')}
+    .sidebar
+      .content
+        .blog
+          h3= t('sidebar.titles.blog')
+          ul.posts
+            - 2.times do
+              li
+                h2
+                  = link_to '#' do
+                    = image_tag("catarse/post_title_image.png")
+                    = "Lorem ipsum dolor sit amet consectetuir."
+                p.author= "por: Nome do Autor"
+                = link_to '#', :class => 'resume' do
+                  = "Global famine and disease always made me wonder about the existence of God, but this Tebow business has me wondering. (...)"
 
-  .reference_link
-    = link_to t('.expiring.explore'), explore_path(:anchor => 'expiring'), :class => 'sliced_link'
+        .facebook
+          h3= t('sidebar.titles.facebook')
+          .fb-like data-href="http://facebook.com/catarse.me" data-send="false" data-width="171" data-show-faces="true"
+        .twitter
+          h3= t('sidebar.titles.twitter')
+          - @last_tweets.each do |tweet|
+            p= tweet['text']
+          = link_to "Follow @#{t('site.twitter')}", "http://twitter.com/#{t('site.twitter')}", :class => 'twitter-follow-button', :"data-show-count" => "false" , :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
+        .newsletter
+          h3= t('sidebar.titles.newsletter')
+          = form_tag '/' do
+            = text_field_tag 'email', 'email@email.com'
+            = submit_tag t('sidebar.buttons.newsletter')
+        .faq
+          h3= t('sidebar.titles.faq')
+          = link_to image_tag('catarse/faq_video.png'), '#'
+        .schedule
+          h3= t('sidebar.titles.schedule')
+          ul.events
+            - 4.times do
+              li
+                = link_to '#' do
+                  h4
+                    | 02
+                    br/
+                    span FEV
+                  p Palestra na FGV em São Paulo, durante evento XPTO
+          .clearfix
 
-  .recent_projects
-    = render :partial => 'project_list', :locals => {:collection => @recent, :title => t('.recent.title'), :description => t('.recent.subtitle')}
+    .clearfix
 
-  .reference_link
-    = link_to t('.recent.explore'), explore_path(:anchor => 'recent'), :class => 'sliced_link'
+  .container.partners
+    .list_title
+      .title
+        h2= t('sections.partners.title')
+    = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
+    .clearfix
 
-  = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
-
-#blog_footer
-  .home_blog
-    h3 O que anda acontecendo aqui
-    = link_to image_tag("redesign/blog_banner699x239.png"), '#', :class => 'blog_banner'
-    .blog_post
-      h4
-        | No Blog
-      h6
-        a Aqui é o título do Blog que deve ter somente 02 linhas
-      p
-        a O Catarse é um site que tem um modelo de funcionar diferente do que a gente tá  acostumado por aí.
-
-      p
-        a O Catarse é um site que tem  um  modelo de funcionar diferente do que a gente tá  acostumado por aí.
-    .twitter_message
-      p
-        a= link_to @last_tweet['text'], "https://twitter.com/#!/Catarse_/status/#{@last_tweet['id_str']}", target: :_blank
+  /= render :partial => 'project', :locals => {:project => @recommended_project, :has_comments => true, :comments_title => 'Recomendado para você'} if @recommended_project
+  /= render :partial => 'project', :locals => {:project => @project_of_day, :has_comments => true, :comments_title => 'Projeto do dia'} if @project_of_day
+  /= render :partial => 'project', :locals => {:project => @second_project, :has_comments => true} if @second_project
+  /= render :partial => 'project', :locals => {:project => @third_project, :has_comments => true} if @third_project
+/   - unless @recommended_project
+/     = render :partial => 'project', :locals => {:project => @fourth_project, :has_comments => true} if @fourth_project
+/
+/   .reference_link
+/     = link_to t('.recommended.explore'), explore_path(:anchor => 'recommended'), :class => 'sliced_link'
+/
+  / .ending_projects
+  /   = render :partial => 'project_list', :locals => {:collection => @expiring, :title => t('.expiring.title'), :description => t('.expiring.subtitle')}
+/
+/   .reference_link
+/     = link_to t('.expiring.explore'), explore_path(:anchor => 'expiring'), :class => 'sliced_link'
+/
+/   .recent_projects
+/     = render :partial => 'project_list', :locals => {:collection => @recent, :title => t('.recent.title'), :description => t('.recent.subtitle')}
+/
+/   .reference_link
+/     = link_to t('.recent.explore'), explore_path(:anchor => 'recent'), :class => 'sliced_link'
+/
+/   = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
+/
+/ #blog_footer
+/   .home_blog
+/     h3 O que anda acontecendo aqui
+/     = link_to image_tag("redesign/blog_banner699x239.png"), '#', :class => 'blog_banner'
+/     .blog_post
+/       h4
+/         | No Blog
+/       h6
+/         a Aqui é o título do Blog que deve ter somente 02 linhas
+/       p
+/         a O Catarse é um site que tem um modelo de funcionar diferente do que a gente tá  acostumado por aí.
+/
+/       p
+/         a O Catarse é um site que tem  um  modelo de funcionar diferente do que a gente tá  acostumado por aí.
+/     .twitter_message
+/       p
+/         a= link_to @last_tweet['text'], "https://twitter.com/#!/Catarse_/status/#{@last_tweet['id_str']}", target: :_blank

@@ -8,20 +8,22 @@ script type="text/template" id="backer_template"
   .backer
     | <% if(anonymous) { %>
     img src="/images/user.png" class="backer_avatar"
-    p#text
-      |<%= confirmed_at %>
-      em.anon=" #{t('.anonymous_backer')}"
-    #backed
-      p= t('.anonymous_description')
+    .back_info
+      p#text
+        em.anon=" #{t('.anonymous_backer')}"
+      p#confirmed
+        | <%= confirmed_at %>
+      p#backed= t('.anonymous_description')
     | <% } else { %>
     a href="<%= user['url'] %>"
       img src="<%= user['image'] %>" class="backer_avatar"
-    p#text
-      | <%= confirmed_at %> &nbsp;
-      a href="<%= user['url'] %>"
-       | <%= user['medium_name'] %>
-    #backed
-      p
+    .back_info
+      p#text
+        a href="<%= user['url'] %>"
+         | <%= user['medium_name'] %>
+      p#confirmed
+        | <%= confirmed_at %>
+      p#backed
         | <%= user['backs_text'] %>
     | <% } %>
     - if current_user and (current_user == @project.user or current_user.admin)
@@ -38,7 +40,6 @@ script type="text/template" id="backer_template"
         | <% } %>
         br
         | <% if (reward) { %>
-        | &nbsp;
         = "#{t('activerecord.models.reward')}: "
         | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
         | <% } else { %>

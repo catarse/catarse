@@ -1,0 +1,25 @@
+.dropdown
+  display: none
+  list-style: none
+  width: 100px
+  background: white
+  padding: 5px
+  position: absolute
+  +border-radius(4px)
+  +box-shadow(rgba(black, 0.3) 1px 1px 2px)
+  &.user
+    margin-left: 50px
+    margin-top: 15px
+  li
+    width: 100%
+    text-align: left
+    margin-top: 5px
+    .small
+      font-family: Lato-Bold
+      font-size: 11px
+      color: $green
+    &.divider
+      border-bottom: 1px $gryn solid
+      margin-bottom: 5px
+      margin-top: 15px
+

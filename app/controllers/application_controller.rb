@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?, :namespace, :fb_admins
+  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?, :namespace,
+                :fb_admins, :has_institutional_videos?, :institutional_video
   before_filter :set_locale
   before_filter :detect_locale
 
@@ -20,6 +21,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def has_institutional_videos?
+    InstitutionalVideo.visibles.present?
+  end
+  
+  def institutional_video
+    InstitutionalVideo.visibles.random.first
+  end
 
   def fb_admins
     @fb_admins.join(',')
@@ -91,9 +100,10 @@ class ApplicationController < ActionController::Base
     if cookies[:remember_me_id] and cookies[:remember_me_hash]
       @current_user = User.find(cookies[:remember_me_id])
       @current_user = nil unless @current_user.remember_me_hash == cookies[:remember_me_hash]
-      session[:user_id] = @current_user.id
+      return session[:user_id] = @current_user.id
     end
-  rescue
+    return @current_user = request.env['warden'].authenticate(:user) rescue nil
+  rescue Exception => e
     session[:user_id] = nil
   end
   def redirect_back_or_default(default)

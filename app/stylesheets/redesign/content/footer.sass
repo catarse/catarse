@@ -1,0 +1,97 @@
+.footer
+  +grid-system(16)
+  +border-radius(8px)
+  padding: 0 10px 0 10px
+  border: 1px $df_gryn solid
+  background: $ultra_gryn !important
+  .content
+    padding-top: 30px
+    padding-bottom: 10px
+    h3
+      font-family: 'Lato-Bold'
+      font-size: 18px
+      color: $pink
+      padding-bottom: 40px
+      padding-top: 5px
+    .info
+      +grid(4)
+      +grid-suffix(1)
+      h3
+        background: url($images_path+'faq_icon18x18.png') left 5px no-repeat
+        text-indent: 34px
+      ul
+        li
+          margin-bottom: 32px
+          a
+            font-family: "Lato-Regular"
+            font-size: 18px
+            font-weight: lighter
+            color: white
+            text-decoration: none
+            &:hover
+              color: $pink
+
+    .opendata
+      +grid(5)
+      +grid-suffix(1)
+      h3
+        background: url($images_path+'opendata_icon26x26.png') left top no-repeat
+        text-indent: 44px
+      ul
+        display: block
+        li
+          width: 100%
+          float: left
+          margin-bottom: 20px
+          h5
+            float: left
+            font-family: 'Lato-Bold'
+            font-size: 20px
+            color: white
+            padding-right: 10px
+          p
+            padding-top: 3px
+            float: left
+            text-transform: uppercase
+            font-family: Myriad Pro
+            font-size: 16px
+            color: white
+            +opacity(0.5)
+
+    .social
+      +grid(5)
+      h3
+        background: url($images_path+'heart_icon17x14.png') left 6px no-repeat
+        text-indent: 32px
+        &.newsletter
+          padding-top: 30px
+          padding-bottom: 20px
+          background: url($images_path+'newsletter_icon18x15.png') left 32px no-repeat
+      .twitter
+        margin-bottom: 20px
+      form
+        input[type="text"]
+          float: left
+          width: 170px
+          height: 28px
+          +border-radius(4px 0 0 4px)
+          border: 1px $df_gryn solid
+          border-right: none
+          &:focus
+            outline: none
+            border: 1px $pink solid
+            border-right: none
+        input[type="submit"]
+          float: left
+          background: $pink
+          width: 82px
+          height: 32px
+          +border-radius(0 4px 4px 0)
+          color: white
+          font-family: Lato
+          font-size: 12px
+          text-transform: uppercase
+          border: none
+          +transition(all, 0.5s)
+          &:active
+            +box-shadow(rgba(black, 0.5) 0 0 5px inset)

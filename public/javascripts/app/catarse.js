@@ -19,7 +19,8 @@ var CATARSE = {
     if(CATARSE.currentUser)
       location.href = url
     else
-      CATARSE.router.navigate("login/" + encodeURIComponent(url), true)
+      location.href = "/login"
+      //CATARSE.router.navigate("login/" + encodeURIComponent(url), true)
   },
   
   common: {

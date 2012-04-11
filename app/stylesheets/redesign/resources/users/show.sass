@@ -1,0 +1,187 @@
+body[data-namespace="null"][data-controller="users"][data-action="show"]
+  #creditsModal
+    h3
+      font-family: Lato-Bold
+    .modal-body
+      font-family: Lato-Regular
+    .modal-footer
+      a
+        font-family: Lato-Regular
+  #user_profile
+    padding-top: 20px
+    padding-bottom: 20px
+    float: left
+    #user_profile_content
+      .content
+        p.empty
+          text-align: center
+          font-family: Lato-Regular
+          font-size: 14px
+    .section_header
+      +grid(12)
+      +grid-suffix(1)
+      .profile_image
+        +grid(3)
+        +alpha
+        img
+          +box-shadow(rgba(black, 0.4) 2px 2px 5px)
+      .profile_title
+        +grid(9)
+        +omega
+        h1
+          color: $ultra_gryn
+          font-size: 28px
+          font-family: 'Lato-Bold'
+          padding: 4px 0 10px
+        h4
+          color: $ultra_gryn
+          font-size: 16px
+          font-family: Arial
+          line-height: 140%
+    .user_social
+      +grid(3)
+      li
+        font-family: 'Lato-Regular'
+        font-size: 12px
+        padding: 0 0 5px 25px
+        margin-bottom: 10px
+        +opacity(0.8)
+        a
+          color: black
+          +transition(all, 0.5s)
+          text-decoration: none
+          &:hover
+            color: $pink
+        &.email
+          background: url($images_path+'social_icons.png') left top no-repeat
+        &.facebook
+          padding-top: 2px
+          background: url($images_path+'social_icons.png') left -25px no-repeat
+        &.twitter
+          padding-top: 2px
+          background: url($images_path+'social_icons.png') left -54px no-repeat
+    .tab_container
+      padding-top: 20px
+      margin-bottom:  20px
+    #user_backed_projects
+      ul.collection_list
+        li
+          margin-bottom: 30px
+    #user_created_projects
+      float: left
+      ul.collection_list
+        float: left
+        li
+          float: left
+          margin-bottom: 30px
+    #user_settings
+      +grid(16)
+      +omega
+      display: none
+
+    #user_credits
+      +grid(16)
+      +omega
+      display: none
+      .current_credits
+        p
+          font-size: 24px
+          font-family: Lato-Bold
+          color: $ultra_gryn
+          padding-bottom: 5px
+      #current_credits
+        color: $light_green
+      .table_title
+        font-family: Lato-Regular
+        font-size: 20px
+        color: $dark_green
+        padding-top: 14px
+        padding-bottom: 10px
+      .table_content
+        th
+          font-family: Lato-Bold
+          font-size: 16px
+        td
+          font-family: Lato-Regular
+          font-size: 14px
+          a
+            text-decoration: none
+            color: $blue
+            +transition(all, 0.5s)
+            &:hover
+              color: $pink
+  #gravatar_hint.alert.alert-info
+    font-family: Lato-Regular
+    font-size: 16px
+    // color: rgba(black, 0.5)
+    p
+      padding: 10px 0 0
+      a
+        color: black
+        text-decoration: none
+        font-family: Lato-Bold
+        +transition(all, 0.5s)
+        &:hover
+          color: $pink
+    a
+      img
+        float: left
+        margin-right: 20px
+  #social_info
+    margin-top: 20px
+  #my_data, #social_info
+    h1
+      font-family: Lato-Bold
+      font-size: 25px
+      color: $ultra_gryn
+    ul
+      padding-top: 15px
+      li
+        font-family: Lato-Regular
+        font-size: 15px
+        margin-bottom: 15px
+        .on_the_spot_editing
+          color: $pink
+        .hint
+          padding-top: 5px
+          font-size: 13px
+
+  #change_password
+    h1
+      font-family: Lato-Bold
+      font-size: 25px
+      color: $ultra_gryn
+      padding-top: 20px
+    ul
+      padding-top: 15px
+      li
+        font-family: Lato-Regular
+        font-size: 15px
+        margin-bottom: 15px
+        .on_the_spot_editing
+          color: $pink
+        .hint
+          padding-top: 5px
+          font-size: 13px
+
+
+
+      // #buy_credits
+      //   background-color: #DDDBD1
+      //   background-color: rgba(179,177,157,0.3)
+      //   border: 3px solid #BDBBB1
+      //   border: 3px solid rgba(173,171,151,0.2)
+      //   +border-radius(12px)
+      //   +box-shadow(rgba(0,0,0,0.5), 4px, 4px, 5px)
+      //   padding: 20px
+      //   line-height: 24px
+      //   text-align: center
+      //   margin-bottom: 20px
+      //   form
+      //     margin-top: 20px
+      // table
+      //   margin-bottom: 32px
+      //   td.status
+      //     width: 200px
+      // .error
+      //   color: #F44

@@ -36,6 +36,7 @@ class Reward < ActiveRecord::Base
   def as_json(options={})
     {
       :id => id,
+      :display_with_label => I18n.t('projects.rewards.reward_title', :minimum => display_minimum),
       :display_minimum => display_minimum,
       :description => description,
       :short_description => short_description,
