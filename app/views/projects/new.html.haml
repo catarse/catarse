@@ -1,4 +1,9 @@
-= content_for :content_header do
-  %h1= t('.title')
-  %h2= t('.subtitle')
-= render 'form'
+#page_content
+  .container
+    .start_content
+      .title
+        %h1= t('.title')
+        %h2= t('.subtitle')
+      .bootstrap-form
+        = render 'form'
+    .clearfix
