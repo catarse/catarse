@@ -11179,6 +11179,206 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   color: rgba(0, 0, 0, 0.6);
 }
 
+/* line 4, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px;
+  padding-top: 15px;
+}
+/* line 7, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .title {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px;
+  margin-left: 0;
+  padding-bottom: 40px;
+}
+/* line 11, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .title h1 {
+  color: #333333;
+  font-family: "Lato-Regular";
+  font-size: 28px;
+  padding: 5px 0;
+}
+/* line 16, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .title h2 {
+  color: rgba(51, 51, 51, 0.7);
+  font-family: Arial;
+  font-size: 18px;
+}
+/* line 20, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info {
+  float: left;
+  padding-bottom: 40px;
+}
+/* line 23, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info #project_image {
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
+  box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
+  float: left;
+  margin-right: 20px;
+}
+/* line 27, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info h1 {
+  float: left;
+  width: 600px;
+  font-family: "Lato-Bold";
+  font-size: 22px;
+  line-height: 130%;
+  padding-bottom: 20px;
+}
+/* line 34, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info h1 a {
+  color: #e75297;
+  text-decoration: none;
+}
+/* line 37, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info #review_text {
+  height: 80px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding-right: 20px;
+  font-family: Arial;
+  font-size: 15px;
+  line-height: 140%;
+  float: left;
+  width: 600px;
+}
+/* line 47, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info #review_text strong {
+  font-size: 18px;
+  color: #59af6d;
+  font-weight: bold;
+}
+/* line 51, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #credits_notice {
+  font-family: "Lato-Regular";
+  font-size: 16px;
+}
+/* line 54, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #credits_notice strong {
+  font-family: "Lato-Bold";
+  font-size: 20px;
+}
+/* line 57, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment {
+  font-family: "Lato-Regular";
+}
+/* line 59, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment h1 {
+  font-size: 20px;
+  text-align: center;
+}
+/* line 62, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment a {
+  color: #e75297;
+}
+/* line 64, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment .international_important {
+  padding-top: 15px;
+}
+/* line 66, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment .international_important p {
+  font-family: Arial;
+  font-size: 13px;
+  line-height: 130%;
+  clear: both;
+}
+/* line 71, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment form {
+  padding-top: 15px;
+}
+/* line 73, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment form .bootstrap-twitter {
+  padding-top: 10px;
+}
+/* line 75, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form {
+  margin: 0 auto;
+  width: 480px;
+  padding-top: 20px;
+}
+/* line 78, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form.dont_align {
+  margin: 0 !important;
+}
+/* line 81, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form input.ok, body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form textarea.ok {
+  background: url("/images/tick_16.png") no-repeat 96% center;
+}
+/* line 83, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form input.error, body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form textarea.error {
+  background: url("/images/delete_16.png") no-repeat 96% center;
+}
+/* line 85, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+/* line 89, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li label {
+  font-family: "Lato-Regular";
+}
+/* line 91, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_email_input {
+  clear: both;
+  width: 450px;
+}
+/* line 94, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_email_input input[type="text"] {
+  width: 100%;
+}
+/* line 96, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_zip_code_input {
+  clear: left;
+}
+/* line 98, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_number_input {
+  clear: left;
+}
+/* line 100, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_neighbourhood_input {
+  clear: left;
+}
+/* line 102, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_state_input {
+  clear: left;
+  margin-bottom: 20px;
+}
+/* line 105, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form abbr {
+  color: red;
+}
+/* line 107, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit {
+  padding-bottom: 30px;
+}
+/* line 109, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms {
+  padding-bottom: 20px;
+}
+/* line 111, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms input {
+  float: left;
+  margin-right: 15px;
+}
+/* line 114, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms .inline {
+  font-family: "Lato-Regular";
+}
+/* line 116, ../../app/stylesheets/redesign/resources/backers/review.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms .inline a {
+  color: #4383d1;
+}
+
 /* line 3, ../../app/stylesheets/redesign/resources/users/show.sass */
 body[data-namespace="null"][data-controller="users"][data-action="show"] #creditsModal h3 {
   font-family: Lato-Bold;
