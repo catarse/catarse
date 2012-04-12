@@ -1,0 +1,118 @@
+body[data-controller="backers"][data-namespace="projects"][data-action="review"]
+  #page_content
+    .container
+      #project_review
+        +grid(16)
+        padding-top: 15px
+        .title
+          +grid(16)
+          +alpha
+          padding-bottom: 40px
+          h1
+            color: $ultra_gryn
+            font-family: "Lato-Regular"
+            font-size: 28px
+            padding: 5px 0
+          h2
+            color: rgba($ultra_gryn, 0.7)
+            font-family: Arial
+            font-size: 18px
+        .project_info
+          float: left
+          padding-bottom: 40px
+          #project_image
+            @include box-shadow(rgba(black, 0.5) 1px 1px 3px)
+            float: left
+            margin-right: 20px
+          h1
+            float: left
+            width: 600px
+            font-family: 'Lato-Bold'
+            font-size: 22px
+            line-height: 130%
+            padding-bottom: 20px
+            a
+              color: $pink
+              text-decoration: none
+          #review_text
+            height: 80px
+            overflow: hidden
+            overflow-y: auto
+            padding-right: 20px
+            font-family: Arial
+            font-size: 15px
+            line-height: 140%
+            float: left
+            width: 600px
+            strong
+              font-size: 18px
+              color: $green
+              font-weight: bold
+        #credits_notice
+          font-family: 'Lato-Regular'
+          font-size: 16px
+          strong
+            font-family: 'Lato-Bold'
+            font-size: 20px
+        #international_payment
+          font-family: 'Lato-Regular'
+          h1
+            font-size: 20px
+            text-align: center
+          a
+            color: $pink
+          .international_important
+            padding-top: 15px
+            p
+              font-family: Arial
+              font-size: 13px
+              line-height: 130%
+              clear: both
+          form
+            padding-top: 15px
+            .bootstrap-twitter
+              padding-top: 10px
+        #review_form
+          margin: 0 auto
+          width: 480px
+          &.dont_align
+            margin: 0 !important
+          padding-top: 20px
+          input.ok,textarea.ok
+            background: url('/images/tick_16.png') no-repeat 96% center
+          input.error,textarea.error
+            background: url('/images/delete_16.png') no-repeat 96% center
+          li
+            float: left
+            margin-right: 20px
+            margin-bottom: 10px
+            label
+              font-family: 'Lato-Regular'
+            &#user_email_input
+              clear: both
+              width: 450px
+              input[type="text"]
+                width: 100%
+            &#user_address_zip_code_input
+              clear: left
+            &#user_address_number_input
+              clear: left
+            &#user_address_neighbourhood_input
+              clear: left
+            &#user_address_state_input
+              clear: left
+              margin-bottom: 20px
+          abbr
+            color: red
+          .submit
+            padding-bottom: 30px
+            .accept_terms
+              padding-bottom: 20px
+              input
+                float: left
+                margin-right: 15px
+              .inline
+                font-family: 'Lato-Regular'
+                a
+                  color: $blue
+
