@@ -79,3 +79,10 @@ Factory.define :projects_curated_page do |f|
   f.association :project, :factory => :project
   f.association :curated_page, :factory => :curated_page
 end
+
+Factory.define :institutional_video do |f|
+  f.title "My title"
+  f.description "Some Description"
+  f.video_url "http://vimeo.com/35492726"
+  f.visible false
+end

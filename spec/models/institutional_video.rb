@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AdvertVideo do
+describe InstitutionalVideo do
   context "validations" do
     %w(title description video_url).each do |field|
       it{ should validate_presence_of field.to_sym }
@@ -10,13 +10,13 @@ describe AdvertVideo do
   describe "scopes" do
     context "visibles" do
       before(:each) do
-        10.times { Factory.create(:advert_video, :visible => true )}
-        4.times { Factory.create(:advert_video, :visible => false )}        
+        10.times { Factory.create(:institutional_video, :visible => true )}
+        4.times { Factory.create(:institutional_video, :visible => false )}        
       end
       
       it "should show only visibles" do
-        AdvertVideo.all.should have(14).iten
-        AdvertVideo.visibles.should have(10).itens
+        InstitutionalVideo.all.should have(14).iten
+        InstitutionalVideo.visibles.should have(10).itens
       end
     end
   end
