@@ -7,9 +7,9 @@
       == render 'layouts/institutional_video_header'
     - elsif current_user
       - if @recommended_project
-        = render "layouts/project_header", :title => t('layouts.recommended_header.sugest_for_you'), :project => @recommended_project
+        = render "layouts/project_header", :title => t('layouts.recommended_header.sugest_for_you'), :project => @recommended_project if @recommended_project
       - else
-        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @fourth_project
+        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @fourth_project if @fourth_project
     - else
-        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @fourth_project
+        = render "layouts/project_header", :title => t('layouts.recommended_header.highlight_project'), :project => @fourth_project if @fourth_project
   .clearfix
