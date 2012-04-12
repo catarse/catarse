@@ -11311,11 +11311,11 @@ body[data-controller="backers"][data-namespace="projects"][data-action="review"]
 }
 /* line 81, ../../app/stylesheets/redesign/resources/backers/review.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form input.ok, body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form textarea.ok {
-  background: url("/images/tick_16.png") no-repeat 96% center;
+  background: url("/images/catarse/tick_16.png") no-repeat 96% center;
 }
 /* line 83, ../../app/stylesheets/redesign/resources/backers/review.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form input.error, body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form textarea.error {
-  background: url("/images/delete_16.png") no-repeat 96% center;
+  background: url("/images/catarse/delete_16.png") no-repeat 96% center;
 }
 /* line 85, ../../app/stylesheets/redesign/resources/backers/review.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li {
