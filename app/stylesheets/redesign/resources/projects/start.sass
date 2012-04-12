@@ -1,0 +1,50 @@
+body[data-controller="projects"][data-action="start"]
+  #loading
+    display: none
+  #page_content
+    .container
+      .start_content
+        +grid(16)
+        padding-top: 15px
+        .title
+          +grid(16)
+          +alpha
+          padding-bottom: 40px
+          h1
+            color: $ultra_gryn
+            font-family: "Lato-Regular"
+            font-size: 28px
+            padding: 5px 0
+          h2
+            color: rgba($ultra_gryn, 0.7)
+            font-family: Arial
+            font-size: 18px
+      #project_warning
+        .alert
+          font-size: 15px
+          font-family: Arial
+          a
+            color: $pink
+      .bootstrap-form
+        form
+          .accept
+            padding-top: 20px
+            padding-bottom: 20px
+            input
+              display: inline
+            label
+              display: inline
+          label
+            font-family: 'Lato-Regular'
+            font-size: 15px
+            color: rgba(black, 0.8)
+          textarea
+            width: 100%
+            height: 80px
+          .inline-hints
+            font-size: 13px
+            font-family: Arial
+            line-height: 130%
+            color: rgba(black, 0.6)
+            padding-bottom: 20px
+
