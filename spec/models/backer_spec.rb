@@ -1,39 +1,6 @@
 require 'spec_helper'
 
 describe Backer do
-
-  # it "should update user.credits when save a backer" do
-  #   u = Factory(:user)
-  #   u.save
-  #   b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :user => u)
-  #   b.save
-  #   u.credits.should == 10
-  #   b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :user => u)
-  #   b2.save
-  #   u.credits.should == 20
-  # end
-
-  #it "should raise an error when request refund for an already refunded credit" do
-  #  back = Factory.build(:backer, :refunded => true, :can_refund => true)
-  #  back.save
-  #  lambda {back.refund!}.should raise_error I18n.t('credits.refund.refunded')
-  #end
-
-  #it "should raise an error when request refund for an already requested refund" do
-  #  back = Factory.build(:backer, :requested_refund => true, :refunded => false, :can_refund => true)
-  #  back.save
-  #  lambda {back.refund!}.should raise_error I18n.t('credits.refund.requested_refund')
-  #end
-
-  #it "should not be able to request refund without sufficient credits" do
-  #  back = Factory.build(:backer, :requested_refund => false, :refunded => false, :can_refund => true)
-  #  back.save
-  #  back.update_attribute :value, 100
-  #  back.user.update_attribute :credits, 50
-  #  lambda {back.refund!}.should raise_error I18n.t('credits.refund.no_credits')
-  #  
-  #end
-
   it "should not add backer value as credits for user if could not be refunded" do
     u = Factory(:user)
     u.save
@@ -57,43 +24,7 @@ describe Backer do
   end
 
   it { should have_many(:payment_logs) }
-  it "should be valid from factory" do
-    b = Factory(:backer)
-    b.should be_valid
-  end
-  it "should have a project" do
-    b = Factory.build(:backer, :project => nil)
-    b.should_not be_valid
-  end
-  it "should have a user" do
-    b = Factory.build(:backer, :user => nil)
-    b.should_not be_valid
-  end
-  it "should have a value" do
-    b = Factory.build(:backer, :value => nil)
-    b.should_not be_valid
-  end
-  it "should have a rounded display_value" do
-    b = Factory.build(:backer, :value => 99.99)
-    b.display_value.should == "R$ 100"
-    b = Factory.build(:backer, :value => 1)
-    b.display_value.should == "R$ 1"
-    b = Factory.build(:backer, :value => 0.01)
-    b.display_value.should == "R$ 0"
-  end
-  it "should have greater than 10 value" do
-    b = Factory.build(:backer)
-    b.value = -0.01
-    b.should_not be_valid
-    b.value = 0.99
-    b.should_not be_valid
-    b.value = 9.99
-    b.should_not be_valid
-    b.value = 10.00
-    b.should be_valid
-    b.value = 10.01
-    b.should be_valid
-  end
+
   it "should have reward from the same project only" do
     backer = Factory.build(:backer)
     project1 = Factory(:project)
@@ -104,6 +35,7 @@ describe Backer do
     backer.reward = reward
     backer.should_not be_valid
   end
+
   it "should have a value at least equal to reward's minimum value" do
     project = Factory(:project)
     reward = Factory(:reward, :minimum_value => 500, :project => project)
@@ -115,6 +47,7 @@ describe Backer do
     backer.value = 500.01
     backer.should be_valid
   end
+
   it "should not be able to back if reward's maximum backers' been reached (and maximum backers > 0)" do
     project = Factory(:project)
     reward1 = Factory(:reward, :maximum_backers => nil, :project => project)
@@ -140,15 +73,35 @@ describe Backer do
     backer = Factory.build(:backer, :reward => reward3, :project => project)
     backer.should_not be_valid
   end
-  it "should define a key after create" do
-    Kernel.stubs(:rand).returns(1)
-    Kernel.rand.should == 1
-    backer = Factory(:backer)
-    backer.key.should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s
+
+  describe "after_create" do
+    before{ Kernel.stubs(:rand).returns(1) }
+
+    subject{ @backer = Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated') }
+
+    its(:key){ should == Digest::MD5.new.update("#{@backer.id}###{@backer.created_at}##1").to_s }
+    its(:payment_method){ should == 'MoIP' }
   end
-  it "after create should define 'MoIP' how default payment_method" do
-    backer = Factory(:backer)
-    backer.payment_method.should == 'MoIP'
+
+  describe "#valid?" do
+    it{ should validate_presence_of(:project) }
+    it{ should validate_presence_of(:user) }
+    it{ should validate_presence_of(:value) }
+    it{ should_not allow_value(9.99).for(:value) }
+    it{ should allow_value(10).for(:value) }
+    it{ should allow_value(20).for(:value) }
+  end
+
+  describe "#display_value" do
+    context "when the value has decimal places" do
+      subject{ Factory.build(:backer, :value => 99.99).display_value }
+      it{ should == "R$ 100" }
+    end
+
+    context "when the value does not have decimal places" do
+      subject{ Factory.build(:backer, :value => 1).display_value }
+      it{ should == "R$ 1" }
+    end
   end
 
   describe "#payment_service_fee" do
