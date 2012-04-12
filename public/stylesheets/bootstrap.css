@@ -11379,6 +11379,98 @@ body[data-controller="backers"][data-namespace="projects"][data-action="review"]
   color: #4383d1;
 }
 
+/* line 4, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px;
+  padding-top: 15px;
+}
+/* line 7, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .title {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px;
+  margin-left: 0;
+  padding-bottom: 40px;
+}
+/* line 11, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .title h1 {
+  color: #333333;
+  font-family: "Lato-Regular";
+  font-size: 28px;
+  padding: 5px 0;
+}
+/* line 16, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .title h2 {
+  color: rgba(51, 51, 51, 0.7);
+  font-family: Arial;
+}
+/* line 19, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default #how_it_works {
+  font-family: Arial;
+  font-size: 15px;
+  line-height: 140%;
+}
+/* line 23, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default #how_it_works strong {
+  font-weight: bold;
+}
+/* line 25, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default #how_it_works a {
+  color: #e75297;
+}
+/* line 27, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .default_text {
+  padding-top: 20px;
+}
+/* line 29, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .default_text h2 {
+  font-family: "Lato-Bold";
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.9);
+  padding-bottom: 10px;
+}
+/* line 34, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .default_text h3 {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.9);
+  padding-bottom: 5px;
+}
+/* line 40, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .default_text p {
+  font-family: Arial;
+  font-size: 15px;
+  line-height: 130%;
+  padding-bottom: 15px;
+  color: rgba(0, 0, 0, 0.7);
+}
+/* line 46, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .center_form {
+  text-align: center;
+}
+/* line 48, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .center_form .check {
+  margin-bottom: 15px;
+}
+/* line 50, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .center_form .check input {
+  display: inline;
+}
+/* line 52, ../../app/stylesheets/redesign/resources/static/default.sass */
+body[data-controller="static"] #page_content .container .static_default .center_form .check label {
+  display: inline;
+  font-family: Arial;
+  font-size: 15px;
+  line-height: 130%;
+}
+
 /* line 3, ../../app/stylesheets/redesign/resources/users/show.sass */
 body[data-namespace="null"][data-controller="users"][data-action="show"] #creditsModal h3 {
   font-family: Lato-Bold;

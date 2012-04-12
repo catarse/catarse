@@ -1,13 +1,23 @@
 = content_for :title, t('.title')
-= content_for :content_header do
-  %h1= t('.title')
-  %h2= t('.subtitle')
-#how_it_works= render 'how_it_works'
-#more_tips.hide= render 'more_tips'
-= render 'guidelines_text'
-= form_tag(start_projects_path, :method => :get, :id => 'guidelines_form') do
-  %fieldset
-    = check_box_tag 'accept'
-    = label_tag 'accept', t('.accept')
-  %fieldset
-    = submit_tag t('.submit'), :disabled => true
+#page_content
+  .container
+    .static_default
+      .title
+        %h1= t('.title')
+        %h2= t('.subtitle')
+      .clearfix
+      .bootstrap-alert
+        .alert.alert-info
+          #how_it_works= render 'how_it_works'
+      .default_text
+        #more_tips.hide= render 'more_tips'
+        = render 'guidelines_text'
+      .bootstrap-form.center_form
+        = form_tag(start_projects_path, :method => :get, :id => 'guidelines_form') do
+          %fieldset.check
+            = check_box_tag 'accept'
+            = label_tag 'accept', t('.accept')
+          %fieldset
+            .bootstrap-twitter
+              = submit_tag t('.submit'), :disabled => true, :class=>'btn'
+    .clearfix
