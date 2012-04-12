@@ -74,16 +74,13 @@ describe Backer do
     backer.should_not be_valid
   end
 
-  it "should define a key after create" do
-    Kernel.stubs(:rand).returns(1)
-    Kernel.rand.should == 1
-    backer = Factory(:backer)
-    backer.key.should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s
-  end
+  describe "after_create" do
+    before{ Kernel.stubs(:rand).returns(1) }
 
-  it "after create should define 'MoIP' how default payment_method" do
-    backer = Factory(:backer)
-    backer.payment_method.should == 'MoIP'
+    subject{ @backer = Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated') }
+
+    its(:key){ should == Digest::MD5.new.update("#{@backer.id}###{@backer.created_at}##1").to_s }
+    its(:payment_method){ should == 'MoIP' }
   end
 
   describe "#valid?" do
