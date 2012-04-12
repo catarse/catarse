@@ -11,7 +11,6 @@ coverage
 .DS_Store
 public/uploads/*chromedriver.log
 public/uploads/
-public/stylesheets
 chromedriver.log
 .use_capybara_webkit
 config/locales/.wti
