@@ -12,13 +12,10 @@ RSpec.configure do |config|
   config.include Factory::Syntax::Methods
   config.include ActionView::Helpers::TextHelper
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
 
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
@@ -27,7 +24,6 @@ RSpec.configure do |config|
 
   config.before(:each) do
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
-    DatabaseCleaner.clean
   end
 
   def mock_tumblr method=:two
