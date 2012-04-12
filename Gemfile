@@ -52,8 +52,7 @@ gem 'dalli'
 
 gem "devise"
 
-
-group :development do
+group :development, :production do
   gem 'thin'
 end
 
@@ -69,7 +68,7 @@ end
 
 group :test do
   gem 'shoulda'
-  gem 'factory_girl_rails', '1.4.0'
+  gem 'factory_girl_rails', '1.7.0'
 end
 
 # Putting pg to the end because of a weird bug with Lion, pg and openssl
