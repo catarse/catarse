@@ -20,25 +20,34 @@
       :javascript
         var rewards_count = #{@project.rewards.size}
         var rewards_id = #{@project.rewards.size}
-      %h3= t('.rewards_title')
-      %p= t('.rewards_description')
+      .reward_title
+        %h3= t('.rewards_title')
+        %p= t('.rewards_description')
       #rewards_wrapper
         = form.semantic_fields_for :rewards do |reward|
           .reward
             .remove_reward_wrapper
-              %a.remove_reward{:href=>'#'}= t('remove')
+              .bootstrap-twitter
+                = link_to '#', class: 'remove_reward btn btn-danger' do
+                  %i.icon-trash.icon-white
+                  = t('remove')
             = reward.input :description
             .left
               = reward.input :minimum_value
             .right
               = reward.input :maximum_backers
-            .clear
+            .clearfix
       #add_reward_wrapper
-        %a#add_reward{:href=>'#'}= t('.add_reward')
+        .bootstrap-twitter
+          = link_to '#', class: 'add_reward btn btn-success', id: 'add_reward' do
+            %i.icon-plus.icon-white
+            = t('.add_reward')
+      .clearfix
     .submit
-      %fieldset
+      %fieldset.accept
         = check_box_tag 'accept'
         = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
       = form.buttons do
-        = form.commit_button t('.submit'), :button_html => {:disabled => true}
+        .bootstrap-twitter
+          = form.commit_button t('.submit'), :button_html => {:disabled => true, :class => 'btn'}
 

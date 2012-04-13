@@ -4420,7 +4420,7 @@ table .span12 {
   height: 14px;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
+  background-image: url("/images/catarse/glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
   *margin-right: .3em;
@@ -4432,7 +4432,7 @@ table .span12 {
 }
 /* line 1922, ../../app/stylesheets/redesign/miv/bootstrap.scss */
 .bootstrap-twitter .icon-white {
-  background-image: url("../img/glyphicons-halflings-white.png");
+  background-image: url("/images/catarse/glyphicons-halflings-white.png");
 }
 /* line 1925, ../../app/stylesheets/redesign/miv/bootstrap.scss */
 .bootstrap-twitter .icon-glass {
@@ -11040,7 +11040,34 @@ body[data-controller="projects"][data-action="new"] #page_content .container .st
   width: 940px;
   padding-top: 15px;
 }
-/* line 9, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 10, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .start_content .accept input, body[data-controller="projects"][data-action="new"] #page_content .container .start_content .accept label {
+  display: inline;
+}
+/* line 12, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .start_content .alert-heading {
+  font-family: "Lato-Bold";
+}
+/* line 14, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .start_content .reward_title {
+  padding-top: 20px;
+}
+/* line 16, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .start_content .reward_title h3 {
+  font-family: "Lato-Bold";
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.8);
+}
+/* line 20, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .start_content .reward_title p {
+  font-family: Arial;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 130%;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+/* line 27, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .start_content .title {
   display: inline;
   float: left;
@@ -11050,63 +11077,102 @@ body[data-controller="projects"][data-action="new"] #page_content .container .st
   margin-left: 0;
   padding-bottom: 40px;
 }
-/* line 13, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 31, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .start_content .title h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
-/* line 18, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 36, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .start_content .title h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 18px;
 }
-/* line 23, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 41, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container #project_warning .alert {
   font-size: 15px;
   font-family: Arial;
 }
-/* line 26, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 44, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container #project_warning .alert a {
   color: #e75297;
 }
-/* line 29, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 47, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .accept {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 32, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 50, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .accept input {
   display: inline;
 }
-/* line 34, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 52, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .accept label {
   display: inline;
 }
-/* line 36, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 54, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project label {
   font-family: "Lato-Regular";
   font-size: 15px;
   color: rgba(0, 0, 0, 0.8);
 }
-/* line 40, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 58, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project input[type="text"] {
   width: 99%;
 }
-/* line 42, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 60, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project textarea {
-  width: 97%;
+  width: 99%;
   height: 80px;
 }
-/* line 45, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+/* line 63, ../../app/stylesheets/redesign/resources/projects/_new.sass */
 body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .inline-hints {
   font-size: 13px;
   font-family: Arial;
   line-height: 130%;
   color: rgba(0, 0, 0, 0.6);
   padding-bottom: 20px;
+}
+/* line 70, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .remove_reward_wrapper a {
+  margin-left: 843px;
+  font-family: Arial;
+  font-size: 15px;
+}
+/* line 75, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container #add_reward_wrapper a {
+  float: left;
+  margin-left: 753px;
+  margin-top: -59px;
+  font-family: Arial;
+  font-size: 15px;
+}
+/* line 81, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .reward {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+/* line 85, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .reward .left {
+  float: left;
+  width: 30%;
+  margin-right: 5%;
+}
+/* line 89, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .reward .left input {
+  width: 99%;
+}
+/* line 91, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .reward .right {
+  float: left;
+  width: 30%;
+}
+/* line 94, ../../app/stylesheets/redesign/resources/projects/_new.sass */
+body[data-controller="projects"][data-action="new"] #page_content .container .reward .right input {
+  width: 99%;
 }
 
 /* line 4, ../../app/stylesheets/redesign/resources/backers/_new.sass */
