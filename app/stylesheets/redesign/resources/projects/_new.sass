@@ -6,6 +6,24 @@ body[data-controller="projects"][data-action="new"]
       .start_content
         +grid(16)
         padding-top: 15px
+        .accept
+          input, label
+            display: inline
+        .alert-heading
+          font-family: 'Lato-Bold'
+        .reward_title
+          padding-top: 20px
+          h3
+            font-family: 'Lato-Bold'
+            font-size: 16px
+            color: rgba(black, 0.8)
+          p
+            font-family: Arial
+            font-size: 13px
+            color: rgba(black, 0.6)
+            line-height: 130%
+            padding-top: 5px
+            padding-bottom: 10px
         .title
           +grid(16)
           +alpha
@@ -40,7 +58,7 @@ body[data-controller="projects"][data-action="new"]
         input[type="text"]
           width: 99%
         textarea
-          width: 97%
+          width: 99%
           height: 80px
         .inline-hints
           font-size: 13px
@@ -48,4 +66,30 @@ body[data-controller="projects"][data-action="new"]
           line-height: 130%
           color: rgba(black, 0.6)
           padding-bottom: 20px
-
+      .remove_reward_wrapper
+        a
+          margin-left: 843px
+          font-family: Arial
+          font-size: 15px
+      #add_reward_wrapper
+        a
+          float: left
+          margin-left: 753px
+          margin-top: -59px
+          font-family: Arial
+          font-size: 15px
+      .reward
+        padding-top: 10px
+        padding-bottom: 10px
+        margin-bottom: 10px
+        .left
+          float: left
+          width: 30%
+          margin-right: 5%
+          input
+            width: 99%
+        .right
+          float: left
+          width: 30%
+          input
+            width: 99%

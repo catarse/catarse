@@ -1,6 +1,6 @@
 $('#add_reward').click(function(e){
   e.preventDefault()
-  var new_reward = '<div class="reward">' + $($('.reward')[0]).html() + '</div>'
+  var new_reward = '<div class="clearfix"></div><div class="reward">' + $($('.reward')[0]).html() + '</div>'
   new_reward = new_reward.replace(/\_0\_/g, '_' + rewards_id + '_')
   new_reward = new_reward.replace(/\[0\]/g, '[' + rewards_id + ']')
   new_reward = $(new_reward)
