@@ -3,6 +3,30 @@ module Reports
   module Users
     class Backers
       class << self
+        def all_confirmed_backers
+          @backers = Backer.confirmed.includes(:project, :reward)
+
+          @csv = CSV.generate(:col_sep => ',') do |csv_string|
+            csv_string << [
+              'Valor',
+              'Recompensa Selecionada Valor',
+              'Recompensa Selecionada Desc.',
+              'Confirmado em',
+              'Projeto'
+            ]
+
+            @backers.each do |backer|
+              csv_string << [
+                backer.value,
+                (backer.reward.minimum_value if backer.reward),
+                (backer.reward.description if backer.reward),
+                I18n.l(backer.confirmed_at.to_date),
+                backer.project.name
+              ]
+            end
+          end
+        end
+
         def most_backed(limit=50)
           @users = User.most_backeds.limit(limit)
 
