@@ -1,6 +1,9 @@
 script type="text/template" id="empty_projects_template"
   .empty= t('.empty')
 
+script type="text/template" id="projects_template"
+  ul.collection_list
+
 script type="text/template" id="project_template"
   .project[itemscope itemtype="http://schema.org/CreativeWork" class=(custom_class if defined?(custom_class))]
     meta[itemprop="dateCreated" content="<%= created_at %>"]
