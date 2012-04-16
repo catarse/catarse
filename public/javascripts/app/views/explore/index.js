@@ -18,6 +18,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   }),
 
   ProjectsView: CATARSE.PaginatedView.extend({
+    template: _.template(this.$('#projects_template').html()),
     emptyTemplate: _.template(this.$('#empty_projects_template').html())
   }),
 
