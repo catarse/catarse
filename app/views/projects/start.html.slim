@@ -2,8 +2,8 @@
   .container
     .start_content
       .title
-        %h1= t('.title')
-        %h2= t('.subtitle')
+        h1= t('.title')
+        h2= t('.subtitle')
       .clearfix
       #project_warning
         .bootstrap-alert
@@ -11,23 +11,23 @@
             = t('.project_warning.content_html', :link => link_to(t('.project_warning.help_link'), "#{t('site.blog')}post/2816685141/guia-colocar-projeto-catarse", :target => :_blank))
       .bootstrap-form
         = form_tag(send_mail_projects_path, :id => 'start_project_form') do
-          %fieldset
+          fieldset
             = label_tag 'about', t('.about')
             = text_area_tag 'about'
-            %p.inline-hints= t('.about_hint')
+            p.inline-hints= t('.about_hint')
             = label_tag 'rewards', t('.rewards')
             = text_area_tag 'rewards'
-            %p.inline-hints= t('.rewards_hint')
+            p.inline-hints= t('.rewards_hint')
             = label_tag 'links', t('.links')
             = text_area_tag 'links'
-            %p.inline-hints= t('.links_hint')
+            p.inline-hints= t('.links_hint')
             = label_tag 'contact', t('.contact')
             = text_field_tag 'contact', (current_user.email if current_user)
           .submit
-            %fieldset.accept
+            fieldset.accept
               = check_box_tag 'accept'
               = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
-            %fieldset
+            fieldset
               .bootstrap-twitter
                 = submit_tag t('.submit'), :disabled => true, :class => 'btn btn-large'
               = image_tag "loading.gif", :id => 'loading'
