@@ -10,18 +10,18 @@ module Reports
             csv_string << [
               'Valor',
               'Recompensa Selecionada Valor',
-              'Recompensa Selecionada Desc.',
-              'Confirmado em',
-              'Projeto'
+              'Feito em',
+              'Projeto',
+              'Categoria'
             ]
 
             @backers.each do |backer|
               csv_string << [
                 backer.value,
                 (backer.reward.minimum_value if backer.reward),
-                (backer.reward.description if backer.reward),
-                I18n.l(backer.confirmed_at.to_date),
-                backer.project.name
+                (backer.creted_at.strftime("%d/%m/%Y") if backer.created_at),
+                backer.project.name,
+                backer.project.category.name
               ]
             end
           end
