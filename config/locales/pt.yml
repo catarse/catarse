@@ -129,6 +129,7 @@ pt:
         current_password: "Senha atual"
         email: Email
         full_name: "Nome completo"
+        name: "Nome"
         password: Senha
         password_confirmation: "Confirmação de senha"
         phone_number: "Telefone celular"
@@ -237,7 +238,7 @@ pt:
         register_title: "Cadastre-se"
         register_subtitle: "Utilize seu endereço de e-mail"
         with_facebook: "Entre utilizando o facebook"
-        with_facebook_subtitle: "Uma maneira muito rapida de acessar"
+        with_facebook_subtitle: "Uma maneira muito rápida de acessar"
         with_another_social: "Não tem conta no facebook?"
         with_another_social_subtitle: "Entre utilizando sua conta de outra rede social"
       signed_in: "Login realizado com sucesso. Seja bem-vindo!"
@@ -312,8 +313,8 @@ pt:
     application:
       menu:
         explore: "Explore os projetos"
-        login: Entrar
-        signup: Cadastre-setre-se
+        login: "Login"
+        signup: "Cadastre-se"
         submit: "Envie seu projeto"
       notifications:
         new_curated_pages: "Já conhece os Canais Catárticos? <a href='#curated_pages' id='curated_link'>Olha aqui</a>!"
@@ -321,7 +322,7 @@ pt:
       blog: blog
       help: ajuda
       signup: cadastre-se
-      signin: entrar
+      signin: login
       explore: explore
       submit_project: envie
       profile: meu perfil
