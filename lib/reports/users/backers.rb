@@ -19,7 +19,7 @@ module Reports
               csv_string << [
                 backer.value,
                 (backer.reward.minimum_value if backer.reward),
-                (backer.creted_at.strftime("%d/%m/%Y") if backer.created_at),
+                (backer.created_at.strftime("%d/%m/%Y") if backer.created_at),
                 backer.project.name,
                 backer.project.category.name
               ]
