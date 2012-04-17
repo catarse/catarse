@@ -599,10 +599,17 @@ en:
         title: "Be part of it and share this project"
     start:
       about: "Describe your project and how much do you need"
+      category: "Project category"
+      how_much_you_need: "How much do you want to raise?"
       about_hint: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
       contact: "Leave us your email address so we can contact you"
       links: "Where can we find more about you and your project?"
       links_hint: "Leave us as many links as you have, so we can get to know your work and your project better. Doesn't have to be something formal or fancy, just a few useful links."
+      video: "Your project already have a video?"
+      twitter: "Have twitter account?"
+      blog: "Have a blog about the project?"
+      know_us_via: "How did you meet Catarse?"
+      how_works: "How to mobilize backers to raise $ needed for enforcement?"
       project_warning:
         content_html: "Want to have your project selected? Don't forget to read %{link}."
         help_link: "our guide"
