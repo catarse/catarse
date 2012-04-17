@@ -12,17 +12,52 @@
       .bootstrap-form
         = form_tag(send_mail_projects_path, :id => 'start_project_form') do
           fieldset
-            = label_tag 'about', t('.about')
-            = text_area_tag 'about'
-            p.inline-hints= t('.about_hint')
-            = label_tag 'rewards', t('.rewards')
-            = text_area_tag 'rewards'
-            p.inline-hints= t('.rewards_hint')
-            = label_tag 'links', t('.links')
-            = text_area_tag 'links'
-            p.inline-hints= t('.links_hint')
-            = label_tag 'contact', t('.contact')
-            = text_field_tag 'contact', (current_user.email if current_user)
+            .input
+              = label_tag 'how_much_you_need', t('.how_much_you_need')
+              .input-prepend
+                span.add-on R$
+                = text_field_tag 'how_much_you_need'
+            .input
+              = label_tag 'category', t('.category')
+              = select_tag 'category', options_from_collection_for_select(Category.all, "name", "name"), include_blank: true
+            .input
+              = label_tag 'about', t('.about')
+              = text_area_tag 'about'
+              p.inline-hints= t('.about_hint')
+            .input
+              = label_tag 'rewards', t('.rewards')
+              = text_area_tag 'rewards'
+              p.inline-hints= t('.rewards_hint')
+            .input
+              = label_tag 'video', t('.video')
+              = text_field_tag 'video'
+            .input
+              = label_tag 'twitter', t('.twitter')
+              .input-prepend
+                span.add-on @
+                = text_field_tag 'twitter'
+            .input
+              = label_tag 'blog', t('.blog')
+              .input-prepend
+                span.add-on http://
+                = text_field_tag 'blog'
+            .input
+              = label_tag 'links', t('.links')
+              = text_area_tag 'links'
+              p.inline-hints= t('.links_hint')
+            .input
+              = label_tag 'know_us_via', t('.know_us_via')
+              = text_area_tag 'know_us_via'
+            .input
+              = label_tag 'how_works', t('.how_works')
+              = text_area_tag 'how_works'
+            .input
+              = label_tag 'contact', t('.contact')
+              .input-prepend
+                span.add-on
+                  .bootstrap-twitter
+                    i.icon-envelope
+                = text_field_tag 'contact', (current_user.email if current_user)
           .submit
             fieldset.accept
               = check_box_tag 'accept'
