@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
 
         @recommended_project  = presenter.recommended_project
         @project_of_day       = presenter.project_of_day
-        @first_project       = presenter.first_project
+        @first_project        = presenter.first_project
         @second_project       = presenter.second_project
         @third_project        = presenter.third_project
         @fourth_project       = presenter.fourth_project
@@ -55,7 +55,13 @@ class ProjectsController < ApplicationController
 
   def send_mail
     current_user.update_attribute :email, params[:contact] if current_user.email.nil?
-    ProjectsMailer.start_project_email(params[:about], params[:rewards], params[:links], params[:contact], current_user, "#{I18n.t('site.base_url')}#{user_path(current_user)}").deliver
+    ProjectsMailer.start_project_email(
+      params[:about],
+      params[:rewards],
+      params[:links],
+      params[:contact],
+      current_user,
+      "#{I18n.t('site.base_url')}#{user_path(current_user)}").deliver
     flash[:success] = t('projects.send_mail.success')
     redirect_to :root
   end

@@ -1,5 +1,9 @@
 everything_ok = function(){
   var all_ok = true
+  if(!ok('#how_much_you_need'))
+    all_ok = false
+  if(!ok('#how_works'))
+    all_ok = false
   if(!ok('#about'))
     all_ok = false
   if(!ok('#rewards'))
