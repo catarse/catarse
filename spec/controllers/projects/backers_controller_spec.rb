@@ -189,7 +189,6 @@ describe Projects::BackersController do
         request.session[:user_id]=@user.id
         get :index, {:locale => :pt, :project_id => @project.id}
 
-        ActiveSupport::JSON.decode(response.body).to_s.should_not =~ /R\$ 10/
         ActiveSupport::JSON.decode(response.body).to_s.should =~ /Lorem Ipsum/
       end
     end
