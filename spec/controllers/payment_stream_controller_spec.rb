@@ -14,7 +14,7 @@ describe PaymentStreamController do
       backer = Factory(:backer, :confirmed => false)
       post :moip, post_moip_params.merge!({:id_transacao => -1, :status_pagamento => '1', :valor => backer.moip_value})
       response.should_not be_successful
-      backer.reload.confirmed.should_not be_true
+      lambda{ backer.reload }.should raise_error(ActiveRecord::StatementInvalid)
     end
 
     it "should return 422 when moip params is empty" do
@@ -24,7 +24,7 @@ describe PaymentStreamController do
     end
 
     context "when have a payment detail" do
-      before(:each) do
+      before do
         project=create(:project)
         @backer=create(:backer, :payment_token => 'ABCD', :project => project, :confirmed => false)
         create(:payment_detail, :backer => @backer)
@@ -32,7 +32,7 @@ describe PaymentStreamController do
       end
 
       context 'when receive aonther moip request' do
-        before(:each) do
+        before do
           moip_response = moip_query_response.dup
           moip_response["Autorizacao"]["Pagamento"].merge!("Status" => 'BoletoPago')
           MoIP::Client.stubs(:query).with('ABCD').returns(moip_response)
@@ -81,8 +81,6 @@ describe PaymentStreamController do
       response.should be_success
       response.should_not be_redirect
       response.body.should =~ /#{I18n.t('payment_stream.thank_you.title')}/
-      response.body.should =~ /#{I18n.t('payment_stream.thank_you.header_title')}/
-      response.body.should =~ /#{I18n.t('payment_stream.thank_you.header_subtitle')}/
     end
 
     it 'with token session should create payment detail for backer' do
