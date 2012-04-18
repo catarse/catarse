@@ -106,25 +106,30 @@ class ApplicationController < ActionController::Base
   rescue Exception => e
     session[:user_id] = nil
   end
+
   def redirect_back_or_default(default)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+
   def require_condition(condition, message)
     unless condition
       flash[:failure] = message
-      redirect_to :root
+      redirect_to login_path
       false
     else
       true
     end
   end
+
   def require_login
     require_condition(current_user, t('require_login'))
   end
+
   def require_admin
     require_condition((current_user and current_user.admin), t('require_admin'))
   end
+
   def render_404
     render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
   end
