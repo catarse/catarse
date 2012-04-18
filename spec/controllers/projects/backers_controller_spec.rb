@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Projects::BackersController do
   render_views
 
-  before(:each) do
+  before do
     @user = create(:user)
     @user_backer = create(:user, :name => 'Lorem Ipsum')
     @project = create(:project)
@@ -195,7 +195,7 @@ describe Projects::BackersController do
     end
 
     context "with admin user" do
-      before(:each) do
+      before do
         @user.update_attribute :admin, true
         @user.reload
       end
@@ -204,7 +204,7 @@ describe Projects::BackersController do
     end
 
     context "with project owner user" do
-      before(:each) do
+      before do
         @project.update_attribute :user, @user
         @project.reload
       end
@@ -217,7 +217,7 @@ describe Projects::BackersController do
     end
 
     context "guest user" do
-      before(:each) do
+      before do
         @user.id = nil
       end
 
