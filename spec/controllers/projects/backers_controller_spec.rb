@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Projects::BackersController do
   render_views
 
+  subject{ response }
+
   before do
     @user = create(:user)
     @user_backer = create(:user, :name => 'Lorem Ipsum')
@@ -10,7 +12,7 @@ describe Projects::BackersController do
     @backer = create(:backer, :value=> 10.00, :user => @user_backer, :confirmed => true, :project => @project)
   end
 
-  describe "checkout" do
+  describe "PUT checkout" do
     context "without user" do
       it "should be redirect" do
         put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
@@ -95,10 +97,10 @@ describe Projects::BackersController do
     end
   end
 
-  describe "review" do
-    it "should redirect when user not loged" do
-      post :review, {:locale => :pt, :project_id => @project.id}
-      response.should be_redirect
+  describe "POST review" do
+    context "without user" do
+      before{ post :review, {:locale => :pt, :project_id => @project.id} }
+      it{ should redirect_to login_path }
     end
 
     context "with user" do
@@ -118,7 +120,7 @@ describe Projects::BackersController do
     end
   end
 
-  describe "new" do
+  describe "GET new" do
     context "without user" do
       it "should redirect" do
         get :new, {:locale => :pt, :project_id => @project.id}
@@ -173,7 +175,7 @@ describe Projects::BackersController do
     end
   end
 
-  describe "index" do
+  describe "GET index" do
     shared_examples_for  "admin / owner" do
       it "should see all info from backer" do
         request.session[:user_id]=@user.id
