@@ -114,6 +114,7 @@ class ApplicationController < ActionController::Base
 
   def require_condition(condition, message)
     unless condition
+      session[:return_to] = request.env['REQUEST_PATH']
       flash[:failure] = message
       redirect_to login_path
       false

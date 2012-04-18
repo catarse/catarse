@@ -99,8 +99,12 @@ describe Projects::BackersController do
 
   describe "POST review" do
     context "without user" do
-      before{ post :review, {:locale => :pt, :project_id => @project.id} }
+      before do 
+        request.env['REQUEST_PATH'] = "/test_path"
+        post :review, {:locale => :pt, :project_id => @project.id}
+      end
       it{ should redirect_to login_path }
+      it{ session[:return_to].should == "/test_path" }
     end
 
     context "with user" do
