@@ -919,6 +919,7 @@ pt:
   time:
     am: ''
     formats:
+      simple: ! '%d/%m/%Y, %H:%M h'
       default: ! '%A, %d de %B de %Y, %H:%M h'
       long: ! '%A, %d de %B de %Y, %H:%M h'
       short: ! '%d/%m, %H:%M h'
