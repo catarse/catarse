@@ -1,11 +1,13 @@
 class CreateStaticContents < ActiveRecord::Migration
   def self.up
-    create_table :static_contents do |t|
-      t.string :title
-      t.text :body
-      t.text :body_html
+    unless ActiveRecord::Base.connection.tables.include?(:static_contents)
+      create_table :static_contents do |t|
+        t.string :title
+        t.text :body
+        t.text :body_html
 
-      t.timestamps
+        t.timestamps
+      end
     end
   end
 
