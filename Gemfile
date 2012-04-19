@@ -39,7 +39,7 @@ gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
 gem 'carrierwave', '= 0.5.8'
 gem 'rmagick'
 gem 'fog'
-gem 'capybara', ">= 0.4.0"
+gem 'capybara', ">= 1.0.1"
 gem 'enumerate_it'
 gem 'httparty', '~> 0.8.1'
 gem "rack-timeout"
