@@ -28,6 +28,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
   }),
 
   BacksView: CATARSE.PaginatedView.extend({
+    template: _.template(this.$('#user_backs_template').html()),
     emptyTemplate: _.template(this.$('#empty_user_back_template').html()),
     afterUpdate: function() {
       FB.XFBML.parse()
@@ -39,6 +40,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
   }),
 
   ProjectsView: CATARSE.PaginatedView.extend({
+    template: _.template(this.$('#user_projects_template').html()),
     emptyTemplate: _.template(this.$('#empty_user_project_template').html()),
     afterUpdate: function() {
       FB.XFBML.parse()
