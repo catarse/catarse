@@ -1,3 +1,6 @@
+script type="text/template" id="user_backs_template"
+  ul.collection_list
+
 script type="text/template" id="empty_user_back_template"
   - if current_user != @user
     p.empty= t('users.backs.no_backs', name: @user.display_name)

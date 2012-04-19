@@ -1,8 +1,11 @@
+script type="text/template" id="user_projects_template"
+  ul.collection_list
+
 script type="text/template" id="empty_user_project_template"
   - if current_user != @user
     p.empty= t('users.projects.no_projects', name: @user.display_name)
   - else
-    p.empty= t('users.projects.no_projects_current_user_html', link: t('site.base_url'))
+    p.empty= t('users.projects.no_projects_current_user_html', link: link_to(t('site.base_url'), t('site.base_url') )).html_safe
 
 script type="text/template" id="user_project_template"
   .project_land
