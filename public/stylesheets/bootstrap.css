@@ -9036,11 +9036,12 @@ body #logos .power a {
 }
 /* line 46, ../../app/stylesheets/redesign/content/_header.sass */
 #header nav.menu a.my_profile_link {
-  width: 120px;
+  width: 130px;
   display: block;
   float: right;
+  margin-right: 0;
 }
-/* line 50, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 52, ../../app/stylesheets/redesign/content/_header.sass */
 #header nav.menu a.my_profile_link img.profile_picture {
   border: 1px #333333;
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
@@ -9060,33 +9061,33 @@ body #logos .power a {
   margin-top: -14px;
   margin-right: 5px;
 }
-/* line 59, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 61, ../../app/stylesheets/redesign/content/_header.sass */
 #header nav.menu a.my_profile_link img.profile_picture:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px inset;
   box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px inset;
 }
-/* line 61, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 63, ../../app/stylesheets/redesign/content/_header.sass */
 #header nav.menu a.my_profile_link .current_user_name {
   float: left;
   margin-right: 5px;
 }
-/* line 64, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 66, ../../app/stylesheets/redesign/content/_header.sass */
 #header nav.menu a.my_profile_link .dropdown_arrow {
   float: left;
   position: relative;
   margin-top: 7px;
 }
-/* line 68, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 70, ../../app/stylesheets/redesign/content/_header.sass */
 #header nav.menu a:last-child {
   margin-right: none;
 }
-/* line 70, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 72, ../../app/stylesheets/redesign/content/_header.sass */
 #header nav.menu a:hover {
   color: #e75297;
 }
-/* line 72, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 74, ../../app/stylesheets/redesign/content/_header.sass */
 #header .search {
   display: inline;
   float: left;
@@ -9095,7 +9096,7 @@ body #logos .power a {
   width: 220px;
   margin-top: 18px;
 }
-/* line 75, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 77, ../../app/stylesheets/redesign/content/_header.sass */
 #header .search form {
   width: 220px;
   height: 22px;
@@ -9108,17 +9109,17 @@ body #logos .power a {
   border: 1px #cccccc solid;
   background: white;
 }
-/* line 82, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 84, ../../app/stylesheets/redesign/content/_header.sass */
 #header .search form input[type="text"] {
   border: none;
   width: 190px;
   float: left;
 }
-/* line 86, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 88, ../../app/stylesheets/redesign/content/_header.sass */
 #header .search form input[type="text"]:focus {
   outline: none;
 }
-/* line 88, ../../app/stylesheets/redesign/content/_header.sass */
+/* line 90, ../../app/stylesheets/redesign/content/_header.sass */
 #header .search form input[type="submit"] {
   background: url("/images/catarse/search_submit15x15.png") left top no-repeat;
   width: 15px;
