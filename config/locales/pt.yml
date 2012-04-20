@@ -160,7 +160,7 @@ pt:
       no_refunds: "Você não possui nenhum apoio que possa ter estorno realizado"
       project: Projeto
       refund_expration_date: "Prazo para estorno"
-      refunded: "Estorno realizado"
+      refunded: "Pedido enviado com sucesso"
       refunds_title: "Apoios que podem ter estorno realizado"
       request_refund: "Solicitar estorno"
       requested_refund: "Solicitado estorno"
