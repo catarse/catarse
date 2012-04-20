@@ -11194,8 +11194,9 @@ body[data-controller="projects"][data-action="new"] #page_content .container .re
   width: 99%;
 }
 
-/* line 4, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content {
+/* line 5, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11203,8 +11204,9 @@ body[data-controller="projects"][data-action="pending_backers"] #page_content .c
   width: 940px;
   padding-top: 15px;
 }
-/* line 7, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title {
+/* line 8, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11213,100 +11215,135 @@ body[data-controller="projects"][data-action="pending_backers"] #page_content .c
   margin-left: 0;
   padding-bottom: 40px;
 }
-/* line 11, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h1 {
+/* line 12, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h1,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
-/* line 16, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h2 {
+/* line 17, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h2,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 18px;
 }
-/* line 20, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h2 strong {
+/* line 21, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h2 strong,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title h2 strong {
   font-weight: bold;
   color: #59af6d;
 }
-/* line 24, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset {
+/* line 25, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset {
   float: left;
   clear: both;
   width: 100%;
 }
-/* line 28, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input {
+/* line 29, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input {
   float: left;
   margin-right: 20px;
 }
-/* line 32, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.check input {
+/* line 33, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.check input, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.check input,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.check input,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.check input {
   display: inline;
 }
-/* line 34, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.check label {
+/* line 35, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.check label, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.check label,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.check label,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.check label {
   display: inline;
 }
-/* line 36, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.total_results {
+/* line 37, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.total_results, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.total_results,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.total_results,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.total_results {
   float: right;
 }
-/* line 38, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.submit {
+/* line 39, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.submit, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.submit,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.submit,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.submit {
   float: right;
   margin-top: 23px;
 }
-/* line 41, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input label {
+/* line 42, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input label, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input label,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input label,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input label {
   font-family: "Lato-Regular";
   font-size: 13px;
 }
-/* line 44, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers #total_results {
+/* line 45, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers #total_results, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects #total_results,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers #total_results,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects #total_results {
   float: right;
   font-family: "Lato-Regular";
   font-size: 13px;
   padding-top: 2px;
 }
-/* line 49, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers #total_results strong {
+/* line 50, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers #total_results strong, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects #total_results strong,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers #total_results strong,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects #total_results strong {
   font-family: "Lato-Bold";
   color: #59af6d;
 }
-/* line 52, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination {
+/* line 53, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .pagination,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .pagination,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .pagination {
   text-align: right;
   padding: 20px 0 40px;
   font-family: "Lato-Regular";
   font-size: 13px;
 }
-/* line 57, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination span.page.current {
+/* line 58, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination span.page.current, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .pagination span.page.current,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .pagination span.page.current,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .pagination span.page.current {
   color: rgba(0, 0, 0, 0.3);
 }
-/* line 59, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination a {
+/* line 60, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination a, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .pagination a,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .pagination a,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .pagination a {
   color: #e75297;
 }
-/* line 63, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table thead th {
+/* line 64, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table thead th, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table thead th,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table thead th,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table thead th {
   font-family: "Lato-Bold";
   font-size: 13px;
 }
-/* line 68, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td {
+/* line 69, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td {
   font-family: "Lato-Regular";
   font-size: 12px;
 }
-/* line 72, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.project_img {
+/* line 73, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.project_img, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td img.project_img,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td img.project_img,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td img.project_img {
   width: 50px;
 }
-/* line 74, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.user_img {
+/* line 75, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.user_img, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td img.user_img,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td img.user_img,
+body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td img.user_img {
   width: 30px;
 }
 
