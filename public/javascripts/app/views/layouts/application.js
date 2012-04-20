@@ -12,7 +12,7 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
     "submit .search": "search",
     "click #login .close": "closeLogin",
     "click #login a.provider": "submitLogin",
-    "click a.my_profile_link img":"currentUserDropDown",
+    "click a.my_profile_link":"currentUserDropDown",
     "focus .form_login.bootstrap-form input":"markLoginForm",
     "focus .form_register.bootstrap-form input":"markRegisterForm",
   },

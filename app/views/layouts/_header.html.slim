@@ -12,7 +12,9 @@
     = link_to t('layouts.header.help'), faq_path
     - if current_user
       = link_to '#', class: 'my_profile_link' do
-        = image_tag(current_user.display_image, :size => "30x30")
+        = image_tag(current_user.display_image, :size => "30x30", :class => 'profile_picture')
+        span.current_user_name= current_user.display_name
+        = image_tag('dropdown.png', :class => 'dropdown_arrow')
       ul.dropdown.user
         li= link_to t('layouts.header.profile'), current_user
         li
@@ -24,32 +26,3 @@
       = link_to t('layouts.header.signup'), login_path(active_register: true)
       = link_to t('layouts.header.signin'), login_path
   .clearfix
-
-/ #top
-/   menu
-/     nav
-/       = link_to t('layouts.header.blog'), blog_index_path
-/       a ajuda
-/       - unless current_user
-/         = link_to t('layouts.header.signup'), '#login'
-/         = link_to t('layouts.header.signin'), '#login'
-/     .actions
-/       - if current_user
-/         = image_tag "redesign/notification.png"
-/         = link_to image_tag(current_user.display_image, :size => "23x23"), current_user
-/     .social
-/       .fb_root
-/         iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=#{t('site.facebook_app_id')}" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"
-/       .twitter_root
-/         a href="https://twitter.com/catarse_" class="twitter-follow-button" data-show-count="false" data-lang="en"
-/           Follow @twitterapi
-/
-/ #header
-/   = link_to "Home", root_path, :class => 'logo', :title => 'Catarse'
-/   nav
-/     = link_to t('layouts.header.explore'), explore_path
-/     = link_to t('layouts.header.submit_project'), guidelines_path
-/   .search
-/     = form_tag explore_path(:anchor => "search"), :method => 'GET', :class=>'search_input' do
-/       = text_field_tag :search, nil, autocomplete: "off"
-/       = submit_tag
