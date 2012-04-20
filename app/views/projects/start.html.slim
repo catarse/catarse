@@ -61,6 +61,7 @@
           .submit
             fieldset.accept
               = check_box_tag 'accept'
+              |  
               = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
             fieldset
               .bootstrap-twitter
