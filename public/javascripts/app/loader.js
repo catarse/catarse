@@ -22,7 +22,7 @@ var CATARSE_LOADER = {
 
   initial: ['jquery-1.7.1.min', 'underscore-min'],
 
-  intermediate: ['backbone-min', 'mustache', 'jquery-ui-1.8.6.custom.min', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'waypoints.min', 'jquery.scrollto', 'jquery.jeditable.mini', 'jquery.maskedinput-1.2.2.min', 'jquery.cpf', 'twitter', 'uservoice'],
+  intermediate: ['backbone-min', 'mustache', 'jquery-ui-1.8.6.custom.min', 'jquery.numeric', 'jquery.maxlength', 'jquery.timers-1.2', 'timedKeyup', 'waypoints.min', 'jquery.scrollto', 'jquery.jeditable.mini', 'jquery.maskedinput-1.2.2.min', 'jquery.cpf'],
 
   final: ['jquery.ui.datepicker-pt-BR', 'on_the_spot', 'app/catarse', 'bootstrap'],
 
@@ -51,8 +51,12 @@ var CATARSE_LOADER = {
       'app/collections/user_backs',
       'app/collections/user_projects',
       'app/collections/posts'
-    ]
+    ],
 
+    after: [
+      'twitter',
+      'uservoice'
+    ],
   },
 
   scriptURI: function(path){
@@ -89,7 +93,10 @@ var CATARSE_LOADER = {
             $script.ready('catarse.intermediate', function(){
               CATARSE_LOADER.load(CATARSE_LOADER.catarse.final, 'catarse.final')
               $script.ready('catarse.final', function(){
-                $(document).ready(CATARSE_LOADER.loadAction);
+                $(document).ready(function(){
+                  CATARSE_LOADER.loadAction();
+                  CATARSE_LOADER.load(CATARSE_LOADER.catarse.after, 'catarse.after');
+                });
               })
             })
           })
