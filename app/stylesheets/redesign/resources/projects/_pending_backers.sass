@@ -1,4 +1,5 @@
-body[data-controller="projects"][data-action="pending_backers"]
+body[data-controller="projects"][data-action="pending_backers"],
+body[data-controller="projects"][data-action="pending"]
   #page_content
     .container
       .project_content
@@ -20,7 +21,7 @@ body[data-controller="projects"][data-action="pending_backers"]
             strong
               font-weight: bold
               color: $green
-        #pending_backers
+        #pending_backers, #pending_projects
           fieldset
             float: left
             clear: both
