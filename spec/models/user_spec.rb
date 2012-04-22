@@ -127,6 +127,22 @@ describe User do
     it{ should == "27fc6690fafccbb0fc0b8f84c6749644" }
   end
 
+  describe "#facebook_id" do
+    subject{ user.facebook_id }
+    context "when primary is a FB user" do
+      let(:user){ Factory(:user, :provider => "facebook", :uid => "bar") }
+      it{ should == 'bar' }
+    end
+    context "when primary is another provider's user and there is no secondary" do
+      let(:user){ Factory(:user, :provider => "foo", :uid => "bar") }
+      it{ should be_nil }
+    end
+    context "when primary is another provider's user but there is a secondary FB user" do
+      let(:user){ Factory(:user, :provider => "foo", :uid => "bar", :secondary_users => [Factory(:user, :provider => "facebook", :uid => "bar")]) }
+      it{ should == 'bar' }
+    end
+  end
+
   it "should merge into another account, taking the credits, backs, projects and notifications with it" do
     old_user = Factory(:user, :credits => 50)
     new_user = Factory(:user, :credits => 20)
