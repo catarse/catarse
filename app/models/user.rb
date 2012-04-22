@@ -99,10 +99,7 @@ class User < ActiveRecord::Base
   end
 
   def facebook_id
-    return uid if provider == 'facebook'
-    if secondary = secondary_users.where(provider: 'facebook').first
-      return secondary.uid
-    end
+    provider == 'facebook' && uid || secondary_users.where(provider: 'facebook').first && secondary_users.where(provider: 'facebook').first.uid
   end
 
   def update_credits
