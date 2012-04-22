@@ -128,8 +128,8 @@ class User < ActiveRecord::Base
     u.primary.nil? ? u : u.primary
   end
 
-  def self.create_with_omniauth(auth, primary_user_id = nil)
-    u = create! do |user|
+  def self.create_with_omniauth(auth)
+    create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["user_info"]["name"]
@@ -141,11 +141,6 @@ class User < ActiveRecord::Base
       user.image_url = auth["user_info"]["image"]
       user.locale = I18n.locale.to_s
     end
-    # If we could not associate by email we try to use the parameter
-    if u.primary.nil? and primary_user_id
-      u.primary = User.find_by_id(primary_user_id)
-    end
-    u.primary.nil? ? u : u.primary
   end
 
   def recommended_project
