@@ -12,4 +12,6 @@ $('#show_tips a').click(function(e){
 })
 $(document).ready(function(){
   $('input[type=submit]').click(CATARSE.requireLogin)
+  $('input[type=submit]').show();
+  $('.submit_loader').remove()
 })
