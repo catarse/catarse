@@ -47,9 +47,11 @@ script type="text/template" id="user_back_template"
           h5 <%= confirmed_at %>
         li.value
           h5 <%= value %>
+        |<% if(reward) { %>
         li.reward
           h5 <%= reward['display_with_label'] %>
           p <%= reward['description']%>
+        |<% } %>
     .tell_about
       p= t('tell_about_this_back')
       ul
