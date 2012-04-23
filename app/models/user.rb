@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
-  validates :name, :presence => true, :if => :is_devise?
+  #validates :name, :presence => true, :if => :is_devise?
 
   validates_presence_of     :email, :if => :is_devise?
   validates_uniqueness_of   :email, :scope => :provider, :if => :is_devise?
