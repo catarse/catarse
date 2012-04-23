@@ -11593,8 +11593,22 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   font-size: 16px;
   padding-bottom: 8px;
   color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  cursor: pointer;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
-/* line 128, ../../app/stylesheets/redesign/resources/backers/_new.sass */
+/* line 131, ../../app/stylesheets/redesign/resources/backers/_new.sass */
+body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq h3:hover {
+  color: #e75297;
+}
+/* line 133, ../../app/stylesheets/redesign/resources/backers/_new.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq p {
   padding-bottom: 30px;
   font-family: Arial;
