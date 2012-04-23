@@ -14,4 +14,8 @@ $(document).ready(function(){
   $('input[type=submit]').click(CATARSE.requireLogin)
   $('input[type=submit]').show();
   $('.submit_loader').remove()
+
+  if($('input[type=checkbox]').is(':checked')){
+    $('input[type=submit]').attr('disabled', false)
+  }
 })
