@@ -5,16 +5,16 @@ describe UsersController do
   render_views
   subject{ response }
 
-  let(:backer){ Factory.create(:backer) }
-  let(:user){ backer.user }
+  let(:backer){ Factory(:backer, :user => user) }
+  let(:user){ Factory(:user, :provider => 'facebook', :uid => '666') }
 
   describe "GET show" do
     before do
       request.session[:user_id] = user.id
-      get :show, :id => user.id
+      get :show, :id => user.id, :locale => 'pt'
     end
 
-    it{ assigns(:fb_admins).should include(user.facebook_id) }
+    it{ assigns(:fb_admins).should include(user.facebook_id.to_i) }
   end
 
   describe "POST request_refund" do
