@@ -26,7 +26,7 @@
           = t('.menu.about')
         = link_to '#updates', :id => 'updates_link' do
           = t('.menu.updates')
-          /span.count=" (#{@project.posts.count})"
+          span.count=" (#{@project.updates.count})"
         = link_to '#backers', :id => 'backers_link' do
           = t('.menu.backers')
           span.count=" (#{@project.total_backers})"
@@ -38,7 +38,7 @@
     .main
       #project_content
         #project_updates.content.hide
-          /= render :partial => 'updates'
+          = render :partial => 'updates'
         .midia_content_backers
           #project_backers.content.hide
         #project_comments.content.hide= render :partial => 'comments'

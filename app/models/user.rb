@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
 
   has_many :backs, :class_name => "Backer"
   has_many :projects
+  has_many :updates
   has_many :notifications
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
