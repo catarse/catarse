@@ -1,5 +1,5 @@
 - if current_user and @project.user == current_user
-  = semantic_form_for Post.new(project_id: @project.id) do |form|
+  = semantic_form_for Update.new(:user_id => current_user.id, :project_id => @project.id) do |form|
     = form.inputs do
       = form.input :title, as: :string, label: t('.title')
       = form.input :body, as: :text, label: t('.body')
@@ -8,21 +8,14 @@
     = form.buttons do
       = form.commit_button t('.submit'), disabled: true
 
-- cache(action_suffix: "updates_#{@project.id}") do
-  .midia_content_update[itemscope itemtype="http://schema.org/Blog"]
-    - if @project.posts.empty?
-      em = t('projects.project_updates.empty')
-    - else
-      - for post in @project.posts
-        - if post["type"] == "regular"
-          div[itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting"]
-            h1[itemprop="name"] = post["regular_title"]
-            .post_info
-              span[itemprop="datePublished"] = l Time.at(post["unix_timestamp"].to_i).to_date, format: :short
-              |  &bull;
-              span[itemprop="url"] = link_to nil, post["url"], target: :_blank
+.midia_content_update[itemscope itemtype="http://schema.org/Blog"]
+  - if @project.updates.empty?
+    em = t('projects.project_updates.empty')
+  - else
+    - for update in @project.updates
+      div[itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting"]
+        h3[itemprop="name"] = update.title
+        .time= l(update.created_at, format: :short)
+        .comment= raw(update.comment_html)
 
-            p[itemprop="description"] = raw post["regular_body"]
-            //p[itemprop="author"] = post["author"]
-
-            .fb-comments[data-href=post["url"] data-num-posts=5 data-width="570"]
+        /.fb-comments[data-href=post["url"] data-num-posts=5 data-width="570"]
