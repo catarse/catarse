@@ -1,1 +1,1 @@
-<div id="fb-root"></div><script src="http://connect.facebook.net/pt_BR/all.js#appId=<%= t('site.facebook_app_id') %>&amp;xfbml=1"></script><fb:like href="<%= request.url %>" send="true" width="260" show_faces="true" font="arial"></fb:like>
+<div id="fb-root"></div><script src="http://connect.facebook.net/pt_BR/all.js#appId=<%= t('site.facebook_app_id') %>&amp;xfbml=1"></script><fb:like href="<%= request.url %>" send="true" width="<%= defined?(width) ? width : '260'%>" show_faces="true" font="arial"></fb:like>
