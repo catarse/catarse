@@ -24,7 +24,7 @@ gem 'unicorn'
 gem 'mailee', '0.5.4', :git => 'https://github.com/danielweinmann/mailee-api.git'
 # gem 'will_paginate', ">= 3.0.pre2"
 gem 'weekdays'
-gem 'moip', '1.0.5', :git => 'https://github.com/danielweinmann/moip-ruby.git'
+gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git', :ref => 'db1b879358c623b597dc1c221b53336f9f06db0e'
 gem 'paypal-express', :require => 'paypal'
 gem 'brcep'
 gem "meta_search", "1.0.6"
@@ -41,7 +41,7 @@ gem 'rmagick'
 gem 'fog'
 gem 'capybara', ">= 1.0.1"
 gem 'enumerate_it'
-gem 'httparty', '~> 0.8.1'
+gem 'httparty', '~> 0.6.1'
 gem "rack-timeout"
 gem 'web_translate_it'
 
