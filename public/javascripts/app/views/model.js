@@ -16,7 +16,7 @@ CATARSE.ModelView = Backbone.View.extend({
   
   render: function() {
     this.beforeRender()
-		this.el.html(this.template(this.model.toJSON()))
+    this.el.html(this.template(this.model.toJSON()))
     this.afterRender()
     return this
   }

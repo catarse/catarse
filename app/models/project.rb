@@ -203,10 +203,4 @@ class Project < ActiveRecord::Base
     }
   end
 
-  def posts
-    @posts ||= Post.all(project: self)
-  rescue
-    []
-  end
-
 end

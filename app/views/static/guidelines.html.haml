@@ -19,5 +19,7 @@
             = label_tag 'accept', t('.accept')
           %fieldset
             .bootstrap-twitter
-              = submit_tag t('.submit'), :disabled => true, :class=>'btn'
+              = submit_tag t('.submit'), :disabled => true, :class=>'btn', :style=>'display:none'
+            .submit_loader
+              = image_tag('loading.gif')
     .clearfix

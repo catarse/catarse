@@ -45,6 +45,7 @@ class ProjectsController < ApplicationController
   end
 
   def start
+    return unless require_login
     @title = t('projects.start.title')
   end
 
