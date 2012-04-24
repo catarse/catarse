@@ -44,6 +44,7 @@ Catarse::Application.routes.draw do
   end
   resources :posts, only: [:index, :create]
   resources :projects, only: [:index, :new, :create, :show] do
+    resources :updates, :only => [:index, :create]
     resources :rewards
     resources :backers, controller: 'projects/backers' do
       collection do

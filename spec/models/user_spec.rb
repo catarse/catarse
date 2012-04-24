@@ -3,6 +3,14 @@ require 'spec_helper'
 describe User do
   let(:user){ Factory(:user, :provider => "foo", :uid => "bar") }
 
+  describe "associations" do
+    it{ should have_many :backs }
+    it{ should have_many :projects }
+    it{ should have_many :notifications }
+    it{ should have_many :secondary_users }
+    it{ should have_many :updates }
+  end
+
   describe "validations" do 
     before{ user }
     it{ should validate_presence_of :provider }
