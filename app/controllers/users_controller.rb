@@ -12,13 +12,6 @@ class UsersController < ApplicationController
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
       @credits = @user.backs.can_refund.within_refund_deadline.all
-
-      # @backs = @user.backs.confirmed.order(:confirmed_at)
-      # @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
-      # @backs = @backs.all
-      # @projects = @user.projects.order("updated_at DESC")
-      # @projects = @projects.visible unless @user == current_user
-      # @projects = @projects.all
     }
   end
 

@@ -86,3 +86,11 @@ Factory.define :institutional_video do |f|
   f.video_url "http://vimeo.com/35492726"
   f.visible false
 end
+
+Factory.define :update do |f|
+  f.association :project, :factory => :project
+  f.association :user, :factory => :user
+  f.title "My title"
+  f.comment "This is a comment"
+  f.comment_html "<p>This is a comment</p>"
+end

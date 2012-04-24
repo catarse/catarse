@@ -91,3 +91,10 @@ $('#backer_anonymous').click(function(){
   }
 })
 $('input[type=radio]:checked').parent().parent().addClass('selected')
+
+// Colapse all faq texts
+$('.back_faq p').hide();
+
+$('.back_faq h3').click(function(event){
+  $(event.target).next('p').slideToggle('slow');
+});
