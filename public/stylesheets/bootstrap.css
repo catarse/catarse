@@ -11938,11 +11938,20 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   padding-top: 20px;
 }
 /* line 7, ../../app/stylesheets/redesign/resources/_curated_page.sass */
+body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header {
+  padding-bottom: 40px;
+}
+/* line 9, ../../app/stylesheets/redesign/resources/_curated_page.sass */
+body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header img {
+  float: left;
+  margin-right: 10px;
+}
+/* line 12, ../../app/stylesheets/redesign/resources/_curated_page.sass */
 body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_project {
   float: left;
   margin-bottom: 20px;
 }
-/* line 10, ../../app/stylesheets/redesign/resources/_curated_page.sass */
+/* line 15, ../../app/stylesheets/redesign/resources/_curated_page.sass */
 body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_project_list {
   display: inline;
   float: left;
@@ -11953,7 +11962,7 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   margin-left: -10px;
   width: 960px !important;
 }
-/* line 15, ../../app/stylesheets/redesign/resources/_curated_page.sass */
+/* line 20, ../../app/stylesheets/redesign/resources/_curated_page.sass */
 body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .project_curator_description {
   display: inline;
   float: left;
@@ -11962,7 +11971,7 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   width: 220px;
   margin-right: 0;
 }
-/* line 18, ../../app/stylesheets/redesign/resources/_curated_page.sass */
+/* line 23, ../../app/stylesheets/redesign/resources/_curated_page.sass */
 body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .project_curator_description p {
   display: inline;
   float: left;
@@ -11978,19 +11987,19 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   padding-top: 30px;
   font-style: italic;
 }
-/* line 29, ../../app/stylesheets/redesign/resources/_curated_page.sass */
+/* line 34, ../../app/stylesheets/redesign/resources/_curated_page.sass */
 body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles {
   float: left;
   width: 550px;
 }
-/* line 32, ../../app/stylesheets/redesign/resources/_curated_page.sass */
+/* line 37, ../../app/stylesheets/redesign/resources/_curated_page.sass */
 body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
-/* line 37, ../../app/stylesheets/redesign/resources/_curated_page.sass */
+/* line 42, ../../app/stylesheets/redesign/resources/_curated_page.sass */
 body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
@@ -11999,7 +12008,7 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   padding-bottom: 30px;
   padding-top: 10px;
 }
-/* line 44, ../../app/stylesheets/redesign/resources/_curated_page.sass */
+/* line 49, ../../app/stylesheets/redesign/resources/_curated_page.sass */
 body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles #facebook_share {
   width: 540px;
 }
