@@ -20,6 +20,8 @@
           p.action
             .bootstrap-twitter
               = f.submit t('.submit'), class: 'btn'
+          p.forgot_link
+            = link_to t('devise.links.forgot_password'), new_password_path(resource_name)
     .form_login.bootstrap-form[class="#{('actived' if params[:active_register])}"]
       .content_form
         h1=t('.register_title')
