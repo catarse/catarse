@@ -3,29 +3,19 @@ require 'spec_helper'
 
 describe Project do
 
-  context "validations and callbacks" do
+  describe "associations" do
+    it{ should have_many :projects_curated_pages }
+    it{ should have_many :curated_pages }
+    it{ should have_many :backers }
+    it{ should have_many :rewards }
+    it{ should have_many :updates }
+  end
 
+  describe "validations" do
     %w[name user category video_url about headline goal expires_at].each do |field|
       it{ should validate_presence_of field }
     end
-
     it{ should ensure_length_of(:headline).is_at_most(140) }
-
-    it "should be valid from factory" do
-      Factory(:project).should be_valid
-    end
-
-    it "should remove dependencies when destroy a project" do
-      p = Factory.build(:project)
-      p.save
-      r = Factory.build(:reward, :project_id => p.id)
-      r.save
-
-      p.destroy
-      p.destroyed?.should be_true
-      lambda { r.reload }.should raise_error
-    end
-
   end
 
   context "#vimeo" do
