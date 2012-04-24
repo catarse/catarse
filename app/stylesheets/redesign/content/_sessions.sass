@@ -1,3 +1,37 @@
+body[data-controller="passwords"][data-action="new"],
+body[data-controller="passwords"][data-action="edit"]
+  #page_content
+    .container
+      .devise_content
+        +grid(16)
+        padding-top: 15px
+        .links
+          padding: 15px 0 20px
+          a
+            color: $blue
+            font-family: Arial
+            font-size: 13px
+            text-decoration: none
+            &:hover
+              color: $pink
+
+        form
+          label
+            font-family: Lato-Regular
+            font-size: 13px
+        .title
+          +grid(16)
+          +alpha
+          padding-bottom: 40px
+          h1
+            color: $ultra_gryn
+            font-family: "Lato-Regular"
+            font-size: 28px
+            padding: 5px 0
+          h2
+            color: rgba($ultra_gryn, 0.7)
+            font-family: Arial
+            font-size: 18px
 body[data-controller="sessions"][data-namespace="devise"][data-action="new"]
   .container
     .form_login, .form_register, .login_with_social
@@ -28,12 +62,21 @@ body[data-controller="sessions"][data-namespace="devise"][data-action="new"]
         font-size: 12px
         width: 220px
     .form_login
-      .content_form
-        padding: 0px 23px 0 23px
       +grid(5)
       input[type="checkbox"]
         float: left
         margin-right: 5px
+      .content_form
+        padding: 0px 23px 0 23px
+        p.forgot_link
+          padding: 15px 0 0
+          a
+            color: $blue
+            font-family: Arial
+            font-size: 13px
+            text-decoration: none
+            &:hover
+              color: $pink
     .form_register
       +grid(5)
     .login_with_social
