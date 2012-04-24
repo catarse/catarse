@@ -28,15 +28,6 @@ describe Project do
 
   end
 
-  context "#posts" do
-    subject{ Factory(:project).posts }
-    before{ mock_tumblr }
-    its(:count){ should be 2 }
-    it{ subject.first["type"].should == "regular" }
-    it{ subject.first["regular_title"].should == "Belo Monte de Vozes" }
-    it{ subject.last["regular_title"].should == "Banda mais bonita" }
-  end
-
   context "#vimeo" do
 
     def build_with_video url
