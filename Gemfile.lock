@@ -22,12 +22,13 @@ GIT
 
 GIT
   remote: https://github.com/danielweinmann/moip-ruby.git
-  revision: 3bc8c0ed7e9c89e9806fa4a2929dc4efbbcfc90c
+  revision: db1b879358c623b597dc1c221b53336f9f06db0e
+  ref: db1b879358c623b597dc1c221b53336f9f06db0e
   specs:
-    moip (1.0.5)
+    moip (1.0.2)
       activesupport (>= 2.3.2)
-      httparty (~> 0.8.1)
-      nokogiri (~> 1.4.2)
+      httparty (~> 0.6.1)
+      nokogiri (~> 1.4.3)
 
 GEM
   remote: http://rubygems.org/
@@ -91,6 +92,7 @@ GEM
       sass (~> 3.1)
     compass-960-plugin (0.10.4)
       compass (>= 0.10.0)
+    crack (0.1.8)
     daemons (1.1.8)
     dalli (1.1.4)
     database_cleaner (0.7.1)
@@ -138,9 +140,8 @@ GEM
       supermodel
       vimeo
     http_accept_language (1.0.2)
-    httparty (0.8.1)
-      multi_json
-      multi_xml
+    httparty (0.6.1)
+      crack (= 0.1.8)
     httpclient (2.2.4)
     i18n (0.6.0)
     inherited_resources (1.1.2)
@@ -176,7 +177,6 @@ GEM
     mocha (0.10.4)
       metaclass (~> 0.0.1)
     multi_json (0.0.5)
-    multi_xml (0.4.1)
     multipart-post (1.1.5)
     mustache (0.99.4)
     net-ldap (0.1.1)
@@ -359,7 +359,7 @@ DEPENDENCIES
   haml
   has_vimeo_video (>= 0.0.3)
   http_accept_language
-  httparty (~> 0.8.1)
+  httparty (~> 0.6.1)
   inherited_resources (= 1.1.2)
   kaminari
   launchy
@@ -367,7 +367,7 @@ DEPENDENCIES
   maxim-sexy_pg_constraints
   meta_search (= 1.0.6)
   mocha
-  moip (= 1.0.5)!
+  moip!
   mustache
   omniauth (= 0.1.6)
   on_the_spot
