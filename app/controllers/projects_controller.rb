@@ -32,6 +32,12 @@ class ProjectsController < ApplicationController
         @expiring             = presenter.expiring
         @recent               = presenter.recent
 
+        @blog_posts = Blog.fetch_last_posts.inject([]) do |total,item| 
+          if total.size < 2
+            total << item
+          end
+          total
+        end
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
         @last_tweets = Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
           JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}")))[0..1]

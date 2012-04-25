@@ -48,15 +48,15 @@
         .blog
           h3= t('sidebar.titles.blog')
           ul.posts
-            - 2.times do
+            - @blog_posts.each do |post|
               li
                 h2
-                  = link_to '#' do
-                    = image_tag("catarse/post_title_image.png")
-                    = "Lorem ipsum dolor sit amet consectetuir."
-                p.author= "por: Nome do Autor"
-                = link_to '#', :class => 'resume' do
-                  = "Global famine and disease always made me wonder about the existence of God, but this Tebow business has me wondering. (...)"
+                  = link_to post.url, target: '__blank' do
+                    /= image_tag("catarse/post_title_image.png")
+                    = truncate(post.title, length: 80)
+                p.author= "#{t('projects.box.by')} #{post.author}"
+                = link_to post.url, target: '__blank', class: 'resume' do
+                  = truncate(post.summary, length: 130)
 
         .facebook
           h3= t('sidebar.titles.facebook')
