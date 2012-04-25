@@ -64,11 +64,11 @@ class ProjectsController < ApplicationController
       params[:about],
       params[:rewards],
       params[:video],
+      params[:facebook],
       params[:twitter],
       params[:blog],
       params[:links],
       params[:know_us_via],
-      params[:how_works],
       params[:contact],
       current_user,
       "#{I18n.t('site.base_url')}#{user_path(current_user)}").deliver

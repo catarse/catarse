@@ -585,10 +585,12 @@ pt:
       how_much_you_need: "Quanto você pretende arrecadar?"
       about_hint: "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!"
       contact: "Deixe seu email para entrarmos em contato"
-      links: "Onde podemos encontrar mais sobre você e seu projeto?"
+      links: "Mais algum link para conhecer mais sobre o seu projeto?"
       links_hint: "Deixe-nos o máximo de links que você tiver, para que a gente possa conhecer melhor seu trabalho e seu projeto. Não precisa ser algo formal nem nada, só alguns links úteis."
       video: 'Já tem o video do projeto?'
+      video_hint: 'Um link no vimeo'
       twitter: 'E aí já tem twitter?'
+      facebook: 'E aí já tem facebook?'
       blog: 'Tem um blog sobre o projeto?'
       know_us_via: 'Como você conheceu o catarse?'
       how_works: 'Como pretende mobilizar apoiadores para levantar o $ necessário para a execução?'
