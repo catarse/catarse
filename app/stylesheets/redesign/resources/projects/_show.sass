@@ -1,7 +1,24 @@
 body[data-namespace="null"][data-controller="projects"][data-action="show"]
   #page_content
-    .midia_content_update
-      text-align: center
+    .media_content_update
+      ul.collection_list
+        li
+          width: 100%
+          float: left
+          border-bottom: 1px $gryn_almost_ccc dotted
+          padding: 20px 0 10px
+          min-height: 67px
+          &:last-child
+            border-bottom: none
+          p, .time, h3
+            font-family: Arial
+            color: $ultra_gryn
+          p, .time
+            padding: 5px 0
+            font-size: 12px
+          h3
+            font-weight: bold
+            font-size: 14px
       em
         font-family: "Lato-Regular"
         font-size: 16px
@@ -91,7 +108,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"]
           strong
             font-weight: bold
             
-      .midia_content_backers
+      .media_content_backers
         ul.collection_list
           li
             width: 100%
