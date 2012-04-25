@@ -48,7 +48,6 @@ $('#rewards').keyup(everything_ok)
 $('#links').keyup(everything_ok)
 $('#contact').keyup(everything_ok)
 $('#accept').click(everything_ok)
-$('#how_works').keyup(everything_ok)
 $('input,textarea,select').live('focus', function(){
   $('p.inline-hints').hide()
   $(this).next('p.inline-hints').show()
