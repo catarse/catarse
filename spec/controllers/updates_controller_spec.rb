@@ -21,6 +21,14 @@ describe UpdatesController do
     end
   end
 
+  describe "DELETE destroy" do
+    before do
+      @update = Factory(:update)
+      delete :destroy, :project_id => @update.project.id, :id => @update.id, :locale => 'pt', :format => 'json'
+    end
+    its(:status){ should == 200 }
+  end
+
   describe "POST create" do
     let(:user){ Factory(:user) }
     before do

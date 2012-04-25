@@ -1,8 +1,8 @@
 class UpdatesController < ApplicationController
   inherit_resources
 
-  actions :index, :create
-  respond_to :json, :only => [ :index ]
+  actions :index, :create, :destroy
+  respond_to :json, :only => [ :index, :destroy ]
   respond_to :html, :only => [ :create, :index ]
   belongs_to :project
 
