@@ -2,22 +2,25 @@ class UpdatesController < ApplicationController
   inherit_resources
 
   actions :index, :create, :destroy
-  respond_to :json, :only => [ :index, :destroy ]
-  respond_to :html, :only => [ :create, :index ]
+  respond_to :html, :only => [ :index, :create, :destroy ]
   belongs_to :project
 
   before_filter :set_user_id, :only => [ :create ]
 
   def index
     index! do |format|
-      format.html do
-        return render :layout => false
-      end
+      format.html{ return render :layout => false }
     end
   end
 
   def create
     create! do |format|
+      format.html{ return redirect_to project_updates_path(@project) }
+    end
+  end
+
+  def destroy
+    destroy! do |format|
       format.html{ return redirect_to project_updates_path(@project) }
     end
   end
