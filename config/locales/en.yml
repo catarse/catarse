@@ -128,6 +128,7 @@ en:
         current_password: "Current password"
         email: Email
         full_name: "Full name"
+        name: ~
         password: Password
         password_confirmation: "Password Confirmation"
         phone_number: "Mobile phone number"
@@ -606,7 +607,9 @@ en:
       links: "Where can we find more about you and your project?"
       links_hint: "Leave us as many links as you have, so we can get to know your work and your project better. Doesn't have to be something formal or fancy, just a few useful links."
       video: "Your project already have a video?"
+      video_hint: ~
       twitter: "Have twitter account?"
+      facebook: "Have facebook account?"
       blog: "Have a blog about the project?"
       know_us_via: "How did you meet Catarse?"
       how_works: "How to mobilize backers to raise $ needed for enforcement?"
@@ -907,6 +910,7 @@ en:
   time:
     am: ~
     formats:
+      simple: ~
       default: "%B %d, %Y %H:%M"
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
