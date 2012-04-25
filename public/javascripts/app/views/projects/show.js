@@ -22,6 +22,32 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
 
   project: new CATARSE.Project($('#project_description').data("project")),
 
+  UpdatesForm: Backbone.View.extend({
+    el: 'form#new_update',
+    events: {
+      "click #update_submit" : "submit"
+    },
+
+    initialize: function() {
+      _.bindAll(this);
+      this.loading = this.$('.loading_updates');
+    },
+
+    submit: function(){
+      var that = this;
+      var form = $(this.el);
+      that.loading.show();
+      $.post(form.prop('action'), form.serialize(), null, 'html')
+        .success(function(data){
+          var target = $('.updates_wrapper');
+          target.html(data);
+          that.loading.hide();
+          that.el.reset();
+        });
+      return false;
+    }
+  }),
+
   BackerView: CATARSE.ModelView.extend({
     template: _.template(this.$('#backer_template').html())
   }),
@@ -37,7 +63,8 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
 
   updates: function() {
     this.selectItem("updates")
-    this.$("#project_updates [type=submit]").attr('disabled', true)
+    this.updatesForm = new this.UpdatesForm();
+    this.$("#project_updates [type=submit]").removeProp('disabled')
   },
 
   comments: function() {
