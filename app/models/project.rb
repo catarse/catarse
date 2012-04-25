@@ -49,6 +49,7 @@ class Project < ActiveRecord::Base
 
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
+  validates_uniqueness_of :permalink
   before_create :store_image_url
 
   def store_image_url
