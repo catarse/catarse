@@ -120,10 +120,14 @@ class ApplicationController < ActionController::Base
 
   def require_condition(condition, message)
     unless condition
-      session[:return_to] = request.env['REQUEST_PATH']
       flash[:failure] = message
-      redirect_to login_path
-      false
+      if current_user
+        redirect_to root_path
+      else
+        session[:return_to] = request.env['REQUEST_PATH']
+        redirect_to login_path
+        false
+      end
     else
       true
     end

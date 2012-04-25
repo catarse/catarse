@@ -103,5 +103,6 @@ Catarse::Application.routes.draw do
       post 'update_attribute_on_the_spot'
     end
   end
-  match "/:permalink" => "curated_pages#show", as: :curated_page
+  match "/pages/:permalink" => "curated_pages#show", as: :curated_page
+  match "/:permalink" => "projects#show", as: :project_by_slug
 end
