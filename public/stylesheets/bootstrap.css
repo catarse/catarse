@@ -11446,21 +11446,24 @@ body[data-controller="projects"][data-action="pending"] #page_content .container
 body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table thead th {
   font-family: "Lato-Bold";
   font-size: 13px;
+  text-align: center;
 }
-/* line 69, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+/* line 70, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
 body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td,
 body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td,
 body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td {
   font-family: "Lato-Regular";
   font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
 }
-/* line 73, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+/* line 76, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
 body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.project_img, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td img.project_img,
 body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td img.project_img,
 body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td img.project_img {
   width: 50px;
 }
-/* line 75, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
+/* line 78, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
 body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.user_img, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td img.user_img,
 body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td img.user_img,
 body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td img.user_img {
