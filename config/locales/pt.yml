@@ -555,7 +555,7 @@ pt:
     project_updates:
       empty: "Este projeto ainda não teve atualizações. Aguarde =D"
       submit: "Enviar atualização"
-      text: "Texto da atualização"
+      comment: "Texto da atualização"
       title: "Título da atualização"
     project_warning:
       rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
