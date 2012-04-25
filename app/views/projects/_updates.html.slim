@@ -8,14 +8,15 @@
     = form.buttons do
       = form.commit_button t('.submit'), disabled: true
 
-.midia_content_update[itemscope itemtype="http://schema.org/Blog"]
+.media_content_update
   - if @project.updates.empty?
     em = t('projects.project_updates.empty')
   - else
-    - for update in @project.updates
-      div[itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting"]
-        h3[itemprop="name"] = update.title
-        .time= l(update.created_at, format: :short)
-        .comment= raw(update.comment_html)
+    ul.collection_list
+      - for update in @project.updates
+        li
+          h3= update.title
+          .time= l(update.created_at, format: :short)
+          .comment= raw(update.comment_html)
 
-        /.fb-comments[data-href=post["url"] data-num-posts=5 data-width="570"]
+          /.fb-comments[data-href=post["url"] data-num-posts=5 data-width="570"]
