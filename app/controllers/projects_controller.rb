@@ -36,6 +36,7 @@ class ProjectsController < ApplicationController
         @last_tweets = Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
           JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}")))[0..1]
         end
+        @last_tweets ||= []
       end
       format.json do
         @projects = Project.visible.search(params[:search]).page(params[:page]).per(6)
