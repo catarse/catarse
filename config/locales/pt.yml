@@ -1,4 +1,9 @@
 pt:
+  views:
+    pagination:
+      next: 'próxima'
+      last: 'ultima'
+      truncate: '...'
   statistics:
     backers:
       subtitle: "apoiadores"
@@ -500,6 +505,7 @@ pt:
       no_projects: "Nenhum projeto encontrado."
       order: Ordem
       project: Projeto
+      slug: Slug
       recommended: Recomendado?
       rejected: Rejeitado?
       submit: Pesquisar

@@ -56,6 +56,7 @@
                   %th= t('.id')
                   %th= t('.project')
                   %th= t('.user')
+                  %th= t('.slug')
                   %th= t('.visible')
                   %th= t('.rejected')
                   %th= t('.recommended')
@@ -73,6 +74,7 @@
                     %td{ :title => project.user.display_name }
                       = link_to user_path(project.user) do
                         = image_tag project.user.display_image, class: 'user_img'
+                    %td= on_the_spot_edit project, :permalink, :tooltip => '-'
                     %td= check_box_tag "project__visible__#{project.id}", '1', project.visible
                     %td= check_box_tag "project__rejected__#{project.id}", '1', project.rejected
                     %td= check_box_tag "project__recommended__#{project.id}", '1', project.recommended
