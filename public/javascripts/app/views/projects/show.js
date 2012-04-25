@@ -8,6 +8,17 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     CATARSE.router.route("backers", "backers", this.backers)
     CATARSE.router.route("comments", "comments", this.comments)
     CATARSE.router.route("embed", "embed", this.embed)
+
+    this.$('a.destroy_update').bind('ajax:beforeSend', function(event, data){
+      $(event.target).next('.deleting_update').show();
+    });
+
+    this.$('a.destroy_update').bind('ajax:success', function(event, data){
+      var target = $('.updates_wrapper');
+      target.html(data);
+      $(event.target).next('.deleting_update').hide();
+    });
+
     this.render()
   },
 

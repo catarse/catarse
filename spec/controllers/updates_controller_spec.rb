@@ -3,30 +3,19 @@ require 'spec_helper'
 describe UpdatesController do
   subject{ response }
   describe "GET index" do
-    context "in html format" do
-      before do
-        @update = Factory(:update)
-        get :index, :project_id => @update.project.id, :locale => 'pt', :format => 'html'
-      end
-      its(:status){ should == 200 }
+    before do
+      @update = Factory(:update)
+      get :index, :project_id => @update.project.id, :locale => 'pt', :format => 'html'
     end
-
-    context "in json format" do
-      before do
-        @update = Factory(:update)
-        get :index, :project_id => @update.project.id, :locale => 'pt', :format => 'json'
-      end
-      its(:status){ should == 200 }
-      its(:body){ should == [@update].to_json }
-    end
+    its(:status){ should == 200 }
   end
 
   describe "DELETE destroy" do
     before do
       @update = Factory(:update)
-      delete :destroy, :project_id => @update.project.id, :id => @update.id, :locale => 'pt', :format => 'json'
+      delete :destroy, :project_id => @update.project.id, :id => @update.id, :locale => 'pt'
     end
-    its(:status){ should == 200 }
+    it{ should redirect_to project_updates_path(@update.project) }
   end
 
   describe "POST create" do
