@@ -12,4 +12,9 @@ describe Update do
     it{ should belong_to :user }
     it{ should belong_to :project }
   end
+
+  describe ".create" do
+    subject{ Update.create!(:user => Factory(:user), :project => Factory(:project), :comment => "this is a comment\n") }
+    its(:comment_html){ should == "<p>this is a comment</p>" }
+  end
 end
