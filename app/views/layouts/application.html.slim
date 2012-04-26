@@ -1,16 +1,16 @@
 doctype 5
 html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
   head
-    meta charset='utf-8'
-    meta name="robots" content="index, follow"
-    meta name="author" content="Engage"
-    = yield :meta_tags
-    = render :partial => 'projects/facebook_sdk'
     title
       - if @title
         == "#{@title}#{' · ' if @title}#{t('site.name')}"
       - else
         == "#{yield :title} · #{t('site.name')}"
+    meta charset='utf-8'
+    meta name="robots" content="index, follow"
+    meta name="author" content="Engage"
+    = yield :meta_tags
+    = render :partial => 'projects/facebook_sdk'
     = stylesheet_link_tag 'le-frog/jquery-ui-1.8.6.custom.css', :media => 'screen, projection'
     = stylesheet_link_tag 'bootstrap.css', :media => 'screen, projection'
     /[if lt IE 9]
