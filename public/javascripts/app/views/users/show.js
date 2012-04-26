@@ -52,7 +52,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
   },
 
   backs: function() {
-    if(typeof(this.backsView) != 'undefined')
+    if(this.backsView)
       this.backsView.destroy()
     this.selectItem("backed_projects")
     this.backsView = new this.BacksView({
@@ -64,7 +64,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
   },
 
   projects: function() {
-    if(typeof(this.projectsView) != 'undefined')
+    if(this.projectsView)
       this.projectsView.destroy()
     this.selectItem("created_projects")
     this.projectsView = new this.ProjectsView({
