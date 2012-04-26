@@ -49,11 +49,7 @@ var CATARSE_LOADER = {
       'app/collections/backers',
       'app/collections/user_backs',
       'app/collections/user_projects'
-    ],
-
-    after: [
-      'uservoice'
-    ],
+    ]
   },
 
   scriptURI: function(path){
@@ -90,10 +86,7 @@ var CATARSE_LOADER = {
             $script.ready('catarse.intermediate', function(){
               CATARSE_LOADER.load(CATARSE_LOADER.catarse.final, 'catarse.final')
               $script.ready('catarse.final', function(){
-                $(document).ready(function(){
-                  CATARSE_LOADER.loadAction();
-                  CATARSE_LOADER.load(CATARSE_LOADER.catarse.after, 'catarse.after');
-                });
+                $(document).ready(CATARSE_LOADER.loadAction);
               })
             })
           })
