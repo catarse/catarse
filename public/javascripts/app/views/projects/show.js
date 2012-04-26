@@ -36,7 +36,8 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   UpdatesForm: Backbone.View.extend({
     el: 'form#new_update',
     events: {
-      "click #update_submit" : "submit"
+      "click #update_submit" : "submit",
+      "keyup #project_updates #update_comment" : "validate_comment"
     },
 
     initialize: function() {
@@ -45,6 +46,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     },
 
     submit: function(){
+      this.validate_comment()
       var that = this;
       var form = $(this.el);
       that.loading.show();
@@ -56,6 +58,16 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
           that.el.reset();
         });
       return false;
+    },
+    validate_comment: function(el){
+      var target = $("#project_updates #update_comment");
+      if(target.val() == ''){
+        target.addClass('error');
+        target.removeClass('ok');
+      }else{
+        target.removeClass('error');
+        target.addClass('ok');
+      }
     }
   }),
 
