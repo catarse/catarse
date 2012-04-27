@@ -15,14 +15,6 @@ class UsersController < ApplicationController
     }
   end
 
-  def backs
-    @user = User.find(params[:id])
-    @backs = @user.backs.confirmed
-    @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
-    @backs = @backs.order("confirmed_at DESC").page(params[:page]).per(10)
-    render :json => @backs.to_json({:include_project => true, :include_reward => true})
-  end
-
   def projects
     @user = User.find(params[:id])
     @projects = @user.projects.order("updated_at DESC")
