@@ -7,7 +7,7 @@ class BackersController < ApplicationController
 
   def index
     index! do |format|
-      format.json{ return render :json => @backs.to_json({:include_project => true, :include_reward => true}) }
+      format.json{ return render :json => @backs.to_json({:include_project => true, :can_manage => (current_user == @user)}) }
     end
   end
 

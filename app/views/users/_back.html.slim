@@ -45,8 +45,10 @@ script type="text/template" id="user_back_template"
       ul
         li.date
           h5 <%= confirmed_at %>
+        |<% if(display_value) { %>
         li.value
-          h5 <%= value %>
+          h5 <%= display_value %>
+        |<% } %>
         |<% if(reward) { %>
         li.reward
           h5 <%= reward['display_with_label'] %>
@@ -57,54 +59,4 @@ script type="text/template" id="user_back_template"
       ul
         li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=#{request.url}#backs&t=#{t('share_my_backs')}", :target => '_blank'
         li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_backs')}&url=#{request.url}#backs", :target => '_blank'
-
-  /   .box
-  /     p.black_box Lorem Ipsum Dolor
-  /     img.cover[src="<%= project['image'] %>" width="210px" heigth="172px"]
-  /
-  /     h4
-  /       a href='<%= project["url"] %>'
-  /         | <%= project['name'] %>
-  /     p.author== "#{t('projects.project.by')} <%= project['user']['name'] %>"
-  /     p.where
-  /       | <%= project['user']['city'] %>/<%= project['user']['state'] %>
-  /     p.description
-  /       | <%= project['headline'] %>
-  /     .status_bar
-  /       .progress style="width: <%= project['display_progress'] %>%;"
-  /     ul
-  /       li
-  /         h6 <%= project['time_to_go']['time'] %> <%= project['time_to_go']['unit'] %>
-  /         p <%= project['remaining_text'] %>
-  /       li
-  /         h6 <%= project['progress'] %>%
-  /         p= t('projects.project.backed')
-  /       li
-  /         h6 <%= project['pledged'] %>
-  /         p= t('projects.project.reached')
-  /     = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
-  /
-  / .project_about
-  /   .status
-  /     .when
-  /       p
-  /         == t('users.show.when.backed_value', :confirmed_at => "<%= confirmed_at %>", :value => "<%= value %>")
-  /         | <% if (reward) { %>
-  /         == " #{t('users.show.when.selected_reward')} "
-  /         | <% } else { %>
-  /         == " #{t('users.show.when.did_not_selected_reward')} "
-  /         | <% } %>
-  /     .reward
-  /       p
-  /         | <% if (reward) { %>
-  /         span== "#{t('projects.rewards.reward_title', :minimum => "<%= reward['display_minimum'] %>")} "
-  /         == "<%= reward['description'] %>"
-  /         | <% } %>
-  /
-  /   .about_project
-  /     p== t('users.show.project_relationship_text', :project_author => "<%= project['user']['name'] %>", :project_name => "<%= project['name'] %>")
-  /   .comments
-  /     p= t('projects.show.share.title')
-  /     p
-  /       fb:like data-send="true" data-show-faces="true" data-width="450" href="/#{I18n.locale}<%= project['url'] %>"
   .clearfix
