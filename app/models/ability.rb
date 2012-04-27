@@ -5,6 +5,7 @@ class Ability
   def initialize(current_user)
     current_user ||= User.new
 
+    can :read, User
     can :manage, User, :id => current_user.id
     can :request_refund, Backer, :user_id => current_user.id
     can :backs, User
