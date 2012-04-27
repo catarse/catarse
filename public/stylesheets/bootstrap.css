@@ -11484,6 +11484,67 @@ body[data-controller="projects"][data-action="pending"] #page_content .container
   width: 30px;
 }
 
+/* line 1, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+#thank_you {
+  margin: 30px 20px;
+  text-align: center;
+}
+/* line 4, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+#thank_you img#project_image {
+  float: left;
+  width: 128px;
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  margin-right: 20px;
+}
+/* line 9, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+#thank_you h1 {
+  text-align: left;
+  font-family: "museo-500" !important;
+  float: left;
+  width: 680px;
+  line-height: 32px;
+  padding-top: 4px !important;
+  color: #222222 !important;
+}
+/* line 17, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+#thank_you h2 {
+  color: #222222 !important;
+  margin-top: 20px;
+}
+/* line 20, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+#thank_you a {
+  text-decoration: none;
+}
+/* line 22, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+#thank_you a img {
+  width: 116px;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+/* line 25, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+#thank_you a img:hover {
+  -moz-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+}
+/* line 27, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+#thank_you #how_it_works {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
 /* line 4, ../../app/stylesheets/redesign/resources/backers/_new.sass */
 body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content {
   display: inline;
