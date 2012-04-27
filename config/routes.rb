@@ -71,8 +71,8 @@ Catarse::Application.routes.draw do
     end
   end
   resources :users do
+    resources :backers, :only => [:index]
     member do
-      get 'backs'
       get 'projects'
       get 'credits'
     end
