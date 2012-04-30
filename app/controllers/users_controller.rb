@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource except: :update_attribute_on_the_spot
   inherit_resources
-  actions :show
+  actions :show, :update
   can_edit_on_the_spot
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   respond_to :json, :only => [:backs, :projects, :request_refund]
@@ -13,6 +13,10 @@ class UsersController < ApplicationController
       @title = "#{@user.display_name}"
       @credits = @user.backs.can_refund.within_refund_deadline.all
     }
+  end
+
+  def update
+    update!{ return redirect_to user_path(@user, :anchor => 'settings') }
   end
 
   def projects

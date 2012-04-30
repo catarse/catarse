@@ -8,6 +8,14 @@ describe UsersController do
   let(:backer){ Factory(:backer, :user => user) }
   let(:user){ Factory(:user, :provider => 'facebook', :uid => '666') }
 
+  describe "PUT update" do
+    before do
+      request.session[:user_id] = user.id
+      put :update, :id => user.id, :locale => 'pt', :twitter => 'test'
+    end
+    it{ should redirect_to user_path(user, :anchor => 'settings') }
+  end
+
   describe "GET show" do
     before do
       request.session[:user_id] = user.id
