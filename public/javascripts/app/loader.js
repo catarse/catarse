@@ -17,8 +17,7 @@
  * Catarse JS loader
  * Should be the only file included from views
  */
-
-var CATARSE_LOADER = {
+var CATARSE_LOADER = window.CATARSE_LOADER = {
 
   initial: ['jquery-1.7.1.min', 'underscore-min'],
 
@@ -136,7 +135,6 @@ var CATARSE_LOADER = {
   },
 
   loadAction: function(){
-
     var body = $(document.body)
     var namespace_text = ""
 
@@ -169,5 +167,6 @@ var CATARSE_LOADER = {
   }
 
 }
+
 
 CATARSE_LOADER.init()
