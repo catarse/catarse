@@ -77,14 +77,14 @@
         .schedule
           h3= t('sidebar.titles.schedule')
           ul.events
-            - 4.times do
+            - @events.each do |event|
               li
-                = link_to '#' do
+                = link_to event['htmlLink'] do
                   h4
-                    | 02
+                    | #{event['start']['dateTime'].to_date.strftime('%d')}
                     br/
-                    span FEV
-                  p Palestra na FGV em São Paulo, durante evento XPTO
+                    span= event['start']['dateTime'].to_date.strftime('%b').upcase
+                  p= event['description']
           .clearfix
 
     .clearfix
