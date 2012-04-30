@@ -87,7 +87,7 @@ class Project < ActiveRecord::Base
   end
 
   def display_status
-    if successful?
+    if successful? and expired?
       'successful'
     elsif expired?
       'expired'
