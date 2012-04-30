@@ -19,7 +19,7 @@
   %ul
     %li
       .bootstrap-form
-        = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put }) do |f|
+        = form_for(@user, :as => :user, :html => { :method => :put }) do |f|
           = f.label :twitter, t('.twitter')
           = f.text_field :twitter
           = f.label :facebook_link, t('.facebook_link')
