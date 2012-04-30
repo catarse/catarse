@@ -32,11 +32,18 @@ class ProjectsController < ApplicationController
         @expiring             = presenter.expiring
         @recent               = presenter.recent
 
-        @blog_posts = Blog.fetch_last_posts.inject([]) do |total,item| 
-          if total.size < 2
-            total << item
+        @blog_posts = Rails.cache.fetch('blog_posts', expires_in: 30.minutes) do
+          Blog.fetch_last_posts.inject([]) do |total,item| 
+            if total.size < 2
+              total << item
+            end
+            total
           end
-          total
+        end || []
+
+        calendar = Calendar.new
+        @events = Rails.cache.fetch 'calendar', expires_in: 30.minutes do 
+          calendar.fetch_events_from("catarse.me_237l973l57ir0v6279rhrr1qs0@group.calendar.google.com") || []
         end
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(6)
         @last_tweets = Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
