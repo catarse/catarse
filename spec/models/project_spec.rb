@@ -18,7 +18,42 @@ describe Project do
     it{ should ensure_length_of(:headline).is_at_most(140) }
   end
 
-  context "#vimeo" do
+  describe "#display_status" do
+    let(:project){ Factory(:project) }
+    subject{ project.display_status }
+    context "when successful and expired" do
+      before do 
+        project.stubs(:successful?).returns(true) 
+        project.stubs(:expired?).returns(true) 
+      end
+      it{ should == 'successful' }
+    end
+
+    context "when successful and in_time" do
+      before do 
+        project.stubs(:successful?).returns(true) 
+        project.stubs(:in_time?).returns(true) 
+      end
+      it{ should == 'in_time' }
+    end
+
+    context "when expired" do
+      before{ project.stubs(:expired?).returns(true) }
+      it{ should == 'expired' }
+    end
+
+    context "when waiting confirmation" do
+      before{ project.stubs(:waiting_confirmation?).returns(true) }
+      it{ should == 'waiting_confirmation' }
+    end
+
+    context "when in_time" do
+      before{ project.stubs(:in_time?).returns(true) }
+      it{ should == 'in_time' }
+    end
+  end
+
+  describe "#vimeo" do
 
     def build_with_video url
       Factory.build(:project, :video_url => url)
