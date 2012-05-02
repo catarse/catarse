@@ -1,6 +1,6 @@
 class CreateStaticContents < ActiveRecord::Migration
   def self.up
-    unless ActiveRecord::Base.connection.tables.include?(:static_contents)
+    unless ActiveRecord::Base.connection.tables.include?("static_contents")
       create_table :static_contents do |t|
         t.string :title
         t.text :body

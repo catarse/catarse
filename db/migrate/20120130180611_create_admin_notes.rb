@@ -1,6 +1,6 @@
 class CreateAdminNotes < ActiveRecord::Migration
   def self.up
-    unless ActiveRecord::Base.connection.tables.include?(:admin_notes)
+    unless ActiveRecord::Base.connection.tables.include?("admin_notes")
       create_table :admin_notes do |t|
         t.references :resource, :polymorphic => true, :null => false
         t.references :admin_user, :polymorphic => true
