@@ -1,4 +1,8 @@
 pt:
+  newsletter_ok_header: 'Cadastro efetuado!'
+  newsletter_ok_body: 'Seu email foi cadastrado com sucesso, obrigado!'
+  newsletter_error_header: 'OPS! Ocorreu um erro.'
+  newsletter_error_body: 'Seu email não foi cadastrado, tente novamente mais tarde!'
   views:
     pagination:
       next: 'próxima'
