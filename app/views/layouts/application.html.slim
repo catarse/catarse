@@ -72,7 +72,10 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
             .facebook
               .fb-like data-href="http://facebook.com/catarse.me" data-send="false" data-width="171" data-show-faces="true"
             h3.newsletter= t('footer.titles.newsletter')
-            = form_tag '/' do
+            = form_tag 'http://catarse.mailee.me/go/add_contact_form', id: 'mailee-form', method: 'post' do
+              = hidden_field_tag 'key', '13122d'
+              = hidden_field_tag 'url_ok', "http://#{request.env['HTTP_HOST']}/?newsletter=ok"
+              = hidden_field_tag 'url_error', "http://#{request.env['HTTP_HOST']}/?newsletter=error"
               = text_field_tag 'email', 'email@email.com'
               = submit_tag 'assinar'
           .clearfix
@@ -86,3 +89,22 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
       .power
         = link_to 'http://engage.is', :target => '_blank' do
           = image_tag('catarse/power_logo200x43.png', :alt => 'POWER TO THE CROWD')
+
+- if params[:newsletter] == 'ok'
+  .bootstrap-twitter
+    #newsletterModal.modal
+      .modal-header
+        h3= t('newsletter_ok_header')
+      .modal-body
+        p= t('newsletter_ok_body')
+      .modal-footer
+        = link_to 'OK', '#', :class => 'btn', :"data-dismiss" => 'modal'
+- elsif params[:newsletter] == 'error'
+  .bootstrap-twitter
+    #newsletterModal.modal
+      .modal-header
+        h3= t('newsletter_error_header')
+      .modal-body
+        p= t('newsletter_error_body')
+      .modal-footer
+        = link_to 'OK', '#', :class => 'btn', :"data-dismiss" => 'modal'
