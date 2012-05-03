@@ -41,7 +41,7 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
               li= link_to t('footer.links.faq'), faq_path
               li= link_to t('footer.links.terms'), terms_path
               li= link_to t('footer.links.policy'), privacy_path
-              li= mail_to t('site.email.contact'), t('layouts.footer.email'), :target => :blank
+              li= mail_to t('site.email.contact'), t('layouts.footer.email'), :target => :_blank
 
           .opendata
             h3= t('footer.titles.opendata')
