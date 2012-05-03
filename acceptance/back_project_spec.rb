@@ -114,12 +114,6 @@ feature "Back project" do
       page.should have_content("Muito obrigado")
     end
   
-    within '#content_header' do
-      within 'h1' do
-        page.should have_content("Muito obrigado")
-      end
-    end
-    
     page.should have_content "Você agora é parte do grupo que faz de tudo para o #{@project.name} acontecer."
     
   end
@@ -134,16 +128,18 @@ feature "Back project" do
     visit project_path(@project)
     verify_translations
   
-    within "#rewards ul" do
-      rewards = all("li.clickable")
+    within "#rewards" do
+      rewards = all(".box.clickable")
       rewards[2].find("input[type=hidden]")[:value].should == "#{new_project_backer_path(@project)}/?reward_id=#{@rewards[2].id}"
-      rewards[2].click
+      #rewards[2].click
+      visit rewards[2].find("input[type=hidden]")[:value]
     end
+
   
     verify_translations
     sleep 2
-    
-    find("#backer_reward_id_#{@rewards[2].id}")[:checked].should == "true"
+
+    find("input#backer_reward_id_#{@rewards[2].id}")[:checked].should == "true"
     find("#backer_value")[:value].should == "30"
     
     Backer.count.should == 0
@@ -164,6 +160,7 @@ feature "Back project" do
     fill_in "Email", with: "foo@bar.com"
     fill_in "CPF", with: "815.587.240-87"
     fill_in "CEP", with: "90050-004"
+    fill_in "Logradouro", with: "Lorem Ipsum"
     
     # Sleep to wait for the loading of zip code data
     sleep 2
@@ -178,7 +175,6 @@ feature "Back project" do
     page.should have_css("#user_full_name.ok")
     page.should have_css("#user_email.ok")
     page.should have_css("#user_cpf.ok")
-    page.should have_css("#user_address_zip_code.ok")
     page.should have_css("#user_address_street.ok")
     page.should have_css("#user_address_number.ok")
     page.should have_css("#user_address_complement.ok")
@@ -285,16 +281,9 @@ feature "Back project" do
   
     click_on "Quero apoiar este projeto"
     verify_translations
-    find("#login").visible?.should be_true
-    within "#login" do
-      click_link 'X'
-    end
-    verify_translations
-    find("#login").visible?.should be_false
     
-    find("#rewards li.clickable").click
     verify_translations
-    find("#login").visible?.should be_true
+    current_path == new_user_session_path
     
   end
   
