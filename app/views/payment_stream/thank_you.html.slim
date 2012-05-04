@@ -4,7 +4,6 @@
       .title
         h1 = t('.header_title')
         h2= t('.header_subtitle')
-        = image_tag "badge.#{I18n.locale}.png", :id => "badge"
       .project_info
         = image_tag @project.display_image, :id => 'project_image', :alt => @project.name, :width => '250px'
         h1= t('.text_title_html', :link => link_to(@project.name, project_path(@project)))
