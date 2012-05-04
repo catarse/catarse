@@ -15,3 +15,4 @@ chromedriver.log
 .use_capybara_webkit
 config/locales/.wti
 npm-debug.log
+db/structure.sql
