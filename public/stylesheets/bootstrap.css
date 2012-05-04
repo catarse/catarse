@@ -11513,7 +11513,7 @@ body[data-controller="projects"][data-action="pending"] #page_content .container
 
 /* line 1, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you {
-  margin: 40px 20px;
+  margin: 30px 20px;
   text-align: center;
 }
 /* line 4, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
@@ -11542,34 +11542,11 @@ body[data-controller="projects"][data-action="pending"] #page_content .container
   font-size: 18px;
 }
 /* line 19, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
-#thank_you .title #badge {
-  position: absolute;
-  top: -10px;
-  right: 10px;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -moz-transition-duration: 0.2s;
-  -webkit-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  z-index: 10;
-}
-/* line 25, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
-#thank_you .title #badge:hover {
-  -moz-transform: rotate(-4deg);
-  -webkit-transform: rotate(-4deg);
-  -o-transform: rotate(-4deg);
-  -ms-transform: rotate(-4deg);
-  transform: rotate(-4deg);
-}
-/* line 27, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info {
   float: left;
   padding-bottom: 40px;
 }
-/* line 30, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 22, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info #project_image {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
@@ -11578,21 +11555,21 @@ body[data-controller="projects"][data-action="pending"] #page_content .container
   float: left;
   margin-right: 20px;
 }
-/* line 34, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 26, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info h1 {
   float: left;
-  width: 550px;
+  width: 600px;
   font-family: "Lato-Bold";
   font-size: 22px;
   line-height: 130%;
   padding-bottom: 20px;
 }
-/* line 41, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 33, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info h1 a {
   color: #e75297;
   text-decoration: none;
 }
-/* line 44, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 36, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info #review_text {
   height: 80px;
   overflow: hidden;
@@ -11604,13 +11581,13 @@ body[data-controller="projects"][data-action="pending"] #page_content .container
   float: left;
   width: 600px;
 }
-/* line 54, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 46, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info #review_text strong {
   font-size: 18px;
   color: #59af6d;
   font-weight: bold;
 }
-/* line 58, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 50, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you h2 {
   font-family: "Lato-Bold";
 }
