@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    update!{ return redirect_to user_path(@user, :anchor => 'settings') }
+    update! do 
+      flash[:notice] = t('users.current_user_fields.updated')
+      return redirect_to user_path(@user, :anchor => 'settings')
+    end
   end
 
   def projects
