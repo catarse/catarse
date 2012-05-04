@@ -48,10 +48,10 @@
 # Specifies if labels/hints for input fields automatically be looked up using I18n.
 # Default value: false. Overridden for specific fields by setting value to true,
 # i.e. :label => true, or :hint => true (or opposite depending on initialized value)
-Formtastic::SemanticFormBuilder.i18n_lookups_by_default = true
+Formtastic::FormBuilder.i18n_lookups_by_default = true
 
 # You can add custom inputs or override parts of Formtastic by subclassing SemanticFormBuilder and
 # specifying that class here.  Defaults to SemanticFormBuilder.
 # Formtastic::SemanticFormHelper.builder = MyCustomBuilder
 
-Formtastic::SemanticFormBuilder.escape_html_entities_in_hints_and_labels = false
+Formtastic::FormBuilder.i18n_lookups_by_default = true
