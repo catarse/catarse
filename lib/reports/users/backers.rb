@@ -12,6 +12,8 @@ module Reports
               'Recompensa Selecionada Valor',
               'Feito em',
               'Projeto',
+              'Bem sucedido?',
+              'Termina em',
               'Categoria'
             ]
 
@@ -21,6 +23,8 @@ module Reports
                 (backer.reward.minimum_value if backer.reward),
                 (backer.created_at.strftime("%d/%m/%Y") if backer.created_at),
                 backer.project.name,
+                (backer.project.successful? ? 'Sim' : 'Não'),
+                (backer.expires_at.strftime("%d/%m/%Y") if backer.expires_at),
                 backer.project.category.name
               ]
             end
