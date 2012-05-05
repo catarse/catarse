@@ -21,9 +21,14 @@ gem 'slim-rails'
 gem 'mustache'
 
 # Authentication and Authorization
-gem "omniauth", '1.0.0'
-gem 'omniauth-google'
-gem "devise", '1.5.3'
+gem 'omniauth', '1.1.0'
+gem 'omniauth-openid', '~> 1.0.1'
+gem 'omniauth-twitter', '~> 0.0.11'
+gem 'omniauth-facebook', '~> 1.2.0'
+gem 'omniauth-github', '~> 1.0.1'
+gem 'omniauth-linkedin', '~> 0.0.6'
+gem 'omniauth-yahoo', '~> 0.0.4'
+gem 'devise', '1.5.3'
 gem 'cancan'
 
 gem 'rails_autolink', '~> 1.0.7'
@@ -43,7 +48,6 @@ gem 'weekdays'
 gem 'brcep'
 gem "RedCloth"
 gem 'unicode'
-gem 'routing-filter'
 gem 'carrierwave', '= 0.5.8'
 gem 'rmagick'
 gem 'fog'
@@ -58,6 +62,7 @@ gem 'mailee', '0.5.4', :git => 'https://github.com/danielweinmann/mailee-api.git
 # Translations
 gem 'http_accept_language'
 gem 'web_translate_it'
+gem 'routing-filter', :git => 'https://github.com/josemarluedke/routing-filter.git' # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
 
 # Administration
 gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
@@ -85,7 +90,7 @@ group :test, :development do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'steak', "~> 1.1.0"
-  gem 'rspec-rails', "~> 2.0.1"
+  gem 'rspec-rails', "~> 2.10.0"
   gem 'rcov', '= 0.9.11'
   gem 'mocha'
   gem 'capybara', ">= 1.0.1"
