@@ -95,22 +95,22 @@ input.error,textarea.error
       border: none
       +border-radius(8px)
       background-color: #ccc
-      +linear-gradient(color_stops(#ddd,#aaa))
+      @include linear-gradient(color_stops(#ddd,#aaa))
       +box-shadow(rgba(0,0,0,0.75),2px,2px,3px)
     button:hover
       background-color: #ddd
-      +linear-gradient(color_stops(#eee,#bbb))
+      @include linear-gradient(color_stops(#eee,#bbb))
       +box-shadow(rgba(0,0,0,0.75),2px,2px,2px)
     button:active
       padding: 6px 9px 4px 11px
       +text-shadow(rgba(255,255,255,0.85), 2px, 2px, 1px)
       background-color: #ddd
-      +linear-gradient(color_stops(#eee,#bbb))
+      @include linear-gradient(color_stops(#eee,#bbb))
       +box-shadow(rgba(0,0,0,0.75),1px,1px,1px)
     button:disabled
       color: #888
       +text-shadow(rgba(230,230,230,0.85), 1px, 1px, 0px)
       padding: 5px 10px
       background-color: #aaa
-      +linear-gradient(color_stops(#bbb,#888))
+      @include linear-gradient(color_stops(#bbb,#888))
       +box-shadow(rgba(0,0,0,0.75),2px,2px,6px)
