@@ -11,8 +11,7 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
     meta name="author" content="Engage"
     = yield :meta_tags
     = render :partial => 'projects/facebook_sdk'
-    = stylesheet_link_tag 'le-frog/jquery-ui-1.8.6.custom.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'bootstrap.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'application', :media => 'screen, projection'
     /[if lt IE 9]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
     = javascript_include_tag 'app/loader'
