@@ -9,6 +9,9 @@ class Update < ActiveRecord::Base
       '>' => '&gt;',
       '<' => '&lt;',
       '"' => '"' }
+    image
+    youtube width: 640, height: 430, wmode: "opaque"
+    vimeo width: 640, height: 430
     redcloth :target => :_blank
     link :target => :_blank
   end

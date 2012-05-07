@@ -699,6 +699,7 @@ pt:
       title_current_user: "Projetos que já apoiei"
       your_reward: "Sua recompensa"
     current_user_fields:
+      updated: 'As suas informações foram atualizadas'
       update_social_info: 'Atualizar informações'
       social_info: 'Informações para contato'
       twitter: 'twitter ( usuário )'
