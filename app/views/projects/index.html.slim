@@ -87,7 +87,7 @@
                     | #{event['start']['dateTime'].to_date.strftime('%d')}
                     br/
                     span= event['start']['dateTime'].to_date.strftime('%b').upcase
-                  p= event['description']
+                  p= (event['description'].present? ? event['description'] : event['title'])
           .clearfix
 
     .clearfix
