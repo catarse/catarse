@@ -72,7 +72,7 @@
             = hidden_field_tag 'key', '13122d'
             = hidden_field_tag 'url_ok', "http://#{request.env['HTTP_HOST']}/?newsletter=ok"
             = hidden_field_tag 'url_error', "http://#{request.env['HTTP_HOST']}/?newsletter=error"
-            = text_field_tag 'email', 'email@email.com'
+            = text_field_tag 'email', nil, placeholder: 'email@email.com'
             = submit_tag t('sidebar.buttons.newsletter')
         .faq
           h3= t('sidebar.titles.faq')
@@ -87,7 +87,7 @@
                     | #{event['start']['dateTime'].to_date.strftime('%d')}
                     br/
                     span= event['start']['dateTime'].to_date.strftime('%b').upcase
-                  p= event['description']
+                  p= (event['description'].present? ? event['description'] : event['title'])
           .clearfix
 
     .clearfix
