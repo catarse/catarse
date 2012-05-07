@@ -1,30 +1,52 @@
 #thank_you
   margin: 30px 20px
   text-align: center
-  img#project_image
-    float: left
-    width: 128px
-    +box-shadow(rgba(0,0,0,0.5), 3px, 3px, 5px)
-    margin-right: 20px
-  h1
+  .title
+    +grid(16)
+    +alpha
+    padding-bottom: 40px
     text-align: left
-    font-family: "museo-500" !important
+    position: relative
+    h1
+      color: $ultra_gryn
+      font-family: "Lato-Regular"
+      font-size: 28px
+      padding: 5px 0
+    h2
+      color: rgba($ultra_gryn, 0.7)
+      font-family: Arial
+      font-size: 18px
+  .project_info
     float: left
-    width: 680px
-    line-height: 32px
-    padding-top: 4px !important
-    color: #222 !important
+    padding-bottom: 40px
+    #project_image
+      @include box-shadow(rgba(black, 0.5) 1px 1px 3px)
+      float: left
+      margin-right: 20px
+    h1
+      float: left
+      width: 600px
+      font-family: 'Lato-Bold'
+      font-size: 22px
+      line-height: 130%
+      padding-bottom: 20px
+      a
+        color: $pink
+        text-decoration: none
+    #review_text
+      height: 80px
+      overflow: hidden
+      overflow-y: auto
+      padding-right: 20px
+      font-family: Arial
+      font-size: 15px
+      line-height: 140%
+      float: left
+      width: 600px
+      strong
+        font-size: 18px
+        color: $green
+        font-weight: bold
   h2
-    color: #222 !important
-    margin-top: 20px
-  a
-    text-decoration: none
-  a img
-    width: 116px
-    +transition(all,0.3s)
-    &:hover
-      +scale(1.1)
-  #how_it_works
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-    font-size: 18px
-    margin-top: 40px
+    font-family: 'Lato-Bold'
+
