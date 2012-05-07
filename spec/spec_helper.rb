@@ -32,6 +32,8 @@ RSpec.configure do |config|
   end
 end
 
+RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
+
 def post_moip_params
   {
     :id_transacao => 'ABCD',
