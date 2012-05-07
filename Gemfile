@@ -62,7 +62,7 @@ gem 'mailee', '0.5.4', :git => 'https://github.com/danielweinmann/mailee-api.git
 # Translations
 gem 'http_accept_language'
 gem 'web_translate_it'
-gem 'routing-filter', :git => 'https://github.com/josemarluedke/routing-filter.git' # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
+gem 'routing-filter'
 
 # Administration
 gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
