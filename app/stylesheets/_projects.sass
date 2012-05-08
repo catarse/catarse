@@ -441,15 +441,15 @@
           padding: 4px
           margin: 0
       .successful
-        background: url(/images/bg_top_green.png) top left repeat-x, url(/images/bg_bottom_green.png) bottom left repeat-x
+        background: url(/images/bg_top_green.png) top left repeat-x, image-url("bg_bottom_green.png") bottom left repeat-x
         .text
           background-color: #040
       .not_successful
-        background: url(/images/bg_top_red.png) top left repeat-x, url(/images/bg_bottom_red.png) bottom left repeat-x
+        background: url(/images/bg_top_red.png) top left repeat-x, image-url("bg_bottom_red.png") bottom left repeat-x
         .text
           background-color: #600
       .waiting_confirmation
-        background: url(/images/bg_top_yellow.png) top left repeat-x, url(/images/bg_bottom_yellow.png) bottom left repeat-x
+        background: url(/images/bg_top_yellow.png) top left repeat-x, image-url("bg_bottom_yellow.png") bottom left repeat-x
         .text
           background-color: #AA0
       form
@@ -583,9 +583,9 @@
         background-color: rgb(200,220,200)
         background-color: rgba(0,150,0,0.2)
       input.ok,textarea.ok
-        background: url('/images/tick_32.png') no-repeat 96% center
+        background: image-url('tick_32.png') no-repeat 96% center
       input.error,textarea.error
-        background: url('/images/delete_32.png') no-repeat 96% center
+        background: url('delete_32.png') no-repeat 96% center
       p.inline-hints
         font-size: 18px
         margin-top: 8px

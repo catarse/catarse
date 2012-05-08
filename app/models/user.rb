@@ -169,7 +169,7 @@ class User < ActiveRecord::Base
     truncate display_name, :length => 42
   end
   def display_image
-    gravatar_url || image_url || '/images/user.png'
+    gravatar_url || image_url || '/assets/user.png'
   end
   def backer?
     backs.confirmed.not_anonymous.count > 0
@@ -245,6 +245,6 @@ class User < ActiveRecord::Base
   # Returns a Gravatar URL associated with the email parameter
   def gravatar_url
     return unless email
-    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or "#{I18n.t('site.base_url')}/images/user.png"}"
+    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or "#{I18n.t('site.base_url')}/assets/user.png"}"
   end
 end
