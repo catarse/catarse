@@ -1,9 +1,5 @@
 var CATARSE = {
 
-  loader: CATARSE_LOADER,
-  locale: $(document.body).data("locale"),
-  currentUser: $(document.body).data("user"),
-      
   requireLogin: function(event, customUrl){
     event.preventDefault()
     var url = null
@@ -22,9 +18,11 @@ var CATARSE = {
       location.href = "/login"
       //CATARSE.router.navigate("login/" + encodeURIComponent(url), true)
   },
-  
-  common: {
+
+  Common: {
     init: function(){
+      CATARSE.locale = $(document.body).data("locale")
+      CATARSE.currentUser = $(document.body).data("user")
       // Common init for every action
       CATARSE.router = new CATARSE.Router()
       CATARSE.layout = new CATARSE.LayoutsApplicationView({el: $('html')})
@@ -35,6 +33,19 @@ var CATARSE = {
       if (Backbone.history)
         Backbone.history.start()
     }
-  }
+  },
+  blog:{
+    index: function(){
+      window.view = new CATARSE.BlogIndexView({el: $("body") });
+    }
+  },
 
+  projects: {
+    index: function(){
+      window.view = new CATARSE.ProjectsIndexView({el: $("body") });
+    },
+    show: function(){
+      window.view = new CATARSE.ProjectsShowView({el: $("body") });
+    }
+  }
 }
