@@ -1,4 +1,13 @@
 en:
+  newsletter_ok_header: ~
+  newsletter_ok_body: ~
+  newsletter_error_header: ~
+  newsletter_error_body: ~
+  views:
+    pagination:
+      next: ~
+      last: ~
+      truncate: ~
   statistics:
     backers:
       subtitle: backers
@@ -423,6 +432,10 @@ en:
         unsuccessful_text: "The project %{link} that you backed wasn't funded. Maybe next time!"
     verify_if_video_exists_on_vimeo: "must exist on Vimeo"
     vimeo_regex_validation: "only Vimeo URLs are allowed"
+    display_status:
+      expired: "not funded"
+      successful: funded
+      waiting_confirmation: waiting
   projects:
     box:
       by: by
@@ -519,6 +532,7 @@ en:
       no_projects: "No projects found."
       order: Order
       project: Project
+      slug: ~
       recommended: Recommended?
       rejected: Rejected?
       submit: Search
@@ -574,8 +588,10 @@ en:
     project_updates:
       empty: "This project didn't have updates yet. But wait and see =D"
       submit: "Send update"
-      text: "Text of the update"
+      comment: ~
       title: "Title of the update"
+      destroy: ~
+      destroy_confirmation: ~
     project_warning:
       rejected: "This project was not selected to participate on Catarse. Maybe next time! :)"
       waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
@@ -705,6 +721,7 @@ en:
       title_current_user: "Projects I've backed"
       your_reward: "Your reward"
     current_user_fields:
+      updated: ~
       update_social_info: "Update info"
       social_info: "Contact info"
       twitter: "twitter ( username )"
