@@ -84,6 +84,7 @@ RSpec.configure do |config|
   config.include HelperMethods
   config.include Rack::Test::Methods
   config.include Factory::Syntax::Methods
+  config.include Rails.application.routes.url_helpers, :type => :acceptance
 
   config.mock_with :mocha
 
@@ -106,5 +107,3 @@ RSpec.configure do |config|
     I18n.default_locale = :pt
   end
 end
-
-include Rails.application.routes.url_helpers
