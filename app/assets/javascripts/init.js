@@ -3,13 +3,13 @@ jQuery(function () {
 
   body = $(document.body);
   controllerClass = body.data( "controller-class" );
-  controllerName = body.data( "controller-name" );
+  controllerName = body.data( "controller" );
   action = body.data( "action" );
 
   function exec(controllerClass, controllerName, action) {
     var ns, railsNS;
 
-    ns = App;
+    ns = CATARSE;
     railsNS = controllerClass ? controllerClass.split("::").slice(0, -1) : [];
 
     _.each(railsNS, function(name){
@@ -26,8 +26,8 @@ jQuery(function () {
   }
 
   function exec_filter(filterName){
-    if(App.Common && _.isFunction(App.Common[filterName])){
-      App.Common[filterName]();
+    if(CATARSE.Common && _.isFunction(CATARSE.Common[filterName])){
+      CATARSE.Common[filterName]();
     }
   }
 
