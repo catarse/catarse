@@ -27,8 +27,8 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     "keyup form input[type=text],textarea": "validate",
     "click #project_link": "selectTarget",
     "click #project_embed textarea": "selectTarget",
-    "click #rewards .clickable": "backWithReward",
-    "click #pledge input[type=submit]": "requireLogin"
+    "click #rewards .clickable": "backWithReward"
+    //"click #pledge input[type=submit]": "requireLogin"
   },
 
   project: new CATARSE.Project($('#project_description').data("project")),
@@ -157,7 +157,8 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     if(!element.is('li'))
       element = element.parentsUntil('li')
     var url = element.find('input[type=hidden]').val()
-    CATARSE.requireLogin(event, url)
+    window.location.href = url;
+    //CATARSE.requireLogin(event, url)
   },
   
   requireLogin: function(event) {
