@@ -15,7 +15,8 @@ class PaypalController < ApplicationController
       redirect_to paypal_response.redirect_uri
     #rescue Paypal::Exception::APIError => e
     #  raise "Message: #{e.message}<br/>Response: #{e.response.inspect}<br/>Details: #{e.response.details.inspect}"
-    rescue
+    rescue Exception => e
+      Exceptional.handle(e) rescue nil
       flash[:failure] = t('projects.pay.paypal_error')
       return redirect_to new_project_backer_path(backer.project)
     end
