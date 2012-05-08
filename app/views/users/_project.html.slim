@@ -43,42 +43,10 @@ script type="text/template" id="user_project_template"
           p= t('projects.project.reached')
     .back_info
       p.headline <%= headline %>
-    .tell_about
-      p= t('tell_about_this_project')
-      ul
-        li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=#{request.url}#backs&t=#{t('share_my_projects')}", :target => '_blank'
-        li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_projects')}&url=#{request.url}#backs", :target => '_blank'
+    - if current_user == @user
+      .tell_about
+        p= t('tell_about_this_project')
+        ul
+          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=#{request.url}#backs&t=#{t('share_my_projects')}", :target => '_blank'
+          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_projects')}&url=#{request.url}#backs", :target => '_blank'
 
-  / .profile_my_projects
-  /     p
-  /     .project
-  /       .box
-  /         p.black_box Lorem Ipsum Dolor
-  /         = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
-  /
-  /         h4
-  /           a href="<%= url %>"
-  /             | <%= name %>
-  /         p.author== "#{t('projects.project.by')} <%= user['name'] %>"
-  /         p.where
-  /           | <%= user['address_city'] %>
-  /         p.description
-  /           | <%= headline %>
-  /         .status_bar
-  /           .progress style="width: <%= display_progress %>%;"
-  /         ul
-  /           li
-  /             h6 <%= time_to_go['time'] %> <%= time_to_go['unit'] %>
-  /             p <%= remaining_text %>
-  /           li
-  /             h6 <%= progress %>%
-  /             p= t('projects.project.backed')
-  /           li
-  /             h6 <%= pledged %>
-  /             p= t('projects.project.reached')
-  /         = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
-  /
-  /     .project_about
-  /       .comments
-  /         p= t('projects.show.share.title')
-  /         fb:like data-send="true" data-show-faces="true" data-width="450" href="/#{I18n.locale}<%= url %>"
