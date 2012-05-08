@@ -33,8 +33,12 @@
         .progress style="width: #{project.display_progress}%;"
       ul
         li
-          h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
-          p= "#{project.remaining_text}"
+          - if project.in_time?
+            h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
+            p= "#{project.remaining_text}"
+          - else
+            h6= project.display_status
+            p= project.display_expires_at
         li
           h6= "#{project.display_pledged}"
           p= "#{t('projects.project.backed')}"

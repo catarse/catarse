@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
     @fb_admins = [567237711]
   end
 
+  before_filter do
+    if params[:newsletter].present?
+      flash[:notice] = I18n.t('newsletter_ok_body') if params[:newsletter] == 'ok'
+      flash[:alert] = I18n.t('newsletter_error_body') if params[:newsletter] == 'error'
+    end
+  end
+
+
   private
 
   def has_institutional_videos?

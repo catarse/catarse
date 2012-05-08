@@ -413,6 +413,10 @@ pt:
         unsuccessful_text: "O projeto %{link} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
+    display_status:
+      expired: 'não financiado'
+      successful: 'financiado'
+      waiting_confirmation: 'aguardando'
   projects:
     box:
       by: "por "

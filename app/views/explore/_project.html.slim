@@ -46,8 +46,13 @@ script type="text/template" id="project_template"
           .progress style="width: <%= display_progress %>%;"
         ul
           li
+            | <% if(in_time) { %>
             h6 <%= time_to_go['time'] %> <%= time_to_go['unit'] %>
             p <%= remaining_text %>
+            | <% } else { %>
+            h6 <%= display_status_to_box %> 
+            p <%= display_expires_at %>
+            | <% } %>
           li
             h6 <%= pledged %>
             p=t('projects.project.backed')
