@@ -145,17 +145,22 @@
               p
                 | #{@project.user.address_city}
               p= t('count_backed_projects', :total => @project.user.total_backs)
-              - if @project.user.twitter
-                p.twitter
-                  = link_to "@#{@project.user.twitter}", "http://twitter.com/#{@project.user.twitter}", :target => '_blank'
-              - if @project.user.facebook_link
-                p.facebook
-                  = link_to "Perfil no Facebook", @project.user.facebook_link, :target => '_blank'
-              - if @project.user.other_link
-                p.webpage
-                  = link_to @project.user.other_link, @project.user.other_link, :target => '_blank'
           #bio
             p= @project.user.bio
+        .user_social
+          ul
+            - if can? :manage, @project.user
+              li.email
+                = mail_to @project.user.email, "Me envie um email"
+            - if @project.user.facebook_link
+              li.facebook
+                = link_to "Perfil no facebook", @project.user.facebook_link, :target => '_blank'
+            - if @project.user.twitter
+              li.twitter
+                = link_to "Perfil no twitter", @project.user.twitter_link, :target => '_blank'
+            - if @project.user.other_link
+              li.other
+                = link_to @project.user.other_link, @project.user.other_link, :target => '_blank'
           .clearfix
 
     .clearfix
