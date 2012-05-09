@@ -175,6 +175,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
       altFormat: 'dd/mm/yy',
       onSelect: everything_ok
     })
+    $('#ui-datepicker-div').css('display', 'none')
     $('input,textarea,select').live('focus', function(){
       $('p.inline-hints').hide()
       $(this).next('p.inline-hints').show()
