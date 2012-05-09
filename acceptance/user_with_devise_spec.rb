@@ -39,6 +39,7 @@ feature "with login modal" do
     find("a.new_registration_link").click
     verify_translations
 
+    fill_in 'user_name', :with => 'Lorem'
     fill_in 'user_email', :with => 'lorem@lorem.com'
     fill_in 'user_password', :with => '123lorem'
     fill_in 'user_password_confirmation', :with => '123lorem'
@@ -96,6 +97,7 @@ feature "with devise routes" do
     visit new_user_registration_path
     verify_translations
 
+    fill_in 'user_name', :with => 'Lorem'
     fill_in 'user_email', :with => 'lorem@lorem.com'
     fill_in 'user_password', :with => '123lorem'
     fill_in 'user_password_confirmation', :with => '123lorem'
