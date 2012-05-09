@@ -132,7 +132,7 @@ class ApplicationController < ActionController::Base
       if current_user
         redirect_to root_path
       else
-        session[:return_to] = request.env['REQUEST_PATH']
+        session[:return_to] = request.env['REQUEST_URI']
         redirect_to login_path
         false
       end

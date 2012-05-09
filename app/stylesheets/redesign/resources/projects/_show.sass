@@ -168,6 +168,28 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"]
       +omega
       border: none
       padding-top: 15px
+      .user_social
+        +grid(3)
+        li
+          font-family: 'Lato-Regular'
+          font-size: 12px
+          padding: 0 0 5px 25px
+          margin-bottom: 10px
+          +opacity(0.8)
+          a
+            color: black
+            +transition(all, 0.5s)
+            text-decoration: none
+            &:hover
+              color: $pink
+          &.email
+            background: url($images_path+'social_icons.png') left top no-repeat
+          &.facebook
+            padding-top: 2px
+            background: url($images_path+'social_icons.png') left -25px no-repeat
+          &.twitter
+            padding-top: 2px
+            background: url($images_path+'social_icons.png') left -54px no-repeat
       #rewards
         .box
           background: $ed_gryn
@@ -201,7 +223,10 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"]
             line-height: 130%
             padding-bottom: 10px
             a
-              color: $minimal_blue
+              color: $pink
+              text-decoration: none
+              &:hover
+                text-decoration: underline
           .maximum_backers
             color: $_4d_gryn
             font-family: Arial
@@ -275,7 +300,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"]
         #creator_profile
           padding-top: 20px
           float: left
-          padding-bottom: 20px
+          padding-bottom: 15px
           a
             color: $ultra_gryn
             text-decoration: none

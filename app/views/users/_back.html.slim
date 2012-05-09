@@ -54,9 +54,10 @@ script type="text/template" id="user_back_template"
           h5 <%= reward['display_with_label'] %>
           p <%= reward['description']%>
         |<% } %>
-    .tell_about
-      p= t('tell_about_this_back')
-      ul
-        li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=#{request.url}#backs&t=#{t('share_my_backs')}", :target => '_blank'
-        li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_backs')}&url=#{request.url}#backs", :target => '_blank'
+    - if current_user == @user
+      .tell_about
+        p= t('tell_about_this_back')
+        ul
+          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(project['full_uri']) %>&t=#{t('share_my_backs')}".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_backs')}&url=<%= encodeURIComponent(project['full_uri']) %>".html_safe, :target => '_blank'
   .clearfix

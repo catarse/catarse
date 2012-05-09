@@ -37,17 +37,20 @@
               = on_the_spot_edit @user, :bio, :type => :textarea, :tooltip => t('users.header.bio_tooltip')
             - else
               = @user.bio
-      /.user_social
-        /ul
-          /- if can? :manage, @user
-            /li.email
-              /= mail_to @user.email, "Me envie um email"
-          /li.facebook
-            /= link_to "Perfil no facebook", '#'
-          /li.twitter
-            /= link_to "Perfil no twitter", '#'
-          /li.other
-            /= link_to "www.lorem.ipsum", '#'
+      .user_social
+        ul
+          - if can? :manage, @user
+            li.email
+              = mail_to @user.email, "Me envie um email"
+          - if @user.facebook_link
+            li.facebook
+              = link_to "Perfil no facebook", @user.facebook_link, :target => '_blank'
+          - if @user.twitter
+            li.twitter
+              = link_to "Perfil no twitter", @user.twitter_link, :target => '_blank'
+          - if @user.other_link
+            li.other
+              = link_to @user.other_link, @user.other_link, :target => '_blank'
 
       .tab_container
         nav#user_profile_menu

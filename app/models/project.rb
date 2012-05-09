@@ -202,6 +202,7 @@ class Project < ActiveRecord::Base
       time_to_go: time_to_go,
       remaining_text: remaining_text,
       url: "/projects/#{self.to_param}",
+      full_uri: I18n.t('site.base_url') + Rails.application.routes.url_helpers.project_path(self),
       expired: expired?,
       successful: successful?,
       waiting_confirmation: waiting_confirmation?,

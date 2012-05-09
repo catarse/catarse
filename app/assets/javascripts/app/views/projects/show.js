@@ -9,11 +9,11 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     CATARSE.router.route("comments", "comments", this.comments)
     CATARSE.router.route("embed", "embed", this.embed)
 
-    this.$('a.destroy_update').bind('ajax:beforeSend', function(event, data){
+    this.$('a.destroy_update').live('ajax:beforeSend', function(event, data){
       $(event.target).next('.deleting_update').show();
     });
 
-    this.$('a.destroy_update').bind('ajax:success', function(event, data){
+    this.$('a.destroy_update').live('ajax:success', function(event, data){
       var target = $('.updates_wrapper');
       target.html(data);
       $(event.target).next('.deleting_update').hide();
@@ -28,8 +28,8 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     "keyup form input[type=text],textarea": "validate",
     "click #project_link": "selectTarget",
     "click #project_embed textarea": "selectTarget",
-    "click #rewards .clickable": "backWithReward",
-    "click #pledge input[type=submit]": "requireLogin"
+    "click #rewards .clickable": "backWithReward"
+    //"click #pledge input[type=submit]": "requireLogin"
   },
 
   UpdatesForm: Backbone.View.extend({
@@ -156,7 +156,8 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     if(!element.is('li'))
       element = element.parentsUntil('li')
     var url = element.find('input[type=hidden]').val()
-    CATARSE.requireLogin(event, url)
+    window.location.href = url;
+    //CATARSE.requireLogin(event, url)
   },
   
   requireLogin: function(event) {
