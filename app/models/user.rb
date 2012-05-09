@@ -236,6 +236,10 @@ class User < ActiveRecord::Base
     provider == 'devise'
   end
 
+  def twitter_link
+    "http://twitter.com/#{self.twitter}"
+  end
+
   protected
 
   def password_required?
