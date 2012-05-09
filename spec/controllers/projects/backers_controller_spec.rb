@@ -100,7 +100,7 @@ describe Projects::BackersController do
   describe "POST review" do
     context "without user" do
       before do 
-        request.env['REQUEST_PATH'] = "/test_path"
+        request.env['REQUEST_URI'] = "/test_path"
         post :review, {:locale => :pt, :project_id => @project.id}
       end
       it{ should redirect_to login_path }
