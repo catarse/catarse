@@ -19,6 +19,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
       $(event.target).next('.deleting_update').hide();
     });
 
+    this.project = new CATARSE.Project($('#project_description').data("project"))
     this.render()
   },
 
@@ -30,8 +31,6 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     "click #rewards .clickable": "backWithReward",
     "click #pledge input[type=submit]": "requireLogin"
   },
-
-  project: new CATARSE.Project($('#project_description').data("project")),
 
   UpdatesForm: Backbone.View.extend({
     el: 'form#new_update',
@@ -72,12 +71,12 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   }),
 
   BackerView: CATARSE.ModelView.extend({
-    template: _.template(this.$('#backer_template').html())
+    template: _.template(this.$('#backer_template').html() || '')
   }),
 
   BackersView: CATARSE.PaginatedView.extend({
-		template: _.template(this.$('#backers_template').html()),
-    emptyTemplate: _.template(this.$('#empty_backers_template').html())
+		template: _.template(this.$('#backers_template').html() || ''),
+    emptyTemplate: _.template(this.$('#empty_backers_template').html() || '')
   }),
 
   about: function() {

@@ -9,6 +9,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
     CATARSE.router.route("comments", "comments", this.comments)
     CATARSE.router.route("settings", "settings", this.settings)
     CATARSE.router.route("request_refund/:back_id", "request_refund", this.request_refund)
+    this.user = new CATARSE.User($('#user_profile').data("user"))
     this.render()
   },
 
@@ -21,27 +22,25 @@ CATARSE.UsersShowView = Backbone.View.extend({
     this.$('#creditsModal').modal('hide');
   },
 
-  user: new CATARSE.User($('#user_profile').data("user")),
-
   BackView: CATARSE.ModelView.extend({
-    template: _.template(this.$('#user_back_template').html())
+    template: _.template(this.$('#user_back_template').html() || '')
   }),
 
   BacksView: CATARSE.PaginatedView.extend({
-    template: _.template(this.$('#user_backs_template').html()),
-    emptyTemplate: _.template(this.$('#empty_user_back_template').html()),
+    template: _.template(this.$('#user_backs_template').html() || ''),
+    emptyTemplate: _.template(this.$('#empty_user_back_template').html() || ''),
     afterUpdate: function() {
       FB.XFBML.parse()
     }
   }),
 
   ProjectView: CATARSE.ModelView.extend({
-    template: _.template(this.$('#user_project_template').html())
+    template: _.template(this.$('#user_project_template').html() || '')
   }),
 
   ProjectsView: CATARSE.PaginatedView.extend({
-    template: _.template(this.$('#user_projects_template').html()),
-    emptyTemplate: _.template(this.$('#empty_user_project_template').html()),
+    template: _.template(this.$('#user_projects_template').html() || ''),
+    emptyTemplate: _.template(this.$('#empty_user_project_template').html() || ''),
     afterUpdate: function() {
       FB.XFBML.parse()
     }
