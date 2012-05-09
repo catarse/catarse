@@ -296,6 +296,8 @@ en:
       successful: Successful
       title: "Discover amazing projects"
     title: "Explore the projects"
+    project:
+      empty: "Hey, we didn't find any project with the text you searched. Wanna try some new words? =D"
   formtastic:
     hints:
       backer:
