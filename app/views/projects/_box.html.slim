@@ -37,7 +37,7 @@
             h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
             p= "#{project.remaining_text}"
           - else
-            h6= project.display_status
+            h6= I18n.t("project.display_status.#{project.display_status}")
             p= project.display_expires_at
         li
           h6= "#{project.display_pledged}"

@@ -9,38 +9,38 @@ feature "Credits Feature" do
     fake_login
 
     user.update_attribute :credits, 60
-    
+
     backers = [
       Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 60, created_at: 181.days.ago),
-      Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: true, refunded: true, value: 1200, created_at: 180.days.ago),
+      Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: true, refunded: false, value: 1200, created_at: 179.days.ago),
       Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: true, refunded: false, value: 120, created_at: 18.days.ago),
       Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 10, created_at: 8.days.ago),
       Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 60, created_at: 1.day.ago),
       Factory(:backer, user: user, confirmed: true, can_refund: false, requested_refund: false, refunded: false, value: 40, created_at: 1.day.ago)
     ]
-    
+
     possible_backers = backers
     possible_backers.slice!(0)
     possible_backers.slice!(-1)
-    
+
     user.reload
-    
+
     click_link user.display_name
     verify_translations
     click_link 'Meus créditos'
     verify_translations
-    current_path.should == credits_path
+    current_path.should == user_path(user)
 
     within 'head title' do
-      page.should have_content("Meus créditos · #{I18n.t('site.name')}") 
+      page.should have_content("#{user.display_name} · #{I18n.t('site.name')}") 
     end
 
     user.credits.should == 60
     find("#current_credits").should have_content(user.display_credits)
-    
-    rows = all("#credits table tbody tr")
+
+    rows = all("#user_credits table tbody tr")
     rows.should have(4).items
-    
+
     # Testing the content of the whole table
     rows.each_index do |index|
       columns = rows[index].all("td")
@@ -58,18 +58,18 @@ feature "Credits Feature" do
       end
       columns[4].text.should == status
     end
-    
+
     # Disabling javascript confirm, because we cannot test it with Capybara
     page.evaluate_script('window.confirm = function() { return true; }')
-    
+
     # Requesting refund for the third row
     within rows[2] do
       click_on "Solicitar estorno"
       verify_translations
       column = rows[2].all("td")[4]
       # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
-      sleep 2
-      column.text.should == "Solicitado estorno"
+      sleep 3
+      column.text.should == "Pedido enviado com sucesso"
     end
     user.reload
     user.credits.should == 50
