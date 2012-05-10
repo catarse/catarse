@@ -100,6 +100,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
         //notificationHtml += '</div>';
       //notificationHtml +='</div>';
       $('#creditsModal .modal-body').html(result['status']);
+      $('#current_credits').html(result['credits']);
       $('#creditsModal').modal({
         backdrop: true,
       })
