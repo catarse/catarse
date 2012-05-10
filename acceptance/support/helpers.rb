@@ -13,8 +13,8 @@ module HelperMethods
 
   def click_login
     visit homepage
-    page.should have_no_css('#user')
-    click_link 'Entrar'
+    page.should have_no_css('.user')
+    click_link 'login'
   end
 
   def user_to_admin user

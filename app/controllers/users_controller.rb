@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       status = e.message
     end
 
-    render :json => {:status => status}
+    render :json => {:status => status, :credits => current_user.reload.display_credits}
   end
 
   private
