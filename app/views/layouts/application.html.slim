@@ -29,7 +29,7 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
 
     = render 'layouts/header'
     = render 'layouts/recommended_header' if request.path == root_path
-    #main_content
+    #main_content[data-namespace="#{namespace}" data-controller="#{controller_name}" data-action="#{action_name}" data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]
       =yield
     #footer
       .container.footer

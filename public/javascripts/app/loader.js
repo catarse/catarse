@@ -134,7 +134,7 @@ var CATARSE_LOADER = window.CATARSE_LOADER = {
   },
 
   loadAction: function(){
-    var body = $(document.body)
+    var body = $('#main_content')
     var namespace_text = ""
 
     CATARSE_LOADER.namespace = {}
