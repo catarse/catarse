@@ -10116,19 +10116,19 @@ body #logos .power a {
 }
 
 /* line 2, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content {
+[data-action="index"][data-controller="explore"] #page_content {
   margin-top: 30px;
 }
 /* line 5, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .sidebar {
+[data-action="index"][data-controller="explore"] #page_content .container .sidebar {
   margin-top: 123px;
 }
 /* line 7, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .sidebar .content {
+[data-action="index"][data-controller="explore"] #page_content .container .sidebar .content {
   padding-top: 10px;
 }
 /* line 10, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section h2 {
+[data-action="index"][data-controller="explore"] #page_content .container .sidebar section h2 {
   font-size: 16px;
   color: black;
   font-family: "Lato-Bold";
@@ -10137,23 +10137,23 @@ body[data-action="index"][data-controller="explore"] #page_content .container .s
   padding-left: 20px;
 }
 /* line 18, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section.highlights h2 {
+[data-action="index"][data-controller="explore"] #page_content .container .sidebar section.highlights h2 {
   background: url("/images/catarse/min_star12x11.png") left 3px no-repeat;
 }
 /* line 21, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section.categories h2 {
+[data-action="index"][data-controller="explore"] #page_content .container .sidebar section.categories h2 {
   background: url("/images/catarse/category_icon14x14.png") left 2px no-repeat;
 }
 /* line 23, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul {
+[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul {
   margin-bottom: 20px;
 }
 /* line 25, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li {
+[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li {
   margin-bottom: 5px;
 }
 /* line 27, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li a {
+[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li a {
   color: #333333;
   font-size: 14px;
   font-family: Arial;
@@ -10169,11 +10169,11 @@ body[data-action="index"][data-controller="explore"] #page_content .container .s
   border-radius: 5px;
 }
 /* line 36, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li a:hover, body[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li a.selected {
+[data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li a:hover, [data-action="index"][data-controller="explore"] #page_content .container .sidebar section ul li a.selected {
   background: rgba(231, 82, 151, 0.3);
 }
 /* line 39, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .main .section_header {
+[data-action="index"][data-controller="explore"] #page_content .container .main .section_header {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10183,43 +10183,43 @@ body[data-action="index"][data-controller="explore"] #page_content .container .m
   padding-bottom: 60px;
 }
 /* line 43, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h1 {
+[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h1 {
   font-family: "Lato-Bold";
   font-size: 28px;
   color: #333333;
   padding-bottom: 5px;
 }
 /* line 48, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h1 span {
+[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h1 span {
   color: #cccccc;
 }
 /* line 50, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h4 {
+[data-action="index"][data-controller="explore"] #page_content .container .main .section_header h4 {
   font-family: Arial;
   font-size: 16px;
   color: #333333;
 }
 /* line 56, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list {
+[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list {
   float: left;
 }
 /* line 58, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li {
+[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li {
   float: left;
   margin-bottom: 20px;
 }
 /* line 62, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li.first .project {
+[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li.first .project {
   margin-left: 0;
 }
 /* line 65, ../../app/stylesheets/redesign/content/_explore.sass */
-body[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li.last .project {
+[data-action="index"][data-controller="explore"] #page_content .container .main #explore_results .results ul.collection_list li.last .project {
   margin-right: 0;
 }
 
 /* line 5, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="passwords"][data-action="new"] #page_content .container .devise_content,
-body[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content {
+[data-controller="passwords"][data-action="new"] #page_content .container .devise_content,
+[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10228,32 +10228,32 @@ body[data-controller="passwords"][data-action="edit"] #page_content .container .
   padding-top: 15px;
 }
 /* line 8, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .links,
-body[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .links {
+[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .links,
+[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .links {
   padding: 15px 0 20px;
 }
 /* line 10, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .links a,
-body[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .links a {
+[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .links a,
+[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .links a {
   color: #4383d1;
   font-family: Arial;
   font-size: 13px;
   text-decoration: none;
 }
 /* line 15, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .links a:hover,
-body[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .links a:hover {
+[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .links a:hover,
+[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .links a:hover {
   color: #e75297;
 }
 /* line 19, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="passwords"][data-action="new"] #page_content .container .devise_content form label,
-body[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content form label {
+[data-controller="passwords"][data-action="new"] #page_content .container .devise_content form label,
+[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content form label {
   font-family: Lato-Regular;
   font-size: 13px;
 }
 /* line 22, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .title,
-body[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .title {
+[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .title,
+[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .title {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10263,63 +10263,63 @@ body[data-controller="passwords"][data-action="edit"] #page_content .container .
   padding-bottom: 40px;
 }
 /* line 26, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .title h1,
-body[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .title h1 {
+[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .title h1,
+[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .title h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
 /* line 31, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .title h2,
-body[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .title h2 {
+[data-controller="passwords"][data-action="new"] #page_content .container .devise_content .title h2,
+[data-controller="passwords"][data-action="edit"] #page_content .container .devise_content .title h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 18px;
 }
 
 /* line 37, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social {
   padding-top: 40px !important;
   padding-bottom: 30px;
 }
 /* line 40, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login.actived, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register.actived, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social.actived {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login.actived, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register.actived, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social.actived {
   padding-top: 17px !important;
 }
 /* line 42, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login.actived .content_form, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register.actived .content_form, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social.actived .content_form {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login.actived .content_form, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register.actived .content_form, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social.actived .content_form {
   float: left;
   border: 3px #dfdfdf solid;
   padding: 20px 20px 0 20px;
   background: rgba(237, 237, 237, 0.4);
 }
 /* line 47, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login h1, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register h1, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social h1 {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login h1, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register h1, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social h1 {
   font-family: Lato-Bold;
   font-size: 20px;
   padding-bottom: 5px;
   color: #333333;
 }
 /* line 52, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login h3, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register h3, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social h3 {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login h3, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register h3, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social h3 {
   font-family: Lato-Regular;
   font-size: 15px;
   padding-bottom: 15px;
   color: #6f6f6f;
 }
 /* line 58, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .input.check label, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register .input.check label, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .input.check label {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .input.check label, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register .input.check label, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .input.check label {
   font-size: 11px !important;
 }
 /* line 60, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login label, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register label, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social label {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login label, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register label, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social label {
   font-family: Lato-Regular;
   font-size: 12px;
   width: 220px;
 }
 /* line 64, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10327,31 +10327,31 @@ body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .co
   width: 280px;
 }
 /* line 66, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login input[type="checkbox"] {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login input[type="checkbox"] {
   float: left;
   margin-right: 5px;
 }
 /* line 69, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .content_form {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .content_form {
   padding: 0px 23px 0 23px;
 }
 /* line 71, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .content_form p.forgot_link {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .content_form p.forgot_link {
   padding: 15px 0 0;
 }
 /* line 73, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .content_form p.forgot_link a {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .content_form p.forgot_link a {
   color: #4383d1;
   font-family: Arial;
   font-size: 13px;
   text-decoration: none;
 }
 /* line 78, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .content_form p.forgot_link a:hover {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_login .content_form p.forgot_link a:hover {
   color: #e75297;
 }
 /* line 80, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .form_register {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10359,7 +10359,7 @@ body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .co
   width: 280px;
 }
 /* line 82, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10367,20 +10367,20 @@ body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .co
   width: 340px;
 }
 /* line 84, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .content_form {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .content_form {
   padding-left: 20px;
 }
 /* line 87, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a {
   text-decoration: none;
   font-weight: bold;
 }
 /* line 90, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.first {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.first {
   margin-left: -10px;
 }
 /* line 92, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a img {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a img {
   width: 55px;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -10392,7 +10392,7 @@ body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .co
   transition-duration: 0.3s;
 }
 /* line 95, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a img:hover, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a img:focus {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a img:hover, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a img:focus {
   -moz-transform: scale(1.2, 1.2);
   -webkit-transform: scale(1.2, 1.2);
   -o-transform: scale(1.2, 1.2);
@@ -10400,12 +10400,12 @@ body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .co
   transform: scale(1.2, 1.2);
 }
 /* line 98, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.disabled img {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.disabled img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
 /* line 100, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.disabled img:hover, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.disabled img:focus, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.disabled img:active {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.disabled img:hover, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.disabled img:focus, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .another_social a.disabled img:active {
   -moz-transform: scale(1, 1);
   -webkit-transform: scale(1, 1);
   -o-transform: scale(1, 1);
@@ -10413,7 +10413,7 @@ body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .co
   transform: scale(1, 1);
 }
 /* line 102, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .facebook_start {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .facebook_start {
   margin-bottom: 40px !important;
   clear: both;
   -moz-border-radius: 4px;
@@ -10435,14 +10435,14 @@ body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .co
   text-align: left;
 }
 /* line 117, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .facebook_start:hover, body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .facebook_start:focus {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .facebook_start:hover, [data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .facebook_start:focus {
   -moz-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   -o-box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
   box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 5px inset !important;
 }
 /* line 119, ../../app/stylesheets/redesign/content/_sessions.sass */
-body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .facebook_start:active {
+[data-controller="sessions"][data-namespace="devise"][data-action="new"] .container .login_with_social .facebook_start:active {
   -moz-box-shadow: black 0px 0px 15px inset !important;
   -webkit-box-shadow: black 0px 0px 15px inset !important;
   -o-box-shadow: black 0px 0px 15px inset !important;
@@ -10450,30 +10450,30 @@ body[data-controller="sessions"][data-namespace="devise"][data-action="new"] .co
 }
 
 /* line 4, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .selected_projects h2 {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .selected_projects h2 {
   background: url("/images/catarse/thumbs_up_icon16x16.png") left top no-repeat;
   text-indent: 20px;
 }
 /* line 8, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .expiring_projects h2 {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .expiring_projects h2 {
   background: url("/images/catarse/expiring_icon20x22.png") left top no-repeat;
   text-indent: 28px;
   padding-bottom: 3px;
 }
 /* line 13, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .recents_projects h2 {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .recents_projects h2 {
   background: url("/images/catarse/recents_icon31x17.png") left top no-repeat;
   text-indent: 38px;
   padding-bottom: 3px;
 }
 /* line 17, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .explore_link {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .explore_link {
   padding-top: 20px;
   padding-bottom: 30px;
   float: left;
 }
 /* line 21, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .explore_link hr {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .explore_link hr {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10485,7 +10485,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   padding-top: 2px;
 }
 /* line 27, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .explore_link a {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .explore_link a {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10498,20 +10498,20 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   text-decoration: none;
 }
 /* line 34, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .explore_link a:hover {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .explore_link a:hover {
   color: #59af6d;
 }
 /* line 37, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners {
   padding-top: 20px;
   padding-bottom: 10px;
 }
 /* line 40, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .title {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .title {
   margin-left: 10px;
 }
 /* line 42, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners h2 {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners h2 {
   background: url("/images/catarse/partners_icon26x26.png") left top no-repeat;
   text-indent: 35px;
   padding-bottom: 9px;
@@ -10519,11 +10519,11 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   padding-top: 5px;
 }
 /* line 49, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul {
   width: 100%;
 }
 /* line 51, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li {
   width: 220px;
   margin-bottom: 20px;
   margin-right: 10px;
@@ -10540,7 +10540,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   transition-duration: 0.5s;
 }
 /* line 59, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li:hover {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li:hover {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
@@ -10553,7 +10553,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 10px;
 }
 /* line 62, ../../app/stylesheets/redesign/resources/projects/_index.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li:hover img {
+[data-namespace="null"][data-controller="projects"][data-action="index"] #page_content .partners .channels_list_widget ul li:hover img {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
@@ -10563,7 +10563,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="index"] #pa
 }
 
 /* line 5, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li {
   width: 100%;
   float: left;
   border-bottom: 1px #999999 dotted;
@@ -10571,45 +10571,45 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   min-height: 67px;
 }
 /* line 11, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li:last-child {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li:last-child {
   border-bottom: none;
 }
 /* line 13, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li p, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li .time, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li h3 {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li p, [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li .time, [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li h3 {
   font-family: Arial;
   color: #333333;
 }
 /* line 16, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li p, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li .time {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li p, [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li .time {
   padding: 5px 0;
   font-size: 12px;
 }
 /* line 19, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li h3 {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li h3 {
   font-weight: bold;
   font-size: 14px;
 }
 /* line 22, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li img {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li img {
   max-width: 600px;
 }
 /* line 24, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li a {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li a {
   color: #333333;
   text-decoration: none;
 }
 /* line 27, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li a:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update ul.collection_list li a:hover {
   color: #e75297;
 }
 /* line 29, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update em {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .media_content_update em {
   font-family: "Lato-Regular";
   font-size: 16px;
   color: black;
 }
 /* line 33, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .project_image {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .project_image {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10619,7 +10619,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding-bottom: 10px;
 }
 /* line 37, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10629,29 +10629,29 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding-bottom: 10px;
 }
 /* line 41, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header h1 {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
 /* line 46, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header h4 {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header h4 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 16px;
 }
 /* line 50, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header h4 a {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header h4 a {
   color: #333333;
   text-decoration: none;
 }
 /* line 53, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header h4 a:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .section_header h4 a:hover {
   color: #e75297;
 }
 /* line 55, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10660,40 +10660,40 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding-bottom: 20px;
 }
 /* line 58, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia {
   width: 100%;
   float: left;
   padding-bottom: 20px;
 }
 /* line 62, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social {
   padding-top: 10px;
 }
 /* line 64, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #facebook_share, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #facebook_share iframe {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #facebook_share, [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #facebook_share iframe {
   width: 271px !important;
   float: left;
 }
 /* line 67, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #twitter_share {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social #twitter_share {
   width: 89px !important;
   float: left;
 }
 /* line 70, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul {
   margin-left: 20px;
   float: left;
 }
 /* line 73, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li {
   float: left;
 }
 /* line 75, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed {
   margin-right: 15px;
 }
 /* line 77, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a {
   background: rgba(51, 51, 51, 0.2);
   padding: 2px 10px;
   text-decoration: none;
@@ -10716,25 +10716,25 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   transition-duration: 0.3s;
 }
 /* line 86, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a img {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a img {
   padding: 0 7px 0 0;
 }
 /* line 88, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 4px inset;
 }
 /* line 90, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a:active {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.embed a:active {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px inset;
 }
 /* line 93, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.link input[type="text"] {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .midia .social ul li.link input[type="text"] {
   margin-top: -2px;
   color: black;
   font-family: Lato;
@@ -10751,36 +10751,36 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   background: url("/images/catarse/link_icon14x14.png") 6px 1px no-repeat;
 }
 /* line 105, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text {
   font-family: Arial;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.6);
 }
 /* line 109, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text h5 {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text h5 {
   font-weight: bold;
   padding-bottom: 20px;
 }
 /* line 112, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text p {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text p {
   line-height: 140%;
   margin: 10px 0;
 }
 /* line 115, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text strong {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text strong {
   font-weight: bold;
 }
 /* line 117, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text a {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text a {
   color: #333333;
   text-decoration: none;
 }
 /* line 120, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text a:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main #project_about .text a:hover {
   color: #e75297;
 }
 /* line 125, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li {
   width: 100%;
   float: left;
   border-bottom: 1px #999999 dotted;
@@ -10788,22 +10788,22 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   min-height: 67px;
 }
 /* line 131, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li:last-child {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li:last-child {
   border-bottom: none;
 }
 /* line 133, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .backer_avatar {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .backer_avatar {
   float: left;
   width: 59px;
   height: 61px;
   margin-right: 15px;
 }
 /* line 138, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info {
   float: left;
 }
 /* line 141, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #text a {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #text a {
   font-family: Arial;
   font-size: 14px;
   font-weight: bold;
@@ -10811,22 +10811,22 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   text-decoration: none;
 }
 /* line 147, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #text a:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #text a:hover {
   color: #e75297;
 }
 /* line 149, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #confirmed {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #confirmed {
   padding-top: 8px;
 }
 /* line 151, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #confirmed, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #backed {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #confirmed, [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .back_info #backed {
   padding-top: 2px;
   font-family: Arial;
   font-size: 12px;
   color: #333333;
 }
 /* line 156, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .reward {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .main .media_content_backers ul.collection_list li .reward {
   clear: both;
   padding: 10px;
   font-size: 12px;
@@ -10837,7 +10837,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   width: 620px;
 }
 /* line 166, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10848,7 +10848,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding-top: 15px;
 }
 /* line 171, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -10856,7 +10856,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   width: 160px;
 }
 /* line 173, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li {
   font-family: "Lato-Regular";
   font-size: 12px;
   padding: 0 0 5px 25px;
@@ -10865,7 +10865,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   opacity: 0.8;
 }
 /* line 179, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li a {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li a {
   color: black;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -10878,25 +10878,25 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   text-decoration: none;
 }
 /* line 183, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li a:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li a:hover {
   color: #e75297;
 }
 /* line 185, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li.email {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li.email {
   background: url("/images/catarse/social_icons.png") left top no-repeat;
 }
 /* line 187, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li.facebook {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li.facebook {
   padding-top: 2px;
   background: url("/images/catarse/social_icons.png") left -25px no-repeat;
 }
 /* line 190, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li.twitter {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .user_social li.twitter {
   padding-top: 2px;
   background: url("/images/catarse/social_icons.png") left -54px no-repeat;
 }
 /* line 194, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box {
   background: #ededed;
   width: 240px;
   padding: 20px;
@@ -10912,11 +10912,11 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   transition-duration: 0.3s;
 }
 /* line 201, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box.clickable:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box.clickable:hover {
   background: rgba(100, 203, 100, 0.3);
 }
 /* line 203, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box h2 {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box h2 {
   font-family: "Lato-Bold";
   font-size: 18px;
   color: rgba(0, 0, 0, 0.8);
@@ -10924,7 +10924,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding-bottom: 5px;
 }
 /* line 209, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box em {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box em {
   background: url("/images/catarse/reward_count_icon18x17.png") left top no-repeat;
   color: #4d535d;
   font-family: Arial;
@@ -10936,7 +10936,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   display: block;
 }
 /* line 219, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p, [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing {
   color: #333333;
   font-family: Arial;
   font-size: 16px;
@@ -10944,16 +10944,16 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding-bottom: 10px;
 }
 /* line 225, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p a, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing a {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p a, [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing a {
   color: #e75297;
   text-decoration: none;
 }
 /* line 228, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p a:hover, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing a:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box p a:hover, [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .on_the_spot_editing a:hover {
   text-decoration: underline;
 }
 /* line 230, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .maximum_backers {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar #rewards .box .maximum_backers {
   color: #4d535d;
   font-family: Arial;
   font-weight: bold;
@@ -10961,17 +10961,17 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   text-transform: uppercase;
 }
 /* line 237, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge {
   background: #ededed;
 }
 /* line 239, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics {
   background: #ededed;
   width: 240px;
   padding: 20px;
 }
 /* line 243, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item {
   font-family: Arial;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.8);
@@ -10979,39 +10979,39 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   margin-bottom: 20px;
 }
 /* line 249, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item p {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item p {
   font-family: "Lato-Bold";
   font-size: 34px;
   color: black;
 }
 /* line 253, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.backers {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.backers {
   background: url("/images/catarse/sidebar_backers_icon26x19.png") 4px center no-repeat;
 }
 /* line 255, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.goal {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.goal {
   background: url("/images/catarse/goal_icon36x17.png") left center no-repeat;
 }
 /* line 257, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.time {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info .statistics .item.time {
   background: url("/images/catarse/time_icon19x30.png") 10px center no-repeat;
 }
 /* line 259, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition {
   background: #6f6f6f;
   width: 240px;
   padding: 10px 20px;
 }
 /* line 263, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition.successful {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition.successful {
   background: #59af6d;
 }
 /* line 265, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition.expired {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition.expired {
   background: #cc1529;
 }
 /* line 267, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition p {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #condition p {
   line-height: 130%;
   font-family: Arial;
   font-size: 11px;
@@ -11019,19 +11019,19 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   color: white;
 }
 /* line 273, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge {
   width: 280px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 /* line 277, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"][disabled="disabled"] {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"][disabled="disabled"] {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
   background: url("/images/catarse/submit_back_icon25x22.png") 6px center no-repeat #333333;
 }
 /* line 280, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"] {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"] {
   display: block;
   margin: 0 auto;
   background: url("/images/catarse/submit_back_icon25x22.png") 6px center no-repeat #64cb64;
@@ -11064,36 +11064,36 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   color: white;
 }
 /* line 296, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:hover {
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 4px inset;
 }
 /* line 298, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:active {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #pledge input[type="submit"]:active {
   -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
   -o-box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px inset;
 }
 /* line 300, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile {
   padding-top: 20px;
   float: left;
   padding-bottom: 15px;
 }
 /* line 304, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile a {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile a {
   color: #333333;
   text-decoration: none;
 }
 /* line 307, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile a:hover {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile a:hover {
   color: #e75297;
 }
 /* line 309, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile h3 {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile h3 {
   background: url("/images/catarse/profile_icon19x14.png") left 4px no-repeat;
   color: #333333;
   font-family: "Lato-Bold";
@@ -11103,7 +11103,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   padding-bottom: 15px;
 }
 /* line 317, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11112,14 +11112,14 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   margin-left: 0;
 }
 /* line 320, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar img {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .avatar img {
   -moz-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
   -o-box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
   box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 4px;
 }
 /* line 322, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11128,25 +11128,25 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   margin-right: 0;
 }
 /* line 325, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name {
   padding-bottom: 5px;
 }
 /* line 327, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name a {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p.name a {
   font-family: "Lato-Bold";
   font-size: 14px;
   color: #e75297;
   text-decoration: none;
 }
 /* line 332, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile .personal_info p {
   font-family: Arial;
   font-size: 12px;
   color: #333333;
   line-height: 140%;
 }
 /* line 337, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11155,7 +11155,7 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   margin-left: 0;
 }
 /* line 340, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio p {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content .sidebar .info #creator_profile #bio p {
   padding: 10px 0;
   font-family: Arial;
   font-size: 12px;
@@ -11163,28 +11163,28 @@ body[data-namespace="null"][data-controller="projects"][data-action="show"] #pag
   line-height: 140%;
 }
 /* line 348, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates .bootstrap-form textarea, body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates .bootstrap-form input#update_title {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates .bootstrap-form textarea, [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates .bootstrap-form input#update_title {
   width: 100%;
 }
 /* line 350, ../../app/stylesheets/redesign/resources/projects/_show.sass */
-body[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates .bootstrap-form label {
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates .bootstrap-form label {
   font-family: "Lato-Regular";
   font-size: 15px;
   color: rgba(0, 0, 0, 0.8);
 }
 
 /* line 2, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] span.add-on {
+[data-controller="projects"][data-action="start"] span.add-on {
   font-family: "Lato-Regular";
   margin-top: -3px;
   color: #999999;
 }
 /* line 6, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #loading {
+[data-controller="projects"][data-action="start"] #loading {
   display: none;
 }
 /* line 10, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .start_content {
+[data-controller="projects"][data-action="start"] #page_content .container .start_content {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11193,7 +11193,7 @@ body[data-controller="projects"][data-action="start"] #page_content .container .
   padding-top: 15px;
 }
 /* line 13, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .start_content .title {
+[data-controller="projects"][data-action="start"] #page_content .container .start_content .title {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11203,57 +11203,57 @@ body[data-controller="projects"][data-action="start"] #page_content .container .
   padding-bottom: 40px;
 }
 /* line 17, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .start_content .title h1 {
+[data-controller="projects"][data-action="start"] #page_content .container .start_content .title h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
 /* line 22, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .start_content .title h2 {
+[data-controller="projects"][data-action="start"] #page_content .container .start_content .title h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 18px;
 }
 /* line 27, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container #project_warning .alert {
+[data-controller="projects"][data-action="start"] #page_content .container #project_warning .alert {
   font-size: 15px;
   font-family: Arial;
 }
 /* line 30, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container #project_warning .alert a {
+[data-controller="projects"][data-action="start"] #page_content .container #project_warning .alert a {
   color: #e75297;
 }
 /* line 34, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .input {
+[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .input {
   padding-bottom: 15px;
 }
 /* line 36, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .accept {
+[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .accept {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 /* line 39, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .accept input {
+[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .accept input {
   display: inline;
 }
 /* line 41, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .accept label {
+[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .accept label {
   display: inline;
 }
 /* line 43, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form label {
+[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form label {
   font-family: "Lato-Regular";
   font-size: 15px;
   color: rgba(0, 0, 0, 0.8);
 }
 /* line 47, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form textarea {
+[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form textarea {
   width: 100%;
   height: 80px;
 }
 /* line 50, ../../app/stylesheets/redesign/resources/projects/_start.sass */
-body[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .inline-hints {
+[data-controller="projects"][data-action="start"] #page_content .container .bootstrap-form form .inline-hints {
   font-size: 13px;
   font-family: Arial;
   line-height: 130%;
@@ -11262,11 +11262,11 @@ body[data-controller="projects"][data-action="start"] #page_content .container .
 }
 
 /* line 2, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #loading {
+[data-controller="projects"][data-action="new"] #loading {
   display: none;
 }
 /* line 6, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .start_content {
+[data-controller="projects"][data-action="new"] #page_content .container .start_content {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11275,25 +11275,25 @@ body[data-controller="projects"][data-action="new"] #page_content .container .st
   padding-top: 15px;
 }
 /* line 10, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .start_content .accept input, body[data-controller="projects"][data-action="new"] #page_content .container .start_content .accept label {
+[data-controller="projects"][data-action="new"] #page_content .container .start_content .accept input, [data-controller="projects"][data-action="new"] #page_content .container .start_content .accept label {
   display: inline;
 }
 /* line 12, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .start_content .alert-heading {
+[data-controller="projects"][data-action="new"] #page_content .container .start_content .alert-heading {
   font-family: "Lato-Bold";
 }
 /* line 14, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .start_content .reward_title {
+[data-controller="projects"][data-action="new"] #page_content .container .start_content .reward_title {
   padding-top: 20px;
 }
 /* line 16, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .start_content .reward_title h3 {
+[data-controller="projects"][data-action="new"] #page_content .container .start_content .reward_title h3 {
   font-family: "Lato-Bold";
   font-size: 16px;
   color: rgba(0, 0, 0, 0.8);
 }
 /* line 20, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .start_content .reward_title p {
+[data-controller="projects"][data-action="new"] #page_content .container .start_content .reward_title p {
   font-family: Arial;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.6);
@@ -11302,7 +11302,7 @@ body[data-controller="projects"][data-action="new"] #page_content .container .st
   padding-bottom: 10px;
 }
 /* line 27, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .start_content .title {
+[data-controller="projects"][data-action="new"] #page_content .container .start_content .title {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11312,57 +11312,57 @@ body[data-controller="projects"][data-action="new"] #page_content .container .st
   padding-bottom: 40px;
 }
 /* line 31, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .start_content .title h1 {
+[data-controller="projects"][data-action="new"] #page_content .container .start_content .title h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
 /* line 36, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .start_content .title h2 {
+[data-controller="projects"][data-action="new"] #page_content .container .start_content .title h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 18px;
 }
 /* line 41, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container #project_warning .alert {
+[data-controller="projects"][data-action="new"] #page_content .container #project_warning .alert {
   font-size: 15px;
   font-family: Arial;
 }
 /* line 44, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container #project_warning .alert a {
+[data-controller="projects"][data-action="new"] #page_content .container #project_warning .alert a {
   color: #e75297;
 }
 /* line 47, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .accept {
+[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .accept {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 /* line 50, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .accept input {
+[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .accept input {
   display: inline;
 }
 /* line 52, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .accept label {
+[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .accept label {
   display: inline;
 }
 /* line 54, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project label {
+[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project label {
   font-family: "Lato-Regular";
   font-size: 15px;
   color: rgba(0, 0, 0, 0.8);
 }
 /* line 58, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project input[type="text"] {
+[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project input[type="text"] {
   width: 99%;
 }
 /* line 60, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project textarea {
+[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project textarea {
   width: 99%;
   height: 80px;
 }
 /* line 63, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .inline-hints {
+[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .inline-hints {
   font-size: 13px;
   font-family: Arial;
   line-height: 130%;
@@ -11370,13 +11370,13 @@ body[data-controller="projects"][data-action="new"] #page_content .container .fo
   padding-bottom: 20px;
 }
 /* line 70, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .remove_reward_wrapper a {
+[data-controller="projects"][data-action="new"] #page_content .container .remove_reward_wrapper a {
   margin-left: 843px;
   font-family: Arial;
   font-size: 15px;
 }
 /* line 75, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container #add_reward_wrapper a {
+[data-controller="projects"][data-action="new"] #page_content .container #add_reward_wrapper a {
   float: left;
   margin-left: 753px;
   margin-top: -59px;
@@ -11384,34 +11384,34 @@ body[data-controller="projects"][data-action="new"] #page_content .container #ad
   font-size: 15px;
 }
 /* line 81, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .reward {
+[data-controller="projects"][data-action="new"] #page_content .container .reward {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
 /* line 85, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .reward .left {
+[data-controller="projects"][data-action="new"] #page_content .container .reward .left {
   float: left;
   width: 30%;
   margin-right: 5%;
 }
 /* line 89, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .reward .left input {
+[data-controller="projects"][data-action="new"] #page_content .container .reward .left input {
   width: 99%;
 }
 /* line 91, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .reward .right {
+[data-controller="projects"][data-action="new"] #page_content .container .reward .right {
   float: left;
   width: 30%;
 }
 /* line 94, ../../app/stylesheets/redesign/resources/projects/_new.sass */
-body[data-controller="projects"][data-action="new"] #page_content .container .reward .right input {
+[data-controller="projects"][data-action="new"] #page_content .container .reward .right input {
   width: 99%;
 }
 
 /* line 5, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11420,8 +11420,8 @@ body[data-controller="projects"][data-action="pending"] #page_content .container
   padding-top: 15px;
 }
 /* line 8, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11431,137 +11431,137 @@ body[data-controller="projects"][data-action="pending"] #page_content .container
   padding-bottom: 40px;
 }
 /* line 12, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h1,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title h1 {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h1,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
 /* line 17, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h2,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title h2 {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h2,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 18px;
 }
 /* line 21, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h2 strong,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title h2 strong {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content .title h2 strong,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content .title h2 strong {
   font-weight: bold;
   color: #59af6d;
 }
 /* line 25, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset {
   float: left;
   clear: both;
   width: 100%;
 }
 /* line 29, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input {
   float: left;
   margin-right: 20px;
 }
 /* line 33, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.check input, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.check input,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.check input,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.check input {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.check input, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.check input,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.check input,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.check input {
   display: inline;
 }
 /* line 35, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.check label, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.check label,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.check label,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.check label {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.check label, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.check label,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.check label,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.check label {
   display: inline;
 }
 /* line 37, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.total_results, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.total_results,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.total_results,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.total_results {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.total_results, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.total_results,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.total_results,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.total_results {
   float: right;
 }
 /* line 39, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.submit, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.submit,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.submit,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.submit {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input.submit, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input.submit,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input.submit,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input.submit {
   float: right;
   margin-top: 23px;
 }
 /* line 42, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input label, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input label,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input label,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input label {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers fieldset .input label, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects fieldset .input label,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers fieldset .input label,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects fieldset .input label {
   font-family: "Lato-Regular";
   font-size: 13px;
 }
 /* line 45, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers #total_results, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects #total_results,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers #total_results,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects #total_results {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers #total_results, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects #total_results,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers #total_results,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects #total_results {
   float: right;
   font-family: "Lato-Regular";
   font-size: 13px;
   padding-top: 2px;
 }
 /* line 50, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers #total_results strong, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects #total_results strong,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers #total_results strong,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects #total_results strong {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers #total_results strong, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects #total_results strong,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers #total_results strong,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects #total_results strong {
   font-family: "Lato-Bold";
   color: #59af6d;
 }
 /* line 53, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .pagination,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .pagination,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .pagination {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .pagination,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .pagination,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .pagination {
   text-align: right;
   padding: 20px 0 40px;
   font-family: "Lato-Regular";
   font-size: 13px;
 }
 /* line 58, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination span.page.current, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .pagination span.page.current,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .pagination span.page.current,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .pagination span.page.current {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination span.page.current, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .pagination span.page.current,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .pagination span.page.current,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .pagination span.page.current {
   color: rgba(0, 0, 0, 0.3);
 }
 /* line 60, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination a, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .pagination a,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .pagination a,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .pagination a {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .pagination a, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .pagination a,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .pagination a,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .pagination a {
   color: #e75297;
 }
 /* line 64, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table thead th, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table thead th,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table thead th,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table thead th {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table thead th, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table thead th,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table thead th,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table thead th {
   font-family: "Lato-Bold";
   font-size: 13px;
   text-align: center;
 }
 /* line 70, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td {
   font-family: "Lato-Regular";
   font-size: 12px;
   text-align: center;
   vertical-align: middle;
 }
 /* line 76, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.project_img, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td img.project_img,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td img.project_img,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td img.project_img {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.project_img, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td img.project_img,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td img.project_img,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td img.project_img {
   width: 50px;
 }
 /* line 78, ../../app/stylesheets/redesign/resources/projects/_pending_backers.sass */
-body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.user_img, body[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td img.user_img,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td img.user_img,
-body[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td img.user_img {
+[data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_backers .table tbody tr td img.user_img, [data-controller="projects"][data-action="pending_backers"] #page_content .container .project_content #pending_projects .table tbody tr td img.user_img,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_backers .table tbody tr td img.user_img,
+[data-controller="projects"][data-action="pending"] #page_content .container .project_content #pending_projects .table tbody tr td img.user_img {
   width: 30px;
 }
 
@@ -11647,7 +11647,7 @@ body[data-controller="projects"][data-action="pending"] #page_content .container
 }
 
 /* line 4, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11656,7 +11656,7 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   padding-top: 15px;
 }
 /* line 7, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .title {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .title {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11666,20 +11666,20 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   padding-bottom: 40px;
 }
 /* line 11, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .title h1 {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .title h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
 /* line 16, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .title h2 {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .title h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 18px;
 }
 /* line 20, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11688,19 +11688,19 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   margin-left: 0;
 }
 /* line 24, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .inline-hints {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .inline-hints {
   font-family: "Lato-Regular";
   font-size: 16px;
   color: rgba(51, 51, 51, 0.9);
 }
 /* line 28, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form label {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form label {
   font-family: "Lato-Regular";
   font-size: 18px;
   display: block;
 }
 /* line 32, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form input[type="text"] {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form input[type="text"] {
   height: 60px;
   width: 600px;
   font-size: 38px;
@@ -11709,47 +11709,47 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   font-family: "Lato-Bold";
 }
 /* line 39, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info {
   margin-top: 20px;
 }
 /* line 41, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info label {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info label {
   font-family: "Lato-Bold";
 }
 /* line 43, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info label input {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info label input {
   display: inline;
   margin-right: 10px;
   vertical-align: top;
 }
 /* line 48, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info .inline-hints strong {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form .alert-info .inline-hints strong {
   font-family: "Lato-Bold";
 }
 /* line 50, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input {
   padding-left: 0 !important;
 }
 /* line 52, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input legend {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input legend {
   float: left;
   border-bottom: none;
   margin-top: 40px;
   background: url("/images/catarse/recompensa24x20.png") left top no-repeat;
 }
 /* line 57, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input legend label {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input legend label {
   padding-left: 34px;
   font-family: "Lato-Regular";
   color: #333333;
   font-size: 24px;
 }
 /* line 62, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol {
   float: left;
 }
 /* line 64, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice {
   padding: 30px 20px 25px;
   padding-left: 34px;
   margin-bottom: 25px;
@@ -11766,7 +11766,7 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   background: rgba(242, 242, 242, 0.3);
 }
 /* line 71, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice.selected {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice.selected {
   background: rgba(100, 203, 100, 0.2);
   -moz-box-shadow: rgba(0, 0, 0, 0.6) 0 0 3px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.6) 0 0 3px;
@@ -11774,35 +11774,35 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   box-shadow: rgba(0, 0, 0, 0.6) 0 0 3px;
 }
 /* line 74, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice .reward_minimum_value {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice .reward_minimum_value {
   color: #59af6d;
   font-family: "Lato-Regular";
   font-size: 20px;
   padding-bottom: 10px;
 }
 /* line 79, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice .reward_description {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_reward_input ol li.choice .reward_description {
   font-family: Arial;
   font-size: 15px;
   line-height: 130%;
 }
 /* line 83, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_anonymous_input {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_anonymous_input {
   margin: 20px 0;
   font-size: 14px;
 }
 /* line 86, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_anonymous_input input {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_options #backer_form #backer_anonymous_input input {
   display: inline;
   margin-right: 10px;
   vertical-align: top;
 }
 /* line 90, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #backer_submit {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #backer_submit {
   width: 100%;
 }
 /* line 92, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11811,20 +11811,20 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   margin-right: 0;
 }
 /* line 95, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info img.project_image {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info img.project_image {
   -moz-box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
   -o-box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
   box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
 }
 /* line 97, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_name {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_name {
   padding-top: 20px;
   font-family: "Lato-Bold";
   font-size: 18px;
 }
 /* line 101, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_name a {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_name a {
   color: black;
   text-decoration: none;
   -moz-transition-property: all;
@@ -11837,18 +11837,18 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   transition-duration: 0.5s;
 }
 /* line 105, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_name a:hover {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_name a:hover {
   color: #e75297;
 }
 /* line 107, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_owner {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_owner {
   padding-top: 5px;
   padding-bottom: 5px;
   font-family: "Lato-Regular";
   font-size: 14px;
 }
 /* line 112, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_owner a {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_owner a {
   color: #e75297;
   text-decoration: none;
   -moz-transition-property: all;
@@ -11861,17 +11861,17 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   transition-duration: 0.5s;
 }
 /* line 116, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_owner a:hover {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_owner a:hover {
   color: black;
 }
 /* line 118, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_expires_at {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content #back_info .project_expires_at {
   font-family: "Lato-Regular";
   font-size: 14px;
   padding-bottom: 20px;
 }
 /* line 123, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq h3 {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq h3 {
   font-family: "Lato-Bold";
   font-size: 16px;
   padding-bottom: 8px;
@@ -11888,11 +11888,11 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
   transition-duration: 0.5s;
 }
 /* line 131, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq h3:hover {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq h3:hover {
   color: #e75297;
 }
 /* line 133, ../../app/stylesheets/redesign/resources/backers/_new.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq p {
+[data-controller="backers"][data-namespace="projects"][data-action="new"] #page_content .container .backer_content .back_faq p {
   padding-bottom: 30px;
   font-family: Arial;
   line-height: 130%;
@@ -11901,7 +11901,7 @@ body[data-controller="backers"][data-namespace="projects"][data-action="new"] #p
 }
 
 /* line 4, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11910,7 +11910,7 @@ body[data-controller="backers"][data-namespace="projects"][data-action="review"]
   padding-top: 15px;
 }
 /* line 7, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .title {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .title {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -11920,25 +11920,25 @@ body[data-controller="backers"][data-namespace="projects"][data-action="review"]
   padding-bottom: 40px;
 }
 /* line 11, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .title h1 {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .title h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
 /* line 16, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .title h2 {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .title h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 18px;
 }
 /* line 20, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info {
   float: left;
   padding-bottom: 40px;
 }
 /* line 23, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info #project_image {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info #project_image {
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
   -o-box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
@@ -11947,7 +11947,7 @@ body[data-controller="backers"][data-namespace="projects"][data-action="review"]
   margin-right: 20px;
 }
 /* line 27, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info h1 {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info h1 {
   float: left;
   width: 600px;
   font-family: "Lato-Bold";
@@ -11956,12 +11956,12 @@ body[data-controller="backers"][data-namespace="projects"][data-action="review"]
   padding-bottom: 20px;
 }
 /* line 34, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info h1 a {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info h1 a {
   color: #e75297;
   text-decoration: none;
 }
 /* line 37, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info #review_text {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info #review_text {
   height: 80px;
   overflow: hidden;
   overflow-y: auto;
@@ -11973,127 +11973,127 @@ body[data-controller="backers"][data-namespace="projects"][data-action="review"]
   width: 600px;
 }
 /* line 47, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info #review_text strong {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review .project_info #review_text strong {
   font-size: 18px;
   color: #59af6d;
   font-weight: bold;
 }
 /* line 51, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #credits_notice {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #credits_notice {
   font-family: "Lato-Regular";
   font-size: 16px;
 }
 /* line 54, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #credits_notice strong {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #credits_notice strong {
   font-family: "Lato-Bold";
   font-size: 20px;
 }
 /* line 57, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment {
   font-family: "Lato-Regular";
 }
 /* line 59, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment h1 {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment h1 {
   font-size: 20px;
   text-align: center;
 }
 /* line 62, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment a {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment a {
   color: #e75297;
 }
 /* line 64, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment .international_important {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment .international_important {
   padding-top: 15px;
 }
 /* line 66, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment .international_important p {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment .international_important p {
   font-family: Arial;
   font-size: 13px;
   line-height: 130%;
   clear: both;
 }
 /* line 71, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment form {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment form {
   padding-top: 15px;
 }
 /* line 73, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment form .bootstrap-twitter {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #international_payment form .bootstrap-twitter {
   padding-top: 10px;
 }
 /* line 75, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form {
   margin: 0 auto;
   width: 480px;
   padding-top: 20px;
 }
 /* line 78, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form.dont_align {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form.dont_align {
   margin: 0 !important;
 }
 /* line 81, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li {
   float: left;
   margin-right: 20px;
   margin-bottom: 10px;
 }
 /* line 85, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li label {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li label {
   font-family: "Lato-Regular";
 }
 /* line 87, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_email_input {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_email_input {
   clear: both;
   width: 450px;
 }
 /* line 90, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_email_input input[type="text"] {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_email_input input[type="text"] {
   width: 100%;
 }
 /* line 92, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_zip_code_input {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_zip_code_input {
   clear: left;
 }
 /* line 94, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_number_input {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_number_input {
   clear: left;
 }
 /* line 96, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_neighbourhood_input {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_neighbourhood_input {
   clear: left;
 }
 /* line 98, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_state_input {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form li#user_address_state_input {
   clear: left;
   margin-bottom: 20px;
 }
 /* line 101, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form abbr {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form abbr {
   color: red;
 }
 /* line 103, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit {
   padding-bottom: 30px;
 }
 /* line 105, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms {
   padding-bottom: 20px;
 }
 /* line 107, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms input {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms input {
   float: left;
   margin-right: 15px;
 }
 /* line 110, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms .inline {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms .inline {
   font-family: "Lato-Regular";
 }
 /* line 112, ../../app/stylesheets/redesign/resources/backers/_review.sass */
-body[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms .inline a {
+[data-controller="backers"][data-namespace="projects"][data-action="review"] #page_content .container #project_review #review_form .submit .accept_terms .inline a {
   color: #4383d1;
 }
 
 /* line 4, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default {
+[data-controller="static"] #page_content .container .static_default {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12102,7 +12102,7 @@ body[data-controller="static"] #page_content .container .static_default {
   padding-top: 15px;
 }
 /* line 7, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .title {
+[data-controller="static"] #page_content .container .static_default .title {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12112,48 +12112,48 @@ body[data-controller="static"] #page_content .container .static_default .title {
   padding-bottom: 40px;
 }
 /* line 11, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .title h1 {
+[data-controller="static"] #page_content .container .static_default .title h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
 /* line 16, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .title h2 {
+[data-controller="static"] #page_content .container .static_default .title h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
 }
 /* line 19, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default #how_it_works.alert {
+[data-controller="static"] #page_content .container .static_default #how_it_works.alert {
   font-family: Arial;
   font-size: 15px;
   line-height: 140%;
 }
 /* line 23, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default #how_it_works.alert strong {
+[data-controller="static"] #page_content .container .static_default #how_it_works.alert strong {
   font-weight: bold;
 }
 /* line 25, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default #how_it_works.alert a {
+[data-controller="static"] #page_content .container .static_default #how_it_works.alert a {
   color: #e75297;
 }
 /* line 27, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .default_text {
+[data-controller="static"] #page_content .container .static_default .default_text {
   padding-top: 20px;
 }
 /* line 28, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .default_text a {
+[data-controller="static"] #page_content .container .static_default .default_text a {
   color: #4383d1;
 }
 /* line 31, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .default_text h2 {
+[data-controller="static"] #page_content .container .static_default .default_text h2 {
   font-family: "Lato-Bold";
   font-size: 18px;
   color: rgba(89, 175, 109, 0.9);
   padding-bottom: 10px;
 }
 /* line 36, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .default_text h3 {
+[data-controller="static"] #page_content .container .static_default .default_text h3 {
   font-family: Arial;
   font-weight: bold;
   font-size: 15px;
@@ -12161,7 +12161,7 @@ body[data-controller="static"] #page_content .container .static_default .default
   padding-bottom: 5px;
 }
 /* line 42, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .default_text p, body[data-controller="static"] #page_content .container .static_default .default_text ul, body[data-controller="static"] #page_content .container .static_default .default_text ol {
+[data-controller="static"] #page_content .container .static_default .default_text p, [data-controller="static"] #page_content .container .static_default .default_text ul, [data-controller="static"] #page_content .container .static_default .default_text ol {
   font-family: Arial;
   font-size: 15px;
   line-height: 130%;
@@ -12169,37 +12169,37 @@ body[data-controller="static"] #page_content .container .static_default .default
   color: rgba(0, 0, 0, 0.7);
 }
 /* line 48, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .default_text ol {
+[data-controller="static"] #page_content .container .static_default .default_text ol {
   padding: 10px 30px;
 }
 /* line 50, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .default_text ol li {
+[data-controller="static"] #page_content .container .static_default .default_text ol li {
   padding-bottom: 10px;
   list-style: decimal inside;
 }
 /* line 53, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .default_text ul {
+[data-controller="static"] #page_content .container .static_default .default_text ul {
   padding: 10px 30px;
 }
 /* line 55, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .default_text ul li {
+[data-controller="static"] #page_content .container .static_default .default_text ul li {
   padding-bottom: 10px;
   list-style: disc inside;
 }
 /* line 58, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .center_form {
+[data-controller="static"] #page_content .container .static_default .center_form {
   text-align: center;
 }
 /* line 60, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .center_form .check {
+[data-controller="static"] #page_content .container .static_default .center_form .check {
   margin-bottom: 15px;
 }
 /* line 62, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .center_form .check input {
+[data-controller="static"] #page_content .container .static_default .center_form .check input {
   display: inline;
 }
 /* line 64, ../../app/stylesheets/redesign/resources/static/_default.sass */
-body[data-controller="static"] #page_content .container .static_default .center_form .check label {
+[data-controller="static"] #page_content .container .static_default .center_form .check label {
   display: inline;
   font-family: Arial;
   font-size: 15px;
@@ -12207,16 +12207,16 @@ body[data-controller="static"] #page_content .container .static_default .center_
 }
 
 /* line 3, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content a {
+[data-controller="curated_pages"][data-action="show"] #page_content a {
   color: #333333;
   text-decoration: none;
 }
 /* line 6, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content a:hover {
+[data-controller="curated_pages"][data-action="show"] #page_content a:hover {
   color: #e75297;
 }
 /* line 9, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12225,21 +12225,21 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   padding-top: 20px;
 }
 /* line 12, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header {
   padding-bottom: 40px;
 }
 /* line 14, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header img {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header img {
   float: left;
   margin-right: 10px;
 }
 /* line 17, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_project {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_project {
   float: left;
   margin-bottom: 20px;
 }
 /* line 20, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_project_list {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_project_list {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12250,7 +12250,7 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   width: 960px !important;
 }
 /* line 25, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .project_curator_description {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .project_curator_description {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12259,7 +12259,7 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   margin-right: 0;
 }
 /* line 28, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .project_curator_description p {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .project_curator_description p {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12275,19 +12275,19 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   font-style: italic;
 }
 /* line 39, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles {
   float: left;
   width: 550px;
 }
 /* line 42, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles h1 {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles h1 {
   color: #333333;
   font-family: "Lato-Regular";
   font-size: 28px;
   padding: 5px 0;
 }
 /* line 47, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles h2 {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles h2 {
   color: rgba(51, 51, 51, 0.7);
   font-family: Arial;
   font-size: 15px;
@@ -12296,37 +12296,37 @@ body[data-controller="curated_pages"][data-action="show"] #page_content .contain
   padding-top: 10px;
 }
 /* line 54, ../../app/stylesheets/redesign/resources/_curated_page.sass */
-body[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles #facebook_share {
+[data-controller="curated_pages"][data-action="show"] #page_content .container .curated_content .curated_page_header .titles #facebook_share {
   width: 540px;
 }
 
 /* line 3, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #creditsModal h3 {
+[data-namespace="null"][data-controller="users"][data-action="show"] #creditsModal h3 {
   font-family: Lato-Bold;
 }
 /* line 5, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #creditsModal .modal-body {
+[data-namespace="null"][data-controller="users"][data-action="show"] #creditsModal .modal-body {
   font-family: Lato-Regular;
 }
 /* line 8, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #creditsModal .modal-footer a {
+[data-namespace="null"][data-controller="users"][data-action="show"] #creditsModal .modal-footer a {
   font-family: Lato-Regular;
 }
 /* line 10, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile {
   padding-top: 20px;
   padding-bottom: 20px;
   float: left;
 }
 /* line 16, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_profile_content .content p.empty {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_profile_content .content p.empty {
   text-align: center;
   font-family: Lato-Regular;
   font-size: 14px;
   width: 100%;
 }
 /* line 21, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12335,7 +12335,7 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   padding-right: 60px;
 }
 /* line 24, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_image {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_image {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12344,14 +12344,14 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   margin-left: 0;
 }
 /* line 27, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_image img {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_image img {
   -moz-box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 5px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 5px;
   -o-box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 5px;
   box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 5px;
 }
 /* line 29, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_title {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_title {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12360,21 +12360,21 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   margin-right: 0;
 }
 /* line 32, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_title h1 {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_title h1 {
   color: #333333;
   font-size: 28px;
   font-family: "Lato-Bold";
   padding: 4px 0 10px;
 }
 /* line 37, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_title h4 {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .section_header .profile_title h4 {
   color: #333333;
   font-size: 16px;
   font-family: Arial;
   line-height: 140%;
 }
 /* line 42, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12382,7 +12382,7 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   width: 160px;
 }
 /* line 44, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li {
   font-family: "Lato-Regular";
   font-size: 12px;
   padding: 0 0 5px 25px;
@@ -12391,7 +12391,7 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   opacity: 0.8;
 }
 /* line 50, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li a {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li a {
   color: black;
   -moz-transition-property: all;
   -webkit-transition-property: all;
@@ -12404,48 +12404,48 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   text-decoration: none;
 }
 /* line 54, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li a:hover {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li a:hover {
   color: #e75297;
 }
 /* line 56, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li.email {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li.email {
   background: url("/images/catarse/social_icons.png") left top no-repeat;
 }
 /* line 58, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li.facebook {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li.facebook {
   padding-top: 2px;
   background: url("/images/catarse/social_icons.png") left -25px no-repeat;
 }
 /* line 61, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li.twitter {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .user_social li.twitter {
   padding-top: 2px;
   background: url("/images/catarse/social_icons.png") left -54px no-repeat;
 }
 /* line 64, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .tab_container {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile .tab_container {
   padding-top: 20px;
   margin-bottom: 20px;
 }
 /* line 69, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_backed_projects ul.collection_list li {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_backed_projects ul.collection_list li {
   margin-bottom: 30px;
 }
 /* line 71, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_created_projects {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_created_projects {
   width: 100%;
   float: left;
 }
 /* line 74, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_created_projects ul.collection_list {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_created_projects ul.collection_list {
   float: left;
 }
 /* line 76, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_created_projects ul.collection_list li {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_created_projects ul.collection_list li {
   float: left;
   margin-bottom: 30px;
 }
 /* line 79, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_settings {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_settings {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12455,7 +12455,7 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   display: none;
 }
 /* line 84, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -12465,18 +12465,18 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   display: none;
 }
 /* line 89, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .current_credits p {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .current_credits p {
   font-size: 24px;
   font-family: Lato-Bold;
   color: #333333;
   padding-bottom: 5px;
 }
 /* line 94, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits #current_credits {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits #current_credits {
   color: #64cb64;
 }
 /* line 96, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_title {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_title {
   font-family: Lato-Regular;
   font-size: 20px;
   color: #284f31;
@@ -12484,17 +12484,17 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   padding-bottom: 10px;
 }
 /* line 103, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content th {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content th {
   font-family: Lato-Bold;
   font-size: 16px;
 }
 /* line 106, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content td {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content td {
   font-family: Lato-Regular;
   font-size: 14px;
 }
 /* line 109, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content td a {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content td a {
   text-decoration: none;
   color: #4383d1;
   -moz-transition-property: all;
@@ -12507,20 +12507,20 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #user_p
   transition-duration: 0.5s;
 }
 /* line 113, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content td a:hover {
+[data-namespace="null"][data-controller="users"][data-action="show"] #user_profile #user_credits .table_content td a:hover {
   color: #e75297;
 }
 /* line 115, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info {
+[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info {
   font-family: Lato-Regular;
   font-size: 16px;
 }
 /* line 119, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info p {
+[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info p {
   padding: 10px 0 0;
 }
 /* line 121, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info p a {
+[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info p a {
   color: black;
   text-decoration: none;
   font-family: Lato-Bold;
@@ -12534,66 +12534,66 @@ body[data-namespace="null"][data-controller="users"][data-action="show"] #gravat
   transition-duration: 0.5s;
 }
 /* line 126, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info p a:hover {
+[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info p a:hover {
   color: #e75297;
 }
 /* line 129, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info a img {
+[data-namespace="null"][data-controller="users"][data-action="show"] #gravatar_hint.alert.alert-info a img {
   float: left;
   margin-right: 20px;
 }
 /* line 132, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info {
+[data-namespace="null"][data-controller="users"][data-action="show"] #social_info {
   margin-top: 20px;
 }
 /* line 135, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data h1, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info h1 {
+[data-namespace="null"][data-controller="users"][data-action="show"] #my_data h1, [data-namespace="null"][data-controller="users"][data-action="show"] #social_info h1 {
   font-family: Lato-Bold;
   font-size: 25px;
   color: #333333;
 }
 /* line 139, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul {
+[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul, [data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul {
   padding-top: 15px;
 }
 /* line 141, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul li {
+[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li, [data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul li {
   font-family: Lato-Regular;
   font-size: 15px;
   margin-bottom: 15px;
 }
 /* line 145, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li .on_the_spot_editing, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul li .on_the_spot_editing {
+[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li .on_the_spot_editing, [data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul li .on_the_spot_editing {
   color: #e75297;
 }
 /* line 147, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li .hint, body[data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul li .hint {
+[data-namespace="null"][data-controller="users"][data-action="show"] #my_data ul li .hint, [data-namespace="null"][data-controller="users"][data-action="show"] #social_info ul li .hint {
   padding-top: 5px;
   font-size: 13px;
 }
 /* line 152, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password h1 {
+[data-namespace="null"][data-controller="users"][data-action="show"] #change_password h1 {
   font-family: Lato-Bold;
   font-size: 25px;
   color: #333333;
   padding-top: 20px;
 }
 /* line 157, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul {
+[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul {
   padding-top: 15px;
 }
 /* line 159, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul li {
+[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul li {
   font-family: Lato-Regular;
   font-size: 15px;
   margin-bottom: 15px;
 }
 /* line 163, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul li .on_the_spot_editing {
+[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul li .on_the_spot_editing {
   color: #e75297;
 }
 /* line 165, ../../app/stylesheets/redesign/resources/users/_show.sass */
-body[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul li .hint {
+[data-namespace="null"][data-controller="users"][data-action="show"] #change_password ul li .hint {
   padding-top: 5px;
   font-size: 13px;
 }
