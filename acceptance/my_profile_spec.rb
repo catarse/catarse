@@ -62,6 +62,7 @@ feature "My profile Feature" do
       click_link "Projetos criados"
     end
     verify_translations
+    sleep 2
 
     within "#user_created_projects" do
       all('li .project_land').should have(4).items
@@ -72,6 +73,7 @@ feature "My profile Feature" do
       click_link "Projetos apoiados"
     end
     verify_translations
+    sleep 2
 
     within "#user_backed_projects" do
       all('li .project_land').should have(7).items
