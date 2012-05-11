@@ -11,18 +11,13 @@ feature "Credits Feature" do
     user.update_attribute :credits, 60
 
     backers = [
-      Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 60, created_at: 181.days.ago),
       Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: true, refunded: false, value: 1200, created_at: 179.days.ago),
       Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: true, refunded: false, value: 120, created_at: 18.days.ago),
       Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 10, created_at: 8.days.ago),
-      Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 60, created_at: 1.day.ago),
-      Factory(:backer, user: user, confirmed: true, can_refund: false, requested_refund: false, refunded: false, value: 40, created_at: 1.day.ago)
+      Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 60, created_at: 1.day.ago)
     ]
 
     possible_backers = backers
-    possible_backers.slice!(0)
-    possible_backers.slice!(-1)
-
     user.reload
 
     click_link user.display_name
@@ -42,9 +37,11 @@ feature "Credits Feature" do
     rows.should have(4).items
 
     # Testing the content of the whole table
-    rows.each_index do |index|
-      columns = rows[index].all("td")
-      backer = possible_backers[index]
+    rows.each do |row|
+      columns = row.all("td")
+      id = row[:id].split("_").last
+      backer = possible_backers.select { |el| el.id == id.to_i }.first
+
       columns[0].find("a")[:href].should match(/\/projects\/#{backer.project.to_param}/)
       columns[1].text.should == I18n.l(backer.created_at.to_date)
       columns[2].text.should == backer.display_value
