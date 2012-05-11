@@ -17,11 +17,11 @@ feature "Show curated page" do
     cp.projects << p2
     cp.projects << p3
     cp.save
-    
-    visit "/#{cp.permalink}"
+
+    visit "/pages/#{cp.permalink}"
     verify_translations
-    
-    within '#index_header_text' do
+
+    within '.titles' do
       within 'h1' do
         page.should have_content(cp.name)
       end
@@ -29,9 +29,9 @@ feature "Show curated page" do
         page.should have_content(cp.description)
       end
     end
-    
-    within "#content" do
-      page.should have_css(".project_box", :count => cp.projects.count)
+
+    within ".curated_project_list" do
+      page.should have_css(".curated_project", :count => cp.projects.count)
     end
   end
 

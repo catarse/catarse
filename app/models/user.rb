@@ -74,6 +74,7 @@ class User < ActiveRecord::Base
     group("users.name, users.id")
   }
   #before_save :store_primary_user
+  before_save :fix_twitter_user
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -241,6 +242,9 @@ class User < ActiveRecord::Base
   end
 
   protected
+  def fix_twitter_user
+    self.twitter.gsub! /@/, '' if self.twitter
+  end
 
   def password_required?
     provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)

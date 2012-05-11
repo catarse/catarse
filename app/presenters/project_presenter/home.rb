@@ -31,7 +31,7 @@ module ProjectPresenter
         @project_of_day = home_page_projects.first
         category_projects = category_projects.where("id != #{@project_of_day.id}") if @project_of_day
         @first_project = category_projects.all[rand(category_projects.length)]
-        category_projects = category_projects.where("id != #{@first_project.id}") if @project_of_day
+        category_projects = category_projects.where("id != #{@first_project.id}") if @first_project
         @second_project = category_projects.all[rand(category_projects.length)]
         category_projects = category_projects.where("category_id != #{@second_project.category_id}") if @second_project
         @third_project = category_projects.all[rand(category_projects.length)]
