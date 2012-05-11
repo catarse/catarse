@@ -6,8 +6,9 @@ feature "Send Project Feature", :driver => :selenium do
 
   scenario "I'm not logged in and I want to send a project. It should ask for login." do
     visit homepage
-    click_link 'Envie seu projeto'
-    find("#login").visible?.should be_true
+    click_link 'envie'
+    verify_translations
+    current_path.should == guidelines_path
   end
 
   scenario "I am logged in and I want to send a project" do
@@ -15,7 +16,7 @@ feature "Send Project Feature", :driver => :selenium do
     c = Factory(:category)
     visit homepage
     fake_login
-    click_link 'Envie seu projeto'
+    click_link 'envie'
     verify_translations
     current_path.should == guidelines_path
 
@@ -23,7 +24,7 @@ feature "Send Project Feature", :driver => :selenium do
       page.should have_content("Como funciona")
     end
 
-    within '#content_header' do
+    within '.title' do
       within 'h1' do
         page.should have_content("Como funciona")
       end
@@ -34,11 +35,11 @@ feature "Send Project Feature", :driver => :selenium do
     check 'accept'
     find_button('Quero enviar meu projeto')['disabled'].should == 'false'
     click_button 'Quero enviar meu projeto'
-    
+
     sleep 2
     verify_translations
 
-    within '#content_header' do
+    within '.title' do
       within 'h1' do
         page.should have_content("Envie seu projeto")
       end
@@ -46,7 +47,8 @@ feature "Send Project Feature", :driver => :selenium do
 
     current_path.should == start_projects_path
 
-    within '#content' do
+    within '.bootstrap-form' do
+      fill_in 'how_much_you_need', with: 10
       fill_in 'about', :with => 'about this very cool project'
       fill_in 'rewards', :with => 'rewards of this very cool project'
       fill_in 'links', :with => 'links of this very cool project'
@@ -54,7 +56,6 @@ feature "Send Project Feature", :driver => :selenium do
       check 'accept'
       verify_translations
       click_button 'Enviar o projeto'
-      verify_translations
     end
 
     ActionMailer::Base.deliveries.should_not be_empty

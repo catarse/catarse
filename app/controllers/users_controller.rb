@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def credits
     @user = User.find(params[:id])
-    @credits = @user.backs.can_refund.within_refund_deadline.all
+    @credits = @user.backs.can_refund.within_refund_deadline.order(:id).all
     render :json => @credits
   end
 
