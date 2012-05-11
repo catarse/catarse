@@ -32,13 +32,11 @@ class ProjectsController < ApplicationController
         @expiring             = presenter.expiring
         @recent               = presenter.recent
 
-        @blog_posts = Rails.cache.fetch('blog_posts', expires_in: 30.minutes) do
-          Blog.fetch_last_posts.inject([]) do |total,item| 
-            if total.size < 2
-              total << item
-            end
-            total
+        @blog_posts = Blog.fetch_last_posts.inject([]) do |total,item| 
+          if total.size < 2
+            total << item
           end
+          total
         end || []
 
         calendar = Calendar.new
