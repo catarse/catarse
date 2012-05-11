@@ -243,7 +243,7 @@ class User < ActiveRecord::Base
 
   protected
   def fix_twitter_user
-    self.twitter.gsub! /@/, ''
+    self.twitter.gsub! /@/, '' if self.twitter
   end
 
   def password_required?
