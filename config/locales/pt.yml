@@ -110,6 +110,12 @@ pt:
       content: "Não existem %{resource_name} ainda."
       link: "Crie uma"
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: "O seu email não está cadastrado, verifique o endereço ou crie uma conta nova"
     attributes:
       backer:
         value: Valor

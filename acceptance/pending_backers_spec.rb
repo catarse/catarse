@@ -15,19 +15,20 @@ feature "Pending Backers" do
   end
 
   scenario "with admin user, it should show a table with backers" do
-    
     10.times { Factory(:backer) }
-    
+
     user_to_admin(current_user)
     visit pending_backers_projects_path
     verify_translations
 
     page.should have_no_css('.failure.wrapper')
-    page.should have_css('#content_header', :text => 'Gerenciamento de apoios')
+    within ".title" do
+      page.should have_css('h1', :text => 'Gerenciamento de apoios')
+    end
 
     page.should have_content "Encontrados 10 apoiadores"
-    all("#pending_backers table tbody tr").should have(10).itens
-    
+    all(".bootstrap-twitter table tbody tr").should have(10).itens
+
   end
 
   scenario 'show backers in project page' do
@@ -63,9 +64,9 @@ feature "Pending Backers" do
     check "confirmed__#{backer.id}"
     uncheck "anonymous__#{backer.id}"
     check "refunded__#{backer.id}"
-    
+
     verify_translations
-    
+
     find("#confirmed__#{backer.id}")[:checked].should == "true"
     find("#anonymous__#{backer.id}")[:checked].should == nil
     find("#refunded__#{backer.id}")[:checked].should == "true"

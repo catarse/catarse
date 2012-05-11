@@ -21,8 +21,8 @@ var CATARSE = {
 
   Common: {
     init: function(){
-      CATARSE.locale = $(document.body).data("locale")
-      CATARSE.currentUser = $(document.body).data("user")
+      CATARSE.locale = $('#main_content').data("locale")
+      CATARSE.currentUser = $('#main_content').data("user")
       // Common init for every action
       CATARSE.router = new CATARSE.Router()
       CATARSE.layout = new CATARSE.LayoutsApplicationView({el: $('html')})
