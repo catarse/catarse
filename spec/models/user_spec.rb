@@ -61,6 +61,17 @@ describe User do
     it{ User.find_with_omni_auth(secondary.provider, 'user that does not exist').should == nil }
   end
 
+  describe ".create" do
+    subject do 
+      User.create! do |u| 
+        u.provider = 'twitter'
+        u.uid = '123'
+        u.twitter = '@dbiazus'
+      end
+    end
+    its(:twitter){ should == 'dbiazus' }
+  end
+
   describe "#display_nickname" do
     context "when user don't have the nickname" do
       subject{ create(:user,:name=>'Lorem Ipsum',:nickname=>'profile.php?id=1234').display_nickname }
