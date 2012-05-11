@@ -136,7 +136,7 @@ feature "My profile Feature" do
     verify_translations
 
     within "#social_info" do
-      find_field("twitter ( usuário )").value.should == "@FooBar"
+      find_field("twitter ( usuário )").value.should == "FooBar"
       find_field("perfil do facebook").value.should == "facebook.com/FooBar"
       find_field("link da sua página na internet").value.should == "boobar.com"
     end
