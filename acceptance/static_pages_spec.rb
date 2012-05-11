@@ -7,7 +7,7 @@ feature "Static Pages Feature", :driver => :selenium do
   scenario "I visit the guidelines page" do
 
     visit homepage
-    click_link 'Como funciona?'
+    click_link 'Como funciona'
     verify_translations
     current_path.should == guidelines_path
 
@@ -15,7 +15,7 @@ feature "Static Pages Feature", :driver => :selenium do
       page.should have_content("Como funciona o Catarse?")
     end
 
-    within '#content_header' do
+    within '.title' do
       within 'h1' do
         page.should have_content("Como funciona o Catarse?")
       end
@@ -26,7 +26,7 @@ feature "Static Pages Feature", :driver => :selenium do
   scenario "I visit the FAQ page" do
 
     visit homepage
-    click_link 'FAQ/Ajuda'
+    click_link 'F.A.Q./Ajuda'
     verify_translations
     current_path.should == faq_path
 
@@ -34,7 +34,7 @@ feature "Static Pages Feature", :driver => :selenium do
       page.should have_content("Perguntas frequentes")
     end
 
-    within '#content_header' do
+    within '.title' do
       within 'h1' do
         page.should have_content("Perguntas frequentes")
       end
@@ -45,7 +45,7 @@ feature "Static Pages Feature", :driver => :selenium do
   scenario "I visit the terms of use page" do
 
     visit homepage
-    click_link 'Termos de uso'
+    click_link 'Termos de Uso'
     verify_translations
     current_path.should == terms_path
 
@@ -53,7 +53,7 @@ feature "Static Pages Feature", :driver => :selenium do
       page.should have_content("Termos de uso")
     end
 
-    within '#content_header' do
+    within '.title' do
       within 'h1' do
         page.should have_content("Termos de uso")
       end
@@ -64,7 +64,7 @@ feature "Static Pages Feature", :driver => :selenium do
   scenario "I visit the privacy policy page" do
 
     visit homepage
-    click_link 'Política de privacidade'
+    click_link 'Política de Privacidade'
     verify_translations
     current_path.should == privacy_path
 
@@ -72,7 +72,7 @@ feature "Static Pages Feature", :driver => :selenium do
       page.should have_content("Política de privacidade")
     end
 
-    within '#content_header' do
+    within '.title' do
       within 'h1' do
         page.should have_content("Política de privacidade")
       end

@@ -19,15 +19,15 @@ feature "Show Project Feature" do
     page.should have_css(%@meta [property="og:site_name"][content="#{I18n.t('site.name')}"]@)
     page.should have_css(%@meta [property="og:description"][content="#{project.about}"]@)
 
-    within '#project_header' do
+    within '.section_header' do
       within 'h1' do
         page.should have_content(project.name)
       end
-      within 'h2' do
+      within 'h4' do
         page.should have_content("Um projeto de #{project.user.name}")
       end
     end
-    
+
     find("#project_about").visible?.should be_true
     within "#project_about" do
       page.should have_content(project.about)
@@ -210,7 +210,7 @@ feature "Show Project Feature" do
   #   project = Factory(:project, user: user)
   #   visit project_path(project)
   #   verify_translations
-  #   
+  #   project_backers
   #   click_link "Atualizações"
   #   page.should have_css("#project_updates")
   # 
