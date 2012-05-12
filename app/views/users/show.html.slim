@@ -41,7 +41,7 @@
         ul
           - if can? :manage, @user
             li.email
-              = mail_to @user.email, "Me envie um email"
+              = mail_to @user.email, "Me envie um email", :target => '_blank'
           - if @user.facebook_link
             li.facebook
               = link_to "Perfil no facebook", @user.facebook_link, :target => '_blank'
