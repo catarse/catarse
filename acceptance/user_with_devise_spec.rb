@@ -1,6 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "with login page" do
+  before do
+    ActionMailer::Base.deliveries.clear
+  end
+
   scenario "Login with user that use another provider" do
     click_login
     verify_translations
