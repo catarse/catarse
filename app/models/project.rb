@@ -206,7 +206,7 @@ class Project < ActiveRecord::Base
       expired: expired?,
       successful: successful?,
       waiting_confirmation: waiting_confirmation?,
-      display_status_to_box: I18n.t("project.display_status.#{display_status}"),
+      display_status_to_box: I18n.t("project.display_status.#{display_status}").capitalize,
       display_expires_at: display_expires_at,
       in_time: in_time?
     }

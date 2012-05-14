@@ -5,7 +5,7 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Back project" do
 
   include Rails.application.routes.url_helpers
-  
+
   before do
     @project = Factory(:project, visible: true)
     @rewards = [
@@ -15,21 +15,22 @@ feature "Back project" do
     ]
     # Create a state to select
     State.create! name: "Foo bar", acronym: "FB"
+    Blog.stubs(:fetch_last_posts).returns([])
   end
 
   scenario "As a user without credits, I want to back a project by entering the value and selecting no reward" do
-  
+
     fake_login
-    
+
     visit project_path(@project)
     verify_translations
-  
+
     click_on "Quero apoiar este projeto"
     verify_translations
     current_path.should == new_project_backer_path(@project)
-    
+
     fill_in "Com quanto você quer apoiar?", with: "10"
-    
+
     click_on "Revisar e realizar pagamento"
     verify_translations
     current_path.should == review_project_backers_path(@project)
