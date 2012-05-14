@@ -11174,7 +11174,7 @@ body #logos .power a {
 }
 /* line 354, ../../app/stylesheets/redesign/resources/projects/_show.sass */
 [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates #show_formatting_tips {
-  font-family: "Lato-Regular";
+  font-family: Arial;
   text-align: left !important;
   color: #666666;
   font-size: 16px;
@@ -11186,29 +11186,37 @@ body #logos .power a {
 }
 /* line 362, ../../app/stylesheets/redesign/resources/projects/_show.sass */
 [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates #formatting_tips {
-  font-family: "Lato-Regular";
+  font-family: Arial;
   display: none;
   text-align: left;
   color: #666666;
 }
 /* line 367, ../../app/stylesheets/redesign/resources/projects/_show.sass */
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates #formatting_tips strong {
+  font-weight: bold;
+}
+/* line 369, ../../app/stylesheets/redesign/resources/projects/_show.sass */
+[data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates #formatting_tips em {
+  font-style: italic;
+}
+/* line 371, ../../app/stylesheets/redesign/resources/projects/_show.sass */
 [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates #formatting_tips h3 {
   font-weight: bold;
   font-size: 1.17em;
   margin-bottom: 15px;
 }
-/* line 371, ../../app/stylesheets/redesign/resources/projects/_show.sass */
+/* line 375, ../../app/stylesheets/redesign/resources/projects/_show.sass */
 [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates #formatting_tips ul li {
   font-size: 14px;
   padding-bottom: 8px;
   margin-bottom: 8px;
   border-bottom: 1px dotted #999999;
 }
-/* line 376, ../../app/stylesheets/redesign/resources/projects/_show.sass */
+/* line 380, ../../app/stylesheets/redesign/resources/projects/_show.sass */
 [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates #formatting_tips ul li:last-child {
   border: none;
 }
-/* line 378, ../../app/stylesheets/redesign/resources/projects/_show.sass */
+/* line 382, ../../app/stylesheets/redesign/resources/projects/_show.sass */
 [data-namespace="null"][data-controller="projects"][data-action="show"] #page_content #project_updates #formatting_tips a {
   color: #e75297;
 }
