@@ -1,9 +1,9 @@
 jQuery(function () {
   var body, controllerClass, controllerName, action;
 
-  body = $(document.body);
+  body = $('#main_content');
   controllerClass = body.data( "controller-class" );
-  controllerName = body.data( "controller" );
+  controllerName = body.data( "controller-name" );
   action = body.data( "action" );
 
   function exec(controllerClass, controllerName, action) {
