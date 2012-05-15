@@ -71,12 +71,18 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   }),
 
   BackerView: CATARSE.ModelView.extend({
-    template: _.template(this.$('#backer_template').html() || '')
+    template: function(vars){
+      return $('#backer_template').html()
+    }
   }),
 
   BackersView: CATARSE.PaginatedView.extend({
-		template: _.template(this.$('#backers_template').html() || ''),
-    emptyTemplate: _.template(this.$('#empty_backers_template').html() || '')
+		template: function(vars){
+      return $('#backers_template').html()
+    },
+    emptyTemplate: function(){
+      return $('#empty_backers_template').html()
+    }
   }),
 
   about: function() {

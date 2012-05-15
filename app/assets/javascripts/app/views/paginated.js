@@ -42,7 +42,7 @@ CATARSE.PaginatedView = Backbone.View.extend({
   },
 
   render: function() {
-    this.el.html(this.template())
+    this.el.html(_.template(this.template()))
     return this
   },
 
@@ -63,7 +63,7 @@ CATARSE.PaginatedView = Backbone.View.extend({
         new this.modelView({el: item, model: model})
       }, this)
     } else if(this.collection.page == 1) {
-      this.el.html(this.emptyTemplate())
+      this.el.html(_.template(this.emptyTemplate()))
     }
     this.afterUpdate()
     this.loading.waypoint(this.waypoint, {offset: "100%"})

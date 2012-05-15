@@ -23,24 +23,36 @@ CATARSE.UsersShowView = Backbone.View.extend({
   },
 
   BackView: CATARSE.ModelView.extend({
-    template: _.template(this.$('#user_back_template').html() || '')
+    template: function(){
+      return $('#user_back_template').html()
+    }
   }),
 
   BacksView: CATARSE.PaginatedView.extend({
-    template: _.template(this.$('#user_backs_template').html() || ''),
-    emptyTemplate: _.template(this.$('#empty_user_back_template').html() || ''),
+    template: function(){
+      return $('#user_backs_template').html()
+    },
+    emptyTemplate: function(){
+      return $('#empty_user_back_template').html()
+    },
     afterUpdate: function() {
       FB.XFBML.parse()
     }
   }),
 
   ProjectView: CATARSE.ModelView.extend({
-    template: _.template(this.$('#user_project_template').html() || '')
+    template: function(){
+      return $('#user_project_template').html()
+    }
   }),
 
   ProjectsView: CATARSE.PaginatedView.extend({
-    template: _.template(this.$('#user_projects_template').html() || ''),
-    emptyTemplate: _.template(this.$('#empty_user_project_template').html() || ''),
+    template: function(){
+      return $('#user_projects_template').html()
+    },
+    emptyTemplate: function(){
+      return $('#empty_user_project_template').html()
+    },
     afterUpdate: function() {
       FB.XFBML.parse()
     }
