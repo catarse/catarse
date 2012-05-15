@@ -14,12 +14,18 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   },
 
   ProjectView: CATARSE.ModelView.extend({
-    template: _.template(this.$('#project_template').html() || '')
+    template: function(){
+      return $('#project_template').html()
+    }
   }),
 
   ProjectsView: CATARSE.PaginatedView.extend({
-    template: _.template(this.$('#projects_template').html() || ''),
-    emptyTemplate: _.template(this.$('#empty_projects_template').html() || '')
+    template: function(){
+      return $('#projects_template').html()
+    },
+    emptyTemplate: function(){
+      return $('#empty_projects_template').html()
+    }
   }),
 
   search: function(search){

@@ -10,7 +10,9 @@ CATARSE.BlogIndexView = Backbone.View.extend({
   },
 
   PostView: CATARSE.ModelView.extend({
-    template: _.template(this.$('#post_template').html() || ''),
+    template: function(){
+      return $('#post_template').html()
+    },
     afterRender: function() {
       this.el.find('a.twitter-share-button').each(function(i) {
         var loadedTweetButton = new twttr.TweetButton($(this).get(0))
@@ -20,7 +22,9 @@ CATARSE.BlogIndexView = Backbone.View.extend({
   }),
 
   PostsView: CATARSE.PaginatedView.extend({
-    emptyTemplate: _.template(this.$('#empty_posts_template').html() || '')
+    emptyTemplate: function(){
+      return $('#empty_posts_template').html()
+    }
   }),
 
   platform: function(){
