@@ -24,9 +24,9 @@
               .bootstrap-alert
                 .alert
                   = render 'anonymous_warning'
-          = form.buttons do
+          = form.actions do
             .bootstrap-twitter
-              = form.commit_button t('.submit'), :button_html => {:disabled => true, :class => 'btn btn-primary btn-large'}
+              = form.submit t('.submit'), :disabled => true, :class => 'btn btn-primary btn-large', :id => "backer_submit"
       #back_info
         = image_tag @project.display_image, alt: @project.name, class: 'project_image', width: 280
         #project_info
