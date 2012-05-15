@@ -68,6 +68,14 @@ var CATARSE = {
     },
     start: function(){
       window.view = new CATARSE.ProjectsStartView({el: $("body") });
+    },
+    backers: {
+      'new': function(){
+        window.view = new CATARSE.BackersNewView({el: $("body") });
+      },
+      review: function(){
+        window.view = new CATARSE.BackersReviewView({el: $("body") });
+      }
     }
   },
   static: {
