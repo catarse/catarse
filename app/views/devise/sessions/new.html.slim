@@ -19,7 +19,7 @@
             = f.label :remember_me, t('layouts.login.remember_me')
           p.action
             .bootstrap-twitter
-              = f.submit t('.submit'), class: 'btn'
+              = f.submit t('.submit'), class: 'btn', id: 'user_submit'
           p.forgot_link
             = link_to t('devise.links.forgot_password'), new_password_path(resource_name)
     .form_login.bootstrap-form.new_registration[class="#{('actived' if params[:active_register])}"]
@@ -46,7 +46,7 @@
             = f.label :newsletter, t('users.current_user_fields.newsletter')
           p.action
             .bootstrap-twitter
-              = f.submit t('registrations.new.submit'), class: 'btn'
+              = f.submit t('registrations.new.submit'), class: 'btn', id: 'user_submit'
     .login_with_social
       .content_form
         h1=t('.with_facebook')
