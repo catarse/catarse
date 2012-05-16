@@ -34,5 +34,4 @@ jQuery(function () {
   exec_filter('init');
   exec( controllerClass, controllerName, action );
   exec_filter('finish');
-  $.ajaxSetup({ dataType: 'html' });
 });
