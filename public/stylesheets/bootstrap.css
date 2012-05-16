@@ -421,7 +421,7 @@ div.project .box ul {
 div.project .box ul li {
   float: left;
   min-width: 50px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 /* line 108, ../../app/stylesheets/redesign/miv/_projects.sass */
 div.project .box ul li:last-child {
