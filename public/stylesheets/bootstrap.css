@@ -11707,6 +11707,7 @@ body #logos .power a {
 }
 /* line 26, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info h1 {
+  margin-top: 30px;
   float: left;
   width: 600px;
   font-family: "Lato-Bold";
@@ -11714,12 +11715,12 @@ body #logos .power a {
   line-height: 130%;
   padding-bottom: 20px;
 }
-/* line 33, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 34, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info h1 a {
   color: #e75297;
   text-decoration: none;
 }
-/* line 36, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 37, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info #review_text {
   height: 80px;
   overflow: hidden;
@@ -11731,13 +11732,13 @@ body #logos .power a {
   float: left;
   width: 600px;
 }
-/* line 46, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 47, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you .project_info #review_text strong {
   font-size: 18px;
   color: #59af6d;
   font-weight: bold;
 }
-/* line 50, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
+/* line 51, ../../app/stylesheets/redesign/resources/projects/_thank_you.sass */
 #thank_you h2 {
   font-family: "Lato-Bold";
 }
