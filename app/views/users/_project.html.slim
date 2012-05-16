@@ -8,7 +8,7 @@ script type="text/template" id="empty_user_project_template"
     p.empty= t('users.projects.no_projects_current_user_html', link: link_to(t('site.base_url'), t('site.base_url') )).html_safe
 
 script type="text/template" id="user_project_template"
-  .project_land
+  .small_project_land
     | <% if(expired) { %>
     .status_image
       a href="<%= url %>"
@@ -29,24 +29,28 @@ script type="text/template" id="user_project_template"
           a href='<%= url %>'
             | <%= name %>
         p.author== "#{t('project_by')} <%= user['name'] %>"
+        p.headline <%= headline %>
       .status_bar
         .progress style="width: <%= display_progress %>%;"
       ul
         li
+          |<% if(time_to_go['time'] > 0){ %>
           h6 <%= time_to_go['time'] %> <%= time_to_go['unit'] %>
           p <%= remaining_text %>
+          |<% } else { %>
+          h6 <%= display_status_to_box %>
+          p <%= display_expires_at %>
+          |<% } %>
         li
           h6 <%= progress %>%
           p= t('projects.project.backed')
         li
           h6 <%= pledged %>
           p= t('projects.project.reached')
-    .back_info
-      p.headline <%= headline %>
     - if current_user == @user
       .tell_about
         p= t('tell_about_this_project')
         ul
-          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(full_uri) %>&t=#{t('share_my_projects')}".html_safe, :target => '_blank'
-          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_projects')}&url=<%= encodeURIComponent(full_uri) %>".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(full_uri) %>&t=#{t('share_my_projects')}<%= encodeURIComponent(name) %>".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_projects')}<%= encodeURIComponent(name) %>&url=<%= encodeURIComponent(full_uri) %>".html_safe, :target => '_blank'
 
