@@ -51,6 +51,6 @@ script type="text/template" id="user_project_template"
       .tell_about
         p= t('tell_about_this_project')
         ul
-          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(full_uri) %>&t=#{t('share_my_projects')}".html_safe, :target => '_blank'
-          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_projects')}&url=<%= encodeURIComponent(full_uri) %>".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(full_uri) %>&t=#{t('share_my_projects')}<%= encodeURIComponent(name) %>".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_projects')}<%= encodeURIComponent(name) %>&url=<%= encodeURIComponent(full_uri) %>".html_safe, :target => '_blank'
 
