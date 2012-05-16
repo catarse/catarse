@@ -23,12 +23,13 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
   }),
 
   search: function(search){
+    search = decodeURIComponent(search);
     if(this.$('.section_header .replaced_header')) {
       this.$('.section_header .replaced_header').remove();
     }
     this.$('.section_header .original_title').fadeOut(300, function() {
       $('.section_header').append('<div class="replaced_header"></div>');
-      $('.section_header .replaced_header').html('<h1><span>Explore</span> / '+encodeURIComponent(search)+'</h1>');
+      $('.section_header .replaced_header').html('<h1><span>Explore</span> / '+ search +'</h1>');
     })
     this.selectItem("")
     this.initializeView({
