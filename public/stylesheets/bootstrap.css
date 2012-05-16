@@ -2048,6 +2048,7 @@ table .span12 {
 
 /* line 1, ../../app/stylesheets/redesign/miv/_dropdown.sass */
 .dropdown {
+  z-index: 999;
   display: none;
   list-style: none;
   width: 120px;
@@ -2065,25 +2066,25 @@ table .span12 {
   -o-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
   box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
 }
-/* line 10, ../../app/stylesheets/redesign/miv/_dropdown.sass */
+/* line 11, ../../app/stylesheets/redesign/miv/_dropdown.sass */
 .dropdown.user {
   margin-left: 87px;
   margin-top: 10px;
 }
-/* line 13, ../../app/stylesheets/redesign/miv/_dropdown.sass */
+/* line 14, ../../app/stylesheets/redesign/miv/_dropdown.sass */
 .dropdown li {
   width: 100%;
   text-align: left;
   margin-top: 5px;
   padding: 0 10px;
 }
-/* line 18, ../../app/stylesheets/redesign/miv/_dropdown.sass */
+/* line 19, ../../app/stylesheets/redesign/miv/_dropdown.sass */
 .dropdown li .small {
   font-family: Lato-Bold;
   font-size: 11px;
   color: #59af6d;
 }
-/* line 22, ../../app/stylesheets/redesign/miv/_dropdown.sass */
+/* line 23, ../../app/stylesheets/redesign/miv/_dropdown.sass */
 .dropdown li.divider {
   border-bottom: 1px #e3e2dc solid;
   margin-bottom: 5px;
