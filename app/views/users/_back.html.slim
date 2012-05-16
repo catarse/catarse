@@ -33,8 +33,13 @@ script type="text/template" id="user_back_template"
         .progress style="width: <%= project['display_progress'] %>%;"
       ul
         li
+          |<% if(project['time_to_go']['time'] > 0){ %>
           h6 <%= project['time_to_go']['time'] %> <%= project['time_to_go']['unit'] %>
           p <%= project['remaining_text'] %>
+          |<% } else { %>
+          h6 <%= project['display_status_to_box'] %>
+          p <%= project['display_expires_at'] %>
+          |<% } %>
         li
           h6 <%= project['progress'] %>%
           p= t('projects.project.backed')
