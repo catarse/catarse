@@ -70,7 +70,7 @@ gem "meta_search", "1.1.3"
 
 # Payment
 gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git', :ref => 'db1b879358c623b597dc1c221b53336f9f06db0e'
-gem 'paypal-express', :require => 'paypal'
+gem 'paypal-express', '~> 0.5.0', :require => 'paypal'
 
 # Server
 gem 'thin'

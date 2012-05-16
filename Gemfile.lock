@@ -248,7 +248,7 @@ GEM
     on_the_spot (1.0.0)
       json_pure (>= 1.4.6)
     orm_adapter (0.0.7)
-    paypal-express (0.4.7)
+    paypal-express (0.5.0)
       activesupport (>= 2.3)
       attr_required (>= 0.0.5)
       i18n
@@ -441,7 +441,7 @@ DEPENDENCIES
   omniauth-twitter (~> 0.0.11)
   omniauth-yahoo (~> 0.0.4)
   on_the_spot
-  paypal-express
+  paypal-express (~> 0.5.0)
   pg
   rack-timeout
   rails (= 3.2.3)
