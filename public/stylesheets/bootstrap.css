@@ -523,12 +523,25 @@ div.project .box .follow_project:hover {
 }
 
 /* line 1, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.small_project_land {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 700px;
+}
+
+/* line 3, ../../app/stylesheets/redesign/miv/_projects_land.sass */
 .project_land {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 940px;
+}
+
+/* line 5, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land, .small_project_land {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -540,21 +553,21 @@ div.project .box .follow_project:hover {
   background-color: #ededed;
   height: 175px;
 }
-/* line 3, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land.with_alpha {
+/* line 6, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land.with_alpha, .small_project_land.with_alpha {
   margin-left: 0;
 }
-/* line 5, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land.with_omega {
+/* line 8, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land.with_omega, .small_project_land.with_omega {
   margin-right: 0;
 }
-/* line 10, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .status_image {
+/* line 13, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .status_image, .small_project_land .status_image {
   position: absolute;
   z-index: 100;
 }
-/* line 13, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .cover {
+/* line 16, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .cover, .small_project_land .cover {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -562,8 +575,8 @@ div.project .box .follow_project:hover {
   width: 220px;
   margin-left: 0;
 }
-/* line 16, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .cover .black_box {
+/* line 19, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .cover .black_box, .small_project_land .cover .black_box {
   text-transform: uppercase;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
@@ -576,29 +589,29 @@ div.project .box .follow_project:hover {
   font-size: 11px;
   width: 213px;
 }
-/* line 28, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos {
+/* line 31, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos, .small_project_land .project_infos {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 220px;
 }
-/* line 30, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos .title {
+/* line 33, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos .title, .small_project_land .project_infos .title {
   height: 120px;
 }
-/* line 32, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos h4 {
-  font-size: 18px;
+/* line 35, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos h4, .small_project_land .project_infos h4 {
+  font-size: 16px;
   color: #4383d1;
   padding: 7px 0 0 0;
   font-family: Lato-Bold;
   overflow: hidden;
   margin-bottom: 3px;
 }
-/* line 39, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos h4 a {
+/* line 42, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos h4 a, .small_project_land .project_infos h4 a {
   color: black;
   font-family: Lato-Bold;
   font-size: 18px;
@@ -612,12 +625,12 @@ div.project .box .follow_project:hover {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 45, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos h4 a:hover {
+/* line 48, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos h4 a:hover, .small_project_land .project_infos h4 a:hover {
   color: #59af6d;
 }
-/* line 47, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos .author {
+/* line 50, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos .author, .small_project_land .project_infos .author {
   font-family: Arial;
   color: black;
   font-size: 13px;
@@ -625,8 +638,8 @@ div.project .box .follow_project:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 54, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos .status_bar {
+/* line 57, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos .status_bar, .small_project_land .project_infos .status_bar {
   background-color: white;
   width: 202px;
   height: 10px;
@@ -639,8 +652,8 @@ div.project .box .follow_project:hover {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 61, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos .status_bar .progress {
+/* line 64, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos .status_bar .progress, .small_project_land .project_infos .status_bar .progress {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -651,30 +664,30 @@ div.project .box .follow_project:hover {
   height: 10px;
   overflow: hidden;
 }
-/* line 66, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos .info_bar {
+/* line 69, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos .info_bar, .small_project_land .project_infos .info_bar {
   background: #dcdcdc;
   float: left;
   width: 210px;
   padding: 5px 5px 10px;
 }
-/* line 72, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos ul {
+/* line 75, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos ul, .small_project_land .project_infos ul {
   padding-top: 10px;
   display: block;
 }
-/* line 75, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos ul li {
+/* line 78, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos ul li, .small_project_land .project_infos ul li {
   float: left;
   min-width: 60px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
-/* line 79, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos ul li:last-child {
+/* line 82, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos ul li:last-child, .small_project_land .project_infos ul li:last-child {
   margin-left: 0px;
 }
-/* line 81, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos ul li h6 {
+/* line 84, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos ul li h6, .small_project_land .project_infos ul li h6 {
   font-family: Lato-Bold;
   font-size: 12px;
   color: black;
@@ -682,77 +695,90 @@ div.project .box .follow_project:hover {
   opacity: 0.7;
   margin-bottom: 3px;
 }
-/* line 87, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .project_infos ul li p {
+/* line 90, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .project_infos ul li p, .small_project_land .project_infos ul li p {
   text-transform: uppercase;
   color: #838383;
   font-family: Arial;
   font-size: 9px;
 }
-/* line 92, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info {
+/* line 95, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .headline, .small_project_land .headline {
+  margin: 5px 0;
+  font-family: Arial;
+  font-size: 12px;
+  line-height: 110%;
+  color: black;
+}
+/* line 101, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .small_back_info, .small_project_land .small_back_info {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 160px;
+  margin-right: 0;
+}
+/* line 104, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info, .small_project_land .back_info {
   display: inline;
   float: left;
   margin-left: 10px;
   margin-right: 10px;
   width: 220px;
+}
+/* line 106, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info, .project_land .small_back_info, .small_project_land .back_info, .small_project_land .small_back_info {
   margin-left: 0;
   border-left: 1px rgba(255, 255, 255, 0.5) solid;
   padding-left: 19px;
   height: 175px;
   padding-top: 14px;
 }
-/* line 99, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info .headline {
-  font-family: Arial;
-  font-size: 12px;
-  line-height: 130%;
-  color: black;
-}
-/* line 105, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info ul li {
+/* line 113, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info ul li, .project_land .small_back_info ul li, .small_project_land .back_info ul li, .small_project_land .small_back_info ul li {
   padding-left: 40px;
   padding-top: 2px;
   padding-bottom: 2px;
   margin-bottom: 24px !important;
 }
-/* line 110, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info ul li h5 {
+/* line 118, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info ul li h5, .project_land .small_back_info ul li h5, .small_project_land .back_info ul li h5, .small_project_land .small_back_info ul li h5 {
   font-family: Lato-Bold;
   font-size: 17px;
   color: black;
 }
-/* line 114, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info ul li p {
+/* line 122, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info ul li p, .project_land .small_back_info ul li p, .small_project_land .back_info ul li p, .small_project_land .small_back_info ul li p {
   font-family: Arial;
   font-size: 12px;
   line-height: 130%;
   color: black;
 }
-/* line 119, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info ul li.date {
+/* line 127, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info ul li.date, .project_land .small_back_info ul li.date, .small_project_land .back_info ul li.date, .small_project_land .small_back_info ul li.date {
   background: url("/images/catarse/back_icons.png") left top no-repeat;
 }
-/* line 121, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info ul li.value {
+/* line 129, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info ul li.value, .project_land .small_back_info ul li.value, .small_project_land .back_info ul li.value, .small_project_land .small_back_info ul li.value {
   background: url("/images/catarse/back_icons.png") left -35px no-repeat;
 }
-/* line 123, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info ul li.reward {
+/* line 131, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info ul li.reward, .project_land .small_back_info ul li.reward, .small_project_land .back_info ul li.reward, .small_project_land .small_back_info ul li.reward {
   background: url("/images/catarse/back_icons.png") left -68px no-repeat;
 }
-/* line 125, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info ul li.reward h5 {
+/* line 133, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info ul li.reward h5, .project_land .small_back_info ul li.reward h5, .small_project_land .back_info ul li.reward h5, .small_project_land .small_back_info ul li.reward h5 {
   padding-top: 4px;
   padding-bottom: 5px;
 }
-/* line 128, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .back_info ul li.reward p {
+/* line 136, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .back_info ul li.reward p, .project_land .small_back_info ul li.reward p, .small_project_land .back_info ul li.reward p, .small_project_land .small_back_info ul li.reward p {
   height: 30px;
   overflow: hidden;
 }
-/* line 132, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .tell_about {
+/* line 140, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .tell_about, .small_project_land .tell_about {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -764,8 +790,8 @@ div.project .box .follow_project:hover {
   padding-left: 29px;
   margin-left: 30px;
 }
-/* line 140, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .tell_about p {
+/* line 148, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .tell_about p, .small_project_land .tell_about p {
   padding-top: 10px;
   width: 130px;
   font-family: Arial;
@@ -773,17 +799,17 @@ div.project .box .follow_project:hover {
   color: #e75297;
   font-weight: bold;
 }
-/* line 147, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .tell_about ul {
+/* line 155, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .tell_about ul, .small_project_land .tell_about ul {
   padding-top: 15px;
 }
-/* line 149, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .tell_about ul li {
+/* line 157, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .tell_about ul li, .small_project_land .tell_about ul li {
   float: none !important;
   margin-bottom: 3px !important;
 }
-/* line 152, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .tell_about ul li a {
+/* line 160, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .tell_about ul li a, .small_project_land .tell_about ul li a {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -794,8 +820,8 @@ div.project .box .follow_project:hover {
   transition-duration: 0.5s;
   margin-left: 30px;
 }
-/* line 155, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .tell_about ul li a img {
+/* line 163, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .tell_about ul li a img, .small_project_land .tell_about ul li a img {
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -805,8 +831,8 @@ div.project .box .follow_project:hover {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-/* line 158, ../../app/stylesheets/redesign/miv/_projects_land.sass */
-.project_land .tell_about ul li a:hover img {
+/* line 166, ../../app/stylesheets/redesign/miv/_projects_land.sass */
+.project_land .tell_about ul li a:hover img, .small_project_land .tell_about ul li a:hover img {
   -moz-transform: scale(1.1, 1.1);
   -webkit-transform: scale(1.1, 1.1);
   -o-transform: scale(1.1, 1.1);

@@ -8,7 +8,7 @@ script type="text/template" id="empty_user_back_template"
     p.empty= t('users.backs.no_backs_current_user_html', link: t('site.base_url'))
 
 script type="text/template" id="user_back_template"
-  .project_land
+  div class=(current_user == @user ? 'project_land' : 'small_project_land')
     | <% if(project['expired']) { %>
     .status_image
       a href="<%= project['url'] %>"
@@ -29,6 +29,7 @@ script type="text/template" id="user_back_template"
           a href='<%= project["url"] %>'
             | <%= project['name'] %>
         p.author== "#{t('project_by')} <%= project['user']['name'] %>"
+        p.headline <%= project['headline'] %>
       .status_bar
         .progress style="width: <%= project['display_progress'] %>%;"
       ul
@@ -46,7 +47,7 @@ script type="text/template" id="user_back_template"
         li
           h6 <%= project['pledged'] %>
           p= t('projects.project.reached')
-    .back_info
+    div class=(current_user == @user ? 'back_info' : 'small_back_info')
       ul
         li.date
           h5 <%= confirmed_at %>
