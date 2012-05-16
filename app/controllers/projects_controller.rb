@@ -106,6 +106,12 @@ class ProjectsController < ApplicationController
       if params[:permalink].present?
         @project = Project.find_by_permalink! params[:permalink]
       end
+
+      @project = Project.find params[:id] if params[:id].present?
+      if !params[:permalink].present? and @project.permalink.present?
+        return redirect_to project_by_slug_url(permalink: @project.permalink)
+      end
+
       show!{
         @title = @project.name
         @rewards = @project.rewards.order(:minimum_value).all
