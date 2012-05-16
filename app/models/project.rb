@@ -52,7 +52,7 @@ class Project < ActiveRecord::Base
 
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
-  validates_uniqueness_of :permalink
+  validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true
   before_create :store_image_url
 
   def store_image_url
@@ -201,8 +201,8 @@ class Project < ActiveRecord::Base
       created_at: created_at,
       time_to_go: time_to_go,
       remaining_text: remaining_text,
-      url: "/projects/#{self.to_param}",
-      full_uri: I18n.t('site.base_url') + Rails.application.routes.url_helpers.project_path(self),
+      url: (self.permalink.blank? ? "/projects/#{self.to_param}" : '/' + self.permalink),
+      full_uri: I18n.t('site.base_url') + (self.permalink.blank? ? Rails.application.routes.url_helpers.project_path(self) : '/' + self.permalink),
       expired: expired?,
       successful: successful?,
       waiting_confirmation: waiting_confirmation?,

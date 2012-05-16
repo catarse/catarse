@@ -8,7 +8,7 @@ script type="text/template" id="empty_user_back_template"
     p.empty= t('users.backs.no_backs_current_user_html', link: t('site.base_url'))
 
 script type="text/template" id="user_back_template"
-  .project_land
+  div class=(current_user == @user ? 'project_land' : 'small_project_land')
     | <% if(project['expired']) { %>
     .status_image
       a href="<%= project['url'] %>"
@@ -29,19 +29,25 @@ script type="text/template" id="user_back_template"
           a href='<%= project["url"] %>'
             | <%= project['name'] %>
         p.author== "#{t('project_by')} <%= project['user']['name'] %>"
+        p.headline <%= project['headline'] %>
       .status_bar
         .progress style="width: <%= project['display_progress'] %>%;"
       ul
         li
+          |<% if(project['time_to_go']['time'] > 0){ %>
           h6 <%= project['time_to_go']['time'] %> <%= project['time_to_go']['unit'] %>
           p <%= project['remaining_text'] %>
+          |<% } else { %>
+          h6 <%= project['display_status_to_box'] %>
+          p <%= project['display_expires_at'] %>
+          |<% } %>
         li
           h6 <%= project['progress'] %>%
           p= t('projects.project.backed')
         li
           h6 <%= project['pledged'] %>
           p= t('projects.project.reached')
-    .back_info
+    div class=(current_user == @user ? 'back_info' : 'small_back_info')
       ul
         li.date
           h5 <%= confirmed_at %>
@@ -58,6 +64,6 @@ script type="text/template" id="user_back_template"
       .tell_about
         p= t('tell_about_this_back')
         ul
-          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(project['full_uri']) %>&t=#{t('share_my_backs')}".html_safe, :target => '_blank'
-          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_backs')}&url=<%= encodeURIComponent(project['full_uri']) %>".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(project['full_uri']) %>&t=#{t('share_my_backs')}<%= encodeURIComponent(project['name']) %>".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_backs')}<%= encodeURIComponent(project['name']) %>&url=<%= encodeURIComponent(project['full_uri']) %>".html_safe, :target => '_blank'
   .clearfix

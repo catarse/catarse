@@ -48,19 +48,3 @@ script type="text/template" id="backer_template"
         | <% } %>
     .clear
 
-
-  / |<%= confirmed_at %>
-  / |<% if(anonymous) { %>
-  / img src="/images/user.png" class="user"
-  / | &nbsp;
-  / = t('.anonymous_backer')
-  / = image_tag "badge.#{I18n.locale}.png", :class => "badge"
-  / p= t('.anonymous_description')
-  / | <% } else { %>
-  / a href="<%= user['url'] %>"
-  /   img src="<%= user['image'] %>" class="user"
-  /   | <%= user['medium_name'] %>
-  /   = image_tag "badge.#{I18n.locale}.png", :class => "badge"
-  / p
-  /   | <%= user['backs_text'] %>
-  / | <% } %>
