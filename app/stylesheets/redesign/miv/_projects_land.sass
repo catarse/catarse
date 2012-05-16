@@ -1,5 +1,8 @@
+.small_project_land
+  +grid(12)
 .project_land
   +grid(16)
+.project_land,.small_project_land
   &.with_alpha
     +alpha
   &.with_omega
@@ -30,7 +33,7 @@
     .title
       height: 120px
     h4
-      font-size: 18px
+      font-size: 16px
       color: $blue
       padding: 7px 0 0 0
       font-family: Lato-Bold
@@ -52,6 +55,7 @@
       // margin-bottom: 30px
       +opacity(0.5)
     .status_bar
+      background-color: white
       width: 202px
       height: 10px
       overflow: hidden
@@ -74,7 +78,7 @@
       li
         float: left
         min-width: 60px
-        margin-right: 10px
+        margin-right: 5px
         &:last-child
           margin-left: 0px
         h6
@@ -88,18 +92,23 @@
           color: $super_minimal_gryn
           font-family: Arial
           font-size: 9px
+  .headline
+    margin: 5px 0
+    font-family: Arial
+    font-size: 12px
+    line-height: 110%
+    color: black
+  .small_back_info
+    +grid(3)
+    +omega
   .back_info
     +grid(4)
+  .back_info,.small_back_info
     +alpha
     border-left: 1px rgba(white, 0.5) solid
     padding-left: 19px
     height: 175px
     padding-top: 14px
-    .headline
-      font-family: Arial
-      font-size: 12px
-      line-height: 130%
-      color: black
     ul
       li
         padding-left: 40px
