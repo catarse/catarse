@@ -13,7 +13,7 @@
             = f.text_field :email
           p.action
             .bootstrap-twitter
-              = f.submit t('.submit'), class: 'btn'
+              = f.submit t('.submit'), class: 'btn', id: 'user_submit'
         .links
           = render :partial => "devise/shared/links"
     .clearfix
