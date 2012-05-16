@@ -9,9 +9,9 @@
         h1= t('.text_title_html', :link => link_to(@project.name, project_path(@project)))
         #review_text
           - if @project.successful?
-            = t('.successful', :expires_at => @project.display_expires_at, :total_backers => (@project.total_backers - 1))
+            = t('projects.back_project.project_warning.not_successful.expired', :goal => @project.display_goal, :date => @project.display_expires_at)
           - else
-            = t('.not_successful', :goal => @project.display_goal, :expires_at => @project.display_expires_at)
+            = t('projects.back_project.project_warning.not_successful.not_expired', :goal => @project.display_goal, :date => @project.display_expires_at)
       .clearfix
       h2= t('.text_subtitle')
       = link_to "http://twitter.com/?status=#{t('i_just_backed', :name => @project.name)} #{@project.short_url}", :target => :_blank do
