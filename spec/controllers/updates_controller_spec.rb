@@ -15,7 +15,7 @@ describe UpdatesController do
       @update = Factory(:update)
       delete :destroy, :project_id => @update.project.id, :id => @update.id, :locale => 'pt'
     end
-    it{ should redirect_to project_updates_path(@update.project) }
+    its(:status){ should == 200 }
   end
 
   describe "POST create" do
