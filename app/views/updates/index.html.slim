@@ -3,7 +3,7 @@
     em = t('projects.project_updates.empty')
   - else
     ul.collection_list
-      - for update in @project.updates
+      - for update in @project.updates.order('created_at DESC')
         li
           h3= update.title
           .time= l(update.created_at, format: :short)
