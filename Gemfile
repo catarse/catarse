@@ -91,7 +91,7 @@ group :test, :development do
   gem 'steak', "~> 1.1.0"
   gem 'rspec-rails', "~> 2.10.0"
   gem 'rcov', '= 0.9.11'
-  gem 'mocha'
+  gem 'mocha', '0.10.4'
   gem 'capybara', ">= 1.0.1"
 end
 
