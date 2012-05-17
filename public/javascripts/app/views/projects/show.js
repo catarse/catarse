@@ -13,9 +13,11 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
       $(event.target).next('.deleting_update').show();
     });
 
+    var that = this;
     this.$('a.destroy_update').live('ajax:success', function(event, data){
       var target = $('.updates_wrapper');
       target.html(data);
+      that.$('a#updates_link .count').html(' (' + that.$('.updates_wrapper ul.collection_list > li').length + ')');
       $(event.target).next('.deleting_update').hide();
     });
 
@@ -54,6 +56,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
         .success(function(data){
           var target = $('.updates_wrapper');
           target.html(data);
+          $('a#updates_link .count').html(' (' + $('.updates_wrapper ul.collection_list > li').length + ')');
           that.loading.hide();
           that.el.reset();
         });
