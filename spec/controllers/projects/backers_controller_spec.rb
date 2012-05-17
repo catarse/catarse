@@ -3,14 +3,16 @@ require 'spec_helper'
 describe Projects::BackersController do
   render_views
 
-  before(:each) do
+  subject{ response }
+
+  before do
     @user = create(:user)
     @user_backer = create(:user, :name => 'Lorem Ipsum')
     @project = create(:project)
     @backer = create(:backer, :value=> 10.00, :user => @user_backer, :confirmed => true, :project => @project)
   end
 
-  describe "checkout" do
+  describe "PUT checkout" do
     context "without user" do
       it "should be redirect" do
         put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
@@ -95,10 +97,14 @@ describe Projects::BackersController do
     end
   end
 
-  describe "review" do
-    it "should redirect when user not loged" do
-      post :review, {:locale => :pt, :project_id => @project.id}
-      response.should be_redirect
+  describe "POST review" do
+    context "without user" do
+      before do 
+        request.env['REQUEST_URI'] = "/test_path"
+        post :review, {:locale => :pt, :project_id => @project.id}
+      end
+      it{ should redirect_to login_path }
+      it{ session[:return_to].should == "/test_path" }
     end
 
     context "with user" do
@@ -118,7 +124,7 @@ describe Projects::BackersController do
     end
   end
 
-  describe "new" do
+  describe "GET new" do
     context "without user" do
       it "should redirect" do
         get :new, {:locale => :pt, :project_id => @project.id}
@@ -173,7 +179,7 @@ describe Projects::BackersController do
     end
   end
 
-  describe "index" do
+  describe "GET index" do
     shared_examples_for  "admin / owner" do
       it "should see all info from backer" do
         request.session[:user_id]=@user.id
@@ -189,13 +195,12 @@ describe Projects::BackersController do
         request.session[:user_id]=@user.id
         get :index, {:locale => :pt, :project_id => @project.id}
 
-        ActiveSupport::JSON.decode(response.body).to_s.should_not =~ /R\$ 10/
         ActiveSupport::JSON.decode(response.body).to_s.should =~ /Lorem Ipsum/
       end
     end
 
     context "with admin user" do
-      before(:each) do
+      before do
         @user.update_attribute :admin, true
         @user.reload
       end
@@ -204,7 +209,7 @@ describe Projects::BackersController do
     end
 
     context "with project owner user" do
-      before(:each) do
+      before do
         @project.update_attribute :user, @user
         @project.reload
       end
@@ -217,7 +222,7 @@ describe Projects::BackersController do
     end
 
     context "guest user" do
-      before(:each) do
+      before do
         @user.id = nil
       end
 

@@ -24,7 +24,7 @@ module Reports
                 (backer.created_at.strftime("%d/%m/%Y") if backer.created_at),
                 backer.project.name,
                 (backer.project.successful? ? 'Sim' : 'Não'),
-                (backer.expires_at.strftime("%d/%m/%Y") if backer.expires_at),
+                (backer.project.expires_at.strftime("%d/%m/%Y") if backer.project.expires_at),
                 backer.project.category.name
               ]
             end

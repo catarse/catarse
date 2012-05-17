@@ -7,13 +7,13 @@ feature "Home Page Feature" do
   scenario "When I visit home page, it should show a compilation of projects and curated pages" do
 
     home_page = [
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true)
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true)
     ]
 
     expiring = [
@@ -22,14 +22,14 @@ feature "Home Page Feature" do
       Factory(:project, created_at: 30.days.ago, expires_at: 4.days.from_now, visible: true, home_page: false),
       Factory(:project, created_at: 30.days.ago, expires_at: 5.days.from_now, visible: true, home_page: false)
     ]
-    
+
     recent = [
       Factory(:project, created_at: 2.days.ago, expires_at: 30.days.from_now, visible: true, home_page: false),
       Factory(:project, created_at: 3.days.ago, expires_at: 30.days.from_now, visible: true, home_page: false),
       Factory(:project, created_at: 4.days.ago, expires_at: 30.days.from_now, visible: true, home_page: false),
       Factory(:project, created_at: 5.days.ago, expires_at: 30.days.from_now, visible: true, home_page: false)
     ]
-    
+
     successful = [
       Factory(:project, created_at: 30.days.ago, expires_at: 2.days.ago, visible: true, home_page: false),
       Factory(:project, created_at: 30.days.ago, expires_at: 3.days.ago, visible: true, home_page: false),
@@ -40,7 +40,7 @@ feature "Home Page Feature" do
       Factory(:backer, project: project, value: project.goal, confirmed: true)
       project.successful?.should be_true
     end
-    
+
     curated_pages = [
       Factory(:curated_page, created_at: 2.days.ago, visible: true),
       Factory(:curated_page, created_at: 3.days.ago, visible: true),
@@ -51,68 +51,42 @@ feature "Home Page Feature" do
       Factory(:curated_page, created_at: 8.days.ago, visible: true),
       Factory(:curated_page, created_at: 2.days.ago, visible: false)
     ]
-    
+
     visit homepage
     verify_translations
-    
+
     within 'head title' do
       page.should have_content("#{I18n.t('site.title')} · #{I18n.t('site.name')}") 
     end
-   
-    titles = all(".project_list_header")
-    titles.shift.text.should == "Nossa seleção catártica!"
-    titles.shift.text.should == "Na reta final"
-    titles.shift.text.should == "Novos e fresquinhos"
-    titles.shift.text.should == "Projetos bem-sucedidos"
-    titles.shift.text.should == "Canais catárticos"
 
-    home_page_list = find("#home_page_projects").all(".project_box")
-    home_page_list.should have(6).items
-    
-    lists = all(".project_list")
+    titles = all(".list_title .title h2")
+    titles.shift.text.should == "seleção"
+    titles.shift.text.should == "na reta final"
+    titles.shift.text.should == "novos e fresquinhos"
+    titles.shift.text.should == "parceiros"
 
-    expiring_list = lists.shift.all(".project_box")
+    home_page_list = all(".selected_projects .curated_project")
+    home_page_list.should have(3).items
+
+    lists = all(".list")
+
+    expiring_list = lists.shift.all(".curated_project")
     expiring_list.should have(3).items
-    
-    recent_list = lists.shift.all(".project_box")
+
+    recent_list = lists.shift.all(".curated_project")
     recent_list.should have(3).items
-    
-    successful_list = lists.shift.all(".project_box")
+
+    successful_list = lists.shift.all(".curated_project")
     successful_list.should have(3).items
-    
-    curated_pages_list = find("#curated_pages_list").all("li")
+
+    curated_pages_list = find(".partners").all("li")
     curated_pages_list.should have(6).items
 
-    home_page_list.each_index do |index|
-      within home_page_list[index] do
-        find("a")[:href].should match(/\/projects\/#{home_page[index].to_param}/)
-      end
-    end
-    
-    expiring_list.each_index do |index|
-      within expiring_list[index] do
-        find("a")[:href].should match(/\/projects\/#{expiring[index].to_param}/)
-      end
-    end
-    
-    recent_list.each_index do |index|
-      within recent_list[index] do
-        find("a")[:href].should match(/\/projects\/#{recent[index].to_param}/)
-      end
-    end
-    
-    successful_list.each_index do |index|
-      within successful_list[index] do
-        find("a")[:href].should match(/\/projects\/#{successful[index].to_param}/)
-      end
-    end
-    
     curated_pages_list.each_index do |index|
       within curated_pages_list[index] do
         find("a")[:href].should match(/\/#{curated_pages[index].permalink}/)
       end
     end
-    
   end
 
 end

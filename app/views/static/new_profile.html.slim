@@ -1,0 +1,228 @@
+#page_content
+  .section_header
+    h1.profile Thiago Maia 
+    h4.about Saiba que o meu grande amor, hoje vai se casar, mandou uma carta pra me avisar, deixou em pedaços meu coração. E pra matar a tristeza, só mesa de bar, quero tomar todas, vou me embriagar, se eu pegar no sono, me deite no chão.
+
+    .profile_categories
+      nav
+        a projetos apoiados
+        a projetos criados
+        a comentários
+        a créditos
+        a notificações
+
+  .profile_share
+    = image_tag ('redesign/profile200x200.jpg'), :class => 'profile_pic'
+  
+  .my_links
+    ul
+      li
+        = image_tag ('redesign/email15x15.png'), :class => 'profile_icons'
+        = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
+      li
+        = image_tag ('redesign/facebook15x15.png'), :class => 'profile_icons'
+        = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
+      li
+        = image_tag ('redesign/twitter15x15.png'), :class => 'profile_icons'
+        = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
+      li
+        = image_tag ('redesign/twitter15x15.png'), :class => 'profile_icons'
+        = link_to 'meuemail@email.com.br', '#', :class => 'profile_info'
+  
+  .profile_projects_backed
+    .project
+      .box
+        p.black_box Lorem Ipsum Dolor
+        = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+        h4
+          a href='#'
+            | Aqui vai o nome do seu  projeto em até 02 linhas
+        p.author
+          | por Autor do Projeto
+        p.where
+          | Rio de Janeiro
+        p.description
+          | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+        .status_bar
+          .progress style="width: 80%;"
+        ul
+          li
+            h6 90 dias
+            p Restantes
+          li
+            h6 90%
+            p Levantados
+          li
+            h6 R$ 120.000
+            p Atigindos
+        = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+    .project_about
+      .status
+        .when 
+          p 
+            | Em 07/04/2011 você apoiou com 
+            em RS 10,00 
+            | e selecionou esta recompensa:
+        .reward
+          p
+            em Para R$10,00 ou mais                                          
+            | Você terá seu nome nos agradecimentos do livro e uma versão em PDF para conferir o trabalho que você apoiou.
+      
+      .about_project
+        p
+          | O 
+          em Autor do Projeto 
+          | já entrou em contato com você para falar sobre a produção das recompensas? Você está acompanhando o projeto depois que ele foi bem-sucedido? Não deixa de visitar a página do 
+          em Nome do Projeto
+          | aqui no Catarse para se informar e para manter o contato com o realizador. É super importante que a própria comunidade cuide do bom andamento dos projetos! Se quiser, escreva um comentário para ele aqui embaixo: 
+      .comments comentários
+
+  .profile_my_projects
+      p
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+          h4
+            a href='#'
+              | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+      .project_about        
+        .about_my_project
+          p
+            | Aqui entra o texto 
+            em sobre o projeto 
+            | que você criou. Como eu não faço a mínima ideia do que tem hoje em dia no catarse, eu vou só encher de coisa aqui até que alguém decida mudar. 
+            em Basicamente 
+            | é só pra encher o espaço e testar o tamanho das fontes coisas assim. Um lorem ipsum, só que com uma enrolada e uma informação importante. Viu como é fácil ? 
+        .comments últimos comentários
+
+  .profile_my_comments
+      .project
+        .box
+          p.black_box Lorem Ipsum Dolor
+          = image_tag 'redesign/project_image210x172.jpg', :class => 'cover'
+
+          h4
+            a href='#'
+              | Aqui vai o nome do seu  projeto em até 02 linhas
+          p.author
+            | por Autor do Projeto
+          p.where
+            | Rio de Janeiro
+          p.description
+            | Aqui vai uma breve descrição do que é o seu projeto. Vale uma frase de efeito e algo que chame a atenção em até 03 linhas
+          .status_bar
+            .progress style="width: 80%;"
+          ul
+            li
+              h6 90 dias
+              p Restantes
+            li
+              h6 90%
+              p Levantados
+            li
+              h6 R$ 120.000
+              p Atigindos
+          = link_to 'Me lembre deste projeto', '#', :class => 'follow_project'
+
+      .comments comentários
+
+  .profile_my_credits
+    .credits 
+      p
+        | Seu saldo atual é de 
+        em R$ 40 reais 
+        | em créditos
+    
+    .table_title 
+      p 
+        | Apoios que podem ter estorno realizado:
+    table 
+      tr
+        th Projeto
+        th Data de apoio
+        th Valor
+        th Prazo para estorno
+        th Status
+      tr
+        td.project_name 
+          = link_to 'Tubo de Ensaio', '#', :class => 'link_project'
+        td.date 12/03/2013
+        td.value R$ 50,00
+        td.term 12/09/2013
+        td.reversal 
+          = link_to 'Solicitar extorno', '#', :class => 'link_project'
+      tr
+        td.project_name 
+          = link_to 'Tubo de Ensaio', '#', :class => 'link_project'
+        td.date 12/03/2013
+        td.value R$ 50,00
+        td.term 12/09/2013
+        td.reversal 
+          = link_to 'Solicitar extorno', '#', :class => 'link_project'
+      tr
+        td.project_name 
+          = link_to 'Tubo de Ensaio', '#', :class => 'link_project'
+        td.date 12/03/2013
+        td.value R$ 50,00
+        td.term 12/09/2013
+        td.reversal 
+          = link_to 'Solicitar extorno', '#', :class => 'link_project'
+      tr
+        td.project_name 
+          = link_to 'Tubo de Ensaio', '#', :class => 'link_project'
+        td.date 12/03/2013
+        td.value R$ 50,00
+        td.term 12/09/2013
+        td.reversal 
+          = link_to 'Solicitar extorno', '#', :class => 'link_project'
+      tr
+        td.project_name 
+          = link_to 'Tubo de Ensaio', '#', :class => 'link_project'
+        td.date 12/03/2013
+        td.value R$ 50,00
+        td.term 12/09/2013
+        td.reversal 
+          = link_to 'Solicitar extorno', '#', :class => 'link_project'
+      tr
+        td.project_name 
+          = link_to 'Tubo de Ensaio', '#', :class => 'link_project'
+        td.date 12/03/2013
+        td.value R$ 50,00
+        td.term 12/09/2013
+        td.reversal 
+          = link_to 'Solicitar extorno', '#', :class => 'link_project'
+      tr
+        td.project_name 
+          = link_to 'Tubo de Ensaio', '#', :class => 'link_project'
+        td.date 12/03/2013
+        td.value R$ 50,00
+        td.term 12/09/2013
+        td.reversal 
+          = link_to 'Solicitar extorno', '#', :class => 'link_project'
+    
+
+  .profile_notifications

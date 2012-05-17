@@ -1,17 +1,62 @@
 = content_for :title do 
   = t('.site_title')
-= content_for :content_header do
-  h1=t('.title')
-= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
-  p.input
-    = f.label :email
-    = f.text_field :email
-  p.input
-    = f.label :password
-    = f.password_field :password
-  p.input.check
-    = f.check_box :remember_me
-    = f.label :remember_me, t('layouts.login.remember_me')
-  p.action
-    = f.submit t('.submit')
-= render :partial => "devise/shared/links"
+
+#page_content
+  .container
+    .form_login.bootstrap-form.new_session[class="#{('actived' unless params[:active_register])}"]
+      .content_form
+        h1=t('.login_title')
+        h3=t('.login_subtitle')
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
+          p.input
+            = f.label :email
+            = f.text_field :email
+          p.input
+            = f.label :password
+            = f.password_field :password
+          p.input.check
+            = f.check_box :remember_me
+            = f.label :remember_me, t('layouts.login.remember_me')
+          p.action
+            .bootstrap-twitter
+              = f.submit t('.submit'), class: 'btn'
+          p.forgot_link
+            = link_to t('devise.links.forgot_password'), new_password_path(resource_name)
+    .form_login.bootstrap-form.new_registration[class="#{('actived' if params[:active_register])}"]
+      .content_form
+        h1=t('.register_title')
+        h3=t('.register_subtitle')
+        - resource.newsletter = true
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
+          = devise_error_messages!
+          p.input
+            = f.label :name
+            = f.text_field :name
+          p.input
+            = f.label :email
+            = f.text_field :email
+          p.input
+            = f.label :password
+            = f.password_field :password
+          p.input
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation
+          p.input.check
+            = f.check_box :newsletter
+            = f.label :newsletter, t('users.current_user_fields.newsletter')
+          p.action
+            .bootstrap-twitter
+              = f.submit t('registrations.new.submit'), class: 'btn'
+    .login_with_social
+      .content_form
+        h1=t('.with_facebook')
+        h3=t('.with_facebook_subtitle')
+        = link_to t('layouts.login.login_with_facebook'), '/auth/facebook', :class => 'facebook_start'
+        h1=t('.with_another_social')
+        h3=t('.with_another_social_subtitle')
+        .another_social
+          = link_to image_tag('auth/google_128.png', :title => 'Google'), '/auth/google', :class => 'provider first'
+          = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), '/auth/google', :class => 'provider'
+          - OauthProvider.where("path <> 'facebook'").order('"order"').all.each do |p|
+            = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), "/auth/#{p.path}", :class => 'provider'
+    .clearfix

@@ -1,0 +1,28 @@
+#header
+  = link_to "Home", root_path, :class => 'logo', :title => 'Catarse'
+  nav.actions
+    = link_to t('layouts.header.explore'), explore_path, :class => 'explore'
+    = link_to t('layouts.header.submit_project'), guidelines_path, :class =>  'submit_project'
+  .search
+    = form_tag explore_path(:anchor => "search"), :method => 'GET', :class=>'search_input' do
+      = text_field_tag :search, nil, autocomplete: "off"
+      = submit_tag
+  nav.menu
+    = link_to t('layouts.header.blog'), blog_index_path
+    = link_to t('layouts.header.help'), faq_path
+    - if current_user
+      = link_to '#', class: 'my_profile_link' do
+        = image_tag(current_user.display_image, :size => "30x30", :class => 'profile_picture')
+        span.current_user_name= current_user.display_name
+        = image_tag('dropdown.png', :class => 'dropdown_arrow')
+      ul.dropdown.user
+        li= link_to t('layouts.header.profile'), current_user
+        li
+          = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
+          .small (#{current_user.display_credits})
+        li.divider
+        li= link_to t('layouts.user.logout'), logout_path
+    - else
+      = link_to t('layouts.header.signup'), login_path(active_register: true)
+      = link_to t('layouts.header.signin'), login_path
+  .clearfix

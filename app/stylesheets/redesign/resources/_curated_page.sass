@@ -1,0 +1,55 @@
+[data-controller="curated_pages"][data-action="show"]
+  #page_content
+    a
+      color: $ultra_gryn
+      text-decoration: none
+      &:hover
+        color: $pink
+    .container
+      .curated_content
+        +grid(16)
+        padding-top: 20px
+        .curated_page_header
+          padding-bottom: 40px
+          img
+            float: left
+            margin-right: 10px
+        .curated_project
+          float: left
+          margin-bottom: 20px
+        .curated_project_list
+          +grid(16)
+          +alpha
+          margin-left: -10px
+          width: 960px !important
+        .project_curator_description
+          +grid(4)
+          +omega
+          p
+            +grid(3)
+            +alpha
+            +omega
+            color: rgba($ultra_gryn, 0.8)
+            font-family: Arial
+            font-size: 13px
+            line-height: 130%
+            padding-top: 30px
+            font-style: italic
+        .curated_page_header
+          .titles
+            float: left
+            width: 550px
+            h1
+              color: $ultra_gryn
+              font-family: "Lato-Regular"
+              font-size: 28px
+              padding: 5px 0
+            h2
+              color: rgba($ultra_gryn, 0.7)
+              font-family: Arial
+              font-size: 15px
+              line-height: 130%
+              padding-bottom: 30px
+              padding-top: 10px
+            #facebook_share
+              width: 540px

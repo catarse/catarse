@@ -22,7 +22,7 @@ class Reward < ActiveRecord::Base
     I18n.t('reward.display_remaining', :remaining => remaining, :maximum => maximum_backers)
   end
   def name
-    "<div class='reward_minimum_value'>#{(minimum_value > 0 ? display_minimum+'+' : I18n.t('reward.dont_want'))}</div><div class='reward_description'>#{(description.html_safe)}</div>#{'<div class="sold_out">' + I18n.t('reward.sold_out') + '</div>' if sold_out?}<div class='clear'></div>".html_safe
+    "<div class='reward_minimum_value'>#{minimum_value > 0 ? display_minimum+'+' : I18n.t('reward.dont_want')}</div><div class='reward_description'>#{h description}</div>#{'<div class="sold_out">' + I18n.t('reward.sold_out') + '</div>' if sold_out?}<div class='clear'></div>".html_safe
   end
   def display_minimum
     number_to_currency minimum_value, :unit => 'R$', :precision => 2, :delimiter => '.'
@@ -36,6 +36,7 @@ class Reward < ActiveRecord::Base
   def as_json(options={})
     {
       :id => id,
+      :display_with_label => I18n.t('projects.rewards.reward_title', :minimum => display_minimum),
       :display_minimum => display_minimum,
       :description => description,
       :short_description => short_description,

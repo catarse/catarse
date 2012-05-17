@@ -1,5 +1,8 @@
+.clearfix
 #project_warning
-  = t('.project_warning.content_html', :link => link_to(t('.project_warning.help_link'), "#{t('site.blog')}/post/2816685141/guia-colocar-projeto-catarse", :target => :_blank))
+  .bootstrap-alert
+    .alert.alert-info
+      = t('.project_warning.content_html', :link => link_to(t('.project_warning.help_link'), "#{t('site.blog')}/post/2816685141/guia-colocar-projeto-catarse", :target => :_blank))
 = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
   = form.inputs do
     = form.input :user_id, :as => :hidden, :value => current_user.id
@@ -9,32 +12,42 @@
     = form.input :headline, :input_html => { :maxlength => 140 }
     = form.input :category, :collection => Category.all(:order => :name)
     = form.input :goal
-    .important= t('.important_html', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))
+    .bootstrap-alert
+      .alert
+        .important= t('.important_html', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))
     = form.input :expires_at, :as => :string
     #project_rewards
       :javascript
         var rewards_count = #{@project.rewards.size}
         var rewards_id = #{@project.rewards.size}
-      %h3= t('.rewards_title')
-      %p= t('.rewards_description')
+      .reward_title
+        %h3= t('.rewards_title')
+        %p= t('.rewards_description')
       #rewards_wrapper
         = form.semantic_fields_for :rewards do |reward|
           .reward
             .remove_reward_wrapper
-              %a.remove_reward{:href=>'#'}= t('remove')
+              .bootstrap-twitter
+                = link_to '#', class: 'remove_reward btn btn-danger' do
+                  %i.icon-trash.icon-white
+                  = t('remove')
             = reward.input :description
             .left
               = reward.input :minimum_value
             .right
               = reward.input :maximum_backers
-            .clear
+            .clearfix
       #add_reward_wrapper
-        %a#add_reward{:href=>'#'}= t('.add_reward')
+        .bootstrap-twitter
+          = link_to '#', class: 'add_reward btn btn-success', id: 'add_reward' do
+            %i.icon-plus.icon-white
+            = t('.add_reward')
+      .clearfix
     .submit
-      %fieldset
+      %fieldset.accept
         = check_box_tag 'accept'
         = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
       = form.buttons do
-        = form.commit_button t('.submit'), :button_html => {:disabled => true}
-= javascript_include_tag 'project_form'
+        .bootstrap-twitter
+          = form.commit_button t('.submit'), :button_html => {:disabled => true, :class => 'btn'}
 

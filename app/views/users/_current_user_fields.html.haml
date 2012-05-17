@@ -1,28 +1,48 @@
-#gravatar_hint
-  = link_to 'http://gravatar.com/', :target => :_blank do
-    = image_tag 'gravatar.png', :id => 'gravatar_logo'
-  = t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
-%h1= t('.my_data')
-%ul
-  %li
-    #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
-    .hint= t('.email_hint')
-  %li
-    = hidden_field_tag 'id', @user.id
-    = check_box_tag 'newsletter', '1', @user.newsletter
-    = label_tag 'newsletter', t('.newsletter')
-%hr
-- if @user.is_devise?
-  %h1= t('.change_password')
+#bootstrap-alert
+  #gravatar_hint.alert.alert-info
+    = link_to 'http://gravatar.com/', :target => :_blank do
+      = image_tag 'gravatar.png', :id => 'gravatar_logo'
+    %p= t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
+    .clearfix
+#my_data
+  %h1= t('.my_data')
   %ul
     %li
-      = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put, :class => 'skip_feed_event' }) do |f|
-        = f.label :password, t('passwords.edit.label_new_password')
-        = f.password_field :password, :class=>'empty'
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation, :class=>'empty'
-        = f.label :current_password
-        = f.password_field :current_password, :class=>'empty'
-        %br/
-        %span.hint= t('.current_password_hint').html_safe
-        %p= f.submit 'OK'
+      #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
+      .hint= t('.email_hint')
+    %li
+      = hidden_field_tag 'id', @user.id
+      = check_box_tag 'newsletter', '1', @user.newsletter
+      = label_tag 'newsletter', t('.newsletter')
+#social_info
+  %h1= t('.social_info')
+  %ul
+    %li
+      .bootstrap-form
+        = form_for(@user, :as => :user, :html => { :method => :put }) do |f|
+          = f.label :twitter, t('.twitter')
+          = f.text_field :twitter
+          = f.label :facebook_link, t('.facebook_link')
+          = f.text_field :facebook_link
+          = f.label :other_link, t('.other_link')
+          = f.text_field :other_link
+          %br/
+          %p= f.submit t('.update_social_info'), :class => 'btn'
+- if @user.is_devise?
+  #change_password
+    %h1= t('.change_password')
+    %ul
+      %li
+        .bootstrap-form
+          = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put, :class => 'skip_feed_event' }) do |f|
+            = f.label :password, t('passwords.edit.label_new_password')
+            = f.password_field :password, :class=>'empty'
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, :class=>'empty'
+            = f.label :current_password
+            = f.password_field :current_password, :class=>'empty'
+            %br/
+            %span.hint= t('.current_password_hint').html_safe
+            %br/
+            %br/
+            %p= f.submit 'OK', :class => 'btn'

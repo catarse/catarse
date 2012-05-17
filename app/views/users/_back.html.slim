@@ -1,0 +1,69 @@
+script type="text/template" id="user_backs_template"
+  ul.collection_list
+
+script type="text/template" id="empty_user_back_template"
+  - if current_user != @user
+    p.empty= t('users.backs.no_backs', name: @user.display_name)
+  - else
+    p.empty= t('users.backs.no_backs_current_user_html', link: t('site.base_url'))
+
+script type="text/template" id="user_back_template"
+  div class=(current_user == @user ? 'project_land' : 'small_project_land')
+    | <% if(project['expired']) { %>
+    .status_image
+      a href="<%= project['url'] %>"
+        |<% if(project['successful']) { %>
+        = image_tag "successful.#{I18n.locale}.png"
+        |<% } else if(project['waiting_confirmation']) { %>
+        = image_tag "waiting_confirmation.#{I18n.locale}.png"
+        |<% } else { %>
+        = image_tag "not_successful.#{I18n.locale}.png"
+        |<% } %>
+    | <% } %>
+    .cover
+      p.black_box <%= project['category']['name'] %>
+      img[src="<%= project['image'] %>" width="218px" height="175px"]
+    .project_infos
+      .title
+        h4
+          a href='<%= project["url"] %>'
+            | <%= project['name'] %>
+        p.author== "#{t('project_by')} <%= project['user']['name'] %>"
+        p.headline <%= project['headline'] %>
+      .status_bar
+        .progress style="width: <%= project['display_progress'] %>%;"
+      ul
+        li
+          |<% if(project['time_to_go']['time'] > 0){ %>
+          h6 <%= project['time_to_go']['time'] %> <%= project['time_to_go']['unit'] %>
+          p <%= project['remaining_text'] %>
+          |<% } else { %>
+          h6 <%= project['display_status_to_box'] %>
+          p <%= project['display_expires_at'] %>
+          |<% } %>
+        li
+          h6 <%= project['progress'] %>%
+          p= t('projects.project.backed')
+        li
+          h6 <%= project['pledged'] %>
+          p= t('projects.project.reached')
+    div class=(current_user == @user ? 'back_info' : 'small_back_info')
+      ul
+        li.date
+          h5 <%= confirmed_at %>
+        |<% if(display_value) { %>
+        li.value
+          h5 <%= display_value %>
+        |<% } %>
+        |<% if(reward) { %>
+        li.reward
+          h5 <%= reward['display_with_label'] %>
+          p <%= reward['description']%>
+        |<% } %>
+    - if current_user == @user
+      .tell_about
+        p= t('tell_about_this_back')
+        ul
+          li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(project['full_uri']) %>&t=#{t('share_my_backs')}<%= encodeURIComponent(project['name']) %>".html_safe, :target => '_blank'
+          li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_backs')}<%= encodeURIComponent(project['name']) %>&url=<%= encodeURIComponent(project['full_uri']) %>".html_safe, :target => '_blank'
+  .clearfix
