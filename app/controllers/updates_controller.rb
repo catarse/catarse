@@ -9,7 +9,7 @@ class UpdatesController < ApplicationController
 
   def index
     index! do |format|
-      format.html{ return render :layout => false }
+      format.html{ return render :index, :layout => false }
     end
   end
 
@@ -21,7 +21,7 @@ class UpdatesController < ApplicationController
 
   def destroy
     destroy! do |format|
-      format.html{ return redirect_to project_updates_path(@project) }
+      return index
     end
   end
 

@@ -26,9 +26,8 @@ describe User do
   end
 
   describe ".primary" do
-    before{ Factory(:user, :primary_user_id => user.id) }
-    subject{ User.primary } 
-    it{ should == [user] }
+    subject{ Factory(:user, :primary_user_id => user.id).primary }
+    it{ should == user }
   end
 
   describe ".create_with_omniauth" do
