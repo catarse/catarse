@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe PaymentStreamController do
   render_views
-  
+
   describe '/moip' do
     it "should confirm backer in moip payment" do
       backer = Factory(:backer, :confirmed => false)
@@ -14,7 +14,7 @@ describe PaymentStreamController do
       backer = Factory(:backer, :confirmed => false)
       post :moip, post_moip_params.merge!({:id_transacao => -1, :status_pagamento => '1', :valor => backer.moip_value})
       response.should_not be_successful
-      lambda{ backer.reload }.should raise_error(ActiveRecord::StatementInvalid)
+      backer.reload.confirmed.should_not be_true
     end
 
     it "should return 422 when moip params is empty" do
