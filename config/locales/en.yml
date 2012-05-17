@@ -65,7 +65,6 @@ en:
       title: partners
   "no": "No"
   "yes": "Yes"
-  or_sign_in_with_google: "Or sign in with google"
   accept_terms_html: "I have read and accepted the %{link}."
   active_admin:
     dashboard: Dashboard

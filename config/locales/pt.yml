@@ -1,5 +1,5 @@
 pt:
-  or: 'ou'
+  or: ou
   newsletter_ok_header: "Cadastro efetuado!"
   newsletter_ok_body: "Seu email foi cadastrado com sucesso, obrigado!"
   newsletter_error_header: "OPS! Ocorreu um erro."
@@ -65,7 +65,6 @@ pt:
       title: parceiros
   "no": Não
   "yes": Sim
-  or_sign_in_with_google: Ou entre utilizando o google
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
   active_admin:
     dashboard: "Painel Administrativo"
@@ -502,8 +501,8 @@ pt:
         subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
         title: "Preencha e revise seus dados"
         choose_payment: "Como você quer pagar?"
-        choose_credit_card: 'Cartão de crédito'
-        choose_boleto: 'Boleto bancário'
+        choose_credit_card: "Cartão de crédito"
+        choose_boleto: "Boleto bancário"
         you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"

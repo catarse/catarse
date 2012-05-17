@@ -21,14 +21,10 @@
           = label_tag 'remember_meber_me', t('.remember_me'), :class => 'inline'
     #new_email_account[class="#{(params[:show_new_user].present? ? "" : "hide")}"]
       = form_for(User.new, :as => :user, :url => registration_path(:user), :html => {:class => 'login_with_email_form'}) do |f|
-<<<<<<< HEAD:app/views/layouts/_login.html.slim
         p.input
-=======
-        %p.input
           = f.label :name
           = f.text_field :name
-        %p.input
->>>>>>> acfc8a9c75cd2c230d6b96d73adef6a939be09aa:app/views/layouts/_login.html.haml
+        p.input
           = f.label :email
           = f.text_field :email
         p.input
@@ -37,15 +33,11 @@
         p.input
           = f.label :password_confirmation
           = f.password_field :password_confirmation
-<<<<<<< HEAD:app/views/layouts/_login.html.slim
-        p.action
-=======
         .action.with_google
->>>>>>> acfc8a9c75cd2c230d6b96d73adef6a939be09aa:app/views/layouts/_login.html.haml
           = f.submit t('registrations.new.submit')
-          %div.login_with_google
+          div.login_with_google
             = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
-            %p= t('or_sign_in_with_google')
+            p= t('or_sign_in_with_google')
           .clearfix
         .clearfix
         .links
@@ -63,15 +55,12 @@
         p.input.check
           = f.check_box :remember_me, :checked => 'checked'
           = f.label :remember_me, t('layouts.login.remember_me')
-<<<<<<< HEAD:app/views/layouts/_login.html.slim
-        p.action
-=======
         .action.with_google
->>>>>>> acfc8a9c75cd2c230d6b96d73adef6a939be09aa:app/views/layouts/_login.html.haml
+        p.action
           = f.submit t('devise.sessions.new.submit')
-          %div.login_with_google
+          div.login_with_google
             = link_to image_tag('auth/google_128.png', :title => 'Google'), 'google', :class => 'provider'
-            %p= t('or_sign_in_with_google')
+            p= t('or_sign_in_with_google')
           .clearfix
         .clearfix
         .links
