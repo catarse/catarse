@@ -39,18 +39,6 @@ feature "with login page" do
   scenario "Register new user account" do
     click_login
     verify_translations
-<<<<<<< HEAD
-=======
-    find("#login").visible?.should be_true
-    find("a#login_with_mail").click
-    find("a.new_registration_link").click
-    verify_translations
-
-    fill_in 'user_name', :with => 'Lorem'
-    fill_in 'user_email', :with => 'lorem@lorem.com'
-    fill_in 'user_password', :with => '123lorem'
-    fill_in 'user_password_confirmation', :with => '123lorem'
->>>>>>> acfc8a9c75cd2c230d6b96d73adef6a939be09aa
 
     within ".new_registration" do
       fill_in "Nome", with: "Foo Bar"
@@ -111,7 +99,6 @@ feature "with devise routes" do
     visit new_user_registration_path
     verify_translations
 
-<<<<<<< HEAD
     within ".new_registration" do
       fill_in "Nome", with: "Foo Bar"
       fill_in "Email", with: "foo@bar.com"
@@ -121,14 +108,6 @@ feature "with devise routes" do
     end
     verify_translations
     page.should have_css('.user')
-=======
-    fill_in 'user_name', :with => 'Lorem'
-    fill_in 'user_email', :with => 'lorem@lorem.com'
-    fill_in 'user_password', :with => '123lorem'
-    fill_in 'user_password_confirmation', :with => '123lorem'
-    click_button 'user_submit'
-    page.should have_css('#user')
->>>>>>> acfc8a9c75cd2c230d6b96d73adef6a939be09aa
   end
 
   scenario "Request new password" do
