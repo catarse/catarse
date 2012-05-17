@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe PaymentDetail do
-  before(:each) do
+  before do
     @project = create(:project)
     @backer = create(:backer, :project => @project)
   end
@@ -20,7 +20,7 @@ describe PaymentDetail do
 
   describe "#update_from_service" do
     context "when PayPal" do
-      before(:each) do
+      before do
         @backer.update_attribute(:payment_method, 'PayPal')
         @backer.reload
       end
@@ -32,7 +32,7 @@ describe PaymentDetail do
       end
 
       context "with valid response" do
-        before(:each) do
+        before do
           HTTParty.stubs(:get).returns(FakeResponse.new)
         end
 
@@ -44,13 +44,13 @@ describe PaymentDetail do
     end
 
     context "when MoIP" do
-      before(:each) do
+      before do
         @backer.update_attribute(:payment_method, 'MoIP')
         @backer.reload
       end
 
       context "with invalid Token" do
-        before(:each) do
+        before do
           @moip_response = MoIP::Client.stubs(:query).returns([])
         end
 
@@ -78,7 +78,7 @@ describe PaymentDetail do
       end
 
       context 'with valid Token and payment response contain a array' do
-        before(:each) do
+        before do
           @moip_response = MoIP::Client.stubs(:query).returns(moip_query_response_with_array)
         end
 
@@ -119,7 +119,7 @@ describe PaymentDetail do
       end
 
       context "with valid Token" do
-        before(:each) do
+        before do
           @moip_response = MoIP::Client.stubs(:query).returns(moip_query_response)
         end
 

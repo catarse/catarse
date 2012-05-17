@@ -1,18 +1,30 @@
 Catarse::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"}
+  devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"} do
+    get "/login" => "devise/sessions#new"
+  end
 
   ActiveAdmin.routes(self)
 
   filter :locale
 
-  root :to => "projects#index"
+  root to: 'projects#index'
+
+  # New design routes
+  match '/new_blog' => 'static#new_blog'
+  match '/new_profile' => 'static#new_profile'
+  match '/new_project_profile' => 'static#new_project_profile'
+  match '/new_discover' => 'static#new_discover'
+  match '/new_payment' => 'static#new_payment'
+  match '/new_opendata' => 'static#new_opendata'
+  match '/new_curated_page' => 'static#new_curated_page'
+
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
   match "/reports/location/:project_id/backers" => "reports#location_by_project", :as => :backers_location_report
   match "/reports/users_most_backed" => "reports#users_most_backed", :as => :most_backed_report
   match "/reports/all_confirmed_backers" => "reports#all_confirmed_backers", :as => :all_confirmed_backers_report
 
-  match '/sitemap' => "static#sitemap", :as => :sitemap
   # Static Pages
+  match '/sitemap' => "static#sitemap", :as => :sitemap
   match "/guidelines" => "static#guidelines", :as => :guidelines
   match "/faq" => "static#faq", :as => :faq
   match "/terms" => "static#terms", :as => :terms
@@ -21,8 +33,7 @@ Catarse::Application.routes.draw do
   match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/moip" => "payment_stream#moip", :as => :moip
   match "/explore" => "explore#index", :as => :explore
-  match "/explore/:quick" => "explore#index", :as => :explore_quick
-  post '/explore/update_attribute_on_the_spot' => "explore#update_attribute_on_the_spot"
+  match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
 
   post "/auth" => "sessions#auth", :as => :auth
@@ -32,9 +43,11 @@ Catarse::Application.routes.draw do
   if Rails.env == "test"
     match "/fake_login" => "sessions#fake_create", :as => :fake_login
   end
-  resources :projects, :only => [:index, :new, :create, :show] do
+  resources :posts, only: [:index, :create]
+  resources :projects, only: [:index, :new, :create, :show] do
+    resources :updates, :only => [:index, :create, :destroy]
     resources :rewards
-    resources :backers, :controller => 'projects/backers' do
+    resources :backers, controller: 'projects/backers' do
       collection do
         post 'review'
       end
@@ -56,22 +69,26 @@ Catarse::Application.routes.draw do
       put 'pay'
       get 'embed'
       get 'video_embed'
-      get 'comments'
-      get 'updates'
     end
   end
-  resources :users, :only => [:show] do
+  resources :users do
+    resources :backers, :only => [:index]
+    member do
+      get 'projects'
+      get 'credits'
+    end
     post 'update_attribute_on_the_spot', :on => :collection
   end
-  resources :credits, :only => [:index] do
+  match "/users/:id/request_refund/:back_id" => 'users#request_refund'
+
+  resources :credits, only: [:index] do
     collection do
       get 'buy'
       post 'refund'
     end
   end
-  resources :comments, :only => [:index, :show, :create, :destroy]
 
-  resources :paypal, :only => [] do
+  resources :paypal, only: [] do
     member do
       get 'pay'
       get 'success'
@@ -79,10 +96,14 @@ Catarse::Application.routes.draw do
     end
   end
 
+  resources :blog, only: :index do
+  end
+  
   resources :curated_pages do
     collection do
       post 'update_attribute_on_the_spot'
     end
   end
-  match "/:permalink" => "curated_pages#show", :as => :curated_page
+  match "/pages/:permalink" => "curated_pages#show", as: :curated_page
+  match "/:permalink" => "projects#show", as: :project_by_slug
 end

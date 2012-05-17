@@ -5,49 +5,57 @@ end
 
 source 'http://rubygems.org'
 source 'http://gems.github.com'
+
+gem 'feedzirra'
 gem 'rails', '3.0.3'
 gem 'rake', '0.8.7'
 gem 'haml'
 gem 'slim'
-gem 'sass', '3.1.7'
-gem 'compass', '0.11.5'
+gem 'slim-rails'
+gem 'sass'
+gem 'compass'
 gem 'omniauth', '0.1.6'
-gem 'formtastic', '~> 1.1.0'
+gem 'formtastic'
 gem 'validation_reflection'
 gem 'inherited_resources', '= 1.1.2'
 gem 'maxim-sexy_pg_constraints'
 gem 'spectator-validates_email', :require => 'validates_email'
-gem 'vimeo'
+gem 'has_vimeo_video', '>= 0.0.3'
 gem 'wirble'
 gem "on_the_spot"
 gem 'unicorn'
 gem 'mailee', '0.5.4', :git => 'https://github.com/danielweinmann/mailee-api.git'
-gem 'will_paginate', ">= 3.0.pre2"
+# gem 'will_paginate', ">= 3.0.pre2"
 gem 'weekdays'
-gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git'
+gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git', :ref => 'db1b879358c623b597dc1c221b53336f9f06db0e'
 gem 'paypal-express', :require => 'paypal'
 gem 'brcep'
-gem "meta_search"
+gem "meta_search", "1.0.6"
 gem "RedCloth"
 gem "auto_html", '= 1.3.6'
-gem "acts_as_commentable"
 gem 'mustache'
 gem 'unicode'
 gem 'routing-filter'
 gem 'http_accept_language'
 gem 'cancan'
-gem 'activeadmin', "= 0.2.2"
-gem 'carrierwave', :git => 'https://github.com/jnicklas/carrierwave.git'
+gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
+gem 'carrierwave', '= 0.5.8'
 gem 'rmagick'
 gem 'fog'
-gem 'capybara', ">= 0.4.0"
+gem 'capybara', ">= 1.0.1"
 gem 'enumerate_it'
-gem 'httparty'
+gem 'httparty', '~> 0.6.1'
 gem "rack-timeout"
 gem 'web_translate_it'
+
+gem 'kaminari'
+gem 'tumblr-api'
+gem 'compass-960-plugin'
+gem 'dalli'
+
 gem "devise"
 
-group :development do
+group :development, :production do
   gem 'thin'
 end
 
@@ -57,19 +65,15 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'steak', "~> 1.1.0"
   gem 'rspec-rails', "~> 2.0.1"
-  gem 'rcov'
-  gem 'factory_girl_rails'
+  gem 'rcov', '= 0.9.11'
   gem 'mocha'
 end
 
 group :test do
   gem 'shoulda'
+  gem 'factory_girl_rails', '1.7.0'
 end
-
-# if you want use capybara-webkit, compile QT and be happy :)
-# group :test do
-#   gem 'capybara-webkit', "0.6.1"
-# end
 
 # Putting pg to the end because of a weird bug with Lion, pg and openssl
 gem 'pg'
+gem 'foreigner'

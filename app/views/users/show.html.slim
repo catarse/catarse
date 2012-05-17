@@ -1,0 +1,103 @@
+= content_for :meta_tags do
+  -# Meta tags for facebook social graph
+  meta property="og:title" content=@user.name
+  meta property="og:url" content=="#{t('site.base_url')}#{user_path(@user)}"
+  meta property="og:image" content==@user.display_image
+  meta property="og:site_name" content=t('site.name')
+  meta property="og:description" content=@user.bio
+  meta property="fb:admins" content="#{fb_admins}"
+
+- content_for :js_templates do
+  = render :partial => 'back'
+  = render :partial => 'project'
+
+.bootstrap-twitter
+  #creditsModal.hide.modal
+    .modal-header
+      h3 Atenção
+    .modal-body
+    .modal-footer
+      a href="javascript:void(0);" class="btn" data-dimiss="modal"
+        | OK
+
+#page_content
+  .container
+    #user_profile[data-user="#{@user.to_json}"]
+      .section_header
+        .profile_image
+          = image_tag @user.display_image, :class => 'profile_pic', :size => '119x121'
+        .profile_title
+          h1.profile
+            - if current_user and @user == current_user
+              = on_the_spot_edit @user, :name, :tooltip => t('users.header.name_tooltip')
+            - else
+              = @user.display_name
+          h4.bio
+            - if current_user and @user == current_user
+              = on_the_spot_edit @user, :bio, :type => :textarea, :tooltip => t('users.header.bio_tooltip')
+            - else
+              = @user.bio
+      .user_social
+        ul
+          - if can? :manage, @user
+            li.email
+              = mail_to @user.email, "Me envie um email", :target => '_blank'
+          - if @user.facebook_link
+            li.facebook
+              = link_to "Perfil no facebook", @user.facebook_link, :target => '_blank'
+          - if @user.twitter
+            li.twitter
+              = link_to "Perfil no twitter", @user.twitter_link, :target => '_blank'
+          - if @user.other_link
+            li.other
+              = link_to @user.other_link, @user.other_link, :target => '_blank'
+
+      .tab_container
+        nav#user_profile_menu
+          = link_to t('.tabs.backed_projects'), '#backs', :id => 'backed_projects_link', :class => 'selected'
+          = link_to t('.tabs.created_projects'), '#projects', :id => 'created_projects_link'
+          / = link_to t('.tabs.comments'), '#comments', :id => 'comments_link'
+          - if can? :manage, @user
+            = link_to t('.tabs.credits'), '#credits', :id => 'credits_link'
+            = link_to t('.tabs.settings'), '#settings', :id => 'settings_link'
+      .clearfix
+      #user_profile_content
+        #user_backed_projects.content
+        #user_created_projects.content
+        - if can? :manage, @user
+          #user_settings.content.hide
+            = render 'current_user_fields'
+          #user_credits.content.hide
+            .current_credits
+              p= t('credits.index.current_credits_html', :credits => @user.display_credits)
+
+            .table_title
+              p= I18n.t('credits.index.refunds_title')
+            .table_content
+              table.table.table-striped
+                thead
+                  th= t('credits.index.project')
+                  th= t('credits.index.back_date')
+                  th= t('credits.index.value')
+                  th= t('credits.index.refund_expration_date')
+                  th= t('credits.index.status')
+                - @credits.each do |credit|
+                  tr[id="back_#{credit.id}"]
+                    td.project_name
+                      = link_to credit.project.name, credit.project, :class => 'link_project'
+                    td.date= I18n.l(credit.created_at.to_date)
+                    td.value= credit.display_value
+                    td.term= I18n.l(credit.refund_deadline.to_date)
+                    td.status
+                      - if credit.requested_refund
+                        = t('credits.index.requested_refund')
+                      - elsif credit.refunded
+                        = t('credits.index.refunded')
+                      - else
+                        - if can? :request_refund, credit
+                          = link_to t('credits.index.request_refund'), "#request_refund/#{credit.id}", :class => 'link_project'
+            .bootstrap-alert
+              .alert.alert-info
+                = t('credits.index.important_html')
+      #loading= image_tag "loading.gif"
+    .clearfix

@@ -1,14 +1,123 @@
 pt:
+  or: 'ou'
+  newsletter_ok_header: "Cadastro efetuado!"
+  newsletter_ok_body: "Seu email foi cadastrado com sucesso, obrigado!"
+  newsletter_error_header: "OPS! Ocorreu um erro."
+  newsletter_error_body: "Seu email não foi cadastrado, tente novamente mais tarde!"
+  views:
+    pagination:
+      next: próxima
+      last: ultima
+      truncate: "..."
+  statistics:
+    backers:
+      subtitle: apoiadores
+    goal:
+      subtitle: "atingidos de %{total}"
+  project_by: "projeto por"
+  tell_about_this_back: "Conte para o mundo sobre o seu apoio!"
+  share_my_backs: "Confira o projeto "
+  tell_about_this_project: "Conte para o mundo sobre o seu projeto!"
+  share_my_projects: "Confira o projeto "
+  count_backed_projects: "apoiou %{total} projetos"
+  footer:
+    titles:
+      info: "informações úteis"
+      opendata: "estatísticas bacanas"
+      social: "curtiu o catarse?"
+      newsletter: "receba nossa newsletter"
+    stats:
+      backers: Apoiadores
+      backs: Apoios
+      total_backed: Arrecadados
+      users: Usuários
+      funded_projects: "Projetos bem sucedidos"
+      active_projects: "Projetos no ar agora"
+    links:
+      how_works: "Como funciona"
+      faq: F.A.Q./Ajuda
+      terms: "Termos de Uso"
+      policy: "Política de Privacidade"
+      contact: Contato
+  main:
+    links:
+      selected: "explore mais projetos selecionados"
+      expiring: "explore mais projetos na reta final"
+      recents: "explore mais projetos recentes"
+  sidebar:
+    titles:
+      blog: blog
+      facebook: "já curtiu nosso face?"
+      twitter: "@catarse_"
+      newsletter: "quer novidades?"
+      faq: "tá com dúvida?"
+      schedule: agenda
+    buttons:
+      newsletter: assinar
+  sections:
+    selection:
+      title: seleção
+    expiring:
+      title: "na reta final"
+    recents:
+      title: "novos e fresquinhos"
+    partners:
+      title: parceiros
   "no": Não
   "yes": Sim
   or_sign_in_with_google: Ou entre utilizando o google
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
   active_admin:
-    dashboard: "Painel de controle"
+    dashboard: "Painel Administrativo"
     dashboard_welcome:
-      call_to_action: foo
-      welcome: "Bem-vindo ao painel administrativo"
+      welcome: "Bem vindo ao Active Admin. Esta é a página de painéis padrão."
+      call_to_action: "Para adicionar seções ao painel, verifique 'app/admin/dashboards.rb'"
+    view: Visualizar
+    edit: Editar
+    delete: Remover
+    delete_confirmation: "Você tem certeza que deseja remover este item?"
+    new_model: "Novo(a) %{model}"
+    create_model: "Novo(a) %{model}"
+    edit_model: "Editar %{model}"
+    update_model: "Atualizar %{model}"
+    delete_model: "Remover %{model}"
+    details: "Detalhes do(a) %{model}"
+    cancel: Cancelar
+    empty: Vazio
+    previous: Anterior
+    next: Próximo
+    download: "Baixar:"
+    has_many_new: "Adicionar Novo(a) %{model}"
+    has_many_delete: Remover
+    filter: Filtrar
+    clear_filters: "Limpar Filtros"
+    search_field: "Pesquisar %{field}"
+    equal_to: "Igual A"
+    greater_than: "Maior Que"
+    less_than: "Menor Que"
+    main_content: "Por favor implemente %{model}#main_content para exibir conteúdo."
+    logout: Sair
+    sidebars:
+      filters: Filtros
+    pagination:
+      empty: "Nenhum(a) %{model} encontrado(a)"
+      one: "Exibindo <b>1</b> %{model}"
+      one_page: "Exibindo <b>todos(as) os(as) %{n}</b> %{model}"
+      multiple: "Exibindo %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de um total de <b>%{total}</b>"
+      entry:
+        one: registro
+        other: registros
+    any: Qualquer
+    blank_slate:
+      content: "Não existem %{resource_name} ainda."
+      link: "Crie uma"
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: "O seu email não está cadastrado, verifique o endereço ou crie uma conta nova"
     attributes:
       backer:
         value: Valor
@@ -36,6 +145,7 @@ pt:
         current_password: "Senha atual"
         email: Email
         full_name: "Nome completo"
+        name: Nome
         password: Senha
         password_confirmation: "Confirmação de senha"
         phone_number: "Telefone celular"
@@ -60,13 +170,13 @@ pt:
       buy_credits: "Comprar créditos"
       buy_credits_html: "<strong>Você não precisa ter créditos para apoiar um projeto</strong>. Você pode realizar o pagamento na hora. Mas se você gosta de apoiar vários projetos, é uma boa idéia comprar créditos antecipados: deste modo você não precisará fazer um pagamento cada vez que for apoiar."
       confirm: "Você tem certeza que quer solicitar o estorno deste apoio?"
-      created_at: "Data do apoio"
+      back_date: "Data do apoio"
       current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."
       important_html: "Você tem <strong>até 180 dias após a data de seu apoio</strong> para solicitar o estorno do mesmo. Caso você opte pelo estorno, o valor do apoio será descontado dos seus créditos."
       no_refunds: "Você não possui nenhum apoio que possa ter estorno realizado"
       project: Projeto
-      refund_deadline: "Prazo para estorno"
-      refunded: "Estorno realizado"
+      refund_expration_date: "Prazo para estorno"
+      refunded: "Pedido enviado com sucesso"
       refunds_title: "Apoios que podem ter estorno realizado"
       request_refund: "Solicitar estorno"
       requested_refund: "Solicitado estorno"
@@ -136,9 +246,17 @@ pt:
       updated: "Você atualizou a sua conta com sucesso."
     sessions:
       new:
-        site_title: "Efetuar login"        
+        site_title: "Efetuar login"
         submit: "Efetuar login"
         title: "Entre utilizando o seu endereço de email"
+        login_title: Login
+        login_subtitle: "Caso já possua uma conta"
+        register_title: Cadastre-se
+        register_subtitle: "Utilize seu endereço de e-mail"
+        with_facebook: "Entre utilizando o facebook"
+        with_facebook_subtitle: "Uma maneira muito rápida de acessar"
+        with_another_social: "Não tem conta no facebook?"
+        with_another_social_subtitle: "Entre utilizando sua conta de outra rede social"
       signed_in: "Login realizado com sucesso. Seja bem-vindo!"
       signed_out: "Logout realizado com sucesso. Até logo!"
     unlocks:
@@ -147,14 +265,34 @@ pt:
       unlocked: "Sua conta foi desbloqueada com sucesso. Você está logado a partir de agora."
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
   errors:
+    format: "%{attribute} %{message}"
     messages:
-      already_confirmed: "já foi confirmado, por favor tente entrar"
-      expired: "expirou, por favor, solicitar uma nova"
-      not_found: "não encontrado"
-      not_locked: "não foi bloqueado"
-      not_saved:
-        one: "1 erro proibido este %{resource} de ser salvo:"
-        other: "%{count} erros proibido este %{resource} de ser salvo:"
+      accepted: "deve ser aceito"
+      blank: "não pode ficar em branco"
+      confirmation: "não está de acordo com a confirmação"
+      empty: "não pode ficar vazio"
+      equal_to: "deve ser igual a %{count}"
+      even: "deve ser par"
+      exclusion: "não está disponível"
+      greater_than: "deve ser maior que %{count}"
+      greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
+      inclusion: "não está incluído na lista"
+      invalid: "não é válido"
+      less_than: "deve ser menor que %{count}"
+      less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+      not_a_number: "não é um número"
+      not_an_integer: "não é um número inteiro"
+      odd: "deve ser ímpar"
+      record_invalid: "A validação falhou: %{errors}"
+      taken: "já está em uso"
+      too_long: "é muito longo (máximo: %{count} caracteres)"
+      too_short: "é muito curto (mínimo: %{count} caracteres)"
+      wrong_length: "não possui o tamanho esperado (%{count} caracteres)"
+    template:
+      body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+      header:
+        one: "Não foi possível gravar %{model}: 1 erro"
+        other: "Não foi possível gravar %{model}: %{count} erros."
   explore:
     index:
       categories: Categorias
@@ -166,6 +304,8 @@ pt:
       successful: Bem-sucedidos
       title: "Encontre projetos incríveis"
     title: "Explore os projetos"
+    project:
+      empty: "Ei, não encontramos nenhum projeto com o texto que você procurou. Que tal experimentar com outras palavras? =D"
   formtastic:
     hints:
       backer:
@@ -211,11 +351,22 @@ pt:
     application:
       menu:
         explore: "Explore os projetos"
-        login: Entrar
+        login: Login
         signup: Cadastre-se
         submit: "Envie seu projeto"
       notifications:
         new_curated_pages: "Já conhece os Canais Catárticos? <a href='#curated_pages' id='curated_link'>Olha aqui</a>!"
+    header:
+      blog: blog
+      help: ajuda
+      signup: cadastre-se
+      signin: login
+      explore: explore
+      submit_project: envie
+      profile: "meu perfil"
+    recommended_header:
+      sugest_for_you: "sugerido para você"
+      highlight_project: "projeto em destaque"
     footer:
       blog: "Leia o blog"
       comum: "Grupo Comum"
@@ -291,7 +442,13 @@ pt:
         unsuccessful_text: "O projeto %{link} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
+    display_status:
+      expired: "não financiado"
+      successful: financiado
+      waiting_confirmation: aguardando
   projects:
+    box:
+      by: "por "
     admin_fields:
       title: "Campos para o admin"
     back_project:
@@ -344,6 +501,9 @@ pt:
           moip: "Efetuar pagamento pelo MoIP"
         subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
         title: "Preencha e revise seus dados"
+        choose_payment: "Como você quer pagar?"
+        choose_credit_card: 'Cartão de crédito'
+        choose_boleto: 'Boleto bancário'
         you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
@@ -385,6 +545,7 @@ pt:
       no_projects: "Nenhum projeto encontrado."
       order: Ordem
       project: Projeto
+      slug: Slug
       recommended: Recomendado?
       rejected: Rejeitado?
       submit: Pesquisar
@@ -422,6 +583,8 @@ pt:
       submit: "Enviar comentário"
     project_header:
       subtitle_html: "Um projeto de %{link}"
+      without_city: "Um projeto de %{category_name} por %{author}"
+      with_city: "Um projeto de %{category_name} por %{author} em %{city}"
     project_list:
       expiring:
         explore: "Explore mais projetos na reta final"
@@ -438,8 +601,10 @@ pt:
     project_updates:
       empty: "Este projeto ainda não teve atualizações. Aguarde =D"
       submit: "Enviar atualização"
-      text: "Texto da atualização"
+      comment: "Texto da atualização"
       title: "Título da atualização"
+      destroy: "Remover atualização"
+      destroy_confirmation: "Deseja remover a atualização?"
     project_warning:
       rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
       waiting: "Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)"
@@ -449,28 +614,38 @@ pt:
     send_mail:
       success: "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
     show:
+      about_title: "Sobre o projeto"
       menu:
         about: Sobre
         backers: Apoiadores
         comments: Comentários
         updates: Atualizações
       share:
-        embed: "Incorpore este projeto"
+        embed: embed
         embed_title: "Incorpore este projeto no seu site"
         link: Link
         link_title: "Compartilhe o link"
         take_a_look: "Confira o projeto"
         title: "Faça parte disto e compartilhe este projeto"
     start:
-      about: "Descreva seu projeto e quanto você precisa"
+      about: "Descreva seu projeto e como o $ sera utilizado"
+      category: "Categoria do seu projeto"
+      how_much_you_need: "Quanto você pretende arrecadar?"
       about_hint: "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!"
       contact: "Deixe seu email para entrarmos em contato"
-      links: "Onde podemos encontrar mais sobre você e seu projeto?"
+      links: "Mais algum link para conhecer mais sobre o seu projeto?"
       links_hint: "Deixe-nos o máximo de links que você tiver, para que a gente possa conhecer melhor seu trabalho e seu projeto. Não precisa ser algo formal nem nada, só alguns links úteis."
+      video: "Já tem o video do projeto?"
+      video_hint: "Um link no vimeo"
+      twitter: "E aí já tem twitter?"
+      facebook: "E aí já tem facebook?"
+      blog: "Tem um blog sobre o projeto?"
+      know_us_via: "Como você conheceu o catarse?"
+      how_works: "Como pretende mobilizar apoiadores para levantar o $ necessário para a execução?"
       project_warning:
         content_html: "Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}."
         help_link: "nosso guia"
-      rewards: "Que recompensas você quer oferecer?"
+      rewards: "Como irá recompensar seus apoiadores?"
       rewards_hint: "A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão."
       submit: "Enviar o projeto"
       subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
@@ -485,7 +660,7 @@ pt:
       subject_html: "Projeto enviado por %{link}"
   registrations:
     new:
-      site_title: "Cadastre-se"
+      site_title: Cadastre-se
       submit: "Efetuar cadastro"
       title: "Criar uma conta utilizando o seu endereço de email"
   remaining_plural: restantes
@@ -507,7 +682,7 @@ pt:
     failure:
       error: "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
   site:
-    host: "catarse.me"
+    host: catarse.me
     base_url: "http://catarse.me"
     blog: "http://blog.catarse.me/"
     email:
@@ -539,6 +714,13 @@ pt:
       two: "Apoiou este e mais 1 outro projeto"
     no_name: "Sem nome"
   users:
+    show:
+      tabs:
+        backed_projects: "Projetos apoiados"
+        created_projects: "Projetos criados"
+        comments: Comentários
+        credits: Créditos
+        settings: Preferências
     admin_fields:
       credits: "disponíveis em créditos"
       no_email: "ainda não preencheu seu email"
@@ -552,6 +734,12 @@ pt:
       title_current_user: "Projetos que já apoiei"
       your_reward: "Sua recompensa"
     current_user_fields:
+      updated: "As suas informações foram atualizadas"
+      update_social_info: "Atualizar informações"
+      social_info: "Informações para contato"
+      twitter: "twitter ( usuário )"
+      facebook_link: "perfil do facebook"
+      other_link: "link da sua página na internet"
       change_password: "Alterar minha senha"
       current_password_hint: "<i>Para que a senha seja alterada você precisa confirmar a sua senha atual.</i>"
       email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas."
@@ -586,3 +774,174 @@ pt:
     next: "Próxima »"
     page_gap: "..."
     previous: "« Anterior"
+  date:
+    abbr_day_names:
+      - Dom
+      - Seg
+      - Ter
+      - Qua
+      - Qui
+      - Sex
+      - Sáb
+    abbr_month_names:
+      - ~
+      - Jan
+      - Fev
+      - Mar
+      - Abr
+      - Mai
+      - Jun
+      - Jul
+      - Ago
+      - Set
+      - Out
+      - Nov
+      - Dez
+    day_names:
+      - Domingo
+      - Segunda
+      - Terça
+      - Quarta
+      - Quinta
+      - Sexta
+      - Sábado
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %B"
+    month_names:
+      - ~
+      - Janeiro
+      - Fevereiro
+      - Março
+      - Abril
+      - Maio
+      - Junho
+      - Julho
+      - Agosto
+      - Setembro
+      - Outubro
+      - Novembro
+      - Dezembro
+    order:
+      - :day
+      - :month
+      - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: "aproximadamente 1 hora"
+        other: "aproximadamente %{count} horas"
+      about_x_months:
+        one: "aproximadamente 1 mês"
+        other: "aproximadamente %{count} meses"
+      about_x_years:
+        one: "aproximadamente 1 ano"
+        other: "aproximadamente %{count} anos"
+      almost_x_years:
+        one: "quase 1 ano"
+        other: "quase %{count} anos"
+      half_a_minute: "meio minuto"
+      less_than_x_minutes:
+        one: "menos de um minuto"
+        other: "menos de %{count} minutos"
+      less_than_x_seconds:
+        one: "menos de 1 segundo"
+        other: "menos de %{count} segundos"
+      over_x_years:
+        one: "mais de 1 ano"
+        other: "mais de %{count} anos"
+      x_days:
+        one: "1 dia"
+        other: "%{count} dias"
+      x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      x_months:
+        one: "1 mês"
+        other: "%{count} meses"
+      x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
+    prompts:
+      day: Dia
+      hour: Hora
+      minute: Minuto
+      month: Mês
+      second: Segundo
+      year: Ano
+  helpers:
+    select:
+      prompt: "Por favor selecione"
+    submit:
+      create: "Criar %{model}"
+      submit: "Salvar %{model}"
+      update: "Atualizar %{model}"
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%u %n"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: R$
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion:
+            one: bilhão
+            other: bilhões
+          million:
+            one: milhão
+            other: milhões
+          quadrillion:
+            one: quatrilhão
+            other: quatrilhões
+          thousand: mil
+          trillion:
+            one: trilhão
+            other: trilhões
+          unit: ~
+      format:
+        delimiter: "."
+        precision: 2
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: "."
+    precision:
+      format:
+        delimiter: "."
+  support:
+    array:
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
+  time:
+    am: ~
+    formats:
+      simple: "%d/%m/%Y, %H:%M h"
+      default: "%A, %d de %B de %Y, %H:%M h"
+      long: "%A, %d de %B de %Y, %H:%M h"
+      short: "%d/%m, %H:%M h"
+    pm: ~

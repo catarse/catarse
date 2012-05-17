@@ -19,7 +19,9 @@ feature "Pending projects" do
     visit pending_projects_path
     verify_translations
     page.should have_no_css('.failure.wrapper')
-    page.should have_css('#content_header', :text => 'Gerenciamento dos projetos')
+    within ".title" do
+      page.should have_css('h1', :text => 'Gerenciamento dos projetos')
+    end
   end
 
   scenario "show a table with projects" do
@@ -45,11 +47,11 @@ feature "Pending projects" do
     sleep 2
     visit homepage
     verify_translations
-    page.should have_css('.project_list_header', :text => "Nossa seleção catártica!")
-    page.should have_css('#home_page_projects')
-    all('#home_page_projects .project_box').should have(1).item
-    within '#home_page_projects' do
-      page.should have_css '.project_box .project_header', :text => 'Foo bar 0'
+    page.should have_css('.title h2', :text => "novos e fresquinhos")
+    page.should have_css('.recents_projects')
+    all('.recents_projects .projects .curated_project').should have(1).item
+    within '.recents_projects' do
+      page.should have_css '.projects .curated_project h4', :text => 'Foo bar 0'
     end
   end
 

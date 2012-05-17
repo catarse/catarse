@@ -1,0 +1,116 @@
+$ninesixty-columns: 16
+$images_path: "/images/catarse/"
+
+@import fonts
+@import colors
+
+@import flash
+@import locales
+@import overlay
+
+@import projects
+@import projects_land
+@import embed
+@import tabs
+@import table
+@import alert
+@import form
+@import dropdown
+@import bootstrap
+
+.clearfix
+  clear: both
+.hide
+  display: none
+
+#loading
+  text-align: center
+
+
+
+.clickable:hover
+  cursor: pointer
+
+.project_admin_field
+  font-size:  14px
+  font-family:  Lato-Regular
+
+// .on_the_spot_editing
+//   background: url("/images/pencil_16.png") left top no-repeat
+//   padding-left: 20px
+//   min-height: 30px
+//   font-family:  Lato-Regular
+//   // &:hover
+//   //   background-color: rgba(white, 0.1)
+// .on_the_spot_mouseover
+//   background-color: #c8dcc8
+//   background-color: rgba(0, 150, 0, 0.2)
+
+input.ok,textarea.ok
+  background: url($images_path+'tick_16.png') no-repeat 96% center
+input.error,textarea.error
+  background: url($images_path+'delete_16.png') no-repeat 96% center
+
+#project_admin
+  padding-top: 30px
+
+.on_the_spot_mouseover
+  background-color: rgb(200,220,200)
+  background-color: rgba(0,150,0,0.2)
+.on_the_spot_form
+  &:after
+    content: "" !important
+.on_the_spot_editing
+  &:after
+    content: " " url(/images/pencil_16.png)
+  form
+    input,textarea,select
+      padding-left: 4px
+      padding-right: 24px
+      background-color: rgb(255,255,255)
+      background-color: rgba(255,255,255,0.2)
+      font-size: 18px
+      border: 2px solid rgb(0,60,0)
+      border: 2px solid rgba(0,60,0,0.6)
+      +border-radius(5px)
+      +text-shadow(rgba(255,255,255,0.85), 1px, 1px, 0px)
+    input:focus,textarea:focus,select:focus
+      background-color: rgb(200,220,200)
+      background-color: rgba(0,150,0,0.2)
+    textarea
+      padding-right: 28px
+      width: 96%
+      height: 200px
+      overflow: auto
+    button
+      margin-left: 4px
+      text-rendering: optimizeLegibility
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+      color: #333
+      font-size: 14px
+      line-height: 16px
+      +text-shadow(rgba(255,255,255,0.85), 1px, 1px, 0px)
+      font-weight: bold
+      padding: 5px 10px
+      border: none
+      +border-radius(8px)
+      background-color: #ccc
+      +linear-gradient(color_stops(#ddd,#aaa))
+      +box-shadow(rgba(0,0,0,0.75),2px,2px,3px)
+    button:hover
+      background-color: #ddd
+      +linear-gradient(color_stops(#eee,#bbb))
+      +box-shadow(rgba(0,0,0,0.75),2px,2px,2px)
+    button:active
+      padding: 6px 9px 4px 11px
+      +text-shadow(rgba(255,255,255,0.85), 2px, 2px, 1px)
+      background-color: #ddd
+      +linear-gradient(color_stops(#eee,#bbb))
+      +box-shadow(rgba(0,0,0,0.75),1px,1px,1px)
+    button:disabled
+      color: #888
+      +text-shadow(rgba(230,230,230,0.85), 1px, 1px, 0px)
+      padding: 5px 10px
+      background-color: #aaa
+      +linear-gradient(color_stops(#bbb,#888))
+      +box-shadow(rgba(0,0,0,0.75),2px,2px,6px)

@@ -1,9 +1,0 @@
-= render 'header'
-#user_feed
-  - if current_user and @user == current_user
-    = render 'current_user_fields'
-  - elsif current_user and current_user.admin
-    = render 'admin_fields'
-  = render 'projects'
-  = render 'backs'
-= javascript_include_tag 'profile' if current_user and @user == current_user

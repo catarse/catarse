@@ -4,6 +4,9 @@ ActiveAdmin.register CuratedPage do
   scope :not_visible
 
   index do
+    column :name
+    column :permalink
+    column :visible
     default_actions
   end
 

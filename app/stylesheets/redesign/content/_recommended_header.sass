@@ -1,0 +1,147 @@
+$recommended_header_height: 258px
+#recommended_header
+  width: 980px
+  margin: 15px auto 40px
+  display: block
+  clear: both
+  +box-shadow(rgba(black, 0.6) 1px 1px 2px)
+  +border-radius(10px)
+  .resume_about
+    float: left
+    height: $recommended_header_height
+    width: 260px
+    +border-radius(10px 0 0 10px)
+    background: $green
+    h1,h4
+      margin-left: 20px
+      width: 220px
+    h1
+      margin-top: 20px
+      display: inline-block
+      font-family: "Lato-Regular"
+      font-size: 28px
+      color: white
+      line-height: 110%
+    h4
+      display: inline-block
+      font-family: Arial
+      font-size: 14px
+      color: rgba(white, 0.7)
+      line-height: 150%
+      margin-top: 15px
+  .project_info
+    width: 720px
+    height: $recommended_header_height
+    float: left
+    .video_sample
+      width: 461px
+      float: left
+    .info, .institutional
+      float: left
+      width: 239px
+      padding: 13px 0 0 20px
+      height: 245px
+      background: $ultra_gryn
+      +border-radius(0 10px 10px 0)
+    .institutional
+      h3
+        font-family: "Lato-Regular"
+        font-size: 18px
+        color: $pink
+        background: url($images_path+"institutional_video_icon16x16.png") left top no-repeat
+        text-indent: 25px
+        padding-bottom: 25px
+      p
+        width: 200px
+        font-family: Arial
+        font-size: 13px
+        color: white
+        line-height: 159%
+    .info
+      h3
+        font-family: "Lato-Regular"
+        font-size: 18px
+        color: $pink
+        background: url($images_path+"min_star12x11.png") left 5px no-repeat
+        text-indent: 18px
+        float: left
+        clear: both
+        padding-bottom: 10px
+      h2
+        clear: both
+        font-family: "Lato-Bold"
+        font-size: 14px
+        padding-bottom: 8px
+        a
+          color: white
+          text-decoration: none
+          +text-shadow(rgba(black, 0.7) 1px 1px 2px)
+          +transition(all, 0.5s)
+          &:hover
+            +text-shadow(rgba($pink, 1) 1px 1px 2px)
+      .description
+        height: 60px
+        overflow: hidden
+      .author, .description
+        padding: 4px 0 10px 0
+        p
+          font-family: Arial
+          font-size: 11px
+          color: $gryn_almost_ccc
+          a
+            color: $gryn_almost_ccc
+            text-decoration: none
+            &:hover
+              color: $green
+      .description
+        width: 200px
+        p
+          font-size: 13px
+          line-height: 120%
+  .statistics
+    .progress
+      margin-bottom: 10px
+      width: 205px
+      height: 12px
+      background: white
+      +border-radius(5px)
+      display: block
+      border: 1px $gryn_almost_ccc solid
+      .bar
+        +border-radius(3px)
+        height: 12px
+        background: $green
+    ul
+      li
+        float: left
+        margin-right: 10px
+        color: white
+        strong
+          font-family: "Lato-Bold"
+          font-size: 12px
+        p
+          font-family: Arial
+          font-size: 10px
+          text-transform: uppercase
+        &:last-child, .last
+          margin-right: 0
+  nav.pagination
+
+    font-family: Arial
+    font-size: 12px
+    font-weight: bold
+    float: left
+    width: 100%
+    margin-top: 70px
+    padding-top: 15px
+    border-top: 1px rgba(white, 0.1) solid
+    a
+      color: white
+      text-decoration: none
+      &.prev
+        float: left
+      &.next
+        margin-right: 15px
+        float: right
+      &:hover
+        color: $green

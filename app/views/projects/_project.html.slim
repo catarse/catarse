@@ -1,0 +1,9 @@
+div class="curated_project #{(defined?(has_comments) ? :compost_project : '')}"
+  = render 'projects/box', project: project, custom_class: (custom_class if defined?(custom_class))
+  - if defined?(has_comments)
+    .project_comment
+      h3= "#{(defined?(comments_title) ? comments_title : project.category.name)}"
+      p= "#{project.home_page_comment}"
+  - if defined?(project_curated_page) and project_curated_page.count > 0 and project_curated_page.first.description.present?
+    .project_curator_description
+      p= project_curated_page.first.description

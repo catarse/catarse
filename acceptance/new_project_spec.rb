@@ -6,9 +6,16 @@ feature "New Project Feature", :driver => :selenium do
 
   scenario "I'm not logged in and I want to send a project. It should ask for login." do
     visit homepage
-    click_link 'Envie seu projeto'
+    click_link 'envie'
     verify_translations
-    find("#login").visible?.should be_true
+    current_path.should == guidelines_path
+
+    within ".bootstrap-form" do
+      check "Eu li e entendi como funciona o Catarse."
+      click_button "Quero enviar meu projeto"
+    end
+    verify_translations
+    current_path.should == login_path
   end
 
   scenario "I am logged in and I want to send a project" do
@@ -19,13 +26,16 @@ feature "New Project Feature", :driver => :selenium do
     visit new_project_path
     verify_translations
     current_path.should == new_project_path
-    within '#content_header' do
+    within '.title' do
       within 'h1' do
         page.should have_content("Envie seu projeto")
       end
+      within "h2" do
+        page.should have_content("A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando...")
+      end
     end
 
-    within '#content' do
+    within '.bootstrap-form' do
       sleep 2
       fill_in 'project_name', :with => 'test project'
 

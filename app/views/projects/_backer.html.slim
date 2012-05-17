@@ -1,54 +1,50 @@
+script type="text/template" id="empty_backers_template"
+  p= t('projects.project_backers.empty')
+
+script type="text/template" id="backers_template"
+  ul.collection_list
+
 script type="text/template" id="backer_template"
-  |{{#attributes}}
-  |{{confirmed_at}}
+  .backer
+    | <% if(anonymous) { %>
+    img src="/images/user.png" class="backer_avatar"
+    .back_info
+      p#text
+        em.anon=" #{t('.anonymous_backer')}"
+      p#confirmed
+        | <%= confirmed_at %>
+      p#backed= t('.anonymous_description')
+    | <% } else { %>
+    a href="<%= user['url'] %>"
+      img src="<%= user['image'] %>" class="backer_avatar"
+    .back_info
+      p#text
+        a href="<%= user['url'] %>"
+         | <%= user['medium_name'] %>
+      p#confirmed
+        | <%= confirmed_at %>
+      p#backed
+        | <%= user['backs_text'] %>
+    | <% } %>
+    - if current_user and (current_user == @project.user or current_user.admin)
+      p.reward
+        = "#{t('activerecord.attributes.backer.value')}: "
+        | <%= display_value %> .
+        = " #{t('activerecord.attributes.user.email')}: "
+        | <% if(user['email']) { %>
+        | <%= user['email'] %>
+        | <% } else { %>
+        | &nbsp;
+        = t('not_informed')
+        |.
+        | <% } %>
+        br
+        | <% if (reward) { %>
+        = "#{t('activerecord.models.reward')}: "
+        | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
+        | <% } else { %>
+        | &nbsp;
+        = t('.no_reward')
+        | <% } %>
+    .clear
 
-  |{{#anonymous}}
-  = image_tag 'user.png', :class => 'user'
-  | &nbsp;
-  = t('.anonymous_backer')
-  = image_tag "badge.#{I18n.locale}.png", :class => "badge"
-  p= t('.anonymous_description')
-  |{{/anonymous}}
-
-  |{{^anonymous}}
-  |{{#user}}
-  a href="{{url}}"
-    img src="{{image}}" class="user"
-    |  {{medium_name}}
-    = image_tag "badge.#{I18n.locale}.png", :class => "badge"
-  p
-    |{{backs_text}}
-  |{{/user}}
-  |{{/anonymous}}
-
-  - if current_user and (current_user == @project.user or current_user.admin)
-    p.reward
-      = t('activerecord.attributes.backer.value')
-      |: 
-      |{{display_value}}
-      | . 
-      = t('activerecord.attributes.user.email')
-      |:
-      |{{#user}} 
-      |{{email}}
-      |{{^email}}
-      | &nbsp;
-      = t('not_informed')
-      |.
-      |{{/email}}
-      |{{/user}} 
-      br
-      |{{#reward}}
-      | &nbsp;
-      = t('activerecord.models.reward')
-      |: 
-      |{{display_minimum}} - {{medium_description}}
-      |{{/reward}}
-      |{{^reward}}
-      | &nbsp;
-      = t('.no_reward')
-      |{{/reward}}
- 
-  |{{/attributes}}
-
-  .clear

@@ -5,7 +5,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = t('site.name')
+  config.site_title = "Catarse"
 
 
   # == Default Namespace
@@ -56,7 +56,7 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  # config.logout_link_path = :destroy_admin_user_session_path
+  config.logout_link_path = :logout_path
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..

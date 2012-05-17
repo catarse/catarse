@@ -1,0 +1,138 @@
+[data-controller="backers"][data-namespace="projects"][data-action="new"]
+  #page_content
+    .container
+      .backer_content
+        +grid(16)
+        padding-top: 15px
+        .title
+          +grid(16)
+          +alpha
+          padding-bottom: 40px
+          h1
+            color: $ultra_gryn
+            font-family: "Lato-Regular"
+            font-size: 28px
+            padding: 5px 0
+          h2
+            color: rgba($ultra_gryn, 0.7)
+            font-family: Arial
+            font-size: 18px
+        #back_options
+          +grid(11)
+          +alpha
+          #backer_form
+            .inline-hints
+              font-family: "Lato-Regular"
+              font-size: 16px
+              color: rgba($ultra_gryn, 0.9)
+            label
+              font-family: "Lato-Regular"
+              font-size: 18px
+              display: block
+            input[type="text"]
+              height: 60px
+              width: 600px
+              font-size: 38px
+              padding-right: 20px
+              padding-left: 20px
+              font-family: 'Lato-Bold'
+            .alert-info
+              margin-top: 20px
+              label
+                font-family: 'Lato-Bold'
+                input
+                  display: inline
+                  margin-right: 10px
+                  vertical-align: top
+              .inline-hints
+                strong
+                  font-family: 'Lato-Bold'
+            #backer_reward_input
+              padding-left: 0 !important
+              legend
+                float: left
+                border-bottom: none
+                margin-top: 40px
+                background: url($images_path+'recompensa24x20.png') left top no-repeat
+                label
+                  padding-left: 34px
+                  font-family: 'Lato-Regular'
+                  color: $ultra_gryn
+                  font-size: 24px
+              ol
+                float: left
+                li.choice
+                  padding: 30px 20px 25px
+                  padding-left: 34px
+                  margin-bottom: 25px
+                  @include box-shadow(rgba(black, 0.3) 0 0 3px)
+                  @include border-radius(5px)
+                  background: rgba($minimal_white, 0.3)
+                  &.selected
+                    background: rgba($light_green, 0.2)
+                    @include box-shadow(rgba(black, 0.6) 0 0 3px)
+                  .reward_minimum_value
+                    color: $green
+                    font-family: 'Lato-Regular'
+                    font-size: 20px
+                    padding-bottom: 10px
+                  .reward_description
+                    font-family: Arial
+                    font-size: 15px
+                    line-height: 130%
+            #backer_anonymous_input
+              margin: 20px 0
+              font-size: 14px
+              input
+                display: inline
+                margin-right: 10px
+                vertical-align: top
+        #backer_submit
+          width: 100%
+        #back_info
+          +grid(5)
+          +omega
+          img.project_image
+            @include box-shadow(rgba(black, 0.4) 1px 1px 3px)
+          .project_name
+            padding-top: 20px
+            font-family: 'Lato-Bold'
+            font-size: 18px
+            a
+              color: black
+              text-decoration: none
+              @include transition(all, 0.5s)
+              &:hover
+                color: $pink
+          .project_owner
+            padding-top: 5px
+            padding-bottom: 5px
+            font-family: 'Lato-Regular'
+            font-size: 14px
+            a
+              color: $pink
+              text-decoration: none
+              @include transition(all, 0.5s)
+              &:hover
+                color: black
+          .project_expires_at
+            font-family: 'Lato-Regular'
+            font-size: 14px
+            padding-bottom: 20px
+        .back_faq
+          h3
+            font-family: 'Lato-Bold'
+            font-size: 16px
+            padding-bottom: 8px
+            color: rgba(black, 0.8)
+            text-decoration: none
+            cursor: pointer
+            @include transition(all, 0.5s)
+            &:hover
+              color: $pink
+          p
+            padding-bottom: 30px
+            font-family: Arial
+            line-height: 130%
+            font-size: 14px
+            color: rgba(black, 0.6)

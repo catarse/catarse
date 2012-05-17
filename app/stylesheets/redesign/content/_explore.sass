@@ -1,0 +1,66 @@
+[data-action="index"][data-controller="explore"]
+  #page_content
+    margin-top: 30px
+    .container
+      .sidebar
+        margin-top: 123px
+        .content
+          padding-top: 10px
+        section
+          h2
+            font-size: 16px
+            color: black
+            font-family: "Lato-Bold"
+            margin-bottom: 10px
+            text-transform: lowercase
+            padding-left: 20px
+          &.highlights
+            h2
+              background: url($images_path+'min_star12x11.png') left 3px no-repeat
+          &.categories
+            h2
+              background: url($images_path+'category_icon14x14.png') left 2px no-repeat
+          ul
+            margin-bottom: 20px
+            li
+              margin-bottom: 5px
+              a
+                color: $ultra_gryn
+                font-size: 14px
+                font-family: Arial
+                background: rgba($minimal_gryn, 0.3)
+                display: block
+                padding: 1px 10px
+                text-decoration: none
+                +border-radius(5px)
+                &:hover, &.selected
+                  background: rgba($pink, 0.3)
+      .main
+        .section_header
+          +grid(16)
+          +alpha
+          padding-bottom: 60px
+          h1
+            font-family: "Lato-Bold"
+            font-size: 28px
+            color: $ultra_gryn
+            padding-bottom: 5px
+            span
+              color: $minimal_gryn
+          h4
+            font-family: Arial
+            font-size: 16px
+            color: $ultra_gryn
+        #explore_results
+          .results
+            ul.collection_list
+              float: left
+              li
+                float: left
+                margin-bottom: 20px
+                &.first
+                  .project
+                    +alpha
+                &.last
+                  .project
+                    +omega

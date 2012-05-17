@@ -1,0 +1,91 @@
+doctype 5
+html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
+  head
+    title
+      - if @title
+        == "#{@title}#{' · ' if @title}#{t('site.name')}"
+      - else
+        == "#{yield :title} · #{t('site.name')}"
+    meta charset='utf-8'
+    meta name="robots" content="index, follow"
+    meta name="author" content="Engage"
+    = yield :meta_tags
+    = render :partial => 'projects/facebook_sdk'
+    = stylesheet_link_tag 'le-frog/jquery-ui-1.8.6.custom.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'bootstrap.css', :media => 'screen, projection'
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
+    = javascript_include_tag 'app/loader'
+
+    = csrf_meta_tag
+    link rel='shortcut icon' href="/images/favicon.ico"
+    = render '/layouts/analytics'
+    = render '/layouts/uservoice'
+    = yield :js_templates
+
+  body[id="platform" data-namespace="#{namespace}" data-controller="#{controller_name}" data-action="#{action_name}" data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]
+    = render partial: 'layouts/flash', locals: { flash: flash } unless flash.empty?
+    = render 'layouts/locales'
+
+    = render 'layouts/header'
+    = render 'layouts/recommended_header' if request.path == root_path
+    #main_content[data-namespace="#{namespace}" data-controller="#{controller_name}" data-action="#{action_name}" data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]
+      =yield
+    #footer
+      .container.footer
+        .content
+          .info
+            h3= t('footer.titles.info')
+            ul
+              li= link_to t('footer.links.how_works'), guidelines_path
+              li= link_to t('footer.links.faq'), faq_path
+              li= link_to t('footer.links.terms'), terms_path
+              li= link_to t('footer.links.policy'), privacy_path
+              li= mail_to t('site.email.contact'), t('layouts.footer.email'), :target => :_blank
+
+          .opendata
+            h3= t('footer.titles.opendata')
+            ul
+              li
+                h5= @total_backers
+                p= t('footer.stats.backers')
+              li
+                h5= @total_backs
+                p= t('footer.stats.backs')
+              li
+                h5= number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
+                p= t('footer.stats.total_backed')
+              li
+                h5= @total_users
+                p= t('footer.stats.users')
+              li
+                h5= @total_projects_success
+                p= t('footer.stats.funded_projects')
+              li
+                h5= @total_projects_online
+                p= t('footer.stats.active_projects')
+
+          .social
+            h3= t('footer.titles.social')
+            .twitter
+              = link_to "Follow @#{t('site.twitter')}", "http://twitter.com/#{t('site.twitter')}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
+            .facebook
+              .fb-like data-href="http://facebook.com/catarse.me" data-send="false" data-width="171" data-show-faces="true"
+            h3.newsletter= t('footer.titles.newsletter')
+            = form_tag 'http://catarse.mailee.me/go/add_contact_form', id: 'mailee-form', method: 'post' do
+              = hidden_field_tag 'key', '13122d'
+              = hidden_field_tag 'url_ok', "http://#{request.env['HTTP_HOST']}/?newsletter=ok"
+              = hidden_field_tag 'url_error', "http://#{request.env['HTTP_HOST']}/?newsletter=error"
+              = text_field_tag 'email', nil, placeholder: 'email@email.com'
+              = submit_tag 'assinar'
+          .clearfix
+    #logos
+      .multide
+        = link_to '#' do
+          = image_tag('catarse/multide_logo55x36.png', :target => '_blank', :alt => 'MULTIDE')
+      .comum
+        = link_to 'http://comum.cc', :target => '_blank' do
+          = image_tag('catarse/comum_logo127x27.png', :alt => 'COMUM')
+      .power
+        = link_to 'http://engage.is', :target => '_blank' do
+          = image_tag('catarse/power_logo200x43.png', :alt => 'POWER TO THE CROWD')
