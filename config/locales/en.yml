@@ -1,4 +1,5 @@
 en:
+  or: or
   newsletter_ok_header: ~
   newsletter_ok_body: ~
   newsletter_error_header: ~
@@ -110,6 +111,12 @@ en:
       content: ~
       link: ~
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: ~
     attributes:
       backer:
         value: Value
@@ -493,6 +500,9 @@ en:
           moip: "Proceed to MoIP's checkout"
         subtitle: "This is the last step to make the difference and become part of this project."
         title: "Fill in and review your data"
+        choose_payment: "How do you want to pay?"
+        choose_credit_card: "Credit Card"
+        choose_boleto: "Billet Banking"
         you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
