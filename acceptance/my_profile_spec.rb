@@ -65,7 +65,7 @@ feature "My profile Feature" do
     sleep 2
 
     within "#user_created_projects" do
-      all('li .project_land').should have(4).items
+      all('li .small_project_land').should have(4).items
     end
 
     # Backed Projects
