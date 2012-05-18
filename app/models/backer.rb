@@ -17,7 +17,7 @@ class Backer < ActiveRecord::Base
   scope :pending, where(:confirmed => false)
   scope :display_notice, where(:display_notice => true)
   scope :can_refund, where(:can_refund => true)
-  scope :within_refund_deadline, where("current_timestamp < (created_at + interval '180 days')")
+  scope :within_refund_deadline, where("date(current_timestamp) <= date(created_at + interval '180 days')")
   after_create :define_key, :define_payment_method
 
   def define_key

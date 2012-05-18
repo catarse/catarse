@@ -47,20 +47,20 @@ script type="text/template" id="user_back_template"
         li
           h6 <%= project['pledged'] %>
           p= t('projects.project.reached')
-    div class=(current_user == @user ? 'back_info' : 'small_back_info')
-      ul
-        li.date
-          h5 <%= confirmed_at %>
-        |<% if(display_value) { %>
-        li.value
-          h5 <%= display_value %>
-        |<% } %>
-        |<% if(reward) { %>
-        li.reward
-          h5 <%= reward['display_with_label'] %>
-          p <%= reward['description']%>
-        |<% } %>
     - if current_user == @user
+      div.back_info
+        ul
+          li.date
+            h5 <%= confirmed_at %>
+          |<% if(display_value) { %>
+          li.value
+            h5 <%= display_value %>
+          |<% } %>
+          |<% if(reward) { %>
+          li.reward
+            h5 <%= reward['display_with_label'] %>
+            p <%= reward['description']%>
+          |<% } %>
       .tell_about
         p= t('tell_about_this_back')
         ul

@@ -1,4 +1,4 @@
-var showRegisterForm = false;
+var showRegisterForm = true;
 require_login = function(e){
   e.preventDefault()
   var url = null
@@ -15,10 +15,11 @@ require_login = function(e){
 var return_to = null
 $('#login_link,#signup_link,.login_link').live('click', function(e){
   e.preventDefault()
-  if($(this).attr('id') == 'signup_link') {
-    showRegisterForm = true;
-  } else {
+  var attr_id = $(this).attr('id');
+  if( attr_id == 'login_link') {
     showRegisterForm = false;
+  } else {
+    showRegisterForm = true;
   }
   $('#return_to').val(location.href)
   $('#login_overlay').show()
