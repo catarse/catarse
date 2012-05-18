@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
   validates :email, :email => true, :allow_nil => true, :allow_blank => true
+  #validates :name, :presence => true, :if => :is_devise?
 
   validates_presence_of     :email, :if => :is_devise?
   validates_uniqueness_of   :email, :scope => :provider, :if => :is_devise?
@@ -66,12 +67,13 @@ class User < ActiveRecord::Base
     <<-SQL
       users.id,
       users.name,
+      users.email,
       count(backers.id) as count_backs
     SQL
     ).
     where("backers.confirmed is true").
     order("count_backs desc").
-    group("users.name, users.id")
+    group("users.name, users.id, users.email")
   }
   #before_save :store_primary_user
   before_save :fix_twitter_user
@@ -192,6 +194,9 @@ class User < ActiveRecord::Base
   end
   def display_credits
     number_to_currency credits, :unit => 'R$', :precision => 0, :delimiter => '.'
+  end
+  def display_total_of_backs
+    number_to_currency backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
   end
   def merge_into!(new_user)
     self.primary = new_user
