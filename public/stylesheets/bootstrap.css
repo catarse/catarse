@@ -7889,12 +7889,12 @@ body #page_content .container {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
   padding: 0 10px 0 10px;
   background: white;
   border: 1px #dfdfdf solid;
@@ -9164,12 +9164,12 @@ body #logos .power a {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -o-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -khtml-border-radius: 8px;
-  border-radius: 8px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
   padding: 0 10px 0 10px;
   border: 1px #dfdfdf solid;
   background: #333333 !important;
@@ -9667,29 +9667,29 @@ body #logos .power a {
   margin: 15px auto 40px;
   display: block;
   clear: both;
-  -moz-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
-  -o-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
-  box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 2px;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 2px;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 2px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
 }
 /* line 9, ../../app/stylesheets/redesign/content/_recommended_header.sass */
 #recommended_header .resume_about {
   float: left;
   height: 258px;
   width: 260px;
-  -moz-border-radius: 10px 0 0 10px;
-  -webkit-border-radius: 10px 0 0 10px;
-  -o-border-radius: 10px 0 0 10px;
-  -ms-border-radius: 10px 0 0 10px;
-  -khtml-border-radius: 10px 0 0 10px;
-  border-radius: 10px 0 0 10px;
-  background: #59af6d;
+  -moz-border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px 0 0 4px;
+  -o-border-radius: 4px 0 0 4px;
+  -ms-border-radius: 4px 0 0 4px;
+  -khtml-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+  background: #333333;
 }
 /* line 15, ../../app/stylesheets/redesign/content/_recommended_header.sass */
 #recommended_header .resume_about h1, #recommended_header .resume_about h4 {
@@ -9698,7 +9698,7 @@ body #logos .power a {
 }
 /* line 18, ../../app/stylesheets/redesign/content/_recommended_header.sass */
 #recommended_header .resume_about h1 {
-  margin-top: 20px;
+  margin-top: 10px;
   display: inline-block;
   font-family: "Lato-Regular";
   font-size: 28px;
@@ -9732,12 +9732,12 @@ body #logos .power a {
   padding: 13px 0 0 20px;
   height: 245px;
   background: #333333;
-  -moz-border-radius: 0 10px 10px 0;
-  -webkit-border-radius: 0 10px 10px 0;
-  -o-border-radius: 0 10px 10px 0;
-  -ms-border-radius: 0 10px 10px 0;
-  -khtml-border-radius: 0 10px 10px 0;
-  border-radius: 0 10px 10px 0;
+  -moz-border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0 4px 4px 0;
+  -o-border-radius: 0 4px 4px 0;
+  -ms-border-radius: 0 4px 4px 0;
+  -khtml-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
 }
 /* line 47, ../../app/stylesheets/redesign/content/_recommended_header.sass */
 #recommended_header .project_info .institutional h3 {
