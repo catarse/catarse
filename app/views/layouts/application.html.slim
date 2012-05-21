@@ -27,7 +27,7 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
     = render 'layouts/locales'
 
     = render 'layouts/header'
-    = render 'layouts/recommended_header' if current_page?('/')
+    = render 'layouts/recommended_header' if request.path == root_path
     #main_content[data-controller-class=controller.class.name.downcase data-controller-name=controller.controller_name.downcase data-action=controller.action_name.downcase data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]
       =yield
     #footer
