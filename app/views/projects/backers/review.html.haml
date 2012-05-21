@@ -15,9 +15,10 @@
         %h2= t('.subtitle')
       .clearfix
       - if @backer.credits
-        .bootstrap-alert
-          .alert
-            #credits_notice= t('.credits_notice_html', :credits => number_to_currency((current_user.credits - @backer.value), :unit => 'R$', :precision => 0, :delimiter => '.'))
+        #back_with_credits
+          .bootstrap-alert
+            .alert
+              #credits_notice= t('.credits_notice_html', :credits => number_to_currency((current_user.credits - @backer.value), :unit => 'R$', :precision => 0, :delimiter => '.'))
       - else
         /.bootstrap-alert
         /  .alert.alert-info
@@ -53,27 +54,28 @@
               = form.input :address_city, :required => true, :as => :string
               = form.input :address_state, :required => true, :as => :select, :collection => State.array
               = form.input :phone_number, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
+          .submit
+            %fieldset.accept_terms
+              = check_box_tag 'accept'
+              = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
+            - if @backer.credits
+              = form.buttons do
+                .bootstrap-twitter
+                  = form.commit_button (@backer.credits ? t('.submit.credits') : t('.submit.moip')), :button_html => {:disabled => true, :class => 'btn'}
+          #payment.hide
+            .title
+              %h1= t('.choose_payment')
+            .choose_payment
+              .cc
+                = link_to pay_paypal_path(@backer), :method => :get do
+                  = image_tag 'catarse/cc_icon.png'
+                  %span= t('.choose_credit_card')
+                .clearfix
+              .or
+                %span= t('or')
+              .boleto
+                = link_to checkout_project_backer_path(@backer.project, @backer), :method => :put do
+                  = image_tag 'catarse/boleto_icon.png'
+                  %span= t('.choose_boleto')
 
-          /.submit
-          /  %fieldset.accept_terms
-          /    = check_box_tag 'accept'
-          /    = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
-          /  = form.buttons do
-          /    .bootstrap-twitter
-          /      = form.commit_button (@backer.credits ? t('.submit.credits') : t('.submit.moip')), :button_html => {:disabled => true, :class => 'btn'}
-
-          .title
-            %h1= t('.choose_payment')
-          .choose_payment
-            .cc
-              = link_to '#' do
-                = image_tag 'catarse/cc_icon.png'
-                %span= t('.choose_credit_card')
-              .clearfix
-            .or
-              %span= t('or')
-            .boleto
-              = link_to '#' do
-                = image_tag 'catarse/boleto_icon.png'
-                %span= t('.choose_boleto')
     .clearfix
