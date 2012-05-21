@@ -92,17 +92,51 @@ feature "Back project" do
     Backer.count.should == 1
     backer = Backer.first
     backer.payment_method.should == "MoIP"
+
+    page.evaluate_script('jQuery.mask = function() { return true; }')
+    
+    fill_in "Nome completo", with: "Foo bar"
+    fill_in "Email", with: "foo@bar.com"
+    fill_in "CPF", with: "815.587.240-87"
+    fill_in "CEP", with: "90050-004"
+    fill_in "Logradouro", with: "Lorem Ipsum"
+    
+    # Sleep to wait for the loading of zip code data
+    #sleep 2
+    
+    fill_in "Número", with: "1010"
+    fill_in "Complemento", with: "10"
+    fill_in "Bairro", with: "Foo bar"
+    fill_in "Cidade", with: "Foo bar"
+    select "Foo bar", from: "Estado"
+    fill_in "Telefone celular", with: "(99)9999-9999"
+    
+    page.should have_css("#user_full_name.ok")
+    page.should have_css("#user_email.ok")
+    page.should have_css("#user_cpf.ok")
+    page.should have_css("#user_address_street.ok")
+    page.should have_css("#user_address_number.ok")
+    page.should have_css("#user_address_complement.ok")
+    page.should have_css("#user_address_neighbourhood.ok")
+    page.should have_css("#user_address_city.ok")
+    page.should have_css("#user_address_state.ok")
+    page.should have_css("#user_phone_number.ok")
   
-    within "#international_payment" do
+    #page.should_not have_content("Como você quer pagar?")
+    check "Eu li e estou de acordo com os termos de uso."
+    page.should have_content("Como você quer pagar?")
+    find(".choose_payment .cc a").click
+  
+    #within "#international_payment" do
       
-      click_on "Clique aqui"
-      verify_translations
-      find("#international_submit")[:disabled].should == "true"
-      check "Eu li e estou de acordo com os termos de uso."
-      find("#international_submit")[:disabled].should == "false"
-      click_on "Efetuar pagamento pelo PayPal"
+      #click_on "Clique aqui"
+      #verify_translations
+      #find("#international_submit")[:disabled].should == "true"
+      #check "Eu li e estou de acordo com os termos de uso."
+      #find("#international_submit")[:disabled].should == "false"
+      #click_on "Efetuar pagamento pelo PayPal"
       
-    end
+    #end
     
     current_url.should match(/paypal\.com/)
     backer.reload
@@ -184,10 +218,12 @@ feature "Back project" do
     page.should have_css("#user_address_state.ok")
     page.should have_css("#user_phone_number.ok")
   
-    find("#user_submit")[:disabled].should == "true"
+    #find("#user_submit")[:disabled].should == "true"
     check "Eu li e estou de acordo com os termos de uso."
-    find("#user_submit")[:disabled].should == "false"
-    click_on "Efetuar pagamento pelo MoIP"
+    #find("#user_submit")[:disabled].should == "false"
+    #click_on "Efetuar pagamento pelo MoIP"
+    page.should have_content("Como você quer pagar?")
+    find(".choose_payment .boleto a").click
   
     current_url.should match(/moip\.com\.br/)
     backer.reload
