@@ -21,6 +21,13 @@ GIT
     validation_reflection (1.0.0)
 
 GIT
+  remote: git://github.com/svenfuchs/routing-filter.git
+  revision: 6270eba04ee30e03500c8f977efe1189ede3f248
+  specs:
+    routing-filter (0.3.1)
+      actionpack
+
+GIT
   remote: https://github.com/danielweinmann/mailee-api.git
   revision: cd530ef488cb82f5ef01f2646c2b6222fab61c57
   specs:
@@ -301,8 +308,6 @@ GEM
       rest-client (>= 1.6)
     rinku (1.5.1)
     rmagick (2.13.1)
-    routing-filter (0.3.1)
-      actionpack
     rspec (2.10.0)
       rspec-core (~> 2.10.0)
       rspec-expectations (~> 2.10.0)
@@ -451,7 +456,7 @@ DEPENDENCIES
   rake (= 0.9.2.2)
   rcov (= 0.9.11)
   rmagick
-  routing-filter
+  routing-filter!
   rspec-rails (~> 2.10.0)
   sass-rails (~> 3.2.5)
   shoulda
