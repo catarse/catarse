@@ -70,10 +70,8 @@ gem "meta_search", "1.1.3"
 
 # Payment
 gem 'moip', git: 'https://github.com/danielweinmann/moip-ruby.git', ref: 'db1b879358c623b597dc1c221b53336f9f06db0e'
-
-
-gem 'active_paypal_adaptive_payment', '~> 0.3.13'
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
+gem 'active_paypal_adaptive_payment', '~> 0.3.13'
 
 # Server
 gem 'thin'
