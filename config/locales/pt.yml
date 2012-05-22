@@ -682,7 +682,7 @@ pt:
       error: "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
   site:
     host: catarse.me
-    base_url: "http://catarse.me"
+    base_url: "http://catarse-cedar.herokuapp.com"
     blog: "http://blog.catarse.me/"
     email:
       contact: contato@catarse.me
