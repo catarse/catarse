@@ -43,6 +43,16 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (~> 1.4.3)
 
+PATH
+  remote: ../active_paypal_adaptive_payment
+  specs:
+    active_paypal_adaptive_payment (0.3.13)
+      activemerchant (>= 1.5.1)
+      hashie (>= 1.2.0)
+      mocha (>= 0.10.0)
+      money (>= 3.6.0)
+      multi_json (>= 1.0.0)
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -61,6 +71,11 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.2)
+    activemerchant (1.17.0)
+      activesupport (>= 2.3.11)
+      braintree (>= 2.0.0)
+      builder (>= 2.0.0)
+      json (>= 1.5.1)
     activemodel (3.2.3)
       activesupport (= 3.2.3)
       builder (~> 3.0.0)
@@ -87,6 +102,8 @@ GEM
     bcrypt-ruby (3.0.1)
     bourbon (2.1.0)
       sass (>= 3.1)
+    braintree (2.16.0)
+      builder (>= 2.0.0)
     brcep (3.1.0)
     builder (3.0.0)
     cancan (1.6.7)
@@ -217,6 +234,9 @@ GEM
     mime-types (1.18)
     mocha (0.10.4)
       metaclass (~> 0.0.1)
+    money (5.0.0)
+      i18n (~> 0.4)
+      json
     multi_json (1.3.5)
     multipart-post (1.1.5)
     mustache (0.99.4)
@@ -407,7 +427,9 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
+  active_paypal_adaptive_payment (~> 0.3.13)!
   activeadmin!
+  activemerchant (= 1.17.0)
   annotate
   auto_html (= 1.4.2)
   brcep
