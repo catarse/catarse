@@ -9,6 +9,7 @@ describe Project do
     it{ should have_many :backers }
     it{ should have_many :rewards }
     it{ should have_many :updates }
+    it{ should have_many :notifications }
   end
 
   describe "validations" do
