@@ -80,6 +80,7 @@ class PaypalController < ApplicationController
     rescue
       flash[:failure] = t('paypal_error', scope: SCOPE)
       return redirect_to new_project_backer_path(@backer.project)
+
     end
   end
 

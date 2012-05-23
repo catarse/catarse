@@ -1,4 +1,6 @@
 class UsersMailer < ActionMailer::Base
+  layout 'email'
+
   def notification_email(notification)
     @notification = notification
     old_locale = I18n.locale
