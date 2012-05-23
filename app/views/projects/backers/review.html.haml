@@ -1,9 +1,6 @@
 #page_content
   .container
     #project_review
-      .title
-        %h1= t('.title')
-        %h2= t('.subtitle')
       .project_info
         = image_tag @project.display_image, :id => 'project_image', :alt => @project.name, :width => '250px'
         %h1= t('.you_are_about_html', :link => link_to(@project.name, project_path(@project)))
@@ -13,28 +10,33 @@
           - else
             = t('.review_without_reward_html', :value => @backer.display_value)
       .clearfix
+      .title
+        %h1= t('.title')
+        %h2= t('.subtitle')
+      .clearfix
       - if @backer.credits
-        .bootstrap-alert
-          .alert
-            #credits_notice= t('.credits_notice_html', :credits => number_to_currency((current_user.credits - @backer.value), :unit => 'R$', :precision => 0, :delimiter => '.'))
+        #back_with_credits
+          .bootstrap-alert
+            .alert
+              #credits_notice= t('.credits_notice_html', :credits => number_to_currency((current_user.credits - @backer.value), :unit => 'R$', :precision => 0, :delimiter => '.'))
       - else
-        .bootstrap-alert
-          .alert.alert-info
-            #international_payment
-              %h1
-                = t('.international.title')
-                %a#international_link{ :href => '#' }
-                  = t('click_here')
-              #international_expanded.hide
-                %h1= t('.international.description')
-                .international_important= t('.international.important_html')
-                = form_tag(pay_paypal_path(@backer), :method => :get) do
-                  %fieldset
-                    = check_box_tag 'accept_international'
-                    = label_tag 'accept_international', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
-                  %fieldset
-                    .bootstrap-twitter
-                      = submit_tag t('.international.submit'), :disabled => true, :id => 'international_submit', :class => 'btn'
+        /.bootstrap-alert
+        /  .alert.alert-info
+        /    #international_payment
+        /      %h1
+        /        = t('.international.title')
+        /        %a#international_link{ :href => '#' }
+        /          = t('click_here')
+        /      #international_expanded.hide
+        /        %h1= t('.international.description')
+        /        .international_important= t('.international.important_html')
+        /        = form_tag(pay_paypal_path(@backer), :method => :get) do
+        /          %fieldset
+        /            = check_box_tag 'accept_international'
+        /            = label_tag 'accept_international', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
+        /          %fieldset
+        /            .bootstrap-twitter
+        /              = submit_tag t('.international.submit'), :disabled => true, :id => 'international_submit', :class => 'btn'
       .bootstrap-form
         = semantic_form_for current_user, :url => checkout_project_backer_path(@backer.project, @backer), :html => { :id => 'review_form', :class => "form-horizontal #{('dont_align' if @backer.credits)}" } do |form|
           = hidden_field_tag 'backer_id', @backer.id
@@ -44,11 +46,11 @@
               = form.input :full_name, :required => true, :as => :string
               = form.input :cpf, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
               = form.input :email, :required => true, :as => :string
-              = form.input :address_zip_code, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
               = form.input :address_street, :required => true, :as => :string
               = form.input :address_number, :required => true, :as => :string
               = form.input :address_complement, :required => false, :as => :string
               = form.input :address_neighbourhood, :required => true, :as => :string
+              = form.input :address_zip_code, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
               = form.input :address_city, :required => true, :as => :string
               = form.input :address_state, :required => true, :as => :select, :collection => State.array
               = form.input :phone_number, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
@@ -56,7 +58,24 @@
             %fieldset.accept_terms
               = check_box_tag 'accept'
               = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
-            = form.actions do
-              .bootstrap-twitter
-                = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), :disabled => true, :class => 'btn', :id => 'user_submit'
+            - if @backer.credits
+              = form.actions do
+                .bootstrap-twitter
+                  = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), :disabled => true, :class => 'btn', :id => 'user_submit'
+          #payment.hide
+            .title
+              %h1= t('.choose_payment')
+            .choose_payment
+              .cc
+                = link_to pay_paypal_path(@backer), :method => :get do
+                  = image_tag 'catarse/cc_icon.png'
+                  %span= t('.choose_credit_card')
+                .clearfix
+              .or
+                %span= t('or')
+              .boleto
+                = link_to checkout_project_backer_path(@backer.project, @backer), :method => :put do
+                  = image_tag 'catarse/boleto_icon.png'
+                  %span= t('.choose_boleto')
+
     .clearfix

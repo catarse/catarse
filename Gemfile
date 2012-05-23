@@ -62,16 +62,21 @@ gem 'mailee', '0.5.4', git: 'https://github.com/danielweinmann/mailee-api.git'
 # Translations
 gem 'http_accept_language'
 gem 'web_translate_it'
-gem 'routing-filter'
+gem 'routing-filter', :git => 'git://github.com/svenfuchs/routing-filter.git'
 
 # Administration
 gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 gem "meta_search", "1.1.3"
 
-# Payment
+# Payment (moip)
 gem 'moip', git: 'https://github.com/danielweinmann/moip-ruby.git', ref: 'db1b879358c623b597dc1c221b53336f9f06db0e'
+
+# Payment (paypal adaptive)
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
-gem 'active_paypal_adaptive_payment', '~> 0.3.13'
+gem 'active_paypal_adaptive_payment', '~> 0.3.13', path: "../active_paypal_adaptive_payment"
+
+# Payment (paypal response)
+gem 'paypal-express', '~> 0.5.0', :require => 'paypal'
 
 # Server
 gem 'thin'

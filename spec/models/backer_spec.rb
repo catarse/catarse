@@ -112,6 +112,7 @@ describe Backer do
       before(:each) do
         @backer = create(:backer, :project => @project, :payment_method => 'MoIP')
         create(:payment_detail, :backer => @backer)
+        @backer.reload
       end
 
       it "get moip tax" do

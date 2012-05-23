@@ -29,6 +29,8 @@ class Project < ActiveRecord::Base
     youtube width: 640, height: 430, wmode: "opaque"
     vimeo width: 640, height: 430
     redcloth :target => :_blank
+    youtube :width => 580, :height => 378
+    vimeo :width => 580, :height => 378
     link :target => :_blank
   end
 
