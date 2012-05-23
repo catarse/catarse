@@ -37,10 +37,10 @@ gem 'rails_autolink', '~> 1.0.7'
 gem 'feedzirra'
 gem 'formtastic'
 gem "auto_html", '= 1.4.2'
-gem 'validation_reflection', :git => 'git://github.com/ncri/validation_reflection.git'
+gem 'validation_reflection', git: 'git://github.com/ncri/validation_reflection.git'
 gem 'maxim-sexy_pg_constraints'
 gem 'inherited_resources', '1.3.1'
-gem 'spectator-validates_email', :require => 'validates_email'
+gem 'spectator-validates_email', require: 'validates_email'
 gem 'has_vimeo_video', '>= 0.0.3'
 gem 'wirble'
 gem "on_the_spot"
@@ -57,7 +57,7 @@ gem "rack-timeout"
 gem 'kaminari'
 gem 'tumblr-api'
 gem 'dalli'
-gem 'mailee', '0.5.4', :git => 'https://github.com/danielweinmann/mailee-api.git'
+gem 'mailee', '0.5.4', git: 'https://github.com/danielweinmann/mailee-api.git'
 
 # Translations
 gem 'http_accept_language'
@@ -65,11 +65,18 @@ gem 'web_translate_it'
 gem 'routing-filter', :git => 'git://github.com/svenfuchs/routing-filter.git'
 
 # Administration
-gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
+gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 gem "meta_search", "1.1.3"
 
-# Payment
-gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git', :ref => 'db1b879358c623b597dc1c221b53336f9f06db0e'
+# Payment (moip)
+gem 'moip', git: 'https://github.com/danielweinmann/moip-ruby.git', ref: 'db1b879358c623b597dc1c221b53336f9f06db0e'
+
+# Payment (paypal adaptive)
+gem 'activemerchant', '1.17.0', require: 'active_merchant'
+# gem 'active_paypal_adaptive_payment', '~> 0.3.13', path: "../active_paypal_adaptive_payment"
+gem 'active_paypal_adaptive_payment', '~> 0.3.13'
+
+# Payment (paypal response)
 gem 'paypal-express', '~> 0.5.0', :require => 'paypal'
 
 # Server
