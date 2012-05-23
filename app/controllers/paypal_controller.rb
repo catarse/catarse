@@ -17,7 +17,7 @@ class PaypalController < ApplicationController
     #  raise "Message: #{e.message}<br/>Response: #{e.response.inspect}<br/>Details: #{e.response.details.inspect}"
     rescue Exception => e
       Exceptional.handle(e) rescue nil
-      flash[:failure] = t('projects.pay.paypal_error')
+      flash[:failure] = t('projects.backers.checkout.paypal_error')
       return redirect_to new_project_backer_path(backer.project)
     end
   end
@@ -36,21 +36,21 @@ class PaypalController < ApplicationController
         backer.update_attribute :payment_token, params[:token]
         backer.build_payment_detail.update_from_service
         backer.confirm!
-        flash[:success] = t('projects.pay.success')
+        flash[:success] = t('projects.backers.checkout.success')
         redirect_to thank_you_path
       else
-        flash[:failure] = t('projects.pay.paypal_error')
+        flash[:failure] = t('projects.backers.checkout.paypal_error')
         return redirect_to new_project_backer_path(backer.project)
       end
     rescue
-      flash[:failure] = t('projects.pay.paypal_error')
+      flash[:failure] = t('projects.backers.checkout.paypal_error')
       return redirect_to new_project_backer_path(backer.project)
     end
   end
 
   def cancel
     backer = Backer.find params[:id]
-    flash[:failure] = t('projects.pay.paypal_cancel')
+    flash[:failure] = t('projects.backers.checkout.paypal_cancel')
     redirect_to new_project_backer_path(backer.project)
   end
 
@@ -73,10 +73,10 @@ class PaypalController < ApplicationController
     Paypal::Payment::Request.new(
       :currency_code => :BRL,
       :amount => backer.value,
-      :description => t('projects.pay.paypal_description'),
+      :description => t('projects.backers.checkout.paypal_description'),
       :items => [{
           :name => backer.project.name,
-          :description => t('projects.pay.paypal_description'),
+          :description => t('projects.backers.checkout.paypal_description'),
           :amount => backer.value#,
           #:category => :Digital
         }]
