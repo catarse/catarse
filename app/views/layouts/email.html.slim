@@ -1,0 +1,33 @@
+head
+  meta http-equiv="Content-type" content="text/html; charset=utf-8"
+  title Título do email
+
+body style="margin: 0;padding:0;"
+  table width="100%" id="background" border="0" cellspacing="0" cellpadding="0" frame="void" style="margin:0; padding:0; border:0 none; border-spacing:0px 0px; border-collapse:collapse; background-color:#EDEDED;height:100%;"
+    tbody style="margin:0; padding:0; border:0;"
+      tr
+        td align="center" style="margin:0; padding:0; border:0 none;" valign="top"
+          br
+          br
+          table width="600" border="0" cellspacing="0" cellpadding="0" frame="void" id="content" style="margin:0; padding:0; border:0 none; border-spacing:0px 0px; border-collapse:collapse;"
+            tbody style="margin:0; padding:0; border:0;"
+              tr
+                td align="left" style="margin:0; padding:0; border:0 none; " valign="top"
+                  table border="0" cellspacing="0" cellpadding="0" frame="void" id="header" style="margin:0; padding:0; border:0 none; border-spacing:0; border-collapse:collapse;" width="100%"
+                    tbody style="margin:0; padding:0; border:0;"
+                      tr
+                        td align="center" style="margin:0; border:0 none;" valign="top"
+                          = image_tag "#{t('site.base_url')}/images/email_header.#{I18n.locale}.png", :class => "edit", :style => "margin-bottom: 20px; border:0 none; display:block;"
+                  table border="0" cellspacing="0" cellpadding="0" frame="void" id="columns" style="margin:0; padding:0; border:1px solid #ccc; border-spacing:0; border-collapse:collapse;" width="100%"
+                    tbody style="margin:0; padding:0; border:0;"
+                      tr
+                        td width="600" id="main" align="left" valign="top" style="margin:0; padding:20px; border:0 none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:12px; line-height:150%; background-color:#fff"
+                          table width="100%" frame="void" cellspacing="0" cellpadding="0" border="0" style="margin:0; padding:0; border:0 none; border-spacing:0px 0px; border-collapse:collapse; font-size:15px; color:#333;"
+                            tbody style="margin:0; padding:0; border:0;"
+                              tr
+                                td align="left" valign="top" style="margin:0; border:0 none;"
+                                  div class="repeat" id="paragraph" style="margin:0; padding:0px; border:0 none; font-size:14px; color:#666; text-align:left;"
+                                    p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-color: initial; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 17px; "
+                                      = yield
+          br
+          br
