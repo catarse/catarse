@@ -31,7 +31,8 @@ module Reports
               'Bairro',
               'Cidade',
               'Estado',
-              'CEP'
+              'CEP',
+              'Apoio anonimo?'
             ]
 
             @backers.each do |backer|
@@ -55,7 +56,8 @@ module Reports
                 backer.user.address_neighbourhood,
                 backer.user.address_city,
                 backer.user.address_state,
-                backer.user.address_zip_code
+                backer.user.address_zip_code,
+                (backer.anonymous ? 'Sim' : 'Não')
               ]
             end
           end
