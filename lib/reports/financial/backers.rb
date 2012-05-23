@@ -24,7 +24,14 @@ module Reports
               'Email (conta do apoiador)',
               'Email (conta em que fez o pagamento)',
               'Login do usuario no MoIP',
-              'CPF'
+              'CPF',
+              'Endereço',
+              'Complemento',
+              'Numero',
+              'Bairro',
+              'Cidade',
+              'Estado',
+              'CEP'
             ]
 
             @backers.each do |backer|
@@ -41,7 +48,14 @@ module Reports
                 backer.user.email,
                 (backer.payment_detail.payer_email if backer.payment_detail),
                 (backer.payment_detail.payer_name if backer.payment_detail),
-                backer.user.cpf
+                backer.user.cpf,
+                backer.user.address_street,
+                backer.user.address_complement,
+                backer.user.address_number,
+                backer.user.address_neighbourhood,
+                backer.user.address_city,
+                backer.user.address_state,
+                backer.user.address_zip_code
               ]
             end
           end
