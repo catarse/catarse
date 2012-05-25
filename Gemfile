@@ -11,6 +11,7 @@ gem 'activemerchant', '1.17.0', require: 'active_merchant'
 gem 'active_paypal_adaptive_payment', '~> 0.3.13'
 gem 'httpclient', '2.2.4'
 gem 'selenium-webdriver', '2.21.1'
+gem 'bourbon'
 
 
 gem 'feedzirra'
