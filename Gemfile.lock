@@ -390,6 +390,7 @@ DEPENDENCIES
   activemerchant (= 1.17.0)
   annotate
   auto_html (= 1.3.6)
+  bourbon
   brcep
   cancan
   capybara (>= 1.0.1)
