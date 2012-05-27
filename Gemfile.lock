@@ -100,7 +100,7 @@ GEM
     childprocess (0.3.2)
       ffi (~> 1.0.6)
     chunky_png (1.2.5)
-    compass (0.12.1)
+    compass (0.11.5)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
@@ -314,7 +314,7 @@ GEM
       ruby-openid (>= 2.1.7)
     rubyntlm (0.1.1)
     rubyzip (0.9.8)
-    sass (3.1.18)
+    sass (3.1.7)
     sax-machine (0.1.0)
       nokogiri (> 0.0.0)
     selenium-webdriver (2.21.1)
@@ -396,7 +396,7 @@ DEPENDENCIES
   cancan
   capybara (>= 1.0.1)
   carrierwave (= 0.5.8)
-  compass
+  compass (= 0.11.5)
   compass-960-plugin
   dalli
   database_cleaner
@@ -432,7 +432,7 @@ DEPENDENCIES
   rmagick
   routing-filter
   rspec-rails (~> 2.10.0)
-  sass
+  sass (= 3.1.7)
   selenium-webdriver (= 2.21.1)
   shoulda
   slim
