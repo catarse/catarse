@@ -586,8 +586,6 @@ form fieldset legend span {
   border-left-color: #d4d4d4;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   font-size: 1.0em;
   font-weight: bold;
@@ -793,8 +791,6 @@ form input[type=submit] {
   text-shadow: black 0 1px 0;
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   border: solid 1px #484e53;
   border-color: #484e53;
@@ -831,8 +827,6 @@ form input[type=submit]:hover span.icon svg path, form input[type=submit]:hover 
 form input[type=submit]:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   background: #7e858b;
   background: -webkit-gradient(linear, left top, left bottom, from(#7e858b), to(#3c4043));
@@ -866,8 +860,6 @@ form fieldset.buttons li.cancel a {
   text-shadow: black 0 1px 0;
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   border: solid 1px #484e53;
   border-color: #484e53;
@@ -892,8 +884,6 @@ form fieldset.buttons li.cancel a {
   -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fdfdfd, endColorstr=#e8e8e8);
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   border-color: #c7c7c7;
   border-top-color: #d3d3d3;
@@ -920,8 +910,6 @@ form fieldset.buttons li.cancel a:hover span.icon svg path, form fieldset.button
 form fieldset.buttons li.cancel a:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   background: #7e858b;
   background: -webkit-gradient(linear, left top, left bottom, from(#7e858b), to(#3c4043));
@@ -946,8 +934,6 @@ form fieldset.buttons li.cancel a:hover span.icon svg path, form fieldset.button
 form fieldset.buttons li.cancel a:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   background: #fcfcfc;
   background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#e5e4e5));
@@ -969,8 +955,6 @@ form fieldset.buttons li.cancel a.disabled:hover {
 form fieldset.buttons li.cancel a.disabled:active {
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
 }
 /* line 6, ../../../../../.rvm/gems/ruby-1.9.2-p318@catarse-new/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
@@ -1059,8 +1043,6 @@ form.filter_form a.clear_filters_btn {
   text-shadow: black 0 1px 0;
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   border: solid 1px #484e53;
   border-color: #484e53;
@@ -1085,8 +1067,6 @@ form.filter_form a.clear_filters_btn {
   -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fdfdfd, endColorstr=#e8e8e8);
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   border-color: #c7c7c7;
   border-top-color: #d3d3d3;
@@ -1113,8 +1093,6 @@ form.filter_form a.clear_filters_btn:hover span.icon svg path, form.filter_form 
 form.filter_form a.clear_filters_btn:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   background: #7e858b;
   background: -webkit-gradient(linear, left top, left bottom, from(#7e858b), to(#3c4043));
@@ -1139,8 +1117,6 @@ form.filter_form a.clear_filters_btn:hover span.icon svg path, form.filter_form 
 form.filter_form a.clear_filters_btn:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   background: #fcfcfc;
   background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#e5e4e5));
@@ -1162,8 +1138,6 @@ form.filter_form a.clear_filters_btn.disabled:hover {
 form.filter_form a.clear_filters_btn.disabled:active {
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
 }
 
@@ -1439,8 +1413,6 @@ table.index_table th {
   border-left-color: #d4d4d4;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   font-size: 1.0em;
   font-weight: bold;
@@ -1677,8 +1649,6 @@ a.button, a:link.button, a:visited.button, input[type=submit] {
   text-shadow: black 0 1px 0;
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   border: solid 1px #484e53;
   border-color: #484e53;
@@ -1714,8 +1684,6 @@ a.button:hover span.icon svg path, a.button:hover span.icon svg polygon, a.butto
 a.button:active, a:link.button:active, a:visited.button:active, input[type=submit]:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   background: #7e858b;
   background: -webkit-gradient(linear, left top, left bottom, from(#7e858b), to(#3c4043));
@@ -1777,8 +1745,6 @@ a:hover {
   text-shadow: black 0 1px 0;
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   border: solid 1px #484e53;
   border-color: #484e53;
@@ -1803,8 +1769,6 @@ a:hover {
   -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fdfdfd, endColorstr=#e8e8e8);
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   border-color: #c7c7c7;
   border-top-color: #d3d3d3;
@@ -1831,8 +1795,6 @@ a:hover {
 .pagination a:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   background: #7e858b;
   background: -webkit-gradient(linear, left top, left bottom, from(#7e858b), to(#3c4043));
@@ -1857,8 +1819,6 @@ a:hover {
 .pagination a:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   background: #fcfcfc;
   background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#e5e4e5));
@@ -1880,8 +1840,6 @@ a:hover {
 .pagination a.disabled:active {
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
 }
 /* line 14, ../../../../../.rvm/gems/ruby-1.9.2-p318@catarse-new/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets/active_admin/components/_pagination.scss */
@@ -1897,8 +1855,6 @@ a:hover {
   text-shadow: black 0 1px 0;
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   border: solid 1px #484e53;
   border-color: #484e53;
@@ -1934,8 +1890,6 @@ a:hover {
 .pagination span.page.current:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   background: #7e858b;
   background: -webkit-gradient(linear, left top, left bottom, from(#7e858b), to(#3c4043));
@@ -1995,8 +1949,6 @@ a:hover {
   border-left-color: #d4d4d4;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   font-size: 1.0em;
   font-weight: bold;
@@ -2056,8 +2008,6 @@ a:hover {
   border-left-color: #d4d4d4;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   font-size: 1.0em;
   font-weight: bold;
@@ -2158,8 +2108,6 @@ a.table_tools_button {
   text-shadow: black 0 1px 0;
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   border: solid 1px #484e53;
   border-color: #484e53;
@@ -2184,8 +2132,6 @@ a.table_tools_button {
   -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fdfdfd, endColorstr=#e8e8e8);
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   border-color: #c7c7c7;
   border-top-color: #d3d3d3;
@@ -2217,8 +2163,6 @@ a.table_tools_button:hover span.icon svg path, a.table_tools_button:hover span.i
 a.table_tools_button:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   background: #7e858b;
   background: -webkit-gradient(linear, left top, left bottom, from(#7e858b), to(#3c4043));
@@ -2243,8 +2187,6 @@ a.table_tools_button:hover span.icon svg path, a.table_tools_button:hover span.i
 a.table_tools_button:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   background: #fcfcfc;
   background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#e5e4e5));
@@ -2266,24 +2208,18 @@ a.table_tools_button.disabled:hover {
 a.table_tools_button.disabled:active {
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
 }
 /* line 29, ../../../../../.rvm/gems/ruby-1.9.2-p318@catarse-new/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
 a.table_tools_button.selected {
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36);
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36);
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36);
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36);
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36);
 }
 /* line 32, ../../../../../.rvm/gems/ruby-1.9.2-p318@catarse-new/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
 a.table_tools_button.selected:active {
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36), 0, 1px, 2px, rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36), 0, 1px, 2px, rgba(0, 0, 0, 0.3);
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36), 0, 1px, 2px, rgba(0, 0, 0, 0.3);
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36), 0, 1px, 2px, rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset, 0 0 10px rgba(120, 175, 220, 0.36), 0, 1px, 2px, rgba(0, 0, 0, 0.3);
 }
 /* line 37, ../../../../../.rvm/gems/ruby-1.9.2-p318@catarse-new/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
@@ -2340,8 +2276,6 @@ a.table_tools_button.dropdown_button .arrow {
   background: #F0F0F0;
   -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) inset;
-  -ms-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) inset;
-  -o-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) inset;
   color: #8a8a8a;
   cursor: default;
@@ -2386,8 +2320,6 @@ table.dashboard .dashboard_section > h3 {
   border-left-color: #d4d4d4;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   font-size: 1.0em;
   font-weight: bold;
@@ -2453,8 +2385,6 @@ body.logged_out h2 {
   border-left-color: #d4d4d4;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   font-size: 1.0em;
   font-weight: bold;
@@ -2471,8 +2401,6 @@ body.logged_out h2 {
   text-shadow: black 0 1px 0;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border: none;
   color: #fff;
@@ -2593,8 +2521,6 @@ body.logged_out #login a {
   border-left-color: #d4d4d4;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
   font-size: 1.0em;
   font-weight: bold;
@@ -2602,15 +2528,12 @@ body.logged_out #login a {
   margin-bottom: 0.5em;
   color: #5e6469;
   padding: 5px 10px 3px 10px;
+  zoom: 1;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
-  -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
-  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
   display: table;
   border-bottom-color: #EEE;
@@ -2635,13 +2558,14 @@ body.logged_out #login a {
   width: 1em;
   height: 1em;
 }
-/* line 2, ../../../../../.rvm/gems/ruby-1.9.2-p318@catarse-new/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets/active_admin/mixins/_utilities.scss */
-#title_bar:after {
-  visibility: hidden;
-  display: block;
+/* line 18, sass/addons/_clearfix.scss */
+#title_bar:before, #title_bar:after {
   content: "";
+  display: table;
+}
+/* line 23, sass/addons/_clearfix.scss */
+#title_bar:after {
   clear: both;
-  height: 0;
 }
 /* line 15, ../../../../../.rvm/gems/ruby-1.9.2-p318@catarse-new/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets/active_admin/structure/_title_bar.scss */
 #title_bar #titlebar_left, #title_bar #titlebar_right {
@@ -2673,8 +2597,6 @@ body.logged_out #login a {
   text-shadow: black 0 1px 0;
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   border: solid 1px #484e53;
   border-color: #484e53;
@@ -2699,8 +2621,6 @@ body.logged_out #login a {
   -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fdfdfd, endColorstr=#e8e8e8);
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   border-color: #c7c7c7;
   border-top-color: #d3d3d3;
@@ -2729,8 +2649,6 @@ body.logged_out #login a {
 #title_bar .action_items a:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
   background: #7e858b;
   background: -webkit-gradient(linear, left top, left bottom, from(#7e858b), to(#3c4043));
@@ -2755,8 +2673,6 @@ body.logged_out #login a {
 #title_bar .action_items a:active {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18) inset, 0 1px 0 0px #eeeeee;
   background: #fcfcfc;
   background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#e5e4e5));
@@ -2778,8 +2694,6 @@ body.logged_out #login a {
 #title_bar .action_items a.disabled:active {
   -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -ms-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
-  -o-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
   box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 1px white inset;
 }
 /* line 36, ../../../../../.rvm/gems/ruby-1.9.2-p318@catarse-new/bundler/gems/active_admin-1f033aff5ed9/app/assets/stylesheets/active_admin/structure/_title_bar.scss */

@@ -1,7 +1,7 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-
   include ActionView::Helpers::DateHelper
+
   inherit_resources
   actions :index, :show, :new, :create
   respond_to :html, :except => [:backers]
@@ -77,6 +77,17 @@ class ProjectsController < ApplicationController
       params[:contact],
       current_user,
       "#{I18n.t('site.base_url')}#{user_path(current_user)}").deliver
+
+    # Send project receipt
+    notification_text = I18n.t('project.start.notification_text', :locale => current_user.locale)
+    email_subject = I18n.t('project.start.email_subject', :locale => current_user.locale)
+    email_text = I18n.t('project.start.email_text', 
+                        :facebook => I18n.t('site.facebook', :locale => current_user.locale), 
+                        :blog => I18n.t('site.blog', :locale => current_user.locale), 
+                        :explore_link => explore_url, 
+                        :email => (I18n.t('site.email.contact', :locale => current_user.locale)), 
+                        :locale => current_user.locale)
+    Notification.create :user => current_user, :text => notification_text, :email_subject => email_subject, :email_text => email_text
     flash[:success] = t('projects.send_mail.success')
     redirect_to :root
   end
