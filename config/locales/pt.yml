@@ -426,6 +426,10 @@ pt:
       text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
       title: "Muito obrigado"
   project:
+    start:
+      email_subject: "O seu projeto foi recebido pela equipe do Catarse"
+      email_text: "Muito obrigado por confiar no Catarse e enviar seu projeto pra gente :)<br><br>A gente sabe que você deve querer uma resposta super rápido, mas, confesso, levamos até 4 dias úteis para responder cada um dos projetos, ok? Isso porque temos pouca gente na equipe e vários projetos sendo enviados. De qualquer forma, pode sim acontecer de respondermos antes. Então, fique esperto com a sua caixa de entrada.<br><br>Enquanto isso, vale a pena conhecer os projetos que estão no ar (<a href='%{explore_link}' style='color: #E75297 !important;'>%{explore_link}</a>) e - se gostar de algum deles- apoiar! Essa é a melhor maneira de mostrar que acredita na cultura do crowdfunding no Brasil e fomentar o ecossistema que está se formando ao redor do Catarse.<br><br>Além é claro de se inspirar para o seu projeto...<br><br>Fique ligado em nossas novidades no <a href='%{facebook}' style='color: #E75297 !important;'>Facebook</a> e conhecer mais sobre o Catarse lendo nossos posts no <a href='%{blog}' style='color: #E75297 !important;'>blog</a>.<br><br>Se ficou com alguma dúvida, entre em contato conosco no: %{email}"
+      notification_text: "O seu projeto foi recebido pela equipe do Catarse"
     finish:
       successful:
         email_subject: "Uhuu! O projeto que você apoiou foi bem-sucedido no Catarse!"

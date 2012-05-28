@@ -6,16 +6,24 @@ end
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
+# Paypal
+gem 'activemerchant', '1.17.0', require: 'active_merchant'
+gem 'active_paypal_adaptive_payment', '~> 0.3.13'
+gem 'httpclient', '2.2.4'
+gem 'selenium-webdriver', '2.21.1'
+gem 'bourbon'
+
+
 gem 'feedzirra'
 gem 'rails', '3.0.3'
 gem 'rake', '0.8.7'
 gem 'haml'
 gem 'slim'
 gem 'slim-rails'
-gem 'sass'
-gem 'compass'
-gem 'omniauth', '0.1.6'
-gem 'formtastic'
+gem 'sass', '3.1.7'
+gem 'compass', '0.11.5'
+gem 'omniauth', '0.2.6'
+gem 'formtastic', '2.0.2'
 gem 'validation_reflection'
 gem 'inherited_resources', '= 1.1.2'
 gem 'maxim-sexy_pg_constraints'
@@ -38,7 +46,7 @@ gem 'unicode'
 gem 'routing-filter'
 gem 'http_accept_language'
 gem 'cancan'
-gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git'
+gem 'activeadmin', :git => 'git://github.com/gregbell/active_admin.git', :ref => '1f033aff5ed912faa5dfb6a0c013409e3e78b200'
 gem 'carrierwave', '= 0.5.8'
 gem 'rmagick'
 gem 'fog'
@@ -64,7 +72,7 @@ group :test, :development do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'steak', "~> 1.1.0"
-  gem 'rspec-rails', "~> 2.0.1"
+  gem 'rspec-rails', "~> 2.10.0"
   gem 'rcov', '= 0.9.11'
   gem 'mocha'
 end
