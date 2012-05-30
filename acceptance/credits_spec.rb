@@ -68,6 +68,8 @@ feature "Credits Feature" do
       sleep 3
       column.text.should == "Pedido enviado com sucesso"
     end
+    click_on "OK"
+    verify_translations
     user.reload
     user.credits.should == 50
     find("#current_credits").should have_content(user.display_credits)
@@ -81,6 +83,8 @@ feature "Credits Feature" do
       sleep 2
       column.text.should == "Você não possui créditos suficientes para realizar este estorno."
     end
+    click_on "OK"
+    verify_translations
     user.reload
     user.credits.should == 50
     find("#current_credits").should have_content(user.display_credits)
