@@ -76,9 +76,6 @@ gem 'activemerchant', '1.17.0', require: 'active_merchant'
 # gem 'active_paypal_adaptive_payment', '~> 0.3.13', path: "../active_paypal_adaptive_payment"
 gem 'active_paypal_adaptive_payment', '~> 0.3.13'
 
-# Payment (paypal response)
-gem 'paypal-express', '~> 0.5.0', :require => 'paypal'
-
 # Server
 gem 'thin'
 gem 'unicorn'

@@ -43,16 +43,6 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (~> 1.4.3)
 
-PATH
-  remote: ../active_paypal_adaptive_payment
-  specs:
-    active_paypal_adaptive_payment (0.3.13)
-      activemerchant (>= 1.5.1)
-      hashie (>= 1.2.0)
-      mocha (>= 0.10.0)
-      money (>= 3.6.0)
-      multi_json (>= 1.0.0)
-
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -71,6 +61,12 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.2)
+    active_paypal_adaptive_payment (0.3.13)
+      activemerchant (>= 1.5.1)
+      hashie (>= 1.2.0)
+      mocha (>= 0.10.0)
+      money (>= 3.6.0)
+      multi_json (>= 1.0.0)
     activemerchant (1.17.0)
       activesupport (>= 2.3.11)
       braintree (>= 2.0.0)
@@ -93,7 +89,6 @@ GEM
     addressable (2.2.8)
     annotate (2.4.0)
     arel (3.0.2)
-    attr_required (0.0.5)
     auto_html (1.4.2)
       RedCloth
       redcarpet
@@ -277,11 +272,6 @@ GEM
     on_the_spot (1.0.0)
       json_pure (>= 1.4.6)
     orm_adapter (0.0.7)
-    paypal-express (0.5.0)
-      activesupport (>= 2.3)
-      attr_required (>= 0.0.5)
-      i18n
-      restclient_with_cert
     pg (0.13.2)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -322,10 +312,6 @@ GEM
     redcarpet (2.1.1)
     responders (0.9.1)
       railties (~> 3.1)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
-    restclient_with_cert (0.0.8)
-      rest-client (>= 1.6)
     rinku (1.5.1)
     rmagick (2.13.1)
     rspec (2.10.0)
@@ -427,7 +413,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  active_paypal_adaptive_payment (~> 0.3.13)!
+  active_paypal_adaptive_payment (~> 0.3.13)
   activeadmin!
   activemerchant (= 1.17.0)
   annotate
@@ -470,7 +456,6 @@ DEPENDENCIES
   omniauth-twitter (~> 0.0.11)
   omniauth-yahoo (~> 0.0.4)
   on_the_spot
-  paypal-express (~> 0.5.0)
   pg
   rack-timeout
   rails (= 3.2.3)
