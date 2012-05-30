@@ -2,12 +2,12 @@ pt:
   or: ou
   newsletter_ok_header: "Cadastro efetuado!"
   newsletter_ok_body: "Seu email foi cadastrado com sucesso, obrigado!"
-  newsletter_error_header: "OPS! Ocorreu um erro."
+  newsletter_error_header: "Ooops! Ocorreu um erro."
   newsletter_error_body: "Seu email não foi cadastrado, tente novamente mais tarde!"
   views:
     pagination:
       next: próxima
-      last: ultima
+      last: última
       truncate: "..."
   statistics:
     backers:
@@ -31,7 +31,7 @@ pt:
       backs: Apoios
       total_backed: Arrecadados
       users: Usuários
-      funded_projects: "Projetos bem sucedidos"
+      funded_projects: "Projetos bem-sucedidos"
       active_projects: "Projetos no ar agora"
     links:
       how_works: "Como funciona"
@@ -344,17 +344,10 @@ pt:
   here: aqui
   i_backed: "Eu apoiei o projeto %{name} no @Catarse_"
   i_just_backed: "Eu acabei de apoiar o projeto %{name} no @Catarse_"
-  just:
-    api_test: "no text"
   layouts:
-    application:
-      menu:
-        explore: "Explore os projetos"
-        login: Login
-        signup: Cadastre-se
-        submit: "Envie seu projeto"
-      notifications:
-        new_curated_pages: "Já conhece os Canais Catárticos? <a href='#curated_pages' id='curated_link'>Olha aqui</a>!"
+    login:
+      login_with_facebook: "entre com sua conta do facebook"
+      remember_me: "Lembre-se de mim e mantenha-me conectado."
     header:
       blog: blog
       help: ajuda
@@ -366,35 +359,9 @@ pt:
     recommended_header:
       sugest_for_you: "sugerido para você"
       highlight_project: "projeto em destaque"
-    footer:
-      blog: "Leia o blog"
-      comum: "Grupo Comum"
-      email: Contato
-      facebook: "Curta no Facebook"
-      faq: FAQ/Ajuda
-      guidelines: "Como funciona?"
-      privacy: "Política de privacidade"
-      terms: "Termos de uso"
-      twitter: "Siga no Twitter"
-    login:
-      another_social: "Entre com <a href='javascript:void(0);' id='login_with_another_social'>outra rede social</a>"
-      description_html: "Nós <strong>nunca</strong> iremos saber sua senha ou qualquer outro dado sigiloso de sua conta na rede social escolhida. Só teremos acesso a informações básicas, como nome, foto e email."
-      have_facebook_account: "Não possui conta no facebook?"
-      login_with_facebook: "entre com sua conta do facebook"
-      new_user_from_email: "Entre com <a href='%{login_path}' id='login_with_mail'>seu email</a>"
-      or: ou
-      remember_me: "Lembre-se de mim e mantenha-me conectado."
-      tips_html: "<strong>Lembre-se com qual rede você se cadastrou</strong>. É com ela que você sempre irá acessar sua conta."
-      title: "Entre através de sua rede social favorita"
-      title_with_email: "Entre utilizando o seu endereço de email"
-    pre_header:
-      back_notice_html: "Você apoiou o projeto %{link}. Conte para todo mundo o que você fez!"
-      content_html: "Quer saber como apoiar um projeto? %{link} um passo-a-passo que publicamos no nosso blog."
-      help_link: "Confira aqui"
     user:
       logout: Sair
       my_credits: "Meus créditos"
-      my_profile: "Meu perfil"
   not_informed: "não informado"
   notify_locale: "Identificamos seu idioma pelo seu navegador. Caso você prefira outro, clique em uma das bandeiras à direita."
   on_the_spot:
@@ -420,7 +387,7 @@ pt:
       error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
       header_subtitle: "Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!"
       header_title: "Muito obrigado! :D"
-      not_successful: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{expires_at}. Caso ele não seja bem sucedido, você receberá seu dinheiro de volta na forma de créditos no Catarse. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!"
+      not_successful: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{expires_at}. Caso ele não seja bem-sucedido, você receberá seu dinheiro de volta na forma de créditos no Catarse. Mas você não quer que isto aconteça, certo? Aproveite, então, para divulgar!"
       successful: "Este projeto será financiado em %{expires_at}, graças a sua ajuda e de mais %{total_backers} pessoas. Muito obrigado!"
       text_subtitle: "Conte para todo mundo o que você acabou de fazer"
       text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
@@ -451,7 +418,7 @@ pt:
       waiting_confirmation: aguardando
   projects:
     box:
-      by: "por "
+      by: "por"
     admin_fields:
       title: "Campos para o admin"
     back_project:
@@ -522,20 +489,9 @@ pt:
       rewards_description: "A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão."
       rewards_title: Recompensas
       submit: "Enviar o projeto"
-    home_page_projects:
-      explore_recommended: "Explore mais projetos recomendados"
-      subtitle: "Conheça os projetos que nos causaram uma Catarse :) cada dia uma nova seleção."
-      title: "Nossa seleção catártica!"
-    index:
-      expiring: "Na reta final"
-      recent: "Projetos recentes"
-      recommended: "Projetos recomendados"
-      successful: "Projetos bem-sucedidos"
     index_header:
       subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história."
       title: "Faça acontecer os projetos em que você acredita"
-    index_meta_tags:
-      description: "Financie projetos de maneira colaborativa e torne-se parte de algo maior. Promova uma catarse coletiva! Você é a peça que falta nesta história."
     new:
       subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
       title: "Envie seu projeto"
@@ -588,19 +544,6 @@ pt:
       subtitle_html: "Um projeto de %{link}"
       without_city: "Um projeto de %{category_name} por %{author}"
       with_city: "Um projeto de %{category_name} por %{author} em %{city}"
-    project_list:
-      expiring:
-        explore: "Explore mais projetos na reta final"
-        subtitle: "Uh! O prazo está quase acabando pra estes aqui...apoie enquanto é tempo!"
-        title: "Na reta final"
-      recent:
-        explore: "Explore mais projetos recentes"
-        subtitle: "Projetos recém-chegados no Catarse. Cheiro de que saiu do forno agorinha..."
-        title: "Novos e fresquinhos"
-      successful:
-        explore: "Explore mais projetos bem-sucedidos"
-        subtitle: "Conheça nossos mais novos orgulhos :) amanhã seu projeto pode estar aqui!"
-        title: "Projetos bem-sucedidos"
     project_updates:
       empty: "Este projeto ainda não teve atualizações. Aguarde =D"
       submit: "Enviar atualização"
