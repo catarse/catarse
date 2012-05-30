@@ -1,6 +1,26 @@
 class PaypalController < ApplicationController
 
+  include ActiveMerchant::Billing::Integrations
   SCOPE = "projects.backers.checkout"
+
+
+  def notifications
+    notify = PaypalAdaptivePayment::Notification.new(request.raw_post)
+    @backer = Backer.find(notify.item_id)
+
+    if notify.acknowledge
+      if notify.complete? and @backer.value == notify.amount
+        @backer.update_attribute :key, notify.transaction_id
+        # @backer.update_attribute :payment_token, params[:token]
+        @backer.build_payment_detail.update_from_service
+        @backer.confirm!
+      else
+        logger.error("Failed to verify Paypal's notification, please investigate")
+      end
+    end
+
+    render nothing: true
+  end
 
   def pay
     @gateway = ActiveMerchant::Billing::PaypalAdaptivePayment.new(
@@ -13,19 +33,20 @@ class PaypalController < ApplicationController
     @backer = Backer.find params[:id]
 
     # this sets the data for whom to pay (the project owner)
-    recipients = [{email: @backer.project.user.email, amount: @backer.value, primary: true}]
+    #TODO: remove 7.5%
+    recipients = [{email: @backer.project.user.email, amount: @backer.value, primary: false}]
 
     response = @gateway.setup_purchase(
       return_url: success_paypal_url(@backer),
       cancel_url: cancel_paypal_url(@backer),
       #NOTE: I dont' think we'll need IPN notifications
-      # ipn_notification_url: url_for(:action => 'notify_action', :only_path => false),
+      # url_for(:action => 'notify_action', :only_path => false)
+      ipn_notification_url: notifications_paypal_url(@backer),
       receiver_list: recipients,
-      currency_code: :BRL,
+      currency_code: 'BRL',
       description: t('paypal_description', scope: SCOPE),
       items: [{
           name: @backer.project.name,
-          
           amount: @backer.value
           #NOTE: Donno exactly what info should be sent, but that's
           # a minor detail.
@@ -51,58 +72,14 @@ class PaypalController < ApplicationController
   end
 
   def success
-    @paypal = Paypal::Express::Request.new(
-      username: ::Configuration[:paypal_username],
-      password: ::Configuration[:paypal_password],
-      signature: ::Configuration[:paypal_signature]
-    )
-
     @backer = Backer.find params[:id]
-    begin
-      details = @paypal.details(params[:token])
-      checkout = @paypal.checkout!(
-        params[:token],
-        details.payer.identifier,
-        paypal_payment(@backer)
-      )
-      info = checkout.payment_info.first
-      if info.payment_status == "Completed"
-        @backer.update_attribute :key, info.transaction_id
-        @backer.update_attribute :payment_token, params[:token]
-        @backer.build_payment_detail.update_from_service
-        @backer.confirm!
-        flash[:success] = t('success', scope: SCOPE)
-        redirect_to thank_you_path
-      else
-        flash[:failure] = t('paypal_error', scope: SCOPE)
-        return redirect_to new_project_backer_path(@backer.project)
-      end
-    rescue
-      flash[:failure] = t('paypal_error', scope: SCOPE)
-      return redirect_to new_project_backer_path(@backer.project)
-
-    end
+    @project = @backer.project
   end
 
   def cancel
     @backer = Backer.find params[:id]
     flash[:failure] = t('paypal_cancel', scope: SCOPE)
     redirect_to new_project_backer_path(@backer.project)
-  end
-
-  protected
-
-  def paypal_payment(backer)
-    Paypal::Payment::Request.new(
-      currency_code: :BRL,
-      amount: backer.value,
-      description: t('paypal_description', scope: SCOPE),
-      items: [{
-          name: backer.project.name,
-          description: t('paypal_description', scope: SCOPE),
-          amount: backer.value
-        }]
-    )
   end
 
 end

@@ -52,54 +52,61 @@ describe PaypalController do
   describe 'GET /success' do
     describe "success" do
       before{
-        request = mock()
-        payer = mock({identifier: "123"})
-        details = mock({payer: payer})
-        request.stubs(:details).with("abc").returns(details)
+        get :success, id: @backer.id, locale: :pt
+      }      
+      it{ should be_success }
+    end
+  end
 
-        info = mock(payment_status: "Completed", transaction_id: "99887766")
-        checkout = mock({payment_info: [info]})
-        request.stubs(:checkout!).returns(checkout)
-        Paypal::Express::Request.stubs(:new).returns(request)
-        get :success, id: @backer.id, locale: :pt, token: "abc"
+  include ActiveMerchant::Billing::Integrations
+  describe 'GET /notifications' do
+    describe "success" do
+      before{
+        notify = mock item_id: @backer.id, acknowledge: true, complete?: true, amount: @backer.value, transaction_id: "99887766"
+        PaypalAdaptivePayment::Notification.stubs(:new).returns(notify)
+        
+        get :notifications, id: @backer.id, locale: :pt
         @backer.reload
       }      
-      it{ should redirect_to(thank_you_path) }
+      its(:body){ subject.strip.should be_empty }
+
       it("backer should be confirmed"){ @backer.should be_confirmed }    
       it("backer should have the correct key"){ @backer.key.should == "99887766" }
-      it("backer should have the correct payment_token"){ @backer.payment_token.should == "abc" }
-      include_examples :success_flash
     end
-    describe "failure" do
+    describe "failure - does not acknowledge" do
       before{
-        request = mock()
-        payer = mock({identifier: "123"})
-        details = mock({payer: payer})
-        request.stubs(:details).with("abc").returns(details)
+        notify = mock item_id: @backer.id, acknowledge: false
+        PaypalAdaptivePayment::Notification.stubs(:new).returns(notify)
+        
+        get :notifications, id: @backer.id, locale: :pt
+        @backer.reload
+      }      
+      its(:body){ subject.strip.should be_empty }
+      it("backer should not be confirmed"){ @backer.should_not be_confirmed }
+    end
+    describe "failure - is not complete" do
+      before{
+        notify = mock item_id: @backer.id, acknowledge: true, complete?: false
+        PaypalAdaptivePayment::Notification.stubs(:new).returns(notify)
+        
+        get :notifications, id: @backer.id, locale: :pt
+        @backer.reload
+      }      
+      its(:body){ subject.strip.should be_empty }
+      it("backer should not be confirmed"){ @backer.should_not be_confirmed }
+    end
+    describe "failure - price does not match" do
+      before{
+        notify = mock item_id: @backer.id, acknowledge: true, complete?: true, amount: (@backer.value-1)
+        PaypalAdaptivePayment::Notification.stubs(:new).returns(notify)
+        
+        get :notifications, id: @backer.id, locale: :pt
+        @backer.reload
+      }      
+      its(:body){ subject.strip.should be_empty }
+      it("backer should not be confirmed"){ @backer.should_not be_confirmed }
+    end
 
-        info = mock(payment_status: "Error")
-        checkout = mock({payment_info: [info]})
-        request.stubs(:checkout!).returns(checkout)
-        Paypal::Express::Request.stubs(:new).returns(request)
-        get :success, id: @backer.id, locale: :pt, token: "abc"
-        @backer.reload
-      }      
-      it("backer should not be confirmed"){ @backer.should_not be_confirmed }    
-      include_examples :redirect_back_to_payment
-      include_examples :failure_flash
-    end
-    describe "failure with exception" do
-      before{
-        request = mock()
-        request.stubs(:details).with("abc").raises
-        Paypal::Express::Request.stubs(:new).returns(request)
-        get :success, id: @backer.id, locale: :pt, token: "abc"
-        @backer.reload
-      }      
-      it("backer should not be confirmed"){ @backer.should_not be_confirmed }    
-      include_examples :redirect_back_to_payment
-      include_examples :failure_flash
-    end
   end
 
   describe 'GET /cancel' do
