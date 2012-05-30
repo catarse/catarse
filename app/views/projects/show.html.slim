@@ -79,6 +79,7 @@
               - else
                 = @project.about_html.html_safe
               = render "admin_fields" if current_user and current_user.admin
+        .clearfix
         #loading= image_tag "loading.gif"
       .clearfix
     .sidebar
