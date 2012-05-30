@@ -344,17 +344,10 @@ en:
   here: here
   i_backed: "I backed the project %{name} on @Catarse_"
   i_just_backed: "I just backed the project %{name} on @Catarse_"
-  just:
-    api_test: "no text"
   layouts:
-    application:
-      menu:
-        explore: "Explore the projects"
-        login: "Sign in"
-        signup: "Sign up"
-        submit: "Submit your project"
-      notifications:
-        new_curated_pages: "Now we have cathartic channels, <a href='#curated_pages' id='curated_link'>check out</a>!"
+    login:
+      login_with_facebook: "sign in with your facebook account"
+      remember_me: "Remember me and keep me connected."
     header:
       blog: blog
       help: help
@@ -366,35 +359,9 @@ en:
     recommended_header:
       sugest_for_you: "suggested for you"
       highlight_project: "featured project"
-    footer:
-      blog: "Our blog"
-      comum: "Grupo Comum"
-      email: Contact
-      facebook: "Our Facebook"
-      faq: FAQ/Help
-      guidelines: "How does it work?"
-      privacy: "Privacy policy"
-      terms: "Terms of use"
-      twitter: "Our Twitter"
-    login:
-      another_social: "Sign in with <a href='javascript:void(0);' id='login_with_another_social'>another service</a>"
-      description_html: "We will <strong>never</strong> know your password or any other secret data from the chosen social network. We will only have access to your basic information, like name, photo and email."
-      have_facebook_account: "Does not have a facebook account?"
-      login_with_facebook: "sign in with your facebook account"
-      new_user_from_email: "Sign in with <a href='%{login_path}' id='login_with_mail'>your email</a>"
-      or: or
-      remember_me: "Remember me and keep me connected."
-      tips_html: "<strong>Remember with which social network you signed up</strong>. You will always access your account with it."
-      title: "Enter with your favorite social network"
-      title_with_email: "Sign in using your email"
-    pre_header:
-      back_notice_html: "You backed the project %{link}. Tell everyone what you just did!"
-      content_html: "Want to know how to back a project? %{link} a step-by-step guide that we published in our blog."
-      help_link: "Check out here"
     user:
       logout: Logout
       my_credits: "My credits"
-      my_profile: "My profile"
   not_informed: "not informed"
   notify_locale: "We identified your language by your browser. If you prefer another one, click on one of the flags on the right."
   on_the_spot:
@@ -426,6 +393,10 @@ en:
       text_title_html: "You are now part of the group that does everything to make %{link} happen."
       title: "Thank you"
   project:
+    start:
+      email_subject: ~
+      email_text: ~
+      notification_text: ~
     finish:
       successful:
         email_subject: "Hooray! The project you backed was successful on Catarse!"
@@ -518,20 +489,9 @@ en:
       rewards_description: "We believe that the best way to inspire people to back a project is offering excelent – and creative! – rewards. Everybody loves limited editions, unique things and joyfull experiences (parties, candies, balloon traveling!). Spend some time devising creative rewards and people will be interested."
       rewards_title: Rewards
       submit: "Submit project"
-    home_page_projects:
-      explore_recommended: "Explore more recommended projects"
-      subtitle: "Discover the projects that caused us a Catharsis :) every day a new selection."
-      title: "Our cathartic selection!"
-    index:
-      expiring: "Final countdown"
-      recent: "Recent projects"
-      recommended: "Recommended projects"
-      successful: "Successful projects"
     index_header:
       subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
       title: "Make the projects you believe in happen"
-    index_meta_tags:
-      description: "Fund projects collaboratively and become part of something bigger. Promote a collective catharsis! You're the missing part in this story."
     new:
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
       title: "Submit your project"
@@ -584,19 +544,6 @@ en:
       subtitle_html: "A project by %{link}"
       without_city: "A project in %{category_name}, by %{author}"
       with_city: "A project in %{category_name}, in %{city}, by %{author}"
-    project_list:
-      expiring:
-        explore: "Explore more projects in the final countdown"
-        subtitle: "Uh! Time's almost up for these ones...back'em while you can!"
-        title: "Final countdown"
-      recent:
-        explore: "Explore more recent projects"
-        subtitle: "Projects that just arrived on Catarse. Smell as if they just came out of the oven..."
-        title: "Fresh and new"
-      successful:
-        explore: "Explore more successful projects"
-        subtitle: "Meet our newest prides :) tomorrow your project might be here!"
-        title: "Successful projects"
     project_updates:
       empty: "This project didn't have updates yet. But wait and see =D"
       submit: "Send update"
@@ -943,4 +890,5 @@ en:
       default: "%B %d, %Y %H:%M"
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
+      updates: ~
     pm: ~
