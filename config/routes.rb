@@ -96,14 +96,13 @@ Catarse::Application.routes.draw do
 
   resources :blog, only: :index do
   end
-  
+
   resources :curated_pages do
     collection do
       post 'update_attribute_on_the_spot'
     end
   end
   match "/pages/:permalink" => "curated_pages#show", as: :curated_page
-  match "/:permalink" => "projects#show", as: :project_by_slug
 
   # Non production routes
   if Rails.env == "test"
@@ -111,4 +110,8 @@ Catarse::Application.routes.draw do
   elsif Rails.env == "development"
     resources :emails, :only => [ :index ]
   end
+
+
+  match "/:permalink" => "projects#show", as: :project_by_slug
+
 end
