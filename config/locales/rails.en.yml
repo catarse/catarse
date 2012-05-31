@@ -1,0 +1,5 @@
+en:
+  number:
+    currency:
+      format:
+        unit: R$
