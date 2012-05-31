@@ -20,23 +20,6 @@
             .alert
               #credits_notice= t('.credits_notice_html', :credits => number_to_currency((current_user.credits - @backer.value), :unit => 'R$', :precision => 0, :delimiter => '.'))
       - else
-        /.bootstrap-alert
-        /  .alert.alert-info
-        /    #international_payment
-        /      %h1
-        /        = t('.international.title')
-        /        %a#international_link{ :href => '#' }
-        /          = t('click_here')
-        /      #international_expanded.hide
-        /        %h1= t('.international.description')
-        /        .international_important= t('.international.important_html')
-        /        = form_tag(pay_paypal_path(@backer), :method => :get) do
-        /          %fieldset
-        /            = check_box_tag 'accept_international'
-        /            = label_tag 'accept_international', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
-        /          %fieldset
-        /            .bootstrap-twitter
-        /              = submit_tag t('.international.submit'), :disabled => true, :id => 'international_submit', :class => 'btn'
       .bootstrap-form
         = semantic_form_for current_user, :url => checkout_project_backer_path(@backer.project, @backer), :html => { :id => 'review_form', :class => "form-horizontal #{('dont_align' if @backer.credits)}" } do |form|
           = hidden_field_tag 'backer_id', @backer.id

@@ -88,12 +88,14 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.8)
     annotate (2.4.0)
+    arel (2.0.10)
     arel (3.0.2)
-    auto_html (1.4.2)
+    auto_html (1.3.6)
       RedCloth
       redcarpet
       rinku
       tag_helper
+    auto_html (1.4.2)
     bcrypt-ruby (3.0.1)
     bourbon (2.1.0)
       sass (>= 3.1)
@@ -310,8 +312,11 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redcarpet (2.1.1)
+    responders (0.6.5)
     responders (0.9.1)
       railties (~> 3.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rinku (1.5.1)
     rmagick (2.13.1)
     rspec (2.10.0)
