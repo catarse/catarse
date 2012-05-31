@@ -858,8 +858,8 @@ div.project .box .follow_project:hover {
   top: 50%;
   left: 50%;
   width: 660px;
-  height: 460px;
-  margin-top: -240px;
+  height: 480px;
+  margin-top: -260px;
   margin-left: -340px;
   z-index: 500;
   padding: 20px;
@@ -867,7 +867,7 @@ div.project .box .follow_project:hover {
   color: white;
   text-shadow: black 1px 1px 1px;
 }
-/* line 21, ../../app/stylesheets/miv/_embed.sass */
+/* line 18, ../../app/stylesheets/miv/_embed.sass */
 #project_embed h1 {
   font-family: "museo-500";
   font-size: 24px;
@@ -875,13 +875,13 @@ div.project .box .follow_project:hover {
   margin-bottom: 24px;
   color: white;
 }
-/* line 27, ../../app/stylesheets/miv/_embed.sass */
+/* line 24, ../../app/stylesheets/miv/_embed.sass */
 #project_embed h2 {
   padding: 0;
   margin-bottom: 16px;
   color: white;
 }
-/* line 31, ../../app/stylesheets/miv/_embed.sass */
+/* line 28, ../../app/stylesheets/miv/_embed.sass */
 #project_embed a.close {
   font-family: "Lato-Bold";
   color: white;
@@ -916,7 +916,7 @@ div.project .box .follow_project:hover {
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 50, ../../app/stylesheets/miv/_embed.sass */
+/* line 46, ../../app/stylesheets/miv/_embed.sass */
 #project_embed a.close:hover, #project_embed a.close:focus {
   color: white;
   -moz-transform: scale(1.05, 1.05);
@@ -925,33 +925,24 @@ div.project .box .follow_project:hover {
   -ms-transform: scale(1.05, 1.05);
   transform: scale(1.05, 1.05);
 }
-/* line 53, ../../app/stylesheets/miv/_embed.sass */
+/* line 49, ../../app/stylesheets/miv/_embed.sass */
 #project_embed #project_box_embed {
   float: left;
 }
-/* line 55, ../../app/stylesheets/miv/_embed.sass */
-#project_embed #project_box_embed iframe {
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -o-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -khtml-border-radius: 8px;
-  border-radius: 8px;
-}
-/* line 57, ../../app/stylesheets/miv/_embed.sass */
+/* line 51, ../../app/stylesheets/miv/_embed.sass */
 #project_embed #project_box_embed textarea {
   padding-right: 4px;
   margin-top: 8px;
   height: 48px;
-  width: 244px;
+  width: 214px;
   background-color: #e3e2dc;
   font-size: 14px;
 }
-/* line 64, ../../app/stylesheets/miv/_embed.sass */
+/* line 58, ../../app/stylesheets/miv/_embed.sass */
 #project_embed #project_video_embed {
   float: right;
 }
-/* line 66, ../../app/stylesheets/miv/_embed.sass */
+/* line 60, ../../app/stylesheets/miv/_embed.sass */
 #project_embed #project_video_embed iframe {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -960,74 +951,75 @@ div.project .box .follow_project:hover {
   -khtml-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 68, ../../app/stylesheets/miv/_embed.sass */
+/* line 62, ../../app/stylesheets/miv/_embed.sass */
 #project_embed #project_video_embed textarea {
   padding-right: 4px;
   margin-top: 8px;
   height: 48px;
-  width: 344px;
+  width: 358px;
   background-color: #e3e2dc;
   font-size: 14px;
 }
 
-/* line 76, ../../app/stylesheets/miv/_embed.sass */
+/* line 71, ../../app/stylesheets/miv/_embed.sass */
+#embed .project {
+  margin: 0;
+}
+
+/* line 74, ../../app/stylesheets/miv/_embed.sass */
 #video_embed {
   text-align: center;
-  padding: 16px;
-  padding-bottom: 0;
+  padding: 0;
 }
-/* line 80, ../../app/stylesheets/miv/_embed.sass */
-#video_embed iframe {
-  -moz-border-radius-topleft: 8px;
-  -webkit-border-top-left-radius: 8px;
-  -o-border-top-left-radius: 8px;
-  -ms-border-top-left-radius: 8px;
-  -khtml-border-top-left-radius: 8px;
-  border-top-left-radius: 8px;
-  -moz-border-radius-topright: 8px;
-  -webkit-border-top-right-radius: 8px;
-  -o-border-top-right-radius: 8px;
-  -ms-border-top-right-radius: 8px;
-  -khtml-border-top-right-radius: 8px;
-  border-top-right-radius: 8px;
-  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-  -o-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-}
-/* line 84, ../../app/stylesheets/miv/_embed.sass */
+/* line 77, ../../app/stylesheets/miv/_embed.sass */
 #video_embed h1 {
-  font-family: "museo-500";
-  font-size: 24px;
-  line-height: 26px;
+  font-family: "Lato-Bold";
+  font-size: 22px;
+  line-height: 22px;
   padding: 12px 0 8px 0;
 }
-/* line 89, ../../app/stylesheets/miv/_embed.sass */
+/* line 82, ../../app/stylesheets/miv/_embed.sass */
 #video_embed h1 a {
+  color: black;
   text-decoration: none;
-  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 3px;
 }
-/* line 92, ../../app/stylesheets/miv/_embed.sass */
+/* line 85, ../../app/stylesheets/miv/_embed.sass */
+#video_embed h1 a:hover {
+  color: #59af6d;
+}
+/* line 87, ../../app/stylesheets/miv/_embed.sass */
 #video_embed h2 {
+  font-family: "Lato-Regular";
   font-size: 14px;
   line-height: 16px;
   color: #666666;
   padding: 0;
-  text-shadow: white 1px 1px 0px;
 }
-/* line 98, ../../app/stylesheets/miv/_embed.sass */
+/* line 93, ../../app/stylesheets/miv/_embed.sass */
 #video_embed h2 a {
   text-decoration: none;
-  text-shadow: white 1px 1px 0px;
+  color: #4383d1;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
-/* line 102, ../../app/stylesheets/miv/_embed.sass */
+/* line 97, ../../app/stylesheets/miv/_embed.sass */
+#video_embed h2 a:hover {
+  color: #e75297;
+}
+/* line 100, ../../app/stylesheets/miv/_embed.sass */
 #video_embed #platform_link h1 {
-  font-family: "museo-700";
+  font-family: "Lato-Regular";
   font-size: 28px;
   line-height: 30px;
   padding: 0;
 }
-/* line 107, ../../app/stylesheets/miv/_embed.sass */
+/* line 105, ../../app/stylesheets/miv/_embed.sass */
 #video_embed #platform_link h1 a {
   color: #222222;
   text-decoration: none;
@@ -1036,11 +1028,11 @@ div.project .box .follow_project:hover {
   -o-transition: all 1s;
   transition: all 1s;
 }
-/* line 111, ../../app/stylesheets/miv/_embed.sass */
+/* line 109, ../../app/stylesheets/miv/_embed.sass */
 #video_embed #platform_link h1 a:hover {
   text-shadow: rgba(0, 150, 0, 0.4) 1px 1px 10px;
 }
-/* line 113, ../../app/stylesheets/miv/_embed.sass */
+/* line 111, ../../app/stylesheets/miv/_embed.sass */
 #video_embed #video_embed_footer {
   position: fixed;
   bottom: 4px;
