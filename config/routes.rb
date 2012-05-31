@@ -3,6 +3,13 @@ Catarse::Application.routes.draw do
     get "/login" => "devise/sessions#new"
   end
 
+  # Non production routes
+  if Rails.env == "test"
+    match "/fake_login" => "sessions#fake_create", :as => :fake_login
+  elsif Rails.env == "development"
+    resources :emails, :only => [ :index ]
+  end
+
   ActiveAdmin.routes(self)
 
   filter :locale
@@ -78,9 +85,10 @@ Catarse::Application.routes.draw do
 
   resources :paypal, only: [] do
     member do
-      get 'pay'
-      get 'success'
-      get 'cancel'
+      get :pay
+      get :success
+      get :cancel
+      get :notifications
     end
   end
 
@@ -90,14 +98,6 @@ Catarse::Application.routes.draw do
     end
   end
   match "/pages/:permalink" => "curated_pages#show", as: :curated_page
-
-  # Non production routes
-  if Rails.env == "test"
-    match "/fake_login" => "sessions#fake_create", :as => :fake_login
-  elsif Rails.env == "development"
-    resources :emails, :only => [ :index ]
-  end
-
 
   match "/:permalink" => "projects#show", as: :project_by_slug
 

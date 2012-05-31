@@ -3,7 +3,7 @@ module HelperMethods
   # Put helper methods you need to be available in all tests here.
 
   def fake_login
-    visit fake_login_path
+    visit '/fake_login'
   end
 
   def user
