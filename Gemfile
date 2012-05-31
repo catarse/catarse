@@ -6,7 +6,7 @@ end
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.4'
 gem 'rake', '0.9.2.2'
 
 # Database [Putting pg to the end because of a weird bug with Lion, pg and openssl]
