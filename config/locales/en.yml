@@ -66,50 +66,6 @@ en:
   "no": "No"
   "yes": "Yes"
   accept_terms_html: "I have read and accepted the %{link}."
-  active_admin:
-    dashboard: Dashboard
-    dashboard_welcome:
-      welcome: "Welcome to our admin dashboard"
-      call_to_action: foo
-    view: View
-    edit: Edit
-    delete: Remove
-    delete_confirmation: ~
-    new_model: ~
-    create_model: ~
-    edit_model: ~
-    update_model: ~
-    delete_model: ~
-    details: ~
-    cancel: ~
-    empty: ~
-    previous: ~
-    next: ~
-    download: ~
-    has_many_new: ~
-    has_many_delete: ~
-    filter: ~
-    clear_filters: ~
-    search_field: ~
-    equal_to: ~
-    greater_than: ~
-    less_than: ~
-    main_content: ~
-    logout: ~
-    sidebars:
-      filters: ~
-    pagination:
-      empty: ~
-      one: ~
-      one_page: ~
-      multiple: ~
-      entry:
-        one: ~
-        other: ~
-    any: ~
-    blank_slate:
-      content: ~
-      link: ~
   activerecord:
     errors:
       models:
