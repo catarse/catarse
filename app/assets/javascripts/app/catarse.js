@@ -34,11 +34,6 @@ var CATARSE = {
         Backbone.history.start()
     }
   },
-  blog:{
-    index: function(){
-      window.view = new CATARSE.BlogIndexView({el: $("body") });
-    }
-  },
   explore:{
     index: function(){
        window.view = new CATARSE.ExploreIndexView({el: $("body") });
