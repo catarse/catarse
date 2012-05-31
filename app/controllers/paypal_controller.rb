@@ -58,9 +58,12 @@ class PaypalController < ApplicationController
     # uncomment the line below:
     # raise @gateway.debug.inspect
     if response.success?
+      #puts response.pay_key
+      pay_key = response.pay_key
       @backer.update_attribute :payment_method, 'PayPal'
+      @backer.update_attribute :payment_token, pay_key
       # for redirecting the customer to the actual paypal site to finish the payment.
-      redirect_to @gateway.redirect_url_for(response.pay_key)
+      redirect_to @gateway.redirect_url_for(pay_key)
       #NOTE: The original gem code is below... I'm still not sure
       # wether the line above will actually work.
       # redirect_to @gateway.redirect_url_for(response["payKey"])

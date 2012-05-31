@@ -9,10 +9,6 @@
           = render :partial => 'project', :locals => {:project => @first_project, :custom_class => 'first' } if @first_project
           = render :partial => 'project', :locals => {:project => @second_project } if @second_project
           = render :partial => 'project', :locals => {:project => @third_project, :custom_class => 'last' } if @third_project
-          /= raise @expiring.inspect
-          / = render :partial => 'project', :collection => @expiring
-          / - @expiring.each_with_index do |item,i|
-          /   == render 'project', :project => item, :custom_class => (@expiring.length == (i+1) ? 'without_omega' : '')
         .explore_link
           hr
           = link_to t('main.links.selected'), explore_path()+"#recommended"
@@ -22,8 +18,6 @@
           .title
             h2= t('sections.expiring.title')
         .projects
-          /= raise @expiring.inspect
-          /= render :partial => 'project', :collection => @expiring
           - @expiring.each_with_index do |item,i|
             == render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
@@ -35,8 +29,6 @@
           .title
             h2= t('sections.recents.title')
         .projects
-          /= raise @expiring.inspect
-          / = render :partial => 'project', :collection => @recent
           - @recent.each_with_index do |item,i|
             == render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link

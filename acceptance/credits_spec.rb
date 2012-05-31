@@ -61,26 +61,30 @@ feature "Credits Feature" do
 
     # Requesting refund for the third row
     within rows[2] do
-      click_on "Solicitar estorno"
+      rows[2].find(".status").find('a').click
       verify_translations
       column = rows[2].all("td")[4]
       # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
       sleep 3
       column.text.should == "Pedido enviado com sucesso"
     end
+    click_on "OK"
+    verify_translations
     user.reload
     user.credits.should == 50
     find("#current_credits").should have_content(user.display_credits)
 
     # And now I try to request refund for the fourth row, but don't have enough credits
     within rows[3] do
-      click_on "Solicitar estorno"
+      rows[3].find(".status").find('a').click
       verify_translations
       column = rows[3].all("td")[4]
       # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
-      sleep 2
+      sleep 3
       column.text.should == "Você não possui créditos suficientes para realizar este estorno."
     end
+    click_on "OK"
+    verify_translations
     user.reload
     user.credits.should == 50
     find("#current_credits").should have_content(user.display_credits)

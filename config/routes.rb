@@ -3,20 +3,18 @@ Catarse::Application.routes.draw do
     get "/login" => "devise/sessions#new"
   end
 
+  # Non production routes
+  if Rails.env == "test"
+    match "/fake_login" => "sessions#fake_create", :as => :fake_login
+  elsif Rails.env == "development"
+    resources :emails, :only => [ :index ]
+  end
+
   ActiveAdmin.routes(self)
 
   filter :locale
 
   root to: 'projects#index'
-
-  # New design routes
-  match '/new_blog' => 'static#new_blog'
-  match '/new_profile' => 'static#new_profile'
-  match '/new_project_profile' => 'static#new_project_profile'
-  match '/new_discover' => 'static#new_discover'
-  match '/new_payment' => 'static#new_payment'
-  match '/new_opendata' => 'static#new_opendata'
-  match '/new_curated_page' => 'static#new_curated_page'
 
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
   match "/reports/location/:project_id/backers" => "reports#location_by_project", :as => :backers_location_report
@@ -94,23 +92,12 @@ Catarse::Application.routes.draw do
     end
   end
 
-  resources :blog, only: :index do
-  end
-
   resources :curated_pages do
     collection do
       post 'update_attribute_on_the_spot'
     end
   end
   match "/pages/:permalink" => "curated_pages#show", as: :curated_page
-
-  # Non production routes
-  if Rails.env == "test"
-    match "/fake_login" => "sessions#fake_create", :as => :fake_login
-  elsif Rails.env == "development"
-    resources :emails, :only => [ :index ]
-  end
-
 
   match "/:permalink" => "projects#show", as: :project_by_slug
 

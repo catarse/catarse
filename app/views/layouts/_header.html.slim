@@ -8,7 +8,7 @@
       = text_field_tag :search, nil, autocomplete: "off"
       = submit_tag
   nav.menu
-    = link_to t('layouts.header.blog'), blog_index_path
+    = link_to t('layouts.header.blog'), t('site.blog'), target: :_blank
     = link_to t('layouts.header.help'), faq_path
     - if current_user
       = link_to '#', class: 'my_profile_link' do
