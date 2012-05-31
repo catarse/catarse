@@ -84,9 +84,6 @@ Catarse::Application.routes.draw do
     end
   end
 
-  resources :blog, only: :index do
-  end
-
   resources :curated_pages do
     collection do
       post 'update_attribute_on_the_spot'
