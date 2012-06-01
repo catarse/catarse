@@ -278,6 +278,7 @@ pt:
       explore: explore
       submit_project: envie
       profile: "meu perfil"
+      account: "minha conta"
     recommended_header:
       sugest_for_you: "sugerido para você"
       highlight_project: "projeto em destaque"
@@ -338,7 +339,7 @@ pt:
       waiting_confirmation: aguardando
   projects:
     box:
-      by: "por"
+      by: por
     admin_fields:
       title: "Campos para o admin"
     back_project:

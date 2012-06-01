@@ -122,13 +122,9 @@ en:
     display_time: "%{time_ago} ago"
   credits:
     index:
-      buy_credits: "Buy credits"
-      buy_credits_html: "<strong>You don't need to have credits to back a project</strong>. You can pay online when you proceed to back the project. But if you like to back many projects, it's a good idea to buy credits in advance: this way you won't need to make a payment each time you back a project."
-      confirm: "Are you sure you want to request a refund for this payment?"
       back_date: "Back date"
       current_credits_html: "Your current balance is <span id=\"current_credits\">%{credits}</span> in credits."
       important_html: "You have <strong>up to 180 days after the payment date</strong> to ask for a refund. If you ask for a refund, the value of your payment will be deducted from your credits."
-      no_refunds: "You don't have any payment that can be refunded"
       project: Project
       refund_expration_date: "Refund deadline"
       refunded: Refunded
@@ -136,7 +132,6 @@ en:
       request_refund: "Request refund"
       requested_refund: "Requested refund"
       status: Status
-      subtitle: "When a project you backed is not funded, you will receive credits to back other projects. But if you prefer, you can request a refund of the payment here."
       title: "My credits"
       value: Value
     refund:
@@ -219,35 +214,6 @@ en:
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account was successfully unlocked. You are now signed in."
   error: "Ooops! There was an error. Please try again."
-  errors:
-    format: ~
-    messages:
-      accepted: ~
-      blank: ~
-      confirmation: ~
-      empty: ~
-      equal_to: ~
-      even: ~
-      exclusion: ~
-      greater_than: ~
-      greater_than_or_equal_to: ~
-      inclusion: ~
-      invalid: ~
-      less_than: ~
-      less_than_or_equal_to: ~
-      not_a_number: ~
-      not_an_integer: ~
-      odd: ~
-      record_invalid: ~
-      taken: ~
-      too_long: ~
-      too_short: ~
-      wrong_length: ~
-    template:
-      body: ~
-      header:
-        one: ~
-        other: ~
   explore:
     index:
       categories: Categories
@@ -312,6 +278,7 @@ en:
       explore: explore
       submit_project: submit
       profile: "my profile"
+      account: "my account"
     recommended_header:
       sugest_for_you: "suggested for you"
       highlight_project: "featured project"
@@ -343,8 +310,6 @@ en:
       error: "Ooops. You can only access this page after backing a project."
       header_subtitle: "Without you maybe this project wouldn't stand a chance. Welcome to the team!"
       header_title: "Thank you! :D"
-      not_successful: "This project will only be funded if at least %{goal} is reached until %{expires_at}. In case it is not successful, you will receive your money back in credits on Catarse. But you don't want this to happen, do you? Use this opportunity, then, to spread the word!"
-      successful: "This project will be funded on %{expires_at}, thanks to you and %{total_backers} more people. Thanks a lot!"
       text_subtitle: "Tell everyone what you just did"
       text_title_html: "You are now part of the group that does everything to make %{link} happen."
       title: "Thank you"
@@ -378,10 +343,6 @@ en:
     admin_fields:
       title: "Admin fields"
     back_project:
-      backed_plural: backed
-      backed_singular: backed
-      has: have
-      person: Person
       project_warning:
         not_successful:
           expired: "This project didn't reach the goal of %{goal} until %{date} and wasn't funded"
@@ -433,9 +394,6 @@ en:
         you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
-    curated_pages_list:
-      subtitle: "Discover projects curated by some of our cathartic partners"
-      title: "Cathartic channels"
     form:
       add_reward: "Add reward"
       important_html: "Please notice that Catarse will charge 7.5% if your project is successful, and our payment gateways (MoIP and Paypal) charge a fee that varies, usually, from 4% to 5% per transaction. Add this values to your budget in order to execute your project with no surprises."
@@ -486,16 +444,11 @@ en:
       total_users: users
       user: User
       value: Value
-    press:
-      title: "Check out what they're saying about Catarse in the press"
     project:
       backed: backed
       reached: reached
     project_backers:
       empty: "Nobody backed this project so far. How about being the first one?"
-    project_comments:
-      require_login_html: "Want to send a comment? %{link} to login."
-      submit: "Send comment"
     project_header:
       subtitle_html: "A project by %{link}"
       without_city: "A project in %{category_name}, by %{author}"
@@ -623,10 +576,6 @@ en:
         comments: Comments
         credits: Credits
         settings: Settings
-    admin_fields:
-      credits: "available in credits"
-      no_email: "haven't filled the email yet"
-      title: "%{name}' info"
     backs:
       anonymous: "Anonymous back."
       no_backs: "%{name} haven't backed any project yet. But we know it's just a matter of time! :D"

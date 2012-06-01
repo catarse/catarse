@@ -10,7 +10,7 @@ feature "Login Feature" do
     fake_login
     verify_translations
     page.should have_css('.user')
-    page.should have_link(user.name)
+    page.should have_link(I18n.t('layouts.header.account'))
   end
 
   scenario "After insertion of a new provider it should appear in the login options" do
