@@ -77,6 +77,7 @@ gem 'active_paypal_adaptive_payment', '~> 0.3.13'
 gem 'httpclient', '2.2.5'
 gem 'selenium-webdriver', '2.21.2'
 gem 'bourbon'
+gem 'paypal-express', :require => 'paypal'
 
 # Server
 gem 'thin'
