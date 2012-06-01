@@ -4,8 +4,8 @@ everything_ok = function(){
   if($('#backer_credits').val() == "false"){
     if(!ok('#user_full_name'))
       all_ok = false
-    if(!cpf_ok())
-      all_ok = false
+    //if(!cpf_ok())
+      //all_ok = false
     if(!email_ok())
       all_ok = false
     if(!zip_code_ok())
