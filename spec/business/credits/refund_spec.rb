@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Credits::Refund do
   before(:each) do
-    @backer = Factory.create(:backer, value: 20)
+    @backer = Factory(:backer, value: 20)
   end
 
   subject { Credits::Refund.new(@backer, @backer.user) }
