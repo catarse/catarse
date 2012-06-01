@@ -12,6 +12,7 @@ gem 'rake', '0.9.2.2'
 # Database [Putting pg to the end because of a weird bug with Lion, pg and openssl]
 gem 'pg'
 gem 'foreigner'
+gem 'activerecord-postgresql-adapter'
 
 # Frontend stuff
 gem 'jquery-rails'
