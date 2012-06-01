@@ -278,6 +278,7 @@ pt:
       explore: explore
       submit_project: envie
       profile: "meu perfil"
+      account: "minha conta"
     recommended_header:
       sugest_for_you: "sugerido para você"
       highlight_project: "projeto em destaque"

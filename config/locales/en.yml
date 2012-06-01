@@ -278,6 +278,7 @@ en:
       explore: explore
       submit_project: submit
       profile: "my profile"
+      account: "my account"
     recommended_header:
       sugest_for_you: "suggested for you"
       highlight_project: "featured project"
