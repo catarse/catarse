@@ -36,7 +36,7 @@ gem 'mailee', '0.5.4', :git => 'https://github.com/danielweinmann/mailee-api.git
 # gem 'will_paginate', ">= 3.0.pre2"
 gem 'weekdays'
 gem 'moip', :git => 'https://github.com/danielweinmann/moip-ruby.git', :ref => 'db1b879358c623b597dc1c221b53336f9f06db0e'
-#gem 'paypal-express', :require => 'paypal'
+gem 'paypal-express', :require => 'paypal'
 gem 'brcep'
 gem "meta_search", "1.0.6"
 gem "RedCloth"
