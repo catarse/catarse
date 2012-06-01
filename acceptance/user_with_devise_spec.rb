@@ -33,7 +33,7 @@ feature "with login page" do
     end
 
     page.should have_css('.user')
-    page.should have_link(user.name)
+    page.should have_link(I18n.t('layouts.header.account'))
   end
 
   scenario "Register new user account" do
@@ -92,7 +92,7 @@ feature "with devise routes" do
     click_button 'user_submit'
 
     page.should have_css('.user')
-    page.should have_link(user.name)
+    page.should have_link(I18n.t('layouts.header.account'))
   end
 
   scenario "Register new user using devise" do
