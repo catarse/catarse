@@ -14,7 +14,7 @@ feature "My profile Feature" do
       Factory(:backer, user: user, confirmed: true)
     end
 
-    click_link user.display_name
+    click_link I18n.t('layouts.header.account')
     verify_translations
     click_link 'meu perfil'
     verify_translations
