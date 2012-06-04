@@ -161,7 +161,7 @@ GEM
     fssm (0.2.9)
     haml (3.1.6)
     has_scope (0.5.1)
-    has_vimeo_video (0.0.3)
+    has_vimeo_video (0.0.4)
       supermodel
       vimeo
     hashie (1.2.0)
@@ -412,7 +412,7 @@ DEPENDENCIES
   foreigner
   formtastic (= 2.0.2)
   haml
-  has_vimeo_video (>= 0.0.3)
+  has_vimeo_video (>= 0.0.4)
   http_accept_language
   httparty (~> 0.6.1)
   httpclient (= 2.2.4)
