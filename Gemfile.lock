@@ -75,6 +75,9 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     addressable (2.2.4)
+    airbrake (3.1.0)
+      activesupport
+      builder
     annotate (2.4.0)
     arel (2.0.10)
     attr_required (0.0.5)
@@ -389,6 +392,7 @@ DEPENDENCIES
   active_paypal_adaptive_payment (~> 0.3.13)
   activeadmin!
   activemerchant (= 1.17.0)
+  airbrake
   annotate
   auto_html (= 1.3.6)
   bourbon
