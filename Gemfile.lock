@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: d4f3880b3323de05f13deb108ba65f3d4e543240
+  revision: 9cb940597ae049aa964f5f3a1d5fe306bbe86f80
   specs:
     activeadmin (0.4.4)
       bourbon (>= 1.0.0)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: git://github.com/svenfuchs/routing-filter.git
-  revision: 6270eba04ee30e03500c8f977efe1189ede3f248
+  revision: ada98cd844c4dfdb59bd418abe45f47606da6cd8
   specs:
     routing-filter (0.3.1)
       actionpack
@@ -89,6 +89,9 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.2.8)
+    airbrake (3.1.0)
+      activesupport
+      builder
     annotate (2.4.0)
     arel (3.0.2)
     attr_required (0.0.5)
@@ -130,13 +133,13 @@ GEM
       sass (~> 3.1)
     compass-960-plugin (0.10.4)
       compass (>= 0.10.0)
-    compass-rails (1.0.1)
-      compass (~> 0.12.0)
+    compass-rails (1.0.2)
+      compass (>= 0.12.0, < 0.14)
     crack (0.1.8)
     curb (0.7.18)
     daemons (1.1.8)
     dalli (2.0.5)
-    database_cleaner (0.7.2)
+    database_cleaner (0.8.0)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -186,7 +189,7 @@ GEM
     fssm (0.2.9)
     haml (3.1.6)
     has_scope (0.5.1)
-    has_vimeo_video (0.0.3)
+    has_vimeo_video (0.0.4)
       supermodel
       vimeo
     hashie (1.2.0)
@@ -427,6 +430,7 @@ DEPENDENCIES
   activeadmin!
   activemerchant (= 1.17.0)
   activerecord-postgresql-adapter
+  airbrake
   annotate
   auto_html (= 1.4.2)
   bourbon
@@ -447,7 +451,7 @@ DEPENDENCIES
   foreigner
   formtastic
   haml
-  has_vimeo_video (>= 0.0.3)
+  has_vimeo_video (>= 0.0.4)
   http_accept_language
   httparty (~> 0.6.1)
   httpclient (= 2.2.5)

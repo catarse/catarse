@@ -2,7 +2,7 @@
 #project_warning
   .bootstrap-alert
     .alert.alert-info
-      = t('.project_warning.content_html', :link => link_to(t('.project_warning.help_link'), "#{t('site.blog')}/post/2816685141/guia-colocar-projeto-catarse", :target => :_blank))
+      = t('.project_warning.content_html', :link => link_to(t('.project_warning.help_link'), "#{t('site.blog')}?p=2816685141", :target => :_blank))
 = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
   = form.inputs do
     = form.input :user_id, :as => :hidden, :value => current_user.id
