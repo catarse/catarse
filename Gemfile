@@ -9,6 +9,7 @@ source 'http://gems.github.com'
 gem 'rails', '3.2.4'
 gem 'rake', '0.9.2.2'
 
+
 # Database [Putting pg to the end because of a weird bug with Lion, pg and openssl]
 gem 'pg'
 gem 'foreigner'
@@ -35,6 +36,7 @@ gem 'cancan'
 gem 'rails_autolink', '~> 1.0.7'
 
 # Tools
+gem "airbrake"
 gem 'feedzirra'
 gem 'formtastic'
 gem "auto_html", '= 1.4.2'
@@ -42,7 +44,7 @@ gem 'validation_reflection', git: 'git://github.com/ncri/validation_reflection.g
 gem 'maxim-sexy_pg_constraints'
 gem 'inherited_resources', '1.3.1'
 gem 'spectator-validates_email', require: 'validates_email'
-gem 'has_vimeo_video', '>= 0.0.3'
+gem 'has_vimeo_video', '>= 0.0.4'
 gem 'wirble'
 gem "on_the_spot"
 gem 'weekdays'
