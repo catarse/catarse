@@ -1,14 +1,14 @@
 en:
   or: or
-  newsletter_ok_header: ~
-  newsletter_ok_body: ~
-  newsletter_error_header: ~
-  newsletter_error_body: ~
+  newsletter_ok_header: "You are subscribed to the newsletter!"
+  newsletter_ok_body: "Your email is now in our newsletter list, thanks for subscribing!"
+  newsletter_error_header: "Woops! There was an error."
+  newsletter_error_body: "Your email could not be added to our newsletter list, please try again later!"
   views:
     pagination:
-      next: ~
-      last: ~
-      truncate: ~
+      next: next
+      last: last
+      truncate: "..."
   statistics:
     backers:
       subtitle: backers
@@ -72,7 +72,7 @@ en:
         user:
           attributes:
             email:
-              not_found: ~
+              not_found: "Your email is not registered, please verify the address or create a new account"
     attributes:
       backer:
         value: Value
@@ -100,7 +100,7 @@ en:
         current_password: "Current password"
         email: Email
         full_name: "Full name"
-        name: ~
+        name: Name
         password: Password
         password_confirmation: "Password Confirmation"
         phone_number: "Mobile phone number"
@@ -284,7 +284,7 @@ en:
       highlight_project: "featured project"
     user:
       logout: Logout
-      my_credits: "My credits"
+      my_credits: "My credit"
   not_informed: "not informed"
   notify_locale: "We identified your language by your browser. If you prefer another one, click on one of the flags on the right."
   on_the_spot:
@@ -315,9 +315,9 @@ en:
       title: "Thank you"
   project:
     start:
-      email_subject: ~
-      email_text: ~
-      notification_text: ~
+      email_subject: "Your project has been received by Catarse's team"
+      email_text: "Thanks for trusting your project to Catarse :)<br><br>We know that you expect a quick reply but, to be quite frank, we take up to 4 days to resnpond, ok? That is because we have a small team working on several projects. Note that the reply can come sooner, so keep atention to your inbox.<br><br>Meanwhile it is worth to get to know the projects that are online (<a href='%{explore_link}' style='color: #E75297 !important;'>%{explore_link}</a>) and - if you like any of them- back it! This is the way to show support for the crowdfunding culture in Brazil and to feed the ecosystem that keeps growing around Catarse.<br><br>Besides that, you will get some inspiration for your own project...<br><br>Stay tuned for updates in <a href='%{facebook}' style='color: #E75297 !important;'>Facebook</a> and get some deeper knowledge about Catarse reading the posts in our <a href='%{blog}' style='color: #E75297 !important;'>blog</a>.<br><br>If you have any doubt, send an email to: %{email}"
+      notification_text: "Your project has been received by Catarse's team"
     finish:
       successful:
         email_subject: "Hooray! The project you backed was successful on Catarse!"
@@ -418,7 +418,7 @@ en:
       no_projects: "No projects found."
       order: Order
       project: Project
-      slug: ~
+      slug: Slug
       recommended: Recommended?
       rejected: Rejected?
       submit: Search
@@ -456,10 +456,10 @@ en:
     project_updates:
       empty: "This project didn't have updates yet. But wait and see =D"
       submit: "Send update"
-      comment: ~
+      comment: "Update text"
       title: "Title of the update"
-      destroy: ~
-      destroy_confirmation: ~
+      destroy: "Remove update"
+      destroy_confirmation: "Do you want to remove the update?"
     project_warning:
       rejected: "This project was not selected to participate on Catarse. Maybe next time! :)"
       waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
@@ -491,7 +491,7 @@ en:
       links: "Where can we find more about you and your project?"
       links_hint: "Leave us as many links as you have, so we can get to know your work and your project better. Doesn't have to be something formal or fancy, just a few useful links."
       video: "Your project already have a video?"
-      video_hint: ~
+      video_hint: "A vimeo link"
       twitter: "Have twitter account?"
       facebook: "Have facebook account?"
       blog: "Have a blog about the project?"
@@ -585,7 +585,7 @@ en:
       title_current_user: "Projects I've backed"
       your_reward: "Your reward"
     current_user_fields:
-      updated: ~
+      updated: "Your information has been updated"
       update_social_info: "Update info"
       social_info: "Contact info"
       twitter: "twitter ( username )"
