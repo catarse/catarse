@@ -27,7 +27,7 @@
           - unless @backer.credits
             = form.inputs do
               = form.input :full_name, :required => true, :as => :string
-              = form.input :cpf, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
+              = form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
               = form.input :email, :required => true, :as => :string
               = form.input :address_street, :required => true, :as => :string
               = form.input :address_number, :required => true, :as => :string
@@ -36,7 +36,7 @@
               = form.input :address_zip_code, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
               = form.input :address_city, :required => true, :as => :string
               = form.input :address_state, :required => true, :as => :select, :collection => State.array
-              = form.input :phone_number, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
+              = form.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}
           .submit
             %fieldset.accept_terms
               = check_box_tag 'accept'
