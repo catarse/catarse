@@ -50,7 +50,8 @@ class ProjectsController < ApplicationController
         @last_tweets ||= []
       end
       format.json do
-        @projects = Project.visible.search(params[:search]).page(params[:page]).per(6)
+        # After the search params we order by ID to avoid ties and therefore duplicate items in pagination
+        @projects = Project.visible.search(params[:search]).order('id').page(params[:page]).per(6)
         respond_with(@projects)
       end
     end
