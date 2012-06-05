@@ -16,10 +16,10 @@
           = on_the_spot_edit @project, :name
         - else
           = @project.name
-      - if @project.user.address_city
-        h4= t('projects.project_header.with_city', :category_name => link_to(@project.category.name, explore_path(:anchor => @project.category.name.parameterize)), :city => @project.user.address_city, :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
-      - else
-        h4= t('projects.project_header.without_city', :category_name => link_to(@project.category.name, explore_path(:anchor => @project.category.name.parameterize)), :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
+      /- if @project.user.address_city
+        /h4= t('projects.project_header.with_city', :category_name => link_to(@project.category.name, explore_path(:anchor => @project.category.name.parameterize)), :city => @project.user.address_city, :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
+      /- else
+      h4= t('projects.project_header.without_city', :category_name => link_to(@project.category.name, explore_path(:anchor => @project.category.name.parameterize)), :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
     .tab_container
       nav#project_menu
         = link_to '#about', :id => 'about_link', :class => 'selected' do
