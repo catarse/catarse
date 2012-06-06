@@ -29,13 +29,13 @@
               = form.input :full_name, :required => true, :as => :string
               = form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
               = form.input :email, :required => true, :as => :string
-              = form.input :address_street, :required => true, :as => :string
-              = form.input :address_number, :required => true, :as => :string
+              = form.input :address_street, :as => :string
+              = form.input :address_number, :as => :string
               = form.input :address_complement, :required => false, :as => :string
-              = form.input :address_neighbourhood, :required => true, :as => :string
-              = form.input :address_zip_code, :required => true, :as => :string, :input_html => {:autocomplete => 'off'}
-              = form.input :address_city, :required => true, :as => :string
-              = form.input :address_state, :required => true, :as => :select, :collection => State.array
+              = form.input :address_neighbourhood, :as => :string
+              = form.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
+              = form.input :address_city, :as => :string
+              = form.input :address_state, :as => :select, :collection => State.array
               = form.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}
           .submit
             %fieldset.accept_terms
