@@ -21,8 +21,8 @@ describe Project do
 
   describe ".recent" do
     before do
-      @p = Factory(:project, :created_at => (Date.today - 15.days))
-      Factory(:project, :created_at => (Date.today - 16.days))
+      @p = Factory(:project, :created_at => (Date.today - 14.days))
+      Factory(:project, :created_at => (Date.today - 15.days))
     end
     subject{ Project.recent }
     it{ should == [@p] }
