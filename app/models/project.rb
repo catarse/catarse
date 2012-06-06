@@ -46,7 +46,7 @@ class Project < ActiveRecord::Base
   scope :not_expired, where("finished = false AND expires_at >= current_timestamp")
   scope :expiring, where("finished = false AND expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks')")
   scope :not_expiring, where("NOT (finished = false AND expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks'))")
-  scope :recent, where("projects.created_at > (current_timestamp - interval '1 month')")
+  scope :recent, where("projects.created_at::date >= (current_timestamp - interval '16 days')::date")
   scope :last_week, where("projects.created_at > (current_timestamp - interval '1 week')")
   scope :successful, where(successful: true)
   scope :sort_by_explore_asc, order('(expires_at < current_timestamp) ASC, successful DESC, finished DESC, abs(EXTRACT(epoch FROM current_timestamp - expires_at)), created_at DESC')
