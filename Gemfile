@@ -18,7 +18,6 @@ gem "airbrake"
 gem 'feedzirra'
 gem 'rails', '3.0.3'
 gem 'rake', '0.8.7'
-gem 'haml'
 gem 'slim'
 gem 'slim-rails'
 gem 'sass', '3.1.7'
@@ -76,6 +75,10 @@ group :test, :development do
   gem 'rspec-rails', "~> 2.10.0"
   gem 'rcov', '= 0.9.11'
   gem 'mocha'
+end
+
+group :development do
+  gem 'mailcatcher'
 end
 
 group :test do

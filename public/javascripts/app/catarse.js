@@ -1,8 +1,8 @@
 var CATARSE = {
 
   loader: CATARSE_LOADER,
-  locale: $('#main_content').data("locale"),
-  currentUser: $('#main_content').data("user"),
+  locale: undefined, 
+  currentUser: undefined, 
       
   requireLogin: function(event, customUrl){
     event.preventDefault()

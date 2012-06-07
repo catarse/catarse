@@ -1,9 +1,0 @@
-- unless @project.visible?
-  %br
-  #project_warning.bootstrap-alert
-    - if @project.rejected?
-      .alert.alert-warning
-        = t('.rejected')
-    - else
-      .alert.alert-warning
-        = t('.waiting')
