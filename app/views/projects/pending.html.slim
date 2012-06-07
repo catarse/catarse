@@ -2,11 +2,11 @@
   .container
     .project_content
       .title
-        %h1= t('.title')
+        h1= t('.title')
       #pending_projects
         .bootstrap-form
           = form_for @search, :url => pending_projects_path, class: 'form-horizontal' do |f|
-            %fieldset
+            fieldset
               .input
                 = f.label :id_equals, t('.id')
                 = f.text_field :id_equals
@@ -19,7 +19,7 @@
               .bootstrap-twitter
                 .input.submit
                   = f.submit t('.submit'), class: 'btn btn-success'
-            %fieldset
+            fieldset
               .input.check
                 = f.check_box :visible_is_true
                 = f.label :visible_is_true, t('.visible')
@@ -41,7 +41,7 @@
               .input.total_results
                 #total_results
                   = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
-                  %strong= @search.count
+                  strong= @search.count
                   = pluralize_without_number @search.count, t('activerecord.models.project').downcase
         .clearfix
         = paginate @projects
@@ -50,37 +50,37 @@
           = t('.no_projects')
         - else
           .bootstrap-twitter
-            %table.table.table-striped
-              %thead
-                %tr
-                  %th= t('.id')
-                  %th= t('.project')
-                  %th= t('.user')
-                  %th= t('.slug')
-                  %th= t('.visible')
-                  %th= t('.rejected')
-                  %th= t('.recommended')
-                  %th= t('.home_page')
-                  %th= t('.order')
-                  %th= t('.can_finish')
-                  %th= t('.finished')
-              %tbody
+            table.table.table-striped
+              thead
+                tr
+                  th= t('.id')
+                  th= t('.project')
+                  th= t('.user')
+                  th= t('.slug')
+                  th= t('.visible')
+                  th= t('.rejected')
+                  th= t('.recommended')
+                  th= t('.home_page')
+                  th= t('.order')
+                  th= t('.can_finish')
+                  th= t('.finished')
+              tbody
                 - @projects.each do |project|
-                  %tr{ :class => cycle("even", "odd") }
-                    %td= project.id
-                    %td{ :title => project.name }
+                  tr class=cycle("even", "odd")
+                    td= project.id
+                    td title=project.name
                       = link_to project_path(project) do
                         = image_tag project.display_image, class: 'project_img'
-                    %td{ :title => project.user.display_name }
+                    td title=project.user.display_name
                       = link_to user_path(project.user) do
                         = image_tag project.user.display_image, class: 'user_img'
-                    %td= on_the_spot_edit project, :permalink, :tooltip => '-'
-                    %td= check_box_tag "project__visible__#{project.id}", '1', project.visible
-                    %td= check_box_tag "project__rejected__#{project.id}", '1', project.rejected
-                    %td= check_box_tag "project__recommended__#{project.id}", '1', project.recommended
-                    %td= check_box_tag "project__home_page__#{project.id}", '1', project.home_page
-                    %td= on_the_spot_edit project, :order, :tooltip => '-'
-                    %td= check_box_tag "project__can_finish__#{project.id}", '1', project.can_finish
-                    %td= (project.finished ? t('yes') : t('no'))
+                    td= on_the_spot_edit project, :permalink, :tooltip => '-'
+                    td= check_box_tag "project__visible__#{project.id}", '1', project.visible
+                    td= check_box_tag "project__rejected__#{project.id}", '1', project.rejected
+                    td= check_box_tag "project__recommended__#{project.id}", '1', project.recommended
+                    td= check_box_tag "project__home_page__#{project.id}", '1', project.home_page
+                    td= on_the_spot_edit project, :order, :tooltip => '-'
+                    td= check_box_tag "project__can_finish__#{project.id}", '1', project.can_finish
+                    td= (project.finished ? t('yes') : t('no'))
         = paginate @projects
     .clearfix
