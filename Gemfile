@@ -18,7 +18,6 @@ gem "airbrake"
 gem 'feedzirra'
 gem 'rails', '3.0.3'
 gem 'rake', '0.8.7'
-gem 'haml'
 gem 'slim'
 gem 'slim-rails'
 gem 'sass', '3.1.7'
