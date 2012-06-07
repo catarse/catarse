@@ -1,8 +1,0 @@
-#video_embed
-  %iframe{:src => "#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp", :width => "364", :height => "200"}
-  %h1= link_to @project.name, project_path(@project), :target => '__blank'
-  #video_embed_footer
-    %h2 #{t('.a_project_by_html', :link => link_to(@project.user.display_name, user_path(@project.user), :target => '__blank'))}
-    #platform_link
-      = link_to root_path, :target => '__blank' do
-        = image_tag "logo.png", :title => t('site.name')
