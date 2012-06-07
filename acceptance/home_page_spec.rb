@@ -41,16 +41,9 @@ feature "Home Page Feature" do
       project.successful?.should be_true
     end
 
-    curated_pages = [
-      Factory(:curated_page, created_at: 2.days.ago, visible: true),
-      Factory(:curated_page, created_at: 3.days.ago, visible: true),
-      Factory(:curated_page, created_at: 4.days.ago, visible: true),
-      Factory(:curated_page, created_at: 5.days.ago, visible: true),
-      Factory(:curated_page, created_at: 6.days.ago, visible: true),
-      Factory(:curated_page, created_at: 7.days.ago, visible: true),
-      Factory(:curated_page, created_at: 8.days.ago, visible: true),
-      Factory(:curated_page, created_at: 2.days.ago, visible: false)
-    ]
+    curated_pages = []
+    8.times{|t| curated_pages << Factory(:curated_page, created_at: t.days.ago, visible: true) }
+    curated_pages << Factory(:curated_page, created_at: 2.days.ago, visible: false)
 
     visit homepage
     verify_translations
@@ -80,7 +73,7 @@ feature "Home Page Feature" do
     successful_list.should have(3).items
 
     curated_pages_list = find(".partners").all("li")
-    curated_pages_list.should have(6).items
+    curated_pages_list.should have(8).items
 
     curated_pages_list.each_index do |index|
       within curated_pages_list[index] do
