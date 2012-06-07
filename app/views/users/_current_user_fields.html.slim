@@ -2,22 +2,22 @@
   #gravatar_hint.alert.alert-info
     = link_to 'http://gravatar.com/', :target => :_blank do
       = image_tag 'gravatar.png', :id => 'gravatar_logo'
-    %p= t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
+    p= t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
     .clearfix
 #my_data
-  %h1= t('.my_data')
-  %ul
-    %li
+  h1= t('.my_data')
+  ul
+    li
       #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
       .hint= t('.email_hint')
-    %li
+    li
       = hidden_field_tag 'id', @user.id
       = check_box_tag 'newsletter', '1', @user.newsletter
       = label_tag 'newsletter', t('.newsletter')
 #social_info
-  %h1= t('.social_info')
-  %ul
-    %li
+  h1= t('.social_info')
+  ul
+    li
       .bootstrap-form
         = form_for(@user, :as => :user, :html => { :method => :put }) do |f|
           = f.label :twitter, t('.twitter')
@@ -26,13 +26,13 @@
           = f.text_field :facebook_link
           = f.label :other_link, t('.other_link')
           = f.text_field :other_link
-          %br/
-          %p= f.submit t('.update_social_info'), :class => 'btn'
+          br
+          p= f.submit t('.update_social_info'), :class => 'btn'
 - if @user.is_devise?
   #change_password
-    %h1= t('.change_password')
-    %ul
-      %li
+    h1= t('.change_password')
+    ul
+      li
         .bootstrap-form
           = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put, :class => 'skip_feed_event' }) do |f|
             = f.label :password, t('passwords.edit.label_new_password')
@@ -41,8 +41,8 @@
             = f.password_field :password_confirmation, :class=>'empty'
             = f.label :current_password
             = f.password_field :current_password, :class=>'empty'
-            %br/
-            %span.hint= t('.current_password_hint').html_safe
-            %br/
-            %br/
-            %p= f.submit 'OK', :class => 'btn'
+            br
+            span.hint= t('.current_password_hint').html_safe
+            br
+            br
+            p= f.submit 'OK', :class => 'btn'
