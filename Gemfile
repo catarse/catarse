@@ -78,6 +78,10 @@ group :test, :development do
   gem 'mocha'
 end
 
+group :development do
+  gem 'mailcatcher'
+end
+
 group :test do
   gem 'shoulda'
   gem 'factory_girl_rails', '1.7.0'
