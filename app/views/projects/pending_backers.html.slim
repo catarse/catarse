@@ -4,16 +4,16 @@
       .title
         h1= t('.title')
         h2
-          strong= @total_backers
+          strong= "#{@total_backers} "
           = t('.total_backers')
-          |·
-          strong= @total_backs
+          | ·
+          strong= "#{@total_backs} "
           = t('.total_backs')
-          |·
-          strong= number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
+          | ·
+          strong= "#{number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'} "
           = t('.total_backed')
-          |·
-          strong= @total_users
+          | ·
+          strong= "#{@total_users} "
           = t('.total_users')
 
       #pending_backers
