@@ -19,6 +19,15 @@ describe Project do
     it{ should ensure_length_of(:headline).is_at_most(140) }
   end
 
+  describe ".recent" do
+    before do
+      @p = Factory(:project, :created_at => (Date.today - 14.days))
+      Factory(:project, :created_at => (Date.today - 15.days))
+    end
+    subject{ Project.recent }
+    it{ should == [@p] }
+  end
+
   describe "#display_status" do
     let(:project){ Factory(:project) }
     subject{ project.display_status }
@@ -79,7 +88,7 @@ describe Project do
 
   end
 
-  context "status changes" do
+  describe "status changes" do
 
     it "should be successful if pledged >= goal" do
       p = Factory.build(:project)
@@ -135,7 +144,7 @@ describe Project do
 
   end
   
-  context "#finish!" do
+  describe "#finish!" do
     
     it "should generate credits for users when project finishes and didn't succeed" do
       user = Factory(:user)
@@ -177,7 +186,7 @@ describe Project do
     
   end
   
-  context "display methods" do
+  describe "display methods" do
 
     it "should have a display image" do
       p = Factory(:project)
@@ -236,7 +245,7 @@ describe Project do
 
   end
   
-  context "#curated_pages" do
+  describe "#curated_pages" do
 
     it "should be able to be in more than one curated page" do
       cp = Factory.build(:curated_page)
@@ -248,7 +257,7 @@ describe Project do
 
   end
 
-  context "scopes" do
+  describe "scopes" do
     
     it "should have a special order for exploring projects" do
       

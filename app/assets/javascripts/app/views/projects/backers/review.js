@@ -6,24 +6,24 @@ CATARSE.BackersReviewView = Backbone.View.extend({
       if($('#backer_credits').val() == "false"){
         if(!ok('#user_full_name'))
           all_ok = false
-        if(!cpf_ok())
-          all_ok = false
+        //if(!cpf_ok())
+          //all_ok = false
         if(!email_ok())
           all_ok = false
-        if(!zip_code_ok())
-          all_ok = false
-        if(!ok('#user_address_street'))
-          all_ok = false
-        if(!ok('#user_address_number'))
-          all_ok = false
-        if(!ok('#user_address_neighbourhood'))
-          all_ok = false
-        if(!ok('#user_address_city'))
-          all_ok = false
-        if(!ok('#user_address_state'))
-          all_ok = false
-        if(!phone_number_ok())
-          all_ok = false
+        //if(!zip_code_ok())
+          //all_ok = false
+        //if(!ok('#user_address_street'))
+          //all_ok = false
+        //if(!ok('#user_address_number'))
+          //all_ok = false
+        //if(!ok('#user_address_neighbourhood'))
+          //all_ok = false
+        //if(!ok('#user_address_city'))
+          //all_ok = false
+        //if(!ok('#user_address_state'))
+          //all_ok = false
+        //if(!phone_number_ok())
+          //all_ok = false
       }
       if(!accepted_terms())
         all_ok = false
@@ -131,11 +131,8 @@ CATARSE.BackersReviewView = Backbone.View.extend({
 
     $('input[type=text]').keyup(everything_ok)
     $('#user_address_zip_code').keyup(function(){ zip_code_valid = false; everything_ok() })
-    //$('#user_address_zip_code').timedKeyup(verify_zip_code)
-    $('#user_address_complement').addClass("ok")
     $('#accept').click(everything_ok)
     $('select').change(everything_ok)
-    //verify_zip_code()
 
     $('#international_link').click(function(e){
       e.preventDefault()

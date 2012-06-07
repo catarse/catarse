@@ -1,4 +1,7 @@
 .channels_list_widget
   ul
     - curated_pages.each do |curated_page|
-      li= link_to image_tag(curated_page.logo.thumb.url, :width => '220px', :height => '144px'), curated_page_path(curated_page.permalink)
+      - if curated_page.site_url.present?
+        li= link_to image_tag(curated_page.logo.thumb.url, :width => '220px', :height => '144px'), curated_page.site_url, :target => '__blank'
+      - else
+        li= link_to image_tag(curated_page.logo.thumb.url, :width => '220px', :height => '144px'), curated_page_path(curated_page.permalink)
