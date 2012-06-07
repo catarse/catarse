@@ -17,19 +17,19 @@
         .important= t('.important_html', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))
     = form.input :expires_at, :as => :string
     #project_rewards
-      :javascript
+      javascript:
         var rewards_count = #{@project.rewards.size}
         var rewards_id = #{@project.rewards.size}
       .reward_title
-        %h3= t('.rewards_title')
-        %p= t('.rewards_description')
+        h3= t('.rewards_title')
+        p= t('.rewards_description')
       #rewards_wrapper
         = form.semantic_fields_for :rewards do |reward|
           .reward
             .remove_reward_wrapper
               .bootstrap-twitter
                 = link_to '#', class: 'remove_reward btn btn-danger' do
-                  %i.icon-trash.icon-white
+                  i.icon-trash.icon-white
                   = t('remove')
             = reward.input :description
             .left
@@ -40,11 +40,11 @@
       #add_reward_wrapper
         .bootstrap-twitter
           = link_to '#', class: 'add_reward btn btn-success', id: 'add_reward' do
-            %i.icon-plus.icon-white
+            i.icon-plus.icon-white
             = t('.add_reward')
       .clearfix
     .submit
-      %fieldset.accept
+      fieldset.accept
         = check_box_tag 'accept'
         = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
       = form.buttons do

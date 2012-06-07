@@ -1,12 +1,30 @@
 - content_for :js_templates do
   = render :partial => 'backer'
 
-= render 'project_meta_tags'
+= content_for :meta_tags do
+  meta name="description" content=@project.headline
+  -# Meta tags for facebook social graph
+  meta property="og:title" content=@project.name
+  meta property="og:type" content='cause'
+  meta property="og:url" content="#{t('site.base_url')}#{project_path(@project)}"
+  meta property="og:image" content=@project.display_image
+  meta property="og:site_name" content=t('site.name')
+  meta property="og:description" content=@project.headline
+  meta property="fb:admins" content="#{fb_admins}"
+
 = render 'facebook_sdk'
 
 #page_content
   .container
-    = render 'project_warning'
+    - unless @project.visible?
+      br
+      #project_warning.bootstrap-alert
+        - if @project.rejected?
+          .alert.alert-warning
+            = t('.rejected')
+        - else
+          .alert.alert-warning
+            = t('.waiting')
     #project_description[data-project=@project.to_json]
     .project_image
       = image_tag @project.display_image, :width=>'85px', :height => '67px'

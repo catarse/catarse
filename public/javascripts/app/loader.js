@@ -72,25 +72,7 @@ var CATARSE_LOADER = window.CATARSE_LOADER = {
   },
 
   init: function(){
-    this.load(this.initial, 'initial')
-    $script.ready('initial', function(){
-      CATARSE_LOADER.load(CATARSE_LOADER.intermediate, 'intermediate')
-      $script.ready('intermediate', function(){
-        CATARSE_LOADER.load(CATARSE_LOADER.final, 'final')
-        $script.ready('final', function(){
-          CATARSE_LOADER.load(CATARSE_LOADER.catarse.initial, 'catarse.initial')
-          $script.ready('catarse.initial', function(){
-            CATARSE_LOADER.load(CATARSE_LOADER.catarse.intermediate, 'catarse.intermediate')
-            $script.ready('catarse.intermediate', function(){
-              CATARSE_LOADER.load(CATARSE_LOADER.catarse.final, 'catarse.final')
-              $script.ready('catarse.final', function(){
-                $(document).ready(CATARSE_LOADER.loadAction);
-              })
-            })
-          })
-        })
-      })
-    })
+    $(document).ready(CATARSE_LOADER.loadAction);
   },
 
   exec: function(namespace, controller, action) {
@@ -134,6 +116,8 @@ var CATARSE_LOADER = window.CATARSE_LOADER = {
   },
 
   loadAction: function(){
+    CATARSE.locale = $('#main_content').data("locale");
+    CATARSE.currentUser = $('#main_content').data("user");
     var body = $('#main_content')
     var namespace_text = ""
 
@@ -166,6 +150,5 @@ var CATARSE_LOADER = window.CATARSE_LOADER = {
   }
 
 }
-
 
 CATARSE_LOADER.init()
