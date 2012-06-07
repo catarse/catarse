@@ -3,8 +3,8 @@
   .container
     .static_default
       .title
-        %h1= t('.title')
-        %h2= t('.subtitle')
+        h1= t('.title')
+        h2= t('.subtitle')
       .clearfix
       .bootstrap-alert
         .alert.alert-info
@@ -14,10 +14,10 @@
         = render 'guidelines_text'
       .bootstrap-form.center_form
         = form_tag(start_projects_path, :method => :get, :id => 'guidelines_form') do
-          %fieldset.check
+          fieldset.check
             = check_box_tag 'accept'
             = label_tag 'accept', t('.accept')
-          %fieldset
+          fieldset
             .bootstrap-twitter
               = submit_tag t('.submit'), :disabled => true, :class=>'btn', :style=>'display:none'
             .submit_loader
