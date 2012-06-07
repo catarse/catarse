@@ -41,7 +41,7 @@
               .input.total_results
                 #total_results
                   = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
-                  strong= @search.count
+                  strong= " #{@search.count} "
                   = pluralize_without_number @search.count, t('activerecord.models.project').downcase
         .clearfix
         = paginate @projects
