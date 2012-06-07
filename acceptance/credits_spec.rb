@@ -31,6 +31,8 @@ feature "Credits Feature" do
       rows[0].find(".status").find('a').click
       verify_translations
       column = rows[0].all("td")[4]
+      # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
+      sleep 1
       column.text.should == "Você não possui créditos suficientes para realizar este estorno."
     end
     click_on "OK"
@@ -66,6 +68,8 @@ feature "Credits Feature" do
       rows[0].find(".status").find('a').click
       verify_translations
       column = rows[0].all("td")[4]
+      # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
+      sleep 1
       column.text.should == "Pedido enviado com sucesso"
     end
     click_on "OK"
