@@ -24,7 +24,8 @@ class PaypalController < ApplicationController
     backer = Backer.find params[:id]
     begin
       details = @paypal.details params[:token]
-      checkout = @paypal.checkout!(params[:token], details.payer.identifier, paypal_payment(backer))
+      payment = paypal_payment(backer)
+      checkout = @paypal.checkout!(params[:token], details.payer.identifier, payment)
       if checkout.payment_info.first.payment_status == "Completed"
         backer.update_attributes({
           :key => checkout.payment_info.first.transaction_id,
