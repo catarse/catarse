@@ -17,7 +17,6 @@ gem 'activerecord-postgresql-adapter'
 
 # Frontend stuff
 gem 'jquery-rails'
-gem 'haml'
 gem 'slim'
 gem 'slim-rails'
 gem 'mustache'
@@ -103,6 +102,10 @@ group :test, :development do
   gem 'rcov', '= 0.9.11'
   gem 'mocha', '0.10.4'
   gem 'capybara', ">= 1.0.1"
+end
+
+group :development do
+  gem 'mailcatcher'
 end
 
 group :test do

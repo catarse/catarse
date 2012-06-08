@@ -3,7 +3,7 @@
     #project_review
       .project_info
         = image_tag @project.display_image, :id => 'project_image', :alt => @project.name, :width => '250px'
-        %h1= t('.you_are_about_html', :link => link_to(@project.name, project_path(@project)))
+        h1= t('.you_are_about_html', :link => link_to(@project.name, project_path(@project)))
         #review_text
           - if @backer.reward
             = t('.review_with_reward_html', :value => @backer.display_value, :reward => @backer.reward.description)
@@ -11,15 +11,14 @@
             = t('.review_without_reward_html', :value => @backer.display_value)
       .clearfix
       .title
-        %h1= t('.title')
-        %h2= t('.subtitle')
+        h1= t('.title')
+        h2= t('.subtitle')
       .clearfix
       - if @backer.credits
         #back_with_credits
           .bootstrap-alert
             .alert
               #credits_notice= t('.credits_notice_html', :credits => number_to_currency((current_user.credits - @backer.value), :unit => 'R$', :precision => 0, :delimiter => '.'))
-      - else
       .bootstrap-form
         = semantic_form_for current_user, :url => checkout_project_backer_path(@backer.project, @backer), :html => { :id => 'review_form', :class => "form-horizontal #{('dont_align' if @backer.credits)}" } do |form|
           = hidden_field_tag 'backer_id', @backer.id
@@ -38,7 +37,7 @@
               = form.input :address_state, :as => :select, :collection => State.array
               = form.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}
           .submit
-            %fieldset.accept_terms
+            fieldset.accept_terms
               = check_box_tag 'accept'
               = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
             - if @backer.credits
@@ -47,18 +46,17 @@
                   = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), :disabled => true, :class => 'btn', :id => 'user_submit'
           #payment.hide
             .title
-              %h1= t('.choose_payment')
+              h1= t('.choose_payment')
             .choose_payment
               .cc
                 = link_to pay_paypal_path(@backer), :method => :get do
                   = image_tag 'catarse/cc_icon.png'
-                  %span= t('.choose_credit_card')
+                  span= t('.choose_credit_card')
                 .clearfix
               .or
-                %span= t('or')
+                span= t('or')
               .boleto
                 = link_to checkout_project_backer_path(@backer.project, @backer), :method => :put do
                   = image_tag 'catarse/boleto_icon.png'
-                  %span= t('.choose_boleto')
-
+                  span= t('.choose_boleto')
     .clearfix

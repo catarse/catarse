@@ -26,7 +26,7 @@ feature "Pending Backers" do
       page.should have_css('h1', :text => 'Gerenciamento de apoios')
     end
 
-    page.should have_content "Encontrados 10 apoiadores"
+    page.should have_content "10 apoiadores"
     all(".bootstrap-twitter table tbody tr").should have(10).itens
 
   end

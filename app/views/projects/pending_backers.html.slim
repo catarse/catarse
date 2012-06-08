@@ -2,24 +2,24 @@
   .container
     .project_content
       .title
-        %h1= t('.title')
-        %h2
-          %strong= @total_backers
+        h1= t('.title')
+        h2
+          strong= "#{@total_backers} "
           = t('.total_backers')
-          ·
-          %strong= @total_backs
+          | ·
+          strong= "#{@total_backs} "
           = t('.total_backs')
-          ·
-          %strong= number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'
+          | ·
+          strong= "#{number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'} "
           = t('.total_backed')
-          ·
-          %strong= @total_users
+          | ·
+          strong= "#{@total_users} "
           = t('.total_users')
 
       #pending_backers
         .bootstrap-form
           = form_for @search, :url => pending_backers_projects_path, class: 'form-horizontal' do |f|
-            %fieldset
+            fieldset
               .input
                 = f.label :id_equals, t('.id')
                 = f.text_field :id_equals, class: 'input-small'
@@ -35,7 +35,7 @@
               .bootstrap-twitter
                 .input.submit
                   = f.submit t('.submit'), class: 'btn btn-success'
-            %fieldset
+            fieldset
               .input.check
                 = f.check_box :confirmed_is_true
                 = f.label :confirmed_is_true, t('.confirmed')
@@ -51,7 +51,7 @@
               .input.total_results
                 #total_results
                   = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
-                  %strong= @search.count
+                  strong= @search.count
                   = pluralize_without_number(@search.count, t('backer_singular'), t('backer_plural')).downcase
         .clearfix
         = paginate @backers
@@ -59,43 +59,43 @@
           = t('.no_backers')
         - else
           .bootstrap-twitter
-            %table.table.table-striped
-              %thead
-                %tr
-                  %th= t('.id')
-                  %th= t('.project')
-                  %th= t('.user')
-                  %th= t('.value')
-                  %th= t('.reward')
-                  %th= t('.key')
-                  %th= t('.confirmed')
-                  %th= t('.anonymous')
-                  %th= t('.credits')
-                  %th= t('.requested_refund')
-                  %th= t('.refunded')
-              %tbody
+            table.table.table-striped
+              thead
+                tr
+                  th= t('.id')
+                  th= t('.project')
+                  th= t('.user')
+                  th= t('.value')
+                  th= t('.reward')
+                  th= t('.key')
+                  th= t('.confirmed')
+                  th= t('.anonymous')
+                  th= t('.credits')
+                  th= t('.requested_refund')
+                  th= t('.refunded')
+              tbody
                 - @backers.each do |backer|
-                  %tr{ :id => backer.id, :class => cycle("even", "odd") }
-                    %td= backer.id
-                    %td{ :title => backer.project.name }
+                  tr id=backer.id class=cycle("even", "odd")
+                    td= backer.id
+                    td title=backer.project.name
                       = link_to project_path(backer.project) do
                         = image_tag backer.project.display_image, class: 'project_img'
-                    %td{ :title => backer.user.display_name }
+                    td title=backer.user.display_name
                       = link_to user_path(backer.user) do
                         = image_tag backer.user.display_image, class: 'user_img'
                       .user_id= on_the_spot_edit backer, :user_id
-                    %td= backer.display_value
-                    %td{ :title => ("#{backer.reward.display_minimum} - #{backer.reward.description}" if backer.reward) }
+                    td= backer.display_value
+                    td title=("#{backer.reward.display_minimum} - #{backer.reward.description}" if backer.reward)
                       - if backer.reward
                         = backer.reward.display_minimum
                       - else
-                        \-
-                    %td.key= backer.key
-                    %td= check_box_tag "confirmed__#{backer.id}", '1', backer.confirmed
-                    %td= check_box_tag "anonymous__#{backer.id}", '1', backer.anonymous
-                    %td= (backer.credits ? t('yes') : t('no'))
-                    %td= (backer.requested_refund ? t('yes') : t('no'))
-                    %td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded
+                        |-
+                    td.key= backer.key
+                    td= check_box_tag "confirmed__#{backer.id}", '1', backer.confirmed
+                    td= check_box_tag "anonymous__#{backer.id}", '1', backer.anonymous
+                    td= (backer.credits ? t('yes') : t('no'))
+                    td= (backer.requested_refund ? t('yes') : t('no'))
+                    td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded
         = paginate @backers
     .clearfix
       
