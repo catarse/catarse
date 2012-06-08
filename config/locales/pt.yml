@@ -460,15 +460,14 @@ pt:
       title: "Título da atualização"
       destroy: "Remover atualização"
       destroy_confirmation: "Deseja remover a atualização?"
-    project_warning:
-      rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
-      waiting: "Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)"
     rewards:
       reward_title: "Para %{minimum} ou mais"
       title: "Apoie e ganhe..."
     send_mail:
       success: "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
     show:
+      rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
+      waiting: "Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)"
       about_title: "Sobre o projeto"
       menu:
         about: Sobre

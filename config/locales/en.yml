@@ -460,15 +460,14 @@ en:
       title: "Title of the update"
       destroy: "Remove update"
       destroy_confirmation: "Do you want to remove the update?"
-    project_warning:
-      rejected: "This project was not selected to participate on Catarse. Maybe next time! :)"
-      waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
     rewards:
       reward_title: "For %{minimum} or more"
       title: "Back and receive..."
     send_mail:
       success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
     show:
+      rejected: "This project was not selected to participate on Catarse. Maybe next time! :)"
+      waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
       about_title: "About this project"
       menu:
         about: About

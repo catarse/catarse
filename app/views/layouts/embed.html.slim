@@ -1,0 +1,14 @@
+doctype 5
+html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
+  head
+    meta charset='utf-8'
+    title= "#{@title}#{' · ' if @title}#{t('site.name')}"
+    = stylesheet_link_tag 'le-frog/jquery-ui-1.8.6.custom.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'bootstrap.css'
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
+    = csrf_meta_tag
+    link rel='shortcut icon' href="/images/favicon.ico"
+    = render '/layouts/analytics'
+  body#platform
+    = yield

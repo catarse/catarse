@@ -14,7 +14,7 @@ class PaypalController < ApplicationController
         backer.update_attribute :payment_method, 'PayPal'
         redirect_to paypal_response.redirect_uri
     rescue Exception => e
-      Exceptional.handle(e) rescue nil
+      Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Error: #{e.inspect}", :parameters => params}) rescue nil
       paypal_flash_error
       return redirect_to new_project_backer_path(backer.project)
     end
@@ -24,7 +24,8 @@ class PaypalController < ApplicationController
     backer = Backer.find params[:id]
     begin
       details = @paypal.details params[:token]
-      checkout = @paypal.checkout!(params[:token], details.payer.identifier, paypal_payment(backer))
+      payment = paypal_payment(backer)
+      checkout = @paypal.checkout!(params[:token], details.payer.identifier, payment)
       if checkout.payment_info.first.payment_status == "Completed"
         backer.update_attributes({
           :key => checkout.payment_info.first.transaction_id,
@@ -35,10 +36,12 @@ class PaypalController < ApplicationController
         paypal_flash_success
         redirect_to thank_you_path
       else
+        Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Error: #{checkout.payment_info.first.inspect}", :parameters => params}) rescue nil
         paypal_flash_error
         return redirect_to new_project_backer_path(backer.project)
       end
-    rescue
+    rescue Exception => e
+      Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Error: #{e.message}", :parameters => params}) rescue nil
       paypal_flash_error
       return redirect_to new_project_backer_path(backer.project)
     end
