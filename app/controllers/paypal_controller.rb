@@ -15,7 +15,6 @@ class PaypalController < ApplicationController
         redirect_to paypal_response.redirect_uri
     rescue Exception => e
       Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Error: #{e.inspect}", :parameters => params}) rescue nil
-      #ErrorMailer.error_notification(params, e)
       paypal_flash_error
       return redirect_to new_project_backer_path(backer.project)
     end
@@ -42,7 +41,6 @@ class PaypalController < ApplicationController
       end
     rescue Exception => e
       Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Error: #{e.inspect}", :parameters => params}) rescue nil
-      #ErrorMailer.error_notification(params, e)
       paypal_flash_error
       return redirect_to new_project_backer_path(backer.project)
     end
