@@ -75,7 +75,7 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     addressable (2.2.4)
-    airbrake (3.1.0)
+    airbrake (3.1.1)
       activesupport
       builder
     annotate (2.4.0)
