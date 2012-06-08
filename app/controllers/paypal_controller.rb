@@ -23,8 +23,11 @@ class PaypalController < ApplicationController
   def success
     backer = Backer.find params[:id]
     begin
+      Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Starting", :parameters => params}) rescue nil
       details = @paypal.details params[:token]
+      Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Details: #{details.inspect}", :parameters => params}) rescue nil
       payment = paypal_payment(backer)
+      Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Payment: #{payment.inspect}", :parameters => params}) rescue nil
       checkout = @paypal.checkout!(params[:token], details.payer.identifier, payment)
       Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Checkout: #{checkout.inspect}", :parameters => params}) rescue nil
       if checkout.payment_info.first.payment_status == "Completed"
