@@ -57,6 +57,7 @@
                 span= t('or')
               .boleto
                 = link_to checkout_project_backer_path(@backer.project, @backer), :method => :put do
-                  = image_tag 'catarse/boleto_icon.png'
+                  = image_tag 'catarse/boleto_icon.png', :class => 'boleto_icon'
+                  = image_tag 'catarse/cc_icon.png', :class => 'cc_icon'
                   span= t('.choose_boleto')
     .clearfix
