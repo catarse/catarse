@@ -267,7 +267,7 @@ GEM
     on_the_spot (1.0.1)
       json_pure (>= 1.4.6)
     orm_adapter (0.0.7)
-    paypal-express (0.5.0)
+    paypal-express (0.4.7)
       activesupport (>= 2.3)
       attr_required (>= 0.0.5)
       i18n
@@ -446,7 +446,7 @@ DEPENDENCIES
   mustache
   omniauth (= 0.2.6)
   on_the_spot
-  paypal-express
+  paypal-express (= 0.4.7)
   pg
   rack-timeout
   rails (= 3.0.3)
