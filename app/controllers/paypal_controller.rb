@@ -26,6 +26,7 @@ class PaypalController < ApplicationController
       details = @paypal.details params[:token]
       payment = paypal_payment(backer)
       checkout = @paypal.checkout!(params[:token], details.payer.identifier, payment)
+      Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Checkout: #{checkout.inspect}", :parameters => params}) rescue nil
       if checkout.payment_info.first.payment_status == "Completed"
         backer.update_attributes({
           :key => checkout.payment_info.first.transaction_id,
