@@ -6,7 +6,7 @@ end
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '3.2.4'
+gem 'rails', '3.2.5'
 gem 'rake', '0.9.2.2'
 
 
@@ -22,7 +22,7 @@ gem 'slim-rails'
 gem 'mustache'
 
 # Authentication and Authorization
-gem 'omniauth', '1.1.0'
+gem 'omniauth', "~> 1.1.0"
 gem 'omniauth-openid', '~> 1.0.1'
 gem 'omniauth-twitter', '~> 0.0.11'
 gem 'omniauth-facebook', '~> 1.2.0'
@@ -60,6 +60,7 @@ gem 'kaminari'
 gem 'tumblr-api'
 gem 'dalli'
 gem 'mailee', '0.5.4', git: 'https://github.com/danielweinmann/mailee-api.git'
+gem 'capybara', ">= 1.0.1"
 
 # Translations
 gem 'http_accept_language'
@@ -101,7 +102,6 @@ group :test, :development do
   gem 'rspec-rails', "~> 2.10.0"
   gem 'rcov', '= 0.9.11'
   gem 'mocha', '0.10.4'
-  gem 'capybara', ">= 1.0.1"
 end
 
 group :development do
