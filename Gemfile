@@ -8,6 +8,7 @@ source 'http://gems.github.com'
 
 gem 'rails', '3.2.6'
 gem 'rake', '0.9.2.2'
+gem 'ruby-debug19'
 
 
 # Database [Putting pg to the end because of a weird bug with Lion, pg and openssl]
@@ -65,7 +66,7 @@ gem 'capybara', ">= 1.0.1"
 # Translations
 gem 'http_accept_language'
 gem 'web_translate_it'
-gem 'routing-filter', :git => 'git://github.com/svenfuchs/routing-filter.git'
+gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 
 # Administration
 gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
