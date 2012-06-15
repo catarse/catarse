@@ -1,3 +1,12 @@
+module ActionDispatch
+  class Request
+    def flash
+      session["flash"] = Flash::FlashHash.new if not session["flash"]
+      @env['action_dispatch.request.flash_hash'] ||= session["flash"].tap(&:sweep)
+    end
+  end
+end
+
 # coding: utf-8
 class ApplicationController < ActionController::Base
 
