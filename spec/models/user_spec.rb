@@ -34,7 +34,7 @@ describe User do
     let(:auth) do {
         'provider' => "twitter",
         'uid' => "foobar",
-        'user_info' => {
+        'info' => {
           'name' => "Foo bar",
           'email' => 'another_email@anotherdomain.com',
           'nickname' => "foobar",
@@ -46,10 +46,10 @@ describe User do
     subject{ User.create_with_omniauth(auth) }
     its(:provider){ should == auth['provider'] }
     its(:uid){ should == auth['uid'] }
-    its(:name){ should == auth['user_info']['name'] }
-    its(:nickname){ should == auth['user_info']['nickname'] }
-    its(:bio){ should == auth['user_info']['description'][0..139] }
-    its(:image_url){ should == auth['user_info']['image'] }
+    its(:name){ should == auth['info']['name'] }
+    its(:nickname){ should == auth['info']['nickname'] }
+    its(:bio){ should == auth['info']['description'][0..139] }
+    its(:image_url){ should == auth['info']['image'] }
   end
 
   describe ".find_with_omniauth" do
