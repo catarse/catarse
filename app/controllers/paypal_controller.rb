@@ -64,14 +64,13 @@ class PaypalController < ApplicationController
   end
 
   def initialize_paypal
-
     #NOTE: to use sandbox mode
     # Paypal.sandbox!
 
     @paypal = Paypal::Express::Request.new({
-      :username => Configuration[:paypal_username],
-      :password => Configuration[:paypal_password],
-      :signature => Configuration[:paypal_signature]
+      :username => PaypalApi.username,
+      :password => PaypalApi.password,
+      :signature => PaypalApi.signature
     })
   end
 
