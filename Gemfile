@@ -8,7 +8,6 @@ source 'http://gems.github.com'
 
 gem 'rails', '3.2.6'
 gem 'rake', '0.9.2.2'
-gem 'ruby-debug19'
 
 
 # Database [Putting pg to the end because of a weird bug with Lion, pg and openssl]
@@ -107,6 +106,7 @@ end
 
 group :development do
   gem 'mailcatcher'
+  gem 'ruby-debug19'
 end
 
 group :test do
