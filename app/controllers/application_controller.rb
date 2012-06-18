@@ -1,3 +1,5 @@
+# NOTE: Weird bug, flash session not persisted
+# this is just a monkey patch to solve for moment
 module ActionDispatch
   class Request
     def flash
