@@ -5,6 +5,7 @@ ActiveAdmin::Dashboards.build do
     ul do
       li link_to 'Usuários que mais apoiaram', most_backed_report_path
       li link_to 'Todos os apoios confirmados', all_confirmed_backers_report_path
+      li link_to 'Todos os realizadores', all_projects_owner_report_path
     end
   end
 
