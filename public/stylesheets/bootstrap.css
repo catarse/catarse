@@ -11464,6 +11464,10 @@ body #logos .power a {
   height: 180px;
 }
 /* line 63, ../../app/stylesheets/resources/projects/_new.sass */
+[data-controller="projects"][data-action="new"] #page_content .container .formtastic.project textarea#project_headline {
+  height: 80px;
+}
+/* line 65, ../../app/stylesheets/resources/projects/_new.sass */
 [data-controller="projects"][data-action="new"] #page_content .container .formtastic.project .inline-hints {
   font-size: 13px;
   font-family: Arial;
@@ -11471,7 +11475,11 @@ body #logos .power a {
   color: rgba(0, 0, 0, 0.6);
   padding-bottom: 20px;
 }
-/* line 70, ../../app/stylesheets/resources/projects/_new.sass */
+/* line 72, ../../app/stylesheets/resources/projects/_new.sass */
+[data-controller="projects"][data-action="new"] #page_content .container .reward textarea {
+  height: 80px !important;
+}
+/* line 75, ../../app/stylesheets/resources/projects/_new.sass */
 [data-controller="projects"][data-action="new"] #page_content .container .remove_reward_wrapper a {
   position: absolute;
   margin-left: 853px;
@@ -11479,34 +11487,34 @@ body #logos .power a {
   font-family: Arial;
   font-size: 15px;
 }
-/* line 77, ../../app/stylesheets/resources/projects/_new.sass */
+/* line 82, ../../app/stylesheets/resources/projects/_new.sass */
 [data-controller="projects"][data-action="new"] #page_content .container #add_reward_wrapper a {
   float: left;
   font-family: Arial;
   font-size: 15px;
 }
-/* line 81, ../../app/stylesheets/resources/projects/_new.sass */
+/* line 86, ../../app/stylesheets/resources/projects/_new.sass */
 [data-controller="projects"][data-action="new"] #page_content .container .reward {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
-/* line 85, ../../app/stylesheets/resources/projects/_new.sass */
+/* line 90, ../../app/stylesheets/resources/projects/_new.sass */
 [data-controller="projects"][data-action="new"] #page_content .container .reward .left {
   float: left;
   width: 30%;
   margin-right: 5%;
 }
-/* line 89, ../../app/stylesheets/resources/projects/_new.sass */
+/* line 94, ../../app/stylesheets/resources/projects/_new.sass */
 [data-controller="projects"][data-action="new"] #page_content .container .reward .left input {
   width: 99%;
 }
-/* line 91, ../../app/stylesheets/resources/projects/_new.sass */
+/* line 96, ../../app/stylesheets/resources/projects/_new.sass */
 [data-controller="projects"][data-action="new"] #page_content .container .reward .right {
   float: left;
   width: 30%;
 }
-/* line 94, ../../app/stylesheets/resources/projects/_new.sass */
+/* line 99, ../../app/stylesheets/resources/projects/_new.sass */
 [data-controller="projects"][data-action="new"] #page_content .container .reward .right input {
   width: 99%;
 }
