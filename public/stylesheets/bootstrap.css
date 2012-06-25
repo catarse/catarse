@@ -11483,7 +11483,7 @@ body #logos .power a {
 [data-controller="projects"][data-action="new"] #page_content .container .remove_reward_wrapper a {
   position: absolute;
   margin-left: 853px;
-  margin-top: 247px;
+  margin-top: 150px !important;
   font-family: Arial;
   font-size: 15px;
 }
