@@ -21,6 +21,7 @@ Catarse::Application.routes.draw do
   match "/reports/users_most_backed" => "reports#users_most_backed", :as => :most_backed_report
   match "/reports/all_confirmed_backers" => "reports#all_confirmed_backers", :as => :all_confirmed_backers_report
   match "/reports/all_projects_owners" => "reports#all_projects_owner", :as => :all_projects_owner_report
+  match "/reports/all_emails" => "reports#all_emails_to_newsletter", :as => :all_emails_to_newsletter
 
   # Static Pages
   match '/sitemap' => "static#sitemap", :as => :sitemap
