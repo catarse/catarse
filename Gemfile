@@ -24,7 +24,7 @@ gem 'mustache'
 # Authentication and Authorization
 gem 'omniauth', "~> 1.1.0"
 gem 'omniauth-openid', '~> 1.0.1'
-gem 'omniauth-twitter', '~> 0.0.11'
+gem 'omniauth-twitter', '~> 0.0.12'
 gem 'omniauth-facebook', '~> 1.2.0'
 gem 'omniauth-github', '~> 1.0.1'
 gem 'omniauth-linkedin', '~> 0.0.6'
