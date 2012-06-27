@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   private
   def has_institutional_videos?
     InstitutionalVideo.visibles.present?
