@@ -30,10 +30,17 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Fix bug of flash that will never disapear
+  # @TODO try to remove in a future rails version
+  def render
+    super
+    flash.sweep
+  end
+
   def has_institutional_videos?
     InstitutionalVideo.visibles.present?
   end
-  
+
   def institutional_video
     InstitutionalVideo.visibles.random.first
   end
