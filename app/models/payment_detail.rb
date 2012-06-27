@@ -20,17 +20,18 @@ class PaymentDetail < ActiveRecord::Base
   end
 
   def process_moip_response(response)
-    if response["Autorizacao"].present?
-      authorized  = response["Autorizacao"]
+    begin
+      if response["Autorizacao"].present?
+        authorized  = response["Autorizacao"]
 
-      self.payer_name  = authorized["Pagador"]["Nome"]
-      self.payer_email = authorized["Pagador"]["Email"]
-      self.city        = authorized["EnderecoCobranca"]["Cidade"]
-      self.uf          = authorized["EnderecoCobranca"]["Estado"]
+        self.payer_name  = authorized["Pagador"]["Nome"]
+        self.payer_email = authorized["Pagador"]["Email"]
+        self.city        = authorized["EnderecoCobranca"]["Cidade"]
+        self.uf          = authorized["EnderecoCobranca"]["Estado"]
 
-      if authorized["Pagamento"].present?
-        payment                      = authorized["Pagamento"]
-        if payment.kind_of?(Array) && payment.first.present?
+        if authorized["Pagamento"].present?
+          payment                      = authorized["Pagamento"]
+          if payment.kind_of?(Array) && payment.first.present?
             self.payment_method          = payment.first["FormaPagamento"]
             self.net_amount              = payment.first["ValorLiquido"].to_f
             self.total_amount            = payment.first["TotalPago"].to_f
@@ -50,10 +51,13 @@ class PaymentDetail < ActiveRecord::Base
             self.service_code            = payment["CodigoMoIP"]
             self.institution_of_payment  = payment["InstituicaoPagamento"]
             self.payment_date            = payment["Data"]
+          end
         end
-      end
 
-      self.save!
+        self.save!
+      end
+    rescue Exception => e
+      Airbrake.notify({ :error_class => "Payment Detail Error [process moip response]", :error_message => "Error: #{e.inspect}", :parameters => params}) rescue nil
     end
   end
 
