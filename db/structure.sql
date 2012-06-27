@@ -39,44 +39,9 @@ CREATE TABLE active_admin_comments (
     author_id integer,
     author_type character varying(255),
     body text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
     namespace character varying(255)
-);
-
-
---
--- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE active_admin_comments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
-
-
---
--- Name: admin_notes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE admin_notes (
-    id integer NOT NULL,
-    resource_id integer NOT NULL,
-    resource_type character varying(255) NOT NULL,
-    admin_user_id integer,
-    admin_user_type character varying(255),
-    body text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
 );
 
 
@@ -96,29 +61,29 @@ CREATE SEQUENCE admin_notes_id_seq
 -- Name: admin_notes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE admin_notes_id_seq OWNED BY admin_notes.id;
+ALTER SEQUENCE admin_notes_id_seq OWNED BY active_admin_comments.id;
 
 
 --
--- Name: advert_videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: institutional_videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE advert_videos (
+CREATE TABLE institutional_videos (
     id integer NOT NULL,
     title character varying(255),
     description text,
     video_url character varying(255),
     visible boolean,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: advert_videos_id_seq1; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: advert_videos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE advert_videos_id_seq1
+CREATE SEQUENCE advert_videos_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -127,10 +92,10 @@ CREATE SEQUENCE advert_videos_id_seq1
 
 
 --
--- Name: advert_videos_id_seq1; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: advert_videos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE advert_videos_id_seq1 OWNED BY advert_videos.id;
+ALTER SEQUENCE advert_videos_id_seq OWNED BY institutional_videos.id;
 
 
 --
@@ -145,8 +110,8 @@ CREATE TABLE backers (
     value numeric NOT NULL,
     confirmed boolean DEFAULT false NOT NULL,
     confirmed_at timestamp without time zone,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
     display_notice boolean DEFAULT false,
     anonymous boolean DEFAULT false,
     key text,
@@ -156,7 +121,8 @@ CREATE TABLE backers (
     credits boolean DEFAULT false,
     notified_finish boolean DEFAULT false,
     payment_method text,
-    payment_token text
+    payment_token text,
+    CONSTRAINT backers_value_positive CHECK ((value >= (0)::numeric))
 );
 
 
@@ -186,8 +152,9 @@ ALTER SEQUENCE backers_id_seq OWNED BY backers.id;
 CREATE TABLE categories (
     id integer NOT NULL,
     name text NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    CONSTRAINT categories_name_not_blank CHECK ((length(btrim(name)) > 0))
 );
 
 
@@ -223,8 +190,9 @@ CREATE TABLE comments (
     commentable_type character varying(255) NOT NULL,
     user_id integer NOT NULL,
     project_update boolean DEFAULT false,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    CONSTRAINT comments_comment_not_blank CHECK ((length(btrim(comment)) > 0))
 );
 
 
@@ -255,8 +223,9 @@ CREATE TABLE configurations (
     id integer NOT NULL,
     name text NOT NULL,
     value text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    CONSTRAINT configurations_name_not_blank CHECK ((length(btrim(name)) > 0))
 );
 
 
@@ -290,8 +259,8 @@ CREATE TABLE curated_pages (
     analytics_id character varying(255),
     logo character varying(255),
     video_url character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
     permalink character varying(255),
     visible boolean DEFAULT false,
     site_url character varying(255)
@@ -318,40 +287,6 @@ ALTER SEQUENCE curated_pages_id_seq OWNED BY curated_pages.id;
 
 
 --
--- Name: institutional_videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE institutional_videos (
-    id integer NOT NULL,
-    title character varying(255),
-    description text,
-    video_url character varying(255),
-    visible boolean,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: institutional_videos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE institutional_videos_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: institutional_videos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE institutional_videos_id_seq OWNED BY institutional_videos.id;
-
-
---
 -- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -365,8 +300,8 @@ CREATE TABLE notifications (
     email_subject text,
     email_text text,
     dismissed boolean DEFAULT false NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -400,10 +335,13 @@ CREATE TABLE oauth_providers (
     secret text NOT NULL,
     scope text,
     "order" integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
     strategy text,
-    path text
+    path text,
+    CONSTRAINT oauth_providers_key_not_blank CHECK ((length(btrim(key)) > 0)),
+    CONSTRAINT oauth_providers_name_not_blank CHECK ((length(btrim(name)) > 0)),
+    CONSTRAINT oauth_providers_secret_not_blank CHECK ((length(btrim(secret)) > 0))
 );
 
 
@@ -446,8 +384,8 @@ CREATE TABLE payment_details (
     service_code character varying(255),
     institution_of_payment character varying(255),
     payment_date timestamp without time zone,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -484,8 +422,8 @@ CREATE TABLE payment_logs (
     payment_method integer,
     payment_type character varying(255),
     consumer_email character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -524,8 +462,8 @@ CREATE TABLE projects (
     video_url text NOT NULL,
     image_url text,
     short_url text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
     can_finish boolean DEFAULT false,
     finished boolean DEFAULT false,
     about_html text,
@@ -536,7 +474,11 @@ CREATE TABLE projects (
     "order" integer,
     home_page_comment text,
     successful boolean DEFAULT false,
-    permalink character varying(255)
+    permalink character varying(255),
+    CONSTRAINT projects_about_not_blank CHECK ((length(btrim(about)) > 0)),
+    CONSTRAINT projects_headline_length_within CHECK (((length(headline) >= 1) AND (length(headline) <= 140))),
+    CONSTRAINT projects_headline_not_blank CHECK ((length(btrim(headline)) > 0)),
+    CONSTRAINT projects_video_url_not_blank CHECK ((length(btrim(video_url)) > 0))
 );
 
 
@@ -549,8 +491,9 @@ CREATE TABLE projects_curated_pages (
     project_id integer,
     curated_page_id integer,
     description text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    description_html text
 );
 
 
@@ -612,8 +555,10 @@ CREATE TABLE rewards (
     minimum_value numeric NOT NULL,
     maximum_backers integer,
     description text NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    CONSTRAINT rewards_maximum_backers_positive CHECK ((maximum_backers >= 0)),
+    CONSTRAINT rewards_minimum_value_positive CHECK ((minimum_value >= (0)::numeric))
 );
 
 
@@ -646,38 +591,6 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: sessions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE sessions (
-    id integer NOT NULL,
-    session_id character varying(255) NOT NULL,
-    data text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE sessions_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE sessions_id_seq OWNED BY sessions.id;
-
-
---
 -- Name: states; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -685,8 +598,10 @@ CREATE TABLE states (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
     acronym character varying(255) NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    CONSTRAINT states_acronym_not_blank CHECK ((length(btrim((acronym)::text)) > 0)),
+    CONSTRAINT states_name_not_blank CHECK ((length(btrim((name)::text)) > 0))
 );
 
 
@@ -718,8 +633,8 @@ CREATE TABLE static_contents (
     title character varying(255),
     body text,
     body_html text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -753,8 +668,8 @@ CREATE TABLE updates (
     title text,
     comment text NOT NULL,
     comment_html text NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -793,8 +708,8 @@ CREATE TABLE users (
     image_url text,
     newsletter boolean DEFAULT false,
     project_updates boolean DEFAULT false,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
     admin boolean DEFAULT false,
     full_name text,
     address_street text,
@@ -805,7 +720,7 @@ CREATE TABLE users (
     address_state text,
     address_zip_code text,
     phone_number text,
-    credits numeric DEFAULT 0.0,
+    credits numeric DEFAULT 0,
     locale text DEFAULT 'pt'::text NOT NULL,
     cpf text,
     encrypted_password character varying(128) DEFAULT ''::character varying NOT NULL,
@@ -819,7 +734,10 @@ CREATE TABLE users (
     last_sign_in_ip character varying(255),
     twitter character varying(255),
     facebook_link character varying(255),
-    other_link character varying(255)
+    other_link character varying(255),
+    CONSTRAINT users_bio_length_within CHECK (((length(bio) >= 0) AND (length(bio) <= 140))),
+    CONSTRAINT users_provider_not_blank CHECK ((length(btrim(provider)) > 0)),
+    CONSTRAINT users_uid_not_blank CHECK ((length(btrim(uid)) > 0))
 );
 
 
@@ -846,171 +764,142 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
+ALTER TABLE active_admin_comments ALTER COLUMN id SET DEFAULT nextval('admin_notes_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY admin_notes ALTER COLUMN id SET DEFAULT nextval('admin_notes_id_seq'::regclass);
+ALTER TABLE backers ALTER COLUMN id SET DEFAULT nextval('backers_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY advert_videos ALTER COLUMN id SET DEFAULT nextval('advert_videos_id_seq1'::regclass);
+ALTER TABLE categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY backers ALTER COLUMN id SET DEFAULT nextval('backers_id_seq'::regclass);
+ALTER TABLE comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
+ALTER TABLE configurations ALTER COLUMN id SET DEFAULT nextval('configurations_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+ALTER TABLE curated_pages ALTER COLUMN id SET DEFAULT nextval('curated_pages_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY configurations ALTER COLUMN id SET DEFAULT nextval('configurations_id_seq'::regclass);
+ALTER TABLE institutional_videos ALTER COLUMN id SET DEFAULT nextval('advert_videos_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY curated_pages ALTER COLUMN id SET DEFAULT nextval('curated_pages_id_seq'::regclass);
+ALTER TABLE notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY institutional_videos ALTER COLUMN id SET DEFAULT nextval('institutional_videos_id_seq'::regclass);
+ALTER TABLE oauth_providers ALTER COLUMN id SET DEFAULT nextval('oauth_providers_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
+ALTER TABLE payment_details ALTER COLUMN id SET DEFAULT nextval('payment_details_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY oauth_providers ALTER COLUMN id SET DEFAULT nextval('oauth_providers_id_seq'::regclass);
+ALTER TABLE payment_logs ALTER COLUMN id SET DEFAULT nextval('payment_logs_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY payment_details ALTER COLUMN id SET DEFAULT nextval('payment_details_id_seq'::regclass);
+ALTER TABLE projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY payment_logs ALTER COLUMN id SET DEFAULT nextval('payment_logs_id_seq'::regclass);
+ALTER TABLE projects_curated_pages ALTER COLUMN id SET DEFAULT nextval('projects_curated_pages_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regclass);
+ALTER TABLE rewards ALTER COLUMN id SET DEFAULT nextval('rewards_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY projects_curated_pages ALTER COLUMN id SET DEFAULT nextval('projects_curated_pages_id_seq'::regclass);
+ALTER TABLE states ALTER COLUMN id SET DEFAULT nextval('states_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY rewards ALTER COLUMN id SET DEFAULT nextval('rewards_id_seq'::regclass);
+ALTER TABLE static_contents ALTER COLUMN id SET DEFAULT nextval('static_contents_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY sessions ALTER COLUMN id SET DEFAULT nextval('sessions_id_seq'::regclass);
+ALTER TABLE updates ALTER COLUMN id SET DEFAULT nextval('updates_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY states ALTER COLUMN id SET DEFAULT nextval('states_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY static_contents ALTER COLUMN id SET DEFAULT nextval('static_contents_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY updates ALTER COLUMN id SET DEFAULT nextval('updates_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
-
-
---
--- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY active_admin_comments
-    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
+ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
 -- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY admin_notes
+ALTER TABLE ONLY active_admin_comments
     ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
 
 
 --
--- Name: advert_videos_pkey1; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: advert_videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY advert_videos
-    ADD CONSTRAINT advert_videos_pkey1 PRIMARY KEY (id);
+ALTER TABLE ONLY institutional_videos
+    ADD CONSTRAINT advert_videos_pkey PRIMARY KEY (id);
 
 
 --
@@ -1019,6 +908,14 @@ ALTER TABLE ONLY advert_videos
 
 ALTER TABLE ONLY backers
     ADD CONSTRAINT backers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categories_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_name_unique UNIQUE (name);
 
 
 --
@@ -1054,19 +951,19 @@ ALTER TABLE ONLY curated_pages
 
 
 --
--- Name: institutional_videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY institutional_videos
-    ADD CONSTRAINT institutional_videos_pkey PRIMARY KEY (id);
-
-
---
 -- Name: notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY notifications
     ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_providers_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY oauth_providers
+    ADD CONSTRAINT oauth_providers_name_unique UNIQUE (name);
 
 
 --
@@ -1118,11 +1015,19 @@ ALTER TABLE ONLY rewards
 
 
 --
--- Name: sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: states_acronym_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY sessions
-    ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY states
+    ADD CONSTRAINT states_acronym_unique UNIQUE (acronym);
+
+
+--
+-- Name: states_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY states
+    ADD CONSTRAINT states_name_unique UNIQUE (name);
 
 
 --
@@ -1158,10 +1063,11 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: categories_name_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: users_provider_uid_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX categories_name_unique ON categories USING btree (name);
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_provider_uid_unique UNIQUE (provider, uid);
 
 
 --
@@ -1176,13 +1082,6 @@ CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON active_
 --
 
 CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments USING btree (namespace);
-
-
---
--- Name: index_admin_notes_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_admin_notes_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
 
 
 --
@@ -1249,6 +1148,13 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
+-- Name: index_confirmed_backers_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_confirmed_backers_on_project_id ON backers USING btree (project_id) WHERE confirmed;
+
+
+--
 -- Name: index_curated_pages_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1291,20 +1197,6 @@ CREATE INDEX index_rewards_on_project_id ON rewards USING btree (project_id);
 
 
 --
--- Name: index_sessions_on_session_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_sessions_on_session_id ON sessions USING btree (session_id);
-
-
---
--- Name: index_sessions_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_sessions_on_updated_at ON sessions USING btree (updated_at);
-
-
---
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1319,31 +1211,17 @@ CREATE INDEX index_users_on_name ON users USING btree (name);
 
 
 --
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
 -- Name: index_users_on_uid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_users_on_uid ON users USING btree (uid);
-
-
---
--- Name: oauth_providers_name_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX oauth_providers_name_unique ON oauth_providers USING btree (name);
-
-
---
--- Name: states_acronym_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX states_acronym_unique ON states USING btree (acronym);
-
-
---
--- Name: states_name_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX states_name_unique ON states USING btree (name);
 
 
 --
@@ -1354,10 +1232,106 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
--- Name: users_provider_uid_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: users_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX users_provider_uid_unique ON users USING btree (provider, uid);
+CREATE UNIQUE INDEX users_email ON users USING btree (email) WHERE (provider = 'devise'::text);
+
+
+--
+-- Name: backers_project_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY backers
+    ADD CONSTRAINT backers_project_id_reference FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
+-- Name: backers_reward_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY backers
+    ADD CONSTRAINT backers_reward_id_reference FOREIGN KEY (reward_id) REFERENCES rewards(id);
+
+
+--
+-- Name: backers_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY backers
+    ADD CONSTRAINT backers_user_id_reference FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: comments_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comments_user_id_reference FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: notifications_project_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notifications_project_id_reference FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
+-- Name: notifications_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notifications_user_id_reference FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: projects_category_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_category_id_reference FOREIGN KEY (category_id) REFERENCES categories(id);
+
+
+--
+-- Name: projects_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_user_id_reference FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: rewards_project_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY rewards
+    ADD CONSTRAINT rewards_project_id_reference FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
+-- Name: updates_project_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY updates
+    ADD CONSTRAINT updates_project_id_fk FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
+-- Name: updates_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY updates
+    ADD CONSTRAINT updates_user_id_fk FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: users_primary_user_id_reference; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_primary_user_id_reference FOREIGN KEY (primary_user_id) REFERENCES users(id);
 
 
 --
@@ -1488,7 +1462,13 @@ INSERT INTO schema_migrations (version) VALUES ('20120130180611');
 
 INSERT INTO schema_migrations (version) VALUES ('20120130180612');
 
+INSERT INTO schema_migrations (version) VALUES ('20120208033933');
+
+INSERT INTO schema_migrations (version) VALUES ('20120210025623');
+
 INSERT INTO schema_migrations (version) VALUES ('20120320131705');
+
+INSERT INTO schema_migrations (version) VALUES ('20120424151825');
 
 INSERT INTO schema_migrations (version) VALUES ('20120424152539');
 
@@ -1496,4 +1476,4 @@ INSERT INTO schema_migrations (version) VALUES ('20120425121355');
 
 INSERT INTO schema_migrations (version) VALUES ('20120605023025');
 
-INSERT INTO schema_migrations (version) VALUES ('20120615001427');
+INSERT INTO schema_migrations (version) VALUES ('20120621152909');
