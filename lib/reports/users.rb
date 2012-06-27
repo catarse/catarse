@@ -1,5 +1,8 @@
 module Reports
   module Users
-    autoload :Backers, 'reports/users/backers'
   end
 end
+
+require 'reports/users/backers'
+require 'reports/users/projects'
+require 'reports/users/emails'

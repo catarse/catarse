@@ -39,9 +39,10 @@
             .clearfix
       #add_reward_wrapper
         .bootstrap-twitter
-          = link_to '#', class: 'add_reward btn btn-success', id: 'add_reward' do
-            i.icon-plus.icon-white
-            = t('.add_reward')
+          .form-actions
+            = link_to '#', class: 'add_reward btn btn-success', id: 'add_reward' do
+              i.icon-plus.icon-white
+              = t('.add_reward')
       .clearfix
     .submit
       fieldset.accept

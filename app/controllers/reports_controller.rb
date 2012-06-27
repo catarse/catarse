@@ -31,4 +31,20 @@ class ReportsController < ApplicationController
               :type => 'text/csv; charset=utf-8; header=present',
               :disposition => "attachment; filename=all_confirmed_backers.csv"
   end
+
+  def all_projects_owner
+    return unless require_admin
+    @csv = Reports::Users::Projects.all_project_owners
+    send_data @csv,
+              :type => 'text/csv; charset=utf-8; header=present',
+              :disposition => "attachment; filename=all_projects_owner.csv"
+  end
+
+  def all_emails_to_newsletter
+    return unless require_admin
+    @csv = Reports::Users::Emails.all_emails
+    send_data @csv,
+      :type => 'text/csv; charset=utf-8; header=present',
+      :disposition => "attachment; filename=all_emails.csv"
+  end
 end
