@@ -8,8 +8,6 @@ source 'http://gems.github.com'
 
 gem 'rails', '3.2.6'#,:git => 'https://github.com/rails/rails.git', :branch => '3-2-stable'
 gem 'rake', '0.9.2.2'
-gem 'rack', '1.4.1'
-
 
 # Database [Putting pg to the end because of a weird bug with Lion, pg and openssl]
 gem 'pg'
@@ -77,7 +75,7 @@ gem 'moip', git: 'https://github.com/danielweinmann/moip-ruby.git', ref: 'db1b87
 
 # Payment (paypal adaptive)
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
-gem 'active_paypal_adaptive_payment', '~> 0.3.13'
+#gem 'active_paypal_adaptive_payment', '~> 0.3.13'
 gem 'httpclient', '2.2.5'
 gem 'selenium-webdriver', '2.21.2'
 gem 'bourbon'
@@ -85,7 +83,6 @@ gem 'paypal-express', :require => 'paypal'
 
 # Server
 gem 'thin'
-gem 'unicorn'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
