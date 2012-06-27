@@ -1,14 +1,3 @@
-# NOTE: Weird bug, flash session not persisted
-# this is just a monkey patch to solve for moment
-module ActionDispatch
-  class Request
-    def flash
-      session["flash"] = Flash::FlashHash.new if not session["flash"]
-      @env['action_dispatch.request.flash_hash'] ||= session["flash"].tap(&:sweep)
-    end
-  end
-end
-
 # coding: utf-8
 class ApplicationController < ActionController::Base
 
@@ -41,10 +30,17 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Fix bug of flash that will never disapear
+  # @TODO try to remove in a future rails version
+  def render
+    super
+    flash.sweep
+  end
+
   def has_institutional_videos?
     InstitutionalVideo.visibles.present?
   end
-  
+
   def institutional_video
     InstitutionalVideo.visibles.random.first
   end
