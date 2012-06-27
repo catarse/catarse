@@ -45,7 +45,11 @@ class ProjectsController < ApplicationController
         end
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(8)
         @last_tweets = Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
-          JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}")))[0..1]
+          begin
+            JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}")))[0..1]
+          rescue
+            []
+          end
         end
         @last_tweets ||= []
       end

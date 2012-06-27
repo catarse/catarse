@@ -6,4 +6,4 @@ div class="curated_project #{(defined?(has_comments) ? :compost_project : '')}"
       p= "#{project.home_page_comment}"
   - if defined?(project_curated_page) and project_curated_page.count > 0 and project_curated_page.first.description.present?
     .project_curator_description
-      p= project_curated_page.first.description
+      == project_curated_page.first.description_html
