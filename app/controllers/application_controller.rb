@@ -32,8 +32,8 @@ class ApplicationController < ActionController::Base
 
   # Fix bug of flash that will never disapear
   # @TODO try to remove in a future rails version
-  def render
-    super
+  def render(*args)
+    super(*args)
     flash.sweep
   end
 
