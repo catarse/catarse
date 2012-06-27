@@ -101,6 +101,8 @@ Catarse::Application.routes.draw do
   end
   match "/pages/:permalink" => "curated_pages#show", as: :curated_page
 
+  resources :tests
+
   match "/:permalink" => "projects#show", as: :project_by_slug
 
 end
