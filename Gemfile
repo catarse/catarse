@@ -13,7 +13,6 @@ gem 'activerecord-postgresql-adapter'
 gem 'jquery-rails'
 gem 'slim'
 gem 'slim-rails'
-gem 'mustache'
 
 # Authentication and Authorization
 gem 'omniauth', "~> 1.1.0"
