@@ -1,12 +1,7 @@
-if RUBY_VERSION =~ /1.9/
-  Encoding.default_external = Encoding::UTF_8
-  Encoding.default_internal = Encoding::UTF_8
-end
-
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '3.2.6'#,:git => 'https://github.com/rails/rails.git', :branch => '3-2-stable'
+gem 'rails', '3.2.6'
 gem 'rake', '0.9.2.2'
 
 # Database [Putting pg to the end because of a weird bug with Lion, pg and openssl]
