@@ -2,11 +2,11 @@ class PaypalController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:notifications]
 
   SCOPE = "projects.backers.checkout"
-  #before_filter :initialize_paypal
+  before_filter :initialize_paypal
 
   def notifications
     backer = Backer.find params[:id]
-    response = EXPRESS_GATEWAY.details_for(backer.payment_token)
+    response = @@express_gateway.details_for(backer.payment_token)
     if response.params['transaction_id'] == params['txn_id']
       if response.success?
         backer.confirm!
@@ -23,7 +23,7 @@ class PaypalController < ApplicationController
   def pay
     backer = current_user.backs.find params[:id]
     begin
-      response = EXPRESS_GATEWAY.setup_purchase(backer.price_in_cents, {
+      response = @@express_gateway.setup_purchase(backer.price_in_cents, {
         ip: request.remote_ip,
         return_url: success_paypal_url(backer),
         cancel_return_url: cancel_paypal_url(backer),
@@ -37,35 +37,20 @@ class PaypalController < ApplicationController
       if response.params['correlation_id']
         backer.update_attribute :payment_id, response.params['correlation_id']
       end
-      redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+      redirect_to @@express_gateway.redirect_url_for(response.token)
     rescue Exception => e
       Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Error: #{e.inspect}", :parameters => params}) rescue nil
       Rails.logger.info "-----> #{e.inspect}"
       paypal_flash_error
       return redirect_to new_project_backer_path(backer.project)
     end    
-    #backer = Backer.find params[:id]
-    #begin
-        #paypal_response = @paypal.setup(
-          #paypal_payment(backer),
-          #success_paypal_url(backer),
-          #cancel_paypal_url(backer),
-          #:no_shipping => true
-        #)
-        #backer.update_attribute :payment_method, 'PayPal'
-        #redirect_to paypal_response.redirect_uri
-    #rescue Exception => e
-      #Airbrake.notify({ :error_class => "Paypal Error", :error_message => "Paypal Error: #{e.inspect}", :parameters => params}) rescue nil
-      #paypal_flash_error
-      #return redirect_to new_project_backer_path(backer.project)
-    #end
   end
 
   def success
     backer = current_user.backs.find params[:id]
     begin
-      details = EXPRESS_GATEWAY.details_for(backer.payment_token)
-      response = EXPRESS_GATEWAY.purchase(backer.price_in_cents, {
+      details = @@express_gateway.details_for(backer.payment_token)
+      response = @@express_gateway.purchase(backer.price_in_cents, {
         ip: request.remote_ip,
         token: backer.payment_token,
         payer_id: details.payer_id
@@ -135,16 +120,23 @@ class PaypalController < ApplicationController
     flash[:success] = t('success', scope: SCOPE)
   end
 
-  #def initialize_paypal
-    ##NOTE: to use sandbox mode
-    ## Paypal.sandbox!
+  def initialize_paypal
+    if Rails.env.test?
+      Configuration.create!(name: "paypal_username", value: "usertest_api1.teste.com")
+      Configuration.create!(name: "paypal_password", value: "HVN4PQBGZMHKFVGW")
+      Configuration.create!(name: "paypal_signature", value: "AeL-u-Ox.N6Jennvu1G3BcdiTJxQAWdQcjdpLTB9ZaP0-Xuf-U0EQtnS")
+    end
 
-    #@paypal = Paypal::Express::Request.new({
-      #:username => PaypalApi.username,
-      #:password => PaypalApi.password,
-      #:signature => PaypalApi.signature
-    #})
-  #end
+    if Configuration[:paypal_username] and Configuration[:paypal_password] and Configuration[:paypal_signature]
+      @@express_gateway ||= ActiveMerchant::Billing::PaypalExpressGateway.new({
+        login: Configuration[:paypal_username],
+        password: Configuration[:paypal_password],
+        signature: Configuration[:paypal_signature]
+      })
+    else
+      puts "[PayPal] An API Certificate or API Signature is required to make requests to PayPal"
+    end
+  end
 
   def paypal_payment(backer)
     {
