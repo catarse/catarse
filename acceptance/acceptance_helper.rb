@@ -99,6 +99,9 @@ RSpec.configure do |config|
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
     DatabaseCleaner.strategy = :truncation
+
+    # Put ActiveMerchant in test mode
+    ActiveMerchant::Billing::Base.mode = :test
   end
 
   config.before(:each) do
