@@ -117,10 +117,6 @@ def paypal_transaction_details_fake_response
 end
 
 class FakeResponse
-  def params
-    {'tax_total' => '5.72'}
-  end
-
   def code
     200
   end

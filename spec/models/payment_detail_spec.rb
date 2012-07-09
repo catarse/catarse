@@ -36,7 +36,9 @@ describe PaymentDetail do
 
       context "with valid response" do
         before do
-          PaymentGateway.any_instance.stubs(:details_for).returns(FakeResponse.new)
+          fake_response = mock()
+          fake_response.stubs(:params).returns({'tax_total' => '5.72'})
+          PaymentGateway.any_instance.stubs(:details_for).returns(fake_response)
         end
 
         it "should update service_tax_amount" do
