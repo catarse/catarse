@@ -15,4 +15,3 @@ script: "bundle exec rspec spec/ && bundle exec rspec acceptance/"
 branches:
   only:
     - master
-    - develop
