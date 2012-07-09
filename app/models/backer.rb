@@ -28,6 +28,10 @@ class Backer < ActiveRecord::Base
     self.update_attribute :payment_method, 'MoIP'
   end
 
+  def price_in_cents
+    (self.value * 100).round
+  end
+
   before_save :confirm?
 
   def confirm?

@@ -40,23 +40,24 @@ feature "Back project" do
   
   scenario "As a user without credits, I want to back a project by clicking on the reward on the back project page, and pay using PayPal" do
     
-    class FakeResponse
-      def redirect_uri
-        "http://www.paypal.com"
-      end
-    end
+    #class FakeResponse
+      #def redirect_uri
+        #"http://www.paypal.com"
+      #end
+    #end
   
-    class FakeRequest
-      def setup(*args)
-        FakeResponse.new
-      end
-    end
+    #class FakeRequest
+      #def setup(*args)
+        #FakeResponse.new
+      #end
+    #end
+    #NOTE: Test info
     
-    Configuration.create!(name: "paypal_username", value: "foobar")
-    Configuration.create!(name: "paypal_password", value: "foobar")
-    Configuration.create!(name: "paypal_signature", value: "foobar")
-    Paypal::Express::Request.stubs(:new).returns(FakeRequest.new)
-    Paypal::Express::Request.stubs(:setup).returns(FakeResponse.new)
+    #Configuration.create!(name: "paypal_username", value: "foobar")
+    #Configuration.create!(name: "paypal_password", value: "foobar")
+    #Configuration.create!(name: "paypal_signature", value: "foobar")
+    #Paypal::Express::Request.stubs(:new).returns(FakeRequest.new)
+    #Paypal::Express::Request.stubs(:setup).returns(FakeResponse.new)
   
     fake_login
     
