@@ -5,11 +5,12 @@ before_script:
   - "psql -c 'create role catarse SUPERUSER LOGIN;' postgres"
   - "psql -c 'create database catarse_test;' -U catarse postgres"
   - "sh -e /etc/init.d/xvfb start"
+  - "bundle exec rake db:migrate"
 
 env:
   - DISPLAY=:99.0
 
-script: "bundle exec rake db:migrate && bundle exec rspec spec/ && bundle exec rspec acceptance/"
+script: "bundle exec rspec spec/ && bundle exec rspec acceptance/"
 
 branches:
   only:
