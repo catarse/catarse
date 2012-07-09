@@ -65,7 +65,7 @@
                   = render 'formatting_tips'
                 = form.actions do
                   .bootstrap-twitter
-                    = form.submit t('projects.project_updates.submit'), class: "btn"
+                    = form.submit t('projects.project_updates.submit'), class: "btn", id: "update_submit"
                     .loading_updates.hide= image_tag "loading.gif"
 
           .updates_wrapper
