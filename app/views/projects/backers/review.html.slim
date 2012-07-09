@@ -23,6 +23,7 @@
         = semantic_form_for current_user, :url => checkout_project_backer_path(@backer.project, @backer), :html => { :id => 'review_form', :class => "form-horizontal #{('dont_align' if @backer.credits)}" } do |form|
           = hidden_field_tag 'backer_id', @backer.id
           = hidden_field_tag 'backer_credits', @backer.credits
+          = hidden_field_tag 'payment_method_url', nil
           - unless @backer.credits
             = form.inputs do
               = form.input :full_name, :required => true, :as => :string
@@ -49,7 +50,7 @@
               h1= t('.choose_payment')
             .choose_payment
               .cc
-                = link_to pay_paypal_path(@backer), :method => :get do
+                = link_to 'javascript:void(0);', :"data-payment_method_url" => pay_paypal_path(@backer), :method => :get, :class => 'payment_link' do
                   = image_tag 'catarse/cc_icon.png'
                   span= t('.choose_credit_card')
                 .clearfix
