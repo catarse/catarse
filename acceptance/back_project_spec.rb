@@ -16,6 +16,9 @@ feature "Back project" do
     # Create a state to select
     State.create! name: "Foo bar", acronym: "FB"
     Blog.stubs(:fetch_last_posts).returns([])
+    ::Configuration.create!(name: "paypal_username", value: "usertest_api1.teste.com")
+    ::Configuration.create!(name: "paypal_password", value: "HVN4PQBGZMHKFVGW")
+    ::Configuration.create!(name: "paypal_signature", value: "AeL-u-Ox.N6Jennvu1G3BcdiTJxQAWdQcjdpLTB9ZaP0-Xuf-U0EQtnS")
   end
 
   scenario "As a user without credits, I want to back a project by entering the value and selecting no reward" do
@@ -39,26 +42,6 @@ feature "Back project" do
   end
   
   scenario "As a user without credits, I want to back a project by clicking on the reward on the back project page, and pay using PayPal" do
-    
-    #class FakeResponse
-      #def redirect_uri
-        #"http://www.paypal.com"
-      #end
-    #end
-  
-    #class FakeRequest
-      #def setup(*args)
-        #FakeResponse.new
-      #end
-    #end
-    #NOTE: Test info
-    
-    #Configuration.create!(name: "paypal_username", value: "foobar")
-    #Configuration.create!(name: "paypal_password", value: "foobar")
-    #Configuration.create!(name: "paypal_signature", value: "foobar")
-    #Paypal::Express::Request.stubs(:new).returns(FakeRequest.new)
-    #Paypal::Express::Request.stubs(:setup).returns(FakeResponse.new)
-  
     fake_login
     
     visit project_path(@project)
@@ -115,21 +98,9 @@ feature "Back project" do
     page.should have_css("#user_full_name.ok")
     page.should have_css("#user_email.ok")
   
-    #page.should_not have_content("Como você quer pagar?")
     check "Eu li e estou de acordo com os termos de uso."
     page.should have_content("Como você quer pagar?")
     find(".choose_payment .cc a").click
-  
-    #within "#international_payment" do
-      
-      #click_on "Clique aqui"
-      #verify_translations
-      #find("#international_submit")[:disabled].should == "true"
-      #check "Eu li e estou de acordo com os termos de uso."
-      #find("#international_submit")[:disabled].should == "false"
-      #click_on "Efetuar pagamento pelo PayPal"
-      
-    #end
     
     current_url.should match(/paypal\.com/)
     backer.reload

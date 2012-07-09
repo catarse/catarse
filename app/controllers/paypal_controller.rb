@@ -1,3 +1,5 @@
+#require "#{Rails.root}/app/business/payment_gateway"
+
 class PaypalController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:notifications]
 
@@ -94,11 +96,11 @@ class PaypalController < ApplicationController
   end
 
   def initialize_paypal
-    if Configuration[:paypal_username] and Configuration[:paypal_password] and Configuration[:paypal_signature]
-      @@express_gateway ||= PaymentGateway({
-        :login => Configuration[:paypal_username],
-        :password => Configuration[:paypal_password],
-        :signature => Configuration[:paypal_signature]
+    if ::Configuration[:paypal_username] and ::Configuration[:paypal_password] and ::Configuration[:paypal_signature]
+      @@express_gateway ||= PaymentGateway.new({
+        :login => ::Configuration[:paypal_username],
+        :password => ::Configuration[:paypal_password],
+        :signature => ::Configuration[:paypal_signature]
       })
     else
       puts "[PayPal] An API Certificate or API Signature is required to make requests to PayPal"
