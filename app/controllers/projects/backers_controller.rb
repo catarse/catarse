@@ -46,7 +46,7 @@ class Projects::BackersController < ApplicationController
   def checkout
     return unless require_login
     backer = current_user.backs.find params[:id]
-    if params[:payment_method_url]
+    unless params[:payment_method_url].blank?
       current_user.update_attributes params[:user]
       current_user.reload
       return redirect_to params[:payment_method_url]
