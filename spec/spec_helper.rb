@@ -117,6 +117,10 @@ def paypal_transaction_details_fake_response
 end
 
 class FakeResponse
+  def params
+    {'tax_total' => '5.72'}
+  end
+
   def code
     200
   end
@@ -128,3 +132,6 @@ end
 
 I18n.locale = :pt
 I18n.default_locale = :pt
+
+# Put ActiveMerchant in test mode
+ActiveMerchant::Billing::Base.mode = :test

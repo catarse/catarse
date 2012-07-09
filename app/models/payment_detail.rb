@@ -8,7 +8,12 @@ class PaymentDetail < ActiveRecord::Base
       response = request_to_moip
       process_moip_response(response) if response.present?
     elsif self.backer.payment_method == 'PayPal'
-      response = PaypalApi.transaction_details(self.backer.key)
+      @@gateway ||= PaymentGateway.new({
+        :login => Configuration[:paypal_username],
+        :password => Configuration[:paypal_password],
+        :signature => Configuration[:paypal_signature]
+      }) 
+      response = @@gateway.details_for(self.backer.payment_token)
       process_paypal_response(response) if response.present?
     end
   end
@@ -16,7 +21,11 @@ class PaymentDetail < ActiveRecord::Base
   def process_paypal_response(response)
     # For moment only attribute persisted in database is the
     # service fee.
-    self.update_attributes(response)
+    begin
+      self.service_tax_amount ||= response.params["tax_total"].to_f
+    rescue Exception => e
+      Airbrake.notify({ :error_class => "Payment Detail Error [process paypal response]", :error_message => "Error: #{e.inspect}", :parameters => params}) rescue nil
+    end
   end
 
   def process_moip_response(response)

@@ -4,6 +4,9 @@ describe PaymentDetail do
   before do
     @project = create(:project)
     @backer = create(:backer, :project => @project)
+    Configuration.create!(name: "paypal_username", value: "usertest_api1.teste.com")
+    Configuration.create!(name: "paypal_password", value: "HVN4PQBGZMHKFVGW")
+    Configuration.create!(name: "paypal_signature", value: "AeL-u-Ox.N6Jennvu1G3BcdiTJxQAWdQcjdpLTB9ZaP0-Xuf-U0EQtnS")
   end
 
   subject {
@@ -26,14 +29,14 @@ describe PaymentDetail do
       end
 
       it "with invalid response" do
-        PaypalApi.stubs(:transaction_details).returns({})
+        PaymentGateway.any_instance.stubs(:details_for).returns({})
         subject.expects(:process_paypal_response).never
         subject.update_from_service
       end
 
       context "with valid response" do
         before do
-          HTTParty.stubs(:get).returns(FakeResponse.new)
+          PaymentGateway.any_instance.stubs(:details_for).returns(FakeResponse.new)
         end
 
         it "should update service_tax_amount" do
