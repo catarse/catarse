@@ -82,7 +82,7 @@ class Backer < ActiveRecord::Base
   end
 
   def payment_service_fee
-    (payment_detail || build_payment_detail).service_tax_amount.to_f
+    (payment_detail || build_payment_detail.update_from_service).service_tax_amount.to_f
   end
 
   def moip_value
