@@ -28,6 +28,8 @@ describe PaymentDetail do
         @backer.reload
       end
 
+      its(:class){ should == PaymentDetail }
+
       it "with invalid response" do
         PaymentGateway.any_instance.stubs(:details_for).returns({})
         subject.expects(:process_paypal_response).never
