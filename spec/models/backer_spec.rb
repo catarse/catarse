@@ -107,11 +107,23 @@ describe Backer do
   describe "#payment_service_fee" do
     let(:backer){ Backer.new }
     subject{ backer.payment_service_fee }
-    before(:each) do
-      backer.build_payment_detail
-      backer.payment_detail.stubs(:service_tax_amount).returns('5.75')
+    context "when there is a payment detail" do
+      before(:each) do
+        backer.build_payment_detail
+        backer.payment_detail.stubs(:service_tax_amount).returns('5.75')
+      end
+      it{ should == 5.75 }
     end
-    it{ should == 5.75 }
+
+    context "when there is not a payment detail" do
+      before(:each) do
+        payment_detail = mock()
+        payment_detail.expects(:update_from_service).returns(payment_detail)
+        backer.expects(:build_payment_detail).returns(payment_detail)
+        payment_detail.stubs(:service_tax_amount).returns('5.75')
+      end
+      it{ should == 5.75 }
+    end
   end
 
   describe "#display_platform_fee" do

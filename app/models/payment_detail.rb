@@ -16,6 +16,7 @@ class PaymentDetail < ActiveRecord::Base
       response = @@gateway.details_for(self.backer.payment_token)
       process_paypal_response(response) if response.present?
     end
+    self
   end
 
   def process_paypal_response(response)
