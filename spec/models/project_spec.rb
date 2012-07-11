@@ -7,6 +7,7 @@ describe Project do
     it{ should have_many :projects_curated_pages }
     it{ should have_many :curated_pages }
     it{ should have_many :backers }
+    it{ should have_one  :backer_total }
     it{ should have_many :rewards }
     it{ should have_many :updates }
     it{ should have_many :notifications }
@@ -26,6 +27,44 @@ describe Project do
     end
     subject{ Project.recent }
     it{ should == [@p] }
+  end
+
+  describe "#pledged" do
+    let(:project){ Project.new }
+    subject{ project.pledged }
+    context "when backer_total is nil" do
+      before do
+        project.stubs(:backer_total).returns(nil)
+      end
+      it{ should == 0 }
+    end
+    context "when backer_total exists" do
+      before do
+        backer_total = mock()
+        backer_total.stubs(:pledged).returns(10.0)
+        project.stubs(:backer_total).returns(backer_total)
+      end
+      it{ should == 10.0 }
+    end
+  end
+
+  describe "#total_backers" do
+    let(:project){ Project.new }
+    subject{ project.total_backers }
+    context "when backer_total is nil" do
+      before do
+        project.stubs(:backer_total).returns(nil)
+      end
+      it{ should == 0 }
+    end
+    context "when backer_total exists" do
+      before do
+        backer_total = mock()
+        backer_total.stubs(:total_backers).returns(1)
+        project.stubs(:backer_total).returns(backer_total)
+      end
+      it{ should == 1 }
+    end
   end
 
   describe "#display_status" do
@@ -88,37 +127,61 @@ describe Project do
 
   end
 
+
+  describe "#successful?" do
+    let(:project){ Project.new :goal => 3000 }
+    subject{ project.successful? }
+    context "when pledged is inferior to goal" do
+      before{ project.stubs(:pledged).returns(2999.99) }
+      it{ should be_false }
+    end
+    context "when pledged is equal to goal" do
+      before{ project.stubs(:pledged).returns(3000) }
+      it{ should be_true }
+    end
+    context "when pledged is equal to goal" do
+      before{ project.stubs(:pledged).returns(3001) }
+      it{ should be_true }
+    end
+  end
+
+  describe "#expired?" do
+    subject{ project.expired? }
+    context "when expires_at is in the future" do
+      let(:project){ Project.new :expires_at => 2.seconds.from_now }
+      it{ should be_false }
+    end
+
+    context "when expires_at is in the past" do
+      let(:project){ Project.new :expires_at => 2.seconds.ago }
+      it{ should be_true }
+    end
+
+    context "when project is finished" do
+      let(:project){ Project.new :expires_at => 2.seconds.from_now, :finished => true }
+      it{ should be_true }
+    end
+  end
+
+  describe "#in_time?" do
+    subject{ project.in_time? }
+    context "when expires_at is in the future" do
+      let(:project){ Project.new :expires_at => 2.seconds.from_now }
+      it{ should be_true }
+    end
+
+    context "when expires_at is in the past" do
+      let(:project){ Project.new :expires_at => 2.seconds.ago }
+      it{ should be_false }
+    end
+
+    context "when project is finished" do
+      let(:project){ Project.new :expires_at => 2.seconds.from_now, :finished => true }
+      it{ should be_false }
+    end
+  end
+
   describe "status changes" do
-
-    it "should be successful if pledged >= goal" do
-      p = Factory.build(:project)
-      p.goal = 3000.00
-      Factory(:backer, :project => p, :value => 2999.99)
-      p.successful?.should be_false
-      p.backers.destroy_all
-      Factory(:backer, :project => p, :value => 3000.00)
-      p.successful?.should be_true
-      p.backers.destroy_all
-      Factory(:backer, :project => p, :value => 3000.01)
-      p.successful?.should be_true
-    end
-
-    it "should be expired if expires_at is passed" do
-      p = Factory.build(:project)
-      p.expires_at = 2.seconds.from_now
-      p.expired?.should be_false
-      p.expires_at = 2.seconds.ago
-      p.expired?.should be_true
-    end
-
-    it "should be in time if expires_at is not passed" do
-      p = Factory.build(:project)
-      p.expires_at = 2.seconds.ago
-      p.in_time?.should be_false
-      p.expires_at = 2.seconds.from_now
-      p.in_time?.should be_true
-    end
-
     it "should be waiting confirmation until 3 weekdays after the deadline unless it is already successful" do
       p = Factory(:project, :goal => 100)
       time = Time.local 2011, 03, 04
@@ -134,7 +197,7 @@ describe Project do
       p.waiting_confirmation?.should be_true
       p.expires_at = 2.weekdays_ago
       p.waiting_confirmation?.should be_true
-      Factory(:backer, :project => p, :value => 100, :confirmed => true)
+      p.stubs(:pledged).returns(100)
       p.successful?.should be_true
       p.expires_at = 3.weekdays_ago + 1.minute
       p.waiting_confirmation?.should be_false
@@ -145,7 +208,6 @@ describe Project do
   end
   
   describe "#finish!" do
-    
     it "should generate credits for users when project finishes and didn't succeed" do
       user = Factory(:user)
       project = Factory(:project, can_finish: true, finished: false, goal: 1000, expires_at: 1.day.ago)

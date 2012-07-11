@@ -15,6 +15,7 @@ class Project < ActiveRecord::Base
   has_many :rewards, :dependent => :destroy
   has_many :updates, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
+  has_one :backer_total
   has_and_belongs_to_many :managers, :join_table => "projects_managers", :class_name => 'User'
   accepts_nested_attributes_for :rewards
 
@@ -85,11 +86,11 @@ class Project < ActiveRecord::Base
   end
 
   def pledged
-    backers.confirmed.sum(:value)
+    backer_total ? backer_total.pledged : 0.0
   end
 
   def total_backers
-    backers.confirmed.count
+    backer_total ? backer_total.total_backers : 0
   end
 
   def display_status
@@ -110,8 +111,7 @@ class Project < ActiveRecord::Base
   end
 
   def expired?
-    return true if finished
-    expires_at < Time.now
+    finished || expires_at < Time.now
   end
 
   def waiting_confirmation?
@@ -120,8 +120,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time?
-    return false if finished
-    expires_at >= Time.now
+    !expired?
   end
 
   def progress
