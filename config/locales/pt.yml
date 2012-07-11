@@ -279,9 +279,6 @@ pt:
       submit_project: envie
       profile: "meu perfil"
       account: "minha conta"
-    recommended_header:
-      sugest_for_you: "sugerido para você"
-      highlight_project: "projeto em destaque"
     user:
       logout: Sair
       my_credits: "Meus créditos"
@@ -338,6 +335,9 @@ pt:
       successful: financiado
       waiting_confirmation: aguardando
   projects:
+    recommended_header:
+      sugest_for_you: "sugerido para você"
+      highlight_project: "projeto em destaque"
     box:
       by: por
     admin_fields:
