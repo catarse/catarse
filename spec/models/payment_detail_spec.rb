@@ -37,16 +37,35 @@ describe PaymentDetail do
       end
 
       context "with valid response" do
+        let(:time){ Time.now }
         before do
           fake_response = mock()
-          fake_response.stubs(:params).returns({'tax_total' => '5.72'})
+          fake_response.stubs(:params).returns({
+            'tax_total' => '5.72',
+            'order_total' => '6.66',
+            'handling_total' => '1.61',
+            'timestamp' => time.to_s,
+            'payer' => 'foo@bar.com'
+          })
+          fake_response.stubs(:address).returns({
+            'name' => 'Foo Bar',
+            'city' => 'Foo City',
+            'state' => 'Foo State'
+          })
           PaymentGateway.any_instance.stubs(:details_for).returns(fake_response)
+          subject.update_from_service
         end
 
-        it "should update service_tax_amount" do
-          subject.update_from_service
-          subject.service_tax_amount.should == 5.72
-        end
+        it{ should be_persisted }
+        its(:payer_email){ should == 'foo@bar.com' }
+        its(:net_amount){ should == 6.66 }
+        its(:total_amount){ should == 1.61 }
+        its(:service_tax_amount){ should == 5.72 }
+        its(:payment_date){ should == time.to_date.to_time }
+
+        its(:payer_name){ should == 'Foo Bar' }
+        its(:city){ should == 'Foo City' }
+        its(:uf){ should == 'Foo State' }
       end
     end
 
