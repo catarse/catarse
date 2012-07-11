@@ -27,7 +27,8 @@
           = f.label :other_link, t('.other_link')
           = f.text_field :other_link
           br
-          p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"
+          .bootstrap-twitter
+            p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"
 - if @user.is_devise?
   #change_password
     h1= t('.change_password')
@@ -45,4 +46,5 @@
             span.hint= t('.current_password_hint').html_safe
             br
             br
-            p= f.submit 'OK', :class => 'btn'
+            .bootstrap-twitter
+              p= f.submit 'OK', :class => 'btn'
