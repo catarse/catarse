@@ -19,14 +19,46 @@ class PaymentDetail < ActiveRecord::Base
     self
   end
 
+  def request_to_moip
+    MoIP::Client.query(backer.payment_token)
+  rescue
+    []
+  end
+
+  def display_service_tax
+    number_to_currency service_tax_amount, :unit => "R$", :precision => 2, :delimiter => '.'
+  end
+
+  def display_net_amount
+    number_to_currency net_amount, :unit => "R$", :precision => 2, :delimiter => '.'
+  end
+
+  def display_total_amount
+    number_to_currency total_amount, :unit => "R$", :precision => 2, :delimiter => '.'
+  end
+
+  def display_payment_date
+    I18n.l(payment_date, :format => :simple) if payment_date.present?
+  end
+
+  private
   def process_paypal_response(response)
     # For moment only attribute persisted in database is the
     # service fee.
     begin
       self.service_tax_amount ||= response.params["tax_total"].to_f
+      self.payer_email = response.params['payer']
+      self.net_amount = response.params['order_total'].to_f
+      self.total_amount = response.params['handling_total'].to_f
+      self.service_tax_amount = response.params['tax_total'].to_f
+      self.payment_date = response.params['timestamp'].to_date rescue nil
+      self.payer_name = response.address['name']
+      self.city = response.address['city']
+      self.uf = response.address['state']
     rescue Exception => e
       Airbrake.notify({ :error_class => "Payment Detail Error [process paypal response]", :error_message => "Error: #{e.inspect}", :parameters => params}) rescue nil
     end
+    self.save!
   end
 
   def process_moip_response(response)
@@ -71,26 +103,5 @@ class PaymentDetail < ActiveRecord::Base
     end
   end
 
-  def request_to_moip
-    MoIP::Client.query(backer.payment_token)
-  rescue
-    []
-  end
-
-  def display_service_tax
-    number_to_currency service_tax_amount, :unit => "R$", :precision => 2, :delimiter => '.'
-  end
-
-  def display_net_amount
-    number_to_currency net_amount, :unit => "R$", :precision => 2, :delimiter => '.'
-  end
-
-  def display_total_amount
-    number_to_currency total_amount, :unit => "R$", :precision => 2, :delimiter => '.'
-  end
-
-  def display_payment_date
-    I18n.l(payment_date, :format => :simple) if payment_date.present?
-  end
 
 end
