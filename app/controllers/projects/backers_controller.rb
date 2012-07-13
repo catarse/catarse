@@ -94,6 +94,8 @@ class Projects::BackersController < ApplicationController
           session[:_payment_token] = response["Token"]
           redirect_to MoIP::Client.moip_page(response["Token"])
         rescue
+          Airbrake.notify({ :error_class => "Checkout MOIP Error", :error_message => "MOIP Error: #{e.inspect}", :parameters => params}) rescue nil
+          Rails.logger.info "-----> #{e.inspect}"
           flash[:failure] = t('projects.backers.checkout.moip_error')
           return redirect_to new_project_backer_path(backer.project)
         end
