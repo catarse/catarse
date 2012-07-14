@@ -10,13 +10,14 @@ class ApplicationController < ActionController::Base
 
   # TODO: Change this way to get the opendata
   before_filter do
-    @total_backers = User.backers.count
-    @total_backs = Backer.confirmed.count
-    @total_backed = Backer.confirmed.sum(:value)
-    @total_users = User.primary.count
-    @total_projects = Project.visible.count
-    @total_projects_success = Project.successful.count
-    @total_projects_online = Project.visible.not_expired.count
+    statistics = Statistics.first
+    @total_backers = statistics.total_backers
+    @total_backs = statistics.total_backs
+    @total_backed = statistics.total_backed
+    @total_users = statistics.total_users
+    @total_projects = statistics.total_projects
+    @total_projects_success = statistics.total_projects_success 
+    @total_projects_online = statistics.total_projects_online 
     @fb_admins = [567237711]
   end
 
