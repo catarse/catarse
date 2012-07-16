@@ -61,11 +61,8 @@
           = link_to "Follow @#{t('site.twitter')}", "http://twitter.com/#{t('site.twitter')}", :class => 'twitter-follow-button', :"data-show-count" => "false" , :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
         .newsletter
           h3= t('sidebar.titles.newsletter')
-          = form_tag 'http://catarse.mailee.me/go/add_contact_form', id: 'mailee-form', method: 'post' do
-            = hidden_field_tag 'key', '13122d'
-            = hidden_field_tag 'url_ok', "http://#{request.env['HTTP_HOST']}/?newsletter=ok"
-            = hidden_field_tag 'url_error', "http://#{request.env['HTTP_HOST']}/?newsletter=error"
-            = text_field_tag 'email', nil, placeholder: 'email@email.com'
+          = form_tag 'http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e', id: 'mailee-form', method: 'post' do
+            = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
             = submit_tag t('sidebar.buttons.newsletter')
         .faq
           h3= t('sidebar.titles.faq')
