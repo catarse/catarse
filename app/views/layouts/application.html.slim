@@ -69,11 +69,8 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
             .facebook
               .fb-like data-href="http://facebook.com/catarse.me" data-send="false" data-width="171" data-show-faces="true"
             h3.newsletter= t('footer.titles.newsletter')
-            = form_tag 'http://catarse.mailee.me/go/add_contact_form', id: 'mailee-form', method: 'post' do
-              = hidden_field_tag 'key', '13122d'
-              = hidden_field_tag 'url_ok', "http://#{request.env['HTTP_HOST']}/?newsletter=ok"
-              = hidden_field_tag 'url_error', "http://#{request.env['HTTP_HOST']}/?newsletter=error"
-              = text_field_tag 'email', nil, placeholder: 'email@email.com'
+            = form_tag 'http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e', id: 'mailee-form', method: 'post' do
+              = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
               = submit_tag 'assinar'
           .clearfix
     #logos
