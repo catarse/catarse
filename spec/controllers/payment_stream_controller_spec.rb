@@ -15,6 +15,13 @@ describe PaymentStreamController do
 
     it "should mark with refunded when backer as requested_refund" do
       backer = Factory(:backer, :requested_refund => true, :confirmed => false)
+      post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '9', :valor => backer.moip_value})
+      response.should be_successful
+      backer.reload.refunded.should be_true
+    end
+
+    it "should mark with refunded when backer as requested_refund" do
+      backer = Factory(:backer, :requested_refund => true, :confirmed => false)
       post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '7', :valor => backer.moip_value})
       response.should be_successful
       backer.reload.refunded.should be_true
