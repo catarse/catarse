@@ -32,7 +32,9 @@ module Reports
               'Bairro',
               'Cidade',
               'Estado',
-              'CEP'
+              'CEP',
+              'Solicitou estorno',
+              'Estorno Realizado'
             ]
 
             @backers.each do |backer|
@@ -57,7 +59,9 @@ module Reports
                 backer.user.address_neighbourhood,
                 backer.user.address_city,
                 backer.user.address_state,
-                backer.user.address_zip_code
+                backer.user.address_zip_code,
+                backer.requested_refund,
+                backer.refunded
               ]
             end
           end
