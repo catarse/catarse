@@ -6,6 +6,21 @@ describe PaymentHistory::Moip do
   end
 
   describe "When receive params of POST request" do
+    context "refunded request" do
+      it 'should mark with refunded and update the user credits too' do
+        backer = create(:backer, :value => 21.90, :confirmed => true, :refunded => false)
+        backer.user.update_attribute :credits, 21.90
+        backer.reload
+
+        moip = PaymentHistory::Moip.new(post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => PaymentHistory::Moip::TransactionStatus::REFUNDED}))
+        moip.process_request!
+        backer.reload
+
+        backer.refunded.should be_true
+        backer.user.credits.should == 0.0
+      end
+    end
+
     context "written_back request" do
       it 'should mark with refunded and update the user credits too' do
         backer = create(:backer, :value => 21.90, :confirmed => true, :refunded => false)

@@ -27,6 +27,12 @@ module PaymentHistory
               @backer.update_attribute :requested_refund, true
               @backer.user.update_credits
             end
+          when TransactionStatus::REFUNDED
+            unless @backer.refunded
+              @backer.update_attribute :refunded, true
+              @backer.update_attribute :requested_refund, true
+              @backer.user.update_credits
+            end
           end
 
         else
@@ -83,7 +89,8 @@ module PaymentHistory
         :finished =>        4,
         :canceled =>        5,
         :process =>         6,
-        :written_back =>    7
+        :written_back =>    7,
+        :refunded => 9
       )
     end
   end
