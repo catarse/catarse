@@ -12,13 +12,23 @@ module PaymentHistory
         @backer = find_backer
         if @backer.moip_value == @params[:valor].to_s
           build_log
+
           unless @backer.confirmed
             payment_detail = (@backer.payment_detail||@backer.build_payment_detail)
             payment_detail.update_from_service
           end
-          if !@backer.confirmed && @params[:status_pagamento].to_i == TransactionStatus::AUTHORIZED
-            @backer.confirm!
+
+          case @params[:status_pagamento].to_i
+          when TransactionStatus::AUTHORIZED
+            @backer.confirm! if not @backer.confirmed
+          when TransactionStatus::WRITTEN_BACK
+            unless @backer.refunded
+              @backer.update_attribute :refunded, true
+              @backer.update_attribute :requested_refund, true
+              @backer.user.update_credits
+            end
           end
+
         else
           @response_code = ResponseCode::NOT_PROCESSED
         end
