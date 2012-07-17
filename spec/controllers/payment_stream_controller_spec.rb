@@ -3,6 +3,23 @@ describe PaymentStreamController do
   render_views
 
   describe '/moip' do
+    it "should mark with refunded and requested_refund when backer as not solicited refund" do
+      backer = Factory(:backer, :requested_refund => false, :confirmed => false)
+      post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '7', :valor => backer.moip_value})
+
+      response.should be_successful
+
+      backer.reload.refunded.should be_true
+      backer.reload.requested_refund.should be_true
+    end
+
+    it "should mark with refunded when backer as requested_refund" do
+      backer = Factory(:backer, :requested_refund => true, :confirmed => false)
+      post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '7', :valor => backer.moip_value})
+      response.should be_successful
+      backer.reload.refunded.should be_true
+    end
+
     it "should confirm backer in moip payment" do
       backer = Factory(:backer, :confirmed => false)
       post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '1', :valor => backer.moip_value})
