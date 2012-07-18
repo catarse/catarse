@@ -47,7 +47,7 @@ feature "My profile Feature" do
 
     within "#my_data ul" do
       page.should have_content(user.email)
-      page.should have_css("input[type=checkbox]#newsletter")
+      #page.should have_css("input[type=checkbox]#newsletter")
     end
 
     within "#social_info" do
