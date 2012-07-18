@@ -25,6 +25,7 @@ namespace :payment do
   task :mark_refunded => :environment do
     Backer.where(:payment_method => 'MoIP').where('payment_token is not null').each do |backer|
       response = MoIP::Client.query(backer.payment_token)
+      puts "pesquisando sobre --> #{backer.inspect}"
       begin
         if response['Pagamento'].present?
           if response["Pagamento"]["Status"]["Tipo"].to_i == 7 || response["Pagamento"]["Status"]["Tipo"].to_i == 9
