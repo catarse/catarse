@@ -12,6 +12,16 @@ class RegistrationsController < Devise::RegistrationsController
     resource.provider = 'devise'
     resource.uid = Devise.friendly_token
     if resource.save
+
+      if resource.newsletter and resource.email.present?
+        begin
+          api = Mailchimp::API.new Configuration[:mailchimp_api_key]
+          api.list_batch_subscribe({ :id => Configuration[:mailchimp_list_id], :batch => [ { :EMAIL => resource.email } ]  })
+        rescue
+          nil
+        end
+      end
+
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)

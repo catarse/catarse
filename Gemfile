@@ -28,6 +28,7 @@ gem 'cancan'
 gem 'rails_autolink', '~> 1.0.7'
 
 # Tools
+gem 'mailchimp'
 gem "airbrake"
 gem 'feedzirra'
 gem 'formtastic'
