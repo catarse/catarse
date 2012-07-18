@@ -15,8 +15,8 @@ class RegistrationsController < Devise::RegistrationsController
 
       if resource.newsletter and resource.email.present?
         begin
-          api = Mailchimp::API.new(Configuration[:mailchimp_api_key])
-          api.list_batch_subscribe({ :id => Configuration[:mailchimp_list_id], :batch => [ { :EMAIL => resource.email } ]  })
+          api = Mailchimp::API.new(MAILCHIMP_API_KEY)
+          api.list_batch_subscribe({ :id => MAILCHIMP_LIST_ID, :batch => [ { :EMAIL => resource.email } ]  })
         rescue Exception => e
           Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
           Rails.logger.info "-----> #{e.inspect}"
