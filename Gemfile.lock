@@ -226,6 +226,8 @@ GEM
       skinny (~> 0.2)
       sqlite3 (~> 1.3)
       thin (~> 1.2)
+    mailchimp (0.0.7.alpha)
+      httparty
     maxim-sexy_pg_constraints (0.1.3)
     meta_search (1.1.3)
       actionpack (~> 3.1)
@@ -473,6 +475,7 @@ DEPENDENCIES
   kaminari
   launchy
   mailcatcher
+  mailchimp
   mailee (= 0.5.4)!
   maxim-sexy_pg_constraints
   meta_search (= 1.1.3)
