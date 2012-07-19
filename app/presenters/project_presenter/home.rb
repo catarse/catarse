@@ -44,8 +44,8 @@ module ProjectPresenter
       project_ids = project_ids.join(',')
       project_ids = "id NOT IN (#{project_ids})" unless project_ids.blank?
 
-      @expiring = Project.includes(:user, :category, :backer_total).where(project_ids).visible.expiring.not_expired.order('date(expires_at), random()').limit(3).all
-      @recent = Project.includes(:user, :category, :backer_total).where(project_ids).recent.visible.not_expiring.not_expired.order('date(created_at), random()').limit(3).all
+      @expiring = Project.includes(:user, :category, :backer_total).where(project_ids).visible.expiring.order('date(expires_at), random()').limit(3).all
+      @recent = Project.includes(:user, :category, :backer_total).where(project_ids).recent.visible.not_expiring.order('date(created_at), random()').limit(3).all
     end
   end
 end
