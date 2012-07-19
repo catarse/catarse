@@ -35,12 +35,6 @@ class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   extend ActiveSupport::Memoizable
 
-  begin
-    sync_with_mailee :news => :newsletter, :list => "Newsletter"
-  rescue Exception => e
-    Rails.logger.error "Error when syncing with mailee: #{e.inspect}"
-  end
-
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140

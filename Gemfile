@@ -53,7 +53,6 @@ gem "rack-timeout"
 gem 'kaminari'
 gem 'tumblr-api'
 gem 'dalli'
-gem 'mailee', '0.5.4', git: 'https://github.com/danielweinmann/mailee-api.git'
 gem 'capybara', ">= 1.0.1"
 
 # Translations

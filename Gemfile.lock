@@ -22,12 +22,6 @@ GIT
     validation_reflection (1.0.0)
 
 GIT
-  remote: https://github.com/danielweinmann/mailee-api.git
-  revision: cd530ef488cb82f5ef01f2646c2b6222fab61c57
-  specs:
-    mailee (0.5.4)
-
-GIT
   remote: https://github.com/danielweinmann/moip-ruby.git
   revision: db1b879358c623b597dc1c221b53336f9f06db0e
   ref: db1b879358c623b597dc1c221b53336f9f06db0e
@@ -475,7 +469,6 @@ DEPENDENCIES
   launchy
   mailcatcher
   mailchimp
-  mailee (= 0.5.4)!
   maxim-sexy_pg_constraints
   meta_search (= 1.1.3)
   mocha (= 0.10.4)
