@@ -23,7 +23,7 @@ namespace :payment do
 
   desc 'look with moip what the backer already have refunded'
   task :mark_refunded => :environment do
-    Backer.where(:payment_method => 'MoIP', :confirmed => true, :refunded => false).where('payment_token is not null').each do |backer|
+    Backer.where(:payment_method => 'MoIP', :confirmed => true, :refunded => false, :requested_refund => true).where('payment_token is not null').each do |backer|
       response = MoIP::Client.query(backer.payment_token)
       puts "pesquisando sobre --> #{backer.inspect}"
       begin
