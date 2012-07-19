@@ -217,7 +217,7 @@ feature "Back project" do
     
     find("#user_submit")[:disabled].should == "true"
     check "Eu li e estou de acordo com os termos de uso."
-    find("#user_submit")[:disabled].should == "false"
+    find("#user_submit")[:disabled].should be_nil
     click_on "Confirmar apoio com créditos"
   
     current_path.should == thank_you_path

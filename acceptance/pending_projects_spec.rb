@@ -41,7 +41,6 @@ feature "Pending projects" do
     page.should have_no_css('.project_list_header')
     visit pending_projects_path
     check 'project__visible__1'
-    check 'project__home_page__1'
     verify_translations
     # Had to add this sleep to wait for ajax to update the records
     sleep 2
