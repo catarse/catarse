@@ -38,8 +38,6 @@ class Project < ActiveRecord::Base
 
   scope :visible, where(visible: true)
   scope :recommended, where(recommended: true)
-  scope :not_recommended, where(recommended: false)
-  scope :pending, where("visible = false AND rejected = false")
   scope :expired, where("finished OR expires_at < current_timestamp")
   scope :not_expired, where("finished = false AND expires_at >= current_timestamp")
   scope :expiring, not_expired.where("expires_at < (current_timestamp + interval '2 weeks')")
@@ -47,7 +45,7 @@ class Project < ActiveRecord::Base
   scope :recent, where("current_timestamp - projects.created_at <= '15 days'::interval")
   scope :successful, where(successful: true)
 
-  search_methods :visible, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
+  search_methods :visible, :recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
 
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140

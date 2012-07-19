@@ -149,14 +149,6 @@ class User < ActiveRecord::Base
     name || nickname || I18n.t('user.no_name')
   end
 
-  def display_nickname
-    if nickname =~ /profile\.php/
-      name
-    else
-      nickname||name
-    end
-  end
-
   def short_name
     truncate display_name, :length => 26
   end
