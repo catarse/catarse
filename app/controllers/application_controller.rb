@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  helper_method :current_user, :replace_locale, :align_logo_when_home, :is_homepage?, :namespace,
+  helper_method :current_user, :replace_locale, :is_homepage?, :namespace,
                 :fb_admins, :has_institutional_videos?, :institutional_video
   before_filter :set_locale
   before_filter :detect_locale
@@ -58,10 +58,6 @@ class ApplicationController < ActionController::Base
 
   def is_homepage?
     controller_name == 'projects' && action_name == 'index'
-  end
-
-  def align_logo_when_home
-    'home_logo' if is_homepage?
   end
 
   def set_locale

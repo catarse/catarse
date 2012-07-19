@@ -1,26 +1,4 @@
 class StaticController < ApplicationController
-
-  def new_home
-  end
-
-  def new_blog
-  end
-
-  def new_profile
-  end
-
-  def new_project_profile
-  end
-
-  def new_discover
-  end
-
-  def new_payment
-  end
-
-  def new_opendata
-  end
-
   def guidelines
     @title = t('static.guidelines.title')
   end
