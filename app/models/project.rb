@@ -37,8 +37,6 @@ class Project < ActiveRecord::Base
   end
 
   scope :visible, where(visible: true)
-  scope :home_page, where(home_page: true)
-  scope :not_home_page, where(home_page: false)
   scope :recommended, where(recommended: true)
   scope :not_recommended, where(recommended: false)
   scope :with_homepage_comment, where("home_page_comment IS NOT NULL AND home_page_comment <> ''")
@@ -52,7 +50,7 @@ class Project < ActiveRecord::Base
   scope :successful, where(successful: true)
   scope :sort_by_explore_asc, order('(expires_at < current_timestamp) ASC, successful DESC, finished DESC, abs(EXTRACT(epoch FROM current_timestamp - expires_at)), created_at DESC')
 
-  search_methods :visible, :home_page, :not_home_page, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
+  search_methods :visible, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
 
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
