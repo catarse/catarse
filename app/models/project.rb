@@ -39,16 +39,13 @@ class Project < ActiveRecord::Base
   scope :visible, where(visible: true)
   scope :recommended, where(recommended: true)
   scope :not_recommended, where(recommended: false)
-  scope :with_homepage_comment, where("home_page_comment IS NOT NULL AND home_page_comment <> ''")
   scope :pending, where("visible = false AND rejected = false")
   scope :expired, where("finished OR expires_at < current_timestamp")
   scope :not_expired, where("finished = false AND expires_at >= current_timestamp")
-  scope :expiring, where("finished = false AND expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks')")
-  scope :not_expiring, where("NOT (finished = false AND expires_at >= current_timestamp AND expires_at < (current_timestamp + interval '2 weeks'))")
+  scope :expiring, not_expired.where("expires_at < (current_timestamp + interval '2 weeks')")
+  scope :not_expiring, not_expired.where("NOT (expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("current_timestamp - projects.created_at <= '15 days'::interval")
-  scope :last_week, where("projects.created_at > (current_timestamp - interval '1 week')")
   scope :successful, where(successful: true)
-  scope :sort_by_explore_asc, order('(expires_at < current_timestamp) ASC, successful DESC, finished DESC, abs(EXTRACT(epoch FROM current_timestamp - expires_at)), created_at DESC')
 
   search_methods :visible, :recommended, :not_recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
 
