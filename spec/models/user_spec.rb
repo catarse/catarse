@@ -71,18 +71,6 @@ describe User do
     its(:twitter){ should == 'dbiazus' }
   end
 
-  describe "#display_nickname" do
-    context "when user don't have the nickname" do
-      subject{ create(:user,:name=>'Lorem Ipsum',:nickname=>'profile.php?id=1234').display_nickname }
-      it{ should == 'Lorem Ipsum' }
-    end
-
-    context 'user with nickname' do
-      subject{ create(:user,:name=>'Lorem Ipsum',:nickname=>'lorem.ipsum').display_nickname }
-      it{ should == 'lorem.ipsum' }
-    end
-  end
-
   describe "#primary" do
     subject{ Factory(:user, :primary_user_id => user.id).primary }
     it{ should == user }
@@ -160,40 +148,4 @@ describe User do
       it{ should == 'bar' }
     end
   end
-
-  it "should merge into another account, taking the credits, backs, projects and notifications with it" do
-    old_user = Factory(:user, :credits => 50)
-    new_user = Factory(:user, :credits => 20)
-    backed_project = Factory(:project)
-    old_user_back = backed_project.backers.create!(:user => old_user, :value => 10)
-    new_user_back = backed_project.backers.create!(:user => new_user, :value => 10)
-    old_user_project = Factory(:project, :user => old_user)
-    new_user_project = Factory(:project, :user => new_user)
-    old_user_notification = old_user.notifications.create!(:text => "Foo bar")
-    new_user_notification = new_user.notifications.create!(:text => "Foo bar")
-
-    old_user.credits.should == 50
-    new_user.credits.should == 20
-    old_user.backs.should == [old_user_back]
-    new_user.backs.should == [new_user_back]
-    old_user.projects.should == [old_user_project]
-    new_user.projects.should == [new_user_project]
-    old_user.notifications.should == [old_user_notification]
-    new_user.notifications.should == [new_user_notification]
-
-    old_user.merge_into!(new_user)
-    old_user.reload
-    new_user.reload
-
-    old_user.primary.should == new_user
-    old_user.credits.should == 0
-    new_user.credits.should == 70
-    old_user.backs.should == []
-    new_user.backs.order(:created_at).should == [old_user_back, new_user_back]
-    old_user.projects.should == []
-    new_user.projects.order(:created_at).should == [old_user_project, new_user_project]
-    old_user.notifications.should == []
-    new_user.notifications.order(:created_at).should == [old_user_notification, new_user_notification]
-  end
-
 end

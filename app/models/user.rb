@@ -75,7 +75,6 @@ class User < ActiveRecord::Base
     order("count_backs desc").
     group("users.name, users.id, users.email")
   }
-  #before_save :store_primary_user
   before_save :fix_twitter_user
 
   def self.find_for_database_authentication(warden_conditions)
@@ -108,14 +107,6 @@ class User < ActiveRecord::Base
 
   def update_credits
     self.update_attribute :credits, self.calculate_credits
-  end
-
-  def store_primary_user
-    return if email.nil? or self.primary_user_id
-    primary_user = User.primary.where(:email => email).first
-    if primary_user and primary_user.id != self.id
-      self.primary_user_id = primary_user.id
-    end
   end
 
   def to_param
@@ -157,6 +148,7 @@ class User < ActiveRecord::Base
   def display_name
     name || nickname || I18n.t('user.no_name')
   end
+
   def display_nickname
     if nickname =~ /profile\.php/
       name
@@ -164,21 +156,23 @@ class User < ActiveRecord::Base
       nickname||name
     end
   end
+
   def short_name
     truncate display_name, :length => 26
   end
+
   def medium_name
     truncate display_name, :length => 42
   end
+
   def display_image
     gravatar_url || image_url || '/assets/user.png'
   end
-  def backer?
-    backs.confirmed.not_anonymous.count > 0
-  end
+
   def total_backs
     backs.confirmed.not_anonymous.count
   end
+
   def backs_text
     if total_backs == 2
       I18n.t('user.backs_text.two')
@@ -188,24 +182,17 @@ class User < ActiveRecord::Base
       I18n.t('user.backs_text.one')
     end
   end
+
   def remember_me_hash
     Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
   end
+
   def display_credits
     number_to_currency credits, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
+
   def display_total_of_backs
     number_to_currency backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
-  end
-  def merge_into!(new_user)
-    self.primary = new_user
-    new_user.credits += self.credits
-    self.credits = 0
-    self.backs.update_all :user_id => new_user.id
-    self.projects.update_all :user_id => new_user.id
-    self.notifications.update_all :user_id => new_user.id
-    self.save
-    new_user.save
   end
 
   def as_json(options={})
