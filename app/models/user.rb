@@ -218,6 +218,17 @@ class User < ActiveRecord::Base
     "http://twitter.com/#{self.twitter}"
   end
 
+  def merge_into!(new_user)
+    self.primary = new_user
+    new_user.credits += self.credits
+    self.credits = 0
+    self.backs.update_all :user_id => new_user.id
+    self.projects.update_all :user_id => new_user.id
+    self.notifications.update_all :user_id => new_user.id
+    self.save
+    new_user.save
+  end
+
   protected
   def fix_twitter_user
     self.twitter.gsub! /@/, '' if self.twitter
