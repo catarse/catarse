@@ -1,33 +1,22 @@
-head
-  meta http-equiv="Content-type" content="text/html; charset=utf-8"
-  title= message.subject 
+html
+  head
+    meta content="text/html; charset=utf-8" http-equiv="Content-Type"
+    title= message.subject
+  body
+    div style="background-image: url(http://gallery.mailchimp.com/9d9950758917a323093e71034/images/background.jpg); background-repeat:repeat; margin:0px;padding: 0px; width: 700px;float: left"
+      div style="width: 600px;padding-left: 18px; float:left"
+        img src="http://gallery.mailchimp.com/ebfcd0d16dbb0001a0bea3639/images/logo_system.png" width="179px" height="45px" style="float: left; margin-left: 20px; margin-top: 30px"
 
-body style="margin: 0;padding:0;"
-  table width="100%" id="background" border="0" cellspacing="0" cellpadding="0" frame="void" style="margin:0; padding:0; border:0 none; border-spacing:0px 0px; border-collapse:collapse; background-color:#EDEDED;height:100%;"
-    tbody style="margin:0; padding:0; border:0;"
-      tr
-        td align="center" style="margin:0; padding:0; border:0 none;" valign="top"
-          br
-          br
-          table width="600" border="0" cellspacing="0" cellpadding="0" frame="void" id="content" style="margin:0; padding:0; border:0 none; border-spacing:0px 0px; border-collapse:collapse;"
-            tbody style="margin:0; padding:0; border:0;"
-              tr
-                td align="left" style="margin:0; padding:0; border:0 none; " valign="top"
-                  table border="0" cellspacing="0" cellpadding="0" frame="void" id="header" style="margin:0; padding:0; border:0 none; border-spacing:0; border-collapse:collapse;" width="100%"
-                    tbody style="margin:0; padding:0; border:0;"
-                      tr
-                        td align="center" style="margin:0; border:0 none;" valign="top"
-                          = image_tag "#{t('site.base_url')}/images/email_header.#{I18n.locale}.png", :class => "edit", :style => "margin-bottom: 20px; border:0 none; display:block;"
-                  table border="0" cellspacing="0" cellpadding="0" frame="void" id="columns" style="margin:0; padding:0; border:1px solid #ccc; border-spacing:0; border-collapse:collapse;" width="100%"
-                    tbody style="margin:0; padding:0; border:0;"
-                      tr
-                        td width="600" id="main" align="left" valign="top" style="margin:0; padding:20px; border:0 none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:12px; line-height:150%; background-color:#fff"
-                          table width="100%" frame="void" cellspacing="0" cellpadding="0" border="0" style="margin:0; padding:0; border:0 none; border-spacing:0px 0px; border-collapse:collapse; font-size:15px; color:#333;"
-                            tbody style="margin:0; padding:0; border:0;"
-                              tr
-                                td align="left" valign="top" style="margin:0; border:0 none;"
-                                  div class="repeat" id="paragraph" style="margin:0; padding:0px; border:0 none; font-size:14px; color:#666; text-align:left;"
-                                    p style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-color: initial; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: normal; line-height: 17px; "
-                                      = yield
-          br
-          br
+        div style="width: 599px;height: 68px;float: left; background:url(http://gallery.mailchimp.com/ebfcd0d16dbb0001a0bea3639/images/header_system.png); margin-top: 30px;margin-left: 6px"
+          h3 style="color: #ee5192; font-size: 18px;margin-left: 60px;float: left;font-family:Helvetica, Arial, Sans-serif;margin-top: 32px; margin-bottom: 0px; font-style: normal; "
+            = message.subject
+        div style="background: url(http://gallery.mailchimp.com/9d9950758917a323093e71034/images/back_box.jpg);background-repeat: repeat-y; width: 620px; float: left;"
+          #content
+            p style="font-family: Helvetica, Arial, Sans-serif;color: #5d5d5d; font-size: 13px; line-height: 21px;width: 513px; margin-left: 60px; font-style:normal; "
+              = yield
+        div style="background: url(http://gallery.mailchimp.com/9d9950758917a323093e71034/images/close_box2.png); width: 589px; height: 19px;float: left;margin-left: 15px"
+        div style="float: right; margin-top: 10px; margin-bottom: 30px; height: 25px;width: 100px;"
+          a href="http://www.facebook.com/Catarse.me" style="float: right; width: 25px; height: 25px; margin-left: 5px; margin-right: 5px;" target="_blank"
+            img alt="Facebook" height="25" src="http://gallery.mailchimp.com/9d9950758917a323093e71034/images/icon_facebook.gif" width="25"
+          a href="http://twitter.com/Catarse_" style="float: right; width: 25px; height: 25px; margin-left: 5px; margin-right: 5px;" target="_blank"
+            img alt="Twitter" height="25" src="http://gallery.mailchimp.com/9d9950758917a323093e71034/images/icon_twitter.gif" width="25"
