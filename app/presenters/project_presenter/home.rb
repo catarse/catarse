@@ -24,15 +24,14 @@ module ProjectPresenter
           @recommended_project = current_user.recommended_project
           collection_projects = collection_projects.where("id != #{current_user.recommended_project.id}")
         end
-        category_projects = collection_projects
-        category_projects = category_projects.where("category_id != #{@recommended_project.category_id}") if @recommended_project
-        @first_project = category_projects.all[rand(category_projects.length)]
-        category_projects = category_projects.where("id != #{@first_project.id}") if @first_project
-        @second_project = category_projects.all[rand(category_projects.length)]
-        category_projects = category_projects.where("category_id != #{@second_project.category_id}") if @second_project
-        @third_project = category_projects.all[rand(category_projects.length)]
-        category_projects = category_projects.where("category_id != #{@third_project.category_id}") if @third_project
-        @fourth_project = category_projects.all[rand(category_projects.length)]
+        collection_projects = collection_projects.where("category_id != #{@recommended_project.category_id}") if @recommended_project
+        @first_project = collection_projects.all[rand(collection_projects.length)]
+        collection_projects = collection_projects.where("id != #{@first_project.id}") if @first_project
+        @second_project = collection_projects.all[rand(collection_projects.length)]
+        collection_projects = collection_projects.where("category_id != #{@second_project.category_id}") if @second_project
+        @third_project = collection_projects.all[rand(collection_projects.length)]
+        collection_projects = collection_projects.where("category_id != #{@third_project.category_id}") if @third_project
+        @fourth_project = collection_projects.all[rand(collection_projects.length)]
       end
 
       project_ids = []
