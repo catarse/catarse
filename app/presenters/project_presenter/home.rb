@@ -17,8 +17,7 @@ module ProjectPresenter
       collection_projects = Project.includes(:user, :category, :backer_total).
                                     recommended.
                                     visible.
-                                    not_expired.
-                                    order('"order"')
+                                    not_expired
       unless collection_projects.empty?
         if current_user and current_user.recommended_project
           @recommended_project = current_user.recommended_project
