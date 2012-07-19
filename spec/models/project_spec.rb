@@ -20,6 +20,38 @@ describe Project do
     it{ should ensure_length_of(:headline).is_at_most(140) }
   end
 
+  describe ".not_expired" do
+    before do
+      @p = Factory(:project, :finished => false, :expires_at => (Date.today + 1.day))
+      Factory(:project, :finished => false, :expires_at => (Date.today - 1.day))
+      Factory(:project, :finished => true, :expires_at => (Date.today + 1.day))
+    end
+    subject{ Project.not_expired }
+    it{ should == [@p] }
+  end
+
+  describe ".expiring" do
+    before do
+      @p = Factory(:project, :finished => false, :expires_at => (Date.today + 14.day))
+      Factory(:project, :finished => false, :expires_at => (Date.today - 1.day))
+      Factory(:project, :finished => true, :expires_at => (Date.today + 1.day))
+      Factory(:project, :finished => false, :expires_at => (Date.today + 15.day))
+    end
+    subject{ Project.expiring }
+    it{ should == [@p] }
+  end
+
+  describe ".not_expiring" do
+    before do
+      @p = Factory(:project, :finished => false, :expires_at => (Date.today + 15.day))
+      Factory(:project, :finished => false, :expires_at => (Date.today - 1.day))
+      Factory(:project, :finished => false, :expires_at => (Date.today - 1.day))
+      Factory(:project, :finished => true, :expires_at => (Date.today + 1.day))
+    end
+    subject{ Project.not_expiring }
+    it{ should == [@p] }
+  end
+
   describe ".recent" do
     before do
       @p = Factory(:project, :created_at => (Date.today - 14.days))
@@ -318,38 +350,4 @@ describe Project do
     end
 
   end
-
-  describe "scopes" do
-    
-    it "should have a special order for exploring projects" do
-      
-      projects = [
-        # First come active projects, ordered by expires_at ASC
-        Factory(:project, expires_at: 2.days.from_now),
-        Factory(:project, expires_at: 3.days.from_now),
-        Factory(:project, expires_at: 4.days.from_now),
-        Factory(:project, expires_at: 5.days.from_now),
-        # Then come successful projects, ordered by expires_at DESC
-        Factory(:project, expires_at: 2.days.ago, finished: true, successful: true),
-        Factory(:project, expires_at: 3.days.ago, finished: true, successful: true),
-        Factory(:project, expires_at: 4.days.ago, finished: true, successful: true),
-        Factory(:project, expires_at: 5.days.ago, finished: true, successful: true),
-        # Then come unsuccesful projects, ordered by expires_at DESC
-        Factory(:project, expires_at: 2.days.ago, finished: true, successful: false),
-        Factory(:project, expires_at: 3.days.ago, finished: true, successful: false),
-        Factory(:project, expires_at: 4.days.ago, finished: true, successful: false),
-        Factory(:project, expires_at: 5.days.ago, finished: true, successful: false),
-        # Then come expired but not finished projects, ordered by expires_at DESC
-        Factory(:project, expires_at: 2.days.ago, finished: false, successful: false),
-        Factory(:project, expires_at: 3.days.ago, finished: false, successful: false),
-        Factory(:project, expires_at: 4.days.ago, finished: false, successful: false),
-        Factory(:project, expires_at: 5.days.ago, finished: false, successful: false)
-      ]
-      
-      Project.sort_by_explore_asc.all.map(&:id).should == projects.map(&:id)
-      
-    end
-    
-  end
-  
 end
