@@ -20,6 +20,52 @@ describe Project do
     it{ should ensure_length_of(:headline).is_at_most(140) }
   end
 
+  describe ".recommended_for_home" do
+    subject{ Project.recommended_for_home }
+
+    before do
+      Project.expects(:includes).with(:user, :category, :backer_total).returns(Project)
+      Project.expects(:recommended).returns(Project)
+      Project.expects(:visible).returns(Project)
+      Project.expects(:not_expired).returns(Project)
+      Project.expects(:order).with('random()').returns(Project)
+      Project.expects(:limit).with(4)
+    end
+
+    it{ should be_empty }
+  end
+
+  describe ".expiring_for_home" do
+    subject{ Project.expiring_for_home(1) }
+
+    before do
+      Project.expects(:includes).with(:user, :category, :backer_total).returns(Project)
+      Project.expects(:visible).returns(Project)
+      Project.expects(:expiring).returns(Project)
+      Project.expects(:order).with('date(expires_at), random()').returns(Project)
+      Project.expects(:where).with("coalesce(id NOT IN (?), true)", 1).returns(Project)
+      Project.expects(:limit).with(3)
+    end
+
+    it{ should be_empty }
+  end
+
+  describe ".recent_for_home" do
+    subject{ Project.recent_for_home(1) }
+
+    before do
+      Project.expects(:includes).with(:user, :category, :backer_total).returns(Project)
+      Project.expects(:visible).returns(Project)
+      Project.expects(:recent).returns(Project)
+      Project.expects(:not_expiring).returns(Project)
+      Project.expects(:order).with('date(created_at) DESC, random()').returns(Project)
+      Project.expects(:where).with("coalesce(id NOT IN (?), true)", 1).returns(Project)
+      Project.expects(:limit).with(3)
+    end
+
+    it{ should be_empty }
+  end
+
   describe ".not_expired" do
     before do
       @p = Factory(:project, :finished => false, :expires_at => (Date.today + 1.day))

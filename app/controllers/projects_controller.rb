@@ -20,16 +20,20 @@ class ProjectsController < ApplicationController
     index! do |format|
       format.html do
         @title = t("site.title")
-        presenter = ProjectPresenter::Home.new({:current_user => current_user})
-        presenter.fetch_projects
+        collection_projects = Project.recommended_for_home
+        unless collection_projects.empty?
+          if current_user and current_user.recommended_project
+            @recommended_project = current_user.recommended_project
+            collection_projects = collection_projects.where("id != #{current_user.recommended_project.id}").where("category_id != #{@recommended_project.category_id}")
+          end
+          @first_project, @second_project, @third_project, @fourth_project = collection_projects.all
+        end
 
-        @recommended_project  = presenter.recommended_project
-        @first_project        = presenter.first_project
-        @second_project       = presenter.second_project
-        @third_project        = presenter.third_project
-        @fourth_project       = presenter.fourth_project
-        @expiring             = presenter.expiring
-        @recent               = presenter.recent
+        project_ids = collection_projects.map{|p| p.id }
+        project_ids << @recommended_project.id if @recommended_project
+
+        @expiring = Project.expiring_for_home(project_ids)
+        @recent = Project.recent_for_home(project_ids)
 
         @blog_posts = Blog.fetch_last_posts.inject([]) do |total,item| 
           if total.size < 2
