@@ -7,34 +7,34 @@ feature "Home Page Feature" do
   scenario "When I visit home page, it should show a compilation of projects and curated pages" do
 
     home_page = [
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true),
-      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, home_page: true, recommended: true)
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 30.days.from_now, visible: true, recommended: true)
     ]
 
     expiring = [
-      Factory(:project, created_at: 30.days.ago, expires_at: 2.days.from_now, visible: true, home_page: false),
-      Factory(:project, created_at: 30.days.ago, expires_at: 3.days.from_now, visible: true, home_page: false),
-      Factory(:project, created_at: 30.days.ago, expires_at: 4.days.from_now, visible: true, home_page: false),
-      Factory(:project, created_at: 30.days.ago, expires_at: 5.days.from_now, visible: true, home_page: false)
+      Factory(:project, created_at: 30.days.ago, expires_at: 2.days.from_now, visible: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 3.days.from_now, visible: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 4.days.from_now, visible: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 5.days.from_now, visible: true)
     ]
 
     recent = [
-      Factory(:project, created_at: 2.days.ago, expires_at: 30.days.from_now, visible: true, home_page: false),
-      Factory(:project, created_at: 3.days.ago, expires_at: 30.days.from_now, visible: true, home_page: false),
-      Factory(:project, created_at: 4.days.ago, expires_at: 30.days.from_now, visible: true, home_page: false),
-      Factory(:project, created_at: 5.days.ago, expires_at: 30.days.from_now, visible: true, home_page: false)
+      Factory(:project, created_at: 2.days.ago, expires_at: 30.days.from_now, visible: true),
+      Factory(:project, created_at: 3.days.ago, expires_at: 30.days.from_now, visible: true),
+      Factory(:project, created_at: 4.days.ago, expires_at: 30.days.from_now, visible: true),
+      Factory(:project, created_at: 5.days.ago, expires_at: 30.days.from_now, visible: true)
     ]
 
     successful = [
-      Factory(:project, created_at: 30.days.ago, expires_at: 2.days.ago, visible: true, home_page: false),
-      Factory(:project, created_at: 30.days.ago, expires_at: 3.days.ago, visible: true, home_page: false),
-      Factory(:project, created_at: 30.days.ago, expires_at: 4.days.ago, visible: true, home_page: false),
-      Factory(:project, created_at: 30.days.ago, expires_at: 5.days.ago, visible: true, home_page: false)
+      Factory(:project, created_at: 30.days.ago, expires_at: 2.days.ago, visible: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 3.days.ago, visible: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 4.days.ago, visible: true),
+      Factory(:project, created_at: 30.days.ago, expires_at: 5.days.ago, visible: true)
     ]
     successful.each do |project|
       Factory(:backer, project: project, value: project.goal, confirmed: true)
