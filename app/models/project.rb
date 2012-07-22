@@ -44,6 +44,20 @@ class Project < ActiveRecord::Base
   scope :not_expiring, not_expired.where("NOT (expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("current_timestamp - projects.created_at <= '15 days'::interval")
   scope :successful, where(successful: true)
+  scope :recommended_for_home, ->{ 
+    includes(:user, :category, :backer_total).
+    recommended.
+    visible.
+    not_expired.
+    order('random()').
+    limit(4)
+  }
+  scope :expiring_for_home, ->(exclude_ids){ 
+    includes(:user, :category, :backer_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order('date(expires_at), random()').limit(3)
+  }
+  scope :recent_for_home, ->(exclude_ids){ 
+    includes(:user, :category, :backer_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('date(created_at) DESC, random()').limit(3)
+  }
 
   search_methods :visible, :recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
 
