@@ -30,9 +30,6 @@
                 = f.check_box :recommended_is_true
                 = f.label :recommended_is_true, t('.recommended')
               .input.check
-                = f.check_box :home_page_is_true
-                = f.label :home_page_is_true, t('.home_page')
-              .input.check
                 = f.check_box :can_finish_is_true
                 = f.label :can_finish_is_true, t('.can_finish')
               .input.check
@@ -60,8 +57,6 @@
                   th= t('.visible')
                   th= t('.rejected')
                   th= t('.recommended')
-                  th= t('.home_page')
-                  th= t('.order')
                   th= t('.can_finish')
                   th= t('.finished')
               tbody
@@ -78,8 +73,6 @@
                     td= check_box_tag "project__visible__#{project.id}", '1', project.visible
                     td= check_box_tag "project__rejected__#{project.id}", '1', project.rejected
                     td= check_box_tag "project__recommended__#{project.id}", '1', project.recommended
-                    td= check_box_tag "project__home_page__#{project.id}", '1', project.home_page
-                    td= on_the_spot_edit project, :order, :tooltip => '-'
                     td= check_box_tag "project__can_finish__#{project.id}", '1', project.can_finish
                     td= (project.finished ? t('yes') : t('no'))
         = paginate @projects

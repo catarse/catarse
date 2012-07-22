@@ -33,7 +33,7 @@ feature "Send Project Feature", :driver => :selenium do
     uncheck 'accept'
     find_button('Quero enviar meu projeto')['disabled'].should == 'true'
     check 'accept'
-    find_button('Quero enviar meu projeto')['disabled'].should == 'false'
+    find_button('Quero enviar meu projeto')['disabled'].should be_nil
     click_button 'Quero enviar meu projeto'
 
     sleep 2

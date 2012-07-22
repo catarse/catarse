@@ -53,7 +53,6 @@ gem "rack-timeout"
 gem 'kaminari'
 gem 'tumblr-api'
 gem 'dalli'
-gem 'mailee', '0.5.4', git: 'https://github.com/danielweinmann/mailee-api.git'
 gem 'capybara', ">= 1.0.1"
 
 # Translations
@@ -72,7 +71,7 @@ gem 'moip', git: 'https://github.com/danielweinmann/moip-ruby.git', ref: 'db1b87
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
 #gem 'active_paypal_adaptive_payment', '~> 0.3.13'
 gem 'httpclient', '2.2.5'
-gem 'selenium-webdriver', '2.21.2'
+gem 'selenium-webdriver', '~> 2.25.0'
 gem 'bourbon'
 gem 'paypal-express', :require => 'paypal'
 
