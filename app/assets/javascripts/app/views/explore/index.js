@@ -39,7 +39,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     })
     this.selectItem("")
     this.initializeView({
-      meta_sort: "explore",
+      meta_sort: "created_at.desc",
       name_or_headline_or_about_or_user_name_or_user_address_city_contains: search
     })
     var input = this.$('#search')
@@ -105,7 +105,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.selectItem(name)
     this.initializeView({
       category_id_equals: this.selectedItem.data("id"),
-      meta_sort: "explore"
+      meta_sort: "created_at.desc"
     })
   },
 
