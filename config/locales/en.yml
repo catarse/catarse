@@ -569,12 +569,17 @@ en:
     no_name: Unnamed
   users:
     show:
+      attention: Attention
       tabs:
         backed_projects: "Backed projects"
         created_projects: "Created projects"
         comments: Comments
         credits: Credits
         settings: Settings
+      user_social:
+        email: "Send me an email"
+        facebook: "Profile on facebook"
+        twitter: "Profile on twiiter"
     backs:
       anonymous: "Anonymous back."
       no_backs: "%{name} haven't backed any project yet. But we know it's just a matter of time! :D"
