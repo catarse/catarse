@@ -9,6 +9,8 @@ gem 'pg'
 gem 'foreigner'
 gem 'activerecord-postgresql-adapter'
 
+gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express'
+
 # Frontend stuff
 gem 'jquery-rails'
 gem 'slim'

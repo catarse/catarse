@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/devton/catarse_paypal_express
+  revision: c1d3e797f15810596b9b51a9ac52dfc8ca35fe87
+  specs:
+    catarse_paypal_express (0.0.1)
+      activemerchant (~> 1.17.0)
+      rails (~> 3.2.6)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 5e67c3a6b8ea4630af01a6feda00dc6ecfee212c
   specs:
@@ -447,6 +455,7 @@ DEPENDENCIES
   cancan
   capybara (>= 1.0.1)
   carrierwave (= 0.5.8)
+  catarse_paypal_express!
   coffee-rails (~> 3.2.2)
   compass-960-plugin (~> 0.10.4)
   compass-rails (~> 1.0.1)
