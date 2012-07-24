@@ -50,7 +50,7 @@
               h1= t('.choose_payment')
             .choose_payment
               .cc
-                = link_to 'javascript:void(0);', :"data-payment_method_url" => pay_paypal_path(@backer), :method => :get, :class => 'payment_link' do
+                = link_to 'javascript:void(0);', :"data-payment_method_url" => payment_pay_paypal_express_path(@backer), :method => :get, :class => 'payment_link' do
                   = image_tag 'catarse/cc_icon.png'
                   span= t('.choose_credit_card')
                 .clearfix
