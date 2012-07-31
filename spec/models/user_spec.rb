@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe User do
   let(:user){ Factory(:user, :provider => "foo", :uid => "bar") }
+  let(:unfinished_project){ Factory(:project, :finished => false, :successful => true) }
+  let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
+  let(:failed_project){ Factory(:project, :finished => true, :successful => false) }
 
   describe "associations" do
     it{ should have_many :backs }
@@ -9,6 +12,7 @@ describe User do
     it{ should have_many :notifications }
     it{ should have_many :secondary_users }
     it{ should have_many :updates }
+    it{ should have_one :backer_total }
   end
 
   describe "validations" do 
@@ -23,6 +27,29 @@ describe User do
     it{ should allow_value('a'.center(140)).for(:bio) }
     it{ should_not allow_value('a'.center(141)).for(:bio) }
     it{ should validate_uniqueness_of(:uid).scoped_to(:provider) }
+  end
+
+  describe ".has_credits" do
+    subject{ User.has_credits }
+
+    context "when he has credits in the user table" do
+      before do
+        @u = Factory(:user, :credits => 100)
+        Factory(:backer, :project => successful_project, :user => @u)
+        Factory(:user, :credits => 0)
+        Factory(:backer, :project => successful_project)
+      end
+      it{ should == [@u] }
+    end
+
+    context "when he has credits in the backer_total" do
+      before do
+        b = Factory(:backer, :value => 100, :project => failed_project)
+        @u = b.user
+        b = Factory(:backer, :value => 100, :project => successful_project)
+      end
+      it{ should == [@u] }
+    end
   end
 
   describe ".by_key" do
@@ -101,6 +128,21 @@ describe User do
       end
     end
     its(:twitter){ should == 'dbiazus' }
+  end
+
+  describe "#calculate_credits" do
+    before do
+      @u = Factory(:user)
+      Factory(:backer, :credits => false, :value => 100, :user_id => @u.id, :project => successful_project)
+      Factory(:backer, :credits => false, :value => 100, :user_id => @u.id, :project => unfinished_project)
+      Factory(:backer, :credits => false, :value => 200, :user_id => @u.id, :project => failed_project)
+      Factory(:backer, :credits => true, :value => 100, :user_id => @u.id, :project => successful_project)
+      Factory(:backer, :credits => true, :value => 50, :user_id => @u.id, :project => unfinished_project)
+      Factory(:backer, :credits => true, :value => 100, :user_id => @u.id, :project => failed_project)
+      Factory(:backer, :credits => false, :requested_refund => true, :value => 200, :user_id => @u.id, :project => failed_project)
+    end
+    subject{ @u.calculate_credits }
+    it{ should == 50.0 }
   end
 
   describe "#primary" do
