@@ -69,6 +69,15 @@ describe User do
     it{ should == [@u] }
   end
 
+  describe ".by_id" do
+    before do
+      @u = Factory(:user)
+      Factory(:user)
+    end
+    subject{ User.by_id @u.id }
+    it{ should == [@u] }
+  end
+
   describe ".by_name" do
     before do
       @u = Factory(:user, :name => 'Foo Bar')

@@ -629,6 +629,19 @@ pt:
     users:
       title: "Gerenciamento de apoiadores"
       menu: "Apoiadores"
+      credits: "Créditos"
+      credits_view: "Créditos calculados"
+      id: Id
+      key: Chave
+      submit: Pesquisar
+      total_backed: arrecadados
+      total_backers: apoiadores
+      total_backs: apoios
+      total_users: usuários
+      total_credits: créditos
+      total_credits_view: créditos calculados
+      user: Usuário
+      value: Valor
     backers:
       title: "Gerenciamento de apoios"
       menu: "Apoios"
