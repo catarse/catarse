@@ -103,6 +103,7 @@ Catarse::Application.routes.draw do
 
   namespace :adm do
     resources :backers
+    resources :users
   end
 
   resources :tests

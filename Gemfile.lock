@@ -459,6 +459,7 @@ DEPENDENCIES
   fog
   foreigner
   formtastic
+  has_scope
   has_vimeo_video (>= 0.0.4)
   http_accept_language
   httparty (~> 0.6.1)
