@@ -58,6 +58,9 @@ describe User do
       @u = b.user
       b.key = 'abc'
       b.save!
+      b = Factory(:backer, :user => @u)
+      b.key = 'abcde'
+      b.save!
       b = Factory(:backer)
       b.key = 'def'
       b.save!

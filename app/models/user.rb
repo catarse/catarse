@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   }
   scope :by_email, ->(email){ where('email ~* ?', email) }
   scope :by_name, ->(name){ where('name ~* ?', name) }
-  scope :by_key, ->(key){ joins(:backs).where('backers.key ~* ?', key) }
+  scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
   scope :has_credits, joins(:backer_total).where('backer_totals.credits > 0 OR users.credits > 0')
   before_save :fix_twitter_user
 
