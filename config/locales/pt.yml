@@ -626,9 +626,12 @@ pt:
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
   admin:
-    backers:
+    users:
       title: "Gerenciamento de apoiadores"
       menu: "Apoiadores"
+    backers:
+      title: "Gerenciamento de apoios"
+      menu: "Apoios"
       anonymous: Anônimo?
       confirmed: Confirmado?
       credits: "Usou créditos?"
