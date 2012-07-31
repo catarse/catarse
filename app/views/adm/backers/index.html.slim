@@ -1,1 +1,103 @@
-|teste
+#page_content
+  .container
+    .project_content
+      .title
+        h1= t('admin.backers.title')
+        h2
+          strong= "#{@total_backers} "
+          = t('admin.backers.total_backers')
+          | ·
+          strong= "#{@total_backs} "
+          = t('admin.backers.total_backs')
+          | ·
+          strong= "#{number_to_currency @total_backed, :precision => 0} "
+          = t('admin.backers.total_backed')
+          | ·
+          strong= "#{@total_users} "
+          = t('admin.backers.total_users')
+
+      #pending_backers
+        .bootstrap-form
+        /
+            = form_for @search, :url => pending_backers_projects_path, class: 'form-horizontal' do |f|
+              fieldset
+                .input
+                  = f.label :id_equals, t('admin.backers.id')
+                  = f.text_field :id_equals, class: 'input-small'
+                .input
+                  = f.label :key_equals, t('admin.backers.key')
+                  = f.text_field :key_equals
+                .input
+                  = f.label :project_name_contains, t('admin.backers.project')
+                  = f.text_field :project_name_contains
+                .input
+                  = f.label :user_name_contains, t('admin.backers.user')
+                  = f.text_field :user_name_contains
+                .bootstrap-twitter
+                  .input.submit
+                    = f.submit t('admin.backers.submit'), class: 'btn btn-success'
+              fieldset
+                .input.check
+                  = f.check_box :confirmed_is_true
+                  = f.label :confirmed_is_true, t('admin.backers.confirmed')
+                .input.check
+                  = f.check_box :credits_is_true
+                  = f.label :credits_is_true, t('admin.backers.credits')
+                .input.check
+                  = f.check_box :requested_refund_is_true
+                  = f.label :requested_refund_is_true, t('admin.backers.requested_refund')
+                .input.check
+                  = f.check_box :refunded_is_true
+                  = f.label :refunded_is_true, t('admin.backers.refunded')
+                .input.total_results
+                  #total_results
+                    = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
+                    strong= @search.count
+                    = pluralize_without_number(@search.count, t('backer_singular'), t('backer_plural')).downcase
+        .clearfix
+        /= paginate @backers
+        - if @backers.empty?
+          = t('admin.backers.no_backers')
+        - else
+          .bootstrap-twitter
+            table.table.table-striped
+              thead
+                tr
+                  th= t('admin.backers.id')
+                  th= t('admin.backers.project')
+                  th= t('admin.backers.user')
+                  th= t('admin.backers.value')
+                  th= t('admin.backers.reward')
+                  th= t('admin.backers.key')
+                  th= t('admin.backers.confirmed')
+                  th= t('admin.backers.anonymous')
+                  th= t('admin.backers.credits')
+                  th= t('admin.backers.requested_refund')
+                  th= t('admin.backers.refunded')
+              tbody
+                /
+                  - @backers.each do |backer|
+                    tr id=backer.id class=cycle("even", "odd")
+                      td= backer.id
+                      td title=backer.project.name
+                        = link_to project_path(backer.project) do
+                          = image_tag backer.project.display_image, class: 'project_img'
+                      td title=backer.user.display_name
+                        = link_to user_path(backer.user) do
+                          = image_tag backer.user.display_image, class: 'user_img'
+                        .user_id= on_the_spot_edit backer, :user_id
+                      td= backer.display_value
+                      td title=("#{backer.reward.display_minimum} - #{backer.reward.description}" if backer.reward)
+                        - if backer.reward
+                          = backer.reward.display_minimum
+                        - else
+                          |-
+                      td.key= backer.key
+                      td= check_box_tag "confirmed__#{backer.id}", '1', backer.confirmed
+                      td= check_box_tag "anonymous__#{backer.id}", '1', backer.anonymous
+                      td= (backer.credits ? t('yes') : t('no'))
+                      td= (backer.requested_refund ? t('yes') : t('no'))
+                      td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded
+        /= paginate @backers
+    .clearfix
+      
