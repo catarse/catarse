@@ -25,6 +25,38 @@ describe User do
     it{ should validate_uniqueness_of(:uid).scoped_to(:provider) }
   end
 
+  describe ".by_key" do
+    before do
+      b = Factory(:backer)
+      @u = b.user
+      b.key = 'abc'
+      b.save!
+      b = Factory(:backer)
+      b.key = 'def'
+      b.save!
+    end
+    subject{ User.by_key 'abc' }
+    it{ should == [@u] }
+  end
+
+  describe ".by_name" do
+    before do
+      @u = Factory(:user, :name => 'Foo Bar')
+      Factory(:user, :name => 'Baz Qux')
+    end
+    subject{ User.by_name 'Bar' }
+    it{ should == [@u] }
+  end
+
+  describe ".by_email" do
+    before do
+      @u = Factory(:user, :email => 'foo@bar.com')
+      Factory(:user, :email => 'another_email@bar.com')
+    end
+    subject{ User.by_email 'foo@bar' }
+    it{ should == [@u] }
+  end
+
   describe ".primary" do
     subject{ Factory(:user, :primary_user_id => user.id).primary }
     it{ should == user }

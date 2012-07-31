@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
-  scope :most_backeds, lambda {
+  scope :most_backeds, ->{
     joins(:backs).select(
     <<-SQL
       users.id,
@@ -69,6 +69,9 @@ class User < ActiveRecord::Base
     order("count_backs desc").
     group("users.name, users.id, users.email")
   }
+  scope :by_email, ->(email){ where('email ~* ?', email) }
+  scope :by_name, ->(name){ where('name ~* ?', name) }
+  scope :by_key, ->(key){ joins(:backs).where('backers.key ~* ?', key) }
   before_save :fix_twitter_user
 
   def self.find_for_database_authentication(warden_conditions)
