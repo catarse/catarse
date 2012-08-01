@@ -102,6 +102,9 @@ GEM
       xpath (~> 0.1.4)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
+    catarse_paypal_express (0.0.1)
+      activemerchant (~> 1.17.0)
+      rails (~> 3.2.6)
     childprocess (0.3.3)
       ffi (~> 1.0.6)
     chunky_png (1.2.5)
@@ -447,6 +450,7 @@ DEPENDENCIES
   cancan
   capybara (>= 1.0.1)
   carrierwave (= 0.5.8)
+  catarse_paypal_express
   coffee-rails (~> 3.2.2)
   compass-960-plugin (~> 0.10.4)
   compass-rails (~> 1.0.1)
