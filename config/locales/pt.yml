@@ -569,12 +569,17 @@ pt:
     no_name: "Sem nome"
   users:
     show:
+      attention: "Atenção"
       tabs:
         backed_projects: "Projetos apoiados"
         created_projects: "Projetos criados"
         comments: Comentários
         credits: Créditos
         settings: Preferências
+      user_social:
+        email: "Me envie um email"
+        facebook: "Perfil no facebook"
+        twitter: "Perfil no twitter"
     backs:
       anonymous: "Apoio anônimo."
       no_backs: "%{name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D"
