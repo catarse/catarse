@@ -13,6 +13,7 @@ Catarse::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
+  mount CatarseMoip::Engine => "/", :as => "catarse_moip"
 
   filter :locale
 
