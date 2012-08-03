@@ -10,6 +10,8 @@ gem 'foreigner'
 gem 'activerecord-postgresql-adapter'
 
 gem 'catarse_paypal_express'
+gem 'catarse_moip', '~> 0.0.2'
+gem 'moip_catarse', '~> 1.0.6', require: 'moip'
 
 # Frontend stuff
 gem 'jquery-rails'
@@ -67,7 +69,7 @@ gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 gem "meta_search", "1.1.3"
 
 # Payment (moip)
-gem 'moip', git: 'https://github.com/danielweinmann/moip-ruby.git', ref: 'db1b879358c623b597dc1c221b53336f9f06db0e'
+#gem 'moip', git: 'https://github.com/danielweinmann/moip-ruby.git', ref: 'db1b879358c623b597dc1c221b53336f9f06db0e'
 
 # Payment (paypal adaptive)
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
