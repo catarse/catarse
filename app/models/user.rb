@@ -82,6 +82,10 @@ class User < ActiveRecord::Base
     where(conditions).where(:provider => 'devise').first
   end
 
+  def self.backer_totals
+    connection.select_one(self.scoped.joins(:backer_total).select('count(*) as backers, sum(backer_totals.sum) as backed, sum(backer_totals.credits) as credits').to_sql).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1]) }) }
+  end
+
   def admin?
     admin
   end
