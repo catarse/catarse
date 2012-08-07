@@ -194,7 +194,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
-    kgio (2.7.4)
     launchy (2.1.0)
       addressable (~> 2.2.6)
     libwebsocket (0.1.4)
@@ -309,7 +308,6 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    raindrops (0.10.0)
     rake (0.9.2.2)
     rcov (0.9.11)
     rdoc (3.12)
@@ -415,10 +413,6 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
     unicode (0.4.2)
-    unicorn (4.3.1)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     vimeo (1.5.3)
       httparty (>= 0.4.5)
       httpclient (>= 2.1.5.2)
@@ -511,7 +505,6 @@ DEPENDENCIES
   tumblr-api
   uglifier (>= 1.0.3)
   unicode
-  unicorn
   validation_reflection!
   web_translate_it
   weekdays
