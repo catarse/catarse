@@ -8,11 +8,12 @@ class Adm::UsersController < Adm::BaseController
 
   protected
   def set_totals
-    @total_users = end_of_association_chain.count
-    @total_backs
-    @total_backed
-    @total_users
-    @total_credits_table
+    totals = end_of_association_chain.backer_totals
+    @total_users = totals[:users].to_i
+    @total_backs = totals[:backs]
+    @total_backed = totals[:backed]
+    @total_credits_view = totals[:credits]
+    @total_credits_table = totals[:credits_table]
   end
 
   def set_title
@@ -20,7 +21,7 @@ class Adm::UsersController < Adm::BaseController
   end
 
   def collection
-    @users ||= end_of_association_chain.page(params[:page])
+    @users ||= end_of_association_chain.includes(:backer_total).page(params[:page])
   end
 end
 
