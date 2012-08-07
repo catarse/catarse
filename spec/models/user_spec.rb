@@ -105,17 +105,25 @@ describe User do
     before do
       Factory(:backer, :value => 100)
       Factory(:backer, :value => 50)
-      Factory(:backer, :value => 25, :project => failed_project)
+      user = Factory(:backer, :value => 25, :project => failed_project).user
+      user.credits = 10.0
+      user.save!
+      @u = Factory(:user)
+    end
+
+    context "when we call upon user without backs" do
+      subject{ User.where(:id => @u.id).backer_totals }
+      it{ should == {:backers => 0.0, :backed => 0.0, :credits => 0.0, :credits_table => 0.0} }
     end
 
     context "when we call without scopes" do
       subject{ User.backer_totals }
-      it{ should == {:backers => 3.0, :backed => 175.0, :credits => 25.0} }
+      it{ should == {:backers => 3.0, :backed => 175.0, :credits => 25.0, :credits_table => 10.0} }
     end
 
     context "when we call with scopes" do
       subject{ User.has_credits.backer_totals }
-      it{ should == {:backers => 1.0, :backed => 25.0, :credits => 25.0} }
+      it{ should == {:backers => 1.0, :backed => 25.0, :credits => 25.0, :credits_table => 10.0} }
     end
   end
 
