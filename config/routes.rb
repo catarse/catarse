@@ -12,6 +12,9 @@ Catarse::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
+  mount CatarseMoip::Engine => "/", :as => "catarse_moip"
+
   filter :locale
 
   root to: 'projects#index'
@@ -82,15 +85,6 @@ Catarse::Application.routes.draw do
     collection do
       get 'buy'
       post 'refund'
-    end
-  end
-
-  resources :paypal, only: [] do
-    member do
-      get :pay
-      get :success
-      get :cancel
-      get :notifications
     end
   end
 
