@@ -625,3 +625,40 @@ en:
       weblink: "View on the web"
       whitelist: "Add contact"
       whitelist_long: "Add our email to your contacts"
+  admin:
+    users:
+      title: ~
+      menu: ~
+      credits: ~
+      credits_view: ~
+      id: ~
+      key: ~
+      submit: ~
+      total_backed: ~
+      total_backers: ~
+      total_backs: ~
+      total_users: ~
+      total_credits: ~
+      total_credits_view: ~
+      user: ~
+      value: ~
+    backers:
+      title: ~
+      menu: ~
+      anonymous: ~
+      confirmed: ~
+      credits: ~
+      id: ~
+      key: ~
+      no_backers: ~
+      project: ~
+      refunded: ~
+      requested_refund: ~
+      reward: ~
+      submit: ~
+      total_backed: ~
+      total_backers: ~
+      total_backs: ~
+      total_users: ~
+      user: ~
+      value: ~
