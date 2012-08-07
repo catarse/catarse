@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
     connection.select_one(
       self.scoped.
         joins(:backer_total).
-        select('count(*) as backers, sum(backer_totals.sum) as backed, sum(backer_totals.credits) as credits, sum(users.credits) as credits_table').
+        select('count(DISTINCT user_id) as users, count(*) as backers, sum(backer_totals.sum) as backed, sum(backer_totals.credits) as credits, sum(users.credits) as credits_table').
         to_sql
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
   end
