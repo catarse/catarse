@@ -105,3 +105,5 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails', '1.7.0'
 end
+
+gem 'unicorn'
