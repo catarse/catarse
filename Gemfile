@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.7'
 gem 'rake', '0.9.2.2'
 
 # Database [Putting pg to the end because of a weird bug with Lion, pg and openssl]
@@ -94,14 +94,11 @@ group :test, :development do
   gem 'rspec-rails', "~> 2.10.0"
   gem 'rcov', '= 0.9.11'
   gem 'mocha', '0.10.4'
+  gem 'shoulda'
+  gem 'factory_girl_rails', '1.7.0'
 end
 
 group :development do
   gem 'mailcatcher'
   gem 'ruby-debug19'
-end
-
-group :test do
-  gem 'shoulda'
-  gem 'factory_girl_rails', '1.7.0'
 end
