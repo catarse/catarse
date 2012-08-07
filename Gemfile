@@ -1,13 +1,14 @@
-source 'http://rubygems.org'
-source 'http://gems.github.com'
+source :gemcutter
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.7'
 gem 'rake', '0.9.2.2'
 
-# Database [Putting pg to the end because of a weird bug with Lion, pg and openssl]
+# Database and data related [Putting pg to the end because of a weird bug with Lion, pg and openssl]
 gem 'pg'
 gem 'foreigner'
 gem 'activerecord-postgresql-adapter'
+gem 'maxim-sexy_pg_constraints'
+gem 'dalli'
 
 # Frontend stuff
 gem 'jquery-rails'
@@ -25,17 +26,29 @@ gem 'omniauth-yahoo', '~> 0.0.4'
 gem 'devise', '1.5.3'
 gem 'cancan'
 
-gem 'rails_autolink', '~> 1.0.7'
 
-# Tools
-gem 'mailchimp'
+# Error reporting
 gem "airbrake"
-gem 'feedzirra'
+
+# Email marketing
+gem 'mailchimp'
+
+# HTML manipulation and formatting
 gem 'formtastic'
 gem "auto_html", '= 1.4.2'
+gem 'kaminari'
+gem 'rails_autolink', '~> 1.0.7'
+
+# Uploads
+gem 'carrierwave', '= 0.5.8'
+gem 'rmagick'
+gem 'fog'
+
+# Other Tools
+gem 'feedzirra'
 gem 'validation_reflection', git: 'git://github.com/ncri/validation_reflection.git'
-gem 'maxim-sexy_pg_constraints'
 gem 'inherited_resources', '1.3.1'
+gem 'has_scope'
 gem 'spectator-validates_email', require: 'validates_email'
 gem 'has_vimeo_video', '>= 0.0.4'
 gem 'wirble'
@@ -44,16 +57,10 @@ gem 'weekdays'
 gem 'brcep'
 gem "RedCloth"
 gem 'unicode'
-gem 'carrierwave', '= 0.5.8'
-gem 'rmagick'
-gem 'fog'
 gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1'
 gem "rack-timeout"
-gem 'kaminari'
 gem 'tumblr-api'
-gem 'dalli'
-gem 'capybara', ">= 1.0.1"
 
 # Translations
 gem 'http_accept_language'
@@ -64,12 +71,12 @@ gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 gem "meta_search", "1.1.3"
 
-# Payment (moip)
-gem 'moip', git: 'https://github.com/danielweinmann/moip-ruby.git', ref: 'db1b879358c623b597dc1c221b53336f9f06db0e'
+# Payment
+gem 'catarse_paypal_express'
+gem 'catarse_moip', '~> 0.0.2'
+gem 'moip_catarse', '~> 1.0.6', require: 'moip'
 
-# Payment (paypal adaptive)
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
-#gem 'active_paypal_adaptive_payment', '~> 0.3.13'
 gem 'httpclient', '2.2.5'
 gem 'selenium-webdriver', '~> 2.25.0'
 gem 'bourbon'
@@ -94,6 +101,9 @@ group :test, :development do
   gem 'rspec-rails', "~> 2.10.0"
   gem 'rcov', '= 0.9.11'
   gem 'mocha', '0.10.4'
+  gem 'shoulda'
+  gem 'factory_girl_rails', '1.7.0'
+  gem 'capybara', ">= 1.0.1"
 end
 
 group :development do
@@ -101,7 +111,4 @@ group :development do
   gem 'ruby-debug19'
 end
 
-group :test do
-  gem 'shoulda'
-  gem 'factory_girl_rails', '1.7.0'
-end
+gem 'unicorn'
