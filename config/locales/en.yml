@@ -625,6 +625,11 @@ en:
       weblink: "View on the web"
       whitelist: "Add contact"
       whitelist_long: "Add our email to your contacts"
+  notifications:
+    backers:
+      to_backer:
+        subject: ~
+        text: ~
   admin:
     users:
       title: ~
