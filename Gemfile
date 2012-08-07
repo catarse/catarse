@@ -1,6 +1,6 @@
 source :gemcutter
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.7'
 gem 'rake', '0.9.2.2'
 
 # Database and data related [Putting pg to the end because of a weird bug with Lion, pg and openssl]
@@ -71,7 +71,7 @@ gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 gem "meta_search", "1.1.3"
 
-# Payment 
+# Payment
 gem 'catarse_paypal_express'
 gem 'catarse_moip', '~> 0.0.2'
 gem 'moip_catarse', '~> 1.0.6', require: 'moip'
@@ -101,17 +101,14 @@ group :test, :development do
   gem 'rspec-rails', "~> 2.10.0"
   gem 'rcov', '= 0.9.11'
   gem 'mocha', '0.10.4'
+  gem 'shoulda'
+  gem 'factory_girl_rails', '1.7.0'
   gem 'capybara', ">= 1.0.1"
 end
 
 group :development do
   gem 'mailcatcher'
   gem 'ruby-debug19'
-end
-
-group :test do
-  gem 'shoulda'
-  gem 'factory_girl_rails', '1.7.0'
 end
 
 gem 'unicorn'
