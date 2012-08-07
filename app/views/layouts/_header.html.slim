@@ -21,6 +21,10 @@
           = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
           .small (#{current_user.display_credits})
         li.divider
+        - if current_user.admin?
+          - for menu, path in Adm::BaseController.menu do
+            li= link_to menu, path
+        li.divider
         li= link_to t('layouts.user.logout'), logout_path
     - else
       = link_to t('layouts.header.signup'), login_path(active_register: true)
