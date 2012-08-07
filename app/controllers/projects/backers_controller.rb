@@ -63,42 +63,6 @@ class Projects::BackersController < ApplicationController
         end
         flash[:success] = t('projects.backers.checkout.success')
         redirect_to thank_you_path
-      else
-        begin
-          current_user.update_attributes params[:user]
-          current_user.reload
-          payer = {
-            :nome => current_user.full_name,
-            :email => current_user.email,
-            :logradouro => current_user.address_street,
-            :numero => current_user.address_number,
-            :complemento => current_user.address_complement,
-            :bairro => current_user.address_neighbourhood,
-            :cidade => current_user.address_city,
-            :estado => current_user.address_state,
-            :pais => "BRA",
-            :cep => current_user.address_zip_code,
-            :tel_fixo => current_user.phone_number
-          }
-          payment = {
-            :valor => "%0.0f" % (backer.value),
-            :id_proprio => backer.key,
-            :razao => "Apoio para o projeto '#{backer.project.name}'",
-            :forma => "BoletoBancario",
-            :dias_expiracao => 2,
-            :pagador => payer,
-            :url_retorno => thank_you_url
-          }
-          response = MoIP::Client.checkout(payment)
-          backer.update_attribute :payment_token, response["Token"]
-          session[:_payment_token] = response["Token"]
-          redirect_to MoIP::Client.moip_page(response["Token"])
-        rescue
-          Airbrake.notify({ :error_class => "Checkout MOIP Error", :error_message => "MOIP Error: #{e.inspect}", :parameters => params}) rescue nil
-          Rails.logger.info "-----> #{e.inspect}"
-          flash[:failure] = t('projects.backers.checkout.moip_error')
-          return redirect_to new_project_backer_path(backer.project)
-        end
       end
     end
   end

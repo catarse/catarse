@@ -10,7 +10,6 @@ gem 'activerecord-postgresql-adapter'
 gem 'maxim-sexy_pg_constraints'
 gem 'dalli'
 
-
 # Frontend stuff
 gem 'jquery-rails'
 gem 'slim'
@@ -72,9 +71,11 @@ gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 gem "meta_search", "1.1.3"
 
-# Payment (moip)
-gem 'moip', git: 'https://github.com/danielweinmann/moip-ruby.git', ref: 'db1b879358c623b597dc1c221b53336f9f06db0e'
+# Payment 
 gem 'catarse_paypal_express'
+gem 'catarse_moip', '~> 0.0.2'
+gem 'moip_catarse', '~> 1.0.6', require: 'moip'
+
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
 gem 'httpclient', '2.2.5'
 gem 'selenium-webdriver', '~> 2.25.0'
