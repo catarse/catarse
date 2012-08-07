@@ -110,5 +110,3 @@ group :development do
   gem 'mailcatcher'
   gem 'ruby-debug19'
 end
-
-gem 'unicorn'
