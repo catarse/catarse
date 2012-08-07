@@ -28,37 +28,6 @@ describe Projects::BackersController do
     end
 
     context "with user" do
-      it "when payment via MoIP" do
-        MoIP::Client.stubs(:checkout).returns({"Token" => 'ABCD'})
-        request.session[:user_id]=@user_backer.id
-
-        @user_backer.full_name.should be_nil
-        @user_backer.address_zip_code.should be_nil
-        @user_backer.phone_number.should be_nil
-
-        @backer.update_attributes({:value => 10, :confirmed => false})
-        put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id, :user => {
-          :full_name => 'Lorem Ipsum',
-          :email => 'lorem@lorem.com',
-          :address_zip_code => '33600-999',
-          :address_street => 'R. Ipsum',
-          :address_number => '666',
-          :address_complement => 'House',
-          :address_city => 'Some City',
-          :address_state => 'LP',
-          :phone_number => '(90) 9999-9999'
-        } }
-
-        @user_backer.reload
-
-        @user_backer.full_name.should_not be_nil
-        @user_backer.address_zip_code.should_not be_nil
-        @user_backer.phone_number.should_not be_nil
-
-        request.session[:_payment_token].should == 'ABCD'
-        response.should be_redirect
-      end
-
       context "credits" do
         it "when user don't have credits enough" do
           request.session[:user_id]=@user_backer.id
