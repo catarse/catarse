@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
   has_many :rewards, :dependent => :destroy
   has_many :updates, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
-  has_one :backer_total
+  has_one :project_total
   has_and_belongs_to_many :managers, :join_table => "projects_managers", :class_name => 'User'
   accepts_nested_attributes_for :rewards
 
@@ -45,7 +45,7 @@ class Project < ActiveRecord::Base
   scope :recent, where("current_timestamp - projects.created_at <= '15 days'::interval")
   scope :successful, where(successful: true)
   scope :recommended_for_home, ->{ 
-    includes(:user, :category, :backer_total).
+    includes(:user, :category, :project_total).
     recommended.
     visible.
     not_expired.
@@ -53,10 +53,10 @@ class Project < ActiveRecord::Base
     limit(4)
   }
   scope :expiring_for_home, ->(exclude_ids){ 
-    includes(:user, :category, :backer_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order('date(expires_at), random()').limit(3)
+    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order('date(expires_at), random()').limit(3)
   }
   scope :recent_for_home, ->(exclude_ids){ 
-    includes(:user, :category, :backer_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('date(created_at) DESC, random()').limit(3)
+    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('date(created_at) DESC, random()').limit(3)
   }
 
   search_methods :visible, :recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
@@ -93,11 +93,11 @@ class Project < ActiveRecord::Base
   end
 
   def pledged
-    backer_total ? backer_total.pledged : 0.0
+    project_total ? project_total.pledged : 0.0
   end
 
   def total_backers
-    backer_total ? backer_total.total_backers : 0
+    project_total ? project_total.total_backers : 0
   end
 
   def display_status

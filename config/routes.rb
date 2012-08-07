@@ -12,6 +12,8 @@ Catarse::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
+
   filter :locale
 
   root to: 'projects#index'
@@ -85,21 +87,17 @@ Catarse::Application.routes.draw do
     end
   end
 
-  resources :paypal, only: [] do
-    member do
-      get :pay
-      get :success
-      get :cancel
-      get :notifications
-    end
-  end
-
   resources :curated_pages do
     collection do
       post 'update_attribute_on_the_spot'
     end
   end
   match "/pages/:permalink" => "curated_pages#show", as: :curated_page
+
+  namespace :adm do
+    resources :backers
+    resources :users
+  end
 
   resources :tests
 
