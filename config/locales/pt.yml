@@ -625,6 +625,11 @@ pt:
       weblink: "Ver na web"
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
+  notifications:
+    backers:
+      to_backer:
+        subject: "Obrigado! Seu apoio para %{project} foi confirmado!"
+        text: "Sucesso! <br />Seu apoio acabou de ser confirmado.<br /><br />Confira: %{backer_name}<br />%{backer_value}<br />%{reward}<br /><br />%{project_name}"
   admin:
     users:
       title: "Gerenciamento de apoiadores"
