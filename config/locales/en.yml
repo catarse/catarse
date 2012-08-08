@@ -635,13 +635,14 @@ en:
       text: "%{update_title}<br />%{update_text}<br />Comments? Send it on in the project page: <a href='%{project_link}'>%{project_name}</a>."
   admin:
     users:
-      title: ~
-      menu: ~
-      credits: ~
-      credits_view: "calculated credits"
+      title: "Management backers"
+      menu: Backers
+      credits: Credits
+      credits_view: "Calculated credits"
       id: Id
-      key: ~
-      submit: ~
+      key: Key
+      submit: Search
+      has_credits_difference: "Discrepancy in credits"
       total_backed: backed
       total_backers: backers
       total_backs: backs
