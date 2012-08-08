@@ -92,6 +92,22 @@ describe Backer do
     it{ should allow_value(20).for(:value) }
   end
 
+  describe "#confirm!" do
+    subject{ Factory.build(:backer, :value => 99.99, :confirmed => false) }
+
+    its(:confirmed){ should == false }
+
+    it "should confirm the back" do
+      subject.confirm!
+      subject.confirmed.should == true
+    end
+
+    it "should send notify email when confirmed" do
+      subject.confirm!
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+  end
+
   describe "#display_value" do
     context "when the value has decimal places" do
       subject{ Factory.build(:backer, :value => 99.99).display_value }
