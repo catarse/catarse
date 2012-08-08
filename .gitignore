@@ -6,6 +6,7 @@ config/database.yml
 db/development_structure.sql
 # Vim
 *.swp
+*.dump
 coverage
 *.tmproj
 .DS_Store
