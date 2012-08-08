@@ -359,11 +359,7 @@ en:
       no_reward: "This backer has not picked a reward"
     backers:
       checkout:
-        moip_error: "Ooops. There was an error while sending your payment to MoIP. Please try again."
         no_credits: "You don't have enough credits to back this project."
-        paypal_cancel: "Your PayPal payment was canceled. Please try again."
-        paypal_description: "Back project"
-        paypal_error: "Ooops. There was an error while sending your payment to PayPal. Please try again."
         success: "Your back was successfully made. Thanks a lot!"
       new:
         cannot_back: "It's not possible to back this project right now. Please, back other projects."
