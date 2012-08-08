@@ -92,10 +92,10 @@ GEM
       xpath (~> 0.1.4)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
-    catarse_moip (0.0.2)
+    catarse_moip (0.1.0)
       moip_catarse (~> 1.0.6)
       rails (~> 3.2.6)
-    catarse_paypal_express (0.0.1)
+    catarse_paypal_express (0.0.2)
       activemerchant (~> 1.17.0)
       rails (~> 3.2.6)
     childprocess (0.3.3)
@@ -447,8 +447,8 @@ DEPENDENCIES
   cancan
   capybara (>= 1.0.1)
   carrierwave (= 0.5.8)
-  catarse_moip (~> 0.0.2)
-  catarse_paypal_express
+  catarse_moip (~> 0.1.0)
+  catarse_paypal_express (~> 0.0.2)
   coffee-rails (~> 3.2.2)
   compass-960-plugin (~> 0.10.4)
   compass-rails (~> 1.0.1)
@@ -461,7 +461,7 @@ DEPENDENCIES
   fog
   foreigner
   formtastic
-  has_vimeo_video (>= 0.0.4)
+  has_vimeo_video (~> 0.0.5)
   http_accept_language
   httparty (~> 0.6.1)
   httpclient (= 2.2.5)

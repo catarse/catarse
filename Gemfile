@@ -9,8 +9,8 @@ gem 'pg'
 gem 'foreigner'
 gem 'activerecord-postgresql-adapter'
 
-gem 'catarse_paypal_express'
-gem 'catarse_moip', '~> 0.0.2'
+gem 'catarse_paypal_express', '~> 0.0.2'
+gem 'catarse_moip', '~> 0.1.0'
 gem 'moip_catarse', '~> 1.0.6', require: 'moip'
 
 # Frontend stuff
@@ -41,7 +41,7 @@ gem 'validation_reflection', git: 'git://github.com/ncri/validation_reflection.g
 gem 'maxim-sexy_pg_constraints'
 gem 'inherited_resources', '1.3.1'
 gem 'spectator-validates_email', require: 'validates_email'
-gem 'has_vimeo_video', '>= 0.0.4'
+gem 'has_vimeo_video', '~> 0.0.5'
 gem 'wirble'
 gem "on_the_spot"
 gem 'weekdays'
