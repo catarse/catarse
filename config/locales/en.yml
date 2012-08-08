@@ -630,6 +630,9 @@ en:
       to_backer:
         subject: "Thank you! Your back for %{project} has been confirmed!"
         text: "Success! <br />Your back has just been confirmed.<br /><br />Check: %{backer_name}<br />%{backer_value}<br />%{reward}<br /><br />%{project_name}"
+    updates:
+      subject: "If the league! Update of %{project_name} by %{project_owner}: %{update_title}"
+      text: "%{update_title}<br />%{update_text}<br />Comments? Send it on in the project page: <a href='%{project_link}'>%{project_name}</a>."
   admin:
     users:
       title: ~
