@@ -7,7 +7,7 @@ describe Project do
     it{ should have_many :projects_curated_pages }
     it{ should have_many :curated_pages }
     it{ should have_many :backers }
-    it{ should have_one  :backer_total }
+    it{ should have_one  :project_total }
     it{ should have_many :rewards }
     it{ should have_many :updates }
     it{ should have_many :notifications }
@@ -24,7 +24,7 @@ describe Project do
     subject{ Project.recommended_for_home }
 
     before do
-      Project.expects(:includes).with(:user, :category, :backer_total).returns(Project)
+      Project.expects(:includes).with(:user, :category, :project_total).returns(Project)
       Project.expects(:recommended).returns(Project)
       Project.expects(:visible).returns(Project)
       Project.expects(:not_expired).returns(Project)
@@ -39,7 +39,7 @@ describe Project do
     subject{ Project.expiring_for_home(1) }
 
     before do
-      Project.expects(:includes).with(:user, :category, :backer_total).returns(Project)
+      Project.expects(:includes).with(:user, :category, :project_total).returns(Project)
       Project.expects(:visible).returns(Project)
       Project.expects(:expiring).returns(Project)
       Project.expects(:order).with('date(expires_at), random()').returns(Project)
@@ -54,7 +54,7 @@ describe Project do
     subject{ Project.recent_for_home(1) }
 
     before do
-      Project.expects(:includes).with(:user, :category, :backer_total).returns(Project)
+      Project.expects(:includes).with(:user, :category, :project_total).returns(Project)
       Project.expects(:visible).returns(Project)
       Project.expects(:recent).returns(Project)
       Project.expects(:not_expiring).returns(Project)
@@ -110,17 +110,17 @@ describe Project do
   describe "#pledged" do
     let(:project){ Project.new }
     subject{ project.pledged }
-    context "when backer_total is nil" do
+    context "when project_total is nil" do
       before do
-        project.stubs(:backer_total).returns(nil)
+        project.stubs(:project_total).returns(nil)
       end
       it{ should == 0 }
     end
-    context "when backer_total exists" do
+    context "when project_total exists" do
       before do
-        backer_total = mock()
-        backer_total.stubs(:pledged).returns(10.0)
-        project.stubs(:backer_total).returns(backer_total)
+        project_total = mock()
+        project_total.stubs(:pledged).returns(10.0)
+        project.stubs(:project_total).returns(project_total)
       end
       it{ should == 10.0 }
     end
@@ -129,17 +129,17 @@ describe Project do
   describe "#total_backers" do
     let(:project){ Project.new }
     subject{ project.total_backers }
-    context "when backer_total is nil" do
+    context "when project_total is nil" do
       before do
-        project.stubs(:backer_total).returns(nil)
+        project.stubs(:project_total).returns(nil)
       end
       it{ should == 0 }
     end
-    context "when backer_total exists" do
+    context "when project_total exists" do
       before do
-        backer_total = mock()
-        backer_total.stubs(:total_backers).returns(1)
-        project.stubs(:backer_total).returns(backer_total)
+        project_total = mock()
+        project_total.stubs(:total_backers).returns(1)
+        project.stubs(:project_total).returns(project_total)
       end
       it{ should == 1 }
     end

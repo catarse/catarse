@@ -52,11 +52,12 @@ class User < ActiveRecord::Base
   has_many :updates
   has_many :notifications
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
+  has_one :backer_total
   has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
-  scope :most_backeds, lambda {
+  scope :most_backeds, ->{
     joins(:backs).select(
     <<-SQL
       users.id,
@@ -69,6 +70,11 @@ class User < ActiveRecord::Base
     order("count_backs desc").
     group("users.name, users.id, users.email")
   }
+  scope :by_email, ->(email){ where('email ~* ?', email) }
+  scope :by_name, ->(name){ where('name ~* ?', name) }
+  scope :by_id, ->(id){ where('id = ?', id) }
+  scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
+  scope :has_credits, joins(:backer_total).where('backer_totals.credits > 0 OR users.credits > 0')
   before_save :fix_twitter_user
 
   def self.find_for_database_authentication(warden_conditions)
@@ -76,23 +82,21 @@ class User < ActiveRecord::Base
     where(conditions).where(:provider => 'devise').first
   end
 
+  def self.backer_totals
+    connection.select_one(
+      self.scoped.
+        joins(:backer_total).
+        select('count(DISTINCT user_id) as users, count(*) as backers, sum(backer_totals.sum) as backed, sum(backer_totals.credits) as credits, sum(users.credits) as credits_table').
+        to_sql
+    ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
+  end
+
   def admin?
     admin
   end
 
   def calculate_credits(sum = 0, backs = [], first = true)
-   # return sum if backs.size == 0 and not first
-   backs = self.backs.where(:confirmed => true, :requested_refund => false).order("created_at").all if backs == [] and first
-   back = backs.first
-   return sum unless back
-   sum -= back.value if back.credits
-   if back.project.finished?
-     unless back.project.successful?
-       sum += back.value
-       # puts "#{back.project.name}: +#{back.value}"
-     end
-   end
-   calculate_credits(sum, backs.drop(1), false)
+    backer_total ? backer_total.credits : 0.0
   end
 
   def facebook_id
