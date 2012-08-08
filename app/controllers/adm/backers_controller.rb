@@ -9,6 +9,7 @@ class Adm::BackersController < Adm::BaseController
   end
 
   def collection
-    @backers ||= end_of_association_chain.all
+    @search = Backer.search(params[:search])
+    @backers = @search.order("created_at DESC").page(params[:page])
   end
 end

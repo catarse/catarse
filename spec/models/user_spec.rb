@@ -12,7 +12,7 @@ describe User do
     it{ should have_many :notifications }
     it{ should have_many :secondary_users }
     it{ should have_many :updates }
-    it{ should have_one :backer_total }
+    it{ should have_one :user_total }
   end
 
   describe "validations" do 
@@ -42,7 +42,7 @@ describe User do
       it{ should == [@u] }
     end
 
-    context "when he has credits in the backer_total" do
+    context "when he has credits in the user_total" do
       before do
         b = Factory(:backer, :value => 100, :project => failed_project)
         @u = b.user
