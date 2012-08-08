@@ -4,7 +4,7 @@ class Adm::UsersController < Adm::BaseController
   before_filter :set_title
   before_filter :set_totals
 
-  has_scope :by_id, :by_name, :by_email, :by_key, :has_credits, :only => :index
+  has_scope :by_id, :by_name, :by_key, :has_credits, :only => :index
 
   protected
   def set_totals
@@ -21,7 +21,7 @@ class Adm::UsersController < Adm::BaseController
   end
 
   def collection
-    @users ||= end_of_association_chain.includes(:backer_total).page(params[:page])
+    @users ||= end_of_association_chain.includes(:user_total).page(params[:page])
   end
 end
 
