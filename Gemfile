@@ -7,6 +7,11 @@ gem 'rake', '0.9.2.2'
 gem 'pg'
 gem 'foreigner'
 gem 'activerecord-postgresql-adapter'
+
+gem 'catarse_paypal_express', '~> 0.0.2'
+gem 'catarse_moip', '~> 0.1.0'
+gem 'moip_catarse', '~> 1.0.6', require: 'moip'
+
 gem 'maxim-sexy_pg_constraints'
 gem 'dalli'
 
@@ -50,7 +55,7 @@ gem 'validation_reflection', git: 'git://github.com/ncri/validation_reflection.g
 gem 'inherited_resources', '1.3.1'
 gem 'has_scope'
 gem 'spectator-validates_email', require: 'validates_email'
-gem 'has_vimeo_video', '>= 0.0.4'
+gem 'has_vimeo_video', '~> 0.0.5'
 gem 'wirble'
 gem "on_the_spot"
 gem 'weekdays'
@@ -72,10 +77,6 @@ gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 gem "meta_search", "1.1.3"
 
 # Payment
-gem 'catarse_paypal_express'
-gem 'catarse_moip', '~> 0.0.2'
-gem 'moip_catarse', '~> 1.0.6', require: 'moip'
-
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
 gem 'httpclient', '2.2.5'
 gem 'selenium-webdriver', '~> 2.25.0'

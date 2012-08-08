@@ -359,11 +359,7 @@ pt:
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
       checkout:
-        moip_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
         no_credits: "Você não possui créditos suficientes para realizar este apoio."
-        paypal_cancel: "Seu pagamento no PayPal foi cancelado. Por favor, tente novamente."
-        paypal_description: "Apoio para o projeto %{project_name} no valor de %{value}"
-        paypal_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o PayPal. Por favor, tente novamente."
         success: "Seu apoio foi realizado com sucesso. Muito obrigado!"
       new:
         cannot_back: "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."

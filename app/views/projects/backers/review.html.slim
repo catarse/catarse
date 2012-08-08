@@ -59,7 +59,7 @@
                 span= t('or')
               - if defined?(CatarseMoip)
                 .boleto
-                  = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_moip.checkout_payment_moip_path(@backer), :method => :get, :class => 'payment_link' do
+                  = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_moip.pay_payment_moip_path(@backer), :method => :get, :class => 'payment_link' do
                     = image_tag 'catarse/boleto_icon.png', :class => 'boleto_icon'
                     = image_tag 'catarse/cc_icon.png', :class => 'cc_icon'
                     span= t('.choose_boleto')
