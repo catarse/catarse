@@ -377,7 +377,7 @@ pt:
           important_html: "<p>O uso do PayPal é destinado preferencialmente para apoios internacionais. Isto porque ao realizar o pagamento pelo PayPal, você tem apenas 60 dias para receber seu dinheiro de volta sem taxas.</p><p>Caso você possa realizar o pagamento normal pelo MoIP, nós recomendamos.</p><p>Mas se você não pode, não se preocupe: você sempre poderá receber seu dinheiro de volta. Apenas, caso o estorno seja realizado mais de 60 dias depois do seu pagamento, você terá que pagar a taxa do PayPal, que é de 5,4% + R$ 0,60 por transação.</p>"
           submit: "Efetuar pagamento pelo PayPal"
           title: "Quer fazer pagamento internacional?"
-        review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa: <span class='reward'>%{reward}</span>"
+        review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa:"
         review_without_reward_html: "Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio."
         submit:
           credits: "Confirmar apoio com créditos"
@@ -621,6 +621,14 @@ pt:
       weblink: "Ver na web"
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
+  notifications:
+    backers:
+      to_backer:
+        subject: "Obrigado! Seu apoio para %{project} foi confirmado!"
+        text: "Sucesso! <br />Seu apoio acabou de ser confirmado.<br /><br />Confira: %{backer_name}<br />%{backer_value}<br />%{reward}<br /><br />%{project_name}"
+    updates:
+      subject: "Se liga! Atualização de %{project_name} por %{project_owner}: %{update_title}"
+      text: "%{update_title}<br />%{update_text}<br />Comentários? Mande ver na página do projeto: <a href='%{project_link}'>%{project_name}</a>."
   admin:
     users:
       title: "Gerenciamento de apoiadores"
@@ -630,7 +638,8 @@ pt:
       id: Id
       key: Chave
       submit: Pesquisar
-      total_backed: arrecadados
+      has_credits_difference: Discrepância nos créditos
+      total_backed: Total de apoios
       total_backers: apoiadores
       total_backs: apoios
       total_users: usuários

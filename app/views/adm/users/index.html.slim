@@ -26,6 +26,9 @@
               .input.check
                 = check_box_tag :has_credits, true, params[:has_credits].present?
                 = f.label :has_credits, t('admin.users.credits')
+              .input.check
+                = check_box_tag :has_credits_difference, true, params[:has_credits_difference].present?
+                = f.label :has_credits_difference, t('admin.users.has_credits_difference')
         .clearfix
       .title
         h2
@@ -53,6 +56,7 @@
                   th= t('admin.users.id')
                   th= t('admin.users.user')
                   th= t('admin.users.email')
+                  th= t('admin.users.total_backed')
                   th= t('admin.users.credits')
                   th= t('admin.users.credits_view')
               tbody
@@ -61,6 +65,7 @@
                     td= user.id
                     td= user.name
                     td= user.email
+                    td= user.user_total ? user.user_total.sum : 0
                     td= user.credits
                     td= user.calculate_credits
         = paginate @users
