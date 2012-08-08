@@ -381,7 +381,7 @@ en:
           important_html: "<p>The use of PayPal is destinated mostly for international payments. That's because you'll have only 60 days to receive an eventual refund without paying any fee.</p><p>In case you can make the regular payment through MoIP, we recommend you to do it.</p><p>But if that's not possible, don't worry: you'll always be able to receive your money back. Only, in case your refund is made more than 60 days after your payment, you'll have to pay PayPal's fee, which is 5,4% + R$0,60 per transaction.</p>"
           submit: "Proceed to PayPal's checkout"
           title: "Want to make an international payment?"
-        review_with_reward_html: "You will back with <strong>%{value}</strong> and receive the following reward: <span class='reward'>%{reward}</span>"
+        review_with_reward_html: "You will back with <strong>%{value}</strong> and receive the following reward:"
         review_without_reward_html: "You will back with <strong>%{value}</strong> but you don't want any reward for that."
         submit:
           credits: "Confirm backing with credits"
