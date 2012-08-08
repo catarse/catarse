@@ -1,4 +1,5 @@
 source :gemcutter
+source 'http://gems.github.com'
 
 gem 'rails', '3.2.7'
 gem 'rake', '0.9.2.2'
