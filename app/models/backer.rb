@@ -44,6 +44,7 @@ class Backer < ActiveRecord::Base
   def confirm!
     update_attribute :confirmed, true
     update_attribute :confirmed_at, Time.now
+    notify_confirmation
   end
 
   def reward_must_be_from_project
@@ -94,7 +95,7 @@ class Backer < ActiveRecord::Base
     raise I18n.t('credits.refund.refunded') if self.refunded
     raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
     self.update_attribute :requested_refund, false
-    self.user.update_attribute :credits, self.user.credits + self.value    
+    self.user.update_attribute :credits, self.user.credits + self.value
   end
 
   def generate_credits!
@@ -131,5 +132,14 @@ class Backer < ActiveRecord::Base
       json_attributes.merge!({:reward => reward})
     end
     json_attributes
+  end
+
+  protected
+  def notify_confirmation
+    text = I18n.t('notifications.backers.to_backer.text', :backer_name => user.display_name, :backer_value => display_value, :reward => "#{reward.description if reward}", :project_name => project.name)
+    Notification.create! :user => user,
+                         :email_subject => I18n.t('notifications.backers.to_backer.subject', :project => project.name),
+                         :email_text => text,
+                         :text => text
   end
 end
