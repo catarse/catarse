@@ -628,42 +628,42 @@ en:
   notifications:
     backers:
       to_backer:
-        subject: ~
-        text: ~
+        subject: "Thank you! Your back for %{project} has been confirmed!"
+        text: "Success! <br />Your back has just been confirmed.<br /><br />Check: %{backer_name}<br />%{backer_value}<br />%{reward}<br /><br />%{project_name}"
   admin:
     users:
       title: ~
       menu: ~
       credits: ~
-      credits_view: ~
-      id: ~
+      credits_view: "calculated credits"
+      id: Id
       key: ~
       submit: ~
-      total_backed: ~
-      total_backers: ~
-      total_backs: ~
-      total_users: ~
-      total_credits: ~
-      total_credits_view: ~
-      user: ~
-      value: ~
+      total_backed: backed
+      total_backers: backers
+      total_backs: backs
+      total_users: users
+      total_credits: credits
+      total_credits_view: "calculated credits"
+      user: User
+      value: Value
     backers:
-      title: ~
-      menu: ~
-      anonymous: ~
-      confirmed: ~
-      credits: ~
-      id: ~
-      key: ~
-      no_backers: ~
-      project: ~
-      refunded: ~
-      requested_refund: ~
-      reward: ~
-      submit: ~
-      total_backed: ~
-      total_backers: ~
-      total_backs: ~
-      total_users: ~
-      user: ~
-      value: ~
+      title: "Backers management"
+      menu: Backs
+      anonymous: Anonymous?
+      confirmed: Confirmed?
+      credits: "Used credits?"
+      id: Id
+      key: Key
+      no_backers: "No backers found."
+      project: Project
+      refunded: Refunded?
+      requested_refund: "Requested refund?"
+      reward: Reward
+      submit: Search
+      total_backed: backed
+      total_backers: backers
+      total_backs: backs
+      total_users: Users
+      user: User
+      value: Value
