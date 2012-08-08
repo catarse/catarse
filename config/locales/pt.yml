@@ -639,7 +639,8 @@ pt:
       id: Id
       key: Chave
       submit: Pesquisar
-      total_backed: arrecadados
+      has_credits_difference: Discrepância nos créditos
+      total_backed: Total de apoios
       total_backers: apoiadores
       total_backs: apoios
       total_users: usuários
