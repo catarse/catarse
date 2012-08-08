@@ -628,8 +628,8 @@ en:
   notifications:
     backers:
       to_backer:
-        subject: ~
-        text: ~
+        subject: "Thank you! Your back for %{project} has been confirmed!"
+        text: "Success! <br />Your back has just been confirmed.<br /><br />Check: %{backer_name}<br />%{backer_value}<br />%{reward}<br /><br />%{project_name}"
   admin:
     users:
       title: ~
