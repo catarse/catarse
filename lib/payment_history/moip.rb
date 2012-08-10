@@ -23,14 +23,12 @@ module PaymentHistory
             @backer.confirm! if not @backer.confirmed
           when TransactionStatus::WRITTEN_BACK
             unless @backer.refunded
-              @backer.update_attribute :refunded, true
-              @backer.update_attribute :requested_refund, true
+              @backer.update_attributes({refunded: true, requested_refund: true})
               @backer.user.update_credits
             end
           when TransactionStatus::REFUNDED
             unless @backer.refunded
-              @backer.update_attribute :refunded, true
-              @backer.update_attribute :requested_refund, true
+              @backer.update_attributes({refunded: true, requested_refund: true})
               @backer.user.update_credits
             end
           end
