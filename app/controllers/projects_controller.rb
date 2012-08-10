@@ -70,7 +70,7 @@ class ProjectsController < ApplicationController
   end
 
   def send_mail
-    current_user.update_attribute :email, params[:contact] if current_user.email.nil?
+    current_user.update_attributes({ email: params[:contact] }) if current_user.email.nil?
     ProjectsMailer.start_project_email(
       params[:how_much_you_need],
       params[:category],
@@ -116,7 +116,7 @@ class ProjectsController < ApplicationController
     # because @project.reload *works only with created records*
     unless @project.new_record?
       @project.reload
-      @project.update_attribute :short_url, bitly
+      @project.update_attributes({ short_url: bitly })
     end
   end
 

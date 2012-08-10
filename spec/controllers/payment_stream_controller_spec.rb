@@ -74,7 +74,7 @@ describe PaymentStreamController do
         end
 
         it "when confirmed backer don't update the backer payment detail" do
-          @backer.update_attribute :confirmed, true
+          @backer.update_attributes({ confirmed: true })
           @backer.reload
           @backer.confirmed.should be_true
           @backer.payment_detail.payment_status.should == 'BoletoImpresso'
