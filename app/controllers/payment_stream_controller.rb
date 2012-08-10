@@ -8,19 +8,18 @@ class PaymentStreamController < ApplicationController
   end
 
   def thank_you
-    #
-    #unless session[:thank_you_id]
-     # flash[:failure] = I18n.t('payment_stream.thank_you.error')
-      #return redirect_to :root
-    #end
-#
- #   if session[:_payment_token]
-  #    backer = Backer.find_by_payment_token session[:_payment_token]
-   #   backer.build_payment_detail.update_from_service if backer
-    #  session[:_payment_token] = nil
-   # end
-    #@project = Project.find session[:thank_you_id]
-    @project = Project.last
+    unless session[:thank_you_id]
+      flash[:failure] = I18n.t('payment_stream.thank_you.error')
+      return redirect_to :root
+    end
+
+    if session[:_payment_token]
+      backer = Backer.find_by_payment_token session[:_payment_token]
+      backer.build_payment_detail.update_from_service if backer
+      session[:_payment_token] = nil
+    end
+    @project = Project.find session[:thank_you_id]
+    #@project = Project.last
     @title = t('payment_stream.thank_you.title')
     session[:thank_you_id] = nil
   end
