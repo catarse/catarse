@@ -113,7 +113,8 @@ class User < ActiveRecord::Base
   end
 
   def update_credits
-    self.update_attribute :credits, self.calculate_credits
+    self.credits = self.calculate_credits
+    self.save
   end
 
   def to_param
