@@ -15,6 +15,7 @@ gem 'moip_catarse', '~> 1.0.6', require: 'moip'
 
 gem 'maxim-sexy_pg_constraints'
 gem 'dalli'
+gem 'draper'
 
 # Frontend stuff
 gem 'jquery-rails'

@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
 
+  delegate  :display_name, :display_image, :short_name, 
+            :medium_name, :display_credits, :display_total_of_backs,
+            :to => :decorator
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
                   :password,
@@ -92,6 +96,10 @@ class User < ActiveRecord::Base
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
   end
 
+  def decorator
+    UserDecorator.new(self)
+  end
+
   def admin?
     admin
   end
@@ -144,22 +152,6 @@ class User < ActiveRecord::Base
   end
   memoize :recommended_project
 
-  def display_name
-    name || nickname || I18n.t('user.no_name')
-  end
-
-  def short_name
-    truncate display_name, :length => 26
-  end
-
-  def medium_name
-    truncate display_name, :length => 42
-  end
-
-  def display_image
-    gravatar_url || image_url || '/assets/user.png'
-  end
-
   def total_backs
     backs.confirmed.not_anonymous.count
   end
@@ -176,14 +168,6 @@ class User < ActiveRecord::Base
 
   def remember_me_hash
     Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
-  end
-
-  def display_credits
-    number_to_currency credits, :unit => 'R$', :precision => 0, :delimiter => '.'
-  end
-
-  def display_total_of_backs
-    number_to_currency backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
   end
 
   def as_json(options={})

@@ -208,38 +208,6 @@ describe User do
     it{ should == @p2}
   end
 
-  describe "#display_name" do
-    subject{ user.display_name }
-    context "when we have a name" do
-      let(:user){ Factory(:user, :name => "Name") }
-      it{ should == 'Name' }
-    end
-    context "when we have only a nickname" do
-      let(:user){ Factory(:user, :name => nil, :nickname => 'nick') }
-      it{ should == 'nick' }
-    end
-    context "when we have no name" do
-      let(:user){ Factory(:user, :name => nil, :nickname => nil) }
-      it{ should == I18n.t('user.no_name') }
-    end
-  end
-
-  describe "#display_image" do
-    subject{ user.display_image }
-    context "when we have an image" do
-      let(:user){ Factory(:user, :image_url => "image.png", :email => nil) }
-      it{ should == 'image.png' }
-    end
-    context "when we have an email" do
-      let(:user){ Factory(:user, :image_url => nil, :email => 'diogob@gmail.com') }
-      it{ should == "http://gravatar.com/avatar/5e2a237dafbc45f79428fdda9c5024b1.jpg?default=#{I18n.t('site.base_url')}/assets/user.png" }
-    end
-    context "when we do not have an image nor an email" do
-      let(:user){ Factory(:user, :image_url => nil, :email => nil) }
-      it{ should == '/assets/user.png' }
-    end
-  end
-
   describe "#remember_me_hash" do
     subject{ Factory(:user, :provider => "foo", :uid => "bar").remember_me_hash }
     it{ should == "27fc6690fafccbb0fc0b8f84c6749644" }
