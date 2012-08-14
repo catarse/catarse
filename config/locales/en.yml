@@ -385,9 +385,11 @@ en:
         subtitle: "This is the last step to make the difference and become part of this project."
         title: "Fill in and review your data"
         choose_payment: "How do you want to pay?"
+        choose_payment_subtitle: "Select below a payment method"
         choose_credit_card: "Credit Card"
         choose_boleto: "Billet Banking"
         you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
+        pay_with: "Pay With"
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
     form:
