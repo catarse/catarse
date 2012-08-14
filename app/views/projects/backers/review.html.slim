@@ -12,7 +12,8 @@
               = @backer.reward.description
               .icon-rewards
           - else
-            = t('.review_without_reward_html', :value => @backer.display_value)
+            .review_content
+              = t('.review_without_reward_html', :value => @backer.display_value)
       .clearfix
       .title
         h1= t('.title')
