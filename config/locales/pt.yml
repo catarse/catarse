@@ -631,41 +631,43 @@ pt:
     updates:
       subject: "Se liga! Atualização de %{project_name} por %{project_owner}: %{update_title}"
       text: "%{update_title}<br />%{update_text}<br />Comentários? Mande ver na página do projeto: <a href='%{project_link}'>%{project_name}</a>."
-  admin:
+  adm:
     users:
-      title: "Gerenciamento de apoiadores"
-      menu: "Apoiadores"
-      credits: "Créditos"
-      credits_view: "Créditos calculados"
-      id: Id
-      key: Chave
-      submit: Pesquisar
-      has_credits_difference: Discrepância nos créditos
-      total_backed: Total de apoios
-      total_backers: apoiadores
-      total_backs: apoios
-      total_users: usuários
-      total_credits: créditos
-      total_credits_view: créditos calculados
-      user: Usuário
-      value: Valor
+      index:
+        title: "Gerenciamento de apoiadores"
+        menu: "Apoiadores"
+        credits: "Créditos"
+        credits_view: "Créditos calculados"
+        id: Id
+        key: Chave
+        submit: Pesquisar
+        has_credits_difference: Discrepância nos créditos
+        total_backed: Total de apoios
+        total_backers: apoiadores
+        total_backs: apoios
+        total_users: usuários
+        total_credits: créditos
+        total_credits_view: créditos calculados
+        user: Usuário
+        value: Valor
     backers:
-      title: "Gerenciamento de apoios"
-      menu: "Apoios"
-      anonymous: Anônimo?
-      confirmed: Confirmado?
-      credits: "Usou créditos?"
-      id: Id
-      key: Chave
-      no_backers: "Nenhum apoiador encontrado."
-      project: Projeto
-      refunded: "Estorno realizado?"
-      requested_refund: "Solicitou estorno?"
-      reward: Recompensa
-      submit: Pesquisar
-      total_backed: arrecadados
-      total_backers: apoiadores
-      total_backs: apoios
-      total_users: usuários
-      user: Usuário
-      value: Valor
+      index:
+        title: "Gerenciamento de apoios"
+        menu: "Apoios"
+        anonymous: Anônimo?
+        confirmed: Confirmado?
+        credits: "Usou créditos?"
+        id: Id
+        key: Chave
+        no_backers: "Nenhum apoiador encontrado."
+        project: Projeto
+        refunded: "Estorno realizado?"
+        requested_refund: "Solicitou estorno?"
+        reward: Recompensa
+        submit: Pesquisar
+        total_backed: arrecadados
+        total_backers: apoiadores
+        total_backs: apoios
+        total_users: usuários
+        user: Usuário
+        value: Valor
