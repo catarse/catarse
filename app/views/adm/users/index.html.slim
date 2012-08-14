@@ -63,7 +63,7 @@
                 - for user in @users do
                   tr id=user.id class=cycle("even", "odd")
                     td= user.id
-                    td= user.name
+                    td= link_to user.name, adm_backers_path(:search => {:user_id_equals => user.id}), :target => '_blank'
                     td= user.email
                     td= user.user_total ? user.user_total.sum : 0
                     td= user.credits
