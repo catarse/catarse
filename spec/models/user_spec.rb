@@ -52,6 +52,24 @@ describe User do
     end
   end
 
+  describe ".by_payer_email" do
+    before do
+      p = Factory(:payment_detail)
+      backer = p.backer
+      @u = backer.user
+      p.payer_email = 'foo@bar.com'
+      p.save!
+      p = Factory(:payment_detail, :backer => backer)
+      p.payer_email = 'another_email@bar.com'
+      p.save!
+      p = Factory(:payment_detail)
+      p.payer_email = 'another_email@bar.com'
+      p.save!
+    end
+    subject{ User.by_payer_email 'foo@bar.com' }
+    it{ should == [@u] }
+  end
+
   describe ".by_key" do
     before do
       b = Factory(:backer)
