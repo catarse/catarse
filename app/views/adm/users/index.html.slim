@@ -2,68 +2,71 @@
   .container
     .project_content
       .title
-        h1= t('admin.users.title')
+        h1= t('.title')
       #pending_users
         .bootstrap-form.clearfix
           = form_for adm_users_path, :method => :get, :class => 'form-horizontal' do |f|
             fieldset
               .input
-                = f.label :by_id, t('admin.users.id')
+                = f.label :by_id, t('.id')
                 = f.text_field :by_id, :class => 'input-small', :name => :by_id, :value => params[:by_id]
               .input
-                = f.label :by_name, t('admin.users.name')
+                = f.label :by_name, t('.name')
                 = f.text_field :by_name, :class => 'input-small', :name => :by_name, :value => params[:by_name]
               .input
-                = f.label :by_email, t('admin.users.email')
+                = f.label :by_email, t('.email')
                 = f.text_field :by_email, :class => 'input-small', :name => :by_email, :value => params[:by_email]
               .input
-                = f.label :by_key, t('admin.users.key')
+                = f.label :by_payer_email, t('.payer_email')
+                = f.text_field :by_payer_email, :class => 'input-small', :name => :by_payer_email, :value => params[:by_payer_email]
+              .input
+                = f.label :by_key, t('.key')
                 = f.text_field :by_key, :name => :by_key, :value => params[:by_key]
               .bootstrap-twitter.input
                 .submit
-                  = f.submit t('admin.users.submit'), class: 'btn btn-success'
+                  = f.submit t('.submit'), class: 'btn btn-success'
             fieldset
               .input.check
                 = check_box_tag :has_credits, true, params[:has_credits].present?
-                = f.label :has_credits, t('admin.users.credits')
+                = f.label :has_credits, t('.credits')
               .input.check
                 = check_box_tag :has_credits_difference, true, params[:has_credits_difference].present?
-                = f.label :has_credits_difference, t('admin.users.has_credits_difference')
+                = f.label :has_credits_difference, t('.has_credits_difference')
         .clearfix
       .title
         h2
           strong= "#{@total_users} "
-          = t('admin.users.total_backers')
+          = t('.total_backers')
           |  · 
           strong= "#{number_to_currency @total_backed, :precision => 0} "
-          = t('admin.users.total_backed')
+          = t('.total_backed')
           |  · 
           strong= "#{number_to_currency @total_credits_table, :precision => 0} "
-          = t('admin.users.total_credits')
+          = t('.total_credits')
           |  · 
           strong= "#{number_to_currency @total_credits_view, :precision => 0} "
-          = t('admin.users.total_credits_view')
+          = t('.total_credits_view')
         br
         = paginate @users
         br
         - if @users.empty?
-          = t('admin.users.no_users')
+          = t('.no_users')
         - else
           .bootstrap-twitter
             table.table.table-striped
               thead
                 tr
-                  th= t('admin.users.id')
-                  th= t('admin.users.user')
-                  th= t('admin.users.email')
-                  th= t('admin.users.total_backed')
-                  th= t('admin.users.credits')
-                  th= t('admin.users.credits_view')
+                  th= t('.id')
+                  th= t('.user')
+                  th= t('.email')
+                  th= t('.total_backed')
+                  th= t('.credits')
+                  th= t('.credits_view')
               tbody
                 - for user in @users do
                   tr id=user.id class=cycle("even", "odd")
                     td= user.id
-                    td= user.name
+                    td= link_to user.name, adm_backers_path(:search => {:user_id_equals => user.id}), :target => '_blank'
                     td= user.email
                     td= user.user_total ? user.user_total.sum : 0
                     td= user.credits
