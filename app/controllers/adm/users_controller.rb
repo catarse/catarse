@@ -4,7 +4,7 @@ class Adm::UsersController < Adm::BaseController
   before_filter :set_title
   before_filter :set_totals
 
-  has_scope :by_id, :by_name, :by_email, :by_key, :has_credits, :has_credits_difference, :only => :index
+  has_scope :by_id, :by_name, :by_email, :by_payer_email, :by_key, :has_credits, :has_credits_difference, :only => :index
 
   protected
   def set_totals

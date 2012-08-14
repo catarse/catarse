@@ -650,6 +650,7 @@ pt:
         total_credits_view: créditos calculados
         user: Usuário
         value: Valor
+        payer_email: Email do pagamento
     backers:
       index:
         title: "Gerenciamento de apoios"

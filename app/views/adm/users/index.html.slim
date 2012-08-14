@@ -17,6 +17,9 @@
                 = f.label :by_email, t('.email')
                 = f.text_field :by_email, :class => 'input-small', :name => :by_email, :value => params[:by_email]
               .input
+                = f.label :by_payer_email, t('.payer_email')
+                = f.text_field :by_payer_email, :class => 'input-small', :name => :by_payer_email, :value => params[:by_payer_email]
+              .input
                 = f.label :by_key, t('.key')
                 = f.text_field :by_key, :name => :by_key, :value => params[:by_key]
               .bootstrap-twitter.input
