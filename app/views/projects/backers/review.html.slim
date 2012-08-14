@@ -10,7 +10,6 @@
               = t('.review_with_reward_html', :value => @backer.display_value)
             .reward
               = @backer.reward.description
-              .icon-rewards
           - else
             .review_content
               = t('.review_without_reward_html', :value => @backer.display_value)
