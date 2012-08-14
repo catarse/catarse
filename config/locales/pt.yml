@@ -385,9 +385,11 @@ pt:
         subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
         title: "Preencha e revise seus dados"
         choose_payment: "Como você quer pagar?"
+        choose_payment_subtitle: "Selecione abaixo uma forma de pagamento"
         choose_credit_card: "Pagamento internacional"
         choose_boleto: "Pagamento nacional"
         you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
+        pay_with: "Pagar com"
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
     form:

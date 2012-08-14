@@ -10,7 +10,7 @@
             = hidden_field_tag 'credits', ("%0.0f" % current_user.credits)   
             = form.input :value, :required => false, :as => :string
             .simbol
-              p= t('R$')
+              p R$
             - if current_user.credits >= 10
               .bootstrap-alert
                 .alert.alert-info
@@ -38,7 +38,6 @@
           .project_expires_at #{@project.time_to_go[:time]} #{@project.time_to_go[:unit]} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
         .clearfix
         .back_faq
-          h2= t('Quero apoiar, e agora?')
           = render 'back_text'
       .clearfix
     .clearfix
