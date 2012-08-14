@@ -15,6 +15,7 @@
               .bootstrap-alert
                 .alert.alert-info
                   = form.input :credits, :hint => t('formtastic.hints.backer.credits', :credits => current_user.display_credits).html_safe
+              .clearfix
             - @rewards[0].id = 0
             script
               |var rewards = new Array();
