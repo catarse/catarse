@@ -50,8 +50,8 @@ describe UserDecorator do
   end
 
   describe "#display_credits" do
-    subject { user = Factory(:user, credits: 10 ) }
-    its(:display_credits) { should == 'R$ 10'}
+    subject { Factory(:user) }
+    its(:display_credits) { should == 'R$ 0'}
   end
 
   describe "#display_total_of_backs" do

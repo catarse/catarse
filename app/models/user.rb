@@ -105,17 +105,12 @@ class User < ActiveRecord::Base
     admin
   end
 
-  def calculate_credits(sum = 0, backs = [], first = true)
+  def credits
     user_total ? user_total.credits : 0.0
   end
 
   def facebook_id
     provider == 'facebook' && uid || secondary_users.where(provider: 'facebook').first && secondary_users.where(provider: 'facebook').first.uid
-  end
-
-  def update_credits
-    self.credits = self.calculate_credits
-    self.save
   end
 
   def to_param

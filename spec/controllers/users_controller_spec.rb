@@ -5,7 +5,9 @@ describe UsersController do
   render_views
   subject{ response }
 
-  let(:backer){ Factory(:backer, :user => user) }
+  let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
+  let(:failed_project){ Factory(:project, :finished => true, :successful => false) }
+  let(:backer){ Factory(:backer, :user => user, :project => failed_project, :can_refund => true) }
   let(:user){ Factory(:user, :provider => 'facebook', :uid => '666') }
 
   describe "PUT update" do
@@ -41,19 +43,13 @@ describe UsersController do
         end
 
         it "success requested" do
-          backer.can_refund = true
-          user.credits = 100
-          user.save
-          backer.save
           post :request_refund, { id: user.id, back_id: backer.id }
 
           ActiveSupport::JSON.decode(subject.body)['status'].should == I18n.t('credits.index.refunded')
         end
 
         it "when user doesn't have a necessary value" do
-          user.credits = 4
-          user.save
-          user.reload
+          Factory(:backer, :user => user, :project => successful_project, :credits => true)
           post :request_refund, { id: user.id, back_id: backer.id }
 
           ActiveSupport::JSON.decode(subject.body)['status'].should == I18n.t('credits.refund.no_credits')
