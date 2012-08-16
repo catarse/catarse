@@ -49,7 +49,6 @@ feature "Pending Backers" do
 
     visit pending_backers_projects_path
 
-    find("#confirmed__#{backer.id}")[:checked].should == nil
     find("#anonymous__#{backer.id}")[:checked].should == "true"
     find("#refunded__#{backer.id}")[:checked].should == nil
 
@@ -61,7 +60,6 @@ feature "Pending Backers" do
       page.should have_content("#{other_user.id}")
     end
 
-    check "confirmed__#{backer.id}"
     uncheck "anonymous__#{backer.id}"
     check "refunded__#{backer.id}"
 
