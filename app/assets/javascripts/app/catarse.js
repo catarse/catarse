@@ -39,6 +39,13 @@ var CATARSE = {
        window.view = new CATARSE.ExploreIndexView({el: $("body") });
     }
   },
+  adm: {
+    backers:{
+      index: function(){
+        window.view = new CATARSE.ProjectsPending_backersView({el: $("body") });
+      }
+    }
+  },
   projects: {
     index: function(){
       window.view = new CATARSE.ProjectsIndexView({el: $("body") });

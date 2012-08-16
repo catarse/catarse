@@ -71,7 +71,8 @@ feature "Back project" do
     click_on "Revisar e realizar pagamento"
     verify_translations
     current_path.should == review_project_backers_path(@project)
-    page.should have_content("Você irá apoiar com R$ 20 e ganhará a seguinte recompensa: $20 reward")
+    page.should have_content("Você irá apoiar com R$ 20 e ganhará a seguinte recompensa:")
+    page.should have_content("$20 reward")
     
     Backer.count.should == 1
     backer = Backer.first
@@ -146,7 +147,8 @@ feature "Back project" do
     click_on "Revisar e realizar pagamento"
     verify_translations
     current_path.should == review_project_backers_path(@project)
-    page.should have_content("Você irá apoiar com R$ 30 e ganhará a seguinte recompensa: $30 reward")
+    page.should have_content("Você irá apoiar com R$ 30 e ganhará a seguinte recompensa:")
+    page.should have_content("$30 reward")
     
     Backer.count.should == 1
     backer = Backer.first

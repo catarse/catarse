@@ -1,4 +1,6 @@
 [data-controller="backers"][data-namespace="projects"][data-action="review"]
+  input.error
+    border: 1px solid rgba(#ff0033, 0.5)
   .hide
     display: none
   #page_content
@@ -11,55 +13,61 @@
           +grid(16)
           +alpha
           clear: both
-          padding-top: 20px
-          padding-bottom: 40px
+          padding-top: 40px
+          padding-bottom: 30px
           h1
             color: $ultra_gryn
-            font-family: "Lato-Regular"
-            font-size: 28px
+            font-family: "Lato-Bold"
+            font-size: 24px
             padding: 5px 0
           h2
-            color: rgba($ultra_gryn, 0.7)
-            font-family: Arial
-            font-size: 18px
+            color: #333333
+            font-family: "Lato-Regular"
+            font-size: 14px
+            padding-bottom: 15px
+            border-bottom: 1px dotted #CCCCCC
         .project_info
           float: left
           //padding-bottom: 40px
-          background: $ed_gryn
           #project_image
-            @include box-shadow(rgba(black, 0.5) 1px 1px 3px)
             float: left
             margin-right: 20px
           h1
             float: left
             width: 650px
+            color: #333
             font-family: 'Lato-Bold'
-            font-size: 22px
-            line-height: 130%
-            padding-bottom: 20px
+            font-size: 24px
+            line-height: 120%
+            padding-bottom: 30px
             padding-top: 10px
             a
-              color: $green
+              color: #6BB444
               text-decoration: none
           #review_text
-            height: 80px
-            overflow: hidden
-            overflow-y: auto
             padding-right: 20px
-            font-family: Lato-Regular
-            font-size: 18px
-            line-height: 140%
             float: left
-            width: 640px
-            strong
+            width: 640px  
+            .review_content 
+              font-family: "Lato-Regular"
               font-size: 18px
-              color: black
-              font-weight: bold
+              line-height: 24px
+              width: 265px 
+              float: left  
+              margin-top: 20px   
+              strong
+                font-size: 18px
+                color: black
+                font-weight: bold
             .reward
-              font-size: 14px
-              font-style: italic
-              display: block
-              line-height: 120%
+              float: right
+              font-family: "Lato-Italic"
+              font-size: 16px
+              line-height: 21px
+              padding: 20px 20px 40px 60px
+              width: 280px
+              color: #333
+              background: url($images_path+'gift-reward.png') left top no-repeat #F0F0F0
         #credits_notice
           font-family: 'Lato-Regular'
           font-size: 16px
@@ -72,7 +80,7 @@
             font-size: 20px
             text-align: center
           a
-            color: $pink
+            color: #6BB444
           .international_important
             padding-top: 15px
             p
@@ -92,6 +100,9 @@
             float: left
             margin-right: 20px
             margin-bottom: 10px
+            input, select#user_address_state
+              height: 25px
+              @include background(linear-gradient(top bottom, #F3F3F3, #FFF))
             label
               font-family: 'Lato-Regular'
             &#user_full_name_input
@@ -131,49 +142,73 @@
             &#user_address_state_input
               margin-bottom: 20px
           abbr
-            color: red
+            color: #6BB444
           .submit
             .accept_terms
               padding-bottom: 20px
               input
                 float: left
-                margin-right: 15px
+                margin-right: 10px
+                margin-top: 2px
               .inline
                 font-family: 'Lato-Regular'
                 a
-                  color: $blue
+                  color: #6BB444
+                  text-decoration: none
+                  &:hover
+                    text-decoration: underline
+        .payment
+          .title
+            padding-top: 20px
         .choose_payment
           .or
             +grid(2)
-            padding-top: 30px
+            padding-top: 50px
             text-align: center
             span
-              font-family: Lato-Bold
-              font-size: 22px
+              font-family: "Lato-Regular"
+              font-size: 18px
+              text-transform: uppercase
+              color: #666
           .cc, .boleto
             +grid(7)
+            width: auto
+            span
+              font-family: "Lato-Bold"
+              font-size: 18px
+              color: #666666 
+              margin-bottom: 10px
+              display: block           
             a
+              @include border-radius(10px)
+              background: #64CB64
               display: block
-              background: $ed_gryn
-              padding: 20px 10px 0px 30px
-              @include border-radius(5px)
-              font-size: 15px
-              font-family: Lato-Regular
-              color: black
-              text-transform: uppercase
-              height: 65px
+              height: 55px
+              padding: 0
+              margin-bottom: 8px
+              width: 200px
               img
-                float: left
+                float: right
+                margin-top: 18px
+                margin-right: 8px
               span
                 float: left
-                margin-top: 15px
+                margin-top: 23px
                 margin-left: 20px
+                font-family: "Lato-Bold"
+                font-size: 15px
+                text-transform: uppercase 
+                color: #fff            
           .cc
             +alpha
             +omega
           .boleto
             +omega
-            .boleto_icon
-              margin-top: -5px
-            .cc_icon
-              margin-left: 10px
+            span
+              margin-left: 15px
+            a
+              span
+                margin-left: 30px
+              .boleto_icon
+                margin-top: 16px
+                margin-right: 25px

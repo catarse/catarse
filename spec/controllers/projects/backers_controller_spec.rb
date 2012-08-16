@@ -28,41 +28,11 @@ describe Projects::BackersController do
     end
 
     context "with user" do
-      it "when payment via MoIP" do
-        MoIP::Client.stubs(:checkout).returns({"Token" => 'ABCD'})
-        request.session[:user_id]=@user_backer.id
-
-        @user_backer.full_name.should be_nil
-        @user_backer.address_zip_code.should be_nil
-        @user_backer.phone_number.should be_nil
-
-        @backer.update_attributes({:value => 10, :confirmed => false})
-        put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id, :user => {
-          :full_name => 'Lorem Ipsum',
-          :email => 'lorem@lorem.com',
-          :address_zip_code => '33600-999',
-          :address_street => 'R. Ipsum',
-          :address_number => '666',
-          :address_complement => 'House',
-          :address_city => 'Some City',
-          :address_state => 'LP',
-          :phone_number => '(90) 9999-9999'
-        } }
-
-        @user_backer.reload
-
-        @user_backer.full_name.should_not be_nil
-        @user_backer.address_zip_code.should_not be_nil
-        @user_backer.phone_number.should_not be_nil
-
-        request.session[:_payment_token].should == 'ABCD'
-        response.should be_redirect
-      end
-
       context "credits" do
         it "when user don't have credits enough" do
           request.session[:user_id]=@user_backer.id
-          @user_backer.update_attribute(:credits, 8)
+          @user_backer.credits = 8
+          @user_backer.save
           @backer.update_attributes({:value => 10, :credits => true, :confirmed => false})
 
           put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
@@ -79,7 +49,8 @@ describe Projects::BackersController do
 
         it "when user have credits enough" do
           request.session[:user_id]=@user_backer.id
-          @user_backer.update_attribute(:credits, 100)
+          @user_backer.credits = 100
+          @user_backer.save
           @backer.update_attributes({:value => 10, :credits => true, :confirmed => false})
 
           put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
@@ -136,7 +107,7 @@ describe Projects::BackersController do
       context "when can't back project" do
         it "when project is not visible, should redirect" do
           request.session[:user_id]=@user.id
-          @project.update_attribute :visible, false
+          @project.update_attributes({ visible: false })
           @project.reload
           get :new, {:locale => :pt, :project_id => @project.id}
 
@@ -145,7 +116,7 @@ describe Projects::BackersController do
 
         it "when project expired, should redirect" do
           request.session[:user_id]=@user.id
-          @project.update_attribute :expires_at, 1.day.ago
+          @project.update_attributes({ expires_at: 1.day.ago })
           @project.reload
           get :new, {:locale => :pt, :project_id => @project.id}
 
@@ -154,7 +125,7 @@ describe Projects::BackersController do
 
         it "when project is rejected, should redirect" do
           request.session[:user_id]=@user.id
-          @project.update_attribute :rejected, true
+          @project.update_attributes({ rejected: true })
           @project.reload
           get :new, {:locale => :pt, :project_id => @project.id}
 
@@ -201,7 +172,8 @@ describe Projects::BackersController do
 
     context "with admin user" do
       before do
-        @user.update_attribute :admin, true
+        @user.admin = true
+        @user.save
         @user.reload
       end
 
@@ -210,7 +182,7 @@ describe Projects::BackersController do
 
     context "with project owner user" do
       before do
-        @project.update_attribute :user, @user
+        @project.update_attributes({ user: @user })
         @project.reload
       end
 

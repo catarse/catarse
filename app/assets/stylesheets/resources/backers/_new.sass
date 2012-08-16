@@ -7,35 +7,58 @@
         .title
           +grid(16)
           +alpha
+          width: 600px
           padding-bottom: 40px
           h1
             color: $ultra_gryn
-            font-family: "Lato-Regular"
-            font-size: 28px
+            font-family: "Lato-Bold"
+            font-size: 24px
             padding: 5px 0
           h2
-            color: rgba($ultra_gryn, 0.7)
-            font-family: Arial
-            font-size: 18px
+            color: #333333
+            font-family: "Lato-Regular"
+            font-size: 14px
+            padding-bottom: 20px
+            border-bottom: 1px dotted #CCCCCC
         #back_options
           +grid(11)
           +alpha
+          width: 600px
           #backer_form
+            .simbol
+              float: left
+              width: 30px
+              margin-top: -55px
+              p
+                color: #6BB444
+                font-family: "Lato-Regular"
+                font-size: 28px
             .inline-hints
               font-family: "Lato-Regular"
-              font-size: 16px
-              color: rgba($ultra_gryn, 0.9)
+              font-size: 14px
+              color: #333333
+              width: 180px
+              float: right
+              line-height: 18px
+              margin-top: 13px
+              margin-right: 7px
             label
               font-family: "Lato-Regular"
               font-size: 18px
               display: block
+              color: #333333
+              margin-bottom: 12px
             input[type="text"]
-              height: 60px
-              width: 600px
+              height: 55px
+              width: 300px
               font-size: 38px
               padding-right: 20px
               padding-left: 20px
               font-family: 'Lato-Bold'
+              font-size: 28px
+              color: #666666
+              margin-left: 50px
+              @include border-radius(10px)
             .alert-info
               margin-top: 20px
               label
@@ -51,53 +74,105 @@
               padding-left: 0 !important
               legend
                 float: left
-                border-bottom: none
+                border-bottom: dotted 1px #ccc
                 margin-top: 40px
-                background: url($images_path+'recompensa24x20.png') left top no-repeat
+                background: url($images_path+'gift.png') 10px top no-repeat
                 label
-                  padding-left: 34px
+                  padding-left: 50px
                   font-family: 'Lato-Regular'
                   color: $ultra_gryn
-                  font-size: 24px
+                  font-size: 22px
+                  padding-top: 7px
+                  margin-bottom: 12px
               ol
                 float: left
                 li.choice
-                  padding: 30px 20px 25px
-                  padding-left: 34px
+                  padding: 20px 10px 10px 30px
                   margin-bottom: 25px
-                  @include box-shadow(rgba(black, 0.3) 0 0 3px)
-                  @include border-radius(5px)
-                  background: rgba($minimal_white, 0.3)
+                  margin-right: 10px
+                  @include border-radius(10px)
+                  border: solid 1px #ccc
+                  width: 500px
+                  background: #FCFCFC
+                  float: right
+                  cursor: pointer
+                  label
+                    margin-bottom: 5px
+                    input[type="radio"]
+                      margin-left: -64px
+                      margin-top: 12px
+                      float: left
                   &.selected
                     background: rgba($light_green, 0.2)
-                    @include box-shadow(rgba(black, 0.6) 0 0 3px)
                   .reward_minimum_value
-                    color: $green
+                    color: #666666
                     font-family: 'Lato-Regular'
-                    font-size: 20px
-                    padding-bottom: 10px
+                    font-size: 24px
+                    padding-bottom: 5px
                   .reward_description
-                    font-family: Arial
-                    font-size: 15px
-                    line-height: 130%
+                    font-family: 'Lato-Regular'
+                    font-size: 14px
+                    line-height: 18px
+            #backer_credits_input
+              .inline-hints
+                float: none
+                display: block
+                width: 80%
             #backer_anonymous_input
-              margin: 20px 0
+              margin: 0px
               font-size: 14px
+              label
+                font-size: 16px
+                color: #333
+                font-family: 'Lato-Bold'
+                float: right
+                padding: 15px 16px
+                width: 510px
+                margin-right: 10px
+                background: #e0f5e0
+                @include border-radius(10px)
               input
                 display: inline
                 margin-right: 10px
                 vertical-align: top
+        .alert
+          background: #e0f5e0
+          @include border-radius(10px)
+          color: #333333
+          float: right
+          border: none
+          font-family: "Lato-Regular"
+          font-size: 14px
+          line-height: 18px
+          margin-bottom: 20px
+          margin-right: 10px
+          margin-top: -26px
+          padding: 20px 40px
+          text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
+          width: 462px
         #backer_submit
-          width: 100%
+          width: 300px
+          height: 55px
+          border-radius: 15px
+          @include box-shadow(0px)
+          margin: 12px auto 0px
+          float: none
+          border: none
+          display: block
+          background: #64CB64
+          font-family: "Lato-Regular"
+          font-size: 15px
+          text-transform: uppercase
+        
         #back_info
           +grid(5)
-          +omega
-          img.project_image
-            @include box-shadow(rgba(black, 0.4) 1px 1px 3px)
+          float: right
+          margin-top: -80px
+          +omega          
           .project_name
-            padding-top: 20px
             font-family: 'Lato-Bold'
             font-size: 18px
+            margin-bottom: 15px
             a
               color: black
               text-decoration: none
@@ -105,8 +180,8 @@
               &:hover
                 color: $pink
           .project_owner
-            padding-top: 5px
-            padding-bottom: 5px
+            padding-top: 12px
+            padding-bottom: 8px
             font-family: 'Lato-Regular'
             font-size: 14px
             a
@@ -120,19 +195,36 @@
             font-size: 14px
             padding-bottom: 20px
         .back_faq
+          margin-bottom: 20px
+          h2
+            border-bottom: 1px dotted #CCCCCC
+            color: #333333
+            font-family: "Lato-Regular"
+            font-size: 22px
+            margin-bottom: 20px
+            padding-bottom: 8px
+            text-transform: lowercase
+            margin-top: 30px
           h3
             font-family: 'Lato-Bold'
-            font-size: 16px
-            padding-bottom: 8px
-            color: rgba(black, 0.8)
+            font-size: 14px
+            padding-bottom: 15px
+            color: #333333
             text-decoration: none
             cursor: pointer
+            line-height: 21px
+            padding-left: 16px
             @include transition(all, 0.5s)
+            background: url($images_path+'bullet-green.png') left 5px no-repeat 
             &:hover
-              color: $pink
+              color: #64CB64
           p
             padding-bottom: 30px
             font-family: Arial
-            line-height: 130%
-            font-size: 14px
+            line-height: 18px
+            font-size: 12px
+            padding-left: 17px
             color: rgba(black, 0.6)
+            a
+            &:hover
+              color: #64CB64

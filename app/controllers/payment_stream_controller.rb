@@ -18,8 +18,8 @@ class PaymentStreamController < ApplicationController
       backer.build_payment_detail.update_from_service if backer
       session[:_payment_token] = nil
     end
-
     @project = Project.find session[:thank_you_id]
+    #@project = Project.last
     @title = t('payment_stream.thank_you.title')
     session[:thank_you_id] = nil
   end

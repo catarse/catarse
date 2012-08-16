@@ -6,9 +6,13 @@
         h1= t('.you_are_about_html', :link => link_to(@project.name, project_path(@project)))
         #review_text
           - if @backer.reward
-            = t('.review_with_reward_html', :value => @backer.display_value, :reward => @backer.reward.description)
+            .review_content
+              = t('.review_with_reward_html', :value => @backer.display_value)
+            .reward
+              = @backer.reward.description
           - else
-            = t('.review_without_reward_html', :value => @backer.display_value)
+            .review_content
+              = t('.review_without_reward_html', :value => @backer.display_value)
       .clearfix
       .title
         h1= t('.title')
@@ -45,20 +49,29 @@
               = form.actions do
                 .bootstrap-twitter
                   = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), :disabled => true, :class => 'btn', :id => 'user_submit'
+
           #payment.hide
             .title
               h1= t('.choose_payment')
+              h2= t('.choose_payment_subtitle')              
             .choose_payment
-              .cc
-                = link_to 'javascript:void(0);', :"data-payment_method_url" => pay_paypal_path(@backer), :method => :get, :class => 'payment_link' do
-                  = image_tag 'catarse/cc_icon.png'
-                  span= t('.choose_credit_card')
-                .clearfix
-              .or
-                span= t('or')
-              .boleto
-                = link_to checkout_project_backer_path(@backer.project, @backer), :method => :put do
-                  = image_tag 'catarse/boleto_icon.png', :class => 'boleto_icon'
-                  = image_tag 'catarse/cc_icon.png', :class => 'cc_icon'
+              - if defined?(CatarsePaypalExpress)
+                .cc
+                  span= t('.choose_credit_card')             
+                  = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_paypal_express.payment_pay_paypal_express_path(@backer), :method => :get, :class => 'payment_link' do
+                    p
+                      span= t('.pay_with')                
+                    = image_tag 'catarse/icon-paypal.png'
+                  = image_tag 'catarse/paypal-choice.png' 
+                  .clearfix
+                .or
+                  span= t('or')
+              - if defined?(CatarseMoip)        
+                .boleto
                   span= t('.choose_boleto')
+                  = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_moip.pay_payment_moip_path(@backer), :method => :get, :class => 'payment_link' do
+                    p
+                      span= t('.pay_with')
+                    = image_tag 'catarse/icon-moip.png', :class => 'boleto_icon'
+                  = image_tag 'catarse/moip-choice.png'
     .clearfix

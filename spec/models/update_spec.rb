@@ -17,4 +17,16 @@ describe Update do
     subject{ Update.create!(:user => Factory(:user), :project => Factory(:project), :comment => "this is a comment\n") }
     its(:comment_html){ should == "<p>this is a comment</p>" }
   end
+
+  describe ".notify_backers" do
+    before do
+      @project = Factory(:project)
+      backer = Factory(:backer, :confirmed => true, :project => @project)
+      @project.reload
+    end
+    it "should send email to backers" do
+      update = Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment")
+      ActionMailer::Base.deliveries.should_not be_empty
+    end
+  end
 end

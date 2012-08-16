@@ -24,7 +24,7 @@ describe PaymentDetail do
   describe "#update_from_service" do
     context "when PayPal" do
       before do
-        @backer.update_attribute(:payment_method, 'PayPal')
+        @backer.update_attributes(payment_method: 'PayPal')
         @backer.reload
       end
 
@@ -71,7 +71,7 @@ describe PaymentDetail do
 
     context "when MoIP" do
       before do
-        @backer.update_attribute(:payment_method, 'MoIP')
+        @backer.update_attributes({payment_method: 'MoIP'})
         @backer.reload
       end
 
