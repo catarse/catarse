@@ -19,6 +19,7 @@ class Backer < ActiveRecord::Base
   scope :can_refund, where(:can_refund => true)
   scope :within_refund_deadline, where("date(current_timestamp) <= date(created_at + interval '180 days')")
   after_create :define_key, :define_payment_method
+  attr_protected :confirmed
 
   def define_key
     self.update_attributes({ key: Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s })
@@ -42,7 +43,9 @@ class Backer < ActiveRecord::Base
   end
 
   def confirm!
-    update_attributes({ confirmed: true, confirmed_at: Time.now })
+    self.confirmed = true
+    self.confirmed_at = Time.now
+    self.save
     notify_confirmation
   end
 

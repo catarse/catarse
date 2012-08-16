@@ -9,7 +9,8 @@ describe Projects::BackersController do
     @user = create(:user)
     @user_backer = create(:user, :name => 'Lorem Ipsum')
     @project = create(:project)
-    @backer = create(:backer, :value=> 10.00, :user => @user_backer, :confirmed => true, :project => @project)
+    @backer = create(:backer, :value=> 10.00, :user => @user_backer, :project => @project)
+    @backer.confirm!
   end
 
   describe "PUT checkout" do
@@ -33,7 +34,9 @@ describe Projects::BackersController do
           request.session[:user_id]=@user_backer.id
           @user_backer.credits = 8
           @user_backer.save
-          @backer.update_attributes({:value => 10, :credits => true, :confirmed => false})
+          @backer.confirmed = false
+          @backer.save
+          @backer.update_attributes({:value => 10, :credits => true})
 
           put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
 
@@ -51,7 +54,10 @@ describe Projects::BackersController do
           request.session[:user_id]=@user_backer.id
           @user_backer.credits = 100
           @user_backer.save
-          @backer.update_attributes({:value => 10, :credits => true, :confirmed => false})
+          @backer.update_attributes({:value => 10, :credits => true})
+          @backer.confirmed = true
+          @backer.save!
+          @backer.reload
 
           put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
 
