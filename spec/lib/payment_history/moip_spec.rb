@@ -108,7 +108,8 @@ describe PaymentHistory::Moip do
 
       context "with not confirmed backer and authorization request" do
         before(:each) do
-          @backer.update_attributes({ confirmed: false })
+          @backer.confirmed = false
+          @backer.save
         end
 
         it 'should confirm and update paymend detail' do
