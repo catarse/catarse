@@ -67,13 +67,11 @@ feature "Pending Backers" do
 
     verify_translations
 
-    find("#confirmed__#{backer.id}")[:checked].should == "true"
     find("#anonymous__#{backer.id}")[:checked].should == nil
     find("#refunded__#{backer.id}")[:checked].should == "true"
 
     backer.reload
     backer.user.should == other_user
-    backer.confirmed.should == true
     backer.anonymous.should == false
     backer.refunded.should == true
 
