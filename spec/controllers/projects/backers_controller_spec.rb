@@ -2,14 +2,15 @@ require 'spec_helper'
 
 describe Projects::BackersController do
   render_views
+  let(:failed_project){ Factory(:project, :finished => true, :successful => false) }
 
   subject{ response }
 
   before do
-    @user = create(:user)
-    @user_backer = create(:user, :name => 'Lorem Ipsum')
-    @project = create(:project)
-    @backer = create(:backer, :value=> 10.00, :user => @user_backer, :confirmed => true, :project => @project)
+    @user = Factory(:user)
+    @user_backer = Factory(:user, :name => 'Lorem Ipsum')
+    @project = Factory(:project)
+    @backer = Factory(:backer, :value=> 10.00, :user => @user_backer, :confirmed => true, :project => @project)
   end
 
   describe "PUT checkout" do
@@ -31,8 +32,6 @@ describe Projects::BackersController do
       context "credits" do
         it "when user don't have credits enough" do
           request.session[:user_id]=@user_backer.id
-          @user_backer.credits = 8
-          @user_backer.save
           @backer.update_attributes({:value => 10, :credits => true, :confirmed => false})
 
           put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
@@ -40,7 +39,7 @@ describe Projects::BackersController do
           @user_backer.reload
           @backer.reload
 
-          @user_backer.credits.to_i.should == 8
+          @user_backer.credits.to_i.should == 0
           @backer.confirmed.should be_false
 
           request.flash[:failure].should == I18n.t('projects.backers.checkout.no_credits')
@@ -49,8 +48,8 @@ describe Projects::BackersController do
 
         it "when user have credits enough" do
           request.session[:user_id]=@user_backer.id
-          @user_backer.credits = 100
-          @user_backer.save
+
+          Factory(:backer, :value=> 100.00, :user => @user_backer, :confirmed => true, :project => failed_project)
           @backer.update_attributes({:value => 10, :credits => true, :confirmed => false})
 
           put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }

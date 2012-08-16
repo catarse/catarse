@@ -1,17 +1,6 @@
 require 'spec_helper'
 
 describe Backer do
-  it "should not add backer value as credits for user if could not be refunded" do
-    u = Factory(:user)
-    u.save
-    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => false, :user => u)
-    b.save
-    u.credits.should == 0
-    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => false, :user => u)
-    b2.save
-    u.credits.should == 0
-  end
-
   it "should not add backer value as credits for user if not confirmed" do
     u = Factory(:user)
     u.save
