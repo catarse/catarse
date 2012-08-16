@@ -54,6 +54,7 @@ feature "New Project Feature", :driver => :selenium do
 
     verify_translations
 
+    sleep 2
     p = Project.first
     p.name.should == 'test project'
     p.expires_at.utc.should == (Time.zone.parse('2012-12-21') + (23.hours + 59.minutes + 59.seconds)).utc
