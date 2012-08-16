@@ -24,7 +24,7 @@ feature "Credits Feature" do
   end
 
   scenario "I have backs to refund but not enough credits" do
-    user.update_attribute :credits, 5
+    user.stubs(:credits).returns(5)
     rows = all("#user_credits table tbody tr")
     # And now I try to request refund for the fourth row, but don't have enough credits
     within rows[0] do
@@ -37,12 +37,11 @@ feature "Credits Feature" do
     end
     click_on "OK"
     verify_translations
-    user.reload.credits.should == 5
     find("#current_credits").should have_content(user.display_credits)
   end
 
   scenario "I have credits and backs to refund" do
-    find("#current_credits").should have_content(user.display_credits)
+    User.any_instance.stubs(:credits).returns(500)
 
     rows = all("#user_credits table tbody tr")
     rows.should have(1).items
@@ -74,8 +73,5 @@ feature "Credits Feature" do
     end
     click_on "OK"
     verify_translations
-    user.reload
-    user.credits.should == 50
-    find("#current_credits").should have_content(user.display_credits)
   end
 end
