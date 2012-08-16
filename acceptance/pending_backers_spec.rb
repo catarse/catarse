@@ -72,18 +72,5 @@ feature "Pending Backers" do
     backer.user.should == other_user
     backer.anonymous.should == false
     backer.refunded.should == true
-
-    visit project_path(project)
-    verify_translations
-    click_on "Apoiadores"
-    verify_translations
-
-    within "#project_backers" do
-      list = all("li")
-      list.should have(1).items
-      list[0].find("a")[:href].should match(/\/users\/#{other_user.to_param}/)
-    end
-
   end
-
 end
