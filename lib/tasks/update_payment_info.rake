@@ -32,7 +32,6 @@ namespace :payment do
             puts "preparando para extornar o apoio ---> #{backer.inspect}"
             backer.update_attribute :refunded, true
             backer.update_attribute :requested_refund, true
-            backer.user.update_credits
           end
         end
       rescue

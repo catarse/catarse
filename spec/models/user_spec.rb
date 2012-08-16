@@ -121,8 +121,8 @@ describe User do
 
   describe ".backer_totals" do
     before do
-      Factory(:backer, :value => 100)
-      Factory(:backer, :value => 50)
+      Factory(:backer, :value => 100, :credits => false, :project => successful_project)
+      Factory(:backer, :value => 50, :credits => false, :project => successful_project)
       user = Factory(:backer, :value => 25, :project => failed_project).user
       user.credits = 10.0
       user.save!
@@ -186,7 +186,7 @@ describe User do
     its(:twitter){ should == 'dbiazus' }
   end
 
-  describe "#calculate_credits" do
+  describe "#credits" do
     before do
       @u = Factory(:user)
       Factory(:backer, :credits => false, :value => 100, :user_id => @u.id, :project => successful_project)
@@ -197,7 +197,7 @@ describe User do
       Factory(:backer, :credits => true, :value => 100, :user_id => @u.id, :project => failed_project)
       Factory(:backer, :credits => false, :requested_refund => true, :value => 200, :user_id => @u.id, :project => failed_project)
     end
-    subject{ @u.calculate_credits }
+    subject{ @u.credits }
     it{ should == 50.0 }
   end
 
@@ -249,8 +249,8 @@ describe User do
 
   describe "#merge_into!" do
     it "should merge into another account, taking the credits, backs, projects and notifications with it" do
-      old_user = Factory(:user, :credits => 50)
-      new_user = Factory(:user, :credits => 20)
+      old_user = Factory(:user)
+      new_user = Factory(:user)
       backed_project = Factory(:project)
       old_user_back = backed_project.backers.create!(:user => old_user, :value => 10)
       new_user_back = backed_project.backers.create!(:user => new_user, :value => 10)
@@ -259,8 +259,6 @@ describe User do
       old_user_notification = old_user.notifications.create!(:text => "Foo bar")
       new_user_notification = new_user.notifications.create!(:text => "Foo bar")
 
-      old_user.credits.should == 50
-      new_user.credits.should == 20
       old_user.backs.should == [old_user_back]
       new_user.backs.should == [new_user_back]
       old_user.projects.should == [old_user_project]
@@ -273,8 +271,6 @@ describe User do
       new_user.reload
 
       old_user.primary.should == new_user
-      old_user.credits.should == 0
-      new_user.credits.should == 70
       old_user.backs.should == []
       new_user.backs.order(:created_at).should == [old_user_back, new_user_back]
       old_user.projects.should == []

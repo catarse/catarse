@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Credits::Refund do
+  let(:failed_project){ Factory(:project, :finished => true, :successful => false) }
   before(:each) do
     @backer = Factory(:backer, value: 20)
   end
@@ -14,9 +15,7 @@ describe Credits::Refund do
     end
 
     it do
-      @backer.user.credits = 50
-      @backer.user.save
-      @backer.user.reload
+      Factory(:backer, :value => 30, :user_id => @backer.user.id, :project_id => failed_project.id)
       subject.expects(:check_refunded)
       subject.expects(:check_requested)
       subject.expects(:check_total_of_credits)
@@ -32,9 +31,6 @@ describe Credits::Refund do
 
     context "when user doesn't have the necessary value" do
       it "should raise a exception with message" do
-        @backer.user.credits = 5
-        @backer.user.save
-        @backer.user.reload
 
         lambda {
           subject.make_request!

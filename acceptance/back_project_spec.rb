@@ -192,7 +192,8 @@ feature "Back project" do
   scenario "As a user with credits, I want to back a project using my credits" do
   
     fake_login
-    user.update_attribute :credits, 10
+    failed_project = Factory(:project, :finished => true, :successful => false)
+    Factory(:backer, :value => 10, :project => failed_project, :user => user)
     
     visit project_path(@project)
     verify_translations
@@ -204,13 +205,13 @@ feature "Back project" do
     fill_in "Com quanto você quer apoiar?", with: "10"
     check "Quero usar meus créditos para este apoio."
   
-    Backer.count.should == 0
+    Backer.count.should == 1
   
     click_on "Revisar e realizar pagamento"
     verify_translations
   
-    Backer.count.should == 1
-    backer = Backer.first
+    Backer.count.should == 2
+    backer = Backer.last
     backer.payment_method.should == "MoIP"
   
     current_path.should == review_project_backers_path(@project)
