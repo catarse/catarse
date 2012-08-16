@@ -201,9 +201,9 @@ pt:
       updates: "%d %b %Y"
     pm: pm
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
-    activemodel:
-      errors:
-        <<: *errors
-    activerecord:
-      errors:
-        <<: *errors
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors

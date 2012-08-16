@@ -21,11 +21,11 @@ class Backer < ActiveRecord::Base
   after_create :define_key, :define_payment_method
 
   def define_key
-    self.update_attribute :key, Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s
+    self.update_attributes({ key: Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s })
   end
 
   def define_payment_method
-    self.update_attribute :payment_method, 'MoIP'
+    self.update_attributes({ payment_method: 'MoIP' })
   end
 
   def price_in_cents
@@ -42,8 +42,8 @@ class Backer < ActiveRecord::Base
   end
 
   def confirm!
-    update_attribute :confirmed, true
-    update_attribute :confirmed_at, Time.now
+    update_attributes({ confirmed: true, confirmed_at: Time.now })
+    notify_confirmation
   end
 
   def reward_must_be_from_project
@@ -93,14 +93,17 @@ class Backer < ActiveRecord::Base
     raise I18n.t('credits.cannot_cancel_refund_reques') unless self.requested_refund
     raise I18n.t('credits.refund.refunded') if self.refunded
     raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
-    self.update_attribute :requested_refund, false
-    self.user.update_attribute :credits, self.user.credits + self.value    
+    self.update_attributes({ requested_refund: false })
+    self.user.update_attributes({ credits: (self.user.credits + self.value) })
   end
 
   def generate_credits!
     return if self.can_refund
-    self.user.update_attribute :credits, self.user.credits + self.value
-    self.update_attribute :can_refund, true
+
+    self.user.credits = (self.user.credits + self.value)
+    self.user.save
+
+    self.update_attributes({ can_refund: true })
   end
 
   def refund_deadline
@@ -131,5 +134,14 @@ class Backer < ActiveRecord::Base
       json_attributes.merge!({:reward => reward})
     end
     json_attributes
+  end
+
+  protected
+  def notify_confirmation
+    text = I18n.t('notifications.backers.to_backer.text', :backer_name => user.display_name, :backer_value => display_value, :reward => "#{reward.description if reward}", :project_name => project.name)
+    Notification.create! :user => user,
+                         :email_subject => I18n.t('notifications.backers.to_backer.subject', :project => project.name),
+                         :email_text => text,
+                         :text => text
   end
 end

@@ -1,5 +1,4 @@
 class CuratedPage < ActiveRecord::Base
-
   has_many :projects_curated_pages
   has_many :projects, :through => :projects_curated_pages
 

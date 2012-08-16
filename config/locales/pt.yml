@@ -359,11 +359,7 @@ pt:
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
       checkout:
-        moip_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o MoIP. Por favor, tente novamente."
         no_credits: "Você não possui créditos suficientes para realizar este apoio."
-        paypal_cancel: "Seu pagamento no PayPal foi cancelado. Por favor, tente novamente."
-        paypal_description: "Apoio para o projeto %{project_name} no valor de %{value}"
-        paypal_error: "Ooops. Ocorreu um erro ao enviar seu pagamento para o PayPal. Por favor, tente novamente."
         success: "Seu apoio foi realizado com sucesso. Muito obrigado!"
       new:
         cannot_back: "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
@@ -381,7 +377,7 @@ pt:
           important_html: "<p>O uso do PayPal é destinado preferencialmente para apoios internacionais. Isto porque ao realizar o pagamento pelo PayPal, você tem apenas 60 dias para receber seu dinheiro de volta sem taxas.</p><p>Caso você possa realizar o pagamento normal pelo MoIP, nós recomendamos.</p><p>Mas se você não pode, não se preocupe: você sempre poderá receber seu dinheiro de volta. Apenas, caso o estorno seja realizado mais de 60 dias depois do seu pagamento, você terá que pagar a taxa do PayPal, que é de 5,4% + R$ 0,60 por transação.</p>"
           submit: "Efetuar pagamento pelo PayPal"
           title: "Quer fazer pagamento internacional?"
-        review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa: <span class='reward'>%{reward}</span>"
+        review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa:"
         review_without_reward_html: "Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio."
         submit:
           credits: "Confirmar apoio com créditos"
@@ -389,9 +385,11 @@ pt:
         subtitle: "Último passo para fazer a diferença e se tornar parte deste projeto."
         title: "Preencha e revise seus dados"
         choose_payment: "Como você quer pagar?"
+        choose_payment_subtitle: "Selecione abaixo uma forma de pagamento"
         choose_credit_card: "Pagamento internacional"
         choose_boleto: "Pagamento nacional"
         you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
+        pay_with: "Pagar com"
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
     form:
@@ -625,3 +623,52 @@ pt:
       weblink: "Ver na web"
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
+  notifications:
+    backers:
+      to_backer:
+        subject: "Obrigado! Seu apoio para %{project} foi confirmado!"
+        text: "Sucesso! <br />Seu apoio acabou de ser confirmado.<br /><br />Confira: %{backer_name}<br />%{backer_value}<br />%{reward}<br /><br />%{project_name}"
+    updates:
+      subject: "Se liga! Atualização de %{project_name} por %{project_owner}: %{update_title}"
+      text: "%{update_title}<br />%{update_text}<br />Comentários? Mande ver na página do projeto: <a href='%{project_link}'>%{project_name}</a>."
+  adm:
+    users:
+      index:
+        title: "Gerenciamento de apoiadores"
+        menu: "Apoiadores"
+        credits: "Créditos"
+        credits_view: "Créditos calculados"
+        id: Id
+        key: Chave
+        submit: Pesquisar
+        has_credits_difference: Discrepância nos créditos
+        total_backed: Total de apoios
+        total_backers: apoiadores
+        total_backs: apoios
+        total_users: usuários
+        total_credits: créditos
+        total_credits_view: créditos calculados
+        user: Usuário
+        value: Valor
+        payer_email: Email do pagamento
+    backers:
+      index:
+        title: "Gerenciamento de apoios"
+        menu: "Apoios"
+        anonymous: Anônimo?
+        confirmed: Confirmado?
+        credits: "Usou créditos?"
+        id: Id
+        key: Chave
+        no_backers: "Nenhum apoiador encontrado."
+        project: Projeto
+        refunded: "Estorno realizado?"
+        requested_refund: "Solicitou estorno?"
+        reward: Recompensa
+        submit: Pesquisar
+        total_backed: arrecadados
+        total_backers: apoiadores
+        total_backs: apoios
+        total_users: usuários
+        user: Usuário
+        value: Valor

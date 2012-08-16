@@ -143,10 +143,18 @@ CATARSE.BackersReviewView = Backbone.View.extend({
       $('#international_submit').attr('disabled', !$('#accept_international').is(':checked'))
     })
 
+    var can_submit_to_moip = true;
+
     $('a.payment_link').click(function(event){
       event.preventDefault();
       $('input#payment_method_url').val($(this).data('payment_method_url'));
-      $('form#review_form')[0].submit();
+      if($(this).parent().hasClass('boleto') && can_submit_to_moip) {
+        $('form#review_form')[0].submit();
+        can_submit_to_moip = false;
+      } else if(!$(this).parent().hasClass('boleto')) {
+        $('form#review_form')[0].submit();
+      }
     });
+
   }
 })

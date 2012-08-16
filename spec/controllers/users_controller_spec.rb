@@ -60,7 +60,7 @@ describe UsersController do
         end
 
         it "when backer cannot refunded" do
-          backer.update_attribute :refunded, true
+          backer.update_attributes({ refunded: true })
           backer.reload
           post :request_refund, { id: user.id, back_id: backer.id }
 
@@ -68,7 +68,7 @@ describe UsersController do
         end
 
         it "when backer already requested to refund" do
-          backer.update_attribute :requested_refund, true
+          backer.update_attributes({ requested_refund: true })
           backer.reload
           post :request_refund, { id: user.id, back_id: backer.id }
 

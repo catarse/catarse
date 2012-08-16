@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
 
+  delegate  :display_name, :display_image, :short_name, 
+            :medium_name, :display_credits, :display_total_of_backs,
+            :to => :decorator
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
                   :password,
@@ -52,11 +56,12 @@ class User < ActiveRecord::Base
   has_many :updates
   has_many :notifications
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
+  has_one :user_total
   has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
-  belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id
+  belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id, :primary_key => :id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
-  scope :most_backeds, lambda {
+  scope :most_backeds, ->{
     joins(:backs).select(
     <<-SQL
       users.id,
@@ -69,6 +74,13 @@ class User < ActiveRecord::Base
     order("count_backs desc").
     group("users.name, users.id, users.email")
   }
+  scope :by_email, ->(email){ where('email ~* ?', email) }
+  scope :by_payer_email, ->(email){  where('EXISTS(SELECT true FROM backers JOIN payment_details ON backers.id = payment_details.backer_id WHERE backers.user_id = users.id AND payment_details.payer_email ~* ?)', email) }
+  scope :by_name, ->(name){ where('name ~* ?', name) }
+  scope :by_id, ->(id){ where('id = ?', id) }
+  scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
+  scope :has_credits, joins(:user_total).where('user_totals.credits > 0 OR users.credits > 0')
+  scope :has_credits_difference, joins(:user_total).where('coalesce(user_totals.credits, 0) <> coalesce(users.credits, 0)')
   before_save :fix_twitter_user
 
   def self.find_for_database_authentication(warden_conditions)
@@ -76,23 +88,25 @@ class User < ActiveRecord::Base
     where(conditions).where(:provider => 'devise').first
   end
 
+  def self.backer_totals
+    connection.select_one(
+      self.scoped.
+        joins(:user_total).
+        select('count(DISTINCT user_id) as users, count(*) as backers, sum(user_totals.sum) as backed, sum(user_totals.credits) as credits, sum(users.credits) as credits_table').
+        to_sql
+    ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
+  end
+
+  def decorator
+    UserDecorator.new(self)
+  end
+
   def admin?
     admin
   end
 
   def calculate_credits(sum = 0, backs = [], first = true)
-   # return sum if backs.size == 0 and not first
-   backs = self.backs.where(:confirmed => true, :requested_refund => false).order("created_at").all if backs == [] and first
-   back = backs.first
-   return sum unless back
-   sum -= back.value if back.credits
-   if back.project.finished?
-     unless back.project.successful?
-       sum += back.value
-       # puts "#{back.project.name}: +#{back.value}"
-     end
-   end
-   calculate_credits(sum, backs.drop(1), false)
+    user_total ? user_total.credits : 0.0
   end
 
   def facebook_id
@@ -100,7 +114,8 @@ class User < ActiveRecord::Base
   end
 
   def update_credits
-    self.update_attribute :credits, self.calculate_credits
+    self.credits = self.calculate_credits
+    self.save
   end
 
   def to_param
@@ -139,22 +154,6 @@ class User < ActiveRecord::Base
   end
   memoize :recommended_project
 
-  def display_name
-    name || nickname || I18n.t('user.no_name')
-  end
-
-  def short_name
-    truncate display_name, :length => 26
-  end
-
-  def medium_name
-    truncate display_name, :length => 42
-  end
-
-  def display_image
-    gravatar_url || image_url || '/assets/user.png'
-  end
-
   def total_backs
     backs.confirmed.not_anonymous.count
   end
@@ -171,14 +170,6 @@ class User < ActiveRecord::Base
 
   def remember_me_hash
     Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
-  end
-
-  def display_credits
-    number_to_currency credits, :unit => 'R$', :precision => 0, :delimiter => '.'
-  end
-
-  def display_total_of_backs
-    number_to_currency backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
   end
 
   def as_json(options={})

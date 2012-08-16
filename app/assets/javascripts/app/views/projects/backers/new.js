@@ -73,6 +73,8 @@ CATARSE.BackersNewView = Backbone.View.extend({
           var value = $('#backer_value').val()
           if(!(/^(\d+)$/.test(value)) || (parseInt(value) < minimum)){
             $('#backer_reward_id_0').attr("checked", true)
+            $('li.choice').removeClass('selected')
+            $('#backer_reward_id_0').parent().parent().addClass('selected')
           }
         }
       }

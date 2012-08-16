@@ -9,7 +9,8 @@ describe PaymentHistory::Moip do
     context "refunded request" do
       it 'should mark with refunded and update the user credits too' do
         backer = create(:backer, :value => 21.90, :confirmed => true, :refunded => false)
-        backer.user.update_attribute :credits, 21.90
+        backer.user.credits = 21.90
+        backer.user.save
         backer.reload
 
         moip = PaymentHistory::Moip.new(post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => PaymentHistory::Moip::TransactionStatus::REFUNDED}))
@@ -24,7 +25,8 @@ describe PaymentHistory::Moip do
     context "written_back request" do
       it 'should mark with refunded and update the user credits too' do
         backer = create(:backer, :value => 21.90, :confirmed => true, :refunded => false)
-        backer.user.update_attribute :credits, 21.90
+        backer.user.credits = 21.90
+        backer.user.save
         backer.reload
 
         moip = PaymentHistory::Moip.new(post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => PaymentHistory::Moip::TransactionStatus::WRITTEN_BACK}))
@@ -40,7 +42,7 @@ describe PaymentHistory::Moip do
 
       it 'should have a payment log in backer after receive request' do
         backer = create(:backer, :value => 21.90, :confirmed => false)
-        backer.update_attribute :key, 'ABCD'
+        backer.update_attributes({ key: 'ABCD' })
         backer.reload
 
         params = post_moip_params.merge!({:id_transacao => 'ABCD', :status_pagamento => PaymentHistory::Moip::TransactionStatus::AUTHORIZED})
@@ -62,11 +64,11 @@ describe PaymentHistory::Moip do
     context "workflow" do
       before(:each) do
         @backer = create(:backer, :value => 21.90)
-        @backer.update_attribute :key, 'ABCD'
+        @backer.update_attributes({ key: 'ABCD' })
         @backer.reload
 
         @backer_with_wrong_value = create(:backer, :value => 22.90)
-        @backer_with_wrong_value.update_attribute :key, 'ABCDE'
+        @backer_with_wrong_value.update_attributes({ key: 'ABCDE' })
         @backer_with_wrong_value.reload
 
         @params = post_moip_params
@@ -106,7 +108,7 @@ describe PaymentHistory::Moip do
 
       context "with not confirmed backer and authorization request" do
         before(:each) do
-          @backer.update_attribute :confirmed, false
+          @backer.update_attributes({ confirmed: false })
         end
 
         it 'should confirm and update paymend detail' do
