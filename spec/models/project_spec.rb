@@ -291,11 +291,7 @@ describe Project do
       project = Factory(:project, can_finish: true, finished: false, goal: 1000, expires_at: 1.day.ago)
       backer = Factory(:backer, project: project, user: user, value: 50)
       backer.confirm!
-      backer.reload
-      backer.can_refund.should be_false
       project.finish!
-      backer.reload
-      backer.can_refund.should be_true
       user.reload
       user.credits.should == 50
     end

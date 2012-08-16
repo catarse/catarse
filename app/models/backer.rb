@@ -100,15 +100,6 @@ class Backer < ActiveRecord::Base
     self.user.update_attributes({ credits: (self.user.credits + self.value) })
   end
 
-  def generate_credits!
-    return if self.can_refund
-
-    self.user.credits = (self.user.credits + self.value)
-    self.user.save
-
-    self.update_attributes({ can_refund: true })
-  end
-
   def refund_deadline
     created_at + 180.days
   end
