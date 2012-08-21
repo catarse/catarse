@@ -20,7 +20,7 @@ class Adm::UsersController < Adm::BaseController
   end
 
   def collection
-    @users ||= end_of_association_chain.includes(:user_total).page(params[:page])
+    @users ||= end_of_association_chain.order_by(params[:order_by] || 'user_totals.sum DESC').includes(:user_total).page(params[:page])
   end
 end
 

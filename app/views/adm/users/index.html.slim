@@ -1,71 +1,74 @@
 #page_content
   .container
-    .project_content
-      .title
-        h1= t('.title')
-      #pending_users
-        .bootstrap-form.clearfix
-          = form_for adm_users_path, :method => :get, :class => 'form-horizontal' do |f|
-            fieldset
-              .input
-                = f.label :by_id, t('.id')
-                = f.text_field :by_id, :class => 'input-small', :name => :by_id, :value => params[:by_id]
-              .input
-                = f.label :by_name, t('.name')
-                = f.text_field :by_name, :class => 'input-small', :name => :by_name, :value => params[:by_name]
-              .input
-                = f.label :by_email, t('.email')
-                = f.text_field :by_email, :class => 'input-small', :name => :by_email, :value => params[:by_email]
-              .input
-                = f.label :by_payer_email, t('.payer_email')
-                = f.text_field :by_payer_email, :class => 'input-small', :name => :by_payer_email, :value => params[:by_payer_email]
-              .input
-                = f.label :by_key, t('.key')
-                = f.text_field :by_key, :name => :by_key, :value => params[:by_key]
-              .bootstrap-twitter.input
-                .submit
-                  = f.submit t('.submit'), class: 'btn btn-success'
-            fieldset
-              .input.check
-                = check_box_tag :has_credits, true, params[:has_credits].present?
-                = f.label :has_credits, t('.credits')
-        .clearfix
-      .title
-        h2
-          strong= "#{@total_users} "
-          = t('.total_backers')
-          |  · 
-          strong= "#{number_to_currency @total_backed, :precision => 0} "
-          = t('.total_backed')
-          |  · 
-          strong= "#{number_to_currency @total_credits, :precision => 0} "
-          = t('.total_credits')
-        br
-        = paginate @users
-        br
-        - if @users.empty?
-          = t('.no_users')
-        - else
-          .bootstrap-twitter
-            table.table.table-striped
-              thead
-                tr
-                  th= t('.id')
-                  th= t('.user')
-                  th= t('.email')
-                  th 
-                    a href='#'= t('.total_backed')
-                  th 
-                    a href='#'= t('.credits')
-              tbody
-                - for user in @users do
-                  tr id=user.id class=cycle("even", "odd")
-                    td= user.id
-                    td= link_to user.name, adm_backers_path(:search => {:user_id_equals => user.id}), :target => '_blank'
-                    td= user.email
-                    td= user.user_total ? user.user_total.sum : 0
-                    td= user.credits
-        = paginate @users
-    .clearfix
-      
+    .title
+      h1= t('.title')
+    .filters
+      .bootstrap-form.clearfix
+        = form_for adm_users_path, :method => :get, :class => 'form-horizontal' do |f|
+          = f.hidden_field :order_by, :name => :order_by, :value => params[:order_by]
+          fieldset
+            .input
+              = f.label :by_id, t('.id')
+              = f.text_field :by_id, :class => 'input-small', :name => :by_id, :value => params[:by_id]
+            .input
+              = f.label :by_name, t('.name')
+              = f.text_field :by_name, :class => 'input-small', :name => :by_name, :value => params[:by_name]
+            .input
+              = f.label :by_email, t('.email')
+              = f.text_field :by_email, :class => 'input-small', :name => :by_email, :value => params[:by_email]
+            .input
+              = f.label :by_payer_email, t('.payer_email')
+              = f.text_field :by_payer_email, :class => 'input-small', :name => :by_payer_email, :value => params[:by_payer_email]
+            .input
+              = f.label :by_key, t('.key')
+              = f.text_field :by_key, :name => :by_key, :value => params[:by_key]
+            .bootstrap-twitter.input
+              .submit
+                = f.submit t('.submit'), class: 'btn btn-success'
+          fieldset
+            .input.check
+              = check_box_tag :has_credits, true, params[:has_credits].present?
+              = f.label :has_credits, t('.credits')
+      .clearfix
+    .data-table
+      h2
+        strong= "#{@total_users} "
+        = t('.total_backers')
+        |  · 
+        strong= "#{number_to_currency @total_backed, :precision => 0} "
+        = t('.total_backed')
+        |  · 
+        strong= "#{number_to_currency @total_credits, :precision => 0} "
+        = t('.total_credits')
+      br
+      = paginate @users
+      br
+      - if @users.empty?
+        = t('.no_users')
+      - else
+        .bootstrap-twitter
+          table.table.table-striped
+            thead
+              tr
+                th= t('.id')
+                th= t('.user')
+                th= t('.email')
+                th 
+                  a data-sort="user_totals.sum" href='#'= t('.total_backed')
+                  span.sort-order
+                th 
+                  a data-sort="user_totals.credits" href='#'= t('.credits')
+                  span.sort-order
+            tbody
+              - for user in @users do
+                tr id=user.id class=cycle("even", "odd")
+                  td= user.id
+                  td= link_to user.name, adm_backers_path(:search => {:user_id_equals => user.id}), :target => '_blank'
+                  td= user.email
+                  td= user.user_total ? user.user_total.sum : 0
+                  td= user.credits
+      = paginate @users
+
+  .clearfix
+    
 
