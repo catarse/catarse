@@ -12,8 +12,7 @@ class Adm::UsersController < Adm::BaseController
     @total_users = totals[:users].to_i
     @total_backs = totals[:backs]
     @total_backed = totals[:backed]
-    @total_credits_view = totals[:credits]
-    @total_credits_table = totals[:credits_table]
+    @total_credits = totals[:credits]
   end
 
   def set_title

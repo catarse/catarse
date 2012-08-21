@@ -29,9 +29,6 @@
               .input.check
                 = check_box_tag :has_credits, true, params[:has_credits].present?
                 = f.label :has_credits, t('.credits')
-              .input.check
-                = check_box_tag :has_credits_difference, true, params[:has_credits_difference].present?
-                = f.label :has_credits_difference, t('.has_credits_difference')
         .clearfix
       .title
         h2
@@ -41,11 +38,8 @@
           strong= "#{number_to_currency @total_backed, :precision => 0} "
           = t('.total_backed')
           |  · 
-          strong= "#{number_to_currency @total_credits_table, :precision => 0} "
+          strong= "#{number_to_currency @total_credits, :precision => 0} "
           = t('.total_credits')
-          |  · 
-          strong= "#{number_to_currency @total_credits_view, :precision => 0} "
-          = t('.total_credits_view')
         br
         = paginate @users
         br
@@ -59,9 +53,10 @@
                   th= t('.id')
                   th= t('.user')
                   th= t('.email')
-                  th= t('.total_backed')
-                  th= t('.credits')
-                  th= t('.credits_view')
+                  th 
+                    a href='#'= t('.total_backed')
+                  th 
+                    a href='#'= t('.credits')
               tbody
                 - for user in @users do
                   tr id=user.id class=cycle("even", "odd")
@@ -69,7 +64,6 @@
                     td= link_to user.name, adm_backers_path(:search => {:user_id_equals => user.id}), :target => '_blank'
                     td= user.email
                     td= user.user_total ? user.user_total.sum : 0
-                    td= user.credits
                     td= user.credits
         = paginate @users
     .clearfix
