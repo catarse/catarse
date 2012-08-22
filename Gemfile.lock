@@ -170,8 +170,8 @@ GEM
     foreigner (1.2.0)
       activerecord (>= 3.0.0)
     formatador (0.2.3)
-    formtastic (2.2.1)
-      actionpack (>= 3.0)
+    formtastic (2.1.1)
+      actionpack (~> 3.0)
     fssm (0.2.9)
     haml (3.1.6)
     has_scope (0.5.1)
@@ -470,7 +470,7 @@ DEPENDENCIES
   feedzirra
   fog
   foreigner
-  formtastic
+  formtastic (~> 2.1.1)
   has_scope
   has_vimeo_video (~> 0.0.5)
   http_accept_language
