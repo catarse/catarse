@@ -599,7 +599,7 @@ en:
       email_tooltip: "Click here to fill your email..."
       gravatar_hint_html: "Want to change your picture? Use %{link} with your email. It's as simple as uploading an image and works for other sites as well ;)"
       local_avatar: "My avatar"
-      submit_text: "Choose your picture: "
+      submit_text: "Choose your picture"
       submit: "Submit"
       my_data: "My profile"
       newsletter: "I want to receive news from Catarse via email"
