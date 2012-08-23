@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   extend ActiveSupport::Memoizable
 
+  mount_uploader :image_url, LogoUploader
+
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
   validates_length_of :bio, :maximum => 140
@@ -224,9 +226,9 @@ class User < ActiveRecord::Base
     provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
   end
 
-  # Returns a Gravatar URL associated with the email parameter
+  # Returns a Gravatar URL associated with the email parameter, uses local avatar if available
   def gravatar_url
     return unless email
-    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or "#{I18n.t('site.base_url')}/assets/user.png"}"
+    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=" + (image_url.to_s ? "#{I18n.t('site.base_url')}#{image_url}" : "#{I18n.t('site.base_url')}/assets/user.png")
   end
 end
