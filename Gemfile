@@ -41,7 +41,7 @@ gem "airbrake"
 gem 'mailchimp'
 
 # HTML manipulation and formatting
-gem 'formtastic'
+gem 'formtastic', "~> 2.1.1"
 gem "auto_html", '= 1.4.2'
 gem 'kaminari'
 gem 'rails_autolink', '~> 1.0.7'

@@ -5,6 +5,16 @@
     p= t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
     .clearfix
 #my_data
+  h1 = t('.local_avatar')
+  ul
+    li
+      .bootstrap-form
+        = semantic_form_for @user do |f|
+          = f.inputs do
+            p= f.input :image_url, :as => :file, :label => t('.submit_text')
+          = f.actions do
+            .bootstrap-twitter
+              p= f.action :submit, :button_html => {:value => t('.submit'), :class => 'btn'}
   h1= t('.my_data')
   ul
     li
