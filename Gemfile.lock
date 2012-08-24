@@ -93,6 +93,9 @@ GEM
       xpath (~> 0.1.4)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
+    catarse_mailchimp (0.0.1)
+      mailchimp
+      supermodel
     catarse_moip (0.1.1)
       moip_catarse (~> 1.0.6)
       rails (~> 3.2.6)
@@ -456,6 +459,7 @@ DEPENDENCIES
   cancan
   capybara (>= 1.0.1)
   carrierwave (= 0.5.8)
+  catarse_mailchimp
   catarse_moip (~> 0.1.1)
   catarse_paypal_express (~> 0.0.2)
   coffee-rails (~> 3.2.2)
@@ -481,7 +485,6 @@ DEPENDENCIES
   kaminari
   launchy
   mailcatcher
-  mailchimp
   maxim-sexy_pg_constraints
   meta_search (= 1.1.3)
   mocha (= 0.10.4)

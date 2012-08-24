@@ -13,16 +13,6 @@ class RegistrationsController < Devise::RegistrationsController
     resource.uid = Devise.friendly_token
     if resource.save
 
-      if resource.newsletter and resource.email.present?
-        begin
-          api = Mailchimp::API.new(MAILCHIMP_API_KEY)
-          api.list_batch_subscribe({ :id => MAILCHIMP_LIST_ID, :batch => [ { :EMAIL => resource.email } ]  })
-        rescue Exception => e
-          Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
-          Rails.logger.info "-----> #{e.inspect}"
-        end
-      end
-
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
