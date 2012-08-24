@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
+  begin
+    sync_with_mailchimp
+  rescue Exception => e
+    Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
+    Rails.logger.info "-----> #{e.inspect}"
+  end
 
   delegate  :display_name, :display_image, :short_name, 
             :medium_name, :display_credits, :display_total_of_backs,
