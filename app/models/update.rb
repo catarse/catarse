@@ -2,7 +2,6 @@ class Update < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
   validates_presence_of :user_id, :project_id, :comment, :comment_html
-  after_create :notify_backers
 
   auto_html_for :comment do
     html_escape :map => {
@@ -17,7 +16,6 @@ class Update < ActiveRecord::Base
     link :target => :_blank
   end
 
-  protected
   def notify_backers
     project.backers.confirmed.each do |backer|
       text = I18n.t('notifications.updates.text',
