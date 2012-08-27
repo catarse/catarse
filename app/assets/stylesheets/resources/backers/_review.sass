@@ -3,6 +3,34 @@
     //border: 1px solid rgba(#ff0033, 0.5)
   .hide
     display: none
+    p
+      font-family: "Lato-Regular"
+      font-size: 14px
+      color: #333333
+      float: left
+      margin-top: 30px
+    .inputs
+      float: left
+      margin-left: 15px
+      li
+        margin-top: 20px
+        label
+          float: left
+          font-family: "Lato-Regular"
+          font-size: 14px
+          margin-bottom: 0
+          margin-right: 7px
+          margin-top: 9px
+          width: 30px
+    .list_payment
+      width: 100%
+      border-top: 1px dotted #ddd
+      border-bottom: 1px dotted #ddd
+      height: 88px
+      margin-left: 0px
+      margin-top: 40px
+      float: left
+
   #page_content
     .container
       #project_review
@@ -157,9 +185,18 @@
                   text-decoration: none
                   &:hover
                     text-decoration: underline
+        .tab_container
+          padding-top: 20px
+          margin-bottom:  20px
+          nav
+            a
+              background: #6BB544
+              &.selected
+                background: white
+
         .payment
           .title
-            padding-top: 20px
+            padding-top: 20px            
         .choose_payment
           .or
             +grid(2)
