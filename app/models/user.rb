@@ -89,7 +89,6 @@ class User < ActiveRecord::Base
   scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
   scope :has_credits, joins(:user_total).where('user_totals.credits > 0')
   scope :order_by, ->(sort_field){ joins(:user_total).order(sort_field) }
-  before_save :fix_twitter_user
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -223,11 +222,11 @@ class User < ActiveRecord::Base
     new_user.save
   end
 
-  protected
   def fix_twitter_user
     self.twitter.gsub! /@/, '' if self.twitter
   end
 
+  protected
   def password_required?
     provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
   end
