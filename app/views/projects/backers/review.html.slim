@@ -68,7 +68,9 @@
               = form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
             .list_payment
               = form.inputs do             
-                = form.input :cpf, :as => :boolean, :input_html => { :class => '.cards' }
+                = radio_button_tag 'payment_type', "cards", true, :class => "cards"
+                = radio_button_tag 'payment_type', "boleto", true, :class => "boleto"
+                = radio_button_tag 'payment_type', "account", true, :class => "account"
 
 
               
