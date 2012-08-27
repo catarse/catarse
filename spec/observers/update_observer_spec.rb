@@ -7,6 +7,7 @@ describe UpdateObserver do
         @project = Factory(:project)
         backer = Factory(:backer, :confirmed => true, :project => @project)
         @project.reload
+        ActionMailer::Base.deliveries = []
       end
 
       it "should send email to backers" do
