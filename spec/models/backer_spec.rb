@@ -63,15 +63,6 @@ describe Backer do
     backer.should_not be_valid
   end
 
-  describe "after_create" do
-    before{ Kernel.stubs(:rand).returns(1) }
-
-    subject{ @backer = Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated') }
-
-    its(:key){ should == Digest::MD5.new.update("#{@backer.id}###{@backer.created_at}##1").to_s }
-    its(:payment_method){ should == 'MoIP' }
-  end
-
   describe "#valid?" do
     it{ should validate_presence_of(:project) }
     it{ should validate_presence_of(:user) }

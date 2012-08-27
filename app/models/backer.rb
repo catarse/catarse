@@ -18,28 +18,10 @@ class Backer < ActiveRecord::Base
   scope :display_notice, where(:display_notice => true)
   scope :can_refund, where(:can_refund => true)
   scope :within_refund_deadline, where("date(current_timestamp) <= date(created_at + interval '180 days')")
-  after_create :define_key, :define_payment_method
   attr_protected :confirmed
-
-  def define_key
-    self.update_attributes({ key: Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s })
-  end
-
-  def define_payment_method
-    self.update_attributes({ payment_method: 'MoIP' })
-  end
 
   def price_in_cents
     (self.value * 100).round
-  end
-
-  before_save :confirm?
-
-  def confirm?
-    if confirmed and confirmed_at.nil?
-      self.confirmed_at = Time.now
-      self.display_notice = true
-    end
   end
 
   def confirm!
@@ -130,7 +112,25 @@ class Backer < ActiveRecord::Base
     json_attributes
   end
 
+  #==== Used on before and after callbacks
+
+  def define_key
+    self.update_attributes({ key: Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s })
+  end
+
+  def define_payment_method
+    self.update_attributes({ payment_method: 'MoIP' })
+  end
+
+  def confirm?
+    if confirmed and confirmed_at.nil?
+      self.confirmed_at = Time.now
+      self.display_notice = true
+    end
+  end
+
   protected
+
   def notify_confirmation
     text = I18n.t('notifications.backers.to_backer.text', :backer_name => user.display_name, :backer_value => display_value, :reward => "#{reward.description if reward}", :project_name => project.name)
     Notification.create! :user => user,
