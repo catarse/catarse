@@ -53,25 +53,24 @@
           #payment.hide
             .title
               h1= t('.choose_payment')
-              h2= t('.choose_payment_subtitle')              
-            .choose_payment
-              - if defined?(CatarsePaypalExpress)
-                .cc
-                  span= t('.choose_credit_card')             
-                  = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_paypal_express.payment_pay_paypal_express_path(@backer), :method => :get, :class => 'payment_link' do
-                    p
-                      span= t('.pay_with')                
-                    = image_tag 'catarse/icon-paypal.png'
-                  = image_tag 'catarse/paypal-choice.png' 
-                  .clearfix
-                .or
-                  span= t('or')
-              - if defined?(CatarseMoip)        
-                .boleto
-                  span= t('.choose_boleto')
-                  = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_moip.pay_payment_moip_path(@backer), :method => :get, :class => 'payment_link' do
-                    p
-                      span= t('.pay_with')
-                    = image_tag 'catarse/icon-moip.png', :class => 'boleto_icon'
-                  = image_tag 'catarse/moip-choice.png'
+              h2= t('.choose_payment_subtitle')  
+
+            .tab_container
+              nav#project_menu
+                - if defined?(CatarsePaypalExpress)            
+                  = link_to '#about', :id => 'about_link', :class => 'selected' do
+                    = t('.choose_boleto') 
+                  = link_to '#updates', :id => 'updates_link' do
+                    = t('.choose_credit_card')
+                    span.count=" (#{@project.updates.count})"
+            p= t('.cpf')
+            = form.inputs do             
+              = form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
+            .list_payment
+              = form.inputs do             
+                = form.input :cpf, :as => :boolean, :input_html => { :class => '.cards' }
+
+
+              
+
     .clearfix
