@@ -19,7 +19,7 @@ module Catarse
       g.template_engine :haml
       g.test_framework :rspec, :fixture => false, :views => false
     end
-    config.active_record.observers = [:backer_observer, :user_observer]
+    config.active_record.observers = [:backer_observer, :user_observer, :notification_observer]
 
     # Enable the asset pipeline
     config.assets.enabled = true
