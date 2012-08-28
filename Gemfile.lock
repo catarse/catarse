@@ -52,6 +52,10 @@ GEM
       activesupport (= 3.2.7)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-postgres-hstore (0.4.0)
+      pg
+      rails
+      rake
     activerecord-postgresql-adapter (0.0.1)
       pg
     activeresource (3.2.7)
@@ -450,6 +454,7 @@ DEPENDENCIES
   RedCloth
   activeadmin!
   activemerchant (= 1.17.0)
+  activerecord-postgres-hstore
   activerecord-postgresql-adapter
   airbrake
   annotate
