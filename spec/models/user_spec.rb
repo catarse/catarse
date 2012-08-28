@@ -136,7 +136,7 @@ describe User do
   end
 
   describe ".create_with_omniauth" do
-    let(:auth) do {
+    let(:auth)  do {
         'provider' => "twitter",
         'uid' => "foobar",
         'info' => {
@@ -144,7 +144,7 @@ describe User do
           'email' => 'another_email@anotherdomain.com',
           'nickname' => "foobar",
           'description' => "Foo bar's bio".ljust(200),
-          'image' => "user.png"
+          'image' => "image.png"
         }
       }
     end
