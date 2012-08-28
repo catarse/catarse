@@ -22,8 +22,9 @@ class User < ActiveRecord::Base
                   :remember_me,
                   :name,
                   :nickname,
-                  :bio,
                   :image_url,
+                  :uploaded_image,
+                  :bio,
                   :newsletter,
                   :full_name,
                   :address_street,
@@ -45,7 +46,7 @@ class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   extend ActiveSupport::Memoizable
 
-  mount_uploader :image_url, LogoUploader
+  mount_uploader :uploaded_image, LogoUploader
 
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
@@ -140,8 +141,8 @@ class User < ActiveRecord::Base
       user.email = auth["extra"]["user_hash"]["email"] if auth["extra"] and auth["extra"]["raw_info"] and user.email.nil?
       user.nickname = auth["info"]["nickname"]
       user.bio = auth["info"]["description"][0..139] if auth["info"]["description"]
-      user.image_url = auth["info"]["image"]
       user.locale = I18n.locale.to_s
+      user.image_url =  auth["info"]["image"]
     end
   end
 
@@ -234,6 +235,6 @@ class User < ActiveRecord::Base
   # Returns a Gravatar URL associated with the email parameter, uses local avatar if available
   def gravatar_url
     return unless email
-    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=" + (image_url.to_s ? "#{I18n.t('site.base_url')}#{image_url}" : "#{I18n.t('site.base_url')}/assets/user.png")
-  end
+    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{I18n.t('site.base_url')}/assets/user.png"
+ end
 end

@@ -11,10 +11,10 @@
       .bootstrap-form
         = semantic_form_for @user do |f|
           = f.inputs do
-            p= f.input :image_url, :as => :file, :label => t('.submit_text')
+            p= f.input :uploaded_image, :as => :file, :label => t('.submit_text')
           = f.actions do
             .bootstrap-twitter
-              p= f.action :submit, :button_html => {:value => t('.submit'), :class => 'btn'}
+              p= f.action :submit, :button_html => {:value => t('.submit'), :class => 'btn', :id => 'image_upload_btn'}
   h1= t('.my_data')
   ul
     li
