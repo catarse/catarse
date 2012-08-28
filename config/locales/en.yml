@@ -84,6 +84,7 @@ en:
         name: Name
         user_id: "User Id"
         video_url: "Video URL"
+        permalink: 'type you project URL ( http://catarse.me/myprojectname )'
       reward:
         description: Description
         maximum_backers: "Maximum backers"

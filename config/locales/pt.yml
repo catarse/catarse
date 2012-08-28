@@ -84,6 +84,7 @@ pt:
         name: Nome
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
+        permalink: 'Digite aqui como você quer que apareça a URL do seu projeto'
       reward:
         description: Descrição
         maximum_backers: "Máximo de apoiadores"
