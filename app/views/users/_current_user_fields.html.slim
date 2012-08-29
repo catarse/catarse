@@ -4,7 +4,7 @@
       = image_tag 'gravatar.png', :id => 'gravatar_logo'
     p= t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
     .clearfix
-#my_data
+#my_avatar
   h1 = t('.local_avatar')
   ul
     li
@@ -16,6 +16,7 @@
             .bootstrap-twitter
               p= f.action :submit, :button_html => {:value => t('.submit'), :class => 'btn', :id => 'image_upload_btn'}
   h1= t('.my_data')
+#my_data
   ul
     li
       #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
