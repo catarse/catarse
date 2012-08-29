@@ -9,6 +9,6 @@ class CreatePaymentNotifications < ActiveRecord::Migration
   end
 
   def down
-    drop_table :payment_notificaitons
+    drop_table :payment_notifications
   end
 end

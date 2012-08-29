@@ -1,3 +1,3 @@
 class PaymentNotification < ActiveRecord::Base
-  serialize :extra_data
+  serialize :extra_data, JSON
 end
