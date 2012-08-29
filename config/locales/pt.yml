@@ -389,6 +389,8 @@ pt:
         choose_credit_card: "Pagamento internacional"
         choose_boleto: "Pagamento nacional"
         cpf: "Para prosseguir, por favor informe:"
+        payment_card: "Pagamento com Cartão"
+        owner_card: "Dados do titular do cartão"
         you_are_about_html: "Você está prestes a fazer parte do grupo que faz de tudo para o %{link} acontecer."
         pay_with: "Pagar com"
     create:
