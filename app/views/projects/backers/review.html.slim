@@ -81,23 +81,42 @@
             h3= t('.payment_card')
             
             .choose_card
-              span= t('.owner_card')
-              .owner_outside
-                .owner
-                  = form.inputs do
-                    = form.input :full_name, :required => true, :as => :string
-                    = form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'} 
-                    = form.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'} 
-
-              .infocard_outside
-                .infocard
-                  = label_tag :payment_type_cards, nil, :class => "cards"
-                  = text_field_tag 'request', nil, :class => 'special_input'
-
-                  = label_tag :payment_type_boleto, 'Boleto', :class => "boleto"
-                  = text_field_tag 'request', nil, :class => 'special_input'
-                  
-                  = label_tag :payment_type_account, 'Débito em Conta', :class => "account"
-                  = text_field_tag 'request', nil, :class => 'special_input'
+              .div
+                span= t('.owner_card')
+                .owner_outside
+                  .owner
+                    = form.inputs do  
+                      li.name              
+                        = label_tag :payment_card_name, "Nome do titular do cartão"
+                        = text_field_tag 'request', nil
+                      li.cpf
+                        = label_tag :payment_card_cpf, "CPF"
+                        = text_field_tag 'request', nil
+                      li.phone  
+                        = label_tag :payment_card_phone, "Telefone"
+                        = text_field_tag 'request', nil
+                      li.birth
+                        = label_tag :payment_card_birth, "Data de Nascimento"
+                        = text_field_tag 'request', nil
+              .div
+                span= t('.number_card')         
+                .infocard_outside
+                  .infocard
+                    = form.inputs do  
+                      li.number
+                        = label_tag :payment_card_number, 'Número do cartão' 
+                        = text_field_tag 'request', nil
+                      li.flag
+                        = label_tag :payment_card_flag, 'Bandeira'
+                        = text_field_tag 'request', nil
+                      li.source
+                        = label_tag :payment_card_source, 'Código de Segurança'
+                        = text_field_tag 'request', nil
+                      li.date
+                        = label_tag :payment_card_date, 'Data de Expiração'
+                        = text_field_tag 'request', nil
+    
+              .bootstrap-twitter
+                = form.submit t('.submit'), :disabled => true, :class => 'btn btn-primary btn-large', :id => "backer_submit"
 
     .clearfix
