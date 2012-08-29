@@ -67,12 +67,37 @@
             = form.inputs do             
               = form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
             .list_payment
-              = form.inputs do             
-                = radio_button_tag 'payment_type', "cards", true, :class => "cards"
-                = radio_button_tag 'payment_type', "boleto", true, :class => "boleto"
-                = radio_button_tag 'payment_type', "account", true, :class => "account"
+              = form.inputs do
+                = radio_button_tag 'payment_type', "cards", true
+                = label_tag :payment_type_cards, nil, :class => "cards"
+
+                = radio_button_tag 'payment_type', "boleto", true                
+                = label_tag :payment_type_boleto, 'Boleto', :class => "boleto"
+
+                = radio_button_tag 'payment_type', "account", true                
+                = label_tag :payment_type_account, 'Débito em Conta', :class => "account"
 
 
-              
+            h3= t('.payment_card')
+            
+            .choose_card
+              span= t('.owner_card')
+              .owner_outside
+                .owner
+                  = form.inputs do
+                    = form.input :full_name, :required => true, :as => :string
+                    = form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'} 
+                    = form.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'} 
+
+              .infocard_outside
+                .infocard
+                  = label_tag :payment_type_cards, nil, :class => "cards"
+                  = text_field_tag 'request', nil, :class => 'special_input'
+
+                  = label_tag :payment_type_boleto, 'Boleto', :class => "boleto"
+                  = text_field_tag 'request', nil, :class => 'special_input'
+                  
+                  = label_tag :payment_type_account, 'Débito em Conta', :class => "account"
+                  = text_field_tag 'request', nil, :class => 'special_input'
 
     .clearfix
