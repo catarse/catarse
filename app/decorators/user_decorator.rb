@@ -7,7 +7,7 @@ class UserDecorator < Draper::Base
   end
 
   def display_image
-    image_url.to_s || gravatar_url || '/assets/user.png'
+    uploaded_image.url || image_url || gravatar_url || '/assets/user.png'
   end
 
   def short_name

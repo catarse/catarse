@@ -23,8 +23,17 @@ describe UserDecorator do
   describe "#display_image" do
     subject{ user.display_image }
 
-    context "when we have an image" do
-      let(:user){ Factory(:user, :image_url => "image.png", :email => nil) }
+    context "when we have an uploaded image" do
+      let(:user){ Factory.build(:user, :uploaded_image => 'image.png' )}
+      before do
+        image = stub(:url => 'image.png')
+        user.stubs(:uploaded_image).returns(image)
+      end
+      it{ should == 'image.png' }
+    end
+
+    context "when we have an image url" do
+      let(:user){ Factory.build(:user, :image_url => 'image.png') }
       it{ should == 'image.png' }
     end
 
