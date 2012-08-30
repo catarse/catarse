@@ -1,7 +1,6 @@
 class MovePaymentDetailsToPaymentNotifications < ActiveRecord::Migration
   def up
     execute <<SQL
-    TRUNCATE payment_notifications;
     UPDATE payment_details 
     SET 
       backer_id = (
