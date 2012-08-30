@@ -19,10 +19,14 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with :truncation
   end
 
   config.before(:each) do
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
+    CatarseMailchimp::API.stubs(:subscribe)
+    CatarseMailchimp::API.stubs(:unsubscribe)
   end
 
   def mock_tumblr method=:two
