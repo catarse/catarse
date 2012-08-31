@@ -5,9 +5,7 @@ class Backer < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   belongs_to :reward
-  has_many :payment_logs
   has_many :payment_notifications
-  has_one :payment_detail
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
@@ -65,10 +63,6 @@ class Backer < ActiveRecord::Base
 
   def display_platform_fee(fee=7.5)
     number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => '.'
-  end
-
-  def payment_service_fee
-    (payment_detail || build_payment_detail.update_from_service).service_tax_amount.to_f
   end
 
   def moip_value

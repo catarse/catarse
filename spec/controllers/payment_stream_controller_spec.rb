@@ -1,138 +1,51 @@
 require 'spec_helper'
 describe PaymentStreamController do
   render_views
+  subject{ response }
 
-  describe '/moip' do
-    it "should mark with refunded and requested_refund when backer as not solicited refund" do
-      backer = Factory(:backer, :requested_refund => false, :confirmed => false)
-      post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '7', :valor => backer.moip_value})
-
-      response.should be_successful
-
-      backer.reload.refunded.should be_true
-      backer.reload.requested_refund.should be_true
+  describe 'POST /moip' do
+    before do
+      dummy_params = {'testing' => true}
+      dummy_moip.expects(:process_request!).returns(dummy_moip)
+      PaymentHistory::Moip.expects(:new).with(dummy_params.merge('controller' => 'payment_stream', 'action' => 'moip')).returns(dummy_moip)
+      post :moip, dummy_params
     end
 
-    it "should mark with refunded when backer as requested_refund" do
-      backer = Factory(:backer, :requested_refund => true, :confirmed => false)
-      post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '9', :valor => backer.moip_value})
-      response.should be_successful
-      backer.reload.refunded.should be_true
+    context "when moip's response_code is not successful" do
+      let(:dummy_moip){ stub(:process_request! => nil, :response_code => 500) }
+      it{ should_not be_successful }
     end
 
-    it "should mark with refunded when backer as requested_refund" do
-      backer = Factory(:backer, :requested_refund => true, :confirmed => false)
-      post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '7', :valor => backer.moip_value})
-      response.should be_successful
-      backer.reload.refunded.should be_true
-    end
-
-    it "should confirm backer in moip payment" do
-      backer = Factory(:backer, :confirmed => false)
-      post :moip, post_moip_params.merge!({:id_transacao => backer.key, :status_pagamento => '1', :valor => backer.moip_value})
-      response.should be_successful
-      backer.reload.confirmed.should be_true
-    end
-
-    it "should not confirm in case of error in moip payment" do
-      backer = Factory(:backer, :confirmed => false)
-      post :moip, post_moip_params.merge!({:id_transacao => -1, :status_pagamento => '1', :valor => backer.moip_value})
-      response.should_not be_successful
-      backer.reload.confirmed.should_not be_true
-    end
-
-    it "should return 422 when moip params is empty" do
-      post :moip, {}
-      response.should_not be_successful
-      response.code.should == '422'
-    end
-
-    context "when have a payment detail" do
-      before do
-        project=create(:project)
-        @backer=create(:backer, :payment_token => 'ABCD', :project => project, :confirmed => false)
-        create(:payment_detail, :backer => @backer)
-        @backer.reload
-      end
-
-      context 'when receive aonther moip request' do
-        before do
-          moip_response = moip_query_response.dup
-          moip_response["Autorizacao"]["Pagamento"].merge!("Status" => 'BoletoPago')
-          MoIP::Client.stubs(:query).with('ABCD').returns(moip_response)
-        end
-
-        it 'should update info and confirm backer' do
-          @backer.confirmed.should_not be_true
-          @backer.payment_detail.payment_status.should == 'BoletoImpresso'
-
-          post :moip, post_moip_params.merge!({:id_transacao => @backer.key, :status_pagamento => '1', :valor => @backer.moip_value})
-
-          @backer.reload
-          @backer.payment_detail.payment_status.should == 'BoletoPago'
-          @backer.confirmed.should be_true
-        end
-
-        it "when confirmed backer don't update the backer payment detail" do
-          @backer.confirm!
-          @backer.reload
-          @backer.confirmed.should be_true
-          @backer.payment_detail.payment_status.should == 'BoletoImpresso'
-
-          post :moip, post_moip_params.merge!({:id_transacao => @backer.key, :status_pagamento => '1', :valor => @backer.moip_value})
-
-          @backer.reload
-          @backer.payment_detail.payment_status.should == 'BoletoImpresso'
-        end
-      end
+    context "when moip's response_code is successful" do
+      let(:dummy_moip){ stub(:process_request! => nil, :response_code => 200) }
+      it{ should be_successful }
     end
   end
 
-  describe '/thank_you' do
-    it "without project / session, should redirect" do
-      request.session[:thank_you_id]=nil
-      get :thank_you, :locale => :pt
-      request.flash[:failure].should == I18n.t('payment_stream.thank_you.error')
-      response.should be_redirect
+  describe 'GET /thank_you' do
+    context "when we do not have a without project / session" do
+      before do
+        request.session[:thank_you_id]=nil
+        get :thank_you, :locale => :pt
+      end
+
+      it{ should be_redirect }
+
+      it "should show failure flash" do
+        request.flash[:failure].should == I18n.t('payment_stream.thank_you.error')
+      end
     end
 
-    it "with project / session, should not redirect" do
-      project=create(:project)
-      request.session[:thank_you_id] = project.id
-      get :thank_you, :locale => :pt
+    context "when we do have a project / session" do
+      before do
+        project = create(:project)
+        request.session[:thank_you_id] = project.id
+        get :thank_you, :locale => :pt
+      end
 
-      response.should render_template("payment_stream/thank_you")
-      response.should be_success
-      response.should_not be_redirect
-      response.body.should =~ /#{I18n.t('payment_stream.thank_you.title')}/
-    end
-
-    it 'with token session should create payment detail for backer' do
-      project=create(:project)
-      backer=create(:backer, :payment_token => 'ABCD', :project => project)
-      request.session[:_payment_token] = 'ABCD'
-      request.session[:thank_you_id] = project.id
-      MoIP::Client.stubs(:query).returns(moip_query_response)
-      backer.payment_detail.should be_nil
-
-      get :thank_you, :locale => :pt
-      response.should render_template("payment_stream/thank_you")
-      response.should be_success
-      backer.reload.payment_detail.should_not be_nil
-    end
-
-    it 'when moip_response should have a array in payment information' do
-      project=create(:project)
-      backer=create(:backer, :payment_token => 'ABCD', :project => project)
-      request.session[:_payment_token] = 'ABCD'
-      request.session[:thank_you_id] = project.id
-      MoIP::Client.stubs(:query).returns(moip_query_response_with_array)
-      backer.payment_detail.should be_nil
-
-      get :thank_you, :locale => :pt
-      response.should render_template("payment_stream/thank_you")
-      response.should be_success
-      backer.reload.payment_detail.should_not be_nil
+      it{ should render_template("payment_stream/thank_you") }
+      it{ should be_success }
+      its(:body){ should =~ /#{I18n.t('payment_stream.thank_you.title')}/ }
     end
 
   end
