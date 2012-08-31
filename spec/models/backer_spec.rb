@@ -12,7 +12,7 @@ describe Backer do
     u.credits.should == 0
   end
 
-  it { should have_many(:payment_logs) }
+  it { should have_many(:payment_notifications) }
 
   it "should have reward from the same project only" do
     backer = Factory.build(:backer)
@@ -97,28 +97,6 @@ describe Backer do
     context "when the value does not have decimal places" do
       subject{ Factory.build(:backer, :value => 1).display_value }
       it{ should == "R$ 1" }
-    end
-  end
-
-  describe "#payment_service_fee" do
-    let(:backer){ Backer.new }
-    subject{ backer.payment_service_fee }
-    context "when there is a payment detail" do
-      before(:each) do
-        backer.build_payment_detail
-        backer.payment_detail.stubs(:service_tax_amount).returns('5.75')
-      end
-      it{ should == 5.75 }
-    end
-
-    context "when there is not a payment detail" do
-      before(:each) do
-        payment_detail = mock()
-        payment_detail.expects(:update_from_service).returns(payment_detail)
-        backer.expects(:build_payment_detail).returns(payment_detail)
-        payment_detail.stubs(:service_tax_amount).returns('5.75')
-      end
-      it{ should == 5.75 }
     end
   end
 
