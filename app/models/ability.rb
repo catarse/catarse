@@ -10,6 +10,7 @@ class Ability
     can :request_refund, Backer, :user_id => current_user.id
     can :backs, User
     can :projects, User
+    can :manage, Update, :project => { :user_id => current_user.id}
 
     if current_user.admin?
       can :manage, :all
