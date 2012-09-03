@@ -10,8 +10,21 @@ ActiveAdmin.register CuratedPage do
     default_actions
   end
 
-  form :partial => "form"
-  # form :html => {:multipart => true} do |f|
+  #form :partial => "form"
+  form :html => {:multipart => true} do |f|
+    f.inputs do
+      f.input :name
+      f.input :permalink
+      f.input :site_url
+      f.input :description, :as => :text
+      f.input :logo, :as => :file
+      f.input :video_url
+      f.input :visible
+    end
+    f.buttons do
+      f.submit
+    end
+  end
   #   f.inputs do
   #     f.input :name
   #     f.input :description
@@ -22,5 +35,4 @@ ActiveAdmin.register CuratedPage do
   #   f.buttons do
   #     f.submit
   #   end
-  # end
 end
