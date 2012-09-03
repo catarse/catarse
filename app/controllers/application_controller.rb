@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
     session[:locale] = new_locale
     new_url = "#{request.fullpath}"
     if params[:locale]
-      new_url.gsub!(/^\/#{params[:locale]}/, "/#{new_locale}")
+      new_url.gsub!(/^\/(#{params[:locale]})?/, "/#{new_locale}")
     else
       if new_url == "/"
         new_url = "/#{new_locale}"
