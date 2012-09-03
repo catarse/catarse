@@ -14,6 +14,7 @@ class UpdatesController < ApplicationController
   def create
     @update = parent.updates.new(params[:update])
     @update.user = current_user
+    return unless can? :manage, @update
     create! do |format|
       format.html{ return redirect_to project_updates_path(parent) }
     end
