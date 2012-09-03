@@ -119,6 +119,7 @@ en:
   backer_singular: backer
   click_here: "Click here"
   clicking_here: "clicking here"
+  click_term: 'terms'
   comment:
     display_time: "%{time_ago} ago"
   credits:
@@ -319,14 +320,14 @@ en:
     finish:
       successful:
         email_subject: "Hooray! The project you backed was successful on Catarse!"
-        email_text: "The project %{project_link}, which you backed, was successfuly funded on Catarse! Time to celebrate :D<br><br>Thank you very much, from the heart, for your support! Without you this would never have been possible. Soon, %{user_link} will contact you to deliver your reward. Meanwhile, share with everybody this success!"
+        email_text: "O projeto %{project_link}, que você apoiou, foi financiado com sucesso no Catarse! Hora de comemorar o/<br><br>O projeto teve, incluindo você, %{project_total_backers} maravilhosos apoiadores, arrecadou %{project_pleged} e atingiu %{project_process}% da meta da captação =D<br><br>Ahh, uma informação importante: a equipe do Catarse leva até 3 dias úteis para passar a lista de contato de todos os apoiadores para os produtores do projeto. Por isso, o realizador entrará em contato contigo para agradecimentos e pra falar sobre as recompensas só daqui alguns dias, ok?<br><br>Enquanto isso, compartilhe com todo mundo este sucesso!<br><br>Se quiser entrar em contato com %{project_owner_name}, mande um email para %{project_owner_email}.<br><br>Se tiver alguma outra dúvida, acesse nosso FAQ: www.catarse.me/faq ou mande um email para o contato@catarse.me<br><br>Um grande abraço,<br><br> Equipe do Catarse"
         facebook_text: "Hooray! The project '%{name}', which I backed, was successful on Catarse!"
         notification_text: "Hooray! The project %{link} that you backed was successful! Spread the word!"
         reward_notification_text: "Soon, %{link} will contact you to deliver your reward. Enjoy!"
         twitter_text: "Hooray! The project '%{name}', which I backed, was successful on @Catarse_! %{short_url}"
       unsuccessful:
         email_subject: "The project you backed wasn't funded on Catarse."
-        email_text: "The project %{project_link}, that you backed, was not funded. Maybe next time!<br><br>Because of this, you received <strong>%{value}</strong> in credits to back other projects. If you prefer, you can ask for a refund %{credits_link}."
+        email_text: 'Infelizmente o projeto %{project_link}, que você apoiou, não atingiu a meta estabelecda e não foi financiado no Catarse.<br><br>Em função disto, você recebeu <strong>%{value}</strong> em créditos para apoiar outros projetos. Você pode conhecer mais projetos de %{project_category} em %{explore_category_link}.<br><br>Caso prefira, você pode pedir o reembolso do seu dinheiro clicando em %{credits_link}. Lembre que o seu cadastro no site foi feito através do %{user_provider}. É por ele que você deve entrar para acessar sua conta. Caso você tenha alguma dificuldade nesse processo, envie um email para financeiro@catarse.me com o assunto "Reembolso - problema no login".<br><br>Caso você prefira solicitar o reembolso, só para lembrar, como constam nos %{link_to_term} do Catarse, que se o apoio foi feito com cartão de crédito, o valor será estornado na próxima fatura do cartão. Se o apoio foi feito através de transferência bancária ou boleto, enviaremos um email com os procedimentos necessários para poder devolver o valor para você.<br><br>Se, por qualquer motivos, quiser entrar em contato com %{project_owner_name}, mande um email para %{project_owner_email}.<br><br>Se tiver alguma outra dúvida, acesse nosso FAQ ou mande um email para o financeiro@catarse.me.<br><br>Um grande abraço,<br><br>Equipe do Catarse ' 
         notification_text: "You received %{value} in credits to back other projects. If you prefer, you can request a refund %{link}."
         unsuccessful_text: "The project %{link} that you backed wasn't funded. Maybe next time!"
     verify_if_video_exists_on_vimeo: "must exist on Vimeo"
