@@ -4,6 +4,16 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "My profile Feature" do
 
+  scenario "I should be able to upload a custom avatar" do
+    fake_login 
+    click_link I18n.t('layouts.header.account')
+    click_link I18n.t('layouts.header.profile')
+    click_link I18n.t('users.show.tabs.settings')
+    attach_file('user_uploaded_image', "#{Rails.root}/spec/fixtures/image.png")
+    click_button('image_upload_btn')
+    User.last.uploaded_image.url.should_not be_nil
+  end
+
   scenario "I should be able to see and edit my profile when I click on 'meu perfil'" do
 
     fake_login

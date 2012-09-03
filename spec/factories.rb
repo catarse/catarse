@@ -31,6 +31,12 @@ Factory.define :project do |f|
   f.expires_at { 1.month.from_now }
   f.video_url 'http://vimeo.com/17298435'
 end
+Factory.define :notification do |f|
+  f.email_subject "Just a test"
+  f.association :user, :factory => :user
+  f.email_text "email text"
+  f.text "Test :)"
+end
 Factory.define :reward do |f|
   f.association :project, :factory => :project
   f.minimum_value 1.00
