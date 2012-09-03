@@ -53,6 +53,7 @@ Catarse::Application.routes.draw do
       end
       member do
         put 'checkout'
+        post 'update_info'
       end
     end
     collection do
