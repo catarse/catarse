@@ -38,7 +38,8 @@ gem 'cancan'
 gem "airbrake"
 
 # Email marketing
-gem 'mailchimp'
+#gem 'mailchimp'
+gem 'catarse_mailchimp'
 
 # HTML manipulation and formatting
 gem 'formtastic', "~> 2.1.1"
