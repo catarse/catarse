@@ -28,6 +28,7 @@ CATARSE.BackersReviewView = Backbone.View.extend({
       if(!accepted_terms())
         all_ok = false
       if(all_ok){
+        this.updateCurrentBackerInfo();
         $('#user_submit').attr('disabled', false)
         if($('#back_with_credits').length < 1) {
           $('#payment.hide').show();
@@ -156,5 +157,20 @@ CATARSE.BackersReviewView = Backbone.View.extend({
       }
     });
 
+  },
+
+  updateCurrentBackerInfo: function() {
+    var backer_data = {
+      full_name: $('#user_full_name').val(),
+      email: $('#user_email').val(),
+      address_street: $('#user_address_street').val(),
+      address_number: $('#user_address_number').val(),
+      address_complement: $('#user_address_complement').val(),
+      address_neighbourhood: $('#user_address_neighbourhood').val(),
+      address_zip_code: $('#user_address_zip_code').val(),
+      address_city: $('#user_address_city').val(),
+      address_state: $('#user_address_state').val(),
+      phone_number: $('#user_phone_number').val()
+    }
   }
 })
