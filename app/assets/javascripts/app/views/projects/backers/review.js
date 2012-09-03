@@ -1,6 +1,7 @@
 CATARSE.BackersReviewView = Backbone.View.extend({
   initialize: function() {
     var zip_code_valid = null
+    var _this = this;
     everything_ok = function(){
       var all_ok = true
       if($('#backer_credits').val() == "false"){
@@ -12,14 +13,14 @@ CATARSE.BackersReviewView = Backbone.View.extend({
           all_ok = false
         //if(!zip_code_ok())
           //all_ok = false
-        //if(!ok('#user_address_street'))
-          //all_ok = false
-        //if(!ok('#user_address_number'))
-          //all_ok = false
-        //if(!ok('#user_address_neighbourhood'))
-          //all_ok = false
-        //if(!ok('#user_address_city'))
-          //all_ok = false
+        if(!ok('#user_address_street'))
+          all_ok = false
+        if(!ok('#user_address_number'))
+          all_ok = false
+        if(!ok('#user_address_neighbourhood'))
+          all_ok = false
+        if(!ok('#user_address_city'))
+          all_ok = false
         //if(!ok('#user_address_state'))
           //all_ok = false
         //if(!phone_number_ok())
@@ -28,7 +29,7 @@ CATARSE.BackersReviewView = Backbone.View.extend({
       if(!accepted_terms())
         all_ok = false
       if(all_ok){
-        this.updateCurrentBackerInfo();
+        _this.updateCurrentBackerInfo();
         $('#user_submit').attr('disabled', false)
         if($('#back_with_credits').length < 1) {
           $('#payment.hide').show();
@@ -160,9 +161,11 @@ CATARSE.BackersReviewView = Backbone.View.extend({
   },
 
   updateCurrentBackerInfo: function() {
+    var backer_id = $('input#backer_id').val();
+    var project_id = $('input#project_id').val();
     var backer_data = {
-      full_name: $('#user_full_name').val(),
-      email: $('#user_email').val(),
+      payer_name: $('#user_full_name').val(),
+      payer_email: $('#user_email').val(),
       address_street: $('#user_address_street').val(),
       address_number: $('#user_address_number').val(),
       address_complement: $('#user_address_complement').val(),
@@ -170,7 +173,10 @@ CATARSE.BackersReviewView = Backbone.View.extend({
       address_zip_code: $('#user_address_zip_code').val(),
       address_city: $('#user_address_city').val(),
       address_state: $('#user_address_state').val(),
-      phone_number: $('#user_phone_number').val()
+      address_phone_number: $('#user_phone_number').val()
     }
+    $.post('/projects/'+project_id+'/backers/'+backer_id+'/update_info', {
+      backer: backer_data
+    });
   }
 })
