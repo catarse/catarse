@@ -53,25 +53,83 @@
           #payment.hide
             .title
               h1= t('.choose_payment')
-              h2= t('.choose_payment_subtitle')              
-            .choose_payment
-              - if defined?(CatarsePaypalExpress)
-                .cc
-                  span= t('.choose_credit_card')             
-                  = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_paypal_express.payment_pay_paypal_express_path(@backer), :method => :get, :class => 'payment_link' do
-                    p
-                      span= t('.pay_with')                
-                    = image_tag 'catarse/icon-paypal.png'
-                  = image_tag 'catarse/paypal-choice.png' 
-                  .clearfix
-                .or
-                  span= t('or')
-              - if defined?(CatarseMoip)        
-                .boleto
-                  span= t('.choose_boleto')
-                  = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_moip.pay_payment_moip_path(@backer), :method => :get, :class => 'payment_link' do
-                    p
-                      span= t('.pay_with')
-                    = image_tag 'catarse/icon-moip.png', :class => 'boleto_icon'
-                  = image_tag 'catarse/moip-choice.png'
+              h2= t('.choose_payment_subtitle')  
+
+            .tab_container
+              nav#project_menu
+                - if defined?(CatarsePaypalExpress)            
+                  = link_to '#about', :id => 'about_link', :class => 'selected' do
+                    = t('.choose_boleto') 
+                  = link_to '#updates', :id => 'updates_link' do
+                    = t('.choose_credit_card')
+                    span.count=" (#{@project.updates.count})"
+            p= t('.cpf')
+            = form.inputs do             
+              = form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
+            .list_payment
+              = form.inputs do
+                = radio_button_tag 'payment_type', "cards", true
+                = label_tag :payment_type_cards, nil, :class => "cards"
+
+                = radio_button_tag 'payment_type', "boleto", true                
+                = label_tag :payment_type_boleto, 'Boleto', :class => "boleto"
+
+                = radio_button_tag 'payment_type', "account", true                
+                = label_tag :payment_type_account, 'Débito em Conta', :class => "account"
+
+
+            h3= t('.payment_card')
+            
+            .choose_card
+              .div
+                span= t('.owner_card')
+                .owner_outside
+                  .owner
+                    = form.inputs do  
+                      li.name              
+                        = label_tag :payment_card_name, "Nome do titular do cartão"
+                        = text_field_tag 'request', nil
+                      li.cpf
+                        = label_tag :payment_card_cpf, "CPF"
+                        = text_field_tag 'request', nil
+                      li.phone  
+                        = label_tag :payment_card_phone, "Telefone"
+                        = text_field_tag 'request', nil
+                      li.birth
+                        = label_tag :payment_card_birth, "Data de Nascimento"
+                        = text_field_tag 'request', nil
+              .div
+                span= t('.number_card')         
+                .infocard_outside
+                  .infocard
+                    = form.inputs do  
+                      li.number
+                        = label_tag :payment_card_number, 'Número do cartão' 
+                        = text_field_tag 'request', nil
+                      li.flag
+                        = label_tag :payment_card_flag, 'Bandeira'
+                        = text_field_tag 'request', nil
+                      li.source
+                        = label_tag :payment_card_source, 'Código de Segurança'
+                        = text_field_tag 'request', nil
+                      li.date
+                        = label_tag :payment_card_date, 'Data de Expiração'
+                        = text_field_tag 'request', nil
+    
+              .bootstrap-twitter
+                = form.submit t('.submit'), :disabled => true, :class => 'btn btn-primary btn-large', :id => "backer_submit"
+
+            h3= t('.payment_boleto')
+            p= t('.select_boleto')
+            = form.inputs do             
+              = form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}            
+            .bootstrap-twitter
+              = form.submit t('.submit'), :disabled => true, :class => 'btn btn-primary btn-large', :id => "backer_submit"
+
+
+            h3= t('.payment_account')
+            p= t('.select_account')
+            .bootstrap-twitter
+              = form.submit t('.submit'), :disabled => true, :class => 'btn btn-primary btn-large', :id => "backer_submit"
+
     .clearfix
