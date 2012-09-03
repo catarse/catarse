@@ -6,6 +6,7 @@
 = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
   = form.inputs do
     = form.input :user_id, :as => :hidden, :value => current_user.id
+    = form.input :permalink, :as => :string
     = form.input :name, :as => :string
     = form.input :video_url, :as => :string
     = form.input :about

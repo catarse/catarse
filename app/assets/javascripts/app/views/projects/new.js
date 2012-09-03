@@ -22,6 +22,8 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
         all_ok = false
         verify_video()
       }
+      if(!verify_permalink())
+        all_ok = false
       if(!ok('#project_name'))
         all_ok = false
       if(!video_ok())
@@ -56,6 +58,18 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
         return false
       }
     }
+
+    verify_permalink = function() {
+      if(/^\w+$/.test($('#project_permalink').val()))
+      {
+        $('#project_permalink').addClass("ok").removeClass("error")
+        return true
+      } else {
+        $('#project_permalink').addClass("error").removeClass("ok")
+        return false
+      }
+    }
+
     verify_video = function(){
       video_valid = false
       if(/http:\/\/(www\.)?vimeo.com\/(\d+)/.test($('#project_video_url').val())) {
@@ -158,6 +172,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     accepted_terms = function(){
       return $('#accept').is(':checked')
     }
+    $('#project_permalink').keyup(everything_ok)
     $('#project_name').keyup(everything_ok)
     $('#project_video_url').keyup(function(){ video_valid = false; everything_ok() })
     $('#project_video_url').timedKeyup(verify_video)
