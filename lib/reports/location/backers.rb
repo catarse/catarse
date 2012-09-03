@@ -5,7 +5,7 @@ module Reports
       class << self
         def report(project_id)
           @project = Project.find(project_id)
-          @backers = @project.backers.includes(:payment_detail, :user).confirmed
+          @backers = @project.backers.includes(:user).confirmed
 
           @csv = CSV.generate(:col_sep => ',') do |csv_string|
 
