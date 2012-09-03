@@ -2,6 +2,13 @@ class UserDecorator < Draper::Base
   decorates :user
   include Draper::LazyHelpers
 
+  def display_provider
+    case provider
+    when 'devise' then 'catarse'
+    else provider
+    end
+  end
+
   def display_name
     name || nickname || I18n.t('user.no_name')
   end

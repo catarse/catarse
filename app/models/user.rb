@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
 
-  delegate  :display_name, :display_image, :short_name, 
+  delegate  :display_name, :display_image, :short_name, :display_provider,
             :medium_name, :display_credits, :display_total_of_backs,
             :to => :decorator
 
