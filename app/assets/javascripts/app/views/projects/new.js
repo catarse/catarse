@@ -16,13 +16,18 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
       rewards_id++
     })
     var video_valid = null
+    var permalink_valid = null
     everything_ok = function(){
       var all_ok = true
       if(video_valid == null) {
         all_ok = false
         verify_video()
       }
-      if(!verify_permalink())
+      if(permalink_valid == null) {
+        all_ok = false
+        verify_permalink()
+      }
+      if(!permalink_ok())
         all_ok = false
       if(!ok('#project_name'))
         all_ok = false
@@ -60,8 +65,27 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     }
 
     verify_permalink = function() {
-      if(/^\w+$/.test($('#project_permalink').val()))
+      if(/^(\w|-)+$/.test($('#project_permalink').val()))
       {
+        $.get('/projects/check_slug/?permalink='+$('#project_permalink').val(),
+            function(r) {
+              if(r.available){
+                $('#project_permalink').addClass("ok").removeClass("error")
+                permalink_valid = true
+              } else {
+                $('#project_permalink').addClass("error").removeClass("ok")
+                permalink_valid = false
+              }
+              everything_ok()
+        })
+      } else {
+        $('#project_permalink').addClass("error").removeClass("ok")
+        permalink_valid = false
+      }
+    }
+
+    permalink_ok = function(){
+      if(permalink_valid){
         $('#project_permalink').addClass("ok").removeClass("error")
         return true
       } else {
@@ -172,7 +196,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     accepted_terms = function(){
       return $('#accept').is(':checked')
     }
-    $('#project_permalink').keyup(everything_ok)
+    $('#project_permalink').timedKeyup(verify_permalink)
     $('#project_name').keyup(everything_ok)
     $('#project_video_url').keyup(function(){ video_valid = false; everything_ok() })
     $('#project_video_url').timedKeyup(verify_video)
