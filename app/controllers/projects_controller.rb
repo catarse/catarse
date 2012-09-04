@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
         @expiring = Project.expiring_for_home(project_ids)
         @recent = Project.recent_for_home(project_ids)
 
-        @blog_posts = Blog.fetch_last_posts.inject([]) do |total,item| 
+        @blog_posts = Blog.fetch_last_posts.inject([]) do |total,item|
           if total.size < 2
             total << item
           end
@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
         end || []
 
         calendar = Calendar.new
-        @events = Rails.cache.fetch 'calendar', expires_in: 30.minutes do 
+        @events = Rails.cache.fetch 'calendar', expires_in: 30.minutes do
           calendar.fetch_events_from("catarse.me_237l973l57ir0v6279rhrr1qs0@group.calendar.google.com") || []
         end
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(8)
@@ -89,11 +89,11 @@ class ProjectsController < ApplicationController
     # Send project receipt
     notification_text = I18n.t('project.start.notification_text', :locale => current_user.locale)
     email_subject = I18n.t('project.start.email_subject', :locale => current_user.locale)
-    email_text = I18n.t('project.start.email_text', 
-                        :facebook => I18n.t('site.facebook', :locale => current_user.locale), 
-                        :blog => I18n.t('site.blog', :locale => current_user.locale), 
-                        :explore_link => explore_url, 
-                        :email => (I18n.t('site.email.contact', :locale => current_user.locale)), 
+    email_text = I18n.t('project.start.email_text',
+                        :facebook => I18n.t('site.facebook', :locale => current_user.locale),
+                        :blog => I18n.t('site.blog', :locale => current_user.locale),
+                        :explore_link => explore_url,
+                        :email => (I18n.t('site.email.contact', :locale => current_user.locale)),
                         :locale => current_user.locale)
     Notification.create :user => current_user, :text => notification_text, :email_subject => email_subject, :email_text => email_text
     flash[:success] = t('projects.send_mail.success')
@@ -164,6 +164,11 @@ class ProjectsController < ApplicationController
     }.to_json
   rescue
     render :json => {:ok => false}.to_json
+  end
+
+  def check_slug
+    project = Project.where("permalink = ?", params[:permalink])
+    render :json => {:available => project.empty?}.to_json
   end
 
   def embed
