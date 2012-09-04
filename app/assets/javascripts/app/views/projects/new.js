@@ -65,22 +65,26 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     }
 
     verify_permalink = function() {
-      if(/^(\w|-)+$/.test($('#project_permalink').val()))
+      if(/^(\w|-)*$/.test($('#project_permalink').val()))
       {
+        if($('#project_permalink').val() == ''){
+          permalink_valid = true
+        }
+        else {
         $.get('/projects/check_slug/?permalink='+$('#project_permalink').val(),
             function(r) {
               if(r.available){
-                $('#project_permalink').addClass("ok").removeClass("error")
                 permalink_valid = true
               } else {
-                $('#project_permalink').addClass("error").removeClass("ok")
                 permalink_valid = false
               }
               everything_ok()
         })
+        }
+
       } else {
-        $('#project_permalink').addClass("error").removeClass("ok")
         permalink_valid = false
+        everything_ok()
       }
     }
 
