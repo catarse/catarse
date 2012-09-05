@@ -23,6 +23,11 @@ class Backer < ActiveRecord::Base
     (self.value * 100).round
   end
 
+  def refund!
+    self.refunded = true
+    self.save
+  end
+
   def confirm!
     self.confirmed = true
     self.confirmed_at = Time.now

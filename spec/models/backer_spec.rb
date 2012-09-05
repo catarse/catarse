@@ -72,6 +72,14 @@ describe Backer do
     it{ should allow_value(20).for(:value) }
   end
 
+  describe "#refund!" do
+    subject{ Factory.build(:backer, :value => 99.99, :refunded => false) }
+    it "should set refunded to true" do
+      subject.refund!
+      subject.refunded.should == true
+    end
+  end
+
   describe "#confirm!" do
     subject{ Factory.build(:backer, :value => 99.99, :confirmed => false) }
 
