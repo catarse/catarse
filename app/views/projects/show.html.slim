@@ -133,11 +133,38 @@
               = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
                 fieldset
                   = submit_tag t('projects.back_project.submit'), :disabled => (not @project.can_back?)
+        #creator_profile
+          h3= t('project_by')
+          .avatar= image_tag @project.user.display_image, :width => '100px', :heigth => '100px'
+          .personal_info
+            p.name
+             = link_to @project.user.display_name, user_path(@project.user)
+            #bio
+              p= @project.user.bio
+          #city
+            p.backer= t('count_backed_projects', :total => @project.user.total_backs)            
+            p.city
+              | #{@project.user.address_city}          
+        .user_social
+          ul
+            - if @project.user.facebook_link
+              li
+                = link_to "Perfil no facebook", @project.user.facebook_link, :target => '_blank', :class=> 'facebook'
+            - if @project.user.twitter
+              li
+                = link_to "Perfil no twitter", @project.user.twitter_link, :target => '_blank', :class=> 'twitter'
+            - if can? :manage, @project.user
+              li
+                = mail_to @project.user.email, "Me envie um email", :target => '_blank', :class=> 'email'                
+            - if @project.user.other_link
+              li.other
+                = link_to @project.user.other_link, @project.user.other_link, :target => '_blank'
 
         #rewards
           - @rewards.each do |reward|
             div[class="box #{('clickable' if @project.can_back? and not reward.sold_out?)}"]
               = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
+              span.avaliable
               h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum)
               em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
               .clearfix
@@ -155,32 +182,7 @@
                   .remaining= reward.display_remaining
                 .clearfix
 
-        #creator_profile
-          h3= t('project_by')
-          .avatar= image_tag @project.user.display_image, :width => '100px', :heigth => '100px'
-          .personal_info
-            p.name
-             = link_to @project.user.display_name, user_path(@project.user)
-            #city
-              p
-                | #{@project.user.address_city}
-              p= t('count_backed_projects', :total => @project.user.total_backs)
-          #bio
-            p= @project.user.bio
-        .user_social
-          ul
-            - if can? :manage, @project.user
-              li.email
-                = mail_to @project.user.email, "Me envie um email", :target => '_blank'
-            - if @project.user.facebook_link
-              li.facebook
-                = link_to "Perfil no facebook", @project.user.facebook_link, :target => '_blank'
-            - if @project.user.twitter
-              li.twitter
-                = link_to "Perfil no twitter", @project.user.twitter_link, :target => '_blank'
-            - if @project.user.other_link
-              li.other
-                = link_to @project.user.other_link, @project.user.other_link, :target => '_blank'
+
           .clearfix
 
     .clearfix
