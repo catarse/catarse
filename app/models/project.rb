@@ -178,8 +178,8 @@ class Project < ActiveRecord::Base
           email_subject = I18n.t('project.finish.successful.email_subject', :locale => backer.user.locale)
 
           email_text = I18n.t('project.finish.successful.email_text', {
-            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'),
-            :user_link => link_to(user.display_name, "#{I18n.t('site.base_url')}/users/#{user.to_param}", :style => 'color: #008800;'),
+            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}"),
+            :user_link => link_to(user.display_name, "#{I18n.t('site.base_url')}/users/#{user.to_param}"),
             :locale => backer.user.locale,
             :project_total_backers => total_backers,
             :project_pleged => display_pledged,
@@ -200,11 +200,11 @@ class Project < ActiveRecord::Base
           email_subject = I18n.t('project.finish.unsuccessful.email_subject', :locale => backer.user.locale)
 
           email_text = I18n.t('project.finish.unsuccessful.email_text', {
-            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'),
+            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}"),
             :value => backer.display_value,
-            :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits", :style => 'color: #008800;'),
+            :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits"),
             :locale => backer.user.locale,
-            :project_category => category,
+            :project_category => category.name,
             :explore_category_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/explore##{category.name.parameterize}"),
             :user_provider => backer.user.display_provider,
             :link_to_term => link_to(I18n.t('click_term', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/terms"),
