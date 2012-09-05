@@ -32,16 +32,6 @@ describe User do
   describe ".has_credits" do
     subject{ User.has_credits }
 
-    context "when he has credits in the user table" do
-      before do
-        @u = Factory(:user, :credits => 100)
-        Factory(:backer, :project => successful_project, :user => @u)
-        Factory(:user, :credits => 0)
-        Factory(:backer, :project => successful_project)
-      end
-      it{ should == [@u] }
-    end
-
     context "when he has credits in the user_total" do
       before do
         b = Factory(:backer, :value => 100, :project => failed_project)

@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable#, :validatable
+  begin
+    sync_with_mailchimp
+  rescue Exception => e
+    Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
+    Rails.logger.info "-----> #{e.inspect}"
+  end
 
   delegate  :display_name, :display_image, :short_name, :display_provider,
             :medium_name, :display_credits, :display_total_of_backs,
@@ -38,6 +44,8 @@ class User < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include Rails.application.routes.url_helpers
   extend ActiveSupport::Memoizable
+
+  mount_uploader :image_url, LogoUploader
 
   validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, :scope => :provider
@@ -79,8 +87,8 @@ class User < ActiveRecord::Base
   scope :by_name, ->(name){ where('name ~* ?', name) }
   scope :by_id, ->(id){ where('id = ?', id) }
   scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
-  scope :has_credits, joins(:user_total).where('user_totals.credits > 0 OR users.credits > 0')
-  scope :has_credits_difference, joins(:user_total).where('coalesce(user_totals.credits, 0) <> coalesce(users.credits, 0)')
+  scope :has_credits, joins(:user_total).where('user_totals.credits > 0')
+  scope :order_by, ->(sort_field){ joins(:user_total).order(sort_field) }
   before_save :fix_twitter_user
 
   def self.find_for_database_authentication(warden_conditions)
@@ -224,9 +232,9 @@ class User < ActiveRecord::Base
     provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
   end
 
-  # Returns a Gravatar URL associated with the email parameter
+  # Returns a Gravatar URL associated with the email parameter, uses local avatar if available
   def gravatar_url
     return unless email
-    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{image_url or "#{I18n.t('site.base_url')}/assets/user.png"}"
+    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=" + (image_url.to_s ? "#{I18n.t('site.base_url')}#{image_url}" : "#{I18n.t('site.base_url')}/assets/user.png")
   end
 end

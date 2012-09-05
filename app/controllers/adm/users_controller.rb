@@ -12,8 +12,7 @@ class Adm::UsersController < Adm::BaseController
     @total_users = totals[:users].to_i
     @total_backs = totals[:backs]
     @total_backed = totals[:backed]
-    @total_credits_view = totals[:credits]
-    @total_credits_table = totals[:credits_table]
+    @total_credits = totals[:credits]
   end
 
   def set_title
@@ -21,7 +20,7 @@ class Adm::UsersController < Adm::BaseController
   end
 
   def collection
-    @users ||= end_of_association_chain.includes(:user_total).page(params[:page])
+    @users ||= end_of_association_chain.order_by(params[:order_by] || 'user_totals.sum DESC').includes(:user_total).page(params[:page])
   end
 end
 
