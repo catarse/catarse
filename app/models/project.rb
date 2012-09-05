@@ -44,7 +44,7 @@ class Project < ActiveRecord::Base
   scope :not_expiring, not_expired.where("NOT (expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("current_timestamp - projects.created_at <= '15 days'::interval")
   scope :successful, where(successful: true)
-  scope :recommended_for_home, ->{ 
+  scope :recommended_for_home, ->{
     includes(:user, :category, :project_total).
     recommended.
     visible.
@@ -52,10 +52,10 @@ class Project < ActiveRecord::Base
     order('random()').
     limit(4)
   }
-  scope :expiring_for_home, ->(exclude_ids){ 
+  scope :expiring_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order('date(expires_at), random()').limit(3)
   }
-  scope :recent_for_home, ->(exclude_ids){ 
+  scope :recent_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('date(created_at) DESC, random()').limit(3)
   }
 
@@ -64,7 +64,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true
-  validates_format_of :permalink, with: /^\w+$/, :allow_blank => true, :allow_nil => true
+  validates_format_of :permalink, with: /^(\w|-)*$/, :allow_blank => true, :allow_nil => true
   before_create :store_image_url
 
   def store_image_url
@@ -177,9 +177,9 @@ class Project < ActiveRecord::Base
           facebook_text = I18n.t('project.finish.successful.facebook_text', :name => name, :locale => backer.user.locale)
           email_subject = I18n.t('project.finish.successful.email_subject', :locale => backer.user.locale)
 
-          email_text = I18n.t('project.finish.successful.email_text', { 
-            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'), 
-            :user_link => link_to(user.display_name, "#{I18n.t('site.base_url')}/users/#{user.to_param}", :style => 'color: #008800;'), 
+          email_text = I18n.t('project.finish.successful.email_text', {
+            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'),
+            :user_link => link_to(user.display_name, "#{I18n.t('site.base_url')}/users/#{user.to_param}", :style => 'color: #008800;'),
             :locale => backer.user.locale,
             :project_total_backers => total_backers,
             :project_pleged => display_pledged,
@@ -200,9 +200,9 @@ class Project < ActiveRecord::Base
           email_subject = I18n.t('project.finish.unsuccessful.email_subject', :locale => backer.user.locale)
 
           email_text = I18n.t('project.finish.unsuccessful.email_text', {
-            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'), 
-            :value => backer.display_value, 
-            :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits", :style => 'color: #008800;'), 
+            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'),
+            :value => backer.display_value,
+            :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits", :style => 'color: #008800;'),
             :locale => backer.user.locale,
             :project_category => category,
             :explore_category_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/explore##{category.name.parameterize}"),
