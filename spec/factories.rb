@@ -50,7 +50,6 @@ Factory.define :backer do |f|
 end
 Factory.define :payment_notification do |f|
   f.association :backer, :factory => :backer
-  f.status 'pending'
   f.extra_data {}
 end
 Factory.define :oauth_provider do |f|
