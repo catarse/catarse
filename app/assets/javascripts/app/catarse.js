@@ -40,6 +40,12 @@ var CATARSE = {
     }
   },
   adm: {
+    users:{
+      index: function(){
+        window.view = new CATARSE.Adm.Users.Index({el: $("body") });
+      }
+    },
+
     backers:{
       index: function(){
         window.view = new CATARSE.ProjectsPending_backersView({el: $("body") });
