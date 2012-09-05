@@ -31,7 +31,7 @@ feature "New Project Feature", :driver => :selenium do
         page.should have_content("Envie seu projeto")
       end
       within "h2" do
-        page.should have_content("A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando...")
+        page.should have_content('A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..." in "Lembre-se de que esse é o primeiro contato que vamos ter com o seu projeto. Por isso, capriche na descrição e não deixe de conhecer outros projetos no Catarse relacionados a sua categoria')
       end
     end
 
