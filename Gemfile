@@ -9,7 +9,8 @@ gem 'pg'
 gem 'foreigner'
 gem 'activerecord-postgresql-adapter'
 
-gem 'catarse_paypal_express', '~> 0.0.2'
+#gem 'catarse_paypal_express', '~> 0.0.2'
+gem 'catarse_paypal_express', path: '~/store/code/catarse_paypal_express'
 gem 'catarse_moip', '~> 0.1.1'
 gem 'moip_catarse', '~> 1.0.6', require: 'moip'
 

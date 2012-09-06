@@ -21,6 +21,13 @@ GIT
   specs:
     validation_reflection (1.0.0)
 
+PATH
+  remote: ~/store/code/catarse_paypal_express
+  specs:
+    catarse_paypal_express (0.1.0)
+      activemerchant (~> 1.17.0)
+      rails (~> 3.2.6)
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -98,9 +105,6 @@ GEM
       supermodel
     catarse_moip (0.1.1)
       moip_catarse (~> 1.0.6)
-      rails (~> 3.2.6)
-    catarse_paypal_express (0.0.2)
-      activemerchant (~> 1.17.0)
       rails (~> 3.2.6)
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
@@ -461,7 +465,7 @@ DEPENDENCIES
   carrierwave (= 0.5.8)
   catarse_mailchimp
   catarse_moip (~> 0.1.1)
-  catarse_paypal_express (~> 0.0.2)
+  catarse_paypal_express!
   coffee-rails (~> 3.2.2)
   compass-960-plugin (~> 0.10.4)
   compass-rails (~> 1.0.1)
