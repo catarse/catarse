@@ -354,7 +354,7 @@ pt:
           not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
         waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
       reached_of: "Atingidos de"
-      submit: "Quero apoiar este projeto"
+      submit: "Apoiar este projeto"
     backer:
       anonymous_backer: "Apoiador anônimo"
       anonymous_description: "Optou por permanecer incógnito"
@@ -468,7 +468,7 @@ pt:
     show:
       rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
       waiting: "Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)"
-      about_title: "Sobre o projeto"
+      about_title: "O projeto"
       menu:
         about: Sobre
         backers: Apoiadores
