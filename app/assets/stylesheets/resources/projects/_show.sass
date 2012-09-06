@@ -5,36 +5,53 @@
         li
           width: 100%
           float: left
-          border-bottom: 1px $gryn_almost_ccc dotted
-          padding: 20px 0 10px
+          border-bottom: 1px #ccc dotted
+          padding: 40px 0 10px
           min-height: 67px
-          &:last-child
-            border-bottom: none
           .time
-            font-family: "Lato-Regular"
-            text-transform: uppercase
-            color: $gryn_almost_ccc
+            font-family: "Lato-Bold"
+            padding-bottom: 20px
+            width: 100%
+            float: left
+            color: white
             font-size: 14px
-            margin-bottom: 20px
+            text-transform: uppercase
+            text-indent: 20px
+            padding-top: 8px
+            height: 32px
+            background: url($images_path+'project_about.png') left top no-repeat
+         
           h3
-            font-family: "Lato-Regular"
-            color: $ultra_gryn
+            font-family: "Arial"
+            font-weight: bold
+            color: #444
+            font-size: 16px
+            margin-bottom: 20px
+            padding-left: 20px
           p
             font-family: Arial
-            padding: 5px 0
-            font-size: 17px
-            color: $_6f_gryn
-          h3
-            font-size: 1.5em
-            margin-bottom: 15px
+            padding: 5px 0 5px 20px
+            font-size: 14px
+            color: #444
+            line-height: 21px
           img
             max-width: 600px
           a
             font-family: Arial
-            color: $ultra_gryn
+            color: #444
             text-decoration: none
             &:hover
               color: $pink
+              text-decoration: underline
+            &.destroy_update
+              font-size: 12px
+              color: $pink
+              text-decoration: none
+              padding: 10px 0px 20px 20px
+              float: left
+              &:hover
+                text-decoration: underline
+
           strong
             font-weight: bold
           em
@@ -119,14 +136,30 @@
       #project_about
         .text
           font-family: Arial
-          font-size: 16px
-          color: rgba(black, 0.6)
+          font-size: 14px
+          color: #444
+          width: 100%
+          float: left
+          padding-top: 30px
+          margin-top: 10px
+          border-top: 1px dotted #ccc
+
           h5
-            font-weight: bold
+            font-family: "Lato-Bold"
             padding-bottom: 20px
+            width: 100%
+            float: left
+            color: white
+            font-size: 14px
+            text-transform: uppercase
+            text-indent: 20px
+            padding-top: 8px
+            height: 32px
+            background: url($images_path+'project_about.png') left top no-repeat
           p
             line-height: 140%
             margin: 10px 0
+            padding-left: 20px
           strong
             font-weight: bold
           a
@@ -219,8 +252,8 @@
       #rewards
         .box
           background: #F3F3F3
-          width: 230px
-          padding: 20px 20px 20px 30px
+          width: 225px
+          padding: 20px 20px 20px 35px
           float: left
           border: 1px solid #EDEDED
           +transition(all, 0.3s)
@@ -230,7 +263,7 @@
             background: url($images_path+'reward_icon.png') left top no-repeat
             width: 33px
             height: 40px
-            margin-left: -41px
+            margin-left: -46px
             float: left
           h2
             font-family: "Lato-Bold"
@@ -266,8 +299,7 @@
             font-family: "Lato-Bold"
             height: 51px
             width: 282px
-            margin-left: -31px
-            margin-top: 10px
+            margin-left: -36px
             font-size: 11px
             text-indent: 30px            
             text-transform: uppercase
@@ -287,7 +319,8 @@
         .statistics
           background: #F3F3F3
           width: 240px
-          padding: 20px
+          float: left
+          padding: 20px 20px 0 20px
           .item
             font-family: Arial
             font-size: 16px
@@ -314,6 +347,7 @@
           background: url($images_path+"back_statistics.gif") left top repeat-x
           width: 260px
           height: 30px
+          float: left
           padding: 11px 10px 10px
           &.successful
             background: #64CB64
@@ -328,6 +362,7 @@
             text-shadow: 1px 1px white
         #pledge
           width: 280px
+          float: left
           padding-top: 20px
           padding-bottom: 20px
           input[type="submit"][disabled="disabled"]
@@ -427,8 +462,10 @@
                 margin-right: 20px
     #project_updates
       .bootstrap-form
+        margin-top: 20px
         textarea, input#update_title
-          width: 100%
+          width: 98%
+          margin-bottom: 20px
         label
           font-family: "Lato-Regular"
           font-size: 15px
@@ -437,13 +474,13 @@
         font-family: Arial
         text-align: left !important
         color: #666
-        font-size: 16px
+        font-size: 14px
         margin-bottom: 15px
         a
-          color: $ultra_gryn
+          color: $pink
           text-decoration: none
           &:hover
-            color: $pink
+            text-decoration: underline
       #formatting_tips
         font-family: Arial
         display: none
