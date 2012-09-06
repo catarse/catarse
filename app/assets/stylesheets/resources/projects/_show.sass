@@ -170,47 +170,75 @@
             
       .media_content_backers
         ul.collection_list
+          margin-top: 20px
           li
-            width: 100%
+            width: 296px
             float: left
-            border-bottom: 1px $gryn_almost_ccc dotted
-            padding: 20px 0 10px
+            border-bottom: 1px #CCCCCC dotted
             min-height: 67px
+            padding-right: 35px
+            padding-bottom: 30px
             &:last-child
-              border-bottom: none
+              margin-left: 1px
+              padding-right: 0px
             .backer_avatar
               float: left
-              width: 59px
-              height: 61px
+              width: 80px
+              height: 80px
               margin-right: 15px
             .back_info
               float: left
+              width: 200px
               #text
                 a
-                  font-family: Arial
-                  font-size: 14px
-                  font-weight: bold
-                  color: $ultra_gryn
+                  font-family: "Lato-Bold"
+                  font-size: 18px
+                  color: #444
                   text-decoration: none
+                  margin-bottom: 15px
+                  display: block
                   &:hover
                     color: $pink
-              #confirmed
-                padding-top: 8px
+                    text-decoration: underline
               #confirmed, #backed
-                padding-top: 2px
+                padding-top: 4px
+                height: 16px
+                text-indent: 25px
+                background: url($images_path+'confirmed_icon.png') left top no-repeat
+              #backed
+                background: url($images_path+'backed_icon.png') left 4px no-repeat
+                width: 125px
+                line-height: 120%
+                text-indent: 0px
+                height: auto
+                padding-left: 25px
+              #confirmed, #backed
                 font-family: Arial
                 font-size: 12px
                 color: $ultra_gryn
             .reward
-              clear: both
-              padding: 10px
               font-size: 12px
               font-family: Lato-Regular
-              background: $ed_gryn
               margin-top: 10px
+              line-height: 120%
               float: left
-              width: 620px
-
+              width: 240px
+              padding: 15px 15px 15px 40px
+              background: url($images_path+'reward_box.png') left top no-repeat #F3F3F3
+              .value
+                font-family: "Lato-Bold"
+                font-size: 18px
+              .user_email
+                color: $pink
+                font-family: "Arial"
+                font-size: 12px
+                margin-top: 10px
+                &:hover
+                  text-decoration: underline
+              .user_reward
+                font-family: "Arial"
+                margin-top: 12px
+                font-size: 12px                
     .sidebar
       +grid(5)
       +omega
