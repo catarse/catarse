@@ -175,7 +175,7 @@ class Project < ActiveRecord::Base
           notification_text = I18n.t('project.finish.successful.notification_text', :link => link_to(truncate(name, :length => 38), "/projects/#{self.to_param}"), :locale => backer.user.locale)
           twitter_text = I18n.t('project.finish.successful.twitter_text', :name => name, :short_url => short_url, :locale => backer.user.locale)
           facebook_text = I18n.t('project.finish.successful.facebook_text', :name => name, :locale => backer.user.locale)
-          email_subject = I18n.t('project.finish.successful.email_subject', :locale => backer.user.locale)
+          email_subject = I18n.t('project.finish.successful.email_subject', :project_name => name, :locale => backer.user.locale)
 
           email_text = I18n.t('project.finish.successful.email_text', {
             :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'),
@@ -185,7 +185,9 @@ class Project < ActiveRecord::Base
             :project_pleged => display_pledged,
             :project_process => progress,
             :project_owner_name => user.display_name,
-            :project_owner_email => user.email
+            :project_owner_email => mail_to(user.email, nil, :style => 'color: #008800;'),
+            :facebook_button => facebook_button_to_notification_email(facebook_text),
+            :twitter_button => twitter_button_to_notification_email(twitter_text)
           })
 
           backer.user.notifications.create :project => self, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
@@ -204,12 +206,12 @@ class Project < ActiveRecord::Base
             :value => backer.display_value,
             :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits", :style => 'color: #008800;'),
             :locale => backer.user.locale,
-            :project_category => category,
-            :explore_category_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/explore##{category.name.parameterize}"),
+            :project_category => category.name,
+            :explore_category_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/explore##{category.name.parameterize}", :style => 'color: #008800;'),
             :user_provider => backer.user.display_provider,
-            :link_to_term => link_to(I18n.t('click_term', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/terms"),
+            :link_to_term => link_to(I18n.t('click_term', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/terms", :style => 'color: #008800;'),
             :project_owner_name => user.display_name,
-            :project_owner_email => user.email
+            :project_owner_email => mail_to(user.email, nil, :style => 'color: #008800;')
 
           })
 
@@ -219,6 +221,16 @@ class Project < ActiveRecord::Base
       end
     end
     self.update_attributes finished: true, successful: successful?
+  end
+
+  def facebook_button_to_notification_email(text)
+    img = "<img src='#{I18n.t('site.base_url')}/assets/auth/facebook_64.png' title='Facebook' class='social' />".html_safe
+    link_to(img, "http://www.facebook.com/share.php?u=#{I18n.t('site.base_url')}/projects/#{self.to_param}&t=#{text}", :target => :_blank)
+  end
+
+  def twitter_button_to_notification_email(text)
+    img = "<img src='#{I18n.t('site.base_url')}/assets/auth/twitter_64.png' title='Twitter' class='social' />".html_safe
+    link_to(img, "http://twitter.com/?status=#{text}", :target => :_blank)
   end
 
   def as_json(options={})

@@ -6,7 +6,12 @@
 = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
   = form.inputs do
     = form.input :user_id, :as => :hidden, :value => current_user.id
-    = form.input :permalink, :as => :string
+    /= form.input :permalink, :as => :string
+    .bootstrap-twitter
+    = form.label :permalink, t('activerecord.attributes.project.permalink')
+    .input-prepend.permalink
+      span.add-on= "#{t('site.base_url')}/"
+      = form.text_field :permalink, :class => 'permalink'
     = form.input :name, :as => :string
     = form.input :video_url, :as => :string
     = form.input :about
