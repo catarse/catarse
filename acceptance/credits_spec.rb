@@ -12,6 +12,8 @@ feature "Credits Feature" do
     ]
     user.reload
 
+    sleep 1
+
     click_link I18n.t('layouts.header.account')
     verify_translations
     click_link 'Meus créditos'
