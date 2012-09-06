@@ -19,24 +19,31 @@
 #my_data
   ul
     li
-      #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
-      .hint= t('.email_hint')
-    li
-      = hidden_field_tag 'id', @user.id
-      = check_box_tag 'newsletter', '1', @user.newsletter
-      = label_tag 'newsletter', t('.newsletter')
-#social_info
-  h1= t('.social_info')
-  ul
-    li
       .bootstrap-form
-        = form_for(@user, :as => :user, :html => { :method => :put }) do |f|
+        = semantic_form_for @user, :html => {:method => :put}  do |f|
           = f.label :twitter, t('.twitter')
           = f.text_field :twitter
           = f.label :facebook_link, t('.facebook_link')
           = f.text_field :facebook_link
           = f.label :other_link, t('.other_link')
           = f.text_field :other_link
+          = f.input :full_name, :required => true, :as => :string
+          = f.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
+          = f.input :address_street, :as => :string
+          = f.input :address_number, :as => :string
+          = f.input :address_complement, :required => false, :as => :string
+          = f.input :address_neighbourhood, :as => :string
+          = f.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
+          = f.input :address_city, :as => :string
+          = f.input :address_state, :as => :select, :collection => State.array
+          = f.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}
+          = f.label :email, t('.email')
+          #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
+          .hint= t('.email_hint')
+          = hidden_field_tag 'id', @user.id
+          = check_box_tag 'newsletter', '1', @user.newsletter,:label => 'saf'
+          = label_tag 'newsletter', t('.newsletter')
+
           br
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"

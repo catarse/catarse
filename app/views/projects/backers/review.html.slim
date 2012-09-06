@@ -53,20 +53,20 @@
           #payment.hide
             .title
               h1= t('.choose_payment')
-              h2= t('.choose_payment_subtitle')              
+              h2= t('.choose_payment_subtitle')
             .choose_payment
               - if defined?(CatarsePaypalExpress)
                 .cc
-                  span= t('.choose_credit_card')             
+                  span= t('.choose_credit_card')
                   = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_paypal_express.payment_pay_paypal_express_path(@backer), :method => :get, :class => 'payment_link' do
                     p
-                      span= t('.pay_with')                
+                      span= t('.pay_with')
                     = image_tag 'catarse/icon-paypal.png'
-                  = image_tag 'catarse/paypal-choice.png' 
+                  = image_tag 'catarse/paypal-choice.png'
                   .clearfix
                 .or
                   span= t('or')
-              - if defined?(CatarseMoip)        
+              - if defined?(CatarseMoip)
                 .boleto
                   span= t('.choose_boleto')
                   = link_to 'javascript:void(0);', :"data-payment_method_url" => catarse_moip.pay_payment_moip_path(@backer), :method => :get, :class => 'payment_link' do
