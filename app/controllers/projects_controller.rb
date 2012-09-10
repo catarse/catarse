@@ -110,6 +110,9 @@ class ProjectsController < ApplicationController
 
   def create
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
+    if params[:project][:permalink] == ''
+      params[:project][:permalink] = nil
+    end
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
     create!(:notice => t('projects.create.success'))
     # When it can't create the project the @project doesn't exist and then it causes a record not found
