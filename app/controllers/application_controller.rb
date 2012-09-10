@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
     @total_backed = statistics.total_backed
     @total_users = statistics.total_users
     @total_projects = statistics.total_projects
-    @total_projects_success = statistics.total_projects_success 
-    @total_projects_online = statistics.total_projects_online 
+    @total_projects_success = statistics.total_projects_success
+    @total_projects_online = statistics.total_projects_online
     @fb_admins = [567237711]
   end
 
@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
     session[:locale] = new_locale
     new_url = "#{request.fullpath}"
     if params[:locale]
-      new_url.gsub!(/^\/(#{params[:locale]})?/, "/#{new_locale}")
+      new_url.gsub!(/^\/(#{params[:locale]})?/, "/#{new_locale}/")
     else
       if new_url == "/"
         new_url = "/#{new_locale}"
