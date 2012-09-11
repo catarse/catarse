@@ -25,6 +25,11 @@ class Backer < ActiveRecord::Base
     (self.value * 100).round
   end
 
+  def refund!
+    self.refunded = true
+    self.save
+  end
+
   def confirm!
     self.confirmed = true
     self.confirmed_at = Time.now
@@ -65,10 +70,6 @@ class Backer < ActiveRecord::Base
 
   def display_platform_fee(fee=7.5)
     number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => '.'
-  end
-
-  def payment_service_fee
-    (payment_detail || build_payment_detail.update_from_service).service_tax_amount.to_f
   end
 
   def moip_value

@@ -44,16 +44,16 @@ describe User do
 
   describe ".by_payer_email" do
     before do
-      p = Factory(:payment_detail)
+      p = Factory(:payment_notification)
       backer = p.backer
       @u = backer.user
-      p.payer_email = 'foo@bar.com'
+      p.extra_data = {'payer_email' => 'foo@bar.com'}
       p.save!
-      p = Factory(:payment_detail, :backer => backer)
-      p.payer_email = 'another_email@bar.com'
+      p = Factory(:payment_notification, :backer => backer)
+      p.extra_data = {'payer_email' => 'another_email@bar.com'}
       p.save!
-      p = Factory(:payment_detail)
-      p.payer_email = 'another_email@bar.com'
+      p = Factory(:payment_notification)
+      p.extra_data = {'payer_email' => 'another_email@bar.com'}
       p.save!
     end
     subject{ User.by_payer_email 'foo@bar.com' }

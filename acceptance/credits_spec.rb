@@ -70,8 +70,8 @@ feature "Credits Feature" do
       verify_translations
       column = rows[0].all("td")[4]
       # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
-      sleep 1
-      column.text.should == I18n.t('credits.index.refunded')
+      sleep 2
+      column.text.should == "Pedido enviado com sucesso"
     end
     click_on "OK"
     verify_translations
