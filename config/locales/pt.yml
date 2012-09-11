@@ -468,7 +468,7 @@ pt:
     show:
       rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
       waiting: "Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)"
-      about_title: "Sobre o projeto"
+      about_title: "O projeto"
       menu:
         about: Sobre
         backers: Apoiadores

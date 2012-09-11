@@ -27,24 +27,22 @@ script type="text/template" id="backer_template"
         | <%= user['backs_text'] %>
     | <% } %>
     - if current_user and (current_user == @project.user or current_user.admin)
-      p.reward
-        = "#{t('activerecord.attributes.backer.value')}: "
-        | <%= display_value %> .
-        = " #{t('activerecord.attributes.user.email')}: "
+      .reward
+        =
+        .value <%= display_value %> .
+        | <% if (reward) { %>
+        .user_reward <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
+        | <% } else { %>
+        | &nbsp;
+        = t('.no_reward')
+        | <% } %>
         | <% if(user['email']) { %>
-        | <%= user['email'] %>
+        .user_email <%= user['email'] %>
         | <% } else { %>
         | &nbsp;
         = t('not_informed')
         |.
         | <% } %>
-        br
-        | <% if (reward) { %>
-        = "#{t('activerecord.models.reward')}: "
-        | <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
-        | <% } else { %>
-        | &nbsp;
-        = t('.no_reward')
-        | <% } %>
+        
     .clear
 
