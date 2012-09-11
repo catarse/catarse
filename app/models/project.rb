@@ -199,7 +199,10 @@ class Project < ActiveRecord::Base
           notification_text = I18n.t('project.finish.unsuccessful.unsuccessful_text', :link => link_to(truncate(name, :length => 32), "/projects/#{self.to_param}"), :locale => backer.user.locale)
           backer.user.notifications.create :project => self, :text => notification_text
           notification_text = I18n.t('project.finish.unsuccessful.notification_text', :value => backer.display_value, :link => link_to(I18n.t('here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits"), :locale => backer.user.locale)
-          email_subject = I18n.t('project.finish.unsuccessful.email_subject', :locale => backer.user.locale)
+          email_subject = I18n.t('project.finish.unsuccessful.email_subject', 
+                                 :locale => backer.user.locale,
+                                 :project_name => name
+                                )
 
           email_text = I18n.t('project.finish.unsuccessful.email_text', {
             :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'),
