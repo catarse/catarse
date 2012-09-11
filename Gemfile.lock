@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/devton/catarse_paypal_express.git
+  revision: e36606faa3f6575ebedb0146504bf10b8003947b
+  specs:
+    catarse_paypal_express (0.1.0)
+      activemerchant (~> 1.17.0)
+      rails (~> 3.2.6)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 3130933893714019684d5713e6afba92a7717d2d
   specs:
@@ -20,13 +28,6 @@ GIT
   revision: 60320e6beb088808fd625a8d958dbd0d2661d494
   specs:
     validation_reflection (1.0.0)
-
-PATH
-  remote: ~/store/code/catarse_paypal_express
-  specs:
-    catarse_paypal_express (0.1.0)
-      activemerchant (~> 1.17.0)
-      rails (~> 3.2.6)
 
 GEM
   remote: http://rubygems.org/
