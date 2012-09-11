@@ -5,36 +5,53 @@
         li
           width: 100%
           float: left
-          border-bottom: 1px $gryn_almost_ccc dotted
-          padding: 20px 0 10px
+          border-bottom: 1px #ccc dotted
+          padding: 40px 0 10px
           min-height: 67px
-          &:last-child
-            border-bottom: none
           .time
-            font-family: "Lato-Regular"
-            text-transform: uppercase
-            color: $gryn_almost_ccc
+            font-family: "Lato-Bold"
+            padding-bottom: 20px
+            width: 100%
+            float: left
+            color: white
             font-size: 14px
-            margin-bottom: 20px
+            text-transform: uppercase
+            text-indent: 20px
+            padding-top: 8px
+            height: 32px
+            background: url($images_path+'project_about.png') left top no-repeat
+         
           h3
-            font-family: "Lato-Regular"
-            color: $ultra_gryn
+            font-family: "Arial"
+            font-weight: bold
+            color: #444
+            font-size: 16px
+            margin-bottom: 20px
+            padding-left: 20px
           p
             font-family: Arial
-            padding: 5px 0
-            font-size: 17px
-            color: $_6f_gryn
-          h3
-            font-size: 1.5em
-            margin-bottom: 15px
+            padding: 5px 0 5px 20px
+            font-size: 14px
+            color: #444
+            line-height: 21px
           img
             max-width: 600px
           a
             font-family: Arial
-            color: $ultra_gryn
+            color: #444
             text-decoration: none
             &:hover
               color: $pink
+              text-decoration: underline
+            &.destroy_update
+              font-size: 12px
+              color: $pink
+              text-decoration: none
+              padding: 10px 0px 20px 20px
+              float: left
+              &:hover
+                text-decoration: underline
+
           strong
             font-weight: bold
           em
@@ -47,26 +64,26 @@
         color: black
     .project_image
       +grid(2)
-      padding-top:  20px
-      padding-bottom: 10px
+      padding-top:  40px
+      padding-bottom: 40px
     .section_header
       +grid(14)
-      padding-top:  20px
-      padding-bottom: 10px
+      padding-top:  40px
+      padding-bottom: 40px
       h1
-        color: $ultra_gryn
-        font-family: "Lato-Regular"
-        font-size: 28px
+        color: #333
+        font-family: "Lato-Bold"
+        font-size: 24px
         padding: 5px 0
       h4
         color: rgba($ultra_gryn, 0.7)
         font-family: Arial
         font-size: 16px
         a
-          color: $ultra_gryn
+          color: $pink
           text-decoration: none
           &:hover
-            color: $pink
+            text-decoration: underline
     .main
       +grid(11)
       padding-bottom: 20px
@@ -119,14 +136,30 @@
       #project_about
         .text
           font-family: Arial
-          font-size: 16px
-          color: rgba(black, 0.6)
+          font-size: 14px
+          color: #444
+          width: 100%
+          float: left
+          padding-top: 30px
+          margin-top: 10px
+          border-top: 1px dotted #ccc
+
           h5
-            font-weight: bold
+            font-family: "Lato-Bold"
             padding-bottom: 20px
+            width: 100%
+            float: left
+            color: white
+            font-size: 14px
+            text-transform: uppercase
+            text-indent: 20px
+            padding-top: 8px
+            height: 32px
+            background: url($images_path+'project_about.png') left top no-repeat
           p
             line-height: 140%
             margin: 10px 0
+            padding-left: 20px
           strong
             font-weight: bold
           a
@@ -137,47 +170,76 @@
             
       .media_content_backers
         ul.collection_list
+          margin-top: 20px
           li
-            width: 100%
+            width: 296px
             float: left
-            border-bottom: 1px $gryn_almost_ccc dotted
-            padding: 20px 0 10px
+            border-bottom: 1px #CCCCCC dotted
             min-height: 67px
+            padding-right: 35px
+            padding-bottom: 30px
+            margin-bottom: 30px
             &:last-child
-              border-bottom: none
+              margin-left: 1px
+              padding-right: 0px
             .backer_avatar
               float: left
-              width: 59px
-              height: 61px
+              width: 80px
+              height: 80px
               margin-right: 15px
             .back_info
               float: left
+              width: 200px
               #text
                 a
-                  font-family: Arial
-                  font-size: 14px
-                  font-weight: bold
-                  color: $ultra_gryn
+                  font-family: "Lato-Bold"
+                  font-size: 18px
+                  color: #444
                   text-decoration: none
+                  margin-bottom: 15px
+                  display: block
                   &:hover
                     color: $pink
-              #confirmed
-                padding-top: 8px
+                    text-decoration: underline
               #confirmed, #backed
-                padding-top: 2px
+                padding-top: 4px
+                height: 16px
+                text-indent: 25px
+                background: url($images_path+'confirmed_icon.png') left top no-repeat
+              #backed
+                background: url($images_path+'backed_icon.png') left 4px no-repeat
+                width: 125px
+                line-height: 120%
+                text-indent: 0px
+                height: auto
+                padding-left: 25px
+              #confirmed, #backed
                 font-family: Arial
                 font-size: 12px
                 color: $ultra_gryn
             .reward
-              clear: both
-              padding: 10px
               font-size: 12px
               font-family: Lato-Regular
-              background: $ed_gryn
               margin-top: 10px
+              line-height: 120%
               float: left
-              width: 620px
-
+              width: 240px
+              padding: 15px 15px 15px 40px
+              background: url($images_path+'reward_box.png') left top no-repeat #F3F3F3
+              .value
+                font-family: "Lato-Bold"
+                font-size: 18px
+              .user_email
+                color: $pink
+                font-family: "Arial"
+                font-size: 12px
+                margin-top: 10px
+                &:hover
+                  text-decoration: underline
+              .user_reward
+                font-family: "Arial"
+                margin-top: 12px
+                font-size: 12px                
     .sidebar
       +grid(5)
       +omega
@@ -185,42 +247,60 @@
       padding-top: 15px
       .user_social
         +grid(3)
+        width: 100%
+        margin-left: 0px
+        margin-bottom: 40px
+        padding-bottom: 30px
+        border-bottom: 1px dotted #CCCCCC
         li
-          font-family: 'Lato-Regular'
-          font-size: 12px
-          padding: 0 0 5px 25px
-          margin-bottom: 10px
           +opacity(0.8)
+          float: left
+          margin-right: 5px
           a
-            color: black
             +transition(all, 0.5s)
-            text-decoration: none
-            &:hover
+            display: block
+            text-indent: -9999em
+            height: 15px
+            font-family: 'Lato-Regular'
+            font-size: 12px            
+            &.email
+              width: auto
               color: $pink
-          &.email
-            background: url($images_path+'social_icons.png') left top no-repeat
-          &.facebook
-            padding-top: 2px
-            background: url($images_path+'social_icons.png') left -25px no-repeat
-          &.twitter
-            padding-top: 2px
-            background: url($images_path+'social_icons.png') left -54px no-repeat
+              margin-left: 5px
+              text-indent: 0px
+              text-decoration: none
+              padding-top: 1px
+              &:hover
+                text-decoration: underline
+            &.facebook
+              width: 16px
+              background: url($images_path+'social_icons.png') left -25px no-repeat
+            &.twitter
+              width: 16px
+              background: url($images_path+'social_icons.png') left -54px no-repeat
       #rewards
         .box
-          background: $ed_gryn
-          width: 240px
-          padding: 20px
-          margin-top: 3px
+          background: #F3F3F3
+          width: 225px
+          padding: 20px 20px 20px 35px
           float: left
+          border: 1px solid #EDEDED
           +transition(all, 0.3s)
           &.clickable:hover
             background: rgba($light_green, 0.3)
+          span.avaliable
+            background: url($images_path+'reward_icon.png') left top no-repeat
+            width: 33px
+            height: 40px
+            margin-left: -46px
+            float: left
           h2
             font-family: "Lato-Bold"
             font-size: 18px
-            color: rgba(black, 0.8)
+            color: #444
             text-transform: uppercase
             padding-bottom: 5px
+            text-shadow: 1px 1px white
           em
             background: url($images_path+"reward_count_icon18x17.png") left top no-repeat
             color: $_4d_gryn
@@ -229,81 +309,104 @@
             font-size: 11px
             padding: 3px 3px 10px 25px
             text-transform: uppercase
-            clear: both
             display: block
+            text-shadow: 1px 1px white
           p, .on_the_spot_editing
-            color: $ultra_gryn
+            color: #333333
             font-family: Arial
-            font-size: 16px
+            font-size: 14px
             line-height: 130%
             padding-bottom: 10px
             a
-              color: $pink
+              color: #64CB64
               text-decoration: none
               &:hover
                 text-decoration: underline
           .maximum_backers
-            color: $_4d_gryn
-            font-family: Arial
-            font-weight: bold
+            color: #4C525D
+            background: url($images_path+"back_statistics.gif") left top repeat-x 
+            font-family: "Lato-Bold"
+            height: 51px
+            width: 282px
+            margin-left: -36px
             font-size: 11px
+            text-indent: 30px            
             text-transform: uppercase
+            .limited
+              font-size: 13px
+              margin-top: 12px
+              float: left
+              width: 100%
+              margin-bottom: 3px
+              text-shadow: 1px 1px white
+            .remaining
+              font-size: 11px
+              text-shadow: 1px 1px white
       .info
         #pledge
-          background: $ed_gryn
+          background: #F3F3F3
         .statistics
-          background: $ed_gryn
+          background: #F3F3F3
           width: 240px
-          padding: 20px
+          float: left
+          padding: 20px 20px 0 20px
           .item
             font-family: Arial
             font-size: 16px
-            color: rgba(black, 0.8)
-            padding-left: 55px
+            color: #444
+            padding-left: 70px
             margin-bottom: 20px
             p
               font-family: "Lato-Bold"
-              font-size: 34px
-              color: black
+              font-size: 36px
+              color: #444
+              text-shadow: 1px 1px white
+            em
+              font-family: "Lato-Regular"
+              font-size: 14px
+              color: #444
+              text-shadow: 1px 1px white
             &.backers
-              background: url($images_path+"sidebar_backers_icon26x19.png") 4px center no-repeat
+              background: url($images_path+"sidebar_backers_icon26x19.png") left center no-repeat
             &.goal
               background: url($images_path+"goal_icon36x17.png") left center no-repeat
             &.time
-              background: url($images_path+"time_icon19x30.png") 10px center no-repeat
+              background: url($images_path+"time_icon19x30.png") left center no-repeat
         #condition
-          background: $_6f_gryn
-          width: 240px
-          padding: 10px 20px
+          background: url($images_path+"back_statistics.gif") left top repeat-x
+          width: 260px
+          height: 30px
+          float: left
+          padding: 11px 10px 10px
           &.successful
-            background: $green
+            background: #64CB64
           &.expired
-            background: $red
+            background: #CC1328
           p
             line-height: 130%
             font-family: Arial
-            font-size: 11px
-            text-transform: uppercase
-            color: white
+            font-size: 12px
+            font-style: italic
+            color: #666666
+            text-shadow: 1px 1px white
         #pledge
           width: 280px
+          float: left
           padding-top: 20px
           padding-bottom: 20px
           input[type="submit"][disabled="disabled"]
             +opacity(0.6)
-            background: url($images_path+"submit_back_icon25x22.png") 6px center no-repeat $ultra_gryn
+            background: url($images_path+"submit_back_icon25x22.png") 20px center no-repeat $ultra_gryn
           input[type="submit"]
             display: block
             margin: 0 auto
-            background: url($images_path+"submit_back_icon25x22.png") 6px center no-repeat $light_green
-            width: 266px
+            background: url($images_path+"submit_back_icon25x22.png") 20px center no-repeat $light_green
+            width: 245px
             height: 55px
             border: none
-            text-indent: 28px
+            text-indent: 30px
             +border-radius(10px)
             +transition(all, 0.5s)
-            +text-shadow(rgba(black, 0.3) 1px 1px 1px)
-            +box-shadow(rgba(black, 0.3) 1px 1px 1px)
             text-transform: uppercase
             font-family: "Lato-Bold"
             font-size: 15px
@@ -313,7 +416,7 @@
             &:active
               +box-shadow(rgba(black, 0.3) 0 0 10px inset)
         #creator_profile
-          padding-top: 20px
+          padding-top: 40px
           float: left
           padding-bottom: 15px
           a
@@ -328,40 +431,70 @@
             font-size: 18px
             padding-left: 30px
             display: block
-            padding-bottom: 15px
+            padding-bottom: 25px
           .avatar
             +grid(2)
+            width: 80px
             +alpha
             img
-              +box-shadow(rgba(black, 0.8) 2px 2px 4px)
+              width: 80px
+              height: 80px
           .personal_info
             +grid(3)
             +omega
+            margin-left: 0px
             p.name
-              padding-bottom: 5px
+              padding-bottom: 6px
               a
                 font-family: "Lato-Bold"
                 font-size: 14px
                 color: $pink
                 text-decoration: none
+                &:hover
+                  text-decoration: underline
             p
               font-family: Arial
               font-size: 12px
               color: $ultra_gryn
               line-height: 140%
-          #bio
+            #bio
+              +grid(5)
+              width: 190px
+              margin-right: 0px
+              +alpha
+              p
+                padding: 0px
+                font-family: Arial
+                font-size: 12px
+                color: $ultra_gryn
+                line-height: 130%
+          #city
             +grid(5)
+            width: 190px
+            margin-top: 6px
+            margin-right: 0px
             +alpha
             p
               padding: 10px 0
               font-family: Arial
               font-size: 12px
               color: $ultra_gryn
-              line-height: 140%
+              line-height: 130%
+              &.backer
+                background: url($images_path+"backer_info.png") left 2px no-repeat
+                text-indent: 20px
+                padding: 0px
+              &.city
+                background: url($images_path+"backer_city.png") left 2px no-repeat
+                text-indent: 20px
+                padding: 0px
+                margin-right: 20px
     #project_updates
       .bootstrap-form
+        margin-top: 20px
         textarea, input#update_title
-          width: 100%
+          width: 98%
+          margin-bottom: 20px
         label
           font-family: "Lato-Regular"
           font-size: 15px
@@ -370,13 +503,13 @@
         font-family: Arial
         text-align: left !important
         color: #666
-        font-size: 16px
+        font-size: 14px
         margin-bottom: 15px
         a
-          color: $ultra_gryn
+          color: $pink
           text-decoration: none
           &:hover
-            color: $pink
+            text-decoration: underline
       #formatting_tips
         font-family: Arial
         display: none

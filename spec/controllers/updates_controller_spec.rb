@@ -22,7 +22,7 @@ describe UpdatesController do
     let(:user){ Factory(:user) }
     before do
       request.session[:user_id] = user.id
-      @project = Factory(:project)
+      @project = Factory(:project, :user_id => user.id)
       post :create, :project_id => @project.id, :locale => 'pt', :update => {:title => 'title', :comment => 'update comment'}
     end
     it{ should redirect_to project_updates_path(@project) }

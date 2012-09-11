@@ -4,7 +4,8 @@ class UserDecorator < Draper::Base
 
   def display_provider
     case provider
-    when 'devise' then 'catarse'
+    when 'devise' then "Login #{email}"
+    when 'google' then I18n.t('user.google_account')
     else provider
     end
   end
@@ -14,7 +15,7 @@ class UserDecorator < Draper::Base
   end
 
   def display_image
-    uploaded_image.url || image_url || gravatar_url || '/assets/user.png'
+    uploaded_image.thumb_avatar.url || image_url || gravatar_url || '/assets/user.png'
   end
 
   def short_name

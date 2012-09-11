@@ -27,6 +27,7 @@ describe UserDecorator do
       let(:user){ Factory.build(:user, :uploaded_image => 'image.png' )}
       before do
         image = stub(:url => 'image.png')
+        image.stubs(:thumb_avatar).returns(image)
         user.stubs(:uploaded_image).returns(image)
       end
       it{ should == 'image.png' }
