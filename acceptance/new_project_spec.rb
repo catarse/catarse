@@ -11,8 +11,8 @@ feature "New Project Feature", :driver => :selenium do
     current_path.should == guidelines_path
 
     within ".bootstrap-form" do
-      check "Eu li e entendi como funciona o Catarse."
-      click_button "Quero enviar meu projeto"
+      check I18n.t('static.guidelines.accept')
+      click_button I18n.t('static.guidelines.submit')
     end
     verify_translations
     current_path.should == login_path
@@ -31,7 +31,7 @@ feature "New Project Feature", :driver => :selenium do
         page.should have_content("Envie seu projeto")
       end
       within "h2" do
-        page.should have_content("A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando...")
+        page.should have_content(I18n.t('projects.new.subtitle'))
       end
     end
 

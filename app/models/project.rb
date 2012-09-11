@@ -44,7 +44,7 @@ class Project < ActiveRecord::Base
   scope :not_expiring, not_expired.where("NOT (expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("current_timestamp - projects.created_at <= '15 days'::interval")
   scope :successful, where(successful: true)
-  scope :recommended_for_home, ->{ 
+  scope :recommended_for_home, ->{
     includes(:user, :category, :project_total).
     recommended.
     visible.
@@ -52,10 +52,10 @@ class Project < ActiveRecord::Base
     order('random()').
     limit(4)
   }
-  scope :expiring_for_home, ->(exclude_ids){ 
+  scope :expiring_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order('date(expires_at), random()').limit(3)
   }
-  scope :recent_for_home, ->(exclude_ids){ 
+  scope :recent_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('date(created_at) DESC, random()').limit(3)
   }
 
@@ -64,6 +64,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
   validates_length_of :headline, :maximum => 140
   validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true
+  validates_format_of :permalink, with: /^(\w|-)*$/, :allow_blank => true, :allow_nil => true
   before_create :store_image_url
 
   def store_image_url
@@ -174,17 +175,19 @@ class Project < ActiveRecord::Base
           notification_text = I18n.t('project.finish.successful.notification_text', :link => link_to(truncate(name, :length => 38), "/projects/#{self.to_param}"), :locale => backer.user.locale)
           twitter_text = I18n.t('project.finish.successful.twitter_text', :name => name, :short_url => short_url, :locale => backer.user.locale)
           facebook_text = I18n.t('project.finish.successful.facebook_text', :name => name, :locale => backer.user.locale)
-          email_subject = I18n.t('project.finish.successful.email_subject', :locale => backer.user.locale)
+          email_subject = I18n.t('project.finish.successful.email_subject', :project_name => name, :locale => backer.user.locale)
 
-          email_text = I18n.t('project.finish.successful.email_text', { 
-            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'), 
-            :user_link => link_to(user.display_name, "#{I18n.t('site.base_url')}/users/#{user.to_param}", :style => 'color: #008800;'), 
+          email_text = I18n.t('project.finish.successful.email_text', {
+            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'),
+            :user_link => link_to(user.display_name, "#{I18n.t('site.base_url')}/users/#{user.to_param}", :style => 'color: #008800;'),
             :locale => backer.user.locale,
             :project_total_backers => total_backers,
             :project_pleged => display_pledged,
             :project_process => progress,
             :project_owner_name => user.display_name,
-            :project_owner_email => user.email
+            :project_owner_email => mail_to(user.email, nil, :style => 'color: #008800;'),
+            :facebook_button => facebook_button_to_notification_email(facebook_text),
+            :twitter_button => twitter_button_to_notification_email(twitter_text)
           })
 
           backer.user.notifications.create :project => self, :text => notification_text, :twitter_text => twitter_text, :facebook_text => facebook_text, :email_subject => email_subject, :email_text => email_text
@@ -196,19 +199,22 @@ class Project < ActiveRecord::Base
           notification_text = I18n.t('project.finish.unsuccessful.unsuccessful_text', :link => link_to(truncate(name, :length => 32), "/projects/#{self.to_param}"), :locale => backer.user.locale)
           backer.user.notifications.create :project => self, :text => notification_text
           notification_text = I18n.t('project.finish.unsuccessful.notification_text', :value => backer.display_value, :link => link_to(I18n.t('here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits"), :locale => backer.user.locale)
-          email_subject = I18n.t('project.finish.unsuccessful.email_subject', :locale => backer.user.locale)
+          email_subject = I18n.t('project.finish.unsuccessful.email_subject', 
+                                 :locale => backer.user.locale,
+                                 :project_name => name
+                                )
 
           email_text = I18n.t('project.finish.unsuccessful.email_text', {
-            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'), 
-            :value => backer.display_value, 
-            :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits", :style => 'color: #008800;'), 
+            :project_link => link_to(name, "#{I18n.t('site.base_url')}/projects/#{self.to_param}", :style => 'color: #008800;'),
+            :value => backer.display_value,
+            :credits_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits", :style => 'color: #008800;'),
             :locale => backer.user.locale,
-            :project_category => category,
-            :explore_category_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/explore##{category.name.parameterize}"),
+            :project_category => category.name,
+            :explore_category_link => link_to(I18n.t('clicking_here', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/explore##{category.name.parameterize}", :style => 'color: #008800;'),
             :user_provider => backer.user.display_provider,
-            :link_to_term => link_to(I18n.t('click_term', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/terms"),
+            :link_to_term => link_to(I18n.t('click_term', :locale => backer.user.locale), "#{I18n.t('site.base_url')}/terms", :style => 'color: #008800;'),
             :project_owner_name => user.display_name,
-            :project_owner_email => user.email
+            :project_owner_email => mail_to(user.email, nil, :style => 'color: #008800;')
 
           })
 
@@ -218,6 +224,16 @@ class Project < ActiveRecord::Base
       end
     end
     self.update_attributes finished: true, successful: successful?
+  end
+
+  def facebook_button_to_notification_email(text)
+    img = "<img src='#{I18n.t('site.base_url')}/assets/auth/facebook_64.png' title='Facebook' class='social' />".html_safe
+    link_to(img, "http://www.facebook.com/share.php?u=#{I18n.t('site.base_url')}/projects/#{self.to_param}&t=#{text}", :target => :_blank)
+  end
+
+  def twitter_button_to_notification_email(text)
+    img = "<img src='#{I18n.t('site.base_url')}/assets/auth/twitter_64.png' title='Twitter' class='social' />".html_safe
+    link_to(img, "http://twitter.com/?status=#{text}", :target => :_blank)
   end
 
   def as_json(options={})
