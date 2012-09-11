@@ -4,7 +4,8 @@ class UserDecorator < Draper::Base
 
   def display_provider
     case provider
-    when 'devise' then 'catarse'
+    when 'devise' then "Login #{email}"
+    when 'google' then I18n.t('user.google_account')
     else provider
     end
   end
