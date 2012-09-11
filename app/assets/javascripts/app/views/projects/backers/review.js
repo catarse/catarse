@@ -158,6 +158,23 @@ CATARSE.BackersReviewView = Backbone.View.extend({
       }
     });
 
+    $('.payments_type').hide();
+    $('.tab_container #payment_menu a').removeClass('selected');
+
+    $('.tab_container #payment_menu a').click(function(e){
+      $('.payments_type').hide();
+      $('.tab_container #payment_menu a').removeClass('selected');
+      e.preventDefault();
+      var reference = $(e.currentTarget).attr('href');
+      var remote_url = $(e.currentTarget).data('target');
+      $(this).addClass('selected');
+      $(reference).fadeIn(300);
+      $.get(remote_url, function(response){
+        $(reference).empty().html(response);
+      });
+    });
+
+
   },
 
   updateCurrentBackerInfo: function() {
