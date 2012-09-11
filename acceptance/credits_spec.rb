@@ -16,12 +16,12 @@ feature "Credits Feature" do
 
     click_link I18n.t('layouts.header.account')
     verify_translations
-    click_link 'Meus créditos'
+    click_link I18n.t('credits.index.title')
     verify_translations
     current_path.should == user_path(user)
 
     within 'head title' do
-      page.should have_content("#{user.display_name} · #{I18n.t('site.name')}") 
+      page.should have_content("#{user.display_name} · #{I18n.t('site.name')}")
     end
   end
 
@@ -35,7 +35,7 @@ feature "Credits Feature" do
       column = rows[0].all("td")[4]
       # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
       sleep 1
-      column.text.should == "Você não possui créditos suficientes para realizar este estorno."
+      column.text.should == I18n.t('credits.refund.no_credits')
     end
     click_on "OK"
     verify_translations
@@ -58,7 +58,7 @@ feature "Credits Feature" do
       columns[1].text.should == I18n.l(backer.created_at.to_date)
       columns[2].text.should == backer.display_value
       columns[3].text.should == I18n.l(backer.refund_deadline.to_date)
-      columns[4].text.should == "Solicitar estorno"
+      columns[4].text.should == I18n.t('credits.index.request_refund')
     end
 
     # Disabling javascript confirm, because we cannot test it with Capybara
@@ -71,7 +71,7 @@ feature "Credits Feature" do
       column = rows[0].all("td")[4]
       # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
       sleep 1
-      column.text.should == "Pedido enviado com sucesso"
+      column.text.should == I18n.t('credits.index.refunded')
     end
     click_on "OK"
     verify_translations
