@@ -29,6 +29,12 @@ GIT
   specs:
     validation_reflection (1.0.0)
 
+PATH
+  remote: ~/store/code/catarse_moip
+  specs:
+    catarse_moip (0.1.1)
+      rails (~> 3.2.6)
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -104,9 +110,6 @@ GEM
     catarse_mailchimp (0.0.1)
       mailchimp
       supermodel
-    catarse_moip (0.1.1)
-      moip_catarse (~> 1.0.6)
-      rails (~> 3.2.6)
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
     chunky_png (1.2.6)
@@ -465,7 +468,7 @@ DEPENDENCIES
   capybara (>= 1.0.1)
   carrierwave (= 0.5.8)
   catarse_mailchimp
-  catarse_moip (~> 0.1.1)
+  catarse_moip!
   catarse_paypal_express!
   coffee-rails (~> 3.2.2)
   compass-960-plugin (~> 0.10.4)
