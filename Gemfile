@@ -13,7 +13,7 @@ gem 'activerecord-postgresql-adapter'
 gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git'
 #gem 'catarse_moip', '~> 0.1.1'
 gem 'catarse_moip', path: '~/store/code/catarse_moip'
-gem 'moip_catarse', '~> 1.0.6', require: 'moip'
+#gem 'moip_catarse', '~> 1.0.6', require: 'moip'
 
 gem 'maxim-sexy_pg_constraints'
 gem 'dalli'
