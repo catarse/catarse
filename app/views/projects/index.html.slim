@@ -64,10 +64,10 @@
           = form_tag 'http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e', id: 'mailee-form', method: 'post' do
             = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
             = submit_tag t('sidebar.buttons.newsletter')
-        .faq
+        /.faq
           h3= t('sidebar.titles.faq')
           = link_to image_tag('catarse/faq_video.png'), '#'
-        .schedule
+        /.schedule
           h3= t('sidebar.titles.schedule')
           ul.events
             - @events.each do |event|
