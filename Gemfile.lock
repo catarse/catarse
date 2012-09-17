@@ -33,6 +33,7 @@ PATH
   remote: ~/store/code/catarse_moip
   specs:
     catarse_moip (0.1.1)
+      libxml-ruby (~> 2.3.3)
       rails (~> 3.2.6)
 
 GEM
@@ -216,6 +217,7 @@ GEM
       addressable (~> 2.3)
     libwebsocket (0.1.5)
       addressable
+    libxml-ruby (2.3.3)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     loofah (1.0.0)

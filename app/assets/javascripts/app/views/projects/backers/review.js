@@ -169,9 +169,11 @@ CATARSE.BackersReviewView = Backbone.View.extend({
       var remote_url = $(e.currentTarget).data('target');
       $(this).addClass('selected');
       $(reference).fadeIn(300);
-      $.get(remote_url, function(response){
-        $(reference).empty().html(response);
-      });
+      if($('div', reference).length <= 0) {
+        $.get(remote_url, function(response){
+          $(reference).empty().html(response);
+        });
+      }
     });
 
 
