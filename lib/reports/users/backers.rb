@@ -31,6 +31,32 @@ module Reports
           end
         end
 
+        def most_backed_diff(limit=50)
+          @users = User.most_backed_different_projects.limit(limit)
+
+          @csv = CSV.generate(:col_sep => ',') do |csv_string|
+
+            # TODO: Change this later *order and names to use i18n*
+            # for moment header only in portuguese.
+            csv_string << [
+              'ID',
+              'Nome do apoiador',
+              'Email',
+              'Total de apoios em projetos diferentes',
+            ]
+
+            @users.each do |user|
+              u = User.find(user.id)
+              csv_string << [
+                u.id,
+                u.display_name,
+                u.email,
+                u.count_backs
+              ]
+            end
+          end
+        end
+
         def most_backed(limit=50)
           @users = User.most_backeds.limit(limit)
 
