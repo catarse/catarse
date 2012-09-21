@@ -12,8 +12,6 @@
   meta property="og:description" content=@project.headline
   meta property="fb:admins" content="#{fb_admins}"
 
-= render 'facebook_sdk'
-
 #page_content
   .container
     - unless @project.visible?
@@ -142,9 +140,9 @@
             #bio
               p= @project.user.bio
           #city
-            p.backer= t('count_backed_projects', :total => @project.user.total_backs)            
+            p.backer= t('count_backed_projects', :total => @project.user.total_backs)
             p.city
-              | #{@project.user.address_city}          
+              | #{@project.user.address_city}
         .user_social
           ul
             - if @project.user.facebook_link
@@ -155,7 +153,7 @@
                 = link_to "Perfil no twitter", @project.user.twitter_link, :target => '_blank', :class=> 'twitter'
             - if can? :manage, @project.user
               li
-                = mail_to @project.user.email, "Me envie um email", :target => '_blank', :class=> 'email'                
+                = mail_to @project.user.email, "Me envie um email", :target => '_blank', :class=> 'email'
             - if @project.user.other_link
               li.other
                 = link_to @project.user.other_link, @project.user.other_link, :target => '_blank'
