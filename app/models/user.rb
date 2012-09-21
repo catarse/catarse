@@ -83,6 +83,26 @@ class User < ActiveRecord::Base
     order("count_backs desc").
     group("users.name, users.id, users.email")
   }
+  scope :most_backed_different_projects, -> {
+    joins(:backs).select(
+      <<-SQL
+        DISTINCT(users.id),
+        (
+          SELECT
+            COUNT(DISTINCT(backers.project_id))
+          FROM
+            backers
+          WHERE
+            backers.confirmed IS TRUE
+            AND backers.user_id = users.id
+            AND users.primary_user_id IS NULL
+        ) as count_backs
+      SQL
+    ).
+    where("backers.confirmed is true").
+    order("count_backs DESC")
+
+  }
   scope :by_email, ->(email){ where('email ~* ?', email) }
   scope :by_payer_email, ->(email){  where('EXISTS(SELECT true FROM backers JOIN payment_details ON backers.id = payment_details.backer_id WHERE backers.user_id = users.id AND payment_details.payer_email ~* ?)', email) }
   scope :by_name, ->(name){ where('name ~* ?', name) }
@@ -103,6 +123,10 @@ class User < ActiveRecord::Base
         select('count(DISTINCT user_id) as users, count(*) as backers, sum(user_totals.sum) as backed, sum(user_totals.credits) as credits, sum(users.credits) as credits_table').
         to_sql
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
+  end
+
+  def total_of_different_backs
+    backs.confirmed.select('DISTINCT(backers.project_id)').length
   end
 
   def decorator

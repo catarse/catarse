@@ -24,6 +24,14 @@ class ReportsController < ApplicationController
               :disposition => "attachment; filename=user_most_backed_#{params[:project_id]}.csv"
   end
 
+  def users_most_backed_diff
+    return unless require_admin
+    @csv = Reports::Users::Backers.most_backed_diff
+    send_data @csv,
+              :type => 'text/csv; charset=utf-8; header=present',
+              :disposition => "attachment; filename=user_most_backed_diff_#{params[:project_id]}.csv"
+  end
+
   def all_confirmed_backers
     return unless require_admin
     @csv = Reports::Users::Backers.all_confirmed_backers
