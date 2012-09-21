@@ -7,6 +7,10 @@ class BackerObserver < ActiveRecord::Observer
   end
 
   def before_save(backer)
-    backer.confirm?
+    if backer.confirmed and backer.confirmed_at.nil?
+      backer.confirmed_at = Time.now
+      nt = NotificationType.where(:name => 'confirm_backer').first
+      Notification.notify_backer(backer, nt) if nt
+    end
   end
 end
