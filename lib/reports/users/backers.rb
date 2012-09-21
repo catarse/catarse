@@ -42,7 +42,7 @@ module Reports
               'ID',
               'Nome do apoiador',
               'Email',
-              'Total de apoios em projetos diferentes',
+              'Total de apoios em projetos diferentes'
             ]
 
             @users.each do |user|
@@ -51,7 +51,7 @@ module Reports
                 u.id,
                 u.display_name,
                 u.email,
-                u.count_backs
+                user.count_backs
               ]
             end
           end
