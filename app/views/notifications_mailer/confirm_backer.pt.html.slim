@@ -1,0 +1,14 @@
+- backer = @notification.backer
+|Sucesso!
+br
+|Seu apoio acabou de ser confirmado.
+br
+br
+|Confira: #{backer.user.display_name}
+br
+= backer.display_value
+br
+= backer.reward.description if backer.reward
+br
+br
+= backer.project.name
