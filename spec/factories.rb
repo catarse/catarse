@@ -31,9 +31,14 @@ Factory.define :project do |f|
   f.expires_at { 1.month.from_now }
   f.video_url 'http://vimeo.com/17298435'
 end
+Factory.define :notification_type do |f|
+  f.name "confirm_backer"
+end
 Factory.define :notification do |f|
   f.email_subject "Just a test"
   f.association :user, :factory => :user
+  f.association :backer, :factory => :backer
+  f.association :notification_type, :factory => :notification_type
   f.email_text "email text"
   f.text "Test :)"
 end
@@ -46,6 +51,7 @@ Factory.define :backer do |f|
   f.association :project, :factory => :project
   f.association :user, :factory => :user
   f.confirmed true
+  f.confirmed_at Time.now
   f.value 10.00
 end
 Factory.define :payment_notification do |f|
