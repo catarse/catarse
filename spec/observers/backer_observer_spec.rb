@@ -16,9 +16,19 @@ describe BackerObserver do
   end
 
   describe "before_save" do
+    context "when payment_choice is updated to BoletoBancario" do
+      let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }
+      before do
+        Notification.expects(:notify_backer).with(backer, :payment_slip)
+        backer.payment_choice = 'BoletoBancario'
+        backer.save!
+      end
+      it("should notify the backer"){ subject }
+    end
+
     context "when is not yet confirmed" do
       before do 
-        Notification.expects(:notify_backer).with(backer, confirm_backer)
+        Notification.expects(:notify_backer).with(backer, :confirm_backer)
       end
       its(:confirmed_at) { should_not be_nil }
     end
