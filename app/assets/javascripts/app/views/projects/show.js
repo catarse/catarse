@@ -5,6 +5,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     CATARSE.router.route("", "index", this.about)
     CATARSE.router.route("about", "about", this.about)
     CATARSE.router.route("updates", "updates", this.updates)
+    CATARSE.router.route(/updates\/\d+/, "updates", this.updates)
     CATARSE.router.route("backers", "backers", this.backers)
     CATARSE.router.route("comments", "comments", this.comments)
     CATARSE.router.route("embed", "embed", this.embed)
@@ -168,7 +169,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     window.location.href = url;
     //CATARSE.requireLogin(event, url)
   },
-  
+
   requireLogin: function(event) {
     CATARSE.requireLogin(event)
   }
