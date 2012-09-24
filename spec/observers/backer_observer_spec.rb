@@ -5,6 +5,10 @@ describe BackerObserver do
   let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => nil) }
   subject{ backer }
 
+  before do
+    confirm_backer # It should create the NotificationType before creating the Backer
+  end
+
   describe "after_create" do
     before{ Kernel.stubs(:rand).returns(1) }
     its(:key){ should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s }
@@ -14,7 +18,6 @@ describe BackerObserver do
   describe "before_save" do
     context "when is not yet confirmed" do
       before do 
-        confirm_backer # It should create the NotificationType before creating the Backer
         Notification.expects(:notify_backer).with(backer, confirm_backer)
       end
       its(:confirmed_at) { should_not be_nil }

@@ -9,7 +9,18 @@ describe Notification do
   let(:backer){ Factory(:backer) }
 
   describe ".notify_backer" do
-    subject{ Notification.notify_backer(backer, Factory(:notification_type, :name => 'confirm_backer')) }
-    its(:backer){ should == backer }
+    before do
+      Factory(:notification_type, :name => 'confirm_backer')
+    end
+
+    context "when NotificationType with the provided name does not exist" do
+      subject{ Notification.notify_backer(backer, :test) }
+      it("should raise error"){ lambda{ subject }.should raise_error("There is no NotificationType with name test") }
+    end
+
+    context "when NotificationType with the provided name exists" do
+      subject{ Notification.notify_backer(backer, :confirm_backer) }
+      its(:backer){ should == backer }
+    end
   end
 end
