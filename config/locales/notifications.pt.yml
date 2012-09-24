@@ -2,6 +2,9 @@ pt:
   notifications:
     confirm_backer:
       subject: "Obrigado! Seu apoio para %{project} foi confirmado!"
+    payment_slip:
+      subject: "Status do apoio para %{project}: boleto impresso"
+      header: "Informações sobre pagamentos por boleto no Catarse"
     updates:
       subject: "Se liga! Atualização de %{project_name} por %{project_owner}: %{update_title}"
       text: "%{update_title}<br />%{update_text}<br />Comentários? Mande ver na página do projeto: <a href='%{project_link}'>%{project_name}</a>."
