@@ -8,4 +8,7 @@ pt:
     updates:
       subject: "Se liga! Atualização de %{project_name} por %{project_owner}: %{update_title}"
       text: "%{update_title}<br />%{update_text}<br />Comentários? Mande ver na página do projeto: <a href='%{project_link}'>%{project_name}</a>."
+    project_success:
+      subject: "Projeto bem-sucedido: algumas informações necessárias"
+      header: "Projeto bem-sucedido o/"
 
