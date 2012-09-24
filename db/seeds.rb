@@ -28,4 +28,4 @@ ActiveRecord::Base.connection.execute "INSERT INTO categories (name) VALUES ('Ar
  ('Teatro'),
  ('Literatura');"
 
-ActiveRecord::Base.connection.execute "INSERT INTO notification_types (name) VALUES ('confirm_backer'), ('payment_slip');"
+ActiveRecord::Base.connection.execute "INSERT INTO notification_types (name) VALUES ('confirm_backer'), ('payment_slip'), ('project_success');"
