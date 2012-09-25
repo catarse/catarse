@@ -38,6 +38,7 @@ Factory.define :notification do |f|
   f.email_subject "Just a test"
   f.association :user, :factory => :user
   f.association :backer, :factory => :backer
+  f.association :project, :factory => :project
   f.association :notification_type, :factory => :notification_type
   f.email_text "email text"
   f.text "Test :)"

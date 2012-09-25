@@ -3,6 +3,8 @@ require 'spec_helper'
 describe BackersController do
   subject{ response }
   let(:backer){ Factory(:backer) }
+  before{ Notification.stubs(:notify_project_owner) }
+  before{ Notification.stubs(:notify_backer) }
   describe "GET index" do
     context "when user can not manage the profile or is anonymous" do
       before do
