@@ -77,8 +77,8 @@
               iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
-                #facebook_share= render 'facebook'
-                #twitter_share= render 'twitter'
+                .twitter_share= render 'twitter'
+                .facebook_share= render 'facebook'
                 ul
                   li.embed
                     = link_to '#embed', :id => 'embed_link' do
