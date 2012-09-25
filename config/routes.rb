@@ -22,6 +22,7 @@ Catarse::Application.routes.draw do
   match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
   match "/reports/location/:project_id/backers" => "reports#location_by_project", :as => :backers_location_report
   match "/reports/users_most_backed" => "reports#users_most_backed", :as => :most_backed_report
+  match "/reports/users_most_backed_diff" => "reports#users_most_backed_diff", :as => :most_backed_diff_report
   match "/reports/all_confirmed_backers" => "reports#all_confirmed_backers", :as => :all_confirmed_backers_report
   match "/reports/all_projects_owners" => "reports#all_projects_owner", :as => :all_projects_owner_report
   match "/reports/all_emails" => "reports#all_emails_to_newsletter", :as => :all_emails_to_newsletter
