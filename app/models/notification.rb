@@ -5,8 +5,11 @@ class Notification < ActiveRecord::Base
   scope :not_dismissed, where(:dismissed => false)
 
   def send_email
-    return unless self.email_subject and self.email_text and self.user.email
-    UsersMailer.notification_email(self).deliver
+    unless dismissed
+      return unless self.email_subject and self.email_text and self.user.email
+      self.update_attributes :dismissed => true
+      UsersMailer.notification_email(self).deliver
+    end
   rescue
   end
 end
