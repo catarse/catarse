@@ -1,0 +1,15 @@
+- if @notification.user.name 
+  = "#{t('.hello')}, #{@notification.user.name} !"
+- else 
+  = "#{t('.hello')} !"
+br
+br
+= @notification.email_text.html_safe 
+br
+br
+= t('.salutation') 
+br
+br
+= t('.signature') 
+br
+br
