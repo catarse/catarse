@@ -31,7 +31,7 @@ describe UsersController do
   describe "POST request_refund" do
     context "without user" do
       it 'should raise a exception' do
-        lambda { 
+        lambda {
           post :request_refund, { id: user.id, back_id: backer.id }
         }.should raise_exception CanCan::AccessDenied, 'You are not authorized to access this page.'
       end
@@ -50,6 +50,7 @@ describe UsersController do
         end
 
         it "when user doesn't have a necessary value" do
+          Factory(:notification_type, :name => 'project_success')
           Factory(:backer, :user => user, :project => successful_project, :credits => true)
           post :request_refund, { id: user.id, back_id: backer.id }
 
