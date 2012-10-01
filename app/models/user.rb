@@ -166,7 +166,14 @@ class User < ActiveRecord::Base
       user.nickname = auth["info"]["nickname"]
       user.bio = auth["info"]["description"][0..139] if auth["info"]["description"]
       user.locale = I18n.locale.to_s
-      user.image_url =  auth["info"]["image"]
+
+      if auth["provider"] == "twitter"
+        user.image_url = "https://api.twitter.com/1/users/profile_image?screen_name=#{auth['info']['nickname']}&size=original"
+      end
+
+      if auth["provider"] == "facebook"
+        user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
+      end
     end
   end
 
