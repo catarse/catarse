@@ -293,12 +293,15 @@
           +transition(all, 0.3s)
           &.clickable:hover
             background: rgba($light_green, 0.3)
-          span.avaliable
-            background: url($images_path+'reward_icon.png') left top no-repeat
+          span
             width: 33px
             height: 40px
             margin-left: -46px
             float: left
+            &.avaliable
+              background: url($images_path+'reward_icon.png') left top no-repeat  
+            &.sold_out        
+              background: url($images_path+'icon_soldout.png') left top no-repeat   
           h2
             font-family: "Lato-Bold"
             font-size: 18px
