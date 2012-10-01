@@ -164,7 +164,10 @@
           - @rewards.each do |reward|
             div[class="box #{('clickable' if @project.can_back? and not reward.sold_out?)}"]
               = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
-              span.avaliable
+              - if reward.sold_out?
+                span.sold_out
+              - else
+                span.avaliable
               h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum)
               em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
               .clearfix
