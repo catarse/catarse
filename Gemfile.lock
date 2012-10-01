@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/devton/catarse_moip.git
-  revision: d681d0c277588191fc6acd77d9a17d7c6721d98d
-  specs:
-    catarse_moip (0.1.1)
-      libxml-ruby (~> 2.3.3)
-      rails (~> 3.2.6)
-
-GIT
   remote: git://github.com/devton/catarse_paypal_express.git
   revision: e36606faa3f6575ebedb0146504bf10b8003947b
   specs:
@@ -36,6 +28,13 @@ GIT
   revision: 60320e6beb088808fd625a8d958dbd0d2661d494
   specs:
     validation_reflection (1.0.0)
+
+PATH
+  remote: ~/store/code/catarse_moip
+  specs:
+    catarse_moip (0.1.1)
+      libxml-ruby (~> 2.3.3)
+      rails (~> 3.2.6)
 
 GEM
   remote: http://rubygems.org/
