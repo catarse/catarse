@@ -154,7 +154,26 @@ describe User do
     its(:name){ should == auth['info']['name'] }
     its(:nickname){ should == auth['info']['nickname'] }
     its(:bio){ should == auth['info']['description'][0..139] }
-    its(:image_url){ should == auth['info']['image'] }
+
+    context "when user is from facebook" do
+      let(:auth)  do {
+        'provider' => "facebook",
+        'uid' => "foobar",
+        'info' => {
+          'name' => "Foo bar",
+          'email' => 'another_email@anotherdomain.com',
+          'nickname' => "foobar",
+          'description' => "Foo bar's bio".ljust(200),
+          'image' => "image.png"
+        }
+      }
+      end
+      its(:image_url){ should == "https://graph.facebook.com/#{auth['uid']}/picture?type=large" }
+    end
+
+    context "when user is from twitter" do
+      its(:image_url){ should == "https://api.twitter.com/1/users/profile_image?screen_name=#{auth['info']['nickname']}&size=original" }
+    end
   end
 
   describe ".find_with_omniauth" do
