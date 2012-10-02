@@ -80,7 +80,6 @@
             .social
               #project_share
                 #facebook_share= render 'facebook'
-                #twitter_share= render 'twitter'
                 ul
                   li.embed
                     = link_to '#embed', :id => 'embed_link' do
@@ -88,6 +87,7 @@
                       = t('.share.embed')
                   li.link
                     = text_field_tag "project_link", @project.short_url
+                #twitter_share= render 'twitter'                    
                 .clear
           .text
             h5= t('.about_title')
@@ -177,7 +177,7 @@
                 - else
                   = auto_link(simple_format(reward.description), :html => {:target => :_blank})
               - if reward.maximum_backers
-                .maximum_backers
+                .maximum_backers.clearfix
                   - if reward.sold_out?
                     .sold_out= t('reward.sold_out')
                   - else
