@@ -7,6 +7,7 @@ class Projects::BackersController < ApplicationController
     return unless require_login
     @backer = current_user.backs.find params[:id]
     @backer.update_attributes(params[:backer])
+
     render :json => {:message => 'updated'}
   end
 
