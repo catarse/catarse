@@ -135,7 +135,7 @@
                   = submit_tag t('projects.back_project.submit'), :disabled => (not @project.can_back?)
         #creator_profile
           h3= t('project_by')
-          .avatar= image_tag @project.user.display_image, :width => '100px', :heigth => '100px'
+          .avatar = @project.user.display_image_html :width => 80, :height => 80
           .personal_info
             p.name
              = link_to @project.user.display_name, user_path(@project.user)
