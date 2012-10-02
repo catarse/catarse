@@ -6,6 +6,7 @@ class Backer < ActiveRecord::Base
   belongs_to :user
   belongs_to :reward
   has_many :payment_logs
+  has_many :payment_notifications
   has_one :payment_detail
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
@@ -15,7 +16,6 @@ class Backer < ActiveRecord::Base
   scope :confirmed, where(:confirmed => true)
   scope :not_confirmed, where(:confirmed => false)
   scope :pending, where(:confirmed => false)
-  scope :display_notice, where(:display_notice => true)
   scope :can_refund, where(:can_refund => true)
   scope :within_refund_deadline, where("date(current_timestamp) <= date(created_at + interval '180 days')")
   attr_protected :confirmed
@@ -24,11 +24,14 @@ class Backer < ActiveRecord::Base
     (self.value * 100).round
   end
 
+  def refund!
+    self.refunded = true
+    self.save
+  end
+
   def confirm!
     self.confirmed = true
-    self.confirmed_at = Time.now
     self.save
-    notify_confirmation
   end
 
   def reward_must_be_from_project
@@ -64,10 +67,6 @@ class Backer < ActiveRecord::Base
 
   def display_platform_fee(fee=7.5)
     number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => '.'
-  end
-
-  def payment_service_fee
-    (payment_detail || build_payment_detail.update_from_service).service_tax_amount.to_f
   end
 
   def moip_value
@@ -120,22 +119,5 @@ class Backer < ActiveRecord::Base
 
   def define_payment_method
     self.update_attributes({ payment_method: 'MoIP' })
-  end
-
-  def confirm?
-    if confirmed and confirmed_at.nil?
-      self.confirmed_at = Time.now
-      self.display_notice = true
-    end
-  end
-
-  protected
-
-  def notify_confirmation
-    text = I18n.t('notifications.backers.to_backer.text', :backer_name => user.display_name, :backer_value => display_value, :reward => "#{reward.description if reward}", :project_name => project.name)
-    Notification.create! :user => user,
-                         :email_subject => I18n.t('notifications.backers.to_backer.subject', :project => project.name),
-                         :email_text => text,
-                         :text => text
   end
 end

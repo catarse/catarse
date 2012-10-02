@@ -1,8 +1,127 @@
 [data-controller="backers"][data-namespace="projects"][data-action="review"]
   //input.error
     //border: 1px solid rgba(#ff0033, 0.5)
+  p.subtitle
+    padding-bottom: 15px
   .hide
     display: none
+    p
+      font-family: "Lato-Regular"
+      font-size: 14px
+      color: #333333
+      float: left
+      margin-top: 30px
+    .inputs
+      float: left
+      margin-left: 15px
+      li
+        margin-top: 20px
+        label
+          float: left
+          font-family: "Lato-Regular"
+          font-size: 14px
+          margin-bottom: 0
+          margin-right: 7px
+          margin-top: 9px
+          width: 30px
+    .list_payment
+      width: 100%
+      border-top: 1px dotted #ddd
+      border-bottom: 1px dotted #ddd
+      height: 88px
+      margin-left: 0px
+      margin-top: 40px
+      float: left
+      input
+        margin-top: 40px
+        margin-right: 5px
+        float: left
+      .cards
+        background: url($images_path+'payment_cards.jpg') left top no-repeat
+        float: left
+        height: 73px
+        margin-top: 9px
+        text-indent: -9999em
+        width: 357px
+        cursor: pointer
+        margin-right: 30px
+      .boleto, .account
+        background: url($images_path+'payment_boleto.jpg') left top no-repeat
+        cursor: pointer
+        float: left
+        height: 73px
+        margin-top: 9px
+        padding-top: 28px
+        text-indent: 70px  
+        font-family: "Lato-Regular"
+        font-size: 12px
+        color: #666
+        margin-right: 30px
+      .account
+        background: url($images_path+'payment_account.jpg') left top no-repeat  
+        text-indent: 239px
+        margin-right: 0px
+    h3 
+      color: #666666
+      float: left
+      font-family: "Lato-Bold"
+      font-size: 18px
+      margin-bottom: 20px
+      margin-top: 40px
+      width: 100%
+    .choose_card
+      width: 100%
+      float: left
+      .div
+        float: left
+        span
+          color: #666666
+          font-family: "Lato-Bold"
+          font-size: 16
+          margin-top: 20px
+          margin-bottom: 20px
+          display: block
+        .owner_outside, .infocard_outside 
+          width: 415px
+          float: left         
+          border: 1px solid #DFDFDF
+          .owner, .infocard
+            background: #F4F4F4
+            width: 413px
+            float: left
+            border: 1px solid white
+            .inputs
+              margin-top: 20px
+              width: 91%
+              li
+                margin-bottom: 10px !important
+                margin-right: 0 !important
+                margin-top: 0            
+                &.name
+                  width: 100%!important
+                &.number 
+                  width: 300px!important
+                &.flag
+                  width: 50px!important
+                  margin-left: 17px          
+                &.cpf, &.phone, &.birth, &.source, &.date
+                  width: 175px!important
+                &.phone, &.date
+                  margin-left: 20px
+                label
+                  font-family: "Lato-Regular"
+                  margin-bottom: 5px
+                  margin-top: 0px
+                  width: 100%
+                input
+                  margin-bottom: 12px
+                  width: 97%!important         
+        .infocard_outside
+          margin-left: 60px
+
+      .div + .div span
+        margin-left: 60px!important
+
   #page_content
     .container
       #project_review
@@ -115,7 +234,7 @@
                 width: 100%
             &#user_email_input
               //clear: both
-              width: 250px
+              width: 490px
               input[type="text"]
                 width: 100%
             &#user_address_street_input
@@ -157,9 +276,18 @@
                   text-decoration: none
                   &:hover
                     text-decoration: underline
+        .tab_container
+          padding-top: 20px
+          margin-bottom:  20px
+          nav
+            a
+              background: #6BB544
+              &.selected
+                background: white
+
         .payment
           .title
-            padding-top: 20px
+            padding-top: 20px            
         .choose_payment
           .or
             +grid(2)
@@ -212,3 +340,58 @@
               .boleto_icon
                 margin-top: 16px
                 margin-right: 25px
+
+      .link_content
+        a
+          font-family: 'Arial'
+          color: $blue
+          text-decoration: none
+          display: block
+          padding: 10px
+          background: $ed_gryn
+          font-size: 15px
+        .bootstrap-twitter
+          float: left
+
+
+      .bootstrap-twitter
+        float: right
+        margin-right: 45px
+        margin-top: 10px
+        input[type="submit"], button
+          width: 180px
+          height: 40px
+          border-radius: 15px
+          @include box-shadow(0px)
+          margin: 12px auto 0px
+          float: none
+          border: none
+          display: block
+          background: #64CB64
+          color: white
+          font-family: "Lato-Regular"
+          font-size: 15px
+          text-transform: uppercase
+  .payments_type
+    float: left
+  #paypal_payment
+    h3
+      font-family: 'Lato-Regular'
+      font-weight: normal
+      font-size: 18px
+      margin-top: 10px
+    form
+      float: left
+      label
+        float: left
+        margin-top: 1px
+        margin-left: 5px
+        font-family: 'Lato-Regular'
+        font-size: 16px
+        color: $shadow_gryn
+      input[type="checkbox"]
+        float: left
+      .bootstrap-twitter
+        margin: 15px 0 0 0 !important
+        float: left !important
+        clear: both

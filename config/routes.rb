@@ -35,7 +35,6 @@ Catarse::Application.routes.draw do
   match "/privacy" => "static#privacy", :as => :privacy
 
   match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
-  match "/moip" => "payment_stream#moip", :as => :moip
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
@@ -54,6 +53,7 @@ Catarse::Application.routes.draw do
       end
       member do
         put 'checkout'
+        post 'update_info'
       end
     end
     collection do

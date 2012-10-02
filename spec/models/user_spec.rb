@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe User do
+  before do
+    Notification.stubs(:notify_project_owner)
+    Factory(:notification_type, :name => 'project_success')
+  end
+
   let(:user){ Factory(:user, :provider => "foo", :uid => "bar") }
   let(:unfinished_project){ Factory(:project, :finished => false, :successful => true) }
   let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
@@ -15,7 +20,7 @@ describe User do
     it{ should have_one :user_total }
   end
 
-  describe "validations" do 
+  describe "validations" do
     before{ user }
     it{ should validate_presence_of :provider }
     it{ should validate_presence_of :uid }
@@ -44,16 +49,16 @@ describe User do
 
   describe ".by_payer_email" do
     before do
-      p = Factory(:payment_detail)
+      p = Factory(:payment_notification)
       backer = p.backer
       @u = backer.user
-      p.payer_email = 'foo@bar.com'
+      p.extra_data = {'payer_email' => 'foo@bar.com'}
       p.save!
-      p = Factory(:payment_detail, :backer => backer)
-      p.payer_email = 'another_email@bar.com'
+      p = Factory(:payment_notification, :backer => backer)
+      p.extra_data = {'payer_email' => 'another_email@bar.com'}
       p.save!
-      p = Factory(:payment_detail)
-      p.payer_email = 'another_email@bar.com'
+      p = Factory(:payment_notification)
+      p.extra_data = {'payer_email' => 'another_email@bar.com'}
       p.save!
     end
     subject{ User.by_payer_email 'foo@bar.com' }
@@ -185,8 +190,8 @@ describe User do
   end
 
   describe ".create" do
-    subject do 
-      User.create! do |u| 
+    subject do
+      User.create! do |u|
         u.provider = 'twitter'
         u.uid = '123'
         u.twitter = '@dbiazus'
