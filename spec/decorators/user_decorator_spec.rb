@@ -58,7 +58,7 @@ describe UserDecorator do
 
   describe "#short_name" do
     subject { user = Factory(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet') }
-    its(:short_name) { should == 'My Name Is Lorem Ipsum ...' }
+    its(:short_name) { should == 'My Name Is Lorem ...' }
   end
 
   describe "#medium_name" do
