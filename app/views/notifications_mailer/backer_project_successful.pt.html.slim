@@ -1,0 +1,32 @@
+- backer = @notification.backer
+|Olá, #{backer.user.name}!
+br
+br
+|O projeto #{link_to(backer.project.name, "#{I18n.t('site.base_url')}/projects/#{backer.project.to_param}")} que você apoiou foi financiado com sucesso no Catarse! Hora de comemorar o/
+br
+br
+|O projeto teve, incluindo você, #{backer.project.total_backers} maravilhosos apoiadores, arrecadou #{backer.project.display_pledged} e atingiu #{backer.project.progress}% da meta da captação =D
+br
+br
+|Ahh, uma informação importante: a equipe do Catarse leva até 3 dias úteis para passar a lista de contato de todos os apoiadores para os produtores do projeto. Por isso, o realizador entrará em contato contigo para agradecimentos e pra falar sobre as recompensas só daqui alguns dias, ok?
+br
+br
+|Enquanto isso, compartilhe com todo mundo este sucesso!
+br
+br
+- fb_img = "<img src=\"#{I18n.t('site.base_url')}/assets/auth/facebook_64.png\" title='Facebook' class='social' />".html_safe
+== raw link_to(fb_img, "http://www.facebook.com/share.php?u=#{I18n.t('site.base_url')}/projects/#{backer.project.to_param}&t=Uhuu! O projeto '#{backer.project.name}', que eu apoiei, foi bem-sucedido no Catarse!" , :target => :_blank)
+- twitter_img = "<img src='#{I18n.t('site.base_url')}/assets/auth/twitter_64.png' title='Twitter' class='social' />".html_safe
+== raw link_to(twitter_img,"http://twitter.com/?status=#{"Uhuu! O projeto '#{backer.project.name}', que eu apoiei, foi bem-sucedido no @Catarse_! #{backer.project.short_url}"}", :target => :_blank)
+br
+br
+|Se quiser entrar em contato com #{backer.project.user.name}, mande um email para #{mail_to backer.project.user.email}
+br
+br
+|Se tiver alguma outra dúvida, acesse nosso #{link_to('FAQ', "#{I18n.t('site.base_url')}/faq")} ou mande um email para o #{mail_to 'contato@catarse.me'}
+br
+br
+|Um grande abraço,
+br
+br
+|Equipe do Catarse

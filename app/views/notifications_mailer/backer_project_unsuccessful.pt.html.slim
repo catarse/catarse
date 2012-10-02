@@ -1,0 +1,26 @@
+- backer = @notification.backer
+|Olá, #{backer.user.name}!
+br
+br
+|Infelizmente o projeto #{link_to(backer.project.name, "#{I18n.t('site.base_url')}/projects/#{backer.project.to_param}")} que você apoiou não atingiu a meta estabelecida e não foi financiado no Catarse.
+br
+br
+|Em função disto, você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Você pode conhecer mais projetos de #{backer.project.category.name} em #{link_to("#{I18n.t('site.base_url')}/explore##{backer.project.category.name.parameterize}", "#{I18n.t('site.base_url')}/explore##{backer.project.category.name.parameterize}")}
+br
+br
+|Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits")}. Lembre que o seu cadastro no site foi feito através do #{backer.user.display_provider}. É por ele que você deve entrar para acessar a sua conta. Caso você tenha alguma dificuldade nesse processo, envie um email para #{mail_to "financeiro@catarse.me"} com o assunto “Reembolso - problema no login”.
+br
+br
+|Caso você prefira solicitar o reembolso, só para lembrar, como constam nos #{link_to('Termos de Uso do Catarse',"#{I18n.t('site.base_url')}/terms")}, que se o apoio foi feito com cartão de crédito, o valor será estornado na próxima fatura do cartão. Se o apoio foi feito através de transferência bancária ou boleto, enviaremos um email com os procedimentos necessários para poder devolver o valor para você.
+br
+br
+|Se, por qualquer motivo, quiser entrar em contato com #{backer.project.user.display_name}, mande um email para #{mail_to backer.project.user.email}.
+br
+br
+|Se tiver alguma outra dúvida, acesse nosso #{link_to('FAQ',"#{I18n.t('site.base_url')}/faq")} ou mande um email para o #{mail_to 'financeiro@catarse.me'}.
+br
+br
+|Um grande abraço,
+br
+br
+|Equipe do Catarse
