@@ -7,12 +7,8 @@ CATARSE.BackersReviewView = Backbone.View.extend({
       if($('#backer_credits').val() == "false"){
         if(!ok('#user_full_name'))
           all_ok = false
-        //if(!cpf_ok())
-          //all_ok = false
         if(!email_ok())
           all_ok = false
-        //if(!zip_code_ok())
-          //all_ok = false
         if(!ok('#user_address_street'))
           all_ok = false
         if(!ok('#user_address_number'))
@@ -21,10 +17,6 @@ CATARSE.BackersReviewView = Backbone.View.extend({
           all_ok = false
         if(!ok('#user_address_city'))
           all_ok = false
-        //if(!ok('#user_address_state'))
-          //all_ok = false
-        //if(!phone_number_ok())
-          //all_ok = false
       }
       if(!accepted_terms())
         all_ok = false
