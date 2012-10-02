@@ -21,19 +21,19 @@ class BackerObserver < ActiveRecord::Observer
     Notification.notify_project_owner(backer.project, :project_success) if backer.project.successful? &&  project_success_mail_not_sent(backer)
 
     unless user.have_address?
-      user.address_street = address_street
-      user.address_number = address_number
-      user.address_neighbourhood = address_neighbourhood
-      user.address_zip_code = address_zip_code
-      user.address_city = address_city
-      user.address_state = address_state
-      user.phone_number = address_phone_number
+      backer.user.address_street = address_street
+      backer.user.address_number = address_number
+      backer.user.address_neighbourhood = address_neighbourhood
+      backer.user.address_zip_code = address_zip_code
+      backer.user.address_city = address_city
+      backer.user.address_state = address_state
+      backer.user.phone_number = address_phone_number
     end
 
     unless user.full_name.present?
-      user.full_name = payer_name
+      backer.user.full_name = payer_name
     end
 
-    user.save
+    backer.user.save
   end
 end
