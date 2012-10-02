@@ -25,7 +25,7 @@
     #user_profile[data-user="#{@user.to_json}"]
       .section_header
         .profile_image
-          = image_tag @user.display_image, :class => 'profile_pic', :size => '119x121'
+          = @user.display_image_html
         .profile_title
           h1.profile
             - if current_user and @user == current_user
