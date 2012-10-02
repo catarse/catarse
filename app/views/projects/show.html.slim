@@ -177,7 +177,7 @@
                 - else
                   = auto_link(simple_format(reward.description), :html => {:target => :_blank})
               - if reward.maximum_backers
-                .maximum_backers
+                .maximum_backers.clearfix
                   - if reward.sold_out?
                     .sold_out= t('reward.sold_out')
                   - else
