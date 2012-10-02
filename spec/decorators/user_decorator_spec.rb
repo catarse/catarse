@@ -20,6 +20,13 @@ describe UserDecorator do
     end
   end
 
+  describe "#display_image_html" do
+    let(:user){ Factory.build(:user, :uploaded_image => 'image.png' )}
+    let(:options){ {:width => 300, :height => 300} }
+    subject{ user.display_image_html(options) }
+    it{ should == "<div class=\"avatar_wrapper\" style=\"width: #{options[:width]}px; height: #{options[:height]}px\"><img alt=\"User\" src=\"http://gravatar.com/avatar/1a112eb69f35030f97639280fe246aee.jpg?default=http://catarse.me/assets/user.png\" style=\"width: #{options[:width]}px; height: auto\" /></div>" }
+  end
+
   describe "#display_image" do
     subject{ user.display_image }
 
@@ -51,7 +58,7 @@ describe UserDecorator do
 
   describe "#short_name" do
     subject { user = Factory(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet') }
-    its(:short_name) { should == 'My Name Is Lorem Ipsum ...' }
+    its(:short_name) { should == 'My Name Is Lorem ...' }
   end
 
   describe "#medium_name" do
