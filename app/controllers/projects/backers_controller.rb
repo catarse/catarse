@@ -1,7 +1,14 @@
 class Projects::BackersController < ApplicationController
   inherit_resources
-  actions :index, :new
+  actions :index, :new, :update_info
   before_filter :load_project
+
+  def update_info
+    return unless require_login
+    @backer = current_user.backs.find params[:id]
+    @backer.update_attributes(params[:backer])
+    render :json => {:message => 'updated'}
+  end
 
   def index
     @backers = @project.backers.confirmed.order("confirmed_at DESC").page(params[:page]).per(10)

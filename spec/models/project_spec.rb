@@ -2,6 +2,7 @@
 require 'spec_helper'
 
 describe Project do
+  before{ Notification.stubs(:notify_project_owner) }
 
   describe "associations" do
     it{ should have_many :projects_curated_pages }
@@ -149,17 +150,17 @@ describe Project do
     let(:project){ Factory(:project) }
     subject{ project.display_status }
     context "when successful and expired" do
-      before do 
-        project.stubs(:successful?).returns(true) 
-        project.stubs(:expired?).returns(true) 
+      before do
+        project.stubs(:successful?).returns(true)
+        project.stubs(:expired?).returns(true)
       end
       it{ should == 'successful' }
     end
 
     context "when successful and in_time" do
-      before do 
-        project.stubs(:successful?).returns(true) 
-        project.stubs(:in_time?).returns(true) 
+      before do
+        project.stubs(:successful?).returns(true)
+        project.stubs(:in_time?).returns(true)
       end
       it{ should == 'in_time' }
     end
@@ -284,7 +285,7 @@ describe Project do
     end
 
   end
-  
+
   describe "#finish!" do
     it "should generate credits for users when project finishes and didn't succeed" do
       user = Factory(:user)
@@ -299,6 +300,11 @@ describe Project do
     it "should store successful = true when finished and successful? is true" do
       project = Factory(:project, can_finish: true, finished: false, goal: 1000, expires_at: 1.day.ago)
       backer = Factory(:backer, project: project, value: 1000)
+      Factory(:notification_type, :name => 'project_success')
+      project_total = mock()
+      project_total.stubs(:pledged).returns(1000.0)
+      project_total.stubs(:total_backers).returns(1)
+      project.stubs(:project_total).returns(project_total)
       backer.confirm!
       project.successful?.should be_true
       project.successful.should be_false
@@ -307,7 +313,7 @@ describe Project do
       project.successful?.should be_true
       project.successful.should be_true
     end
-    
+
     it "should store successful = false when finished and successful? is false" do
       project = Factory(:project, can_finish: true, finished: false, goal: 1000, expires_at: 1.day.ago)
       backer = Factory(:backer, project: project, value: 999)
@@ -319,9 +325,9 @@ describe Project do
       project.successful?.should be_false
       project.successful.should be_false
     end
-    
+
   end
-  
+
   describe "display methods" do
 
     it "should have a display image" do
@@ -380,7 +386,7 @@ describe Project do
     end
 
   end
-  
+
   describe "#curated_pages" do
 
     it "should be able to be in more than one curated page" do

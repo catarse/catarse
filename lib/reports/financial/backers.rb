@@ -5,7 +5,7 @@ module Reports
       class << self
         def report(project_id)
           @project = Project.find(project_id)
-          @backers = @project.backers.includes(:payment_detail, :user).confirmed
+          @backers = @project.backers.includes(:user).confirmed
 
           @csv = CSV.generate(:col_sep => ',') do |csv_string|
 
@@ -44,14 +44,14 @@ module Reports
                 (backer.reward.minimum_value if backer.reward),
                 (backer.reward.description if backer.reward),
                 backer.payment_method,
-                (backer.payment_detail.payment_method if backer.payment_detail),
-                (backer.payment_service_fee),
+                backer.payment_choice,
+                backer.payment_service_fee,
                 backer.key,
                 I18n.l(backer.created_at.to_date),
                 I18n.l(backer.confirmed_at.to_date),
                 backer.user.email,
-                (backer.payment_detail.payer_email if backer.payment_detail),
-                (backer.payment_detail.payer_name if backer.payment_detail),
+                backer.payer_email,
+                backer.payer_name,
                 backer.user.cpf,
                 backer.user.address_street,
                 backer.user.address_complement,
