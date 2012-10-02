@@ -23,7 +23,6 @@ class Notification < ActiveRecord::Base
   end
 
   def self.notify_backer_project_successful backer, notification_type_name
-    raise 'entroer'
     nt = find_notification notification_type_name
     create! :project => backer.project, :backer => backer, :user => backer.user, :email_text => 'this will be removed', :text => 'this will be removed', :notification_type_id => nt.id
   end
