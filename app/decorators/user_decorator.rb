@@ -25,7 +25,7 @@ class UserDecorator < Draper::Base
   end
 
   def short_name
-    truncate display_name, :length => 26
+    truncate display_name, :length => 20
   end
 
   def medium_name
