@@ -51,17 +51,17 @@
                 .bootstrap-twitter
                   = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), :disabled => true, :class => 'btn', :id => 'user_submit'
 
-          #payment.hide
-            .title
-              h1= t('.choose_payment')
-              h2= t('.choose_payment_subtitle')  
+        #payment.hide
+          .title
+            h1= t('.choose_payment')
+            h2= t('.choose_payment_subtitle')  
 
-            .tab_container
-              nav#payment_menu
-                = link_to '#moip_payment', :id => 'moip', :class => 'selected' , :'data-target' => catarse_moip.review_payment_moip_path(@backer) do
-                  = t('.choose_boleto') 
-                = link_to '#paypal_payment', :id => 'paypal', :'data-target' => catarse_paypal_express.payment_review_paypal_express_path(@backer) do
-                  = t('.choose_credit_card')
-            #paypal_payment.payments_type.hide
-            #moip_payment.payments_type.hide
+          .tab_container
+            nav#payment_menu
+              = link_to '#moip_payment', :id => 'moip', :class => 'selected' , :'data-target' => catarse_moip.review_payment_moip_path(@backer) do
+                = t('.choose_boleto') 
+              = link_to '#paypal_payment', :id => 'paypal', :'data-target' => catarse_paypal_express.payment_review_paypal_express_path(@backer) do
+                = t('.choose_credit_card')
+          #paypal_payment.payments_type.hide
+          #moip_payment.payments_type.hide
     .clearfix
