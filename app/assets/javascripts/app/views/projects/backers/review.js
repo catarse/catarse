@@ -1,4 +1,6 @@
-CATARSE.BackersReviewView = Backbone.View.extend({
+CATARSE.ReviewForm = Backbone.View.extend({
+  el: '#review_form',
+
   everything_ok: function(){
     var ok = function(id){
       var value = $(id).val()
@@ -132,7 +134,6 @@ CATARSE.BackersReviewView = Backbone.View.extend({
     'click #accept' : 'everything_ok',
     'change select' : 'everything_ok',
     'keyup #user_address_zip_code' : 'onZipCodeKeyUp',
-    'click .tab_container #payment_menu a' : 'onPaymentTabClick'
   },
 
   onPaymentTabClick: function(e){
@@ -164,11 +165,6 @@ CATARSE.BackersReviewView = Backbone.View.extend({
     $('#user_phone_number').mask("(99)9999-9999")
 
     var can_submit_to_moip = true;
-
-    // Here we clean selected tabs and select the first tab by default
-    $('.payments_type').hide();
-    $('.tab_container #payment_menu a').removeClass('selected');
-    this.$('.tab_container #payment_menu a:first').trigger('click')
   },
 
   updateCurrentBackerInfo: function() {
@@ -189,5 +185,33 @@ CATARSE.BackersReviewView = Backbone.View.extend({
     $.post('/projects/'+project_id+'/backers/'+backer_id+'/update_info', {
       backer: backer_data
     });
+  }
+});
+
+CATARSE.BackersReviewView = Backbone.View.extend({
+  events:{
+    'click .tab_container #payment_menu a' : 'onPaymentTabClick'
+  },
+
+  onPaymentTabClick: function(e){
+    $('.payments_type').hide();
+    $('.tab_container #payment_menu a').removeClass('selected');
+    e.preventDefault();
+    var reference = $(e.currentTarget).attr('href');
+    var remote_url = $(e.currentTarget).data('target');
+    $(e.currentTarget).addClass('selected');
+    $(reference).fadeIn(300);
+    if($('div', reference).length <= 0) {
+      $.get(remote_url, function(response){
+        $(reference).empty().html(response);
+      });
+    }
+  },
+
+  initialize: function() {
+    $('.payments_type').hide();
+    $('.tab_container #payment_menu a').removeClass('selected');
+    this.$('.tab_container #payment_menu a:first').trigger('click')
+    this.reviewForm = new CATARSE.ReviewForm();
   }
 })
