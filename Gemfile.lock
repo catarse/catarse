@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/devton/catarse_moip.git
-  revision: 89e15b03f73c21b6790c975568cf01eec93caad7
+  revision: adea1de956a85ab41c0c16ebbe5b87c625f46f08
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
@@ -307,7 +307,7 @@ GEM
       rack
     rack-ssl (1.3.2)
       rack
-    rack-test (0.6.1)
+    rack-test (0.6.2)
       rack (>= 1.0)
     rack-timeout (0.0.3)
     rails (3.2.7)
