@@ -1,9 +1,9 @@
 pt:
   notifications:
     confirm_backer:
-      subject: "Obrigado! Seu apoio para %{project} foi confirmado!"
+      subject: "Obrigado! Seu apoio para %{project_name} foi confirmado!"
     payment_slip:
-      subject: "Status do apoio para %{project}: boleto impresso"
+      subject: "Status do apoio para %{project_name}: boleto impresso"
       header: "Informações sobre pagamentos por boleto no Catarse"
     updates:
       subject: "Se liga! Atualização de %{project_name} por %{project_owner}: %{update_title}"
@@ -12,8 +12,11 @@ pt:
       subject: "Projeto bem-sucedido: algumas informações necessárias"
       header: "Projeto bem-sucedido o/"
     backer_project_successful:
-      subject: "Uhuu! O projeto %{project} foi bem-sucedido no Catarse"
+      subject: "Uhuu! O projeto %{project_name} foi bem-sucedido no Catarse"
       header: "Uhuu! O projeto que você apoiou foi bem-sucedido no Catarse!"
     backer_project_unsuccessful:
-      subject: "O projeto %{project} não foi financiado - algumas informações úteis"
+      subject: "O projeto %{project_name} não foi financiado - algumas informações úteis"
       header: "Informações sobre créditos e reembolso ;)"
+    project_received:
+      subject: "O seu projeto foi recebido pelo Catarse"
+      header: "O seu projeto foi recebido pela equipe de atendimento do Catarse"

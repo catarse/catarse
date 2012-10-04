@@ -4,7 +4,7 @@ require 'spec_helper'
 describe UsersController do
   render_views
   subject{ response }
-  before{ Notification.stubs(:notify_project_owner) }
+  before{ Notification.stubs(:create_notification) }
 
   let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
   let(:failed_project){ Factory(:project, :finished => true, :successful => false) }

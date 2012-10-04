@@ -5,6 +5,7 @@ class Notification < ActiveRecord::Base
   belongs_to :backer
   validates_presence_of :user, :text
   scope :not_dismissed, where(:dismissed => false)
+  attr_accessor :mail_params
 
   def self.find_notification notification_type_name
     nt = NotificationType.where(:name => notification_type_name.to_s).first
@@ -12,24 +13,8 @@ class Notification < ActiveRecord::Base
     return nt
   end
 
-  def self.notify_backer backer, notification_type_name
-    nt = find_notification notification_type_name
-    create! :project => backer.project, :backer => backer, :user => backer.user, :email_text => 'this will be removed', :text => 'this will be removed', :notification_type_id => nt.id
-  end
-
-  def self.notify_project_owner project, notification_type_name
-    nt = find_notification notification_type_name
-    create! :project => project, :user => project.user, :email_text => 'this will be removed', :text => 'this will be removed', :notification_type_id => nt.id
-  end
-
-  def self.notify_backer_project_successful backer, notification_type_name
-    nt = find_notification notification_type_name
-    create! :project => backer.project, :backer => backer, :user => backer.user, :email_text => 'this will be removed', :text => 'this will be removed', :notification_type_id => nt.id
-  end
-
-  def self.notify_backer_project_unsuccessful backer, notification_type_name
-    nt = find_notification notification_type_name
-    create! :project => backer.project, :backer => backer, :user => backer.user, :email_text => 'this will be removed', :text => 'this will be removed', :notification_type_id => nt.id
+  def self.create_notification(notification_type_name, user, mail_params = {})
+    create! :user => user, :project => (mail_params[:project].nil? ? nil : mail_params[:project]), :backer => (mail_params[:backer].nil? ? nil : mail_params[:backer]), :notification_type => (find_notification notification_type_name), :mail_params => mail_params, :text => 'this will be removed'
   end
 
   def send_email
