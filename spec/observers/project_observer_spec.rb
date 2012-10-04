@@ -23,16 +23,12 @@ describe ProjectObserver do
 
   describe "notify_backers" do
 
-    context "when project is successful" do
-      let(:project){ Factory(:project, :can_finish => true, :visible => true, :successful => false, :goal => 20, :finished => false, :expires_at => (Time.now - 1.day)) }
-      let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 20) }
+   context "when project is successful" do
+      let(:project){ Factory(:project, :can_finish => true, :visible => true, :successful => false, :goal => 30, :finished => false, :expires_at => (Time.now - 1.day)) }
+      let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 30, :project => project) }
+
       before do
-        Notification.expects(:notify_backer_project_successful).with(backer, :backer_project_successful)
-        project_total = mock()
-        project_total.stubs(:pledged).returns(20.0)
-        project_total.stubs(:total_backers).returns(1)
-        project.stubs(:project_total).returns(project_total)
-        backer.project = project
+        Notification.expects(:create_notification).at_least_once
         backer.save!
         project.finish!
       end
@@ -43,7 +39,7 @@ describe ProjectObserver do
       let(:project){ Factory(:project, :can_finish => true, :visible => true, :successful => false, :goal => 30, :finished => false, :expires_at => (Time.now - 1.day)) }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 20) }
       before do
-        Notification.expects(:notify_backer_project_unsuccessful).with(backer, :backer_project_unsuccessful)
+        Notification.expects(:create_notification).with(:backer_project_unsuccessful, backer.user, :backer => backer, :project => project, :project_name => project.name)
         project_total = mock()
         project_total.stubs(:pledged).returns(20.0)
         project_total.stubs(:total_backers).returns(1)

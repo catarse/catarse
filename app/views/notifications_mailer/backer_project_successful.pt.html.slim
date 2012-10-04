@@ -8,6 +8,11 @@ br
 |O projeto teve, incluindo você, #{backer.project.total_backers} maravilhosos apoiadores, arrecadou #{backer.project.display_pledged} e atingiu #{backer.project.progress}% da meta da captação =D
 br
 br
+- if backer.reward
+  |Você escolheu a seguinte recompensa:
+  = backer.reward.description
+  br
+
 |Ahh, uma informação importante: a equipe do Catarse leva até 3 dias úteis para passar a lista de contato de todos os apoiadores para os produtores do projeto. Por isso, o realizador entrará em contato contigo para agradecimentos e pra falar sobre as recompensas só daqui alguns dias, ok?
 br
 br
