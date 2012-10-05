@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Project do
-  before{ Notification.stubs(:notify_project_owner) }
+  before{ Notification.stubs(:create_notification) }
 
   describe "associations" do
     it{ should have_many :projects_curated_pages }
@@ -299,10 +299,10 @@ describe Project do
     end
 
     it "should store successful = true when finished and successful? is true" do
-      project = Factory(:project, can_finish: true, finished: false, goal: 1000, expires_at: 1.day.ago)
-      backer = Factory(:backer, project: project, value: 1000)
       Factory(:notification_type, :name => 'project_success')
       Factory(:notification_type, :name => 'backer_project_successful')
+      project = Factory(:project, can_finish: true, finished: false, goal: 1000, expires_at: 1.day.ago)
+      backer = Factory(:backer, project: project, value: 1000)
       project_total = mock()
       project_total.stubs(:pledged).returns(1000.0)
       project_total.stubs(:total_backers).returns(1)

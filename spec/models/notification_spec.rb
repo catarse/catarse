@@ -29,15 +29,19 @@ describe Notification do
   describe ".notify_backer" do
     before do
       notification_type
+      backer =  Factory(:backer)
+      user = mock
+      user.stubs(:name).returns('foo')
+      backer.stubs(:user).returns(user)
     end
 
     context "when NotificationType with the provided name does not exist" do
-      subject{ Notification.notify_backer(backer, :test) }
+      subject{ Notification.create_notification(:test, backer.user) }
       it("should raise error"){ lambda{ subject }.should raise_error("There is no NotificationType with name test") }
     end
 
     context "when NotificationType with the provided name exists" do
-      subject{ Notification.notify_backer(backer, :confirm_backer) }
+      subject{ Notification.create_notification(:confirm_backer, backer.user, :backer => backer,  :project_name => backer.project.name) }
       its(:dismissed){ should be_true }
       its(:backer){ should == backer }
     end

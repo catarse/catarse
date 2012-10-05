@@ -22,7 +22,7 @@ describe BackerObserver do
     context "when payment_choice is updated to BoletoBancario" do
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }
       before do
-        Notification.expects(:notify_backer).with(backer, :payment_slip)
+        Notification.expects(:create_notification).with(:payment_slip, backer.user, :backer => backer, :project_name => backer.project.name)
         backer.payment_choice = 'BoletoBancario'
         backer.save!
       end
@@ -38,7 +38,7 @@ describe BackerObserver do
         project_total.stubs(:total_backers).returns(1)
         project.stubs(:project_total).returns(project_total)
         backer.project = project
-        Notification.expects(:notify_project_owner).with(backer.project, :project_success)
+        Notification.expects(:create_notification).with(:project_success, backer.project.user, :project => backer.project)
         backer.save!
       end
       it("should notify the project owner"){ subject }
@@ -48,7 +48,7 @@ describe BackerObserver do
       let(:project){ Factory(:project, :successful => true, :finished => false) }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :project => project) }
       before do
-        Notification.expects(:notify_project_owner).never
+        Notification.expects(:create_notification).never
         backer.save!
       end
       it("should not send project_successful notification again"){ subject }
@@ -56,7 +56,7 @@ describe BackerObserver do
 
     context "when is not yet confirmed" do
       before do
-        Notification.expects(:notify_backer).with(backer, :confirm_backer)
+        Notification.expects(:create_notification).with(:confirm_backer, backer.user, :backer => backer,  :project_name => backer.project.name)
       end
       its(:confirmed_at) { should_not be_nil }
     end
@@ -64,7 +64,7 @@ describe BackerObserver do
     context "when is already confirmed" do
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }
       before do
-        Notification.expects(:notify_backer).never
+        Notification.expects(:create_notification).never
       end
 
       it("should not send confirm_backer notification again"){ subject }
