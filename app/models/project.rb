@@ -167,7 +167,7 @@ class Project < ActiveRecord::Base
 
   def finish!
     return unless expired? and can_finish and not finished
-    notify_observers(:notify_backers)
+    notify_observers(:notify_users)
   end
 
   def as_json(options={})
