@@ -10,6 +10,9 @@ pt:
     project_success:
       subject: "Projeto bem-sucedido: algumas informações necessárias"
       header: "Projeto bem-sucedido o/"
+    project_unsuccessful:
+      subject: "O seu projeto não foi financiado no Catarse, mas gostaríamos de um feedback x)"
+      header: "Projeto não financiado não é projeto mal-sucedido ;)"
     backer_project_successful:
       subject: "Uhuu! O projeto %{project_name} foi bem-sucedido no Catarse"
       header: "Uhuu! O projeto que você apoiou foi bem-sucedido no Catarse!"
