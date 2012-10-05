@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   before do
-    Notification.stubs(:notify_project_owner)
+    Notification.stubs(:create_notification)
     Factory(:notification_type, :name => 'project_success')
   end
 
