@@ -1,0 +1,6 @@
+- update = @notification.mail_params[:update]
+|#{update.title}
+br
+== @notification.mail_params[:update_comment]
+br
+|Comentários? Mande ver na página do projeto: #{link_to update.project.name, Rails.application.routes.url_helpers.project_url(update.project, :host => I18n.t('site.host')) }.
