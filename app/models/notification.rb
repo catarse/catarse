@@ -14,7 +14,12 @@ class Notification < ActiveRecord::Base
   end
 
   def self.create_notification(notification_type_name, user, mail_params = {})
-    create! :user => user, :project => (mail_params[:project].nil? ? nil : mail_params[:project]), :backer => (mail_params[:backer].nil? ? nil : mail_params[:backer]), :notification_type => (find_notification notification_type_name), :mail_params => mail_params, :text => 'this will be removed'
+    create! :user => user,
+      :project => (mail_params[:project].nil? ? nil : mail_params[:project]),
+      :backer => (mail_params[:backer].nil? ? nil : mail_params[:backer]),
+      :notification_type => (find_notification notification_type_name),
+      :mail_params => mail_params,
+      :text => 'this will be removed'
   end
 
   def send_email
