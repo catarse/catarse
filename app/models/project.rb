@@ -69,6 +69,10 @@ class Project < ActiveRecord::Base
     self.image_url = vimeo.thumbnail unless self.image_url
   end
 
+  def self.unaccent_search search
+    joins(:user).where("unaccent(projects.name || headline || about || coalesce(users.name,'') || coalesce(users.address_city,'')) ~* unaccent(?)", search)
+  end
+
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end
