@@ -5,7 +5,7 @@ script type="text/template" id="empty_user_project_template"
   - if current_user != @user
     p.empty= t('users.projects.no_projects', name: @user.display_name)
   - else
-    p.empty= t('users.projects.no_projects_current_user_html', link: link_to(t('site.base_url'), t('site.base_url') )).html_safe
+    p.empty= t('users.projects.no_projects_current_user_html', link: link_to(t('users.projects.here'), t('site.base_url') )).html_safe
 
 script type="text/template" id="user_project_template"
   .small_project_land
