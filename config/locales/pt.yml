@@ -501,7 +501,7 @@ pt:
       video_hint: "Um link no vimeo"
       twitter: "E aí já tem twitter?"
       facebook: "E aí já tem facebook?"
-      blog: "Tem um blog sobre o projeto?"
+      blog: "Tem um site ou blog sobre o projeto?"
       know_us_via: "Como você conheceu o catarse?"
       how_works: "Como pretende mobilizar apoiadores para levantar o $ necessário para a execução?"
       project_warning:
@@ -620,8 +620,9 @@ pt:
       bio_tooltip: "Clique aqui para escrever sobre você..."
       name_tooltip: "Clique aqui para preencher seu nome..."
     projects:
+      here: 'aqui'
       no_projects: "%{name} ainda não realizou nenhum projeto no Catarse. Será que a inspiração vai bater uma hora dessas?"
-      no_projects_current_user_html: "Você ainda não realizou nenhum projeto no Catarse. Deixe a inspiração bater e %{link} para começar!"
+      no_projects_current_user_html: "Você ainda não realizou nenhum projeto no Catarse. Deixe a inspiração bater e clique %{link} para começar!"
       title: "Projetos de %{name}"
       title_current_user: "Meus projetos"
   users_mailer:
