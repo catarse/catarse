@@ -58,7 +58,7 @@ class ProjectsController < ApplicationController
       end
       format.json do
         # After the search params we order by ID to avoid ties and therefore duplicate items in pagination
-        @projects = Project.visible.search(params[:search]).order('id').page(params[:page]).per(6)
+        @projects = Project.visible.unaccent_search( params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains]).order('id').page(params[:page]).per(6)
         respond_with(@projects)
       end
     end
