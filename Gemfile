@@ -13,7 +13,7 @@ gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_expre
 #gem 'catarse_moip', '~> 0.1.1'
 gem 'catarse_moip', git: 'git://github.com/devton/catarse_moip.git'
 #gem 'catarse_moip', path: '~/store/code/catarse_moip'
-gem 'moip'
+gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
 gem 'maxim-sexy_pg_constraints'
 gem 'dalli'
