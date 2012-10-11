@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/devton/catarse_moip.git
-  revision: 35044013cdecb95e5e2ad401d88823172134002b
+  revision: a487dc8d66af59011ab8216eaa50670e3867d718
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
