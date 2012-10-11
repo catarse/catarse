@@ -248,6 +248,11 @@ GEM
     mime-types (1.19)
     mocha (0.10.4)
       metaclass (~> 0.0.1)
+    moip (2.1.1)
+      activesupport (>= 2.3.2)
+      httparty (~> 0.6.1)
+      moip
+      nokogiri (~> 1.4.3)
     multi_json (1.3.6)
     multipart-post (1.1.5)
     net-scp (1.0.4)
@@ -495,6 +500,7 @@ DEPENDENCIES
   maxim-sexy_pg_constraints
   meta_search (= 1.1.3)
   mocha (= 0.10.4)
+  moip
   omniauth (~> 1.1.0)
   omniauth-facebook (~> 1.2.0)
   omniauth-github (~> 1.0.1)
