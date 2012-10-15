@@ -74,7 +74,12 @@
             tbody
               - @backers.each do |backer|
                 tr id=backer.id class=cycle("even", "odd")
-                  td= backer.id
+                  td
+                    = link_to backer.id, 'javascript:void(0);', :class => 'show_actions'
+                    .bootstrap-twitter
+                      ul.actions_menu
+                        - unless backer.confirmed
+                          li= link_to t('adm.actions.confirm'), confirm_adm_backer_path(backer) , :class => 'btn', :method => :put
                   td title=backer.project.name
                     = link_to project_path(backer.project) do
                       = image_tag backer.project.display_image, class: 'project_img'

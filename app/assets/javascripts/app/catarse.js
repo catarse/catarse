@@ -1,5 +1,5 @@
 var CATARSE = {
-
+  Adm: {},
   requireLogin: function(event, customUrl){
     event.preventDefault()
     var url = null
@@ -48,7 +48,7 @@ var CATARSE = {
 
     backers:{
       index: function(){
-        window.view = new CATARSE.ProjectsPending_backersView({el: $("body") });
+        window.view = new CATARSE.Adm.Backers.Index({el: $("body") });
       }
     }
   },

@@ -639,6 +639,8 @@ pt:
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
   adm:
+    actions:
+      confirm: 'Confirmar'
     users:
       index:
         title: "Gerenciamento de apoiadores"
@@ -659,6 +661,9 @@ pt:
         value: Valor
         payer_email: Email do pagamento
     backers:
+      messages:
+        succesful:
+          confirm: 'Apoio confirmado com sucesso!'
       index:
         title: "Gerenciamento de apoios"
         menu: "Apoios"
