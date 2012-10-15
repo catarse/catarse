@@ -30,14 +30,20 @@
               p.inline-hints= t('.rewards_hint')
             .input
               = label_tag 'video', t('.video')
-              = text_field_tag 'video'
+              .input-prepend
+                span.add-on http://
+                = text_field_tag 'video'
               p.inline-hints= t('.video_hint')
             .input
               = label_tag 'facebook', t('.facebook')
-              = text_field_tag 'facebook'
+              .input-prepend
+                span.add-on http://
+                = text_field_tag 'facebook'
             .input
               = label_tag 'twitter', t('.twitter')
-              = text_field_tag 'twitter'
+              .input-prepend
+                span.add-on http://
+                = text_field_tag 'twitter'
             .input
               = label_tag 'blog', t('.blog')
               .input-prepend

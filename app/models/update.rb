@@ -10,8 +10,8 @@ class Update < ActiveRecord::Base
       '<' => '&lt;',
       '"' => '"' }
     image
-    youtube width: 640, height: 430, wmode: "opaque"
-    vimeo width: 640, height: 430
+    youtube width: 560, height: 340, wmode: "opaque"
+    vimeo width: 560, height: 340
     redcloth :target => :_blank
     link :target => :_blank
   end
@@ -23,7 +23,7 @@ class Update < ActiveRecord::Base
         :project_owner => backer.project.user.display_name,
         :update_title => title,
         :update => self,
-        :update_comment =>  (auto_html(comment) { link; redcloth; } )
+        :update_comment => comment_html.gsub(/width="560" height="340"/, 'width="500" height="305"') #change video size to fit into the email layout
     end
   end
 
