@@ -57,9 +57,13 @@ class ProjectsController < ApplicationController
         @last_tweets ||= []
       end
       format.json do
+        @projects = if params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains]
+          Project.visible.unaccent_search( params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains])
+        else
+          Project.visible.search(params[:search])
+        end
         # After the search params we order by ID to avoid ties and therefore duplicate items in pagination
-        @projects = Project.visible.search(params[:search]).order('id').page(params[:page]).per(6)
-        respond_with(@projects)
+        respond_with(@projects.order('id').page(params[:page]).per(6))
       end
     end
   end
