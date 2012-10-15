@@ -99,6 +99,9 @@ Catarse::Application.routes.draw do
 
   namespace :adm do
     resources :backers do
+      member do
+        put 'confirm'
+      end
       collection do
         post 'update_attribute_on_the_spot'
       end
