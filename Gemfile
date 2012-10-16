@@ -10,8 +10,8 @@ gem 'foreigner'
 gem 'activerecord-postgresql-adapter'
 
 gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git'
-#gem 'catarse_moip', git: 'git://github.com/devton/catarse_moip.git'
-gem 'catarse_moip', path: '../catarse_moip'
+gem 'catarse_moip', git: 'git://github.com/devton/catarse_moip.git'
+#gem 'catarse_moip', path: '../catarse_moip'
 gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
 gem 'maxim-sexy_pg_constraints'
