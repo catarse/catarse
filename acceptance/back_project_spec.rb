@@ -82,7 +82,6 @@ feature "Back project" do
 
     fill_in "Nome completo", with: "Foo bar"
     fill_in "Email", with: "foo@bar.com"
-    fill_in "CPF", with: "815.587.240-87"
     fill_in "CEP", with: "90050-004"
     fill_in "Logradouro", with: "Lorem Ipsum"
 
@@ -159,7 +158,6 @@ feature "Back project" do
 
     fill_in "Nome completo", with: "Foo bar"
     fill_in "Email", with: "foo@bar.com"
-    fill_in "CPF", with: "815.587.240-87"
     fill_in "CEP", with: "90050-004"
     fill_in "Logradouro", with: "Lorem Ipsum"
 

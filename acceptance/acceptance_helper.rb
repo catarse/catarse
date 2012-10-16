@@ -102,6 +102,8 @@ RSpec.configure do |config|
 
     # Put ActiveMerchant in test mode
     ActiveMerchant::Billing::Base.mode = :test
+    Notification.stubs(:create_notification)
+    Notification.stubs(:find_notification)
   end
 
   config.before(:each) do
