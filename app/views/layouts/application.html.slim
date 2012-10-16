@@ -1,5 +1,5 @@
 doctype 5
-html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
+html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"
   head
     title
       - if @title
@@ -9,7 +9,19 @@ html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
     meta charset='utf-8'
     meta name="robots" content="index, follow"
     meta name="author" content="Engage"
-    = yield :meta_tags
+    - if content_for? :meta_tags
+      /project specific meta tags
+      = yield :meta_tags
+    - else
+      /meta tags for the whole site
+      meta property="og:title" content=t('site.title')
+      meta property="og:type" content='cause'
+      meta property="og:url" content==(request.protocol + request.host_with_port)
+      meta property="og:image" content==(request.protocol + request.host_with_port + asset_path('catarse/logo-fb.jpg'))
+      meta property="og:site_name" content=t('site.name')
+      meta property="fb:app_id" content=t('site.facebook_app_id')
+      meta property="og:description" content==(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
+
     = stylesheet_link_tag 'application', :media => 'screen, projection'
     /[if lt IE 9]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
