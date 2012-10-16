@@ -127,6 +127,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     var link = this.$("#project_menu #" + item + "_link")
     this.$('#project_menu a').removeClass('selected')
     link.addClass('selected')
+    FB.XFBML.parse();
   },
 
   showFormattingTips: function(event){
