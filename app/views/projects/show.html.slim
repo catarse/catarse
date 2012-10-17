@@ -87,7 +87,7 @@
                       = t('.share.embed')
                   li.link
                     = text_field_tag "project_link", @project.short_url
-                #twitter_share= render 'twitter'                    
+                #twitter_share= render 'twitter'
                 .clear
           .text
             h5= t('.about_title')
@@ -142,9 +142,9 @@
             #bio
               p= @project.user.bio
           #city
-            p.backer= t('count_backed_projects', :total => @project.user.total_backs)            
+            p.backer= t('count_backed_projects', :total => @project.user.total_backs)
             p.city
-              | #{@project.user.address_city}          
+              | #{@project.user.address_city}
         .user_social
           ul
             - if @project.user.facebook_link
@@ -153,9 +153,9 @@
             - if @project.user.twitter
               li
                 = link_to "Perfil no twitter", @project.user.twitter_link, :target => '_blank', :class=> 'twitter'
-            - if can? :manage, @project.user
+            - if @project.user.email
               li
-                = mail_to @project.user.email, "Me envie um email", :target => '_blank', :class=> 'email'                
+                = mail_to @project.user.email, "Me envie um email", :target => '_blank', :class=> 'email'
             - if @project.user.other_link
               li.other
                 = link_to @project.user.other_link, @project.user.other_link, :target => '_blank'
