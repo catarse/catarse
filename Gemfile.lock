@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/devton/catarse_moip.git
-  revision: c658b4218b701019933ae19ce39b8bed50680eb7
+  revision: 40415f0d753a9bba674c051c41f25f574eb91839
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
@@ -104,7 +104,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bourbon (2.1.1)
       sass (>= 3.1)
-    braintree (2.16.0)
+    braintree (2.18.0)
       builder (>= 2.0.0)
     brcep (3.2.0)
     builder (3.0.4)
