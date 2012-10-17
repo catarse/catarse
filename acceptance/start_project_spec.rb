@@ -46,6 +46,7 @@ feature "Send Project Feature", :driver => :selenium do
     end
 
     current_path.should == start_projects_path
+    Factory(:notification_type, :name => 'project_received')
 
     within '.bootstrap-form' do
       fill_in 'how_much_you_need', with: 10

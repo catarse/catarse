@@ -3,6 +3,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "Explore projects Feature" do
+  Factory(:notification_type, :name => 'project_success')
 
   before(:each) do
 
@@ -52,7 +53,7 @@ feature "Explore projects Feature" do
     verify_translations
 
     within 'head title' do
-      page.should have_content("Explore os projetos · #{I18n.t('site.name')}") 
+      page.should have_content("Explore os projetos · #{I18n.t('site.name')}")
     end
 
     quick_list = find("#explore_quick").all("li")

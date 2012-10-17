@@ -5,12 +5,13 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "My profile Feature" do
 
   scenario "I should be able to upload a custom avatar" do
-    fake_login 
+    fake_login
     click_link I18n.t('layouts.header.account')
     click_link I18n.t('layouts.header.profile')
     click_link I18n.t('users.show.tabs.settings')
     attach_file('user_uploaded_image', "#{Rails.root}/spec/fixtures/image.png")
     click_button('image_upload_btn')
+    sleep 2
     User.last.uploaded_image.url.should_not be_nil
   end
 
@@ -31,7 +32,7 @@ feature "My profile Feature" do
     current_path.should == user_path(user)
 
     within 'head title' do
-      page.should have_content("#{user.display_name} · #{I18n.t('site.name')}") 
+      page.should have_content("#{user.display_name} · #{I18n.t('site.name')}")
     end
 
     within '.profile_title' do
@@ -60,7 +61,7 @@ feature "My profile Feature" do
       #page.should have_css("input[type=checkbox]#newsletter")
     end
 
-    within "#social_info" do
+    within "#my_data" do
       page.should have_css("input[type=text]#user_twitter")
       page.should have_css("input[type=text]#user_facebook_link")
       page.should have_css("input[type=text]#user_other_link")
@@ -120,16 +121,16 @@ feature "My profile Feature" do
     verify_translations
 
     within "#my_data ul" do
-      within first("li") do
-        page.should have_no_content("new@email.com")
-        page.should have_content(user.email)
-        find("span").click
+      page.should have_no_content("new@email.com")
+      page.should have_content(user.email)
+      find("span").click
+      within 'span' do
         find("input").set("new@email.com")
         click_on "OK"
-        page.should have_content("new@email.com")
-        user.reload
-        user.email.should == "new@email.com"
       end
+      page.should have_content("new@email.com")
+      user.reload
+      user.email.should == "new@email.com"
     end
 
     within "#user_profile_menu" do
@@ -137,7 +138,7 @@ feature "My profile Feature" do
     end
     verify_translations
 
-    within "#social_info" do
+    within "#my_data" do
       fill_in "twitter ( usuário )", with: "@FooBar"
       fill_in "perfil do facebook", with: "facebook.com/FooBar"
       fill_in "link da sua página na internet", with: "boobar.com"
@@ -145,7 +146,7 @@ feature "My profile Feature" do
     end
     verify_translations
 
-    within "#social_info" do
+    within "#my_data" do
       find_field("twitter ( usuário )").value.should == "FooBar"
       find_field("perfil do facebook").value.should == "facebook.com/FooBar"
       find_field("link da sua página na internet").value.should == "boobar.com"
