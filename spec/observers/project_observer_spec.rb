@@ -5,6 +5,7 @@ describe ProjectObserver do
   let(:project_success){ Factory(:notification_type, :name => 'project_success') }
   let(:backer_successful){ Factory(:notification_type, :name => 'backer_project_successful') }
   let(:backer_unsuccessful){ Factory(:notification_type, :name => 'backer_project_unsuccessful') }
+  let(:project_visible){ Factory(:notification_type, :name => 'project_visible') }
   let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => nil) }
   subject{ backer }
 
@@ -19,6 +20,15 @@ describe ProjectObserver do
     before{ Kernel.stubs(:rand).returns(1) }
     its(:key){ should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s }
     its(:payment_method){ should == 'MoIP' }
+  end
+
+  describe "before_save" do
+    let(:project){ Factory(:project, :visible => false )}
+    before do
+      Notification.expects(:create_notification).with(:project_visible, project.user, project)
+      project.visible = true
+      project.save!
+    end
   end
 
   describe "notify_backers" do

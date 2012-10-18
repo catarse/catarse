@@ -72,7 +72,7 @@ describe Projects::BackersController do
 
   describe "POST review" do
     context "without user" do
-      before do 
+      before do
         request.env['REQUEST_URI'] = "/test_path"
         post :review, {:locale => :pt, :project_id => @project.id}
       end
@@ -137,6 +137,7 @@ describe Projects::BackersController do
 
       context "when can back project" do
         it "should see infos about the project and rewards" do
+          Factory(:notification_type, :name => 'project_visible')
           @project.update_attributes({:rejected => false, :expires_at => 10.days.from_now, :visible => true})
           @project.reload
           request.session[:user_id]=@user.id
