@@ -1,6 +1,10 @@
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
+  def before_save(project)
+    Notification.create_notification(:project_visible, project.user, project: project) if (project.visible_was == false) && (project.visible == true)
+  end
+
   def notify_users(project)
     project.backers.confirmed.each do |backer|
       unless backer.can_refund or backer.notified_finish
