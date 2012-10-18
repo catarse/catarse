@@ -3,7 +3,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "Explore projects Feature" do
-  Factory(:notification_type, :name => 'project_success')
+  Notification.stubs(:create_notification)
 
   before(:each) do
 

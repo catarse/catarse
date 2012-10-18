@@ -22,3 +22,6 @@ pt:
     project_received:
       subject: "O seu projeto foi recebido pelo Catarse"
       header: "O seu projeto foi recebido pela equipe de atendimento do Catarse"
+    project_visible:
+      subject: "Seu projeto está no ar no Catarse o/"
+      header: "Agora é pra valer"

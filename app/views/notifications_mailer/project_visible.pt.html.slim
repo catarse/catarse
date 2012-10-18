@@ -1,0 +1,26 @@
+- project = @notification.project
+|Olá, #{project.user.display_name}.
+br
+br
+|Seu projeto acabou de entrar no ar e já está apto a começar a receber os apoios, agora é a hora!
+br
+br
+|#{link_to(project.name, "#{I18n.t('site.base_url')}/projects/#{project.to_param}")}
+br
+br
+|Vamos que vamos! Agora é começar a fazer a barrinha verde subir :D
+br
+br
+|#{link_to('Aqui','https://docs.google.com/document/d/1Uwg8aRj9LyOE-MU1HOL02HxsVYNXyZcR11dbLRE8Y3c/edit')} temos algumas dicas para promover o projeto. O documento é aberto, então sinta-se a vontade para incluir novas observações =)
+br
+br
+|Qualquer dúvida referente às transações, seja durante a captação do projeto, seja sobre transferência dos valores que foram captados ou seja sobre reembolsos (tomara que não!), envie um email #{mail_to 'financeiro@catarse.me'}
+br
+br
+|Outras dúvidas, como a edição dos itens do seu projeto, envie um email para #{mail_to 'projetos@catarse.me'}
+br
+br
+|Um abração e seja bem-vindo o/
+br
+br
+|Equipe do Catarse

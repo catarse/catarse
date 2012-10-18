@@ -7,6 +7,7 @@ feature "Back project" do
   include Rails.application.routes.url_helpers
 
   before do
+    Notification.stubs(:create_notification)
     @project = Factory(:project, visible: true)
     @rewards = [
       Factory(:reward, project: @project, minimum_value: 10, description: "$10 reward"),
