@@ -2,17 +2,12 @@
 |Olá, #{backer.user.name}!
 br
 br
-|O projeto #{link_to(backer.project.name, "#{I18n.t('site.base_url')}/projects/#{backer.project.to_param}")} que você apoiou foi financiado com sucesso no Catarse! Hora de comemorar o/
+ |O projeto #{link_to(backer.project.name, "#{I18n.t('site.base_url')}/projects/#{backer.project.to_param}")} que você apoiou foi financiado com sucesso no Catarse! Hora de comemorar o/
 br
 br
 |O projeto teve, incluindo você, #{backer.project.total_backers} maravilhosos apoiadores, arrecadou #{backer.project.display_pledged} e atingiu #{backer.project.progress}% da meta da captação =D
 br
 br
-- if backer.reward
-  |Você escolheu a seguinte recompensa:
-  = backer.reward.description
-  br
-
 |Ahh, uma informação importante: a equipe do Catarse leva até 3 dias úteis para passar a lista de contato de todos os apoiadores para os produtores do projeto. Por isso, o realizador entrará em contato contigo para agradecimentos e pra falar sobre as recompensas só daqui alguns dias, ok?
 br
 br
@@ -25,6 +20,20 @@ br
 == raw link_to(twitter_img,"http://twitter.com/?status=#{"Uhuu! O projeto '#{backer.project.name}', que eu apoiei, foi bem-sucedido no @Catarse_! #{backer.project.short_url}"}", :target => :_blank)
 br
 br
+strong
+  |Informações importantes sobre o seu apoio (que sempre vão ajudar pra tirar qualquer dúvida):
+  br
+  br
+  |Valor apoiado: #{backer.value}
+  br
+  - if backer.reward
+    |Valor da recompensa selecionada: #{backer.reward.minimum_value}
+    br
+    |Recompensa selecionada: #{backer.reward.description}
+    br
+  |Data do apoio: #{backer.created_at.strftime("%d/%m/%Y")}
+  br
+  br
 |Se quiser entrar em contato com #{backer.project.user.name}, mande um email para #{mail_to backer.project.user.email}
 br
 br

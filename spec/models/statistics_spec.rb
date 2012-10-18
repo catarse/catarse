@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Statistics do
   before do
+    Notification.stubs(:create_notification)
     Factory(:backer, :confirmed => true)
     Factory(:backer, :confirmed => false)
     Factory(:project, :visible => true, :successful => true)
