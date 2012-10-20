@@ -104,7 +104,7 @@ pt:
         name: Nome
         password: Senha
         password_confirmation: "Confirmação de senha"
-        phone_number: "Telefone celular"
+        phone_number: "Telefone (fixo ou celular)"
     models:
       backer: Apoiador
       category: Categoria
