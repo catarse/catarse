@@ -6,10 +6,6 @@ class BackerObserver < ActiveRecord::Observer
     backer.define_payment_method
   end
 
-  def project_success_mail_not_sent(backer)
-    Notification.where(:project_id => backer.project, :notification_type_id => Notification.find_notification(:project_success)).empty?
-  end
-
   def before_save(backer)
     Notification.create_notification(:payment_slip, backer.user, :backer => backer, :project_name => backer.project.name) if backer.payment_choice_was.nil? && backer.payment_choice == 'BoletoBancario'
 
@@ -36,7 +32,7 @@ class BackerObserver < ActiveRecord::Observer
   end
 
   def after_save(backer)
-    Notification.create_notification(:project_success, backer.project.user, :project => backer.project) if backer.project.successful? && project_success_mail_not_sent(backer)
+    Notification.create_notification_once(:project_success, backer.project.user, {'project_id' => backer.project.id}, project: backer.project) if backer.project.successful?
   end
 
 end
