@@ -1,18 +1,56 @@
 require 'spec_helper'
 
 describe Backer do
-  it "should not add backer value as credits for user if not confirmed" do
-    u = Factory(:user)
-    u.save
-    b = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :confirmed => false, :user => u)
-    b.save
-    u.credits.should == 0
-    b2 = Factory.build(:backer, :value => 10, :credits => true, :can_refund => true, :confirmed => false, :user => u)
-    b2.save
-    u.credits.should == 0
+  describe "Associations" do
+    it { should have_many(:payment_notifications) }
+    it { should belong_to(:project) }
+    it { should belong_to(:user) }
+    it { should belong_to(:reward) }
   end
 
-  it { should have_many(:payment_notifications) }
+  describe "Validations" do
+    it{ should validate_presence_of(:project) }
+    it{ should validate_presence_of(:user) }
+    it{ should validate_presence_of(:value) }
+    it{ should_not allow_value(9.99).for(:value) }
+    it{ should allow_value(10).for(:value) }
+    it{ should allow_value(20).for(:value) }
+  end
+
+  describe "#credits" do
+    let(:user){ Factory(:user) }
+    let(:project){ Factory(:project, :finished => true, :successful => false) }
+    let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
+    subject{ user.credits }
+    context "when backs are confirmed and not done with credits but project is successful" do
+      before do
+        Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => successful_project)
+      end
+      it{ should == 0 }
+    end
+
+    context "when backs are confirmed and not done with credits" do
+      before do
+        Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => project)
+      end
+      it{ should == 10 }
+    end
+
+    context "when backs are done with credits" do
+      before do
+        Factory(:backer, :value => 10, :credits => true, :requested_refund => false, :confirmed => true, :user => user, :project => project)
+      end
+      it{ should == 0 }
+    end
+
+    context "when backs are not confirmed" do
+      before do
+        Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => false, :user => user, :project => project)
+      end
+      it{ should == 0 }
+    end
+  end
+
 
   it "should have reward from the same project only" do
     backer = Factory.build(:backer)
@@ -61,15 +99,6 @@ describe Backer do
     backer.save
     backer = Factory.build(:backer, :reward => reward3, :project => project)
     backer.should_not be_valid
-  end
-
-  describe "#valid?" do
-    it{ should validate_presence_of(:project) }
-    it{ should validate_presence_of(:user) }
-    it{ should validate_presence_of(:value) }
-    it{ should_not allow_value(9.99).for(:value) }
-    it{ should allow_value(10).for(:value) }
-    it{ should allow_value(20).for(:value) }
   end
 
   describe "#refund!" do
