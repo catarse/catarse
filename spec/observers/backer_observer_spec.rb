@@ -60,6 +60,7 @@ describe BackerObserver do
       before do
         Notification.expects(:create_notification).with(:confirm_backer, backer.user, :backer => backer,  :project_name => backer.project.name)
       end
+      it("should send confirm_backer notification"){ subject }
       its(:confirmed_at) { should_not be_nil }
     end
 
