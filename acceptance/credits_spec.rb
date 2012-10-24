@@ -66,8 +66,10 @@ feature "Credits Feature" do
 
     # Requesting refund for the third row
     within rows[0] do
-      rows[0].find(".status").find('a').click
+      rows[0].find(".status").find('a.link_project').click
+      sleep 2
       verify_translations
+      page.evaluate_script('window.confirm = function() { return true; }')
       column = rows[0].all("td")[4]
       # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
       sleep 2
