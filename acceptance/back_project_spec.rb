@@ -94,14 +94,18 @@ feature "Back project" do
     fill_in "Bairro", with: "Foo bar"
     fill_in "Cidade", with: "Foo bar"
     select "Foo bar", from: "Estado"
-    fill_in "Telefone celular", with: "(99)9999-9999"
+    fill_in "Telefone (fixo ou celular)", with: "(99)9999-9999"
 
     page.should have_css("#user_full_name.ok")
     page.should have_css("#user_email.ok")
 
     check "Eu li e estou de acordo com os termos de uso."
     page.should have_content(I18n.t('projects.backers.review.choose_payment'))
-    find(".choose_payment .cc a").click
+    find("a#paypal").click
+    sleep 2
+
+    page.should have_content I18n.t('projects.backers.review.international.section_title')
+    find('#catarse_paypal_express_form input[type="submit"]').click
 
     current_url.should match(/paypal\.com/)
     backer.reload
@@ -118,7 +122,7 @@ feature "Back project" do
 
   end
 
-  scenario "As a user without credits, I want to back a project by clicking on a reward on the project page, and pay using MoIP", :now => true do
+  scenario "As a user without credits, I want to back a project by clicking on a reward on the project page, and pay using MoIP Boleto", :now => true do
 
     MoIP::Client.stubs(:checkout).returns({"Token" => "foobar"})
     MoIP::Client.stubs(:moip_page).returns("http://www.moip.com.br")
@@ -131,7 +135,6 @@ feature "Back project" do
     within "#rewards" do
       rewards = all(".box.clickable")
       rewards[2].find("input[type=hidden]")[:value].should == "#{new_project_backer_path(@project)}/?reward_id=#{@rewards[2].id}"
-      #rewards[2].click
       visit rewards[2].find("input[type=hidden]")[:value]
     end
 
@@ -170,22 +173,28 @@ feature "Back project" do
     fill_in "Bairro", with: "Foo bar"
     fill_in "Cidade", with: "Foo bar"
     select "Foo bar", from: "Estado"
-    fill_in "Telefone celular", with: "(99)9999-9999"
+    fill_in "Telefone (fixo ou celular)", with: "(99)9999-9999"
 
     page.should have_css("#user_full_name.ok")
     page.should have_css("#user_email.ok")
 
-    #find("#user_submit")[:disabled].should == "true"
     check "Eu li e estou de acordo com os termos de uso."
-    #find("#user_submit")[:disabled].should == "false"
-    #click_on "Efetuar pagamento pelo MoIP"
     page.should have_content(I18n.t('projects.backers.review.choose_payment'))
-    find(".choose_payment .boleto a").click
+    find("a#moip").click
+    sleep 2
 
-    current_url.should match(/moip\.com\.br/)
+    find("#payment_type_boleto").click
+    page.should have_content('Pagamento com Boleto')
+    fill_in "CPF / CNPJ (somente números)", with: '600.552.776-24'
+    find('#catarse_moip_form input[type="submit"]').click
+    sleep 2
+    page.should have_content 'Clique no link abaixo para ver o boleto:'
+    find('.link_content a').click
+
     backer.reload
     backer.payment_method.should == "MoIP"
 
+    current_url.should match(/thank_you/)
   end
 
   scenario "As a user with credits, I want to back a project using my credits" do
