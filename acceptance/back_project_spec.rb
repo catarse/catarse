@@ -94,14 +94,18 @@ feature "Back project" do
     fill_in "Bairro", with: "Foo bar"
     fill_in "Cidade", with: "Foo bar"
     select "Foo bar", from: "Estado"
-    fill_in "Telefone celular", with: "(99)9999-9999"
+    fill_in "Telefone (fixo ou celular)", with: "(99)9999-9999"
 
     page.should have_css("#user_full_name.ok")
     page.should have_css("#user_email.ok")
 
     check "Eu li e estou de acordo com os termos de uso."
     page.should have_content(I18n.t('projects.backers.review.choose_payment'))
-    find(".choose_payment .cc a").click
+    find("a#paypal").click
+    sleep 2
+
+    page.should have_content I18n.t('projects.backers.review.international.section_title')
+    find('#catarse_paypal_express_form input[type="submit"]').click
 
     current_url.should match(/paypal\.com/)
     backer.reload
@@ -170,7 +174,7 @@ feature "Back project" do
     fill_in "Bairro", with: "Foo bar"
     fill_in "Cidade", with: "Foo bar"
     select "Foo bar", from: "Estado"
-    fill_in "Telefone celular", with: "(99)9999-9999"
+    fill_in "Telefone (fixo ou celular)", with: "(99)9999-9999"
 
     page.should have_css("#user_full_name.ok")
     page.should have_css("#user_email.ok")
