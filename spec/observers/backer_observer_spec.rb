@@ -7,6 +7,8 @@ describe BackerObserver do
   subject{ backer }
 
   before do
+    Notification.unstub(:create_notification)
+    Notification.unstub(:create_notification_once)
     confirm_backer # It should create the NotificationType before creating the Backer
     project_success
   end

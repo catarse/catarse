@@ -27,6 +27,8 @@ RSpec.configure do |config|
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
     CatarseMailchimp::API.stubs(:subscribe)
     CatarseMailchimp::API.stubs(:unsubscribe)
+    Notification.stubs(:create_notification)
+    Notification.stubs(:create_notification_once)
   end
 
   def mock_tumblr method=:two
