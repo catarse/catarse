@@ -12,7 +12,7 @@ feature "My profile Feature" do
     attach_file('user_uploaded_image', "#{Rails.root}/spec/fixtures/image.png")
     click_button('image_upload_btn')
     sleep 2
-    User.last.uploaded_image.url.should_not be_nil
+    current_user.uploaded_image.url.should_not be_nil
   end
 
   scenario "I should be able to see and edit my profile when I click on 'meu perfil'" do
