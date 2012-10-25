@@ -9,9 +9,9 @@ CATARSE.Adm.Backers = {
       var target = e.currentTarget;
       var id = $(target).parent().parent().attr('id');
       var field = $(target).attr('id').split('__')[0];
-      $.post('/projects/update_attribute_on_the_spot', {
+      $.post('/adm/backers/update_attribute_on_the_spot', {
         id: 'backer__' + field + '__' + id,
-        value: ($(this).is(':checked') ? true : false)
+        value: ($(e.currentTarget).is(':checked') ? true : false)
       })
     },
 
