@@ -1,11 +1,6 @@
 require 'spec_helper'
 
 describe User do
-  before do
-    Notification.stubs(:create_notification)
-    Factory(:notification_type, :name => 'project_success')
-  end
-
   let(:user){ Factory(:user, :provider => "foo", :uid => "bar") }
   let(:unfinished_project){ Factory(:project, :finished => false, :successful => true) }
   let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
