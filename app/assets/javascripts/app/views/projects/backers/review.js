@@ -41,7 +41,7 @@ CATARSE.ReviewForm = Backbone.View.extend({
 
     var phone_number_ok = function(){
       var value = $('#user_phone_number').val()
-      var re = /^\([0-9]{2}\)[0-9]{4}-[0-9]{4}[9_ ]?$/
+      var re = /^\([0-9]{2}\)[0-9]{4}-[0-9]{4}[0-9_ ]?$/
       if(value.match(re)){
         $('#user_phone_number').addClass("ok").removeClass("error")
         return true
