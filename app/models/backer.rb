@@ -33,6 +33,10 @@ class Backer < ActiveRecord::Base
     self.save
   end
 
+  def can_refund?
+    confirmed? && created_at >= (Date.today - 180.days) && project.finished? && !project.successful?
+  end
+
   def reward_must_be_from_project
     return unless reward
     errors.add(:reward, I18n.t('backer.reward_must_be_from_project')) unless reward.project == project

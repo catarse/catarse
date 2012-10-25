@@ -5,6 +5,11 @@ describe Backer do
   let(:project){ Factory(:project, :finished => true, :successful => false) }
   let(:unfinished_project){ Factory(:project, :finished => false, :successful => false) }
   let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
+  let(:unfinished_project_backer){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => unfinished_project) }
+  let(:sucessful_project_backer){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => successful_project) }
+  let(:not_confirmed_backer){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => false, :user => user, :project => unfinished_project) }
+  let(:older_than_180_days_backer){ Factory(:backer, :created_at => (Date.today - 181.days),:value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => unfinished_project) }
+  let(:valid_refund){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => project) }
 
   describe "Associations" do
     it { should have_many(:payment_notifications) }
@@ -72,38 +77,57 @@ describe Backer do
   end
 
   describe ".can_refund" do
-    before do
-      @valid_refund = Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => project)
-    end
+    before{ valid_refund }
 
     subject{ Backer.can_refund.all }
 
     context "when project is successful" do
-      before do
-        Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => successful_project)
-      end
-      it{ should == [@valid_refund] }
+      before{ sucessful_project_backer }
+      it{ should == [valid_refund] }
     end
 
     context "when project is not finished" do
-      before do
-        Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => unfinished_project)
-      end
-      it{ should == [@valid_refund] }
+      before{ unfinished_project }
+      it{ should == [valid_refund] }
     end
 
     context "when backer is not confirmed" do
-      before do
-        Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => false, :user => user, :project => unfinished_project)
-      end
-      it{ should == [@valid_refund] }
+      before{ not_confirmed_backer }
+      it{ should == [valid_refund] }
     end
 
-    context "when backer older than 180 days" do
-      before do
-        Factory(:backer, :created_at => (Date.today - 181.days),:value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => unfinished_project)
-      end
-      it{ should == [@valid_refund] }
+    context "when backer is older than 180 days" do
+      before{ older_than_180_days_backer } 
+      it{ should == [valid_refund] }
+    end
+  end
+
+  describe "#can_refund?" do
+    subject{ backer.can_refund? }
+
+    context "when project is successful" do
+      let(:backer){ sucessful_project_backer }
+      it{ should be_false }
+    end
+
+    context "when project is not finished" do
+      let(:backer){ unfinished_project_backer }
+      it{ should be_false }
+    end
+
+    context "when backer is older than 180 days" do
+      let(:backer){ older_than_180_days_backer }
+      it{ should be_false }
+    end
+
+    context "when backer is not confirmed" do
+      let(:backer){ not_confirmed_backer }
+      it{ should be_false }
+    end
+
+    context "when it's a valid refund" do
+      let(:backer){ valid_refund }
+      it{ should be_true }
     end
   end
 

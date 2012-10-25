@@ -7,7 +7,7 @@ describe UsersController do
 
   let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
   let(:failed_project){ Factory(:project, :finished => true, :successful => false) }
-  let(:backer){ Factory(:backer, :user => user, :project => failed_project, :can_refund => true) }
+  let(:backer){ Factory(:backer, :user => user, :project => failed_project) }
   let(:user){ Factory(:user, :provider => 'facebook', :uid => '666') }
 
   describe "PUT update" do
