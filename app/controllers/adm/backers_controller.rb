@@ -1,5 +1,6 @@
 class Adm::BackersController < Adm::BaseController
   inherit_resources
+  can_edit_on_the_spot
   menu I18n.t("adm.backers.index.menu") => Rails.application.routes.url_helpers.adm_backers_path
   before_filter :set_title
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
@@ -14,6 +15,7 @@ class Adm::BackersController < Adm::BaseController
   protected
   def can_update_on_the_spot?
     project_fields = []
+    backer_fields = []
     project_admin_fields = ["name", "about", "headline", "can_finish", "expires_at", "user_id", "image_url", "video_url", "visible", "rejected", "recommended", "permalink"]
     backer_admin_fields = ["confirmed", "requested_refund", "refunded", "anonymous", "user_id"]
     reward_fields = []
