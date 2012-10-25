@@ -79,7 +79,6 @@ ActiveAdmin.register Backer do
   form do |f|
     f.inputs do
       f.input :requested_refund
-      f.input :can_refund
       f.input :refunded
       f.input :value
     end
