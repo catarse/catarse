@@ -6,9 +6,9 @@ feature "Credits Feature" do
 
   before do
     fake_login
-    user.update_attribute :credits, 60
+    project = Factory(:project, finished: true, successful: false)
     @backers = [
-      Factory(:backer, user: user, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 10, created_at: 8.days.ago),
+      Factory(:backer, user: user, project: project, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 20, created_at: 8.days.ago),
     ]
     user.reload
 
@@ -26,7 +26,8 @@ feature "Credits Feature" do
   end
 
   scenario "I have backs to refund but not enough credits" do
-    user.stubs(:credits).returns(5)
+    Factory(:backer, credits: true, value: 10, user: user)
+    user.reload
     rows = all("#user_credits table tbody tr")
     # And now I try to request refund for the fourth row, but don't have enough credits
     within rows[0] do
@@ -34,7 +35,7 @@ feature "Credits Feature" do
       verify_translations
       column = rows[0].all("td")[4]
       # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
-      sleep 1
+      sleep 3
       column.text.should == I18n.t('credits.refund.no_credits')
     end
     click_on "OK"
@@ -43,8 +44,6 @@ feature "Credits Feature" do
   end
 
   scenario "I have credits and backs to refund" do
-    User.any_instance.stubs(:credits).returns(500)
-
     rows = all("#user_credits table tbody tr")
     rows.should have(1).items
 
