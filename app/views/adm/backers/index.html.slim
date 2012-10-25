@@ -17,7 +17,7 @@
 
     .filters
       .bootstrap-form
-        = form_for @search, :url => pending_backers_projects_path, class: 'form-horizontal' do |f|
+        = form_for @search, :url => adm_backers_path, class: 'form-horizontal' do |f|
           fieldset
             .input
               = f.label :id_equals, t('.id')
