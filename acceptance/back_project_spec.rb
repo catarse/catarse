@@ -122,80 +122,80 @@ feature "Back project" do
 
   end
 
-  scenario "As a user without credits, I want to back a project by clicking on a reward on the project page, and pay using MoIP Boleto", :now => true do
+  #scenario "As a user without credits, I want to back a project by clicking on a reward on the project page, and pay using MoIP Boleto", :now => true do
 
-    MoIP::Client.stubs(:checkout).returns({"Token" => "foobar"})
-    MoIP::Client.stubs(:moip_page).returns("http://www.moip.com.br")
+    #MoIP::Client.stubs(:checkout).returns({"Token" => "foobar"})
+    #MoIP::Client.stubs(:moip_page).returns("http://www.moip.com.br")
 
-    fake_login
+    #fake_login
 
-    visit project_path(@project)
-    verify_translations
+    #visit project_path(@project)
+    #verify_translations
 
-    within "#rewards" do
-      rewards = all(".box.clickable")
-      rewards[2].find("input[type=hidden]")[:value].should == "#{new_project_backer_path(@project)}/?reward_id=#{@rewards[2].id}"
-      visit rewards[2].find("input[type=hidden]")[:value]
-    end
+    #within "#rewards" do
+      #rewards = all(".box.clickable")
+      #rewards[2].find("input[type=hidden]")[:value].should == "#{new_project_backer_path(@project)}/?reward_id=#{@rewards[2].id}"
+      #visit rewards[2].find("input[type=hidden]")[:value]
+    #end
 
 
-    verify_translations
-    sleep 2
+    #verify_translations
+    #sleep 2
 
-    find("input#backer_reward_id_#{@rewards[2].id}")[:checked].should == "true"
-    find("#backer_value")[:value].should == "30"
+    #find("input#backer_reward_id_#{@rewards[2].id}")[:checked].should == "true"
+    #find("#backer_value")[:value].should == "30"
 
-    Backer.count.should == 0
+    #Backer.count.should == 0
 
-    click_on I18n.t('projects.backers.new.submit')
-    verify_translations
-    current_path.should == review_project_backers_path(@project)
-    page.should have_content("Você irá apoiar com R$ 30 e ganhará a seguinte recompensa:")
-    page.should have_content("$30 reward")
+    #click_on I18n.t('projects.backers.new.submit')
+    #verify_translations
+    #current_path.should == review_project_backers_path(@project)
+    #page.should have_content("Você irá apoiar com R$ 30 e ganhará a seguinte recompensa:")
+    #page.should have_content("$30 reward")
 
-    Backer.count.should == 1
-    backer = Backer.first
-    backer.payment_method.should == "MoIP"
+    #Backer.count.should == 1
+    #backer = Backer.first
+    #backer.payment_method.should == "MoIP"
 
-    # Disabling jQuery mask, because we cannot test it with Capybara
-    page.evaluate_script('jQuery.mask = function() { return true; }')
+    ## Disabling jQuery mask, because we cannot test it with Capybara
+    #page.evaluate_script('jQuery.mask = function() { return true; }')
 
-    fill_in "Nome completo", with: "Foo bar"
-    fill_in "Email", with: "foo@bar.com"
-    fill_in "CEP", with: "90050-004"
-    fill_in "Logradouro", with: "Lorem Ipsum"
+    #fill_in "Nome completo", with: "Foo bar"
+    #fill_in "Email", with: "foo@bar.com"
+    #fill_in "CEP", with: "90050-004"
+    #fill_in "Logradouro", with: "Lorem Ipsum"
 
-    # Sleep to wait for the loading of zip code data
-    sleep 2
+    ## Sleep to wait for the loading of zip code data
+    #sleep 2
 
-    fill_in "Número", with: "1010"
-    fill_in "Complemento", with: "10"
-    fill_in "Bairro", with: "Foo bar"
-    fill_in "Cidade", with: "Foo bar"
-    select "Foo bar", from: "Estado"
-    fill_in "Telefone (fixo ou celular)", with: "(99)9999-9999"
+    #fill_in "Número", with: "1010"
+    #fill_in "Complemento", with: "10"
+    #fill_in "Bairro", with: "Foo bar"
+    #fill_in "Cidade", with: "Foo bar"
+    #select "Foo bar", from: "Estado"
+    #fill_in "Telefone (fixo ou celular)", with: "(99)9999-9999"
 
-    page.should have_css("#user_full_name.ok")
-    page.should have_css("#user_email.ok")
+    #page.should have_css("#user_full_name.ok")
+    #page.should have_css("#user_email.ok")
 
-    check "Eu li e estou de acordo com os termos de uso."
-    page.should have_content(I18n.t('projects.backers.review.choose_payment'))
-    find("a#moip").click
-    sleep 2
+    #check "Eu li e estou de acordo com os termos de uso."
+    #page.should have_content(I18n.t('projects.backers.review.choose_payment'))
+    #find("a#moip").click
+    #sleep 2
 
-    find("#payment_type_boleto").click
-    page.should have_content('Pagamento com Boleto')
-    fill_in "CPF / CNPJ (somente números)", with: '600.552.776-24'
-    find('#catarse_moip_form input[type="submit"]').click
-    sleep 2
-    page.should have_content 'Clique no link abaixo para ver o boleto:'
-    find('.link_content a').click
+    #find("#payment_type_boleto").click
+    #page.should have_content('Pagamento com Boleto')
+    #fill_in "CPF / CNPJ (somente números)", with: '600.552.776-24'
+    #find('#catarse_moip_form input[type="submit"]').click
+    #sleep 2
+    #page.should have_content 'Clique no link abaixo para ver o boleto:'
+    #find('.link_content a').click
 
-    backer.reload
-    backer.payment_method.should == "MoIP"
+    #backer.reload
+    #backer.payment_method.should == "MoIP"
 
-    current_url.should match(/thank_you/)
-  end
+    #current_url.should match(/thank_you/)
+  #end
 
   scenario "As a user with credits, I want to back a project using my credits" do
 
