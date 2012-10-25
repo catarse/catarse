@@ -49,7 +49,6 @@ describe UsersController do
         end
 
         it "when user doesn't have a necessary value" do
-          Factory(:notification_type, :name => 'project_success')
           Factory(:backer, :user => user, :project => successful_project, :credits => true)
           post :request_refund, { id: user.id, back_id: backer.id }
 
