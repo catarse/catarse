@@ -2,8 +2,6 @@
 require 'spec_helper'
 
 describe Project do
-  before{ Notification.stubs(:create_notification) }
-
   describe "associations" do
     it{ should have_many :projects_curated_pages }
     it{ should have_many :curated_pages }

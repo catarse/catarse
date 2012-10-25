@@ -9,7 +9,11 @@ describe Notification do
   let(:backer){ Factory(:backer) }
   let(:notification_type){ Factory(:notification_type, :name => 'confirm_backer') }
 
-  before{ ActionMailer::Base.deliveries.clear }
+  before do
+    Notification.unstub(:create_notification)
+    Notification.unstub(:create_notification_once)
+    ActionMailer::Base.deliveries.clear 
+  end
 
   describe "#send_email" do
     context "when dismissed is true" do
