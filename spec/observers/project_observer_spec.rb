@@ -10,6 +10,7 @@ describe ProjectObserver do
   subject{ backer }
 
   before do
+    Notification.unstub(:create_notification)
     confirm_backer
     project_success
     backer_successful
