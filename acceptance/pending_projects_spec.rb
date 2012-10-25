@@ -43,7 +43,7 @@ feature "Pending projects" do
     check 'project__visible__1'
     verify_translations
     # Had to add this sleep to wait for ajax to update the records
-    sleep 2
+    sleep 4
     visit homepage
     verify_translations
     page.should have_css('.title h2', :text => "novos e fresquinhos")
