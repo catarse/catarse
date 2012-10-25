@@ -2,6 +2,7 @@
 require 'spec_helper'
 
 describe ProjectsController do
+  before {Notification.unstub(:create_notification)}
   render_views
   subject{ response }
 
