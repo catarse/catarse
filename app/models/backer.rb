@@ -16,7 +16,7 @@ class Backer < ActiveRecord::Base
   scope :pending, where(:confirmed => false)
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
-  scope :can_refund, ->{ where("confirmed AND EXISTS(SELECT true FROM projects p WHERE p.id = backers.project_id AND finished AND NOT successful) AND date(current_timestamp) <= date(created_at + interval '180 days')") }
+  scope :can_refund, ->{ where("confirmed AND EXISTS(SELECT true FROM projects p WHERE p.id = backers.project_id AND finished AND NOT successful) AND date(current_timestamp) <= date(created_at + interval '60 days')") }
   attr_protected :confirmed
 
   def price_in_cents
@@ -34,7 +34,7 @@ class Backer < ActiveRecord::Base
   end
 
   def can_refund?
-    confirmed? && created_at >= (Date.today - 180.days) && project.finished? && !project.successful?
+    confirmed? && created_at >= (Date.today - 60.days) && project.finished? && !project.successful?
   end
 
   def reward_must_be_from_project
@@ -82,10 +82,6 @@ class Backer < ActiveRecord::Base
     raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
     self.update_attributes({ requested_refund: false })
     self.user.update_attributes({ credits: (self.user.credits + self.value) })
-  end
-
-  def refund_deadline
-    created_at + 180.days
   end
 
   def as_json(options={})

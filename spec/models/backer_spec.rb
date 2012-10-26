@@ -8,7 +8,7 @@ describe Backer do
   let(:unfinished_project_backer){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => unfinished_project) }
   let(:sucessful_project_backer){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => successful_project) }
   let(:not_confirmed_backer){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => false, :user => user, :project => unfinished_project) }
-  let(:older_than_180_days_backer){ Factory(:backer, :created_at => (Date.today - 181.days),:value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => unfinished_project) }
+  let(:older_than_60_days_backer){ Factory(:backer, :created_at => (Date.today - 181.days),:value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => unfinished_project) }
   let(:valid_refund){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => project) }
 
   describe "Associations" do
@@ -96,8 +96,8 @@ describe Backer do
       it{ should == [valid_refund] }
     end
 
-    context "when backer is older than 180 days" do
-      before{ older_than_180_days_backer } 
+    context "when backer is older than 60 days" do
+      before{ older_than_60_days_backer } 
       it{ should == [valid_refund] }
     end
   end
@@ -115,8 +115,8 @@ describe Backer do
       it{ should be_false }
     end
 
-    context "when backer is older than 180 days" do
-      let(:backer){ older_than_180_days_backer }
+    context "when backer is older than 60 days" do
+      let(:backer){ older_than_60_days_backer }
       it{ should be_false }
     end
 
