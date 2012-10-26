@@ -119,7 +119,6 @@ feature "Back project" do
     end
 
     page.should have_content "Você agora é parte do grupo que faz de tudo para o #{@project.name} acontecer."
-
   end
 
   #scenario "As a user without credits, I want to back a project by clicking on a reward on the project page, and pay using MoIP Boleto", :now => true do
@@ -137,7 +136,6 @@ feature "Back project" do
       #rewards[2].find("input[type=hidden]")[:value].should == "#{new_project_backer_path(@project)}/?reward_id=#{@rewards[2].id}"
       #visit rewards[2].find("input[type=hidden]")[:value]
     #end
-
 
     #verify_translations
     #sleep 2
