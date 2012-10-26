@@ -7,7 +7,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def notify_users(project)
     project.backers.confirmed.each do |backer|
-      unless backer.can_refund or backer.notified_finish
+      unless backer.can_refund? or backer.notified_finish
         if project.successful?
           Notification.create_notification(:backer_project_successful, backer.user, :backer => backer, :project => project, :project_name => project.name)
         else

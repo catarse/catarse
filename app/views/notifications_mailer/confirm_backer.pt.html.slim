@@ -1,14 +1,41 @@
 - backer = @notification.backer
-|Sucesso!
-br
-|Seu apoio acabou de ser confirmado.
+|Olá, <strong>#{backer.user.display_name}</strong>!
 br
 br
-|Confira: #{backer.user.display_name}
-br
-= backer.display_value
-br
-= backer.reward.description if backer.reward
+|Seu apoio para #{link_to(backer.project.name, project_url(backer.project, host: I18n.t('site.host') ))} foi confirmado pelo <strong>#{backer.payment_method}</strong>
+|!
 br
 br
-= backer.project.name
+|Mantenha essa mensagem contigo para servir como comprovante do seu apoio.
+br
+br
+|Uma coisa super importante:<strong> se o seu pagamento foi feito com cartão de crédito</strong>, o nome que virá na sua fatura é o do #{backer.payment_method}. Infelizmente as operadoras de cartão não possibilitam ainda que o nome do Catarse apareça escrito lá, ok?
+br
+br
+|Valor da contribuição: <strong>R$ #{backer.value}</strong>
+br
+-if backer.reward
+  |Recompensa selecionada: <strong>#{backer.reward.description}</strong>
+-else
+  |Nenhuma recompensa foi selecionada, qualquer dúvida entre em contato com a nossa equipe através do #{mail_to 'contato@catarse.me'}
+br
+br
+|Caso o projeto seja bem-sucedido em <strong>#{backer.project.expires_at.strftime("%d/%m/%Y")}</strong>, os responsáveis pelo projeto entrarão em contato contigo para requisitar informações sobre a entrega das recompensas. Esse contato deles virá normalmente 1 semana após essa data, que é o tempo que levamos para passar a informação de todos os apoiadores para o realizador.
+br
+br
+|Se o projeto não atingir a meta financeira estabelecida, você receberá um email do Catarse com instruções para:
+br
+|1) apoiar outro projeto com os créditos que serão gerados; OU
+br
+|2) solicitar o reembolso do seu dinheiro.
+br
+br
+|Se quiser entrar em contato com #{backer.project.user.name}, mande um email para #{mail_to backer.project.user.email}
+br
+br
+|Se tiver alguma outra dúvida, acesse nosso #{link_to('FAQ', "#{I18n.t('site.base_url')}/faq")} ou mande um email para o #{mail_to 'contato@catarse.me'}
+br
+br
+|Um grande abraço,
+br
+|Equipe do Catarse

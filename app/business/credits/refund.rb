@@ -35,7 +35,7 @@ module Credits
     end
 
     def check_can_refund
-      raise I18n.t('credits.refund.cannot_refund') unless @backer.can_refund
+      raise I18n.t('credits.refund.cannot_refund') unless @backer.can_refund?
     end
   end
 end
