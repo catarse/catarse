@@ -5,9 +5,7 @@ class Backer < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   belongs_to :reward
-  has_many :payment_logs
   has_many :payment_notifications
-  has_one :payment_detail
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
@@ -16,8 +14,9 @@ class Backer < ActiveRecord::Base
   scope :confirmed, where(:confirmed => true)
   scope :not_confirmed, where(:confirmed => false)
   scope :pending, where(:confirmed => false)
-  scope :can_refund, where(:can_refund => true)
-  scope :within_refund_deadline, where("date(current_timestamp) <= date(created_at + interval '180 days')")
+
+  # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
+  scope :can_refund, ->{ where("confirmed AND EXISTS(SELECT true FROM projects p WHERE p.id = backers.project_id AND finished AND NOT successful) AND date(current_timestamp) <= date(created_at + interval '180 days')") }
   attr_protected :confirmed
 
   def price_in_cents
@@ -32,6 +31,10 @@ class Backer < ActiveRecord::Base
   def confirm!
     self.confirmed = true
     self.save
+  end
+
+  def can_refund?
+    confirmed? && created_at >= (Date.today - 180.days) && project.finished? && !project.successful?
   end
 
   def reward_must_be_from_project

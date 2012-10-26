@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       return redirect_to(user_path(@user.primary)) if @user.primary
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
-      @credits = @user.backs.can_refund.within_refund_deadline.all
+      @credits = @user.backs.can_refund.all
     }
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def credits
     @user = User.find(params[:id])
-    @credits = @user.backs.can_refund.within_refund_deadline.order(:id).all
+    @credits = @user.backs.can_refund.order(:id).all
     render :json => @credits
   end
 

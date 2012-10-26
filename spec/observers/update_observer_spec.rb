@@ -4,6 +4,7 @@ describe UpdateObserver do
   describe 'after_create' do
     context ".notify_backers" do
       before do
+        Notification.unstub(:create_notification)
         Factory(:notification_type, :name => 'updates')
         @project = Factory(:project)
         backer = Factory(:backer, :confirmed => true, :project => @project)

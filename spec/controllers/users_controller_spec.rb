@@ -4,11 +4,10 @@ require 'spec_helper'
 describe UsersController do
   render_views
   subject{ response }
-  before{ Notification.stubs(:create_notification) }
 
   let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
   let(:failed_project){ Factory(:project, :finished => true, :successful => false) }
-  let(:backer){ Factory(:backer, :user => user, :project => failed_project, :can_refund => true) }
+  let(:backer){ Factory(:backer, :user => user, :project => failed_project) }
   let(:user){ Factory(:user, :provider => 'facebook', :uid => '666') }
 
   describe "PUT update" do
@@ -50,7 +49,6 @@ describe UsersController do
         end
 
         it "when user doesn't have a necessary value" do
-          Factory(:notification_type, :name => 'project_success')
           Factory(:backer, :user => user, :project => successful_project, :credits => true)
           post :request_refund, { id: user.id, back_id: backer.id }
 
