@@ -5,13 +5,78 @@
       .title
         h1= t('.title')
         h2= t('.subtitle')
-      .clearfix
-      .bootstrap-alert
-        .alert.alert-info
-          #how_it_works= render 'how_it_works'
-      .default_text
-        #more_tips.hide= render 'more_tips'
-        = render 'guidelines_text'
+        h3= t('.introduction')
+        p= t('.legend')
+      ul.steps
+        li
+          = image_tag('catarse/thumb_step.jpg')
+          .ico.one
+          span= t('.title_one')
+          p= t('.step_one')
+        li
+          = image_tag('catarse/thumb_step.jpg')
+          .ico.two
+          span= t('.title_two')
+          p= t('.step_two')
+        li
+          = image_tag('catarse/thumb_step.jpg')
+          .ico.three
+          span= t('.title_three')
+          p= t('.step_three')
+        li.last
+          = image_tag('catarse/thumb_step.jpg')
+          .ico.four
+          span= t('.title_four')
+          p= t('.step_four')
+
+      .requirements
+        span= t('.title_requirements')
+        ul.list
+          li.creative
+            p= t('.creative')
+          li.colective
+            p= t('.colective')
+          li.nonprofit
+            p= t('.nonprofit')
+          li.donation
+            p= t('.donation')
+          li.video
+            p= t('.video')
+      
+      .more_questions
+        = t('.more_questions')
+        ul.questions
+          li
+            = image_tag('catarse/icon_limagic.png')
+            strong= t('.title_magic')
+            p= t('.magic')
+          li
+            = image_tag('catarse/icon_limoney.png')
+            strong= t('.title_money')
+            p= t('.money')  
+          li.line                    
+          li
+            = image_tag('catarse/icon_liwork.png')
+            strong= t('.title_work')
+            p= t('.work')
+          li
+            = image_tag('catarse/icon_licosts.png')
+            strong= t('.title_costs')
+            p= t('.costs')
+        .why_catarse
+          = image_tag('catarse/label_orange.png')
+          span= t('.why')
+          strong= t('.intro')
+          ul.list_why
+            li
+              label 1
+              p= t('.why_one')
+            li
+              label 2
+              p= t('.why_two')
+            li
+              label 3
+              p= t('.why_three')
       .bootstrap-form.center_form
         = form_tag(start_projects_path, :method => :get, :id => 'guidelines_form') do
           fieldset.check

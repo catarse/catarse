@@ -9,13 +9,222 @@
           +alpha
           padding-bottom: 40px
           h1
-            color: $ultra_gryn
+            color: #333333
             font-family: "Lato-Regular"
-            font-size: 28px
-            padding: 5px 0
+            font-size: 24px
+            padding: 0 0 5px 50px
+            margin-top: 20px
+            background: url($images_path+'icon_new.png') left top no-repeat
           h2
-            color: rgba($ultra_gryn, 0.7)
-            font-family: Arial
+            color: #333333
+            font-family: "Lato-Regular"
+            font-size: 14px
+            padding-left: 50px
+            padding-bottom: 15px
+            border-bottom: 1px dotted #CCCCCC
+          h3
+            color: #F28D0B
+            font-size: 21px
+            font-family: "Lato-Italic"
+            margin-top: 46px
+            width: 100%
+            text-align: center
+          p
+            font-family: "Lato-Italic"
+            color: #666666
+            font-size: 16px
+            width: 490px
+            text-align: center
+            line-height: 21px
+            padding-top: 20px
+            margin: 0 auto
+        ul.steps
+          float: left
+          width: 100%
+          background: url($images_path+'bg_steps.png') left -20px no-repeat
+          li
+            width: 220px
+            float: left
+            margin-right: 20px
+            position: relative
+            .ico
+              position: absolute
+              top: 148px
+              left: 84px
+              width: 53px
+              height: 31px
+              &.one
+                background: url($images_path+'icon_step1.png') left top no-repeat
+              &.two
+                background: url($images_path+'icon_step2.png') left top no-repeat
+              &.three
+                background: url($images_path+'icon_step3.png') left top no-repeat
+              &.four
+                background: url($images_path+'icon_step4.png') left top no-repeat
+            span
+              color: #666666
+              font-family: "Lato-Bold"
+              font-size: 16px
+              padding-bottom: 10px
+              display: block
+              margin-top: 20px
+            p
+              font-family: Arial
+              color: #666666
+              font-size: 12px
+              line-height: 18px
+          li.last
+            margin-right: 0px
+
+        .requirements
+          background: url($images_path+'bg_requirements.png') left top repeat-x
+          float: left
+          height: 115px
+          margin-bottom: 30px
+          margin-left: -20px
+          margin-top: 30px
+          width: 980px
+          span
+            color: #F28D0B
+            font-size: 18px
+            font-family: "Lato-Bold"
+            line-height: 24px
+            margin-left: 20px
+            margin-top: 23px
+            text-shadow: 1px 1px white
+            width: 130px
+            float: left
+          ul.list
+            width: 750px
+            height: 60px
+            float: left
+            margin-left: 60px
+            margin-top: 35px
+            li
+              float: left
+              margin-right: 10px
+              width: 125px
+              font-family: "Lato-Italic"
+              color: #5D5D5D
+              font-size: 14px
+              text-shadow: 1px 1px white
+              padding-left: 50px
+              height: 50px
+              padding-top: 10px              
+              &.creative
+                background: url($images_path+'icon_creative.png') left top no-repeat
+                width: 50px
+                padding-left: 30px
+              &.colective
+                background: url($images_path+'icon_colective.png') left top no-repeat
+                width: 100px
+                padding-left: 60px
+                width: 80px
+                margin-left: 10px
+              &.nonprofit
+                background: url($images_path+'icon_nonprofit.png') left top no-repeat
+                width: 100px
+                padding-left: 40px
+              &.donation
+                background: url($images_path+'icon_donation.png') left top no-repeat
+                padding-left: 40px
+              &.video
+                background: url($images_path+'icon_video.png') left 10px no-repeat
+                width: 60px
+                margin-right: 0px
+        .more_questions
+          color: #666666
+          margin-top: 10px
+          float: left
+          width: 100%
+          font-size: 21px
+          font-family: "Lato-Italic"
+          line-height: 24px
+          ul.questions
+            width: 630px
+            float: left
+            margin-top: 40px
+            li
+              width: 260px
+              float: left
+              padding-left: 45px
+              img
+                float: left
+                margin-left: -45px
+              strong
+                font-family: Arial
+                color: #666666
+                font-size: 14px
+                display: block
+                line-height: 18px
+                font-weight: bold
+                margin-bottom: 10px
+              p
+                font-family: Arial
+                color: #666666
+                line-height: 21px
+                font-size: 13px
+            li.line
+              height: 1px
+              width: 100%
+              padding: 0px
+              border-top: 1px dotted #CCCCCC
+              margin: 30px 0
+            li + li 
+              margin-left: 20px
+            li.line + li 
+              margin-left: 0px
+          .why_catarse
+            float: right
+            width: 275px
+            background: #F3F3F3
+            border: 1px solid #EDEDED
+            img
+              margin-left: -10px
+              margin-top: 20px
+              float: left
+            span
+              font-family: "Lato-Bold"
+              font-size: 14px
+              color: white
+              background: #F28E0B
+              padding: 4px 10px
+              float: left
+              text-transform: uppercase
+              margin-top: 20px 
+            strong
+              font-family: "Lato-Italic"
+              color: #666666
+              font-size: 14px
+              display: block
+              line-height: 18px
+              float: left
+              width: 90%
+              margin-top: 20px
+              margin-left: 15px
+            ul.list_why
+              margin-top: 20px
+              float: left
+              li
+                border-bottom: 1px dotted #CCCCCC
+                padding-bottom: 20px
+                margin-top: 20px
+                label
+                  margin-left: -9px
+                  float: left
+                  color: white
+                  font-family: "Lato-Regular"
+                  font-size: 16px              
+                  text-align: center
+                  background: url($images_path+'label_orange_list.png') top left no-repeat
+                  width: 25px
+                  height: 30px
+                p
+                  font-family: Arial
+                  color: #666666
+                  line-height: 18px
+                  font-size: 12px
+                  padding: 0px 15px 0 30px
         #how_it_works.alert
           font-family: Arial
           font-size: 15px
