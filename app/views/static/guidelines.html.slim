@@ -78,10 +78,13 @@
               label 3
               p= t('.why_three')
       .bootstrap-form.center_form
-        = form_tag(start_projects_path, :method => :get, :id => 'guidelines_form') do
+        = form_tag(guidelines_tips_path, :method => :get, :id => 'guidelines_form') do
           fieldset
             .bootstrap-twitter
-              = submit_tag t('.submit'), :disabled => true, :class=>'btn', :style=>'display:none'
-            .submit_loader
-              = image_tag('loading.gif')
+              .curious
+                = submit_tag t('.explore_curious'), :class=>'btn_explore', :style=>'display:none'
+                span = t('.explore_projects')
+              .send
+                = submit_tag t('.submit'), :class=>'btn_send', :style=>'display:none'
+                span = t('.send_project')
     .clearfix
