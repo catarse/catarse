@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable#, :validatable
+    :recoverable, :rememberable, :trackable#, :validatable
   begin
     sync_with_mailchimp
   rescue Exception => e
@@ -12,34 +12,34 @@ class User < ActiveRecord::Base
   end
 
   delegate  :display_name, :display_image, :short_name, :display_provider, :display_image_html,
-            :medium_name, :display_credits, :display_total_of_backs,
-            :to => :decorator
+    :medium_name, :display_credits, :display_total_of_backs,
+    :to => :decorator
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
-                  :password,
-                  :password_confirmation,
-                  :remember_me,
-                  :name,
-                  :nickname,
-                  :image_url,
-                  :uploaded_image,
-                  :bio,
-                  :newsletter,
-                  :full_name,
-                  :address_street,
-                  :address_number,
-                  :address_complement,
-                  :address_neighbourhood,
-                  :address_city,
-                  :address_state,
-                  :address_zip_code,
-                  :phone_number,
-                  :cpf,
-                  :locale,
-                  :twitter,
-                  :facebook_link,
-                  :other_link
+    :password,
+    :password_confirmation,
+    :remember_me,
+    :name,
+    :nickname,
+    :image_url,
+    :uploaded_image,
+    :bio,
+    :newsletter,
+    :full_name,
+    :address_street,
+    :address_number,
+    :address_complement,
+    :address_neighbourhood,
+    :address_city,
+    :address_state,
+    :address_zip_code,
+    :phone_number,
+    :cpf,
+    :locale,
+    :twitter,
+    :facebook_link,
+    :other_link
 
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
@@ -72,16 +72,16 @@ class User < ActiveRecord::Base
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   scope :most_backeds, ->{
     joins(:backs).select(
-    <<-SQL
+      <<-SQL
       users.id,
       users.name,
       users.email,
       count(backers.id) as count_backs
-    SQL
+      SQL
     ).
-    where("backers.confirmed is true").
-    order("count_backs desc").
-    group("users.name, users.id, users.email")
+      where("backers.confirmed is true").
+      order("count_backs desc").
+      group("users.name, users.id, users.email")
   }
   scope :most_backed_different_projects, -> {
     joins(:backs).select(
@@ -99,8 +99,8 @@ class User < ActiveRecord::Base
         ) as count_backs
       SQL
     ).
-    where("backers.confirmed is true").
-    order("count_backs DESC")
+      where("backers.confirmed is true").
+      order("count_backs DESC")
 
   }
   scope :by_email, ->(email){ where('email ~* ?', email) }
@@ -119,9 +119,9 @@ class User < ActiveRecord::Base
   def self.backer_totals
     connection.select_one(
       self.scoped.
-        joins(:user_total).
-        select('count(DISTINCT user_id) as users, count(*) as backers, sum(user_totals.sum) as backed, sum(user_totals.credits) as credits, sum(users.credits) as credits_table').
-        to_sql
+      joins(:user_total).
+      select('count(DISTINCT user_id) as users, count(*) as backers, sum(user_totals.sum) as backed, sum(user_totals.credits) as credits, sum(users.credits) as credits_table').
+      to_sql
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
   end
 
@@ -259,7 +259,7 @@ class User < ActiveRecord::Base
   end
 
   def fix_twitter_user
-    self.twitter.gsub! /@/, '' if self.twitter
+    self.twitter.gsub!(/@/, '') if self.twitter
   end
 
   protected
@@ -270,6 +270,6 @@ class User < ActiveRecord::Base
   # Returns a Gravatar URL associated with the email parameter, uses local avatar if available
   def gravatar_url
     return unless email
-    "http://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{I18n.t('site.base_url')}/assets/user.png"
- end
+    "https://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{I18n.t('site.base_url')}/assets/user.png"
+  end
 end
