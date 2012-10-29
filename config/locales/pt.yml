@@ -570,7 +570,7 @@ pt:
       subtitle: "Entenda, passo a passo, como funciona viabilizar seu projeto através do Catarse."
       title: "Como funciona o Catarse?"
       introduction: "O Catarse é uma alternativa diferente – e colaborativa – de tirar o seu projeto do papel."
-      legend: "Preste atenção ao passo-a-passo e nas perguntas respondidas para decidir se o Catarse é o caminho para financiar o seu projeto."
+      legend_html: "Preste atenção ao passo-a-passo e nas perguntas respondidas para decidir se <br>o Catarse é o caminho para financiar o seu projeto."
       title_one: "Envie seu projeto"
       step_one: "Projetos são ações! E estamos de braços abertos para receber ações pequenas, grandes, engraçadas, sérias, tradicionais, inovadoras... Adoramos projetos que precisam de pouco dinheiro e que geram grande impacto em suas comunidades."
       title_two: "Curadoria"
@@ -599,6 +599,11 @@ pt:
       why_one: "Ao gerar um aproximação muito forte junto a sua rede,  esse tipo de campanha abre portas para novos projetos, parcerias e outras conexões inesperadas."
       why_two: "Se os projetos forem bem comunicados, eles podem se espalhar, rapidamente, pra um monte de gente, expandindo a sua rede e fortalecendo a base de pessoas ao redor do seu projeto."
       why_three: "Pouca burocracia e baixo risco financeiro. Sem juros, sem venda de participação, sem custo para entrar no ar... e com muita emoção e diversão."
+    guidelines_tips:
+      title: "Calma, amizade!"
+      subtitle: "Antes de você enviar seu projeto, vale a pena refletir sobre alguns pontos importantes."
+      introduction_html: "Sabemos que você tá louco para ter seu projeto no ar, mas antes responda <br> (em um papel mesmo) as perguntas a seguir."
+      legend_html: "Ter bem claro as respostas para essas perguntas irá ajudar um monte na estruturação do seu projeto, <br>aumentando as chances de atingir sucesso na campanha."
     privacy:
       title: "Política de privacidade"
     terms:
