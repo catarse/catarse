@@ -226,6 +226,8 @@
                   line-height: 18px
                   font-size: 12px
                   padding: 0px 15px 0 30px
+              li + li + li
+                border-bottom: none
         #how_it_works.alert
           font-family: Arial
           font-size: 15px
@@ -267,16 +269,57 @@
               list-style: disc inside
         .center_form
           text-align: center
-          .check
-            margin-bottom: 15px
-            input
-              display: inline
-            label
-              display: inline
-              font-family: Arial
-              font-size: 15px
-              line-height: 130%
+          float: left
           .bootstrap-twitter
-            .btn
+            margin-left: 60px
+            .curious
+              position: relative
               float: left
-              width: 100%
+              .btn_explore
+                float: left
+                width: 240px
+                background: #6BB544 url($images_path+'button_explore.png') 15px 6px no-repeat
+                border: solid 1px #578A3F
+                height: 60px
+                text-transform: uppercase
+                color: white
+                text-shadow: 1px 1px #4C8132
+                font-family: "Lato-Bold"
+                font-size: 15px
+                text-indent: 35px
+                padding-bottom: 15px
+                +border-radius(15px)
+              span
+                color: white
+                text-shadow: 1px 1px #4C8132
+                font-family: "Lato-Italic"
+                font-size: 14px
+                position: absolute
+                top: 32px
+                left: 58px
+            .send
+              position: relative
+              float: left
+              margin-left: 30px
+              .btn_send
+                float: left
+                width: 240px
+                background: #F28E0B url($images_path+'button_send.png') 15px 11px no-repeat
+                border: solid 1px #C8760A
+                height: 60px
+                text-transform: uppercase
+                color: white
+                text-shadow: 1px 1px #C8760A
+                font-family: "Lato-Bold"
+                font-size: 15px
+                text-indent: 24px
+                padding-bottom: 15px
+                +border-radius(15px)
+              span
+                color: white
+                text-shadow: 1px 1px #C8760A
+                font-family: "Lato-Italic"
+                font-size: 14px
+                position: absolute
+                top: 32px
+                left: 68px
