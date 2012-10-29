@@ -79,9 +79,6 @@
               p= t('.why_three')
       .bootstrap-form.center_form
         = form_tag(start_projects_path, :method => :get, :id => 'guidelines_form') do
-          fieldset.check
-            = check_box_tag 'accept'
-            = label_tag 'accept', t('.accept')
           fieldset
             .bootstrap-twitter
               = submit_tag t('.submit'), :disabled => true, :class=>'btn', :style=>'display:none'
