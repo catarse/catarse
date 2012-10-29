@@ -563,7 +563,10 @@ pt:
       title: "Perguntas frequentes"
     guidelines:
       accept: "Eu li e entendi como funciona o Catarse."
-      submit: "Quero enviar meu projeto"
+      explore_curious: "Tô aqui de curioso!"
+      explore_projects: "Quero explorar os projetos."
+      submit: "Próximo Passo!"
+      send_project: "Quero enviar meu projeto."
       subtitle: "Entenda, passo a passo, como funciona viabilizar seu projeto através do Catarse."
       title: "Como funciona o Catarse?"
       introduction: "O Catarse é uma alternativa diferente – e colaborativa – de tirar o seu projeto do papel."
