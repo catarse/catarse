@@ -3,11 +3,11 @@
 class LogoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
-  def self.s3_config?
-    Rails.env.production? and Configuration[:aws_access_key]
+  def self.choose_storage
+    (Rails.env.production? and Configuration[:aws_access_key]) ? :fog : :file
   end
 
-  storage s3_config? ? :s3 : :file
+  storage choose_storage
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"

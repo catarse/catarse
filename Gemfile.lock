@@ -116,8 +116,9 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    carrierwave (0.5.8)
-      activesupport (~> 3.0)
+    carrierwave (0.7.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     catarse_mailchimp (0.0.1)
       mailchimp
       supermodel
@@ -473,7 +474,7 @@ DEPENDENCIES
   brcep
   cancan
   capybara (>= 1.0.1)
-  carrierwave (= 0.5.8)
+  carrierwave (~> 0.7.0)
   catarse_mailchimp
   catarse_moip!
   catarse_paypal_express!
