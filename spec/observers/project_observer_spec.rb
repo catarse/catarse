@@ -34,7 +34,7 @@ describe ProjectObserver do
 
   describe "notify_backers" do
 
-   context "when project is successful" do
+    context "when project is successful" do
       let(:project){ Factory(:project, :can_finish => true, :visible => true, :successful => false, :goal => 30, :finished => false, :expires_at => (Time.now - 1.day)) }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 30, :project => project) }
 
