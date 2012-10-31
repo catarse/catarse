@@ -319,7 +319,8 @@ describe Project do
   describe "#download_video_thumbnail" do
     let(:project){ Factory.build(:project) }
     before do
-      Project.any_instance.expects(:open).with(project.video_url).returns(File.open("#{Rails.root}/spec/fixtures/image.png"))
+      Project.any_instance.unstub(:download_video_thumbnail)
+      Project.any_instance.expects(:open).with(project.vimeo.thumbnail).returns(File.open("#{Rails.root}/spec/fixtures/image.png"))
       project.save!
     end
 
