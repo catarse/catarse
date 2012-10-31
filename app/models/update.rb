@@ -18,6 +18,7 @@ class Update < ActiveRecord::Base
 
   def notify_backers
     project.backers.confirmed.each do |backer|
+      Rails.logger.info "[Backer #{backer.id}] - Creating notification for #{backer.user.name}"
       Notification.create_notification :updates, backer.user,
         :project_name => backer.project.name,
         :project_owner => backer.project.user.display_name,
