@@ -26,6 +26,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
+    Project.any_instance.stubs(:download_video_thumbnail)
     CatarseMailchimp::API.stubs(:subscribe)
     CatarseMailchimp::API.stubs(:unsubscribe)
     Notification.stubs(:create_notification)
