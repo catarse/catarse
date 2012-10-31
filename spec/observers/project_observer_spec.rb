@@ -24,17 +24,35 @@ describe ProjectObserver do
   end
 
   describe "before_save" do
-    let(:project){ Factory(:project, :visible => false )}
-    before do
-      Notification.expects(:create_notification).with(:project_visible, project.user, project)
-      project.visible = true
-      project.save!
+    let(:project){ Factory(:project, :video_url => 'http://vimeo.com/11198435', :visible => false )}
+    context "when project is made visible" do
+      before do
+        Notification.expects(:create_notification).with(:project_visible, project.user, {:project => project})
+        project.expects(:download_video_thumbnail).never
+      end
+
+      it "should call create_notification and do not call download_video_thumbnail" do
+        project.visible = true
+        project.save!
+      end
+    end
+
+    context "when video_url changes" do
+      before do
+        project.expects(:download_video_thumbnail)
+        Notification.expects(:create_notification).never
+      end
+
+      it "should call download_video_thumbnail and do not call create_notification" do
+        project.video_url = 'http://vimeo.com/66698435'
+        project.save!
+      end
     end
   end
 
   describe "notify_backers" do
 
-   context "when project is successful" do
+    context "when project is successful" do
       let(:project){ Factory(:project, :can_finish => true, :visible => true, :successful => false, :goal => 30, :finished => false, :expires_at => (Time.now - 1.day)) }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 30, :project => project) }
 
