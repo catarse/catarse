@@ -16,7 +16,7 @@ class UpdatesController < ApplicationController
     @update.user = current_user
     return unless can? :manage, @update
     create! do |format|
-      format.html{ return redirect_to project_updates_path(parent) }
+      format.html{ return redirect_to project_path(parent, :anchor => 'updates') }
     end
   end
 
