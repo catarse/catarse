@@ -4,6 +4,9 @@ source 'http://gems.github.com'
 gem 'rails', '3.2.7'
 gem 'rake', '0.9.2.2'
 
+gem 'sidekiq', '= 2.4.0'
+gem 'sinatra', require: false
+gem 'foreman'
 # Database and data related [Putting pg to the end because of a weird bug with Lion, pg and openssl]
 gem 'pg'
 gem 'foreigner'
@@ -94,7 +97,7 @@ gem 'thin'
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
-  gem "compass-rails", "~> 1.0.1"
+  gem "compass-rails", "~> 1.0.2"
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-960-plugin', '~> 0.10.4'
 end

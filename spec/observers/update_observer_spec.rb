@@ -2,19 +2,14 @@ require 'spec_helper'
 
 describe UpdateObserver do
   describe 'after_create' do
-    context ".notify_backers" do
+    context "call notify update worker" do
       before do
-        Notification.unstub(:create_notification)
-        Factory(:notification_type, :name => 'updates')
         @project = Factory(:project)
-        backer = Factory(:backer, :confirmed => true, :project => @project)
-        @project.reload
-        ActionMailer::Base.deliveries = []
       end
 
-      it "should send email to backers" do
+      it "should send to queue" do
         update = Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment")
-        ActionMailer::Base.deliveries.should_not be_empty
+        NotifyUpdateWorker.jobs.size.should == 1
       end
     end
   end
