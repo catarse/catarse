@@ -1,6 +1,13 @@
+require 'sidekiq/web'
+
 Catarse::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"} do
     get "/login" => "devise/sessions#new"
+  end
+
+  check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
+  constraints check_user_admin do
+    mount Sidekiq::Web => '/sidekiq'
   end
 
   # Non production routes
