@@ -6,6 +6,11 @@ describe ProjectDecorator do
   describe "#display_image" do
     subject{ project.display_image }
 
+    context "when we have a video_url without thumbnail" do
+      let(:project){ Factory(:project, :image_url => nil, :video_thumbnail => nil) }
+      it{ should == project.vimeo.thumbnail } 
+    end
+
     context "when we have a video_thumbnail" do
       let(:project){ Factory(:project, :image_url => nil, :video_thumbnail => File.open("#{Rails.root}/spec/fixtures/image.png")) }
       it{ should == project.video_thumbnail.url } 

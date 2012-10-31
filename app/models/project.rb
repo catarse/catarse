@@ -134,9 +134,11 @@ class Project < ActiveRecord::Base
   end
 
   def download_video_thumbnail
-    self.video_thumbnail = open(self.video_url) if self.video_url
+    self.video_thumbnail = open(self.vimeo.thumbnail) if self.video_url
   rescue OpenURI::HTTPError => e
     ::Airbrake.notify({ :error_class => "Vimeo thumbnail download", :error_message => "Vimeo thumbnail download: #{e.inspect}", :parameters => video_url}) rescue nil
+  rescue TypeError => e
+    ::Airbrake.notify({ :error_class => "Carrierwave does not like thumbnail file", :error_message => "Carrierwave does not like thumbnail file: #{e.inspect}", :parameters => video_url}) rescue nil
   end
 
   def can_back?
