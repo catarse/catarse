@@ -17,11 +17,11 @@ class Update < ActiveRecord::Base
   end
 
   def notify_backers
-    project.backers.confirmed.each do |backer|
-      Rails.logger.info "[Backer #{backer.id}] - Creating notification for #{backer.user.name}"
-      Notification.create_notification :updates, backer.user,
-        :project_name => backer.project.name,
-        :project_owner => backer.project.user.display_name,
+    project.users_who_backed.each do |user|
+      Rails.logger.info "[User #{user.id}] - Creating notification for #{user.name}"
+      Notification.create_notification :updates, user,
+        :project_name => project.name,
+        :project_owner => project.user.display_name,
         :update_title => title,
         :update => self,
         :update_comment => comment_html.gsub(/width="560" height="340"/, 'width="500" height="305"') #change video size to fit into the email layout
