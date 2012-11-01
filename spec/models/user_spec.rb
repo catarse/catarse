@@ -109,6 +109,16 @@ describe User do
     it{ should == user }
   end
 
+  describe ".who_backed_project" do
+    subject{ User.who_backed_project(successful_project.id) }
+    before do
+      @backer = Factory(:backer, :confirmed => true, :project => successful_project)
+      Factory(:backer, :confirmed => true, :project => successful_project, :user => @backer.user)
+      Factory(:backer, :confirmed => false, :project => successful_project)
+    end
+    it{ should == [@backer.user] }
+  end
+
   describe ".backer_totals" do
     before do
       Factory(:backer, :value => 100, :credits => false, :project => successful_project)
