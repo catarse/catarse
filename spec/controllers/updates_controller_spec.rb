@@ -25,7 +25,7 @@ describe UpdatesController do
       @project = Factory(:project, :user_id => user.id)
       post :create, :project_id => @project.id, :locale => 'pt', :update => {:title => 'title', :comment => 'update comment'}
     end
-    it{ should redirect_to project_updates_path(@project) }
+    it{ should redirect_to project_path(@project, :anchor => 'updates') }
     it{ Update.where(:user_id => user.id, :project_id => @project.id).count.should == 1 }
   end
 
