@@ -70,7 +70,7 @@ class Project < ActiveRecord::Base
   mount_uploader :video_thumbnail, LogoUploader
 
   def decorator
-    ProjectDecorator.new(self)
+    @decorator ||= ProjectDecorator.new(self)
   end
 
   def self.unaccent_search search

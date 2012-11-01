@@ -130,7 +130,7 @@ class User < ActiveRecord::Base
   end
 
   def decorator
-    UserDecorator.new(self)
+    @decorator ||= UserDecorator.new(self)
   end
 
   def have_address?
