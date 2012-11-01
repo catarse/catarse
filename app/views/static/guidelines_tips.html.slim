@@ -50,10 +50,10 @@
                 = image_tag('catarse/bg_tips4.png')
                 strong= t('.title_eight')
                 p= t('.tip_eight')
-      
-      .guide_download
-        = image_tag('catarse/box_download.png')
-        p= t('.guide')
+      .guide
+        .guide_download
+          = image_tag('catarse/box_download.png')
+          p= t('.guide')
 
       .bootstrap-form.center_form
         = form_tag(guidelines_tips_path, :method => :get, :id => 'guidelines_form') do
