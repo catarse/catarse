@@ -69,12 +69,16 @@ class Project < ActiveRecord::Base
   validates_format_of :permalink, with: /^(\w|-)*$/, :allow_blank => true, :allow_nil => true
   mount_uploader :video_thumbnail, LogoUploader
 
-  def decorator
-    @decorator ||= ProjectDecorator.new(self)
-  end
-
   def self.unaccent_search search
     joins(:user).where("unaccent(projects.name || headline || about || coalesce(users.name,'') || coalesce(users.address_city,'')) ~* unaccent(?)", search)
+  end
+
+  def users_who_backed
+    User.who_backed_project(self.id)
+  end
+
+  def decorator
+    @decorator ||= ProjectDecorator.new(self)
   end
 
   def to_param
