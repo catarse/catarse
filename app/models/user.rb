@@ -70,6 +70,7 @@ class User < ActiveRecord::Base
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id, :primary_key => :id
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
+  scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
   scope :most_backeds, ->{
     joins(:backs).select(
       <<-SQL
@@ -130,7 +131,7 @@ class User < ActiveRecord::Base
   end
 
   def decorator
-    UserDecorator.new(self)
+    @decorator ||= UserDecorator.new(self)
   end
 
   def have_address?

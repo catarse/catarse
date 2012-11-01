@@ -4,6 +4,7 @@ describe UpdateObserver do
   describe 'after_create' do
     context "call notify update worker" do
       before do
+        NotifyUpdateWorker.jobs.clear
         @project = Factory(:project)
       end
 
