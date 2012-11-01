@@ -114,6 +114,7 @@ describe User do
     before do
       @backer = Factory(:backer, :confirmed => true, :project => successful_project)
       Factory(:backer, :confirmed => true, :project => successful_project, :user => @backer.user)
+      Factory(:backer, :confirmed => false, :project => successful_project)
     end
     it{ should == [@backer.user] }
   end
