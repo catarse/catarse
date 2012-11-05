@@ -5,7 +5,7 @@
         h1= t('.header.title')
         h2= t('.header.subtitle')
       #back_options.bootstrap-form 
-        = semantic_form_for @backer, :url => review_project_backers_path(@project), :html => { :id => 'backer_form' } do |form|
+        = semantic_form_for @backer, :url => @review_url, :html => { :id => 'backer_form' } do |form|
           = form.inputs do
             = hidden_field_tag 'credits', ("%0.0f" % current_user.credits)   
             = form.input :value, :required => false, :as => :string
