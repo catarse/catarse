@@ -324,6 +324,30 @@ describe Project do
     it{ should == 'users' }
   end
 
+  describe "#can_back?" do
+    subject{ project.can_back? }
+
+    context "when project is not expired nor reject and is visible" do
+      let(:project) { Factory(:project, :visible => true, :rejected => false, :expires_at => Time.now + 1.day) }
+      it{ should be_true }
+    end
+
+    context "when project is not visible" do
+      let(:project) { Factory(:project, :visible => false) }
+      it{ should be_false }
+    end
+
+    context "when project expired" do
+      let(:project) { Factory(:project, :expires_at => 1.day.ago) }
+      it{ should be_false }
+    end
+
+    context "when project is rejected" do
+      let(:project) { Factory(:project, :rejected => true) }
+      it{ should be_false }
+    end
+  end
+
   describe "#download_video_thumbnail" do
     let(:project){ Factory.build(:project) }
     before do
