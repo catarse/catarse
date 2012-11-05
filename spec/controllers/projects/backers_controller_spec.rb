@@ -2,21 +2,21 @@ require 'spec_helper'
 
 describe Projects::BackersController do
   render_views
-  let(:failed_project){ Factory(:project, :finished => true, :successful => false) }
+  let(:failed_project) { Factory(:project, :finished => true, :successful => false) }
+  let(:project) { Factory(:project) }
 
   subject{ response }
 
   before do
     @user = Factory(:user)
     @user_backer = Factory(:user, :name => 'Lorem Ipsum')
-    @project = Factory(:project)
-    @backer = Factory(:backer, :value=> 10.00, :user => @user_backer, :confirmed => true, :project => @project)
+    @backer = Factory(:backer, :value=> 10.00, :user => @user_backer, :confirmed => true, :project => project)
   end
 
   describe "PUT checkout" do
     context "without user" do
       it "should be redirect" do
-        put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
+        put :checkout, { :locale => :pt, :project_id => project.id, :id => @backer.id }
         response.should be_redirect
       end
     end
@@ -24,7 +24,7 @@ describe Projects::BackersController do
     it "when backer don't exist in current_user" do
       request.session[:user_id]=@user.id
       lambda {
-        put :checkout, {:locale => :pt, :project_id => @project.id, :id => @backer.id}
+        put :checkout, {:locale => :pt, :project_id => project.id, :id => @backer.id}
       }.should raise_error(ActiveRecord::RecordNotFound)
     end
 
@@ -36,7 +36,7 @@ describe Projects::BackersController do
           @backer.confirmed = false
           @backer.save!
 
-          put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
+          put :checkout, { :locale => :pt, :project_id => project.id, :id => @backer.id }
 
           @user_backer.reload
           @backer.reload
@@ -55,7 +55,7 @@ describe Projects::BackersController do
           @backer.confirmed=false
           @backer.save!
 
-          put :checkout, { :locale => :pt, :project_id => @project.id, :id => @backer.id }
+          put :checkout, { :locale => :pt, :project_id => project.id, :id => @backer.id }
 
           @user_backer.reload
           @backer.reload
@@ -74,7 +74,7 @@ describe Projects::BackersController do
     context "without user" do
       before do
         request.env['REQUEST_URI'] = "/test_path"
-        post :review, {:locale => :pt, :project_id => @project.id}
+        post :review, {:locale => :pt, :project_id => project.id}
       end
       it{ should redirect_to login_path }
       it{ session[:return_to].should == "/test_path" }
@@ -84,14 +84,14 @@ describe Projects::BackersController do
       it "when correct data" do
         request.session[:user_id]=@user.id
         request.session[:thank_you_id].should be_nil
-        post :review, {:locale => :pt, :project_id => @project.id, :backer => {
+        post :review, {:locale => :pt, :project_id => project.id, :backer => {
           :value => '20.00',
           :reward_id => '0',
           :anonymous => '0'
         }}
-        request.session[:thank_you_id].should == @project.id
+        request.session[:thank_you_id].should == project.id
         response.body =~ /#{I18n.t('projects.backers.checkout.title')}/
-        response.body =~ /#{@project.name}/
+        response.body =~ /#{project.name}/
         response.body =~ /R\$ 20/
       end
     end
@@ -99,55 +99,33 @@ describe Projects::BackersController do
 
   describe "GET new" do
     context "without user" do
-      it "should redirect" do
-        get :new, {:locale => :pt, :project_id => @project.id}
-        response.should be_redirect
-      end
+      before{ get :new, {:locale => :pt, :project_id => project.id} }
+      it{ should redirect_to login_path }
     end
 
     context "with user" do
-      context "when can't back project" do
-        it "when project is not visible, should redirect" do
-          request.session[:user_id]=@user.id
-          @project.update_attributes({ visible: false })
-          @project.reload
-          get :new, {:locale => :pt, :project_id => @project.id}
-
-          response.should be_redirect
-        end
-
-        it "when project expired, should redirect" do
-          request.session[:user_id]=@user.id
-          @project.update_attributes({ expires_at: 1.day.ago })
-          @project.reload
-          get :new, {:locale => :pt, :project_id => @project.id}
-
-          response.should be_redirect
-        end
-
-        it "when project is rejected, should redirect" do
-          request.session[:user_id]=@user.id
-          @project.update_attributes({ rejected: true })
-          @project.reload
-          get :new, {:locale => :pt, :project_id => @project.id}
-
-          response.should be_redirect
-        end
+      before do
+        request.session[:user_id] = @user.id
       end
 
-      context "when can back project" do
-        it "should see infos about the project and rewards" do
-          @project.update_attributes({:rejected => false, :expires_at => 10.days.from_now, :visible => true})
-          @project.reload
-          request.session[:user_id]=@user.id
-          get :new, {:locale => :pt, :project_id => @project.id}
-
-          response.body.should =~ /#{I18n.t('projects.backers.new.header.title')}/
-          response.body.should =~ /#{I18n.t('projects.backers.new.submit')}/
-          response.body.should =~ /#{I18n.t('projects.backers.new.no_reward')}/
-          response.body.should =~ /#{@project.name}/
-          response.should render_template("projects/backers/new")
+      context "when project.can_back? is false" do
+        before do
+          Project.any_instance.stubs(:can_back?).returns(false)
+          get :new, {:locale => :pt, :project_id => project.id}
         end
+        it{ should redirect_to root_path }
+      end
+
+      context "when project.can_back? is true" do
+        before do 
+          Project.any_instance.stubs(:can_back?).returns(true)
+          get :new, {:locale => :pt, :project_id => project.id}
+        end
+        it{ should render_template("projects/backers/new") }
+        its(:body) { should =~ /#{I18n.t('projects.backers.new.header.title')}/ }
+        its(:body) { should =~ /#{I18n.t('projects.backers.new.submit')}/ }
+        its(:body) { should =~ /#{I18n.t('projects.backers.new.no_reward')}/ }
+        its(:body) { should =~ /#{project.name}/ }
       end
     end
   end
@@ -155,8 +133,8 @@ describe Projects::BackersController do
   describe "GET index" do
     shared_examples_for  "admin / owner" do
       it "should see all info from backer" do
-        request.session[:user_id]=@user.id
-        get :index, {:locale => :pt, :project_id => @project.id}
+        request.session[:user_id] = @user.id
+        get :index, {:locale => :pt, :project_id => project.id}
 
         ActiveSupport::JSON.decode(response.body).to_s.should =~ /R\$ 10/
         ActiveSupport::JSON.decode(response.body).to_s.should =~ /Lorem Ipsum/
@@ -165,8 +143,8 @@ describe Projects::BackersController do
 
     shared_examples_for "normal / guest" do
       it "should see filtered info about backer" do
-        request.session[:user_id]=@user.id
-        get :index, {:locale => :pt, :project_id => @project.id}
+        request.session[:user_id] = @user.id
+        get :index, {:locale => :pt, :project_id => project.id}
 
         ActiveSupport::JSON.decode(response.body).to_s.should =~ /Lorem Ipsum/
       end
@@ -183,10 +161,7 @@ describe Projects::BackersController do
     end
 
     context "with project owner user" do
-      before do
-        @project.update_attributes({ user: @user })
-        @project.reload
-      end
+      let(:project) { Factory(:project, :user => @user) }
 
       it_should_behave_like "admin / owner"
     end
@@ -196,9 +171,7 @@ describe Projects::BackersController do
     end
 
     context "guest user" do
-      before do
-        @user.id = nil
-      end
+      before{ @user.id = nil }
 
       it_should_behave_like "normal / guest"
     end
