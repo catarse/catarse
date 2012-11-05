@@ -116,12 +116,31 @@ describe Projects::BackersController do
         it{ should redirect_to root_path }
       end
 
-      context "when project.can_back? is true" do
+      context "when project.can_back? is true and we have configured a secure review url" do
         before do 
+          ::Configuration[:secure_review_host] = 'secure.catarse.me'
           Project.any_instance.stubs(:can_back?).returns(true)
           get :new, {:locale => :pt, :project_id => project.id}
         end
+
+        it "should assign the https url to @review_url" do
+          assigns(:review_url).should == review_project_backers_url(project, :host => Configuration[:secure_review_host], :protocol => 'https')
+        end
+      end
+
+      context "when project.can_back? is true and we have not configured a secure review url" do
+        before do 
+          ::Configuration[:secure_review_host] = nil
+          Project.any_instance.stubs(:can_back?).returns(true)
+          get :new, {:locale => :pt, :project_id => project.id}
+        end
+
         it{ should render_template("projects/backers/new") }
+
+        it "should assign review_project_backers_path to @review_url" do
+          assigns(:review_url).should == review_project_backers_path(project)
+        end
+
         its(:body) { should =~ /#{I18n.t('projects.backers.new.header.title')}/ }
         its(:body) { should =~ /#{I18n.t('projects.backers.new.submit')}/ }
         its(:body) { should =~ /#{I18n.t('projects.backers.new.no_reward')}/ }
