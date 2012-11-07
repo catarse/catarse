@@ -1,3 +1,4 @@
+require 'state_machine'
 # coding: utf-8
 class Project < ActiveRecord::Base
 
@@ -177,6 +178,20 @@ class Project < ActiveRecord::Base
       display_expires_at: display_expires_at,
       in_time: in_time?
     }
+  end
+
+  #NOTE: state machine things
+  state_machine :state, :initial => :draft do
+    state :draft, value: 'draft'
+    state :rejected, value: 'rejected'
+
+    event :push_to_draft do
+      transition all: :draft
+    end
+
+    event :reject do
+      transition draft: :rejected
+    end
   end
 
 end

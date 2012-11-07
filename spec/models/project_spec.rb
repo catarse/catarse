@@ -4,6 +4,111 @@ require 'spec_helper'
 describe Project do
   let(:project){ Project.new :goal => 3000 }
 
+  context "state machine" do
+    describe '.draft?' do
+      subject { project.draft? }
+      context "when project is new" do
+        it { should be_true }
+      end
+    end
+
+    describe '.push_to_draft' do
+      subject { 
+        project = Factory(:project, goal: 3000) 
+        project.reject
+        project
+      }
+      its(:draft?) { should be_false }
+      it 'should push to draft the project' do
+        subject.push_to_draft
+        subject.draft?.should be_true
+      end
+    end
+
+    describe '.rejected?' do
+      subject { project.rejected? }
+      before do
+        project.reject
+      end
+      context 'when project is not accepted' do
+        it { should be_true }
+      end
+    end
+
+    describe '.reject' do
+      subject { Factory(:project, goal: 3000) }
+      its(:rejected?) { should be_false }
+      it 'should reject the project' do
+        subject.reject
+        subject.rejected?.should be_true
+      end
+    end
+
+    describe '.approve' do
+      subject { Factory(:project) }
+      its(:online?) { should be_false }
+      it 'should change status project to online' do
+        subject.approve
+        subject.online?.should be_true
+      end
+    end
+
+    describe '.online?' do
+      subject { project.online? }
+      before { project.approve }
+      context "when project is accepted" do
+        it { should be_true }
+      end
+    end
+
+    describe '.incomplete_funds' do
+      subject { Factory(:project, goal: 1000, expires_at: 3.hours.ago) }
+      before do
+        subject.approve
+      end
+      context "when project is expired and have recent backers without confirm" do
+        it do
+          subject.incomplete_funds
+          subject.waiting_funds?.should be_true
+        end
+      end
+    end
+
+    describe '.finish' do
+      subject { Factory(:project, goal: 30_000, expires_at: 3.hours.ago) }
+
+      context 'when project is not approved' do
+        its(:finish) { should be_false }
+      end
+
+      context 'when project is approved' do
+        before do
+          subject.approve
+          subject.finish
+        end
+
+        context 'when project is expired and not have reached the goal and have recent backers without confirmation' do
+          before do
+            backer = Factory(:backer, value: 100, project: project, created_at: 5.days.ago)
+          end
+          its(:waiting_funds?) { should be_true }
+        end
+
+        context 'when project already hit the goal' do
+          before do
+            backer = Factory(:backer, value: 30_000, project: project, confirmed: true)
+          end
+          its(:successful?) { should be_true }
+        end
+
+        context 'when project not hit the goal' do
+          its(:failed?) { should be_true }
+        end
+      end
+    end
+
+  end
+
   describe "associations" do
     it{ should have_many :projects_curated_pages }
     it{ should have_many :curated_pages }
