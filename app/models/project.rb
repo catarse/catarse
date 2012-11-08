@@ -154,11 +154,6 @@ class Project < ActiveRecord::Base
     visible? and not expired? and not rejected?
   end
 
-  def finish!
-    return unless expired? and can_finish and not finished
-    notify_observers(:notify_users)
-  end
-
   def as_json(options={})
     {
       id: id,
@@ -222,6 +217,12 @@ class Project < ActiveRecord::Base
         project.expired? and not project.reached_goal? and not project.in_time_to_wait?
       }
     end
+
+    after_transition waiting_funds: [:successful, :failed], do: :after_transition_of_wainting_funds_to_successful_or_failed
+  end
+
+  def after_transition_of_wainting_funds_to_successful_or_failed
+    notify_observers :notify_users
   end
 
 end
