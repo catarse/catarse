@@ -4,7 +4,42 @@ require 'spec_helper'
 describe Project do
   let(:project){ Project.new :goal => 3000 }
 
+  describe '.reached_goal?' do
+    let(:project) { Factory(:project, goal: 3000) }
+    subject { project.reached_goal? }
+
+    context 'when sum of all backers hit the goal' do
+      before do
+        Factory(:backer, value: 4000, project: project)
+      end
+      it { should be_true }
+    end
+
+    context "when sum of all backers don't hit the goal" do
+      it { should be_false }
+    end
+  end
+
+  describe '.in_time_to_wait?' do
+    let(:project) { Factory(:project, expires_at: 1.day.ago) }
+    subject { project.in_time_to_wait? }
+
+    context 'when project expiration is in time to wait' do 
+      it { should be_true }
+    end
+
+    context 'when project expiration time is not more on time to wait' do
+      before do
+        project.update_column :expires_at, 1.week.ago
+        project.reload
+      end
+      it {should be_false}
+    end
+  end
+
   context "state machine" do
+    let(:project) { Factory(:project) }
+
     describe '.draft?' do
       subject { project.draft? }
       context "when project is new" do
@@ -14,7 +49,6 @@ describe Project do
 
     describe '.push_to_draft' do
       subject { 
-        project = Factory(:project, goal: 3000) 
         project.reject
         project
       }
@@ -36,7 +70,7 @@ describe Project do
     end
 
     describe '.reject' do
-      subject { Factory(:project, goal: 3000) }
+      subject { project }
       its(:rejected?) { should be_false }
       it 'should reject the project' do
         subject.reject
@@ -45,7 +79,7 @@ describe Project do
     end
 
     describe '.approve' do
-      subject { Factory(:project) }
+      subject { project }
       its(:online?) { should be_false }
       it 'should change status project to online' do
         subject.approve
@@ -58,19 +92,6 @@ describe Project do
       before { project.approve }
       context "when project is accepted" do
         it { should be_true }
-      end
-    end
-
-    describe '.incomplete_funds' do
-      subject { Factory(:project, goal: 1000, expires_at: 3.hours.ago) }
-      before do
-        subject.approve
-      end
-      context "when project is expired and have recent backers without confirm" do
-        it do
-          subject.incomplete_funds
-          subject.waiting_funds?.should be_true
-        end
       end
     end
 
@@ -87,22 +108,45 @@ describe Project do
           subject.finish
         end
 
-        context 'when project is expired and not have reached the goal and have recent backers without confirmation' do
+        context 'when project is expired and have recent backers without confirmation' do
           before do
-            backer = Factory(:backer, value: 100, project: project, created_at: 5.days.ago)
+            backer = Factory(:backer, value: 100, project: subject, created_at: 2.days.ago)
           end
           its(:waiting_funds?) { should be_true }
         end
 
         context 'when project already hit the goal' do
           before do
-            backer = Factory(:backer, value: 30_000, project: project, confirmed: true)
+            backer = Factory(:backer, value: 30_000, project: subject, confirmed: true)
           end
-          its(:successful?) { should be_true }
+
+          context "and pass the waiting fund time" do
+            before do
+              subject.update_column :expires_at, 2.weeks.ago
+              subject.finish
+            end
+            its(:successful?) { should be_true }
+          end
+
+          context "and still in waiting fund time" do
+            its(:successful?) { should be_false }
+            its(:waiting_funds?) { should be_true }
+          end
         end
 
         context 'when project not hit the goal' do
-          its(:failed?) { should be_true }
+          context "and pass the waiting fund time" do
+            before do
+              subject.update_column :expires_at, 2.weeks.ago
+              subject.finish
+            end
+            its(:failed?) { should be_true }
+          end
+
+          context "and still in waiting fund time" do
+            its(:failed?) { should be_false }
+            its(:waiting_funds?) { should be_true }
+          end
         end
       end
     end
