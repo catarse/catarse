@@ -94,8 +94,12 @@ class Project < ActiveRecord::Base
     project_total ? project_total.total_backers : 0
   end
 
-  def successful?
-    return successful if finished
+  #def successful?
+    #return successful if finished
+    #pledged >= goal
+  #end
+
+  def reached_goal?
     pledged >= goal
   end
 
@@ -180,17 +184,43 @@ class Project < ActiveRecord::Base
     }
   end
 
+  def in_time_to_wait?
+    Time.now < 3.weekdays_from(expires_at)
+  end
+
   #NOTE: state machine things
   state_machine :state, :initial => :draft do
     state :draft, value: 'draft'
     state :rejected, value: 'rejected'
+    state :online, value: 'online'
+    state :successful, value: 'successful'
+    state :waiting_funds, value: 'waiting_funds'
+    state :failed, value: 'failed'
 
     event :push_to_draft do
-      transition all: :draft
+      transition all => :draft #NOTE: when use 'all' we can't use new hash style ;(
     end
 
     event :reject do
       transition draft: :rejected
+    end
+
+    event :approve do
+      transition draft: :online
+    end
+
+    event :finish do
+      transition online: :waiting_funds,      if: ->(project) {
+        project.expired? and project.in_time_to_wait?
+      }
+
+      transition waiting_funds: :successful,  if: ->(project) {
+        project.expired? and project.reached_goal? and not project.in_time_to_wait?
+      }
+
+      transition waiting_funds: :failed,      if: ->(project) {
+        project.expired? and not project.reached_goal? and not project.in_time_to_wait?
+      }
     end
   end
 
