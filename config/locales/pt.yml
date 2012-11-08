@@ -74,6 +74,8 @@ pt:
             email:
               not_found: "O seu email não está cadastrado, verifique o endereço ou crie uma conta nova"
     attributes:
+      unsubscribe:
+        update: "Receber atualizações do projeto"
       backer:
         value: Valor
       project:
