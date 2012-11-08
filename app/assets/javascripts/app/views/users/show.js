@@ -88,6 +88,46 @@ CATARSE.UsersShowView = Backbone.View.extend({
   },
 
   backs: function() {
+    var project_subscriptions
+    verify_subscriptions = function(user_id) {
+      $.ajax({
+        async: false,
+        type: 'GET',
+        dataType: 'json',
+        url: '/unsubscribes/?user_id=' + user_id,
+        success: function(data) {
+          project_subscriptions = data.project_subscriptions
+       }
+    })}
+
+    subscribed = function(project_id){
+      var sub = true
+      for (var i = 0; i < project_subscriptions.length; i++) {
+        if(project_subscriptions[i].project_id == project_id){
+          sub = false
+        }
+      }
+      return sub
+    }
+
+    $('#unsubscribe_check').live('click', function(){
+      var project_id = $(this).closest('form').find('input[name="unsubscribe[project_id]"]').val()
+      var user_id = $(this).closest('form').find('input[name="unsubscribe[user_id]"]').val()
+      var nt_id = $(this).closest('form').find('input[name="unsubscribe[notification_type_id]"]').val()
+      $('input[name="unsubscribe[checkbox]"][value="'+project_id+'"]').not($(this)).each(function(){
+        $(this).prop('checked', !$(this).prop('checked'))
+      })
+      change_subscription(user_id, project_id, nt_id)
+    })
+
+    change_subscription = function(user_id, project_id, notification_type_id){
+      $.ajax({
+        async: true,
+        type: 'POST',
+        url: '/unsubscribes/?user_id=' + user_id + '&project_id=' + project_id + '&notification_type_id='+notification_type_id,
+      })
+    }
+
     if(this.backsView)
       this.backsView.destroy()
     this.selectItem("backed_projects")

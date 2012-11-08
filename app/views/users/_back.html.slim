@@ -1,5 +1,7 @@
 script type="text/template" id="user_backs_template"
   ul.collection_list
+  - if current_user == @user
+    |<%= verify_subscriptions(#{@user.id}) %>
 
 script type="text/template" id="empty_user_back_template"
   - if current_user != @user
@@ -30,6 +32,14 @@ script type="text/template" id="user_back_template"
             | <%= project['name'] %>
         p.author== "#{t('project_by')} <%= project['user']['name'] %>"
         p.headline <%= project['headline'] %>
+        - if current_user == @user
+          |<form accept-charset="UTF-8" action="/unsubscribes" method="post" class="unsubscribe_form">
+            <input id="unsubscribe_project_id" name="unsubscribe[project_id]" type="hidden" value="<%= project['id'] %>" />
+            <input id="unsubscribe_user_id" name="unsubscribe[user_id]" type="hidden" value="#{@user.id}" />
+            <input id="unsubscribe_notification_type_id" name="unsubscribe[notification_type_id]" type="hidden" value="#{NotificationType.where(name: 'updates').last.id}" />
+            <label for="unsubscribe_check">#{t('activerecord.attributes.unsubscribe.update')}</label>
+            <input id="unsubscribe_check" name="unsubscribe[checkbox]" value="<%=project['id']%>" type="checkbox" <%=subscribed(project['id']) ? 'checked' : ''%> />
+            </form>
       .status_bar
         .progress style="width: <%= project['display_progress'] %>%;"
       ul
