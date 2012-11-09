@@ -34,7 +34,7 @@ script type="text/template" id="user_back_template"
         p.headline <%= project['headline'] %>
         - if current_user == @user
           |<label for="unsubscribe_check">#{t('activerecord.attributes.unsubscribe.update')}</label>
-           <input id="unsubscribe_check" name="unsubscribe[checkbox]" value="<%=project['id']%>,#{NotificationType.where(name: 'updates').last.id},#{@user.id}" type="checkbox" <%=subscribed(project['id']) ? 'checked' : ''%> />
+           <input id="unsubscribe_check" name="unsubscribe[checkbox]" value="<%=project['id']%>,#{NotificationType.where(name: 'updates').last.id},#{@user.id}" type="checkbox" />
       .status_bar
         .progress style="width: <%= project['display_progress'] %>%;"
       ul
