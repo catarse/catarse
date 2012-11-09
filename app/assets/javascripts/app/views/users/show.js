@@ -91,7 +91,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
     var project_subscriptions
     verify_subscriptions = function(user_id) {
       $.ajax({
-        async: false,
+        async: true,
         type: 'GET',
         dataType: 'json',
         url: '/unsubscribes/?user_id=' + user_id,
@@ -99,6 +99,14 @@ CATARSE.UsersShowView = Backbone.View.extend({
           project_subscriptions = data.project_subscriptions
        }
     })}
+
+    $(window).bind('load', function()
+    {
+      $('input[name="unsubscribe[checkbox]"]').each(function(){
+        var project_id = $(this).val().split(',')[0]
+        $(this).prop('checked', subscribed(project_id) )
+      })
+    })
 
     subscribed = function(project_id){
       var sub = true
@@ -123,11 +131,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
     })
 
     change_subscription = function(user_id, project_id, notification_type_id){
-      $.ajax({
-        async: true,
-        type: 'POST',
-        url: '/unsubscribes/?user_id=' + user_id + '&project_id=' + project_id + '&notification_type_id='+notification_type_id,
-      })
+      $.post('/unsubscribes/?user_id=' + user_id + '&project_id=' + project_id + '&notification_type_id='+notification_type_id)
     }
 
     if(this.backsView)
