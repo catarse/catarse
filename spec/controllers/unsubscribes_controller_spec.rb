@@ -5,6 +5,7 @@ describe UnsubscribesController do
 
   describe "GET index" do
     before do
+      Factory(:notification_type, name: 'updates')
       @unsubscribe = Factory(:unsubscribe)
       get :index, user_id: @unsubscribe.user.id, locale: 'pt', format: 'json'
     end

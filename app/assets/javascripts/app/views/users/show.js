@@ -111,10 +111,12 @@ CATARSE.UsersShowView = Backbone.View.extend({
     }
 
     $('#unsubscribe_check').live('click', function(){
-      var project_id = $(this).closest('form').find('input[name="unsubscribe[project_id]"]').val()
-      var user_id = $(this).closest('form').find('input[name="unsubscribe[user_id]"]').val()
-      var nt_id = $(this).closest('form').find('input[name="unsubscribe[notification_type_id]"]').val()
-      $('input[name="unsubscribe[checkbox]"][value="'+project_id+'"]').not($(this)).each(function(){
+      var values = $(this).val().split(',')
+      var project_id = values[0]
+      var nt_id = values[1]
+      var user_id = values[2]
+
+      $('input[name="unsubscribe[checkbox]"][value="'+project_id+','+nt_id+','+user_id+'"]').not($(this)).each(function(){
         $(this).prop('checked', !$(this).prop('checked'))
       })
       change_subscription(user_id, project_id, nt_id)
