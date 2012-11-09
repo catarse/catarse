@@ -1,7 +1,7 @@
 class UnsubscribesController < ApplicationController
 
   def index
-    render :json => {:project_subscriptions => Unsubscribe.where('project_id IS NOT NULL', user_id: params[:user_id]).all }.to_json
+    render :json => {project_subscriptions: Unsubscribe.where(notification_type_id: NotificationType.where(name: 'updates').last.id, user_id: params[:user_id]).all }.to_json
   end
 
   def create
