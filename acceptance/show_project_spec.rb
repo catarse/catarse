@@ -10,6 +10,7 @@ feature "Show Project Feature" do
 
     project = Factory(:project)
     visit project_path(project)
+    sleep 2
     verify_translations
 
     page.should have_css(%@meta [property="og:title"][content="#{project.name}"]@)
@@ -24,7 +25,7 @@ feature "Show Project Feature" do
         page.should have_content(project.name)
       end
       within 'h4' do
-        page.should have_content("Um projeto de #{project.user.name}")
+        page.should have_content(I18n.t('projects.project_header.subtitle_html', link: project.user.name))
       end
     end
 
@@ -38,7 +39,7 @@ feature "Show Project Feature" do
 
     # TODO: rewrite these specs once we have our new comments and updates systems
     # find("#updates_link .count").should have_content("(0)")
-    click_link "Atualizações"
+    click_link I18n.t('projects.show.menu.updates')
     verify_translations
     # find("#project_updates").visible?.should be_true
     # within "#empty_text" do
@@ -49,17 +50,17 @@ feature "Show Project Feature" do
     find("#project_comments").visible?.should be_false
 
     find("#backers_link .count").should have_content("(0)")
-    click_link "Apoiadores"
+    click_link I18n.t('projects.show.menu.backers')
     verify_translations
     find("#project_backers").visible?.should be_true
-    page.should have_content "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
+    page.should have_content I18n.t('projects.project_backers.empty')
     find("#project_about").visible?.should be_false
     find("#project_updates").visible?.should be_false
     find("#project_comments").visible?.should be_false
 
     # TODO: rewrite these specs once we have our new comments and updates systems
     # find("#comments_link .count").should have_content("(0)")
-    click_link "Comentários"
+    click_link I18n.t('projects.show.menu.comments')
     verify_translations
     # find("#project_updates").visible?.should be_true
     # within "#project_comments" do
@@ -69,7 +70,7 @@ feature "Show Project Feature" do
     find("#project_updates").visible?.should be_false
     find("#project_backers").visible?.should be_false
 
-    click_link("Sobre")
+    click_link(I18n.t('projects.show.menu.about'))
     verify_translations
     within "#project_about" do
       page.should have_content(project.about)
@@ -81,7 +82,7 @@ feature "Show Project Feature" do
   end
 
   scenario "As an unlogged user, I want to see a project page with updates, backers and comments" do
-    
+
     project = Factory(:project)
     # TODO: rewrite these specs once we have our new comments and updates systems
     # 2.times { Factory(:comment, commentable: project, project_update: true) }
@@ -90,10 +91,10 @@ feature "Show Project Feature" do
     # 4.times { Factory(:comment, commentable: project) }
 
     visit project_path(project)
-    
+
     # TODO: rewrite these specs once we have our new comments and updates systems
     # find("#updates_link .count").should have_content("(2)")
-    # click_link "Atualizações"
+    # click_link I18n.t('projects.show.menu.updates')
     # verify_translations
     # within "#project_updates" do
     #   updates = project.updates.order("created_at DESC")
@@ -107,7 +108,7 @@ feature "Show Project Feature" do
     # end
 
     find("#backers_link .count").should have_content("(3)")
-    click_link "Apoiadores"
+    click_link I18n.t('projects.show.menu.backers')
     verify_translations
     within "#project_backers" do
       backers = project.backers.confirmed.order("confirmed_at DESC")
@@ -120,7 +121,7 @@ feature "Show Project Feature" do
 
     # TODO: rewrite these specs once we have our new comments and updates systems
     # find("#comments_link .count").should have_content("(4)")
-    # click_link "Comentários"
+    # click_link I18n.t('projects.show.menu.comments')
     # verify_translations
     # within "#project_comments" do
     #   comments = project.comments.order("created_at DESC")
@@ -137,34 +138,34 @@ feature "Show Project Feature" do
 
   # TODO: rewrite these specs once we have our new comments and updates systems
   # scenario "As an unlogged user, before I comment I need to be asked to login" do
-  # 
+  #
   #   project = Factory(:project)
   #   visit project_path(project)
   #   verify_translations
-  #   
-  #   click_link "Comentários"
+  #
+  #   click_link I18n.t('projects.show.menu.comments')
   #   page.should have_css("#project_comments")
-  # 
+  #
   #   within "#project_comments" do
   #     click_link "Clique aqui"
   #   end
-  #   
+  #
   #   find("#login").visible?.should be_true
-  # 
+  #
   # end
 
   # TODO: rewrite these specs once we have our new comments and updates systems
   # scenario "As a logged user, I want to comment a project" do
-  # 
+  #
   #   fake_login
-  #   
+  #
   #   project = Factory(:project)
   #   visit project_path(project)
   #   verify_translations
-  #   
-  #   click_link "Comentários"
+  #
+  #   click_link I18n.t('projects.show.menu.comments')
   #   page.should have_css("#project_comments")
-  # 
+  #
   #   find("#comments_link .count").should have_content("(0)")
   #   within "#project_comments" do
   #     all("#collection_list li").should have(0).items
@@ -172,7 +173,7 @@ feature "Show Project Feature" do
   #     click_on "Enviar comentário"
   #   end
   #   verify_translations
-  # 
+  #
   #   find("#comments_link .count").should have_content("(1)")
   #   within "#project_comments" do
   #     all("#collection_list li").should have(1).items
@@ -180,40 +181,40 @@ feature "Show Project Feature" do
   #     comment.find("a")[:href].should match(/\/users\/#{user.to_param}/)
   #     comment.find(".comment").text.should == "My comment foo bar"
   #   end
-  # 
+  #
   # end
 
   # TODO: rewrite these specs once we have our new comments and updates systems
   # scenario "As a logged user, but not the project owner, I should not be able to post project updates" do
-  # 
+  #
   #   fake_login
-  #   
+  #
   #   project = Factory(:project)
   #   visit project_path(project)
   #   verify_translations
-  #   
-  #   click_link "Atualizações"
+  #
+  #   click_link I18n.t('projects.show.menu.updates')
   #   page.should have_css("#project_updates")
-  # 
+  #
   #   find("#updates_link .count").should have_content("(0)")
   #   within "#project_updates" do
   #     page.should have_no_css("form")
   #   end
-  # 
+  #
   # end
 
   # TODO: rewrite these specs once we have our new comments and updates systems
   # scenario "As a project owner, I want to post project updates" do
-  # 
+  #
   #   fake_login
-  #   
+  #
   #   project = Factory(:project, user: user)
   #   visit project_path(project)
   #   verify_translations
   #   project_backers
-  #   click_link "Atualizações"
+  #   click_link I18n.t('projects.show.menu.updates')
   #   page.should have_css("#project_updates")
-  # 
+  #
   #   find("#updates_link .count").should have_content("(0)")
   #   within "#project_updates" do
   #     all("#collection_list li").should have(0).items
@@ -222,7 +223,7 @@ feature "Show Project Feature" do
   #     click_on "Enviar atualização"
   #   end
   #   verify_translations
-  # 
+  #
   #   find("#updates_link .count").should have_content("(1)")
   #   within "#project_updates" do
   #     all("#collection_list li").should have(1).items
@@ -230,7 +231,7 @@ feature "Show Project Feature" do
   #     update.find("h3").text.should == "My title"
   #     update.find(".comment").text.should == "My text"
   #   end
-  # 
+  #
   # end
 
 end
