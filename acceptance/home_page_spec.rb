@@ -49,14 +49,14 @@ feature "Home Page Feature" do
     verify_translations
 
     within 'head title' do
-      page.should have_content("#{I18n.t('site.title')} · #{I18n.t('site.name')}") 
+      page.should have_content("#{I18n.t('site.title')} · #{I18n.t('site.name')}")
     end
 
     titles = all(".list_title .title h2")
-    titles.shift.text.should == "seleção"
-    titles.shift.text.should == "na reta final"
-    titles.shift.text.should == "novos e fresquinhos"
-    titles.shift.text.should == "parceiros"
+    titles.shift.text.should == I18n.t('sections.selection.title')
+    titles.shift.text.should == I18n.t('sections.expiring.title')
+    titles.shift.text.should == I18n.t('sections.recents.title')
+    titles.shift.text.should == I18n.t('sections.partners.title')
 
     home_page_list = all(".selected_projects .curated_project")
     home_page_list.should have(3).items

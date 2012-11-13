@@ -8,7 +8,7 @@ feature "Credits Feature" do
     fake_login
     project = Factory(:project, finished: true, successful: false)
     @backers = [
-      Factory(:backer, user: user, project: project, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 20, created_at: 8.days.ago),
+      Factory(:backer, user: user, project: project, confirmed: true, requested_refund: false, refunded: false, value: 20, created_at: 8.days.ago)
     ]
     user.reload
 
@@ -70,9 +70,9 @@ feature "Credits Feature" do
       verify_translations
       page.evaluate_script('window.confirm = function() { return true; }')
       column = rows[0].all("td")[4]
-      # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
+      # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to wait for the AJAX to finish
       sleep 2
-      column.text.should == "Pedido enviado com sucesso"
+      column.text.should == I18n.t('credits.index.refunded')
     end
     click_on "OK"
     verify_translations
