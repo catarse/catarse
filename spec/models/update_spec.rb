@@ -14,8 +14,13 @@ describe Update do
   end
 
   describe ".create" do
-    subject{ Update.create!(:user => Factory(:user), :project => Factory(:project), :comment => "this is a comment\n") }
+    subject{ Factory(:update, :comment => "this is a comment\n") }
     its(:comment_html){ should == "<p>this is a comment</p>" }
+  end
+
+  describe "#email_comment_html" do
+    subject{ Factory(:update, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png").email_comment_html }
+    it{ should == "<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img alt=\"\" src=\"http://catarse.me/assets/catarse/logo164x54.png\" /></p>" }
   end
 
   describe "#notify_backers" do
