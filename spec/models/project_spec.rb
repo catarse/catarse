@@ -108,6 +108,18 @@ describe Project do
     it{ should == [@p] }
   end
 
+  describe "#unaccent_search" do
+    before { @p = Factory(:project, name: 'foo') }
+    context "when project exists" do
+      subject{ [Project.unaccent_search('foo'), Project.unaccent_search('fóõ')] }
+      it{ should == [[@p],[@p]] }
+    end
+    context "when project is not found" do
+      subject{ Project.unaccent_search('foo2') }
+      it{ should == [] }
+    end
+  end
+
   describe "#pledged" do
     subject{ project.pledged }
     context "when project_total is nil" do
@@ -359,7 +371,7 @@ describe Project do
     it "should open the video_url and store it in video_thumbnail" do
       project.video_thumbnail.url.should == "/uploads/project/video_thumbnail/#{project.id}/image.png"
     end
-  
+
   end
 
   describe "#curated_pages" do
