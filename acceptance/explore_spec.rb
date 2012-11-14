@@ -47,10 +47,8 @@ feature "Explore projects Feature" do
     search = Project.visible.where("name ILIKE '%eird%'").order('created_at DESC').all
 
     visit homepage
-    verify_translations
 
     click_on I18n.t('layouts.header.explore')
-    verify_translations
 
     within 'head title' do
       page.should have_content("#{I18n.t('explore.title')} · #{I18n.t('site.name')}")
@@ -170,7 +168,6 @@ feature "Explore projects Feature" do
     end
 
     visit "/pt/explore#recommended"
-    verify_translations
 
     projects = Project.visible.not_expired.recommended.order('expires_at').all
     within "#explore_results" do
@@ -182,7 +179,6 @@ feature "Explore projects Feature" do
     find('.sidebar .content .selected').text.should == I18n.t('explore.index.recommended')
 
     visit "/pt/explore#expiring"
-    verify_translations
 
     projects = Project.visible.expiring.limit(16).order('expires_at').all
     within "#explore_results" do
@@ -194,7 +190,6 @@ feature "Explore projects Feature" do
     find('.sidebar .content .selected').text.should == I18n.t('explore.index.expiring')
 
     visit "/pt/explore#recent"
-    verify_translations
 
     projects = Project.visible.recent.limit(16).order('created_at DESC').all
     within "#explore_results" do
@@ -206,7 +201,6 @@ feature "Explore projects Feature" do
     find('.sidebar .content .selected').text.should == I18n.t('explore.index.recent')
 
     visit "/pt/explore#successful"
-    verify_translations
 
     projects = Project.visible.successful.order('expires_at DESC').all
     within "#explore_results" do

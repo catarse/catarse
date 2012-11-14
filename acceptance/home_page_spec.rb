@@ -46,7 +46,6 @@ feature "Home Page Feature" do
     curated_pages << Factory(:curated_page, created_at: 2.days.ago, visible: false)
 
     visit homepage
-    verify_translations
 
     within 'head title' do
       page.should have_content("#{I18n.t('site.title')} · #{I18n.t('site.name')}")

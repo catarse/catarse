@@ -9,7 +9,6 @@ feature "Logout Feature" do
     click_link I18n.t('layouts.header.account')
     click_link "Sair"
     page.should have_no_link(I18n.t('layouts.header.account'))
-    verify_translations
 
   end
 

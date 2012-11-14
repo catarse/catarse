@@ -19,7 +19,6 @@ feature "Show curated page" do
     cp.save
 
     visit "/pages/#{cp.permalink}"
-    verify_translations
 
     within '.titles' do
       within 'h1' do

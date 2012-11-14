@@ -28,12 +28,26 @@ module HelperMethods
       create(:project, {name: "Foo bar #{n}"}.merge(attributes))
     end
   end
-  
+
   def verify_translations
     page.should have_no_css('.translation_missing')
     page.should have_no_content('translation missing')
   end
-  
+
+  def click_on(locator)
+    super(locator)
+    verify_translations
+  end
+
+  def click_link(locator, options = {})
+    super(locator, options)
+    verify_translations
+  end
+
+  def visit(url)
+    super(url)
+    verify_translations
+  end
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance

@@ -26,9 +26,7 @@ feature "My profile Feature" do
     end
 
     click_link I18n.t('layouts.header.account')
-    verify_translations
     click_link I18n.t('layouts.header.profile')
-    verify_translations
     current_path.should == user_path(user)
 
     within 'head title' do
@@ -54,7 +52,6 @@ feature "My profile Feature" do
     within "#user_profile_menu" do
       click_link I18n.t('users.show.tabs.settings')
     end
-    verify_translations
 
     within "#my_data ul" do
       page.should have_content(user.email)
@@ -72,7 +69,6 @@ feature "My profile Feature" do
     within "#user_profile_menu" do
       click_link I18n.t('users.show.tabs.created_projects')
     end
-    verify_translations
     sleep 5
 
     within "#user_created_projects" do
@@ -83,7 +79,6 @@ feature "My profile Feature" do
     within "#user_profile_menu" do
       click_link I18n.t('users.show.tabs.backed_projects')
     end
-    verify_translations
     sleep 5
 
     within "#user_backed_projects" do
@@ -118,7 +113,6 @@ feature "My profile Feature" do
     within "#user_profile_menu" do
       click_link I18n.t('users.show.tabs.settings')
     end
-    verify_translations
 
     within "#my_data ul" do
       page.should have_no_content("new@email.com")
@@ -136,7 +130,6 @@ feature "My profile Feature" do
     within "#user_profile_menu" do
       click_link I18n.t('users.show.tabs.settings')
     end
-    verify_translations
 
     within "#my_data" do
       fill_in I18n.t('users.current_user_fields.twitter'), with: "@FooBar"

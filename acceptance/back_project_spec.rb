@@ -4,8 +4,6 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "Back project" do
 
-  include Rails.application.routes.url_helpers
-
   before do
     Notification.stubs(:create_notification)
     @project = Factory(:project, visible: true)
@@ -27,16 +25,13 @@ feature "Back project" do
     fake_login
 
     visit project_path(@project)
-    verify_translations
 
     click_on I18n.t('projects.back_project.submit')
-    verify_translations
     current_path.should == new_project_backer_path(@project)
 
     fill_in I18n.t('formtastic.labels.backer.value'), with: "10"
 
     click_on I18n.t('projects.backers.new.submit')
-    verify_translations
     current_path.should == review_project_backers_path(@project)
     page.should have_content("Você irá apoiar com R$ 10 e não quer nenhuma recompensa por seu apoio.")
 
@@ -46,10 +41,8 @@ feature "Back project" do
     fake_login
 
     visit project_path(@project)
-    verify_translations
 
     click_on I18n.t('projects.back_project.submit')
-    verify_translations
     current_path.should == new_project_backer_path(@project)
 
     fill_in I18n.t('formtastic.labels.backer.value'), with: "10"
@@ -70,7 +63,6 @@ feature "Back project" do
     Backer.count.should == 0
 
     click_on I18n.t('projects.backers.new.submit')
-    verify_translations
     current_path.should == review_project_backers_path(@project)
     page.should have_content("Você irá apoiar com R$ 20 e ganhará a seguinte recompensa:")
     page.should have_content("$20 reward")
@@ -112,7 +104,6 @@ feature "Back project" do
     backer.payment_method.should == "PayPal"
 
     visit thank_you_path
-    verify_translations
 
     within 'head title' do
       page.should have_content("Muito obrigado")
@@ -201,10 +192,8 @@ feature "Back project" do
     Factory(:backer, :value => 10, :project => Factory(:project, :finished => true, :successful => false), :user => user)
 
     visit project_path(@project)
-    verify_translations
 
     click_on I18n.t('projects.back_project.submit')
-    verify_translations
     current_path.should == new_project_backer_path(@project)
 
     fill_in I18n.t('formtastic.labels.backer.value'), with: "10"
@@ -213,7 +202,6 @@ feature "Back project" do
     Backer.count.should == 1
 
     click_on I18n.t('projects.backers.new.submit')
-    verify_translations
 
     Backer.count.should == 2
     backer = Backer.last
@@ -243,10 +231,8 @@ feature "Back project" do
     Factory(:backer, :value => 10, :project => Factory(:project, :finished => true, :successful => false), :user => user)
 
     visit project_path(@project)
-    verify_translations
 
     click_on I18n.t('projects.back_project.submit')
-    verify_translations
 
     fill_in I18n.t('formtastic.labels.backer.value'), with: "10"
     check I18n.t('formtastic.labels.backer.credits')
@@ -256,7 +242,6 @@ feature "Back project" do
     Backer.count.should == 1
 
     click_on I18n.t('projects.backers.new.submit')
-    verify_translations
 
     Backer.count.should == 2
     backer = Backer.last
@@ -267,7 +252,6 @@ feature "Back project" do
 
     fake_login
     visit thank_you_path
-    verify_translations
 
     current_path.should == root_path
     page.should have_css('.failure.wrapper')
@@ -277,12 +261,9 @@ feature "Back project" do
   scenario "As an unlogged user, before I back a project I need to be asked to log in" do
 
     visit project_path(@project)
-    verify_translations
 
     click_on I18n.t('projects.back_project.submit')
-    verify_translations
 
-    verify_translations
     current_path == new_user_session_path
 
   end
