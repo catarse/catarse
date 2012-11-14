@@ -16,13 +16,25 @@ describe UnsubscribesController do
     let(:user){ Factory(:user) }
     before do
       request.session[:user_id] = user.id
-      @unsubscribe = Factory(:unsubscribe, user_id: user.id)
       @project = Factory(:project)
       @notification_type = Factory(:notification_type)
-      post :create, project_id: @project.id, locale: 'pt', user_id: user.id, notification_type_id: @notification_type.id
-      it{ Unsubscribe.where(:user_id => user.id, :project_id => @project.id).count.should == 1 }
-      post :create, project_id: @project.id, locale: 'pt', user_id: user.id, notification_type_id: @notification_type.id
-      it{ Unsubscribe.where(:user_id => user.id, :project_id => @project.id).count.should == 0 }
+    end
+
+    context "when we already have such unsubscribe" do
+      before do
+        Factory(:unsubscribe, project_id: @project.id, user_id: user.id, notification_type_id: @notification_type.id)
+        post :create, project_id: @project.id, locale: 'pt', user_id: user.id, notification_type_id: @notification_type.id
+      end
+      its(:status){ should == 200 }
+      it("should destroy the unsubscribe"){ Unsubscribe.where(:user_id => user.id, :project_id => @project.id).count.should == 0 }
+    end
+
+    context "when we do not have such unsubscribe" do
+      before do
+        post :create, project_id: @project.id, locale: 'pt', user_id: user.id, notification_type_id: @notification_type.id
+      end
+      its(:status){ should == 200 }
+      it("should create an unsubscribe"){ Unsubscribe.where(:user_id => user.id, :project_id => @project.id).count.should == 1 }
     end
   end
 
