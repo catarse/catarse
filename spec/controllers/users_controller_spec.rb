@@ -20,6 +20,7 @@ describe UsersController do
 
   describe "GET show" do
     before do
+      Factory(:notification_type, name: 'updates')
       request.session[:user_id] = user.id
       get :show, :id => user.id, :locale => 'pt'
     end

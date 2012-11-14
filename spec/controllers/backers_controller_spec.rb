@@ -6,6 +6,13 @@ describe BackersController do
   let(:backer){ Factory(:backer, :project => project) }
   before{ project.save! } # To activate callbacks and generate thumbnails before calling the controller
   describe "GET index" do
+    context "when format is html" do
+      before do
+        get :index, :user_id => backer.user.id, :locale => 'pt'
+      end
+      its(:status){ should == 404 }
+    end
+
     context "when user can not manage the profile or is anonymous" do
       before do
         get :index, :user_id => backer.user.id, :locale => 'pt', :format => 'json'

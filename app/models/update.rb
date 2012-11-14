@@ -31,7 +31,7 @@ class Update < ActiveRecord::Base
   end
 
   def notify_backers
-    project.users_who_backed.each do |user|
+    project.subscribed_users.each do |user|
       Rails.logger.info "[User #{user.id}] - Creating notification for #{user.name}"
       Notification.create_notification :updates, user,
         :project_name => project.name,

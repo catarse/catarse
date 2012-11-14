@@ -77,6 +77,10 @@ class Project < ActiveRecord::Base
     User.who_backed_project(self.id)
   end
 
+  def subscribed_users
+    User.subscribed_to_project(self.id)
+  end
+
   def decorator
     @decorator ||= ProjectDecorator.new(self)
   end
