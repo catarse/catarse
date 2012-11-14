@@ -32,13 +32,13 @@ describe Update do
       Factory(:backer, :confirmed => true, :project => @project, :user => backer.user)
       @project.reload
       ActionMailer::Base.deliveries = []
-      @update = Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment")
+      @update = Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
       Notification.expects(:create_notification).with(:updates, backer.user,
         :project_name => backer.project.name,
         :project_owner => backer.project.user.display_name,
         :update_title => @update.title,
         :update => @update,
-        :update_comment => @update.comment_html.gsub(/width="560" height="340"/, 'width="500" height="305"')).once
+        :update_comment => @update.email_comment_html).once
     end
 
     it 'should call Notification.create_notification once' do

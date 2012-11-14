@@ -38,7 +38,7 @@ class Update < ActiveRecord::Base
         :project_owner => project.user.display_name,
         :update_title => title,
         :update => self,
-        :update_comment => comment_html.gsub(/width="560" height="340"/, 'width="500" height="305"') #change video size to fit into the email layout
+        :update_comment => email_comment_html
     end
   end
 
