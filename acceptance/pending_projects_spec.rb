@@ -20,7 +20,7 @@ feature "Pending projects" do
     verify_translations
     page.should have_no_css('.failure.wrapper')
     within ".title" do
-      page.should have_css('h1', :text => 'Gerenciamento dos projetos')
+      page.should have_css('h1', text: I18n.t('projects.pending.title'))
     end
   end
 
@@ -43,10 +43,10 @@ feature "Pending projects" do
     check 'project__visible__1'
     verify_translations
     # Had to add this sleep to wait for ajax to update the records
-    sleep 4
+    sleep 5
     visit homepage
     verify_translations
-    page.should have_css('.title h2', :text => "novos e fresquinhos")
+    page.should have_css('.title h2', text: I18n.t('sections.recents.title'))
     page.should have_css('.recents_projects')
     all('.recents_projects .projects .curated_project').should have(1).item
     within '.recents_projects' do
