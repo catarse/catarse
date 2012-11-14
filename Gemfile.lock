@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/devton/catarse_paypal_express.git
-  revision: 20aa645a2b7d4b45be0e61cd4d9d63e6359926de
+  revision: 42899fd9802e3514d1313cfc28034ff5d0d9c8a2
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -104,7 +104,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bourbon (2.1.1)
       sass (>= 3.1)
-    braintree (2.19.0)
+    braintree (2.20.0)
       builder (>= 2.0.0)
     brcep (3.2.0)
     builder (3.0.4)
