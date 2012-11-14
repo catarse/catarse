@@ -12,12 +12,10 @@ feature "Credits Feature" do
     ]
     user.reload
 
-    sleep 1
+    sleep 4
 
     click_link I18n.t('layouts.header.account')
-    verify_translations
     click_link I18n.t('credits.index.title')
-    verify_translations
     current_path.should == user_path(user)
 
     within 'head title' do
@@ -39,7 +37,6 @@ feature "Credits Feature" do
       column.text.should == I18n.t('credits.refund.no_credits')
     end
     click_on "OK"
-    verify_translations
     find("#current_credits").should have_content(user.display_credits)
   end
 
@@ -75,6 +72,5 @@ feature "Credits Feature" do
       column.text.should == I18n.t('credits.index.refunded')
     end
     click_on "OK"
-    verify_translations
   end
 end

@@ -4,14 +4,11 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "Show Project Feature" do
 
-  include Rails.application.routes.url_helpers
-
   scenario "As an unlogged user, I want to see a project page" do
 
     project = Factory(:project)
     visit project_path(project)
     sleep 2
-    verify_translations
 
     page.should have_css(%@meta [property="og:title"][content="#{project.name}"]@)
     page.should have_css(%@meta [property="og:type"][content="cause"]@)
@@ -40,7 +37,6 @@ feature "Show Project Feature" do
     # TODO: rewrite these specs once we have our new comments and updates systems
     # find("#updates_link .count").should have_content("(0)")
     click_link I18n.t('projects.show.menu.updates')
-    verify_translations
     # find("#project_updates").visible?.should be_true
     # within "#empty_text" do
     #   page.should have_content("Este projeto ainda não teve atualizações. Aguarde =D")
@@ -51,7 +47,6 @@ feature "Show Project Feature" do
 
     find("#backers_link .count").should have_content("(0)")
     click_link I18n.t('projects.show.menu.backers')
-    verify_translations
     find("#project_backers").visible?.should be_true
     page.should have_content I18n.t('projects.project_backers.empty')
     find("#project_about").visible?.should be_false
@@ -61,7 +56,6 @@ feature "Show Project Feature" do
     # TODO: rewrite these specs once we have our new comments and updates systems
     # find("#comments_link .count").should have_content("(0)")
     click_link I18n.t('projects.show.menu.comments')
-    verify_translations
     # find("#project_updates").visible?.should be_true
     # within "#project_comments" do
     #   page.should have_content "Quer enviar um comentário? Clique aqui para fazer login."
@@ -71,7 +65,6 @@ feature "Show Project Feature" do
     find("#project_backers").visible?.should be_false
 
     click_link(I18n.t('projects.show.menu.about'))
-    verify_translations
     within "#project_about" do
       page.should have_content(project.about)
     end
@@ -109,7 +102,6 @@ feature "Show Project Feature" do
 
     find("#backers_link .count").should have_content("(3)")
     click_link I18n.t('projects.show.menu.backers')
-    verify_translations
     within "#project_backers" do
       backers = project.backers.confirmed.order("confirmed_at DESC")
       list = all("li")

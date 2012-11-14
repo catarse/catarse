@@ -7,7 +7,6 @@ feature "New Project Feature", :driver => :selenium do
   scenario "I'm not logged in and I want to send a project. It should ask for login." do
     visit homepage
     click_link 'envie'
-    verify_translations
     current_path.should == guidelines_path
 
     within ".bootstrap-form" do
@@ -24,7 +23,6 @@ feature "New Project Feature", :driver => :selenium do
     visit homepage
     fake_login
     visit new_project_path
-    verify_translations
     current_path.should == new_project_path
     within '.title' do
       within 'h1' do

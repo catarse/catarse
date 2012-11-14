@@ -10,7 +10,6 @@ feature "Pending Backers" do
 
   scenario "with non admin user" do
     visit pending_backers_projects_path
-    verify_translations
     page.should have_css('.failure.wrapper')
   end
 
@@ -19,7 +18,6 @@ feature "Pending Backers" do
 
     user_to_admin(current_user)
     visit adm_backers_path
-    verify_translations
 
     page.should have_no_css('.failure.wrapper')
     within ".title" do
@@ -40,9 +38,7 @@ feature "Pending Backers" do
     user_to_admin(current_user)
 
     visit project_path(project)
-    verify_translations
     click_on "Apoiadores"
-    verify_translations
 
     page.should have_css("#project_backers")
     page.should have_content "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
