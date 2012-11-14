@@ -16,6 +16,20 @@ class Update < ActiveRecord::Base
     link :target => :_blank
   end
 
+  def email_comment_html
+    auto_html(comment) do
+      html_escape :map => {
+        '&' => '&amp;',
+        '>' => '&gt;',
+        '<' => '&lt;',
+        '"' => '"' 
+      }
+      image
+      redcloth :target => :_blank
+      link :target => :_blank
+    end
+  end
+
   def notify_backers
     project.users_who_backed.each do |user|
       Rails.logger.info "[User #{user.id}] - Creating notification for #{user.name}"
