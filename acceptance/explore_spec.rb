@@ -3,7 +3,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "Explore projects Feature" do
-  Notification.stubs(:create_notification)
 
   before(:each) do
 
@@ -78,7 +77,6 @@ feature "Explore projects Feature" do
     within ".sidebar .content" do
       click_on I18n.t('explore.index.expiring')
     end
-    verify_translations
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
@@ -91,7 +89,6 @@ feature "Explore projects Feature" do
     within ".sidebar .content" do
       click_on I18n.t('explore.index.recent')
     end
-    verify_translations
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
@@ -104,7 +101,6 @@ feature "Explore projects Feature" do
     within ".sidebar .content" do
       click_on I18n.t('explore.index.successful')
     end
-    verify_translations
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|
@@ -117,7 +113,6 @@ feature "Explore projects Feature" do
     within ".sidebar .content" do
       click_on I18n.t('explore.index.recommended')
     end
-    verify_translations
     within "#explore_results" do
       list = all(".project_box")
       list.each_index do |index|

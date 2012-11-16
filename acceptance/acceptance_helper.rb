@@ -103,6 +103,7 @@ RSpec.configure do |config|
     # Put ActiveMerchant in test mode
     ActiveMerchant::Billing::Base.mode = :test
     Notification.stubs(:create_notification)
+    Notification.stubs(:create_notification_once)
     Notification.stubs(:find_notification)
   end
 
@@ -112,7 +113,5 @@ RSpec.configure do |config|
     I18n.default_locale = :pt
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
     Project.any_instance.stubs(:download_video_thumbnail)
-    Notification.stubs(:create_notification)
-    Notification.stubs(:create_notification_once)
   end
 end
