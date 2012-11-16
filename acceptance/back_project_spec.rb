@@ -5,7 +5,6 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Back project" do
 
   before do
-    Notification.stubs(:create_notification)
     @project = Factory(:project, visible: true)
     @rewards = [
       Factory(:reward, project: @project, minimum_value: 10, description: "$10 reward"),

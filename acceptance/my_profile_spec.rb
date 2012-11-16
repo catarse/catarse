@@ -4,6 +4,10 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "My profile Feature" do
 
+  before do
+    Factory(:notification_type, name: 'updates')
+  end
+
   scenario "I should be able to upload a custom avatar" do
     fake_login
     click_link I18n.t('layouts.header.account')
@@ -16,6 +20,7 @@ feature "My profile Feature" do
   end
 
   scenario "I should be able to see and edit my profile when I click on 'meu perfil'" do
+
 
     fake_login
 
@@ -137,7 +142,6 @@ feature "My profile Feature" do
       fill_in I18n.t('users.current_user_fields.other_link'), with: "boobar.com"
       click_button I18n.t('users.current_user_fields.update_social_info')
     end
-    verify_translations
 
     within "#my_data" do
       find_field(I18n.t('users.current_user_fields.twitter')).value.should == "FooBar"

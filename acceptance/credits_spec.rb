@@ -6,6 +6,7 @@ feature "Credits Feature" do
 
   before do
     fake_login
+    Factory(:notification_type, name: 'updates')
     project = Factory(:project, finished: true, successful: false)
     @backers = [
       Factory(:backer, user: user, project: project, confirmed: true, requested_refund: false, refunded: false, value: 20, created_at: 8.days.ago)

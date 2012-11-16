@@ -14,7 +14,6 @@ feature "with login page" do
       fill_in 'user_password', :with => user_facebook.password
       click_button 'user_submit'
     end
-    verify_translations
 
     page.should have_no_css('.user')
     page.should have_css('.alert.wrapper')
@@ -44,7 +43,6 @@ feature "with login page" do
       fill_in "user_password_confirmation", with: "foo!bar"
       click_button "Efetuar cadastro"
     end
-    verify_translations
     page.should have_css('.user')
   end
 
@@ -99,7 +97,6 @@ feature "with devise routes" do
       fill_in "user_password_confirmation", with: "foo!bar"
       click_button "Efetuar cadastro"
     end
-    verify_translations
     page.should have_css('.user')
   end
 
