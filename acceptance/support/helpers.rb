@@ -49,10 +49,6 @@ module HelperMethods
     verify_translations
   end
 
-  def click_button(locator)
-    super(locator)
-    verify_translations
-  end
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance
