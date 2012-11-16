@@ -142,6 +142,7 @@ feature "My profile Feature" do
       fill_in I18n.t('users.current_user_fields.other_link'), with: "boobar.com"
       click_button I18n.t('users.current_user_fields.update_social_info')
     end
+    verify_translations
 
     within "#my_data" do
       find_field(I18n.t('users.current_user_fields.twitter')).value.should == "FooBar"
