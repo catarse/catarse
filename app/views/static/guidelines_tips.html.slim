@@ -56,13 +56,12 @@
           p= t('.guide')
 
       .bootstrap-form.center_form
-        = form_tag(new_path, :method => :get, :id => 'guidelines_form') do
-          fieldset
-            .bootstrap-twitter
-              .curious
-                = submit_tag t('.explore_curious'), :class=>'btn_explore'
-                span = t('.explore_projects')
-              .send
-                = submit_tag t('.submit'), :class=>'btn_send'
-                span = t('.send_project')
+        fieldset
+          .bootstrap-twitter
+            .curious
+              = link_to t('.explore_curious'), explore_path, :class=>'btn_explore'
+              span = t('.explore_projects')
+            .send
+              = link_to t('.submit'), start_projects_path, :class=>'btn_send'
+              span = t('.send_project')
     .clearfix
