@@ -6,12 +6,14 @@
     meta name="description" content=@update.title
     meta property="og:title" content=@update.title
     meta property="og:description" content=@update.comment
-    meta property="og:url" content=project_by_slug_url(@project.permalink, :update_id => @update.id, :locale => I18n.locale)
+    - if @project.permalink 
+      meta property="og:url" content=project_by_slug_url(@project.permalink, :update_id => @update.id, :locale => I18n.locale) 
   - else
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
     meta property="og:description" content=@project.headline
-    meta property="og:url" content=project_by_slug_url(@project.permalink, :locale => I18n.locale)
+    - if @project.permalink 
+      meta property="og:url" content=project_by_slug_url(@project.permalink, :locale => I18n.locale)
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image
   meta property="og:site_name" content=t('site.name')
@@ -84,7 +86,10 @@
               iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
-                #facebook_share= render 'facebook', :href => project_by_slug_url(@project.permalink, :locale => I18n.locale)
+                - if @project.permalink
+                  #facebook_share= render 'facebook', :href => project_by_slug_url(@project.permalink, :locale => I18n.locale)
+                - else
+                  #facebook_share= render 'facebook', :href => project_url(@project, :locale => I18n.locale)
                 ul
                   li.embed
                     = link_to '#embed', :id => 'embed_link' do
