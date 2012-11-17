@@ -6,8 +6,7 @@
     meta name="description" content=@update.title
     meta property="og:title" content=@update.title
     meta property="og:description" content=@update.comment
-    /meta property="og:url" content="#{request.protocol + request.host + request.path}#updates"
-    meta property="og:url" content=project_by_slug_url(@project.permalink, :locale => I18n.locale, :anchor => 'updates')
+    meta property="og:url" content=project_by_slug_url(@project.permalink, :update_id => @update.id, :locale => I18n.locale, :anchor => 'updates')
   - else
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
