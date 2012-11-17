@@ -138,6 +138,7 @@ class ProjectsController < ApplicationController
         @rewards = @project.rewards.order(:minimum_value).all
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
+        @update = @project.updates.where(:id => params[:update_id]).first if params[:update_id].present?
       }
     rescue ActiveRecord::RecordNotFound
       return render_404

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/devton/catarse_moip.git
-  revision: e8e1980cc77c65a6cfaea38193a2af51dd9ee57a
+  revision: 4b316bb7b5e6464014d553d0c3482b41d8313f6a
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/devton/catarse_paypal_express.git
-  revision: 42899fd9802e3514d1313cfc28034ff5d0d9c8a2
+  revision: 1aa220c9cfe429ab9ead1f879888a91347f0d900
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
