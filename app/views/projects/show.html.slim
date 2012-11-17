@@ -6,7 +6,7 @@
     meta name="description" content=@update.title
     meta property="og:title" content=@update.title
     meta property="og:description" content=@update.comment
-    meta property="og:url" content=project_by_slug_url(@project.permalink, :update_id => @update.id, :locale => I18n.locale, :anchor => 'updates')
+    meta property="og:url" content=project_by_slug_url(@project.permalink, :update_id => @update.id, :locale => I18n.locale)
   - else
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
@@ -84,7 +84,7 @@
               iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
-                #facebook_share= render 'facebook'
+                #facebook_share= render 'facebook', :href => project_by_slug_url(@project.permalink, :locale => I18n.locale)
                 ul
                   li.embed
                     = link_to '#embed', :id => 'embed_link' do
