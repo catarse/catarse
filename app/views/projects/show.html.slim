@@ -5,12 +5,10 @@
   - if @update
     meta name="description" content=@update.title
     meta property="og:title" content=@update.title
-    meta property="og:url" content="#{request.url}#updates"
     meta property="og:description" content=@update.comment
   - else
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
-    meta property="og:url" content="#{request.url}"
     meta property="og:description" content=@project.headline
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image
