@@ -13,8 +13,9 @@ class AdjustStatisticsWithStateMachine < ActiveRecord::Migration
       FROM
         (
           SELECT count(*) AS total_backs, 
-          count(DISTINCT user_id) AS total_backers, 
-          sum(value) AS total_backed FROM backers WHERE confirmed
+            count(DISTINCT user_id) AS total_backers, 
+            sum(value) AS total_backed 
+          FROM backers WHERE confirmed
         ) AS backers_totals,
 
         (
