@@ -1,5 +1,6 @@
 class UpdatesController < ApplicationController
   inherit_resources
+  load_and_authorize_resource
 
   actions :index, :create, :destroy
   respond_to :html, :only => [ :index, :create, :destroy ]
