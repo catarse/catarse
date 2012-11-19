@@ -63,6 +63,7 @@ class User < ActiveRecord::Base
   has_many :backs, :class_name => "Backer"
   has_many :projects
   has_many :updates
+  has_many :unsubscribes
   has_many :notifications
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   has_one :user_total
@@ -71,6 +72,7 @@ class User < ActiveRecord::Base
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
+  scope :subscribed_to_project, ->(project_id){ who_backed_project(project_id).where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id) }
   scope :most_backeds, ->{
     joins(:backs).select(
       <<-SQL

@@ -8,8 +8,8 @@
   meta property="fb:admins" content="#{fb_admins}"
 
 - content_for :js_templates do
-  = render :partial => 'back'
-  = render :partial => 'project'
+  = render 'back'
+  = render 'project'
 
 .bootstrap-twitter
   #creditsModal.hide.modal

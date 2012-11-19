@@ -8,6 +8,5 @@ digraph graphname {
   online -> "waiting funds" [label="Expired without enough funds", fontsize="10", fontname="Arial"];
   online -> successful [label="Funding successful while online", fontsize="10", fontname="Arial"];
   "waiting funds" -> failed [label="Insufficient money after waiting funds", fontsize="10", fontname="Arial"];
-  "waiting funds" -> finished [label="Funding successful after waiting funds", fontsize="10", fontname="Arial"];
-  successful -> finished [label="Funding successful after expires_at", fontsize="10", fontname="Arial"];
+  "waiting funds" -> successful [label="Funding successful after waiting funds", fontsize="10", fontname="Arial"];
 }
