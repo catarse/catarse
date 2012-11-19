@@ -61,6 +61,7 @@
       #project_warning
         .alert
           font-size: 15px
+          float: left
           font-family: Arial
           a
             color: $pink
@@ -72,31 +73,51 @@
             display: inline
           label
             display: inline
-        label
-          font-family: 'Lato-Regular'
-          font-size: 15px
-          color: rgba(black, 0.8)
-        .input-prepend.permalink
-          .add-on
-            margin-top: -2px
-            font-family: 'Lato-Regular'
-            font-size: 15px
-            color: rgba(black, 0.8)
-        input[type="text"]
-          width: 99%
-          &.permalink
-            width: 85%
-        textarea
-          width: 99%
-          height: 180px
-          &#project_headline
-            height: 80px
-        .inline-hints
-          font-size: 13px
-          font-family: Arial
-          line-height: 130%
-          color: rgba(black, 0.6)
-          padding-bottom: 20px
+        .bootstrap-alert
+          .alert
+            float: right
+            width: 280px
+
+        li 
+          float: left
+          margin-bottom: 10px
+          width: 600px
+          label
+            font-family: 'Lato-Italic'
+            width: 160px
+            float: left
+            margin-right: 20px
+            text-align: center
+            font-size: 18px
+            color: #F28D0B
+            line-height: 21px
+          input[type="text"]
+            width: 99%
+            &.permalink
+              width: 85%
+          .goal_number
+            height: 50px
+            width: 400px
+            +border-radius(8px)
+          textarea
+            width: 99%
+            height: 180px
+            &#project_headline
+              height: 80px
+          .inline-hints
+            font-size: 12px
+            font-family: Arial
+            line-height: 21px
+            color: #666666
+            margin-left: 182px
+            padding-bottom: 20px          
+          .input-prepend.permalink
+            .add-on
+              margin-top: -2px
+              font-family: 'Lato-Regular'
+              font-size: 15px
+              color: rgba(black, 0.8)
+
       .reward
         textarea
           height: 80px !important
