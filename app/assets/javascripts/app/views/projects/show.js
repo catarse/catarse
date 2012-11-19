@@ -24,6 +24,11 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
 
     this.project = new CATARSE.Project($('#project_description').data("project"))
     this.render()
+
+    // Redirect to #updates anchor in case we come through a link to an update 
+    if(window.location.search.match(/update_id/)){
+      window.location.hash = 'updates';
+    }
   },
 
   events: {

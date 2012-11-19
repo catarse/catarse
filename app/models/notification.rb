@@ -12,12 +12,14 @@ class Notification < ActiveRecord::Base
   end
 
   def self.create_notification(notification_type_name, user, mail_params = {})
-    create! user: user,
-      project: (mail_params[:project].nil? ? nil : mail_params[:project]),
-      backer: (mail_params[:backer].nil? ? nil : mail_params[:backer]),
-      notification_type: (find_notification notification_type_name),
-      mail_params: mail_params,
-      text: 'this will be removed'
+    if (nt = find_notification notification_type_name)
+      create! user: user,
+        project: (mail_params[:project].nil? ? nil : mail_params[:project]),
+        backer: (mail_params[:backer].nil? ? nil : mail_params[:backer]),
+        notification_type: nt,
+        mail_params: mail_params,
+        text: 'this will be removed'
+    end
   end
 
   def send_email
@@ -29,9 +31,6 @@ class Notification < ActiveRecord::Base
 
   protected
   def self.find_notification notification_type_name
-    nt = NotificationType.where(name: notification_type_name.to_s).first
-    raise "There is no NotificationType with name #{notification_type_name}" unless nt
-    return nt
+    NotificationType.where(name: notification_type_name.to_s).first
   end
-
 end

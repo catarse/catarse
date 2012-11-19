@@ -74,6 +74,8 @@ en:
             email:
               not_found: "Your email is not registered, please verify the address or create a new account"
     attributes:
+      unsubscribe:
+        update: "Receive project updates"
       backer:
         value: Value
       project:

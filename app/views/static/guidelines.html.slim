@@ -82,9 +82,9 @@
           fieldset
             .bootstrap-twitter
               .curious
-                = submit_tag t('.explore_curious'), :class=>'btn_explore'
+                = link_to t('.explore_curious'), explore_path, :class=>'btn_explore'
                 span = t('.explore_projects')
               .send
-                = submit_tag t('.submit'), :class=>'btn_send'
+                = link_to t('.submit'), guidelines_tips_path, :class=>'btn_send'
                 span = t('.send_project')
     .clearfix

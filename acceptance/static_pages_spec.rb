@@ -8,7 +8,6 @@ feature "Static Pages Feature", :driver => :selenium do
 
     visit homepage
     click_link 'Como funciona'
-    verify_translations
     current_path.should == guidelines_path
 
     within 'head title' do
@@ -27,7 +26,6 @@ feature "Static Pages Feature", :driver => :selenium do
 
     visit homepage
     click_link 'F.A.Q./Ajuda'
-    verify_translations
     current_path.should == faq_path
 
     within 'head title' do
@@ -46,7 +44,6 @@ feature "Static Pages Feature", :driver => :selenium do
 
     visit homepage
     click_link 'Termos de Uso'
-    verify_translations
     current_path.should == terms_path
 
     within 'head title' do
@@ -65,7 +62,6 @@ feature "Static Pages Feature", :driver => :selenium do
 
     visit homepage
     click_link 'Política de Privacidade'
-    verify_translations
     current_path.should == privacy_path
 
     within 'head title' do

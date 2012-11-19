@@ -28,6 +28,10 @@ class Backer < ActiveRecord::Base
     self.save
   end
 
+  def refund_deadline
+    created_at + 180.days
+  end
+
   def confirm!
     self.confirmed = true
     self.save
