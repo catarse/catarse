@@ -20,9 +20,6 @@ class Ability
       can :manage, Reward do |reward|
         current_user.manages_projects.include?(reward.project) or reward.project.user == current_user
       end
-      can :manage, Update do |update|
-        current_user.manages_projects.include?(update.project) or update.project.user == current_user
-      end
     else
       can :read, :all
     end
