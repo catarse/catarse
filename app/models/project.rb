@@ -39,14 +39,14 @@ class Project < ActiveRecord::Base
     link :target => :_blank
   end
 
-  scope :visible, where(visible: true)
+  scope :visible, where("state NOT IN ('draft', 'rejected')")
   scope :recommended, where(recommended: true)
-  scope :expired, where("finished OR expires_at < current_timestamp")
-  scope :not_expired, where("finished = false AND expires_at >= current_timestamp")
+  scope :expired, where("expires_at < current_timestamp")
+  scope :not_expired, where("expires_at >= current_timestamp")
   scope :expiring, not_expired.where("expires_at < (current_timestamp + interval '2 weeks')")
   scope :not_expiring, not_expired.where("NOT (expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("current_timestamp - projects.created_at <= '15 days'::interval")
-  scope :successful, where(successful: true)
+  scope :successful, where(state: 'successful')
   scope :recommended_for_home, ->{
     includes(:user, :category, :project_total).
     recommended.
@@ -69,6 +69,13 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true
   validates_format_of :permalink, with: /^(\w|-)*$/, :allow_blank => true, :allow_nil => true
   mount_uploader :video_thumbnail, LogoUploader
+
+  def self.finish_projects!
+    expired.each do |resource| 
+      Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
+      resource.finish 
+    end
+  end
 
   def self.unaccent_search search
     joins(:user).where("unaccent(projects.name || headline || about || coalesce(users.name,'') || coalesce(users.address_city,'')) ~* unaccent(?)", search)
@@ -98,17 +105,18 @@ class Project < ActiveRecord::Base
     project_total ? project_total.total_backers : 0
   end
 
-  #def successful?
-    #return successful if finished
-    #pledged >= goal
-  #end
-
   def reached_goal?
     pledged >= goal
   end
 
+  def finished?
+    not online? and not draft? and not rejected?
+  end
+  
+  # NOTE: I think that we just can look the expires_at column
+  # the project enter on finished / failed state when expires ;)
   def expired?
-    finished || expires_at < Time.now
+    expires_at < Time.now
   end
 
   def waiting_confirmation?
@@ -175,7 +183,7 @@ class Project < ActiveRecord::Base
       url: (self.permalink.blank? ? "/projects/#{self.to_param}" : '/' + self.permalink),
       full_uri: I18n.t('site.base_url') + (self.permalink.blank? ? Rails.application.routes.url_helpers.project_path(self) : '/' + self.permalink),
       expired: expired?,
-      successful: successful?,
+      successful: successful? || reached_goal?,
       waiting_confirmation: waiting_confirmation?,
       display_status_to_box: I18n.t("project.display_status.#{display_status}").capitalize,
       display_expires_at: display_expires_at,

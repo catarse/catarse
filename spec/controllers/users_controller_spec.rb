@@ -5,8 +5,8 @@ describe UsersController do
   render_views
   subject{ response }
 
-  let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
-  let(:failed_project){ Factory(:project, :finished => true, :successful => false) }
+  let(:successful_project){ Factory(:project, state: 'successful') }
+  let(:failed_project){ Factory(:project, state: 'failed') }
   let(:backer){ Factory(:backer, :user => user, :project => failed_project) }
   let(:user){ Factory(:user, :provider => 'facebook', :uid => '666') }
 

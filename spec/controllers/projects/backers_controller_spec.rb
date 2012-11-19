@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Projects::BackersController do
   render_views
-  let(:failed_project) { Factory(:project, :finished => true, :successful => false) }
+  let(:failed_project) { Factory(:project, state: 'failed') }
   let(:project) { Factory(:project) }
 
   subject{ response }
