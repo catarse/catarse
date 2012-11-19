@@ -259,7 +259,7 @@ pt:
       project:
         about: "Sobre o seu projeto"
         expires_at: "Qual o prazo para atingir o mínimo?"
-        goal: "De quanto você precisa?"
+        goal: "Quanto você pretende arrecadar?"
         name: "Nome do projeto"
         video_url: Vídeo
       reward:
