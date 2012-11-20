@@ -261,7 +261,7 @@ pt:
         expires_at: "Qual o prazo para atingir o mínimo?"
         goal: "Quanto você pretende arrecadar?"
         name: "Nome do projeto"
-        video_url: Vídeo
+        video_url: "Vídeo"
       reward:
         maximum_backers: "Máximo de apoiadores (opcional)"
     optional: " (opcional)"
