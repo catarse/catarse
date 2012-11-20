@@ -512,6 +512,7 @@ pt:
       rewards: "Como irá recompensar os seus apoiadores?"
       rewards_hint: "A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão."
       submit: "Enviar o projeto"
+      send_project: "Quero enviar meu projeto."
       subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
       title: "Agooora sim! Envie seu projeto, campeão."
       legend_html: "Preencha o formulário abaixo da forma mais completa objetiva, pois quanto mais completo <br>nós recebermos o seu projeto, mais rápido ele entrará na plataforma online."

@@ -68,8 +68,10 @@
               = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
             fieldset
               .bootstrap-twitter
-                = submit_tag t('.submit'), :disabled => true, :class => 'btn btn-large'
-              = image_tag "loading.gif", :id => 'loading'
+                .send
+                  = submit_tag t('.submit'), :disabled => true, :class => 'btn_send'
+                  span = t('.send_project')
+
       #project_warning
         .bootstrap-alert
           .alert.alert-info
