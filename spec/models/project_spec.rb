@@ -123,6 +123,10 @@ describe Project do
         subject.approve
         subject.online?.should be_true
       end
+      it 'should call after transition method to notify the project owner' do
+        subject.expects(:after_transition_of_draft_to_online)
+        subject.approve
+      end
     end
 
     describe '.online?' do
@@ -306,6 +310,15 @@ describe Project do
       Factory(:project, :created_at => (Date.today - 15.days))
     end
     subject{ Project.recent }
+    it{ should == [@p] }
+  end
+
+  describe ".online" do
+    before do
+      @p = Factory(:project, state: 'online')
+      Factory(:project)
+    end
+    subject{ Project.online}
     it{ should == [@p] }
   end
 

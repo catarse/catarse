@@ -31,7 +31,7 @@ describe BackerObserver do
       it("should notify the backer"){ subject }
     end
 
-    context "when project becomes successful" do
+    context "when project reached the goal" do
       let(:project){ Factory(:project, :can_finish => true, :successful => false, :goal => 20, :finished => false) }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 20) }
       before do
