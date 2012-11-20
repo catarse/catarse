@@ -29,39 +29,17 @@
           +alpha
           padding-bottom: 40px
           h1
-            color: #333333
+            color: $ultra_gryn
             font-family: "Lato-Regular"
-            font-size: 24px
-            padding: 0 0 5px 50px
-            margin-top: 20px
-            background: url($images_path+'icon_new.png') left top no-repeat
+            font-size: 28px
+            padding: 5px 0
           h2
-            color: #333333
-            font-family: "Lato-Regular"
-            font-size: 14px
-            padding-left: 50px
-            padding-bottom: 15px
-            border-bottom: 1px dotted #CCCCCC
-          h3
-            color: #F28D0B
-            font-size: 21px
-            font-family: "Lato-Italic"
-            margin-top: 46px
-            line-height: 24px
-            width: 100%
-            text-align: center
-          p
-            font-family: "Lato-Italic"
-            color: #666666
-            font-size: 16px
-            text-align: center
-            line-height: 21px
-            padding-top: 20px
-            margin: 0 auto
+            color: rgba($ultra_gryn, 0.7)
+            font-family: Arial
+            font-size: 18px
       #project_warning
         .alert
           font-size: 15px
-          float: left
           font-family: Arial
           a
             color: $pink
@@ -69,74 +47,35 @@
         .accept
           padding-top: 20px
           padding-bottom: 20px
-          float: left
-          width: 100%
           input
             display: inline
           label
             display: inline
-        .bootstrap-alert
-          position: relative
-          span
-            background: url($images_path+'box_alert.png') left top no-repeat
-            width: 33px
-            height: 38px
-            position: absolute
-            right: 276px
-            top: 30px
-
-          .alert
-            float: right
-            width: 250px
-            background-color: #F7F7F7
-            border: solid 1px #EDEDED
-            +border-radius (0px)
-            font-family: "Lato-Regular"
-            font-size: 13px
-            line-height: 21px
-            color: #666666
-            padding: 10px 10px 10px 40px
-        li 
-          float: left
-          margin-bottom: 10px
-          width: 600px
-          label
-            font-family: 'Lato-Italic'
-            width: 160px
-            float: left
-            margin-right: 20px
-            text-align: center
-            font-size: 18px
-            color: #F28D0B
-            line-height: 21px
-          input[type="text"]
-            width: 66%
-            &.permalink
-              width: 85%
-          .goal_number
-            height: 50px
-            width: 400px
-            +border-radius(8px)
-          textarea
-            width: 400px
-            +border-radius(8px)
-            height: 180px
-            &#project_headline
-              height: 80px
-          .inline-hints
-            font-size: 12px
-            font-family: Arial
-            line-height: 21px
-            color: #666666
-            margin-left: 182px
-            padding-bottom: 20px          
-          .input-prepend.permalink
-            .add-on
-              margin-top: -2px
-              font-family: 'Lato-Regular'
-              font-size: 15px
-              color: rgba(black, 0.8)
-
+        label
+          font-family: 'Lato-Regular'
+          font-size: 15px
+          color: rgba(black, 0.8)
+        .input-prepend.permalink
+          .add-on
+            margin-top: -2px
+            font-family: 'Lato-Regular'
+            font-size: 15px
+            color: rgba(black, 0.8)
+        input[type="text"]
+          width: 99%
+          &.permalink
+            width: 85%
+        textarea
+          width: 99%
+          height: 180px
+          &#project_headline
+            height: 80px
+        .inline-hints
+          font-size: 13px
+          font-family: Arial
+          line-height: 130%
+          color: rgba(black, 0.6)
+          padding-bottom: 20px
       .reward
         textarea
           height: 80px !important
