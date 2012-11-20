@@ -515,7 +515,8 @@ pt:
       rewards_hint: "A gente acredita que a melhor maneira de inspirar as pessoas a apoiar um projeto é oferecendo excelentes – e criativas! – recompensas. Todo mundo adora edições limitadas, coisas únicas e experiências divertidas (festas, guloseimas, viajar de balão!). Gaste um bom tempo bolando recompensas criativas e as pessoas se interessarão."
       submit: "Enviar o projeto"
       subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
-      title: "Envie seu projeto"
+      title: "Agooora sim! Envie seu projeto, campeão."
+      legend_html: "Preencha o formulário abaixo da forma mais completa objetiva, pois quanto mais completo <br>nós recebermos o seu projeto, mais rápido ele entrará na plataforma online."
     twitter:
       take_a_look: "Confira o projeto %{name} no @Catarse_"
     video_embed:
@@ -606,7 +607,7 @@ pt:
       title: "Calma, amizade!"
       subtitle: "Antes de você enviar seu projeto, vale a pena refletir sobre alguns pontos importantes."
       introduction_html: "Sabemos que você tá louco para ter seu projeto no ar, mas antes responda <br> (em um papel mesmo) as perguntas a seguir."
-      legend_html: "Ter bem claro as respostas para essas perguntas com certeza te ajudará de montão na estruturação do seu projeto, aumentando suas chances de atingir sucesso na campanha."
+      legend_html: "Ter bem claro as respostas para essas perguntas com certeza te ajudará de montão <br>na estruturação do seu projeto, aumentando suas chances de atingir sucesso na campanha."
       title_one: "O que te inspirou a fazer este projeto?"
       tip_one: "As pessoas só se engajam quando percebem a importância de uma causa para a sociedade ou para a pessoa que lidera uma campanha. Por isso, tenha bem claro qual é a sua inspiração e exponha isso na descrição do projeto."
       title_two: "Qual é o foco?"
