@@ -406,7 +406,7 @@ pt:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
     form:
       add_reward: "Adicionar nova recompensa"
-      important_html: "Lembre-se que o Catarse ficará com 7,5%, e os meios de pagamento (MoIP e Paypal) cobram uma taxa que varia, em geral, entre 4% e 5% por transação. Inclua estes valores no seu orçamento, para executar o projeto sem problemas depois."
+      important_html: "Lembre-se das taxas cobradas pelo Catarse de 7,5% e do sistema de pagamento, cerca de 4,5%."
       project_warning:
         content_html: "Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}."
         help_link: "nosso guia"
@@ -496,7 +496,7 @@ pt:
     start:
       about: "Descreva seu projeto e como o $ sera utilizado"
       category: "Categoria do seu projeto"
-      how_much_you_need: "Quanto você pretende arrecadar?"
+      how_much_you_need: "Quanto você precisa?"
       about_hint: "Conte-nos um pouco sobre o que você quer fazer, de quanto precisa e para que. Seja sucinto e pontual, mas não esqueça de presentear os leitores com algo que mexa com eles. Afinal, é sua criação e eles precisam ver sua paixão em prática!"
       contact: "Deixe seu email para entrarmos em contato"
       links: "Mais algum link para conhecer mais sobre o seu projeto?"
