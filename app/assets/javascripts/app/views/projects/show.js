@@ -171,7 +171,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
       return true
     if(!element.is('li'))
       element = element.parentsUntil('li')
-    var url = element.find('input[type=hidden]').val()
+    var url = element.find('input[name="url"][type=hidden]').val()
     window.location.href = url;
     //CATARSE.requireLogin(event, url)
   },
