@@ -11,9 +11,7 @@
         .important= t('.important_html', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))
     = form.input :category, :collection => Category.all(:order => :name)
     = form.input :about
-    = form.input :video_url, :as => :string    
-    .clearfix
-
+    = form.input :video_url, :as => :string   
     #project_warning
       .bootstrap-alert
         span
