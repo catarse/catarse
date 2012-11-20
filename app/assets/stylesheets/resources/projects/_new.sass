@@ -74,10 +74,26 @@
           label
             display: inline
         .bootstrap-alert
+          position: relative
+          span
+            background: url($images_path+'box_alert.png') left top no-repeat
+            width: 33px
+            height: 38px
+            position: absolute
+            right: 276px
+            top: 30px
+
           .alert
             float: right
-            width: 280px
-
+            width: 250px
+            background-color: #F7F7F7
+            border: solid 1px #EDEDED
+            +border-radius (0px)
+            font-family: "Lato-Regular"
+            font-size: 13px
+            line-height: 21px
+            color: #666666
+            padding: 10px 10px 10px 40px
         li 
           float: left
           margin-bottom: 10px
@@ -100,7 +116,8 @@
             width: 400px
             +border-radius(8px)
           textarea
-            width: 99%
+            width: 400px
+            +border-radius(8px)
             height: 180px
             &#project_headline
               height: 80px
