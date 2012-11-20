@@ -47,6 +47,7 @@ class Project < ActiveRecord::Base
   scope :not_expiring, not_expired.where("NOT (expires_at < (current_timestamp + interval '2 weeks'))")
   scope :recent, where("current_timestamp - projects.created_at <= '15 days'::interval")
   scope :successful, where(state: 'successful')
+  scope :online, where(state: 'online')
   scope :recommended_for_home, ->{
     includes(:user, :category, :project_total).
     recommended.
@@ -231,10 +232,14 @@ class Project < ActiveRecord::Base
     end
 
     after_transition waiting_funds: [:successful, :failed], do: :after_transition_of_wainting_funds_to_successful_or_failed
+    after_transition draft: :online, do: :after_transition_of_draft_to_online
   end
 
   def after_transition_of_wainting_funds_to_successful_or_failed
     notify_observers :notify_users
   end
 
+  def after_transition_of_draft_to_online
+    notify_observers :notify_owner_that_project_is_online
+  end
 end

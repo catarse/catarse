@@ -41,6 +41,6 @@ describe Statistics do
 
   describe "#total_projects_online" do
     subject{ Statistics.first.total_projects_online }
-    it{ should == Project.visible.count }
+    it{ should == Project.online.count }
   end
 end

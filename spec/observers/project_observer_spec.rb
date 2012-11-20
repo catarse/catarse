@@ -24,16 +24,15 @@ describe ProjectObserver do
   end
 
   describe "before_save" do
-    let(:project){ Factory(:project, :video_url => 'http://vimeo.com/11198435', :visible => false )}
-    context "when project is made visible" do
+    let(:project){ Factory(:project, :video_url => 'http://vimeo.com/11198435')}
+    context "when project is approved" do
       before do
-        Notification.expects(:create_notification).with(:project_visible, project.user, {:project => project})
         project.expects(:download_video_thumbnail).never
       end
 
       it "should call create_notification and do not call download_video_thumbnail" do
-        project.visible = true
-        project.save!
+        Notification.expects(:create_notification).with(:project_visible, project.user, {:project => project})
+        project.approve
       end
     end
 
@@ -53,7 +52,7 @@ describe ProjectObserver do
   describe "notify_backers" do
 
     context "when project is successful" do
-      let(:project){ Factory(:project, :can_finish => true, :visible => true, :successful => false, :goal => 30, :finished => false, :expires_at => (Time.now - 1.day)) }
+      let(:project){ Factory(:project, :can_finish => true, :goal => 30, :expires_at => (Time.now - 7.days), :state => 'waiting_funds') }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 30, :project => project) }
 
       before do
@@ -65,7 +64,7 @@ describe ProjectObserver do
     end
 
     context "when project is unsuccessful" do
-      let(:project){ Factory(:project, :can_finish => true, :visible => true, :successful => false, :goal => 30, :finished => false, :expires_at => (Time.now - 1.day)) }
+      let(:project){ Factory(:project, :goal => 30, :expires_at => (Time.now - 7.days), :state => 'waiting_funds') }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 20) }
       before do
         Notification.expects(:create_notification).at_least_once

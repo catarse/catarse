@@ -32,7 +32,7 @@ class BackerObserver < ActiveRecord::Observer
   end
 
   def after_save(backer)
-    Notification.create_notification_once(:project_success, backer.project.user, {'project_id' => backer.project.id}, project: backer.project) if backer.project.successful?
+    Notification.create_notification_once(:project_success, backer.project.user, {'project_id' => backer.project.id}, project: backer.project) if backer.project.reached_goal?
   end
 
 end
