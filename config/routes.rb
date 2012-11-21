@@ -87,6 +87,7 @@ Catarse::Application.routes.draw do
     member do
       get 'projects'
       get 'credits'
+      put 'unsubscribe_update'
     end
     post 'update_attribute_on_the_spot', :on => :collection
   end

@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource except: :update_attribute_on_the_spot
   inherit_resources
-  actions :show, :update
+  actions :show, :update, :unsubscribe_update
   can_edit_on_the_spot
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   respond_to :json, :only => [:backs, :projects, :request_refund]
@@ -12,11 +12,27 @@ class UsersController < ApplicationController
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
       @credits = @user.backs.can_refund.all
+      nt = NotificationType.where(name: 'updates').last.id
+      @user.backed_projects.each do |p|
+        ( @unsubscribes ||= [] ) << Unsubscribe.find_or_initialize_by_project_id_and_user_id_and_notification_type_id(p.id, @user.id, nt)
+      end
     }
   end
 
+  def unsubscribe_update
+    params[:user][:unsubscribes_attributes].each_value do |u|
+      if u[:subscribed] == '1' && !u[:id].nil? #change from unsubscribed to subscribed
+        Unsubscribe.destroy_all(user_id: u[:user_id], project_id: u[:project_id], notification_type_id: u[:notification_type_id])
+      elsif u[:subscribed] == '0' && u[:id].nil? #change from subscribed to unsubscribed
+        Unsubscribe.new(user_id: u[:user_id], project_id: u[:project_id], notification_type_id: u[:notification_type_id]).save!
+      end
+    end
+    flash[:notice] = t('users.current_user_fields.updated')
+    return redirect_to user_path(@user, :anchor => 'unsubscribes')
+  end
+
   def update
-    update! do 
+    update! do
       flash[:notice] = t('users.current_user_fields.updated')
       return redirect_to user_path(@user, :anchor => 'settings')
     end

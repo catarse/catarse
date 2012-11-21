@@ -69,6 +69,7 @@ class User < ActiveRecord::Base
   has_one :user_total
   has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id, :primary_key => :id
+  accepts_nested_attributes_for :unsubscribes, allow_destroy: true
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
@@ -197,6 +198,13 @@ class User < ActiveRecord::Base
 
   def total_backs
     backs.confirmed.not_anonymous.count
+  end
+
+  def backed_projects
+    backs.confirmed.each do |b|
+      projects << b.project
+    end
+    projects.uniq
   end
 
   def backs_text
