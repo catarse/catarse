@@ -9,22 +9,22 @@
         p= t('.legend_html')
       ul.steps
         li
-          = image_tag('catarse/thumb_step.jpg')
+          = image_tag('catarse/bg_send.png')
           .ico.one
           span= t('.title_one')
           p= t('.step_one')
         li
-          = image_tag('catarse/thumb_step.jpg')
+          = image_tag('catarse/bg_guardian.jpg')
           .ico.two
           span= t('.title_two')
-          p= t('.step_two')
+          p= t('.step_two').html_safe
         li
-          = image_tag('catarse/thumb_step.jpg')
+          = image_tag('catarse/bg_air.jpg')
           .ico.three
           span= t('.title_three')
           p= t('.step_three')
         li.last
-          = image_tag('catarse/thumb_step.jpg')
+          = image_tag('catarse/bg_money.jpg')
           .ico.four
           span= t('.title_four')
           p= t('.step_four')

@@ -15,14 +15,27 @@
           +alpha
           padding-bottom: 40px
           h1
-            color: $ultra_gryn
+            color: #333333
             font-family: "Lato-Regular"
-            font-size: 28px
-            padding: 5px 0
+            font-size: 24px
+            padding: 0 0 5px 50px
+            margin-top: 20px
+            background: url($images_path+'icon_new.png') left top no-repeat
           h2
-            color: rgba($ultra_gryn, 0.7)
-            font-family: Arial
-            font-size: 18px
+            color: #333333
+            font-family: "Lato-Regular"
+            font-size: 14px
+            padding-left: 50px
+            padding-bottom: 15px
+            border-bottom: 1px dotted #CCCCCC
+          p
+            font-family: "Lato-Italic"
+            color: #666666
+            font-size: 16px
+            text-align: center
+            line-height: 21px
+            padding-top: 20px
+            margin: 0 auto
       #project_warning
         .alert
           font-size: 15px
@@ -31,8 +44,33 @@
             color: $pink
       .bootstrap-form
         form
-          .input
-            padding-bottom: 15px
+          .input 
+            float: left
+            margin-bottom: 30px
+            padding-bottom: 40px
+            width: 600px
+            border-bottom: 1px dotted #CCCCCC
+            .heart
+              display: block
+              margin-left: 40px
+            .calc, .tag
+              display: block
+              margin-left: 52px
+            .gift
+              display: block
+              margin-left: 59px
+            .vimeo, .social, .link, .logo
+              display: block
+              margin-left: 50px
+            label
+              font-family: 'Lato-Italic'
+              width: 160px
+              float: left
+              margin-right: 20px
+              text-align: center
+              font-size: 18px
+              color: #F28D0B
+              line-height: 21px
           .accept
             padding-top: 20px
             padding-bottom: 20px
@@ -45,12 +83,14 @@
             font-size: 15px
             color: rgba(black, 0.8)
           textarea
-            width: 100%
-            height: 80px
+            width: 400px
+            +border-radius(8px)
+            height: 180px
           .inline-hints
-            font-size: 13px
+            font-size: 12px
             font-family: Arial
-            line-height: 130%
-            color: rgba(black, 0.6)
-            padding-bottom: 20px
+            line-height: 21px
+            color: #666666
+            margin-left: 182px
+            padding-bottom: 20px   
 
