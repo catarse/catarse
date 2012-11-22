@@ -648,6 +648,7 @@ pt:
         comments: Comentários
         credits: Créditos
         settings: Preferências
+        unsubscribes: Notificações
       user_social:
         email: "Me envie um email"
         facebook: "Perfil no facebook"
@@ -660,6 +661,8 @@ pt:
       title: "Projetos que %{name} já apoiou"
       title_current_user: "Projetos que já apoiei"
       your_reward: "Sua recompensa"
+    unsubscribes:
+      title: "Escolha de quais projetos você deseja receber notificações:"
     current_user_fields:
       updated: "As suas informações foram atualizadas"
       update_social_info: "Atualizar informações"
