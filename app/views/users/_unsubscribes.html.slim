@@ -1,5 +1,7 @@
 #my_data
   ul
+    = I18n.t('users.unsubscribes.title')
+  ul
     li
       .bootstrap-form
       = semantic_form_for(@user, url: { action: "unsubscribe_update" }) do |f|
