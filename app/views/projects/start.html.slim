@@ -17,12 +17,18 @@
                 = text_field_tag 'how_much_you_need'
                 p.inline-hints= t('.how_much_hint_html', :href => "http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho/")
               .bootstrap-alert
+                span
                 .alert
-                  .important= t('.important_html', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))                
+                  .important= t('.how_much_important', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))                
             .input
               = image_tag "catarse/icon_tag.png", :class => 'tag'
               = label_tag 'category', t('.category')
               = select_tag 'category', options_from_collection_for_select(Category.all, "name", "name"), include_blank: true
+              p.inline-hints= t('.tags_html')
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.tags_important', :href => "http://www.catarse.me/explore")
             .input
               = image_tag "catarse/icon_calc.png", :class => 'calc'
               = label_tag 'about', t('.about')
