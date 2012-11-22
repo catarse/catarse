@@ -36,6 +36,27 @@
             line-height: 21px
             padding-top: 20px
             margin: 0 auto
+        .bootstrap-alert
+          float: right
+          position: relative
+          span
+            background: url($images_path+'box_alert.png') left top no-repeat
+            width: 33px
+            height: 38px
+            position: absolute
+            right: 276px
+            top: 30px
+          .alert
+            float: right
+            width: 250px
+            background-color: #F7F7F7
+            border: solid 1px #EDEDED
+            +border-radius (0px)
+            font-family: "Lato-Regular"
+            font-size: 13px
+            line-height: 21px
+            color: #666666
+            padding: 10px 10px 10px 40px
       #project_warning
         .alert
           font-size: 15px
@@ -49,7 +70,10 @@
             margin-bottom: 30px
             padding-bottom: 40px
             width: 600px
+            width: 100%
             border-bottom: 1px dotted #CCCCCC
+            .input-prepend
+              float: left
             .heart
               display: block
               margin-left: 40px
@@ -118,6 +142,6 @@
             font-family: Arial
             line-height: 21px
             color: #666666
-            margin-left: 182px
-            padding-bottom: 20px   
+            padding-bottom: 20px  
+            width: 400px 
 
