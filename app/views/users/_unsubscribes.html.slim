@@ -4,7 +4,7 @@
   ul
     li
       .bootstrap-form
-      = semantic_form_for(@user, url: { action: "unsubscribe_update" }) do |f|
+      = semantic_form_for(@user, url: user_unsubscribes_path(user_id: @user.id), html:{ method: :post}) do |f|
         = f.inputs do
           = f.semantic_fields_for :unsubscribes, @unsubscribes do |u|
             = u.inputs do

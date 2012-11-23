@@ -51,7 +51,6 @@ Catarse::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
   match "/logout" => "sessions#destroy", :as => :logout
-  resources :unsubscribes, :only => [:index, :create, :destroy]
   resources :posts, only: [:index, :create]
   resources :projects, only: [:index, :new, :create, :show] do
     resources :updates, :only => [:index, :create, :destroy]
@@ -84,6 +83,7 @@ Catarse::Application.routes.draw do
   end
   resources :users do
     resources :backers, :only => [:index]
+    resources :unsubscribes, :only => [:create]
     member do
       get 'projects'
       get 'credits'
