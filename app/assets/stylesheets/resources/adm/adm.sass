@@ -1,4 +1,5 @@
 [data-controller-class="adm::backerscontroller"][data-action="index"],
+[data-controller-class="adm::projectscontroller"][data-action="index"],
 [data-controller-class="adm::userscontroller"][data-action="index"]
   .actions_menu
     float: left
@@ -13,7 +14,7 @@
   #page_content
     .container
       padding-top: 15px
-      overflow: hidden
+      //overflow: hidden
       .title
         +grid(16)
         +alpha
@@ -80,9 +81,21 @@
               font-size: 12px
               text-align: center
               vertical-align: middle
+              form.form_in_place
+                input
+                  width: 50%
+              &.recommended
+                color: $blue
+                cursor: pointer
               img
                 &.project_img
                   width: 50px
                 &.user_img
                   width: 30px
-
+  .btn-group .dropdown-menu
+    min-width: 100px
+    li
+      text-align: left
+      a
+        i
+          margin-right: 10px

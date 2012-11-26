@@ -117,8 +117,10 @@ pt:
     reward_must_be_from_project: "deve ser do mesmo projeto"
     should_not_back_if_maximum_backers_been_reached: "já atingiu seu número máximo de apoiadores"
     value_must_be_at_least_rewards_value: "deve ser pelo menos %{minimum_value} para a recompensa selecionada"
+  project_plural: projetos
   backer_plural: apoiadores
   backer_singular: apoiador
+  project_singular: projeto
   click_here: "Clique aqui"
   clicking_here: "clicando aqui"
   click_term: 'termos de uso'
@@ -702,6 +704,19 @@ pt:
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
   adm:
+    projects:
+      index:
+        id: ID
+        name: 'Titulo'
+        user_id: 'User ID'
+        goal: 'Meta'
+        pledged: 'Alcançado'
+        recommended: 'Recomendado?'
+        state: 'Estado'
+        menu: 'Adm. Projetos'
+        title: 'Gerenciamento de projetos'
+        total_projects: 'projetos'
+        submit: 'filtrar'
     actions:
       confirm: 'Confirmar'
     users:

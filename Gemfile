@@ -7,6 +7,7 @@ gem 'rake', '0.9.2.2'
 gem 'sidekiq', '= 2.4.0'
 gem 'sinatra', require: false
 gem 'foreman'
+gem 'best_in_place'
 
 gem 'state_machine', require: 'state_machine/core'
 # Database and data related [Putting pg to the end because of a weird bug with Lion, pg and openssl]
