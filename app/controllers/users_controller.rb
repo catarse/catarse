@@ -12,9 +12,8 @@ class UsersController < ApplicationController
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
       @credits = @user.backs.can_refund.all
-      @unsubscribes = @user.backed_projects.map do |p|
-        Unsubscribe.find_or_initialize_by_project_id_and_user_id_and_notification_type_id(p.id, @user.id, NotificationType.where(name: 'updates').last.id)
-      end
+      @subscribed_to_updates = @user.updates_subscription
+      @unsubscribes = @user.project_unsubscribes
     }
   end
 

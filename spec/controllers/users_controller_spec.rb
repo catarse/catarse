@@ -28,29 +28,6 @@ describe UsersController do
     it{ assigns(:fb_admins).should include(user.facebook_id.to_i) }
   end
 
-  describe "POST unsubscribe_update" do
-    before do
-      request.session[:user_id] = user.id
-      @project = Factory(:project)
-      @notification_type = Factory(:notification_type, name: 'updates')
-    end
-
-    context "when we already have such unsubscribe" do
-      before do
-        uns = Factory(:unsubscribe, project_id: @project.id, user_id: user.id, notification_type_id: @notification_type.id)
-        put :unsubscribe_update, id: user.id, locale: 'pt', user: { unsubscribes_attributes: {'0' => {subscribed:'1', id: uns.id, project_id: @project.id, user_id: user.id, notification_type_id: @notification_type.id}}}
-      end
-      it("should destroy the unsubscribe"){ Unsubscribe.where(:user_id => user.id, :project_id => @project.id).count.should == 0 }
-    end
-
-    context "when we do not have such unsubscribe" do
-      before do
-        put :unsubscribe_update, id: user.id, locale: 'pt', user: { unsubscribes_attributes: {'0' => {subscribed:'0', project_id: @project.id, user_id: user.id, notification_type_id: @notification_type.id}}}
-      end
-      it("should create an unsubscribe"){ Unsubscribe.where(:user_id => user.id, :project_id => @project.id).count.should == 1 }
-    end
-  end
-
   describe "POST request_refund" do
     context "without user" do
       it 'should raise a exception' do

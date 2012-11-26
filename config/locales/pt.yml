@@ -668,6 +668,7 @@ pt:
       your_reward: "Sua recompensa"
     unsubscribes:
       title: "Escolha de quais projetos você deseja receber notificações:"
+      updates: "Eu quero receber atualizações dos projetos"
     current_user_fields:
       updated: "As suas informações foram atualizadas"
       update_social_info: "Atualizar informações"

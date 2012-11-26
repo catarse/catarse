@@ -6,14 +6,20 @@
       .bootstrap-form
       = semantic_form_for(@user, url: user_unsubscribes_path(user_id: @user.id), html:{ method: :post}) do |f|
         = f.inputs do
-          = f.semantic_fields_for :unsubscribes, @unsubscribes do |u|
-            = u.inputs do
-              -  if u.object.created_at.nil?
-                = u.input :subscribed, as: :boolean, input_html: { checked: 'checked' }, label: Project.find(u.object.project_id).name
-              - else
-                = u.input :subscribed, as: :boolean, label: Project.find(u.object.project_id).name
-              = u.input :project_id, as: :hidden
-              = u.input :user_id, as: :hidden, input_html: { class: 'akakak' }
-              = u.input :notification_type_id, as: :hidden
+          = f.semantic_fields_for :unsubscribes, @subscribed_to_updates do |u|
+            -  if u.object.created_at.nil?
+              = u.input :subscribed, as: :boolean, input_html: { checked: 'checked' }, label: I18n.t('users.unsubscribes.updates')
+            - else
+              = u.input :subscribed, as: :boolean, label: I18n.t('users.unsubscribes.updates')
+          - if @unsubscribes
+            = f.semantic_fields_for :unsubscribes, @unsubscribes do |u|
+              = u.inputs do
+                -  if u.object.created_at.nil?
+                  = u.input :subscribed, as: :boolean, input_html: { checked: 'checked' }, label: Project.find(u.object.project_id).name
+                - else
+                  = u.input :subscribed, as: :boolean, label: Project.find(u.object.project_id).name
+                = u.input :project_id, as: :hidden
+                = u.input :user_id, as: :hidden, input_html: { class: 'akakak' }
+                = u.input :notification_type_id, as: :hidden
 
         p= f.submit t('users.current_user_fields.update_social_info'), :class => 'btn', :id => "unsubscribe_submit"

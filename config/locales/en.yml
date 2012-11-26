@@ -655,6 +655,7 @@ en:
       your_reward: "Your reward"
     unsubscribes:
       title: "Choose from which projects you want to receive update notifications:"
+      updates: "I want to receive project updates"
     current_user_fields:
       updated: "Your information has been updated"
       update_social_info: "Update info"
