@@ -107,6 +107,13 @@ Catarse::Application.routes.draw do
   match "/pages/:permalink" => "curated_pages#show", as: :curated_page
 
   namespace :adm do
+    resources :projects do
+      member do
+        put 'approve'
+        put 'reject'
+        put 'push_to_draft'
+      end
+    end
     resources :backers do
       member do
         put 'confirm'
