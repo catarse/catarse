@@ -73,6 +73,7 @@ class User < ActiveRecord::Base
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
+  scope :subscribed_to_updates, where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id IS NULL AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
   scope :subscribed_to_project, ->(project_id){ who_backed_project(project_id).where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id) }
   scope :most_backeds, ->{
     joins(:backs).select(
@@ -200,11 +201,21 @@ class User < ActiveRecord::Base
     backs.confirmed.not_anonymous.count
   end
 
-  def backed_projects
-    backs.confirmed.each do |b|
-      projects << b.project
+  def updates_subscription
+    unsubscribes.find_or_initialize_by_project_id_and_notification_type_id(nil, NotificationType.where(name: 'updates').last.id)
+  end
+
+  def project_unsubscribes
+    backed_projects.map do |p|
+      unsubscribes.find_or_initialize_by_project_id_and_notification_type_id(p.id, NotificationType.where(name: 'updates').last.id)
     end
-    projects.uniq
+  end
+
+  def backed_projects
+    projects_list = backs.confirmed.map do |b|
+      b.project
+    end
+    projects_list.uniq
   end
 
   def backs_text
