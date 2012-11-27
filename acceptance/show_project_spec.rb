@@ -12,7 +12,6 @@ feature "Show Project Feature" do
 
     page.should have_css(%@meta [property="og:title"][content="#{project.name}"]@)
     page.should have_css(%@meta [property="og:type"][content="cause"]@)
-    page.should have_css(%@meta [property="og:url"][content="#{I18n.t('site.base_url')}#{project_path(project)}"]@)
     page.should have_css(%@meta [property="og:image"][content="#{project.display_image}"]@)
     page.should have_css(%@meta [property="og:site_name"][content="#{I18n.t('site.name')}"]@)
     page.should have_css(%@meta [property="og:description"][content="#{project.about}"]@)
