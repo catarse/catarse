@@ -640,6 +640,7 @@ en:
         comments: Comments
         credits: Credits
         settings: Settings
+        unsubscribes: Notifications
       user_social:
         email: "Send me an email"
         facebook: "Profile on facebook"
@@ -652,6 +653,9 @@ en:
       title: "Projects %{name} has backed"
       title_current_user: "Projects I've backed"
       your_reward: "Your reward"
+    unsubscribes:
+      title: "Choose from which projects you want to receive update notifications:"
+      updates: "I want to receive project updates"
     current_user_fields:
       updated: "Your information has been updated"
       update_social_info: "Update info"
