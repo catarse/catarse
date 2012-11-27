@@ -36,6 +36,27 @@
             line-height: 21px
             padding-top: 20px
             margin: 0 auto
+        .bootstrap-alert
+          float: right
+          position: relative
+          span
+            background: url($images_path+'box_alert.png') left top no-repeat
+            width: 33px
+            height: 38px
+            position: absolute
+            right: 276px
+            top: 30px
+          .alert
+            float: right
+            width: 250px
+            background-color: #F7F7F7
+            border: solid 1px #EDEDED
+            +border-radius (0px)
+            font-family: "Lato-Regular"
+            font-size: 13px
+            line-height: 21px
+            color: #666666
+            padding: 10px 10px 10px 40px
       #project_warning
         .alert
           font-size: 15px
@@ -49,7 +70,10 @@
             margin-bottom: 30px
             padding-bottom: 40px
             width: 600px
+            width: 100%
             border-bottom: 1px dotted #CCCCCC
+            .input-prepend
+              float: left
             .heart
               display: block
               margin-left: 40px
@@ -71,6 +95,33 @@
               font-size: 18px
               color: #F28D0B
               line-height: 21px
+          .submit
+            .send
+              position: relative
+              float: left
+              margin-left: 30px
+              .btn_send
+                float: left
+                width: 240px
+                background: #F28E0B url($images_path+'button_send.png') 15px 11px no-repeat
+                border: solid 1px #C8760A
+                height: 49px
+                padding-top: 13px
+                text-transform: uppercase
+                color: white
+                text-shadow: 1px 1px #C8760A
+                font-family: "Lato-Bold"
+                font-size: 15px
+                text-indent: 24px
+                +border-radius(15px)
+              span
+                color: white
+                text-shadow: 1px 1px #C8760A
+                font-family: "Lato-Italic"
+                font-size: 14px
+                position: absolute
+                top: 32px
+                left: 68px
           .accept
             padding-top: 20px
             padding-bottom: 20px
@@ -91,6 +142,6 @@
             font-family: Arial
             line-height: 21px
             color: #666666
-            margin-left: 182px
-            padding-bottom: 20px   
+            padding-bottom: 20px  
+            width: 400px 
 

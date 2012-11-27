@@ -87,7 +87,7 @@ class Project < ActiveRecord::Base
   end
 
   def subscribed_users
-    User.subscribed_to_project(self.id)
+    User.subscribed_to_updates.subscribed_to_project(self.id)
   end
 
   def decorator

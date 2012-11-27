@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource except: :update_attribute_on_the_spot
   inherit_resources
-  actions :show, :update
+  actions :show, :update, :unsubscribe_update
   can_edit_on_the_spot
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   respond_to :json, :only => [:backs, :projects, :request_refund]
@@ -12,11 +12,13 @@ class UsersController < ApplicationController
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
       @credits = @user.backs.can_refund.all
+      @subscribed_to_updates = @user.updates_subscription
+      @unsubscribes = @user.project_unsubscribes
     }
   end
 
   def update
-    update! do 
+    update! do
       flash[:notice] = t('users.current_user_fields.updated')
       return redirect_to user_path(@user, :anchor => 'settings')
     end
