@@ -520,6 +520,7 @@ pt:
       subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
       title: "Agooora sim! Envie seu projeto, campeão."
       legend_html: "Preencha o formulário abaixo da forma mais completa objetiva, pois quanto mais completo <br>nós recebermos o seu projeto, mais rápido ele entrará na plataforma online."
+      tags_html: "Tags HTML!!! Traduzir AQUI"
     twitter:
       take_a_look: "Confira o projeto %{name} no @Catarse_"
     video_embed:
