@@ -28,20 +28,9 @@ feature "Send Project Feature", :driver => :selenium do
       end
     end
 
-    uncheck 'accept'
-    find_button('Quero enviar meu projeto')['disabled'].should == 'true'
-    check 'accept'
-    find_button('Quero enviar meu projeto')['disabled'].should be_nil
-    click_button 'Quero enviar meu projeto'
-
-    sleep 2
-    verify_translations
-
-    within '.title' do
-      within 'h1' do
-        page.should have_content("Envie seu projeto")
-      end
-    end
+    click_link I18n.t('static.guidelines.submit')
+    sleep 1
+    click_link I18n.t('static.guidelines_tips.submit')
 
     current_path.should == start_projects_path
     Factory(:notification_type, :name => 'project_received')
