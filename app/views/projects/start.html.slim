@@ -15,7 +15,7 @@
               .input-prepend
                 span.add-on R$
                 = text_field_tag 'how_much_you_need'
-                p.inline-hints= t('.how_much_hint_html', :href => "http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho/")
+                p.inline-hints.much= t('.how_much_hint_html', :href => "http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho/")
               .bootstrap-alert
                 span
                 .alert
@@ -39,6 +39,10 @@
               = label_tag 'rewards', t('.rewards')
               = text_area_tag 'rewards'
               p.inline-hints= t('.rewards_hint')
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.rewards_important')            
             .input
               = image_tag "catarse/icon_vimeo.png", :class => 'vimeo'
               = label_tag 'video', t('.video')
@@ -64,6 +68,11 @@
               = image_tag "catarse/icon_logo.png", :class => 'logo'
               = label_tag 'know_us_via', t('.know_us_via')
               = text_area_tag 'know_us_via'
+              p.inline-hints= t('.know_us_hint')
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.know_us_important')               
             .input
               = label_tag 'contact', t('.contact')
               .input-prepend
@@ -80,10 +89,5 @@
               .bootstrap-twitter
                 .send
                   = submit_tag t('.submit'), :disabled => true, :class => 'btn_send'
-                  span = t('.send_project')
-
-      #project_warning
-        .bootstrap-alert
-          .alert.alert-info
-            = t('.project_warning.content_html', :link => link_to(t('.project_warning.help_link'), "#{t('site.blog')}?p=2816685141", :target => :_blank))    
+                  span = t('.send_project')    
     .clearfix
