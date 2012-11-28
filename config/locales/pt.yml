@@ -557,6 +557,7 @@ pt:
     base_url: "http://catarse.me"
     blog: "http://blog.catarse.me/"
     email:
+      no_reply: "no-reply@catarse.me"
       contact: contato@catarse.me
       payments: financeiro@catarse.me
       projects: projetos@catarse.me
