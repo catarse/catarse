@@ -36,6 +36,8 @@ describe Update do
       Notification.expects(:create_notification).with(:updates, backer.user,
         :project_name => backer.project.name,
         :project_owner => backer.project.user.display_name,
+        :project_owner_email => backer.project.user.email,
+        :from => I18n.t('site.email.no_reply'),
         :update_title => @update.title,
         :update => @update,
         :update_comment => @update.email_comment_html).once

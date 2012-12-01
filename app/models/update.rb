@@ -22,7 +22,7 @@ class Update < ActiveRecord::Base
         '&' => '&amp;',
         '>' => '&gt;',
         '<' => '&lt;',
-        '"' => '"' 
+        '"' => '"'
       }
       image
       redcloth :target => :_blank
@@ -36,6 +36,8 @@ class Update < ActiveRecord::Base
       Notification.create_notification :updates, user,
         :project_name => project.name,
         :project_owner => project.user.display_name,
+        :project_owner_email => project.user.email,
+        :from => I18n.t('site.email.no_reply'),
         :update_title => title,
         :update => self,
         :update_comment => email_comment_html

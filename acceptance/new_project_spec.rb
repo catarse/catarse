@@ -3,20 +3,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature "New Project Feature", :driver => :selenium do
-
-  scenario "I'm not logged in and I want to send a project. It should ask for login." do
-    visit homepage
-    click_link 'envie'
-    current_path.should == guidelines_path
-
-    within ".bootstrap-form" do
-      check I18n.t('static.guidelines.accept')
-      click_button I18n.t('static.guidelines.submit')
-    end
-    verify_translations
-    current_path.should == login_path
-  end
-
   scenario "I am logged in and I want to send a project" do
 
     c = Factory(:category)

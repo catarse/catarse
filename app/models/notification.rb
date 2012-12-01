@@ -14,8 +14,8 @@ class Notification < ActiveRecord::Base
   def self.create_notification(notification_type_name, user, mail_params = {})
     if (nt = find_notification notification_type_name)
       create! user: user,
-        project: (mail_params[:project].nil? ? nil : mail_params[:project]),
-        backer: (mail_params[:backer].nil? ? nil : mail_params[:backer]),
+        project: mail_params[:project],
+        backer: mail_params[:backer],
         notification_type: nt,
         mail_params: mail_params,
         text: 'this will be removed'
