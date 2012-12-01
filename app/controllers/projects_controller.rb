@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
         unless collection_projects.empty?
           if current_user and current_user.recommended_project
             @recommended_project = current_user.recommended_project
-            collection_projects = collection_projects.where("id != #{current_user.recommended_project.id}").where("category_id != #{@recommended_project.category_id}")
+            collection_projects = collection_projects.where("id != ? AND category_id != ?", current_user.recommended_project.id, @recommended_project.category_id)
           end
           @first_project, @second_project, @third_project, @fourth_project = collection_projects.all
         end
@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
           Project.visible.search(params[:search])
         end
         # After the search params we order by ID to avoid ties and therefore duplicate items in pagination
-        respond_with(@projects.order('id').page(params[:page]).per(6))
+        respond_with(@projects.order('finished, id DESC').page(params[:page]).per(6))
       end
     end
   end
