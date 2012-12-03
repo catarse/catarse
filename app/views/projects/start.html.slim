@@ -24,7 +24,7 @@
               = image_tag "catarse/icon_tag.png", :class => 'tag'
               = label_tag 'category', t('.category')
               = select_tag 'category', options_from_collection_for_select(Category.all, "name", "name"), include_blank: true
-              p.inline-hints= t('.tags_html')
+              p.inline-hints= t('.tags_hint')
               .bootstrap-alert
                 span
                 .alert
@@ -68,11 +68,7 @@
               = image_tag "catarse/icon_logo.png", :class => 'logo'
               = label_tag 'know_us_via', t('.know_us_via')
               = text_area_tag 'know_us_via'
-              p.inline-hints= t('.know_us_hint')
-              .bootstrap-alert
-                span
-                .alert
-                  .important= t('.know_us_important')               
+              p.inline-hints= t('.know_us_hint')              
             .input
               = label_tag 'contact', t('.contact')
               .input-prepend
