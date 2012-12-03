@@ -1,7 +1,7 @@
 [data-controller="projects"][data-action="start"]
   span.add-on
     font-family: 'Lato-Regular'
-    margin-top: -3px
+    margin-top: -2px
     color: $gryn_almost_ccc
   #loading
     display: none
@@ -74,6 +74,7 @@
             border-bottom: 1px dotted #CCCCCC
             .input-prepend
               float: left
+              width: 41%
             .heart
               display: block
               margin-left: 40px
@@ -96,32 +97,33 @@
               color: #F28D0B
               line-height: 21px
           .submit
-            .send
-              position: relative
-              float: left
-              margin-left: 30px
-              .btn_send
-                float: left
+            .bootstrap-twitter
+              width: 100%
+              .send
+                position: relative
+                margin: 0 auto
                 width: 240px
-                background: #F28E0B url($images_path+'button_send.png') 15px 11px no-repeat
-                border: solid 1px #C8760A
-                height: 49px
-                padding-top: 13px
-                text-transform: uppercase
-                color: white
-                text-shadow: 1px 1px #C8760A
-                font-family: "Lato-Bold"
-                font-size: 15px
-                text-indent: 24px
-                +border-radius(15px)
-              span
-                color: white
-                text-shadow: 1px 1px #C8760A
-                font-family: "Lato-Italic"
-                font-size: 14px
-                position: absolute
-                top: 32px
-                left: 68px
+                .btn_send
+                  width: 240px
+                  background: #F28E0B url($images_path+'button_send.png') 15px 12px no-repeat
+                  border: solid 1px #C8760A
+                  height: 62px
+                  padding: 0px 0px 11px 0px
+                  text-transform: uppercase
+                  color: white
+                  text-shadow: 1px 1px #C8760A
+                  font-family: "Lato-Bold"
+                  font-size: 15px
+                  text-indent: 36px
+                  +border-radius(15px)
+                span
+                  color: white
+                  text-shadow: 1px 1px #C8760A
+                  font-family: "Lato-Italic"
+                  font-size: 14px
+                  position: absolute
+                  top: 34px
+                  left: 68px
           .accept
             padding-top: 20px
             padding-bottom: 20px
