@@ -21,7 +21,8 @@
     .bootstrap-alert
       .alert
         .important= t('.important_html', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))
-    = form.input :expires_at, :as => :string
+    /= form.input :expires_at, :as => :string
+    = form.input :online_days, :as => :string
     #project_rewards
       javascript:
         var rewards_count = #{@project.rewards.size}

@@ -1,7 +1,7 @@
 CATARSE.ProjectsShowView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "render", "BackerView", "BackersView", "about", "updates", "backers", "comments", "embed", "isValid", "backWithReward")
+    _.bindAll(this, "showUpNewRewardForm","render", "BackerView", "BackersView", "about", "updates", "backers", "comments", "embed", "isValid", "backWithReward")
     CATARSE.router.route("", "index", this.about)
     CATARSE.router.route("about", "about", this.about)
     CATARSE.router.route("updates", "updates", this.updates)
@@ -36,8 +36,14 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     "keyup form input[type=text],textarea": "validate",
     "click #project_link": "selectTarget",
     "click #project_embed textarea": "selectTarget",
-    "click #rewards .clickable": "backWithReward"
-    //"click #pledge input[type=submit]": "requireLogin"
+    "click #rewards .clickable": "backWithReward",
+    "click .add_new_reward": "showUpNewRewardForm"
+  },  
+
+  showUpNewRewardForm: function(event) {
+    event.preventDefault();
+    $(event.currentTarget).fadeOut('fast');
+    $('.new_reward_content').fadeIn('fast');
   },
 
   UpdatesForm: Backbone.View.extend({
@@ -179,5 +185,4 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   requireLogin: function(event) {
     CATARSE.requireLogin(event)
   }
-
 })
