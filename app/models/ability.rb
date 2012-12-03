@@ -15,7 +15,10 @@ class Ability
       can :manage, :all
     elsif current_user.projects.present? or current_user.manages_projects.present?
       can :manage, Project do |project|
-        current_user.manages_projects.include?(project) or project.user == current_user
+        (current_user.manages_projects.include?(project) || project.user == current_user) && project.draft?
+      end
+      can :update_about, Project do |project|
+        (current_user.manages_projects.include?(project) || project.user == current_user)
       end
       can :manage, Reward do |reward|
         can? :manage, reward.project
