@@ -8,6 +8,10 @@ class Project < ActiveRecord::Base
   include ERB::Util
   include Rails.application.routes.url_helpers
 
+  before_save do
+    expires_at = DateTime.now+online_days.days unless expires_at
+  end
+
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
     :display_pledged, :display_goal,
     :to => :decorator
@@ -65,7 +69,7 @@ class Project < ActiveRecord::Base
 
   search_methods :visible, :recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
 
-  validates_presence_of :name, :user, :category, :about, :headline, :goal, :expires_at, :video_url
+  validates_presence_of :name, :user, :category, :about, :headline, :goal, :video_url
   validates_length_of :headline, :maximum => 140
   validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true
   validates_format_of :permalink, with: /^(\w|-)*$/, :allow_blank => true, :allow_nil => true
