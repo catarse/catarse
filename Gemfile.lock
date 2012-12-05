@@ -46,6 +46,14 @@ GIT
   specs:
     validation_reflection (1.0.0)
 
+GIT
+  remote: git://github.com/ryanb/cancan.git
+  revision: f1cebde51a87be149b4970a3287826bb63c0ac0b
+  ref: f1cebde51a87be149b4970a3287826bb63c0ac0b
+  branch: 2.0
+  specs:
+    cancan (2.0.0.alpha)
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -111,7 +119,6 @@ GEM
       builder (>= 2.0.0)
     brcep (3.2.0)
     builder (3.0.4)
-    cancan (1.6.8)
     capybara (1.1.2)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -495,7 +502,7 @@ DEPENDENCIES
   best_in_place
   bourbon
   brcep
-  cancan
+  cancan!
   capybara (>= 1.0.1)
   carrierwave (~> 0.7.0)
   catarse_mailchimp
