@@ -37,7 +37,7 @@
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
     .section_header
       h1
-        = best_in_place_if(can?(:manage, @project), @project, :name)
+        = best_in_place_if(can?(:update, @project, :name), @project, :name)
       h4= t('projects.project_header.without_city', :category_name => link_to(@project.category.name, explore_path(:anchor => @project.category.name.parameterize)), :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
     .tab_container
       nav#project_menu
@@ -57,7 +57,7 @@
     .main
       #project_content
         #project_updates.content.hide
-          - if can? :manage, @project
+          - if can? :update, @project
             .bootstrap-form
               = semantic_form_for [@project, Update.new(:user_id => current_user.id)] do |form|
                 = form.inputs do
@@ -96,7 +96,7 @@
           .text
             h5= t('.about_title')
             p
-              = best_in_place_if(can?(:update_about, @project), @project, :about, type: :textarea)
+              = best_in_place_if(can?(:update, @project), @project, :about, type: :textarea)
               = render "admin_fields" if current_user and current_user.admin
         .clearfix
         #loading= image_tag "loading.gif"
@@ -110,7 +110,7 @@
               em= t('statistics.backers.subtitle')
             .item.goal
               p= @project.display_pledged
-              - bgoal = best_in_place_if(can?(:manage, @project), @project, :goal, display_as: :display_goal)
+              - bgoal = best_in_place_if(can?(:update, @project, :goal), @project, :goal, display_as: :display_goal)
               em= t('statistics.goal.subtitle', :total => bgoal).html_safe
             .item.time
               p= @project.time_to_go[:time]
@@ -163,7 +163,7 @@
                 = link_to @project.user.other_link, @project.user.other_link, :target => '_blank'
 
         .clearfix
-        - if can?(:manage, @project)
+        - if can?(:update, @project)
           .bootstrap-twitter.bootstrap-form
             = link_to 'Adicionar nova recompensa', 'javascript:void(0);', class: 'btn btn-success pull-right add_new_reward'
             .clearfix
@@ -186,7 +186,7 @@
               em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
               .clearfix
               p
-                = best_in_place_if(can?(:manage, reward), reward, :description, path: [@project, reward], 
+                = best_in_place_if(can?(:create, reward), reward, :description, path: [@project, reward], 
                   type: :textarea,
                   display_was: :display_description)
               - if reward.maximum_backers
@@ -196,13 +196,13 @@
                   - else
                     .limited= t('reward.limited')
                     .remaining
-                      - bir = best_in_place_if(can?(:manage, reward), reward, :maximum_backers, path: [@project, reward])
+                      - bir = best_in_place_if(can?(:update, reward, :maximum_backers), reward, :maximum_backers, path: [@project, reward])
                       = t('reward.display_remaining', :remaining => reward.remaining, :maximum => bir).html_safe
                 .clearfix
-              - elsif can?(:manage, reward)
+              - elsif can?(:update, reward)
                 .maximum_backers.clearfix
                   div style="padding-top: 20px;"
-                    = best_in_place_if(can?(:manage, reward), reward, :maximum_backers, path: [@project, reward], nil: 'Adicionar Limite' )
+                    = best_in_place_if(can?(:update, reward, :maximum_backers), reward, :maximum_backers, path: [@project, reward], nil: 'Adicionar Limite' )
 
 
           .clearfix
