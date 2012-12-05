@@ -499,7 +499,6 @@ pt:
         title: "Faça parte disto e compartilhe este projeto"
     start:
       about: "Descreva seu projeto e como o $ será utilizado"
-      category: "Qual é a categoria do seu projeto?"
       how_much_you_need: "Quanto você pretende arrecadar?"
       how_much_hint_html: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º  e 2º nível de relacionamento): <a href='%{href}'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
       how_much_important: "Lembre-se das taxas cobradas pelo Catarse: 7,5% e do meio de pagamento 5,5%. Basta dividir o seu orçamento final por 0,87."
@@ -507,13 +506,13 @@ pt:
       contact: "Deixe seu email para entrarmos em contato"
       links: "Mais algum link para conhecer mais sobre o seu projeto?"
       links_hint: "Cole aqui links de vídeos, artigos, reportagens, blogs..."
-      tags_html: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
+      category: "Qual é a categoria do seu projeto?"      
+      tags_hint: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
       tags_important: "Confira mais projetos relacionados a sua categoria clicando <a href='%{href}'>aqui!</a>."
       video: "Já tem o video? Manda aí a url!"
       video_hint: " O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
       social: "Canais de Mobilização"
       know_us_via: "Como você conheceu o Catarse?"
-      know_us_important: "É a última pergunta!"
       how_works: "Como pretende mobilizar apoiadores para levantar o $ necessário para a execução?"
       project_warning:
         content_html: "Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}."
