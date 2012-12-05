@@ -2,6 +2,7 @@ class Projects::BackersController < ApplicationController
   inherit_resources
   actions :index, :new, :update_info
   before_filter :load_project
+  skip_before_filter :force_http, only: :review
 
   def update_info
     return unless require_login
@@ -23,8 +24,8 @@ class Projects::BackersController < ApplicationController
       return redirect_to :root
     end
 
-    @review_url = ::Configuration[:secure_review_host] ? 
-      review_project_backers_url(@project, {:host => ::Configuration[:secure_review_host], :protocol => 'https'}) : 
+    @review_url = ::Configuration[:secure_review_host] ?
+      review_project_backers_url(@project, {:host => ::Configuration[:secure_review_host], :protocol => 'https'}) :
       review_project_backers_path(@project)
 
     @title = t('projects.backers.new.title', :name => @project.name)
@@ -63,7 +64,7 @@ class Projects::BackersController < ApplicationController
       current_user.update_attributes params[:user]
       current_user.reload
       return redirect_to params[:payment_method_url]
-    else 
+    else
       if backer.credits
         if current_user.credits < backer.value
           flash[:failure] = t('projects.backers.checkout.no_credits')
