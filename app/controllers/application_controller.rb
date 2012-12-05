@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
                 :fb_admins, :has_institutional_videos?, :institutional_video
   before_filter :set_locale
   before_filter :detect_locale
+  before_filter :force_http
 
   # TODO: Change this way to get the opendata
   before_filter do
@@ -143,4 +144,9 @@ class ApplicationController < ActionController::Base
   def render_404
     render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
   end
+
+  def force_http
+    redirect_to(protocol: 'http') if request.ssl?
+  end
+
 end
