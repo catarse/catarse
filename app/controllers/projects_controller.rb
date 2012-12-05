@@ -2,16 +2,13 @@
 class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
 
+  load_and_authorize_resource
+
   inherit_resources
-  actions :index, :show, :new, :create, :update
   respond_to :html, :except => [:backers]
   respond_to :json, :only => [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, :only => [:backers]
   before_filter :date_format_convert, :only => [:create]
-
-  def udpate
-    update! if can?(:manage, @project)
-  end
 
   def date_format_convert
     # TODO localize here and on the datepicker on project_form.js
