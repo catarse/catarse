@@ -1,5 +1,5 @@
 ActiveAdmin.register CuratedPage do
-  controller.authorize_resource
+  controller.load_and_authorize_resource
   scope :visible
   scope :not_visible
 
