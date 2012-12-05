@@ -12,6 +12,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
     CATARSE.router.route("request_refund/:back_id", "request_refund", this.request_refund)
     this.user = new CATARSE.User($('#user_profile').data("user"))
     this.render()
+    this.toggleProjects();
 
     $('input,textarea').live('keypress', function(e){
       if (e.which == '13' && $("button:contains('OK')").attr('disabled')) {
@@ -41,11 +42,19 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
   events: {
     'click #creditsModal .modal-footer a':'closeCreditsModal',
+    'change #subscribed_check':'toggleProjects',
   },
 
   closeCreditsModal: function(e) {
     e.preventDefault();
     this.$('#creditsModal').modal('hide');
+  },
+
+  toggleProjects: function(e) {
+    checked = this.$("#subscribed_check li label input").prop('checked')
+    this.$(".subscribed_projects li label input").prop("readonly", !checked);
+    checked ? this.$(".subscribed_projects li label").removeClass('disabled') :
+      this.$(".subscribed_projects li label").addClass('disabled')
   },
 
   BackView: CATARSE.ModelView.extend({
