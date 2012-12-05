@@ -17,9 +17,15 @@ class Ability
 
     # NOTE: Project authorizations
     can :create, :projects if current_user.persisted?
-    can :update, :projects do |project|
-      project.user == current_user
+
+    can :update, :projects, :about do |project|
+      project.user == current_user && project.online?
     end
+
+    can :update, :projects do |project|
+      project.user == current_user && ( project.draft? || project.rejected? )
+    end
+
 
 
     # NOTE: User model authorizations
