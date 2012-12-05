@@ -52,7 +52,7 @@ Catarse::Application.routes.draw do
   match "/auth/failure" => "sessions#failure"
   match "/logout" => "sessions#destroy", :as => :logout
   resources :posts, only: [:index, :create]
-  resources :projects, only: [:index, :new, :create, :show, :update] do
+  resources :projects do
     resources :updates, :only => [:index, :create, :destroy]
     resources :rewards
     resources :backers, controller: 'projects/backers' do
