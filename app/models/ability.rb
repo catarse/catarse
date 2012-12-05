@@ -5,29 +5,44 @@ class Ability
   def initialize(current_user)
     current_user ||= User.new
 
-    can :read, User
-    can :manage, User, :id => current_user.id
-    can :request_refund, Backer, :user_id => current_user.id
-    can :backs, User
-    can :projects, User
+    can :read, :all
 
-    if current_user.admin?
-      can :manage, :all
-    elsif current_user.projects.present? or current_user.manages_projects.present?
-      can :manage, Project do |project|
-        (current_user.manages_projects.include?(project) || project.user == current_user) && project.draft?
-      end
-      can :update_about, Project do |project|
-        (current_user.manages_projects.include?(project) || project.user == current_user)
-      end
-      can :manage, Reward do |reward|
-        can? :manage, reward.project
-      end
-      can :manage, Update do |update|
-        can? :manage, update.project
-      end
-    else
-      can :read, :all
+    # NOTE: When admin can access all things ;)
+    can :access, :all if current_user.admin?
+
+    # NOTE: Update model authorizations
+    can :access, :updates do |update|
+      update.project.user_id == current_user.id
     end
+
+    # NOTE: User model authorizations
+    #can :update, User do |user|
+      #user.id == current_user.id
+    #end
+
+    #can :read, User
+    #can :manage, User, :id => current_user.id
+    #can :request_refund, Backer, :user_id => current_user.id
+    #can :backs, User
+    #can :projects, User
+
+    #if current_user.admin?
+      #can :access, :all
+    #elsif current_user.projects.present? or current_user.manages_projects.present?
+      #can :manage, Project do |project|
+        #(current_user.manages_projects.include?(project) || project.user == current_user) && project.draft?
+      #end
+      #can :update_about, Project do |project|
+        #(current_user.manages_projects.include?(project) || project.user == current_user)
+      #end
+      #can :manage, Reward do |reward|
+        #can? :manage, reward.project
+      #end
+      #can :manage, Update do |update|
+        #can? :manage, update.project
+      #end
+    #else
+      #can :read, :all
+    #end
   end
 end
