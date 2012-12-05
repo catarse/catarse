@@ -1,0 +1,87 @@
+= content_for :title, t('.title')
+#page_content
+  .container
+    .static_default
+      .title
+        h1= t('.title')
+        h2= t('.subtitle')
+        h3= t('.introduction')
+        p= t('.legend_html')
+      ul.steps
+        li
+          = image_tag('catarse/bg_send.png')
+          .ico.one
+          span= t('.title_one')
+          p= t('.step_one')
+        li
+          = image_tag('catarse/bg_guardian.jpg')
+          .ico.two
+          span= t('.title_two')
+          p= t('.step_two').html_safe
+        li
+          = image_tag('catarse/bg_air.jpg')
+          .ico.three
+          span= t('.title_three')
+          p= t('.step_three')
+        li.last
+          = image_tag('catarse/bg_money.jpg')
+          .ico.four
+          span= t('.title_four')
+          p= t('.step_four')
+
+      .requirements
+        span= t('.title_requirements')
+        ul.list
+          li.sucessfull
+            span= t('.sucessfull_title')
+            p= t('.sucessfull')
+          li.not_funded_title
+            span= t('.not_funded_title')
+            p= t('.not_funded')
+      
+      .more_questions
+        = t('.more_questions')
+        ul.questions
+          li
+            = image_tag('catarse/icon_limagic.png')
+            strong= t('.title_backer')
+            p= t('.backer')
+          li
+            = image_tag('catarse/icon_limoney.png')
+            strong= t('.title_money')
+            p= t('.money')  
+          li.line                    
+          li
+            = image_tag('catarse/icon_liwork.png')
+            strong= t('.title_rewards')
+            p= t('.rewards')
+          li
+            = image_tag('catarse/icon_licosts.png')
+            strong= t('.title_money')
+            p= t('.money')
+        .why_catarse
+          = image_tag('catarse/label_orange.png')
+          span= t('.other_backers')
+          strong= t('.intro')
+          ul.list_why
+            li
+              label 1
+              p= t('.other_one')
+            li
+              label 2
+              p= t('.other_two')
+            li
+              label 3
+              p= t('.other_three')
+      .bootstrap-form.center_form
+        = form_tag(guidelines_tips_path, :method => :get, :id => 'guidelines_form') do
+          fieldset
+            .bootstrap-twitter
+              .send
+                = link_to t('.submit'), guidelines_tips_path, :class=>'btn_send'
+                span = t('.send_project')
+              .curious
+                = link_to t('.explore_curious'), explore_path, :class=>'btn_explore'
+                span = t('.explore_projects')
+
+    .clearfix
