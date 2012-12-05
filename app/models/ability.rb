@@ -10,10 +10,17 @@ class Ability
     # NOTE: When admin can access all things ;)
     can :access, :all if current_user.admin?
 
-    # NOTE: Update model authorizations
+    # NOTE: Update authorizations
     can :access, :updates do |update|
       update.project.user_id == current_user.id
     end
+
+    # NOTE: Project authorizations
+    can :create, :projects if current_user.persisted?
+    can :update, :projects do |project|
+      project.user == current_user
+    end
+
 
     # NOTE: User model authorizations
     #can :update, User do |user|
