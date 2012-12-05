@@ -1,5 +1,5 @@
 ActiveAdmin.register Reward do
-  controller.authorize_resource
+  controller.load_and_authorize_resource
 
   index do
     column :project_name do |reward|
