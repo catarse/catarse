@@ -12,34 +12,17 @@ describe UpdatesController do
     end
   end
 
-  shared_examples_for "DELETE updates" do |raise_ex = false, exception = CanCan::Unauthorized |
+  shared_examples_for "DELETE updates" do |status = 200|
     describe "DELETE destroy" do
-      if raise_ex
-        it 'should raise a cancan exception' do
-          lambda {
-            delete :destroy, :project_id => update.project.id, :id => update.id, :locale => 'pt' 
-          }.should raise_exception exception
-        end
-      else
-        before { delete :destroy, :project_id => update.project.id, :id => update.id, :locale => 'pt' }
-        its(:status) { should == 200}
-      end
+      before { delete :destroy, :project_id => update.project.id, :id => update.id, :locale => 'pt' }
+      its(:status) { should == status}
     end
   end
 
-  shared_examples_for "CREATE updates" do |raise_ex = false, exception = CanCan::Unauthorized|
+  shared_examples_for "CREATE updates" do |total_updates = 0|
     describe "POST create" do
-      if raise_ex
-        it 'should raise a cancan exception' do
-          lambda{ 
-            post :create, :project_id => update.project.id, :locale => 'pt', :update => {:title => 'title', :comment => 'update comment'} 
-          }.should raise_exception exception
-        end
-      else
-        before{ post :create, :project_id => update.project.id, :locale => 'pt', :update => {:title => 'title', :comment => 'update comment'} }
-        it{ should redirect_to project_path(update.project, :anchor => 'updates') }
-        it{ Update.where(:user_id => user.id, :project_id => update.project.id).count.should == 1 }
-      end
+      before{ post :create, :project_id => update.project.id, :locale => 'pt', :update => {:title => 'title', :comment => 'update comment'} }
+      it{ Update.where(:user_id => user.id, :project_id => update.project.id).count.should == total_updates }
     end
   end
 
@@ -51,15 +34,15 @@ describe UpdatesController do
 
     it_should_behave_like "DELETE updates"
 
-    it_should_behave_like "CREATE updates"
+    it_should_behave_like "CREATE updates", 1
   end
 
   context 'When user is a guest' do
     it_should_behave_like "READ updates"
 
-    it_should_behave_like "DELETE updates", true, CanCan::Unauthorized
+    it_should_behave_like "DELETE updates", 302
 
-    it_should_behave_like "CREATE updates", true, CanCan::Unauthorized
+    it_should_behave_like "CREATE updates"
   end
 
   context 'When user is project_owner' do
@@ -69,7 +52,7 @@ describe UpdatesController do
 
     it_should_behave_like "DELETE updates"
 
-    it_should_behave_like "CREATE updates"
+    it_should_behave_like "CREATE updates", 1
   end
 
   context "When user is a registered user but don't the project owner" do
@@ -77,9 +60,9 @@ describe UpdatesController do
 
     it_should_behave_like "READ updates"
 
-    it_should_behave_like "DELETE updates", true, CanCan::Unauthorized
+    it_should_behave_like "DELETE updates", 302
 
-    it_should_behave_like "CREATE updates", true, CanCan::Unauthorized
+    it_should_behave_like "CREATE updates", 0
   end
 
 end

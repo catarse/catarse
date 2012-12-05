@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  enable_authorization unless :devise_controller?
+
+  rescue_from CanCan::Unauthorized do |exception|
+    if request.env["HTTP_REFERER"]
+      redirect_to :back, :alert => exception.message
+    else
+      redirect_to root_path, :alert => exception.message
+    end
+  end
+
   helper_method :current_user, :replace_locale, :namespace,
                 :fb_admins, :has_institutional_videos?, :institutional_video
   before_filter :set_locale
@@ -143,4 +153,5 @@ class ApplicationController < ActionController::Base
   def render_404
     render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
   end
+
 end
