@@ -52,8 +52,9 @@
                 p= t('.tip_eight')
       .guide
         .guide_download
-          = image_tag('catarse/box_download.png')
-          p= t('.guide')
+          = link_to '/guia_realizadores.pdf' do
+            = image_tag('catarse/box_download.png')
+            p= t('.guide')
 
       .bootstrap-form.center_form
         fieldset
