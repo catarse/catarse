@@ -1,6 +1,7 @@
 class RewardsController < ApplicationController
-  inherit_resources
   load_and_authorize_resource
+  inherit_resources
+  actions :index, :create, :update, :destroy
   respond_to :html, :json
 
   def index
@@ -24,11 +25,7 @@ class RewardsController < ApplicationController
   protected
 
   def begin_of_association_chain
-    if current_user.admin
-      Project.find(params[:project_id])
-    else
-      current_user.projects.find(params[:project_id])
-    end
+    Project.find(params[:project_id])
   end
 
 end
