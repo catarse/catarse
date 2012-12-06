@@ -22,6 +22,10 @@ class RewardsController < ApplicationController
     end
   end
 
+  def destroy
+    destroy! { project_path(resource.project) }
+  end
+
   protected
 
   def begin_of_association_chain

@@ -179,11 +179,15 @@
         #rewards
           - @rewards.each do |reward|
             div[class="box #{(can?(:update, reward) ? 'clickable_owner' : '')} #{(@project.can_back? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
+              - if can?(:destroy, reward)
+                .bootstrap-twitter
+                  = link_to [@project, reward], class: 'btn btn-mini pull-right btn-danger', style: 'margin-right: -17px;', method: :delete, confirm: 'You are sure?' do
+                    i.icon-trash.icon-white
               = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
               - if reward.sold_out?
-                span.sold_out
+                span.icon.sold_out
               - else
-                span.avaliable
+                span.icon.avaliable
               - bip_on_value = best_in_place_if(can?(:update, reward, :minimum_value), reward, :minimum_value, path: [@project, reward], display_as: :display_minimum)
               h2= t('projects.rewards.reward_title', :minimum => bip_on_value).html_safe
               em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
