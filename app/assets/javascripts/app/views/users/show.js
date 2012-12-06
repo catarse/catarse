@@ -43,6 +43,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
   events: {
     'click #creditsModal .modal-footer a':'closeCreditsModal',
     'change #subscribed_check':'toggleProjects',
+    'click .subscribed_projects li label input':'toggleCheckboxes',
   },
 
   closeCreditsModal: function(e) {
@@ -50,9 +51,12 @@ CATARSE.UsersShowView = Backbone.View.extend({
     this.$('#creditsModal').modal('hide');
   },
 
+  toggleCheckboxes: function(e) {
+    return this.$("#subscribed_check li label input").prop('checked')
+  },
+
   toggleProjects: function(e) {
-    checked = this.$("#subscribed_check li label input").prop('checked')
-    this.$(".subscribed_projects li label input").prop("readonly", !checked);
+    checked = this.toggleCheckboxes()
     checked ? this.$(".subscribed_projects li label").removeClass('disabled') :
       this.$(".subscribed_projects li label").addClass('disabled')
   },
