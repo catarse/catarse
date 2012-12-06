@@ -504,7 +504,7 @@ pt:
       links_hint: "Cole aqui links de vídeos, artigos, reportagens, blogs..."
       category: "Qual é a categoria do seu projeto?"      
       tags_hint: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
-      tags_important: "Confira mais projetos relacionados a sua categoria clicando <a href='%{href}'>aqui!</a>."
+      tags_important: "Confira mais projetos relacionados a sua categoria clicando <a href='%{href}' target='_blank'>aqui!</a>."
       video: "Já tem o video? Manda aí a url!"
       video_hint: " O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
       social: "Canais de Mobilização"
