@@ -496,7 +496,7 @@ pt:
     start:
       about: "Descreva seu projeto e como o $ será utilizado"
       how_much_you_need: "Quanto você pretende arrecadar?"
-      how_much_hint_html: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º  e 2º nível de relacionamento): <a href='%{href}'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
+      how_much_hint_html: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º  e 2º nível de relacionamento): <a href='%{href}' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
       how_much_important: "Lembre-se das taxas cobradas pelo Catarse: 7,5% e do meio de pagamento 5,5%. Basta dividir o seu orçamento final por 0,87."
       about_hint: "Conte-nos um pouco sobre sua inspiração para realizar o projeto, sua história e o que será entregue ao final. Seja sucinto e fuja daquelas formalidades de editais. Nada de OBJETIVO, JUSTIFICATIVA, PÚBLICO-ALVO... Presenteie seus leitores com algo que mexa com eles e seja muito transparente em relação a expectativa sobre o projeto."
       contact: "Deixe seu email para entrarmos em contato"
@@ -652,7 +652,7 @@ pt:
       sucessfull_title: "Se o projeto atingir ou superar a meta de arrecadação..."
       sucessfull: "O projeto é considerado bem-sucedido! O realizador recebe o dinheiro e o contato de todos os apoiadores."
       not_sucess_title: "Se o projeto não atingir a meta..."
-      not_sucess: "Você recebe o valor do apoio integralmente na forma de créditos (para apoiar outro projeto). Se isso não te agradar, você pode solicitar o seu dinheiro de volta, segundo as regras do termo de uso."
+      not_sucess: "Você recebe o valor do apoio integralmente na forma de créditos (para apoiar outro projeto). Se isso não te agradar, você pode solicitar o seu dinheiro de volta, segundo as regras do <a href='%{terms}' target='_blank'>termo de uso</a>."
       title_not_funded: "Se o projeto não atingir a meta, como utilizo meus créditos?"
       not_funded: "Você receberá seus créditos no seu perfil no Catarse. No momento em que escolher outro projeto para apoiar, na tela de selecionar a recompensa, terá um campo para utilizar o seu crédito."
       more_questions: "Tô louco pra apoiar um projeto, tem mais alguma coisa que preciso saber?"
