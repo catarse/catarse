@@ -675,6 +675,17 @@ pt:
       send_project: "Quero enviar meu projeto"
       explore_curious: "Tâmo junto!"
       explore_projects: "Quero apoiar um projeto"
+    guidelines_start:
+      title: "Como Funciona o Catarse"
+      subtitle: "Conheça melhor o que é o Catarse."
+      introduction_html: "O Catarse é um espaço de trocas entre indivíduos que, juntos, <br>viabilizam a realização de projetos criativos."
+      legend_html: "Acreditamos que conectar pessoas que compartilham valor a respeito de uma causa, uma ideia, um projeto é uma das melhores formas de fazer com que elas se tornem realidade. <br><br> Seja muito bem-vindo! Esse espaço é tão seu quanto nosso, afinal, Catarse acontece, diariamente,  do encontro de pessoas em busca de novos caminhos para dar vida a mais iniciativas da própria sociedade. Entendemos ser essa uma alternativa  a recursos governamentais, ao patrocínio de empresas e ao não dos bancos. =D"
+      submit: "Enviar um projeto"
+      send_project: "Saiba como enviar seu projeto"
+      explore_curious: "Apoiar um projeto"
+      explore_projects: "Saiba como apoiar um projeto"
+
+
     privacy:
       title: "Política de privacidade"
     terms:
