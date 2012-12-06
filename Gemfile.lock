@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/devton/catarse_moip.git
-  revision: 4b316bb7b5e6464014d553d0c3482b41d8313f6a
+  revision: e2298bf50d1c0d1bed918b894cc8dd9046f11b24
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/devton/catarse_paypal_express.git
-  revision: 1aa220c9cfe429ab9ead1f879888a91347f0d900
+  revision: 5e79e04b8bea2f1b43279ddc0f70c0d559a7be73
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -104,7 +104,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bourbon (2.1.1)
       sass (>= 3.1)
-    braintree (2.20.0)
+    braintree (2.21.0)
       builder (>= 2.0.0)
     brcep (3.2.0)
     builder (3.0.4)
