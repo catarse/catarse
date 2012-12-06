@@ -37,6 +37,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     "click #project_link": "selectTarget",
     "click #project_embed textarea": "selectTarget",
     "click #rewards .clickable": "backWithReward",
+    "click #rewards .clickable_owner span.avaliable": "backWithReward",
     "click .add_new_reward": "showUpNewRewardForm"
   },  
 
