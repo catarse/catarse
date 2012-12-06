@@ -181,13 +181,14 @@
                 span.sold_out
               - else
                 span.avaliable
-              h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum)
+              - bip_on_value = best_in_place_if(can?(:update, reward, :minimum_value), reward, :minimum_value, path: [@project, reward], display_as: :display_minimum)
+              h2= t('projects.rewards.reward_title', :minimum => bip_on_value).html_safe
               em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
               .clearfix
               p
                 = best_in_place_if(can?(:create, reward), reward, :description, path: [@project, reward], 
                   type: :textarea,
-                  display_was: :display_description)
+                  display_as: :display_description)
               - if reward.maximum_backers
                 .maximum_backers.clearfix
                   - if reward.sold_out?
