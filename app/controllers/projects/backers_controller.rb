@@ -2,7 +2,7 @@ class Projects::BackersController < ApplicationController
   inherit_resources
   actions :index, :new, :update_info
   before_filter :load_project
-  skip_before_filter :force_http, only: :review
+  skip_before_filter :force_http, only: [:review, :update_info]
 
   def update_info
     return unless require_login
