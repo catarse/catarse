@@ -13,9 +13,12 @@ describe UsersController do
   describe "PUT update" do
     before do
       request.session[:user_id] = user.id
-      put :update, :id => user.id, :locale => 'pt', :twitter => 'test'
+      put :update, id: user.id, locale: 'pt', user: { twitter: 'test' }
     end
-    it{ should redirect_to user_path(user, :anchor => 'settings') }
+    it {
+      user.reload
+      user.twitter.should ==  'test'
+    }
   end
 
   describe "GET show" do
@@ -30,10 +33,11 @@ describe UsersController do
 
   describe "POST request_refund" do
     context "without user" do
-      it 'should raise a exception' do
-        lambda {
-          post :request_refund, { id: user.id, back_id: backer.id }
-        }.should raise_exception CanCan::AccessDenied, 'You are not authorized to access this page.'
+      it "should redirect when don't have permission" do
+        post :request_refund, { id: user.id, back_id: backer.id }
+        backer.reload
+        backer.requested_refund.should be_false
+        response.should be_redirect
       end
     end
 

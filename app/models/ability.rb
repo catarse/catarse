@@ -42,6 +42,20 @@ class Ability
       reward.project.user == current_user
     end
 
+    # NOTE: User authorizations
+    can [:update, :request_refund, :credits], :users  do |user|
+      current_user == user
+    end
+
+    can :update, :users, :admin do |user|
+      current_user.admin
+    end
+
+    # NOTE: Backer authorizations
+    can :request_refund, :backers do |backer|
+      backer.user == current_user
+    end
+
     # NOTE: When admin can access all things ;)
     can :access, :all if current_user.admin?
 
