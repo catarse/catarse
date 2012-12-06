@@ -7,9 +7,6 @@ class Ability
 
     can :read, :all
 
-    # NOTE: When admin can access all things ;)
-    can :access, :all if current_user.admin?
-
     # NOTE: Update authorizations
     can :access, :updates do |update|
       update.project.user_id == current_user.id
@@ -25,6 +22,9 @@ class Ability
     can :update, :projects do |project|
       project.user == current_user && ( project.draft? || project.rejected? )
     end
+
+    # NOTE: When admin can access all things ;)
+    can :access, :all if current_user.admin?
 
 
 
