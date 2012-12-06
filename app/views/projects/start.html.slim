@@ -28,7 +28,7 @@
               .bootstrap-alert
                 span
                 .alert
-                  .important= t('.tags_important', :href => "http://www.catarse.me/explore")
+                  .important= t('.tags_important', :href => "http://www.catarse.me/explore").html_safe
             .input
               = image_tag "catarse/icon_calc.png", :class => 'calc'
               = label_tag 'about', t('.about')
