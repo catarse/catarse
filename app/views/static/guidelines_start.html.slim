@@ -1,0 +1,21 @@
+= content_for :title, t('.title')
+#page_content
+  .container
+    .static_default
+      .title
+        h1.backer= t('.title')
+        h2.backer= t('.subtitle')
+        h3.backer= t('.introduction')
+        p= t('.legend_html')
+
+      .bootstrap-form.center_form.backer
+        = form_tag(guidelines_tips_path, :method => :get, :id => 'guidelines_form') do
+          fieldset
+            .bootstrap-twitter
+              .send
+                = link_to t('.submit'), guidelines_tips_path, :class=>'btn_send backer'
+                span = t('.send_project')
+              .curious
+                = link_to t('.explore_curious'), explore_path, :class=>'btn_explore backer'
+                span = t('.explore_projects')
+    .clearfix
