@@ -77,6 +77,9 @@
         #project_about.content
           .midia
             .video
+              - if can?(:update, @project, :video_url)
+                p
+                  = best_in_place_if(can?(:update, @project, :video_url), @project, :video_url)
               iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
