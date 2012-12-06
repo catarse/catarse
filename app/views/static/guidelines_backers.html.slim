@@ -37,7 +37,7 @@
             p= t('.sucessfull')
           li.not_funded
             span= t('.not_sucess_title')
-            p= t('.not_sucess')
+            p= t('.not_sucess', terms: terms_path).html_safe
       
       .more_questions
         = t('.more_questions')
