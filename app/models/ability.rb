@@ -12,6 +12,7 @@ class Ability
       update.project.user_id == current_user.id
     end
 
+
     # NOTE: Project authorizations
     can :create, :projects if current_user.persisted?
 
@@ -21,6 +22,24 @@ class Ability
 
     can :update, :projects do |project|
       project.user == current_user && ( project.draft? || project.rejected? )
+    end
+
+
+    # NOTE: Reward authorizations
+    can :create, :rewards do |reward|
+      reward.project.user == current_user
+    end
+
+    can :destroy, :rewards do |reward|
+      reward.backers.empty? && reward.project.user == current_user
+    end
+
+    can :update, :rewards do |reward|
+      reward.backers.empty? && reward.project.user == current_user
+    end
+
+    can :update, :rewards, [:description, :maximum_backers] do |reward|
+      reward.project.user == current_user
     end
 
     # NOTE: When admin can access all things ;)
