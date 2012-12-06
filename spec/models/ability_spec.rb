@@ -13,36 +13,53 @@ describe Ability do
   context "When user is project owner" do
     let(:user) { Factory(:user) }
     let(:project) { Factory(:project, user: user) }
+    let(:reward) { Factory(:reward, project: project) }
 
     it { should_not be_able_to(:access, :all) }
     it { should be_able_to(:update, project) }
     it { should be_able_to(:create, :projects) }
+    it { should be_able_to(:update, reward)}
 
-    describe "our project is approved" do
+    describe "when project is approved" do
       before { project.approve }
+
       it { should_not be_able_to(:update, project, :name) }
       it { should_not be_able_to(:update, project, :goal) }
       it { should_not be_able_to(:update, project, :video_url) }
       it { should be_able_to(:update, project, :about) }
+      it { should be_able_to(:destroy, reward) }
+
+      context "and someone make a back and select a reward" do
+        before { Factory(:backer, project: project, reward: reward) }
+
+        it { should_not be_able_to(:update, reward, :minimum_value) }
+        it { should_not be_able_to(:destroy, reward) }
+        it { should be_able_to(:update, reward, :description) }
+        it { should be_able_to(:update, reward, :maximum_backers) }
+      end
     end
   end
 
   context "When is regular user" do
     let(:user) { Factory(:user) }
     let(:project) { Factory(:project) }
+    let(:reward) { Factory(:reward, project: project) }
 
     it { should_not be_able_to(:access, :all) }
     it { should_not be_able_to(:update, project) }
     it { should be_able_to(:create, :projects) }
+    it { should_not be_able_to(:update, reward)}
   end
 
   context "When is a guest" do
     let(:user) { nil }
     let(:project) { Factory(:project) }
+    let(:reward) { Factory(:reward, project: project) }
 
     it { should_not be_able_to(:access, :all) }
     it { should_not be_able_to(:update, project) }
     it { should_not be_able_to(:create, :projects) }
+    it { should_not be_able_to(:update, reward)}
   end
 end
 
