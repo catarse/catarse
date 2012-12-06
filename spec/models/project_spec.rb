@@ -489,23 +489,23 @@ describe Project do
   describe "#can_back?" do
     subject{ project.can_back? }
 
-    context "when project is not expired nor reject and is visible" do
-      let(:project) { Factory(:project, :visible => true, :rejected => false, :expires_at => Time.now + 1.day) }
+    context "when project is approved" do
+      let(:project) { Factory(:project, state: 'online') }
       it{ should be_true }
     end
 
     context "when project is not visible" do
-      let(:project) { Factory(:project, :visible => false) }
+      let(:project) { Factory(:project) }
       it{ should be_false }
     end
 
     context "when project expired" do
-      let(:project) { Factory(:project, :expires_at => 1.day.ago) }
+      let(:project) { Factory(:project, state: 'waiting_funds') }
       it{ should be_false }
     end
 
     context "when project is rejected" do
-      let(:project) { Factory(:project, :rejected => true) }
+      let(:project) { Factory(:project, state: 'rejected') }
       it{ should be_false }
     end
   end

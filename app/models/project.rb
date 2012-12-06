@@ -168,7 +168,7 @@ class Project < ActiveRecord::Base
   end
 
   def can_back?
-    visible? and not expired? and not rejected?
+    online?
   end
 
   def as_json(options={})
