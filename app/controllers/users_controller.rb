@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   load_and_authorize_resource except: :update_attribute_on_the_spot
   inherit_resources
   actions :show, :update, :unsubscribe_update
-  can_edit_on_the_spot
-  before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
   respond_to :json, :only => [:backs, :projects, :request_refund]
   def show
     show!{
@@ -41,32 +39,15 @@ class UsersController < ApplicationController
   def request_refund
     back = Backer.find(params[:back_id])
     begin
-      refund = Credits::Refund.new(back, current_user)
-      refund.make_request!
-      status = refund.message
+      if can? :request_refund, back
+        refund = Credits::Refund.new(back, current_user)
+        refund.make_request!
+        status = refund.message
+      end
     rescue Exception => e
       status = e.message
     end
 
     render :json => {:status => status, :credits => current_user.reload.display_credits}
-  end
-
-  private
-  def can_update_on_the_spot?
-    user_fields = ["email", "name", "bio", "newsletter", "project_updates"]
-    notification_fields = ["dismissed"]
-    def render_error; render :text => t('require_permission'), :status => 422; end
-    return render_error unless current_user
-    klass, field, id = params[:id].split('__')
-    return render_error unless klass == 'user' or klass == 'notification'
-    if klass == 'user'
-      return render_error unless user_fields.include? field
-      user = User.find id
-      return render_error unless current_user.id == user.id or current_user.admin
-    elsif klass == 'notification'
-      return render_error unless notification_fields.include? field
-      notification = Notification.find id
-      return render_error unless current_user.id == notification.user.id
-    end
   end
 end
