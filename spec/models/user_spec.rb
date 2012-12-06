@@ -12,6 +12,7 @@ describe User do
     it{ should have_many :notifications }
     it{ should have_many :secondary_users }
     it{ should have_many :updates }
+    it{ should have_many :unsubscribes }
     it{ should have_one :user_total }
   end
 
@@ -243,6 +244,47 @@ describe User do
       Factory(:backer, :user => user, :project => p1)
     end
     it{ should == @p2}
+  end
+
+  describe "#updates_subscription" do
+    subject{user.updates_subscription}
+    before { @nt = Factory(:notification_type, name: 'updates') }
+    context "when user is subscribed to all projects" do
+      it{ should be_new_record }
+    end
+    context "when user is unsubscribed from all projects" do
+      before { @u = Factory(:unsubscribe, project_id: nil, notification_type_id: @nt.id, user_id: user.id )}
+      it{ should == @u}
+    end
+  end
+
+  describe "#project_unsubscribes" do
+    subject{user.project_unsubscribes}
+    before do
+      @p1 , @p2 = Factory(:project), Factory(:project)
+      @nt = Factory(:notification_type, name: 'updates')
+    end
+    context "when user is unsubscribed from all projects" do
+      before do
+        Factory(:backer, user: user, project: @p1)
+        Factory(:backer, user: user, project: @p2)
+        @u1 = Factory(:unsubscribe, project_id: @p1.id, notification_type_id: @nt.id, user_id: user.id )
+        @u2 = Factory(:unsubscribe, project_id: @p2.id, notification_type_id: @nt.id, user_id: user.id )
+      end
+      it{ should == [@u2, @u1]}
+    end
+  end
+
+  describe "#backed_projects" do
+    subject{user.backed_projects}
+    before do
+      @p1 , @p2, @p3 = Factory(:project), Factory(:project), Factory(:project)
+      Factory(:backer, user: user, project: @p1)
+      Factory(:backer, user: user, project: @p1)
+      Factory(:backer, user: user, project: @p2)
+      Factory(:backer, user: user, project: @p3)
+    end
+    it{should == [@p3, @p2, @p1]}
   end
 
   describe "#remember_me_hash" do
