@@ -7,13 +7,11 @@ class Ability
 
     can :read, :all
 
-    # NOTE: When admin can access all things ;)
-    can :access, :all if current_user.admin?
-
     # NOTE: Update authorizations
     can :access, :updates do |update|
       update.project.user_id == current_user.id
     end
+
 
     # NOTE: Project authorizations
     can :create, :projects if current_user.persisted?
@@ -25,6 +23,41 @@ class Ability
     can :update, :projects do |project|
       project.user == current_user && ( project.draft? || project.rejected? )
     end
+
+
+    # NOTE: Reward authorizations
+    can :create, :rewards do |reward|
+      reward.project.user == current_user
+    end
+
+    can :destroy, :rewards do |reward|
+      reward.backers.empty? && reward.project.user == current_user
+    end
+
+    can :update, :rewards do |reward|
+      reward.backers.empty? && reward.project.user == current_user
+    end
+
+    can :update, :rewards, [:description, :maximum_backers] do |reward|
+      reward.project.user == current_user
+    end
+
+    # NOTE: User authorizations
+    can [:update, :request_refund, :credits], :users  do |user|
+      current_user == user
+    end
+
+    can :update, :users, :admin do |user|
+      current_user.admin
+    end
+
+    # NOTE: Backer authorizations
+    can :request_refund, :backers do |backer|
+      backer.user == current_user
+    end
+
+    # NOTE: When admin can access all things ;)
+    can :access, :all if current_user.admin?
 
 
 

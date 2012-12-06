@@ -77,6 +77,9 @@
         #project_about.content
           .midia
             .video
+              - if can?(:update, @project, :video_url)
+                p
+                  = best_in_place_if(can?(:update, @project, :video_url), @project, :video_url)
               iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
@@ -174,21 +177,26 @@
                 = f.input :maximum_backers
                 = f.submit :class => 'btn'
         #rewards
-
           - @rewards.each do |reward|
-            div[class="box #{('clickable' if @project.can_back? and not reward.sold_out?)}"]
+            div[class="box #{(can?(:update, reward) ? 'clickable_owner' : '')} #{(@project.can_back? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
+              - if can?(:destroy, reward)
+                .bootstrap-twitter
+                  = link_to [@project, reward], class: 'btn btn-mini pull-right btn-danger', style: 'margin-right: -17px;', method: :delete, confirm: 'You are sure?' do
+                    i.icon-trash.icon-white
               = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
               - if reward.sold_out?
-                span.sold_out
+                span.icon.sold_out
               - else
-                span.avaliable
-              h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum)
+                span.icon.avaliable
+              - bip_on_value = best_in_place_if(can?(:update, reward, :minimum_value), reward, :minimum_value, path: [@project, reward], display_as: :display_minimum)
+              h2= t('projects.rewards.reward_title', :minimum => bip_on_value).html_safe
               em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
               .clearfix
               p
-                = best_in_place_if(can?(:create, reward), reward, :description, path: [@project, reward], 
-                  type: :textarea,
-                  display_was: :display_description)
+                - if can?(:update, reward)
+                  = best_in_place_if(can?(:update, reward), reward, :description, path: [@project, reward], type: :textarea)
+                - else
+                  = reward.display_description
               - if reward.maximum_backers
                 .maximum_backers.clearfix
                   - if reward.sold_out?
