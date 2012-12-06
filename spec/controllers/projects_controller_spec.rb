@@ -6,22 +6,22 @@ describe ProjectsController do
   render_views
   subject{ response }
 
-  shared_examples_for "GET index/show" do
+  shared_examples_for "GET projects index/show" do
     before { get :show, id: project.id, locale: :pt}
     it { should be_success }
   end
 
-  shared_examples_for "GET new" do
+  shared_examples_for "GET projects new" do
     before { get :new, locale: :pt }
     it { should be_success }
   end
 
-  shared_examples_for "GET new without permission" do
+  shared_examples_for "GET projects new without permission" do
     before { get :new, locale: :pt }
     it { should_not be_success }
   end
 
-  shared_examples_for "PUT update" do
+  shared_examples_for "PUT projects update" do
     before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
     it { 
       project.reload
@@ -29,7 +29,7 @@ describe ProjectsController do
     }
   end
 
-  shared_examples_for "PUT update without permission" do
+  shared_examples_for "PUT projects update without permission" do
     before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
     it { 
       project.reload
@@ -37,15 +37,16 @@ describe ProjectsController do
     }
   end
 
-  shared_examples_for "DELETE destroy" do
+  shared_examples_for "DELETE projects destroy" do
     before { delete :destroy, id: project.id, locale: :pt }
     it { Project.all.include?(project).should be_false }
   end
 
-  shared_examples_for "DELETE destroy without permission" do
+  shared_examples_for "DELETE projects destroy without permission" do
     before { delete :destroy, id: project.id, locale: :pt }
     it { Project.all.include?(project).should be_true }
   end
+
 
   context "When current_user is a guest" do
     let(:project) { Factory(:project, permalink: nil) } 
@@ -54,10 +55,10 @@ describe ProjectsController do
       controller.stubs(:current_user).returns(nil)
     end
 
-    it_should_behave_like "GET index/show"
-    it_should_behave_like "GET new without permission"
-    it_should_behave_like "PUT update without permission"
-    it_should_behave_like "DELETE destroy without permission"
+    it_should_behave_like "GET projects index/show"
+    it_should_behave_like "GET projects new without permission"
+    it_should_behave_like "PUT projects update without permission"
+    it_should_behave_like "DELETE projects destroy without permission"
   end
 
   context "When current_user is a project owner" do
@@ -67,10 +68,10 @@ describe ProjectsController do
       controller.stubs(:current_user).returns(project.user)
     end
 
-    it_should_behave_like "GET index/show"
-    it_should_behave_like "GET new"
-    it_should_behave_like "PUT update"
-    it_should_behave_like "DELETE destroy without permission"
+    it_should_behave_like "GET projects index/show"
+    it_should_behave_like "GET projects new"
+    it_should_behave_like "PUT projects update"
+    it_should_behave_like "DELETE projects destroy without permission"
   end
 
   context "When current_user is admin" do
@@ -80,10 +81,10 @@ describe ProjectsController do
       controller.stubs(:current_user).returns(Factory(:user, admin: true))
     end
 
-    it_should_behave_like "GET index/show"
-    it_should_behave_like "GET new"
-    it_should_behave_like "PUT update"
-    it_should_behave_like "DELETE destroy"
+    it_should_behave_like "GET projects index/show"
+    it_should_behave_like "GET projects new"
+    it_should_behave_like "PUT projects update"
+    it_should_behave_like "DELETE projects destroy"
   end
 
   context "When current_user is a registered user" do
@@ -93,10 +94,10 @@ describe ProjectsController do
       controller.stubs(:current_user).returns(Factory(:user, admin: false))
     end
 
-    it_should_behave_like "GET index/show"
-    it_should_behave_like "GET new"
-    it_should_behave_like "PUT update without permission"
-    it_should_behave_like "DELETE destroy without permission"
+    it_should_behave_like "GET projects index/show"
+    it_should_behave_like "GET projects new"
+    it_should_behave_like "PUT projects update without permission"
+    it_should_behave_like "DELETE projects destroy without permission"
   end
 
   context "When project is online" do
