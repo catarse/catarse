@@ -186,9 +186,10 @@
               em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
               .clearfix
               p
-                = best_in_place_if(can?(:create, reward), reward, :description, path: [@project, reward], 
-                  type: :textarea,
-                  display_as: :display_description)
+                - if can?(:update, reward)
+                  = best_in_place_if(can?(:update, reward), reward, :description, path: [@project, reward], type: :textarea)
+                - else
+                  = reward.display_description
               - if reward.maximum_backers
                 .maximum_backers.clearfix
                   - if reward.sold_out?
