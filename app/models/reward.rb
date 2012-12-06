@@ -34,7 +34,7 @@ class Reward < ActiveRecord::Base
     truncate description, :length => 65
   end
   def display_description
-    auto_link(simple_format(r), :html => {:target => :_blank})
+    auto_link(simple_format(description), :html => {:target => :_blank})
   end
   def as_json(options={})
     {
