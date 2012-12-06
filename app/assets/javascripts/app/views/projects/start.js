@@ -52,7 +52,7 @@ CATARSE.ProjectsStartView = Backbone.View.extend({
     $('#accept').click(everything_ok);
     $('input,textarea,select').live('focus', function(){
       $('p.inline-hints').hide();
-      $(this).next('p.inline-hints').show();
+      $(this).parents('.input').find('p.inline-hints').show();
     });
     $('#how_much_you_need').focus();
   }
