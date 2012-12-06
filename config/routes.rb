@@ -39,6 +39,7 @@ Catarse::Application.routes.draw do
   match "/guidelines" => "static#guidelines", :as => :guidelines
   match "/guidelines_tips" => "static#guidelines_tips", :as => :guidelines_tips
   match "/guidelines_backers" => "static#guidelines_backers", :as => :guidelines_backers
+  match "/guidelines_start" => "static#guidelines_start", :as => :guidelines_start
   match "/faq" => "static#faq", :as => :faq
   match "/terms" => "static#terms", :as => :terms
   match "/privacy" => "static#privacy", :as => :privacy
