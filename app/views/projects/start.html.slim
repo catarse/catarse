@@ -38,11 +38,11 @@
               = image_tag "catarse/icon_gift.png", :class => 'gift'
               = label_tag 'rewards', t('.rewards')
               = text_area_tag 'rewards'
-              p.inline-hints= t('.rewards_hint')
               .bootstrap-alert
                 span
                 .alert
                   .important= t('.rewards_important')            
+              p.inline-hints= t('.rewards_hint')
             .input
               = image_tag "catarse/icon_vimeo.png", :class => 'vimeo'
               = label_tag 'video', t('.video')
