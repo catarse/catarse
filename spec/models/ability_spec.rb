@@ -1,5 +1,50 @@
-#require 'spec_helper'
-#require "cancan/matchers"
+require 'spec_helper'
+require "cancan/matchers"
+
+describe Ability do
+  subject { Ability.new(user) }
+
+  context "When user is admin" do
+    let(:user) { Factory(:user, admin: true) }
+
+    it { should be_able_to(:access, :all) }
+  end
+
+  context "When user is project owner" do
+    let(:user) { Factory(:user) }
+    let(:project) { Factory(:project, user: user) }
+
+    it { should_not be_able_to(:access, :all) }
+    it { should be_able_to(:update, project) }
+    it { should be_able_to(:create, :projects) }
+
+    describe "our project is approved" do
+      before { project.approve }
+      it { should_not be_able_to(:update, project, :name) }
+      it { should_not be_able_to(:update, project, :goal) }
+      it { should_not be_able_to(:update, project, :video_url) }
+      it { should be_able_to(:update, project, :about) }
+    end
+  end
+
+  context "When is regular user" do
+    let(:user) { Factory(:user) }
+    let(:project) { Factory(:project) }
+
+    it { should_not be_able_to(:access, :all) }
+    it { should_not be_able_to(:update, project) }
+    it { should be_able_to(:create, :projects) }
+  end
+
+  context "When is a guest" do
+    let(:user) { nil }
+    let(:project) { Factory(:project) }
+
+    it { should_not be_able_to(:access, :all) }
+    it { should_not be_able_to(:update, project) }
+    it { should_not be_able_to(:create, :projects) }
+  end
+end
 
 #describe Ability do
   #let(:user){ Factory(:user) }
