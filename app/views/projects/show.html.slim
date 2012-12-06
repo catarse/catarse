@@ -174,7 +174,6 @@
                 = f.input :maximum_backers
                 = f.submit :class => 'btn'
         #rewards
-
           - @rewards.each do |reward|
             div[class="box #{('clickable' if @project.can_back? and not reward.sold_out?)}"]
               = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
