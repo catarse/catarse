@@ -18,6 +18,9 @@
             &.backer
               background: url($images_path+'icon_guidebacker.png') left top no-repeat
               height: 27px
+            &.start
+              background: url($images_path+'icon_guidelinesstart.png') left top no-repeat
+              height: 40px
           h2
             color: #333333
             font-family: "Lato-Regular"
@@ -27,6 +30,8 @@
             border-bottom: 1px dotted #CCCCCC
             &.backer
               margin-top: -3px
+            &.start
+              margin-top: -17px
           h3
             color: #F28D0B
             font-size: 21px
@@ -37,6 +42,8 @@
             text-align: center
             &.backer
               color: #6BB344
+            &.start
+              color: #E75297
           p
             font-family: "Lato-Italic"
             color: #666666
@@ -45,6 +52,8 @@
             line-height: 21px
             padding-top: 20px
             margin: 0 auto
+            &.start
+              width: 620px
         ul.steps
           float: left
           width: 100%
@@ -226,11 +235,11 @@
 
             .center_form
               text-align: center
-              float: left
+              float: left            
               &.backer
                 margin-top: 40px
               .bootstrap-twitter
-                margin-left: 60px
+                margin-left: 60px                
                 .curious
                   position: relative
                   float: left
@@ -398,6 +407,8 @@
         .center_form
           text-align: center
           float: left
+          &.start
+            margin: 20px 0 40px 153px            
           .bootstrap-twitter
             margin-left: 60px
             .curious
@@ -417,6 +428,11 @@
                 font-size: 15px
                 text-indent: 35px
                 +border-radius(15px)
+                &.start
+                  background: #6BB544 url($images_path+'icon_submitbacker.png') 10px 13px no-repeat
+                  padding-top: 16px
+                  text-indent: 29px
+                  height: 45px
               span
                 color: white
                 text-shadow: 1px 1px #4C8132
@@ -442,7 +458,12 @@
                 font-family: "Lato-Bold"
                 font-size: 15px
                 text-indent: 24px
-                +border-radius(15px)               
+                +border-radius(15px)
+                &.start
+                  text-indent: 32px
+                  padding-top: 15px
+                  height: 46px
+                  background-position: 12px 13px               
               span
                 color: white
                 text-shadow: 1px 1px #C8760A
@@ -451,6 +472,8 @@
                 position: absolute
                 top: 32px
                 left: 68px
+                &.start
+                  left: 62px
         .tips
           float: left
           width: 100%
