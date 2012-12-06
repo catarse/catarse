@@ -1,4 +1,3 @@
-#encoding: utf-8
 class RewardsController < ApplicationController
   inherit_resources
   load_and_authorize_resource
@@ -9,19 +8,14 @@ class RewardsController < ApplicationController
     render :json => @rewards
   end
 
-  def udpate
-    @reward = Reward.find params[:id]
-    update! if can?(:manage, @reward)
-  end
-
   def create
     create! do |success, failure|
       success.html { 
-        flash[:notice] = 'Recompensa adicionada com sucesso!'
+        flash[:notice] = I18n.t('controllers.rewards.create.notice')
         redirect_to project_path(resource.project)  
       }
       failure.html {
-        flash[:alert] = 'Ops! não foi possivel adicionar a recompensa' 
+        flash[:alert] = I18n.t('controllers.rewards.create.alert')
         redirect_to project_path(resource.project)
       }
     end

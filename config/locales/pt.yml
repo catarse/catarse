@@ -1,4 +1,9 @@
 pt:
+  controllers:
+    rewards:
+      create:
+        notice: 'Recompensa adicionada com sucesso!'
+        alert: 'Ops! não foi possível adicionar a recompensa.'
   or: ou
   newsletter_ok_header: "Cadastro efetuado!"
   newsletter_ok_body: "Seu email foi cadastrado com sucesso, obrigado!"
