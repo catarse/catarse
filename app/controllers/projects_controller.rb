@@ -77,6 +77,7 @@ class ProjectsController < ApplicationController
     current_user.update_attributes({ email: params[:contact] }) if current_user.email.nil?
     ProjectsMailer.start_project_email(
       params[:how_much_you_need],
+      params[:days],
       params[:category],
       params[:about],
       params[:rewards],
