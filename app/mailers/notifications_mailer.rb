@@ -17,12 +17,6 @@ class NotificationsMailer < ActionMailer::Base
         :subject => subject,
         :template_name => @notification.notification_type.name
       })
-    else #TODO remove when we are done migrating the notifications
-      m = mail({
-        :from => "#{I18n.t('site.name')} <#{I18n.t('site.email.contact')}>",
-        :to => @notification.user.email,
-        :subject => @notification.email_subject
-      })
     end
     I18n.locale = old_locale if I18n.locale.to_s != @notification.user.locale.to_s
   end
