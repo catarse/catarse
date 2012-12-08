@@ -31,6 +31,33 @@ describe Notification do
     end
   end
 
+  describe ".create_notification_once" do
+    let(:create_notification_once){ Notification.create_notification_once(:confirm_backer, backer.user, {user_id: backer.user.id, backer_id: backer.id}, backer: backer,  project_name: backer.project.name) }
+    before{ notification_type }
+
+    context "when I have not created the notification with the same type and filters" do
+      before do
+        Notification.expects(:create_notification)
+      end
+      it("should call create_notification"){ create_notification_once }
+    end
+
+    context "when I have already created the notification with the same type but a partially different filter" do
+      before do
+        create_notification_once
+        Notification.expects(:create_notification)
+      end
+      it("should call create_notification"){  Notification.create_notification_once(:confirm_backer, backer.user, {user_id: backer.user.id, backer_id: 0}, backer: backer,  project_name: backer.project.name) }
+    end
+    context "when I have already created the notification with the same type and filters" do
+      before do
+        create_notification_once
+        Notification.expects(:create_notification).never
+      end
+      it("should never call create_notification"){ create_notification_once }
+    end
+  end
+
   describe ".create_notification" do
     subject{ Notification.create_notification(:confirm_backer, backer.user, backer: backer,  project_name: backer.project.name) }
 
