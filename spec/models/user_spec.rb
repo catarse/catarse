@@ -318,8 +318,9 @@ describe User do
       new_user_back = backed_project.backers.create!(:user => new_user, :value => 10)
       old_user_project = Factory(:project, :user => old_user)
       new_user_project = Factory(:project, :user => new_user)
-      old_user_notification = old_user.notifications.create!
-      new_user_notification = new_user.notifications.create!
+      notification_type = Factory(:notification_type)
+      old_user_notification = old_user.notifications.create! notification_type: notification_type
+      new_user_notification = new_user.notifications.create! notification_type: notification_type
 
       old_user.backs.should == [old_user_back]
       new_user.backs.should == [new_user_back]
