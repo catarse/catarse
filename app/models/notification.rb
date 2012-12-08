@@ -3,7 +3,7 @@ class Notification < ActiveRecord::Base
   belongs_to :project
   belongs_to :notification_type
   belongs_to :backer
-  validates_presence_of :user, :text
+  validates_presence_of :user
   scope :not_dismissed, where(dismissed: false)
   attr_accessor :mail_params
 
@@ -18,7 +18,6 @@ class Notification < ActiveRecord::Base
         backer: mail_params[:backer],
         notification_type: nt,
         mail_params: mail_params,
-        text: 'this will be removed'
     end
   end
 
