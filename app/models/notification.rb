@@ -3,6 +3,8 @@ class Notification < ActiveRecord::Base
   belongs_to :project
   belongs_to :notification_type
   belongs_to :backer
+  # Update was an unfortunate decision, we should rename it soon
+  belongs_to :project_update, class_name: "Update", foreign_key: :update_id
   validates_presence_of :user
   scope :not_dismissed, where(dismissed: false)
   attr_accessor :mail_params
@@ -16,6 +18,7 @@ class Notification < ActiveRecord::Base
       create! user: user,
         project: mail_params[:project],
         backer: mail_params[:backer],
+        project_update: mail_params[:update],
         notification_type: nt,
         mail_params: mail_params,
     end
