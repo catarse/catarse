@@ -10,7 +10,7 @@ class Notification < ActiveRecord::Base
   attr_accessor :mail_params
 
   def self.create_notification_once(notification_type_name, user, filter, mail_params = {})
-    create_notification(notification_type_name, user, mail_params) if self.where(filter.keys.first => filter.values.first, notification_type_id: find_notification(notification_type_name)).empty?
+    create_notification(notification_type_name, user, mail_params) if self.where(filter.merge(notification_type_id: find_notification(notification_type_name))).empty?
   end
 
   def self.create_notification(notification_type_name, user, mail_params = {})
