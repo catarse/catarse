@@ -33,7 +33,8 @@ describe Update do
       @project.reload
       ActionMailer::Base.deliveries = []
       @update = Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
-      Notification.expects(:create_notification).with(:updates, backer.user,
+      Notification.expects(:create_notification_once).with(:updates, backer.user,
+        {update_id: @update.id, user_id: backer.user.id},
         :project_name => backer.project.name,
         :project_owner => backer.project.user.display_name,
         :project_owner_email => backer.project.user.email,
