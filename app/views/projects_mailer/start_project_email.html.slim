@@ -5,6 +5,8 @@ html
     h1= t('.subject_html', :link => link_to(@user.display_name, @user_url))
     h2= t('projects.start.how_much_you_need')
     p= @how_much_you_need
+    h2= t('projects.start.days')
+    p= @days
     h2= t('projects.start.category')
     p= @category
     h2= t('projects.start.about')

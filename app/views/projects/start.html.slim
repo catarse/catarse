@@ -22,13 +22,13 @@
                   .important= t('.how_much_important', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))                
             .input
               = image_tag "catarse/icon_datestart.png", :class => 'date'
-              = label_tag 'date', t('.date')
-              = text_field_tag 'how_much_you_need'
+              = label_tag 'days', t('.days')
+              = text_field_tag 'days'
               .bootstrap-alert
                 span
                 .alert
-                  .important= t('.date_important') 
-              p.inline-hints= t('.date_hint')
+                  .important= t('.days_important') 
+              p.inline-hints= t('.days_hint')
  
             .input
               = image_tag "catarse/icon_tag.png", :class => 'tag'
