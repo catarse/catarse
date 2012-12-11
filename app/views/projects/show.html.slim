@@ -1,5 +1,6 @@
 - content_for :js_templates do
   = render :partial => 'backer'
+  = render :partial => 'project_templates'
 
 = content_for :meta_tags do
   - if @update
@@ -80,7 +81,8 @@
               - if can?(:update, @project, :video_url)
                 p
                   = best_in_place_if(can?(:update, @project, :video_url), @project, :video_url)
-              iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+              #iframeVideo
+              /iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
                 - if @project.permalink
@@ -178,7 +180,7 @@
                 = f.submit :class => 'btn'
         #rewards
           - @rewards.each do |reward|
-            div[class="box #{(can?(:update, reward) ? 'clickable_owner' : '')} #{(@project.can_back? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
+            div[id="reward_#{reward.id}" class="box #{(can?(:update, reward) ? 'clickable_owner' : '')} #{(@project.can_back? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
               - if can?(:destroy, reward)
                 .bootstrap-twitter
                   = link_to [@project, reward], class: 'btn btn-mini pull-right btn-danger', style: 'margin-right: -17px;', method: :delete, confirm: 'You are sure?' do
@@ -208,7 +210,7 @@
                       = t('reward.display_remaining', :remaining => reward.remaining, :maximum => bir).html_safe
                 .clearfix
               - elsif can?(:update, reward)
-                .maximum_backers.clearfix
+                .maximum_backers.add_limit.clearfix
                   div style="padding-top: 20px;"
                     = best_in_place_if(can?(:update, reward, :maximum_backers), reward, :maximum_backers, path: [@project, reward], nil: 'Adicionar Limite' )
 
