@@ -185,6 +185,7 @@ class Project < ActiveRecord::Base
       created_at: created_at,
       time_to_go: time_to_go,
       remaining_text: remaining_text,
+      embed_url: vimeo.embed_url,
       url: (self.permalink.blank? ? "/projects/#{self.to_param}" : '/' + self.permalink),
       full_uri: I18n.t('site.base_url') + (self.permalink.blank? ? Rails.application.routes.url_helpers.project_path(self) : '/' + self.permalink),
       expired: expired?,
