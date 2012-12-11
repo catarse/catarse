@@ -39,6 +39,9 @@ class Reward < ActiveRecord::Base
   def as_json(options={})
     {
       :id => id,
+      :project_id => project_id,
+      :maximum_backers => maximum_backers,
+      :remaining => remaining,
       :display_with_label => I18n.t('projects.rewards.reward_title', :minimum => display_minimum),
       :display_minimum => display_minimum,
       :description => description,
