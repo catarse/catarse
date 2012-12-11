@@ -53,7 +53,7 @@ After that, just fork the project, change what you want, and send us a pull requ
 
 ### Coding style
 * We prefer the `{foo: 'bar'}` over `{:foo => 'bar'}`
-* We prefer the `(foo)->{ bar(foo) }` over `lambda(foo){ bar(foo) }`
+* We prefer the `->(foo){ bar(foo) }` over `lambda{|foo| bar(foo) }`
 
 ### Best practices (or how to get your pull request accepted faster)
 
