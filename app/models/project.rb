@@ -9,7 +9,9 @@ class Project < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   before_save do
-    expires_at = DateTime.now+(online_days.days rescue 0) unless expires_at
+    unless expires_at.present?
+      expires_at = DateTime.now+(online_days.days rescue 0) 
+    end
   end
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
