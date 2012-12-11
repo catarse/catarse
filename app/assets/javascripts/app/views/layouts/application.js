@@ -5,7 +5,7 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
     _.bindAll(this, "render", "flash", "openLogin", "closeLogin", "submitLogin", "currentUserDropDown")
     CATARSE.router.route("login/*url", "login_with_url", this.openLogin)
     CATARSE.router.route("login", "login", this.openLogin)
-    this.render()
+    this.render();
   },
 
   events: {

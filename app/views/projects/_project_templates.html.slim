@@ -1,0 +1,11 @@
+script type="text/template" id="project_video_embed"
+  iframe src="<%= embed_url %>?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+
+script type="text/template" id="project_reward_maximum_backers_label"
+  .limited
+    | Limitada
+  .remaining
+    | <%= remaining %> de
+    span class="best_in_place" id="best_in_place_reward_<%=id%>_maximum_backers" data-url="/pt/projects/<%= project_id %>/rewards/<%= id %>" data-object="reward" data-attribute="maximum_backers" data-type="input"
+      | &nbsp; <%= maximum_backers %> &nbsp;
+    | disponíveis

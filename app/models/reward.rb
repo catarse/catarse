@@ -1,4 +1,5 @@
 # coding: utf-8
+require 'rails_autolink'
 class Reward < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
@@ -32,9 +33,15 @@ class Reward < ActiveRecord::Base
   def medium_description
     truncate description, :length => 65
   end
+  def display_description
+    auto_link(simple_format(description), :html => {:target => :_blank})
+  end
   def as_json(options={})
     {
       :id => id,
+      :project_id => project_id,
+      :maximum_backers => maximum_backers,
+      :remaining => remaining,
       :display_with_label => I18n.t('projects.rewards.reward_title', :minimum => display_minimum),
       :display_minimum => display_minimum,
       :description => description,

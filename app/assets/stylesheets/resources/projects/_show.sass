@@ -1,4 +1,31 @@
 [data-namespace="null"][data-controller="projects"][data-action="show"]
+  span.best_in_place 
+    margin-left: 0 !important
+    height: auto !important
+    width: auto !important
+    float: none !important
+  .add_new_reward
+    font-family: 'Lato'
+    font-size: 14px
+    margin-bottom: 20px
+  form#new_reward
+    list-style: none
+    label
+      display: block
+      font-family: 'Lato'
+      font-size: 14px
+      color: black
+      background: none
+    textarea
+      height: 50px
+    input, textarea
+      display: block
+    .inline-hints
+      font-size: 13px
+      font-family: Arial
+      line-height: 130%
+      color: rgba(black, 0.6)
+      padding-bottom: 20px
   #page_content
     .media_content_update
       ul.collection_list
@@ -291,7 +318,7 @@
           +transition(all, 0.3s)
           &.clickable:hover
             background: rgba($light_green, 0.3)
-          span
+          span.icon
             width: 33px
             height: 40px
             margin-left: -46px

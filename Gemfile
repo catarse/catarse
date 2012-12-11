@@ -7,6 +7,9 @@ gem 'rake', '0.9.2.2'
 gem 'sidekiq', '= 2.4.0'
 gem 'sinatra', require: false
 gem 'foreman'
+gem 'best_in_place'
+
+gem 'state_machine', require: 'state_machine/core'
 # Database and data related [Putting pg to the end because of a weird bug with Lion, pg and openssl]
 gem 'pg'
 gem 'foreigner'
@@ -36,7 +39,7 @@ gem 'omniauth-github', '~> 1.0.1'
 gem 'omniauth-linkedin', '~> 0.0.6'
 gem 'omniauth-yahoo', '~> 0.0.4'
 gem 'devise', '1.5.3'
-gem 'cancan'
+gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
 
 
 # Error reporting

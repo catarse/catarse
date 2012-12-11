@@ -16,7 +16,18 @@ class Backer < ActiveRecord::Base
   scope :pending, where(:confirmed => false)
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
-  scope :can_refund, ->{ where("confirmed AND EXISTS(SELECT true FROM projects p WHERE p.id = backers.project_id AND finished AND NOT successful) AND date(current_timestamp) <= date(created_at + interval '180 days')") }
+  scope :can_refund, ->{ 
+    where(%Q{
+      confirmed AND 
+      EXISTS(
+        SELECT true 
+          FROM projects p 
+          WHERE p.id = backers.project_id and p.state = 'failed'
+      ) AND 
+      date(current_timestamp) <= date(created_at + interval '180 days')
+    }) 
+  }
+
   attr_protected :confirmed
 
   def price_in_cents

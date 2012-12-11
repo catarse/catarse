@@ -1,7 +1,7 @@
 CATARSE.ProjectsShowView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "render", "BackerView", "BackersView", "about", "updates", "backers", "comments", "embed", "isValid", "backWithReward")
+    _.bindAll(this, "bestInPlaceEvents", "VideoEmbed", "showUpNewRewardForm","render", "BackerView", "BackersView", "about", "updates", "backers", "comments", "embed", "isValid", "backWithReward")
     CATARSE.router.route("", "index", this.about)
     CATARSE.router.route("about", "about", this.about)
     CATARSE.router.route("updates", "updates", this.updates)
@@ -23,7 +23,13 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     });
 
     this.project = new CATARSE.Project($('#project_description').data("project"))
+
+    var ve = new this.VideoEmbed({model: this.project});
+    ve.render();
+
     this.render()
+    this.bestInPlaceEvents();
+
 
     // Redirect to #updates anchor in case we come through a link to an update 
     if(window.location.search.match(/update_id/)){
@@ -36,9 +42,55 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     "keyup form input[type=text],textarea": "validate",
     "click #project_link": "selectTarget",
     "click #project_embed textarea": "selectTarget",
-    "click #rewards .clickable": "backWithReward"
-    //"click #pledge input[type=submit]": "requireLogin"
+    "click #rewards .clickable": "backWithReward",
+    "click #rewards .clickable_owner span.avaliable": "backWithReward",
+    "click .add_new_reward": "showUpNewRewardForm"
   },
+
+  bestInPlaceEvents: function() {
+    var _this = this;
+
+    $('.video .best_in_place').bind('ajax:success', function(data) {
+      _this.project.fetch({wait: true,
+        success: function(model, response) {
+          var video_embed = new _this.VideoEmbed({model: model});
+          video_embed.render();
+        }
+      });
+    });
+
+    $('.maximum_backers .best_in_place').bind('ajax:success', function(data) {
+      var data_url = $(data.currentTarget).data('url')
+      var reward_id = parseInt(data_url.split("/").reverse()[0]);
+      console.log(reward_id);
+      var reward = new CATARSE.Reward({id: reward_id})
+
+      reward.fetch({wait: true,
+        success: function(model, response){
+          var backers_label = new _this.MaximumBackersLabel({model: model})
+          backers_label.render();
+        }
+      });
+    });
+  },
+
+  showUpNewRewardForm: function(event) {
+    event.preventDefault();
+    $(event.currentTarget).fadeOut('fast');
+    $('.new_reward_content').fadeIn('fast');
+  },
+
+  MaximumBackersLabel: Backbone.View.extend({
+    render: function() {
+      $('.maximum_backers', '#reward_'+this.model.id).empty().html(_.template($('#project_reward_maximum_backers_label').html(), this.model.toJSON()));
+    }
+  }),
+
+  VideoEmbed: Backbone.View.extend({
+    render: function() {
+      $('#iframeVideo').empty().html(_.template($('#project_video_embed').html(), this.model.toJSON()));
+    },
+  }),
 
   UpdatesForm: Backbone.View.extend({
     el: 'form#new_update',
@@ -179,5 +231,4 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   requireLogin: function(event) {
     CATARSE.requireLogin(event)
   }
-
 })

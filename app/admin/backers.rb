@@ -1,5 +1,5 @@
 ActiveAdmin.register Backer do
-  controller.authorize_resource
+  controller.load_and_authorize_resource
   scope :confirmed
   scope :not_confirmed
   scope :anonymous
