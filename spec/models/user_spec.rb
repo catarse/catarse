@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe User do
   let(:user){ Factory(:user, :provider => "foo", :uid => "bar") }
-  let(:unfinished_project){ Factory(:project, :finished => false, :successful => true) }
-  let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
-  let(:failed_project){ Factory(:project, :finished => true, :successful => false) }
+  let(:unfinished_project){ Factory(:project, state: 'online') }
+  let(:successful_project){ Factory(:project, state: 'successful') }
+  let(:failed_project){ Factory(:project, state: 'failed') }
 
   describe "associations" do
     it{ should have_many :backs }

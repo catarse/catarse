@@ -1,4 +1,9 @@
 pt:
+  controllers:
+    rewards:
+      create:
+        notice: 'Recompensa adicionada com sucesso!'
+        alert: 'Ops! não foi possível adicionar a recompensa.'
   or: ou
   newsletter_ok_header: "Cadastro efetuado!"
   newsletter_ok_body: "Seu email foi cadastrado com sucesso, obrigado!"
@@ -81,6 +86,7 @@ pt:
       project:
         category: Categoria
         expires_at: Prazo
+        online_days: Dias de campanha
         headline: "Frase de efeito"
         image_url: "URL da imagem"
         name: Nome
@@ -117,8 +123,10 @@ pt:
     reward_must_be_from_project: "deve ser do mesmo projeto"
     should_not_back_if_maximum_backers_been_reached: "já atingiu seu número máximo de apoiadores"
     value_must_be_at_least_rewards_value: "deve ser pelo menos %{minimum_value} para a recompensa selecionada"
+  project_plural: projetos
   backer_plural: apoiadores
   backer_singular: apoiador
+  project_singular: projeto
   click_here: "Clique aqui"
   clicking_here: "clicando aqui"
   click_term: 'termos de uso'
@@ -240,6 +248,7 @@ pt:
         about: "Conte-nos um pouco sobre sua inspiração para realizar o projeto, sua história e o que será entregue ao final. Seja sucinto e fuja daquelas formalidades de editais. Nada de OBJETIVO, JUSTIFICATIVA, PÚBLICO-ALVO... Presenteie seus leitores com algo que mexa com eles e seja muito transparente em relação a expectativa sobre o projeto."
         category: "Escolha em que categoria você quer que seu projeto apareça. Não se preocupe caso você ache que ele se enquadra em mais de uma. Escolha aquela onde você quer que as pessoas o encontrem."
         expires_at: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
+        online_days: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
         goal: "Pense bastante no valor que você vai solicitar. Ele deve ser o <strong>mínimo necessário para o projeto acontecer</strong>. Nada mais, nada menos. Se você pedir demais, suas chances de atingir o mínimo serão menores; se pedir de menos, não conseguirá realizar o projeto e, conseqüentemente, terá sua reputação prejudicada, o que dificulta realizações futuras."
         headline: "Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)"
         name: "Qual o nome do seu projeto? Escolha com carinho, pois isto irá influenciar as chances do seu projeto atingir o mínimo."
@@ -774,6 +783,19 @@ pt:
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
   adm:
+    projects:
+      index:
+        id: ID
+        name: 'Titulo'
+        user_id: 'User ID'
+        goal: 'Meta'
+        pledged: 'Alcançado'
+        recommended: 'Recomendado?'
+        state: 'Estado'
+        menu: 'Adm. Projetos'
+        title: 'Gerenciamento de projetos'
+        total_projects: 'projetos'
+        submit: 'filtrar'
     actions:
       confirm: 'Confirmar'
     users:

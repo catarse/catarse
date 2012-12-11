@@ -53,8 +53,9 @@ Catarse::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
   match "/logout" => "sessions#destroy", :as => :logout
+  match "/reward/:id" => "rewards#show", :as => :reward
   resources :posts, only: [:index, :create]
-  resources :projects, only: [:index, :new, :create, :show] do
+  resources :projects do
     resources :updates, :only => [:index, :create, :destroy]
     resources :rewards
     resources :backers, controller: 'projects/backers' do
@@ -110,6 +111,13 @@ Catarse::Application.routes.draw do
   match "/pages/:permalink" => "curated_pages#show", as: :curated_page
 
   namespace :adm do
+    resources :projects do
+      member do
+        put 'approve'
+        put 'reject'
+        put 'push_to_draft'
+      end
+    end
     resources :backers do
       member do
         put 'confirm'

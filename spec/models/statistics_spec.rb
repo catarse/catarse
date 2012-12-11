@@ -2,12 +2,11 @@ require 'spec_helper'
 
 describe Statistics do
   before do
-    Factory(:backer, :confirmed => true)
-    Factory(:backer, :confirmed => false)
-    Factory(:project, :visible => true, :successful => true)
-    Factory(:project, :visible => false, :successful => true)
-    Factory(:project, :visible => true, :successful => false)
-    Factory(:project, :visible => false, :successful => false)
+    Factory(:project, state: 'successful')
+    Factory(:project, state: 'draft') 
+    project = Factory(:project, state: 'online')
+    Factory(:backer, confirmed: true, project: project )
+    Factory(:backer, confirmed: false, project: project)
   end
 
   describe "#total_users" do
@@ -37,11 +36,11 @@ describe Statistics do
 
   describe "#total_projects_success" do
     subject{ Statistics.first.total_projects_success }
-    it{ should == Project.visible.successful.count }
+    it{ should == Project.successful.count }
   end
 
   describe "#total_projects_online" do
     subject{ Statistics.first.total_projects_online }
-    it{ should == Project.visible.not_expired.count }
+    it{ should == Project.online.count }
   end
 end

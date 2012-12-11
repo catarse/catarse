@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Backer do
   let(:user){ Factory(:user) }
-  let(:project){ Factory(:project, :finished => true, :successful => false) }
-  let(:unfinished_project){ Factory(:project, :finished => false, :successful => false) }
-  let(:successful_project){ Factory(:project, :finished => true, :successful => true) }
+  let(:project){ Factory(:project, state: 'failed') }
+  let(:unfinished_project){ Factory(:project, state: 'online') }
+  let(:successful_project){ Factory(:project, state: 'successful') }
   let(:unfinished_project_backer){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => unfinished_project) }
   let(:sucessful_project_backer){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => true, :user => user, :project => successful_project) }
   let(:not_confirmed_backer){ Factory(:backer, :value => 10, :credits => false, :requested_refund => false, :confirmed => false, :user => user, :project => unfinished_project) }

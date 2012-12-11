@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  controller.authorize_resource
+  controller.load_and_authorize_resource
 
   scope :primary
   scope :backers
