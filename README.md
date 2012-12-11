@@ -1,4 +1,4 @@
-# Catarse [![Build Status](https://secure.travis-ci.org/danielweinmann/catarse.png?branch=travis_ci_config)](https://travis-ci.org/danielweinmann/catarse) 
+# Catarse [![Build Status](https://secure.travis-ci.org/danielweinmann/catarse.png?branch=master)](https://travis-ci.org/danielweinmann/catarse) 
 ## An open source crowdfunding platform for creative projects
 
 Welcome to Catarse's source code repository. Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
