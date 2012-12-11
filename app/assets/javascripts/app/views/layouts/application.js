@@ -10,6 +10,8 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
 
   events: {
     "submit .search": "search",
+    "hidden #myModal": "removeBackdrop",
+    "click #guidelines_modal": "showModal",
     "click #login .close": "closeLogin",
     "click #login a.provider": "submitLogin",
     "click a.my_profile_link":"currentUserDropDown",
@@ -32,7 +34,7 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
       rootElement.addClass('actived');
     }
   },
-  
+
   openLogin: function(returnUrl) {
     var url = null
     if(typeof(returnUrl) != 'undefined')
@@ -43,14 +45,24 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
     this.$('#login_overlay').show()
     this.$('#login').fadeIn()
   },
-  
+
   closeLogin: function(event) {
     this.$('#login #return_to').val(null)
     this.$('#login').hide()
     this.$('#login_overlay').hide()
   },
 
-  submitLogin: function(event) {
+  showModal: function(event) {
+    target = $(event.target).attr('data-target')
+    url = $(event.target).attr('href')
+    $(target).load(url)
+  },
+
+  removeBackdrop: function(event) {
+    this.$('.modal-backdrop').remove();
+  },
+
+   submitLogin: function(event) {
     event.preventDefault()
     var element = $(event.target)
     if(!element.is('a'))
@@ -61,14 +73,14 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
     this.$('#login #provider').val(element.attr('href'))
     this.$('#login form').submit()
   },
-  
+
   search: function(event) {
     var query = this.$(event.target).find("#search").val()
     if(!($('#main_content').data("controller-name") == "explore" && $('#main_content').data("action") == "index") && query.length > 0)
       location.href = "/explore#search/" + query
     return false
   },
-  
+
   flash: function() {
     setTimeout( function(){ this.$('.flash').slideDown('slow') }, 100)
     if( ! this.$('.flash a').length) setTimeout( function(){ this.$('.flash').slideUp('slow') }, 16000)
