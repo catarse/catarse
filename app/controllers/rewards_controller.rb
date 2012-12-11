@@ -9,6 +9,11 @@ class RewardsController < ApplicationController
     render :json => @rewards
   end
 
+  def show
+    @reward = Reward.find params[:id]
+    render json: @reward.to_json
+  end
+
   def create
     create! do |success, failure|
       success.html { 
@@ -29,7 +34,9 @@ class RewardsController < ApplicationController
   protected
 
   def begin_of_association_chain
-    Project.find(params[:project_id])
+    unless action_name == 'show'
+      Project.find(params[:project_id])
+    end
   end
 
 end
