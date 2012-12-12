@@ -5,6 +5,7 @@ describe ProjectsController do
   before {Notification.unstub(:create_notification)}
   render_views
   subject{ response }
+  let(:project){ Factory(:project) }
 
   shared_examples_for "GET projects index/show" do
     before { get :show, id: project.id, locale: :pt}
@@ -120,27 +121,35 @@ describe ProjectsController do
     end
   end
 
-  context "when we have update_id in the querystring" do
-    let(:project){ Factory(:project, :permalink => nil) }
-    let(:update){ Factory(:update, :project => project) }
-    before{ get :show, :id => project, :update_id => update.id, :locale => :pt }
-    it("should assign update to @update"){ assigns(:update).should == update }
+  describe "GET embed" do
+    before do
+      get :embed, :id => project, :locale => :pt 
+    end
+    its(:status){ should == 200 }
   end
 
-  context "when we have permalink and do not pass permalink in the querystring" do
-    let(:project){ Factory(:project, :permalink => 'test') }
-    before{ get :show, :id => project, :locale => :pt }
-    it{ should redirect_to project_by_slug_path(project.permalink) }
-  end
+  describe "GET show" do
+    context "when we have update_id in the querystring" do
+      let(:project){ Factory(:project, :permalink => nil) }
+      let(:update){ Factory(:update, :project => project) }
+      before{ get :show, :id => project, :update_id => update.id, :locale => :pt }
+      it("should assign update to @update"){ assigns(:update).should == update }
+    end
 
-  context "when we do not have permalink and do not pass permalink in the querystring" do
-    let(:project){ Factory(:project, :permalink => nil) }
-    before{ get :show, :id => project, :locale => :pt }
-    it{ should be_success }
+    context "when we have permalink and do not pass permalink in the querystring" do
+      let(:project){ Factory(:project, :permalink => 'test') }
+      before{ get :show, :id => project, :locale => :pt }
+      it{ should redirect_to project_by_slug_path(project.permalink) }
+    end
+
+    context "when we do not have permalink and do not pass permalink in the querystring" do
+      let(:project){ Factory(:project, :permalink => nil) }
+      before{ get :show, :id => project, :locale => :pt }
+      it{ should be_success }
+    end
   end
 
   describe "POST send_mail" do
-    let(:project){ Factory(:project) }
     Factory(:notification_type, :name => 'project_received')
     let(:name){ project.name }
     let(:user){ project.user }
