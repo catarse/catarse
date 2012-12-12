@@ -16,25 +16,34 @@ describe Adm::BackersController do
     b
   end
 
-  describe "PUT confirm" do
-    context "when I'm not logged in" do
-      before do
-        put :confirm, :locale => :pt, :id => 1
-      end
-      it{ should redirect_to login_path }
-    end
+  describe 'PUT confirm' do
+    let(:backer) { Factory(:backer, confirmed: false) }
+    subject { backer.confirmed }
 
-    context "when I'm logged as admin" do
-      before do
-        controller.stubs(:current_user).returns(admin)
-        put :confirm, :locale => :pt, :id => unconfirmed_backer.id
-      end
+    before { 
+      controller.stubs(:current_user).returns(admin)
+      put :confirm, id: backer.id, locale: :pt 
+    }
 
-      it 'backer should be confirmed' do
-        unconfirmed_backer.reload
-        unconfirmed_backer.confirmed.should be_true
-      end
-    end
+    it {
+      backer.reload
+      should be_true
+    }
+  end
+
+  describe 'PUT unconfirm' do
+    let(:backer) { Factory(:backer, confirmed: true) }
+    subject { backer.confirmed }
+
+    before { 
+      controller.stubs(:current_user).returns(admin)
+      put :unconfirm, id: backer.id, locale: :pt 
+    }
+
+    it {
+      backer.reload
+      should be_false
+    }
   end
 
   describe "GET index" do

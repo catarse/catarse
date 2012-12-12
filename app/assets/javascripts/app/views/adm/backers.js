@@ -1,7 +1,6 @@
 CATARSE.Adm.Backers = {
   Index: Backbone.View.extend({
     events: {
-      'click .show_actions': 'showActions',
       'click input[type=checkbox]': 'updateOnSpot'
     },
 
@@ -14,16 +13,5 @@ CATARSE.Adm.Backers = {
         value: ($(e.currentTarget).is(':checked') ? true : false)
       })
     },
-
-    showActions: function(event) {
-      event.preventDefault();
-      var target = this.$(event.currentTarget);
-      var menu = target.parent().find('.actions_menu');
-      menu.fadeToggle('fast');
-    },
-
-    initialize: function() {
-      $('ul.actions_menu').hide();
-    }
   })
 };
