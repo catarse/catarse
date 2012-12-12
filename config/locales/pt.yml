@@ -664,9 +664,12 @@ pt:
         payer_email: Email do pagamento
     backers:
       messages:
-        succesful:
+        successful:
           confirm: 'Apoio confirmado com sucesso!'
+          unconfirm: 'Apoio desconfirmado com sucesso!'
       index:
+        confirm_backer: 'Confirmar apoio'
+        unconfirm_backer: 'Desconfirmar apoio'
         title: "Gerenciamento de apoios"
         menu: "Apoios"
         anonymous: Anônimo?
