@@ -101,24 +101,30 @@ describe ProjectsController do
     it_should_behave_like "DELETE projects destroy without permission"
   end
 
-  context "When project is online" do
+  describe "PUT update" do
     let(:project) { Factory(:project, permalink: nil, state: 'online') }
 
     before do
       controller.stubs(:current_user).returns(project.user)
     end
 
-    it "is not updated when pass attributes that is not allowed to update in some states" do
-      put :update, id: project.id, project: { name: 'new_title', about: 'new_description' }, locale: :pt
-      project.reload
-      project.about.should == 'Foo bar'
+    context "when I try to update the project name and the about field" do
+      before{ put :update, id: project.id, project: { name: 'new_title', about: 'new_description' }, locale: :pt }
+      it "should not update neither" do
+        project.reload
+        project.name.should_not == 'new_title'
+        project.about.should_not == 'new_description'
+      end
     end
 
-    it "owner can update only about the project" do
-      put :update, id: project.id, project: { about: 'new_description' }, locale: :pt
-      project.reload
-      project.about.should == 'new_description'
+    context "when I try to update only the about field" do
+      before{ put :update, id: project.id, project: { about: 'new_description' }, locale: :pt }
+      it "should update it" do
+        project.reload
+        project.about.should == 'new_description'
+      end
     end
+
   end
 
   describe "GET embed" do
