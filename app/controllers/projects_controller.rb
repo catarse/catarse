@@ -2,7 +2,7 @@
 class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
 
-  load_and_authorize_resource
+  load_and_authorize_resource only: [ :update, :destroy ]
 
   inherit_resources
   respond_to :html, :except => [:backers]
