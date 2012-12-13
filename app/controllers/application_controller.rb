@@ -14,21 +14,14 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user, :replace_locale, :namespace,
-                :fb_admins, :has_institutional_videos?, :institutional_video
+                :fb_admins, :has_institutional_videos?, :institutional_video,
+                :statistics
   before_filter :set_locale
   before_filter :detect_locale
   before_filter :force_http
 
   # TODO: Change this way to get the opendata
   before_filter do
-    statistics = Statistics.first
-    @total_backers = statistics.total_backers
-    @total_backs = statistics.total_backs
-    @total_backed = statistics.total_backed
-    @total_users = statistics.total_users
-    @total_projects = statistics.total_projects
-    @total_projects_success = statistics.total_projects_success
-    @total_projects_online = statistics.total_projects_online
     @fb_admins = [567237711]
   end
 
@@ -40,6 +33,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def statistics
+    @statistics ||= Statistics.first
+  end
+
   def has_institutional_videos?
     InstitutionalVideo.visibles.present?
   end
