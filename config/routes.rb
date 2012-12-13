@@ -121,6 +121,7 @@ Catarse::Application.routes.draw do
     resources :backers do
       member do
         put 'confirm'
+        put 'unconfirm'
       end
       collection do
         post 'update_attribute_on_the_spot'

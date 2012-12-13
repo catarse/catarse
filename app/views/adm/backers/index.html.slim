@@ -61,7 +61,6 @@
           table.table.table-striped
             thead
               tr
-                th= t('.id')
                 th= t('.project')
                 th= t('.user')
                 th= t('.value')
@@ -71,15 +70,10 @@
                 th= t('.credits')
                 th= t('.requested_refund')
                 th= t('.refunded')
+                th
             tbody
               - @backers.each do |backer|
                 tr id=backer.id class=cycle("even", "odd")
-                  td
-                    = link_to backer.id, 'javascript:void(0);', :class => 'show_actions'
-                    .bootstrap-twitter
-                      ul.actions_menu
-                        - unless backer.confirmed
-                          li= link_to t('adm.actions.confirm'), confirm_adm_backer_path(backer) , :class => 'btn', :method => :put
                   td title=backer.project.name
                     = link_to project_path(backer.project) do
                       = image_tag backer.project.display_image, class: 'project_img'
@@ -98,6 +92,15 @@
                   td= (backer.credits ? t('yes') : t('no'))
                   td= (backer.requested_refund ? t('yes') : t('no'))
                   td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded
+                  td.bootstrap-twitter
+                    .btn-group
+                      = link_to 'javascript:void(0);', :"data-toggle" => 'dropdown', :class => 'btn btn-mini dropdown-toggle' do
+                        span.caret
+                      ul.dropdown-menu
+                        - if backer.confirmed
+                          li= link_to t('adm.backers.index.unconfirm_backer'), unconfirm_adm_backer_path(backer), method: :put
+                        - else
+                          li= link_to t('adm.backers.index.confirm_backer'), confirm_adm_backer_path(backer), method: :put
       = paginate @backers
   .clearfix
     

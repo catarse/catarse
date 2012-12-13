@@ -12,6 +12,13 @@ class Adm::BackersController < Adm::BaseController
     redirect_to adm_backers_path
   end
 
+  def unconfirm
+    @backer = Backer.find params[:id]
+    @backer.unconfirm!
+    flash[:notice] = I18n.t('adm.backers.messages.successful.unconfirm')
+    redirect_to adm_backers_path
+  end
+
   protected
   def can_update_on_the_spot?
     project_fields = []
