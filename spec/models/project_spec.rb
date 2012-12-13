@@ -22,7 +22,7 @@ describe Project do
       end
 
       it 'should turn state to waiting funds' do
-        @project_01.waiting_funds?.should be_true 
+        @project_01.waiting_funds?.should be_true
       end
 
       it 'should not change state when project is not expired and already reached the goal' do
@@ -62,7 +62,7 @@ describe Project do
     let(:project) { Factory(:project, expires_at: 1.day.ago) }
     subject { project.in_time_to_wait? }
 
-    context 'when project expiration is in time to wait' do 
+    context 'when project expiration is in time to wait' do
       it { should be_true }
     end
 
@@ -86,7 +86,7 @@ describe Project do
     end
 
     describe '.push_to_draft' do
-      subject { 
+      subject {
         project.reject
         project
       }
@@ -179,7 +179,7 @@ describe Project do
         context 'when project not hit the goal' do
           context "and pass the waiting fund time" do
             let(:user) { Factory(:user) }
-            let(:backer) { Factory(:backer, project: subject, user: user, value: 20) } 
+            let(:backer) { Factory(:backer, project: subject, user: user, value: 20) }
 
             before do
               subject.update_column :expires_at, 2.weeks.ago
@@ -322,14 +322,14 @@ describe Project do
     it{ should == [@p] }
   end
 
-  describe "#unaccent_search" do
+  describe "#pg_search" do
     before { @p = Factory(:project, name: 'foo') }
     context "when project exists" do
-      subject{ [Project.unaccent_search('foo'), Project.unaccent_search('fóõ')] }
+      subject{ [Project.pg_search('foo'), Project.pg_search('fóõ')] }
       it{ should == [[@p],[@p]] }
     end
     context "when project is not found" do
-      subject{ Project.unaccent_search('foo2') }
+      subject{ Project.pg_search('lorem') }
       it{ should == [] }
     end
   end

@@ -13,6 +13,7 @@ gem 'state_machine', require: 'state_machine/core'
 # Database and data related [Putting pg to the end because of a weird bug with Lion, pg and openssl]
 gem 'pg'
 gem 'foreigner'
+gem 'pg_search'
 gem 'activerecord-postgresql-adapter'
 
 gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git'
