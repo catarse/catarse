@@ -16,13 +16,11 @@ class UpdatesController < ApplicationController
     @update = parent.updates.new(params[:update])
     @update.user = current_user
     create! do |format|
-      format.html{ return redirect_to project_path(parent, :anchor => 'updates') }
+      format.html{ return index }
     end
   end
 
   def destroy
-    destroy! do |format|
-      return index
-    end
+    destroy!{|format| return index }
   end
 end
