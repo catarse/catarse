@@ -2,129 +2,119 @@
 require 'spec_helper'
 
 describe ProjectsController do
-  before {Notification.unstub(:create_notification)}
+  before{ Notification.unstub(:create_notification) }
+  before{ controller.stubs(:current_user).returns(current_user) }
   render_views
   subject{ response }
   let(:project){ Factory(:project) }
+  let(:current_user){ nil }
 
-  shared_examples_for "GET projects index/show" do
-    before { get :show, id: project.id, locale: :pt}
+  describe "DELETE destroy" do
+    before do
+      delete :destroy, id: project.id, locale: :pt
+    end
+
+    context "when user is a guest" do
+      it { Project.all.include?(project).should be_true }
+    end
+
+    context "when user is a project owner" do
+      let(:current_user){ project.user }
+      it { Project.all.include?(project).should be_true }
+    end
+
+    context "when user is a registered user" do
+      let(:current_user){ Factory(:user, admin: false) }
+      it { Project.all.include?(project).should be_true }
+    end
+
+    context "when user is an admin" do
+      let(:current_user){ Factory(:user, admin: true) }
+      it { Project.all.include?(project).should be_false }
+    end
+  end
+
+  describe "GET index" do
+    before { get :index, locale: :pt}
     it { should be_success }
   end
 
-  shared_examples_for "GET projects new" do
+  describe "GET new" do
     before { get :new, locale: :pt }
-    it { should be_success }
-  end
 
-  shared_examples_for "GET projects new without permission" do
-    before { get :new, locale: :pt }
-    it { should_not be_success }
-  end
-
-  shared_examples_for "PUT projects update" do
-    before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
-    it { 
-      project.reload
-      project.name.should == 'My Updated Title' 
-    }
-  end
-
-  shared_examples_for "PUT projects update without permission" do
-    before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
-    it { 
-      project.reload
-      project.name.should == 'Foo bar' 
-    }
-  end
-
-  shared_examples_for "DELETE projects destroy" do
-    before { delete :destroy, id: project.id, locale: :pt }
-    it { Project.all.include?(project).should be_false }
-  end
-
-  shared_examples_for "DELETE projects destroy without permission" do
-    before { delete :destroy, id: project.id, locale: :pt }
-    it { Project.all.include?(project).should be_true }
-  end
-
-
-  context "When current_user is a guest" do
-    let(:project) { Factory(:project, permalink: nil) } 
-
-    before do
-      controller.stubs(:current_user).returns(nil)
+    context "when user is a guest" do
+      it { should_not be_success }
     end
 
-    it_should_behave_like "GET projects index/show"
-    it_should_behave_like "GET projects new without permission"
-    it_should_behave_like "PUT projects update without permission"
-    it_should_behave_like "DELETE projects destroy without permission"
-  end
-
-  context "When current_user is a project owner" do
-    let(:project) { Factory(:project, permalink: nil) } 
-
-    before do
-      controller.stubs(:current_user).returns(project.user)
+    context "when user is a registered user" do
+      let(:current_user){ Factory(:user, admin: false) }
+      it { should be_success }
     end
-
-    it_should_behave_like "GET projects index/show"
-    it_should_behave_like "GET projects new"
-    it_should_behave_like "PUT projects update"
-    it_should_behave_like "DELETE projects destroy without permission"
-  end
-
-  context "When current_user is admin" do
-    let(:project) { Factory(:project, permalink: nil) } 
-
-    before do
-      controller.stubs(:current_user).returns(Factory(:user, admin: true))
-    end
-
-    it_should_behave_like "GET projects index/show"
-    it_should_behave_like "GET projects new"
-    it_should_behave_like "PUT projects update"
-    it_should_behave_like "DELETE projects destroy"
-  end
-
-  context "When current_user is a registered user" do
-    let(:project) { Factory(:project, permalink: nil) } 
-
-    before do
-      controller.stubs(:current_user).returns(Factory(:user, admin: false))
-    end
-
-    it_should_behave_like "GET projects index/show"
-    it_should_behave_like "GET projects new"
-    it_should_behave_like "PUT projects update without permission"
-    it_should_behave_like "DELETE projects destroy without permission"
   end
 
   describe "PUT update" do
-    let(:project) { Factory(:project, permalink: nil, state: 'online') }
-
-    before do
-      controller.stubs(:current_user).returns(project.user)
+    shared_examples_for "updatable project" do
+      before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
+      it { 
+        project.reload
+        project.name.should == 'My Updated Title' 
+      }
     end
 
-    context "when I try to update the project name and the about field" do
-      before{ put :update, id: project.id, project: { name: 'new_title', about: 'new_description' }, locale: :pt }
-      it "should not update neither" do
+    shared_examples_for "protected project" do
+      before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
+      it { 
         project.reload
-        project.name.should_not == 'new_title'
-        project.about.should_not == 'new_description'
+        project.name.should == 'Foo bar' 
+      }
+    end
+
+    context "when user is a guest" do
+      it_should_behave_like "protected project"
+    end
+
+    context "when user is a project owner" do
+      let(:current_user){ project.user }
+
+      context "when project is offline" do
+        it_should_behave_like "updatable project"
+      end
+
+      context "when project is online" do
+        let(:project) { Factory(:project, permalink: nil, state: 'online') }
+
+        before do
+          controller.stubs(:current_user).returns(project.user)
+        end
+
+        context "when I try to update the project name and the about field" do
+          before{ put :update, id: project.id, project: { name: 'new_title', about: 'new_description' }, locale: :pt }
+          it "should not update neither" do
+            project.reload
+            project.name.should_not == 'new_title'
+            project.about.should_not == 'new_description'
+          end
+        end
+
+        context "when I try to update only the about field" do
+          before{ put :update, id: project.id, project: { about: 'new_description' }, locale: :pt }
+          it "should update it" do
+            project.reload
+            project.about.should == 'new_description'
+          end
+        end
       end
     end
 
-    context "when I try to update only the about field" do
-      before{ put :update, id: project.id, project: { about: 'new_description' }, locale: :pt }
-      it "should update it" do
-        project.reload
-        project.about.should == 'new_description'
-      end
+    context "when user is a registered user" do
+      let(:current_user){ Factory(:user, admin: false) }
+      it_should_behave_like "protected project"
     end
 
+    context "when user is an admin" do
+      let(:current_user){ Factory(:user, admin: true) }
+      it_should_behave_like "updatable project"
+    end
   end
 
   describe "GET embed" do
