@@ -1,7 +1,7 @@
 class Update < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
-  has_many :updates, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   validates_presence_of :user_id, :project_id, :comment, :comment_html
 
   auto_html_for :comment do
