@@ -48,6 +48,11 @@ class Backer < ActiveRecord::Base
     self.save
   end
 
+  def unconfirm!
+    self.confirmed = false
+    self.save
+  end
+
   def can_refund?
     confirmed? && created_at >= (Date.today - 180.days) && project.finished? && !project.successful?
   end
