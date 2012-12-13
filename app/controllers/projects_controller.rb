@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
       end
       format.json do
         @projects = if params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains]
-          Project.visible.unaccent_search( params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains])
+          Project.visible.pg_search( params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains])
         else
           Project.visible.search(params[:search])
         end

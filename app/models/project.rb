@@ -7,10 +7,11 @@ class Project < ActiveRecord::Base
   include ActionView::Helpers::UrlHelper
   include ERB::Util
   include Rails.application.routes.url_helpers
+  include PgSearch
 
   before_save do
     unless expires_at.present?
-      expires_at = DateTime.now+(online_days.days rescue 0) 
+      expires_at = DateTime.now+(online_days.days rescue 0)
     end
   end
 
@@ -45,6 +46,14 @@ class Project < ActiveRecord::Base
     link :target => :_blank
   end
 
+  pg_search_scope :pg_search, against: [
+      [:name, 'A'],
+      [:headline, 'B'],
+      [:about, 'C']
+    ],
+    associated_against:  {user: [:name, :address_city ]},
+    :using => {trigram: {}, tsearch: {:dictionary => "portuguese"}},
+    ignoring: :accents
   scope :visible, where("state NOT IN ('draft', 'rejected')")
   scope :recommended, where(recommended: true)
   scope :expired, where("expires_at < current_timestamp")
@@ -78,14 +87,10 @@ class Project < ActiveRecord::Base
   mount_uploader :video_thumbnail, LogoUploader
 
   def self.finish_projects!
-    expired.each do |resource| 
+    expired.each do |resource|
       Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
-      resource.finish 
+      resource.finish
     end
-  end
-
-  def self.unaccent_search search
-    joins(:user).where("unaccent(projects.name || headline || about || coalesce(users.name,'') || coalesce(users.address_city,'')) ~* unaccent(?)", search)
   end
 
   def users_who_backed
@@ -119,7 +124,7 @@ class Project < ActiveRecord::Base
   def finished?
     not online? and not draft? and not rejected?
   end
-  
+
   # NOTE: I think that we just can look the expires_at column
   # the project enter on finished / failed state when expires ;)
   def expired?
