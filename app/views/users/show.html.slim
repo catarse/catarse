@@ -59,7 +59,7 @@
       #user_profile_content
         #user_backed_projects.content
         #user_created_projects.content
-        - if can? :update, @user
+        - if can? :manage, @user
           #user_unsubscribes.content.hide
             = render 'unsubscribes'
           #user_settings.content.hide
