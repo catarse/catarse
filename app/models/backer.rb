@@ -28,6 +28,10 @@ class Backer < ActiveRecord::Base
     self.save
   end
 
+  def refund_deadline
+    created_at + 180.days
+  end
+
   def confirm!
     self.confirmed = true
     self.save
@@ -87,10 +91,6 @@ class Backer < ActiveRecord::Base
     raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
     self.update_attributes({ requested_refund: false })
     self.user.update_attributes({ credits: (self.user.credits + self.value) })
-  end
-
-  def refund_deadline
-    created_at + 180.days
   end
 
   def as_json(options={})

@@ -1,7 +1,7 @@
 [data-controller="projects"][data-action="start"]
   span.add-on
     font-family: 'Lato-Regular'
-    margin-top: -3px
+    margin-top: -2px
     color: $gryn_almost_ccc
   #loading
     display: none
@@ -15,14 +15,52 @@
           +alpha
           padding-bottom: 40px
           h1
-            color: $ultra_gryn
+            color: #333333
             font-family: "Lato-Regular"
-            font-size: 28px
-            padding: 5px 0
+            font-size: 24px
+            padding: 0 0 5px 50px
+            margin-top: 20px
+            background: url($images_path+'icon_new.png') left top no-repeat
           h2
-            color: rgba($ultra_gryn, 0.7)
-            font-family: Arial
-            font-size: 18px
+            color: #333333
+            font-family: "Lato-Regular"
+            font-size: 14px
+            padding-left: 50px
+            padding-bottom: 15px
+            border-bottom: 1px dotted #CCCCCC
+          p
+            font-family: "Lato-Italic"
+            color: #666666
+            font-size: 16px
+            text-align: center
+            line-height: 21px
+            padding-top: 20px
+            margin: 0 auto
+            width: 620px
+        .bootstrap-alert
+          float: right
+          position: relative
+          span
+            background: url($images_path+'box_alert.png') left top no-repeat
+            width: 33px
+            height: 38px
+            position: absolute
+            right: 276px
+            top: 17px
+          .alert
+            float: right
+            width: 250px
+            background-color: #F7F7F7
+            border: solid 1px #EDEDED
+            +border-radius (0px)
+            font-family: "Lato-Regular"
+            font-size: 13px
+            line-height: 21px
+            color: #666666
+            padding: 10px 10px 10px 40px
+            a
+              color: #F28D0B
+              text-decoration: none            
       #project_warning
         .alert
           font-size: 15px
@@ -31,26 +69,98 @@
             color: $pink
       .bootstrap-form
         form
-          .input
-            padding-bottom: 15px
+          .input 
+            float: left
+            margin-bottom: 30px
+            padding-bottom: 40px
+            width: 600px
+            width: 100%
+            border-bottom: 1px dotted #CCCCCC
+            .input-prepend
+              float: left
+              width: 42%
+              .inline-hints
+                margin-left: 0px
+            .heart, .date
+              display: block
+              margin-left: 40px
+            .calc, .tag
+              display: block
+              margin-left: 52px
+            .gift
+              display: block
+              margin-left: 59px
+            .vimeo, .social, .link, .logo
+              display: block
+              margin-left: 50px
+            .chanels
+              height: 80px
+            label
+              font-family: 'Lato-Italic'
+              width: 160px
+              float: left
+              margin-right: 20px
+              text-align: center
+              font-size: 18px
+              color: #F28D0B
+              line-height: 21px
+          .submit
+            .bootstrap-twitter
+              width: 100%
+              .send
+                position: relative
+                margin: 0 auto
+                width: 240px
+                .btn_send
+                  width: 240px
+                  background: #F28E0B url($images_path+'button_send.png') 15px 12px no-repeat
+                  border: solid 1px #C8760A
+                  height: 62px
+                  padding: 0px 0px 11px 0px
+                  text-transform: uppercase
+                  color: white
+                  text-shadow: 1px 1px #C8760A
+                  font-family: "Lato-Bold"
+                  font-size: 15px
+                  text-indent: 36px
+                  +border-radius(15px)
+                span
+                  color: white
+                  text-shadow: 1px 1px #C8760A
+                  font-family: "Lato-Italic"
+                  font-size: 14px
+                  position: absolute
+                  top: 34px
+                  left: 68px
           .accept
             padding-top: 20px
             padding-bottom: 20px
+            text-align: center
             input
               display: inline
             label
               display: inline
+              a
+                color: #F28D0B
+                text-decoration: none
           label
             font-family: 'Lato-Regular'
             font-size: 15px
             color: rgba(black, 0.8)
           textarea
-            width: 100%
-            height: 80px
+            width: 400px
+            +border-radius(8px)
+            height: 180px
           .inline-hints
-            font-size: 13px
+            font-size: 12px
             font-family: Arial
-            line-height: 130%
-            color: rgba(black, 0.6)
-            padding-bottom: 20px
-
+            line-height: 21px
+            color: #666666
+            padding-bottom: 20px  
+            width: 400px 
+            margin-left: 180px
+            &.much
+              margin-left: 0px
+            a
+              color: #F28D0B
+              text-decoration: none

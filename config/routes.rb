@@ -37,6 +37,9 @@ Catarse::Application.routes.draw do
   # Static Pages
   match '/sitemap' => "static#sitemap", :as => :sitemap
   match "/guidelines" => "static#guidelines", :as => :guidelines
+  match "/guidelines_tips" => "static#guidelines_tips", :as => :guidelines_tips
+  match "/guidelines_backers" => "static#guidelines_backers", :as => :guidelines_backers
+  match "/guidelines_start" => "static#guidelines_start", :as => :guidelines_start
   match "/faq" => "static#faq", :as => :faq
   match "/terms" => "static#terms", :as => :terms
   match "/privacy" => "static#privacy", :as => :privacy
@@ -82,9 +85,11 @@ Catarse::Application.routes.draw do
   end
   resources :users do
     resources :backers, :only => [:index]
+    resources :unsubscribes, :only => [:create]
     member do
       get 'projects'
       get 'credits'
+      put 'unsubscribe_update'
     end
     post 'update_attribute_on_the_spot', :on => :collection
   end

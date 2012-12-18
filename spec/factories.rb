@@ -34,14 +34,16 @@ end
 Factory.define :notification_type do |f|
   f.name "confirm_backer"
 end
+Factory.define :unsubscribe do |f|
+  f.association :user, :factory => :user
+  f.association :project, :factory => :project
+  f.association :notification_type, :factory => :notification_type
+end
 Factory.define :notification do |f|
-  f.email_subject "Just a test"
   f.association :user, :factory => :user
   f.association :backer, :factory => :backer
   f.association :project, :factory => :project
   f.association :notification_type, :factory => :notification_type
-  f.email_text "email text"
-  f.text "Test :)"
 end
 Factory.define :reward do |f|
   f.association :project, :factory => :project

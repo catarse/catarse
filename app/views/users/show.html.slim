@@ -8,8 +8,8 @@
   meta property="fb:admins" content="#{fb_admins}"
 
 - content_for :js_templates do
-  = render :partial => 'back'
-  = render :partial => 'project'
+  = render 'back'
+  = render 'project'
 
 .bootstrap-twitter
   #creditsModal.hide.modal
@@ -60,11 +60,14 @@
           - if can? :manage, @user
             = link_to t('.tabs.credits'), '#credits', :id => 'credits_link'
             = link_to t('.tabs.settings'), '#settings', :id => 'settings_link'
+            = link_to t('.tabs.unsubscribes'), '#unsubscribes', :id => 'unsubscribes_link'
       .clearfix
       #user_profile_content
         #user_backed_projects.content
         #user_created_projects.content
         - if can? :manage, @user
+          #user_unsubscribes.content.hide
+            = render 'unsubscribes'
           #user_settings.content.hide
             = render 'current_user_fields'
           #user_credits.content.hide

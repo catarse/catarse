@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/devton/catarse_moip.git
-  revision: e8e1980cc77c65a6cfaea38193a2af51dd9ee57a
+  revision: 905ff368f7c48485357d8673ff8472cbae882af4
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/devton/catarse_paypal_express.git
-  revision: 20aa645a2b7d4b45be0e61cd4d9d63e6359926de
+  revision: 5e79e04b8bea2f1b43279ddc0f70c0d559a7be73
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -104,7 +104,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bourbon (2.1.1)
       sass (>= 3.1)
-    braintree (2.19.0)
+    braintree (2.21.0)
       builder (>= 2.0.0)
     brcep (3.2.0)
     builder (3.0.4)
@@ -255,6 +255,7 @@ GEM
     mailchimp (0.0.7.alpha)
       httparty
     maxim-sexy_pg_constraints (0.1.3)
+    memoist (0.2.0)
     meta_search (1.1.3)
       actionpack (~> 3.1)
       activerecord (~> 3.1)
@@ -264,7 +265,7 @@ GEM
     mime-types (1.19)
     mocha (0.10.4)
       metaclass (~> 0.0.1)
-    multi_json (1.3.7)
+    multi_json (1.5.0)
     multipart-post (1.1.5)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -520,6 +521,7 @@ DEPENDENCIES
   launchy
   mailcatcher
   maxim-sexy_pg_constraints
+  memoist (~> 0.2.0)
   meta_search (= 1.1.3)
   mocha (= 0.10.4)
   moip!

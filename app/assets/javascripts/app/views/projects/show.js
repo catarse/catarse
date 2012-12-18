@@ -24,6 +24,11 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
 
     this.project = new CATARSE.Project($('#project_description').data("project"))
     this.render()
+
+    // Redirect to #updates anchor in case we come through a link to an update 
+    if(window.location.search.match(/update_id/)){
+      window.location.hash = 'updates';
+    }
   },
 
   events: {
@@ -166,7 +171,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
       return true
     if(!element.is('li'))
       element = element.parentsUntil('li')
-    var url = element.find('input[type=hidden]').val()
+    var url = element.find('input[name="url"][type=hidden]').val()
     window.location.href = url;
     //CATARSE.requireLogin(event, url)
   },

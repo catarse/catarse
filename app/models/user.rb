@@ -1,4 +1,5 @@
 # coding: utf-8
+require 'memoist'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -44,7 +45,7 @@ class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
   include Rails.application.routes.url_helpers
-  extend ActiveSupport::Memoizable
+  extend Memoist
 
   mount_uploader :uploaded_image, LogoUploader
 
@@ -63,14 +64,18 @@ class User < ActiveRecord::Base
   has_many :backs, :class_name => "Backer"
   has_many :projects
   has_many :updates
+  has_many :unsubscribes
   has_many :notifications
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   has_one :user_total
   has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id, :primary_key => :id
+  accepts_nested_attributes_for :unsubscribes, allow_destroy: true
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
+  scope :subscribed_to_updates, where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id IS NULL AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
+  scope :subscribed_to_project, ->(project_id){ who_backed_project(project_id).where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id) }
   scope :most_backeds, ->{
     joins(:backs).select(
       <<-SQL
@@ -195,6 +200,23 @@ class User < ActiveRecord::Base
 
   def total_backs
     backs.confirmed.not_anonymous.count
+  end
+
+  def updates_subscription
+    unsubscribes.find_or_initialize_by_project_id_and_notification_type_id(nil, NotificationType.where(name: 'updates').last.id)
+  end
+
+  def project_unsubscribes
+    backed_projects.map do |p|
+      unsubscribes.find_or_initialize_by_project_id_and_notification_type_id(p.id, NotificationType.where(name: 'updates').last.id)
+    end
+  end
+
+  def backed_projects
+    projects_list = backs.confirmed.map do |b|
+      b.project
+    end
+    projects_list.uniq
   end
 
   def backs_text

@@ -1,0 +1,12 @@
+digraph graphname {
+  rankdir=LR;
+  fontname="Arial";
+  node [width=2,height=2,fontname="Arial"];
+  draft -> online [label="Approved", fontsize="10", fontname="Arial"];
+  draft -> rejected [label="Rejected", fontsize="10", fontname="Arial"];
+  rejected -> draft [label="Resubmited", fontsize="10", fontname="Arial"];
+  online -> "waiting funds" [label="Expired without enough funds", fontsize="10", fontname="Arial"];
+  online -> successful [label="Funding successful while online", fontsize="10", fontname="Arial"];
+  "waiting funds" -> failed [label="Insufficient money after waiting funds", fontsize="10", fontname="Arial"];
+  "waiting funds" -> successful [label="Funding successful after waiting funds", fontsize="10", fontname="Arial"];
+}

@@ -7,7 +7,6 @@ feature "with login page" do
 
   scenario "Login with user that use another provider" do
     click_login
-    verify_translations
 
     user_facebook = Factory.create(:user, :provider => 'facebook', :uid => '1234566',:email => 'lorem@lorem.com', :password => 'somepassword', :password_confirmation => 'somepassword')
     within ".new_session" do
@@ -23,7 +22,6 @@ feature "with login page" do
 
   scenario "Login with devise user" do
     click_login
-    verify_translations
 
     user = Factory.create(:user, :provider => 'devise',:email => 'lorem@lorem.com', :password => '123lorem', :password_confirmation => '123lorem')
     within ".new_session" do
@@ -38,7 +36,6 @@ feature "with login page" do
 
   scenario "Register new user account" do
     click_login
-    verify_translations
 
     within ".new_registration" do
       fill_in "Nome", with: "Foo Bar"
@@ -56,13 +53,12 @@ feature "with login page" do
 
     user = Factory.create(:user, :provider => 'devise',:email => 'lorem@lorem.com', :password => '123lorem', :password_confirmation => '123lorem')
     click_login
-    verify_translations
 
     click_link("Esqueceu sua senha?")
-    verify_translations
     fill_in 'user_email', :with => user.email
     click_button 'user_submit'
 
+    sleep 2
     ActionMailer::Base.deliveries.should_not be_empty
   end
 end
@@ -71,7 +67,6 @@ feature "with devise routes" do
 
   scenario "Try login with email that another provider" do
     visit new_user_session_path
-    verify_translations
     user_facebook = Factory.create(:user, :provider => 'facebook', :uid => '1234566',:email => 'lorem@lorem.com', :password => 'somepassword', :password_confirmation => 'somepassword')
 
     fill_in 'user_email', :with => user_facebook.email
@@ -84,7 +79,6 @@ feature "with devise routes" do
 
   scenario "Login with devise user" do
     visit new_user_session_path
-    verify_translations
     user = Factory.create(:user, :provider => 'devise',:email => 'lorem@lorem.com', :password => '123lorem', :password_confirmation => '123lorem')
 
     fill_in 'user_email', :with => user.email
@@ -97,7 +91,6 @@ feature "with devise routes" do
 
   scenario "Register new user using devise" do
     visit new_user_registration_path
-    verify_translations
 
     within ".new_registration" do
       fill_in "Nome", with: "Foo Bar"
@@ -116,10 +109,10 @@ feature "with devise routes" do
 
     user = Factory.create(:user, :provider => 'devise',:email => 'lorem@lorem.com', :password => '123lorem', :password_confirmation => '123lorem')
     visit new_user_password_path
-    verify_translations
     page.should have_css('h1', :text => I18n.t('passwords.new.title'))
     fill_in 'user_email', :with => user.email
     click_button 'user_submit'
+    sleep 2
 
     ActionMailer::Base.deliveries.should_not be_empty
   end

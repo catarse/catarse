@@ -12,6 +12,7 @@ describe User do
     it{ should have_many :notifications }
     it{ should have_many :secondary_users }
     it{ should have_many :updates }
+    it{ should have_many :unsubscribes }
     it{ should have_one :user_total }
   end
 
@@ -245,6 +246,47 @@ describe User do
     it{ should == @p2}
   end
 
+  describe "#updates_subscription" do
+    subject{user.updates_subscription}
+    before { @nt = Factory(:notification_type, name: 'updates') }
+    context "when user is subscribed to all projects" do
+      it{ should be_new_record }
+    end
+    context "when user is unsubscribed from all projects" do
+      before { @u = Factory(:unsubscribe, project_id: nil, notification_type_id: @nt.id, user_id: user.id )}
+      it{ should == @u}
+    end
+  end
+
+  describe "#project_unsubscribes" do
+    subject{user.project_unsubscribes}
+    before do
+      @p1 , @p2 = Factory(:project), Factory(:project)
+      @nt = Factory(:notification_type, name: 'updates')
+    end
+    context "when user is unsubscribed from all projects" do
+      before do
+        Factory(:backer, user: user, project: @p1)
+        Factory(:backer, user: user, project: @p2)
+        @u1 = Factory(:unsubscribe, project_id: @p1.id, notification_type_id: @nt.id, user_id: user.id )
+        @u2 = Factory(:unsubscribe, project_id: @p2.id, notification_type_id: @nt.id, user_id: user.id )
+      end
+      it{ should == [@u2, @u1]}
+    end
+  end
+
+  describe "#backed_projects" do
+    subject{user.backed_projects}
+    before do
+      @p1 , @p2, @p3 = Factory(:project), Factory(:project), Factory(:project)
+      Factory(:backer, user: user, project: @p1)
+      Factory(:backer, user: user, project: @p1)
+      Factory(:backer, user: user, project: @p2)
+      Factory(:backer, user: user, project: @p3)
+    end
+    it{should == [@p3, @p2, @p1]}
+  end
+
   describe "#remember_me_hash" do
     subject{ Factory(:user, :provider => "foo", :uid => "bar").remember_me_hash }
     it{ should == "27fc6690fafccbb0fc0b8f84c6749644" }
@@ -268,6 +310,7 @@ describe User do
 
   describe "#merge_into!" do
     it "should merge into another account, taking the credits, backs, projects and notifications with it" do
+      Notification.any_instance.stubs(:send_email)
       old_user = Factory(:user)
       new_user = Factory(:user)
       backed_project = Factory(:project)
@@ -275,8 +318,9 @@ describe User do
       new_user_back = backed_project.backers.create!(:user => new_user, :value => 10)
       old_user_project = Factory(:project, :user => old_user)
       new_user_project = Factory(:project, :user => new_user)
-      old_user_notification = old_user.notifications.create!(:text => "Foo bar")
-      new_user_notification = new_user.notifications.create!(:text => "Foo bar")
+      notification_type = Factory(:notification_type)
+      old_user_notification = old_user.notifications.create! notification_type: notification_type
+      new_user_notification = new_user.notifications.create! notification_type: notification_type
 
       old_user.backs.should == [old_user_back]
       new_user.backs.should == [new_user_back]
