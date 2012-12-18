@@ -1,6 +1,6 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  load_and_authorize_resource except: :update_attribute_on_the_spot
+  load_and_authorize_resource except: [:update_attribute_on_the_spot, :projects]
   inherit_resources
   actions :show, :update, :unsubscribe_update
   respond_to :json, :only => [:backs, :projects, :request_refund]
