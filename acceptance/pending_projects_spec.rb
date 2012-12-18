@@ -23,7 +23,7 @@ feature "Pending projects" do
   end
 
   scenario "show a table with projects" do
-    add_some_projects(10)
+    10.times{ Factory(:project) }
     user_to_admin(current_user)
     visit pending_projects_path
     page.should have_content "Encontrados 10 projetos"
@@ -31,7 +31,7 @@ feature "Pending projects" do
   end
 
   scenario 'show projects in home page' do
-    add_some_projects(1)
+    1.times{ Factory(:project) }
     user_to_admin(current_user)
     visit homepage
     page.should have_no_css('.project_list_header')
