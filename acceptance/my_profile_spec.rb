@@ -47,7 +47,7 @@ feature "My profile Feature" do
     within "#user_profile_menu" do
       click_link I18n.t('users.show.tabs.created_projects')
     end
-    sleep 60
+    sleep 5
 
     within "#user_created_projects" do
       all('li .small_project_land').should have(4).items
