@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/devton/catarse_moip.git
-  revision: e2298bf50d1c0d1bed918b894cc8dd9046f11b24
+  revision: 905ff368f7c48485357d8673ff8472cbae882af4
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
@@ -276,6 +276,7 @@ GEM
     mocha (0.10.4)
       metaclass (~> 0.0.1)
     multi_json (1.4.0)
+    multi_json (1.5.0)
     multipart-post (1.1.5)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
