@@ -74,6 +74,8 @@ en:
             email:
               not_found: "Your email is not registered, please verify the address or create a new account"
     attributes:
+      unsubscribe:
+        update: "Receive project updates"
       backer:
         value: Value
       project:
@@ -541,6 +543,7 @@ en:
     base_url: "http://catarse.me"
     blog: "http://blog.catarse.me/"
     email:
+      no_reply: "no-reply@catarse.me"
       contact: contato@catarse.me
       payments: financeiro@catarse.me
       projects: projetos@catarse.me
@@ -552,12 +555,71 @@ en:
     twitter: Catarse_
   static:
     faq:
-      title: "Frequent asked questions"
+      title: "Frequently asked questions"
     guidelines:
-      accept: "I have read and understood how Catarse works."
-      submit: "I want to submit my project"
-      subtitle: "Before submitting your project, learn a little about how Catarse works."
-      title: "How does Catarse work?"
+      accept: "I have read and understand how catarse works."
+      explore_curious: "Just looking around!"
+      explore_projects: "I want to explore the projects."
+      submit: "Next step!"
+      send_project: "I want to submit my project."
+      subtitle: "Understand, step-by-step, how to finance your project through Catarse."
+      title: "How Catarse works?"
+      introduction: "Catarse is a different - and collaborative - way to make your projects become reality."
+      legend_html: "Use this guide to decide if Catarse is the right tool for the job."
+      title_one: "Submit your project"
+      step_one: "Projects are actions! And we receive them with open arms whether they are small, big, funny, serious, traditional, innovative... We love projects that require little money and have a big impact in their communities."
+      title_two: "Review"
+      step_two: "After we receive your project, it will be screened by our team of reviewers. The objective here is to give you tips in order to maximize the chances of your project becoming successful, as well as filtering NON-SENSE projects. Remember, we want your project to be successful as much as you do ;)"
+      title_three: "Let's go live!?"
+      step_three: "When your project is ready, it's time to go live and plan your campaign. During this period, you will need to engage as many people as possible to reach your goal."
+      title_four: "It's all-or-nothing"
+      step_four: "If your project doesn't reach its goal before time runs out, all backers will receive their pledged amount in credits and later, if they want, can ask for a refund."
+      title_requirements: "Requirements to submit your project to Catarse"
+      creative: "Creative and Finite"
+      colective: "Collective Benefits"
+      nonprofit: "Non-financial rewards"
+      donation: "No philanthropic or “fund my life” projects"
+      video: "Make a video"
+      more_questions: "Ok, but tell me more about this Catarse..."
+      title_magic: "Our magic formula"
+      magic: "We believe that providing a meeting place for people that share common values is the best way to turn projects into reality. Use Catarse as a channel to direct your network towards a COMMON objective."
+      title_money: "Where does the money to finance projects come from?"
+      money: "At least 50% will come from your own network of contacts. In this manner, Catarse is a way for you to get closer to the people that enjoy your work and expand this network through sharing in social networks, newspapers, blogs and, of course, your favorite bar."
+      title_work: "Does it take a lot of work?"
+      work: "A loooot! There is no 'easy money on the INTERNET'. You will have to work a lot during your project, but the experience will be worth it - we assure you :D And you will have a much stronger network behind your project after Catarse."
+      title_costs: "How much does it cost to use Catarse?"
+      costs: "Submitting your project is free. Now, when your project is approved and has reached its goal, Catarse will apply a 7.5% fee to the total collected. Moreover, the payment processing fee is  5.5%. So, in total, the fee is 13%."
+      why: "Why Catarse?"
+      intro: "First of all, it's good that you know why we believe that this new way to finance projects is phenomenal:"
+      why_one: "By creating a very strong bond with your network, this kind of campaign open doors to new projects, partnerships and other unexpected connections."
+      why_two: "If the projects are well connected, they can spread, quickly, to a lot of people, expanding your network and strengthening the base of people around your project."
+      why_three: "Minimum red tape and low financial risk. No interest rate, no entry fees... and lots of fun and emotion."
+    guidelines_tips:
+      title: "Almost there!"
+      subtitle: "Before submitting your project, it's good to think over a few important points."
+      introduction_html: "We know you can't wait to have your project online, but first answer <br> (in a piece of paper) the following questions."
+      legend_html: "Having clear answers to these questions will help tremendously in structuring your project, <br>increasing the chances that it will be successful."
+      title_one: "What inspired you to make this project?"
+      tip_one: "People only engage when they realize the importance of a cause for society or for the person who leads a campaign. So be very clear what is your inspiration and let it overflow into your project."
+      title_two: "What is the focus?"
+      tip_two: "Catarse is an excellent way to take the first steps. Therefore, define very well the purpose of your project, as well as who will benefit from it. Clearly defining your objectives is one of the best ways to engage people."
+      title_three: "What is your goal?"
+      tip_three: "Calculate all costs for the project execution and rewards delivery. Also take into account your ability to engage people in order to define your financial goal."
+      title_four: "What is your deadline for the fundraising?"
+      tip_four: "Don't underestimate the work of a campaign. You will have to work hard during the entire period the project is live, so, it's recommended that you don't tire yourself too much in this process. Our recommendation: 40 days of campaign."
+      title_five: "Have you thought about the project rewards?"
+      tip_five: "Remember that rewards are public promises. So, think very well when elaborating them, as well as the logistics in delivering them to your backers. Our suggestion: think about immaterial rewards: downloads, experiences, courses e kisses."
+      title_six: "Is your video ready?"
+      tip_six: "The video is the business card of your project. It's through it that the backers will get in touch with your cause. So, take special care in the script, audio and image quality. HD is recommended."
+      title_seven: "How will you mobilize your network?"
+      tip_seven: "You need to have a clear idea on how you will stir your network and convince it to back your project. Distribute your work weekly and change your approach with the network according to how close you are to it."
+      title_eight: "How will the money be used?"
+      tip_eight: "Create a GOOGLE DOCS spreadsheet and open your budget to show everyone how the money will be used. TRANSPARENCY is everything."
+      explore_curious: "Just looking around!"
+      explore_projects: "I want to explore the projects."
+      submit: "Next step!"
+      send_project: "I want to submit my project."
+      guide: "Download here a complete guide with all the tips to elaborate your project in Catarse."
     privacy:
       title: "Privacy Policy"
     terms:
@@ -579,6 +641,7 @@ en:
         comments: Comments
         credits: Credits
         settings: Settings
+        unsubscribes: Notifications
       user_social:
         email: "Send me an email"
         facebook: "Profile on facebook"
@@ -591,6 +654,9 @@ en:
       title: "Projects %{name} has backed"
       title_current_user: "Projects I've backed"
       your_reward: "Your reward"
+    unsubscribes:
+      title: "Choose from which projects you want to receive update notifications:"
+      updates: "I want to receive project updates"
     current_user_fields:
       updated: "Your information has been updated"
       update_social_info: "Update info"

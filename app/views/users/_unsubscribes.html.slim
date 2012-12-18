@@ -1,0 +1,23 @@
+#my_data
+  ul
+    = I18n.t('users.unsubscribes.title')
+  ul
+    li
+      .bootstrap-form
+      = semantic_form_for(@user, url: user_unsubscribes_path(user_id: @user.id), html:{ method: :post}) do |f|
+        = f.inputs do
+          = f.semantic_fields_for :unsubscribes, @subscribed_to_updates do |u|
+            - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = nil)
+            #subscribed_check
+              = u.input :subscribed, as: :boolean, input_html: checked, label: I18n.t('users.unsubscribes.updates')
+          - if @unsubscribes
+            = f.semantic_fields_for :unsubscribes, @unsubscribes do |u|
+              = u.inputs do
+                - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = nil)
+                .subscribed_projects
+                  = u.input :subscribed, as: :boolean, input_html: checked, label: Project.find(u.object.project_id).name
+                = u.input :project_id, as: :hidden
+                = u.input :user_id, as: :hidden
+                = u.input :notification_type_id, as: :hidden
+
+        p= f.submit t('users.current_user_fields.update_social_info'), :class => 'btn', :id => "unsubscribe_submit"

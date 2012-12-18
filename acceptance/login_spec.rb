@@ -8,7 +8,6 @@ feature "Login Feature" do
     page.should have_no_link('Github')
 
     fake_login
-    verify_translations
     page.should have_css('.user')
     page.should have_link(I18n.t('layouts.header.account'))
   end

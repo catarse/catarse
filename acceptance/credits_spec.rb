@@ -5,19 +5,18 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 feature "Credits Feature" do
 
   before do
+    Factory(:notification_type, name: 'updates')
     fake_login
     project = Factory(:project, finished: true, successful: false)
     @backers = [
-      Factory(:backer, user: user, project: project, confirmed: true, can_refund: true, requested_refund: false, refunded: false, value: 20, created_at: 8.days.ago),
+      Factory(:backer, user: user, project: project, confirmed: true, requested_refund: false, refunded: false, value: 20, created_at: 8.days.ago)
     ]
     user.reload
 
-    sleep 1
+    sleep 8
 
     click_link I18n.t('layouts.header.account')
-    verify_translations
     click_link I18n.t('credits.index.title')
-    verify_translations
     current_path.should == user_path(user)
 
     within 'head title' do
@@ -39,7 +38,6 @@ feature "Credits Feature" do
       column.text.should == I18n.t('credits.refund.no_credits')
     end
     click_on "OK"
-    verify_translations
     find("#current_credits").should have_content(user.display_credits)
   end
 
@@ -70,11 +68,10 @@ feature "Credits Feature" do
       verify_translations
       page.evaluate_script('window.confirm = function() { return true; }')
       column = rows[0].all("td")[4]
-      # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to way for the AJAX to finish
+      # Needed this sleep because have_content is not returning the right value and thus capybara does not know it has to wait for the AJAX to finish
       sleep 2
-      column.text.should == "Pedido enviado com sucesso"
+      column.text.should == I18n.t('credits.index.refunded')
     end
     click_on "OK"
-    verify_translations
   end
 end

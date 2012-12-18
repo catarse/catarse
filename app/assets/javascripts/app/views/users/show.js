@@ -1,16 +1,18 @@
 CATARSE.UsersShowView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "index", "backs", "projects", "credits", "comments", "request_refund", 'settings', 'closeCreditsModal')
+    _.bindAll(this, "index", "backs", "projects", "credits", "comments", "request_refund", 'settings', 'unsubscribes', 'closeCreditsModal')
     CATARSE.router.route("", "index", this.index)
     CATARSE.router.route("backs", "backs", this.backs)
     CATARSE.router.route("projects", "projects", this.projects)
     CATARSE.router.route("credits", "credits", this.credits)
     CATARSE.router.route("comments", "comments", this.comments)
     CATARSE.router.route("settings", "settings", this.settings)
+    CATARSE.router.route("unsubscribes", "unsubscribes", this.unsubscribes)
     CATARSE.router.route("request_refund/:back_id", "request_refund", this.request_refund)
     this.user = new CATARSE.User($('#user_profile').data("user"))
     this.render()
+    this.toggleProjects();
 
     $('input,textarea').live('keypress', function(e){
       if (e.which == '13' && $("button:contains('OK')").attr('disabled')) {
@@ -40,11 +42,23 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
   events: {
     'click #creditsModal .modal-footer a':'closeCreditsModal',
+    'change #subscribed_check':'toggleProjects',
+    'click .subscribed_projects li label input':'toggleCheckboxes',
   },
 
   closeCreditsModal: function(e) {
     e.preventDefault();
     this.$('#creditsModal').modal('hide');
+  },
+
+  toggleCheckboxes: function(e) {
+    return this.$("#subscribed_check li label input").prop('checked')
+  },
+
+  toggleProjects: function(e) {
+    checked = this.toggleCheckboxes()
+    checked ? this.$(".subscribed_projects li label").removeClass('disabled') :
+      this.$(".subscribed_projects li label").addClass('disabled')
   },
 
   BackView: CATARSE.ModelView.extend({
@@ -118,6 +132,11 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
   settings: function() {
     this.selectItem("settings")
+    this.$("#loading").children().hide();
+  },
+
+  unsubscribes: function() {
+    this.selectItem("unsubscribes")
     this.$("#loading").children().hide();
   },
 

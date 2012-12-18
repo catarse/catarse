@@ -1,7 +1,8 @@
+require 'memoist'
 class Configuration < ActiveRecord::Base
   validates_presence_of :name
   class << self
-    extend ActiveSupport::Memoizable
+    extend Memoist
 
     # This method returns the values of the config simulating a Hash, like:
     #   Configuration[:foo]
