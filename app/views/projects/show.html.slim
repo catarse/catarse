@@ -94,7 +94,7 @@
                       = t('.share.embed')
                   li.link
                     = text_field_tag "project_link", @project.short_url
-                #twitter_share= render 'twitter'
+                #twitter_share= render_twitter
                 .clear
           .text
             h5= t('.about_title')
