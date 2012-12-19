@@ -59,5 +59,3 @@ RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/
 I18n.locale = :pt
 I18n.default_locale = :pt
 
-# Put ActiveMerchant in test mode
-ActiveMerchant::Billing::Base.mode = :test
