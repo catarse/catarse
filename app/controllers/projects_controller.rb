@@ -148,19 +148,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def cep
-    address = BuscaEndereco.por_cep(params[:cep])
-    render :json => {
-      :ok => true,
-      :street => "#{address[0]} #{address[1]}",
-      :neighbourhood => address[2],
-      :state => address[3],
-      :city => address[4]
-    }.to_json
-  rescue
-    render :json => {:ok => false}.to_json
-  end
-
   def check_slug
     project = Project.where("permalink = ?", params[:permalink])
     render :json => {:available => project.empty?}.to_json
@@ -177,21 +164,6 @@ class ProjectsController < ApplicationController
     @title = @project.name
     render :layout => 'embed'
   end
-
-  def pending
-    return unless require_admin
-    @title = t('projects.pending.title')
-    @search = Project.search(params[:search])
-    @projects = @search.order('projects.created_at DESC').page(params[:page])
-  end
-
-  def pending_backers
-    return unless require_admin
-    @title = t('projects.pending_backers.title')
-    @search = Backer.search(params[:search])
-    @backers = @search.order("created_at DESC").page(params[:page])
-  end
-
 
   private
   def last_tweets
