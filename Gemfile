@@ -78,7 +78,6 @@ gem 'unicode'
 gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1'
 gem "rack-timeout"
-gem 'tumblr-api'
 
 # Translations
 gem 'http_accept_language'
@@ -91,7 +90,6 @@ gem "meta_search", "1.1.3"
 # Payment
 gem 'httpclient', '2.2.5'
 gem 'selenium-webdriver', '~> 2.25.0'
-gem 'bourbon'
 
 # Server
 gem 'thin'
@@ -105,12 +103,9 @@ group :assets do
 end
 
 group :test, :development do
-  gem 'annotate'
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'steak', "~> 1.1.0"
   gem 'rspec-rails', "~> 2.10.0"
-  gem 'rcov', '= 0.9.11'
   gem 'mocha', '0.10.4'
   gem 'shoulda'
   gem 'factory_girl_rails', '1.7.0'
@@ -119,5 +114,4 @@ end
 
 group :development do
   gem 'mailcatcher'
-  gem 'ruby-debug19'
 end
