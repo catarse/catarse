@@ -16,7 +16,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
@@ -24,13 +24,27 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with :truncation
   end
 
+  config.before type: :request do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.after type: :request do
+    DatabaseCleaner.strategy = :transaction
+  end
+
   config.before(:each) do
+    DatabaseCleaner.start
+    ActionMailer::Base.deliveries.clear
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
     Project.any_instance.stubs(:download_video_thumbnail)
     CatarseMailchimp::API.stubs(:subscribe)
     CatarseMailchimp::API.stubs(:unsubscribe)
     Notification.stubs(:create_notification)
     Notification.stubs(:create_notification_once)
+  end
+
+  config.after do
+    DatabaseCleaner.clean
   end
 
   def mock_tumblr method=:two
