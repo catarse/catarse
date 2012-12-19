@@ -82,7 +82,6 @@ gem 'tumblr-api'
 
 # Translations
 gem 'http_accept_language'
-gem 'web_translate_it'
 gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 
 # Administration
@@ -90,11 +89,9 @@ gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 gem "meta_search", "1.1.3"
 
 # Payment
-gem 'activemerchant', '1.17.0', require: 'active_merchant'
 gem 'httpclient', '2.2.5'
 gem 'selenium-webdriver', '~> 2.25.0'
 gem 'bourbon'
-gem 'paypal-express', :require => 'paypal'
 
 # Server
 gem 'thin'
