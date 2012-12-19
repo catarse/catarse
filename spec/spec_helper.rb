@@ -41,6 +41,11 @@ RSpec.configure do |config|
     CatarseMailchimp::API.stubs(:unsubscribe)
     Notification.stubs(:create_notification)
     Notification.stubs(:create_notification_once)
+    [Projects::BackersController, ::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController, SessionsController].each do |c|
+      c.any_instance.stubs(:render_facebook_sdk)
+      c.any_instance.stubs(:render_facebook_like)
+      c.any_instance.stubs(:render_twitter)
+    end
   end
 
   config.after do
