@@ -275,34 +275,6 @@ describe Project do
     end
   end
 
-  #describe "status changes" do
-    #it "should be waiting confirmation until 3 weekdays after the deadline unless it is already successful" do
-      #p = Factory(:project, :goal => 100)
-      #time = Time.local 2011, 03, 04
-      #Time.stubs(:now).returns(time)
-      #p.successful?.should be_false
-      #p.expires_at = 1.minute.from_now
-      #p.waiting_confirmation?.should be_false
-      #p.expires_at = 4.weekdays_ago
-      #p.waiting_confirmation?.should be_false
-      #p.expires_at = 3.weekdays_ago - 1.minute
-      #p.waiting_confirmation?.should be_false
-      #p.expires_at = 3.weekdays_ago + 1.minute
-      #p.waiting_confirmation?.should be_true
-      #p.expires_at = 2.weekdays_ago
-      #p.waiting_confirmation?.should be_true
-      #p.stubs(:pledged).returns(100)
-      #p.successful?.should be_true
-      #p.expires_at = 3.weekdays_ago + 1.minute
-      #p.waiting_confirmation?.should be_false
-      #p.expires_at = 2.weekdays_ago
-      #p.waiting_confirmation?.should be_false
-    #end
-
-  #end
-
-
-
   it "should return time_to_go acording to expires_at" do
     p = Factory.build(:project)
     time = Time.now
