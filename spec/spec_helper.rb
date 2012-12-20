@@ -20,16 +20,8 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with :truncation
-  end
-
-  config.before type: :request do
     DatabaseCleaner.strategy = :truncation
-  end
-
-  config.after type: :request do
-    DatabaseCleaner.strategy = :transaction
   end
 
   config.before(:each) do
@@ -48,7 +40,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.after do
+  config.after(:each) do
     DatabaseCleaner.clean
   end
 

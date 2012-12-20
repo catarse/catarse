@@ -250,6 +250,7 @@ describe User do
   describe "#updates_subscription" do
     subject{user.updates_subscription}
     context "when user is subscribed to all projects" do
+      before{ notification_type }
       it{ should be_new_record }
     end
     context "when user is unsubscribed from all projects" do
