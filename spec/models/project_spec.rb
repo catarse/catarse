@@ -52,6 +52,22 @@ describe Project do
     end
   end
 
+  describe ".backed_by" do
+    before do
+      backer = Factory(:backer, confirmed: true)
+      @user = backer.user
+      @project = backer.project
+      # Another backer with same project and user should not create duplicate results
+      Factory(:backer, user: @user, project: @project, confirmed: true) 
+      # Another backer with other project and user should not be in result
+      Factory(:backer, confirmed: true) 
+      # Another backer with different project and same user but not confirmed should not be in result
+      Factory(:backer, user: @user, confirmed: false) 
+    end
+    subject{ Project.backed_by(@user.id) }
+    it{ should == [@project] }
+  end
+
   describe ".recommended_for_home" do
     subject{ Project.recommended_for_home }
 
