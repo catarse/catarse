@@ -213,10 +213,7 @@ class User < ActiveRecord::Base
   end
 
   def backed_projects
-    projects_list = backs.confirmed.map do |b|
-      b.project
-    end
-    projects_list.uniq
+    Project.backed_by(self.id)
   end
 
   def backs_text
