@@ -20,7 +20,7 @@ class Notification < ActiveRecord::Base
         backer: mail_params[:backer],
         project_update: mail_params[:update],
         notification_type: nt,
-        mail_params: mail_params,
+        mail_params: mail_params
     end
   end
 
