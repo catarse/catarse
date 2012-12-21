@@ -24,7 +24,7 @@ ActiveAdmin.register Project do
 
   form do |f|
     f.inputs do
-      # f.input :user
+      f.input :user
       f.input :category
       f.input :curated_pages
       f.input :name, :as => :string
