@@ -1,0 +1,45 @@
+en:
+  active_admin:
+    dashboard: "Admin Panel"
+    dashboard_welcome:
+      welcome: "Welcome to Active Admin. This page is the default panel."
+      call_to_action: "To add sections to the panel, check 'app / admin / dashboards.rb'"
+    view: View
+    edit: Edit
+    delete: Remvoe
+    delete_confirmation: "Are you sure you want to delete this item?"
+    new_model: "New %{model}"
+    create_model: "Create %{model}"
+    edit_model: "Edit %{model}"
+    update_model: "Update %{model}"
+    delete_model: "Delete %{model}"
+    details: "Details %{model}"
+    cancel: Cancel
+    empty: Empty
+    previous: Previous
+    next: Next
+    download: "Download:"
+    has_many_new: "Add new %{model}"
+    has_many_delete: "Move"
+    filter: Filter
+    clear_filters: "Clear Filters"
+    search_field: "Search %{field}"
+    equal_to: "Equal to"
+    greater_than: "Greater than"
+    less_than: "Less than"
+    main_content: "Please implement %{model}#main_content to display content."
+    logout: Logout
+    sidebars:
+      filters: Filters
+    pagination:
+      empty: "No %{model} found"
+      one: "Showing <b>1</b> %{model}"
+      one_page: "Showing <b>all the %{n}</b> %{model}"
+      multiple: "Showing %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> in total <b>%{total}</b>"
+      entry:
+        one: Register
+        other: Registers
+    any: Any
+    blank_slate:
+      content: "%{resource_name} does not exist."
+      link: "Create a"
