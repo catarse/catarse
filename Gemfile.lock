@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/devton/catarse_mailchimp
+  revision: a5be917969a1df6010fbbdea25a5c1407c6f8659
+  specs:
+    catarse_mailchimp (0.0.1)
+      mailchimp
+      supermodel
+
+GIT
   remote: git://github.com/devton/catarse_moip.git
   revision: 905ff368f7c48485357d8673ff8472cbae882af4
   specs:
@@ -119,9 +127,6 @@ GEM
     carrierwave (0.7.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    catarse_mailchimp (0.0.1)
-      mailchimp
-      supermodel
     celluloid (0.12.3)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
@@ -493,7 +498,7 @@ DEPENDENCIES
   cancan
   capybara (>= 1.0.1)
   carrierwave (~> 0.7.0)
-  catarse_mailchimp
+  catarse_mailchimp!
   catarse_moip!
   catarse_paypal_express!
   coffee-rails (~> 3.2.2)
