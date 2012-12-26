@@ -46,15 +46,9 @@ class ProjectsController < ApplicationController
           calendar.fetch_events_from("catarse.me_237l973l57ir0v6279rhrr1qs0@group.calendar.google.com") || []
         end
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(8)
-        @last_tweets = Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
-          begin
-            JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}")))[0..1]
-          rescue
-            []
-          end
-        end
-        @last_tweets ||= []
       end
+      @last_tweets = last_tweets || []
+
       format.json do
         @projects = if params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains]
           Project.visible.pg_search( params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains])
@@ -154,19 +148,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def cep
-    address = BuscaEndereco.por_cep(params[:cep])
-    render :json => {
-      :ok => true,
-      :street => "#{address[0]} #{address[1]}",
-      :neighbourhood => address[2],
-      :state => address[3],
-      :city => address[4]
-    }.to_json
-  rescue
-    render :json => {:ok => false}.to_json
-  end
-
   def check_slug
     project = Project.where("permalink = ?", params[:permalink])
     render :json => {:available => project.empty?}.to_json
@@ -184,22 +165,16 @@ class ProjectsController < ApplicationController
     render :layout => 'embed'
   end
 
-  def pending
-    return unless require_admin
-    @title = t('projects.pending.title')
-    @search = Project.search(params[:search])
-    @projects = @search.order('projects.created_at DESC').page(params[:page])
-  end
-
-  def pending_backers
-    return unless require_admin
-    @title = t('projects.pending_backers.title')
-    @search = Backer.search(params[:search])
-    @backers = @search.order("created_at DESC").page(params[:page])
-  end
-
-
   private
+  def last_tweets
+    Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
+      begin
+        JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}")))[0..1]
+      rescue
+        []
+      end
+    end
+  end
 
   # Just to fix a minor bug,
   # when user submit the project without some rewards.

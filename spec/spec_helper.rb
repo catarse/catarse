@@ -16,21 +16,35 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with :truncation
+    DatabaseCleaner.strategy = :truncation
   end
 
   config.before(:each) do
+    DatabaseCleaner.start
+    ActionMailer::Base.deliveries.clear
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
     Project.any_instance.stubs(:download_video_thumbnail)
     CatarseMailchimp::API.stubs(:subscribe)
     CatarseMailchimp::API.stubs(:unsubscribe)
     Notification.stubs(:create_notification)
     Notification.stubs(:create_notification_once)
+    Calendar.any_instance.stubs(:fetch_events_from)
+    Blog.stubs(:fetch_last_posts).returns([])
+    ProjectsController.any_instance.stubs(:last_tweets)
+    [Projects::BackersController, ::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController, SessionsController].each do |c|
+      c.any_instance.stubs(:render_facebook_sdk)
+      c.any_instance.stubs(:render_facebook_like)
+      c.any_instance.stubs(:render_twitter)
+    end
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 
   def mock_tumblr method=:two
@@ -45,5 +59,3 @@ RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/
 I18n.locale = :pt
 I18n.default_locale = :pt
 
-# Put ActiveMerchant in test mode
-ActiveMerchant::Billing::Base.mode = :test

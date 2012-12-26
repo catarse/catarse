@@ -66,35 +66,6 @@ CATARSE.ReviewForm = Backbone.View.extend({
       }
     };
 
-    var verify_zip_code = function(){
-      zip_code_valid = false
-      if(/^[0-9]{5}-[0-9]{3}$/i.test($('#user_address_zip_code').val())) {
-        $('#user_address_zip_code').removeClass("ok").removeClass("error").addClass('loading')
-        $.get('/projects/cep/?cep='+$('#user_address_zip_code').val(), function(r){
-          $('#user_address_zip_code').removeClass("loading")
-          if(r.ok==true){
-            zip_code_valid = true
-            if(r.street != $('#user_address_street').val()){
-              $('#user_address_street').val(r.street).effect("highlight", {}, 1500)
-              $('#user_address_number').val(null).effect("highlight", {}, 1500)
-              $('#user_address_complement').val(null).effect("highlight", {}, 1500)
-              $('#user_address_number').focus()
-            }
-            if(r.neighbourhood != $('#user_address_neighbourhood').val())
-              $('#user_address_neighbourhood').val(r.neighbourhood).effect("highlight", {}, 1500)
-            if(r.city != $('#user_address_city').val())
-              $('#user_address_city').val(r.city).effect("highlight", {}, 1500)
-            if(r.state != $('#user_address_state').val())
-              $('#user_address_state').val(r.state).effect("highlight", {}, 1500)
-          } else {
-            zip_code_valid = false
-          }
-          everything_ok()
-        })
-      }
-      everything_ok()
-    };
-
     var all_ok = true
     if($('#backer_credits').val() == "false"){
       if(!ok('#user_full_name'))

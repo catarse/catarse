@@ -20,8 +20,6 @@
   meta property="og:site_name" content=t('site.name')
   meta property="fb:admins" content="#{fb_admins}"
 
-= render 'facebook_sdk'
-
 #page_content
   .container
     - if @project.draft?
@@ -86,9 +84,9 @@
             .social
               #project_share
                 - if @project.permalink
-                  #facebook_share= render 'facebook', :href => project_by_slug_url(@project.permalink, :locale => I18n.locale)
+                  #facebook_share= render_facebook_like href: project_by_slug_url(@project.permalink, locale: I18n.locale)
                 - else
-                  #facebook_share= render 'facebook', :href => project_url(@project, :locale => I18n.locale)
+                  #facebook_share= render_facebook_like href: project_url(@project, locale: I18n.locale)
                 ul
                   li.embed
                     = link_to '#embed', :id => 'embed_link' do
@@ -96,7 +94,7 @@
                       = t('.share.embed')
                   li.link
                     = text_field_tag "project_link", @project.short_url
-                #twitter_share= render 'twitter'
+                #twitter_share= render_twitter
                 .clear
           .text
             h5= t('.about_title')
