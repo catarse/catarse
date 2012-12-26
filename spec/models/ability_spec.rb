@@ -25,6 +25,7 @@ describe Ability do
 
       it { should_not be_able_to(:update, project, :name) }
       it { should_not be_able_to(:update, project, :goal) }
+      it { should_not be_able_to(:update, project, :online_days) }
       it { should_not be_able_to(:update, project, :video_url) }
       it { should be_able_to(:update, project, :about) }
       it { should be_able_to(:destroy, reward) }
