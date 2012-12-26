@@ -1,6 +1,4 @@
 class PaymentEngines
-  cattr_reader :engines
-
   def self.register options
     @@engines ||= []
     @@engines.push(options)
@@ -10,7 +8,7 @@ class PaymentEngines
     @@engines.clear
   end
 
-  def self.each
-    @@engines.sort{|a,b| (a[:locale] == I18n.locale.to_s ? -1 : 1) }.each
+  def self.engines
+    @@engines.sort{|a,b| (a[:locale] == I18n.locale.to_s ? -1 : 1) }
   end
 end

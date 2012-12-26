@@ -5,7 +5,7 @@ require 'spec_helper'
 describe PaymentEngines do
   let(:engine){ {name: 'test', review_path: ->(backer){ "/#{backer}" }, locale: 'en'} }
   let(:engine_pt){ {name: 'test pt', review_path: ->(backer){ "/#{backer}" }, locale: 'pt'} }
-  after{ PaymentEngines.clear }
+  before{ PaymentEngines.clear }
 
   describe ".register" do
     before{ PaymentEngines.register engine }
@@ -22,8 +22,8 @@ describe PaymentEngines do
     it{ should be_empty }
   end
 
-  describe ".each" do
-    subject{ PaymentEngines.each.to_a }
+  describe ".engines" do
+    subject{ PaymentEngines.engines }
     before do
       PaymentEngines.register engine 
       PaymentEngines.register engine_pt
