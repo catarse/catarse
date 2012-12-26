@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :replace_locale, :namespace,
                 :fb_admins, :has_institutional_videos?, :institutional_video,
-                :statistics
+                :statistics, :render_facebook_sdk, :render_facebook_like,
+                :render_twitter
   before_filter :set_locale
   before_filter :detect_locale
   before_filter :force_http
@@ -30,6 +31,20 @@ class ApplicationController < ActionController::Base
       flash[:notice] = I18n.t('newsletter_ok_body') if params[:newsletter] == 'ok'
       flash[:alert] = I18n.t('newsletter_error_body') if params[:newsletter] == 'error'
     end
+  end
+
+  # We use this method only to make stubing easier 
+  # and remove FB templates from acceptance tests
+  def render_facebook_sdk
+    render_to_string(partial: 'layouts/facebook_sdk').html_safe
+  end
+
+  def render_twitter options={}
+    render_to_string(partial: 'layouts/twitter', locals: options).html_safe
+  end
+
+  def render_facebook_like options={}
+    render_to_string(partial: 'layouts/facebook_like', locals: options).html_safe
   end
 
   private

@@ -203,20 +203,17 @@ class User < ActiveRecord::Base
   end
 
   def updates_subscription
-    unsubscribes.find_or_initialize_by_project_id_and_notification_type_id(nil, NotificationType.where(name: 'updates').last.id)
+    unsubscribes.updates_unsubscribe(nil)
   end
 
   def project_unsubscribes
     backed_projects.map do |p|
-      unsubscribes.find_or_initialize_by_project_id_and_notification_type_id(p.id, NotificationType.where(name: 'updates').last.id)
+      unsubscribes.updates_unsubscribe(p.id)
     end
   end
 
   def backed_projects
-    projects_list = backs.confirmed.map do |b|
-      b.project
-    end
-    projects_list.uniq
+    Project.backed_by(self.id)
   end
 
   def backs_text

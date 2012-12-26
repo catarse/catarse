@@ -4,207 +4,6 @@ require 'spec_helper'
 describe Project do
   let(:project){ Project.new :goal => 3000 }
 
-  describe '.finish_projects!' do
-    context "should finish all projects that already expired" do
-      before do
-        @project_01 = Factory(:project, expires_at: 1.minutes.ago, goal: 300, state: 'online')
-        @project_02 = Factory(:project, expires_at: 5.minutes.from_now, goal: 300, state: 'online')
-        @project_03 = Factory(:project, expires_at: 7.days.ago, goal: 300, state: 'waiting_funds')
-        backer = Factory(:backer, project: @project_03, value: 3000, confirmed: true)
-        @project_04 = Factory(:project, expires_at: 7.days.ago, goal: 300, state: 'waiting_funds')
-
-        Project.finish_projects!
-
-        @project_01.reload
-        @project_02.reload
-        @project_03.reload
-        @project_04.reload
-      end
-
-      it 'should turn state to waiting funds' do
-        @project_01.waiting_funds?.should be_true
-      end
-
-      it 'should not change state when project is not expired and already reached the goal' do
-        @project_02.online?.should be_true
-      end
-
-      it 'should change state to successful when project already in waiting funds and reached the goal' do
-        @project_03.successful?.should be_true
-      end
-
-      it 'should change state to failed when project already in waiting funds and not reached the goal' do
-        @project_04.failed?.should be_true
-      end
-    end
-
-    context "should change state of the projects that state is waiting funds" do
-    end
-  end
-
-  describe '.reached_goal?' do
-    let(:project) { Factory(:project, goal: 3000) }
-    subject { project.reached_goal? }
-
-    context 'when sum of all backers hit the goal' do
-      before do
-        Factory(:backer, value: 4000, project: project)
-      end
-      it { should be_true }
-    end
-
-    context "when sum of all backers don't hit the goal" do
-      it { should be_false }
-    end
-  end
-
-  describe '.in_time_to_wait?' do
-    let(:project) { Factory(:project, expires_at: 1.day.ago) }
-    subject { project.in_time_to_wait? }
-
-    context 'when project expiration is in time to wait' do
-      it { should be_true }
-    end
-
-    context 'when project expiration time is not more on time to wait' do
-      before do
-        project.update_column :expires_at, 1.week.ago
-        project.reload
-      end
-      it {should be_false}
-    end
-  end
-
-  context "state machine" do
-    let(:project) { Factory(:project) }
-
-    describe '.draft?' do
-      subject { project.draft? }
-      context "when project is new" do
-        it { should be_true }
-      end
-    end
-
-    describe '.push_to_draft' do
-      subject {
-        project.reject
-        project
-      }
-      its(:draft?) { should be_false }
-      it 'should push to draft the project' do
-        subject.push_to_draft
-        subject.draft?.should be_true
-      end
-    end
-
-    describe '.rejected?' do
-      subject { project.rejected? }
-      before do
-        project.reject
-      end
-      context 'when project is not accepted' do
-        it { should be_true }
-      end
-    end
-
-    describe '.reject' do
-      subject { project }
-      its(:rejected?) { should be_false }
-      it 'should reject the project' do
-        subject.reject
-        subject.rejected?.should be_true
-      end
-    end
-
-    describe '.approve' do
-      subject { project }
-      its(:online?) { should be_false }
-      it 'should change status project to online' do
-        subject.approve
-        subject.online?.should be_true
-      end
-      it 'should call after transition method to notify the project owner' do
-        subject.expects(:after_transition_of_draft_to_online)
-        subject.approve
-      end
-    end
-
-    describe '.online?' do
-      subject { project.online? }
-      before { project.approve }
-      context "when project is accepted" do
-        it { should be_true }
-      end
-    end
-
-    describe '.finish' do
-      subject { Factory(:project, goal: 30_000, expires_at: 3.hours.ago) }
-
-      context 'when project is not approved' do
-        its(:finish) { should be_false }
-      end
-
-      context 'when project is approved' do
-        before do
-          subject.approve
-          subject.finish
-        end
-
-        context 'when project is expired and have recent backers without confirmation' do
-          before do
-            backer = Factory(:backer, value: 100, project: subject, created_at: 2.days.ago)
-          end
-          its(:waiting_funds?) { should be_true }
-        end
-
-        context 'when project already hit the goal' do
-          before do
-            backer = Factory(:backer, value: 30_000, project: subject, confirmed: true)
-          end
-
-          context "and pass the waiting fund time" do
-            before do
-              subject.update_column :expires_at, 2.weeks.ago
-              subject.finish
-            end
-            its(:successful?) { should be_true }
-          end
-
-          context "and still in waiting fund time" do
-            its(:successful?) { should be_false }
-            its(:waiting_funds?) { should be_true }
-          end
-        end
-
-        context 'when project not hit the goal' do
-          context "and pass the waiting fund time" do
-            let(:user) { Factory(:user) }
-            let(:backer) { Factory(:backer, project: subject, user: user, value: 20) }
-
-            before do
-              subject.update_column :expires_at, 2.weeks.ago
-              subject.finish
-            end
-
-            its(:failed?) { should be_true }
-
-            it "should generate credits for users" do
-              backer.confirm!
-              user.reload
-              user.credits.should == 20
-            end
-          end
-
-          context "and still in waiting fund time" do
-            its(:failed?) { should be_false }
-            its(:waiting_funds?) { should be_true }
-          end
-        end
-      end
-    end
-
-  end
-
   describe "associations" do
     it{ should have_many :projects_curated_pages }
     it{ should have_many :curated_pages }
@@ -220,6 +19,53 @@ describe Project do
       it{ should validate_presence_of field }
     end
     it{ should ensure_length_of(:headline).is_at_most(140) }
+  end
+
+  describe '.finish_projects!' do
+    before do
+      @project_01 = Factory(:project, expires_at: 1.minutes.ago, goal: 300, state: 'online')
+      @project_02 = Factory(:project, expires_at: 5.minutes.from_now, goal: 300, state: 'online')
+      @project_03 = Factory(:project, expires_at: 7.days.ago, goal: 300, state: 'waiting_funds')
+      backer = Factory(:backer, project: @project_03, value: 3000, confirmed: true)
+      @project_04 = Factory(:project, expires_at: 7.days.ago, goal: 300, state: 'waiting_funds')
+      Project.finish_projects!
+      @project_01.reload
+      @project_02.reload
+      @project_03.reload
+      @project_04.reload
+    end
+
+    it 'should turn state to waiting funds' do
+      @project_01.waiting_funds?.should be_true
+    end
+
+    it 'should not change state when project is not expired and already reached the goal' do
+      @project_02.online?.should be_true
+    end
+
+    it 'should change state to successful when project already in waiting funds and reached the goal' do
+      @project_03.successful?.should be_true
+    end
+
+    it 'should change state to failed when project already in waiting funds and not reached the goal' do
+      @project_04.failed?.should be_true
+    end
+  end
+
+  describe ".backed_by" do
+    before do
+      backer = Factory(:backer, confirmed: true)
+      @user = backer.user
+      @project = backer.project
+      # Another backer with same project and user should not create duplicate results
+      Factory(:backer, user: @user, project: @project, confirmed: true) 
+      # Another backer with other project and user should not be in result
+      Factory(:backer, confirmed: true) 
+      # Another backer with different project and same user but not confirmed should not be in result
+      Factory(:backer, user: @user, confirmed: false) 
+    end
+    subject{ Project.backed_by(@user.id) }
+    it{ should == [@project] }
   end
 
   describe ".recommended_for_home" do
@@ -322,6 +168,40 @@ describe Project do
     it{ should == [@p] }
   end
 
+  describe '#reached_goal?' do
+    let(:project) { Factory(:project, goal: 3000) }
+    subject { project.reached_goal? }
+
+    context 'when sum of all backers hit the goal' do
+      before do
+        Factory(:backer, value: 4000, project: project)
+      end
+      it { should be_true }
+    end
+
+    context "when sum of all backers don't hit the goal" do
+      it { should be_false }
+    end
+  end
+
+  describe '#in_time_to_wait?' do
+    let(:project) { Factory(:project, expires_at: 1.day.ago) }
+    subject { project.in_time_to_wait? }
+
+    context 'when project expiration is in time to wait' do
+      it { should be_true }
+    end
+
+    context 'when project expiration time is not more on time to wait' do
+      before do
+        project.update_column :expires_at, 1.week.ago
+        project.reload
+      end
+      it {should be_false}
+    end
+  end
+
+
   describe "#pg_search" do
     before { @p = Factory(:project, name: 'foo') }
     context "when project exists" do
@@ -410,34 +290,6 @@ describe Project do
       it{ should be_false }
     end
   end
-
-  #describe "status changes" do
-    #it "should be waiting confirmation until 3 weekdays after the deadline unless it is already successful" do
-      #p = Factory(:project, :goal => 100)
-      #time = Time.local 2011, 03, 04
-      #Time.stubs(:now).returns(time)
-      #p.successful?.should be_false
-      #p.expires_at = 1.minute.from_now
-      #p.waiting_confirmation?.should be_false
-      #p.expires_at = 4.weekdays_ago
-      #p.waiting_confirmation?.should be_false
-      #p.expires_at = 3.weekdays_ago - 1.minute
-      #p.waiting_confirmation?.should be_false
-      #p.expires_at = 3.weekdays_ago + 1.minute
-      #p.waiting_confirmation?.should be_true
-      #p.expires_at = 2.weekdays_ago
-      #p.waiting_confirmation?.should be_true
-      #p.stubs(:pledged).returns(100)
-      #p.successful?.should be_true
-      #p.expires_at = 3.weekdays_ago + 1.minute
-      #p.waiting_confirmation?.should be_false
-      #p.expires_at = 2.weekdays_ago
-      #p.waiting_confirmation?.should be_false
-    #end
-
-  #end
-
-
 
   it "should return time_to_go acording to expires_at" do
     p = Factory.build(:project)
@@ -533,4 +385,126 @@ describe Project do
       p.should be_valid
     end
   end
+
+  describe "state machine" do
+    let(:project) { Factory(:project) }
+
+    describe '#draft?' do
+      subject { project.draft? }
+      context "when project is new" do
+        it { should be_true }
+      end
+    end
+
+    describe '.push_to_draft' do
+      subject do
+        project.reject
+        project.push_to_draft
+        project
+      end
+      its(:draft?){ should be_true }
+    end
+
+    describe '#rejected?' do
+      subject { project.rejected? }
+      before do
+        project.reject
+      end
+      context 'when project is not accepted' do
+        it { should be_true }
+      end
+    end
+
+    describe '#reject' do
+      subject do
+        project.reject
+        project
+      end
+      its(:rejected?){ should be_true }
+    end
+
+    describe '#approve' do
+      subject do 
+        project.expects(:after_transition_of_draft_to_online)
+        project.approve
+        project
+      end
+      its(:online?){ should be_true }
+      it('should call after transition method to notify the project owner'){ subject }
+    end
+
+    describe '#online?' do
+      before { project.approve }
+      subject { project.online? }
+      it { should be_true }
+    end
+
+    describe '#finish' do
+      subject { Factory(:project, goal: 30_000, expires_at: 3.hours.ago) }
+
+      context 'when project is not approved' do
+        its(:finish) { should be_false }
+      end
+
+      context 'when project is approved' do
+        before do
+          subject.approve
+          subject.finish
+        end
+
+        context 'when project is expired and have recent backers without confirmation' do
+          before do
+            backer = Factory(:backer, value: 100, project: subject, created_at: 2.days.ago)
+          end
+          its(:waiting_funds?) { should be_true }
+        end
+
+        context 'when project already hit the goal' do
+          before do
+            backer = Factory(:backer, value: 30_000, project: subject, confirmed: true)
+          end
+
+          context "and pass the waiting fund time" do
+            before do
+              subject.update_column :expires_at, 2.weeks.ago
+              subject.finish
+            end
+            its(:successful?) { should be_true }
+          end
+
+          context "and still in waiting fund time" do
+            its(:successful?) { should be_false }
+            its(:waiting_funds?) { should be_true }
+          end
+        end
+
+        context 'when project not hit the goal' do
+          context "and pass the waiting fund time" do
+            let(:user) { Factory(:user) }
+            let(:backer) { Factory(:backer, project: subject, user: user, value: 20) }
+
+            before do
+              subject.update_column :expires_at, 2.weeks.ago
+              subject.finish
+            end
+
+            its(:failed?) { should be_true }
+
+            it "should generate credits for users" do
+              backer.confirm!
+              user.reload
+              user.credits.should == 20
+            end
+          end
+
+          context "and still in waiting fund time" do
+            its(:failed?) { should be_false }
+            its(:waiting_funds?) { should be_true }
+          end
+        end
+      end
+    end
+
+  end
+
 end

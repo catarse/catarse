@@ -6,15 +6,13 @@ class Adm::BackersController < Adm::BaseController
   before_filter :can_update_on_the_spot?, :only => :update_attribute_on_the_spot
 
   def confirm
-    @backer = Backer.find params[:id]
-    @backer.confirm!
+    resource.confirm!
     flash[:notice] = I18n.t('adm.backers.messages.successful.confirm')
     redirect_to adm_backers_path
   end
 
   def unconfirm
-    @backer = Backer.find params[:id]
-    @backer.unconfirm!
+    resource.unconfirm!
     flash[:notice] = I18n.t('adm.backers.messages.successful.unconfirm')
     redirect_to adm_backers_path
   end

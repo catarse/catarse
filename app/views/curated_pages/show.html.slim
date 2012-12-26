@@ -22,8 +22,8 @@
               h1= @curated_page.name
               h2== @curated_page.description_html
               .curated_social
-                #twitter_share= render :partial => 'projects/twitter', :locals => { :text => @curated_page.name }
-                #facebook_share= render 'projects/facebook', href: request.url, width: '550px'
+                #twitter_share= render_twitter text: @curated_page.name
+                #facebook_share= render_facebook_like href: request.url, width: '550px'
             .clearfix
         .clear
       - unless @curated_page.projects.empty?

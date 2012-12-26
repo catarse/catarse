@@ -72,9 +72,6 @@ Catarse::Application.routes.draw do
       post 'send_mail'
       get 'vimeo'
       get 'check_slug'
-      get 'cep'
-      get 'pending'
-      get 'pending_backers'
       get 'thank_you'
       post 'update_attribute_on_the_spot'
     end
