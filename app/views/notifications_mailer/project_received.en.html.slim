@@ -1,0 +1,38 @@
+- user = @notification.user
+|Olá, #{user.name}!
+br
+br
+|Muito obrigado por confiar no Catarse e enviar seu projeto pra gente :)
+br
+br
+|Antes de mais nada, queria relembrar como funciona o passo-a-passo da seleção dos projetos no Catarse. Pega a lógica, são 4 passos:
+br
+br
+|1 - Você preencheu aquele formulário lindo e a gente acabou de recebê-lo;
+br
+br
+|2 - Nossa equipe de atendimento vai te responder em até 4 dias úteis. Não é necessariamente uma questão de Sim ou de Não, com certeza vamos trocar alguns emails antes de o projeto ir para o ar.
+br
+br
+|3 - Quando o projeto estiver afinado, iremos enviar um link especial pra você cadastrar o seu projeto do jeitinho que irá para o ar;
+br
+br
+|4 - Você avisará a gente que fez esse cadastro e nós autorizaremos o projeto a ficar disponível para que todos os seres humanos do mundo que tenham acesso à internet possam divulgá-lo e apoiá-lo (caso eles queiram, né?).
+br
+br
+|Uma informação importante: se você esqueceu de enviar algo nesse formulário que você preencheu, sem problemas, você poderá adicionar novas informações (ou mudar alguma delas) assim que a equipe de atendimento entrar em contato contigo, ok?
+br
+br
+|Enquanto isso, vale a pena conhecer os projetos que estão no ar (#{link_to "#{I18n.t('site.base_url')}/explore" ,"#{I18n.t('site.base_url')}/explore"}) e - se gostar de algum deles- apoiar! Essa é a melhor maneira de mostrar que acredita na cultura do financiamento colaborativo no Brasil e fomentar o ecossistema que está se formando ao redor do Catarse. Além, é claro, de se inspirar para o seu projeto.
+br
+br
+|Fique ligado em nossas novidades no #{link_to 'Facebook', I18n.t('site.facebook', :locale => user.locale)} e no #{link_to 'Twitter', "twitter.com/#{I18n.t('site.twitter')}" } e conheça mais sobre o Catarse lendo nossos posts no #{link_to 'blog', I18n.t('site.blog', :locale => user.locale)}.
+br
+br
+|Se ficou com alguma dúvida, entre em contato conosco no: #{mail_to I18n.t('site.email.contact', :locale => user.locale)}
+br
+br
+|Um grande abraço,
+br
+br
+|Equipe do Catarse
