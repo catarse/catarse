@@ -58,10 +58,9 @@
 
           .tab_container
             nav#payment_menu
-              = link_to '#moip_payment', :id => 'moip', :class => 'selected' , :'data-target' => catarse_moip.review_payment_moip_path(@backer) do
-                = t('.choose_boleto') 
-              = link_to '#paypal_payment', :id => 'paypal', :'data-target' => catarse_paypal_express.payment_review_paypal_express_path(@backer) do
-                = t('.choose_credit_card')
-          #paypal_payment.payments_type.hide
-          #moip_payment.payments_type.hide
+              - PaymentEngines.engines.each do |engine|
+                = link_to "##{engine[:name]}_payment", :id => engine[:name], :class => 'selected' , :'data-target' => engine[:review_path].call(@backer) do
+                  = t("projects.backers.review.#{engine[:name]}") 
+          - PaymentEngines.engines.each do |engine|
+            div[id="#{engine[:name]}_payment" class="payments_type hide"]
     .clearfix
