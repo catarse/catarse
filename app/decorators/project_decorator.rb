@@ -2,6 +2,10 @@ class ProjectDecorator < Draper::Base
   decorates :project
   include Draper::LazyHelpers
 
+  def remaining_days
+    time_to_go[:time]
+  end
+
   def display_status
     if successful? and expired?
       'successful'
