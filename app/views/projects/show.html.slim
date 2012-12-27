@@ -34,6 +34,7 @@
     #project_description[data-project=@project.to_json]
     .project_image
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
+      = best_in_place_if(can?(:update, @project, :image_url), @project, :image_url)
     .section_header
       h1
         = best_in_place_if(can?(:update, @project, :name), @project, :name)
