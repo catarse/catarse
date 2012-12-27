@@ -11,6 +11,7 @@ describe ProjectObserver do
 
   before do
     Notification.unstub(:create_notification)
+    Notification.unstub(:create_notification_once)
     confirm_backer
     project_success
     backer_successful
@@ -31,7 +32,7 @@ describe ProjectObserver do
       end
 
       it "should call create_notification and do not call download_video_thumbnail" do
-        Notification.expects(:create_notification).with(:project_visible, project.user, {:project => project})
+        Notification.expects(:create_notification_once).with(:project_visible, project.user, {project_id: project.id}, {:project => project})
         project.approve
       end
     end
@@ -40,6 +41,7 @@ describe ProjectObserver do
       before do
         project.expects(:download_video_thumbnail)
         Notification.expects(:create_notification).never
+        Notification.expects(:create_notification_once).never
       end
 
       it "should call download_video_thumbnail and do not call create_notification" do
@@ -56,7 +58,7 @@ describe ProjectObserver do
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 30, :project => project) }
 
       before do
-        Notification.expects(:create_notification).at_least_once
+        Notification.expects(:create_notification_once).at_least_once
         backer.save!
         project.finish!
       end
@@ -67,7 +69,7 @@ describe ProjectObserver do
       let(:project){ Factory(:project, :goal => 30, :expires_at => (Time.now - 7.days), :state => 'waiting_funds') }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 20) }
       before do
-        Notification.expects(:create_notification).at_least_once
+        Notification.expects(:create_notification_once).at_least_once
         backer.save!
         project.finish!
       end
