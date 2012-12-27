@@ -392,8 +392,8 @@ en:
         title: "Fill in and review your data"
         choose_payment: "How do you want to pay?"
         choose_payment_subtitle: "Select below a payment method"
-        choose_credit_card: "Credit Card"
-        choose_boleto: "Billet Banking"
+        choose_credit_card: "PayPal"
+        choose_boleto: "Payments from Brazil"
         you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
         pay_with: "Pay With"
     create:

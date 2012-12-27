@@ -63,7 +63,7 @@ Catarse::Application.routes.draw do
         post 'review'
       end
       member do
-        put 'checkout'
+        match 'checkout'
         post 'update_info'
       end
     end

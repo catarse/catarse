@@ -48,7 +48,7 @@ gem "airbrake"
 
 # Email marketing
 #gem 'mailchimp'
-gem 'catarse_mailchimp'
+gem 'catarse_mailchimp', git: 'git://github.com/devton/catarse_mailchimp'
 
 # HTML manipulation and formatting
 gem 'formtastic', "~> 2.1.1"
