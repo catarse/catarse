@@ -43,6 +43,7 @@
                 th= t('.user_id')
                 th= t('.goal')
                 th= t('.pledged')
+                th= t('.total_backs')
                 th= t('.recommended')
                 th= t('.state')
                 th
@@ -54,6 +55,7 @@
                   td= best_in_place [:adm, project], :user_id, method: :put, type: :input
                   td= best_in_place [:adm, project], :goal, method: :put, type: :input, display_as: :display_goal
                   td= "#{project.display_pledged} (#{project.display_progress}%)"
+                  td= project.total_backers
                   td.recommended= best_in_place [:adm, project], :recommended, method: :put, type: :checkbox, collection: ['Não', 'Sim']
                   td
                     - if project.online? or project.successful?
