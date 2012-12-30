@@ -55,4 +55,12 @@ class ReportsController < ApplicationController
       :type => 'text/csv; charset=utf-8; header=present',
       :disposition => "attachment; filename=all_emails.csv"
   end
+
+  def all_projects_that_expires_in_dez
+    return unless require_admin
+    @csv = Reports::Users::Projects.all_projects_that_expires_in_dez
+    send_data @csv,
+      :type => 'text/csv; charset=utf-8; header=present',
+      :disposition => "attachment; filename=all_projects_that_expires_in_dez.csv"
+  end
 end
