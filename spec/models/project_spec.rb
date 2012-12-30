@@ -431,6 +431,10 @@ describe Project do
       end
       its(:online?){ should be_true }
       it('should call after transition method to notify the project owner'){ subject }
+      it 'should persist the date of approvation' do
+        project.approve
+        project.online_date.should_not be_nil
+      end
     end
 
     describe '#online?' do

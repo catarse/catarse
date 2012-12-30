@@ -255,6 +255,7 @@ class Project < ActiveRecord::Base
   end
 
   def after_transition_of_draft_to_online
+    update_attributes online_date: DateTime.now
     notify_observers :notify_owner_that_project_is_online
   end
 end

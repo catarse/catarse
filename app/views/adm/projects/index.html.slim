@@ -39,12 +39,14 @@
             thead
               tr
                 th= t('.id')
-                th= t('.name')
+                th style="width: 200px;"
+                  = t('.name')
                 th= t('.user_id')
                 th= t('.goal')
                 th= t('.pledged')
                 th= t('.total_backs')
                 th= t('.recommended')
+                th= t('.online_date')
                 th= t('.state')
                 th
             tbody
@@ -57,6 +59,7 @@
                   td= "#{project.display_pledged} (#{project.display_progress}%)"
                   td= project.total_backers
                   td.recommended= best_in_place [:adm, project], :recommended, method: :put, type: :checkbox, collection: ['Não', 'Sim']
+                  td= project.online_date.strftime('%d/%m/%Y') if project.online_date
                   td
                     - if project.online? or project.successful?
                       span.label.label-success= project.state
