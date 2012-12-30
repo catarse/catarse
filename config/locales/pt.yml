@@ -790,6 +790,7 @@ pt:
         user_id: 'User ID'
         goal: 'Meta'
         total_backs: 'Apoios'
+        online_date: 'Entrou no ar'
         pledged: 'Alcançado'
         recommended: 'Recomendado?'
         state: 'Estado'
