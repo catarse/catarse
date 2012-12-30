@@ -3,13 +3,13 @@ ActiveAdmin.register_page "Dashboard" do
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
-    section "Relatorios" do
+    section I18n.t('active_admin.dashboard_reports.reports.title') do
       ul do
-        li link_to 'Usuários que mais apoiaram projetos diferentes', most_backed_diff_report_path
-        li link_to 'Usuários que mais apoiaram', most_backed_report_path
-        li link_to 'Todos os apoios confirmados', all_confirmed_backers_report_path
-        li link_to 'Todos os realizadores', all_projects_owner_report_path
-        li link_to 'Todos os emails', all_emails_to_newsletter_path
+        li link_to I18n.t('active_admin.dashboard_reports.reports.diferent_projects'), most_backed_diff_report_path
+        li link_to I18n.t('active_admin.dashboard_reports.reports.most_supports'), most_backed_report_path
+        li link_to I18n.t('active_admin.dashboard_reports.reports.support_confirmed'), all_confirmed_backers_report_path
+        li link_to I18n.t('active_admin.dashboard_reports.reports.all_filmmakers'), all_projects_owner_report_path
+        li link_to I18n.t('active_admin.dashboard_reports.reports.all_emails'), all_emails_to_newsletter_path
       end
     end
   end

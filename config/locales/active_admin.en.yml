@@ -1,6 +1,14 @@
 en:
   active_admin:
     dashboard: "Admin Panel"
+    dashboard_reports:
+      reports:
+        title: "Reports"
+        diferent_projects: "Users who supported more different designs"
+        most_supports: "Users who supported more"
+        support_confirmed: "All support confirmed"
+        all_filmmakers: "All filmmakers"
+        all_emails: "All emails"
     dashboard_welcome:
       welcome: "Welcome to Active Admin. This page is the default panel."
       call_to_action: "To add sections to the panel, check 'app / admin / dashboards.rb'"
