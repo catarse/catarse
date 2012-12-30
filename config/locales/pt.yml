@@ -789,7 +789,7 @@ pt:
         name: 'Titulo'
         user_id: 'User ID'
         goal: 'Meta'
-        total_backs: 'Total de apios'
+        total_backs: 'Apoios'
         pledged: 'Alcançado'
         recommended: 'Recomendado?'
         state: 'Estado'
