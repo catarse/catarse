@@ -707,7 +707,7 @@ en:
     updates:
       subject: "If the league! Update of %{project_name} by %{project_owner}: %{update_title}"
       text: "%{update_title}<br />%{update_text}<br />Comments? Send it on in the project page: <a href='%{project_link}'>%{project_name}</a>."
-  admin:
+  adm:
     users:
       title: "Management backers"
       menu: Backers

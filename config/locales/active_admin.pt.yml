@@ -1,6 +1,14 @@
 pt:
   active_admin:
     dashboard: "Painel Administrativo"
+    dashboard_reports:
+      reports:
+        title: "Relatorios"
+        diferent_projects: "Usuários que mais apoiaram projetos diferentes"
+        most_supports: "Usuários que mais apoiaram"
+        support_confirmed: "Todos os apoios confirmados"
+        all_filmmakers: "Todos os realizadores"
+        all_emails: "Todos os emails"
     dashboard_welcome:
       welcome: "Bem vindo ao Active Admin. Esta é a página de painéis padrão."
       call_to_action: "Para adicionar seções ao painel, verifique 'app/admin/dashboards.rb'"
