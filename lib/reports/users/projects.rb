@@ -3,6 +3,26 @@ module Reports
   module Users
     class Projects
       class << self
+        def all_projects_that_expires_in_dez
+          @collection = Project.visible.where(:expires_at => '2012-12-01'..'2012-12-31')
+
+          @csv = CSV.generate(:col_sep => ', ') do |csv_string|
+            csv_string << [
+              'Nome',
+              'Data de expiração',
+              'Link'
+            ]
+
+            @collection.each do |resource|
+              csv_string << [
+                resource.name,
+                (resource.expires_at.strftime('%d/%m/%Y') rescue ''),
+                (resource.permalink ? "http://catarse.me/pt/#{resource.permalink}" : "http://catarse.me/pt/projects/#{resource.id}")
+              ]
+            end
+          end
+        end
+
         def all_project_owners
           @collection = User.joins(:projects).where('projects.visible is true').includes(:projects)
 
