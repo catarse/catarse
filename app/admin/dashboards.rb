@@ -10,6 +10,7 @@ ActiveAdmin.register_page "Dashboard" do
         li link_to 'Todos os apoios confirmados', all_confirmed_backers_report_path
         li link_to 'Todos os realizadores', all_projects_owner_report_path
         li link_to 'Todos os emails', all_emails_to_newsletter_path
+        li link_to 'Todos os projetos que expiram em dezembro', all_projects_that_expires_in_dez_path
       end
     end
   end

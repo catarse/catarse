@@ -33,6 +33,7 @@ Catarse::Application.routes.draw do
   match "/reports/all_confirmed_backers" => "reports#all_confirmed_backers", :as => :all_confirmed_backers_report
   match "/reports/all_projects_owners" => "reports#all_projects_owner", :as => :all_projects_owner_report
   match "/reports/all_emails" => "reports#all_emails_to_newsletter", :as => :all_emails_to_newsletter
+  match "/reports/all_projects_that_expires_in_dez" => "reports#all_projects_that_expires_in_dez", :as => :all_projects_that_expires_in_dez
 
   # Static Pages
   match '/sitemap' => "static#sitemap", :as => :sitemap
