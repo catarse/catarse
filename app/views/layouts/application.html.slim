@@ -30,7 +30,6 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
     = csrf_meta_tag
     link rel='shortcut icon' href="/assets/favicon.ico"
     = render '/layouts/analytics'
-    = render '/layouts/uservoice'
 
   body[id="platform" data-namespace="#{namespace}" data-controller="#{controller_name}" data-action="#{action_name}" data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]
     = render_facebook_sdk
@@ -96,3 +95,4 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
       .power
         = link_to 'http://engage.is', :target => '_blank' do
           = image_tag('catarse/power_logo200x43.png', :alt => 'POWER TO THE CROWD')
+    = render '/layouts/uservoice'
