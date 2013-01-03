@@ -1,9 +1,11 @@
 en:
+  facebook_locale: 'en_US'
   or: or
   newsletter_ok_header: "You are subscribed to the newsletter!"
   newsletter_ok_body: "Your email is now in our newsletter list, thanks for subscribing!"
   newsletter_error_header: "Woops! There was an error."
   newsletter_error_body: "Your email could not be added to our newsletter list, please try again later!"
+  newsletter_subscribe: "subscribe"
   views:
     pagination:
       next: next
@@ -48,7 +50,6 @@ en:
     titles:
       blog: blog
       facebook: "have enjoyed our face?"
-      twitter: "@catarse_"
       newsletter: "want to receive news?"
       faq: "have any doubt?"
       schedule: calendar
@@ -542,20 +543,8 @@ en:
     failure:
       error: "There was an error while loggin in. Please try again."
   site:
-    host: catarse.me
-    base_url: "http://catarse.me"
-    blog: "http://blog.catarse.me/"
-    email:
-      no_reply: "no-reply@catarse.me"
-      contact: contato@catarse.me
-      payments: financeiro@catarse.me
-      projects: projetos@catarse.me
-      system: system@catarse.me
-    facebook: "http://www.facebook.com/Catarse.me"
-    facebook_app_id: 173747042661491
     name: Catarse
     title: "The first crowdfunding platform from Brazil"
-    twitter: Catarse_
   static:
     faq:
       title: "Frequently asked questions"
