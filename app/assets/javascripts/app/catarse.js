@@ -67,7 +67,7 @@ var CATARSE = {
       window.view = new CATARSE.ProjectsVideo_embedView({el: $("body") });
     },
     'new': function(){
-      window.view = new CATARSE.ProjectsNewView({el: $("body") });
+      return new CATARSE.ProjectsNewView();
     },
     pending: function(){
       window.view = new CATARSE.ProjectsPendingView({el: $("body") });

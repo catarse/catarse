@@ -30,6 +30,7 @@ gem 'draper'
 gem 'jquery-rails'
 gem 'slim'
 gem 'slim-rails'
+gem 'initjs'
 
 # Authentication and Authorization
 gem 'omniauth', "~> 1.1.0"
