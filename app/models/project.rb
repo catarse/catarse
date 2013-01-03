@@ -197,7 +197,7 @@ class Project < ActiveRecord::Base
       remaining_text: remaining_text,
       embed_url: vimeo.embed_url,
       url: (self.permalink.blank? ? "/projects/#{self.to_param}" : '/' + self.permalink),
-      full_uri: I18n.t('site.base_url') + (self.permalink.blank? ? Rails.application.routes.url_helpers.project_path(self) : '/' + self.permalink),
+      full_uri: ::Configuration[:base_url] + (self.permalink.blank? ? Rails.application.routes.url_helpers.project_path(self) : '/' + self.permalink),
       expired: expired?,
       successful: successful? || reached_goal?,
       waiting_confirmation: waiting_confirmation?,
@@ -255,7 +255,6 @@ class Project < ActiveRecord::Base
   end
 
   def after_transition_of_draft_to_online
-    update_attributes online_date: DateTime.now
     notify_observers :notify_owner_that_project_is_online
   end
 end

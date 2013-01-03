@@ -2,7 +2,7 @@
 |Hi, <strong>#{backer.user.display_name}</strong>!
 br
 br
-|Your pledge to #{link_to(backer.project.name, project_url(backer.project, host: I18n.t('site.host') ))} was confirmed by <strong>#{backer.payment_method}</strong>
+|Your pledge to #{link_to(backer.project.name, project_url(backer.project, host: Configuration['host'] ))} was confirmed by <strong>#{backer.payment_method}</strong>
 |!
 br
 br
@@ -33,7 +33,7 @@ br
 |If you want to contact #{backer.project.user.name}, send an email to #{mail_to backer.project.user.email}
 br
 br
-|If you have any other questions, access our #{link_to('FAQ', "#{I18n.t('site.base_url')}/faq")} or send an email to #{mail_to 'contato@catarse.me'}
+|If you have any other questions, access our #{link_to('FAQ', "#{Configuration[:base_url]}/faq")} or send an email to #{mail_to 'contato@catarse.me'}
 br
 br
 |A big hug,

@@ -6,7 +6,7 @@
     .input
       = form.label :permalink, t('activerecord.attributes.project.permalink')
       .input-prepend.permalink
-        span.add-on= "#{t('site.base_url')}/"
+        span.add-on= "#{Configuration[:base_url]}/"
         = form.text_field :permalink, :class => 'permalink'
         p.inline-hints
           = t('.permalink_hint')

@@ -2,22 +2,22 @@
 |Hi, #{backer.user.name}!
 br
 br
-|Unfortunately the project #{link_to(backer.project.name, "#{I18n.t('site.base_url')}/projects/#{backer.project.to_param}")} that you backed did not reach its goal and wasn't funded on Catarse.
+|Unfortunately the project #{link_to(backer.project.name, "#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} that you backed did not reach its goal and wasn't funded on Catarse.
 br
 br
-|Due to this, you received #{backer.display_value} in credits to back other projects. You can explore more #{backer.project.category.name} projects in #{link_to("#{I18n.t('site.base_url')}/explore##{backer.project.category.name.parameterize}", "#{I18n.t('site.base_url')}/explore##{backer.project.category.name.parameterize}")}
+|Due to this, you received #{backer.display_value} in credits to back other projects. You can explore more #{backer.project.category.name} projects in #{link_to("#{Configuration[:base_url]}/explore##{backer.project.category.name.parameterize}", "#{Configuration[:base_url]}/explore##{backer.project.category.name.parameterize}")}
 br
 br
-|If you prefer, you can ask for a refund of your money by clicking on #{link_to("aqui", "#{I18n.t('site.base_url')}/users/#{backer.user.to_param}#credits")}. Remember that you account was made with #{backer.user.display_provider}. It's through it that you must access your account. If you have any trouble in this process, send an email to #{mail_to "financeiro@catarse.me"} with the subject “Reembolso - problema no login”.
+|If you prefer, you can ask for a refund of your money by clicking on #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}. Remember that you account was made with #{backer.user.display_provider}. It's through it that you must access your account. If you have any trouble in this process, send an email to #{mail_to "financeiro@catarse.me"} with the subject “Reembolso - problema no login”.
 br
 br
-|If you choose to be refunded, remember that, as stated on  #{link_to('Termos de Uso do Catarse',"#{I18n.t('site.base_url')}/terms")}, if you backed using a credit card, the value will only be returned in the next card bill. If you paid using bank transfer, we will send you an email explaining all the steps to get you money back.
+|If you choose to be refunded, remember that, as stated on  #{link_to('Termos de Uso do Catarse',"#{Configuration[:base_url]}/terms")}, if you backed using a credit card, the value will only be returned in the next card bill. If you paid using bank transfer, we will send you an email explaining all the steps to get you money back.
 br
 br
 |If, for any reason, you want to contact #{backer.project.user.display_name}, send an email to #{mail_to backer.project.user.email}.
 br
 br
-|If you have any questions, access our #{link_to('FAQ',"#{I18n.t('site.base_url')}/faq")} or send an email to #{mail_to 'financeiro@catarse.me'}.
+|If you have any questions, access our #{link_to('FAQ',"#{Configuration[:base_url]}/faq")} or send an email to #{mail_to 'financeiro@catarse.me'}.
 br
 br
 |A big hug,
