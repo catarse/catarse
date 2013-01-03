@@ -5,7 +5,7 @@ br
 |Seu projeto acabou de entrar no ar e já está apto a começar a receber os apoios, agora é a hora!
 br
 br
-|#{link_to(project.name, "#{I18n.t('site.base_url')}/projects/#{project.to_param}")}
+|#{link_to(project.name, "#{Configuration[:base_url]}/projects/#{project.to_param}")}
 br
 br
 |Vamos que vamos! Agora é começar a fazer a barrinha verde subir :D
@@ -20,7 +20,7 @@ strong transações
 br
 br
 'Outras dúvidas, como a
-strong edição 
+strong edição
 |dos itens do seu projeto, envie um email para #{mail_to 'projetos@catarse.me'}
 br
 br

@@ -36,13 +36,13 @@ class Update < ActiveRecord::Base
       Rails.logger.info "[User #{user.id}] - Creating notification for #{user.name}"
       Notification.create_notification_once :updates, user,
         {update_id: self.id, user_id: user.id},
-        :project_name => project.name,
-        :project_owner => project.user.display_name,
-        :project_owner_email => project.user.email,
-        :from => I18n.t('site.email.no_reply'),
-        :update_title => title,
-        :update => self,
-        :update_comment => email_comment_html
+        project_name: project.name,
+        project_owner: project.user.display_name,
+        project_owner_email: project.user.email,
+        from: ::Configuration[:email_no_reply],
+        update_title: title,
+        update: self,
+        update_comment: email_comment_html
     end
   end
 
