@@ -399,6 +399,7 @@ en:
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
     form:
+      permalink_hint: 'Simplify the URL of your project. Think that your sponsor need to remember the address to share your project.'
       add_reward: "Add reward"
       important_html: "Please notice that Catarse will charge 13% if your project is successful. Add this values to your budget in order to execute your project with no surprises."
       project_warning:
@@ -486,7 +487,7 @@ en:
         link_title: "Share the link"
         take_a_look: "Check out the project"
         title: "Be part of it and share this project"
-    start:
+    new:
       about: "Describe your project and how much do you need"
       category: "Project category"
       how_much_you_need: "How much do you want to raise?"
