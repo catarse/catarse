@@ -1,19 +1,7 @@
 javascript:
-  var uservoiceOptions = {
-    key: 'catarse',
-    host: 'catarse.uservoice.com',
-    forum: '103171',
-    alignment: 'left',
-    background_color:'#006600',
-    text_color: 'white',
-    hover_color: '#009900',
-    lang: 'pt_BR',
-    showTab: true
-  };
-  function _loadUserVoice() {
-    var s = document.createElement('script');
-    s.src = ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js";
-    document.getElementsByTagName('head')[0].appendChild(s);
-  }
-  _loadSuper = window.onload;
-  window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/N0ybFnQPJ0vs6T1SxONHHw.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
