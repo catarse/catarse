@@ -1,20 +1,29 @@
 CATARSE.ProjectsNewView = Backbone.View.extend({
+  el: 'body',
+
+  events: {
+    'click #add_reward' : 'addReward'
+  },
+
+  addReward: function(e){
+    e.preventDefault();
+    var new_reward = '<div class="clearfix"></div><div class="reward">' + $($('.reward')[0]).html() + '</div>';
+    new_reward = new_reward.replace(/\_0\_/g, '_' + rewards_id + '_');
+    new_reward = new_reward.replace(/\[0\]/g, '[' + rewards_id + ']');
+    new_reward = $(new_reward);
+    new_reward.find('input').val(null);
+    new_reward.find('textarea').html(null);
+    new_reward.find('input').numeric(false);
+    new_reward.find('input, textarea').removeClass('ok').removeClass('error');
+    this.$('#rewards_wrapper').append(new_reward);
+    new_reward.find('textarea').focus();
+    this.rewards_count++;
+    this.rewards_id++;
+  },
+
   initialize: function() {
-    $('#add_reward').click(function(e){
-      e.preventDefault()
-      var new_reward = '<div class="clearfix"></div><div class="reward">' + $($('.reward')[0]).html() + '</div>'
-      new_reward = new_reward.replace(/\_0\_/g, '_' + rewards_id + '_')
-      new_reward = new_reward.replace(/\[0\]/g, '[' + rewards_id + ']')
-      new_reward = $(new_reward)
-      new_reward.find('input').val(null)
-      new_reward.find('textarea').html(null)
-      new_reward.find('input').numeric(false)
-      new_reward.find('input, textarea').removeClass('ok').removeClass('error')
-      $('#rewards_wrapper').append(new_reward)
-      new_reward.find('textarea').focus()
-      rewards_count++
-      rewards_id++
-    })
+    this.rewards_count = 0;
+    this.rewards_id = null;
     var video_valid = null
     var permalink_valid = null
     everything_ok = function(){
