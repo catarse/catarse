@@ -21,6 +21,7 @@
     li
       .bootstrap-form
         = semantic_form_for @user, :html => {:method => :put}  do |f|
+          = f.input :moip_login
           = f.label :twitter, t('.twitter')
           = f.text_field :twitter
           = f.label :facebook_link, t('.facebook_link')
