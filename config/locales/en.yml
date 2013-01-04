@@ -104,7 +104,7 @@ en:
         moip_login: 'MoIP Login'
         current_password: "Current password"
         email: Email
-        full_name: "Full name"
+        full_name: "Full name / Company Name"
         name: Name
         password: Password
         password_confirmation: "Password Confirmation"
