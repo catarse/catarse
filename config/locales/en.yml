@@ -106,7 +106,7 @@ en:
         name: Name
         password: Password
         password_confirmation: "Password Confirmation"
-        phone_number: "Mobile phone number"
+        phone_number: "Mobile phone number (Brazil only)"
     models:
       backer: Backer
       category: Category
