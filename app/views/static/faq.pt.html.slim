@@ -173,7 +173,7 @@
         p O dono do projeto – e só ele. O Catarse é apenas um facilitador do processo, como, por exemplo, o #{link_to 'Mercado Livre', 'http://www.mercadolivre.com.br/', :target => :_blank}.
         h2 Algumas coisas mais
         h3 O Catarse tem um blog?
-        p Tem sim. É esse aqui: #{link_to t('site.blog'), t('site.blog'), :target => :_blank}.
+        p Tem sim. É esse aqui: #{link_to Configuration[:blog_url], Configuration[:blog_url], :target => :_blank}.
         h3 O Catarse está no Twitter?
         p Sim, nosso perfil é o #{link_to "@#{Configuration[:twitter_username]}", "http://twitter.com/#{ Configuration[:twitter_username] }", :target => :_blank}.
         h3 E tem uma página no Facebook?
