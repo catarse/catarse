@@ -109,7 +109,7 @@ pt:
         cpf: 'CPF / CNPJ'
         current_password: "Senha atual"
         email: Email
-        full_name: "Nome completo"
+        full_name: "Nome completo / Razão Social"
         name: Nome
         password: Senha
         password_confirmation: "Confirmação de senha"
