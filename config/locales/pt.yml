@@ -98,6 +98,7 @@ pt:
         maximum_backers: "Máximo de apoiadores"
         minimum_value: "Valor mínimo"
       user:
+        moip_login: 'Login do MoIP'
         address_city: Cidade
         address_complement: Complemento
         address_neighbourhood: Bairro
@@ -105,7 +106,7 @@ pt:
         address_state: Estado
         address_street: Logradouro
         address_zip_code: CEP
-        cpf: CPF
+        cpf: 'CPF / CNPJ'
         current_password: "Senha atual"
         email: Email
         full_name: "Nome completo"

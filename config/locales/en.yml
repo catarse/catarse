@@ -100,7 +100,8 @@ en:
         address_state: State
         address_street: Street
         address_zip_code: "Zip code"
-        cpf: CPF
+        cpf: 'CPF / CNPJ'
+        moip_login: 'MoIP Login'
         current_password: "Current password"
         email: Email
         full_name: "Full name"
