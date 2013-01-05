@@ -29,7 +29,7 @@ describe "Projects" do
       [
         'permalink', 'name', 'video_url', 
         'headline', 'goal', 'online_days', 
-        'about'
+        'about', 'first_backers', 'how_know', 'more_links'
       ].each do |a|
         fill_in "project_#{a}", with: project.attributes[a]
       end

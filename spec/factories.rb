@@ -34,6 +34,10 @@ Factory.define :project do |f|
   f.about "Foo bar"
   f.headline "Foo bar"
   f.goal 10000
+  f.online_days 10
+  f.how_know 'Lorem ipsum'
+  f.more_links 'Ipsum dolor'
+  f.first_backers 'Foo bar'
   f.expires_at { 1.month.from_now }
   f.video_url 'http://vimeo.com/17298435'
 end
