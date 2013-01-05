@@ -56,6 +56,7 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
     target = $(event.target).attr('data-target')
     url = $(event.target).attr('href')
     $(target).load(url)
+    $(target).show()
   },
 
   removeBackdrop: function(event) {
