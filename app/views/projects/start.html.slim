@@ -4,7 +4,7 @@
       .title
         h1= t('.title')
         h2= t('.subtitle')
-        p= t('.legend_html')
+        p= t('.legend_html').html_safe
       .clearfix
       .bootstrap-form
         = form_tag(send_mail_projects_path, :id => 'start_project_form') do

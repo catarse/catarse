@@ -1,4 +1,5 @@
 pt:
+  days: 'dias'
   controllers:
     rewards:
       create:
@@ -92,7 +93,9 @@ pt:
         name: Nome
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
-        permalink: 'Digite aqui como você quer que apareça a URL do seu projeto'
+        permalink: 'URL do seu projeto'
+        more_links: 'Mais algum link para conhecer mais sobre o seu projeto?'
+        how_know: 'Como você conheceu o Catarse?'
       reward:
         description: Descrição
         maximum_backers: "Máximo de apoiadores"
@@ -247,13 +250,16 @@ pt:
         value: "Você escolhe o valor ;) a partir de R$ 10 está ótimo."
       project:
         about: "Conte-nos um pouco sobre sua inspiração para realizar o projeto, sua história e o que será entregue ao final. Seja sucinto e fuja daquelas formalidades de editais. Nada de OBJETIVO, JUSTIFICATIVA, PÚBLICO-ALVO... Presenteie seus leitores com algo que mexa com eles e seja muito transparente em relação a expectativa sobre o projeto."
-        category: "Escolha em que categoria você quer que seu projeto apareça. Não se preocupe caso você ache que ele se enquadra em mais de uma. Escolha aquela onde você quer que as pessoas o encontrem."
+        category: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
         expires_at: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
         online_days: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
-        goal: "Pense bastante no valor que você vai solicitar. Ele deve ser o <strong>mínimo necessário para o projeto acontecer</strong>. Nada mais, nada menos. Se você pedir demais, suas chances de atingir o mínimo serão menores; se pedir de menos, não conseguirá realizar o projeto e, conseqüentemente, terá sua reputação prejudicada, o que dificulta realizações futuras."
+        goal: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): Clique aqui! Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
         headline: "Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)"
-        name: "Qual o nome do seu projeto? Escolha com carinho, pois isto irá influenciar as chances do seu projeto atingir o mínimo."
-        video_url: ! "Cole a URL de um vídeo no Vimeo. Nós escolhemos o Vimeo pois ele é mais bonito e não tem propaganda. Assim, seu projeto fica mais bonito também! Produza seu vídeo o melhor possível e faça um vídeo específico para a sua campanha. Se há um ponto que diferencia os projetos que antingem o mínimo dos outros é o vídeo. Observe ;)"
+        name: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo."
+        video_url: "O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
+        more_links: "Quais serão os canais de mobilização utilizados? (Coloque links como Facebook, Twitter, Blogs... tudo que irá te ajudar a divulgar o seu projeto)"
+        online_days: "Em média os projetos ficam no ar por 40 dias."
+        first_backers: "Para sua campanha ter sucesso, é fundamental trazer a sua rede de contato mais próxima. Por isso, liste aqui quem você acredita que serão seus primeiros 20 apoiadores"
       reward:
         description: "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!"
         maximum_backers: "Se sua recompensa é limitada, informe o máximo de pessoas."
@@ -267,11 +273,16 @@ pt:
       comment:
         comment: "Deixe seu comentário sobre este projeto"
       project:
-        about: "Sobre o seu projeto"
-        expires_at: "Qual o prazo para atingir o mínimo?"
-        goal: "Quanto você pretende arrecadar?"
-        name: "Nome do projeto"
-        video_url: Vídeo
+        about: "História do seu projeto e como o $ será utilizado *"
+        expires_at: "Qual o prazo para atingir o mínimo? *"
+        goal: "Quanto você pretende arrecadar? (apenas números)*"
+        name: "Nome do projeto *"
+        video_url: "Vídeo *"
+        headline: 'Frase de efeito *'
+        more_links: "Lista de Links relacionados a seu projeto *"
+        first_backers: "Lista com os primeiros apoiadores *"
+        how_know: "Como você conheceu o Catarse? *"
+
       reward:
         maximum_backers: "Máximo de apoiadores (opcional)"
     optional: " (opcional)"
@@ -416,8 +427,8 @@ pt:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
     form:
       permalink_hint: 'Simplifique a URL do seu projeto.Imagine que seu apoiador precisará lembrar do endereço para dibulgar o projeto no bar.'
-      add_reward: "Adicionar nova recompensa"
       important_html: "Lembre-se da taxa de 13% descontada pelo Catarse caso seu projeto seja bem-sucedido."
+      add_reward: "Adicionar nova recompensa"
       project_warning:
         content_html: "Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}."
         help_link: "nosso guia"
@@ -505,6 +516,9 @@ pt:
         take_a_look: "Confira o projeto"
         title: "Faça parte disto e compartilhe este projeto"
     new:
+      permalink_important: 'Tente não usar Underline, hífen e etc.'
+      permalink_hint: 'Simplifique a URL do seu projeto. Imagine que seu apoiador precisará lembrar do endereço para divulgar o projeto no bar.'
+      important_html: "Lembre-se da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido. Basta dividir o seu orçamento final por 0,87."
       about: "Descreva seu projeto e como o $ será utilizado"
       how_much_you_need: "Quanto você pretende arrecadar?"
       how_much_hint_html: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º  e 2º nível de relacionamento): <a href='%{href}' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
@@ -524,6 +538,12 @@ pt:
       video: "Já tem o video? Manda aí a url!"
       video_hint: "O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
       video_important: "O seu vídeo precisa estar hospedado no VIMEO. Cola o link pra gente!"
+      how_know_important: "Oba! Chegamos à última pergunta."
+      more_links_important: "É muito importante utilizar as suas mídias sócias para espalhar a notícia sobre o seu projeto e engajar sua rede no sucesso do projeto."
+      first_backers_important: "Essas pessoas serão fundamentais para ter sucesso no seu projeto"
+      online_days_important: 'O prazo máximo para deixar o projeto no ar é de 60 dias.'
+      headline_important: 'É uma breve descrição do projeto, 140 caracteres no máximo! :D'
+      name_important: "Não ultrapasse 50 caracteres"
       social: "Canais de Mobilização"
       facebook_hint: "http://facebook.com/__________"
       twitter_hint: "http:// twitter.com/____________"
@@ -539,9 +559,11 @@ pt:
       rewards_important: "Não viaje nas recompensas. Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D"
       submit: "Enviar o projeto"
       send_project: "Quero enviar meu projeto."
-      subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
+      subtitle: "A hora de montar o seu projeto é agora. Estamos loucos para saber o que você está aprontando..."
       title: "Agooora sim! Envie seu projeto, campeão."
-      legend_html: "Pense que está falando diretamente com o seu apoiador na hora de preencher o formulário abaixo. E lembre... quanto mais consistente estiver o seu projeto, mais rápido ele irá para o ar. <br><br>IMPORTANTE: As informações preenchidas abaixo não são definitivas. Você poderá modificá-las posteriormente, ao longo do processo de curadoria... ok?"
+      legend_html: "Após preencher o formulário abaixo, você receberá uma página de projeto em rascunho. Lá você irá adicionar as recompensas e poderá compartilhar com seus amigos para ter um projeto ainda mais afiado.
+                    <br/>Lembre-se de que quanto mais consistente estiver o seu projeto nesse envio, mais rápido ele irá para o ar. 
+                    <br/>IMPORTANTE: As informações preenchidas abaixo não são definitivas. Você poderá modificá-las posteriormente, ao longo do processo de curadoria... ok?"
     twitter:
       take_a_look: "Confira o projeto %{name} no @Catarse_"
     video_embed:
