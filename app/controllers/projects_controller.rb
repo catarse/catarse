@@ -8,12 +8,6 @@ class ProjectsController < ApplicationController
   respond_to :html, :except => [:backers]
   respond_to :json, :only => [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, :only => [:backers]
-  before_filter :date_format_convert, :only => [:create]
-
-  def date_format_convert
-    # TODO localize here and on the datepicker on project_form.js
-    params["project"]["expires_at"] = Date.strptime(params["project"]["expires_at"], '%d/%m/%Y')
-  end
 
   def index
     index! do |format|
