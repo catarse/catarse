@@ -34,10 +34,8 @@
     #project_description[data-project=@project.to_json]
     .project_image
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
-      = best_in_place_if(can?(:update, @project, :image_url), @project, :image_url)
     .section_header
-      h1
-        = best_in_place_if(can?(:update, @project, :name), @project, :name)
+      h1= @project.name
       h4= t('projects.project_header.without_city', :category_name => link_to(@project.category.name, explore_path(:anchor => @project.category.name.parameterize)), :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
     .tab_container
       nav#project_menu
@@ -64,6 +62,9 @@
             .bootstrap-form
               = semantic_form_for @project do |form|
                 = form.inputs do
+                  - if current_user.admin
+                    = form.input :expires_at, as: :string
+                    = form.input :user_id
                   - if can? :update, :name, @project
                     = form.input :name, as: :string, required: false
                   - if can? :update, :category, @project
@@ -102,11 +103,7 @@
         #project_about.content
           .midia
             .video
-              - if can?(:update, @project, :video_url)
-                p
-                  = best_in_place_if(can?(:update, @project, :video_url), @project, :video_url)
-              #iframeVideo
-              /iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+              iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
                 - if @project.permalink
@@ -125,8 +122,7 @@
           .text
             h5= t('.about_title')
             p
-              = best_in_place_if(can?(:update, @project), @project, :about, type: :textarea)
-              = render "admin_fields" if current_user and current_user.admin
+              = @project.about_html.html_safe
         .clearfix
         #loading= image_tag "loading.gif"
       .clearfix
@@ -139,10 +135,9 @@
               em= t('statistics.backers.subtitle')
             .item.goal
               p= @project.display_pledged
-              - bgoal = best_in_place_if(can?(:update, @project, :goal), @project, :goal, display_as: :display_goal)
-              em= t('statistics.goal.subtitle', :total => bgoal).html_safe
+              em= t('statistics.goal.subtitle', :total => @project.display_goal).html_safe
             .item.time
-              p= best_in_place_if can?(:update, @project, :online_days), @project, :online_days, display_as: :remaining_days
+              p= @project.remaining_days
               em #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
           #condition[class="#{@project.display_status}"]
