@@ -15,7 +15,7 @@ describe ProjectsMailer do
     know_us_via = "My friends\n<javascript>"
     contact = "foo@bar.com"
     user = Factory(:user)
-    email = ProjectsMailer.start_project_email(how_much_you_need, days, category, about, rewards, video, facebook, twitter, blog, links, know_us_via, contact, user, "#{I18n.t('site.base_url')}#{user_path(user)}").deliver
+    email = ProjectsMailer.start_project_email(how_much_you_need, days, category, about, rewards, video, facebook, twitter, blog, links, know_us_via, contact, user, "#{Configuration[:base_url]}#{user_path(user)}").deliver
     ActionMailer::Base.deliveries.should_not be_empty
     email_body = email.encoded.gsub(/=\r\n/, '')
     email_body.should =~ /1000 &lt;javascript&gt;/
@@ -23,6 +23,6 @@ describe ProjectsMailer do
     email_body.should =~ /Rewards of the project\<br\>&lt;javascript&gt;/
     email_body.should =~ /Links of the project\<br\>&lt;javascript&gt;/
     email_body.should =~ /foo@bar.com/
-    email[:from].to_s.should == "#{I18n.t('site.name')} <#{I18n.t('site.email.system')}>"
+    email[:from].to_s.should == "#{I18n.t('site.name')} <#{Configuration[:email_system]}>"
   end
 end
