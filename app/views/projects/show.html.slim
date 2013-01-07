@@ -54,8 +54,33 @@
           | &nbsp; (
           fb:comments-count href="#{request.url}"
           | )
+        - if can? :update, @project
+          = link_to '#edit', :id => 'edit_link' do
+            = t('.menu.edit')
     .main
       #project_content
+        - if can? :update, @project
+          #project_edit.content.hide
+            .bootstrap-form
+              = semantic_form_for @project do |form|
+                = form.inputs do
+                  - if can? :update, :name, @project
+                    = form.input :name, as: :string, required: false
+                  - if can? :update, :category, @project
+                    = form.input :category, as: :select, required: false
+                  - if can? :update, :video_url, @project
+                    = form.input :video_url, as: :string, required: false
+                  - if can? :update, :image_url, @project
+                    = form.input :image_url, as: :string, required: false
+                  - if can? :update, :online_days, @project
+                    = form.input :online_days, as: :number, required: false
+                  - if can? :update, :goal, @project
+                    = form.input :goal, as: :number, required: false
+                  - if can? :update, :about, @project
+                    = form.input :about, required: false
+                  .clearfix
+                  .form-actions.bootstrap-twitter
+                    = form.submit class: 'btn'
         #project_updates.content.hide
           - if can? :update, @project
             .bootstrap-form
