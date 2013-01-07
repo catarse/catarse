@@ -484,6 +484,7 @@ en:
         comments: Comments
         updates: Updates
         edit: Edit
+        add_reward: 'Add Reward'
       share:
         embed: embed
         embed_title: "Embed this project on your site"

@@ -509,6 +509,7 @@ pt:
         comments: Comentários
         updates: Novidades
         edit: Edição
+        add_reward: 'Adicionar recompensa'
       share:
         embed: embed
         embed_title: "Incorpore este projeto no seu site"

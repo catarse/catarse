@@ -1,7 +1,7 @@
 CATARSE.ProjectsShowView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "bestInPlaceEvents", "showUpNewRewardForm","render", "BackerView", "BackersView", "about", "updates", "edit","backers", "comments", "embed", "isValid", "backWithReward")
+    _.bindAll(this, "bestInPlaceEvents", "showUpRewardEditForm", "showUpNewRewardForm","render", "BackerView", "BackersView", "about", "updates", "edit","backers", "comments", "embed", "isValid", "backWithReward")
     CATARSE.router.route("", "index", this.about)
     CATARSE.router.route("about", "about", this.about)
     CATARSE.router.route("updates", "updates", this.updates)
@@ -42,7 +42,8 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     "click #project_embed textarea": "selectTarget",
     "click #rewards .clickable": "backWithReward",
     "click #rewards .clickable_owner span.avaliable": "backWithReward",
-    "click .add_new_reward": "showUpNewRewardForm"
+    "click .add_new_reward": "showUpNewRewardForm",
+    "click a.edit_reward": "showUpRewardEditForm"
   },
 
   bestInPlaceEvents: function() {
@@ -67,6 +68,12 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     event.preventDefault();
     $(event.currentTarget).fadeOut('fast');
     $('.new_reward_content').fadeIn('fast');
+  },
+
+  showUpRewardEditForm: function(event) {
+    event.preventDefault();
+    var id = $(event.currentTarget).attr('href')
+    $(id).slideDown();
   },
 
   MaximumBackersLabel: Backbone.View.extend({
