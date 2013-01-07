@@ -1,7 +1,7 @@
 CATARSE.ProjectsShowView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "bestInPlaceEvents", "VideoEmbed", "showUpNewRewardForm","render", "BackerView", "BackersView", "about", "updates", "edit","backers", "comments", "embed", "isValid", "backWithReward")
+    _.bindAll(this, "bestInPlaceEvents", "showUpRewardEditForm", "showUpNewRewardForm","render", "BackerView", "BackersView", "about", "updates", "edit","backers", "comments", "embed", "isValid", "backWithReward")
     CATARSE.router.route("", "index", this.about)
     CATARSE.router.route("about", "about", this.about)
     CATARSE.router.route("updates", "updates", this.updates)
@@ -25,9 +25,6 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
 
     this.project = new CATARSE.Project($('#project_description').data("project"))
 
-    var ve = new this.VideoEmbed({model: this.project});
-    ve.render();
-
     this.render()
     this.bestInPlaceEvents();
 
@@ -45,20 +42,12 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     "click #project_embed textarea": "selectTarget",
     "click #rewards .clickable": "backWithReward",
     "click #rewards .clickable_owner span.avaliable": "backWithReward",
-    "click .add_new_reward": "showUpNewRewardForm"
+    "click .add_new_reward": "showUpNewRewardForm",
+    "click a.edit_reward": "showUpRewardEditForm"
   },
 
   bestInPlaceEvents: function() {
     var _this = this;
-
-    $('.video .best_in_place').bind('ajax:success', function(data) {
-      _this.project.fetch({wait: true,
-        success: function(model, response) {
-          var video_embed = new _this.VideoEmbed({model: model});
-          video_embed.render();
-        }
-      });
-    });
 
     $('.maximum_backers .best_in_place').bind('ajax:success', function(data) {
       var data_url = $(data.currentTarget).data('url')
@@ -81,16 +70,16 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     $('.new_reward_content').fadeIn('fast');
   },
 
+  showUpRewardEditForm: function(event) {
+    event.preventDefault();
+    var id = $(event.currentTarget).attr('href')
+    $(id).slideDown();
+  },
+
   MaximumBackersLabel: Backbone.View.extend({
     render: function() {
       $('.maximum_backers', '#reward_'+this.model.id).empty().html(_.template($('#project_reward_maximum_backers_label').html(), this.model.toJSON()));
     }
-  }),
-
-  VideoEmbed: Backbone.View.extend({
-    render: function() {
-      $('#iframeVideo').empty().html(_.template($('#project_video_embed').html(), this.model.toJSON()));
-    },
   }),
 
   UpdatesForm: Backbone.View.extend({

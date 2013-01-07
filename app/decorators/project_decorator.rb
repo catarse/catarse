@@ -25,7 +25,11 @@ class ProjectDecorator < Draper::Base
   end
 
   def display_image
-    image_url || video_thumbnail.url || vimeo.thumbnail
+    if image_url.present?
+      image_url
+    else
+      video_thumbnail.url || vimeo.thumbnail
+    end
   end
 
   def display_expires_at
