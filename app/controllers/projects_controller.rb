@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
       params[:know_us_via],
       params[:contact],
       current_user,
-      "#{I18n.t('site.base_url')}#{user_path(current_user)}").deliver
+      "#{::Configuration[:base_url]}#{user_path(current_user)}").deliver
 
     # Send project receipt
     Notification.create_notification(:project_received, current_user)
@@ -163,7 +163,7 @@ class ProjectsController < ApplicationController
   def last_tweets
     Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
       begin
-        JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{t('site.twitter')}")))[0..1]
+        JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{Configuration[:twitter_username]}")))[0..1]
       rescue
         []
       end

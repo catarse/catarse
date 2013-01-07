@@ -5,11 +5,13 @@ pt:
       create:
         notice: 'Recompensa adicionada com sucesso!'
         alert: 'Ops! não foi possível adicionar a recompensa.'
+  facebook_locale: 'pt_BR'
   or: ou
   newsletter_ok_header: "Cadastro efetuado!"
   newsletter_ok_body: "Seu email foi cadastrado com sucesso, obrigado!"
   newsletter_error_header: "Ooops! Ocorreu um erro."
   newsletter_error_body: "Seu email não foi cadastrado, tente novamente mais tarde!"
+  newsletter_subscribe: "assinar"
   views:
     pagination:
       next: próxima
@@ -54,7 +56,6 @@ pt:
     titles:
       blog: blog
       facebook: "já curtiu nosso face?"
-      twitter: "@catarse_"
       newsletter: "quer novidades?"
       faq: "tá com dúvida?"
       schedule: agenda
@@ -533,7 +534,7 @@ pt:
       links: "Mais algum link para conhecer mais sobre o seu projeto?"
       links_important: "Esse clipping irá nos ajudar a entender a história do seu trabalho."
       links_hint: "Cole aqui links de vídeos, artigos, reportagens, blogs..."
-      category: "Qual é a categoria do seu projeto?"      
+      category: "Qual é a categoria do seu projeto?"
       tags_hint: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
       tags_important: "Confira mais projetos relacionados a sua categoria clicando <a href='%{href}' target='_blank'>aqui!</a>."
       video: "Já tem o video? Manda aí a url!"
@@ -597,20 +598,8 @@ pt:
     failure:
       error: "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
   site:
-    host: catarse.me
-    base_url: "http://catarse.me"
-    blog: "http://blog.catarse.me/"
-    email:
-      no_reply: "no-reply@catarse.me"
-      contact: contato@catarse.me
-      payments: financeiro@catarse.me
-      projects: projetos@catarse.me
-      system: system@catarse.me
-    facebook: "http://www.facebook.com/Catarse.me"
-    facebook_app_id: 173747042661491
     name: Catarse
     title: "A maior comunidade de crowdfunding do Brasil!"
-    twitter: Catarse_
   static:
     faq:
       title: "Perguntas frequentes"

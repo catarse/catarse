@@ -16,6 +16,6 @@ class ProjectsMailer < ActionMailer::Base
     @contact = contact
     @user = user
     @user_url = user_url
-    mail(:from => "#{I18n.t('site.name')} <#{I18n.t('site.email.system')}>", :to => I18n.t('site.email.projects'), :subject => I18n.t('projects_mailer.start_project_email.subject', :name => @user.name))
+    mail(:from => "#{I18n.t('site.name')} <#{::Configuration[:email_system]}>", to: ::Configuration[:email_projects], subject: I18n.t('projects_mailer.start_project_email.subject', :name => @user.name))
   end
 end

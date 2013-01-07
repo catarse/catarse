@@ -3,6 +3,6 @@
 br
 == @notification.mail_params[:update_comment]
 br
-|Comments? Go to the project page: #{link_to update.project.name, Rails.application.routes.url_helpers.project_url(update.project, :host => I18n.t('site.host')) }.
+|Comments? Go to the project page: #{link_to update.project.name, Rails.application.routes.url_helpers.project_url(update.project, host: Configuration[:host]) }.
 br
 |To contact the project producer send an email to  #{ mail_to( @notification.mail_params[:project_owner_email] ) }.

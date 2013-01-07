@@ -23,13 +23,13 @@ br
 |Uma informação importante: se você esqueceu de enviar algo nesse formulário que você preencheu, sem problemas, você poderá adicionar novas informações (ou mudar alguma delas) assim que a equipe de atendimento entrar em contato contigo, ok?
 br
 br
-|Enquanto isso, vale a pena conhecer os projetos que estão no ar (#{link_to "#{I18n.t('site.base_url')}/explore" ,"#{I18n.t('site.base_url')}/explore"}) e - se gostar de algum deles- apoiar! Essa é a melhor maneira de mostrar que acredita na cultura do financiamento colaborativo no Brasil e fomentar o ecossistema que está se formando ao redor do Catarse. Além, é claro, de se inspirar para o seu projeto.
+|Enquanto isso, vale a pena conhecer os projetos que estão no ar (#{link_to "#{Configuration[:base_url]}/explore" ,"#{Configuration[:base_url]}/explore"}) e - se gostar de algum deles- apoiar! Essa é a melhor maneira de mostrar que acredita na cultura do financiamento colaborativo no Brasil e fomentar o ecossistema que está se formando ao redor do Catarse. Além, é claro, de se inspirar para o seu projeto.
 br
 br
-|Fique ligado em nossas novidades no #{link_to 'Facebook', I18n.t('site.facebook', :locale => user.locale)} e no #{link_to 'Twitter', "twitter.com/#{I18n.t('site.twitter')}" } e conheça mais sobre o Catarse lendo nossos posts no #{link_to 'blog', I18n.t('site.blog', :locale => user.locale)}.
+|Fique ligado em nossas novidades no #{link_to 'Facebook', Configuration[:facebook_url]} e no #{link_to 'Twitter', "twitter.com/#{Configuration[:twitter_username]}" } e conheça mais sobre o Catarse lendo nossos posts no #{link_to 'blog', Configuration[:blog_url]}.
 br
 br
-|Se ficou com alguma dúvida, entre em contato conosco no: #{mail_to I18n.t('site.email.contact', :locale => user.locale)}
+|Se ficou com alguma dúvida, entre em contato conosco no: #{mail_to Configuration[:email_contact]}
 br
 br
 |Um grande abraço,
