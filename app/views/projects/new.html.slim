@@ -18,7 +18,7 @@
                   .important= t('.permalink_important')
               = form.label :permalink, "#{t('activerecord.attributes.project.permalink')} *"
               .input-prepend.permalink
-                span.add-on= "#{t('site.base_url')}/"
+                span.add-on= "#{::Configuration[:base_url]}/"
                 = form.text_field :permalink, :class => 'permalink'
                 p.inline-hints
                   = t('.permalink_hint')
@@ -125,7 +125,7 @@
                 .bootstrap-twitter
                   .send
                     = submit_tag t('.submit'), :disabled => true, :id => 'project_submit', :class => 'btn_send'
-                    span = t('.send_project')    
+                    span = t('.send_project')
                   /= form.submit t('.submit'), :disabled => true, :class => 'btn-large btn-block btn btn-warning', :id => 'project_submit', :style => 'width: 100%;'
-        
+
     .clearfix
