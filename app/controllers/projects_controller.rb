@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
       params[:know_us_via],
       params[:contact],
       current_user,
-      "#{I18n.t('site.base_url')}#{user_path(current_user)}").deliver
+      "#{Configuration['base_url']}#{user_path(current_user)}").deliver
 
     # Send project receipt
     Notification.create_notification(:project_received, current_user)
