@@ -189,7 +189,7 @@
         .clearfix
         - if can?(:update, @project)
           .bootstrap-twitter.bootstrap-form
-            = link_to 'Adicionar nova recompensa', 'javascript:void(0);', class: 'btn btn-success pull-right add_new_reward'
+            = link_to t('.menu.add_reward'), 'javascript:void(0);', class: 'btn btn-success pull-right add_new_reward'
             .clearfix
             .well.new_reward_content.hide
               = semantic_form_for [@project, Reward.new] do |f|
@@ -199,25 +199,40 @@
                 = f.submit :class => 'btn'
         #rewards
           - @rewards.each do |reward|
+
             div[id="reward_#{reward.id}" class="box #{(can?(:update, reward) ? 'clickable_owner' : '')} #{(@project.can_back? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
-              - if can?(:destroy, reward)
-                .bootstrap-twitter
-                  = link_to [@project, reward], class: 'btn btn-mini pull-right btn-danger', style: 'margin-right: -17px;', method: :delete, confirm: 'You are sure?' do
-                    i.icon-trash.icon-white
+              - if can?(:update, reward)
+                .hide id="reward#{reward.id}Editor"
+                  .bootstrap-form
+                    = semantic_form_for [@project, reward] do |f|
+                      - if can? :update, :minimum_value, reward
+                        = f.input :minimum_value
+                      - if can? :update, :description, reward
+                        = f.input :description
+                      - if can? :update, :maximum_backers, reward
+                        = f.input :maximum_backers
+                      .bootstrap-twitter
+                        = f.submit :class => 'btn'
+
+                      .clearfix.bootstrap-twitter
+                        = link_to [@project, reward], class: 'btn btn-danger', style: 'margin-top: 20px;',method: :delete, confirm: 'You are sure?' do
+                          i.icon-trash.icon-white
+                - if can?(:destroy, reward)
+                  .bootstrap-twitter
+                    = link_to "#reward#{reward.id}Editor", :class => 'edit_reward btn btn-mini pull-right btn-primary', :style =>'margin-right: -17px;' do
+                      i.icon-pencil.icon-white
+
+
               = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
               - if reward.sold_out?
                 span.icon.sold_out
               - else
                 span.icon.avaliable
-              - bip_on_value = best_in_place_if(can?(:update, reward, :minimum_value), reward, :minimum_value, path: [@project, reward], display_as: :display_minimum)
-              h2= t('projects.rewards.reward_title', :minimum => bip_on_value).html_safe
+              h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum).html_safe
               em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
               .clearfix
               p
-                - if can?(:update, reward)
-                  = best_in_place_if(can?(:update, reward), reward, :description, path: [@project, reward], type: :textarea)
-                - else
-                  = reward.display_description
+                = reward.display_description
               - if reward.maximum_backers
                 .maximum_backers.clearfix
                   - if reward.sold_out?
@@ -228,10 +243,6 @@
                       - bir = best_in_place_if(can?(:update, reward, :maximum_backers), reward, :maximum_backers, path: [@project, reward])
                       = t('reward.display_remaining', :remaining => reward.remaining, :maximum => bir).html_safe
                 .clearfix
-              - elsif can?(:update, reward)
-                .maximum_backers.add_limit.clearfix
-                  div style="padding-top: 20px;"
-                    = best_in_place_if(can?(:update, reward, :maximum_backers), reward, :maximum_backers, path: [@project, reward], nil: 'Adicionar Limite' )
 
 
           .clearfix

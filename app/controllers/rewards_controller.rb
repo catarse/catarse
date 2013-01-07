@@ -14,6 +14,15 @@ class RewardsController < ApplicationController
     render json: @reward.to_json
   end
 
+  def update
+    update! do |success, failure|
+      success.html { redirect_to project_path(resource.project) }
+      success.json { render json: resource.to_json }
+      failure.html { redirect_to project_path(resource.project) }
+      failure.json { render json: resource.to_json }
+    end
+  end
+
   def create
     create! do |success, failure|
       success.html { 
