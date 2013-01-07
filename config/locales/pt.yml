@@ -507,7 +507,8 @@ pt:
         about: Sobre
         backers: Apoiadores
         comments: Comentários
-        updates: Atualizações
+        updates: Novidades
+        edit: Edição
       share:
         embed: embed
         embed_title: "Incorpore este projeto no seu site"
