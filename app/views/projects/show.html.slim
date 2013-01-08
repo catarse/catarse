@@ -29,8 +29,9 @@
           .alert.alert-warning
             = t('.rejected')
         - else
-          .alert.alert-warning
-            = t('.waiting')
+          - if can? :update, @project
+            .alert.alert-warning
+              = t('.waiting_owner')
     #project_description[data-project=@project.to_json]
     .project_image
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
@@ -59,6 +60,10 @@
       #project_content
         - if can? :update, @project
           #project_edit.content.hide
+            .bootstrap-twitter
+              .alert.alert-info
+                p style='margin-bottom: 0; padding-bottom: 0;'
+                  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'GUIA COMPLETO', 'http://catarse.me/guia_realizadores.pdf', target: '_blank'}".html_safe
             .bootstrap-form
               = semantic_form_for @project do |form|
                 = form.inputs do
@@ -70,7 +75,7 @@
                   - if can? :update, :category, @project
                     = form.input :category, as: :select, required: false
                   - if can? :update, :video_url, @project
-                    = form.input :video_url, as: :string, required: false
+                    = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
                   - if can? :update, :image_url, @project
                     = form.input :image_url, as: :string, required: false
                   - if can? :update, :online_days, @project
