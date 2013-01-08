@@ -194,6 +194,11 @@
         .clearfix
         - if can?(:update, @project)
           .bootstrap-twitter.bootstrap-form
+            .alert.alert-info
+              h4.alert-header= t('.no_rewards_warning_title')
+              p style="margin:0; padding:0;"
+                = t('.no_rewards_warning')
+            .clearfix
             = link_to t('.menu.add_reward'), 'javascript:void(0);', class: 'btn btn-success pull-right add_new_reward'
             .clearfix
             .well.new_reward_content.hide

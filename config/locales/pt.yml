@@ -507,6 +507,8 @@ pt:
       waiting: "Esse projeto está em fase de rascunho e logo saberemos se ele entrará no Catarse. Se está vendo o projeto, e não é o dono dele... aproveita para mandar sua opinião ao realizador."
       waiting_owner: "Para editar as informações da página do projeto, basta clicar em EDIÇÃO. As recompensas você edita na coluna delas mesmo :D."
       about_title: "O projeto"
+      no_rewards_warning_title: 'Crie aqui suas recompensas'
+      no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
       menu:
         about: Sobre
         backers: Apoiadores
