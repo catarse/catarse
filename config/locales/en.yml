@@ -242,6 +242,7 @@ en:
         credits: "You have <strong>%{credits}</strong> in credits and can back with up to this amount without needing to make a new payment."
         value: "You chose the amount ;) starting with R$10, any amount is great."
       project:
+        video_url_edit: 'Paste your VIMEO link'
         about: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
         category: "Choose in which category you want your project to appear. Don't worry if you think it fits in more than one. Choose the one where you want people to find your project."
         expires_at: "Finally, choose how long you want your campaign to last. Again, this is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
@@ -478,6 +479,7 @@ en:
     show:
       rejected: "This project was not selected to participate on Catarse. Maybe next time! :)"
       waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
+      waiting_owner: "To edit the project info, click on 'Edit project' tab. The rewards you can edit on reward column."
       about_title: "About this project"
       menu:
         about: About

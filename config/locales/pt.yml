@@ -250,6 +250,7 @@ pt:
         credits: "Você possui <strong>%{credits}</strong> em créditos e pode apoiar até este valor sem precisar realizar um novo pagamento."
         value: "Você escolhe o valor ;) a partir de R$ 10 está ótimo."
       project:
+        video_url_edit: 'Cole aqui o link do seu vídeo hospedado VIMEO'
         about: "Conte-nos um pouco sobre sua inspiração para realizar o projeto, sua história e o que será entregue ao final. Seja sucinto e fuja daquelas formalidades de editais. Nada de OBJETIVO, JUSTIFICATIVA, PÚBLICO-ALVO... Presenteie seus leitores com algo que mexa com eles e seja muito transparente em relação a expectativa sobre o projeto."
         category: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
         expires_at: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
@@ -261,6 +262,7 @@ pt:
         more_links: "Quais serão os canais de mobilização utilizados? (Coloque links como Facebook, Twitter, Blogs... tudo que irá te ajudar a divulgar o seu projeto)"
         online_days: "Em média os projetos ficam no ar por 40 dias."
         first_backers: "Para sua campanha ter sucesso, é fundamental trazer a sua rede de contato mais próxima. Por isso, liste aqui quem você acredita que serão seus primeiros 20 apoiadores"
+        image_url: 'Aqui você deve colar um link (.jpg) de uma imagem com tamanho 220x172. Pode subir a foto no facebook (colocar pública a todos) e colar o link dela aqui, por exemplo.'
       reward:
         description: "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!"
         maximum_backers: "Se sua recompensa é limitada, informe o máximo de pessoas."
@@ -278,12 +280,12 @@ pt:
         expires_at: "Qual o prazo para atingir o mínimo? *"
         goal: "Quanto você pretende arrecadar? (apenas números)*"
         name: "Nome do projeto *"
-        video_url: "Vídeo *"
+        video_url: "Vídeo"
         headline: 'Frase de efeito *'
         more_links: "Lista de Links relacionados a seu projeto *"
         first_backers: "Lista com os primeiros apoiadores *"
         how_know: "Como você conheceu o Catarse? *"
-
+        image_url: 'Thumbnail do projeto'
       reward:
         maximum_backers: "Máximo de apoiadores (opcional)"
     optional: " (opcional)"
@@ -502,7 +504,8 @@ pt:
       success: "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"
     show:
       rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
-      waiting: "Este projeto está aguardando análise e logo saberemos se ele entrará no Catarse ;)"
+      waiting: "Esse projeto está em fase de rascunho e logo saberemos se ele entrará no Catarse. Se está vendo o projeto, e não é o dono dele... aproveita para mandar sua opinião ao realizador."
+      waiting_owner: "Para editar as informações da página do projeto, basta clicar em EDIÇÃO. As recompensas você edita na coluna delas mesmo :D."
       about_title: "O projeto"
       menu:
         about: Sobre
