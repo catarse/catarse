@@ -72,6 +72,8 @@
                     = form.input :user_id
                   - if can? :update, :name, @project
                     = form.input :name, as: :string, required: false
+                  - if can? :update, :headline, @project
+                    = form.input :headline, as: :string, required: false
                   - if can? :update, :category, @project
                     = form.input :category, as: :select, required: false
                   - if can? :update, :video_url, @project
