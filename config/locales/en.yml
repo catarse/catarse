@@ -481,6 +481,8 @@ en:
       waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
       waiting_owner: "To edit the project info, click on 'Edit project' tab. The rewards you can edit on reward column."
       about_title: "About this project"
+      no_rewards_warning_title: 'Create here your rewards'
+      no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
       menu:
         about: About
         backers: Backers
