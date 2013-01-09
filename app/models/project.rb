@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
   include PgSearch
 
   before_save do
-    if online_days_changed? || !expires_at.present?
+    if online_days_changed? || !self.expires_at.present?
       self.expires_at = DateTime.now+(online_days rescue 0).days
     end
   end
