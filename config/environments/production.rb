@@ -61,6 +61,4 @@ Catarse::Application.configure do
   config.active_support.deprecation = :notify
   config.active_record.schema_format = :sql
 
-  config.action_mailer.default_url_options = {host: ::Configuration[:host] }
-
 end
