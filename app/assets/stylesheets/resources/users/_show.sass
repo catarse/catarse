@@ -115,6 +115,12 @@
   #gravatar_hint.alert.alert-info
     font-family: Lato-Regular
     font-size: 16px
+    line-height: 21px
+    padding-bottom: 13px
+    padding-right: 10px
+    padding-top: 3px
+    width: 516px
+    margin-top: 15px
     // color: rgba(black, 0.5)
     p
       padding: 10px 0 0
@@ -127,8 +133,9 @@
           color: $pink
     a
       img
+        margin-right: 12px
+        margin-top: 14px
         float: left
-        margin-right: 20px
   #social_info
     margin-top: 20px
   #my_data, #social_info, #my_avatar
@@ -138,6 +145,7 @@
       color: $ultra_gryn
     ul
       padding-top: 15px
+      border-bottom: 1px dotted #ccc
       font-family: Lato-Regular
       li
         font-family: Lato-Regular
@@ -151,6 +159,9 @@
         .disabled
           color: gray
         form
+          .div
+            float: left
+            width: 240px
           .btn
             background-color: #F5F5F5
             background-repeat: repeat-x
@@ -166,9 +177,9 @@
             margin-bottom: 0
             padding: 4px 10px
             text-align: center
-            vertical-align: middle
+            vertical-align: middle           
           .inputs
-            margin-bottom: 20px
+            margin-bottom: 0px          
             ol
               .inputs
                 background: #F7F7F7
@@ -183,8 +194,30 @@
                   font-size: 13px
                   input
                     margin-right: 5px
+              #user_uploaded_image_input
+                #user_uploaded_image
+                  height: 26px
+          .profile
+            border-bottom: 1px dotted #CCCCCC
+            border-top: 1px dotted #CCCCCC
+            float: left
+            margin-top: 30px
+            padding-top: 30px
+            width: 940px
+            li
+              float: left
+              margin-right: 20px
+              input#user_full_name
+                width: 450px               
+  #my_avatar
+    ul
+      padding-bottom: 10px
+      margin-bottom: 30px
+      li
+        margin-bottom: 0px
+        form
+          margin-bottom: 0px
   #my_data
-    margin-left: 10px
     ul
       font-family: Lato-Bold
       margin-bottom: 10px

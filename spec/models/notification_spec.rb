@@ -11,9 +11,10 @@ describe Notification do
   let(:notification_type){ Factory(:notification_type, name: 'confirm_backer') }
 
   before do
+    ProjectObserver.any_instance.stubs(:after_create)
     Notification.unstub(:create_notification)
     Notification.unstub(:create_notification_once)
-    ActionMailer::Base.deliveries.clear 
+    ActionMailer::Base.deliveries.clear
   end
 
   describe "#send_email" do
