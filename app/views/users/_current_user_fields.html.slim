@@ -39,7 +39,6 @@
             = f.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
             = f.input :address_city, :as => :string
             = f.input :address_state, :as => :select, :collection => State.array
-            = f.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}
             .email
               = f.label :email, t('activerecord.attributes.user.email')
               #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
@@ -47,7 +46,6 @@
               = hidden_field_tag 'id', @user.id
               = check_box_tag 'newsletter', '1', @user.newsletter,:label => 'saf'
               = label_tag 'newsletter', t('.newsletter')
-
           br
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"
