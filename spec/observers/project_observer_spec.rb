@@ -21,11 +21,11 @@ describe ProjectObserver do
   end
 
   describe "after_create" do
-    let(:project) { Factory.build(:project) }
-    let(:user) { Factory(:user, id: Configuration[:draft_user_id])}
+    let(:project) { Factory(:project) }
+    let(:user) { Factory(:user)}
 
     it "should call create_notification" do
-      Notification.expects(:create_notification_once).with(:new_draft_project, user, {project_id: project.id}, {project: project})
+      Notification.expects(:create_notification_once).with(:new_draft_project, project.user, {project_id: project.id}, {project: project})
       project.save!
     end
   end
