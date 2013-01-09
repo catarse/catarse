@@ -198,7 +198,6 @@
                 #user_uploaded_image
                   height: 26px
           .profile
-            border-bottom: 1px dotted #CCCCCC
             border-top: 1px dotted #CCCCCC
             float: left
             margin-top: 30px
@@ -207,8 +206,25 @@
             li
               float: left
               margin-right: 20px
-              input#user_full_name
-                width: 450px               
+              input#user_full_name, input#user_address_street
+                width: 450px 
+            li#user_address_complement_input, li#user_address_state_input
+              margin-right: 0px             
+            .email
+              float: left
+              .hint
+                color: #333333
+                font-size: 12px
+                line-height: 18px
+                margin-bottom: 20px
+                padding-top: 5px
+                width: 700px
+              #newsletter
+                float: left
+              #newsletter + label
+                float: left
+                margin-left: 6px
+                margin-bottom: 30px                
   #my_avatar
     ul
       padding-bottom: 10px
@@ -221,6 +237,7 @@
     ul
       font-family: Lato-Bold
       margin-bottom: 10px
+      padding-bottom: 20px
 
   #change_password
     h1
