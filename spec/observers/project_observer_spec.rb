@@ -21,8 +21,8 @@ describe ProjectObserver do
   end
 
   describe "after_create" do
-    let(:project) { Factory.build(:project) }
-    let(:user) { Factory(:user, id: Configuration[:draft_user_id])}
+    let(:project) { Factory(:project) }
+    let(:user) { Factory(:user, id: Configuration[:email_projects])}
 
     it "should call create_notification" do
       Notification.expects(:create_notification_once).with(:new_draft_project, user, {project_id: project.id}, {project: project})
@@ -60,7 +60,7 @@ describe ProjectObserver do
   describe "notify_backers" do
 
     context "when project is successful" do
-      let(:project){ Factory(:project, :can_finish => true, :goal => 30, :expires_at => (Time.now - 7.days), :state => 'waiting_funds') }
+      let(:project){ Factory(:project, :can_finish => true, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 30, :project => project) }
 
       before do
@@ -72,7 +72,7 @@ describe ProjectObserver do
     end
 
     context "when project is unsuccessful" do
-      let(:project){ Factory(:project, :goal => 30, :expires_at => (Time.now - 7.days), :state => 'waiting_funds') }
+      let(:project){ Factory(:project, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
       let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 20) }
       before do
         Notification.expects(:create_notification_once).at_least_once
