@@ -15,35 +15,38 @@
           = f.actions do
             .bootstrap-twitter
               p= f.action :submit, :button_html => {:value => t('.submit'), :class => 'btn', :id => 'image_upload_btn'}
-  h1= t('.my_data')
 #my_data
+  h1= t('.my_data')
   ul
     li
       .bootstrap-form
         = semantic_form_for @user, :html => {:method => :put}  do |f|
-          = f.input :moip_login
-          = f.label :twitter, t('.twitter')
-          = f.text_field :twitter
-          = f.label :facebook_link, t('.facebook_link')
-          = f.text_field :facebook_link
+          .div
+            = f.label :twitter, t('.twitter')
+            = f.text_field :twitter
+          .div
+            = f.label :facebook_link, t('.facebook_link')
+            = f.text_field :facebook_link
           = f.label :other_link, t('.other_link')
           = f.text_field :other_link
-          = f.input :full_name, :required => true, :as => :string
-          = f.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
-          = f.input :address_street, :as => :string
-          = f.input :address_number, :as => :string
-          = f.input :address_complement, :required => false, :as => :string
-          = f.input :address_neighbourhood, :as => :string
-          = f.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
-          = f.input :address_city, :as => :string
-          = f.input :address_state, :as => :select, :collection => State.array
-          = f.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}
-          = f.label :email, t('activerecord.attributes.user.email')
-          #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
-          .hint= t('.email_hint')
-          = hidden_field_tag 'id', @user.id
-          = check_box_tag 'newsletter', '1', @user.newsletter,:label => 'saf'
-          = label_tag 'newsletter', t('.newsletter')
+          .profile
+            = f.input :full_name, :required => true, :as => :string
+            = f.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
+            = f.input :address_street, :as => :string
+            = f.input :address_number, :as => :string
+            = f.input :address_complement, :required => false, :as => :string
+            = f.input :address_neighbourhood, :as => :string
+            = f.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
+            = f.input :address_city, :as => :string
+            = f.input :address_state, :as => :select, :collection => State.array
+            = f.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}
+            .email
+              = f.label :email, t('activerecord.attributes.user.email')
+              #{on_the_spot_edit @user, :email, :tooltip => t('.email_tooltip')}
+              .hint= t('.email_hint')
+              = hidden_field_tag 'id', @user.id
+              = check_box_tag 'newsletter', '1', @user.newsletter,:label => 'saf'
+              = label_tag 'newsletter', t('.newsletter')
 
           br
           .bootstrap-twitter
