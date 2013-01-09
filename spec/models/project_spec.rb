@@ -23,11 +23,11 @@ describe Project do
 
   describe '.finish_projects!' do
     before do
-      @project_01 = Factory(:project, expires_at: 1.minutes.ago, goal: 300, state: 'online')
-      @project_02 = Factory(:project, expires_at: 5.minutes.from_now, goal: 300, state: 'online')
-      @project_03 = Factory(:project, expires_at: 7.days.ago, goal: 300, state: 'waiting_funds')
+      @project_01 = Factory(:project, online_days: -1, goal: 300, state: 'online')
+      @project_02 = Factory(:project, online_days: 5, goal: 300, state: 'online')
+      @project_03 = Factory(:project, online_days: -7, goal: 300, state: 'waiting_funds')
       backer = Factory(:backer, project: @project_03, value: 3000, confirmed: true)
-      @project_04 = Factory(:project, expires_at: 7.days.ago, goal: 300, state: 'waiting_funds')
+      @project_04 = Factory(:project, online_days: -7, goal: 300, state: 'waiting_funds')
       Project.finish_projects!
       @project_01.reload
       @project_02.reload
@@ -116,8 +116,8 @@ describe Project do
 
   describe ".expired" do
     before do
-      @p = Factory(:project, :expires_at => 1.day.ago )
-      Factory(:project, :expires_at => 1.day.from_now)
+      @p = Factory(:project, :online_days => -1)
+      Factory(:project, :online_days => 1)
     end
     subject{ Project.expired}
     it{ should == [@p] }
@@ -125,8 +125,8 @@ describe Project do
 
   describe ".not_expired" do
     before do
-      @p = Factory(:project, :expires_at => (Date.today + 1.day))
-      Factory(:project, :expires_at => (Date.today - 1.day))
+      @p = Factory(:project, :online_days => 1)
+      Factory(:project, :online_days => -1)
     end
     subject{ Project.not_expired }
     it{ should == [@p] }
@@ -134,8 +134,8 @@ describe Project do
 
   describe ".expiring" do
     before do
-      @p = Factory(:project, :expires_at => (Date.today + 14.day))
-      Factory(:project, :expires_at => (Date.today - 1.day))
+      @p = Factory(:project, :online_days => 14)
+      Factory(:project, :online_days => -1)
     end
     subject{ Project.expiring }
     it{ should == [@p] }
@@ -143,8 +143,8 @@ describe Project do
 
   describe ".not_expiring" do
     before do
-      @p = Factory(:project, :expires_at => (Date.today + 15.day))
-      Factory(:project, :expires_at => (Date.today - 1.day))
+      @p = Factory(:project, :online_days => 15)
+      Factory(:project, :online_days => -1)
     end
     subject{ Project.not_expiring }
     it{ should == [@p] }
@@ -444,7 +444,7 @@ describe Project do
     end
 
     describe '#finish' do
-      subject { Factory(:project, goal: 30_000, expires_at: 3.hours.ago) }
+      subject { Factory(:project, goal: 30_000, online_days: -1) }
 
       context 'when project is not approved' do
         its(:finish) { should be_false }

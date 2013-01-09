@@ -39,6 +39,7 @@ RSpec.configure do |config|
     CatarseMailchimp::API.stubs(:unsubscribe)
     Notification.stubs(:create_notification)
     Notification.stubs(:create_notification_once)
+    ProjectObserver.any_instance.stubs(:after_create)
     Calendar.any_instance.stubs(:fetch_events_from)
     Blog.stubs(:fetch_last_posts).returns([])
     ProjectsController.any_instance.stubs(:last_tweets)

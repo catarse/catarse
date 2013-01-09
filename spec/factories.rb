@@ -34,7 +34,7 @@ Factory.define :project do |f|
   f.about "Foo bar"
   f.headline "Foo bar"
   f.goal 10000
-  f.online_days 10
+  f.online_days 5
   f.how_know 'Lorem ipsum'
   f.more_links 'Ipsum dolor'
   f.first_backers 'Foo bar'
