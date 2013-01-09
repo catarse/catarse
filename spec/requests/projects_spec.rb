@@ -7,8 +7,8 @@ describe "Projects" do
 
   describe "home" do
     before do
-      Factory(:project, state: 'online', expires_at: Time.now + 1.month)
-      Factory(:project, state: 'online', expires_at: Time.now - 1.month)
+      Factory(:project, state: 'online', online_days: 30)
+      Factory(:project, state: 'online', online_days: -30)
       visit root_path(:locale => :pt)
     end 
 
