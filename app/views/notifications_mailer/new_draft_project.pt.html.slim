@@ -1,0 +1,28 @@
+- project = @notification.project
+| Hey!
+br/
+| Mais um projeto foi criado no Catarse!
+= " por #{link_to project.user, user_url(project.user)}"
+br/ 
+| Detalhes do projeto abaixo:
+br/
+b Nome:
+= " #{project.name}"
+br/
+b Meta:
+= " #{project.display_goal}"
+br/
+b Lista de Links relacionados:
+br/
+= simple_format(project.more_links)
+br/
+b Primeiros apoiadores:
+br/
+= simple_format(project.first_backers)
+b Como conheceu o catarse:
+br/
+= simple_format(project.how_know)
+br/
+br/
+= link_to 'Veja mais sobre o projeto', project_url(project)
+
