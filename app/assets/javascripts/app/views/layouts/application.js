@@ -11,8 +11,6 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
   events: {
     "submit .search": "search",
     "hidden #myModal": "removeBackdrop",
-    "click #guidelines_header_modal": "showModal",
-    "click #guidelines_modal": "showModal",
     "click #login .close": "closeLogin",
     "click #login a.provider": "submitLogin",
     "click a.my_profile_link":"currentUserDropDown",
