@@ -137,7 +137,7 @@ class Project < ActiveRecord::Base
 
   def waiting_confirmation?
     return false if finished or successful?
-    expired? and Time.now < 3.weekdays_from(expires_at)
+    expired? and Time.now < 4.weekdays_from(expires_at)
   end
 
   def in_time?
@@ -209,7 +209,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    Time.now < 3.weekdays_from(expires_at)
+    Time.now < 4.weekdays_from(expires_at)
   end
 
   #NOTE: state machine things
