@@ -6,6 +6,13 @@ class ProjectObserver < ActiveRecord::Observer
     project.download_video_thumbnail if project.video_url.present? && project.video_url_changed?
   end
 
+  def after_create(project)
+    Notification.create_notification_once(:new_draft_project,
+      project.user,
+      {project_id: project.id},
+      project: project)
+  end
+
   def notify_owner_that_project_is_online(project)
     Notification.create_notification_once(:project_visible,
       project.user,
