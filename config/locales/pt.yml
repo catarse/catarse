@@ -42,8 +42,8 @@ pt:
       funded_projects: "Projetos bem-sucedidos"
       active_projects: "Projetos no ar agora"
     links:
-      how_works: "Como funciona"
-      faq: F.A.Q./Ajuda
+      how_works: "Ajuda"
+      faq: FAQ
       terms: "Termos de Uso"
       policy: "Política de Privacidade"
       contact: Contato
@@ -301,6 +301,7 @@ pt:
     header:
       blog: blog
       help: ajuda
+      faq: FAQ
       signup: cadastre-se
       signin: login
       explore: explore
