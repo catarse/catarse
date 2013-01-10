@@ -15,6 +15,8 @@ class Project < ActiveRecord::Base
     end
   end
 
+  mount_uploader :uploaded_image, LogoUploader
+
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
     :display_pledged, :display_goal, :remaining_days,
     :to => :decorator

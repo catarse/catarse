@@ -25,7 +25,9 @@ class ProjectDecorator < Draper::Base
   end
 
   def display_image
-    if image_url.present?
+    if uploaded_image.present?
+      uploaded_image.project_thumb.url
+    elsif image_url.present?
       image_url
     else
       video_thumbnail.url || vimeo.thumbnail
