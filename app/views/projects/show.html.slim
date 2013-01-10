@@ -78,6 +78,8 @@
                     = form.input :category, as: :select, required: false
                   - if can? :update, :video_url, @project
                     = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
+                  - if can? :update, :uploaded_image, @project
+                    = form.input :uploaded_image, as: :file, required: false
                   - if can? :update, :image_url, @project
                     = form.input :image_url, as: :string, required: false
                   - if can? :update, :online_days, @project
