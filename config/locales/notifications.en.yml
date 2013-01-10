@@ -1,4 +1,4 @@
-pt:
+en:
   notifications:
     confirm_backer:
       subject: "Obrigado! Seu apoio para %{project_name} foi confirmado!"
