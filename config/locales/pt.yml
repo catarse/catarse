@@ -775,7 +775,7 @@ pt:
       current_password_hint: "<i>Para que a senha seja alterada você precisa confirmar a sua senha atual.</i>"
       email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas."
       email_tooltip: "Clique aqui para preencher seu email..."
-      gravatar_hint_html: "Quer mudar sua foto? Use o %{link} com seu email. É tão simples quanto enviar uma imagem e já funciona para outros sites também ;)"
+      gravatar_hint_html: "Você também pode mudar a sua foto usando o %{link} com seu email. <br>É tão simples quanto enviar uma imagem e já funciona para outros sites também ;)"
       local_avatar: "Meu avatar"
       submit_text: "Escolha sua imagem"
       submit: "Enviar"
