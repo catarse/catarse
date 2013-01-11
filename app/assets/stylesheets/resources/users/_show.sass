@@ -112,39 +112,17 @@
             +transition(all, 0.5s)
             &:hover
               color: $pink
-  #gravatar_hint.alert.alert-info
-    font-family: Lato-Regular
-    font-size: 16px
-    line-height: 21px
-    padding-bottom: 13px
-    padding-right: 10px
-    padding-top: 3px
-    width: 516px
-    margin-top: 15px
-    // color: rgba(black, 0.5)
-    p
-      padding: 10px 0 0
-      a
-        color: black
-        text-decoration: none
-        font-family: Lato-Bold
-        +transition(all, 0.5s)
-        &:hover
-          color: $pink
-    a
-      img
-        margin-right: 12px
-        margin-top: 14px
-        float: left
   #social_info
     margin-top: 20px
-  #my_data, #social_info, #my_avatar
+  #my_data, #social_info, #my_avatar, #change_password
     h1
-      font-family: Lato-Bold
-      font-size: 25px
-      color: $ultra_gryn
+      color: #333333
+      font-family: Lato-Italic
+      font-size: 24px
+      margin-top: 20px
+      letter-spacing: -1px
     ul
-      padding-top: 15px
+      padding-top: 20px
       border-bottom: 1px dotted #ccc
       font-family: Lato-Regular
       li
@@ -159,27 +137,29 @@
         .disabled
           color: gray
         form
+          .bootstrap-twitter
+            .btn
+              background-color: #F5F5F5
+              background-repeat: repeat-x
+              border-color: #CCCCCC #CCCCCC #B3B3B3
+              +border-radius (4px)
+              border-style: solid
+              border-width: 1px
+              color: #333333
+              cursor: pointer
+              display: inline-block
+              font-size: 13px
+              line-height: 18px
+              margin-bottom: 0
+              padding: 4px 10px
+              text-align: center
+              vertical-align: middle 
           .div
             float: left
-            width: 240px
-          .btn
-            background-color: #F5F5F5
-            background-repeat: repeat-x
-            border-color: #CCCCCC #CCCCCC #B3B3B3
-            +border-radius (4px)
-            border-style: solid
-            border-width: 1px
-            color: #333333
-            cursor: pointer
-            display: inline-block
-            font-size: 13px
-            line-height: 18px
-            margin-bottom: 0
-            padding: 4px 10px
-            text-align: center
-            vertical-align: middle           
+            width: 230px          
           .inputs
-            margin-bottom: 0px          
+            margin-bottom: 0px 
+            float: left         
             ol
               .inputs
                 background: #F7F7F7
@@ -198,10 +178,7 @@
                 #user_uploaded_image
                   height: 26px
           .profile
-            border-top: 1px dotted #CCCCCC
             float: left
-            margin-top: 30px
-            padding-top: 30px
             width: 940px
             li
               float: left
@@ -212,6 +189,7 @@
               margin-right: 0px             
             .email
               float: left
+              width: 100%
               .hint
                 color: #333333
                 font-size: 12px
@@ -224,7 +202,21 @@
               #newsletter + label
                 float: left
                 margin-left: 6px
-                margin-bottom: 30px                
+                margin-bottom: 30px
+          #user_submit
+            background: url($images_path+'bot_profileUser.png') left top no-repeat
+            color: #FFFFFF
+            display: block
+            font-family: Lato-Regular
+            font-size: 12px
+            height: 56px
+            padding: 0 40px 0 84px
+            text-transform: uppercase
+            width: 221px
+            border: none
+            margin-bottom: 30px
+          .socialmidia
+            margin-bottom: 20px  
   #my_avatar
     ul
       padding-bottom: 10px
@@ -233,27 +225,44 @@
         margin-bottom: 0px
         form
           margin-bottom: 0px
-  #my_data
-    ul
-      font-family: Lato-Bold
-      margin-bottom: 10px
-      padding-bottom: 20px
+          .actions
+            clear: right
+            float: left
+            margin-left: 20px
+            margin-top: 13px
 
+        #gravatar_hint
+          padding-bottom: 13px
+          clear: left
+          padding-right: 10px
+          padding-top: 3px
+          width: 600px
+          margin-top: 15px
+          // color: rgba(black, 0.5)
+          p
+            padding: 10px 0 0
+            color: #333
+            font-family: Lato-Regular
+            font-size: 14px
+            line-height: 18px            
+            a
+              color: #99c7d9
+              text-decoration: none
+              font-family: Lato-Bold
+              +transition(all, 0.5s)
+          a
+            img
+              margin-right: 12px
+              margin-top: 14px
+              width: 35px
+              height: 35px
+              float: left
   #change_password
-    h1
-      font-family: Lato-Bold
-      font-size: 25px
-      color: $ultra_gryn
-      padding-top: 20px
     ul
-      padding-top: 15px
-      li
-        font-family: Lato-Regular
-        font-size: 15px
+      border: none 
+      .hint
+        padding: 0px!important
         margin-bottom: 15px
-        .on_the_spot_editing
-          color: $pink
-        .hint
-          padding-top: 5px
-          font-size: 13px
-
+        display: block
+      .btn
+        margin-top: 23px

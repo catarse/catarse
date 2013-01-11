@@ -1,9 +1,3 @@
-#bootstrap-alert
-  #gravatar_hint.alert.alert-info
-    = link_to 'http://gravatar.com/', :target => :_blank do
-      = image_tag 'gravatar.png', :id => 'gravatar_logo'
-    p= t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
-    .clearfix
 #my_avatar
   h1 = t('.local_avatar')
   ul
@@ -15,20 +9,19 @@
           = f.actions do
             .bootstrap-twitter
               p= f.action :submit, :button_html => {:value => t('.submit'), :class => 'btn', :id => 'image_upload_btn'}
+    li
+      #gravatar_hint.alert.alert-info
+        = link_to 'http://gravatar.com/', :target => :_blank do
+          = image_tag 'gravatar.png', :id => 'gravatar_logo'
+        p= t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
+        .clearfix
+
 #my_data
   h1= t('.my_data')
   ul
     li
       .bootstrap-form
         = semantic_form_for @user, :html => {:method => :put}  do |f|
-          .div
-            = f.label :twitter, t('.twitter')
-            = f.text_field :twitter
-          .div
-            = f.label :facebook_link, t('.facebook_link')
-            = f.text_field :facebook_link
-          = f.label :other_link, t('.other_link')
-          = f.text_field :other_link
           .profile
             = f.input :full_name, :required => true, :as => :string
             = f.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
@@ -46,7 +39,17 @@
               = hidden_field_tag 'id', @user.id
               = check_box_tag 'newsletter', '1', @user.newsletter,:label => 'saf'
               = label_tag 'newsletter', t('.newsletter')
-          br
+          .socialmidia
+            .div
+              = f.label :twitter, t('.twitter')
+              = f.text_field :twitter
+            .div
+              = f.label :facebook_link, t('.facebook_link')
+              = f.text_field :facebook_link
+            .div
+              = f.label :other_link, t('.other_link')
+              = f.text_field :other_link
+            = f.input :moip_login
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"
 - if @user.is_devise?
@@ -56,15 +59,16 @@
       li
         .bootstrap-form
           = form_for(@user, :as => :user, :url => registration_path(:user), :html => { :method => :put, :class => 'skip_feed_event' }) do |f|
-            = f.label :password, t('passwords.edit.label_new_password')
-            = f.password_field :password, :class=>'empty'
-            = f.label :password_confirmation
-            = f.password_field :password_confirmation, :class=>'empty'
-            = f.label :current_password
-            = f.password_field :current_password, :class=>'empty'
-            br
             span.hint= t('.current_password_hint').html_safe
-            br
-            br
+            br         
+            .div
+              = f.label :current_password
+              = f.password_field :current_password, :class=>'empty'
+            .div
+              = f.label :password, t('passwords.edit.label_new_password')
+              = f.password_field :password, :class=>'empty'
+            .div
+              = f.label :password_confirmation
+              = f.password_field :password_confirmation, :class=>'empty'
             .bootstrap-twitter
               p= f.submit 'OK', :class => 'btn'
