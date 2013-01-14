@@ -7,7 +7,7 @@ describe ProjectDecorator do
     subject{ project.display_image }
 
     context "when we have a video_url without thumbnail" do
-      let(:project){ Factory(:project, :image_url => nil, :video_thumbnail => nil) }
+      let(:project){ Factory(:project, :uploaded_image => nil, :image_url => nil, :video_thumbnail => nil) }
       it{ should == project.vimeo.thumbnail } 
     end
 
