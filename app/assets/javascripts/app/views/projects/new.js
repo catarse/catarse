@@ -6,10 +6,10 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     var permalink_valid = null
     everything_ok = function(){
       var all_ok = true
-      if(video_valid == null) {
-        all_ok = false
-        verify_video()
-      }
+      //if(video_valid == null) {
+      //  all_ok = false
+      //  verify_video()
+      //}
       if(permalink_valid == null) {
         all_ok = false
         verify_permalink()
@@ -139,7 +139,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     }
     online_days_ok = function(){
       var value = $('#project_online_days').val()
-      if(value && value.length > 0 && value > 0) {
+      if(value && value.length > 0 && value > 0 && parseInt(value) <= 60) {
         $('#project_online_days').addClass("ok").removeClass("error")
         return true
       } else {
@@ -152,8 +152,8 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     }
     $('#project_permalink').timedKeyup(verify_permalink)
     $('#project_name').keyup(everything_ok)
-    $('#project_video_url').keyup(function(){ video_valid = false; everything_ok() })
-    $('#project_video_url').timedKeyup(verify_video)
+    //$('#project_video_url').keyup(function(){ video_valid = false; everything_ok() })
+    //$('#project_video_url').timedKeyup(verify_video)
     $('#project_about').keyup(everything_ok)
     $('#project_category_id').change(everything_ok)
     $('#project_goal').keyup(everything_ok)
