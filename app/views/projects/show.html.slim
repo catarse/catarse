@@ -254,8 +254,7 @@
                   - else
                     .limited= t('reward.limited')
                     .remaining
-                      - bir = best_in_place_if(can?(:update, reward, :maximum_backers), reward, :maximum_backers, path: [@project, reward])
-                      = t('reward.display_remaining', :remaining => reward.remaining, :maximum => bir).html_safe
+                      = t('reward.display_remaining', :remaining => reward.remaining, :maximum => reward.maximum_backers).html_safe
                 .clearfix
 
 
