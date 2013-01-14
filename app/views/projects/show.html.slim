@@ -129,7 +129,9 @@
                 #twitter_share= render_twitter
                 .clear
           .text
+            span
             h5= t('.about_title')
+            .clear
             p
               = @project.about_html.html_safe
         .clearfix
