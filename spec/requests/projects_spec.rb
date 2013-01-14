@@ -38,4 +38,17 @@ describe "Projects" do
       #Project.first.name.should == project.name
     end
   end
+
+  describe "edit" do
+    let(:project) { Factory(:project, online_days: 10, state: 'online', user: current_user) }
+
+    before do
+      visit fake_login_path
+      visit project_path(project, :locale => :pt)
+    end
+
+    it 'edit tab should be present' do
+      page.should have_selector('a#edit_link')
+    end
+  end
 end
