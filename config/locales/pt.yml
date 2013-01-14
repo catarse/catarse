@@ -35,6 +35,7 @@ pt:
       active_projects: "Projetos no ar agora"
     links:
       how_works: "Como funciona"
+      about: "Quem Somos"
       faq: F.A.Q./Ajuda
       terms: "Termos de Uso"
       policy: "Política de Privacidade"
@@ -696,7 +697,7 @@ pt:
     about:
       title: "Quem Somos"
       subtitle: "Conheça a galera bonita que faz a coisa toda acontecer <3"
-      introduction: "Quem são? Do que se alimentam? Como trabalham em rede? Isso tudo você vai ver, hoje, no Globo Reporter."
+      introduction: "Quem são? Do que se alimentam? Como trabalham em rede? Isso tudo você vai ver, agora, no Quem Somos."
       name_one: "Luis Otávio Ribeiro"
       title_one: "Pescador de Projetos Matadores"
       text_one: "Uberabense. Entusiasta da preguiça, é viciado em manter estruturas criativas funcionando e bolar encontros entre as pessoas."
