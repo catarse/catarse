@@ -219,11 +219,11 @@
                 .hide id="reward#{reward.id}Editor"
                   .bootstrap-form
                     = semantic_form_for [@project, reward] do |f|
-                      - if can? :update, :minimum_value, reward
+                      - if can? :update, reward, :minimum_value
                         = f.input :minimum_value
-                      - if can? :update, :description, reward
+                      - if can? :update, reward, :description
                         = f.input :description
-                      - if can? :update, :maximum_backers, reward
+                      - if can? :update, reward, :maximum_backers
                         = f.input :maximum_backers
                       .bootstrap-twitter
                         = f.submit :class => 'btn'
