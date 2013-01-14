@@ -5,6 +5,12 @@ require 'spec_helper'
 describe "Projects" do
   let(:project){ Factory.build(:project) }
 
+  before {
+    #NOTE: Weird bug on edit project test
+    RoutingFilter.active = true
+  }
+
+
   describe "home" do
     before do
       Factory(:project, state: 'online', online_days: 30)
