@@ -215,7 +215,7 @@
           - @rewards.each do |reward|
 
             div[id="reward_#{reward.id}" class="box #{(can?(:update, reward) ? 'clickable_owner' : '')} #{(@project.can_back? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
-              - if can?(:update, reward)
+              - if can?(:update, @project)
                 .hide id="reward#{reward.id}Editor"
                   .bootstrap-form
                     = semantic_form_for [@project, reward] do |f|
@@ -231,7 +231,7 @@
                       .clearfix.bootstrap-twitter
                         = link_to [@project, reward], class: 'btn btn-danger', style: 'margin-top: 20px;',method: :delete, confirm: 'You are sure?' do
                           i.icon-trash.icon-white
-                - if can?(:destroy, reward)
+                - if can?(:update, reward)
                   .bootstrap-twitter
                     = link_to "#reward#{reward.id}Editor", :class => 'edit_reward btn btn-mini pull-right btn-primary', :style =>'margin-right: -17px;' do
                       i.icon-pencil.icon-white
