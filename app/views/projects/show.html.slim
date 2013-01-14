@@ -70,23 +70,23 @@
                   - if current_user.admin
                     = form.input :expires_at, as: :string
                     = form.input :user_id
-                  - if can? :update, :name, @project
+                  - if can? :update, @project, :name
                     = form.input :name, as: :string, required: false
-                  - if can? :update, :headline, @project
+                  - if can? :update, @project, :headline
                     = form.input :headline, as: :string, required: false
-                  - if can? :update, :category, @project
+                  - if can? :update, @project, :category
                     = form.input :category, as: :select, required: false
-                  - if can? :update, :video_url, @project
+                  - if can? :update, @project, :video_url
                     = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
-                  - if can? :update, :uploaded_image, @project
+                  - if can? :update, @project, :uploaded_image
                     = form.input :uploaded_image, as: :file, required: false
-                  - if can? :update, :image_url, @project
+                  - if can? :update, @project, :image_url
                     = form.input :image_url, as: :string, required: false
-                  - if can? :update, :online_days, @project
+                  - if can? :update, @project, :online_days
                     = form.input :online_days, as: :number, required: false
-                  - if can? :update, :goal, @project
+                  - if can? :update, @project, :goal
                     = form.input :goal, as: :number, required: false
-                  - if can? :update, :about, @project
+                  - if can? :update, @project, :about
                     = form.input :about, required: false
                   .clearfix
                   .form-actions.bootstrap-twitter
