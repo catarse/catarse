@@ -22,7 +22,6 @@ Catarse::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   config.active_record.schema_format = :sql
-  config.action_mailer.default_url_options = {:host =>'localhost:3000'}
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
