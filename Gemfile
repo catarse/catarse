@@ -1,8 +1,7 @@
 source :gemcutter
 source 'http://gems.github.com'
 
-gem 'rails', '3.2.7'
-gem 'rake', '0.9.2.2'
+gem 'rails', '3.2.11'
 
 gem 'sidekiq', '= 2.4.0'
 gem 'sinatra', require: false
@@ -12,9 +11,7 @@ gem 'best_in_place'
 gem 'state_machine', require: 'state_machine/core'
 # Database and data related [Putting pg to the end because of a weird bug with Lion, pg and openssl]
 gem 'pg'
-gem 'foreigner'
 gem 'pg_search'
-gem 'activerecord-postgresql-adapter'
 
 gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
@@ -22,12 +19,9 @@ gem 'catarse_moip', git: 'git://github.com/devton/catarse_moip.git'
 #gem 'catarse_moip', path: '../catarse_moip'
 gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
-gem 'maxim-sexy_pg_constraints'
-gem 'dalli'
 gem 'draper'
 
 # Frontend stuff
-gem 'jquery-rails'
 gem 'slim'
 gem 'slim-rails'
 gem 'initjs'
@@ -91,7 +85,7 @@ gem "meta_search", "1.1.3"
 # Payment
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
 gem 'httpclient', '2.2.5'
-gem 'selenium-webdriver', '~> 2.25.0'
+gem 'selenium-webdriver'
 
 # Server
 gem 'thin'
