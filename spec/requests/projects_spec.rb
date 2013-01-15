@@ -9,6 +9,7 @@ describe "Projects" do
     #NOTE: Weird bug on edit project test
     RoutingFilter.active = true
   }
+  before{ ::Configuration[:base_url] = 'http://catarse.me' }
 
 
   describe "home" do
