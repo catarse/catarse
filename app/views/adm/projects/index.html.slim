@@ -56,7 +56,7 @@
                   td= link_to project.name, project_path(project)
                   td= best_in_place [:adm, project], :user_id, method: :put, type: :input
                   td= best_in_place [:adm, project], :goal, method: :put, type: :input, display_as: :display_goal
-                  td= "#{project.display_pledged} (#{project.display_progress}%)"
+                  td= "#{project.display_pledged} (#{project.progress}%)"
                   td= project.total_backers
                   td.recommended= best_in_place [:adm, project], :recommended, method: :put, type: :checkbox, collection: ['Não', 'Sim']
                   td= project.online_date.strftime('%d/%m/%Y') if project.online_date
