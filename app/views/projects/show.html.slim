@@ -129,9 +129,9 @@
                 #twitter_share= render_twitter
                 .clear
           .text
-            span
+            .flag
             h5= t('.about_title')
-            .clear
+            .clearfix
             p
               = @project.about_html.html_safe
         .clearfix
