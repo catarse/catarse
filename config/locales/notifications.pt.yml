@@ -30,5 +30,5 @@ pt:
       subject: "Seu projeto está no ar no Catarse o/"
       header: "Agora é pra valer"
     new_draft_project:
-      subject: "Novo projeto criado"
-      header: "Novo projeto criado"
+      subject: "O projeto %{project_name} acaba de ser criado"
+      header:  "Um novo projeto está aguardando análise"
