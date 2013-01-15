@@ -1,3 +1,1 @@
-if Rails.env.production?
-  ActionMailer::Base.default_url_options = {host: ::Configuration[:host] }
-end
+ActionMailer::Base.default_url_options = {host: ::Configuration[:host] } if Rails.env.production?
