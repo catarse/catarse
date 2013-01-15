@@ -1,0 +1,79 @@
+= content_for :title, t('.title')
+#page_content
+  .container
+    .static_default
+      .title
+        h1= t('.title')
+        h2= t('.subtitle')
+        h3= t('.introduction')
+      ul.team
+        li.first
+          ul
+            li
+              = image_tag('catarse/team_luis.jpg')
+              .flagCity.sp SP
+              .flagname.sp
+              .namesp= t('.name_one')
+              span= t('.title_one')
+              p= t('.text_one')
+            li
+              = image_tag('catarse/team_diego.jpg')
+              .flagCity.sp SP
+              .flagname.sp
+              .namesp= t('.name_two')
+              span= t('.title_two')
+              p= t('.text_two')
+            li
+              = image_tag('catarse/team_luciana.jpg')
+              .flagCity.sp SP
+              .flagname.sp
+              .namesp= t('.name_three')
+              span= t('.title_three')
+              p= t('.text_three')
+            li.last
+              = image_tag('catarse/team_renato.jpg')
+              .flagCity.sp SP
+              .flagname.sp
+              .namesp= t('.name_four')
+              span= t('.title_four')
+              p= t('.text_four')
+        li.second
+          ul
+            li
+              = image_tag('catarse/team_rodrigo.jpg')
+              .flagCity.rj RJ
+              .flagname.rj
+              .namerj= t('.name_five')
+              span= t('.title_five')
+              p= t('.text_five')
+            li
+              = image_tag('catarse/team_diogo.jpg')
+              .flagCity.rj RJ
+              .flagname.rj
+              .namerj= t('.name_six')
+              span= t('.title_six')
+              p= t('.text_six')
+            li
+              = image_tag('catarse/team_evelise.jpg')
+              .flagCity.rs RS
+              .flagname.rs
+              .namers= t('.name_seven')
+              span= t('.title_seven')
+              p= t('.text_seven')
+            li.last
+              = image_tag('catarse/team_adriano.jpg')
+              .flagCity.rs RS
+              .flagname.rs
+              .namers= t('.name_eight')
+              span= t('.title_eight')
+              p= t('.text_eight')
+        li.first
+          ul
+            li
+              = image_tag('catarse/team_ton.jpg')
+              .flagCity.mg MG
+              .flagname.mg
+              .namemg= t('.name_nine')
+              span= t('.title_nine')
+              p= t('.text_nine')       
+    .clearfix

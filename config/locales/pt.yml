@@ -44,6 +44,7 @@ pt:
     links:
       how_works: "Ajuda"
       faq: FAQ
+      about: "Quem Somos"
       terms: "Termos de Uso"
       policy: "Política de Privacidade"
       contact: Contato
@@ -727,7 +728,37 @@ pt:
       send_project: "Saiba como enviar seu projeto"
       explore_curious: "Apoiar um projeto"
       explore_projects: "Saiba como apoiar um projeto"
-
+    about:
+      title: "Quem Somos"
+      subtitle: "Conheça a galera bonita que faz a coisa toda acontecer <3"
+      introduction: "Quem são? Do que se alimentam? Como trabalham em rede? Isso tudo você vai ver, agora, no Quem Somos."
+      name_one: "Luis Otávio Ribeiro"
+      title_one: "Pescador de Projetos Matadores"
+      text_one: "Uberabense. Entusiasta da preguiça, é viciado em manter estruturas criativas funcionando e bolar encontros entre as pessoas."
+      name_two: "Diego Reeberg"
+      title_two: "Filósofo que mora em um Barril"
+      text_two: "Aprendiz de poeta, músico, bailarino de tango e viciado em Calvino e Saramago, gosta de vasculhar coisas bonitas e pessoas talentosas nos cantos empoeirados da internet."
+      name_three: "Luciana Massoni"
+      title_three: "Aprendiz de Faz Acontecer"
+      text_three: "Caiçara paulistana da gema, entusiasta da cor e do contraste. Poeta e desenhista por natureza, curiosa por cultura, curadora por acaso."
+      name_four: "Renato Garcia"
+      title_four: "Silvio Santos do Catarse"
+      text_four: "Coletivista. Acredita na colaboração de um por um, sem existência de autoridade, por um mundo mais justo. Fanático por futebol e skate. Tudo isso sempre ao som de um bom samba ou rap nacional."
+      name_five: "Rodrigo Maia"
+      title_five: "Remixador de Informações"
+      text_five: "Pragmático que ama improvisos, tem a voz grave e rompantes artísticos. Fascinado por pessoas e por todas as formas de imagens em movimento."
+      name_six: "Diogo Biazus"
+      title_six: "Arcebispo de Base de Dados"
+      text_six: "Arquiteto de Dados. Gosta de estruturas auto-explicativas, auto-referentes e auto-limpantes."
+      name_seven: "Evelise Luz"
+      title_seven: "Designer de Rodapé"
+      text_seven: "Completamente aloprada, gosta de se aventurar em livros, canta muito no chuveiro e ama explorar potes de chimia de figo."
+      name_eight: "Adriano Benin"
+      title_eight: "Programador"
+      text_eight: "Quando não está programando gosta de projetar circuitos e se arriscar no piano."
+      name_nine: "Antônio Roberto"
+      title_nine: "Bombeiro"
+      text_nine: "Um louco por desenvolvimento que vive na tonlandia :D"
 
     privacy:
       title: "Política de privacidade"
