@@ -27,7 +27,7 @@ RSpec.configure do |config|
     Rake.application = rake
     rake.init
     rake.load_rakefile
-    rake['catarse:config:load_defaults'].invoke
+    rake['db:seed'].invoke
   end
 
   config.before(:each) do
