@@ -42,10 +42,8 @@ RSpec.configure do |config|
       c.any_instance.stubs(:render_facebook_like)
       c.any_instance.stubs(:render_twitter)
     end
-  end
-
-  config.after(:each) do
     DatabaseCleaner.clean
+    RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
   end
 
   def mock_tumblr method=:two
@@ -54,7 +52,6 @@ RSpec.configure do |config|
   end
 end
 
-RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
 
 
 I18n.locale = :pt
