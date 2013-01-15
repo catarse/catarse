@@ -417,7 +417,7 @@ pt:
         title: "Preencha e revise os dados para pagamento"
         choose_payment: "Como você quer pagar?"
         choose_payment_subtitle: "Selecione abaixo uma forma de pagamento"
-        choose_credit_card: "Pagamento internacional"
+        choose_credit_card: "Pagamento internacional - PayPal"
         choose_boleto: "Pagamento nacional"
         cpf: "Para prosseguir, por favor informe:"
         payment_card: "Pagamento com Cartão"
