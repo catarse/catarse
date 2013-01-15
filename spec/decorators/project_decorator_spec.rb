@@ -27,6 +27,26 @@ describe ProjectDecorator do
     it{ should == '<p>Foo Bar <a href="http://www.foo.bar" target="_blank">http://www.foo.bar</a> &lt;javascript&gt;xss()&lt;/javascript&gt;<a target="_blank" href="http://click.here">Click here</a></p>' }
   end
 
+  describe "#display_progress" do
+    subject{ project.display_progress }
+    context "when progress is 0" do
+      before{ project.stubs(:progress).returns(0) }
+      it{ should == 0 }
+    end
+    context "when progress is between 0 and 8" do
+      before{ project.stubs(:progress).returns(7) }
+      it{ should == 8 }
+    end
+    context "when progress is between 8 and 100" do
+      before{ project.stubs(:progress).returns(70) }
+      it{ should == 70 }
+    end
+    context "when progress is above 100" do
+      before{ project.stubs(:progress).returns(101) }
+      it{ should == 100 }
+    end
+  end
+
   describe "#display_status" do
     subject{ project.display_status }
     context "when successful and expired" do
