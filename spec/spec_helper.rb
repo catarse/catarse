@@ -3,7 +3,6 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'sidekiq/testing'
-require 'rake'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -22,12 +21,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
     DatabaseCleaner.clean_with :truncation
-    DatabaseCleaner.strategy = :truncation, {except: %w[configurations]}
-    rake = Rake::Application.new
-    Rake.application = rake
-    rake.init
-    rake.load_rakefile
-    rake['db:seed'].invoke
+    DatabaseCleaner.strategy = :truncation
   end
 
   config.before(:each) do
