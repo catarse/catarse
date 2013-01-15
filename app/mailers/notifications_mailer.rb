@@ -17,5 +17,6 @@ class NotificationsMailer < ActionMailer::Base
       :template_name => @notification.notification_type.name
     })
     I18n.locale = old_locale if I18n.locale.to_s != @notification.user.locale.to_s
+    m
   end
 end
