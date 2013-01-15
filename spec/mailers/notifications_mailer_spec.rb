@@ -5,6 +5,7 @@ describe NotificationsMailer do
   subject{ NotificationsMailer.notify(notification) }
 
   before do
+    ::Configuration['email_contact'] = 'contact@foo.bar'
     Mail::Message.any_instance.stubs(:deliver)
     NotificationsMailer.any_instance.expects(:mail).at_least_once.with({
       :from => "#{I18n.t('site.name')} <#{Configuration[:email_contact]}>",
