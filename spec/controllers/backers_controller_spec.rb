@@ -5,6 +5,7 @@ describe BackersController do
   let(:project){ Factory(:project, :finished => true) }
   let(:backer){ Factory(:backer, :project => project) }
   before{ project.save! } # To activate callbacks and generate thumbnails before calling the controller
+  before{ ::Configuration[:base_url] = 'http://catarse.me' }
   describe "GET index" do
     context "when format is html" do
       before do

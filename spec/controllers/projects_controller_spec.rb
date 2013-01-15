@@ -4,6 +4,7 @@ require 'spec_helper'
 describe ProjectsController do
   before{ Notification.unstub(:create_notification) }
   before{ controller.stubs(:current_user).returns(current_user) }
+  before{ ::Configuration[:base_url] = 'http://catarse.me' }
   render_views
   subject{ response }
   let(:project){ Factory(:project) }
