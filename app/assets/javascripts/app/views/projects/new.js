@@ -2,7 +2,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
-    var video_valid = null
+    //var video_valid = null
     var permalink_valid = null
     everything_ok = function(){
       var all_ok = true
@@ -24,8 +24,8 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
         all_ok = false
       if(!ok('#project_name'))
         all_ok = false
-      if(!video_ok())
-        all_ok = false
+      //if(!video_ok())
+      //  all_ok = false
       if(!ok('#project_about'))
         all_ok = false
       if(!headline_ok())
