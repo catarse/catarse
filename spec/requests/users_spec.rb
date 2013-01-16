@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe "Users" do
-  before(:all) do
+  before do
     Factory(:notification_type, name: 'updates')
   end
 
