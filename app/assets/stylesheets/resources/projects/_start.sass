@@ -42,7 +42,18 @@
             line-height: 21px
             padding-top: 20px
             margin: 0 auto
-            width: 620px
+            width: 800px
+            a
+              color: #F28D0B
+              text-decoration: none
+            b
+              float: left
+              font-family: Arial
+              margin-top: 10px
+              width: 800px
+            b + i
+              font-family: Arial
+              font-size: 13px
         .bootstrap-alert
           float: right
           position: relative
@@ -55,6 +66,7 @@
             top: 17px
           .alert
             float: right
+            min-height: 40px
             width: 250px
             background-color: #F7F7F7
             border: solid 1px #EDEDED
@@ -75,6 +87,8 @@
             color: $pink
       .bootstrap-form
         form
+          li#project_user_id_input.input
+            border: none        
           .input 
             float: left
             margin-bottom: 30px
