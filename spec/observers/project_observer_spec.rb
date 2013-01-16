@@ -3,6 +3,7 @@ require 'spec_helper'
 describe ProjectObserver do
   let(:new_draft_project){ Factory(:notification_type, :name => 'new_draft_project') }
   let(:confirm_backer){ Factory(:notification_type, :name => 'confirm_backer') }
+  let(:project_received){ Factory(:notification_type, :name => 'project_received') }
   let(:project_success){ Factory(:notification_type, :name => 'project_success') }
   let(:backer_successful){ Factory(:notification_type, :name => 'backer_project_successful') }
   let(:backer_unsuccessful){ Factory(:notification_type, :name => 'backer_project_unsuccessful') }
@@ -14,6 +15,7 @@ describe ProjectObserver do
     Notification.unstub(:create_notification)
     Notification.unstub(:create_notification_once)
     new_draft_project
+    project_received
     confirm_backer
     project_success
     backer_successful
@@ -21,13 +23,22 @@ describe ProjectObserver do
   end
 
   describe "after_create" do
-    before { ProjectObserver.any_instance.unstub(:after_create) }
+    before do
+      ProjectObserver.any_instance.unstub(:after_create)
+      Configuration[:facebook_url] = 'http://facebook.com'
+      Configuration[:blog_url] = 'http://blog.com'
+      user
+      project
+    end
     let(:project) { Factory(:project) }
-    let(:user) { Factory(:user, id: Configuration[:email_projects])}
+    let(:user) { Factory(:user, email: Configuration[:email_projects])}
 
-    it "should call create_notification" do
-      Notification.expects(:create_notification_once).with(:new_draft_project, project.user, {project_id: project.id}, {project: project})
-      project.save!
+    it "should create notification for catarse admin" do
+      Notification.where(user_id: user.id, notification_type_id: new_draft_project.id, project_id: project.id).first.should_not be_nil
+    end
+
+    it "should create notification for project owner" do
+      Notification.where(user_id: project.user.id, notification_type_id: project_received.id, project_id: project.id).first.should_not be_nil
     end
   end
 

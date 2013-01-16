@@ -8,9 +8,14 @@ class ProjectObserver < ActiveRecord::Observer
 
   def after_create(project)
     Notification.create_notification_once(:new_draft_project,
-      User.find_by_email(Configuration[:email_projects]),
-      {project_id: project.id},
-      {project: project, project_name: project.name})
+                                          User.find_by_email(Configuration[:email_projects]),
+                                          {project_id: project.id},
+                                          {project: project, project_name: project.name})
+
+    Notification.create_notification_once(:project_received, 
+                                          project.user,
+                                          {project_id: project.id},
+                                          {project: project, project_name: project.name})
   end
 
   def notify_owner_that_project_is_online(project)
