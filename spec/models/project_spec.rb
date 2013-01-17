@@ -407,6 +407,7 @@ describe Project do
 
     describe '#reject' do
       subject do
+        project.expects(:after_transition_of_draft_to_rejected)
         project.reject
         project
       end

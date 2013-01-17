@@ -8,7 +8,10 @@ describe ProjectObserver do
   let(:backer_successful){ Factory(:notification_type, :name => 'backer_project_successful') }
   let(:backer_unsuccessful){ Factory(:notification_type, :name => 'backer_project_unsuccessful') }
   let(:project_visible){ Factory(:notification_type, :name => 'project_visible') }
+  let(:project_rejected){ Factory(:notification_type, :name => 'project_rejected') }
   let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => nil) }
+  let(:project) { Factory(:project, goal: 3000) }
+
   subject{ backer }
 
   before do
@@ -30,7 +33,6 @@ describe ProjectObserver do
       user
       project
     end
-    let(:project) { Factory(:project) }
     let(:user) { Factory(:user, email: Configuration[:email_projects])}
 
     it "should create notification for catarse admin" do
@@ -92,6 +94,18 @@ describe ProjectObserver do
         project.finish!
       end
       it("should notify the project backers and owner"){ subject }
+    end
+
+  end
+
+  describe "#notify_owner_that_project_is_rejected" do
+    before do
+      project_rejected
+      project.reject
+    end
+
+    it "should create notification for project owner" do
+      Notification.where(user_id: project.user.id, notification_type_id: project_rejected.id, project_id: project.id).first.should_not be_nil
     end
 
   end
