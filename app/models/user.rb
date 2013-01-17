@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
     :locale,
     :twitter,
     :facebook_link,
-    :other_link
+    :other_link,
+    :moip_login
 
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
