@@ -29,6 +29,9 @@ en:
     project_visible:
       subject: "Seu projeto está no ar no Catarse o/"
       header: "Agora é pra valer"
+    project_rejected:
+      subject: "Your project does not fit Catarse's focus"
+      header: "Your project was not accepted ;("
     new_draft_project:
       subject: "Novo projeto criado - %{project_name}"
       header: "Novo projeto criado"
