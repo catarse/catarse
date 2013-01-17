@@ -25,10 +25,13 @@ pt:
       header: "Informações sobre créditos e reembolso ;)"
     project_received:
       subject: "O seu projeto foi recebido pelo Catarse"
-      header: "O seu projeto foi recebido pela equipe de atendimento do Catarse"
+      header: "O seu projeto foi recebido pela equipe do Catarse"
     project_visible:
       subject: "Seu projeto está no ar no Catarse o/"
       header: "Agora é pra valer"
+    project_rejected:
+      subject: "Seu projeto não foi se enquadra no foco do Catarse"
+      header: "Seu projeto não foi aceito ;("
     new_draft_project:
       subject: "O projeto %{project_name} acaba de ser criado"
       header:  "Um novo projeto está aguardando análise"

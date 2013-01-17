@@ -18,6 +18,13 @@ class ProjectObserver < ActiveRecord::Observer
                                           {project: project, project_name: project.name})
   end
 
+  def notify_owner_that_project_is_rejected(project)
+    Notification.create_notification_once(:project_rejected,
+      project.user,
+      {project_id: project.id},
+      project: project)
+  end
+
   def notify_owner_that_project_is_online(project)
     Notification.create_notification_once(:project_visible,
       project.user,
