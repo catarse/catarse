@@ -111,7 +111,7 @@ en:
         name: Name
         password: Password
         password_confirmation: "Password Confirmation"
-        phone_number: "Mobile phone number (Brazil only)"
+        phone_number: "Mobile phone number"
     models:
       backer: Backer
       category: Category
