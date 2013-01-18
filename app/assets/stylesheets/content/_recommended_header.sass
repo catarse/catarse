@@ -8,27 +8,51 @@ $recommended_header_height: 258px
   +border-radius(4px)
   .resume_about
     float: left
-    height: $recommended_header_height
+    height: 258px
     width: 260px
     +border-radius(4px 0 0 4px)
-    background: $ultra_gryn
-    h1,h4
-      margin-left: 20px
-      width: 220px
-    h1
-      margin-top: 10px
-      display: inline-block
-      font-family: "Lato-Regular"
-      font-size: 28px
-      color: white
-      line-height: 110%
-    h4
-      display: inline-block
-      font-family: Arial
-      font-size: 14px
-      color: rgba(white, 0.7)
-      line-height: 150%
-      margin-top: 15px
+    background: url($images_path+'box_pt.jpg') no-repeat
+    .bootstrap-form
+      margin: 160px 0 0 0
+      .bootstrap-twitter
+        position: relative
+        float: left
+        .button
+          float: left
+          padding-top: 0px
+          width: 214px
+          height: 56px
+          background: #EE5192 url($images_path+'bot_guidelines.gif') 10px 10px no-repeat
+          border: solid 1px #FF589F
+          text-transform: uppercase
+          color: white
+          text-indent: 20px
+          text-shadow: 1px 1px #BC2E6E
+          font-family: "Lato-Bold"
+          font-size: 15px
+          margin-left: 24px
+          +border-radius(15px)
+          span
+            color: white
+            font-family: Lato-Italic
+            font-size: 14px
+            font-weight: normal
+            left: 62px
+            position: absolute
+            text-shadow: 1px 1px #BC2E6E
+            text-transform: none
+            top: 30px
+          a
+            color: white
+            display: block
+            font-family: Lato-Regular
+            font-size: 15px
+            margin-left: 36px
+            margin-top: 12px
+            text-decoration: none
+            text-transform: uppercase
+            &:hover
+              color: white
   .project_info
     width: 720px
     height: $recommended_header_height
