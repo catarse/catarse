@@ -35,7 +35,7 @@
         ul
           - if can? :manage, @user
             li.email
-              = mail_to @user.email, t('.user_social.email'), :target => '_blank'
+              = mail_to @user.email, @user.email, :target => '_blank'
           - if @user.facebook_link
             li.facebook
               = link_to t('.user_social.facebook'), @user.facebook_link, :target => '_blank'
