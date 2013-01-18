@@ -89,7 +89,7 @@ class Backer < ActiveRecord::Base
   end
 
   def display_platform_fee(fee=7.5)
-    number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => '.'
+    number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => ','
   end
 
   def moip_value
