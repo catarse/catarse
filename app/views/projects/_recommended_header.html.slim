@@ -1,7 +1,12 @@
 #recommended_header
   .resume_about
-    h1= t('projects.index_header.title')
-    h4= t('projects.index_header.subtitle_html')
+    .bootstrap-form
+      = form_tag(guidelines_path, :method => :get, :id => 'guidelines_form') do
+        fieldset
+          .bootstrap-twitter
+            .button
+              = link_to t('.guidelines'), guidelines_path, :class=>'btn_explore'
+              span = t('.guidelines_subtitle')    
   .project_info
     = image_tag 'coverFace2anos.jpg', height: 258, width: 720, style: 'height: 258px; witdh: 720px;'
     /
