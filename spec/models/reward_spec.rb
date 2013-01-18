@@ -3,6 +3,12 @@
 require 'spec_helper'
 
 describe Reward do
+  let(:reward){ Factory(:reward, description: 'envie um email para foo@bar.com ') }
+  describe "#display_description" do
+    subject{ reward.display_description }
+    it{ should == "<p>envie um email para <a href=\"mailto:foo@bar.com\" target=\"_blank\">foo@bar.com</a> </p>" }
+  end
+
   it "should be valid from factory" do
     r = Factory(:reward)
     r.should be_valid
