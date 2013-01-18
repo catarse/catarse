@@ -24,9 +24,9 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 1b836ab07710b252301af681708735e19e049138
+  revision: 4e291e385bdcaa9fee2c37d5a344975101d6f15f
   specs:
-    activeadmin (0.5.0)
+    activeadmin (0.5.1)
       arbre (>= 1.0.1)
       bourbon (>= 1.0.0)
       devise (>= 1.1.2)
@@ -115,8 +115,9 @@ GEM
     best_in_place (2.0.2)
       jquery-rails
       rails (~> 3.1)
-    bourbon (2.1.1)
-      sass (>= 3.1)
+    bourbon (3.0.1)
+      sass (>= 3.2.0)
+      thor
     braintree (2.22.0)
       builder (>= 2.0.0)
     brcep (3.2.0)
@@ -234,7 +235,7 @@ GEM
     json_pure (1.7.5)
     jwt (0.1.5)
       multi_json (>= 1.0)
-    kaminari (0.14.0)
+    kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     launchy (2.1.2)
@@ -354,7 +355,7 @@ GEM
     redis (3.0.2)
     redis-namespace (1.2.1)
       redis (~> 3.0.0)
-    responders (0.9.2)
+    responders (0.9.3)
       railties (~> 3.1)
     rinku (1.7.0)
     rmagick (2.13.1)
@@ -376,7 +377,7 @@ GEM
     ruby-hmac (0.4.0)
     ruby-openid (2.2.0)
     rubyzip (0.9.9)
-    sass (3.2.1)
+    sass (3.2.5)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
