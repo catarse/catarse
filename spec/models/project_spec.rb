@@ -15,7 +15,7 @@ describe Project do
   end
 
   describe "validations" do
-    %w[name user category video_url about headline goal].each do |field|
+    %w[name user category about headline goal].each do |field|
       it{ should validate_presence_of field }
     end
     it{ should ensure_length_of(:headline).is_at_most(140) }
@@ -346,13 +346,27 @@ describe Project do
       it{ should be_true }
     end
 
+    context "when project is successful but not expired" do
+      let(:project) { Factory(:project, state: 'successful') }
+      it{ should be_true }
+    end
+
     context "when project is not visible" do
       let(:project) { Factory(:project) }
       it{ should be_false }
     end
 
-    context "when project expired" do
+    context "when project is waiting funds" do
       let(:project) { Factory(:project, state: 'waiting_funds') }
+      it{ should be_false }
+    end
+
+    context "when project is expired" do
+      before do
+        project.expires_at = Time.now - 1.day
+        project.save!
+      end
+      let(:project) { Factory(:project, state: 'successful') }
       it{ should be_false }
     end
 
@@ -435,7 +449,8 @@ describe Project do
     end
 
     describe '#finish' do
-      subject { Factory(:project, goal: 30_000, online_days: -1) }
+      let(:main_project) { Factory(:project, goal: 30_000, online_days: -1) }
+      subject { main_project }
 
       context 'when project is not approved' do
         its(:finish) { should be_false }
@@ -456,7 +471,9 @@ describe Project do
 
         context 'when project already hit the goal' do
           before do
-            backer = Factory(:backer, value: 30_000, project: subject, confirmed: true)
+            project_total = mock()
+            project_total.stubs(:pledged).returns(30000.0)
+            subject.stubs(:project_total).returns(project_total)
           end
 
           context "and pass the waiting fund time" do
@@ -468,8 +485,10 @@ describe Project do
           end
 
           context "and still in waiting fund time" do
-            its(:successful?) { should be_false }
-            its(:waiting_funds?) { should be_true }
+            before do
+              subject.finish
+            end
+            its(:successful?) { should be_true }
           end
         end
 
