@@ -3,6 +3,7 @@ require 'rails_autolink'
 class Reward < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::UrlHelper 
 
   include ERB::Util
   belongs_to :project
