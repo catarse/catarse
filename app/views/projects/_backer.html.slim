@@ -29,7 +29,7 @@ script type="text/template" id="backer_template"
     - if current_user and (current_user == @project.user or current_user.admin)
       .reward
         =
-        .value <%= display_value %> .
+        .value <%= value %> .
         | <% if (reward) { %>
         .user_reward <%= reward['display_minimum'] %> - <%= reward['medium_description'] %>
         | <% } else { %>
