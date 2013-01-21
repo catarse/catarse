@@ -57,27 +57,9 @@ describe ProjectDecorator do
       it{ should == 'successful' }
     end
 
-    context "when successful and in_time" do
-      before do
-        project.stubs(:successful?).returns(true)
-        project.stubs(:in_time?).returns(true)
-      end
-      it{ should == 'in_time' }
-    end
-
-    context "when expired" do
-      before{ project.stubs(:expired?).returns(true) }
+    context "when failed" do
+      before{ project.stubs(:failed?).returns(true) }
       it{ should == 'expired' }
-    end
-
-    context "when waiting confirmation" do
-      before{ project.stubs(:waiting_confirmation?).returns(true) }
-      it{ should == 'waiting_confirmation' }
-    end
-
-    context "when in_time" do
-      before{ project.stubs(:in_time?).returns(true) }
-      it{ should == 'in_time' }
     end
   end
 
