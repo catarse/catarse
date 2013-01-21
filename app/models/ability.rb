@@ -20,6 +20,10 @@ class Ability
       project.user == current_user && project.online?
     end
 
+    can :update, :projects, [:about, :video_url, :uploaded_image ] do |project|
+      project.user == current_user && ( project.successful? || project.failed? )
+    end
+
     can :update, :projects do |project|
       project.user == current_user && ( project.draft? || project.rejected? )
     end
