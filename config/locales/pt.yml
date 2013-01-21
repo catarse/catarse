@@ -833,6 +833,21 @@ pt:
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
   adm:
+    financials:
+      index:
+        id: ID
+        name: 'Titulo'
+        user_id: 'User ID'
+        goal: 'Meta'
+        total_backs: 'Apoios'
+        online_date: 'Entrou no ar'
+        pledged: 'Alcançado'
+        recommended: 'Recomendado?'
+        state: 'Estado'
+        menu: 'Rel. Financeiros'
+        title: 'Relatórios financeiros'
+        total_projects: 'projetos'
+        submit: 'filtrar'
     projects:
       index:
         id: ID

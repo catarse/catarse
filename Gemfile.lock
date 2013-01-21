@@ -318,6 +318,14 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
+    postgres-copy (0.5.4)
+      activerecord
+      activerecord (>= 3.0.0)
+      pg
+      rails
+      rake
+      rspec (~> 2.6)
+      rspec-core (~> 2.6)
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -384,6 +392,9 @@ GEM
       tilt (~> 1.3)
     sax-machine (0.0.20)
       nokogiri (> 0.0.0)
+    schema_plus (1.0.0)
+      rails (>= 3.2)
+      valuable
     selenium-webdriver (2.27.2)
       childprocess (>= 0.2.5)
       libwebsocket (~> 0.1.3)
@@ -445,6 +456,7 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicode (0.4.3)
+    valuable (0.9.6)
     vimeo (1.5.3)
       httparty (>= 0.4.5)
       httpclient (>= 2.1.5.2)
@@ -512,6 +524,7 @@ DEPENDENCIES
   on_the_spot
   pg
   pg_search
+  postgres-copy
   rack-timeout
   rails (= 3.2.11)
   rails_autolink (~> 1.0.7)
@@ -519,6 +532,7 @@ DEPENDENCIES
   routing-filter
   rspec-rails (~> 2.10.0)
   sass-rails (~> 3.2.5)
+  schema_plus
   selenium-webdriver
   shoulda
   sidekiq (= 2.4.0)
