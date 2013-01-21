@@ -39,6 +39,22 @@ describe Ability do
         it { should be_able_to(:update, reward, :maximum_backers) }
       end
     end
+
+    describe "when project is failed" do
+      let(:project) { Factory(:project, user: user, state: 'failed') }
+
+      it { should be_able_to(:update, project, :video_url) }
+      it { should be_able_to(:update, project, :uploaded_image) }
+      it { should be_able_to(:update, project, :about) }
+    end
+
+    describe "when project is successful" do
+      let(:project) { Factory(:project, user: user, state: 'successful') }
+
+      it { should be_able_to(:update, project, :video_url) }
+      it { should be_able_to(:update, project, :uploaded_image) }
+      it { should be_able_to(:update, project, :about) }
+    end
   end
 
   context "When is regular user" do
