@@ -1,0 +1,73 @@
+#page_content
+  .container
+    .title
+      h1= t('.title')
+      h2
+        strong= "#{@total_projects} "
+        = t('.total_projects')
+
+    .filters
+      .bootstrap-form
+        = form_for @search, :url => adm_financials_path, class: 'form-horizontal' do |f|
+          fieldset
+            .input
+              = f.label :permalink_equals, t('.permalink')
+              = f.text_field :permalink_equals, class: 'input-small'
+            .input
+              = f.label :name_contains, t('.project')
+              = f.text_field :name_contains
+            .input
+              = f.label :user_name_contains, t('.user')
+              = f.text_field :user_name_contains
+            .bootstrap-twitter
+              .input.submit
+                = f.submit t('.submit'), class: 'btn btn-success'
+          fieldset
+            .input.total_results
+              #total_results
+                = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
+                strong= @search.count
+                = pluralize_without_number(@search.count, t('project_singular'), t('project_plural')).downcase
+      .clearfix
+    .data-table
+      = paginate @projects
+      - if @projects.empty?
+        = t('.no_backers')
+      - else
+        .bootstrap-twitter
+          table.table.table-striped
+            thead
+              tr
+                th style="width: 200px;"
+                  = t('.name')
+                th= t('.user')
+                th= t('.goal')
+                th= t('.pledged')
+                th= t('.total_backs')
+                th= t('.reports')
+                th= t('.state')
+                th
+            tbody
+              - @projects.each do |project|
+                tr id=project.id class=cycle("even", "odd")
+                  td= link_to project.name, project_path(project), target: '_blank'
+                  td= link_to project.user.name, user_path(project.user), target: '_blank'
+                  td= project.display_goal
+                  td= "#{project.display_pledged} (#{project.progress}%)"
+                  td= project.total_backers
+                  td
+                    = link_to t('.backer_report'), adm_reports_backer_reports_path(project_id: project.id, format: :csv)
+                  td
+                    - if project.online? or project.successful?
+                      span.label.label-success= project.state
+                    - elsif project.failed? or project.rejected? 
+                      span.label.label-important= project.state
+                    - elsif project.waiting_funds?
+                      span.label.label-warning= project.state
+                    - else
+                      span.label= project.state
+      = paginate @projects
+  .clearfix
+    
+
+

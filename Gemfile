@@ -9,9 +9,12 @@ gem 'foreman'
 gem 'best_in_place'
 
 gem 'state_machine', require: 'state_machine/core'
-# Database and data related [Putting pg to the end because of a weird bug with Lion, pg and openssl]
+
+# Database and data related
 gem 'pg'
 gem 'pg_search'
+gem 'postgres-copy'
+gem 'schema_plus'
 
 gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
