@@ -17,8 +17,6 @@ Catarse::Application.routes.draw do
     resources :emails, :only => [ :index ]
   end
 
-  ActiveAdmin.routes(self)
-
   mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
   mount CatarseMoip::Engine => "/", :as => "catarse_moip"
 
@@ -117,6 +115,9 @@ Catarse::Application.routes.draw do
         put 'push_to_draft'
       end
     end
+
+    resources :financial, only: [ :index ]
+
     resources :backers do
       member do
         put 'confirm'
@@ -129,8 +130,5 @@ Catarse::Application.routes.draw do
     resources :users
   end
 
-  resources :tests
-
   match "/:permalink" => "projects#show", as: :project_by_slug
-
 end
