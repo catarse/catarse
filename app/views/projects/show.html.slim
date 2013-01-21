@@ -151,7 +151,7 @@
 
           #condition[class="#{@project.display_status}"]
             p
-              - if @project.successful?
+              - if @project.reached_goal?
                 - if @project.expired?
                   = t('projects.back_project.project_warning.successful.expired', :date => @project.display_expires_at)
                 - else

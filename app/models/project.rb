@@ -182,7 +182,7 @@ class Project < ActiveRecord::Base
   end
 
   def can_back?
-    (online? || successful?) && !expired?
+    online? && !expired?
   end 
 
   def as_json(options={})
@@ -237,20 +237,16 @@ class Project < ActiveRecord::Base
     end
 
     event :finish do
-      transition online: :successful,      if: ->(project) {
-        project.reached_goal?
-      }
-
       transition online: :waiting_funds,      if: ->(project) {
-        project.expired? and project.in_time_to_wait?
+        project.expired? && project.in_time_to_wait?
       }
 
       transition waiting_funds: :successful,  if: ->(project) {
-        project.reached_goal?
+        project.reached_goal? && !project.in_time_to_wait?
       }
 
       transition waiting_funds: :failed,      if: ->(project) {
-        project.expired? and not project.reached_goal? and not project.in_time_to_wait?
+        project.expired? && !project.reached_goal? && !project.in_time_to_wait?
       }
     end
 
