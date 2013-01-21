@@ -145,18 +145,4 @@ describe ProjectsController do
       it{ should be_success }
     end
   end
-
-  describe "POST send_mail" do
-    Factory(:notification_type, :name => 'project_received')
-    let(:name){ project.name }
-    let(:user){ project.user }
-
-    before do
-      controller.stubs(:current_user).returns(user)
-      Notification.expects(:create_notification).with(:project_received, user)
-      post :send_mail, :locale => :pt
-    end
-
-    it{ should redirect_to root_path }
-  end
 end
