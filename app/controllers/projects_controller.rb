@@ -60,31 +60,6 @@ class ProjectsController < ApplicationController
     @title = t('projects.start.title')
   end
 
-  def send_mail
-    current_user.update_attributes({ email: params[:contact] }) if current_user.email.nil?
-    ProjectsMailer.start_project_email(
-      params[:how_much_you_need],
-      params[:days],
-      params[:category],
-      params[:about],
-      params[:rewards],
-      params[:video],
-      params[:facebook],
-      params[:twitter],
-      params[:blog],
-      params[:links],
-      params[:know_us_via],
-      params[:contact],
-      current_user,
-      "#{::Configuration[:base_url]}#{user_path(current_user)}").deliver
-
-    # Send project receipt
-    Notification.create_notification(:project_received, current_user)
-
-    flash[:success] = t('projects.send_mail.success')
-    redirect_to :root
-  end
-
   def new
     return unless require_login
     new! do
