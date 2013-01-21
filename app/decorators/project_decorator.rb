@@ -7,14 +7,10 @@ class ProjectDecorator < Draper::Base
   end
 
   def display_status
-    if successful? and expired?
+    if successful?
       'successful'
-    elsif expired?
+    elsif failed?
       'expired'
-    elsif waiting_confirmation?
-      'waiting_confirmation'
-    elsif in_time?
-      'in_time'
     end
   end
 
