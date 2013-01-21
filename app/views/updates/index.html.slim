@@ -5,7 +5,9 @@
     ul.collection_list
       - for update in @project.updates.order('created_at DESC')
         li
+          .flag
           .time= l(update.created_at, :format => :updates)
+          .clearfix
           h3= link_to "#updates/#{update.id}", :id => "updates/#{update.id}" do
             = update.title
           .comment= raw(update.comment_html)
