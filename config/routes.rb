@@ -17,8 +17,6 @@ Catarse::Application.routes.draw do
     resources :emails, :only => [ :index ]
   end
 
-  ActiveAdmin.routes(self)
-
   mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
   mount CatarseMoip::Engine => "/", :as => "catarse_moip"
 
@@ -58,9 +56,9 @@ Catarse::Application.routes.draw do
   match "/reward/:id" => "rewards#show", :as => :reward
   resources :posts, only: [:index, :create]
   resources :projects do
-    resources :updates, :only => [:index, :create, :destroy]
-    resources :rewards
-    resources :backers, controller: 'projects/backers' do
+    resources :updates, only: [ :index, :create, :destroy ]
+    resources :rewards, only: [ :index, :create, :update, :destroy ]
+    resources :backers, controller: 'projects/backers', only: [ :index, :new ] do
       collection do
         post 'review'
       end
@@ -110,14 +108,17 @@ Catarse::Application.routes.draw do
   match "/pages/:permalink" => "curated_pages#show", as: :curated_page
 
   namespace :adm do
-    resources :projects do
+    resources :projects, only: [ :index ] do
       member do
         put 'approve'
         put 'reject'
         put 'push_to_draft'
       end
     end
-    resources :backers do
+
+    resources :financials, only: [ :index ]
+
+    resources :backers, only: [ :index ] do
       member do
         put 'confirm'
         put 'unconfirm'
@@ -126,11 +127,12 @@ Catarse::Application.routes.draw do
         post 'update_attribute_on_the_spot'
       end
     end
-    resources :users
+    resources :users, only: [ :index ]
+
+    namespace :reports do
+      resources :backer_reports, only: [ :index ]
+    end
   end
 
-  resources :tests
-
   match "/:permalink" => "projects#show", as: :project_by_slug
-
 end
