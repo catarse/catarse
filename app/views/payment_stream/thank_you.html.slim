@@ -8,7 +8,7 @@
         = image_tag @project.display_image, :id => 'project_image', :alt => @project.name, :width => '250px'
         h1= t('.text_title_html', :link => link_to(@project.name, project_path(@project)))
         #review_text
-          - if @project.successful?
+          - if @project.reached_goal?
             - if @project.expired?
               = t('projects.back_project.project_warning.successful.expired', :date => @project.display_expires_at)
             - else
