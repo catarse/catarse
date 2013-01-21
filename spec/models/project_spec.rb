@@ -346,9 +346,9 @@ describe Project do
       it{ should be_true }
     end
 
-    context "when project is successful but not expired" do
+    context "when project is successful" do
       let(:project) { Factory(:project, state: 'successful') }
-      it{ should be_true }
+      it{ should be_false }
     end
 
     context "when project is not visible" do
@@ -488,7 +488,8 @@ describe Project do
             before do
               subject.finish
             end
-            its(:successful?) { should be_true }
+
+            its(:successful?) { should be_false }
           end
         end
 
