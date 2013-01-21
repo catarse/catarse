@@ -36,7 +36,10 @@ describe ProjectsController do
   end
 
   describe "GET index" do
-    before { get :index, locale: :pt}
+    before do
+      controller.stubs(:last_tweets).returns([])
+      get :index, locale: :pt
+    end
     it { should be_success }
   end
 
