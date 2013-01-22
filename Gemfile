@@ -82,7 +82,6 @@ gem 'http_accept_language'
 gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 
 # Administration
-gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
 gem "meta_search", "1.1.3"
 
 # Payment
