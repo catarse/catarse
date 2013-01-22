@@ -2,6 +2,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource except: [:update_attribute_on_the_spot, :projects]
   inherit_resources
+  can_edit_on_the_spot
   actions :show, :update, :unsubscribe_update
   respond_to :json, :only => [:backs, :projects, :request_refund]
   def show
