@@ -49,7 +49,7 @@
                     = truncate(post.title, length: 80)
                 p.author= "#{t('projects.box.by')} #{post.author}"
                 = link_to post.url, target: '__blank', class: 'resume' do
-                  = truncate(post.summary, length: 130)
+                  = truncate(post.summary, length: 130).html_safe
 
         .facebook
           h3= t('sidebar.titles.facebook')
