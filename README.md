@@ -8,7 +8,6 @@ You can see the software in action in http://catarse.me.
 
 ## Getting started
 
-
 ## Internationalization
 
 This software was first created as Brazil's first crowdfunding platform. 
