@@ -27,6 +27,7 @@ gem 'draper'
 # Frontend stuff
 gem 'slim'
 gem 'slim-rails'
+gem 'jquery-rails'
 gem 'initjs'
 
 # Authentication and Authorization

@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: git://github.com/devton/catarse_paypal_express.git
-  revision: f3182557874f824a4ecc27393eb0038a454644b6
+  revision: 8d8434f03ffc0c299fbae21fb5b1817fdebbcff6
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -483,6 +483,7 @@ DEPENDENCIES
   httpclient (= 2.2.5)
   inherited_resources (= 1.3.1)
   initjs
+  jquery-rails
   kaminari
   launchy
   mailcatcher
