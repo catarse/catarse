@@ -9,7 +9,7 @@ CATARSE.Adm.Users = {
 
       // set sorting default if empty
       if(sortField.val().length == 0){
-        sortField.val('user_totals.sum DESC')
+        sortField.val('coalesce(user_totals.sum,0) DESC')
       }
       var sort = sortField.val().split(' ');
       return {field: sort[0], order: sort[1]};
