@@ -5,6 +5,10 @@ CATARSE.ReviewForm = Backbone.View.extend({
     return $('#accept').is(':checked')
   },
 
+  liveInBrazil: function() {
+    return $('#live_in_brazil').is(':checked')
+  },
+
   everything_ok: function(){
     var ok = function(id){
       var value = $(id).val()
@@ -72,16 +76,18 @@ CATARSE.ReviewForm = Backbone.View.extend({
         all_ok = false
       if(!email_ok())
         all_ok = false
-      if(!phone_number_ok())
-        all_ok = false
-      if(!ok('#user_address_street'))
-        all_ok = false
-      if(!ok('#user_address_number'))
-        all_ok = false
-      if(!ok('#user_address_neighbourhood'))
-        all_ok = false
-      if(!ok('#user_address_city'))
-        all_ok = false
+      if(this.liveInBrazil()){
+        if(!phone_number_ok())
+          all_ok = false
+        if(!ok('#user_address_street'))
+          all_ok = false
+        if(!ok('#user_address_number'))
+          all_ok = false
+        if(!ok('#user_address_neighbourhood'))
+          all_ok = false
+        if(!ok('#user_address_city'))
+          all_ok = false
+      }
     }
 
     if(!this.accepted_terms()){
@@ -92,6 +98,17 @@ CATARSE.ReviewForm = Backbone.View.extend({
       this.updateCurrentBackerInfo();
       $('#user_submit').attr('disabled', false)
       if($('#back_with_credits').length < 1) {
+        if(this.allOkToMoIP() && this.liveInBrazil()) {
+          $('nav#payment_menu a#moip').show();
+          $('nav#payment_menu a#moip').addClass('enabled');
+          $('#moip_payment').show();
+          $('.tab_container #payment_menu a.enabled:first').trigger('click')
+        } else {
+          $('nav#payment_menu a#moip').hide();
+          $('nav#payment_menu a#moip').removeClass('enabled');
+          $('#moip_payment').hide();
+          $('.tab_container #payment_menu a.enabled:first').trigger('click')
+        }
         $('#payment.hide').show();
       }
     } else {
@@ -102,11 +119,39 @@ CATARSE.ReviewForm = Backbone.View.extend({
     }
   },
 
+  allOkToMoIP: function() {
+    var street = $('#user_address_street').val();
+    var number = $('#user_address_number').val();
+    var phone = $('#user_phone_number').val();
+    var state = $('#user_address_state').val();
+    var city = $('#user_address_city').val();
+
+    var ok = true;
+    var phone_regex = /^\([0-9]{2}\)[0-9]{4}-[0-9]{4}[0-9_ ]?$/
+
+    if(street.length < 1) { ok = false }
+    if(number.length < 1) { ok = false }
+    if(!phone.match(phone_regex)){ ok = false }
+    if(state.length < 1) { ok = false }
+    if(city.length < 1) { ok = false }
+
+    return ok;
+  },
+
   events:{
     'keyup input[type=text]' : 'everything_ok',
     'click #accept' : 'everything_ok',
+    'click #live_in_brazil' : 'showUpAddressForm',
     'change select' : 'everything_ok',
     'keyup #user_address_zip_code' : 'onZipCodeKeyUp',
+  },
+
+  showUpAddressForm: function(e) {
+    if(this.liveInBrazil()) {
+      $('fieldset.address_data').fadeIn();
+    } else {
+      $('fieldset.address_data').fadeOut();
+    }
   },
 
   onPaymentTabClick: function(e){
@@ -139,6 +184,10 @@ CATARSE.ReviewForm = Backbone.View.extend({
 
     if(this.accepted_terms()){
       this.everything_ok();
+    }
+
+    if(!this.liveInBrazil()) {
+      $('fieldset.address_data').hide();
     }
 
     var can_submit_to_moip = true;
@@ -188,7 +237,7 @@ CATARSE.BackersReviewView = Backbone.View.extend({
   initialize: function() {
     $('.payments_type').hide();
     $('.tab_container #payment_menu a').removeClass('selected');
-    this.$('.tab_container #payment_menu a:first').trigger('click')
+    this.$('.tab_container #payment_menu a.enabled:first').trigger('click')
     this.reviewForm = new CATARSE.ReviewForm();
   }
 })

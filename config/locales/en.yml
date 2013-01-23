@@ -385,6 +385,8 @@ en:
         submit: "Review and proceed to checkout"
         title: "Back %{name}"
       review:
+        brazil_address_title: 'Fill when you back is in Brazil'
+        live_in_brazil: "I'm living in Brazil"
         credits_notice_html: "This back will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to back other projects."
         error: "Ooops. There was an error while registering your back. Please try again."
         international:
