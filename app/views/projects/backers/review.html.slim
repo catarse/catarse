@@ -31,17 +31,23 @@
           = hidden_field_tag 'payment_method_url', nil
           - unless @backer.credits
             = form.inputs do
+              fieldset.live_in_brazil
+                = check_box_tag 'live_in_brazil', 'live', params[:locale] == 'pt'
+                = label_tag 'live_in_brazil', t('.live_in_brazil'), :class => 'inline'
               = form.input :full_name, :required => true, :as => :string
               /= form.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
               = form.input :email, :required => true, :as => :string
-              = form.input :address_street, :as => :string
-              = form.input :address_number, :as => :string
-              = form.input :address_complement, :required => false, :as => :string
-              = form.input :address_neighbourhood, :as => :string
-              = form.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
-              = form.input :address_city, :as => :string
-              = form.input :address_state, required: true, :as => :select, :collection => State.array
-              = form.input :phone_number, required: true, :as => :string, :input_html => {:autocomplete => 'off'}
+              fieldset.address_data
+                .title
+                  h2
+                = form.input :address_street, :as => :string
+                = form.input :address_number, :as => :string
+                = form.input :address_complement, :required => false, :as => :string
+                = form.input :address_neighbourhood, :as => :string
+                = form.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
+                = form.input :address_city, :as => :string
+                = form.input :address_state, :as => :select, :collection => State.array
+                = form.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}
           .submit
             fieldset.accept_terms
               = check_box_tag 'accept'
@@ -59,7 +65,7 @@
           .tab_container
             nav#payment_menu
               - PaymentEngines.engines.each do |engine|
-                = link_to "##{engine[:name]}_payment", :id => engine[:name], :class => 'selected' , :'data-target' => engine[:review_path].call(@backer) do
+                = link_to "##{engine[:name]}_payment", :id => engine[:name], :class => 'selected enabled' , :'data-target' => engine[:review_path].call(@backer) do
                   = t("projects.backers.review.#{engine[:name]}")
           - PaymentEngines.engines.each do |engine|
             div[id="#{engine[:name]}_payment" class="payments_type hide"]
