@@ -54,10 +54,10 @@
                 th= t('.user')
                 th= t('.email')
                 th 
-                  a data-sort="user_totals.sum" href='#'= t('.total_backed')
+                  a data-sort="coalesce(user_totals.sum,0)" href='#'= t('.total_backed')
                   span.sort-order
                 th 
-                  a data-sort="user_totals.credits" href='#'= t('.credits')
+                  a data-sort="coalesce(user_totals.credits,0)" href='#'= t('.credits')
                   span.sort-order
             tbody
               - for user in @users do
