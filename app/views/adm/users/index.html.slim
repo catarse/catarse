@@ -34,10 +34,10 @@
       h2
         strong= "#{@total_users} "
         = t('.total_backers')
-        |  · 
+        |  ·
         strong= "#{number_to_currency @total_backed, :precision => 0} "
         = t('.total_backed')
-        |  · 
+        |  ·
         strong= "#{number_to_currency @total_credits, :precision => 0} "
         = t('.total_credits')
       br
@@ -53,12 +53,13 @@
                 th= t('.id')
                 th= t('.user')
                 th= t('.email')
-                th 
+                th
                   a data-sort="coalesce(user_totals.sum,0)" href='#'= t('.total_backed')
                   span.sort-order
-                th 
+                th
                   a data-sort="coalesce(user_totals.credits,0)" href='#'= t('.credits')
                   span.sort-order
+                th= t('.provider')
             tbody
               - for user in @users do
                 tr id=user.id class=cycle("even", "odd")
@@ -67,8 +68,9 @@
                   td= user.email
                   td= user.user_total ? user.user_total.sum : 0
                   td= user.credits
+                  td= user.provider
       = paginate @users
 
   .clearfix
-    
+
 

@@ -895,6 +895,7 @@ pt:
         user: Usuário
         value: Valor
         payer_email: Email do pagamento
+        provider: Provedor
     backers:
       messages:
         successful:
