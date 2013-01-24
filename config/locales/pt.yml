@@ -868,6 +868,8 @@ pt:
         title: 'Gerenciamento de projetos'
         total_projects: 'projetos'
         submit: 'filtrar'
+        expires_at: 'Finaliza em'
+        category: 'Categoria'
     actions:
       confirm: 'Confirmar'
     users:
