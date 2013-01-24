@@ -8,26 +8,28 @@
 
     .filters
       .bootstrap-form
-        = form_for @search, :url => adm_projects_path, class: 'form-horizontal' do |f|
+        = form_tag adm_projects_path, method: :get, class: 'form-horizontal' do |f|
           fieldset
             .input
-              = f.label :id_equals, t('.id')
-              = f.text_field :id_equals, class: 'input-small'
+              = label_tag :by_id, t('.id')
+              = text_field_tag :by_id, params[:by_id], class: 'input-small'
+
             .input
-              = f.label :name_contains, t('.project')
-              = f.text_field :name_contains
+              = label_tag :pg_search, t('.project')
+              = text_field_tag :pg_search, params[:pg_search]
             .input
-              = f.label :user_name_contains, t('.user')
-              = f.text_field :user_name_contains
+              = label_tag :user_name_contains, t('.user')
+              = text_field_tag :user_name_contains, params[:user_name_contains]
+
             .bootstrap-twitter
               .input.submit
-                = f.submit t('.submit'), class: 'btn btn-success'
+                = submit_tag t('.submit'), class: 'btn btn-success'
           fieldset
             .input.total_results
               #total_results
-                = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
-                strong= @search.count
-                = pluralize_without_number(@search.count, t('project_singular'), t('project_plural')).downcase
+                = pluralize_without_number @projects.count, t('found_singular'), t('found_plural')
+                strong= @projects.count
+                = pluralize_without_number(@projects.count, t('project_singular'), t('project_plural')).downcase
       .clearfix
     .data-table
       = paginate @projects
