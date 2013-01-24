@@ -38,28 +38,30 @@
           table.table.table-striped
             thead
               tr
-                th= t('.id')
                 th style="width: 200px;"
                   = t('.name')
+                th= t('.category')
                 th= t('.user_id')
                 th= t('.goal')
                 th= t('.pledged')
                 th= t('.total_backs')
                 th= t('.recommended')
                 th= t('.online_date')
+                th= t('.expires_at')
                 th= t('.state')
                 th
             tbody
               - @projects.each do |project|
                 tr id=project.id class=cycle("even", "odd")
-                  td= project.id
                   td= link_to project.name, project_path(project)
+                  td= project.category
                   td= best_in_place [:adm, project], :user_id, method: :put, type: :input
                   td= best_in_place [:adm, project], :goal, method: :put, type: :input, display_as: :display_goal
                   td= "#{project.display_pledged} (#{project.progress}%)"
                   td= project.total_backers
                   td.recommended= best_in_place [:adm, project], :recommended, method: :put, type: :checkbox, collection: ['Não', 'Sim']
                   td= project.online_date.strftime('%d/%m/%Y') if project.online_date
+                  td= project.display_expires_at
                   td
                     - if project.online? or project.successful?
                       span.label.label-success= project.state
