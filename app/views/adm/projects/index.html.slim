@@ -20,6 +20,12 @@
             .input
               = label_tag :user_name_contains, t('.user')
               = text_field_tag :user_name_contains, params[:user_name_contains]
+            .input
+              = label_tag :order_table, t('.order_table')
+              select#order_goal name="order_table"
+                option value=''
+                option value='asc'= t('.order_asc')
+                option value='desc'= t('.order_desc')
 
             .bootstrap-twitter
               .input.submit
