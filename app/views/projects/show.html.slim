@@ -146,8 +146,12 @@
               p= @project.display_pledged
               em= t('statistics.goal.subtitle', :total => @project.display_goal).html_safe
             .item.time
-              p= @project.remaining_days
-              em #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+              - if @project.draft? || @project.rejected?
+                p= @project.online_days
+                em #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
+              - else
+                p= @project.remaining_days
+                em #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
           #condition[class="#{@project.display_status}"]
             p
