@@ -106,6 +106,7 @@ en:
         address_zip_code: "Zip code"
         cpf: 'CPF / CNPJ'
         moip_login: 'MoIP Login'
+        moip_login_hint: '(How to create an account)'
         current_password: "Current password"
         email: Email
         full_name: "Full name / Company Name"

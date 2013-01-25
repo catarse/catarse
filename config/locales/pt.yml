@@ -105,6 +105,7 @@ pt:
         minimum_value: "Valor mínimo"
       user:
         moip_login: 'Login do MoIP'
+        moip_login_hint: '(Como criar uma conta)'
         address_city: Cidade
         address_complement: Complemento
         address_neighbourhood: Bairro
