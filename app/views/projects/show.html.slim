@@ -70,6 +70,7 @@
                   - if current_user.admin
                     = form.input :expires_at, as: :string
                     = form.input :user_id
+                    = form.input :permalink
                   - if can? :update, @project, :name
                     = form.input :name, as: :string, required: false
                   - if can? :update, @project, :headline
