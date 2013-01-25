@@ -23,6 +23,7 @@
       .bootstrap-form
         = semantic_form_for @user, :html => {:method => :put}  do |f|
           .profile
+            = f.input :id, :as => :string, :input_html => { :disabled =>  'disabled'}
             = f.input :full_name, :required => true, :as => :string
             = f.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
             = f.input :address_street, :as => :string
