@@ -1,4 +1,5 @@
 pt:
+  edit_project: 'Editar projeto'
   days: 'dias'
   controllers:
     rewards:
@@ -104,6 +105,7 @@ pt:
         minimum_value: "Valor mínimo"
       user:
         moip_login: 'Login do MoIP'
+        moip_login_hint: '(Como criar uma conta)'
         address_city: Cidade
         address_complement: Complemento
         address_neighbourhood: Bairro
@@ -115,6 +117,7 @@ pt:
         current_password: "Senha atual"
         email: Email
         full_name: "Nome completo / Razão Social"
+        id: 'ID'
         name: Nome
         password: Senha
         password_confirmation: "Confirmação de senha"
@@ -161,7 +164,7 @@ pt:
     title: "Meus créditos"
   credits_mailer:
     request_refund_from:
-      subject: "Requisição de extorno feita por %{name}"
+      subject: "Estorno do apoio ao projeto %{name}"
       subject_html: "Usuário %{name} pediu extorno referente ao apoio %{backer_key} para o projeto %{backer_project} no valor de %{backer_value} efetuado pelo serviço %{backer_payment_service}."
   curated_pages:
     index:
@@ -256,7 +259,7 @@ pt:
         category: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
         expires_at: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
         online_days: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
-        goal: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): Clique aqui! Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
+        goal: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): <a href='http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
         headline: "Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)"
         name: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo."
         uploaded_image: "Aqui você faz upload de uma imagem (.jpg) com tamanho 220x172."
@@ -868,6 +871,12 @@ pt:
         title: 'Gerenciamento de projetos'
         total_projects: 'projetos'
         submit: 'filtrar'
+        expires_at: 'Finaliza em'
+        category: 'Categoria'
+        order_table: 'Ordernar tabela'
+        order_date: 'Data de envio'
+        order_asc: 'Menor meta'
+        order_desc: 'Maior meta'
     actions:
       confirm: 'Confirmar'
     users:

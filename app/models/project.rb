@@ -56,6 +56,17 @@ class Project < ActiveRecord::Base
     associated_against:  {user: [:name, :address_city ]},
     :using => {trigram: {}, tsearch: {:dictionary => "portuguese"}},
     ignoring: :accents
+
+  scope :by_id, ->(id) { where(id: id) }
+  scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
+  scope :order_table, ->(sort) {
+    if sort == 'desc'
+      order('goal desc')
+    else
+      order('goal asc')
+    end
+  }
+
   scope :visible, where("state NOT IN ('draft', 'rejected')")
   scope :recommended, where(recommended: true)
   scope :expired, where("expires_at < current_timestamp")

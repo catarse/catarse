@@ -8,26 +8,34 @@
 
     .filters
       .bootstrap-form
-        = form_for @search, :url => adm_projects_path, class: 'form-horizontal' do |f|
+        = form_tag adm_projects_path, method: :get, class: 'form-horizontal' do |f|
           fieldset
             .input
-              = f.label :id_equals, t('.id')
-              = f.text_field :id_equals, class: 'input-small'
+              = label_tag :by_id, t('.id')
+              = text_field_tag :by_id, params[:by_id], class: 'input-small'
+
             .input
-              = f.label :name_contains, t('.project')
-              = f.text_field :name_contains
+              = label_tag :pg_search, t('.project')
+              = text_field_tag :pg_search, params[:pg_search]
             .input
-              = f.label :user_name_contains, t('.user')
-              = f.text_field :user_name_contains
+              = label_tag :user_name_contains, t('.user')
+              = text_field_tag :user_name_contains, params[:user_name_contains]
+            .input
+              = label_tag :order_table, t('.order_table')
+              select#order_goal name="order_table"
+                option value=''
+                option value='asc'= t('.order_asc')
+                option value='desc'= t('.order_desc')
+
             .bootstrap-twitter
               .input.submit
-                = f.submit t('.submit'), class: 'btn btn-success'
+                = submit_tag t('.submit'), class: 'btn btn-success'
           fieldset
             .input.total_results
               #total_results
-                = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
-                strong= @search.count
-                = pluralize_without_number(@search.count, t('project_singular'), t('project_plural')).downcase
+                = pluralize_without_number @projects.count, t('found_singular'), t('found_plural')
+                strong= @projects.count
+                = pluralize_without_number(@projects.count, t('project_singular'), t('project_plural')).downcase
       .clearfix
     .data-table
       = paginate @projects
@@ -38,28 +46,30 @@
           table.table.table-striped
             thead
               tr
-                th= t('.id')
                 th style="width: 200px;"
                   = t('.name')
+                th= t('.category')
                 th= t('.user_id')
                 th= t('.goal')
                 th= t('.pledged')
                 th= t('.total_backs')
                 th= t('.recommended')
                 th= t('.online_date')
+                th= t('.expires_at')
                 th= t('.state')
                 th
             tbody
               - @projects.each do |project|
                 tr id=project.id class=cycle("even", "odd")
-                  td= project.id
                   td= link_to project.name, project_path(project)
+                  td= project.category
                   td= best_in_place [:adm, project], :user_id, method: :put, type: :input
                   td= best_in_place [:adm, project], :goal, method: :put, type: :input, display_as: :display_goal
                   td= "#{project.display_pledged} (#{project.progress}%)"
                   td= project.total_backers
                   td.recommended= best_in_place [:adm, project], :recommended, method: :put, type: :checkbox, collection: ['Não', 'Sim']
                   td= project.online_date.strftime('%d/%m/%Y') if project.online_date
+                  td= project.display_expires_at
                   td
                     - if project.online? or project.successful?
                       span.label.label-success= project.state
