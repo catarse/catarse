@@ -1,4 +1,5 @@
 pt:
+  edit_project: 'Editar projeto'
   days: 'dias'
   controllers:
     rewards:
