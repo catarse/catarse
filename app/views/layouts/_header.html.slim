@@ -2,7 +2,7 @@
   = link_to "Home", root_path, :class => 'logo', :title => 'Catarse'
   nav.actions
     = link_to t('layouts.header.explore'), explore_path, :class => 'explore'
-    = link_to t('layouts.header.submit_project'), guidelines_path, :class =>  'submit_project'
+    = link_to t('layouts.header.submit_project'), guidelines_start_path, :class =>  'submit_project'
   .search
     = form_tag explore_path(:anchor => "search"), :method => 'GET', :class=>'search_input' do
       = text_field_tag :search, nil, autocomplete: "off"
