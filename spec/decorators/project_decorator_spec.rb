@@ -49,19 +49,38 @@ describe ProjectDecorator do
 
   describe "#display_status" do
     subject{ project.display_status }
-    context "when successful and expired" do
+    context "when online and reached goal" do
       before do
-        project.stubs(:successful?).returns(true)
-        project.stubs(:expired?).returns(true)
+        project.stubs(:state).returns('online')
+        project.stubs(:reached_goal?).returns(true)
+      end
+      it{ should == 'reached_goal' }
+    end
+    context "when online and have not reached goal yet" do
+      before do
+        project.stubs(:state).returns('online')
+        project.stubs(:reached_goal?).returns(false)
+      end
+      it{ should == 'not_reached_goal' }
+    end
+    context "when failed" do
+      before do
+        project.stubs(:state).returns('failed')
+      end
+      it{ should == 'failed' }
+    end
+    context "when successful" do
+      before do
+        project.stubs(:state).returns('successful')
       end
       it{ should == 'successful' }
     end
-
-    context "when failed" do
-      before{ project.stubs(:failed?).returns(true) }
-      it{ should == 'expired' }
+    context "when waiting funds" do
+      before do
+        project.stubs(:state).returns('waiting_funds')
+      end
+      it{ should == 'waiting_funds' }
     end
   end
-
 end
 

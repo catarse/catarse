@@ -7,10 +7,10 @@ class ProjectDecorator < Draper::Base
   end
 
   def display_status
-    if successful?
-      'successful'
-    elsif failed?
-      'expired'
+    if online?
+      (reached_goal? ? 'reached_goal' : 'not_reached_goal')
+    else
+      state
     end
   end
 
