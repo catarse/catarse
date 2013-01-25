@@ -183,26 +183,14 @@
             li
               float: left
               margin-right: 20px
-              input#user_full_name, input#user_address_street
+              input#user_id
+                width: 100px
+              input#user_address_street
                 width: 450px
+              input#user_full_name
+                width: 320px
             li#user_address_complement_input, li#user_address_state_input
               margin-right: 0px
-            .email
-              float: left
-              width: 100%
-              .hint
-                color: #333333
-                font-size: 12px
-                line-height: 18px
-                margin-bottom: 20px
-                padding-top: 5px
-                width: 700px
-              #newsletter
-                float: left
-              #newsletter + label
-                float: left
-                margin-left: 6px
-                margin-bottom: 30px
           #user_submit
             background: url($images_path+'bot_profileUser.png') left top no-repeat
             color: #FFFFFF
@@ -216,6 +204,9 @@
             border: none
             margin-bottom: 30px
           .socialmidia
+            #newsletter + label, #user_email_input
+              display: inline
+              margin: 5px
             margin-bottom: 20px
   #my_avatar
     ul

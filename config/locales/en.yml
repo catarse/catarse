@@ -1,4 +1,5 @@
 en:
+  edit_project: 'Edit this project'
   facebook_locale: 'en_US'
   or: or
   newsletter_ok_header: "You are subscribed to the newsletter!"
@@ -105,6 +106,7 @@ en:
         address_zip_code: "Zip code"
         cpf: 'CPF / CNPJ'
         moip_login: 'MoIP Login'
+        moip_login_hint: '(How to create an account)'
         current_password: "Current password"
         email: Email
         full_name: "Full name / Company Name"
@@ -152,7 +154,7 @@ en:
     title: "My credits"
   credits_mailer:
     request_refund_from:
-      subject: "Refund request by %{name}"
+      subject: "Refund request from project %{name}"
       subject_html: "User %{name} requested refund for the back %{backer_key} to the project %{backer_project} in the amount of %{backer_value} made by %{backer_payment_service} gateway."
   curated_pages:
     index:
@@ -386,7 +388,7 @@ en:
         title: "Back %{name}"
       review:
         brazil_address_title: 'Fill when you back is in Brazil'
-        live_in_brazil: "I'm living in Brazil"
+        live_in_brazil: "If you live in Brazil, please check this box"
         credits_notice_html: "This back will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to back other projects."
         error: "Ooops. There was an error while registering your back. Please try again."
         international:
