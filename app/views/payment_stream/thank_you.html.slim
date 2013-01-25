@@ -8,18 +8,7 @@
         = image_tag @project.display_image, :id => 'project_image', :alt => @project.name, :width => '250px'
         h1= t('.text_title_html', :link => link_to(@project.name, project_path(@project)))
         #review_text
-          - if @project.reached_goal?
-            - if @project.expired?
-              = t('projects.back_project.project_warning.successful.expired', :date => @project.display_expires_at)
-            - else
-              = t('projects.back_project.project_warning.successful.not_expired', :date => @project.display_expires_at)
-          - elsif @project.waiting_confirmation?
-            = t('projects.back_project.project_warning.waiting_confirmation')
-          - else
-            - if @project.expired?
-              = t('projects.back_project.project_warning.not_successful.expired', :goal => @project.display_goal, :date => @project.display_expires_at)
-            - else
-                  = t('projects.back_project.project_warning.not_successful.not_expired', :goal => @project.display_goal, :date => @project.display_expires_at)
+          = t("projects.back_project.display_status.#{@project.display_status}", :goal => @project.display_goal, :date => @project.display_expires_at)
         .share
             h2= t('.text_subtitle')
             = link_to "http://twitter.com/?status=#{t('i_just_backed', :name => @project.name)} #{@project.short_url}", :target => :_blank do

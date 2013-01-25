@@ -360,14 +360,13 @@ en:
     admin_fields:
       title: "Admin fields"
     back_project:
-      project_warning:
-        not_successful:
-          expired: "This project didn't reach the goal of %{goal} until %{date} and wasn't funded"
-          not_expired: "This project will only be funded if at least %{goal} is backed until %{date}"
-        successful:
-          expired: "This project was successful and was funded on %{date}"
-          not_expired: "This project will be successful and funded on %{date}"
-        waiting_confirmation: "Waiting confirmation from payments to know if this project will be funded."
+      display_status:
+        reached_goal: "This project will be successful and funded on %{date}"
+        not_reached_goal: "This project will only be funded if at least %{goal} is backed until %{date}"
+        failed: "This project didn't reach the goal of %{goal} until %{date} and wasn't funded"
+        successful: "This project was successful and was funded on %{date}"
+        waiting_funds: "Waiting confirmation from payments to know if this project will be funded."
+        draft: "This project is in draft mode and is not open to backers yet."
       reached_of: "Reached of"
       submit: "Back this project"
     backer:

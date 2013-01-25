@@ -376,14 +376,13 @@ pt:
     admin_fields:
       title: "Campos para o admin"
     back_project:
-      project_warning:
-        not_successful:
-          expired: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
-          not_expired: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
-        successful:
-          expired: "Este projeto foi bem-sucedido e foi financiado em %{date}"
-          not_expired: "Este projeto será bem-sucedido e financiado em %{date}"
-        waiting_confirmation: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
+      display_status:
+        reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
+        not_reached_goal: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
+        failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
+        successful: "Este projeto foi bem-sucedido e foi financiado em %{date}"
+        waiting_funds: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
+        draft: "Esse projeto é apenas um rascunho e ainda não está aberto para receber apoios."
       reached_of: "Atingidos de"
       submit: "Apoiar este projeto"
     backer:

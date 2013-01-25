@@ -156,18 +156,7 @@
 
           #condition[class="#{@project.display_status}"]
             p
-              - if @project.reached_goal?
-                - if @project.expired?
-                  = t('projects.back_project.project_warning.successful.expired', :date => @project.display_expires_at)
-                - else
-                  = t('projects.back_project.project_warning.successful.not_expired', :date => @project.display_expires_at)
-              - elsif @project.waiting_confirmation?
-                = t('projects.back_project.project_warning.waiting_confirmation')
-              - else
-                - if @project.expired?
-                  = t('projects.back_project.project_warning.not_successful.expired', :goal => @project.display_goal, :date => @project.display_expires_at)
-                - else
-                  = t('projects.back_project.project_warning.not_successful.not_expired', :goal => @project.display_goal, :date => @project.display_expires_at)
+              = t("projects.back_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
           - if @project.can_back?
             #pledge
               = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
