@@ -117,8 +117,8 @@ pt:
         current_password: "Senha atual"
         email: Email
         full_name: "Nome completo / Razão Social"
+        name: Nickname
         id: 'ID'
-        name: Nome
         password: Senha
         password_confirmation: "Confirmação de senha"
         phone_number: "Telefone (fixo ou celular)"

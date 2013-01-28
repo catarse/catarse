@@ -26,6 +26,7 @@
             = f.input :id, :as => :string, :input_html => { :disabled =>  'disabled'}
             = f.input :full_name, :required => true, :as => :string
             = f.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
+            = f.input :name, :required => false, :as => :string
             = f.input :address_street, :as => :string
             = f.input :address_number, :as => :string
             = f.input :address_complement, :required => false, :as => :string
