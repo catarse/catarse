@@ -35,9 +35,9 @@ class ProjectsController < ApplicationController
 
       format.json do
         @projects = if params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains]
-          Project.visible.pg_search( params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains]).reorder('finished')
+          Project.visible.pg_search( params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains]).order_for_search
         else
-          Project.visible.search(params[:search])
+          Project.visible.search(params[:search]).order_for_search
         end
         # After the search params we order by ID to avoid ties and therefore duplicate items in pagination
         respond_with(@projects.order('id').page(params[:page]).per(6))

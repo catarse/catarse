@@ -54,7 +54,7 @@ class Project < ActiveRecord::Base
       [:about, 'C']
     ],
     associated_against:  {user: [:name, :address_city ]},
-    :using => {trigram: {}, tsearch: {:dictionary => "portuguese"}},
+    :using => {tsearch: {:dictionary => "portuguese"}},
     ignoring: :accents
 
   scope :by_id, ->(id) { where(id: id) }
@@ -84,6 +84,13 @@ class Project < ActiveRecord::Base
     order('random()').
     limit(4)
   }
+  scope :order_for_search, ->{ reorder("
+                                     CASE state 
+                                     WHEN 'online' THEN 1 
+                                     WHEN 'waiting_funds' THEN 2
+                                     WHEN 'successful' THEN 3
+                                     WHEN 'failed' THEN 4
+                                     END ASC, pg_search_rank DESC, created_at DESC") }
   scope :expiring_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order('date(expires_at), random()').limit(3)
   }
