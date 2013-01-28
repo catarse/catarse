@@ -35,3 +35,6 @@ en:
     new_draft_project:
       subject: "Novo projeto criado - %{project_name}"
       header: "Novo projeto criado"
+    new_features:
+      subject: "Novas funcionalidades do Catarse"
+      header: "Novas funcionalidades do Catarse"
