@@ -4,14 +4,19 @@ describe UserDecorator do
   describe "#display_name" do
     subject{ user.display_name }
 
-    context "when we have a name" do
-      let(:user){ Factory(:user, :name => "Name") }
-      it{ should == 'Name' }
+    context "when we only have a full name" do
+      let(:user){ Factory(:user, name: nil, :full_name => "Full Name") }
+      it{ should == 'Full Name' }
     end
 
-    context "when we have only a nickname" do
-      let(:user){ Factory(:user, :name => nil, :nickname => 'nick') }
-      it{ should == 'nick' }
+    context "when we have only a name" do
+      let(:user){ Factory(:user, :name => nil, :name => 'name') }
+      it{ should == 'name' }
+    end
+
+    context "when we have a name and a full name" do
+      let(:user){ Factory(:user, :name => 'name', :full_name => 'full name') }
+      it{ should == 'name' }
     end
 
     context "when we have no name" do
