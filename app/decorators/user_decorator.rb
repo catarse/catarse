@@ -11,7 +11,13 @@ class UserDecorator < Draper::Base
   end
 
   def display_name
-    name || nickname || I18n.t('user.no_name')
+    if name.present?
+      name
+    elsif full_name.present?
+      full_name
+    else
+      I18n.t('user.no_name')
+    end
   end
 
   def display_image
