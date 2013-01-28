@@ -27,18 +27,8 @@ class ProjectsController < ApplicationController
 
         @expiring = Project.expiring_for_home(project_ids)
         @recent = Project.recent_for_home(project_ids)
-
-        @blog_posts = Blog.fetch_last_posts.inject([]) do |total,item|
-          if total.size < 2
-            total << item
-          end
-          total
-        end || []
-
-        calendar = Calendar.new
-        @events = Rails.cache.fetch 'calendar', expires_in: 30.minutes do
-          calendar.fetch_events_from("catarse.me_237l973l57ir0v6279rhrr1qs0@group.calendar.google.com") || []
-        end
+        @blog_posts = blog_posts
+        @events = events
         @curated_pages = CuratedPage.visible.order("created_at desc").limit(8)
         @last_tweets = last_tweets
       end
@@ -143,6 +133,24 @@ class ProjectsController < ApplicationController
         []
       end
     end
+  end
+
+  def blog_posts
+    Blog.fetch_last_posts.inject([]) do |total,item|
+      total << item if total.size < 2
+      total
+    end
+  rescue
+    []
+  end
+
+  def events
+    calendar = Calendar.new
+    Rails.cache.fetch 'calendar', expires_in: 30.minutes do
+      calendar.fetch_events_from("catarse.me_237l973l57ir0v6279rhrr1qs0@group.calendar.google.com")
+    end
+  rescue
+    []
   end
 
   # Just to fix a minor bug,
