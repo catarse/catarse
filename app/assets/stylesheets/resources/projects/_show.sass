@@ -465,6 +465,27 @@
               +box-shadow(rgba(black, 0.3) 0 0 4px inset)
             &:active
               +box-shadow(rgba(black, 0.3) 0 0 10px inset)
+        .bootstrap-twitter
+          .btn-primary
+            background-image: -moz-linear-gradient(top, #64CB64, #51A553)
+            &:hover
+              background-image: -moz-linear-gradient(top, #51A553, #64CB64) 
+
+          .alert.alert-info
+            background-color: #F7F7F7
+            border: 1px solid #EDEDED
+            color: #666666
+            +border-radius (0px)
+            font-family: "Lato-Regular"
+            font-size: 13px
+            line-height: 21px
+            padding: 20px 10px 20px 20px
+            h4
+              font-family: "Lato-Italic"
+              margin-bottom: 5px
+              font-size: 18px
+              font-weight: normal
+              text-shadow: 1px 1px white
         #creator_profile
           padding-top: 40px
           float: left
@@ -540,23 +561,74 @@
                 padding: 0px
                 margin-right: 20px
     #project_edit
+      .bootstrap-twitter  
+        a
+          color: #E75297
+        p
+          font-family: "Lato-Italic"
+          font-size: 16px
+        .alert.alert-info
+          background-color: #F7F7F7
+          border: 1px solid #EDEDED
+          color: #666666
+          font-family: "Lato-Regular"
+          font-size: 13px
+          line-height: 21px
+          height: 20px
+          padding: 10px 10px 10px 40px
+          width: 92%
+          +border-radius (0)
       .bootstrap-form
         .inputs
           li.input
-            width: 100%
             margin-bottom: 20px
             float: left
-        margin-top: 20px
+            border-bottom: dotted 1px #CCCCCC
+            padding: 25px 0
+            width: 100%
         textarea, input[type='text']
-          width: 98%
+          width: 70%
         label
-          font-family: "Lato-Regular"
-          font-size: 15px
-          color: rgba(0, 0, 0, 0.8)
+          color: #E75297
+          float: left
+          font-family: "Lato-Italic"
+          font-size: 18px
+          line-height: 24px
+          text-align: center
+          width: 160px
+          margin-right: 10px
         p.inline-hints
+          color: #777777
+          float: right
+          margin-right: 20px
           font-family: "Lato-Regular"
           font-size: 12px
-          color: rgba(#333, 0.6)
+          line-height: 18px
+          width: 70%
+        li.project_category_input
+          p.inline-hints
+            float: left
+            margin-left: 180px
+            width: 255px
+        .form-actions
+          background: none
+          border: none
+          padding: 0
+          margin: 0
+          .btn
+            border: solid 1px #C2457E
+            color: white
+            display: block
+            font-family: "Lato-Regular"
+            text-shadow: 1px 1px #C2457E
+            font-size: 12px
+            height: 46px
+            padding: 0 15px 0 45px
+            text-transform: uppercase
+            +border-radius (10px)
+            background: #E75297 url($images_path+"icon_refreshproject.png") 10px 9px no-repeat
+            &:hover
+              background-color: #C2457E
     #project_updates
       width: 620px
       .bootstrap-form
