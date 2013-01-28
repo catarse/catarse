@@ -28,7 +28,7 @@
           = @user.display_image_html
         .profile_title
           h1.profile
-              = best_in_place_if(can?(:update, @user), @user, :name, display_as: :display_name)
+              = @user.display_name
           h4.bio
               = best_in_place_if(can?(:update, @user), @user, :bio)
       .user_social
