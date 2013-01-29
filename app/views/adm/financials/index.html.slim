@@ -58,9 +58,11 @@
                   td
                     = link_to t('.backer_report'), adm_reports_backer_reports_path(project_id: project.id, format: :csv)
                   td
-                    - if project.online? or project.successful?
+                    - if project.online?
+                      span.label.label-online= project.state
+                    - elsif project.successful?
                       span.label.label-success= project.state
-                    - elsif project.failed? or project.rejected? 
+                    - elsif project.failed? or project.rejected?
                       span.label.label-important= project.state
                     - elsif project.waiting_funds?
                       span.label.label-warning= project.state
@@ -68,6 +70,6 @@
                       span.label= project.state
       = paginate @projects
   .clearfix
-    
+
 
 
