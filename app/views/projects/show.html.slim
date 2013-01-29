@@ -31,7 +31,7 @@
         - else
           - if can? :update, @project
             .alert.alert-warning
-              = t('.waiting_owner')
+              = t('.waiting_owner_html')
     #project_description[data-project=@project.to_json]
     .project_image
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
