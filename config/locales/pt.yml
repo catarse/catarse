@@ -451,10 +451,6 @@ pt:
     recommended_header:
       guidelines: "Como Funciona"
       guidelines_subtitle: "Entenda o Catarse"
-    new:
-      subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
-      title: "Agooora sim! Envie seu projeto, campeão."
-      introduction_html: "Preencha o formulário abaixo da forma mais completa objetiva, pois quanto mais <br/>completo nós recebermos o seu projeto, mais rápido ele entrará na plataforma online."
     pending:
       can_finish: "Pode finalizar?"
       finished: Finalizado?
@@ -533,6 +529,9 @@ pt:
         take_a_look: "Confira o projeto"
         title: "Faça parte disto e compartilhe este projeto"
     new:
+      subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
+      title: "Agooora sim! Envie seu projeto, campeão."
+      introduction_html: "Preencha o formulário abaixo da forma mais completa objetiva, pois quanto mais <br/>completo nós recebermos o seu projeto, mais rápido ele entrará na plataforma online."
       permalink_important: 'Tente não usar Underline, hífen e etc.'
       permalink_hint: 'Simplifique a URL do seu projeto. Imagine que seu apoiador precisará lembrar do endereço para divulgar o projeto no bar.'
       important_html: "Lembre-se da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido. Basta dividir o seu orçamento final por 0,87."
