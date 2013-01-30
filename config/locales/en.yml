@@ -27,7 +27,7 @@ en:
     titles:
       info: "Useful Information"
       opendata: "nice statistics"
-      social: "like the catarse?"
+      social: "do you like Catarse?"
       newsletter: "receive our newsletter"
     stats:
       backers: Backers
@@ -50,8 +50,8 @@ en:
   sidebar:
     titles:
       blog: blog
-      facebook: "have enjoyed our face?"
-      newsletter: "want to receive news?"
+      facebook: "have you liked our facebook page yet?"
+      newsletter: "do you want to receive our news?"
       faq: "have any doubt?"
       schedule: calendar
     buttons:
@@ -62,7 +62,7 @@ en:
     expiring:
       title: expiring
     recents:
-      title: recents
+      title: recent
     partners:
       title: partners
   "no": "No"
@@ -84,13 +84,13 @@ en:
         category: Category
         expires_at: Deadline
         online_days: Days of the air campaign
-        headline: Headline
+        headline: "Punch Line"
         image_url: "Image URL"
         name: Name
         user_id: "User Id"
         video_url: "Video URL"
         permalink: 'type you project URL ( http://catarse.me/myprojectname )'
-        how_know: 'How did you meet Catarse?'
+        how_know: "How did you meet Catarse?"
         more_linkt: 'Where can we find more about you and your project?'
       reward:
         description: Description
@@ -263,10 +263,11 @@ en:
         anonymous: "I want my back to be anonymous."
         credits: "I want to use my credits on this back."
         reward: "Select your reward"
-        value: "With how much do you want to back?"
+        value: "How much do you want to contribute with?"
       comment:
         comment: "Leave your comment about this project"
       project:
+        headline: "Punch Line"
         category: 'Category'
         about: "About your project. How will you spend this money?"
         expires_at: "What's the deadline to reach your goal?"
@@ -380,7 +381,7 @@ en:
       new:
         cannot_back: "It's not possible to back this project right now. Please, back other projects."
         header:
-          subtitle: "You are a few steps from making the difference and becoming part of this project."
+          subtitle: "You're just a few steps away from making a difference and becoming a part of this project."
           title: "Oohh yeah!"
         no_reward: "Thanks. I just want to help the project."
         submit: "Review and proceed to checkout"
@@ -424,9 +425,9 @@ en:
       subtitle: "Fund projects collaboratively and become part of something bigger. Promote a collective catharsis! You're the missing part in this story."
       subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
       title: "Make the projects you believe in happen"
-    new:
-      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
-      title: "Submit your project"
+    recommended_header:
+      guidelines: "How it Works"
+      guidelines_subtitle: "Getting to know Catarse"
     pending:
       can_finish: "Can finish?"
       finished: Finished?
@@ -505,6 +506,21 @@ en:
         take_a_look: "Check out the project"
         title: "Be part of it and share this project"
     new:
+      legend_html: "After filling in the form below, you will receive a project page in Draft mode. In this draft you will add the rewards for your backers. You may also share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go on air.<br><br><b>Very Important:</b> <i>Catharsis is cured platform, which means that our board will evaluate the focus, the feasibility and consistency of your project during the Draft. If we understand that your project does not comply with our <a href='https://docs.google.com/a/catarse.me/document/d/1wLDS2lphQ6monovg9rEaTIDcxBD3FRZV9dfGKmajyj8/edit' target='_blank' >selection criteria</a>, it may be refused by the team of curators.</i>"
+      permalink_important: 'Try not to use underline, hyphen etc.'
+      name_important: "Do not exceed  50 characters"
+      online_days_important: "60 days is the maximum"
+      about_important: "Don't make it too long! Indicate links so people can know more about your work"
+      important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
+      send_project: "I want to submit my project."
+      video_important: "The video must be hosted  by  VIMEO. Paste here the URL!"
+      more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
+      first_backers_important: "These people are fundamental to the success of your project."
+      how_know_important: "Yay! We reached  the final question."
+      headline_important: "It's a summary of  your project . 140 characteres tops!:D"
+      tags_important: "Check ou other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
+      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
+      title: "Submit your project"
       about: "Describe your project and how much do you need"
       category: "Project category"
       how_much_you_need: "How much do you want to raise?"
