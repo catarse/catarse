@@ -1,0 +1,91 @@
+pt:
+  adm:
+    financials:
+      index:
+        id: ID
+        name: 'Titulo'
+        user: 'Usuário MoIP'
+        user_id: 'User ID'
+        goal: 'Meta'
+        total_payment_service_fee: 'Taxa do MP'
+        total_catarse_fee: 'Taxa do Catarse (Vl. Líquido)'
+        expires_at: 'Finaliza em (Repasse em)'
+        online_date: 'Entrou no ar'
+        pledged: 'Alcançado'
+        recommended: 'Recomendado?'
+        state: 'Estado'
+        menu: 'Rel. Financeiros'
+        title: 'Relatórios financeiros'
+        total_projects: 'projetos'
+        submit: 'filtrar'
+    projects:
+      index:
+        id: ID
+        name: 'Titulo'
+        user_id: 'User ID'
+        goal: 'Meta'
+        total_backs: 'Apoios'
+        online_date: 'Entrou no ar'
+        pledged: 'Alcançado'
+        recommended: 'Recomendado?'
+        state: 'Estado'
+        menu: 'Adm. Projetos'
+        title: 'Gerenciamento de projetos'
+        total_projects: 'projetos'
+        submit: 'filtrar'
+        expires_at: 'Finaliza em'
+        category: 'Categoria'
+        order_table: 'Ordernar tabela'
+        order_date: 'Data de envio'
+        order_asc: 'Menor meta'
+        order_desc: 'Maior meta'
+    actions:
+      confirm: 'Confirmar'
+    users:
+      index:
+        title: "Gerenciamento de apoiadores"
+        menu: "Apoiadores"
+        credits: "Créditos"
+        credits_view: "Créditos calculados"
+        id: Id
+        key: Chave
+        submit: Pesquisar
+        has_credits_difference: Discrepância nos créditos
+        total_backed: Total de apoios
+        total_backers: apoiadores
+        total_backs: apoios
+        total_users: usuários
+        total_credits: créditos
+        total_credits_view: créditos calculados
+        user: Usuário
+        value: Valor
+        payer_email: Email do pagamento
+        provider: Provedor
+    backers:
+      messages:
+        successful:
+          confirm: 'Apoio confirmado com sucesso!'
+          unconfirm: 'Apoio desconfirmado com sucesso!'
+      index:
+        confirm_backer: 'Confirmar apoio'
+        unconfirm_backer: 'Desconfirmar apoio'
+        title: "Gerenciamento de apoios"
+        menu: "Apoios"
+        anonymous: Anônimo?
+        confirmed: Confirmado?
+        credits: "Usou créditos?"
+        id: Id
+        key: Chave
+        no_backers: "Nenhum apoiador encontrado."
+        project: Projeto
+        refunded: "Estorno realizado?"
+        requested_refund: "Solicitou estorno?"
+        reward: Recompensa
+        submit: Pesquisar
+        total_backed: arrecadados
+        total_backers: apoiadores
+        total_backs: apoios
+        total_users: usuários
+        user: Usuário
+        value: Valor
+
