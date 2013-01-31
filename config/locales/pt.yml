@@ -615,7 +615,7 @@ pt:
   static:
     faq:
       title: "Perguntas frequentes"
-    guidelines:
+    guidelines_start:
       accept: "Eu li e entendi como funciona o Catarse."
       explore_curious: "Tô aqui de curioso!"
       explore_projects: "Quero explorar os projetos."
@@ -719,7 +719,7 @@ pt:
       send_project: "Quero enviar meu projeto"
       explore_curious: "Tâmo junto!"
       explore_projects: "Quero apoiar um projeto"
-    guidelines_start:
+    guidelines:
       title: "Como Funciona o Catarse"
       subtitle: "Conheça melhor o que é o Catarse."
       introduction_html: "O Catarse é um espaço de trocas entre indivíduos que, juntos, <br>viabilizam a realização de projetos criativos."

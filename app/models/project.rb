@@ -282,7 +282,7 @@ class Project < ActiveRecord::Base
   end
 
   def after_transition_of_draft_to_online
-    update_attributes online_date: DateTime.now
+    update_attributes({ online_date: DateTime.now, expires_at: (DateTime.now + online_days.days) })
     notify_observers :notify_owner_that_project_is_online
   end
 end
