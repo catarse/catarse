@@ -440,6 +440,11 @@ describe Project do
         project.approve
         project.online_date.should_not be_nil
       end
+      it 'when approves after days should refresh the expires_at' do
+        project.update_column :expires_at, 3.days.from_now
+        project.approve
+        project.expires_at.to_s.should_not == 3.days.from_now.to_s
+      end
     end
 
     describe '#online?' do
