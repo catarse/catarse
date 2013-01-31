@@ -30,7 +30,7 @@
           h1.profile
               = @user.display_name
           h4.bio
-              = best_in_place_if(can?(:update, @user), @user, :bio)
+              = @user.bio
       .user_social
         ul
           - if can? :manage, @user
