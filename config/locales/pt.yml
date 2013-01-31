@@ -364,9 +364,12 @@ pt:
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
     display_status:
-      expired: "não financiado"
+      expired: "finalizado"
+      failed: "não financiado"
       successful: financiado
       waiting_confirmation: aguardando
+      waiting_funds: aguardando
+      not_reached_goal: aguardando
   projects:
     recommended_header:
       sugest_for_you: "sugerido para você"

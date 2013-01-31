@@ -85,8 +85,8 @@ class Project < ActiveRecord::Base
     limit(4)
   }
   scope :order_for_search, ->{ reorder("
-                                     CASE state 
-                                     WHEN 'online' THEN 1 
+                                     CASE state
+                                     WHEN 'online' THEN 1
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
@@ -201,7 +201,7 @@ class Project < ActiveRecord::Base
 
   def can_back?
     online? && !expired?
-  end 
+  end
 
   def as_json(options={})
     {
@@ -223,6 +223,7 @@ class Project < ActiveRecord::Base
       expired: expired?,
       successful: successful? || reached_goal?,
       waiting_confirmation: waiting_confirmation?,
+      waiting_funds: waiting_funds?,
       display_status_to_box: display_status.blank? ? nil : I18n.t("project.display_status.#{display_status}"),
       display_expires_at: display_expires_at,
       in_time: in_time?

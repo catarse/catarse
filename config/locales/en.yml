@@ -350,9 +350,12 @@ en:
     verify_if_video_exists_on_vimeo: "must exist on Vimeo"
     vimeo_regex_validation: "only Vimeo URLs are allowed"
     display_status:
-      expired: "not funded"
+      expired: expired
+      failed: "not funded"
       successful: funded
       waiting_confirmation: waiting
+      waiting_funds: waiting
+      not_reached_goal: waiting
   projects:
     recommended_header:
       sugest_for_you: "suggested for you"
