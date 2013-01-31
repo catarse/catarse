@@ -13,7 +13,7 @@ script type="text/template" id="project_template"
       a href="<%= url %>"
         |<% if(successful) { %>
         = image_tag "successful.#{I18n.locale}.png"
-        |<% } else if(waiting_confirmation) { %>
+        |<% } else if(waiting_confirmation || waiting_funds) { %>
         = image_tag "waiting_confirmation.#{I18n.locale}.png"
         |<% } else { %>
         = image_tag "not_successful.#{I18n.locale}.png"
@@ -50,7 +50,7 @@ script type="text/template" id="project_template"
             h6 <%= time_to_go['time'] %> <%= time_to_go['unit'] %>
             p <%= remaining_text %>
             | <% } else { %>
-            h6 <%= display_status_to_box %> 
+            h6 <%= display_status_to_box %>
             p <%= display_expires_at %>
             | <% } %>
           li
