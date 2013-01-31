@@ -619,7 +619,7 @@ en:
       send_project: "I want to submit my project "
       explore_curious: "I’M ON BOARD!"
       explore_projects: "I want to back a project"
-    guidelines_start:
+    guidelines:
       title: "How it works"
       subtitle: "Get to know Catarse better."
       introduction_html: "Catarse is a space of exchange among individuals who together <br >enable the realization of creative projects."
@@ -661,7 +661,7 @@ en:
       text_nine: "A fellow crazy about development who lives in Tonland"
     faq:
       title: "Frequently asked questions"
-    guidelines:
+    guidelines_start:
       accept: "I have read and understand how catarse works."
       explore_curious: "Just looking around!"
       explore_projects: "I want to explore the projects."
