@@ -43,7 +43,9 @@
                 th= t('.user')
                 th= t('.goal')
                 th= t('.pledged')
-                th= t('.total_backs')
+                th= t('.total_payment_service_fee')
+                th= t('.total_catarse_fee')
+                th= t('.expires_at')
                 th= t('.reports')
                 th= t('.state')
                 th
@@ -51,10 +53,23 @@
               - @projects.each do |project|
                 tr id=project.id class=cycle("even", "odd")
                   td= link_to project.name, project_path(project), target: '_blank'
-                  td= link_to project.user.name, user_path(project.user), target: '_blank'
+                  td= link_to (project.user.moip_login.blank? ? 'Não preenchido' : project.user.moip_login), user_path(project.user, anchor: :settings), target: '_blank'
                   td= project.display_goal
                   td= "#{project.display_pledged} (#{project.progress}%)"
-                  td= project.total_backers
+                  td= number_to_currency project.backers.confirmed.sum('value * payment_service_fee/100'), :unit => 'R$', :precision => 2, :delimiter => '.'
+                  - catarse_fee = Configuration[:catarse_fee].to_f * project.pledged
+                  td
+                    = number_to_currency catarse_fee, :unit => 'R$', :precision => 0, :delimiter => '.'
+                    br
+                    |(
+                    = number_to_currency project.pledged - catarse_fee, :unit => 'R$', :precision => 0, :delimiter => '.'
+                    |)
+                  td
+                    = project.display_expires_at
+                    br
+                    |(
+                    = I18n.l(8.weekdays_from(project.expires_at).to_date)
+                    |)
                   td
                     = link_to t('.backer_report'), adm_reports_backer_reports_path(project_id: project.id, format: :csv)
                   td

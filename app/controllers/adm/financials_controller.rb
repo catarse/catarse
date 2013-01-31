@@ -5,7 +5,9 @@ class Adm::FinancialsController < Adm::BaseController
   actions :index
 
   def collection
-    @search = end_of_association_chain.search(params[:search])
-    @projects = @search.order("created_at DESC").page(params[:page])
+    @search = end_of_association_chain.
+      where("expires_at > current_timestamp - '15 days'::interval").
+      where("state in ('online', 'successful', 'waiting_funds')").includes(:project_total, :user).search(params[:search])
+    @projects = @search.order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, expires_at::date").page(params[:page])
   end
 end
