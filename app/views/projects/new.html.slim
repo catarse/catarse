@@ -66,7 +66,7 @@
                   .important= t('.important_html', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))
               = form.label :goal, t('formtastic.labels.project.goal')
               = form.text_field :goal
-              p.inline-hints= t('formtastic.hints.project.goal')
+              p.inline-hints= t('formtastic.hints.project.goal').html_safe
 
             .input
               .bootstrap-alert
