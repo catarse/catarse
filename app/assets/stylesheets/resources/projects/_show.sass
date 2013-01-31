@@ -42,7 +42,13 @@
         i
           font-family: "Lato-Italic"
           font-size: 18px
+          color: #E75297
           text-shadow: 1px 1px white
+        a 
+          color: #E75297
+          text-decoration: none
+          &:hover
+            text-decoration: underline
         b
           font-family: "Lato-Italic"
           font-size: 16px
@@ -629,6 +635,38 @@
             float: left
             margin-left: 180px
             width: 255px
+        .tips
+          background: #F7F7F7
+          border: 1px solid #EDEDED
+          float: right
+          margin-right: 10px
+          padding: 10px
+          width: 70%
+          color: #666666
+          h3
+            border-bottom: 1px dotted #CCCCCC
+            font-family: "Lato-Italic"
+            font-size: 18px
+            margin-bottom: 25px
+            margin-top: 10px
+            padding-bottom: 10px
+            text-shadow: 1px 1px white
+          p
+            font-family: "Arial"
+            font-size: 13px
+            line-height: 18px
+            margin-bottom: 20px
+            margin-left: 60px
+            margin-right: 15px
+            margin-top: 10px
+            padding-bottom: 10px
+          a
+            color: #E75297
+            text-decoration: none
+            &:hover
+              text-decoration: underline
+          img
+            float: left
         .form-actions
           background: none
           border: none
@@ -644,6 +682,9 @@
             height: 46px
             padding: 0 15px 0 45px
             text-transform: uppercase
+            margin-top: 20px
+            margin-right: 10px
+            float: right
             +border-radius (10px)
             background: #E75297 url($images_path+"icon_refreshproject.png") 10px 9px no-repeat
             &:hover
