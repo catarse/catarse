@@ -31,7 +31,7 @@
         - else
           - if can? :update, @project
             .alert.alert-warning
-              = t('.waiting_owner_html')
+              = t('.waiting_owner').html_safe
     #project_description[data-project=@project.to_json]
     .project_image
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
@@ -63,7 +63,7 @@
             .bootstrap-twitter
               .alert.alert-info
                 p style='margin-bottom: 0; padding-bottom: 0;'
-                  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'GUIA COMPLETO', 'http://catarse.me/guia_realizadores.pdf', target: '_blank'}".html_safe
+                  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', 'http://catarse.me/guia_realizadores.pdf', target: '_blank'}".html_safe
             .bootstrap-form
               = semantic_form_for @project do |form|
                 = form.inputs do
@@ -87,6 +87,19 @@
                     = form.input :goal, as: :number, required: false
                   - if can? :update, @project, :about
                     = form.input :about, required: false
+                    .tips
+                      h3 Dicas de Formatação
+                      = image_tag "catarse/icon_media.png"
+                      p Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!
+                      = image_tag "catarse/icon_url.png"
+                      p Ao colar uma url qualquer, ela virará um link. Por exemplo, http://meulink.com virará http://meulink.com.
+                      = image_tag "catarse/icon_linktext.png"
+                      p Se você quiser colocar um texto no link, basta usar o seguinte formato: 'texto que você quer':http://sua.url. Por exemplo, 'meu link':http://meulink.com virará meu link.
+                      = image_tag "catarse/icon_bold.png"
+                      p Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como <b>meu texto em negrito</b>.
+                      = image_tag "catarse/icon_italic.png"
+                      p Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como <i>meu texto em itálico</i>.
+
                   .clearfix
                   .form-actions.bootstrap-twitter
                     = form.submit class: 'btn'
