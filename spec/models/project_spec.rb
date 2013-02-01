@@ -5,8 +5,6 @@ describe Project do
   let(:project){ Project.new :goal => 3000 }
 
   describe "associations" do
-    it{ should have_many :projects_curated_pages }
-    it{ should have_many :curated_pages }
     it{ should have_many :backers }
     it{ should have_one  :project_total }
     it{ should have_many :rewards }
