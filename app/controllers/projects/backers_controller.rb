@@ -3,6 +3,7 @@ class Projects::BackersController < ApplicationController
   actions :index, :new, :update_info
   before_filter :load_project
   skip_before_filter :force_http, only: [:review, :update_info]
+  skip_before_filter :verify_authenticity_token, :only => [:moip]
 
   def update_info
     return unless require_login
@@ -15,6 +16,18 @@ class Projects::BackersController < ApplicationController
   def index
     @backers = @project.backers.confirmed.order("confirmed_at DESC").page(params[:page]).per(10)
     render :json => @backers.to_json(:can_manage => can?(:update, @project))
+  end
+
+  def thank_you
+    unless @thank_you_id
+      flash[:failure] = I18n.t('payment_stream.thank_you.error')
+      return redirect_to :root
+    end
+
+    @backer = current_user.backs.find params[:id]
+    @project = Project.find @thank_you_id
+    @title = t('payment_stream.thank_you.title')
+    @thank_you_id = nil
   end
 
   def new
@@ -54,7 +67,7 @@ class Projects::BackersController < ApplicationController
       return redirect_to new_project_backer_path(@project)
     end
 
-    session[:thank_you_id] = @project.id
+    @thank_you_id = @project.id
   end
 
   def checkout
@@ -77,7 +90,7 @@ class Projects::BackersController < ApplicationController
           backer.confirm!
         end
         flash[:success] = t('projects.backers.checkout.success')
-        redirect_to thank_you_path
+        redirect_to thank_you_project_backers_path(@thank_you_id)
       end
     end
   end
