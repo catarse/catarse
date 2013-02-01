@@ -64,27 +64,5 @@
           = form_tag Configuration['mailchimp_url'], id: 'mailee-form', method: 'post' do
             = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
             = submit_tag t('sidebar.buttons.newsletter')
-        /.faq
-          h3= t('sidebar.titles.faq')
-          = link_to image_tag('catarse/faq_video.png'), '#'
-        /.schedule
-          h3= t('sidebar.titles.schedule')
-          ul.events
-            - @events.each do |event|
-              li
-                = link_to event['htmlLink'] do
-                  h4
-                    | #{event['start']['dateTime'].to_date.strftime('%d')}
-                    br/
-                    span= event['start']['dateTime'].to_date.strftime('%b').upcase
-                  p= (event['description'].present? ? event['description'] : event['title'])
-          .clearfix
-
     .clearfix
 
-  .container.partners
-    .list_title
-      .title
-        h2= t('sections.partners.title')
-    = render :partial => 'curated_pages_list', :locals => {:curated_pages => @curated_pages} unless @curated_pages.empty?
-    .clearfix
