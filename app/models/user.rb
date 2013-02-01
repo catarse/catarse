@@ -69,7 +69,6 @@ class User < ActiveRecord::Base
   has_many :notifications
   has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
   has_one :user_total
-  has_and_belongs_to_many :manages_projects, :join_table => "projects_managers", :class_name => 'Project'
   belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id, :primary_key => :id
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true
   scope :primary, :conditions => ["primary_user_id IS NULL"]
