@@ -44,7 +44,6 @@ Catarse::Application.routes.draw do
   match "/terms" => "static#terms", :as => :terms
   match "/privacy" => "static#privacy", :as => :privacy
 
-  match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
@@ -61,6 +60,7 @@ Catarse::Application.routes.draw do
     resources :backers, controller: 'projects/backers', only: [ :index, :new ] do
       collection do
         post 'review'
+        get 'thank_you'
       end
       member do
         match 'checkout'
@@ -72,7 +72,6 @@ Catarse::Application.routes.draw do
       post 'send_mail'
       get 'vimeo'
       get 'check_slug'
-      get 'thank_you'
       post 'update_attribute_on_the_spot'
     end
     member do
