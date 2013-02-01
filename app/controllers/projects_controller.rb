@@ -29,7 +29,6 @@ class ProjectsController < ApplicationController
         @recent = Project.recent_for_home(project_ids)
         @blog_posts = blog_posts
         @events = events
-        @curated_pages = CuratedPage.visible.order("created_at desc").limit(8)
         @last_tweets = last_tweets
       end
 

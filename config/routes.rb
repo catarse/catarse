@@ -100,13 +100,6 @@ Catarse::Application.routes.draw do
     end
   end
 
-  resources :curated_pages do
-    collection do
-      post 'update_attribute_on_the_spot'
-    end
-  end
-  match "/pages/:permalink" => "curated_pages#show", as: :curated_page
-
   namespace :adm do
     resources :projects, only: [ :index, :update ] do
       member do
