@@ -8,9 +8,7 @@
               = link_to t('.guidelines'), guidelines_start_path, :class=>'btn_explore'
               span = t('.guidelines_subtitle')    
   .project_info
-    - if has_institutional_videos?
-      == render 'layouts/institutional_video_header'
-    - elsif current_user
+    - if current_user
       - if @recommended_project
         = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.sugest_for_you'), :project => @recommended_project} if @recommended_project
       - else
