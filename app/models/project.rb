@@ -28,7 +28,6 @@ class Project < ActiveRecord::Base
   has_many :updates, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
   has_one :project_total
-  has_and_belongs_to_many :managers, :join_table => "projects_managers", :class_name => 'User'
   accepts_nested_attributes_for :rewards
 
   has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
