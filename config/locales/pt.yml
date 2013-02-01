@@ -500,12 +500,12 @@ pt:
       without_city: "Um projeto de %{category_name} por %{author}"
       with_city: "Um projeto de %{category_name} por %{author} em %{city}"
     project_updates:
-      empty: "Este projeto ainda não teve atualizações. Aguarde =D"
-      submit: "Enviar atualização"
-      comment: "Texto da atualização"
-      title: "Título da atualização"
-      destroy: "Remover atualização"
-      destroy_confirmation: "Deseja remover a atualização?"
+      empty: "Este projeto ainda não teve novidades. Aguarde =D"
+      submit: "Enviar Novidade"
+      comment: "Texto da sua Novidade"
+      title: "Título da sua Novidade"
+      destroy: "Remover Novidade"
+      destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
       reward_title: "Para %{minimum} ou mais"
       title: "Apoie e ganhe..."
