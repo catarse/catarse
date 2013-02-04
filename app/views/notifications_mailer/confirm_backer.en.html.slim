@@ -17,7 +17,7 @@ br
 -if backer.reward
   |Chosen reward: <strong>#{backer.reward.description}</strong>
 -else
-  |No reward chosen, any questions please contact our team on #{mail_to 'contato@catarse.me'}
+  |No reward chosen, any questions please contact our team on #{mail_to Configuration[:email_contact]}
 br
 br
 |If the project is successful on <strong>#{backer.project.expires_at.strftime("%d/%m/%Y")}</strong>, the people responsible for the project will contact you in order to deliver the rewards. This contact will come, usually, a week later, which is the time it takes for us to forward all the backers information to the project owner.
@@ -33,7 +33,7 @@ br
 |If you want to contact #{backer.project.user.name}, send an email to #{mail_to backer.project.user.email}
 br
 br
-|If you have any other questions, access our #{link_to('FAQ', "#{Configuration[:base_url]}/faq")} or send an email to #{mail_to 'contato@catarse.me'}
+|If you have any other questions, access our #{link_to('FAQ', "#{Configuration[:base_url]}/faq")} or send an email to #{mail_to Configuration[:email_contact]}
 br
 br
 |A big hug,
