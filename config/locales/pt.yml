@@ -117,6 +117,7 @@ pt:
         current_password: "Senha atual"
         email: Email
         full_name: "Nome completo / Razão Social"
+        bio: 'Mini Bio'
         name: Nickname
         id: 'ID'
         password: Senha
@@ -259,7 +260,7 @@ pt:
         category: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
         expires_at: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
         online_days: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
-        goal: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): <a href='http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
+        goal_html: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): <a href='http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
         headline: "Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)"
         name: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo."
         uploaded_image: "Aqui você faz upload de uma imagem (.jpg) com tamanho 220x172."
@@ -364,9 +365,12 @@ pt:
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
     vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
     display_status:
-      expired: "não financiado"
+      expired: "finalizado"
+      failed: "não financiado"
       successful: financiado
       waiting_confirmation: aguardando
+      waiting_funds: aguardando
+      not_reached_goal: aguardando
   projects:
     recommended_header:
       sugest_for_you: "sugerido para você"
@@ -451,10 +455,6 @@ pt:
     recommended_header:
       guidelines: "Como Funciona"
       guidelines_subtitle: "Entenda o Catarse"
-    new:
-      subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
-      title: "Agooora sim! Envie seu projeto, campeão."
-      introduction_html: "Preencha o formulário abaixo da forma mais completa objetiva, pois quanto mais <br/>completo nós recebermos o seu projeto, mais rápido ele entrará na plataforma online."
     pending:
       can_finish: "Pode finalizar?"
       finished: Finalizado?
@@ -500,12 +500,12 @@ pt:
       without_city: "Um projeto de %{category_name} por %{author}"
       with_city: "Um projeto de %{category_name} por %{author} em %{city}"
     project_updates:
-      empty: "Este projeto ainda não teve atualizações. Aguarde =D"
-      submit: "Enviar atualização"
-      comment: "Texto da atualização"
-      title: "Título da atualização"
-      destroy: "Remover atualização"
-      destroy_confirmation: "Deseja remover a atualização?"
+      empty: "Este projeto ainda não teve novidades. Aguarde =D"
+      submit: "Enviar Novidade"
+      comment: "Texto da sua Novidade"
+      title: "Título da sua Novidade"
+      destroy: "Remover Novidade"
+      destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
       reward_title: "Para %{minimum} ou mais"
       title: "Apoie e ganhe..."
@@ -514,7 +514,7 @@ pt:
     show:
       rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
       waiting: "Esse projeto está em fase de rascunho e logo saberemos se ele entrará no Catarse. Se está vendo o projeto, e não é o dono dele... aproveita para mandar sua opinião ao realizador."
-      waiting_owner_html: "<i>ATENÇÃO! Seu projeto ainda não está no ar... Seja bem-vindo ao rascunho \o/ </i><br><br>Esse é o espaço para você construir seu projeto. <br>Nenhuma informação abaixo é definitiva até a entrada do seu projeto no ar. Por isso, aproveite! <br><br>Para editar as informações da página do projeto, basta clicar em EDIÇÃO. <br>As recompensas você edita na coluna delas mesmo :D <br>Compartilhe com seus amigos e colha sugestões.<br><br><b>Lembrando que:</b> O Catarse é uma plataforma curada, o que significa que vamos avaliar o foco, a viabilidade, e a consistência do seu projeto durante o processo de Rascunho. Se entendermos que o seu projeto não está de acordo com os nossos Critérios de Seleção, ele poderá ser recusado pela equipe de curadores."
+      waiting_owner: "<i>ATENÇÃO! Seu projeto ainda não está no ar... Seja bem-vindo ao rascunho \o/ </i><br><br>Esse é o espaço para você construir seu projeto. <br>Nenhuma informação abaixo é definitiva até a entrada do seu projeto no ar. Por isso, aproveite! <br><br>Para editar as informações da página do projeto, basta clicar em EDIÇÃO. <br>As recompensas você edita na coluna delas mesmo :D <br>Compartilhe com seus amigos e colha sugestões.<br><br><b>Lembrando que:</b> O Catarse é uma plataforma curada, o que significa que vamos avaliar o foco, a viabilidade, e a consistência do seu projeto durante o processo de Rascunho. Se entendermos que o seu projeto não está de acordo com os nossos <a href='http://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank'>Critérios de Seleção</a>, ele poderá ser recusado pela equipe de curadores."
       about_title: "O projeto"
       no_rewards_warning_title: 'Crie aqui suas recompensas'
       no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
@@ -533,6 +533,9 @@ pt:
         take_a_look: "Confira o projeto"
         title: "Faça parte disto e compartilhe este projeto"
     new:
+      subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
+      title: "Agooora sim! Envie seu projeto, campeão."
+      introduction_html: "Preencha o formulário abaixo da forma mais completa objetiva, pois quanto mais <br/>completo nós recebermos o seu projeto, mais rápido ele entrará na plataforma online."
       permalink_important: 'Tente não usar Underline, hífen e etc.'
       permalink_hint: 'Simplifique a URL do seu projeto. Imagine que seu apoiador precisará lembrar do endereço para divulgar o projeto no bar.'
       important_html: "Lembre-se da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido. Basta dividir o seu orçamento final por 0,87."
@@ -616,7 +619,7 @@ pt:
   static:
     faq:
       title: "Perguntas frequentes"
-    guidelines:
+    guidelines_start:
       accept: "Eu li e entendi como funciona o Catarse."
       explore_curious: "Tô aqui de curioso!"
       explore_projects: "Quero explorar os projetos."
@@ -720,7 +723,7 @@ pt:
       send_project: "Quero enviar meu projeto"
       explore_curious: "Tâmo junto!"
       explore_projects: "Quero apoiar um projeto"
-    guidelines_start:
+    guidelines:
       title: "Como Funciona o Catarse"
       subtitle: "Conheça melhor o que é o Catarse."
       introduction_html: "O Catarse é um espaço de trocas entre indivíduos que, juntos, <br>viabilizam a realização de projetos criativos."
@@ -839,89 +842,3 @@ pt:
       weblink: "Ver na web"
       whitelist: "Adicionar contato"
       whitelist_long: "Adicione nosso email a seus contatos"
-  adm:
-    financials:
-      index:
-        id: ID
-        name: 'Titulo'
-        user_id: 'User ID'
-        goal: 'Meta'
-        total_backs: 'Apoios'
-        online_date: 'Entrou no ar'
-        pledged: 'Alcançado'
-        recommended: 'Recomendado?'
-        state: 'Estado'
-        menu: 'Rel. Financeiros'
-        title: 'Relatórios financeiros'
-        total_projects: 'projetos'
-        submit: 'filtrar'
-    projects:
-      index:
-        id: ID
-        name: 'Titulo'
-        user_id: 'User ID'
-        goal: 'Meta'
-        total_backs: 'Apoios'
-        online_date: 'Entrou no ar'
-        pledged: 'Alcançado'
-        recommended: 'Recomendado?'
-        state: 'Estado'
-        menu: 'Adm. Projetos'
-        title: 'Gerenciamento de projetos'
-        total_projects: 'projetos'
-        submit: 'filtrar'
-        expires_at: 'Finaliza em'
-        category: 'Categoria'
-        order_table: 'Ordernar tabela'
-        order_date: 'Data de envio'
-        order_asc: 'Menor meta'
-        order_desc: 'Maior meta'
-    actions:
-      confirm: 'Confirmar'
-    users:
-      index:
-        title: "Gerenciamento de apoiadores"
-        menu: "Apoiadores"
-        credits: "Créditos"
-        credits_view: "Créditos calculados"
-        id: Id
-        key: Chave
-        submit: Pesquisar
-        has_credits_difference: Discrepância nos créditos
-        total_backed: Total de apoios
-        total_backers: apoiadores
-        total_backs: apoios
-        total_users: usuários
-        total_credits: créditos
-        total_credits_view: créditos calculados
-        user: Usuário
-        value: Valor
-        payer_email: Email do pagamento
-        provider: Provedor
-    backers:
-      messages:
-        successful:
-          confirm: 'Apoio confirmado com sucesso!'
-          unconfirm: 'Apoio desconfirmado com sucesso!'
-      index:
-        confirm_backer: 'Confirmar apoio'
-        unconfirm_backer: 'Desconfirmar apoio'
-        title: "Gerenciamento de apoios"
-        menu: "Apoios"
-        anonymous: Anônimo?
-        confirmed: Confirmado?
-        credits: "Usou créditos?"
-        id: Id
-        key: Chave
-        no_backers: "Nenhum apoiador encontrado."
-        project: Projeto
-        refunded: "Estorno realizado?"
-        requested_refund: "Solicitou estorno?"
-        reward: Recompensa
-        submit: Pesquisar
-        total_backed: arrecadados
-        total_backers: apoiadores
-        total_backs: apoios
-        total_users: usuários
-        user: Usuário
-        value: Valor

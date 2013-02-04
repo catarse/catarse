@@ -1,0 +1,41 @@
+pt:
+  adm:
+    users:
+      index:
+        title: "Management backers"
+        menu: Backers
+        credits: Credits
+        credits_view: "Calculated credits"
+        id: Id
+        key: Key
+        submit: Search
+        has_credits_difference: "Discrepancy in credits"
+        total_backed: backed
+        total_backers: backers
+        total_backs: backs
+        total_users: users
+        total_credits: credits
+        total_credits_view: "calculated credits"
+        user: User
+        value: Value
+        provider: Provider
+    backers:
+      title: "Backers management"
+      menu: Backs
+      anonymous: Anonymous?
+      confirmed: Confirmed?
+      credits: "Used credits?"
+      id: Id
+      key: Key
+      no_backers: "No backers found."
+      project: Project
+      refunded: Refunded?
+      requested_refund: "Requested refund?"
+      reward: Reward
+      submit: Search
+      total_backed: backed
+      total_backers: backers
+      total_backs: backs
+      total_users: Users
+      user: User
+      value: Value

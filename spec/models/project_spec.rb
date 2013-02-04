@@ -5,8 +5,6 @@ describe Project do
   let(:project){ Project.new :goal => 3000 }
 
   describe "associations" do
-    it{ should have_many :projects_curated_pages }
-    it{ should have_many :curated_pages }
     it{ should have_many :backers }
     it{ should have_one  :project_total }
     it{ should have_many :rewards }
@@ -439,6 +437,11 @@ describe Project do
       it 'should persist the date of approvation' do
         project.approve
         project.online_date.should_not be_nil
+      end
+      it 'when approves after days should refresh the expires_at' do
+        project.update_column :expires_at, 3.days.from_now
+        project.approve
+        project.expires_at.to_s.should_not == 3.days.from_now.to_s
       end
     end
 

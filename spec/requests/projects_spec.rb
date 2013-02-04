@@ -34,6 +34,7 @@ describe "Projects" do
       Factory(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       Factory(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit explore_path(:locale => :pt)
+      sleep 2
     end
     it "should show recommended projects" do
       recommended = all(".collection_list .project")
@@ -46,6 +47,7 @@ describe "Projects" do
       Factory(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       Factory(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit explore_path(anchor: :search) + '/Lorem'
+      sleep 4
     end
     it "should show recommended projects" do
       recommended = all(".collection_list .project")
