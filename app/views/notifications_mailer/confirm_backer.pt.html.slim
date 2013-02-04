@@ -9,7 +9,7 @@ br
 |Mantenha essa mensagem com você para servir como comprovante do seu apoio.
 br
 br
-|Uma coisa super importante:<strong> se o seu pagamento foi feito com cartão de crédito</strong>, o nome que virá na sua fatura é o do #{backer.payment_method}. Infelizmente, as operadoras de cartão ainda não possibilitam que o nome do Catarse apareça escrito lá, ok?
+|Uma coisa super importante:<strong> se o seu pagamento foi feito com cartão de crédito</strong>, o nome que virá na sua fatura é o do #{backer.payment_method}. Infelizmente, as operadoras de cartão ainda não possibilitam que o nome do #{Configuration[:company_name]} apareça escrito lá, ok?
 br
 br
 |Valor da contribuição: <strong>R$ #{backer.value}</strong>
@@ -17,13 +17,13 @@ br
 -if backer.reward
   |Recompensa selecionada: <strong>#{backer.reward.description}</strong>
 -else
-  |Nenhuma recompensa foi selecionada, qualquer dúvida entre em contato com a nossa equipe através do #{mail_to 'contato@catarse.me'}
+  |Nenhuma recompensa foi selecionada, qualquer dúvida entre em contato com a nossa equipe através do #{mail_to Configuration[:email_contact]}
 br
 br
 |Caso o projeto seja bem-sucedido em <strong>#{backer.project.expires_at.strftime("%d/%m/%Y")}</strong>, os responsáveis pelo projeto entrarão em contato com você para requisitar informações sobre a entrega das recompensas. Esse contato deles virá, normalmente, uma semana após essa data, que é o tempo que levamos para passar a informação de todos os apoiadores para o realizador.
 br
 br
-|Se o projeto não atingir a meta financeira estabelecida, você receberá um e-mail do Catarse com instruções para:
+|Se o projeto não atingir a meta financeira estabelecida, você receberá um e-mail do #{Configuration[:company_name]} com instruções para:
 br
 |1) apoiar outro projeto com os créditos que serão gerados; OU
 br
@@ -33,9 +33,9 @@ br
 |Se quiser entrar em contato com #{backer.project.user.name}, mande um e-mail para #{mail_to backer.project.user.email}
 br
 br
-|Se tiver alguma outra dúvida, acesse nosso #{link_to('FAQ', "#{Configuration[:base_url]}/faq")} ou mande um e-mail para o #{mail_to 'contato@catarse.me'}
+|Se tiver alguma outra dúvida, acesse nosso #{link_to('FAQ', "#{Configuration[:base_url]}/faq")} ou mande um e-mail para o #{mail_to Configuration[:email_contact]}
 br
 br
 |Um grande abraço,
 br
-|Equipe do Catarse
+|Equipe do #{Configuration[:company_name]}
