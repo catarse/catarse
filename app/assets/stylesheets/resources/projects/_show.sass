@@ -42,7 +42,13 @@
         i
           font-family: "Lato-Italic"
           font-size: 18px
+          color: #E75297
           text-shadow: 1px 1px white
+        a 
+          color: #E75297
+          text-decoration: none
+          &:hover
+            text-decoration: underline
         b
           font-family: "Lato-Italic"
           font-size: 16px
@@ -489,7 +495,6 @@
             background-image: -moz-linear-gradient(top, #64CB64, #51A553)
             &:hover
               background-image: -moz-linear-gradient(top, #51A553, #64CB64) 
-
           .alert.alert-info
             background-color: #F7F7F7
             border: 1px solid #EDEDED
@@ -629,6 +634,42 @@
             float: left
             margin-left: 180px
             width: 255px
+        .tips
+          background: #F7F7F7
+          border: 1px solid #EDEDED
+          float: right
+          margin-right: 10px
+          padding: 10px
+          width: 70%
+          color: #666666
+          h3
+            border-bottom: 1px dotted #CCCCCC
+            font-family: "Lato-Italic"
+            font-size: 18px
+            margin-bottom: 25px
+            margin-top: 10px
+            padding-bottom: 10px
+            text-shadow: 1px 1px white
+          p
+            font-family: "Arial"
+            font-size: 13px
+            line-height: 18px
+            margin-bottom: 20px
+            margin-left: 60px
+            margin-right: 15px
+            margin-top: 10px
+            padding-bottom: 10px
+          a
+            color: #E75297
+            text-decoration: none
+            &:hover
+              text-decoration: underline
+          img
+            float: left
+          strong
+            font-weight: bold
+          i
+            font-style: italic
         .form-actions
           background: none
           border: none
@@ -644,6 +685,9 @@
             height: 46px
             padding: 0 15px 0 45px
             text-transform: uppercase
+            margin-top: 20px
+            margin-right: 10px
+            float: right
             +border-radius (10px)
             background: #E75297 url($images_path+"icon_refreshproject.png") 10px 9px no-repeat
             &:hover
@@ -670,6 +714,75 @@
           text-decoration: none
           &:hover
             text-decoration: underline
+      .alert.alert-info
+        background-color: #F7F7F7
+        border: 1px solid #EDEDED
+        color: #666666
+        +border-radius (0px)
+        font-family: "Lato-Regular"
+        font-size: 13px
+        line-height: 21px
+        padding: 20px 10px 10px 20px
+
+      .tips
+        background: #F7F7F7
+        border: 1px solid #EDEDED
+        float: left
+        margin-right: 10px
+        padding: 20px
+        width: 93%
+        color: #666666
+        h3
+          border-bottom: 1px dotted #CCCCCC
+          font-family: "Lato-Italic"
+          font-size: 18px
+          margin-bottom: 25px
+          margin-top: 10px
+          padding-bottom: 10px
+          text-shadow: 1px 1px white
+        p
+          font-family: "Arial"
+          font-size: 13px
+          line-height: 18px
+          margin-bottom: 20px
+          margin-left: 60px
+          margin-right: 15px
+          margin-top: 10px
+          padding-bottom: 10px
+        a
+          color: #E75297
+          text-decoration: none
+          &:hover
+            text-decoration: underline
+        img
+          float: left
+        strong
+          font-weight: bold
+        i
+          font-style: italic 
+      .actions
+        background: none
+        border: none
+        padding: 0
+        margin: 0
+        .btn
+          border: solid 1px #C2457E
+          color: white
+          display: block
+          font-family: "Lato-Regular"
+          text-shadow: 1px 1px #C2457E
+          font-size: 12px
+          height: 46px
+          padding: 0 15px 0 45px
+          text-transform: uppercase
+          margin-top: 10px
+          margin-right: 10px
+          float: left
+          +border-radius (10px)
+          background: #E75297 url($images_path+"icon_refreshproject.png") 10px 9px no-repeat
+          &:hover
+            background-color: #C2457E
+
       #formatting_tips
         font-family: Arial
         display: none

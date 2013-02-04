@@ -14,11 +14,6 @@ CATARSE.ProjectsIndexView = Backbone.View.extend({
       src = src[1]
       $(this).attr('src', '/assets/press/' + src + '_pb.png')
     })
-    $(function(){
-      $('#curated_link').click(function(){
-        $(document).scrollTo('.curated_page_header', 800);
-      });
-    });
   }
 })
 

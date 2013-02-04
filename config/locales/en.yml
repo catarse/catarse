@@ -27,7 +27,7 @@ en:
     titles:
       info: "Useful Information"
       opendata: "nice statistics"
-      social: "like the catarse?"
+      social: "do you like Catarse?"
       newsletter: "receive our newsletter"
     stats:
       backers: Backers
@@ -37,6 +37,7 @@ en:
       funded_projects: "Successful projects"
       active_projects: "Projects on air now"
     links:
+      about: "Who are we"
       how_works: "How It works"
       faq: F.A.Q./Help
       terms: "Terms of use"
@@ -50,8 +51,8 @@ en:
   sidebar:
     titles:
       blog: blog
-      facebook: "have enjoyed our face?"
-      newsletter: "want to receive news?"
+      facebook: "have you liked our facebook page yet?"
+      newsletter: "do you want to receive our news?"
       faq: "have any doubt?"
       schedule: calendar
     buttons:
@@ -62,7 +63,7 @@ en:
     expiring:
       title: expiring
     recents:
-      title: recents
+      title: recent
     partners:
       title: partners
   "no": "No"
@@ -84,13 +85,13 @@ en:
         category: Category
         expires_at: Deadline
         online_days: Days of the air campaign
-        headline: Headline
+        headline: "Punch Line"
         image_url: "Image URL"
         name: Name
         user_id: "User Id"
         video_url: "Video URL"
-        permalink: 'type you project URL ( http://catarse.me/myprojectname )'
-        how_know: 'How did you meet Catarse?'
+        permalink: 'type you project URL'
+        how_know: "How did you meet Catarse?"
         more_linkt: 'Where can we find more about you and your project?'
       reward:
         description: Description
@@ -110,6 +111,7 @@ en:
         current_password: "Current password"
         email: Email
         full_name: "Full name / Company Name"
+        bio: 'Mini Bio'
         name: Nickname
         password: Password
         password_confirmation: "Password Confirmation"
@@ -263,10 +265,11 @@ en:
         anonymous: "I want my back to be anonymous."
         credits: "I want to use my credits on this back."
         reward: "Select your reward"
-        value: "With how much do you want to back?"
+        value: "How much do you want to contribute with?"
       comment:
         comment: "Leave your comment about this project"
       project:
+        headline: "Punch Line"
         category: 'Category'
         about: "About your project. How will you spend this money?"
         expires_at: "What's the deadline to reach your goal?"
@@ -348,9 +351,12 @@ en:
     verify_if_video_exists_on_vimeo: "must exist on Vimeo"
     vimeo_regex_validation: "only Vimeo URLs are allowed"
     display_status:
-      expired: "not funded"
+      expired: expired
+      failed: "not funded"
       successful: funded
       waiting_confirmation: waiting
+      waiting_funds: waiting
+      not_reached_goal: waiting
   projects:
     recommended_header:
       sugest_for_you: "suggested for you"
@@ -380,7 +386,7 @@ en:
       new:
         cannot_back: "It's not possible to back this project right now. Please, back other projects."
         header:
-          subtitle: "You are a few steps from making the difference and becoming part of this project."
+          subtitle: "You're just a few steps away from making a difference and becoming a part of this project."
           title: "Oohh yeah!"
         no_reward: "Thanks. I just want to help the project."
         submit: "Review and proceed to checkout"
@@ -424,9 +430,9 @@ en:
       subtitle: "Fund projects collaboratively and become part of something bigger. Promote a collective catharsis! You're the missing part in this story."
       subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
       title: "Make the projects you believe in happen"
-    new:
-      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
-      title: "Submit your project"
+    recommended_header:
+      guidelines: "How it Works"
+      guidelines_subtitle: "Getting to know Catarse"
     pending:
       can_finish: "Can finish?"
       finished: Finished?
@@ -505,6 +511,21 @@ en:
         take_a_look: "Check out the project"
         title: "Be part of it and share this project"
     new:
+      legend_html: "After filling in the form below, you will receive a project page in Draft mode. In this draft you will add the rewards for your backers. You may also share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go on air.<br><br><b>Very Important:</b> <i>Catharsis is cured platform, which means that our board will evaluate the focus, the feasibility and consistency of your project during the Draft. If we understand that your project does not comply with our <a href='https://docs.google.com/a/catarse.me/document/d/1wLDS2lphQ6monovg9rEaTIDcxBD3FRZV9dfGKmajyj8/edit' target='_blank' >selection criteria</a>, it may be refused by the team of curators.</i>"
+      permalink_important: 'Try not to use underline, hyphen etc.'
+      name_important: "Do not exceed  50 characters"
+      online_days_important: "60 days is the maximum"
+      about_important: "Don't make it too long! Indicate links so people can know more about your work"
+      important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
+      send_project: "I want to submit my project."
+      video_important: "The video must be hosted  by  VIMEO. Paste here the URL!"
+      more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
+      first_backers_important: "These people are fundamental to the success of your project."
+      how_know_important: "Yay! We reached  the final question."
+      headline_important: "It's a summary of  your project . 140 characteres tops!:D"
+      tags_important: "Check ou other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
+      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
+      title: "Submit your project"
       about: "Describe your project and how much do you need"
       category: "Project category"
       how_much_you_need: "How much do you want to raise?"
@@ -562,9 +583,89 @@ en:
     name: Catarse
     title: "The first crowdfunding platform from Brazil"
   static:
+    guidelines_backers:
+      title: "I want to back a project!"
+      subtitle: "Understand step by step how to back a project on Catarse."
+      introduction: "Catarse is an excelent way to engaje in a cause you believe in"
+      legend_html: "We believe that being part of a project is the kind of thing that sometimes we do not really know why, but it does a darn good."
+      title_one: "Explore the Project"
+      step_one: "The first step is to understand the project. Watch the video, read the description, browse the links. If you are certain that this project can not remain only on paper, go one step forward!"
+      title_two: "Decide with how much you’ll back it"
+      step_two: "A good way to decide how much to back with it’s  to look  through which rewards  are offered in exchange for your backing. And also your bank statement."
+      title_three: "Finalize your backing"
+      step_three: "Fill in your information and review it! Then, decide what form of payment best meets your needs."
+      title_four: "Spread the word!"
+      step_four: "Now you're in the same boat as the project creator. Spread the word on your networks and stay tuned on the updates."
+      title_requirements: "Remember: in Catarse it’s “all or nothing”"
+      sucessfull_title: "If the project meet or exceed its financial target ..."
+      sucessfull: "The project is considered successful! The creator gets the money and contacts all supporters."
+      not_sucess_title: "If the project does not meet the target ..."
+      not_sucess: "You get the full amount of support in the form of loans (to support another project). If that does not please you, you can request your money back, according to the rules of the <a href='%{terms}' target='_blank'>terms of use</a>."
+      title_not_funded: "If the project does not achieve the goal, how do I use my credits?"
+      not_funded: "You will receive credits  on Catarse. The moment you choose to back another project, on the screen to select the reward, there will have a field to use your credits."
+      more_questions: "I'm dying to support a project, is there anything else I need to know?"
+      title_backer: "How do I know that my support was successful?"
+      backer: "You will receive a confirmation email. And stay tuned on the BACKERS tab at the page of the project you backed."
+      title_rewards: "If the project is funded, how do I get my rewards?"
+      rewards: "It is the duty of the project creator to contact you and arrange how to deliver  the chosen reward. If not, you need to send an email to him/her to claim it! If you get no answer … contact us so we can give them an earful = D"
+      title_credits: "If the project does not achieve the goal, how do I use my credits?"
+      credits: "You will receive credits  on Catarse. The moment you choose to back another project, on the screen to select the reward, there will have a field to use your credits."
+      title_money: "What if I don't want to use the credits?"
+      money: "No problem! You just need to enter in your profile (My credits) and request a chargeback. If you paid with debit or billet, you’ll need to open an account at MOIP. If you used a credit card the value will be back on your next bill."
+      other_backers: "I WANT MORE! CAN I HELP  IN OTHER WAYS?"
+      intro: "Get to know diferent ways to help projects you believe in"
+      other_one: "Bring two other friends to back with the same amount you did"
+      other_two: "Spread the word to every one. Tell them how great is the project you backed on Catarse."
+      other_three: "Do you have a friend who’s a Journalist? Try to have him/her to post something about it on his/her blog."
+      other_four: "Make a backing video to broadcast your believe in the project .Like these guys did:https://vimeo.com/46233018"
+      other_five: "Send an e-mail to the project creator asking how can  you help even more."
+      submit: "VERY COOL!"
+      send_project: "I want to submit my project "
+      explore_curious: "I’M ON BOARD!"
+      explore_projects: "I want to back a project"
+    guidelines:
+      title: "How it works"
+      subtitle: "Get to know Catarse better."
+      introduction_html: "Catarse is a space of exchange among individuals who together <br >enable the realization of creative projects."
+      legend_html: "We believe that connecting people that share value with respect to a cause; an idea; a project,  is one of the best ways to make them come true. <br><br> Be very welcome! This is your space as much as it is ours, after all, catharsis happens daily from the meeting of people in search of new ways to give life to more initiatives from society itself. We understand this to be an alternative to government resources, the sponsoring companies and bank loans = D"
+      submit: "SUBMITTING A PROJECT"
+      send_project: "Understand how to submit your project"
+      explore_curious: "BACKING A PROJECT"
+      explore_projects: "Understand how to back a project"
+    about:
+      title: "Who Are We?"
+      subtitle: "Meet the lovely gang that makes this whole thing happen <3"
+      introduction: "Who are they? What do they feed of? How are they networked? You’ll see all of it now on “Who are we?”."
+      name_one: "Luis Otávio Ribeiro"
+      title_one: "Fisher of Killer Projects"
+      text_one: "Uberabense. Laziness enthusiast , is addicted to maintaining creative structures running and promoting encounters between people."
+      name_two: "Diego Reeberg"
+      title_two: "Philosopher who lives in a Barrel"
+      text_two: "Apprentice of poet, musician, tango dancer and addict to Calvino and Saramago, likes to dig beautiful things and talented people in the dusty corners of the internet."
+      name_three: "Luciana Masini"
+      title_three: "Apprentice of Making it happen"
+      text_three: "Color and contrast enthusiast, poet and artist by nature, curious about culture, curator by accident."
+      name_four: "Renato Garcia"
+      title_four: "Catarse’s Silvio Santos (a brasilian host and entrepreneur)"
+      text_four: "Collectivist. Believes in collaboration one by one, with no authority,  for a fairer world. Football and skateboarding fanatic. All this accompanied by a good samba or nacinal rap soundtrack."
+      name_five: "Rodrigo Maia"
+      title_five: "Information Remixer"
+      text_five: "Pragmatist who loves improvisation, has a deep voice and artistic outbursts. Fascinated by people and all forms of moving images."
+      name_six: "Diogo Biazus"
+      title_six: "Database Archbishop"
+      text_six: "Data Architect. Likes self-explanatory, self-referential and self-cleaning structures."
+      name_seven: "Evelise Luz"
+      title_seven: "Footer Designer"
+      text_seven: "Completely crazy, likes venturing into books, singing in the shower and loves exploring fig jam jars."
+      name_eight: "Adriano Benin"
+      title_eight: "Programmer"
+      text_eight: "When not programming he likes designing circuits and risking the piano."
+      name_nine: "Antônio Roberto"
+      title_nine: "Fireman"
+      text_nine: "A fellow crazy about development who lives in Tonland"
     faq:
       title: "Frequently asked questions"
-    guidelines:
+    guidelines_start:
       accept: "I have read and understand how catarse works."
       explore_curious: "Just looking around!"
       explore_projects: "I want to explore the projects."
@@ -608,7 +709,7 @@ en:
       introduction_html: "We know you can't wait to have your project online, but first answer <br> (in a piece of paper) the following questions."
       legend_html: "Having clear answers to these questions will help tremendously in structuring your project, <br>increasing the chances that it will be successful."
       title_one: "What inspired you to make this project?"
-      tip_one: "People only engage when they realize the importance of a cause for society or for the person who leads a campaign. So be very clear what is your inspiration and let it overflow into your project."
+      tip_one: "People only engage when they realize the importance of a cause for society or for the person who leads a campaign. So be very clear about what is your inspiration and let it overflow into your project."
       title_two: "What is the focus?"
       tip_two: "Catarse is an excellent way to take the first steps. Therefore, define very well the purpose of your project, as well as who will benefit from it. Clearly defining your objectives is one of the best ways to engage people."
       title_three: "What is your goal?"
@@ -713,43 +814,3 @@ en:
     updates:
       subject: "If the league! Update of %{project_name} by %{project_owner}: %{update_title}"
       text: "%{update_title}<br />%{update_text}<br />Comments? Send it on in the project page: <a href='%{project_link}'>%{project_name}</a>."
-  adm:
-    users:
-      index:
-        title: "Management backers"
-        menu: Backers
-        credits: Credits
-        credits_view: "Calculated credits"
-        id: Id
-        key: Key
-        submit: Search
-        has_credits_difference: "Discrepancy in credits"
-        total_backed: backed
-        total_backers: backers
-        total_backs: backs
-        total_users: users
-        total_credits: credits
-        total_credits_view: "calculated credits"
-        user: User
-        value: Value
-        provider: Provider
-    backers:
-      title: "Backers management"
-      menu: Backs
-      anonymous: Anonymous?
-      confirmed: Confirmed?
-      credits: "Used credits?"
-      id: Id
-      key: Key
-      no_backers: "No backers found."
-      project: Project
-      refunded: Refunded?
-      requested_refund: "Requested refund?"
-      reward: Reward
-      submit: Search
-      total_backed: backed
-      total_backers: backers
-      total_backs: backs
-      total_users: Users
-      user: User
-      value: Value
