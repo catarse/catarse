@@ -10,7 +10,10 @@ describe "Projects" do
     RoutingFilter.active = true
     ProjectsController.any_instance.stubs(:last_tweets).returns([])
   }
-  before{ ::Configuration[:base_url] = 'http://catarse.me' }
+  before {
+    ::Configuration[:base_url] = 'http://catarse.me'
+    ::Configuration[:company_name] = 'Catarse'
+  }
 
 
   describe "home" do

@@ -19,6 +19,7 @@
 end
 
 {
+  company_name: 'Catarse',
   host: 'catarse.me',
   base_url: "http://catarse.me",
   blog_url: "http://blog.catarse.me",
@@ -31,6 +32,7 @@ end
   facebook_app_id: '173747042661491',
   twitter_username: "Catarse_",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
+  catarse_fee: '0.13'
 }.each do |name, value|
   Configuration.find_or_create_by_name_and_value name, value
 end

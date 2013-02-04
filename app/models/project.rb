@@ -139,6 +139,10 @@ class Project < ActiveRecord::Base
     project_total ? project_total.total_backers : 0
   end
 
+  def selected_rewards
+    rewards.sort_asc.where(id: backers.confirmed.select('DISTINCT(reward_id)'))
+  end
+
   def reached_goal?
     pledged >= goal
   end

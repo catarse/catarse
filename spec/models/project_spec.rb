@@ -374,6 +374,21 @@ describe Project do
     end
   end
 
+  describe '#selected_rewards' do
+    let(:project){ Factory(:project) }
+    let(:reward_01) { Factory(:reward, project: project) }
+    let(:reward_02) { Factory(:reward, project: project) }
+    let(:reward_03) { Factory(:reward, project: project) }
+
+    before do
+      Factory(:backer, project: project, reward: reward_01)
+      Factory(:backer, project: project, reward: reward_03)
+    end
+
+    subject { project.selected_rewards }
+    it { should == [reward_01, reward_03] }
+  end
+
   describe "#download_video_thumbnail" do
     let(:project){ Factory.build(:project) }
     before do
