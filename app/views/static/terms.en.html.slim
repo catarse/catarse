@@ -4,18 +4,18 @@
     .static_default
       .title
         h1 Terms of Use
-        h2 Carefully read the terms of use. Site usage implies acceptance of these terms. 
+        h2 Carefully read the terms of use. Site usage implies acceptance of these terms.
       .text.default_text
-        p Welcome to Catarse! It's worth it to remind you that access to the content of this website depends on your full agreement with the terms and conditions set forth herein.
+        p Welcome to #{Configuration[:company_name]}! It's worth it to remind you that access to the content of this website depends on your full agreement with the terms and conditions set forth herein.
         p This Terms of Use presents the "General Conditions" applied to the use of the services offered by GRUPO COMUM CONSULTORIA E INTERMEDIAÇÃO DE NEGÓCIOS LTDA - ME, limited company, registered under CNPJ n. º 14.512.425/0001-94, hereinafter "CATARSE".
-        h2 What is Catarse?
+        h2 What is #{Configuration[:company_name]}?
         p CATARSE is an online COLLECTIVE FUNDRAISING  platform ("crowd funding"), to fund creative projects. CATARSE allows a CREATOR to submit an idea for a creative project and raise funds from BACKERS interested in funding it.
         p When a project is successful, reaching or exceeding the amount requested, the total raised is passed from the BACKERS on to the CREATOR, and it is discounted due to the percentage charged by the platform and the tariffs charged by the online payment services. Conversely, if a project is not successful, failing to reach the amount requested, the BACKERS get back the value of their contributions through credit at CATARSE or  trough refund.
         p CATARSE only approximates PROJECT CREATORS and BACKERS. Using CATARSE does not generate employment relationship, association or society among users and CATARSE, nor represents business transaction or sale of products or services.
         p CATARSE is responsible for the smooth functioning of its website. However, CATARSE does not guarantee that the projects will be executed nor that the incentives/rewards will be honored, exempting itself from liability over it, which is agreed expressly by CREATORS and BACKERS and shall resolve any issues directly with each other .
         h2 Definitions
         p
-          strong A CREATOR 
+          strong A CREATOR
           |is a CATARSE's user interested in raising funds for a creative project.
         h3 THE CREATOR:
         ol
@@ -25,7 +25,7 @@
           li Promises incentives and/or rewards to BACKERS who will fund the project, and determines the conditions for obtaining them and the number of BACKERS who can benefit from these incentives and/or rewards.
         p By promising incentives and/or rewards, the CREATOR assumes the obligations of the Article 854 and following of the Brazil’s Civil Code , becoming directly responsible for the fulfillment of his/her promise to his/her BACKER, without any liability, direct or indirectly, linked to CATARSE.
         p
-          strong BACKER 
+          strong BACKER
           |is a CATARSE's user interested in funding creative projects, from one or more CREATORS, through financial contributions linked to one or more projects.
         h3 The BACKER:
         ol
@@ -38,9 +38,9 @@
           |Anyone of legal age can use the platform services. CATARSE does not authorize participation of users under eighteen years of age. If checked any violation of this provision, CATARSE will immediately cancel the user's registration.
         p CATARSE uses the registration information from social networks such as Facebook, Twitter, Google Accounts, Yahoo, MySpace, LinkedIn, GitHub, among others. Account access can be done by entering the username and password in the login fields on a social network used by CATARSE.
         p The user is solely responsible for the security of his/her username and password. It is through these data that the user can access and change personal information and other data from his/her registration.
-        p 
-          | If there is any suspicion of misuse or unauthorized use of your account, you should immediately notify CATARSE  by e-mail: 
-          = mail_to 'contato@catarse.me'
+        p
+          | If there is any suspicion of misuse or unauthorized use of your account, you should immediately notify CATARSE  by e-mail:
+          = mail_to Configuration[:email_contact]
           |.
         p CATARSE obligates itself not to use the registration information provided by the user to conduct any illegal activities, but only for those expressly permitted by Brazilian law and/or this agreement.
         p YOU agree to:
@@ -50,24 +50,24 @@
           li Be held responsible for any false, inaccurate, not current or incomplete information provided. If CATARSE has reasonable grounds to suspect the veracity and/r accuracy of such information, the platform shall be entitled to suspend the user account or cancel it immediately, regardless of notification.
         h2 Fees and payments
         p
-          | Both the BACKER and  the CREATOR are fully aware and agree that all values destined to support projects can only be collected with the use of online payment service 
-          |Money Over IP (MoIP) - 
+          | Both the BACKER and  the CREATOR are fully aware and agree that all values destined to support projects can only be collected with the use of online payment service
+          |Money Over IP (MoIP) -
           = link_to 'http://www.moip.com.br', 'http://www.moip.com.br'
-          |, via credit card, direct debit or bank transfer, (as chosen by the backer), or with the use of the online payment service 
-          |Paypal - 
+          |, via credit card, direct debit or bank transfer, (as chosen by the backer), or with the use of the online payment service
+          |Paypal -
           = link_to 'http://www.paypal.com.br', 'http://www.paypal.com.br'
-          | , 
-          b always being deposited in CATARSE account 
+          | ,
+          b always being deposited in CATARSE account
           | (MoIP account or Paypal as the payment method selected by a backer).
 
         p Arise thereafter, two possibilities:
         p
-          b 
-            | 1. If the project succeeds, 
+          b
+            | 1. If the project succeeds,
           | the total raised for this project (though higher than the amount originally requested by the CREATOR) will be transferred from CATARSE's MoIP or Paypal account to a MoIP or Paypal account held by the CREATOR, discounted to the value of this amount only 13% due to CATARSE fees. This rate includes both the CATARSE's  intermediation service as to the rates charged for MoIP's or Paypal's services;
         p
-          b 
-            | 2. If the project is not successful, 
+          b
+            | 2. If the project is not successful,
           | a credit will be returned to the virtual BACKER, appearing on his/her profile at the platform, under the "Credits" tab. This virtual credit may be reinvested in any other project or (if request by the BACKER) will be refunded without any fees from CATARSE, provided the request is made no later than 180 days after the return of the virtual credit.
           | Reimbursement will be made as follows:
 
@@ -84,13 +84,13 @@
         p
           | Considering that the service of online payment methods and credit cards are independent of CATARSE, the platform gives no warranty in relation to payments processed by Paypal or by MoIP nor is responsible for credit cards failures.
         p
-          | The BACKER is solely responsible for monitoring the project development through information provided directly by the CREATOR and secondarily by CATARSE, being aware and agreeing that CATARSE has no obligation to monitor the project, nor any liability, direct or indirectly over the accuracy of the information provided by the CREATOR, whether in relation to the project development, incentives and/or rewards or any other type of data linked to the project and its development. 
-          b The BACKER is solely responsible for verifying whether the project was successful or not and if there is credit in his/her name 
+          | The BACKER is solely responsible for monitoring the project development through information provided directly by the CREATOR and secondarily by CATARSE, being aware and agreeing that CATARSE has no obligation to monitor the project, nor any liability, direct or indirectly over the accuracy of the information provided by the CREATOR, whether in relation to the project development, incentives and/or rewards or any other type of data linked to the project and its development.
+          b The BACKER is solely responsible for verifying whether the project was successful or not and if there is credit in his/her name
           | to reinvest or request a refund. CATARSE performs its best efforts to keep the BACKER informed about the success or failure of the project supported by him/her, such an effort is not representing any liability on CATARSE partie, which is expressly agreed by the BACKER.
 
         h2 Intellectual property rights
         p CATARSE holds the intellectual property rights relating to its own service, which are protected by Brazilian law and international treaties. CATARSE's rights do not include any rights related to the content created by its users and displayed in the platform.
-        p The CREATOR holds the intellectual property rights of his/her own projects without any participation of the BACKER's,  enjoying all the protection of the Brazilian legal system, especially the copyright law (9.610/98, property law industrial). 
+        p The CREATOR holds the intellectual property rights of his/her own projects without any participation of the BACKER's,  enjoying all the protection of the Brazilian legal system, especially the copyright law (9.610/98, property law industrial).
         p However, the CREATOR is aware that, when using CATARSE he/she is trying to publicly raise funds for his/her project,  thereby assuming the risk of his/her idea being copied and developed by third parties. CATARSE can't prevent this from occurring, nor has any responsibility for this situation, which completely escapes it's control.
         p CATARSE reserves the right, at its sole discretion and once notified of, cancel projects and terminate the accounts of CREATORS violating the intellectual property rights of others or violating other rights guaranteed by Brazilian law.
         h2 CATARSE’s Content
