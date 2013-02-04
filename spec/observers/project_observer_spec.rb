@@ -30,6 +30,7 @@ describe ProjectObserver do
       ProjectObserver.any_instance.unstub(:after_create)
       Configuration[:facebook_url] = 'http://facebook.com'
       Configuration[:blog_url] = 'http://blog.com'
+      Configuration[:company_name] = 'Catarse'
       user
       project
     end

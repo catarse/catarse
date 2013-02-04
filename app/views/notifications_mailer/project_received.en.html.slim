@@ -2,10 +2,10 @@
 |Hi, #{user.name}!
 br
 br
-|Thank you very much for trusting Catarse with your project :)
+|Thank you very much for trusting #{Configuration[:company_name]} with your project :)
 br
 br
-|Before we begin, we would like to remind you how the project selection works here on Catarse. There are 4 steps:
+|Before we begin, we would like to remind you how the project selection works here on #{Configuration[:company_name]}. There are 4 steps:
 br
 br
 |1 - You just filled that beatiful form and we received it;
@@ -23,10 +23,10 @@ br
 |Important information: if you forgot to include something in the submitted form, no problems, you can add new information (or change them) when our team contacts you, ok?
 br
 br
-|Meanwhile, take a look at some projects (#{link_to "#{Configuration[:base_url]}/explore" ,"#{Configuration[:base_url]}/explore"}) and - if you like them- make a pledge! This is the best way to show that you believe in the crowdfunding culture in Brazil and promote the ecosystem around Catarse. Not to mention, getting some inspiration for your own project.
+|Meanwhile, take a look at some projects (#{link_to "#{Configuration[:base_url]}/explore" ,"#{Configuration[:base_url]}/explore"}) and - if you like them- make a pledge! This is the best way to show that you believe in the crowdfunding culture in Brazil and promote the ecosystem around #{Configuration[:company_name]}. Not to mention, getting some inspiration for your own project.
 br
 br
-|Stay tuned to Catarse on  #{link_to 'Facebook', Configuration[:facebook_url]} and #{link_to 'Twitter', "twitter.com/#{Configuration[:twitter_username]}" } and know more about Catarse reading our posts on #{link_to 'blog', Configuration[:blog_url]}.
+|Stay tuned to #{Configuration[:company_name]} on  #{link_to 'Facebook', Configuration[:facebook_url]} and #{link_to 'Twitter', "twitter.com/#{Configuration[:twitter_username]}" } and know more about #{Configuration[:company_name]} reading our posts on #{link_to 'blog', Configuration[:blog_url]}.
 br
 br
 |If you have any questions, contact us on: #{mail_to Configuration[:email_contact]}
@@ -35,4 +35,4 @@ br
 |A big hug,
 br
 br
-|Catarse Team
+|#{Configuration[:company_name]} Team

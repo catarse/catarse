@@ -3,10 +3,10 @@
 |Olá, #{user.name}!
 br
 br
-|Muito obrigado por confiar no Catarse e enviar seu projeto pra gente :)
+|Muito obrigado por confiar no #{Configuration[:company_name]} e enviar seu projeto pra gente :)
 br
 br
-|Antes de mais nada, queria relembrar como funciona o passo-a-passo da seleção dos projetos no Catarse. Pega a lógica, são 4 passos:
+|Antes de mais nada, queria relembrar como funciona o passo-a-passo da seleção dos projetos no #{Configuration[:company_name]}. Pega a lógica, são 4 passos:
 br
 br
 |1 - Você preencheu aquele formulário, recebeu a página do seu projeto em RASCUNHO e a gente acabou de ficar sabendo;
@@ -30,13 +30,13 @@ br
 |Você tem o #{link_to 'link do rascunho do seu projeto', project_by_slug_url(project.permalink)} em mãos. Com isso, aproveite para compartilhá-lo com algumas pessoas, a fim de colher sugestões e melhorar a sua abordagem quando esse estiver no ar.
 br
 br
-|Além disso, vale a pena se inspirar em projetos que já passaram com sucesso pelo Catarse. São mais de 400, e toda uma inteligência coletiva criada que pode ser aproveitada. #{link_to "EXPLORE!" , explore_url}
+|Além disso, vale a pena se inspirar em projetos que já passaram com sucesso pelo #{Configuration[:company_name]}. São mais de 400, e toda uma inteligência coletiva criada que pode ser aproveitada. #{link_to "EXPLORE!" , explore_url}
 br
 br
-|Aproveite, também, para #{link_to 'conhecer alguns projetos que estão no ar', explore_url} e - se gostar de algum - apoiar. Essa é a melhor maneira de mostrar que acredita na cultura do financiamento coletivo no Brasil e fomentar o ecossistema que está se formando ao redor do Catarse. E se apoiar um projeto, provavelmente receberá essa flor de volta - quando seu projeto estiver no ar.
+|Aproveite, também, para #{link_to 'conhecer alguns projetos que estão no ar', explore_url} e - se gostar de algum - apoiar. Essa é a melhor maneira de mostrar que acredita na cultura do financiamento coletivo no Brasil e fomentar o ecossistema que está se formando ao redor do #{Configuration[:company_name]}. E se apoiar um projeto, provavelmente receberá essa flor de volta - quando seu projeto estiver no ar.
 br
 br
-|Fique ligado em nossas novidades no #{link_to 'Facebook', Configuration[:facebook_url]} e no #{link_to 'Twitter', "twitter.com/#{Configuration[:twitter_username]}" } e conheça mais sobre o Catarse lendo nossos posts no #{link_to 'blog', Configuration[:blog_url]}.
+|Fique ligado em nossas novidades no #{link_to 'Facebook', Configuration[:facebook_url]} e no #{link_to 'Twitter', "twitter.com/#{Configuration[:twitter_username]}" } e conheça mais sobre o #{Configuration[:company_name]} lendo nossos posts no #{link_to 'blog', Configuration[:blog_url]}.
 br
 br
 |Se ficou com alguma dúvida, entre em contato conosco no: #{mail_to Configuration[:email_contact]}
@@ -45,4 +45,4 @@ br
 |Um grande abraço,
 br
 br
-|Equipe do Catarse
+|Equipe do #{Configuration[:company_name]}
