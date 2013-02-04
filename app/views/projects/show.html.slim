@@ -56,9 +56,33 @@
         - if can? :update, @project
           = link_to '#edit', :id => 'edit_link' do
             = t('.menu.edit')
+          = link_to '#reports', :id => 'reports_link' do
+            = t('.menu.reports')
     .main
       #project_content
         - if can? :update, @project
+          #project_reports.content.hide
+            - selected_r = @project.selected_rewards
+            - if selected_r.length > 0
+              ul
+                li
+                  .bootstrap-twitter
+                    .alert.alert-info
+                      p style='margin-bottom: 0; padding-bottom: 0;'
+                        = t('.reports.link_reports')
+                        = link_to t('.reports.all_backers'), reports_backer_reports_for_project_owners_path(project_id: @project.id, format: :csv)
+                - selected_r.each do |reward|
+                  li
+                    .bootstrap-twitter
+                      .alert.alert-info
+                        p style='margin-bottom: 0; padding-bottom: 0;'
+                          = t('.reports.link_reward')
+                          = link_to reward.display_minimum, reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :csv)
+            - else
+              .bootstrap-twitter
+                .alert.alert-warning
+                  p style='margin-bottom: 0; padding-bottom: 0;'
+                    = t('.reports.no_backs')
           #project_edit.content.hide
             .bootstrap-twitter
               .alert.alert-info
