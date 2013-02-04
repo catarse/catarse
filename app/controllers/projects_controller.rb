@@ -128,7 +128,7 @@ class ProjectsController < ApplicationController
   def last_tweets
     Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
       begin
-        JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{::ENV['twitter_username']}")))[0..1]
+        JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{::Configuration[:twitter_username]}")))[0..1]
       rescue
         []
       end
