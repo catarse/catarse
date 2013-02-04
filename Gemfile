@@ -93,9 +93,6 @@ gem 'selenium-webdriver'
 # Server
 gem 'thin'
 
-# Config
-gem 'figaro'
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
