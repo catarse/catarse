@@ -55,10 +55,10 @@
           h3= t('sidebar.titles.facebook')
           .fb-like data-href="#{Configuration['facebook_url']}" data-send="false" data-width="171" data-show-faces="true"
         .twitter
-          h3= "@#{Configuration['twitter_username']}"
+          h3= "@#{ENV['twitter_username']}"
           - @last_tweets.each do |tweet|
             p= tweet['text']
-          = link_to "Follow @#{Configuration['twitter_username']}", "http://twitter.com/#{Configuration['twitter_username']}", :class => 'twitter-follow-button', :"data-show-count" => "false" , :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
+          = link_to "Follow @#{ENV['twitter_username']}", "http://twitter.com/#{ENV['twitter_username']}", :class => 'twitter-follow-button', :"data-show-count" => "false" , :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
         .newsletter
           h3= t('sidebar.titles.newsletter')
           = form_tag Configuration['mailchimp_url'], id: 'mailee-form', method: 'post' do
