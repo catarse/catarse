@@ -218,25 +218,48 @@ CREATE TABLE projects (
 -- Name: backers_by_category; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW backers_by_category AS
-    SELECT to_char(b.created_at, 'yyyy'::text) AS year, c.name AS category, sum(b.value) AS total_backed, count(DISTINCT b.user_id) AS total_backers FROM ((backers b JOIN projects p ON ((p.id = b.project_id))) JOIN categories c ON ((c.id = p.category_id))) WHERE b.confirmed GROUP BY to_char(b.created_at, 'yyyy'::text), c.name ORDER BY to_char(b.created_at, 'yyyy'::text), c.name;
-
+CREATE OR REPLACE VIEW backers_by_category AS 
+ SELECT to_char(p.expires_at, 'yyyy'::text) AS year, c.name AS category, sum(b.value) AS total_backed, count(DISTINCT b.user_id) AS total_backers
+   FROM backers b
+   JOIN projects p ON p.id = b.project_id
+   JOIN categories c ON c.id = p.category_id
+  WHERE b.confirmed
+  GROUP BY to_char(p.expires_at, 'yyyy'::text), c.name
+  ORDER BY to_char(p.expires_at, 'yyyy'::text), c.name;
 
 --
 -- Name: backers_by_payment_choice; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW backers_by_payment_choice AS
-    SELECT to_char(backers.created_at, 'yyyy-mm'::text) AS month, backers.payment_method, backers.payment_choice, sum(backers.value) AS total_backed, (sum(backers.value) / bbm.total_month_backed) AS payment_choice_ratio, sum(CASE WHEN backers.refunded THEN backers.value ELSE NULL::numeric END) AS total_refunded, (sum(CASE WHEN backers.refunded THEN backers.value ELSE NULL::numeric END) / bbm.total_month_backed) AS refunded_ratio FROM (backers JOIN (SELECT to_char(b2.created_at, 'yyyy-mm'::text) AS b2month, sum(b2.value) AS total_month_backed FROM backers b2 WHERE b2.confirmed GROUP BY to_char(b2.created_at, 'yyyy-mm'::text)) bbm ON ((bbm.b2month = to_char(backers.created_at, 'yyyy-mm'::text)))) WHERE backers.confirmed GROUP BY to_char(backers.created_at, 'yyyy-mm'::text), bbm.total_month_backed, backers.payment_method, backers.payment_choice ORDER BY to_char(backers.created_at, 'yyyy-mm'::text), backers.payment_method, backers.payment_choice;
-
+CREATE OR REPLACE VIEW backers_by_payment_choice AS 
+ SELECT to_char(p.expires_at, 'yyyy-mm'::text) AS month, backers.payment_method, backers.payment_choice, sum(backers.value) AS total_backed, sum(backers.value) / bbm.total_month_backed AS payment_choice_ratio, sum(
+        CASE
+            WHEN backers.refunded THEN backers.value
+            ELSE NULL::numeric
+        END) AS total_refunded, sum(
+        CASE
+            WHEN backers.refunded THEN backers.value
+            ELSE NULL::numeric
+        END) / bbm.total_month_backed AS refunded_ratio
+   FROM projects p
+   JOIN backers ON backers.project_id = p.id
+   JOIN ( SELECT to_char(b2.created_at, 'yyyy-mm'::text) AS b2month, sum(b2.value) AS total_month_backed
+      FROM backers b2
+     WHERE b2.confirmed
+     GROUP BY to_char(b2.created_at, 'yyyy-mm'::text)) bbm ON bbm.b2month = to_char(backers.created_at, 'yyyy-mm'::text)
+  WHERE backers.confirmed
+  GROUP BY to_char(p.expires_at, 'yyyy-mm'::text), bbm.total_month_backed, backers.payment_method, backers.payment_choice
+  ORDER BY to_char(p.expires_at, 'yyyy-mm'::text), backers.payment_method, backers.payment_choice;
 
 --
 -- Name: backers_by_project; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW backers_by_project AS
-    SELECT backers.project_id, sum(backers.value) AS total_backed, max(backers.value) AS max_backed, count(DISTINCT backers.user_id) AS total_backers FROM backers WHERE backers.confirmed GROUP BY backers.project_id;
-
+CREATE OR REPLACE VIEW backers_by_project AS 
+ SELECT backers.project_id, sum(backers.value) AS total_backed, max(backers.value) AS max_backed, count(DISTINCT backers.user_id) AS total_backers
+   FROM backers
+  WHERE backers.confirmed
+  GROUP BY backers.project_id;
 
 --
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -292,17 +315,33 @@ CREATE TABLE users (
 -- Name: backers_by_state; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW backers_by_state AS
-    SELECT to_char(b.created_at, 'yyyy'::text) AS year, NULLIF(u.address_state, ''::text) AS state, sum(b.value) AS total_backed, count(DISTINCT b.user_id) AS total_backers FROM (backers b JOIN users u ON ((u.id = b.user_id))) WHERE b.confirmed GROUP BY to_char(b.created_at, 'yyyy'::text), NULLIF(u.address_state, ''::text) ORDER BY to_char(b.created_at, 'yyyy'::text), NULLIF(u.address_state, ''::text);
-
+CREATE OR REPLACE VIEW backers_by_state AS 
+ SELECT to_char(p.expires_at, 'yyyy'::text) AS year, NULLIF(u.address_state, ''::text) AS state, sum(b.value) AS total_backed, count(DISTINCT b.user_id) AS total_backers
+   FROM backers b
+   JOIN projects p ON b.project_id = p.id
+   JOIN users u ON u.id = b.user_id
+  WHERE b.confirmed
+  GROUP BY to_char(p.expires_at, 'yyyy'::text), NULLIF(u.address_state, ''::text)
+  ORDER BY to_char(p.expires_at, 'yyyy'::text), NULLIF(u.address_state, ''::text);
 
 --
 -- Name: backers_by_year; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW backers_by_year AS
-    SELECT to_char(backers.created_at, 'yyyy'::text) AS year, sum(backers.value) AS total_backed, count(DISTINCT backers.user_id) AS total_backers, count(DISTINCT CASE WHEN (backers.reward_id IS NULL) THEN backers.user_id ELSE NULL::integer END) AS total_backers_without_reward, ((count(DISTINCT CASE WHEN (backers.reward_id IS NULL) THEN backers.user_id ELSE NULL::integer END))::numeric / (count(DISTINCT backers.user_id))::numeric) AS backers_without_reward_ratio, max(backers.value) AS maximum_back FROM backers WHERE backers.confirmed GROUP BY to_char(backers.created_at, 'yyyy'::text);
-
+CREATE OR REPLACE VIEW backers_by_year AS 
+ SELECT to_char(p.expires_at, 'yyyy'::text) AS year, sum(backers.value) AS total_backed, count(DISTINCT backers.user_id) AS total_backers, count(DISTINCT 
+        CASE
+            WHEN backers.reward_id IS NULL THEN backers.user_id
+            ELSE NULL::integer
+        END) AS total_backers_without_reward, count(DISTINCT 
+        CASE
+            WHEN backers.reward_id IS NULL THEN backers.user_id
+            ELSE NULL::integer
+        END)::numeric / count(DISTINCT backers.user_id)::numeric AS backers_without_reward_ratio, max(backers.value) AS maximum_back
+   FROM backers
+   JOIN projects p ON backers.project_id = p.id
+  WHERE backers.confirmed
+  GROUP BY to_char(p.expires_at, 'yyyy'::text);
 
 --
 -- Name: backers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
@@ -699,17 +738,25 @@ CREATE VIEW project_totals AS
 -- Name: projects_by_category; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW projects_by_category AS
-    SELECT to_char(p.created_at, 'yyyy'::text) AS year, c.name AS category, count(*) AS total_projects, count(NULLIF(p.successful, false)) AS successful_projects FROM (projects p JOIN categories c ON ((c.id = p.category_id))) WHERE p.finished GROUP BY to_char(p.created_at, 'yyyy'::text), c.name ORDER BY to_char(p.created_at, 'yyyy'::text), c.name;
-
+CREATE OR REPLACE VIEW projects_by_category AS 
+ SELECT to_char(p.expires_at, 'yyyy'::text) AS year, c.name AS category, count(*) AS total_projects, count(NULLIF(p.successful, false)) AS successful_projects
+   FROM projects p
+   JOIN categories c ON c.id = p.category_id
+  WHERE p.finished
+  GROUP BY to_char(p.expires_at, 'yyyy'::text), c.name
+  ORDER BY to_char(p.expires_at, 'yyyy'::text), c.name;
 
 --
 -- Name: projects_by_state; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW projects_by_state AS
-    SELECT to_char(p.created_at, 'yyyy'::text) AS year, NULLIF(btrim(u.address_state), ''::text) AS uf, count(*) AS total_projects, count(NULLIF(p.successful, false)) AS successful_projects FROM (projects p JOIN users u ON ((u.id = p.user_id))) WHERE p.finished GROUP BY to_char(p.created_at, 'yyyy'::text), NULLIF(btrim(u.address_state), ''::text) ORDER BY to_char(p.created_at, 'yyyy'::text), NULLIF(btrim(u.address_state), ''::text);
-
+CREATE OR REPLACE VIEW projects_by_state AS 
+ SELECT to_char(p.expires_at, 'yyyy'::text) AS year, NULLIF(btrim(u.address_state), ''::text) AS uf, count(*) AS total_projects, count(NULLIF(p.successful, false)) AS successful_projects
+   FROM projects p
+   JOIN users u ON u.id = p.user_id
+  WHERE p.finished
+  GROUP BY to_char(p.expires_at, 'yyyy'::text), NULLIF(btrim(u.address_state), ''::text)
+  ORDER BY to_char(p.expires_at, 'yyyy'::text), NULLIF(btrim(u.address_state), ''::text);
 
 --
 -- Name: total_backed_ranges; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -726,16 +773,29 @@ CREATE TABLE total_backed_ranges (
 -- Name: projects_by_total_backed_ranges; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW projects_by_total_backed_ranges AS
-    SELECT tbr.lower, tbr.upper, count(*) AS count, ((count(*))::numeric / ((SELECT count(*) AS count FROM backers_by_project))::numeric) AS ratio FROM (backers_by_project bp JOIN total_backed_ranges tbr ON (((bp.total_backed >= tbr.lower) AND (bp.total_backed <= tbr.upper)))) GROUP BY tbr.lower, tbr.upper ORDER BY tbr.lower;
-
+CREATE OR REPLACE VIEW projects_by_total_backed_ranges AS 
+ SELECT tbr.lower, tbr.upper, count(*) AS count, count(*)::numeric / (( SELECT count(*) AS count
+           FROM backers_by_project))::numeric AS ratio
+   FROM backers_by_project bp
+   JOIN total_backed_ranges tbr ON bp.total_backed >= tbr.lower AND bp.total_backed <= tbr.upper
+  GROUP BY tbr.lower, tbr.upper
+  ORDER BY tbr.lower;
 
 --
 -- Name: projects_by_year; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW projects_by_year AS
-    SELECT to_char(p.created_at, 'yyyy'::text) AS year, count(*) AS total_projects, count(NULLIF(p.successful, false)) AS successful_projects, sum(CASE WHEN p.successful THEN b.total_backed ELSE NULL::numeric END) AS successful_total_backed, max(b.total_backed) AS max_total_backed, max(b.max_backed) AS max_backed, max(b.total_backers) AS max_total_backers FROM (projects p LEFT JOIN backers_by_project b ON ((b.project_id = p.id))) WHERE p.finished GROUP BY to_char(p.created_at, 'yyyy'::text) ORDER BY to_char(p.created_at, 'yyyy'::text);
+CREATE OR REPLACE VIEW projects_by_year AS 
+ SELECT to_char(p.expires_at, 'yyyy'::text) AS year, count(*) AS total_projects, count(NULLIF(p.successful, false)) AS successful_projects, sum(
+        CASE
+            WHEN p.successful THEN b.total_backed
+            ELSE NULL::numeric
+        END) AS successful_total_backed, max(b.total_backed) AS max_total_backed, max(b.max_backed) AS max_backed, max(b.total_backers) AS max_total_backers
+   FROM projects p
+   LEFT JOIN backers_by_project b ON b.project_id = p.id
+  WHERE p.finished
+  GROUP BY to_char(p.expires_at, 'yyyy'::text)
+  ORDER BY to_char(p.expires_at, 'yyyy'::text);
 
 
 --
@@ -805,9 +865,16 @@ CREATE TABLE projects_managers (
 -- Name: recurring_backers_by_year; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW recurring_backers_by_year AS
-    SELECT bby.year, trb.total_recurring_backed, bby.total_backed, (trb.total_recurring_backed / bby.total_backed) AS recurring_backed_ratio, trb.total_recurring_backers, bby.total_backers, (trb.total_recurring_backers / (bby.total_backers)::numeric) AS recurring_backers_ratio FROM ((SELECT rb.year, sum(rb.total_recurring_backed) AS total_recurring_backed, sum(rb.total_recurring_backers) AS total_recurring_backers FROM (SELECT to_char(backers.created_at, 'yyyy'::text) AS year, sum(backers.value) AS total_recurring_backed, count(DISTINCT backers.user_id) AS total_recurring_backers FROM backers WHERE backers.confirmed GROUP BY to_char(backers.created_at, 'yyyy'::text), backers.user_id HAVING (count(*) > 1)) rb GROUP BY rb.year) trb JOIN backers_by_year bby USING (year));
-
+CREATE OR REPLACE VIEW recurring_backers_by_year AS 
+ SELECT bby.year, trb.total_recurring_backed, bby.total_backed, trb.total_recurring_backed / bby.total_backed AS recurring_backed_ratio, trb.total_recurring_backers, bby.total_backers, trb.total_recurring_backers / bby.total_backers::numeric AS recurring_backers_ratio
+   FROM ( SELECT rb.year, sum(rb.total_recurring_backed) AS total_recurring_backed, sum(rb.total_recurring_backers) AS total_recurring_backers
+           FROM ( SELECT to_char(backers.created_at, 'yyyy'::text) AS year, sum(backers.value) AS total_recurring_backed, count(DISTINCT backers.user_id) AS total_recurring_backers
+                   FROM backers
+                  WHERE backers.confirmed
+                  GROUP BY to_char(backers.created_at, 'yyyy'::text), backers.user_id
+                 HAVING count(*) > 1) rb
+          GROUP BY rb.year) trb
+   JOIN backers_by_year bby USING (year);
 
 --
 -- Name: reward_ranges; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -841,8 +908,16 @@ CREATE TABLE rewards (
 -- Name: rewards_by_range; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW rewards_by_range AS
-    SELECT rr.name AS range, count(*) AS count, ((count(*))::numeric / ((SELECT count(*) AS count FROM backers WHERE (backers.confirmed AND (backers.reward_id IS NOT NULL))))::numeric) AS ratio FROM ((reward_ranges rr JOIN rewards r ON (((r.minimum_value >= rr.lower) AND (r.minimum_value <= rr.upper)))) JOIN backers b ON ((b.reward_id = r.id))) WHERE b.confirmed GROUP BY rr.name, rr.lower ORDER BY rr.lower;
+CREATE OR REPLACE VIEW rewards_by_range AS 
+ SELECT rr.name AS range, count(*) AS count, count(*)::numeric / (( SELECT count(*) AS count
+           FROM backers
+          WHERE backers.confirmed AND backers.reward_id IS NOT NULL))::numeric AS ratio
+   FROM reward_ranges rr
+   JOIN rewards r ON r.minimum_value >= rr.lower AND r.minimum_value <= rr.upper
+   JOIN backers b ON b.reward_id = r.id
+  WHERE b.confirmed
+  GROUP BY rr.name, rr.lower
+  ORDER BY rr.lower;
 
 
 --
@@ -1749,17 +1824,6 @@ ALTER TABLE ONLY updates
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_primary_user_id_reference FOREIGN KEY (primary_user_id) REFERENCES users(id);
-
-
---
--- Name: public; Type: ACL; Schema: -; Owner: -
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
 
 --
 -- PostgreSQL database dump complete
