@@ -518,12 +518,18 @@ pt:
       about_title: "O projeto"
       no_rewards_warning_title: 'Crie aqui suas recompensas'
       no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
+      reports:
+        no_backs: 'Seu projeto ainda não tem nenhum apoio.'
+        link_reports: 'Baixar relatório de '
+        all_backers: 'todos os apoiadores'
+        link_reward: 'Baixar relatório dos apoiadores da recompensa de '
       menu:
         about: Sobre
         backers: Apoiadores
         comments: Comentários
         updates: Novidades
         edit: Edição
+        reports: Relatórios
         add_reward: 'Adicionar recompensa'
       share:
         embed: embed
