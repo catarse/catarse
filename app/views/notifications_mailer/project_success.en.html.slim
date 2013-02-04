@@ -30,10 +30,10 @@ br
 |2 - After the account has been created, please send an email to #{mail_to 'financeiro@catarse.me'} with the subject “Conta MOIP do projeto #{project.name}”, and you MoiP login on the email body.
 br
 br
-|3 - We will send you a spread sheet with all the backers information (name, reward, address, etc.) in up to 4 working days after the project deadline (this wait is due to the time it takes for the bank slips to be paid and received, if it they were issued just before the deadline). In this spread sheet we will also highlight Catarse and the payment service provider's fee for all transactions.
+|3 - We will send you a spread sheet with all the backers information (name, reward, address, etc.) in up to 4 working days after the project deadline (this wait is due to the time it takes for the bank slips to be paid and received, if it they were issued just before the deadline). In this spread sheet we will also highlight #{Configuration[:company_name]} and the payment service provider's fee for all transactions.
 br
 br
-|4 - Furthermore, we will need some information for the Catarse service invoice, ok? For this, you will need to fill the form below:
+|4 - Furthermore, we will need some information for the #{Configuration[:company_name]} service invoice, ok? For this, you will need to fill the form below:
 br
 br
 = link_to "https://docs.google.com/a/catarse.me/spreadsheet/viewform?formkey=dDR5Njdsd3AwMXppVjRTd296MWhQclE6MQ#gid=0", "https://docs.google.com/a/catarse.me/spreadsheet/viewform?formkey=dDR5Njdsd3AwMXppVjRTd296MWhQclE6MQ#gid=0"
@@ -49,4 +49,4 @@ br
 |A big hug,
 br
 br
-|Catarse Team
+|#{Configuration[:company_name]} Team

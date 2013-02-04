@@ -19,6 +19,7 @@
 end
 
 {
+  company_name: 'Catarse',
   host: 'catarse.me',
   base_url: "http://catarse.me",
   blog_url: "http://blog.catarse.me",

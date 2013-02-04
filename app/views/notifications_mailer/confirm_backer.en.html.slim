@@ -9,7 +9,7 @@ br
 |Keep this email with you as a receipt.
 br
 br
-|Very important information:<strong> if you paid using a credit card</strong>, the name that will show up in your invoice is #{backer.payment_method}. Unfortunately, credit card operators don't allow Catarse's name to be shown, ok?
+|Very important information:<strong> if you paid using a credit card</strong>, the name that will show up in your invoice is #{backer.payment_method}. Unfortunately, credit card operators don't allow #{Configuration[:company_name]}'s name to be shown, ok?
 br
 br
 |Pledged amount: <strong>R$ #{backer.value}</strong>
@@ -38,4 +38,4 @@ br
 br
 |A big hug,
 br
-|Catarse Team
+|#{Configuration[:company_name]} Team
