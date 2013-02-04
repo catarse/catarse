@@ -2,21 +2,21 @@
 |Olá, #{project.user.display_name}.
 br
 br
-|Seu projeto acabou de entrar no ar e já está apto a começar a receber os apoios, agora é a hora! Agora é começar a fazer a barrinha verde subir :D 
+|Seu projeto acabou de entrar no ar e já está apto a começar a receber os apoios, agora é a hora! Agora é começar a fazer a barrinha verde subir :D
 br
 br
 = link_to(project.name, project_by_slug_url(project.permalink))
 br
 br
-|Antes de mais nada, Preencha as informações do link a seguir para receber a comunicação do Catarse exclusiva para realizadores: #{link_to 'http://eepurl.com/pDZ6r', 'http://eepurl.com/pDZ6r'}
+|Antes de mais nada, Preencha as informações do link a seguir para receber a comunicação do #{Configuration[:company_name]} exclusiva para realizadores: #{link_to 'http://eepurl.com/pDZ6r', 'http://eepurl.com/pDZ6r'}
 strong  (preenchimento obrigatório)
 br
 br
-strong Agora vai um bando de informacões úteis: 
+strong Agora vai um bando de informacões úteis:
 ol
   li Para promover o seu projeto, #{link_to('Aqui','https://docs.google.com/document/d/1Uwg8aRj9LyOE-MU1HOL02HxsVYNXyZcR11dbLRE8Y3c/edit')} temos algumas dicas. O documento é aberto, então sinta-se a vontade para incluir novas observações =)
-  li 
-    |Para interagir com seus apoiadores, você tem três abas: 
+  li
+    |Para interagir com seus apoiadores, você tem três abas:
     br
     br
     strong Apoiadores
@@ -31,9 +31,9 @@ ol
     br
     strong Comentários
     br
-    | Acompanhe os comentários, fique ligado no que seus colaboradores estão achado do projeto, participe das conversas. Comunicação é fundamental a todo momento e passa segurança. 
-  li 
-    |Além disso, você poderá editar o seu projeto, seguindo algumas regras: 
+    | Acompanhe os comentários, fique ligado no que seus colaboradores estão achado do projeto, participe das conversas. Comunicação é fundamental a todo momento e passa segurança.
+  li
+    |Além disso, você poderá editar o seu projeto, seguindo algumas regras:
     ul
       li Não poderá alterar prazo e valor a ser arrecadado
       li Não poderá alterar conteúdo e valor de recompensas que já possui algum apoio iniciado.
@@ -48,16 +48,16 @@ ol
     |Para saber todos os detalhes sobre a edição de projeto online, entre #{link_to 'aqui', 'https://docs.google.com/document/d/186yNtCvVb4Z0nwy63VusIhKFsiLApcV8zu2_RG_AM3M/edit'}.
     br
     br
-    strong IMPORTANTE: 
-    |Para realizar todas essas ações, você precisa estar logado com o perfil “dono” do projeto no Catarse, ok?
-  li 
-    |Qualquer dúvida referente às transações financeiras, seja durante a captação do projeto, seja sobre transferência dos valores que foram captados ou sobre reembolsos (tomara que não!), dê uma lida nesse #{link_to 'guia', 'https://docs.google.com/a/catarse.me/document/d/1LzN01c6r_yZXcjnGGwp9NELw5lNcKDj38QTXI7Rl-BY/edit'}
-    |Se o guia não resolver, mande email para #{mail_to 'financeiro@catarse.me'}
+    strong IMPORTANTE:
+    |Para realizar todas essas ações, você precisa estar logado com o perfil “dono” do projeto no #{Configuration[:company_name]}, ok?
   li
-    |Para envio de materiais de divulgação em nossas mídias sociais, no caso Facebook e Twitter, envie email para #{mail_to 'comunicacao@catarse.me'}. Lá você pode bater uma bola sobre estratégias de comunicação com nossa equipe e receber sugestões sobre como agir na sua campanha. Use com moderação! Lembre-se que a responsabilidade de levar a campanha e divulgar ainda é sua, pois é da sua rede que virão os principais resultados da campanha e este auxílio deve ser usado apenas como apoio. ;) 
+    |Qualquer dúvida referente às transações financeiras, seja durante a captação do projeto, seja sobre transferência dos valores que foram captados ou sobre reembolsos (tomara que não!), dê uma lida nesse #{link_to 'guia', 'https://docs.google.com/a/catarse.me/document/d/1LzN01c6r_yZXcjnGGwp9NELw5lNcKDj38QTXI7Rl-BY/edit'}
+    |Se o guia não resolver, mande email para #{mail_to Configuration[:email_payments]}
+  li
+    |Para envio de materiais de divulgação em nossas mídias sociais, no caso Facebook e Twitter, envie email para #{mail_to 'comunicacao@catarse.me'}. Lá você pode bater uma bola sobre estratégias de comunicação com nossa equipe e receber sugestões sobre como agir na sua campanha. Use com moderação! Lembre-se que a responsabilidade de levar a campanha e divulgar ainda é sua, pois é da sua rede que virão os principais resultados da campanha e este auxílio deve ser usado apenas como apoio. ;)
 br
 br
 |Um abração e seja bem-vindo o/
 br
 br
-|Equipe do Catarse
+|Equipe do #{Configuration[:company_name]}
