@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
     connection.select_one(
       self.scoped.
       joins(:user_total).
-      select('count(DISTINCT user_id) as users, count(*) as backers, sum(user_totals.sum) as backed, sum(user_totals.credits) as credits, sum(users.credits) as credits_table').
+      select('count(DISTINCT user_id) as users, count(*) as backers, sum(user_totals.sum) as backed, sum(user_totals.credits) as credits').
       to_sql
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
   end
@@ -269,8 +269,6 @@ class User < ActiveRecord::Base
 
   def merge_into!(new_user)
     self.primary = new_user
-    new_user.credits += self.credits
-    self.credits = 0
     self.backs.update_all :user_id => new_user.id
     self.projects.update_all :user_id => new_user.id
     self.notifications.update_all :user_id => new_user.id

@@ -84,8 +84,6 @@ class Projects::BackersController < ApplicationController
           return redirect_to new_project_backer_path(backer.project)
         end
         unless backer.confirmed
-          current_user.credits = (current_user.credits - backer.value)
-          current_user.save
           backer.update_attributes({ payment_method: 'Credits' })
           backer.confirm!
         end
