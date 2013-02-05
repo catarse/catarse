@@ -23,6 +23,6 @@ describe ProjectsMailer do
     email_body.should =~ /Rewards of the project\<br\>&lt;javascript&gt;/
     email_body.should =~ /Links of the project\<br\>&lt;javascript&gt;/
     email_body.should =~ /foo@bar.com/
-    email[:from].to_s.should == "#{I18n.t('site.name')} <#{Configuration[:email_system]}>"
+    email[:from].to_s.should == "#{Configuration[:company_name]} <#{Configuration[:email_system]}>"
   end
 end

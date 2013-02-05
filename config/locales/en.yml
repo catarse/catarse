@@ -586,7 +586,6 @@ en:
     failure:
       error: "There was an error while loggin in. Please try again."
   site:
-    name: Catarse
     title: "The first crowdfunding platform from Brazil"
   static:
     guidelines_backers:

@@ -620,7 +620,6 @@ pt:
     failure:
       error: "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
   site:
-    name: Catarse
     title: "A maior comunidade de crowdfunding do Brasil!"
   static:
     faq:
