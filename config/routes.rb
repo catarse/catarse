@@ -59,7 +59,7 @@ Catarse::Application.routes.draw do
         get 'thank_you'
       end
       member do
-        match 'checkout'
+        match 'credits_checkout'
         post 'update_info'
       end
     end
