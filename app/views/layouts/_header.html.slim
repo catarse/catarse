@@ -1,5 +1,5 @@
 #header
-  = link_to "Home", root_path, :class => 'logo', :title => 'Catarse'
+  = link_to "Home", root_path, :class => 'logo', :title => Configuration[:company_name]
   nav.actions
     = link_to t('layouts.header.explore'), explore_path, :class => 'explore'
     = link_to t('layouts.header.submit_project'), guidelines_start_path, :class =>  'submit_project'

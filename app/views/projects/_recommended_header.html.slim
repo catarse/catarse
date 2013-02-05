@@ -8,15 +8,11 @@
               = link_to t('.guidelines'), guidelines_start_path, :class=>'btn_explore'
               span = t('.guidelines_subtitle')    
   .project_info
-    = image_tag 'coverFace2anos.jpg', height: 258, width: 720, style: 'height: 258px; witdh: 720px;'
-    /
-      - if has_institutional_videos?
-        == render 'layouts/institutional_video_header'
-      - elsif current_user
-        - if @recommended_project
-          = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.sugest_for_you'), :project => @recommended_project} if @recommended_project
-        - else
-          = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.highlight_project'), :project => @fourth_project} if @fourth_project
+    - if current_user
+      - if @recommended_project
+        = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.sugest_for_you'), :project => @recommended_project} if @recommended_project
       - else
         = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.highlight_project'), :project => @fourth_project} if @fourth_project
+    - else
+      = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.highlight_project'), :project => @fourth_project} if @fourth_project
   .clearfix
