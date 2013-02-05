@@ -56,11 +56,11 @@ Catarse::Application.routes.draw do
     resources :backers, controller: 'projects/backers', only: [ :index, :new ] do
       collection do
         post 'review'
-        get 'thank_you'
       end
       member do
         match 'credits_checkout'
         post 'update_info'
+        get 'thank_you'
       end
     end
     collection do
