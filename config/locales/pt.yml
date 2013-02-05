@@ -336,14 +336,6 @@ pt:
       submit: "Enviar as instruções para recuperar senha"
       title: "Esqueceu sua senha?"
       site_title: "Recuperar senha"
-  payment_stream:
-    thank_you:
-      error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
-      header_subtitle: "Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!"
-      header_title: "Muito obrigado! :D"
-      text_subtitle: "Conte para todo mundo o que você acabou de fazer"
-      text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
-      title: "Muito obrigado"
   project:
     start:
       email_subject: "O seu projeto foi recebido pela equipe do Catarse"
@@ -394,6 +386,13 @@ pt:
       anonymous_description: "Optou por permanecer incógnito"
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
+      thank_you:
+        error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
+        header_subtitle: "Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!"
+        header_title: "Muito obrigado! :D"
+        text_subtitle: "Conte para todo mundo o que você acabou de fazer"
+        text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
+        title: "Muito obrigado"
       checkout:
         no_credits: "Você não possui créditos suficientes para realizar este apoio."
         success: "Seu apoio foi realizado com sucesso. Muito obrigado!"

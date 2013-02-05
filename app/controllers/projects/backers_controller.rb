@@ -1,25 +1,32 @@
 class Projects::BackersController < ApplicationController
   inherit_resources
   actions :index, :new, :update_info
-  before_filter :load_project
   skip_before_filter :force_http, only: [:review, :update_info]
+  skip_before_filter :verify_authenticity_token, :only => [:moip]
+  belongs_to :project
 
   def update_info
     return unless require_login
-    @backer = current_user.backs.find params[:id]
-    @backer.update_attributes(params[:backer])
-
+    resource.update_attributes(params[:backer])
     render :json => {:message => 'updated'}
   end
 
   def index
-    @backers = @project.backers.confirmed.order("confirmed_at DESC").page(params[:page]).per(10)
+    @backers = parent.backers.confirmed.order("confirmed_at DESC").page(params[:page]).per(10)
     render :json => @backers.to_json(:can_manage => can?(:update, @project))
+  end
+
+  def thank_you
+    unless resource.user == current_user
+      flash[:failure] = I18n.t('payment_stream.thank_you.error')
+      return redirect_to :root
+    end
+    @title = t('projects.backers.thank_you.title')
   end
 
   def new
     return unless require_login
-    unless @project.can_back?
+    unless parent.can_back?
       flash[:failure] = t('projects.back.cannot_back')
       return redirect_to :root
     end
@@ -46,47 +53,32 @@ class Projects::BackersController < ApplicationController
     @title = t('projects.backers.review.title')
     params[:backer][:reward_id] = nil if params[:backer][:reward_id] == '0'
     params[:backer][:user_id] = current_user.id
-    @project = Project.find params[:project_id]
-    @backer = @project.backers.new(params[:backer])
+    @backer = parent.backers.new(params[:backer])
 
     unless @backer.save
       flash[:failure] = t('projects.backers.review.error')
       return redirect_to new_project_backer_path(@project)
     end
 
-    session[:thank_you_id] = @project.id
+    @thank_you_id = @project.id
   end
 
-  def checkout
+  def credits_checkout
     return unless require_login
-    backer = current_user.backs.find params[:id]
-    if params[:payment_method_url].present?
-      current_user.update_attributes params[:user]
-      current_user.reload
-      return redirect_to params[:payment_method_url]
-    else
-      if backer.credits
-        if current_user.credits < backer.value
-          flash[:failure] = t('projects.backers.checkout.no_credits')
-          return redirect_to new_project_backer_path(backer.project)
-        end
-        unless backer.confirmed
-          current_user.credits = (current_user.credits - backer.value)
-          current_user.save
-          backer.update_attributes({ payment_method: 'Credits' })
-          backer.confirm!
-        end
-        flash[:success] = t('projects.backers.checkout.success')
-        redirect_to thank_you_path
-      end
+    unless resource.user == current_user && resource.credits
+      flash[:failure] = t('projects.backers.review.error')
+      return redirect_to new_project_backer_path(@project)
     end
-  end
 
-
-
-  private
-
-  def load_project
-    @project = Project.find params[:project_id]
+    if current_user.credits < @backer.value
+      flash[:failure] = t('projects.backers.checkout.no_credits')
+      return redirect_to new_project_backer_path(@backer.project)
+    end
+    unless @backer.confirmed
+      @backer.update_attributes({ payment_method: 'Credits' })
+      @backer.confirm!
+    end
+    flash[:success] = t('projects.backers.checkout.success')
+    redirect_to thank_you_project_backer_path(project_id: parent.id, id: resource.id)
   end
 end
