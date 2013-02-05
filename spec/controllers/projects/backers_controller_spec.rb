@@ -30,7 +30,7 @@ describe Projects::BackersController do
 
     context "with correct user but insufficient credits" do
       let(:user){ backer.user }
-      it('should not confirm backer'){ backer.confirmed.should be_false }
+      it('should not confirm backer'){ backer.reload.confirmed.should be_false }
       it('should set flash failure'){ request.flash[:failure].should == I18n.t('projects.backers.checkout.no_credits') }
       it{ should redirect_to(new_project_backer_path(project)) }
     end
@@ -40,9 +40,9 @@ describe Projects::BackersController do
         Factory(:backer, value: 10.00, credits: false, confirmed: true, user: backer.user, project: failed_project)
         backer.user
       end
-      it('should confirm backer'){ backer.confirmed.should be_true }
+      it('should confirm backer'){ backer.reload.confirmed.should be_true }
       it('should set flash success'){ request.flash[:success].should == I18n.t('projects.backers.checkout.success') }
-      it{ should redirect_to(new_project_backer_path(project)) }
+      it{ should redirect_to(thank_you_project_backer_path(project_id: project.id, id: backer.id)) }
     end
   end
 
@@ -101,6 +101,30 @@ describe Projects::BackersController do
       its(:body) { should =~ /#{I18n.t('projects.backers.new.submit')}/ }
       its(:body) { should =~ /#{I18n.t('projects.backers.new.no_reward')}/ }
       its(:body) { should =~ /#{project.name}/ }
+    end
+  end
+
+  describe "GET thank_you" do
+    let(:backer){ Factory(:backer, value: 10.00, credits: false, confirmed: true) }
+    before do
+      get :thank_you, { locale: :pt, project_id: backer.project.id, id: backer.id }
+    end
+
+    context "when no user is logged in" do
+      it{ should redirect_to root_path }
+      it('should set flash failure'){ request.flash[:failure].should_not be_empty }
+    end
+
+    context "when user logged in is different from backer" do
+      let(:user){ Factory(:user) }
+      it{ should redirect_to root_path }
+      it('should set flash failure'){ request.flash[:failure].should_not be_empty }
+    end
+
+    context "when backer is logged in" do
+      let(:user){ backer.user }
+      it{ should be_successful }
+      its(:body){ should =~ /#{I18n.t('projects.backers.thank_you.title')}/ }
     end
   end
 

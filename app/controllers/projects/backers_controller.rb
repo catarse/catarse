@@ -17,12 +17,11 @@ class Projects::BackersController < ApplicationController
   end
 
   def thank_you
-    unless @thank_you_id
+    unless resource.user == current_user
       flash[:failure] = I18n.t('payment_stream.thank_you.error')
       return redirect_to :root
     end
-    @title = t('payment_stream.thank_you.title')
-    @thank_you_id = nil
+    @title = t('projects.backers.thank_you.title')
   end
 
   def new
@@ -80,6 +79,6 @@ class Projects::BackersController < ApplicationController
       @backer.confirm!
     end
     flash[:success] = t('projects.backers.checkout.success')
-    redirect_to thank_you_project_backers_path(@thank_you_id)
+    redirect_to thank_you_project_backer_path(project_id: parent.id, id: resource.id)
   end
 end

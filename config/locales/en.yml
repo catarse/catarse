@@ -322,14 +322,6 @@ en:
       submit: "Send instructions to reset my password"
       title: "Forgot password?"
       site_title: "Recover password"
-  payment_stream:
-    thank_you:
-      error: "Ooops. You can only access this page after backing a project."
-      header_subtitle: "Without you maybe this project wouldn't stand a chance. Welcome to the team!"
-      header_title: "Thank you! :D"
-      text_subtitle: "Tell everyone what you just did"
-      text_title_html: "You are now part of the group that does everything to make %{link} happen."
-      title: "Thank you"
   project:
     start:
       email_subject: "Your project has been received by Catarse's team"
@@ -380,6 +372,13 @@ en:
       anonymous_description: "Opted to remain incognito"
       no_reward: "This backer has not picked a reward"
     backers:
+      thank_you:
+        error: "Ooops. You can only access this page after backing a project."
+        header_subtitle: "Without you maybe this project wouldn't stand a chance. Welcome to the team!"
+        header_title: "Thank you! :D"
+        text_subtitle: "Tell everyone what you just did"
+        text_title_html: "You are now part of the group that does everything to make %{link} happen."
+        title: "Thank you"
       checkout:
         no_credits: "You don't have enough credits to back this project."
         success: "Your back was successfully made. Thanks a lot!"
