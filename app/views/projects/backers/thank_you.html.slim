@@ -8,6 +8,10 @@
         = image_tag @project.display_image, :id => 'project_image', :alt => @project.name, :width => '250px'
         h1= t('.text_title_html', :link => link_to(@project.name, project_path(@project)))
         #review_text
+          - if @backer.payment_method == 'MoIP'
+            = t('.moip_message', code: @backer.payment_id).html_safe
+            br
+            br
           = t("projects.back_project.display_status.#{@project.display_status}", :goal => @project.display_goal, :date => @project.display_expires_at)
         .share
             h2= t('.text_subtitle')
