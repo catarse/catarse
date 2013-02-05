@@ -500,12 +500,12 @@ pt:
       without_city: "Um projeto de %{category_name} por %{author}"
       with_city: "Um projeto de %{category_name} por %{author} em %{city}"
     project_updates:
-      empty: "Este projeto ainda não teve atualizações. Aguarde =D"
-      submit: "Enviar atualização"
-      comment: "Texto da atualização"
-      title: "Título da atualização"
-      destroy: "Remover atualização"
-      destroy_confirmation: "Deseja remover a atualização?"
+      empty: "Este projeto ainda não teve novidades. Aguarde =D"
+      submit: "Enviar Novidade"
+      comment: "Texto da sua Novidade"
+      title: "Título da sua Novidade"
+      destroy: "Remover Novidade"
+      destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
       reward_title: "Para %{minimum} ou mais"
       title: "Apoie e ganhe..."
@@ -518,12 +518,18 @@ pt:
       about_title: "O projeto"
       no_rewards_warning_title: 'Crie aqui suas recompensas'
       no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
+      reports:
+        no_backs: 'Seu projeto ainda não tem nenhum apoio.'
+        link_reports: 'Baixar relatório de '
+        all_backers: 'todos os apoiadores'
+        link_reward: 'Baixar relatório dos apoiadores da recompensa de '
       menu:
         about: Sobre
         backers: Apoiadores
         comments: Comentários
         updates: Novidades
         edit: Edição
+        reports: Relatórios
         add_reward: 'Adicionar recompensa'
       share:
         embed: embed

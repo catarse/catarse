@@ -5,8 +5,6 @@ describe Project do
   let(:project){ Project.new :goal => 3000 }
 
   describe "associations" do
-    it{ should have_many :projects_curated_pages }
-    it{ should have_many :curated_pages }
     it{ should have_many :backers }
     it{ should have_one  :project_total }
     it{ should have_many :rewards }
@@ -374,6 +372,21 @@ describe Project do
       let(:project) { Factory(:project, state: 'rejected') }
       it{ should be_false }
     end
+  end
+
+  describe '#selected_rewards' do
+    let(:project){ Factory(:project) }
+    let(:reward_01) { Factory(:reward, project: project) }
+    let(:reward_02) { Factory(:reward, project: project) }
+    let(:reward_03) { Factory(:reward, project: project) }
+
+    before do
+      Factory(:backer, project: project, reward: reward_01)
+      Factory(:backer, project: project, reward: reward_03)
+    end
+
+    subject { project.selected_rewards }
+    it { should == [reward_01, reward_03] }
   end
 
   describe "#download_video_thumbnail" do

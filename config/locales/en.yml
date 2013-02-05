@@ -90,7 +90,7 @@ en:
         name: Name
         user_id: "User Id"
         video_url: "Video URL"
-        permalink: 'type you project URL ( http://catarse.me/myprojectname )'
+        permalink: 'type you project URL'
         how_know: "How did you meet Catarse?"
         more_linkt: 'Where can we find more about you and your project?'
       reward:
@@ -496,12 +496,18 @@ en:
       about_title: "About this project"
       no_rewards_warning_title: 'Create here your rewards'
       no_rewards_warning: "Don't go nuts! Think about how you're going to deliver them and include those costs in your budget. People are putting their trust in you, don't kid around with that!"
+      reports:
+        no_backs: "This project don't have any back yet."
+        link_reports: 'Download report of '
+        all_backers: 'all backers'
+        link_reward: 'Download the report of backers that selected the reward '
       menu:
         about: About
         backers: Backers
         comments: Comments
         updates: Updates
         edit: Edit
+        reports: Reports
         add_reward: 'Add Rewards'
       share:
         embed: embed
