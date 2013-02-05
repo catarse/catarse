@@ -126,24 +126,23 @@ describe User do
       Factory(:backer, :value => 100, :credits => false, :project => successful_project)
       Factory(:backer, :value => 50, :credits => false, :project => successful_project)
       user = Factory(:backer, :value => 25, :project => failed_project).user
-      user.credits = 10.0
       user.save!
       @u = Factory(:user)
     end
 
     context "when we call upon user without backs" do
       subject{ User.where(:id => @u.id).backer_totals }
-      it{ should == {:users => 0.0, :backers => 0.0, :backed => 0.0, :credits => 0.0, :credits_table => 0.0} }
+      it{ should == {:users => 0.0, :backers => 0.0, :backed => 0.0, :credits => 0.0} }
     end
 
     context "when we call without scopes" do
       subject{ User.backer_totals }
-      it{ should == {:users => 3.0, :backers => 3.0, :backed => 175.0, :credits => 25.0, :credits_table => 10.0} }
+      it{ should == {:users => 3.0, :backers => 3.0, :backed => 175.0, :credits => 25.0} }
     end
 
     context "when we call with scopes" do
       subject{ User.has_credits.backer_totals }
-      it{ should == {:users => 1.0, :backers => 1.0, :backed => 25.0, :credits => 25.0, :credits_table => 10.0} }
+      it{ should == {:users => 1.0, :backers => 1.0, :backed => 25.0, :credits => 25.0} }
     end
   end
 
@@ -310,7 +309,7 @@ describe User do
   end
 
   describe "#merge_into!" do
-    it "should merge into another account, taking the credits, backs, projects and notifications with it" do
+    it "should merge into another account, backs, projects and notifications with it" do
       Notification.any_instance.stubs(:send_email)
       old_user = Factory(:user)
       new_user = Factory(:user)
