@@ -12,6 +12,7 @@ gem 'state_machine', require: 'state_machine/core'
 
 # Database and data related
 gem 'pg'
+gem 'activerecord-postgresql-adapter'
 gem 'pg_search'
 gem 'postgres-copy'
 gem 'schema_plus'
@@ -106,7 +107,7 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'rspec-rails', "~> 2.10.0"
   gem 'mocha', '0.10.4'
-  gem 'shoulda'
+  gem 'shoulda', :require => false
   gem 'factory_girl_rails', '1.7.0'
   gem 'capybara', ">= 1.0.1"
 end
