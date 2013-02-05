@@ -24,15 +24,6 @@ Catarse::Application.routes.draw do
 
   root to: 'projects#index'
 
-  match "/reports/financial/:project_id/backers" => "reports#financial_by_project", :as => :backers_financial_report
-  match "/reports/location/:project_id/backers" => "reports#location_by_project", :as => :backers_location_report
-  match "/reports/users_most_backed" => "reports#users_most_backed", :as => :most_backed_report
-  match "/reports/users_most_backed_diff" => "reports#users_most_backed_diff", :as => :most_backed_diff_report
-  match "/reports/all_confirmed_backers" => "reports#all_confirmed_backers", :as => :all_confirmed_backers_report
-  match "/reports/all_projects_owners" => "reports#all_projects_owner", :as => :all_projects_owner_report
-  match "/reports/all_emails" => "reports#all_emails_to_newsletter", :as => :all_emails_to_newsletter
-  match "/reports/all_projects_that_expires_in_dez" => "reports#all_projects_that_expires_in_dez", :as => :all_projects_that_expires_in_dez
-
   # Static Pages
   match '/sitemap' => "static#sitemap", :as => :sitemap
   match "/guidelines" => "static#guidelines", :as => :guidelines
@@ -55,6 +46,11 @@ Catarse::Application.routes.draw do
   match "/logout" => "sessions#destroy", :as => :logout
   match "/reward/:id" => "rewards#show", :as => :reward
   resources :posts, only: [:index, :create]
+
+  namespace :reports do
+    resources :backer_reports_for_project_owners, only: [:index]
+  end
+
   resources :projects do
     resources :updates, only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy ]
@@ -99,13 +95,6 @@ Catarse::Application.routes.draw do
       post 'refund'
     end
   end
-
-  resources :curated_pages do
-    collection do
-      post 'update_attribute_on_the_spot'
-    end
-  end
-  match "/pages/:permalink" => "curated_pages#show", as: :curated_page
 
   namespace :adm do
     resources :projects, only: [ :index, :update ] do

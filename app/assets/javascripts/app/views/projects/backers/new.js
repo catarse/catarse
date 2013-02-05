@@ -1,5 +1,14 @@
 CATARSE.BackersNewView = Backbone.View.extend({
   initialize: function() {
+    $('input#backer_credits').change(function(event){
+      if(event.currentTarget.checked) {
+        $('#backer_value').val($('#credits').val());
+        $('#backer_value').trigger('keyup');
+      } else {
+        $('#backer_value').val('');
+        $('#backer_value').trigger('keyup');
+      }
+    });
     everything_ok = function(){
       var all_ok = true
       check_credits()

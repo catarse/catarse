@@ -260,7 +260,7 @@ pt:
         category: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
         expires_at: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
         online_days: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
-        goal: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): <a href='http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
+        goal_html: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): <a href='http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
         headline: "Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)"
         name: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo."
         uploaded_image: "Aqui você faz upload de uma imagem (.jpg) com tamanho 220x172."
@@ -500,12 +500,12 @@ pt:
       without_city: "Um projeto de %{category_name} por %{author}"
       with_city: "Um projeto de %{category_name} por %{author} em %{city}"
     project_updates:
-      empty: "Este projeto ainda não teve atualizações. Aguarde =D"
-      submit: "Enviar atualização"
-      comment: "Texto da atualização"
-      title: "Título da atualização"
-      destroy: "Remover atualização"
-      destroy_confirmation: "Deseja remover a atualização?"
+      empty: "Este projeto ainda não teve novidades. Aguarde =D"
+      submit: "Enviar Novidade"
+      comment: "Texto da sua Novidade"
+      title: "Título da sua Novidade"
+      destroy: "Remover Novidade"
+      destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
       reward_title: "Para %{minimum} ou mais"
       title: "Apoie e ganhe..."
@@ -514,16 +514,22 @@ pt:
     show:
       rejected: "Este projeto não foi selecionado para participar do Catarse. Quem sabe numa próxima vez? :)"
       waiting: "Esse projeto está em fase de rascunho e logo saberemos se ele entrará no Catarse. Se está vendo o projeto, e não é o dono dele... aproveita para mandar sua opinião ao realizador."
-      waiting_owner_html: "<i>ATENÇÃO! Seu projeto ainda não está no ar... Seja bem-vindo ao rascunho \o/ </i><br><br>Esse é o espaço para você construir seu projeto. <br>Nenhuma informação abaixo é definitiva até a entrada do seu projeto no ar. Por isso, aproveite! <br><br>Para editar as informações da página do projeto, basta clicar em EDIÇÃO. <br>As recompensas você edita na coluna delas mesmo :D <br>Compartilhe com seus amigos e colha sugestões.<br><br><b>Lembrando que:</b> O Catarse é uma plataforma curada, o que significa que vamos avaliar o foco, a viabilidade, e a consistência do seu projeto durante o processo de Rascunho. Se entendermos que o seu projeto não está de acordo com os nossos Critérios de Seleção, ele poderá ser recusado pela equipe de curadores."
+      waiting_owner: "<i>ATENÇÃO! Seu projeto ainda não está no ar... Seja bem-vindo ao rascunho \o/ </i><br><br>Esse é o espaço para você construir seu projeto. <br>Nenhuma informação abaixo é definitiva até a entrada do seu projeto no ar. Por isso, aproveite! <br><br>Para editar as informações da página do projeto, basta clicar em EDIÇÃO. <br>As recompensas você edita na coluna delas mesmo :D <br>Compartilhe com seus amigos e colha sugestões.<br><br><b>Lembrando que:</b> O Catarse é uma plataforma curada, o que significa que vamos avaliar o foco, a viabilidade, e a consistência do seu projeto durante o processo de Rascunho. Se entendermos que o seu projeto não está de acordo com os nossos <a href='http://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank'>Critérios de Seleção</a>, ele poderá ser recusado pela equipe de curadores."
       about_title: "O projeto"
       no_rewards_warning_title: 'Crie aqui suas recompensas'
       no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
+      reports:
+        no_backs: 'Seu projeto ainda não tem nenhum apoio.'
+        link_reports: 'Baixar relatório de '
+        all_backers: 'todos os apoiadores'
+        link_reward: 'Baixar relatório dos apoiadores da recompensa de '
       menu:
         about: Sobre
         backers: Apoiadores
         comments: Comentários
         updates: Novidades
         edit: Edição
+        reports: Relatórios
         add_reward: 'Adicionar recompensa'
       share:
         embed: embed
