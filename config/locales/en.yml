@@ -500,7 +500,8 @@ en:
         no_backs: "This project don't have any back yet."
         link_reports: 'Download report of '
         all_backers: 'all backers'
-        link_reward: 'Download the report of backers that selected the reward '
+        all_backers_without_reward: "all backers that don't select any reward"
+        link_reward: 'Download the report of backers that selected the reward'
       menu:
         about: About
         backers: Backers
