@@ -32,15 +32,15 @@ gem 'jquery-rails'
 gem 'initjs'
 
 # Authentication and Authorization
-gem 'omniauth', "~> 1.1.0"
-gem 'omniauth-openid', '~> 1.0.1'
-gem 'omniauth-twitter', '~> 0.0.12'
-gem 'omniauth-facebook', '~> 1.2.0'
-gem 'omniauth-github', '~> 1.0.1'
-gem 'omniauth-linkedin', '~> 0.0.6'
-gem 'omniauth-yahoo', '~> 0.0.4'
+gem 'omniauth'
+gem 'omniauth-openid'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-linkedin'
+gem 'omniauth-yahoo'
 gem 'omniauth-oauth2'
-gem 'devise', '1.5.3'
+gem 'devise'
 gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
 
 

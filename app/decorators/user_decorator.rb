@@ -1,4 +1,4 @@
-class UserDecorator < Draper::Base
+class UserDecorator < Draper::Decorator
   decorates :user
   include Draper::LazyHelpers
 
@@ -11,17 +11,17 @@ class UserDecorator < Draper::Base
   end
 
   def display_name
-    if name.present?
-      name
-    elsif full_name.present?
-      full_name
+    if source.name.present?
+      source.name
+    elsif source.full_name.present?
+      source.full_name
     else
       I18n.t('user.no_name')
     end
   end
 
   def display_image
-    uploaded_image.thumb_avatar.url || image_url || gravatar_url || '/assets/user.png'
+    source.uploaded_image.thumb_avatar.url || source.image_url || source.gravatar_url || '/assets/user.png'
   end
 
   def display_image_html options={:width => 119, :height => 121}
@@ -39,7 +39,7 @@ class UserDecorator < Draper::Base
   end
 
   def display_credits
-    number_to_currency credits, :unit => 'R$', :precision => 0, :delimiter => '.'
+    number_to_currency source.credits, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
 
   def display_total_of_backs
