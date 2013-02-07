@@ -59,7 +59,8 @@ script type="text/template" id="user_back_template"
           |<% if(reward) { %>
           li.reward
             h5 <%= reward['display_with_label'] %>
-            p <%= reward['description']%>
+            | <% description = (reward['description']).replace(/"/g,'&quot;') %>
+            p(title="<%= description %>") <%= jQuery.trim(reward['description']).substring(0, 75).trim(this) + "..."%>
           |<% } %>
       .tell_about
         p= t('tell_about_this_back')
