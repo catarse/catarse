@@ -121,6 +121,10 @@ en:
       category: Category
       project: Project
       reward: Reward
+  adm:
+    projects:
+        index:
+            submit: Submit
   backer:
     display_confirmed_at: "%{time_ago} ago"
     reward_must_be_from_project: "must be from the same project"
