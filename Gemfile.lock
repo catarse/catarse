@@ -211,7 +211,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.6)
-    json_pure (1.7.5)
     jwt (0.1.5)
       multi_json (>= 1.0)
     kaminari (0.14.1)
@@ -287,8 +286,6 @@ GEM
       omniauth-oauth (~> 1.0)
     omniauth-yahoo (0.0.4)
       omniauth-oauth (~> 1.0)
-    on_the_spot (1.0.1)
-      json_pure (>= 1.4.6)
     orm_adapter (0.0.7)
     pg (0.14.1)
     pg_search (0.5.7)
@@ -500,7 +497,6 @@ DEPENDENCIES
   omniauth-openid (~> 1.0.1)
   omniauth-twitter (~> 0.0.12)
   omniauth-yahoo (~> 0.0.4)
-  on_the_spot
   pg
   pg_search
   postgres-copy
