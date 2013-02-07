@@ -6,6 +6,6 @@ p Shortly after Paypal confirms the transaction. After if the project doesn't re
 h3 Oh, so will I receive my money back if the project I backed doesn't succeed?
 p Yes! You receive 100% back as credits to back other projects on #{Configuration[:company_name]}.
 h3 What if I don't want to use the credits on #{Configuration[:company_name]}?
-p No problem.  Just go to #{link_to t('credits.title'), credits_path, :target => :_blank}, up until 60 days after the payment, and request a refund. If you paid with credit card, the refund will be included in your next bill. No matter what way you chose, you won't have to pay anything.
+p No problem.  Just go to #{link_to t('credits.title'), user_path(current_user, anchor: :credits), :target => :_blank}, up until 60 days after the payment, and request a refund. If you paid with credit card, the refund will be included in your next bill. No matter what way you chose, you won't have to pay anything.
 h3 If the project is successful, how will I receive my reward?
 p When your reward is ready, #{link_to @project.user.display_name, user_path(@project.user)} will get in touch with you to arrange the delivery.
