@@ -283,6 +283,8 @@ en:
     optional: " (optional)"
   found_plural: Found
   found_singular: Found
+  project_singular: Project
+  project_plural: Projects
   here: here
   i_backed: "I backed the project %{name} on @Catarse_"
   i_just_backed: "I just backed the project %{name} on @Catarse_"
