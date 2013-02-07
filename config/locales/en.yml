@@ -350,9 +350,6 @@ en:
       waiting_funds: waiting
       not_reached_goal: waiting
   projects:
-    recommended_header:
-      sugest_for_you: "suggested for you"
-      highlight_project: "featured project"
     box:
       by: by
     admin_fields:
@@ -431,6 +428,8 @@ en:
       subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
       title: "Make the projects you believe in happen"
     recommended_header:
+      suggest_for_you: "suggested for you"
+      highlight_project: "featured project"
       guidelines: "How it Works"
       guidelines_subtitle: "Getting to know Catarse"
     pending:
