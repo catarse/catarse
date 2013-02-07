@@ -811,7 +811,7 @@ pt:
       update_social_info: "Atualizar informações"
       social_info: "Informações para contato"
       twitter: "twitter ( usuário )"
-      facebook_link: "perfil do facebook"
+      facebook_link: "perfil do facebook (link completo)"
       other_link: "link da sua página na internet"
       change_password: "Alterar minha senha"
       current_password_hint: "<i>Para que a senha seja alterada você precisa confirmar a sua senha atual.</i>"
