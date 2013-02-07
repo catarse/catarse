@@ -68,7 +68,6 @@ Catarse::Application.routes.draw do
       post 'send_mail'
       get 'vimeo'
       get 'check_slug'
-      post 'update_attribute_on_the_spot'
     end
     member do
       put 'pay'
@@ -84,7 +83,6 @@ Catarse::Application.routes.draw do
       get 'credits'
       put 'unsubscribe_update'
     end
-    post 'update_attribute_on_the_spot', :on => :collection
   end
   match "/users/:id/request_refund/:back_id" => 'users#request_refund'
 
@@ -106,13 +104,10 @@ Catarse::Application.routes.draw do
 
     resources :financials, only: [ :index ]
 
-    resources :backers, only: [ :index ] do
+    resources :backers, only: [ :index, :update ] do
       member do
         put 'confirm'
         put 'unconfirm'
-      end
-      collection do
-        post 'update_attribute_on_the_spot'
       end
     end
     resources :users, only: [ :index ]

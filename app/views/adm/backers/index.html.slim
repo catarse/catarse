@@ -80,7 +80,7 @@
                   td title=backer.user.display_name
                     = link_to user_path(backer.user) do
                       = image_tag backer.user.display_image, class: 'user_img'
-                    .user_id= on_the_spot_edit backer, :user_id
+                    .user_id= best_in_place [:adm, backer], :user_id, method: :put, type: :input
                   td= backer.display_value
                   td title=("#{backer.reward.display_minimum} - #{backer.reward.description}" if backer.reward)
                     - if backer.reward
@@ -88,10 +88,10 @@
                     - else
                       |-
                   td.key= backer.key
-                  td= check_box_tag "anonymous__#{backer.id}", '1', backer.anonymous
+                  td.checkbox= best_in_place [:adm, backer], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
                   td= (backer.credits ? t('yes') : t('no'))
                   td= (backer.requested_refund ? t('yes') : t('no'))
-                  td= check_box_tag "refunded__#{backer.id}", '1', backer.refunded
+                  td.checkbox= best_in_place [:adm, backer], :refunded, type: :checkbox, collection: [t('no'), t('yes')]
                   td.bootstrap-twitter
                     .btn-group
                       = link_to 'javascript:void(0);', :"data-toggle" => 'dropdown', :class => 'btn btn-mini dropdown-toggle' do
@@ -103,4 +103,4 @@
                           li= link_to t('adm.backers.index.confirm_backer'), confirm_adm_backer_path(backer), method: :put
       = paginate @backers
   .clearfix
-    
+
