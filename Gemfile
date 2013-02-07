@@ -17,9 +17,9 @@ gem 'pg_search'
 gem 'postgres-copy'
 gem 'schema_plus'
 
-gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '4fd17e269395ee4b3a32528ace0bcb7eec57a953'
+gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '8f60d81b8f544003d99db4e80f945da6af1a9f4f'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
-gem 'catarse_moip', git: 'git://github.com/devton/catarse_moip.git'
+gem 'catarse_moip', git: 'git://github.com/devton/catarse_moip.git', ref: 'd71157a0365611048a36180846a3c0c84768b916'
 #gem 'catarse_moip', path: '../catarse_moip'
 gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
@@ -71,7 +71,6 @@ gem 'spectator-validates_email', require: 'validates_email'
 gem 'has_vimeo_video', '~> 0.0.5'
 gem 'memoist', '~> 0.2.0'
 gem 'wirble'
-gem "on_the_spot"
 gem 'weekdays'
 gem 'brcep'
 gem "RedCloth"

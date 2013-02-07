@@ -336,14 +336,6 @@ pt:
       submit: "Enviar as instruções para recuperar senha"
       title: "Esqueceu sua senha?"
       site_title: "Recuperar senha"
-  payment_stream:
-    thank_you:
-      error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
-      header_subtitle: "Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!"
-      header_title: "Muito obrigado! :D"
-      text_subtitle: "Conte para todo mundo o que você acabou de fazer"
-      text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
-      title: "Muito obrigado"
   project:
     start:
       email_subject: "O seu projeto foi recebido pela equipe do Catarse"
@@ -394,6 +386,14 @@ pt:
       anonymous_description: "Optou por permanecer incógnito"
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
+      thank_you:
+        error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
+        moip_message: "Sua transação foi processada pelo Moip Pagamentos S/A.<br>A sua transação está “Autorizada” e o código Moip é “%{code}″.<br>Caso tenha alguma dúvida referente a transação, entre em contato com o Moip."
+        header_subtitle: "Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!"
+        header_title: "Muito obrigado! :D"
+        text_subtitle: "Conte para todo mundo o que você acabou de fazer"
+        text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
+        title: "Muito obrigado"
       checkout:
         no_credits: "Você não possui créditos suficientes para realizar este apoio."
         success: "Seu apoio foi realizado com sucesso. Muito obrigado!"
@@ -522,6 +522,7 @@ pt:
         no_backs: 'Seu projeto ainda não tem nenhum apoio.'
         link_reports: 'Baixar relatório de '
         all_backers: 'todos os apoiadores'
+        all_backers_without_reward: 'todos os apoiadores que não selecionaram uma recompensa'
         link_reward: 'Baixar relatório dos apoiadores da recompensa de '
       menu:
         about: Sobre
@@ -620,7 +621,6 @@ pt:
     failure:
       error: "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
   site:
-    name: Catarse
     title: "A maior comunidade de crowdfunding do Brasil!"
   static:
     faq:

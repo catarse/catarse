@@ -3,7 +3,7 @@
   meta property="og:title" content=@user.name
   meta property="og:url" content=="#{Configuration[:base_url]}#{user_path(@user)}"
   meta property="og:image" content==@user.display_image
-  meta property="og:site_name" content=t('site.name')
+  meta property="og:site_name" content=::Configuration[:company_name]
   meta property="og:description" content=@user.bio
   meta property="fb:admins" content="#{fb_admins}"
 

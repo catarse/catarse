@@ -322,14 +322,6 @@ en:
       submit: "Send instructions to reset my password"
       title: "Forgot password?"
       site_title: "Recover password"
-  payment_stream:
-    thank_you:
-      error: "Ooops. You can only access this page after backing a project."
-      header_subtitle: "Without you maybe this project wouldn't stand a chance. Welcome to the team!"
-      header_title: "Thank you! :D"
-      text_subtitle: "Tell everyone what you just did"
-      text_title_html: "You are now part of the group that does everything to make %{link} happen."
-      title: "Thank you"
   project:
     start:
       email_subject: "Your project has been received by Catarse's team"
@@ -380,6 +372,14 @@ en:
       anonymous_description: "Opted to remain incognito"
       no_reward: "This backer has not picked a reward"
     backers:
+      thank_you:
+        error: "Ooops. You can only access this page after backing a project."
+        moip_message: "Your transaction was processed by Moip Pagamentos S/A.<br>Your transaction is “Authorized” and you Moip code is “%{code}″.<br>If you have any questions about this transaction, contact Moip directly."
+        header_subtitle: "Without you maybe this project wouldn't stand a chance. Welcome to the team!"
+        header_title: "Thank you! :D"
+        text_subtitle: "Tell everyone what you just did"
+        text_title_html: "You are now part of the group that does everything to make %{link} happen."
+        title: "Thank you"
       checkout:
         no_credits: "You don't have enough credits to back this project."
         success: "Your back was successfully made. Thanks a lot!"
@@ -500,7 +500,8 @@ en:
         no_backs: "This project don't have any back yet."
         link_reports: 'Download report of '
         all_backers: 'all backers'
-        link_reward: 'Download the report of backers that selected the reward '
+        all_backers_without_reward: "all backers that don't select any reward"
+        link_reward: 'Download the report of backers that selected the reward'
       menu:
         about: About
         backers: Backers
@@ -586,7 +587,6 @@ en:
     failure:
       error: "There was an error while loggin in. Please try again."
   site:
-    name: Catarse
     title: "The first crowdfunding platform from Brazil"
   static:
     guidelines_backers:

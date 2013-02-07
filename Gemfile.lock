@@ -8,7 +8,8 @@ GIT
 
 GIT
   remote: git://github.com/devton/catarse_moip.git
-  revision: 931bcddf2c092083626b78748589557655e79b8b
+  revision: d71157a0365611048a36180846a3c0c84768b916
+  ref: d71157a0365611048a36180846a3c0c84768b916
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
@@ -16,8 +17,8 @@ GIT
 
 GIT
   remote: git://github.com/devton/catarse_paypal_express.git
-  revision: 4fd17e269395ee4b3a32528ace0bcb7eec57a953
-  ref: 4fd17e269395ee4b3a32528ace0bcb7eec57a953
+  revision: 8f60d81b8f544003d99db4e80f945da6af1a9f4f
+  ref: 8f60d81b8f544003d99db4e80f945da6af1a9f4f
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -248,7 +249,7 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     metaclass (0.0.1)
-    mime-types (1.19)
+    mime-types (1.20.1)
     mocha (0.10.4)
       metaclass (~> 0.0.1)
     multi_json (1.5.0)
@@ -314,7 +315,7 @@ GEM
       ruby-openid (>= 2.1.8)
     rack-protection (1.2.0)
       rack
-    rack-ssl (1.3.2)
+    rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
