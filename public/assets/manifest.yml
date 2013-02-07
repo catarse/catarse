@@ -333,6 +333,8 @@ catarse/icon_backersucessfull.png: catarse/icon_backersucessfull-6161bd375e2d1fe
 catarse/icon_backersucessfull/index.png: catarse/icon_backersucessfull-6161bd375e2d1fe00b5a5c7fa31c4595.png
 catarse/icon_backproject.png: catarse/icon_backproject-9ee81f629cd4b1b7cec3eef366917dd2.png
 catarse/icon_backproject/index.png: catarse/icon_backproject-9ee81f629cd4b1b7cec3eef366917dd2.png
+catarse/icon_bold.png: catarse/icon_bold-47ce4dbc37b5e0db1a5df1ad5bfc4d61.png
+catarse/icon_bold/index.png: catarse/icon_bold-47ce4dbc37b5e0db1a5df1ad5bfc4d61.png
 catarse/icon_calc.png: catarse/icon_calc-1bb816fe0550939652e583800f35ccaa.png
 catarse/icon_calc/index.png: catarse/icon_calc-1bb816fe0550939652e583800f35ccaa.png
 catarse/icon_colective.png: catarse/icon_colective-c1ce41ed6fe69844267ef0e52d745356.png
@@ -347,6 +349,8 @@ catarse/icon_datestart.png: catarse/icon_datestart-bb2b7234ca176d8df16e8239c1d01
 catarse/icon_datestart/index.png: catarse/icon_datestart-bb2b7234ca176d8df16e8239c1d01943.png
 catarse/icon_donation.png: catarse/icon_donation-dacc09896993c72e8a46cb1e82eb533d.png
 catarse/icon_donation/index.png: catarse/icon_donation-dacc09896993c72e8a46cb1e82eb533d.png
+catarse/icon_faq.png: catarse/icon_faq-6344fc0c1a4a687eda2923f869632f84.png
+catarse/icon_faq/index.png: catarse/icon_faq-6344fc0c1a4a687eda2923f869632f84.png
 catarse/icon_gift.png: catarse/icon_gift-4008de3d4c1a358201f58ec185e5efae.png
 catarse/icon_gift/index.png: catarse/icon_gift-4008de3d4c1a358201f58ec185e5efae.png
 catarse/icon_guidebacker.png: catarse/icon_guidebacker-12783b6a643156d5a6e02a6e700b23cb.png
@@ -355,6 +359,8 @@ catarse/icon_guidelinesstart.png: catarse/icon_guidelinesstart-171b07b7f4fbbf340
 catarse/icon_guidelinesstart/index.png: catarse/icon_guidelinesstart-171b07b7f4fbbf34072630dc0ee09b56.png
 catarse/icon_heart.png: catarse/icon_heart-13d17ccdd181a4bba4fe403a0af2a760.png
 catarse/icon_heart/index.png: catarse/icon_heart-13d17ccdd181a4bba4fe403a0af2a760.png
+catarse/icon_italic.png: catarse/icon_italic-aa3773eafc747115b6435150321af7c6.png
+catarse/icon_italic/index.png: catarse/icon_italic-aa3773eafc747115b6435150321af7c6.png
 catarse/icon_licosts.png: catarse/icon_licosts-f712c43a7d1c71d35db469d2c14ae312.png
 catarse/icon_licosts/index.png: catarse/icon_licosts-f712c43a7d1c71d35db469d2c14ae312.png
 catarse/icon_limagic.png: catarse/icon_limagic-60dd2acac58f990327cf3d29454c3ef1.png
@@ -363,10 +369,14 @@ catarse/icon_limoney.png: catarse/icon_limoney-0722547b932ce65ddf33b79386792a81.
 catarse/icon_limoney/index.png: catarse/icon_limoney-0722547b932ce65ddf33b79386792a81.png
 catarse/icon_link.png: catarse/icon_link-b3e0cb26f21fc124ad98e88717d122d3.png
 catarse/icon_link/index.png: catarse/icon_link-b3e0cb26f21fc124ad98e88717d122d3.png
+catarse/icon_linktext.png: catarse/icon_linktext-ecba4cd65a2776f6ea0e2c69e5bcf025.png
+catarse/icon_linktext/index.png: catarse/icon_linktext-ecba4cd65a2776f6ea0e2c69e5bcf025.png
 catarse/icon_liwork.png: catarse/icon_liwork-d259c7bb786057fdb2bff1a1417d588c.png
 catarse/icon_liwork/index.png: catarse/icon_liwork-d259c7bb786057fdb2bff1a1417d588c.png
 catarse/icon_logo.png: catarse/icon_logo-3a628cfaa68bfa44e7628342b07757ad.png
 catarse/icon_logo/index.png: catarse/icon_logo-3a628cfaa68bfa44e7628342b07757ad.png
+catarse/icon_media.png: catarse/icon_media-df4df284d121047eba356257bb0120c6.png
+catarse/icon_media/index.png: catarse/icon_media-df4df284d121047eba356257bb0120c6.png
 catarse/icon_new.png: catarse/icon_new-dc83c91be68cc3e680f44179219f3a39.png
 catarse/icon_new/index.png: catarse/icon_new-dc83c91be68cc3e680f44179219f3a39.png
 catarse/icon_nonprofit.png: catarse/icon_nonprofit-64f2e88b4bc842a08143df07c8d13469.png
@@ -397,6 +407,8 @@ catarse/icon_tag.png: catarse/icon_tag-4c10fbae4cf53e362b7b3139bef4a7ad.png
 catarse/icon_tag/index.png: catarse/icon_tag-4c10fbae4cf53e362b7b3139bef4a7ad.png
 catarse/icon_time.png: catarse/icon_time-45cb8df664de14e972f6c6a76106148d.png
 catarse/icon_time/index.png: catarse/icon_time-45cb8df664de14e972f6c6a76106148d.png
+catarse/icon_url.png: catarse/icon_url-be2ffc8120e6311700b4389cf590c502.png
+catarse/icon_url/index.png: catarse/icon_url-be2ffc8120e6311700b4389cf590c502.png
 catarse/icon_video.png: catarse/icon_video-770cabcbec1cd287409ea65f15c8f0b1.png
 catarse/icon_video/index.png: catarse/icon_video-770cabcbec1cd287409ea65f15c8f0b1.png
 catarse/icon_vimeo.png: catarse/icon_vimeo-dc5817319d38668d59e9ef7d18b1b04f.png
@@ -519,8 +531,6 @@ catarse/twitter_icon28x24.png: catarse/twitter_icon28x24-0398d299f85f344d472c197
 catarse/twitter_icon28x24/index.png: catarse/twitter_icon28x24-0398d299f85f344d472c1975045d868f.png
 catarse/video_sample_cover477x330.jpg: catarse/video_sample_cover477x330-a3f5b0dc74dbd194701ca1a2843415b3.jpg
 catarse/video_sample_cover477x330/index.jpg: catarse/video_sample_cover477x330-a3f5b0dc74dbd194701ca1a2843415b3.jpg
-coverFace2anos.jpg: coverFace2anos-49f633379a5c61846796bf2e73374406.jpg
-coverFace2anos/index.jpg: coverFace2anos-49f633379a5c61846796bf2e73374406.jpg
 delete_16.png: delete_16-03735f7be4be1f568f3d9238d926e514.png
 delete_16/index.png: delete_16-03735f7be4be1f568f3d9238d926e514.png
 delete_32.png: delete_32-275fc597dac9314ea997a8dea8dc184e.png
@@ -3319,9 +3329,9 @@ waiting_confirmation.pt.png: waiting_confirmation.pt-a654771fdb4bcbc2478ce524627
 waiting_confirmation/index.pt.png: waiting_confirmation.pt-a654771fdb4bcbc2478ce524627309f0.png
 app/views/layouts/application.js: app/views/layouts/application-cce8ddc9434931d4952102f832df9a4d.js
 app/views/layouts/application/index.js: app/views/layouts/application-cce8ddc9434931d4952102f832df9a4d.js
-application.js: application-2e42c50e87922ce44536b0bbb29df0d5.js
-application/index.js: application-2e42c50e87922ce44536b0bbb29df0d5.js
-application.css: application-80a877e9647032c58c41eeb1783782b3.css
-application/index.css: application-80a877e9647032c58c41eeb1783782b3.css
+application.js: application-8ea59a61f4576d951d9eecba1c56f7b1.js
+application/index.js: application-8ea59a61f4576d951d9eecba1c56f7b1.js
+application.css: application-1f27821b1c7ef1f929dfc9433719a739.css
+application/index.css: application-1f27821b1c7ef1f929dfc9433719a739.css
 catarse_moip.js: catarse_moip-0f6ba6d9397c23a67b7ce2391a093053.js
 catarse_moip/index.js: catarse_moip-0f6ba6d9397c23a67b7ce2391a093053.js

@@ -499,6 +499,7 @@ DEPENDENCIES
   omniauth-facebook (~> 1.2.0)
   omniauth-github (~> 1.0.1)
   omniauth-linkedin (~> 0.0.6)
+  omniauth-oauth2
   omniauth-openid (~> 1.0.1)
   omniauth-twitter (~> 0.0.12)
   omniauth-yahoo (~> 0.0.4)

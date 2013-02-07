@@ -39,6 +39,7 @@ gem 'omniauth-facebook', '~> 1.2.0'
 gem 'omniauth-github', '~> 1.0.1'
 gem 'omniauth-linkedin', '~> 0.0.6'
 gem 'omniauth-yahoo', '~> 0.0.4'
+gem 'omniauth-oauth2'
 gem 'devise', '1.5.3'
 gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
 
