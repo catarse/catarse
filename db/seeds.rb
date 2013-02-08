@@ -28,8 +28,8 @@ end
   email_projects: 'projetos@catarse.me',
   email_system: 'system@catarse.me',
   email_no_reply: 'no-reply@catarse.me',
-  facebook_url: "http://facebook.com/catarse.me",
-  facebook_app_id: '173747042661491',
+  facebook_url: "https://www.facebook.com/pages/FundMob/469505423099802",
+  facebook_app_id: '410589688985651',
   twitter_username: "Catarse_",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   catarse_fee: '0.13'

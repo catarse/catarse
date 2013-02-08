@@ -78,6 +78,7 @@ gem 'unicode'
 gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1'
 gem "rack-timeout"
+gem 'figaro'
 
 # Translations
 gem 'http_accept_language'

@@ -56,7 +56,7 @@
         h3=t('.with_another_social_subtitle')
         .another_social
           = link_to image_tag('auth/google_128.png', :title => 'Google'), '/auth/google', :class => 'provider first'
-          = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), '/auth/google', :class => 'provider'
+          = link_to image_tag('auth/yahoo_128.png', :title => 'Yahoo'), '/auth/yahoo', :class => 'provider'
           - OauthProvider.where("path <> 'facebook'").order('"order"').all.each do |p|
             = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), "/auth/#{p.path}", :class => 'provider'
     .clearfix

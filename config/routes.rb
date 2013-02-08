@@ -39,7 +39,7 @@ Catarse::Application.routes.draw do
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
 
-  post "/auth" => "sessions#auth", :as => :auth
+  post "/auth" => "sessions#auth", :as => :auth, :via => [:get, :post]
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
   match "/logout" => "sessions#destroy", :as => :logout
