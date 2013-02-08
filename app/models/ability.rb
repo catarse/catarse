@@ -27,6 +27,10 @@ class Ability
     can :update, :projects do |project|
       project.user == current_user && ( project.draft? || project.rejected? )
     end
+    
+    can :manage, :projects do
+      current_user.admin
+    end
 
 
     # NOTE: Reward authorizations
@@ -60,8 +64,8 @@ class Ability
       backer.user == current_user
     end
 
-    # NOTE: When admin can access all things ;)
-    can :access, :all if current_user.admin?
+    # NOTE: When admin can access and manage all things ;)
+    can :manage, :all if current_user.admin?
 
 
 

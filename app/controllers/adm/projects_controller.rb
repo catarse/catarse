@@ -1,5 +1,7 @@
 class Adm::ProjectsController < Adm::BaseController
   inherit_resources
+  load_and_authorize_resource  
+  
   menu I18n.t("adm.projects.index.menu") => Rails.application.routes.url_helpers.adm_projects_path
 
   has_scope :by_id, :pg_search, :user_name_contains, :order_table

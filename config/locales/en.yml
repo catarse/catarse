@@ -124,6 +124,11 @@ en:
   adm:
     projects:
         index:
+            menu: Projects Admin
+            submit: Submit
+    users:
+        index:
+            menu: Users Admin
             submit: Submit
   backer:
     display_confirmed_at: "%{time_ago} ago"
