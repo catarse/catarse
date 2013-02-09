@@ -65,7 +65,7 @@ class Ability
     end
 
     # NOTE: When admin can access and manage all things ;)
-    can :manage, :all if current_user.admin?
+    can :access, :all if current_user.admin?
 
 
 

@@ -83,7 +83,7 @@
                       span.label= project.state
                   td
                     .btn-group
-                      = link_to 'javascript:void(0);', :class => 'btn btn-mini dropdown-toggle', :"data-toggle"=> "dropdown" do
+                      = link_to 'javascript:void(0);', :class=>'btn btn-mini dropdown-toggle', :"data-toggle"=> "dropdown" do
                         b.caret
                       ul.dropdown-menu
                         - if project.can_approve?
