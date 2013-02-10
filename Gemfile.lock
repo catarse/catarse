@@ -21,7 +21,7 @@ GIT
   ref: 8f60d81b8f544003d99db4e80f945da6af1a9f4f
   specs:
     catarse_paypal_express (0.1.0)
-      activemerchant (~> 1.17.0)
+      activemerchant (>= 1.17.0)
       rails (~> 3.2.6)
 
 GIT
@@ -65,11 +65,17 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    activemerchant (1.17.0)
+    active_utils (1.0.5)
       activesupport (>= 2.3.11)
-      braintree (>= 2.0.0)
+      i18n
+    activemerchant (1.29.3)
+      active_utils (>= 1.0.2)
+      activesupport (>= 2.3.14)
       builder (>= 2.0.0)
+      i18n
       json (>= 1.5.1)
+      money
+      nokogiri
     activemodel (3.2.11)
       activesupport (= 3.2.11)
       builder (~> 3.0.0)
@@ -101,8 +107,6 @@ GEM
     best_in_place (2.0.3)
       jquery-rails
       rails (~> 3.1)
-    braintree (2.22.0)
-      builder (>= 2.0.0)
     brcep (3.3.0)
     builder (3.0.4)
     capybara (2.0.2)
@@ -253,6 +257,8 @@ GEM
     mime-types (1.20.1)
     mocha (0.10.4)
       metaclass (~> 0.0.1)
+    money (5.1.0)
+      i18n (~> 0.6.0)
     multi_json (1.5.0)
     multipart-post (1.1.5)
     net-scp (1.1.0)
@@ -454,7 +460,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  activemerchant (= 1.17.0)
+  activemerchant
   activerecord-postgresql-adapter
   airbrake
   auto_html (= 1.4.2)

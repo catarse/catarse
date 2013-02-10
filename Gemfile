@@ -88,7 +88,7 @@ gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 gem "meta_search", "1.1.3"
 
 # Payment
-gem 'activemerchant', '1.17.0', require: 'active_merchant'
+gem 'activemerchant', require: 'active_merchant'
 gem 'httpclient', '2.2.5'
 gem 'selenium-webdriver'
 

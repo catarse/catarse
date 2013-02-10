@@ -3,12 +3,12 @@ class ProjectDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   def remaining_days
-    time_to_go[:time]
+    source.time_to_go[:time]
   end
 
   def display_status
     if source.online?
-      (reached_goal? ? 'reached_goal' : 'not_reached_goal')
+      (source.reached_goal? ? 'reached_goal' : 'not_reached_goal')
     else
       source.state
     end
