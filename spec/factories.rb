@@ -23,7 +23,7 @@ Factory.define :user do |f|
 end
 
 Factory.define :category do |f|
-  f.name { Factory.next(:name) }
+  f.name_pt { Factory.next(:name) }
 end
 
 Factory.define :project do |f|

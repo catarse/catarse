@@ -5,7 +5,7 @@ br
 |Infelizmente o projeto #{link_to(backer.project.name, "#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} que você apoiou não atingiu a meta estabelecida e não foi financiado no #{Configuration[:company_name]}.
 br
 br
-|Em função disto, você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Você pode conhecer mais projetos de #{backer.project.category.name} em #{link_to("#{Configuration[:base_url]}/explore##{backer.project.category.name.parameterize}", "#{Configuration[:base_url]}/explore##{backer.project.category.name.parameterize}")}
+|Em função disto, você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Você pode conhecer mais projetos de #{backer.project.category} em #{link_to("#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}", "#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}")}
 br
 br
 |Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}. Lembre que o seu cadastro no site foi feito através do #{backer.user.display_provider}. É por ele que você deve entrar para acessar a sua conta. Caso você tenha alguma dificuldade nesse processo, envie um email para #{mail_to Configuration[:email_payments]} com o assunto “Reembolso - problema no login”.

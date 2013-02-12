@@ -27,7 +27,7 @@
   { pt: 'Arquitetura & Urbanismo', en: 'Architecture & Urbanism' },
   { pt: 'Literatura', en: 'Literature' }
 ].each do |name|
-   category = Category.find_or_initialize_by_name name[:pt]
+   category = Category.find_or_initialize_by_name_pt name[:pt]
    category.update_attributes({
      name_en: name[:en]
    })
