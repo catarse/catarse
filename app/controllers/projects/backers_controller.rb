@@ -26,7 +26,7 @@ class Projects::BackersController < ApplicationController
 
   def new
     return unless require_login
-    unless parent.can_back?
+    unless parent.online?
       flash[:failure] = t('projects.back.cannot_back')
       return redirect_to :root
     end

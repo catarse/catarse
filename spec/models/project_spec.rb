@@ -336,44 +336,6 @@ describe Project do
     it{ should == 'users' }
   end
 
-  describe "#can_back?" do
-    subject{ project.can_back? }
-
-    context "when project is approved" do
-      let(:project) { Factory(:project, state: 'online') }
-      it{ should be_true }
-    end
-
-    context "when project is successful" do
-      let(:project) { Factory(:project, state: 'successful') }
-      it{ should be_false }
-    end
-
-    context "when project is not visible" do
-      let(:project) { Factory(:project) }
-      it{ should be_false }
-    end
-
-    context "when project is waiting funds" do
-      let(:project) { Factory(:project, state: 'waiting_funds') }
-      it{ should be_false }
-    end
-
-    context "when project is expired" do
-      before do
-        project.expires_at = Time.now - 1.day
-        project.save!
-      end
-      let(:project) { Factory(:project, state: 'successful') }
-      it{ should be_false }
-    end
-
-    context "when project is rejected" do
-      let(:project) { Factory(:project, state: 'rejected') }
-      it{ should be_false }
-    end
-  end
-
   describe '#selected_rewards' do
     let(:project){ Factory(:project) }
     let(:reward_01) { Factory(:reward, project: project) }
