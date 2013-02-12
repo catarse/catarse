@@ -8,6 +8,7 @@ class Project < ActiveRecord::Base
   include ERB::Util
   include Rails.application.routes.url_helpers
   include PgSearch
+  extend CatarseAutoHtml
 
   before_save do
     if online_days_changed? || !self.expires_at.present?
@@ -32,18 +33,7 @@ class Project < ActiveRecord::Base
 
   has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
 
-  auto_html_for :about do
-    html_escape :map => {
-      '&' => '&amp;',
-      '>' => '&gt;',
-      '<' => '&lt;',
-      '"' => '"' }
-    image
-    youtube width: 600, height: 430, wmode: "opaque"
-    vimeo width: 600, height: 403
-    redcloth :target => :_blank
-    link :target => :_blank
-  end
+  catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
   pg_search_scope :pg_search, against: [
       [:name, 'A'],
