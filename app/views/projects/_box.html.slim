@@ -10,7 +10,7 @@
         - else
           = image_tag "not_successful.#{I18n.locale}.png"
   .box
-    p.black_box= project.category.name
+    p.black_box= project.category
     .cover
       = link_to project, :target => ( defined?(embed_link) ? '__blank' : '' ) do
         = image_tag project.display_image, :itemprop => 'image'

@@ -43,6 +43,6 @@
               - @categories.each_with_index do |category, index|
                 li class="#{(index%2==1 ? 'no_margin':'')}"
                   a href="##{category.name.parameterize}" data-id=category.id
-                    = category.name
+                    = category
 
     .clearfix
