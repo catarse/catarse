@@ -5,7 +5,7 @@ br
 |Unfortunately the project #{link_to(backer.project.name, "#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} that you backed did not reach its goal and wasn't funded on #{Configuration[:company_name]}.
 br
 br
-|Due to this, you received #{backer.display_value} in credits to back other projects. You can explore more #{backer.project.category} projects in #{link_to("#{Configuration[:base_url]}/explore##{backer.project.category.name.parameterize}", "#{Configuration[:base_url]}/explore##{backer.project.category.name.parameterize}")}
+|Due to this, you received #{backer.display_value} in credits to back other projects. You can explore more #{backer.project.category} projects in #{link_to("#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}", "#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}")}
 br
 br
 |If you prefer, you can ask for a refund of your money by clicking on #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}. Remember that you account was made with #{backer.user.display_provider}. It's through it that you must access your account. If you have any trouble in this process, send an email to #{mail_to Configuration[:email_payments]} with the subject “Reembolso - problema no login”.

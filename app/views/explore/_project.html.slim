@@ -21,7 +21,7 @@ script type="text/template" id="project_template"
     | <% } %>
     .box
       |<% locale = window.location.pathname.split('/')[1]%>
-      p.black_box <%= locale == 'pt' ? category['name'] : category['name_en'] %>
+      p.black_box <%=  category['name_' + locale] %>
       .cover
         a href="<%= url %>"
           img src="<%= image %>" itemprop="image"
