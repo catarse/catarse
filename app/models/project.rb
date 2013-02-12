@@ -190,10 +190,6 @@ class Project < ActiveRecord::Base
     ::Airbrake.notify({ :error_class => "Carrierwave does not like thumbnail file", :error_message => "Carrierwave does not like thumbnail file: #{e.inspect}", :parameters => video_url}) rescue nil
   end
 
-  def can_back?
-    online? && !expired?
-  end
-
   def as_json(options={})
     {
       id: id,

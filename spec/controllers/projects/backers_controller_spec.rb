@@ -68,10 +68,10 @@ describe Projects::BackersController do
   describe "GET new" do
     let(:secure_review_host){ nil }
     let(:user){ Factory(:user) }
-    let(:can_back){ true }
+    let(:online){ true }
     before do
       ::Configuration[:secure_review_host] = secure_review_host
-      Project.any_instance.stubs(:can_back?).returns(can_back)
+      Project.any_instance.stubs(:online?).returns(online)
       get :new, {locale: :pt, project_id: project.id}
     end
 
@@ -80,19 +80,19 @@ describe Projects::BackersController do
       it{ should redirect_to login_path }
     end
 
-    context "when user is logged in but project.can_back? is false" do
-      let(:can_back){ false }
+    context "when user is logged in but project.online? is false" do
+      let(:online){ false }
       it{ should redirect_to root_path }
     end
 
-    context "when project.can_back? is true and we have configured a secure review url" do
+    context "when project.online? is true and we have configured a secure review url" do
       let(:secure_review_host){ 'secure.catarse.me' }
       it "should assign the https url to @review_url" do
         assigns(:review_url).should == review_project_backers_url(project, host: Configuration[:secure_review_host], protocol: 'https')
       end
     end
 
-    context "when project.can_back? is true and we have not configured a secure review url" do
+    context "when project.online? is true and we have not configured a secure review url" do
       it{ should render_template("projects/backers/new") }
       it "should assign review_project_backers_path to @review_url" do
         assigns(:review_url).should == review_project_backers_path(project)
