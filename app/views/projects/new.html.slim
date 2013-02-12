@@ -86,7 +86,7 @@
                   .important= t('.video_important')
               = form.label :video_url, t('formtastic.labels.project.video_url')
               = form.text_field :video_url
-              p.inline-hints= t('formtastic.hints.project.video_url')
+              p.inline-hints= t('formtastic.hints.project.video_url').html_safe
 
             .input
               .bootstrap-alert

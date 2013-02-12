@@ -1,13 +1,36 @@
 # coding: utf-8
 
 [
-  'Arte','Artes plásticas','Circo','Comunidade',
-  'Feito à mão','Humor','Quadrinhos','Dança',
-  'Design','Eventos','Moda','Comida',
-  'Cinema & Vídeo','Jogos','Jornalismo',
-  'Música','Fotografia','Tecnologia','Teatro','Literatura'
+  { pt: 'Arte', en: 'Art' },
+  { pt: 'Artes plásticas', en: 'Visual Arts' },
+  { pt: 'Circo', en: 'Circus' },
+  { pt: 'Comunidade', en: 'Community' },
+  { pt: 'Feito à mão', en: 'Handmade' },
+  { pt: 'Humor', en: 'Humor' },
+  { pt: 'Quadrinhos', en: 'Comicbooks' },
+  { pt: 'Dança', en: 'Dance' },
+  { pt: 'Design', en: 'Design' },
+  { pt: 'Eventos', en: 'Events' },
+  { pt: 'Moda', en: 'Fashion' },
+  { pt: 'Comida', en: 'Food' },
+  { pt: 'Cinema & Vídeo', en: 'Film & Video' },
+  { pt: 'Jogos', en: 'Games' },
+  { pt: 'Jornalismo', en: 'Journalism' },
+  { pt: 'Música', en: 'Music' },
+  { pt: 'Fotografia', en: 'Photography' },
+  { pt: 'Tecnologia', en: 'Technology' },
+  { pt: 'Teatro', en: 'Theatre' },
+  { pt: 'Esporte', en: 'Sport' },
+  { pt: 'Graffiti', en: 'Graffiti' },
+  { pt: 'Web', en: 'Web' },
+  { pt: 'Carnaval', en: 'Carnival' },
+  { pt: 'Arquitetura & Urbanismo', en: 'Architecture & Urbanism' },
+  { pt: 'Literatura', en: 'Literature' }
 ].each do |name|
-   Category.find_or_create_by_name name
+   category = Category.find_or_initialize_by_name name[:pt]
+   category.update_attributes({
+     name_en: name[:en]
+   })
  end
 
 [
