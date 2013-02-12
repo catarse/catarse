@@ -1,7 +1,7 @@
 source :gemcutter
 source 'http://gems.github.com'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 gem 'sidekiq', '= 2.4.0'
 gem 'sinatra', require: false
