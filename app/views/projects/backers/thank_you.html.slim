@@ -6,7 +6,7 @@
         h2= t('.header_subtitle')
       .project_info
         = image_tag @project.display_image, :id => 'project_image', :alt => @project.name, :width => '250px'
-        h1= t('.text_title_html', :link => link_to(@project.name, project_path(@project)))
+        h1= t('.text_title_html', :link => link_to(@project.name, project_by_slug_path(permalink: @project.permalink)))
         #review_text
           - if @backer.payment_method == 'MoIP' && @backer.payment_id
             = t('.moip_message', code: @backer.payment_id).html_safe
@@ -17,6 +17,6 @@
             h2= t('.text_subtitle')
             = link_to "http://twitter.com/?status=#{t('i_just_backed', :name => @project.name)} #{@project.short_url}", :target => :_blank do
               = image_tag 'catarse/icon-tw.png', :title => 'Twitter'
-            = link_to "http://www.facebook.com/share.php?u=#{project_url(@project)}", :target => :_blank do
+            = link_to "http://www.facebook.com/share.php?u=#{project_by_slug_url(permalink: @project.permalink)}", :target => :_blank do
               = image_tag 'catarse/icon-fb.png', :title => 'Facebook'
       .clearfix

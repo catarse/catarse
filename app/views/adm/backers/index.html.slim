@@ -75,7 +75,7 @@
               - @backers.each do |backer|
                 tr id=backer.id class=cycle("even", "odd")
                   td title=backer.project.name
-                    = link_to project_path(backer.project) do
+                    = link_to project_by_slug_path(permalink: backer.project.permalink) do
                       = image_tag backer.project.display_image, class: 'project_img'
                   td title=backer.user.display_name
                     = link_to user_path(backer.user) do

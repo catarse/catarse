@@ -3,14 +3,14 @@
 .info
   h3= title
   h2
-    = link_to project.name, project_path(project)
+    = link_to project.name, project_by_slug_path(permalink: project.permalink)
   .author
     p
       = t('projects.box.by')
       |&nbsp;
       = link_to project.user.name, user_path(project.user)
   .description
-    p= link_to truncate(project.headline, :length => 120), project_path(project)
+    p= link_to truncate(project.headline, :length => 120), project_by_slug_path(permalink: project.permalink)
   .author
     - if project.user.address_city || project.user.address_state
       p= link_to 'javascript:void(0)' do
