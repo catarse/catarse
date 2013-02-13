@@ -12,8 +12,6 @@ class Backer < ActiveRecord::Base
   scope :anonymous, where(:anonymous => true)
   scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(:confirmed => true)
-  scope :not_confirmed, where(:confirmed => false)
-  scope :pending, where(:confirmed => false)
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{ 
@@ -29,15 +27,6 @@ class Backer < ActiveRecord::Base
   }
 
   attr_protected :confirmed
-
-  def price_in_cents
-    (self.value * 100).round
-  end
-
-  def refund!
-    self.refunded = true
-    self.save
-  end
 
   def refund_deadline
     created_at + 180.days
@@ -90,18 +79,6 @@ class Backer < ActiveRecord::Base
 
   def display_platform_fee(fee=7.5)
     number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => ','
-  end
-
-  def moip_value
-    "%0.0f" % (value * 100)
-  end
-
-  def cancel_refund_request!
-    raise I18n.t('credits.cannot_cancel_refund_reques') unless self.requested_refund
-    raise I18n.t('credits.refund.refunded') if self.refunded
-    raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
-    self.update_attributes({ requested_refund: false })
-    self.user.update_attributes({ credits: (self.user.credits + self.value) })
   end
 
   def as_json(options={})
