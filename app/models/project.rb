@@ -91,7 +91,7 @@ class Project < ActiveRecord::Base
   search_methods :visible, :recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
 
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
-  validates_presence_of :name, :user, :category, :about, :headline, :goal
+  validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
   validates_length_of :headline, :maximum => 140
   validates_numericality_of :online_days, :less_than_or_equal_to => 60
   validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true

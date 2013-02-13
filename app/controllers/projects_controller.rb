@@ -76,13 +76,8 @@ class ProjectsController < ApplicationController
     begin
       if params[:permalink].present?
         @project = Project.find_by_permalink! params[:permalink]
-      elsif resource.permalink
+      else
         return redirect_to project_by_slug_path(resource.permalink)
-      end
-
-      @project = Project.find params[:id] if params[:id].present?
-      if !params[:permalink].present? and @project.permalink.present?
-        return redirect_to project_by_slug_url(permalink: @project.permalink)
       end
 
       show!{

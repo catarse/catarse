@@ -13,7 +13,7 @@ describe Project do
   end
 
   describe "validations" do
-    %w[name user category about headline goal].each do |field|
+    %w[name user category about headline goal permalink].each do |field|
       it{ should validate_presence_of field }
     end
     it{ should ensure_length_of(:headline).is_at_most(140) }
