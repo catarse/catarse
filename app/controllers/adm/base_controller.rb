@@ -14,12 +14,11 @@ class Adm::BaseController < ApplicationController
 
   def update
     update! do |format|
-      instance_variable = instance_variable_get("@#{controller_name.singularize}")
-      if instance_variable.errors.empty?
-        format.json { respond_with_bip(instance_variable) }
+      if resource.errors.empty?
+        format.json { respond_with_bip(resource) }
       else
         format.html { render action: "edit" }
-        format.json { respond_with_bip(instance_variable) }
+        format.json { respond_with_bip(resource) }
       end
     end
   end
