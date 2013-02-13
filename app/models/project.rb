@@ -105,10 +105,6 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def users_who_backed
-    User.who_backed_project(self.id)
-  end
-
   def subscribed_users
     User.subscribed_to_updates.subscribed_to_project(self.id)
   end
