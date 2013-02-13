@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RewardsController do
   subject{ response }
-  let(:project) { Factory(:project, permalink: nil) }
+  let(:project) { Factory(:project) }
   let(:reward) { Factory(:reward, project: project) }
 
   shared_examples_for "GET rewards index" do
