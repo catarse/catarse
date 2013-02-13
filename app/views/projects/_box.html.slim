@@ -2,7 +2,7 @@
   meta[itemprop="dateCreated" content=project.created_at.to_date]
   - if project.expired?
     .status_image
-      = link_to project_path(project), :target => ( defined?(embed_link) ? '__blank' : '' ) do
+      = link_to project_by_slug_path(permalink: project.permalink), :target => ( defined?(embed_link) ? '__blank' : '' ) do
         - if project.successful?
           = image_tag "successful.#{I18n.locale}.png"
         - elsif project.waiting_confirmation?
