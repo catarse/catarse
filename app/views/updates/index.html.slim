@@ -14,7 +14,7 @@
           .midia
             .social
               .update_share
-                - url = (@project.permalink ? project_by_slug_url(@project.permalink, :update_id => update.id, :locale => I18n.locale) : project_url(@project, :update_id => update.id, :locale => I18n.locale))
+                - url = project_by_slug_url(@project.permalink, :update_id => update.id, :locale => I18n.locale)
                 .twitter_share= render_twitter text: "#{update.title}", url: url 
                 .facebook_share= render_facebook_like href: url, width: '360'
           - if can? :manage, update
