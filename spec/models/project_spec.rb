@@ -328,14 +328,6 @@ describe Project do
     p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
   end
 
-  describe "#users_who_backed" do
-    subject{ project.users_who_backed }
-    before do
-      User.expects(:who_backed_project).with(project.id).returns('users')
-    end
-    it{ should == 'users' }
-  end
-
   describe '#selected_rewards' do
     let(:project){ Factory(:project) }
     let(:reward_01) { Factory(:reward, project: project) }

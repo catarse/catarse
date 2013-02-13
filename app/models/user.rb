@@ -76,39 +76,6 @@ class User < ActiveRecord::Base
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
   scope :subscribed_to_updates, where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id IS NULL AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
   scope :subscribed_to_project, ->(project_id){ who_backed_project(project_id).where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id) }
-  scope :most_backeds, ->{
-    joins(:backs).select(
-      <<-SQL
-      users.id,
-      users.name,
-      users.email,
-      count(backers.id) as count_backs
-      SQL
-    ).
-      where("backers.confirmed is true").
-      order("count_backs desc").
-      group("users.name, users.id, users.email")
-  }
-  scope :most_backed_different_projects, -> {
-    joins(:backs).select(
-      <<-SQL
-        DISTINCT(users.id),
-        (
-          SELECT
-            COUNT(DISTINCT(backers.project_id))
-          FROM
-            backers
-          WHERE
-            backers.confirmed IS TRUE
-            AND backers.user_id = users.id
-            AND users.primary_user_id IS NULL
-        ) as count_backs
-      SQL
-    ).
-      where("backers.confirmed is true").
-      order("count_backs DESC")
-
-  }
   scope :by_email, ->(email){ where('email ~* ?', email) }
   scope :by_payer_email, ->(email){  where('EXISTS(SELECT true FROM backers JOIN payment_notifications ON backers.id = payment_notifications.backer_id WHERE backers.user_id = users.id AND payment_notifications.extra_data ~* ?)', email) }
   scope :by_name, ->(name){ where('name ~* ?', name) }
@@ -129,10 +96,6 @@ class User < ActiveRecord::Base
       select('count(DISTINCT user_id) as users, count(*) as backers, sum(user_totals.sum) as backed, sum(user_totals.credits) as credits').
       to_sql
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
-  end
-
-  def total_of_different_backs
-    backs.confirmed.select('DISTINCT(backers.project_id)').length
   end
 
   def decorator
