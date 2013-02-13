@@ -1,5 +1,4 @@
 class Adm::BackersController < Adm::BaseController
-  inherit_resources
   menu I18n.t("adm.backers.index.menu") => Rails.application.routes.url_helpers.adm_backers_path
   before_filter :set_title
 
@@ -7,20 +6,6 @@ class Adm::BackersController < Adm::BaseController
     resource.confirm!
     flash[:notice] = I18n.t('adm.backers.messages.successful.confirm')
     redirect_to adm_backers_path
-  end
-
-  def update
-    @backer = Backer.find params[:id]
-
-    respond_to do |format|
-      if @backer.update_attributes(params[:backer])
-        format.html { redirect_to(adm_backers_path) }
-        format.json { respond_with_bip(@backer) }
-      else
-        format.html { render :action => "edit" }
-        format.json { respond_with_bip(@user) }
-      end
-    end
   end
 
   def unconfirm
