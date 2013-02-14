@@ -61,7 +61,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
       if(/^(\w|-)*$/.test($('#project_permalink').val()))
       {
         if($('#project_permalink').val() == ''){
-          permalink_valid = true
+          permalink_valid = false
         }
         else {
         $.get('/projects/check_slug/?permalink='+$('#project_permalink').val(),
@@ -170,7 +170,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
       $(this).next('p.inline-hints').show()
     })
 
-    $('#project_name').focus()
+    $('#project_permalink').focus()
     $('textarea').maxlength()
   }
 })
