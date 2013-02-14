@@ -127,6 +127,8 @@ en:
     should_not_back_if_maximum_backers_been_reached: "has reached its maximum backers"
     value_must_be_at_least_rewards_value: "must be at least %{minimum_value} for the selected reward"
   backer_plural: backers
+  project_plural: projects
+  project_singular: project
   backer_singular: backer
   click_here: "Click here"
   clicking_here: "clicking here"

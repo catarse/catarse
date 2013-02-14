@@ -1,5 +1,14 @@
-pt:
+en:
   adm:
+    projects:
+      index:
+        submit: 'Filter'
+        send_to_draft: 'Send to DRAFT!'
+        reject: 'Reject!'
+        approve: 'Approve!'
+    financials:
+      index:
+        submit: 'Filter'
     users:
       index:
         title: "Management backers"
@@ -20,22 +29,23 @@ pt:
         value: Value
         provider: Provider
     backers:
-      title: "Backers management"
-      menu: Backs
-      anonymous: Anonymous?
-      confirmed: Confirmed?
-      credits: "Used credits?"
-      id: Id
-      key: Key
-      no_backers: "No backers found."
-      project: Project
-      refunded: Refunded?
-      requested_refund: "Requested refund?"
-      reward: Reward
-      submit: Search
-      total_backed: backed
-      total_backers: backers
-      total_backs: backs
-      total_users: Users
-      user: User
-      value: Value
+      index:
+        title: "Backers management"
+        menu: Backs
+        anonymous: Anonymous?
+        confirmed: Confirmed?
+        credits: "Used credits?"
+        id: Id
+        key: Key
+        no_backers: "No backers found."
+        project: Project
+        refunded: Refunded?
+        requested_refund: "Requested refund?"
+        reward: Reward
+        submit: Search
+        total_backed: backed
+        total_backers: backers
+        total_backs: backs
+        total_users: Users
+        user: User
+        value: Value
