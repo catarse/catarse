@@ -22,6 +22,9 @@ pt:
       index:
         id: ID
         name: 'Titulo'
+        send_to_draft: 'Mandar para DRAFT!'
+        reject: 'Rejeitar!'
+        approve: 'Aprovar!'
         user_id: 'User ID'
         goal: 'Meta'
         total_backs: 'Apoios'
