@@ -86,7 +86,7 @@
             .bootstrap-twitter
               .alert.alert-info
                 p style='margin-bottom: 0; padding-bottom: 0;'
-                  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', 'http://catarse.me/guia_realizadores.pdf', target: '_blank'}".html_safe
+                  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{Configuration[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
             .bootstrap-form
               = semantic_form_for @project do |form|
                 = form.inputs do
