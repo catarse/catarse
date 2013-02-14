@@ -9,13 +9,13 @@
       | If you paste the URL of an image or a video from Vimeo or YouTube, they will be embedded in your comment. Try it on!
     li
       | When you paste any other URL, it will become a link. For example, http://catarse.me will become
-      a href="http://catarse.me" target="_blank" http://catarse.me
+      a href="#{Configuration[:base_url]}" target="_blank" #{Configuration[:base_url]}
       | .
     li
       | If you want to add some text to the link, just use the following format:
       strong "the text you want":http://your.url
       | . For example, "#{Configuration[:company_name]}":http://catarse.me will become
-      a href="http://catarse.me" target="_blank" #{Configuration[:company_name]}
+      a href="#{Configuration[:base_url]}" target="_blank" #{Configuration[:company_name]}
       | .
     li
       | You can use
