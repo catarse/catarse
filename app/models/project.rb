@@ -157,21 +157,13 @@ class Project < ActiveRecord::Base
   end
 
   def time_to_go
-    if expires_at >= 1.day.from_now
-      time = ((expires_at - Time.now).abs/60/60/24).round
-      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.day').downcase)}
-    elsif expires_at >= 1.hour.from_now
-      time = ((expires_at - Time.now).abs/60/60).round
-      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.hour').downcase)}
-    elsif expires_at >= 1.minute.from_now
-      time = ((expires_at - Time.now).abs/60).round
-      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.minute').downcase)}
-    elsif expires_at >= 1.second.from_now
-      time = ((expires_at - Time.now).abs).round
-      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.second').downcase)}
-    else
-      {:time => 0, :unit => pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
+    ['day', 'hour', 'minute', 'second'].each do |unit|
+      if expires_at >= 1.send(unit).from_now
+        time = ((expires_at - Time.now).abs/1.send(unit)).round
+        return {time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase)}
+      end
     end
+    {time: 0, unit: pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
   end
 
   def remaining_text
