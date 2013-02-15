@@ -101,6 +101,8 @@ describe ProjectObserver do
 
   describe "#notify_owner_that_project_is_rejected" do
     before do
+      ::Configuration[:facebook_url] = 'http://facebook.com/foo'
+      ::Configuration[:blog_url] = 'http://blog.com/foo'
       project_rejected
       project.reject
     end

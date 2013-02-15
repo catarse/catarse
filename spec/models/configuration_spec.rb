@@ -22,12 +22,6 @@ describe ::Configuration do
     it "should return nil when not founf" do
       ::Configuration[:not_found_config].should be(nil)
     end
-    it "should cache get" do
-      ::Configuration[:a_config].should be(::Configuration[:a_config])
-    end
-    it "should not cache different keys" do
-      ::Configuration[:a_config].should_not be(::Configuration[:other_config])
-    end
     it "should return array" do
       expected= ['a_value', 'another_value']
       ::Configuration[:a_config, :other_config].should == ['a_value', 'another_value']

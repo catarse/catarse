@@ -63,8 +63,6 @@ gem 'inherited_resources', '1.3.1'
 gem 'has_scope'
 gem 'spectator-validates_email', require: 'validates_email'
 gem 'has_vimeo_video', '~> 0.0.5'
-gem 'memoist', '~> 0.2.0'
-gem 'wirble'
 gem 'weekdays'
 gem 'brcep'
 gem "RedCloth"
