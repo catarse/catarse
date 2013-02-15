@@ -39,6 +39,18 @@ pt:
       update_needs_confirmation: Sua conta foi atualizada com sucesso, mas nós precisamos verificar o novo endereço de email. Por favor, verifique seu email e clique no link de confirmação para finalizar confirmando o seu novo email.
       updated: A sua conta foi atualizada com sucesso.
     sessions:
+      new:
+        site_title: "Efetuar login"
+        submit: "Efetuar login"
+        title: "Entre utilizando o seu endereço de email"
+        login_title: Login
+        login_subtitle: "Caso já possua uma conta"
+        register_title: Cadastre-se
+        register_subtitle: "Utilize seu endereço de e-mail"
+        with_facebook: "Entre utilizando o facebook"
+        with_facebook_subtitle: "Uma maneira muito rápida de acessar"
+        with_another_social: "Não tem conta no facebook?"
+        with_another_social_subtitle: "Entre utilizando sua conta de outra rede social"
       signed_in: Login efetuado com sucesso.
       signed_out: Logout efetuado com sucesso.
     unlocks:

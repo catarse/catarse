@@ -41,6 +41,18 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       updated: "You updated your account successfully."
     sessions:
+      new:
+        site_title: "Login"
+        submit: "Login"
+        title: "Enter using your email address"
+        login_title: Login
+        login_subtitle: "If you already have an account"
+        register_title: "Sign Up"
+        register_subtitle: "Use your email address"
+        with_facebook: "Use your facebook account"
+        with_facebook_subtitle: "A fast way to log in"
+        with_another_social: "Don't you have a facebook account?"
+        with_another_social_subtitle: "Use another social network"
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
     unlocks:
