@@ -28,13 +28,13 @@ describe ProjectObserver do
   describe "after_create" do
     before do
       ProjectObserver.any_instance.unstub(:after_create)
-      Configuration[:facebook_url] = 'http://facebook.com'
-      Configuration[:blog_url] = 'http://blog.com'
-      Configuration[:company_name] = 'Catarse'
+      ::Configuration[:facebook_url] = 'http://facebook.com'
+      ::Configuration[:blog_url] = 'http://blog.com'
+      ::Configuration[:company_name] = 'Catarse'
       user
       project
     end
-    let(:user) { Factory(:user, email: Configuration[:email_projects])}
+    let(:user) { Factory(:user, email: ::Configuration[:email_projects])}
 
     it "should create notification for catarse admin" do
       Notification.where(user_id: user.id, notification_type_id: new_draft_project.id, project_id: project.id).first.should_not be_nil

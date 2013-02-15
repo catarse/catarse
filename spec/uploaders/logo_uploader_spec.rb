@@ -35,7 +35,7 @@ describe LogoUploader do
     context "when in production env" do
       before do
         Rails.env.stubs(:production?).returns(true)
-        Configuration[:aws_access_key] = 'test'
+        ::Configuration[:aws_access_key] = 'test'
       end
       it{ should == :fog }
     end
