@@ -9,7 +9,7 @@ describe NotificationsMailer do
     ::Configuration['company_name'] = 'Catarse'
     Mail::Message.any_instance.stubs(:deliver)
     NotificationsMailer.any_instance.expects(:mail).at_least_once.with({
-      :from => "#{Configuration[:company_name]} <#{Configuration[:email_contact]}>",
+      :from => "#{::Configuration[:company_name]} <#{::Configuration[:email_contact]}>",
       :to => notification.user.email,
       :subject => I18n.t('notifications.confirm_backer.subject', :project_name => notification.project.name),
       :template_name => 'confirm_backer'

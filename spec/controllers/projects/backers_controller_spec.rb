@@ -88,7 +88,7 @@ describe Projects::BackersController do
     context "when project.online? is true and we have configured a secure review url" do
       let(:secure_review_host){ 'secure.catarse.me' }
       it "should assign the https url to @review_url" do
-        assigns(:review_url).should == review_project_backers_url(project, host: Configuration[:secure_review_host], protocol: 'https')
+        assigns(:review_url).should == review_project_backers_url(project, host: ::Configuration[:secure_review_host], protocol: 'https')
       end
     end
 
