@@ -41,7 +41,7 @@ describe Ability do
     end
 
     describe 'When project is waiting funds' do
-      let(:project) { Factory(:project, user: user, state: 'waiting_funds') }
+      let(:project) { FactoryGirl.create(:project, user: user, state: 'waiting_funds') }
 
       it { should be_able_to(:update, project, :video_url) }
       it { should be_able_to(:update, project, :uploaded_image) }
