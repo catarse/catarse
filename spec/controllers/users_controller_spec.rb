@@ -5,10 +5,10 @@ describe UsersController do
   render_views
   subject{ response }
 
-  let(:successful_project){ Factory(:project, state: 'successful') }
-  let(:failed_project){ Factory(:project, state: 'failed') }
-  let(:backer){ Factory(:backer, :user => user, :project => failed_project) }
-  let(:user){ Factory(:user, :provider => 'facebook', :uid => '666') }
+  let(:successful_project){ FactoryGirl.create(:project, state: 'successful') }
+  let(:failed_project){ FactoryGirl.create(:project, state: 'failed') }
+  let(:backer){ FactoryGirl.create(:backer, :user => user, :project => failed_project) }
+  let(:user){ FactoryGirl.create(:user, :provider => 'facebook', :uid => '666') }
 
   describe "PUT update" do
     before do
@@ -23,7 +23,7 @@ describe UsersController do
 
   describe "GET show" do
     before do
-      Factory(:notification_type, name: 'updates')
+      FactoryGirl.create(:notification_type, name: 'updates')
       request.session[:user_id] = user.id
       get :show, :id => user.id, :locale => 'pt'
     end
@@ -54,7 +54,7 @@ describe UsersController do
         end
 
         it "when user doesn't have a necessary value" do
-          Factory(:backer, :user => user, :project => successful_project, :credits => true)
+          FactoryGirl.create(:backer, :user => user, :project => successful_project, :credits => true)
           post :request_refund, { id: user.id, back_id: backer.id }
 
           ActiveSupport::JSON.decode(subject.body)['status'].should == I18n.t('credits.refund.no_credits')

@@ -101,7 +101,6 @@ GEM
       rails (~> 3.1)
     braintree (2.22.0)
       builder (>= 2.0.0)
-    brcep (3.3.0)
     builder (3.0.4)
     capybara (2.0.2)
       mime-types (>= 1.16)
@@ -157,10 +156,10 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     facter (1.6.17)
-    factory_girl (2.6.4)
-      activesupport (>= 2.3.9)
-    factory_girl_rails (1.7.0)
-      factory_girl (~> 2.6.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     faraday (0.8.5)
       multipart-post (~> 1.1)
@@ -412,7 +411,6 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    unicode (0.4.4)
     valuable (0.9.6)
     vimeo (1.5.3)
       httparty (>= 0.4.5)
@@ -436,7 +434,6 @@ DEPENDENCIES
   airbrake
   auto_html (= 1.4.2)
   best_in_place
-  brcep
   cancan!
   capybara (>= 1.0.1)
   carrierwave (~> 0.7.0)
@@ -450,7 +447,7 @@ DEPENDENCIES
   devise
   draper
   enumerate_it
-  factory_girl_rails (= 1.7.0)
+  factory_girl_rails
   feedzirra
   fog
   foreman
@@ -483,7 +480,6 @@ DEPENDENCIES
   rspec-rails (~> 2.12)
   sass-rails (~> 3.2.5)
   schema_plus
-  selenium-webdriver
   shoulda
   sidekiq (= 2.4.0)
   sinatra
@@ -493,6 +489,5 @@ DEPENDENCIES
   state_machine
   thin
   uglifier (>= 1.0.3)
-  unicode
   validation_reflection!
   weekdays

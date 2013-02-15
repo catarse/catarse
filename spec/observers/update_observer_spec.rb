@@ -5,7 +5,7 @@ describe UpdateObserver do
     context "call notify update worker" do
       before do
         NotifyUpdateWorker.jobs.clear
-        @project = Factory(:project)
+        @project = FactoryGirl.create(:project)
       end
 
       it "should send to queue" do

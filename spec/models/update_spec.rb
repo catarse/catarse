@@ -14,22 +14,22 @@ describe Update do
   end
 
   describe ".create" do
-    subject{ Factory(:update, :comment => "this is a comment\n") }
+    subject{ FactoryGirl.create(:update, :comment => "this is a comment\n") }
     its(:comment_html){ should == "<p>this is a comment</p>" }
   end
 
   describe "#email_comment_html" do
-    subject{ Factory(:update, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png").email_comment_html }
+    subject{ FactoryGirl.create(:update, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png").email_comment_html }
     it{ should == "<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img alt=\"\" src=\"http://catarse.me/assets/catarse/logo164x54.png\" /></p>" }
   end
 
   describe "#notify_backers" do
     before do
       Notification.unstub(:create_notification)
-      Factory(:notification_type, :name => 'updates')
-      @project = Factory(:project)
-      backer = Factory(:backer, :confirmed => true, :project => @project)
-      Factory(:backer, :confirmed => true, :project => @project, :user => backer.user)
+      FactoryGirl.create(:notification_type, :name => 'updates')
+      @project = FactoryGirl.create(:project)
+      backer = FactoryGirl.create(:backer, :confirmed => true, :project => @project)
+      FactoryGirl.create(:backer, :confirmed => true, :project => @project, :user => backer.user)
       @project.reload
       ActionMailer::Base.deliveries = []
       @update = Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")

@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe User do
-  let(:user){ Factory(:user, :provider => "foo", :uid => "bar") }
-  let(:unfinished_project){ Factory(:project, state: 'online') }
-  let(:successful_project){ Factory(:project, state: 'successful') }
-  let(:failed_project){ Factory(:project, state: 'failed') }
-  let(:notification_type){ Factory(:notification_type, name: 'updates') }
+  let(:user){ FactoryGirl.create(:user, :provider => "foo", :uid => "bar") }
+  let(:unfinished_project){ FactoryGirl.create(:project, state: 'online') }
+  let(:successful_project){ FactoryGirl.create(:project, state: 'successful') }
+  let(:failed_project){ FactoryGirl.create(:project, state: 'failed') }
+  let(:notification_type){ FactoryGirl.create(:notification_type, name: 'updates') }
 
   describe "associations" do
     it{ should have_many :backs }
@@ -36,9 +36,9 @@ describe User do
 
     context "when he has credits in the user_total" do
       before do
-        b = Factory(:backer, :value => 100, :project => failed_project)
+        b = FactoryGirl.create(:backer, :value => 100, :project => failed_project)
         @u = b.user
-        b = Factory(:backer, :value => 100, :project => successful_project)
+        b = FactoryGirl.create(:backer, :value => 100, :project => successful_project)
       end
       it{ should == [@u] }
     end
@@ -46,15 +46,15 @@ describe User do
 
   describe ".by_payer_email" do
     before do
-      p = Factory(:payment_notification)
+      p = FactoryGirl.create(:payment_notification)
       backer = p.backer
       @u = backer.user
       p.extra_data = {'payer_email' => 'foo@bar.com'}
       p.save!
-      p = Factory(:payment_notification, :backer => backer)
+      p = FactoryGirl.create(:payment_notification, :backer => backer)
       p.extra_data = {'payer_email' => 'another_email@bar.com'}
       p.save!
-      p = Factory(:payment_notification)
+      p = FactoryGirl.create(:payment_notification)
       p.extra_data = {'payer_email' => 'another_email@bar.com'}
       p.save!
     end
@@ -64,14 +64,14 @@ describe User do
 
   describe ".by_key" do
     before do
-      b = Factory(:backer)
+      b = FactoryGirl.create(:backer)
       @u = b.user
       b.key = 'abc'
       b.save!
-      b = Factory(:backer, :user => @u)
+      b = FactoryGirl.create(:backer, :user => @u)
       b.key = 'abcde'
       b.save!
-      b = Factory(:backer)
+      b = FactoryGirl.create(:backer)
       b.key = 'def'
       b.save!
     end
@@ -81,8 +81,8 @@ describe User do
 
   describe ".by_id" do
     before do
-      @u = Factory(:user)
-      Factory(:user)
+      @u = FactoryGirl.create(:user)
+      FactoryGirl.create(:user)
     end
     subject{ User.by_id @u.id }
     it{ should == [@u] }
@@ -90,8 +90,8 @@ describe User do
 
   describe ".by_name" do
     before do
-      @u = Factory(:user, :name => 'Foo Bar')
-      Factory(:user, :name => 'Baz Qux')
+      @u = FactoryGirl.create(:user, :name => 'Foo Bar')
+      FactoryGirl.create(:user, :name => 'Baz Qux')
     end
     subject{ User.by_name 'Bar' }
     it{ should == [@u] }
@@ -99,35 +99,35 @@ describe User do
 
   describe ".by_email" do
     before do
-      @u = Factory(:user, :email => 'foo@bar.com')
-      Factory(:user, :email => 'another_email@bar.com')
+      @u = FactoryGirl.create(:user, :email => 'foo@bar.com')
+      FactoryGirl.create(:user, :email => 'another_email@bar.com')
     end
     subject{ User.by_email 'foo@bar' }
     it{ should == [@u] }
   end
 
   describe ".primary" do
-    subject{ Factory(:user, :primary_user_id => user.id).primary }
+    subject{ FactoryGirl.create(:user, :primary_user_id => user.id).primary }
     it{ should == user }
   end
 
   describe ".who_backed_project" do
     subject{ User.who_backed_project(successful_project.id) }
     before do
-      @backer = Factory(:backer, :confirmed => true, :project => successful_project)
-      Factory(:backer, :confirmed => true, :project => successful_project, :user => @backer.user)
-      Factory(:backer, :confirmed => false, :project => successful_project)
+      @backer = FactoryGirl.create(:backer, :confirmed => true, :project => successful_project)
+      FactoryGirl.create(:backer, :confirmed => true, :project => successful_project, :user => @backer.user)
+      FactoryGirl.create(:backer, :confirmed => false, :project => successful_project)
     end
     it{ should == [@backer.user] }
   end
 
   describe ".backer_totals" do
     before do
-      Factory(:backer, :value => 100, :credits => false, :project => successful_project)
-      Factory(:backer, :value => 50, :credits => false, :project => successful_project)
-      user = Factory(:backer, :value => 25, :project => failed_project).user
+      FactoryGirl.create(:backer, :value => 100, :credits => false, :project => successful_project)
+      FactoryGirl.create(:backer, :value => 50, :credits => false, :project => successful_project)
+      user = FactoryGirl.create(:backer, :value => 25, :project => failed_project).user
       user.save!
-      @u = Factory(:user)
+      @u = FactoryGirl.create(:user)
     end
 
     context "when we call upon user without backs" do
@@ -188,8 +188,8 @@ describe User do
   end
 
   describe ".find_with_omniauth" do
-    let(:primary){ Factory(:user) }
-    let(:secondary){ Factory(:user, :primary_user_id => primary.id) }
+    let(:primary){ FactoryGirl.create(:user) }
+    let(:secondary){ FactoryGirl.create(:user, :primary_user_id => primary.id) }
     it{ User.find_with_omni_auth(primary.provider, primary.uid).should == primary }
     it{ User.find_with_omni_auth(secondary.provider, secondary.uid).should == primary }
     it{ User.find_with_omni_auth(secondary.provider, 'user that does not exist').should == nil }
@@ -208,28 +208,28 @@ describe User do
 
   describe "#credits" do
     before do
-      @u = Factory(:user)
-      Factory(:backer, :credits => false, :value => 100, :user_id => @u.id, :project => successful_project)
-      Factory(:backer, :credits => false, :value => 100, :user_id => @u.id, :project => unfinished_project)
-      Factory(:backer, :credits => false, :value => 200, :user_id => @u.id, :project => failed_project)
-      Factory(:backer, :credits => true, :value => 100, :user_id => @u.id, :project => successful_project)
-      Factory(:backer, :credits => true, :value => 50, :user_id => @u.id, :project => unfinished_project)
-      Factory(:backer, :credits => true, :value => 100, :user_id => @u.id, :project => failed_project)
-      Factory(:backer, :credits => false, :requested_refund => true, :value => 200, :user_id => @u.id, :project => failed_project)
+      @u = FactoryGirl.create(:user)
+      FactoryGirl.create(:backer, :credits => false, :value => 100, :user_id => @u.id, :project => successful_project)
+      FactoryGirl.create(:backer, :credits => false, :value => 100, :user_id => @u.id, :project => unfinished_project)
+      FactoryGirl.create(:backer, :credits => false, :value => 200, :user_id => @u.id, :project => failed_project)
+      FactoryGirl.create(:backer, :credits => true, :value => 100, :user_id => @u.id, :project => successful_project)
+      FactoryGirl.create(:backer, :credits => true, :value => 50, :user_id => @u.id, :project => unfinished_project)
+      FactoryGirl.create(:backer, :credits => true, :value => 100, :user_id => @u.id, :project => failed_project)
+      FactoryGirl.create(:backer, :credits => false, :requested_refund => true, :value => 200, :user_id => @u.id, :project => failed_project)
     end
     subject{ @u.credits }
     it{ should == 50.0 }
   end
 
   describe "#primary" do
-    subject{ Factory(:user, :primary_user_id => user.id).primary }
+    subject{ FactoryGirl.create(:user, :primary_user_id => user.id).primary }
     it{ should == user }
   end
 
   describe "#secondary_users" do
     before do
-      @secondary = Factory(:user, :primary_user_id => user.id)
-      Factory(:user)
+      @secondary = FactoryGirl.create(:user, :primary_user_id => user.id)
+      FactoryGirl.create(:user)
     end
     subject{ user.secondary_users }
     it{ should == [@secondary] }
@@ -247,10 +247,10 @@ describe User do
   describe "#recommended_project" do
     subject{user.recommended_project}
     before do
-      user2, p1, @p2 = Factory(:user),Factory(:project), Factory(:project)
-      Factory(:backer, :user => user2, :project => p1)
-      Factory(:backer, :user => user2, :project => @p2)
-      Factory(:backer, :user => user, :project => p1)
+      user2, p1, @p2 = FactoryGirl.create(:user),FactoryGirl.create(:project), FactoryGirl.create(:project)
+      FactoryGirl.create(:backer, :user => user2, :project => p1)
+      FactoryGirl.create(:backer, :user => user2, :project => @p2)
+      FactoryGirl.create(:backer, :user => user, :project => p1)
     end
     it{ should == @p2}
   end
@@ -262,7 +262,7 @@ describe User do
       it{ should be_new_record }
     end
     context "when user is unsubscribed from all projects" do
-      before { @u = Factory(:unsubscribe, project_id: nil, notification_type_id: notification_type.id, user_id: user.id )}
+      before { @u = FactoryGirl.create(:unsubscribe, project_id: nil, notification_type_id: notification_type.id, user_id: user.id )}
       it{ should == @u}
     end
   end
@@ -270,9 +270,9 @@ describe User do
   describe "#project_unsubscribes" do
     subject{user.project_unsubscribes}
     before do
-      @p1 = Factory(:project)
-      Factory(:backer, user: user, project: @p1)
-      @u1 = Factory(:unsubscribe, project_id: @p1.id, notification_type_id: notification_type.id, user_id: user.id )
+      @p1 = FactoryGirl.create(:project)
+      FactoryGirl.create(:backer, user: user, project: @p1)
+      @u1 = FactoryGirl.create(:unsubscribe, project_id: @p1.id, notification_type_id: notification_type.id, user_id: user.id )
     end
     it{ should == [@u1]}
   end
@@ -280,30 +280,30 @@ describe User do
   describe "#backed_projects" do
     subject{user.backed_projects}
     before do
-      @p1 = Factory(:project)
-      Factory(:backer, user: user, project: @p1)
-      Factory(:backer, user: user, project: @p1)
+      @p1 = FactoryGirl.create(:project)
+      FactoryGirl.create(:backer, user: user, project: @p1)
+      FactoryGirl.create(:backer, user: user, project: @p1)
     end
     it{should == [@p1]}
   end
 
   describe "#remember_me_hash" do
-    subject{ Factory(:user, :provider => "foo", :uid => "bar").remember_me_hash }
+    subject{ FactoryGirl.create(:user, :provider => "foo", :uid => "bar").remember_me_hash }
     it{ should == "27fc6690fafccbb0fc0b8f84c6749644" }
   end
 
   describe "#facebook_id" do
     subject{ user.facebook_id }
     context "when primary is a FB user" do
-      let(:user){ Factory(:user, :provider => "facebook", :uid => "bar") }
+      let(:user){ FactoryGirl.create(:user, :provider => "facebook", :uid => "bar") }
       it{ should == 'bar' }
     end
     context "when primary is another provider's user and there is no secondary" do
-      let(:user){ Factory(:user, :provider => "foo", :uid => "bar") }
+      let(:user){ FactoryGirl.create(:user, :provider => "foo", :uid => "bar") }
       it{ should be_nil }
     end
     context "when primary is another provider's user but there is a secondary FB user" do
-      let(:user){ Factory(:user, :provider => "foo", :uid => "bar", :secondary_users => [Factory(:user, :provider => "facebook", :uid => "bar")]) }
+      let(:user){ FactoryGirl.create(:user, :provider => "foo", :uid => "bar", :secondary_users => [FactoryGirl.create(:user, :provider => "facebook", :uid => "bar")]) }
       it{ should == 'bar' }
     end
   end
@@ -311,14 +311,14 @@ describe User do
   describe "#merge_into!" do
     it "should merge into another account, backs, projects and notifications with it" do
       Notification.any_instance.stubs(:send_email)
-      old_user = Factory(:user)
-      new_user = Factory(:user)
-      backed_project = Factory(:project)
+      old_user = FactoryGirl.create(:user)
+      new_user = FactoryGirl.create(:user)
+      backed_project = FactoryGirl.create(:project)
       old_user_back = backed_project.backers.create!(:user => old_user, :value => 10)
       new_user_back = backed_project.backers.create!(:user => new_user, :value => 10)
-      old_user_project = Factory(:project, :user => old_user)
-      new_user_project = Factory(:project, :user => new_user)
-      notification_type = Factory(:notification_type)
+      old_user_project = FactoryGirl.create(:project, :user => old_user)
+      new_user_project = FactoryGirl.create(:project, :user => new_user)
+      notification_type = FactoryGirl.create(:notification_type)
       old_user_notification = old_user.notifications.create! notification_type: notification_type
       new_user_notification = new_user.notifications.create! notification_type: notification_type
 

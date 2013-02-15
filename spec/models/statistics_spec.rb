@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Statistics do
   before do
-    Factory(:project, state: 'successful')
-    Factory(:project, state: 'draft') 
-    project = Factory(:project, state: 'online')
-    Factory(:backer, confirmed: true, project: project )
-    Factory(:backer, confirmed: false, project: project)
+    FactoryGirl.create(:project, state: 'successful')
+    FactoryGirl.create(:project, state: 'draft') 
+    project = FactoryGirl.create(:project, state: 'online')
+    FactoryGirl.create(:backer, confirmed: true, project: project )
+    FactoryGirl.create(:backer, confirmed: false, project: project)
   end
 
   describe "#total_users" do

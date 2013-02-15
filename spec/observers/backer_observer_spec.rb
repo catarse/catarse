@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe BackerObserver do
-  let(:confirm_backer){ Factory(:notification_type, :name => 'confirm_backer') }
-  let(:project_success){ Factory(:notification_type, :name => 'project_success') }
-  let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => nil) }
+  let(:confirm_backer){ FactoryGirl.create(:notification_type, :name => 'confirm_backer') }
+  let(:project_success){ FactoryGirl.create(:notification_type, :name => 'project_success') }
+  let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => nil) }
   subject{ backer }
 
   before do
@@ -22,7 +22,7 @@ describe BackerObserver do
   describe "before_save" do
 
     context "when payment_choice is updated to BoletoBancario" do
-      let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }
+      let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }
       before do
         Notification.expects(:create_notification).with(:payment_slip, backer.user, :backer => backer, :project_name => backer.project.name)
         backer.payment_choice = 'BoletoBancario'
@@ -32,8 +32,8 @@ describe BackerObserver do
     end
 
     context "when project reached the goal" do
-      let(:project){ Factory(:project, :can_finish => true, :successful => false, :goal => 20, :finished => false) }
-      let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 20) }
+      let(:project){ FactoryGirl.create(:project, :can_finish => true, :successful => false, :goal => 20, :finished => false) }
+      let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 20) }
       before do
         project_total = mock()
         project_total.stubs(:pledged).returns(20.0)
@@ -47,8 +47,8 @@ describe BackerObserver do
     end
 
     context "when project is already successful" do
-      let(:project){ Factory(:project, :successful => true, :finished => false) }
-      let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :project => project) }
+      let(:project){ FactoryGirl.create(:project, :successful => true, :finished => false) }
+      let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :project => project) }
       before do
         Notification.expects(:create_notification).never
         backer.save!
@@ -65,7 +65,7 @@ describe BackerObserver do
     end
 
     context "when is already confirmed" do
-      let(:backer){ Factory(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }
+      let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }
       before do
         Notification.expects(:create_notification).never
       end

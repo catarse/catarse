@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Adm::UsersController do
   subject{ response }
   let(:admin) do 
-    u = Factory(:user)
+    u = FactoryGirl.create(:user)
     u.admin = true
     u.save!
     u

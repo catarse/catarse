@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe LogoUploader do
   include CarrierWave::Test::Matchers
-  let(:user){ Factory(:user) }
+  let(:user){ FactoryGirl.create(:user) }
 
   before do
     LogoUploader.enable_processing = true
