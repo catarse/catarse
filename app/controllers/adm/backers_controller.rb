@@ -21,7 +21,7 @@ class Adm::BackersController < Adm::BaseController
   end
 
   def collection
-    @backers = apply_scopes(Backer).page(params[:page])
-    @backers = @backers.order("created_at DESC").page(params[:page])
+    @search = apply_scopes(Backer)
+    @backers = @search.order("backers.created_at DESC").page(params[:page])
   end
 end
