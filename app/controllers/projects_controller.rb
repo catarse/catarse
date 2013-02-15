@@ -34,8 +34,7 @@ class ProjectsController < ApplicationController
 
       format.json do
         @projects = apply_scopes(Project).visible.order_for_search
-        # After the search params we order by ID to avoid ties and therefore duplicate items in pagination
-        respond_with(@projects.order('id').page(params[:page]).per(6))
+        respond_with(@projects.includes(:project_total, :user, :category).page(params[:page]).per(6))
       end
     end
   end
@@ -75,7 +74,7 @@ class ProjectsController < ApplicationController
 
       show!{
         @title = @project.name
-        @rewards = @project.rewards.order(:minimum_value).all
+        @rewards = @project.rewards.includes(:project).order(:minimum_value).all
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
         @update = @project.updates.where(:id => params[:update_id]).first if params[:update_id].present?
