@@ -21,7 +21,7 @@ class Ability
     end
 
     can :update, :projects, [:about, :video_url, :uploaded_image ] do |project|
-      project.user == current_user && ( project.successful? || project.failed? )
+      project.user == current_user && ( project.waiting_funds? || project.successful? || project.failed? )
     end
 
     can :update, :projects do |project|
