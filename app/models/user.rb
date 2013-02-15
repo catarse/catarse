@@ -153,7 +153,7 @@ class User < ActiveRecord::Base
   def recommended_project
     # It returns the project that have the biggest amount of backers
     # that contributed to the last project the user contributed that has common backers.
-    backs.confirmed.order('confirmed_at DESC').each do |back|
+    backs.includes(:project).confirmed.order('confirmed_at DESC').each do |back|
       project = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE confirmed AND user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE confirmed AND project_id = #{back.project.id.to_i}) GROUP BY 2 ORDER BY 1 DESC LIMIT 1")
       return Project.find(project[0]["project_id"]) unless project.count == 0
     end
