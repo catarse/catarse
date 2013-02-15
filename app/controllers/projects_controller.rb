@@ -2,7 +2,7 @@
 class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
 
-  load_and_authorize_resource only: [ :update, :destroy ]
+  load_and_authorize_resource only: [ :new, :update, :update, :destroy ]
 
   inherit_resources
   has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended
@@ -41,13 +41,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def start
-    return unless require_login
-    @title = t('projects.start.title')
-  end
-
   def new
-    return unless require_login
     new! do
       @title = t('projects.new.title')
       @project.rewards.build

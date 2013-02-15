@@ -1,9 +1,7 @@
 require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"} do
-    get "/login" => "devise/sessions#new"
-  end
+  devise_for :users
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
   constraints check_user_admin do
@@ -11,9 +9,7 @@ Catarse::Application.routes.draw do
   end
 
   # Non production routes
-  if Rails.env == "test"
-    match "/fake_login" => "sessions#fake_create", :as => :fake_login
-  elsif Rails.env == "development"
+  if Rails.env == "development"
     resources :emails, :only => [ :index ]
   end
 
@@ -39,10 +35,6 @@ Catarse::Application.routes.draw do
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
 
-  post "/auth" => "sessions#auth", :as => :auth
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/auth/failure" => "sessions#failure"
-  match "/logout" => "sessions#destroy", :as => :logout
   match "/reward/:id" => "rewards#show", :as => :reward
   resources :posts, only: [:index, :create]
 
@@ -53,19 +45,13 @@ Catarse::Application.routes.draw do
   resources :projects do
     resources :updates, only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy ]
-    resources :backers, controller: 'projects/backers', only: [ :index, :new ] do
-      collection do
-        post 'review'
-      end
+    resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
       member do
         match 'credits_checkout'
         post 'update_info'
-        get 'thank_you'
       end
     end
     collection do
-      get 'start'
-      post 'send_mail'
       get 'vimeo'
       get 'check_slug'
     end

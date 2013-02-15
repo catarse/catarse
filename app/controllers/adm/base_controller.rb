@@ -1,6 +1,9 @@
 class Adm::BaseController < ApplicationController
   inherit_resources
-  before_filter :require_admin
+  before_filter do
+    authorize! :manage, resource_class
+  end
+
   @@menu_items = {}
   cattr_accessor :menu_items
 

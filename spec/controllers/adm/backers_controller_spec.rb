@@ -51,7 +51,7 @@ describe Adm::BackersController do
       before do
         get :index, :locale => :pt
       end
-      it{ should redirect_to login_path }
+      it{ should redirect_to new_user_session_path }
     end
 
     context "when I'm logged as admin" do

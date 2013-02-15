@@ -173,68 +173,6 @@ pt:
     show:
       backed: levantados
       reached: atingido
-  devise:
-    confirmations:
-      confirmed: "Sua conta foi confirmada com sucesso. Você está logado a partir de agora."
-      send_instructions: "Você receberá um email com instruções sobre como confirmar a sua conta em poucos minutos."
-      send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um email com instruções sobre como confirmar a sua conta em poucos minutos."
-    failure:
-      already_authenticated: "Você já está logado."
-      inactive: "Sua conta ainda não foi ativada."
-      invalid: "Email ou senha inválidos."
-      invalid_token: "Token de autenticação invalido."
-      locked: "Sua conta está bloqueada."
-      timeout: "Sua sessão expirou, loge-se novamente para continuar."
-      unauthenticated: "Você precisa fazer login ou criar uma conta antes de continuar."
-      unconfirmed: "Você tem que confirmar a sua conta antes de continuar."
-    links:
-      forgot_password: "Esqueceu sua senha?"
-      sign_in: "Efetuar login"
-      sign_up: Cadastre-se
-    mailer:
-      confirmation_instructions:
-        subject: "Instruções de confirmação"
-      reset_password_instructions:
-        subject: "Instruções para redefinir sua senha"
-        alt: "Instruções para redefinir sua senha"
-      unlock_instructions:
-        subject: "Instruções para desbloquear conta"
-    omniauth_callbacks:
-      failure: "Não foi possível autenticá-lo a partir de %{kind} porque \"%{reason}\"."
-      success: "Autenticado com sucesso a partir de %{kind} conta."
-    passwords:
-      send_instructions: "Você receberá um email com instruções para redefinir sua senha em alguns minutos."
-      send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um link para recuperação de senha em seu e-mail."
-      updated: "Sua senha foi alterada com sucesso. Você está logado a partir de agora."
-      updated_not_active: "Sua senha foi alterada com sucesso."
-    registrations:
-      destroyed: "Bye! Sua conta foi cancelada com sucesso. Nós esperamos vê-lo novamente em breve."
-      inactive_signed_up: "Você se registrou com sucesso. No entanto, não poderia efetuar login porque a sua conta é %{reason}."
-      reasons:
-        inactive: inativo
-        locked: bloqueado
-        unconfirmed: "não confirmado"
-      signed_up: "Bem vindo! Você se registrou com sucesso."
-      updated: "Você atualizou a sua conta com sucesso."
-    sessions:
-      new:
-        site_title: "Efetuar login"
-        submit: "Efetuar login"
-        title: "Entre utilizando o seu endereço de email"
-        login_title: Login
-        login_subtitle: "Caso já possua uma conta"
-        register_title: Cadastre-se
-        register_subtitle: "Utilize seu endereço de e-mail"
-        with_facebook: "Entre utilizando o facebook"
-        with_facebook_subtitle: "Uma maneira muito rápida de acessar"
-        with_another_social: "Não tem conta no facebook?"
-        with_another_social_subtitle: "Entre utilizando sua conta de outra rede social"
-      signed_in: "Login realizado com sucesso. Seja bem-vindo!"
-      signed_out: "Logout realizado com sucesso. Até logo!"
-    unlocks:
-      send_instructions: "Você receberá um email com instruções sobre como desbloquear a sua conta em poucos minutos."
-      send_paranoid_instructions: "Se a sua conta existe, você receberá um email com instruções sobre como desbloqueá-lo em poucos minutos."
-      unlocked: "Sua conta foi desbloqueada com sucesso. Você está logado a partir de agora."
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
   explore:
     index:
@@ -383,7 +321,7 @@ pt:
       anonymous_description: "Optou por permanecer incógnito"
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
-      thank_you:
+      show:
         error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
         moip_message: "Sua transação foi processada pelo Moip Pagamentos S/A.<br>A sua transação está “Autorizada” e o código Moip é “%{code}″.<br>Caso tenha alguma dúvida referente a transação, entre em contato com o Moip."
         header_subtitle: "Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!"
@@ -402,7 +340,7 @@ pt:
         no_reward: "Obrigado. Eu só quero ajudar o projeto."
         submit: "Revisar e realizar pagamento"
         title: "Apoie o %{name}"
-      review:
+      create:
         brazil_address_title: 'Preencha os campos abaixo se o seu apoio é nacional'
         credits_notice_html: "Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos."
         live_in_brazil: 'Moro no Brasil. ( Desmarque caso o seu apoio seja internacional )'

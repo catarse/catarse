@@ -10,6 +10,10 @@ end
 
 module Catarse
   class Application < Rails::Application
+    config.to_prepare do
+      Devise::Mailer.layout "email" # email.haml or email.erb
+    end
+
     config.active_record.schema_format = :sql
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/** #{config.root}/app/presenters #{config.root}/app/presenters/** #{config.root}/app/business/ #{config.root}/app/business/**)
     config.encoding = "utf-8"
