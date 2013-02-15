@@ -72,7 +72,7 @@ describe "Projects" do
         fill_in "project_#{a}", with: project.attributes[a]
       end
       check 'accept'
-      click_on 'project_submit'
+      find('#project_submit').click
       #Project.first.name.should == project.name
     end
   end
