@@ -1,9 +1,6 @@
-require 'memoist'
 class Configuration < ActiveRecord::Base
   validates_presence_of :name
   class << self
-    extend Memoist
-
     # This method returns the values of the config simulating a Hash, like:
     #   Configuration[:foo]
     # It can also bring Arrays of keys, like:
@@ -20,12 +17,11 @@ class Configuration < ActiveRecord::Base
     def []= key, value
       set key, value
     end
-  private
+    private
 
     def get key
       find_by_name(key).value rescue nil
     end
-    memoize :get
 
     def set key, value
       begin
@@ -33,7 +29,6 @@ class Configuration < ActiveRecord::Base
       rescue
         create!(name: key, value: value)
       end
-      flush_cache(:get)
       value
     end
 

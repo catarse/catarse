@@ -1,5 +1,4 @@
 # coding: utf-8
-require 'memoist'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -46,7 +45,6 @@ class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
   include Rails.application.routes.url_helpers
-  extend Memoist
 
   mount_uploader :uploaded_image, LogoUploader
 
@@ -159,7 +157,6 @@ class User < ActiveRecord::Base
     end
     nil
   end
-  memoize :recommended_project
 
   def total_backs
     backs.confirmed.not_anonymous.count
