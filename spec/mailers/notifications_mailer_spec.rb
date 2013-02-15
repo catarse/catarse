@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe NotificationsMailer do
-  let(:notification){ Factory(:notification, :notification_type => Factory(:notification_type, :name => 'confirm_backer'), :mail_params => {:project_name => Factory(:project).name}, :user => Factory(:user)) }
+  let(:notification){ FactoryGirl.create(:notification, :notification_type => FactoryGirl.create(:notification_type, :name => 'confirm_backer'), :mail_params => {:project_name => FactoryGirl.create(:project).name}, :user => FactoryGirl.create(:user)) }
   subject{ NotificationsMailer.notify(notification) }
 
   before do

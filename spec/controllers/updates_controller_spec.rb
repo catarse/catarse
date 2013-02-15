@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UpdatesController do
-  let(:update){ Factory(:update) }
+  let(:update){ FactoryGirl.create(:update) }
   let(:current_user){ nil }
   before{ controller.stubs(:current_user).returns(current_user) }
   subject{ response }
@@ -18,12 +18,12 @@ describe UpdatesController do
     end
 
     context "When user is a registered user but don't the project owner" do
-      let(:current_user){ Factory(:user) }
+      let(:current_user){ FactoryGirl.create(:user) }
       its(:status) { should == 302 }
     end
 
     context 'When user is admin' do
-      let(:current_user) { Factory(:user, admin: true) }
+      let(:current_user) { FactoryGirl.create(:user, admin: true) }
       its(:status) { should == 200}
     end
 
@@ -40,12 +40,12 @@ describe UpdatesController do
     end
 
     context "When user is a registered user but don't the project owner" do
-      let(:current_user){ Factory(:user) }
+      let(:current_user){ FactoryGirl.create(:user) }
       it{ Update.where(:project_id => update.project.id).count.should == 1}
     end
 
     context 'When user is admin' do
-      let(:current_user) { Factory(:user, admin: true) }
+      let(:current_user) { FactoryGirl.create(:user, admin: true) }
       it{ Update.where(:project_id => update.project.id).count.should ==  2}
     end
 

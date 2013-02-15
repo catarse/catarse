@@ -64,9 +64,7 @@ gem 'has_scope'
 gem 'spectator-validates_email', require: 'validates_email'
 gem 'has_vimeo_video', '~> 0.0.5'
 gem 'weekdays'
-gem 'brcep'
 gem "RedCloth"
-gem 'unicode'
 gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1'
 gem "rack-timeout"
@@ -81,7 +79,6 @@ gem "meta_search", "1.1.3"
 # Payment
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
 gem 'httpclient', '2.2.5'
-gem 'selenium-webdriver'
 
 # Server
 gem 'thin'
@@ -100,7 +97,7 @@ group :test, :development do
   gem 'rspec-rails', "~> 2.12"
   gem 'mocha', '0.10.4'
   gem 'shoulda'
-  gem 'factory_girl_rails', '1.7.0'
+  gem 'factory_girl_rails'
   gem 'capybara', ">= 1.0.1"
 end
 

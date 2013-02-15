@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ::Configuration do
 
   before do
-    @config = Factory.build(:configuration, name: 'a_config', value: 'a_value')
+    @config = FactoryGirl.build(:configuration, name: 'a_config', value: 'a_value')
   end
 
   it{ should validate_presence_of :name }
@@ -14,7 +14,7 @@ describe ::Configuration do
   context "#get" do
     before do
       @config.save
-      Factory(:configuration, name: 'other_config', value: 'another_value')
+      FactoryGirl.create(:configuration, name: 'other_config', value: 'another_value')
     end
     it "should get config" do
       ::Configuration[:a_config].should == 'a_value'

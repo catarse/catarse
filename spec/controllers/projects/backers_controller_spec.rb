@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Projects::BackersController do
   render_views
-  let(:failed_project) { Factory(:project, state: 'failed') }
-  let(:project) { Factory(:project) }
-  let(:backer){ Factory(:backer, value: 10.00, credits: true, confirmed: false, project: project) }
+  let(:failed_project) { FactoryGirl.create(:project, state: 'failed') }
+  let(:project) { FactoryGirl.create(:project) }
+  let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: true, confirmed: false, project: project) }
   let(:user){ nil }
 
   subject{ response }
@@ -23,7 +23,7 @@ describe Projects::BackersController do
     end
 
     context "when backer don't exist in current_user" do
-      let(:user){ Factory(:user) }
+      let(:user){ FactoryGirl.create(:user) }
       it{ should redirect_to(new_project_backer_path(project)) }
       it('should set flash failure'){ request.flash[:failure].should_not be_empty }
     end
@@ -37,7 +37,7 @@ describe Projects::BackersController do
 
     context "with correct user and sufficient credits" do
       let(:user) do 
-        Factory(:backer, value: 10.00, credits: false, confirmed: true, user: backer.user, project: failed_project)
+        FactoryGirl.create(:backer, value: 10.00, credits: false, confirmed: true, user: backer.user, project: failed_project)
         backer.user
       end
       it('should confirm backer'){ backer.reload.confirmed.should be_true }
@@ -58,7 +58,7 @@ describe Projects::BackersController do
     end
 
     context "when user is logged in" do
-      let(:user){ Factory(:user) }
+      let(:user){ FactoryGirl.create(:user) }
       its(:body){ should =~ /#{I18n.t('projects.backers.review.title')}/ }
       its(:body){ should =~ /#{project.name}/ }
       its(:body){ should =~ /R\$ 20/ }
@@ -67,7 +67,7 @@ describe Projects::BackersController do
 
   describe "GET new" do
     let(:secure_review_host){ nil }
-    let(:user){ Factory(:user) }
+    let(:user){ FactoryGirl.create(:user) }
     let(:online){ true }
     before do
       ::Configuration[:secure_review_host] = secure_review_host
@@ -105,7 +105,7 @@ describe Projects::BackersController do
   end
 
   describe "GET thank_you" do
-    let(:backer){ Factory(:backer, value: 10.00, credits: false, confirmed: true) }
+    let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: false, confirmed: true) }
     before do
       get :thank_you, { locale: :pt, project_id: backer.project.id, id: backer.id }
     end
@@ -116,7 +116,7 @@ describe Projects::BackersController do
     end
 
     context "when user logged in is different from backer" do
-      let(:user){ Factory(:user) }
+      let(:user){ FactoryGirl.create(:user) }
       it{ should redirect_to root_path }
       it('should set flash failure'){ request.flash[:failure].should_not be_empty }
     end
@@ -130,10 +130,10 @@ describe Projects::BackersController do
 
   describe "GET index" do
     before do
-      Factory(:backer, value: 10.00, confirmed: true, 
-              reward: Factory(:reward, project: project, description: 'Test Reward'), 
+      FactoryGirl.create(:backer, value: 10.00, confirmed: true, 
+              reward: FactoryGirl.create(:reward, project: project, description: 'Test Reward'), 
               project: project, 
-              user: Factory(:user, name: 'Foo Bar'))
+              user: FactoryGirl.create(:user, name: 'Foo Bar'))
       get :index, { locale: :pt, project_id: project.id, format: :json }
     end
 
@@ -156,13 +156,13 @@ describe Projects::BackersController do
     end
 
     context "with admin user" do
-      let(:user){ Factory(:user, admin: true)}
+      let(:user){ FactoryGirl.create(:user, admin: true)}
       it_should_behave_like "admin / owner"
     end
 
     context "with project owner user" do
-      let(:user){ Factory(:user, admin: false)}
-      let(:project) { Factory(:project, user: user) }
+      let(:user){ FactoryGirl.create(:user, admin: false)}
+      let(:project) { FactoryGirl.create(:project, user: user) }
       it_should_behave_like "admin / owner"
     end
 

@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
 
   def fake_create
     raise "Forbiden" unless Rails.env == "test"
-    user = Factory(:user, :uid => 'fake_login')
+    user = FactoryGirl.create(:user, :uid => 'fake_login')
     session[:user_id] = user.id
     flash[:success] = t('sessions.auth.success', :name => user.display_name)
     redirect_to :root

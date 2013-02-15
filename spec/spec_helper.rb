@@ -10,7 +10,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
   config.mock_with :mocha
-  config.include Factory::Syntax::Methods
+  config.include FactoryGirl::Syntax::Methods
   config.include ActionView::Helpers::TextHelper
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

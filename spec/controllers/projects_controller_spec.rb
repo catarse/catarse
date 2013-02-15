@@ -7,7 +7,7 @@ describe ProjectsController do
   before{ ::Configuration[:base_url] = 'http://catarse.me' }
   render_views
   subject{ response }
-  let(:project){ Factory(:project) }
+  let(:project){ FactoryGirl.create(:project) }
   let(:current_user){ nil }
 
   describe "DELETE destroy" do
@@ -25,12 +25,12 @@ describe ProjectsController do
     end
 
     context "when user is a registered user" do
-      let(:current_user){ Factory(:user, admin: false) }
+      let(:current_user){ FactoryGirl.create(:user, admin: false) }
       it { Project.all.include?(project).should be_true }
     end
 
     context "when user is an admin" do
-      let(:current_user){ Factory(:user, admin: true) }
+      let(:current_user){ FactoryGirl.create(:user, admin: true) }
       it { Project.all.include?(project).should be_false }
     end
   end
@@ -51,7 +51,7 @@ describe ProjectsController do
     end
 
     context "when user is a registered user" do
-      let(:current_user){ Factory(:user, admin: false) }
+      let(:current_user){ FactoryGirl.create(:user, admin: false) }
       it { should be_success }
     end
   end
@@ -85,7 +85,7 @@ describe ProjectsController do
       end
 
       context "when project is online" do
-        let(:project) { Factory(:project, state: 'online') }
+        let(:project) { FactoryGirl.create(:project, state: 'online') }
 
         before do
           controller.stubs(:current_user).returns(project.user)
@@ -111,12 +111,12 @@ describe ProjectsController do
     end
 
     context "when user is a registered user" do
-      let(:current_user){ Factory(:user, admin: false) }
+      let(:current_user){ FactoryGirl.create(:user, admin: false) }
       it_should_behave_like "protected project"
     end
 
     context "when user is an admin" do
-      let(:current_user){ Factory(:user, admin: true) }
+      let(:current_user){ FactoryGirl.create(:user, admin: true) }
       it_should_behave_like "updatable project"
     end
   end
@@ -130,14 +130,14 @@ describe ProjectsController do
 
   describe "GET show" do
     context "when we have update_id in the querystring" do
-      let(:project){ Factory(:project) }
-      let(:update){ Factory(:update, :project => project) }
+      let(:project){ FactoryGirl.create(:project) }
+      let(:update){ FactoryGirl.create(:update, :project => project) }
       before{ get :show, :permalink => project.permalink, :update_id => update.id, :locale => :pt }
       it("should assign update to @update"){ assigns(:update).should == update }
     end
 
     context "when we have permalink and do not pass permalink in the querystring" do
-      let(:project){ Factory(:project, :permalink => 'test') }
+      let(:project){ FactoryGirl.create(:project, :permalink => 'test') }
       before{ get :show, :id => project, :locale => :pt }
       it{ should redirect_to project_by_slug_path(project.permalink) }
     end
