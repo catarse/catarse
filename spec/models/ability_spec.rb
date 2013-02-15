@@ -40,6 +40,14 @@ describe Ability do
       end
     end
 
+    describe 'When project is waiting funds' do
+      let(:project) { Factory(:project, user: user, state: 'waiting_funds') }
+
+      it { should be_able_to(:update, project, :video_url) }
+      it { should be_able_to(:update, project, :uploaded_image) }
+      it { should be_able_to(:update, project, :about) }
+    end
+
     describe "when project is failed" do
       let(:project) { Factory(:project, user: user, state: 'failed') }
 
