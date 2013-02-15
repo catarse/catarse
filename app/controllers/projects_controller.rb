@@ -29,7 +29,6 @@ class ProjectsController < ApplicationController
         @expiring = Project.expiring_for_home(project_ids)
         @recent = Project.recent_for_home(project_ids)
         @blog_posts = blog_posts
-        @events = events
         @last_tweets = last_tweets
       end
 
@@ -127,15 +126,6 @@ class ProjectsController < ApplicationController
     Blog.fetch_last_posts.inject([]) do |total,item|
       total << item if total.size < 2
       total
-    end
-  rescue
-    []
-  end
-
-  def events
-    calendar = Calendar.new
-    Rails.cache.fetch 'calendar', expires_in: 30.minutes do
-      calendar.fetch_events_from("catarse.me_237l973l57ir0v6279rhrr1qs0@group.calendar.google.com")
     end
   rescue
     []
