@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource only: [ :update, :destroy ]
 
   inherit_resources
-  has_scope [:pg_search, :by_category_id, :recent, :expiring, :successful, :recommended], type: :boolean
+  has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended
   respond_to :html, :except => [:backers]
   respond_to :json, :only => [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, :only => [:backers]
@@ -34,11 +34,7 @@ class ProjectsController < ApplicationController
       end
 
       format.json do
-        scopes = params[:search].keys.join('.')
-        #these methods take arguments
-        scopes +=  "('#{params[:search][:pg_search]}')" if params[:search][:pg_search]
-        scopes +=  "('#{params[:search][:by_category_id]}')" if params[:search][:by_category_id]
-        @projects = apply_scopes(Project).instance_eval(scopes).order_for_search
+        @projects = apply_scopes(Project).order_for_search
         # After the search params we order by ID to avoid ties and therefore duplicate items in pagination
         respond_with(@projects.order('id').page(params[:page]).per(6))
       end
