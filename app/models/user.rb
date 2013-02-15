@@ -243,14 +243,14 @@ class User < ActiveRecord::Base
     self.twitter.gsub!(/@/, '') if self.twitter
   end
 
-  protected
-  def password_required?
-    provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
-  end
-
   # Returns a Gravatar URL associated with the email parameter, uses local avatar if available
   def gravatar_url
     return unless email
     "https://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{::Configuration[:base_url]}/assets/user.png"
+  end
+
+  protected
+  def password_required?
+    provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
   end
 end
