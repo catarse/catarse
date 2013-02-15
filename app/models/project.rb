@@ -45,6 +45,7 @@ class Project < ActiveRecord::Base
     ignoring: :accents
 
   scope :by_id, ->(id) { where(id: id) }
+  scope :by_category_id, ->(id) { where(category_id: id) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :order_table, ->(sort) {
     if sort == 'desc'
@@ -77,7 +78,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
-                                     END ASC, pg_search_rank DESC, created_at DESC") }
+                                     END ASC, created_at DESC") }
   scope :expiring_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order('date(expires_at), random()').limit(3)
   }
@@ -87,8 +88,6 @@ class Project < ActiveRecord::Base
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.confirmed AND b.user_id = ?)", user_id)
   }
-
-  search_methods :visible, :recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
 
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink

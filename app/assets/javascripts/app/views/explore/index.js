@@ -39,8 +39,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     })
     this.selectItem("")
     this.initializeView({
-      meta_sort: "created_at.desc",
-      name_or_headline_or_about_or_user_name_or_user_address_city_contains: search
+      pg_search: search
     })
     var input = this.$('#search')
     if(input.val() != search)
@@ -57,8 +56,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     _this.selectItem("recommended")
     _this.initializeView({
       recommended: true,
-      not_expired: true,
-      meta_sort: "explore"
+      not_expired: true
     })
   },
 
@@ -67,8 +65,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.selectItem("recommended")
     this.initializeView({
       recommended: true,
-      not_expired: true,
-      meta_sort: "explore"
+      not_expired: true
     })
   },
 
@@ -76,8 +73,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.replaceTitleBy("expiring")
     this.selectItem("expiring")
     this.initializeView({
-      expiring: true,
-      meta_sort: "expires_at"
+      expiring: true
     })
   },
 
@@ -86,8 +82,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.selectItem("recent")
     this.initializeView({
       recent: true,
-      not_expired: true,
-      meta_sort: "created_at.desc"
+      not_expired: true
     })
   },
 
@@ -95,8 +90,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.replaceTitleBy("successful")
     this.selectItem("successful")
     this.initializeView({
-      successful: true,
-      meta_sort: "expires_at.desc"
+      successful: true
     })
   },
 
@@ -104,8 +98,7 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     this.replaceTitleBy(name)
     this.selectItem(name)
     this.initializeView({
-      category_id_equals: this.selectedItem.data("id"),
-      meta_sort: "created_at.desc"
+      by_category_id: this.selectedItem.data("id")
     })
   },
 
