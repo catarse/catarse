@@ -9,7 +9,7 @@ describe "Users" do
 
   describe "the notification tab" do
     before do
-      visit fake_login_path
+      login
       @project = FactoryGirl.create(:backer, user: current_user).project
       visit user_path(current_user, locale: :pt)
       click_link 'unsubscribes_link'

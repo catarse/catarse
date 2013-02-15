@@ -58,7 +58,7 @@ describe "Projects" do
 
   describe "new and create" do
     before do
-      visit fake_login_path
+      login
       visit new_project_path(:locale => :pt)
     end
 
@@ -81,7 +81,7 @@ describe "Projects" do
     let(:project) { FactoryGirl.create(:project, online_days: 10, state: 'online', user: current_user) }
 
     before do
-      visit fake_login_path
+      login
       visit project_path(project, :locale => :pt)
     end
 
