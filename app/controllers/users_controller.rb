@@ -1,8 +1,8 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  load_and_authorize_resource except: [:projects]
+  load_and_authorize_resource except: [ :projects ]
   inherit_resources
-  actions :show, :update, :unsubscribe_update
+  actions :show, :update, :unsubscribe_update, :request_refund
   respond_to :json, :only => [:backs, :projects, :request_refund]
   def show
     show!{

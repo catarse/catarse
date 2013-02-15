@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable#, :validatable
+    :recoverable, :rememberable, :trackable, :omniauthable
   begin
     sync_with_mailchimp
   rescue Exception => e
@@ -81,11 +81,6 @@ class User < ActiveRecord::Base
   scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
   scope :has_credits, joins(:user_total).where('user_totals.credits > 0')
   scope :order_by, ->(sort_field){ order(sort_field) }
-
-  def self.find_for_database_authentication(warden_conditions)
-    conditions = warden_conditions.dup
-    where(conditions).where(:provider => 'devise').first
-  end
 
   def self.backer_totals
     connection.select_one(

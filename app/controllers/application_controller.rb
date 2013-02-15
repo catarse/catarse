@@ -1,19 +1,19 @@
 # coding: utf-8
 class ApplicationController < ActionController::Base
-
   protect_from_forgery
 
-  enable_authorization unless :devise_controller?
-
   rescue_from CanCan::Unauthorized do |exception|
+    session[:return_to] = request.env['REQUEST_URI']
     if request.env["HTTP_REFERER"]
       redirect_to :back, alert: exception.message
+    elsif current_user.nil?
+      redirect_to new_user_session_path, alert: I18n.t('devise.failure.unauthenticated')
     else
       redirect_to root_path, alert: exception.message
     end
   end
 
-  helper_method :current_user, :replace_locale, :namespace,
+  helper_method :replace_locale, :namespace,
                 :fb_admins, :statistics, :render_facebook_sdk, :render_facebook_like,
                 :render_twitter
   before_filter :set_locale
@@ -105,21 +105,6 @@ class ApplicationController < ActionController::Base
     new_url
   end
 
-  def current_user
-    return @current_user if @current_user
-    if session[:user_id]
-      return @current_user = User.find(session[:user_id])
-    end
-    if cookies[:remember_me_id] and cookies[:remember_me_hash]
-      @current_user = User.find(cookies[:remember_me_id])
-      @current_user = nil unless @current_user.remember_me_hash == cookies[:remember_me_hash]
-      return session[:user_id] = @current_user.id
-    end
-    return @current_user = request.env['warden'].authenticate(:user) rescue nil
-  rescue Exception => e
-    session[:user_id] = nil
-  end
-
   def redirect_back_or_default(default)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
@@ -129,29 +114,6 @@ class ApplicationController < ActionController::Base
     return_to = session[:return_to]
     session[:return_to] = nil
     (return_to || root_path)
-  end
-
-  def require_condition(condition, message)
-    unless condition
-      flash[:failure] = message
-      if current_user
-        redirect_to root_path
-      else
-        session[:return_to] = request.env['REQUEST_URI']
-        redirect_to login_path
-        false
-      end
-    else
-      true
-    end
-  end
-
-  def require_login
-    require_condition(current_user, t('require_login'))
-  end
-
-  def require_admin
-    require_condition((current_user and current_user.admin), t('require_admin'))
   end
 
   def render_404

@@ -1,6 +1,6 @@
 #page_content
   .container
-    #project_review data-thank-you-path=thank_you_project_backer_path(project_id: @project.id, id: @backer.id)
+    #project_review data-thank-you-path=project_backer_path(project_id: @project.id, id: @backer.id)
       .project_info
         = image_tag @project.display_image, :id => 'project_image', :alt => @project.name, :width => '250px'
         h1= t('.you_are_about_html', :link => link_to(@project.name, project_by_slug_path(permalink: @project.permalink)))
