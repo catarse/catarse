@@ -49,9 +49,9 @@
               = label_tag :refunded, t('.refunded')
             .input.total_results
               #total_results
-                = pluralize_without_number @backers.count, t('found_singular'), t('found_plural')
-                strong= @backers.count
-                = pluralize_without_number(@backers.count, t('backer_singular'), t('backer_plural')).downcase
+                = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
+                strong= @search.count
+                = pluralize_without_number(@search.count, t('backer_singular'), t('backer_plural')).downcase
       .clearfix
       = paginate @backers
       - if @backers.empty?
@@ -72,7 +72,7 @@
                 th= t('.refunded')
                 th
             tbody
-              - @backers.each do |backer|
+              - @backers.includes(:project, :user, :reward).each do |backer|
                 tr id=backer.id class=cycle("even", "odd")
                   td title=backer.project.name
                     = link_to project_by_slug_path(permalink: backer.project.permalink) do

@@ -8,20 +8,20 @@
 
     .filters
       .bootstrap-form
-        = form_for @search, :url => adm_financials_path, class: 'form-horizontal' do |f|
+        = form_tag adm_financials_path, method: :get, class: 'form-horizontal' do |f|
           fieldset
             .input
-              = f.label :permalink_equals, t('.permalink')
-              = f.text_field :permalink_equals, class: 'input-small'
+              = label_tag :by_permalink, t('.permalink')
+              = text_field_tag :permalink_equals, params[:permalink], class: 'input-small'
             .input
-              = f.label :name_contains, t('.project')
-              = f.text_field :name_contains
+              = label_tag :name_contains, t('.project')
+              = text_field_tag :name_contains
             .input
-              = f.label :user_name_contains, t('.user')
-              = f.text_field :user_name_contains
+              = label_tag :user_name_contains, t('.user')
+              = text_field_tag :user_name_contains
             .bootstrap-twitter
               .input.submit
-                = f.submit t('.submit'), class: 'btn btn-success'
+                = submit_tag t('.submit'), class: 'btn btn-success'
           fieldset
             .input.total_results
               #total_results
