@@ -45,7 +45,9 @@ class Project < ActiveRecord::Base
     ignoring: :accents
 
   scope :by_id, ->(id) { where(id: id) }
+  scope :by_permalink, ->(p) { where(permalink: p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
+  scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :order_table, ->(sort) {
     if sort == 'desc'
@@ -56,6 +58,7 @@ class Project < ActiveRecord::Base
   }
 
   scope :visible, where("state NOT IN ('draft', 'rejected')")
+  scope :financial, where("(expires_at > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)
   scope :expired, where("expires_at < current_timestamp")
   scope :not_expired, where("expires_at >= current_timestamp")

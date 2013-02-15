@@ -16,7 +16,7 @@ class Adm::ProjectsController < Adm::BaseController
   end
 
   def collection
-    @projects = apply_scopes(Project).page(params[:page])
-    @projects = @projects.order('created_at DESC') unless current_scopes.include?(:order_table)
+    @search = apply_scopes(Project)
+    @projects = @search.order('created_at DESC').page(params[:page]) unless current_scopes.include?(:order_table)
   end
 end
