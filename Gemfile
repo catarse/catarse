@@ -1,5 +1,4 @@
 source :gemcutter
-source 'http://gems.github.com'
 
 gem 'rails', '3.2.12'
 
@@ -72,9 +71,6 @@ gem "rack-timeout"
 # Translations
 gem 'http_accept_language'
 gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
-
-# Administration
-gem "meta_search", "1.1.3"
 
 # Payment
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
