@@ -99,7 +99,7 @@ end
 group :test, :development do
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'rspec-rails', "~> 2.10.0"
+  gem 'rspec-rails', "~> 2.12"
   gem 'mocha', '0.10.4'
   gem 'shoulda'
   gem 'factory_girl_rails', '1.7.0'
