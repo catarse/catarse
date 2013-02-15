@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def projects
     @user = User.find(params[:id])
-    @projects = @user.projects.order("updated_at DESC")
+    @projects = @user.projects.includes(:user, :category, :project_total).order("updated_at DESC")
     @projects = @projects.visible unless @user == current_user
     @projects = @projects.page(params[:page]).per(10)
     render :json => @projects
