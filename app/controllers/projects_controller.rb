@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
       end
 
       format.json do
-        @projects = apply_scopes(Project).order_for_search
+        @projects = apply_scopes(Project).visible.order_for_search
         # After the search params we order by ID to avoid ties and therefore duplicate items in pagination
         respond_with(@projects.order('id').page(params[:page]).per(6))
       end
