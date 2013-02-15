@@ -36,7 +36,7 @@ RSpec.configure do |config|
     ProjectObserver.any_instance.stubs(:after_create)
     Calendar.any_instance.stubs(:fetch_events_from)
     Blog.stubs(:fetch_last_posts).returns([])
-    ProjectsController.any_instance.stubs(:last_tweets)
+    ProjectsController.any_instance.stubs(:last_tweets).returns([])
     [Projects::BackersController, ::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController].each do |c|
       c.any_instance.stubs(:render_facebook_sdk)
       c.any_instance.stubs(:render_facebook_like)
