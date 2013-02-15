@@ -59,7 +59,7 @@
                 th= t('.state')
                 th
             tbody
-              - @projects.each do |project|
+              - @projects.includes(:category).each do |project|
                 tr id=project.id class=cycle("even", "odd")
                   td= link_to project.name, project_by_slug_path(permalink: project.permalink)
                   td= project.category

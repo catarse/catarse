@@ -72,7 +72,7 @@
                 th= t('.refunded')
                 th
             tbody
-              - @backers.each do |backer|
+              - @backers.includes(:project, :user, :reward).each do |backer|
                 tr id=backer.id class=cycle("even", "odd")
                   td title=backer.project.name
                     = link_to project_by_slug_path(permalink: backer.project.permalink) do
