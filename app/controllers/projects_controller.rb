@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource only: [ :update, :destroy ]
 
   inherit_resources
-  has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended
+  has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired
   respond_to :html, :except => [:backers]
   respond_to :json, :only => [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, :only => [:backers]
