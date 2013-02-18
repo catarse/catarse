@@ -19,6 +19,7 @@ class Backer < ActiveRecord::Base
   scope :refunded, where(:refunded => true)
   scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(:confirmed => true)
+  scope :not_confirmed, where(:confirmed => false)
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
