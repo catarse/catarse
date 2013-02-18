@@ -33,6 +33,7 @@ class Update < ActiveRecord::Base
         from: ::Configuration[:email_no_reply],
         update_title: title,
         update: self,
+        from: project.user.email,
         update_comment: email_comment_html
     end
   end
