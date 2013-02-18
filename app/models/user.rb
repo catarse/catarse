@@ -172,7 +172,7 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.name = auth["info"]["name"]
       user.email = auth["info"]["email"]
-      user.email = auth["extra"]["user_hash"]["email"] if auth["extra"] and auth["extra"]["raw_info"] and user.email.nil?
+      #user.email = auth["extra"]["user_hash"]["email"] if auth["extra"] and auth["extra"]["raw_info"] and user.email.nil?
       user.nickname = auth["info"]["nickname"]
       user.bio = auth["info"]["description"][0..139] if auth["info"]["description"]
       user.locale = I18n.locale.to_s
@@ -183,6 +183,10 @@ class User < ActiveRecord::Base
 
       if auth["provider"] == "facebook"
         user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
+      end
+
+      if auth["provider"] == "stripe_connect"
+        user.stripe_key = auth["info"]["stripe_publishable_key"]
       end
     end
   end

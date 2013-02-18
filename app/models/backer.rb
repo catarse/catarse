@@ -28,7 +28,8 @@ class Backer < ActiveRecord::Base
     }) 
   }
 
-  attr_protected :confirmed
+  #attr_protected :confirmed
+
 
   def price_in_cents
     (self.value * 100).round

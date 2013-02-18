@@ -98,7 +98,23 @@
           img
             +opacity(0.6)
           img:hover, img:focus, img:active
-            +scale(1)      
+            +scale(1)
+      .stripe_login
+        a
+          text-decoration: none
+          font-weight: bold
+          &.first
+            margin-left: -10px
+          img
+            width: 55px
+            +transition(all, 0.3s)
+          img:hover, img:focus
+            +scale(1.2)
+        a.disabled
+          img
+            +opacity(0.6)
+          img:hover, img:focus, img:active
+            +scale(1)            
       .facebook_start
         margin-bottom: 40px !important
         clear: both

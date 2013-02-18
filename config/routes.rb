@@ -16,9 +16,14 @@ Catarse::Application.routes.draw do
   elsif Rails.env == "development"
     resources :emails, :only => [ :index ]
   end
-
-  mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
+  
+  #mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
   mount CatarseMoip::Engine => "/", :as => "catarse_moip"
+  #Stripe Payments Engine Mount
+  mount CatarseStripe::Engine => "/", :as => "catarse_stripe"
+  
+  
+
 
   filter :locale
 
@@ -40,6 +45,7 @@ Catarse::Application.routes.draw do
   match "/credits" => "credits#index", :as => :credits
 
   post "/auth" => "sessions#auth", :as => :auth, :via => [:get, :post]
+  #post  "/auth/stripe_connect" => "sessions#auth", :as => :auth_stripe_connect, :via => [:get, :post]
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
   match "/logout" => "sessions#destroy", :as => :logout

@@ -130,6 +130,10 @@ en:
         index:
             menu: Users Admin
             submit: Submit
+    backers:
+        index:
+            menu: Backers Admin
+            submit: Submit
   backer:
     display_confirmed_at: "%{time_ago} ago"
     reward_must_be_from_project: "must be from the same project"
@@ -227,6 +231,8 @@ en:
         register_subtitle: "Use your e-mail account"
         with_facebook: "Sign in with your facebook account"
         with_facebook_subtitle: "A quick way to access"
+        with_stripe: "Sign in or Register with Stripe"
+        with_stripe_subtitle: "Plan to create projects? Create a Stripe payments account."
         with_another_social: "Don't have facebook account?"
         with_another_social_subtitle: "Sign in with another social network"
       signed_in: "Signed in successfully."
