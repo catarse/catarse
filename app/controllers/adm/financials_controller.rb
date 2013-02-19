@@ -6,7 +6,7 @@ class Adm::FinancialsController < Adm::BaseController
   actions :index
 
   def collection
-    @search = apply_scopes(Project).financial.includes(:project_total, :user)
+    @search = apply_scopes(Project).includes(:project_total, :user)
     @projects = @search.order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, expires_at::date").page(params[:page])
   end
 end
