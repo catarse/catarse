@@ -6,7 +6,24 @@ class Reports::BackerReportsForProjectOwnersController < Reports::BaseController
 
     conditions.merge!(reward_id: params[:reward_id]) if params[:reward_id].present?
 
-    super.where(conditions)
+    super.
+      select(%Q{
+        reward_description as "#{I18n.t('backer_report_to_project_owner.reward_description')}",
+        confirmed_at as "#{I18n.t('backer_report_to_project_owner.confirmed_at')}",
+        back_value as "#{I18n.t('backer_report_to_project_owner.value')}",
+        service_fee as "#{I18n.t('backer_report_to_project_owner.service_fee')}",
+        user_email as "#{I18n.t('backer_report_to_project_owner.user_email')}",
+        payer_email as "#{I18n.t('backer_report_to_project_owner.payer_email')}",
+        payment_method as "#{I18n.t('backer_report_to_project_owner.payment_method')}",
+        street as "#{I18n.t('backer_report_to_project_owner.address_street')}",
+        complement as "#{I18n.t('backer_report_to_project_owner.address_complement')}",
+        address_number as "#{I18n.t('backer_report_to_project_owner.address_number')}",
+        neighbourhood as "#{I18n.t('backer_report_to_project_owner.address_neighbourhood')}",
+        city as "#{I18n.t('backer_report_to_project_owner.address_city')}",
+        state as "#{I18n.t('backer_report_to_project_owner.address_state')}",
+        zip_code as "#{I18n.t('backer_report_to_project_owner.address_zip_code')}"
+      }).
+      where(conditions)
   end
 
   def check_if_project_belongs_to_user
