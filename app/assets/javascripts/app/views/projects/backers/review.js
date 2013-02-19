@@ -149,8 +149,16 @@ CATARSE.ReviewForm = Backbone.View.extend({
   showUpAddressForm: function(e) {
     if(this.liveInBrazil()) {
       $('fieldset.address_data').fadeIn();
+      if(this.accepted_terms()) {
+        $('#accept').trigger('click');
+        $('#accept').attr('checked', true);
+      }
     } else {
       $('fieldset.address_data').fadeOut();
+      if(this.accepted_terms()) {
+        $('#accept').trigger('click');
+        $('#accept').attr('checked', true);
+      }
     }
   },
 
