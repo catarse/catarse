@@ -1,4 +1,5 @@
-ELECT count(*) < 2 FROM projects p2
+# encoding: utf-8
+#
 class ChangePermalinkToNotNull < ActiveRecord::Migration
   def up
     execute <<-SQL

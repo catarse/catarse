@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']
-    if request.env["HTTP_REFERER"]
-      redirect_to :back, alert: exception.message
-    elsif current_user.nil?
+    if current_user.nil?
       redirect_to new_user_session_path, alert: I18n.t('devise.failure.unauthenticated')
+    elsif request.env["HTTP_REFERER"]
+      redirect_to :back, alert: exception.message
     else
       redirect_to root_path, alert: exception.message
     end
