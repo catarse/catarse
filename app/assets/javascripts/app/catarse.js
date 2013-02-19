@@ -82,8 +82,8 @@ var CATARSE = {
       'new': function(){
         window.view = new CATARSE.BackersNewView({el: $("body") });
       },
-      review: function(){
-        window.view = new CATARSE.BackersReviewView({el: $("body") });
+      create: function(){
+        window.view = new CATARSE.BackersCreateView({el: $("body") });
       }
     }
   },

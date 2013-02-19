@@ -214,7 +214,7 @@ CATARSE.ReviewForm = Backbone.View.extend({
   }
 });
 
-CATARSE.BackersReviewView = Backbone.View.extend({
+CATARSE.BackersCreateView = Backbone.View.extend({
   events:{
     'click .tab_container #payment_menu a' : 'onPaymentTabClick'
   },
