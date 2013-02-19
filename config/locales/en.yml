@@ -42,6 +42,8 @@ en:
       faq: F.A.Q./Help
       terms: "Terms of use"
       policy: "Privacy Policy"
+      terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161102-terms-of-use'
+      policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161104-privacy-policy'
       contact: Contact
   main:
     links:
