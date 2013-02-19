@@ -1,4 +1,19 @@
 en:
+  backer_report_to_project_owner:
+    reward_description: 'Reward description'
+    confirmed_at: 'Payment confirmed at'
+    value: 'Back value'
+    service_fee: 'Catarse fee'
+    user_email: 'User catarse profile e-mail'
+    payer_email: 'Payment gateway user e-mail'
+    payment_method: 'Payment method'
+    address_street: 'Street'
+    address_complement: 'Complement'
+    address_number: 'Number'
+    address_neighbourhood: 'Neighbourhood'
+    address_city: 'City'
+    address_state: 'State'
+    address_zip_code: 'Zip code'
   edit_project: 'Edit this project'
   facebook_locale: 'en_US'
   or: or
@@ -42,6 +57,8 @@ en:
       faq: F.A.Q./Help
       terms: "Terms of use"
       policy: "Privacy Policy"
+      terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161102-terms-of-use'
+      policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161104-privacy-policy'
       contact: Contact
   main:
     links:
