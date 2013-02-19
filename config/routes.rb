@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" } 
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
   constraints check_user_admin do
@@ -16,7 +16,7 @@ Catarse::Application.routes.draw do
   mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
   mount CatarseMoip::Engine => "/", :as => "catarse_moip"
 
-  filter :locale
+  filter :locale, exclude: /\/auth\//
 
   root to: 'projects#index'
 

@@ -47,16 +47,10 @@
           p.action
             .bootstrap-twitter
               = f.submit t('registrations.new.submit'), class: 'btn', id: 'user_submit'
-    .login_with_social
-      .content_form
-        h1=t('.with_facebook')
-        h3=t('.with_facebook_subtitle')
-        = link_to t('layouts.login.login_with_facebook'), '/auth/facebook', :class => 'facebook_start'
-        h1=t('.with_another_social')
-        h3=t('.with_another_social_subtitle')
-        .another_social
-          = link_to image_tag('auth/google_128.png', :title => 'Google'), '/auth/google', :class => 'provider first'
-          = link_to image_tag('auth/orkut_128.png', :title => 'Orkut'), '/auth/google', :class => 'provider'
-          - OauthProvider.where("path <> 'facebook'").order('"order"').all.each do |p|
-            = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), "/auth/#{p.path}", :class => 'provider'
+    - unless Rails.env.test? # because we cannot initialize devise omniauth routes based on oauth_providers table after initialization
+      .login_with_social
+        .content_form
+          h1=t('.with_facebook')
+          h3=t('.with_facebook_subtitle')
+          = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), :class => 'facebook_start'
     .clearfix
