@@ -49,8 +49,8 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
               li= link_to t('footer.links.about'), about_path
               li= link_to t('footer.links.how_works'), guidelines_path, id: 'guidelines_modal'
               li= link_to t('footer.links.faq'), faq_path
-              li= link_to t('footer.links.terms'), terms_path
-              li= link_to t('footer.links.policy'), privacy_path
+              li= link_to t('footer.links.terms'), t('footer.links.terms_link')
+              li= link_to t('footer.links.policy'), t('footer.links.policy_link')
               li= link_to t('footer.links.contact'), "javascript:UserVoice.showPopupWidget({widget_key: 'JcDWrWW6tw6G4htPbGmqDA'});"
 
           .opendata
