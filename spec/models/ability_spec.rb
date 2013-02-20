@@ -26,17 +26,39 @@ describe Ability do
       it { should_not be_able_to(:update, project, :name) }
       it { should_not be_able_to(:update, project, :goal) }
       it { should_not be_able_to(:update, project, :online_days) }
-      it { should_not be_able_to(:update, project, :video_url) }
       it { should be_able_to(:update, project, :about) }
+      it { should be_able_to(:update, project, :video_url) }
+      it { should be_able_to(:update, project, :headline) }
+      it { should be_able_to(:update, project, :uploaded_image) }
       it { should be_able_to(:destroy, reward) }
 
       context "and someone make a back and select a reward" do
-        before { Factory(:backer, project: project, reward: reward) }
+        context "when backer is in time to confirm and not have confirmed backers" do
+          before { FactoryGirl.create(:backer, project: project, reward: reward, created_at: 1.day.ago, confirmed: false) }
 
-        it { should_not be_able_to(:update, reward, :minimum_value) }
-        it { should_not be_able_to(:destroy, reward) }
-        it { should be_able_to(:update, reward, :description) }
-        it { should be_able_to(:update, reward, :maximum_backers) }
+          it { should_not be_able_to(:update, reward, :minimum_value) }
+          it { should_not be_able_to(:destroy, reward) }
+          it { should_not be_able_to(:update, reward, :description) }
+          it { should be_able_to(:update, reward, :maximum_backers) }
+        end
+
+        context "when backer is not in time to confirm and have confirmed backers" do
+          before { FactoryGirl.create(:backer, project: project, reward: reward, created_at: 7.day.ago, confirmed: true) }
+
+          it { should_not be_able_to(:update, reward, :minimum_value) }
+          it { should_not be_able_to(:destroy, reward) }
+          it { should_not be_able_to(:update, reward, :description) }
+          it { should be_able_to(:update, reward, :maximum_backers) }
+        end
+
+        context "when backer is not in time to confirm and not have confirmed backers" do
+          before { FactoryGirl.create(:backer, project: project, reward: reward, created_at: 7.day.ago, confirmed: false) }
+
+          it { should be_able_to(:update, reward, :minimum_value) }
+          it { should be_able_to(:destroy, reward) }
+          it { should be_able_to(:update, reward, :description) }
+          it { should be_able_to(:update, reward, :maximum_backers) }
+        end
       end
     end
 
@@ -46,6 +68,7 @@ describe Ability do
       it { should be_able_to(:update, project, :video_url) }
       it { should be_able_to(:update, project, :uploaded_image) }
       it { should be_able_to(:update, project, :about) }
+      it { should be_able_to(:update, project, :headline) }
     end
 
     describe "when project is failed" do
@@ -54,6 +77,7 @@ describe Ability do
       it { should be_able_to(:update, project, :video_url) }
       it { should be_able_to(:update, project, :uploaded_image) }
       it { should be_able_to(:update, project, :about) }
+      it { should be_able_to(:update, project, :headline) }
     end
 
     describe "when project is successful" do
@@ -62,6 +86,7 @@ describe Ability do
       it { should be_able_to(:update, project, :video_url) }
       it { should be_able_to(:update, project, :uploaded_image) }
       it { should be_able_to(:update, project, :about) }
+      it { should be_able_to(:update, project, :headline) }
     end
   end
 

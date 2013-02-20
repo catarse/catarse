@@ -16,12 +16,8 @@ class Ability
     # NOTE: Project authorizations
     can :create, :projects if current_user.persisted?
 
-    can :update, :projects, :about do |project|
-      project.user == current_user && project.online?
-    end
-
-    can :update, :projects, [:about, :video_url, :uploaded_image ] do |project|
-      project.user == current_user && ( project.waiting_funds? || project.successful? || project.failed? )
+    can :update, :projects, [:about, :video_url, :uploaded_image, :headline ] do |project|
+      project.user == current_user && ( project.online? || project.waiting_funds? || project.successful? || project.failed? )
     end
 
     can :update, :projects do |project|
@@ -35,15 +31,15 @@ class Ability
     end
 
     can :destroy, :rewards do |reward|
-      reward.backers.empty? && reward.project.user == current_user
+      reward.backers.in_time_to_confirm.empty? && reward.backers.confirmed.empty? && reward.project.user == current_user
+    end
+
+    can :update, :rewards, [:maximum_backers] do |reward|
+      reward.project.user == current_user
     end
 
     can :update, :rewards do |reward|
-      reward.backers.empty? && reward.project.user == current_user
-    end
-
-    can :update, :rewards, [:description, :maximum_backers] do |reward|
-      reward.project.user == current_user
+      reward.backers.in_time_to_confirm.empty? && reward.backers.confirmed.empty? && reward.project.user == current_user
     end
 
     # NOTE: User authorizations
