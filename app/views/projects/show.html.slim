@@ -7,17 +7,15 @@
     meta name="description" content=@update.title
     meta property="og:title" content=@update.title
     meta property="og:description" content=@update.comment
-    - if @project.permalink
-      meta property="og:url" content=project_by_slug_url(@project.permalink, :update_id => @update.id, :locale => I18n.locale)
+    meta property="og:url" content=project_by_slug_url(@project.permalink, :update_id => @update.id, :locale => I18n.locale)
   - else
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
     meta property="og:description" content=@project.headline
-    - if @project.permalink
-      meta property="og:url" content=project_by_slug_url(@project.permalink, :locale => I18n.locale)
+    meta property="og:url" content=project_by_slug_url(@project.permalink, :locale => I18n.locale)
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image
-  meta property="og:site_name" content=t('site.name')
+  meta property="og:site_name" content=::Configuration[:company_name]
   meta property="fb:admins" content="#{fb_admins}"
 
 #page_content
@@ -37,7 +35,7 @@
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
     .section_header
       h1= @project.name
-      h4= t('projects.project_header.without_city', :category_name => link_to(@project.category.name, explore_path(:anchor => @project.category.name.parameterize)), :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
+      h4= t('projects.project_header.without_city', :category_name => link_to(@project.category, explore_path(:anchor => @project.category.to_s.parameterize)), :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
     .tab_container
       nav#project_menu
         = link_to '#about', :id => 'about_link', :class => 'selected' do
@@ -56,9 +54,34 @@
         - if can? :update, @project
           = link_to '#edit', :id => 'edit_link' do
             = t('.menu.edit')
+          = link_to '#reports', :id => 'reports_link' do
+            = t('.menu.reports')
     .main
       #project_content
         - if can? :update, @project
+          #project_reports.content.hide
+            - selected_r = @project.selected_rewards
+            ul
+              li
+                .bootstrap-twitter
+                  .alert.alert-info
+                    p style='margin-bottom: 0; padding-bottom: 0;'
+                      = t('.reports.link_reports')
+                      = link_to t('.reports.all_backers'), reports_backer_reports_for_project_owners_path(project_id: @project.id, format: :csv)
+              li
+                .bootstrap-twitter
+                  .alert.alert-info
+                    p style='margin-bottom: 0; padding-bottom: 0;'
+                      = t('.reports.link_reports')
+                      = link_to t('.reports.all_backers_without_reward'), reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :csv)
+              - if selected_r.length > 0
+                  - selected_r.each do |reward|
+                    li
+                      .bootstrap-twitter
+                        .alert.alert-info
+                          p style='margin-bottom: 0; padding-bottom: 0;'
+                            = t('.reports.link_reward')
+                            = link_to reward.display_minimum, reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :csv)
           #project_edit.content.hide
             .bootstrap-twitter
               .alert.alert-info
@@ -70,7 +93,7 @@
                   - if current_user.admin
                     = form.input :expires_at, as: :string
                     = form.input :user_id
-                    = form.input :permalink
+                    = form.input :permalink, as: :string
                   - if can? :update, @project, :name
                     = form.input :name, as: :string, required: false
                   - if can? :update, @project, :headline
@@ -154,10 +177,7 @@
               iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
-                - if @project.permalink
-                  #facebook_share= render_facebook_like href: project_by_slug_url(@project.permalink, locale: I18n.locale)
-                - else
-                  #facebook_share= render_facebook_like href: project_url(@project, locale: I18n.locale)
+                #facebook_share= render_facebook_like href: project_by_slug_url(@project.permalink, locale: I18n.locale)
                 ul
                   li.embed
                     = link_to '#embed', :id => 'embed_link' do
@@ -197,11 +217,11 @@
           #condition[class="#{@project.display_status}"]
             p
               = t("projects.back_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
-          - if @project.can_back?
+          - if @project.online?
             #pledge
               = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
                 fieldset
-                  = submit_tag t('projects.back_project.submit'), :disabled => (not @project.can_back?)
+                  = submit_tag t('projects.back_project.submit'), :disabled => (not @project.online?)
         #creator_profile
           h3= t('project_by')
           .avatar = @project.user.display_image_html :width => 80, :height => 80
@@ -248,7 +268,7 @@
         #rewards
           - @rewards.each do |reward|
 
-            div[id="reward_#{reward.id}" class="box #{(can?(:update, reward) ? 'clickable_owner' : '')} #{(@project.can_back? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
+            div[id="reward_#{reward.id}" class="box #{(can?(:update, reward) ? 'clickable_owner' : '')} #{(@project.online? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
               - if can?(:update, @project)
                 .hide id="reward#{reward.id}Editor"
                   .bootstrap-form
@@ -288,7 +308,7 @@
                   - else
                     .limited= t('reward.limited')
                     .remaining
-                      = t('reward.display_remaining', :remaining => reward.remaining, :maximum => reward.maximum_backers).html_safe
+                      = reward.display_remaining
                 .clearfix
           .clearfix
     .clearfix

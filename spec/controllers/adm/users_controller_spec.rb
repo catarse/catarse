@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Adm::UsersController do
   subject{ response }
   let(:admin) do 
-    u = Factory(:user)
+    u = FactoryGirl.create(:user)
     u.admin = true
     u.save!
     u
@@ -14,7 +14,7 @@ describe Adm::UsersController do
       before do
         get :index, :locale => :pt
       end
-      it{ should redirect_to login_path }
+      it{ should redirect_to new_user_session_path }
     end
 
     context "when I'm logged as admin" do

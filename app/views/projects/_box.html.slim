@@ -2,7 +2,7 @@
   meta[itemprop="dateCreated" content=project.created_at.to_date]
   - if project.expired?
     .status_image
-      = link_to project_path(project), :target => ( defined?(embed_link) ? '__blank' : '' ) do
+      = link_to project_by_slug_path(permalink: project.permalink), :target => ( defined?(embed_link) ? '__blank' : '' ) do
         - if project.successful?
           = image_tag "successful.#{I18n.locale}.png"
         - elsif project.waiting_confirmation?
@@ -10,7 +10,7 @@
         - else
           = image_tag "not_successful.#{I18n.locale}.png"
   .box
-    p.black_box= project.category.name
+    p.black_box= project.category
     .cover
       = link_to project, :target => ( defined?(embed_link) ? '__blank' : '' ) do
         = image_tag project.display_image, :itemprop => 'image'

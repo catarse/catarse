@@ -20,7 +20,7 @@ script type="text/template" id="project_template"
         |<% } %>
     | <% } %>
     .box
-      p.black_box <%= category['name'] %>
+      p.black_box <%=  category['name_' + CATARSE.locale] %>
       .cover
         a href="<%= url %>"
           img src="<%= image %>" itemprop="image"

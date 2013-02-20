@@ -6,7 +6,6 @@ class Notification < ActiveRecord::Base
   # Update was an unfortunate decision, we should rename it soon
   belongs_to :project_update, class_name: "Update", foreign_key: :update_id
   validates_presence_of :user
-  scope :not_dismissed, where(dismissed: false)
   attr_accessor :mail_params
 
   def self.create_notification_once(notification_type_name, user, filter, mail_params = {})
