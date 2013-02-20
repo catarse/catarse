@@ -76,6 +76,21 @@ describe Backer do
     end
   end
 
+  describe '.in_time_to_confirm' do
+    subject { Backer.in_time_to_confirm}
+
+    context "when backer is in time to confirm" do
+      before { FactoryGirl.create(:backer, created_at: 3.days.ago) }
+      it { should have(1).item }
+    end
+
+    context "when backer already passed the time to confirm" do
+      before { FactoryGirl.create(:backer, created_at: 6.days.ago) }
+      it { should have(0).item }
+    end
+
+  end
+
   describe ".can_refund" do
     before{ valid_refund }
 
