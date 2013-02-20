@@ -17,7 +17,7 @@ gem 'pg_search'
 gem 'postgres-copy'
 gem 'schema_plus'
 
-gem 'catarse_stripe', git: 'git://github.com/lvxn0va/catarse_stripe.git', branch: 'adjustments'
+gem 'catarse_stripe', git: 'git://github.com/lvxn0va/catarse_stripe.git', branch: 'master'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 #gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '8f60d81b8f544003d99db4e80f945da6af1a9f4f'

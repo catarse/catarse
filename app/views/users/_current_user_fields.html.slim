@@ -52,6 +52,20 @@
             = f.input :bio, :as => :text, :input_html => { :rows => 5, :cols => 20, :maxlength => 240  }
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"
+  #payment_gateways
+    h1= t('.payment_gateways')
+    ul
+      li
+        - if @user.stripe_key.blank?
+          = link_to image_tag('auth/stripe_blue.png', :title => t('.stripe_button_title')), '/auth/stripe_connect', :class => 'provider'
+        - else
+          = image_tag 'auth/stripe-solid.png'
+          br
+          p= t('.stripe_key_info')
+          p= @user.stripe_key
+          br
+          p= t('.stripe_customer_info')
+          p= @user.stripe_userid  
 - if @user.is_devise?
   #change_password
     h1= t('.change_password')

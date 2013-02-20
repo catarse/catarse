@@ -187,6 +187,8 @@ class User < ActiveRecord::Base
 
       if auth["provider"] == "stripe_connect"
         user.stripe_key = auth["info"]["stripe_publishable_key"]
+        user.stripe_userid = auth["uid"]
+        user.stripe_access_token = auth["credentials"]["token"]
       end
     end
   end

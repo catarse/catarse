@@ -807,6 +807,14 @@ en:
       my_data: "My profile"
       newsletter: "I want to receive news from Catarse via email"
       password_hint: "<i>Leave blank if you don't want to change it.</i>"
+      payment_gateways: "Payment Gateways"
+      stripe_button_title: "Stripe Payments"
+      stripe_key_info: "Your Publishable Key is:"
+      stripe_key: "%{@user.stripe_key}"
+      stripe_customer_info: "Your Customer ID is:"
+      stripe_customer_id: "%{@user.stripe_id}"
+      stripe_disconnected: "DISCONNECTED!"
+      stripe_connected: "CONNECTED!"
     header:
       bio_tooltip: "Click here to write about you..."
       name_tooltip: "Click here to fill your name..."
@@ -815,6 +823,7 @@ en:
       no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
       title: "%{name}'s projects"
       title_current_user: "My projects"
+      success: "Success! Thanks so much for your contribution"
   users_mailer:
     notification_email:
       alt: "You must enable images in order to correctly view this message."

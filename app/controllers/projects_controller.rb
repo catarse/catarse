@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   respond_to :html, :except => [:backers]
   respond_to :json, :only => [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, :only => [:backers]
+  #before_filter :check_for_stripe_key, :only => [:show]
 
   def index
     index! do |format|
@@ -70,10 +71,12 @@ class ProjectsController < ApplicationController
       @project.reload
       @project.update_attributes({ short_url: bitly })
     end
+    check_for_stripe_keys
   end
 
   def show
     begin
+
       if params[:permalink].present?
         @project = Project.find_by_permalink! params[:permalink]
       elsif resource.permalink
@@ -84,6 +87,8 @@ class ProjectsController < ApplicationController
       if !params[:permalink].present? and @project.permalink.present?
         return redirect_to project_by_slug_url(permalink: @project.permalink)
       end
+      
+      check_for_stripe_keys
 
       show!{
         @title = @project.name
@@ -167,5 +172,25 @@ class ProjectsController < ApplicationController
     res = Net::HTTP.start("api.bit.ly", 80) { |http| http.get("/v3/shorten?login=diogob&apiKey=R_76ee3ab860d76d0d1c1c8e9cc5485ca1&longUrl=#{CGI.escape(project_url(@project))}") }
     data = JSON.parse(res.body)['data']
     data['url'] if data
+  end
+
+  def check_for_stripe_keys
+    if @project.stripe_userid.nil?
+      [:stripe_access_token, :stripe_key, :stripe_userid].each do |field|
+        @project.send("#{field.to_s}=", @project.user.send(field).dup)
+      end
+      #@project.reload
+      #@project.stripe_access_token = @project.user.stripe_access_token.dup
+      #@project.stripe_key = @project.user.stripe_key.dup
+      #@project.stripe_userid = @project.user.stripe_userid.dup
+    elsif @project.stripe_userid != @project.user.stripe_userid
+      [:stripe_access_token, :stripe_key, :stripe_userid].each do |field|
+        @project.send("#{field.to_s}=", @project.user.send(field).dup)
+      end
+      #@project.stripe_access_token = @project.user.stripe_access_token.dup
+      #@project.stripe_key = @project.user.stripe_key.dup
+      #@project.stripe_userid = @project.user.stripe_userid.dup
+    end
+      @project.save
   end
 end

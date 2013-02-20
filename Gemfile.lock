@@ -17,11 +17,12 @@ GIT
 
 GIT
   remote: git://github.com/lvxn0va/catarse_stripe.git
-  revision: ef6ccf1f246b1054f4adb2504baec7f5e9d7aa83
-  branch: adjustments
+  revision: 5096b2be79cb03c9d830ff158361037e9b0a5530
+  branch: master
   specs:
     catarse_stripe (0.0.8)
       activemerchant (>= 1.17.0)
+      figaro
       omniauth-stripe-connect
       rails (~> 3.2.11)
       stripe
