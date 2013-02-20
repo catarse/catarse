@@ -249,8 +249,13 @@ class Project < ActiveRecord::Base
     end
 
     after_transition waiting_funds: [:successful, :failed], do: :after_transition_of_wainting_funds_to_successful_or_failed
+    after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
     after_transition draft: :online, do: :after_transition_of_draft_to_online
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
+  end
+
+  def after_transition_of_wainting_funds_to_successful
+    notify_observers :notify_owner_that_project_is_successful
   end
 
   def after_transition_of_draft_to_rejected
