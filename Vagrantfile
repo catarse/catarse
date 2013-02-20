@@ -114,10 +114,6 @@ Vagrant::Config.run do |config|
   end
 
   
-  # Run postgresql service
-  #config.vm.provision :shell, inline: %q{service postgresql initdb && service postgresql start}
-
-
   # Run the Rails project right on vagrant up 
   config.vm.provision :shell, inline: %q{export DISPLAY=:99}
   config.vm.provision :shell, inline: %q{cp /vagrant/config/database.sample.yml /vagrant/config/database.yml}
