@@ -117,6 +117,6 @@ Vagrant::Config.run do |config|
   config.vm.provision :shell, inline: %q{update-locale LANG=en_US.utf8}
   config.vm.provision :shell, inline: %q{cd /vagrant && bundle install}
   config.vm.provision :shell, inline: %q{cd /vagrant && rake db:migrate && rake db:seed}
-  config.vm.provision :shell, inline: %q{cd /vagrant && bundle exec unicorn -p 3000 -d}
+  config.vm.provision :shell, inline: %q{cd /vagrant && bundle exec rails s -d}
 end
 
