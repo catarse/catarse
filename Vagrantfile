@@ -115,11 +115,11 @@ Vagrant::Config.run do |config|
 
   
   # Run the Rails project right on vagrant up 
-  config.vm.provision :shell, inline: %q{export DISPLAY=:99}
+  config.vm.provision :shell, inline: %q{cd /vagrant && export DISPLAY=:99}
   config.vm.provision :shell, inline: %q{cp /vagrant/config/database.sample.yml /vagrant/config/database.yml}
   config.vm.provision :shell, inline: %q{update-locale LANG=en_US.utf8}
   config.vm.provision :shell, inline: %q{cd /vagrant && bundle install}
-  config.vm.provision :shell, inline: %q{cd /vagrant && rake db:migrate && rake db:seed}
+  config.vm.provision :shell, inline: %q{cd /vagrant && rake db:migrate && rake catarse:config:load_defaults && rake db:seed}
   config.vm.provision :shell, inline: %q{cd /vagrant && bundle exec rails s -d}
 end
 
