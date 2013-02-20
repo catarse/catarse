@@ -11,6 +11,8 @@ cookbook 'nodejs',  github: 'hectcastro/chef-nodejs'
 cookbook 'curl',    github: 'phlipper/chef-curl'
 cookbook 'locale'
 cookbook 'imagemagick'
+cookbook 'xvfb',    github: 'chef-cookbooks/chef-xvfb'
+cookbook 'firefox', github: 'chef-cookbooks/chef-firefox'
 
 # Manage ruby installations
 cookbook 'rvm', github: 'fnichol/chef-rvm'

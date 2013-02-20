@@ -21,6 +21,7 @@ Vagrant::Config.run do |config|
 
     chef.add_recipe "apt"
 
+
     # Include GCC and other utilities (compilation,etc)
     chef.add_recipe "build-essential"
     chef.add_recipe "git"
@@ -28,6 +29,9 @@ Vagrant::Config.run do |config|
     chef.add_recipe "curl::devel"
     chef.add_recipe "locale::default"
 
+    # Virtual server X Frame Buffer
+    chef.add_recipe "xvfb"
+    chef.add_recipe "firefox"
 
     # Image handling
     chef.add_recipe "imagemagick"
@@ -115,6 +119,7 @@ Vagrant::Config.run do |config|
 
 
   # Run the Rails project right on vagrant up 
+  config.vm.provision :shell, inline: %q{export DISPLAY=:99}
   config.vm.provision :shell, inline: %q{cp /vagrant/config/database.sample.yml /vagrant/config/database.yml}
   config.vm.provision :shell, inline: %q{update-locale LANG=en_US.utf8}
   config.vm.provision :shell, inline: %q{cd /vagrant && bundle install}
