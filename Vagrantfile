@@ -8,6 +8,8 @@ Vagrant::Config.run do |config|
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
+  # Customizing memory. The VM will need at least 512MB
+  config.vm.customize ["modifyvm", :id, "--memory", 512] 
 
   # In case the Rails app runs on port 3000, make it available on the host
   config.vm.forward_port 3000, 3000
