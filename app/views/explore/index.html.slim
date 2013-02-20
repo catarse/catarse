@@ -42,7 +42,7 @@
             ul#explore_categories
               - @categories.each_with_index do |category, index|
                 li class="#{(index%2==1 ? 'no_margin':'')}"
-                  a href="##{category.name.parameterize}" data-id=category.id
-                    = category.name
+                  a href="##{category.to_s.parameterize}" data-id=category.id
+                    = category
 
     .clearfix

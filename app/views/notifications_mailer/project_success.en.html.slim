@@ -1,52 +1,31 @@
 - project = @notification.project
-|Hi #{project.user.name},
+|Oi oi oi oi #{project.user.name},
 br
-|First of all, congratulations for you successful project! =D
-br
-br
-|With this message we begin the process of transfering the pledged ammount to you. It's all explained below in 5 steps:
+|Antes de mais nada, super parabéns pelo projeto bem-sucedido! =D
 br
 br
-|1 - You need to create a MoiP account, our financial partner. To create an account visit their website (#{link_to 'http://www.moip.com.br', 'http://www.moip.com.br'}) and create a Seller's Account.
+|Reunimos aqui algumas informações importantíssimas para quem teve seu projeto financiado com sucesso aqui no Catarse. São 5 coisinhas, ó:
 br
 br
-|It's important that the CPF/CNPJ  on your MoiP account be the same as the holder's bank account. In case you have any doubt in this process, send an email to #{mail_to 'financeiro@catarse.me'} with the subject: “Dúvida para criação de conta MoIP para o projeto #{project.name}”.
+|1 - Você já <strong>verificou sua conta lá no MoiP</strong>? Sem ela verificada, você só vai conseguir sacar R$500 por mês. Aqui tem o passo-a-passo de como fazer essa verificação. Se tiver qualquer dificuldade, entre em contato com a gente no nosso Suporte: #{link_to 'http://suporte.catarse.me/', 'http://suporte.catarse.me/'}
 br
 br
-|1.1. - If your project raised more than R$5.500, you will need to send some documents to MoiP to verify your account and be able to withdraw more than R$5.000 per month. This is what you need to do:
-br
-|a. Access your MoiP account,
-br
-|b. Go to MEUS DADOS - CONTA MOIP - LIMITES E VERIFICAÇÕES,
-br
-|c. Click on the 'verify your account' option in the 'saída de dinheiro' field.
-br
-|d. upload the documents in the new screen.
+|2 - Você poderá baixar sua <strong>planilha com detalhes dos apoiadores (nome, recompensa, endereço, etc.)</strong> a qualquer momento na ABA de Relatório na página do seu projeto.
 br
 br
-|If you have any trouble in this process, send these 3 documents attached in the email in step 2 (this one right below).
+|3 - Além disso, vamos precisar de algumas <strong>informações para emitirmos a Nota Fiscal</strong> referente ao serviço do Catarse, ok? Pra isso, preciso que você preencha seus dados no seu #{link_to 'perfil do Catarse', user_url(project.user)}
 br
 br
-|2 - After the account has been created, please send an email to #{mail_to 'financeiro@catarse.me'} with the subject “Conta MOIP do projeto #{project.name}”, and you MoiP login on the email body.
+|4 - Iremos emitir a Nota Fiscal para vocês até o último dia útil do mês que encerrou a captação do projeto no #{Configuration[:company_name]}, caso o seu projeto tenha encerrado a captação até o dia 24 do mês, se não, emitiremos ela no mês posterior, ok?
 br
 br
-|3 - We will send you a spread sheet with all the backers information (name, reward, address, etc.) in up to 4 working days after the project deadline (this wait is due to the time it takes for the bank slips to be paid and received, if it they were issued just before the deadline). In this spread sheet we will also highlight Catarse and the payment service provider's fee for all transactions.
+|5 - Para acabar, aqui vai um dos bens mais importantes da sua campanha: o #{link_to 'Guia Pós-Projeto', 'https://docs.google.com/a/catarse.me/document/d/1g6IY1T8xl4wc24MnN2gL0-AD1esfmJb_kXXxRY_jJ_4/edit'}. Recheamos ele com dicas para você lidar com as recompensas e para manter por perto a comunidade de pessoas que você criou com o seu projeto. 
 br
 br
-|4 - Furthermore, we will need some information for the Catarse service invoice, ok? For this, you will need to fill the form below:
+|Qualquer outra dúvida, por favor, entre em contato com a gente através do nosso Suporte: #{link_to 'http://suporte.catarse.me/', 'http://suporte.catarse.me/'}
 br
 br
-= link_to "https://docs.google.com/a/catarse.me/spreadsheet/viewform?formkey=dDR5Njdsd3AwMXppVjRTd296MWhQclE6MQ#gid=0", "https://docs.google.com/a/catarse.me/spreadsheet/viewform?formkey=dDR5Njdsd3AwMXppVjRTd296MWhQclE6MQ#gid=0"
-
+|Grande abraço,
 br
 br
-|5 - We will send you the invoice until the last working day of the month if your project ended on the 24th day or before, otherwise we will send it on the next month, ok?
-br
-br
-|Any other questions, please send an email to contato@catarse.me .
-br
-br
-|A big hug,
-br
-br
-|Catarse Team
+|Equipe do #{Configuration[:company_name]}

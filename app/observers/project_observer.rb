@@ -11,13 +11,21 @@ class ProjectObserver < ActiveRecord::Observer
       Notification.create_notification_once(:new_draft_project,
                                             user,
                                             {project_id: project.id},
-                                            {project: project, project_name: project.name})
+                                            {project: project, project_name: project.name, from: project.user.email}
+                                           )
     end
 
-    Notification.create_notification_once(:project_received, 
+    Notification.create_notification_once(:project_received,
                                           project.user,
                                           {project_id: project.id},
                                           {project: project, project_name: project.name})
+  end
+
+  def notify_owner_that_project_is_successful(project)
+    Notification.create_notification_once(:project_success,
+      project.user,
+      {project_id: project.id},
+      project: project)
   end
 
   def notify_owner_that_project_is_rejected(project)

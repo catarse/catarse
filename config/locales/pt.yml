@@ -1,4 +1,19 @@
 pt:
+  backer_report_to_project_owner:
+    reward_description: 'Descrição da recompensa'
+    confirmed_at: 'Data da confirmação do pagamento'
+    value: 'Valor do apoio'
+    service_fee: 'Taxa do Catarse'
+    user_email: 'Email perfil Catarse'
+    payer_email: 'Email do meio de pagamento'
+    payment_method: 'Meio de pagamento'
+    address_street: 'Rua'
+    address_complement: 'Complemento'
+    address_number: 'Número'
+    address_neighbourhood: 'Bairro'
+    address_city: 'Cidade'
+    address_state: 'Estado'
+    address_zip_code: 'CEP'
   edit_project: 'Editar projeto'
   days: 'dias'
   controllers:
@@ -48,6 +63,8 @@ pt:
       about: "Quem Somos"
       terms: "Termos de Uso"
       policy: "Política de Privacidade"
+      terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161100-termos-de-uso'
+      policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade'
       contact: Contato
   main:
     links:
@@ -173,68 +190,6 @@ pt:
     show:
       backed: levantados
       reached: atingido
-  devise:
-    confirmations:
-      confirmed: "Sua conta foi confirmada com sucesso. Você está logado a partir de agora."
-      send_instructions: "Você receberá um email com instruções sobre como confirmar a sua conta em poucos minutos."
-      send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um email com instruções sobre como confirmar a sua conta em poucos minutos."
-    failure:
-      already_authenticated: "Você já está logado."
-      inactive: "Sua conta ainda não foi ativada."
-      invalid: "Email ou senha inválidos."
-      invalid_token: "Token de autenticação invalido."
-      locked: "Sua conta está bloqueada."
-      timeout: "Sua sessão expirou, loge-se novamente para continuar."
-      unauthenticated: "Você precisa fazer login ou criar uma conta antes de continuar."
-      unconfirmed: "Você tem que confirmar a sua conta antes de continuar."
-    links:
-      forgot_password: "Esqueceu sua senha?"
-      sign_in: "Efetuar login"
-      sign_up: Cadastre-se
-    mailer:
-      confirmation_instructions:
-        subject: "Instruções de confirmação"
-      reset_password_instructions:
-        subject: "Instruções para redefinir sua senha"
-        alt: "Instruções para redefinir sua senha"
-      unlock_instructions:
-        subject: "Instruções para desbloquear conta"
-    omniauth_callbacks:
-      failure: "Não foi possível autenticá-lo a partir de %{kind} porque \"%{reason}\"."
-      success: "Autenticado com sucesso a partir de %{kind} conta."
-    passwords:
-      send_instructions: "Você receberá um email com instruções para redefinir sua senha em alguns minutos."
-      send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um link para recuperação de senha em seu e-mail."
-      updated: "Sua senha foi alterada com sucesso. Você está logado a partir de agora."
-      updated_not_active: "Sua senha foi alterada com sucesso."
-    registrations:
-      destroyed: "Bye! Sua conta foi cancelada com sucesso. Nós esperamos vê-lo novamente em breve."
-      inactive_signed_up: "Você se registrou com sucesso. No entanto, não poderia efetuar login porque a sua conta é %{reason}."
-      reasons:
-        inactive: inativo
-        locked: bloqueado
-        unconfirmed: "não confirmado"
-      signed_up: "Bem vindo! Você se registrou com sucesso."
-      updated: "Você atualizou a sua conta com sucesso."
-    sessions:
-      new:
-        site_title: "Efetuar login"
-        submit: "Efetuar login"
-        title: "Entre utilizando o seu endereço de email"
-        login_title: Login
-        login_subtitle: "Caso já possua uma conta"
-        register_title: Cadastre-se
-        register_subtitle: "Utilize seu endereço de e-mail"
-        with_facebook: "Entre utilizando o facebook"
-        with_facebook_subtitle: "Uma maneira muito rápida de acessar"
-        with_another_social: "Não tem conta no facebook?"
-        with_another_social_subtitle: "Entre utilizando sua conta de outra rede social"
-      signed_in: "Login realizado com sucesso. Seja bem-vindo!"
-      signed_out: "Logout realizado com sucesso. Até logo!"
-    unlocks:
-      send_instructions: "Você receberá um email com instruções sobre como desbloquear a sua conta em poucos minutos."
-      send_paranoid_instructions: "Se a sua conta existe, você receberá um email com instruções sobre como desbloqueá-lo em poucos minutos."
-      unlocked: "Sua conta foi desbloqueada com sucesso. Você está logado a partir de agora."
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
   explore:
     index:
@@ -260,7 +215,7 @@ pt:
         category: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
         expires_at: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
         online_days: "Finalmente, escolha quanto tempo você quer que sua campanha dure. De novo, é uma escolha estratégica: se você botar muito tempo, as pessoas perderão interesse no meio do caminho; se botar muito pouco, poderá não atingir o mínimo a tempo."
-        goal_html: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): <a href='http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
+        goal: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): <a href='http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
         headline: "Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)"
         name: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo."
         uploaded_image: "Aqui você faz upload de uma imagem (.jpg) com tamanho 220x172."
@@ -336,14 +291,6 @@ pt:
       submit: "Enviar as instruções para recuperar senha"
       title: "Esqueceu sua senha?"
       site_title: "Recuperar senha"
-  payment_stream:
-    thank_you:
-      error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
-      header_subtitle: "Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!"
-      header_title: "Muito obrigado! :D"
-      text_subtitle: "Conte para todo mundo o que você acabou de fazer"
-      text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
-      title: "Muito obrigado"
   project:
     start:
       email_subject: "O seu projeto foi recebido pela equipe do Catarse"
@@ -372,9 +319,6 @@ pt:
       waiting_funds: aguardando
       not_reached_goal: aguardando
   projects:
-    recommended_header:
-      sugest_for_you: "sugerido para você"
-      highlight_project: "projeto em destaque"
     box:
       by: por
     admin_fields:
@@ -394,6 +338,14 @@ pt:
       anonymous_description: "Optou por permanecer incógnito"
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
+      show:
+        error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
+        moip_message: "Sua transação foi processada pelo Moip Pagamentos S/A.<br>A sua transação está “Autorizada” e o código Moip é “%{code}″.<br>Caso tenha alguma dúvida referente a transação, entre em contato com o Moip."
+        header_subtitle: "Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!"
+        header_title: "Muito obrigado! :D"
+        text_subtitle: "Conte para todo mundo o que você acabou de fazer"
+        text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
+        title: "Muito obrigado"
       checkout:
         no_credits: "Você não possui créditos suficientes para realizar este apoio."
         success: "Seu apoio foi realizado com sucesso. Muito obrigado!"
@@ -405,7 +357,7 @@ pt:
         no_reward: "Obrigado. Eu só quero ajudar o projeto."
         submit: "Revisar e realizar pagamento"
         title: "Apoie o %{name}"
-      review:
+      create:
         brazil_address_title: 'Preencha os campos abaixo se o seu apoio é nacional'
         credits_notice_html: "Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos."
         live_in_brazil: 'Moro no Brasil. ( Desmarque caso o seu apoio seja internacional )'
@@ -453,6 +405,8 @@ pt:
       subtitle_html: "Financie projetos de maneira colaborativa e torne-se parte de algo maior.<br/>Promova uma catarse coletiva! Você é a peça que falta nesta história."
       title: "Faça acontecer os projetos em que você acredita"
     recommended_header:
+      suggest_for_you: "sugerido para você"
+      highlight_project: "projeto em destaque"
       guidelines: "Como Funciona"
       guidelines_subtitle: "Entenda o Catarse"
     pending:
@@ -518,12 +472,19 @@ pt:
       about_title: "O projeto"
       no_rewards_warning_title: 'Crie aqui suas recompensas'
       no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
+      reports:
+        no_backs: 'Seu projeto ainda não tem nenhum apoio.'
+        link_reports: 'Baixar relatório de '
+        all_backers: 'todos os apoiadores'
+        all_backers_without_reward: 'todos os apoiadores que não selecionaram uma recompensa'
+        link_reward: 'Baixar relatório dos apoiadores da recompensa de '
       menu:
         about: Sobre
         backers: Apoiadores
         comments: Comentários
         updates: Novidades
         edit: Edição
+        reports: Relatórios
         add_reward: 'Adicionar recompensa'
       share:
         embed: embed
@@ -614,7 +575,6 @@ pt:
     failure:
       error: "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
   site:
-    name: Catarse
     title: "A maior comunidade de crowdfunding do Brasil!"
   static:
     faq:
@@ -806,7 +766,7 @@ pt:
       update_social_info: "Atualizar informações"
       social_info: "Informações para contato"
       twitter: "twitter ( usuário )"
-      facebook_link: "perfil do facebook"
+      facebook_link: "perfil do facebook (link completo)"
       other_link: "link da sua página na internet"
       change_password: "Alterar minha senha"
       current_password_hint: "<i>Para que a senha seja alterada você precisa confirmar a sua senha atual.</i>"

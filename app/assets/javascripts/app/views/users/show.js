@@ -32,12 +32,6 @@ CATARSE.UsersShowView = Backbone.View.extend({
       }
     })
 
-    $('input[type=checkbox]').click(function(){
-      $.post('/users/update_attribute_on_the_spot', {
-        id: 'user__' + $(this).attr('id') + '__' + $('#id').val(),
-        value: ($(this).is(':checked') ? 1 : null)
-      })
-    })
   },
 
   events: {

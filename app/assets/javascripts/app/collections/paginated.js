@@ -7,19 +7,19 @@ CATARSE.PaginatedCollection = Backbone.Collection.extend({
       this.search = options.search
     this.initializePages()
   },
-  
+
   initializePages: function(){
     _.bindAll(this, "nextPage")
     this.page = 1
   },
-  
+
   fetchPage: function(){
-    return this.fetch({data: {page: this.page, locale: CATARSE.locale, search: this.search}})
+    return this.fetch({data: $.extend({page: this.page, locale: CATARSE.locale}, this.search)})
   },
-  
+
   nextPage: function(){
     this.page++
     return this.fetchPage()
   }
-  
+
 })

@@ -1,9 +1,9 @@
 #page_content
   .container
-    #project_review
+    #project_review data-thank-you-path=project_backer_path(project_id: @project.id, id: @backer.id)
       .project_info
         = image_tag @project.display_image, :id => 'project_image', :alt => @project.name, :width => '250px'
-        h1= t('.you_are_about_html', :link => link_to(@project.name, project_path(@project)))
+        h1= t('.you_are_about_html', :link => link_to(@project.name, project_by_slug_path(permalink: @project.permalink)))
         #review_text
           - if @backer.reward
             .review_content
@@ -24,7 +24,7 @@
             .alert
               #credits_notice= t('.credits_notice_html', :credits => number_to_currency((current_user.credits - @backer.value), :unit => 'R$', :precision => 0, :delimiter => '.'))
       .bootstrap-form
-        = semantic_form_for current_user, :url => checkout_project_backer_path(@backer.project, @backer), :html => { :id => 'review_form', :class => "form-horizontal #{('dont_align' if @backer.credits)}" } do |form|
+        = semantic_form_for current_user, :url => credits_checkout_project_backer_path(@backer.project, @backer), :html => { :id => 'review_form', :class => "form-horizontal #{('dont_align' if @backer.credits)}" } do |form|
           = hidden_field_tag 'project_id', @backer.project.id
           = hidden_field_tag 'backer_id', @backer.id
           = hidden_field_tag 'backer_credits', @backer.credits
@@ -51,7 +51,7 @@
           .submit
             fieldset.accept_terms
               = check_box_tag 'accept'
-              = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), terms_path, :target => :_blank)), :class => 'inline'
+              = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), t('footer.links.terms_link'), :target => :_blank)), :class => 'inline'
             - if @backer.credits
               = form.actions do
                 .bootstrap-twitter

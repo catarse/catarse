@@ -149,8 +149,16 @@ CATARSE.ReviewForm = Backbone.View.extend({
   showUpAddressForm: function(e) {
     if(this.liveInBrazil()) {
       $('fieldset.address_data').fadeIn();
+      if(this.accepted_terms()) {
+        $('#accept').trigger('click');
+        $('#accept').attr('checked', true);
+      }
     } else {
       $('fieldset.address_data').fadeOut();
+      if(this.accepted_terms()) {
+        $('#accept').trigger('click');
+        $('#accept').attr('checked', true);
+      }
     }
   },
 
@@ -214,7 +222,7 @@ CATARSE.ReviewForm = Backbone.View.extend({
   }
 });
 
-CATARSE.BackersReviewView = Backbone.View.extend({
+CATARSE.BackersCreateView = Backbone.View.extend({
   events:{
     'click .tab_container #payment_menu a' : 'onPaymentTabClick'
   },

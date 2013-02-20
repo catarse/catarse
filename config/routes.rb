@@ -1,9 +1,7 @@
 require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"} do
-    get "/login" => "devise/sessions#new"
-  end
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" } 
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
   constraints check_user_admin do
@@ -11,16 +9,14 @@ Catarse::Application.routes.draw do
   end
 
   # Non production routes
-  if Rails.env == "test"
-    match "/fake_login" => "sessions#fake_create", :as => :fake_login
-  elsif Rails.env == "development"
+  if Rails.env == "development"
     resources :emails, :only => [ :index ]
   end
 
   mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
   mount CatarseMoip::Engine => "/", :as => "catarse_moip"
 
-  filter :locale
+  filter :locale, exclude: /\/auth\//
 
   root to: 'projects#index'
 
@@ -32,39 +28,30 @@ Catarse::Application.routes.draw do
   match "/guidelines_start" => "static#guidelines_start", :as => :guidelines_start
   match "/about" => "static#about", :as => :about
   match "/faq" => "static#faq", :as => :faq
-  match "/terms" => "static#terms", :as => :terms
-  match "/privacy" => "static#privacy", :as => :privacy
 
-  match "/thank_you" => "payment_stream#thank_you", :as => :thank_you
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
 
-  post "/auth" => "sessions#auth", :as => :auth
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/auth/failure" => "sessions#failure"
-  match "/logout" => "sessions#destroy", :as => :logout
   match "/reward/:id" => "rewards#show", :as => :reward
   resources :posts, only: [:index, :create]
+
+  namespace :reports do
+    resources :backer_reports_for_project_owners, only: [:index]
+  end
+
   resources :projects do
     resources :updates, only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy ]
-    resources :backers, controller: 'projects/backers', only: [ :index, :new ] do
-      collection do
-        post 'review'
-      end
+    resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
       member do
-        match 'checkout'
+        match 'credits_checkout'
         post 'update_info'
       end
     end
     collection do
-      get 'start'
-      post 'send_mail'
       get 'vimeo'
       get 'check_slug'
-      get 'thank_you'
-      post 'update_attribute_on_the_spot'
     end
     member do
       put 'pay'
@@ -80,7 +67,6 @@ Catarse::Application.routes.draw do
       get 'credits'
       put 'unsubscribe_update'
     end
-    post 'update_attribute_on_the_spot', :on => :collection
   end
   match "/users/:id/request_refund/:back_id" => 'users#request_refund'
 
@@ -102,13 +88,10 @@ Catarse::Application.routes.draw do
 
     resources :financials, only: [ :index ]
 
-    resources :backers, only: [ :index ] do
+    resources :backers, only: [ :index, :update ] do
       member do
         put 'confirm'
         put 'unconfirm'
-      end
-      collection do
-        post 'update_attribute_on_the_spot'
       end
     end
     resources :users, only: [ :index ]

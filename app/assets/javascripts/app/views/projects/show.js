@@ -1,13 +1,14 @@
 CATARSE.ProjectsShowView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "bestInPlaceEvents", "showUpRewardEditForm", "showUpNewRewardForm","render", "BackerView", "BackersView", "about", "updates", "edit","backers", "comments", "embed", "isValid", "backWithReward")
+    _.bindAll(this, "bestInPlaceEvents", "showUpRewardEditForm", "showUpNewRewardForm","render", "BackerView", "BackersView", "about", "updates", "edit", "reports", "backers", "comments", "embed", "isValid", "backWithReward")
     CATARSE.router.route("", "index", this.about)
     CATARSE.router.route("about", "about", this.about)
     CATARSE.router.route("updates", "updates", this.updates)
     CATARSE.router.route(/updates\/\d+/, "updates", this.updates)
     CATARSE.router.route("backers", "backers", this.backers)
     CATARSE.router.route("edit", "edit", this.edit)
+    CATARSE.router.route("reports", "reports", this.reports)
     CATARSE.router.route("comments", "comments", this.comments)
     CATARSE.router.route("embed", "embed", this.embed)
 
@@ -154,8 +155,12 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     this.selectItem("edit")
   },
 
+  reports: function() {
+    this.selectItem("reports")
+  },
+
   backers: function() {
-    this.selectItem("backers")
+    this.selectItem("backers");
     this.backersView = new this.BackersView({
       modelView: this.BackerView,
       collection: new CATARSE.Backers({url: '/' + CATARSE.locale + '/projects/' + this.project.id + '/backers'}),
@@ -178,7 +183,11 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     var link = this.$("#project_menu #" + item + "_link")
     this.$('#project_menu a').removeClass('selected')
     link.addClass('selected')
-    FB.XFBML.parse();
+    try {
+      FB.XFBML.parse();
+    } catch(error) {
+      console.log('FB error', error);
+    }
   },
 
   showFormattingTips: function(event){

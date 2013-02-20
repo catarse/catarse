@@ -7,8 +7,8 @@ describe Notification do
   it{ should belong_to :backer }
   it{ should belong_to :project_update }
 
-  let(:backer){ Factory(:backer) }
-  let(:notification_type){ Factory(:notification_type, name: 'confirm_backer') }
+  let(:backer){ FactoryGirl.create(:backer) }
+  let(:notification_type){ FactoryGirl.create(:notification_type, name: 'confirm_backer') }
 
   before do
     Notification.unstub(:create_notification)
@@ -18,13 +18,13 @@ describe Notification do
 
   describe "#send_email" do
     context "when dismissed is true" do
-      let(:notification){ Factory(:notification, dismissed: true, notification_type: notification_type) }
+      let(:notification){ FactoryGirl.create(:notification, dismissed: true, notification_type: notification_type) }
       before{ notification.send_email }
       it("should not send email"){ ActionMailer::Base.deliveries.should be_empty }
     end
 
     context "when dismissed is false" do
-      let(:notification){ Factory(:notification, dismissed: false, notification_type: notification_type) }
+      let(:notification){ FactoryGirl.create(:notification, dismissed: false, notification_type: notification_type) }
       before{ notification.send_email }
       it("should send email"){ ActionMailer::Base.deliveries.should_not be_empty }
       it("should dismiss the notification"){ notification.dismissed.should be_true }
@@ -72,7 +72,7 @@ describe Notification do
     end
 
     context "when an update is provided" do
-      let(:update){ Factory(:update) }
+      let(:update){ FactoryGirl.create(:update) }
       before{ notification_type }
       subject{ Notification.create_notification(:confirm_backer, backer.user, update: update, backer: backer,  project_name: backer.project.name) }
       it{ should be_persisted }

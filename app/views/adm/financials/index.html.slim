@@ -8,20 +8,20 @@
 
     .filters
       .bootstrap-form
-        = form_for @search, :url => adm_financials_path, class: 'form-horizontal' do |f|
+        = form_tag adm_financials_path, method: :get, class: 'form-horizontal' do |f|
           fieldset
             .input
-              = f.label :permalink_equals, t('.permalink')
-              = f.text_field :permalink_equals, class: 'input-small'
+              = label_tag :by_permalink, t('.permalink')
+              = text_field_tag :permalink_equals, params[:permalink], class: 'input-small'
             .input
-              = f.label :name_contains, t('.project')
-              = f.text_field :name_contains
+              = label_tag :name_contains, t('.project')
+              = text_field_tag :name_contains
             .input
-              = f.label :user_name_contains, t('.user')
-              = f.text_field :user_name_contains
+              = label_tag :user_name_contains, t('.user')
+              = text_field_tag :user_name_contains
             .bootstrap-twitter
               .input.submit
-                = f.submit t('.submit'), class: 'btn btn-success'
+                = submit_tag t('.submit'), class: 'btn btn-success'
           fieldset
             .input.total_results
               #total_results
@@ -52,7 +52,7 @@
             tbody
               - @projects.each do |project|
                 tr id=project.id class=cycle("even", "odd")
-                  td= link_to project.name, project_path(project), target: '_blank'
+                  td= link_to project.name, project_by_slug_path(permalink: project.permalink), target: '_blank'
                   td= link_to (project.user.moip_login.blank? ? 'Não preenchido' : project.user.moip_login), user_path(project.user, anchor: :settings), target: '_blank'
                   td= project.display_goal
                   td= "#{project.display_pledged} (#{project.progress}%)"

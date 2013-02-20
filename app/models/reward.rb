@@ -12,16 +12,21 @@ class Reward < ActiveRecord::Base
   validates_numericality_of :minimum_value, :greater_than_or_equal_to => 1.00
   validates_numericality_of :maximum_backers, :only_integer => true, :greater_than => 0, :allow_nil => true
   scope :remaining, where("maximum_backers IS NULL OR (maximum_backers IS NOT NULL AND (SELECT COUNT(*) FROM backers WHERE confirmed AND reward_id = rewards.id) < maximum_backers)")
+  scope :sort_asc, order('id ASC')
+
   def sold_out?
     maximum_backers and backers.confirmed.count >= maximum_backers
   end
+
   def remaining
     return nil unless maximum_backers
     maximum_backers - backers.confirmed.count
   end
+
   def display_remaining
-    I18n.t('reward.display_remaining', :remaining => remaining, :maximum => maximum_backers)
+    I18n.t('reward.display_remaining', :remaining => remaining, :maximum => maximum_backers).html_safe
   end
+
   def name
     "<div class='reward_minimum_value'>#{minimum_value > 0 ? display_minimum+'+' : I18n.t('reward.dont_want')}</div><div class='reward_description'>#{h description}</div>#{'<div class="sold_out">' + I18n.t('reward.sold_out') + '</div>' if sold_out?}<div class='clear'></div>".html_safe
   end
