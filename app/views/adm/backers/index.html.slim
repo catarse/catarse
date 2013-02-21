@@ -20,8 +20,8 @@
         = form_tag adm_backers_path, method: :get, class: 'form-horizontal' do |f|
           fieldset
             .input
-              = label_tag :by_id, t('.id')
-              = text_field_tag :by_id, params[:by_id], class: 'input-small'
+              = label_tag :by_user_id, t('.user_id')
+              = text_field_tag :by_user_id, params[:by_user_id], class: 'input-small'
             .input
               = label_tag :by_key, t('.key')
               = text_field_tag :by_key
@@ -49,9 +49,9 @@
               = label_tag :refunded, t('.refunded')
             .input.total_results
               #total_results
-                = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
-                strong= @search.count
-                = pluralize_without_number(@search.count, t('backer_singular'), t('backer_plural')).downcase
+                = pluralize_without_number collection.count, t('found_singular'), t('found_plural')
+                strong= collection.count
+                = pluralize_without_number(collection.count, t('backer_singular'), t('backer_plural')).downcase
       .clearfix
       = paginate @backers
       - if @backers.empty?
