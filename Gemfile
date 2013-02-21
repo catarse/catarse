@@ -14,6 +14,7 @@ gem 'pg'
 gem 'pg_search'
 gem 'postgres-copy'
 gem 'schema_plus'
+gem 'schema_associations'
 
 gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '020e5851f8c2b08c9e4c1f4aab3627414644876b'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
