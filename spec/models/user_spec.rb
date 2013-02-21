@@ -11,9 +11,10 @@ describe User do
     it{ should have_many :backs }
     it{ should have_many :projects }
     it{ should have_many :notifications }
-    it{ should have_many :secondary_users }
     it{ should have_many :updates }
     it{ should have_many :unsubscribes }
+    it{ should have_many :authorizations }
+    it{ should have_many(:oauth_providers).through(:authorizations) }
     it{ should have_one :user_total }
   end
 

@@ -60,14 +60,11 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, :if => :password_required?
   validates_length_of       :password, :within => 6..128, :allow_blank => true
 
-  has_many :backs, :class_name => "Backer"
-  has_many :projects
-  has_many :updates
-  has_many :unsubscribes
-  has_many :notifications
-  has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
+  schema_associations
+  has_many :oauth_providers, through: :authorizations
+  has_many :backs, class_name: "Backer"
   has_one :user_total
-  belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id, :primary_key => :id
+
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true
   scope :primary, :conditions => ["primary_user_id IS NULL"]
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
