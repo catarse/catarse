@@ -210,7 +210,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   OauthProvider.all.each do |p|
-    config.omniauth p.path, p.key, p.secret, scope: p.scope
+    config.omniauth p.name, p.key, p.secret, scope: p.scope
   end rescue puts "problem while using OauthProvider model, perhaps it has not been created yet..."
 
   # ==> Warden configuration
