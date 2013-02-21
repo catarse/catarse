@@ -2,10 +2,7 @@
 class Backer < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::DateHelper
-  belongs_to :project
-  belongs_to :user
-  belongs_to :reward
-  has_many :payment_notifications
+  schema_associations
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
