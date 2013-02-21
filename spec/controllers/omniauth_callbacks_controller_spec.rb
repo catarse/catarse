@@ -5,6 +5,7 @@ describe OmniauthCallbacksController do
     @request.env["devise.mapping"] = Devise.mappings[:user]
   end
 
+  let(:return_to){ nil }
   let(:user){ FactoryGirl.create(:user, authorizations: [ FactoryGirl.create(:authorization, uid: oauth_data[:uid], oauth_provider: facebook_provider ) ]) }
   let(:facebook_provider){ FactoryGirl.create :oauth_provider, name: 'facebook' }
   let(:oauth_data){ 
@@ -54,8 +55,20 @@ describe OmniauthCallbacksController do
 
     before do
       user
+      session[:return_to] = return_to
       request.env['omniauth.auth'] = oauth_data
       get :facebook
+    end
+
+    context "when there is no such user" do
+      let(:user){ nil }
+      it{ should redirect_to new_user_registration_url }
+    end
+
+    context "when there is a valid user with this provider and uid and session return_to is /foo" do
+      let(:return_to){ '/foo' }
+      it{ assigns(:user).should == user }
+      it{ should redirect_to '/foo' }
     end
 
     context "when there is a valid user with this provider and uid and session return_to is nil" do
