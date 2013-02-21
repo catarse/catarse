@@ -6,6 +6,7 @@ describe User do
   let(:successful_project){ FactoryGirl.create(:project, state: 'successful') }
   let(:failed_project){ FactoryGirl.create(:project, state: 'failed') }
   let(:notification_type){ FactoryGirl.create(:notification_type, name: 'updates') }
+  let(:facebook_provider){ FactoryGirl.create :oauth_provider, name: 'facebook' }
 
   describe "associations" do
     it{ should have_many :backs }
@@ -107,11 +108,6 @@ describe User do
     it{ should == [@u] }
   end
 
-  describe ".primary" do
-    subject{ FactoryGirl.create(:user, :primary_user_id => user.id).primary }
-    it{ should == user }
-  end
-
   describe ".who_backed_project" do
     subject{ User.who_backed_project(successful_project.id) }
     before do
@@ -188,14 +184,6 @@ describe User do
     end
   end
 
-  describe ".find_with_omniauth" do
-    let(:primary){ FactoryGirl.create(:user) }
-    let(:secondary){ FactoryGirl.create(:user, :primary_user_id => primary.id) }
-    it{ User.find_with_omni_auth(primary.provider, primary.uid).should == primary }
-    it{ User.find_with_omni_auth(secondary.provider, secondary.uid).should == primary }
-    it{ User.find_with_omni_auth(secondary.provider, 'user that does not exist').should == nil }
-  end
-
   describe ".create" do
     subject do
       User.create! do |u|
@@ -220,20 +208,6 @@ describe User do
     end
     subject{ @u.credits }
     it{ should == 50.0 }
-  end
-
-  describe "#primary" do
-    subject{ FactoryGirl.create(:user, :primary_user_id => user.id).primary }
-    it{ should == user }
-  end
-
-  describe "#secondary_users" do
-    before do
-      @secondary = FactoryGirl.create(:user, :primary_user_id => user.id)
-      FactoryGirl.create(:user)
-    end
-    subject{ user.secondary_users }
-    it{ should == [@secondary] }
   end
 
   describe "#update_attributes" do
@@ -295,52 +269,14 @@ describe User do
 
   describe "#facebook_id" do
     subject{ user.facebook_id }
-    context "when primary is a FB user" do
-      let(:user){ FactoryGirl.create(:user, :provider => "facebook", :uid => "bar") }
+    context "when user have a FB authorization" do
+      let(:user){ FactoryGirl.create(:user, authorizations: [ FactoryGirl.create(:authorization, uid: 'bar', oauth_provider: facebook_provider)]) }
       it{ should == 'bar' }
     end
-    context "when primary is another provider's user and there is no secondary" do
-      let(:user){ FactoryGirl.create(:user, :provider => "foo", :uid => "bar") }
-      it{ should be_nil }
-    end
-    context "when primary is another provider's user but there is a secondary FB user" do
-      let(:user){ FactoryGirl.create(:user, :provider => "foo", :uid => "bar", :secondary_users => [FactoryGirl.create(:user, :provider => "facebook", :uid => "bar")]) }
-      it{ should == 'bar' }
+    context "when user do not have a FB authorization" do
+      let(:user){ FactoryGirl.create(:user) }
+      it{ should == nil }
     end
   end
 
-  describe "#merge_into!" do
-    it "should merge into another account, backs, projects and notifications with it" do
-      Notification.any_instance.stubs(:send_email)
-      old_user = FactoryGirl.create(:user)
-      new_user = FactoryGirl.create(:user)
-      backed_project = FactoryGirl.create(:project)
-      old_user_back = backed_project.backers.create!(:user => old_user, :value => 10)
-      new_user_back = backed_project.backers.create!(:user => new_user, :value => 10)
-      old_user_project = FactoryGirl.create(:project, :user => old_user)
-      new_user_project = FactoryGirl.create(:project, :user => new_user)
-      notification_type = FactoryGirl.create(:notification_type)
-      old_user_notification = old_user.notifications.create! notification_type: notification_type
-      new_user_notification = new_user.notifications.create! notification_type: notification_type
-
-      old_user.backs.should == [old_user_back]
-      new_user.backs.should == [new_user_back]
-      old_user.projects.should == [old_user_project]
-      new_user.projects.should == [new_user_project]
-      old_user.notifications.should == [old_user_notification]
-      new_user.notifications.should == [new_user_notification]
-
-      old_user.merge_into!(new_user)
-      old_user.reload
-      new_user.reload
-
-      old_user.primary.should == new_user
-      old_user.backs.should == []
-      new_user.backs.order(:created_at).should == [old_user_back, new_user_back]
-      old_user.projects.should == []
-      new_user.projects.order(:created_at).should == [old_user_project, new_user_project]
-      old_user.notifications.should == []
-      new_user.notifications.order(:created_at).should == [old_user_notification, new_user_notification]
-    end
-  end
 end
