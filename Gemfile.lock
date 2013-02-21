@@ -340,6 +340,8 @@ GEM
       tilt (~> 1.3)
     sax-machine (0.0.20)
       nokogiri (> 0.0.0)
+    schema_associations (1.0.1)
+      schema_plus
     schema_plus (1.0.1)
       rails (>= 3.2)
       valuable
@@ -470,6 +472,7 @@ DEPENDENCIES
   routing-filter
   rspec-rails (~> 2.12)
   sass-rails (~> 3.2.5)
+  schema_associations
   schema_plus
   shoulda
   sidekiq (= 2.4.0)
