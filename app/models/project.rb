@@ -22,8 +22,7 @@ class Project < ActiveRecord::Base
     :display_pledged, :display_goal, :remaining_days,
     :to => :decorator
 
-  belongs_to :user
-  belongs_to :category
+  schema_associations
   has_many :backers, :dependent => :destroy
   has_many :rewards, :dependent => :destroy
   has_many :updates, :dependent => :destroy
