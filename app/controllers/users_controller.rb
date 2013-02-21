@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   respond_to :json, :only => [:backs, :projects, :request_refund]
   def show
     show!{
-      return redirect_to(user_path(@user.primary)) if @user.primary
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
       @credits = @user.backs.can_refund.all

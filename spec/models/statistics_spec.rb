@@ -11,7 +11,7 @@ describe Statistics do
 
   describe "#total_users" do
     subject{ Statistics.first.total_users }
-    it{ should == User.primary.count }
+    it{ should == User.count }
   end
 
   describe "#total_backs" do

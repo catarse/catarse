@@ -3,10 +3,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     omniauth = request.env['omniauth.auth']
-    raise omniauth.inspect
-    @user = User.find_for_facebook_oauth(omniauth.uid, current_user)
+    @user = User.
+      select('users.*').
+      joins('JOIN authorizations ON authorizations.user_id = users.id').
+      joins('JOIN oauth_providers ON oauth_providers.id = authorizations.oauth_provider_id').
+      where("authorizations.uid = ? AND oauth_providers.name = 'facebook'", omniauth[:uid]).first
 
-    if @user and @user.persisted?
+    if @user && @user.persisted?
       flash[:notice] = I18n.t("devise.omniauth_callbacks.success", :kind => "Facebook")
       sign_in @user, :event => :authentication
       redirect_to(session[:return_to] || root_path)
