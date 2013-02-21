@@ -1,6 +1,9 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_filter :set_locale
+
   def facebook
     omniauth = request.env['omniauth.auth']
+    raise omniauth.inspect
     @user = User.find_for_facebook_oauth(omniauth.uid, current_user)
 
     if @user and @user.persisted?

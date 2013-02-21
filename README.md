@@ -1,4 +1,9 @@
 # Catarse [![Build Status](https://secure.travis-ci.org/danielweinmann/catarse.png?branch=master)](https://travis-ci.org/danielweinmann/catarse) 
+
+## Oficial repository changed!
+
+Our new address is https://github.com/catarse/catarse
+
 ## An open source crowdfunding platform for creative projects
 
 Welcome to Catarse's source code repository. Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
