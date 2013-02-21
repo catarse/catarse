@@ -1,10 +1,8 @@
 class Notification < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :project
-  belongs_to :notification_type
-  belongs_to :backer
-  # Update was an unfortunate decision, we should rename it soon
-  belongs_to :project_update, class_name: "Update", foreign_key: :update_id
+  schema_associations
+  belongs_to :notification_type # don't know why schema_association did not get it. the FK seems to be in place
+  belongs_to :project_update, class_name: "Update", foreign_key: :update_id # Update was an unfortunate decision, we should rename it soon
+
   validates_presence_of :user
   attr_accessor :mail_params
 

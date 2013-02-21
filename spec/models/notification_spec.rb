@@ -1,12 +1,6 @@
 require 'spec_helper'
 
 describe Notification do
-  it{ should belong_to :user }
-  it{ should belong_to :project }
-  it{ should belong_to :notification_type }
-  it{ should belong_to :backer }
-  it{ should belong_to :project_update }
-
   let(:backer){ FactoryGirl.create(:backer) }
   let(:notification_type){ FactoryGirl.create(:notification_type, name: 'confirm_backer') }
 
@@ -14,6 +8,14 @@ describe Notification do
     Notification.unstub(:create_notification)
     Notification.unstub(:create_notification_once)
     ActionMailer::Base.deliveries.clear
+  end
+
+  describe "Associations" do
+    it{ should belong_to :user }
+    it{ should belong_to :project }
+    it{ should belong_to :notification_type }
+    it{ should belong_to :backer }
+    it{ should belong_to :project_update }
   end
 
   describe "#send_email" do
