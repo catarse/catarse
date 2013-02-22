@@ -47,7 +47,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
 
     ok = function(id){
       var value = $(id).val()
-      if(value && value.length > 0){
+      if(value && value.trim().length > 0){
         $(id).addClass("ok").removeClass("error")
         return true
       } else {
@@ -119,7 +119,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     }
     headline_ok = function(){
       var value = $('#project_headline').val()
-      if(value && value.length > 0 && value.length <= 140){
+      if(value && value.trim().length > 0 && value.length <= 140){
         $('#project_headline').addClass("ok").removeClass("error")
         return true
       } else {
