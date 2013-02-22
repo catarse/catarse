@@ -93,7 +93,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
 
     verify_video = function(){
       video_valid = false
-      if(/http(s)?:\/\/(www\.)?vimeo.com\/(\d+)/.test($('#project_video_url').val())) {
+      if(/https?:\/\/(www\.)?vimeo.com\/(\d+)/.test($('#project_video_url').val())) {
         $('#project_video_url').removeClass("ok").removeClass("error").addClass('loading')
         $.get('/projects/vimeo/?url='+$('#project_video_url').val(), function(r){
           $('#project_video_url').removeClass("loading")
