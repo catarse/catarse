@@ -131,6 +131,7 @@ pt:
         address_street: Logradouro
         address_zip_code: CEP
         cpf: 'CPF / CNPJ'
+        state_inscription: 'Inscrição Estadual'
         current_password: "Senha atual"
         email: Email
         full_name: "Nome completo / Razão Social"
