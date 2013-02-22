@@ -123,6 +123,7 @@ en:
         address_street: Street
         address_zip_code: "Zip code"
         cpf: 'CPF / CNPJ'
+        state_inscription: 'State Inscription'
         moip_login: 'MoIP Login'
         moip_login_hint: '(How to create an account)'
         current_password: "Current password"
