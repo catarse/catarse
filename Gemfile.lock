@@ -16,13 +16,23 @@ GIT
       rails (~> 3.2.6)
 
 GIT
+  remote: git://github.com/devton/catarse_paypal_express.git
+  revision: 8f60d81b8f544003d99db4e80f945da6af1a9f4f
+  ref: 8f60d81b8f544003d99db4e80f945da6af1a9f4f
+  specs:
+    catarse_paypal_express (0.1.0)
+      activemerchant (~> 1.17.0)
+      rails (~> 3.2.6)
+
+GIT
   remote: git://github.com/lvxn0va/catarse_stripe.git
-  revision: 5096b2be79cb03c9d830ff158361037e9b0a5530
+  revision: 00b9552bca9e7a2aa4add0a5c2a5078df903ecf0
   branch: master
   specs:
-    catarse_stripe (0.0.8)
+    catarse_stripe (0.1.0)
       activemerchant (>= 1.17.0)
       figaro
+      oauth2
       omniauth-stripe-connect
       rails (~> 3.2.11)
       stripe
@@ -53,9 +63,9 @@ GIT
 
 GIT
   remote: https://github.com/stripe/stripe-ruby
-  revision: 1b9f776f654fbc560b15ed8b123e6477f38014cc
+  revision: a1ab276487c9fc678a5cd23b8f87bcd4e04f2b10
   specs:
-    stripe (1.7.10)
+    stripe (1.7.11)
       multi_json (>= 1.0.4, < 2)
       rest-client (~> 1.4)
 
@@ -77,17 +87,11 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active_utils (1.0.5)
+    activemerchant (1.17.0)
       activesupport (>= 2.3.11)
-      i18n
-    activemerchant (1.30.0)
-      active_utils (>= 1.0.2)
-      activesupport (>= 2.3.14)
+      braintree (>= 2.0.0)
       builder (>= 2.0.0)
-      i18n
       json (>= 1.5.1)
-      money
-      nokogiri
     activemodel (3.2.11)
       activesupport (= 3.2.11)
       builder (~> 3.0.0)
@@ -104,7 +108,7 @@ GEM
     activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    addressable (2.3.2)
+    addressable (2.3.3)
     airbrake (3.1.8)
       activesupport
       builder
@@ -116,13 +120,16 @@ GEM
       rinku
       tag_helper
     bcrypt-ruby (3.0.1)
-    best_in_place (2.0.3)
+    best_in_place (2.1.0)
       jquery-rails
       rails (~> 3.1)
-    better_errors (0.5.0)
+    better_errors (0.6.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    binding_of_caller (0.6.8)
+    binding_of_caller (0.7.1)
+      debug_inspector (>= 0.0.1)
+    braintree (2.22.0)
+      builder (>= 2.0.0)
     brcep (3.3.0)
     builder (3.0.4)
     capybara (2.0.2)
@@ -162,6 +169,7 @@ GEM
     curb (0.7.18)
     daemons (1.1.9)
     database_cleaner (0.9.1)
+    debug_inspector (0.0.2)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -172,7 +180,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       request_store (~> 1.0.3)
-    enumerate_it (1.0.1)
+    enumerate_it (1.0.2)
       activesupport (>= 3.0.0)
     erubis (2.7.0)
     eventmachine (1.0.0)
@@ -197,8 +205,8 @@ GEM
       rake (>= 0.9.2)
       rdoc (~> 3.8)
       sax-machine (~> 0.0.20)
-    ffi (1.3.1)
-    figaro (0.5.3)
+    ffi (1.4.0)
+    figaro (0.5.4)
       rails (~> 3.0)
     fog (0.9.0)
       builder
@@ -216,7 +224,7 @@ GEM
     formtastic (2.1.1)
       actionpack (~> 3.0)
     fssm (0.2.10)
-    haml (3.1.7)
+    haml (3.1.8)
     has_scope (0.5.1)
     has_vimeo_video (0.0.5)
       supermodel
@@ -262,7 +270,7 @@ GEM
       skinny (~> 0.2.3)
       sqlite3 (~> 1.3)
       thin (~> 1.5.0)
-    mailchimp (0.0.7.alpha)
+    mailchimp (0.0.8)
       httparty
     memoist (0.2.0)
     meta_search (1.1.3)
@@ -274,8 +282,6 @@ GEM
     mime-types (1.21)
     mocha (0.10.4)
       metaclass (~> 0.0.1)
-    money (5.1.0)
-      i18n (~> 0.6.0)
     multi_json (1.6.1)
     multipart-post (1.1.5)
     net-scp (1.1.0)
@@ -283,7 +289,7 @@ GEM
     net-ssh (2.6.5)
     nokogiri (1.4.7)
     oauth (0.4.7)
-    oauth2 (0.8.0)
+    oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
       jwt (~> 0.1.4)
@@ -294,7 +300,7 @@ GEM
       rack
     omniauth-facebook (1.4.1)
       omniauth-oauth2 (~> 1.1.0)
-    omniauth-github (1.0.3)
+    omniauth-github (1.1.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
     omniauth-linkedin (0.1.0)
@@ -389,7 +395,7 @@ GEM
       railties (>= 3.0)
       rspec (~> 2.10.0)
     ruby-hmac (0.4.0)
-    ruby-openid (2.2.2)
+    ruby-openid (2.2.3)
     rubyzip (0.9.9)
     sass (3.2.5)
     sass-rails (3.2.6)
@@ -465,7 +471,7 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicode (0.4.4)
-    valuable (0.9.6)
+    valuable (0.9.8)
     vimeo (1.5.3)
       httparty (>= 0.4.5)
       httpclient (>= 2.1.5.2)
@@ -485,7 +491,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  activemerchant
+  activemerchant (= 1.17.0)
   activerecord-postgresql-adapter
   airbrake
   auto_html (= 1.4.2)
@@ -498,6 +504,7 @@ DEPENDENCIES
   carrierwave (~> 0.7.0)
   catarse_mailchimp!
   catarse_moip!
+  catarse_paypal_express!
   catarse_stripe!
   coffee-rails (~> 3.2.2)
   compass-960-plugin (~> 0.10.4)
@@ -528,6 +535,7 @@ DEPENDENCIES
   meta_search (= 1.1.3)
   mocha (= 0.10.4)
   moip!
+  oauth2
   omniauth
   omniauth-facebook
   omniauth-github

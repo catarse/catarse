@@ -179,17 +179,10 @@ class ProjectsController < ApplicationController
       [:stripe_access_token, :stripe_key, :stripe_userid].each do |field|
         @project.send("#{field.to_s}=", @project.user.send(field).dup)
       end
-      #@project.reload
-      #@project.stripe_access_token = @project.user.stripe_access_token.dup
-      #@project.stripe_key = @project.user.stripe_key.dup
-      #@project.stripe_userid = @project.user.stripe_userid.dup
     elsif @project.stripe_userid != @project.user.stripe_userid
       [:stripe_access_token, :stripe_key, :stripe_userid].each do |field|
         @project.send("#{field.to_s}=", @project.user.send(field).dup)
       end
-      #@project.stripe_access_token = @project.user.stripe_access_token.dup
-      #@project.stripe_key = @project.user.stripe_key.dup
-      #@project.stripe_userid = @project.user.stripe_userid.dup
     end
       @project.save
   end

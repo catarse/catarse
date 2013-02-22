@@ -18,9 +18,11 @@ gem 'postgres-copy'
 gem 'schema_plus'
 
 gem 'catarse_stripe', git: 'git://github.com/lvxn0va/catarse_stripe.git', branch: 'master'
+#gem 'catarse_stripe', path: '../catarse_stripe', branch: 'oauth'
+
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
-#gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '8f60d81b8f544003d99db4e80f945da6af1a9f4f'
+gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '8f60d81b8f544003d99db4e80f945da6af1a9f4f'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
 gem 'catarse_moip', git: 'git://github.com/devton/catarse_moip.git', ref: 'd71157a0365611048a36180846a3c0c84768b916'
 #gem 'catarse_moip', path: '../catarse_moip'
@@ -46,6 +48,7 @@ gem 'omniauth-linkedin'
 gem 'omniauth-yahoo'
 gem 'omniauth-oauth2'
 gem 'omniauth-stripe-connect'
+gem 'oauth2'
 gem 'devise'
 gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
 
@@ -95,7 +98,7 @@ gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 gem "meta_search", "1.1.3"
 
 # Payment
-gem 'activemerchant'
+gem 'activemerchant', '1.17.0'
 gem 'httpclient', '2.2.5'
 gem 'selenium-webdriver'
 

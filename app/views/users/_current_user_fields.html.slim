@@ -57,9 +57,9 @@
     ul
       li
         - if @user.stripe_key.blank?
-          = link_to image_tag('auth/stripe_blue.png', :title => t('.stripe_button_title')), '/auth/stripe_connect', :class => 'provider'
+          = link_to( image_tag('catarse_stripe/auth/stripe_blue.png'), '/payment/stripe/auth')
         - else
-          = image_tag 'auth/stripe-solid.png'
+          = image_tag 'catarse_stripe/auth/stripe-solid.png'
           br
           p= t('.stripe_key_info')
           p= @user.stripe_key
