@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Credits::Refund do
-  let(:failed_project){ Factory(:project, state: 'failed')  }
+  let(:failed_project){ FactoryGirl.create(:project, state: 'failed')  }
   before(:each) do
-    @backer = Factory(:backer, value: 20)
+    @backer = FactoryGirl.create(:backer, value: 20)
   end
 
   subject { Credits::Refund.new(@backer, @backer.user) }

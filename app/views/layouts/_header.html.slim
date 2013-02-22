@@ -25,8 +25,8 @@
           - for menu, path in Adm::BaseController.menu do
             li= link_to menu, path
         li.divider
-        li= link_to t('layouts.user.logout'), logout_path
+        li= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
     - else
-      = link_to t('layouts.header.signup'), login_path(active_register: true)
-      = link_to t('layouts.header.signin'), login_path
+      = link_to t('layouts.header.signup'), new_user_session_path(active_register: true)
+      = link_to t('layouts.header.signin'), new_user_session_path
   .clearfix

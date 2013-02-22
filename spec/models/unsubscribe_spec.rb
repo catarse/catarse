@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Unsubscribe do
-  let(:notification_type){ Factory(:notification_type, name: 'updates') }
+  let(:notification_type){ FactoryGirl.create(:notification_type, name: 'updates') }
 
   before do
     notification_type

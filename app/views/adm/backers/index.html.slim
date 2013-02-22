@@ -17,41 +17,41 @@
 
     .filters
       .bootstrap-form
-        = form_for @search, :url => adm_backers_path, class: 'form-horizontal' do |f|
+        = form_tag adm_backers_path, method: :get, class: 'form-horizontal' do |f|
           fieldset
             .input
-              = f.label :id_equals, t('.id')
-              = f.text_field :id_equals, class: 'input-small'
+              = label_tag :by_user_id, t('.user_id')
+              = text_field_tag :by_user_id, params[:by_user_id], class: 'input-small'
             .input
-              = f.label :key_equals, t('.key')
-              = f.text_field :key_equals
+              = label_tag :by_key, t('.key')
+              = text_field_tag :by_key
             .input
-              = f.label :project_name_contains, t('.project')
-              = f.text_field :project_name_contains
+              = label_tag :project_name_contains, t('.project')
+              = text_field_tag :project_name_contains
             .input
-              = f.label :user_name_contains, t('.user')
-              = f.text_field :user_name_contains
+              = label_tag :user_name_contains, t('.user')
+              = text_field_tag :user_name_contains
             .bootstrap-twitter
               .input.submit
-                = f.submit t('.submit'), class: 'btn btn-success'
+                = submit_tag t('.submit'), class: 'btn btn-success'
           fieldset
             .input.check
-              = f.check_box :confirmed_is_true
-              = f.label :confirmed_is_true, t('.confirmed')
+              = check_box_tag :confirmed
+              = label_tag :confirmed, t('.confirmed')
             .input.check
-              = f.check_box :credits_is_true
-              = f.label :credits_is_true, t('.credits')
+              = check_box_tag :credits
+              = label_tag :credits, t('.credits')
             .input.check
-              = f.check_box :requested_refund_is_true
-              = f.label :requested_refund_is_true, t('.requested_refund')
+              = check_box_tag :requested_refund
+              = label_tag :requested_refund, t('.requested_refund')
             .input.check
-              = f.check_box :refunded_is_true
-              = f.label :refunded_is_true, t('.refunded')
+              = check_box_tag :refunded
+              = label_tag :refunded, t('.refunded')
             .input.total_results
               #total_results
-                = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
-                strong= @search.count
-                = pluralize_without_number(@search.count, t('backer_singular'), t('backer_plural')).downcase
+                = pluralize_without_number collection.count, t('found_singular'), t('found_plural')
+                strong= collection.count
+                = pluralize_without_number(collection.count, t('backer_singular'), t('backer_plural')).downcase
       .clearfix
       = paginate @backers
       - if @backers.empty?
@@ -72,10 +72,10 @@
                 th= t('.refunded')
                 th
             tbody
-              - @backers.each do |backer|
+              - @backers.includes(:project, :user, :reward).each do |backer|
                 tr id=backer.id class=cycle("even", "odd")
                   td title=backer.project.name
-                    = link_to project_path(backer.project) do
+                    = link_to project_by_slug_path(permalink: backer.project.permalink) do
                       = image_tag backer.project.display_image, class: 'project_img'
                   td title=backer.user.display_name
                     = link_to user_path(backer.user) do

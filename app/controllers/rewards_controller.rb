@@ -15,29 +15,22 @@ class RewardsController < ApplicationController
   end
 
   def update
-    update! do |success, failure|
-      success.html { redirect_to project_path(resource.project) }
-      success.json { render json: resource.to_json }
-      failure.html { redirect_to project_path(resource.project) }
-      failure.json { render json: resource.to_json }
+    update! do |format|
+      format.html { redirect_to project_by_slug_path(permalink: resource.project.permalink) }
+      format.json { render json: resource.to_json }
     end
   end
 
   def create
     create! do |success, failure|
-      success.html { 
-        flash[:notice] = I18n.t('controllers.rewards.create.notice')
-        redirect_to project_path(resource.project)  
-      }
-      failure.html {
-        flash[:alert] = I18n.t('controllers.rewards.create.alert')
-        redirect_to project_path(resource.project)
-      }
+      success.html { flash[:notice] = I18n.t('controllers.rewards.create.notice') }
+      failure.html { flash[:alert] = I18n.t('controllers.rewards.create.alert') }
+      return redirect_to project_by_slug_path(permalink: resource.project.permalink)
     end
   end
 
   def destroy
-    destroy! { project_path(resource.project) }
+    destroy! { project_by_slug_path(permalink: resource.project.permalink) }
   end
 
   protected

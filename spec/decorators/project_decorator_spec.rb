@@ -1,23 +1,23 @@
 require 'spec_helper'
 
 describe ProjectDecorator do
-  let(:project){ Factory(:project, :about => 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
+  let(:project){ FactoryGirl.create(:project, :about => 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
 
   describe "#display_image" do
     subject{ project.display_image }
 
     context "when we have a video_url without thumbnail" do
-      let(:project){ Factory(:project, :uploaded_image => nil, :image_url => nil, :video_thumbnail => nil) }
+      let(:project){ FactoryGirl.create(:project, :uploaded_image => nil, :image_url => nil, :video_thumbnail => nil) }
       it{ should == project.vimeo.thumbnail } 
     end
 
     context "when we have a video_thumbnail" do
-      let(:project){ Factory(:project, :image_url => nil, :video_thumbnail => File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project){ FactoryGirl.create(:project, :image_url => nil, :video_thumbnail => File.open("#{Rails.root}/spec/fixtures/image.png")) }
       it{ should == project.video_thumbnail.url } 
     end
 
     context "when we have a thumbnail and an image_url" do
-      let(:project){ Factory(:project, :image_url => 'http://test.com/image', :video_thumbnail => File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project){ FactoryGirl.create(:project, :image_url => 'http://test.com/image', :video_thumbnail => File.open("#{Rails.root}/spec/fixtures/image.png")) }
       it{ should == 'http://test.com/image' } 
     end
   end

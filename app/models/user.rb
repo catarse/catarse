@@ -1,10 +1,9 @@
 # coding: utf-8
-require 'memoist'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable#, :validatable
+    :recoverable, :rememberable, :trackable, :omniauthable
   begin
     sync_with_mailchimp
   rescue Exception => e
@@ -46,7 +45,6 @@ class User < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
   include Rails.application.routes.url_helpers
-  extend Memoist
 
   mount_uploader :uploaded_image, LogoUploader
 
@@ -76,39 +74,6 @@ class User < ActiveRecord::Base
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
   scope :subscribed_to_updates, where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id IS NULL AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
   scope :subscribed_to_project, ->(project_id){ who_backed_project(project_id).where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id) }
-  scope :most_backeds, ->{
-    joins(:backs).select(
-      <<-SQL
-      users.id,
-      users.name,
-      users.email,
-      count(backers.id) as count_backs
-      SQL
-    ).
-      where("backers.confirmed is true").
-      order("count_backs desc").
-      group("users.name, users.id, users.email")
-  }
-  scope :most_backed_different_projects, -> {
-    joins(:backs).select(
-      <<-SQL
-        DISTINCT(users.id),
-        (
-          SELECT
-            COUNT(DISTINCT(backers.project_id))
-          FROM
-            backers
-          WHERE
-            backers.confirmed IS TRUE
-            AND backers.user_id = users.id
-            AND users.primary_user_id IS NULL
-        ) as count_backs
-      SQL
-    ).
-      where("backers.confirmed is true").
-      order("count_backs DESC")
-
-  }
   scope :by_email, ->(email){ where('email ~* ?', email) }
   scope :by_payer_email, ->(email){  where('EXISTS(SELECT true FROM backers JOIN payment_notifications ON backers.id = payment_notifications.backer_id WHERE backers.user_id = users.id AND payment_notifications.extra_data ~* ?)', email) }
   scope :by_name, ->(name){ where('name ~* ?', name) }
@@ -117,11 +82,6 @@ class User < ActiveRecord::Base
   scope :has_credits, joins(:user_total).where('user_totals.credits > 0')
   scope :order_by, ->(sort_field){ order(sort_field) }
 
-  def self.find_for_database_authentication(warden_conditions)
-    conditions = warden_conditions.dup
-    where(conditions).where(:provider => 'devise').first
-  end
-
   def self.backer_totals
     connection.select_one(
       self.scoped.
@@ -129,10 +89,6 @@ class User < ActiveRecord::Base
       select('count(DISTINCT user_id) as users, count(*) as backers, sum(user_totals.sum) as backed, sum(user_totals.credits) as credits').
       to_sql
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
-  end
-
-  def total_of_different_backs
-    backs.confirmed.select('DISTINCT(backers.project_id)').length
   end
 
   def decorator
@@ -173,6 +129,7 @@ class User < ActiveRecord::Base
       user.name = auth["info"]["name"]
       user.email = auth["info"]["email"]
       #user.email = auth["extra"]["user_hash"]["email"] if auth["extra"] and auth["extra"]["raw_info"] and user.email.nil?
+      user.email = auth["extra"]["user_hash"]["email"] if user.email.nil? rescue nil
       user.nickname = auth["info"]["nickname"]
       user.bio = auth["info"]["description"][0..139] if auth["info"]["description"]
       user.locale = I18n.locale.to_s
@@ -196,13 +153,12 @@ class User < ActiveRecord::Base
   def recommended_project
     # It returns the project that have the biggest amount of backers
     # that contributed to the last project the user contributed that has common backers.
-    backs.confirmed.order('confirmed_at DESC').each do |back|
+    backs.includes(:project).confirmed.order('confirmed_at DESC').each do |back|
       project = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE confirmed AND user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE confirmed AND project_id = #{back.project.id.to_i}) GROUP BY 2 ORDER BY 1 DESC LIMIT 1")
       return Project.find(project[0]["project_id"]) unless project.count == 0
     end
     nil
   end
-  memoize :recommended_project
 
   def total_backs
     backs.confirmed.not_anonymous.count
@@ -285,7 +241,7 @@ class User < ActiveRecord::Base
   def fix_twitter_user
     self.twitter.gsub!(/@/, '') if self.twitter
   end
-  
+
   # Returns a Gravatar URL associated with the email parameter, uses local avatar if available
   def gravatar_url
     return unless email
@@ -296,5 +252,4 @@ class User < ActiveRecord::Base
   def password_required?
     provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
   end
-  
 end

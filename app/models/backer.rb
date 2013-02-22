@@ -9,36 +9,35 @@ class Backer < ActiveRecord::Base
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
+  scope :by_id, ->(id) { where(id: id) }
+  scope :by_key, ->(key) { where(key: key) }
+  scope :by_user_id, ->(user_id) { where(user_id: user_id) }
+  scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
+  scope :project_name_contains, ->(term) { joins(:project).where("unaccent(upper(projects.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :anonymous, where(:anonymous => true)
+  scope :credits, where(:credits => true)
+  scope :requested_refund, where(:requested_refund => true)
+  scope :refunded, where(:refunded => true)
   scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(:confirmed => true)
-  scope :not_confirmed, where(:confirmed => false)
-  scope :pending, where(:confirmed => false)
+  scope :not_confirmed, where(:confirmed => false) # used in payment engines
+  scope :in_time_to_confirm, ->() { where(%Q{date(current_timestamp) <= date(created_at + interval '5 days')}) }
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
-  scope :can_refund, ->{ 
+  scope :can_refund, ->{
     where(%Q{
-      confirmed AND 
+      confirmed AND
       EXISTS(
-        SELECT true 
-          FROM projects p 
+        SELECT true
+          FROM projects p
           WHERE p.id = backers.project_id and p.state = 'failed'
-      ) AND 
+      ) AND
       date(current_timestamp) <= date(created_at + interval '180 days')
-    }) 
+    })
   }
 
   #attr_protected :confirmed
 
-
-  def price_in_cents
-    (self.value * 100).round
-  end
-
-  def refund!
-    self.refunded = true
-    self.save
-  end
 
   def refund_deadline
     created_at + 180.days
@@ -93,18 +92,6 @@ class Backer < ActiveRecord::Base
     number_to_currency platform_fee(fee), :unit => "USD", :precision => 2, :delimiter => ','
   end
 
-  def moip_value
-    "%0.0f" % (value * 100)
-  end
-
-  def cancel_refund_request!
-    raise I18n.t('credits.cannot_cancel_refund_reques') unless self.requested_refund
-    raise I18n.t('credits.refund.refunded') if self.refunded
-    raise I18n.t('credits.refund.no_credits') unless self.user.credits >= self.value
-    self.update_attributes({ requested_refund: false })
-    self.user.update_attributes({ credits: (self.user.credits + self.value) })
-  end
-
   def as_json(options={})
     json_attributes = {
       :id => id,
@@ -129,6 +116,11 @@ class Backer < ActiveRecord::Base
       json_attributes.merge!({:reward => reward})
     end
     json_attributes
+  end
+
+  # Used in payment engines
+  def price_in_cents
+    (self.value * 100).round
   end
 
   #==== Used on before and after callbacks

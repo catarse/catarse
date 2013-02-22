@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: git://github.com/devton/catarse_paypal_express.git
-  revision: 8f60d81b8f544003d99db4e80f945da6af1a9f4f
-  ref: 8f60d81b8f544003d99db4e80f945da6af1a9f4f
+  revision: 020e5851f8c2b08c9e4c1f4aab3627414644876b
+  ref: 020e5851f8c2b08c9e4c1f4aab3627414644876b
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -26,10 +26,10 @@ GIT
 
 GIT
   remote: git://github.com/lvxn0va/catarse_stripe.git
-  revision: 00b9552bca9e7a2aa4add0a5c2a5078df903ecf0
+  revision: 66b7b0b3e785d3b1c6fa4c0305d78cf99d10a412
   branch: master
   specs:
-    catarse_stripe (0.1.0)
+    catarse_stripe (0.1.0.0.1)
       activemerchant (>= 1.17.0)
       figaro
       oauth2
@@ -71,19 +71,18 @@ GIT
 
 GEM
   remote: http://rubygems.org/
-  remote: http://gems.github.com/
   specs:
     RedCloth (4.2.9)
-    actionmailer (3.2.11)
-      actionpack (= 3.2.11)
+    actionmailer (3.2.12)
+      actionpack (= 3.2.12)
       mail (~> 2.4.4)
-    actionpack (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
+    actionpack (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
-      rack (~> 1.4.0)
+      rack (~> 1.4.5)
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
@@ -92,20 +91,20 @@ GEM
       braintree (>= 2.0.0)
       builder (>= 2.0.0)
       json (>= 1.5.1)
-    activemodel (3.2.11)
-      activesupport (= 3.2.11)
+    activemodel (3.2.12)
+      activesupport (= 3.2.12)
       builder (~> 3.0.0)
-    activerecord (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
+    activerecord (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
     activerecord-postgresql-adapter (0.0.1)
       pg
-    activeresource (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
-    activesupport (3.2.11)
+    activeresource (3.2.12)
+      activemodel (= 3.2.12)
+      activesupport (= 3.2.12)
+    activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.3)
@@ -130,7 +129,6 @@ GEM
       debug_inspector (>= 0.0.1)
     braintree (2.22.0)
       builder (>= 2.0.0)
-    brcep (3.3.0)
     builder (3.0.4)
     capybara (2.0.2)
       mime-types (>= 1.16)
@@ -148,7 +146,7 @@ GEM
     childprocess (0.3.8)
       ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.2.7)
-    coderay (1.0.8)
+    coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -188,10 +186,10 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     facter (1.6.17)
-    factory_girl (2.6.4)
-      activesupport (>= 2.3.9)
-    factory_girl_rails (1.7.0)
-      factory_girl (~> 2.6.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     faraday (0.8.5)
       multipart-post (~> 1.1)
@@ -272,12 +270,6 @@ GEM
       thin (~> 1.5.0)
     mailchimp (0.0.8)
       httparty
-    memoist (0.2.0)
-    meta_search (1.1.3)
-      actionpack (~> 3.1)
-      activerecord (~> 3.1)
-      activesupport (~> 3.1)
-      polyamorous (~> 0.5.0)
     metaclass (0.0.1)
     mime-types (1.21)
     mocha (0.10.4)
@@ -327,8 +319,6 @@ GEM
     pg_search (0.5.7)
       activerecord (>= 3)
       activesupport (>= 3)
-    polyamorous (0.5.0)
-      activerecord (~> 3.0)
     polyglot (0.3.3)
     postgres-copy (0.5.7)
       activerecord (>= 3.0.0)
@@ -348,19 +338,19 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rack-timeout (0.0.3)
-    rails (3.2.11)
-      actionmailer (= 3.2.11)
-      actionpack (= 3.2.11)
-      activerecord (= 3.2.11)
-      activeresource (= 3.2.11)
-      activesupport (= 3.2.11)
+    rails (3.2.12)
+      actionmailer (= 3.2.12)
+      actionpack (= 3.2.12)
+      activerecord (= 3.2.12)
+      activeresource (= 3.2.12)
+      activesupport (= 3.2.12)
       bundler (~> 1.0)
-      railties (= 3.2.11)
+      railties (= 3.2.12)
     rails_autolink (1.0.9)
       rails (~> 3.1)
-    railties (3.2.11)
-      actionpack (= 3.2.11)
-      activesupport (= 3.2.11)
+    railties (3.2.12)
+      actionpack (= 3.2.12)
+      activesupport (= 3.2.12)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -381,19 +371,17 @@ GEM
     rmagick (2.13.2)
     routing-filter (0.3.1)
       actionpack
-    rspec (2.10.0)
-      rspec-core (~> 2.10.0)
-      rspec-expectations (~> 2.10.0)
-      rspec-mocks (~> 2.10.0)
-    rspec-core (2.10.1)
-    rspec-expectations (2.10.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
       diff-lcs (~> 1.1.3)
-    rspec-mocks (2.10.1)
-    rspec-rails (2.10.1)
+    rspec-mocks (2.12.2)
+    rspec-rails (2.12.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec (~> 2.10.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     ruby-hmac (0.4.0)
     ruby-openid (2.2.3)
     rubyzip (0.9.9)
@@ -407,7 +395,7 @@ GEM
     schema_plus (1.0.1)
       rails (>= 3.2)
       valuable
-    selenium-webdriver (2.29.0)
+    selenium-webdriver (2.30.0)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
       rubyzip
@@ -470,7 +458,6 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    unicode (0.4.4)
     valuable (0.9.8)
     vimeo (1.5.3)
       httparty (>= 0.4.5)
@@ -482,7 +469,6 @@ GEM
       rack (>= 1.0)
     websocket (1.0.7)
     weekdays (1.0.2)
-    wirble (0.1.3)
     xpath (1.0.0)
       nokogiri (~> 1.3)
 
@@ -498,7 +484,6 @@ DEPENDENCIES
   best_in_place
   better_errors
   binding_of_caller
-  brcep
   cancan!
   capybara (>= 1.0.1)
   carrierwave (~> 0.7.0)
@@ -513,7 +498,7 @@ DEPENDENCIES
   devise
   draper
   enumerate_it
-  factory_girl_rails (= 1.7.0)
+  factory_girl_rails
   feedzirra
   figaro
   fog
@@ -531,8 +516,6 @@ DEPENDENCIES
   kaminari
   launchy
   mailcatcher
-  memoist (~> 0.2.0)
-  meta_search (= 1.1.3)
   mocha (= 0.10.4)
   moip!
   oauth2
@@ -549,14 +532,13 @@ DEPENDENCIES
   pg_search
   postgres-copy
   rack-timeout
-  rails (= 3.2.11)
+  rails (= 3.2.12)
   rails_autolink (~> 1.0.7)
   rmagick
   routing-filter
-  rspec-rails (~> 2.10.0)
+  rspec-rails (~> 2.12)
   sass-rails (~> 3.2.5)
   schema_plus
-  selenium-webdriver
   shoulda
   sidekiq (= 2.4.0)
   sinatra
@@ -567,7 +549,5 @@ DEPENDENCIES
   stripe!
   thin
   uglifier (>= 1.0.3)
-  unicode
   validation_reflection!
   weekdays
-  wirble

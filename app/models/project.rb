@@ -8,6 +8,7 @@ class Project < ActiveRecord::Base
   include ERB::Util
   include Rails.application.routes.url_helpers
   include PgSearch
+  extend CatarseAutoHtml
 
   before_save do
     if online_days_changed? || !self.expires_at.present?
@@ -32,18 +33,7 @@ class Project < ActiveRecord::Base
 
   has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
 
-  auto_html_for :about do
-    html_escape :map => {
-      '&' => '&amp;',
-      '>' => '&gt;',
-      '<' => '&lt;',
-      '"' => '"' }
-    image
-    youtube width: 600, height: 430, wmode: "opaque"
-    vimeo width: 600, height: 403
-    redcloth :target => :_blank
-    link :target => :_blank
-  end
+  catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
   pg_search_scope :pg_search, against: [
       [:name, 'A'],
@@ -55,6 +45,9 @@ class Project < ActiveRecord::Base
     ignoring: :accents
 
   scope :by_id, ->(id) { where(id: id) }
+  scope :by_permalink, ->(p) { where(permalink: p) }
+  scope :by_category_id, ->(id) { where(category_id: id) }
+  scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :order_table, ->(sort) {
     if sort == 'desc'
@@ -65,6 +58,7 @@ class Project < ActiveRecord::Base
   }
 
   scope :visible, where("state NOT IN ('draft', 'rejected')")
+  scope :financial, where("(expires_at > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)
   scope :expired, where("expires_at < current_timestamp")
   scope :not_expired, where("expires_at >= current_timestamp")
@@ -87,7 +81,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
-                                     END ASC, pg_search_rank DESC, created_at DESC") }
+                                     END ASC, created_at DESC, id DESC") }
   scope :expiring_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order('date(expires_at), random()').limit(3)
   }
@@ -98,10 +92,8 @@ class Project < ActiveRecord::Base
     where("id IN (SELECT project_id FROM backers b WHERE b.confirmed AND b.user_id = ?)", user_id)
   }
 
-  search_methods :visible, :recommended, :expired, :not_expired, :expiring, :not_expiring, :recent, :successful
-
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
-  validates_presence_of :name, :user, :category, :about, :headline, :goal
+  validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
   validates_length_of :headline, :maximum => 140
   validates_numericality_of :online_days, :less_than_or_equal_to => 60
   validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true
@@ -113,10 +105,6 @@ class Project < ActiveRecord::Base
       Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
       resource.finish
     end
-  end
-
-  def users_who_backed
-    User.who_backed_project(self.id)
   end
 
   def subscribed_users
@@ -171,21 +159,13 @@ class Project < ActiveRecord::Base
   end
 
   def time_to_go
-    if expires_at >= 1.day.from_now
-      time = ((expires_at - Time.now).abs/60/60/24).round
-      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.day').downcase)}
-    elsif expires_at >= 1.hour.from_now
-      time = ((expires_at - Time.now).abs/60/60).round
-      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.hour').downcase)}
-    elsif expires_at >= 1.minute.from_now
-      time = ((expires_at - Time.now).abs/60).round
-      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.minute').downcase)}
-    elsif expires_at >= 1.second.from_now
-      time = ((expires_at - Time.now).abs).round
-      {:time => time, :unit => pluralize_without_number(time, I18n.t('datetime.prompts.second').downcase)}
-    else
-      {:time => 0, :unit => pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
+    ['day', 'hour', 'minute', 'second'].each do |unit|
+      if expires_at >= 1.send(unit).from_now
+        time = ((expires_at - Time.now).abs/1.send(unit)).round
+        return {time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase)}
+      end
     end
+    {time: 0, unit: pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
   end
 
   def remaining_text
@@ -198,10 +178,6 @@ class Project < ActiveRecord::Base
     ::Airbrake.notify({ :error_class => "Vimeo thumbnail download", :error_message => "Vimeo thumbnail download: #{e.inspect}", :parameters => video_url}) rescue nil
   rescue TypeError => e
     ::Airbrake.notify({ :error_class => "Carrierwave does not like thumbnail file", :error_message => "Carrierwave does not like thumbnail file: #{e.inspect}", :parameters => video_url}) rescue nil
-  end
-
-  def can_back?
-    online? && !expired?
   end
 
   def as_json(options={})
@@ -219,8 +195,8 @@ class Project < ActiveRecord::Base
       time_to_go: time_to_go,
       remaining_text: remaining_text,
       embed_url: vimeo.embed_url,
-      url: permalink ? Rails.application.routes.url_helpers.project_by_slug_path(permalink, :locale => I18n.locale) : Rails.application.routes.url_helpers.project_path(self, :locale => I18n.locale),
-      full_uri: permalink ? Rails.application.routes.url_helpers.project_by_slug_url(permalink, :locale => I18n.locale) : Rails.application.routes.url_helpers.project_url(self, :locale => I18n.locale),
+      url: Rails.application.routes.url_helpers.project_by_slug_path(permalink, :locale => I18n.locale),
+      full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, :locale => I18n.locale),
       expired: expired?,
       successful: successful? || reached_goal?,
       waiting_confirmation: waiting_confirmation?,
@@ -271,8 +247,13 @@ class Project < ActiveRecord::Base
     end
 
     after_transition waiting_funds: [:successful, :failed], do: :after_transition_of_wainting_funds_to_successful_or_failed
+    after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
     after_transition draft: :online, do: :after_transition_of_draft_to_online
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
+  end
+
+  def after_transition_of_wainting_funds_to_successful
+    notify_observers :notify_owner_that_project_is_successful
   end
 
   def after_transition_of_draft_to_rejected

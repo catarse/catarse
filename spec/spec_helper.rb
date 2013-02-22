@@ -11,7 +11,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
   config.mock_with :mocha
-  config.include Factory::Syntax::Methods
+  config.include FactoryGirl::Syntax::Methods
   config.include ActionView::Helpers::TextHelper
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
@@ -37,8 +37,8 @@ RSpec.configure do |config|
     ProjectObserver.any_instance.stubs(:after_create)
     Calendar.any_instance.stubs(:fetch_events_from)
     Blog.stubs(:fetch_last_posts).returns([])
-    ProjectsController.any_instance.stubs(:last_tweets)
-    [Projects::BackersController, ::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController, SessionsController].each do |c|
+    ProjectsController.any_instance.stubs(:last_tweets).returns([])
+    [Projects::BackersController, ::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController].each do |c|
       c.any_instance.stubs(:render_facebook_sdk)
       c.any_instance.stubs(:render_facebook_like)
       c.any_instance.stubs(:render_twitter)

@@ -9,13 +9,13 @@
       | Se você colar a URL de uma imagem ou de um vídeo do Vimeo ou do YouTube, eles irão aparecer no comentário. Experimente!
     li
       | Ao colar uma URL qualquer, ela virará um link. Por exemplo, http://catarse.me virará
-      a href="http://catarse.me" target="_blank" http://catarse.me
+      a href="#{Configuration[:base_url]}" target="_blank" #{Configuration[:base_url]}
       | .
     li
       | Se você quiser colocar um texto no link, basta usar o seguinte formato:
       strong "texto que você quer":http://sua.url
       | . Por exemplo, "#{Configuration[:company_name]}":http://catarse.me virará
-      a href="http://catarse.me" target="_blank" #{Configuration[:company_name]}
+      a href="#{Configuration[:base_url]}" target="_blank" #{Configuration[:company_name]}
       | .
     li
       | Você pode usar

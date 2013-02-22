@@ -1,4 +1,19 @@
 en:
+  backer_report_to_project_owner:
+    reward_description: 'Reward description'
+    confirmed_at: 'Payment confirmed at'
+    value: 'Back value'
+    service_fee: 'Catarse fee'
+    user_email: 'User catarse profile e-mail'
+    payer_email: 'Payment gateway user e-mail'
+    payment_method: 'Payment method'
+    address_street: 'Street'
+    address_complement: 'Complement'
+    address_number: 'Number'
+    address_neighbourhood: 'Neighbourhood'
+    address_city: 'City'
+    address_state: 'State'
+    address_zip_code: 'Zip code'
   edit_project: 'Edit this project'
   facebook_locale: 'en_US'
   or: or
@@ -42,6 +57,8 @@ en:
       faq: F.A.Q./Help
       terms: "Terms of use"
       policy: "Privacy Policy"
+      terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161102-terms-of-use'
+      policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161104-privacy-policy'
       contact: Contact
   main:
     links:
@@ -140,6 +157,8 @@ en:
     should_not_back_if_maximum_backers_been_reached: "has reached its maximum backers"
     value_must_be_at_least_rewards_value: "must be at least %{minimum_value} for the selected reward"
   backer_plural: backers
+  project_plural: projects
+  project_singular: project
   backer_singular: backer
   click_here: "Click here"
   clicking_here: "clicking here"
@@ -367,9 +386,6 @@ en:
       waiting_funds: waiting
       not_reached_goal: waiting
   projects:
-    recommended_header:
-      sugest_for_you: "suggested for you"
-      highlight_project: "featured project"
     box:
       by: by
     admin_fields:
@@ -389,7 +405,7 @@ en:
       anonymous_description: "Opted to remain incognito"
       no_reward: "This backer has not picked a reward"
     backers:
-      thank_you:
+      show:
         error: "Ooops. You can only access this page after backing a project."
         moip_message: "Your transaction was processed by Moip Pagamentos S/A.<br>Your transaction is “Authorized” and you Moip code is “%{code}″.<br>If you have any questions about this transaction, contact Moip directly."
         header_subtitle: "Without you maybe this project wouldn't stand a chance. Welcome to the team!"
@@ -408,7 +424,7 @@ en:
         no_reward: "Thanks. I just want to help the project."
         submit: "Review and proceed to checkout"
         title: "Back %{name}"
-      review:
+      create:
         brazil_address_title: 'Fill when you back is in Brazil'
         live_in_brazil: "If you live in Brazil, please check this box"
         credits_notice_html: "This back will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to back other projects."
@@ -448,6 +464,8 @@ en:
       subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
       title: "Make the projects you believe in happen"
     recommended_header:
+      suggest_for_you: "suggested for you"
+      highlight_project: "featured project"
       guidelines: "How it Works"
       guidelines_subtitle: "Getting to know Catarse"
     pending:
@@ -794,7 +812,7 @@ en:
       update_social_info: "Update info"
       social_info: "Contact info"
       twitter: "twitter ( username )"
-      facebook_link: "facebook profile link"
+      facebook_link: "facebook profile (full link)"
       other_link: "another internet page"
       change_password: "Change my password"
       current_password_hint: "<i>We need your current password to confirm your changes.</i>"

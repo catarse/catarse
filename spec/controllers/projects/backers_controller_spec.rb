@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Projects::BackersController do
   render_views
-  let(:failed_project) { Factory(:project, state: 'failed') }
-  let(:project) { Factory(:project) }
-  let(:backer){ Factory(:backer, value: 10.00, credits: true, confirmed: false, project: project) }
+  let(:failed_project) { FactoryGirl.create(:project, state: 'failed') }
+  let(:project) { FactoryGirl.create(:project) }
+  let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: true, confirmed: false, project: project) }
   let(:user){ nil }
 
   subject{ response }
@@ -19,13 +19,13 @@ describe Projects::BackersController do
     end
 
     context "without user" do
-      it{ should redirect_to(login_path) }
+      it{ should redirect_to(new_user_session_path) }
     end
 
     context "when backer don't exist in current_user" do
-      let(:user){ Factory(:user) }
-      it{ should redirect_to(new_project_backer_path(project)) }
-      it('should set flash failure'){ request.flash[:failure].should_not be_empty }
+      let(:user){ FactoryGirl.create(:user) }
+      it{ should redirect_to(root_path) }
+      it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
 
     context "with correct user but insufficient credits" do
@@ -37,29 +37,29 @@ describe Projects::BackersController do
 
     context "with correct user and sufficient credits" do
       let(:user) do 
-        Factory(:backer, value: 10.00, credits: false, confirmed: true, user: backer.user, project: failed_project)
+        FactoryGirl.create(:backer, value: 10.00, credits: false, confirmed: true, user: backer.user, project: failed_project)
         backer.user
       end
       it('should confirm backer'){ backer.reload.confirmed.should be_true }
       it('should set flash success'){ request.flash[:success].should == I18n.t('projects.backers.checkout.success') }
-      it{ should redirect_to(thank_you_project_backer_path(project_id: project.id, id: backer.id)) }
+      it{ should redirect_to(project_backer_path(project_id: project.id, id: backer.id)) }
     end
   end
 
-  describe "POST review" do
+  describe "POST create" do
     before do
       request.env['REQUEST_URI'] = "/test_path"
-      post :review, {locale: :pt, project_id: project.id, backer: { value: '20.00', reward_id: '0', anonymous: '0' }}
+      post :create, {locale: :pt, project_id: project.id, backer: { value: '20.00', reward_id: '0', anonymous: '0' }}
     end
 
     context "when no user is logged" do
-      it{ should redirect_to login_path }
+      it{ should redirect_to new_user_session_path }
       it('should set the session[:return_to]'){ session[:return_to].should == "/test_path" }
     end
 
     context "when user is logged in" do
-      let(:user){ Factory(:user) }
-      its(:body){ should =~ /#{I18n.t('projects.backers.review.title')}/ }
+      let(:user){ FactoryGirl.create(:user) }
+      its(:body){ should =~ /#{I18n.t('projects.backers.create.title')}/ }
       its(:body){ should =~ /#{project.name}/ }
       its(:body){ should =~ /R\$ 20/ }
     end
@@ -67,35 +67,35 @@ describe Projects::BackersController do
 
   describe "GET new" do
     let(:secure_review_host){ nil }
-    let(:user){ Factory(:user) }
-    let(:can_back){ true }
+    let(:user){ FactoryGirl.create(:user) }
+    let(:online){ true }
     before do
       ::Configuration[:secure_review_host] = secure_review_host
-      Project.any_instance.stubs(:can_back?).returns(can_back)
+      Project.any_instance.stubs(:online?).returns(online)
       get :new, {locale: :pt, project_id: project.id}
     end
 
     context "when no user is logged" do
       let(:user){ nil }
-      it{ should redirect_to login_path }
+      it{ should redirect_to new_user_session_path }
     end
 
-    context "when user is logged in but project.can_back? is false" do
-      let(:can_back){ false }
+    context "when user is logged in but project.online? is false" do
+      let(:online){ false }
       it{ should redirect_to root_path }
     end
 
-    context "when project.can_back? is true and we have configured a secure review url" do
+    context "when project.online? is true and we have configured a secure create url" do
       let(:secure_review_host){ 'secure.catarse.me' }
-      it "should assign the https url to @review_url" do
-        assigns(:review_url).should == review_project_backers_url(project, host: Configuration[:secure_review_host], protocol: 'https')
+      it "should assign the https url to @create_url" do
+        assigns(:create_url).should == project_backers_url(project, host: ::Configuration[:secure_review_host], protocol: 'https')
       end
     end
 
-    context "when project.can_back? is true and we have not configured a secure review url" do
+    context "when project.online? is true and we have not configured a secure create url" do
       it{ should render_template("projects/backers/new") }
-      it "should assign review_project_backers_path to @review_url" do
-        assigns(:review_url).should == review_project_backers_path(project)
+      it "should assign review_project_backers_path to @create_url" do
+        assigns(:create_url).should == project_backers_path(project)
       end
       its(:body) { should =~ /#{I18n.t('projects.backers.new.header.title')}/ }
       its(:body) { should =~ /#{I18n.t('projects.backers.new.submit')}/ }
@@ -104,36 +104,36 @@ describe Projects::BackersController do
     end
   end
 
-  describe "GET thank_you" do
-    let(:backer){ Factory(:backer, value: 10.00, credits: false, confirmed: true) }
+  describe "GET show" do
+    let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: false, confirmed: true) }
     before do
-      get :thank_you, { locale: :pt, project_id: backer.project.id, id: backer.id }
+      get :show, { locale: :pt, project_id: backer.project.id, id: backer.id }
     end
 
     context "when no user is logged in" do
-      it{ should redirect_to root_path }
-      it('should set flash failure'){ request.flash[:failure].should_not be_empty }
+      it{ should redirect_to new_user_session_path }
+      it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
 
     context "when user logged in is different from backer" do
-      let(:user){ Factory(:user) }
+      let(:user){ FactoryGirl.create(:user) }
       it{ should redirect_to root_path }
-      it('should set flash failure'){ request.flash[:failure].should_not be_empty }
+      it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
 
     context "when backer is logged in" do
       let(:user){ backer.user }
       it{ should be_successful }
-      its(:body){ should =~ /#{I18n.t('projects.backers.thank_you.title')}/ }
+      its(:body){ should =~ /#{I18n.t('projects.backers.show.title')}/ }
     end
   end
 
   describe "GET index" do
     before do
-      Factory(:backer, value: 10.00, confirmed: true, 
-              reward: Factory(:reward, project: project, description: 'Test Reward'), 
+      FactoryGirl.create(:backer, value: 10.00, confirmed: true, 
+              reward: FactoryGirl.create(:reward, project: project, description: 'Test Reward'), 
               project: project, 
-              user: Factory(:user, name: 'Foo Bar'))
+              user: FactoryGirl.create(:user, name: 'Foo Bar'))
       get :index, { locale: :pt, project_id: project.id, format: :json }
     end
 
@@ -156,13 +156,13 @@ describe Projects::BackersController do
     end
 
     context "with admin user" do
-      let(:user){ Factory(:user, admin: true)}
+      let(:user){ FactoryGirl.create(:user, admin: true)}
       it_should_behave_like "admin / owner"
     end
 
     context "with project owner user" do
-      let(:user){ Factory(:user, admin: false)}
-      let(:project) { Factory(:project, user: user) }
+      let(:user){ FactoryGirl.create(:user, admin: false)}
+      let(:project) { FactoryGirl.create(:project, user: user) }
       it_should_behave_like "admin / owner"
     end
 

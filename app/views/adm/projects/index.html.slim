@@ -33,9 +33,9 @@
           fieldset
             .input.total_results
               #total_results
-                = pluralize_without_number @projects.count, t('found_singular'), t('found_plural')
-                strong= @projects.count
-                = pluralize_without_number(@projects.count, t('project_singular'), t('project_plural')).downcase
+                = pluralize_without_number @search.count, t('found_singular'), t('found_plural')
+                strong= @search.count
+                = pluralize_without_number(@search.count, t('project_singular'), t('project_plural')).downcase
       .clearfix
     .data-table
       = paginate @projects
@@ -59,9 +59,9 @@
                 th= t('.state')
                 th
             tbody
-              - @projects.each do |project|
+              - @projects.includes(:category).each do |project|
                 tr id=project.id class=cycle("even", "odd")
-                  td= link_to project.name, project_path(project)
+                  td= link_to project.name, project_by_slug_path(permalink: project.permalink)
                   td= project.category
                   td= best_in_place [:adm, project], :user_id, method: :put, type: :input
                   td= best_in_place [:adm, project], :goal, method: :put, type: :input, display_as: :display_goal
@@ -90,19 +90,19 @@
                           li
                             = link_to approve_adm_project_path(project), :method => :put do
                               i.icon-ok
-                              = 'Aprovar!'
+                              = t('.approve')
 
                         - if project.can_reject?
                           li
                             = link_to reject_adm_project_path(project), :method => :put  do
                               i.icon-ban-circle
-                              = 'Rejeitar!'
+                              = t('.reject')
 
                         - if project.can_push_to_draft?
                           li
                             = link_to  push_to_draft_adm_project_path(project), :method => :put  do
                               i.icon-trash
-                              = 'Mandar para DRAFT!'
+                              = t('.send_to_draft')
       = paginate @projects
   .clearfix
 

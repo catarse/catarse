@@ -2,9 +2,10 @@
 class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
 
-  load_and_authorize_resource only: [ :update, :destroy ]
+  load_and_authorize_resource only: [ :new, :update, :update, :destroy ]
 
   inherit_resources
+  has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired
   respond_to :html, :except => [:backers]
   respond_to :json, :only => [:index, :show, :backers, :update]
   skip_before_filter :detect_locale, :only => [:backers]
@@ -29,29 +30,17 @@ class ProjectsController < ApplicationController
         @expiring = Project.expiring_for_home(project_ids)
         @recent = Project.recent_for_home(project_ids)
         @blog_posts = blog_posts
-        @events = events
         @last_tweets = last_tweets
       end
 
       format.json do
-        @projects = if params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains]
-          Project.visible.pg_search( params[:search][:name_or_headline_or_about_or_user_name_or_user_address_city_contains]).order_for_search
-        else
-          Project.visible.search(params[:search])
-        end
-        # After the search params we order by ID to avoid ties and therefore duplicate items in pagination
-        respond_with(@projects.order('id').page(params[:page]).per(6))
+        @projects = apply_scopes(Project).visible.order_for_search
+        respond_with(@projects.includes(:project_total, :user, :category).page(params[:page]).per(6))
       end
     end
   end
 
-  def start
-    return unless require_login
-    @title = t('projects.start.title')
-  end
-
   def new
-    return unless require_login
     new! do
       @title = t('projects.new.title')
       @project.rewards.build
@@ -60,9 +49,6 @@ class ProjectsController < ApplicationController
 
   def create
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
-    if params[:project][:permalink] == ''
-      params[:project][:permalink] = nil
-    end
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
     create!(:notice => t('projects.create.success'))
     # When it can't create the project the @project doesn't exist and then it causes a record not found
@@ -79,7 +65,7 @@ class ProjectsController < ApplicationController
 
       if params[:permalink].present?
         @project = Project.find_by_permalink! params[:permalink]
-      elsif resource.permalink
+      else
         return redirect_to project_by_slug_path(resource.permalink)
       end
 
@@ -92,7 +78,7 @@ class ProjectsController < ApplicationController
 
       show!{
         @title = @project.name
-        @rewards = @project.rewards.order(:minimum_value).all
+        @rewards = @project.rewards.includes(:project).order(:minimum_value).all
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
         @update = @project.updates.where(:id => params[:update_id]).first if params[:update_id].present?
@@ -148,15 +134,6 @@ class ProjectsController < ApplicationController
     []
   end
 
-  def events
-    calendar = Calendar.new
-    Rails.cache.fetch 'calendar', expires_in: 30.minutes do
-      calendar.fetch_events_from("catarse.me_237l973l57ir0v6279rhrr1qs0@group.calendar.google.com")
-    end
-  rescue
-    []
-  end
-
   # Just to fix a minor bug,
   # when user submit the project without some rewards.
   def validate_rewards_attributes
@@ -169,7 +146,7 @@ class ProjectsController < ApplicationController
   def bitly
     return unless Rails.env.production?
     require 'net/http'
-    res = Net::HTTP.start("api.bit.ly", 80) { |http| http.get("/v3/shorten?login=diogob&apiKey=R_76ee3ab860d76d0d1c1c8e9cc5485ca1&longUrl=#{CGI.escape(project_url(@project))}") }
+    res = Net::HTTP.start("api.bit.ly", 80) { |http| http.get("/v3/shorten?login=#{Configuration[:bitly_api_login]}&apiKey=#{Configuration[:bitly_api_key]}&longUrl=#{CGI.escape(project_url(@project))}") }
     data = JSON.parse(res.body)['data']
     data['url'] if data
   end

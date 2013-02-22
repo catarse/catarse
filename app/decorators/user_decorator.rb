@@ -3,7 +3,7 @@ class UserDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   def display_provider
-    case provider
+    case source.provider
     when 'devise' then "Login #{email}"
     when 'google' then I18n.t('user.google_account')
     else provider
@@ -18,6 +18,7 @@ class UserDecorator < Draper::Decorator
     else
       I18n.t('user.no_name')
     end
+    source.name || source.full_name || I18n.t('user.no_name')
   end
 
   def display_image
@@ -43,6 +44,6 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_total_of_backs
-    number_to_currency backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
+    number_to_currency source.backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
   end
 end

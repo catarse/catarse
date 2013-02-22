@@ -1,9 +1,7 @@
 require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations", :passwords => "passwords"} do
-    get "/login" => "devise/sessions#new"
-  end
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" } 
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
   constraints check_user_admin do
@@ -11,9 +9,7 @@ Catarse::Application.routes.draw do
   end
 
   # Non production routes
-  if Rails.env == "test"
-    match "/fake_login" => "sessions#fake_create", :as => :fake_login
-  elsif Rails.env == "development"
+  if Rails.env == "development"
     resources :emails, :only => [ :index ]
   end
   
@@ -25,7 +21,7 @@ Catarse::Application.routes.draw do
   
 
 
-  filter :locale
+  filter :locale, exclude: /\/auth\//
 
   root to: 'projects#index'
 
@@ -37,13 +33,10 @@ Catarse::Application.routes.draw do
   match "/guidelines_start" => "static#guidelines_start", :as => :guidelines_start
   match "/about" => "static#about", :as => :about
   match "/faq" => "static#faq", :as => :faq
-  match "/terms" => "static#terms", :as => :terms
-  match "/privacy" => "static#privacy", :as => :privacy
 
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick
   match "/credits" => "credits#index", :as => :credits
-
   post "/auth" => "sessions#auth", :as => :auth, :via => [:get, :post]
   #post  "/auth/stripe_connect" => "sessions#auth", :as => :auth_stripe_connect, :via => [:get, :post]
   match "/auth/:provider/callback" => "sessions#create"
@@ -59,19 +52,13 @@ Catarse::Application.routes.draw do
   resources :projects do
     resources :updates, only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy ]
-    resources :backers, controller: 'projects/backers', only: [ :index, :new ] do
-      collection do
-        post 'review'
-      end
+    resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
       member do
         match 'credits_checkout'
         post 'update_info'
-        get 'thank_you'
       end
     end
     collection do
-      get 'start'
-      post 'send_mail'
       get 'vimeo'
       get 'check_slug'
     end

@@ -1,7 +1,6 @@
 source :gemcutter
-source 'http://gems.github.com'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 gem 'sidekiq', '= 2.4.0'
 gem 'sinatra', require: false
@@ -19,11 +18,11 @@ gem 'schema_plus'
 
 gem 'catarse_stripe', git: 'git://github.com/lvxn0va/catarse_stripe.git', branch: 'master'
 #gem 'catarse_stripe', path: '../catarse_stripe', branch: 'oauth'
-
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
-gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '8f60d81b8f544003d99db4e80f945da6af1a9f4f'
+gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git', ref: '020e5851f8c2b08c9e4c1f4aab3627414644876b'
 #gem 'catarse_paypal_express', path: '../catarse_paypal_express'
+
 gem 'catarse_moip', git: 'git://github.com/devton/catarse_moip.git', ref: 'd71157a0365611048a36180846a3c0c84768b916'
 #gem 'catarse_moip', path: '../catarse_moip'
 gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
@@ -78,12 +77,8 @@ gem 'inherited_resources', '1.3.1'
 gem 'has_scope'
 gem 'spectator-validates_email', require: 'validates_email'
 gem 'has_vimeo_video', '~> 0.0.5'
-gem 'memoist', '~> 0.2.0'
-gem 'wirble'
 gem 'weekdays'
-gem 'brcep'
 gem "RedCloth"
-gem 'unicode'
 gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1'
 gem "rack-timeout"
@@ -94,13 +89,9 @@ gem 'json'
 gem 'http_accept_language'
 gem 'routing-filter' #, :git => 'git://github.com/svenfuchs/routing-filter.git'
 
-# Administration
-gem "meta_search", "1.1.3"
-
 # Payment
 gem 'activemerchant', '1.17.0'
 gem 'httpclient', '2.2.5'
-gem 'selenium-webdriver'
 
 # Server
 gem 'thin'
@@ -116,10 +107,10 @@ end
 group :test, :development do
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'rspec-rails', "~> 2.10.0"
+  gem 'rspec-rails', "~> 2.12"
   gem 'mocha', '0.10.4'
-  gem 'shoulda', :require => false
-  gem 'factory_girl_rails', '1.7.0'
+  gem 'shoulda'
+  gem 'factory_girl_rails'
   gem 'capybara', ">= 1.0.1"
 end
 

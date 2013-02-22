@@ -19,6 +19,8 @@ npm-debug.log
 db/structure.sql
 .sass-cache
 
-
 # Ignore application configuration
 /config/application.yml
+Cookbooks
+.vagrant
+

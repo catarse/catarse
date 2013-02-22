@@ -3,21 +3,21 @@ require 'spec_helper'
 describe Adm::BackersController do
   subject{ response }
   let(:admin) do 
-    u = Factory(:user)
+    u = FactoryGirl.create(:user)
     u.admin = true
     u.save!
     u
   end
 
   let(:unconfirmed_backer) do
-    b = Factory(:backer)
+    b = FactoryGirl.create(:backer)
     b.confirmed = false
     b.save!
     b
   end
 
   describe 'PUT confirm' do
-    let(:backer) { Factory(:backer, confirmed: false) }
+    let(:backer) { FactoryGirl.create(:backer, confirmed: false) }
     subject { backer.confirmed }
 
     before { 
@@ -32,7 +32,7 @@ describe Adm::BackersController do
   end
 
   describe 'PUT unconfirm' do
-    let(:backer) { Factory(:backer, confirmed: true) }
+    let(:backer) { FactoryGirl.create(:backer, confirmed: true) }
     subject { backer.confirmed }
 
     before { 
@@ -51,7 +51,7 @@ describe Adm::BackersController do
       before do
         get :index, :locale => :pt
       end
-      it{ should redirect_to login_path }
+      it{ should redirect_to new_user_session_path }
     end
 
     context "when I'm logged as admin" do

@@ -2,14 +2,14 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
-    //var video_valid = null
+    var video_valid = null
     var permalink_valid = null
     everything_ok = function(){
       var all_ok = true
-      //if(video_valid == null) {
-      //  all_ok = false
-      //  verify_video()
-      //}
+      if(video_valid == null) {
+        all_ok = false
+        verify_video()
+      }
       if(permalink_valid == null) {
         all_ok = false
         verify_permalink()
@@ -24,8 +24,8 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
         all_ok = false
       if(!ok('#project_name'))
         all_ok = false
-      //if(!video_ok())
-      //  all_ok = false
+      if(!video_ok())
+        all_ok = false
       if(!ok('#project_about'))
         all_ok = false
       if(!headline_ok())
@@ -61,7 +61,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
       if(/^(\w|-)*$/.test($('#project_permalink').val()))
       {
         if($('#project_permalink').val() == ''){
-          permalink_valid = true
+          permalink_valid = false
         }
         else {
         $.get('/projects/check_slug/?permalink='+$('#project_permalink').val(),
@@ -93,7 +93,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
 
     verify_video = function(){
       video_valid = false
-      if(/http:\/\/(www\.)?vimeo.com\/(\d+)/.test($('#project_video_url').val())) {
+      if(/http(s)?:\/\/(www\.)?vimeo.com\/(\d+)/.test($('#project_video_url').val())) {
         $('#project_video_url').removeClass("ok").removeClass("error").addClass('loading')
         $.get('/projects/vimeo/?url='+$('#project_video_url').val(), function(r){
           $('#project_video_url').removeClass("loading")
@@ -152,8 +152,8 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     }
     $('#project_permalink').timedKeyup(verify_permalink)
     $('#project_name').keyup(everything_ok)
-    //$('#project_video_url').keyup(function(){ video_valid = false; everything_ok() })
-    //$('#project_video_url').timedKeyup(verify_video)
+    $('#project_video_url').keyup(function(){ video_valid = false; everything_ok() })
+    $('#project_video_url').timedKeyup(verify_video)
     $('#project_about').keyup(everything_ok)
     $('#project_category_id').change(everything_ok)
     $('#project_goal').keyup(everything_ok)
@@ -170,7 +170,7 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
       $(this).next('p.inline-hints').show()
     })
 
-    $('#project_name').focus()
+    $('#project_permalink').focus()
     $('textarea').maxlength()
   }
 })
