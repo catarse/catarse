@@ -33,7 +33,7 @@ describe Notification do
     end
 
     context "when dismissed is true" do
-      let(:notification){ Factory(:notification, dismissed: true, notification_type: notification_type) }
+      let(:notification){ FactoryGirl.create(:notification, dismissed: true, notification_type: notification_type) }
       it("should not send email"){ ActionMailer::Base.deliveries.should be_empty }
     end
 
