@@ -19,15 +19,25 @@ describe Notification do
   end
 
   describe "#send_email" do
+    let(:deliver_exception){ nil }
+    let(:notification){ FactoryGirl.create(:notification, dismissed: false, notification_type: notification_type) }
+
+    before do 
+      deliver_exception
+      notification.send_email
+    end
+
+    context "when deliver raises and exception" do
+      let(:deliver_exception){ NotificationsMailer.stubs(:notify).raises(Exception, 'fake error') }
+      it("should not dismiss the notification"){ notification.dismissed.should be_false }
+    end
+
     context "when dismissed is true" do
-      let(:notification){ FactoryGirl.create(:notification, dismissed: true, notification_type: notification_type) }
-      before{ notification.send_email }
+      let(:notification){ Factory(:notification, dismissed: true, notification_type: notification_type) }
       it("should not send email"){ ActionMailer::Base.deliveries.should be_empty }
     end
 
     context "when dismissed is false" do
-      let(:notification){ FactoryGirl.create(:notification, dismissed: false, notification_type: notification_type) }
-      before{ notification.send_email }
       it("should send email"){ ActionMailer::Base.deliveries.should_not be_empty }
       it("should dismiss the notification"){ notification.dismissed.should be_true }
     end
