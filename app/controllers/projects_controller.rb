@@ -50,12 +50,6 @@ class ProjectsController < ApplicationController
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
     create!(:notice => t('projects.create.success'))
-    # When it can't create the project the @project doesn't exist and then it causes a record not found
-    # because @project.reload *works only with created records*
-    unless @project.new_record?
-      @project.reload
-      @project.update_attributes({ short_url: bitly })
-    end
   end
 
   def show
@@ -131,13 +125,5 @@ class ProjectsController < ApplicationController
     rewards.each do |r|
       rewards.delete(r[0]) unless Reward.new(r[1]).valid?
     end
-  end
-
-  def bitly
-    return unless Rails.env.production?
-    require 'net/http'
-    res = Net::HTTP.start("api.bit.ly", 80) { |http| http.get("/v3/shorten?login=#{Configuration[:bitly_api_login]}&apiKey=#{Configuration[:bitly_api_key]}&longUrl=#{CGI.escape(project_url(@project))}") }
-    data = JSON.parse(res.body)['data']
-    data['url'] if data
   end
 end

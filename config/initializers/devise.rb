@@ -214,9 +214,13 @@ Devise.setup do |config|
     # As the test database is always empty in this stage we just create this fake provider
     config.omniauth 'facebook', 'dummy_key', 'dummy_secret', scope: ''
   else
-    OauthProvider.all.each do |p|
-      config.omniauth p.name, p.key, p.secret, scope: p.scope
-    end rescue puts "problem while using OauthProvider model, perhaps it has not been created yet..."
+    begin
+      OauthProvider.all.each do |p|
+        config.omniauth p.name, p.key, p.secret, scope: p.scope
+      end 
+    rescue Exception => e
+      puts "problem while using OauthProvider model:\n '#{e.message}'"
+    end
   end
 
   # ==> Warden configuration
