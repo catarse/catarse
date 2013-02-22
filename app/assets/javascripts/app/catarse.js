@@ -69,14 +69,14 @@ var CATARSE = {
     'new': function(){
       return new CATARSE.ProjectsNewView();
     },
+    create: function(){
+      return new CATARSE.ProjectsNewView();
+    },
     pending: function(){
       window.view = new CATARSE.ProjectsPendingView({el: $("body") });
     },
     pending_backers: function(){
       window.view = new CATARSE.ProjectsPending_backersView({el: $("body") });
-    },
-    start: function(){
-      window.view = new CATARSE.ProjectsStartView({el: $("body") });
     },
     backers: {
       'new': function(){
