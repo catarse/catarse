@@ -143,14 +143,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def bitly
-    return unless Rails.env.production?
-    require 'net/http'
-    res = Net::HTTP.start("api.bit.ly", 80) { |http| http.get("/v3/shorten?login=#{Configuration[:bitly_api_login]}&apiKey=#{Configuration[:bitly_api_key]}&longUrl=#{CGI.escape(project_url(@project))}") }
-    data = JSON.parse(res.body)['data']
-    data['url'] if data
-  end
-
   def check_for_stripe_keys
     if @project.stripe_userid.nil?
       [:stripe_access_token, :stripe_key, :stripe_userid].each do |field|

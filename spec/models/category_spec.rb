@@ -1,18 +1,13 @@
 require 'spec_helper'
 
 describe Category do
-  it "should be valid from factory" do
-    c = FactoryGirl.create(:category)
-    c.should be_valid
-  end
-  it "should have a name" do
-    c = FactoryGirl.build(:category, :name_pt => nil)
-    c.should_not be_valid
-  end
-  it "should have an unique name" do
-    c = FactoryGirl.create(:category, :name_pt => "foo")
-    c.should be_valid
-    c2 = FactoryGirl.build(:category, :name_pt => "foo")
-    c2.should_not be_valid
+  describe "Associations" do
+    before do
+      FactoryGirl.create :category
+    end
+
+    it{ should have_many :projects }
+    it{ should validate_presence_of :name_pt }
+    it{ should validate_uniqueness_of :name_pt }
   end
 end

@@ -15,6 +15,7 @@ gem 'activerecord-postgresql-adapter'
 gem 'pg_search'
 gem 'postgres-copy'
 gem 'schema_plus'
+gem 'schema_associations'
 
 gem 'catarse_stripe', git: 'git://github.com/lvxn0va/catarse_stripe.git', branch: 'master'
 #gem 'catarse_stripe', path: '../catarse_stripe', branch: 'oauth'

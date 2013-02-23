@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe PaymentNotification do
+  describe "Associations" do
+    it{ should belong_to :backer }
+  end
+
   describe "#extra_data" do
     let(:test_hash){{"test_hash" => 1}}
     before do

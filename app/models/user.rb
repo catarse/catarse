@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
     :address_zip_code,
     :phone_number,
     :cpf,
+    :state_inscription,
     :locale,
     :twitter,
     :facebook_link,
@@ -60,16 +61,12 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, :if => :password_required?
   validates_length_of       :password, :within => 6..128, :allow_blank => true
 
-  has_many :backs, :class_name => "Backer"
-  has_many :projects
-  has_many :updates
-  has_many :unsubscribes
-  has_many :notifications
-  has_many :secondary_users, :class_name => 'User', :foreign_key => :primary_user_id
+  schema_associations
+  has_many :oauth_providers, through: :authorizations
+  has_many :backs, class_name: "Backer"
   has_one :user_total
-  belongs_to :primary, :class_name => 'User', :foreign_key => :primary_user_id, :primary_key => :id
-  accepts_nested_attributes_for :unsubscribes, allow_destroy: true
-  scope :primary, :conditions => ["primary_user_id IS NULL"]
+
+  accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
   scope :subscribed_to_updates, where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id IS NULL AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
@@ -108,18 +105,13 @@ class User < ActiveRecord::Base
   end
 
   def facebook_id
-    provider == 'facebook' && uid || secondary_users.where(provider: 'facebook').first && secondary_users.where(provider: 'facebook').first.uid
+    auth = authorizations.joins(:oauth_provider).where("oauth_providers.name = 'facebook'").first
+    auth.uid if auth
   end
 
   def to_param
     return "#{self.id}" unless self.display_name
     "#{self.id}-#{self.display_name.parameterize}"
-  end
-
-  def self.find_with_omni_auth(provider, uid)
-    u = User.find_by_provider_and_uid(provider, uid)
-    return nil unless u
-    u.primary.nil? ? u : u.primary
   end
 
   def self.create_with_omniauth(auth)
@@ -227,15 +219,6 @@ class User < ActiveRecord::Base
 
   def twitter_link
     "http://twitter.com/#{self.twitter}"
-  end
-
-  def merge_into!(new_user)
-    self.primary = new_user
-    self.backs.update_all :user_id => new_user.id
-    self.projects.update_all :user_id => new_user.id
-    self.notifications.update_all :user_id => new_user.id
-    self.save
-    new_user.save
   end
 
   def fix_twitter_user

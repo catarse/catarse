@@ -1,4 +1,4 @@
-# Catarse [![Build Status](https://secure.travis-ci.org/danielweinmann/catarse.png?branch=master)](https://travis-ci.org/danielweinmann/catarse) 
+# Catarse [![Build Status](https://secure.travis-ci.org/catarse/catarse.png?branch=master)](https://travis-ci.org/catarse/catarse) 
 
 ## Oficial repository changed!
 

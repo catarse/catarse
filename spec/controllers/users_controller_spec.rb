@@ -11,7 +11,7 @@ describe UsersController do
   let(:successful_project){ FactoryGirl.create(:project, state: 'successful') }
   let(:failed_project){ FactoryGirl.create(:project, state: 'failed') }
   let(:backer){ FactoryGirl.create(:backer, :user => user, :project => failed_project) }
-  let(:user){ FactoryGirl.create(:user, :provider => 'facebook', :uid => '666') }
+  let(:user){ FactoryGirl.create(:user, authorizations: [FactoryGirl.create(:authorization, uid: 666, oauth_provider: FactoryGirl.create(:oauth_provider, name: 'facebook'))]) }
   let(:current_user){ user }
 
   describe "PUT update" do

@@ -5,6 +5,8 @@ describe Project do
   let(:project){ Project.new :goal => 3000 }
 
   describe "associations" do
+    it{ should belong_to :user }
+    it{ should belong_to :category }
     it{ should have_many :backers }
     it{ should have_one  :project_total }
     it{ should have_many :rewards }

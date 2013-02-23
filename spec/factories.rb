@@ -79,8 +79,14 @@ FactoryGirl.define do
     f.extra_data {}
   end
 
+  factory :authorization do |f|
+    f.association :oauth_provider
+    f.association :user
+    f.uid 'Foo'
+  end
+
   factory :oauth_provider do |f|
-    f.name 'GitHub'
+    f.name 'facebook'
     f.strategy 'GitHub'
     f.path 'github'
     f.key 'test_key'

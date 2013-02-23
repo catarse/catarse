@@ -4,19 +4,21 @@ require 'spec_helper'
 
 describe Reward do
   let(:reward){ FactoryGirl.create(:reward, description: 'envie um email para foo@bar.com ') }
+  describe "Associations" do
+    it{ should belong_to :project }
+    it{ should have_many :backers }
+  end
+
   describe "#display_description" do
     subject{ reward.display_description }
     it{ should == "<p>envie um email para <a href=\"mailto:foo@bar.com\" target=\"_blank\">foo@bar.com</a> </p>" }
   end
 
-  it "should be valid from factory" do
-    r = FactoryGirl.create(:reward)
-    r.should be_valid
-  end
   it "should have a minimum value" do
     r = FactoryGirl.build(:reward, :minimum_value => nil)
     r.should_not be_valid
   end
+
   it "should have a display_minimum" do
     r = FactoryGirl.build(:reward)
     r.minimum_value = 1
@@ -26,6 +28,7 @@ describe Reward do
     r.minimum_value = 99
     r.display_minimum.should == "R$ 99,00"
   end
+
   it "should have a greater than 1.00 minimum value" do
     r = FactoryGirl.build(:reward)
     r.minimum_value = -0.01
@@ -37,10 +40,12 @@ describe Reward do
     r.minimum_value = 1.01
     r.should be_valid
   end
+
   it "should have a description" do
     r = FactoryGirl.build(:reward, :description => nil)
     r.should_not be_valid
   end
+
   it "should have integer maximum backers" do
     r = FactoryGirl.build(:reward)
     r.maximum_backers = 10.01
@@ -48,6 +53,7 @@ describe Reward do
     r.maximum_backers = 10
     r.should be_valid
   end
+
   it "should have maximum backers > 0" do
     r = FactoryGirl.build(:reward)
     r.maximum_backers = -1
@@ -57,6 +63,7 @@ describe Reward do
     r.maximum_backers = 1
     r.should be_valid
   end
+
   it "should be sold_out? if maximum_backers was reached" do
     r = FactoryGirl.create(:reward, :maximum_backers => nil)
     r.sold_out?.should be_false
@@ -66,6 +73,7 @@ describe Reward do
     FactoryGirl.create(:backer, :project_id => r.project_id, :reward_id => r.id)
     r.sold_out?.should be_true
   end
+
   it "should say the remaining spots" do
     r = FactoryGirl.create(:reward, :maximum_backers => nil)
     r.remaining.should be_nil
@@ -76,6 +84,7 @@ describe Reward do
     5.times { FactoryGirl.create(:backer, :project_id => r.project_id, :reward_id => r.id) }
     r.remaining.should == 0
   end
+
   it "should have a HTML-safe name that is a HTML composition from minimum_value, description and sold_out" do
     I18n.locale = :pt
     r = FactoryGirl.build(:reward, :minimum_value => 0, :description => "Description", :maximum_backers => 0)

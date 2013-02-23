@@ -6,8 +6,8 @@ class Reward < ActiveRecord::Base
   include ActionView::Helpers::UrlHelper 
 
   include ERB::Util
-  belongs_to :project
-  has_many :backers
+  schema_associations
+
   validates_presence_of :minimum_value, :description
   validates_numericality_of :minimum_value, :greater_than_or_equal_to => 1.00
   validates_numericality_of :maximum_backers, :only_integer => true, :greater_than => 0, :allow_nil => true

@@ -1,10 +1,8 @@
 class Notification < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :project
-  belongs_to :notification_type
-  belongs_to :backer
-  # Update was an unfortunate decision, we should rename it soon
-  belongs_to :project_update, class_name: "Update", foreign_key: :update_id
+  schema_associations
+  belongs_to :notification_type # don't know why schema_association did not get it. the FK seems to be in place
+  belongs_to :project_update, class_name: "Update", foreign_key: :update_id # Update was an unfortunate decision, we should rename it soon
+
   validates_presence_of :user
   attr_accessor :mail_params
 
@@ -25,8 +23,14 @@ class Notification < ActiveRecord::Base
 
   def send_email
     unless dismissed
-      self.update_attributes dismissed: true
-      NotificationsMailer.notify(self).deliver
+      begin
+        NotificationsMailer.notify(self).deliver
+        self.update_attributes dismissed: true
+      rescue Exception => e
+        Rails.logger.error "Error while delivering email (#{e}).\n
+        Check your configurations sendgrid and sendgrid_user_name\n
+        Your notification was stored in the database with dismissed field set to false"
+      end
     end
   end
 
