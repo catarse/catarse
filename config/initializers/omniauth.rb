@@ -6,7 +6,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 
   provider :open_id, :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'
   provider :open_id, :name => 'yahoo', :identifier => 'yahoo.com'
-  provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], {:client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}, :scope => 'publish_stream,email'}
+  #provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], {:client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}, :scope => 'publish_stream,email'}
   provider :stripe_connect, Configuration['stripe_client_id'], Configuration['stripe_secret_key'], {:scope => 'read_write', :stripe_landing => 'register'}
   #provider :linkedin, SETTINGS[:linkedin][:api_key], SETTINGS[:linkedin][:secret_key]
     

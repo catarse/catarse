@@ -51,8 +51,8 @@
       .content_form
         h1=t('.with_facebook')
         h3=t('.with_facebook_subtitle')
-        /!= link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), :class => 'facebook_start'
-        = link_to t('layouts.login.login_with_facebook'), '/auth/facebook', :class => 'facebook_start'
+        = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), :class => 'facebook_start'
+        /!= link_to t('layouts.login.login_with_facebook'), '/auth/facebook', :class => 'facebook_start'
         
       .another_social
         h1=t('.with_another_social')
