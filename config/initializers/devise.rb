@@ -1,3 +1,7 @@
+require "omniauth-facebook"
+require 'omniauth-openid'
+require "omniauth-yahoo"
+require "omniauth-stripe-connect"
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -221,6 +225,7 @@ Devise.setup do |config|
     begin
       OauthProvider.all.each do |p|
         config.omniauth p.name, p.key, p.secret, scope: p.scope
+
       end 
     rescue Exception => e
       puts "problem while using OauthProvider model:\n '#{e.message}'"
