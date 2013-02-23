@@ -58,10 +58,6 @@ end
   bitly_api_key: "R_76ee3ab860d76d0d1c1c8e9cc5485ca1",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   catarse_fee: '0.13'
-  stripe_api_key: ""
-  stripe_secret_key: ""
-  stripe_client_id: ""
-  stripe_test: "true"
 }.each do |name, value|
   Configuration.find_or_create_by_name_and_value name, value
 end
