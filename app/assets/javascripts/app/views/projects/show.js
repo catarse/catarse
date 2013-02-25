@@ -30,7 +30,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     this.bestInPlaceEvents();
 
 
-    // Redirect to #updates anchor in case we come through a link to an update 
+    // Redirect to #updates anchor in case we come through a link to an update
     if(window.location.search.match(/update_id/)){
       window.location.hash = 'updates';
     }
@@ -100,6 +100,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
       var that = this;
       var form = $(this.el);
       that.loading.show();
+      $("#update_submit").attr('disabled', 'disabled');
       $.post(form.prop('action'), form.serialize(), null, 'html')
         .success(function(data){
           var target = $('.updates_wrapper');
@@ -107,6 +108,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
           $('a#updates_link .count').html(' (' + $('.updates_wrapper ul.collection_list > li').length + ')');
           that.loading.hide();
           that.el.reset();
+          $("#update_submit").removeAttr('disabled');
         });
       return false;
     },
