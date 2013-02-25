@@ -114,14 +114,12 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
+    u = create! do |user|
       user.name = auth["info"]["name"]
-      user.email = auth["info"]["email"]
-      user.email = auth["extra"]["user_hash"]["email"] if user.email.nil? rescue nil
+      user.email = (auth["info"]["email"] rescue nil)
+      user.email = (auth["extra"]["user_hash"]["email"] rescue nil) unless user.email
       user.nickname = auth["info"]["nickname"]
-      user.bio = auth["info"]["description"][0..139] if auth["info"]["description"]
+      user.bio = (auth["info"]["description"][0..139] rescue nil)
       user.locale = I18n.locale.to_s
 
       if auth["provider"] == "twitter"
@@ -132,6 +130,9 @@ class User < ActiveRecord::Base
         user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
       end
     end
+    provider = OauthProvider.where(name: auth['provider']).first
+    u.authorizations.create! uid: auth['uid'], oauth_provider_id: provider.id if provider
+    u
   end
 
   def recommended_project

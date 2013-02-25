@@ -9,7 +9,7 @@ describe OmniauthCallbacksController do
   let(:user){ FactoryGirl.create(:user, authorizations: [ FactoryGirl.create(:authorization, uid: oauth_data[:uid], oauth_provider: facebook_provider ) ]) }
   let(:facebook_provider){ FactoryGirl.create :oauth_provider, name: 'facebook' }
   let(:oauth_data){ 
-    { 
+    Hashie::Mash.new({ 
       credentials: { 
         expires: true, 
         expires_at: 1366644101, 
@@ -47,7 +47,7 @@ describe OmniauthCallbacksController do
       }, 
       provider: "facebook", 
       uid: "547955110"
-    }
+    })
   }
 
   subject{ response }
@@ -62,7 +62,11 @@ describe OmniauthCallbacksController do
 
     context "when there is no such user" do
       let(:user){ nil }
-      it{ should redirect_to new_user_registration_url }
+      describe "assigned user" do
+        subject{ assigns(:user) }
+        its(:email){ should == "diogob@gmail.com" }
+        its(:name){ should == "Diogo, Biazus" }
+      end
     end
 
     context "when there is a valid user with this provider and uid and session return_to is /foo" do
