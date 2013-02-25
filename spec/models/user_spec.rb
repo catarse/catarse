@@ -21,8 +21,6 @@ describe User do
 
   describe "validations" do
     before{ user }
-    it{ should validate_presence_of :provider }
-    it{ should validate_presence_of :uid }
     it{ should allow_value('').for(:email) }
     it{ should allow_value('foo@bar.com').for(:email) }
     it{ should_not allow_value('foo').for(:email) }
