@@ -18,6 +18,7 @@ cookbook 'firefox', github: 'chef-cookbooks/chef-firefox'
 cookbook 'rvm', github: 'fnichol/chef-rvm'
 
 # Database
+cookbook 'set_locale', github: 'chef-cookbooks/chef-postgres-locale', ref: '0.1.1'
 cookbook 'postgresql', github: 'phlipper/chef-postgresql', ref: '0.5.0'
 
 
