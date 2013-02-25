@@ -12,7 +12,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     flash[:notice] = I18n.t("devise.omniauth_callbacks.success", :kind => "Facebook")
     sign_in @user, :event => :authentication
-    redirect_to(session[:return_to] || root_path)
-    session[:return_to] = nil
+    if @user.email
+      redirect_to(session[:return_to] || root_path)
+      session[:return_to] = nil
+    else
+      render :set_email
+    end
   end
 end
