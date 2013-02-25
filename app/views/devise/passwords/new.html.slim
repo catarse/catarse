@@ -1,5 +1,6 @@
 = content_for :title do 
   = t('.site_title')
+
 #page_content
   .container
     .devise_content
@@ -14,6 +15,4 @@
           p.action
             .bootstrap-twitter
               = f.submit t('.submit'), class: 'btn', id: 'user_submit'
-        .links
-          = render :partial => "devise/shared/links"
     .clearfix

@@ -30,6 +30,10 @@ pt:
       send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com um link para recuperação da senha.
       updated: A sua senha foi alterada com sucesso. Você está autenticado.
       updated_not_active: Sua senha foi alterada com sucesso.
+      new:
+        site_title: 'Esqueci minha senha'
+        title: 'Confirme seu email e solicite a mudança de senha'
+        submit: 'Enviar instruções para alterar minha senha'
     registrations:
       destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
       signed_up: Bem vindo! Você realizou seu registro com sucesso.
