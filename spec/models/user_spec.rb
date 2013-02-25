@@ -154,12 +154,22 @@ describe User do
         }
       }
     end
-    subject{ User.create_with_omniauth(auth) }
-    its(:provider){ should == auth['provider'] }
-    its(:uid){ should == auth['uid'] }
+    let(:created_user){ User.create_with_omniauth(auth) }
+    let(:oauth_provider){ OauthProvider.create! name: 'twitter', key: 'dummy_key', secret: 'dummy_secret' }
+    before{ oauth_provider }
+    subject{ created_user }
+    # Provider and uid should be nil because we have transfered them to authorization model
+    its(:provider){ should be_nil }
+    its(:uid){ should be_nil }
+    its(:email){ should == auth['info']['email'] }
     its(:name){ should == auth['info']['name'] }
     its(:nickname){ should == auth['info']['nickname'] }
     its(:bio){ should == auth['info']['description'][0..139] }
+    describe "created user's authorizations" do
+      subject{ created_user.authorizations.first }
+      its(:uid){ should == auth['uid'] }
+      its(:oauth_provider_id){ should == oauth_provider.id }
+    end
 
     context "when user is from facebook" do
       let(:auth)  do {
