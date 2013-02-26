@@ -69,6 +69,7 @@ pt:
         successful:
           confirm: 'Apoio confirmado com sucesso!'
           unconfirm: 'Apoio desconfirmado com sucesso!'
+          change_reward: 'Recompensa modificada com sucesso!'
       index:
         confirm_backer: 'Confirmar apoio'
         unconfirm_backer: 'Desconfirmar apoio'
