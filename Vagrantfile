@@ -27,7 +27,10 @@ Vagrant::Config.run do |config|
     chef.add_recipe "git"
     chef.add_recipe "curl"
     chef.add_recipe "curl::devel"
-    chef.add_recipe "locale::default"
+    chef.add_recipe "locale"
+
+    # Avoiding uft-8 problem
+    chef.add_recipe "set_locale"
 
     # Virtual server X Frame Buffer
     chef.add_recipe "xvfb"
@@ -49,11 +52,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe "rvm::system"
 
     # PostgreSQL Because we Love it
-    chef.add_recipe "postgresql"
-    chef.add_recipe "postgresql::client"
-    chef.add_recipe "postgresql::libpq"
-    chef.add_recipe "postgresql::server"
-    chef.add_recipe "postgresql::contrib"
+    chef.add_recipe "set_locale::postgres"
 
 
     #  Configuration: 
@@ -63,18 +62,25 @@ Vagrant::Config.run do |config|
     chef.json = {
       # Installing The latest ruby version
       rvm: {
-        ruby: {
-          implementation: :ruby, version: "1.9.3"
-        },
+        default_ruby: 'ruby-1.9.3-p392',
+        
+        # Installing multiple ruby versions
+        rubies: ['2.0.0-p0'],
+        upgrade: :latest,
+
+        # Gems that will be accessed globally
         global_gems: [
           { name: :thin }, 
           { name: :bundler },
+
+          # Add heroku to make deployment easier
+          { name: :heroku },
         ],
-        # This is needed because of Vagrant & Chef Solo
+        
+        # Somehow needed for Vagrant
         vagrant: {
           system_chef_solo: '/opt/vagrant_ruby/bin/chef-solo'
         }
-
       },
 
       # Configuring postgreSQL
@@ -95,11 +101,6 @@ Vagrant::Config.run do |config|
             login: true
           }
         ],
-       databases: [
-          { name: :catarse_development, owner: :postgres, template: "template0", encoding: "utf-8", locale: "en_US.UTF8" },
-          { name: :catarse_test, owner: :postgres, template: "template0", encoding: "utf-8", locale: "en_US.UTF8" },
-          { name: :catarse_production, owner: :postgres, template: "template0", encoding: "utf-8", locale: "en_US.UTF8" },
-        ],
       },
       # Making the terminal looks good with theming and assigning to the vagrant user
       oh_my_zsh: {
@@ -116,10 +117,10 @@ Vagrant::Config.run do |config|
   
   # Run the Rails project right on vagrant up 
   config.vm.provision :shell, inline: %q{cd /vagrant && export DISPLAY=:99}
+  config.vm.provision :shell, inline: %q{sudo /etc/init.d/xvfb start}
   config.vm.provision :shell, inline: %q{cp /vagrant/config/database.sample.yml /vagrant/config/database.yml}
-  config.vm.provision :shell, inline: %q{update-locale LANG=en_US.utf8}
   config.vm.provision :shell, inline: %q{cd /vagrant && bundle install}
-  config.vm.provision :shell, inline: %q{cd /vagrant && rake db:migrate && rake catarse:config:load_defaults && rake db:seed}
-  config.vm.provision :shell, inline: %q{cd /vagrant && bundle exec rails s -d}
+  config.vm.provision :shell, inline: %q{cd /vagrant && rake db:create db:migrate db:test:prepare db:seed}
+  config.vm.provision :shell, inline: %q{cd /vagrant && rails s -d}
 end
 

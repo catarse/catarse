@@ -10,6 +10,27 @@ SITE
       build-essential (>= 0.0.0)
 
 GIT
+  remote: https://github.com/chef-cookbooks/chef-firefox
+  ref: master
+  sha: 270c56e74a5329e763525866e72f8393c477a9e3
+  specs:
+    firefox (0.0.4)
+
+GIT
+  remote: https://github.com/chef-cookbooks/chef-postgres-locale
+  ref: 0.1.1
+  sha: bdf98737a9928e0ec320406040168cadcc005278
+  specs:
+    set_locale (0.0.2)
+
+GIT
+  remote: https://github.com/chef-cookbooks/chef-xvfb
+  ref: master
+  sha: fb4ff5119d600edc0480134ff07b7641a20f87b7
+  specs:
+    xvfb (0.0.1)
+
+GIT
   remote: https://github.com/fnichol/chef-git
   ref: master
   sha: 6c19cbefcdad5ec0f62a64dae1f656d660698ea3
@@ -59,6 +80,7 @@ DEPENDENCIES
   apt (>= 0)
   build-essential (>= 0)
   curl (>= 0)
+  firefox (>= 0)
   git (>= 0)
   imagemagick (>= 0)
   locale (>= 0)
@@ -66,4 +88,6 @@ DEPENDENCIES
   oh_my_zsh (>= 0)
   postgresql (>= 0)
   rvm (>= 0)
+  set_locale (>= 0)
+  xvfb (>= 0)
 
