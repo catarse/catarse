@@ -214,6 +214,36 @@ describe Project do
     end
   end
 
+  describe "#progress" do
+    subject{ project.progress }
+    let(:pledged){ 0.0 }
+    let(:goal){ 0.0 }
+    before do
+        project.stubs(:pledged).returns(pledged)
+        project.stubs(:goal).returns(goal)
+    end
+
+    context "when goal == pledged > 0" do
+      let(:goal){ 10.0 }
+      let(:pledged){ 10.0 }
+      it{ should == 100 }
+    end
+
+    context "when goal is > 0 and pledged is 0.0" do
+      let(:goal){ 10.0 }
+      it{ should == 0 }
+    end
+
+    context "when goal is 0.0 and pledged > 0.0" do
+      let(:pledged){ 10.0 }
+      it{ should == 100 }
+    end
+
+    context "when goal is 0.0 and pledged is 0.0" do
+      it{ should == 0 }
+    end
+  end
+
   describe "#pledged" do
     subject{ project.pledged }
     context "when project_total is nil" do
