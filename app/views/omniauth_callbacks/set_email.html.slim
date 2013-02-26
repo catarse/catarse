@@ -1,7 +1,0 @@
-.bootstrap-form
-  = semantic_form_for @user, :html => {:method => :put}  do |f|
-    .profile
-      = f.input :email, :as => :string
-    .bootstrap-twitter
-      p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"
-

@@ -738,6 +738,10 @@ pt:
     no_name: "Sem nome"
     google_account: "Conta Google"
   users:
+    set_email:
+      site_title: 'Defina um email de contato'
+      title: 'Defina um email de contato'
+      submit: 'Gravar o email e prosseguir'
     show:
       attention: "Atenção"
       tabs:

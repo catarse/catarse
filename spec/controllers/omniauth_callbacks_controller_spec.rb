@@ -83,7 +83,7 @@ describe OmniauthCallbacksController do
         its(:email){ should be_nil }
         its(:name){ should == "Diogo, Biazus" }
       end
-      it{ should render_template :set_email }
+      it{ should render_template 'users/set_email' }
     end
 
     context "when there is no such user but we retrieve the email from omniauth" do

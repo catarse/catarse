@@ -1,0 +1,17 @@
+= content_for :title do 
+  = t('.site_title')
+
+#page_content
+  .container
+    .devise_content
+      .title
+        h1=t('.title')
+      .bootstrap-form
+        = semantic_form_for @user, :html => {:method => :put}  do |f|
+          p.input
+            = f.label :email
+            = f.text_field :email
+          p.action
+            .bootstrap-twitter
+              = f.submit t('.submit'), class: 'btn', id: 'user_submit'
+    .clearfix
