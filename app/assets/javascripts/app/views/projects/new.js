@@ -93,7 +93,11 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
 
     verify_video = function(){
       video_valid = false
-      if(/https?:\/\/(www\.)?vimeo.com\/(\d+)/.test($('#project_video_url').val())) {
+      if($('#project_video_url').val() == ''){
+          video_valid = true
+          everything_ok()
+      }
+      else if(/https?:\/\/(www\.)?vimeo.com\/(\d+)/.test($('#project_video_url').val())) {
         $('#project_video_url').removeClass("ok").removeClass("error").addClass('loading')
         $.get('/projects/vimeo/?url='+$('#project_video_url').val(), function(r){
           $('#project_video_url').removeClass("loading")
@@ -105,7 +109,9 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
           everything_ok()
         })
       }
-      everything_ok()
+      else{
+          everything_ok()
+      }
     }
     video_ok = function(){
       if(video_valid){
