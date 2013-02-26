@@ -767,6 +767,10 @@ en:
     no_name: Unnamed
     google_account: "Google Account"
   users:
+    set_email:
+      site_title: 'Define your email address'
+      title: 'Define your email address'
+      submit: 'Save my email and proceed'
     show:
       attention: Attention
       tabs:

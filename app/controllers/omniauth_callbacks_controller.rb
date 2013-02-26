@@ -16,7 +16,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to(session[:return_to] || root_path)
       session[:return_to] = nil
     else
-      render :set_email
+      render 'users/set_email'
     end
   end
 end
