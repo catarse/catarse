@@ -155,6 +155,8 @@ class Project < ActiveRecord::Base
   end
 
   def progress
+    return 0 if goal == 0.0 && pledged == 0.0
+    return 100 if goal == 0.0 && pledged > 0.0
     ((pledged / goal * 100).abs).round.to_i
   end
 
