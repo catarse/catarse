@@ -152,8 +152,8 @@ describe Project do
 
   describe ".recent" do
     before do
-      @p = FactoryGirl.create(:project, :created_at => (Date.today - 14.days))
-      FactoryGirl.create(:project, :created_at => (Date.today - 15.days))
+      @p = FactoryGirl.create(:project, :created_at => (Time.now - 14.days))
+      FactoryGirl.create(:project, :created_at => (Time.now - 15.days))
     end
     subject{ Project.recent }
     it{ should == [@p] }
@@ -281,16 +281,10 @@ describe Project do
   end
 
   describe "#vimeo" do
-    def build_with_video url
-      FactoryGirl.build(:project, :video_url => url)
-    end
+    subject{ FactoryGirl.create(:project, video_url: "http://vimeo.com/17298435").vimeo }
 
-    subject{ build_with_video("http://vimeo.com/17298435") }
-
-    its(:vimeo) do
-      subject.id.should == "17298435"
-      subject.embed_url.should == "http://player.vimeo.com/video/17298435"
-    end
+    its(:id){ should == "17298435" }
+    its(:embed_url){ should == "http://player.vimeo.com/video/17298435" }
   end
 
 
