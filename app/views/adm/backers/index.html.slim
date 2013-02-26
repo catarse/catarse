@@ -81,12 +81,19 @@
                     = link_to user_path(backer.user) do
                       = image_tag backer.user.display_image, class: 'user_img'
                     .user_id= best_in_place [:adm, backer], :user_id, method: :put, type: :input
-                  td= backer.display_value
+                  td= best_in_place [:adm, backer], :value, method: :put, type: :input
                   td title=("#{backer.reward.display_minimum} - #{backer.reward.description}" if backer.reward)
                     - if backer.reward
                       = backer.reward.display_minimum
                     - else
-                      |-
+                      | -
+                    .btn-group
+                      = link_to 'javascript:void(0);', :"data-toggle" => 'dropdown', :class => 'btn btn-mini dropdown-toggle' do
+                        span.caret
+                      ul.dropdown-menu
+                        - backer.available_rewards.each do |reward|
+                          li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_adm_backer_path(backer, reward_id: reward.id), method: :put
+
                   td.key= backer.key
                   td.checkbox= best_in_place [:adm, backer], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
                   td= (backer.credits ? t('yes') : t('no'))

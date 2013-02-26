@@ -39,6 +39,11 @@ class Backer < ActiveRecord::Base
     created_at + 180.days
   end
 
+  def change_reward! reward
+    self.reward_id = reward
+    self.save
+  end
+
   def confirm!
     self.confirmed = true
     self.save
@@ -74,6 +79,10 @@ class Backer < ActiveRecord::Base
 
   def display_value
     number_to_currency value, :unit => "R$", :precision => 0, :delimiter => '.'
+  end
+
+  def available_rewards
+    Reward.where(project_id: self.project_id).where('minimum_value <= ?', self.value).order(:minimum_value)
   end
 
   def display_confirmed_at
