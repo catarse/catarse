@@ -15,18 +15,27 @@ module Catarse
     end
 
     config.active_record.schema_format = :sql
-    config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/** #{config.root}/app/presenters #{config.root}/app/presenters/** #{config.root}/app/business/ #{config.root}/app/business/**)
+
+    # Since Rails 3.1, all folders inside app/ will be loaded automatically
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/**)
+
+    # Default encoding for the server
     config.encoding = "utf-8"
+
     config.filter_parameters += [:password, :password_confirmation]
     config.time_zone = 'Brasilia'
     config.generators do |g|
-      g.template_engine :haml
       g.test_framework :rspec, :fixture => false, :views => false
     end
-    config.active_record.observers = [:backer_observer, :user_observer, :notification_observer, :update_observer, :project_observer, :payment_notification_observer]
+    config.active_record.observers = [
+      :backer_observer, :user_observer, :notification_observer, 
+      :update_observer, :project_observer, :payment_notification_observer
+    ]
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    # Don't initialize the app when compiling
     config.assets.initialize_on_precompile = false
 
     # Version of your assets, change this if you want to expire all your assets

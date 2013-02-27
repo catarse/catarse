@@ -23,4 +23,4 @@ cookbook 'postgresql', github: 'phlipper/chef-postgresql', ref: '0.5.0'
 
 
 # Terminal utilities
-cookbook 'oh_my_zsh', github: 'shingara/oh-my-zsh-chef'
+cookbook 'oh_my_zsh', github: 'chef-cookbooks/chef-oh-my-zsh', ref: '0.1.0'
