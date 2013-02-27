@@ -57,7 +57,7 @@
       .another_social
         h1=t('.with_another_social')
         h3=t('.with_another_social_subtitle')
-        = link_to image_tag('auth/google_128.png', :title => 'Google'), '/auth/google', :class => 'provider first'
+        = link_to image_tag('auth/google_128.png', :title => 'Google'), user_omniauth_authorize_path(provider: 'google_oauth2', locale: nil), :class => 'provider first'
         = link_to image_tag('auth/yahoo_128.png', :title => 'Yahoo'), '/auth/yahoo', :class => 'provider'
 
       .stripe_login

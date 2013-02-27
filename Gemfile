@@ -46,6 +46,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-linkedin'
 gem 'omniauth-yahoo'
+gem "omniauth-google-oauth2"
 gem 'omniauth-oauth2'
 gem 'omniauth-stripe-connect'
 gem 'oauth2'

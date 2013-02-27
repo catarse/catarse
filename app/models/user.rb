@@ -41,7 +41,9 @@ class User < ActiveRecord::Base
     :twitter,
     :facebook_link,
     :other_link,
-    :moip_login
+    :moip_login,
+    :provider,
+    :uid
 
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
@@ -139,6 +141,35 @@ class User < ActiveRecord::Base
         user.stripe_access_token = auth["credentials"]["token"]
       end
     end
+  end
+
+  def self.find_for_google_oauth(auth, signed_in_resource=nil)
+    user = User.find_for_oauth_uid(auth) || User.find_for_oauth_mail(auth)
+    User.
+      select('users.*').
+      joins('JOIN authorizations ON authorizations.user_id = users.id').
+      joins('JOIN oauth_providers ON oauth_providers.id = authorizations.oauth_provider_id').
+      where("authorizations.uid = ? AND oauth_providers.name = 'google_oauth2'", auth[:uid]).first
+    user ||= User.create(
+                         name: auth.info.name,
+                         provider: auth.provider,
+                         uid: auth.uid,
+                         email: auth.info.email,
+                         password: Devise.friendly_token[0,20]
+                         )
+  end
+
+  def self.find_for_oauth_uid(auth)
+    User.where(provider: auth.provider, uid: auth.uid).first
+  end
+
+  def self.find_for_oauth_mail(auth)
+    user = User.where(email: auth.info.email).first
+    if user
+      user.update_attributes(provider: auth.provider, uid: auth.uid)
+      user.save
+    end
+    user
   end
 
   def recommended_project
