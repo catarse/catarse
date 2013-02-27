@@ -10,11 +10,12 @@ SITE
       build-essential (>= 0.0.0)
 
 GIT
-  remote: https://github.com/chef-cookbooks/chef-firefox
-  ref: master
-  sha: 270c56e74a5329e763525866e72f8393c477a9e3
+  remote: https://github.com/chef-cookbooks/chef-oh-my-zsh
+  ref: 0.1.0
+  sha: 25329df6aab8913057e4e269cd62ae8f9f066503
   specs:
-    firefox (0.0.4)
+    oh_my_zsh (0.0.1)
+      git (>= 0.0.0)
 
 GIT
   remote: https://github.com/chef-cookbooks/chef-postgres-locale
@@ -69,12 +70,11 @@ GIT
     postgresql (0.5.0)
 
 GIT
-  remote: https://github.com/shingara/oh-my-zsh-chef
+  remote: https://github.com/substantial/cookbook-firefox
   ref: master
-  sha: 7da60eca90b9a0b2c2d42b9af02364ab04421043
+  sha: 09d74e7610baf72e57b538a9053e10344920e4ce
   specs:
-    oh_my_zsh (0.0.1)
-      git (>= 0.0.0)
+    firefox (0.0.4)
 
 DEPENDENCIES
   apt (>= 0)
