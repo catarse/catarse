@@ -62,11 +62,13 @@ Catarse::Application.routes.draw do
   resources :users do
     resources :backers, :only => [:index]
     resources :unsubscribes, :only => [:create]
+    collection do
+      get 'set_email'
+    end
     member do
       get 'projects'
       get 'credits'
       put 'unsubscribe_update'
-      get 'set_email'
       put 'update_email'
     end
   end
