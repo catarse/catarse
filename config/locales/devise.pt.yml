@@ -22,8 +22,8 @@ pt:
       unlock_instructions:
         subject: Instruções de desbloqueio
     omniauth_callbacks:
-      failure: Não foi possível autorizar de uma conta de %{kind} porque "%{reason}".
-      success: Autorizado com sucesso de uma conta de %{kind}.
+      failure: Não foi possível autorizar de %{user} de %{kind} porque "%{reason}".
+      success: Autorizado com sucesso de %{user} de %{kind}.
     passwords:
       no_token: Você não pode acessar esta página sem estar logado. Se você veio de um email de lembre de senha, por favor certifique-se de ter  digitado a URL corretamente.
       send_instructions: Dentro de minutos, você receberá um email com as instruções de reinicialização da sua senha.

@@ -41,7 +41,9 @@ class User < ActiveRecord::Base
     :twitter,
     :facebook_link,
     :other_link,
-    :moip_login
+    :moip_login,
+    :provider,
+    :uid
 
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
@@ -114,25 +116,51 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth)
-    u = create! do |user|
-      user.name = auth["info"]["name"]
-      user.email = (auth["info"]["email"] rescue nil)
-      user.email = (auth["extra"]["user_hash"]["email"] rescue nil) unless user.email
-      user.nickname = auth["info"]["nickname"]
-      user.bio = (auth["info"]["description"][0..139] rescue nil)
-      user.locale = I18n.locale.to_s
+    u = User.find_for_oauth_uid(auth) || User.find_for_oauth_mail(auth)
+    
+    if u = User.where(:email => auth["info"]["email"]).first
+      return u
+    else
+      u ||= create! do |user|
+        user.uid = auth["uid"]
+        user.provider = auth["provider"]
+        user.name = auth["info"]["name"]
+        user.email = (auth["info"]["email"] rescue nil)
+        user.email = (auth["extra"]["user_hash"]["email"] rescue nil) unless user.email
+        user.nickname = auth["info"]["nickname"]
+        user.bio = (auth["info"]["description"][0..139] rescue nil)
+        user.locale = (auth["extra"]["raw_info"]["locale"] rescue nil) || I18n.locale.to_s
+        user.password = Devise.friendly_token[0,20]
 
-      if auth["provider"] == "twitter"
-        user.image_url = "https://api.twitter.com/1/users/profile_image?screen_name=#{auth['info']['nickname']}&size=original"
-      end
+        if auth["provider"] == "google_oauth2"
+          user.image_url = (auth["extra"]["raw_info"]["picture"] rescue nil)
+        end
+        
+        if auth["provider"] == "twitter"
+          user.image_url = "https://api.twitter.com/1/users/profile_image?screen_name=#{auth['info']['nickname']}&size=original"
+        end
 
-      if auth["provider"] == "facebook"
-        user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
+        if auth["provider"] == "facebook"
+          user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
+        end
       end
     end
     provider = OauthProvider.where(name: auth['provider']).first
     u.authorizations.create! uid: auth['uid'], oauth_provider_id: provider.id if provider
     u
+  end
+
+  def self.find_for_oauth_uid(auth)
+    User.where(provider: auth.provider, uid: auth.uid).first
+  end
+
+  def self.find_for_oauth_mail(auth)
+    user = User.where(email: auth.info.email).first
+    if user
+      user.update_attributes(provider: auth.provider, uid: auth.uid)
+      user.save
+    end
+    user
   end
 
   def recommended_project

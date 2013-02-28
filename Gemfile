@@ -43,6 +43,8 @@ gem 'initjs'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook', '1.4.0'
+gem "omniauth-google-oauth2"
+gem 'omniauth-oauth2'
 gem 'devise'
 
 # See https://github.com/ryanb/cancan/tree/2.0 for help about this
