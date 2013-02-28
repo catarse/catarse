@@ -14,6 +14,19 @@ class UsersController < ApplicationController
     }
   end
 
+  def set_email
+  end
+
+  def update_email
+    update! do |success,failure|
+      success.html do
+        flash[:notice] = t('users.current_user_fields.updated')
+        return redirect_to user_path(@user, :anchor => 'settings')
+      end
+      failure.html{ return render :set_email }
+    end
+  end
+
   def update
     update! do
       flash[:notice] = t('users.current_user_fields.updated')
