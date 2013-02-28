@@ -34,13 +34,20 @@ describe UsersController do
 
   describe "PUT update_email" do
     let(:email){ 'new_email@bar.com' }
+    let(:return_to){ nil }
     before do
+      session[:return_to] = return_to
       put :update_email, id: user.id, locale: 'pt', user: {email: email}
     end
 
     context "when email is not valid" do
       let(:email){ 'new_email_bar.com' }
       it{ should render_template('set_email') }
+    end
+
+    context "when email is valid and we have a session[:return_to]" do
+      let(:return_to){ '/foo' }
+      it{ should redirect_to return_to }
     end
 
     context "when email is valid" do
