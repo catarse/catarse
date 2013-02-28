@@ -18,10 +18,38 @@ describe UsersController do
     before do
       put :update, id: user.id, locale: 'pt', user: { twitter: 'test' }
     end
-    it {
+    it("should update the user") do
       user.reload
       user.twitter.should ==  'test'
-    }
+    end
+    it{ should redirect_to user_path(user, :anchor => 'settings') }
+  end
+
+  describe "GET set_email" do
+    before do
+      get :set_email, id: user.id, locale: 'pt'
+    end
+    it{ should render_template('set_email') }
+  end
+
+  describe "PUT update_email" do
+    let(:email){ 'new_email@bar.com' }
+    before do
+      put :update_email, id: user.id, locale: 'pt', user: {email: email}
+    end
+
+    context "when email is not valid" do
+      let(:email){ 'new_email_bar.com' }
+      it{ should render_template('set_email') }
+    end
+
+    context "when email is valid" do
+      it("should update the user") do
+        user.reload
+        user.email.should ==  'new_email@bar.com'
+      end
+      it{ should redirect_to user_path(user, :anchor => 'settings') }
+    end
   end
 
   describe "GET show" do
