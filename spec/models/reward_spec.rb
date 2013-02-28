@@ -57,25 +57,58 @@ describe Reward do
     r.maximum_backers = 1
     r.should be_valid
   end
-  it "should be sold_out? if maximum_backers was reached" do
-    r = Factory(:reward, :maximum_backers => nil)
-    r.sold_out?.should be_false
-    r = Factory(:reward, :maximum_backers => 10)
-    9.times { Factory(:backer, :project_id => r.project_id, :reward_id => r.id) }
-    r.sold_out?.should be_false
-    Factory(:backer, :project_id => r.project_id, :reward_id => r.id)
-    r.sold_out?.should be_true
+
+  describe '#sold_out?' do
+    let(:reward) { Factory(:reward, maximum_backers: nil) }
+    subject { reward.sold_out? }
+
+    context 'when reward not have limits' do
+      it { should be_false }
+    end
+
+    context 'when reward have limit' do
+      let(:reward) { Factory(:reward, maximum_backers: 3) }
+
+      context 'and have confirmed backers and backers in time to confirm' do
+        before do
+           Factory(:backer, confirmed: true, reward: reward, project: reward.project)
+           Factory(:backer, confirmed: false, reward: reward, project: reward.project)
+        end
+
+        it { should be_false }
+        it { reward.remaining.should == 1 }
+      end
+
+      context 'and have confirmed backers and the in time to confirm already expired' do
+        before do
+           Factory(:backer, confirmed: true, reward: reward, project: reward.project)
+           Factory(:backer, confirmed: false, reward: reward, project: reward.project, created_at: 8.days.ago)
+        end
+
+        it { should be_false }
+        it { reward.remaining.should == 2 }
+      end
+
+      context 'and reached the maximum backers number with confirmed backers' do
+        before do
+           3.times { Factory(:backer, confirmed: true, reward: reward, project: reward.project) }
+        end
+
+        it { should be_true }
+        it { reward.remaining.should == 0 }
+      end
+
+      context 'and reached the maximum backers number with backers in time to confirm' do
+        before do
+           3.times { Factory(:backer, confirmed: false, reward: reward, project: reward.project) }
+        end
+
+        it { should be_true }
+        it { reward.remaining.should == 0 }
+      end
+    end
   end
-  it "should say the remaining spots" do
-    r = Factory(:reward, :maximum_backers => nil)
-    r.remaining.should be_nil
-    r = Factory(:reward, :maximum_backers => 10)
-    r.remaining.should == 10
-    5.times { Factory(:backer, :project_id => r.project_id, :reward_id => r.id) }
-    r.remaining.should == 5
-    5.times { Factory(:backer, :project_id => r.project_id, :reward_id => r.id) }
-    r.remaining.should == 0
-  end
+
   it "should have a HTML-safe name that is a HTML composition from minimum_value, description and sold_out" do
     I18n.locale = :pt
     r = Factory.build(:reward, :minimum_value => 0, :description => "Description", :maximum_backers => 0)
