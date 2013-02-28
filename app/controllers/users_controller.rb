@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def set_email
+    @user = current_user
   end
 
   def update_email

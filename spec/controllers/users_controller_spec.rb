@@ -27,7 +27,7 @@ describe UsersController do
 
   describe "GET set_email" do
     before do
-      get :set_email, id: user.id, locale: 'pt'
+      get :set_email, locale: 'pt'
     end
     it{ should render_template('set_email') }
   end
