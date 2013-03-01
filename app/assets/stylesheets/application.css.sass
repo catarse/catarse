@@ -1,3 +1,7 @@
+// Without protocol because we don't to mess with http(s) mixed content
+@import url('//fonts.googleapis.com/css?family=Lato:400,700,400italic')
+@import url('//fonts.googleapis.com/css?family=Arvo:400,700')
+
 @import compass/reset
 @import compass/utilities
 @import compass/css3
@@ -28,5 +32,10 @@ $images_path: "/assets/catarse/"
 @import resources/static/about
 @import resources/users/show
 @import resources/adm/adm
+
+
+// Channels stylesheets
+@import resources/channels/general
+@import resources/channels/profile
 
 @import ./jquery-ui
