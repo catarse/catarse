@@ -103,6 +103,7 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara',   '~> 2.0.2'
+  gem 'jasmine'
 end
 
 
