@@ -1,9 +1,10 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  load_and_authorize_resource except: [ :projects ]
+  load_and_authorize_resource new: [ :set_email ], except: [ :projects ]
   inherit_resources
-  actions :show, :update, :unsubscribe_update, :request_refund
+  actions :show, :update, :unsubscribe_update, :request_refund, :set_email, :update_email
   respond_to :json, :only => [:backs, :projects, :request_refund]
+
   def show
     show!{
       fb_admins_add(@user.facebook_id) if @user.facebook_id
@@ -12,6 +13,22 @@ class UsersController < ApplicationController
       @subscribed_to_updates = @user.updates_subscription
       @unsubscribes = @user.project_unsubscribes
     }
+  end
+
+  def set_email
+    @user = current_user
+  end
+
+  def update_email
+    update! do |success,failure|
+      success.html do
+        flash[:notice] = t('users.current_user_fields.updated')
+        redirect_to (session[:return_to] || user_path(@user, :anchor => 'settings'))
+        session[:return_to] = nil
+        return
+      end
+      failure.html{ return render :set_email }
+    end
   end
 
   def update
