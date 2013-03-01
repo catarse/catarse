@@ -1,0 +1,2 @@
+module Channels::BaseHelper
+end
