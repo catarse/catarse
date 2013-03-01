@@ -21,16 +21,6 @@ CATARSE.ReviewForm = Backbone.View.extend({
       }
     };
 
-    var cpf_ok = function(){
-      if($('#user_cpf').isValidCPF()){
-        $('#user_cpf').addClass("ok").removeClass("error")
-        return true
-      } else {
-        $('#user_cpf').addClass("error").removeClass("ok")
-        return false
-      }
-    };
-
     var email_ok = function(){
       var value = $('#user_email').val()
       var re = /^[a-z0-9\._-]+@([a-z0-9][a-z0-9-_]*[a-z0-9-_]\.)+([a-z-_]+\.)?([a-z-_]+)$/
@@ -178,15 +168,14 @@ CATARSE.ReviewForm = Backbone.View.extend({
   },
 
   onZipCodeKeyUp: function(){
-    zip_code_valid = false; 
-    this.everything_ok() 
+    zip_code_valid = false;
+    this.everything_ok()
   },
 
   initialize: function() {
     var zip_code_valid = null
     var _this = this;
 
-    $('#user_cpf').mask("999.999.999-99")
     $('#user_address_zip_code').mask("99999-999")
     $('#user_phone_number').mask("(99)9999-9999?9")
 
