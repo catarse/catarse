@@ -5,11 +5,12 @@ Vagrant::Config.run do |config|
 
 
   # The OS that will run our code
-  config.vm.box = "precise64"
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box = "precise32"
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
   # Customizing memory. The VM will need at least 512MB
   config.vm.customize ["modifyvm", :id, "--memory", 512] 
+  config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
   # In case the Rails app runs on port 3000, make it available on the host
   config.vm.forward_port 3000, 3000
@@ -118,6 +119,7 @@ Vagrant::Config.run do |config|
   # Run the Rails project right on vagrant up 
   config.vm.provision :shell, inline: %q{cd /vagrant && export DISPLAY=:99}
   config.vm.provision :shell, inline: %q{sudo /etc/init.d/xvfb start}
+  config.vm.provision :shell, inline: %q{sudo bash -c "echo 'UseDNS no' >> /etc/ssh/sshd_config"}
   config.vm.provision :shell, inline: %q{cp /vagrant/config/database.sample.yml /vagrant/config/database.yml}
   config.vm.provision :shell, inline: %q{cd /vagrant && bundle install}
   config.vm.provision :shell, inline: %q{cd /vagrant && rake db:create db:migrate db:test:prepare db:seed}
