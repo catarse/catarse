@@ -160,7 +160,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   },
 
   backers: function() {
-    this.selectItem("backers")
+    this.selectItem("backers");
     this.backersView = new this.BackersView({
       modelView: this.BackerView,
       collection: new CATARSE.Backers({url: '/' + CATARSE.locale + '/projects/' + this.project.id + '/backers'}),
@@ -183,7 +183,11 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     var link = this.$("#project_menu #" + item + "_link")
     this.$('#project_menu a').removeClass('selected')
     link.addClass('selected')
-    FB.XFBML.parse();
+    try {
+      FB.XFBML.parse();
+    } catch(error) {
+      console.log('FB error', error);
+    }
   },
 
   showFormattingTips: function(event){
