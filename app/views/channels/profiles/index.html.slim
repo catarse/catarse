@@ -1,0 +1,28 @@
+#page_content
+  .container
+      
+    .image
+      = image_tag "channels/avatar.png", size: '170x130'
+    .navigation
+      nav 
+        = link_to t('channels.navigation.header.subscribe_html'),         root_path
+        = link_to t('channels.navigation.header.how_it_works_html'),      root_path
+        = link_to t('channels.navigation.header.edit_the_channel_html'),  root_path
+
+    
+    .call_to_action[data-background="http://www.hdwallpapers.in/walls/design_yourself-wide.jpg"]
+      
+      .head
+        h2= t 'channels.call_to_action.welcome'
+        h1 Instituto Asas
+        p.description 
+          | Acreditamos nos jovens que tem energia criativa,
+          | mobilizadora e realizadora. Queremos dar asas para eles
+          | promoverem as transformações sociais e ambientais que vão fazer 
+          | do mundo um lugar melhor
+        p
+          = link_to t('channels.send_your_project'), root_path, class: :btn
+      .video
+        iframe src="http://player.vimeo.com/video/58924942?title=0&amp;portrait=0&amp;byline=0"
+
+

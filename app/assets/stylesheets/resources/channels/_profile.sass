@@ -1,0 +1,61 @@
+// The stylesheet for the channels/profile.html page
+body[data-namespace="channels"][data-controller="profiles"][data-action="index"]
+  h1
+    font-weight: 700
+    font-size: 2em
+    font-style: italic
+    margin: .4em 0
+  h2
+    margin: .2em 0
+  .image
+    +alpha
+    +grid(6)
+    margin-top: -2.2em
+    margin-bottom: 1em
+    img
+      border: 1px solid $border 
+      margin-left: 1em
+  .navigation
+    +grid(10)
+    +omega
+    nav a
+      padding: 2em
+      display: inline-block
+      margin-left: 2em
+      font-size: .8em
+      text-decoration: none
+      +transition(.2s)
+      &:hover
+        opacity: .8
+        
+    nav a strong
+      font-size: 1.55em
+      display: block
+  .call_to_action
+    +transition(opacity 2s)
+    opacity: 0
+    margin: 2em 0
+    width: 100%
+    overflow: hidden
+    height: 350px
+    color: white
+    .head
+      +grid(6)
+      +alpha
+      margin-left: 1.5em
+      padding: .8em
+      text-shadow: 0 1px 0 #333
+      +border-bottom-right-radius(100px 50px)
+    .description
+      padding-bottom: 1em
+    .video
+      iframe
+        +omega
+        +grid-prefix(1)
+        +grid(8)
+        height: 300px !important
+        margin-top: 1.2em
+
+
+        
+
