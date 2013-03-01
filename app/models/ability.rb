@@ -43,7 +43,11 @@ class Ability
     end
 
     # NOTE: User authorizations
-    can [:update, :request_refund, :credits, :manage], :users  do |user|
+    can :set_email, :users do |user|
+      current_user.persisted?
+    end
+
+    can [:update, :request_refund, :credits, :manage, :update_email], :users  do |user|
       current_user == user
     end
 

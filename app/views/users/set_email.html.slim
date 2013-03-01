@@ -7,11 +7,10 @@
       .title
         h1=t('.title')
       .bootstrap-form
-        = semantic_form_for @user, :html => {:method => :put}  do |f|
-          p.input
-            = f.label :email
-            = f.text_field :email
-          p.action
+        = semantic_form_for @user, url: update_email_user_path(@user), html: { method: :put }  do |f|
+          = f.inputs do
+            = f.input :email, as: :string
+          = f.actions do
             .bootstrap-twitter
               = f.submit t('.submit'), class: 'btn', id: 'user_submit'
     .clearfix
