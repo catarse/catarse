@@ -43,6 +43,9 @@ class Project < ActiveRecord::Base
     :using => {tsearch: {:dictionary => "portuguese"}},
     ignoring: :accents
 
+  scope :between_created_at, ->(start_at, ends_at) {
+    where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+  }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_permalink, ->(p) { where(permalink: p) }
   scope :by_category_id, ->(id) { where(category_id: id) }

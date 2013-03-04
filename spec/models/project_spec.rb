@@ -21,6 +21,20 @@ describe Project do
     it{ should ensure_length_of(:headline).is_at_most(140) }
   end
 
+  describe '.between_created_at' do
+    let(:start_at) { '17/01/2013' }
+    let(:ends_at) { '20/01/2013' }
+    subject { Project.between_created_at(start_at, ends_at) }
+
+    before do
+      @project_01 = FactoryGirl.create(:project, created_at: '19/01/2013') 
+      @project_02 = FactoryGirl.create(:project, created_at: '23/01/2013')
+      @project_03 = FactoryGirl.create(:project, created_at: '26/01/2013')
+    end
+
+    it { should == [@project_01] }
+  end
+
   describe '.finish_projects!' do
     before do
       @project_01 = FactoryGirl.create(:project, online_days: -1, goal: 300, state: 'online')

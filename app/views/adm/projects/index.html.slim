@@ -15,6 +15,13 @@
               = text_field_tag :by_id, params[:by_id], class: 'input-small'
 
             .input
+              = label_tag :between_created_at_start_at, t('.between_created_at')
+              = text_field_tag 'between_created_at[start_at]', (params[:between_created_at][:start_at] if params[:between_created_at].present?), class: 'input-small'
+              | &nbsp;
+              | &nbsp;
+              = text_field_tag 'between_created_at[ends_at]', (params[:between_created_at][:ends_at] if params[:between_created_at].present?), class: 'input-small'
+
+            .input
               = label_tag :pg_search, t('.project')
               = text_field_tag :pg_search, params[:pg_search]
             .input
