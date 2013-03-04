@@ -47,6 +47,12 @@ var CATARSE = {
       }
     },
 
+    projects:{
+      index: function(){
+        window.view = new CATARSE.Adm.Projects.Index({el: $('body')});
+      }
+    },
+
     backers:{
       index: function(){
         window.view = new CATARSE.Adm.Backers.Index({el: $("body") });
