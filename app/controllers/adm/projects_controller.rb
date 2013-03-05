@@ -1,8 +1,8 @@
 class Adm::ProjectsController < Adm::BaseController
   menu I18n.t("adm.projects.index.menu") => Rails.application.routes.url_helpers.adm_projects_path
 
-  has_scope :by_id, :pg_search, :user_name_contains, :order_table
-  has_scope :between_created_at, using: [ :start_at, :ends_at ]
+  has_scope :by_id, :pg_search, :user_name_contains, :order_table, :by_state
+  has_scope :between_created_at, using: [ :start_at, :ends_at ], allow_blank: true
   has_scope :order_table do |controller, scope, value|
     if value.present?
       scope.order_table(value)
@@ -24,6 +24,6 @@ class Adm::ProjectsController < Adm::BaseController
   end
 
   def collection
-    @search = @projects = end_of_association_chain.page(params[:page])
+    @projects = end_of_association_chain.page(params[:page])
   end
 end
