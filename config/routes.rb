@@ -110,7 +110,7 @@ Catarse::Application.routes.draw do
 
   # Channels
   namespace :channels do
-    resources :profiles
+    match '/:permalink', to: 'profiles#show', as: :profile
   end
 
 

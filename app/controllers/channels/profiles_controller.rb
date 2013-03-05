@@ -1,11 +1,14 @@
 class Channels::ProfilesController < Channels::BaseController
   inherit_resources
+  actions :show
 
-  actions :index
+
+  def show
+    @profile = Channel::Profile.find_by_permalink(params[:permalink])
+    show!
+  end
 
 
-  # The channel profile lists all projects from the channel
-  def index; end
 
 
 end
