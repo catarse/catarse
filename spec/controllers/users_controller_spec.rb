@@ -48,6 +48,7 @@ describe UsersController do
     context "when email is valid and we have a session[:return_to]" do
       let(:return_to){ '/foo' }
       it{ should redirect_to return_to }
+      it{ session[:return_to].should be_nil }
     end
 
     context "when email is valid" do
