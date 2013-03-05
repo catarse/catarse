@@ -506,7 +506,6 @@ DEPENDENCIES
   schema_plus
   shoulda
   sidekiq (~> 2.7.5)
-  slim
   slim-rails
   spectator-validates_email
   state_machine

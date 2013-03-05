@@ -34,7 +34,6 @@ gem 'moip', '2.1.2'
 gem 'draper'
 
 # Frontend stuff
-gem 'slim'
 gem 'slim-rails'
 gem 'jquery-rails'
 gem 'initjs'
