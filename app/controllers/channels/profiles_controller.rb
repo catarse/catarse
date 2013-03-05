@@ -4,7 +4,7 @@ class Channels::ProfilesController < Channels::BaseController
 
 
   def show
-    @profile = Channel::Profile.find_by_permalink(params[:permalink])
+    @profile = Channel::Profile.find_by_permalink!(params[:permalink])
     show!
   end
 
