@@ -1,0 +1,140 @@
+= content_for :title, @profile.name
+
+#page_content
+  .container
+      
+    .channel_image
+      = image_tag "http://placehold.it/160x130", size: '160x130'
+    .navigation
+      nav 
+        = link_to t('channels.navigation.header.subscribe_html'),         root_path
+        = link_to t('channels.navigation.header.how_it_works_html'),      root_path
+        = link_to t('channels.navigation.header.edit_the_channel_html'),  root_path
+
+    
+    .call_to_action[data-background="http://placehold.it/1900x1080"]
+      
+      .head
+        h2= t 'channels.call_to_action.welcome'
+        h1.channel_name = @profile.name
+        p.description   = @profile.description 
+        p.send_project  = link_to t('channels.send_your_project'), root_path, class: :btn
+      .video
+        iframe src="http://player.vimeo.com/video/58924942?title=0&amp;portrait=0&amp;byline=0"
+
+    .projects
+      ol
+        li.project
+          .image_and_stats
+            .image= image_tag "http://placehold.it/400x160"
+            .stats
+              .counter
+                .current[style='width: 80%']
+              .left
+                span
+                  strong 25 
+                  | dias restantes
+              .backers
+                span
+                  strong 40
+                  | apoios realizados
+
+
+          .detail
+            h3.title Aqui vai o nome do projeto em até 2 linhas
+            span.author Projeto por author
+            p.description
+              | Aqui vai uma breve descrição do projeto, em um tweet, contendo aproximadamente 
+              | cerca de 140 caracteres.
+            = link_to "", class: [:make_it_happen] do
+              strong Fazer acontecer!
+              | Quero apoiar este projeto
+
+
+        li.project
+          .image_and_stats
+            .image= image_tag "http://placehold.it/400x160"
+            .stats
+              .counter
+                .current[style='width: 80%']
+              .left
+                span
+                  strong 25 
+                  | dias restantes
+              .backers
+                span
+                  strong 40
+                  | apoios realizados
+
+
+          .detail
+            h3.title Aqui vai o nome do projeto em até 2 linhas
+            span.author Projeto por author
+            p.description
+              | Aqui vai uma breve descrição do projeto, em um tweet, contendo aproximadamente 
+              | cerca de 140 caracteres.
+            = link_to "", class: [:make_it_happen] do
+              strong Fazer acontecer!
+              | Quero apoiar este projeto
+        li.project
+          .image_and_stats
+            .image= image_tag "http://placehold.it/400x160"
+            .stats
+              .counter
+                .current[style='width: 80%']
+              .left
+                span
+                  strong 25 
+                  | dias restantes
+              .backers
+                span
+                  strong 40
+                  | apoios realizados
+
+
+          .detail
+            h3.title Aqui vai o nome do projeto em até 2 linhas
+            span.author Projeto por author
+            p.description
+              | Aqui vai uma breve descrição do projeto, em um tweet, contendo aproximadamente 
+              | cerca de 140 caracteres.
+            = link_to "", class: [:make_it_happen] do
+              strong Fazer acontecer!
+              | Quero apoiar este projeto
+
+    .channel_sidebar
+      .about_the_channel.block
+        h4 Sobre o Canal
+        span Mais informações aqui
+
+        dl
+          dt Instituto Asas
+          dd Aqui vai uma breve descrição do canal, em um tweet
+      .subscribers.block
+        h4 Inscritos
+        span Veja quem dá vida ao canal
+
+        ul
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+          li= image_tag "http://placehold.it/42x42", title: "Nome"
+      .channel_stats.block
+        h4 Números Catárticos
+        .successful:strong 40 projetos bem sucedidos
+        .subscriptions:strong 30 inscritos no canal
+        .backed:strong 40 arrecadados
+
+    .clearfix
