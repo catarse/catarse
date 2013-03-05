@@ -3,6 +3,13 @@ class Adm::ProjectsController < Adm::BaseController
 
   has_scope :by_id, :pg_search, :user_name_contains, :order_table
   has_scope :between_created_at, using: [ :start_at, :ends_at ]
+  has_scope :order_table do |controller, scope, value|
+    if value.present?
+      scope.order_table(value)
+    else
+      scope.order('created_at DESC')
+    end
+  end
 
   before_filter do
     @total_projects = Project.count
@@ -17,7 +24,6 @@ class Adm::ProjectsController < Adm::BaseController
   end
 
   def collection
-    @search = apply_scopes(Project)
-    @projects = @search.order('created_at DESC').page(params[:page]) unless current_scopes.include?(:order_table)
+    @search = @projects = end_of_association_chain.page(params[:page])
   end
 end
