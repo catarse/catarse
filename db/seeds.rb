@@ -61,3 +61,9 @@ end
 }.each do |name, value|
   Configuration.find_or_create_by_name_and_value name, value
 end
+
+
+Channel::Profile.create!(
+  name: "Channel name", 
+  permalink: "sample-permalink", 
+  description: "Lorem Ipsum")

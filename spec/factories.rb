@@ -112,5 +112,11 @@ FactoryGirl.define do
     f.comment "This is a comment"
     f.comment_html "<p>This is a comment</p>"
   end
+
+  factory :channel_profile, class: Channel::Profile do
+    name "Test"
+    description "Lorem Ipsum"
+    permalink "test-page"
+  end
 end
 
