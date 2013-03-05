@@ -11,7 +11,20 @@
 #   - dist/**/*.js
 #
 src_files:
-  - assets/application.js
+  - application.js
+  - app/assets/javascripts/lib/jquery-1.7.1.min.js
+  - assets/jquery_ujs.js
+  - app/assets/javascripts/lib/underscore-min.js
+  - app/assets/javascripts/lib/backbone-min.js
+  - assets/best_in_place.js
+  - app/assets/javascripts/lib/*.js
+  - app/assets/javascripts/**/**/**/*.js
+  - app/assets/javascripts/**/**/*.js
+  - app/assets/javascripts/**/*.js
+
+asset_paths:
+  - app/assets/javascripts
+  - vendor/assets/javascripts
 
 # stylesheets
 #
@@ -25,7 +38,6 @@ src_files:
 #   - stylesheets/*.css
 #
 stylesheets:
-  - stylesheets/**/*.css
 
 # helpers
 #
@@ -38,7 +50,7 @@ stylesheets:
 #   - helpers/**/*.js
 #
 helpers:
-  - helpers/**/*.js
+  - 'helpers/**/*.js'
 
 # spec_files
 #
@@ -48,7 +60,7 @@ helpers:
 # EXAMPLE:
 #
 # spec_files:
-#   - **/*[sS]pec.js
+#   - '**/*[sS]pec.js'
 #
 spec_files:
   - '**/*[sS]pec.js'
