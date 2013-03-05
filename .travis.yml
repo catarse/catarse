@@ -10,6 +10,7 @@ before_script:
 
 env:
   - DISPLAY=:99.0
+  - JASMINE_BROWSER=firefox
 
 script:
   - "bundle exec rspec spec"
