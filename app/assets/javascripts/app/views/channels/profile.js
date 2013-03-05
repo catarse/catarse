@@ -1,13 +1,15 @@
 CATARSE.channels = {
  
   profiles: {
-    index: Backbone.View.extend({
+    show: Backbone.View.extend({
+  
 
+      el: 'body',
 
       initialize: function(){
 
 
-        this.banner = $('.call_to_action'),
+        this.banner = this.$('.call_to_action'),
         this.setupBackground();
       },
 
