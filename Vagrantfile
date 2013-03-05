@@ -18,6 +18,11 @@ Vagrant::Config.run do |config|
   #config.vm.forward_port 80, 8080
 
   config.vm.provision :chef_solo do |chef|
+    # NOTE:
+    # This path should be created. Why? Because we want to enforce cookbooks repositories
+    # Just `mkdir cookbooks` inside the Catarse repository
+    # Install vagrant gem install librarian-chef 
+    # Only this and cookbooks will be automatically installed
     chef.cookbooks_path = "cookbooks"
 
     chef.add_recipe "apt"
