@@ -43,9 +43,12 @@ class Project < ActiveRecord::Base
     :using => {tsearch: {:dictionary => "portuguese"}},
     ignoring: :accents
 
-  scope :between_created_at, ->(start_at, ends_at) {
+  def self.between_created_at(start_at, ends_at)
+    return scoped unless start_at.present? && ends_at.present?
     where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
-  }
+  end
+
+  scope :by_state, ->(state) { where(state: state) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_permalink, ->(p) { where(permalink: p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
@@ -107,6 +110,10 @@ class Project < ActiveRecord::Base
       Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
       resource.finish
     end
+  end
+
+  def self.state_names
+    self.state_machine.states.map &:name
   end
 
   def subscribed_users

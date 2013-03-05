@@ -2,6 +2,7 @@ en:
   adm:
     projects:
       index:
+        by_state: 'By state'
         between_created_at: 'Created at between'
         submit: 'Filter'
         send_to_draft: 'Send to DRAFT!'
