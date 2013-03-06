@@ -509,7 +509,7 @@ en:
     send_mail:
       success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
     show:
-      rejected: "This project was not selected to participate on Catarse. Maybe next time! :)"
+      rejected: "This project does not fit our <a href='https://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank'>selection criteria.</a>"
       waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
       waiting_owner: "To edit the project info, click on 'Edit project' tab. The rewards you can edit on reward column."
       about_title: "About this project"
