@@ -21,6 +21,54 @@ describe Project do
     it{ should ensure_length_of(:headline).is_at_most(140) }
   end
 
+  describe '.state_names' do
+    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed] }
+
+    subject { Project.state_names }
+
+    it { should == states }
+  end
+
+  describe '.by_state' do
+    before do
+      @project_01 = FactoryGirl.create(:project, state: 'online')
+      @project_02 = FactoryGirl.create(:project, state: 'failed')
+      @project_03 = FactoryGirl.create(:project, state: 'successful')
+    end
+
+    context 'get all projects that is online' do
+      subject { Project.by_state('online') }
+
+      it { should == [@project_01] }
+    end
+
+    context 'get all projects that is failed' do
+      subject { Project.by_state('failed') }
+
+      it { should == [@project_02] }
+    end
+
+    context 'get all projects that is successful' do
+      subject { Project.by_state('successful') }
+
+      it { should == [@project_03] }
+    end
+  end
+
+  describe '.between_created_at' do
+    let(:start_at) { '17/01/2013' }
+    let(:ends_at) { '20/01/2013' }
+    subject { Project.between_created_at(start_at, ends_at) }
+
+    before do
+      @project_01 = FactoryGirl.create(:project, created_at: '19/01/2013') 
+      @project_02 = FactoryGirl.create(:project, created_at: '23/01/2013')
+      @project_03 = FactoryGirl.create(:project, created_at: '26/01/2013')
+    end
+
+    it { should == [@project_01] }
+  end
+
   describe '.finish_projects!' do
     before do
       @project_01 = FactoryGirl.create(:project, online_days: -1, goal: 300, state: 'online')

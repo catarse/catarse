@@ -20,6 +20,8 @@ pt:
         submit: 'filtrar'
     projects:
       index:
+        by_state: 'Por estado'
+        between_created_at: 'Criados entre'
         id: ID
         name: 'Titulo'
         send_to_draft: 'Mandar para DRAFT!'

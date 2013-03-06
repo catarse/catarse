@@ -18,7 +18,12 @@ class Backer < ActiveRecord::Base
   scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(:confirmed => true)
   scope :not_confirmed, where(:confirmed => false) # used in payment engines
-  scope :in_time_to_confirm, ->() { where(%Q{date(current_timestamp) <= date(created_at + interval '5 days')}) }
+  scope :in_time_to_confirm, ->() { 
+    where(%Q{
+      confirmed is false and date(current_timestamp) <= date(created_at + interval '5 days')
+      and payment_token is not null
+    }) 
+  }
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
