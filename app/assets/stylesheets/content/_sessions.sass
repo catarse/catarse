@@ -1,11 +1,14 @@
+[data-controller="users"][data-action="set_email"],
+[data-controller="users"][data-action="update_email"],
 [data-controller="omniauth_callbacks"],
 [data-controller="passwords"][data-action="new"],
 [data-controller="passwords"][data-action="edit"]
+  .bootstrap-form
+    overflow: hidden
   #page_content
     .container
       .devise_content
         +grid(16)
-        padding-top: 15px
         .links
           padding: 15px 0 20px
           a
@@ -17,13 +20,15 @@
               color: $pink
 
         form
+          ul
+            list-style: none
           label
             font-family: Lato
             font-size: 13px
         .title
           +grid(16)
           +alpha
-          padding-bottom: 40px
+          padding-bottom: 20px
           h1
             color: $ultra_gryn
             font-family: "Lato"

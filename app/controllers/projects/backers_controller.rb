@@ -1,7 +1,7 @@
 class Projects::BackersController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :update_info, :review, :create
-  skip_before_filter :force_http, only: [:review, :update_info]
+  skip_before_filter :force_http, only: [:create, :update_info]
   skip_before_filter :verify_authenticity_token, :only => [:moip]
   load_and_authorize_resource
   belongs_to :project

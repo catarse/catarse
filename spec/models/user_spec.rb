@@ -230,9 +230,10 @@ describe User do
   describe "#recommended_project" do
     subject{user.recommended_project}
     before do
-      user2, p1, @p2 = FactoryGirl.create(:user),FactoryGirl.create(:project), FactoryGirl.create(:project)
+      user2, p1, @p2, @p3 = FactoryGirl.create(:user),FactoryGirl.create(:project), FactoryGirl.create(:project, state: :online), FactoryGirl.create(:project, state: :draft)
       FactoryGirl.create(:backer, :user => user2, :project => p1)
       FactoryGirl.create(:backer, :user => user2, :project => @p2)
+      FactoryGirl.create(:backer, :user => user2, :project => @p3)
       FactoryGirl.create(:backer, :user => user, :project => p1)
     end
     it{ should == @p2}
