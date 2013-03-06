@@ -157,7 +157,7 @@ en:
     index:
       back_date: "Back date"
       current_credits_html: "Your current balance is <span id=\"current_credits\">%{credits}</span> in credits."
-      important_html: "You have <strong>up to 180 days after the payment date</strong> to ask for a refund. If you ask for a refund, the value of your payment will be deducted from your credits."
+      important_html: "You have <strong>up to 60 days after the payment date</strong> to ask for a refund. If you ask for a refund, the value of your payment will be deducted from your credits."
       project: Project
       refund_expration_date: "Refund deadline"
       refunded: Refunded
