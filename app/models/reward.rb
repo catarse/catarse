@@ -15,12 +15,12 @@ class Reward < ActiveRecord::Base
   scope :sort_asc, order('id ASC')
 
   def sold_out?
-    maximum_backers and backers.confirmed.count >= maximum_backers
+    maximum_backers and (backers.confirmed.count + backers.in_time_to_confirm.count) >= maximum_backers
   end
 
   def remaining
     return nil unless maximum_backers
-    maximum_backers - backers.confirmed.count
+    maximum_backers - (backers.confirmed.count + backers.in_time_to_confirm.count)
   end
 
   def display_remaining
