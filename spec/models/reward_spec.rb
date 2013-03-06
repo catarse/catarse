@@ -65,7 +65,7 @@ describe Reward do
   end
 
   describe '#sold_out?' do
-    let(:reward) { Factory(:reward, maximum_backers: nil) }
+    let(:reward) { FactoryGirl.create(:reward, maximum_backers: nil) }
     subject { reward.sold_out? }
 
     context 'when reward not have limits' do
@@ -73,12 +73,12 @@ describe Reward do
     end
 
     context 'when reward have limit' do
-      let(:reward) { Factory(:reward, maximum_backers: 3) }
+      let(:reward) { FactoryGirl.create(:reward, maximum_backers: 3) }
 
       context 'and have confirmed backers and backers in time to confirm' do
         before do
-           Factory(:backer, confirmed: true, reward: reward, project: reward.project)
-           Factory(:backer, confirmed: false, reward: reward, project: reward.project)
+           FactoryGirl.create(:backer, confirmed: true, reward: reward, project: reward.project)
+           FactoryGirl.create(:backer, confirmed: false, payment_token: 'ABC', reward: reward, project: reward.project)
         end
 
         it { should be_false }
@@ -87,8 +87,8 @@ describe Reward do
 
       context 'and have confirmed backers and the in time to confirm already expired' do
         before do
-           Factory(:backer, confirmed: true, reward: reward, project: reward.project)
-           Factory(:backer, confirmed: false, reward: reward, project: reward.project, created_at: 8.days.ago)
+           FactoryGirl.create(:backer, confirmed: true, reward: reward, project: reward.project)
+           FactoryGirl.create(:backer, confirmed: false, payment_token: 'ABC', reward: reward, project: reward.project, created_at: 8.days.ago)
         end
 
         it { should be_false }
@@ -97,7 +97,7 @@ describe Reward do
 
       context 'and reached the maximum backers number with confirmed backers' do
         before do
-           3.times { Factory(:backer, confirmed: true, reward: reward, project: reward.project) }
+           3.times { FactoryGirl.create(:backer, confirmed: true, reward: reward, project: reward.project) }
         end
 
         it { should be_true }
@@ -106,7 +106,7 @@ describe Reward do
 
       context 'and reached the maximum backers number with backers in time to confirm' do
         before do
-           3.times { Factory(:backer, confirmed: false, reward: reward, project: reward.project) }
+           3.times { FactoryGirl.create(:backer, confirmed: false, payment_token: 'ABC', reward: reward, project: reward.project) }
         end
 
         it { should be_true }
