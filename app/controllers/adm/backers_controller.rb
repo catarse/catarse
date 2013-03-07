@@ -1,6 +1,13 @@
 class Adm::BackersController < Adm::BaseController
   menu I18n.t("adm.backers.index.menu") => Rails.application.routes.url_helpers.adm_backers_path
   has_scope :by_user_id, :by_key, :user_name_contains, :project_name_contains, :confirmed, :credits, :requested_refund, :refunded
+  has_scope :pending_to_refund do |controller, scope, value|
+    if value.present?
+      scope.pending_to_refund 
+    else
+      scope
+    end
+  end
   before_filter :set_title
 
   def confirm
@@ -27,6 +34,6 @@ class Adm::BackersController < Adm::BaseController
   end
 
   def collection
-    @backers = apply_scopes(Backer).order("backers.created_at DESC").page(params[:page])
+    @backers = end_of_association_chain.order("backers.created_at DESC").page(params[:page])
   end
 end
