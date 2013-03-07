@@ -6,7 +6,6 @@ ruby '1.9.3'
 gem 'rails',    '3.2.12'
 gem 'sidekiq',  '~> 2.7.5'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
-gem 'therubyracer'
 
 # Turns every field on a editable one
 gem 'best_in_place'
