@@ -92,6 +92,8 @@ gem 'thin'
 group :development do
   gem 'mailcatcher'
   gem 'foreman'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test, :development do
@@ -128,3 +130,5 @@ gem 'rails_autolink', '~> 1.0.7'
 
 # TODO: Take a look on dependencies
 gem "RedCloth"
+
+gem 'spork'
