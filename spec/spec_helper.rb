@@ -25,6 +25,8 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    PaperTrail.controller_info = {}
+    PaperTrail.whodunnit = nil
     DatabaseCleaner.start
     ActionMailer::Base.deliveries.clear
     Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')

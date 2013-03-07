@@ -76,6 +76,36 @@ describe Backer do
     end
   end
 
+  describe '.pending_to_refund' do
+    subject { Backer.pending_to_refund }
+
+    context 'when backer is confirmed and as requested refund' do
+      before do
+        FactoryGirl.create(:backer, confirmed: true, requested_refund: true, refunded: true)
+        FactoryGirl.create(:backer, confirmed: true, requested_refund: true, refunded: false)
+      end
+
+      it { should have(1).item }
+    end
+
+    context 'when backer is confirmed and already have refunded' do
+      before do
+        FactoryGirl.create(:backer, confirmed: true, requested_refund: true, refunded: true)
+        FactoryGirl.create(:backer, confirmed: true, requested_refund: true, refunded: false)
+      end
+
+      it { should have(1).item }
+    end
+
+    context 'when backer is not confirmed' do
+      before do
+        FactoryGirl.create(:backer, confirmed: false, requested_refund: true, refunded: false)
+      end
+
+      it { should have(0).item }
+    end
+  end
+
   describe '.in_time_to_confirm' do
     subject { Backer.in_time_to_confirm}
 

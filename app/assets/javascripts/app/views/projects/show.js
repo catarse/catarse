@@ -44,7 +44,15 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     "click #rewards .clickable": "backWithReward",
     "click #rewards .clickable_owner span.avaliable": "backWithReward",
     "click .add_new_reward": "showUpNewRewardForm",
-    "click a.edit_reward": "showUpRewardEditForm"
+    "click a.edit_reward": "showUpRewardEditForm",
+    "click .updated_reward span":"showUpDescriptionVersioning"
+  },
+
+  showUpDescriptionVersioning: function(e) {
+    var target = e.currentTarget;
+    var name = $(target).prop('id');
+
+    $('.'+name).fadeToggle();
   },
 
   bestInPlaceEvents: function() {

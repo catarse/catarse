@@ -397,6 +397,20 @@
           .on_the_spot_editing
             width: 100%
             margin-left: 0px
+          .description_version
+            display: none
+            +box-shadow(rgba(black, 0.3) 2px 2px 4px)
+            +border-radius(4px)
+            width: 230px
+            min-height: 60px
+            padding: 30px
+            background: #fff8e5
+            position: absolute
+            margin: -140px 0 0 -340px
+            p
+              font-family: "Lato"
+              font-size: 13px
+              color: #444444
           .maximum_backers
             color: #4C525D
             background: url($images_path+"back_statistics.gif") left top repeat-x
@@ -408,6 +422,8 @@
             font-size: 11px
             text-indent: 30px
             text-transform: uppercase
+            &.in_time_to_confirm
+              margin-top: 10px
             .limited, .sold_out
               font-size: 13px
               margin-top: 12px
@@ -418,8 +434,19 @@
             .sold_out
               color: #e6303c
             .remaining
+              text-indent: 0
+              display: inline-block
+              margin-right: 10px
               font-size: 11px
               text-shadow: 1px 1px white
+            .pending
+              padding-top: 20px
+              color: $green
+            .updated_reward
+              padding-top: 20px
+              color: $pink
+              span
+                cursor: pointer
       .info
         #pledge
           background: #F3F3F3

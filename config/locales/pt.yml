@@ -1,4 +1,6 @@
 pt:
+  current_update: 'Alteração atual feita em '
+  backs_to_confirm: "%{count} apoios em prazo de confirmação."
   no: "Não"
   yes: "Sim"
   or: "ou"
