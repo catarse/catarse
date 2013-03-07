@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe OmniauthCallbacksController do
   before do
+    facebook_provider
+    OmniauthCallbacksController.add_providers
     @request.env["devise.mapping"] = Devise.mappings[:user]
   end
 
@@ -51,6 +53,12 @@ describe OmniauthCallbacksController do
   }
 
   subject{ response }
+
+  describe ".add_providers" do
+    subject{ controller }
+    it{ should respond_to(:facebook) }
+  end
+
   describe "GET facebook" do
 
     before do
