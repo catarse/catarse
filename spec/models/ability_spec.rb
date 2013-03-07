@@ -38,7 +38,7 @@ describe Ability do
 
           it { should_not be_able_to(:update, reward, :minimum_value) }
           it { should_not be_able_to(:destroy, reward) }
-          it { should_not be_able_to(:update, reward, :description) }
+          it { should be_able_to(:update, reward, :description) }
           it { should be_able_to(:update, reward, :maximum_backers) }
         end
 
@@ -47,7 +47,7 @@ describe Ability do
 
           it { should_not be_able_to(:update, reward, :minimum_value) }
           it { should_not be_able_to(:destroy, reward) }
-          it { should_not be_able_to(:update, reward, :description) }
+          it { should be_able_to(:update, reward, :description) }
           it { should be_able_to(:update, reward, :maximum_backers) }
         end
 

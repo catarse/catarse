@@ -7,12 +7,17 @@ class Reward < ActiveRecord::Base
 
   include ERB::Util
   schema_associations
+  has_paper_trail
 
   validates_presence_of :minimum_value, :description
   validates_numericality_of :minimum_value, :greater_than_or_equal_to => 1.00
   validates_numericality_of :maximum_backers, :only_integer => true, :greater_than => 0, :allow_nil => true
   scope :remaining, where("maximum_backers IS NULL OR (maximum_backers IS NOT NULL AND (SELECT COUNT(*) FROM backers WHERE confirmed AND reward_id = rewards.id) < maximum_backers)")
   scope :sort_asc, order('id ASC')
+
+  def has_modification?
+    versions.count > 1
+  end
 
   def sold_out?
     maximum_backers and (backers.confirmed.count + backers.in_time_to_confirm.count) >= maximum_backers
@@ -39,6 +44,14 @@ class Reward < ActiveRecord::Base
   def medium_description
     truncate description, :length => 65
   end
+
+  def last_description
+    if versions.present?
+      reward = versions.last.reify(has_one: true)
+      auto_link(simple_format(reward.description), :html => {:target => :_blank})
+    end
+  end
+
   def display_description
     auto_link(simple_format(description), :html => {:target => :_blank})
   end

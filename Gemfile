@@ -13,6 +13,9 @@ gem 'best_in_place'
 # State machine for attributes on models
 gem 'state_machine', require: 'state_machine/core'
 
+# paranoid stuff
+gem 'paper_trail', '~> 2.7.1'
+
 # Database and data related
 gem 'pg'
 gem 'pg_search'
@@ -21,14 +24,13 @@ gem 'schema_plus'
 gem 'schema_associations'
 
 # Payment engine using Paypal
-gem 'catarse_paypal_express', git: 'git://github.com/devton/catarse_paypal_express.git',  ref: '020e5851f8c2b08c9e4c1f4aab3627414644876b'
+gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: 'bce4d8c'
 
 # Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/devton/catarse_moip.git',            ref: 'd71157a0365611048a36180846a3c0c84768b916'
+gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git',            ref: 'd71157a0365611048a36180846a3c0c84768b916'
 
 # TODO: Check the Catarse_Moip dependency
 gem 'moip', '2.1.2'
-
 
 # Decorators
 gem 'draper'
