@@ -1,4 +1,5 @@
 en:
+  backs_to_confirm: "%{count} backers in time to confirm."
   backer_report_to_project_owner:
     reward_description: 'Reward description'
     confirmed_at: 'Payment confirmed at'
