@@ -16,7 +16,7 @@ describe Reward do
     context 'after update reward' do
       before { reward.update_attributes(description: 'just updated') }
       it { should have(2).itens }
-      it { reward.last_description.should == 'envie um email para foo@bar.com' }
+      it { reward.last_description.should == "<p>envie um email para <a href=\"mailto:foo@bar.com\" target=\"_blank\">foo@bar.com</a></p>" }
       it("#has_modification?") { reward.has_modification?.should be_true }
     end
   end
