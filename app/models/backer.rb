@@ -24,6 +24,7 @@ class Backer < ActiveRecord::Base
       and payment_token is not null
     }) 
   }
+  scope :pending_to_refund, ->() { where("confirmed and requested_refund and not refunded") }
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
