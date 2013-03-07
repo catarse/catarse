@@ -32,6 +32,7 @@ en:
         provider: Provider
     backers:
       index:
+        pending_to_refund: 'Pending to refund'
         title: "Backers management"
         menu: Backs
         anonymous: Anonymous?

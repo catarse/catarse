@@ -41,12 +41,16 @@
             .input.check
               = check_box_tag :credits
               = label_tag :credits, t('.credits')
+
             .input.check
-              = check_box_tag :requested_refund
-              = label_tag :requested_refund, t('.requested_refund')
-            .input.check
-              = check_box_tag :refunded
-              = label_tag :refunded, t('.refunded')
+              = check_box_tag :pending_to_refund, 'on', params[:pending_to_refund]
+              = label_tag :pending_to_refund, t('.pending_to_refund')
+            /.input.check
+            /  = check_box_tag :requested_refund
+            /  = label_tag :requested_refund, t('.requested_refund')
+            /.input.check
+            /  = check_box_tag :refunded
+            /  = label_tag :refunded, t('.refunded')
             .input.total_results
               #total_results
                 = pluralize_without_number collection.count, t('found_singular'), t('found_plural')

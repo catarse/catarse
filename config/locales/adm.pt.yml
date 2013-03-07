@@ -73,6 +73,7 @@ pt:
           unconfirm: 'Apoio desconfirmado com sucesso!'
           change_reward: 'Recompensa modificada com sucesso!'
       index:
+        pending_to_refund: 'Extornos pendentes'
         confirm_backer: 'Confirmar apoio'
         unconfirm_backer: 'Desconfirmar apoio'
         title: "Gerenciamento de apoios"

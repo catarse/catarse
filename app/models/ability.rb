@@ -34,7 +34,7 @@ class Ability
       reward.backers.in_time_to_confirm.empty? && reward.backers.confirmed.empty? && reward.project.user == current_user
     end
 
-    can :update, :rewards, [:maximum_backers] do |reward|
+    can :update, :rewards, [:description, :maximum_backers] do |reward|
       reward.project.user == current_user
     end
 

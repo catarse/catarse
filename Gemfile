@@ -13,6 +13,9 @@ gem 'best_in_place'
 # State machine for attributes on models
 gem 'state_machine', require: 'state_machine/core'
 
+# paranoid stuff
+gem 'paper_trail', '~> 2.7.1'
+
 # Database and data related
 gem 'pg'
 gem 'pg_search'
@@ -28,7 +31,6 @@ gem 'catarse_moip',           git: 'git://github.com/devton/catarse_moip.git',  
 
 # TODO: Check the Catarse_Moip dependency
 gem 'moip', '2.1.2'
-
 
 # Decorators
 gem 'draper'
