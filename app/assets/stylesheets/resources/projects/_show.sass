@@ -408,6 +408,8 @@
             font-size: 11px
             text-indent: 30px
             text-transform: uppercase
+            &.in_time_to_confirm
+              margin-top: 10px
             .limited, .sold_out
               font-size: 13px
               margin-top: 12px
@@ -418,8 +420,14 @@
             .sold_out
               color: #e6303c
             .remaining
+              text-indent: 0
+              display: inline-block
+              margin-right: 10px
               font-size: 11px
               text-shadow: 1px 1px white
+            .pending
+              padding-top: 20px
+              color: $green
       .info
         #pledge
           background: #F3F3F3
