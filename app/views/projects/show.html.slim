@@ -313,6 +313,13 @@
                   .maximum_backers.in_time_to_confirm.clearfix
                     .pending= t('backs_to_confirm', count: in_time_to_confirm)
                 .clearfix
+              - if current_user && current_user.admin && reward.has_modification?
+                div class="description_version rewardVersioning#{reward.id}"
+                  p= reward.last_description
+                .maximum_backers.in_time_to_confirm.clearfix
+                  .updated_reward
+                    span id="rewardVersioning#{reward.id}"
+                      = 'Veja a versão anterior.'
           .clearfix
     .clearfix
 = render 'show_embed'
