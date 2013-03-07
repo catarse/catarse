@@ -3,7 +3,24 @@
 require 'spec_helper'
 
 describe Reward do
-  let(:reward){ FactoryGirl.create(:reward, description: 'envie um email para foo@bar.com ') }
+  let(:reward){ FactoryGirl.create(:reward, description: 'envie um email para foo@bar.com') }
+
+  describe "Versioning" do
+    subject { reward.versions }
+
+    context 'when reward is recent' do
+      it { should have(1).item }
+      it("#has_modification?") { reward.has_modification?.should be_false }
+    end
+
+    context 'after update reward' do
+      before { reward.update_attributes(description: 'just updated') }
+      it { should have(2).itens }
+      it { reward.last_description.should == 'envie um email para foo@bar.com' }
+      it("#has_modification?") { reward.has_modification?.should be_true }
+    end
+  end
+
   describe "Associations" do
     it{ should belong_to :project }
     it{ should have_many :backers }
@@ -11,7 +28,7 @@ describe Reward do
 
   describe "#display_description" do
     subject{ reward.display_description }
-    it{ should == "<p>envie um email para <a href=\"mailto:foo@bar.com\" target=\"_blank\">foo@bar.com</a> </p>" }
+    it{ should == "<p>envie um email para <a href=\"mailto:foo@bar.com\" target=\"_blank\">foo@bar.com</a></p>" }
   end
 
   it "should have a minimum value" do

@@ -397,6 +397,20 @@
           .on_the_spot_editing
             width: 100%
             margin-left: 0px
+          .description_version
+            display: none
+            +box-shadow(rgba(black, 0.3) 2px 2px 4px)
+            +border-radius(4px)
+            width: 230px
+            min-height: 60px
+            padding: 30px
+            background: #fff8e5
+            position: absolute
+            margin: -140px 0 0 -340px
+            p
+              font-family: "Lato"
+              font-size: 13px
+              color: #444444
           .maximum_backers
             color: #4C525D
             background: url($images_path+"back_statistics.gif") left top repeat-x
@@ -428,6 +442,11 @@
             .pending
               padding-top: 20px
               color: $green
+            .updated_reward
+              padding-top: 20px
+              color: $pink
+              span
+                cursor: pointer
       .info
         #pledge
           background: #F3F3F3
