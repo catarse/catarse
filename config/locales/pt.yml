@@ -10,6 +10,7 @@ pt:
     value: 'Valor do apoio'
     service_fee: 'Taxa do Catarse'
     user_email: 'Email perfil Catarse'
+    user_name: 'Nome do apoiador'
     payer_email: 'Email do meio de pagamento'
     payment_method: 'Meio de pagamento'
     address_street: 'Rua'

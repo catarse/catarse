@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/devton/catarse_mailchimp
+  remote: git://github.com/catarse/catarse_mailchimp
   revision: a5be917969a1df6010fbbdea25a5c1407c6f8659
   specs:
     catarse_mailchimp (0.0.1)
@@ -227,6 +227,7 @@ GEM
       sinatra (~> 1.2)
       skinny (~> 0.2.3)
       sqlite3 (~> 1.3)
+      thin (~> 1.2)
       thin (~> 1.5.0)
     mailchimp (0.0.8)
       httparty
