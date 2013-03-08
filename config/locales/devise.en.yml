@@ -55,8 +55,8 @@ en:
         register_subtitle: "Use your email address"
         with_facebook: "Use your facebook account"
         with_facebook_subtitle: "A fast way to log in"
-        with_another_social: "Don't you have a facebook account?"
-        with_another_social_subtitle: "Use another social network"
+        with_another_social: "Twitter support will be removed next week"
+        with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.catarse.me/mudanca-no-sistema-de-login/\">Read more</a> about it (in portuguese only)"
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
     unlocks:
