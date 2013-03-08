@@ -5,6 +5,7 @@ en:
     confirmed_at: 'Payment confirmed at'
     value: 'Back value'
     service_fee: 'Catarse fee'
+    user_name: 'Backer name'
     user_email: 'User catarse profile e-mail'
     payer_email: 'Payment gateway user e-mail'
     payment_method: 'Payment method'
