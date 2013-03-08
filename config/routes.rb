@@ -62,9 +62,6 @@ Catarse::Application.routes.draw do
   resources :users do
     resources :backers, :only => [:index]
     resources :unsubscribes, :only => [:create]
-    collection do
-      get 'set_email'
-    end
     member do
       get 'projects'
       get 'credits'
@@ -106,5 +103,6 @@ Catarse::Application.routes.draw do
     end
   end
 
+  match "/mudancadelogin" => "users#set_email", as: :set_email_users
   match "/:permalink" => "projects#show", as: :project_by_slug
 end
