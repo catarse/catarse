@@ -23,7 +23,7 @@ class ProjectDecorator < Draper::Decorator
 
   def display_image
     if source.uploaded_image.present?
-      root_url(locale: '') + source.uploaded_image.project_thumb.url
+      source.uploaded_image.project_thumb.url
     elsif source.image_url.present?
       source.image_url
     else
