@@ -26,7 +26,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   version :project_thumb do
-    process :resize_to_fit => [220,172]
+    process :resize_to_fill => [512,400]
     process :convert => :png
   end
 
