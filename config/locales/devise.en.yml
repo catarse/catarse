@@ -36,6 +36,11 @@ en:
         site_title: 'Forgot my password'
         title: 'Type your email address and ask for a password reset'
         submit: 'Send instructions to reset my password'
+      edit:
+        site_title: 'Reset password'
+        label_new_password: 'Type your new password bellow'
+        title: 'Reset password'
+        submit: 'Reset password'
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
