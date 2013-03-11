@@ -1,4 +1,7 @@
 # coding: utf-8
+
+# uid and provider are deprecated we need to use this data from authorizations ALWAYS!
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
