@@ -28,7 +28,7 @@ describe User do
     it{ should allow_value('a'.center(139)).for(:bio) }
     it{ should allow_value('a'.center(140)).for(:bio) }
     it{ should_not allow_value('a'.center(141)).for(:bio) }
-    it{ should validate_uniqueness_of(:uid).scoped_to(:provider) }
+    it{ should validate_uniqueness_of(:email) }
   end
 
   describe ".has_credits" do
