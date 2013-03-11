@@ -1,5 +1,7 @@
 pt:
   devise:
+    links:
+      forgot_password: Esqueci minha senha
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso. Você está autenticado.
       send_instructions: Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.
@@ -34,6 +36,11 @@ pt:
         site_title: 'Esqueci minha senha'
         title: 'Confirme seu email e solicite a mudança de senha'
         submit: 'Enviar instruções para alterar minha senha'
+      edit:
+        site_title: 'Definir nova senha'
+        label_new_password: 'Digite sua nova senha abaixo'
+        title: 'Definir nova senha'
+        submit: 'Definir nova senha'
     registrations:
       destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
       signed_up: Bem vindo! Você realizou seu registro com sucesso.
