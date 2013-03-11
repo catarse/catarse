@@ -40,6 +40,7 @@ en:
         site_title: 'Reset password'
         label_new_password: 'Type your new password bellow'
         title: 'Reset password'
+        subtitle: 'Reset password to use your email and password in your Catarse login'
         submit: 'Reset password'
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
