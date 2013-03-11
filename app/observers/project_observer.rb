@@ -45,23 +45,13 @@ class ProjectObserver < ActiveRecord::Observer
   def notify_users(project)
     project.backers.confirmed.each do |backer|
       unless backer.can_refund? or backer.notified_finish
-        if project.successful?
-          Notification.create_notification_once(
-            :backer_project_successful,
-            backer.user,
-            {project_id: project.id, user_id: backer.user.id},
-            backer: backer,
-            project: project,
-            project_name: project.name)
-        else
-          Notification.create_notification_once(
-            :backer_project_unsuccessful,
-            backer.user,
-            {project_id: project.id, user_id: backer.user.id},
-            backer: backer,
-            project: project,
-            project_name: project.name)
-        end
+        Notification.create_notification_once(
+          (project.successful? ? :backer_project_successful : :backer_project_unsuccessful),
+          backer.user,
+          {project_id: project.id, user_id: backer.user.id},
+          backer: backer,
+          project: project,
+          project_name: project.name)
         backer.update_attributes({ notified_finish: true })
       end
     end
