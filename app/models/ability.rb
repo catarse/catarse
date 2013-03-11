@@ -54,7 +54,7 @@ class Ability
     # NOTE: Backer authorizations
     cannot :show, :backers
     can :create, :backers if current_user.persisted?
-    can [ :request_refund, :credits_checkout, :show ], :backers do |backer|
+    can [ :request_refund, :credits_checkout, :show, :update_info ], :backers do |backer|
       backer.user == current_user
     end
 

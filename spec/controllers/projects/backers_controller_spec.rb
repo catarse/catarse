@@ -6,11 +6,32 @@ describe Projects::BackersController do
   let(:project) { FactoryGirl.create(:project) }
   let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: true, confirmed: false, project: project) }
   let(:user){ nil }
+  let(:backer_info){ { address_city: 'Porto Alegre', address_complement: '24', address_neighbourhood: 'Rio Branco', address_number: '1004', address_phone_number: '(51)2112-8397', address_state: 'RS', address_street: 'Rua Mariante', address_zip_code: '90430-180', payer_email: 'diogo@biazus.me', payer_name: 'Diogo de Oliveira Biazus' } }
 
   subject{ response }
 
   before do
     controller.stubs(:current_user).returns(user)
+  end
+
+  describe "POST update_info" do
+    before do
+      post :update_info, { locale: :pt, project_id: project.id, id: backer.id, backer: backer_info }
+    end
+
+    context "when no user is logged in" do
+      it{ should redirect_to(new_user_session_path) }
+    end
+
+    context "when backer don't exist in current_user" do
+      let(:user){ FactoryGirl.create(:user) }
+      it{ should redirect_to(root_path) }
+      it('should set flash failure'){ request.flash[:alert].should_not be_empty }
+    end
+    context "when we have the right user" do
+      let(:user){ backer.user }
+      its(:body){ should == { message: "updated" }.to_json  }
+    end
   end
 
   describe "PUT credits_checkout" do
