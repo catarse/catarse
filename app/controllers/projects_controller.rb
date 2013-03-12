@@ -2,7 +2,7 @@
 class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
 
-  load_and_authorize_resource only: [ :new, :update, :update, :destroy, :create ]
+  load_and_authorize_resource only: [ :new, :update, :update, :destroy ]
 
   inherit_resources
   has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired
@@ -50,7 +50,8 @@ class ProjectsController < ApplicationController
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
 
-    current_user.update_attributes(params[:project].delete(:user)) if params[:project][:user] && current_user.email != params[:projects][:user][:email]
+    user_attributes = params[:project].delete(:user)
+    current_user.update_attributes(user_attributes) if current_user.email != user_attributes[:email]
     @project = current_user.projects.new(params[:project])
 
     create!(:notice => t('projects.create.success')) do |success, failure|
