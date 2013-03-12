@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/devton/catarse_mailchimp
+  remote: git://github.com/catarse/catarse_mailchimp
   revision: a5be917969a1df6010fbbdea25a5c1407c6f8659
   specs:
     catarse_mailchimp (0.0.1)
@@ -7,18 +7,18 @@ GIT
       supermodel
 
 GIT
-  remote: git://github.com/devton/catarse_moip.git
-  revision: d71157a0365611048a36180846a3c0c84768b916
-  ref: d71157a0365611048a36180846a3c0c84768b916
+  remote: git://github.com/catarse/catarse_moip.git
+  revision: 98f992428fcd5c4fc6edabd647ace9425b1e578a
+  ref: 98f992428fcd5c4fc6edabd647ace9425b1e578a
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
       rails (~> 3.2.6)
 
 GIT
-  remote: git://github.com/devton/catarse_paypal_express.git
-  revision: 020e5851f8c2b08c9e4c1f4aab3627414644876b
-  ref: 020e5851f8c2b08c9e4c1f4aab3627414644876b
+  remote: git://github.com/catarse/catarse_paypal_express.git
+  revision: bce4d8c0c76279382f10cad101f48de4e109e3a8
+  ref: bce4d8c
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -120,7 +120,7 @@ GEM
     celluloid (0.12.4)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
-    childprocess (0.3.8)
+    childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.2.7)
     coderay (1.0.9)
@@ -130,7 +130,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.5.0)
+    coffee-script-source (1.6.1)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -214,6 +214,7 @@ GEM
       has_scope (~> 0.5.0)
       responders (~> 0.6)
     initjs (0.1.2)
+      jquery-rails
       rails (~> 3.1)
     jasmine (1.3.1)
       jasmine-core (~> 1.3.1)
@@ -226,8 +227,8 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
-    jwt (0.1.5)
-      multi_json (>= 1.0)
+    jwt (0.1.7)
+      multi_json (>= 1.5)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -249,6 +250,7 @@ GEM
       sinatra (~> 1.2)
       skinny (~> 0.2.3)
       sqlite3 (~> 1.3)
+      thin (~> 1.2)
       thin (~> 1.5.0)
     mailchimp (0.0.8)
       httparty
@@ -266,7 +268,7 @@ GEM
     multipart-post (1.2.0)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.5)
+    net-ssh (2.6.6)
     nokogiri (1.4.7)
     oauth (0.4.7)
     oauth2 (0.8.1)
@@ -306,7 +308,7 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-protection (1.3.2)
+    rack-protection (1.4.0)
       rack
     rack-ssl (1.3.3)
       rack
@@ -334,7 +336,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.2.2)
-    redis (3.0.2)
+    redis (3.0.3)
     redis-namespace (1.2.1)
       redis (~> 3.0.0)
     request_store (1.0.5)
@@ -373,7 +375,7 @@ GEM
     schema_plus (1.0.1)
       rails (>= 3.2)
       valuable
-    selenium-webdriver (2.30.0)
+    selenium-webdriver (2.31.0)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
       rubyzip
@@ -406,8 +408,7 @@ GEM
       activesupport (>= 3.0, < 4.1)
       railties (>= 3.0, < 4.1)
       slim (~> 1.3)
-    spectator-validates_email (0.1.1)
-      actionpack (>= 3.0.0)
+    spectator-validates_email (0.2.0)
       activemodel (>= 3.0.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -430,7 +431,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.35)
+    tzinfo (0.3.36)
     uglifier (1.0.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)

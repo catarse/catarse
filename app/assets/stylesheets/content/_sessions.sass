@@ -1,3 +1,4 @@
+[data-controller="registrations"],
 [data-controller="users"][data-action="set_email"],
 [data-controller="users"][data-action="update_email"],
 [data-controller="omniauth_callbacks"],
@@ -5,6 +6,7 @@
 [data-controller="passwords"][data-action="edit"]
   .bootstrap-form
     overflow: hidden
+    width: 900px
   #page_content
     .container
       .devise_content
@@ -105,7 +107,7 @@
           img
             +opacity(0.6)
           img:hover, img:focus, img:active
-            +scale(1)      
+            +scale(1)
       .facebook_start
         margin-bottom: 40px !important
         clear: both
@@ -124,4 +126,4 @@
         &:hover, &:focus
           +box-shadow(rgba(black,0.75) 0px 0px 5px inset !important)
         &:active
-          +box-shadow(rgba(black, 1) 0px 0px 15px inset !important)      
+          +box-shadow(rgba(black, 1) 0px 0px 15px inset !important)

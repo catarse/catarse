@@ -1,5 +1,7 @@
 pt:
   devise:
+    links:
+      forgot_password: Esqueci minha senha
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso. Você está autenticado.
       send_instructions: Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.
@@ -18,7 +20,7 @@ pt:
       confirmation_instructions:
         subject: Instruções de confirmação
       reset_password_instructions:
-        subject: Instruções de reinicialização de senha
+        subject: Instruções para definição de uma nova senha
       unlock_instructions:
         subject: Instruções de desbloqueio
     omniauth_callbacks:
@@ -34,6 +36,12 @@ pt:
         site_title: 'Esqueci minha senha'
         title: 'Confirme seu email e solicite a mudança de senha'
         submit: 'Enviar instruções para alterar minha senha'
+      edit:
+        site_title: 'Definir nova senha'
+        label_new_password: 'Digite sua nova senha abaixo'
+        title: 'Definir nova senha'
+        subtitle: 'Defina uma nova senha para usar seu email e senha quando quiser entrar no Catarse.'
+        submit: 'Definir nova senha'
     registrations:
       destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
       signed_up: Bem vindo! Você realizou seu registro com sucesso.
@@ -53,8 +61,8 @@ pt:
         register_subtitle: "Utilize seu endereço de e-mail"
         with_facebook: "Entre utilizando o facebook"
         with_facebook_subtitle: "Uma maneira muito rápida de acessar"
-        with_another_social: "Não tem conta no facebook?"
-        with_another_social_subtitle: "Entre utilizando sua conta de outra rede social"
+        with_another_social: "O Twitter será removido em uma semana"
+        with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.catarse.me/mudanca-no-sistema-de-login/\">Leia esse post</a> para mais informações"
       signed_in: Login efetuado com sucesso.
       signed_out: Logout efetuado com sucesso.
     unlocks:

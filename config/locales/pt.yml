@@ -29,6 +29,7 @@ pt:
     value: 'Valor do apoio'
     service_fee: 'Taxa do Catarse'
     user_email: 'Email perfil Catarse'
+    user_name: 'Nome do apoiador'
     payer_email: 'Email do meio de pagamento'
     payment_method: 'Meio de pagamento'
     address_street: 'Rua'
@@ -240,7 +241,7 @@ pt:
         goal: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º e 2º nível de relacionamento): <a href='http://blog.catarse.me/sua-campanha-no-catarse-precisa-de-um-empurrazinho' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
         headline: "Resuma em 140 caracteres o seu projeto. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto :)"
         name: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo."
-        uploaded_image: "Aqui você faz upload de uma imagem (.jpg) com tamanho 220x172."
+        uploaded_image: "Aqui você faz upload de uma imagem (.jpg) com tamanho 512x400."
         video_url: "O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
         more_links: "Quais serão os canais de mobilização utilizados? (Coloque links como Facebook, Twitter, Blogs... tudo que irá te ajudar a divulgar o seu projeto)"
         online_days: "Em média os projetos ficam no ar por 40 dias."
@@ -307,7 +308,7 @@ pt:
       site_title: "Definir nova senha"
       subtitle: "Você solicitou para redefinir sua senha. Preencha sua nova senha abaixo e clique em \"Trocar senha\". Caso você não tenha solicitado esta redefinição de senha, apenas ignore esta página e sua senha permanecerá a mesma."
     email:
-      content_html: " <p>Para redefinir sua senha, clique no link abaixo.</p> <p>%{link}</p> <p>Se você não solicitou esta alteração, por favor ignore este email.</p> <p>Sua senha não vai mudar até você acessar o link acima e definir uma nova senha.</p> "
+      content_html: " <p>Para definir sua nova senha, clique no link abaixo.</p> <p>%{link}</p> <p>Sua senha não vai mudar até você acessar o link acima e definir uma nova senha.</p> "
       title: "Instruções para trocar a sua senha"
     new:
       submit: "Enviar as instruções para recuperar senha"
