@@ -1,4 +1,4 @@
-= content_for :title do 
+= content_for :title do
   = t('.site_title')
 
 #page_content
@@ -57,4 +57,7 @@
         .another_social
           - OauthProvider.where("path <> 'facebook'").order('"order"').all.each do |p|
             = link_to image_tag("auth/#{p.path}_128.png", :title => p.name), user_omniauth_authorize_path(provider: 'twitter', locale: nil), :class => 'provider'
+        h1=t('.google_warning_html')
+        h3=t('.google_step_1', link: (link_to t('devise.links.forgot_password'), new_password_path(resource_name))).html_safe
+        h3=t('.google_step_2')
     .clearfix

@@ -62,6 +62,9 @@ pt:
         with_facebook: "Entre utilizando o facebook"
         with_facebook_subtitle: "Uma maneira muito rápida de acessar"
         with_another_social: "O Twitter será removido em uma semana"
+        google_warning_html: "Se você usava uma conta do <strong>Google</strong>:"
+        google_step_1: "1 - Clique em %{link}"
+        google_step_2: "2 - Sigas os próximos passos para criar uma senha nova."
         with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.catarse.me/mudanca-no-sistema-de-login/\">Leia esse post</a> para mais informações"
       signed_in: Login efetuado com sucesso.
       signed_out: Logout efetuado com sucesso.
