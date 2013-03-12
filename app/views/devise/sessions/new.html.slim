@@ -37,10 +37,10 @@
             = f.text_field :email
           p.input
             = f.label :password
-            = f.password_field :password
+            = f.password_field :password, required: true
           p.input
             = f.label :password_confirmation
-            = f.password_field :password_confirmation
+            = f.password_field :password_confirmation, required: true
           p.input.check
             = f.check_box :newsletter
             = f.label :newsletter, t('users.current_user_fields.newsletter')
