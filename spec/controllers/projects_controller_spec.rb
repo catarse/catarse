@@ -10,6 +10,22 @@ describe ProjectsController do
   let(:project){ FactoryGirl.create(:project) }
   let(:current_user){ nil }
 
+  describe "POST create" do
+    let(:project){ FactoryGirl.build(:project, expires_at: nil) }
+    before do
+      post :create, { locale: :pt, project: project.attributes }
+    end
+
+    context "when no user is logged in" do
+      it{ should redirect_to new_user_session_path }
+    end
+
+    context "when user is logged in" do
+      let(:current_user){ FactoryGirl.create(:user) }
+      it{ should redirect_to project_by_slug_path(project.permalink) }
+    end
+  end
+
   describe "DELETE destroy" do
     before do
       delete :destroy, id: project.id, locale: :pt
