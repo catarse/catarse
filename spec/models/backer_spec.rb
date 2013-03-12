@@ -75,6 +75,14 @@ describe Backer do
       backer.should_not be_valid
     end
   end
+  
+  describe "#refund!" do
+    subject{ FactoryGirl.build(:backer, :value => 99.99, :refunded => false) }
+    it "should set refunded to true" do
+      subject.refund!
+      subject.refunded.should == true
+    end
+  end  
 
   describe '.pending_to_refund' do
     subject { Backer.pending_to_refund }

@@ -59,6 +59,11 @@ class Backer < ActiveRecord::Base
     self.confirmed = false
     self.save
   end
+  
+  def refund!
+    self.refunded = true
+    self.save
+  end
 
   def can_refund?
     confirmed? && created_at >= (Date.today - 180.days) && project.finished? && !project.successful?

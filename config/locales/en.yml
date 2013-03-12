@@ -5,6 +5,7 @@ en:
     confirmed_at: 'Payment confirmed at'
     value: 'Back value'
     service_fee: 'Catarse fee'
+    user_name: 'Backer name'
     user_email: 'User catarse profile e-mail'
     payer_email: 'Payment gateway user e-mail'
     payment_method: 'Payment method'
@@ -275,7 +276,7 @@ en:
         goal: "Values in reais (R$)"
         headline: "Summarize your project in 140 characters. This sentence will be the first contact people will have with your project, before even seeing the video. Be creative, clear and direct :)"
         name: "Be as objective as you can. Leave explanations for the About section."
-        uploaded_image: "Upload a 220x172 image(.jpg)."
+        uploaded_image: "Upload a 512x400 image(.jpg)."
         video_url: "Paste the URL from a <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a> video. We chose Vimeo because it looks better and doesn't have ads. This way, your project will look better too! <strong>Produce your video the best you can and make a video specifically for your campaign</strong>. If there is a single thing that differentiates the projects that reach the goal from the others is the video. Observe ;)"
       reward:
         description: "Describe your reward in a way that arouses people's interest to back the project. Don't be shy!"

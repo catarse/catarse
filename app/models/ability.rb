@@ -30,15 +30,11 @@ class Ability
       reward.project.user == current_user
     end
 
-    can :destroy, :rewards do |reward|
-      reward.backers.in_time_to_confirm.empty? && reward.backers.confirmed.empty? && reward.project.user == current_user
-    end
-
     can :update, :rewards, [:description, :maximum_backers] do |reward|
       reward.project.user == current_user
     end
 
-    can :update, :rewards do |reward|
+    can [:update, :destroy], :rewards do |reward|
       reward.backers.in_time_to_confirm.empty? && reward.backers.confirmed.empty? && reward.project.user == current_user
     end
 
@@ -58,7 +54,7 @@ class Ability
     # NOTE: Backer authorizations
     cannot :show, :backers
     can :create, :backers if current_user.persisted?
-    can [ :request_refund, :credits_checkout, :show ], :backers do |backer|
+    can [ :request_refund, :credits_checkout, :show, :update_info ], :backers do |backer|
       backer.user == current_user
     end
 
