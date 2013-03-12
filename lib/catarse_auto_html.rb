@@ -1,4 +1,11 @@
 module CatarseAutoHtml
+  AutoHtml.add_filter(:email_image).with(width: 200) do |text, options|
+    text.gsub(/http:\/\/.+\.(jpg|jpeg|bmp|gif|png)(\?\S+)?/i) do |match|
+      width = options[:width]
+      %|<img src="#{match}" alt="" style="max-width:#{width}" />|
+    end
+  end
+
   def catarse_auto_html_for options={}
     self.auto_html_for options[:field] do
       html_escape :map => {
