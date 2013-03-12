@@ -15,7 +15,7 @@ class Update < ActiveRecord::Base
         '<' => '&lt;',
         '"' => '"'
       }
-      image
+      email_image width: 513
       redcloth :target => :_blank
       link :target => :_blank
     end
