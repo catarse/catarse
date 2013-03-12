@@ -2,7 +2,7 @@
 class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
 
-  load_and_authorize_resource only: [ :new, :update, :update, :destroy ]
+  load_and_authorize_resource only: [ :new, :update, :update, :destroy, :create ]
 
   inherit_resources
   has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired
@@ -49,19 +49,13 @@ class ProjectsController < ApplicationController
   def create
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
-    
-    email = params[:project][:user][:email]
-    
-    if current_user.email != email
-      current_user.update_attributes(params[:project][:user])
+
+    current_user.update_attributes(params[:project].delete(:user)) if params[:project][:user] && current_user.email != params[:projects][:user][:email]
+    @project = current_user.projects.new(params[:project])
+
+    create!(:notice => t('projects.create.success')) do |success, failure|
+      success.html{ return redirect_to project_by_slug_path(@project.permalink) }
     end
-    
-    params[:project].delete(:user)
-
-    resource = current_user.projects.new(params[:project])
-    resource.save!
-
-    create!(:notice => t('projects.create.success'))
   end
 
   def show
