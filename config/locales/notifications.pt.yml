@@ -36,5 +36,5 @@ pt:
       subject: "O projeto %{project_name} acaba de ser criado"
       header:  "Um novo projeto está aguardando análise"
     new_features:
-      subject: "Novas funcionalidades do Catarse"
-      header: "Novas funcionalidades do Catarse"
+      subject: "Ajuda para tese de doutorado sobre crowdfunding"
+      header: "Ajuda para tese de doutorado sobre crowdfunding"
