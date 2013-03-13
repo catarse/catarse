@@ -61,7 +61,7 @@ end
 end
 
 
-Channel::Profile.create!(
+Channel.create!(
   name: "Channel name", 
   permalink: "sample-permalink", 
   description: "Lorem Ipsum")
