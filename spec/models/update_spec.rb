@@ -39,6 +39,7 @@ describe Update do
         :project_owner => backer.project.user.display_name,
         :project_owner_email => backer.project.user.email,
         :from => @update.project.user.email,
+        :display_name => backer.project.user.display_name,
         :update_title => @update.title,
         :update => @update,
         :update_comment => @update.email_comment_html).once
