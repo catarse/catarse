@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Channel::Profile do
-  describe "Validations" do
+describe Channel do
+  describe "Validations & Assoaciations" do
 
     [:name, :description, :permalink].each do |attribute|
       it { should validate_presence_of      attribute }
@@ -12,8 +12,19 @@ describe Channel::Profile do
       # Creating a channel profile before, to check its uniqueness
       # Because permalink is also being validated on Database with not
       # NULL constraint
-      FactoryGirl.create(:channel_profile)
+      FactoryGirl.create(:channel)
       should validate_uniqueness_of :permalink
+    end
+
+
+    it { should have_and_belong_to_many :projects }
+  end
+
+
+  describe "#to_param" do
+    let(:channel) { FactoryGirl.create(:channel) }
+    it "should return the permalink" do
+      expect(channel.to_param).to eq(channel.permalink)
     end
   end
 end

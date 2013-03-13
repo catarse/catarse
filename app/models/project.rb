@@ -28,6 +28,9 @@ class Project < ActiveRecord::Base
   has_many :rewards, :dependent => :destroy
   has_many :updates, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
+
+  has_and_belongs_to_many :channels
+
   has_one :project_total
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :rewards
