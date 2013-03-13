@@ -30,7 +30,7 @@ gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_expr
 gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '98f992428fcd5c4fc6edabd647ace9425b1e578a'
 
 # TODO: Check the Catarse_Moip dependency
-gem 'moip', '2.1.2'
+gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
 # Decorators
 gem 'draper'
@@ -76,7 +76,7 @@ gem 'has_scope'
 gem 'spectator-validates_email',  require: 'validates_email'
 gem 'has_vimeo_video',            '~> 0.0.5'
 gem 'enumerate_it'
-gem 'httparty', '~> 0.8.1'
+gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
 
 # Translations
 gem 'http_accept_language'
