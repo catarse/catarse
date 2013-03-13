@@ -12,6 +12,7 @@ describe Project do
     it{ should have_many :rewards }
     it{ should have_many :updates }
     it{ should have_many :notifications }
+    it{ should have_and_belong_to_many :channels }
   end
 
   describe "validations" do
