@@ -27,6 +27,22 @@ var CATARSE = {
       CATARSE.router = new CATARSE.Router()
       CATARSE.layout = new CATARSE.LayoutsApplicationView({el: $('html')})
       $(".best_in_place").best_in_place();
+
+      CATARSE.Common.trackUserClicksInHomePage();
+    },
+    
+    trackUserClicksInHomePage: function(){
+      var namespace, user;
+
+      namespace = $('body');
+      user      = ( namespace.data('user') != null ) ? namespace.data('user').id : null;
+
+      $('.box .project_content h4 a').on('click', function(){ 
+        mixpanel.track(
+          "Clicked on a project's link box",
+          { 'page name': document.title, 'user_id': user, 'project': $(this).attr('href'), 'url': window.location }
+        );
+      });
     },
 
     finish: function(){
