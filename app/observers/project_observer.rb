@@ -11,7 +11,7 @@ class ProjectObserver < ActiveRecord::Observer
       Notification.create_notification_once(:new_draft_project,
                                             user,
                                             {project_id: project.id},
-                                            {project: project, project_name: project.name, from: project.user.email}
+                                            {project: project, project_name: project.name, from: project.user.email, display_name: project.user.display_name}
                                            )
     end
 
