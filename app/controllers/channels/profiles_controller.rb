@@ -3,9 +3,4 @@ class Channels::ProfilesController < Channels::BaseController
   defaults resource_class: Channel, finder: :find_by_permalink!
   actions :show
 
-
-
-
-
-
 end

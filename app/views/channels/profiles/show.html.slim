@@ -18,7 +18,7 @@
         h2= t 'channels.call_to_action.welcome'
         h1.channel_name = @profile.name
         p.description   = @profile.description 
-        p.send_project  = link_to t('channels.send_your_project'), root_path, class: :btn
+        p.send_project  = link_to t('channels.send_your_project'), new_channels_profile_project_path(@profile), class: :btn
       .video
         iframe src="http://player.vimeo.com/video/58924942?title=0&amp;portrait=0&amp;byline=0"
 
