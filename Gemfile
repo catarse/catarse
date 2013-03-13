@@ -93,7 +93,6 @@ group :development do
   gem 'foreman'
   gem 'better_errors'
   gem "binding_of_caller"
-  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
 end
 
 group :test, :development do
