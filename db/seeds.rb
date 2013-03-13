@@ -54,8 +54,6 @@ end
   facebook_url: "http://facebook.com/catarse.me",
   facebook_app_id: '173747042661491',
   twitter_username: "Catarse_",
-  bitly_api_login: "diogob",
-  bitly_api_key: "R_76ee3ab860d76d0d1c1c8e9cc5485ca1",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   catarse_fee: '0.13'
 }.each do |name, value|
