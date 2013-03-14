@@ -29,7 +29,6 @@ class ProjectsController < ApplicationController
         @expiring = Project.expiring_for_home(project_ids)
         @recent = Project.recent_for_home(project_ids)
         @blog_posts = blog_posts
-        @last_tweets = last_tweets
       end
 
       format.json do
@@ -103,17 +102,6 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:id]
     @title = @project.name
     render :layout => 'embed'
-  end
-
-  private
-  def last_tweets
-    Rails.cache.fetch('last_tweets', :expires_in => 30.minutes) do
-      begin
-        JSON.parse(Net::HTTP.get(URI("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=#{::Configuration[:twitter_username]}")))[0..1]
-      rescue
-        []
-      end
-    end
   end
 
   def blog_posts

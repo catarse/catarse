@@ -75,9 +75,7 @@ var CATARSE = {
     }
   },
   projects: {
-    index: function(){
-      window.view = new CATARSE.ProjectsIndexView({el: $("body") });
-    },
+    
     show: function(){
       window.view = new CATARSE.ProjectsShowView({el: $("body") });
     },
