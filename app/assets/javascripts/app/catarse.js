@@ -32,12 +32,11 @@ var CATARSE = {
     },
     
     trackUserClicksInHomePage: function(){
-      var namespace, user;
 
-      namespace = $('body');
-      user      = ( namespace.data('user') != null ) ? namespace.data('user').id : null;
+      var namespace = $('body');
+      var user      = ( namespace.data('user') != null ) ? namespace.data('user').id : null;
 
-      $('.box .project_content h4 a').on('click', function(){ 
+      $('.project_content h4').on('click', function(){ 
         mixpanel.track(
           "Clicked on a project's link box",
           { 'page name': document.title, 'user_id': user, 'project': $(this).attr('href'), 'url': window.location }
