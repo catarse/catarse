@@ -49,8 +49,7 @@
             = f.input :phone_number, :required => false, :as => :string
             = f.input :email, :as => :string
             = hidden_field_tag 'id', @user.id
-            = check_box_tag 'newsletter', '1', @user.newsletter
-            = label_tag 'newsletter', t('.newsletter')
+            = f.input :newsletter, as: :boolean, label: t('.newsletter')
             = f.input :bio, :as => :text, :input_html => { :rows => 5, :cols => 20, :maxlength => 240  }
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"
