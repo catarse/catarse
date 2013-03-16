@@ -26,8 +26,18 @@ class ProjectDecorator < Draper::Decorator
       source.uploaded_image.project_thumb.url
     elsif source.image_url.present?
       source.image_url
-    else
-      source.video_thumbnail.url || source.video.thumbnail_large
+    elsif source.video_thumbnail.url.present?
+      source.video_thumbnail.url
+    elsif source.video
+      source.video.thumbnail_large
+    end
+  end
+
+  def video_embed_url
+    if source.video.instance_of? VideoInfo::Vimeo
+      "#{source.video.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=0"
+    elsif source.video.instance_of? VideoInfo::Youtube
+      source.video.embed_url
     end
   end
 
