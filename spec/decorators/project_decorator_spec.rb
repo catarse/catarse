@@ -82,5 +82,27 @@ describe ProjectDecorator do
       it{ should == 'waiting_funds' }
     end
   end
+
+  describe '#video_embed_url' do
+    subject{ project.video_embed_url }
+
+    context 'source has a Vimeo video' do
+      before { project.video_url = 'http://vimeo.com/17298435' }
+
+      it { should == 'http://player.vimeo.com/video/17298435?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=0' }
+    end
+
+    context 'source has an Youtube video' do
+      before { project.video_url = "http://www.youtube.com/watch?v=Brw7bzU_t4c" }
+
+      it { should == 'http://www.youtube.com/embed/Brw7bzU_t4c' }
+    end
+
+    context 'source does not have a video' do
+      before { project.video_url = '' }
+
+      it { should be_nil }
+    end
+  end
 end
 
