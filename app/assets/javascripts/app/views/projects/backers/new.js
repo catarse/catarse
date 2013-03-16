@@ -1,5 +1,6 @@
 CATARSE.BackersNewView = Backbone.View.extend({
   initialize: function() {
+    var user_set = false
     $('input#backer_credits').change(function(event){
       if(event.currentTarget.checked) {
         $('#backer_value').val($('#credits').val());
@@ -62,14 +63,16 @@ CATARSE.BackersNewView = Backbone.View.extend({
       var id = /^backer_reward_id_(\d+)$/.exec($(this).attr('id'))
       id = parseFloat(id[1])
       var minimum = rewards[id]
-      if(minimum){
+      if( (minimum > $('#backer_value').val()) || !user_set){
         $('#backer_value').val(parseInt(minimum))
+        user_set = false
       }
       $('li.radio ol li').removeClass('selected')
       $(this).parent().parent().addClass('selected')
       everything_ok()
     })
     $('#backer_value').keyup(function(){
+      user_set = true
       var reward = $('input[type=radio]:checked')
       if(reward.val()){
         var id = /^backer_reward_id_(\d+)$/.exec(reward.attr('id'))
