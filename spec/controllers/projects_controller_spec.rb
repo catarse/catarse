@@ -176,7 +176,7 @@ describe ProjectsController do
     context 'url is not a valid video' do
       before { get :video, locale: :pt, url: 'http://????' }
 
-      its(:body){ should == {id: false}.to_json }
+      its(:body){ should == {video_id: false}.to_json }
     end
   end
 end
