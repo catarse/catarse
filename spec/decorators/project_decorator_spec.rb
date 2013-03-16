@@ -8,7 +8,7 @@ describe ProjectDecorator do
 
     context "when we have a video_url without thumbnail" do
       let(:project){ FactoryGirl.create(:project, :uploaded_image => nil, :image_url => nil, :video_thumbnail => nil) }
-      it{ should == project.vimeo.thumbnail } 
+      it{ should == project.video.thumbnail_large } 
     end
 
     context "when we have a video_thumbnail" do

@@ -27,7 +27,7 @@ class ProjectDecorator < Draper::Decorator
     elsif source.image_url.present?
       source.image_url
     else
-      source.video_thumbnail.url || source.vimeo.thumbnail
+      source.video_thumbnail.url || source.video.thumbnail_large
     end
   end
 
