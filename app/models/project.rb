@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, LogoUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
-    :display_pledged, :display_goal, :remaining_days,
+    :display_pledged, :display_goal, :remaining_days, :video_embed_url,
     :to => :decorator
 
   schema_associations
@@ -216,7 +216,7 @@ class Project < ActiveRecord::Base
       created_at: created_at,
       time_to_go: time_to_go,
       remaining_text: remaining_text,
-      embed_url: video.embed_url,
+      embed_url: video ? video.embed_url : nil,
       url: Rails.application.routes.url_helpers.project_by_slug_path(permalink, :locale => I18n.locale),
       full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, :locale => I18n.locale),
       expired: expired?,

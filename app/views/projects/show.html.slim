@@ -175,7 +175,7 @@
         #project_about.content
           .midia
             .video
-              iframe src="#{@project.vimeo.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+              iframe src="#{@project.video_embed_url}" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
             .social
               #project_share
                 #facebook_share= render_facebook_like href: project_by_slug_url(@project.permalink, locale: I18n.locale)
