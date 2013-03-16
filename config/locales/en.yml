@@ -363,7 +363,7 @@ en:
         notification_text: "You received %{value} in credits to back other projects. If you prefer, you can request a refund %{link}."
         unsuccessful_text: "The project %{link} that you backed wasn't funded. Maybe next time!"
     verify_if_video_exists_on_vimeo: "must exist on Vimeo"
-    vimeo_regex_validation: "only Vimeo URLs are allowed"
+    video_regex_validation: "only Vimeo or YouTube URLs are allowed"
     display_status:
       expired: expired
       failed: "not funded"

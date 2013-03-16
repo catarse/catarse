@@ -194,9 +194,6 @@ GEM
     haml (4.0.0)
       tilt
     has_scope (0.5.1)
-    has_vimeo_video (0.0.5)
-      supermodel
-      vimeo
     hashie (1.2.0)
     heroku-deflater (0.4.1)
       rack (~> 1.4.5)
@@ -415,12 +412,8 @@ GEM
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     valuable (0.9.8)
-    vimeo (1.5.3)
-      httparty (>= 0.4.5)
-      httpclient (>= 2.1.5.2)
-      json (>= 1.1.9)
-      multipart-post (>= 1.0.1)
-      oauth (>= 0.4.3)
+    video_info (1.1.1)
+      multi_json
     warden (1.2.1)
       rack (>= 1.0)
     websocket (1.0.7)
@@ -456,7 +449,6 @@ DEPENDENCIES
   foreman
   formtastic (~> 2.1.1)
   has_scope
-  has_vimeo_video (~> 0.0.5)
   heroku-deflater (~> 0.4.1)
   http_accept_language
   httparty (~> 0.6.1)
@@ -495,4 +487,5 @@ DEPENDENCIES
   thin
   uglifier (~> 1.0.3)
   validation_reflection!
+  video_info
   weekdays
