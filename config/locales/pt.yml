@@ -314,7 +314,7 @@ pt:
         notification_text: "Você recebeu %{value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{link}."
         unsuccessful_text: "O projeto %{link} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
     verify_if_video_exists_on_vimeo: "deve existir no Vimeo"
-    vimeo_regex_validation: "somente URLs do Vimeo são aceitas"
+    video_regex_validation: "somente URLs do Vimeo ou do YouTube são aceitas"
     display_status:
       expired: "finalizado"
       rejected: "rejeitado"
