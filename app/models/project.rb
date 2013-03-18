@@ -221,10 +221,6 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    # TODO: Quando o projeto for finalizado e
-    # o mesmo não tiver atingido a meta mesmo com 
-    # a soma dos apoios pendentes ele deve ir direto para o falho
-    # enviando uma notificação diferente para os apoios pendentes
     Time.now < 4.weekdays_from(expires_at)
   end
   
