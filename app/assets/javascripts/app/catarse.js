@@ -50,8 +50,8 @@ var CATARSE = {
       }
     },
 
-    trackOnMixPanel: function(target, event, text, options = {}){
-
+    trackOnMixPanel: function(target, event, text, options){
+    
       var self = this;
 
       $(target).on(event, function(){
@@ -59,7 +59,7 @@ var CATARSE = {
         var obj     = $(this);
         var usr     = (self.user != null) ? self.user.id : null;
         var ref     = (obj.attr('href') != undefined) ? obj.attr('href') : null;
-
+        var opt     = options || {};
 
         var default_options = { 
           'page name':  document.title, 
@@ -69,7 +69,7 @@ var CATARSE = {
         };
 
 
-        var opt     = $.fn.extend(default_options, options);
+        var opt     = $.fn.extend(default_options, opt);
 
         self.identifyUser();
         mixpanel.track(text, opt);
