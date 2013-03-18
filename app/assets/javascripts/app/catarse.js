@@ -20,7 +20,7 @@ var CATARSE = {
   },
 
   MixPanel: {
-    
+
     namespace:  $('body'),
     user:       null,
 
@@ -33,8 +33,12 @@ var CATARSE = {
       this.trackUserClickOnProjectsImage();
       this.trackUserClickOnProjectsTitle();
       this.trackUserClickOnBackButton();
-      
-  
+      this.trackUserClickOnRecommendedProject();
+      this.trackUserClickOnReviewAndMakePayment();
+      this.trackUserClickOnAcceptTerms();
+      this.trackUserClickOnPaymentButton();
+
+
     },
 
 
@@ -42,47 +46,65 @@ var CATARSE = {
       if (this.user !== null){
         mixpanel.name_tag(this.user.id + '-' + this.user.name);
         mixpanel.identify(this.user.id);
- 
+
       }
     },
 
-    trackOnMixPanel: function(target, event, text){
+    trackOnMixPanel: function(target, event, text, options = {}){
+
       var self = this;
 
       $(target).on(event, function(){
+
         var obj     = $(this);
-        var usr     = (self.user !== null) ? self.user.id : null;
+        var usr     = (self.user != null) ? self.user.id : null;
         var ref     = (obj.attr('href') != undefined) ? obj.attr('href') : null;
-        
-        mixpanel.track(
-          text,
-          { 
-            'page name':  document.title, 
-            'user_id':    usr, 
-            'project':    ref, 
-            'url':        window.location
-          }
-        )
+
+
+        var default_options = { 
+          'page name':  document.title, 
+          'user_id':    usr, 
+          'project':    ref, 
+          'url':        window.location
+        };
+
+
+        var opt     = $.fn.extend(default_options, options);
+
+        self.identifyUser();
+        mixpanel.track(text, opt);
       });
-    
+
     },
 
     trackUserClickOnRecommendedProject: function(){
       this.trackOnMixPanel('#recommended_header h2', 'click', 'Clicked on a recommended banner');
     },
+
+    trackUserClickOnReviewAndMakePayment: function(){
+      this.trackOnMixPanel('input#backer_submit', 'click', 'Clicked on Review and Make Payment');
+    },
+
+    trackUserClickOnAcceptTerms: function(){
+      this.trackOnMixPanel('label[for="accept"]', 'click', 'Accepted terms of use');
+    },
+
+    trackUserClickOnPaymentButton: function(){
+      this.trackOnMixPanel('form.moip input[type="submit"]', 'click', 'Made a payment')
+    },
+
     trackUserClickOnBackButton: function(){
-      this.trackOnMixPanel('#back_project_form input', 'click', 'Clicked on "Back this project"');
+      this.trackOnMixPanel('#back_project_form input', 'click', 'Clicked on Back this project');
     },
 
     trackUserClickOnProjectsImage: function(){
       this.trackOnMixPanel('.box .cover a', 'click', 'Clicked on a projects image @ homepage');
-
     },
 
     trackUserClickOnProjectsTitle: function(){
       this.trackOnMixPanel('.project_content h4','click', 'Clicked on a project\'s link box');
     },
-  
+
   },
 
   Common: {
