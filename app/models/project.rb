@@ -221,7 +221,15 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
+    # TODO: Quando o projeto for finalizado e
+    # o mesmo não tiver atingido a meta mesmo com 
+    # a soma dos apoios pendentes ele deve ir direto para o falho
+    # enviando uma notificação diferente para os apoios pendentes
     Time.now < 4.weekdays_from(expires_at)
+  end
+  
+  def pending_backers_reached_the_goal?
+    (pledged + backers.in_time_to_confirm.sum(&:value)) >= goal
   end
 
   #NOTE: state machine things
@@ -246,10 +254,14 @@ class Project < ActiveRecord::Base
     end
 
     event :finish do
-      transition online: :waiting_funds,      if: ->(project) {
-        project.expired? && project.in_time_to_wait?
+      transition online: :failed,             if: ->(project) {
+        project.expired? && !project.pending_backers_reached_the_goal?
       }
 
+      transition online: :waiting_funds,      if: ->(project) {
+        project.expired? && project.in_time_to_wait? && project.pending_backers_reached_the_goal?
+      }
+      
       transition waiting_funds: :successful,  if: ->(project) {
         project.reached_goal? && !project.in_time_to_wait?
       }
@@ -258,11 +270,16 @@ class Project < ActiveRecord::Base
         project.expired? && !project.reached_goal? && !project.in_time_to_wait?
       }
     end
-
+    
+    after_transition online: :failed, do: :after_transition_of_online_to_failed
     after_transition waiting_funds: [:successful, :failed], do: :after_transition_of_wainting_funds_to_successful_or_failed
     after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
     after_transition draft: :online, do: :after_transition_of_draft_to_online
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
+  end
+  
+  def after_transition_of_online_to_failed
+    notify_observers :notify_users    
   end
 
   def after_transition_of_wainting_funds_to_successful
