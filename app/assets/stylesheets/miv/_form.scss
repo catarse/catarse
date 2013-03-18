@@ -610,4 +610,17 @@
   .form-horizontal .form-actions {
     padding-left: 160px;
   }
+
+  #error_explanation {
+    font-family: "Lato";
+    font-size: 15px;
+    padding-bottom: 10px;
+    color: $red;
+  }
+
+  .field_with_errors input, 
+  .field_with_errors select, 
+  .field_with_errors textarea, {
+    border-color: $red
+  }
 }
