@@ -16,7 +16,95 @@ var CATARSE = {
       location.href = url
     else
       location.href = "/login"
-      //CATARSE.router.navigate("login/" + encodeURIComponent(url), true)
+    //CATARSE.router.navigate("login/" + encodeURIComponent(url), true)
+  },
+
+  MixPanel: {
+
+    namespace:  $('body'),
+    user:       null,
+
+
+    initialize: function(){
+      this.user = (this.namespace.data('user') != null ) ? this.namespace.data('user') : null;
+
+
+      this.identifyUser();
+      this.trackUserClickOnProjectsImage();
+      this.trackUserClickOnProjectsTitle();
+      this.trackUserClickOnBackButton();
+      this.trackUserClickOnRecommendedProject();
+      this.trackUserClickOnReviewAndMakePayment();
+      this.trackUserClickOnAcceptTerms();
+      this.trackUserClickOnPaymentButton();
+
+
+    },
+
+
+    identifyUser: function(){
+      if (this.user !== null){
+        mixpanel.name_tag(this.user.id + '-' + this.user.name);
+        mixpanel.identify(this.user.id);
+
+      }
+    },
+
+    trackOnMixPanel: function(target, event, text, options){
+    
+      var self = this;
+
+      $(target).on(event, function(){
+
+        var obj     = $(this);
+        var usr     = (self.user != null) ? self.user.id : null;
+        var ref     = (obj.attr('href') != undefined) ? obj.attr('href') : null;
+        var opt     = options || {};
+
+        var default_options = { 
+          'page name':  document.title, 
+          'user_id':    usr, 
+          'project':    ref, 
+          'url':        window.location
+        };
+
+
+        var opt     = $.fn.extend(default_options, opt);
+
+        self.identifyUser();
+        mixpanel.track(text, opt);
+      });
+
+    },
+
+    trackUserClickOnRecommendedProject: function(){
+      this.trackOnMixPanel('#recommended_header h2', 'click', 'Clicked on a recommended banner');
+    },
+
+    trackUserClickOnReviewAndMakePayment: function(){
+      this.trackOnMixPanel('input#backer_submit', 'click', 'Clicked on Review and Make Payment');
+    },
+
+    trackUserClickOnAcceptTerms: function(){
+      this.trackOnMixPanel('label[for="accept"]', 'click', 'Accepted terms of use');
+    },
+
+    trackUserClickOnPaymentButton: function(){
+      this.trackOnMixPanel('form.moip input[type="submit"]', 'click', 'Made a payment')
+    },
+
+    trackUserClickOnBackButton: function(){
+      this.trackOnMixPanel('#back_project_form input', 'click', 'Clicked on Back this project');
+    },
+
+    trackUserClickOnProjectsImage: function(){
+      this.trackOnMixPanel('.box .cover a', 'click', 'Clicked on a projects image @ homepage');
+    },
+
+    trackUserClickOnProjectsTitle: function(){
+      this.trackOnMixPanel('.project_content h4','click', 'Clicked on a project\'s link box');
+    },
+
   },
 
   Common: {
@@ -28,22 +116,10 @@ var CATARSE = {
       CATARSE.layout = new CATARSE.LayoutsApplicationView({el: $('html')})
       $(".best_in_place").best_in_place();
 
-      CATARSE.Common.trackUserClicksInHomePage();
+      CATARSE.MixPanel.initialize();
     },
-    
-    trackUserClicksInHomePage: function(){
-      var namespace, user;
 
-      namespace = $('body');
-      user      = ( namespace.data('user') != null ) ? namespace.data('user').id : null;
 
-      $('.box .project_content h4 a').on('click', function(){ 
-        mixpanel.track(
-          "Clicked on a project's link box",
-          { 'page name': document.title, 'user_id': user, 'project': $(this).attr('href'), 'url': window.location }
-        );
-      });
-    },
 
     finish: function(){
       // Common finish for every action
@@ -53,7 +129,7 @@ var CATARSE = {
   },
   explore:{
     index: function(){
-       window.view = new CATARSE.ExploreIndexView({el: $("body") });
+      window.view = new CATARSE.ExploreIndexView({el: $("body") });
     }
   },
   adm: {
@@ -76,9 +152,6 @@ var CATARSE = {
     }
   },
   projects: {
-    index: function(){
-      window.view = new CATARSE.ProjectsIndexView({el: $("body") });
-    },
     show: function(){
       window.view = new CATARSE.ProjectsShowView({el: $("body") });
     },

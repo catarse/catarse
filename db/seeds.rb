@@ -36,7 +36,7 @@
 [
   'confirm_backer','payment_slip','project_success','backer_project_successful',
   'backer_project_unsuccessful','project_received','updates','project_unsuccessful',
-  'project_visible','processing_payment','new_draft_project', 'project_rejected'
+  'project_visible','processing_payment','new_draft_project', 'project_rejected', 'pending_backer_project_unsuccessful'
 ].each do |name|
   NotificationType.find_or_create_by_name name
 end
@@ -55,7 +55,8 @@ end
   facebook_app_id: '173747042661491',
   twitter_username: "Catarse_",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
-  catarse_fee: '0.13'
+  catarse_fee: '0.13',
+  support_forum: 'http://suporte.catarse.me/'
 }.each do |name, value|
   Configuration.find_or_create_by_name name, value: value
 end
