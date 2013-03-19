@@ -207,3 +207,8 @@ pt:
   activerecord:
     errors:
       <<: *errors
+      models:
+        user:
+          attributes:
+            email:
+              taken: "já cadastrado, faça o login ao lado"
