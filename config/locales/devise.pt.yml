@@ -80,5 +80,5 @@ pt:
       not_found: não encontrado
       not_locked: não foi bloqueado
       not_saved:
-        one: ! ''
-        other: ! ''
+        one: ! ' '
+        other: ! ' '
