@@ -11,7 +11,7 @@ class ProjectObserver < ActiveRecord::Observer
       Notification.create_notification_once(:new_draft_project,
                                             user,
                                             {project_id: project.id},
-                                            {project: project, project_name: project.name, from: project.user.email}
+                                            {project: project, project_name: project.name, from: project.user.email, display_name: project.user.display_name}
                                            )
     end
 
@@ -55,10 +55,27 @@ class ProjectObserver < ActiveRecord::Observer
         backer.update_attributes({ notified_finish: true })
       end
     end
+    
+    if project.failed?
+      project.backers.in_time_to_confirm.each do |backer|
+        unless backer.notified_finish
+          Notification.create_notification_once(
+            :pending_backer_project_unsuccessful,
+            backer.user,
+            {project_id: project.id, user_id: backer.user.id},
+            backer: backer,
+            project: project,
+            project_name: project.name)
+          backer.update_attributes({ notified_finish: true })
+        end
+      end
+    end
+    
     Notification.create_notification_once(:project_unsuccessful,
       project.user,
       {project_id: project.id, user_id: project.user.id},
       project: project) unless project.successful?
+
     project.update_attributes finished: true, successful: project.successful?
   end
 
