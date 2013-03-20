@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_moip.git
-  revision: 4c44eea6366d92f2fd4ffbe97c3acccc89d1ff50
-  ref: 4c44eea
+  revision: a1f6e208ee9efbfca6fb5db1384c78a47bcdb29c
+  ref: a1f6e20
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
