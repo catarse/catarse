@@ -72,6 +72,38 @@ describe ProjectObserver do
       end
     end
   end
+  
+  describe "sync with mailchimp" do
+    before do
+      Configuration[:mailchimp_successful_projects_list] = 'OwnerListId'
+      Configuration[:mailchimp_failed_projects_list] = 'UnsuccesfulListId'
+    end
+    
+    let(:user) { FactoryGirl.create(:user) }
+    let(:project) { FactoryGirl.create(:project, online_days: -7, goal: 10, state: 'waiting_funds', user: user) }
+    
+    context 'when project is successful' do
+      before do
+        FactoryGirl.create(:backer, value: 15, confirmed: true, project: project)
+      end
+      
+      it 'subscribe project owner to successful projects mailchimp list' do 
+        CatarseMailchimp::API.expects(:subscribe).with({ EMAIL: user.email, FNAME: user.name, 
+          CITY: user.address_city, STATE: user.address_state }, 'OwnerListId')        
+      end
+      
+      after { project.finish }
+    end
+    
+    context 'when project is unsuccesful' do
+      it 'subscribe project owner to failed projects mailchimp list' do 
+        CatarseMailchimp::API.expects(:subscribe).with({ EMAIL: user.email, FNAME: user.name, 
+          CITY: user.address_city, STATE: user.address_state }, 'UnsuccesfulListId')        
+      end
+      
+      after { project.finish }      
+    end
+  end
 
   describe "notify_backers" do
 

@@ -276,10 +276,15 @@ class Project < ActiveRecord::Base
     after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
     after_transition draft: :online, do: :after_transition_of_draft_to_online
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
+    after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
+  end
+  
+  def after_transition_of_any_to_failed_or_successful
+    notify_observers :sync_with_mailchimp
   end
   
   def after_transition_of_online_to_failed
-    notify_observers :notify_users    
+    notify_observers :notify_users
   end
 
   def after_transition_of_wainting_funds_to_successful

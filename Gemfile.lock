@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/catarse/catarse_mailchimp
-  revision: a5be917969a1df6010fbbdea25a5c1407c6f8659
+  revision: 45dc426a68e97e2e2490ee058b7033c70b5a83d4
+  ref: 45dc426
   specs:
     catarse_mailchimp (0.0.1)
       mailchimp
