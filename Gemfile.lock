@@ -139,6 +139,7 @@ GEM
     crack (0.1.8)
     curb (0.7.18)
     daemons (1.1.9)
+    dalli (2.6.2)
     database_cleaner (0.9.1)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
@@ -244,6 +245,7 @@ GEM
       thin (~> 1.5.0)
     mailchimp (0.0.8)
       httparty
+    memcachier (0.0.2)
     metaclass (0.0.1)
     mime-types (1.21)
     mocha (0.10.5)
@@ -447,6 +449,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.2)
   compass-960-plugin (~> 0.10.4)
   compass-rails (~> 1.0.2)
+  dalli
   database_cleaner
   devise
   draper
@@ -468,6 +471,7 @@ DEPENDENCIES
   kaminari
   launchy
   mailcatcher
+  memcachier
   mocha (~> 0.10.4)
   moip!
   omniauth
