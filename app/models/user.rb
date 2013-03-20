@@ -237,6 +237,6 @@ class User < ActiveRecord::Base
 
   protected
   def password_required?
-    provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
+    is_devise? && (!persisted? || !password.nil? || !password_confirmation.nil?)
   end
 end
