@@ -95,6 +95,18 @@ group :production do
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
   gem 'heroku-deflater', '~> 0.4.1'
+
+  # Enables memcachier env vars to work with dalli
+  # If you are not using memcachier you should 
+  # comment this line and configure dalli manually
+  gem 'memcachier'
+
+  # Enables dalli as cache provider for rails using memcache
+  # If you are not using a memcache server for your cache you should
+  # comment out this line and comment out the line
+  #    config.cache_store = :dalli_store 
+  # in config/production.rb
+  gem 'dalli'
 end
 
 group :development do
