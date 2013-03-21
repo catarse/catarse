@@ -252,6 +252,23 @@ describe Project do
     subject{ Project.online}
     it{ should == [@p] }
   end
+  
+  describe '#can_go_to_second_chance?' do
+    let(:project) { FactoryGirl.create(:project, goal: 100) }
+    subject { project.can_go_to_second_chance? }
+    
+    before { FactoryGirl.create(:backer, value: 20, confirmed: true, project: project) }
+    
+    context 'when confirmed and pending backers reached 30% of the goal' do
+      before { FactoryGirl.create(:backer, value: 10, confirmed: false, payment_token: 'ABC', project: project) }
+      
+      it { should be_true }
+    end
+    
+    context 'when confirmed and pending backers reached less of 30% of the goal' do
+      it { should be_false }      
+    end
+  end
 
   describe '#reached_goal?' do
     let(:project) { FactoryGirl.create(:project, goal: 3000) }
@@ -565,18 +582,29 @@ describe Project do
           subject.approve
         end
         
-        context 'when project is expired and the sum of the pending backers dont reached the goal' do
+        context 'when project is expired and the sum of the pending backers and confirmed backers dont reached the goal' do
           before do
-            backer = FactoryGirl.create(:backer, value: 100, project: subject, created_at: 2.days.ago)
+            FactoryGirl.create(:backer, value: 100, project: subject, created_at: 2.days.ago)
             subject.finish
           end
                     
           its(:failed?) { should be_true }
         end
+        
+        context 'when project is expired and the sum of the pending backers and confirmed backers reached 30% of the goal' do
+          before do
+            FactoryGirl.create(:backer, value: 100, project: subject, created_at: 2.days.ago)
+            FactoryGirl.create(:backer, value: 9_000, project: subject, payment_token: 'ABC', confirmed: false)
+
+            subject.finish
+          end
+                    
+          its(:waiting_funds?) { should be_true }
+        end
 
         context 'when project is expired and have recent backers without confirmation' do
           before do
-            backer = FactoryGirl.create(:backer, value: 30_000, project: subject, payment_token: 'ABC', confirmed: false)
+            FactoryGirl.create(:backer, value: 30_000, project: subject, payment_token: 'ABC', confirmed: false)
             subject.finish
           end
 
