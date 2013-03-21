@@ -54,6 +54,23 @@ describe Project do
       it { should == [@project_03] }
     end
   end
+  
+  describe '.by_progress' do
+    subject { Project.by_progress(20) }
+
+    before do
+      @project_01 = FactoryGirl.create(:project, goal: 100)
+      @project_02 = FactoryGirl.create(:project, goal: 100)
+      @project_03 = FactoryGirl.create(:project, goal: 100)
+      
+      FactoryGirl.create(:backer, value: 10, project: @project_01)
+      FactoryGirl.create(:backer, value: 10, project: @project_01)
+      FactoryGirl.create(:backer, value: 30, project: @project_02)
+      FactoryGirl.create(:backer, value: 10, project: @project_03)
+    end
+    
+    it { should have(2).itens }
+  end
 
   describe '.between_created_at' do
     let(:start_at) { '17/01/2013' }
@@ -68,6 +85,24 @@ describe Project do
 
     it { should == [@project_01] }
   end
+  
+  describe '.between_expires_at' do
+    let(:start_at) { '17/01/2013' }
+    let(:ends_at) { '21/01/2013' }
+    subject { Project.between_expires_at(start_at, ends_at) }
+    
+    let(:project_01) { FactoryGirl.create(:project) }
+    let(:project_02) { FactoryGirl.create(:project) }
+    let(:project_03) { FactoryGirl.create(:project) }
+    
+    before do
+      project_01.update_attributes({ expires_at: '19/01/2013' })
+      project_02.update_attributes({ expires_at: '23/01/2013' })
+      project_03.update_attributes({ expires_at: '26/01/2013' })
+    end
+
+    it { should == [project_01] }
+  end  
 
   describe '.finish_projects!' do
     before do
