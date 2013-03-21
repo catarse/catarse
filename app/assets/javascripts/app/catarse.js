@@ -33,7 +33,7 @@ var CATARSE = {
       this.trackUserClickOnReviewAndMakePayment();
       this.trackUserClickOnAcceptTerms();
       this.trackUserClickOnPaymentButton();
-      this.trackUserClickOnRewards();
+      this.trackUserClickOnReward();
 
     },
 
