@@ -54,6 +54,23 @@ describe Project do
       it { should == [@project_03] }
     end
   end
+  
+  describe '.by_progress' do
+    subject { Project.by_progress(20) }
+
+    before do
+      @project_01 = FactoryGirl.create(:project, goal: 100)
+      @project_02 = FactoryGirl.create(:project, goal: 100)
+      @project_03 = FactoryGirl.create(:project, goal: 100)
+      
+      FactoryGirl.create(:backer, value: 10, project: @project_01)
+      FactoryGirl.create(:backer, value: 10, project: @project_01)
+      FactoryGirl.create(:backer, value: 30, project: @project_02)
+      FactoryGirl.create(:backer, value: 10, project: @project_03)
+    end
+    
+    it { should have(2).itens }
+  end
 
   describe '.between_created_at' do
     let(:start_at) { '17/01/2013' }
@@ -68,6 +85,24 @@ describe Project do
 
     it { should == [@project_01] }
   end
+  
+  describe '.between_expires_at' do
+    let(:start_at) { '17/01/2013' }
+    let(:ends_at) { '21/01/2013' }
+    subject { Project.between_expires_at(start_at, ends_at) }
+    
+    let(:project_01) { FactoryGirl.create(:project) }
+    let(:project_02) { FactoryGirl.create(:project) }
+    let(:project_03) { FactoryGirl.create(:project) }
+    
+    before do
+      project_01.update_attributes({ expires_at: '19/01/2013' })
+      project_02.update_attributes({ expires_at: '23/01/2013' })
+      project_03.update_attributes({ expires_at: '26/01/2013' })
+    end
+
+    it { should == [project_01] }
+  end  
 
   describe '.finish_projects!' do
     before do
@@ -216,6 +251,23 @@ describe Project do
     end
     subject{ Project.online}
     it{ should == [@p] }
+  end
+  
+  describe '#can_go_to_second_chance?' do
+    let(:project) { FactoryGirl.create(:project, goal: 100) }
+    subject { project.can_go_to_second_chance? }
+    
+    before { FactoryGirl.create(:backer, value: 20, confirmed: true, project: project) }
+    
+    context 'when confirmed and pending backers reached 30% of the goal' do
+      before { FactoryGirl.create(:backer, value: 10, confirmed: false, payment_token: 'ABC', project: project) }
+      
+      it { should be_true }
+    end
+    
+    context 'when confirmed and pending backers reached less of 30% of the goal' do
+      it { should be_false }      
+    end
   end
 
   describe '#reached_goal?' do
@@ -530,18 +582,29 @@ describe Project do
           subject.approve
         end
         
-        context 'when project is expired and the sum of the pending backers dont reached the goal' do
+        context 'when project is expired and the sum of the pending backers and confirmed backers dont reached the goal' do
           before do
-            backer = FactoryGirl.create(:backer, value: 100, project: subject, created_at: 2.days.ago)
+            FactoryGirl.create(:backer, value: 100, project: subject, created_at: 2.days.ago)
             subject.finish
           end
                     
           its(:failed?) { should be_true }
         end
+        
+        context 'when project is expired and the sum of the pending backers and confirmed backers reached 30% of the goal' do
+          before do
+            FactoryGirl.create(:backer, value: 100, project: subject, created_at: 2.days.ago)
+            FactoryGirl.create(:backer, value: 9_000, project: subject, payment_token: 'ABC', confirmed: false)
+
+            subject.finish
+          end
+                    
+          its(:waiting_funds?) { should be_true }
+        end
 
         context 'when project is expired and have recent backers without confirmation' do
           before do
-            backer = FactoryGirl.create(:backer, value: 30_000, project: subject, payment_token: 'ABC', confirmed: false)
+            FactoryGirl.create(:backer, value: 30_000, project: subject, payment_token: 'ABC', confirmed: false)
             subject.finish
           end
 
