@@ -49,7 +49,13 @@ class Project < ActiveRecord::Base
     return scoped unless start_at.present? && ends_at.present?
     where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
   end
+  
+  def self.between_expires_at(start_at, ends_at)
+    return scoped unless start_at.present? && ends_at.present?
+    where("expires_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+  end  
 
+  scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_permalink, ->(p) { where(permalink: p) }

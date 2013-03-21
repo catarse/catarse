@@ -18,6 +18,9 @@ pt:
         title: 'Relatórios financeiros'
         total_projects: 'projetos'
         submit: 'filtrar'
+        by_state: 'Por estado'
+        between_expires_at: 'Expiram entre'
+        by_progress: Por progresso %
     projects:
       index:
         by_state: 'Por estado'
