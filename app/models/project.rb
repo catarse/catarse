@@ -233,6 +233,10 @@ class Project < ActiveRecord::Base
   def pending_backers_reached_the_goal?
     (pledged + backers.in_time_to_confirm.sum(&:value)) >= goal
   end
+  
+  def can_go_to_second_chance?
+    (pledged + backers.in_time_to_confirm.sum(&:value)) >= (goal*0.3.to_f)
+  end
 
   #NOTE: state machine things
   state_machine :state, :initial => :draft do
@@ -257,11 +261,11 @@ class Project < ActiveRecord::Base
 
     event :finish do
       transition online: :failed,             if: ->(project) {
-        project.expired? && !project.pending_backers_reached_the_goal?
+        project.expired? && !project.pending_backers_reached_the_goal? && !project.can_go_to_second_chance?
       }
 
       transition online: :waiting_funds,      if: ->(project) {
-        project.expired? && project.in_time_to_wait? && project.pending_backers_reached_the_goal?
+        project.expired? && project.in_time_to_wait? && (project.pending_backers_reached_the_goal? || project.can_go_to_second_chance?)
       }
       
       transition waiting_funds: :successful,  if: ->(project) {
