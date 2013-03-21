@@ -26,10 +26,6 @@ var CATARSE = {
 
 
     initialize: function(){
-      this.user = (this.namespace.data('user') != null ) ? this.namespace.data('user') : null;
-
-
-      this.identifyUser();
       this.trackUserClickOnProjectsImage();
       this.trackUserClickOnProjectsTitle();
       this.trackUserClickOnBackButton();
@@ -37,12 +33,14 @@ var CATARSE = {
       this.trackUserClickOnReviewAndMakePayment();
       this.trackUserClickOnAcceptTerms();
       this.trackUserClickOnPaymentButton();
-
+      this.trackUserClickOnReward();
 
     },
 
 
     identifyUser: function(){
+      this.user = (this.namespace.data('user') != null ) ? this.namespace.data('user') : null;
+
       if (this.user !== null){
         mixpanel.name_tag(this.user.id + '-' + this.user.name);
         mixpanel.identify(this.user.id);
@@ -51,11 +49,12 @@ var CATARSE = {
     },
 
     trackOnMixPanel: function(target, event, text, options){
-    
       var self = this;
-
       $(target).on(event, function(){
+  
+        self.identifyUser();
 
+  
         var obj     = $(this);
         var usr     = (self.user != null) ? self.user.id : null;
         var ref     = (obj.attr('href') != undefined) ? obj.attr('href') : null;
@@ -71,12 +70,15 @@ var CATARSE = {
 
         var opt     = $.fn.extend(default_options, opt);
 
-        self.identifyUser();
         mixpanel.track(text, opt);
       });
 
     },
-
+    trackUserClickOnReward: function(){
+      this.trackOnMixPanel('#rewards .clickable', 'click', 'Clicked on a reward');
+      this.trackOnMixPanel('#rewards .clickable_owner span.avaliable', 'click', 'Clicked on a reward');
+    },
+    
     trackUserClickOnRecommendedProject: function(){
       this.trackOnMixPanel('#recommended_header h2', 'click', 'Clicked on a recommended banner');
     },

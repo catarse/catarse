@@ -78,5 +78,23 @@ class ProjectObserver < ActiveRecord::Observer
 
     project.update_attributes finished: true, successful: project.successful?
   end
+  
+  def sync_with_mailchimp(project)
+    begin
+      user = project.user
+      mailchimp_params = { EMAIL: user.email, FNAME: user.name, CITY: user.address_city, STATE: user.address_state }
+    
+      if project.successful?
+        CatarseMailchimp::API.subscribe(mailchimp_params, Configuration[:mailchimp_successful_projects_list])
+      end
+    
+      if project.failed?
+        CatarseMailchimp::API.subscribe(mailchimp_params, Configuration[:mailchimp_failed_projects_list])
+      end
+    rescue
+      Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
+      Rails.logger.info "-----> #{e.inspect}"      
+    end
+  end
 
 end
