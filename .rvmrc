@@ -1,1 +1,1 @@
-rvm --create 1.9.3@catarse
+rvm --create 1.9.3-p392@catarse
