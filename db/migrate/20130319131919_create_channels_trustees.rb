@@ -1,7 +1,7 @@
 class CreateChannelsTrustees < ActiveRecord::Migration
   def up
     create_table :channels_trustees do |t|
-      t.integer :trustee_id, index: { with: :channel_id, unique: true }
+      t.integer :user_id, index: { with: :channel_id, unique: true }
       t.integer :channel_id, index: true
     end
   end

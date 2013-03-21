@@ -7,6 +7,7 @@ class Channel < ActiveRecord::Base
   has_and_belongs_to_many :projects
   has_and_belongs_to_many :trustees, class_name: :User, join_table: :channels_trustees
 
+
   # Links to channels should be their permalink
   def to_param; self.permalink end
 end
