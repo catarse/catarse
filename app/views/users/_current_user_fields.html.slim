@@ -50,7 +50,7 @@
             = f.input :email, :as => :string
             = hidden_field_tag 'id', @user.id
             = f.input :newsletter, as: :boolean, label: t('.newsletter')
-            = f.input :bio, :as => :text, :input_html => { :rows => 5, :cols => 20, :maxlength => 240  }
+            = f.input :bio, :as => :text, :input_html => { :rows => 5, :cols => 20, :maxlength => 140  }
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"
 #change_password
