@@ -99,14 +99,14 @@ group :production do
   # Enables memcachier env vars to work with dalli
   # If you are not using memcachier you should 
   # comment this line and configure dalli manually
-  gem 'memcachier'
+  #gem 'memcachier'
 
   # Enables dalli as cache provider for rails using memcache
   # If you are not using a memcache server for your cache you should
   # comment out this line and comment out the line
   #    config.cache_store = :dalli_store 
   # in config/production.rb
-  gem 'dalli'
+  #gem 'dalli'
 end
 
 group :development do
