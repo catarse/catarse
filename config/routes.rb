@@ -71,6 +71,7 @@ Catarse::Application.routes.draw do
       get 'credits'
       put 'unsubscribe_update'
       put 'update_email'
+      put 'update_password'
     end
   end
   match "/users/:id/request_refund/:back_id" => 'users#request_refund'

@@ -8,7 +8,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :omniauthable
   begin
-    sync_with_mailchimp
+    # NOTE: Sync normal users on mailchimp
+    sync_with_mailchimp subscribe_data: ->(user) {
+                          { EMAIL: user.email, FNAME: user.name,
+                          CITY: user.address_city, STATE: user.address_state }
+                        },
+                        list_id: Configuration[:mailchimp_list_id],
+                        subscribe_when: ->(user) { user.newsletter_changed? && user.newsletter },
+                        unsubscribe_when: ->(user) { user.newsletter_changed? && !user.newsletter },
+                        unsubscribe_email: ->(user) { user.email }
+
   rescue Exception => e
     Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
     Rails.logger.info "-----> #{e.inspect}"
@@ -228,6 +237,6 @@ class User < ActiveRecord::Base
 
   protected
   def password_required?
-    provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
+    is_devise? && (!persisted? || !password.nil? || !password_confirmation.nil?)
   end
 end
