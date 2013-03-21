@@ -146,6 +146,12 @@ var CATARSE = {
         window.view = new CATARSE.Adm.Projects.Index({el: $('body')});
       }
     },
+    
+    financials:{
+      index: function(){
+        window.view = new CATARSE.Adm.Financials.Index({el: $('body')});
+      }
+    },    
 
     backers:{
       index: function(){
