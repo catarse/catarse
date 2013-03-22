@@ -49,8 +49,6 @@ class ProjectsController < ApplicationController
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
 
-    user_attributes = params[:project].delete(:user)
-    current_user.update_attributes(user_attributes) if current_user.email != user_attributes[:email]
     @project = current_user.projects.new(params[:project])
 
     create!(:notice => t('projects.create.success')) do |success, failure|
