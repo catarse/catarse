@@ -29,7 +29,6 @@ class Project < ActiveRecord::Base
   has_many :updates, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
   has_one :project_total
-  accepts_nested_attributes_for :user
   accepts_nested_attributes_for :rewards
 
   has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
@@ -43,17 +42,7 @@ class Project < ActiveRecord::Base
     ],
     associated_against:  {user: [:name, :address_city ]},
     :using => {tsearch: {:dictionary => "portuguese"}},
-    ignoring: :accents
-
-  def self.between_created_at(start_at, ends_at)
-    return scoped unless start_at.present? && ends_at.present?
-    where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
-  end
-  
-  def self.between_expires_at(start_at, ends_at)
-    return scoped unless start_at.present? && ends_at.present?
-    where("expires_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
-  end  
+    ignoring: :accents 
 
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_state, ->(state) { where(state: state) }
@@ -112,6 +101,16 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true
   validates_format_of :permalink, with: /^(\w|-)*$/, :allow_blank => true, :allow_nil => true
   mount_uploader :video_thumbnail, LogoUploader
+
+  def self.between_created_at(start_at, ends_at)
+    return scoped unless start_at.present? && ends_at.present?
+    where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+  end
+  
+  def self.between_expires_at(start_at, ends_at)
+    return scoped unless start_at.present? && ends_at.present?
+    where("expires_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+  end 
 
   def self.finish_projects!
     expired.each do |resource|
