@@ -8,7 +8,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :omniauthable
   begin
-    sync_with_mailchimp
+    # NOTE: Sync normal users on mailchimp
+    sync_with_mailchimp subscribe_data: ->(user) {
+                          { EMAIL: user.email, FNAME: user.name,
+                          CITY: user.address_city, STATE: user.address_state }
+                        },
+                        list_id: Configuration[:mailchimp_list_id],
+                        subscribe_when: ->(user) { user.newsletter_changed? && user.newsletter },
+                        unsubscribe_when: ->(user) { user.newsletter_changed? && !user.newsletter },
+                        unsubscribe_email: ->(user) { user.email }
+
   rescue Exception => e
     Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
     Rails.logger.info "-----> #{e.inspect}"
@@ -123,14 +132,7 @@ class User < ActiveRecord::Base
       user.nickname = auth["info"]["nickname"]
       user.bio = (auth["info"]["description"][0..139] rescue nil)
       user.locale = I18n.locale.to_s
-
-      if auth["provider"] == "twitter"
-        user.image_url = "https://api.twitter.com/1/users/profile_image?screen_name=#{auth['info']['nickname']}&size=original"
-      end
-
-      if auth["provider"] == "facebook"
-        user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
-      end
+      user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large" if auth["provider"] == "facebook"
     end
     provider = OauthProvider.where(name: auth['provider']).first
     u.authorizations.create! uid: auth['uid'], oauth_provider_id: provider.id if provider
@@ -228,6 +230,6 @@ class User < ActiveRecord::Base
 
   protected
   def password_required?
-    provider == 'devise' && (!persisted? || !password.nil? || !password_confirmation.nil?)
+    is_devise? && (!persisted? || !password.nil? || !password_confirmation.nil?)
   end
 end

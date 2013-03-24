@@ -24,10 +24,11 @@ gem 'schema_plus'
 gem 'schema_associations'
 
 # Payment engine using Paypal
-gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: 'bce4d8c'
+gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '54ddacd'
 
 # Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '9ba2b2b'
+gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '859e9a0'
+#gem 'catarse_moip',           path: '../catarse_moip'
 
 # TODO: Check the Catarse_Moip dependency
 gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
@@ -56,7 +57,7 @@ gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1c
 gem "airbrake"
 
 # Email marketing
-gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp'
+gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref: '45dc426'
 
 # HTML manipulation and formatting
 gem 'formtastic',   '~> 2.1.1'
@@ -94,6 +95,12 @@ group :production do
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
   gem 'heroku-deflater', '~> 0.4.1'
+
+  # Using dalli and memcachier have not presented significative performance gains
+  # Probably this is due to our pattern of cache usage 
+  # + the lack of concurrent procs in our deploy
+  #gem 'memcachier'
+  #gem 'dalli'
 end
 
 group :development do

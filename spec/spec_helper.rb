@@ -25,6 +25,8 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    CatarseMailchimp::API.stubs(:subscribe).returns(true)
+    CatarseMailchimp::API.stubs(:unsubscribe).returns(true)    
     PaperTrail.controller_info = {}
     PaperTrail.whodunnit = nil
     DatabaseCleaner.start
