@@ -13,21 +13,15 @@ describe ProjectsController do
   describe "POST create" do
     let(:project){ FactoryGirl.build(:project, expires_at: nil) }
     before do
-      post :create, { locale: :pt, project: project.attributes.merge({ user: { email: 'foo@bar.com' } }) }
+      post :create, { locale: :pt, project: project.attributes }
     end
 
-    #TODO: still need to fix this case, now we got a 500
     context "when no user is logged in" do
-      #it{ should redirect_to new_user_session_path }
+      it{ should redirect_to new_user_session_path }
     end
 
-    context "when user is logged in and email has changed" do
-      let(:current_user){ FactoryGirl.create(:user, email: 'foo@bar.com') }
-      it{ should redirect_to project_by_slug_path(project.permalink) }
-    end
-
-    context "when user is logged in but email is still the same" do
-      let(:current_user){ FactoryGirl.create(:user, email: 'another@email.com') }
+    context "when user is logged in" do
+      let(:current_user){ FactoryGirl.create(:user) }
       it{ should redirect_to project_by_slug_path(project.permalink) }
     end
   end

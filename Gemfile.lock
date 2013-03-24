@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/catarse/catarse_mailchimp
-  revision: a5be917969a1df6010fbbdea25a5c1407c6f8659
+  revision: 45dc426a68e97e2e2490ee058b7033c70b5a83d4
+  ref: 45dc426
   specs:
     catarse_mailchimp (0.0.1)
       mailchimp
@@ -8,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_moip.git
-  revision: 9ba2b2be228a90071af2393b38e6f2a6ca9df624
-  ref: 9ba2b2b
+  revision: 859e9a09d8fa4ad2fa9cc88bb1cb009fddff3adc
+  ref: 859e9a0
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
@@ -17,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_paypal_express.git
-  revision: bce4d8c0c76279382f10cad101f48de4e109e3a8
-  ref: bce4d8c
+  revision: 54ddacda0fa99f3a6454e4bc80b06bce0d4b451c
+  ref: 54ddacd
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -244,7 +245,7 @@ GEM
     mime-types (1.21)
     mocha (0.10.5)
       metaclass (~> 0.0.1)
-    multi_json (1.6.1)
+    multi_json (1.7.1)
     multipart-post (1.2.0)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
@@ -402,7 +403,7 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.17.0)
-    tilt (1.3.5)
+    tilt (1.3.6)
     timers (1.1.0)
     treetop (1.4.12)
       polyglot

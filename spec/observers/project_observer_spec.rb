@@ -7,6 +7,7 @@ describe ProjectObserver do
   let(:project_success){ FactoryGirl.create(:notification_type, :name => 'project_success') }
   let(:backer_successful){ FactoryGirl.create(:notification_type, :name => 'backer_project_successful') }
   let(:backer_unsuccessful){ FactoryGirl.create(:notification_type, :name => 'backer_project_unsuccessful') }
+  let(:pending_backer_unsuccessful){ FactoryGirl.create(:notification_type, :name => 'pending_backer_project_unsuccessful') }  
   let(:project_visible){ FactoryGirl.create(:notification_type, :name => 'project_visible') }
   let(:project_rejected){ FactoryGirl.create(:notification_type, :name => 'project_rejected') }
   let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => nil) }
@@ -71,6 +72,38 @@ describe ProjectObserver do
       end
     end
   end
+  
+  describe "sync with mailchimp" do
+    before do
+      Configuration[:mailchimp_successful_projects_list] = 'OwnerListId'
+      Configuration[:mailchimp_failed_projects_list] = 'UnsuccesfulListId'
+    end
+    
+    let(:user) { FactoryGirl.create(:user) }
+    let(:project) { FactoryGirl.create(:project, online_days: -7, goal: 10, state: 'waiting_funds', user: user) }
+    
+    context 'when project is successful' do
+      before do
+        FactoryGirl.create(:backer, value: 15, confirmed: true, project: project)
+      end
+      
+      it 'subscribe project owner to successful projects mailchimp list' do 
+        CatarseMailchimp::API.expects(:subscribe).with({ EMAIL: user.email, FNAME: user.name, 
+          CITY: user.address_city, STATE: user.address_state }, 'OwnerListId')        
+      end
+      
+      after { project.finish }
+    end
+    
+    context 'when project is unsuccesful' do
+      it 'subscribe project owner to failed projects mailchimp list' do 
+        CatarseMailchimp::API.expects(:subscribe).with({ EMAIL: user.email, FNAME: user.name, 
+          CITY: user.address_city, STATE: user.address_state }, 'UnsuccesfulListId')        
+      end
+      
+      after { project.finish }      
+    end
+  end
 
   describe "notify_backers" do
 
@@ -95,6 +128,21 @@ describe ProjectObserver do
         project.finish!
       end
       it("should notify the project backers and owner"){ subject }
+    end
+    
+    context "when project is unsuccessful with pending backers" do
+      let(:project){ FactoryGirl.create(:project, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
+
+      before do
+        FactoryGirl.create(:backer, project: project, key: 'ABC1', payment_method: 'ABC', payment_token: 'ABC', value: 20, confirmed: true)
+        FactoryGirl.create(:backer, project: project, key: 'ABC2', payment_method: 'ABC', payment_token: 'ABC', value: 20, confirmed: false)
+      end
+
+      before do
+        Notification.expects(:create_notification_once).at_least(3)
+        project.finish!
+      end
+      it("should notify the project backers and owner"){ subject }      
     end
 
   end
