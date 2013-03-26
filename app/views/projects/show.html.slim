@@ -20,17 +20,25 @@
 
 #page_content
   .container
+  
     - if @project.draft?
-      br
-      #project_warning.bootstrap-alert
-        - if can? :update, @project
-          .alert.alert-warning
-            = t('.waiting_owner').html_safe
-    - elsif @project.rejected?
-      br
-      #project_warning.bootstrap-alert
-        .alert.alert-warning
-          = t('.rejected').html_safe
+      = render "draft_warning"
+
+    - if @project.rejected?
+      = render "rejected_warning"
+      
+    - if @project.online? && can?(:update, @project)
+      = render "online_warning"
+      
+    - if @project.waiting_funds? && can?(:update, @project)
+      = render "waiting_funds_warning"
+      
+    - if @project.successful? && can?(:update, @project)
+      = render "successful_warning"
+
+    - if @project.failed? && can?(:update, @project)
+      = render "failed_warning"
+
     #project_description[data-project=@project.to_json]
     .project_image
       = image_tag @project.display_image, :width=>'85px', :height => '67px'
@@ -309,7 +317,7 @@
                     .remaining
                       = reward.display_remaining
                 - in_time_to_confirm = reward.backers.in_time_to_confirm.count
-                - if can?(:update, @project) && in_time_to_confirm > 0
+                - if in_time_to_confirm > 0
                   .maximum_backers.in_time_to_confirm.clearfix
                     .pending= t('backs_to_confirm', count: in_time_to_confirm)
                 .clearfix

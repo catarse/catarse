@@ -20,6 +20,12 @@ class BackerObserver < ActiveRecord::Observer
         {backer_id: backer.id},
         backer: backer,
         project_name: backer.project.name)
+
+      Notification.create_notification_once(:project_owner_backer_confirmed,
+        backer.project.user,
+        {backer_id: backer.id},
+        backer: backer,
+        project_name: backer.project.name)
     end
 
     unless backer.user.have_address?
