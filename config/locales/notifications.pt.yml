@@ -1,5 +1,8 @@
 pt:
   notifications:
+    project_owner_backer_confirmed:
+      subject: "Uhuu! Mais um novo apoiador pro seu projeto"
+      header: "Um novo apoio acabou de ser confirmado para o seu projeto"
     confirm_backer:
       subject: "Obrigado! Seu apoio para %{project_name} foi confirmado!"
       header: "Apoio confirmadíssimo o/"
