@@ -16,8 +16,6 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
       }
       if(!permalink_ok())
         all_ok = false
-      if(!ok('#project_user_email'))
-        all_ok = false
       if(!ok('#project_more_links'))
         all_ok = false
       if(!ok('#project_how_know'))
@@ -170,7 +168,6 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
     $('#project_first_backers').keyup(everything_ok)
     $('#project_more_links').keyup(everything_ok)
     $('#project_how_know').keyup(everything_ok)
-    $('#project_user_email').keyup(everything_ok)
     $('#accept').click(everything_ok)
 
     $('#project_goal').numeric(false)

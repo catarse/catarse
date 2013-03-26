@@ -189,10 +189,6 @@ describe User do
       end
       its(:image_url){ should == "https://graph.facebook.com/#{auth['uid']}/picture?type=large" }
     end
-
-    context "when user is from twitter" do
-      its(:image_url){ should == "https://api.twitter.com/1/users/profile_image?screen_name=#{auth['info']['nickname']}&size=original" }
-    end
   end
 
   describe ".create" do

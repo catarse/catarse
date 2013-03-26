@@ -9,13 +9,6 @@
         .clearfix
         = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
           = form.inputs do
-            = form.semantic_fields_for current_user do |f|
-              .input
-                = f.label :email, "#{t('activerecord.attributes.user.email')} *"
-                .input-prepend.permalink
-                  span.add-on= "@"
-                  = f.text_field :email
-
             .input
               .bootstrap-alert
                 span

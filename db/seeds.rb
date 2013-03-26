@@ -36,7 +36,8 @@
 [
   'confirm_backer','payment_slip','project_success','backer_project_successful',
   'backer_project_unsuccessful','project_received','updates','project_unsuccessful',
-  'project_visible','processing_payment','new_draft_project', 'project_rejected', 'pending_backer_project_unsuccessful'
+  'project_visible','processing_payment','new_draft_project', 'project_rejected', 
+  'pending_backer_project_unsuccessful', 'project_owner_backer_confirmed'
 ].each do |name|
   NotificationType.find_or_create_by_name name
 end

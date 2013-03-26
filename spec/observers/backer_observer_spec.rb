@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe BackerObserver do
+  let(:project_owner_backer_confirmed){ FactoryGirl.create(:notification_type, :name => 'project_owner_backer_confirmed') }
   let(:confirm_backer){ FactoryGirl.create(:notification_type, :name => 'confirm_backer') }
   let(:project_success){ FactoryGirl.create(:notification_type, :name => 'project_success') }
   let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => nil) }
@@ -11,6 +12,7 @@ describe BackerObserver do
     Notification.unstub(:create_notification_once)
     confirm_backer # It should create the NotificationType before creating the Backer
     project_success
+    project_owner_backer_confirmed
   end
 
   describe "after_create" do
@@ -18,7 +20,7 @@ describe BackerObserver do
     its(:key){ should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s }
     its(:payment_method){ should == 'MoIP' }
   end
-
+  
   describe "before_save" do
 
     context "when payment_choice is updated to BoletoBancario" do
@@ -57,12 +59,26 @@ describe BackerObserver do
     end
 
     context "when is not yet confirmed" do
-      before do
-        Notification.expects(:create_notification).with(:confirm_backer, backer.user, :backer => backer,  :project_name => backer.project.name)
+      context 'notify the backer' do
+        before do
+          Notification.expects(:create_notification).at_least_once.with(:confirm_backer, 
+            backer.user, :backer => backer,  :project_name => backer.project.name)
+        end
+        
+        it("should send confirm_backer notification"){ subject }
+        its(:confirmed_at) { should_not be_nil }
       end
-      it("should send confirm_backer notification"){ subject }
-      its(:confirmed_at) { should_not be_nil }
-    end
+      
+      context 'notify project owner about this backer' do
+        before do
+          Notification.expects(:create_notification).at_least_once.with(:project_owner_backer_confirmed, 
+            backer.project.user, :backer => backer, :project_name => backer.project.name)
+        end
+
+        it("should send project_owner_backer_confirmed notification"){ subject }
+        its(:confirmed_at) { should_not be_nil }        
+      end
+    end        
 
     context "when is already confirmed" do
       let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now) }

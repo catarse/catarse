@@ -1,8 +1,7 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
   include ActionView::Helpers::DateHelper
-
-  load_and_authorize_resource only: [ :new, :update, :update, :destroy ]
+  load_and_authorize_resource only: [ :new, :create, :update, :destroy ]
 
   inherit_resources
   has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired
@@ -49,8 +48,6 @@ class ProjectsController < ApplicationController
     params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
     validate_rewards_attributes if params[:project][:rewards_attributes].present?
 
-    user_attributes = params[:project].delete(:user)
-    current_user.update_attributes(user_attributes) if current_user.email != user_attributes[:email]
     @project = current_user.projects.new(params[:project])
 
     create!(:notice => t('projects.create.success')) do |success, failure|
@@ -61,7 +58,7 @@ class ProjectsController < ApplicationController
   def show
     begin
       if params[:permalink].present?
-        @project = Project.find_by_permalink! params[:permalink]
+        @project = Project.where("lower(permalink) = ?", params[:permalink].downcase).last
       else
         return redirect_to project_by_slug_path(resource.permalink)
       end
@@ -88,7 +85,7 @@ class ProjectsController < ApplicationController
   end
 
   def check_slug
-    project = Project.where("permalink = ?", params[:permalink])
+    project = Project.where("lower(permalink) = ?", params[:permalink].downcase)
     render :json => {:available => project.empty?}.to_json
   end
 

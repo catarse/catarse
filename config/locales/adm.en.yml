@@ -11,6 +11,8 @@ en:
     financials:
       index:
         submit: 'Filter'
+        by_state: 'By state'
+        by_progress: By progress %        
     users:
       index:
         title: "Management backers"

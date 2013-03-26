@@ -146,14 +146,7 @@ class User < ActiveRecord::Base
       user.nickname = auth["info"]["nickname"]
       user.bio = (auth["info"]["description"][0..139] rescue nil)
       user.locale = I18n.locale.to_s
-
-      if auth["provider"] == "twitter"
-        user.image_url = "https://api.twitter.com/1/users/profile_image?screen_name=#{auth['info']['nickname']}&size=original"
-      end
-
-      if auth["provider"] == "facebook"
-        user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large"
-      end
+      user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large" if auth["provider"] == "facebook"
     end
     provider = OauthProvider.where(name: auth['provider']).first
     u.authorizations.create! uid: auth['uid'], oauth_provider_id: provider.id if provider
