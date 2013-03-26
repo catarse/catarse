@@ -317,7 +317,7 @@
                     .remaining
                       = reward.display_remaining
                 - in_time_to_confirm = reward.backers.in_time_to_confirm.count
-                - if can?(:update, @project) && in_time_to_confirm > 0
+                - if in_time_to_confirm > 0
                   .maximum_backers.in_time_to_confirm.clearfix
                     .pending= t('backs_to_confirm', count: in_time_to_confirm)
                 .clearfix
