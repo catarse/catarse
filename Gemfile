@@ -121,6 +121,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara',   '~> 2.0.2'
   gem 'jasmine'
+  gem 'coveralls', require: false
 end
 
 
