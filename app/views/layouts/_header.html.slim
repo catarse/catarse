@@ -25,6 +25,9 @@
         - if current_user.admin?
           - for menu, path in Adm::BaseController.menu do
             li= link_to menu, path
+        - if current_user.trustee?
+          - for menu, path in Channels::AdmProjectsController.menu do
+            li.channel_trustee= link_to menu, path
         li.divider
         li= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
     - else

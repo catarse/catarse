@@ -17,6 +17,7 @@ describe User do
     it{ should have_many :authorizations }
     it{ should have_many(:oauth_providers).through(:authorizations) }
     it{ should have_one :user_total }
+    it{ should have_and_belong_to_many :channels }
   end
 
   describe "validations" do
@@ -105,6 +106,8 @@ describe User do
     subject{ User.by_email 'foo@bar' }
     it{ should == [@u] }
   end
+  
+
 
   describe ".who_backed_project" do
     subject{ User.who_backed_project(successful_project.id) }
@@ -286,6 +289,24 @@ describe User do
       let(:user){ FactoryGirl.create(:user) }
       it{ should == nil }
     end
+  end
+  
+  describe "#trustee?" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    context "when user is a moderator of one or more channels" do
+      it "should return true" do
+        user.channels << FactoryGirl.create(:channel)
+        expect(user.trustee?).to eq(true)
+      end
+    end
+
+    context "when user is not a moderator of any channels" do
+      it "should return false" do
+        expect(user.trustee?).to eq(false)
+      end
+    end
+
   end
 
 end

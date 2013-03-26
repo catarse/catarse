@@ -51,6 +51,11 @@ class Ability
       current_user.admin
     end
 
+
+    # NOTE: Channel authorization
+    can :update, :channels, trustee: { user_id: current_user.id } 
+
+
     # NOTE: Backer authorizations
     cannot :show, :backers
     can :create, :backers if current_user.persisted?

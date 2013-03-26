@@ -113,6 +113,7 @@ Catarse::Application.routes.draw do
 
   # Channels
   namespace :channels do
+    resources :adm_projects
     resources :profiles, path: '' do
       resources :projects, only: [:new, :create, :show]
     end

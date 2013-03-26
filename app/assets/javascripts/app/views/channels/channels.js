@@ -22,8 +22,8 @@ CATARSE.channels = {
 
   projects: {
     new: function() {
-          $('#project_form').attr('action', window.location.pathname.slice(0,-4));
-          return new CATARSE.ProjectsNewView();
+      $('#project_form').attr('action', window.location.pathname.slice(0,-4));
+      return new CATARSE.ProjectsNewView();
     },
   }
 }
