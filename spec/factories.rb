@@ -116,7 +116,8 @@ FactoryGirl.define do
   factory :channel do
     name "Test"
     description "Lorem Ipsum"
-    permalink "test-page"
+    sequence(:permalink) { |n| "#{n}-test-page" }
   end
+  
 end
 
