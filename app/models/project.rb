@@ -40,7 +40,7 @@ class Project < ActiveRecord::Base
     ],
     associated_against:  {user: [:name, :address_city ]},
     :using => {tsearch: {:dictionary => "portuguese"}},
-    ignoring: :accents 
+    ignoring: :accents
 
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_state, ->(state) { where(state: state) }
@@ -96,7 +96,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
   validates_length_of :headline, :maximum => 140
   validates_numericality_of :online_days, :less_than_or_equal_to => 60
-  validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true
+  validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true, :case_sensitive => false
   validates_format_of :permalink, with: /^(\w|-)*$/, :allow_blank => true, :allow_nil => true
   validates_format_of :video_url, with: Regexp.union(/https?:\/\/(www\.)?vimeo.com\/(\d+)/, VideoInfo::Youtube.new('').regex), message: I18n.t('project.video_regex_validation'), allow_blank: true
   mount_uploader :video_thumbnail, LogoUploader
@@ -105,11 +105,11 @@ class Project < ActiveRecord::Base
     return scoped unless start_at.present? && ends_at.present?
     where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
   end
-  
+
   def self.between_expires_at(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
     where("expires_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
-  end 
+  end
 
   def self.finish_projects!
     expired.each do |resource|
@@ -237,11 +237,11 @@ class Project < ActiveRecord::Base
   def in_time_to_wait?
     Time.now < 4.weekdays_from(expires_at)
   end
-  
+
   def pending_backers_reached_the_goal?
     (pledged + backers.in_time_to_confirm.sum(&:value)) >= goal
   end
-  
+
   def can_go_to_second_chance?
     (pledged + backers.in_time_to_confirm.sum(&:value)) >= (goal*0.3.to_f)
   end
@@ -275,7 +275,7 @@ class Project < ActiveRecord::Base
       transition online: :waiting_funds,      if: ->(project) {
         project.expired? && project.in_time_to_wait? && (project.pending_backers_reached_the_goal? || project.can_go_to_second_chance?)
       }
-      
+
       transition waiting_funds: :successful,  if: ->(project) {
         project.reached_goal? && !project.in_time_to_wait?
       }
@@ -284,7 +284,7 @@ class Project < ActiveRecord::Base
         project.expired? && !project.reached_goal? && !project.in_time_to_wait?
       }
     end
-    
+
     after_transition online: :failed, do: :after_transition_of_online_to_failed
     after_transition waiting_funds: [:successful, :failed], do: :after_transition_of_wainting_funds_to_successful_or_failed
     after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
@@ -292,11 +292,11 @@ class Project < ActiveRecord::Base
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
     after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
   end
-  
+
   def after_transition_of_any_to_failed_or_successful
     notify_observers :sync_with_mailchimp
   end
-  
+
   def after_transition_of_online_to_failed
     notify_observers :notify_users
   end
