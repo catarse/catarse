@@ -58,7 +58,7 @@ class ProjectsController < ApplicationController
   def show
     begin
       if params[:permalink].present?
-        @project = Project.find_by_permalink! params[:permalink]
+        @project = Project.where("lower(permalink) = ?", params[:permalink].downcase).last
       else
         return redirect_to project_by_slug_path(resource.permalink)
       end
@@ -85,7 +85,7 @@ class ProjectsController < ApplicationController
   end
 
   def check_slug
-    project = Project.where("permalink = ?", params[:permalink])
+    project = Project.where("lower(permalink) = ?", params[:permalink].downcase)
     render :json => {:available => project.empty?}.to_json
   end
 
