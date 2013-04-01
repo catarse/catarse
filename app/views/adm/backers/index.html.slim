@@ -95,6 +95,7 @@
                       = link_to 'javascript:void(0);', :"data-toggle" => 'dropdown', :class => 'btn btn-mini dropdown-toggle' do
                         span.caret
                       ul.dropdown-menu
+                        li title=("#{t('.no_reward')}" ) = link_to t('.no_reward'), change_reward_adm_backer_path(backer, reward_id: nil), method: :put
                         - backer.available_rewards.each do |reward|
                           li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_adm_backer_path(backer, reward_id: reward.id), method: :put
 
