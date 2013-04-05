@@ -87,10 +87,15 @@ gem 'routing-filter'
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
 gem 'httpclient',     '2.2.5'
 
-# Server
-gem 'thin'
+
 
 group :production do
+
+  # Gem used to handle image uploading
+  gem 'fog'
+
+  # Workers, forks and all that jazz
+  gem 'unicorn'
 
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
