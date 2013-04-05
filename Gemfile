@@ -37,7 +37,6 @@ gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 gem 'draper'
 
 # Frontend stuff
-gem 'slim'
 gem 'slim-rails'
 gem 'jquery-rails'
 gem 'initjs'
@@ -67,7 +66,6 @@ gem 'kaminari'
 # Uploads
 gem 'carrierwave', '~> 0.7.0'
 gem 'rmagick'
-gem 'fog'
 
 # Other Tools
 gem 'feedzirra'
@@ -100,6 +98,10 @@ group :production do
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
   gem 'heroku-deflater', '~> 0.4.1'
+
+
+  # Monitoring with the new new relic
+  gem 'newrelic_rpm'
 
   # Using dalli and memcachier have not presented significative performance gains
   # Probably this is due to our pattern of cache usage 
