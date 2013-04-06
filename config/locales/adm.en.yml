@@ -12,7 +12,7 @@ en:
       index:
         submit: 'Filter'
         by_state: 'By state'
-        by_progress: By progress %        
+        by_progress: By progress %
     users:
       index:
         title: "Management backers"
@@ -47,6 +47,7 @@ en:
         refunded: Refunded?
         requested_refund: "Requested refund?"
         reward: Reward
+        no_reward: "No reward"
         submit: Search
         total_backed: backed
         total_backers: backers

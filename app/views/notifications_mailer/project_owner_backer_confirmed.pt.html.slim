@@ -11,9 +11,10 @@ br
 br
 br
 |<strong>Valor apoiado:</strong> #{backer.display_value}
-br
-br
-|<strong>Recompensa selecionada:</strong> #{backer.reward.display_description}
+- if backer.reward.present?
+  br
+  br
+  |<strong>Recompensa selecionada:</strong> #{backer.reward.display_description}
 br
 br
 |<strong>Email do apoiador:</strong> #{backer.user.email}
