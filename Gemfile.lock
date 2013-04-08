@@ -102,8 +102,6 @@ GEM
     better_errors (0.7.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    binding_of_caller (0.7.1)
-      debug_inspector (>= 0.0.1)
     bourne (1.1.2)
       mocha (= 0.10.5)
     braintree (2.22.0)
@@ -153,7 +151,6 @@ GEM
     curb (0.7.18)
     daemons (1.1.9)
     database_cleaner (0.9.1)
-    debug_inspector (0.0.2)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -314,6 +311,8 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-mini-profiler (0.1.23)
+      rack (>= 1.1.3)
     rack-protection (1.5.0)
       rack
     rack-ssl (1.3.3)
@@ -476,7 +475,6 @@ DEPENDENCIES
   auto_html (= 1.4.2)
   best_in_place
   better_errors
-  binding_of_caller
   cancan!
   capybara (~> 2.0.2)
   carrierwave (~> 0.7.0)
@@ -519,6 +517,7 @@ DEPENDENCIES
   pg
   pg_search
   postgres-copy
+  rack-mini-profiler
   rack-timeout
   rails (= 3.2.12)
   rails_autolink (~> 1.0.7)
