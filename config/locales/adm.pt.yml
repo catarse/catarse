@@ -91,6 +91,7 @@ pt:
         refunded: "Estorno realizado?"
         requested_refund: "Solicitou estorno?"
         reward: Recompensa
+        no_reward: "Sem recompensa"
         submit: Pesquisar
         total_backed: arrecadados
         total_backers: apoiadores

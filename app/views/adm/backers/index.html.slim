@@ -24,26 +24,26 @@
               = text_field_tag :by_user_id, params[:by_user_id], class: 'input-small'
             .input
               = label_tag :by_key, t('.key')
-              = text_field_tag :by_key
+              = text_field_tag :by_key, params[:by_key]
             .input
               = label_tag :project_name_contains, t('.project')
-              = text_field_tag :project_name_contains
+              = text_field_tag :project_name_contains, params[:project_name_contains]
             .input
               = label_tag :user_name_contains, t('.user')
-              = text_field_tag :user_name_contains
+              = text_field_tag :user_name_contains, params[:user_name_contains]
             .bootstrap-twitter
               .input.submit
                 = submit_tag t('.submit'), class: 'btn btn-success'
           fieldset
             .input.check
-              = check_box_tag :confirmed
+              = check_box_tag :confirmed, :on, params[:confirmed]
               = label_tag :confirmed, t('.confirmed')
             .input.check
-              = check_box_tag :credits
+              = check_box_tag :credits, :on, params[:credits]
               = label_tag :credits, t('.credits')
 
             .input.check
-              = check_box_tag :pending_to_refund, 'on', params[:pending_to_refund]
+              = check_box_tag :pending_to_refund, :on, params[:pending_to_refund]
               = label_tag :pending_to_refund, t('.pending_to_refund')
             /.input.check
             /  = check_box_tag :requested_refund
@@ -95,6 +95,7 @@
                       = link_to 'javascript:void(0);', :"data-toggle" => 'dropdown', :class => 'btn btn-mini dropdown-toggle' do
                         span.caret
                       ul.dropdown-menu
+                        li title=("#{t('.no_reward')}" ) = link_to t('.no_reward'), change_reward_adm_backer_path(backer, reward_id: nil), method: :put
                         - backer.available_rewards.each do |reward|
                           li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_adm_backer_path(backer, reward_id: reward.id), method: :put
 
