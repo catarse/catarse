@@ -2,3 +2,9 @@ pt:
   channels:
     adm:
       menu: "Moderação de Canais"
+    projects:
+      progress_html: "<span>%{percent}%</span> financiado"
+      time_remaining_html: 
+        one: "<span>%{count} %{unit}</span> restante"
+        other: "<span>%{count} %{unit}</span> restantes"
+      pledged_html: "<span>%{value}</span> levantados"

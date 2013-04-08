@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
 
   # Channels relation
   has_and_belongs_to_many :channels, join_table: :channels_trustees
-
+  has_many :channels_projects, through: :channels, source: :projects
 
 
 

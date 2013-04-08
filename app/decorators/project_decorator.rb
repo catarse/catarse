@@ -42,5 +42,13 @@ class ProjectDecorator < Draper::Decorator
   def display_goal
     number_to_currency source.goal, :unit => 'R$', :precision => 0, :delimiter => '.'
   end
+
+
+
+  def progress_bar
+    content_tag(:div, id: :progress_wrapper) do
+      content_tag(:div, nil, id: :progress, style: "width: #{source.progress}%") 
+    end
+  end
 end
 

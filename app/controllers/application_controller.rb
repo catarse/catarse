@@ -4,12 +4,14 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']
+    message = exception.message 
+
     if current_user.nil?
       redirect_to new_user_session_path, alert: I18n.t('devise.failure.unauthenticated')
     elsif request.env["HTTP_REFERER"]
-      redirect_to :back, alert: exception.message
+      redirect_to :back, alert: message 
     else
-      redirect_to root_path, alert: exception.message
+      redirect_to root_path, alert: message
     end
   end
 
@@ -21,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   # TODO: Change this way to get the opendata
   before_filter do
-    @fb_admins = [567237711]
+    @fb_admins = [100000428222603,547955110]
   end
 
   before_filter do
