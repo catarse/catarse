@@ -18,7 +18,7 @@ describe "Projects" do
 
   describe "home" do
     before do
-      FactoryGirl.create(:project, state: 'online', online_days: 30)
+      FactoryGirl.create(:project, state: 'online', online_days: 30, online_date: Time.now)
       FactoryGirl.create(:project, state: 'online', online_days: -30)
       visit root_path(:locale => :pt)
     end

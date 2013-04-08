@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   validates_presence_of     :email, :if => :is_devise?
   validates_uniqueness_of   :email, :scope => :provider, :if => :is_devise?
   validates_presence_of     :password, :if => :password_required?
-  validates_confirmation_of :password, :if => :password_required?
+  validates_confirmation_of :password, :if => :password_confirmation_required?
   validates_length_of       :password, :within => 6..128, :allow_blank => true
 
   schema_associations
@@ -243,6 +243,10 @@ class User < ActiveRecord::Base
   end
 
   protected
+  def password_confirmation_required?
+    !password.nil?
+  end
+
   def password_required?
     is_devise? && (!persisted? || !password.nil? || !password_confirmation.nil?)
   end
