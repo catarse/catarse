@@ -1,6 +1,24 @@
 // Channels Styles/Classes that will be reused
 body[data-namespace="channels"]
   font-family: 'Lato', sans-serif 
+  
+  background: white
+
+  .container
+    border: none !important
+    border-radius: 0 !important
   #page_content
-    margin-top: 4em
-    line-height: 1.6em
+    padding: 1.5em 0
+  #page_content.presentation, #page_content.projects
+    border-top: 1px solid lightgray
+    .container
+      background: none
+
+  h1, h2, h3, h4, h5
+    font-weight: bold
+  h1
+    font-size: 1.8em
+    font-weight: bold
+  #page_content.projects
+    background: $body_background
+

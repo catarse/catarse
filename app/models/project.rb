@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, LogoUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
-    :display_pledged, :display_goal, :remaining_days,
+    :display_pledged, :display_goal, :remaining_days, :progress_bar,
     :to => :decorator
 
   schema_associations
