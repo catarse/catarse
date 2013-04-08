@@ -42,11 +42,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_with_password(params[:user])
       flash[:notice] = t('users.current_user_fields.updated')
-      redirect_to root_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
-      redirect_to user_path(@user, :anchor => 'settings')
     end
+    return redirect_to user_path(@user, :anchor => 'settings')
   end
 
   def projects
