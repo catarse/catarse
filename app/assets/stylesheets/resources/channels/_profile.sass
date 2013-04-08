@@ -40,13 +40,22 @@ body[data-namespace="channels"][data-controller="profiles"]
       height: 350px
       border: 1px solid lightgray 
       box-shadow: 0 0 2px $project_box_shadow 
+      +transition(all .2s)
+      // For every 3 blocks of projects, remove the right margin
+      // Use this instead of adding a class for the element/3
+      // or using in_group_of helper
       &:nth-child(3n+0)
         +omega
-      .image:hover
-        opacity: .8
+
+      // Children of .project
       a 
         color: black
         text-decoration: none !important
+      .image
+        opacity: 1
+        &:hover
+          opacity: .8
+
       .title
         margin: .4em 0 
         line-height: 1.2em
@@ -62,7 +71,7 @@ body[data-namespace="channels"][data-controller="profiles"]
         line-height: 1.4em
         height: 70px
         a
-          color: $project_box_headline 
+          color: darken($project_box_headline, 5%)
       .status
         bottom: 0
         border-top: 1px solid lighten(lightgray, 10%)

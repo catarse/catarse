@@ -1,4 +1,4 @@
-class ChannelDecorator < Drapper::Decorator
+class ChannelDecorator < Draper::Decorator
   decorates :channel
 
   
