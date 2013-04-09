@@ -1,5 +1,5 @@
 pt:
-  adm:
+  adm: &admin
     financials:
       index:
         id: ID
@@ -99,4 +99,6 @@ pt:
         total_users: usuários
         user: Usuário
         value: Valor
-
+  channels:
+    adm:
+      <<: *admin

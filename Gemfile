@@ -66,7 +66,6 @@ gem 'kaminari'
 # Uploads
 gem 'carrierwave', '~> 0.7.0'
 gem 'rmagick'
-gem 'fog'
 
 # Other Tools
 gem 'feedzirra'
@@ -86,14 +85,23 @@ gem 'routing-filter'
 gem 'activemerchant', '1.17.0', require: 'active_merchant'
 gem 'httpclient',     '2.2.5'
 
-# Server
-gem 'thin'
+
 
 group :production do
+
+  # Gem used to handle image uploading
+  gem 'fog'
+
+  # Workers, forks and all that jazz
+  gem 'unicorn'
 
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
   gem 'heroku-deflater', '~> 0.4.1'
+
+
+  # Monitoring with the new new relic
+  gem 'newrelic_rpm'
 
   # Using dalli and memcachier have not presented significative performance gains
   # Probably this is due to our pattern of cache usage 
@@ -106,7 +114,7 @@ group :development do
   gem 'mailcatcher'
   gem 'foreman'
   gem 'better_errors'
-  gem "binding_of_caller"
+  gem 'rack-mini-profiler'
 end
 
 group :test, :development do

@@ -1,7 +1,7 @@
 class Adm::BaseController < ApplicationController
   inherit_resources
   before_filter do
-    authorize! :manage, resource_class
+    authorize! :manage, resource_class  
   end
 
   @@menu_items = {}
@@ -25,4 +25,13 @@ class Adm::BaseController < ApplicationController
       end
     end
   end
+
+  def current_ability
+    controller_name_segments = params[:controller].split('/')
+    controller_name_segments.pop
+    controller_namespace = controller_name_segments.join('/').camelize
+    @current_ability ||= Ability.new(current_user, { namespace: controller_namespace })
+  end
+
+
 end
