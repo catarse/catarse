@@ -1,134 +1,114 @@
 // The stylesheet for the channels/profile.html page
 body[data-namespace="channels"][data-controller="profiles"]
-  h1
-    font-weight: 700
-    font-size: 2em
-    font-style: italic
-    margin: .4em 0
-  h2
-    margin: .2em 0
-  .channel_image
-    +alpha
-    +grid(6)
-    margin-top: -2.2em
-    margin-bottom: 1em
-    img
-      border: 1px solid $border 
-      margin-left: 1em
-  .navigation
-    +grid(10)
-    +omega
-    nav a
-      padding: 2em
-      display: inline-block
-      margin-left: 2em
-      font-size: .8em
-      text-decoration: none
-      line-height: 1.4em
-      +transition(.2s)
-      &:hover
-        opacity: .8
-        
-    nav a strong
-      font-size: 1.55em
-      display: block
-  .call_to_action
-    +transition(opacity 2s)
-    opacity: 0
-    margin: 2em 0
+  .hidden
+    display: none
+  iframe
     width: 100%
-    overflow: hidden
-    height: 350px
-    color: white
-    .head
-      +grid(6)
-      +alpha
-      margin-left: 1.5em
-      padding: .8em
-      text-shadow: 0 1px 0 #333
-      +border-bottom-right-radius(100px 50px)
-    .description
-      padding-bottom: 1em
-    .video
-      iframe
-        +omega
-        +grid-prefix(1)
-        +grid(8)
-        height: 300px !important
-        margin-top: 1.2em
-
-
-  // Projets
-  .projects 
-    +grid(12)
+    height: auto !important
+    min-height: 310px !important
+  .video 
     +alpha
-    .project
-      margin-bottom: 1.8em
-    .image_and_stats
-      float: left
-      margin: 0 .8em .6em 0
-      border: 1px solid #000
-    .title
-      font-size: 1.4em
-      font-weight: 700
-    .author
-      font-size: .8em
-    .description
-      font-size: .9em
-    a.make_it_happen
-      display: inline-block
-      border: 1px solid #000
-      padding: .6em 1em
-      margin-top: .4em
-      width: 35% !important
-      font-size: .8em
-      line-height: 1.1em
-      text-decoration: none
-      text-align: center
-      +border-radius(4px)
-      strong
-        font-size: 1.4em !important
-        display: block
-
-    // Stats
-    .stats
-      .counter
-        border: 1px solid #000
-        height: 30px
-        width: 45%
-        float: left
-      .current
-        background-color: green
-        height: 100% !important
-      .left, .backers
-        width: 24%
-        margin: 0 .4em
-        font-size: .8em
-        display: inline-block
-        line-height: 1.2em
-        strong
-          font-size: 2.6em !important
-          float: left 
-          line-height: .9em
-
-
-  // Sidebar
-  .channel_sidebar
-    +grid(4)
+    +grid(9)
+  .about
+    +grid(7)
     +omega
-    .block
-      border: 1px solid lightgray
-      margin: 1em 0
+    p.description
+      margin: .8em 0
+
+
+
+  #page_content.projects
+    overflow: hidden
+    .padding
       padding: .8em
-      h4
-        font-weight: 700
-        font-size: 1.3em
-        line-height: .8em
-      span
+    .channel
+      +grid(4)
+      +alpha
+      background: white
+    
+    .project
+      &:hover 
+        .show 
+          display: none
+        .mouse_over
+          display: block
+ 
+    .project
+      +grid(4)
+      +transition(all .4s)
+      background: white
+      height: 350px
+      border: 1px solid lightgray 
+      box-shadow: 0 0 2px $project_box_shadow 
+      +transition(all .2s)
+      // For every 3 blocks of projects, remove the right margin
+      // Use this instead of adding a class for the element/3
+      // or using in_group_of helper
+      &:nth-child(3n+0)
+        +omega
+
+      // Children of .project
+      a 
+        color: black
+        text-decoration: none !important
+      .image
+        opacity: 1
+        &:hover
+          opacity: .8
+
+      .title
+        margin: .4em 0 
+        line-height: 1.2em
+        height: 35px
+        a
+          &:hover
+            color: $project_box_title
+      .padding
+        padding-top: .2em
+      .headline
         font-size: .8em
-        padding-bottom: 1em
-    .subscribers li 
-      display: inline-block
-      margin: .4em .3em 0 0
-      img
-        +border-radius(60px)
+        margin: .8em 0 .4em 0
+        line-height: 1.4em
+        height: 70px
+        a
+          color: darken($project_box_headline, 5%)
+      .status
+        bottom: 0
+        border-top: 1px solid lighten(lightgray, 10%)
+        background: $project_box_status
+        overflow: hidden
+     
+      .progress_percent
+        font-size: .6em
+        text-transform: uppercase
+        vertical-align: middle
+        span
+          font-weight: bold
+          font-size: 2em !important
+          padding-right: .2em
+          line-height: 2em
+          position: relative
+          top: .2em
+      .progress_bar
+        #progress_wrapper, #progress
+          height: .5em
+          background: $project_box_progress_gray 
+          border-radius: 6px
+          box-shadow: inset 0 0 4px lighten(gray, 15%)
+        #progress
+          background: $project_box_progress
+          //+background-image(linear-gradient(lighten($project_box_progress, 30%) -2%, $project_box_progress 100%))
+      .time_remaining, .money_raised
+        float: left
+        padding: 1.4em 0
+        padding-bottom: 1.8em
+        text-transform: uppercase
+        font-size: .6em
+        text-align: center
+        span
+          display: block
+          font-weight: bold
+          font-size: 2em !important
+          text-transform: none
+      .money_raised
+        float: right

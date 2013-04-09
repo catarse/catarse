@@ -1,140 +1,35 @@
 = content_for :title, @profile.name
 
-#page_content
+#page_content.presentation
   .container
-      
-    .channel_image
-      = image_tag "http://placehold.it/160x130", size: '160x130'
-    .navigation
-      nav 
-        = link_to t('channels.navigation.header.subscribe_html'),         root_path
-        = link_to t('channels.navigation.header.how_it_works_html'),      root_path
-        = link_to t('channels.navigation.header.edit_the_channel_html'),  root_path
-
-    
-    .call_to_action[data-background="http://placehold.it/1900x1080"]
-      
-      .head
-        h2= t 'channels.call_to_action.welcome'
-        h1.channel_name = @profile.name
-        p.description   = @profile.description 
-        p.send_project  = link_to t('channels.send_your_project'), new_channels_profile_project_path(@profile), class: :btn
-      .video
-        iframe src="http://player.vimeo.com/video/58924942?title=0&amp;portrait=0&amp;byline=0"
-
-    .projects
-      ol
-        li.project
-          .image_and_stats
-            .image= image_tag "http://placehold.it/400x160"
-            .stats
-              .counter
-                .current[style='width: 80%']
-              .left
-                span
-                  strong 25 
-                  | dias restantes
-              .backers
-                span
-                  strong 40
-                  | apoios realizados
-
-
-          .detail
-            h3.title Aqui vai o nome do projeto em até 2 linhas
-            span.author Projeto por author
-            p.description
-              | Aqui vai uma breve descrição do projeto, em um tweet, contendo aproximadamente 
-              | cerca de 140 caracteres.
-            = link_to "", class: [:make_it_happen] do
-              strong Fazer acontecer!
-              | Quero apoiar este projeto
-
-
-        li.project
-          .image_and_stats
-            .image= image_tag "http://placehold.it/400x160"
-            .stats
-              .counter
-                .current[style='width: 80%']
-              .left
-                span
-                  strong 25 
-                  | dias restantes
-              .backers
-                span
-                  strong 40
-                  | apoios realizados
-
-
-          .detail
-            h3.title Aqui vai o nome do projeto em até 2 linhas
-            span.author Projeto por author
-            p.description
-              | Aqui vai uma breve descrição do projeto, em um tweet, contendo aproximadamente 
-              | cerca de 140 caracteres.
-            = link_to "", class: [:make_it_happen] do
-              strong Fazer acontecer!
-              | Quero apoiar este projeto
-        li.project
-          .image_and_stats
-            .image= image_tag "http://placehold.it/400x160"
-            .stats
-              .counter
-                .current[style='width: 80%']
-              .left
-                span
-                  strong 25 
-                  | dias restantes
-              .backers
-                span
-                  strong 40
-                  | apoios realizados
-
-
-          .detail
-            h3.title Aqui vai o nome do projeto em até 2 linhas
-            span.author Projeto por author
-            p.description
-              | Aqui vai uma breve descrição do projeto, em um tweet, contendo aproximadamente 
-              | cerca de 140 caracteres.
-            = link_to "", class: [:make_it_happen] do
-              strong Fazer acontecer!
-              | Quero apoiar este projeto
-
-    .channel_sidebar
-      .about_the_channel.block
-        h4 Sobre o Canal
-        span Mais informações aqui
-
-        dl
-          dt Instituto Asas
-          dd Aqui vai uma breve descrição do canal, em um tweet
-      .subscribers.block
-        h4 Inscritos
-        span Veja quem dá vida ao canal
-
-        ul
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-          li= image_tag "http://placehold.it/42x42", title: "Nome"
-      .channel_stats.block
-        h4 Números Catárticos
-        .successful:strong 40 projetos bem sucedidos
-        .subscriptions:strong 30 inscritos no canal
-        .backed:strong 40 arrecadados
+    .video= content_tag(:iframe, nil, src: 'http://www.youtube.com/embed/nWlVx3ecsLg?rel=0')
+    .about
+      h1            = @profile.name
+      p.description = @profile.description
 
     .clearfix
+
+#page_content.projects
+  .container
+    .channel
+      .padding
+        h3= @profile.name
+        span Curador 
+
+
+    ol.projects_list
+      = content_tag_for(:li, @profile.projects.visible) do |project|
+        .image    = link_to image_tag(project.uploaded_image, size: '220x140'), project_by_slug_path(permalink: project.permalink)
+        .padding
+          h4.title    = link_to project.name, project_by_slug_path(permalink: project.permalink)
+          p.headline  = link_to truncate(project.headline, length: 90), project_by_slug_path(permalink: project.permalink)
+        .status
+          .padding.show
+            .progress_percent = t('channels.projects.progress_html', percent: project.progress)
+            .progress_bar= project.progress_bar
+
+
+          .padding.mouse_over.hidden
+            span.time_remaining = link_to t('channels.projects.time_remaining_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit]), project_by_slug_path(permalink: project.permalink)
+            span.money_raised   = link_to t('channels.projects.pledged_html', value: number_to_currency(project.pledged, precision: 0)), project_by_slug_path(permalink: project.permalink)              
+

@@ -8,6 +8,15 @@ class Channel < ActiveRecord::Base
   has_and_belongs_to_many :trustees, class_name: :User, join_table: :channels_trustees
 
 
+  delegate :all, to: :decorator
+
+
   # Links to channels should be their permalink
   def to_param; self.permalink end
+  
+
+  # Using decorators
+  def decorator
+    @decorator ||= ChannelDecorator.new(self)
+  end
 end

@@ -102,8 +102,6 @@ GEM
     better_errors (0.7.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    binding_of_caller (0.7.1)
-      debug_inspector (>= 0.0.1)
     bourne (1.1.2)
       mocha (= 0.10.5)
     braintree (2.22.0)
@@ -153,7 +151,6 @@ GEM
     curb (0.7.18)
     daemons (1.1.9)
     database_cleaner (0.9.1)
-    debug_inspector (0.0.2)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -244,6 +241,7 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kgio (2.8.0)
     launchy (2.2.0)
       addressable (~> 2.3)
     libxml-ruby (2.3.3)
@@ -273,6 +271,7 @@ GEM
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
     net-ssh (2.6.6)
+    newrelic_rpm (3.6.0.78)
     nokogiri (1.4.7)
     oauth (0.4.7)
     oauth2 (0.8.1)
@@ -312,6 +311,8 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-mini-profiler (0.1.23)
+      rack (>= 1.1.3)
     rack-protection (1.5.0)
       rack
     rack-ssl (1.3.3)
@@ -336,6 +337,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
+    raindrops (0.10.0)
     rake (10.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
@@ -445,6 +447,10 @@ GEM
     uglifier (1.0.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    unicorn (4.6.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     valuable (0.9.8)
     vimeo (1.5.3)
       httparty (>= 0.4.5)
@@ -469,7 +475,6 @@ DEPENDENCIES
   auto_html (= 1.4.2)
   best_in_place
   better_errors
-  binding_of_caller
   cancan!
   capybara (~> 2.0.2)
   carrierwave (~> 0.7.0)
@@ -504,6 +509,7 @@ DEPENDENCIES
   mailcatcher
   mocha (~> 0.10.4)
   moip!
+  newrelic_rpm
   omniauth
   omniauth-facebook (= 1.4.0)
   omniauth-twitter
@@ -511,6 +517,7 @@ DEPENDENCIES
   pg
   pg_search
   postgres-copy
+  rack-mini-profiler
   rack-timeout
   rails (= 3.2.12)
   rails_autolink (~> 1.0.7)
@@ -526,7 +533,7 @@ DEPENDENCIES
   slim-rails
   spectator-validates_email
   state_machine
-  thin
   uglifier (~> 1.0.3)
+  unicorn
   validation_reflection!
   weekdays
