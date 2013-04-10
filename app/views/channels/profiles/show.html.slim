@@ -18,17 +18,17 @@
     .channel
       .info
         .padding
-          .image= image_tag '', size: '195x120'
+          .image= image_tag @profile.image, size: '195x120'
           h3= @profile.name
           span= t 'channels.curator'
           .social
-            = link_to "", "", title: :twitter, class: [:"icon-twitter"]
-            = link_to "", "", title: :facebook, class: [:"icon-facebook"]
-            = link_to "", "", title: :website, class: [:"icon-earth"]
+            = link_to "", @profile.twitter, title: :twitter, class: [:"icon-twitter"]
+            = link_to "", @profile.facebook, title: :facebook, class: [:"icon-facebook"]
+            = link_to "", @profile.website, title: :website, class: [:"icon-earth"]
 
         hr
         .mail
-          = mail_to @profile.name, "Envie um email", class: ["icon-mail"]
+          = mail_to @profile.email, "Envie um email", class: ["icon-mail"]
       hr.before_subscribe
       .subscribe
         = link_to "Siga o canal", "", class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe]
@@ -50,3 +50,7 @@
             span.time_remaining = link_to t('channels.projects.time_remaining_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit]), project_by_slug_path(permalink: project.permalink)
             span.money_raised   = link_to t('channels.projects.pledged_html', value: number_to_currency(project.pledged, precision: 0)), project_by_slug_path(permalink: project.permalink)              
 
+
+
+#page_content.channel_footer
+  .container
