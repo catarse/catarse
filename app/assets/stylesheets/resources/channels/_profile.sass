@@ -42,6 +42,8 @@ body[data-namespace="channels"][data-controller="profiles"]
     overflow: hidden
     .padding
       padding: .8em
+
+    // The channel box info
     .channel
       +grid(4)
       +alpha
@@ -56,7 +58,7 @@ body[data-namespace="channels"][data-controller="profiles"]
         padding-bottom: .2em
       .info
         background: white
-        box-shadow: 0 0 4px darken(lightgray, 5%)
+        box-shadow: 0 1px 4px darken(lightgray, 10%)
       .social a
         display: inline-block
         width: 30px
@@ -91,6 +93,8 @@ body[data-namespace="channels"][data-controller="profiles"]
         margin: .2em 0 
         width: 70%
         padding: .6em .4em
+   
+    // The project Box
     .project
       &:hover 
         .show 
@@ -104,7 +108,7 @@ body[data-namespace="channels"][data-controller="profiles"]
       background: white
       height: 350px
       border: 1px solid lightgray 
-      box-shadow: 0 0 4px darken(lightgray, 5%)
+      box-shadow: 0 1px 4px darken(lightgray, 5%)
       position: relative
       margin-top: 0
       margin-bottom: 1.5em
