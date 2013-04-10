@@ -3,17 +3,40 @@ body[data-namespace="channels"][data-controller="profiles"]
   .hidden
     display: none
   iframe
-    width: 100%
+    width: 97% !important 
     height: auto !important
-    min-height: 310px !important
+    min-height: 280px !important
   .video 
     +alpha
     +grid(9)
+    .padding
+      border: 4px solid lighten(lightgray, 10%)
+      border-radius: 5px
+    iframe
+      padding: .5em
   .about
     +grid(7)
     +omega
     p.description
       margin: .8em 0
+      font-size: 1.2em
+      line-height: 1.4em
+      font-weight: 400
+      color: #333
+    p.buttons
+      position: relative
+      top: 1.5em
+      .separator
+        width: 1px 
+        background: darken($body_background, 15%)
+        height: 40px
+        display: inline-block
+        margin: 0 1em
+        position: relative
+        top: .8em
+      a
+        margin: .8em 0 
+
 
   #page_content.projects
     overflow: hidden
@@ -22,8 +45,52 @@ body[data-namespace="channels"][data-controller="profiles"]
     .channel
       +grid(4)
       +alpha
-      background: white
-    
+      min-height: 300px
+      h3
+        margin: .4em 0 .2em 0
+        color: #333
+      span
+        font-weight: 300
+        font-size: .9em
+      .padding
+        padding-bottom: .2em
+      .info
+        background: white
+        box-shadow: 0 0 4px darken(lightgray, 5%)
+      .social a
+        display: inline-block
+        width: 30px
+        color: #CACFD4 
+        font-size: 1.2em
+        margin: .6em 0
+        margin-bottom: 0
+        text-decoration: none
+        &:hover
+          color: black
+      hr
+        border: 0
+        height: 0
+        border-top: 1px solid rgba(0, 0, 0, 0.1)
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3)
+        &.before_subscribe
+          margin-top: 1.5em
+      .mail
+        text-align: center
+        padding-bottom: 1em
+        a
+          color: $button_pink
+          text-decoration: none
+          font-size: .9em
+          font-weight: 400
+          &:hover
+            text-decoration: underline
+          &:before
+            padding-right: .6em
+
+      .subscribe
+        margin: .2em 0 
+        width: 70%
+        padding: .6em .4em
     .project
       &:hover 
         .show 
@@ -37,7 +104,10 @@ body[data-namespace="channels"][data-controller="profiles"]
       background: white
       height: 350px
       border: 1px solid lightgray 
-      box-shadow: 0 0 2px $project_box_shadow 
+      box-shadow: 0 0 4px darken(lightgray, 5%)
+      position: relative
+      margin-top: 0
+      margin-bottom: 1.5em
       +transition(all .2s)
       // For every 3 blocks of projects, remove the right margin
       // Use this instead of adding a class for the element/3
@@ -57,7 +127,6 @@ body[data-namespace="channels"][data-controller="profiles"]
       .title
         margin: .4em 0 
         line-height: 1.2em
-        height: 35px
         a
           &:hover
             color: $project_box_title
@@ -67,11 +136,14 @@ body[data-namespace="channels"][data-controller="profiles"]
         font-size: .8em
         margin: .8em 0 .4em 0
         line-height: 1.4em
+        font-weight: 400
         height: 70px
         a
-          color: darken($project_box_headline, 5%)
+          color: rgba(0,0,0,0.5) 
       .status
-        bottom: 0
+        bottom: 0px
+        position: absolute
+        width: 100%
         border-top: 1px solid lighten(lightgray, 10%)
         background: $project_box_status
         overflow: hidden
@@ -106,7 +178,7 @@ body[data-namespace="channels"][data-controller="profiles"]
         span
           display: block
           font-weight: bold
-          font-size: 2em !important
+          font-size: 1.8em !important
           text-transform: none
       .money_raised
         float: right

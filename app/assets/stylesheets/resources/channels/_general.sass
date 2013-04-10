@@ -1,14 +1,22 @@
+@import miv/buttons
+@import icomoon
 // Channels Styles/Classes that will be reused
 body[data-namespace="channels"]
-  font-family: 'Lato', sans-serif 
-  
-  background: white
+  font-family: 'Lato', 'Arial', sans-serif 
+  background: $body_background
+  #header
+    padding: .4em 0
+    margin: 0 auto
 
   .container
     border: none !important
     border-radius: 0 !important
   #page_content
-    padding: 1.5em 0
+    padding: 2.8em 0
+  #page_content.presentation
+    background: white
+    .container
+      margin-bottom: .2em
   #page_content.presentation, #page_content.projects
     border-top: 1px solid lightgray
     .container
@@ -17,7 +25,7 @@ body[data-namespace="channels"]
   h1, h2, h3, h4, h5
     font-weight: bold
   h1
-    font-size: 1.8em
+    font-size: 2em
     font-weight: bold
   #page_content.projects
     background: $body_background
