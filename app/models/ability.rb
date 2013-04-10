@@ -75,7 +75,7 @@ class Ability
       cannot :access, :projects
       cannot :access, :rewards
 
-
+      can :create, :projects
       can :access, :projects do |project|
         current_user.channels_projects.exists?(project)
       end
