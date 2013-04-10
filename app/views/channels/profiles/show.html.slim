@@ -8,9 +8,9 @@
       h1            = @profile.name
       p.description = truncate(@profile.description, length: 210)
       p.buttons
-        = link_to t('channels.projects.send'), new_channels_profile_project_path(@profile), class: [:button, :button_ok, :button_green]
+        = link_to t('channels.projects.send'), new_channels_profile_project_path(@profile), class: [:ch_button, :ch_button_ok, :ch_button_green]
         span.separator
-        = link_to t('channels.projects.how_it_works'), '', class: [:button, :button_ok, :button_gray]
+        = link_to t('channels.projects.how_it_works'), '', class: [:ch_button, :ch_button_ok, :ch_button_gray]
     .clearfix
 
 #page_content.projects
@@ -31,7 +31,7 @@
           = mail_to @profile.name, "Envie um email", class: ["icon-mail"]
       hr.before_subscribe
       .subscribe
-        = link_to "Siga o canal", "", class: [:button, :button_ok, :button_pink, :subscribe]
+        = link_to "Siga o canal", "", class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe]
 
 
     ol.projects_list
