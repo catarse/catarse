@@ -29,7 +29,7 @@ strong
   - if backer.reward
     |Valor da recompensa selecionada: #{backer.reward.minimum_value}
     br
-    |Recompensa selecionada: #{backer.reward.description}
+    |Descrição da recompensa: #{backer.reward.description}
     br
   |Data do apoio: #{backer.created_at.strftime("%d/%m/%Y")}
   br
@@ -37,7 +37,9 @@ strong
 |Se quiser entrar em contato com #{backer.project.user.name}, mande um email para #{mail_to backer.project.user.email}
 br
 br
-|Se tiver alguma outra dúvida, acesse nosso #{link_to('FAQ', "#{Configuration[:base_url]}/faq")} ou mande um email para o #{mail_to Configuration[:mail_contact]}
+|Se tiver alguma outra dúvida, entre em contato conosco na nossa Central de Suporte:
+br
+= link_to 'http://suporte.catarse.me/', 'http://suporte.catarse.me/'
 br
 br
 |Um grande abraço,
