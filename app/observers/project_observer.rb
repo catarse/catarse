@@ -20,6 +20,13 @@ class ProjectObserver < ActiveRecord::Observer
                                           {project_id: project.id},
                                           {project: project, project_name: project.name})
   end
+  
+  def notify_owner_that_project_is_waiting_funds(project)
+    Notification.create_notification_once(:project_in_wainting_funds,
+      project.user,
+      {project_id: project.id},
+      project: project)
+  end
 
   def notify_owner_that_project_is_successful(project)
     Notification.create_notification_once(:project_success,

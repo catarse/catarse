@@ -14,6 +14,9 @@ en:
       header: "Apoio Em Análise - o que é isso?"
     updates:
       subject: "Se liga! Atualização de %{project_name} por %{project_owner}: %{update_title}"
+    project_in_wainting_funds:
+      subject: "O prazo do seu projeto acabou, saiba quais são os próximos passos"
+      header: "Acabou o prazo!"      
     project_success:
       subject: "Projeto bem-sucedido: algumas informações necessárias"
       header: "Projeto bem-sucedido o/"
