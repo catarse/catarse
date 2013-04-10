@@ -4,10 +4,11 @@ describe ProjectObserver do
   let(:new_draft_project){ FactoryGirl.create(:notification_type, :name => 'new_draft_project') }
   let(:confirm_backer){ FactoryGirl.create(:notification_type, :name => 'confirm_backer') }
   let(:project_received){ FactoryGirl.create(:notification_type, :name => 'project_received') }
+  let(:adm_project_deadline){ FactoryGirl.create(:notification_type, :name => 'adm_project_deadline') }
   let(:project_success){ FactoryGirl.create(:notification_type, :name => 'project_success') }
   let(:backer_successful){ FactoryGirl.create(:notification_type, :name => 'backer_project_successful') }
   let(:backer_unsuccessful){ FactoryGirl.create(:notification_type, :name => 'backer_project_unsuccessful') }
-  let(:pending_backer_unsuccessful){ FactoryGirl.create(:notification_type, :name => 'pending_backer_project_unsuccessful') }  
+  let(:pending_backer_unsuccessful){ FactoryGirl.create(:notification_type, :name => 'pending_backer_project_unsuccessful') }
   let(:project_visible){ FactoryGirl.create(:notification_type, :name => 'project_visible') }
   let(:project_rejected){ FactoryGirl.create(:notification_type, :name => 'project_rejected') }
   let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => nil) }
@@ -72,36 +73,36 @@ describe ProjectObserver do
       end
     end
   end
-  
+
   describe "sync with mailchimp" do
     before do
       Configuration[:mailchimp_successful_projects_list] = 'OwnerListId'
       Configuration[:mailchimp_failed_projects_list] = 'UnsuccesfulListId'
     end
-    
+
     let(:user) { FactoryGirl.create(:user) }
     let(:project) { FactoryGirl.create(:project, online_days: -7, goal: 10, state: 'waiting_funds', user: user) }
-    
+
     context 'when project is successful' do
       before do
         FactoryGirl.create(:backer, value: 15, confirmed: true, project: project)
       end
-      
-      it 'subscribe project owner to successful projects mailchimp list' do 
-        CatarseMailchimp::API.expects(:subscribe).with({ EMAIL: user.email, FNAME: user.name, 
-          CITY: user.address_city, STATE: user.address_state }, 'OwnerListId')        
+
+      it 'subscribe project owner to successful projects mailchimp list' do
+        CatarseMailchimp::API.expects(:subscribe).with({ EMAIL: user.email, FNAME: user.name,
+          CITY: user.address_city, STATE: user.address_state }, 'OwnerListId')
       end
-      
+
       after { project.finish }
     end
-    
+
     context 'when project is unsuccesful' do
-      it 'subscribe project owner to failed projects mailchimp list' do 
-        CatarseMailchimp::API.expects(:subscribe).with({ EMAIL: user.email, FNAME: user.name, 
-          CITY: user.address_city, STATE: user.address_state }, 'UnsuccesfulListId')        
+      it 'subscribe project owner to failed projects mailchimp list' do
+        CatarseMailchimp::API.expects(:subscribe).with({ EMAIL: user.email, FNAME: user.name,
+          CITY: user.address_city, STATE: user.address_state }, 'UnsuccesfulListId')
       end
-      
-      after { project.finish }      
+
+      after { project.finish }
     end
   end
 
@@ -129,7 +130,7 @@ describe ProjectObserver do
       end
       it("should notify the project backers and owner"){ subject }
     end
-    
+
     context "when project is unsuccessful with pending backers" do
       let(:project){ FactoryGirl.create(:project, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
 
@@ -142,7 +143,7 @@ describe ProjectObserver do
         Notification.expects(:create_notification_once).at_least(3)
         project.finish!
       end
-      it("should notify the project backers and owner"){ subject }      
+      it("should notify the project backers and owner"){ subject }
     end
 
   end
@@ -177,4 +178,23 @@ describe ProjectObserver do
     end
 
   end
+
+  describe "#notify_admin_that_project_reached_deadline" do
+    let(:project){ FactoryGirl.create(:project, :goal => 30, :online_days => -7, :state => 'online') }
+    let(:user) { FactoryGirl.create(:user, email: 'foo@foo.com')}
+    before do
+      ::Configuration[:email_payments] = 'foo@foo.com'
+      user
+      project.stubs(:reached_goal?).returns(true)
+      project.stubs(:in_time_to_wait?).returns(false)
+      adm_project_deadline
+      Project.finish_projects!
+    end
+
+    it "should create notification for admin" do
+      Notification.where(user_id: user.id, notification_type_id: adm_project_deadline.id, project_id: project.id).first.should_not be_nil
+    end
+
+  end
+
 end
