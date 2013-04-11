@@ -20,13 +20,13 @@ br
 |<strong>Email do apoiador:</strong> #{backer.user.email}
 br
 br
-|Veja outros apoiadores aqui: #{link_to project_by_slug_url(permalink: project, anchor: 'backers'), project_by_slug_url(permalink: project, anchor: 'backers')}
+|Veja outros apoiadores aqui: #{link_to project_by_slug_url(permalink: project.permalink, anchor: 'backers'), project_by_slug_url(permalink: project.permalink, anchor: 'backers')}
 br
 br
-|Comunique-se com eles a partir das novidades: #{link_to project_by_slug_url(permalink: project, anchor: 'updates'), project_by_slug_url(permalink: project, anchor: 'updates')}
+|Comunique-se com eles a partir das novidades: #{link_to project_by_slug_url(permalink: project.permalink, anchor: 'updates'), project_by_slug_url(permalink: project.permalink, anchor: 'updates')}
 br
 br
-|E baixe seus relatórios: #{link_to project_by_slug_url(permalink: project, anchor: 'reports'), project_by_slug_url(permalink: project, anchor: 'reports')}
+|E baixe seus relatórios: #{link_to project_by_slug_url(permalink: project.permalink, anchor: 'reports'), project_by_slug_url(permalink: project.permalink, anchor: 'reports')}
 br
 br
 |Um grande abraço,
