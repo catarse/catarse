@@ -18,6 +18,7 @@ describe User do
     it{ should have_many(:oauth_providers).through(:authorizations) }
     it{ should have_one :user_total }
     it{ should have_and_belong_to_many :channels }
+    it{ should have_and_belong_to_many :subscriptions }
   end
 
   describe "validations" do
