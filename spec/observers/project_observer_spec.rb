@@ -74,7 +74,7 @@ describe ProjectObserver do
       end
     end
   end
-  
+
   describe "#notify_owner_that_project_is_waiting_funds" do
     let(:user) { FactoryGirl.create(:user) }
     let(:project) { FactoryGirl.create(:project, user: user, goal: 100, online_days: -2, state: 'online') }
