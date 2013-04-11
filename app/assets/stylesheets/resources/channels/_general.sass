@@ -7,8 +7,16 @@ body[data-namespace="channels"]
   #header
     padding: .4em 0
     margin: 0 auto
-  #footer
-    display: none
+    .actions, .search, .menu a:first-child
+      visibility: hidden
+    .menu
+      text-align: right
+      a
+        font-size: 1.1em
+        &:hover
+          text-decoration: underline
+  #locales, #footer, #logos
+    display: none !important
   .container
     border: none !important
     border-radius: 0 !important
@@ -19,7 +27,7 @@ body[data-namespace="channels"]
     .container
       margin-bottom: .2em
   #page_content.presentation, #page_content.projects
-    border-top: 1px solid lightgray
+    border-top: 1px solid lighten(lightgray, 10%)
     .container
       background: none
 
