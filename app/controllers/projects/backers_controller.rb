@@ -18,6 +18,7 @@ class Projects::BackersController < ApplicationController
 
   def show
     @title = t('projects.backers.show.title')
+    session[:thank_you_backer_id] = nil
   end
 
   def new
@@ -51,6 +52,8 @@ class Projects::BackersController < ApplicationController
         flash[:failure] = t('projects.backers.review.error')
         return redirect_to new_project_backer_path(@project)
       end
+      
+      session[:thank_you_backer_id] = @backer.id      
       return render :create
     end
     @thank_you_id = @project.id
