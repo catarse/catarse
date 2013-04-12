@@ -10,6 +10,11 @@ class StaticController < ApplicationController
   def faq
     @title = t('static.faq.title')
   end
+  
+  def thank_you
+    backer = Backer.find session[:thank_you_backer_id]
+    redirect_to [backer.project, backer]
+  end
 
   def sitemap
     # TODO: update this sitemap to use new homepage logic
