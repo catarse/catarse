@@ -9,7 +9,7 @@
       p.description = truncate(@profile.description, length: 210)
       strong.headline= t 'channels.projects.see_how_it_works'
       p.buttons
-        = link_to t('channels.projects.how_it_works'), new_channels_profile_project_path(@profile), class: [:ch_button, :ch_button_ok, :ch_button_green]
+        = link_to t('channels.projects.how_it_works'), new_project_path, class: [:ch_button, :ch_button_ok, :ch_button_green]
     .clearfix
 
 #page_content.projects
