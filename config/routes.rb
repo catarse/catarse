@@ -1,7 +1,8 @@
 require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
-
+  match '/thank_you' => "static#thank_you"
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
