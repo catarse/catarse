@@ -1,0 +1,35 @@
+- project = @notification.project
+|Oi #{project.user.name},
+br
+|O prazo do seu projeto no #{Configuration[:company_name]} acabou de acabar. Como há ainda alguns pagamentos pendentes para o seu projeto, seu projeto estará aguardando a confirmação dessas contribuições de última hora pelos próximos 4 dias úteis. São quatro situações que podem ocorrer a partir disso:
+br
+br
+|1 - <strong>Se o seu projeto já ultrapassou a meta:</strong> a gente apenas vai contabilizar caso haja alguma confirmação de pagamento e irá fazer o repasse para você depois desse prazo. Confira: 
+= link_to 'Como será feito o repasse?', 'http://suporte.catarse.me/knowledgebase/articles/161090-como-ser%C3%A1-feito-o-repasse-do-dinheiro-' 
+| Se sua conta MoIP ainda não foi verificada, nossa equipe entrará em contato com você para realizarmos juntos esse processo.
+br
+br
+|2 - <strong>Se o seu projeto ainda não chegou na meta, mas tem pagamentos pendentes que podem fazer com que isso aconteça</strong>: iremos esperar (e torcer) que esses pagamento sejam confirmados e seu projeto consiga atingir 100%. Como a maioria desses projetos acabam sendo financiados com esses pagamentos de última hora, nossa equipe entrará em contato com você para agilizarmos a verificação da sua conta junto ao MoIP.
+br
+br
+|3 - <strong>Se o seu projeto não atingiu a meta, mas já atingiu pelo menos 30%</strong>: você poderá participar da 2ª chance. Saiba mais como fazer essa solicitação: 
+= link_to 'Regulamento da 2ª Chance', 'http://suporte.catarse.me/knowledgebase/articles/161109-meu-projeto-n%C3%A3o-foi-financiado-posso-ter-uma-nova' 
+br
+br
+|4 - Se os apoios pendentes podem fazer com que seu projeto atinja 30% da meta: se isso acontecer, você poderá participar da 2ª chance: 
+= link_to 'Regulamento da 2ª Chance', 'http://suporte.catarse.me/knowledgebase/articles/161109-meu-projeto-n%C3%A3o-foi-financiado-posso-ter-uma-nova' 
+br
+br
+|Caso seu projeto não atinja a meta e você não queira participar da 2ª chance, todo dinheiro será devolvido aos apoiadores. A principio eles receberão de volta o valor da contribuição na forma de créditos para apoiar outros projetos na plataforma e receberão um e-mail com instruções sobre como pedir o estorno.Confira: 
+= link_to 'Regras e Funcionamento dos Reembolsos', 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'
+br
+br
+|Sinta-se a vontade pra nos enviar perguntas e feedbacks quando quiser =) 
+br
+|Pra fazer isso acesse a nossa #{link_to 'Central de Suporte', 'http://suporte.catarse.me/'}
+br
+br
+|Grande abraço,
+br
+br
+|Equipe do #{Configuration[:company_name]}
