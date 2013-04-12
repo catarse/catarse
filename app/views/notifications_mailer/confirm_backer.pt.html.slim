@@ -14,7 +14,7 @@ br
 br
 |Valor da contribuição: <strong>R$ #{backer.value}</strong>
 br
--if backer.reward
+-if backer.reward.present?
   |Recompensa selecionada: <strong>#{backer.reward.description}</strong>
 -else
   |Nenhuma recompensa foi selecionada, qualquer dúvida entre em contato com a nossa equipe através do #{mail_to Configuration[:email_contact]}
@@ -33,7 +33,9 @@ br
 |Se quiser entrar em contato com #{backer.project.user.name}, mande um e-mail para #{mail_to backer.project.user.email}
 br
 br
-|Se tiver alguma outra dúvida, acesse nosso #{link_to('FAQ', "#{Configuration[:base_url]}/faq")} ou mande um e-mail para o #{mail_to Configuration[:email_contact]}
+|Se tiver alguma outra dúvida, entre em contato conosco na nossa Central de Suporte:
+br
+= link_to 'http://suporte.catarse.me/', 'http://suporte.catarse.me/'
 br
 br
 |Um grande abraço,
