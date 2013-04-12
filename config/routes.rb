@@ -16,12 +16,27 @@ Catarse::Application.routes.draw do
   mount CatarsePaypalExpress::Engine  => "/", :as => :catarse_paypal_express
   mount CatarseMoip::Engine           => "/", :as => :catarse_moip
 
-
   # Non production routes
   if Rails.env.development?
     resources :emails, :only => [ :index ]
   end
 
+  # Channels
+  constraints subdomain: 'asas' do
+    namespace :channels, path: '' do
+      namespace :adm do
+        resources :projects, only: [ :index, :update ] do
+          member do
+            put 'approve'
+            put 'reject'
+            put 'push_to_draft'
+          end
+        end
+      end
+      match '/' => 'profiles#show', :as => :profile 
+      resources :projects, only: [:new, :create, :show]
+    end
+  end
 
   # Static Pages
   get '/sitemap',               to: 'static#sitemap',             as: :sitemap
@@ -110,26 +125,6 @@ Catarse::Application.routes.draw do
 
   match "/mudancadelogin" => "users#set_email", as: :set_email_users
   match "/:permalink" => "projects#show", as: :project_by_slug
-
-  # Channels
-  namespace :channels do
-    namespace :adm do
-      resources :projects, only: [ :index, :update ] do
-        member do
-          put 'approve'
-          put 'reject'
-          put 'push_to_draft'
-        end
-      end
-    end
-
-
-    resources :profiles, path: '' do
-      resources :projects, only: [:new, :create, :show]
-    end
-  end
-
-
 
   # Root path
   root to: 'projects#index'
