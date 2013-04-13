@@ -9,6 +9,16 @@ describe("Channels", function(){
 
   describe("show action", function(){
 
+    describe("subscribe", function(){
+      beforeEach(function(){ 
+        window.CHANNEL.subscribe();
+      });
+
+      it("", function(){
+      });
+    });
+
+
     describe("initialize", function(){
       beforeEach(function(){ 
         spyOn(window.CHANNEL, 'setupBackground');

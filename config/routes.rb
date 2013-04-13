@@ -36,6 +36,7 @@ Catarse::Application.routes.draw do
       end
       match '/' => 'profiles#show', :as => :profile 
       resources :projects, only: [:new, :create, :show]
+      resources :channels_subscribers, only: [:create, :destroy]
     end
   end
 
