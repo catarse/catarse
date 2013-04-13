@@ -1,5 +1,6 @@
 class Channel < ActiveRecord::Base
   attr_accessible :description, :name, :permalink
+  schema_associations
 
   validates_presence_of :name, :description, :permalink
   validates_uniqueness_of :permalink

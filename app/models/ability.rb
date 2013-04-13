@@ -59,16 +59,14 @@ class Ability
       backer.user == current_user
     end
 
-
-
-
-
-
-
-
     # Channel authorizations
     # Due to previous abilities, first I activate all things 
     # and in the final I deactivate unnecessary abilities.
+    can :create, :channels_subscribers
+    can :destroy, :channels_subscribers do |cs|
+      cs.user == current_user
+    end
+
     if current_user.trustee?
 
       can :access, :all 
