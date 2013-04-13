@@ -12,6 +12,9 @@ class CreateVersions < ActiveRecord::Migration
       t.datetime :created_at
     end
     add_index :versions, [:item_type, :item_id]
+
+    SchemaPlus.config.foreign_keys.auto_create = true
+    SchemaPlus.config.foreign_keys.auto_index = true
   end
 
   def self.down
