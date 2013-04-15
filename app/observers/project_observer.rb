@@ -20,7 +20,7 @@ class ProjectObserver < ActiveRecord::Observer
                                           {project_id: project.id},
                                           {project: project, project_name: project.name})
   end
-  
+
   def notify_owner_that_project_is_waiting_funds(project)
     Notification.create_notification_once(:project_in_wainting_funds,
       project.user,
@@ -103,7 +103,7 @@ class ProjectObserver < ActiveRecord::Observer
       if project.failed?
         CatarseMailchimp::API.subscribe(mailchimp_params, Configuration[:mailchimp_failed_projects_list])
       end
-    rescue
+    rescue Exception => e
       Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
       Rails.logger.info "-----> #{e.inspect}"
     end
