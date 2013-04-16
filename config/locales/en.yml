@@ -804,6 +804,7 @@ en:
       title: "Choose from which projects you want to receive update notifications:"
       updates: "I want to receive project updates"
     current_user_fields:
+      bio_limit: 'only 140 characters'
       updated: "Your information has been updated"
       update_social_info: "Update info"
       social_info: "Contact info"
