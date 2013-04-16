@@ -5,8 +5,12 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
 
   alias_method :index, :create
   def create
-    create! do |success,failure|
-      success.html{ return redirect_to root_path }
+    begin
+      create! do |success,failure|
+        success.html{ return redirect_to root_path }
+      end
+    rescue ActiveRecord::RecordNotUnique => e
+      return redirect_to root_path
     end
   end
 
