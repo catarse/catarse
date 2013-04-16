@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe UserDecorator do
+  before(:all) do
+    I18n.locale = :pt
+  end
+
   describe "#display_name" do
     subject{ user.display_name }
 
