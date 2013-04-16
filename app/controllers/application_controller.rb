@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
 
   # TODO: Change this way to get the opendata
   before_filter do
+    Statistics.new
     @fb_admins = [567237711]
   end
 

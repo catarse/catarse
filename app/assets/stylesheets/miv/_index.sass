@@ -14,6 +14,26 @@
 @import dropdown
 @import bootstrap
 
+.facebook_start
+  margin-bottom: 40px !important
+  clear: both
+  +border-radius(4px)
+  width: 246px
+  height: 27px
+  background: image-url("login_with_facebook_button310x60.png") left top no-repeat
+  display: block
+  padding: 33px 0 0 64px
+  color: white
+  font-size: 13px
+  font-family: Arial
+  text-decoration: none
+  +text-shadow(black, 1px, 1px, 1px)
+  text-align: left
+  &:hover, &:focus
+    +box-shadow(rgba(black,0.75) 0px 0px 5px inset !important)
+  &:active
+    +box-shadow(rgba(black, 1) 0px 0px 15px inset !important)
+    
 #announcement
   display: block
   padding: 10px

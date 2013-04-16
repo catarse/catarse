@@ -61,58 +61,79 @@ describe OmniauthCallbacksController do
 
   describe "GET facebook" do
 
-    before do
-      user
-      session[:return_to] = return_to
-      request.env['omniauth.auth'] = oauth_data
-      get :facebook
+    describe "when user already loged in" do
+      let(:user) { FactoryGirl.create(:user, name: 'Foo') }
+      
+      before do
+        controller.stubs(:current_user).returns(user)
+        session[:return_to] = return_to
+        request.env['omniauth.auth'] = oauth_data
+        get :facebook        
+      end
+      
+      describe "assigned user" do
+        subject{ assigns(:user) }
+        its(:name){ should == "Foo" }
+        it { subject.authorizations.should have(1).item }
+      end
+      
+      it{ should redirect_to root_path }
     end
+    
+    describe 'when user not loged in' do
+      before do
+        user
+        session[:return_to] = return_to
+        request.env['omniauth.auth'] = oauth_data
+        get :facebook
+      end
 
-    context "when there is no such user and we do not have an email address" do
-      let(:oauth_data){ 
-        Hashie::Mash.new({ 
-          info: { 
-            image: "http://graph.facebook.com/547955110/picture?type:, square", 
-            name: "Diogo, Biazus",
-            nickname: "diogo.biazus", 
-            urls: { 
-              Facebook: "http://www.facebook.com/diogo.biazus"
+      context "when there is no such user and we do not have an email address" do
+        let(:oauth_data){ 
+          Hashie::Mash.new({ 
+            info: { 
+              image: "http://graph.facebook.com/547955110/picture?type:, square", 
+              name: "Diogo, Biazus",
+              nickname: "diogo.biazus", 
+              urls: { 
+                Facebook: "http://www.facebook.com/diogo.biazus"
+              }, 
+              verified: true          
             }, 
-            verified: true          
-          }, 
-          provider: "facebook", 
-          uid: "547955110"
-        })
-      }
+            provider: "facebook", 
+            uid: "547955110"
+          })
+        }
 
-      let(:user){ nil }
-      describe "assigned user" do
-        subject{ assigns(:user) }
-        its(:email){ should be_nil }
-        its(:name){ should == "Diogo, Biazus" }
+        let(:user){ nil }
+        describe "assigned user" do
+          subject{ assigns(:user) }
+          its(:email){ should be_nil }
+          its(:name){ should == "Diogo, Biazus" }
+        end
+        it{ should render_template 'users/set_email' }
       end
-      it{ should render_template 'users/set_email' }
-    end
 
-    context "when there is no such user but we retrieve the email from omniauth" do
-      let(:user){ nil }
-      describe "assigned user" do
-        subject{ assigns(:user) }
-        its(:email){ should == "diogob@gmail.com" }
-        its(:name){ should == "Diogo, Biazus" }
+      context "when there is no such user but we retrieve the email from omniauth" do
+        let(:user){ nil }
+        describe "assigned user" do
+          subject{ assigns(:user) }
+          its(:email){ should == "diogob@gmail.com" }
+          its(:name){ should == "Diogo, Biazus" }
+        end
+        it{ should redirect_to root_path }
       end
-      it{ should redirect_to root_path }
-    end
+    
+      context "when there is a valid user with this provider and uid and session return_to is /foo" do
+        let(:return_to){ '/foo' }
+        it{ assigns(:user).should == user }
+        it{ should redirect_to '/foo' }
+      end
 
-    context "when there is a valid user with this provider and uid and session return_to is /foo" do
-      let(:return_to){ '/foo' }
-      it{ assigns(:user).should == user }
-      it{ should redirect_to '/foo' }
-    end
-
-    context "when there is a valid user with this provider and uid and session return_to is nil" do
-      it{ assigns(:user).should == user }
-      it{ should redirect_to root_path }
+      context "when there is a valid user with this provider and uid and session return_to is nil" do
+        it{ assigns(:user).should == user }
+        it{ should redirect_to root_path }
+      end
     end
   end
 end
