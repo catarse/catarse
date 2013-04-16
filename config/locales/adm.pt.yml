@@ -47,6 +47,7 @@ pt:
         order_date: 'Data de envio'
         order_asc: 'Menor meta'
         order_desc: 'Maior meta'
+        order_created_at: 'Data de envio'
     actions:
       confirm: 'Confirmar'
     users:
