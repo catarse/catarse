@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Channels::ChannelsSubscribersController do
   subject{ response }
-  let(:channel_subscriber){ ChannelsSubscriber.create!(channel: channel, user: user) }
+  let(:channel_subscriber){ nil }
   let(:channel){ FactoryGirl.create(:channel) }
   let(:user){ FactoryGirl.create(:user) }
   let(:current_user){ user }
@@ -14,7 +14,13 @@ describe Channels::ChannelsSubscribersController do
 
   describe "POST create" do
     before do
+      channel_subscriber
       post :create
+    end
+
+    context "when user already has a subscription" do 
+      let(:channel_subscriber){ ChannelsSubscriber.create!(channel: channel, user: user) }
+      it{ should redirect_to root_path }
     end
 
     context "when user is signed in" do 
@@ -28,6 +34,7 @@ describe Channels::ChannelsSubscribersController do
   end
 
   describe "DELETE destroy" do
+    let(:channel_subscriber){ ChannelsSubscriber.create!(channel: channel, user: user) }
     before do
       delete :destroy, id: channel_subscriber.id
     end
