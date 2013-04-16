@@ -54,8 +54,10 @@ class Project < ActiveRecord::Base
   scope :order_table, ->(sort) {
     if sort == 'desc'
       order('goal desc')
-    else
+    elsif sort == 'asc'
       order('goal asc')
+    else
+      order('created_at desc')
     end
   }
 

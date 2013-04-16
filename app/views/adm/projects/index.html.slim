@@ -33,10 +33,7 @@
               = text_field_tag :user_name_contains, params[:user_name_contains]
             .input
               = label_tag :order_table, t('.order_table')
-              select#order_goal name="order_table"
-                option value=''
-                option value='asc'= t('.order_asc')
-                option value='desc'= t('.order_desc')
+              = select_tag :order_table, options_for_select({t('.order_created_at') => 'created_at', t('.order_asc') => 'asc',t('.order_desc') => 'desc'}, params[:order_table]), include_blank: false
 
             .bootstrap-twitter
               .input.submit
