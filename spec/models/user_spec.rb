@@ -169,6 +169,17 @@ describe User do
     its(:name){ should == auth['info']['name'] }
     its(:nickname){ should == auth['info']['nickname'] }
     its(:bio){ should == auth['info']['description'][0..139] }
+    
+    describe "when user is merging your facebook account" do
+      let(:user) { FactoryGirl.create(:user, provider: nil, name: 'Test', email: 'test@test.com') }
+      let(:created_user){ User.create_with_omniauth(auth, user) }
+
+      subject { created_user }
+      
+      its(:email) { should == 'test@test.com' }
+      it { subject.authorizations.first.uid.should == auth['uid'] }
+    end
+    
     describe "created user's authorizations" do
       subject{ created_user.authorizations.first }
       its(:uid){ should == auth['uid'] }

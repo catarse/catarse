@@ -10,7 +10,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
           joins('JOIN authorizations ON authorizations.user_id = users.id').
           joins('JOIN oauth_providers ON oauth_providers.id = authorizations.oauth_provider_id').
           where("authorizations.uid = :uid AND oauth_providers.name = :provider", {uid: omniauth[:uid], provider: p.name}).
-          first || User.create_with_omniauth(omniauth)
+          first || User.create_with_omniauth(omniauth, current_user)
 
         flash[:notice] = I18n.t("devise.omniauth_callbacks.success", :kind => p.name.capitalize)
         sign_in @user, :event => :authentication
