@@ -106,6 +106,11 @@ class User < ActiveRecord::Base
       to_sql
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
   end
+  
+  def has_facebook_authentication?
+    oauth = OauthProvider.find_by_name 'facebook'
+    authorizations.where(oauth_provider_id: oauth.id).present?  
+  end
 
   def decorator
     @decorator ||= UserDecorator.new(self)
@@ -140,15 +145,19 @@ class User < ActiveRecord::Base
     "#{self.id}-#{self.display_name.parameterize}"
   end
 
-  def self.create_with_omniauth(auth)
-    u = create! do |user|
-      user.name = auth["info"]["name"]
-      user.email = (auth["info"]["email"] rescue nil)
-      user.email = (auth["extra"]["user_hash"]["email"] rescue nil) unless user.email
-      user.nickname = auth["info"]["nickname"]
-      user.bio = (auth["info"]["description"][0..139] rescue nil)
-      user.locale = I18n.locale.to_s
-      user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large" if auth["provider"] == "facebook"
+  def self.create_with_omniauth(auth, current_user = nil)
+    if current_user
+      u = current_user
+    else
+      u = create! do |user|
+        user.name = auth["info"]["name"]
+        user.email = (auth["info"]["email"] rescue nil)
+        user.email = (auth["extra"]["user_hash"]["email"] rescue nil) unless user.email
+        user.nickname = auth["info"]["nickname"]
+        user.bio = (auth["info"]["description"][0..139] rescue nil)
+        user.locale = I18n.locale.to_s
+        user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large" if auth["provider"] == "facebook"
+      end    
     end
     provider = OauthProvider.where(name: auth['provider']).first
     u.authorizations.create! uid: auth['uid'], oauth_provider_id: provider.id if provider

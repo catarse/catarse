@@ -15,7 +15,12 @@
           = image_tag 'gravatar.png', :id => 'gravatar_logo'
         p= t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
         .clearfix
-
+- unless @user.has_facebook_authentication?
+  #my_facebook
+    h1= t('.my_facebook')
+    ul
+      li
+        = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), :class => 'facebook_start'    
 #my_data
   h1= t('.my_data')
   ul
