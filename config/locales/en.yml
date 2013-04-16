@@ -398,7 +398,7 @@ en:
     backers:
       show:
         error: "Ooops. You can only access this page after backing a project."
-        moip_message: "Your transaction was processed by Moip Pagamentos S/A.<br>Your transaction is “Authorized” and you Moip code is “%{code}″.<br>If you have any questions about this transaction, contact Moip directly."
+        moip_message: "Your transaction is “Authorized” and you Moip code is “%{code}″.<br>If you have any questions about this transaction, contact Moip directly."
         header_subtitle: "Without you maybe this project wouldn't stand a chance. Welcome to the team!"
         header_title: "Thank you! :D"
         text_subtitle: "Tell everyone what you just did"
