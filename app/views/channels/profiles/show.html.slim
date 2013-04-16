@@ -37,7 +37,8 @@
             .stop_following Deixar de seguir
         - else
           = link_to "Siga o canal", channels_channels_subscribers_path, {method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe]}
-
+      .subscribes_count
+        = resource.channels_subscribers.count
 
     ol.projects_list
       = content_tag_for(:li, @profile.projects.visible) do |project|
