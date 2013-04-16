@@ -29,14 +29,13 @@
         .mail
           = mail_to @profile.email, "Envie um email", class: ["icon-mail"]
       hr.before_subscribe
-      .subscribe
-        - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
-        - if subscription
-          = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :subscribe]} do
-            .following Seguindo
-            .stop_following Deixar de seguir
-        - else
-          = link_to "Siga o canal", channels_channels_subscribers_path, {method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe]}
+      - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
+      - if subscription
+        = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :subscribe]} do
+          .following Seguindo
+          .stop_following Deixar de seguir
+      - else
+        = link_to "Siga o canal", channels_channels_subscribers_path, {method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe]}
       .subscribes_count
         = resource.channels_subscribers.count
 
