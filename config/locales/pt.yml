@@ -789,6 +789,7 @@ pt:
       title: "Escolha de quais projetos você deseja receber notificações:"
       updates: "Eu quero receber atualizações dos projetos"
     current_user_fields:
+      bio_limit: 'até 140 caracteres'
       updated: "As suas informações foram atualizadas"
       update_social_info: "Atualizar informações"
       social_info: "Informações para contato"

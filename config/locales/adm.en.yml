@@ -8,6 +8,9 @@ en:
         send_to_draft: 'Send to DRAFT!'
         reject: 'Reject!'
         approve: 'Approve!'
+        order_asc: 'Goal asc'
+        order_desc: 'Goal desc'
+        order_created_at: 'Submission date'
     financials:
       index:
         submit: 'Filter'
