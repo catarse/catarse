@@ -14,19 +14,26 @@ describe Channels::ChannelsSubscribersController do
 
   describe "POST create" do
     before do
-      post :create, format: :json
+      post :create
     end
 
-    it{ should be_successful }
+    context "when user is signed in" do 
+      it{ should redirect_to root_path }
+    end
+
+    context "when no user is signed in" do 
+      let(:current_user){ nil }
+      it{ should redirect_to new_user_session_path }
+    end
   end
 
   describe "DELETE destroy" do
     before do
-      delete :destroy, id: channel_subscriber.id, format: :json
+      delete :destroy, id: channel_subscriber.id
     end
 
     context "when signed in user owns the subscription" do
-      it{ should be_successful }
+      it{ should redirect_to root_path }
     end
 
     context "when signed in user does not own the subscription" do

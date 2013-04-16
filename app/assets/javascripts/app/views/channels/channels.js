@@ -4,12 +4,6 @@ CATARSE.channels = {
     show: Backbone.View.extend({
 
       events: {
-        'click a.subscribe' : 'subscribe'
-      },
-
-      subscribe: function(event){
-        alert('subscribe');
-        return false;
       },
 
       el: 'body',
