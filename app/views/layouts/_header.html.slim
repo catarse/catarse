@@ -1,6 +1,6 @@
 #header
   /= render 'layouts/announcement'
-  = link_to "Home", root_path, :class => 'logo', :title => Configuration[:company_name]
+  = link_to "Home", root_url, :class => 'logo', :title => Configuration[:company_name]
   nav.actions
     = link_to t('layouts.header.explore'), explore_path, :class => 'explore'
     = link_to t('layouts.header.submit_project'), guidelines_start_path, :class =>  'submit_project'
@@ -10,7 +10,7 @@
       = submit_tag
   nav.menu
     = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, id: 'guidelines_header_modal' if Configuration[:support_forum].present?
-    = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank if Configuration['blog_url'].present?
+    = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank, class: 'blog' if Configuration['blog_url'].present?
     - if current_user
       = link_to '#', class: 'my_profile_link' do
         = image_tag(current_user.display_image, :size => "30x30", :class => 'profile_picture')
