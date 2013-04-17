@@ -62,6 +62,8 @@ body[data-namespace="channels"][data-controller="profiles"]
       h3
         margin: .4em 0 .2em 0
         color: #333
+      hr
+        opacity: .7
       span
         font-weight: 300
         font-size: .9em
@@ -84,61 +86,66 @@ body[data-namespace="channels"][data-controller="profiles"]
       .mail
         text-align: center
         padding-bottom: 1em
+        font-size: .9em
         a
           color: $button_pink
           text-decoration: none
           font-family: "Lato"
           font-weight: 600
           &:hover
-            text-decoration: underline
+            color: darken($button_pink, 10%)
           &:before
             padding-right: .2em
             font-family: 'icomoon'
             position: relative
-            font-size: 1.1em
-            top: .1em
+            font-size: 1em
+            top: .05em
+            
               
-
-      .subscribe
-        margin: .8em .2em .8em 0
-        width: 67%
-        padding: .4em 0
-        float: left
-      .subscribes_count
-        width: 3.2em
-        float: left
-        margin: .75em 0 
-        padding: .35em 0
-        border: 1px solid lightgray
-        font-size: 1.1em
-        text-align: center
-        font-weight: 400
-        text-decoration: none
-        border-radius: 2px
+      .subscription
+        .subscribe
+          margin: .8em .2em .8em 0
+          width: 67%
+          padding: .42em 0
+          float: left
+        .subscribes_count
+          width: 3.2em
+          float: right 
+          margin: .75em 0 
+          padding: .35em 0
+          border: 1px solid lightgray
+          font-size: 1.1em
+          text-align: center
+          font-weight: 400
+          text-decoration: none
+          border-radius: 2px
    
     // The project Box
     .project
       overflow: hidden
       *
-        +transition(all .3s)
+        +transition(all .6s)
+      .show
+        position: relative
+        top: 0px
       .mouse_over
         visibility: hidden
         position: absolute 
         width: 90%
-        top: 100px
-      &:hover 
-        .show 
-          display: none
-        .mouse_over
-          visibility: visible
-          position: relative
-          top: 0px
- 
+        top: 120px
+      .status
+        &:hover 
+          .show 
+            position: absolute
+            top: 100px
+          .mouse_over
+            visibility: visible
+            position: relative
+            top: 0px
     .project
       +grid(4)
       background: white
-      height: 370px
-      border: 1px solid lighten(lightgray,10%)
+      height: 380px
       box-shadow: 0 1px 4px darken(lightgray, 10%)
       position: relative
       margin-top: 0
@@ -200,14 +207,13 @@ body[data-namespace="channels"][data-controller="profiles"]
           height: .4em
           background: $project_box_progress_gray 
           border-radius: 6px
-          box-shadow: inset 0 0 4px lighten(gray, 15%)
+          box-shadow: inset 0 0 4px lighten(gray, 25%)
         #progress
           background: $project_box_progress
           +background-image(linear-gradient(0deg,lighten($project_box_progress, 5%) 0%,lighten($project_box_progress, 5%) 1%,lighten($project_box_progress, 15%) 100%,lighten($project_box_progress, 15%) 100%)) 
-          //+background-image(linear-gradient(lighten($project_box_progress, 30%) -2%, $project_box_progress 100%))
       .time_remaining, .money_raised
         float: left
-        padding: 1.4em 0
+        padding: 1.3em 0
         padding-bottom: 1.8em
         text-transform: uppercase
         font-size: .6em
