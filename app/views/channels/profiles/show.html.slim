@@ -28,22 +28,23 @@
         hr
         .mail
           = mail_to @profile.email, "Envie um email", class: ["icon-mail"]
-      hr.before_subscribe
-      - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
-      - if subscription
-        = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :ch_button_gray, :subscribe]} do
-          .following Seguindo
-          .stop_following Deixar de seguir
-      - else
-        = link_to "Siga o canal", channels_channels_subscribers_path, {method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe]}
-      .subscribes_count
-        = resource.channels_subscribers.count
+      .subscription
+        hr.before_subscribe
+        - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
+        - if subscription
+          = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :ch_button_gray, :subscribe]} do
+            .following Seguindo
+            .stop_following Deixar de seguir
+        - else
+          = link_to "Siga o canal", channels_channels_subscribers_path, {method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe]}
+        .subscribes_count
+          = resource.channels_subscribers.count
 
     ol.projects_list
       = content_tag_for(:li, @profile.projects.visible) do |project|
         .image    = link_to image_tag(project.uploaded_image, size: '220x140'), project_by_slug_path(permalink: project.permalink)
         .padding
-          h4.title    = link_to project.name, project_by_slug_path(permalink: project.permalink)
+          h4.title    = link_to truncate(project.name, length: 50, separator: ''), project_by_slug_path(permalink: project.permalink)
           p.headline  = link_to truncate(project.headline, length: 140), project_by_slug_path(permalink: project.permalink)
         .status
           hr
