@@ -51,7 +51,7 @@ Catarse::Application.routes.draw do
       end
     end
     collection do
-      get 'vimeo'
+      get 'video'
       get 'check_slug'
     end
     member do
