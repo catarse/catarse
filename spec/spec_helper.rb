@@ -75,6 +75,7 @@ RSpec.configure do |config|
     end
     DatabaseCleaner.clean
     RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
+    Configuration[:base_domain] = 'localhost'
   end
 
   def mock_tumblr method=:two
