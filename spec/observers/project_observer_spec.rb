@@ -4,7 +4,7 @@ describe ProjectObserver do
   let(:new_draft_project){ FactoryGirl.create(:notification_type, :name => 'new_draft_project') }
   let(:confirm_backer){ FactoryGirl.create(:notification_type, :name => 'confirm_backer') }
   let(:project_received){ FactoryGirl.create(:notification_type, :name => 'project_received') }
-  let(:project_in_wainting_funds){ FactoryGirl.create(:notification_type, :name => 'project_in_wainting_funds') }  
+  let(:project_in_wainting_funds){ FactoryGirl.create(:notification_type, :name => 'project_in_wainting_funds') }
   let(:adm_project_deadline){ FactoryGirl.create(:notification_type, :name => 'adm_project_deadline') }
   let(:project_success){ FactoryGirl.create(:notification_type, :name => 'project_success') }
   let(:backer_successful){ FactoryGirl.create(:notification_type, :name => 'backer_project_successful') }
@@ -78,12 +78,12 @@ describe ProjectObserver do
   describe "#notify_owner_that_project_is_waiting_funds" do
     let(:user) { FactoryGirl.create(:user) }
     let(:project) { FactoryGirl.create(:project, user: user, goal: 100, online_days: -2, state: 'online') }
-    
+
     before do
       FactoryGirl.create(:backer, project: project, value: 200, confirmed: true)
-      Notification.expects(:create_notification_once).with(:project_in_wainting_funds, project.user, {project_id: project.id}, {:project => project})      
+      Notification.expects(:create_notification_once).with(:project_in_wainting_funds, project.user, {project_id: project.id}, {:project => project})
     end
-    
+
     it("should notify the project owner"){ project.finish }
   end
 
@@ -193,7 +193,7 @@ describe ProjectObserver do
   end
 
   describe "#notify_admin_that_project_reached_deadline" do
-    let(:project){ FactoryGirl.create(:project, :goal => 30, :online_days => -7, :state => 'online') }
+    let(:project){ FactoryGirl.create(:project, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
     let(:user) { FactoryGirl.create(:user, email: 'foo@foo.com')}
     before do
       ::Configuration[:email_payments] = 'foo@foo.com'
