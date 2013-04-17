@@ -3,16 +3,19 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
   load_and_authorize_resource
   actions :index, :create, :destroy
 
-  alias_method :index, :create
+  # we skid the set_locale because we are using the index method to create a record
+  skip_before_filter :set_locale
+
   def create
     begin
       create! do |success,failure|
         success.html{ return redirect_to root_path }
       end
-    rescue ActiveRecord::RecordNotUnique => e
+    rescue PG::Error, ActiveRecord::RecordNotUnique => e
       return redirect_to root_path
     end
   end
+  alias_method :index, :create
 
   def destroy
     destroy! do |success,failure|
