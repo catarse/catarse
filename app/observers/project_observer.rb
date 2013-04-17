@@ -41,6 +41,7 @@ class ProjectObserver < ActiveRecord::Observer
         user,
         {project_id: project.id},
         project: project,
+        from: ::Configuration[:email_system],
         project_name: project.name)
     end
   end
