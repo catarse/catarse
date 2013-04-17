@@ -12,6 +12,13 @@ describe Channels::ChannelsSubscribersController do
     controller.stubs(:current_user).returns(current_user)
   end
 
+  describe "GET index" do
+    before do
+      get :index
+    end
+    it{ should redirect_to root_path }
+  end
+
   describe "POST create" do
     before do
       channel_subscriber
