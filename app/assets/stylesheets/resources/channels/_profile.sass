@@ -118,13 +118,21 @@ body[data-namespace="channels"][data-controller="profiles"]
    
     // The project Box
     .project
+      overflow: hidden
       *
-        +transition(all .4s)
+        +transition(all .3s)
+      .mouse_over
+        visibility: hidden
+        position: absolute 
+        width: 90%
+        top: 100px
       &:hover 
         .show 
           display: none
         .mouse_over
-          display: block
+          visibility: visible
+          position: relative
+          top: 0px
  
     .project
       +grid(4)
@@ -195,6 +203,7 @@ body[data-namespace="channels"][data-controller="profiles"]
           box-shadow: inset 0 0 4px lighten(gray, 15%)
         #progress
           background: $project_box_progress
+          +background-image(linear-gradient(0deg,lighten($project_box_progress, 5%) 0%,lighten($project_box_progress, 5%) 1%,lighten($project_box_progress, 15%) 100%,lighten($project_box_progress, 15%) 100%)) 
           //+background-image(linear-gradient(lighten($project_box_progress, 30%) -2%, $project_box_progress 100%))
       .time_remaining, .money_raised
         float: left
