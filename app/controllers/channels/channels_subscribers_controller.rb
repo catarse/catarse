@@ -9,7 +9,9 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
   def create
     begin
       create! do |success,failure|
-        success.html{ return redirect_to root_path }
+        success.html{ 
+          flash[:notice] = I18n.t('channels_subscribers.created')
+          return redirect_to root_path }
       end
     rescue PG::Error, ActiveRecord::RecordNotUnique => e
       return redirect_to root_path
@@ -19,7 +21,10 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
 
   def destroy
     destroy! do |success,failure|
-      success.html{ return redirect_to root_path }
+      success.html{ 
+        flash[:notice] = I18n.t('channels_subscribers.deleted')
+        return redirect_to root_path 
+      }
     end
   end
 
