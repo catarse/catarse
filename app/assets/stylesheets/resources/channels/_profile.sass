@@ -1,5 +1,14 @@
 // The stylesheet for the channels/profile.html page
 body[data-namespace="channels"][data-controller="profiles"]
+  .separator
+    width: 1px 
+    background: darken($body_background, 15%)
+    border-left: 1px solid white
+    height: 40px
+    display: inline-block
+    margin: 0 1em
+    position: relative
+    top: .3em
   hr
     border: 0
     height: 0
@@ -37,14 +46,7 @@ body[data-namespace="channels"][data-controller="profiles"]
     p.buttons
       position: relative
       top: 1em
-      .separator
-        width: 1px 
-        background: darken($body_background, 15%)
-        height: 40px
-        display: inline-block
-        margin: 0 1em
-        position: relative
-        top: .8em
+
       a
         margin: .8em 0 
 
@@ -227,3 +229,5 @@ body[data-namespace="channels"][data-controller="profiles"]
         float: right
         margin-right: 2%
 
+  .channel_footer
+   
