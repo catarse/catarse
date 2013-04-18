@@ -23,7 +23,7 @@ class Backer < ActiveRecord::Base
       case when lower(payment_choice) = 'debitobancario' then
         date(current_timestamp) <= date(created_at + interval '1 days')
       else
-        date(current_timestamp) <= date(created_at + interval '4 days')
+        date(current_timestamp) <= date(created_at + interval '5 days')
       end and not confirmed and payment_token is not null
     }) 
   }
