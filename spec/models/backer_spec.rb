@@ -116,20 +116,15 @@ describe Backer do
 
   describe '.in_time_to_confirm' do
     subject { Backer.in_time_to_confirm}
-
-    context "when backer is in time to confirm" do
-      before { FactoryGirl.create(:backer, confirmed: false, payment_token: 'ABC', created_at: 3.days.ago) }
-      it { should have(1).item }
-    end
-
-    context "when backer is confirmed" do
-      before { FactoryGirl.create(:backer, confirmed: true, payment_token: 'ABC', created_at: 3.days.ago) }
-      it { should have(0).item }
-    end
-
-    context "when backer already passed the time to confirm" do
-      before { FactoryGirl.create(:backer, confirmed: false, payment_token: 'ABC', created_at: 6.days.ago) }
-      it { should have(0).item }
+    
+    context 'when we have backers with DebitoBancario and BoletoBancario in time to confirm' do
+      before do
+        FactoryGirl.create(:backer, confirmed: false, payment_token: 'ABC', payment_choice: 'DebitoBancario', created_at: 1.days.ago)
+        FactoryGirl.create(:backer, confirmed: false, payment_token: 'ABC', payment_choice: 'DebitoBancario', created_at: 2.days.ago)
+        FactoryGirl.create(:backer, confirmed: false, payment_token: 'ABC', payment_choice: 'BoletoBancario', created_at: 3.days.ago)        
+      end
+      
+      it { should have(2).item }      
     end
 
     context "when backer is just a ghost" do

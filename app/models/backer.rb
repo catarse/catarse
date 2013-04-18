@@ -20,8 +20,11 @@ class Backer < ActiveRecord::Base
   scope :not_confirmed, where(:confirmed => false) # used in payment engines
   scope :in_time_to_confirm, ->() { 
     where(%Q{
-      confirmed is false and date(current_timestamp) <= date(created_at + interval '5 days')
-      and payment_token is not null
+      case when lower(payment_choice) = 'debitobancario' then
+        date(current_timestamp) <= date(created_at + interval '1 days')
+      else
+        date(current_timestamp) <= date(created_at + interval '5 days')
+      end and not confirmed and payment_token is not null
     }) 
   }
   scope :pending_to_refund, ->() { where("confirmed and requested_refund and not refunded") }
