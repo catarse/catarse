@@ -242,33 +242,4 @@ describe Backer do
       it{ should == "R$ 1" }
     end
   end
-
-  describe "#display_platform_fee" do
-    before(:each) do
-      I18n.locale = :pt
-      @backer = create(:backer, :value => 100)
-    end
-
-    it 'with default tax 7.5%'do
-      @backer.display_platform_fee.should == 'R$ 7,50'
-    end
-
-    it 'with another tax'do
-      @backer.display_platform_fee(5).should == 'R$ 5,00'
-    end
-  end
-
-  describe "#platform_fee" do
-    before(:each) do
-      @backer = create(:backer, :value => 100)
-    end
-
-    it 'with default tax 7.5%'do
-      @backer.platform_fee.should == 7.50
-    end
-
-    it 'with another tax'do
-      @backer.platform_fee(5).should == 5.00
-    end
-  end
 end
