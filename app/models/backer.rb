@@ -103,14 +103,6 @@ class Backer < ActiveRecord::Base
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
 
-  def platform_fee(fee=7.5)
-    (value.to_f * fee)/100
-  end
-
-  def display_platform_fee(fee=7.5)
-    number_to_currency platform_fee(fee), :unit => "R$", :precision => 2, :delimiter => ','
-  end
-
   def as_json(options={})
     json_attributes = {
       :id => id,
