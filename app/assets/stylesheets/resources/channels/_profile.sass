@@ -211,10 +211,10 @@ body[data-namespace="channels"][data-controller="profiles"]
           height: .4em
           background: $project_box_progress_gray 
           border-radius: 6px
-          box-shadow: inset 0 0 4px lighten(gray, 25%)
+          box-shadow: inset 0 0 4px lighten(gray, 15%)
         #progress
           background: $project_box_progress
-          +background-image(linear-gradient(0deg,lighten($project_box_progress, 5%) 0%,lighten($project_box_progress, 5%) 1%,lighten($project_box_progress, 15%) 100%,lighten($project_box_progress, 15%) 100%)) 
+          +background-image(linear-gradient(0deg,lighten($project_box_progress, 5%) 0%,$project_box_progress 1%,lighten($project_box_progress, 5%) 100%,lighten($project_box_progress, 15%) 100%)) 
       .time_remaining, .money_raised
         float: left
         padding: 1.3em 0
