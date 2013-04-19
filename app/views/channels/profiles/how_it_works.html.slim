@@ -1,0 +1,41 @@
+= content_for(:title, t('channels.how_it_works.title', channel: @profile.name))
+
+
+#page_content.projects
+  .container
+    h1 O instituto Asas quer dar asas pra quem quer mudar o mundo
+    hr
+    p
+      | Queremos dar asas a quem está mudando o mundo. Se você tem um projeto criativo que 
+      | promove  transformação, inscreva ele neste canal e voe mais longe. Aqui, se você atingir 
+      | 80% da sua meta, o Instituto Asas completa com os 20% restantes.
+
+
+    .explanation
+      .first
+        h2 Empurrão inicial
+        p
+          | Jovens com projetos transformadores precisam de mais 
+          | oportunidades de formação, de maior articulação em rede e 
+          | visibilidade para outros projetos. Para começar, daremos dicas 
+          | de como estruturar e potencializar sua campanha de 
+          | crowdfunding para obter melhores resultados.
+
+      .last
+        h2 Empurrão final
+        p
+          | Mas acreditamos que eles também precisam de investimento. 
+          | Por isso, depois que o projeto estiver no ar, você mobiliza a 
+          | sua rede e quando alcançar 80% da sua meta, o Instituto Asas 
+          | coloca os outros 20% pra garantir o sucesso da sua 
+          | campanha.  
+
+#page_content.how_to_participate
+  .container
+
+#page_content.send_your_project
+  span
+    | Você tem o perfil que procuramos? 
+    = link_to t('channels.send_your_project'), new_project_path, class: [:ch_button, :ch_button_ok, :ch_button_green], title: t('channels.accessibility.send_your_project')
+
+= render 'footer'

@@ -3,13 +3,12 @@
 #page_content.presentation
   .container
     .video
-      .padding= content_tag(:iframe, nil, src: 'http://www.youtube.com/embed/nWlVx3ecsLg?rel=0')
+      .padding        = content_tag(:iframe, nil, src: 'http://www.youtube.com/embed/nWlVx3ecsLg?rel=0&showinfo=0')
     .about
-      h1            = @profile.name
-      p.description = truncate(@profile.description, length: 210)
-      strong.headline= t 'channels.projects.see_how_it_works'
-      p.buttons
-        = link_to t('channels.projects.how_it_works'), new_project_path, class: [:ch_button, :ch_button_ok, :ch_button_green]
+      h1              = @profile.name
+      p.description   = truncate(@profile.description, length: 210)
+      strong.headline = t('channels.projects.see_how_it_works')
+      p.buttons       = link_to t('channels.projects.how_it_works'), channels_about_path, class: [:ch_button, :ch_button_ok, :ch_button_green], title: t('channels.accessibility.how_it_works') 
     .clearfix
 
 #page_content.projects
@@ -17,57 +16,31 @@
     .channel
       .info
         .padding
-          .image= image_tag @profile.image, size: '195x120'
-          h3= @profile.name
-          span= t 'channels.curator'
+          .image  = image_tag @profile.image, size: '195x120', title: @profile.name
+          h3      = @profile.name
+          span    = t('channels.curator')
           .social
-            = link_to "", @profile.twitter, title: :twitter, class: [:"icon-twitter"]
-            = link_to "", @profile.facebook, title: :facebook, class: [:"icon-facebook"]
-            = link_to "", @profile.website, title: :website, class: [:"icon-earth"]
+            = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"]
+            = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"]
+            = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"]
 
         hr
         .mail
-          = mail_to @profile.email, "Envie um email", class: ["icon-mail"]
+          = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email') 
       .subscription
         hr.before_subscribe
         - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
         - if subscription
           = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :ch_button_gray, :subscribe]} do
-            .following Seguindo
-            .stop_following Deixar de seguir
+            .following= t('channels.following')
+            .stop_following= t('channels.unfollow')
         - else
-          = link_to "Siga o canal", channels_channels_subscribers_path, {method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe]}
-        .subscribes_count
-          = resource.channels_subscribers.count
+          = link_to t('channels.follow'), channels_channels_subscribers_path, method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe], title: t('channels.follow')
+        .subscribes_count[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
+          = resource.channels_subscribers.size
 
     ol.projects_list
       = content_tag_for(:li, @profile.projects.visible) do |project|
-        .image    = link_to image_tag(project.uploaded_image, size: '220x140'), project_by_slug_path(permalink: project.permalink)
-        .padding
-          h4.title    = link_to truncate(project.name, length: 50, separator: ''), project_by_slug_path(permalink: project.permalink)
-          p.headline  = link_to truncate(project.headline, length: 140), project_by_slug_path(permalink: project.permalink)
-        .status
-          hr
-          .background
-            .padding.show
-              .progress_percent = t('channels.projects.progress_html', percent: project.progress)
-              .progress_bar= project.progress_bar
+        = render partial: 'channels/projects/project', locals: { project: project }
 
-
-            .padding.mouse_over
-              span.time_remaining = link_to t('channels.projects.time_remaining_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit]), project_by_slug_path(permalink: project.permalink)
-              span.money_raised   = link_to t('channels.projects.pledged_html', value: number_to_currency(project.pledged, precision: 0)), project_by_slug_path(permalink: project.permalink)              
-
-
-
-#page_content.channel_footer
-  .container
-    nav
-      = link_to "Termos de uso"
-      .separator
-      = link_to "Política de Privacidade"
-      .separator
-      = link_to "Como funciona o Canal Asas"
-      .separator
-      = link_to "Contato"
-
+= render 'footer'

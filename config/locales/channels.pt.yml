@@ -3,6 +3,12 @@ pt:
     created: 'Agora você segue o canal Asas'
     deleted: 'Você deixou de seguir o canal'
   channels:
+    send_your_project: "Envie seu projeto"
+    send_a_email: "Envie um email"
+    follow: "Siga o canal"
+    following: "Seguindo"
+    unfollow: "Deixar de seguir"
+    subscribed: "%{count} seguindo o canal"
     curator: 'Curador'
     adm:
       menu: "Moderação de Canais"
@@ -15,13 +21,16 @@ pt:
         one: "<span>%{count} %{unit}</span> restante"
         other: "<span>%{count} %{unit}</span> restantes"
       pledged_html: "<span>%{value}</span> levantados"
-    send_your_project: "Envie o seu projeto"
-    navigation:
-      header:
-        how_it_works_html: "<strong> Como funciona? </strong> Entenda o canal"
-        subscribe_html:    "<strong> Inscreva-se! </strong> Entre para o canal"
-        edit_the_channel_html:  "<strong> Edição </strong> Edite o canal"
-      footer:
-        terms_of_use_html: "<strong> Termos de uso </strong> Entenda o canal" 
-    call_to_action:
-      welcome: "Bem-vindo ao"
+    how_it_works:
+      title: "Como funciona o %{channel}?"
+    footer:
+      terms: "Termos de uso" 
+      privacy_policy: "Política de Privacidade"
+      how_it_works: "Como funciona o %{name}"
+      contact: "Contato"
+    accessibility:
+      how_it_works: "Clique para saber como o Canal funciona e enviar o seu projeto"
+      send_your_project: "Clique para enviar o seu projeto"
+      link_to_twitter: "Link para o twitter do canal"
+      link_to_facebook: "Link para o facebook do canal"
+      link_to_website: "Link para o site externo do canal"

@@ -1,0 +1,11 @@
+#page_content.channel_footer
+  .container
+    nav
+      = link_to t('channels.footer.terms'), '', title: t('channels.footer.terms')
+      .separator
+      = link_to t('channels.footer.privacy_policy'), '', title: t('channels.footer.privacy_policy') 
+      .separator
+      = link_to t('channels.footer.how_it_works', name: @profile.name), channels_about_path, title: t('channels.footer.how_it_works', name: @profile.name) 
+      .separator
+      = mail_to @profile.email, t('channels.footer.contact'), title: t('channels.footer.contact') 
+
