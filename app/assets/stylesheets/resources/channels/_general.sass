@@ -9,8 +9,11 @@ body[data-namespace="channels"]
     margin-bottom: -80px
   #header
     margin: 0 auto
+    padding-top: .6em
     #guidelines_header_modal, .blog, .actions, .search
       visibility: hidden
+    a:hover
+      text-decoration: underline
   #locales, #footer, #logos
     display: none !important
   .container
@@ -28,7 +31,7 @@ body[data-namespace="channels"]
       background: none
   #page_content.channel_footer
     padding: .1em 0
-    border-top: 2px solid darken($channel_footer_background, 5%)
+    border-top: 1px solid darken($channel_footer_background, 5%)
     background: $channel_footer_background
     bottom: 0
     top: 100%
