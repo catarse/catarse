@@ -1,7 +1,9 @@
 // The stylesheet for the about page (how it works)
 #how_it_works.channels
-  color: #333
+  color: $channel_text
   width: 100%
+  a
+    color: $channel_active_link
 
   h1, p.headline
     text-align: center
@@ -42,12 +44,14 @@
     margin-left: .6em
 
 .how_to_participate
-  box-shadow: 0 1px 4px 4px lightgray inset, 0 1px 4px -4px white inset
+  box-shadow: 500px 0 8px 4px lighten(lightgray, 8%) inset, -500px 0 8px 4px lighten(lightgray, 8%) inset, 0 1px 4px black inset 
+  border-top: 1px solid lighten(lightgray, 2%) 
   background: lighten(lightgray, 8%)
   overflow: hidden
   line-height: 1.4em
   color: #333
   font-weight: 300
+  padding: 2.8em 0 5em 0 !important
   span
     display: block
     padding-bottom: 1em
@@ -55,4 +59,9 @@
     list-style-type: square
     margin-bottom: .8em
     margin-left: 1em
+.if_your_project
+  background: lighten(lightgray, 20%)
+  padding: 1em
+  box-shadow: 0 0 2px lightgray
+
 

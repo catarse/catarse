@@ -55,13 +55,18 @@
         .last
           ul.topics
             li
-              | E claro, entender como funciona o Catarse. O que vale para o
+              | E claro, entender como funciona o Catarse. O que vale para o 
               | Catarse, vale para o Canal Instituto Asas. Se você é novo por aqui, 
               = link_to "saiba mais", about_path
             li
               | Você precisa estar disposto a participar de um encontro 
               | com todos os realizadores ao final do ano (pode ser via 
               | skype ou hangout mesmo)
+          .if_your_project
+            p 
+              | Se o seu projeto já está no Catarse e quer fazer parte deste 
+              | Canal, envie pra gente: 
+              = mail_to "canalasas@catarse.me"
 
 
 
