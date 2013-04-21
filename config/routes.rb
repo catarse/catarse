@@ -36,7 +36,12 @@ Catarse::Application.routes.draw do
       end
       get '/', to: 'profiles#show', :as => :profile 
       get '/how-it-works', to: 'profiles#how_it_works', as: :about
-      resources :projects, only: [:new, :create, :show]
+      resources :projects, only: [:new, :create, :show] do
+        collection do
+          get 'vimeo'
+          get 'check_slug'
+        end
+      end
       resources :channels_subscribers, only: [:index, :create, :destroy]
     end
   end
