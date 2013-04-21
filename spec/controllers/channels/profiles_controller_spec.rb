@@ -1,13 +1,16 @@
 require 'spec_helper'
 
 describe Channels::ProfilesController do
+  subject{ response }
+  let(:channel){ FactoryGirl.create(:channel) }
 
-  describe "GET #show" do
-    it "should return HTTP status 200" do
+  describe "GET show" do
+    before do
+      request.stubs(:subdomain).returns(channel.permalink)
       get :show, id: 'sample'
-      response.code.to_i.should == 302
     end
-  end
 
+    its(:status){ should == 200 }
+  end
 end
 
