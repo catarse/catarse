@@ -64,16 +64,16 @@ end
 end
 
 
-Channel.create!(
-  name: "Channel name", 
-  permalink: "sample-permalink", 
+Channel.find_or_create_by_name!(
+  name: "Channel name",
+  permalink: "sample-permalink",
   description: "Lorem Ipsum"
 )
 
 
-OauthProvider.create!(
-  name: 'facebook', 
-  key: 'your_facebook_app_key', 
-  secret: 'your_facebook_app_secret', 
+OauthProvider.find_or_create_by_name!(
+  name: 'facebook',
+  key: 'your_facebook_app_key',
+  secret: 'your_facebook_app_secret',
   path: 'facebook'
 )
