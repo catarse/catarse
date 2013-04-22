@@ -50,7 +50,6 @@ class ApplicationController < ActionController::Base
 
   private
   def statistics
-    @statistics = Statistics.new
     @statistics ||= Rails.cache.fetch("global/statiscs", expires_in: 10.minutes) do
       Statistics.first
     end

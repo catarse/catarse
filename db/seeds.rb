@@ -35,8 +35,8 @@
 
 [
   'confirm_backer','payment_slip','project_success','backer_project_successful',
-  'backer_project_unsuccessful','project_received','updates','project_unsuccessful',
-  'project_visible','processing_payment','new_draft_project', 'project_rejected',
+  'backer_project_unsuccessful','project_received', 'project_received_channel', 'updates','project_unsuccessful',
+  'project_visible','processing_payment','new_draft_project', 'new_draft_channel', 'project_rejected',
   'pending_backer_project_unsuccessful', 'project_owner_backer_confirmed', 'adm_project_deadline',
   'project_in_wainting_funds'
 ].each do |name|
