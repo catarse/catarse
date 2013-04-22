@@ -20,9 +20,9 @@
           h3      = @profile.name
           span    = t('channels.curator')
           .social
-            = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"]
-            = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"]
-            = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"]
+            = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"] if @profile.twitter
+            = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook
+            = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"] if @profile.website
 
         hr
         .mail
