@@ -8,14 +8,14 @@ class ProjectObserver < ActiveRecord::Observer
 
   def after_create(project)
     if (user = project.new_draft_recipient)
-      Notification.create_notification_once(:new_draft_project,
+      Notification.create_notification_once(project.new_draft_project_notification_type,
                                             user,
                                             {project_id: project.id},
                                             {project: project, project_name: project.name, from: project.user.email, display_name: project.user.display_name}
                                            )
     end
 
-    Notification.create_notification_once(:project_received,
+    Notification.create_notification_once(project.new_project_received_notification_type,
                                           project.user,
                                           {project_id: project.id},
                                           {project: project, project_name: project.name})

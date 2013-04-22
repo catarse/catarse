@@ -3,6 +3,9 @@ require 'spec_helper'
 
 describe Project do
   let(:project){ Project.new :goal => 3000 }
+  let(:user){ FactoryGirl.create(:user) }
+  let(:channel){ FactoryGirl.create(:channel, trustees: [ user ]) }
+  let(:channel_project){ FactoryGirl.create(:project, channels: [ channel ]) }
 
   describe "associations" do
     it{ should belong_to :user }
@@ -508,7 +511,6 @@ describe Project do
 
   describe "#new_draft_recipient" do
     subject { project.new_draft_recipient }
-
     context "when project does not belong to any channel" do
       before do
         Configuration[:email_projects] = 'admin_projects@foor.bar'
@@ -518,10 +520,34 @@ describe Project do
     end
 
     context "when project does belong to a channel" do
-      let(:user){ FactoryGirl.create(:user) }
-      let(:channel){ FactoryGirl.create(:channel, trustees: [ user ]) }
-      let(:project){ FactoryGirl.create(:project, channels: [ channel ]) }
+      let(:project) { channel_project }
       it{ should == user }
+    end
+  end
+
+  describe "#new_draft_project_notification_type" do
+    subject{ project.new_draft_project_notification_type }
+
+    context "when project does not belong to any channel" do
+      it{ should == :new_draft_project }
+    end
+
+    context "when project does belong to a channel" do
+      let(:project) { channel_project }
+      it{ should == :new_draft_project_channel }
+    end
+  end
+
+  describe "#new_project_received_notification_type" do
+    subject{ project.new_project_received_notification_type }
+
+    context "when project does not belong to any channel" do
+      it{ should == :project_received }
+    end
+
+    context "when project does belong to a channel" do
+      let(:project) { channel_project }
+      it{ should == :project_received_channel }
     end
   end
 
