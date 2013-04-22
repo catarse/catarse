@@ -506,6 +506,24 @@ describe Project do
     end
   end
 
+  describe "#new_draft_recipient" do
+    subject { project.new_draft_recipient }
+
+    context "when project does not belong to any channel" do
+      before do
+        Configuration[:email_projects] = 'admin_projects@foor.bar'
+        @user = FactoryGirl.create(:user, email: Configuration[:email_projects])
+      end
+      it{ should == @user }
+    end
+
+    context "when project does belong to a channel" do
+      let(:user){ FactoryGirl.create(:user) }
+      let(:channel){ FactoryGirl.create(:channel, trustees: [ user ]) }
+      let(:project){ FactoryGirl.create(:project, channels: [ channel ]) }
+      it{ should == user }
+    end
+  end
 
   describe "state machine" do
     let(:project) { FactoryGirl.create(:project) }
