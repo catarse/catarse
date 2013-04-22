@@ -323,4 +323,17 @@ class Project < ActiveRecord::Base
     update_attributes({ online_date: DateTime.now, expires_at: (DateTime.now + online_days.days) })
     notify_observers :notify_owner_that_project_is_online
   end
+
+  def new_draft_recipient
+    (channels.first.trustees.first rescue nil) ||
+    User.where(email: ::Configuration[:email_projects]).first
+  end
+
+  def new_draft_project_notification_type
+    channels.first ? :new_draft_project_channel : :new_draft_project
+  end
+
+  def new_project_received_notification_type
+    channels.first ? :project_received_channel : :project_received
+  end
 end
