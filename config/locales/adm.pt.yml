@@ -16,6 +16,8 @@ pt:
         state: 'Estado'
         menu: 'Rel. Financeiros'
         title: 'Relatórios financeiros'
+        backer_report: "Relatório de apoiadores"
+        search_report: "Relatório da busca"
         total_projects: 'projetos'
         submit: 'filtrar'
         by_state: 'Por estado'
