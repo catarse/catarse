@@ -11,8 +11,8 @@ class Channels::Adm::ProjectsController < Adm::BaseController
 
 
   before_filter do
-    @channel        =  current_user.channels.first
-    @total_projects = @channel.projects.size 
+    @channel        =  Channel.find_by_permalink!(request.subdomain.to_s)
+    @total_projects =  @channel.projects.size 
   end
 
   [:approve, :reject, :push_to_draft].each do |name|
