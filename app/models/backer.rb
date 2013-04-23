@@ -128,6 +128,14 @@ class Backer < ActiveRecord::Base
     end
     json_attributes
   end
+  
+  state_machine :state, initial: :pending do
+    state :pending, value: 'pending'
+    state :confirmed, value: 'confirmed'
+    state :canceled, value: 'canceled'
+    state :refunded, value: 'refunded'
+    state :requested_refund, value: 'requested_refund'
+  end
 
   # Used in payment engines
   def price_in_cents
