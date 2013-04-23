@@ -76,6 +76,15 @@ class User < ActiveRecord::Base
   has_many :backs, class_name: "Backer"
   has_one :user_total
 
+
+  # Channels relation
+  has_and_belongs_to_many :channels, join_table: :channels_trustees
+  has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
+  has_many :channels_projects, through: :channels, source: :projects
+  has_many :channels_subscribers
+
+
+
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
   scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
   scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
@@ -113,6 +122,13 @@ class User < ActiveRecord::Base
 
   def admin?
     admin
+  end
+
+  # NOTE: Checking if the user has CHANNELS 
+  # If the user has some channels, this method returns TRUE
+  # Otherwise, it's FALSE
+  def trustee?
+    !self.channels.size.zero? 
   end
 
   def credits

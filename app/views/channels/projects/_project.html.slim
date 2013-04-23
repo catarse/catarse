@@ -1,0 +1,15 @@
+.image        = link_to image_tag(project.uploaded_image, size: '220x140'), project_by_slug_path(project.permalink), title: project.name
+.padding
+  h4.title    = link_to truncate(project.name, length: 50, separator: ''), project_by_slug_path(project.permalink), title: project.name
+  p.headline  = link_to truncate(project.headline, length: 140), project_by_slug_path(project.permalink), title: project.headline
+.status
+  hr
+  .background
+    .padding.show
+      .progress_percent = t('channels.projects.progress_html', percent: project.progress)
+      .progress_bar     = project.progress_bar
+
+
+    .padding.mouse_over
+      span.time_remaining   = link_to t('channels.projects.time_remaining_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit]), project_by_slug_path(project.permalink), title: project.name
+      span.money_raised     = link_to t('channels.projects.pledged_html', value: number_to_currency(project.pledged, precision: 0)), project_by_slug_path(project.permalink), title: project.name 

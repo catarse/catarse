@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, LogoUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
-    :display_pledged, :display_goal, :remaining_days,
+    :display_pledged, :display_goal, :remaining_days, :progress_bar,
     :to => :decorator
 
   schema_associations
@@ -28,6 +28,9 @@ class Project < ActiveRecord::Base
   has_many :rewards, :dependent => :destroy
   has_many :updates, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
+
+  has_and_belongs_to_many :channels
+
   has_one :project_total
   accepts_nested_attributes_for :rewards
 
@@ -319,5 +322,18 @@ class Project < ActiveRecord::Base
   def after_transition_of_draft_to_online
     update_attributes({ online_date: DateTime.now, expires_at: (DateTime.now + online_days.days) })
     notify_observers :notify_owner_that_project_is_online
+  end
+
+  def new_draft_recipient
+    (channels.first.trustees.first rescue nil) ||
+    User.where(email: ::Configuration[:email_projects]).first
+  end
+
+  def new_draft_project_notification_type
+    channels.first ? :new_draft_project_channel : :new_draft_project
+  end
+
+  def new_project_received_notification_type
+    channels.first ? :project_received_channel : :project_received
   end
 end

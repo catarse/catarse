@@ -1,5 +1,5 @@
 en:
-  adm:
+  adm: &admin
     projects:
       index:
         by_state: 'By state'
@@ -58,3 +58,6 @@ en:
         total_users: Users
         user: User
         value: Value
+  channels:
+    adm:
+      <<: *admin

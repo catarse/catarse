@@ -1,0 +1,13 @@
+#page_content.channel_footer
+  .container
+    nav
+      = link_to t('channels.footer.terms'), 'http://suporte.catarse.me/knowledgebase/articles/190852-termo-de-uso-canal-asas', title: t('channels.footer.terms'), target: '_blank'
+      .separator
+      = link_to t('channels.footer.privacy_policy'), 'http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade', title: t('channels.footer.privacy_policy'), target: '_blank' 
+      .separator
+      = link_to t('channels.footer.how_it_works', name: @profile.name), channels_about_path, title: t('channels.footer.how_it_works', name: @profile.name), target: '_blank' 
+      .separator
+      = mail_to @profile.email, t('channels.footer.contact'), title: t('channels.footer.contact'), target: '_blank' 
+      .separator
+      = link_to t('channels.footer.how_channels_work'), 'http://blog.catarse.me/conheca-os-canais-do-catarse/', title: t('channels.footer.how_channels_work'), target: '_blank' 
+

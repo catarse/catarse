@@ -113,6 +113,9 @@ end
 group :development do
   gem 'mailcatcher'
   gem 'foreman'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rack-mini-profiler'
 end
 
 group :test, :development do
@@ -126,6 +129,8 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara',   '~> 2.0.2'
+  gem 'jasmine'
+  gem 'coveralls', require: false
 end
 
 

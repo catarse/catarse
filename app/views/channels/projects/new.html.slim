@@ -1,0 +1,125 @@
+#page_content
+  .container
+    .start_content
+      .title
+        h1= t('.title')
+        h2= t('.subtitle')
+        p= t('.legend_html')
+      .bootstrap-form
+        .clearfix
+        = semantic_form_for @project, :html => { :id => 'project_form' } do |form|
+          = form.inputs do
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.permalink_important')
+              = form.label :permalink, "#{t('activerecord.attributes.project.permalink')} *"
+              .input-prepend.permalink
+                span.add-on= "#{::Configuration[:base_url]}/"
+                = form.text_field :permalink, :class => 'permalink'
+                p.inline-hints
+                  = t('.permalink_hint')
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.name_important')
+              = form.label :name, t('formtastic.labels.project.name')
+              = form.text_field :name
+              p.inline-hints= t('formtastic.hints.project.name')
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.about_important')
+              = form.label :about, t('formtastic.labels.project.about')
+              = form.text_area :about
+              p.inline-hints= t('formtastic.hints.project.about')
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.headline_important')
+              = form.label :headline, t('formtastic.labels.project.headline')
+              = form.text_field :headline, { :maxlength => 140 }
+              p.inline-hints= t('formtastic.hints.project.headline')
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.tags_important', :href => "http://www.catarse.me/explore").html_safe
+              = form.label :category, t('.category')
+              = form.select :category_id, Category.array
+              p.inline-hints= t('formtastic.hints.project.category')
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.important_html', :link => link_to("MoIP", "http://www.moip.com.br/", :target => :_blank))
+              = form.label :goal, t('formtastic.labels.project.goal')
+              = form.text_field :goal
+              p.inline-hints= t('formtastic.hints.project.goal').html_safe
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.online_days_important')
+              = form.label :online_days, t('formtastic.labels.project.expires_at')
+              .input-append
+                = form.text_field :online_days
+                span.add-on= t('days')
+              p.inline-hints= t('formtastic.hints.project.online_days')
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.video_important')
+              = form.label :video_url, t('formtastic.labels.project.video_url')
+              = form.text_field :video_url
+              p.inline-hints= t('formtastic.hints.project.video_url').html_safe
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.more_links_important')
+              = form.label :more_links, t('formtastic.labels.project.more_links')
+              = form.text_area :more_links
+              p.inline-hints= t('formtastic.hints.project.more_links')
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.first_backers_important')
+              = form.label :first_backers, t('formtastic.labels.project.first_backers')
+              = form.text_area :first_backers
+              p.inline-hints= t('formtastic.hints.project.first_backers')
+
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.how_know_important')
+              = form.label :how_know, t('channels.projects.new.how_know')
+              = form.text_area :how_know
+            .clearfix
+            .submit
+              fieldset.accept
+                = check_box_tag 'accept'
+                = label_tag 'accept', t('accept_terms_html', :link => link_to(t('terms'), 'http://suporte.catarse.me/knowledgebase/articles/190852-termo-de-uso-canal-asas', :target => :_blank)), :class => 'inline'
+              fieldset
+                .bootstrap-twitter
+                  .send
+                    = submit_tag t('.submit'), :disabled => true, :id => 'project_submit', :class => 'btn_send'
+                    span = t('.send_project')
+                  /= form.submit t('.submit'), :disabled => true, :class => 'btn-large btn-block btn btn-warning', :id => 'project_submit', :style => 'width: 100%;'
+    .clearfix

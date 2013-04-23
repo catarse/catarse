@@ -51,7 +51,6 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
         $(id).addClass("ok").removeClass("error")
         return true
       } else {
-        console.log(id);
         $(id).addClass("error").removeClass("ok")
         return false
       }

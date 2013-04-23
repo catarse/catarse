@@ -99,6 +99,11 @@ GEM
     best_in_place (2.1.0)
       jquery-rails
       rails (~> 3.1)
+    better_errors (0.7.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.1)
+      debug_inspector (>= 0.0.1)
     bourne (1.1.2)
       mocha (= 0.10.5)
     braintree (2.22.0)
@@ -120,6 +125,7 @@ GEM
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.2.7)
+    coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -127,6 +133,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.1)
+    colorize (0.5.8)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -136,10 +143,17 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     connection_pool (1.0.0)
+    coveralls (0.6.3)
+      colorize
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      thor
     crack (0.1.8)
     curb (0.7.18)
     daemons (1.1.9)
     database_cleaner (0.9.1)
+    debug_inspector (0.0.2)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -211,9 +225,15 @@ GEM
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
-    initjs (1.0.0)
+    initjs (0.1.2)
       jquery-rails
-      rails (>= 3.1)
+      rails (~> 3.1)
+    jasmine (1.3.1)
+      jasmine-core (~> 1.3.1)
+      rack (~> 1.0)
+      rspec (>= 1.3.1)
+      selenium-webdriver (>= 0.1.3)
+    jasmine-core (1.3.1)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
@@ -294,6 +314,8 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-mini-profiler (0.1.23)
+      rack (>= 1.1.3)
     rack-protection (1.5.0)
       rack
     rack-ssl (1.3.3)
@@ -329,10 +351,16 @@ GEM
     request_store (1.0.5)
     responders (0.9.3)
       railties (~> 3.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rinku (1.7.2)
     rmagick (2.13.2)
     routing-filter (0.3.1)
       actionpack
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -376,6 +404,10 @@ GEM
       multi_json (~> 1)
       redis (~> 3)
       redis-namespace
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sinatra (1.3.5)
       rack (~> 1.4)
       rack-protection (~> 1.3)
@@ -445,6 +477,8 @@ DEPENDENCIES
   airbrake
   auto_html (= 1.4.2)
   best_in_place
+  better_errors
+  binding_of_caller
   cancan!
   capybara (~> 2.0.2)
   carrierwave (~> 0.7.0)
@@ -454,6 +488,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.2)
   compass-960-plugin (~> 0.10.4)
   compass-rails (~> 1.0.2)
+  coveralls
   database_cleaner
   devise
   draper
@@ -471,6 +506,7 @@ DEPENDENCIES
   httpclient (= 2.2.5)
   inherited_resources (= 1.3.1)
   initjs
+  jasmine
   jquery-rails
   kaminari
   launchy
@@ -485,6 +521,7 @@ DEPENDENCIES
   pg
   pg_search
   postgres-copy
+  rack-mini-profiler
   rack-timeout
   rails (= 3.2.12)
   rails_autolink (~> 1.0.7)
