@@ -4,31 +4,57 @@ Catarse::Application.routes.draw do
   match '/thank_you' => "static#thank_you"
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
+
+  filter :locale, exclude: /\/auth\//
+
+  # Mountable engines
   constraints check_user_admin do
     mount Sidekiq::Web => '/sidekiq'
   end
 
+  mount CatarsePaypalExpress::Engine  => "/", :as => :catarse_paypal_express
+  mount CatarseMoip::Engine           => "/", :as => :catarse_moip
+
   # Non production routes
-  if Rails.env == "development"
+  if Rails.env.development?
     resources :emails, :only => [ :index ]
   end
 
-  mount CatarsePaypalExpress::Engine => "/", :as => "catarse_paypal_express"
-  mount CatarseMoip::Engine => "/", :as => "catarse_moip"
-
-  filter :locale, exclude: /\/auth\//
-
-  root to: 'projects#index'
+  # Channels
+  constraints subdomain: 'asas' do
+    namespace :channels, path: '' do
+      namespace :adm do
+        resources :projects, only: [ :index, :update ] do
+          member do
+            put 'approve'
+            put 'reject'
+            put 'push_to_draft'
+          end
+        end
+      end
+      get '/', to: 'profiles#show', :as => :profile 
+      get '/how-it-works', to: 'profiles#how_it_works', as: :about
+      resources :projects, only: [:new, :create, :show] do
+        collection do
+          get 'vimeo'
+          get 'check_slug'
+        end
+      end
+      resources :channels_subscribers, only: [:index, :create, :destroy]
+    end
+  end
 
   # Static Pages
-  match '/sitemap' => "static#sitemap", :as => :sitemap
-  match "/guidelines" => "static#guidelines", :as => :guidelines
-  match "/guidelines_tips" => "static#guidelines_tips", :as => :guidelines_tips
-  match "/guidelines_backers" => "static#guidelines_backers", :as => :guidelines_backers
-  match "/guidelines_start" => "static#guidelines_start", :as => :guidelines_start
-  match "/about" => "static#about", :as => :about
-  match "/faq" => "static#faq", :as => :faq
+  get '/sitemap',               to: 'static#sitemap',             as: :sitemap
+  get '/guidelines',            to: 'static#guidelines',          as: :guidelines 
+  get "/guidelines_tips",       to: "static#guidelines_tips",     as: :guidelines_tips
+  get "/guidelines_backers",    to: "static#guidelines_backers",  as: :guidelines_backers
+  get "/guidelines_start",      to: "static#guidelines_start",    as: :guidelines_start
+  get "/about",                 to: "static#about",               as: :about
+  get "/faq",                   to: "static#faq",                 as: :faq
+
 
   match "/explore" => "explore#index", :as => :explore
   match "/explore#:quick" => "explore#index", :as => :explore_quick
@@ -107,4 +133,8 @@ Catarse::Application.routes.draw do
 
   match "/mudancadelogin" => "users#set_email", as: :set_email_users
   match "/:permalink" => "projects#show", as: :project_by_slug
+
+  # Root path
+  root to: 'projects#index'
+
 end

@@ -4,6 +4,13 @@ pt:
   no: "Não"
   yes: "Sim"
   or: "ou"
+
+  site:
+    title: "A maior comunidade de crowdfunding do Brasil!" 
+    meta_title:  "%{title} · %{company_name}"
+    description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
+    keywords: "catarse, crowdfunding, projeto, comunidade, open source"
+
   backer_report_to_project_owner:
     reward_description: 'Descrição da recompensa'
     confirmed_at: 'Data da confirmação do pagamento'
@@ -580,8 +587,6 @@ pt:
       success: "Logout realizado com sucesso. Até logo!"
     failure:
       error: "Ocorreu um erro ao realizar o login. Por favor, tente novamente."
-  site:
-    title: "A maior comunidade de crowdfunding do Brasil!"
   static:
     faq:
       title: "Perguntas frequentes"

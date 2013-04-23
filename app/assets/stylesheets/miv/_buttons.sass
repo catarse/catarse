@@ -1,0 +1,41 @@
+.ch_button
+  font-size: 1.05em
+  text-align: center
+  display: inline-block
+  color: white !important
+  font-weight: 400
+  text-decoration: none
+  padding: 1.2em 2.2em
+  border-radius: 2px
+  +transition(all .2s)
+
+.ch_button_ok
+  
+
+.ch_button_cancel
+  
+.ch_button_pink
+  background: $button_pink
+  &:hover
+    background: darken($button_pink, 10%)
+.ch_button_green
+  background: $button_green
+  &:hover
+    background: darken($button_green, 10%)
+
+.ch_button_unsubscribe
+  .following
+    display: inherit
+  .stop_following
+    display: none
+  &:hover
+    .following
+      display: none
+    .stop_following
+      font-size: 1em
+      display: inherit
+
+.ch_button_gray
+  background: $button_gray
+  &:hover
+    background: darken($button_gray, 10%)

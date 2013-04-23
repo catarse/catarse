@@ -112,5 +112,12 @@ FactoryGirl.define do
     f.comment "This is a comment"
     f.comment_html "<p>This is a comment</p>"
   end
+
+  factory :channel do
+    name "Test"
+    description "Lorem Ipsum"
+    sequence(:permalink) { |n| "#{n}-test-page" }
+  end
+  
 end
 

@@ -3,6 +3,9 @@ require 'spec_helper'
 
 describe Project do
   let(:project){ Project.new :goal => 3000 }
+  let(:user){ FactoryGirl.create(:user) }
+  let(:channel){ FactoryGirl.create(:channel, trustees: [ user ]) }
+  let(:channel_project){ FactoryGirl.create(:project, channels: [ channel ]) }
 
   describe "associations" do
     it{ should belong_to :user }
@@ -12,6 +15,7 @@ describe Project do
     it{ should have_many :rewards }
     it{ should have_many :updates }
     it{ should have_many :notifications }
+    it{ should have_and_belong_to_many :channels }
   end
 
   describe "validations" do
@@ -505,6 +509,47 @@ describe Project do
     end
   end
 
+  describe "#new_draft_recipient" do
+    subject { project.new_draft_recipient }
+    context "when project does not belong to any channel" do
+      before do
+        Configuration[:email_projects] = 'admin_projects@foor.bar'
+        @user = FactoryGirl.create(:user, email: Configuration[:email_projects])
+      end
+      it{ should == @user }
+    end
+
+    context "when project does belong to a channel" do
+      let(:project) { channel_project }
+      it{ should == user }
+    end
+  end
+
+  describe "#new_draft_project_notification_type" do
+    subject{ project.new_draft_project_notification_type }
+
+    context "when project does not belong to any channel" do
+      it{ should == :new_draft_project }
+    end
+
+    context "when project does belong to a channel" do
+      let(:project) { channel_project }
+      it{ should == :new_draft_project_channel }
+    end
+  end
+
+  describe "#new_project_received_notification_type" do
+    subject{ project.new_project_received_notification_type }
+
+    context "when project does not belong to any channel" do
+      it{ should == :project_received }
+    end
+
+    context "when project does belong to a channel" do
+      let(:project) { channel_project }
+      it{ should == :project_received_channel }
+    end
+  end
 
   describe "state machine" do
     let(:project) { FactoryGirl.create(:project) }

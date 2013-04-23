@@ -2,7 +2,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(current_user)
+  def initialize(current_user, options = {})
     current_user ||= User.new
 
     can :read, :all
@@ -51,6 +51,7 @@ class Ability
       current_user.admin
     end
 
+
     # NOTE: Backer authorizations
     cannot :show, :backers
     can :create, :backers if current_user.persisted?
@@ -58,7 +59,60 @@ class Ability
       backer.user == current_user
     end
 
-    # NOTE: When admin can access all things ;)
+    # Channel authorizations
+    # Due to previous abilities, first I activate all things 
+    # and in the final I deactivate unnecessary abilities.
+    can :create, :channels_subscribers if current_user.persisted?
+    can :destroy, :channels_subscribers do |cs|
+      cs.user == current_user
+    end
+
+    if current_user.trustee?
+
+      can :access, :all 
+      cannot :access, :projects
+      cannot :access, :rewards
+
+      can :create, :projects
+      can :access, :projects do |project|
+        current_user.channels_projects.exists?(project)
+      end
+
+
+      can :access, :rewards do |reward|
+        current_user.channels_projects.exists?(reward.project)
+      end
+
+      
+      # For the access, :all
+      # we're removing the ability to update users at all, but
+      cannot [:update, :destroy], :users
+
+      # He can update himself
+      can :update, :users do |user|
+        user == current_user
+      end
+
+      # Nobody can destroy projects.
+      cannot :destroy, :projects
+    end
+
+    # A trustee cannot access the adm/ path
+    # He can only do this if he is an admin too.
+    case options[:namespace]
+      when "Adm"
+        if current_user.trustee? && !current_user.admin?
+          cannot :access, :all
+        end
+      else
+    end
+
+
+
+    # NOTE: admin can access everything.
+    # It's the last ability to override all previous abilities.
     can :access, :all if current_user.admin?
+
+
   end
 end

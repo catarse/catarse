@@ -199,5 +199,5 @@ var CATARSE = {
     show: function(){
       window.view = new CATARSE.UsersShowView({el: $("body") });
     }
-  }
+  },
 }

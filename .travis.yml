@@ -11,7 +11,8 @@ before_script:
 env:
   - DISPLAY=:99.0
 
-script: "bundle exec rspec spec"
+script:
+  - "bundle exec rspec spec"
 
 branches:
   only:

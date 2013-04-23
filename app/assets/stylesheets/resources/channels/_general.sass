@@ -1,0 +1,60 @@
+@import miv/buttons
+@import icomoon
+// Channels Styles/Classes that will be reused
+body[data-namespace="channels"]
+  background: $body_background
+  #main_content
+    min-height: 100%
+    height: auto
+    margin-bottom: -80px
+  #header
+    margin: 0 auto
+    padding-top: .6em
+    #guidelines_header_modal, .blog, .actions, .search
+      visibility: hidden
+    a:hover
+      text-decoration: underline
+  #locales, #footer, #logos
+    display: none !important
+  .container
+    border: none !important
+    border-radius: 0 !important
+  #page_content
+    padding: 2.8em 0
+  #page_content.presentation
+    background: white
+    .container
+      margin-bottom: .2em
+  #page_content.presentation, #page_content.projects, #page_content.channel_footer, #page_content.how_to_participate
+    border-top: 1px solid lighten(lightgray, 10%)
+    .container
+      background: none
+  #page_content.channel_footer
+    padding: .1em 0
+    border-top: 1px solid darken($channel_footer_background, 5%)
+    background: $channel_footer_background
+    bottom: 0
+    top: 100%
+    width: 100%
+    position: relative
+    height: 80px
+    a
+      color: $channel_text
+      display: inline-block
+      text-decoration: none
+      margin-top: 2em
+      &:hover
+        text-decoration: underline
+    .separator
+      height: 20px
+
+
+  h1, h2, h3, h4, h5
+    font-weight: bold
+  h1
+    font-size: 2em
+  #page_content.projects
+    background: $body_background
+    min-height: 400px
+    margin-bottom: 1em
+
