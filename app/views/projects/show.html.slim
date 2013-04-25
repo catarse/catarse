@@ -20,19 +20,19 @@
 
 #page_content
   .container
-  
+
     - if @project.draft?
       = render "draft_warning"
 
     - if @project.rejected?
       = render "rejected_warning"
-      
+
     - if @project.online? && can?(:update, @project)
       = render "online_warning"
-      
+
     - if @project.waiting_funds? && can?(:update, @project)
       = render "waiting_funds_warning"
-      
+
     - if @project.successful? && can?(:update, @project)
       = render "successful_warning"
 
@@ -321,13 +321,16 @@
                   .maximum_backers.in_time_to_confirm.clearfix
                     .pending= t('backs_to_confirm', count: in_time_to_confirm)
                 .clearfix
-              - if current_user && current_user.admin && reward.has_modification?
-                div class="description_version rewardVersioning#{reward.id}"
-                  p= reward.last_description
-                .maximum_backers.in_time_to_confirm.clearfix
-                  .updated_reward
-                    span id="rewardVersioning#{reward.id}"
-                      = 'Veja a versão anterior.'
+              - if current_user && current_user.admin
+                div class="reward_updated_at"
+                  p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{@project.online_date.nil? ? '' : ((@project.online_date > reward.updated_at)? '(draft)' : '(online)')}"
+                - if reward.has_modification?
+                  div class="description_version rewardVersioning#{reward.id}"
+                    p= reward.last_description
+                  .maximum_backers.in_time_to_confirm.clearfix
+                    .updated_reward
+                      span id="rewardVersioning#{reward.id}"
+                        = 'Veja a versão anterior.'
           .clearfix
     .clearfix
 = render 'show_embed'
