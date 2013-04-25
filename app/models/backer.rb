@@ -1,3 +1,4 @@
+require 'state_machine'
 # coding: utf-8
 class Backer < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
@@ -13,26 +14,26 @@ class Backer < ActiveRecord::Base
   scope :project_name_contains, ->(term) { joins(:project).where("unaccent(upper(projects.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :anonymous, where(:anonymous => true)
   scope :credits, where(:credits => true)
-  scope :requested_refund, where(:requested_refund => true)
-  scope :refunded, where(:refunded => true)
+  scope :requested_refund, where(state: 'requested_refund')
+  scope :refunded, where(state: 'refunded')
   scope :not_anonymous, where(:anonymous => false)
-  scope :confirmed, where(:confirmed => true)
-  scope :not_confirmed, where(:confirmed => false) # used in payment engines
+  scope :confirmed, where(state: 'confirmed')
+  scope :not_confirmed, where("state <> 'confirmed'") # used in payment engines
   scope :in_time_to_confirm, ->() { 
     where(%Q{
       case when lower(payment_choice) = 'debitobancario' then
         date(current_timestamp) <= date(created_at + interval '1 days')
       else
         date(current_timestamp) <= date(created_at + interval '5 days')
-      end and not confirmed and payment_token is not null
+      end and state = 'pending' and payment_token is not null
     }) 
   }
-  scope :pending_to_refund, ->() { where("confirmed and requested_refund and not refunded") }
+  scope :pending_to_refund, ->() { where(state: 'requested_refund') }
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
     where(%Q{
-      confirmed AND
+      state = 'confirmed' AND
       EXISTS(
         SELECT true
           FROM projects p
@@ -50,21 +51,6 @@ class Backer < ActiveRecord::Base
 
   def change_reward! reward
     self.reward_id = reward
-    self.save
-  end
-
-  def confirm!
-    self.confirmed = true
-    self.save
-  end
-
-  def unconfirm!
-    self.confirmed = false
-    self.save
-  end
-  
-  def refund!
-    self.refunded = true
     self.save
   end
 
@@ -107,7 +93,7 @@ class Backer < ActiveRecord::Base
     json_attributes = {
       :id => id,
       :anonymous => anonymous,
-      :confirmed => confirmed,
+      :confirmed => confirmed?,
       :confirmed_at => display_confirmed_at,
       :value => display_value,
       :user => user.as_json(options.merge(:anonymous => anonymous)),
@@ -135,6 +121,26 @@ class Backer < ActiveRecord::Base
     state :canceled, value: 'canceled'
     state :refunded, value: 'refunded'
     state :requested_refund, value: 'requested_refund'
+    
+    event :pendent do
+      transition all => :pending
+    end
+
+    event :confirm do
+      transition all => :confirmed
+    end
+    
+    event :cancel do
+      transition all => :canceled
+    end
+    
+    event :request_refund do
+      transition confirmed: :requested_refund
+    end
+    
+    event :refund do
+      transition [:requested_refund, :confirmed] => :refunded
+    end
   end
 
   # Used in payment engines
