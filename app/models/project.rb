@@ -178,7 +178,7 @@ class Project < ActiveRecord::Base
   def progress
     return 0 if goal == 0.0 && pledged == 0.0
     return 100 if goal == 0.0 && pledged > 0.0
-    ((pledged / goal * 100).abs).round.to_i
+    ((pledged / goal * 100).abs).round(pledged.to_i.size).to_i
   end
 
   def time_to_go
