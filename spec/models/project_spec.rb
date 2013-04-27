@@ -467,8 +467,8 @@ describe Project do
     let(:reward_03) { FactoryGirl.create(:reward, project: project) }
 
     before do
-      FactoryGirl.create(:backer, project: project, reward: reward_01)
-      FactoryGirl.create(:backer, project: project, reward: reward_03)
+      FactoryGirl.create(:backer, state: 'confirmed', project: project, reward: reward_01)
+      FactoryGirl.create(:backer, state: 'confirmed', project: project, reward: reward_03)
     end
 
     subject { project.selected_rewards }
