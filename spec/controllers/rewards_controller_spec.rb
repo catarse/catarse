@@ -64,7 +64,7 @@ describe RewardsController do
     it_should_behave_like "DELETE rewards destroy"
 
     context "When reward already have backers" do
-      before { FactoryGirl.create(:backer, project: project, reward: reward) }
+      before { FactoryGirl.create(:backer, state: 'confirmed', project: project, reward: reward) }
 
       context "can't update the minimum value" do
         before { put :update, project_id: project.id, id: reward.id, reward: { minimum_value: 15, description: 'Amenori ipsum' }, locale: :pt }

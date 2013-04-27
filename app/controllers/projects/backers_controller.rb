@@ -65,7 +65,7 @@ class Projects::BackersController < ApplicationController
       return redirect_to new_project_backer_path(@backer.project)
     end
 
-    unless @backer.confirmed
+    unless @backer.confirmed?
       @backer.update_attributes({ payment_method: 'Credits' })
       @backer.confirm!
     end
