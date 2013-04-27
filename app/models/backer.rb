@@ -3,10 +3,13 @@ require 'state_machine'
 class Backer < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::DateHelper
+
   schema_associations
+
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, :greater_than_or_equal_to => 10.00
   validate :reward_must_be_from_project
+
   scope :by_id, ->(id) { where(id: id) }
   scope :by_key, ->(key) { where(key: key) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
@@ -43,7 +46,7 @@ class Backer < ActiveRecord::Base
     })
   }
 
-  attr_protected :confirmed
+  attr_protected :confirmed, :state
 
   def refund_deadline
     created_at + 180.days
