@@ -17,7 +17,7 @@ class Adm::BackersController < Adm::BaseController
   end
 
   def unconfirm
-    resource.unconfirm!
+    resource.pendent!
     flash[:notice] = I18n.t('adm.backers.messages.successful.unconfirm')
     redirect_to adm_backers_path
   end

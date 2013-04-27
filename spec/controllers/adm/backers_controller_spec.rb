@@ -2,22 +2,12 @@ require 'spec_helper'
 
 describe Adm::BackersController do
   subject{ response }
-  let(:admin) do 
-    u = FactoryGirl.create(:user)
-    u.admin = true
-    u.save!
-    u
-  end
+  let(:admin) { FactoryGirl.create(:user, admin: true) }
 
-  let(:unconfirmed_backer) do
-    b = FactoryGirl.create(:backer)
-    b.confirmed = false
-    b.save!
-    b
-  end
+  let(:unconfirmed_backer) { FactoryGirl.create(:backer) }
 
   describe 'PUT confirm' do
-    let(:backer) { FactoryGirl.create(:backer, confirmed: false) }
+    let(:backer) { FactoryGirl.create(:backer) }
     subject { backer.confirmed }
 
     before { 
@@ -32,8 +22,8 @@ describe Adm::BackersController do
   end
 
   describe 'PUT unconfirm' do
-    let(:backer) { FactoryGirl.create(:backer, confirmed: true) }
-    subject { backer.confirmed }
+    let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
+    subject { backer.confirmed? }
 
     before { 
       controller.stubs(:current_user).returns(admin)
