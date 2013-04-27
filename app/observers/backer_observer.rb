@@ -13,7 +13,7 @@ class BackerObserver < ActiveRecord::Observer
       backer: backer,
       project_name: backer.project.name) if backer.payment_choice_was.nil? && backer.payment_choice == 'BoletoBancario'
 
-    if backer.confirmed and backer.confirmed_at.nil?
+    if backer.confirmed? and backer.confirmed_at.nil?
       backer.confirmed_at = Time.now
       Notification.create_notification_once(:confirm_backer,
         backer.user,
