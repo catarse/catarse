@@ -25,7 +25,14 @@
   { pt: 'Web', en: 'Web' },
   { pt: 'Carnaval', en: 'Carnival' },
   { pt: 'Arquitetura & Urbanismo', en: 'Architecture & Urbanism' },
-  { pt: 'Literatura', en: 'Literature' }
+  { pt: 'Literatura', en: 'Literature' },
+  { pt: 'Mobilidade', en: 'Mobility' },
+  { pt: 'Meio Ambiente', en: 'Environment' },
+  { pt: 'Negócios Sociais', en: 'Social Business' },
+  { pt: 'Educação', en: 'Education' },
+  { pt: 'Filmes de Ficção', en: 'Fiction Films' },
+  { pt: 'Filmes Documentários', en: 'Documentary Films' },
+  { pt: 'Filmes Universitários', en: 'Experimental Films' }
 ].each do |name|
    category = Category.find_or_initialize_by_name_pt name[:pt]
    category.update_attributes({
