@@ -26,7 +26,7 @@
   { pt: 'Carnaval', en: 'Carnival' },
   { pt: 'Arquitetura & Urbanismo', en: 'Architecture & Urbanism' },
   { pt: 'Literatura', en: 'Literature' },
-  { pt: 'Mobilidade', en: 'Mobility' },
+  { pt: 'Mobilidade e Transporte', en: 'Mobility & Transportation' },
   { pt: 'Meio Ambiente', en: 'Environment' },
   { pt: 'Negócios Sociais', en: 'Social Business' },
   { pt: 'Educação', en: 'Education' },
