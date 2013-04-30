@@ -23,6 +23,7 @@ describe Project do
       it{ should validate_presence_of field }
     end
     it{ should ensure_length_of(:headline).is_at_most(140) }
+    it{ should validate_format_of(:video_url).with(Regexp.union(/https?:\/\/(www\.)?vimeo.com\/(\d+)/, VideoInfo::Youtube.new('').regex)).with_message(I18n.t('project.video_regex_validation')) }
   end
 
   describe '.state_names' do
@@ -386,13 +387,47 @@ describe Project do
     end
   end
 
-  describe "#vimeo" do
-    subject{ FactoryGirl.create(:project, video_url: "http://vimeo.com/17298435").vimeo }
+  describe "#video" do
+    subject { project }
 
-    its(:id){ should == "17298435" }
-    its(:embed_url){ should == "http://player.vimeo.com/video/17298435" }
+    context "video_url is blank" do
+      before { project.video_url = ''}
+
+      its(:video){ should be_nil}
+    end
+
+    context 'video_url is defined' do
+      before { project.video_url = "http://vimeo.com/17298435" }
+
+      context 'video_url is a Vimeo url' do
+        its(:video){ should be_an_instance_of(VideoInfo::Vimeo) }
+      end
+
+      context 'video_url is an YouTube url' do
+        before { project.video_url = "http://www.youtube.com/watch?v=Brw7bzU_t4c" }
+
+        its(:video){ should be_an_instance_of(VideoInfo::Youtube) }
+      end
+
+      it 'caches the response object' do
+        video_obj = VideoInfo.get(project.video_url)
+        VideoInfo.expects(:get).once.returns(video_obj)
+        5.times { project.video }
+      end
+    end
+
+    context 'video_url changes' do
+      before { project.video_url = 'http://vimeo.com/17298435' }
+
+      it 'changes too' do
+        expect { 
+          project.video_url = 'http://vimeo.com/59205360'
+        }.to change {
+          project.video.video_id
+        }.from('17298435').to('59205360')
+      end
+    end
   end
-
 
   describe "#expired?" do
     subject{ project.expired? }
@@ -479,7 +514,7 @@ describe Project do
     let(:project){ FactoryGirl.build(:project) }
     before do
       Project.any_instance.unstub(:download_video_thumbnail)
-      Project.any_instance.expects(:open).with(project.vimeo.thumbnail).returns(File.open("#{Rails.root}/spec/fixtures/image.png"))
+      Project.any_instance.expects(:open).with(project.video.thumbnail_large).returns(File.open("#{Rails.root}/spec/fixtures/image.png"))
       project.save!
     end
 

@@ -158,4 +158,19 @@ describe ProjectsController do
       it{ should redirect_to project_by_slug_path(project.permalink) }
     end
   end
+
+  describe "GET video" do
+    context 'url is a valid video' do
+      let(:video_url){ 'http://vimeo.com/17298435' }
+      before { get :video, locale: :pt, url: video_url }
+
+      its(:body){ should == VideoInfo.get(video_url).to_json }
+    end
+
+    context 'url is not a valid video' do
+      before { get :video, locale: :pt, url: 'http://????' }
+
+      its(:body){ should == {video_id: false}.to_json }
+    end
+  end
 end

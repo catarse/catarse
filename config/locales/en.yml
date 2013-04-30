@@ -268,7 +268,7 @@ en:
         credits: "You have <strong>%{credits}</strong> in credits and can back with up to this amount without needing to make a new payment."
         value: "You chose the amount ;) starting with R$10, any amount is great."
       project:
-        video_url_edit: 'Paste here the URL of your video at vimeo.com'
+        video_url_edit: 'Paste here the URL of your Vimeo or Youtube video.'
         about: "Tell us about what inspired you to come up with this project . Be objective end charming, present your readers with something that moves them while being very transparent over the expectations on your project!"
         more_links: "Which chanels will be used to spread the word about your project? List here your facebook/twitter/blog/site/ and what ever more links you have to help you"
         category: "Before you format your project explore other (successful) projects to inspire yourself!"
@@ -279,7 +279,7 @@ en:
         headline: "Summarize your project in 140 characters. This sentence will be the first contact people will have with your project, before even seeing the video. Be creative, clear and direct :)"
         name: "Be as objective as you can. Leave explanations for the About section."
         uploaded_image: "Upload a 512x400 image(.jpg)."
-        video_url: "Paste the URL from a <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a> video. We chose Vimeo because it looks better and doesn't have ads. This way, your project will look better too! <strong>Produce your video the best you can and make a video specifically for your campaign</strong>. If there is a single thing that differentiates the projects that reach the goal from the others is the video. Observe ;)"
+        video_url: "Paste the URL from a <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a> or <a href=\"http://youtube.com\" target=\"_blank\">Youtube</a> video. We recommend Vimeo because it looks better and doesn't have ads. This way, your project will look better too! <strong>Produce your video the best you can and make a video specifically for your campaign</strong>. If there is a single thing that differentiates the projects that reach the goal from the others is the video. Observe ;)"
       reward:
         description: "Describe your reward in a way that arouses people's interest to back the project. Don't be shy!"
         maximum_backers: "If your reward is limited, tell us the maximum backers."
@@ -367,8 +367,7 @@ en:
         email_text: 'Unfortunately the project %{project_link}, that you have backed, did not reached its goal and was not funded at Catarse.<br><br>So, you have received <strong>%{value}</strong> in credits to back other projects. You can meet others %{project_category} projects in %{explore_category_link}.<br><br>You also can ask for your refund by clicking in %{credits_link}. Remember that you signed up in Catarse using %{user_provider}. If you have some difficulty in this process, do not be shame to send an email to financeiro@catarse.me with the subject "Refund - login issue".<br><br>If, for any reason, you want to contact %{project_owner_name}, send an email to %{project_owner_email}.<br><br>If you have any other doubt, acess our FAQ or send an email to <a href="mail_to:contato@catarse.me" style="color: #008800;">contato@catarse.me</a>.<br>'
         notification_text: "You received %{value} in credits to back other projects. If you prefer, you can request a refund %{link}."
         unsuccessful_text: "The project %{link} that you backed wasn't funded. Maybe next time!"
-    verify_if_video_exists_on_vimeo: "must exist on Vimeo"
-    vimeo_regex_validation: "only Vimeo URLs are allowed"
+    video_regex_validation: "only Vimeo or YouTube URLs are allowed"
     display_status:
       expired: expired
       failed: "not funded"
@@ -552,7 +551,7 @@ en:
       about_important: "Don't make it too long! Indicate links so people can know more about your work"
       important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
       send_project: "I want to submit my project."
-      video_important: "The video must be hosted  by  VIMEO. Paste here the URL!"
+      video_important: "The video must be hosted  by  Vimeo or Youtube. Paste here the URL!"
       more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
       first_backers_important: "These people are fundamental to the success of your project."
       how_know_important: "Yay! We reached  the final question."
@@ -568,7 +567,7 @@ en:
       links: "Where can we find more about you and your project?"
       links_hint: "Leave us as many links as you have, so we can get to know your work and your project better. Doesn't have to be something formal or fancy, just a few useful links."
       video: "Your project already have a video?"
-      video_hint: "A vimeo link"
+      video_hint: "A Vimeo or Youtube link"
       twitter: "Have twitter account?"
       facebook: "Have facebook account?"
       blog: "Have a blog about the project?"
