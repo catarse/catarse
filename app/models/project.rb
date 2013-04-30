@@ -1,12 +1,7 @@
 require 'state_machine'
 # coding: utf-8
 class Project < ActiveRecord::Base
-
-  include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
-  include ActionView::Helpers::UrlHelper
-  include ERB::Util
-  include Rails.application.routes.url_helpers
   include PgSearch
   extend CatarseAutoHtml
 
