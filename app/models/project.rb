@@ -175,9 +175,9 @@ class Project < ActiveRecord::Base
     expires_at < Time.now
   end
 
-  def waiting_confirmation?
-    return false if finished or successful?
-    expired? and Time.now < 4.weekdays_from(expires_at)
+  def in_time_to_wait?
+#backers.in_time_to_confirm.count > 0
+    Time.now < 4.weekdays_from(expires_at)
   end
 
   def in_time?
@@ -231,16 +231,11 @@ class Project < ActiveRecord::Base
       full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, :locale => I18n.locale),
       expired: expired?,
       successful: successful? || reached_goal?,
-      waiting_confirmation: waiting_confirmation?,
       waiting_funds: waiting_funds?,
       display_status_to_box: display_status.blank? ? nil : I18n.t("project.display_status.#{display_status}"),
       display_expires_at: display_expires_at,
       in_time: in_time?
     }
-  end
-
-  def in_time_to_wait?
-    Time.now < 4.weekdays_from(expires_at)
   end
 
   def pending_backers_reached_the_goal?
