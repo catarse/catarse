@@ -282,6 +282,10 @@ class Project < ActiveRecord::Base
       transition waiting_funds: :failed,      if: ->(project) {
         project.expired? && !project.reached_goal? && !project.in_time_to_wait?
       }
+
+      transition waiting_funds: :waiting_funds,      if: ->(project) {
+        project.expired? && !project.reached_goal? && project.in_time_to_wait?
+      }
     end
 
     after_transition online: :waiting_funds, do: :after_transition_of_online_to_waiting_funds
