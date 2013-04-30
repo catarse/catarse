@@ -66,7 +66,7 @@ class ProjectObserver < ActiveRecord::Observer
         Notification.create_notification_once(
           (project.successful? ? :backer_project_successful : :backer_project_unsuccessful),
           backer.user,
-          {project_id: project.id, user_id: backer.user.id},
+          {backer_id: backer.id},
           backer: backer,
           project: project,
           project_name: project.name)
