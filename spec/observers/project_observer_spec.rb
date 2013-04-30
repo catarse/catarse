@@ -148,8 +148,8 @@ describe ProjectObserver do
       let(:project){ FactoryGirl.create(:project, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
 
       before do
-        FactoryGirl.create(:backer, project: project, key: 'ABC1', payment_method: 'ABC', payment_token: 'ABC', value: 20, confirmed: true)
-        FactoryGirl.create(:backer, project: project, key: 'ABC2', payment_method: 'ABC', payment_token: 'ABC', value: 20, confirmed: false)
+        FactoryGirl.create(:backer, project: project, key: 'ABC1', payment_method: 'ABC', payment_token: 'ABC', value: 20, confirmed: true, created_at: 2.weeks.ago)
+        FactoryGirl.create(:backer, project: project, key: 'ABC2', payment_method: 'ABC', payment_token: 'ABC', value: 20, confirmed: false, created_at: 2.weeks.ago)
       end
 
       before do
