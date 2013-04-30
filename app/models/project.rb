@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, LogoUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
-    :display_pledged, :display_goal, :remaining_days, :progress_bar,
+    :display_pledged, :display_goal, :remaining_days, :progress_bar, :video_embed_url,
     :to => :decorator
 
   schema_associations
@@ -33,8 +33,6 @@ class Project < ActiveRecord::Base
 
   has_one :project_total
   accepts_nested_attributes_for :rewards
-
-  has_vimeo_video :video_url, :message => I18n.t('project.vimeo_regex_validation')
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 
@@ -105,6 +103,7 @@ class Project < ActiveRecord::Base
   validates_numericality_of :online_days, :less_than_or_equal_to => 60
   validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true, :case_sensitive => false
   validates_format_of :permalink, with: /^(\w|-)*$/, :allow_blank => true, :allow_nil => true
+  validates_format_of :video_url, with: Regexp.union(/https?:\/\/(www\.)?vimeo.com\/(\d+)/, VideoInfo::Youtube.new('').regex), message: I18n.t('project.video_regex_validation'), allow_blank: true
   mount_uploader :video_thumbnail, LogoUploader
 
   def self.between_created_at(start_at, ends_at)
@@ -134,6 +133,16 @@ class Project < ActiveRecord::Base
 
   def decorator
     @decorator ||= ProjectDecorator.new(self)
+  end
+
+  def video
+    if self.video_url.present?
+      if @video.blank? || (@video.url != self.video_url)
+        @video = VideoInfo.get(self.video_url)
+      else
+        @video
+      end
+    end
   end
 
   def to_param
@@ -196,9 +205,9 @@ class Project < ActiveRecord::Base
   end
 
   def download_video_thumbnail
-    self.video_thumbnail = open(self.vimeo.thumbnail) if self.video_url
+    self.video_thumbnail = open(self.video.thumbnail_large) if self.video_url
   rescue OpenURI::HTTPError => e
-    ::Airbrake.notify({ :error_class => "Vimeo thumbnail download", :error_message => "Vimeo thumbnail download: #{e.inspect}", :parameters => video_url}) rescue nil
+    ::Airbrake.notify({ :error_class => "Video thumbnail download", :error_message => "Video thumbnail download: #{e.inspect}", :parameters => video_url}) rescue nil
   rescue TypeError => e
     ::Airbrake.notify({ :error_class => "Carrierwave does not like thumbnail file", :error_message => "Carrierwave does not like thumbnail file: #{e.inspect}", :parameters => video_url}) rescue nil
   end
@@ -217,7 +226,7 @@ class Project < ActiveRecord::Base
       created_at: created_at,
       time_to_go: time_to_go,
       remaining_text: remaining_text,
-      embed_url: vimeo.embed_url,
+      embed_url: video ? video.embed_url : nil,
       url: Rails.application.routes.url_helpers.project_by_slug_path(permalink, :locale => I18n.locale),
       full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, :locale => I18n.locale),
       expired: expired?,
