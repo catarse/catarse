@@ -176,8 +176,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-#backers.in_time_to_confirm.count > 0
-    Time.now < 4.weekdays_from(expires_at)
+    backers.in_time_to_confirm.count > 0
   end
 
   def in_time?
@@ -273,7 +272,7 @@ class Project < ActiveRecord::Base
       }
 
       transition online: :waiting_funds,      if: ->(project) {
-        project.expired? && project.in_time_to_wait? && (project.pending_backers_reached_the_goal? || project.can_go_to_second_chance?)
+        project.expired? && (project.pending_backers_reached_the_goal? || project.can_go_to_second_chance?)
       }
 
       transition waiting_funds: :successful,  if: ->(project) {

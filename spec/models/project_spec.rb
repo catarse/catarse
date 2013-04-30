@@ -292,18 +292,15 @@ describe Project do
   end
 
   describe '#in_time_to_wait?' do
-    let(:project) { FactoryGirl.create(:project, expires_at: 1.day.ago) }
-    subject { project.in_time_to_wait? }
+    let(:backer) { FactoryGirl.create(:backer, confirmed: false, payment_token: 'token') }
+    subject { backer.project.in_time_to_wait? }
 
     context 'when project expiration is in time to wait' do
       it { should be_true }
     end
 
     context 'when project expiration time is not more on time to wait' do
-      before do
-        project.update_column :expires_at, 1.week.ago
-        project.reload
-      end
+      let(:backer) { FactoryGirl.create(:backer, created_at: 1.week.ago) }
       it {should be_false}
     end
   end
@@ -693,9 +690,8 @@ describe Project do
 
         context 'when project already hit the goal' do
           before do
-            project_total = mock()
-            project_total.stubs(:pledged).returns(30000.0)
-            subject.stubs(:project_total).returns(project_total)
+            subject.stubs(:pending_backers_reached_the_goal?).returns(true)
+            subject.stubs(:reached_goal?).returns(true)
             subject.finish
           end
 
@@ -709,6 +705,7 @@ describe Project do
 
           context "and still in waiting fund time" do
             before do
+              FactoryGirl.create(:backer, project: subject, user: user, value: 20, payment_token: 'ABC', confirmed: false)
               subject.finish
             end
 
