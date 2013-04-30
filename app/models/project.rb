@@ -334,8 +334,8 @@ class Project < ActiveRecord::Base
   end
 
   def new_draft_recipient
-    (channels.first.trustees.first rescue nil) ||
-    User.where(email: ::Configuration[:email_projects]).first
+    email = (channels.first.email rescue nil) || ::Configuration[:email_projects]
+    User.where(email: email).first
   end
 
   def new_draft_project_notification_type
