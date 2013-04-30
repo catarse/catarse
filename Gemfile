@@ -111,7 +111,7 @@ group :production do
 end
 
 group :development do
-  gem 'mailcatcher'
+  gem "letter_opener"
   gem 'foreman'
   gem 'better_errors'
   gem 'binding_of_caller'
