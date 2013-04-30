@@ -5,7 +5,7 @@
       = link_to project_by_slug_path(permalink: project.permalink), :target => ( defined?(embed_link) ? '__blank' : '' ) do
         - if project.successful?
           = image_tag "successful.#{I18n.locale}.png"
-        - elsif project.waiting_confirmation?
+        - elsif project.waiting_funds?
           = image_tag "waiting_confirmation.#{I18n.locale}.png"
         - else
           = image_tag "not_successful.#{I18n.locale}.png"
