@@ -128,13 +128,13 @@ describe UsersController do
 
     context "when backer cannot be refunded" do
       let(:status_message){ I18n.t('credits.refund.refunded') }
-      let(:backer){ FactoryGirl.create(:backer, :user => user, :project => failed_project, :refunded => true) }
+      let(:backer){ FactoryGirl.create(:backer, :user => user, :project => failed_project, :state => 'refunded') }
       its(:body){ should == response_body }
     end
 
     context "when backer already requested to refund" do
       let(:status_message){ I18n.t('credits.refund.requested_refund') }
-      let(:backer){ FactoryGirl.create(:backer, :user => user, :project => failed_project, :requested_refund => true) }
+      let(:backer){ FactoryGirl.create(:backer, :user => user, :project => failed_project, :state => 'requested_refund') }
       its(:body){ should == response_body }
     end
   end
