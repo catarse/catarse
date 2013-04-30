@@ -14,7 +14,7 @@ script type="text/template" id="user_back_template"
       a href="<%= project['url'] %>"
         |<% if(project['successful']) { %>
         = image_tag "successful.#{I18n.locale}.png"
-        |<% } else if(project['waiting_confirmation']) { %>
+        |<% } else if(project['waiting_funds']) { %>
         = image_tag "waiting_confirmation.#{I18n.locale}.png"
         |<% } else { %>
         = image_tag "not_successful.#{I18n.locale}.png"
