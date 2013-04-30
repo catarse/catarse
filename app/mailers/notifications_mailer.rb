@@ -1,6 +1,4 @@
 class NotificationsMailer < ActionMailer::Base
-  layout 'email'
-
   def notify(notification)
     @notification = notification
     old_locale = I18n.locale
@@ -11,11 +9,12 @@ class NotificationsMailer < ActionMailer::Base
     subject = I18n.t("notifications.#{@notification.notification_type.name}.subject", @notification.mail_params)
     @header = I18n.t("notifications.#{@notification.notification_type.name}.header", @notification.mail_params, :default => subject)
     m = mail({
-      :from => address.format,
-      :to => @notification.user.email,
-      :subject => subject,
-      :template_name => @notification.notification_type.name
-    })
+      from: address.format,
+      to: @notification.user.email,
+      subject: subject
+    }) do |format|
+      format.html { render @notification.notification_type.name, layout: @notification.notification_type.layout }
+    end
     I18n.locale = old_locale if I18n.locale.to_s != @notification.user.locale.to_s
     m
   end
