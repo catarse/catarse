@@ -15,6 +15,21 @@ describe LogoUploader do
     @uploader.remove!
   end
 
+  describe "#extension_white_list" do
+    subject{ @uploader.extension_white_list }
+
+    context "when it's mounted as anything but :video_thumbnail" do
+      it{ should == %w(jpg jpeg gif png) }
+    end
+
+    context "when it's mounted as :video_thumbnail" do
+      before do
+        @uploader.stubs(:mounted_as).returns(:video_thumbnail)
+      end
+      it{ should be_nil }
+    end
+  end
+
   describe '#thumb' do
     subject{ @uploader.thumb }
     it{ should have_dimensions(260, 170) }
