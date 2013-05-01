@@ -131,13 +131,7 @@ class Project < ActiveRecord::Base
   end
 
   def video
-    if self.video_url.present?
-      if @video.blank? || (@video.url != self.video_url)
-        @video = VideoInfo.get(self.video_url)
-      else
-        @video
-      end
-    end
+    @video ||= VideoInfo.get(self.video_url) if self.video_url.present?
   end
 
   def to_param

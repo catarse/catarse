@@ -416,12 +416,9 @@ describe Project do
     context 'video_url changes' do
       before { project.video_url = 'http://vimeo.com/17298435' }
 
-      it 'changes too' do
-        expect { 
-          project.video_url = 'http://vimeo.com/59205360'
-        }.to change {
-          project.video.video_id
-        }.from('17298435').to('59205360')
+      it 'maintain cached version' do
+        project.video_url = 'http://vimeo.com/59205360'
+        project.video.video_id = '17298435'
       end
     end
   end
