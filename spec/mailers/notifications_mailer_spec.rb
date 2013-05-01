@@ -11,8 +11,7 @@ describe NotificationsMailer do
     NotificationsMailer.any_instance.expects(:mail).at_least_once.with({
       :from => "#{::Configuration[:company_name]} <#{::Configuration[:email_contact]}>",
       :to => notification.user.email,
-      :subject => I18n.t('notifications.confirm_backer.subject', :project_name => notification.project.name),
-      :template_name => 'confirm_backer'
+      :subject => I18n.t('notifications.confirm_backer.subject', :project_name => notification.project.name)
     })
   end
 
