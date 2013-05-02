@@ -68,6 +68,7 @@ gem 'carrierwave', '~> 0.7.0'
 gem 'rmagick'
 
 # Other Tools
+gem 'ranked-model'
 gem 'feedzirra'
 gem 'validation_reflection',      git: 'git://github.com/ncri/validation_reflection.git'
 gem 'inherited_resources',        '1.3.1'
@@ -104,7 +105,7 @@ group :production do
   gem 'newrelic_rpm'
 
   # Using dalli and memcachier have not presented significative performance gains
-  # Probably this is due to our pattern of cache usage 
+  # Probably this is due to our pattern of cache usage
   # + the lack of concurrent procs in our deploy
   #gem 'memcachier'
   #gem 'dalli'

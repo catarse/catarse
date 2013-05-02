@@ -1,0 +1,32 @@
+javascript:
+  $(document).ready(function() {
+    $('#rewards').sortable({
+        axis: 'y',
+        placeholder: "ui-state-highlight",
+        start: function(e, ui) {
+          return ui.placeholder.height(ui.item.height());
+        },
+        stop: function(e, ui) {
+          return ui.item.effect('highlight', {}, 1000);
+        },
+        update: function(e, ui) {
+          var csrfToken, position;
+          position = ui.item.index();
+          csrfToken = $("meta[name='csrf-token']").attr("content");
+          return $.ajax({
+            type: 'POST',
+            url: ui.item.data('update_url'),
+            dataType: 'json',
+            headers: {
+              'X-CSRF-Token': csrfToken
+            },
+            data: {
+              reward: {
+                row_order_position: position
+              }
+            }
+          });
+        }
+    })
+  });
+

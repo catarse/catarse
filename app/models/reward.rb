@@ -3,10 +3,13 @@ require 'rails_autolink'
 class Reward < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
-  include ActionView::Helpers::UrlHelper 
+  include ActionView::Helpers::UrlHelper
+  include RankedModel
 
   include ERB::Util
   schema_associations
+
+  ranks :row_order, with_same: :project_id
   has_paper_trail
 
   validates_presence_of :minimum_value, :description
