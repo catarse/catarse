@@ -22,7 +22,10 @@ class Reports::BackerReportsForProjectOwnersController < Reports::BaseController
         neighbourhood as "#{I18n.t('backer_report_to_project_owner.address_neighbourhood')}",
         city as "#{I18n.t('backer_report_to_project_owner.address_city')}",
         state as "#{I18n.t('backer_report_to_project_owner.address_state')}",
-        zip_code as "#{I18n.t('backer_report_to_project_owner.address_zip_code')}"
+        zip_code as "#{I18n.t('backer_report_to_project_owner.address_zip_code')}",
+        CASE WHEN anonymous='t' THEN '#{I18n.t('yes')}'
+            WHEN anonymous='f' THEN '#{I18n.t('no')}'
+        END as "#{I18n.t('backer_report_to_project_owner.anonymous')}"
       }).
       where(conditions)
   end

@@ -1,12 +1,12 @@
 pt:
   current_update: 'Alteração atual feita em '
   backs_to_confirm: "%{count} apoios em prazo de confirmação."
-  no: "Não"
-  yes: "Sim"
+  'no': "Não"
+  'yes': "Sim"
   or: "ou"
 
   site:
-    title: "A maior comunidade de crowdfunding do Brasil!" 
+    title: "A maior comunidade de crowdfunding do Brasil!"
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, projeto, comunidade, open source"
@@ -27,6 +27,7 @@ pt:
     address_city: 'Cidade'
     address_state: 'Estado'
     address_zip_code: 'CEP'
+    anonymous: 'Anônimo'
   edit_project: 'Editar projeto'
   days: 'dias'
   controllers:
