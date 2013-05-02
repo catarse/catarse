@@ -34,7 +34,7 @@ Catarse::Application.routes.draw do
           end
         end
       end
-      get '/', to: 'profiles#show', :as => :profile 
+      get '/', to: 'profiles#show', :as => :profile
       get '/how-it-works', to: 'profiles#how_it_works', as: :about
       resources :projects, only: [:new, :create, :show] do
         collection do
@@ -48,7 +48,7 @@ Catarse::Application.routes.draw do
 
   # Static Pages
   get '/sitemap',               to: 'static#sitemap',             as: :sitemap
-  get '/guidelines',            to: 'static#guidelines',          as: :guidelines 
+  get '/guidelines',            to: 'static#guidelines',          as: :guidelines
   get "/guidelines_tips",       to: "static#guidelines_tips",     as: :guidelines_tips
   get "/guidelines_backers",    to: "static#guidelines_backers",  as: :guidelines_backers
   get "/guidelines_start",      to: "static#guidelines_start",    as: :guidelines_start
@@ -69,7 +69,11 @@ Catarse::Application.routes.draw do
 
   resources :projects do
     resources :updates, only: [ :index, :create, :destroy ]
-    resources :rewards, only: [ :index, :create, :update, :destroy ]
+    resources :rewards, only: [ :index, :create, :update, :destroy ] do
+      member do
+        post 'sort'
+      end
+    end
     resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
       member do
         match 'credits_checkout'

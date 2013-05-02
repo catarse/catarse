@@ -17,8 +17,8 @@ class ProjectsController < ApplicationController
         unless collection_projects.empty?
           if current_user and current_user.recommended_project
             @recommended_project  ||= current_user.recommended_project
-            collection_projects   ||= collection_projects.where("id != ? AND category_id != ?", 
-                                                                current_user.recommended_project.id, 
+            collection_projects   ||= collection_projects.where("id != ? AND category_id != ?",
+                                                                current_user.recommended_project.id,
                                                                 @recommended_project.category_id)
           end
           @first_project, @second_project, @third_project, @fourth_project = collection_projects.all
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
 
       show!{
         @title = @project.name
-        @rewards = @project.rewards.includes(:project).order(:minimum_value).all
+        @rewards = @project.rewards.includes(:project).rank(:row_order).order('minimum_value ASC').all
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
         @update = @project.updates.where(:id => params[:update_id]).first if params[:update_id].present?
