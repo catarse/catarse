@@ -16,9 +16,12 @@ en:
     address_city: 'City'
     address_state: 'State'
     address_zip_code: 'Zip code'
+    anonymous: 'Anonymous'
   edit_project: 'Edit this project'
   facebook_locale: 'en_US'
   or: or
+  'no': "No"
+  'yes': "Yes"
   newsletter_ok_header: "You are subscribed to the newsletter!"
   newsletter_ok_body: "Your email is now in our newsletter list, thanks for subscribing!"
   newsletter_error_header: "Woops! There was an error."
@@ -85,8 +88,6 @@ en:
       title: recent
     partners:
       title: partners
-  "no": "No"
-  "yes": "Yes"
   accept_terms_html: "I have read and accepted the %{link}."
   activerecord:
     errors:
