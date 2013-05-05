@@ -72,8 +72,7 @@
                 th= t('.key')
                 th= t('.anonymous')
                 th= t('.credits')
-                th= t('.requested_refund')
-                th= t('.refunded')
+                th= t('.state')
                 th
             tbody
               - @backers.includes(:project, :user, :reward).each do |backer|
@@ -102,8 +101,7 @@
                   td.key= backer.key
                   td.checkbox= best_in_place [:adm, backer], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
                   td= (backer.credits ? t('yes') : t('no'))
-                  td= (backer.requested_refund ? t('yes') : t('no'))
-                  td.checkbox= best_in_place [:adm, backer], :refunded, type: :checkbox, collection: [t('no'), t('yes')]
+                  td= backer.state
                   td.bootstrap-twitter
                     .btn-group
                       = link_to 'javascript:void(0);', :"data-toggle" => 'dropdown', :class => 'btn btn-mini dropdown-toggle' do
@@ -113,6 +111,8 @@
                           li= link_to t('adm.backers.index.unconfirm_backer'), unconfirm_adm_backer_path(backer), method: :put
                         - else
                           li= link_to t('adm.backers.index.confirm_backer'), confirm_adm_backer_path(backer), method: :put
+                        - if backer.requested_refund? or backer.confirmed?
+                          li= link_to t('adm.backers.index.refund_backer'), refund_adm_backer_path(backer), method: :put
       = paginate @backers
   .clearfix
 
