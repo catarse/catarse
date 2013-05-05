@@ -114,8 +114,8 @@ describe Project do
       @project_01 = FactoryGirl.create(:project, online_days: -1, goal: 300, state: 'online')
       @project_02 = FactoryGirl.create(:project, online_days: 5, goal: 300, state: 'online')
       @project_03 = FactoryGirl.create(:project, online_days: -7, goal: 300, state: 'waiting_funds')
-      backer = FactoryGirl.create(:backer, project: @project_03, value: 3000, confirmed: true)
-      pending_backer = FactoryGirl.create(:backer, project: @project_01, value: 340, confirmed: false, payment_token: 'ABC')
+      backer = FactoryGirl.create(:backer, project: @project_03, value: 3000, state: 'confirmed')
+      pending_backer = FactoryGirl.create(:backer, project: @project_01, value: 340, state: 'waiting_confirmation')
       @project_04 = FactoryGirl.create(:project, online_days: -7, goal: 300, state: 'waiting_funds')
       Project.finish_projects!
       @project_01.reload
@@ -265,7 +265,7 @@ describe Project do
     before { FactoryGirl.create(:backer, value: 20, confirmed: true, project: project) }
 
     context 'when confirmed and pending backers reached 30% of the goal' do
-      before { FactoryGirl.create(:backer, value: 10, confirmed: false, payment_token: 'ABC', project: project) }
+      before { FactoryGirl.create(:backer, value: 10, state: 'waiting_confirmation', project: project) }
 
       it { should be_true }
     end
@@ -292,7 +292,7 @@ describe Project do
   end
 
   describe '#in_time_to_wait?' do
-    let(:backer) { FactoryGirl.create(:backer, confirmed: false, payment_token: 'token') }
+    let(:backer) { FactoryGirl.create(:backer, state: 'waiting_confirmation') }
     subject { backer.project.in_time_to_wait? }
 
     context 'when project expiration is in time to wait' do
@@ -529,13 +529,13 @@ describe Project do
     subject { project.pending_backers_reached_the_goal? }
 
     context 'when reached the goal with pending backers' do
-      before { 2.times { FactoryGirl.create(:backer, project: project, value: 120, confirmed: false, payment_token: 'ABC') } }
+      before { 2.times { FactoryGirl.create(:backer, project: project, value: 120, state: 'waiting_confirmation') } }
 
       it { should be_true }
     end
 
     context 'when dont reached the goal with pending backers' do
-      before { 2.times { FactoryGirl.create(:backer, project: project, value: 30, confirmed: false, payment_token: 'ABC') } }
+      before { 2.times { FactoryGirl.create(:backer, project: project, value: 30, state: 'waiting_confirmation') } }
 
       it { should be_false }
     end
@@ -671,7 +671,7 @@ describe Project do
         context 'when project is expired and the sum of the pending backers and confirmed backers reached 30% of the goal' do
           before do
             FactoryGirl.create(:backer, value: 100, project: subject, created_at: 2.days.ago)
-            FactoryGirl.create(:backer, value: 9_000, project: subject, payment_token: 'ABC', confirmed: false)
+            FactoryGirl.create(:backer, value: 9_000, project: subject, state: 'waiting_confirmation')
 
             subject.finish
           end
@@ -681,7 +681,7 @@ describe Project do
 
         context 'when project is expired and have recent backers without confirmation' do
           before do
-            FactoryGirl.create(:backer, value: 30_000, project: subject, payment_token: 'ABC', confirmed: false)
+            FactoryGirl.create(:backer, value: 30_000, project: subject, state: 'waiting_confirmation')
             subject.finish
           end
 
@@ -705,7 +705,7 @@ describe Project do
 
           context "and still in waiting fund time" do
             before do
-              FactoryGirl.create(:backer, project: subject, user: user, value: 20, payment_token: 'ABC', confirmed: false)
+              FactoryGirl.create(:backer, project: subject, user: user, value: 20, state: 'waiting_confirmation')
               subject.finish
             end
 
