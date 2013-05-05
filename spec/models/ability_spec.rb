@@ -34,7 +34,7 @@ describe Ability do
 
       context "and someone make a back and select a reward" do
         context "when backer is in time to confirm and not have confirmed backers" do
-          before { FactoryGirl.create(:backer, project: project, payment_token: 'ABC', reward: reward, created_at: 1.day.ago, confirmed: false) }
+          before { FactoryGirl.create(:backer, project: project, state: 'waiting_confirmation', reward: reward) }
 
           it { should_not be_able_to(:update, reward, :minimum_value) }
           it { should_not be_able_to(:destroy, reward) }

@@ -22,15 +22,7 @@ class Backer < ActiveRecord::Base
   scope :not_anonymous, where(:anonymous => false)
   scope :confirmed, where(state: 'confirmed')
   scope :not_confirmed, where("state <> 'confirmed'") # used in payment engines
-  scope :in_time_to_confirm, ->() { 
-    where(%Q{
-      case when lower(payment_choice) = 'debitobancario' then
-        date(current_timestamp) <= date(created_at + interval '1 days')
-      else
-        date(current_timestamp) <= date(created_at + interval '5 days')
-      end and state = 'pending' and payment_token is not null
-    }) 
-  }
+  scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
   scope :pending_to_refund, ->() { where(state: 'requested_refund') }
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
@@ -120,6 +112,7 @@ class Backer < ActiveRecord::Base
   
   state_machine :state, initial: :pending do
     state :pending, value: 'pending'
+    state :waiting_confirmation, value: 'waiting_confirmation'
     state :confirmed, value: 'confirmed'
     state :canceled, value: 'canceled'
     state :refunded, value: 'refunded'
@@ -127,6 +120,10 @@ class Backer < ActiveRecord::Base
     
     event :pendent do
       transition all => :pending
+    end
+    
+    event :waiting do
+      transition pending: :waiting_confirmation
     end
 
     event :confirm do

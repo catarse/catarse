@@ -90,6 +90,24 @@ describe Backer do
       it { should be_true }
     end
     
+    describe '.waiting' do
+      subject { backer.waiting_confirmation? }
+      
+      context 'when backer is pending' do
+        before { backer.waiting }        
+        it { should be_true }
+      end
+      
+      context 'when backer is not pending' do
+        before do
+          backer.confirm
+          backer.waiting
+        end
+
+        it { should be_false }        
+      end
+    end
+    
     describe '.pendent' do
       let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
       before { backer.pendent }
@@ -166,21 +184,15 @@ describe Backer do
   describe '.in_time_to_confirm' do
     subject { Backer.in_time_to_confirm}
     
-    context 'when we have backers with DebitoBancario and BoletoBancario in time to confirm' do
+    context 'when we have backers in waiting confirmation' do
       before do
-        FactoryGirl.create(:backer, payment_token: 'ABC', payment_choice: 'DebitoBancario', created_at: 1.days.ago)
-        FactoryGirl.create(:backer, payment_token: 'ABC', payment_choice: 'DebitoBancario', created_at: 2.days.ago)
-        FactoryGirl.create(:backer, payment_token: 'ABC', payment_choice: 'BoletoBancario', created_at: 3.days.ago)        
+        FactoryGirl.create(:backer, state: 'waiting_confirmation')
+        FactoryGirl.create(:backer, state: 'waiting_confirmation')
+        FactoryGirl.create(:backer, state: 'pending')        
       end
       
       it { should have(2).item }      
     end
-
-    context "when backer is just a ghost" do
-      before { FactoryGirl.create(:backer, payment_token: nil, created_at: 3.days.ago) }
-      it { should have(0).item }
-    end
-
   end
 
   describe ".can_refund" do

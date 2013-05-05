@@ -95,7 +95,7 @@ describe Reward do
       context 'and have confirmed backers and backers in time to confirm' do
         before do
            FactoryGirl.create(:backer, state: 'confirmed', reward: reward, project: reward.project)
-           FactoryGirl.create(:backer, payment_token: 'ABC', reward: reward, project: reward.project)
+           FactoryGirl.create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project)
         end
 
         it { should be_false }
@@ -123,7 +123,7 @@ describe Reward do
 
       context 'and reached the maximum backers number with backers in time to confirm' do
         before do
-           3.times { FactoryGirl.create(:backer, payment_token: 'ABC', reward: reward, project: reward.project) }
+           3.times { FactoryGirl.create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project) }
         end
 
         it { should be_true }
