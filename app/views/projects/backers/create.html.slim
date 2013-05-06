@@ -40,14 +40,14 @@
               fieldset.address_data
                 .title
                   h2
-                = form.input :address_street, :as => :string
-                = form.input :address_number, :as => :string
+                = form.input :address_street, :as => :string, required: true
+                = form.input :address_number, :as => :string, required: true
                 = form.input :address_complement, :required => false, :as => :string
-                = form.input :address_neighbourhood, :as => :string
-                = form.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
-                = form.input :address_city, :as => :string
-                = form.input :address_state, :as => :select, :collection => State.array
-                = form.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}
+                = form.input :address_neighbourhood, :as => :string, required: true
+                = form.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}, required: true
+                = form.input :address_city, :as => :string, required: true
+                = form.input :address_state, :as => :select, :collection => State.array, required: true
+                = form.input :phone_number, :as => :string, :input_html => {:autocomplete => 'off'}, required: true
           .submit
             fieldset.accept_terms
               = check_box_tag 'accept'
