@@ -35,5 +35,7 @@ Catarse::Application.configure do
 
   # mailcatcher configs
   config.action_mailer.delivery_method = :letter_opener
+
+  config.action_mailer.asset_host = "http://localhost:3000"
 end
 
