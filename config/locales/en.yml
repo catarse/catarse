@@ -1,4 +1,9 @@
 en:
+  site:
+    title: "The biggest crowdfunding community in Brazil"
+    meta_title:  "%{title} · %{company_name}"
+    description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
+    keywords: "catarse, crowdfunding, projecto, community, open source"
   backs_to_confirm: "%{count} backers in time to confirm."
   backer_report_to_project_owner:
     reward_description: 'Reward description'
