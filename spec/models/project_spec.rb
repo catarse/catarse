@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Project do
-  let(:project){ Project.new :goal => 3000 }
+  let(:project){ FactoryGirl.build(:project, goal: 3000) }
   let(:user){ FactoryGirl.create(:user) }
   let(:channel){ FactoryGirl.create(:channel, email: user.email, trustees: [ user ]) }
   let(:channel_project){ FactoryGirl.create(:project, channels: [ channel ]) }
