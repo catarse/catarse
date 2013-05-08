@@ -84,7 +84,7 @@ describe UserDecorator do
     subject { user = FactoryGirl.create(:user) }
     context "with confirmed backs" do
       before do
-        FactoryGirl.create(:backer, user: subject, value: 500.0)
+        FactoryGirl.create(:backer, state: 'confirmed', user: subject, value: 500.0)
       end
       its(:display_total_of_backs) { should == 'R$ 500'}
     end

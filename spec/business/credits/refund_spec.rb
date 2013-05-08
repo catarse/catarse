@@ -2,11 +2,9 @@ require 'spec_helper'
 
 describe Credits::Refund do
   let(:failed_project){ FactoryGirl.create(:project, state: 'failed')  }
-  before(:each) do
-    @backer = FactoryGirl.create(:backer, value: 20)
-  end
+  let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
 
-  subject { Credits::Refund.new(@backer, @backer.user) }
+  subject { Credits::Refund.new(backer, backer.user) }
 
   context "when user request a refund" do
     it do
@@ -15,7 +13,7 @@ describe Credits::Refund do
       subject.expects(:check_total_of_credits)
       subject.expects(:check_can_refund)
       subject.make_request!
-      @backer.requested_refund.should be_true
+      backer.requested_refund?.should be_true
       subject.message.should == I18n.t('credits.index.refunded')
     end
 
@@ -29,20 +27,16 @@ describe Credits::Refund do
     end
 
     context "when backer already refunded" do
+      let(:backer) { FactoryGirl.create(:backer, state: 'refunded') }
       it "should raise a exception with message" do
-        @backer.update_column :refunded, true
-        @backer.reload
-
         lambda { 
           subject.make_request!
         }.should raise_exception(I18n.t('credits.refund.refunded'))
       end
     end
     context "when backer already requested to refund" do
+      let(:backer) { FactoryGirl.create(:backer, state: 'requested_refund') }      
       it "should raise a exception with message" do
-        @backer.update_column :requested_refund, true
-        @backer.reload
-
         lambda { 
           subject.make_request!
         }.should raise_exception(I18n.t('credits.refund.requested_refund'))

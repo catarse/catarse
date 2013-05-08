@@ -3,7 +3,7 @@ require 'spec_helper'
 describe BackersController do
   subject{ response }
   let(:project){ FactoryGirl.create(:project, :finished => true) }
-  let(:backer){ FactoryGirl.create(:backer, :project => project) }
+  let(:backer){ FactoryGirl.create(:backer, state: 'confirmed', :project => project) }
   let(:user){ nil }
   let(:format){ 'json' }
   before do

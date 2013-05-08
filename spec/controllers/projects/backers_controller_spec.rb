@@ -4,7 +4,7 @@ describe Projects::BackersController do
   render_views
   let(:failed_project) { FactoryGirl.create(:project, state: 'failed') }
   let(:project) { FactoryGirl.create(:project) }
-  let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: true, confirmed: false, project: project) }
+  let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: true, project: project) }
   let(:user){ nil }
   let(:backer_info){ { address_city: 'Porto Alegre', address_complement: '24', address_neighbourhood: 'Rio Branco', address_number: '1004', address_phone_number: '(51)2112-8397', address_state: 'RS', address_street: 'Rua Mariante', address_zip_code: '90430-180', payer_email: 'diogo@biazus.me', payer_name: 'Diogo de Oliveira Biazus' } }
 
@@ -51,17 +51,19 @@ describe Projects::BackersController do
 
     context "with correct user but insufficient credits" do
       let(:user){ backer.user }
-      it('should not confirm backer'){ backer.reload.confirmed.should be_false }
+      it('should not confirm backer'){ backer.reload.confirmed?.should be_false }
       it('should set flash failure'){ request.flash[:failure].should == I18n.t('projects.backers.checkout.no_credits') }
       it{ should redirect_to(new_project_backer_path(project)) }
     end
 
     context "with correct user and sufficient credits" do
       let(:user) do 
-        FactoryGirl.create(:backer, value: 10.00, credits: false, confirmed: true, user: backer.user, project: failed_project)
+        FactoryGirl.create(:backer, value: 10.00, credits: false, state: 'confirmed', user: backer.user, project: failed_project)
+        backer.user.reload
         backer.user
       end
-      it('should confirm backer'){ backer.reload.confirmed.should be_true }
+
+      it('should confirm backer'){ backer.reload.confirmed?.should be_true }
       it('should set flash success'){ request.flash[:success].should == I18n.t('projects.backers.checkout.success') }
       it{ should redirect_to(project_backer_path(project_id: project.id, id: backer.id)) }
     end
@@ -126,7 +128,7 @@ describe Projects::BackersController do
   end
 
   describe "GET show" do
-    let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: false, confirmed: true) }
+    let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: false, state: 'confirmed') }
     before do
       get :show, { locale: :pt, project_id: backer.project.id, id: backer.id }
     end
@@ -151,7 +153,7 @@ describe Projects::BackersController do
 
   describe "GET index" do
     before do
-      FactoryGirl.create(:backer, value: 10.00, confirmed: true, 
+      FactoryGirl.create(:backer, value: 10.00, state: 'confirmed', 
               reward: FactoryGirl.create(:reward, project: project, description: 'Test Reward'), 
               project: project, 
               user: FactoryGirl.create(:user, name: 'Foo Bar'))

@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include PgSearch
   extend CatarseAutoHtml
-
+  
   before_save do
     if online_days_changed? || !self.expires_at.present?
       self.expires_at = DateTime.now+(online_days rescue 0).days
