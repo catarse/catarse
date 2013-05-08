@@ -86,12 +86,39 @@ class User < ActiveRecord::Base
 
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
-  scope :backers, :conditions => ["id IN (SELECT DISTINCT user_id FROM backers WHERE confirmed)"]
-  scope :who_backed_project, ->(project_id){ where("id IN (SELECT user_id FROM backers WHERE confirmed AND project_id = ?)", project_id) }
-  scope :subscribed_to_updates, where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id IS NULL AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
-  scope :subscribed_to_project, ->(project_id){ who_backed_project(project_id).where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id) }
+
+  scope :backers, -> { 
+    where("id IN (
+      SELECT DISTINCT user_id 
+      FROM backers 
+      WHERE state <> ALL(ARRAY['pending'::character varying::text, 'canceled'::character varying::text]))")
+  }
+
+  scope :who_backed_project, ->(project_id) { 
+    where("id IN (SELECT user_id FROM backers WHERE state = 'confirmed' AND project_id = ?)", project_id) 
+  }
+
+  scope :subscribed_to_updates, -> {
+     where("id NOT IN (
+       SELECT user_id 
+       FROM unsubscribes 
+       WHERE project_id IS NULL 
+       AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
+   }
+
+  scope :subscribed_to_project, ->(project_id) { 
+    who_backed_project(project_id).
+    where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id) 
+  }
+
   scope :by_email, ->(email){ where('email ~* ?', email) }
-  scope :by_payer_email, ->(email){  where('EXISTS(SELECT true FROM backers JOIN payment_notifications ON backers.id = payment_notifications.backer_id WHERE backers.user_id = users.id AND payment_notifications.extra_data ~* ?)', email) }
+  scope :by_payer_email, ->(email) { 
+    where('EXISTS(
+      SELECT true 
+      FROM backers 
+      JOIN payment_notifications ON backers.id = payment_notifications.backer_id 
+      WHERE backers.user_id = users.id AND payment_notifications.extra_data ~* ?)', email) 
+  }
   scope :by_name, ->(name){ where('name ~* ?', name) }
   scope :by_id, ->(id){ where('users.id = ?', id) }
   scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
@@ -102,7 +129,11 @@ class User < ActiveRecord::Base
     connection.select_one(
       self.scoped.
       joins(:user_total).
-      select('count(DISTINCT user_id) as users, count(*) as backers, sum(user_totals.sum) as backed, sum(user_totals.credits) as credits').
+      select('
+        count(DISTINCT user_id) as users, 
+        count(*) as backers, 
+        sum(user_totals.sum) as backed, 
+        sum(user_totals.credits) as credits').
       to_sql
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
   end
@@ -168,7 +199,17 @@ class User < ActiveRecord::Base
     # It returns the project that have the biggest amount of backers
     # that contributed to the last project the user contributed that has common backers.
     backs.includes(:project).confirmed.order('confirmed_at DESC').each do |back|
-      project = ActiveRecord::Base.connection.execute("SELECT count(*), project_id FROM backers b JOIN projects p ON b.project_id = p.id WHERE p.expires_at > current_timestamp AND p.id NOT IN (SELECT project_id FROM backers WHERE confirmed AND user_id = #{id}) AND b.user_id in (SELECT user_id FROM backers WHERE confirmed AND project_id = #{back.project.id.to_i}) AND p.state = 'online' GROUP BY 2 ORDER BY 1 DESC LIMIT 1")
+      project = ActiveRecord::Base.connection.execute("
+        SELECT count(*), project_id 
+        FROM backers b 
+        JOIN projects p ON b.project_id = p.id 
+        WHERE 
+          p.expires_at > current_timestamp AND 
+          p.id NOT IN (SELECT project_id 
+                        FROM backers WHERE state='confirmed' AND user_id = #{id}) AND 
+          b.user_id in (SELECT user_id 
+                        FROM backers WHERE state='confirmed' AND project_id = #{back.project.id.to_i}) AND 
+          p.state = 'online' GROUP BY 2 ORDER BY 1 DESC LIMIT 1")
       return Project.find(project[0]["project_id"]) unless project.count == 0
     end
     nil

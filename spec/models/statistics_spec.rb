@@ -5,8 +5,8 @@ describe Statistics do
     FactoryGirl.create(:project, state: 'successful')
     FactoryGirl.create(:project, state: 'draft') 
     project = FactoryGirl.create(:project, state: 'online')
-    FactoryGirl.create(:backer, confirmed: true, project: project )
-    FactoryGirl.create(:backer, confirmed: false, project: project)
+    FactoryGirl.create(:backer, state: 'confirmed', project: project )
+    FactoryGirl.create(:backer, project: project)
   end
 
   describe "#total_users" do

@@ -28,8 +28,8 @@ describe Update do
       Notification.unstub(:create_notification)
       FactoryGirl.create(:notification_type, :name => 'updates')
       @project = FactoryGirl.create(:project)
-      backer = FactoryGirl.create(:backer, :confirmed => true, :project => @project)
-      FactoryGirl.create(:backer, :confirmed => true, :project => @project, :user => backer.user)
+      backer = FactoryGirl.create(:backer, state: 'confirmed', :project => @project)
+      FactoryGirl.create(:backer, state: 'confirmed', :project => @project, :user => backer.user)
       @project.reload
       ActionMailer::Base.deliveries = []
       @update = Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")

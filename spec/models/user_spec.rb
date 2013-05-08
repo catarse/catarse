@@ -38,9 +38,9 @@ describe User do
 
     context "when he has credits in the user_total" do
       before do
-        b = FactoryGirl.create(:backer, :value => 100, :project => failed_project)
+        b = FactoryGirl.create(:backer, :state => 'confirmed', :value => 100, :project => failed_project)
         @u = b.user
-        b = FactoryGirl.create(:backer, :value => 100, :project => successful_project)
+        b = FactoryGirl.create(:backer, :state => 'confirmed', :value => 100, :project => successful_project)
       end
       it{ should == [@u] }
     end
@@ -107,24 +107,22 @@ describe User do
     subject{ User.by_email 'foo@bar' }
     it{ should == [@u] }
   end
-  
-
 
   describe ".who_backed_project" do
     subject{ User.who_backed_project(successful_project.id) }
     before do
-      @backer = FactoryGirl.create(:backer, :confirmed => true, :project => successful_project)
-      FactoryGirl.create(:backer, :confirmed => true, :project => successful_project, :user => @backer.user)
-      FactoryGirl.create(:backer, :confirmed => false, :project => successful_project)
+      @backer = FactoryGirl.create(:backer, :state => 'confirmed', :project => successful_project)
+      FactoryGirl.create(:backer, :state => 'confirmed', :project => successful_project, :user => @backer.user)
+      FactoryGirl.create(:backer, :project => successful_project)
     end
     it{ should == [@backer.user] }
   end
 
   describe ".backer_totals" do
     before do
-      FactoryGirl.create(:backer, :value => 100, :credits => false, :project => successful_project)
-      FactoryGirl.create(:backer, :value => 50, :credits => false, :project => successful_project)
-      user = FactoryGirl.create(:backer, :value => 25, :project => failed_project).user
+      FactoryGirl.create(:backer, :state => 'confirmed', :value => 100, :credits => false, :project => successful_project)
+      FactoryGirl.create(:backer, :state => 'confirmed', :value => 50, :credits => false, :project => successful_project)
+      user = FactoryGirl.create(:backer, :state => 'confirmed', :value => 25, :project => failed_project).user
       user.save!
       @u = FactoryGirl.create(:user)
     end
@@ -217,13 +215,13 @@ describe User do
   describe "#credits" do
     before do
       @u = FactoryGirl.create(:user)
-      FactoryGirl.create(:backer, :credits => false, :value => 100, :user_id => @u.id, :project => successful_project)
-      FactoryGirl.create(:backer, :credits => false, :value => 100, :user_id => @u.id, :project => unfinished_project)
-      FactoryGirl.create(:backer, :credits => false, :value => 200, :user_id => @u.id, :project => failed_project)
-      FactoryGirl.create(:backer, :credits => true, :value => 100, :user_id => @u.id, :project => successful_project)
-      FactoryGirl.create(:backer, :credits => true, :value => 50, :user_id => @u.id, :project => unfinished_project)
-      FactoryGirl.create(:backer, :credits => true, :value => 100, :user_id => @u.id, :project => failed_project)
-      FactoryGirl.create(:backer, :credits => false, :requested_refund => true, :value => 200, :user_id => @u.id, :project => failed_project)
+      FactoryGirl.create(:backer, :state => 'confirmed', :credits => false, :value => 100, :user_id => @u.id, :project => successful_project)
+      FactoryGirl.create(:backer, :state => 'confirmed', :credits => false, :value => 100, :user_id => @u.id, :project => unfinished_project)
+      FactoryGirl.create(:backer, :state => 'confirmed', :credits => false, :value => 200, :user_id => @u.id, :project => failed_project)
+      FactoryGirl.create(:backer, :state => 'confirmed', :credits => true, :value => 100, :user_id => @u.id, :project => successful_project)
+      FactoryGirl.create(:backer, :state => 'confirmed', :credits => true, :value => 50, :user_id => @u.id, :project => unfinished_project)
+      FactoryGirl.create(:backer, :state => 'confirmed', :credits => true, :value => 100, :user_id => @u.id, :project => failed_project)
+      FactoryGirl.create(:backer, :state => 'requested_refund', :credits => false, :value => 200, :user_id => @u.id, :project => failed_project)
     end
     subject{ @u.credits }
     it{ should == 50.0 }
@@ -242,10 +240,10 @@ describe User do
     subject{user.recommended_project}
     before do
       user2, p1, @p2, @p3 = FactoryGirl.create(:user),FactoryGirl.create(:project), FactoryGirl.create(:project, state: :online), FactoryGirl.create(:project, state: :draft)
-      FactoryGirl.create(:backer, :user => user2, :project => p1)
-      FactoryGirl.create(:backer, :user => user2, :project => @p2)
-      FactoryGirl.create(:backer, :user => user2, :project => @p3)
-      FactoryGirl.create(:backer, :user => user, :project => p1)
+      FactoryGirl.create(:backer, :state => 'confirmed', :user => user2, :project => p1)
+      FactoryGirl.create(:backer, :state => 'confirmed', :user => user2, :project => @p2)
+      FactoryGirl.create(:backer, :state => 'confirmed', :user => user2, :project => @p3)
+      FactoryGirl.create(:backer, :state => 'confirmed', :user => user, :project => p1)
     end
     it{ should == @p2}
   end

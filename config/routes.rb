@@ -122,6 +122,7 @@ Catarse::Application.routes.draw do
         put 'confirm'
         put 'unconfirm'
         put 'change_reward'
+        put 'refund'
       end
     end
     resources :users, only: [ :index ]

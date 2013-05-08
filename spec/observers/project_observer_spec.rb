@@ -12,7 +12,7 @@ describe ProjectObserver do
   let(:pending_backer_unsuccessful){ FactoryGirl.create(:notification_type, :name => 'pending_backer_project_unsuccessful') }
   let(:project_visible){ FactoryGirl.create(:notification_type, :name => 'project_visible') }
   let(:project_rejected){ FactoryGirl.create(:notification_type, :name => 'project_rejected') }
-  let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => nil) }
+  let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :state => 'confirmed', :confirmed_at => nil) }
   let(:project) { FactoryGirl.create(:project, goal: 3000) }
 
   subject{ backer }
@@ -80,7 +80,7 @@ describe ProjectObserver do
     let(:project) { FactoryGirl.create(:project, user: user, goal: 100, online_days: -2, state: 'online') }
 
     before do
-      FactoryGirl.create(:backer, project: project, value: 200, confirmed: true)
+      FactoryGirl.create(:backer, project: project, value: 200, state: 'confirmed')
       Notification.expects(:create_notification_once).with(:project_in_wainting_funds, project.user, {project_id: project.id}, {:project => project})
     end
 
@@ -98,7 +98,7 @@ describe ProjectObserver do
 
     context 'when project is successful' do
       before do
-        FactoryGirl.create(:backer, value: 15, confirmed: true, project: project)
+        FactoryGirl.create(:backer, value: 15, state: 'confirmed', project: project)
       end
 
       it 'subscribe project owner to successful projects mailchimp list' do
@@ -123,7 +123,7 @@ describe ProjectObserver do
 
     context "when project is successful" do
       let(:project){ FactoryGirl.create(:project, :can_finish => true, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
-      let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 30, :project => project) }
+      let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :state => 'confirmed', :confirmed_at => Time.now, :value => 30, :project => project) }
 
       before do
         Notification.expects(:create_notification_once).at_least_once
@@ -135,7 +135,7 @@ describe ProjectObserver do
 
     context "when project is unsuccessful" do
       let(:project){ FactoryGirl.create(:project, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
-      let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :confirmed => true, :confirmed_at => Time.now, :value => 20) }
+      let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :state => 'confirmed', :confirmed_at => Time.now, :value => 20) }
       before do
         Notification.expects(:create_notification_once).at_least_once
         backer.save!
@@ -148,8 +148,8 @@ describe ProjectObserver do
       let(:project){ FactoryGirl.create(:project, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
 
       before do
-        FactoryGirl.create(:backer, project: project, key: 'ABC1', payment_method: 'ABC', payment_token: 'ABC', value: 20, confirmed: true, created_at: 2.weeks.ago)
-        FactoryGirl.create(:backer, project: project, key: 'ABC2', payment_method: 'ABC', payment_token: 'ABC', value: 20, confirmed: false, created_at: 2.weeks.ago)
+        FactoryGirl.create(:backer, project: project, key: 'ABC1', payment_method: 'ABC', payment_token: 'ABC', value: 20, state: 'confirmed')
+        FactoryGirl.create(:backer, project: project, key: 'ABC2', payment_method: 'ABC', payment_token: 'ABC', value: 20)
       end
 
       before do

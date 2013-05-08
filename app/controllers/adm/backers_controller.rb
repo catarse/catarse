@@ -11,14 +11,20 @@ class Adm::BackersController < Adm::BaseController
   before_filter :set_title
 
   def confirm
-    resource.confirm!
+    resource.confirm
     flash[:notice] = I18n.t('adm.backers.messages.successful.confirm')
     redirect_to adm_backers_path
   end
 
   def unconfirm
-    resource.unconfirm!
+    resource.pendent
     flash[:notice] = I18n.t('adm.backers.messages.successful.unconfirm')
+    redirect_to adm_backers_path
+  end
+  
+  def refund
+    resource.refund
+    flash[:notice] = I18n.t('adm.backers.messages.successful.refund')
     redirect_to adm_backers_path
   end
 
