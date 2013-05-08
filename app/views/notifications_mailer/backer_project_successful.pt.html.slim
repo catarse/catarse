@@ -33,6 +33,8 @@ strong
     br
   |Data do apoio: #{backer.created_at.strftime("%d/%m/%Y")}
   br
+  |Chave do apoio: #{backer.key}
+  br
   br
 |Se quiser entrar em contato com #{backer.project.user.name}, mande um email para #{mail_to backer.project.user.email}
 br

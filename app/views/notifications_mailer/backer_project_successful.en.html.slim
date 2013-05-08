@@ -33,6 +33,8 @@ strong
     br
   |Pledge date: #{backer.created_at.strftime("%d/%m/%Y")}
   br
+  |Key: #{backer.key}
+  br
   br
 |If you want to talk to #{backer.project.user.name}, send an email to #{mail_to backer.project.user.email}
 br
