@@ -77,91 +77,75 @@ describe Backer do
   end
   
   describe 'state_machine' do
-    let(:backer) { FactoryGirl.create(:backer) }
-    
-    describe 'initial state' do
-      subject { backer.pending? }
-      it { should be_true }
-    end
-    
-    describe '.confirm' do
-      before { backer.confirm }
-      subject { backer.confirmed? }
-      it { should be_true }
-    end
-    
-    describe '.waiting' do
-      subject { backer.waiting_confirmation? }
-      
-      context 'when backer is pending' do
-        before { backer.waiting }        
-        it { should be_true }
-      end
-      
-      context 'when backer is not pending' do
-        before do
-          backer.confirm
-          backer.waiting
-        end
+    let(:backer) { FactoryGirl.create(:backer, state: initial_state) }
+    let(:initial_state){ 'pending' }
 
-        it { should be_false }        
-      end
+    describe 'initial state' do
+      let(:backer) { FactoryGirl.create(:backer) }
+      it('should be pending') { backer.pending?.should be_true }
     end
-    
-    describe '.pendent' do
-      let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
+
+    describe '#pendent' do
       before { backer.pendent }
-      subject { backer.pending? }
-      it { should be_true}
+      context 'when in confirmed state' do
+        let(:initial_state){ 'confirmed' }
+        it("should switch to pending state"){ backer.pending?.should be_true}
+      end
     end
-    
-    describe '.cancel' do
+
+    describe '#confirm' do
+      before { backer.confirm }
+      it("should switch to confirmed state") { backer.confirmed?.should be_true }
+    end
+
+    describe '#waiting' do
+      before { backer.waiting }        
+      context "when in peding state" do
+        it("should switch to waiting_confirmation state") { backer.waiting_confirmation?.should be_true }
+      end
+      context 'when in confirmed state' do
+        let(:initial_state){ 'confirmed' }
+        it("should not switch to waiting_confirmation state") { backer.waiting_confirmation?.should be_false }
+      end
+    end
+
+    describe '#cancel' do
       before { backer.cancel }
-      subject { backer.canceled? }
-      it { should be_true }
+      it("should switch to canceled state") { backer.canceled?.should be_true }
     end
-    
-    describe '.request_refund' do
-      context 'when backer is confirmed' do
-        before do
-          backer.confirm
-          backer.request_refund
-        end
-        subject { backer.requested_refund? }
-        it { should be_true }
+
+    describe '#request_refund' do
+      before do
+        backer.request_refund
       end
-      
+
+      context 'when backer is confirmed' do
+        let(:initial_state){ 'confirmed' }
+        it('should switch to requested_refund state') { backer.requested_refund?.should be_true }
+      end
+
       context 'when backer is not confirmed' do
-        before { backer.request_refund }
-        subject { backer.requested_refund? }
-        it { should be_false }
+        it('should not switch to requested_refund state') { backer.requested_refund?.should be_false }
       end
     end
-    
-    describe '.refund' do
+
+    describe '#refund' do
+      before do
+        backer.refund
+      end
+
       context 'when backer is confirmed' do
-        before do
-          backer.confirm
-          backer.refund
-        end
-        subject { backer.refunded? }
-        it { should be_true }        
+        let(:initial_state){ 'confirmed' }
+        it('should switch to refunded state') { backer.refunded?.should be_true }
       end
-      
+
       context 'when backer is requested refund' do
-        before do
-          backer.confirm
-          backer.request_refund
-          backer.refund
-        end        
-        subject { backer.refunded? }
-        it { should be_true } 
+        let(:initial_state){ 'requested_refund' }
+        it('should switch to refunded state') { backer.refunded?.should be_true }
       end
-      
+
       context 'when backer is pending' do
-        before { backer.refund }
-        subject { backer.refunded? }
-        it { should be_false }
+        it('should not switch to refunded state') { backer.refunded?.should be_false }
       end
     end
   end
