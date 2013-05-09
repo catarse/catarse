@@ -2,19 +2,21 @@ br
 #project_warning.bootstrap-alert
   .alert.alert-warning
     i ATENÇÃO!  Este projeto ainda não está no ar... Seja bem-vindo ao rascunho o/
-    br/
-    br/
-    ' Este projeto ainda está em fase de Rascunho, isso significa que nenhuma informação abaixo é definitiva até a entrada do projeto no ar.
-    | Por isso, aproveite! Dê uma olhada no vídeo, na descrição e nas recompensas e <strong> deixe seu feedback na aba de comentários.</strong>
-    br/
-    br/
-    '<strong>Lembrando que:</strong> O Catarse é uma plataforma curada, o que significa que vamos avaliar o foco, a viabilidade, e a consistência do seu
-    ' projeto durante o processo de Rascunho. Se entendermos que o seu projeto não está de acordo com os nossos
-    = link_to 'Critérios de Seleção', 'http://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit', target: '_blank'
-    | , ele poderá ser recusado pela equipe de curadores.
-    br/
-    br/
-    | Sinta-se a vontade pra nos enviar perguntas e feedbacks durante todo o processo =)
-    br/
-    ' Pra fazer isso acesse a nossa
-    = link_to 'Central de Suporte', Configuration[:support_forum], target: '_blank'
+    = image_tag "dropdown.png", size: "16x10"
+    #project_warning_text
+      br/
+      br/
+      ' Este projeto ainda está em fase de Rascunho, isso significa que nenhuma informação abaixo é definitiva até a entrada do projeto no ar.
+      | Por isso, aproveite! Dê uma olhada no vídeo, na descrição e nas recompensas e <strong> deixe seu feedback na aba de comentários.</strong>
+      br/
+      br/
+      '<strong>Lembrando que:</strong> O Catarse é uma plataforma curada, o que significa que vamos avaliar o foco, a viabilidade, e a consistência do seu
+      ' projeto durante o processo de Rascunho. Se entendermos que o seu projeto não está de acordo com os nossos
+      = link_to 'Critérios de Seleção', 'http://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit', target: '_blank'
+      | , ele poderá ser recusado pela equipe de curadores.
+      br/
+      br/
+      | Sinta-se a vontade pra nos enviar perguntas e feedbacks durante todo o processo =)
+      br/
+      ' Pra fazer isso acesse a nossa
+      = link_to 'Central de Suporte', Configuration[:support_forum], target: '_blank'
