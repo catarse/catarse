@@ -196,7 +196,7 @@ describe Project do
       Project.expects(:visible).returns(Project)
       Project.expects(:recent).returns(Project)
       Project.expects(:not_expiring).returns(Project)
-      Project.expects(:order).with('date(created_at) DESC, random()').returns(Project)
+      Project.expects(:order).with('random()').returns(Project)
       Project.expects(:where).with("coalesce(id NOT IN (?), true)", 1).returns(Project)
       Project.expects(:limit).with(3)
     end
