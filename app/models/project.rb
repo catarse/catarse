@@ -86,7 +86,7 @@ class Project < ActiveRecord::Base
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order('date(expires_at), random()').limit(3)
   }
   scope :recent_for_home, ->(exclude_ids){
-    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('date(created_at) DESC, random()').limit(3)
+    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('random()').limit(3)
   }
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.confirmed AND b.user_id = ?)", user_id)
