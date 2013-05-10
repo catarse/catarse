@@ -162,6 +162,11 @@ en:
   comment:
     display_time: "%{time_ago} ago"
   credits:
+    modal:
+      text: "Before continue, you already know how work the refund?"
+      link: "See how works the refund"
+      reject_btn: "I want to keep my credits"
+      accept_btn: "I want to request the refund"
     index:
       back_date: "Back date"
       current_credits_html: "Your current balance is <span id=\"current_credits\">%{credits}</span> in credits."

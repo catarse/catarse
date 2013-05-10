@@ -92,7 +92,19 @@
                         = t('credits.index.refunded')
                       - else
                         - if can? :request_refund, credit
-                          = link_to t('credits.index.request_refund'), "#request_refund/#{credit.id}", :class => 'link_project'
+                          .bootstrap-twitter
+                            div id="requestRefundModal#{credit.id}" class="hide modal"
+                              .modal-header
+                                h3= t('.attention')
+                              .modal-body
+                                p= t('credits.modal.text')
+                                = link_to t('credits.modal.link'), 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos', target: '_blank'
+                              .modal-footer
+                                button type='button' data-dismiss="modal" class="btn"
+                                  = t('credits.modal.reject_btn')
+                                a href="#request_refund/#{credit.id}" class="btn" data-dimiss="modal"
+                                  = t('credits.modal.accept_btn')
+                          = link_to t('credits.index.request_refund'), "#requestRefundModal#{credit.id}", :'data-toggle' => 'modal', :class => 'link_project'
             .bootstrap-alert
               .alert.alert-info
                 = t('credits.index.important_html')
