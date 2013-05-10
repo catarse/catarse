@@ -172,6 +172,11 @@ pt:
   comment:
     display_time: "Há %{time_ago}"
   credits:
+    modal:
+      text: "Antes de solicitar o reembolso, você já sabe como funciona?"
+      link: "Regras e Funcionamento dos reembolsos / estornos"
+      reject_btn: "Não, desejo manter meus creditos"
+      accept_btn: "Sim, desejo solicitar estorno"
     index:
       back_date: "Data do apoio"
       current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."

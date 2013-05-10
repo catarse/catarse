@@ -140,6 +140,7 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
   request_refund: function(back_id) {
     url = '/users/'+this.user.id+'/request_refund/'+back_id;
+    $('#requestRefundModal'+back_id).modal('hide');    
     $.post(url, function(result) {
       //alert(result['status']);
       //notificationHtml = '<div class="bootstrap-alert with_small_font">';
