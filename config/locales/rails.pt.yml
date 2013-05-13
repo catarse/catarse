@@ -32,6 +32,7 @@ pt:
       - Sábado
     formats:
       default: "%d/%m/%Y"
+      with_time: "%d/%m/%Y às %Hh%Mmin"
       long: "%d de %B de %Y"
       short: "%d de %B"
     month_names:
