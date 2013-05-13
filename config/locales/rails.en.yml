@@ -32,6 +32,7 @@ en:
     - Saturday
     formats:
       default: ! '%Y-%m-%d'
+      with_time: ! "%Y/%m/%d - %H:%M"      
       long: ! '%B %d, %Y'
       short: ! '%b %d'
     month_names:
