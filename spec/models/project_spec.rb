@@ -242,7 +242,7 @@ describe Project do
 
   describe ".recent" do
     before do
-      @p = FactoryGirl.create(:project, :online_date => (Time.now - 14.days))
+      @p = FactoryGirl.create(:project, :online_date => (Time.now - 4.days))
       FactoryGirl.create(:project, :online_date => (Time.now - 15.days))
     end
     subject{ Project.recent }
