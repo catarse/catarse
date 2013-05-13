@@ -65,6 +65,7 @@
           table.table.table-striped
             thead
               tr
+                th= t('.info')
                 th= t('.project')
                 th= t('.user')
                 th= t('.value')
@@ -77,6 +78,41 @@
             tbody
               - @backers.includes(:project, :user, :reward).each do |backer|
                 tr id=backer.id class=cycle("even", "odd")
+                  td
+                    .bootstrap-twitter
+                      div id="backerInfo#{backer.id}" class="hide modal"
+                        .modal-header
+                          h3= t('.backer_info', key: backer.key)
+                        .modal-body style='text-align: left'
+                          p
+                            strong= t('.payment_method') 
+                            | &nbsp;
+                            = backer.payment_method
+                          p
+                            strong= t('.payment_id') 
+                            | &nbsp;                            
+                            = backer.payment_id
+                          p
+                            strong= t('.payer_email') 
+                            | &nbsp;
+                            = backer.payer_email
+                          p
+                            strong= t('.user_email') 
+                            | &nbsp;
+                            = backer.user.email                          
+                          p
+                            strong= t('.payment_choice') 
+                            | &nbsp;
+                            = backer.payment_choice
+                          p
+                            strong= t('.created_at') 
+                            | &nbsp;
+                            = l(backer.created_at)
+
+                        .modal-footer
+                          button type='button' data-dismiss="modal" class="btn" OK
+                    = link_to "#backerInfo#{backer.id}", :class => 'btn btn-mini', :'data-toggle' => 'modal' do
+                      i.icon-info-sign
                   td title=backer.project.name
                     = link_to project_by_slug_path(permalink: backer.project.permalink) do
                       = image_tag backer.project.display_image, class: 'project_img'
