@@ -82,7 +82,7 @@
                     = project.display_expires_at
                     br
                     |(
-                    = I18n.l(8.weekdays_from(project.expires_at).to_date)
+                    = I18n.l(4.weekdays_from(project.expires_at).to_date)
                     |)
                   td
                     = link_to t('.backer_report'), adm_reports_backer_reports_path(project_id: project.id, format: :csv)
