@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_moip.git
-  revision: 6113a20d67d7be0e24dc37f68f2711f5d22248a3
-  ref: 6113a20d67d7be0e24dc37f68f2711f5d22248a3
+  revision: 5331de9d717cab78c18b40703f45f6c1be4c9704
+  ref: 5331de9
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
@@ -231,7 +231,7 @@ GEM
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.7.7)
+    json (1.8.0)
     jwt (0.1.7)
       multi_json (>= 1.5)
     kaminari (0.14.1)
