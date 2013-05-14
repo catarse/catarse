@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
     Rails.logger.info "-----> #{e.inspect}"
   end
 
-  delegate  :display_name, :display_image, :short_name, :display_provider, :display_image_html,
+  delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_backs,
     :to => :decorator
 
