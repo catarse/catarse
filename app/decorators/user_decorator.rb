@@ -2,14 +2,6 @@ class UserDecorator < Draper::Decorator
   decorates :user
   include Draper::LazyHelpers
 
-  def display_provider
-    case source.provider
-    when 'devise' then "Login #{email}"
-    when 'google' then I18n.t('user.google_account')
-    else provider
-    end
-  end
-
   def display_name
     source.name || source.full_name || I18n.t('user.no_name')
   end
