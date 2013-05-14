@@ -77,7 +77,7 @@ pt:
         successful:
           confirm: 'Apoio confirmado com sucesso!'
           unconfirm: 'Apoio desconfirmado com sucesso!'
-          refund: 'Apoio extornado com sucesso!'
+          refund: 'Apoio estornado com sucesso!'
           change_reward: 'Recompensa modificada com sucesso!'
       index:
         backer_info: 'Informações do backer %{key}'
@@ -87,10 +87,10 @@ pt:
         payer_email: 'Email utilizado no meio de pagamento'
         user_email: 'Email utilizado no catarse'
         created_at: 'Iniciado em'        
-        pending_to_refund: 'Extornos pendentes'
+        pending_to_refund: 'Estornos pendentes'
         confirm_backer: 'Confirmar apoio'
         unconfirm_backer: 'Desconfirmar apoio'
-        refund_backer: 'Extornar apoio'
+        refund_backer: 'Estornar apoio'
         title: "Gerenciamento de apoios"
         state: 'Estado'
         menu: "Apoios"
