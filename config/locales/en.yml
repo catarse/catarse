@@ -163,7 +163,8 @@ en:
     display_time: "%{time_ago} ago"
   credits:
     modal:
-      text: "Before continue, you already know how work the refund?"
+      title: 'Important'
+      text: "Check out how our refund process works:"
       link: "See how works the refund"
       reject_btn: "I want to keep my credits"
       accept_btn: "I want to request the refund"
@@ -173,7 +174,7 @@ en:
       important_html: "You have <strong>up to 60 days after the payment date</strong> to ask for a refund. If you ask for a refund, the value of your payment will be deducted from your credits."
       project: Project
       refund_expration_date: "Refund deadline"
-      refunded: Refunded
+      refunded: Refund request successfully done. Our team will contact you within two business days.
       refunds_title: "Payments that can be refunded"
       request_refund: "Request refund"
       requested_refund: "Requested refund"
