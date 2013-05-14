@@ -22,11 +22,7 @@ class Update < ActiveRecord::Base
   end
 
   def notify_backers
-    users = project.subscribed_users
-    if(adm = User.where(email: ::Configuration[:email_communication]).first)
-      users << adm
-    end
-    users.each do |user|
+    project.subscribed_users.each do |user|
       Rails.logger.info "[User #{user.id}] - Creating notification for #{user.name}"
       Notification.create_notification_once :updates, user,
         {update_id: self.id, user_id: user.id},
