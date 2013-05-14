@@ -8,7 +8,7 @@ br
 |Em função disto, você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Você pode conhecer mais projetos de #{backer.project.category} em #{link_to("#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}", "#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}")}
 br
 br
-|Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}. Lembre que o seu cadastro no site foi feito através do #{backer.user.display_provider}.
+|Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}. 
 br
 br
 |Chave do apoio: #{backer.key}
