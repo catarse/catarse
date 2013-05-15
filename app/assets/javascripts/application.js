@@ -12,6 +12,7 @@
 //
 //= require ./lib/jquery-1.7.1.min.js
 //= require jquery_ujs
+//= require ./lib/jquery-ui-1.9.2.custom.min.js
 //= require best_in_place
 //= require ./lib/underscore-min.js
 //= require ./lib/backbone-min.js
