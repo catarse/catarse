@@ -69,7 +69,6 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
 
   render: function(){
     this.flash()
-    this.newsletterModal()
   }
 
 })
