@@ -122,7 +122,7 @@ describe ProjectObserver do
   describe "notify_backers" do
 
     context "when project is successful" do
-      let(:project){ FactoryGirl.create(:project, :can_finish => true, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
+      let(:project){ FactoryGirl.create(:project, :goal => 30, :online_days => -7, :state => 'waiting_funds') }
       let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :state => 'confirmed', :confirmed_at => Time.now, :value => 30, :project => project) }
 
       before do
