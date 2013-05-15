@@ -141,6 +141,12 @@ class Backer < ActiveRecord::Base
     event :refund do
       transition [:requested_refund, :confirmed] => :refunded
     end
+    
+    after_transition confirmed: :requested_refund, do: :after_transition_from_confirmed_to_requested_refund
+  end
+  
+  def after_transition_from_confirmed_to_requested_refund
+    notify_observers :notify_backoffice
   end
 
   # Used in payment engines

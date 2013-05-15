@@ -95,47 +95,4 @@ describe UsersController do
 
     it{ assigns(:fb_admins).should include(user.facebook_id.to_i) }
   end
-
-  describe "POST request_refund" do
-    let(:previous_backs){ nil }
-    let(:response_body){ {status: status_message, credits: user.reload.display_credits}.to_json }
-    let(:status_message){ nil }
-
-    before do
-      previous_backs
-      post :request_refund, { id: user.id, back_id: backer.id }
-    end
-
-    context "without user" do
-      let(:current_user){ nil }
-      it "should not set requested_refund" do
-        backer.reload
-        backer.requested_refund?.should be_false
-      end
-      it{ should redirect_to new_user_session_path }
-    end
-
-    context "with user when we have the value to refund" do
-      let(:status_message){ I18n.t('credits.index.refunded') }
-      its(:body){ should == response_body }
-    end
-
-    context "with user when we do not have the value to refund" do
-      let(:status_message){ I18n.t('credits.refund.no_credits') }
-      let(:previous_backs){ FactoryGirl.create(:backer, :state => 'confirmed', :user => user, :project => successful_project, :credits => true) }
-      its(:body){ should == response_body }
-    end
-
-    context "when backer cannot be refunded" do
-      let(:status_message){ I18n.t('credits.refund.refunded') }
-      let(:backer){ FactoryGirl.create(:backer, :user => user, :project => failed_project, :state => 'refunded') }
-      its(:body){ should == response_body }
-    end
-
-    context "when backer already requested to refund" do
-      let(:status_message){ I18n.t('credits.refund.requested_refund') }
-      let(:backer){ FactoryGirl.create(:backer, :user => user, :project => failed_project, :state => 'requested_refund') }
-      its(:body){ should == response_body }
-    end
-  end
 end

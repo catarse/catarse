@@ -91,7 +91,12 @@ Catarse::Application.routes.draw do
     end
   end
   resources :users do
-    resources :backers, :only => [:index]
+    resources :backers, :only => [:index] do
+      member do
+        match :request_refund
+      end
+    end
+
     resources :unsubscribes, :only => [:create]
     member do
       get 'projects'
@@ -101,7 +106,7 @@ Catarse::Application.routes.draw do
       put 'update_password'
     end
   end
-  match "/users/:id/request_refund/:back_id" => 'users#request_refund'
+  # match "/users/:id/request_refund/:back_id" => 'users#request_refund'
 
   resources :credits, only: [:index] do
     collection do
