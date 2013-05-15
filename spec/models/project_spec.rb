@@ -144,15 +144,15 @@ describe Project do
 
   describe ".backed_by" do
     before do
-      backer = FactoryGirl.create(:backer, confirmed: true)
+      backer = FactoryGirl.create(:backer, state: 'confirmed')
       @user = backer.user
       @project = backer.project
       # Another backer with same project and user should not create duplicate results
-      FactoryGirl.create(:backer, user: @user, project: @project, confirmed: true)
+      FactoryGirl.create(:backer, user: @user, project: @project, state: 'confirmed')
       # Another backer with other project and user should not be in result
-      FactoryGirl.create(:backer, confirmed: true)
+      FactoryGirl.create(:backer, state: 'confirmed')
       # Another backer with different project and same user but not confirmed should not be in result
-      FactoryGirl.create(:backer, user: @user, confirmed: false)
+      FactoryGirl.create(:backer, user: @user, state: 'pending')
     end
     subject{ Project.backed_by(@user.id) }
     it{ should == [@project] }
@@ -262,7 +262,7 @@ describe Project do
     let(:project) { FactoryGirl.create(:project, goal: 100) }
     subject { project.can_go_to_second_chance? }
 
-    before { FactoryGirl.create(:backer, value: 20, confirmed: true, project: project) }
+    before { FactoryGirl.create(:backer, value: 20, state: 'confirmed', project: project) }
 
     context 'when confirmed and pending backers reached 30% of the goal' do
       before { FactoryGirl.create(:backer, value: 10, state: 'waiting_confirmation', project: project) }

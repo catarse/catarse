@@ -89,7 +89,7 @@ class Project < ActiveRecord::Base
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('random()').limit(3)
   }
   scope :backed_by, ->(user_id){
-    where("id IN (SELECT project_id FROM backers b WHERE b.confirmed AND b.user_id = ?)", user_id)
+    where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
 
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }

@@ -81,7 +81,7 @@ describe Backer do
     let(:initial_state){ 'pending' }
 
     describe 'initial state' do
-      let(:backer) { FactoryGirl.create(:backer) }
+      let(:backer) { Backer.new }
       it('should be pending') { backer.pending?.should be_true }
     end
 
@@ -259,7 +259,7 @@ describe Backer do
 
     context "when backs are not confirmed" do
       before do
-        FactoryGirl.create(:backer, user: user, project: project)
+        FactoryGirl.create(:backer, user: user, project: project, state: 'pending')
       end
       it{ should == 0 }
     end

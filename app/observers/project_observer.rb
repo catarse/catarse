@@ -89,7 +89,6 @@ class ProjectObserver < ActiveRecord::Observer
       {project_id: project.id, user_id: project.user.id},
       project: project) unless project.successful?
 
-    project.update_attributes finished: true, successful: project.successful?
   end
 
   def sync_with_mailchimp(project)

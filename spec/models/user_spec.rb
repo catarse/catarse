@@ -113,7 +113,7 @@ describe User do
     before do
       @backer = FactoryGirl.create(:backer, :state => 'confirmed', :project => successful_project)
       FactoryGirl.create(:backer, :state => 'confirmed', :project => successful_project, :user => @backer.user)
-      FactoryGirl.create(:backer, :project => successful_project)
+      FactoryGirl.create(:backer, :state => 'pending', :project => successful_project)
     end
     it{ should == [@backer.user] }
   end

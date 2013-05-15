@@ -69,10 +69,9 @@ FactoryGirl.define do
   factory :backer do |f|
     f.association :project, :factory => :project
     f.association :user, :factory => :user
-    f.confirmed true
     f.confirmed_at Time.now
     f.value 10.00
-    f.state 'pending'
+    f.state 'confirmed'
     f.credits false
   end
 
