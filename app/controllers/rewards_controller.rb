@@ -1,7 +1,7 @@
 class RewardsController < ApplicationController
   load_and_authorize_resource
   inherit_resources
-  actions :index, :create, :update, :destroy
+  actions :index, :create, :update, :destroy, :sort
   respond_to :html, :json
 
   def index
@@ -31,6 +31,13 @@ class RewardsController < ApplicationController
 
   def destroy
     destroy! { project_by_slug_path(permalink: resource.project.permalink) }
+  end
+
+  def sort
+    resource.row_order_position = params[:reward][:row_order_position]
+    resource.save
+
+    render nothing: true
   end
 
   protected
