@@ -105,7 +105,7 @@ describe Reward do
       context 'and have confirmed backers and the in time to confirm already expired' do
         before do
            FactoryGirl.create(:backer, state: 'confirmed', reward: reward, project: reward.project)
-           FactoryGirl.create(:backer, payment_token: 'ABC', reward: reward, project: reward.project, created_at: 8.days.ago)
+           FactoryGirl.create(:backer, state: 'pending', payment_token: 'ABC', reward: reward, project: reward.project, created_at: 8.days.ago)
         end
 
         it { should be_false }

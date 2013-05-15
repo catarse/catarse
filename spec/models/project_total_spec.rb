@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe ProjectTotal do
   before do
-    @project_id = FactoryGirl.create(:backer, :value => 10.0, :confirmed => false).project_id
-    FactoryGirl.create(:backer, :value => 10.0, :confirmed => true, :project_id => @project_id)
+    @project_id = FactoryGirl.create(:backer, :value => 10.0, :state => 'pending').project_id
+    FactoryGirl.create(:backer, :value => 10.0, :state => 'confirmed', :project_id => @project_id)
   end
 
   describe "#pledged" do

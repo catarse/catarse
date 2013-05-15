@@ -52,7 +52,7 @@ describe Ability do
         end
 
         context "when backer is not in time to confirm and not have confirmed backers" do
-          before { FactoryGirl.create(:backer, project: project, reward: reward, payment_token: 'ABC', created_at: 7.day.ago, confirmed: false) }
+          before { FactoryGirl.create(:backer, project: project, reward: reward, payment_token: 'ABC', created_at: 7.day.ago, state: 'pending') }
 
           it { should be_able_to(:update, reward, :minimum_value) }
           it { should be_able_to(:destroy, reward) }
