@@ -23,67 +23,13 @@ describe PaymentEngines do
     it{ should be_empty }
   end
 
-  describe ".refund!" do
-    let(:backer){ FactoryGirl.create(:backer, state: 'confirmed') }
+  describe ".find_payment" do
     before do
-      PaymentEngines.refund!({ id: backer.id })
+      PaymentEngines.find_payment({ id: backer.id })
     end
 
-    it "should change backer status to refunded" do
-      backer.reload.refunded?.should be_true
-    end
-  end
-
-  describe ".confirm!" do
-    before do
-      PaymentEngines.confirm!({ id: backer.id })
-    end
-
-    it "should change backer status to confirmed" do
-      backer.reload.confirmed?.should be_true
-    end
-  end
-
-  describe ".cancel!" do
-    before do
-      PaymentEngines.cancel!({ id: backer.id })
-    end
-
-    it "should change backer status to canceled" do
-      backer.reload.canceled?.should be_true
-    end
-  end
-
-  describe ".create_payment_notification" do
-    let(:data){ { 'test' => true } }
-    before do
-      PaymentEngines.create_payment_notification({ id: backer.id }, data)
-    end
-
-    it "should create payment notification with data" do
-      backer.reload.payment_notifications.first.extra_data.should == data
-    end
-  end
-
-  describe ".update_payment_data" do
-    before do
-      PaymentEngines.update_payment_data({ id: backer.id }, {
-        payment_id: 'payment id',
-        payment_choice: 'payment choice',
-        payment_service_fee: 99.6
-      })
-    end
-
-    it "should update payment id" do
-      backer.reload.payment_id.should == 'payment id'
-    end
-
-    it "should update payment choice" do
-      backer.reload.payment_choice.should == 'payment choice'
-    end
-
-    it "should update payment service fee" do
-      backer.reload.payment_service_fee.should == 99.6
+    it "it should assign backer to self.backer" do
+      PaymentEngines.backer.should == backer
     end
   end
 
