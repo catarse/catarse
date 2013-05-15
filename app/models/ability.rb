@@ -30,7 +30,7 @@ class Ability
       reward.project.user == current_user
     end
 
-    can :update, :rewards, [:description, :maximum_backers] do |reward|
+    can [:update, :sort], :rewards, [:description, :maximum_backers] do |reward|
       reward.project.user == current_user
     end
 
@@ -60,7 +60,7 @@ class Ability
     end
 
     # Channel authorizations
-    # Due to previous abilities, first I activate all things 
+    # Due to previous abilities, first I activate all things
     # and in the final I deactivate unnecessary abilities.
     can :create, :channels_subscribers if current_user.persisted?
     can :destroy, :channels_subscribers do |cs|
@@ -69,7 +69,7 @@ class Ability
 
     if current_user.trustee?
 
-      can :access, :all 
+      can :access, :all
       cannot :access, :projects
       cannot :access, :rewards
 
@@ -83,7 +83,7 @@ class Ability
         current_user.channels_projects.exists?(reward.project)
       end
 
-      
+
       # For the access, :all
       # we're removing the ability to update users at all, but
       cannot [:update, :destroy], :users

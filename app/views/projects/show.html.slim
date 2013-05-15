@@ -1,7 +1,7 @@
 - content_for :js_templates do
   = render :partial => 'backer'
   = render :partial => 'project_templates'
-  - if can?(:update, Reward)
+  - if can?(:update, @project)
     = render :partial => 'sort_rewards'
 
 = content_for :meta_tags do
