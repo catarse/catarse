@@ -34,7 +34,7 @@ describe BackerObserver do
     end
 
     context "when project reached the goal" do
-      let(:project){ FactoryGirl.create(:project, :can_finish => true, :successful => false, :goal => 20, :finished => false) }
+      let(:project){ FactoryGirl.create(:project, :state => 'failed', :goal => 20) }
       let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :state => 'confirmed', :confirmed_at => Time.now, :value => 20) }
       before do
         project_total = mock()
@@ -49,7 +49,7 @@ describe BackerObserver do
     end
 
     context "when project is already successful" do
-      let(:project){ FactoryGirl.create(:project, :successful => true, :finished => false) }
+      let(:project){ FactoryGirl.create(:project, state: 'successful') }
       let(:backer){ FactoryGirl.create(:backer, :key => 'should be updated', :payment_method => 'should be updated', :state => 'confirmed', :confirmed_at => Time.now, :project => project) }
       before do
         Notification.expects(:create_notification).never
