@@ -1,10 +1,11 @@
 class RemoveBooleanFieldsFromProjects < ActiveRecord::Migration
   def up
-    remove_column :projects, :can_finish
-    remove_column :projects, :finished
-    remove_column :projects, :visible
-    remove_column :projects, :rejected
-    remove_column :projects, :successful
+    execute "
+    ALTER TABLE projects DROP IF EXISTS can_finish;
+    ALTER TABLE projects DROP IF EXISTS finished;
+    ALTER TABLE projects DROP IF EXISTS visible;
+    ALTER TABLE projects DROP IF EXISTS rejected;
+    ALTER TABLE projects DROP IF EXISTS successful;"
   end
 
   def down

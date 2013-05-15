@@ -1,8 +1,9 @@
 class RemoveBooleanFieldsFromBackers < ActiveRecord::Migration
   def up
-    remove_column :backers, :confirmed
-    remove_column :backers, :requested_refund
-    remove_column :backers, :refunded
+    execute "
+    ALTER TABLE backers DROP IF EXISTS confirmed;
+    ALTER TABLE backers DROP IF EXISTS requested_refund;
+    ALTER TABLE backers DROP IF EXISTS refunded;"
   end
 
   def down
