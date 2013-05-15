@@ -110,7 +110,7 @@ describe UsersController do
       let(:current_user){ nil }
       it "should not set requested_refund" do
         backer.reload
-        backer.requested_refund.should be_false
+        backer.requested_refund?.should be_false
       end
       it{ should redirect_to new_user_session_path }
     end

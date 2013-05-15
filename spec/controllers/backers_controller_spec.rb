@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe BackersController do
   subject{ response }
-  let(:project){ FactoryGirl.create(:project, :finished => true) }
+  let(:project){ FactoryGirl.create(:project, state: 'successful') }
   let(:backer){ FactoryGirl.create(:backer, state: 'confirmed', :project => project) }
   let(:user){ nil }
   let(:format){ 'json' }
