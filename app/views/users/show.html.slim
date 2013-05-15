@@ -86,9 +86,9 @@
                     td.value= credit.display_value
                     td.term= I18n.l(credit.refund_deadline.to_date)
                     td.status
-                      - if credit.requested_refund
+                      - if credit.requested_refund?
                         = t('credits.index.requested_refund')
-                      - elsif credit.refunded
+                      - elsif credit.refunded?
                         = t('credits.index.refunded')
                       - else
                         - if can? :request_refund, credit
