@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :namespace,
-                :fb_admins, :statistics, :render_facebook_sdk, :render_facebook_like,
-                :render_twitter
+  helper_method :namespace, :fb_admins, :statistics,
+                :render_facebook_sdk, :render_facebook_like, :render_twitter
+
   before_filter :set_locale
   before_filter :force_http
 
@@ -25,13 +25,6 @@ class ApplicationController < ActionController::Base
   before_filter do
     Statistics.new
     @fb_admins = [100000428222603, 547955110]
-  end
-
-  before_filter do
-    if params[:newsletter].present?
-      flash[:notice] = I18n.t('newsletter_ok_body') if params[:newsletter] == 'ok'
-      flash[:alert] = I18n.t('newsletter_error_body') if params[:newsletter] == 'error'
-    end
   end
 
   # We use this method only to make stubing easier 

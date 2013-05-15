@@ -328,6 +328,8 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.10.0)
     rake (10.0.4)
+    ranked-model (0.2.0)
+      activerecord (>= 3.0.3)
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.2.2)
@@ -498,6 +500,7 @@ DEPENDENCIES
   rack-timeout
   rails (= 3.2.12)
   rails_autolink (~> 1.0.7)
+  ranked-model
   rmagick
   routing-filter
   rspec-rails
