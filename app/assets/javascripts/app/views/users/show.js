@@ -1,7 +1,7 @@
 CATARSE.UsersShowView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "index", "backs", "projects", "credits", "comments", "request_refund", 'settings', 'unsubscribes', 'closeCreditsModal')
+    _.bindAll(this, "index", "backs", "projects", "credits", "comments", 'settings', 'unsubscribes')
     CATARSE.router.route("", "index", this.index)
     CATARSE.router.route("backs", "backs", this.backs)
     CATARSE.router.route("projects", "projects", this.projects)
@@ -9,7 +9,6 @@ CATARSE.UsersShowView = Backbone.View.extend({
     CATARSE.router.route("comments", "comments", this.comments)
     CATARSE.router.route("settings", "settings", this.settings)
     CATARSE.router.route("unsubscribes", "unsubscribes", this.unsubscribes)
-    CATARSE.router.route("request_refund/:back_id", "request_refund", this.request_refund)
     this.user = new CATARSE.User($('#user_profile').data("user"))
     this.render()
     this.toggleProjects();
@@ -35,14 +34,8 @@ CATARSE.UsersShowView = Backbone.View.extend({
   },
 
   events: {
-    'click #creditsModal .modal-footer a':'closeCreditsModal',
     'change #subscribed_check':'toggleProjects',
     'click .subscribed_projects li label input':'toggleCheckboxes',
-  },
-
-  closeCreditsModal: function(e) {
-    e.preventDefault();
-    this.$('#creditsModal').modal('hide');
   },
 
   toggleCheckboxes: function(e) {
@@ -136,29 +129,6 @@ CATARSE.UsersShowView = Backbone.View.extend({
 
   comments: function() {
     this.selectItem("comments")
-  },
-
-  request_refund: function(back_id) {
-    url = '/users/'+this.user.id+'/request_refund/'+back_id;
-    $('#requestRefundModal'+back_id).modal('hide');    
-    $.post(url, function(result) {
-      //alert(result['status']);
-      //notificationHtml = '<div class="bootstrap-alert with_small_font">';
-        //notificationHtml += '<div class="alert alert-block">';
-        //notificationHtml += '<a class="closeAlert" data-dismiss="alert">×</a>';
-        //notificationHtml += result['status'];
-        //notificationHtml += '</div>';
-      //notificationHtml +='</div>';
-      $('#creditsModal .modal-body').html(result['status']);
-      $('#current_credits').html(result['credits']);
-      $('#creditsModal').modal({
-        backdrop: true,
-      })
-
-      //console.log($('.table_title').append(notificationHtml));
-
-      $("tr#back_"+back_id+" td.status").text(result['status'])
-    })
   },
 
   selectItem: function(item) {

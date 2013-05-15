@@ -61,19 +61,4 @@ class UsersController < ApplicationController
     @credits = @user.backs.can_refund.order(:id).all
     render :json => @credits
   end
-
-  def request_refund
-    back = Backer.find(params[:back_id])
-    begin
-      if can? :request_refund, back
-        refund = Credits::Refund.new(back, current_user)
-        refund.make_request!
-        status = refund.message
-      end
-    rescue Exception => e
-      status = e.message
-    end
-
-    render :json => {:status => status, :credits => current_user.reload.display_credits}
-  end
 end

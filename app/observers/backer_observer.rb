@@ -51,5 +51,9 @@ class BackerObserver < ActiveRecord::Observer
       {project_id: backer.project.id},
       project: backer.project) if backer.project.reached_goal?
   end
+  
+  def notify_backoffice(backer)
+    CreditsMailer.request_refund_from(backer).deliver
+  end
 
 end

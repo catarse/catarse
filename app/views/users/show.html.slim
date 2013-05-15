@@ -11,15 +11,6 @@
   = render 'back'
   = render 'project'
 
-.bootstrap-twitter
-  #creditsModal.hide.modal
-    .modal-header
-      h3= t('.attention')
-    .modal-body
-    .modal-footer
-      a href="javascript:void(0);" class="btn" data-dimiss="modal"
-        | OK
-
 #page_content
   .container
     #user_profile[data-user="#{@user.to_json}"]
@@ -102,7 +93,7 @@
                               .modal-footer
                                 button type='button' data-dismiss="modal" class="btn"
                                   = t('credits.modal.reject_btn')
-                                a href="#request_refund/#{credit.id}" class="btn" data-dimiss="modal"
+                                = link_to request_refund_user_backer_path(@user, credit), :class => 'btn', :'data-dimiss' => 'modal' do
                                   = t('credits.modal.accept_btn')
                           = link_to t('credits.index.request_refund'), "#requestRefundModal#{credit.id}", :'data-toggle' => 'modal', :class => 'link_project'
             .bootstrap-alert
