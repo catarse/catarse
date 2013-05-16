@@ -41,8 +41,8 @@ class ProjectDecorator < Draper::Decorator
     end
   end
 
-  def display_expires_at(format = 'default')
-    I18n.l(source.expires_at.to_date, format: format.to_sym)
+  def display_expires_at
+    I18n.l(source.expires_at.to_date)
   end
 
   def display_pledged
