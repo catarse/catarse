@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_paypal_express.git
-  revision: 0e4f46baf54a8f02140dfa32649d9467d6fb98bf
-  ref: 0e4f46baf54a8f02140dfa32649d9467d6fb98bf
+  revision: 42f24f5cf81d2365cbf2d0e441d04b2edf3e3d1e
+  ref: 42f24f5
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -106,7 +106,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bourne (1.1.2)
       mocha (= 0.10.5)
-    braintree (2.22.0)
+    braintree (2.23.0)
       builder (>= 2.0.0)
     builder (3.0.4)
     capybara (2.0.2)
