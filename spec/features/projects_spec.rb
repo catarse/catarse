@@ -71,7 +71,7 @@ describe "Projects" do
       ].each do |a|
         fill_in "project_#{a}", with: project.attributes[a]
       end
-      check 'accept'
+      check 'project_accepted_terms'
       find('#project_submit').click
       #Project.first.name.should == project.name
     end
