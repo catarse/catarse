@@ -12,7 +12,7 @@ class UpdateBackersStateMachine < ActiveRecord::Migration
            -- when backer is confirmed and user requested refund but is not refunded yet and not credits
            when b.confirmed and b.requested_refund and not b.refunded and not b.credits then 'requested_refund'
            -- when backer is refunded and not credits
-           when b.refunded and not b.credits then 'refunded'
+           when b.confirmed and b.refunded and not b.credits then 'refunded'
            -- when backer is not confirmed but user already pass into payment gateway
            when not b.confirmed and b.payment_token is not null and ( 
              case 
