@@ -91,6 +91,10 @@ class Project < ActiveRecord::Base
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
+  
+  attr_accessor :accepted_terms
+  
+  validates_acceptance_of :accepted_terms, on: :create
 
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
