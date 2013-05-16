@@ -2,8 +2,6 @@ CATARSE.ProjectsNewView = Backbone.View.extend({
   el: 'body',
 
   initialize: function() {
-    var permalink_valid = null
-
     verify_permalink = function() {
       if(/^(\w|-)*$/.test($('#project_permalink').val()))
       {
