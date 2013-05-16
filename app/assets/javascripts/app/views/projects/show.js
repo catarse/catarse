@@ -41,7 +41,6 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
   },
 
   events: {
-    "click #show_formatting_tips": "showFormattingTips",
     "keyup form input[type=text],textarea": "validate",
     "click #project_link": "selectTarget",
     "click #project_embed textarea": "selectTarget",
@@ -204,12 +203,6 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     }
   },
 
-  showFormattingTips: function(event){
-    event.preventDefault()
-    this.$('#show_formatting_tips').hide()
-    this.$('#formatting_tips').slideDown()
-  },
-
   isValid: function(form){
     var valid = true
     form.find('input[type=text],textarea').each(function(){
@@ -242,10 +235,5 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
       element = element.parentsUntil('li')
     var url = element.find('input[name="url"][type=hidden]').val()
     window.location.href = url;
-    //CATARSE.requireLogin(event, url)
-  },
-
-  requireLogin: function(event) {
-    CATARSE.requireLogin(event)
   }
 })
