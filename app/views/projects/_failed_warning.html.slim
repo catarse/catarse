@@ -2,7 +2,8 @@ br
 #project_warning.bootstrap-alert
   .alert.alert-warning
     i Este projeto não atingiu a meta =/
-    = image_tag "dropdown.png", size: "16x10"
+    #toggle_warning
+      = link_to '(minimizar informações)', '#'
     #project_warning_text
       br/
       br/
