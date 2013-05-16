@@ -55,6 +55,13 @@ class ProjectsController < ApplicationController
       success.html{ return redirect_to project_by_slug_path(@project.permalink) }
     end
   end
+  
+  def update
+    update! do |success, failure|
+      success.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
+      failure.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }      
+    end
+  end
 
   def show
     begin
