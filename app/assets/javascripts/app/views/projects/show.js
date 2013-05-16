@@ -11,7 +11,7 @@ CATARSE.ProjectsShowView = Backbone.View.extend({
     CATARSE.router.route("reports", "reports", this.reports)
     CATARSE.router.route("comments", "comments", this.comments)
     CATARSE.router.route("embed", "embed", this.embed)
-    $('#project_warning a.toggle_warning').click(function() {
+    $('#project_warning .alert-warning #toggle_warning').click(function() {
       $('#project_warning_text').slideToggle(1000);
       return false;
     });
