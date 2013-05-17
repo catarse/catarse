@@ -20,3 +20,8 @@
             = link_to "http://www.facebook.com/share.php?u=#{project_by_slug_url(permalink: @project.permalink)}", :target => :_blank do
               = image_tag 'catarse/icon-fb.png', :title => 'Facebook'
       .clearfix
+
+
+
+= content_for :mouseflow do
+  = render 'layouts/mouseflow'
