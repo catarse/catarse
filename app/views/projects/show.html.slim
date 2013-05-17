@@ -76,13 +76,13 @@
               li
                 .bootstrap-twitter
                   .alert.alert-info
-                    p style='margin-bottom: 0; padding-bottom: 0;'
+                    p
                       = t('.reports.link_reports')
                       = link_to t('.reports.all_backers'), reports_backer_reports_for_project_owners_path(project_id: @project.id, format: :csv)
               li
                 .bootstrap-twitter
                   .alert.alert-info
-                    p style='margin-bottom: 0; padding-bottom: 0;'
+                    p
                       = t('.reports.link_reports')
                       = link_to t('.reports.all_backers_without_reward'), reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :csv)
               - if selected_r.length > 0
@@ -90,13 +90,13 @@
                     li
                       .bootstrap-twitter
                         .alert.alert-info
-                          p style='margin-bottom: 0; padding-bottom: 0;'
+                          p
                             = t('.reports.link_reward')
                             = link_to reward.display_minimum, reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :csv)
           #project_edit.content.hide
             .bootstrap-twitter
               .alert.alert-info
-                p style='margin-bottom: 0; padding-bottom: 0;'
+                p
                   = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{Configuration[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
             .bootstrap-form
               = semantic_form_for @project do |form|
@@ -292,11 +292,11 @@
                         = f.submit :class => 'btn'
 
                       .clearfix.bootstrap-twitter
-                        = link_to [@project, reward], class: 'btn btn-danger', style: 'margin-top: 20px;',method: :delete, confirm: 'You are sure?' do
+                        = link_to [@project, reward], class: 'btn btn-danger', method: :delete, confirm: 'Are you sure?' do
                           i.icon-trash.icon-white
                 - if can?(:update, reward)
                   .bootstrap-twitter
-                    = link_to "#reward#{reward.id}Editor", :class => 'edit_reward btn btn-mini pull-right btn-primary', :style =>'margin-right: -17px;' do
+                    = link_to "#reward#{reward.id}Editor", :class => 'edit_reward btn btn-mini pull-right btn-primary' do
                       i.icon-pencil.icon-white
 
 
