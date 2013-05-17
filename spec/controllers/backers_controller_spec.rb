@@ -8,7 +8,7 @@ describe BackersController do
   let(:format){ 'json' }
   before do
     ::Configuration[:base_url] = 'http://catarse.me'
-    controller.stubs(:current_user).returns(current_user)
+    controller.stub(:current_user).and_return(current_user)
     get :index, :user_id => backer.user.id, :locale => 'pt', :format => format
   end
 
@@ -35,6 +35,10 @@ describe BackersController do
     let(:failed_project){ FactoryGirl.create(:project, state: 'failed') }
     let(:backer){ FactoryGirl.create(:backer, state: 'confirmed', :user => user, :project => failed_project) }
     let(:user){ FactoryGirl.create(:user, password: 'current_password', password_confirmation: 'current_password', authorizations: [FactoryGirl.create(:authorization, uid: 666, oauth_provider: FactoryGirl.create(:oauth_provider, name: 'facebook'))]) }
+
+    before do
+      BackerObserver.any_instance.stub(:notify_backoffice)
+    end
 
     context "without user" do
       let(:current_user){ nil }

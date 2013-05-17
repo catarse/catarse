@@ -8,8 +8,8 @@ describe Channels::ChannelsSubscribersController do
   let(:current_user){ user }
 
   before do
-    request.stubs(:subdomain).returns(channel.permalink)
-    controller.stubs(:current_user).returns(current_user)
+    request.stub(:subdomain).and_return(channel.permalink)
+    controller.stub(:current_user).and_return(current_user)
   end
 
   describe "GET index" do

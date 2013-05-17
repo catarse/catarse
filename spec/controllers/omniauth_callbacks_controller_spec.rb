@@ -65,7 +65,7 @@ describe OmniauthCallbacksController do
       let(:user) { FactoryGirl.create(:user, name: 'Foo') }
       
       before do
-        controller.stubs(:current_user).returns(user)
+        controller.stub(:current_user).and_return(user)
         session[:return_to] = return_to
         request.env['omniauth.auth'] = oauth_data
         get :facebook        

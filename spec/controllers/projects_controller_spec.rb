@@ -2,8 +2,8 @@
 require 'spec_helper'
 
 describe ProjectsController do
-  before{ Notification.unstub(:create_notification) }
-  before{ controller.stubs(:current_user).returns(current_user) }
+  before{ Notification.rspec_reset }
+  before{ controller.stub(:current_user).and_return(current_user) }
   before{ ::Configuration[:base_url] = 'http://catarse.me' }
   render_views
   subject{ response }
@@ -53,7 +53,7 @@ describe ProjectsController do
 
   describe "GET index" do
     before do
-      controller.stubs(:last_tweets).returns([])
+      controller.stub(:last_tweets).and_return([])
       get :index, locale: :pt
     end
     it { should be_success }
@@ -104,7 +104,7 @@ describe ProjectsController do
         let(:project) { FactoryGirl.create(:project, state: 'online') }
 
         before do
-          controller.stubs(:current_user).returns(project.user)
+          controller.stub(:current_user).and_return(project.user)
         end
 
         context "when I try to update the project name and the about field" do

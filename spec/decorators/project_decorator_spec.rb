@@ -30,19 +30,19 @@ describe ProjectDecorator do
   describe "#display_progress" do
     subject{ project.display_progress }
     context "when progress is 0" do
-      before{ project.stubs(:progress).returns(0) }
+      before{ project.stub(:progress).and_return(0) }
       it{ should == 0 }
     end
     context "when progress is between 0 and 8" do
-      before{ project.stubs(:progress).returns(7) }
+      before{ project.stub(:progress).and_return(7) }
       it{ should == 8 }
     end
     context "when progress is between 8 and 100" do
-      before{ project.stubs(:progress).returns(70) }
+      before{ project.stub(:progress).and_return(70) }
       it{ should == 70 }
     end
     context "when progress is above 100" do
-      before{ project.stubs(:progress).returns(101) }
+      before{ project.stub(:progress).and_return(101) }
       it{ should == 100 }
     end
   end
@@ -51,33 +51,33 @@ describe ProjectDecorator do
     subject{ project.display_status }
     context "when online and reached goal" do
       before do
-        project.stubs(:state).returns('online')
-        project.stubs(:reached_goal?).returns(true)
+        project.stub(:state).and_return('online')
+        project.stub(:reached_goal?).and_return(true)
       end
       it{ should == 'reached_goal' }
     end
     context "when online and have not reached goal yet" do
       before do
-        project.stubs(:state).returns('online')
-        project.stubs(:reached_goal?).returns(false)
+        project.stub(:state).and_return('online')
+        project.stub(:reached_goal?).and_return(false)
       end
       it{ should == 'not_reached_goal' }
     end
     context "when failed" do
       before do
-        project.stubs(:state).returns('failed')
+        project.stub(:state).and_return('failed')
       end
       it{ should == 'failed' }
     end
     context "when successful" do
       before do
-        project.stubs(:state).returns('successful')
+        project.stub(:state).and_return('successful')
       end
       it{ should == 'successful' }
     end
     context "when waiting funds" do
       before do
-        project.stubs(:state).returns('waiting_funds')
+        project.stub(:state).and_return('waiting_funds')
       end
       it{ should == 'waiting_funds' }
     end

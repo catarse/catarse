@@ -6,7 +6,7 @@ describe Channels::ProfilesController do
 
   describe "GET show" do
     before do
-      request.stubs(:subdomain).returns(channel.permalink)
+      request.stub(:subdomain).and_return(channel.permalink)
       get :show, id: 'sample'
     end
 

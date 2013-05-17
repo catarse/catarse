@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UpdatesController do
   let(:update){ FactoryGirl.create(:update) }
   let(:current_user){ nil }
-  before{ controller.stubs(:current_user).returns(current_user) }
+  before{ controller.stub(:current_user).and_return(current_user) }
   subject{ response }
 
   describe "GET index" do
