@@ -43,8 +43,8 @@ describe UserDecorator do
       let(:user){ FactoryGirl.build(:user, :uploaded_image => 'image.png' )}
       before do
         image = stub(:url => 'image.png')
-        image.stubs(:thumb_avatar).returns(image)
-        user.stubs(:uploaded_image).returns(image)
+        image.stub(:thumb_avatar).and_return(image)
+        user.stub(:uploaded_image).and_return(image)
       end
       it{ should == 'image.png' }
     end

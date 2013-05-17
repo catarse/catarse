@@ -5,7 +5,7 @@ describe UsersController do
   render_views
   subject{ response }
   before do
-    controller.stubs(:current_user).returns(current_user)
+    controller.stub(:current_user).and_return(current_user)
   end
 
   let(:successful_project){ FactoryGirl.create(:project, state: 'successful') }

@@ -8,7 +8,7 @@ describe "Projects" do
   before {
     #NOTE: Weird bug on edit project test
     RoutingFilter.active = true
-    ProjectsController.any_instance.stubs(:last_tweets).returns([])
+    ProjectsController.any_instance.stub(:last_tweets).and_return([])
   }
   before {
     ::Configuration[:base_url] = 'http://catarse.me'

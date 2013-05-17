@@ -14,26 +14,26 @@ describe Update do
   end
 
   describe ".create" do
-    subject{ FactoryGirl.create(:update, :comment => "this is a comment\n") }
+    subject{ create(:update, :comment => "this is a comment\n") }
     its(:comment_html){ should == "<p>this is a comment</p>" }
   end
 
   describe "#email_comment_html" do
-    subject{ FactoryGirl.create(:update, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png").email_comment_html }
+    subject{ create(:update, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png").email_comment_html }
     it{ should == "<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img src=\"http://catarse.me/assets/catarse/logo164x54.png\" alt=\"\" style=\"max-width:513px\" /></p>" }
   end
 
   describe "#notify_backers" do
     before do
-      Notification.unstub(:create_notification)
-      FactoryGirl.create(:notification_type, :name => 'updates')
-      @project = FactoryGirl.create(:project)
-      backer = FactoryGirl.create(:backer, state: 'confirmed', :project => @project)
-      FactoryGirl.create(:backer, state: 'confirmed', :project => @project, :user => backer.user)
+      Notification.rspec_reset
+      create(:notification_type, :name => 'updates')
+      @project = create(:project)
+      backer = create(:backer, state: 'confirmed', :project => @project)
+      create(:backer, state: 'confirmed', :project => @project, :user => backer.user)
       @project.reload
       ActionMailer::Base.deliveries = []
       @update = Update.create!(:user => @project.user, :project => @project, :comment => "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
-      Notification.expects(:create_notification_once).with(:updates, backer.user,
+      Notification.should_receive(:create_notification_once).with(:updates, backer.user,
         {update_id: @update.id, user_id: backer.user.id},
         :project_name => backer.project.name,
         :project_owner => backer.project.user.display_name,

@@ -19,7 +19,7 @@ describe Adm::UsersController do
 
     context "when I'm logged as admin" do
       before do
-        controller.stubs(:current_user).returns(admin)
+        controller.stub(:current_user).and_return(admin)
         get :index, :locale => :pt
       end
       its(:status){ should == 200 }

@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # For heroku
 ruby '1.9.3'
 
-gem 'rails',    '3.2.12'
+gem 'rails',    '3.2.13'
 gem 'sidekiq',  '~> 2.7.5'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
 
@@ -37,7 +37,7 @@ gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 gem 'draper'
 
 # Frontend stuff
-gem 'slim-rails'
+gem 'slim-rails', '~> 1.1.1'
 gem 'jquery-rails'
 gem 'initjs'
 
@@ -74,7 +74,7 @@ gem 'validation_reflection',      git: 'git://github.com/ncri/validation_reflect
 gem 'inherited_resources',        '1.3.1'
 gem 'has_scope'
 gem 'spectator-validates_email',  require: 'validates_email'
-gem 'video_info'
+gem 'video_info', '~> 1.1.1'
 gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
 
@@ -126,7 +126,6 @@ end
 group :test do
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'mocha',      '~> 0.10.4'
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara',   '~> 2.0.2'

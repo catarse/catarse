@@ -11,7 +11,7 @@ describe Projects::BackersController do
   subject{ response }
 
   before do
-    controller.stubs(:current_user).returns(user)
+    controller.stub(:current_user).and_return(user)
   end
 
   describe "POST update_info" do
@@ -94,7 +94,7 @@ describe Projects::BackersController do
     let(:online){ true }
     before do
       ::Configuration[:secure_review_host] = secure_review_host
-      Project.any_instance.stubs(:online?).returns(online)
+      Project.any_instance.stub(:online?).and_return(online)
       get :new, {locale: :pt, project_id: project.id}
     end
 

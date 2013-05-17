@@ -18,7 +18,6 @@ Warden.test_mode!
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  config.mock_with :mocha
   config.include FactoryGirl::Syntax::Methods
   config.include ActionView::Helpers::TextHelper
 
@@ -53,34 +52,35 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    CatarseMailchimp::API.stubs(:subscribe).returns(true)
-    CatarseMailchimp::API.stubs(:unsubscribe).returns(true)    
+    CatarseMailchimp::API.stub(:subscribe).and_return(true)
+    CatarseMailchimp::API.stub(:unsubscribe).and_return(true)    
     PaperTrail.controller_info = {}
     PaperTrail.whodunnit = nil
     DatabaseCleaner.start
     ActionMailer::Base.deliveries.clear
-    Project.any_instance.stubs(:store_image_url).returns('http://www.store_image_url.com')
-    Project.any_instance.stubs(:download_video_thumbnail)
-    CatarseMailchimp::API.stubs(:subscribe)
-    CatarseMailchimp::API.stubs(:unsubscribe)
-    Notification.stubs(:create_notification)
-    Notification.stubs(:create_notification_once)
-    ProjectObserver.any_instance.stubs(:after_create)
-    Calendar.any_instance.stubs(:fetch_events_from)
-    Blog.stubs(:fetch_last_posts).returns([])
+    Project.any_instance.stub(:store_image_url).and_return('http://www.store_image_url.com')
+    Project.any_instance.stub(:download_video_thumbnail)
+    CatarseMailchimp::API.stub(:subscribe)
+    CatarseMailchimp::API.stub(:unsubscribe)
+    Notification.stub(:create_notification)
+    Notification.stub(:create_notification_once)
+    ProjectObserver.any_instance.stub(:after_create)
+    Calendar.any_instance.stub(:fetch_events_from)
+    Blog.stub(:fetch_last_posts).and_return([])
     [Projects::BackersController, ::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController].each do |c|
-      c.any_instance.stubs(:render_facebook_sdk)
-      c.any_instance.stubs(:render_facebook_like)
-      c.any_instance.stubs(:render_twitter)
+      c.any_instance.stub(:render_facebook_sdk)
+      c.any_instance.stub(:render_facebook_like)
+      c.any_instance.stub(:render_twitter)
     end
     DatabaseCleaner.clean
     RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
     Configuration[:base_domain] = 'localhost'
+    ::Configuration['email_contact'] = 'foo@bar.com'
   end
 
   def mock_tumblr method=:two
     require "#{Rails.root}/spec/fixtures/tumblr_data" # just a fixture
-    Tumblr::Post.stubs(:all).returns(TumblrData.send(method))
+    Tumblr::Post.stub(:all).and_return(TumblrData.send(method))
   end
 end
 

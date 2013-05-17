@@ -11,7 +11,7 @@ describe Adm::BackersController do
     subject { backer.confirmed? }
 
     before { 
-      controller.stubs(:current_user).returns(admin)
+      controller.stub(:current_user).and_return(admin)
       put :confirm, id: backer.id, locale: :pt 
     }
 
@@ -26,7 +26,7 @@ describe Adm::BackersController do
     subject { backer.refunded? }
 
     before { 
-      controller.stubs(:current_user).returns(admin)
+      controller.stub(:current_user).and_return(admin)
       put :refund, id: backer.id, locale: :pt 
     }
 
@@ -41,7 +41,7 @@ describe Adm::BackersController do
     subject { backer.confirmed? }
 
     before { 
-      controller.stubs(:current_user).returns(admin)
+      controller.stub(:current_user).and_return(admin)
       put :unconfirm, id: backer.id, locale: :pt 
     }
 
@@ -61,7 +61,7 @@ describe Adm::BackersController do
 
     context "when I'm logged as admin" do
       before do
-        controller.stubs(:current_user).returns(admin)
+        controller.stub(:current_user).and_return(admin)
         get :index, :locale => :pt
       end
       its(:status){ should == 200 }
