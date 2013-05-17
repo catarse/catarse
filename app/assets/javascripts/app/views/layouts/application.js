@@ -8,7 +8,6 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
 
   events: {
     "submit .search": "search",
-    "hidden #myModal": "removeBackdrop",
     "click a.my_profile_link":"currentUserDropDown",
     "focus .form_login.bootstrap-form input":"markLoginForm",
     "focus .form_register.bootstrap-form input":"markRegisterForm",
@@ -28,17 +27,6 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
       $('.bootstrap-form').removeClass('actived');
       rootElement.addClass('actived');
     }
-  },
-
-  showModal: function(event) {
-    target = $(event.target).attr('data-target')
-    url = $(event.target).attr('href')
-    $(target).load(url)
-    $(target).show()
-  },
-
-  removeBackdrop: function(event) {
-    this.$('.modal-backdrop').remove();
   },
 
   search: function(event) {
