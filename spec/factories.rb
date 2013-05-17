@@ -62,7 +62,7 @@ FactoryGirl.define do
 
   factory :reward do |f|
     f.association :project, :factory => :project
-    f.minimum_value 1.00
+    f.minimum_value 10.00
     f.description "Foo bar"
   end
 
@@ -119,6 +119,6 @@ FactoryGirl.define do
     description "Lorem Ipsum"
     sequence(:permalink) { |n| "#{n}-test-page" }
   end
-  
+
 end
 
