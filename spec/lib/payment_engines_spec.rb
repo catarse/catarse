@@ -23,6 +23,11 @@ describe PaymentEngines do
     it{ should be_empty }
   end
 
+  describe ".configuration" do
+    subject{ PaymentEngines.configuration }
+    it{ should == ::Configuration }
+  end
+
   describe ".create_payment_notification" do
     subject{ PaymentEngines.create_payment_notification({ backer_id: backer.id, extra_data: { test: true } }) }
     it{ should == PaymentNotification.where(backer_id: backer.id).first }

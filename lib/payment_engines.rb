@@ -16,6 +16,10 @@ class PaymentEngines
     PaymentNotification.create! attributes
   end
 
+  def self.configuration
+    ::Configuration
+  end
+
   def self.find_payment filter
     Backer.where(filter).first
   end
