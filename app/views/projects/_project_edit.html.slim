@@ -1,0 +1,49 @@
+.bootstrap-twitter
+  .alert.alert-info
+    p
+      = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{Configuration[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
+.bootstrap-form
+  = semantic_form_for @project do |form|
+    = form.inputs do
+      - if current_user.admin
+        = form.input :expires_at, as: :string
+        = form.input :user_id
+        = form.input :permalink, as: :string
+      - if can? :update, @project, :name
+        = form.input :name, as: :string, required: false
+      - if can? :update, @project, :headline
+        = form.input :headline, as: :string, required: false
+      - if can? :update, @project, :category
+        = form.input :category, as: :select, required: false
+      - if can? :update, @project, :video_url
+        = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
+      - if can? :update, @project, :uploaded_image
+        = form.input :uploaded_image, as: :file, required: false
+      - if can? :update, @project, :online_days
+        = form.input :online_days, as: :number, required: false
+      - if can? :update, @project, :goal
+        = form.input :goal, as: :number, required: false
+      - if can? :update, @project, :about
+        = form.input :about, required: false
+        .tips
+          h3 Dicas de Formatação
+          = image_tag "catarse/icon_media.png"
+          p Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!
+          = image_tag "catarse/icon_url.png"
+          p Ao colar uma url qualquer, ela virará um link. Por exemplo, http://meulink.com virará <a href="http://www.meulink.com.br">http://www.meulink.com.br</a>
+          = image_tag "catarse/icon_linktext.png"
+          p Se você quiser colocar um texto no link, basta usar o seguinte formato: "texto que você quer":http://sua.url. Por exemplo, 'meu link':http://meulink.com virará <a href="http://www.meulink.com.br">meu link</a>.
+          = image_tag "catarse/icon_bold.png"
+          p
+            |Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como
+            strong meu texto em negrito
+            |.
+          = image_tag "catarse/icon_italic.png"
+          p
+            |Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como
+            i meu texto em itálico
+            |.
+
+      .clearfix
+      .form-actions.bootstrap-twitter
+        = form.submit class: 'btn'

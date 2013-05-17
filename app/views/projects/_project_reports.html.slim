@@ -1,0 +1,22 @@
+- selected_r = @project.selected_rewards
+ul
+  li
+    .bootstrap-twitter
+      .alert.alert-info
+        p
+          = t('projects.show.reports.link_reports')
+          = link_to t('projects.show.reports.all_backers'), reports_backer_reports_for_project_owners_path(project_id: @project.id, format: :csv)
+  li
+    .bootstrap-twitter
+      .alert.alert-info
+        p
+          = t('projects.show.reports.link_reports')
+          = link_to t('projects.show.reports.all_backers_without_reward'), reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :csv)
+  - if selected_r.length > 0
+      - selected_r.each do |reward|
+        li
+          .bootstrap-twitter
+            .alert.alert-info
+              p
+                = t('projects.show.reports.link_reward')
+                = link_to reward.display_minimum, reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :csv)

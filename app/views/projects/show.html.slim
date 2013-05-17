@@ -70,138 +70,15 @@
     .main
       #project_content
         - if can? :update, @project
-          #project_reports.content.hide
-            - selected_r = @project.selected_rewards
-            ul
-              li
-                .bootstrap-twitter
-                  .alert.alert-info
-                    p
-                      = t('.reports.link_reports')
-                      = link_to t('.reports.all_backers'), reports_backer_reports_for_project_owners_path(project_id: @project.id, format: :csv)
-              li
-                .bootstrap-twitter
-                  .alert.alert-info
-                    p
-                      = t('.reports.link_reports')
-                      = link_to t('.reports.all_backers_without_reward'), reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :csv)
-              - if selected_r.length > 0
-                  - selected_r.each do |reward|
-                    li
-                      .bootstrap-twitter
-                        .alert.alert-info
-                          p
-                            = t('.reports.link_reward')
-                            = link_to reward.display_minimum, reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :csv)
-          #project_edit.content.hide
-            .bootstrap-twitter
-              .alert.alert-info
-                p
-                  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{Configuration[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
-            .bootstrap-form
-              = semantic_form_for @project do |form|
-                = form.inputs do
-                  - if current_user.admin
-                    = form.input :expires_at, as: :string
-                    = form.input :user_id
-                    = form.input :permalink, as: :string
-                  - if can? :update, @project, :name
-                    = form.input :name, as: :string, required: false
-                  - if can? :update, @project, :headline
-                    = form.input :headline, as: :string, required: false
-                  - if can? :update, @project, :category
-                    = form.input :category, as: :select, required: false
-                  - if can? :update, @project, :video_url
-                    = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
-                  - if can? :update, @project, :uploaded_image
-                    = form.input :uploaded_image, as: :file, required: false
-                  - if can? :update, @project, :online_days
-                    = form.input :online_days, as: :number, required: false
-                  - if can? :update, @project, :goal
-                    = form.input :goal, as: :number, required: false
-                  - if can? :update, @project, :about
-                    = form.input :about, required: false
-                    .tips
-                      h3 Dicas de Formatação
-                      = image_tag "catarse/icon_media.png"
-                      p Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!
-                      = image_tag "catarse/icon_url.png"
-                      p Ao colar uma url qualquer, ela virará um link. Por exemplo, http://meulink.com virará <a href="http://www.meulink.com.br">http://www.meulink.com.br</a>
-                      = image_tag "catarse/icon_linktext.png"
-                      p Se você quiser colocar um texto no link, basta usar o seguinte formato: "texto que você quer":http://sua.url. Por exemplo, 'meu link':http://meulink.com virará <a href="http://www.meulink.com.br">meu link</a>.
-                      = image_tag "catarse/icon_bold.png"
-                      p
-                        |Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como
-                        strong meu texto em negrito
-                        |.
-                      = image_tag "catarse/icon_italic.png"
-                      p
-                        |Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como
-                        i meu texto em itálico
-                        |.
+          #project_reports.content.hide= render 'project_reports'
+          #project_edit.content.hide= render 'project_edit'
 
-                  .clearfix
-                  .form-actions.bootstrap-twitter
-                    = form.submit class: 'btn'
-        #project_updates.content.hide
-          - if can? :update, @project
-            .bootstrap-form
-              = semantic_form_for [@project, Update.new(:user_id => current_user.id)] do |form|
-                = form.inputs do
-                  = form.input :title, as: :string, label: t('projects.project_updates.title')
-                  = form.input :comment, as: :text, label: t('projects.project_updates.comment'), input_html: {rows: 10}
-                  .bootstrap-twitter
-                    .alert.alert-info
-                      p Lembrando que todo post de novidade vai diretamente para o email de seus apoiadores.
-                      | Por isso, revise bem seu texto antes de enviá-lo.
-                  .tips
-                    h3 Dicas de Formatação
-                    = image_tag "catarse/icon_media.png"
-                    p Se você colar a url de uma imagem ou de um vídeo do vimeo ou do youtube, eles irão aparecer na descrição da ideia. experimente!
-                    = image_tag "catarse/icon_url.png"
-                    p Ao colar uma url qualquer, ela virará um link. Por exemplo, http://meulink.com virará <a href="http://www.meulink.com.br">http://www.meulink.com.br</a>
-                    = image_tag "catarse/icon_linktext.png"
-                    p Se você quiser colocar um texto no link, basta usar o seguinte formato: "texto que você quer":http://sua.url. Por exemplo, 'meu link':http://meulink.com virará <a href="http://www.meulink.com.br">meu link</a>.
-                    = image_tag "catarse/icon_bold.png"
-                    p
-                      |Você pode usar negrito adicionando dois asteriscos (**) antes e depois do texto que você quer formatar. Por exemplo, **meu texto em negrito** irá aparecer como
-                      strong meu texto em negrito
-                      |.
-                    = image_tag "catarse/icon_italic.png"
-                    p
-                      |Você pode usar itálico adicionando um underline (_) antes e depois do texto que você quer formatar. Por exemplo, _meu texto em itálico_ irá aparecer como
-                      i meu texto em itálico
-                      |.
-                = form.actions do
-                  .bootstrap-twitter
-                    = form.submit t('projects.project_updates.submit'), class: "btn", id: "update_submit"
-                    .loading_updates.hide= image_tag "loading.gif"
-
-          .updates_wrapper
-            = render :template => 'updates/index'
+        #project_updates.content.hide= render 'project_updates'
         .media_content_backers
           #project_backers.content.hide
-        #project_comments.content.hide= render :partial => 'comments'
-        #project_about.content
-          .midia
-            .video
-              iframe src="#{@project.video_embed_url}" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
-            .social
-              #project_share
-                #facebook_share= render_facebook_like href: project_by_slug_url(@project.permalink, locale: I18n.locale)
-                ul
-                  li.embed
-                    = link_to '#embed', :id => 'embed_link' do
-                      = image_tag "catarse/embed_icon19x9.png", :title => t('.share.embed_title')
-                      = t('.share.embed')
-                #twitter_share= render_twitter
-                .clear
-          .text
-            .flag
-            h5= t('.about_title')
-            .clearfix
-            p
-              = @project.about_html.html_safe
+        #project_comments.content.hide= render 'comments'
+        #project_about.content= render 'project_about'
+
         .clearfix
         #loading= image_tag "loading.gif"
       .clearfix
@@ -274,65 +151,7 @@
                 = f.input :description
                 = f.input :maximum_backers
                 = f.submit :class => 'btn'
-        #rewards
-          - @rewards.each do |reward|
+        #rewards= render 'project_rewards'
 
-            div[id="reward_#{reward.id}" data-update_url="#{sort_project_reward_path(@project, reward)}" class="box #{(can?(:update, reward) ? 'clickable_owner sortable' : '')} #{(@project.online? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
-              - if can?(:update, @project)
-                .hide id="reward#{reward.id}Editor"
-                  .bootstrap-form
-                    = semantic_form_for [@project, reward] do |f|
-                      - if can? :update, reward, :minimum_value
-                        = f.input :minimum_value
-                      - if can? :update, reward, :description
-                        = f.input :description
-                      - if can? :update, reward, :maximum_backers
-                        = f.input :maximum_backers
-                      .bootstrap-twitter
-                        = f.submit :class => 'btn'
-
-                      .clearfix.bootstrap-twitter
-                        = link_to [@project, reward], class: 'btn btn-danger', method: :delete, confirm: 'Are you sure?' do
-                          i.icon-trash.icon-white
-                - if can?(:update, reward)
-                  .bootstrap-twitter
-                    = link_to "#reward#{reward.id}Editor", :class => 'edit_reward btn btn-mini pull-right btn-primary' do
-                      i.icon-pencil.icon-white
-
-
-              = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
-              - if reward.sold_out?
-                span.icon.sold_out
-              - else
-                span.icon.avaliable
-              h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum).html_safe
-              em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
-              .clearfix
-              p
-                = reward.display_description
-              - if reward.maximum_backers
-                .maximum_backers.clearfix
-                  - if reward.sold_out?
-                    .sold_out= t('reward.sold_out')
-                  - else
-                    .limited= t('reward.limited')
-                    .remaining
-                      = reward.display_remaining
-                - in_time_to_confirm = reward.backers.in_time_to_confirm.count
-                - if in_time_to_confirm > 0
-                  .maximum_backers.in_time_to_confirm.clearfix
-                    .pending= t('backs_to_confirm', count: in_time_to_confirm)
-                .clearfix
-              - if current_user && current_user.admin
-                div class="reward_updated_at"
-                  p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{@project.online_date.nil? ? '' : ((@project.online_date > reward.updated_at)? '(draft)' : '(online)')}"
-                - if reward.has_modification?
-                  div class="description_version rewardVersioning#{reward.id}"
-                    p= reward.last_description
-                  .maximum_backers.in_time_to_confirm.clearfix
-                    .updated_reward
-                      span id="rewardVersioning#{reward.id}"
-                        = 'Veja a versão anterior.'
-          .clearfix
     .clearfix
 = render 'show_embed'
