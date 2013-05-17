@@ -23,14 +23,14 @@ describe PaymentEngines do
     it{ should be_empty }
   end
 
-  describe ".find_payment" do
-    before do
-      PaymentEngines.find_payment({ id: backer.id })
-    end
+  describe ".create_payment_notification" do
+    subject{ PaymentEngines.create_payment_notification({ backer_id: backer.id, extra_data: { test: true } }) }
+    it{ should == PaymentNotification.where(backer_id: backer.id).first }
+  end
 
-    it "it should assign backer to self.backer" do
-      PaymentEngines.backer.should == backer
-    end
+  describe ".find_payment" do
+    subject{ PaymentEngines.find_payment({ id: backer.id }) }
+    it{ should == backer }
   end
 
   describe ".engines" do
