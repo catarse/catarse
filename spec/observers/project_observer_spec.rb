@@ -29,7 +29,6 @@ describe ProjectObserver do
 
   describe "after_create" do
     before do
-      ProjectObserver.any_instance.rspec_reset
       ::Configuration[:facebook_url] = 'http://facebook.com'
       ::Configuration[:blog_url] = 'http://blog.com'
       ::Configuration[:company_name] = 'Catarse'
@@ -39,13 +38,11 @@ describe ProjectObserver do
     let(:user) { create(:user, email: ::Configuration[:email_projects])}
 
     it "should create notification for catarse admin" do
-      #FIXME
-      #Notification.where(user_id: user.id, notification_type_id: new_draft_project.id, project_id: project.id).first.should_not be_nil
+      Notification.where(user_id: user.id, notification_type_id: new_draft_project.id, project_id: project.id).first.should_not be_nil
     end
 
     it "should create notification for project owner" do
-      #FIXME
-      #Notification.where(user_id: project.user.id, notification_type_id: project_received.id, project_id: project.id).first.should_not be_nil
+      Notification.where(user_id: project.user.id, notification_type_id: project_received.id, project_id: project.id).first.should_not be_nil
     end
   end
 
