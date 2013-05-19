@@ -509,14 +509,13 @@ describe Project do
   describe "#download_video_thumbnail" do
     let(:project){ build(:project) }
     before do
-      #Project.any_instance.rspec_reset
-      #Project.any_instance.should_receive(:open).with(project.video.thumbnail_large).and_return(File.open("#{Rails.root}/spec/fixtures/image.png"))
-      #project.save!
+      project.should_receive(:download_video_thumbnail).and_call_original
+      project.should_receive(:open).and_return(File.open("#{Rails.root}/spec/fixtures/image.png"))
+      project.save!
     end
 
     it "should open the video_url and store it in video_thumbnail" do
-      # FIXME
-      #project.video_thumbnail.url.should == "/uploads/project/video_thumbnail/#{project.id}/image.png"
+      project.video_thumbnail.url.should == "/uploads/project/video_thumbnail/#{project.id}/image.png"
     end
 
   end
