@@ -29,6 +29,7 @@ describe ProjectObserver do
 
   describe "after_create" do
     before do
+      ProjectObserver.any_instance.should_receive(:after_create).and_call_original
       ::Configuration[:facebook_url] = 'http://facebook.com'
       ::Configuration[:blog_url] = 'http://blog.com'
       ::Configuration[:company_name] = 'Catarse'
