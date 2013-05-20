@@ -9,12 +9,12 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_moip.git
-  revision: 5331de9d717cab78c18b40703f45f6c1be4c9704
-  ref: 5331de9
+  revision: 96e1b4788dab4aa32728f97b685864c082e24f75
+  ref: 96e1b47
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.3.3)
-      rails (~> 3.2.6)
+      rails (~> 3.2.13)
 
 GIT
   remote: git://github.com/catarse/catarse_paypal_express.git
