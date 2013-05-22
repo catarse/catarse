@@ -15,17 +15,17 @@ class ProjectsController < ApplicationController
         @title = t("site.title")
         collection_projects = Project.recommended_for_home
         unless collection_projects.empty?
-          if current_user and current_user.recommended_project
-            @recommended_project  ||= current_user.recommended_project
+          if current_user and current_user.recommended_projects
+            @recommended_projects  ||= current_user.recommended_projects
             collection_projects   ||= collection_projects.where("id != ? AND category_id != ?",
-                                                                current_user.recommended_project.id,
-                                                                @recommended_project.category_id)
+                                                                current_user.recommended_projects.last.id,
+                                                                @recommended_projects.last.category_id)
           end
           @first_project, @second_project, @third_project, @fourth_project = collection_projects.all
         end
 
         project_ids = collection_projects.map{|p| p.id }
-        project_ids << @recommended_project.id if @recommended_project
+        project_ids << @recommended_projects.last.id if @recommended_projects
 
         @expiring = Project.expiring_for_home(project_ids)
         @recent   = Project.recent_for_home(project_ids)
@@ -55,11 +55,11 @@ class ProjectsController < ApplicationController
       success.html{ return redirect_to project_by_slug_path(@project.permalink) }
     end
   end
-  
+
   def update
     update! do |success, failure|
       success.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
-      failure.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }      
+      failure.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
     end
   end
 

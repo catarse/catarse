@@ -10,8 +10,8 @@
               span = t('.guidelines_subtitle')
   .project_info
     - if current_user
-      - if @recommended_project
-        = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.suggest_for_you'), :project => @recommended_project} if @recommended_project
+      - if @recommended_projects
+        = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.suggest_for_you'), :project => @recommended_projects.last} if @recommended_projects
       - else
         = render :partial => "project_header", :locals => {:title => t('projects.recommended_header.highlight_project'), :project => @fourth_project} if @fourth_project
     - else
