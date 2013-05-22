@@ -167,17 +167,17 @@ describe User do
     its(:name){ should == auth['info']['name'] }
     its(:nickname){ should == auth['info']['nickname'] }
     its(:bio){ should == auth['info']['description'][0..139] }
-    
+
     describe "when user is merging your facebook account" do
       let(:user) { FactoryGirl.create(:user, provider: nil, name: 'Test', email: 'test@test.com') }
       let(:created_user){ User.create_with_omniauth(auth, user) }
 
       subject { created_user }
-      
+
       its(:email) { should == 'test@test.com' }
       it { subject.authorizations.first.uid.should == auth['uid'] }
     end
-    
+
     describe "created user's authorizations" do
       subject{ created_user.authorizations.first }
       its(:uid){ should == auth['uid'] }
@@ -237,7 +237,7 @@ describe User do
   end
 
   describe "#recommended_project" do
-    subject{user.recommended_project}
+    subject{user.recommended_projects}
     before do
       user2, p1, @p2, @p3 = FactoryGirl.create(:user),FactoryGirl.create(:project), FactoryGirl.create(:project, state: :online), FactoryGirl.create(:project, state: :draft)
       FactoryGirl.create(:backer, :state => 'confirmed', :user => user2, :project => p1)
@@ -245,7 +245,7 @@ describe User do
       FactoryGirl.create(:backer, :state => 'confirmed', :user => user2, :project => @p3)
       FactoryGirl.create(:backer, :state => 'confirmed', :user => user, :project => p1)
     end
-    it{ should == @p2}
+    it{ should == [@p2]}
   end
 
   describe "#updates_subscription" do
@@ -296,7 +296,7 @@ describe User do
       it{ should == nil }
     end
   end
-  
+
   describe "#trustee?" do
     let(:user) { FactoryGirl.create(:user) }
 

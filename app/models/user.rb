@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_backs,
     :to => :decorator
-
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
     :password,
@@ -87,37 +86,37 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
 
-  scope :backers, -> { 
+  scope :backers, -> {
     where("id IN (
-      SELECT DISTINCT user_id 
-      FROM backers 
+      SELECT DISTINCT user_id
+      FROM backers
       WHERE state <> ALL(ARRAY['pending'::character varying::text, 'canceled'::character varying::text]))")
   }
 
-  scope :who_backed_project, ->(project_id) { 
-    where("id IN (SELECT user_id FROM backers WHERE state = 'confirmed' AND project_id = ?)", project_id) 
+  scope :who_backed_project, ->(project_id) {
+    where("id IN (SELECT user_id FROM backers WHERE state = 'confirmed' AND project_id = ?)", project_id)
   }
 
   scope :subscribed_to_updates, -> {
      where("id NOT IN (
-       SELECT user_id 
-       FROM unsubscribes 
-       WHERE project_id IS NULL 
+       SELECT user_id
+       FROM unsubscribes
+       WHERE project_id IS NULL
        AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
    }
 
-  scope :subscribed_to_project, ->(project_id) { 
+  scope :subscribed_to_project, ->(project_id) {
     who_backed_project(project_id).
-    where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id) 
+    where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id)
   }
 
   scope :by_email, ->(email){ where('email ~* ?', email) }
-  scope :by_payer_email, ->(email) { 
+  scope :by_payer_email, ->(email) {
     where('EXISTS(
-      SELECT true 
-      FROM backers 
-      JOIN payment_notifications ON backers.id = payment_notifications.backer_id 
-      WHERE backers.user_id = users.id AND payment_notifications.extra_data ~* ?)', email) 
+      SELECT true
+      FROM backers
+      JOIN payment_notifications ON backers.id = payment_notifications.backer_id
+      WHERE backers.user_id = users.id AND payment_notifications.extra_data ~* ?)', email)
   }
   scope :by_name, ->(name){ where('name ~* ?', name) }
   scope :by_id, ->(id){ where('users.id = ?', id) }
@@ -130,17 +129,17 @@ class User < ActiveRecord::Base
       self.scoped.
       joins(:user_total).
       select('
-        count(DISTINCT user_id) as users, 
-        count(*) as backers, 
-        sum(user_totals.sum) as backed, 
+        count(DISTINCT user_id) as users,
+        count(*) as backers,
+        sum(user_totals.sum) as backed,
         sum(user_totals.credits) as credits').
       to_sql
     ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
   end
-  
+
   def has_facebook_authentication?
     oauth = OauthProvider.find_by_name 'facebook'
-    authorizations.where(oauth_provider_id: oauth.id).present?  
+    authorizations.where(oauth_provider_id: oauth.id).present?
   end
 
   def decorator
@@ -155,11 +154,11 @@ class User < ActiveRecord::Base
     admin
   end
 
-  # NOTE: Checking if the user has CHANNELS 
+  # NOTE: Checking if the user has CHANNELS
   # If the user has some channels, this method returns TRUE
   # Otherwise, it's FALSE
   def trustee?
-    !self.channels.size.zero? 
+    !self.channels.size.zero?
   end
 
   def credits
@@ -188,31 +187,33 @@ class User < ActiveRecord::Base
         user.bio = (auth["info"]["description"][0..139] rescue nil)
         user.locale = I18n.locale.to_s
         user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large" if auth["provider"] == "facebook"
-      end    
+      end
     end
     provider = OauthProvider.where(name: auth['provider']).first
     u.authorizations.create! uid: auth['uid'], oauth_provider_id: provider.id if provider
     u
   end
 
-  def recommended_project
+  def recommended_projects(quantity = 1)
     # It returns the project that have the biggest amount of backers
     # that contributed to the last project the user contributed that has common backers.
     backs.includes(:project).confirmed.order('confirmed_at DESC').each do |back|
       project = ActiveRecord::Base.connection.execute("
-        SELECT count(*), project_id 
-        FROM backers b 
-        JOIN projects p ON b.project_id = p.id 
-        WHERE 
-          p.expires_at > current_timestamp AND 
-          p.id NOT IN (SELECT project_id 
-                        FROM backers WHERE state='confirmed' AND user_id = #{id}) AND 
-          b.user_id in (SELECT user_id 
-                        FROM backers WHERE state='confirmed' AND project_id = #{back.project.id.to_i}) AND 
-          p.state = 'online' GROUP BY 2 ORDER BY 1 DESC LIMIT 1")
-      return Project.find(project[0]["project_id"]) unless project.count == 0
+        SELECT count(*), project_id
+        FROM backers b
+        JOIN projects p ON b.project_id = p.id
+        WHERE
+          p.expires_at > current_timestamp AND
+          p.id NOT IN (SELECT project_id
+                        FROM backers WHERE state='confirmed' AND user_id = #{id}) AND
+          b.user_id in (SELECT user_id
+                        FROM backers WHERE state='confirmed' AND project_id = #{back.project.id.to_i}) AND
+          p.state = 'online' GROUP BY 2 ORDER BY 1 DESC LIMIT #{quantity}")
+      project_ids = Array.new
+      project.values.each {|x| project_ids << x[1]}
+      return Project.find(project_ids) unless project.count == 0
     end
-    nil
+    Project.visible.online.where(category_id: backs.confirmed.last.project.category.id).last(quantity) unless backs.confirmed.count == 0
   end
 
   def total_backs

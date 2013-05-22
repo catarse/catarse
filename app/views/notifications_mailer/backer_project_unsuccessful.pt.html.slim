@@ -8,7 +8,17 @@ br
 |Em função disto, você recebeu #{backer.display_value} em créditos para apoiar outros projetos. Você pode conhecer mais projetos de #{backer.project.category} em #{link_to("#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}", "#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}")}
 br
 br
-|Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}. 
+|Abaixo selecionamos algumas sugestões de projetos especialmente para você:
+br
+-backer.user.recommended_projects(3).each do |project|
+  |#{link_to(project.name, "#{Configuration[:base_url]}/projects/#{project.to_param}")}
+  br
+  |#{project.headline}
+  br
+  br
+br
+br
+|Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}.
 br
 br
 |Chave do apoio: #{backer.key}

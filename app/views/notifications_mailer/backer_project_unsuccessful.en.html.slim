@@ -8,6 +8,16 @@ br
 |Due to this, you received #{backer.display_value} in credits to back other projects. You can explore more #{backer.project.category} projects in #{link_to("#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}", "#{Configuration[:base_url]}/explore##{backer.project.category.to_s.parameterize}")}
 br
 br
+|We selected some projects suggestions specially for you:
+br
+-backer.user.recommended_projects(3).each do |project|
+  |#{link_to(project.name, "#{Configuration[:base_url]}/projects/#{project.to_param}")}
+  br
+  |#{project.headline}
+  br
+  br
+br
+br
 |If you prefer, you can ask for a refund of your money by clicking on #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}. It's through it that you must access your account. If you have any trouble in this process, send an email to #{mail_to Configuration[:email_payments]} with the subject “Reembolso - problema no login”.
 br
 br
