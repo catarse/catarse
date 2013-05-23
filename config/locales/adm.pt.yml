@@ -79,7 +79,9 @@ pt:
           unconfirm: 'Apoio desconfirmado com sucesso!'
           refund: 'Apoio estornado com sucesso!'
           change_reward: 'Recompensa modificada com sucesso!'
+          hide: 'Apoio escondido com sucesso!'
       index:
+        refund_and_hide: 'Fazer estorno e não exibir apoio.'
         backer_info: 'Informações do backer %{key}'
         payment_id: 'ID do pagamento'
         payment_method: 'Meio de pagamento'

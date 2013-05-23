@@ -147,6 +147,7 @@
                           li= link_to t('adm.backers.index.unconfirm_backer'), unconfirm_adm_backer_path(backer), method: :put
                         - else
                           li= link_to t('adm.backers.index.confirm_backer'), confirm_adm_backer_path(backer), method: :put
+                        li= link_to t('adm.backers.index.refund_and_hide'), hide_adm_backer_path(backer), method: :put
                         - if backer.requested_refund? or backer.confirmed?
                           li= link_to t('adm.backers.index.refund_backer'), refund_adm_backer_path(backer), method: :put
       = paginate @backers
