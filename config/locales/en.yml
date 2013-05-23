@@ -195,6 +195,7 @@ en:
       user_name: 'User name'
       user_email: 'User email'
       payer_email: 'Payment email'
+      payer_name: 'User name used on payment'
       project: 'Project'
       backer_key: 'Backer key'
       payment_id: 'Payment ID'
