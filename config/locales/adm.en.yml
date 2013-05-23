@@ -37,6 +37,7 @@ en:
         provider: Provider
     backers:
       index:
+        refund_and_hide: 'Refund and hide'
         backer_info: 'Info of backer %{key}'
         payment_id: 'Payment ID'
         payment_method: 'Payment method'

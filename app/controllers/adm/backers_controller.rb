@@ -21,10 +21,16 @@ class Adm::BackersController < Adm::BaseController
     flash[:notice] = I18n.t('adm.backers.messages.successful.unconfirm')
     redirect_to adm_backers_path
   end
-  
+
   def refund
     resource.refund
     flash[:notice] = I18n.t('adm.backers.messages.successful.refund')
+    redirect_to adm_backers_path
+  end
+
+  def hide
+    resource.hide
+    flash[:notice] = I18n.t('adm.backers.messages.successful.hide')
     redirect_to adm_backers_path
   end
 

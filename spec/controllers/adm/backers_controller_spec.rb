@@ -20,7 +20,22 @@ describe Adm::BackersController do
       should be_true
     }
   end
-  
+
+  describe 'PUT hide' do
+    let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
+    subject { backer.refunded_when_project_is_not_finished? }
+
+    before {
+      controller.stub(:current_user).and_return(admin)
+      put :hide, id: backer.id, locale: :pt
+    }
+
+    it {
+      backer.reload
+      should be_true
+    }
+  end
+
   describe 'PUT refund' do
     let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
     subject { backer.refunded? }
