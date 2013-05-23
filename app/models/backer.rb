@@ -25,6 +25,8 @@ class Backer < ActiveRecord::Base
   scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
   scope :pending_to_refund, ->() { where(state: 'requested_refund') }
 
+  scope :avaiable_to_count, ->() { where("state ~* '(confirmed|requested_refund|refunded)'") }
+
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
     where(%Q{
