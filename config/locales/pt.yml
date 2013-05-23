@@ -205,6 +205,7 @@ pt:
       user_name: 'Usúario'
       user_email: 'E-mail do usuário'
       payer_email: 'E-mail usado no meio de pagamento'
+      payer_name: 'Nome usado no meio de pagamento'
       project: 'Projeto'
       backer_key: 'Chave do apoio'
       payment_id: 'ID do meio de pagamento'
