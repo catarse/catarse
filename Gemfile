@@ -27,7 +27,7 @@ gem 'schema_associations'
 gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '19470d1'
 
 # Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '96e1b47'
+gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '1313bce'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
 # TODO: Check the Catarse_Moip dependency
