@@ -200,9 +200,9 @@ class Project < ActiveRecord::Base
   def download_video_thumbnail
     self.video_thumbnail = open(self.video.thumbnail_large) if self.video_url
   rescue OpenURI::HTTPError => e
-    ::Airbrake.notify({ :error_class => "Video thumbnail download", :error_message => "Video thumbnail download: #{e.inspect}", :parameters => video_url}) rescue nil
+    Rails.logger.info "-----> #{e.inspect}"
   rescue TypeError => e
-    ::Airbrake.notify({ :error_class => "Carrierwave does not like thumbnail file", :error_message => "Carrierwave does not like thumbnail file: #{e.inspect}", :parameters => video_url}) rescue nil
+    Rails.logger.info "-----> #{e.inspect}"
   end
 
   def as_json(options={})
