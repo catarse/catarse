@@ -44,7 +44,7 @@
       - in_time_to_confirm = reward.backers.in_time_to_confirm.count
       - if in_time_to_confirm > 0
         .maximum_backers.in_time_to_confirm.clearfix
-          .pending= t('projects.show.backs_to_confirm', count: in_time_to_confirm)
+          .pending= t('.backs_to_confirm', count: in_time_to_confirm)
       .clearfix
     - if current_user && current_user.admin
       div class="reward_updated_at"
