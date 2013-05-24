@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
                         unsubscribe_email: ->(user) { user.email }
 
   rescue Exception => e
-    Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
     Rails.logger.info "-----> #{e.inspect}"
   end
 

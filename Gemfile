@@ -24,7 +24,7 @@ gem 'schema_plus'
 gem 'schema_associations'
 
 # Payment engine using Paypal
-gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '42f24f5'
+gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '19470d1'
 
 # Payment engine using Moip
 gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '96e1b47'
@@ -50,10 +50,6 @@ gem 'devise'
 # See https://github.com/ryanb/cancan/tree/2.0 for help about this
 # In resume: this version of cancan allow checking for authorization on specific fields on the model
 gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
-
-
-# Error reporting
-gem "airbrake"
 
 # Email marketing
 gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref: '45dc426'

@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_paypal_express.git
-  revision: 42f24f5cf81d2365cbf2d0e441d04b2edf3e3d1e
-  ref: 42f24f5
+  revision: 19470d1ff4c4db9d5a2e3654a964c3dbbb67a480
+  ref: 19470d1
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (~> 1.17.0)
@@ -85,10 +85,6 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.4)
-    airbrake (3.1.12)
-      activesupport
-      builder
-      json
     arel (3.0.2)
     auto_html (1.4.2)
       RedCloth
@@ -446,7 +442,6 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   activemerchant (= 1.17.0)
-  airbrake
   auto_html (= 1.4.2)
   best_in_place
   better_errors

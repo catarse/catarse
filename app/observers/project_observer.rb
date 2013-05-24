@@ -104,7 +104,6 @@ class ProjectObserver < ActiveRecord::Observer
         CatarseMailchimp::API.subscribe(mailchimp_params, Configuration[:mailchimp_failed_projects_list])
       end
     rescue Exception => e
-      Airbrake.notify({ :error_class => "MailChimp Error", :error_message => "MailChimp Error: #{e.inspect}", :parameters => params}) rescue nil
       Rails.logger.info "-----> #{e.inspect}"
     end
   end
