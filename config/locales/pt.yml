@@ -1,6 +1,5 @@
 pt:
   current_update: 'Alteração atual feita em '
-  backs_to_confirm: "%{count} apoios em prazo de confirmação."
   'no': "Não"
   'yes': "Sim"
   or: "ou"
@@ -492,6 +491,9 @@ pt:
       destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
       reward_title: "Para %{minimum} ou mais"
+      backs_to_confirm:
+        one: "1 apoio em prazo de confirmação."
+        other: "%{count} apoios em prazo de confirmação."
       title: "Apoie e ganhe..."
     send_mail:
       success: "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"

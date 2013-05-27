@@ -4,7 +4,6 @@ en:
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, projecto, community, open source"
-  backs_to_confirm: "%{count} backers in time to confirm."
   backer_report_to_project_owner:
     reward_description: 'Reward description'
     confirmed_at: 'Payment confirmed at'
@@ -534,6 +533,9 @@ en:
       destroy_confirmation: "Do you want to remove the update?"
     rewards:
       reward_title: "For %{minimum} or more"
+      backs_to_confirm:
+        one:  "1 backer in time to confirm."
+        other: "%{count} backers in time to confirm."
       title: "Back and receive..."
     send_mail:
       success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
