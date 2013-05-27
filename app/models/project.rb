@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, LogoUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
-    :display_pledged, :display_goal, :remaining_days, :progress_bar, :video_embed_url,
+    :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar,
     :to => :decorator
 
   schema_associations
@@ -195,6 +195,10 @@ class Project < ActiveRecord::Base
 
   def remaining_text
     pluralize_without_number(time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
+  end
+
+  def update_video_embed_url
+    self.video_embed_url = self.video.embed_url if self.video.present?
   end
 
   def download_video_thumbnail
