@@ -129,7 +129,9 @@ en:
         address_state: State
         address_street: Street
         address_zip_code: "Zip code"
-        cpf: 'CPF / CNPJ'
+        cpf: 'CPF / CNPJ '
+        cpf_hint_title: 'Nota Fiscal será emitida para esse documento'
+        cpf_hint: '(?)'
         state_inscription: 'State Inscription'
         moip_login: 'MoIP Login'
         moip_login_hint: '(How to create an account)'

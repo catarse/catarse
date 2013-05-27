@@ -140,7 +140,9 @@ pt:
         address_state: Estado
         address_street: Logradouro
         address_zip_code: CEP
-        cpf: 'CPF / CNPJ'
+        cpf: 'CPF / CNPJ '
+        cpf_hint_title: 'Nota Fiscal será emitida para esse documento'
+        cpf_hint: '(?)'
         state_inscription: 'Inscrição Estadual'
         current_password: "Senha atual"
         email: Email
