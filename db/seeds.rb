@@ -65,7 +65,10 @@ end
   catarse_fee: '0.13',
   support_forum: 'http://suporte.catarse.me/'
 }.each do |name, value|
-  Configuration.find_or_create_by_name name, value: value
+   conf = Configuration.find_or_initialize_by_name name
+   conf.update_attributes({
+     value: value
+   })
 end
 
 
