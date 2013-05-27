@@ -33,11 +33,9 @@ class ProjectDecorator < Draper::Decorator
     end
   end
 
-  def video_embed_url
-    if source.video.instance_of? VideoInfo::Vimeo
-      "#{source.video.embed_url}?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=0"
-    elsif source.video.instance_of? VideoInfo::Youtube
-      source.video.embed_url
+  def display_video_embed_url
+    if source.video_embed_url
+      "#{source.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=0"
     end
   end
 

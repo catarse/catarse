@@ -3,7 +3,10 @@ class ProjectObserver < ActiveRecord::Observer
 
   def before_save(project)
     #Notification.create_notification(:project_visible, project.user, project: project) if (project.visible_was == false) && (project.visible == true)
-    project.download_video_thumbnail if project.video_url.present? && project.video_url_changed?
+    if project.video_url.present? && project.video_url_changed?
+      project.download_video_thumbnail
+      project.update_video_embed_url
+    end
   end
 
   def after_create(project)

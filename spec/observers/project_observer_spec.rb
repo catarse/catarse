@@ -52,6 +52,7 @@ describe ProjectObserver do
     context "when project is approved" do
       before do
         project.should_receive(:download_video_thumbnail).never
+        project.should_receive(:update_video_embed_url).never
       end
 
       it "should call create_notification and do not call download_video_thumbnail" do
@@ -63,6 +64,7 @@ describe ProjectObserver do
     context "when video_url changes" do
       before do
         project.should_receive(:download_video_thumbnail)
+        project.should_receive(:update_video_embed_url)
         Notification.should_receive(:create_notification).never
         Notification.should_receive(:create_notification_once).never
       end
