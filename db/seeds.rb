@@ -60,7 +60,7 @@ end
   email_no_reply: 'no-reply@catarse.me',
   facebook_url: "http://facebook.com/catarse.me",
   facebook_app_id: '173747042661491',
-  twitter_username: "Catarse_",
+  twitter_username: "catarse",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   catarse_fee: '0.13',
   support_forum: 'http://suporte.catarse.me/'
