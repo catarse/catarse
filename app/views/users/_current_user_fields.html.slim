@@ -20,7 +20,7 @@
     h1= t('.my_facebook')
     ul
       li
-        = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), :class => 'facebook_start'    
+        = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), :class => 'facebook_start'
 #my_data
   h1= t('.my_data')
   ul
@@ -30,7 +30,7 @@
           .profile
             = f.input :id, :as => :string, :input_html => { :disabled =>  'disabled'}
             = f.input :full_name, :required => true, :as => :string
-            = f.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}
+            = f.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}, label: (t('activerecord.attributes.user.cpf') + link_to(t('activerecord.attributes.user.cpf_hint'), 'http://suporte.catarse.me/knowledgebase/articles/162312-o-catarse-emite-nota-fiscal', {title: t('activerecord.attributes.user.cpf_hint_title') })).html_safe
             = f.input :state_inscription, :as => :string
             = f.input :name, :required => false, :as => :string
             = f.input :address_street, :as => :string
