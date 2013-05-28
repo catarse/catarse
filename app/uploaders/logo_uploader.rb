@@ -3,9 +3,9 @@
 class LogoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
-  version :project_thumb, :if => :is_project?
-  version :thumb, :if => :is_user?
-  version :thumb_avatar, :if => :is_user?
+  version :project_thumb, if: :is_project?
+  version :thumb, if: :is_user?
+  version :thumb_avatar, if: :is_user?
 
   def extension_white_list
     %w(jpg jpeg gif png) unless mounted_as == :video_thumbnail
@@ -26,18 +26,18 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   version :project_thumb do
-    process :resize_to_fill => [512,400]
-    process :convert => :png
+    process resize_to_fill: [512,400]
+    process convert: :png
   end
 
   version :thumb do
-    process :resize_to_fill => [260,170]
-    process :convert => :png
+    process resize_to_fill: [260,170]
+    process convert: :png
   end
 
   version :thumb_avatar do
-    process :resize_to_fit => [300,300]
-    process :convert => :png
+    process resize_to_fit: [300,300]
+    process convert: :png
   end
 
   protected

@@ -2,9 +2,9 @@ require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
   match '/thank_you' => "static#thank_you"
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
 
   filter :locale, exclude: /\/auth\//
@@ -14,12 +14,12 @@ Catarse::Application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  mount CatarsePaypalExpress::Engine  => "/", :as => :catarse_paypal_express
-  mount CatarseMoip::Engine           => "/", :as => :catarse_moip
+  mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
+  mount CatarseMoip::Engine => "/", as: :catarse_moip
 
   # Non production routes
   if Rails.env.development?
-    resources :emails, :only => [ :index ]
+    resources :emails, only: [ :index ]
   end
 
   # Channels
@@ -34,7 +34,7 @@ Catarse::Application.routes.draw do
           end
         end
       end
-      get '/', to: 'profiles#show', :as => :profile
+      get '/', to: 'profiles#show', as: :profile
       get '/how-it-works', to: 'profiles#how_it_works', as: :about
       resources :projects, only: [:new, :create, :show] do
         collection do
@@ -56,11 +56,11 @@ Catarse::Application.routes.draw do
   get "/faq",                   to: "static#faq",                 as: :faq
 
 
-  match "/explore" => "explore#index", :as => :explore
-  match "/explore#:quick" => "explore#index", :as => :explore_quick
-  match "/credits" => "credits#index", :as => :credits
+  match "/explore" => "explore#index", as: :explore
+  match "/explore#:quick" => "explore#index", as: :explore_quick
+  match "/credits" => "credits#index", as: :credits
 
-  match "/reward/:id" => "rewards#show", :as => :reward
+  match "/reward/:id" => "rewards#show", as: :reward
   resources :posts, only: [:index, :create]
 
   namespace :reports do
@@ -91,13 +91,13 @@ Catarse::Application.routes.draw do
     end
   end
   resources :users do
-    resources :backers, :only => [:index] do
+    resources :backers, only: [:index] do
       member do
         match :request_refund
       end
     end
 
-    resources :unsubscribes, :only => [:create]
+    resources :unsubscribes, only: [:create]
     member do
       get 'projects'
       get 'credits'

@@ -2,18 +2,18 @@ class Projects::BackersController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :update_info, :review, :create
   skip_before_filter :force_http, only: [:create, :update_info]
-  skip_before_filter :verify_authenticity_token, :only => [:moip]
+  skip_before_filter :verify_authenticity_token, only: [:moip]
   load_and_authorize_resource
   belongs_to :project
 
   def update_info
     resource.update_attributes(params[:backer])
-    render :json => {:message => 'updated'}
+    render json: {message: 'updated'}
   end
 
   def index
     @backers = parent.backers.avaiable_to_count.order("confirmed_at DESC").page(params[:page]).per(10)
-    render :json => @backers.to_json(:can_manage => can?(:update, @project))
+    render json: @backers.to_json(can_manage: can?(:update, @project))
   end
 
   def show
@@ -28,12 +28,12 @@ class Projects::BackersController < ApplicationController
     end
 
     @create_url = ::Configuration[:secure_review_host] ?
-      project_backers_url(@project, {:host => ::Configuration[:secure_review_host], :protocol => 'https'}) :
+      project_backers_url(@project, {host: ::Configuration[:secure_review_host], protocol: 'https'}) :
       project_backers_path(@project)
 
-    @title = t('projects.backers.new.title', :name => @project.name)
-    @backer = @project.backers.new(:user => current_user)
-    empty_reward = Reward.new(:id => 0, :minimum_value => 0, :description => t('projects.backers.new.no_reward'))
+    @title = t('projects.backers.new.title', name: @project.name)
+    @backer = @project.backers.new(user: current_user)
+    empty_reward = Reward.new(id: 0, minimum_value: 0, description: t('projects.backers.new.no_reward'))
     @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
     @reward = @project.rewards.find params[:reward_id] if params[:reward_id]
     @reward = nil if @reward and @reward.sold_out?

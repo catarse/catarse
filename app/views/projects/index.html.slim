@@ -1,6 +1,6 @@
 / Temporaly using channels banner
-  = render :partial => 'recommended_header'
-= render :partial => 'channels/projects/banner'
+  = render partial: 'recommended_header'
+= render partial: 'channels/projects/banner'
 #page_content
   .container
     .main
@@ -9,9 +9,9 @@
           .title
             h2= t('sections.selection.title')
         .projects
-          = render :partial => 'project', :locals => {:project => @first_project, :custom_class => 'first' } if @first_project
-          = render :partial => 'project', :locals => {:project => @second_project } if @second_project
-          = render :partial => 'project', :locals => {:project => @third_project, :custom_class => 'last' } if @third_project
+          = render partial: 'project', locals: {project: @first_project, custom_class: 'first' } if @first_project
+          = render partial: 'project', locals: {project: @second_project } if @second_project
+          = render partial: 'project', locals: {project: @third_project, custom_class: 'last' } if @third_project
         .explore_link
           hr
           = link_to t('main.links.selected'), explore_path(anchor: :recommended)
@@ -22,7 +22,7 @@
             h2= t('sections.expiring.title')
         .projects
           - @expiring.each_with_index do |item,i|
-            == render 'project', :project => item, :custom_class => ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+            == render 'project', project: item, custom_class: ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
           hr
           = link_to t('main.links.expiring'), explore_path(anchor: :expiring)
@@ -33,7 +33,7 @@
             h2= t('sections.recents.title')
         .projects
           - @recent.each_with_index do |item,i|
-            == render 'project', :project => item, :custom_class => ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+            == render 'project', project: item, custom_class: ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
           hr
           = link_to t('main.links.recents'), explore_path(anchor: :recent)

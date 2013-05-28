@@ -9,7 +9,7 @@
         strong= "#{@total_backs} "
         = t('.total_backs')
         | ·
-        strong= "#{number_to_currency @total_backed, :unit => 'R$', :precision => 0, :delimiter => '.'} "
+        strong= "#{number_to_currency @total_backed, unit: 'R$', precision: 0, delimiter: '.'} "
         = t('.total_backed')
         | ·
         strong= "#{@total_users} "
@@ -85,33 +85,33 @@
                           h3= t('.backer_info', key: backer.key)
                         .modal-body style='text-align: left'
                           p
-                            strong= t('.payment_method') 
+                            strong= t('.payment_method')
                             | &nbsp;
                             = backer.payment_method
                           p
-                            strong= t('.payment_id') 
-                            | &nbsp;                            
+                            strong= t('.payment_id')
+                            | &nbsp;
                             = backer.payment_id
                           p
-                            strong= t('.payer_email') 
+                            strong= t('.payer_email')
                             | &nbsp;
                             = backer.payer_email
                           p
-                            strong= t('.user_email') 
+                            strong= t('.user_email')
                             | &nbsp;
-                            = backer.user.email                          
+                            = backer.user.email
                           p
-                            strong= t('.payment_choice') 
+                            strong= t('.payment_choice')
                             | &nbsp;
                             = backer.payment_choice
                           p
-                            strong= t('.created_at') 
+                            strong= t('.created_at')
                             | &nbsp;
                             = l(backer.created_at)
 
                         .modal-footer
                           button type='button' data-dismiss="modal" class="btn" OK
-                    = link_to "#backerInfo#{backer.id}", :class => 'btn btn-mini', :'data-toggle' => 'modal' do
+                    = link_to "#backerInfo#{backer.id}", class: 'btn btn-mini', data: {toggle:'modal'} do
                       i.icon-info-sign
                   td title=backer.project.name
                     = link_to project_by_slug_path(permalink: backer.project.permalink) do
@@ -127,7 +127,7 @@
                     - else
                       | -
                     .btn-group
-                      = link_to 'javascript:void(0);', :"data-toggle" => 'dropdown', :class => 'btn btn-mini dropdown-toggle' do
+                      = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'btn btn-mini dropdown-toggle' do
                         span.caret
                       ul.dropdown-menu
                         li title=("#{t('.no_reward')}" ) = link_to t('.no_reward'), change_reward_adm_backer_path(backer, reward_id: nil), method: :put
@@ -140,7 +140,7 @@
                   td= backer.state
                   td.bootstrap-twitter
                     .btn-group
-                      = link_to 'javascript:void(0);', :"data-toggle" => 'dropdown', :class => 'btn btn-mini dropdown-toggle' do
+                      = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'btn btn-mini dropdown-toggle' do
                         span.caret
                       ul.dropdown-menu
                         - if backer.confirmed?

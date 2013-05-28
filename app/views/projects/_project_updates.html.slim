@@ -1,6 +1,6 @@
 - if can? :update, @project
   .bootstrap-form
-    = semantic_form_for [@project, Update.new(:user_id => current_user.id)] do |form|
+    = semantic_form_for [@project, Update.new(user_id: current_user.id)] do |form|
       = form.inputs do
         = form.input :title, as: :string, label: t('projects.project_updates.title')
         = form.input :comment, as: :text, label: t('projects.project_updates.comment'), input_html: {rows: 10}
@@ -32,4 +32,4 @@
           .loading_updates.hide= image_tag "loading.gif"
 
 .updates_wrapper
-  = render :template => 'updates/index'
+  = render template: 'updates/index'

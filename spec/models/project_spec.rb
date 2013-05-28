@@ -208,8 +208,8 @@ describe Project do
 
   describe ".expired" do
     before do
-      @p = create(:project, :online_days => -1)
-      create(:project, :online_days => 1)
+      @p = create(:project, online_days: -1)
+      create(:project, online_days: 1)
     end
     subject{ Project.expired}
     it{ should == [@p] }
@@ -217,8 +217,8 @@ describe Project do
 
   describe ".not_expired" do
     before do
-      @p = create(:project, :online_days => 1)
-      create(:project, :online_days => -1)
+      @p = create(:project, online_days: 1)
+      create(:project, online_days: -1)
     end
     subject{ Project.not_expired }
     it{ should == [@p] }
@@ -226,8 +226,8 @@ describe Project do
 
   describe ".expiring" do
     before do
-      @p = create(:project, :online_days => 14)
-      create(:project, :online_days => -1)
+      @p = create(:project, online_days: 14)
+      create(:project, online_days: -1)
     end
     subject{ Project.expiring }
     it{ should == [@p] }
@@ -235,8 +235,8 @@ describe Project do
 
   describe ".not_expiring" do
     before do
-      @p = create(:project, :online_days => 15)
-      create(:project, :online_days => -1)
+      @p = create(:project, online_days: 15)
+      create(:project, online_days: -1)
     end
     subject{ Project.not_expiring }
     it{ should == [@p] }
@@ -244,8 +244,8 @@ describe Project do
 
   describe ".recent" do
     before do
-      @p = create(:project, :online_date => (Time.now - 4.days))
-      create(:project, :online_date => (Time.now - 15.days))
+      @p = create(:project, online_date: (Time.now - 4.days))
+      create(:project, online_date: (Time.now - 15.days))
     end
     subject{ Project.recent }
     it{ should == [@p] }
@@ -429,12 +429,12 @@ describe Project do
     subject{ project.expired? }
 
     context "when expires_at is in the future" do
-      let(:project){ Project.new :expires_at => 2.seconds.from_now }
+      let(:project){ Project.new expires_at: 2.seconds.from_now }
       it{ should be_false }
     end
 
     context "when expires_at is in the past" do
-      let(:project){ Project.new :expires_at => 2.seconds.ago }
+      let(:project){ Project.new expires_at: 2.seconds.ago }
       it{ should be_true }
     end
   end
@@ -442,12 +442,12 @@ describe Project do
   describe "#in_time?" do
     subject{ project.in_time? }
     context "when expires_at is in the future" do
-      let(:project){ Project.new :expires_at => 2.seconds.from_now }
+      let(:project){ Project.new expires_at: 2.seconds.from_now }
       it{ should be_true }
     end
 
     context "when expires_at is in the past" do
-      let(:project){ Project.new :expires_at => 2.seconds.ago }
+      let(:project){ Project.new expires_at: 2.seconds.ago }
       it{ should be_false }
     end
   end

@@ -5,41 +5,41 @@
       .bootstrap-form
         = semantic_form_for @user do |f|
           = f.inputs do
-            p= f.input :uploaded_image, :as => :file, :label => t('.submit_text')
+            p= f.input :uploaded_image, as: :file, label: t('.submit_text')
           = f.actions do
             .bootstrap-twitter
-              p= f.action :submit, :button_html => {:value => t('.submit'), :class => 'btn', :id => 'image_upload_btn'}
+              p= f.action :submit, button_html: {value: t('.submit'), class: 'btn', id: 'image_upload_btn'}
     li
       #gravatar_hint.alert.alert-info
-        = link_to 'http://gravatar.com/', :target => :_blank do
-          = image_tag 'gravatar.png', :id => 'gravatar_logo'
-        p= t('.gravatar_hint_html', :link => link_to('Gravatar', 'http://gravatar.com/', :target => :_blank))
+        = link_to 'http://gravatar.com/', target: :_blank do
+          = image_tag 'gravatar.png', id: 'gravatar_logo'
+        p= t('.gravatar_hint_html', link: link_to('Gravatar', 'http://gravatar.com/', target: :_blank))
         .clearfix
 - unless @user.has_facebook_authentication?
   #my_facebook
     h1= t('.my_facebook')
     ul
       li
-        = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), :class => 'facebook_start'
+        = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), class: 'facebook_start'
 #my_data
   h1= t('.my_data')
   ul
     li
       .bootstrap-form
-        = semantic_form_for @user, :html => {:method => :put, id: 'user_form'}  do |f|
+        = semantic_form_for @user, html: {method: :put, id: 'user_form'}  do |f|
           .profile
-            = f.input :id, :as => :string, :input_html => { :disabled =>  'disabled'}
-            = f.input :full_name, :required => true, :as => :string
-            = f.input :cpf, :as => :string, :input_html => {:autocomplete => 'off'}, label: (t('activerecord.attributes.user.cpf') + link_to(t('activerecord.attributes.user.cpf_hint'), 'http://suporte.catarse.me/knowledgebase/articles/162312-o-catarse-emite-nota-fiscal', {title: t('activerecord.attributes.user.cpf_hint_title') })).html_safe
-            = f.input :state_inscription, :as => :string
-            = f.input :name, :required => false, :as => :string
-            = f.input :address_street, :as => :string
-            = f.input :address_number, :as => :string
-            = f.input :address_complement, :required => false, :as => :string
-            = f.input :address_neighbourhood, :as => :string
-            = f.input :address_zip_code, :as => :string, :input_html => {:autocomplete => 'off'}
-            = f.input :address_city, :as => :string
-            = f.input :address_state, :as => :select, :collection => State.array
+            = f.input :id, as: :string, input_html: { disabled:  'disabled'}
+            = f.input :full_name, required: true, as: :string
+            = f.input :cpf, as: :string, input_html: {autocomplete: 'off'}, label: (t('activerecord.attributes.user.cpf') + link_to(t('activerecord.attributes.user.cpf_hint'), 'http://suporte.catarse.me/knowledgebase/articles/162312-o-catarse-emite-nota-fiscal', {title: t('activerecord.attributes.user.cpf_hint_title') })).html_safe
+            = f.input :state_inscription, as: :string
+            = f.input :name, required: false, as: :string
+            = f.input :address_street, as: :string
+            = f.input :address_number, as: :string
+            = f.input :address_complement, required: false, as: :string
+            = f.input :address_neighbourhood, as: :string
+            = f.input :address_zip_code, as: :string, input_html: {autocomplete: 'off'}
+            = f.input :address_city, as: :string
+            = f.input :address_state, as: :select, collection: State.array
           .socialmidia
             .div
               = f.label :twitter, t('.twitter')
@@ -51,29 +51,29 @@
               = f.label :other_link, t('.other_link')
               = f.text_field :other_link
             = f.input :moip_login, label: (t('activerecord.attributes.user.moip_login') + '  ' +  link_to(t('activerecord.attributes.user.moip_login_hint'), "http://suporte.catarse.me/knowledgebase/articles/153570-como-criar-uma-conta-no-moip")).html_safe
-            = f.input :phone_number, :required => false, :as => :string
-            = f.input :email, :as => :string
+            = f.input :phone_number, required: false, as: :string
+            = f.input :email, as: :string
             = hidden_field_tag 'id', @user.id
             = f.input :newsletter, as: :boolean, label: t('.newsletter')
-            = f.input :bio, :hint => t('.bio_limit'), :as => :text, :input_html => { :rows => 5, :cols => 20, :maxlength => 140  }
+            = f.input :bio, hint: t('.bio_limit'), as: :text, input_html: { rows: 5, cols: 20, maxlength: 140  }
           .bootstrap-twitter
-            p= f.submit t('.update_social_info'), :class => 'btn', :id => "user_submit"
+            p= f.submit t('.update_social_info'), class: 'btn', id: "user_submit"
 #change_password
   h1= t('.change_password')
   ul
     li
       .bootstrap-form
-        = form_for(@user, :url => {:action => "update_password"}, :html => { :method => :put, :class => 'skip_feed_event', id: 'password_form' }) do |f|
+        = form_for(@user, url: {action: "update_password"}, html: { method: :put, class: 'skip_feed_event', id: 'password_form' }) do |f|
           span.hint= t('.current_password_hint').html_safe
           br
           .div
             = f.label :current_password
-            = f.password_field :current_password, :class=>'empty'
+            = f.password_field :current_password, class:'empty'
           .div
             = f.label :password, t('passwords.edit.label_new_password')
-            = f.password_field :password, :class=>'empty'
+            = f.password_field :password, class:'empty'
           .div
             = f.label :password_confirmation
-            = f.password_field :password_confirmation, :class=>'empty'
+            = f.password_field :password_confirmation, class:'empty'
           .bootstrap-twitter
-            p= f.submit 'OK', :class => 'btn', id: 'password_submit'
+            p= f.submit 'OK', class: 'btn', id: 'password_submit'

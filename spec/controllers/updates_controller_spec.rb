@@ -7,12 +7,12 @@ describe UpdatesController do
   subject{ response }
 
   describe "GET index" do
-    before{ get :index, :project_id => update.project.id, :locale => 'pt', :format => 'html' }
+    before{ get :index, project_id: update.project.id, locale: 'pt', format: 'html' }
     its(:status){ should == 200 }
   end
 
   describe "DELETE destroy" do
-    before { delete :destroy, :project_id => update.project.id, :id => update.id, :locale => 'pt' }
+    before { delete :destroy, project_id: update.project.id, id: update.id, locale: 'pt' }
     context 'When user is a guest' do
       its(:status) { should == 302 }
     end
@@ -34,24 +34,24 @@ describe UpdatesController do
   end
 
   describe "POST create" do
-    before{ post :create, :project_id => update.project.id, :locale => 'pt', :update => {:title => 'title', :comment => 'update comment'} }
+    before{ post :create, project_id: update.project.id, locale: 'pt', update: {title: 'title', comment: 'update comment'} }
     context 'When user is a guest' do
-      it{ Update.where(:project_id => update.project.id).count.should == 1}
+      it{ Update.where(project_id: update.project.id).count.should == 1}
     end
 
     context "When user is a registered user but don't the project owner" do
       let(:current_user){ FactoryGirl.create(:user) }
-      it{ Update.where(:project_id => update.project.id).count.should == 1}
+      it{ Update.where(project_id: update.project.id).count.should == 1}
     end
 
     context 'When user is admin' do
       let(:current_user) { FactoryGirl.create(:user, admin: true) }
-      it{ Update.where(:project_id => update.project.id).count.should ==  2}
+      it{ Update.where(project_id: update.project.id).count.should ==  2}
     end
 
     context 'When user is project_owner' do
       let(:current_user) { update.project.user }
-      it{ Update.where(:project_id => update.project.id).count.should ==  2}
+      it{ Update.where(project_id: update.project.id).count.should ==  2}
     end
   end
 end

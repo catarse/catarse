@@ -13,8 +13,8 @@ class Reward < ActiveRecord::Base
   has_paper_trail
 
   validates_presence_of :minimum_value, :description
-  validates_numericality_of :minimum_value, :greater_than_or_equal_to => 10.00
-  validates_numericality_of :maximum_backers, :only_integer => true, :greater_than => 0, :allow_nil => true
+  validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00
+  validates_numericality_of :maximum_backers, only_integer: true, greater_than: 0, allow_nil: true
   scope :remaining, where("maximum_backers IS NULL OR (maximum_backers IS NOT NULL AND (SELECT COUNT(*) FROM backers WHERE state = 'confirmed' AND reward_id = rewards.id) < maximum_backers)")
   scope :sort_asc, order('id ASC')
 
@@ -32,43 +32,43 @@ class Reward < ActiveRecord::Base
   end
 
   def display_remaining
-    I18n.t('reward.display_remaining', :remaining => remaining, :maximum => maximum_backers).html_safe
+    I18n.t('reward.display_remaining', remaining: remaining, maximum: maximum_backers).html_safe
   end
 
   def name
     "<div class='reward_minimum_value'>#{minimum_value > 0 ? display_minimum+'+' : I18n.t('reward.dont_want')}</div><div class='reward_description'>#{h description}</div>#{'<div class="sold_out">' + I18n.t('reward.sold_out') + '</div>' if sold_out?}<div class='clear'></div>".html_safe
   end
   def display_minimum
-    number_to_currency minimum_value, :unit => 'R$', :precision => 2, :delimiter => '.'
+    number_to_currency minimum_value, unit: 'R$', precision: 2, delimiter: '.'
   end
   def short_description
-    truncate description, :length => 35
+    truncate description, length: 35
   end
   def medium_description
-    truncate description, :length => 65
+    truncate description, length: 65
   end
 
   def last_description
     if versions.present?
       reward = versions.last.reify(has_one: true)
-      auto_link(simple_format(reward.description), :html => {:target => :_blank})
+      auto_link(simple_format(reward.description), html: {target: :_blank})
     end
   end
 
   def display_description
-    auto_link(simple_format(description), :html => {:target => :_blank})
+    auto_link(simple_format(description), html: {target: :_blank})
   end
   def as_json(options={})
     {
-      :id => id,
-      :project_id => project_id,
-      :maximum_backers => maximum_backers,
-      :remaining => remaining,
-      :display_with_label => I18n.t('projects.rewards.reward_title', :minimum => display_minimum),
-      :display_minimum => display_minimum,
-      :description => description,
-      :short_description => short_description,
-      :medium_description => medium_description
+      id: id,
+      project_id: project_id,
+      maximum_backers: maximum_backers,
+      remaining: remaining,
+      display_with_label: I18n.t('projects.rewards.reward_title', minimum: display_minimum),
+      display_minimum: display_minimum,
+      description: description,
+      short_description: short_description,
+      medium_description: medium_description
     }
   end
 end
