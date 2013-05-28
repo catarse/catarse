@@ -28,6 +28,17 @@ class Backer < ActiveRecord::Base
 
   scope :avaiable_to_count, ->() { where("state ~* '(confirmed|requested_refund|refunded)'") }
 
+  scope :can_cancel, ->() {
+    where(%Q{
+      state = 'waiting_confirmation' and
+        (
+          select count(1) as total_of_days
+          from generate_series(created_at::date, current_date, '1 day') day 
+          WHERE extract(dow from day) not in (0,1)
+        ) > 4
+    })
+  }
+
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
     where(%Q{
