@@ -15,15 +15,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :namespace, :fb_admins, :statistics,
-                :render_facebook_sdk, :render_facebook_like, :render_twitter
+  helper_method :namespace, :fb_admins, :render_facebook_sdk, :render_facebook_like, :render_twitter
 
   before_filter :set_locale
   before_filter :force_http
 
   # TODO: Change this way to get the opendata
   before_filter do
-    Statistics.new
     @fb_admins = [100000428222603, 547955110]
   end
 
@@ -42,12 +40,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def statistics
-    @statistics ||= Rails.cache.fetch("global/statiscs", expires_in: 10.minutes) do
-      Statistics.first
-    end
-  end
-
   def fb_admins
     @fb_admins.join(',')
   end
