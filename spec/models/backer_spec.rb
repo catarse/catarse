@@ -112,6 +112,29 @@ describe Backer do
     end
   end
 
+  describe ".can_cancel" do
+    let(:waiting_confirmation_backer) { create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) }
+    let(:waiting_confirmation_backer_1) { create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago) }
+    let(:waiting_confirmation_backer_2) { create(:backer, state: 'waiting_confirmation', created_at: 4.weekdays_ago) }
+
+    subject { Backer.can_cancel}
+
+    context "when backer is in time to wait the confirmation" do
+      before { waiting_confirmation_backer }
+      it { should have(0).item }
+    end
+
+    context "when we have backers that is passed the confirmation time" do
+      before do
+        waiting_confirmation_backer
+        waiting_confirmation_backer_1
+        waiting_confirmation_backer_2
+      end
+
+      it { should have(2).itens }
+    end
+  end
+
   describe 'state_machine' do
     let(:backer) { create(:backer, state: initial_state) }
     let(:initial_state){ 'pending' }
