@@ -10,7 +10,7 @@
       |&nbsp;
       = link_to project.user.name, user_path(project.user)
   .description
-    p= link_to truncate(project.headline, :length => 120), project_by_slug_path(permalink: project.permalink)
+    p= link_to truncate(project.headline, length: 120), project_by_slug_path(permalink: project.permalink)
   .author
     - if !project.user.address_city.blank? || !project.user.address_state.blank?
       p= link_to 'javascript:void(0)' do
