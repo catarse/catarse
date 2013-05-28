@@ -81,6 +81,8 @@ pt:
           change_reward: 'Recompensa modificada com sucesso!'
           hide: 'Apoio escondido com sucesso!'
       index:
+        between_values: 'Valores entre'
+        by_state: 'Estado'
         refund_and_hide: 'Fazer estorno e não exibir apoio.'
         backer_info: 'Informações do backer %{key}'
         payment_id: 'ID do pagamento'

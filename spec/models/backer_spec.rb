@@ -75,7 +75,66 @@ describe Backer do
       backer.should_not be_valid
     end
   end
-  
+
+  describe ".between_values" do
+    let(:start_at) { 10 }
+    let(:ends_at) { 20 }
+    subject { Backer.between_values(start_at, ends_at) }
+
+
+    before do
+      create(:backer, value: 10)
+      create(:backer, value: 15)
+      create(:backer, value: 20)
+      create(:backer, value: 21)
+    end
+
+    it { should have(3).itens }
+  end
+
+  describe ".by_state" do
+    before do
+      2.times { create(:backer, state: 'confirmed') }
+      create(:backer, state: 'waiting_confirmation')
+      create(:backer, state: 'canceled')
+    end
+
+    it "should return all confirmed backers" do
+      Backer.by_state('confirmed').should have(2).itens
+    end
+
+    it "should return all waiting confirmation backers" do
+      Backer.by_state('waiting_confirmation').should have(1).itens
+    end
+
+    it "should return all canceled backers" do
+      Backer.by_state('canceled').should have(1).itens
+    end
+  end
+
+  describe ".can_cancel" do
+    let(:waiting_confirmation_backer) { create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) }
+    let(:waiting_confirmation_backer_1) { create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago) }
+    let(:waiting_confirmation_backer_2) { create(:backer, state: 'waiting_confirmation', created_at: 4.weekdays_ago) }
+
+    subject { Backer.can_cancel}
+
+    context "when backer is in time to wait the confirmation" do
+      before { waiting_confirmation_backer }
+      it { should have(0).item }
+    end
+
+    context "when we have backers that is passed the confirmation time" do
+      before do
+        waiting_confirmation_backer
+        waiting_confirmation_backer_1
+        waiting_confirmation_backer_2
+      end
+
+      it { should have(2).itens }
+    end
+  end
+
   describe 'state_machine' do
     let(:backer) { create(:backer, state: initial_state) }
     let(:initial_state){ 'pending' }

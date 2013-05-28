@@ -11,6 +11,7 @@ class Backer < ActiveRecord::Base
   validate :reward_must_be_from_project
 
   scope :by_id, ->(id) { where(id: id) }
+  scope :by_state, ->(state) { where(state: state) }
   scope :by_key, ->(key) { where(key: key) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
@@ -27,6 +28,17 @@ class Backer < ActiveRecord::Base
 
   scope :avaiable_to_count, ->() { where("state ~* '(confirmed|requested_refund|refunded)'") }
 
+  scope :can_cancel, ->() {
+    where(%Q{
+      state = 'waiting_confirmation' and
+        (
+          select count(1) as total_of_days
+          from generate_series(created_at::date, current_date, '1 day') day 
+          WHERE extract(dow from day) not in (0,1)
+        ) > 4
+    })
+  }
+
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
     where(%Q{
@@ -41,6 +53,15 @@ class Backer < ActiveRecord::Base
   }
 
   attr_protected :confirmed, :state
+
+  def self.between_values(start_at, ends_at)
+    return scoped unless start_at.present? && ends_at.present?
+    where("value between ? and ?", start_at, ends_at)
+  end
+
+  def self.state_names
+    self.state_machine.states.map &:name
+  end
 
   def refund_deadline
     created_at + 180.days
