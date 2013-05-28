@@ -76,6 +76,26 @@ describe Backer do
     end
   end
   
+  describe ".by_state" do
+    before do
+      2.times { create(:backer, state: 'confirmed') }
+      create(:backer, state: 'waiting_confirmation')
+      create(:backer, state: 'canceled')
+    end
+
+    it "should return all confirmed backers" do
+      Backer.by_state('confirmed').should have(2).itens
+    end
+
+    it "should return all waiting confirmation backers" do
+      Backer.by_state('waiting_confirmation').should have(1).itens
+    end
+
+    it "should return all canceled backers" do
+      Backer.by_state('canceled').should have(1).itens
+    end
+  end
+
   describe 'state_machine' do
     let(:backer) { create(:backer, state: initial_state) }
     let(:initial_state){ 'pending' }
