@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include PgSearch
   extend CatarseAutoHtml
-  
+
   before_save do
     if online_days_changed? || !self.expires_at.present?
       self.expires_at = DateTime.now+(online_days rescue 0).days
@@ -92,9 +92,9 @@ class Project < ActiveRecord::Base
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
-  
+
   attr_accessor :accepted_terms
-  
+
   validates_acceptance_of :accepted_terms, on: :create
 
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
@@ -229,6 +229,7 @@ class Project < ActiveRecord::Base
       expired: expired?,
       successful: successful? || reached_goal?,
       waiting_funds: waiting_funds?,
+      failed: failed?,
       display_status_to_box: display_status.blank? ? nil : I18n.t("project.display_status.#{display_status}"),
       display_expires_at: display_expires_at,
       in_time: in_time?
