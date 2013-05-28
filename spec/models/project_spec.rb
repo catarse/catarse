@@ -653,35 +653,6 @@ describe Project do
         its(:finish) { should be_false }
       end
 
-      context 'when project is in waiting_funds' do
-        let(:main_project) { create(:project, goal: 1000, online_days: -8, state: 'waiting_funds') }
-        subject { main_project }
-
-        context 'and have backers' do
-          let(:backer) { FactoryGirl.create(:backer, value: 100, project: subject, created_at: 2.days.ago, state: 'waiting_confirmation') }
-
-          context "and already pass 4 weekdays should cancel the pending backers" do
-            before do
-              backer
-              subject.finish
-              backer.reload
-            end
-
-            it { backer.canceled?.should be_true }
-          end
-
-          context "and is in time to wait" do
-            let(:main_project) { create(:project, goal: 1000, online_days: -2, state: 'waiting_funds') }
-            before do
-              backer
-              subject.finish
-              backer.reload
-            end
-            it { backer.canceled?.should be_false }
-          end
-        end
-      end
-
       context 'when project is approved' do
         before do
           subject.approve

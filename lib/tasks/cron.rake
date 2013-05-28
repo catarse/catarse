@@ -3,6 +3,11 @@ task :cron => :environment do
   Project.finish_projects!
 end
 
+desc "Cancel all waiting_confirmation backers that is passed 4 weekdays"
+task :cancel_expired_waiting_confirmation_backers => :environment do
+  Backer.can_cancel.update_all(state: 'canceled')
+end
+
 desc "Create first versions for rewards"
 task :index_rewards_versions => :environment do
   Reward.all.each do |reward|

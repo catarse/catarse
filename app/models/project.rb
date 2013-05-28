@@ -1,7 +1,6 @@
 require 'state_machine'
 # coding: utf-8
 class Project < ActiveRecord::Base
-  MAX_WEEK_DAYS_TO_WAIT = 4
   include ActionView::Helpers::TextHelper
   include PgSearch
   extend CatarseAutoHtml
@@ -293,16 +292,8 @@ class Project < ActiveRecord::Base
     after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
     after_transition draft: :online, do: :after_transition_of_draft_to_online
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
-    after_transition any => [:failed, :successful], do: :after_transition_of_any_to_failed_or_successful
-    after_transition waiting_funds: [:failed, :successful], do: :after_transition_of_waiting_funds_to_failed_or_successful
-
-    before_transition waiting_funds: [:failed, :successful, :waiting_funds], do: :check_waiting_confirmation_backers
-  end
-
-  def check_waiting_confirmation_backers
-    if MAX_WEEK_DAYS_TO_WAIT.weekdays_from(self.expires_at) < DateTime.now
-      self.backers.in_time_to_confirm.update_all(state: 'canceled')
-    end
+    after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
+    after_transition :waiting_funds => [:failed, :successful], :do => :after_transition_of_waiting_funds_to_failed_or_successful
   end
 
   def after_transition_of_online_to_waiting_funds
