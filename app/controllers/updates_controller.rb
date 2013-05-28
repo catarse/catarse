@@ -3,12 +3,12 @@ class UpdatesController < ApplicationController
   load_and_authorize_resource
 
   actions :index, :create, :destroy
-  respond_to :html, :only => [ :index, :create, :destroy ]
+  respond_to :html, only: [ :index, :create, :destroy ]
   belongs_to :project
 
   def index
     index! do |format|
-      format.html{ return render :index, :layout => false }
+      format.html{ return render :index, layout: false }
     end
   end
 

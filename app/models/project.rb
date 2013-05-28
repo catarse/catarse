@@ -16,14 +16,14 @@ class Project < ActiveRecord::Base
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
     :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar,
-    :to => :decorator
+    to: :decorator
 
   schema_associations
   belongs_to :user
-  has_many :backers, :dependent => :destroy
-  has_many :rewards, :dependent => :destroy
-  has_many :updates, :dependent => :destroy
-  has_many :notifications, :dependent => :destroy
+  has_many :backers, dependent: :destroy
+  has_many :rewards, dependent: :destroy
+  has_many :updates, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   has_and_belongs_to_many :channels
 
@@ -38,7 +38,7 @@ class Project < ActiveRecord::Base
       [:about, 'C']
     ],
     associated_against:  {user: [:name, :address_city ]},
-    :using => {tsearch: {:dictionary => "portuguese"}},
+    using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
@@ -99,10 +99,10 @@ class Project < ActiveRecord::Base
 
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
-  validates_length_of :headline, :maximum => 140
-  validates_numericality_of :online_days, :less_than_or_equal_to => 60
-  validates_uniqueness_of :permalink, :allow_blank => true, :allow_nil => true, :case_sensitive => false
-  validates_format_of :permalink, with: /^(\w|-)*$/, :allow_blank => true, :allow_nil => true
+  validates_length_of :headline, maximum: 140
+  validates_numericality_of :online_days, less_than_or_equal_to: 60
+  validates_uniqueness_of :permalink, allow_blank: true, allow_nil: true, case_sensitive: false
+  validates_format_of :permalink, with: /^(\w|-)*$/, allow_blank: true, allow_nil: true
   validates_format_of :video_url, with: Regexp.union(/https?:\/\/(www\.)?vimeo.com\/(\d+)/, VideoInfo::Youtube.new('').regex), message: I18n.t('project.video_regex_validation'), allow_blank: true
   mount_uploader :video_thumbnail, LogoUploader
 
@@ -224,8 +224,8 @@ class Project < ActiveRecord::Base
       time_to_go: time_to_go,
       remaining_text: remaining_text,
       embed_url: video ? video.embed_url : nil,
-      url: Rails.application.routes.url_helpers.project_by_slug_path(permalink, :locale => I18n.locale),
-      full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, :locale => I18n.locale),
+      url: Rails.application.routes.url_helpers.project_by_slug_path(permalink, locale: I18n.locale),
+      full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, locale: I18n.locale),
       expired: expired?,
       successful: successful? || reached_goal?,
       waiting_funds: waiting_funds?,
@@ -245,7 +245,7 @@ class Project < ActiveRecord::Base
   end
 
   #NOTE: state machine things
-  state_machine :state, :initial => :draft do
+  state_machine :state, initial: :draft do
     state :draft, value: 'draft'
     state :rejected, value: 'rejected'
     state :online, value: 'online'
@@ -293,10 +293,10 @@ class Project < ActiveRecord::Base
     after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
     after_transition draft: :online, do: :after_transition_of_draft_to_online
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
-    after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
-    after_transition :waiting_funds => [:failed, :successful], :do => :after_transition_of_waiting_funds_to_failed_or_successful
+    after_transition any => [:failed, :successful], do: :after_transition_of_any_to_failed_or_successful
+    after_transition waiting_funds: [:failed, :successful], do: :after_transition_of_waiting_funds_to_failed_or_successful
 
-    before_transition :waiting_funds => [:failed, :successful, :waiting_funds], :do => :check_waiting_confirmation_backers
+    before_transition waiting_funds: [:failed, :successful, :waiting_funds], do: :check_waiting_confirmation_backers
   end
 
   def check_waiting_confirmation_backers

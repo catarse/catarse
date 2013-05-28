@@ -30,8 +30,8 @@ class Adm::FinancialsController < Adm::BaseController
                     project.user.moip_login,
                     project.display_goal,
                     "#{project.display_pledged} (#{project.progress}%)",
-                    "#{view_context.number_to_currency project.backers.confirmed.sum('payment_service_fee'), :unit => 'R$', :precision => 2, :delimiter => '.'}",
-                    "#{view_context.number_to_currency catarse_fee, :unit => 'R$', :precision => 0, :delimiter => '.' } (#{view_context.number_to_currency project.pledged - catarse_fee, :unit => 'R$', :precision => 0, :delimiter => '.'})",
+                    "#{view_context.number_to_currency project.backers.confirmed.sum('payment_service_fee'), unit: 'R$', precision: 2, delimiter: '.'}",
+                    "#{view_context.number_to_currency catarse_fee, unit: 'R$', precision: 0, delimiter: '.' } (#{view_context.number_to_currency project.pledged - catarse_fee, unit: 'R$', precision: 0, delimiter: '.'})",
                      "#{project.display_expires_at} (#{I18n.l(8.weekdays_from(project.expires_at).to_date)})",
                      "#{adm_reports_backer_reports_url(project_id: project.id, format: :csv)}",
                      project.state
@@ -39,8 +39,8 @@ class Adm::FinancialsController < Adm::BaseController
           end
         end
         send_data csv_string,
-                  :type => 'text/csv; charset=iso-8859-1; header=present',
-                  :disposition => "attachment; filename=financials.csv"
+                  type: 'text/csv; charset=iso-8859-1; header=present',
+                  disposition: "attachment; filename=financials.csv"
       end
     end
   end

@@ -65,7 +65,7 @@ Devise.setup do |config|
   # :http_auth and :token_auth by adding those symbols to the array below.
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
-  # passing :skip => :sessions to `devise_for` in your config/routes.rb
+  # passing skip: :sessions to `devise_for` in your config/routes.rb
   config.skip_session_storage = [:http_auth]
 
   # ==> Configuration for :database_authenticatable
@@ -113,7 +113,7 @@ Devise.setup do |config|
   # config.extend_remember_period = false
 
   # Options to be passed to the created cookie. For instance, you can set
-  # :secure => true in order to force SSL only cookies.
+  # secure: true in order to force SSL only cookies.
   # config.rememberable_options = {}
 
   # ==> Configuration for :validatable
@@ -229,7 +229,7 @@ Devise.setup do |config|
   #
   # config.warden do |manager|
   #   manager.intercept_401 = false
-  #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
+  #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
 
   # ==> Mountable engine configurations

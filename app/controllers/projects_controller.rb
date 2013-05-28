@@ -5,9 +5,9 @@ class ProjectsController < ApplicationController
 
   inherit_resources
   has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired
-  respond_to :html, :except => [:backers]
-  respond_to :json, :only => [:index, :show, :backers, :update]
-  skip_before_filter :detect_locale, :only => [:backers]
+  respond_to :html, except: [:backers]
+  respond_to :json, only: [:index, :show, :backers, :update]
+  skip_before_filter :detect_locale, only: [:backers]
 
   def index
     index! do |format|
@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
 
     @project = current_user.projects.new(params[:project])
 
-    create!(:notice => t('projects.create.success')) do |success, failure|
+    create!(notice: t('projects.create.success')) do |success, failure|
       success.html{ return redirect_to project_by_slug_path(@project.permalink) }
     end
   end
@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
         @rewards = @project.rewards.includes(:project).rank(:row_order).all
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
-        @update = @project.updates.where(:id => params[:update_id]).first if params[:update_id].present?
+        @update = @project.updates.where(id: params[:update_id]).first if params[:update_id].present?
       }
     rescue ActiveRecord::RecordNotFound
       return render_404
@@ -84,7 +84,7 @@ class ProjectsController < ApplicationController
   end
 
   def video
-    project = Project.new(:video_url => params[:url])
+    project = Project.new(video_url: params[:url])
     if project.video
       render json: project.video.to_json
     else
@@ -94,19 +94,19 @@ class ProjectsController < ApplicationController
 
   def check_slug
     project = Project.where("lower(permalink) = ?", params[:permalink].downcase)
-    render :json => {:available => project.empty?}.to_json
+    render json: {available: project.empty?}.to_json
   end
 
   def embed
     @project = Project.find params[:id]
     @title = @project.name
-    render :layout => 'embed'
+    render layout: 'embed'
   end
 
   def video_embed
     @project = Project.find params[:id]
     @title = @project.name
-    render :layout => 'embed'
+    render layout: 'embed'
   end
 
   def blog_posts
