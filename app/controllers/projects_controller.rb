@@ -93,8 +93,12 @@ class ProjectsController < ApplicationController
   end
 
   def check_slug
-    project = Project.where("lower(permalink) = ?", params[:permalink].downcase)
-    render :json => {:available => project.empty?}.to_json
+    if get_routes.include?(params[:permalink].downcase) || Project.where("lower(permalink) = ?", params[:permalink].downcase).present?
+      available = false
+    else
+      available = true
+    end
+    render json: {available: available}.to_json
   end
 
   def embed
@@ -125,5 +129,13 @@ class ProjectsController < ApplicationController
     rewards.each do |r|
       rewards.delete(r[0]) unless Reward.new(r[1]).valid?
     end
+  end
+
+private
+  def get_routes
+    routes = Rails.application.routes.routes.map do |r|
+      r.path.spec.to_s.split('/').second.to_s.gsub(/\(.*?\)/, '')
+    end
+    routes.compact.uniq
   end
 end
