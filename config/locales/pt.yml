@@ -174,11 +174,11 @@ pt:
     display_time: "Há %{time_ago}"
   credits:
     modal:
-      title: 'Importante'
+      title: 'Quer mesmo solicitar o reembolso do seu apoio?'
       text: "Saiba como funciona o processo de reembolso no Catarse:"
       link: "Regras e Funcionamento dos reembolsos / estornos"
-      reject_btn: "Não, desejo manter meus creditos"
-      accept_btn: "Sim, desejo solicitar estorno"
+      reject_btn: "Não, desejo manter meus créditos"
+      accept_btn: "Sim, desejo solicitar o reembolso do meu apoio"
     index:
       back_date: "Data do apoio"
       current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."

@@ -164,7 +164,7 @@ en:
     display_time: "%{time_ago} ago"
   credits:
     modal:
-      title: 'Important'
+      title: "Do you want to confirm your refund request?"
       text: "Check out how our refund process works:"
       link: "See how works the refund"
       reject_btn: "I want to keep my credits"
