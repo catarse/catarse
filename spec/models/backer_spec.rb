@@ -75,7 +75,23 @@ describe Backer do
       backer.should_not be_valid
     end
   end
-  
+
+  describe ".between_values" do
+    let(:start_at) { 10 }
+    let(:ends_at) { 20 }
+    subject { Backer.between_values(start_at, ends_at) }
+
+
+    before do
+      create(:backer, value: 10)
+      create(:backer, value: 15)
+      create(:backer, value: 20)
+      create(:backer, value: 21)
+    end
+
+    it { should have(3).itens }
+  end
+
   describe ".by_state" do
     before do
       2.times { create(:backer, state: 'confirmed') }

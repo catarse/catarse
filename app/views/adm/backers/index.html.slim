@@ -23,9 +23,15 @@
               = label_tag :by_user_id, t('.user_id')
               = text_field_tag :by_user_id, params[:by_user_id], class: 'input-small'
             .input
+              = label_tag :between_values, t('.between_values')
+              = text_field_tag 'between_values[start_at]', (params[:between_values][:start_at] if params[:between_values].present?), class: 'input-small'
+              | &nbsp;
+              | &nbsp;
+              = text_field_tag 'between_values[ends_at]', (params[:between_values][:ends_at] if params[:between_values].present?), class: 'input-small'
             .input
               = label_tag :by_state, t('.by_state')
               = select_tag :by_state, options_for_select(Backer.state_names, params[:by_state]), include_blank: true
+            .input
               = label_tag :by_key, t('.key')
               = text_field_tag :by_key, params[:by_key]
             .input
