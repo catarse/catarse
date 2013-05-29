@@ -1,4 +1,5 @@
 # coding: utf-8
+require 'uservoice_sso'
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :namespace, :fb_admins, :render_facebook_sdk, :render_facebook_like, :render_twitter
+  helper_method :namespace, :fb_admins, :render_facebook_sdk, :render_facebook_like, :render_twitter, :display_uservoice_sso
 
   before_filter :set_locale
   before_filter :force_http
@@ -37,6 +38,15 @@ class ApplicationController < ActionController::Base
 
   def render_facebook_like options={}
     render_to_string(partial: 'layouts/facebook_like', locals: options).html_safe
+  end
+
+  def display_uservoice_sso
+    if current_user
+      Uservoice::Token.generate({
+        guid: current_user.id, email: current_user.email, display_name: current_user.display_name,
+        url: user_url(current_user), avatar_url: current_user.display_image
+      })
+    end
   end
 
   private
