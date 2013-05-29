@@ -10,25 +10,25 @@ class UserDecorator < Draper::Decorator
     source.uploaded_image.thumb_avatar.url || source.image_url || source.gravatar_url || '/assets/user.png'
   end
 
-  def display_image_html options={:width => 119, :height => 121}
+  def display_image_html options={width: 119, height: 121}
     (%{<div class="avatar_wrapper" style="width: #{options[:width]}px; height: #{options[:height]}px">} +
-      h.image_tag(display_image, :alt => "User", :style => "width: #{options[:width]}px; height: auto") +
+      h.image_tag(display_image, alt: "User", style: "width: #{options[:width]}px; height: auto") +
       %{</div>}).html_safe
   end
 
   def short_name
-    truncate display_name, :length => 20
+    truncate display_name, length: 20
   end
 
   def medium_name
-    truncate display_name, :length => 42
+    truncate display_name, length: 42
   end
 
   def display_credits
-    number_to_currency source.credits, :unit => 'R$', :precision => 0, :delimiter => '.'
+    number_to_currency source.credits, unit: 'R$', precision: 0, delimiter: '.'
   end
 
   def display_total_of_backs
-    number_to_currency source.backs.confirmed.sum(:value), :unit => 'R$', :precision => 0, :delimiter => '.'
+    number_to_currency source.backs.confirmed.sum(:value), unit: 'R$', precision: 0, delimiter: '.'
   end
 end

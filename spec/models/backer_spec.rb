@@ -31,7 +31,7 @@ describe Backer do
       project1 = create(:project)
       project2 = create(:project)
       backer.project = project1
-      reward = create(:reward, :project => project2)
+      reward = create(:reward, project: project2)
       backer.should be_valid
       backer.reward = reward
       backer.should_not be_valid
@@ -39,8 +39,8 @@ describe Backer do
 
     it "should have a value at least equal to reward's minimum value" do
       project = create(:project)
-      reward = create(:reward, :minimum_value => 500, :project => project)
-      backer = build(:backer, :reward => reward, :project => project)
+      reward = create(:reward, minimum_value: 500, project: project)
+      backer = build(:backer, reward: reward, project: project)
       backer.value = 499.99
       backer.should_not be_valid
       backer.value = 500.00
@@ -327,12 +327,12 @@ describe Backer do
 
   describe "#display_value" do
     context "when the value has decimal places" do
-      subject{ build(:backer, :value => 99.99).display_value }
+      subject{ build(:backer, value: 99.99).display_value }
       it{ should == "R$ 100" }
     end
 
     context "when the value does not have decimal places" do
-      subject{ build(:backer, :value => 1).display_value }
+      subject{ build(:backer, value: 1).display_value }
       it{ should == "R$ 1" }
     end
   end

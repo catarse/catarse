@@ -6,7 +6,7 @@ class RewardsController < ApplicationController
 
   def index
     @rewards = Reward.find_by_project_id(params[:project_id])
-    render :json => @rewards
+    render json: @rewards
   end
 
   def show

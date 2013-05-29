@@ -7,7 +7,7 @@ class Backer < ActiveRecord::Base
   schema_associations
 
   validates_presence_of :project, :user, :value
-  validates_numericality_of :value, :greater_than_or_equal_to => 10.00
+  validates_numericality_of :value, greater_than_or_equal_to: 10.00
   validate :reward_must_be_from_project
 
   scope :by_id, ->(id) { where(id: id) }
@@ -16,11 +16,11 @@ class Backer < ActiveRecord::Base
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :project_name_contains, ->(term) { joins(:project).where("unaccent(upper(projects.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :anonymous, where(:anonymous => true)
-  scope :credits, where(:credits => true)
+  scope :anonymous, where(anonymous: true)
+  scope :credits, where(credits: true)
   scope :requested_refund, where(state: 'requested_refund')
   scope :refunded, where(state: 'refunded')
-  scope :not_anonymous, where(:anonymous => false)
+  scope :not_anonymous, where(anonymous: false)
   scope :confirmed, where(state: 'confirmed')
   scope :not_confirmed, where("state <> 'confirmed'") # used in payment engines
   scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
@@ -85,10 +85,10 @@ class Backer < ActiveRecord::Base
 
   def value_must_be_at_least_rewards_value
     return unless reward
-    errors.add(:value, I18n.t('backer.value_must_be_at_least_rewards_value', :minimum_value => reward.display_minimum)) unless value >= reward.minimum_value
+    errors.add(:value, I18n.t('backer.value_must_be_at_least_rewards_value', minimum_value: reward.display_minimum)) unless value >= reward.minimum_value
   end
 
-  validate :should_not_back_if_maximum_backers_been_reached, :on => :create
+  validate :should_not_back_if_maximum_backers_been_reached, on: :create
 
   def should_not_back_if_maximum_backers_been_reached
     return unless reward and reward.maximum_backers and reward.maximum_backers > 0
@@ -96,7 +96,7 @@ class Backer < ActiveRecord::Base
   end
 
   def display_value
-    number_to_currency value, :unit => "R$", :precision => 0, :delimiter => '.'
+    number_to_currency value, unit: "R$", precision: 0, delimiter: '.'
   end
 
   def available_rewards
@@ -109,26 +109,26 @@ class Backer < ActiveRecord::Base
 
   def as_json(options={})
     json_attributes = {
-      :id => id,
-      :anonymous => anonymous,
-      :confirmed => confirmed?,
-      :confirmed_at => display_confirmed_at,
-      :value => display_value,
-      :user => user.as_json(options.merge(:anonymous => anonymous)),
-      :display_value => nil,
-      :reward => nil
+      id: id,
+      anonymous: anonymous,
+      confirmed: confirmed?,
+      confirmed_at: display_confirmed_at,
+      value: display_value,
+      user: user.as_json(options.merge(anonymous: anonymous)),
+      display_value: nil,
+      reward: nil
     }
     if options and options[:can_manage]
       json_attributes.merge!({
-        :display_value => display_value,
-        :reward => reward
+        display_value: display_value,
+        reward: reward
       })
     end
     if options and options[:include_project]
-      json_attributes.merge!({:project => project})
+      json_attributes.merge!({project: project})
     end
     if options and options[:include_reward]
-      json_attributes.merge!({:reward => reward})
+      json_attributes.merge!({reward: reward})
     end
     json_attributes
   end

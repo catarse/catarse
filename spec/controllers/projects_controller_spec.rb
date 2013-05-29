@@ -139,7 +139,7 @@ describe ProjectsController do
 
   describe "GET embed" do
     before do
-      get :embed, :id => project, :locale => :pt 
+      get :embed, id: project, locale: :pt 
     end
     its(:status){ should == 200 }
   end
@@ -147,14 +147,14 @@ describe ProjectsController do
   describe "GET show" do
     context "when we have update_id in the querystring" do
       let(:project){ FactoryGirl.create(:project) }
-      let(:update){ FactoryGirl.create(:update, :project => project) }
-      before{ get :show, :permalink => project.permalink, :update_id => update.id, :locale => :pt }
+      let(:update){ FactoryGirl.create(:update, project: project) }
+      before{ get :show, permalink: project.permalink, update_id: update.id, locale: :pt }
       it("should assign update to @update"){ assigns(:update).should == update }
     end
 
     context "when we have permalink and do not pass permalink in the querystring" do
-      let(:project){ FactoryGirl.create(:project, :permalink => 'test') }
-      before{ get :show, :id => project, :locale => :pt }
+      let(:project){ FactoryGirl.create(:project, permalink: 'test') }
+      before{ get :show, id: project, locale: :pt }
       it{ should redirect_to project_by_slug_path(project.permalink) }
     end
   end

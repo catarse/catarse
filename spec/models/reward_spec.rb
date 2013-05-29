@@ -32,7 +32,7 @@ describe Reward do
   end
 
   it "should have a minimum value" do
-    r = FactoryGirl.build(:reward, :minimum_value => nil)
+    r = FactoryGirl.build(:reward, minimum_value: nil)
     r.should_not be_valid
   end
 
@@ -57,7 +57,7 @@ describe Reward do
   end
 
   it "should have a description" do
-    r = FactoryGirl.build(:reward, :description => nil)
+    r = FactoryGirl.build(:reward, description: nil)
     r.should_not be_valid
   end
 
@@ -132,7 +132,7 @@ describe Reward do
 
   it "should have a HTML-safe name that is a HTML composition from minimum_value, description and sold_out" do
     I18n.locale = :pt
-    r = FactoryGirl.build(:reward, :minimum_value => 0, :description => "Description", :maximum_backers => 0)
+    r = FactoryGirl.build(:reward, minimum_value: 0, description: "Description", maximum_backers: 0)
     r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class=\"sold_out\">Esgotada</div><div class='clear'></div>"
     r.maximum_backers = 1
     r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class='clear'></div>"
