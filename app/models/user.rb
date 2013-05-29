@@ -204,7 +204,7 @@ class User < ActiveRecord::Base
         WHERE
           p.expires_at > current_timestamp AND
           p.id NOT IN (SELECT project_id
-                        FROM backers WHERE state='confirmed' AND user_id = #{id}) AND
+                        FROM backers WHERE user_id = #{id}) AND
           b.user_id in (SELECT user_id
                         FROM backers WHERE state='confirmed' AND project_id = #{back.project.id.to_i}) AND
           p.state = 'online' GROUP BY 2 ORDER BY 1 DESC LIMIT #{quantity}")
