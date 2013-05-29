@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource new: [ :set_email ], except: [ :projects ]
   inherit_resources
   actions :show, :update, :unsubscribe_update, :request_refund, :set_email, :update_email
-  respond_to :json, :only => [:backs, :projects, :request_refund]
+  respond_to :json, only: [:backs, :projects, :request_refund]
 
   def show
     show!{
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     update! do |success,failure|
       success.html do
         flash[:notice] = t('users.current_user_fields.updated')
-        redirect_to (session[:return_to] || user_path(@user, :anchor => 'settings'))
+        redirect_to (session[:return_to] || user_path(@user, anchor: 'settings'))
         session[:return_to] = nil
         return
       end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     update! do
       flash[:notice] = t('users.current_user_fields.updated')
-      return redirect_to user_path(@user, :anchor => 'settings')
+      return redirect_to user_path(@user, anchor: 'settings')
     end
   end
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = @user.errors.full_messages.to_sentence
     end
-    return redirect_to user_path(@user, :anchor => 'settings')
+    return redirect_to user_path(@user, anchor: 'settings')
   end
 
   def projects
@@ -53,12 +53,12 @@ class UsersController < ApplicationController
     @projects = @user.projects.includes(:user, :category, :project_total).order("updated_at DESC")
     @projects = @projects.visible unless @user == current_user
     @projects = @projects.page(params[:page]).per(10)
-    render :json => @projects
+    render json: @projects
   end
 
   def credits
     @user = User.find(params[:id])
     @credits = @user.backs.can_refund.order(:id).all
-    render :json => @credits
+    render json: @credits
   end
 end

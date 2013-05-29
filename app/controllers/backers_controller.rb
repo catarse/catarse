@@ -1,14 +1,14 @@
 class BackersController < ApplicationController
   inherit_resources
-  defaults :resource_class => Backer, :collection_name => 'backs', :instance_name => 'back'
+  defaults resource_class: Backer, collection_name: 'backs', instance_name: 'back'
   belongs_to :user
   actions :index
-  respond_to :json, :only => [:index]
+  respond_to :json, only: [:index]
 
   def index
     index! do |format|
-      format.json{ return render :json => @backs.includes(:user, :reward, project: [:user, :category, :project_total]).to_json({:include_project => true, :can_manage => (can? :manage, @user)}) }
-      format.html{ return render :nothing => true, :status => 404 }
+      format.json{ return render json: @backs.includes(:user, :reward, project: [:user, :category, :project_total]).to_json({include_project: true, can_manage: (can? :manage, @user)}) }
+      format.html{ return render nothing: true, status: 404 }
     end
   end
   
@@ -23,7 +23,7 @@ class BackersController < ApplicationController
     end
 
     redirect_to user_path(parent, anchor: 'credits')      
-    # render :json => {:status => status, :credits => current_user.reload.display_credits}
+    # render json: {status: status, credits: current_user.reload.display_credits}
   end  
 
   protected

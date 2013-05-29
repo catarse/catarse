@@ -30,8 +30,8 @@ FactoryGirl.define do
   factory :project do |f|
     f.name "Foo bar"
     f.permalink { generate(:permalink) }
-    f.association :user, :factory => :user
-    f.association :category, :factory => :category
+    f.association :user, factory: :user
+    f.association :category, factory: :category
     f.about "Foo bar"
     f.headline "Foo bar"
     f.goal 10000
@@ -48,27 +48,27 @@ FactoryGirl.define do
   end
 
   factory :unsubscribe do |f|
-    f.association :user, :factory => :user
-    f.association :project, :factory => :project
-    f.association :notification_type, :factory => :notification_type
+    f.association :user, factory: :user
+    f.association :project, factory: :project
+    f.association :notification_type, factory: :notification_type
   end
 
   factory :notification do |f|
-    f.association :user, :factory => :user
-    f.association :backer, :factory => :backer
-    f.association :project, :factory => :project
-    f.association :notification_type, :factory => :notification_type
+    f.association :user, factory: :user
+    f.association :backer, factory: :backer
+    f.association :project, factory: :project
+    f.association :notification_type, factory: :notification_type
   end
 
   factory :reward do |f|
-    f.association :project, :factory => :project
+    f.association :project, factory: :project
     f.minimum_value 10.00
     f.description "Foo bar"
   end
 
   factory :backer do |f|
-    f.association :project, :factory => :project
-    f.association :user, :factory => :user
+    f.association :project, factory: :project
+    f.association :user, factory: :user
     f.confirmed_at Time.now
     f.value 10.00
     f.state 'confirmed'
@@ -76,7 +76,7 @@ FactoryGirl.define do
   end
 
   factory :payment_notification do |f|
-    f.association :backer, :factory => :backer
+    f.association :backer, factory: :backer
     f.extra_data {}
   end
 
@@ -107,8 +107,8 @@ FactoryGirl.define do
   end
 
   factory :update do |f|
-    f.association :project, :factory => :project
-    f.association :user, :factory => :user
+    f.association :project, factory: :project
+    f.association :user, factory: :user
     f.title "My title"
     f.comment "This is a comment"
     f.comment_html "<p>This is a comment</p>"

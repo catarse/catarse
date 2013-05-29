@@ -6,8 +6,8 @@
       #facebook_share= render_facebook_like href: project_by_slug_url(@project.permalink, locale: I18n.locale)
       ul
         li.embed
-          = link_to '#embed', :id => 'embed_link' do
-            = image_tag "catarse/embed_icon19x9.png", :title => t('projects.show.share.embed_title')
+          = link_to '#embed', id: 'embed_link' do
+            = image_tag "catarse/embed_icon19x9.png", title: t('projects.show.share.embed_title')
             = t('projects.show.share.embed')
       #twitter_share= render_twitter
       .clear

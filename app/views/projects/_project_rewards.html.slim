@@ -12,14 +12,14 @@
             - if can? :update, reward, :maximum_backers
               = f.input :maximum_backers
             .bootstrap-twitter
-              = f.submit :class => 'btn'
+              = f.submit class: 'btn'
 
             .clearfix.bootstrap-twitter
               = link_to [@project, reward], class: 'btn btn-danger', method: :delete, confirm: 'Are you sure?' do
                 i.icon-trash.icon-white
       - if can?(:update, reward)
         .bootstrap-twitter
-          = link_to "#reward#{reward.id}Editor", :class => 'edit_reward btn btn-mini pull-right btn-primary' do
+          = link_to "#reward#{reward.id}Editor", class: 'edit_reward btn btn-mini pull-right btn-primary' do
             i.icon-pencil.icon-white
 
 
@@ -28,7 +28,7 @@
       span.icon.sold_out
     - else
       span.icon.avaliable
-    h2= t('projects.rewards.reward_title', :minimum => reward.display_minimum).html_safe
+    h2= t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
     em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
     .clearfix
     p
@@ -36,9 +36,9 @@
     - if reward.maximum_backers
       .maximum_backers.clearfix
         - if reward.sold_out?
-          .sold_out= t('projects.show.reward.sold_out')
+          .sold_out= t('reward.sold_out')
         - else
-          .limited= t('projects.show.reward.limited')
+          .limited= t('reward.limited')
           .remaining
             = reward.display_remaining
       - in_time_to_confirm = reward.backers.in_time_to_confirm.count

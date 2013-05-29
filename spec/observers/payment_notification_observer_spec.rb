@@ -4,7 +4,7 @@ describe PaymentNotificationObserver do
   describe 'before_save' do
     before do
       Notification.rspec_reset
-      create(:notification_type, :name => 'processing_payment')
+      create(:notification_type, name: 'processing_payment')
     end
 
     context "when payment is being processed" do

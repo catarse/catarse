@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_backs,
-    :to => :decorator
+    to: :decorator
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email,
     :password,
@@ -59,15 +59,15 @@ class User < ActiveRecord::Base
 
   mount_uploader :uploaded_image, LogoUploader
 
-  validates_length_of :bio, :maximum => 140
+  validates_length_of :bio, maximum: 140
   validates :email, email: true, uniqueness: true, allow_nil: true, allow_blank: true
-  #validates :name, :presence => true, :if => :is_devise?
+  #validates :name, presence: true, if: :is_devise?
 
-  validates_presence_of     :email, :if => :is_devise?
-  validates_uniqueness_of   :email, :scope => :provider, :if => :is_devise?
-  validates_presence_of     :password, :if => :password_required?
-  validates_confirmation_of :password, :if => :password_confirmation_required?
-  validates_length_of       :password, :within => 6..128, :allow_blank => true
+  validates_presence_of     :email, if: :is_devise?
+  validates_uniqueness_of   :email, scope: :provider, if: :is_devise?
+  validates_presence_of     :password, if: :password_required?
+  validates_confirmation_of :password, if: :password_confirmation_required?
+  validates_length_of       :password, within: 6..128, allow_blank: true
 
   schema_associations
   has_many :oauth_providers, through: :authorizations
@@ -237,7 +237,7 @@ class User < ActiveRecord::Base
     if total_backs == 2
       I18n.t('user.backs_text.two')
     elsif total_backs > 1
-      I18n.t('user.backs_text.many', :total => (total_backs-1))
+      I18n.t('user.backs_text.many', total: (total_backs-1))
     else
       I18n.t('user.backs_text.one')
     end
@@ -253,22 +253,22 @@ class User < ActiveRecord::Base
 
     if not options or (options and not options[:anonymous])
       json_attributes.merge!({
-        :id => id,
-        :name => display_name,
-        :short_name => short_name,
-        :medium_name => medium_name,
-        :image => display_image,
-        :total_backs => total_backs,
-        :backs_text => backs_text,
-        :url => user_path(self),
-        :city => address_city,
-        :state => address_state
+        id: id,
+        name: display_name,
+        short_name: short_name,
+        medium_name: medium_name,
+        image: display_image,
+        total_backs: total_backs,
+        backs_text: backs_text,
+        url: user_path(self),
+        city: address_city,
+        state: address_state
       })
     end
 
     if options and options[:can_manage]
       json_attributes.merge!({
-        :email => email
+        email: email
       })
     end
 

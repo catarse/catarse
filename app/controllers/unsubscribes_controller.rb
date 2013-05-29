@@ -12,7 +12,7 @@ class UnsubscribesController < ApplicationController
       end
     end
     flash[:notice] = t('users.current_user_fields.updated')
-    return redirect_to user_path(parent, :anchor => 'unsubscribes')
+    return redirect_to user_path(parent, anchor: 'unsubscribes')
   end
 
 end

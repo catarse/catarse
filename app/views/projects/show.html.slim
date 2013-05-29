@@ -1,20 +1,20 @@
 - content_for :js_templates do
-  = render :partial => 'backer'
-  = render :partial => 'project_templates'
+  = render partial: 'backer'
+  = render partial: 'project_templates'
   - if can?(:update, @project)
-    = render :partial => 'sort_rewards'
+    = render partial: 'sort_rewards'
 
 = content_for :meta_tags do
   - if @update
     meta name="description" content=@update.title
     meta property="og:title" content=@update.title
     meta property="og:description" content=@update.comment
-    meta property="og:url" content=project_by_slug_url(@project.permalink, :update_id => @update.id, :locale => I18n.locale)
+    meta property="og:url" content=project_by_slug_url(@project.permalink, update_id: @update.id, locale: I18n.locale)
   - else
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
     meta property="og:description" content=@project.headline
-    meta property="og:url" content=project_by_slug_url(@project.permalink, :locale => I18n.locale)
+    meta property="og:url" content=project_by_slug_url(@project.permalink, locale: I18n.locale)
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image
   meta property="og:site_name" content=::Configuration[:company_name]
@@ -43,29 +43,29 @@
 
     #project_description[data-project=@project.to_json]
     .project_image
-      = image_tag @project.display_image, :width=>'85px', :height => '67px'
+      = image_tag @project.display_image, width:'85px', height: '67px'
     .section_header
       h1= @project.name
-      h4= t('projects.project_header.without_city', :category_name => link_to(@project.category, explore_path(:anchor => @project.category.to_s.parameterize)), :author => link_to(@project.user.display_name, user_path(@project.user))).html_safe
+      h4= t('projects.project_header.without_city', category_name: link_to(@project.category, explore_path(anchor: @project.category.to_s.parameterize)), author: link_to(@project.user.display_name, user_path(@project.user))).html_safe
     .tab_container
       nav#project_menu
-        = link_to '#about', :id => 'about_link', :class => 'selected' do
+        = link_to '#about', id: 'about_link', class: 'selected' do
           = t('.menu.about')
-        = link_to '#updates', :id => 'updates_link' do
+        = link_to '#updates', id: 'updates_link' do
           = t('.menu.updates')
           span.count=" (#{@project.updates.count})"
-        = link_to '#backers', :id => 'backers_link' do
+        = link_to '#backers', id: 'backers_link' do
           = t('.menu.backers')
           span.count=" (#{@project.total_backers})"
-        = link_to '#comments', :id => 'comments_link' do
+        = link_to '#comments', id: 'comments_link' do
           = t('.menu.comments')
           | &nbsp; (
           fb:comments-count href="#{request.url}"
           | )
         - if can? :update, @project
-          = link_to '#edit', :id => 'edit_link' do
+          = link_to '#edit', id: 'edit_link' do
             = t('.menu.edit')
-          = link_to '#reports', :id => 'reports_link' do
+          = link_to '#reports', id: 'reports_link' do
             = t('.menu.reports')
     .main
       #project_content
@@ -91,7 +91,7 @@
               em= t('statistics.backers.subtitle')
             .item.goal
               p= @project.display_pledged
-              em= t('statistics.goal.subtitle', :total => @project.display_goal).html_safe
+              em= t('statistics.goal.subtitle', total: @project.display_goal).html_safe
             .item.time
               - if @project.draft? || @project.rejected?
                 p= @project.online_days
@@ -105,35 +105,35 @@
               = t("projects.back_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
           - if @project.online? && (@project.expires_at > Time.now)
             #pledge
-              = form_tag(new_project_backer_path(@project), :method => :get, :id => 'back_project_form') do
+              = form_tag(new_project_backer_path(@project), method: :get, id: 'back_project_form') do
                 fieldset
-                  = submit_tag t('projects.back_project.submit'), :disabled => (not @project.online?)
+                  = submit_tag t('projects.back_project.submit'), disabled: (not @project.online?)
         #creator_profile
           h3= t('project_by')
-          .avatar = @project.user.display_image_html :width => 80, :height => 80
+          .avatar = @project.user.display_image_html width: 80, height: 80
           .personal_info
             p.name
              = link_to @project.user.display_name, user_path(@project.user)
             #bio
               p= @project.user.bio
           #city
-            p.backer= t('count_backed_projects', :total => @project.user.total_backs)
+            p.backer= t('count_backed_projects', total: @project.user.total_backs)
             p.city
               | #{@project.user.address_city}
         .user_social
           ul
             - if @project.user.facebook_link
               li
-                = link_to "Perfil no facebook", @project.user.facebook_link, :target => '_blank', :class=> 'facebook'
+                = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
             - if @project.user.twitter
               li
-                = link_to "Perfil no twitter", @project.user.twitter_link, :target => '_blank', :class=> 'twitter'
+                = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'twitter'
             - if @project.user.email
               li
-                = mail_to @project.user.email, @project.user.email, :target => '_blank', :class=> 'email'
+                = mail_to @project.user.email, @project.user.email, target: '_blank', class: 'email'
             - if @project.user.other_link
               li.other
-                = link_to @project.user.other_link, @project.user.other_link, :target => '_blank'
+                = link_to @project.user.other_link, @project.user.other_link, target: '_blank'
 
         .clearfix
         - if can?(:update, @project)
@@ -150,7 +150,7 @@
                 = f.input :minimum_value
                 = f.input :description
                 = f.input :maximum_backers
-                = f.submit :class => 'btn'
+                = f.submit class: 'btn'
         #rewards= render 'project_rewards'
 
     .clearfix

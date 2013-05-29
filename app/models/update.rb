@@ -9,15 +9,15 @@ class Update < ActiveRecord::Base
 
   def email_comment_html
     auto_html(comment) do
-      html_escape :map => {
+      html_escape map: {
         '&' => '&amp;',
         '>' => '&gt;',
         '<' => '&lt;',
         '"' => '"'
       }
       email_image width: 513
-      redcloth :target => :_blank
-      link :target => :_blank
+      redcloth target: :_blank
+      link target: :_blank
     end
   end
 

@@ -12,8 +12,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
           where("authorizations.uid = :uid AND oauth_providers.name = :provider", {uid: omniauth[:uid], provider: p.name}).
           first || User.create_with_omniauth(omniauth, current_user)
 
-        flash[:notice] = I18n.t("devise.omniauth_callbacks.success", :kind => p.name.capitalize)
-        sign_in @user, :event => :authentication
+        flash[:notice] = I18n.t("devise.omniauth_callbacks.success", kind: p.name.capitalize)
+        sign_in @user, event: :authentication
         if @user.email
           redirect_to(session[:return_to] || root_path)
           session[:return_to] = nil
