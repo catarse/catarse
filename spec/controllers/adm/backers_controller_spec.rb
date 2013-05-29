@@ -51,18 +51,33 @@ describe Adm::BackersController do
     }    
   end
 
-  describe 'PUT unconfirm' do
+  describe 'PUT pendent' do
     let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
     subject { backer.confirmed? }
 
     before { 
       controller.stub(:current_user).and_return(admin)
-      put :unconfirm, id: backer.id, locale: :pt 
+      put :pendent, id: backer.id, locale: :pt 
     }
 
     it {
       backer.reload
       should be_false
+    }
+  end
+
+  describe 'PUT cancel' do
+    let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
+    subject { backer.canceled? }
+
+    before {
+      controller.stub(:current_user).and_return(admin)
+      put :cancel, id: backer.id, locale: :pt 
+    }
+
+    it {
+      backer.reload
+      should be_true
     }
   end
 

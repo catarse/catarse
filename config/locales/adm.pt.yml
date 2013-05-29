@@ -76,11 +76,13 @@ pt:
       messages:
         successful:
           confirm: 'Apoio confirmado com sucesso!'
-          unconfirm: 'Apoio desconfirmado com sucesso!'
+          pendent: 'Apoio desconfirmado com sucesso!'
           refund: 'Apoio estornado com sucesso!'
           change_reward: 'Recompensa modificada com sucesso!'
           hide: 'Apoio escondido com sucesso!'
+          cancel: 'Apoio cancelado com sucesso!'
       index:
+        cancel: 'Cancelar apoio'
         between_values: 'Valores entre'
         by_state: 'Estado'
         refund_and_hide: 'Fazer estorno e não exibir apoio.'
