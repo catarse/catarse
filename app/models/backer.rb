@@ -140,7 +140,7 @@ class Backer < ActiveRecord::Base
     state :canceled, value: 'canceled'
     state :refunded, value: 'refunded'
     state :requested_refund, value: 'requested_refund'
-    state :refunded_when_project_is_not_finished, value: 'refunded_when_project_is_not_finished'
+    state :refunded_and_canceled, value: 'refunded_and_canceled'
 
     event :pendent do
       transition all => :pending
@@ -167,7 +167,7 @@ class Backer < ActiveRecord::Base
     end
 
     event :hide do
-      transition all => :refunded_when_project_is_not_finished
+      transition all => :refunded_and_canceled
     end
 
     after_transition confirmed: :requested_refund, do: :after_transition_from_confirmed_to_requested_refund
