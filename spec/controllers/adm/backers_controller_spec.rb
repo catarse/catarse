@@ -23,7 +23,7 @@ describe Adm::BackersController do
 
   describe 'PUT hide' do
     let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
-    subject { backer.refunded_when_project_is_not_finished? }
+    subject { backer.refunded_and_canceled? }
 
     before {
       controller.stub(:current_user).and_return(admin)
