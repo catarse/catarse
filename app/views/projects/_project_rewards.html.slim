@@ -36,9 +36,9 @@
     - if reward.maximum_backers
       .maximum_backers.clearfix
         - if reward.sold_out?
-          .sold_out= t('projects.show.reward.sold_out')
+          .sold_out= t('reward.sold_out')
         - else
-          .limited= t('projects.show.reward.limited')
+          .limited= t('reward.limited')
           .remaining
             = reward.display_remaining
       - in_time_to_confirm = reward.backers.in_time_to_confirm.count
