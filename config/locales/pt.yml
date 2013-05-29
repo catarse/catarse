@@ -375,6 +375,7 @@ pt:
         header_subtitle: "Sem você talvez este projeto não tivesse uma chance. Bem-vindo ao time!"
         header_title: "Muito obrigado! :D"
         text_subtitle: "Conte para todo mundo o que você acabou de fazer"
+        recommended_projects: "Você também poderá curtir esses projetos:"
         text_title_html: "Você agora é parte do grupo que faz de tudo para o %{link} acontecer."
         title: "Muito obrigado"
       checkout:
