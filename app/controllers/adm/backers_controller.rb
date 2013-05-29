@@ -12,29 +12,16 @@ class Adm::BackersController < Adm::BaseController
   end
   before_filter :set_title
 
-  def confirm
-    resource.confirm
-    flash[:notice] = I18n.t('adm.backers.messages.successful.confirm')
-    redirect_to adm_backers_path
+  def self.backer_actions
+    %w[confirm pendent refund hide cancel].each do |action|
+      define_method action do
+        resource.send("#{action}")
+        flash[:notice] = I18n.t("adm.backers.messages.successful.#{action}")
+        redirect_to adm_backers_path
+      end
+    end
   end
-
-  def unconfirm
-    resource.pendent
-    flash[:notice] = I18n.t('adm.backers.messages.successful.unconfirm')
-    redirect_to adm_backers_path
-  end
-
-  def refund
-    resource.refund
-    flash[:notice] = I18n.t('adm.backers.messages.successful.refund')
-    redirect_to adm_backers_path
-  end
-
-  def hide
-    resource.hide
-    flash[:notice] = I18n.t('adm.backers.messages.successful.hide')
-    redirect_to adm_backers_path
-  end
+  backer_actions
 
   def change_reward
     resource.change_reward! params[:reward_id]

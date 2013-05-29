@@ -36,7 +36,16 @@ en:
         value: Value
         provider: Provider
     backers:
+      messages:
+        successful:
+          confirm: 'Backer confirmed!'
+          pendent: 'Backer unconfirmed!'
+          refund: 'Backer refunded!'
+          change_reward: 'Reward changed!'
+          hide: 'Backer hided!'
+          cancel: 'Backer canceled!'
       index:
+        cancel: 'Cancel backer'
         refund_and_hide: 'Refund and hide'
         backer_info: 'Info of backer %{key}'
         payment_id: 'Payment ID'

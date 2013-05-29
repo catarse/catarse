@@ -129,10 +129,11 @@ Catarse::Application.routes.draw do
     resources :backers, only: [ :index, :update ] do
       member do
         put 'confirm'
-        put 'unconfirm'
+        put 'pendent'
         put 'change_reward'
         put 'refund'
         put 'hide'
+        put 'cancel'
       end
     end
     resources :users, only: [ :index ]
