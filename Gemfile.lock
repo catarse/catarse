@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_moip.git
-  revision: 1313bce561e4ba44611412f86d36878667e5e1e4
-  ref: 1313bce
+  revision: 6f05a2f42cf368d813ac8e15216d4745cf84fdd3
+  ref: 6f05a2f
   specs:
     catarse_moip (0.1.1)
       libxml-ruby (~> 2.6.0)
@@ -248,7 +248,7 @@ GEM
     mailchimp (0.0.8)
       httparty
     mime-types (1.23)
-    multi_json (1.7.3)
+    multi_json (1.7.4)
     multipart-post (1.2.0)
     net-scp (1.1.1)
       net-ssh (>= 2.6.5)
