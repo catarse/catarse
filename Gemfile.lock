@@ -164,6 +164,7 @@ GEM
     excon (0.6.6)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    ezcrypto (0.7.2)
     facter (1.7.1)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
@@ -460,6 +461,7 @@ DEPENDENCIES
   devise
   draper
   enumerate_it
+  ezcrypto
   factory_girl_rails
   feedzirra
   fog
