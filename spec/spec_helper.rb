@@ -71,6 +71,7 @@ RSpec.configure do |config|
       c.any_instance.stub(:render_facebook_sdk)
       c.any_instance.stub(:render_facebook_like)
       c.any_instance.stub(:render_twitter)
+      c.any_instance.stub(:display_uservoice_sso)
     end
     DatabaseCleaner.clean
     RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
