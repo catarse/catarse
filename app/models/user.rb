@@ -196,7 +196,7 @@ class User < ActiveRecord::Base
   def recommended_projects(quantity = 1)
     # It returns the project that have the biggest amount of backers
     # that contributed to the last project the user contributed that has common backers.
-    backs.includes(:project).confirmed.order('confirmed_at DESC').each do |back|
+    backs.includes(:project).order('created_at DESC').each do |back|
       project = ActiveRecord::Base.connection.execute("
         SELECT count(*), project_id
         FROM backers b
@@ -212,7 +212,7 @@ class User < ActiveRecord::Base
       project.values.each {|x| project_ids << x[1]}
       return Project.find(project_ids) unless project.count == 0
     end
-    Project.visible.online.where(category_id: backs.confirmed.last.project.category.id).last(quantity) unless backs.confirmed.count == 0
+    Project.visible.online.where(category_id: backs.last.project.category.id).last(quantity) unless backs.count == 0
   end
 
   def total_backs
