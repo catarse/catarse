@@ -11,6 +11,7 @@ class Backer < ActiveRecord::Base
   validate :reward_must_be_from_project
   validate :value_must_be_at_least_rewards_value
   validate :should_not_back_if_maximum_backers_been_reached, on: :create
+  validate :project_should_be_online, on: :create
 
   scope :by_id, ->(id) { where(id: id) }
   scope :by_state, ->(state) { where(state: state) }
@@ -91,6 +92,11 @@ class Backer < ActiveRecord::Base
   def should_not_back_if_maximum_backers_been_reached
     return unless reward and reward.maximum_backers and reward.maximum_backers > 0
     errors.add(:reward, I18n.t('backer.should_not_back_if_maximum_backers_been_reached')) unless reward.backers.confirmed.count < reward.maximum_backers
+  end
+
+  def project_should_be_online
+    return if project && project.online?
+    errors.add(:project, I18n.t('backer.project_should_be_online')) 
   end
 
   def display_value

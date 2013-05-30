@@ -2,14 +2,15 @@ require 'spec_helper'
 
 describe Backer do
   let(:user){ create(:user) }
-  let(:project){ create(:project, state: 'failed') }
+  let(:failed_project){ create(:project, state: 'online') }
   let(:unfinished_project){ create(:project, state: 'online') }
-  let(:successful_project){ create(:project, state: 'successful') }
+  let(:successful_project){ create(:project, state: 'online') }
   let(:unfinished_project_backer){ create(:backer, state: 'confirmed', user: user, project: unfinished_project) }
   let(:sucessful_project_backer){ create(:backer, state: 'confirmed', user: user, project: successful_project) }
   let(:not_confirmed_backer){ create(:backer, user: user, project: unfinished_project) }
   let(:older_than_180_days_backer){ create(:backer, created_at: (Date.today - 181.days), state: 'confirmed', user: user, project: unfinished_project) }
-  let(:valid_refund){ create(:backer, state: 'confirmed', user: user, project: project) }
+  let(:valid_refund){ create(:backer, state: 'confirmed', user: user, project: failed_project) }
+
 
   describe "Associations" do
     it { should have_many(:payment_notifications) }
@@ -25,23 +26,18 @@ describe Backer do
     it{ should_not allow_value(9.99).for(:value) }
     it{ should allow_value(10).for(:value) }
     it{ should allow_value(20).for(:value) }
-
-
   end
 
   describe ".between_values" do
     let(:start_at) { 10 }
     let(:ends_at) { 20 }
     subject { Backer.between_values(start_at, ends_at) }
-
-
     before do
       create(:backer, value: 10)
       create(:backer, value: 15)
       create(:backer, value: 20)
       create(:backer, value: 21)
     end
-
     it { should have(3).itens }
   end
 
@@ -82,6 +78,30 @@ describe Backer do
         create(:backer, state: 'waiting_confirmation', created_at: 4.weekdays_ago) 
       end
       it { should have(2).itens }
+    end
+  end
+
+  describe "#project_should_be_online" do
+    subject{ backer }
+    context "when project is draft" do
+      let(:backer){ build(:backer, project: create(:project, state: 'draft')) }
+      it{ should_not be_valid }
+    end
+    context "when project is waiting_funds" do
+      let(:backer){ build(:backer, project: create(:project, state: 'waiting_funds')) }
+      it{ should_not be_valid }
+    end
+    context "when project is successful" do
+      let(:backer){ build(:backer, project: create(:project, state: 'successful')) }
+      it{ should_not be_valid }
+    end
+    context "when project is online" do
+      let(:backer){ build(:backer, project: unfinished_project) }
+      it{ should be_valid }
+    end
+    context "when project is failed" do
+      let(:backer){ build(:backer, project: create(:project, state: 'failed')) }
+      it{ should_not be_valid }
     end
   end
 
@@ -234,33 +254,27 @@ describe Backer do
   end
 
   describe ".can_refund" do
-    before{ valid_refund }
-
     subject{ Backer.can_refund.all }
-
-    context "when project is successful" do
-      before{ sucessful_project_backer }
-      it{ should == [valid_refund] }
+    before do
+      valid_refund
+      sucessful_project_backer
+      unfinished_project
+      not_confirmed_backer
+      older_than_180_days_backer
+      successful_project.update_attributes state: 'successful'
+      failed_project.update_attributes state: 'failed'
     end
-
-    context "when project is not finished" do
-      before{ unfinished_project }
-      it{ should == [valid_refund] }
-    end
-
-    context "when backer is not confirmed" do
-      before{ not_confirmed_backer }
-      it{ should == [valid_refund] }
-    end
-
-    context "when backer is older than 180 days" do
-      before{ older_than_180_days_backer } 
-      it{ should == [valid_refund] }
-    end
+    it{ should == [valid_refund] }
   end
 
   describe "#can_refund?" do
     subject{ backer.can_refund? }
+    before do
+      valid_refund
+      sucessful_project_backer
+      successful_project.update_attributes state: 'successful'
+      failed_project.update_attributes state: 'failed'
+    end
 
     context "when project is successful" do
       let(:backer){ sucessful_project_backer }
@@ -293,27 +307,31 @@ describe Backer do
     context "when backs are confirmed and not done with credits but project is successful" do
       before do
         create(:backer, state: 'confirmed', user: user, project: successful_project)
+        successful_project.update_attributes state: 'successful'
       end
       it{ should == 0 }
     end
 
     context "when backs are confirmed and not done with credits" do
       before do
-        create(:backer, state: 'confirmed', user: user, project: project)
+        create(:backer, state: 'confirmed', user: user, project: failed_project)
+        failed_project.update_attributes state: 'failed'
       end
       it{ should == 10 }
     end
 
     context "when backs are done with credits" do
       before do
-        create(:backer, credits: true, state: 'confirmed', user: user, project: project)
+        create(:backer, credits: true, state: 'confirmed', user: user, project: failed_project)
+        failed_project.update_attributes state: 'failed'
       end
       it{ should == 0 }
     end
 
     context "when backs are not confirmed" do
       before do
-        create(:backer, user: user, project: project, state: 'pending')
+        create(:backer, user: user, project: failed_project, state: 'pending')
+        failed_project.update_attributes state: 'failed'
       end
       it{ should == 0 }
     end

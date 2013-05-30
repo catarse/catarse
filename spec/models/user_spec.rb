@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe User do
-  let(:user){ FactoryGirl.create(:user, provider: "foo", uid: "bar") }
-  let(:unfinished_project){ FactoryGirl.create(:project, state: 'online') }
-  let(:successful_project){ FactoryGirl.create(:project, state: 'successful') }
-  let(:failed_project){ FactoryGirl.create(:project, state: 'failed') }
-  let(:notification_type){ FactoryGirl.create(:notification_type, name: 'updates') }
-  let(:facebook_provider){ FactoryGirl.create :oauth_provider, name: 'facebook' }
+  let(:user){ create(:user, provider: "foo", uid: "bar") }
+  let(:unfinished_project){ create(:project, state: 'online') }
+  let(:successful_project){ create(:project, state: 'online') }
+  let(:failed_project){ create(:project, state: 'online') }
+  let(:notification_type){ create(:notification_type, name: 'updates') }
+  let(:facebook_provider){ create :oauth_provider, name: 'facebook' }
 
   describe "associations" do
     it{ should have_many :backs }
@@ -38,9 +38,10 @@ describe User do
 
     context "when he has credits in the user_total" do
       before do
-        b = FactoryGirl.create(:backer, state: 'confirmed', value: 100, project: failed_project)
+        b = create(:backer, state: 'confirmed', value: 100, project: failed_project)
+        failed_project.update_attributes state: 'failed'
         @u = b.user
-        b = FactoryGirl.create(:backer, state: 'confirmed', value: 100, project: successful_project)
+        b = create(:backer, state: 'confirmed', value: 100, project: successful_project)
       end
       it{ should == [@u] }
     end
@@ -48,15 +49,15 @@ describe User do
 
   describe ".by_payer_email" do
     before do
-      p = FactoryGirl.create(:payment_notification)
+      p = create(:payment_notification)
       backer = p.backer
       @u = backer.user
       p.extra_data = {'payer_email' => 'foo@bar.com'}
       p.save!
-      p = FactoryGirl.create(:payment_notification, backer: backer)
+      p = create(:payment_notification, backer: backer)
       p.extra_data = {'payer_email' => 'another_email@bar.com'}
       p.save!
-      p = FactoryGirl.create(:payment_notification)
+      p = create(:payment_notification)
       p.extra_data = {'payer_email' => 'another_email@bar.com'}
       p.save!
     end
@@ -66,14 +67,14 @@ describe User do
 
   describe ".by_key" do
     before do
-      b = FactoryGirl.create(:backer)
+      b = create(:backer)
       @u = b.user
       b.key = 'abc'
       b.save!
-      b = FactoryGirl.create(:backer, user: @u)
+      b = create(:backer, user: @u)
       b.key = 'abcde'
       b.save!
-      b = FactoryGirl.create(:backer)
+      b = create(:backer)
       b.key = 'def'
       b.save!
     end
@@ -83,8 +84,8 @@ describe User do
 
   describe ".by_id" do
     before do
-      @u = FactoryGirl.create(:user)
-      FactoryGirl.create(:user)
+      @u = create(:user)
+      create(:user)
     end
     subject{ User.by_id @u.id }
     it{ should == [@u] }
@@ -92,8 +93,8 @@ describe User do
 
   describe ".by_name" do
     before do
-      @u = FactoryGirl.create(:user, name: 'Foo Bar')
-      FactoryGirl.create(:user, name: 'Baz Qux')
+      @u = create(:user, name: 'Foo Bar')
+      create(:user, name: 'Baz Qux')
     end
     subject{ User.by_name 'Bar' }
     it{ should == [@u] }
@@ -101,8 +102,8 @@ describe User do
 
   describe ".by_email" do
     before do
-      @u = FactoryGirl.create(:user, email: 'foo@bar.com')
-      FactoryGirl.create(:user, email: 'another_email@bar.com')
+      @u = create(:user, email: 'foo@bar.com')
+      create(:user, email: 'another_email@bar.com')
     end
     subject{ User.by_email 'foo@bar' }
     it{ should == [@u] }
@@ -111,20 +112,22 @@ describe User do
   describe ".who_backed_project" do
     subject{ User.who_backed_project(successful_project.id) }
     before do
-      @backer = FactoryGirl.create(:backer, state: 'confirmed', project: successful_project)
-      FactoryGirl.create(:backer, state: 'confirmed', project: successful_project, user: @backer.user)
-      FactoryGirl.create(:backer, state: 'pending', project: successful_project)
+      @backer = create(:backer, state: 'confirmed', project: successful_project)
+      create(:backer, state: 'confirmed', project: successful_project, user: @backer.user)
+      create(:backer, state: 'pending', project: successful_project)
     end
     it{ should == [@backer.user] }
   end
 
   describe ".backer_totals" do
     before do
-      FactoryGirl.create(:backer, state: 'confirmed', value: 100, credits: false, project: successful_project)
-      FactoryGirl.create(:backer, state: 'confirmed', value: 50, credits: false, project: successful_project)
-      user = FactoryGirl.create(:backer, state: 'confirmed', value: 25, project: failed_project).user
+      create(:backer, state: 'confirmed', value: 100, credits: false, project: successful_project)
+      create(:backer, state: 'confirmed', value: 50, credits: false, project: successful_project)
+      user = create(:backer, state: 'confirmed', value: 25, project: failed_project).user
+      failed_project.update_attributes state: 'failed'
+      successful_project.update_attributes state: 'successful'
       user.save!
-      @u = FactoryGirl.create(:user)
+      @u = create(:user)
     end
 
     context "when we call upon user without backs" do
@@ -169,7 +172,7 @@ describe User do
     its(:bio){ should == auth['info']['description'][0..139] }
 
     describe "when user is merging your facebook account" do
-      let(:user) { FactoryGirl.create(:user, provider: nil, name: 'Test', email: 'test@test.com') }
+      let(:user) { create(:user, provider: nil, name: 'Test', email: 'test@test.com') }
       let(:created_user){ User.create_with_omniauth(auth, user) }
 
       subject { created_user }
@@ -214,14 +217,16 @@ describe User do
 
   describe "#credits" do
     before do
-      @u = FactoryGirl.create(:user)
-      FactoryGirl.create(:backer, state: 'confirmed', credits: false, value: 100, user_id: @u.id, project: successful_project)
-      FactoryGirl.create(:backer, state: 'confirmed', credits: false, value: 100, user_id: @u.id, project: unfinished_project)
-      FactoryGirl.create(:backer, state: 'confirmed', credits: false, value: 200, user_id: @u.id, project: failed_project)
-      FactoryGirl.create(:backer, state: 'confirmed', credits: true, value: 100, user_id: @u.id, project: successful_project)
-      FactoryGirl.create(:backer, state: 'confirmed', credits: true, value: 50, user_id: @u.id, project: unfinished_project)
-      FactoryGirl.create(:backer, state: 'confirmed', credits: true, value: 100, user_id: @u.id, project: failed_project)
-      FactoryGirl.create(:backer, state: 'requested_refund', credits: false, value: 200, user_id: @u.id, project: failed_project)
+      @u = create(:user)
+      create(:backer, state: 'confirmed', credits: false, value: 100, user_id: @u.id, project: successful_project)
+      create(:backer, state: 'confirmed', credits: false, value: 100, user_id: @u.id, project: unfinished_project)
+      create(:backer, state: 'confirmed', credits: false, value: 200, user_id: @u.id, project: failed_project)
+      create(:backer, state: 'confirmed', credits: true, value: 100, user_id: @u.id, project: successful_project)
+      create(:backer, state: 'confirmed', credits: true, value: 50, user_id: @u.id, project: unfinished_project)
+      create(:backer, state: 'confirmed', credits: true, value: 100, user_id: @u.id, project: failed_project)
+      create(:backer, state: 'requested_refund', credits: false, value: 200, user_id: @u.id, project: failed_project)
+      failed_project.update_attributes state: 'failed'
+      successful_project.update_attributes state: 'successful'
     end
     subject{ @u.credits }
     it{ should == 50.0 }
@@ -237,15 +242,13 @@ describe User do
   end
 
   describe "#recommended_project" do
-    subject{user.recommended_projects}
+    subject{ user.recommended_projects }
     before do
-      user2, p1, @p2, @p3 = FactoryGirl.create(:user),FactoryGirl.create(:project), FactoryGirl.create(:project, state: :online), FactoryGirl.create(:project, state: :draft)
-      FactoryGirl.create(:backer, state: 'confirmed', user: user2, project: p1)
-      FactoryGirl.create(:backer, state: 'confirmed', user: user2, project: @p2)
-      FactoryGirl.create(:backer, state: 'confirmed', user: user2, project: @p3)
-      FactoryGirl.create(:backer, state: 'confirmed', user: user, project: p1)
+      other_backer = create(:backer, state: 'confirmed')
+      create(:backer, state: 'confirmed', user: other_backer.user, project: unfinished_project)
+      create(:backer, state: 'confirmed', user: user, project: other_backer.project)
     end
-    it{ should == [@p2]}
+    it{ should == [unfinished_project]}
   end
 
   describe "#updates_subscription" do
@@ -255,7 +258,7 @@ describe User do
       it{ should be_new_record }
     end
     context "when user is unsubscribed from all projects" do
-      before { @u = FactoryGirl.create(:unsubscribe, project_id: nil, notification_type_id: notification_type.id, user_id: user.id )}
+      before { @u = create(:unsubscribe, project_id: nil, notification_type_id: notification_type.id, user_id: user.id )}
       it{ should == @u}
     end
   end
@@ -263,9 +266,9 @@ describe User do
   describe "#project_unsubscribes" do
     subject{user.project_unsubscribes}
     before do
-      @p1 = FactoryGirl.create(:project)
-      FactoryGirl.create(:backer, user: user, project: @p1)
-      @u1 = FactoryGirl.create(:unsubscribe, project_id: @p1.id, notification_type_id: notification_type.id, user_id: user.id )
+      @p1 = create(:project)
+      create(:backer, user: user, project: @p1)
+      @u1 = create(:unsubscribe, project_id: @p1.id, notification_type_id: notification_type.id, user_id: user.id )
     end
     it{ should == [@u1]}
   end
@@ -273,36 +276,36 @@ describe User do
   describe "#backed_projects" do
     subject{user.backed_projects}
     before do
-      @p1 = FactoryGirl.create(:project)
-      FactoryGirl.create(:backer, user: user, project: @p1)
-      FactoryGirl.create(:backer, user: user, project: @p1)
+      @p1 = create(:project)
+      create(:backer, user: user, project: @p1)
+      create(:backer, user: user, project: @p1)
     end
     it{should == [@p1]}
   end
 
   describe "#remember_me_hash" do
-    subject{ FactoryGirl.create(:user, provider: "foo", uid: "bar").remember_me_hash }
+    subject{ create(:user, provider: "foo", uid: "bar").remember_me_hash }
     it{ should == "27fc6690fafccbb0fc0b8f84c6749644" }
   end
 
   describe "#facebook_id" do
     subject{ user.facebook_id }
     context "when user have a FB authorization" do
-      let(:user){ FactoryGirl.create(:user, authorizations: [ FactoryGirl.create(:authorization, uid: 'bar', oauth_provider: facebook_provider)]) }
+      let(:user){ create(:user, authorizations: [ create(:authorization, uid: 'bar', oauth_provider: facebook_provider)]) }
       it{ should == 'bar' }
     end
     context "when user do not have a FB authorization" do
-      let(:user){ FactoryGirl.create(:user) }
+      let(:user){ create(:user) }
       it{ should == nil }
     end
   end
 
   describe "#trustee?" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
 
     context "when user is a moderator of one or more channels" do
       it "should return true" do
-        user.channels << FactoryGirl.create(:channel)
+        user.channels << create(:channel)
         expect(user.trustee?).to eq(true)
       end
     end
