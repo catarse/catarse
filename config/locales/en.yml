@@ -153,6 +153,7 @@ en:
     reward_must_be_from_project: "must be from the same project"
     should_not_back_if_maximum_backers_been_reached: "has reached its maximum backers"
     value_must_be_at_least_rewards_value: "must be at least %{minimum_value} for the selected reward"
+    project_should_be_online: "You can not back a project that is not online"
   backer_plural: backers
   project_plural: projects
   project_singular: project

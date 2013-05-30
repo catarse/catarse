@@ -115,8 +115,9 @@ describe Project do
     before do
       @project_01 = create(:project, online_days: -1, goal: 300, state: 'online')
       @project_02 = create(:project, online_days: 5, goal: 300, state: 'online')
-      @project_03 = create(:project, online_days: -7, goal: 300, state: 'waiting_funds')
+      @project_03 = create(:project, online_days: -7, goal: 300, state: 'online')
       backer = create(:backer, project: @project_03, value: 3000, state: 'confirmed')
+      @project_03.update_attributes state: 'waiting_funds'
       pending_backer = create(:backer, project: @project_01, value: 340, state: 'waiting_confirmation')
       @project_04 = create(:project, online_days: -7, goal: 300, state: 'waiting_funds')
       Project.finish_projects!
@@ -254,7 +255,7 @@ describe Project do
   describe ".online" do
     before do
       @p = create(:project, state: 'online')
-      create(:project)
+      create(:project, state: 'draft')
     end
     subject{ Project.online}
     it{ should == [@p] }
@@ -583,7 +584,7 @@ describe Project do
   end
 
   describe "state machine" do
-    let(:project) { create(:project) }
+    let(:project) { create(:project, state: 'draft') }
 
     describe '#draft?' do
       subject { project.draft? }
@@ -650,84 +651,78 @@ describe Project do
       subject { main_project }
 
       context 'when project is not approved' do
+        before do
+          main_project.update_attributes state: 'draft'
+        end
         its(:finish) { should be_false }
       end
 
-      context 'when project is approved' do
+      context 'when project is expired and the sum of the pending backers and confirmed backers dont reached the goal' do
         before do
-          subject.approve
+          create(:backer, value: 100, project: main_project, created_at: 2.days.ago)
+          main_project.finish
         end
 
-        context 'when project is expired and the sum of the pending backers and confirmed backers dont reached the goal' do
-          before do
-            create(:backer, value: 100, project: subject, created_at: 2.days.ago)
-            subject.finish
-          end
+        its(:failed?) { should be_true }
+      end
 
-          its(:failed?) { should be_true }
+      context 'when project is expired and the sum of the pending backers and confirmed backers reached 30% of the goal' do
+        before do
+          create(:backer, value: 100, project: main_project, created_at: 2.days.ago)
+          create(:backer, value: 9_000, project: main_project, state: 'waiting_confirmation')
+          main_project.finish
         end
 
-        context 'when project is expired and the sum of the pending backers and confirmed backers reached 30% of the goal' do
-          before do
-            create(:backer, value: 100, project: subject, created_at: 2.days.ago)
-            create(:backer, value: 9_000, project: subject, state: 'waiting_confirmation')
+        its(:waiting_funds?) { should be_true }
+      end
 
-            subject.finish
-          end
-
-          its(:waiting_funds?) { should be_true }
+      context 'when project is expired and have recent backers without confirmation' do
+        before do
+          create(:backer, value: 30_000, project: subject, state: 'waiting_confirmation')
+          main_project.finish
         end
 
-        context 'when project is expired and have recent backers without confirmation' do
-          before do
-            create(:backer, value: 30_000, project: subject, state: 'waiting_confirmation')
-            subject.finish
-          end
+        its(:waiting_funds?) { should be_true }
+      end
 
-          its(:waiting_funds?) { should be_true }
+      context 'when project already hit the goal and passed the waiting_funds time' do
+        before do
+          main_project.update_attributes state: 'waiting_funds'
+          subject.stub(:pending_backers_reached_the_goal?).and_return(true)
+          subject.stub(:reached_goal?).and_return(true)
+          subject.update_column :expires_at, 2.weeks.ago
+          subject.finish
+        end
+        its(:successful?) { should be_true }
+      end
+
+      context 'when project already hit the goal and still is in the waiting_funds time' do
+        before do
+          subject.stub(:pending_backers_reached_the_goal?).and_return(true)
+          subject.stub(:reached_goal?).and_return(true)
+          create(:backer, project: main_project, user: user, value: 20, state: 'waiting_confirmation')
+          main_project.update_attributes state: 'waiting_funds'
+          subject.finish
+        end
+        its(:successful?) { should be_false }
+      end
+
+      context 'when project not hit the goal' do
+        let(:user) { create(:user) }
+        let(:backer) { create(:backer, project: main_project, user: user, value: 20, payment_token: 'ABC') }
+
+        before do
+          backer
+          subject.update_column :expires_at, 2.weeks.ago
+          subject.finish
         end
 
-        context 'when project already hit the goal' do
-          before do
-            subject.stub(:pending_backers_reached_the_goal?).and_return(true)
-            subject.stub(:reached_goal?).and_return(true)
-            subject.finish
-          end
+        its(:failed?) { should be_true }
 
-          context "and pass the waiting fund time" do
-            before do
-              subject.update_column :expires_at, 2.weeks.ago
-              subject.finish
-            end
-            its(:successful?) { should be_true }
-          end
-
-          context "and still in waiting fund time" do
-            before do
-              create(:backer, project: subject, user: user, value: 20, state: 'waiting_confirmation')
-              subject.finish
-            end
-
-            its(:successful?) { should be_false }
-          end
-        end
-
-        context 'when project not hit the goal' do
-          let(:user) { create(:user) }
-          let(:backer) { create(:backer, project: subject, user: user, value: 20, payment_token: 'ABC') }
-
-          before do
-            subject.update_column :expires_at, 2.weeks.ago
-            subject.finish
-          end
-
-          its(:failed?) { should be_true }
-
-          it "should generate credits for users" do
-            backer.confirm!
-            user.reload
-            user.credits.should == 20
-          end
+        it "should generate credits for users" do
+          backer.confirm!
+          user.reload
+          user.credits.should == 20
         end
       end
     end

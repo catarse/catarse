@@ -48,9 +48,11 @@ describe BackerObserver do
     end
 
     context "when project is already successful" do
-      let(:project){ create(:project, state: 'successful') }
+      let(:project){ create(:project, state: 'online') }
       let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, project: project) }
       before do
+        backer
+        project.update_attributes state: 'successful'
         Notification.should_receive(:create_notification).never
         backer.save!
       end
