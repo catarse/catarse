@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe Projects::BackersController do
   render_views
-  let(:failed_project) { FactoryGirl.create(:project, state: 'failed') }
-  let(:project) { FactoryGirl.create(:project) }
-  let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: true, project: project, state: 'pending') }
+  let(:project) { create(:project) }
+  let(:backer){ create(:backer, value: 10.00, credits: true, project: project, state: 'pending') }
   let(:user){ nil }
   let(:backer_info){ { address_city: 'Porto Alegre', address_complement: '24', address_neighbourhood: 'Rio Branco', address_number: '1004', address_phone_number: '(51)2112-8397', address_state: 'RS', address_street: 'Rua Mariante', address_zip_code: '90430-180', payer_email: 'diogo@biazus.me', payer_name: 'Diogo de Oliveira Biazus' } }
 
@@ -24,7 +23,7 @@ describe Projects::BackersController do
     end
 
     context "when backer don't exist in current_user" do
-      let(:user){ FactoryGirl.create(:user) }
+      let(:user){ create(:user) }
       it{ should redirect_to(root_path) }
       it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
@@ -35,6 +34,7 @@ describe Projects::BackersController do
   end
 
   describe "PUT credits_checkout" do
+    let(:failed_project) { create(:project, state: 'online') }
     before do
       put :credits_checkout, { locale: :pt, project_id: project.id, id: backer.id }
     end
@@ -44,7 +44,7 @@ describe Projects::BackersController do
     end
 
     context "when backer don't exist in current_user" do
-      let(:user){ FactoryGirl.create(:user) }
+      let(:user){ create(:user) }
       it{ should redirect_to(root_path) }
       it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
@@ -58,7 +58,8 @@ describe Projects::BackersController do
 
     context "with correct user and sufficient credits" do
       let(:user) do 
-        FactoryGirl.create(:backer, value: 10.00, credits: false, state: 'confirmed', user: backer.user, project: failed_project)
+        create(:backer, value: 10.00, credits: false, state: 'confirmed', user: backer.user, project: failed_project)
+        failed_project.update_attributes state: 'failed'
         backer.user.reload
         backer.user
       end
@@ -81,7 +82,7 @@ describe Projects::BackersController do
     end
 
     context "when user is logged in" do
-      let(:user){ FactoryGirl.create(:user) }
+      let(:user){ create(:user) }
       its(:body){ should =~ /#{I18n.t('projects.backers.create.title')}/ }
       its(:body){ should =~ /#{project.name}/ }
       its(:body){ should =~ /R\$ 20/ }
@@ -90,7 +91,7 @@ describe Projects::BackersController do
 
   describe "GET new" do
     let(:secure_review_host){ nil }
-    let(:user){ FactoryGirl.create(:user) }
+    let(:user){ create(:user) }
     let(:online){ true }
     before do
       ::Configuration[:secure_review_host] = secure_review_host
@@ -128,7 +129,7 @@ describe Projects::BackersController do
   end
 
   describe "GET show" do
-    let(:backer){ FactoryGirl.create(:backer, value: 10.00, credits: false, state: 'confirmed') }
+    let(:backer){ create(:backer, value: 10.00, credits: false, state: 'confirmed') }
     before do
       get :show, { locale: :pt, project_id: backer.project.id, id: backer.id }
     end
@@ -139,7 +140,7 @@ describe Projects::BackersController do
     end
 
     context "when user logged in is different from backer" do
-      let(:user){ FactoryGirl.create(:user) }
+      let(:user){ create(:user) }
       it{ should redirect_to root_path }
       it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
@@ -153,10 +154,10 @@ describe Projects::BackersController do
 
   describe "GET index" do
     before do
-      FactoryGirl.create(:backer, value: 10.00, state: 'confirmed', 
-              reward: FactoryGirl.create(:reward, project: project, description: 'Test Reward'), 
+      create(:backer, value: 10.00, state: 'confirmed', 
+              reward: create(:reward, project: project, description: 'Test Reward'), 
               project: project, 
-              user: FactoryGirl.create(:user, name: 'Foo Bar'))
+              user: create(:user, name: 'Foo Bar'))
       get :index, { locale: :pt, project_id: project.id, format: :json }
     end
 
@@ -179,13 +180,13 @@ describe Projects::BackersController do
     end
 
     context "with admin user" do
-      let(:user){ FactoryGirl.create(:user, admin: true)}
+      let(:user){ create(:user, admin: true)}
       it_should_behave_like "admin / owner"
     end
 
     context "with project owner user" do
-      let(:user){ FactoryGirl.create(:user, admin: false)}
-      let(:project) { FactoryGirl.create(:project, user: user) }
+      let(:user){ create(:user, admin: false)}
+      let(:project) { create(:project, user: user) }
       it_should_behave_like "admin / owner"
     end
 

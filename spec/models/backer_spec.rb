@@ -2,14 +2,15 @@ require 'spec_helper'
 
 describe Backer do
   let(:user){ create(:user) }
-  let(:project){ create(:project, state: 'failed') }
+  let(:failed_project){ create(:project, state: 'online') }
   let(:unfinished_project){ create(:project, state: 'online') }
-  let(:successful_project){ create(:project, state: 'successful') }
+  let(:successful_project){ create(:project, state: 'online') }
   let(:unfinished_project_backer){ create(:backer, state: 'confirmed', user: user, project: unfinished_project) }
   let(:sucessful_project_backer){ create(:backer, state: 'confirmed', user: user, project: successful_project) }
   let(:not_confirmed_backer){ create(:backer, user: user, project: unfinished_project) }
   let(:older_than_180_days_backer){ create(:backer, created_at: (Date.today - 181.days), state: 'confirmed', user: user, project: unfinished_project) }
-  let(:valid_refund){ create(:backer, state: 'confirmed', user: user, project: project) }
+  let(:valid_refund){ create(:backer, state: 'confirmed', user: user, project: failed_project) }
+
 
   describe "Associations" do
     it { should have_many(:payment_notifications) }
@@ -25,70 +26,18 @@ describe Backer do
     it{ should_not allow_value(9.99).for(:value) }
     it{ should allow_value(10).for(:value) }
     it{ should allow_value(20).for(:value) }
-
-    it "should have reward from the same project only" do
-      backer = build(:backer)
-      project1 = create(:project)
-      project2 = create(:project)
-      backer.project = project1
-      reward = create(:reward, project: project2)
-      backer.should be_valid
-      backer.reward = reward
-      backer.should_not be_valid
-    end
-
-    it "should have a value at least equal to reward's minimum value" do
-      project = create(:project)
-      reward = create(:reward, minimum_value: 500, project: project)
-      backer = build(:backer, reward: reward, project: project)
-      backer.value = 499.99
-      backer.should_not be_valid
-      backer.value = 500.00
-      backer.should be_valid
-      backer.value = 500.01
-      backer.should be_valid
-    end
-
-    it "should not be able to back if reward's maximum backers' been reached (and maximum backers > 0)" do
-      project = create(:project)
-      reward1 = create(:reward, maximum_backers: nil, project: project)
-      reward2 = create(:reward, maximum_backers: 1, project: project)
-      reward3 = create(:reward, maximum_backers: 2, project: project)
-      backer = build(:backer, state: 'confirmed', reward: reward1, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward1, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward2, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward2, project: project)
-      backer.should_not be_valid
-      backer = build(:backer, state: 'confirmed', reward: reward3, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward3, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward3, project: project)
-      backer.should_not be_valid
-    end
   end
 
   describe ".between_values" do
     let(:start_at) { 10 }
     let(:ends_at) { 20 }
     subject { Backer.between_values(start_at, ends_at) }
-
-
     before do
       create(:backer, value: 10)
       create(:backer, value: 15)
       create(:backer, value: 20)
       create(:backer, value: 21)
     end
-
     it { should have(3).itens }
   end
 
@@ -113,25 +62,90 @@ describe Backer do
   end
 
   describe ".can_cancel" do
-    let(:waiting_confirmation_backer) { create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) }
-    let(:waiting_confirmation_backer_1) { create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago) }
-    let(:waiting_confirmation_backer_2) { create(:backer, state: 'waiting_confirmation', created_at: 4.weekdays_ago) }
-
     subject { Backer.can_cancel}
 
     context "when backer is in time to wait the confirmation" do
-      before { waiting_confirmation_backer }
+      before do 
+        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) 
+      end
       it { should have(0).item }
     end
 
     context "when we have backers that is passed the confirmation time" do
       before do
-        waiting_confirmation_backer
-        waiting_confirmation_backer_1
-        waiting_confirmation_backer_2
+        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) 
+        create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago) 
+        create(:backer, state: 'waiting_confirmation', created_at: 4.weekdays_ago) 
       end
-
       it { should have(2).itens }
+    end
+  end
+
+  describe "#project_should_be_online" do
+    subject{ backer }
+    context "when project is draft" do
+      let(:backer){ build(:backer, project: create(:project, state: 'draft')) }
+      it{ should_not be_valid }
+    end
+    context "when project is waiting_funds" do
+      let(:backer){ build(:backer, project: create(:project, state: 'waiting_funds')) }
+      it{ should_not be_valid }
+    end
+    context "when project is successful" do
+      let(:backer){ build(:backer, project: create(:project, state: 'successful')) }
+      it{ should_not be_valid }
+    end
+    context "when project is online" do
+      let(:backer){ build(:backer, project: unfinished_project) }
+      it{ should be_valid }
+    end
+    context "when project is failed" do
+      let(:backer){ build(:backer, project: create(:project, state: 'failed')) }
+      it{ should_not be_valid }
+    end
+  end
+
+  describe "#should_not_back_if_maximum_backers_been_reached" do
+    let(:reward){ create(:reward, maximum_backers: 1) }
+    let(:backer){ build(:backer, reward: reward, project: reward.project) }
+    subject{ backer }
+    context "when backers count is lower than maximum_backers" do
+      it{ should be_valid }
+    end
+    context "when backers count is equal than maximum_backers" do
+      before{ create(:backer, reward: reward, project: reward.project, state: 'confirmed') }
+      it{ should_not be_valid }
+    end
+  end
+
+  describe "#reward_must_be_from_project" do
+    let(:backer){ build(:backer, reward: reward, project: unfinished_project) }
+    subject{ backer }
+    context "when reward is from the same project" do
+      let(:reward){ create(:reward, project: unfinished_project) }
+      it{ should be_valid }
+    end
+    context "when reward is not from the same project" do
+      let(:reward){ create(:reward) }
+      it{ should_not be_valid }
+    end
+  end
+
+  describe "#value_must_be_at_least_rewards_value" do
+    let(:reward){ create(:reward, minimum_value: 500) }
+    let(:backer){ build(:backer, reward: reward, project: reward.project, value: value) }
+    subject{ backer }
+    context "when value is lower than reward minimum value" do
+      let(:value){ 499.99 }
+      it{ should_not be_valid }
+    end
+    context "when value is equal than reward minimum value" do
+      let(:value){ 500.00 }
+      it{ should be_valid }
+    end
+    context "when value is greater than reward minimum value" do
+      let(:value){ 500.01 }
+      it{ should be_valid }
     end
   end
 
@@ -240,33 +254,27 @@ describe Backer do
   end
 
   describe ".can_refund" do
-    before{ valid_refund }
-
     subject{ Backer.can_refund.all }
-
-    context "when project is successful" do
-      before{ sucessful_project_backer }
-      it{ should == [valid_refund] }
+    before do
+      valid_refund
+      sucessful_project_backer
+      unfinished_project
+      not_confirmed_backer
+      older_than_180_days_backer
+      successful_project.update_attributes state: 'successful'
+      failed_project.update_attributes state: 'failed'
     end
-
-    context "when project is not finished" do
-      before{ unfinished_project }
-      it{ should == [valid_refund] }
-    end
-
-    context "when backer is not confirmed" do
-      before{ not_confirmed_backer }
-      it{ should == [valid_refund] }
-    end
-
-    context "when backer is older than 180 days" do
-      before{ older_than_180_days_backer } 
-      it{ should == [valid_refund] }
-    end
+    it{ should == [valid_refund] }
   end
 
   describe "#can_refund?" do
     subject{ backer.can_refund? }
+    before do
+      valid_refund
+      sucessful_project_backer
+      successful_project.update_attributes state: 'successful'
+      failed_project.update_attributes state: 'failed'
+    end
 
     context "when project is successful" do
       let(:backer){ sucessful_project_backer }
@@ -299,27 +307,31 @@ describe Backer do
     context "when backs are confirmed and not done with credits but project is successful" do
       before do
         create(:backer, state: 'confirmed', user: user, project: successful_project)
+        successful_project.update_attributes state: 'successful'
       end
       it{ should == 0 }
     end
 
     context "when backs are confirmed and not done with credits" do
       before do
-        create(:backer, state: 'confirmed', user: user, project: project)
+        create(:backer, state: 'confirmed', user: user, project: failed_project)
+        failed_project.update_attributes state: 'failed'
       end
       it{ should == 10 }
     end
 
     context "when backs are done with credits" do
       before do
-        create(:backer, credits: true, state: 'confirmed', user: user, project: project)
+        create(:backer, credits: true, state: 'confirmed', user: user, project: failed_project)
+        failed_project.update_attributes state: 'failed'
       end
       it{ should == 0 }
     end
 
     context "when backs are not confirmed" do
       before do
-        create(:backer, user: user, project: project, state: 'pending')
+        create(:backer, user: user, project: failed_project, state: 'pending')
+        failed_project.update_attributes state: 'failed'
       end
       it{ should == 0 }
     end
