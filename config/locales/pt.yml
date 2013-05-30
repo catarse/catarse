@@ -163,6 +163,7 @@ pt:
     reward_must_be_from_project: "deve ser do mesmo projeto"
     should_not_back_if_maximum_backers_been_reached: "já atingiu seu número máximo de apoiadores"
     value_must_be_at_least_rewards_value: "deve ser pelo menos %{minimum_value} para a recompensa selecionada"
+    project_should_be_online: "Você não pode apoiar um projeto que não está no ar"
   project_plural: projetos
   backer_plural: apoiadores
   backer_singular: apoiador
