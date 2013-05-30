@@ -9,6 +9,8 @@ class Backer < ActiveRecord::Base
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
   validate :reward_must_be_from_project
+  validate :value_must_be_at_least_rewards_value
+  validate :should_not_back_if_maximum_backers_been_reached, on: :create
 
   scope :by_id, ->(id) { where(id: id) }
   scope :by_state, ->(state) { where(state: state) }
@@ -81,14 +83,10 @@ class Backer < ActiveRecord::Base
     errors.add(:reward, I18n.t('backer.reward_must_be_from_project')) unless reward.project == project
   end
 
-  validate :value_must_be_at_least_rewards_value
-
   def value_must_be_at_least_rewards_value
     return unless reward
     errors.add(:value, I18n.t('backer.value_must_be_at_least_rewards_value', minimum_value: reward.display_minimum)) unless value >= reward.minimum_value
   end
-
-  validate :should_not_back_if_maximum_backers_been_reached, on: :create
 
   def should_not_back_if_maximum_backers_been_reached
     return unless reward and reward.maximum_backers and reward.maximum_backers > 0
