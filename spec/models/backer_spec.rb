@@ -26,54 +26,7 @@ describe Backer do
     it{ should allow_value(10).for(:value) }
     it{ should allow_value(20).for(:value) }
 
-    it "should have reward from the same project only" do
-      backer = build(:backer)
-      project1 = create(:project)
-      project2 = create(:project)
-      backer.project = project1
-      reward = create(:reward, project: project2)
-      backer.should be_valid
-      backer.reward = reward
-      backer.should_not be_valid
-    end
 
-    it "should have a value at least equal to reward's minimum value" do
-      project = create(:project)
-      reward = create(:reward, minimum_value: 500, project: project)
-      backer = build(:backer, reward: reward, project: project)
-      backer.value = 499.99
-      backer.should_not be_valid
-      backer.value = 500.00
-      backer.should be_valid
-      backer.value = 500.01
-      backer.should be_valid
-    end
-
-    it "should not be able to back if reward's maximum backers' been reached (and maximum backers > 0)" do
-      project = create(:project)
-      reward1 = create(:reward, maximum_backers: nil, project: project)
-      reward2 = create(:reward, maximum_backers: 1, project: project)
-      reward3 = create(:reward, maximum_backers: 2, project: project)
-      backer = build(:backer, state: 'confirmed', reward: reward1, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward1, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward2, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward2, project: project)
-      backer.should_not be_valid
-      backer = build(:backer, state: 'confirmed', reward: reward3, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward3, project: project)
-      backer.should be_valid
-      backer.save
-      backer = build(:backer, state: 'confirmed', reward: reward3, project: project)
-      backer.should_not be_valid
-    end
   end
 
   describe ".between_values" do
@@ -113,25 +66,66 @@ describe Backer do
   end
 
   describe ".can_cancel" do
-    let(:waiting_confirmation_backer) { create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) }
-    let(:waiting_confirmation_backer_1) { create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago) }
-    let(:waiting_confirmation_backer_2) { create(:backer, state: 'waiting_confirmation', created_at: 4.weekdays_ago) }
-
     subject { Backer.can_cancel}
 
     context "when backer is in time to wait the confirmation" do
-      before { waiting_confirmation_backer }
+      before do 
+        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) 
+      end
       it { should have(0).item }
     end
 
     context "when we have backers that is passed the confirmation time" do
       before do
-        waiting_confirmation_backer
-        waiting_confirmation_backer_1
-        waiting_confirmation_backer_2
+        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) 
+        create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago) 
+        create(:backer, state: 'waiting_confirmation', created_at: 4.weekdays_ago) 
       end
-
       it { should have(2).itens }
+    end
+  end
+
+  describe "#should_not_back_if_maximum_backers_been_reached" do
+    let(:reward){ create(:reward, maximum_backers: 1) }
+    let(:backer){ build(:backer, reward: reward, project: reward.project) }
+    subject{ backer }
+    context "when backers count is lower than maximum_backers" do
+      it{ should be_valid }
+    end
+    context "when backers count is equal than maximum_backers" do
+      before{ create(:backer, reward: reward, project: reward.project, state: 'confirmed') }
+      it{ should_not be_valid }
+    end
+  end
+
+  describe "#reward_must_be_from_project" do
+    let(:backer){ build(:backer, reward: reward, project: unfinished_project) }
+    subject{ backer }
+    context "when reward is from the same project" do
+      let(:reward){ create(:reward, project: unfinished_project) }
+      it{ should be_valid }
+    end
+    context "when reward is not from the same project" do
+      let(:reward){ create(:reward) }
+      it{ should_not be_valid }
+    end
+  end
+
+  describe "#value_must_be_at_least_rewards_value" do
+    let(:reward){ create(:reward, minimum_value: 500) }
+    let(:backer){ build(:backer, reward: reward, project: reward.project, value: value) }
+    subject{ backer }
+    context "when value is lower than reward minimum value" do
+      let(:value){ 499.99 }
+      it{ should_not be_valid }
+    end
+    context "when value is equal than reward minimum value" do
+      let(:value){ 500.00 }
+      it{ should be_valid }
+    end
+    context "when value is greater than reward minimum value" do
+      let(:value){ 500.01 }
+      it{ should be_valid }
     end
   end
 
