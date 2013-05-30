@@ -35,7 +35,7 @@ class ProjectDecorator < Draper::Decorator
 
   def display_video_embed_url
     if source.video_embed_url
-      "#{source.video_embed_url}?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=0"
+      "#{source.video_embed_url}?title=0&byline=0&portrait=0&autoplay=0"
     end
   end
 
@@ -56,7 +56,7 @@ class ProjectDecorator < Draper::Decorator
   def progress_bar
     width = source.progress > 100 ? 100 : source.progress
     content_tag(:div, id: :progress_wrapper) do
-      content_tag(:div, nil, id: :progress, style: "width: #{width}%") 
+      content_tag(:div, nil, id: :progress, style: "width: #{width}%")
     end
   end
 end
