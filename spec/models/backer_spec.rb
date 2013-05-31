@@ -75,9 +75,8 @@ describe Backer do
       before do
         create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) 
         create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago) 
-        create(:backer, state: 'waiting_confirmation', created_at: 4.weekdays_ago) 
       end
-      it { should have(2).itens }
+      it { should have(1).itens }
     end
   end
 

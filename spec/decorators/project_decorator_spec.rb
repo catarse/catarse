@@ -1,23 +1,23 @@
 require 'spec_helper'
 
 describe ProjectDecorator do
-  let(:project){ FactoryGirl.create(:project, about: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
+  let(:project){ create(:project, about: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
 
   describe "#display_image" do
     subject{ project.display_image }
 
     context "when we have a video_url without thumbnail" do
-      let(:project){ FactoryGirl.create(:project, uploaded_image: nil, image_url: nil, video_thumbnail: nil) }
+      let(:project){ create(:project, uploaded_image: nil, image_url: nil, video_thumbnail: nil) }
       it{ should == project.video.thumbnail_large } 
     end
 
     context "when we have a video_thumbnail" do
-      let(:project){ FactoryGirl.create(:project, image_url: nil, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project){ create(:project, image_url: nil, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
       it{ should == project.video_thumbnail.url } 
     end
 
     context "when we have a thumbnail and an image_url" do
-      let(:project){ FactoryGirl.create(:project, image_url: 'http://test.com/image', video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project){ create(:project, image_url: 'http://test.com/image', video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
       it{ should == 'http://test.com/image' } 
     end
   end
@@ -87,19 +87,19 @@ describe ProjectDecorator do
     subject{ project.display_video_embed_url }
 
     context 'source has a Vimeo video' do
-      let(:project) { FactoryGirl.create(:project, video_url: 'http://vimeo.com/17298435') }
+      let(:project) { create(:project, video_url: 'http://vimeo.com/17298435') }
 
-      it { should == 'http://player.vimeo.com/video/17298435?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=0' }
+      it { should == 'http://player.vimeo.com/video/17298435?title=0&byline=0&portrait=0&autoplay=0' }
     end
 
     context 'source has an Youtube video' do
-      let(:project) { FactoryGirl.create(:project, video_url: "http://www.youtube.com/watch?v=Brw7bzU_t4c") }
+      let(:project) { create(:project, video_url: "http://www.youtube.com/watch?v=Brw7bzU_t4c") }
 
-      it { should == 'http://www.youtube.com/embed/Brw7bzU_t4c?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=0' }
+      it { should == 'http://www.youtube.com/embed/Brw7bzU_t4c?title=0&byline=0&portrait=0&autoplay=0' }
     end
 
     context 'source does not have a video' do
-      let(:project) { FactoryGirl.create(:project, video_url: "") }
+      let(:project) { create(:project, video_url: "") }
 
       it { should be_nil }
     end
