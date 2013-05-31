@@ -24,7 +24,7 @@ gem 'schema_plus'
 gem 'schema_associations'
 
 # Payment engine using Paypal
-gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '19470d1'
+gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: 'ccdc45d'
 
 # Payment engine using Moip
 gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '6f05a2f'
