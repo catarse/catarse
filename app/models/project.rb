@@ -5,13 +5,8 @@ class Project < ActiveRecord::Base
   include PgSearch
   extend CatarseAutoHtml
 
-  before_save do
-    if online_days_changed? || !self.expires_at.present?
-      self.expires_at = DateTime.now+(online_days rescue 0).days
-    end
-  end
-
   mount_uploader :uploaded_image, LogoUploader
+  mount_uploader :video_thumbnail, LogoUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
     :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar,
@@ -103,7 +98,6 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, allow_blank: true, allow_nil: true, case_sensitive: false
   validates_format_of :permalink, with: /^(\w|-)*$/, allow_blank: true, allow_nil: true
   validates_format_of :video_url, with: Regexp.union(/https?:\/\/(www\.)?vimeo.com\/(\d+)/, VideoInfo::Youtube.new('').regex), message: I18n.t('project.video_regex_validation'), allow_blank: true
-  mount_uploader :video_thumbnail, LogoUploader
 
   def self.between_created_at(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
@@ -201,7 +195,7 @@ class Project < ActiveRecord::Base
   end
 
   def download_video_thumbnail
-    self.video_thumbnail = open(self.video.thumbnail_large) if self.video_url
+    self.video_thumbnail = open(self.video.thumbnail_large) if self.video_url.present?
   rescue OpenURI::HTTPError => e
     Rails.logger.info "-----> #{e.inspect}"
   rescue TypeError => e
