@@ -16,7 +16,7 @@ script type="text/template" id="user_project_template"
         = image_tag "successful.#{I18n.locale}.png"
         |<% } else if(waiting_funds) { %>
         = image_tag "waiting_confirmation.#{I18n.locale}.png"
-        |<% } else { %>
+        |<% } else if(failed) { %>
         = image_tag "not_successful.#{I18n.locale}.png"
         |<% } %>
     | <% } %>
