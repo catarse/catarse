@@ -234,7 +234,7 @@ class Project < ActiveRecord::Base
   end
 
   def can_go_to_second_chance?
-    (pledged + backers.in_time_to_confirm.sum(&:value)) >= (goal*0.3.to_f)
+    ((pledged + backers.in_time_to_confirm.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
   end
 
   #NOTE: state machine things
@@ -272,11 +272,11 @@ class Project < ActiveRecord::Base
       }
 
       transition waiting_funds: :failed,      if: ->(project) {
-        project.expired? && !project.reached_goal? && !project.in_time_to_wait?
+        project.expired? && !project.reached_goal? && (!project.in_time_to_wait? || !project.can_go_to_second_chance?)
       }
 
       transition waiting_funds: :waiting_funds,      if: ->(project) {
-        project.expired? && !project.reached_goal? && project.in_time_to_wait?
+        project.expired? && !project.reached_goal? && (project.in_time_to_wait? || project.can_go_to_second_chance?)
       }
     end
 
