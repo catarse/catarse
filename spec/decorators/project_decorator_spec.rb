@@ -7,18 +7,18 @@ describe ProjectDecorator do
     subject{ project.display_image }
 
     context "when we have a video_url without thumbnail" do
-      let(:project){ create(:project, uploaded_image: nil, image_url: nil, video_thumbnail: nil) }
-      it{ should == project.video.thumbnail_large } 
+      let(:project){ create(:project, uploaded_image: nil, video_thumbnail: nil) }
+      it{ should == project.video.thumbnail_large }
     end
 
     context "when we have a video_thumbnail" do
       let(:project){ create(:project, image_url: nil, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
-      it{ should == project.video_thumbnail.url } 
+      it{ should == project.video_thumbnail.project_thumb.url }
     end
 
-    context "when we have a thumbnail and an image_url" do
-      let(:project){ create(:project, image_url: 'http://test.com/image', video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
-      it{ should == 'http://test.com/image' } 
+    context "when we have an uploaded_image" do
+      let(:project){ create(:project, uploaded_image: File.open("#{Rails.root}/spec/fixtures/image.png"), video_thumbnail: nil) }
+      it{ should == project.uploaded_image.project_thumb.url }
     end
   end
 
