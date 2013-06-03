@@ -400,13 +400,13 @@ describe Project do
       before { project.video_url = "http://vimeo.com/17298435" }
 
       context 'video_url is a Vimeo url' do
-        its(:video){ should be_an_instance_of(VideoInfo::Vimeo) }
+        its(:video){ should be_an_instance_of(VideoInfo::Providers::Vimeo) }
       end
 
       context 'video_url is an YouTube url' do
         before { project.video_url = "http://www.youtube.com/watch?v=Brw7bzU_t4c" }
 
-        its(:video){ should be_an_instance_of(VideoInfo::Youtube) }
+        its(:video){ should be_an_instance_of(VideoInfo::Providers::Youtube) }
       end
 
       it 'caches the response object' do

@@ -71,7 +71,7 @@ gem 'validation_reflection',      git: 'git://github.com/ncri/validation_reflect
 gem 'inherited_resources',        '1.3.1'
 gem 'has_scope'
 gem 'spectator-validates_email',  require: 'validates_email'
-gem 'video_info', '~> 1.1.1'
+gem 'video_info', '>= 1.1.1'
 gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
 
@@ -80,8 +80,8 @@ gem 'http_accept_language'
 gem 'routing-filter'
 
 # Payment
-gem 'activemerchant', '1.17.0', require: 'active_merchant'
-gem 'httpclient',     '2.2.5'
+gem 'activemerchant', '>= 1.17.0', require: 'active_merchant'
+gem 'httpclient',     '>= 2.2.5'
 
 
 
@@ -95,7 +95,7 @@ group :production do
 
   # Enabling Gzip on Heroku
   # If you don't use Heroku, please comment the line below.
-  gem 'heroku-deflater', '~> 0.4.1'
+  gem 'heroku-deflater', '>= 0.4.1'
 
 
   # Monitoring with the new new relic
@@ -132,11 +132,11 @@ end
 
 
 group :assets do
-  gem 'sass-rails',         '~> 3.2.5'
-  gem 'coffee-rails',       '~> 3.2.2'
-  gem "compass-rails",      '~> 1.0.2'
-  gem 'uglifier',           '~> 1.0.3'
-  gem 'compass-960-plugin', '~> 0.10.4'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem "compass-rails"
+  gem 'uglifier'
+  gem 'compass-960-plugin'
 end
 
 
