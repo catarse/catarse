@@ -262,12 +262,12 @@ describe Project do
   end
 
   describe '#can_go_to_second_chance?' do
-    let(:project) { create(:project, goal: 100) }
+    let(:project) { create(:project, goal: 100, online_days: -3) }
     subject { project.can_go_to_second_chance? }
 
     before { create(:backer, value: 20, state: 'confirmed', project: project) }
 
-    context 'when confirmed and pending backers reached 30% of the goal' do
+    context 'when confirmed and pending backers reached 30% of the goal and in time to wait to wait' do
       before { create(:backer, value: 10, state: 'waiting_confirmation', project: project) }
 
       it { should be_true }
