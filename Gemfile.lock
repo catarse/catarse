@@ -215,9 +215,6 @@ GEM
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
-    initjs (1.0.0)
-      jquery-rails
-      rails (>= 3.1)
     jasmine (1.3.2)
       jasmine-core (~> 1.3.1)
       rack (~> 1.0)
@@ -474,7 +471,6 @@ DEPENDENCIES
   httparty (~> 0.6.1)
   httpclient (>= 2.2.5)
   inherited_resources (= 1.3.1)
-  initjs
   jasmine
   jquery-rails
   kaminari
