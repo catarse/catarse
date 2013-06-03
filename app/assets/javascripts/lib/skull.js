@@ -1,7 +1,9 @@
 var Skull = { View: undefined };
 Skull.View = Backbone.View.extend({
   addView: function(name, view){
-    this['_' + name] = new view({name: name, parent: this});
+    if(!this['_' + name]){
+      this['_' + name] = new view({name: name, parent: this});
+    }
     return this['_' + name];
   },
 
@@ -22,34 +24,13 @@ Skull.View = Backbone.View.extend({
   // Create a getter to initilize each view defined in the constructor when needed
   createViewGetters: function(){
     _.each(this.constructor.views, function(val, key){
-      var name = key.toLowerCase();
+      var name = key[0].toLowerCase() + key.substring(1);
       this.__defineGetter__(name, function(){
-        return (this['_' + name] ? this['_' + name] : this.addView(name, val));
+        return this.addView(name, val);
       });
       // Initialize the view if the el is present in the parent's DOM subtree
       if(this.$(val.el).length > 0) this[name];
     }, this);
-  },
-
-  // Fetch and render template when the root el is empty
-  // otherwise just render using ModelBinder
-  show: function(){
-    if($.trim(this.$el.html()).length == 0){
-      this.fetchTemplate();
-    }
-    else{
-      this.render();
-    }
-    return this;
-  },
-
-  fetchTemplate: function(){
-    return $.get('/templates/' + this.name).success(this.renderTemplate);
-  },
-
-  renderTemplate: function(data){
-    this.$el.html(data);
-    this.render();
   }
 },
 // Static methods
