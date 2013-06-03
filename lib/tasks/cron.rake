@@ -26,3 +26,37 @@ task :fill_embed_url => :environment do
   end
 end
 
+desc "Migrate project thumbnails to new format"
+task :migrate_project_thumbnails => :environment do
+  p1 = Project.where('uploaded_image is not null').all
+  p2 = Project.where('image_url is not null').all - p1
+  p3 = Project.where('video_url is not null').all - p1 - p2
+
+  p1.each do |project|
+    project.uploaded_image.recreate_versions! unless project.uploaded_image.file.empty?
+    puts "Recreating versions: #{project.id} - #{project.name}"
+  end
+
+  p2.each do |project|
+    begin
+      project.uploaded_image = open(project.image_url)
+      puts "Downloading thumbnail: #{project.id} - #{project.name}"
+      project.save!
+    rescue Exception => e
+      puts "Couldn't read #{project.image_url} on project #{project.id}, downloading thumbnail from video..."
+      project.download_video_thumbnail
+      project.save! if project.valid?
+    end
+  end
+
+  p3.each do |project|
+    begin
+      project.download_video_thumbnail
+      puts "Downloading thumbnail from video: #{project.id} - #{project.name}"
+      project.save!
+    rescue Exception => e
+      puts "Couldn't read: #{project.video_url}"
+    end
+  end
+
+end

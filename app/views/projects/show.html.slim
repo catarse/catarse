@@ -16,7 +16,7 @@
     meta property="og:description" content=@project.headline
     meta property="og:url" content=project_by_slug_url(@project.permalink, locale: I18n.locale)
   meta property="og:type" content='cause'
-  meta property="og:image" content=@project.display_image
+  meta property="og:image" content=@project.display_image('project_thumb_facebook')
   meta property="og:site_name" content=::Configuration[:company_name]
   meta property="fb:admins" content="#{fb_admins}"
 
@@ -43,7 +43,7 @@
 
     #project_description[data-project=@project.to_json]
     .project_image
-      = image_tag @project.display_image, width:'85px', height: '67px'
+      = image_tag @project.display_image('project_thumb_small')
     .section_header
       h1= @project.name
       h4= t('projects.project_header.without_city', category_name: link_to(@project.category, explore_path(anchor: @project.category.to_s.parameterize)), author: link_to(@project.user.display_name, user_path(@project.user))).html_safe
