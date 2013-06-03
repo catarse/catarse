@@ -10,17 +10,17 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require ./lib/jquery-1.7.1.min.js
+//= require ./lib/jquery.js
 //= require jquery_ujs
-//= require ./lib/jquery-ui-1.9.2.custom.min.js
+//= require ./lib/jquery-ui.js
 //= require best_in_place
-//= require ./lib/underscore-min.js
-//= require ./lib/backbone-min.js
+//= require ./lib/underscore.js
+//= require ./lib/backbone.js
+//= require ./lib/skull.js
 //= require_tree ./lib
 //= require ./app/catarse.js
 //= require ./app/views/model.js
 //= require ./app/views/paginated.js
 //= require ./app/collections/paginated.js
 //= require_tree ./app
-//= require ./init.js
 
