@@ -3,18 +3,12 @@ describe("Channels", function(){
   beforeEach(function(){
     window.CHANNEL = new CATARSE.channels.profiles.show();
   });
- 
-
-
 
   describe("show action", function(){
 
     describe("subscribe", function(){
       beforeEach(function(){ 
         window.CHANNEL.subscribe();
-      });
-
-      it("", function(){
       });
     });
 
