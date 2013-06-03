@@ -195,7 +195,7 @@ class Project < ActiveRecord::Base
   end
 
   def download_video_thumbnail
-    self.video_thumbnail = open(self.video.thumbnail_large) if self.video_url.present?
+    self.video_thumbnail = open(self.video.thumbnail_large) if self.video_url.present? && self.video
   rescue OpenURI::HTTPError => e
     Rails.logger.info "-----> #{e.inspect}"
   rescue TypeError => e

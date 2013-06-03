@@ -21,13 +21,11 @@ class ProjectDecorator < Draper::Decorator
     source.progress
   end
 
-  def display_image
+  def display_image(version = 'project_thumb' )
     if source.uploaded_image.present?
-      source.uploaded_image.project_thumb.url
-    elsif source.image_url.present?
-      source.image_url
+      source.uploaded_image.send(version).url
     elsif source.video_thumbnail.url.present?
-      source.video_thumbnail.url
+      source.video_thumbnail.send(version).url
     elsif source.video
       source.video.thumbnail_large
     end
