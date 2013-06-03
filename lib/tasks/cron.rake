@@ -33,8 +33,12 @@ task :migrate_project_thumbnails => :environment do
   p3 = Project.where('video_url is not null').all - p1 - p2
 
   p1.each do |project|
-    project.uploaded_image.recreate_versions! unless project.uploaded_image.file.empty?
-    puts "Recreating versions: #{project.id} - #{project.name}"
+    begin
+      project.uploaded_image.recreate_versions! if project.uploaded_image.file.present?
+      puts "Recreating versions: #{project.id} - #{project.name}"
+    rescue Exception => e
+      puts "Original image not found"
+    end
   end
 
   p2.each do |project|
