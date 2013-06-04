@@ -63,7 +63,8 @@ end
   twitter_username: "catarse",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   catarse_fee: '0.13',
-  support_forum: 'http://suporte.catarse.me/'
+  support_forum: 'http://suporte.catarse.me/',
+  base_domain: 'localhost'
 }.each do |name, value|
    conf = Configuration.find_or_initialize_by_name name
    conf.update_attributes({
