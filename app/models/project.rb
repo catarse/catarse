@@ -272,7 +272,7 @@ class Project < ActiveRecord::Base
       }
 
       transition waiting_funds: :failed,      if: ->(project) {
-        project.expired? && !project.reached_goal? && (!project.in_time_to_wait? || !project.can_go_to_second_chance?)
+        project.expired? && !project.reached_goal? && !project.in_time_to_wait? && !project.can_go_to_second_chance?
       }
 
       transition waiting_funds: :waiting_funds,      if: ->(project) {
