@@ -27,11 +27,9 @@ gem 'schema_associations'
 gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: 'ccdc45d'
 
 # Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '6f05a2f'
+gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '388b7bc'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
-# TODO: Check the Catarse_Moip dependency
-gem 'moip', git: 'git://github.com/moiplabs/moip-ruby.git'
 
 # Decorators
 gem 'draper'
@@ -61,7 +59,7 @@ gem "auto_html",    '= 1.4.2'
 gem 'kaminari'
 
 # Uploads
-gem 'carrierwave', '~> 0.7.0'
+gem 'carrierwave', '~> 0.8.0'
 gem 'rmagick'
 
 # Other Tools
@@ -80,15 +78,14 @@ gem 'http_accept_language'
 gem 'routing-filter'
 
 # Payment
+gem 'moip', git: 'git://github.com/catarse/moip-ruby.git'
 gem 'activemerchant', '>= 1.17.0', require: 'active_merchant'
 gem 'httpclient',     '>= 2.2.5'
-
-
 
 group :production do
 
   # Gem used to handle image uploading
-  gem 'fog'
+  gem 'fog', '>= 1.3.1'
 
   # Workers, forks and all that jazz
   gem 'unicorn'
