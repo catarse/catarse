@@ -12,7 +12,7 @@ describe ProjectDecorator do
     end
 
     context "when we have a video_thumbnail" do
-      let(:project){ create(:project, image_url: nil, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
+      let(:project){ create(:project, video_thumbnail: File.open("#{Rails.root}/spec/fixtures/image.png")) }
       it{ should == project.video_thumbnail.project_thumb.url }
     end
 
