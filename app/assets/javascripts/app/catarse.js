@@ -51,19 +51,19 @@ var CATARSE = {
     trackOnMixPanel: function(target, event, text, options){
       var self = this;
       $(target).on(event, function(){
-  
+
         self.identifyUser();
 
-  
+
         var obj     = $(this);
         var usr     = (self.user != null) ? self.user.id : null;
         var ref     = (obj.attr('href') != undefined) ? obj.attr('href') : null;
         var opt     = options || {};
 
-        var default_options = { 
-          'page name':  document.title, 
-          'user_id':    usr, 
-          'project':    ref, 
+        var default_options = {
+          'page name':  document.title,
+          'user_id':    usr,
+          'project':    ref,
           'url':        window.location
         };
 
@@ -78,7 +78,7 @@ var CATARSE = {
       this.trackOnMixPanel('#rewards .clickable', 'click', 'Clicked on a reward');
       this.trackOnMixPanel('#rewards .clickable_owner span.avaliable', 'click', 'Clicked on a reward');
     },
-    
+
     trackUserClickOnRecommendedProject: function(){
       this.trackOnMixPanel('#recommended_header h2', 'click', 'Clicked on a recommended banner');
     },
@@ -146,12 +146,12 @@ var CATARSE = {
         window.view = new CATARSE.Adm.Projects.Index({el: $('body')});
       }
     },
-    
+
     financials:{
       index: function(){
         window.view = new CATARSE.Adm.Financials.Index({el: $('body')});
       }
-    },    
+    },
 
     backers:{
       index: function(){

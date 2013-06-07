@@ -225,7 +225,7 @@ class Project < ActiveRecord::Base
       created_at: created_at,
       time_to_go: time_to_go,
       remaining_text: remaining_text,
-      embed_url: video ? video.embed_url : nil,
+      embed_url: video_embed_url ? video_embed_url : video.embed_url,
       url: Rails.application.routes.url_helpers.project_by_slug_path(permalink, locale: I18n.locale),
       full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, locale: I18n.locale),
       expired: expired?,
