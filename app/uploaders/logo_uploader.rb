@@ -9,9 +9,9 @@ class LogoUploader < CarrierWave::Uploader::Base
   version :thumb, if: :is_user?
   version :thumb_avatar, if: :is_user?
 
-  #def extension_white_list
-  #  %w(jpg jpeg gif png) unless mounted_as == :video_thumbnail
-  #end
+  def extension_white_list
+    %w(jpg jpeg gif png) unless mounted_as == :video_thumbnail
+  end
 
   def self.choose_storage
     (Rails.env.production? and Configuration[:aws_access_key]) ? :fog : :file
