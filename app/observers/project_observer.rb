@@ -1,12 +1,6 @@
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
-  def before_save(project)
-    if project.online_days_changed? || !project.expires_at.present?
-      project.expires_at = DateTime.now+(project.online_days rescue 0).days
-    end
-  end
-
   def after_validation(project)
     if project.video_url.present? && project.video_url_changed?
       project.download_video_thumbnail

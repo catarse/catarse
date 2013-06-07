@@ -47,8 +47,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    params[:project][:expires_at] += (23.hours + 59.minutes + 59.seconds) if params[:project][:expires_at]
-
     @project = current_user.projects.new(params[:project])
 
     create!(notice: t('projects.create.success')) do |success, failure|
