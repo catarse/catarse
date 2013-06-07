@@ -128,9 +128,14 @@ class Project < ActiveRecord::Base
     @decorator ||= ProjectDecorator.new(self)
   end
 
+  def number_online_days(date)
+    date = date.to_time if date.kind_of? String
+    (date - (online_date ? online_date : Time.now)).round/1.day
+  end
+
   def expires_at=(date)
     #1 day granularity
-    write_attribute(:online_days, (date - (online_date ? online_date : Time.now)).round/1.day )
+    write_attribute(:online_days, number_online_days(date))
   end
 
   def expires_at
