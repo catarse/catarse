@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_paypal_express.git
-  revision: c7538d21dbd8fb45db6ff1999e6842c91801daad
-  ref: c7538d2
+  revision: accf2d1ed4686a8704c04936690eccb06466413d
+  ref: accf2d1
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (>= 1.17.0)
