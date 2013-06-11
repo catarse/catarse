@@ -118,6 +118,17 @@ pt:
         total_users: usuários
         user: Usuário
         value: Valor
+    statistics:
+      index:
+        title: "Estatísticas"
+        total_users: "Usuários"
+        total_backs: "Apoios"
+        total_backers: "Apoiadores"
+        total_backed: "Arrecadação"
+        total_projects: "Projetos"
+        total_projects_success: "Bem sucedidos"
+        total_projects_online: "Online"
+
   channels:
     adm:
       <<: *admin
