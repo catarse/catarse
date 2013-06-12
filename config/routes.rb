@@ -2,7 +2,6 @@ require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
   match '/thank_you' => "static#thank_you"
-  match "/faq" => redirect(::Configuration[:support_forum]), as: :faq
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
@@ -124,6 +123,7 @@ Catarse::Application.routes.draw do
       end
     end
 
+    resources :statistics, only: [ :index ]
     resources :financials, only: [ :index ]
 
     resources :backers, only: [ :index, :update ] do

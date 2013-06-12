@@ -39,7 +39,6 @@ FactoryGirl.define do
     f.how_know 'Lorem ipsum'
     f.more_links 'Ipsum dolor'
     f.first_backers 'Foo bar'
-    f.expires_at { 1.month.from_now }
     f.video_url 'http://vimeo.com/17298435'
     f.state 'online'
   end

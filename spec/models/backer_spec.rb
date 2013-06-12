@@ -8,7 +8,6 @@ describe Backer do
   let(:unfinished_project_backer){ create(:backer, state: 'confirmed', user: user, project: unfinished_project) }
   let(:sucessful_project_backer){ create(:backer, state: 'confirmed', user: user, project: successful_project) }
   let(:not_confirmed_backer){ create(:backer, user: user, project: unfinished_project) }
-  let(:older_than_180_days_backer){ create(:backer, created_at: (Date.today - 181.days), state: 'confirmed', user: user, project: unfinished_project) }
   let(:valid_refund){ create(:backer, state: 'confirmed', user: user, project: failed_project) }
 
 
@@ -259,7 +258,6 @@ describe Backer do
       sucessful_project_backer
       unfinished_project
       not_confirmed_backer
-      older_than_180_days_backer
       successful_project.update_attributes state: 'successful'
       failed_project.update_attributes state: 'failed'
     end
@@ -282,11 +280,6 @@ describe Backer do
 
     context "when project is not finished" do
       let(:backer){ unfinished_project_backer }
-      it{ should be_false }
-    end
-
-    context "when backer is older than 180 days" do
-      let(:backer){ older_than_180_days_backer }
       it{ should be_false }
     end
 

@@ -50,8 +50,7 @@ class Backer < ActiveRecord::Base
         SELECT true
           FROM projects p
           WHERE p.id = backers.project_id and p.state = 'failed'
-      ) AND
-      date(current_timestamp) <= date(created_at + interval '180 days')
+      )
     })
   }
 
@@ -76,7 +75,7 @@ class Backer < ActiveRecord::Base
   end
 
   def can_refund?
-    confirmed? && created_at >= (Date.today - 180.days) && project.finished? && !project.successful?
+    confirmed? && project.finished? && !project.successful?
   end
 
   def reward_must_be_from_project
