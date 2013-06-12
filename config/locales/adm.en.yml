@@ -22,7 +22,7 @@ en:
         menu: Backers
         credits: Credits
         credits_view: "Calculated credits"
-        id: Id
+        id: ID
         key: Key
         submit: Search
         has_credits_difference: "Discrepancy in credits"
@@ -42,7 +42,7 @@ en:
           pendent: 'Backer unconfirmed!'
           refund: 'Backer refunded!'
           change_reward: 'Reward changed!'
-          hide: 'Backer hided!'
+          hide: 'Backer hidden!'
           cancel: 'Backer canceled!'
       index:
         cancel: 'Cancel backer'
@@ -60,7 +60,7 @@ en:
         anonymous: Anonymous?
         confirmed: Confirmed?
         credits: "Used credits?"
-        id: Id
+        id: ID
         key: Key
         no_backers: "No backers found."
         project: Project
