@@ -75,6 +75,17 @@ en:
         total_users: Users
         user: User
         value: Value
+    statistics:
+      index:
+        title: "Statistics"
+        total_users: "Users"
+        total_backs: "Backs"
+        total_backers: "Backers"
+        total_backed: "Backed"
+        total_projects: "Projects"
+        total_projects_success: "Successful"
+        total_projects_online: "Online"
+
   channels:
     adm:
       <<: *admin
