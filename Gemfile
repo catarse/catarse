@@ -22,6 +22,7 @@ gem 'pg_search'
 gem 'postgres-copy'
 gem 'schema_plus'
 gem 'schema_associations'
+gem 'chartkick'
 
 # Payment engine using Paypal
 gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '420fb3a'
