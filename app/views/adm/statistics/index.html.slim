@@ -1,3 +1,4 @@
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
 #page_content
   .container
     .title
@@ -28,6 +29,8 @@
                 td= statistics.total_projects
                 td= statistics.total_projects_success
                 td= statistics.total_projects_online
+    .charts
+      /= line_chart [{:name => 'atual', :data => {Date.today => 3, (Date.today + 7.days) => 2} }, {:name => 'semana anterior', :data => {Date.today => 2, (Date.today + 7.days) => 3} }]
   .clearfix
 
 
