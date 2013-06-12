@@ -45,7 +45,7 @@ class Backer < ActiveRecord::Base
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
     where(%Q{
-      state = 'confirmed' AND
+      state IN('confirmed', 'requested_refund', 'refunded') AND
       EXISTS(
         SELECT true
           FROM projects p
