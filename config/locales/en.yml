@@ -3,14 +3,14 @@ en:
     title: "The biggest crowdfunding community in Brazil"
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
-    keywords: "catarse, crowdfunding, projecto, community, open source"
+    keywords: "catarse, crowdfunding, project, community, open source"
   backer_report_to_project_owner:
     reward_description: 'Reward description'
     confirmed_at: 'Payment confirmed at'
     value: 'Back value'
     service_fee: 'Catarse fee'
     user_name: 'Backer name'
-    user_email: 'User catarse profile e-mail'
+    user_email: 'Catarse user profile e-mail'
     payer_email: 'Payment gateway user e-mail'
     payment_method: 'Payment method'
     address_street: 'Street'
@@ -43,9 +43,9 @@ en:
       subtitle: "total of %{total}"
   project_by: "project by"
   tell_about_this_back: "Tell the world about your support!"
-  share_my_backs: "See the projects that i support in Catarse!"
+  share_my_backs: "See the projects that I support in Catarse!"
   tell_about_this_project: "Tell the world about your project!"
-  share_my_projects: "See my created projects in Catarse!"
+  share_my_projects: "See my projects in Catarse!"
   count_backed_projects: "backed %{total} projects"
   footer:
     titles:
@@ -109,14 +109,14 @@ en:
         category: Category
         expires_at: Deadline
         online_days: Days of the air campaign
-        headline: "Punch Line"
+        headline: Headline
         image_url: "Image URL"
         name: Name
-        user_id: "User Id"
+        user_id: "User ID"
         video_url: "Video URL"
-        permalink: 'type you project URL'
-        how_know: "How did you meet Catarse?"
-        more_linkt: 'Where can we find more about you and your project?'
+        permalink: 'Project URL'
+        how_know: "How did you hear about Catarse?"
+        more_links: 'Where can we find more about you and your project?'
       reward:
         description: Description
         maximum_backers: "Maximum backers"
@@ -153,7 +153,7 @@ en:
     reward_must_be_from_project: "must be from the same project"
     should_not_back_if_maximum_backers_been_reached: "has reached its maximum backers"
     value_must_be_at_least_rewards_value: "must be at least %{minimum_value} for the selected reward"
-    project_should_be_online: "You can not back a project that is not online"
+    project_should_be_online: "You cannot back a project that is not online"
   backer_plural: backers
   project_plural: projects
   project_singular: project
@@ -167,7 +167,7 @@ en:
     modal:
       title: "Do you want to confirm your refund request?"
       text: "Check out how our refund process works:"
-      link: "See how works the refund"
+      link: "See how the refund works"
       reject_btn: "I want to keep my credits"
       accept_btn: "I want to request the refund"
     index:
