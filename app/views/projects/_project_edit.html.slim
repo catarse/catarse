@@ -18,7 +18,8 @@
       - if can? :update, @project, :video_url
         = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
       - if can? :update, @project, :uploaded_image
-        = form.input :uploaded_image, as: :file, required: false
+        = form.input :uploaded_image, as: :file, required: false,
+          hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') )
       - if can? :update, @project, :online_days
         = form.input :online_days, as: :number, required: false
       - if can? :update, @project, :goal

@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Adm::BackersController do
   subject{ response }
-  let(:admin) { FactoryGirl.create(:user, admin: true) }
+  let(:admin) { create(:user, admin: true) }
 
-  let(:unconfirmed_backer) { FactoryGirl.create(:backer) }
+  let(:unconfirmed_backer) { create(:backer) }
 
   describe 'PUT confirm' do
-    let(:backer) { FactoryGirl.create(:backer) }
+    let(:backer) { create(:backer) }
     subject { backer.confirmed? }
 
     before { 
@@ -22,7 +22,7 @@ describe Adm::BackersController do
   end
 
   describe 'PUT hide' do
-    let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
+    let(:backer) { create(:backer, state: 'confirmed') }
     subject { backer.refunded_and_canceled? }
 
     before {
@@ -37,7 +37,7 @@ describe Adm::BackersController do
   end
 
   describe 'PUT refund' do
-    let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
+    let(:backer) { create(:backer, state: 'confirmed') }
     subject { backer.refunded? }
 
     before { 
@@ -52,7 +52,7 @@ describe Adm::BackersController do
   end
 
   describe 'PUT pendent' do
-    let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
+    let(:backer) { create(:backer, state: 'confirmed') }
     subject { backer.confirmed? }
 
     before { 
@@ -67,7 +67,7 @@ describe Adm::BackersController do
   end
 
   describe 'PUT cancel' do
-    let(:backer) { FactoryGirl.create(:backer, state: 'confirmed') }
+    let(:backer) { create(:backer, state: 'confirmed') }
     subject { backer.canceled? }
 
     before {
