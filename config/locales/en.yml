@@ -116,7 +116,7 @@ en:
         video_url: "Video URL"
         permalink: 'type you project URL'
         how_know: "How did you meet Catarse?"
-        more_linkt: 'Where can we find more about you and your project?'
+        more_links: 'Where can we find more about you and your project?'
       reward:
         description: Description
         maximum_backers: "Maximum backers"
