@@ -12,29 +12,29 @@ class ProjectsController < ApplicationController
   def index
     index! do |format|
       format.html do
-        @title = t("site.title")
-        collection_projects = Project.recommended_for_home
-        unless collection_projects.empty?
-          if current_user and current_user.recommended_projects
-            @recommended_projects  ||= current_user.recommended_projects
-            collection_projects   ||= collection_projects.where("id != ? AND category_id != ?",
-                                                                current_user.recommended_projects.last.id,
-                                                                @recommended_projects.last.category_id)
+        if request.xhr?
+          @projects = apply_scopes(Project).visible.order_for_search.includes(:project_total, :user, :category).page(params[:page]).per(6)
+          return render partial: 'project', collection: @projects, layout: false
+        else
+          @title = t("site.title")
+          collection_projects = Project.recommended_for_home
+          unless collection_projects.empty?
+            if current_user and current_user.recommended_projects
+              @recommended_projects  ||= current_user.recommended_projects
+              collection_projects   ||= collection_projects.where("id != ? AND category_id != ?",
+                                                                  current_user.recommended_projects.last.id,
+                                                                  @recommended_projects.last.category_id)
+            end
+            @first_project, @second_project, @third_project, @fourth_project = collection_projects.all
           end
-          @first_project, @second_project, @third_project, @fourth_project = collection_projects.all
+
+          project_ids = collection_projects.map{|p| p.id }
+          project_ids << @recommended_projects.last.id if @recommended_projects
+
+          @expiring = Project.expiring_for_home(project_ids)
+          @recent   = Project.recent_for_home(project_ids)
+          @blog_posts = blog_posts
         end
-
-        project_ids = collection_projects.map{|p| p.id }
-        project_ids << @recommended_projects.last.id if @recommended_projects
-
-        @expiring = Project.expiring_for_home(project_ids)
-        @recent   = Project.recent_for_home(project_ids)
-        @blog_posts = blog_posts
-      end
-
-      format.json do
-        @projects = apply_scopes(Project).visible.order_for_search
-        respond_with(@projects.includes(:project_total, :user, :category).page(params[:page]).per(6))
       end
     end
   end

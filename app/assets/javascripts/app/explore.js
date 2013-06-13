@@ -1,0 +1,25 @@
+App.addChild('Explore', {
+  el: '#main_content[data-action="index"][data-controller-name="explore"]',
+
+  activate: function(){
+    this.filter = {
+      recommended: true,
+      not_expired: true,
+      page: 0 
+    };
+    this.$loader = this.$("#loading");
+    this.$results = this.$(".results");
+    this.projectsPath = this.$("#explore_results").data('projects-path');
+    this.fetchPage();
+  },
+
+  fetchPage: function(){
+    this.$loader.show();
+    $.get(this.projectsPath, this.filter).success(this.onSuccess);
+  },
+
+  onSuccess: function(data){
+    this.$results.append(data);
+    this.$loader.hide();
+  }
+});
