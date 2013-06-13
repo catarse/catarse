@@ -22,9 +22,8 @@
         #recommended_projects
           h2 = t('.recommended_projects')
           - rp = @backer.user.recommended_projects(3)
-          - if rp.count > 0
-            - rp.each do |project|
-              = render partial: 'projects/box', locals: {project: project }
+          - rp.each do |project|
+            = render partial: 'projects/project', locals: {project: project }
       .clearfix
 
 
