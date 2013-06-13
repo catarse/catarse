@@ -23,7 +23,7 @@ Skull.View = Backbone.View.extend({
 
   // Create a getter to initilize each view defined in the constructor when needed
   createViewGetters: function(){
-    _.each(this.constructor.views, function(val, key){
+    _.each(this.__proto__.constructor.views, function(val, key){
       var name = key[0].toLowerCase() + key.substring(1);
       this.__defineGetter__(name, function(){
         return this.addView(name, val);
@@ -37,11 +37,12 @@ Skull.View = Backbone.View.extend({
 {
   // We just overwrite the extend to extract the el property and store it in the constructor
   // That's how we look for the view's el before initializing it
-  extend: function(protoProps, staticProps){
-    var child = Backbone.View.extend.call(this, protoProps, staticProps);
+  views: {},
+  addChild: function(name, protoProps, staticProps){
+    var child = Skull.View.extend(protoProps, _.extend({views: {}}, staticProps));
     child.el = protoProps.el;
-    return child;
+    this.views[name] = child;
+    return this;
   }
 });
 
-Skull.View.constructor.prototype.views = {};

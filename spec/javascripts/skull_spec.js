@@ -8,13 +8,27 @@ describe("Skull.View", function(){
   });
 
   
-  describe(".extend", function() {
-    it("should assign el element to ViewClass constructor", function() {
-      expect(ViewClass.el).toEqual('test');
+  describe(".addChild", function() {
+    beforeEach(function() {
+      ViewClass.addChild('NewChild', {el: 'test'}, {});
     });
 
+    it("should assign new class to parent views object", function() {
+      expect(ViewClass.views.NewChild).toEqual(jasmine.any(Function));
+    });
+    
+    it("should assign el to view class", function() {
+      expect(ViewClass.views.NewChild.el).toEqual('test');
+    });
+
+    it("should initialize views object as empy in new class", function() {
+      expect(ViewClass.views.NewChild.views).toEqual({});
+    });
+  });  
+  
+  describe(".extend", function() {
     it("should have object views in constructor", function() {
-      expect(ViewClass.views).toEqual({});
+      expect(ViewClass.views).toEqual(jasmine.any(Object));
     });
   });
 
@@ -40,10 +54,8 @@ describe("Skull.View", function(){
   
   describe("#createViewGetters", function() {
     beforeEach(function() {
-      view.constructor.views = { 
-        ChildClass: Skull.View.extend({ el: '.child' }),
-        AnotherChildClass: Skull.View.extend({ el: '.another-child' })
-      };
+      ViewClass.addChild('ChildClass', { el: '.child' });
+      ViewClass.addChild('AnotherChildClass', { el: '.another-child' });
       spyOn(view, "addView");
       var $el = Backbone.$('<div><div class="child"></div></div>');
       view.setElement($el, false);
@@ -51,16 +63,16 @@ describe("Skull.View", function(){
     });
 
     it("should not call the getter if the child el is present in parent's DOM", function() {
-      expect(view.addView).wasNotCalledWith('anotherChildClass', view.constructor.views.AnotherChildClass);
+      expect(view.addView).wasNotCalledWith('anotherChildClass', ViewClass.views.AnotherChildClass);
     });
 
     it("should call the getter if the child el is present in parent's DOM", function() {
-      expect(view.addView).wasCalledWith('childClass', view.constructor.views.ChildClass);
+      expect(view.addView).wasCalledWith('childClass', ViewClass.views.ChildClass);
     });
     
     it("should define a getter that calls addView with keys and values of views object", function() {
       view.anotherChildClass; 
-      expect(view.addView).wasCalledWith('anotherChildClass', view.constructor.views.AnotherChildClass);
+      expect(view.addView).wasCalledWith('anotherChildClass', ViewClass.views.AnotherChildClass);
     });
   });  
 });
