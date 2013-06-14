@@ -36,7 +36,7 @@ class Backer < ActiveRecord::Base
       state = 'waiting_confirmation' and
         (
           select count(1) as total_of_days
-          from generate_series(created_at::date, current_date, '1 day') day 
+          from generate_series(created_at::date, current_date, '1 day') day
           WHERE extract(dow from day) not in (0,1)
         ) > 4
     })
@@ -63,6 +63,19 @@ class Backer < ActiveRecord::Base
 
   def self.state_names
     self.state_machine.states.map &:name
+  end
+
+  def self.send_credits_notification
+    confirmed.joins(:project).joins(:user).each do |backer|
+      if backer.project.state == 'failed' && ((backer.project.expires_at + 1.month) < Time.now) && backer.user.credits >= backer.value
+        Notification.create_notification_once(:credits_warning,
+          backer.user,
+          {backer_id: backer.id},
+          backer: backer,
+          amount: backer.user.credits
+                                             )
+      end
+    end
   end
 
   def refund_deadline
@@ -95,7 +108,7 @@ class Backer < ActiveRecord::Base
 
   def project_should_be_online
     return if project && project.online?
-    errors.add(:project, I18n.t('backer.project_should_be_online')) 
+    errors.add(:project, I18n.t('backer.project_should_be_online'))
   end
 
   def display_value
@@ -135,7 +148,7 @@ class Backer < ActiveRecord::Base
     end
     json_attributes
   end
-  
+
   state_machine :state, initial: :pending do
     state :pending, value: 'pending'
     state :waiting_confirmation, value: 'waiting_confirmation'
@@ -175,7 +188,7 @@ class Backer < ActiveRecord::Base
 
     after_transition confirmed: :requested_refund, do: :after_transition_from_confirmed_to_requested_refund
   end
-  
+
   def after_transition_from_confirmed_to_requested_refund
     notify_observers :notify_backoffice
   end
