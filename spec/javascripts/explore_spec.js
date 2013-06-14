@@ -26,15 +26,29 @@ describe("Explore", function() {
   describe("#fetchPage", function() {
     beforeEach(function() {
       spyOn(view.$loader, "show");
-      spyOn(view.$loader, "hide");
       view.fetchPage();
     });
 
     it("should show loader", function() {
       expect(view.$loader.show).wasCalled();
     });
+  });
+
+  describe("#onSuccess", function() {
+    beforeEach(function() {
+      spyOn(view.$results, "append");
+      spyOn(view.$loader, "hide");
+      
+      view.onSuccess('test data');
+    });
+
+    it("should append data to $results", function() {
+      expect(view.$results.append).wasCalledWith('test data');
+    });
     
+    it("should show loader", function() {
+      expect(view.$loader.hide).wasCalled();
+    });
   });  
-  
 });  
 
