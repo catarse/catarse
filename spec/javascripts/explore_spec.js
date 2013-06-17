@@ -50,5 +50,21 @@ describe("Explore", function() {
       expect(view.$loader.hide).wasCalled();
     });
   });  
+
+  describe("onScroll", function() {
+    beforeEach(function() {
+      view.onScroll();
+    });
+    
+    it("call fetchPage if $loader is inside the visible window", function() {
+      
+    });
+    
+    it("should not call fetchPage if $loader is outside the visible window", function() {
+      
+    });
+    
+  });  
+  
 });  
 
