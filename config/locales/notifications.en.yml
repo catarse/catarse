@@ -16,7 +16,7 @@ en:
       subject: "Se liga! Atualização de %{project_name} por %{project_owner}: %{update_title}"
     project_in_wainting_funds:
       subject: "O prazo do seu projeto acabou, saiba quais são os próximos passos"
-      header: "Acabou o prazo!"      
+      header: "Acabou o prazo!"
     project_success:
       subject: "Project successful: some necessary information"
       header: "Project successful"
@@ -56,3 +56,6 @@ en:
     adm_project_deadline:
       subject: "The project %{project_name} has reached its deadline"
       header: "The project reached its deadline"
+    credits_warning:
+      subject: "You have R$ %{amount} in credits on Catarse"
+      header: "Why not back another project?"

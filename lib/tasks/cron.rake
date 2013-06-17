@@ -8,6 +8,11 @@ task :cancel_expired_waiting_confirmation_backers => :environment do
   Backer.can_cancel.update_all(state: 'canceled')
 end
 
+desc "Send notification about credits 1 month after the project failed"
+task send_credits_notification: :environment do
+  Backer.send_credits_notification
+end
+
 desc "Create first versions for rewards"
 task :index_rewards_versions => :environment do
   Reward.all.each do |reward|
