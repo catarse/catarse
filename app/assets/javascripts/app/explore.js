@@ -21,5 +21,8 @@ App.addChild('Explore', {
   onSuccess: function(data){
     this.$results.append(data);
     this.$loader.hide();
+  },
+
+  onScroll: function(event){
   }
 });
