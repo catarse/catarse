@@ -4,6 +4,7 @@ class Update < ActiveRecord::Base
   schema_associations
   has_many :notifications, dependent: :destroy
   validates_presence_of :user_id, :project_id, :comment, :comment_html
+  before_validation -> {self.comment = comment.gsub(/^\s+/, "")}
 
   catarse_auto_html_for field: :comment, video_width: 560, video_height: 340
 
