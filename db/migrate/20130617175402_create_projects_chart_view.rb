@@ -13,7 +13,7 @@ SELECT
   w.days / 7 as week
 FROM 
   projects p 
-  JOIN weeks w ON p.created_at::date >= (current_date - w.days - 7) AND p.created_at < (current_date - w.days)
+  RIGHT JOIN weeks w ON p.created_at::date >= (current_date - w.days - 7) AND p.created_at < (current_date - w.days)
 GROUP BY week
 ),
 previous_period AS (
@@ -23,7 +23,7 @@ SELECT
   w.days / 7 as week
 FROM 
   projects p 
-  JOIN weeks w ON p.created_at::date >= (current_date - w.days - 7 - 56) AND p.created_at < (current_date - w.days - 56)
+  RIGHT JOIN weeks w ON p.created_at::date >= (current_date - w.days - 7 - 56) AND p.created_at < (current_date - w.days - 56)
 GROUP BY week
 ),
 last_year AS (
@@ -33,7 +33,7 @@ SELECT
   w.days / 7 as week
 FROM 
   projects p 
-  JOIN weeks w ON p.created_at::date >= (current_date - w.days - 7 - 365) AND p.created_at < (current_date - w.days - 365)
+  RIGHT JOIN weeks w ON p.created_at::date >= (current_date - w.days - 7 - 365) AND p.created_at < (current_date - w.days - 365)
 GROUP BY week
 )
 (SELECT * FROM current_period)

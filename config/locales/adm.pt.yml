@@ -128,7 +128,10 @@ pt:
         total_projects: "Projetos"
         total_projects_success: "Bem sucedidos"
         total_projects_online: "Online"
-
+      projects_by_week:
+        current_period: "Últimas 8 sem."
+        previous_period: "8 sem. anteriores"
+        last_year: "Ano anterior"
   channels:
     adm:
       <<: *admin
