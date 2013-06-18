@@ -9,7 +9,7 @@ WITH weeks AS (
 current_period AS (
 SELECT 
   'current_period'::text as series, 
-  count(*),
+  sum(b.value),
   w.days / 7 as week
 FROM 
   backers b 
@@ -21,7 +21,7 @@ GROUP BY week
 previous_period AS (
 SELECT 
   'previous_period'::text as series, 
-  count(*),
+  sum(b.value),
   w.days / 7 as week
 FROM 
   backers b 
@@ -33,7 +33,7 @@ GROUP BY week
 last_year AS (
 SELECT 
   'last_year'::text as series, 
-  count(*),
+  sum(b.value),
   w.days / 7 as week
 FROM 
   backers b 
