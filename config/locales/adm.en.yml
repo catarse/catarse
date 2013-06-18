@@ -85,6 +85,10 @@ en:
         total_projects: "Projects"
         total_projects_success: "Successful"
         total_projects_online: "Online"
+      projects_by_week:
+        current_period: "Last 8 weeks"
+        previous_period: "Previous 8 weeks"
+        last_year: "Last year"
 
   channels:
     adm:
