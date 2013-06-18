@@ -120,6 +120,7 @@ pt:
         value: Valor
     statistics:
       index:
+        menu: "Estatísticas"
         title: "Estatísticas"
         total_users: "Usuários"
         total_backs: "Apoios"

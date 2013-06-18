@@ -77,6 +77,7 @@ en:
         value: Value
     statistics:
       index:
+        menu: "Statistics"
         title: "Statistics"
         total_users: "Users"
         total_backs: "Backs"
