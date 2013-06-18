@@ -92,7 +92,7 @@ en:
         previous_period: "Previous 8 weeks"
         last_year: "Last year"
       backers_by_week:
-        title: "Backers confirmed per week"
+        title: "Backed value confirmed per week"
         current_period: "Last 8 weeks"
         previous_period: "Previous 8 weeks"
         last_year: "Last year"
