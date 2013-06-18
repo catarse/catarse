@@ -134,6 +134,11 @@ pt:
         current_period: "Últimas 8 sem."
         previous_period: "8 sem. anteriores"
         last_year: "Ano anterior"
+      backers_by_week:
+        title: "Apoios confirmados por semana"
+        current_period: "Últimas 8 sem."
+        previous_period: "8 sem. anteriores"
+        last_year: "Ano anterior"
   channels:
     adm:
       <<: *admin
