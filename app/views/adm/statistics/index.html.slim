@@ -30,6 +30,7 @@
                 td= statistics.total_projects_success
                 td= statistics.total_projects_online
     .charts
+      h1= t('adm.statistics.projects_by_week.title')
       = line_chart ProjectsByPeriod.chart
   .clearfix
 
