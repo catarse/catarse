@@ -11,20 +11,21 @@ class BackersController < ApplicationController
       format.html{ return render nothing: true, status: 404 }
     end
   end
-  
+
   def request_refund
     back = Backer.find(params[:id])
 
     authorize! :request_refund, back
-
-    if can?(:request_refund, back) && back.can_request_refund?
+    if back.value > back.user.user_total.credits
+      flash[:failure] = I18n.t('credits.index.insufficient_credits')
+    elsif can?(:request_refund, back) && back.can_request_refund?
       back.request_refund!
-      flash[:notice] = I18n.t('credits.index.refunded')      
+      flash[:notice] = I18n.t('credits.index.refunded')
     end
 
-    redirect_to user_path(parent, anchor: 'credits')      
+    redirect_to user_path(parent, anchor: 'credits')
     # render json: {status: status, credits: current_user.reload.display_credits}
-  end  
+  end
 
   protected
   def collection

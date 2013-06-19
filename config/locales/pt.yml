@@ -187,6 +187,7 @@ pt:
       project: Projeto
       refund_expration_date: "Prazo para estorno"
       refunded: "Reembolso requisitado com sucesso. Nossa equipe entrará em contato com você em até 2 dias úteis. "
+      insufficient_credits: "Você não tem créditos suficientes para realizar este estorno."
       refunds_title: "Apoios que podem ter estorno realizado"
       request_refund: "Solicitar estorno"
       requested_refund: "Solicitado estorno"
