@@ -57,5 +57,15 @@ class ProjectDecorator < Draper::Decorator
       content_tag(:div, nil, id: :progress, style: "width: #{width}%")
     end
   end
+
+
+  def successful_flag
+    return nil unless source.successful?
+    
+    content_tag(:div, class: [:successful_flag]) do
+      image_tag("channels/successful.png")
+    end
+      
+  end
 end
 
