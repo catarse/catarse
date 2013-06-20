@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
   mount_uploader :video_thumbnail, LogoUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at,
-    :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar,
+    :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar, :successful_flag,
     to: :decorator
 
   schema_associations
