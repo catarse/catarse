@@ -77,6 +77,7 @@ en:
         value: Value
     statistics:
       index:
+        menu: "Statistics"
         title: "Statistics"
         total_users: "Users"
         total_backs: "Backs"
@@ -85,6 +86,16 @@ en:
         total_projects: "Projects"
         total_projects_success: "Successful"
         total_projects_online: "Online"
+      projects_by_week:
+        title: "Projects sent per week"
+        current_period: "Last 8 weeks"
+        previous_period: "Previous 8 weeks"
+        last_year: "Last year"
+      backers_by_week:
+        title: "Backed value confirmed per week"
+        current_period: "Last 8 weeks"
+        previous_period: "Previous 8 weeks"
+        last_year: "Last year"
 
   channels:
     adm:

@@ -120,6 +120,7 @@ pt:
         value: Valor
     statistics:
       index:
+        menu: "Estatísticas"
         title: "Estatísticas"
         total_users: "Usuários"
         total_backs: "Apoios"
@@ -128,7 +129,16 @@ pt:
         total_projects: "Projetos"
         total_projects_success: "Bem sucedidos"
         total_projects_online: "Online"
-
+      projects_by_week:
+        title: "Projetos enviados por semana"
+        current_period: "Últimas 8 sem."
+        previous_period: "8 sem. anteriores"
+        last_year: "Ano anterior"
+      backers_by_week:
+        title: "Valor de apoios confirmados por semana"
+        current_period: "Últimas 8 sem."
+        previous_period: "8 sem. anteriores"
+        last_year: "Ano anterior"
   channels:
     adm:
       <<: *admin

@@ -176,7 +176,8 @@ en:
       important_html: "If you ask for a refund, the value of your payment will be deducted from your credits."
       project: Project
       refund_expration_date: "Refund deadline"
-      refunded: Refund request successfully done. Our team will contact you within two business days.
+      refunded: "Refund request successfully done. Our team will contact you within two business days."
+      insufficient_credits: "You don't have enough credits to request this refund."
       refunds_title: "Payments that can be refunded"
       request_refund: "Request refund"
       requested_refund: "Requested refund"
