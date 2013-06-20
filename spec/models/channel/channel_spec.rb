@@ -30,4 +30,17 @@ describe Channel do
       expect(channel.to_param).to eq(channel.permalink)
     end
   end
+
+
+  describe "#projects" do
+    let(:channel) { FactoryGirl.create(:channel) }
+    let(:project1) { FactoryGirl.create(:project, online_date: (Time.now - 21.days)) } 
+    let(:project2) { FactoryGirl.create(:project, online_date: (Time.now - 20.days)) }
+    before { channel.projects << project1 }
+    before { channel.projects << project2 }
+
+    it "should projects in more days online ascending order" do
+      expect(channel.projects).to eq([project2, project1])
+    end
+  end
 end
