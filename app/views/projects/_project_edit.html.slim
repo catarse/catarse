@@ -23,7 +23,7 @@
       - if can? :update, @project, :online_days
         = form.input :online_days, as: :number, required: false
       - if can? :update, @project, :goal
-        = form.input :goal, as: :number, required: false
+        = form.input :goal, as: :number, required: false, hint: t('formtastic.hints.project.goal').html_safe
       - if can? :update, @project, :about
         = form.input :about, required: false
         .tips
