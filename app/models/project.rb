@@ -129,12 +129,11 @@ class Project < ActiveRecord::Base
   end
 
   def number_online_days(date)
-    date = date.to_time if date.kind_of? String
-    (date - (online_date ? online_date : Time.now)).round/1.day
+    date = Time.zone.parse(date) if date.kind_of? String
+    (date - (online_date ? online_date : Time.now))/1.day
   end
 
   def expires_at=(date)
-    #1 day granularity
     write_attribute(:online_days, number_online_days(date))
   end
 
@@ -192,8 +191,8 @@ class Project < ActiveRecord::Base
 
   def time_to_go
     ['day', 'hour', 'minute', 'second'].each do |unit|
-      if expires_at >= 1.send(unit).from_now
-        time = ((expires_at - Time.now).abs/1.send(unit)).round
+      if expires_at.to_i >= 1.send(unit).from_now.to_i
+        time = ((expires_at - Time.zone.now).abs/1.send(unit)).round
         return {time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase)}
       end
     end
