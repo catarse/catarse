@@ -463,7 +463,6 @@ describe Project do
     p.expires_at = 1.day.from_now
     p.time_to_go[:time].should == 1
     p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.day').downcase)
-=begin
     p.expires_at = 23.hours.from_now + 59.minutes + 59.seconds
     p.time_to_go[:time].should == 24
     p.time_to_go[:unit].should == pluralize_without_number(24, I18n.t('datetime.prompts.hour').downcase)
@@ -491,7 +490,6 @@ describe Project do
     p.expires_at = 30.days.ago
     p.time_to_go[:time].should == 0
     p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
-=end
   end
 
   describe '#selected_rewards' do
