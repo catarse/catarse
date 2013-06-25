@@ -7,7 +7,8 @@ App.addChild('Explore', {
       not_expired: true,
       page: 0 
     };
-    this.$loader = this.$("#loading");
+    this.$loader = this.$("#loading img");
+    this.$loaderDiv = this.$("#loading");
     this.$results = this.$(".results");
     this.projectsPath = this.$("#explore_results").data('projects-path');
     this.fetchPage();
@@ -21,6 +22,14 @@ App.addChild('Explore', {
   onSuccess: function(data){
     this.$results.append(data);
     this.$loader.hide();
+  },
+
+  $window: function(){
+    return $(window);
+  },
+
+  isLoaderVisible: function(){
+    return this.$window().scrollTop() + this.$window().height() >  this.$loaderDiv.offset().top;
   },
 
   onScroll: function(event){
