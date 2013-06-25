@@ -5,6 +5,50 @@ describe("Explore", function() {
     view = new App.views.Explore();
   });
   
+  describe("#$window", function() {
+    it("should return $(window)", function() {
+      expect(view.$window()).toEqual($(window));
+    });
+  });  
+  
+  describe("#isLoaderVisible", function() {
+    describe("when loader is in visible portion of window", function() {
+      beforeEach(function() {
+        var w = {
+          scrollTop: function(){
+            return 1;
+          },
+          height: function(){
+            return 1;
+          }
+        };
+        spyOn(view.$loaderDiv, "offset").andReturn({top: 1});
+        spyOn(view, "$window").andReturn(w);
+      });
+      it("should return true", function() {
+        expect(view.isLoaderVisible()).toEqual(true);
+      });
+    });
+
+    describe("when loader is not in visible portion of window", function() {
+      beforeEach(function() {
+        var w = {
+          scrollTop: function(){
+            return 1;
+          },
+          height: function(){
+            return 0;
+          }
+        };
+        spyOn(view.$loaderDiv, "offset").andReturn({top: 1});
+        spyOn(view, "$window").andReturn(w);
+      });
+      it("should return false", function() {
+        expect(view.isLoaderVisible()).toEqual(false);
+      });
+    });
+  });  
+  
   describe("#activate", function() {
     it("should assing loader", function() {
       expect(view.$loader).toEqual(jasmine.any(Object));
