@@ -163,7 +163,7 @@ class Project < ActiveRecord::Base
   # NOTE: I think that we just can look the expires_at column
   # the project enter on finished / failed state when expires ;)
   def expired?
-    expires_at < Time.now
+    expires_at && expires_at < Time.now
   end
 
   def in_time_to_wait?
