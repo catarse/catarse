@@ -453,43 +453,39 @@ describe Project do
     end
   end
 
-  it "should return time_to_go acording to expires_at" do
-    p = build(:project)
-    time = Time.now
-    Time.stub(:now).and_return(time)
-    p.expires_at = 30.days.from_now
-    p.time_to_go[:time].should == 30
-    p.time_to_go[:unit].should == pluralize_without_number(30, I18n.t('datetime.prompts.day').downcase)
-    p.expires_at = 1.day.from_now
-    p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.day').downcase)
-    p.expires_at = 23.hours.from_now + 59.minutes + 59.seconds
-    p.time_to_go[:time].should == 24
-    p.time_to_go[:unit].should == pluralize_without_number(24, I18n.t('datetime.prompts.hour').downcase)
-    p.expires_at = 1.hour.from_now
-    p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.hour').downcase)
-    p.expires_at = 59.minutes.from_now
-    p.time_to_go[:time].should == 59
-    p.time_to_go[:unit].should == pluralize_without_number(59, I18n.t('datetime.prompts.minute').downcase)
-    p.expires_at = 1.minute.from_now
-    p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.minute').downcase)
-    p.expires_at = 59.seconds.from_now
-    p.time_to_go[:time].should == 59
-    p.time_to_go[:unit].should == pluralize_without_number(59, I18n.t('datetime.prompts.second').downcase)
-    p.expires_at = 1.second.from_now
-    p.time_to_go[:time].should == 1
-    p.time_to_go[:unit].should == pluralize_without_number(1, I18n.t('datetime.prompts.second').downcase)
-    p.expires_at = 0.seconds.from_now
-    p.time_to_go[:time].should == 0
-    p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
-    p.expires_at = 1.second.ago
-    p.time_to_go[:time].should == 0
-    p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
-    p.expires_at = 30.days.ago
-    p.time_to_go[:time].should == 0
-    p.time_to_go[:unit].should == pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)
+  describe "#expires_at" do
+    subject{ project.expires_at }
+    context "when we do not have an online_date" do
+      let(:project){ build(:project, online_date: nil, online_days: 0) }
+      it{ should be_nil }
+    end
+    context "when we have an online_date" do
+      let(:project){ build(:project, online_date: Time.now, online_days: 0) }
+      it{ should == Time.parse("23:59:59") }
+    end
+  end
+
+  describe "#time_to_go" do
+    let(:project){ build(:project, online_date: date, online_days: 2) }
+    let(:now){ Time.parse("23:00:00") }
+    subject{ project.time_to_go }
+    before do
+      project
+      Time.stub(:zone).and_return(double('time', now: now))
+    end
+    context "when there is more than 1 day to go" do
+      let(:date){ Date.today }
+      it{ should == {:time=>2, :unit=>"dias"} }
+    end
+    context "when there is less than 1 day to go" do
+      let(:date){ Date.today - 2.day }
+      let(:now){ Time.parse("11:00:00") }
+      it{ should == {:time=>13, :unit=>"horas"} }
+    end
+    context "when there is less than 1 hour to go" do
+      let(:date){ Date.today - 2.day }
+      it{ should == {:time=>60, :unit=>"minutos"} }
+    end
   end
 
   describe '#selected_rewards' do
