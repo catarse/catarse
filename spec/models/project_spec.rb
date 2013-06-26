@@ -103,9 +103,9 @@ describe Project do
     let(:project_03) { create(:project) }
 
     before do
-      project_01.update_attributes({ expires_at: '19/01/2013'.to_time })
-      project_02.update_attributes({ expires_at: '23/01/2013'.to_time })
-      project_03.update_attributes({ expires_at: '26/01/2013'.to_time })
+      project_01.update_attributes({ online_date: '19/01/2013'.to_time, online_days: 0 })
+      project_02.update_attributes({ online_date: '23/01/2013'.to_time, online_days: 0 })
+      project_03.update_attributes({ online_date: '26/01/2013'.to_time, online_days: 0 })
     end
 
     it { should == [project_01] }
@@ -430,12 +430,12 @@ describe Project do
     subject{ project.expired? }
 
     context "when expires_at is in the future" do
-      let(:project){ Project.new expires_at: 2.days.from_now }
+      let(:project){ Project.new online_date: 2.days.from_now, online_days: 0 }
       it{ should be_false }
     end
 
     context "when expires_at is in the past" do
-      let(:project){ Project.new expires_at: 2.seconds.ago }
+      let(:project){ Project.new online_date: 2.days.ago, online_days: 0 }
       it{ should be_true }
     end
   end
@@ -443,12 +443,12 @@ describe Project do
   describe "#in_time?" do
     subject{ project.in_time? }
     context "when expires_at is in the future" do
-      let(:project){ Project.new expires_at: 2.days.from_now }
+      let(:project){ Project.new online_date: 2.days.from_now, online_days: 0 }
       it{ should be_true }
     end
 
     context "when expires_at is in the past" do
-      let(:project){ Project.new expires_at: 2.seconds.ago }
+      let(:project){ Project.new online_date: 2.days.ago, online_days: 0 }
       it{ should be_false }
     end
   end
@@ -681,7 +681,8 @@ describe Project do
           main_project.update_attributes state: 'waiting_funds'
           subject.stub(:pending_backers_reached_the_goal?).and_return(true)
           subject.stub(:reached_goal?).and_return(true)
-          subject.expires_at = 2.weeks.ago
+          subject.online_date = 2.weeks.ago
+          subject.online_days = 0
           subject.finish
         end
         its(:successful?) { should be_true }
@@ -704,7 +705,8 @@ describe Project do
 
         before do
           backer
-          subject.expires_at = 2.weeks.ago
+          subject.online_date = 2.weeks.ago
+          subject.online_days = 0
           subject.finish
         end
 
