@@ -35,6 +35,7 @@ FactoryGirl.define do
     f.about "Foo bar"
     f.headline "Foo bar"
     f.goal 10000
+    f.online_date Time.now
     f.online_days 5
     f.how_know 'Lorem ipsum'
     f.more_links 'Ipsum dolor'
