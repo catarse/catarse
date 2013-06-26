@@ -429,6 +429,11 @@ describe Project do
   describe "#expired?" do
     subject{ project.expired? }
 
+    context "when online_date is nil" do
+      let(:project){ Project.new online_date: nil, online_days: 0 }
+      it{ should be_false }
+    end
+
     context "when expires_at is in the future" do
       let(:project){ Project.new online_date: 2.days.from_now, online_days: 0 }
       it{ should be_false }
