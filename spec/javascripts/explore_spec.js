@@ -97,15 +97,19 @@ describe("Explore", function() {
 
   describe("onScroll", function() {
     beforeEach(function() {
-      view.onScroll();
+      spyOn(view, "fetchPage");
     });
     
     it("call fetchPage if $loader is inside the visible window", function() {
-      
+      spyOn(view, "isLoaderVisible").andReturn(true);
+      view.onScroll();
+      expect(view.fetchPage).wasCalled();
     });
     
     it("should not call fetchPage if $loader is outside the visible window", function() {
-      
+      spyOn(view, "isLoaderVisible").andReturn(false);
+      view.onScroll();
+      expect(view.fetchPage).wasNotCalled();
     });
     
   });  
