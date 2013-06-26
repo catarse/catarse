@@ -117,7 +117,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.state_names
-    self.state_machine.states.map &:name
+    self.state_machine.states.map(&:name)
   end
 
   def subscribed_users
@@ -128,17 +128,8 @@ class Project < ActiveRecord::Base
     @decorator ||= ProjectDecorator.new(self)
   end
 
-  def number_online_days(date)
-    date = Time.zone.parse(date) if date.kind_of? String
-    (date - (online_date ? online_date : Time.now))/1.day
-  end
-
-  def expires_at=(date)
-    write_attribute(:online_days, number_online_days(date))
-  end
-
   def expires_at
-    (online_date ? online_date : Time.now) + online_days.days
+    online_date && Time.parse((online_date + online_days.days).strftime("%Y-%m-%d 23:59:59"))
   end
 
   def video
