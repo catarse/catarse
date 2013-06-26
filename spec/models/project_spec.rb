@@ -474,16 +474,16 @@ describe Project do
       Time.stub(:zone).and_return(double('time', now: now))
     end
     context "when there is more than 1 day to go" do
-      let(:date){ Date.today }
+      let(:date){ Time.zone.now }
       it{ should == {:time=>2, :unit=>"dias"} }
     end
     context "when there is less than 1 day to go" do
-      let(:date){ Date.today - 2.day }
+      let(:date){ Time.zone.now - 2.day }
       let(:now){ Time.parse("11:00:00") }
       it{ should == {:time=>13, :unit=>"horas"} }
     end
     context "when there is less than 1 hour to go" do
-      let(:date){ Date.today - 2.day }
+      let(:date){ Time.zone.now - 2.day }
       it{ should == {:time=>60, :unit=>"minutos"} }
     end
   end
