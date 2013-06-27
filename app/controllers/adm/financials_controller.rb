@@ -9,7 +9,7 @@ class Adm::FinancialsController < Adm::BaseController
   actions :index
 
   def projects
-    @search = apply_scopes(Project).includes(:user).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, (online_date + (online_days::text||' days')::interval)::date")
+    @search = apply_scopes(Project).includes(:user).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, (projects.expires_at)::date")
   end
 
   def collection

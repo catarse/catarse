@@ -202,7 +202,7 @@ class User < ActiveRecord::Base
         FROM backers b
         JOIN projects p ON b.project_id = p.id
         WHERE
-          (coalesce(p.online_date, current_timestamp) + (p.online_days::text||' days')::interval) > current_timestamp AND
+          (p.expires_at) > current_timestamp AND
           p.id NOT IN (SELECT project_id
                         FROM backers WHERE user_id = #{id}) AND
           b.user_id in (SELECT user_id
