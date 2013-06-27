@@ -183,7 +183,7 @@ describe Project do
       Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
       Project.should_receive(:visible).and_return(Project)
       Project.should_receive(:expiring).and_return(Project)
-      Project.should_receive(:order).with("date(online_date + (online_days::text||' days')::interval), random()").and_return(Project)
+      Project.should_receive(:order).with("projects.expires_at, random()").and_return(Project)
       Project.should_receive(:where).with("coalesce(id NOT IN (?), true)", 1).and_return(Project)
       Project.should_receive(:limit).with(3)
     end
@@ -227,8 +227,8 @@ describe Project do
 
   describe ".expiring" do
     before do
-      @p = create(:project, online_days: 14)
-      create(:project, online_days: -1)
+      @p = create(:project, online_date: Time.now, online_days: 13)
+      create(:project, online_date: Time.now, online_days: -1)
     end
     subject{ Project.expiring }
     it{ should == [@p] }
