@@ -106,7 +106,7 @@ class Project < ActiveRecord::Base
 
   def self.between_expires_at(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
-    where("(coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+    where("projects.expires_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
   end
 
   def self.finish_projects!
