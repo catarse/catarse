@@ -53,12 +53,12 @@ class Project < ActiveRecord::Base
   }
 
   scope :visible, where("state NOT IN ('draft', 'rejected')")
-  scope :financial, where("((coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
+  scope :financial, where("((projects.expires_at) > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)
-  scope :expired, where("(coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) < current_timestamp")
-  scope :not_expired, where("(coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) >= current_timestamp")
-  scope :expiring, not_expired.where("(coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) <= (current_timestamp + interval '2 weeks')")
-  scope :not_expiring, not_expired.where("NOT ((coalesce(online_date,current_timestamp) + (online_days::text||' days')::interval) <= (current_timestamp + interval '2 weeks'))")
+  scope :expired, where("(projects.expires_at) < current_timestamp")
+  scope :not_expired, where("(projects.expires_at) >= current_timestamp")
+  scope :expiring, not_expired.where("(projects.expires_at) <= (current_timestamp + interval '2 weeks')")
+  scope :not_expiring, not_expired.where("NOT ((projects.expires_at) <= (current_timestamp + interval '2 weeks'))")
   scope :recent, where("current_timestamp - projects.online_date <= '5 days'::interval")
   scope :successful, where(state: 'successful')
   scope :online, where(state: 'online')
@@ -78,7 +78,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'failed' THEN 4
                                      END ASC, created_at DESC, id DESC") }
   scope :expiring_for_home, ->(exclude_ids){
-    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order("date(online_date + (online_days::text||' days')::interval), random()").limit(3)
+    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order("projects.expires_at, random()").limit(3)
   }
   scope :recent_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('random()').limit(3)
@@ -106,7 +106,7 @@ class Project < ActiveRecord::Base
 
   def self.between_expires_at(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
-    where("(coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+    where("projects.expires_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
   end
 
   def self.finish_projects!
@@ -117,7 +117,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.state_names
-    self.state_machine.states.map &:name
+    self.state_machine.states.map(&:name)
   end
 
   def subscribed_users
@@ -128,17 +128,8 @@ class Project < ActiveRecord::Base
     @decorator ||= ProjectDecorator.new(self)
   end
 
-  def number_online_days(date)
-    date = Time.zone.parse(date) if date.kind_of? String
-    (date - (online_date ? online_date : Time.now))/1.day
-  end
-
-  def expires_at=(date)
-    write_attribute(:online_days, number_online_days(date))
-  end
-
   def expires_at
-    (online_date ? online_date : Time.now) + online_days.days
+    online_date && Time.parse((online_date + online_days.days).strftime("%Y-%m-%d 23:59:59"))
   end
 
   def video
@@ -172,7 +163,7 @@ class Project < ActiveRecord::Base
   # NOTE: I think that we just can look the expires_at column
   # the project enter on finished / failed state when expires ;)
   def expired?
-    expires_at < Time.now
+    expires_at && expires_at < Time.now
   end
 
   def in_time_to_wait?

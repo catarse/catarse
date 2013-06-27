@@ -55,7 +55,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    params['project']['online_days'] = @project.number_online_days(params['project']['expires_at']) if params['project']['expires_at']
     update! do |success, failure|
       success.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
       failure.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
