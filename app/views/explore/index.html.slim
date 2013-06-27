@@ -22,19 +22,19 @@
             ul#explore_quick
               - unless @recommended.empty?
                 li
-                  a href='#recommended'
+                  a[data-filter={recommended: true}.to_json href='#']
                     = t('.recommended')
               - unless @expiring.empty?
                 li.no_margin
-                  a href='#expiring'
+                  a[data-filter={expiring: true}.to_json href='#']
                     = t('.expiring')
               - unless @recent.empty?
                 li
-                  a href='#recent'
+                  a[data-filter={recent: true}.to_json href='#']
                     = t('.recent')
               - unless @successful.empty?
                 li.no_margin
-                  a href='#successful'
+                  a[data-filter={successful: true}.to_json href='#']
                     = t('.successful')
 
         - unless @categories.empty?
@@ -43,7 +43,7 @@
             ul#explore_categories
               - @categories.each_with_index do |category, index|
                 li class="#{(index%2==1 ? 'no_margin':'')}"
-                  a href="##{category.to_s.parameterize}" data-id=category.id
+                  a[data-filter={by_category_id: category.id}.to_json href='#']
                     = category
 
     .clearfix
