@@ -33,6 +33,7 @@ describe ProjectObserver do
       ::Configuration[:facebook_url] = 'http://facebook.com'
       ::Configuration[:blog_url] = 'http://blog.com'
       ::Configuration[:company_name] = 'Catarse'
+      ::Configuration[:email_projects] = 'foo@foo.com'
       user
       project
     end
@@ -205,6 +206,7 @@ describe ProjectObserver do
     let(:user) { create(:user, email: 'foo@foo.com')}
     before do
       ::Configuration[:email_payments] = 'foo@foo.com'
+      ::Configuration[:email_system] = 'foo2@foo.com'
       user
       project.stub(:reached_goal?).and_return(true)
       project.stub(:in_time_to_wait?).and_return(false)
