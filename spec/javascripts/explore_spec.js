@@ -54,6 +54,10 @@ describe("Explore", function() {
       expect(view.$loader).toEqual(jasmine.any(Object));
     });
     
+    it("should assing false to EOF results", function() {
+      expect(view.EOF).toEqual(false);
+    });
+
     it("should assing results", function() {
       expect(view.$results).toEqual(jasmine.any(Object));
     });
@@ -62,19 +66,87 @@ describe("Explore", function() {
       expect(view.filter).toEqual({
         recommended: true,
         not_expired: true,
-        page: 0
+        page: 2 //because activate calls fetchPage and increments the page
       });
     });
   });
 
-  describe("#fetchPage", function() {
+  describe("#applyFilter", function() {
+    var el;
+
     beforeEach(function() {
-      spyOn(view.$loader, "show");
-      view.fetchPage();
+      el = $('<div>');
+      el.data('filter', {foo: 'bar'});
+      spyOn(view, "firstPage");
+      view.applyFilter({target: el});
     });
 
-    it("should show loader", function() {
-      expect(view.$loader.show).wasCalled();
+    it("should assign filter to view", function() {
+      expect(view.filter).toEqual({foo: 'bar'});
+    });
+
+    it("should call firstPage", function() {
+      expect(view.firstPage).wasCalled();
+    });
+  });
+
+  describe("#firstPage", function() {
+    beforeEach(function() {
+      view.EOF = true;
+      view.filter.page = 2;
+      spyOn(view, "fetchPage");
+      spyOn(view.$results, "html");
+      view.firstPage();
+    });
+
+    it("should assign false to EOF", function() {
+      expect(view.EOF).toEqual(false);
+    });
+
+    it("should clear results", function() {
+      expect(view.$results.html).wasCalledWith('');
+    });
+
+    it("assign 1 to filter.page", function() {
+      expect(view.filter.page).toEqual(1);
+    });
+
+    it("should call fetchPage", function() {
+      expect(view.fetchPage).wasCalled();
+    });
+  });  
+  
+  describe("#fetchPage", function() {
+    describe("when EOF is true", function(){
+      beforeEach(function() {
+        view.EOF = true;
+        spyOn(view.$loader, "show");
+        view.fetchPage();
+      });
+
+      it("should not increment page", function() {
+        expect(view.filter.page).toEqual(2);
+      });
+
+      it("should not show loader", function() {
+        expect(view.$loader.show).wasNotCalled();
+      });
+    });
+
+    describe("when EOF is false", function(){
+      beforeEach(function() {
+        view.EOF = false;
+        spyOn(view.$loader, "show");
+        view.fetchPage();
+      });
+
+      it("should increment page", function() {
+        expect(view.filter.page).toEqual(3);
+      });
+
+      it("should show loader", function() {
+        expect(view.$loader.show).wasCalled();
+      });
     });
   });
 
