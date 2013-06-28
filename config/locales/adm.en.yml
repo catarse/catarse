@@ -50,9 +50,10 @@ en:
         backer_info: 'Info of backer %{key}'
         payment_id: 'Payment ID'
         payment_method: 'Payment method'
+        payment_fee: 'Payment method fee'
         payment_choice: 'Payment choice'
         payer_email: 'Payer email'
-        user_email: 'Catarse user email'        
+        user_email: 'Catarse user email'
         pending_to_refund: 'Pending to refund'
         created_at: 'Created at'
         title: "Backers management"
