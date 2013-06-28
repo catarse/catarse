@@ -5,8 +5,8 @@
     = link_to t('layouts.header.explore'), explore_path, :class => 'explore'
     = link_to t('layouts.header.submit_project'), guidelines_start_path, :class =>  'submit_project'
   .search
-    = form_tag explore_path(:anchor => "search"), :method => 'GET', :class=>'search_input' do
-      = text_field_tag :search, nil, autocomplete: "off"
+    = form_tag explore_path, :method => 'GET', :class=>'search_input' do
+      = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search]
       = submit_tag
   nav.menu
     = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, id: 'guidelines_header_modal' if Configuration[:support_forum].present?

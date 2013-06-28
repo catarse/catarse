@@ -24,6 +24,27 @@ describe("App", function() {
     });
   });  
 
+  describe("#flash", function() {
+    beforeEach(function() {
+      spyOn(window, "setTimeout").andCallFake(function(callback, timeout){ callback(); });
+      spyOn(view.$flash, "slideDown");
+      spyOn(view.$flash, "slideUp");
+      view.flash();
+    });
+
+    it("should call setTimeout twice", function() {
+      expect(window.setTimeout.calls.length).toEqual(2);
+    });
+
+    it("should call slideUp on callback", function() {
+      expect(view.$flash.slideUp).wasCalledWith('slow');
+    });
+
+    it("should call slideDown on callback", function() {
+      expect(view.$flash.slideDown).wasCalledWith('slow');
+    });
+  });  
+  
   describe("#toggleMenu", function() {
     beforeEach(function() {
       spyOn(view.$dropdown, "slideToggle");

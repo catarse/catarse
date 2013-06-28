@@ -6,16 +6,26 @@ App.addChild('Explore', {
   },
 
   activate: function(){
-    this.filter = {
-      recommended: true,
-      not_expired: true
-    };
     this.$loader = this.$("#loading img");
     this.$loaderDiv = this.$("#loading");
     this.$results = this.$(".results");
     this.projectsPath = this.$("#explore_results").data('projects-path');
+    this.setInitialFilter();
     this.firstPage();
     this.$window().scroll(this.onScroll);
+  },
+
+  setInitialFilter: function(){
+    var search = null;;
+    if(this.parent && (search = this.parent.$search.val())){
+      this.filter = { pg_search: search };
+    }
+    else{
+      this.filter = {
+        recommended: true,
+        not_expired: true
+      };
+    }
   },
 
   firstPage: function(){
@@ -31,6 +41,7 @@ App.addChild('Explore', {
     this.firstPage();
     this.$('[data-filter]').removeClass('selected');
     $target.addClass('selected');
+    this.parent.$search.val('');
     return false;
   },
 

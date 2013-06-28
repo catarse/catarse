@@ -49,6 +49,28 @@ describe("Explore", function() {
     });
   });  
   
+  describe("#setInitialFilter", function() {
+    describe("when parent has search set", function() {
+      it("set filter for search", function() {
+        view.parent = { $search: $('<input type="text" value="foo">') };
+        view.setInitialFilter();
+        expect(view.filter).toEqual({
+          pg_search: 'foo'
+        });
+      });
+    });  
+
+    describe("when parent does not have search set", function() {
+      it("should assign default filters", function() {
+        view.setInitialFilter();
+        expect(view.filter).toEqual({
+          recommended: true,
+          not_expired: true
+        });
+      });
+    });  
+  });  
+  
   describe("#activate", function() {
     it("should assing loader", function() {
       expect(view.$loader).toEqual(jasmine.any(Object));
@@ -62,12 +84,10 @@ describe("Explore", function() {
       expect(view.$results).toEqual(jasmine.any(Object));
     });
     
-    it("should assign default filters", function() {
-      expect(view.filter).toEqual({
-        recommended: true,
-        not_expired: true,
-        page: 2 //because activate calls fetchPage and increments the page
-      });
+    it("should call setInitialFilter", function() {
+      spyOn(view, "setInitialFilter");
+      view.activate();
+      expect(view.setInitialFilter).wasCalled();
     });
   });
 
