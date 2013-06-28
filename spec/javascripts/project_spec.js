@@ -14,16 +14,37 @@ describe("Project", function() {
     });
     
     it("should add selected class", function() {
-      
+      expect($tab.addClass).wasCalledWith('selected');
     });
-    
+  });  
+  
+  describe("toggleTab", function() {
+    var $tab = { show: function(){} };
+    var $otherTabs = { hide: function(){} };
+    beforeEach(function() {
+      spyOn($tab, "show");
+      spyOn($otherTabs, "hide");
+      spyOn(view, "$").andReturn($otherTabs);
+      view.toggleTab($tab);
+    });
+
+    it("should show tab", function() {
+      expect($tab.show).wasCalled();
+    });
+
+    it("should hide other tabs", function() {
+      expect($otherTabs.hide).wasCalled();
+    });
   });  
   
   describe("#onTabClick", function() {
     var $target = $('<a data-target="#selector">');
+    var $tab = $('<div>');
     beforeEach(function() {
       spyOn(view, "loadTab");
       spyOn(view, "selectTab");
+      spyOn(view, "$").andReturn($tab);
+      spyOn(view, "toggleTab");
       view.onTabClick({target: $target});
     });
 
@@ -31,8 +52,13 @@ describe("Project", function() {
       expect(view.selectTab).wasCalledWith($target);
     });
 
-    it("should call loadTab passing the selector", function() {
-      expect(view.loadTab).wasCalledWith('#selector');
+    it("should call toggleTab", function() {
+      expect(view.toggleTab).wasCalledWith($tab);
+    });
+    
+    it("should call loadTab passing the obj from selector", function() {
+      expect(view.$).wasCalledWith('#selector');
+      expect(view.loadTab).wasCalledWith($tab);
     });
   });  
   
@@ -46,8 +72,7 @@ describe("Project", function() {
 
       beforeEach(function() {
         spyOn(tab, "html");
-        spyOn(view, "$").andReturn(tab);
-        view.loadTab('#emptyTab');
+        view.loadTab(tab);
       });
 
       it("should fill tab with data", function() {
@@ -61,7 +86,7 @@ describe("Project", function() {
 
     describe("when tab has content", function() {
       beforeEach(function() {
-        view.loadTab('#tab');
+        view.loadTab(view.$('#tab'));
       });
 
       it("should not get content", function() {
