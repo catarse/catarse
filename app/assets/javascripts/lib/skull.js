@@ -14,6 +14,10 @@ Skull.View = Backbone.View.extend({
       this.parent = options.parent;
     }
 
+    if(_.isFunction(this.beforeActivate)){
+      this.beforeActivate();
+    }
+
     this.createViewGetters();
 
     if(_.isFunction(this.activate)){
