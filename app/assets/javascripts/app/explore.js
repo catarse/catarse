@@ -41,7 +41,9 @@ App.addChild('Explore', {
     this.firstPage();
     this.$('[data-filter]').removeClass('selected');
     $target.addClass('selected');
-    this.parent.$search.val('');
+    if(this.parent && this.parent.$search.length > 0){
+      this.parent.$search.val('');
+    }
     return false;
   },
 
