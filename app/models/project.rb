@@ -249,9 +249,14 @@ class Project < ActiveRecord::Base
     state :successful, value: 'successful'
     state :waiting_funds, value: 'waiting_funds'
     state :failed, value: 'failed'
+    state :deleted, value: 'deleted'
 
     event :push_to_draft do
       transition all => :draft #NOTE: when use 'all' we can't use new hash style ;(
+    end
+
+    event :push_to_trash do
+      transition [:draft, :rejected] => :deleted
     end
 
     event :reject do
