@@ -1,4 +1,4 @@
-App.addChild('Explore', {
+App.addChild('Explore', _.extend({
   el: '#main_content[data-action="index"][data-controller-name="explore"]',
 
   events: {
@@ -9,10 +9,9 @@ App.addChild('Explore', {
     this.$loader = this.$("#loading img");
     this.$loaderDiv = this.$("#loading");
     this.$results = this.$(".results");
-    this.projectsPath = this.$("#explore_results").data('projects-path');
+    this.path = this.$("#explore_results").data('projects-path');
     this.setInitialFilter();
-    this.firstPage();
-    this.$window().scroll(this.onScroll);
+    this.setupScroll();
   },
 
   setInitialFilter: function(){
@@ -28,13 +27,6 @@ App.addChild('Explore', {
     }
   },
 
-  firstPage: function(){
-    this.EOF = false;
-    this.filter.page = 1;
-    this.$results.html('');
-    this.fetchPage();
-  },
-
   applyFilter: function(e){
     var $target = $(e.target);
     this.filter = $target.data('filter');
@@ -45,35 +37,5 @@ App.addChild('Explore', {
       this.parent.$search.val('');
     }
     return false;
-  },
-
-  fetchPage: function(){
-    if(!this.EOF){
-      this.$loader.show();
-      $.get(this.projectsPath, this.filter).success(this.onSuccess);
-      this.filter.page += 1;
-    }
-  },
-
-  onSuccess: function(data){
-    if($.trim(data) == ''){
-      this.EOF = true;
-    }
-    this.$results.append(data);
-    this.$loader.hide();
-  },
-
-  $window: function(){
-    return $(window);
-  },
-
-  isLoaderVisible: function(){
-    return this.$window().scrollTop() + this.$window().height() >  this.$loaderDiv.offset().top;
-  },
-
-  onScroll: function(event){
-    if(this.isLoaderVisible()){
-      this.fetchPage();
-    }
   }
-});
+}, Skull.InfiniteScroll));
