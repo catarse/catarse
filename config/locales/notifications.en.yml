@@ -59,3 +59,6 @@ en:
     credits_warning:
       subject: "You have R$ %{amount} in credits on Catarse"
       header: "Why not back another project?"
+    backer_confirmed_after_project_was_closed:
+      subject: "New backer confirmed on finished project '%{project_name}' "
+      header: "New backer confirmed."
