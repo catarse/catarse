@@ -74,6 +74,9 @@
 
         #project_updates.content.hide[data-path=project_updates_path(project_id: @project.id)]
         #project_backers.content.hide[data-path=project_backers_path(project_id: @project.id)]
+          .results &nbsp;
+          .clearfix
+          #loading= image_tag "loading.gif"
         #project_comments.content.hide
         #project_about.content= render 'project_about'
 

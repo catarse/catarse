@@ -22,6 +22,7 @@ describe("Explore", function() {
             return 1;
           }
         };
+        spyOn(view.$loaderDiv, "is").andReturn(true);
         spyOn(view.$loaderDiv, "offset").andReturn({top: 1});
         spyOn(view, "$window").andReturn(w);
       });
