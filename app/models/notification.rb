@@ -23,14 +23,8 @@ class Notification < ActiveRecord::Base
 
   def send_email
     unless dismissed
-      begin
-        NotificationsMailer.notify(self).deliver
-        self.update_attributes dismissed: true
-      rescue Exception => e
-        Rails.logger.error "Error while delivering email (#{e}).\n
-        Check your configurations sendgrid and sendgrid_user_name\n
-        Your notification was stored in the database with dismissed field set to false"
-      end
+      NotificationsMailer.notify(self).deliver
+      self.update_attributes dismissed: true
     end
   end
 

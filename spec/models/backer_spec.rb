@@ -64,16 +64,24 @@ describe Backer do
     subject { Backer.can_cancel}
 
     context "when backer is in time to wait the confirmation" do
-      before do 
-        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) 
+      before do
+        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
       end
       it { should have(0).item }
     end
 
+    context "when backer is by bank transfer and is passed the confirmation time" do
+      before do
+        create(:backer, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 2.weekdays_ago)
+        create(:backer, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 0.weekdays_ago)
+      end
+      it { should have(1).item }
+    end
+
     context "when we have backers that is passed the confirmation time" do
       before do
-        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago) 
-        create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago) 
+        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
+        create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago)
       end
       it { should have(1).itens }
     end
@@ -170,7 +178,7 @@ describe Backer do
     end
 
     describe '#waiting' do
-      before { backer.waiting }        
+      before { backer.waiting }
       context "when in peding state" do
         it("should switch to waiting_confirmation state") { backer.waiting_confirmation?.should be_true }
       end
@@ -228,7 +236,7 @@ describe Backer do
 
     context 'when backer as requested refund' do
       before do
-        create(:backer, state: 'confirmed')        
+        create(:backer, state: 'confirmed')
         create(:backer, state: 'refunded')
         create(:backer, state: 'requested_refund')
       end
@@ -239,15 +247,15 @@ describe Backer do
 
   describe '.in_time_to_confirm' do
     subject { Backer.in_time_to_confirm}
-    
+
     context 'when we have backers in waiting confirmation' do
       before do
         create(:backer, state: 'waiting_confirmation')
         create(:backer, state: 'waiting_confirmation')
-        create(:backer, state: 'pending')        
+        create(:backer, state: 'pending')
       end
-      
-      it { should have(2).item }      
+
+      it { should have(2).item }
     end
   end
 
