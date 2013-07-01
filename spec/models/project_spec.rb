@@ -29,7 +29,7 @@ describe Project do
   end
 
   describe '.state_names' do
-    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed] }
+    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed, :deleted] }
 
     subject { Project.state_names }
 
@@ -620,6 +620,15 @@ describe Project do
         project
       end
       its(:rejected?){ should be_true }
+    end
+
+    describe '#push_to_trash' do
+      subject do
+        project.push_to_trash
+        project
+      end
+
+      its(:deleted?) { should be_true }
     end
 
     describe '#approve' do
