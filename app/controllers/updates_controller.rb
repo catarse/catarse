@@ -8,7 +8,7 @@ class UpdatesController < ApplicationController
 
   def index
     index! do |format|
-      format.html{ return render :index, layout: false }
+      format.html{ return render end_of_association_chain.page(params[:page]).per(3) }
     end
   end
 
