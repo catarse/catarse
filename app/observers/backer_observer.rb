@@ -26,6 +26,14 @@ class BackerObserver < ActiveRecord::Observer
         {backer_id: backer.id},
         backer: backer,
         project_name: backer.project.name)
+
+      if (Time.now > backer.project.expires_at  + 7.days) && (user = User.where(email: ::Configuration[:email_payments]).first)
+        Notification.create_notification_once(:backer_confirmed_after_project_was_closed,
+          user,
+          {backer_id: backer.id},
+          backer: backer,
+          project_name: backer.project.name)
+      end
     end
 
     unless backer.user.have_address?
@@ -51,7 +59,7 @@ class BackerObserver < ActiveRecord::Observer
       {project_id: backer.project.id},
       project: backer.project) if backer.project.reached_goal?
   end
-  
+
   def notify_backoffice(backer)
     CreditsMailer.request_refund_from(backer).deliver
   end
