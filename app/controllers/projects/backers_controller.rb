@@ -13,7 +13,7 @@ class Projects::BackersController < ApplicationController
 
   def index
     @backers = parent.backers.avaiable_to_count.order("confirmed_at DESC").page(params[:page]).per(10)
-    render json: @backers.to_json(can_manage: can?(:update, @project))
+    render @backers
   end
 
   def show

@@ -54,7 +54,7 @@
         = link_to '#', 'id' => 'updates_link', 'data-target' => '#project_updates' do
           = t('.menu.updates')
           span.count=" (#{@project.updates.count})"
-        = link_to '#', 'id' => 'backers_link', 'data-target' => '#project_updates' do
+        = link_to '#', 'id' => 'backers_link', 'data-target' => '#project_backers' do
           = t('.menu.backers')
           span.count=" (#{@project.total_backers})"
         = link_to '#', 'id' => 'comments_link', 'data-target' => '#project_updates' do
@@ -74,8 +74,7 @@
           #project_edit.content.hide
 
         #project_updates.content.hide[data-path=project_updates_path(project_id: @project.id)]
-        .media_content_backers
-          #project_backers.content.hide
+        #project_backers.content.hide[data-path=project_backers_path(project_id: @project.id)]
         #project_comments.content.hide
         #project_about.content= render 'project_about'
 
