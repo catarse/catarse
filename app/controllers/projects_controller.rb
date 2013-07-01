@@ -55,7 +55,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    params['project']['online_days'] = @project.number_online_days(params['project']['expires_at']) if params['project']['expires_at']
     update! do |success, failure|
       success.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
       failure.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
@@ -65,7 +64,7 @@ class ProjectsController < ApplicationController
   def show
     begin
       if params[:permalink].present?
-        @project = Project.where("lower(permalink) = ?", params[:permalink].downcase).last
+        @project = Project.not_deleted_projects.by_permalink(params[:permalink]).last
       else
         return redirect_to project_by_slug_path(resource.permalink)
       end
@@ -124,5 +123,11 @@ class ProjectsController < ApplicationController
     rewards.each do |r|
       rewards.delete(r[0]) unless Reward.new(r[1]).valid?
     end
+  end
+
+  protected
+
+  def resource
+    @project ||= Project.not_deleted_projects.find params[:id]
   end
 end

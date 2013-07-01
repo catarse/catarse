@@ -98,6 +98,10 @@
                             | &nbsp;
                             = backer.payment_method
                           p
+                            strong= t('.payment_fee')
+                            | &nbsp;
+                            = number_to_currency backer.payment_service_fee, unit: 'R$', precision: 2, delimiter: '.'
+                          p
                             strong= t('.payment_id')
                             | &nbsp;
                             = backer.payment_id
@@ -141,7 +145,7 @@
                       ul.dropdown-menu
                         li title=("#{t('.no_reward')}" ) = link_to t('.no_reward'), change_reward_adm_backer_path(backer, reward_id: nil), method: :put
                         - backer.available_rewards.each do |reward|
-                          li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_adm_backer_path(backer, reward_id: reward.id), method: :put
+                          li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_adm_backer_path(backer, reward_id: reward.id, local_params: params), method: :put
 
                   td.key= backer.key
                   td.checkbox= best_in_place [:adm, backer], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
@@ -153,13 +157,13 @@
                         span.caret
                       ul.dropdown-menu
                         - if backer.confirmed?
-                          li= link_to t('adm.backers.index.unconfirm_backer'), pendent_adm_backer_path(backer), method: :put
+                          li= link_to t('adm.backers.index.unconfirm_backer'), pendent_adm_backer_path(backer, local_params: params), method: :put
                         - else
-                          li= link_to t('adm.backers.index.confirm_backer'), confirm_adm_backer_path(backer), method: :put
+                          li= link_to t('adm.backers.index.confirm_backer'), confirm_adm_backer_path(backer, local_params: params), method: :put
                         - if backer.requested_refund? or backer.confirmed?
-                          li= link_to t('adm.backers.index.refund_backer'), refund_adm_backer_path(backer), method: :put
-                        li= link_to t('adm.backers.index.refund_and_hide'), hide_adm_backer_path(backer), method: :put
-                        li= link_to t('adm.backers.index.cancel'), cancel_adm_backer_path(backer), method: :put
+                          li= link_to t('adm.backers.index.refund_backer'), refund_adm_backer_path(backer, local_params: params), method: :put
+                        li= link_to t('adm.backers.index.refund_and_hide'), hide_adm_backer_path(backer, local_params: params), method: :put
+                        li= link_to t('adm.backers.index.cancel'), cancel_adm_backer_path(backer, local_params: params), method: :put
       = paginate @backers
   .clearfix
 

@@ -1,5 +1,6 @@
 pt:
   adm: &admin
+    confirm_dialog: 'Você tem certeza?'
     financials:
       index:
         id: ID
@@ -29,6 +30,7 @@ pt:
         between_created_at: 'Criados entre'
         id: ID
         name: 'Titulo'
+        send_to_trash: "Deletar"
         send_to_draft: 'Mandar para DRAFT!'
         reject: 'Rejeitar!'
         approve: 'Aprovar!'
@@ -89,10 +91,11 @@ pt:
         backer_info: 'Informações do backer %{key}'
         payment_id: 'ID do pagamento'
         payment_method: 'Meio de pagamento'
+        payment_fee: 'Taxa do meio de pagamento'
         payment_choice: 'Opção de pagamento'
         payer_email: 'Email utilizado no meio de pagamento'
         user_email: 'Email utilizado no catarse'
-        created_at: 'Iniciado em'        
+        created_at: 'Iniciado em'
         pending_to_refund: 'Estornos pendentes'
         confirm_backer: 'Confirmar apoio'
         unconfirm_backer: 'Desconfirmar apoio'

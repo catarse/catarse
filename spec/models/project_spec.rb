@@ -36,6 +36,18 @@ describe Project do
     it { should == states }
   end
 
+  describe '.not_deleted_projects' do
+    before do
+      create(:project,  state: 'online')
+      create(:project,  state: 'draft')
+      create(:project,  state: 'deleted')
+    end
+
+    subject { Project.not_deleted_projects }
+
+    it { should have(2).itens }
+  end
+
   describe '.by_state' do
     before do
       @project_01 = create(:project, state: 'online')
@@ -183,7 +195,7 @@ describe Project do
       Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
       Project.should_receive(:visible).and_return(Project)
       Project.should_receive(:expiring).and_return(Project)
-      Project.should_receive(:order).with("date(online_date + (online_days::text||' days')::interval), random()").and_return(Project)
+      Project.should_receive(:order).with("projects.expires_at, random()").and_return(Project)
       Project.should_receive(:where).with("coalesce(id NOT IN (?), true)", 1).and_return(Project)
       Project.should_receive(:limit).with(3)
     end
@@ -227,8 +239,8 @@ describe Project do
 
   describe ".expiring" do
     before do
-      @p = create(:project, online_days: 14)
-      create(:project, online_days: -1)
+      @p = create(:project, online_date: Time.now, online_days: 13)
+      create(:project, online_date: Time.now, online_days: -1)
     end
     subject{ Project.expiring }
     it{ should == [@p] }
@@ -620,6 +632,18 @@ describe Project do
         project
       end
       its(:rejected?){ should be_true }
+    end
+
+    describe '#push_to_trash' do
+      let(:project) { FactoryGirl.create(:project, permalink: 'my_project', state: 'draft') }
+
+      subject do
+        project.push_to_trash
+        project
+      end
+
+      its(:deleted?) { should be_true }
+      its(:permalink) { should == "deleted_project_#{project.id}" }
     end
 
     describe '#approve' do

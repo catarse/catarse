@@ -1,10 +1,12 @@
 en:
   adm: &admin
+    confirm_dialog: 'You are sure?'
     projects:
       index:
         by_state: 'By state'
         between_created_at: 'Created at between'
         submit: 'Filter'
+        send_to_trash: 'Delete'
         send_to_draft: 'Send to DRAFT!'
         reject: 'Reject!'
         approve: 'Approve!'
@@ -50,9 +52,10 @@ en:
         backer_info: 'Info of backer %{key}'
         payment_id: 'Payment ID'
         payment_method: 'Payment method'
+        payment_fee: 'Payment method fee'
         payment_choice: 'Payment choice'
         payer_email: 'Payer email'
-        user_email: 'Catarse user email'        
+        user_email: 'Catarse user email'
         pending_to_refund: 'Pending to refund'
         created_at: 'Created at'
         title: "Backers management"

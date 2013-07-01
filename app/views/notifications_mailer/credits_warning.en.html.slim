@@ -1,11 +1,11 @@
 - backer = @notification.backer
-|Olá, <strong>#{backer.user.display_name}</strong> !
+|Hi, <strong>#{backer.user.display_name}</strong> !
 br
 br
-|Vimos aqui que você tem  R$ #{backer.user.credits} em créditos no Catarse. Que tal aproveitar e apoiar outro projeto bacana agora mesmo?
+|We spotted that you have R$ #{backer.user.credits} in credits at Catarse. What about backing another cool project right now?
 br
 br
-|Abaixo selecionamos algumas sugestões de projetos especialmente para você:
+|We have selected below some project suggestions specially for you:
 br
 br
 -backer.user.recommended_projects(3).each do |project|
@@ -16,25 +16,26 @@ br
   br
 br
 br
-|Pra não ficar dúvida, aqui vai um passo-a-passo pra utilização dos créditos:
+|Here goes step-by-step so you won’t have any troubles using your credits ;)
 br
 br
-|1 - #{link_to('Escolher o projeto que quer apoiar;', explore_url)}
+|1 - #{link_to('Choose the project you want to back;', explore_url)}
 br
-|2 - Clicar em Quero apoiar este projeto;
+|2 - Click on the 'Back This Project' button;
 br
-|3 - Colocar o valor que quer apoiar e selecionar o campo confirmando que você quer usar seus créditos.
+|3 -Tell us how much you want to pledge and make sure you check the box saying you want to use your credits for that..
 br
-|4 - Clicar no botão Revisar e realizar pagamento na parte debaixo da tela;
+|4 - Click on Review and Proceed to Check Out;
 br
-|5 - Pronto! Seu apoio será confirmado =)
-br
-br
-|Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}.  Você conseguirá tirar a maioria das suas dúvidas sobre reembolso #{link_to('nesse artigo', 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos')}.
+|5 -Done! Your pledge will be confirmed =)
 br
 br
-|Se tiver alguma outra dúvida, entre em contato conosco na nossa Central de Suporte: suporte.catarse.me.
+|If you rather ask for a refund, first logon to your Catarse account and then click #{link_to("here", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}.
+|#{link_to('This article', 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos')} aboud refunds will solve most of  your doubts.
 br
 br
-|Um grande abraço,
-|Equipe do Catarse
+|If you have any other doubts please get in touch with us through our support area: suporte.catarse.me.
+br
+br
+|Best regards,
+|Catarse's team

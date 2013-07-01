@@ -35,10 +35,11 @@ class Project < ActiveRecord::Base
     using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
+  scope :not_deleted_projects, ->() { where("state <> 'deleted'") }
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_id, ->(id) { where(id: id) }
-  scope :by_permalink, ->(p) { where(permalink: p) }
+  scope :by_permalink, ->(p) { where("lower(permalink) = lower(?)", p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
@@ -53,12 +54,12 @@ class Project < ActiveRecord::Base
   }
 
   scope :visible, where("state NOT IN ('draft', 'rejected')")
-  scope :financial, where("((coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
+  scope :financial, where("((projects.expires_at) > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)
-  scope :expired, where("(coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) < current_timestamp")
-  scope :not_expired, where("(coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) >= current_timestamp")
-  scope :expiring, not_expired.where("(coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) <= (current_timestamp + interval '2 weeks')")
-  scope :not_expiring, not_expired.where("NOT ((coalesce(online_date,current_timestamp) + (online_days::text||' days')::interval) <= (current_timestamp + interval '2 weeks'))")
+  scope :expired, where("(projects.expires_at) < current_timestamp")
+  scope :not_expired, where("(projects.expires_at) >= current_timestamp")
+  scope :expiring, not_expired.where("(projects.expires_at) <= (current_timestamp + interval '2 weeks')")
+  scope :not_expiring, not_expired.where("NOT ((projects.expires_at) <= (current_timestamp + interval '2 weeks'))")
   scope :recent, where("current_timestamp - projects.online_date <= '5 days'::interval")
   scope :successful, where(state: 'successful')
   scope :online, where(state: 'online')
@@ -78,7 +79,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'failed' THEN 4
                                      END ASC, created_at DESC, id DESC") }
   scope :expiring_for_home, ->(exclude_ids){
-    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order("date(online_date + (online_days::text||' days')::interval), random()").limit(3)
+    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order("projects.expires_at, random()").limit(3)
   }
   scope :recent_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('random()').limit(3)
@@ -106,7 +107,7 @@ class Project < ActiveRecord::Base
 
   def self.between_expires_at(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
-    where("(coalesce(online_date, current_timestamp) + (online_days::text||' days')::interval) between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+    where("projects.expires_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
   end
 
   def self.finish_projects!
@@ -117,7 +118,9 @@ class Project < ActiveRecord::Base
   end
 
   def self.state_names
-    self.state_machine.states.map(&:name)
+    self.state_machine.states.map do |state|
+      state.name if state.name != :deleted
+    end.compact!
   end
 
   def subscribed_users
@@ -249,9 +252,14 @@ class Project < ActiveRecord::Base
     state :successful, value: 'successful'
     state :waiting_funds, value: 'waiting_funds'
     state :failed, value: 'failed'
+    state :deleted, value: 'deleted'
 
     event :push_to_draft do
       transition all => :draft #NOTE: when use 'all' we can't use new hash style ;(
+    end
+
+    event :push_to_trash do
+      transition [:draft, :rejected] => :deleted
     end
 
     event :reject do
@@ -292,6 +300,11 @@ class Project < ActiveRecord::Base
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
     after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
     after_transition :waiting_funds => [:failed, :successful], :do => :after_transition_of_waiting_funds_to_failed_or_successful
+    after_transition [:draft, :rejected] => :deleted, :do => :after_transition_of_draft_or_rejected_to_deleted
+  end
+
+  def after_transition_of_draft_or_rejected_to_deleted
+    update_attributes({ permalink: "deleted_project_#{id}"})
   end
 
   def after_transition_of_online_to_waiting_funds
