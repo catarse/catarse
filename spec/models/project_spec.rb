@@ -623,12 +623,15 @@ describe Project do
     end
 
     describe '#push_to_trash' do
+      let(:project) { FactoryGirl.create(:project, permalink: 'my_project', state: 'draft') }
+
       subject do
         project.push_to_trash
         project
       end
 
       its(:deleted?) { should be_true }
+      its(:permalink) { should == "deleted_project_#{project.id}" }
     end
 
     describe '#approve' do
