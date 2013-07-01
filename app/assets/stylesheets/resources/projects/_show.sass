@@ -57,72 +57,66 @@
           font-family: "Lato"
           font-style: italic
           font-size: 16px
-    .media_content_update
-      ul.collection_list
-        li
-          width: 100%
-          float: left
-          border-bottom: 1px #ccc dotted
-          padding: 40px 0 10px
-          min-height: 67px
-          .flag
-            background: url($images_path+'project_about.png') left top no-repeat
-            width: 10px
-            height: 40px
-            float: left
-          .time
-            font-family: "Lato"
-            font-weight: bold
-            float: left
-            color: white
-            font-size: 14px
-            text-transform: uppercase
-            height: 23px
-            padding: 8px 20px 0 10px
-            background: #EE5192
-            margin-bottom: 25px
-
-          h3
-            font-family: "Arial"
-            font-weight: bold
-            color: #444
-            font-size: 16px
-            margin-bottom: 20px
-            padding-left: 20px
-          p
-            font-family: Arial
-            padding: 5px 0 5px 20px
-            font-size: 14px
-            color: #444
-            line-height: 21px
-          img
-            max-width: 600px
-          a
-            font-family: Arial
-            color: #444
-            text-decoration: none
-            &:hover
-              color: $pink
-              text-decoration: underline
-            &.destroy_update
-              font-size: 12px
-              color: $pink
-              text-decoration: none
-              padding: 10px 0px 20px 20px
-              float: left
-              &:hover
-                text-decoration: underline
-
-          strong
-            font-weight: bold
-          em
-            font-style: italic
-            font-size: 12px
-            font-family: "Lato"
-      em
+    .update
+      width: 100%
+      float: left
+      border-bottom: 1px #ccc dotted
+      padding: 40px 0 10px
+      min-height: 67px
+      .flag
+        background: url($images_path+'project_about.png') left top no-repeat
+        width: 10px
+        height: 40px
+        float: left
+      .time
         font-family: "Lato"
+        font-weight: bold
+        float: left
+        color: white
+        font-size: 14px
+        text-transform: uppercase
+        height: 23px
+        padding: 8px 20px 0 10px
+        background: #EE5192
+        margin-bottom: 25px
+
+      h3
+        font-family: "Arial"
+        font-weight: bold
+        color: #444
         font-size: 16px
-        color: black
+        margin-bottom: 20px
+        padding-left: 20px
+      p
+        font-family: Arial
+        padding: 5px 0 5px 20px
+        font-size: 14px
+        color: #444
+        line-height: 21px
+      img
+        max-width: 600px
+      a
+        font-family: Arial
+        color: #444
+        text-decoration: none
+        &:hover
+          color: $pink
+          text-decoration: underline
+        &.destroy_update
+          font-size: 12px
+          color: $pink
+          text-decoration: none
+          padding: 10px 0px 20px 20px
+          float: left
+          &:hover
+            text-decoration: underline
+
+      strong
+        font-weight: bold
+      em
+        font-style: italic
+        font-size: 12px
+        font-family: "Lato"
     .project_image
       +grid(2)
       padding-top:  40px
@@ -754,6 +748,10 @@
             &:hover
               background-color: #C2457E
     #project_updates
+      em
+        font-family: "Lato"
+        font-size: 16px
+        color: black
       width: 620px
       .bootstrap-form
         margin-top: 20px
