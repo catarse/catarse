@@ -297,6 +297,11 @@ class Project < ActiveRecord::Base
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
     after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
     after_transition :waiting_funds => [:failed, :successful], :do => :after_transition_of_waiting_funds_to_failed_or_successful
+    after_transition [:draft, :rejected] => :deleted, :do => :after_transition_of_draft_or_rejected_to_deleted
+  end
+
+  def after_transition_of_draft_or_rejected_to_deleted
+    update_attributes({ permalink: "deleted_project_#{id}"})
   end
 
   def after_transition_of_online_to_waiting_funds
