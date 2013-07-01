@@ -238,80 +238,79 @@
             &:hover
               color: $pink
 
-      .media_content_backers
-        ul.collection_list
-          margin-top: 20px
-          li
-            width: 286px
+      #project_backers
+        margin-top: 20px
+        .backer
+          width: 286px
+          float: left
+          border-bottom: 1px #CCCCCC dotted
+          min-height: 67px
+          padding-right: 25px
+          padding-bottom: 30px
+          margin-bottom: 30px
+          &:last-child
+            margin-left: 1px
+            padding-right: 0px
+          .backer_avatar
             float: left
-            border-bottom: 1px #CCCCCC dotted
-            min-height: 67px
-            padding-right: 25px
-            padding-bottom: 30px
-            margin-bottom: 30px
-            &:last-child
-              margin-left: 1px
-              padding-right: 0px
-            .backer_avatar
-              float: left
-              width: 70px
-              height: 70px
-              margin-right: 15px
-            .back_info
-              float: left
-              width: 200px
-              #text
-                a, .anon
-                  font-family: "Lato"
-                  font-weight: 700
-                  font-size: 18px
-                  color: #444
-                  text-decoration: none
-                  margin-bottom: 15px
-                  display: block
-                  &:hover
-                    color: $pink
-                    text-decoration: underline
-              #confirmed, #backed
-                padding-top: 4px
-                height: 16px
-                text-indent: 25px
-                background: url($images_path+'confirmed_icon.png') left top no-repeat
-              #backed
-                background: url($images_path+'backed_icon.png') left 4px no-repeat
-                width: 125px
-                line-height: 120%
-                text-indent: 0px
-                height: auto
-                padding-left: 25px
-              #confirmed, #backed
-                font-family: Arial
-                font-size: 12px
-                color: $ultra_gryn
-            .reward
-              font-size: 12px
-              font-family: Lato
-              margin-top: 10px
-              line-height: 120%
-              float: left
-              width: 240px
-              padding: 15px 15px 15px 40px
-              background: url($images_path+'reward_box.png') left top no-repeat #F3F3F3
-              .value
+            width: 70px
+            height: 70px
+            margin-right: 15px
+          .back_info
+            float: left
+            width: 200px
+            #text
+              a, .anon
                 font-family: "Lato"
                 font-weight: 700
                 font-size: 18px
-                margin-bottom: 12px
-              .user_email
-                color: $pink
-                font-family: "Arial"
-                font-size: 12px
-                margin-top: 10px
+                color: #444
+                text-decoration: none
+                margin-bottom: 15px
+                display: block
                 &:hover
+                  color: $pink
                   text-decoration: underline
-              .user_reward
-                font-family: "Arial"
-                font-size: 12px
+            #confirmed, #backed
+              padding-top: 4px
+              height: 16px
+              text-indent: 25px
+              background: url($images_path+'confirmed_icon.png') left top no-repeat
+            #backed
+              background: url($images_path+'backed_icon.png') left 4px no-repeat
+              width: 125px
+              line-height: 120%
+              text-indent: 0px
+              height: auto
+              padding-left: 25px
+            #confirmed, #backed
+              font-family: Arial
+              font-size: 12px
+              color: $ultra_gryn
+          .reward
+            font-size: 12px
+            font-family: Lato
+            margin-top: 10px
+            line-height: 120%
+            float: left
+            width: 240px
+            padding: 15px 15px 15px 40px
+            background: url($images_path+'reward_box.png') left top no-repeat #F3F3F3
+            .value
+              font-family: "Lato"
+              font-weight: 700
+              font-size: 18px
+              margin-bottom: 12px
+            .user_email
+              color: $pink
+              font-family: "Arial"
+              font-size: 12px
+              margin-top: 10px
+              &:hover
+                text-decoration: underline
+            .user_reward
+              font-family: "Arial"
+              font-size: 12px
     .sidebar
       +grid(5)
       +omega
