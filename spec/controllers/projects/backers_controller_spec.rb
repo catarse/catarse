@@ -158,45 +158,8 @@ describe Projects::BackersController do
               reward: create(:reward, project: project, description: 'Test Reward'), 
               project: project, 
               user: create(:user, name: 'Foo Bar'))
-      get :index, { locale: :pt, project_id: project.id, format: :json }
+      get :index, { locale: :pt, project_id: project.id }
     end
-
-    shared_examples_for  "admin / owner" do
-      it "should see all info from backer" do
-        response_backer = ActiveSupport::JSON.decode(response.body)[0]
-        response_backer['value'].should == 'R$ 10'
-        response_backer['user']['name'].should == 'Foo Bar'
-        response_backer['reward']['description'].should == 'Test Reward'
-      end
-    end
-
-    shared_examples_for "normal / guest" do
-      it "should see filtered info about backer" do
-        response_backer = ActiveSupport::JSON.decode(response.body)[0]
-        response_backer['value'].should == 'R$ 10'
-        response_backer['user']['name'].should == 'Foo Bar'
-        response_backer['reward'].should be_nil
-      end
-    end
-
-    context "with admin user" do
-      let(:user){ create(:user, admin: true)}
-      it_should_behave_like "admin / owner"
-    end
-
-    context "with project owner user" do
-      let(:user){ create(:user, admin: false)}
-      let(:project) { create(:project, user: user) }
-      it_should_behave_like "admin / owner"
-    end
-
-    context "with normal user" do
-      it_should_behave_like "normal / guest"
-    end
-
-    context "guest user" do
-      let(:user){ nil }
-      it_should_behave_like "normal / guest"
-    end
+    its(:status){ should eq 200 }
   end
 end
