@@ -94,6 +94,11 @@
                       = link_to 'javascript:void(0);', class: 'btn btn-mini dropdown-toggle', data: {toggle: "dropdown"} do
                         b.caret
                       ul.dropdown-menu
+                        - if project.can_push_to_trash?
+                          li
+                            = link_to adm_project_path(project), method: :delete, data: {confirm: t('adm.confirm_dialog')} do
+                              i.icon-trash
+                              = t('.send_to_trash')
                         - if project.can_approve?
                           li
                             = link_to approve_adm_project_path(project), method: :put do

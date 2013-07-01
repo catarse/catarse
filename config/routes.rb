@@ -26,7 +26,7 @@ Catarse::Application.routes.draw do
   constraints subdomain: 'asas' do
     namespace :channels, path: '' do
       namespace :adm do
-        resources :projects, only: [ :index, :update ] do
+        resources :projects, only: [ :index, :update] do
           member do
             put 'approve'
             put 'reject'
@@ -115,7 +115,7 @@ Catarse::Application.routes.draw do
   end
 
   namespace :adm do
-    resources :projects, only: [ :index, :update ] do
+    resources :projects, only: [ :index, :update, :destroy ] do
       member do
         put 'approve'
         put 'reject'
