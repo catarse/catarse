@@ -29,11 +29,23 @@ describe Project do
   end
 
   describe '.state_names' do
-    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed, :deleted] }
+    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed] }
 
     subject { Project.state_names }
 
     it { should == states }
+  end
+
+  describe '.not_deleted_projects' do
+    before do
+      create(:project,  state: 'online')
+      create(:project,  state: 'draft')
+      create(:project,  state: 'deleted')
+    end
+
+    subject { Project.not_deleted_projects }
+
+    it { should have(2).itens }
   end
 
   describe '.by_state' do
