@@ -83,7 +83,9 @@ pt:
           change_reward: 'Recompensa modificada com sucesso!'
           hide: 'Apoio escondido com sucesso!'
           cancel: 'Apoio cancelado com sucesso!'
+          push_to_trash: 'Apoio deletado com sucesso!'
       index:
+        push_to_trash: 'Deletar apoio'
         cancel: 'Cancelar apoio'
         between_values: 'Valores entre'
         by_state: 'Estado'
