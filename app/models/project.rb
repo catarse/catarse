@@ -35,10 +35,11 @@ class Project < ActiveRecord::Base
     using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
+  scope :not_deleted_projects, ->() { where("state <> 'deleted'") }
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_id, ->(id) { where(id: id) }
-  scope :by_permalink, ->(p) { where(permalink: p) }
+  scope :by_permalink, ->(p) { where("lower(permalink) = lower(?)", p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
@@ -117,7 +118,9 @@ class Project < ActiveRecord::Base
   end
 
   def self.state_names
-    self.state_machine.states.map(&:name)
+    self.state_machine.states.map do |state|
+      state.name if state.name != :deleted
+    end.compact!
   end
 
   def subscribed_users
@@ -249,9 +252,14 @@ class Project < ActiveRecord::Base
     state :successful, value: 'successful'
     state :waiting_funds, value: 'waiting_funds'
     state :failed, value: 'failed'
+    state :deleted, value: 'deleted'
 
     event :push_to_draft do
       transition all => :draft #NOTE: when use 'all' we can't use new hash style ;(
+    end
+
+    event :push_to_trash do
+      transition [:draft, :rejected] => :deleted
     end
 
     event :reject do
@@ -292,6 +300,11 @@ class Project < ActiveRecord::Base
     after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
     after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
     after_transition :waiting_funds => [:failed, :successful], :do => :after_transition_of_waiting_funds_to_failed_or_successful
+    after_transition [:draft, :rejected] => :deleted, :do => :after_transition_of_draft_or_rejected_to_deleted
+  end
+
+  def after_transition_of_draft_or_rejected_to_deleted
+    update_attributes({ permalink: "deleted_project_#{id}"})
   end
 
   def after_transition_of_online_to_waiting_funds

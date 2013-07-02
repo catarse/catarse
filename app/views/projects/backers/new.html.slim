@@ -14,7 +14,7 @@
                 .alert.alert-info
                   = form.input :credits, hint: t('formtastic.hints.backer.credits', credits: current_user.display_credits).html_safe
               .clearfix
-            = form.input :value, required: false, as: :string, label: false
+            = form.input :value, required: false, as: :string, label: false,  input_html: { autocomplete: 'off' }
             .simbol
               p R$
             - @rewards[0].id = 0

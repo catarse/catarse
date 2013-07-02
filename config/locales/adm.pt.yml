@@ -1,5 +1,6 @@
 pt:
   adm: &admin
+    confirm_dialog: 'Você tem certeza?'
     financials:
       index:
         id: ID
@@ -29,6 +30,7 @@ pt:
         between_created_at: 'Criados entre'
         id: ID
         name: 'Titulo'
+        send_to_trash: "Deletar"
         send_to_draft: 'Mandar para DRAFT!'
         reject: 'Rejeitar!'
         approve: 'Aprovar!'

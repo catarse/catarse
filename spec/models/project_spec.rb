@@ -36,6 +36,18 @@ describe Project do
     it { should == states }
   end
 
+  describe '.not_deleted_projects' do
+    before do
+      create(:project,  state: 'online')
+      create(:project,  state: 'draft')
+      create(:project,  state: 'deleted')
+    end
+
+    subject { Project.not_deleted_projects }
+
+    it { should have(2).itens }
+  end
+
   describe '.by_state' do
     before do
       @project_01 = create(:project, state: 'online')
@@ -620,6 +632,18 @@ describe Project do
         project
       end
       its(:rejected?){ should be_true }
+    end
+
+    describe '#push_to_trash' do
+      let(:project) { FactoryGirl.create(:project, permalink: 'my_project', state: 'draft') }
+
+      subject do
+        project.push_to_trash
+        project
+      end
+
+      its(:deleted?) { should be_true }
+      its(:permalink) { should == "deleted_project_#{project.id}" }
     end
 
     describe '#approve' do
