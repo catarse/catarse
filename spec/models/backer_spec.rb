@@ -177,6 +177,11 @@ describe Backer do
       it("should switch to confirmed state") { backer.confirmed?.should be_true }
     end
 
+    describe "#push_to_trash" do
+      before { backer.push_to_trash }
+      it("switch to deleted state") { backer.deleted?.should be_true }
+    end
+
     describe '#waiting' do
       before { backer.waiting }
       context "when in peding state" do

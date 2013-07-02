@@ -73,7 +73,9 @@ class Backer < ActiveRecord::Base
   end
 
   def self.state_names
-    self.state_machine.states.map &:name
+    self.state_machine.states.map do |state|
+      state.name if state.name != :deleted
+    end.compact!
   end
 
   def self.send_credits_notification
@@ -169,6 +171,11 @@ class Backer < ActiveRecord::Base
     state :refunded, value: 'refunded'
     state :requested_refund, value: 'requested_refund'
     state :refunded_and_canceled, value: 'refunded_and_canceled'
+    state :deleted, value: 'deleted'
+
+    event :push_to_trash do
+      transition all => :deleted
+    end
 
     event :pendent do
       transition all => :pending
