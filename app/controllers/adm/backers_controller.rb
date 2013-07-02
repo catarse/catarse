@@ -13,7 +13,7 @@ class Adm::BackersController < Adm::BaseController
   before_filter :set_title
 
   def self.backer_actions
-    %w[confirm pendent refund hide cancel].each do |action|
+    %w[confirm pendent refund hide cancel push_to_trash].each do |action|
       define_method action do
         resource.send(action)
         flash[:notice] = I18n.t("adm.backers.messages.successful.#{action}")

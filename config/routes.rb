@@ -134,6 +134,7 @@ Catarse::Application.routes.draw do
         put 'refund'
         put 'hide'
         put 'cancel'
+        put 'push_to_trash'
       end
     end
     resources :users, only: [ :index ]
