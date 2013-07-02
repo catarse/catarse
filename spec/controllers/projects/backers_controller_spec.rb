@@ -57,7 +57,7 @@ describe Projects::BackersController do
     end
 
     context "with correct user and sufficient credits" do
-      let(:user) do 
+      let(:user) do
         create(:backer, value: 10.00, credits: false, state: 'confirmed', user: backer.user, project: failed_project)
         failed_project.update_attributes state: 'failed'
         backer.user.reload
@@ -154,9 +154,9 @@ describe Projects::BackersController do
 
   describe "GET index" do
     before do
-      create(:backer, value: 10.00, state: 'confirmed', 
-              reward: create(:reward, project: project, description: 'Test Reward'), 
-              project: project, 
+      create(:backer, value: 10.00, state: 'confirmed',
+              reward: create(:reward, project: project, description: 'Test Reward'),
+              project: project,
               user: create(:user, name: 'Foo Bar'))
       get :index, { locale: :pt, project_id: project.id }
     end
