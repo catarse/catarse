@@ -35,6 +35,6 @@ class Adm::BackersController < Adm::BaseController
   end
 
   def collection
-    @backers = end_of_association_chain.order("backers.created_at DESC").page(params[:page])
+    @backers = end_of_association_chain.not_deleted.order("backers.created_at DESC").page(params[:page])
   end
 end

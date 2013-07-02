@@ -13,6 +13,7 @@ class Backer < ActiveRecord::Base
   validate :should_not_back_if_maximum_backers_been_reached, on: :create
   validate :project_should_be_online, on: :create
 
+  scope :not_deleted, ->() { where("state <> 'deleted'") }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_key, ->(key) { where(key: key) }
