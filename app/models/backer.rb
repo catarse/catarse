@@ -140,13 +140,14 @@ class Backer < ActiveRecord::Base
       anonymous: anonymous,
       confirmed: confirmed?,
       confirmed_at: display_confirmed_at,
-      value: display_value,
       user: user.as_json(options.merge(anonymous: anonymous)),
+      value: nil,
       display_value: nil,
       reward: nil
     }
     if options and options[:can_manage]
       json_attributes.merge!({
+        value: display_value,
         display_value: display_value,
         reward: reward
       })
