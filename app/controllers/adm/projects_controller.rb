@@ -17,7 +17,16 @@ class Adm::ProjectsController < Adm::BaseController
     end
   end
 
+  def destroy
+    @project = Project.find params[:id]
+    if @project.can_push_to_trash?
+      @project.push_to_trash!
+    end
+
+    redirect_to adm_projects_path
+  end
+
   def collection
-    @projects = end_of_association_chain.page(params[:page])
+    @projects = end_of_association_chain.not_deleted_projects.page(params[:page])
   end
 end

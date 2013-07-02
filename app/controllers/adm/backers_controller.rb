@@ -17,7 +17,7 @@ class Adm::BackersController < Adm::BaseController
       define_method action do
         resource.send(action)
         flash[:notice] = I18n.t("adm.backers.messages.successful.#{action}")
-        redirect_to adm_backers_path
+        redirect_to adm_backers_path(params[:local_params])
       end
     end
   end
@@ -26,7 +26,7 @@ class Adm::BackersController < Adm::BaseController
   def change_reward
     resource.change_reward! params[:reward_id]
     flash[:notice] = I18n.t('adm.backers.messages.successful.change_reward')
-    redirect_to adm_backers_path
+    redirect_to adm_backers_path(params[:local_params])
   end
 
   protected
