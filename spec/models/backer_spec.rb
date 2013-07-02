@@ -40,6 +40,20 @@ describe Backer do
     it { should have(3).itens }
   end
 
+  describe ".not_deleted" do
+    before do
+      2.times { create(:backer, state: 'pending') }
+      3.times { create(:backer, state: 'confirmed') }
+      5.times { create(:backer, state: 'deleted') }
+    end
+
+    subject { Backer.not_deleted }
+
+    it("should return only the backers that is not deleted") do
+      subject.should have(5).itens
+    end
+  end
+
   describe ".by_state" do
     before do
       2.times { create(:backer, state: 'confirmed') }
