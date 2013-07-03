@@ -80,6 +80,7 @@ en:
       selected: "explore more projects selected"
       expiring: "explore more expiring projects"
       recents: "explore more recent projects"
+      near: "explore more near me projects"
   sidebar:
     titles:
       blog: blog
@@ -90,6 +91,8 @@ en:
     buttons:
       newsletter: submit
   sections:
+    near:
+      title: near me
     selection:
       title: selection
     expiring:
@@ -283,6 +286,7 @@ en:
   error: "Ooops! There was an error. Please try again."
   explore:
     index:
+      near: 'Near me'
       categories: Categories
       expiring: "Final countdown"
       quick_explore: "Quick search"
