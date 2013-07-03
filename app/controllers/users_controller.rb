@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def uservoice_gadget
     if params[:secret] == ::Configuration[:uservoice_secret_gadget]
-      @user = User.find params[:email]
+      @user = User.find_by_email params[:email]
     end
 
     render :uservoice_gadget, layout: false
