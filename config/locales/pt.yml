@@ -1,4 +1,10 @@
 pt:
+  uservoice_gadget:
+    user:
+      name: 'Usuário'
+      location: 'Cidade / Estado'
+      confirmed_backers: 'Apoios confirmados'
+      created_projects: 'Projetos criados'
   current_update: 'Alteração atual feita em '
   'no': "Não"
   'yes': "Sim"
