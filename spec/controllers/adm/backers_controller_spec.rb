@@ -21,6 +21,19 @@ describe Adm::BackersController do
     }
   end
 
+  describe 'PUT push_to_trash' do
+    let(:backer) { create(:backer, state: 'pending') }
+    subject { backer.deleted? }
+
+    before do
+      controller.stub(:current_user).and_return(admin)
+      put :push_to_trash, id: backer.id, locale: :pt
+      backer.reload
+    end
+
+    it { should be_true }
+  end
+
   describe 'PUT hide' do
     let(:backer) { create(:backer, state: 'confirmed') }
     subject { backer.refunded_and_canceled? }

@@ -1,8 +1,9 @@
 CATARSE.ExploreIndexView = Backbone.View.extend({
 
   initialize: function() {
-    _.bindAll(this, "render", "ProjectView", "ProjectsView", "initializeView", "recommended", "expiring", "recent", "successful", "category", "search", "updateSearch")
+    _.bindAll(this, "render", "near", "ProjectView", "ProjectsView", "initializeView", "recommended", "expiring", "recent", "successful", "category", "search", "updateSearch")
     CATARSE.router.route(":name", "category", this.category)
+    CATARSE.router.route("near", "near", this.near)
     CATARSE.router.route("recommended", "recommended", this.recommended)
     CATARSE.router.route("expiring", "expiring", this.expiring)
     CATARSE.router.route("recent", "recent", this.recent)
@@ -57,6 +58,14 @@ CATARSE.ExploreIndexView = Backbone.View.extend({
     _this.initializeView({
       recommended: true,
       not_expired: true
+    })
+  },
+
+  near: function() {
+    this.replaceTitleBy("near")
+    this.selectItem("near")
+    this.initializeView({
+      near_of: $('#nearOfData').data('state')
     })
   },
 

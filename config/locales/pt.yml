@@ -1,4 +1,10 @@
 pt:
+  uservoice_gadget:
+    user:
+      name: 'Usuário'
+      location: 'Cidade / Estado'
+      confirmed_backers: 'Apoios confirmados'
+      created_projects: 'Projetos criados'
   current_update: 'Alteração atual feita em '
   'no': "Não"
   'yes': "Sim"
@@ -83,6 +89,7 @@ pt:
       selected: "explore mais projetos selecionados"
       expiring: "explore mais projetos na reta final"
       recents: "explore mais projetos recentes"
+      near: "explore mais projetos próximos"
   sidebar:
     titles:
       blog: blog
@@ -93,6 +100,8 @@ pt:
     buttons:
       newsletter: assinar
   sections:
+    near:
+      title: 'próximos a mim'
     selection:
       title: seleção
     expiring:
@@ -225,6 +234,7 @@ pt:
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
   explore:
     index:
+      near: 'Próximos a mim'
       categories: Categorias
       expiring: "Na reta final"
       quick_explore: "Busca rápida"
