@@ -1,0 +1,16 @@
+doctype 5
+html
+  head
+    title= content_for(:title)
+
+
+    = stylesheet_link_tag :catarse
+  body
+
+    .content= yield
+
+
+
+
+  = javascript_include_tag :application
+
