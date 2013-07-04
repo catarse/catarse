@@ -91,8 +91,13 @@ class ProjectsController < ApplicationController
   end
 
   def check_slug
-    project = Project.where("lower(permalink) = ?", params[:permalink].downcase)
-    render json: {available: project.empty?}.to_json
+    if Project.permalink_on_routes?(params[:permalink]) || Project.where("lower(permalink) = ?", params[:permalink].downcase).present?
+      valid = false
+    else
+      valid = true
+    end
+
+    render json: {available: valid}.to_json
   end
 
   def embed
