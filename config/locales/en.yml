@@ -4,6 +4,15 @@ en:
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, project, community, open source"
+
+  login:
+    welcome: "Welcome back!"
+    submit: "Sign in"
+    remember_me: "Remember me"
+    submit_facebook: "Sign in using your facebook account"
+
+
+
   backer_report_to_project_owner:
     reward_description: 'Reward description'
     confirmed_at: 'Payment confirmed at'
