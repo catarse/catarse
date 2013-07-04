@@ -26,6 +26,8 @@ describe Project do
     it{ should allow_value('http://vimeo.com/12111').for(:video_url) }
     it{ should allow_value('https://vimeo.com/12111').for(:video_url) }
     it{ should_not allow_value('http://www.foo.bar').for(:video_url) }
+    it{ should allow_value('testproject').for(:permalink) }
+    it{ should_not allow_value('users').for(:permalink) }
   end
 
   describe '.state_names' do
@@ -766,4 +768,13 @@ describe Project do
 
   end
 
+  describe '#permalink_on_routes?' do
+    it 'should allow a unique permalink' do
+      Project.permalink_on_routes?('permalink_test').should be_false
+    end
+
+    it 'should not allow a permalink to be one of catarse\'s routes' do
+      Project.permalink_on_routes?('projects').should be_true
+    end
+  end
 end

@@ -1,5 +1,5 @@
-require 'state_machine'
 # coding: utf-8
+require 'state_machine'
 class Project < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include PgSearch
@@ -100,6 +100,7 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, allow_blank: true, allow_nil: true, case_sensitive: false
   validates_format_of :permalink, with: /^(\w|-)*$/, allow_blank: true, allow_nil: true
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
+  validate :permalink_cant_be_route, allow_nil: true
 
   def self.between_created_at(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
@@ -245,6 +246,20 @@ class Project < ActiveRecord::Base
     ((pledged + backers.in_time_to_confirm.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
   end
 
+  def permalink_cant_be_route
+    errors.add(:permalink, 'permalink inválido') if Project.permalink_on_routes?(permalink)
+  end
+
+  def self.permalink_on_routes?(permalink)
+    return false unless permalink
+
+    if self.get_routes.include?(permalink.downcase)
+      return true
+    else
+      return false
+    end
+  end
+
   #NOTE: state machine things
   state_machine :state, initial: :draft do
     state :draft, value: 'draft'
@@ -352,5 +367,13 @@ class Project < ActiveRecord::Base
 
   def new_project_received_notification_type
     channels.first ? :project_received_channel : :project_received
+  end
+
+  private
+  def self.get_routes
+    routes = Rails.application.routes.routes.map do |r|
+      r.path.spec.to_s.split('/').second.to_s.gsub(/\(.*?\)/, '')
+    end
+    routes.compact.uniq
   end
 end
