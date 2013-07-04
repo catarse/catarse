@@ -3,6 +3,11 @@ task :cron => :environment do
   Project.finish_projects!
 end
 
+desc "Move to deleted state all backers that are in pending a lot of time"
+task :move_pending_backers_to_trash => [:environment] do
+  Backer.where("state in('pending') and created_at + interval '6 days' < current_timestamp").update_all({state: 'deleted'})
+end
+
 desc "Cancel all waiting_confirmation backers that is passed 4 weekdays"
 task :cancel_expired_waiting_confirmation_backers => :environment do
   Backer.can_cancel.update_all(state: 'canceled')

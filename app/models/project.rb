@@ -53,6 +53,7 @@ class Project < ActiveRecord::Base
     end
   }
 
+  scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
   scope :visible, where("state NOT IN ('draft', 'rejected')")
   scope :financial, where("((projects.expires_at) > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)

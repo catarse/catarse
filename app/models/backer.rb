@@ -13,6 +13,7 @@ class Backer < ActiveRecord::Base
   validate :should_not_back_if_maximum_backers_been_reached, on: :create
   validate :project_should_be_online, on: :create
 
+  scope :not_deleted, ->() { where("state <> 'deleted'") }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_key, ->(key) { where(key: key) }
@@ -29,7 +30,7 @@ class Backer < ActiveRecord::Base
   scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
   scope :pending_to_refund, ->() { where(state: 'requested_refund') }
 
-  scope :avaiable_to_count, ->() { where("state ~* '(confirmed|requested_refund|refunded)'") }
+  scope :avaiable_to_count, ->() { where("state in ('confirmed', 'requested_refund', 'refunded')") }
 
   scope :can_cancel, ->() {
     where(%Q{
@@ -73,7 +74,9 @@ class Backer < ActiveRecord::Base
   end
 
   def self.state_names
-    self.state_machine.states.map &:name
+    self.state_machine.states.map do |state|
+      state.name if state.name != :deleted
+    end.compact!
   end
 
   def self.send_credits_notification
@@ -169,6 +172,11 @@ class Backer < ActiveRecord::Base
     state :refunded, value: 'refunded'
     state :requested_refund, value: 'requested_refund'
     state :refunded_and_canceled, value: 'refunded_and_canceled'
+    state :deleted, value: 'deleted'
+
+    event :push_to_trash do
+      transition all => :deleted
+    end
 
     event :pendent do
       transition all => :pending

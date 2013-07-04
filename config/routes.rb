@@ -3,8 +3,6 @@ require 'sidekiq/web'
 Catarse::Application.routes.draw do
   match '/thank_you' => "static#thank_you"
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
-
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
 
   filter :locale, exclude: /\/auth\//
@@ -90,6 +88,9 @@ Catarse::Application.routes.draw do
     end
   end
   resources :users do
+    collection do
+      get :uservoice_gadget
+    end
     resources :backers, only: [:index] do
       member do
         match :request_refund
@@ -134,6 +135,7 @@ Catarse::Application.routes.draw do
         put 'refund'
         put 'hide'
         put 'cancel'
+        put 'push_to_trash'
       end
     end
     resources :users, only: [ :index ]
