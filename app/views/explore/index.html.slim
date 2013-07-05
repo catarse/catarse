@@ -1,7 +1,8 @@
 - content_for :js_templates do
   = render partial: 'project'
 
-#nearOfData data-state="#{current_user.address_state}"
+- if current_user
+  #nearOfData data-state="#{current_user.address_state}"
 
 #page_content
   .container
