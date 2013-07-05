@@ -505,7 +505,7 @@ describe Project do
     subject{ project.time_to_go }
     before do
       project
-      Time.stub(:zone).and_return(double('time', now: now))
+      Time.zone.stub(:now).and_return(now)
     end
     context "when there is more than 1 day to go" do
       let(:date){ Time.zone.now }
