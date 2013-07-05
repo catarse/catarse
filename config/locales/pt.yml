@@ -385,6 +385,8 @@ pt:
       anonymous_description: "Optou por permanecer incógnito"
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
+      review:
+        error: "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
       show:
         error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
         moip_message: "A verificação da sua transação está em andamento e o código Moip é “%{code}″.<br>Caso tenha alguma dúvida referente a transação, entre em contato com o Moip. Um email será enviado quando o pagamento for confirmado."
