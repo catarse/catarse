@@ -52,9 +52,10 @@ class Projects::BackersController < ApplicationController
         flash[:failure] = t('projects.backers.review.error')
         return redirect_to new_project_backer_path(@project)
       end
-      
-      session[:thank_you_backer_id] = @backer.id      
-      return render :create
+      success.html do
+        session[:thank_you_backer_id] = @backer.id      
+        return render :create
+      end
     end
     @thank_you_id = @project.id
   end
