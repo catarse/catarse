@@ -91,12 +91,8 @@ class ProjectsController < ApplicationController
   end
 
   def check_slug
-    if Project.permalink_on_routes?(params[:permalink]) || Project.where("lower(permalink) = ?", params[:permalink].downcase).present?
-      valid = false
-    else
-      valid = true
-    end
-
+    valid = false
+    valid = true if Project.permalink_on_routes?(params[:permalink]) || Project.where("lower(permalink) = ?", params[:permalink].downcase).present?
     render json: {available: valid}.to_json
   end
 
