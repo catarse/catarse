@@ -35,7 +35,7 @@ class Project < ActiveRecord::Base
     using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
-  scope :not_deleted_projects, ->() { where("state <> 'deleted'") }
+  scope :not_deleted_projects, ->() { where("projects.state <> 'deleted'") }
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_id, ->(id) { where(id: id) }
@@ -54,7 +54,7 @@ class Project < ActiveRecord::Base
   }
 
   scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
-  scope :visible, where("state NOT IN ('draft', 'rejected')")
+  scope :visible, where("projects.state NOT IN ('draft', 'rejected')")
   scope :financial, where("((projects.expires_at) > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)
   scope :expired, where("(projects.expires_at) < current_timestamp")
@@ -73,7 +73,7 @@ class Project < ActiveRecord::Base
     limit(4)
   }
   scope :order_for_search, ->{ reorder("
-                                     CASE state
+                                     CASE projects.state
                                      WHEN 'online' THEN 1
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3

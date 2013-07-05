@@ -89,11 +89,11 @@ class User < ActiveRecord::Base
     where("id IN (
       SELECT DISTINCT user_id
       FROM backers
-      WHERE state <> ALL(ARRAY['pending'::character varying::text, 'canceled'::character varying::text]))")
+      WHERE backers.state <> ALL(ARRAY['pending'::character varying::text, 'canceled'::character varying::text]))")
   }
 
   scope :who_backed_project, ->(project_id) {
-    where("id IN (SELECT user_id FROM backers WHERE state = 'confirmed' AND project_id = ?)", project_id)
+    where("id IN (SELECT user_id FROM backers WHERE backers.state = 'confirmed' AND project_id = ?)", project_id)
   }
 
   scope :subscribed_to_updates, -> {
@@ -117,8 +117,8 @@ class User < ActiveRecord::Base
       JOIN payment_notifications ON backers.id = payment_notifications.backer_id
       WHERE backers.user_id = users.id AND payment_notifications.extra_data ~* ?)', email)
   }
-  scope :by_name, ->(name){ where('name ~* ?', name) }
-  scope :by_id, ->(id){ where('users.id = ?', id) }
+  scope :by_name, ->(name){ where('users.name ~* ?', name) }
+  scope :by_id, ->(id){ where(id: id) }
   scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
   scope :has_credits, joins(:user_total).where('user_totals.credits > 0')
   scope :order_by, ->(sort_field){ order(sort_field) }
