@@ -134,7 +134,7 @@ class Project < ActiveRecord::Base
   end
 
   def expires_at
-    online_date && Time.parse((online_date + online_days.days).strftime("%Y-%m-%d 23:59:59"))
+    online_date && Time.zone.parse((online_date + online_days.days).strftime("%Y-%m-%d 23:59:59"))
   end
 
   def video
