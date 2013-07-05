@@ -115,6 +115,10 @@ pt:
           attributes:
             email:
               not_found: "O seu email não está cadastrado, verifique o endereço ou crie uma conta nova"
+        project:
+          attributes:
+            permalink:
+              invalid: "URL do projeto inválida"
     attributes:
       unsubscribe:
         update: "Receber atualizações do projeto"

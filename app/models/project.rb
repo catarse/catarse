@@ -246,17 +246,11 @@ class Project < ActiveRecord::Base
   end
 
   def permalink_cant_be_route
-    errors.add(:permalink, 'permalink inválido') if Project.permalink_on_routes?(permalink)
+    errors.add(:permalink, I18n.t("activerecord.errors.models.project.attributes.permalink.invalid")) if Project.permalink_on_routes?(permalink)
   end
 
   def self.permalink_on_routes?(permalink)
-    return false unless permalink
-
-    if self.get_routes.include?(permalink.downcase)
-      return true
-    else
-      return false
-    end
+    permalink && self.get_routes.include?(permalink.downcase)
   end
 
   #NOTE: state machine things
