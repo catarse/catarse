@@ -87,6 +87,18 @@ describe Projects::BackersController do
       its(:body){ should =~ /#{project.name}/ }
       its(:body){ should =~ /R\$ 20/ }
     end
+
+    context "with invalid backer values" do
+      let(:user){ create(:user) }
+      let(:errors){ e = ActiveModel::Errors.new(Backer.new); e.add(:value, 'is wrong'); e }
+
+      before do
+        Backer.any_instance.stub(:errors).and_return(errors)
+        post :create, {locale: :pt, project_id: project.id, backer: { value: '20.00', reward_id: '0', anonymous: '0' }}
+      end
+
+      it{ should redirect_to new_project_backer_path(project) }
+    end
   end
 
   describe "GET new" do
