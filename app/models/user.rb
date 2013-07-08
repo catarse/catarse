@@ -277,7 +277,7 @@ class User < ActiveRecord::Base
   end
 
   def is_devise?
-    provider == 'devise'
+    Authorization.where(user_id: id).empty?
   end
 
   def twitter_link
