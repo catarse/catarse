@@ -134,3 +134,4 @@ class ProjectsController < ApplicationController
       @project ||= Project.not_deleted_projects.find params[:id]
     end
   end
+end
