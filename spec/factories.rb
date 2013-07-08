@@ -16,9 +16,8 @@ FactoryGirl.define do
   end
 
   factory :user do |f|
-    f.provider "twitter"
-    f.uid { generate(:uid) }
     f.name "Foo bar"
+    f.password "123456"
     f.email { generate(:email) }
     f.bio "This is Foo bar's biography."
   end
