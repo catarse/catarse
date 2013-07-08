@@ -13,7 +13,7 @@ class Backer < ActiveRecord::Base
   validate :should_not_back_if_maximum_backers_been_reached, on: :create
   validate :project_should_be_online, on: :create
 
-  scope :not_deleted, ->() { where("state <> 'deleted'") }
+  scope :not_deleted, ->() { where("backers.state <> 'deleted'") }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_key, ->(key) { where(key: key) }
@@ -26,7 +26,7 @@ class Backer < ActiveRecord::Base
   scope :refunded, where(state: 'refunded')
   scope :not_anonymous, where(anonymous: false)
   scope :confirmed, where(state: 'confirmed')
-  scope :not_confirmed, where("state <> 'confirmed'") # used in payment engines
+  scope :not_confirmed, where("backers.state <> 'confirmed'") # used in payment engines
   scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
   scope :pending_to_refund, ->() { where(state: 'requested_refund') }
 
@@ -34,7 +34,7 @@ class Backer < ActiveRecord::Base
 
   scope :can_cancel, ->() {
     where(%Q{
-      state = 'waiting_confirmation' and
+      backers.state = 'waiting_confirmation' and
         (
           ((
             select count(1) as total_of_days
@@ -57,7 +57,7 @@ class Backer < ActiveRecord::Base
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
     where(%Q{
-      state IN('confirmed', 'requested_refund', 'refunded') AND
+      backers.state IN('confirmed', 'requested_refund', 'refunded') AND
       EXISTS(
         SELECT true
           FROM projects p
