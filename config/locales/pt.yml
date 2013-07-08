@@ -14,8 +14,8 @@ pt:
     welcome: "Bem vindo de volta!"
     submit: "Fazer login"
     register: "Cadastre-se!"
-    no_account_html: "Não tem conta? %{link}"
-    remember_me: "Lembre-se de mim"
+    no_account_html: "Não tem conta? <strong>%{link}</strong>"
+    remember_me: "Continuar conectado"
     submit_facebook: "Entre com sua conta do facebook"
     placeholder:
       email: "Email"

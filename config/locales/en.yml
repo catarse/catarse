@@ -10,6 +10,12 @@ en:
     submit: "Sign in"
     remember_me: "Remember me"
     submit_facebook: "Sign in using your facebook account"
+    register: "Sign up!"
+    no_account_html: "Doesn't have an account? <strong>%{link}</strong>"      
+    placeholder:
+      email: "Email"
+      password: "Password"
+
 
 
 
