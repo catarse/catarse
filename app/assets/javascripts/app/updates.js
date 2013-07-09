@@ -2,7 +2,12 @@ App.views.Project.addChild('Updates', _.extend({
   el: '#project_updates',
 
   events: {
-    'ajax:success .results .update' : 'onUpdateDestroy'
+    'ajax:success .results .update' : 'onUpdateDestroy',
+    'ajax:success form#new_update' : 'onUpdateCreate'
+  },
+
+  onUpdateCreate: function(e, data){
+    this.$results.prepend(data);
   },
 
   activate: function(){
