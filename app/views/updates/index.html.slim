@@ -3,7 +3,7 @@
     em = t('projects.project_updates.empty')
   - else
     ul.collection_list
-      - for update in @project.updates.includes(:project).order('created_at DESC')
+      - for update in @updates
         li
           .flag
           .time= l(update.created_at, format: :updates)

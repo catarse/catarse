@@ -53,7 +53,7 @@
           = t('.menu.about')
         = link_to '#updates', id: 'updates_link' do
           = t('.menu.updates')
-          span.count=" (#{@project.updates.count})"
+          span.count=" (#{@updates.count})"
         = link_to '#backers', id: 'backers_link' do
           = t('.menu.backers')
           span.count=" (#{@project.total_backers})"
