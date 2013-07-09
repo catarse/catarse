@@ -5,6 +5,17 @@ describe("Updates", function() {
     view = new App.views.Project.views.Updates();
   });
 
+  describe("#onUpdateCreate", function() {
+    beforeEach(function() {
+      spyOn(view.$results, "prepend");
+      view.onUpdateCreate(null, 'test');
+    });
+    
+    it("should prepend data", function() {
+      expect(view.$results.prepend).wasCalledWith('test');
+    });
+  });  
+  
   describe("#onUpdateDestroy", function() {
     var $target;
     var $count;
