@@ -2,7 +2,17 @@ App.addChild('Project', {
   el: '#main_content[data-action="show"][data-controller-name="projects"]',
 
   events: {
-    'click nav#project_menu a' : 'onTabClick'
+    'click nav#project_menu a' : 'onTabClick',
+    'click #toggle_warning a' : 'toggleWarning'
+  },
+
+  activate: function(){
+    this.$warning = this.$('#project_warning_text');
+  },
+
+  toggleWarning: function(){
+    this.$warning.slideToggle('slow');
+    return false;
   },
 
   selectTab: function($el){
@@ -32,6 +42,5 @@ App.addChild('Project', {
       });
     }
   },
-
 });
 

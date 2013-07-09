@@ -5,6 +5,17 @@ describe("Project", function() {
     view = new App.views.Project({el: $('<div><div id="tab">foo</div><div id="emptyTab"></div></div>')});
   });
 
+  describe("#toggleWarning", function() {
+    beforeEach(function() {
+      spyOn(view.$warning, "slideToggle");
+      view.toggleWarning();
+    });
+
+    it("should call slideToggle", function() {
+      expect(view.$warning.slideToggle).wasCalled();
+    });
+  });  
+  
   describe("#selectTab", function() {
     var $tab = { addClass: function(){} };
 
