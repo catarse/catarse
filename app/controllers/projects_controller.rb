@@ -77,7 +77,7 @@ class ProjectsController < ApplicationController
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
         #TODO find a way to make accessible_by work here
         @updates = Array.new
-        @project.updates.each do |update|
+        @project.updates.order('created_at DESC').each do |update|
           @updates << update if can? :see, update
         end
         @update = @project.updates.where(id: params[:update_id]).first if params[:update_id].present?
