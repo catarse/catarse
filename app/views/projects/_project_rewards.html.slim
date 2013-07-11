@@ -48,7 +48,7 @@
       .clearfix
     - if reward.days_to_delivery.present?
       div class="reward_deliver_at"
-        p= "#{t('projects.rewards.reward_deliver_time', days: reward.days_to_delivery)}"
+        p= "#{t('projects.rewards.reward_deliver_time', prevision: reward.display_deliver_prevision)}".html_safe
     - if current_user && current_user.admin
       div class="reward_updated_at"
         p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{@project.online_date.nil? ? '' : ((@project.online_date > reward.updated_at)? '(draft)' : '(online)')}"
