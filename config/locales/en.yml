@@ -551,7 +551,7 @@ en:
       empty: "This project didn't have updates yet. But wait and see =D"
       submit: "Send update"
       comment: "Update text"
-      exclusive: "Exclusive for backers"
+      exclusive: "Visible for backers only"
       title: "Title of the update"
       destroy: "Remove update"
       destroy_confirmation: "Do you want to remove the update?"
