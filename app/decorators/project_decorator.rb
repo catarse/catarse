@@ -49,8 +49,6 @@ class ProjectDecorator < Draper::Decorator
     number_to_currency source.goal, unit: 'R$', precision: 0, delimiter: '.'
   end
 
-
-
   def progress_bar
     width = source.progress > 100 ? 100 : source.progress
     content_tag(:div, id: :progress_wrapper) do

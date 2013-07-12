@@ -76,6 +76,11 @@ class ProjectsController < ApplicationController
         @rewards = @project.rewards.includes(:project).rank(:row_order).all
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
+        #TODO find a way to make accessible_by work here
+        @updates = Array.new
+        @project.updates.order('created_at DESC').each do |update|
+          @updates << update if can? :see, update
+        end
         @update = @project.updates.where(id: params[:update_id]).first if params[:update_id].present?
       }
     rescue ActiveRecord::RecordNotFound
@@ -94,7 +99,7 @@ class ProjectsController < ApplicationController
 
   def check_slug
     valid = false
-    valid = true if Project.permalink_on_routes?(params[:permalink]) || Project.where("lower(permalink) = ?", params[:permalink].downcase).present?
+    valid = true if !Project.permalink_on_routes?(params[:permalink]) && !Project.by_permalink(params[:permalink]).present?
     render json: {available: valid}.to_json
   end
 

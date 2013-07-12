@@ -31,6 +31,12 @@ class Reward < ActiveRecord::Base
     maximum_backers - (backers.confirmed.count + backers.in_time_to_confirm.count)
   end
 
+  def display_deliver_prevision
+    I18n.l((project.expires_at + days_to_delivery.days), format: :prevision)
+  rescue
+    days_to_delivery
+  end
+
   def display_remaining
     I18n.t('reward.display_remaining', remaining: remaining, maximum: maximum_backers).html_safe
   end
