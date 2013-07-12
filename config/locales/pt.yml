@@ -510,7 +510,7 @@ pt:
       empty: "Este projeto ainda não teve novidades. Aguarde =D"
       submit: "Enviar Novidade"
       comment: "Texto da sua Novidade"
-      exclusive: "Exclusivo para apoiadores"
+      exclusive: "Visível apenas para apoiadores"
       title: "Título da sua Novidade"
       destroy: "Remover Novidade"
       destroy_confirmation: "Deseja remover esta novidade?"
