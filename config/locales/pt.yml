@@ -273,6 +273,7 @@ pt:
         description: "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!"
         maximum_backers: "Se sua recompensa é limitada, informe o máximo de pessoas."
         minimum_value: "Este é valor mínimo de apoio para escolher esta recompensa."
+        days_to_delivery: "Informe em quantos dias, após o sucesso do projeto, você planeja entregar essa recompensa"
     labels:
       backer:
         anonymous: "Quero que meu apoio seja anônimo."
@@ -293,6 +294,7 @@ pt:
         first_backers: "Lista com os primeiros apoiadores *"
         how_know: "Como você conheceu o Catarse? *"
       reward:
+        days_to_delivery: "Previsão de entrega"
         maximum_backers: "Máximo de apoiadores (opcional)"
     optional: " (opcional)"
   found_plural: Encontrados
@@ -361,6 +363,7 @@ pt:
       rejected: "rejeitado"
       failed: "não financiado"
       successful: financiado
+      reached_goal: financiado
       waiting_confirmation: aguardando
       waiting_funds: aguardando
       not_reached_goal: aguardando
@@ -507,11 +510,13 @@ pt:
       empty: "Este projeto ainda não teve novidades. Aguarde =D"
       submit: "Enviar Novidade"
       comment: "Texto da sua Novidade"
+      exclusive: "Visível apenas para apoiadores"
       title: "Título da sua Novidade"
       destroy: "Remover Novidade"
       destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
       reward_title: "Para %{minimum} ou mais"
+      reward_deliver_time: "<b>Previsão de Entrega:</b> %{prevision}"
       backs_to_confirm:
         one: "1 apoio em prazo de confirmação."
         other: "%{count} apoios em prazo de confirmação."

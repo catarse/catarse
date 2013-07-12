@@ -178,7 +178,7 @@ class User < ActiveRecord::Base
     if current_user
       u = current_user
     else
-      u = create! do |user|
+      u = new do |user|
         user.name = auth["info"]["name"]
         user.email = (auth["info"]["email"] rescue nil)
         user.email = (auth["extra"]["user_hash"]["email"] rescue nil) unless user.email
@@ -189,7 +189,8 @@ class User < ActiveRecord::Base
       end
     end
     provider = OauthProvider.where(name: auth['provider']).first
-    u.authorizations.create! uid: auth['uid'], oauth_provider_id: provider.id if provider
+    u.authorizations.build(uid: auth['uid'], oauth_provider_id: provider.id) if provider
+    u.save!
     u
   end
 
@@ -277,7 +278,7 @@ class User < ActiveRecord::Base
   end
 
   def is_devise?
-    provider == 'devise'
+    self.authorizations.empty?
   end
 
   def twitter_link

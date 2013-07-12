@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let(:user){ create(:user, provider: "foo", uid: "bar") }
+  let(:user){ create(:user, uid: "bar") }
   let(:unfinished_project){ create(:project, state: 'online') }
   let(:successful_project){ create(:project, state: 'online') }
   let(:failed_project){ create(:project, state: 'online') }
@@ -23,7 +23,6 @@ describe User do
 
   describe "validations" do
     before{ user }
-    it{ should allow_value('').for(:email) }
     it{ should allow_value('foo@bar.com').for(:email) }
     it{ should_not allow_value('foo').for(:email) }
     it{ should_not allow_value('foo@bar').for(:email) }
@@ -161,7 +160,9 @@ describe User do
     end
     let(:created_user){ User.create_with_omniauth(auth) }
     let(:oauth_provider){ OauthProvider.create! name: 'twitter', key: 'dummy_key', secret: 'dummy_secret' }
+    let(:oauth_provider_fb){ OauthProvider.create! name: 'facebook', key: 'dummy_key', secret: 'dummy_secret' }
     before{ oauth_provider }
+    before{ oauth_provider_fb }
     subject{ created_user }
     # Provider and uid should be nil because we have transfered them to authorization model
     its(:provider){ should be_nil }
@@ -207,8 +208,9 @@ describe User do
   describe ".create" do
     subject do
       User.create! do |u|
-        u.provider = 'twitter'
         u.uid = '123'
+        u.email = 'diogob@gmail.com'
+        u.password = '123456'
         u.twitter = '@dbiazus'
       end
     end

@@ -52,7 +52,7 @@
           = t('.menu.about')
         = link_to '#', 'id' => 'updates_link', 'data-target' => '#project_updates' do
           = t('.menu.updates')
-          span.count=" (#{@project.updates.count})"
+          span.count=" (#{@updates.count})"
         = link_to '#', 'id' => 'backers_link', 'data-target' => '#project_backers' do
           = t('.menu.backers')
           span.count=" (#{@project.total_backers})"
@@ -154,6 +154,7 @@
               = semantic_form_for [@project, Reward.new] do |f|
                 = f.input :minimum_value
                 = f.input :description
+                = f.input :days_to_delivery
                 = f.input :maximum_backers
                 = f.submit class: 'btn'
         #rewards= render 'project_rewards'

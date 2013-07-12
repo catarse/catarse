@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: git://github.com/catarse/catarse_paypal_express.git
-  revision: 8974996f23a070386321e2cf13d953abbe8d939c
-  ref: 8974996
+  revision: a7a21cd8b8b327132aeb7ff31c5f1883492f6fa5
+  ref: a7a21cd
   specs:
     catarse_paypal_express (0.1.0)
       activemerchant (>= 1.17.0)
@@ -69,14 +69,14 @@ GEM
     active_utils (1.0.5)
       activesupport (>= 2.3.11)
       i18n
-    activemerchant (1.34.0)
+    activemerchant (1.34.1)
       active_utils (>= 1.0.2)
       activesupport (>= 2.3.14)
       builder (>= 2.0.0)
       i18n
       json (>= 1.5.1)
       money
-      nokogiri
+      nokogiri (< 1.6.0)
     activemodel (3.2.13)
       activesupport (= 3.2.13)
       builder (~> 3.0.0)
