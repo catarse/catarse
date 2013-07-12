@@ -29,7 +29,7 @@ class BackersController < ApplicationController
 
   protected
   def collection
-    @backs = end_of_association_chain.avaiable_to_count.order("confirmed_at DESC")
+    @backs = end_of_association_chain.available_to_count.order("confirmed_at DESC")
     @backs = @backs.not_anonymous unless @user == current_user or (current_user and current_user.admin)
     @backs = @backs.page(params[:page]).per(10)
   end

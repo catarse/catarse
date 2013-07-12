@@ -12,7 +12,7 @@ class Projects::BackersController < ApplicationController
   end
 
   def index
-    @backers = parent.backers.avaiable_to_count.order("confirmed_at DESC").page(params[:page]).per(10)
+    @backers = parent.backers.available_to_count.order("confirmed_at DESC").page(params[:page]).per(10)
     render json: @backers.to_json(can_manage: can?(:update, @project))
   end
 
@@ -53,7 +53,7 @@ class Projects::BackersController < ApplicationController
         return redirect_to new_project_backer_path(@project)
       end
       success.html do
-        session[:thank_you_backer_id] = @backer.id      
+        session[:thank_you_backer_id] = @backer.id
         return render :create
       end
     end
