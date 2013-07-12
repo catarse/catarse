@@ -32,7 +32,7 @@ class Reward < ActiveRecord::Base
   end
 
   def display_deliver_prevision
-    (project.expires_at + days_to_delivery.days).strftime("%m/%Y")
+    I18n.l((project.expires_at + days_to_delivery.days), format: :prevision)
   rescue
     days_to_delivery
   end
