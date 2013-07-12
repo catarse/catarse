@@ -495,7 +495,7 @@ describe Project do
     end
     context "when we have an online_date" do
       let(:project){ build(:project, online_date: Time.now, online_days: 0) }
-      it{ should == Time.parse("23:59:59") }
+      it{ should == Time.zone.parse("23:59:59") }
     end
   end
 
