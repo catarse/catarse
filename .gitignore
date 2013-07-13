@@ -20,3 +20,4 @@ db/structure.sql
 .sass-cache
 Cookbooks
 .vagrant
+.project
