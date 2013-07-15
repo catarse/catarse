@@ -1,5 +1,7 @@
 # coding: utf-8
 
+puts "Seeding the database..."
+
 [
   { pt: 'Arte', en: 'Art' },
   { pt: 'Artes plásticas', en: 'Visual Arts' },
@@ -87,3 +89,36 @@ OauthProvider.find_or_create_by_name!(
   secret: 'your_facebook_app_secret',
   path: 'facebook'
 )
+
+
+Configuration.find_or_create_by_name('uservoice_subdomain').update_attribute('value', 'dummy_domain.uservoice.com')  
+Configuration.find_or_create_by_name('uservoice_sso_key').update_attribute('value', 'dummy_uservoice_sso_key')
+
+
+puts 
+puts '============================================='
+puts ' Showing all Authentication Providers'
+puts '---------------------------------------------'
+
+OauthProvider.all.each do |conf|
+  a = conf.attributes
+  puts '  name ' << a['name']
+  puts '     key: ' << a['key']
+  puts '     secret: ' << a['secret']
+  puts '     path: ' << a['path']
+  puts 
+end
+
+
+puts 
+puts '============================================='
+puts ' Showing all entries in Configuration Table...'
+puts '---------------------------------------------'
+
+Configuration.all.each do |conf|
+  a = conf.attributes
+  puts '  ' << a['name'] << ': ' << a['value']
+end
+
+puts '---------------------------------------------'
+puts 'Done!'

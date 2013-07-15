@@ -3,6 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 config/database.yml
+seeds/my-seeds-local.rb
 db/development_structure.sql
 # Vim
 *.swp
