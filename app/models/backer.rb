@@ -207,6 +207,11 @@ class Backer < ActiveRecord::Base
     end
 
     after_transition confirmed: :requested_refund, do: :after_transition_from_confirmed_to_requested_refund
+    after_transition confirmed: :canceled, do: :after_transition_from_confirmed_to_canceled
+  end
+
+  def after_transition_from_confirmed_to_canceled
+    notify_observers :notify_backoffice_about_canceled
   end
 
   def after_transition_from_confirmed_to_requested_refund
