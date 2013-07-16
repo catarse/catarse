@@ -90,4 +90,30 @@ describe BackerObserver do
       it("should not send confirm_backer notification again"){ subject }
     end
   end
+
+  describe '.notify_backoffice_about_canceled' do
+    before do
+      Configuration[:email_payments] = 'finan@c.me'
+    end
+
+    let(:backer) { create(:backer) }
+    let(:user) { create(:user, email: 'finan@c.me') }
+
+    context "when backer is confirmed and change to canceled" do
+      before do
+        backer.confirm
+        Notification.should_receive(:create_notification_once).with(:backer_canceled_after_confirmed, user, {backer_id: backer.id}, backer: backer)
+      end
+
+      it { backer.cancel }
+    end
+
+    context "when backer change to confirmed" do
+      before do
+        Notification.should_not_receive(:create_notification).with(:backer_canceled_after_confirmed)
+      end
+
+      it { backer.confirm }
+    end
+  end
 end
