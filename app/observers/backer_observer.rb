@@ -64,4 +64,14 @@ class BackerObserver < ActiveRecord::Observer
     CreditsMailer.request_refund_from(backer).deliver
   end
 
+  def notify_backoffice_about_canceled(backer)
+    user = User.where(email: Configuration[:email_payments]).first
+    if user.present?
+      Notification.create_notification_once(:backer_canceled_after_confirmed,
+        user,
+        {backer_id: backer.id},
+        backer: backer)
+    end
+  end
+
 end

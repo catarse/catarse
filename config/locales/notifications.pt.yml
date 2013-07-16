@@ -1,5 +1,8 @@
 pt:
   notifications:
+    backer_canceled_after_confirmed:
+      subject: "Apoio cancelado após ser confirmado"
+      header: "Apoio cancelado após ser confirmado"
     project_owner_backer_confirmed:
       subject: "Uhuu! Mais um novo apoiador pro seu projeto"
       header: "Um novo apoio acabou de ser confirmado para o seu projeto"
