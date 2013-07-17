@@ -40,6 +40,10 @@ class Ability
       reward.backers.in_time_to_confirm.empty? && reward.backers.confirmed.empty? && reward.project.user == current_user
     end
 
+    can :update, :rewards, :days_to_delivery do |reward|
+      reward.project.user == current_user && !reward.project.successful? && !reward.project.failed?
+    end
+
     # NOTE: User authorizations
     can :set_email, :users do |user|
       current_user.persisted?
