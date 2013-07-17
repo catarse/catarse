@@ -64,6 +64,7 @@ FactoryGirl.define do
     f.association :project, factory: :project
     f.minimum_value 10.00
     f.description "Foo bar"
+    f.days_to_delivery 10
   end
 
   factory :backer do |f|

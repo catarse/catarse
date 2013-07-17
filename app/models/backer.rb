@@ -80,7 +80,7 @@ class Backer < ActiveRecord::Base
   end
 
   def self.send_credits_notification
-    confirmed.joins(:project).joins(:user).each do |backer|
+    confirmed.joins(:project).joins(:user).find_each do |backer|
       if backer.project.state == 'failed' && ((backer.project.expires_at + 1.month) < Time.now) && backer.user.credits >= backer.value
         Notification.create_notification_once(:credits_warning,
           backer.user,
@@ -207,6 +207,11 @@ class Backer < ActiveRecord::Base
     end
 
     after_transition confirmed: :requested_refund, do: :after_transition_from_confirmed_to_requested_refund
+    after_transition confirmed: :canceled, do: :after_transition_from_confirmed_to_canceled
+  end
+
+  def after_transition_from_confirmed_to_canceled
+    notify_observers :notify_backoffice_about_canceled
   end
 
   def after_transition_from_confirmed_to_requested_refund
