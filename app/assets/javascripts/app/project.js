@@ -16,6 +16,7 @@ App.addChild('Project', {
   },
 
   selectTab: function($el){
+    this.trigger('onSelectTab');
     this.$('nav#project_menu a').removeClass('selected');
     $el.addClass('selected');
   },
