@@ -56,7 +56,7 @@
         = link_to '#', 'id' => 'backers_link', 'data-target' => '#project_backers' do
           = t('.menu.backers')
           span.count=" (#{@project.total_backers})"
-        = link_to '#', 'id' => 'comments_link', 'data-target' => '#project_updates' do
+        = link_to '#', 'id' => 'comments_link', 'data-target' => '#project_comments' do
           = t('.menu.comments')
           | &nbsp; (
           fb:comments-count href="#{request.url}"
