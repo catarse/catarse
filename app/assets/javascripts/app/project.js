@@ -36,7 +36,7 @@ App.addChild('Project', {
 
   loadTab: function($tab){
     var that = this;
-    if($.trim($tab.html()) == ''){
+    if($.trim($tab.html()) == '' && $tab.data('path')){
       $.get($tab.data('path')).success(function(data){
         $tab.html(data);
       });
