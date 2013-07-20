@@ -95,6 +95,18 @@ describe("Project", function() {
       });
     });
 
+    describe("when tab is empty but does not have a path", function() {
+      var tab = {html: function(){ return '' }, data: function(){ return undefined; }};
+
+      beforeEach(function() {
+        view.loadTab(tab);
+      });
+
+      it("should not get content", function() {
+        expect($.get).wasNotCalled();
+      });
+    });
+
     describe("when tab has content", function() {
       beforeEach(function() {
         view.loadTab(view.$('#tab'));
