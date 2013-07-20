@@ -18,12 +18,20 @@ describe("Project", function() {
   
   describe("#selectTab", function() {
     var $tab = { addClass: function(){} };
+    var eventTriggered = false;
 
     beforeEach(function() {
       spyOn($tab, "addClass");
+      view.on('onSelectTab', function(){
+        eventTriggered = true;
+      });
       view.selectTab($tab);
     });
     
+    it("should trigger onSelectTab event", function() {
+      expect(eventTriggered).toEqual(true);
+    });
+
     it("should add selected class", function() {
       expect($tab.addClass).wasCalledWith('selected');
     });
