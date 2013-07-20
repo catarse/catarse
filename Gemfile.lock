@@ -118,8 +118,7 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    celluloid (0.12.4)
-      facter (>= 1.6.12)
+    celluloid (0.14.1)
       timers (>= 1.0.0)
     chartkick (1.1.2)
     childprocess (0.3.9)
@@ -171,7 +170,6 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ezcrypto (0.7.2)
-    facter (1.7.1)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -381,11 +379,11 @@ GEM
     shoulda-context (1.1.2)
     shoulda-matchers (2.2.0)
       activesupport (>= 3.0.0)
-    sidekiq (2.7.5)
-      celluloid (~> 0.12.0)
-      connection_pool (~> 1.0)
-      multi_json (~> 1)
-      redis (~> 3)
+    sidekiq (2.13.0)
+      celluloid (>= 0.14.1)
+      connection_pool (>= 1.0.0)
+      json
+      redis (>= 3.0)
       redis-namespace
     simplecov (0.7.1)
       multi_json (~> 1.0)
@@ -503,7 +501,7 @@ DEPENDENCIES
   schema_associations
   schema_plus
   shoulda
-  sidekiq (~> 2.7.5)
+  sidekiq (~> 2.13.0)
   sinatra
   slim-rails (~> 1.1.1)
   spectator-validates_email
