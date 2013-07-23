@@ -8,7 +8,6 @@ CATARSE.channels = {
       },
 
       subscribe: function(event){
-        alert('subscribe');
         return false;
       },
 
