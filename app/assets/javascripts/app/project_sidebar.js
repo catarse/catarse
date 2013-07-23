@@ -11,7 +11,7 @@ App.views.Project.addChild('ProjectSidebar', {
   },
 
   sortableRewards: function() {
-    if(this.$rewards.data("can_update") == 'true'){
+    if(this.$rewards.data("can_update") == true){
       this.$rewards.sortable({
           axis: 'y',
           placeholder: "ui-state-highlight",

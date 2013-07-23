@@ -12,7 +12,7 @@ describe("ProjectSidebar", function() {
 
     describe("when I can update rewards", function() {
       beforeEach(function() {
-        spyOn(view.$rewards, "data").andReturn('true');
+        spyOn(view.$rewards, "data").andReturn(true);
         view.sortableRewards();
       });
 
@@ -33,7 +33,7 @@ describe("ProjectSidebar", function() {
 
     describe("when I can not update rewards", function() {
       beforeEach(function() {
-        spyOn(view.$rewards, "data").andReturn('false');
+        spyOn(view.$rewards, "data").andReturn(false);
         view.sortableRewards();
       });
 
