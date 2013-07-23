@@ -1,3 +1,4 @@
+div[id="rewards_authorization" data-can_update="#{can?(:update, @project)}"]
 - @rewards.each do |reward|
 
   div[id="reward_#{reward.id}" data-update_url="#{sort_project_reward_path(@project, reward)}" class="box #{(can?(:update, reward) ? 'clickable_owner sortable' : '')} #{(@project.online? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
