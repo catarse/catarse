@@ -16,6 +16,8 @@ src_files:
   - assets/jquery_ujs.js
   - app/assets/javascripts/lib/underscore.js
   - app/assets/javascripts/lib/backbone.js
+  - app/assets/javascripts/lib/skull.js
+  - app/assets/javascripts/lib/infinite_scroll.js
   - assets/best_in_place.js
   - app/assets/javascripts/lib/*.js
   - app/assets/javascripts/app/app.js
