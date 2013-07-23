@@ -6,8 +6,13 @@ App.views.Project.addChild('ProjectSidebar', {
   },
   
   activate: function() {
-    if(this.$("#rewards_authorization").data("can_update") == true){
-      this.$('#rewards').sortable({
+    this.$rewards = this.$('#rewards');
+    this.sortableRewards();
+  },
+
+  sortableRewards: function() {
+    if(this.$rewards.data("can_update") == 'true'){
+      this.$rewards.sortable({
           axis: 'y',
           placeholder: "ui-state-highlight",
           start: function(e, ui) {

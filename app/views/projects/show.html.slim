@@ -154,7 +154,7 @@
                 = f.input :days_to_delivery
                 = f.input :maximum_backers
                 = f.submit class: 'btn'
-        #rewards= render 'project_rewards'
+        #rewards[data-can_update="#{can?(:update, @project)}"]= render 'project_rewards'
 
     .clearfix
 = render 'show_embed'

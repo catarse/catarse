@@ -5,6 +5,47 @@ describe("ProjectSidebar", function() {
     view = new App.views.Project.views.ProjectSidebar({el: $('<div></div>')});
   });
 
+  describe("#sortableRewards", function() {
+    beforeEach(function() {
+      spyOn(view.$rewards, "sortable");
+    });
+
+    describe("when I can update rewards", function() {
+      beforeEach(function() {
+        spyOn(view.$rewards, "data").andReturn('true');
+        view.sortableRewards();
+      });
+
+      it("should test can_update", function() {
+        expect(view.$rewards.data).wasCalledWith('can_update');
+      });
+
+      it("should call sortable", function() {
+        expect(view.$rewards.sortable).wasCalledWith({
+          axis: 'y',
+          placeholder: "ui-state-highlight",
+          start: jasmine.any(Function),
+          stop: jasmine.any(Function),
+          update: jasmine.any(Function) 
+        });
+      });
+    });  
+
+    describe("when I can not update rewards", function() {
+      beforeEach(function() {
+        spyOn(view.$rewards, "data").andReturn('false');
+        view.sortableRewards();
+      });
+
+      it("should test can_update", function() {
+        expect(view.$rewards.data).wasCalledWith('can_update');
+      });
+
+      it("should not call sortable", function() {
+        expect(view.$rewards.sortable).wasNotCalled();
+      });
+    });
+  });  
   
   describe("#showNewRewardForm", function() {
     var event = {
