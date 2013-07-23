@@ -103,16 +103,16 @@ class ProjectsController < ApplicationController
     render json: {available: valid}.to_json
   end
 
-  def embed
-    @project = Project.find params[:id]
-    @title = @project.name
-    render layout: 'embed'
+  %w(embed video_embed).each do |method_name|
+    define_method method_name do
+      @title = resource.name
+      render layout: 'embed'
+    end
   end
 
-  def video_embed
-    @project = Project.find params[:id]
-    @title = @project.name
-    render layout: 'embed'
+  def embed_panel
+    @title = resource.name
+    render layout: false
   end
 
   def blog_posts
