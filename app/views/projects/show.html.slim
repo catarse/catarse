@@ -1,8 +1,3 @@
-- content_for :js_templates do
-  = render partial: 'project_templates'
-  - if can?(:update, @project)
-    = render partial: 'sort_rewards'
-
 = content_for :meta_tags do
   - if @update
     meta name="description" content=@update.title
@@ -150,7 +145,7 @@
               p style="margin:0; padding:0;"
                 = t('.no_rewards_warning')
             .clearfix
-            = link_to t('.menu.add_reward'), 'javascript:void(0);', class: 'btn btn-success pull-right add_new_reward'
+            = link_to t('.menu.add_reward'), 'javascript:void(0);', class: 'btn btn-success pull-right show_new_reward_form'
             .clearfix
             .well.new_reward_content.hide
               = semantic_form_for [@project, Reward.new] do |f|
