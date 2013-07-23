@@ -16,6 +16,35 @@ describe("Project", function() {
     });
   });
 
+  describe("#loadEmbed", function() {
+    beforeEach(function(){
+      spyOn(view.$embed, "data").andReturn('path');
+      spyOn($, "get").andReturn({
+        success: function(callback) {
+          callback('HTML');
+        }
+      });
+    });
+
+    it("should call $.get when .loader is present", function(){
+      spyOn(view.$embed, 'find').andReturn([1]);
+      spyOn(view.$embed, 'html');
+
+      view.loadEmbed();
+
+      expect($.get).wasCalledWith('path');
+      expect(view.$embed.html).wasCalledWith('HTML');
+    });
+
+    it("should not call $.get when .loader is not present", function(){
+      spyOn(view.$embed, 'find').andReturn([]);
+
+      view.loadEmbed();
+
+      expect($.get).wasNotCalled();
+    });
+  });
+
   describe("#toggleEmbed", function() {
     beforeEach(function() {
       spyOn(view.$embed, "slideToggle");
