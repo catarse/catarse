@@ -62,15 +62,17 @@
           fb:comments-count href="#{request.url}"
           | )
         - if can? :update, @project
-          = link_to '#', 'id' => 'edit_link', 'data-target' => '#project_updates' do
+          = link_to '#', 'id' => 'edit_link', 'data-target' => '#project_edit' do
             = t('.menu.edit')
-          = link_to '#', 'id' => 'reports_link', 'data-target' => '#project_updates' do
+          = link_to '#', 'id' => 'reports_link', 'data-target' => '#project_reports' do
             = t('.menu.reports')
     .main
       #project_content
         - if can? :update, @project
           #project_reports.content.hide
+            = render partial: 'project_reports'
           #project_edit.content.hide
+            = render partial: 'project_edit'
 
         #project_updates.content.hide[data-path=project_updates_path(project_id: @project.id)]
           - if can? :update, @project
