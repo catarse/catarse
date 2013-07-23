@@ -11,10 +11,10 @@ pt:
   or: "ou"
 
   site:
-    title: "A maior comunidade de crowdfunding do Brasil!"
+    title: "A maior comunidade de financiamento coletivo do Brasil!"
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
-    keywords: "catarse, crowdfunding, projeto, comunidade, open source"
+    keywords: "catarse, crowdfunding, financiamento coletivo, projeto, comunidade, open source"
 
   backer_report_to_project_owner:
     reward_description: 'Descrição da recompensa'
