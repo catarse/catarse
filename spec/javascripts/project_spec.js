@@ -14,8 +14,24 @@ describe("Project", function() {
     it("should call slideToggle", function() {
       expect(view.$warning.slideToggle).wasCalled();
     });
-  });  
-  
+  });
+
+  describe("#toggleEmbed", function() {
+    beforeEach(function() {
+      spyOn(view.$embed, "slideToggle");
+      spyOn(view, "loadEmbed");
+      view.toggleEmbed();
+    });
+
+    it("should call slideToggle", function() {
+      expect(view.$embed.slideToggle).wasCalled();
+    });
+
+    it("should call loadEmbed", function() {
+      expect(view.loadEmbed).wasCalled();
+    });
+  });
+
   describe("#selectTab", function() {
     var $tab = { addClass: function(){} };
     var eventTriggered = false;

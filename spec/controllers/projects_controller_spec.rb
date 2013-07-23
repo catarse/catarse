@@ -144,6 +144,13 @@ describe ProjectsController do
     its(:status){ should == 200 }
   end
 
+  describe "GET embed_panel" do
+    before do
+      get :embed_panel, id: project, locale: :pt
+    end
+    its(:status){ should == 200 }
+  end
+
   describe "GET show" do
     context "when we have update_id in the querystring" do
       let(:project){ create(:project) }
