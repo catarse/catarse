@@ -2,13 +2,14 @@ App.views.Project.addChild('ProjectSidebar', {
   el: '.sidebar',
 
   events:{
-    "click .show_new_reward_form": "showNewRewardForm"
+    "click .show_reward_form": "showRewardForm"
   },
 
-  showNewRewardForm: function(event) {
+  showRewardForm: function(event) {
     event.preventDefault();
-    this.$(event.currentTarget).fadeOut('fast');
-    this.$('.new_reward_content').fadeIn('fast');
+    var $target = this.$(event.currentTarget);
+    $target.fadeOut('fast');
+    this.$($target.data('target')).fadeIn('fast');
   }
 });
 

@@ -145,7 +145,7 @@
               p style="margin:0; padding:0;"
                 = t('.no_rewards_warning')
             .clearfix
-            = link_to t('.menu.add_reward'), 'javascript:void(0);', class: 'btn btn-success pull-right show_new_reward_form'
+            = link_to t('.menu.add_reward'), 'javascript:void(0);', data: {target: '.new_reward_content'}, class: 'btn btn-success pull-right show_reward_form'
             .clearfix
             .well.new_reward_content.hide
               = semantic_form_for [@project, Reward.new] do |f|
