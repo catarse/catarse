@@ -65,3 +65,6 @@ pt:
     backer_confirmed_after_project_was_closed:
       subject: "Novo apoio confirmado no projeto '%{project_name}' após 7 dias do encerramento"
       header: "Novo apoio confirmado."
+    temporary_password:
+      subject: "Sua senha temporária para o Catarse"
+      header: "Acesse sua conta para trocar sua senha"
