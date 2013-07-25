@@ -62,11 +62,14 @@ describe("Project", function() {
   });
 
   describe("#selectTab", function() {
-    var $tab = { addClass: function(){} };
+    var $tab = { addClass: function(){}, siblings: function(){} };
+    var $sibling = { removeClass: function(){} };
     var eventTriggered = false;
 
     beforeEach(function() {
       spyOn($tab, "addClass");
+      spyOn($tab, "siblings").andReturn($sibling);
+      spyOn($sibling, "removeClass");
       view.on('onSelectTab', function(){
         eventTriggered = true;
       });
@@ -77,18 +80,24 @@ describe("Project", function() {
       expect(eventTriggered).toEqual(true);
     });
 
+    it("should remove selected class from siblings", function() {
+      expect($tab.siblings).wasCalledWith('.selected');
+      expect($sibling.removeClass).wasCalledWith('selected');
+      
+    });
+
     it("should add selected class", function() {
       expect($tab.addClass).wasCalledWith('selected');
     });
   });  
   
   describe("toggleTab", function() {
-    var $tab = { show: function(){} };
+    var $tab = { show: function(){}, siblings: function(){} };
     var $otherTabs = { hide: function(){} };
     beforeEach(function() {
       spyOn($tab, "show");
       spyOn($otherTabs, "hide");
-      spyOn(view, "$").andReturn($otherTabs);
+      spyOn($tab, "siblings").andReturn($otherTabs);
       view.toggleTab($tab);
     });
 

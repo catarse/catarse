@@ -43,7 +43,7 @@
       h4= t('projects.project_header.without_city', category_name: link_to(@project.category, explore_path(anchor: @project.category.to_s.parameterize)), author: link_to(@project.user.display_name, user_path(@project.user))).html_safe
     .tab_container
       nav#project_menu
-        = link_to '#', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about' do
+        = link_to '#', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
           = t('.menu.about')
         = link_to '#', 'id' => 'updates_link', 'data-target' => '#project_updates' do
           = t('.menu.updates')
@@ -82,7 +82,6 @@
         #project_comments.content.hide
         #project_about.content= render 'project_about'
 
-        .clearfix
       .clearfix
     .sidebar
       .info
