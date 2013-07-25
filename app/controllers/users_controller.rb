@@ -40,10 +40,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    update! do
-      flash[:notice] = t('users.current_user_fields.updated')
-      return redirect_to user_path(@user, anchor: 'settings')
+    update! do |success,failure|
+      success.html do
+        flash[:notice] = t('users.current_user_fields.updated')
+      end
+      failure.html do
+        flash[:error] = @user.errors.full_messages.to_sentence
+      end
     end
+    return redirect_to user_path(@user, anchor: 'settings')
   end
 
   def update_password

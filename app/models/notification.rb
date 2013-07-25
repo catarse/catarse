@@ -22,7 +22,7 @@ class Notification < ActiveRecord::Base
   end
 
   def send_email
-   unless dismissed
+    unless dismissed
       begin
         NotificationsMailer.notify(self).deliver
         self.update_attributes dismissed: true
