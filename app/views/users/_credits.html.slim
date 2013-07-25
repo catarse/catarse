@@ -1,0 +1,44 @@
+.current_credits
+  p= t('credits.index.current_credits_html', credits: @user.display_credits)
+
+.table_title
+  p= I18n.t('credits.index.refunds_title')
+.table_content
+  table.table.table-striped
+    thead
+      th= t('credits.index.project')
+      th= t('credits.index.back_date')
+      th= t('credits.index.value')
+      th= t('credits.index.refund_expration_date')
+      th= t('credits.index.status')
+    - @credits.each do |credit|
+      tr[id="back_#{credit.id}"]
+        td.project_name
+          = link_to credit.project.name, credit.project, class: 'link_project'
+        td.date= I18n.l(credit.created_at.to_date)
+        td.value= credit.display_value
+        td.term= I18n.l(credit.refund_deadline.to_date)
+        td.status
+          - if credit.requested_refund?
+            = t('credits.index.requested_refund')
+          - elsif credit.refunded?
+            = t('credits.index.refunded')
+          - else
+            - if can? :request_refund, credit
+              .bootstrap-twitter
+                div id="requestRefundModal#{credit.id}" class="hide modal"
+                  .modal-header
+                    h3= t('credits.modal.title')
+                  .modal-body
+                    p= t('credits.modal.text')
+                    = link_to t('credits.modal.link'), 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos', target: '_blank'
+                  .modal-footer
+                    button type='button' data-dismiss="modal" class="btn"
+                      = t('credits.modal.reject_btn')
+                    = link_to request_refund_user_backer_path(@user, credit), class: 'btn' do
+                      = t('credits.modal.accept_btn')
+              = link_to t('credits.index.request_refund'), "#requestRefundModal#{credit.id}", data: {toggle: 'modal'}, class: 'link_project'
+.bootstrap-alert
+  .alert.alert-info
+    = t('credits.index.important_html')
+
