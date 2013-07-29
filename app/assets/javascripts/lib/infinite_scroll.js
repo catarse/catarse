@@ -12,7 +12,7 @@ Skull.InfiniteScroll = {
   },
 
   fetchPage: function(){
-    if(!this.EOF){
+    if(this.isLoaderVisible() && !this.EOF){
       this.$loader.show();
       $.get(this.path, this.filter).success(this.onSuccess);
       this.filter.page += 1;
@@ -36,8 +36,6 @@ Skull.InfiniteScroll = {
   },
 
   onScroll: function(event){
-    if(this.isLoaderVisible()){
-      this.fetchPage();
-    }
+    this.fetchPage();
   }
 };
