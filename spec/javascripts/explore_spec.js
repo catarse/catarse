@@ -138,15 +138,16 @@ describe("Explore", function() {
   });  
   
   describe("#fetchPage", function() {
-    describe("when EOF is true", function(){
+    describe("when EOF is true and isLoaderVisible is true", function(){
       beforeEach(function() {
         view.EOF = true;
+        spyOn(view, "isLoaderVisible").andReturn(false);
         spyOn(view.$loader, "show");
         view.fetchPage();
       });
 
       it("should not increment page", function() {
-        expect(view.filter.page).toEqual(2);
+        expect(view.filter.page).toEqual(1);
       });
 
       it("should not show loader", function() {
@@ -157,12 +158,13 @@ describe("Explore", function() {
     describe("when EOF is false", function(){
       beforeEach(function() {
         view.EOF = false;
+        spyOn(view, "isLoaderVisible").andReturn(true);
         spyOn(view.$loader, "show");
         view.fetchPage();
       });
 
       it("should increment page", function() {
-        expect(view.filter.page).toEqual(3);
+        expect(view.filter.page).toEqual(2);
       });
 
       it("should show loader", function() {
@@ -191,18 +193,11 @@ describe("Explore", function() {
   describe("onScroll", function() {
     beforeEach(function() {
       spyOn(view, "fetchPage");
+      view.onScroll();
     });
     
-    it("call fetchPage if $loader is inside the visible window", function() {
-      spyOn(view, "isLoaderVisible").andReturn(true);
-      view.onScroll();
+    it("call fetchPage", function() {
       expect(view.fetchPage).wasCalled();
-    });
-    
-    it("should not call fetchPage if $loader is outside the visible window", function() {
-      spyOn(view, "isLoaderVisible").andReturn(false);
-      view.onScroll();
-      expect(view.fetchPage).wasNotCalled();
     });
     
   });  
