@@ -1,0 +1,63 @@
+- if collection.empty?
+  - if !can? :manage, @user
+    p.empty= t('users.backs.no_backs', name: @user.display_name)
+  - else
+    p.empty= t('users.backs.no_backs_current_user_html', link: ::Configuration[:base_url])
+- else
+  - collection.each do |backer|
+    - project = backer.project
+    div class=(can?(:manage, @user) ? 'project_land' : 'small_project_land')
+      - if project.expired?
+        .status_image
+          a href=""
+          = link_to project_by_slug_path(project.permalink) do
+            - if project.successful?
+              = image_tag "successful.#{I18n.locale}.png"
+            - elsif project.waiting_funds?
+              = image_tag "waiting_confirmation.#{I18n.locale}.png"
+            - elsif project.failed?
+              = image_tag "not_successful.#{I18n.locale}.png"
+      .cover
+        p.black_box project.category.name
+        img[src=project.display_image width="218px" height="175px"]
+      .project_infos
+        .title
+          h4
+            = link_to project.name, project_by_slug_path(project.permalink)
+          p.author== "#{t('project_by')} #{project.user.name}"
+          p.headline= project.headline
+        .status_bar
+          .progress style="width: #{project.display_progress}%;"
+        ul
+          li
+            - if project.time_to_go[:time] > 0
+              h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
+              p= project.remaining_text
+            - else
+              h6= project.display_status.blank? ? nil : I18n.t("project.display_status.#{project.display_status}")
+              p= project.display_expires_at
+          li
+            h6= "#{project.progress} %"
+            p= t('projects.project.backed')
+          li
+            h6= project.display_pledged
+            p= t('projects.project.reached')
+      - if can? :manage, @user
+        div.back_info
+          ul
+            li.date
+              h5= backer.display_confirmed_at
+            - if backer.display_value
+              li.value
+                h5= backer.display_value
+            - if backer.reward
+              li.reward
+                h5= I18n.t('projects.rewards.reward_title', minimum: backer.reward.display_minimum)
+                - description = backer.reward.description.gsub(/"/,'&quot;')
+                p[ title=description ]= truncate(backer.reward.description, length: 75)
+        .tell_about
+          p= t('tell_about_this_back')
+          ul
+            li= link_to image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?u=<%= encodeURIComponent(project['full_uri']) %>&t=#{t('share_my_backs')}<%= encodeURIComponent(project['name']) %>".html_safe, target: '_blank'
+            li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_backs')}<%= encodeURIComponent(project['name']) %>&url=<%= encodeURIComponent(project['full_uri']) %>".html_safe, target: '_blank'
+    .clearfix
