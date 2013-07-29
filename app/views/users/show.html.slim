@@ -43,7 +43,8 @@
             = link_to t('.tabs.unsubscribes'), '#unsubscribes', id: 'unsubscribes_link', data: { target: '#user_unsubscribes' }
       .clearfix
       #user_profile_content
-        #user_backed_projects.content
+        #user_backed_projects.content[data-path=user_backers_path(@user)]
+          |&nbsp;
         #user_created_projects.content
         - if can? :manage, @user
           #user_unsubscribes.content.hide
