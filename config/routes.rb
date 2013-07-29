@@ -89,6 +89,7 @@ Catarse::Application.routes.draw do
     end
   end
   resources :users do
+    resources :projects, controller: 'users/projects', only: [ :index ]
     collection do
       get :uservoice_gadget
     end
