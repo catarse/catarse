@@ -24,23 +24,10 @@ describe BackersController do
 
   describe "GET index" do
     before do
-      get :index, user_id: successful_backer.user.id, locale: 'pt', format: format
-    end
-    context "when format is html" do
-      let(:format){ 'html' }
-      its(:status){ should == 404 }
+      get :index, user_id: successful_backer.user.id, locale: 'pt'
     end
 
-    context "when user can not manage the profile or is anonymous" do
-      its(:status){ should == 200 }
-      its(:body){ should == [successful_backer].to_json({include_project: true, can_manage: false}) }
-    end
-
-    context "when user can manage the profile" do
-      let(:current_user){ successful_backer.user }
-      its(:status){ should == 200 }
-      its(:body){ should == [successful_backer].to_json({include_project: true, can_manage: true}) }
-    end
+    its(:status){ should == 200 }
   end
   
   describe "POST request_refund" do
