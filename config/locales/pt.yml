@@ -367,6 +367,7 @@ pt:
       waiting_confirmation: aguardando
       waiting_funds: aguardando
       not_reached_goal: aguardando
+      draft: "rascunho"
   projects:
     box:
       by: por
