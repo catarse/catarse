@@ -15,7 +15,7 @@ describe("ProjectComments", function() {
 
   describe("#activate", function(){
     it("should bind render to parent's onSelectTab", function() {
-      expect(parentView.on).wasCalledWith('onSelectTab', view.render);
+      expect(parentView.on).wasCalledWith('selectTab', view.render);
     });
   });
 

@@ -62,18 +62,24 @@ describe("Project", function() {
   });
 
   describe("#selectTab", function() {
-    var $tab = { addClass: function(){}, siblings: function(){} };
-    var $sibling = { removeClass: function(){} };
+    var $tab = { addClass: function(){}, siblings: function(){}, data: function(){} };
+    var $tabContent = { show: function(){}, siblings: function(){} };
+    var $tabSiblings = { removeClass: function(){} };
+    var $tabContentSiblings = { hide: function(){} };
     var eventTriggered = false;
 
     beforeEach(function() {
       spyOn($tab, "addClass");
-      spyOn($tab, "siblings").andReturn($sibling);
-      spyOn($sibling, "removeClass");
-      view.on('onSelectTab', function(){
+      spyOn($tabContent, "show");
+      spyOn($tab, "siblings").andReturn($tabSiblings);
+      spyOn($tabContent, "siblings").andReturn($tabContentSiblings);
+      spyOn($tabSiblings, "removeClass");
+      spyOn($tabContentSiblings, "hide");
+      spyOn(view, "$").andReturn($tabContent);
+      view.on('selectTab', function(){
         eventTriggered = true;
       });
-      view.selectTab($tab);
+      view.selectTab($tab, $tabContent);
     });
     
     it("should trigger onSelectTab event", function() {
@@ -82,31 +88,19 @@ describe("Project", function() {
 
     it("should remove selected class from siblings", function() {
       expect($tab.siblings).wasCalledWith('.selected');
-      expect($sibling.removeClass).wasCalledWith('selected');
-      
+      expect($tabSiblings.removeClass).wasCalledWith('selected');
     });
 
     it("should add selected class", function() {
       expect($tab.addClass).wasCalledWith('selected');
     });
-  });  
-  
-  describe("toggleTab", function() {
-    var $tab = { show: function(){}, siblings: function(){} };
-    var $otherTabs = { hide: function(){} };
-    beforeEach(function() {
-      spyOn($tab, "show");
-      spyOn($otherTabs, "hide");
-      spyOn($tab, "siblings").andReturn($otherTabs);
-      view.toggleTab($tab);
+
+    it("should show tab content", function() {
+      expect($tabContent.show).wasCalled();
     });
 
-    it("should show tab", function() {
-      expect($tab.show).wasCalled();
-    });
-
-    it("should hide other tabs", function() {
-      expect($otherTabs.hide).wasCalled();
+    it("should hide other tab contents", function() {
+      expect($tabContentSiblings.hide).wasCalled();
     });
   });  
   
@@ -117,18 +111,13 @@ describe("Project", function() {
       spyOn(view, "loadTab");
       spyOn(view, "selectTab");
       spyOn(view, "$").andReturn($tab);
-      spyOn(view, "toggleTab");
       view.onTabClick({target: $target});
     });
 
     it("should call selectTab", function() {
-      expect(view.selectTab).wasCalledWith($target);
+      expect(view.selectTab).wasCalledWith($target, $tab);
     });
 
-    it("should call toggleTab", function() {
-      expect(view.toggleTab).wasCalledWith($tab);
-    });
-    
     it("should call loadTab passing the obj from selector", function() {
       expect(view.$).wasCalledWith('#selector');
       expect(view.loadTab).wasCalledWith($tab);
