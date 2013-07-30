@@ -11,7 +11,7 @@ describe("Explore", function() {
     });
   });  
   
-  describe("#isLoaderVisible", function() {
+  describe("#isLoaderDivVisible", function() {
     describe("when loader is in visible portion of window", function() {
       beforeEach(function() {
         var w = {
@@ -27,7 +27,7 @@ describe("Explore", function() {
         spyOn(view, "$window").andReturn(w);
       });
       it("should return true", function() {
-        expect(view.isLoaderVisible()).toEqual(true);
+        expect(view.isLoaderDivVisible()).toEqual(true);
       });
     });
 
@@ -45,7 +45,7 @@ describe("Explore", function() {
         spyOn(view, "$window").andReturn(w);
       });
       it("should return false", function() {
-        expect(view.isLoaderVisible()).toEqual(false);
+        expect(view.isLoaderDivVisible()).toEqual(false);
       });
     });
   });  
@@ -138,10 +138,10 @@ describe("Explore", function() {
   });  
   
   describe("#fetchPage", function() {
-    describe("when EOF is true and isLoaderVisible is true", function(){
+    describe("when EOF is true and isLoaderDivVisible is true", function(){
       beforeEach(function() {
         view.EOF = true;
-        spyOn(view, "isLoaderVisible").andReturn(false);
+        spyOn(view, "isLoaderDivVisible").andReturn(false);
         spyOn(view.$loader, "show");
         view.fetchPage();
       });
@@ -158,7 +158,7 @@ describe("Explore", function() {
     describe("when EOF is false", function(){
       beforeEach(function() {
         view.EOF = false;
-        spyOn(view, "isLoaderVisible").andReturn(true);
+        spyOn(view, "isLoaderDivVisible").andReturn(true);
         spyOn(view.$loader, "show");
         view.fetchPage();
       });

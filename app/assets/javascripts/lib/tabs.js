@@ -1,21 +1,17 @@
 Skull.Tabs = {
-  selectTab: function($tab){
-    this.trigger('onSelectTab');
+  selectTab: function($tab, $tabContent){
     $tab.siblings('.selected').removeClass('selected');
     $tab.addClass('selected');
-  },
-
-  toggleTab: function($tabContent){
     $tabContent.siblings(':visible').hide();
     $tabContent.show();
+    this.trigger('selectTab');
   },
 
   onTabClick: function(event){
     var $tab = $(event.target);
     var $tabContent = this.$($tab.data('target'));
     this.loadTab($tabContent);
-    this.selectTab($tab);
-    this.toggleTab($tabContent);
+    this.selectTab($tab, $tabContent);
     return false;
   },
 

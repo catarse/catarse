@@ -2,7 +2,7 @@ App.views.Project.addChild('ProjectComments', {
   el: '#project_comments',
 
   activate: function(){
-    this.parent.on('onSelectTab', this.render);
+    this.parent.on('selectTab', this.render);
   },
 
   render: function(){
