@@ -1,5 +1,5 @@
-require 'state_machine'
 # coding: utf-8
+require 'state_machine'
 class Project < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include PgSearch
@@ -35,7 +35,7 @@ class Project < ActiveRecord::Base
     using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
-  scope :not_deleted_projects, ->() { where("state <> 'deleted'") }
+  scope :not_deleted_projects, ->() { where("projects.state <> 'deleted'") }
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_id, ->(id) { where(id: id) }
@@ -53,7 +53,8 @@ class Project < ActiveRecord::Base
     end
   }
 
-  scope :visible, where("state NOT IN ('draft', 'rejected')")
+  scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
+  scope :visible, where("projects.state NOT IN ('draft', 'rejected', 'deleted')")
   scope :financial, where("((projects.expires_at) > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)
   scope :expired, where("(projects.expires_at) < current_timestamp")
@@ -72,7 +73,7 @@ class Project < ActiveRecord::Base
     limit(4)
   }
   scope :order_for_search, ->{ reorder("
-                                     CASE state
+                                     CASE projects.state
                                      WHEN 'online' THEN 1
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
@@ -99,6 +100,7 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, allow_blank: true, allow_nil: true, case_sensitive: false
   validates_format_of :permalink, with: /^(\w|-)*$/, allow_blank: true, allow_nil: true
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
+  validate :permalink_cant_be_route, allow_nil: true
 
   def self.between_created_at(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
@@ -132,7 +134,7 @@ class Project < ActiveRecord::Base
   end
 
   def expires_at
-    online_date && Time.parse((online_date + online_days.days).strftime("%Y-%m-%d 23:59:59"))
+    online_date && Time.zone.parse((online_date + online_days.days).strftime("%Y-%m-%d 23:59:59"))
   end
 
   def video
@@ -244,6 +246,14 @@ class Project < ActiveRecord::Base
     ((pledged + backers.in_time_to_confirm.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
   end
 
+  def permalink_cant_be_route
+    errors.add(:permalink, I18n.t("activerecord.errors.models.project.attributes.permalink.invalid")) if Project.permalink_on_routes?(permalink)
+  end
+
+  def self.permalink_on_routes?(permalink)
+    permalink && self.get_routes.include?(permalink.downcase)
+  end
+
   #NOTE: state machine things
   state_machine :state, initial: :draft do
     state :draft, value: 'draft'
@@ -351,5 +361,13 @@ class Project < ActiveRecord::Base
 
   def new_project_received_notification_type
     channels.first ? :project_received_channel : :project_received
+  end
+
+  private
+  def self.get_routes
+    routes = Rails.application.routes.routes.map do |r|
+      r.path.spec.to_s.split('/').second.to_s.gsub(/\(.*?\)/, '')
+    end
+    routes.compact.uniq
   end
 end

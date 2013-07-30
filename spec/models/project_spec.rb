@@ -26,6 +26,8 @@ describe Project do
     it{ should allow_value('http://vimeo.com/12111').for(:video_url) }
     it{ should allow_value('https://vimeo.com/12111').for(:video_url) }
     it{ should_not allow_value('http://www.foo.bar').for(:video_url) }
+    it{ should allow_value('testproject').for(:permalink) }
+    it{ should_not allow_value('users').for(:permalink) }
   end
 
   describe '.state_names' do
@@ -34,6 +36,21 @@ describe Project do
     subject { Project.state_names }
 
     it { should == states }
+  end
+
+  describe '.near_of' do
+    before do
+      mg_user = create(:user, address_state: 'MG')
+      sp_user = create(:user, address_state: 'SP')
+      3.times { create(:project, user: mg_user) }
+      6.times { create(:project, user: sp_user) }
+    end
+
+    let(:state) { 'MG' }
+
+    subject { Project.near_of(state) }
+
+    it { should have(3).itens }
   end
 
   describe '.not_deleted_projects' do
@@ -478,30 +495,31 @@ describe Project do
     end
     context "when we have an online_date" do
       let(:project){ build(:project, online_date: Time.now, online_days: 0) }
-      it{ should == Time.parse("23:59:59") }
+      it{ should == Time.zone.parse("23:59:59") }
     end
   end
 
   describe "#time_to_go" do
-    let(:project){ build(:project, online_date: date, online_days: 2) }
-    let(:now){ Time.parse("23:00:00") }
+    let(:project){ build(:project) }
+    let(:expires_at){ Time.zone.parse("23:00:00") }
     subject{ project.time_to_go }
     before do
-      project
-      Time.stub(:zone).and_return(double('time', now: now))
+      project.stub(:expires_at).and_return(expires_at)
     end
+
     context "when there is more than 1 day to go" do
-      let(:date){ Time.zone.now }
+      let(:expires_at){ Time.zone.now + 2.days }
       it{ should == {:time=>2, :unit=>"dias"} }
     end
+
     context "when there is less than 1 day to go" do
-      let(:date){ Time.zone.now - 2.day }
-      let(:now){ Time.parse("11:00:00") }
+      let(:expires_at){ Time.zone.now + 13.hours }
       it{ should == {:time=>13, :unit=>"horas"} }
     end
+
     context "when there is less than 1 hour to go" do
-      let(:date){ Time.zone.now - 2.day }
-      it{ should == {:time=>60, :unit=>"minutos"} }
+      let(:expires_at){ Time.zone.now + 59.minutes }
+      it{ should == {:time=>59, :unit=>"minutos"} }
     end
   end
 
@@ -751,4 +769,13 @@ describe Project do
 
   end
 
+  describe '#permalink_on_routes?' do
+    it 'should allow a unique permalink' do
+      Project.permalink_on_routes?('permalink_test').should be_false
+    end
+
+    it 'should not allow a permalink to be one of catarse\'s routes' do
+      Project.permalink_on_routes?('projects').should be_true
+    end
+  end
 end

@@ -7,7 +7,6 @@ Catarse::Application.routes.draw do
     path_names:   { sign_in: :login, sign_out: :logout, sign_up: :register }, 
     controllers:  { omniauth_callbacks: :omniauth_callbacks, sessions: :sessions, registrations: :registrations }
 
-
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
 
   filter :locale, exclude: /\/auth\//
@@ -93,6 +92,9 @@ Catarse::Application.routes.draw do
     end
   end
   resources :users do
+    collection do
+      get :uservoice_gadget
+    end
     resources :backers, only: [:index] do
       member do
         match :request_refund
@@ -137,6 +139,7 @@ Catarse::Application.routes.draw do
         put 'refund'
         put 'hide'
         put 'cancel'
+        put 'push_to_trash'
       end
     end
     resources :users, only: [ :index ]

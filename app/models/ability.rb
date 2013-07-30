@@ -11,7 +11,9 @@ class Ability
     can :access, :updates do |update|
       update.project.user_id == current_user.id
     end
-
+    can :see, :updates do |update|
+      !update.exclusive || !current_user.backs.confirmed.where(project_id: update.project.id).empty?
+    end
 
     # NOTE: Project authorizations
     can :create, :projects if current_user.persisted?
@@ -36,6 +38,10 @@ class Ability
 
     can [:update, :destroy], :rewards do |reward|
       reward.backers.in_time_to_confirm.empty? && reward.backers.confirmed.empty? && reward.project.user == current_user
+    end
+
+    can :update, :rewards, :days_to_delivery do |reward|
+      reward.project.user == current_user && !reward.project.successful? && !reward.project.failed?
     end
 
     # NOTE: User authorizations

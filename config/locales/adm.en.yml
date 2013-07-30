@@ -46,7 +46,9 @@ en:
           change_reward: 'Reward changed!'
           hide: 'Backer hidden!'
           cancel: 'Backer canceled!'
+          push_to_trash: 'Backer deleted!'
       index:
+        push_to_trash: 'Delete backer'
         cancel: 'Cancel backer'
         refund_and_hide: 'Refund and hide'
         backer_info: 'Info of backer %{key}'

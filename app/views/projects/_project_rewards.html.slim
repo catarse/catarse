@@ -9,6 +9,8 @@
               = f.input :minimum_value
             - if can? :update, reward, :description
               = f.input :description
+            - if can? :update, reward, :days_to_delivery
+              = f.input :days_to_delivery
             - if can? :update, reward, :maximum_backers
               = f.input :maximum_backers
             .bootstrap-twitter
@@ -46,6 +48,9 @@
         .maximum_backers.in_time_to_confirm.clearfix
           .pending= t('projects.rewards.backs_to_confirm', count: in_time_to_confirm)
       .clearfix
+    - if reward.days_to_delivery.present?
+      div class="reward_deliver_at"
+        p= "#{t('projects.rewards.reward_deliver_time', prevision: reward.display_deliver_prevision)}".html_safe
     - if current_user && current_user.admin
       div class="reward_updated_at"
         p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{@project.online_date.nil? ? '' : ((@project.online_date > reward.updated_at)? '(draft)' : '(online)')}"

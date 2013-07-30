@@ -1,4 +1,10 @@
 en:
+  uservoice_gadget:
+    user:
+      name: 'User'
+      location: 'City / State'
+      confirmed_backers: 'Confirmed backs'
+      created_projects: 'Created projects'
   site:
     title: "The biggest crowdfunding community in Brazil"
     meta_title:  "%{title} · %{company_name}"
@@ -89,6 +95,7 @@ en:
       selected: "explore more projects selected"
       expiring: "explore more expiring projects"
       recents: "explore more recent projects"
+      near: "explore more near me projects"
   sidebar:
     titles:
       blog: blog
@@ -99,6 +106,8 @@ en:
     buttons:
       newsletter: submit
   sections:
+    near:
+      title: near me
     selection:
       title: selection
     expiring:
@@ -115,6 +124,10 @@ en:
           attributes:
             email:
               not_found: "Your email is not registered, please verify the address or create a new account"
+        project:
+          attributes:
+            permalink:
+              invalid: "Invalid project permalink"
     attributes:
       unsubscribe:
         update: "Receive project updates"
@@ -292,6 +305,7 @@ en:
   error: "Ooops! There was an error. Please try again."
   explore:
     index:
+      near: 'Near me'
       categories: Categories
       expiring: "Final countdown"
       quick_explore: "Quick search"
@@ -325,6 +339,7 @@ en:
         description: "Describe your reward in a way that arouses people's interest to back the project. Don't be shy!"
         maximum_backers: "If your reward is limited, tell us the maximum backers."
         minimum_value: "This is the minimum amount to choose this reward."
+        days_to_delivery: "Total of days to deliver the reward."
     labels:
       backer:
         anonymous: "I want my back to be anonymous."
@@ -348,6 +363,7 @@ en:
         uploaded_image: "Project thumbnail"
       reward:
         maximum_backers: "Maximum backers (optional)"
+        days_to_delivery: "Days to delivery"
     optional: " (optional)"
   found_plural: Found
   found_singular: Found
@@ -436,6 +452,8 @@ en:
       anonymous_description: "Opted to remain incognito"
       no_reward: "This backer has not picked a reward"
     backers:
+      review:
+        error: "Ooops. There was an error while registering your back. Please try again."
       show:
         error: "Ooops. You can only access this page after backing a project."
         moip_message: "Your transaction is “Authorized” and you Moip code is “%{code}″.<br>If you have any questions about this transaction, contact Moip directly."
@@ -548,11 +566,13 @@ en:
       empty: "This project didn't have updates yet. But wait and see =D"
       submit: "Send update"
       comment: "Update text"
+      exclusive: "Visible for backers only"
       title: "Title of the update"
       destroy: "Remove update"
       destroy_confirmation: "Do you want to remove the update?"
     rewards:
       reward_title: "For %{minimum} or more"
+      reward_deliver_time: "Estimated delivery: %{prevision}"
       backs_to_confirm:
         one:  "1 backer in time to confirm."
         other: "%{count} backers in time to confirm."
