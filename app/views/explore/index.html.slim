@@ -1,6 +1,9 @@
 - content_for :js_templates do
   = render partial: 'project'
 
+- if current_user
+  #nearOfData data-state="#{current_user.address_state}"
+
 #page_content
   .container
     .main
@@ -35,6 +38,10 @@
                 li.no_margin
                   a href='#successful'
                     = t('.successful')
+              - if current_user
+                li.no_margin
+                  a href="#near"
+                    = t('.near')
 
         - unless @categories.empty?
           section.categories

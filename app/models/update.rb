@@ -27,14 +27,13 @@ class Update < ActiveRecord::Base
       Rails.logger.info "[User #{user.id}] - Creating notification for #{user.name}"
       Notification.create_notification_once :updates, user,
         {update_id: self.id, user_id: user.id},
-        project_name: project.name,
-        project_owner: project.user.display_name,
-        project_owner_email: project.user.email,
-        update_title: title,
+        project_name: project.name.force_encoding("UTF-8"),
+        project_owner: project.user.display_name.force_encoding("UTF-8"),
+        project_owner_email: project.user.email.force_encoding("UTF-8"),
+        update_title: title.force_encoding("UTF-8"),
         update: self,
-        from: project.user.email,
-        display_name: project.user.display_name,
-        update_comment: email_comment_html
+        from: project.user.email.force_encoding("UTF-8"),
+        display_name: project.user.display_name.force_encoding("UTF-8")
     end
   end
 

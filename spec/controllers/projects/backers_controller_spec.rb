@@ -57,7 +57,7 @@ describe Projects::BackersController do
     end
 
     context "with correct user and sufficient credits" do
-      let(:user) do 
+      let(:user) do
         create(:backer, value: 10.00, credits: false, state: 'confirmed', user: backer.user, project: failed_project)
         failed_project.update_attributes state: 'failed'
         backer.user.reload
@@ -86,6 +86,18 @@ describe Projects::BackersController do
       its(:body){ should =~ /#{I18n.t('projects.backers.create.title')}/ }
       its(:body){ should =~ /#{project.name}/ }
       its(:body){ should =~ /R\$ 20/ }
+    end
+
+    context "with invalid backer values" do
+      let(:user){ create(:user) }
+      let(:errors){ e = ActiveModel::Errors.new(Backer.new); e.add(:value, 'is wrong'); e }
+
+      before do
+        Backer.any_instance.stub(:errors).and_return(errors)
+        post :create, {locale: :pt, project_id: project.id, backer: { value: '20.00', reward_id: '0', anonymous: '0' }}
+      end
+
+      it{ should redirect_to new_project_backer_path(project) }
     end
   end
 
@@ -154,9 +166,9 @@ describe Projects::BackersController do
 
   describe "GET index" do
     before do
-      create(:backer, value: 10.00, state: 'confirmed', 
-              reward: create(:reward, project: project, description: 'Test Reward'), 
-              project: project, 
+      create(:backer, value: 10.00, state: 'confirmed',
+              reward: create(:reward, project: project, description: 'Test Reward'),
+              project: project,
               user: create(:user, name: 'Foo Bar'))
       get :index, { locale: :pt, project_id: project.id, format: :json }
     end
@@ -173,9 +185,9 @@ describe Projects::BackersController do
     shared_examples_for "normal / guest" do
       it "should see filtered info about backer" do
         response_backer = ActiveSupport::JSON.decode(response.body)[0]
-        response_backer['value'].should == 'R$ 10'
         response_backer['user']['name'].should == 'Foo Bar'
         response_backer['reward'].should be_nil
+        response_backer['value'].should be_nil
       end
     end
 

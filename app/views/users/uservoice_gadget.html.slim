@@ -1,0 +1,45 @@
+doctype 5
+html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"
+  head
+    title= t('site.meta_title', title: (@title || yield(:title)), company_name: ::Configuration[:company_name])
+
+    meta charset='utf-8'
+    meta name="robots" content="index, follow"
+
+    link href="https://cdn.uservoice.com/packages/gadget.css" media="all" rel="stylesheet" type="text/css"
+
+  body
+    - if @user
+      dl
+        dt 
+          strong= t('uservoice_gadget.user.name')
+        dd= link_to @user.display_name, user_url(@user)
+
+        br/
+
+        dt
+          strong= t('uservoice_gadget.user.location')
+        dd= "#{@user.address_city} / #{@user.address_state}"
+
+        br/
+
+        dt
+          strong= t('uservoice_gadget.user.confirmed_backers')
+        dd
+          ul
+            - @user.backs.confirmed.each do |backer|
+              li= "#{backer.project.name} - #{backer.display_value}"
+
+        br/
+
+        dt
+          strong= t('uservoice_gadget.user.created_projects')
+        dd
+          ul
+            - @user.projects.each do |project|
+              li= link_to project.name, project_by_slug_url(project)
+    - else
+      javascript:
+        window.gadgetNoData = true;
+
+    script src="https://cdn.uservoice.com/packages/gadget.js" type="text/javascript"

@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 gem 'rails',    '3.2.13'
-gem 'sidekiq',  '~> 2.7.5'
+gem 'sidekiq',  '~> 2.13.0'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
 
 # Turns every field on a editable one
@@ -25,7 +25,7 @@ gem 'schema_associations'
 gem 'chartkick'
 
 # Payment engine using Paypal
-gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '8974996'
+gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '49cdd22'
 #gem 'catarse_paypal_express',           path: '../catarse_paypal_express'
 
 # Payment engine using Moip

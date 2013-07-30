@@ -1,4 +1,10 @@
 pt:
+  uservoice_gadget:
+    user:
+      name: 'Usuário'
+      location: 'Cidade / Estado'
+      confirmed_backers: 'Apoios confirmados'
+      created_projects: 'Projetos criados'
   current_update: 'Alteração atual feita em '
   'no': "Não"
   'yes': "Sim"
@@ -95,6 +101,7 @@ pt:
       selected: "explore mais projetos selecionados"
       expiring: "explore mais projetos na reta final"
       recents: "explore mais projetos recentes"
+      near: "explore mais projetos próximos"
   sidebar:
     titles:
       blog: blog
@@ -105,6 +112,8 @@ pt:
     buttons:
       newsletter: assinar
   sections:
+    near:
+      title: 'próximos a mim'
     selection:
       title: seleção
     expiring:
@@ -121,6 +130,10 @@ pt:
           attributes:
             email:
               not_found: "O seu email não está cadastrado, verifique o endereço ou crie uma conta nova"
+        project:
+          attributes:
+            permalink:
+              invalid: "URL do projeto inválida"
     attributes:
       unsubscribe:
         update: "Receber atualizações do projeto"
@@ -237,6 +250,7 @@ pt:
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
   explore:
     index:
+      near: 'Próximos a mim'
       categories: Categorias
       expiring: "Na reta final"
       quick_explore: "Busca rápida"
@@ -271,6 +285,7 @@ pt:
         description: "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!"
         maximum_backers: "Se sua recompensa é limitada, informe o máximo de pessoas."
         minimum_value: "Este é valor mínimo de apoio para escolher esta recompensa."
+        days_to_delivery: "Informe em quantos dias, após o sucesso do projeto, você planeja entregar essa recompensa"
     labels:
       backer:
         anonymous: "Quero que meu apoio seja anônimo."
@@ -291,6 +306,7 @@ pt:
         first_backers: "Lista com os primeiros apoiadores *"
         how_know: "Como você conheceu o Catarse? *"
       reward:
+        days_to_delivery: "Previsão de entrega"
         maximum_backers: "Máximo de apoiadores (opcional)"
     optional: " (opcional)"
   found_plural: Encontrados
@@ -359,6 +375,7 @@ pt:
       rejected: "rejeitado"
       failed: "não financiado"
       successful: financiado
+      reached_goal: financiado
       waiting_confirmation: aguardando
       waiting_funds: aguardando
       not_reached_goal: aguardando
@@ -383,6 +400,8 @@ pt:
       anonymous_description: "Optou por permanecer incógnito"
       no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
+      review:
+        error: "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
       show:
         error: "Ooops. Você só pode acessar esta página depois de apoiar um projeto."
         moip_message: "A verificação da sua transação está em andamento e o código Moip é “%{code}″.<br>Caso tenha alguma dúvida referente a transação, entre em contato com o Moip. Um email será enviado quando o pagamento for confirmado."
@@ -503,11 +522,13 @@ pt:
       empty: "Este projeto ainda não teve novidades. Aguarde =D"
       submit: "Enviar Novidade"
       comment: "Texto da sua Novidade"
+      exclusive: "Visível apenas para apoiadores"
       title: "Título da sua Novidade"
       destroy: "Remover Novidade"
       destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
       reward_title: "Para %{minimum} ou mais"
+      reward_deliver_time: "<b>Previsão de Entrega:</b> %{prevision}"
       backs_to_confirm:
         one: "1 apoio em prazo de confirmação."
         other: "%{count} apoios em prazo de confirmação."
@@ -672,7 +693,7 @@ pt:
       title_one: "O que te inspirou a fazer este projeto?"
       tip_one: "As pessoas só se engajam quando percebem a importância de uma causa para a sociedade ou para a pessoa que lidera uma campanha. Por isso, tenha bem claro qual é a sua inspiração e exponha isso na descrição do projeto."
       title_two: "Qual é o foco?"
-      tip_two: "O Catarse é uma ferramenta excelente pada dar o start nas suas ideias ou para incrementar seu desenvolvimento. Definir objetivamente onde você quer chegar é uma das melhores formas de mobilizar pessoas. Isso inclui conhecer bem o público que será beneficiado pela sua iniciativa"
+      tip_two: "O Catarse é uma ferramenta excelente para dar o start nas suas ideias ou para incrementar seu desenvolvimento. Definir objetivamente onde você quer chegar é uma das melhores formas de mobilizar pessoas. Isso inclui conhecer bem o público que será beneficiado pela sua iniciativa"
       title_three: "Qual é a sua meta?"
       tip_three: "Para definir seus objetivos financeiros; levante os custos da execução da sua proposta e, procure estimar seus gastos com a produção e entrega das recompensas oferecidas. Sempre levando em conta seu  potencial de mobilização de pessoas."
       title_four: "Qual é o seu prazo de arrecadação?"

@@ -13,6 +13,7 @@ class Backer < ActiveRecord::Base
   validate :should_not_back_if_maximum_backers_been_reached, on: :create
   validate :project_should_be_online, on: :create
 
+  scope :not_deleted, ->() { where("backers.state <> 'deleted'") }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_key, ->(key) { where(key: key) }
@@ -25,15 +26,15 @@ class Backer < ActiveRecord::Base
   scope :refunded, where(state: 'refunded')
   scope :not_anonymous, where(anonymous: false)
   scope :confirmed, where(state: 'confirmed')
-  scope :not_confirmed, where("state <> 'confirmed'") # used in payment engines
+  scope :not_confirmed, where("backers.state <> 'confirmed'") # used in payment engines
   scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
   scope :pending_to_refund, ->() { where(state: 'requested_refund') }
 
-  scope :avaiable_to_count, ->() { where("state ~* '(confirmed|requested_refund|refunded)'") }
+  scope :available_to_count, ->() { where("state in ('confirmed', 'requested_refund', 'refunded')") }
 
   scope :can_cancel, ->() {
     where(%Q{
-      state = 'waiting_confirmation' and
+      backers.state = 'waiting_confirmation' and
         (
           ((
             select count(1) as total_of_days
@@ -56,7 +57,7 @@ class Backer < ActiveRecord::Base
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
   scope :can_refund, ->{
     where(%Q{
-      state IN('confirmed', 'requested_refund', 'refunded') AND
+      backers.state IN('confirmed', 'requested_refund', 'refunded') AND
       EXISTS(
         SELECT true
           FROM projects p
@@ -73,11 +74,13 @@ class Backer < ActiveRecord::Base
   end
 
   def self.state_names
-    self.state_machine.states.map &:name
+    self.state_machine.states.map do |state|
+      state.name if state.name != :deleted
+    end.compact!
   end
 
   def self.send_credits_notification
-    confirmed.joins(:project).joins(:user).each do |backer|
+    confirmed.joins(:project).joins(:user).find_each do |backer|
       if backer.project.state == 'failed' && ((backer.project.expires_at + 1.month) < Time.now) && backer.user.credits >= backer.value
         Notification.create_notification_once(:credits_warning,
           backer.user,
@@ -140,13 +143,14 @@ class Backer < ActiveRecord::Base
       anonymous: anonymous,
       confirmed: confirmed?,
       confirmed_at: display_confirmed_at,
-      value: display_value,
       user: user.as_json(options.merge(anonymous: anonymous)),
+      value: nil,
       display_value: nil,
       reward: nil
     }
     if options and options[:can_manage]
       json_attributes.merge!({
+        value: display_value,
         display_value: display_value,
         reward: reward
       })
@@ -168,6 +172,11 @@ class Backer < ActiveRecord::Base
     state :refunded, value: 'refunded'
     state :requested_refund, value: 'requested_refund'
     state :refunded_and_canceled, value: 'refunded_and_canceled'
+    state :deleted, value: 'deleted'
+
+    event :push_to_trash do
+      transition all => :deleted
+    end
 
     event :pendent do
       transition all => :pending
@@ -198,6 +207,11 @@ class Backer < ActiveRecord::Base
     end
 
     after_transition confirmed: :requested_refund, do: :after_transition_from_confirmed_to_requested_refund
+    after_transition confirmed: :canceled, do: :after_transition_from_confirmed_to_canceled
+  end
+
+  def after_transition_from_confirmed_to_canceled
+    notify_observers :notify_backoffice_about_canceled
   end
 
   def after_transition_from_confirmed_to_requested_refund

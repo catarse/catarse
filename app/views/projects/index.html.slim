@@ -4,6 +4,17 @@
 #page_content
   .container
     .main
+      - if current_user && @projects_near.present?
+        .near_projects.list
+          .list_title
+            .title
+              h2= t('sections.near.title')
+          .projects
+            - @projects_near.each_with_index do |item,i|
+              == render 'project', project: item, custom_class: ((@projects_near.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+          .explore_link
+            hr
+            = link_to t('main.links.near'), explore_path(anchor: :near)
       .selected_projects.list
         .list_title
           .title

@@ -12,7 +12,7 @@ class Reward < ActiveRecord::Base
   ranks :row_order, with_same: :project_id
   has_paper_trail
 
-  validates_presence_of :minimum_value, :description
+  validates_presence_of :minimum_value, :description, :days_to_delivery
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00
   validates_numericality_of :maximum_backers, only_integer: true, greater_than: 0, allow_nil: true
   scope :remaining, where("maximum_backers IS NULL OR (maximum_backers IS NOT NULL AND (SELECT COUNT(*) FROM backers WHERE state = 'confirmed' AND reward_id = rewards.id) < maximum_backers)")
@@ -29,6 +29,12 @@ class Reward < ActiveRecord::Base
   def remaining
     return nil unless maximum_backers
     maximum_backers - (backers.confirmed.count + backers.in_time_to_confirm.count)
+  end
+
+  def display_deliver_prevision
+    I18n.l((project.expires_at + days_to_delivery.days), format: :prevision)
+  rescue
+    days_to_delivery
   end
 
   def display_remaining
