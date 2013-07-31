@@ -1,4 +1,4 @@
-class UpdatesController < ApplicationController
+class Projects::UpdatesController < ApplicationController
   inherit_resources
   load_and_authorize_resource
 
@@ -14,11 +14,8 @@ class UpdatesController < ApplicationController
   end
 
   def create
-    @update = parent.updates.new(params[:update])
-    @update.user = current_user
-    create! do |format|
-      format.html{ return render @update }
-    end
+    @update = parent.updates.create(params[:update].merge!(user: current_user))
+    render @update
   end
 
   def destroy

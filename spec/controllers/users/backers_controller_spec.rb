@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BackersController do
+describe Users::BackersController do
   subject{ response }
   let(:user){ create(:user, password: 'current_password', password_confirmation: 'current_password', authorizations: [create(:authorization, uid: 666, oauth_provider: create(:oauth_provider, name: 'facebook'))]) }
   let(:successful_project){ create(:project, state: 'online') }
