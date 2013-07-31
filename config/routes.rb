@@ -93,7 +93,7 @@ Catarse::Application.routes.draw do
     collection do
       get :uservoice_gadget
     end
-    resources :backers, only: [:index] do
+    resources :backers, controller: 'users/backers', only: [:index] do
       member do
         match :request_refund
       end
