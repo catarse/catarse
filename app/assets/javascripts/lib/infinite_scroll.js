@@ -12,7 +12,7 @@ Skull.InfiniteScroll = {
   },
 
   fetchPage: function(){
-    if(this.isLoaderDivVisible() && !this.$loader.is(':visible') && !this.EOF){
+    if(this.isLoaderDivVisible() && !this.EOF){
       this.$loader.show();
       $.get(this.path, this.filter).success(this.onSuccess);
       this.filter.page += 1;
