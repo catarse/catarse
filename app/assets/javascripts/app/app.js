@@ -7,6 +7,7 @@ var App = window.App = Skull.View.extend({
 
   beforeActivate: function(){
     this.$search = this.$('#pg_search');
+    this.router = new Backbone.Router;
   },
 
   activate: function(){
@@ -14,6 +15,7 @@ var App = window.App = Skull.View.extend({
     this.$dropdown = this.$('.dropdown.user');
     this.$flash = this.$('.flash');
     this.flash();
+    Backbone.history.start({pushState: false});
   },
 
   toggleMenu: function(){
