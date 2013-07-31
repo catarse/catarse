@@ -398,6 +398,25 @@ describe Project do
     end
   end
 
+  describe "#total_payment_service_fee" do
+    subject { project.total_payment_service_fee }
+
+    context "when project_total is nil" do
+      before { project.stub(:project_total).and_return(nil) }
+      it { should == 0 }
+    end
+
+    context "when project_total exists" do
+      before do
+        project_total = mock()
+        project_total.stub(:total_payment_service_fee).and_return(4.0)
+        project.stub(:project_total).and_return(project_total)
+      end
+
+      it { should == 4.0 }
+    end
+  end
+
   describe "#total_backers" do
     subject{ project.total_backers }
     context "when project_total is nil" do
