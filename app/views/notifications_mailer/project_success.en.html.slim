@@ -1,30 +1,30 @@
 - project = @notification.project
-|Oi oi oi oi #{project.user.name},
+|Hi #{project.user.name},
 br
-|Antes de mais nada, super parabéns pelo projeto bem-sucedido! =D
-br
-br
-|Reunimos aqui algumas informações importantíssimas para quem teve seu projeto financiado com sucesso aqui no Catarse. São 4 coisinhas, ó:
+|First of all, congratulations on the successful backing of your project! =D
 br
 br
-|1 - Você poderá baixar sua <strong>planilha com detalhes dos apoiadores (nome, recompensa, endereço, etc.)</strong> a qualquer momento na <strong>ABA de Relatórios</strong> na página do seu projeto.
+|We have put together here some very important information for those who have successfully financed their project on #{Configuration[:company_name]}. Four things you should know:
 br
 br
-|2 - Além disso, vamos precisar de algumas <strong>informações para emitirmos a Nota Fiscal</strong> referente ao serviço do #{Configuration[:company_name]}. A gente irá utilizar os dados preenchidos no seu perfil no #{Configuration[:company_name]}. Atente-se, então, para que os dados que estejam lá sejam aqueles para os quais você gostariam que a Nota Fiscal seja emitida (ou seja, <strong>se for para Pessoa Jurídica, precisaremos dos dados da sua organização no seu perfil</strong>).
+|1 - You can download a <strong>spreadsheet with details of your backers (name, reward, address, etc.)</strong> at any time from the <strong>reports tab</strong> of your project page.
 br
 br
-|3 - Iremos emitir a Nota Fiscal para vocês até o último dia útil do mês que encerrou a captação do projeto no #{Configuration[:company_name]}, caso o seu projeto tenha encerrado a captação até o dia 24 do mês, se não, emitiremos ela no mês posterior, ok?
+|2 - Also, we will need some information for <strong>issuing the invoice</strong> for #{Configuration[:company_name]}'s service. We will use the data in your #{Configuration[:company_name]} profile. Consider, then, if those details are correct for whom you would like the invoice issued (for example, <strong>for companies, we need the data of the company in your profile</strong>).
 br
 br
-|4 - Para acabar, aqui vai um dos bens mais importantes da sua campanha: o #{link_to 'Guia Pós-Projeto', 'https://docs.google.com/a/catarse.me/document/d/1g6IY1T8xl4wc24MnN2gL0-AD1esfmJb_kXXxRY_jJ_4/edit'}. Recheamos ele com dicas para você lidar com as recompensas e para manter por perto a comunidade de pessoas que você criou com o seu projeto. 
+|3 - We will send the invoice up to the last day of the month that funding was completed if your project completed funding on #{Configuration[:company_name]} on or before the 24th of the month, otherwise you will receive an invoice the following month.
 br
 br
-|Qualquer outra dúvida, por favor, entre em contato com a gente através do nosso Suporte: 
+|4 - Finally, here's one of the most important assets for you campaign, #{link_to 'The Post-Project Guide (Portuguese)', 'https://docs.google.com/a/catarse.me/document/d/1g6IY1T8xl4wc24MnN2gL0-AD1esfmJb_kXXxRY_jJ_4/edit'}. It's filled with tips for dealing with rewards and keeping your community of supporters around for the future.
+br
+br
+|Any other questions, please contact us through Support:
 br
 = link_to 'http://suporte.catarse.me/', 'http://suporte.catarse.me/'
 br
 br
-|Grande abraço,
+|A big hug,
 br
 br
-|Equipe do #{Configuration[:company_name]}
+|#{Configuration[:company_name]} Team
