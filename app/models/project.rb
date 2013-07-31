@@ -153,6 +153,10 @@ class Project < ActiveRecord::Base
     project_total ? project_total.total_backers : 0
   end
 
+  def total_payment_service_fee
+    project_total ? project_total.total_payment_service_fee : 0.0
+  end
+
   def selected_rewards
     rewards.sort_asc.where(id: backers.confirmed.select('DISTINCT(reward_id)'))
   end

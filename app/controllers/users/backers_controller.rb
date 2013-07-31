@@ -1,4 +1,4 @@
-class BackersController < ApplicationController
+class Users::BackersController < ApplicationController
   inherit_resources
   defaults resource_class: Backer, collection_name: 'backs', instance_name: 'back'
   belongs_to :user

@@ -65,7 +65,7 @@ Catarse::Application.routes.draw do
   end
 
   resources :projects do
-    resources :updates, only: [ :index, :create, :destroy ]
+    resources :updates, controller: 'projects/updates', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy ] do
       member do
         post 'sort'
@@ -93,7 +93,7 @@ Catarse::Application.routes.draw do
     collection do
       get :uservoice_gadget
     end
-    resources :backers, only: [:index] do
+    resources :backers, controller: 'users/backers', only: [:index] do
       member do
         match :request_refund
       end

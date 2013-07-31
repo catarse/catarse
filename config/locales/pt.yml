@@ -517,7 +517,7 @@ pt:
       destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
       reward_title: "Para %{minimum} ou mais"
-      reward_deliver_time: "<b>Previsão de Entrega:</b> %{prevision}"
+      reward_deliver_time: "<b>Estimativa de Entrega:</b> %{prevision}"
       backs_to_confirm:
         one: "1 apoio em prazo de confirmação."
         other: "%{count} apoios em prazo de confirmação."

@@ -67,7 +67,7 @@ RSpec.configure do |config|
     Notification.stub(:create_notification_once)
     Calendar.any_instance.stub(:fetch_events_from)
     Blog.stub(:fetch_last_posts).and_return([])
-    [Projects::BackersController, ::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController].each do |c|
+    [Projects::BackersController, Users::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController].each do |c|
       c.any_instance.stub(:render_facebook_sdk)
       c.any_instance.stub(:render_facebook_like)
       c.any_instance.stub(:render_twitter)
