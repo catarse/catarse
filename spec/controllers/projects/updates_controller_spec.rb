@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UpdatesController do
+describe Projects::UpdatesController do
   let(:update){ FactoryGirl.create(:update) }
   let(:current_user){ nil }
   before{ controller.stub(:current_user).and_return(current_user) }
