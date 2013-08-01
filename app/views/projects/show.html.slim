@@ -72,9 +72,9 @@
         #project_updates.content.hide[data-path=project_updates_path(project_id: @project.id)]
           - if can? :update, @project
             = render template: 'projects/updates/new'
-            .results &nbsp;
-            .clearfix
-            #updates-loading.loading= image_tag "loading.gif"
+          .results &nbsp;
+          .clearfix
+          #updates-loading.loading= image_tag "loading.gif"
         #project_backers.content.hide[data-path=project_backers_path(project_id: @project.id)]
           .results &nbsp;
           .clearfix
