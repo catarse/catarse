@@ -1,4 +1,4 @@
-.midia
+.media
   .video
     iframe src="#{@project.display_video_embed_url}" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
   .social
@@ -16,8 +16,5 @@
 #project_embed.hide data-path=embed_panel_project_path(@project)
   = image_tag "loading.gif", class: 'loader'
 .text
-  .flag
-  h5= t('projects.show.about_title')
-  .clearfix
   p
     = @project.about_html.html_safe

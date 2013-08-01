@@ -1,11 +1,10 @@
 .update
-  .flag
-  .time= l(update.created_at, format: :updates)
-  .clearfix
   h3= link_to "#updates/#{update.id}", id: "updates/#{update.id}" do
     = update.title
+  .time= l(update.created_at, format: :updates)
+  .clearfix
   .comment= raw(update.comment_html)
-  .midia
+  .media
     .social
       .update_share
         - url = project_by_slug_url(@project.permalink, update_id: update.id, locale: I18n.locale)
