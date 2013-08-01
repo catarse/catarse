@@ -2,7 +2,7 @@ describe("Updates", function() {
   var view;
 
   beforeEach(function() {
-    view = new App.views.Project.views.Updates();
+    view = new App.views.Project.views.Updates({ parent: { on: function(){} } });
   });
 
   describe("#onUpdateCreate", function() {

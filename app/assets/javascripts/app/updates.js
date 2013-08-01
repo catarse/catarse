@@ -17,6 +17,14 @@ App.views.Project.addChild('Updates', _.extend({
     this.path = this.$el.data('path');
     this.filter = {};
     this.setupScroll();
+    this.parent.on('selectTab', this.fetchPage);
+    this.on('scroll:success', this.parseXFBML);
+  },
+
+  parseXFBML: function(){
+    if(this.$el.is(':visible')){
+      FB.XFBML.parse();
+    }
   },
 
   updates: function(){
