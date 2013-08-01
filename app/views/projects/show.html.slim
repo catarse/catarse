@@ -74,11 +74,11 @@
             = render template: 'projects/updates/new'
             .results &nbsp;
             .clearfix
-            #updates-loading= image_tag "loading.gif"
+            #updates-loading.loading= image_tag "loading.gif"
         #project_backers.content.hide[data-path=project_backers_path(project_id: @project.id)]
           .results &nbsp;
           .clearfix
-          #backers-loading= image_tag "loading.gif"
+          #backers-loading.loading= image_tag "loading.gif"
         #project_comments.content.hide
         #project_about.content= render 'project_about'
 
