@@ -144,15 +144,18 @@
               p style="margin:0; padding:0;"
                 = t('.no_rewards_warning')
             .clearfix
-            = link_to t('.menu.add_reward'), 'javascript:void(0);', data: {target: '.new_reward_content'}, class: 'btn btn-success pull-right show_reward_form'
+            = link_to t('.menu.add_reward'), 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'btn btn-success pull-right show_reward_form'
             .clearfix
-            .well.new_reward_content.hide
-              = semantic_form_for [@project, Reward.new] do |f|
-                = f.input :minimum_value
-                = f.input :description
-                = f.input :days_to_delivery
-                = f.input :maximum_backers
-                = f.submit class: 'btn'
-        #rewards[data-can_update="#{can?(:update, @project)}"]= render 'project_rewards'
+            br/
+            .skull-modal.new_reward_content.hide
+              .skull-modal-header
+                h3= t('projects.rewards.new_reward')
+                a class='skull-modal-close' href='javascript:void(0);' &times;
+              .skull-modal-body
+                = image_tag 'loading.gif'
+        #rewards[data-can_update="#{can?(:update, @project)}" data-index_path=project_rewards_path(@project)]
+          .reward-loader= image_tag 'loading.gif'
+            /= render 'project_rewards'
+
 
     .clearfix
