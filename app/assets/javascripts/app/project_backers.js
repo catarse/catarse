@@ -8,6 +8,7 @@ App.views.Project.addChild('ProjectBackers', _.extend({
     this.path = this.$el.data('path');
     this.filter = {};
     this.setupScroll();
+    this.parent.on('selectTab', this.fetchPage);
   }
 
 }, Skull.InfiniteScroll));
