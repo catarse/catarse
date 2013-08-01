@@ -1,0 +1,38 @@
+form#new_reward, form.formtastic.reward, form#edit_reward
+  width: 540px
+  list-style: none
+  label
+    //display: block
+    font-family: 'Lato'
+    font-size: 14px
+    color: black
+    background: none
+  textarea
+    height: 50px
+  input, textarea
+    display: block
+  .inline-errors
+    color: $red !important
+    font-size: 12px !important
+  .inline-hints
+    font-size: 12px
+    font-family: Arial
+    line-height: 130%
+    color: rgba(black, 0.6)
+    padding-bottom: 20px
+
+  li#reward_minimum_value_input
+    float: left
+    width: 45%
+    margin-right: 10%
+  li#reward_days_to_delivery_input
+    float: left
+    width: 45%
+  li#reward_description_input
+    float: left
+    width: 100%
+    textarea
+      width: 520px
+  li#reward_maximum_backers_input
+    float: left
+    width: 100%
