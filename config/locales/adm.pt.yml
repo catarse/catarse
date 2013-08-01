@@ -10,7 +10,7 @@ pt:
         goal: 'Meta'
         total_payment_service_fee: 'Taxa do MP'
         total_catarse_fee: 'Taxa do Catarse'
-        liquid_value: 'Vl. Líquido'
+        repass_value: 'Vl. Repasse'
         expires_at: 'Finaliza'
         online_date: 'Entrou no ar'
         pledged: 'Alcançado'
