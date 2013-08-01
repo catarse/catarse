@@ -3,6 +3,7 @@ describe("App", function() {
 
   beforeEach(function() {
     $.fn.best_in_place = function(){};
+    spyOn(Backbone.history, "start");
     view = new App();
   });
 
