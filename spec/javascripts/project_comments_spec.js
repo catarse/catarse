@@ -22,15 +22,45 @@ describe("ProjectComments", function() {
   describe("#render", function() {
     beforeEach(function(){
       spyOn(FB.XFBML, "parse");
-      view.render();
     });
 
-    it("should add div.fb-comments to DOM", function() {
-      expect(view.$('div.fb-comments').length).toEqual(1);
+    describe("when $el is not visible", function(){
+      beforeEach(function(){
+        spyOn(view.$el, "is").andReturn(false);
+        view.render();
+      });
+
+      it("should test $el visibility", function() {
+        expect(view.$el.is).wasCalledWith(':visible');
+      });
+
+      it("should not add div.fb-comments to DOM", function() {
+        expect(view.$('div.fb-comments').length).toEqual(0);
+      });
+
+      it("should not call FB.XFBML.parse", function() {
+        expect(FB.XFBML.parse).wasNotCalled();
+      });
     });
-    
-    it("should call FB.XFBML.parse", function() {
-      expect(FB.XFBML.parse).wasCalled();
+
+    describe("when $el is visible", function(){
+      beforeEach(function(){
+        spyOn(view.$el, "is").andReturn(true);
+        view.render();
+      });
+
+      it("should test $el visibility", function() {
+        expect(view.$el.is).wasCalledWith(':visible');
+      });
+
+      it("should add div.fb-comments to DOM", function() {
+        expect(view.$('div.fb-comments').length).toEqual(1);
+      });
+
+      it("should call FB.XFBML.parse", function() {
+        expect(FB.XFBML.parse).wasCalled();
+      });
     });
+
   });  
 });
