@@ -1,0 +1,11 @@
+= semantic_form_for [parent, resource], remote: true, html: { class: 'remote-form' } do |f|
+  = f.input :minimum_value
+  = f.input :days_to_delivery
+  = f.input :description
+  = f.input :maximum_backers
+  .clearfix
+  = f.submit class: 'btn', disable_with: I18n.t('sending')
+  - if resource.persisted? && can?(:destroy, resource)
+    br/
+    = link_to [parent, resource], class: 'btn btn-danger', method: :delete, confirm: 'Are you sure?' do
+      i.icon-trash.icon-white

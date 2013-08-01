@@ -1,4 +1,5 @@
 pt:
+  sending: 'Enviando...'
   uservoice_gadget:
     user:
       name: 'Usuário'
@@ -516,6 +517,8 @@ pt:
       destroy: "Remover Novidade"
       destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
+      new_reward: "Cadastrar recompensa"
+      edit_reward: "Editar recompensa"
       reward_title: "Para %{minimum} ou mais"
       reward_deliver_time: "<b>Estimativa de Entrega:</b> %{prevision}"
       backs_to_confirm:
