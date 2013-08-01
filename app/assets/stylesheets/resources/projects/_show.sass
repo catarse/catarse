@@ -65,29 +65,18 @@
           border-bottom: 1px #ccc dotted
           padding: 40px 0 10px
           min-height: 67px
-          .flag
-            background: url($images_path+'project_about.png') left top no-repeat
-            width: 10px
-            height: 40px
-            float: left
           .time
             font-family: "Lato"
-            font-weight: bold
             float: left
-            color: white
+            color: $channel_text
             font-size: 14px
-            text-transform: uppercase
-            height: 23px
-            padding: 8px 20px 0 10px
-            background: #EE5192
-            margin-bottom: 25px
-
+            margin: 0 0 20px 20px
           h3
             font-family: "Arial"
             font-weight: bold
             color: #444
             font-size: 16px
-            margin-bottom: 20px
+            margin-bottom: 11px
             padding-left: 20px
           p
             font-family: Arial
@@ -152,10 +141,11 @@
     .main
       +grid(11)
       padding-bottom: 20px
-      .midia
+      .media
         width: 100%
         float: left
         padding-bottom: 20px
+        margin-left: 20px
         .social
           padding-top: 10px
           #facebook_share, #facebook_share iframe
