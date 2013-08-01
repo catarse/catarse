@@ -17,12 +17,7 @@
           = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(@project, reward)}, class: 'show_reward_form btn btn-mini pull-right btn-primary' do
             i.icon-pencil.icon-white
 
-
     = hidden_field_tag 'url', "#{new_project_backer_path(parent)}/?reward_id=#{reward.id}"
-    - if reward.sold_out?
-      span.icon.sold_out
-    - else
-      span.icon.avaliable
     h2= t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
     em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
     .clearfix

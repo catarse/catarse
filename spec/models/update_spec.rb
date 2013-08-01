@@ -32,7 +32,7 @@ describe Update do
       create(:backer, state: 'confirmed', project: @project, user: backer.user)
       @project.reload
       ActionMailer::Base.deliveries = []
-      @update = Update.create!(user: @project.user, project: @project, comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
+      @update = Update.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
       Notification.should_receive(:create_notification_once).with(:updates, backer.user,
         {update_id: @update.id, user_id: backer.user.id},
         project_name: backer.project.name,

@@ -30,6 +30,8 @@ class Update < ActiveRecord::Base
         project_name: project.name.force_encoding("UTF-8"),
         project_owner: project.user.display_name.force_encoding("UTF-8"),
         project_owner_email: project.user.email.force_encoding("UTF-8"),
+        from: project.user.email.force_encoding("UTF-8"),
+        display_name: project.user.display_name.force_encoding("UTF-8"),
         update_title: title.force_encoding("UTF-8"),
         update: self,
         from: project.user.email.force_encoding("UTF-8"),
