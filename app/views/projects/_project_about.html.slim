@@ -12,8 +12,5 @@
       #twitter_share= render_twitter(url: project_by_slug_url(permalink: @project.permalink))
       .clear
 .text
-  .flag
-  h5= t('projects.show.about_title')
-  .clearfix
   p
     = @project.about_html.html_safe
