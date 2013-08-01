@@ -59,7 +59,7 @@
                 th= t('.pledged')
                 th= t('.total_payment_service_fee')
                 th= t('.total_catarse_fee')
-                th= t('.liquid_value')
+                th= t('.repass_value')
                 th= t('.expires_at')
                 th= t('.reports')
                 th= t('.state')
@@ -76,7 +76,7 @@
                   td
                     = number_to_currency catarse_fee, unit: 'R$', precision: 0, delimiter: '.'
                   td
-                    = number_to_currency ((project.pledged*Configuration[:catarse_fee].to_f) - project.total_payment_service_fee.to_f), unit: 'R$', precision: 2, delimiter: '.'
+                    = number_to_currency ((project.pledged*0.87)), unit: 'R$', precision: 2, delimiter: '.'
                   td
                     = project.display_expires_at
                   td
