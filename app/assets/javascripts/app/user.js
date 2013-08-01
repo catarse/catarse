@@ -5,6 +5,7 @@ App.addChild('User', _.extend({
     'click nav#user_profile_menu a' : 'onTabClick'
   },
 
+  //@TODO: Refactor this ugly code into a generic routing generation inside the Skull.Tabs extension
   activate: function(){
     this.makeRoute('backs');
     this.makeRoute('projects');
