@@ -9,7 +9,7 @@ The first crowdfunding platform from Brazil
 - [![Coverage Status](https://coveralls.io/repos/catarse/catarse/badge.png?branch=channels)](https://coveralls.io/r/catarse/catarse)
 - [![Dependency Status](https://gemnasium.com/catarse/catarse.png)](https://gemnasium.com/catarse/catarse)
 
-## Oficial repository changed!
+## Official repository changed!
 
 Our new address is https://github.com/catarse/catarse
 
