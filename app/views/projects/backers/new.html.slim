@@ -17,11 +17,6 @@
             = form.input :value, required: false, as: :string, label: false,  input_html: { autocomplete: 'off' }
             .simbol
               p R$
-            - @rewards[0].id = 0
-            script
-              |var rewards = new Array();
-              - @rewards.each do |reward|
-                |rewards[#{reward.id || 0}] = #{reward.minimum_value};
             = form.input :reward, as: :radio, collection: @rewards
             = form.input :anonymous
             #anonymous_warning.important.hide
@@ -43,5 +38,3 @@
       .clearfix
     .clearfix
 
-= content_for :mouseflow do
-  = render 'layouts/mouseflow'
