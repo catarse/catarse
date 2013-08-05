@@ -1,8 +1,9 @@
 describe("Project", function() {
   var view;
+  var parentView = { router: {route: function(){} } };
 
   beforeEach(function() {
-    view = new App.views.Project({el: $('<div><div id="tab">foo</div><div id="emptyTab"></div></div>')});
+    view = new App.views.Project({ parent: parentView, el: $('<div><div id="tab">foo</div><div id="emptyTab"></div></div>')});
   });
 
   describe("#toggleWarning", function() {
