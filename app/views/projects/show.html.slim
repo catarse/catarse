@@ -117,7 +117,7 @@
             #bio
               p= @project.user.bio
           #city
-            p.backer= t('count_backed_projects', total: @project.user.total_backs)
+            p.backer= t('count_backed_projects', total: @project.user.total_backed_projects)
             p.city
               | #{@project.user.address_city}
         .user_social
