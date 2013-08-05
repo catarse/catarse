@@ -25,6 +25,10 @@ Skull.View = Backbone.View.extend({
     }
   },
 
+  navigate: function(url){
+    window.location.href = url;
+  },
+
   // Create a getter to initilize each view defined in the constructor when needed
   createViewGetters: function(){
     _.each(this.__proto__.constructor.views, function(val, key){
