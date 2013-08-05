@@ -3,19 +3,21 @@ App.views.Project.addChild('ProjectSidebar', _.extend({
 
   events:{
     //"click .show_reward_form": "showRewardForm"
-    "click .show_reward_form": "openModalClick"
+    "click .show_reward_form": "openModalClick",
+    "click #rewards .box.clickable" : "selectReward"
+  },
+
+  selectReward: function(event){
+    var url = this.$(event.currentTarget).data('new_backer_url');
+    this.navigate(url);
+    return false;
   },
 
   activate: function() {
     this.$rewards = this.$('#rewards');
     this.sortableRewards();
-    var that = this;
-
     this.observeRemoteForms();
-
-   $(document).ready(function(){
-      that.reloadRewards();
-    })
+    this.reloadRewards();
   },
 
   reloadRewards: function() {
@@ -42,34 +44,34 @@ App.views.Project.addChild('ProjectSidebar', _.extend({
   sortableRewards: function() {
     if(this.$rewards.data("can_update") == true){
       this.$rewards.sortable({
-          axis: 'y',
-          placeholder: "ui-state-highlight",
-          start: function(e, ui) {
-            return ui.placeholder.height(ui.item.height());
-          },
-          stop: function(e, ui) {
-            return ui.item.effect('highlight', {}, 1000);
-          },
-          update: function(e, ui) {
-            var csrfToken, position;
-            position = ui.item.index();
-            csrfToken = $("meta[name='csrf-token']").attr("content");
-            return $.ajax({
-              type: 'POST',
-              url: ui.item.data('update_url'),
-              dataType: 'json',
-              headers: {
-                'X-CSRF-Token': csrfToken
-              },
-              data: {
-                reward: {
-                  row_order_position: position
-                }
+        axis: 'y',
+        placeholder: "ui-state-highlight",
+        start: function(e, ui) {
+          return ui.placeholder.height(ui.item.height());
+        },
+        stop: function(e, ui) {
+          return ui.item.effect('highlight', {}, 1000);
+        },
+        update: function(e, ui) {
+          var csrfToken, position;
+          position = ui.item.index();
+          csrfToken = $("meta[name='csrf-token']").attr("content");
+          return $.ajax({
+            type: 'POST',
+            url: ui.item.data('update_url'),
+            dataType: 'json',
+            headers: {
+              'X-CSRF-Token': csrfToken
+            },
+            data: {
+              reward: {
+                row_order_position: position
               }
-            });
-          }
-    })    
-  }
+            }
+          });
+        }
+      })    
+    }
   },
 
 

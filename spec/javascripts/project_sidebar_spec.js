@@ -5,6 +5,25 @@ describe("ProjectSidebar", function() {
     view = new App.views.Project.views.ProjectSidebar({el: $('<div></div>')});
   });
 
+  describe("#selectReward", function(){
+    var reward = { data: function(){} };
+    beforeEach(function() {
+      spyOn(view, "$").andReturn(reward);
+      spyOn(reward, "data").andReturn('url');
+      spyOn(view, "navigate");
+      view.selectReward({ currentTarget: 'reward' });
+    });
+
+    it("should get reward and get its url", function() {
+      expect(view.$).wasCalledWith('reward');
+      expect(reward.data).wasCalledWith('new_backer_url');
+    });
+
+    it("should navigate to URL", function() {
+      expect(view.navigate).wasCalledWith('url');
+    });
+  });
+
   describe("#sortableRewards", function() {
     beforeEach(function() {
       spyOn(view.$rewards, "sortable");
