@@ -55,7 +55,7 @@ gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1c
 gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref: '45dc426'
 
 # HTML manipulation and formatting
-gem 'formtastic',   '~> 2.1.1'
+gem 'formtastic',   '~> 2.2.1'
 gem "auto_html",    '= 1.4.2'
 gem 'kaminari'
 
