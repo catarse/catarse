@@ -1,5 +1,6 @@
 describe("ProjectComments", function() {
-  var view, parentView, FB;
+  var view, FB;
+  var parentView = { on: function() {} };
 
   beforeEach(function() {
     FB = {
@@ -8,7 +9,6 @@ describe("ProjectComments", function() {
       }
     };
     window.FB = FB;
-    parentView = new App.views.Project({el: $('<div><div id="tab">foo</div><div id="emptyTab"></div></div>')});
     spyOn(parentView, "on");
     view = new App.views.Project.views.ProjectComments({parent: parentView, el: $('<div><div id="tab">foo</div><div id="emptyTab"></div></div>')});
   });
