@@ -33,19 +33,18 @@ class Projects::BackersController < ApplicationController
 
     @title = t('projects.backers.new.title', name: @project.name)
     @backer = @project.backers.new(user: current_user)
-    empty_reward = Reward.new(id: 0, minimum_value: 0, description: t('projects.backers.new.no_reward'))
+    empty_reward = Reward.new(minimum_value: 0, description: t('projects.backers.new.no_reward'))
     @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
-    @reward = @project.rewards.find params[:reward_id] if params[:reward_id]
-    @reward = nil if @reward and @reward.sold_out?
-    if @reward
-      @backer.reward = @reward
-      @backer.value = "%0.0f" % @reward.minimum_value
+
+    # Select 
+    if params[:reward_id] && (@selected_reward = @project.rewards.find params[:reward_id]) && !@selected_reward.sold_out?
+      @backer.reward = @selected_reward
+      @backer.value = "%0.0f" % @selected_reward.minimum_value
     end
   end
 
   def create
     @title = t('projects.backers.create.title')
-    @backer.reward_id = nil if params[:backer][:reward_id].to_s == '0'
     @backer.user = current_user
     create! do |success,failure|
       failure.html do
