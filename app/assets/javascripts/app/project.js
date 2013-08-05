@@ -10,6 +10,12 @@ App.addChild('Project', _.extend({
   activate: function(){
     this.$warning = this.$('#project_warning_text');
     this.$embed= this.$('#project_embed');
+    this.makeRoute('about');
+    this.makeRoute('updates');
+    this.makeRoute('backers');
+    this.makeRoute('comments');
+    this.makeRoute('edit');
+    this.makeRoute('reports');
   },
 
   toggleWarning: function(){
@@ -21,6 +27,18 @@ App.addChild('Project', _.extend({
     this.loadEmbed();
     this.$embed.slideToggle('slow');
     return false;
+  },
+
+  //@TODO: Remove this as soon as we migrate to turbolinks
+  makeRoute: function(name){
+    var that = this;
+    var link = name + '_link';
+    this.parent.router.route(name, name, function(){
+      var $tab = that.$('nav#project_menu a#' + link);
+      if($tab.length > 0){
+        that.onTabClick({ target: $tab });
+      }
+    });
   },
 
   loadEmbed: function() {
