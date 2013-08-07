@@ -217,6 +217,21 @@ describe User do
     its(:twitter){ should == 'dbiazus' }
   end
 
+  describe "#total_backed_projects" do
+    let(:user) { create(:user) }
+    let(:project) { create(:project) }
+    subject { user.total_backed_projects }
+
+    before do
+      create(:backer, state: 'confirmed', user: user, project: project)
+      create(:backer, state: 'confirmed', user: user, project: project)
+      create(:backer, state: 'confirmed', user: user, project: project)
+      create(:backer, state: 'confirmed', user: user)
+    end
+
+    it { should == 2}
+  end
+
   describe "#credits" do
     before do
       @u = create(:user)
