@@ -31,10 +31,13 @@ Skull.View = Backbone.View.extend({
 
   // Create a getter to initilize each view defined in the constructor when needed
   createViewGetters: function(){
-    _.each(this.__proto__.constructor.views, function(val, key){
+    _.each(Object.getPrototypeOf(this).constructor.views, function(val, key){
       var name = key[0].toLowerCase() + key.substring(1);
-      this.__defineGetter__(name, function(){
-        return this.addView(name, val);
+      Object.defineProperty(this, name, {
+        enumerable: true,
+        get: function(){
+          return this.addView(name, val);
+        }
       });
       // Initialize the view if the el is present in the parent's DOM subtree
       if(this.$(val.el).length > 0) this[name];
