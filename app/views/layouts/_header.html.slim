@@ -20,7 +20,8 @@
         li= link_to t('layouts.header.profile'), current_user
         li
           = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
-          .small (#{current_user.display_credits})
+          .small
+            | (#{current_user.display_credits})
         li.divider
         - if current_user.admin?
           - for menu, path in Adm::BaseController.menu do
