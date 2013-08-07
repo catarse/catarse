@@ -34,6 +34,7 @@ Skull.View = Backbone.View.extend({
     _.each(Object.getPrototypeOf(this).constructor.views, function(val, key){
       var name = key[0].toLowerCase() + key.substring(1);
       Object.defineProperty(this, name, {
+        configurable: true,
         enumerable: true,
         get: function(){
           return this.addView(name, val);
