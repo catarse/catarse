@@ -43,16 +43,16 @@ App.addChild('ReviewForm', {
 
   updateBacker: function(){
     var backer_data = {
-      payer_name: $('#user_full_name').val(),
-      payer_email: $('#user_email').val(),
-      address_street: $('#user_address_street').val(),
-      address_number: $('#user_address_number').val(),
-      address_complement: $('#user_address_complement').val(),
-      address_neighbourhood: $('#user_address_neighbourhood').val(),
-      address_zip_code: $('#user_address_zip_code').val(),
-      address_city: $('#user_address_city').val(),
-      address_state: $('#user_address_state').val(),
-      address_phone_number: $('#user_phone_number').val()
+      payer_name: this.$('#user_full_name').val(),
+      payer_email: this.$('#user_email').val(),
+      address_street: this.$('#user_address_street').val(),
+      address_number: this.$('#user_address_number').val(),
+      address_complement: this.$('#user_address_complement').val(),
+      address_neighbourhood: this.$('#user_address_neighbourhood').val(),
+      address_zip_code: this.$('#user_address_zip_code').val(),
+      address_city: this.$('#user_address_city').val(),
+      address_state: this.$('#user_address_state').val(),
+      address_phone_number: this.$('#user_phone_number').val()
     }
     $.post(this.$el.data('update-info-path'), {
       backer: backer_data
