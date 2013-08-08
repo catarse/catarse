@@ -78,7 +78,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
-                                     END ASC, created_at DESC, id DESC") }
+                                     END ASC, online_date DESC, created_at DESC, id DESC") }
   scope :expiring_for_home, ->(exclude_ids){
     includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order("projects.expires_at, random()").limit(3)
   }
@@ -169,10 +169,8 @@ class Project < ActiveRecord::Base
     not online? and not draft? and not rejected?
   end
 
-  # NOTE: I think that we just can look the expires_at column
-  # the project enter on finished / failed state when expires ;)
   def expired?
-    expires_at && expires_at < Time.now
+    expires_at && expires_at < Time.zone.now
   end
 
   def in_time_to_wait?
