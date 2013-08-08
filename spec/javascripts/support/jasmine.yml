@@ -21,8 +21,8 @@ src_files:
   - assets/best_in_place.js
   - app/assets/javascripts/lib/*.js
   - app/assets/javascripts/app/app.js
-  - app/assets/javascripts/app/catarse.js
   - app/assets/javascripts/app/project.js
+  - app/assets/javascripts/app/review.js
   - app/assets/javascripts/app/updates.js
   - app/assets/javascripts/**/*.js
 
