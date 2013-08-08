@@ -2,7 +2,7 @@ describe("ReviewForm", function() {
   var view;
 
   beforeEach(function() {
-    view = new App.views.Review.views.ReviewForm({ el: $('<form></form>')});
+    view = new App.views.ReviewForm({ el: $('<form></form>')});
   });
 
   describe("#validate", function() {
