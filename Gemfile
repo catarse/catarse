@@ -29,7 +29,7 @@ gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_expr
 #gem 'catarse_paypal_express',           path: '../catarse_paypal_express'
 
 # Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '388b7bc'
+gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '739a40a'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
 
