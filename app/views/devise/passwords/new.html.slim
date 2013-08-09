@@ -18,18 +18,3 @@
 
           .large-10.columns.large-centered
             = f.submit t('login.forgot_password.submit'), class: [:button, :success, 'large-16', 'columns']
-/#page_content
-  .container
-    .devise_content
-      .title
-        h1=t('.title')
-      .bootstrap-form
-        = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :class => 'login_with_email_form'}) do |f|
-          = devise_error_messages!
-          p.input
-            = f.label :email
-            = f.text_field :email
-          p.action
-            .bootstrap-twitter
-              = f.submit t('.submit'), class: 'btn', id: 'user_submit'
-    .clearfix
