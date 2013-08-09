@@ -1,21 +1,42 @@
-= content_for :title do
-  = t('.site_title')
-= content_for :content_header do
-  h1=t('.title')
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
-  = devise_error_messages!
-  p.input
-    = f.label :name
-    = f.text_field :name
-  p.input
-    = f.label :email
-    = f.text_field :email
-  p.input
-    = f.label :password
-    = f.password_field :password
-  p.input
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-  p.action
-    = f.submit t('.submit')
-= render :partial => "devise/shared/links"
+= content_for :title, t('.site_title')
+
+.row
+  .large-2.large-centered.columns
+    .text-center.login-logo= image_tag 'catarse_bootstrap/logo_icon_catarse.png'
+
+.row
+  .large-7.large-centered.columns
+    .login-box
+      h2.text-center= t '.title'
+      hr
+
+      .large-14.large-centered.columns
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render 'devise/shared/alert'
+          p
+            = f.label :name
+            = f.text_field :name, required: true
+
+          p
+            = f.label :email
+            = f.text_field :email, required: true
+
+          p
+            = f.label :password
+            = f.password_field :password, required: true
+
+          p
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, required: true
+
+          .large-10.columns.large-centered
+            = f.submit t('.submit'), class: [:button, :success, 'large-16', 'columns']
+
+      .clearfix
+
+      .large-14.columns.large-centered
+        .separator
+          p
+            | ou
+
+        = link_to t('login.submit_facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
