@@ -16,8 +16,11 @@ pt:
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, projeto, comunidade, open source"
-  
   login:
+    forgot_password: 
+      welcome: 'Redefinir senha'
+      label: 'Insira seu email para mudar a senha'
+      submit: 'Redefinir'
     welcome: "Bem vindo de volta!"
     submit: "Fazer login"
     register: "Cadastre-se!"
