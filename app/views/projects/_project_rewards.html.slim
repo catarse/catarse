@@ -26,10 +26,6 @@
 
 
     = hidden_field_tag 'url', "#{new_project_backer_path(@project)}/?reward_id=#{reward.id}"
-    - if reward.sold_out?
-      span.icon.sold_out
-    - else
-      span.icon.avaliable
     h2= t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
     em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
     .clearfix

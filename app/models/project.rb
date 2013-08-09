@@ -55,13 +55,13 @@ class Project < ActiveRecord::Base
 
   scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
   scope :visible, where("projects.state NOT IN ('draft', 'rejected', 'deleted')")
-  scope :financial, where("((projects.expires_at) > current_timestamp - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
+  scope :financial, where("((projects.expires_at) > (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)
-  scope :expired, where("(projects.expires_at) < current_timestamp")
-  scope :not_expired, where("(projects.expires_at) >= current_timestamp")
-  scope :expiring, not_expired.where("(projects.expires_at) <= (current_timestamp + interval '2 weeks')")
-  scope :not_expiring, not_expired.where("NOT ((projects.expires_at) <= (current_timestamp + interval '2 weeks'))")
-  scope :recent, where("current_timestamp - projects.online_date <= '5 days'::interval")
+  scope :expired, where("(projects.expires_at) < (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))")
+  scope :not_expired, where("(projects.expires_at) >= (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))")
+  scope :expiring, not_expired.where("(projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks')")
+  scope :not_expiring, not_expired.where("NOT ((projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks'))")
+  scope :recent, where("(current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - projects.online_date <= '5 days'::interval")
   scope :successful, where(state: 'successful')
   scope :online, where(state: 'online')
   scope :recommended_for_home, ->{
@@ -151,6 +151,10 @@ class Project < ActiveRecord::Base
 
   def total_backers
     project_total ? project_total.total_backers : 0
+  end
+
+  def total_payment_service_fee
+    project_total ? project_total.total_payment_service_fee : 0.0
   end
 
   def selected_rewards

@@ -9,7 +9,7 @@ class Adm::FinancialsController < Adm::BaseController
   actions :index
 
   def projects
-    @search = apply_scopes(Project).includes(:user).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, (projects.expires_at)::date")
+    @search = apply_scopes(Project).includes(:user).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, (projects.expires_at)::date DESc")
   end
 
   def collection
@@ -22,7 +22,7 @@ class Adm::FinancialsController < Adm::BaseController
       format.csv do
         csv_string = CSV.generate do |csv|
           # header row
-          csv << ["name", "moip", "goal", "reached", "moip_tax", "catarse_fee", "expires_at", "backer_report", "state"]
+          csv << ["name", "moip", "goal", "reached", "moip_tax", "catarse_fee", "repass_value","expires_at", "backer_report", "state"]
           # data rows
           projects.each do |project|
             catarse_fee = ::Configuration[:catarse_fee].to_f * project.pledged
@@ -30,8 +30,9 @@ class Adm::FinancialsController < Adm::BaseController
                     project.user.moip_login,
                     project.display_goal,
                     "#{project.display_pledged} (#{project.progress}%)",
-                    "#{view_context.number_to_currency project.backers.confirmed.sum('payment_service_fee'), unit: 'R$', precision: 2, delimiter: '.'}",
-                    "#{view_context.number_to_currency catarse_fee, unit: 'R$', precision: 0, delimiter: '.' } (#{view_context.number_to_currency project.pledged - catarse_fee, unit: 'R$', precision: 0, delimiter: '.'})",
+                    "#{view_context.number_to_currency project.total_payment_service_fee, unit: 'R$', precision: 2, delimiter: '.'}",
+                    "#{view_context.number_to_currency catarse_fee, unit: 'R$', precision: 2, delimiter: '.' } (#{view_context.number_to_currency project.pledged - catarse_fee, unit: 'R$', precision: 0, delimiter: '.'})",
+                    "#{view_context.number_to_currency project.pledged*0.87, unit: 'R$', precision: 2, delimiter: '.'}",
                      "#{project.display_expires_at} (#{I18n.l(8.weekdays_from(project.expires_at).to_date)})",
                      "#{adm_reports_backer_reports_url(project_id: project.id, format: :csv)}",
                      project.state

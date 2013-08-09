@@ -164,6 +164,10 @@ class User < ActiveRecord::Base
     user_total ? user_total.credits : 0.0
   end
 
+  def total_backed_projects
+    user_total ? user_total.total_backed_projects : 0
+  end
+
   def facebook_id
     auth = authorizations.joins(:oauth_provider).where("oauth_providers.name = 'facebook'").first
     auth.uid if auth
@@ -235,10 +239,10 @@ class User < ActiveRecord::Base
   end
 
   def backs_text
-    if total_backs == 2
+    if total_backed_projects == 2
       I18n.t('user.backs_text.two')
-    elsif total_backs > 1
-      I18n.t('user.backs_text.many', total: (total_backs-1))
+    elsif total_backed_projects > 1
+      I18n.t('user.backs_text.many', total: (total_backed_projects-1))
     else
       I18n.t('user.backs_text.one')
     end
