@@ -65,3 +65,6 @@ en:
     backer_confirmed_after_project_was_closed:
       subject: "New backer confirmed on finished project '%{project_name}' "
       header: "New backer confirmed."
+    temporary_password:
+      subject: "Temporary password for Catarse"
+      header: "Log on to change your password"
