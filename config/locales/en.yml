@@ -13,6 +13,10 @@ en:
     keywords: "catarse, crowdfunding, project, community, open source"
 
   login:
+    forgot_passord:
+      welcome: 'Reset password'
+      label: 'Fill your email to reset your password'
+      submit: 'Reset'
     welcome: "Welcome back!"
     submit: "Sign in"
     remember_me: "Remember me"

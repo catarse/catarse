@@ -12,32 +12,37 @@
 
       .large-14.large-centered.columns
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = render 'devise/shared/alert'
           - if alert
             .alert-box.alert
               .large-16.large-centered.columns
                 h3= t('failure_title')
                 p= alert
-          .large-16.large-centered.columns
 
-          p.hide-label
+          p
             = f.label :email
             = f.text_field :email, class: [:login, :email], placeholder: t('login.placeholder.email'), required: true
 
-          p.hide-label
+          p
             = f.label :password
+            = link_to t('devise.links.forgot_password'), new_password_path(resource_name), class: 'right text-right'
             = f.password_field :password, class: [:login], placeholder: t('login.placeholder.password')
           .text-left
             = f.check_box :remember_me, checked: true
             = f.label :remember_me, t('login.remember_me')
-          .text-right
-            = link_to t('devise.links.forgot_password'), new_password_path(resource_name)
 
           .large-10.columns.large-centered
             = f.submit t('login.submit'), class: [:button, :success, 'large-16', 'columns']
 
+          .clearfix
 
-          = link_to t('login.submit_facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
+      .large-14.columns.large-centered
+        .separator
+          p
+            | ou
 
-    .large-14.large-centered
-      p.text-left
-        = t 'login.no_account_html', link: link_to(t('login.register'), new_user_registration_path)
+        = link_to t('login.submit_facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
+      .clearfix
+      hr
+        p.text-center.register_link
+          = t 'login.no_account_html', link: link_to(t('login.register'), new_user_registration_path)

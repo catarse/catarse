@@ -5,7 +5,7 @@ html
 
 
     = stylesheet_link_tag :catarse
-  body
+  body#catarse_bootstrap[data-namespace=namespace data-controller=controller_name data-action=action_name]
 
     .content= yield
 

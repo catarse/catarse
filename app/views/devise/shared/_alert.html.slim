@@ -1,0 +1,14 @@
+- if alert
+  .alert-box.alert
+    .large-16.large-centered.columns
+      h3= t('failure_title')
+      p= alert
+- elsif notice
+  .alert-box.notice
+    .large-16.large-centered.columns
+      p= notice
+- elsif resource.errors.present?
+  .alert-box.alert
+    .large-16.large-centered.columns
+      h3= t('failure_title')
+      p= resource.errors.full_messages.join

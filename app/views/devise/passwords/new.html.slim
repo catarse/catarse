@@ -1,7 +1,24 @@
-= content_for :title do 
-  = t('.site_title')
+= content_for :title, t('.site_title')
 
-#page_content
+.row
+  .large-2.large-centered.columns
+    .text-center.login-logo= image_tag 'catarse_bootstrap/logo_icon_catarse.png'
+.row
+  .large-7.large-centered.columns
+    .login-box
+      h2.text-center= t 'login.forgot_password.welcome'
+      hr
+
+      .large-14.large-centered.columns
+        = form_for(resource, as: resource_name, url: password_path(resource_name)) do |f|
+          = render 'devise/shared/alert'
+          p.spaced-label
+            = f.label :email, t('login.forgot_password.label')
+            = f.text_field :email, class: [:login, :email], placeholder: t('login.placeholder.email'), required: true
+
+          .large-10.columns.large-centered
+            = f.submit t('login.forgot_password.submit'), class: [:button, :success, 'large-16', 'columns']
+/#page_content
   .container
     .devise_content
       .title
