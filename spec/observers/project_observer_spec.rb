@@ -18,7 +18,8 @@ describe ProjectObserver do
   subject{ backer }
 
   before do
-    Notification.rspec_reset
+    Notification.unstub(:create_notification)
+    Notification.unstub(:create_notification_once)
     new_draft_project
     project_received
     confirm_backer
