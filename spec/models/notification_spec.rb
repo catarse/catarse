@@ -5,7 +5,8 @@ describe Notification do
   let(:notification_type){ create(:notification_type, name: 'confirm_backer') }
 
   before do
-    Notification.rspec_reset
+    Notification.unstub(:create_notification)
+    Notification.unstub(:create_notification_once)
     ActionMailer::Base.deliveries.clear
   end
 
