@@ -1,4 +1,5 @@
 en:
+  failure_title: 'Please, fix the errors bellow:'
   uservoice_gadget:
     user:
       name: 'User'
