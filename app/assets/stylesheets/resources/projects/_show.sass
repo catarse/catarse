@@ -63,35 +63,23 @@
           width: 100%
           float: left
           border-bottom: 1px #ccc dotted
-          padding: 40px 0 10px
+          padding: 10px
           min-height: 67px
-          .flag
-            background: url($images_path+'project_about.png') left top no-repeat
-            width: 10px
-            height: 40px
-            float: left
           .time
             font-family: "Lato"
-            font-weight: bold
             float: left
-            color: white
+            color: $channel_text
             font-size: 14px
-            text-transform: uppercase
-            height: 23px
-            padding: 8px 20px 0 10px
-            background: #EE5192
-            margin-bottom: 25px
-
+            margin: 0 0 20px 0
           h3
             font-family: "Arial"
             font-weight: bold
             color: #444
             font-size: 16px
-            margin-bottom: 20px
-            padding-left: 20px
+            margin-bottom: 11px
           p
             font-family: Arial
-            padding: 5px 0 5px 20px
+            padding: 5px 0 5px 0
             font-size: 14px
             color: #444
             line-height: 21px
@@ -152,10 +140,9 @@
     .main
       +grid(11)
       padding-bottom: 20px
-      .midia
+      .media
         width: 100%
         float: left
-        padding-bottom: 20px
         .social
           padding-top: 10px
           #facebook_share, #facebook_share iframe
@@ -201,28 +188,10 @@
         .text
           width: 100%
           float: left
-          padding-top: 30px
-          margin-top: 10px
           position: relative
-          .flag
-            background: url($images_path+'project_about.png') left top no-repeat
-            width: 10px
-            height: 40px
-            float: left
-          h5
-            font-family: "Lato"
-            font-weight: 700
-            float: left
-            color: white
-            font-size: 14px
-            text-transform: uppercase
-            height: 23px
-            padding: 8px 20px 0 10px
-            background: #EE5192
           p
             line-height: 170%
             margin: 20px 0
-            padding-left: 20px
             padding-right: 20px
             font-size: 14px
             font-family: Arial
@@ -366,16 +335,6 @@
             margin-top: 20px
           .edit_reward
             margin-right: -17px
-          span.icon
-            width: 33px
-            height: 40px
-            margin-left: -46px
-            float: left
-            &.avaliable
-              cursor: pointer
-              background: url($images_path+'reward_icon.png') left top no-repeat
-            &.sold_out
-              background: url($images_path+'icon_soldout.png') left top no-repeat
           h2
             font-family: "Lato"
             font-weight: 700

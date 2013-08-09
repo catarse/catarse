@@ -2,7 +2,7 @@
 - update = @notification.mail_params[:update]
 |#{update.title}
 br
-== @notification.update.comment_html
+== @notification.mail_params[:update_comment]
 br
 |Comentários? Mande ver na página do projeto: #{link_to update.project.name, project_by_slug_url(permalink: update.project.permalink).to_s.force_encoding("UTF-8") }.
 br

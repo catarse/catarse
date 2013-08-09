@@ -113,15 +113,15 @@ pt:
       newsletter: assinar
   sections:
     near:
-      title: 'próximos a mim'
+      title: 'Próximos a mim'
     selection:
-      title: seleção
+      title: 'Seleção'
     expiring:
-      title: "na reta final"
+      title: "Na reta final"
     recents:
-      title: "novos e fresquinhos"
+      title: "Novos e fresquinhos"
     partners:
-      title: parceiros
+      title: 'Parceiros'
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
   activerecord:
     errors:
@@ -528,7 +528,7 @@ pt:
       destroy_confirmation: "Deseja remover esta novidade?"
     rewards:
       reward_title: "Para %{minimum} ou mais"
-      reward_deliver_time: "<b>Previsão de Entrega:</b> %{prevision}"
+      reward_deliver_time: "<b>Estimativa de Entrega:</b> %{prevision}"
       backs_to_confirm:
         one: "1 apoio em prazo de confirmação."
         other: "%{count} apoios em prazo de confirmação."
