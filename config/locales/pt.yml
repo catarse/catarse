@@ -629,7 +629,7 @@ pt:
     new:
       site_title: Cadastre-se
       submit: "Efetuar cadastro"
-      title: "Criar uma conta utilizando o seu endereço de email"
+      title: "Criar uma conta"
   remaining_plural: restantes
   remaining_singular: restante
   remove: remover
