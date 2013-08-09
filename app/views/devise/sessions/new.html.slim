@@ -15,12 +15,12 @@
           = render 'devise/shared/alert'
           p
             = f.label :email
-            = f.text_field :email, class: [:login, :email], placeholder: t('login.placeholder.email'), required: true
+            = f.text_field :email, class: [:login, :email], required: true
 
           p
             = f.label :password
             = link_to t('devise.links.forgot_password'), new_password_path(resource_name), class: 'right text-right'
-            = f.password_field :password, class: [:login], placeholder: t('login.placeholder.password')
+            = f.password_field :password, class: [:login]
           .text-left
             = f.check_box :remember_me, checked: true
             = f.label :remember_me, t('login.remember_me')
