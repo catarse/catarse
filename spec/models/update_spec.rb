@@ -25,7 +25,8 @@ describe Update do
 
   describe "#notify_backers" do
     before do
-      Notification.rspec_reset
+      Notification.unstub(:create_notification)
+      Notification.unstub(:create_notification_once)
       create(:notification_type, name: 'updates')
       @project = create(:project)
       backer = create(:backer, state: 'confirmed', project: @project)
