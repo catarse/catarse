@@ -345,8 +345,8 @@ pt:
     edit:
       label_new_password: "Nova senha"
       submit: "Trocar senha"
-      title: "Definir uma nova senha"
-      site_title: "Definir nova senha"
+      title: "Defina uma nova senha"
+      site_title: "Defina uma nova senha"
       subtitle: "Você solicitou para redefinir sua senha. Preencha sua nova senha abaixo e clique em \"Trocar senha\". Caso você não tenha solicitado esta redefinição de senha, apenas ignore esta página e sua senha permanecerá a mesma."
     email:
       content_html: " <p>Para definir sua nova senha, clique no link abaixo.</p> <p>%{link}</p> <p>Sua senha não vai mudar até você acessar o link acima e definir uma nova senha.</p> "
