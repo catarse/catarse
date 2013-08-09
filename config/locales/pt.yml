@@ -1,4 +1,5 @@
 pt:
+  failure_title: 'Por favor, corrija os seguintes erros:'
   uservoice_gadget:
     user:
       name: 'Usuário'
