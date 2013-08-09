@@ -12,9 +12,9 @@
       .large-14.large-centered.columns
         = form_for(resource, as: resource_name, url: password_path(resource_name)) do |f|
           = render 'devise/shared/alert'
-          p.spaced-label
+          p
             = f.label :email, t('login.forgot_password.label')
-            = f.text_field :email, class: [:login, :email], placeholder: t('login.placeholder.email'), required: true
+            = f.text_field :email, class: [:login, :email], required: true
 
           .large-10.columns.large-centered
             = f.submit t('login.forgot_password.submit'), class: [:button, :success, 'large-16', 'columns']

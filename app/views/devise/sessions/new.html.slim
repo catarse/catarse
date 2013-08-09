@@ -13,12 +13,6 @@
       .large-14.large-centered.columns
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = render 'devise/shared/alert'
-          - if alert
-            .alert-box.alert
-              .large-16.large-centered.columns
-                h3= t('failure_title')
-                p= alert
-
           p
             = f.label :email
             = f.text_field :email, class: [:login, :email], placeholder: t('login.placeholder.email'), required: true
