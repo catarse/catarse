@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let(:user){ create(:user, uid: "bar") }
+  let(:user){ create(:user) }
   let(:unfinished_project){ create(:project, state: 'online') }
   let(:successful_project){ create(:project, state: 'online') }
   let(:failed_project){ create(:project, state: 'online') }
@@ -164,16 +164,13 @@ describe User do
     before{ oauth_provider }
     before{ oauth_provider_fb }
     subject{ created_user }
-    # Provider and uid should be nil because we have transfered them to authorization model
-    its(:provider){ should be_nil }
-    its(:uid){ should be_nil }
     its(:email){ should == auth['info']['email'] }
     its(:name){ should == auth['info']['name'] }
     its(:nickname){ should == auth['info']['nickname'] }
     its(:bio){ should == auth['info']['description'][0..139] }
 
     describe "when user is merging your facebook account" do
-      let(:user) { create(:user, provider: nil, name: 'Test', email: 'test@test.com') }
+      let(:user) { create(:user, name: 'Test', email: 'test@test.com') }
       let(:created_user){ User.create_with_omniauth(auth, user) }
 
       subject { created_user }
@@ -208,7 +205,6 @@ describe User do
   describe ".create" do
     subject do
       User.create! do |u|
-        u.uid = '123'
         u.email = 'diogob@gmail.com'
         u.password = '123456'
         u.twitter = '@dbiazus'
@@ -298,11 +294,6 @@ describe User do
       create(:backer, user: user, project: @p1)
     end
     it{should == [@p1]}
-  end
-
-  describe "#remember_me_hash" do
-    subject{ create(:user, provider: "foo", uid: "bar").remember_me_hash }
-    it{ should == "27fc6690fafccbb0fc0b8f84c6749644" }
   end
 
   describe "#facebook_id" do
