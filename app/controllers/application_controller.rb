@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
     elsif request.method == "GET"
       new_locale = (current_user.locale if current_user) || I18n.default_locale
       begin
-        return redirect_to params.merge(locale: new_locale)
+        return redirect_to params.merge(locale: new_locale, only_path: true)
       rescue ActionController::RoutingError 
         logger.info "Could not redirect with params #{params.inspect} in set_locale"
       end
