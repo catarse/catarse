@@ -1,0 +1,17 @@
+doctype 5
+html
+  head
+    title= content_for(:title)
+
+
+    = stylesheet_link_tag :catarse
+  body#catarse_bootstrap[data-namespace=namespace data-controller=controller_name data-action=action_name]
+    = render 'layouts/catarse_bootstrap_notices' if notice
+
+    .content= yield
+
+
+
+
+  = javascript_include_tag :application
+

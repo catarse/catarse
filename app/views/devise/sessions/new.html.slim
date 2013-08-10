@@ -1,58 +1,42 @@
-= content_for :title do
-  = t('.site_title')
+= content_for :title, t('.site_title')
 
-#page_content
-  .container
-    .form_login.bootstrap-form.new_session[class="#{('actived' unless params[:controller] == 'devise/registrations' || params[:active_register])}"]
-      .content_form
-        h1=t('.login_title')
-        h3=t('.login_subtitle')
-        = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
-          p.input
+.row
+  .large-2.large-centered.columns
+    .text-center.login-logo= image_tag 'catarse_bootstrap/logo_icon_catarse.png'
+
+.row
+  .large-7.large-centered.columns
+    .login-box
+      h2.text-center= t 'login.welcome'
+      hr
+
+      .large-14.large-centered.columns
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = render 'devise/shared/alert'
+          p
             = f.label :email
-            = f.text_field :email
-          p.input
+            = f.text_field :email, class: [:login, :email], required: true
+
+          p
             = f.label :password
-            = f.password_field :password
-          p.input.check
-            = f.check_box :remember_me
-            = f.label :remember_me, t('layouts.login.remember_me')
-          p.action
-            .bootstrap-twitter
-              = f.submit t('.submit'), class: 'btn', id: 'user_submit'
-          p.forgot_link
-            = link_to t('devise.links.forgot_password'), new_password_path(resource_name)
-    .form_login.bootstrap-form.new_registration[class="#{('actived' if params[:controller] == 'devise/registrations' || params[:active_register])}"]
-      .content_form
-        h1=t('.register_title')
-        h3=t('.register_subtitle')
-        - resource.newsletter = true
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
-          = devise_error_messages!
-          p.input
-            = f.label :name
-            = f.text_field :name
-          p.input
-            = f.label :email
-            = f.text_field :email
-          p.input
-            = f.label :password
-            = f.password_field :password, required: true
-          p.input
-            = f.label :password_confirmation
-            = f.password_field :password_confirmation, required: true
-          p.input.check
-            = f.check_box :newsletter
-            = f.label :newsletter, t('users.current_user_fields.newsletter')
-          p.action
-            .bootstrap-twitter
-              = f.submit t('registrations.new.submit'), class: 'btn', id: 'user_submit'
-    .login_with_social
-      .content_form
-        h1=t('.with_facebook')
-        h3=t('.with_facebook_subtitle')
-        = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), :class => 'facebook_start'
-        h1=t('.google_warning_html')
-        h3=t('.google_step_1', link: (link_to t('devise.links.forgot_password'), new_password_path(resource_name))).html_safe
-        h3=t('.google_step_2')
-    .clearfix
+            = link_to t('devise.links.forgot_password'), new_password_path(resource_name), class: 'right text-right'
+            = f.password_field :password, class: [:login]
+          .text-left
+            = f.check_box :remember_me, checked: true
+            = f.label :remember_me, t('login.remember_me')
+
+          .large-10.columns.large-centered
+            = f.submit t('login.submit'), class: [:button, :success, 'large-16', 'columns']
+
+          .clearfix
+
+      .large-14.columns.large-centered
+        .separator
+          p
+            | ou
+
+        = link_to t('login.submit_facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
+      .clearfix
+      hr
+        p.text-center.register_link
+          = t 'login.no_account_html', link: link_to(t('login.register'), new_user_registration_path)
