@@ -73,7 +73,7 @@ describe Projects::BackersController do
   describe "POST create" do
     before do
       request.env['REQUEST_URI'] = "/test_path"
-      post :create, {locale: :pt, project_id: project.id, backer: { value: '20.00', reward_id: '0', anonymous: '0' }}
+      post :create, {locale: :pt, project_id: project.id, backer: { value: '20.00', reward_id: nil, anonymous: '0' }}
     end
 
     context "when no user is logged" do
