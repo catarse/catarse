@@ -59,7 +59,6 @@
                 th
                   a data-sort="coalesce(user_totals.credits,0)" href='#'= t('.credits')
                   span.sort-order
-                th= t('.provider')
             tbody
               - for user in @users do
                 tr id=user.id class=cycle("even", "odd")
@@ -68,7 +67,6 @@
                   td= user.email
                   td= user.user_total ? user.user_total.sum : 0
                   td= user.credits
-                  td= user.provider
       = paginate @users
 
   .clearfix
