@@ -20,9 +20,10 @@ var App = window.App = Skull.View.extend({
   },
 
   flash: function() {
-    setTimeout( function(){ this.$('.flash').slideDown('slow') }, 100)
-    if( ! this.$('.flash a').length) setTimeout( function(){ this.$('.flash').slideUp('slow') }, 16000)
-    $(window).click(function(){ this.$('.flash a').slideUp() })
+    var that = this;
+    setTimeout( function(){ that.$flash.slideDown('slow') }, 100)
+    if( ! this.$('.flash a').length) setTimeout( function(){ that.$flash.slideUp('slow') }, 16000)
+    $(window).click(function(){ that.$('.flash a').slideUp() })
   },
 
   notices: function() {
