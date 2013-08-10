@@ -1,0 +1,43 @@
+html
+  -webkit-font-smoothing: antialiased  
+  font-smoothing: antialiased  
+  background: $default_body_background_color
+
+body
+  background: $default_body_background_color
+  
+a, a:active
+  color: $default_link_active_color
+  text-decoration: none
+  &:hover
+    color: $default_link_hover_color
+    text-decoration: underline
+  &:visited
+    color: $default_link_visited_color
+
+input[type='text'], input[type='password']
+  border: 1px solid $default_input_text_border_color
+  color: $default_input_text_font_color
+  outline: none
+  padding: .8em
+  border-radius: $default_input_text_border_radius
+  width: 100%
+  transition: .2s all
+  &:focus
+    border: 1px solid $default_input_text_focus_color
+
+
+hr
+  border: 0
+  background: $lightsilver
+  height: 1px
+
+
+input[type='checkbox']
+  margin-right: .4em
+
+
+
+.hidden
+  display: none
+

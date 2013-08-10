@@ -1,5 +1,6 @@
 pt:
   sending: 'Enviando...'
+  failure_title: 'Por favor, corrija os seguintes erros:'
   uservoice_gadget:
     user:
       name: 'Usuário'
@@ -16,6 +17,20 @@ pt:
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, financiamento coletivo, projeto, comunidade, open source"
+  login:
+    forgot_password: 
+      welcome: 'Redefinir senha'
+      label: 'Insira seu email para mudar a senha'
+      submit: 'Redefinir'
+    welcome: "Bem vindo de volta!"
+    submit: "Fazer login"
+    register: "Cadastre-se!"
+    no_account_html: "Não tem conta? <strong>%{link}</strong>"
+    remember_me: "Continuar conectado"
+    submit_facebook: "Entre com sua conta do facebook"
+    placeholder:
+      email: "Email"
+      password: "Senha"
 
   backer_report_to_project_owner:
     reward_description: 'Descrição da recompensa'
@@ -330,8 +345,8 @@ pt:
     edit:
       label_new_password: "Nova senha"
       submit: "Trocar senha"
-      title: "Definir uma nova senha"
-      site_title: "Definir nova senha"
+      title: "Defina uma nova senha"
+      site_title: "Defina uma nova senha"
       subtitle: "Você solicitou para redefinir sua senha. Preencha sua nova senha abaixo e clique em \"Trocar senha\". Caso você não tenha solicitado esta redefinição de senha, apenas ignore esta página e sua senha permanecerá a mesma."
     email:
       content_html: " <p>Para definir sua nova senha, clique no link abaixo.</p> <p>%{link}</p> <p>Sua senha não vai mudar até você acessar o link acima e definir uma nova senha.</p> "
@@ -617,7 +632,7 @@ pt:
     new:
       site_title: Cadastre-se
       submit: "Efetuar cadastro"
-      title: "Criar uma conta utilizando o seu endereço de email"
+      title: "Criar uma conta"
   remaining_plural: restantes
   remaining_singular: restante
   remove: remover

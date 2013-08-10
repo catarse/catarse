@@ -1,6 +1,7 @@
 # coding: utf-8
 require 'uservoice_sso'
 class ApplicationController < ActionController::Base
+  layout :use_catarse_boostrap
   protect_from_forgery
 
   rescue_from CanCan::Unauthorized do |exception|
@@ -81,6 +82,10 @@ class ApplicationController < ActionController::Base
         logger.info "Could not redirect with params #{params.inspect} in set_locale"
       end
     end
+  end
+
+  def use_catarse_boostrap
+    devise_controller? ? 'catarse_bootstrap' : 'application'
   end
 
   def redirect_back_or_default(default)

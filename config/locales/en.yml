@@ -1,4 +1,5 @@
 en:
+  failure_title: 'Please, fix the errors bellow:'
   uservoice_gadget:
     user:
       name: 'User'
@@ -10,6 +11,21 @@ en:
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, project, community, open source"
+
+  login:
+    forgot_passord:
+      welcome: 'Reset password'
+      label: 'Fill your email to reset your password'
+      submit: 'Reset'
+    welcome: "Welcome back!"
+    submit: "Sign in"
+    remember_me: "Remember me"
+    submit_facebook: "Sign in using your facebook account"
+    register: "Sign up!"
+    no_account_html: "Doesn't have an account? <strong>%{link}</strong>"      
+    placeholder:
+      email: "Email"
+      password: "Password"
 
   backer_report_to_project_owner:
     reward_description: 'Reward description'

@@ -37,9 +37,9 @@ pt:
         title: 'Confirme seu email e solicite a mudança de senha'
         submit: 'Enviar instruções para alterar minha senha'
       edit:
-        site_title: 'Definir nova senha'
+        site_title: 'Defina uma nova senha'
         label_new_password: 'Digite sua nova senha abaixo'
-        title: 'Definir nova senha'
+        title: 'Defina uma nova senha'
         subtitle: 'Defina uma nova senha para usar seu email e senha quando quiser entrar no Catarse.'
         submit: 'Definir nova senha'
     registrations:

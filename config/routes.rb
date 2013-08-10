@@ -2,7 +2,11 @@ require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
   match '/thank_you' => "static#thank_you"
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+
+  devise_for :users, path: '', 
+    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :register }, 
+    controllers:  { omniauth_callbacks: :omniauth_callbacks, sessions: :sessions, registrations: :registrations }
+
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
 
   filter :locale, exclude: /\/auth\//

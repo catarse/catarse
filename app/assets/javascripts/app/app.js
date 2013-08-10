@@ -15,17 +15,25 @@ var App = window.App = Skull.View.extend({
     this.$dropdown = this.$('.dropdown.user');
     this.$flash = this.$('.flash');
     this.flash();
+    this.notices();
     Backbone.history.start({pushState: false});
+  },
+
+  flash: function() {
+    setTimeout( function(){ this.$('.flash').slideDown('slow') }, 100)
+    if( ! this.$('.flash a').length) setTimeout( function(){ this.$('.flash').slideUp('slow') }, 16000)
+    $(window).click(function(){ this.$('.flash a').slideUp() })
+  },
+
+  notices: function() {
+    var that = this;
+    setTimeout( function(){ this.$('.notice-box').fadeIn('slow') }, 100)
+    if(this.$('.notice-box').length) setTimeout( function(){ that.$('.notice-box').fadeOut('slow') }, 16000)
+    $('.notice-box a.notice-close').on('click', function(){ that.$('.notice-box').fadeOut('slow') })
   },
 
   toggleMenu: function(){
     this.$dropdown.slideToggle('slow');
-  },
-
-  flash: function() {
-    var that = this;
-    setTimeout( function(){ that.$flash.slideDown('slow') }, 100);
-    setTimeout( function(){ that.$flash.slideUp('slow') }, 16000);
   }
 });
 

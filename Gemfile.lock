@@ -501,6 +501,7 @@ DEPENDENCIES
   sass-rails
   schema_associations
   schema_plus
+  selenium-webdriver (~> 2.34.0)
   shoulda
   sidekiq (~> 2.13.0)
   sinatra

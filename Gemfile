@@ -126,6 +126,7 @@ group :test do
   gem 'capybara',   '~> 2.0.2'
   gem 'jasmine'
   gem 'coveralls', require: false
+  gem "selenium-webdriver", "~> 2.34.0"
 end
 
 
