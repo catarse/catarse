@@ -2,7 +2,7 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
 
   initialize: function() {
     this.dropDownOpened = false;
-    _.bindAll(this, "render", "flash", "currentUserDropDown")
+    _.bindAll(this, "render", "notices", "flash", "currentUserDropDown")
     this.render();
   },
 
@@ -39,7 +39,14 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
   flash: function() {
     setTimeout( function(){ this.$('.flash').slideDown('slow') }, 100)
     if( ! this.$('.flash a').length) setTimeout( function(){ this.$('.flash').slideUp('slow') }, 16000)
-    $(window).click(function(){ this.$('.flash').slideUp() })
+    $(window).click(function(){ this.$('.flash a').slideUp() })
+  },
+
+  notices: function() {
+    var that = this;
+    setTimeout( function(){ this.$('.notice-box').fadeIn('slow') }, 100)
+    if(this.$('.notice-box').length) setTimeout( function(){ that.$('.notice-box').fadeOut('slow') }, 16000)
+    $('.notice-box a.notice-close').on('click', function(){ that.$('.notice-box').fadeOut('slow') })
   },
 
   currentUserDropDown: function(e) {
@@ -57,6 +64,7 @@ CATARSE.LayoutsApplicationView = Backbone.View.extend({
 
   render: function(){
     this.flash()
+    this.notices()
   }
 
 })
