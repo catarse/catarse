@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # For heroku
 ruby '1.9.3'
 
-gem 'rails',    '3.2.13'
+gem 'rails',    '3.2.12'
 gem 'sidekiq',  '~> 2.13.0'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
 
@@ -29,7 +29,7 @@ gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_expr
 #gem 'catarse_paypal_express',           path: '../catarse_paypal_express'
 
 # Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '388b7bc'
+gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '739a40a'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
 

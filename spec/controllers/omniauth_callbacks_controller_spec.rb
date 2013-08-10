@@ -88,32 +88,6 @@ describe OmniauthCallbacksController do
         get :facebook
       end
 
-      context "when there is no such user and we do not have an email address" do
-        let(:oauth_data){
-          Hashie::Mash.new({
-            info: {
-              image: "http://graph.facebook.com/547955110/picture?type:, square",
-              name: "Diogo, Biazus",
-              nickname: "diogo.biazus",
-              urls: {
-                Facebook: "http://www.facebook.com/diogo.biazus"
-              },
-              verified: true
-            },
-            provider: "facebook",
-            uid: "547955110"
-          })
-        }
-
-        let(:user){ nil }
-        describe "assigned user" do
-          subject{ assigns(:user) }
-          its(:email){ should be_nil }
-          its(:name){ should == "Diogo, Biazus" }
-        end
-        it{ should render_template 'users/set_email' }
-      end
-
       context "when there is no such user but we retrieve the email from omniauth" do
         let(:user){ nil }
         describe "assigned user" do

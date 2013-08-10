@@ -2,7 +2,8 @@
 require 'spec_helper'
 
 describe ProjectsController do
-  before{ Notification.rspec_reset }
+  before{ Notification.unstub(:create_notification) }
+  before{ Notification.unstub(:create_notification_once) }
   before{ controller.stub(:current_user).and_return(current_user) }
   before{ ::Configuration[:base_url] = 'http://catarse.me' }
   render_views

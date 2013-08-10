@@ -4,6 +4,6 @@
 br
 == @notification.mail_params[:update_comment]
 br
-|Comentários? Mande ver na página do projeto: #{link_to update.project.name, project_by_slug_url(permalink: update.project.permalink).to_s.force_encoding("UTF-8") }.
+|Comentários? Mande ver na página do projeto: #{link_to update.project.name, project_by_slug_url(permalink: update.project.permalink) }.
 br
 |Para entrar em contato com o realizador do projeto envie um email para #{ mail_to( @notification.mail_params[:project_owner_email] ) }.

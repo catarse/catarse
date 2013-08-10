@@ -8,7 +8,8 @@ describe BackerObserver do
   subject{ backer }
 
   before do
-    Notification.rspec_reset
+    Notification.unstub(:create_notification)
+    Notification.unstub(:create_notification_once)
     confirm_backer # It should create the NotificationType before creating the Backer
     project_success
     project_owner_backer_confirmed

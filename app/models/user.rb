@@ -1,11 +1,10 @@
 # coding: utf-8
 
-# uid and provider are deprecated we need to use this data from authorizations ALWAYS!
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :validatable,
     :recoverable, :rememberable, :trackable, :omniauthable
   begin
     # NOTE: Sync normal users on mailchimp
@@ -60,14 +59,6 @@ class User < ActiveRecord::Base
   mount_uploader :uploaded_image, LogoUploader
 
   validates_length_of :bio, maximum: 140
-  validates :email, email: true, uniqueness: true, allow_nil: true, allow_blank: true
-  #validates :name, presence: true, if: :is_devise?
-
-  validates_presence_of     :email, if: :is_devise?
-  validates_uniqueness_of   :email, scope: :provider, if: :is_devise?
-  validates_presence_of     :password, if: :password_required?
-  validates_confirmation_of :password, if: :password_confirmation_required?
-  validates_length_of       :password, within: 6..128, allow_blank: true
 
   schema_associations
   has_many :oauth_providers, through: :authorizations
@@ -138,7 +129,7 @@ class User < ActiveRecord::Base
 
   def has_facebook_authentication?
     oauth = OauthProvider.find_by_name 'facebook'
-    authorizations.where(oauth_provider_id: oauth.id).present?
+    authorizations.where(oauth_provider_id: oauth.id).present? if oauth
   end
 
   def decorator
@@ -248,10 +239,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def remember_me_hash
-    Digest::MD5.new.update("#{self.provider}###{self.uid}").to_s
-  end
-
   def as_json(options={})
 
     json_attributes = {}
@@ -281,10 +268,6 @@ class User < ActiveRecord::Base
 
   end
 
-  def is_devise?
-    self.authorizations.empty?
-  end
-
   def twitter_link
     "http://twitter.com/#{self.twitter}"
   end
@@ -299,12 +282,4 @@ class User < ActiveRecord::Base
     "https://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{::Configuration[:base_url]}/assets/user.png"
   end
 
-  protected
-  def password_confirmation_required?
-    !password.nil?
-  end
-
-  def password_required?
-    is_devise? && (!persisted? || !password.nil? || !password_confirmation.nil?)
-  end
 end
