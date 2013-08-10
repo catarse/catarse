@@ -14,7 +14,7 @@ gem 'best_in_place'
 gem 'state_machine', require: 'state_machine/core'
 
 # paranoid stuff
-gem 'paper_trail', '~> 2.7.1'
+gem 'paper_trail', '~> 2.7.2'
 
 # Database and data related
 gem 'pg'
