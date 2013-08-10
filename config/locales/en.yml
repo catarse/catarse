@@ -27,9 +27,6 @@ en:
       email: "Email"
       password: "Password"
 
-
-
-
   backer_report_to_project_owner:
     reward_description: 'Reward description'
     confirmed_at: 'Payment confirmed at'
@@ -682,8 +679,8 @@ en:
       success: "Successfully logged out. See you!"
     failure:
       error: "There was an error while loggin in. Please try again."
-  site:
-    title: "The first crowdfunding platform from Brazil"
+
+
   static:
     guidelines_backers:
       title: "I want to back a project!"
