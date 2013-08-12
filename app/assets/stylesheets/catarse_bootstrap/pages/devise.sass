@@ -3,12 +3,12 @@
 #catarse_bootstrap[data-controller='registrations']
   .login-box
     background: white
-    padding: .5em 0 1em 0
+    padding: .5em 0 1.7em 0
     margin-top: 1em
     overflow: hidden
     border: 1px solid $lightsilver
     border-radius: 4px 
-  
+
     h2
       margin-top: 1.0em
     hr
@@ -18,12 +18,12 @@
     p.hide-label label
       display: none
 
-    a.right
+    .right, .inline-hint
       font-size: .9em
       color: $raven
 
     .separator
-      border-top: 1px solid #eee
+      border-top: 1px solid $lightsilver
       height: 1px
       margin: 2.1em 0
       text-align: center
@@ -41,6 +41,10 @@
       margin-top: 1.5em
     .register_link
       color: $raven
+      font-size: .9em
   
   .login-logo
     margin: 1em 0 .1em 0
+    transition: 0.4s all
+    &:hover
+      opacity: 0.5

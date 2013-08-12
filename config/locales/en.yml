@@ -17,6 +17,8 @@ en:
       welcome: 'Reset password'
       label: 'Fill your email to reset your password'
       submit: 'Reset'
+    registrations:
+      password_hint: 'Minimum 6 characters'
     welcome: "Welcome back!"
     submit: "Sign in"
     remember_me: "Remember me"
@@ -169,10 +171,11 @@ en:
         email: Email
         full_name: "Full name / Company Name"
         bio: 'Mini Bio'
-        name: Nickname
+        name: Name
         password: Password
         password_confirmation: "Password Confirmation"
         phone_number: "Mobile phone number"
+        newsletter: 'I want receive news about Catarse'
     models:
       backer: Backer
       category: Category

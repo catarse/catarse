@@ -22,12 +22,16 @@ pt:
       welcome: 'Redefinir senha'
       label: 'Insira seu email para mudar a senha'
       submit: 'Redefinir'
-    welcome: "Bem vindo de volta!"
+    registrations:
+      password_hint: 'Minimo 6 caracteres'
+    welcome: "Bem vindo"
     submit: "Fazer login"
-    register: "Cadastre-se!"
+    register: "Cadastre-se"
+    singin: "Faça o login"
     no_account_html: "Não tem conta? <strong>%{link}</strong>"
+    have_account_html: "Já tem cadastro? <strong>%{link}</strong>"
     remember_me: "Continuar conectado"
-    submit_facebook: "Entre com sua conta do facebook"
+    submit_facebook: "Entrar com facebook"
     placeholder:
       email: "Email"
       password: "Senha"
@@ -177,7 +181,8 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: Nickname
+        name: Nome
+        newsletter: 'Quero receber novidades do Catarse'
         id: 'ID'
         password: Senha
         password_confirmation: "Confirmação de senha"
