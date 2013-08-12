@@ -7,6 +7,9 @@ require 'securerandom'
 def find_secure_token
   ::Configuration[:secret_token] = SecureRandom.hex(64) unless ::Configuration[:secret_token]
   ::Configuration[:secret_token]
+rescue
+  # Just to ensure that we can run migrations and create the configurations table
+  nil
 end
 
 Catarse::Application.config.secret_token = find_secure_token 
