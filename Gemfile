@@ -1,40 +1,30 @@
 source 'https://rubygems.org'
 
 # For heroku
-ruby '1.9.3'
+ruby '2.0.0'
 # Papertrail does not work with rails 3.2.12 + ruby 2.0.0
-# https://github.com/airblade/paper_trail/issues/208 
+# https://github.com/airblade/paper_trail/issues/208
 
 # We got some weird bug concerning encoding of AR objects in rails 3.2.13+
-gem 'rails',    '3.2.12'
+gem 'rails',    '4.0.0'
 gem 'sidekiq',  '~> 2.13.0'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
 
 # Turns every field on a editable one
-gem 'best_in_place'
+gem 'best_in_place', github: 'bernat/best_in_place', branch: 'rails-4'
 
 # State machine for attributes on models
 gem 'state_machine', require: 'state_machine/core'
 
 # paranoid stuff
-gem 'paper_trail', '~> 2.7.2'
+gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 
 # Database and data related
 gem 'pg'
 gem 'pg_search'
-gem 'postgres-copy'
-gem 'schema_plus'
+gem 'schema_plus', github: 'lomba/schema_plus', branch: 'rails4'
 gem 'schema_associations'
 gem 'chartkick'
-
-# Payment engine using Paypal
-gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '49cdd22'
-#gem 'catarse_paypal_express',           path: '../catarse_paypal_express'
-
-# Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '739a40a'
-#gem 'catarse_moip',           path: '../catarse_moip'
-
 
 # Decorators
 gem 'draper'
@@ -47,7 +37,7 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook', '1.4.0'
-gem 'devise'
+gem 'devise', '~> 3.0.2'
 gem 'ezcrypto'
 
 # See https://github.com/ryanb/cancan/tree/2.0 for help about this
@@ -69,9 +59,8 @@ gem 'rmagick'
 # Other Tools
 gem 'ranked-model'
 gem 'feedzirra'
-gem 'validation_reflection',      git: 'git://github.com/ncri/validation_reflection.git'
-gem 'inherited_resources',        '1.3.1'
-gem 'has_scope'
+gem 'inherited_resources',        '~> 1.4.1'
+gem 'has_scope', '~> 0.6.0.rc'
 gem 'spectator-validates_email',  require: 'validates_email'
 gem 'video_info', '>= 1.1.1'
 gem 'enumerate_it'
@@ -79,7 +68,7 @@ gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise pay
 
 # Translations
 gem 'http_accept_language'
-gem 'routing-filter'
+gem 'routing-filter', '~> 0.4.0.pre'
 
 # Payment
 gem 'moip', git: 'git://github.com/catarse/moip-ruby.git'
@@ -118,7 +107,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14.0'
 end
 
 group :test do
@@ -133,14 +122,11 @@ group :test do
 end
 
 
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem "compass-rails"
-  gem 'uglifier'
-  gem 'compass-960-plugin'
-end
-
+gem 'sass-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem "compass-rails", github: "milgner/compass-rails", ref: "1749c06f15dc4b058427e7969810457213647fb8"
+gem 'uglifier'
+gem 'compass-960-plugin'
 
 
 # FIXME: Not-anymore-on-development
@@ -149,7 +135,35 @@ gem 'weekdays'
 gem "rack-timeout"
 
 # TODO: Take a look on dependencies. Why not auto_html?
-gem 'rails_autolink', '~> 1.0.7'
+gem 'rails_autolink', '~> 1.1.0'
 
 # TODO: Take a look on dependencies
 gem "RedCloth"
+
+
+#  --- incompatible gems ----
+#gem 'validation_reflection'
+#
+# Payment engine using Paypal
+#gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '49cdd22'
+#gem 'catarse_paypal_express',           path: '../catarse_paypal_express'
+
+# Payment engine using Moip
+#gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '739a40a'
+#gem 'catarse_moip',           path: '../catarse_moip'
+
+#gem 'postgres-copy' # need upgrade for rails 4
+
+
+# Rails 4 upgrade gems
+gem 'rails4_upgrade'
+
+gem 'actionpack-action_caching', '~>1.0.0'
+gem 'actionpack-page_caching', '~>1.0.0'
+gem 'actionpack-xml_parser', '~>1.0.0'
+gem 'actionview-encoded_mail_to', '~>1.0.4'
+gem 'activerecord-session_store', '~>0.0.1'
+gem 'activeresource', '~>4.0.0.beta1'
+#gem 'protected_attributes', '~>1.0.1'
+gem 'rails-observers', '~>0.1.1'
+gem 'rails-perftest', '~>0.0.2'
