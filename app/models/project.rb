@@ -98,7 +98,7 @@ class Project < ActiveRecord::Base
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days, less_than_or_equal_to: 60
   validates_uniqueness_of :permalink, allow_blank: true, allow_nil: true, case_sensitive: false
-  validates_format_of :permalink, with: /^(\w|-)*$/, allow_blank: true, allow_nil: true
+  validates_format_of :permalink, with: /^(\w|-)*$/, allow_blank: true, allow_nil: true, multiline: true
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
