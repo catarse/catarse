@@ -22,12 +22,12 @@ pt:
       welcome: 'Redefinir senha'
       label: 'Insira seu email para mudar a senha'
       submit: 'Redefinir'
-    welcome: "Bem vindo de volta!"
+    welcome: "Bem vindo"
     submit: "Fazer login"
-    register: "Cadastre-se!"
+    register: "Cadastre-se"
     no_account_html: "Não tem conta? <strong>%{link}</strong>"
     remember_me: "Continuar conectado"
-    submit_facebook: "Entre com sua conta do facebook"
+    submit_facebook: "Entrar com facebook"
     placeholder:
       email: "Email"
       password: "Senha"

@@ -2,12 +2,16 @@
 
 .row
   .large-2.large-centered.columns
-    .text-center.login-logo= image_tag 'catarse_bootstrap/logo_icon_catarse.png'
+    .text-center.login-logo
+      = link_to root_path do
+        = image_tag 'catarse_bootstrap/logo_icon_catarse.png'
 
 .row
   .large-7.large-centered.columns
     .login-box
       h2.text-center= t 'login.welcome'
+      p.text-center.register_link
+        = t 'login.no_account_html', link: link_to(t('login.register'), new_user_registration_path)
       hr
 
       .large-14.large-centered.columns
@@ -37,6 +41,3 @@
 
         = link_to t('login.submit_facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
       .clearfix
-      hr
-        p.text-center.register_link
-          = t 'login.no_account_html', link: link_to(t('login.register'), new_user_registration_path)
