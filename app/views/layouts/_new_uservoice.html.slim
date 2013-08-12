@@ -1,0 +1,20 @@
+- if current_user
+  .uservoice_sso data-token="#{display_uservoice_sso}"
+javascript:
+  (function(){
+    var uv=document.createElement('script');
+    uv.type='text/javascript';
+    uv.async=true;
+    uv.src='//widget.uservoice.com/#{::Configuration[:uservoice_key]}.js';
+    var s=document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(uv,s)
+  })()
+
+  UserVoice = window.UserVoice || [];
+
+  if($('.uservoice_sso').length > 0) {
+    UserVoice.push(['setSSO', $('.uservoice_sso').data('token')]);
+  }
+
+  UserVoice.push(['addTrigger', {}]);
+
