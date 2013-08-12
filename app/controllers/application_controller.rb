@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   end
 
   def display_uservoice_sso
-    if current_user
+    if current_user && ::Configuration[:uservoice_subdomain] && ::Configuration[:uservoice_sso_key]
       Uservoice::Token.generate({
         guid: current_user.id, email: current_user.email, display_name: current_user.display_name,
         url: user_url(current_user), avatar_url: current_user.display_image
@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
     elsif request.method == "GET"
       new_locale = (current_user.locale if current_user) || I18n.default_locale
       begin
-        return redirect_to params.merge(locale: new_locale)
+        return redirect_to params.merge(locale: new_locale, only_path: true)
       rescue ActionController::RoutingError 
         logger.info "Could not redirect with params #{params.inspect} in set_locale"
       end
