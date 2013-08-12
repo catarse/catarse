@@ -21,3 +21,4 @@ db/structure.sql
 Cookbooks
 .vagrant
 .project
+.secret
