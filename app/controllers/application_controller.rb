@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   end
 
   def display_uservoice_sso
-    if current_user
+    if current_user and ::Configuration[:uservoice_subdomain] and ::Configuration[:uservoice_sso_key]
       Uservoice::Token.generate({
         guid: current_user.id, email: current_user.email, display_name: current_user.display_name,
         url: user_url(current_user), avatar_url: current_user.display_image
