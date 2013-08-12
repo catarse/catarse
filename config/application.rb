@@ -28,7 +28,7 @@ module Catarse
       g.test_framework :rspec, fixture: false, views: false
     end
     config.active_record.observers = [
-      :backer_observer, :user_observer, :notification_observer, 
+      :backer_observer, :user_observer, :notification_observer,
       :update_observer, :project_observer, :payment_notification_observer
     ]
 
@@ -40,5 +40,10 @@ module Catarse
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+
+    # TODO: remove
+    config.active_record.whitelist_attributes = false
+
   end
 end
