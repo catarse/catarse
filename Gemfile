@@ -115,7 +115,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'factory_girl_rails'
-  gem 'capybara',   '~> 2.0.2'
+  gem 'capybara',   '~> 2.1.0'
   gem 'jasmine'
   gem 'coveralls', require: false
   gem "selenium-webdriver", "~> 2.34.0"
@@ -158,12 +158,12 @@ gem "RedCloth"
 # Rails 4 upgrade gems
 gem 'rails4_upgrade'
 
-gem 'actionpack-action_caching', '~>1.0.0'
-gem 'actionpack-page_caching', '~>1.0.0'
+#gem 'actionpack-action_caching', '~>1.0.0'
+#gem 'actionpack-page_caching', '~>1.0.0'
 gem 'actionpack-xml_parser', '~>1.0.0'
-gem 'actionview-encoded_mail_to', '~>1.0.4'
-gem 'activerecord-session_store', '~>0.0.1'
-gem 'activeresource', '~>4.0.0.beta1'
+#gem 'actionview-encoded_mail_to', '~>1.0.4'
+#gem 'activerecord-session_store', '~>0.0.1'
+#gem 'activeresource', '~>4.0.0.beta1'
 gem 'protected_attributes', '~>1.0.1'
 gem 'rails-observers', '~>0.1.1'
-gem 'rails-perftest', '~>0.0.2'
+#gem 'rails-perftest', '~>0.0.2'
