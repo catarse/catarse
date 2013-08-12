@@ -5,14 +5,8 @@ require 'securerandom'
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
 def find_secure_token
-  token_file = Rails.root.join('.secret')
-  if File.exist? token_file
-    File.read(token_file).chomp
-  else
-    token = SecureRandom.hex(64)
-    File.write(token_file, token)
-    token
-  end
+  ::Configuration[:secret_token] = SecureRandom.hex(64) unless ::Configuration[:secret_token]
+  ::Configuration[:secret_token]
 end
 
 Catarse::Application.config.secret_token = find_secure_token 

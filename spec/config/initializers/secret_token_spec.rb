@@ -1,24 +1,19 @@
 require 'spec_helper'
 require 'securerandom'
 
-describe 'Secret Token' do
+describe 'find_secure_token' do
+  subject{ find_secure_token }
 
-  context 'show secret token' do
-    it do     
-      Mobilexpert::Application.config.secret_token.should eql(File.read(Rails.root.join('.secret')))
-    end
+  it "should have been configured in initializer" do
+    expect(Catarse::Application.config.secret_token).to_not be_nil 
   end
 
-  context 'with secret file created' do
-    it { find_secure_token.should eql(File.read(Rails.root.join('.secret')).chomp) }
-  end
-
-  context 'without file created' do
-    it do
-      file = Rails.root.join('.secret')
-      file.delete if File.exist? file
-      find_secure_token.should eql(File.read(file).chomp)
+  context 'when database does not contain secret_token in configurations' do
+    before do
+      ::Configuration[:secret_token] = nil
     end
+    it{ should_not be_nil }
+    it{ should == ::Configuration[:secret_token] }
   end
 
 end
