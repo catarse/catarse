@@ -66,7 +66,8 @@ class Backer < ActiveRecord::Base
     })
   }
 
-  attr_protected :confirmed, :state
+  # TODO:
+  #attr_protected :confirmed, :state
 
   def self.between_values(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?

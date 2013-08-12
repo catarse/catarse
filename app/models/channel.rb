@@ -1,5 +1,6 @@
 class Channel < ActiveRecord::Base
-  attr_accessible :description, :name, :permalink
+  #TODO:
+  #attr_accessible :description, :name, :permalink
   schema_associations
 
   validates_presence_of :name, :description, :permalink
@@ -16,7 +17,7 @@ class Channel < ActiveRecord::Base
 
   # Links to channels should be their permalink
   def to_param; self.permalink end
-  
+
 
   # Using decorators
   def decorator

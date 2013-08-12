@@ -1,3 +1,4 @@
 class NotificationType < ActiveRecord::Base
-  attr_accessible :name
+  #TODO:
+  #attr_accessible :name
 end
