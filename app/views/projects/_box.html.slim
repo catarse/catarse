@@ -7,7 +7,7 @@
           = image_tag "successful.#{I18n.locale}.png"
         - elsif project.waiting_funds?
           = image_tag "waiting_confirmation.#{I18n.locale}.png"
-        - elsif project.failed?
+        - else
           = image_tag "not_successful.#{I18n.locale}.png"
   .box
     p.black_box= project.category
