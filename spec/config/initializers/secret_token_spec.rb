@@ -5,7 +5,7 @@ describe 'Secret Token' do
 
   context 'show secret token' do
     it do     
-      Mobilexpert::Application.config.secret_token.should eql(File.read(Rails.root.join('.secret')))
+      Catarse::Application.config.secret_token.should eql(File.read(Rails.root.join('.secret')))
     end
   end
 
