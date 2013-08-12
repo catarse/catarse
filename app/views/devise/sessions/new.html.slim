@@ -1,10 +1,6 @@
 = content_for :title, t('.site_title')
 
-.row
-  .large-2.large-centered.columns
-    .text-center.login-logo
-      = link_to root_path do
-        = image_tag 'catarse_bootstrap/logo_icon_catarse.png'
+= render 'devise/shared/header'
 
 .row
   .large-7.large-centered.columns

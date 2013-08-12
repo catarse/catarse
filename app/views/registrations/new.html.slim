@@ -1,13 +1,13 @@
 = content_for :title, t('.site_title')
 
-.row
-  .large-2.large-centered.columns
-    .text-center.login-logo= image_tag 'catarse_bootstrap/logo_icon_catarse.png'
+= render 'devise/shared/header'
 
 .row
   .large-7.large-centered.columns
     .login-box
-      h2.text-center= t '.title'
+      h2.text-center= t 'login.welcome'
+      p.text-center.register_link
+        = t 'login.have_account_html', link: link_to(t('login.singin'), new_user_session_path)
       hr
 
       .large-14.large-centered.columns
@@ -23,11 +23,17 @@
 
           p
             = f.label :password
+            span.right.text-right.inline-hint
+              = t('login.registrations.password_hint')
             = f.password_field :password, required: true
 
           p
             = f.label :password_confirmation
             = f.password_field :password_confirmation, required: true
+
+          .text-left
+            = f.check_box :newsletter, checked: true
+            = f.label :newsletter
 
           .large-10.columns.large-centered
             = f.submit t('.submit'), class: [:button, :success, 'large-16', 'columns']
