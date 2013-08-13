@@ -28,11 +28,11 @@ gem 'schema_associations'
 gem 'chartkick'
 
 # Payment engine using Paypal
-gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '49cdd22'
+gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '8eaf6ca'
 #gem 'catarse_paypal_express',           path: '../catarse_paypal_express'
 
 # Payment engine using Moip
-gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '739a40a'
+gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '80ebdf9'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
 
