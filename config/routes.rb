@@ -1,6 +1,9 @@
 require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
+  # Root path
+  root to: 'projects#index'
+
   match '/thank_you' => "static#thank_you"
 
   devise_for :users, path: '', 
@@ -153,8 +156,5 @@ Catarse::Application.routes.draw do
 
   match "/mudancadelogin" => "users#set_email", as: :set_email_users
   match "/:permalink" => "projects#show", as: :project_by_slug
-
-  # Root path
-  root to: 'projects#index'
 
 end
