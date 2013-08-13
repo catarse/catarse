@@ -59,6 +59,14 @@ GIT
   specs:
     cancan (2.0.0.alpha)
 
+GIT
+  remote: git://github.com/tovodeverett/schema_associations.git
+  revision: 99088acf3b4cc8e2a1216481b7a45620186f36a8
+  branch: rails4
+  specs:
+    schema_associations (1.1.0)
+      schema_plus
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -359,8 +367,6 @@ GEM
       sprockets-rails (~> 2.0.0)
     sax-machine (0.1.0)
       nokogiri (> 0.0.0)
-    schema_associations (1.1.0)
-      schema_plus
     selenium-webdriver (2.34.0)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
@@ -499,7 +505,7 @@ DEPENDENCIES
   routing-filter (~> 0.4.0.pre)
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.0)
-  schema_associations
+  schema_associations!
   schema_plus!
   selenium-webdriver (~> 2.34.0)
   shoulda
