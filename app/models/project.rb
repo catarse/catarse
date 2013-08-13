@@ -56,7 +56,7 @@ class Project < ActiveRecord::Base
   scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
   scope :visible, -> { where("projects.state NOT IN ('draft', 'rejected', 'deleted')") }
   scope :financial, -> { where("((projects.expires_at) > (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))") }
-  scope :recommended, -> { where(recommended: true) }
+  scope :recommended, ->() { where(recommended: true) }
   scope :expired, -> { where("(projects.expires_at) < (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))") }
   scope :not_expired, -> { where("(projects.expires_at) >= (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))") }
   scope :expiring, -> { not_expired.where("(projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks')") }
@@ -98,7 +98,7 @@ class Project < ActiveRecord::Base
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days, less_than_or_equal_to: 60
   validates_uniqueness_of :permalink, allow_blank: true, allow_nil: true, case_sensitive: false
-  validates_format_of :permalink, with: /^(\w|-)*$/, allow_blank: true, allow_nil: true, multiline: true
+  validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true, allow_nil: true
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
