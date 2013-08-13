@@ -13,7 +13,9 @@ class ProjectsController < ApplicationController
     index! do |format|
       format.html do
         if request.xhr?
-          @projects = apply_scopes(Project).visible.order_for_search.includes(:project_total, :user, :category).page(params[:page]).per(6)
+          @projects = apply_scopes(Project).visible.order_for_search.page(params[:page]).per(6)
+          # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
+          # .includes(:project_total, :user, :category)
           return render partial: 'project', collection: @projects, layout: false
         else
 
@@ -73,7 +75,9 @@ class ProjectsController < ApplicationController
 
       show!{
         @title = @project.name
-        @rewards = @project.rewards.includes(:project).rank(:row_order)
+        @rewards = @project.rewards.rank(:row_order)
+          # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
+        #.includes(:project)
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC")
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
         #TODO find a way to make accessible_by work here

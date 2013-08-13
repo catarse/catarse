@@ -65,7 +65,8 @@ class Project < ActiveRecord::Base
   scope :successful, -> { where(state: 'successful') }
   scope :online, -> { where(state: 'online') }
   scope :recommended_for_home, ->{
-    includes(:user, :category, :project_total).
+    # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
+    #includes(:user, :category, :project_total).
     recommended.
     visible.
     not_expired.
@@ -80,10 +81,14 @@ class Project < ActiveRecord::Base
                                      WHEN 'failed' THEN 4
                                      END ASC, online_date DESC, created_at DESC, id DESC") }
   scope :expiring_for_home, ->(exclude_ids){
-    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order("projects.expires_at, random()").limit(3)
+    # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
+    #includes(:user, :category, :project_total).
+    where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order("projects.expires_at, random()").limit(3)
   }
   scope :recent_for_home, ->(exclude_ids){
-    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('random()').limit(3)
+    # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
+    #includes(:user, :category, :project_total).
+    where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('random()').limit(3)
   }
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
