@@ -48,12 +48,21 @@ RSpec.configure do |config|
   config.after(:each) do
     Warden.test_reset! 
     DatabaseCleaner.clean
-    
+
+  end
+
+  config.before(:each, type: :controller) do
+    [Projects::BackersController, Users::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController].each do |c|
+      c.any_instance.stub(:render_facebook_sdk)
+      c.any_instance.stub(:render_facebook_like)
+      c.any_instance.stub(:render_twitter)
+      c.any_instance.stub(:display_uservoice_sso)
+    end
   end
 
   config.before(:each) do
     CatarseMailchimp::API.stub(:subscribe).and_return(true)
-    CatarseMailchimp::API.stub(:unsubscribe).and_return(true)    
+    CatarseMailchimp::API.stub(:unsubscribe).and_return(true)
     PaperTrail.controller_info = {}
     PaperTrail.whodunnit = nil
     DatabaseCleaner.start
@@ -67,21 +76,10 @@ RSpec.configure do |config|
     Notification.stub(:create_notification_once)
     Calendar.any_instance.stub(:fetch_events_from)
     Blog.stub(:fetch_last_posts).and_return([])
-    [Projects::BackersController, Users::BackersController, UsersController, UnsubscribesController, ProjectsController, ExploreController].each do |c|
-      c.any_instance.stub(:render_facebook_sdk)
-      c.any_instance.stub(:render_facebook_like)
-      c.any_instance.stub(:render_twitter)
-      c.any_instance.stub(:display_uservoice_sso)
-    end
     DatabaseCleaner.clean
     RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
     Configuration[:base_domain] = 'localhost'
     ::Configuration['email_contact'] = 'foo@bar.com'
-  end
-
-  def mock_tumblr method=:two
-    require "#{Rails.root}/spec/fixtures/tumblr_data" # just a fixture
-    Tumblr::Post.stub(:all).and_return(TumblrData.send(method))
   end
 end
 
