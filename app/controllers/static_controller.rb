@@ -18,10 +18,12 @@ class StaticController < ApplicationController
 
   def sitemap
     # TODO: update this sitemap to use new homepage logic
-    @home_page    ||= Project.includes(:user, :category).visible.limit(6)
-    @expiring     ||= Project.includes(:user, :category).visible.expiring.not_expired.order("(projects.expires_at), created_at DESC").limit(3)
-    @recent       ||= Project.includes(:user, :category).visible.not_expiring.not_expired.where("projects.user_id <> 7329").order('created_at DESC').limit(3)
-    @successful   ||= Project.includes(:user, :category).visible.successful.order("(projects.expires_at) DESC").limit(3)
+    # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
+    # includes(:user, :category)
+    @home_page    ||= Project.visible.limit(6)
+    @expiring     ||= Project.visible.expiring.not_expired.order("(projects.expires_at), created_at DESC").limit(3)
+    @recent       ||= Project.visible.not_expiring.not_expired.where("projects.user_id <> 7329").order('created_at DESC').limit(3)
+    @successful   ||= Project.visible.successful.order("(projects.expires_at) DESC").limit(3)
     return render 'sitemap'
   end
 
