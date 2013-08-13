@@ -32,7 +32,7 @@
   { pt: 'Filmes Documentários', en: 'Documentary Films' },
   { pt: 'Filmes Universitários', en: 'Experimental Films' }
 ].each do |name|
-   category = Category.find_or_initialize_by_name_pt name[:pt]
+   category = Category.find_or_initialize_by(name_pt: name[:pt])
    category.update_attributes({
      name_en: name[:en]
    })
@@ -43,10 +43,10 @@
   'backer_project_unsuccessful','project_received', 'project_received_channel', 'updates','project_unsuccessful',
   'project_visible','processing_payment','new_draft_project', 'new_draft_channel', 'project_rejected',
   'pending_backer_project_unsuccessful', 'project_owner_backer_confirmed', 'adm_project_deadline',
-  'project_in_wainting_funds', 'credits_warning', 'backer_confirmed_after_project_was_closed', 
+  'project_in_wainting_funds', 'credits_warning', 'backer_confirmed_after_project_was_closed',
   'backer_canceled_after_confirmed', 'temporary_password'
 ].each do |name|
-  NotificationType.find_or_create_by_name name
+  NotificationType.find_or_create_by(name: name)
 end
 
 {
@@ -69,23 +69,21 @@ end
   uservoice_secret_gadget: 'change_this',
   uservoice_key: 'uservoice_key'
 }.each do |name, value|
-   conf = Configuration.find_or_initialize_by_name name
+   conf = Configuration.find_or_initialize_by(name: name)
    conf.update_attributes({
      value: value
    })
 end
 
 
-Channel.find_or_create_by_name!(
-  name: "Channel name",
-  permalink: "sample-permalink",
-  description: "Lorem Ipsum"
-)
+Channel.find_or_create_by!(name: "Channel name") do |c|
+  c.permalink = "sample-permalink"
+  c.description = "Lorem Ipsum"
+end
 
 
-OauthProvider.find_or_create_by_name!(
-  name: 'facebook',
-  key: 'your_facebook_app_key',
-  secret: 'your_facebook_app_secret',
-  path: 'facebook'
-)
+OauthProvider.find_or_create_by!(name: 'facebook') do |o|
+  o.key = 'your_facebook_app_key'
+  o.secret = 'your_facebook_app_secret'
+  o.path = 'facebook'
+end
