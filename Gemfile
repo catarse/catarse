@@ -23,7 +23,6 @@ gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 gem 'pg'
 gem 'pg_search'
 gem 'schema_plus', github: 'lomba/schema_plus', branch: 'rails4'
-gem 'schema_associations'
 gem 'chartkick'
 
 # Decorators
@@ -141,7 +140,10 @@ gem 'rails_autolink', '~> 1.1.0'
 gem "RedCloth"
 
 
-#  --- incompatible gems ----
+#  TODO: --- incompatible gems ----
+
+gem 'schema_associations', github: 'tovodeverett/schema_associations', branch: 'rails4' # TODO: giving problems.. no PR for rails 4 or anything else
+
 #gem 'validation_reflection'
 #
 # Payment engine using Paypal
@@ -155,7 +157,7 @@ gem "RedCloth"
 #gem 'postgres-copy' # need upgrade for rails 4
 
 
-# Rails 4 upgrade gems
+# TODO: Rails 4 upgrade gems
 gem 'rails4_upgrade'
 
 #gem 'actionpack-action_caching', '~>1.0.0'
