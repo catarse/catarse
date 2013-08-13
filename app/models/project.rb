@@ -54,16 +54,16 @@ class Project < ActiveRecord::Base
   }
 
   scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
-  scope :visible, where("projects.state NOT IN ('draft', 'rejected', 'deleted')")
-  scope :financial, where("((projects.expires_at) > (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
-  scope :recommended, where(recommended: true)
-  scope :expired, where("(projects.expires_at) < (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))")
-  scope :not_expired, where("(projects.expires_at) >= (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))")
-  scope :expiring, not_expired.where("(projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks')")
-  scope :not_expiring, not_expired.where("NOT ((projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks'))")
-  scope :recent, where("(current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - projects.online_date <= '5 days'::interval")
-  scope :successful, where(state: 'successful')
-  scope :online, where(state: 'online')
+  scope :visible, -> { where("projects.state NOT IN ('draft', 'rejected', 'deleted')") }
+  scope :financial, -> { where("((projects.expires_at) > (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))") }
+  scope :recommended, -> { where(recommended: true) }
+  scope :expired, -> { where("(projects.expires_at) < (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))") }
+  scope :not_expired, -> { where("(projects.expires_at) >= (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))") }
+  scope :expiring, -> { not_expired.where("(projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks')") }
+  scope :not_expiring, -> { not_expired.where("NOT ((projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks'))") }
+  scope :recent, -> { where("(current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - projects.online_date <= '5 days'::interval") }
+  scope :successful, -> { where(state: 'successful') }
+  scope :online, -> { where(state: 'online') }
   scope :recommended_for_home, ->{
     includes(:user, :category, :project_total).
     recommended.
@@ -241,11 +241,11 @@ class Project < ActiveRecord::Base
   end
 
   def pending_backers_reached_the_goal?
-    (pledged + backers.in_time_to_confirm.sum(&:value)) >= goal
+    (pledged + backers.in_time_to_confirm.to_a.sum(&:value)) >= goal
   end
 
   def can_go_to_second_chance?
-    ((pledged + backers.in_time_to_confirm.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
+    ((pledged + backers.in_time_to_confirm.to_a.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
   end
 
   def permalink_cant_be_route

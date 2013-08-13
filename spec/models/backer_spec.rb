@@ -279,7 +279,7 @@ describe Backer do
   end
 
   describe ".can_refund" do
-    subject{ Backer.can_refund.all }
+    subject{ Backer.can_refund.load }
     before do
       valid_refund
       sucessful_project_backer
