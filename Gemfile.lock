@@ -35,13 +35,15 @@ GIT
       nokogiri (~> 1.5.0)
 
 GIT
-  remote: git://github.com/lomba/schema_plus.git
-  revision: f948dee946cb8dd0e265d2467d697ab02cd76863
+  remote: git://github.com/josemarluedke/postgres-copy.git
+  revision: 41afec70f5c6b2431f045388b14a80d194329a20
   branch: rails4
   specs:
-    schema_plus (1.1.2)
-      rails (>= 3.2)
-      valuable
+    postgres-copy (0.6.0)
+      activerecord (>= 3.0.0)
+      pg
+      rails (>= 3.0.0)
+      responders
 
 GIT
   remote: git://github.com/milgner/compass-rails.git
@@ -226,7 +228,7 @@ GEM
       crack (= 0.1.8)
     httpauth (0.2.0)
     httpclient (2.3.4.1)
-    i18n (0.6.4)
+    i18n (0.6.5)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
@@ -367,6 +369,9 @@ GEM
       sprockets-rails (~> 2.0.0)
     sax-machine (0.1.0)
       nokogiri (> 0.0.0)
+    schema_plus (1.2.0)
+      rails (>= 3.2)
+      valuable
     selenium-webdriver (2.34.0)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
@@ -493,6 +498,7 @@ DEPENDENCIES
   paper_trail!
   pg
   pg_search
+  postgres-copy!
   protected_attributes (~> 1.0.1)
   rack-mini-profiler
   rack-timeout
@@ -506,7 +512,7 @@ DEPENDENCIES
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.0)
   schema_associations!
-  schema_plus!
+  schema_plus (~> 1.2.0)
   selenium-webdriver (~> 2.34.0)
   shoulda
   sidekiq (~> 2.13.0)
