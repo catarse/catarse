@@ -24,7 +24,7 @@ describe "Projects" do
     end
 
     it "should show recent projects" do
-      recent = all(".recents_projects.list .projects .curated_project")
+      recent = all(".recents_projects.list .project")
       recent.should have(1).items
     end
   end
@@ -37,7 +37,7 @@ describe "Projects" do
       sleep 3
     end
     it "should show recommended projects" do
-      recommended = all(".collection_list .project")
+      recommended = all(".results .project")
       recommended.should have(1).items
     end
   end
@@ -50,7 +50,7 @@ describe "Projects" do
       sleep 4
     end
     it "should show recommended projects" do
-      recommended = all(".collection_list .project")
+      recommended = all(".results .project")
       recommended.should have(1).items
     end
   end
