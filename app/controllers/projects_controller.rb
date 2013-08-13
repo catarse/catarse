@@ -73,7 +73,7 @@ class ProjectsController < ApplicationController
 
       show!{
         @title = @project.name
-        @rewards = @project.rewards.includes(:project).rank(:row_order).all
+        @rewards = @project.rewards.includes(:project).rank(:row_order)
         @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC").all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
         #TODO find a way to make accessible_by work here
