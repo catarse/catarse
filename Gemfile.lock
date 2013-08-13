@@ -497,7 +497,7 @@ DEPENDENCIES
   rack-mini-profiler
   rack-timeout
   rails (= 4.0.0)
-  rails-observers (~> 0.1.1)
+  rails-observers (~> 0.1.2)
   rails4_upgrade
   rails_autolink (~> 1.1.0)
   ranked-model
