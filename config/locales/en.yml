@@ -18,13 +18,15 @@ en:
       label: 'Fill your email to reset your password'
       submit: 'Reset'
     registrations:
+      welcome: 'Sign up'
       password_hint: 'Minimum 6 characters'
-    welcome: "Welcome back!"
-    submit: "Sign in"
+    welcome: "Log in"
+    submit: "Log me in"
+    singin: "Log in"
     remember_me: "Remember me"
-    submit_facebook: "Sign in using your facebook account"
-    register: "Sign up!"
-    no_account_html: "Doesn't have an account? <strong>%{link}</strong>"      
+    submit_facebook: "Log in with Facebook"
+    register: "Sign up"
+    no_account_html: "Need an account? <strong>%{link}</strong>"      
     placeholder:
       email: "Email"
       password: "Password"
@@ -260,7 +262,7 @@ en:
       unauthenticated: "You need to sign up or sign in to continue."
       unconfirmed: "You have to confirm your account before continuing."
     links:
-      forgot_password: "Forgot your password?"
+      forgot_password: "I forgot my password"
       sign_in: "Sign in"
       sign_up: "Sign up"
     mailer:

@@ -23,11 +23,12 @@ pt:
       label: 'Insira seu email para mudar a senha'
       submit: 'Redefinir'
     registrations:
+      welcome: 'Cadastre-se'
       password_hint: 'Minimo 6 caracteres'
-    welcome: "Bem vindo"
+    welcome: "Login"
     submit: "Fazer login"
     register: "Cadastre-se"
-    singin: "Faça o login"
+    singin: "Faça seu login"
     no_account_html: "Não tem conta? <strong>%{link}</strong>"
     have_account_html: "Já tem cadastro? <strong>%{link}</strong>"
     remember_me: "Continuar conectado"
