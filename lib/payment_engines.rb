@@ -10,6 +10,9 @@ class PaymentEngines
 
   def self.engines
     @@engines.sort{|a,b| (a[:locale] == I18n.locale.to_s ? -1 : 1) }
+  #TODO: Remove this rescue when we migrate a payment engine
+  rescue
+    []
   end
 
   def self.create_payment_notification attributes
