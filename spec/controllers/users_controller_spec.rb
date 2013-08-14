@@ -46,12 +46,6 @@ describe UsersController do
       it{ should redirect_to user_path(user, anchor: 'settings') }
     end
 
-    context "with wrong confirmation" do
-      let(:password_confirmation){ 'newpassword_wrong_confirmation' }
-      it{ flash[:error].should_not be_empty }
-      it{ should redirect_to user_path(user, anchor: 'settings') }
-    end
-
     context "with right current password and right confirmation" do
       it{ flash[:notice].should_not be_empty }
       it{ flash[:error].should be_nil }
