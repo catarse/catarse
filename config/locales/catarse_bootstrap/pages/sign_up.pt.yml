@@ -13,5 +13,5 @@ pt:
         hint:
           password_length: 'Mínimo de 6 caracteres'
         inputs:
-          submit: 'Efetuar Cadastro'
+          submit: 'Efetuar cadastro'
           facebook: 'Entrar com Facebook'
