@@ -121,10 +121,6 @@ en:
   activerecord:
     errors:
       models:
-        user:
-          attributes:
-            email:
-              not_found: "Your email is not registered, please verify the address or create a new account"
         project:
           attributes:
             permalink:
