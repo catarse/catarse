@@ -10,6 +10,14 @@
         = t 'pages.login.no_account_html', link: link_to(t('pages.login.links.register'), new_user_registration_path)
       hr
 
+      .large-14.columns.large-centered
+        = link_to t('pages.login.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
+        .separator
+          p
+            = t('or')
+
+      .clearfix
+
       .large-14.large-centered.columns
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = render 'devise/shared/alert'
@@ -30,10 +38,3 @@
 
           .clearfix
 
-      .large-14.columns.large-centered
-        .separator
-          p
-            = t('or')
-
-        = link_to t('pages.login.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
-      .clearfix
