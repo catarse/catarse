@@ -1,4 +1,4 @@
 class NotificationType < ActiveRecord::Base
-  #TODO:
   #attr_accessible :name
+  schema_associations
 end

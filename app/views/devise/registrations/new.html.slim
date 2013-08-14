@@ -1,54 +1,46 @@
-Hlello woie
+= content_for :title, t('pages.sign_up.titles.site')
 
-.form_login.bootstrap-form.new_session[class="#{('actived' unless params[:controller] == 'devise/registrations' || params[:active_register])}"]
-  .content_form
-    h1=t('.login_title')
-    h3=t('.login_subtitle')
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
-      p.input
-        = f.label :email
-        = f.text_field :email
-      p.input
-        = f.label :password
-        = f.password_field :password
-      p.input.check
-        = f.check_box :remember_me
-        = f.label :remember_me, t('layouts.login.remember_me')
-      p.action
-        .bootstrap-twitter
-          = f.submit t('.submit'), class: 'btn', id: 'user_submit'
-      p.forgot_link
-        
-.form_login.bootstrap-form.new_registration[class="#{('actived' if params[:controller] == 'devise/registrations' || params[:active_register])}"]
-  .content_form
-    h1=t('.register_title')
-    h3=t('.register_subtitle')
-    - resource.newsletter = true
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'login_with_email_form'}) do |f|
-      p.input
-        = f.label :name
-        = f.text_field :name
-      p.input
-        = f.label :email
-        = f.text_field :email
-      p.input
-        = f.label :password
-        = f.password_field :password, required: true
-      p.input
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation, required: true
-      p.input.check
-        = f.check_box :newsletter
-        = f.label :newsletter, t('users.current_user_fields.newsletter')
-      p.action
-        .bootstrap-twitter
-          = f.submit t('registrations.new.submit'), class: 'btn', id: 'user_submit'
-.login_with_social
-  .content_form
-    h1=t('.with_facebook')
-    h3=t('.with_facebook_subtitle')
-    = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), :class => 'facebook_start'
-    h1=t('.google_warning_html')
-    h3=t('.google_step_1', link: (link_to t('devise.links.forgot_password'), new_password_path(resource_name))).html_safe
-    h3=t('.google_step_2')
-.clearfix
+= render 'devise/shared/header'
+
+.row
+  .large-7.large-centered.columns
+    .login-box.animated.fadeIn
+      h2.text-center= t 'pages.sign_up.titles.header'
+      p.text-center.register_link
+        = t 'pages.sign_up.have_account_html', link: link_to(t('pages.sign_up.links.login'), new_user_session_path)
+      hr
+
+      .large-14.columns.large-centered
+        = link_to t('pages.sign_up.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
+
+        .separator
+          p
+            | ou
+
+      .clearfix
+
+      .large-14.large-centered.columns
+        = form_for(resource, as: resource_name, url: sign_up_path) do |f|
+          = render 'devise/shared/alert'
+          p
+            = f.label :name
+            = f.text_field :name, required: true
+
+          p
+            = f.label :email
+            = f.text_field :email, required: true
+
+          p
+            = f.label :password
+            span.right.text-right.inline-hint
+              = t('pages.sign_up.form.hint.password_length')
+            = f.password_field :password, required: true
+
+          .text-left
+            = check_box_tag :show_password
+            = f.label :show_password, t('pages.sign_up.form.labels.show_password')
+
+          .large-10.columns.large-centered
+            = f.submit t('pages.sign_up.form.inputs.submit'), class: [:button, :success, 'large-16', 'columns']
+
+      .clearfix

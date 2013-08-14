@@ -1,19 +1,17 @@
 class PasswordsController < Devise::PasswordsController
-  def create
-    self.resource = resource_class.where(provider: 'devise').send_reset_password_instructions(params[resource_name])
 
-    if successfully_sent?(resource)
-      respond_with({}, location: after_sending_reset_password_instructions_path_for(resource_name))
+  def update
+    self.resource = resource_class.reset_password_by_token(resource_params)
+
+    if resource.errors.empty?
+      resource.unlock_access! if unlockable?(resource)
+      flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
+      set_flash_message(:notice, flash_message) if is_navigational_format?
+      sign_in(resource_name, resource)
+      respond_with resource, :location => after_resetting_password_path_for(resource)
     else
-      flash[:failure] = resource.errors.full_messages.to_sentence
-      redirect_to root_url(show_forgot_password: true)
+      flash[:notice] = I18n.t('devise.failure.password_token')
+      redirect_to new_password_path(resource_name)
     end
   end
-  
-  protected
-  
-  # The path used after sending reset password instructions
-  def after_sending_reset_password_instructions_path_for(resource_name)
-    root_path
-  end  
 end

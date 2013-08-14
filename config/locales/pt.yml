@@ -23,18 +23,13 @@ pt:
       label: 'Insira seu email para mudar a senha'
       submit: 'Redefinir'
     registrations:
+      site_title: "Cadastre-se"
+      welcome: 'Cadastre-se'
       password_hint: 'Minimo 6 caracteres'
-    welcome: "Bem vindo"
-    submit: "Fazer login"
-    register: "Cadastre-se"
-    singin: "Faça o login"
-    no_account_html: "Não tem conta? <strong>%{link}</strong>"
+      show_password: 'Exibir senha'
+      submit: 'Criar conta'
+    singin: "Faça seu login"
     have_account_html: "Já tem cadastro? <strong>%{link}</strong>"
-    remember_me: "Continuar conectado"
-    submit_facebook: "Entrar com facebook"
-    placeholder:
-      email: "Email"
-      password: "Senha"
 
   backer_report_to_project_owner:
     reward_description: 'Descrição da recompensa'
@@ -134,10 +129,6 @@ pt:
   activerecord:
     errors:
       models:
-        user:
-          attributes:
-            email:
-              not_found: "O seu email não está cadastrado, verifique o endereço ou crie uma conta nova"
         project:
           attributes:
             permalink:

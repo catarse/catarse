@@ -4,7 +4,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :validatable,
+  # :validatable
+  devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :omniauthable
   begin
     # NOTE: Sync normal users on mailchimp
@@ -60,6 +61,14 @@ class User < ActiveRecord::Base
   mount_uploader :uploaded_image, LogoUploader
 
   validates_length_of :bio, maximum: 140
+
+  validates_presence_of :email
+  validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?
+  validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, :allow_blank => true, :if => :email_changed?
+
+  validates_presence_of :password, :if => :password_required?
+  #validates_confirmation_of :password, :if => :password_required?
+  validates_length_of :password, :within => 6..128, :allow_blank => true
 
   schema_associations
   has_many :oauth_providers, through: :authorizations
@@ -171,13 +180,15 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth, current_user = nil)
+    omniauth_email = (auth["info"]["email"] rescue nil)
+    omniauth_email = (auth["extra"]["user_hash"]["email"] rescue nil) unless omniauth_email
     if current_user
       u = current_user
+    elsif omniauth_email && u = User.find_by_email(omniauth_email)
     else
       u = new do |user|
         user.name = auth["info"]["name"]
-        user.email = (auth["info"]["email"] rescue nil)
-        user.email = (auth["extra"]["user_hash"]["email"] rescue nil) unless user.email
+        user.email = omniauth_email
         user.nickname = auth["info"]["nickname"]
         user.bio = (auth["info"]["description"][0..139] rescue nil)
         user.locale = I18n.locale.to_s
@@ -281,6 +292,10 @@ class User < ActiveRecord::Base
   def gravatar_url
     return unless email
     "https://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{::Configuration[:base_url]}/assets/user.png"
+  end
+
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
   end
 
 end
