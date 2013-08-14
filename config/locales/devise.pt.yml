@@ -7,7 +7,8 @@ pt:
       send_instructions: Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.
       send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar sua conta em alguns minutos.
     failure:
-      already_authenticated: Você já está autenticado.
+      already_authenticated: ''
+      #already_authenticated: Você já está autenticado.
       inactive: A sua conta ainda não foi ativada.
       invalid: Email ou senha inválidos
       invalid_token: O token de autenticação não é válido.
@@ -25,7 +26,8 @@ pt:
         subject: Instruções de desbloqueio
     omniauth_callbacks:
       failure: Não foi possível autorizar de uma conta de %{kind} porque "%{reason}".
-      success: Autorizado com sucesso de uma conta de %{kind}.
+      success: ''
+      #success: Autorizado com sucesso de uma conta de %{kind}.
     passwords:
       no_token: Você não pode acessar esta página sem estar logado. Se você veio de um email de lembre de senha, por favor certifique-se de ter  digitado a URL corretamente.
       send_instructions: Dentro de minutos, você receberá um email com as instruções de reinicialização da sua senha.
@@ -66,8 +68,10 @@ pt:
         google_step_1: "1 - Clique em %{link}"
         google_step_2: "2 - Sigas os próximos passos para criar uma senha nova."
         with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.catarse.me/mudanca-no-sistema-de-login/\">Leia esse post</a> para mais informações"
-      signed_in: Login efetuado com sucesso.
-      signed_out: Logout efetuado com sucesso.
+      signed_in: ''
+      #signed_in: Login efetuado com sucesso.
+      signed_out: ''
+      #signed_out: Logout efetuado com sucesso.
     unlocks:
       send_instructions: Dentro de minutos, você receberá um email com instruções de desbloqueio da sua conta.
       send_paranoid_instructions: Se sua conta existir em nosso banco de dados, você receberá em breve um email com instruções para desbloquear ela.
