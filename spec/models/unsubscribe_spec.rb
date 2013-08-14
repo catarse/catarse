@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe Unsubscribe do
-  let(:notification_type){ FactoryGirl.create(:notification_type, name: 'updates') }
-
   before do
-    notification_type
+    @notification_type = create(:notification_type, name: 'updates') 
   end
+
   describe "associations" do
     it{ should belong_to :user }
     it{ should belong_to :notification_type }
@@ -16,13 +15,14 @@ describe Unsubscribe do
     subject{ Unsubscribe.updates_unsubscribe(1618) }
     it{ should_not be_persisted }
     its(:class){ should == Unsubscribe }
-    its(:notification_type_id){ should == notification_type.id }
     its(:project_id){ should == 1618 }
+    it "should use the updates notification type" do
+      expect(subject.notification_type.name).to eq 'updates'
+    end
 
     context "when project_id is nil" do
       subject{ Unsubscribe.updates_unsubscribe(nil) }
       its(:class){ should == Unsubscribe }
-      its(:notification_type_id){ should == notification_type.id }
       its(:project_id){ should be_nil }
     end
   end
