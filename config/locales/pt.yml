@@ -129,10 +129,6 @@ pt:
   activerecord:
     errors:
       models:
-        user:
-          attributes:
-            email:
-              not_found: "O seu email não está cadastrado, verifique o endereço ou crie uma conta nova"
         project:
           attributes:
             permalink:

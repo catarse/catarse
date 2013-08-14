@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: "That email does not exist in our system. Please try again, or sign up instead."
