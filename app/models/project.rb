@@ -56,7 +56,7 @@ class Project < ActiveRecord::Base
   scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
   scope :visible, -> { where("projects.state NOT IN ('draft', 'rejected', 'deleted')") }
   scope :financial, -> { where("((projects.expires_at) > (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))") }
-  scope :recommended, ->() { where(recommended: true) }
+  scope :recommended, -> { where(recommended: true) }
   scope :expired, -> { where("(projects.expires_at) < (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))") }
   scope :not_expired, -> { where("(projects.expires_at) >= (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))") }
   scope :expiring, -> { not_expired.where("(projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks')") }
