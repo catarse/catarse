@@ -1,5 +1,6 @@
-.flash
-  - for key, msg in flash
-    div class="#{key} wrapper"
-      div class=key
-        == msg
+- for key, msg in flash
+  - unless msg.blank?
+    .flash
+      div class="#{key} wrapper"
+        div class=key
+          == msg
