@@ -1,9 +1,14 @@
 require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
-  devise_for :users, path: '', 
-    path_names:   { sign_in: :login, sign_out: :logout }, 
+
+  devise_for :users, path: '',
+    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up }, 
     controllers:  { omniauth_callbacks: :omniauth_callbacks }
+
+  devise_scope :user do
+    post '/sign_up', to: 'devise/registrations#create', as: :sign_up
+  end
 
   # Root path
   root to: 'projects#index'
