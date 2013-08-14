@@ -11,6 +11,7 @@
       .large-14.large-centered.columns
         = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put}) do |f|
           = render 'devise/shared/alert'
+          = f.hidden_field :reset_password_token
           p
             = f.label :password, t('pages.reset_password.form.labels.password')
             = f.password_field :password, class: [:login, :password], required: true
