@@ -23,8 +23,11 @@ pt:
       label: 'Insira seu email para mudar a senha'
       submit: 'Redefinir'
     registrations:
+      site_title: "Cadastre-se"
       welcome: 'Cadastre-se'
       password_hint: 'Minimo 6 caracteres'
+      show_password: 'Exibir senha'
+      submit: 'Criar conta'
     welcome: "Login"
     submit: "Fazer login"
     register: "Cadastre-se"
