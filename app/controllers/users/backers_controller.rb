@@ -24,6 +24,8 @@ class Users::BackersController < ApplicationController
   def collection
     @backs = end_of_association_chain.available_to_count.order("confirmed_at DESC")
     @backs = @backs.not_anonymous if can? :manage, @user
-    @backs = @backs.includes(:user, :reward, project: [:user, :category, :project_total]).page(params[:page]).per(10)
+    @backs = @backs.page(params[:page]).per(10)
+    # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
+    #includes(:user, :reward, project: [:user, :category, :project_total])
   end
 end

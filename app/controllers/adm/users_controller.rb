@@ -20,7 +20,9 @@ class Adm::UsersController < Adm::BaseController
   end
 
   def collection
-    @users ||= end_of_association_chain.order_by(params[:order_by] || 'coalesce(user_totals.sum, 0) DESC').includes(:user_total).page(params[:page])
+    @users ||= end_of_association_chain.order_by(params[:order_by] || 'coalesce(user_totals.sum, 0) DESC')
+    # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
+    #.includes(:user_total).page(params[:page])
   end
 end
 

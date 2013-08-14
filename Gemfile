@@ -21,8 +21,9 @@ gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 
 # Database and data related
 gem 'pg'
+gem 'postgres-copy', github: 'josemarluedke/postgres-copy', branch: 'rails4'
 gem 'pg_search'
-gem 'schema_plus', github: 'lomba/schema_plus', branch: 'rails4'
+gem 'schema_plus', '~> 1.2.0'
 gem 'chartkick'
 
 # Decorators
@@ -154,7 +155,7 @@ gem 'schema_associations', github: 'tovodeverett/schema_associations', branch: '
 #gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '80ebdf9'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
-#gem 'postgres-copy' # need upgrade for rails 4
+
 
 
 # TODO: Rails 4 upgrade gems
