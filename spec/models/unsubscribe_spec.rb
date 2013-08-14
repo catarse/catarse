@@ -16,9 +16,7 @@ describe Unsubscribe do
     it{ should_not be_persisted }
     its(:class){ should == Unsubscribe }
     its(:project_id){ should == 1618 }
-    it "should use the updates notification type" do
-      expect(subject.notification_type.name).to eq 'updates'
-    end
+    its(:notification_type_id){ should == @notification_type.id }
 
     context "when project_id is nil" do
       subject{ Unsubscribe.updates_unsubscribe(nil) }
