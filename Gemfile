@@ -24,6 +24,7 @@ gem 'pg'
 gem 'postgres-copy', github: 'josemarluedke/postgres-copy', branch: 'rails4'
 gem 'pg_search'
 gem 'schema_plus', '~> 1.2.0'
+gem 'schema_associations', '~> 1.2.0'
 gem 'chartkick'
 
 # Decorators
@@ -143,7 +144,6 @@ gem "RedCloth"
 
 #  TODO: --- incompatible gems ----
 
-gem 'schema_associations', github: 'tovodeverett/schema_associations', branch: 'rails4' # TODO: giving problems.. no PR for rails 4 or anything else
 
 #gem 'validation_reflection'
 #
