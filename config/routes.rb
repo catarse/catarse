@@ -4,7 +4,7 @@ Catarse::Application.routes.draw do
 
   devise_for :users, path: '',
     path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up }, 
-    controllers:  { omniauth_callbacks: :omniauth_callbacks }
+    controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords }
 
   devise_scope :user do
     post '/sign_up', to: 'devise/registrations#create', as: :sign_up
