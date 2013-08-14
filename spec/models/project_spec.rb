@@ -194,8 +194,7 @@ describe Project do
     subject{ Project.recommended_for_home }
 
     before do
-      # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
-      #Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
+      Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
       Project.should_receive(:recommended).and_return(Project)
       Project.should_receive(:visible).and_return(Project)
       Project.should_receive(:not_expired).and_return(Project)
@@ -210,8 +209,7 @@ describe Project do
     subject{ Project.expiring_for_home(1) }
 
     before do
-      # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
-      #Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
+      Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
       Project.should_receive(:visible).and_return(Project)
       Project.should_receive(:expiring).and_return(Project)
       Project.should_receive(:order).with("projects.expires_at, random()").and_return(Project)
@@ -226,8 +224,7 @@ describe Project do
     subject{ Project.recent_for_home(1) }
 
     before do
-      # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
-      #Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
+      Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
       Project.should_receive(:visible).and_return(Project)
       Project.should_receive(:recent).and_return(Project)
       Project.should_receive(:not_expiring).and_return(Project)

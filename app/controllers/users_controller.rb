@@ -63,9 +63,7 @@ class UsersController < ApplicationController
 
   def projects
     @user = User.find(params[:id])
-    # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
-    # .includes(:user, :category, :project_total)
-    @projects = @user.projects.order("updated_at DESC")
+    @projects = @user.projects.includes(:user, :category, :project_total).order("updated_at DESC")
     @projects = @projects.visible unless @user == current_user
     @projects = @projects.page(params[:page]).per(10)
     render json: @projects
