@@ -1,14 +1,19 @@
 require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
+
+  devise_for :users, path: '',
+    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up },
+    controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords }
+
+  devise_scope :user do
+    post '/sign_up', to: 'devise/registrations#create', as: :sign_up
+  end
+
   # Root path
   root to: 'projects#index'
 
   get '/thank_you' => "static#thank_you"
-
-  devise_for :users, path: '',
-    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :register },
-    controllers:  { omniauth_callbacks: :omniauth_callbacks, sessions: :sessions, registrations: :registrations }
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
 

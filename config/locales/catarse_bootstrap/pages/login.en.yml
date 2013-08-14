@@ -1,0 +1,16 @@
+en:
+  pages:
+    login:
+      no_account_html: "Need an account? <strong>%{link}</strong>"
+      titles:
+        site: 'Log in'
+        header: 'Log in'
+      links:
+        register: "Sign up"
+        forgot_password: "I forgot my password"
+      form:
+        labels:
+          remember_me: 'Remember me'
+        inputs:
+          submit: 'Log me in'
+          facebook: 'Log in with Facebook'
