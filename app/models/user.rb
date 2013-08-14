@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
 
   validates_length_of :bio, maximum: 140
 
-  validates_presence_of :email, :if => :email_required?
+  validates_presence_of :email
   validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?
   validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, :allow_blank => true, :if => :email_changed?
 
@@ -289,6 +289,10 @@ class User < ActiveRecord::Base
   def gravatar_url
     return unless email
     "https://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{::Configuration[:base_url]}/assets/user.png"
+  end
+
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
   end
 
 end
