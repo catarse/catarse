@@ -1,10 +1,10 @@
 - if flash[:alert]
-  .alert-box.alert
+  .alert-box.alert.animated.shake
     .large-16.large-centered.columns
       h3= t('failure_title')
       p= flash[:alert]
 - elsif resource.errors.present?
-  .alert-box.alert
+  .alert-box.alert.animated.shake
     .large-16.large-centered.columns
       h3= t('failure_title')
       p= resource.errors.full_messages.join

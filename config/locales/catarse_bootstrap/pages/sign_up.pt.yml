@@ -1,0 +1,17 @@
+pt:
+  pages:
+    sign_up:
+      have_account_html: "Já tem cadastro? <strong>%{link}</strong>"
+      titles:
+        site: 'Cadastre-se'
+        header: 'Cadastre-se'
+      links:
+        login: "Faça seu login"
+      form:
+        labels:
+          show_password: 'Exibir senha'
+        hint:
+          password_length: 'Mínimo de 6 caracteres'
+        inputs:
+          submit: 'Efetuar cadastro'
+          facebook: 'Entrar com Facebook'
