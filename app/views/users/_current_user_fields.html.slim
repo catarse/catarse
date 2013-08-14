@@ -72,8 +72,5 @@
           .div
             = f.label :password, t('passwords.edit.label_new_password')
             = f.password_field :password, class:'empty'
-          .div
-            = f.label :password_confirmation
-            = f.password_field :password_confirmation, class:'empty'
           .bootstrap-twitter
             p= f.submit 'OK', class: 'btn', id: 'password_submit'
