@@ -179,13 +179,15 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth, current_user = nil)
+    omniauth_email = (auth["info"]["email"] rescue nil)
+    omniauth_email = (auth["extra"]["user_hash"]["email"] rescue nil) unless omniauth_email
     if current_user
       u = current_user
+    elsif omniauth_email && u = User.find_by_email(omniauth_email)
     else
       u = new do |user|
         user.name = auth["info"]["name"]
-        user.email = (auth["info"]["email"] rescue nil)
-        user.email = (auth["extra"]["user_hash"]["email"] rescue nil) unless user.email
+        user.email = omniauth_email
         user.nickname = auth["info"]["nickname"]
         user.bio = (auth["info"]["description"][0..139] rescue nil)
         user.locale = I18n.locale.to_s
