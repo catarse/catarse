@@ -10,6 +10,15 @@
         = t 'pages.sign_up.have_account_html', link: link_to(t('pages.sign_up.links.login'), new_user_session_path)
       hr
 
+      .large-14.columns.large-centered
+        = link_to t('pages.sign_up.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
+
+        .separator
+          p
+            | ou
+
+      .clearfix
+
       .large-14.large-centered.columns
         = form_for(resource, as: resource_name, url: sign_up_path) do |f|
           = render 'devise/shared/alert'
@@ -35,10 +44,3 @@
             = f.submit t('pages.sign_up.form.inputs.submit'), class: [:button, :success, 'large-16', 'columns']
 
       .clearfix
-
-      .large-14.columns.large-centered
-        .separator
-          p
-            | ou
-
-        = link_to t('pages.sign_up.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
