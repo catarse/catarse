@@ -7,6 +7,7 @@ pt:
       send_instructions: Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.
       send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar sua conta em alguns minutos.
     failure:
+      password_token: 'Esse link para recuperar senha expirou. Insira novamente seu email'
       already_authenticated: ''
       #already_authenticated: Você já está autenticado.
       inactive: A sua conta ainda não foi ativada.

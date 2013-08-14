@@ -7,6 +7,7 @@ en:
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
+      password_token: 'This password reset link has expired. Enter your email address again'
       already_authenticated: ""
       #already_authenticated: "You are already signed in."
       inactive: "Your account was not activated yet."
