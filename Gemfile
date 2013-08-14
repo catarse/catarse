@@ -152,18 +152,7 @@ gem "RedCloth"
 #gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '80ebdf9'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
-
-
-
 # TODO: Rails 4 upgrade gems
-gem 'rails4_upgrade'
-
-#gem 'actionpack-action_caching', '~>1.0.0'
-#gem 'actionpack-page_caching', '~>1.0.0'
 gem 'actionpack-xml_parser', '~> 1.0.0'
-#gem 'actionview-encoded_mail_to', '~>1.0.4'
-#gem 'activerecord-session_store', '~>0.0.1'
-#gem 'activeresource', '~>4.0.0.beta1'
 gem 'protected_attributes', '~> 1.0.1'
 gem 'rails-observers', '~> 0.1.2'
-#gem 'rails-perftest', '~>0.0.2'
