@@ -70,9 +70,7 @@
                 th= t('.state')
                 th
             tbody
-              - # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
-              - # .includes(:category)
-              - @projects.each do |project|
+              - @projects.includes(:category).each do |project|
                 tr id=project.id class=cycle("even", "odd")
                   td= link_to project.name, project_by_slug_path(permalink: project.permalink)
                   td= project.category

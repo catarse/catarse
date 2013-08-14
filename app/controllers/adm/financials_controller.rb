@@ -9,9 +9,7 @@ class Adm::FinancialsController < Adm::BaseController
   actions :index
 
   def projects
-    # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
-    # .includes(:user)
-    @search = apply_scopes(Project).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, (projects.expires_at)::date DESc")
+    @search = apply_scopes(Project).includes(:user).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, (projects.expires_at)::date DESc")
   end
 
   def collection

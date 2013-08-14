@@ -85,9 +85,7 @@
                 th= t('.state')
                 th
             tbody
-              - # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
-              - # .includes(:project, :user, :reward)
-              - @backers.each do |backer|
+              - @backers.includes(:project, :user, :reward).each do |backer|
                 tr id=backer.id class=cycle("even", "odd")
                   td
                     .bootstrap-twitter

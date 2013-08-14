@@ -193,9 +193,7 @@ class User < ActiveRecord::Base
   def recommended_projects(quantity = 1)
     # It returns the project that have the biggest amount of backers
     # that contributed to the last project the user contributed that has common backers.
-    # TODO: add back this when this bug is solved: https://github.com/lomba/schema_associations/issues/7
-    # .includes(:project)
-    backs.order('created_at DESC').each do |back|
+    backs.includes(:project).order('created_at DESC').each do |back|
       project = ActiveRecord::Base.connection.execute("
         SELECT count(*), project_id
         FROM backers b
