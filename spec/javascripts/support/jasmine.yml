@@ -23,6 +23,7 @@ src_files:
   - app/assets/javascripts/app/app.js
   - app/assets/javascripts/app/project.js
   - app/assets/javascripts/app/review.js
+  - app/assets/javascripts/app/registration.js
   - app/assets/javascripts/app/updates.js
   - app/assets/javascripts/**/*.js
 

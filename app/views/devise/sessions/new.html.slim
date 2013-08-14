@@ -1,39 +1,40 @@
-= content_for :title, t('.site_title')
+= content_for :title, t('pages.login.titles.site')
 
 = render 'devise/shared/header'
 
 .row
   .large-7.large-centered.columns
-    .login-box
-      h2.text-center= t 'login.welcome'
+    .login-box.animated.fadeIn
+      h2.text-center= t 'pages.login.titles.header'
       p.text-center.register_link
-        = t 'login.no_account_html', link: link_to(t('login.register'), new_user_registration_path)
+        = t 'pages.login.no_account_html', link: link_to(t('pages.login.links.register'), new_user_registration_path)
       hr
+
+      .large-14.columns.large-centered
+        = link_to t('pages.login.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
+        .separator
+          p
+            = t('or')
+
+      .clearfix
 
       .large-14.large-centered.columns
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = render 'devise/shared/alert'
           p
             = f.label :email
-            = f.text_field :email, class: [:login, :email], required: true
+            = f.text_field :email, class: [:login, :email], required: true, type: :email
 
           p
             = f.label :password
-            = link_to t('devise.links.forgot_password'), new_password_path(resource_name), class: 'right text-right'
-            = f.password_field :password, class: [:login]
+            = link_to t('pages.login.links.forgot_password'), new_password_path(resource_name), class: 'right text-right'
+            = f.password_field :password, class: [:login], required: true
           .text-left
             = f.check_box :remember_me, checked: true
-            = f.label :remember_me, t('login.remember_me')
+            = f.label :remember_me, t('pages.login.form.labels.remember_me')
 
           .large-10.columns.large-centered
-            = f.submit t('login.submit'), class: [:button, :success, 'large-16', 'columns']
+            = f.submit t('pages.login.form.inputs.submit'), class: [:button, :success, 'large-16', 'columns']
 
           .clearfix
 
-      .large-14.columns.large-centered
-        .separator
-          p
-            | ou
-
-        = link_to t('login.submit_facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
-      .clearfix

@@ -1,0 +1,8 @@
+pt:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: "O email não está cadastrado, verifique o endereço ou faça seu cadastro."

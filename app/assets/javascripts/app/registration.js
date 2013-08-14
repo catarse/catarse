@@ -10,7 +10,7 @@ App.addChild("Registration", {
   },
 
   showPassword: function(event) {
-    var $show_password = $(event.target);
+    var $show_password = this.$(event.target);
 
     if($show_password.prop('checked')) {
       this.$password_input.prop('type', 'text');
