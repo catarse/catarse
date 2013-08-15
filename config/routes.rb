@@ -51,7 +51,7 @@ Catarse::Application.routes.draw do
   end
 
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
-  #mount CatarseMoip::Engine => "/", as: :catarse_moip
+  mount CatarseMoip::Engine => "/", as: :catarse_moip
 
   # Non production routes
   if Rails.env.development?

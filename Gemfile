@@ -30,6 +30,7 @@ gem 'chartkick'
 
 # Payment engine using Paypal
 gem 'catarse_paypal_express', '~> 2.0.0', github: 'josemarluedke/catarse_paypal_express', branch: 'rails4'
+gem 'catarse_moip', '~> 2.0.0', github: 'josemarluedke/catarse_moip', branch: 'rails4'
 
 # Decorators
 gem 'draper'
