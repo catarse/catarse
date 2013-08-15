@@ -124,15 +124,6 @@ class ProjectsController < ApplicationController
     []
   end
 
-  # Just to fix a minor bug,
-  # when user submit the project without some rewards.
-  def validate_rewards_attributes
-    rewards = params[:project][:rewards_attributes]
-    rewards.each do |r|
-      rewards.delete(r[0]) unless Reward.new(r[1]).valid?
-    end
-  end
-
   protected
 
   def resource
