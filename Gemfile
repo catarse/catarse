@@ -29,8 +29,8 @@ gem 'schema_associations', '~> 1.2.0'
 gem 'chartkick'
 
 # Payment engines
-gem 'catarse_paypal_express', '~> 2.0.0', github: 'josemarluedke/catarse_paypal_express', branch: 'rails4'
-gem 'catarse_moip', '~> 2.0.0', github: 'josemarluedke/catarse_moip', branch: 'rails4'
+gem 'catarse_paypal_express', '~> 2.0.0'
+gem 'catarse_moip', '~> 2.0.0'
 
 # Decorators
 gem 'draper'

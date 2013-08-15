@@ -35,25 +35,6 @@ GIT
       nokogiri (~> 1.5.0)
 
 GIT
-  remote: git://github.com/josemarluedke/catarse_moip.git
-  revision: a326cab3c70391d4e4e75fe50639eca588afb8ff
-  branch: rails4
-  specs:
-    catarse_moip (2.0.0)
-      libxml-ruby (~> 2.6.0)
-      rails (~> 4.0)
-
-GIT
-  remote: git://github.com/josemarluedke/catarse_paypal_express.git
-  revision: f1179e1eacfce232276f13c5e166f3cc2df22208
-  branch: rails4
-  specs:
-    catarse_paypal_express (2.0.0)
-      activemerchant (>= 1.34.0)
-      rails (~> 4.0)
-      slim-rails
-
-GIT
   remote: git://github.com/josemarluedke/postgres-copy.git
   revision: 41afec70f5c6b2431f045388b14a80d194329a20
   branch: rails4
@@ -143,6 +124,13 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    catarse_moip (2.0.0)
+      libxml-ruby (~> 2.6.0)
+      rails (~> 4.0)
+    catarse_paypal_express (2.0.0)
+      activemerchant (>= 1.34.0)
+      rails (~> 4.0)
+      slim-rails
     celluloid (0.14.1)
       timers (>= 1.0.0)
     chartkick (1.2.0)
@@ -471,8 +459,8 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   carrierwave (~> 0.8.0)
   catarse_mailchimp!
-  catarse_moip (~> 2.0.0)!
-  catarse_paypal_express (~> 2.0.0)!
+  catarse_moip (~> 2.0.0)
+  catarse_paypal_express (~> 2.0.0)
   chartkick
   coffee-rails (~> 4.0.0)
   compass-960-plugin
