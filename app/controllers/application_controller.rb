@@ -1,8 +1,11 @@
 # coding: utf-8
 require 'uservoice_sso'
 class ApplicationController < ActionController::Base
+  before_filter :catarse_bootstrap_view_path
+
   layout :use_catarse_boostrap
   protect_from_forgery
+
 
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']
@@ -105,5 +108,11 @@ class ApplicationController < ActionController::Base
 
   def force_http
     redirect_to(protocol: 'http', host: ::Configuration[:base_domain]) if request.ssl?
+  end
+
+  protected
+
+  def catarse_bootstrap_view_path
+    prepend_view_path("app/views/catarse_bootstrap")
   end
 end

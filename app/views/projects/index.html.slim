@@ -54,7 +54,7 @@
         .blog
           h3= t('sidebar.titles.blog')
           ul.posts
-            - @blog_posts.each do |post|
+            - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
               li
                 h2
                   = link_to post.url, target: '__blank' do
