@@ -6,6 +6,32 @@ Catarse::Application.routes.draw do
     path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up },
     controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords }
 
+  # Channels
+  constraints subdomain: 'asas' do
+    namespace :channels, path: '' do
+      namespace :adm do
+        resources :projects, only: [ :index, :update] do
+          member do
+            put 'approve'
+            put 'reject'
+            put 'push_to_draft'
+          end
+        end
+      end
+      get '/', to: 'profiles#show', as: :profile
+      get '/how-it-works', to: 'profiles#how_it_works', as: :about
+      resources :projects, only: [:new, :create, :show] do
+        collection do
+          get 'video'
+          get 'check_slug'
+        end
+      end
+      resources :channels_subscribers, only: [:index, :create, :destroy]
+    end
+  end
+
+
+
   devise_scope :user do
     post '/sign_up', to: 'devise/registrations#create', as: :sign_up
   end
@@ -31,31 +57,6 @@ Catarse::Application.routes.draw do
   if Rails.env.development?
     resources :emails, only: [ :index ]
   end
-
-  # Channels
-  constraints subdomain: 'asas' do
-    namespace :channels, path: '' do
-      namespace :adm do
-        resources :projects, only: [ :index, :update] do
-          member do
-            put 'approve'
-            put 'reject'
-            put 'push_to_draft'
-          end
-        end
-      end
-      get '/', to: 'profiles#show', as: :profile
-      get '/how-it-works', to: 'profiles#how_it_works', as: :about
-      resources :projects, only: [:new, :create, :show] do
-        collection do
-          get 'video'
-          get 'check_slug'
-        end
-      end
-      resources :channels_subscribers, only: [:index, :create, :destroy]
-    end
-  end
-
   # Static Pages
   get '/sitemap',               to: 'static#sitemap',             as: :sitemap
   get '/guidelines',            to: 'static#guidelines',          as: :guidelines
