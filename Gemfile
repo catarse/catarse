@@ -28,6 +28,9 @@ gem 'schema_plus', '~> 1.2.0'
 gem 'schema_associations', '~> 1.2.0'
 gem 'chartkick'
 
+# Payment engine using Paypal
+gem 'catarse_paypal_express', '~> 2.0.0', github: 'josemarluedke/catarse_paypal_express', branch: 'rails4'
+
 # Decorators
 gem 'draper'
 
@@ -145,15 +148,11 @@ gem "RedCloth"
 
 #  TODO: --- incompatible gems ----
 
-# Payment engine using Paypal
-#gem 'catarse_paypal_express', git: 'git://github.com/catarse/catarse_paypal_express.git',  ref: '8eaf6ca'
-#gem 'catarse_paypal_express',           path: '../catarse_paypal_express'
 
 # Payment engine using Moip
 #gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '80ebdf9'
 #gem 'catarse_moip',           path: '../catarse_moip'
 
 # TODO: Rails 4 upgrade gems
-gem 'actionpack-xml_parser', '~> 1.0.0'
 gem 'protected_attributes', '~> 1.0.1'
 gem 'rails-observers', '~> 0.1.2'
