@@ -72,7 +72,7 @@ describe UserDecorator do
 
   describe "#display_credits" do
     subject { create(:user) }
-    its(:display_credits) { should == 'R$ 0'}
+    its(:display_credits) { should == 'R$ 0,00'}
   end
 
   describe "#display_total_of_backs" do
@@ -81,7 +81,7 @@ describe UserDecorator do
       before do
         create(:backer, state: 'confirmed', user: subject, value: 500.0)
       end
-      its(:display_total_of_backs) { should == 'R$ 500'}
+      its(:display_total_of_backs) { should == 'R$ 500,00'}
     end
   end
 end
