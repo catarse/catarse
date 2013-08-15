@@ -47,7 +47,7 @@
           = t('.menu.about')
         = link_to '#', 'id' => 'updates_link', 'data-target' => '#project_updates' do
           = t('.menu.updates')
-          span.count=" (#{@updates.count})"
+          span.count=" (#{@updates_count})"
         = link_to '#', 'id' => 'backers_link', 'data-target' => '#project_backers' do
           = t('.menu.backers')
           span.count=" (#{@project.total_backers})"
