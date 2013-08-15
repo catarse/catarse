@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: git://github.com/josemarluedke/catarse_paypal_express.git
-  revision: c53b77e31231e09b1180b79a557c3342861ba9d0
+  revision: f1179e1eacfce232276f13c5e166f3cc2df22208
   branch: rails4
   specs:
     catarse_paypal_express (2.0.0)
@@ -463,7 +463,6 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  activemerchant (>= 1.17.0)
   auto_html (= 1.4.2)
   best_in_place!
   better_errors
