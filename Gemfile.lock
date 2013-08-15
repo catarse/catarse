@@ -254,7 +254,8 @@ GEM
       launchy (~> 2.2)
     loofah (1.2.1)
       nokogiri (>= 1.4.4)
-    mail (2.5.4)
+    mail (2.5.3)
+      i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mailchimp (0.0.9)
@@ -487,6 +488,7 @@ DEPENDENCIES
   kaminari
   launchy
   letter_opener
+  mail (= 2.5.3)
   moip!
   newrelic_rpm
   omniauth

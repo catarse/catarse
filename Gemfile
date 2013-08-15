@@ -7,6 +7,7 @@ ruby '2.0.0'
 
 # We got some weird bug concerning encoding of AR objects in rails 3.2.13+
 gem 'rails',    '4.0.0'
+gem 'mail',     '2.5.3'
 gem 'sidekiq',  '~> 2.13.0'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
 
