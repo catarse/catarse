@@ -8,25 +8,6 @@ GIT
       supermodel
 
 GIT
-  remote: git://github.com/catarse/catarse_moip.git
-  revision: 80ebdf9a10da7b3bae8602efd9c09a914e164085
-  ref: 80ebdf9
-  specs:
-    catarse_moip (0.1.1)
-      libxml-ruby (~> 2.6.0)
-      rails (~> 3.2.12)
-
-GIT
-  remote: git://github.com/catarse/catarse_paypal_express.git
-  revision: 8eaf6ca447a3ec3cf77249e0ff83ed33501c4cb8
-  ref: 8eaf6ca
-  specs:
-    catarse_paypal_express (0.1.0)
-      activemerchant (>= 1.17.0)
-      rails (~> 3.2.6)
-      slim-rails
-
-GIT
   remote: git://github.com/catarse/moip-ruby.git
   revision: 39f9dab38fc33fe9bf614deb8e90ca166ab2d6bf
   specs:
@@ -118,6 +99,13 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    catarse_moip (1.0.0)
+      libxml-ruby (~> 2.6.0)
+      rails (~> 3.2.12)
+    catarse_paypal_express (1.0.0)
+      activemerchant (>= 1.17.0)
+      rails (~> 3.2.6)
+      slim-rails
     celluloid (0.14.1)
       timers (>= 1.0.0)
     chartkick (1.2.0)
@@ -453,8 +441,8 @@ DEPENDENCIES
   capybara (~> 2.0.2)
   carrierwave (~> 0.8.0)
   catarse_mailchimp!
-  catarse_moip!
-  catarse_paypal_express!
+  catarse_moip (~> 1.0.0)
+  catarse_paypal_express (~> 1.0.0)
   chartkick
   coffee-rails
   compass-960-plugin
