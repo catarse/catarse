@@ -3,22 +3,25 @@ require 'spec_helper'
 describe Adm::BackersController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
-
   let(:unconfirmed_backer) { create(:backer) }
+  let(:current_user){ admin }
+
+  before do
+    controller.stub(:current_user).and_return(current_user)
+  end
 
   describe 'PUT confirm' do
     let(:backer) { create(:backer) }
     subject { backer.confirmed? }
 
-    before { 
-      controller.stub(:current_user).and_return(admin)
+    before do
       put :confirm, id: backer.id, locale: :pt 
-    }
+    end
 
-    it {
+    it do
       backer.reload
       should be_true
-    }
+    end
   end
 
   describe 'PUT push_to_trash' do
@@ -26,7 +29,6 @@ describe Adm::BackersController do
     subject { backer.deleted? }
 
     before do
-      controller.stub(:current_user).and_return(admin)
       put :push_to_trash, id: backer.id, locale: :pt
       backer.reload
     end
@@ -38,64 +40,62 @@ describe Adm::BackersController do
     let(:backer) { create(:backer, state: 'confirmed') }
     subject { backer.refunded_and_canceled? }
 
-    before {
+    before do
       controller.stub(:current_user).and_return(admin)
       put :hide, id: backer.id, locale: :pt
-    }
+    end
 
-    it {
+    it do
       backer.reload
       should be_true
-    }
+    end
   end
 
   describe 'PUT refund' do
     let(:backer) { create(:backer, state: 'confirmed') }
     subject { backer.refunded? }
 
-    before { 
-      controller.stub(:current_user).and_return(admin)
+    before do
       put :refund, id: backer.id, locale: :pt 
-    }
+    end
 
-    it {
+    it do
       backer.reload
       should be_true
-    }    
+    end
   end
 
   describe 'PUT pendent' do
     let(:backer) { create(:backer, state: 'confirmed') }
     subject { backer.confirmed? }
 
-    before { 
-      controller.stub(:current_user).and_return(admin)
+    before do
       put :pendent, id: backer.id, locale: :pt 
-    }
+    end
 
-    it {
+    it do
       backer.reload
       should be_false
-    }
+    end
   end
 
   describe 'PUT cancel' do
     let(:backer) { create(:backer, state: 'confirmed') }
     subject { backer.canceled? }
 
-    before {
-      controller.stub(:current_user).and_return(admin)
+    before do
       put :cancel, id: backer.id, locale: :pt 
-    }
+    end
 
-    it {
+    it do
       backer.reload
       should be_true
-    }
+    end
   end
 
   describe "GET index" do
     context "when I'm not logged in" do
+      let(:current_user){ nil }
       before do
         get :index, :locale => :pt
       end
@@ -104,7 +104,6 @@ describe Adm::BackersController do
 
     context "when I'm logged as admin" do
       before do
-        controller.stub(:current_user).and_return(admin)
         get :index, :locale => :pt
       end
       its(:status){ should == 200 }

@@ -2,7 +2,7 @@ describe("ReviewForm", function() {
   var view;
 
   beforeEach(function() {
-    view = new App.views.ReviewForm({ el: $('<form></form>')});
+    view = new App.views.ReviewForm({ el: $('<form style="display:none;"></form>')});
   });
 
   describe("#validate", function() {
@@ -10,7 +10,8 @@ describe("ReviewForm", function() {
       var valid;
 
       beforeEach(function() {
-        view.$el.html('<input required="required"/><input />');
+        view.$el.append('<input required="required"/><input />');
+        $('html').append(view.$el);
         var $inputs = view.$('input');
         spyOn(view, "$").andReturn($inputs);
         valid = view.validate();
