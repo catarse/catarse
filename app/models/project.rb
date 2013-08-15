@@ -158,7 +158,7 @@ class Project < ActiveRecord::Base
   end
 
   def selected_rewards
-    rewards.sort_asc.where(id: backers.confirmed.select(&:reward_id))
+    rewards.sort_asc.where(id: backers.confirmed.map(&:reward_id))
   end
 
   def reached_goal?
