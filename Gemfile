@@ -29,6 +29,7 @@ gem 'chartkick'
 
 # Payment engine using Paypal
 gem 'catarse_paypal_express', '~> 2.0.0', github: 'josemarluedke/catarse_paypal_express', branch: 'rails4'
+#gem 'catarse_paypal_express', path: '../catarse_paypal_express'
 
 # Decorators
 gem 'draper'
@@ -76,7 +77,6 @@ gem 'routing-filter', '~> 0.4.0.pre'
 
 # Payment
 gem 'moip', git: 'git://github.com/catarse/moip-ruby.git'
-gem 'activemerchant', '>= 1.17.0', require: 'active_merchant'
 gem 'httpclient',     '>= 2.2.5'
 
 group :production do
