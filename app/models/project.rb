@@ -55,13 +55,13 @@ class Project < ActiveRecord::Base
 
   scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
   scope :visible, where("projects.state NOT IN ('draft', 'rejected', 'deleted')")
-  scope :financial, where("((projects.expires_at) > (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
+  scope :financial, where("((projects.expires_at) > (current_timestamp) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)
-  scope :expired, where("(projects.expires_at) < (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))")
-  scope :not_expired, where("(projects.expires_at) >= (current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))")
-  scope :expiring, not_expired.where("(projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks')")
-  scope :not_expiring, not_expired.where("NOT ((projects.expires_at) <= ((current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) + interval '2 weeks'))")
-  scope :recent, where("(current_timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo')) - projects.online_date <= '5 days'::interval")
+  scope :expired, where("(projects.expires_at) < (current_timestamp)")
+  scope :not_expired, where("(projects.expires_at) >= (current_timestamp)")
+  scope :expiring, not_expired.where("(projects.expires_at) <= ((current_timestamp) + interval '2 weeks')")
+  scope :not_expiring, not_expired.where("NOT ((projects.expires_at) <= ((current_timestamp) + interval '2 weeks'))")
+  scope :recent, where("(current_timestamp) - projects.online_date <= '5 days'::interval")
   scope :successful, where(state: 'successful')
   scope :online, where(state: 'online')
   scope :recommended_for_home, ->{
@@ -134,7 +134,7 @@ class Project < ActiveRecord::Base
   end
 
   def expires_at
-    online_date && Time.zone.parse((online_date + online_days.days).strftime("%Y-%m-%d 23:59:59"))
+    online_date && Time.parse((online_date + online_days.days).strftime("%Y-%m-%d #{::Configuration[:project_finish_time]}"))
   end
 
   def video
@@ -170,7 +170,7 @@ class Project < ActiveRecord::Base
   end
 
   def expired?
-    expires_at && expires_at < Time.zone.now
+    expires_at && expires_at < Time.now
   end
 
   def in_time_to_wait?
@@ -190,7 +190,7 @@ class Project < ActiveRecord::Base
   def time_to_go
     ['day', 'hour', 'minute', 'second'].each do |unit|
       if expires_at.to_i >= 1.send(unit).from_now.to_i
-        time = ((expires_at - Time.zone.now).abs/1.send(unit)).round
+        time = ((expires_at - Time.now).abs/1.send(unit)).round
         return {time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase)}
       end
     end
