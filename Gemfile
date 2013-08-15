@@ -28,7 +28,7 @@ gem 'schema_plus', '~> 1.2.0'
 gem 'schema_associations', '~> 1.2.0'
 gem 'chartkick'
 
-# Payment engine using Paypal
+# Payment engines
 gem 'catarse_paypal_express', '~> 2.0.0', github: 'josemarluedke/catarse_paypal_express', branch: 'rails4'
 gem 'catarse_moip', '~> 2.0.0', github: 'josemarluedke/catarse_moip', branch: 'rails4'
 
@@ -126,13 +126,11 @@ group :test do
   gem "selenium-webdriver", "~> 2.34.0"
 end
 
-
 gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem "compass-rails", github: "milgner/compass-rails", ref: "1749c06f15dc4b058427e7969810457213647fb8"
 gem 'uglifier'
 gem 'compass-960-plugin'
-
 
 # FIXME: Not-anymore-on-development
 # Gems that are with 1 or more years on the vacuum
@@ -144,14 +142,6 @@ gem 'rails_autolink', '~> 1.1.0'
 
 # TODO: Take a look on dependencies
 gem "RedCloth"
-
-
-#  TODO: --- incompatible gems ----
-
-
-# Payment engine using Moip
-#gem 'catarse_moip',           git: 'git://github.com/catarse/catarse_moip.git', ref: '80ebdf9'
-#gem 'catarse_moip',           path: '../catarse_moip'
 
 # TODO: Rails 4 upgrade gems
 gem 'protected_attributes', '~> 1.0.1'
