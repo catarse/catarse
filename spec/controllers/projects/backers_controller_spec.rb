@@ -71,9 +71,11 @@ describe Projects::BackersController do
   end
 
   describe "POST create" do
+    let(:back_value) { 20.00 }
+
     before do
       request.env['REQUEST_URI'] = "/test_path"
-      post :create, {locale: :pt, project_id: project.id, backer: { value: '20.00', reward_id: nil, anonymous: '0' }}
+      post :create, {locale: :pt, project_id: project.id, backer: { value: back_value, reward_id: nil, anonymous: '0' }}
     end
 
     context "when no user is logged" do
@@ -90,12 +92,7 @@ describe Projects::BackersController do
 
     context "with invalid backer values" do
       let(:user){ create(:user) }
-      let(:errors){ e = ActiveModel::Errors.new(Backer.new); e.add(:value, 'is wrong'); e }
-
-      before do
-        Backer.any_instance.stub(:errors).and_return(errors)
-        post :create, {locale: :pt, project_id: project.id, backer: { value: '20.00', reward_id: '0', anonymous: '0' }}
-      end
+      let(:back_value) { 2.0 }
 
       it{ should redirect_to new_project_backer_path(project) }
     end
