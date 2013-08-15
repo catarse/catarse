@@ -35,6 +35,15 @@ GIT
       nokogiri (~> 1.5.0)
 
 GIT
+  remote: git://github.com/josemarluedke/catarse_moip.git
+  revision: a326cab3c70391d4e4e75fe50639eca588afb8ff
+  branch: rails4
+  specs:
+    catarse_moip (2.0.0)
+      libxml-ruby (~> 2.6.0)
+      rails (~> 4.0)
+
+GIT
   remote: git://github.com/josemarluedke/catarse_paypal_express.git
   revision: c53b77e31231e09b1180b79a557c3342861ba9d0
   branch: rails4
@@ -252,6 +261,7 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.1.2)
       launchy (~> 2.2)
+    libxml-ruby (2.6.0)
     loofah (1.2.1)
       nokogiri (>= 1.4.4)
     mail (2.5.3)
@@ -462,6 +472,7 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   carrierwave (~> 0.8.0)
   catarse_mailchimp!
+  catarse_moip (~> 2.0.0)!
   catarse_paypal_express (~> 2.0.0)!
   chartkick
   coffee-rails (~> 4.0.0)
