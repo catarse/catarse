@@ -1,14 +1,11 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  include ActionView::Helpers::DateHelper
   load_and_authorize_resource only: [ :new, :create, :update, :destroy ]
 
   inherit_resources
-  has_scope :pg_search, :by_category_id, :near_of
-  has_scope :recent, :expiring, :successful, :recommended, :not_expired, type: :boolean
-  respond_to :html, except: [:backers]
-  respond_to :json, only: [:index, :show, :backers, :update]
-  skip_before_filter :detect_locale, only: [:backers]
+  has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired, :near_of
+  respond_to :html
+  respond_to :json, only: [:index, :show, :update]
 
   def index
     index! do |format|
@@ -36,7 +33,6 @@ class ProjectsController < ApplicationController
           @projects_near = Project.online.near_of(current_user.address_state).order("random()").limit(3) if current_user
           @expiring = Project.expiring_for_home(project_ids)
           @recent   = Project.recent_for_home(project_ids)
-          @blog_posts = blog_posts
         end
       end
     end
@@ -72,18 +68,13 @@ class ProjectsController < ApplicationController
         return redirect_to project_by_slug_path(resource.permalink)
       end
 
-      show!{
+      show! do
         @title = @project.name
-        @rewards = @project.rewards.includes(:project).rank(:row_order)
-        @backers = @project.backers.confirmed.limit(12).order("confirmed_at DESC")
+        @rewards = @project.rewards.includes(:project).rank(:row_order).all
         fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
-        #TODO find a way to make accessible_by work here
-        @updates = Array.new
-        @project.updates.order('created_at DESC').each do |update|
-          @updates << update if can? :see, update
-        end
+        @updates_count = @project.updates.count
         @update = @project.updates.where(id: params[:update_id]).first if params[:update_id].present?
-      }
+      end
     rescue ActiveRecord::RecordNotFound
       return render_404
     end
@@ -114,24 +105,6 @@ class ProjectsController < ApplicationController
   def embed_panel
     @title = resource.name
     render layout: false
-  end
-
-  def blog_posts
-    Blog.fetch_last_posts.inject([]) do |total,item|
-      total << item if total.size < 2
-      total
-    end
-  rescue
-    []
-  end
-
-  # Just to fix a minor bug,
-  # when user submit the project without some rewards.
-  def validate_rewards_attributes
-    rewards = params[:project][:rewards_attributes]
-    rewards.each do |r|
-      rewards.delete(r[0]) unless Reward.new(r[1]).valid?
-    end
   end
 
   protected
