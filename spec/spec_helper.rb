@@ -56,7 +56,7 @@ RSpec.configure do |config|
   # Stubs and configuration
   config.before(:each) do
     CatarseMailchimp::API.stub(:subscribe).and_return(true)
-    CatarseMailchimp::API.stub(:unsubscribe).and_return(true)    
+    CatarseMailchimp::API.stub(:unsubscribe).and_return(true)
     PaperTrail.controller_info = {}
     PaperTrail.whodunnit = nil
     Project.any_instance.stub(:store_image_url).and_return('http://www.store_image_url.com')

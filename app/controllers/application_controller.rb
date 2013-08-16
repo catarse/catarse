@@ -4,14 +4,16 @@ class ApplicationController < ActionController::Base
   layout :use_catarse_boostrap
   protect_from_forgery
 
+  before_filter :redirect_user_back_after_login, unless: :devise_controller?
+
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']
-    message = exception.message 
+    message = exception.message
 
     if current_user.nil?
-      redirect_to new_user_session_path, alert: I18n.t('devise.failure.unauthenticated')
+      redirect_to new_user_registration_path, alert: I18n.t('devise.failure.unauthenticated')
     elsif request.env["HTTP_REFERER"]
-      redirect_to :back, alert: message 
+      redirect_to :back, alert: message
     else
       redirect_to root_path, alert: message
     end
@@ -27,7 +29,7 @@ class ApplicationController < ActionController::Base
     @fb_admins = [100000428222603, 547955110]
   end
 
-  # We use this method only to make stubing easier 
+  # We use this method only to make stubing easier
   # and remove FB templates from acceptance tests
   def render_facebook_sdk
     render_to_string(partial: 'layouts/facebook_sdk').html_safe
@@ -78,7 +80,7 @@ class ApplicationController < ActionController::Base
       new_locale = (current_user.locale if current_user) || I18n.default_locale
       begin
         return redirect_to params.merge(locale: new_locale, only_path: true)
-      rescue ActionController::RoutingError 
+      rescue ActionController::RoutingError
         logger.info "Could not redirect with params #{params.inspect} in set_locale"
       end
     end
@@ -106,4 +108,11 @@ class ApplicationController < ActionController::Base
   def force_http
     redirect_to(protocol: 'http', host: ::Configuration[:base_domain]) if request.ssl?
   end
+
+  def redirect_user_back_after_login
+    if request.env['REQUEST_URI'].present? && !request.xhr?
+      session[:return_to] = request.env['REQUEST_URI']
+    end
+  end
+
 end
