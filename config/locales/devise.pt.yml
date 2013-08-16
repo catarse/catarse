@@ -7,7 +7,7 @@ pt:
       send_instructions: Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.
       send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar sua conta em alguns minutos.
     failure:
-      password_token: 'Esse link para recuperar senha expirou. Insira novamente seu email'
+      password_token: 'O link para recuperar senha expirou. Insira novamente seu email'
       already_authenticated: ''
       #already_authenticated: Você já está autenticado.
       inactive: A sua conta ainda não foi ativada.
@@ -16,7 +16,7 @@ pt:
       locked: A sua conta está bloqueada.
       not_found_in_database: Email ou senha inválidos
       timeout: A sua sessão expirou, por favor, faça login novamente para continuar.
-      unauthenticated: Para continuar, faça login ou registre-se.
+      unauthenticated: ''
       unconfirmed: Antes de continuar, confirme a sua conta.
     mailer:
       confirmation_instructions:
@@ -31,9 +31,10 @@ pt:
       #success: Autorizado com sucesso de uma conta de %{kind}.
     passwords:
       no_token: Você não pode acessar esta página sem estar logado. Se você veio de um email de lembre de senha, por favor certifique-se de ter  digitado a URL corretamente.
-      send_instructions: Dentro de minutos, você receberá um email com as instruções de reinicialização da sua senha.
+      send_instructions: Acabamos de enviar um email com instruções para redefinir uma nova
       send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com um link para recuperação da senha.
-      updated: A sua senha foi alterada com sucesso. Você está autenticado.
+      updated: ''
+      #updated: Sua senha foi alterada com sucesso
       updated_not_active: Sua senha foi alterada com sucesso.
       new:
         site_title: 'Esqueci minha senha'
