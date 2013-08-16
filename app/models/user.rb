@@ -288,7 +288,7 @@ class User < ActiveRecord::Base
   end
 
   def fix_facebook_link
-    if !self.facebook_link.empty?
+    if !self.facebook_link.blank?
       self.facebook_link = ('http://' + self.facebook_link) unless self.facebook_link[/^https?:\/\//]
     end
   end
