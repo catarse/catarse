@@ -21,7 +21,6 @@
               = image_tag 'catarse/icon-fb.png', title: 'Facebook'
         #recommended_projects
           h2 = t('.recommended_projects')
-          - rp = @backer.user.recommended_projects(3)
-          - rp.each do |project|
+          - @backer.user.recommended_projects.limit(3).each do |project|
             = render partial: 'projects/project', locals: {project: project }
       .clearfix
