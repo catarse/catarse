@@ -36,7 +36,7 @@ describe Channels::ChannelsSubscribersController do
 
     context "when no user is signed in" do 
       let(:current_user){ nil }
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to new_user_registration_path }
     end
   end
 
