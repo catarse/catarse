@@ -75,7 +75,6 @@ RSpec.configure do |config|
       c.any_instance.stub(:display_uservoice_sso)
     end
     Configuration[:base_domain] = 'localhost'
-    Configuration[:project_finish_time] = '02:59:59'
     ::Configuration['email_contact'] = 'foo@bar.com'
   end
 end
