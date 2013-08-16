@@ -5,7 +5,17 @@ require 'spec_helper'
 describe "Users" do
   before do
     FactoryGirl.create(:notification_type, name: 'updates')
-    OauthProvider.create! name: 'facebook', key: 'dummy_key', secret: 'dummy_secret'    
+    OauthProvider.create! name: 'facebook', key: 'dummy_key', secret: 'dummy_secret'
+  end
+
+  describe "redirect to the last page after login" do
+    before do
+      @project = create(:project)
+      visit project_by_slug_path(permalink: @project.permalink)
+      login(:link)
+    end
+
+    it { current_path.should == project_by_slug_path(permalink: @project.permalink) }
   end
 
   describe "the notification tab" do

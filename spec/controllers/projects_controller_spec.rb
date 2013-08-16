@@ -18,7 +18,7 @@ describe ProjectsController do
     end
 
     context "when no user is logged in" do
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to new_user_registration_path }
     end
 
     context "when user is logged in" do
