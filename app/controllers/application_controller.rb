@@ -110,8 +110,8 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_user_back_after_login
-    if request.env['HTTP_REFERER'].present?
-      session[:return_to] = request.env['HTTP_REFERER']
+    if request.env['REQUEST_URI'].present? && !request.xhr?
+      session[:return_to] = request.env['REQUEST_URI']
     end
   end
 
