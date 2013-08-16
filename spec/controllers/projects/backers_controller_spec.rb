@@ -19,7 +19,7 @@ describe Projects::BackersController do
     end
 
     context "when no user is logged in" do
-      it{ should redirect_to(new_user_session_path) }
+      it{ should redirect_to(user_user_registration_path) }
     end
 
     context "when backer don't exist in current_user" do
@@ -40,7 +40,7 @@ describe Projects::BackersController do
     end
 
     context "without user" do
-      it{ should redirect_to(new_user_session_path) }
+      it{ should redirect_to(new_user_registration_path) }
     end
 
     context "when backer don't exist in current_user" do
@@ -77,7 +77,7 @@ describe Projects::BackersController do
     end
 
     context "when no user is logged" do
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to new_user_registration_path }
       it('should set the session[:return_to]'){ session[:return_to].should == "/test_path" }
     end
 
@@ -113,7 +113,7 @@ describe Projects::BackersController do
 
     context "when no user is logged" do
       let(:user){ nil }
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to new_user_registration_path }
     end
 
     context "when user is logged in but project.online? is false" do
@@ -147,7 +147,7 @@ describe Projects::BackersController do
     end
 
     context "when no user is logged in" do
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to new_user_registration_path }
       it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
 
