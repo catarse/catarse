@@ -287,6 +287,12 @@ class User < ActiveRecord::Base
     self.twitter.gsub!(/@/, '') if self.twitter
   end
 
+  def fix_facebook_link
+    if !self.facebook_link.blank?
+      self.facebook_link = ('http://' + self.facebook_link) unless self.facebook_link[/^https?:\/\//]
+    end
+  end
+
   # Returns a Gravatar URL associated with the email parameter, uses local avatar if available
   def gravatar_url
     return unless email
