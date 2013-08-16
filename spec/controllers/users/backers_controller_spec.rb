@@ -43,7 +43,7 @@ describe Users::BackersController do
         failed_backer.reload
         failed_backer.requested_refund?.should be_false
       end
-      it{ should redirect_to new_user_session_path }
+      it{ should redirect_to new_user_registration_path }
     end
     
     context "when current_user have a confirmed backer" do
