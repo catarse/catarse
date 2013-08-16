@@ -94,7 +94,8 @@ group :production do
   gem 'heroku-deflater', '>= 0.4.1'
 
   # Make heroku serve static assets and loggin with stdout
-  gem 'rails_on_heroku'
+  #gem 'rails_on_heroku'
+  gem 'rails_12factor', group: :production
 
   # Monitoring with the new new relic
   gem 'newrelic_rpm'
@@ -105,20 +106,21 @@ group :production do
   #gem 'memcachier'
   #gem 'dalli'
 end
-
 group :development do
   gem "letter_opener"
   gem 'foreman'
   gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'rack-mini-profiler'
+  gem 'binding_of_caller'
 end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.0'
+  gem 'pry'
 end
 
 group :test do
+  gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda'
