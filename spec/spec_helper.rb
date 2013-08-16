@@ -56,7 +56,7 @@ RSpec.configure do |config|
   # Stubs and configuration
   config.before(:each) do
     CatarseMailchimp::API.stub(:subscribe).and_return(true)
-    CatarseMailchimp::API.stub(:unsubscribe).and_return(true)    
+    CatarseMailchimp::API.stub(:unsubscribe).and_return(true)
     PaperTrail.controller_info = {}
     PaperTrail.whodunnit = nil
     Project.any_instance.stub(:store_image_url).and_return('http://www.store_image_url.com')
@@ -75,6 +75,7 @@ RSpec.configure do |config|
       c.any_instance.stub(:display_uservoice_sso)
     end
     Configuration[:base_domain] = 'localhost'
+    Configuration[:project_finish_time] = '02:59:59'
     ::Configuration['email_contact'] = 'foo@bar.com'
   end
 end
