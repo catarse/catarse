@@ -18,14 +18,13 @@ pt:
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, financiamento coletivo, projeto, comunidade, open source"
   login:
-    forgot_password: 
+    forgot_password:
       welcome: 'Redefinir senha'
       label: 'Insira seu email para mudar a senha'
       submit: 'Redefinir'
     registrations:
       site_title: "Cadastre-se"
       welcome: 'Cadastre-se'
-      password_hint: 'Minimo 6 caracteres'
       show_password: 'Exibir senha'
       submit: 'Criar conta'
     singin: "Faça seu login"
