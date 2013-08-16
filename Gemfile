@@ -92,6 +92,8 @@ group :production do
   # If you don't use Heroku, please comment the line below.
   gem 'heroku-deflater', '>= 0.4.1'
 
+  # Make heroku serve static assets and loggin with stdout
+  gem 'rails_on_heroku'
 
   # Monitoring with the new new relic
   gem 'newrelic_rpm'
