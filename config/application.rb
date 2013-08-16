@@ -53,10 +53,5 @@ module Catarse
     # TODO: remove
     config.active_record.whitelist_attributes = false
 
-    # NOTE: loader all configuration files that need to
-    # Configuration model
-    config.after_initialize do
-      Dir[Rails.root.join("config/after_initialize/**/*.rb")].each {|f| require f}
-    end
   end
 end
