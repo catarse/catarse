@@ -1,4 +1,4 @@
-- if flash[:alert]
+- if flash[:alert].present?
   .alert-box.alert.animated.shake
     .large-16.large-centered.columns
       h3= t('failure_title')
