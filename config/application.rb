@@ -14,6 +14,12 @@ module Catarse
       Devise::Mailer.layout "email" # email.haml or email.erb
     end
 
+    #NOTE: the custom view path is for build a new style without need to
+    # edit the catarse_views
+    config.paths['app/views'].unshift(
+      "#{Rails.root}/app/views/custom", 
+      "#{Rails.root}/app/views/catarse_bootstrap")
+
     config.active_record.schema_format = :sql
 
     # Since Rails 3.1, all folders inside app/ will be loaded automatically

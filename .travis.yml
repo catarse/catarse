@@ -20,3 +20,4 @@ branches:
     - master
     - production
     - channels
+    - rails-4
