@@ -19,7 +19,7 @@ describe Projects::BackersController do
     end
 
     context "when no user is logged in" do
-      it{ should redirect_to(user_user_registration_path) }
+      it{ should redirect_to(new_user_registration_path) }
     end
 
     context "when backer don't exist in current_user" do
@@ -148,7 +148,6 @@ describe Projects::BackersController do
 
     context "when no user is logged in" do
       it{ should redirect_to new_user_registration_path }
-      it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
 
     context "when user logged in is different from backer" do
