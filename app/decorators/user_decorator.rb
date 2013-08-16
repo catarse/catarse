@@ -25,10 +25,10 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_credits
-    number_to_currency source.credits, unit: 'R$', precision: 0, delimiter: '.'
+    number_to_currency source.credits
   end
 
   def display_total_of_backs
-    number_to_currency source.backs.confirmed.sum(:value), unit: 'R$', precision: 0, delimiter: '.'
+    number_to_currency source.backs.confirmed.sum(:value)
   end
 end
