@@ -11,7 +11,7 @@ pt:
         labels:
           show_password: 'Exibir senha'
         hint:
-          password_length: 'Mínimo de 6 caracteres'
+          password_length: 'Mínimo 6 caracteres'
         inputs:
           submit: 'Efetuar cadastro'
           facebook: 'Entrar com Facebook'
