@@ -1,0 +1,1 @@
+OmniauthCallbacksController.add_providers rescue nil
