@@ -7,4 +7,5 @@
   .alert-box.alert.animated.shake
     .large-16.large-centered.columns
       h3= t('failure_title')
-      p= resource.errors.full_messages.join
+      - resource.errors.messages.each do |message|
+        p= message[1].to_sentence
