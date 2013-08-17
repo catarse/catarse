@@ -16,5 +16,6 @@ class UserObserver < ActiveRecord::Observer
 
   def before_save(user)
     user.fix_twitter_user
+    user.fix_facebook_link
   end
 end

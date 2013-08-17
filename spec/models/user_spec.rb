@@ -219,9 +219,11 @@ describe User do
         u.email = 'diogob@gmail.com'
         u.password = '123456'
         u.twitter = '@dbiazus'
+        u.facebook_link = 'facebook.com/test'
       end
     end
     its(:twitter){ should == 'dbiazus' }
+    its(:facebook_link){ should == 'http://facebook.com/test' }
   end
 
   describe "#total_backed_projects" do
@@ -316,6 +318,18 @@ describe User do
     context "when user do not have a FB authorization" do
       let(:user){ create(:user) }
       it{ should == nil }
+    end
+  end
+
+  describe "#fix_facebook_link" do
+    subject{ user.facebook_link }
+    context "when user provides invalid url" do
+      let(:user){ create(:user, facebook_link: 'facebook.com/foo') }
+      it{ should == 'http://facebook.com/foo' }
+    end
+    context "when user provides valid url" do
+      let(:user){ create(:user, facebook_link: 'http://facebook.com/foo') }
+      it{ should == 'http://facebook.com/foo' }
     end
   end
 

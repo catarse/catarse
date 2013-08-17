@@ -1,12 +1,6 @@
 module FeatureHelpers
-  def login(via = :visit)
-    if via == :visit
-      visit new_user_session_path
-    else
-      within "#header" do
-        click_link 'login'
-      end
-    end
+  def login
+    visit new_user_session_path
 
     within ".login-box" do
       fill_in 'user_email', with: current_user.email

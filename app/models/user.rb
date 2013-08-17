@@ -54,26 +54,23 @@ class User < ActiveRecord::Base
     #:other_link,
     #:moip_login
 
-  include ActionView::Helpers::NumberHelper
-  include ActionView::Helpers::TextHelper
-  include Rails.application.routes.url_helpers
-
   mount_uploader :uploaded_image, LogoUploader
 
   validates_length_of :bio, maximum: 140
 
   validates_presence_of :email
-  validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?
-  validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, :allow_blank => true, :if => :email_changed?
+  validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?, :message => I18n.t('activerecord.errors.models.user.attributes.email.taken')
+  validates_format_of :email, :with => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
 
   validates_presence_of :password, :if => :password_required?
-  #validates_confirmation_of :password, :if => :password_required?
-  validates_length_of :password, :within => 6..128, :allow_blank => true
+  validates_confirmation_of :password, :if => :password_confirmation_required?
+  validates_length_of :password, :within => Devise.password_length, :allow_blank => true
 
   schema_associations
   has_many :oauth_providers, through: :authorizations
   has_many :backs, class_name: "Backer"
   has_one :user_total
+  has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
 
   # Channels relation
@@ -81,8 +78,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
   has_many :channels_projects, through: :channels, source: :projects
   has_many :channels_subscribers
-
-
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
 
@@ -201,28 +196,6 @@ class User < ActiveRecord::Base
     u
   end
 
-  def recommended_projects(quantity = 1)
-    # It returns the project that have the biggest amount of backers
-    # that contributed to the last project the user contributed that has common backers.
-    backs.includes(:project).order('created_at DESC').each do |back|
-      project = ActiveRecord::Base.connection.execute("
-        SELECT count(*), project_id
-        FROM backers b
-        JOIN projects p ON b.project_id = p.id
-        WHERE
-          (p.expires_at) > current_timestamp AND
-          p.id NOT IN (SELECT project_id
-                        FROM backers WHERE user_id = #{id}) AND
-          b.user_id in (SELECT user_id
-                        FROM backers WHERE state='confirmed' AND project_id = #{back.project.id.to_i}) AND
-          p.state = 'online' GROUP BY 2 ORDER BY 1 DESC LIMIT #{quantity}")
-      project_ids = Array.new
-      project.values.each {|x| project_ids << x[1]}
-      return Project.find(project_ids) unless project.count == 0
-    end
-    Project.visible.online.where(category_id: backs.last.project.category.id).last(quantity) unless backs.count == 0
-  end
-
   def total_backs
     backs.confirmed.not_anonymous.count
   end
@@ -251,41 +224,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  def as_json(options={})
-
-    json_attributes = {}
-
-    if not options or (options and not options[:anonymous])
-      json_attributes.merge!({
-        id: id,
-        name: display_name,
-        short_name: short_name,
-        medium_name: medium_name,
-        image: display_image,
-        total_backs: total_backs,
-        backs_text: backs_text,
-        url: user_path(self),
-        city: address_city,
-        state: address_state
-      })
-    end
-
-    if options and options[:can_manage]
-      json_attributes.merge!({
-        email: email
-      })
-    end
-
-    json_attributes
-
-  end
-
   def twitter_link
     "http://twitter.com/#{self.twitter}"
   end
 
   def fix_twitter_user
     self.twitter.gsub!(/@/, '') if self.twitter
+  end
+
+  def fix_facebook_link
+    if !self.facebook_link.blank?
+      self.facebook_link = ('http://' + self.facebook_link) unless self.facebook_link[/^https?:\/\//]
+    end
   end
 
   # Returns a Gravatar URL associated with the email parameter, uses local avatar if available
@@ -296,6 +246,10 @@ class User < ActiveRecord::Base
 
   def password_required?
     !persisted? || !password.nil? || !password_confirmation.nil?
+  end
+
+  def password_confirmation_required?
+    !new_record?
   end
 
 end

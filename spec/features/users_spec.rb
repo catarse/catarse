@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe "Users" do
   before do
-    FactoryGirl.create(:notification_type, name: 'updates')
+    create(:notification_type, name: 'updates')
     OauthProvider.create! name: 'facebook', key: 'dummy_key', secret: 'dummy_secret'
   end
 
@@ -12,7 +12,7 @@ describe "Users" do
     before do
       @project = create(:project)
       visit project_by_slug_path(permalink: @project.permalink)
-      login(:link)
+      login
     end
 
     it { current_path.should == project_by_slug_path(permalink: @project.permalink) }
@@ -21,7 +21,7 @@ describe "Users" do
   describe "the notification tab" do
     before do
       login
-      @project = FactoryGirl.create(:backer, user: current_user).project
+      @project = create(:backer, user: current_user).project
       visit user_path(current_user, locale: :pt)
       click_link 'unsubscribes_link'
     end

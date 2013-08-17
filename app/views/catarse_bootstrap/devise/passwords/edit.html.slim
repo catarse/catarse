@@ -14,6 +14,8 @@
           = f.hidden_field :reset_password_token
           p
             = f.label :password, t('pages.reset_password.form.labels.password')
+            span.right.text-right.inline-hint
+              = t('pages.sign_up.form.hint.password_length')
             = f.password_field :password, class: [:login, :password], required: true
 
           p
