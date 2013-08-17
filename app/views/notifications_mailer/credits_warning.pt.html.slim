@@ -8,7 +8,7 @@ br
 |Abaixo selecionamos algumas sugestões de projetos especialmente para você:
 br
 br
--backer.user.recommended_projects(3).each do |project|
+-backer.user.recommended_projects.limit(3).each do |project|
   |#{link_to(project.name, "#{Configuration[:base_url]}/projects/#{project.to_param}")}
   br
   |#{project.headline}
