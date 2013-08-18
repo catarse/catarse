@@ -19,7 +19,7 @@ describe "Projects" do
   describe "home" do
     before do
       create(:project, state: 'online', online_days: 30, online_date: Time.now)
-      create(:project, state: 'online', online_days: -30)
+      create(:project, state: 'online', online_days: 30, online_date: 7.days.ago)
       visit root_path(locale: :pt)
     end
 
