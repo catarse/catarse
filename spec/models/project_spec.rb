@@ -190,52 +190,6 @@ describe Project do
     it{ should == [@project] }
   end
 
-  describe ".recommended_for_home" do
-    subject{ Project.recommended_for_home }
-
-    before do
-      Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
-      Project.should_receive(:recommended).and_return(Project)
-      Project.should_receive(:visible).and_return(Project)
-      Project.should_receive(:not_expired).and_return(Project)
-      Project.should_receive(:order).with('random()').and_return(Project)
-      Project.should_receive(:limit).with(4)
-    end
-
-    it{ should be_empty }
-  end
-
-  describe ".expiring_for_home" do
-    subject{ Project.expiring_for_home(1) }
-
-    before do
-      Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
-      Project.should_receive(:visible).and_return(Project)
-      Project.should_receive(:expiring).and_return(Project)
-      Project.should_receive(:order).with("projects.expires_at, random()").and_return(Project)
-      Project.should_receive(:where).with("coalesce(id NOT IN (?), true)", 1).and_return(Project)
-      Project.should_receive(:limit).with(3)
-    end
-
-    it{ should be_empty }
-  end
-
-  describe ".recent_for_home" do
-    subject{ Project.recent_for_home(1) }
-
-    before do
-      Project.should_receive(:includes).with(:user, :category, :project_total).and_return(Project)
-      Project.should_receive(:visible).and_return(Project)
-      Project.should_receive(:recent).and_return(Project)
-      Project.should_receive(:not_expiring).and_return(Project)
-      Project.should_receive(:order).with('random()').and_return(Project)
-      Project.should_receive(:where).with("coalesce(id NOT IN (?), true)", 1).and_return(Project)
-      Project.should_receive(:limit).with(3)
-    end
-
-    it{ should be_empty }
-  end
-
   describe ".expired" do
     before do
       @p = create(:project, online_days: -1)
