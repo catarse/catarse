@@ -1,9 +1,6 @@
 source 'https://rubygems.org'
 
-# For heroku
 ruby '2.0.0'
-# Papertrail does not work with rails 3.2.12 + ruby 2.0.0
-# https://github.com/airblade/paper_trail/issues/208
 
 gem 'rails',    '4.0.0'
 gem 'mail',     '2.5.3'
@@ -51,10 +48,10 @@ gem 'ezcrypto'
 
 # See https://github.com/ryanb/cancan/tree/2.0 for help about this
 # In resume: this version of cancan allow checking for authorization on specific fields on the model
-gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
+gem 'cancan', github: 'ryanb/cancan', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
 
 # Email marketing
-gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref: '45dc426'
+gem 'catarse_mailchimp', github: 'catarse/catarse_mailchimp', ref: '45dc426'
 
 # HTML manipulation and formatting
 gem 'formtastic',   '~> 2.2.1'
@@ -80,7 +77,7 @@ gem 'http_accept_language'
 gem 'routing-filter', '~> 0.4.0.pre'
 
 # Payment
-gem 'moip', git: 'git://github.com/catarse/moip-ruby.git'
+gem 'moip', github: 'catarse/moip-ruby'
 gem 'httpclient',     '>= 2.2.5'
 
 group :production do
