@@ -64,15 +64,6 @@ class Project < ActiveRecord::Base
   scope :recent, -> { where("(current_timestamp) - projects.online_date <= '5 days'::interval") }
   scope :successful, -> { where(state: 'successful') }
   scope :online, -> { where(state: 'online') }
-
-  scope :recommended_for_home, ->{
-    includes(:user, :category, :project_total).
-    recommended.
-    visible.
-    not_expired.
-    order('random()').
-    limit(4)
-  }
   scope :order_for_search, ->{ reorder("
                                      CASE projects.state
                                      WHEN 'online' THEN 1
@@ -80,12 +71,6 @@ class Project < ActiveRecord::Base
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
                                      END ASC, online_date DESC, created_at DESC, id DESC") }
-  scope :expiring_for_home, ->(exclude_ids){
-    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.expiring.order("projects.expires_at, random()").limit(3)
-  }
-  scope :recent_for_home, ->(exclude_ids){
-    includes(:user, :category, :project_total).where("coalesce(id NOT IN (?), true)", exclude_ids).visible.recent.not_expiring.order('random()').limit(3)
-  }
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
