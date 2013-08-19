@@ -1,31 +1,20 @@
-#show_formatting_tips
-  | Want to use images, videos, links and formatting?
-  a href="#" Click here
-  | .
 #formatting_tips
-  h3 Learn how you can format your comment
-  ul
-    li
-      | If you paste the URL of an image or a video from Vimeo or YouTube, they will be embedded in your comment. Try it on!
-    li
-      | When you paste any other URL, it will become a link. For example, http://catarse.me will become
-      a href="#{Configuration[:base_url]}" target="_blank" #{Configuration[:base_url]}
-      | .
-    li
-      | If you want to add some text to the link, just use the following format:
-      strong "the text you want":http://your.url
-      | . For example, "#{Configuration[:company_name]}":http://catarse.me will become
-      a href="#{Configuration[:base_url]}" target="_blank" #{Configuration[:company_name]}
-      | .
-    li
-      | You can use
-      strong bold
-      | just adding an asterisk (*) before and after the text you want to format. For example, *my bold text* will be shown as
-      strong my bold text
-      | .
-    li
-      | You can use
-      em italic
-      | just adding an underline (_) before and after the text you want to format. For example, _my italic text_ will be shown as
-      em my italic text
-      | .
+  .tips
+    h3 Formatting Tips
+    = image_tag "catarse/icon_media.png"
+    p If you paste the url of an image or a video from vimeo or youtube, they will appear the video. try it!
+    = image_tag "catarse/icon_url.png"
+    p When you paste any url, it will turn a link. For example, http://mylink.com will turn <a href="http://www.mylink.com">http://www.mylink.com</a>
+    = image_tag "catarse/icon_linktext.png"
+    p If you want to put text in link, simply use the following format: "the text you want":http://your.url. For example, 'My link':http://mylink.com will turn <a href="http://www.mylink.com">My link</a>.
+    = image_tag "catarse/icon_bold.png"
+    p
+      | You can use bold adding two asterisks (**) before and after the text you want to format. For example, **my bold text** will appear as
+      strong  my bold text
+      |.
+    = image_tag "catarse/icon_italic.png"
+    p
+      | You can use italic adding an underscore (_) before and after the text you want to format. For example, _my italic text_ will appear as
+      i  my italic text
+      |.
+
