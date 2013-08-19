@@ -109,8 +109,9 @@ group :development do
   gem "letter_opener"
   gem 'foreman'
   gem 'better_errors'
-  gem 'rack-mini-profiler'
   gem 'binding_of_caller'
+  # Uncomment only for optimization, should be commented on master branch
+  # gem 'rack-mini-profiler'
 end
 
 group :test, :development do
