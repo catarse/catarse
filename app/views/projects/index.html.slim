@@ -20,9 +20,8 @@
           .title
             h2= t('sections.selection.title')
         .projects
-          = render partial: 'project', locals: {project: @first_project, custom_class: 'first' } if @first_project
-          = render partial: 'project', locals: {project: @second_project } if @second_project
-          = render partial: 'project', locals: {project: @third_project, custom_class: 'last' } if @third_project
+          - @recommends.each_with_index do |item,i|
+            == render 'project', project: item, custom_class: ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
         .explore_link
           hr
           = link_to t('main.links.selected'), explore_path(anchor: :recommended)

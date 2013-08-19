@@ -217,7 +217,7 @@ Devise.setup do |config|
     begin
       OauthProvider.all.each do |p|
         config.omniauth p.name, p.key, p.secret, scope: p.scope
-      end 
+      end
     rescue Exception => e
       puts "problem while using OauthProvider model:\n '#{e.message}'"
     end
@@ -232,9 +232,9 @@ Devise.setup do |config|
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
 
-  config.warden do |manager|
-    manager.failure_app = DeviseCustomFailure
-  end
+  #config.warden do |manager|
+  #  manager.failure_app = DeviseCustomFailure
+  #end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
