@@ -10,7 +10,7 @@ describe ProjectsForHome do
     subject { ProjectsForHome.recommends }
 
     it { should have(3).itens }
-    it("should not include project that recommended is false") { subject.include?(@not_recommended_01).should be_false }
+    it { should_not include(@not_recommended_01) }
   end
 
   describe '.recents' do
@@ -22,7 +22,7 @@ describe ProjectsForHome do
     subject { ProjectsForHome.recents }
 
     it { should have(3).itens }
-    it("should not include project that is more that 5 days online") { subject.include?(@not_recents_01).should be_false }
+    it { should_not include(@not_recents_01) }
   end
 
   describe '.expiring' do
@@ -34,6 +34,6 @@ describe ProjectsForHome do
     subject { ProjectsForHome.expiring }
 
     it { should have(3).itens }
-    it("should not include project that is expiration is more that 2 weeks") { subject.include?(@not_expiring_01).should be_false }
+    it { should_not include(@not_expiring_01) }
   end
 end
