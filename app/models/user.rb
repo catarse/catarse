@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     #:other_link,
     #:moip_login
 
-  mount_uploader :uploaded_image, LogoUploader
+  mount_uploader :uploaded_image, UserUploader
 
   validates_length_of :bio, maximum: 140
 
