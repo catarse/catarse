@@ -39,7 +39,7 @@ class Project < ActiveRecord::Base
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_id, ->(id) { where(id: id) }
-  scope :by_permalink, ->(p) { where("lower(permalink) = lower(?)", p) }
+  scope :by_permalink, ->(p) { not_deleted_projects.where("lower(permalink) = lower(?)", p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
@@ -125,10 +125,6 @@ class Project < ActiveRecord::Base
 
   def video
     @video ||= VideoInfo.get(self.video_url) if self.video_url.present?
-  end
-
-  def to_param
-    "#{self.id}-#{self.name.parameterize}"
   end
 
   def pledged
