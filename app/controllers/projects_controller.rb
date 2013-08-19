@@ -1,8 +1,8 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
   load_and_authorize_resource only: [ :new, :create, :update, :destroy ]
-
   inherit_resources
+
   has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired, :near_of
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
@@ -53,23 +53,11 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    begin
-      if params[:permalink].present?
-        @project = Project.not_deleted_projects.by_permalink(params[:permalink]).last
-      else
-        return redirect_to project_by_slug_path(resource.permalink)
-      end
-
-      show! do
-        @title = @project.name
-        @rewards = @project.rewards.includes(:project).rank(:row_order).all
-        fb_admins_add(@project.user.facebook_id) if @project.user.facebook_id
-        @updates_count = @project.updates.count
-        @update = @project.updates.where(id: params[:update_id]).first if params[:update_id].present?
-      end
-    rescue ActiveRecord::RecordNotFound
-      return render_404
-    end
+    @title = resource.name
+    @rewards = resource.rewards.includes(:project).rank(:row_order).all
+    fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
+    @updates_count = resource.updates.count
+    @update = resource.updates.where(id: params[:update_id]).first if params[:update_id].present?
   end
 
   def video
@@ -102,6 +90,6 @@ class ProjectsController < ApplicationController
   protected
 
   def resource
-    @project ||= Project.not_deleted_projects.find params[:id]
+    @project ||= (params[:permalink].present? ? Project.by_permalink(params[:permalink]).first! : Project.find(params[:id]))
   end
 end
