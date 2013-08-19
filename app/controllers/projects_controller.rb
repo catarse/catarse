@@ -17,22 +17,15 @@ class ProjectsController < ApplicationController
         else
 
           @title = t("site.title")
-          collection_projects = Project.recommended_for_home
-          unless collection_projects.empty?
-            if current_user && (@recommended_projects = current_user.recommended_projects.first)
-              collection_projects   ||= collection_projects.where("id != ? AND category_id != ?",
-                                                                  current_user.recommended_projects.last.id,
-                                                                  @recommended_projects.last.category_id)
-            end
-            @first_project, @second_project, @third_project, @fourth_project = collection_projects.all
-          end
-
-          project_ids = collection_projects.map{|p| p.id }
-          project_ids << @recommended_projects.last.id if @recommended_projects
+          @recommends = if current_user && current_user.recommended_projects.present?
+                            current_user.recommended_projects.limit(3)
+                          else
+                            ProjectsForHome.recommends
+                          end
 
           @projects_near = Project.online.near_of(current_user.address_state).order("random()").limit(3) if current_user
-          @expiring = Project.expiring_for_home(project_ids)
-          @recent   = Project.recent_for_home(project_ids)
+          @expiring = ProjectsForHome.expiring
+          @recent   = ProjectsForHome.recents
         end
       end
     end
