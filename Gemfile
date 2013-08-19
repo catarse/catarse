@@ -5,9 +5,11 @@ ruby '2.0.0'
 # Papertrail does not work with rails 3.2.12 + ruby 2.0.0
 # https://github.com/airblade/paper_trail/issues/208
 
-# We got some weird bug concerning encoding of AR objects in rails 3.2.13+
 gem 'rails',    '4.0.0'
 gem 'mail',     '2.5.3'
+
+gem 'protected_attributes', '~> 1.0.3' # When upgrade to strong_parameters, remove this gem.
+gem 'rails-observers', '~> 0.1.2'
 
 gem 'sidekiq',  '~> 2.13.0'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
@@ -148,6 +150,3 @@ gem 'rails_autolink', '~> 1.1.0'
 # TODO: Take a look on dependencies
 gem "RedCloth"
 
-# TODO: Rails 4 upgrade gems
-gem 'protected_attributes', '~> 1.0.1'
-gem 'rails-observers', '~> 0.1.2'
