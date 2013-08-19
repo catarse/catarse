@@ -517,7 +517,7 @@ DEPENDENCIES
   pg_search
   poltergeist
   postgres-copy!
-  protected_attributes (~> 1.0.1)
+  protected_attributes (~> 1.0.3)
   pry
   rack-mini-profiler
   rack-timeout
