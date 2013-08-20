@@ -27,6 +27,6 @@ class Adm::ProjectsController < Adm::BaseController
   end
 
   def collection
-    @projects = end_of_association_chain.not_deleted_projects.page(params[:page])
+    @projects = apply_scopes(end_of_association_chain).not_deleted_projects.page(params[:page])
   end
 end
