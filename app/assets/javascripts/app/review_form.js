@@ -1,4 +1,4 @@
-App.addChild('ReviewForm', {
+App.addChild('ReviewForm', _.extend({
   el: 'form#review_form',
 
   events: {
@@ -18,27 +18,8 @@ App.addChild('ReviewForm', {
     }
   },
 
-  validate: function(){
-    var valid = true;
-    this.$('input:visible').each(function(){
-      valid = valid && this.checkValidity();
-    });
-    this.$('input.error:visible:first').select();
-    return valid;
-  },
-
   activate: function(){
-    this.$('input').on('invalid', this.invalid);
-  },
-
-  checkInput: function(event){
-    if(event.currentTarget.checkValidity()){
-      this.$(event.currentTarget).removeClass("error");
-    }
-  },
-
-  invalid: function(event){
-    this.$(event.currentTarget).addClass("error");
+    this.setupForm();
   },
 
   updateBacker: function(){
@@ -58,5 +39,5 @@ App.addChild('ReviewForm', {
       backer: backer_data
     });
   }
-});
+}, Skull.Form));
 
