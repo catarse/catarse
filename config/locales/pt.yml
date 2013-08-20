@@ -18,7 +18,7 @@ pt:
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, financiamento coletivo, projeto, comunidade, open source"
   login:
-    forgot_password: 
+    forgot_password:
       welcome: 'Redefinir senha'
       label: 'Insira seu email para mudar a senha'
       submit: 'Redefinir'
@@ -396,11 +396,11 @@ pt:
         draft: "Esse projeto é apenas um rascunho e ainda não está aberto para receber apoios."
       reached_of: "Atingidos de"
       submit: "Apoiar este projeto"
-    backer:
-      anonymous_backer: "Apoiador anônimo"
-      anonymous_description: "Optou por permanecer incógnito"
-      no_reward: "Este apoiador não selecionou nenhuma recompensa"
     backers:
+      backer:
+        anonymous_backer: "Apoiador anônimo"
+        anonymous_description: "Optou por permanecer incógnito"
+        no_reward: "Este apoiador não selecionou nenhuma recompensa"
       review:
         error: "Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente."
       show:
