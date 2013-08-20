@@ -23,6 +23,42 @@ describe BackerObserver do
   
   describe "before_save" do
 
+    context "when we change backer data" do
+      let(:user){ create(:user, {
+        address_street: 'old', 
+        address_number: 'old', 
+        address_neighbourhood: 'old', 
+        address_zip_code: 'old',
+        address_city: 'old',
+        address_state: 'old',
+        phone_number: 'old',
+        cpf: 'old'
+      }) }
+      subject{ user }
+      before do
+        create(:backer, {
+          address_street: 'new', 
+          address_number: 'new', 
+          address_neighbourhood: 'new', 
+          address_zip_code: 'new',
+          address_city: 'new',
+          address_state: 'new',
+          address_phone_number: 'new',
+          payer_document: 'new',
+          user: user
+        })
+      end
+
+      its(:address_street){ should == 'new' }
+      its(:address_number){ should == 'new' }
+      its(:address_neighbourhood){ should == 'new' }
+      its(:address_zip_code){ should == 'new' }
+      its(:address_city){ should == 'new' }
+      its(:address_state){ should == 'new' }
+      its(:phone_number){ should == 'new' }
+      its(:cpf){ should == 'new' }
+    end
+
     context "when payment_choice is updated to BoletoBancario" do
       let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
