@@ -1,8 +1,9 @@
 describe("Explore", function() {
   var view;
+  var parentView = { $search: { val: function(){} }, router: {route: function(){} } };
 
   beforeEach(function() {
-    view = new App.views.Explore();
+    view = new App.views.Explore({ parent: parentView });
   });
   
   describe("#$window", function() {
