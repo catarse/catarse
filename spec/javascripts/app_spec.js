@@ -7,13 +7,34 @@ describe("App", function() {
     view = new App();
   });
 
+  describe("#maskElement", function() {
+    var element = $('<input data-mask="999" />'); 
+    beforeEach(function() {
+      spyOn(view, "$").andReturn(element);
+      spyOn(element, "mask");
+      view.maskElement(1, element);
+    });
+    
+    it("should call mask using data from DOM element of parameter", function() {
+      expect(element.mask).wasCalledWith('999');
+    });
+  });  
+  
   describe("#activate", function() {
-    var best_in_place = { best_in_place: function(){} };
+    var best_in_place = { best_in_place: function(){}, each: function(callback){ callback(0, 'el'); } };
     beforeEach(function() {
       spyOn(best_in_place, "best_in_place");
       spyOn(view, "$").andReturn(best_in_place);
+      spyOn(view, "maskElement");
+      
       view.activate();
     });
+
+    it("should iterate over inputs with data-mask and call maskElement", function() {
+      expect(view.$).wasCalledWith('input[data-mask]');
+      expect(view.maskElement).wasCalledWith(0, 'el');
+    });
+    
 
     it("should call best_in_place for every .best_in_place class", function() {
       expect(view.$).wasCalledWith('.best_in_place');

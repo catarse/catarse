@@ -17,6 +17,7 @@ var App = window.App = Skull.View.extend({
     this.flash();
     this.notices();
     Backbone.history.start({pushState: false});
+    this.$('input[data-mask]').each(this.maskElement);
   },
 
   flash: function() {
@@ -31,6 +32,11 @@ var App = window.App = Skull.View.extend({
     setTimeout( function(){ this.$('.notice-box').fadeIn('slow') }, 100)
     if(this.$('.notice-box').length) setTimeout( function(){ that.$('.notice-box').fadeOut('slow') }, 16000)
     $('.notice-box a.notice-close').on('click', function(){ that.$('.notice-box').fadeOut('slow') })
+  },
+
+  maskElement: function(index, el){
+    var $el = this.$(el);
+    $el.mask($el.data('mask') + '');
   },
 
   toggleMenu: function(){
