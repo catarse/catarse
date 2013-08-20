@@ -74,6 +74,7 @@ RSpec.configure do |config|
     PaperTrail.whodunnit = nil
     Project.any_instance.stub(:store_image_url).and_return('http://www.store_image_url.com')
     ProjectObserver.any_instance.stub(:after_create)
+    UserObserver.any_instance.stub(:after_create)
     Project.any_instance.stub(:download_video_thumbnail)
     CatarseMailchimp::API.stub(:subscribe)
     CatarseMailchimp::API.stub(:unsubscribe)

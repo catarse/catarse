@@ -22,7 +22,7 @@ pt:
       confirmation_instructions:
         subject: Instruções de confirmação
       reset_password_instructions:
-        subject: Instruções para definição de uma nova senha
+        subject: Redefina sua senha
       unlock_instructions:
         subject: Instruções de desbloqueio
     omniauth_callbacks:
