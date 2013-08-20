@@ -7,7 +7,7 @@ class NotificationsMailer < ActionMailer::Base
     address = Mail::Address.new from_email
     address.display_name = (@notification.mail_params && @notification.mail_params.has_key?(:display_name)) ? @notification.mail_params[:display_name] : ::Configuration[:company_name]
     subject = I18n.t("notifications.#{@notification.notification_type.name}.subject", @notification.mail_params)
-    @header = I18n.t("notifications.#{@notification.notification_type.name}.header", @notification.mail_params, default: subject)
+    @header = I18n.t("notifications.#{@notification.notification_type.name}.header", @notification.mail_params)
     m = mail({
       from: address.format,
       to: @notification.user.email,
