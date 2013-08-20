@@ -1,5 +1,7 @@
 # coding: utf-8
 
+puts 'Seeding the database...'
+
 [
   { pt: 'Arte', en: 'Art' },
   { pt: 'Artes plásticas', en: 'Visual Arts' },
@@ -88,3 +90,31 @@ OauthProvider.find_or_create_by!(name: 'facebook') do |o|
   o.secret = 'your_facebook_app_secret'
   o.path = 'facebook'
 end
+
+puts
+puts '============================================='
+puts ' Showing all Authentication Providers'
+puts '---------------------------------------------'
+
+OauthProvider.all.each do |conf|
+  a = conf.attributes
+  puts "  name #{a['name']}"
+  puts "     key: #{a['key']}"
+  puts "     secret: #{a['secret']}"
+  puts "     path: #{a['path']}"
+  puts
+end
+
+
+puts
+puts '============================================='
+puts ' Showing all entries in Configuration Table...'
+puts '---------------------------------------------'
+
+Configuration.all.each do |conf|
+  a = conf.attributes
+  puts "  #{a['name']}: #{a['value']}"
+end
+
+puts '---------------------------------------------'
+puts 'Done!'
