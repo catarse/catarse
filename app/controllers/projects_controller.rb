@@ -69,12 +69,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def check_slug
-    valid = false
-    valid = true if !Project.permalink_on_routes?(params[:permalink]) && !Project.by_permalink(params[:permalink]).present?
-    render json: {available: valid}.to_json
-  end
-
   %w(embed video_embed).each do |method_name|
     define_method method_name do
       @title = resource.name
