@@ -140,10 +140,6 @@ class User < ActiveRecord::Base
     @decorator ||= UserDecorator.new(self)
   end
 
-  def have_address?
-    address_street.present? and address_number.present? and address_city.present?
-  end
-
   def admin?
     admin
   end
