@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     :other_link,
     :moip_login
 
-  mount_uploader :uploaded_image, LogoUploader
+  mount_uploader :uploaded_image, UserUploader
 
   validates_length_of :bio, maximum: 140
 
@@ -138,10 +138,6 @@ class User < ActiveRecord::Base
 
   def decorator
     @decorator ||= UserDecorator.new(self)
-  end
-
-  def have_address?
-    address_street.present? and address_number.present? and address_city.present?
   end
 
   def admin?

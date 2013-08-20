@@ -22,15 +22,15 @@
             ul#explore_quick
               - unless @recommended.empty?
                 li
-                  a[data-filter={recommended: true}.to_json href='#']
+                  a#recommended[data-filter={recommended: true}.to_json href='#']
                     = t('.recommended')
               - unless @expiring.empty?
                 li.no_margin
-                  a[data-filter={expiring: true}.to_json href='#']
+                  a#expiring[data-filter={expiring: true}.to_json href='#']
                     = t('.expiring')
               - unless @recent.empty?
                 li
-                  a[data-filter={recent: true}.to_json href='#']
+                  a#recent[data-filter={recent: true}.to_json href='#']
                     = t('.recent')
               - unless @successful.empty?
                 li.no_margin

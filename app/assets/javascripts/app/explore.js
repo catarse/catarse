@@ -12,6 +12,20 @@ App.addChild('Explore', _.extend({
     this.path = this.$("#explore_results").data('projects-path');
     this.setInitialFilter();
     this.setupScroll();
+    this.makeRoute('recommended');
+    this.makeRoute('expiring');
+    this.makeRoute('recent');
+  },
+
+  //@TODO: Remove this as soon as we migrate to turbolinks
+  makeRoute: function(name){
+    var that = this;
+    this.parent.router.route(name, name, function(){
+      var $link = that.$('a#' + name);
+      if($link.length > 0){
+        that.applyFilter({ target: $link });
+      }
+    });
   },
 
   setInitialFilter: function(){
