@@ -46,6 +46,7 @@ class Projects::BackersController < ApplicationController
   def create
     @title = t('projects.backers.create.title')
     @backer.user = current_user
+    @backer.reward_id = nil if params[:backer][:reward_id].to_i == 0
     create! do |success,failure|
       failure.html do
         flash[:failure] = t('projects.backers.review.error')
