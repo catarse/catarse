@@ -1,0 +1,43 @@
+- user = @notification.user
+- expiring = ProjectsForHome.expiring
+
+| Hey
+- if user.name
+  | , #{user.name}!
+
+br/
+br/
+| Welcome to Catarse. The most welcoming crowdfunding community in Brazil.
+br/
+br/
+| Keep in mind that your email to log in is: #{user.email}
+br/
+br/
+| For starters, it is worth knowing three projects that are in the final days:
+br/
+br/
+br/
+
+- if expiring.present? 
+  table border="0" cellpadding="3" cellspacing="0" width="520" align="center"
+    tr
+      - expiring.each do |project| 
+        td width="160" valign="top"
+          = link_to project_by_slug_url(project.permalink), style: 'text-decoration: none; color: #333;' do
+            = image_tag(project.display_image, size: '160x100')
+            br/
+            p style='font-size: 13px; padding: 5px'= project.name
+
+br/
+center
+ = link_to 'Explore more projects', explore_url, target: '__blank', class: 'button'
+
+br
+br
+| Best,
+br
+= Configuration[:company_name]
+
+  
+
+
