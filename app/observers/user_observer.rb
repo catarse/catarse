@@ -6,12 +6,7 @@ class UserObserver < ActiveRecord::Observer
   end
 
   def after_create(user)
-    if user.has_facebook_authentication?
-      Notification.create_notification_once(:temporary_password,
-        user,
-        {id: user.id},
-        password: user.password)
-    end
+    Notification.create_notification_once(:new_user_registration, user, {user_id: user.id}, {user: user})
   end
 
   def before_save(user)
