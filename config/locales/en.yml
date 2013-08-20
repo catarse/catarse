@@ -384,11 +384,11 @@ en:
         draft: "This project is in draft mode and is not open to backers yet."
       reached_of: "Reached of"
       submit: "Back this project"
-    backer:
-      anonymous_backer: "Anonymous backer"
-      anonymous_description: "Opted to remain incognito"
-      no_reward: "This backer has not picked a reward"
     backers:
+      backer:
+        anonymous_backer: "Anonymous backer"
+        anonymous_description: "Opted to remain incognito"
+        no_reward: "This backer has not picked a reward"
       review:
         error: "Ooops. There was an error while registering your back. Please try again."
       show:
