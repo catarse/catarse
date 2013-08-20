@@ -1,5 +1,8 @@
 en:
   notifications:
+    new_user_registration:
+      subject: 'Welcome to Catarse!'
+      header: 'Welcome to Catarse!'
     backer_canceled_after_confirmed:
       subject: "Backer canceled after confirmed"
       header: "Backer canceled after confirmed"

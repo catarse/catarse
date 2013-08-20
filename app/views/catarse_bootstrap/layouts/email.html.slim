@@ -2,8 +2,10 @@ doctype
 html
   head
     meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
-    meta content="*|MC:SUBJECT|*" property="og:title"
+    meta content="#{message.subject}" property="og:title"
     title= message.subject
+
+    = render 'layouts/mailer_styles'
 
   body leftmargin="0" marginheight="0" marginwidth="0" offset="0" topmargin="0"
     div style="font:14px/20px 'Helvetica',Arial,sans-serif;margin:0;padding:75px 0 0 0;text-align:center;background-color:#f8f8f7"
