@@ -85,7 +85,7 @@
                 .alert
                   .important= t('.video_important')
               = form.label :video_url, t('formtastic.labels.project.video_url')
-              = form.text_field :video_url, class: "#{'error' if @project.errors[:video_url].present?}"
+              = form.text_field :video_url, class: "#{'error' if @project.errors[:video_url].present?}", data: { path: video_projects_path }
               p.inline-hints= t('formtastic.hints.project.video_url').html_safe
 
             .input

@@ -13,6 +13,27 @@ App.addChild('ProjectForm', _.extend({
 
 // Put subview here to avoid dependency issues
 
+App.views.ProjectForm.addChild('VideoUrl', _.extend({
+  el: 'input#project_video_url',
+
+  events: {
+    'timedKeyup' : 'checkVideoUrl'
+  },
+
+  checkVideoUrl: function(){
+    var that = this;
+    $.get(this.$el.data('path') + '?url=' + encodeURIComponent(this.$el.val())).success(function(data){
+      if(!data || !data.video_id){
+        that.$el.trigger('invalid');
+      }
+    });
+  },
+
+  activate: function(){
+    this.setupTimedInput();
+  }
+}, Skull.TimedInput));
+
 App.views.ProjectForm.addChild('Permalink', _.extend({
   el: 'input#project_permalink',
 

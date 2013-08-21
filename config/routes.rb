@@ -90,7 +90,6 @@ Catarse::Application.routes.draw do
     end
     collection do
       get 'video'
-      get 'check_slug'
     end
     member do
       put 'pay'
