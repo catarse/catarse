@@ -62,11 +62,7 @@ class ProjectsController < ApplicationController
 
   def video
     project = Project.new(video_url: params[:url])
-    if project.video
-      render json: project.video.to_json
-    else
-      render json: {video_id: false}.to_json
-    end
+    render json: project.video.to_json
   end
 
   %w(embed video_embed).each do |method_name|
