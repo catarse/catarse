@@ -63,17 +63,7 @@ class ProjectsController < ApplicationController
 
   def video
     project = Project.new(video_url: params[:url])
-    if project.video
-      render json: project.video.to_json
-    else
-      render json: {video_id: false}.to_json
-    end
-  end
-
-  def check_slug
-    valid = false
-    valid = true if !Project.permalink_on_routes?(params[:permalink]) && !Project.by_permalink(params[:permalink]).present?
-    render json: {available: valid}.to_json
+    render json: project.video.to_json
   end
 
   %w(embed video_embed).each do |method_name|
