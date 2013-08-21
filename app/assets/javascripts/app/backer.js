@@ -23,7 +23,6 @@ App.addChild('Backer', _.extend({
     var option = this.$(event.currentTarget);
     this.selectReward(option);
     this.value.val(this.reward().minimum_value);
-    this.toggleProceed();
   },
 
   reward: function(){
