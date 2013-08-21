@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # For heroku
 ruby '2.0.0'
 # Papertrail does not work with rails 3.2.12 + ruby 2.0.0
-# https://github.com/airblade/paper_trail/issues/208 
+# https://github.com/airblade/paper_trail/issues/208
 
 # We got some weird bug concerning encoding of AR objects in rails 3.2.13+
 gem 'rails',    '3.2.13'
@@ -54,7 +54,7 @@ gem 'ezcrypto'
 gem 'cancan', git: 'git://github.com/ryanb/cancan.git', branch: '2.0', ref: 'f1cebde51a87be149b4970a3287826bb63c0ac0b'
 
 # Email marketing
-gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref: '45dc426'
+gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref: '2ed4f39'
 
 # HTML manipulation and formatting
 gem 'formtastic',   '~> 2.2.1'
@@ -119,6 +119,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem "pry"
 end
 
 group :test do
