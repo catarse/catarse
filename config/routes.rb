@@ -23,7 +23,6 @@ Catarse::Application.routes.draw do
       resources :projects, only: [:new, :create, :show] do
         collection do
           get 'video'
-          get 'check_slug'
         end
       end
       resources :channels_subscribers, only: [:index, :create, :destroy]
@@ -91,7 +90,6 @@ Catarse::Application.routes.draw do
     end
     collection do
       get 'video'
-      get 'check_slug'
     end
     member do
       put 'pay'
