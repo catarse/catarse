@@ -17,7 +17,7 @@ describe("VideoUrl", function(){
       expect($.get).wasCalledWith('check_video_path?url=' + encodeURIComponent('http://video.url'));
     });
 
-    describe("when video url is valid", function(){
+    describe("when video url is not valid", function(){
       beforeEach(function(){
         get.andReturn({ success: function(callback){ callback(null); } });
         view.checkVideoUrl();
