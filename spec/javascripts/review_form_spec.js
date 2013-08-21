@@ -5,6 +5,25 @@ describe("ReviewForm", function() {
     view = new App.views.ReviewForm({ el: $('<form style="display:none;"></form>')});
   });
 
+  describe("#activate", function() {
+    describe("when live_in_brazil is not checked", function(){
+      var el;
+      beforeEach(function(){
+        el = { length: 0, on: function(){}, hide: function(){} };
+        spyOn(view, '$').andReturn(el);
+        spyOn(el, "hide");
+        view.activate();
+      });
+
+      it("should fadeOut address_data fieldset", function(){
+        expect(view.$).wasCalledWith("#live_in_brazil:checked");
+        expect(view.$).wasCalledWith("fieldset.address_data");
+        expect(el.hide).wasCalled();
+      });
+
+    });
+  });
+
   describe("#validate", function() {
     describe("when all inputs are valid", function() {
       var valid;
