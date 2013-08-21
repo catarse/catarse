@@ -17,9 +17,9 @@ GIT
       rails (~> 4)
 
 GIT
-  remote: git://github.com/catarse/catarse_mailchimp.git
-  revision: 45dc426a68e97e2e2490ee058b7033c70b5a83d4
-  ref: 45dc426
+  remote: git://github.com/catarse/catarse_mailchimp
+  revision: 2ed4f3931dfa292e5c1c62619772f04e41c68629
+  ref: 2ed4f39
   specs:
     catarse_mailchimp (0.0.1)
       mailchimp
