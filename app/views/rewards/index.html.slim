@@ -1,4 +1,4 @@
-- collection.each do |reward|
+- collection.rank(:row_order).each do |reward|
 
   - if can?(:update, reward)
     .bootstrap-twitter.bootstrap-form
