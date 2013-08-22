@@ -32,7 +32,7 @@ en:
     - Saturday
     formats:
       default: ! '%Y-%m-%d'
-      with_time: ! "%Y/%m/%d - %H:%M"      
+      with_time: ! "%Y/%m/%d - %H:%M"
       long: ! '%B %d, %Y'
       short: ! '%b %d'
     month_names:
@@ -143,7 +143,7 @@ en:
       format:
         delimiter: ! ','
         format: ! '%u%n'
-        precision: 2
+        precision: 0
         separator: .
         significant: false
         strip_insignificant_zeros: false
