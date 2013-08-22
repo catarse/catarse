@@ -1,21 +1,11 @@
-App.addChild('Backer', {
-  el: '#main_content[data-action="new"][data-controller-name="backers"]',
+App.addChild('Backer', _.extend({
+  el: 'form#backer_form',
 
   events: {
     'change #backer_value' : 'resetReward',
-    'change #backer_value' : 'toggleProceed',
     'click input[type=radio]' : 'clickReward',
     'click #backer_anonymous' : 'clickAnonymous',
     'change #backer_credits' : 'checkCredits'
-  },
-
-  toggleProceed: function(){
-    if(this.value.val() > 0){
-      this.$('#backer_submit').prop('disabled', false);
-    } 
-    else {
-      this.$('#backer_submit').prop('disabled', true);
-    }
   },
 
   checkCredits: function(event){
@@ -33,7 +23,6 @@ App.addChild('Backer', {
     var option = this.$(event.currentTarget);
     this.selectReward(option);
     this.value.val(this.reward().minimum_value);
-    this.toggleProceed();
   },
 
   reward: function(){
@@ -65,7 +54,7 @@ App.addChild('Backer', {
     this.choices = this.$('li.choice');
     this.credits = this.$('#credits'); 
     this.selectReward(this.$('input[type=radio]:checked'));
-    this.toggleProceed();
+    this.setupForm();
   }
-});
+}, Skull.Form));
 

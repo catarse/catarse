@@ -20,6 +20,9 @@ App.addChild('ReviewForm', _.extend({
 
   activate: function(){
     this.setupForm();
+    if(this.$('#live_in_brazil:checked').length == 0){
+      this.$('fieldset.address_data').hide();
+    }
   },
 
   updateBacker: function(){

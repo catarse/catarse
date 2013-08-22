@@ -71,9 +71,10 @@ describe Projects::BackersController do
   end
 
   describe "POST create" do
+    let(:value){ '20.00' }
     before do
       request.env['REQUEST_URI'] = "/test_path"
-      post :create, {locale: :pt, project_id: project.id, backer: { value: '20.00', reward_id: nil, anonymous: '0' }}
+      post :create, {locale: :pt, project_id: project.id, backer: { value: value, reward_id: nil, anonymous: '0' }}
     end
 
     context "when no user is logged" do
@@ -86,6 +87,13 @@ describe Projects::BackersController do
       its(:body){ should =~ /#{I18n.t('projects.backers.create.title')}/ }
       its(:body){ should =~ /#{project.name}/ }
       its(:body){ should =~ /R\$ 20/ }
+    end
+
+    context "without value" do
+      let(:user){ create(:user) }
+      let(:value){ '' }
+
+      it{ should redirect_to new_project_backer_path(project_id: project.id) }
     end
 
     context "with invalid backer values" do
