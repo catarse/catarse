@@ -23,7 +23,7 @@ describe BackerObserver do
   
   describe "before_save" do
 
-    context "when we change backer data" do
+    context "when we update the backer with new address data" do
       let(:user){ create(:user, {
         address_street: 'old', 
         address_number: 'old', 
@@ -36,7 +36,8 @@ describe BackerObserver do
       }) }
       subject{ user }
       before do
-        create(:backer, {
+        @backer = create(:backer)
+        @backer.update_attributes({
           address_street: 'new', 
           address_number: 'new', 
           address_neighbourhood: 'new', 
@@ -57,6 +58,32 @@ describe BackerObserver do
       its(:address_state){ should == 'new' }
       its(:phone_number){ should == 'new' }
       its(:cpf){ should == 'new' }
+    end
+
+    context "when we create the backer with user that has address data" do
+      let(:user){ create(:user, {
+        address_street: 'old', 
+        address_number: 'old', 
+        address_neighbourhood: 'old', 
+        address_zip_code: 'old',
+        address_city: 'old',
+        address_state: 'old',
+        phone_number: 'old',
+        cpf: 'old'
+      }) }
+      subject{ user }
+      before do
+        create(:backer)
+      end
+
+      its(:address_street){ should == 'old' }
+      its(:address_number){ should == 'old' }
+      its(:address_neighbourhood){ should == 'old' }
+      its(:address_zip_code){ should == 'old' }
+      its(:address_city){ should == 'old' }
+      its(:address_state){ should == 'old' }
+      its(:phone_number){ should == 'old' }
+      its(:cpf){ should == 'old' }
     end
 
     context "when payment_choice is updated to BoletoBancario" do
