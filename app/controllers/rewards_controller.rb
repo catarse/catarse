@@ -40,8 +40,7 @@ class RewardsController < ApplicationController
   end
 
   def sort
-    resource.row_order_position = params[:reward][:row_order_position]
-    resource.save
+    resource.update_attribute :row_order_position, params[:reward][:row_order_position]
 
     render nothing: true
   end
