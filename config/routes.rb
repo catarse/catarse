@@ -10,9 +10,6 @@ Catarse::Application.routes.draw do
     post '/sign_up', to: 'devise/registrations#create', as: :sign_up
   end
 
-  # Root path
-  root to: 'projects#index'
-
   match '/thank_you' => "static#thank_you"
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
@@ -54,6 +51,9 @@ Catarse::Application.routes.draw do
       resources :channels_subscribers, only: [:index, :create, :destroy]
     end
   end
+
+  # Root path should be after channel constraints
+  root to: 'projects#index'
 
   # Static Pages
   get '/sitemap',               to: 'static#sitemap',             as: :sitemap
