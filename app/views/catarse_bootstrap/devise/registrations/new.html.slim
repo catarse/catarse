@@ -21,6 +21,8 @@
 
       .large-14.large-centered.columns
         = form_for(resource, as: resource_name, url: sign_up_path) do |f|
+          = f.hidden_field :newsletter, value: true
+
           = render 'devise/shared/alert'
           p
             = f.label :name
