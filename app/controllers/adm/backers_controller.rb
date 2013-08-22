@@ -5,7 +5,7 @@ class Adm::BackersController < Adm::BaseController
   has_scope :between_values, using: [ :start_at, :ends_at ], allow_blank: true
   has_scope :pending_to_refund do |controller, scope, value|
     if value.present?
-      scope.pending_to_refund 
+      scope.pending_to_refund
     else
       scope
     end
@@ -35,6 +35,6 @@ class Adm::BackersController < Adm::BaseController
   end
 
   def collection
-    @backers = end_of_association_chain.not_deleted.order("backers.created_at DESC").page(params[:page])
+    @backers = apply_scopes(end_of_association_chain).not_deleted.order("backers.created_at DESC").page(params[:page])
   end
 end
