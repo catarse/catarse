@@ -2,10 +2,17 @@ require 'spec_helper'
 
 describe UserObserver do
 
-  context "before create" do
-    subject { create(:user, newsletter: false) }
+  describe "after_create" do
+    before do
+      UserObserver.any_instance.should_receive(:after_create).and_call_original
+      Notification.unstub(:create_notification_once)
+    end
 
-    its(:newsletter) { should be_true }
+    let(:user) { create(:user) }
+
+    it "send new user registration notification" do
+      Notification.should_receive(:create_notification_once).with(:new_user_registration, user, {user_id: user.id}, {user: user})
+    end
   end
 
   context 'before_save' do
