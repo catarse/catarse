@@ -825,6 +825,10 @@ pt:
         email: "Me envie um email"
         facebook: "Perfil no facebook"
         twitter: "Perfil no twitter"
+    project:
+      confirmed: "Confirmado"
+      pending: "Pendente"
+      waiting_confirmation: "Aguardando Confirmação"
     backs:
       anonymous: "Apoio anônimo."
       no_backs: "%{name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D"
