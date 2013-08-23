@@ -251,10 +251,13 @@ describe User do
       create(:backer, state: 'confirmed', credits: true, value: 50, user_id: @u.id, project: unfinished_project)
       create(:backer, state: 'confirmed', credits: true, value: 100, user_id: @u.id, project: failed_project)
       create(:backer, state: 'requested_refund', credits: false, value: 200, user_id: @u.id, project: failed_project)
+      create(:backer, state: 'refunded', credits: false, value: 200, user_id: @u.id, project: failed_project)
       failed_project.update_attributes state: 'failed'
       successful_project.update_attributes state: 'successful'
     end
+
     subject{ @u.credits }
+
     it{ should == 50.0 }
   end
 
