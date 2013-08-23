@@ -190,6 +190,7 @@ GEM
     formtastic (2.2.1)
       actionpack (>= 3.0)
     fssm (0.2.10)
+    google-analytics-rails (0.0.4)
     has_scope (0.5.1)
     hashie (2.0.5)
     heroku-deflater (0.5.1)
@@ -462,6 +463,7 @@ DEPENDENCIES
   fog (>= 1.3.1)
   foreman
   formtastic (~> 2.2.1)
+  google-analytics-rails
   has_scope
   heroku-deflater (>= 0.4.1)
   http_accept_language
