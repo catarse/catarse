@@ -54,7 +54,7 @@ App.views.Project.addChild('ProjectSidebar', _.extend({
         },
         update: function(e, ui) {
           var csrfToken, position;
-          position = ui.item.index();
+          position = $('#rewards .sortable').index(ui.item);
           csrfToken = $("meta[name='csrf-token']").attr("content");
           return $.ajax({
             type: 'POST',
@@ -70,7 +70,7 @@ App.views.Project.addChild('ProjectSidebar', _.extend({
             }
           });
         }
-      })    
+      })
     }
   },
 
