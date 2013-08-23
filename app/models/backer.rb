@@ -14,6 +14,7 @@ class Backer < ActiveRecord::Base
   validate :project_should_be_online, on: :create
 
   scope :not_deleted, ->() { where("backers.state <> 'deleted'") }
+  scope :not_canceled, ->() { where("backers.state <> 'canceled'") }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_key, ->(key) { where(key: key) }
