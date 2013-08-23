@@ -14,14 +14,14 @@ class ProjectsController < ApplicationController
           @projects = apply_scopes(Project).visible.order_for_search.includes(:project_total, :user, :category).page(params[:page]).per(6)
           return render partial: 'project', collection: @projects, layout: false
         else
-
           @title = t("site.title")
-          @recommends = if current_user && current_user.recommended_projects.present?
-                            current_user.recommended_projects.limit(3)
-                          else
-                            ProjectsForHome.recommends
-                          end
+          if current_user && current_user.recommended_projects.present?
+            @recommends = current_user.recommended_projects.limit(3)
+          else
+            @recommends = ProjectsForHome.recommends
+          end
 
+          @channel_projects = Project.from_channels.order_for_search.limit(3)
           @projects_near = Project.online.near_of(current_user.address_state).order("random()").limit(3) if current_user
           @expiring = ProjectsForHome.expiring
           @recent   = ProjectsForHome.recents

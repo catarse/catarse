@@ -76,6 +76,9 @@ class Project < ActiveRecord::Base
   }
 
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
+  scope :from_channels, ->{
+    where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id)")
+  }
 
   attr_accessor :accepted_terms
 

@@ -100,6 +100,7 @@ pt:
       contact: Contato
   main:
     links:
+      channels: "conheça o Canal Asas"
       selected: "explore mais projetos selecionados"
       expiring: "explore mais projetos na reta final"
       recents: "explore mais projetos recentes"
@@ -122,8 +123,8 @@ pt:
       title: "Na reta final"
     recents:
       title: "Novos e fresquinhos"
-    partners:
-      title: 'Parceiros'
+    channels:
+      title: 'Canal Asas'
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
   activerecord:
     errors:
