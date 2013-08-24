@@ -23,7 +23,7 @@ class Users::BackersController < ApplicationController
   protected
   def collection
     @backs = end_of_association_chain.not_canceled.not_deleted.order("created_at DESC, confirmed_at DESC")
-    @backs = @backs.not_anonymous unless can? :manage, @user
+    @backs = @backs.not_anonymous.confirmed unless can? :manage, @user
     @backs = @backs.includes(:user, :reward, project: [:user, :category, :project_total]).page(params[:page]).per(10)
   end
 end
