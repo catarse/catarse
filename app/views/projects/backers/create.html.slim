@@ -55,7 +55,7 @@
             - if @backer.credits
               = form.actions do
                 .bootstrap-twitter
-                  = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), disabled: true, class: 'btn', id: 'user_submit'
+                  = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), class: 'btn', id: 'user_submit'
 
         #payment.hide
           .title

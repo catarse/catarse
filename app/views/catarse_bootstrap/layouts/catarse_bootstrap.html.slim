@@ -6,7 +6,9 @@ html
 
     = stylesheet_link_tag :catarse
   body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name]
+    = render 'layouts/uservoice'
     = render 'layouts/catarse_bootstrap_notices' if notice
+    = render 'layouts/login_feedback_support' if devise_controller?
 
     .content= yield
 
@@ -15,3 +17,4 @@ html
 
   = javascript_include_tag :application
   = render 'layouts/new_uservoice'
+  = render 'layouts/analytics'
