@@ -827,7 +827,8 @@ pt:
         twitter: "Perfil no twitter"
     project:
       confirmed: "Confirmado"
-      pending: "Pendente"
+      refunded: "Reembolsado"
+      requested_refund: "Estorno solicitado"
       waiting_confirmation: "Aguardando Confirmação"
     backs:
       anonymous: "Apoio anônimo."
