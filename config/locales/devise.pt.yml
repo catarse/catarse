@@ -1,5 +1,11 @@
 pt:
   devise:
+    feedback_tab:
+      title: 'Feedback e Ajuda'
+      header_html: 'Bem-vindo ao <br/> novo login do Catarse'
+      blog_button: 'Leia mais no blog'
+      form_feedback_link: 'Enviar feedback'
+      contact_link: 'Entrar em contato'
     links:
       forgot_password: Esqueci minha senha
     confirmations:
