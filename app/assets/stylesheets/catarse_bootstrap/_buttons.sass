@@ -1,6 +1,6 @@
 .button, a.button
   display: inline-block
-  padding: 1.35em 1.1em 
+  padding: 1.35em 1.1em
   text-align: center
   border: none
   border-radius: 4px
@@ -10,18 +10,23 @@
   transition: .2s background
 
   &.medium
-    padding: 0.7em 0.8em 
+    padding: 0.7em 0.8em
 
+  &.negative
+    background: $default_button_negative_background_color
+    color: $default_button_negative_font_color !important
+    &:hover
+      background: lighten($default_button_negative_background_color, 5%)
   &.success
     background: $default_button_success_background_color
     color: $default_button_success_font_color !important
     &:hover
-      background: lighten($default_button_success_background_color, 5%) 
+      background: lighten($default_button_success_background_color, 5%)
   &.facebook
     background: $default_button_facebook_background_color
-    color: $default_button_facebook_font_color !important 
+    color: $default_button_facebook_font_color !important
     &:hover
-      background: lighten($default_button_facebook_background_color, 5%) 
+      background: lighten($default_button_facebook_background_color, 5%)
   &.orange
     background: $default_button_orange_background_color
     color: $default_button_orange_font_color !important

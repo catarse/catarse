@@ -2,6 +2,12 @@
 
 en:
   devise:
+    feedback_tab:
+      title: 'Feedback and support'
+      header_html: "Welcome to <br/> Catarse's new login"
+      blog_button: 'Read more'
+      form_feedback_link: 'Give feedback'
+      contact_link: 'Contact support'
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
