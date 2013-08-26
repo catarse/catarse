@@ -1,10 +1,57 @@
+.feedback-support
+  font-size: .9em
+  width: 175px
+  min-height: 225px
+  background: white
+  border: 1px solid $lightsilver
+  border-top: 0
+  position: fixed
+  top: 0px
+  right: 120px
+  z-index: 400
+  border-bottom-right-radius: 4px
+  border-bottom-left-radius: 4px
+  &.closed
+    display: none
+    min-height: 30px
+    p
+      font-weight: normal !important
+  .toggle
+    float: right
+    text-ident: -9999em
+    width: 22px
+    height: 10px
+    margin: .9em .4em 0 0
+    &.close
+      background: url('/assets/catarse_bootstrap/feedback-close.png') left top no-repeat
+    &.open
+      background: url('/assets/catarse_bootstrap/feedback-open.png') left top no-repeat
+  .icon
+    background: url('/assets/catarse_bootstrap/feedback-key.png') left top no-repeat
+    width: 71px
+    height: 31px
+    display: block
+    margin: 0 auto
+  p
+    font-weight: bold
+    padding: .6em .7em
+    margin: 0
+    text-align: center
+    color: $raven
+  nav
+    padding: .6em .7em
+    line-height: 160%
+    a
+      color: $dodgerblue
+
+
 .login-box
   background: white
   padding: .5em 0 1.7em 0
   margin-top: 1em
   overflow: hidden
   border: 1px solid $lightsilver
-  border-radius: 4px 
+  border-radius: 4px
 
   h2
     margin-top: 1.0em
