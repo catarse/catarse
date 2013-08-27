@@ -62,6 +62,4 @@ Catarse::Application.configure do
   config.active_support.deprecation = :notify
   config.active_record.schema_format = :sql
 
-  # Google analytics ID
-  GA.tracker = Configuration['google_analytics_id'] if Configuration['google_analytics_id'].present?
 end
