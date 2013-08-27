@@ -1,6 +1,5 @@
 class Channel < ActiveRecord::Base
-  #TODO:
-  #attr_accessible :description, :name, :permalink
+  attr_accessible :description, :name, :permalink
   schema_associations
 
   validates_presence_of :name, :description, :permalink

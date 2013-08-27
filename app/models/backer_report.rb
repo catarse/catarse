@@ -1,4 +1,3 @@
 class BackerReport < ActiveRecord::Base
-  # TODO:
-  # attr_accessible :title, :body
+   attr_accessible :title, :body
 end
