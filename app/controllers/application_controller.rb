@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']
@@ -115,4 +116,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name,
+                                                            :email,
+                                                            :password) }
+  end
 end
