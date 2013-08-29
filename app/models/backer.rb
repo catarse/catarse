@@ -196,7 +196,9 @@ class Backer < ActiveRecord::Base
     end
 
     event :request_refund do
-      transition confirmed: :requested_refund
+      transition confirmed: :requested_refund, if: ->(backer){
+        backer.user.credits >= backer.value
+      }
     end
 
     event :refund do
