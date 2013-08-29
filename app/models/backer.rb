@@ -14,6 +14,7 @@ class Backer < ActiveRecord::Base
   validate :project_should_be_online, on: :create
 
   scope :not_deleted, ->() { where("backers.state <> 'deleted'") }
+  scope :not_canceled, ->() { where("backers.state <> 'canceled'") }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_state, ->(state) { where(state: state) }
   scope :by_key, ->(key) { where(key: key) }
@@ -31,6 +32,7 @@ class Backer < ActiveRecord::Base
   scope :pending_to_refund, ->() { where(state: 'requested_refund') }
 
   scope :available_to_count, ->() { where("state in ('confirmed', 'requested_refund', 'refunded')") }
+  scope :available_to_display, ->() { where("state in ('confirmed', 'requested_refund', 'refunded', 'waiting_confirmation')") }
 
   scope :can_cancel, ->() {
     where(%Q{
