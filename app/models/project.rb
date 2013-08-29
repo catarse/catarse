@@ -75,6 +75,8 @@ class Project < ActiveRecord::Base
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
 
+  scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
+
   attr_accessor :accepted_terms
 
   validates_acceptance_of :accepted_terms, on: :create
@@ -99,7 +101,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.finish_projects!
-    expired.each do |resource|
+    to_finish.each do |resource|
       Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
       resource.finish
     end

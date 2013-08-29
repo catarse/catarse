@@ -159,37 +159,25 @@ describe Project do
     it { should == [project_01] }
   end
 
-  describe '.finish_projects!' do
+  describe '.to_finish' do
     before do
-      @project_01 = create(:project, online_days: -1, goal: 300, state: 'online')
-      @project_02 = create(:project, online_days: 5, goal: 300, state: 'online')
-      @project_03 = create(:project, online_days: -7, goal: 300, state: 'online')
-      backer = create(:backer, project: @project_03, value: 3000, state: 'confirmed')
-      @project_03.update_attributes state: 'waiting_funds'
-      pending_backer = create(:backer, project: @project_01, value: 340, state: 'waiting_confirmation')
-      @project_04 = create(:project, online_days: -7, goal: 300, state: 'waiting_funds')
+      Project.should_receive(:expired).and_call_original
+      Project.should_receive(:with_states).with(['online', 'waiting_funds']).and_call_original
+    end
+    it "should call scope expired and filter states that can be finished" do
+      Project.to_finish
+    end
+  end
+
+  describe '.finish_projects!' do
+    let(:project){ double('project', id: 1, name: 'test') }
+    before do
+      Project.should_receive(:to_finish).and_return([project])
+      project.should_receive(:finish)
+    end
+
+    it "should iterate through to_finish projects and call finish to each one" do
       Project.finish_projects!
-      @project_01.reload
-      @project_02.reload
-      @project_03.reload
-      @project_04.reload
-    end
-
-
-    it 'should turn state to waiting funds' do
-      @project_01.waiting_funds?.should be_true
-    end
-
-    it 'should not change state when project is not expired and already reached the goal' do
-      @project_02.online?.should be_true
-    end
-
-    it 'should change state to successful when project already in waiting funds and reached the goal' do
-      @project_03.successful?.should be_true
-    end
-
-    it 'should change state to failed when project already in waiting funds and not reached the goal' do
-      @project_04.failed?.should be_true
     end
   end
 
