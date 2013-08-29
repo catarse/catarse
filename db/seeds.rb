@@ -69,8 +69,7 @@ end
   support_forum: 'http://suporte.catarse.me/',
   base_domain: 'catarse.me',
   uservoice_secret_gadget: 'change_this',
-  uservoice_key: 'uservoice_key',
-  project_finish_time: '02:59:59'
+  uservoice_key: 'uservoice_key'
 }.each do |name, value|
    conf = Configuration.find_or_initialize_by_name name
    conf.update_attributes({
