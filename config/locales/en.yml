@@ -777,6 +777,11 @@ en:
     no_name: Unnamed
     google_account: "Google Account"
   users:
+    project:
+      confirmed: "Confirmed"
+      refunded: "Refunded"
+      requested_refund: "Refund requested"
+      waiting_confirmation: "Waiting confirmation"
     set_email:
       site_title: 'Define your email address'
       title: 'Define your email address'
