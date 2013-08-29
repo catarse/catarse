@@ -120,7 +120,7 @@ class Project < ActiveRecord::Base
   end
 
   def expires_at
-    online_date && Time.parse((online_date + online_days.days).strftime("%Y-%m-%d #{::Configuration[:project_finish_time]}"))
+    online_date && (online_date + online_days.days).end_of_day
   end
 
   def video
@@ -152,7 +152,7 @@ class Project < ActiveRecord::Base
   end
 
   def expired?
-    expires_at && expires_at < Time.now
+    expires_at && expires_at < Time.zone.now
   end
 
   def in_time_to_wait?
@@ -172,7 +172,7 @@ class Project < ActiveRecord::Base
   def time_to_go
     ['day', 'hour', 'minute', 'second'].each do |unit|
       if expires_at.to_i >= 1.send(unit).from_now.to_i
-        time = ((expires_at - Time.now).abs/1.send(unit)).round
+        time = ((expires_at - Time.zone.now).abs/1.send(unit)).round
         return {time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase)}
       end
     end
