@@ -12,8 +12,8 @@
           .projects
             == render @projects_near
           .explore_link
-            hr
             = link_to t('main.links.near'), explore_path(anchor: :near)
+            hr
       .selected_projects.list
         .list_title
           .title
@@ -21,8 +21,8 @@
         .projects
           == render @recommends
         .explore_link
-          hr
           = link_to t('main.links.selected'), explore_path(anchor: :recommended)
+          hr
 
       .channel_projects.list
         .list_title
@@ -31,8 +31,8 @@
         .projects
           == render @channel_projects
         .explore_link
-          hr
           = link_to t('main.links.channels'), root_url(subdomain: 'asas')
+          hr
 
       .expiring_projects.list
         .list_title
@@ -41,8 +41,8 @@
         .projects
           == render @expiring
         .explore_link
-          hr
           = link_to t('main.links.expiring'), explore_path(anchor: :expiring)
+          hr
 
       .recents_projects.list
         .list_title
@@ -51,8 +51,8 @@
         .projects
           == render @recent
         .explore_link
-          hr
           = link_to t('main.links.recents'), explore_path(anchor: :recent)
+          hr
 
     .sidebar
       .content
