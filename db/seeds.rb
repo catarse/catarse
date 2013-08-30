@@ -74,7 +74,7 @@ end
    conf = Configuration.find_or_initialize_by_name name
    conf.update_attributes({
      value: value
-   })
+   }) if conf.new_record?
 end
 
 
