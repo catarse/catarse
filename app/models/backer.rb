@@ -94,6 +94,10 @@ class Backer < ActiveRecord::Base
     end
   end
 
+  def recommended_projects
+    user.recommended_projects.where("projects.id <> ?", project.id)
+  end
+
   def refund_deadline
     created_at + 180.days
   end

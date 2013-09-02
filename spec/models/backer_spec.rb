@@ -101,6 +101,19 @@ describe Backer do
     end
   end
 
+  describe '#recommended_projects' do
+    let(:backer){ create(:backer) }
+    before do
+      backer.user.recommended_projects.should_receive(:where).with("projects.id <> ?", backer.project_id).and_call_original
+      backer.user.should_receive(:recommended_projects).and_call_original
+    end
+
+    it "should call user recommended projects and remove the project of the back" do
+      backer.recommended_projects
+    end
+  end
+
+
   describe "#project_should_be_online" do
     subject{ backer }
     context "when project is draft" do
