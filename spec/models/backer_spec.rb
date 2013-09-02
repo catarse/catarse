@@ -104,7 +104,7 @@ describe Backer do
   describe '#recommended_projects' do
     let(:backer){ create(:backer) }
     before do
-      backer.user.recommended_projects.should_receive(:where).with("id <> ?", backer.id).and_call_original
+      backer.user.recommended_projects.should_receive(:where).with("projects.id <> ?", backer.project_id).and_call_original
       backer.user.should_receive(:recommended_projects).and_call_original
     end
 
