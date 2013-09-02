@@ -122,8 +122,8 @@ class Backer < ActiveRecord::Base
   end
 
   def should_not_back_if_maximum_backers_been_reached
-    return unless reward and reward.maximum_backers and reward.maximum_backers > 0
-    errors.add(:reward, I18n.t('backer.should_not_back_if_maximum_backers_been_reached')) unless reward.backers.confirmed.count < reward.maximum_backers
+    return unless reward && reward.maximum_backers && reward.maximum_backers > 0
+    errors.add(:reward, I18n.t('backer.should_not_back_if_maximum_backers_been_reached')) if reward.sold_out?
   end
 
   def project_should_be_online
