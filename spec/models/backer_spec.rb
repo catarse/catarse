@@ -129,9 +129,16 @@ describe Backer do
     let(:reward){ create(:reward, maximum_backers: 1) }
     let(:backer){ build(:backer, reward: reward, project: reward.project) }
     subject{ backer }
+
     context "when backers count is lower than maximum_backers" do
       it{ should be_valid }
     end
+
+    context "when pending backers count is equal than maximum_backers" do
+      before{ create(:backer, reward: reward, project: reward.project, state: 'waiting_confirmation') }
+      it{ should_not be_valid }
+    end
+
     context "when backers count is equal than maximum_backers" do
       before{ create(:backer, reward: reward, project: reward.project, state: 'confirmed') }
       it{ should_not be_valid }
