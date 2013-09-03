@@ -15,7 +15,6 @@ App.views.Project.addChild('ProjectSidebar', {
   activate: function() {
     this.$rewards = this.$('#rewards');
     this.sortableRewards();
-    //this.observeRemoteForms();
     this.reloadRewards();
   },
 
@@ -25,20 +24,6 @@ App.views.Project.addChild('ProjectSidebar', {
       that.$rewards.html(data);
     });
   },
-
-  //observeRemoteForms: function() {
-  //  var that = this;
-  //  $(document).on('ajax:success', '.remote-form', function(evt, data, status, xhr){
-  //    //NOTE: when data is empty html string we should close the modal.
-  //    // But we need to find a better solution for this ;)
-  //    if($.trim(data) == "") {
-  //      that.$('.skull-modal-close').click();
-  //      that.reloadRewards();
-  //    } else {
-  //      $(evt.target).html(data);
-  //    }
-  //  });
-  //},
 
   sortableRewards: function() {
     if(this.$rewards.data("can_update") == true){
