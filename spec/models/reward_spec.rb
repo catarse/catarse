@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe Reward do
-  let(:reward){ FactoryGirl.create(:reward, description: 'envie um email para foo@bar.com') }
+  let(:reward){ create(:reward, description: 'envie um email para foo@bar.com') }
 
   describe "Versioning" do
     subject { reward.versions }
@@ -32,12 +32,12 @@ describe Reward do
   end
 
   it "should have a minimum value" do
-    r = FactoryGirl.build(:reward, minimum_value: nil)
+    r = build(:reward, minimum_value: nil)
     r.should_not be_valid
   end
 
   it "should have a display_minimum" do
-    r = FactoryGirl.build(:reward)
+    r = build(:reward)
     r.minimum_value = 10
     r.display_minimum.should == "R$ 10"
     r.minimum_value = 99
@@ -45,7 +45,7 @@ describe Reward do
   end
 
   it "should have a greater than 10.00 minimum value" do
-    r = FactoryGirl.build(:reward)
+    r = build(:reward)
     r.minimum_value = -0.01
     r.should_not be_valid
     r.minimum_value = 9.99
@@ -57,12 +57,12 @@ describe Reward do
   end
 
   it "should have a description" do
-    r = FactoryGirl.build(:reward, description: nil)
+    r = build(:reward, description: nil)
     r.should_not be_valid
   end
 
   it "should have integer maximum backers" do
-    r = FactoryGirl.build(:reward)
+    r = build(:reward)
     r.maximum_backers = 10.01
     r.should_not be_valid
     r.maximum_backers = 10
@@ -70,7 +70,7 @@ describe Reward do
   end
 
   it "should have maximum backers > 0" do
-    r = FactoryGirl.build(:reward)
+    r = build(:reward)
     r.maximum_backers = -1
     r.should_not be_valid
     r.maximum_backers = 0
@@ -80,7 +80,7 @@ describe Reward do
   end
 
   describe '#sold_out?' do
-    let(:reward) { FactoryGirl.create(:reward, maximum_backers: nil) }
+    let(:reward) { create(:reward, maximum_backers: nil) }
     subject { reward.sold_out? }
 
     context 'when reward not have limits' do
@@ -88,12 +88,12 @@ describe Reward do
     end
 
     context 'when reward have limit' do
-      let(:reward) { FactoryGirl.create(:reward, maximum_backers: 3) }
+      let(:reward) { create(:reward, maximum_backers: 3) }
 
       context 'and have confirmed backers and backers in time to confirm' do
         before do
-           FactoryGirl.create(:backer, state: 'confirmed', reward: reward, project: reward.project)
-           FactoryGirl.create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project)
+           create(:backer, state: 'confirmed', reward: reward, project: reward.project)
+           create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project)
         end
 
         it { should be_false }
@@ -102,8 +102,8 @@ describe Reward do
 
       context 'and have confirmed backers and the in time to confirm already expired' do
         before do
-           FactoryGirl.create(:backer, state: 'confirmed', reward: reward, project: reward.project)
-           FactoryGirl.create(:backer, state: 'pending', payment_token: 'ABC', reward: reward, project: reward.project, created_at: 8.days.ago)
+           create(:backer, state: 'confirmed', reward: reward, project: reward.project)
+           create(:backer, state: 'pending', payment_token: 'ABC', reward: reward, project: reward.project, created_at: 8.days.ago)
         end
 
         it { should be_false }
@@ -112,7 +112,7 @@ describe Reward do
 
       context 'and reached the maximum backers number with confirmed backers' do
         before do
-           3.times { FactoryGirl.create(:backer, state: 'confirmed', reward: reward, project: reward.project) }
+           3.times { create(:backer, state: 'confirmed', reward: reward, project: reward.project) }
         end
 
         it { should be_true }
@@ -121,7 +121,7 @@ describe Reward do
 
       context 'and reached the maximum backers number with backers in time to confirm' do
         before do
-           3.times { FactoryGirl.create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project) }
+           3.times { create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project) }
         end
 
         it { should be_true }
@@ -132,7 +132,7 @@ describe Reward do
 
   it "should have a HTML-safe name that is a HTML composition from minimum_value, description and sold_out" do
     I18n.locale = :pt
-    r = FactoryGirl.build(:reward, minimum_value: 0, description: "Description", maximum_backers: 0)
+    r = build(:reward, minimum_value: 0, description: "Description", maximum_backers: 0)
     r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class=\"sold_out\">Esgotada</div><div class='clear'></div>"
     r.maximum_backers = 1
     r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class='clear'></div>"
