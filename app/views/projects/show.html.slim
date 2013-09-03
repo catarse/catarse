@@ -143,11 +143,16 @@
               h4.alert-header= t('.no_rewards_warning_title')
               p style="margin:0; padding:0;"
                 = t('.no_rewards_warning')
+              br/
+              .new_reward_content.hide
+                = image_tag 'loading.gif'
+
             .clearfix
             = link_to t('.menu.add_reward'), 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'btn btn-success pull-right show_reward_form'
             .clearfix
+
             br/
-            .skull-modal.new_reward_content.hide
+            /.skull-modal.new_reward_content.hide
               .skull-modal-header
                 h3= t('projects.rewards.new_reward')
                 a class='skull-modal-close' href='javascript:void(0);' &times;
