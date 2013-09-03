@@ -1,6 +1,6 @@
 - collection.rank(:row_order).each do |reward|
 
-  - if can?(:update, reward)
+  /- if can?(:update, reward)
     .bootstrap-twitter.bootstrap-form
       .skull-modal.hide id="reward#{reward.id}Editor"
         .skull-modal-header
@@ -12,7 +12,11 @@
 
   div[id="reward_#{reward.id}" data-new_backer_url=new_project_backer_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="box #{(can?(:update, reward) ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
     - if can?(:update, reward)
-      .bootstrap-form.bootstrap-twitter id="reward#{reward.id}Editor"
+
+      .bootstrap-form.bootstrap-twitter 
+        .hide id="reward#{reward.id}Editor"
+          = image_tag 'loading.gif'
+
         .bootstrap-twitter
           = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(@project, reward)}, class: 'show_reward_form btn btn-mini pull-right btn-primary' do
             i.icon-pencil.icon-white
