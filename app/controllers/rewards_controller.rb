@@ -22,17 +22,11 @@ class RewardsController < ApplicationController
   end
 
   def update
-    update! do |success, failure|
-      success.html { render nothing: true, status: 200 }
-      failure.html { render :edit, layout: nil }
-    end
+    update! { project_by_slug_path(permalink: parent.permalink) }
   end
 
   def create
-    create! do |success, failure|
-      success.html { render nothing: true, status: 200 }
-      failure.html { render :new, layout: nil }
-    end
+    create! { project_by_slug_path(permalink: parent.permalink) }
   end
 
   def destroy
