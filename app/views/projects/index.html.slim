@@ -70,7 +70,8 @@
         .facebook
           h3= t('sidebar.titles.facebook')
           .fb-like data-href="#{Configuration['facebook_url']}" data-send="false" data-width="160" data-show-faces="true"
-        #twitter.twitter[data-username="@#{Configuration['twitter_username']}"]
+        #twitter.twitter
+          = link_to t('sidebar.titles.twitter'), "https://twitter.com/#{Configuration['twitter_username']}", class: 'twitter-timeline', data:{widget_id:"375343843308089345", chrome:"nofooter"}
         .newsletter
           h3= t('sidebar.titles.newsletter')
           = form_tag Configuration['mailchimp_url'], id: 'mailee-form', method: 'post' do
