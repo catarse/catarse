@@ -14,7 +14,7 @@
                 .alert.alert-info
                   = form.input :credits, hint: t('formtastic.hints.backer.credits', credits: current_user.display_credits).html_safe
               .clearfix
-            = form.input :value, required: true, as: :string, label: false,  input_html: { autocomplete: 'off', data: { mask: '99?9999999', rewards: @rewards.map{|r| {id: r.id, minimum_value: r.minimum_value.to_i} }.to_json } }
+            = form.input :value, required: true, as: :string, label: false,  input_html: { pattern: '\\d+', autocomplete: 'off', data: { rewards: @rewards.map{|r| {id: r.id, minimum_value: r.minimum_value.to_i} }.to_json } }
             .simbol
               p R$
             = form.input :reward, as: :radio, collection: @rewards
