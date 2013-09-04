@@ -36,7 +36,7 @@ class Projects::BackersController < ApplicationController
     empty_reward = Reward.new(minimum_value: 0, description: t('projects.backers.new.no_reward'))
     @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
 
-    # Select 
+    # Select
     if params[:reward_id] && (@selected_reward = @project.rewards.find params[:reward_id]) && !@selected_reward.sold_out?
       @backer.reward = @selected_reward
       @backer.value = "%0.0f" % @selected_reward.minimum_value
@@ -53,6 +53,7 @@ class Projects::BackersController < ApplicationController
         return redirect_to new_project_backer_path(@project)
       end
       success.html do
+        flash[:notice] = nil
         session[:thank_you_backer_id] = @backer.id
         return render :create
       end
