@@ -1,4 +1,12 @@
 [data-namespace="null"][data-controller="projects"][data-action="index"]
+  .banner
+    background: image-url('catarse/bg_rewards.jpg') left top no-repeat
+    width: 980px
+    height: 360px
+    margin: 2em auto
+    overflow: hidden
+    +border-radius(4px)
+
   .channel_banner
     width: 100%
     height: 357px
@@ -35,15 +43,14 @@
       padding-top: 20px
       padding-bottom: 30px
       float: left
+      width: 100%
       hr
-        +grid(8)
+        width: 100%
         border: none
         border-bottom: 1px rgba(black, 0.1) solid
-        +omega
         padding-top: 2px
       a
-        +grid(4)
-        +omega
+        float: right
         font-family: "Lato"
         font-size: 14px
         color: $pink

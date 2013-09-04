@@ -93,6 +93,7 @@ en:
       contact: Contact
   main:
     links:
+      channels: "explore the Asas Institute's Channel"
       selected: "explore more projects selected"
       expiring: "explore more expiring projects"
       recents: "explore more recent projects"
@@ -115,8 +116,8 @@ en:
       title: expiring
     recents:
       title: recent
-    partners:
-      title: partners
+    channels:
+      title: channels
   accept_terms_html: "I have read and accepted the %{link}."
   activerecord:
     errors:
