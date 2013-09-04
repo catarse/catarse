@@ -143,33 +143,6 @@ class Backer < ActiveRecord::Base
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
 
-  def as_json(options={})
-    json_attributes = {
-      id: id,
-      anonymous: anonymous,
-      confirmed: confirmed?,
-      confirmed_at: display_confirmed_at,
-      user: user.as_json(options.merge(anonymous: anonymous)),
-      value: nil,
-      display_value: nil,
-      reward: nil
-    }
-    if options and options[:can_manage]
-      json_attributes.merge!({
-        value: display_value,
-        display_value: display_value,
-        reward: reward
-      })
-    end
-    if options and options[:include_project]
-      json_attributes.merge!({project: project})
-    end
-    if options and options[:include_reward]
-      json_attributes.merge!({reward: reward})
-    end
-    json_attributes
-  end
-
   state_machine :state, initial: :pending do
     state :pending, value: 'pending'
     state :waiting_confirmation, value: 'waiting_confirmation'
