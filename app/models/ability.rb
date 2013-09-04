@@ -32,12 +32,12 @@ class Ability
       reward.project.user == current_user
     end
 
-    can [:update, :sort], :rewards, [:description, :maximum_backers] do |reward|
-      reward.project.user == current_user
-    end
-
     can [:update, :destroy], :rewards do |reward|
       reward.backers.in_time_to_confirm.empty? && reward.backers.confirmed.empty? && reward.project.user == current_user
+    end
+
+    can [:update, :sort], :rewards, [:description, :maximum_backers] do |reward|
+      reward.project.user == current_user
     end
 
     can :update, :rewards, :days_to_delivery do |reward|

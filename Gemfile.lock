@@ -244,7 +244,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.6.8)
-    newrelic_rpm (3.6.6.147)
+    newrelic_rpm (3.6.5.130)
     nokogiri (1.5.10)
     oauth (0.4.7)
     oauth2 (0.8.1)
@@ -477,7 +477,7 @@ DEPENDENCIES
   letter_opener
   mail (= 2.5.3)
   moip!
-  newrelic_rpm
+  newrelic_rpm (= 3.6.5.130)
   omniauth
   omniauth-facebook (= 1.4.0)
   omniauth-twitter
