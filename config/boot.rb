@@ -11,4 +11,3 @@ rescue Bundler::GemNotFound => e
   exit!
 end if File.exist?(gemfile)
 require 'yaml'
-YAML::ENGINE.yamler = 'syck'
