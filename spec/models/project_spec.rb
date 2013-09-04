@@ -251,6 +251,15 @@ describe Project do
     it{ should == [@p] }
   end
 
+  describe ".from_channels" do
+    before do
+      @p = create(:project, channels: [create(:channel)])
+      create(:project, channels: [])
+    end
+    subject{ Project.from_channels }
+    it{ should == [@p] }
+  end
+
   describe '#can_go_to_second_chance?' do
     let(:project) { create(:project, goal: 100, online_days: -3) }
     subject { project.can_go_to_second_chance? }
