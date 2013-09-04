@@ -200,33 +200,6 @@ class Project < ActiveRecord::Base
     Rails.logger.info "-----> #{e.inspect}"
   end
 
-  def as_json(options={})
-    {
-      id: id,
-      name: name,
-      user: user,
-      category: category,
-      image: display_image,
-      headline: headline,
-      progress: progress,
-      display_progress: display_progress,
-      pledged: display_pledged,
-      created_at: created_at,
-      time_to_go: time_to_go,
-      remaining_text: remaining_text,
-      embed_url: video_embed_url ? video_embed_url : (video ? video.embed_url : nil),
-      url: Rails.application.routes.url_helpers.project_by_slug_path(permalink, locale: I18n.locale),
-      full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, locale: I18n.locale),
-      expired: expired?,
-      successful: successful? || reached_goal?,
-      waiting_funds: waiting_funds?,
-      failed: failed?,
-      display_status_to_box: display_status.blank? ? nil : I18n.t("project.display_status.#{display_status}"),
-      display_expires_at: display_expires_at,
-      in_time: in_time?
-    }
-  end
-
   def pending_backers_reached_the_goal?
     (pledged + backers.in_time_to_confirm.sum(&:value)) >= goal
   end
