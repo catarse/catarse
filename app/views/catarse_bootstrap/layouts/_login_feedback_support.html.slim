@@ -1,8 +1,8 @@
 #bootstrap-feedback
-  .feedback-support.closed
+  .feedback-support data-toggle="closed"
     = link_to '', 'javascript:void(0)', class: 'toggle open'
     p= t('devise.feedback_tab.title')
-  .feedback-support.opened
+  .feedback-support data-toggle="opened"
     = link_to '', 'javascript:void(0)', class: 'toggle close'
     .clearfix
     .icon
