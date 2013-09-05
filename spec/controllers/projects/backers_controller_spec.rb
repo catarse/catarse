@@ -30,10 +30,17 @@ describe Projects::BackersController do
       it{ should redirect_to(root_path) }
       it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
+
     context "when we have the right user" do
       let(:set_expectations) { Backer.any_instance.should_receive(:update_user_billing_info) }
       let(:user){ backer.user }
       its(:body){ should == { message: "updated" }.to_json  }
+    end
+
+    context "when try pass unpermitted attributes" do
+      let(:backer_info) { { payment_service_fee: 1000, value: 1000,  address_city: 'Porto Alegre', address_complement: '24', address_neighbourhood: 'Rio Branco', address_number: '1004', address_phone_number: '(51)2112-8397', address_state: 'RS', address_street: 'Rua Mariante', address_zip_code: '90430-180', payer_email: 'diogo@biazus.me', payer_name: 'Diogo de Oliveira Biazus'  } }
+
+      it { should be_redirect }
     end
   end
 
