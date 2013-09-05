@@ -50,6 +50,9 @@ pt:
   edit_project: 'Editar projeto'
   days: 'dias'
   controllers:
+    updates:
+      create:
+        notice: 'Novidade enviada com sucesso!'
     rewards:
       create:
         notice: 'Recompensa adicionada com sucesso!'
@@ -172,7 +175,7 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: Nome
+        name: "Nome completo"
         newsletter: 'Quero receber novidades do Catarse'
         id: 'ID'
         password: Senha
