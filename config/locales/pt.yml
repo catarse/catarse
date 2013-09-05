@@ -172,7 +172,7 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: Nome
+        name: "Nome completo"
         newsletter: 'Quero receber novidades do Catarse'
         id: 'ID'
         password: Senha
