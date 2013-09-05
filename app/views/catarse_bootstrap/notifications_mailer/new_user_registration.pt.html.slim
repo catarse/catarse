@@ -18,19 +18,21 @@ br/
 br/
 br/
 
-- if expiring.present? 
-  table border="0" cellpadding="3" cellspacing="0" width="520" align="center"
-    tr
-      - expiring.each do |project| 
-        td width="160" valign="top"
+- if expiring.present?
+  table border="0" cellpadding="0" cellspacing="0" width="540" align="center"
+    - expiring.each do |project|
+    	tr
+        td width="540" valign="top" style="margin-bottom: 10px;"
           = link_to project_by_slug_url(project.permalink), style: 'text-decoration: none; color: #333;' do
-            = image_tag(project.display_image, size: '160x100')
-            br/
-            p style='font-size: 13px; padding: 5px'= project.name
+            = image_tag(project.display_image, size: '160x100', style: 'margin: 0 15px 15px 0; float: left')
+            p style='font-size: 16px; margin: 0 0 10px; color: #FF8100;'= project.name
+            p style='font-size: 13px'= project.headline
 
 br/
 center
- = link_to 'Explore outros projetos', explore_url, target: '__blank', class: 'button'
+ = link_to explore_url, target: '__blank' do
+ 		= image_tag 'catarse_bootstrap/botao_bemvindo_PT_big.png'
+
 
 br
 br

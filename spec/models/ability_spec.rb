@@ -32,6 +32,8 @@ describe Ability do
       it { should be_able_to(:update, project, :uploaded_image) }
       it { should be_able_to(:destroy, reward) }
       it { should be_able_to(:update, reward, :days_to_delivery) }
+      it { should be_able_to(:update, reward, :description) }
+      it { should be_able_to(:update, reward, :maximum_backers) }
 
       context "and someone make a back and select a reward" do
         context "when backer is in time to confirm and not have confirmed backers" do

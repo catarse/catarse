@@ -75,6 +75,11 @@ class Project < ActiveRecord::Base
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
 
+  scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
+  scope :from_channels, ->{
+    where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id)")
+  }
+
   attr_accessor :accepted_terms
 
   validates_acceptance_of :accepted_terms, on: :create
@@ -99,7 +104,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.finish_projects!
-    expired.each do |resource|
+    to_finish.each do |resource|
       Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
       resource.finish
     end
@@ -120,7 +125,7 @@ class Project < ActiveRecord::Base
   end
 
   def expires_at
-    online_date && Time.parse((online_date + online_days.days).strftime("%Y-%m-%d #{::Configuration[:project_finish_time]}"))
+    online_date && (online_date + online_days.days).end_of_day
   end
 
   def video
@@ -152,7 +157,7 @@ class Project < ActiveRecord::Base
   end
 
   def expired?
-    expires_at && expires_at < Time.now
+    expires_at && expires_at < Time.zone.now
   end
 
   def in_time_to_wait?
@@ -172,7 +177,7 @@ class Project < ActiveRecord::Base
   def time_to_go
     ['day', 'hour', 'minute', 'second'].each do |unit|
       if expires_at.to_i >= 1.send(unit).from_now.to_i
-        time = ((expires_at - Time.now).abs/1.send(unit)).round
+        time = ((expires_at - Time.zone.now).abs/1.send(unit)).round
         return {time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase)}
       end
     end
@@ -193,33 +198,6 @@ class Project < ActiveRecord::Base
     Rails.logger.info "-----> #{e.inspect}"
   rescue TypeError => e
     Rails.logger.info "-----> #{e.inspect}"
-  end
-
-  def as_json(options={})
-    {
-      id: id,
-      name: name,
-      user: user,
-      category: category,
-      image: display_image,
-      headline: headline,
-      progress: progress,
-      display_progress: display_progress,
-      pledged: display_pledged,
-      created_at: created_at,
-      time_to_go: time_to_go,
-      remaining_text: remaining_text,
-      embed_url: video_embed_url ? video_embed_url : (video ? video.embed_url : nil),
-      url: Rails.application.routes.url_helpers.project_by_slug_path(permalink, locale: I18n.locale),
-      full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, locale: I18n.locale),
-      expired: expired?,
-      successful: successful? || reached_goal?,
-      waiting_funds: waiting_funds?,
-      failed: failed?,
-      display_status_to_box: display_status.blank? ? nil : I18n.t("project.display_status.#{display_status}"),
-      display_expires_at: display_expires_at,
-      in_time: in_time?
-    }
   end
 
   def pending_backers_reached_the_goal?

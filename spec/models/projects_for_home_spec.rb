@@ -36,4 +36,9 @@ describe ProjectsForHome do
     it { should have(3).itens }
     it { should_not include(@not_expiring_01) }
   end
+
+  describe "to_partial_path" do
+    subject{ ProjectsForHome.new.to_partial_path }
+    it{ should == 'projects/project' }
+  end
 end

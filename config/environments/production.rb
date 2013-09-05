@@ -83,6 +83,4 @@ Catarse::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  # Google analytics ID
-  GA.tracker = Configuration['google_analytics_id'] if Configuration['google_analytics_id'].present?
 end
