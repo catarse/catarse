@@ -1,12 +1,12 @@
 describe("Skull.View", function(){
-  var ViewClass;
-  var view;
+  var ViewClass, view, parent, root;
 
   beforeEach(function(){
-    ViewClass = Skull.View.extend({ el: 'test' });
+    root = { router: { route: function(){} } };
+    parent = { parent: root };
+    ViewClass = Skull.View.extend({ parent: parent, el: 'test' });
     view = new ViewClass();
   });
-
   
   describe(".addChild", function() {
     beforeEach(function() {
@@ -51,6 +51,31 @@ describe("Skull.View", function(){
       expect(view._childClass).toEqual(jasmine.any(ChildClass));
     });
   });  
+  
+  describe("#rootView", function() {
+    it("should return root view", function() {
+      expect(view.rootView()).toEqual(root);
+    });
+  });  
+
+  describe("#router", function() {
+    it("should return rootView router", function() {
+      view.router();
+      expect(view.router()).toEqual(view.rootView().router);
+    });
+  });  
+  
+  describe("#route", function() {
+    var routeName = 'route_name';
+    beforeEach(function() {
+      spyOn(view.router(), "route");
+      view.route(routeName);
+    });
+
+    it("should create route in rootView router", function() {
+      expect(view.router().route).wasCalledWith(routeName, routeName.split("/")[0], jasmine.any(Function));
+    });
+  });
   
   describe("#createViewGetters", function() {
     beforeEach(function() {
