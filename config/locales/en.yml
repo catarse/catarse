@@ -1,4 +1,8 @@
 en:
+  controllers:
+    updates:
+      create:
+        notice: 'Update was successfully created!'
   failure_title: 'Please, fix the errors bellow:'
   uservoice_gadget:
     user:
@@ -165,7 +169,7 @@ en:
         email: Email
         full_name: "Full name / Company Name"
         bio: 'Mini Bio'
-        name: Name
+        name: 'Full name'
         password: Password
         password_confirmation: "Password Confirmation"
         phone_number: "Mobile phone number"
