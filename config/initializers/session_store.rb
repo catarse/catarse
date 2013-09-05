@@ -3,7 +3,7 @@
 if Configuration[:base_domain]
   Catarse::Application.config.session_store :active_record_store, domain: Configuration[:base_domain]
 else
-  Catarse::Application.config.session_store :active_record_store, key: '_catarse_session'
+  Catarse::Application.config.session_store :active_record_store
 end
 
 # Use the database for sessions instead of the cookie-based default,
