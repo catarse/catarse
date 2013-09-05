@@ -14,7 +14,10 @@ describe Projects::BackersController do
   end
 
   describe "POST update_info" do
+    let(:set_expectations) {}
+
     before do
+      set_expectations
       post :update_info, { locale: :pt, project_id: project.id, id: backer.id, backer: backer_info }
     end
 
@@ -28,6 +31,7 @@ describe Projects::BackersController do
       it('should set flash failure'){ request.flash[:alert].should_not be_empty }
     end
     context "when we have the right user" do
+      let(:set_expectations) { Backer.any_instance.should_receive(:update_user_billing_info) }
       let(:user){ backer.user }
       its(:body){ should == { message: "updated" }.to_json  }
     end
@@ -72,8 +76,10 @@ describe Projects::BackersController do
 
   describe "POST create" do
     let(:value){ '20.00' }
+    let(:set_expectations) {}
     before do
       request.env['REQUEST_URI'] = "/test_path"
+      set_expectations
       post :create, {locale: :pt, project_id: project.id, backer: { value: value, reward_id: nil, anonymous: '0' }}
     end
 
@@ -83,6 +89,7 @@ describe Projects::BackersController do
     end
 
     context "when user is logged in" do
+      let(:set_expectations) { Backer.any_instance.should_receive(:update_current_billing_info) }
       let(:user){ create(:user) }
       its(:body){ should =~ /#{I18n.t('projects.backers.create.title')}/ }
       its(:body){ should =~ /#{project.name}/ }

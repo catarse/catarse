@@ -143,6 +143,30 @@ class Backer < ActiveRecord::Base
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
 
+  def update_current_billing_info
+    self.address_street = user.address_street
+    self.address_number = user.address_number
+    self.address_neighbourhood = user.address_neighbourhood
+    self.address_zip_code = user.address_zip_code
+    self.address_city = user.address_city
+    self.address_state = user.address_state
+    self.address_phone_number = user.phone_number
+    self.payer_document = user.cpf
+  end
+
+  def update_user_billing_info
+    user.update_attributes({
+      address_street: address_street,
+      address_number: address_number,
+      address_neighbourhood: address_neighbourhood,
+      address_zip_code: address_zip_code,
+      address_city: address_city,
+      address_state: address_state,
+      phone_number: address_phone_number,
+      cpf: payer_document
+    })
+  end
+
   state_machine :state, initial: :pending do
     state :pending, value: 'pending'
     state :waiting_confirmation, value: 'waiting_confirmation'

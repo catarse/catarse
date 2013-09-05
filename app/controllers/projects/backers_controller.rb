@@ -8,6 +8,7 @@ class Projects::BackersController < ApplicationController
 
   def update_info
     resource.update_attributes(params[:backer])
+    resource.update_user_billing_info
     render json: {message: 'updated'}
   end
 
@@ -53,6 +54,7 @@ class Projects::BackersController < ApplicationController
         return redirect_to new_project_backer_path(@project)
       end
       success.html do
+        resource.update_current_billing_info
         flash[:notice] = nil
         session[:thank_you_backer_id] = @backer.id
         return render :create
