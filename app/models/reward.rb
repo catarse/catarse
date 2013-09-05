@@ -64,17 +64,4 @@ class Reward < ActiveRecord::Base
   def display_description
     auto_link(simple_format(description), html: {target: :_blank})
   end
-  def as_json(options={})
-    {
-      id: id,
-      project_id: project_id,
-      maximum_backers: maximum_backers,
-      remaining: remaining,
-      display_with_label: I18n.t('projects.rewards.reward_title', minimum: display_minimum),
-      display_minimum: display_minimum,
-      description: description,
-      short_description: short_description,
-      medium_description: medium_description
-    }
-  end
 end

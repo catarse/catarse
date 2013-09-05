@@ -1,6 +1,4 @@
-/ Temporaly using channels banner
-  = render partial: 'recommended_header'
-= render partial: 'channels/projects/banner'
+.banner
 #page_content
   .container
     .main
@@ -10,43 +8,49 @@
             .title
               h2= t('sections.near.title')
           .projects
-            - @projects_near.each_with_index do |item,i|
-              == render 'project', project: item, custom_class: ((@projects_near.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+            == render @projects_near
           .explore_link
-            hr
             = link_to t('main.links.near'), explore_path(anchor: :near)
+            hr
       .selected_projects.list
         .list_title
           .title
             h2= t('sections.selection.title')
         .projects
-          - @recommends.each_with_index do |item,i|
-            == render 'project', project: item, custom_class: ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+          == render @recommends
         .explore_link
-          hr
           = link_to t('main.links.selected'), explore_path(anchor: :recommended)
+          hr
+
+      .channel_projects.list
+        .list_title
+          .title
+            h2= t('sections.channels.title')
+        .projects
+          == render @channel_projects
+        .explore_link
+          = link_to t('main.links.channels'), root_url(subdomain: 'asas')
+          hr
 
       .expiring_projects.list
         .list_title
           .title
             h2= t('sections.expiring.title')
         .projects
-          - @expiring.each_with_index do |item,i|
-            == render 'project', project: item, custom_class: ((@expiring.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+          == render @expiring
         .explore_link
-          hr
           = link_to t('main.links.expiring'), explore_path(anchor: :expiring)
+          hr
 
       .recents_projects.list
         .list_title
           .title
             h2= t('sections.recents.title')
         .projects
-          - @recent.each_with_index do |item,i|
-            == render 'project', project: item, custom_class: ((@recent.length == (i+1) ? 'last' : false) || (i==0 ? 'first' : false))
+          == render @recent
         .explore_link
-          hr
           = link_to t('main.links.recents'), explore_path(anchor: :recent)
+          hr
 
     .sidebar
       .content
@@ -66,7 +70,8 @@
         .facebook
           h3= t('sidebar.titles.facebook')
           .fb-like data-href="#{Configuration['facebook_url']}" data-send="false" data-width="160" data-show-faces="true"
-        #twitter.twitter[data-username="@#{Configuration['twitter_username']}"]
+        #twitter.twitter
+          = link_to t('sidebar.titles.twitter'), "https://twitter.com/#{Configuration['twitter_username']}", class: 'twitter-timeline', data:{widget_id:"375343843308089345", chrome:"nofooter"}
         .newsletter
           h3= t('sidebar.titles.newsletter')
           = form_tag Configuration['mailchimp_url'], id: 'mailee-form', method: 'post' do

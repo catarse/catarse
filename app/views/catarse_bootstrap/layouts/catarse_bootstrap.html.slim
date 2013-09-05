@@ -5,6 +5,8 @@ html
 
 
     = stylesheet_link_tag :catarse
+    = csrf_meta_tag
+
   body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name]
     = render 'layouts/uservoice'
     = render 'layouts/catarse_bootstrap_notices' if notice
@@ -16,5 +18,4 @@ html
 
 
   = javascript_include_tag :application
-  = render 'layouts/new_uservoice'
   = render 'layouts/analytics'

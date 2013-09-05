@@ -1,8 +1,16 @@
-= semantic_form_for [parent, resource], remote: true, html: { class: 'remote-form' } do |f|
-  = f.input :minimum_value
-  = f.input :days_to_delivery
-  = f.input :description
-  = f.input :maximum_backers
+= semantic_form_for [parent, resource], html: { class: 'remote-form' } do |f|
+  - if resource.new_record? || can?(:update, resource, :minimum_value)
+    = f.input :minimum_value, required: true, as: :number, input_html: {pattern: "^[\\d+.]+"}
+
+  - if resource.new_record? || can?(:update, resource, :days_to_delivery)
+    = f.input :days_to_delivery, required: true
+
+  - if resource.new_record? || can?(:update, resource, :description)
+    = f.input :description, required: true
+
+  - if resource.new_record? || can?(:update, resource, :maximum_backers)
+    = f.input :maximum_backers
+
   .clearfix
   = f.submit class: 'btn', disable_with: I18n.t('sending')
   - if resource.persisted? && can?(:destroy, resource)

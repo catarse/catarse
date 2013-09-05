@@ -9,5 +9,5 @@ pt:
               taken: "Email já está cadastrado, faça seu login"
               invalid: "Esse endereço de email é inválido"
             password:
-              too_short: "A senha que você escolheu é muito curta (para sua segurança, o mínimo são %{count} caracteres)"
+              too_short: "A senha que você escolheu é muito curta"
               confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"

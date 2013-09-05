@@ -19,8 +19,8 @@ en:
       subject: "Seu apoio para %{project_name} foi recebido e está aguardando confirmação do %{payment_method}"
       header: "Apoio Em Análise - o que é isso?"
     updates:
-      subject: "Project UPDATE#%{update_id} - %{project_name}"
-      header: "Project UPDATE#%{update_id} - %{project_name}"
+      subject: "Project UPDATE #%{update_number} - %{project_name}"
+      header: "Project UPDATE #%{update_number} - %{project_name}"
     project_in_wainting_funds:
       subject: "O prazo do seu projeto acabou, saiba quais são os próximos passos"
       header: "Acabou o prazo!"

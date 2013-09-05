@@ -31,7 +31,7 @@ gem 'chartkick'
 # Payment engines
 gem 'catarse_paypal_express', '~> 2.0.0'
 gem 'catarse_moip', '~> 2.0.0'
-#
+
 # Decorators
 gem 'draper'
 
@@ -98,7 +98,7 @@ group :production do
   gem 'rails_12factor'
 
   # Monitoring with the new new relic
-  gem 'newrelic_rpm'
+  gem 'newrelic_rpm', '3.6.5.130'
 
   # Using dalli and memcachier have not presented significative performance gains
   # Probably this is due to our pattern of cache usage
