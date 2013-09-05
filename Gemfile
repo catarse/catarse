@@ -7,6 +7,7 @@ gem 'mail',     '2.5.3'
 
 gem 'protected_attributes', '~> 1.0.3' # When upgrade to strong_parameters, remove this gem.
 gem 'rails-observers', '~> 0.1.2'
+gem 'activerecord-session_store', '~> 0.0.1'
 
 gem 'sidekiq',  '~> 2.13.0'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
