@@ -1,8 +1,11 @@
 App.addChild('Explore', _.extend({
   el: '#main_content[data-action="index"][data-controller-name="explore"]',
 
-  events: {
-    'click a[data-filter]' : 'applyFilter'
+  routeFilters: {
+    recent: { recent: true },
+    expiring: { expiring: true },
+    recommended: { recommended: true },
+    successful: { successful: true }
   },
 
   activate: function(){
@@ -10,25 +13,41 @@ App.addChild('Explore', _.extend({
     this.$loaderDiv = this.$("#loading");
     this.$results = this.$(".results");
     this.path = this.$("#explore_results").data('projects-path');
-    this.setInitialFilter();
+
+    this.route('recommended');
+    this.route('expiring');
+    this.route('recent');
+    this.route('successful');
+    this.route('by_category_id/:id');
+
+    //this.setInitialFilter();
     this.setupScroll();
-    this.makeRoute('recommended');
-    this.makeRoute('expiring');
-    this.makeRoute('recent');
   },
 
-  //@TODO: Remove this as soon as we migrate to turbolinks
-  makeRoute: function(name){
-    var that = this;
-    this.parent.router.route(name, name, function(){
-      var $link = that.$('a#' + name);
-      if($link.length > 0){
-        that.applyFilter({ target: $link });
-      }
-    });
+  selectLink: function(){
+    this.$('a.selected').removeClass('selected');
+    this.$('a[href="' + window.location.hash + '"]').addClass('selected');
+  },
+
+  followRoute: function(route, name, params){
+    this.filter = {};
+    if(params.length > 0){
+      this.filter[name] = params[0];
+    }
+    else{
+      this.filter[name] = true;
+    }
+    this.firstPage();
+    if(this.parent && this.parent.$search.length > 0){
+      this.parent.$search.val('');
+    }
+    this.selectLink();
   },
 
   setInitialFilter: function(){
+    if(this.filter){
+      return;
+    }
     var search = null;;
     if(this.parent && (search = this.parent.$search.val())){
       this.filter = { pg_search: search };
@@ -39,17 +58,5 @@ App.addChild('Explore', _.extend({
         not_expired: true
       };
     }
-  },
-
-  applyFilter: function(e){
-    var $target = $(e.target);
-    this.filter = $target.data('filter');
-    this.firstPage();
-    this.$('[data-filter]').removeClass('selected');
-    $target.addClass('selected');
-    if(this.parent && this.parent.$search.length > 0){
-      this.parent.$search.val('');
-    }
-    return false;
   }
 }, Skull.InfiniteScroll));
