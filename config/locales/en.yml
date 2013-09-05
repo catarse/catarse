@@ -1,4 +1,8 @@
 en:
+  controllers:
+    updates:
+      create:
+        notice: 'Update was successfully created!'
   failure_title: 'Please, fix the errors bellow:'
   uservoice_gadget:
     user:
