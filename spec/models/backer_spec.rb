@@ -101,6 +101,57 @@ describe Backer do
     end
   end
 
+  describe "#update_current_billing_info" do
+    let(:backer) { build(:backer, user: user) }
+    let(:user) {
+      build(:user, {
+        address_street: 'test stret',
+        address_number: '123',
+        address_neighbourhood: 'test area',
+        address_zip_code: 'test zipcode',
+        address_city: 'test city',
+        address_state: 'test state',
+        phone_number: 'test phone',
+        cpf: 'test doc number'
+      })
+    }
+    subject{ backer }
+    before do
+      backer.update_current_billing_info
+    end
+    its(:address_street){ should eq(user.address_street) }
+    its(:address_number){ should eq(user.address_number) }
+    its(:address_neighbourhood){ should eq(user.address_neighbourhood) }
+    its(:address_zip_code){ should eq(user.address_zip_code) }
+    its(:address_city){ should eq(user.address_city) }
+    its(:address_state){ should eq(user.address_state) }
+    its(:address_phone_number){ should eq(user.phone_number) }
+    its(:payer_document){ should eq(user.cpf) }
+  end
+
+  describe "#update_user_billing_info" do
+    let(:backer) { create(:backer) }
+    let(:user) { backer.user }
+    let(:backer_attributes) {
+      {
+        address_street: backer.address_street,
+        address_number: backer.address_number,
+        address_neighbourhood: backer.address_neighbourhood,
+        address_zip_code: backer.address_zip_code,
+        address_city: backer.address_city,
+        address_state: backer.address_state,
+        phone_number: backer.address_phone_number,
+        cpf: backer.payer_document
+      }
+    }
+
+    before do
+      user.should_receive(:update_attributes).with(backer_attributes)
+    end
+
+    it("should update user billing info attributes") { backer.update_user_billing_info}
+  end
+
   describe '#recommended_projects' do
     let(:backer){ create(:backer) }
     before do
