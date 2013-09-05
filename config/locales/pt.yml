@@ -50,6 +50,9 @@ pt:
   edit_project: 'Editar projeto'
   days: 'dias'
   controllers:
+    updates:
+      create:
+        notice: 'Novidade enviada com sucesso!'
     rewards:
       create:
         notice: 'Recompensa adicionada com sucesso!'
