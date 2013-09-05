@@ -21,7 +21,7 @@ en:
     users:
       index:
         title: "Management backers"
-        menu: Backers
+        menu: Users
         credits: Credits
         credits_view: "Calculated credits"
         id: ID

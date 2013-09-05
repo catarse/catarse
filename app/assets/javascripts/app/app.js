@@ -13,7 +13,6 @@ var App = window.App = Skull.View.extend({
   activate: function(){
     this.$(".best_in_place").best_in_place();
     this.$dropdown = this.$('.dropdown.user');
-    this.$flash = this.$('.flash');
     this.flash();
     this.notices();
     Backbone.history.start({pushState: false});
@@ -22,6 +21,8 @@ var App = window.App = Skull.View.extend({
 
   flash: function() {
     var that = this;
+    this.$flash = this.$('.flash');
+
     setTimeout( function(){ that.$flash.slideDown('slow') }, 100)
     if( ! this.$('.flash a').length) setTimeout( function(){ that.$flash.slideUp('slow') }, 16000)
     $(window).click(function(){ that.$('.flash a').slideUp() })
