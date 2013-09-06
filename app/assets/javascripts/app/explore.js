@@ -20,10 +20,13 @@ App.addChild('Explore', _.extend({
     this.route('successful');
     this.route('by_category_id/:id');
     this.route('near_of/:state');
-    this.route('');
 
     this.setInitialFilter();
     this.setupScroll();
+
+    if(window.location.hash == ''){
+      this.fetchPage();
+    }
   },
 
   selectLink: function(){
