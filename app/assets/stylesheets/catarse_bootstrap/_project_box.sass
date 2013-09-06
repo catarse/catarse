@@ -1,0 +1,93 @@
+.project-box
+  +grid(4)
+  background: white
+  height: 400px
+  box-shadow: 0 1px 4px darken(lightgray, 10%)
+  position: relative
+  margin: 0 20px 1.5em 0
+  +transition(all .2s)
+  // For every 3 blocks of projects, remove the right margin
+  // Use this instead of adding a class for the element/3
+  // or using in_group_of helper
+  &:nth-child(3n+0)
+    +omega
+
+  // Children of .project-box
+  .status-flag
+    position: absolute
+  a
+    color: black
+    text-decoration: none !important
+  .image
+    opacity: 1
+    &:hover
+      opacity: .9
+      > .title a
+        text-decoration: underline !important
+
+  .title
+    margin: .4em 0
+    line-height: 1.2em
+    a
+      &:hover
+        text-decoration: underline !important
+  .padding
+    padding: 10px
+  .headline
+    font-size: .8em
+    margin: .8em 0 .4em 0
+    line-height: 1.4em
+    font-weight: 400
+    height: 70px
+    a
+      color: rgba(0,0,0,0.5) 
+      &:hover
+        color: rgba(0,0,0,0.7)
+  .status
+    bottom: 0px
+    position: absolute
+    width: 100%
+    .background
+      background: $project_box_status
+      overflow: hidden
+    hr
+      margin: 0
+      border: 0
+      height: 0
+      border-top: 1px solid rgba(0, 0, 0, 0.1)
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3)
+  .progress_percent
+    font-size: .6em
+    text-transform: uppercase
+    vertical-align: middle
+    span
+      font-weight: bold
+      font-size: 2em !important
+      padding-right: .2em
+      line-height: 2em
+      position: relative
+      top: .2em
+  .progress-bar
+    #progress_wrapper, #progress
+      height: .4em
+      background: $project_box_progress_gray 
+      border-radius: 6px
+      box-shadow: inset 0 0 4px lighten(gray, 15%)
+    #progress
+      background: $project_box_progress
+      +background-image(linear-gradient(0deg,lighten($project_box_progress, 5%) 0%,$project_box_progress 1%,lighten($project_box_progress, 5%) 100%,lighten($project_box_progress, 15%) 100%)) 
+  .time-remaining, .money-raised
+    float: left
+    padding: 1.3em 0
+    padding-bottom: 1.8em
+    text-transform: uppercase
+    font-size: .6em
+    span
+      display: block
+      font-weight: bold
+      font-size: 1.8em !important
+      text-transform: none
+      margin-bottom: .05em
+  .money-raised
+    float: right
+    margin-right: 2%
