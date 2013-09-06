@@ -36,12 +36,9 @@ describe Reward do
     r.should_not be_valid
   end
 
-  it "should have a display_minimum" do
-    r = build(:reward)
-    r.minimum_value = 10
-    r.display_minimum.should == "R$ 10"
-    r.minimum_value = 99
-    r.display_minimum.should == "R$ 99"
+  describe "#display_minimum" do
+    subject{ reward.display_minimum }
+    it{ should == reward.number_to_currency(reward.minimum_value) }
   end
 
   it "should have a greater than 10.00 minimum value" do
