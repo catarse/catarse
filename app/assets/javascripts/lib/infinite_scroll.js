@@ -8,7 +8,6 @@ Skull.InfiniteScroll = {
     this.EOF = false;
     this.filter.page = 1;
     this.$results.html('');
-    this.fetchPage();
   },
 
   fetchPage: function(){
