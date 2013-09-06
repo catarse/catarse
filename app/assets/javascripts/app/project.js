@@ -2,7 +2,6 @@ App.addChild('Project', _.extend({
   el: '#main_content[data-action="show"][data-controller-name="projects"]',
 
   events: {
-    'click nav#project_menu a' : 'onTabClick',
     'click #toggle_warning a' : 'toggleWarning',
     'click a#embed_link' : 'toggleEmbed'
   },
@@ -10,12 +9,12 @@ App.addChild('Project', _.extend({
   activate: function(){
     this.$warning = this.$('#project_warning_text');
     this.$embed= this.$('#project_embed');
-    this.makeRoute('about');
-    this.makeRoute('updates');
-    this.makeRoute('backers');
-    this.makeRoute('comments');
-    this.makeRoute('edit');
-    this.makeRoute('reports');
+    this.route('about');
+    this.route('updates');
+    this.route('backers');
+    this.route('comments');
+    this.route('edit');
+    this.route('reports');
   },
 
   toggleWarning: function(){
@@ -29,16 +28,11 @@ App.addChild('Project', _.extend({
     return false;
   },
 
-  //@TODO: Remove this as soon as we migrate to turbolinks
-  makeRoute: function(name){
-    var that = this;
-    var link = name + '_link';
-    this.parent.router.route(name, name, function(){
-      var $tab = that.$('nav#project_menu a#' + link);
-      if($tab.length > 0){
-        that.onTabClick({ target: $tab });
-      }
-    });
+  followRoute: function(name){
+    var $tab = this.$('nav#project_menu a[href="' + window.location.hash + '"]');
+    if($tab.length > 0){
+      this.onTabClick({ target: $tab });
+    }
   },
 
   loadEmbed: function() {
