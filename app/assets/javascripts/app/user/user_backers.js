@@ -8,6 +8,7 @@ App.views.User.addChild('UserBackers', _.extend({
     this.path = this.$el.data('path');
     this.filter = {};
     this.setupScroll();
+    this.fetchPage();
   }
 
 }, Skull.InfiniteScroll));
