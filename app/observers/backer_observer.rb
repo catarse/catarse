@@ -35,33 +35,6 @@ class BackerObserver < ActiveRecord::Observer
           project_name: backer.project.name)
       end
     end
-
-    # @TODO: Later we should move the code below to model and call it on the controller actions
-    if backer.new_record? && backer.user
-      backer.address_street = backer.user.address_street
-      backer.address_number = backer.user.address_number
-      backer.address_neighbourhood = backer.user.address_neighbourhood
-      backer.address_zip_code = backer.user.address_zip_code
-      backer.address_city = backer.user.address_city
-      backer.address_state = backer.user.address_state
-      backer.address_phone_number = backer.user.phone_number
-      backer.payer_document = backer.user.cpf
-    else
-      backer.user.address_street = backer.address_street
-      backer.user.address_number = backer.address_number
-      backer.user.address_neighbourhood = backer.address_neighbourhood
-      backer.user.address_zip_code = backer.address_zip_code
-      backer.user.address_city = backer.address_city
-      backer.user.address_state = backer.address_state
-      backer.user.phone_number = backer.address_phone_number
-      backer.user.cpf = backer.payer_document
-    end
-
-    unless backer.user.full_name.present?
-      backer.user.full_name = backer.payer_name
-    end
-
-    backer.user.save
   end
 
   def after_save(backer)

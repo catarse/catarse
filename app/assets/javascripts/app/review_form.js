@@ -15,6 +15,8 @@ App.addChild('ReviewForm', _.extend({
     if(this.validate()){
       $('#payment').show();
       this.updateBacker();
+    } else {
+      return false;
     }
   },
 
