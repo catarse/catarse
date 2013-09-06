@@ -38,7 +38,7 @@
                     = t('.successful')
               - if current_user
                 li.no_margin
-                  a[href="#near"]
+                  a[href="#near_of/#{current_user.address_state}"]
                     = t('.near')
 
         - unless @categories.empty?
