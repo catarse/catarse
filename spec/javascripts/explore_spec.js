@@ -93,22 +93,30 @@ describe("Explore", function() {
     });
   });
 
-  describe("#applyFilter", function() {
+  describe("#followRoute", function() {
     var el;
 
     beforeEach(function() {
-      el = $('<div>');
-      el.data('filter', {foo: 'bar'});
       spyOn(view, "firstPage");
-      view.applyFilter({target: el});
+      spyOn(view, "fetchPage");
+      spyOn(view, "selectLink");
+      view.followRoute('recent', 'recent', []);
     });
 
     it("should assign filter to view", function() {
-      expect(view.filter).toEqual({foo: 'bar'});
+      expect(view.filter).toEqual({recent: true});
     });
 
     it("should call firstPage", function() {
       expect(view.firstPage).wasCalled();
+    });
+
+    it("should call fetchPage", function() {
+      expect(view.fetchPage).wasCalled();
+    });
+
+    it("should call selectLink", function() {
+      expect(view.selectLink).wasCalled();
     });
   });
 
@@ -131,10 +139,6 @@ describe("Explore", function() {
 
     it("assign 1 to filter.page", function() {
       expect(view.filter.page).toEqual(1);
-    });
-
-    it("should call fetchPage", function() {
-      expect(view.fetchPage).wasCalled();
     });
   });  
   

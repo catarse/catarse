@@ -19,8 +19,10 @@ App.addChild('Explore', _.extend({
     this.route('recent');
     this.route('successful');
     this.route('by_category_id/:id');
+    this.route('near_of/:state');
+    this.route('');
 
-    //this.setInitialFilter();
+    this.setInitialFilter();
     this.setupScroll();
   },
 
@@ -38,6 +40,7 @@ App.addChild('Explore', _.extend({
       this.filter[name] = true;
     }
     this.firstPage();
+    this.fetchPage();
     if(this.parent && this.parent.$search.length > 0){
       this.parent.$search.val('');
     }
@@ -45,9 +48,6 @@ App.addChild('Explore', _.extend({
   },
 
   setInitialFilter: function(){
-    if(this.filter){
-      return;
-    }
     var search = null;;
     if(this.parent && (search = this.parent.$search.val())){
       this.filter = { pg_search: search };
