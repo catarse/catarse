@@ -60,10 +60,7 @@ Catarse::Application.routes.draw do
 
 
   match "/explore" => "explore#index", as: :explore
-  match "/explore#:quick" => "explore#index", as: :explore_quick
-  match "/credits" => "credits#index", as: :credits
 
-  match "/reward/:id" => "rewards#show", as: :reward
   resources :posts, only: [:index, :create]
 
   namespace :reports do
@@ -112,7 +109,6 @@ Catarse::Application.routes.draw do
       put 'update_password'
     end
   end
-  # match "/users/:id/request_refund/:back_id" => 'users#request_refund'
 
   namespace :adm do
     resources :projects, only: [ :index, :update, :destroy ] do
