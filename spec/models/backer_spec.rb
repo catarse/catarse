@@ -360,6 +360,7 @@ describe Backer do
   describe ".can_refund" do
     subject{ Backer.can_refund.all }
     before do
+      create(:backer, state: 'confirmed', credits: true, project: failed_project)
       valid_refund
       sucessful_project_backer
       unfinished_project
