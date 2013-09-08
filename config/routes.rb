@@ -24,11 +24,6 @@ Catarse::Application.routes.draw do
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
 
-  # Non production routes
-  if Rails.env.development?
-    resources :emails, only: [ :index ]
-  end
-
   # Channels
   constraints subdomain: 'asas' do
     namespace :channels, path: '' do
