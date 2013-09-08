@@ -16,30 +16,25 @@
 
     .sidebar
       .content
-        - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
-          section.highlights
-            h2= t('.quick_explore')
-            ul#explore_quick
-              - unless @recommended.empty?
-                li
-                  a[href='#recommended']
-                    = t('.recommended')
-              - unless @expiring.empty?
-                li.no_margin
-                  a[href='#expiring']
-                    = t('.expiring')
-              - unless @recent.empty?
-                li
-                  a[href='#recent']
-                    = t('.recent')
-              - unless @successful.empty?
-                li.no_margin
-                  a[href='#successful']
-                    = t('.successful')
-              - if current_user
-                li.no_margin
-                  a[href="#near_of/#{current_user.address_state}"]
-                    = t('.near')
+        section.highlights
+          h2= t('.quick_explore')
+          ul#explore_quick
+            li
+              a[href='#recommended']
+                = t('.recommended')
+            li.no_margin
+              a[href='#expiring']
+                = t('.expiring')
+            li
+              a[href='#recent']
+                = t('.recent')
+            li.no_margin
+              a[href='#successful']
+                = t('.successful')
+            - if current_user
+              li.no_margin
+                a[href="#near_of/#{current_user.address_state}"]
+                  = t('.near')
 
         - unless @categories.empty?
           section.categories
