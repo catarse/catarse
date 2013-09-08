@@ -60,6 +60,7 @@ class Backer < ActiveRecord::Base
   scope :can_refund, ->{
     where(%Q{
       backers.state IN('confirmed', 'requested_refund', 'refunded') AND
+      NOT backers.credits AND
       EXISTS(
         SELECT true
           FROM projects p
