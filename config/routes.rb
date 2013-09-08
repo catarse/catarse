@@ -3,7 +3,7 @@ require 'sidekiq/web'
 Catarse::Application.routes.draw do
 
   devise_for :users, path: '',
-    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up }, 
+    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up },
     controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords }
 
   devise_scope :user do
@@ -33,6 +33,10 @@ Catarse::Application.routes.draw do
   constraints subdomain: 'asas' do
     namespace :channels, path: '' do
       namespace :adm do
+        namespace :reports do
+          resources :subscribers_report, only: [ :index ]
+        end
+        resources :statistics, only: [ :index ]
         resources :projects, only: [ :index, :update] do
           member do
             put 'approve'
