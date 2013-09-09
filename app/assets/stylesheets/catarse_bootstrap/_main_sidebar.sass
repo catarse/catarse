@@ -1,5 +1,6 @@
-$sidebar-title: #3F4652
-$sidebar-text: #79808B
+$sidebar-title: #3F4752
+$sidebar-text: #79808E
+$sidebar-link: #F69219
 
 .main-sidebar
   -webkit-box-sizing: border-box
@@ -16,8 +17,9 @@ $sidebar-text: #79808B
   color: $sidebar-text
   &:last-child
     border-bottom: none
+
   .title
-    font-size: 12px
+    font-size: 11px
     color: $sidebar-title
     text-transform: uppercase
     font-weight: bold
@@ -42,28 +44,43 @@ $sidebar-text: #79808B
     color: $sidebar-text
     line-height: 15px
 
+  .explore-link
+    color: $sidebar-text
+    font-size: 15px
+    margin: 0 0 10px
+    text-decoration: none
+    display: block
+    &:hover
+      color: $sidebar-link
+      text-decoration: underline
+
+  .selected
+    font-weight: bold
+
+
 .newsletter
-  padding: 2px
-  border: 1px solid rgba(0, 0, 0, 0.1)
+  padding: 1px
+  border: 1px solid #ddd
   display: inline-block
   +border-radius(3px)
+  height: 34px
   .newsletter-input
     border: none
     font-size: 13px
     width: 140px
-    height: 36px
-    padding: 0 5px
-    line-height: 36px
+    height: 32px
+    line-height: 32px
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+    text-indent: 5px
+    color: $sidebar-text
   .newsletter-submit
     float: right
     border: none
     background: #3C9DFF
-    height: 36px
-    width: 36px
+    height: 34px
+    width: 34px
     text-align: center
     font-size: 18px
-    color: white
-    padding: 0 0 5px
     +border-radius(3px)
     &:hover
       background: rgba(#3C9DFF, 0.8)
