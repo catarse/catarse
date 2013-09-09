@@ -377,6 +377,7 @@ en:
   projects:
     box:
       by: by
+      when: in
     admin_fields:
       title: "Admin fields"
     back_project:
