@@ -109,8 +109,6 @@ en:
       newsletter: "subscribe to our news"
       faq: "have any doubt?"
       schedule: calendar
-    buttons:
-      newsletter: >
     placeholders:
       email: "Enter your email"
   sections:
