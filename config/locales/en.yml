@@ -106,11 +106,13 @@ en:
     titles:
       blog: blog
       facebook: "have you liked our facebook page yet?"
-      newsletter: "do you want to receive our news?"
+      newsletter: "subscribe to our news"
       faq: "have any doubt?"
       schedule: calendar
     buttons:
-      newsletter: submit
+      newsletter: >
+    placeholders:
+      email: "Enter your email"
   sections:
     near:
       title: near me

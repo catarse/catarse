@@ -112,11 +112,13 @@ pt:
     titles:
       blog: blog
       facebook: "já curtiu nosso face?"
-      newsletter: "quer novidades?"
+      newsletter: "Assine nossa news"
       faq: "tá com dúvida?"
       schedule: agenda
     buttons:
-      newsletter: assinar
+      newsletter: >
+    placeholders:
+      email: "Digite seu email"
   sections:
     near:
       title: 'Próximos a mim'
