@@ -23,7 +23,7 @@ gem 'paper_trail', '~> 2.7.2'
 # Database and data related
 gem 'pg'
 gem 'pg_search'
-gem 'postgres-copy'
+gem 'postgres-copy', '~> 0.6.0'
 gem 'schema_plus'
 gem 'schema_associations'
 gem 'chartkick'
