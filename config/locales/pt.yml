@@ -117,6 +117,8 @@ pt:
       schedule: agenda
     placeholders:
       email: "Digite seu email"
+    buttons:
+      newsletter: Enviar
   sections:
     near:
       title: 'Próximos a mim'
