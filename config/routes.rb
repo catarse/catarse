@@ -3,7 +3,7 @@ require 'sidekiq/web'
 Catarse::Application.routes.draw do
 
   devise_for :users, path: '',
-    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up }, 
+    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up },
     controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords }
 
   devise_scope :user do
@@ -23,11 +23,6 @@ Catarse::Application.routes.draw do
 
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
-
-  # Non production routes
-  if Rails.env.development?
-    resources :emails, only: [ :index ]
-  end
 
   # Channels
   constraints subdomain: 'asas' do
@@ -65,10 +60,7 @@ Catarse::Application.routes.draw do
 
 
   match "/explore" => "explore#index", as: :explore
-  match "/explore#:quick" => "explore#index", as: :explore_quick
-  match "/credits" => "credits#index", as: :credits
 
-  match "/reward/:id" => "rewards#show", as: :reward
   resources :posts, only: [:index, :create]
 
   namespace :reports do
@@ -112,18 +104,9 @@ Catarse::Application.routes.draw do
     resources :unsubscribes, only: [:create]
     member do
       get 'projects'
-      get 'credits'
       put 'unsubscribe_update'
       put 'update_email'
       put 'update_password'
-    end
-  end
-  # match "/users/:id/request_refund/:back_id" => 'users#request_refund'
-
-  resources :credits, only: [:index] do
-    collection do
-      get 'buy'
-      post 'refund'
     end
   end
 

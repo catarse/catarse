@@ -16,11 +16,6 @@ class RewardsController < ApplicationController
     render layout: false
   end
 
-  def show
-    @reward = Reward.find params[:id]
-    render json: @reward.to_json
-  end
-
   def update
     update! { project_by_slug_path(permalink: parent.permalink) }
   end

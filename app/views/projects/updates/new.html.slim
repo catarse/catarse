@@ -3,6 +3,10 @@
     = form.inputs do
       = form.input :title, as: :string, label: t('projects.project_updates.title')
       = form.input :comment, as: :text, label: t('projects.project_updates.comment'), input_html: {rows: 10}
+      = form.input :exclusive, as: :boolean, label: t('projects.project_updates.exclusive')
+      br/
+      br/
+      .clearfix
       .bootstrap-twitter
         .alert.alert-info
           p = t('projects.project_updates.warning')
@@ -11,3 +15,8 @@
       .bootstrap-twitter
         = form.submit t('projects.project_updates.submit'), class: "btn", id: "update_submit"
 
+- content_for :custom_flahses do
+  .hide.ghost-flash
+    div class="notice wrapper"
+      div class="notice"
+        = t('controllers.updates.create.notice')

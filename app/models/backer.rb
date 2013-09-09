@@ -60,6 +60,7 @@ class Backer < ActiveRecord::Base
   scope :can_refund, ->{
     where(%Q{
       backers.state IN('confirmed', 'requested_refund', 'refunded') AND
+      NOT backers.credits AND
       EXISTS(
         SELECT true
           FROM projects p
@@ -143,31 +144,28 @@ class Backer < ActiveRecord::Base
     I18n.l(confirmed_at.to_date) if confirmed_at
   end
 
-  def as_json(options={})
-    json_attributes = {
-      id: id,
-      anonymous: anonymous,
-      confirmed: confirmed?,
-      confirmed_at: display_confirmed_at,
-      user: user.as_json(options.merge(anonymous: anonymous)),
-      value: nil,
-      display_value: nil,
-      reward: nil
-    }
-    if options and options[:can_manage]
-      json_attributes.merge!({
-        value: display_value,
-        display_value: display_value,
-        reward: reward
-      })
-    end
-    if options and options[:include_project]
-      json_attributes.merge!({project: project})
-    end
-    if options and options[:include_reward]
-      json_attributes.merge!({reward: reward})
-    end
-    json_attributes
+  def update_current_billing_info
+    self.address_street = user.address_street
+    self.address_number = user.address_number
+    self.address_neighbourhood = user.address_neighbourhood
+    self.address_zip_code = user.address_zip_code
+    self.address_city = user.address_city
+    self.address_state = user.address_state
+    self.address_phone_number = user.phone_number
+    self.payer_document = user.cpf
+  end
+
+  def update_user_billing_info
+    user.update_attributes({
+      address_street: address_street,
+      address_number: address_number,
+      address_neighbourhood: address_neighbourhood,
+      address_zip_code: address_zip_code,
+      address_city: address_city,
+      address_state: address_state,
+      phone_number: address_phone_number,
+      cpf: payer_document
+    })
   end
 
   state_machine :state, initial: :pending do
@@ -202,7 +200,7 @@ class Backer < ActiveRecord::Base
 
     event :request_refund do
       transition confirmed: :requested_refund, if: ->(backer){
-        backer.user.credits >= backer.value
+        backer.user.credits >= backer.value && !backer.credits
       }
     end
 

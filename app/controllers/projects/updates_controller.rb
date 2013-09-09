@@ -21,4 +21,8 @@ class Projects::UpdatesController < ApplicationController
   def destroy
     destroy!{|format| return index }
   end
+
+  def collection
+    @updates ||= end_of_association_chain.visible_to(current_user)
+  end
 end

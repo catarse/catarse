@@ -44,12 +44,15 @@ class Reward < ActiveRecord::Base
   def name
     "<div class='reward_minimum_value'>#{minimum_value > 0 ? display_minimum+'+' : I18n.t('reward.dont_want')}</div><div class='reward_description'>#{h description}</div>#{'<div class="sold_out">' + I18n.t('reward.sold_out') + '</div>' if sold_out?}<div class='clear'></div>".html_safe
   end
+  
   def display_minimum
     number_to_currency minimum_value
   end
+
   def short_description
     truncate description, length: 35
   end
+
   def medium_description
     truncate description, length: 65
   end
@@ -63,18 +66,5 @@ class Reward < ActiveRecord::Base
 
   def display_description
     auto_link(simple_format(description), html: {target: :_blank})
-  end
-  def as_json(options={})
-    {
-      id: id,
-      project_id: project_id,
-      maximum_backers: maximum_backers,
-      remaining: remaining,
-      display_with_label: I18n.t('projects.rewards.reward_title', minimum: display_minimum),
-      display_minimum: display_minimum,
-      description: description,
-      short_description: short_description,
-      medium_description: medium_description
-    }
   end
 end

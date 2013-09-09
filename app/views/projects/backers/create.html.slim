@@ -37,6 +37,7 @@
               = form.input :full_name, required: true, as: :string
               /= form.input :cpf, as: :string, input_html: {autocomplete: 'off'}
               = form.input :email, required: true, as: :string
+              .clearfix
               fieldset.address_data
                 .title
                   h2
@@ -57,7 +58,7 @@
                 .bootstrap-twitter
                   = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), class: 'btn', id: 'user_submit'
 
-        #payment.hide
+        #payment.hide data-update-info-path=update_info_project_backer_path(project_id: @backer.project.id, id: @backer.id)
           .title
             h1= t('.choose_payment')
             h2= t('.choose_payment_subtitle')

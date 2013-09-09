@@ -7,6 +7,8 @@ App.views.Project.addChild('Updates', _.extend({
   },
 
   onUpdateCreate: function(e, data){
+    $('.ghost-flash').addClass('flash').removeClass('hide', 'ghost-flash');
+    app.flash();
     this.$results.prepend(data);
   },
 
