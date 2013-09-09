@@ -111,6 +111,8 @@ en:
       schedule: calendar
     placeholders:
       email: "Enter your email"
+    buttons:
+      newsletter: Submit
   sections:
     near:
       title: near me
