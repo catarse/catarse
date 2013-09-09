@@ -386,6 +386,7 @@ pt:
   projects:
     box:
       by: por
+      when: em
     admin_fields:
       title: "Campos para o admin"
     back_project:

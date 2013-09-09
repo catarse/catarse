@@ -62,7 +62,7 @@
                 = link_to post.url, target: '__blank', class: 'post-title' do
                   /= image_tag("catarse/post_title_image.png")
                   = truncate(post.title, length: 80)
-              p.post-author= "#{t('projects.box.by')} #{post.author}"
+              p.post-author= "#{t('projects.box.by')} #{post.author} #{t('projects.box.when')} #{l(post.published.to_date)}"
               = link_to post.url, target: '__blank', class: 'post-resume' do
                 = truncate(post.summary, length: 130).html_safe
 
