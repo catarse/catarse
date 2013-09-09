@@ -286,24 +286,33 @@ describe Backer do
     describe '#request_refund' do
       let(:credits){ backer.value }
       let(:initial_state){ 'confirmed' }
+      let(:backer_is_credits) { false }
       before do
         BackerObserver.any_instance.stub(:notify_backoffice)
+        backer.update_attributes({ credits: backer_is_credits })
         backer.user.stub(:credits).and_return(credits)
         backer.request_refund
       end
 
+      subject { backer.requested_refund? }
+
       context 'when backer is confirmed' do
-        it('should switch to requested_refund state') { backer.requested_refund?.should be_true }
+        it('should switch to requested_refund state') { should be_true }
+      end
+
+      context 'when backer is credits' do
+        let(:backer_is_credits) { true }
+        it('should not switch to requested_refund state') { should be_false }
       end
 
       context 'when backer is not confirmed' do
         let(:initial_state){ 'pending' }
-        it('should not switch to requested_refund state') { backer.requested_refund?.should be_false }
+        it('should not switch to requested_refund state') { should be_false }
       end
 
       context 'when backer value is above user credits' do
         let(:credits){ backer.value - 1 }
-        it('should not switch to requested_refund state') { backer.requested_refund?.should be_false }
+        it('should not switch to requested_refund state') { should be_false }
       end
     end
 
