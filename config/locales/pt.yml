@@ -115,8 +115,6 @@ pt:
       newsletter: "Assine nossa news"
       faq: "tá com dúvida?"
       schedule: agenda
-    buttons:
-      newsletter: >
     placeholders:
       email: "Digite seu email"
   sections:
