@@ -29,7 +29,7 @@ Catarse::Application.routes.draw do
     namespace :channels, path: '' do
       namespace :adm do
         namespace :reports do
-          resources :subscribers_report, only: [ :index ]
+          resources :subscribers, only: [ :index ]
         end
         resources :statistics, only: [ :index ]
         resources :projects, only: [ :index, :update] do
