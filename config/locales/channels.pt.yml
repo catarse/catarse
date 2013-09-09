@@ -12,12 +12,16 @@ pt:
     curator: 'Curador'
     adm:
       menu: "Moderação de Canais"
+      statistics_menu: "Estatisticas"
+      statistics:
+        title: 'Estatísticas do canal'
+        total_subscribers: 'Total de assinantes'
     projects:
       send: "Envie o seu projeto"
       see_how_it_works: "Veja como funciona e envie seu projeto."
       how_it_works: "Como funciona"
       progress_html: "<span>%{percent}%</span> financiado"
-      time_remaining_html: 
+      time_remaining_html:
         one: "<span>%{count} %{unit}</span> restante"
         other: "<span>%{count} %{unit}</span> restantes"
       pledged_html: "<span>%{value}</span> levantados"
@@ -32,8 +36,8 @@ pt:
         <br/>
         <strong>Importante</strong>
         <br/>
-        O Canal Asas seleciona projetos segundo seus próprios 
-        <a href=' https://docs.google.com/document/d/1TomgNL2k3Vlya-nMJixe-06cEjyswqIdtQwQ6OfOkoc/edit' target='_blank'>critérios de seleção</a>, 
+        O Canal Asas seleciona projetos segundo seus próprios
+        <a href=' https://docs.google.com/document/d/1TomgNL2k3Vlya-nMJixe-06cEjyswqIdtQwQ6OfOkoc/edit' target='_blank'>critérios de seleção</a>,
         o que implica que seu projeto poderá ser recusado pela equipe de curadores.
         "
         permalink_hint: 'Simplifique a URL do seu projeto.Imagine que seu apoiador precisará lembrar do endereço para dibulgar o projeto no bar.'
@@ -83,7 +87,7 @@ pt:
     how_it_works:
       title: "Como funciona o %{channel}?"
     footer:
-      terms: "Termos de uso" 
+      terms: "Termos de uso"
       privacy_policy: "Política de Privacidade"
       how_it_works: "Como funciona o %{name}"
       how_channels_work: "Entenda os Canais no Catarse"
