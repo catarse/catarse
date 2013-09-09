@@ -99,7 +99,7 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    catarse_moip (1.0.1)
+    catarse_moip (1.0.3)
       libxml-ruby (~> 2.6.0)
       rails (~> 3.2.12)
     catarse_paypal_express (1.0.0)
@@ -236,7 +236,7 @@ GEM
     mailchimp (0.0.9)
       httparty
     method_source (0.8.2)
-    mime-types (1.24)
+    mime-types (1.25)
     money (5.1.1)
       i18n (~> 0.6.0)
     multi_json (1.7.9)
@@ -410,7 +410,7 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     timers (1.1.0)
-    treetop (1.4.14)
+    treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
@@ -446,7 +446,7 @@ DEPENDENCIES
   capybara (~> 2.0.2)
   carrierwave (~> 0.8.0)
   catarse_mailchimp!
-  catarse_moip (~> 1.0.1)
+  catarse_moip (~> 1.0.3)
   catarse_paypal_express (~> 1.0.0)
   chartkick
   coffee-rails

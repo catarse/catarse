@@ -20,72 +20,8 @@ describe BackerObserver do
     its(:key){ should == Digest::MD5.new.update("#{backer.id}###{backer.created_at}##1").to_s }
     its(:payment_method){ should == 'MoIP' }
   end
-  
+
   describe "before_save" do
-
-    context "when we update the backer with new address data" do
-      let(:user){ create(:user, {
-        address_street: 'old', 
-        address_number: 'old', 
-        address_neighbourhood: 'old', 
-        address_zip_code: 'old',
-        address_city: 'old',
-        address_state: 'old',
-        phone_number: 'old',
-        cpf: 'old'
-      }) }
-      subject{ user }
-      before do
-        @backer = create(:backer)
-        @backer.update_attributes({
-          address_street: 'new', 
-          address_number: 'new', 
-          address_neighbourhood: 'new', 
-          address_zip_code: 'new',
-          address_city: 'new',
-          address_state: 'new',
-          address_phone_number: 'new',
-          payer_document: 'new',
-          user: user
-        })
-      end
-
-      its(:address_street){ should == 'new' }
-      its(:address_number){ should == 'new' }
-      its(:address_neighbourhood){ should == 'new' }
-      its(:address_zip_code){ should == 'new' }
-      its(:address_city){ should == 'new' }
-      its(:address_state){ should == 'new' }
-      its(:phone_number){ should == 'new' }
-      its(:cpf){ should == 'new' }
-    end
-
-    context "when we create the backer with user that has address data" do
-      let(:user){ create(:user, {
-        address_street: 'old', 
-        address_number: 'old', 
-        address_neighbourhood: 'old', 
-        address_zip_code: 'old',
-        address_city: 'old',
-        address_state: 'old',
-        phone_number: 'old',
-        cpf: 'old'
-      }) }
-      subject{ user }
-      before do
-        create(:backer)
-      end
-
-      its(:address_street){ should == 'old' }
-      its(:address_number){ should == 'old' }
-      its(:address_neighbourhood){ should == 'old' }
-      its(:address_zip_code){ should == 'old' }
-      its(:address_city){ should == 'old' }
-      its(:address_state){ should == 'old' }
-      its(:phone_number){ should == 'old' }
-      its(:cpf){ should == 'old' }
-    end
-
     context "when payment_choice is updated to BoletoBancario" do
       let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
@@ -126,24 +62,24 @@ describe BackerObserver do
     context "when is not yet confirmed" do
       context 'notify the backer' do
         before do
-          Notification.should_receive(:create_notification).at_least(:once).with(:confirm_backer, 
+          Notification.should_receive(:create_notification).at_least(:once).with(:confirm_backer,
             backer.user, backer: backer,  project_name: backer.project.name)
         end
-        
+
         it("should send confirm_backer notification"){ subject }
         its(:confirmed_at) { should_not be_nil }
       end
-      
+
       context 'notify project owner about this backer' do
         before do
-          Notification.should_receive(:create_notification).at_least(:once).with(:project_owner_backer_confirmed, 
+          Notification.should_receive(:create_notification).at_least(:once).with(:project_owner_backer_confirmed,
             backer.project.user, backer: backer, project_name: backer.project.name)
         end
 
         it("should send project_owner_backer_confirmed notification"){ subject }
-        its(:confirmed_at) { should_not be_nil }        
+        its(:confirmed_at) { should_not be_nil }
       end
-    end        
+    end
 
     context "when is already confirmed" do
       let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }

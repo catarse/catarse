@@ -53,7 +53,7 @@ class Project < ActiveRecord::Base
     end
   }
 
-  scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
+  scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
   scope :visible, where("projects.state NOT IN ('draft', 'rejected', 'deleted')")
   scope :financial, where("((projects.expires_at) > (current_timestamp) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
   scope :recommended, where(recommended: true)
@@ -70,7 +70,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
-                                     END ASC, online_date DESC, created_at DESC, id DESC") }
+                                     END ASC, projects.online_date DESC, projects.created_at DESC") }
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
@@ -198,33 +198,6 @@ class Project < ActiveRecord::Base
     Rails.logger.info "-----> #{e.inspect}"
   rescue TypeError => e
     Rails.logger.info "-----> #{e.inspect}"
-  end
-
-  def as_json(options={})
-    {
-      id: id,
-      name: name,
-      user: user,
-      category: category,
-      image: display_image,
-      headline: headline,
-      progress: progress,
-      display_progress: display_progress,
-      pledged: display_pledged,
-      created_at: created_at,
-      time_to_go: time_to_go,
-      remaining_text: remaining_text,
-      embed_url: video_embed_url ? video_embed_url : (video ? video.embed_url : nil),
-      url: Rails.application.routes.url_helpers.project_by_slug_path(permalink, locale: I18n.locale),
-      full_uri: Rails.application.routes.url_helpers.project_by_slug_url(permalink, locale: I18n.locale),
-      expired: expired?,
-      successful: successful? || reached_goal?,
-      waiting_funds: waiting_funds?,
-      failed: failed?,
-      display_status_to_box: display_status.blank? ? nil : I18n.t("project.display_status.#{display_status}"),
-      display_expires_at: display_expires_at,
-      in_time: in_time?
-    }
   end
 
   def pending_backers_reached_the_goal?

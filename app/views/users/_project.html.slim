@@ -1,4 +1,4 @@
-div class=(can?(:manage, @user) ? 'project_land' : 'small_project_land')
+div class=(can?(:manage, parent) ? 'project_land' : 'small_project_land')
   - if project.expired?
     .status_image
       a href=""
@@ -36,7 +36,7 @@ div class=(can?(:manage, @user) ? 'project_land' : 'small_project_land')
       li
         h6= project.display_pledged
         p= t('projects.project.reached')
-  - if backer && can?(:manage, @user)
+  - if backer && can?(:manage, parent)
     div.back_info
       ul
         li.date
