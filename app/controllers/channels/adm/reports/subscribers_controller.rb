@@ -4,6 +4,6 @@ class Channels::Adm::Reports::SubscribersController < Adm::Reports::BaseControll
   end
 
   def end_of_association_chain
-    super.select("users.name, users.email")
+    super.select("users.name, users.email, replace('#{user_url(':id')}', ':id', users.id::text) AS url")
   end
 end
