@@ -79,6 +79,6 @@ class Projects::BackersController < ApplicationController
 
   protected
   def collection
-    @backers = apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").page(params[:page]).per(10)
+    @backers ||= apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").page(params[:page]).per(10)
   end
 end
