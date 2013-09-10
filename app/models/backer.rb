@@ -59,6 +59,7 @@ class Backer < ActiveRecord::Base
   scope :can_refund, ->{
     where(%Q{
       backers.state IN('confirmed', 'requested_refund', 'refunded') AND
+      NOT backers.credits AND
       EXISTS(
         SELECT true
           FROM projects p
@@ -199,7 +200,7 @@ class Backer < ActiveRecord::Base
 
     event :request_refund do
       transition confirmed: :requested_refund, if: ->(backer){
-        backer.user.credits >= backer.value
+        backer.user.credits >= backer.value && !backer.credits
       }
     end
 
