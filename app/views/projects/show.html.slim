@@ -76,6 +76,11 @@
           .clearfix
           #updates-loading.loading= image_tag "loading.gif"
         #project_backers.content.hide[data-path=project_backers_path(project_id: @project.id)]
+          - if can?(:update, @project)
+            = radio_button_tag(:backer_state, "available_to_count", checked: true)
+            = label_tag(:backer_state, t('projects.project_backers.confirmed'))
+            = radio_button_tag(:backer_state, "waiting_confirmation")
+            = label_tag(:backer_state, t('projects.project_backers.pending'))
           .results &nbsp;
           .clearfix
           #backers-loading.loading= image_tag "loading.gif"
