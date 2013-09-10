@@ -4,6 +4,7 @@ class Projects::BackersController < ApplicationController
   skip_before_filter :force_http, only: [:create, :update_info]
   skip_before_filter :verify_authenticity_token, only: [:moip]
   has_scope :available_to_count, :waiting_confirmation, type: :boolean
+  has_scope :page, default: 1
   load_and_authorize_resource except: [:index]
   belongs_to :project
 
@@ -79,6 +80,6 @@ class Projects::BackersController < ApplicationController
 
   protected
   def collection
-    @backers ||= apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").page(params[:page]).per(10)
+    @backers ||= apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").per(10)
   end
 end
