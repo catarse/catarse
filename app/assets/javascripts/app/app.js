@@ -41,7 +41,7 @@ var App = window.App = Skull.View.extend({
   },
 
   toggleMenu: function(){
-    this.$dropdown.slideToggle('slow');
+    this.$dropdown.slideToggle('fast');
   }
 });
 
