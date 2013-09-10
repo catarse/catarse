@@ -106,11 +106,13 @@ en:
     titles:
       blog: blog
       facebook: "have you liked our facebook page yet?"
-      newsletter: "do you want to receive our news?"
+      newsletter: "subscribe to our news"
       faq: "have any doubt?"
       schedule: calendar
+    placeholders:
+      email: "Enter your email"
     buttons:
-      newsletter: submit
+      newsletter: Submit
   sections:
     near:
       title: near me
@@ -377,6 +379,7 @@ en:
   projects:
     box:
       by: by
+      when: in
     admin_fields:
       title: "Admin fields"
     back_project:

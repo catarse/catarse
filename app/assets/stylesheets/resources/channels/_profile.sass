@@ -84,7 +84,6 @@ body[data-namespace="channels"][data-controller="profiles"]
         text-decoration: none
         &:hover
           color: black
-
       .mail
         text-align: center
         padding-bottom: 1em
@@ -102,8 +101,6 @@ body[data-namespace="channels"][data-controller="profiles"]
             position: relative
             font-size: 1em
             top: .05em
-            
-              
       .subscription
         .subscribe
           margin: .8em .2em .8em 0
@@ -121,116 +118,3 @@ body[data-namespace="channels"][data-controller="profiles"]
           font-weight: 400
           text-decoration: none
           border-radius: 2px
-   
-    // The project Box
-    .project
-      overflow: hidden
-      *
-        +transition(all .6s)
-      .show
-        position: relative
-        top: 0px
-      .mouse_over
-        visibility: hidden
-        position: absolute 
-        width: 90%
-        top: 120px
-      .status
-        &:hover 
-          .show 
-            position: absolute
-            top: 100px
-          .mouse_over
-            visibility: visible
-            position: relative
-            top: 0px
-    .project
-      +grid(4)
-      background: white
-      height: 380px
-      box-shadow: 0 1px 4px darken(lightgray, 10%)
-      position: relative
-      margin-top: 0
-      margin-bottom: 1.5em
-      +transition(all .2s)
-      // For every 3 blocks of projects, remove the right margin
-      // Use this instead of adding a class for the element/3
-      // or using in_group_of helper
-      &:nth-child(3n+0)
-        +omega
-
-      // Children of .project
-      .successful_flag
-        position: absolute
-      a 
-        color: black
-        text-decoration: none !important
-      .image
-        opacity: 1
-        &:hover
-          opacity: .9
-
-      .title
-        margin: .4em 0 
-        line-height: 1.2em
-        a
-          &:hover
-            text-decoration: underline !important
-      .padding
-        padding-top: .2em
-      .headline
-        font-size: .8em
-        margin: .8em 0 .4em 0
-        line-height: 1.4em
-        font-weight: 400
-        height: 70px
-        a
-          color: rgba(0,0,0,0.5) 
-          &:hover
-            color: rgba(0,0,0,0.7)
-      .status
-        bottom: 0px
-        position: absolute
-        width: 100%
-        .background
-          background: $project_box_status
-          overflow: hidden
-        hr
-          margin: 0
-      .progress_percent
-        font-size: .6em
-        text-transform: uppercase
-        vertical-align: middle
-        span
-          font-weight: bold
-          font-size: 2em !important
-          padding-right: .2em
-          line-height: 2em
-          position: relative
-          top: .2em
-      .progress_bar
-        #progress_wrapper, #progress
-          height: .4em
-          background: $project_box_progress_gray 
-          border-radius: 6px
-          box-shadow: inset 0 0 4px lighten(gray, 15%)
-        #progress
-          background: $project_box_progress
-          +background-image(linear-gradient(0deg,lighten($project_box_progress, 5%) 0%,$project_box_progress 1%,lighten($project_box_progress, 5%) 100%,lighten($project_box_progress, 15%) 100%)) 
-      .time_remaining, .money_raised
-        float: left
-        padding: 1.3em 0
-        padding-bottom: 1.8em
-        text-transform: uppercase
-        font-size: .6em
-        span
-          display: block
-          font-weight: bold
-          font-size: 1.8em !important
-          text-transform: none
-          margin-bottom: .05em
-      .money_raised
-        float: right
-        margin-right: 2%
-
-   
