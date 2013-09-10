@@ -3,8 +3,8 @@ class Projects::BackersController < ApplicationController
   actions :index, :show, :new, :update_info, :review, :create
   skip_before_filter :force_http, only: [:create, :update_info]
   skip_before_filter :verify_authenticity_token, only: [:moip]
-  has_scope :waiting_confirmation, :available_to_count
-  load_and_authorize_resource
+  has_scope :available_to_count, :waiting_confirmation, type: :boolean
+  load_and_authorize_resource except: [:index]
   belongs_to :project
 
   def update_info
@@ -14,8 +14,7 @@ class Projects::BackersController < ApplicationController
   end
 
   def index
-    @backers = apply_scopes(Backer).where(project_id: parent.id).available_to_display.order("confirmed_at DESC").page(params[:page]).per(10)
-    render @backers
+    render collection
   end
 
   def show
@@ -76,5 +75,10 @@ class Projects::BackersController < ApplicationController
     end
     flash[:success] = t('projects.backers.checkout.success')
     redirect_to project_backer_path(project_id: parent.id, id: resource.id)
+  end
+
+  protected
+  def collection
+    @backers = apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").page(params[:page]).per(10)
   end
 end

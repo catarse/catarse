@@ -32,8 +32,8 @@ class Backer < ActiveRecord::Base
   scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
   scope :pending_to_refund, ->() { where(state: 'requested_refund') }
 
-  scope :available_to_count, where("state in ('confirmed', 'requested_refund', 'refunded')")
-  scope :available_to_display, where("state in ('confirmed', 'requested_refund', 'refunded', 'waiting_confirmation')")
+  scope :available_to_count, ->() { where("state in ('confirmed', 'requested_refund', 'refunded')") }
+  scope :available_to_display, ->() { where("state in ('confirmed', 'requested_refund', 'refunded', 'waiting_confirmation')") }
 
   scope :can_cancel, ->() {
     where(%Q{
