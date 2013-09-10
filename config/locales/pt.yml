@@ -518,6 +518,8 @@ pt:
       reached: atingido
     project_backers:
       empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
+      confirmed: "Confirmados"
+      pending: "Pendentes"
     project_header:
       subtitle_html: "Um projeto de %{link}"
       without_city: "Um projeto de %{category_name} por %{author}"

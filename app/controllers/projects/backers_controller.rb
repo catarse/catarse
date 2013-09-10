@@ -3,6 +3,7 @@ class Projects::BackersController < ApplicationController
   actions :index, :show, :new, :update_info, :review, :create
   skip_before_filter :force_http, only: [:create, :update_info]
   skip_before_filter :verify_authenticity_token, only: [:moip]
+  has_scope :waiting_confirmation, :available_to_count
   load_and_authorize_resource
   belongs_to :project
 
@@ -13,7 +14,7 @@ class Projects::BackersController < ApplicationController
   end
 
   def index
-    @backers = parent.backers.available_to_count.order("confirmed_at DESC").page(params[:page]).per(10)
+    @backers = apply_scopes(Backer).where(project_id: parent.id).available_to_display.order("confirmed_at DESC").page(params[:page]).per(10)
     render @backers
   end
 
