@@ -14,35 +14,34 @@
         .clearfix
         #loading= image_tag "loading.gif"
 
-    .sidebar
-      .content
-        section.highlights
-          h2= t('.quick_explore')
-          ul#explore_quick
+    aside.main-sidebar
+        section.main-sidebar-division
+          h2.title= t('.quick_explore')
+          ul
             li
-              a[href='#recommended']
+              a.explore-link[href='#recommended']
                 = t('.recommended')
-            li.no_margin
-              a[href='#expiring']
+            li
+              a.explore-link[href='#expiring']
                 = t('.expiring')
             li
-              a[href='#recent']
+              a.explore-link[href='#recent']
                 = t('.recent')
-            li.no_margin
-              a[href='#successful']
+            li
+              a.explore-link[href='#successful']
                 = t('.successful')
             - if current_user
-              li.no_margin
-                a[href="#near_of/#{current_user.address_state}"]
+              li
+                a.explore-link[href="#near_of/#{current_user.address_state}"]
                   = t('.near')
 
         - unless @categories.empty?
-          section.categories
-            h2= t('.categories')
-            ul#explore_categories
+          section.main-sidebar-division
+            h2.title= t('.categories')
+            ul
               - @categories.each_with_index do |category, index|
-                li class="#{(index%2==1 ? 'no_margin':'')}"
-                  a[href="#by_category_id/#{category.id}"]
+                li
+                  a.explore-link[href="#by_category_id/#{category.id}"]
                     = category
 
     .clearfix
