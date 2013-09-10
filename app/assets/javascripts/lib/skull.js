@@ -7,6 +7,24 @@ Skull.View = Backbone.View.extend({
     return this['_' + name];
   },
 
+  rootView: function(){
+    var view = this;
+    var root = view;
+    while(view = view.parent){
+      root = view;
+    }
+    return root;
+  },
+
+  router: function(){
+    return this.rootView().router;
+  },
+
+  route: function(route){
+    var that = this;
+    return this.router().route(route, route, function(){ that.followRoute(route, route.split("/")[0], arguments); });
+  },
+
   initialize: function(options){
     _.bindAll(this);
     if(options){

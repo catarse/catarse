@@ -53,7 +53,7 @@ class Project < ActiveRecord::Base
     end
   }
 
-  scope :near_of, ->(address_state) { joins(:user).where("lower(users.address_state) = lower(?)", address_state) }
+  scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
   scope :visible, -> { where("projects.state NOT IN ('draft', 'rejected', 'deleted')") }
   scope :financial, -> { where("((projects.expires_at) > (current_timestamp) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))") }
   scope :recommended, -> { where(recommended: true) }
@@ -70,7 +70,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
-                                     END ASC, online_date DESC, created_at DESC, id DESC") }
+                                     END ASC, projects.online_date DESC, projects.created_at DESC") }
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }

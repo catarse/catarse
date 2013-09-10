@@ -34,7 +34,7 @@ describe "Projects" do
       create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit explore_path(locale: :pt)
-      sleep 3
+      sleep 4
     end
     it "should show recommended projects" do
       recommended = all(".results .project")
@@ -46,7 +46,7 @@ describe "Projects" do
     before do
       create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
-      visit explore_path(anchor: :search) + '/Lorem'
+      visit explore_path(pg_search: 'Lorem')
       sleep 4
     end
     it "should show recommended projects" do

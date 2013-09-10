@@ -60,18 +60,4 @@ class UsersController < ApplicationController
     end
     return redirect_to user_path(@user, anchor: 'settings')
   end
-
-  def projects
-    @user = User.find(params[:id])
-    @projects = @user.projects.includes(:user, :category, :project_total).order("updated_at DESC")
-    @projects = @projects.visible unless @user == current_user
-    @projects = @projects.page(params[:page]).per(10)
-    render json: @projects
-  end
-
-  def credits
-    @user = User.find(params[:id])
-    @credits = @user.backs.can_refund.order(:id).all
-    render json: @credits
-  end
 end
