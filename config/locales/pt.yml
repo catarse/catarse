@@ -103,11 +103,11 @@ pt:
       contact: Contato
   main:
     links:
-      channels: "conheça o Canal Asas"
-      selected: "explore mais projetos selecionados"
-      expiring: "explore mais projetos na reta final"
-      recents: "explore mais projetos recentes"
-      near: "explore mais projetos próximos"
+      channels: "Descubra o Canal Asas"
+      selected: "Descubra projetos selecionados"
+      expiring: "Descubra projetos na reta final"
+      recents: "Descubra projetos recentes"
+      near: "Descubra projetos perto de você"
   sidebar:
     titles:
       blog: blog
