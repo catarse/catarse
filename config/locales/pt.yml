@@ -112,11 +112,13 @@ pt:
     titles:
       blog: blog
       facebook: "já curtiu nosso face?"
-      newsletter: "quer novidades?"
+      newsletter: "Assine nossa news"
       faq: "tá com dúvida?"
       schedule: agenda
+    placeholders:
+      email: "Digite seu email"
     buttons:
-      newsletter: assinar
+      newsletter: Enviar
   sections:
     near:
       title: 'Próximos a mim'
@@ -386,6 +388,7 @@ pt:
   projects:
     box:
       by: por
+      when: em
     admin_fields:
       title: "Campos para o admin"
     back_project:
