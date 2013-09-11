@@ -4,7 +4,7 @@ class Channels::Adm::StatisticsController < Adm::BaseController
   actions :index
 
   before_filter do
-    @channel  =  Channel.find_by_permalink!(request.subdomain.to_s)
+    @channel = Channel.find_by_permalink!(request.subdomain.to_s)
   end
 
   def index
