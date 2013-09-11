@@ -1,4 +1,5 @@
 header.header
+  .centered
     h1
       = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name]
     nav.header-nav
@@ -39,7 +40,7 @@ header.header
                 li.divider
                 - for menu, path in Channels::Adm::ProjectsController.menu do
                   li.channel_trustee= link_to menu, path
-              li= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
+              li.divider= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
         - else
           li.header-nav-li
             = link_to t('layouts.header.signup'), new_user_registration_path, :class => 'header-nav-item'

@@ -1,9 +1,16 @@
 $border-gray: #E9E9EC
+$green-one: #00B22D
+
+.centered
+  margin: 0 auto
+  width: 980px
 
 .header
-  margin: 20px auto
-  width: 980px
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+  display: inline-block
+  width: 100%
+  background: #fff
+  padding: 2em 0 1em
   .logo
     background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -21px -14px transparent
     display: block
@@ -26,7 +33,7 @@ $border-gray: #E9E9EC
         text-decoration: underline
   .submit-project
     background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -12px -256px transparent
-    color: $green
+    color: $green-one
     padding: 3px 0 0 30px
     font-weight: bold
     font-size: 15px
@@ -53,9 +60,6 @@ $border-gray: #E9E9EC
     .profile-picture
       +border-radius(20px)
 
-
-
-
 .discover-form
   width: 250px
   height: 34px
@@ -71,7 +75,7 @@ $border-gray: #E9E9EC
     left: 32px
     position: absolute
     top: 0
-    width: 219px
+    width: 215px
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif
     font-size: 13px
     &:focus
