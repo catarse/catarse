@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Channels::Adm::Reports::SubscribersController do
+describe Channels::Adm::Reports::SubscriberReportsController do
   subject{ response }
   let(:channel){ create(:channel) }
   let(:admin) { create(:user, admin: false) }
@@ -18,8 +18,7 @@ describe Channels::Adm::Reports::SubscribersController do
       get :index, locale: :pt, format: :csv
     end
 
-    its(:body){ should == "name,email,url\n#{user.name},#{user.email},#{user_url(id: user.id)}\n" }
-    its(:status){ should == 200 }
+    it{ should be_successful }
   end
 end
 
