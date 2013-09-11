@@ -27,6 +27,7 @@ class Backer < ActiveRecord::Base
   scope :refunded, where(state: 'refunded')
   scope :not_anonymous, where(anonymous: false)
   scope :confirmed, where(state: 'confirmed')
+  scope :waiting_confirmation, where(state: 'waiting_confirmation')
   scope :not_confirmed, where("backers.state <> 'confirmed'") # used in payment engines
   scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
   scope :pending_to_refund, ->() { where(state: 'requested_refund') }
