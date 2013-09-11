@@ -31,6 +31,10 @@ Catarse::Application.routes.draw do
   constraints subdomain: 'asas' do
     namespace :channels, path: '' do
       namespace :adm do
+        namespace :reports do
+          resources :subscriber_reports, only: [ :index ]
+        end
+        resources :statistics, only: [ :index ]
         resources :projects, only: [ :index, :update] do
           member do
             put 'approve'

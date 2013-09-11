@@ -35,17 +35,6 @@ GIT
       nokogiri (~> 1.5.0)
 
 GIT
-  remote: git://github.com/josemarluedke/postgres-copy.git
-  revision: 4487ed63dd955d6f485f3f9d759d2817fbd5b37b
-  branch: rails4
-  specs:
-    postgres-copy (0.7.0)
-      activerecord (~> 4.0)
-      pg
-      rails (~> 4.0)
-      responders
-
-GIT
   remote: git://github.com/milgner/compass-rails.git
   revision: 1749c06f15dc4b058427e7969810457213647fb8
   ref: 1749c06f15dc4b058427e7969810457213647fb8
@@ -308,6 +297,11 @@ GEM
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyglot (0.3.3)
+    postgres-copy (0.8.0)
+      activerecord (~> 4.0)
+      pg
+      rails (~> 4.0)
+      responders
     protected_attributes (1.0.3)
       activemodel (>= 4.0.0, < 5.0)
     pry (0.9.6)
@@ -523,7 +517,7 @@ DEPENDENCIES
   pg
   pg_search
   poltergeist
-  postgres-copy!
+  postgres-copy
   protected_attributes (~> 1.0.3)
   pry
   rack-timeout

@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe ProjectTotal do
   before do
-    @project_id = FactoryGirl.create(:backer, value: 10.0, payment_service_fee: 1, state: 'pending').project_id
-    FactoryGirl.create(:backer, value: 10.0, payment_service_fee: 1, state: 'confirmed', project_id: @project_id)
-    FactoryGirl.create(:backer, value: 10.0, payment_service_fee: 1, state: 'waiting_confirmation', project_id: @project_id)
-    FactoryGirl.create(:backer, value: 10.0, payment_service_fee: 1, state: 'refunded', project_id: @project_id)
-    FactoryGirl.create(:backer, value: 10.0, payment_service_fee: 1, state: 'requested_refund', project_id: @project_id)
+    @project_id = create(:backer, value: 10.0, payment_service_fee: 1, state: 'pending').project_id
+    create(:backer, value: 10.0, payment_service_fee: 1, state: 'confirmed', project_id: @project_id)
+    create(:backer, value: 10.0, payment_service_fee: 1, state: 'waiting_confirmation', project_id: @project_id)
+    create(:backer, value: 10.0, payment_service_fee: 1, state: 'refunded', project_id: @project_id)
+    create(:backer, value: 10.0, payment_service_fee: 1, state: 'requested_refund', project_id: @project_id)
   end
 
   describe "#pledged" do
