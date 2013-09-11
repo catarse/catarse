@@ -325,15 +325,15 @@ pt:
       login_with_facebook: "entre com sua conta do facebook"
       remember_me: "Lembre-se de mim e mantenha-me conectado."
     header:
-      blog: blog
-      help: ajuda
+      blog: Blog
+      help: Ajuda
       faq: FAQ
-      signup: cadastre-se
-      signin: login
-      explore: explore
-      submit_project: envie
-      profile: "meu perfil"
-      account: "minha conta"
+      signup: Cadastre-se
+      signin: Login
+      discover: Descubra
+      submit: Envie seu projeto
+      profile: "Meu perfil"
+      account: "Minha conta"
     user:
       logout: Sair
       my_credits: "Meus créditos"
