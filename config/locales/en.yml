@@ -97,11 +97,12 @@ en:
       contact: Contact
   main:
     links:
-      channels: "explore the Asas Institute's Channel"
-      selected: "explore more projects selected"
-      expiring: "explore more expiring projects"
-      recents: "explore more recent projects"
-      near: "explore more near me projects"
+      channels: "Discover Asas Institute's Channel"
+      selected: "Discover projects selected"
+      expiring: "Discover expiring projects"
+      recents: "Discover recent projects"
+      near: "Discover projects near you"
+    banner: "10 million turned into actions. Thank you!"
   sidebar:
     titles:
       blog: blog
