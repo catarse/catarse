@@ -22,7 +22,6 @@ class StaticController < ApplicationController
     @expiring     ||= Project.includes(:user, :category).visible.expiring.not_expired.order("(projects.expires_at), created_at DESC").limit(3)
     @recent       ||= Project.includes(:user, :category).visible.not_expiring.not_expired.where("projects.user_id <> 7329").order('created_at DESC').limit(3)
     @successful   ||= Project.includes(:user, :category).visible.successful.order("(projects.expires_at) DESC").limit(3)
-    return render 'sitemap'
   end
 
 end
