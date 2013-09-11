@@ -58,17 +58,18 @@
                 .bootstrap-twitter
                   = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), class: 'btn', id: 'user_submit'
 
-        #payment.hide data-update-info-path=update_info_project_backer_path(project_id: @backer.project.id, id: @backer.id)
-          .title
-            h1= t('.choose_payment')
-            h2= t('.choose_payment_subtitle')
+        - unless @backer.credits
+          #payment.hide data-update-info-path=update_info_project_backer_path(project_id: @backer.project.id, id: @backer.id)
+            .title
+              h1= t('.choose_payment')
+              h2= t('.choose_payment_subtitle')
 
-          .tab_container
-            nav#payment_menu
+            .tab_container
+              nav#payment_menu
+                - PaymentEngines.engines.each do |engine|
+                  = link_to "##{engine[:name]}_payment", id: engine[:name], class: 'selected enabled' , data: {target: "##{engine[:name]}_payment"} do
+                    = t("projects.backers.review.#{engine[:name]}")
+            .tab_content_container
               - PaymentEngines.engines.each do |engine|
-                = link_to "##{engine[:name]}_payment", id: engine[:name], class: 'selected enabled' , data: {target: "##{engine[:name]}_payment"} do
-                  = t("projects.backers.review.#{engine[:name]}")
-          .tab_content_container
-            - PaymentEngines.engines.each do |engine|
-              div[id="#{engine[:name]}_payment" class="payments_type hide" data-path=engine[:review_path].call(@backer) ]
+                div[id="#{engine[:name]}_payment" class="payments_type hide" data-path=engine[:review_path].call(@backer) ]
     .clearfix
