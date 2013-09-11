@@ -503,6 +503,8 @@ en:
       reached: reached
     project_backers:
       empty: "Nobody backed this project so far. How about being the first one?"
+      confirmed: "Confirmed"
+      pending: "Pending"
     project_header:
       subtitle_html: "A project by %{link}"
       without_city: "A project in %{category_name}, by %{author}"
