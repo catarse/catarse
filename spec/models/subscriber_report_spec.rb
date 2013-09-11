@@ -7,6 +7,10 @@ describe SubscriberReport do
     @user = create(:user, subscriptions: [ @channel ])
   end
 
+  after(:all) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   describe "Associations" do
     it{ should belong_to :channel }
   end
