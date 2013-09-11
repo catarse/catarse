@@ -367,7 +367,7 @@ describe Backer do
   end
 
   describe ".can_refund" do
-    subject{ Backer.can_refund.all }
+    subject{ Backer.can_refund.load }
     before do
       create(:backer, state: 'confirmed', credits: true, project: failed_project)
       valid_refund

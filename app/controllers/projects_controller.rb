@@ -2,8 +2,9 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource only: [ :new, :create, :update, :destroy ]
   inherit_resources
+  has_scope :pg_search, :by_category_id, :near_of
+  has_scope :recent, :expiring, :successful, :recommended, :not_expired, type: :boolean
 
-  has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired, :near_of
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
 
@@ -57,6 +58,8 @@ class ProjectsController < ApplicationController
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
     @updates_count = resource.updates.count
     @update = resource.updates.where(id: params[:update_id]).first if params[:update_id].present?
+  rescue ActiveRecord::RecordNotFound
+    render_404
   end
 
   def video

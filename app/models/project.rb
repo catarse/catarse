@@ -54,16 +54,16 @@ class Project < ActiveRecord::Base
   }
 
   scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
-  scope :visible, where("projects.state NOT IN ('draft', 'rejected', 'deleted')")
-  scope :financial, where("((projects.expires_at) > (current_timestamp) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))")
-  scope :recommended, where(recommended: true)
-  scope :expired, where("(projects.expires_at) < (current_timestamp)")
-  scope :not_expired, where("(projects.expires_at) >= (current_timestamp)")
-  scope :expiring, not_expired.where("(projects.expires_at) <= ((current_timestamp) + interval '2 weeks')")
-  scope :not_expiring, not_expired.where("NOT ((projects.expires_at) <= ((current_timestamp) + interval '2 weeks'))")
-  scope :recent, where("(current_timestamp) - projects.online_date <= '5 days'::interval")
-  scope :successful, where(state: 'successful')
-  scope :online, where(state: 'online')
+  scope :visible, -> { where("projects.state NOT IN ('draft', 'rejected', 'deleted')") }
+  scope :financial, -> { where("((projects.expires_at) > (current_timestamp) - '15 days'::interval) AND (state in ('online', 'successful', 'waiting_funds'))") }
+  scope :recommended, -> { where(recommended: true) }
+  scope :expired, -> { where("(projects.expires_at) < (current_timestamp)") }
+  scope :not_expired, -> { where("(projects.expires_at) >= (current_timestamp)") }
+  scope :expiring, -> { not_expired.where("(projects.expires_at) <= ((current_timestamp) + interval '2 weeks')") }
+  scope :not_expiring, -> { not_expired.where("NOT ((projects.expires_at) <= ((current_timestamp) + interval '2 weeks'))") }
+  scope :recent, -> { where("(current_timestamp) - projects.online_date <= '5 days'::interval") }
+  scope :successful, -> { where(state: 'successful') }
+  scope :online, -> { where(state: 'online') }
   scope :order_for_search, ->{ reorder("
                                      CASE projects.state
                                      WHEN 'online' THEN 1
@@ -89,7 +89,7 @@ class Project < ActiveRecord::Base
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days, less_than_or_equal_to: 60
   validates_uniqueness_of :permalink, allow_blank: true, allow_nil: true, case_sensitive: false
-  validates_format_of :permalink, with: /^(\w|-)*$/, allow_blank: true, allow_nil: true
+  validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true, allow_nil: true
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
@@ -145,7 +145,7 @@ class Project < ActiveRecord::Base
   end
 
   def selected_rewards
-    rewards.sort_asc.where(id: backers.confirmed.select('DISTINCT(reward_id)'))
+    rewards.sort_asc.where(id: backers.confirmed.map(&:reward_id))
   end
 
   def reached_goal?
@@ -201,11 +201,11 @@ class Project < ActiveRecord::Base
   end
 
   def pending_backers_reached_the_goal?
-    (pledged + backers.in_time_to_confirm.sum(&:value)) >= goal
+    (pledged + backers.in_time_to_confirm.to_a.sum(&:value)) >= goal
   end
 
   def can_go_to_second_chance?
-    ((pledged + backers.in_time_to_confirm.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
+    ((pledged + backers.in_time_to_confirm.to_a.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
   end
 
   def permalink_cant_be_route
