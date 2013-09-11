@@ -23,8 +23,9 @@ gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 
 # Database and data related
 gem 'pg'
-gem 'postgres-copy', github: 'josemarluedke/postgres-copy', branch: 'rails4'
+gem 'postgres-copy'
 gem 'pg_search'
+
 gem 'schema_plus'
 gem 'schema_associations'
 gem 'chartkick'
