@@ -1,0 +1,90 @@
+$sidebar-title: #3F4752
+$sidebar-text: #79808E
+$sidebar-link: #F69219
+
+.main-sidebar
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  display: inline-block
+  width: 220px
+  padding: 0 0 0 20px
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+
+.main-sidebar-division
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+  padding: 20px 0
+  color: $sidebar-text
+  &:last-child
+    border-bottom: none
+
+  .title
+    font-size: 11px
+    color: $sidebar-title
+    text-transform: uppercase
+    font-weight: bold
+    margin: 0 0 15px
+
+  .post
+    padding-bottom: 30px
+    font-size: 12px
+    &:last-child
+      padding-bottom: 0
+  .post-title
+    color: $sidebar-text
+    font-size: 15px
+    font-weight: bold
+    text-decoration: none
+    line-height: 18px
+    &:hover
+      text-decoration: underline
+  .post-author
+    padding: 5px 0 10px 0
+    line-height: 15px
+  .post-resume
+    text-decoration: none
+    color: $sidebar-text
+    line-height: 15px
+
+  .explore-link
+    color: $sidebar-text
+    font-size: 15px
+    margin: 0 0 10px
+    text-decoration: none
+    display: block
+    &:hover
+      color: $sidebar-link
+      text-decoration: underline
+
+  .selected
+    font-weight: bold
+
+
+.newsletter
+  padding: 1px
+  border: 1px solid #ddd
+  display: inline-block
+  +border-radius(3px)
+  height: 34px
+  width: 100%
+  .newsletter-input
+    border: none
+    font-size: 13px
+    width: 160px
+    height: 32px
+    line-height: 32px
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+    text-indent: 5px
+    color: $sidebar-text
+  .newsletter-submit
+    float: right
+    border: none
+    background: #3C9DFF url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -152px -72px
+    height: 34px
+    width: 34px
+    text-align: center
+    font-size: 18px
+    +border-radius(3px)
+    text-indent: -9999px
+    &:hover
+      background: rgba(#3C9DFF, 0.8) url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -152px -72px
