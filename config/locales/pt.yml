@@ -103,20 +103,23 @@ pt:
       contact: Contato
   main:
     links:
-      channels: "conheça o Canal Asas"
-      selected: "explore mais projetos selecionados"
-      expiring: "explore mais projetos na reta final"
-      recents: "explore mais projetos recentes"
-      near: "explore mais projetos próximos"
+      channels: "Descubra o Canal Asas"
+      selected: "Descubra projetos selecionados"
+      expiring: "Descubra projetos na reta final"
+      recents: "Descubra projetos recentes"
+      near: "Descubra projetos perto de você"
+    banner: "10 milhões transformados em ações. Obrigado!"
   sidebar:
     titles:
       blog: blog
       facebook: "já curtiu nosso face?"
-      newsletter: "quer novidades?"
+      newsletter: "Assine nossa news"
       faq: "tá com dúvida?"
       schedule: agenda
+    placeholders:
+      email: "Digite seu email"
     buttons:
-      newsletter: assinar
+      newsletter: Enviar
   sections:
     near:
       title: 'Próximos a mim'
@@ -386,6 +389,7 @@ pt:
   projects:
     box:
       by: por
+      when: em
     admin_fields:
       title: "Campos para o admin"
     back_project:
@@ -518,6 +522,8 @@ pt:
       reached: atingido
     project_backers:
       empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
+      confirmed: "Confirmados"
+      pending: "Pendentes"
     project_header:
       subtitle_html: "Um projeto de %{link}"
       without_city: "Um projeto de %{category_name} por %{author}"
