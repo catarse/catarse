@@ -239,7 +239,7 @@ GEM
     mime-types (1.25)
     money (5.1.1)
       i18n (~> 0.6.0)
-    multi_json (1.7.9)
+    multi_json (1.8.0)
     multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -484,7 +484,7 @@ DEPENDENCIES
   paper_trail (~> 2.7.2)
   pg
   pg_search
-  postgres-copy
+  postgres-copy (~> 0.6.0)
   pry
   rack-timeout
   rails (= 3.2.13)

@@ -12,11 +12,12 @@ describe Channel do
       # Creating a channel profile before, to check its uniqueness
       # Because permalink is also being validated on Database with not
       # NULL constraint
-      FactoryGirl.create(:channel)
+      create(:channel)
       should validate_uniqueness_of :permalink
     end
 
 
+    it { should have_many :subscriber_reports }
     it { should have_many :channels_subscribers }
     it { should have_and_belong_to_many :projects }
     it { should have_and_belong_to_many :trustees }
@@ -25,7 +26,7 @@ describe Channel do
 
 
   describe "#to_param" do
-    let(:channel) { FactoryGirl.create(:channel) }
+    let(:channel) { create(:channel) }
     it "should return the permalink" do
       expect(channel.to_param).to eq(channel.permalink)
     end
@@ -33,9 +34,9 @@ describe Channel do
 
 
   describe "#projects" do
-    let(:channel) { FactoryGirl.create(:channel) }
-    let(:project1) { FactoryGirl.create(:project, online_date: (Time.now - 21.days)) } 
-    let(:project2) { FactoryGirl.create(:project, online_date: (Time.now - 20.days)) }
+    let(:channel) { create(:channel) }
+    let(:project1) { create(:project, online_date: (Time.now - 21.days)) } 
+    let(:project2) { create(:project, online_date: (Time.now - 20.days)) }
     before { channel.projects << project1 }
     before { channel.projects << project2 }
 
