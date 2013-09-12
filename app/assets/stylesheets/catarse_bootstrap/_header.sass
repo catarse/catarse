@@ -1,5 +1,6 @@
 $border-gray: #E9E9EC
 $green-one: #00B22D
+$orange: #F69219
 
 .centered
   margin: 0 auto
@@ -10,7 +11,8 @@ $green-one: #00B22D
   display: inline-block
   width: 100%
   background: #fff
-  padding: 2em 0 1em
+  padding: 1em 0
+  border-bottom: 1px solid $border-gray
   .logo
     background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -21px -14px transparent
     display: block
@@ -18,6 +20,9 @@ $green-one: #00B22D
     height: 50px
     text-indent: -9999em
     width: 151px
+    transition: 0.4s all
+    &:hover
+      opacity: 0.5
 
 .header-nav
   float: right
@@ -26,7 +31,7 @@ $green-one: #00B22D
     display: inline-block
     margin: 0 0 0 20px
     line-height: 50px
-    vertical-align: top
+    vertical-align: bottom
     a
       text-decoration: none
       &:hover
@@ -57,29 +62,33 @@ $green-one: #00B22D
       padding: 0 15px 0 20px
       margin: 5px 0
       background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -27px -67px transparent
+      transition: 0.4s all
+      &:hover
+        opacity: 0.5
     .profile-picture
       +border-radius(20px)
 
 .discover-form
-  width: 250px
-  height: 34px
-  +border-radius(3px)
-  border: 1px $minimal_gryn solid
-  background: white
-  padding: 1px
   position: relative
   margin: 6px 0 6px
+  width: 250px
+  height: 36px
   .discover-form-input
+    +border-radius(3px)
     border: none
     height: 34px
     left: 32px
     position: absolute
     top: 0
-    width: 215px
+    left: 0
+    width: 220px
+    border: 1px $minimal_gryn solid
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif
     font-size: 13px
+    padding: 1px 1px 1px 30px
+    transition: 0.4s all
     &:focus
-      outline: none
+      border: 1px solid $orange
   input[type="submit"]
     background: url("/assets/catarse_bootstrap/catarse-assets.png") no-repeat scroll -49px -81px transparent
     border: medium none
