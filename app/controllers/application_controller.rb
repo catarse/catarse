@@ -7,11 +7,9 @@ class ApplicationController < ActionController::Base
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  unless Rails.application.config.consider_all_requests_local
-    rescue_from ActionController::RoutingError, with: :render_404
-    rescue_from ActionController::UnknownController, with: :render_404
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  end
+  rescue_from ActionController::RoutingError, with: :render_404
+  rescue_from ActionController::UnknownController, with: :render_404
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']
