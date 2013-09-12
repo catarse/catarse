@@ -29,8 +29,8 @@
               | &nbsp;
               = text_field_tag 'between_values[ends_at]', (params[:between_values][:ends_at] if params[:between_values].present?), class: 'input-small'
             .input
-              = label_tag :by_state, t('.by_state')
-              = select_tag :by_state, options_for_select(Backer.state_names, params[:by_state]), include_blank: true
+              = label_tag :with_state, t('.with_state')
+              = select_tag :with_state, options_for_select(Backer.state_names, params[:with_state]), include_blank: true
             .input
               = label_tag :by_key, t('.key')
               = text_field_tag :by_key, params[:by_key]
@@ -45,21 +45,8 @@
                 = submit_tag t('.submit'), class: 'btn btn-success'
           fieldset
             .input.check
-              = check_box_tag :confirmed, :on, params[:confirmed]
-              = label_tag :confirmed, t('.confirmed')
-            .input.check
               = check_box_tag :credits, :on, params[:credits]
               = label_tag :credits, t('.credits')
-
-            .input.check
-              = check_box_tag :pending_to_refund, :on, params[:pending_to_refund]
-              = label_tag :pending_to_refund, t('.pending_to_refund')
-            /.input.check
-            /  = check_box_tag :requested_refund
-            /  = label_tag :requested_refund, t('.requested_refund')
-            /.input.check
-            /  = check_box_tag :refunded
-            /  = label_tag :refunded, t('.refunded')
             .input.total_results
               #total_results
                 = pluralize_without_number collection.count, t('found_singular'), t('found_plural')

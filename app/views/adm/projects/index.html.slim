@@ -22,8 +22,8 @@
               = text_field_tag 'between_created_at[ends_at]', (params[:between_created_at][:ends_at] if params[:between_created_at].present?), class: 'input-small'
 
             .input
-              = label_tag :by_state, t('.by_state')
-              = select_tag :by_state, options_for_select(Project.state_names, params[:by_state]), include_blank: true
+              = label_tag :with_state, t('.with_state')
+              = select_tag :with_state, options_for_select(Project.state_names, params[:with_state]), include_blank: true
 
             .input
               = label_tag :pg_search, t('.project')
