@@ -27,7 +27,7 @@ class Reward < ActiveRecord::Base
   end
 
   def total_compromised
-    backers.with_states([:confirmed, :waiting_confirmation]).count
+    backers.with_states(['confirmed', 'waiting_confirmation']).count
   end
 
   def remaining
