@@ -22,7 +22,7 @@
             i.icon-pencil.icon-white
 
     h2= t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
-    em= pluralize(reward.backers.confirmed.count, t('backer_singular'), t('backer_plural'))
+    em= pluralize(reward.backers.with_state('confirmed').count, t('backer_singular'), t('backer_plural'))
     .clearfix
     p
       = reward.display_description

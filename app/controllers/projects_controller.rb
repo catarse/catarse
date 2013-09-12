@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
           end
 
           @channel_projects = Project.from_channels.order_for_search.limit(3)
-          @projects_near = Project.online.near_of(current_user.address_state).order("random()").limit(3) if current_user
+          @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3) if current_user
           @expiring = ProjectsForHome.expiring
           @recent   = ProjectsForHome.recents
         end

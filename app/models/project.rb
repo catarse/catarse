@@ -35,10 +35,12 @@ class Project < ActiveRecord::Base
     using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
-  scope :not_deleted_projects, ->() { where("projects.state <> 'deleted'") }
+  # Used to simplify a has_scope
+  scope :successful, ->{ with_state('successful') }
+
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_id, ->(id) { where(id: id) }
-  scope :by_permalink, ->(p) { not_deleted_projects.where("lower(permalink) = lower(?)", p) }
+  scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
@@ -53,16 +55,15 @@ class Project < ActiveRecord::Base
   }
 
   scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
-  scope :visible, -> { where("projects.state NOT IN ('draft', 'rejected', 'deleted')") }
-  scope :financial, -> { where("projects.expires_at > (current_timestamp - '15 days'::interval) AND state in ('online', 'successful', 'waiting_funds')") }
+  scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
+  scope :visible, -> { without_states(['draft', 'rejected', 'deleted']) }
+  scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where("projects.expires_at > (current_timestamp - '15 days'::interval)") }
   scope :recommended, -> { where(recommended: true) }
   scope :expired, -> { where("projects.expires_at < current_timestamp") }
   scope :not_expired, -> { where("projects.expires_at >= current_timestamp") }
   scope :expiring, -> { not_expired.where("projects.expires_at <= (current_timestamp + interval '2 weeks')") }
   scope :not_expiring, -> { not_expired.where("NOT (projects.expires_at <= (current_timestamp + interval '2 weeks'))") }
   scope :recent, -> { where("(current_timestamp - projects.online_date) <= '5 days'::interval") }
-  scope :successful, -> { where(state: 'successful') }
-  scope :online, -> { where(state: 'online') }
   scope :order_for_search, ->{ reorder("
                                      CASE projects.state
                                      WHEN 'online' THEN 1
@@ -74,7 +75,6 @@ class Project < ActiveRecord::Base
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
 
-  scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :from_channels, ->{
     where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id)")
   }
