@@ -319,14 +319,14 @@ en:
       login_with_facebook: "sign in with your facebook account"
       remember_me: "Remember me and keep me connected."
     header:
-      blog: blog
-      help: help
-      signup: "sign up"
-      signin: login
-      explore: explore
-      submit_project: submit
-      profile: "my profile"
-      account: "my account"
+      blog: Blog
+      help: Help
+      signup: "Sign up"
+      signin: Login
+      discover: Discover
+      submit: Submit your project
+      profile: "My profile"
+      account: "My account"
     user:
       logout: Logout
       my_credits: "My credit"
