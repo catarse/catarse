@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from ActionController::RoutingError, with: :render_404
+    rescue_from ActionController::UnknownController, with: :render_404
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  end
+
   rescue_from CanCan::Unauthorized do |exception|
     session[:return_to] = request.env['REQUEST_URI']
     message = exception.message
@@ -102,8 +108,12 @@ class ApplicationController < ActionController::Base
     (return_to || root_path)
   end
 
-  def render_404
-    render file: "#{Rails.root}/public/404.html", status: 404, layout: false
+  def render_404(exception)
+    @not_found_path = exception.message
+    respond_to do |format|
+      format.html { render template: 'errors/not_found', layout: 'layouts/catarse_bootstrap', status: 404 }
+      format.all { render nothing: true, status: 404 }
+    end
   end
 
   def force_http

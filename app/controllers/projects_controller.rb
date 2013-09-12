@@ -58,8 +58,6 @@ class ProjectsController < ApplicationController
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
     @updates_count = resource.updates.count
     @update = resource.updates.where(id: params[:update_id]).first if params[:update_id].present?
-  rescue ActiveRecord::RecordNotFound
-    render_404
   end
 
   def video
