@@ -40,40 +40,6 @@ describe Backer do
     it { should have(3).itens }
   end
 
-  describe ".not_deleted" do
-    before do
-      2.times { create(:backer, state: 'pending') }
-      3.times { create(:backer, state: 'confirmed') }
-      5.times { create(:backer, state: 'deleted') }
-    end
-
-    subject { Backer.not_deleted }
-
-    it("should return only the backers that is not deleted") do
-      subject.should have(5).itens
-    end
-  end
-
-  describe ".by_state" do
-    before do
-      2.times { create(:backer, state: 'confirmed') }
-      create(:backer, state: 'waiting_confirmation')
-      create(:backer, state: 'canceled')
-    end
-
-    it "should return all confirmed backers" do
-      Backer.by_state('confirmed').should have(2).itens
-    end
-
-    it "should return all waiting confirmation backers" do
-      Backer.by_state('waiting_confirmation').should have(1).itens
-    end
-
-    it "should return all canceled backers" do
-      Backer.by_state('canceled').should have(1).itens
-    end
-  end
-
   describe ".can_cancel" do
     subject { Backer.can_cancel}
 
@@ -334,35 +300,6 @@ describe Backer do
       context 'when backer is pending' do
         it('should not switch to refunded state') { backer.refunded?.should be_false }
       end
-    end
-  end
-
-
-  describe '.pending_to_refund' do
-    subject { Backer.pending_to_refund }
-
-    context 'when backer as requested refund' do
-      before do
-        create(:backer, state: 'confirmed')
-        create(:backer, state: 'refunded')
-        create(:backer, state: 'requested_refund')
-      end
-
-      it { should have(1).item }
-    end
-  end
-
-  describe '.in_time_to_confirm' do
-    subject { Backer.in_time_to_confirm}
-
-    context 'when we have backers in waiting confirmation' do
-      before do
-        create(:backer, state: 'waiting_confirmation')
-        create(:backer, state: 'waiting_confirmation')
-        create(:backer, state: 'pending')
-      end
-
-      it { should have(2).item }
     end
   end
 

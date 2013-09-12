@@ -16,7 +16,7 @@ describe Statistics do
 
   describe "#total_backs" do
     subject{ Statistics.first.total_backs }
-    it{ should == Backer.confirmed.count }
+    it{ should == Backer.with_state('confirmed').count }
   end
 
   describe "#total_backers" do
@@ -26,7 +26,7 @@ describe Statistics do
 
   describe "#total_backed" do
     subject{ Statistics.first.total_backed }
-    it{ should == Backer.confirmed.sum(:value) }
+    it{ should == Backer.with_state('confirmed').sum(:value) }
   end
 
   describe "#total_projects" do

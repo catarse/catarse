@@ -34,7 +34,7 @@
           .limited= t('reward.limited')
           .remaining
             = reward.display_remaining
-      - in_time_to_confirm = reward.backers.in_time_to_confirm.count
+      - in_time_to_confirm = reward.backers.with_state('waiting_confirmation').count
       - if in_time_to_confirm > 0
         .maximum_backers.in_time_to_confirm.clearfix
           .pending= t('projects.rewards.backs_to_confirm', count: in_time_to_confirm)

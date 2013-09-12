@@ -30,8 +30,8 @@
               = label_tag :user_name_contains, t('.user')
               = text_field_tag :user_name_contains, params[:user_name_contains]
             .input
-              = label_tag :by_state, t('.by_state')
-              = select_tag :by_state, options_for_select(Project.state_names, params[:by_state]), include_blank: true
+              = label_tag :with_state, t('.with_state')
+              = select_tag :with_state, options_for_select(Project.state_names, params[:with_state]), include_blank: true
               = link_to t('.search_report'), adm_financials_path(params: params,format: :csv)
             .bootstrap-twitter
               .input.submit

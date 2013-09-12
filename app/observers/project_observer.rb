@@ -63,7 +63,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def notify_users(project)
-    project.backers.confirmed.each do |backer|
+    project.backers.with_state('confirmed').each do |backer|
       unless backer.notified_finish
         Notification.create_notification_once(
           (project.successful? ? :backer_project_successful : :backer_project_unsuccessful),
@@ -77,7 +77,7 @@ class ProjectObserver < ActiveRecord::Observer
     end
 
     if project.failed?
-      project.backers.in_time_to_confirm.each do |backer|
+      project.backers.with_state('waiting_confirmation').each do |backer|
         Notification.create_notification_once(
           :pending_backer_project_unsuccessful,
           backer.user,

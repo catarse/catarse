@@ -23,12 +23,16 @@ class Reward < ActiveRecord::Base
   end
 
   def sold_out?
-    maximum_backers and (backers.confirmed.count + backers.in_time_to_confirm.count) >= maximum_backers
+    maximum_backers && total_compromised >= maximum_backers
+  end
+
+  def total_compromised
+    backers.with_states([:confirmed, :waiting_confirmation]).count
   end
 
   def remaining
     return nil unless maximum_backers
-    maximum_backers - (backers.confirmed.count + backers.in_time_to_confirm.count)
+    maximum_backers - total_compromised
   end
 
   def display_deliver_prevision

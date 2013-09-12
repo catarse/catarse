@@ -37,7 +37,6 @@ class Project < ActiveRecord::Base
 
   scope :not_deleted_projects, ->() { where("projects.state <> 'deleted'") }
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
-  scope :by_state, ->(state) { where(state: state) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_permalink, ->(p) { not_deleted_projects.where("lower(permalink) = lower(?)", p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
@@ -145,7 +144,7 @@ class Project < ActiveRecord::Base
   end
 
   def selected_rewards
-    rewards.sort_asc.where(id: backers.confirmed.map(&:reward_id))
+    rewards.sort_asc.where(id: backers.with_state('confirmed').map(&:reward_id))
   end
 
   def reached_goal?
@@ -161,7 +160,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    backers.in_time_to_confirm.count > 0
+    backers.with_state('waiting_confirmation').count > 0
   end
 
   def in_time?
@@ -201,11 +200,11 @@ class Project < ActiveRecord::Base
   end
 
   def pending_backers_reached_the_goal?
-    (pledged + backers.in_time_to_confirm.to_a.sum(&:value)) >= goal
+    (pledged + backers.with_state('waiting_confirmation').to_a.sum(&:value)) >= goal
   end
 
   def can_go_to_second_chance?
-    ((pledged + backers.in_time_to_confirm.to_a.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
+    ((pledged + backers.with_state('waiting_confirmation').to_a.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
   end
 
   def permalink_cant_be_route
