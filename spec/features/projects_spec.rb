@@ -58,6 +58,7 @@ describe "Projects" do
 
   describe "new and create" do
     before do
+      project # need to build the project to create category before visiting the page
       login
       visit new_project_path(locale: :pt)
     end
@@ -73,7 +74,6 @@ describe "Projects" do
       end
       check 'project_accepted_terms'
       find('#project_submit').click
-      #Project.first.name.should == project.name
     end
   end
 
