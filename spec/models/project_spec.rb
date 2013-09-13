@@ -295,7 +295,7 @@ describe Project do
 
     context "when goal is 0.0 and pledged > 0.0" do
       let(:pledged){ 10.0 }
-      it{ should == 100 }
+      it{ should == 0 }
     end
 
     context "when goal is 0.0 and pledged is 0.0" do
