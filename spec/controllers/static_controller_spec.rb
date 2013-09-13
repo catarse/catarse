@@ -31,7 +31,7 @@ describe StaticController do
     end
     
     context 'without session' do
-      it{ lambda { get :thank_you, { locale: :pt } }.should raise_exception(ActiveRecord::RecordNotFound)}
+      it{ should be_successful }
     end
   end
 end

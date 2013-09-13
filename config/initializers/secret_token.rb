@@ -12,5 +12,13 @@ rescue
   nil
 end
 
-Catarse::Application.config.secret_token = find_secure_token 
+def find_secure_key_base
+  ::Configuration[:secret_key_base] = SecureRandom.hex(64) unless ::Configuration[:secret_key_base]
+  ::Configuration[:secret_key_base]
+rescue
+  # Just to ensure that we can run migrations and create the configurations table
+  nil
+end
 
+Catarse::Application.config.secret_token = find_secure_token
+Catarse::Application.config.secret_key_base = find_secure_key_base

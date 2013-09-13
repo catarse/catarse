@@ -3,7 +3,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def self.add_providers
     OauthProvider.all.each do |p|
-      define_method p.name.downcase do 
+      define_method p.name.downcase do
         omniauth = request.env['omniauth.auth']
         @user = User.
           select('users.*').
@@ -24,5 +24,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
     end
   end
-  add_providers
 end

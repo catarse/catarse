@@ -1,6 +1,7 @@
 class PaymentEngines
+  @@engines = []
+
   def self.register options
-    @@engines ||= []
     @@engines.push(options)
   end
 

@@ -6,11 +6,14 @@ Catarse::Application.routes.draw do
     path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up },
     controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords }
 
+
   devise_scope :user do
     post '/sign_up', to: 'devise/registrations#create', as: :sign_up
   end
 
-  match '/thank_you' => "static#thank_you"
+
+  get '/thank_you' => "static#thank_you"
+
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
 
@@ -63,7 +66,7 @@ Catarse::Application.routes.draw do
   get "/about",                 to: "static#about",               as: :about
 
 
-  match "/explore" => "explore#index", as: :explore
+  get "/explore" => "explore#index", as: :explore
 
   resources :posts, only: [:index, :create]
 
@@ -80,7 +83,7 @@ Catarse::Application.routes.draw do
     end
     resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
       member do
-        match 'credits_checkout'
+        get 'credits_checkout'
         post 'update_info'
       end
     end
@@ -101,7 +104,7 @@ Catarse::Application.routes.draw do
     end
     resources :backers, controller: 'users/backers', only: [:index] do
       member do
-        match :request_refund
+        get :request_refund
       end
     end
 
@@ -144,7 +147,7 @@ Catarse::Application.routes.draw do
     end
   end
 
-  match "/mudancadelogin" => "users#set_email", as: :set_email_users
-  match "/:permalink" => "projects#show", as: :project_by_slug
+  get "/mudancadelogin" => "users#set_email", as: :set_email_users
+  get "/:permalink" => "projects#show", as: :project_by_slug
 
 end

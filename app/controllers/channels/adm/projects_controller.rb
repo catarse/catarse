@@ -2,7 +2,7 @@ class Channels::Adm::ProjectsController < Adm::BaseController
   menu I18n.t('channels.adm.menu') => Rails.application.routes.url_helpers.adm_projects_path
 
   
-  has_scope :by_id, :pg_search, :user_name_contains, :order_table, :by_state
+  has_scope :by_id, :pg_search, :user_name_contains, :order_table, :with_state
   has_scope :between_created_at, using: [ :start_at, :ends_at ], allow_blank: true
   has_scope :order_table do |controller, scope, value|
   value.present? ? scope.order_table(value) : scope.order('created_at DESC')
