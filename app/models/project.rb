@@ -199,11 +199,15 @@ class Project < ActiveRecord::Base
   end
 
   def pending_backers_reached_the_goal?
-    (pledged + backers.with_state('waiting_confirmation').to_a.sum(&:value)) >= goal
+    pledged_and_waiting >= goal
   end
 
   def can_go_to_second_chance?
-    ((pledged + backers.with_state('waiting_confirmation').to_a.sum(&:value)) >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
+    (pledged_and_waiting >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
+  end
+
+  def pledged_and_waiting
+    backers.with_states(['confirmed', 'waiting_confirmation']).sum(:value)
   end
 
   def permalink_cant_be_route
