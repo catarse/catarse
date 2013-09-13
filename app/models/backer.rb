@@ -1,10 +1,9 @@
 require 'state_machine'
 # coding: utf-8
 class Backer < ActiveRecord::Base
-  include ActionView::Helpers::NumberHelper
-  include ActionView::Helpers::DateHelper
-
   schema_associations
+
+  delegate :display_value, :display_confirmed_at, to: :decorator
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
@@ -86,6 +85,10 @@ class Backer < ActiveRecord::Base
     end
   end
 
+  def decorator
+    @decorator ||= BackerDecorator.new(self)
+  end
+
   def recommended_projects
     user.recommended_projects.where("projects.id <> ?", project.id)
   end
@@ -123,16 +126,8 @@ class Backer < ActiveRecord::Base
     errors.add(:project, I18n.t('backer.project_should_be_online'))
   end
 
-  def display_value
-    number_to_currency value
-  end
-
   def available_rewards
     Reward.where(project_id: self.project_id).where('minimum_value <= ?', self.value).order(:minimum_value)
-  end
-
-  def display_confirmed_at
-    I18n.l(confirmed_at.to_date) if confirmed_at
   end
 
   def update_current_billing_info
