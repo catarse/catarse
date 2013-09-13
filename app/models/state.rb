@@ -4,7 +4,7 @@ class State < ActiveRecord::Base
   def self.array
     return @array if @array
     @array = []
-    self.order(:name).all.each do |state|
+    self.order(:name).each do |state|
       @array << [state.name, state.acronym]
     end
     @array.push(['Outro / Other', 'outro / other'])

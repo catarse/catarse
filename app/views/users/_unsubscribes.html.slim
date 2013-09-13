@@ -13,9 +13,9 @@
           - if @unsubscribes
             = f.semantic_fields_for :unsubscribes, @unsubscribes do |u|
               = u.inputs do
-                - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = nil)
+                - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = {})
                 .subscribed_projects
-                  = u.input :subscribed, as: :boolean, input_html: checked, label: Project.find(u.object.project_id).name
+                  = u.input :subscribed, as: :boolean, input_html: {id: "user_unsubscribes_#{u.object.project_id}"}.merge(checked), label: Project.find(u.object.project_id).name
                 = u.input :project_id, as: :hidden
                 = u.input :user_id, as: :hidden
                 = u.input :notification_type_id, as: :hidden

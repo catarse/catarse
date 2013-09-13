@@ -13,29 +13,18 @@ class Backer < ActiveRecord::Base
   validate :should_not_back_if_maximum_backers_been_reached, on: :create
   validate :project_should_be_online, on: :create
 
-  scope :not_deleted, ->() { where("backers.state <> 'deleted'") }
-  scope :not_canceled, ->() { where("backers.state <> 'canceled'") }
+  scope :available_to_count, ->{ with_states(['confirmed', 'requested_refund', 'refunded']) }
+  scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
-  scope :by_state, ->(state) { where(state: state) }
   scope :by_key, ->(key) { where(key: key) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :project_name_contains, ->(term) { joins(:project).where("unaccent(upper(projects.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :anonymous, where(anonymous: true)
-  scope :credits, where(credits: true)
-  scope :requested_refund, where(state: 'requested_refund')
-  scope :refunded, where(state: 'refunded')
-  scope :not_anonymous, where(anonymous: false)
-  scope :confirmed, where(state: 'confirmed')
-  scope :waiting_confirmation, where(state: 'waiting_confirmation')
-  scope :not_confirmed, where("backers.state <> 'confirmed'") # used in payment engines
-  scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
-  scope :pending_to_refund, ->() { where(state: 'requested_refund') }
+  scope :anonymous, -> { where(anonymous: true) }
+  scope :credits, -> { where(credits: true) }
+  scope :not_anonymous, -> { where(anonymous: false) }
 
-  scope :available_to_count, ->() { where("state in ('confirmed', 'requested_refund', 'refunded')") }
-  scope :available_to_display, ->() { where("state in ('confirmed', 'requested_refund', 'refunded', 'waiting_confirmation')") }
-
-  scope :can_cancel, ->() {
+  scope :can_cancel, -> {
     where(%Q{
       backers.state = 'waiting_confirmation' and
         (
@@ -70,7 +59,8 @@ class Backer < ActiveRecord::Base
     })
   }
 
-  attr_protected :confirmed, :state
+  # TODO:
+  #attr_protected :confirmed, :state
 
   def self.between_values(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
