@@ -29,6 +29,6 @@ class UserDecorator < Draper::Decorator
   end
 
   def display_total_of_backs
-    number_to_currency source.backs.confirmed.sum(:value)
+    number_to_currency source.backs.with_state('confirmed').sum(:value)
   end
 end

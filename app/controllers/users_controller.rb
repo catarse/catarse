@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     show!{
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
-      @credits = @user.backs.can_refund.all
+      @credits = @user.backs.can_refund
       @subscribed_to_updates = @user.updates_subscription
       @unsubscribes = @user.project_unsubscribes
     }

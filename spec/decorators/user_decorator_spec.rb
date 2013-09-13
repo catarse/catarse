@@ -30,10 +30,10 @@ describe UserDecorator do
   end
 
   describe "#display_image_html" do
-    let(:user){ build(:user, image_url: 'image.jpg', uploaded_image: nil )}
+    let(:user){ build(:user, image_url: 'http://image.jpg', uploaded_image: nil )}
     let(:options){ {width: 300, height: 300} }
     subject{ user.display_image_html(options) }
-    it{ should == "<div class=\"avatar_wrapper\" style=\"width: #{options[:width]}px; height: #{options[:height]}px\"><img alt=\"User\" src=\"/assets/#{user.display_image}\" style=\"width: #{options[:width]}px; height: auto\" /></div>" }
+    it{ should == "<div class=\"avatar_wrapper\" style=\"width: #{options[:width]}px; height: #{options[:height]}px\"><img alt=\"User\" src=\"#{user.display_image}\" style=\"width: #{options[:width]}px; height: auto\" /></div>" }
   end
 
   describe "#display_image" do

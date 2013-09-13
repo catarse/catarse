@@ -72,44 +72,6 @@ describe Project do
     end
   end
 
-  describe '.not_deleted_projects' do
-    before do
-      create(:project,  state: 'online')
-      create(:project,  state: 'draft')
-      create(:project,  state: 'deleted')
-    end
-
-    subject { Project.not_deleted_projects }
-
-    it { should have(2).itens }
-  end
-
-  describe '.by_state' do
-    before do
-      @project_01 = create(:project, state: 'online')
-      @project_02 = create(:project, state: 'failed')
-      @project_03 = create(:project, state: 'successful')
-    end
-
-    context 'get all projects that is online' do
-      subject { Project.by_state('online') }
-
-      it { should == [@project_01] }
-    end
-
-    context 'get all projects that is failed' do
-      subject { Project.by_state('failed') }
-
-      it { should == [@project_02] }
-    end
-
-    context 'get all projects that is successful' do
-      subject { Project.by_state('successful') }
-
-      it { should == [@project_03] }
-    end
-  end
-
   describe '.by_progress' do
     subject { Project.by_progress(20) }
 
@@ -239,15 +201,6 @@ describe Project do
       create(:project, online_date: (Time.now - 15.days))
     end
     subject{ Project.recent }
-    it{ should == [@p] }
-  end
-
-  describe ".online" do
-    before do
-      @p = create(:project, state: 'online')
-      create(:project, state: 'draft')
-    end
-    subject{ Project.online}
     it{ should == [@p] }
   end
 

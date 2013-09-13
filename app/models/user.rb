@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
     :medium_name, :display_credits, :display_total_of_backs,
     to: :decorator
   # Setup accessible (or protected) attributes for your model
+  # TODO:
   attr_accessible :email,
     :password,
     :password_confirmation,
@@ -115,12 +116,12 @@ class User < ActiveRecord::Base
   scope :by_name, ->(name){ where('users.name ~* ?', name) }
   scope :by_id, ->(id){ where(id: id) }
   scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
-  scope :has_credits, joins(:user_total).where('user_totals.credits > 0')
+  scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0') }
   scope :order_by, ->(sort_field){ order(sort_field) }
 
   def self.backer_totals
     connection.select_one(
-      self.scoped.
+      self.all.
       joins(:user_total).
       select('
         count(DISTINCT user_id) as users,

@@ -164,7 +164,10 @@ describe ProjectsController do
   describe "GET video" do
     context 'url is a valid video' do
       let(:video_url){ 'http://vimeo.com/17298435' }
-      before { get :video, locale: :pt, url: video_url }
+      before do
+        VideoInfo.stub(:get).and_return({video_id: 'abcd'})
+        get :video, locale: :pt, url: video_url
+      end
 
       its(:body){ should == VideoInfo.get(video_url).to_json }
     end

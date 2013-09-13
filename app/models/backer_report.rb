@@ -1,3 +1,4 @@
 class BackerReport < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :title, :body
+  acts_as_copy_target
 end

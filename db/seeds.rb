@@ -34,7 +34,7 @@ puts 'Seeding the database...'
   { pt: 'Filmes Documentários', en: 'Documentary Films' },
   { pt: 'Filmes Universitários', en: 'Experimental Films' }
 ].each do |name|
-   category = Category.find_or_initialize_by_name_pt name[:pt]
+   category = Category.find_or_initialize_by(name_pt: name[:pt])
    category.update_attributes({
      name_en: name[:en]
    })
@@ -48,7 +48,7 @@ puts 'Seeding the database...'
   'project_in_wainting_funds', 'credits_warning', 'backer_confirmed_after_project_was_closed',
   'backer_canceled_after_confirmed', 'new_user_registration'
 ].each do |name|
-  NotificationType.find_or_create_by_name name
+  NotificationType.find_or_create_by(name: name)
 end
 
 {
@@ -71,27 +71,24 @@ end
   uservoice_secret_gadget: 'change_this',
   uservoice_key: 'uservoice_key'
 }.each do |name, value|
-   conf = Configuration.find_or_initialize_by_name name
+   conf = Configuration.find_or_initialize_by(name: name)
    conf.update_attributes({
      value: value
    }) if conf.new_record?
 end
 
 
-Channel.find_or_create_by_name!(
-  name: "Channel name",
-  permalink: "sample-permalink",
-  description: "Lorem Ipsum"
-)
+Channel.find_or_create_by!(name: "Channel name") do |c|
+  c.permalink = "sample-permalink"
+  c.description = "Lorem Ipsum"
+end
 
 
-OauthProvider.find_or_create_by_name!(
-  name: 'facebook',
-  key: 'your_facebook_app_key',
-  secret: 'your_facebook_app_secret',
-  path: 'facebook'
-)
-
+OauthProvider.find_or_create_by!(name: 'facebook') do |o|
+  o.key = 'your_facebook_app_key'
+  o.secret = 'your_facebook_app_secret'
+  o.path = 'facebook'
+end
 
 puts
 puts '============================================='
