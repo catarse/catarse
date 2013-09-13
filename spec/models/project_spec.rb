@@ -303,6 +303,17 @@ describe Project do
     end
   end
 
+  describe "#pledged_and_waiting" do
+    subject{ project.pledged_and_waiting }
+    before do
+      @confirmed = create(:backer, value: 10, state: 'confirmed', project: project)
+      @waiting = create(:backer, value: 10, state: 'waiting_confirmation', project: project)
+      create(:backer, value: 100, state: 'refunded', project: project)
+      create(:backer, value: 1000, state: 'pending', project: project)
+    end
+    it{ should == @confirmed.value + @waiting.value }
+  end
+
   describe "#pledged" do
     subject{ project.pledged }
     context "when project_total is nil" do
