@@ -295,12 +295,23 @@ describe Project do
 
     context "when goal is 0.0 and pledged > 0.0" do
       let(:pledged){ 10.0 }
-      it{ should == 100 }
+      it{ should == 0 }
     end
 
     context "when goal is 0.0 and pledged is 0.0" do
       it{ should == 0 }
     end
+  end
+
+  describe "#pledged_and_waiting" do
+    subject{ project.pledged_and_waiting }
+    before do
+      @confirmed = create(:backer, value: 10, state: 'confirmed', project: project)
+      @waiting = create(:backer, value: 10, state: 'waiting_confirmation', project: project)
+      create(:backer, value: 100, state: 'refunded', project: project)
+      create(:backer, value: 1000, state: 'pending', project: project)
+    end
+    it{ should == @confirmed.value + @waiting.value }
   end
 
   describe "#pledged" do
