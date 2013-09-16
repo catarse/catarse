@@ -15,7 +15,7 @@ end
 
 desc "Send notification about credits 1 month after the project failed"
 task send_credits_notification: :environment do
-  Backer.send_credits_notification
+  User.send_credits_notification
 end
 
 desc "Create first versions for rewards"
