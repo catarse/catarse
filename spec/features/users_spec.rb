@@ -24,6 +24,7 @@ describe "Users" do
       @project = create(:backer, user: current_user).project
       visit user_path(current_user, locale: :pt)
       click_link 'unsubscribes_link'
+      sleep 1
     end
 
     it "should show unsubscribe from all updates" do

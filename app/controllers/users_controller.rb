@@ -23,22 +23,6 @@ class UsersController < ApplicationController
     }
   end
 
-  def set_email
-    @user = current_user
-  end
-
-  def update_email
-    update! do |success,failure|
-      success.html do
-        flash[:notice] = t('users.current_user_fields.updated')
-        redirect_to (session[:return_to] || user_path(@user, anchor: 'settings'))
-        session[:return_to] = nil
-        return
-      end
-      failure.html{ return render :set_email }
-    end
-  end
-
   def update
     update! do |success,failure|
       success.html do
