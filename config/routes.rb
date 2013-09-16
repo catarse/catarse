@@ -68,8 +68,6 @@ Catarse::Application.routes.draw do
 
   get "/explore" => "explore#index", as: :explore
 
-  resources :posts, only: [:index, :create]
-
   namespace :reports do
     resources :backer_reports_for_project_owners, only: [:index]
   end
@@ -147,7 +145,5 @@ Catarse::Application.routes.draw do
     end
   end
 
-  get "/mudancadelogin" => "users#set_email", as: :set_email_users
   get "/:permalink" => "projects#show", as: :project_by_slug
-
 end

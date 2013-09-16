@@ -61,6 +61,7 @@ describe "Projects" do
       project # need to build the project to create category before visiting the page
       login
       visit new_project_path(locale: :pt)
+      sleep 1
     end
 
     it "should present the form and save the data" do
