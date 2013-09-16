@@ -3,19 +3,19 @@
 = render 'devise/shared/header'
 
 .row
-  .large-7.large-centered.columns
+  .large-5.large-centered.columns
     .login-box.animated.fadeIn
       h2.text-center= t 'pages.forgot_password.titles.header'
       p.text-center.register_link
         = t 'pages.forgot_password.no_account_html', link: link_to(t('pages.forgot_password.links.register'), new_user_registration_path)
       hr
 
-      .large-14.large-centered.columns
+      .large-11.large-centered.columns
         = form_for(resource, as: resource_name, url: password_path(resource_name)) do |f|
           = render 'devise/shared/alert'
           p
             = f.label :email, t('pages.forgot_password.form.labels.email')
             = f.text_field :email, class: [:login, :email], required: true
 
-          .large-10.columns.large-centered
-            = f.submit t('pages.forgot_password.form.inputs.submit'), class: [:button, :success, 'large-16', 'columns']
+          .large-7.columns.large-centered
+            = f.submit t('pages.forgot_password.form.inputs.submit'), class: [:button, :success, 'large-12', 'columns']

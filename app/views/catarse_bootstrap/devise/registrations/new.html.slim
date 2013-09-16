@@ -3,15 +3,15 @@
 = render 'devise/shared/header'
 
 .row
-  .large-7.large-centered.columns
+  .large-5.large-centered.columns
     .login-box.animated.fadeIn
       h2.text-center= t 'pages.sign_up.titles.header'
       p.text-center.register_link
         = t 'pages.sign_up.have_account_html', link: link_to(t('pages.sign_up.links.login'), new_user_session_path)
       hr
 
-      .large-14.columns.large-centered
-        = link_to t('pages.sign_up.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-16', 'columns']
+      .large-11.columns.large-centered
+        = link_to t('pages.sign_up.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-12', 'columns']
 
         .separator
           p
@@ -19,7 +19,7 @@
 
       .clearfix
 
-      .large-14.large-centered.columns
+      .large-11.large-centered.columns
         = form_for(resource, as: resource_name, url: sign_up_path) do |f|
           = f.hidden_field :newsletter, value: true
 
@@ -43,6 +43,6 @@
             = f.label :show_password, t('pages.sign_up.form.labels.show_password')
 
           .large-10.columns.large-centered
-            = f.submit t('pages.sign_up.form.inputs.submit'), class: [:button, :success, 'large-16', 'columns']
+            = f.submit t('pages.sign_up.form.inputs.submit'), class: [:button, :success, 'large-12', 'columns']
 
       .clearfix
