@@ -72,19 +72,6 @@ class Backer < ActiveRecord::Base
     end.compact!
   end
 
-  def self.send_credits_notification
-    confirmed.joins(:project).joins(:user).find_each do |backer|
-      if backer.project.state == 'failed' && ((backer.project.expires_at + 1.month) < Time.now) && backer.user.credits >= backer.value
-        Notification.create_notification_once(:credits_warning,
-          backer.user,
-          {backer_id: backer.id},
-          backer: backer,
-          amount: backer.user.credits
-                                             )
-      end
-    end
-  end
-
   def decorator
     @decorator ||= BackerDecorator.new(self)
   end
