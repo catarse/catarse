@@ -46,6 +46,26 @@ describe User do
     end
   end
 
+  describe ".has_not_used_credits_last_month" do
+    subject{ User.has_not_used_credits_last_month }
+
+    context "when he has used credits in the last month" do
+      before do
+        b = create(:backer, state: 'confirmed', value: 100, credits: true)
+        @u = b.user
+      end
+      it{ should == [] }
+    end
+    context "when he has not used credits in the last month" do
+      before do
+        b = create(:backer, state: 'confirmed', value: 100, project: failed_project)
+        failed_project.update_attributes state: 'failed'
+        @u = b.user
+      end
+      it{ should == [@u] }
+    end
+  end
+
   describe ".by_payer_email" do
     before do
       p = create(:payment_notification)
