@@ -1,14 +1,14 @@
-- backer = @notification.backer
-|Olá, <strong>#{backer.user.display_name}</strong> !
+- user = @notification.user
+|Olá, <strong>#{user.display_name}</strong> !
 br
 br
-|Vimos aqui que você tem  R$ #{backer.user.credits} em créditos no Catarse. Que tal aproveitar e apoiar outro projeto bacana agora mesmo?
+|Vimos aqui que você tem  R$ #{user.credits} em créditos no Catarse. Que tal aproveitar e apoiar outro projeto bacana agora mesmo?
 br
 br
 |Abaixo selecionamos algumas sugestões de projetos especialmente para você:
 br
 br
--backer.user.recommended_projects.limit(3).each do |project|
+-user.recommended_projects.limit(3).each do |project|
   |#{link_to(project.name, "#{Configuration[:base_url]}/projects/#{project.to_param}")}
   br
   |#{project.headline}
@@ -30,7 +30,7 @@ br
 |5 - Pronto! Seu apoio será confirmado =)
 br
 br
-|Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}.  Você conseguirá tirar a maioria das suas dúvidas sobre reembolso #{link_to('nesse artigo', 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos')}.
+|Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{Configuration[:base_url]}/users/#{user.to_param}#credits")}.  Você conseguirá tirar a maioria das suas dúvidas sobre reembolso #{link_to('nesse artigo', 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos')}.
 br
 br
 |Se tiver alguma outra dúvida, entre em contato conosco na nossa Central de Suporte: suporte.catarse.me.
