@@ -32,7 +32,7 @@ gem 'chartkick'
 gem 'catarse_paypal_express', '~> 1.0.0'
 
 # Payment engine using Moip
-gem 'catarse_moip', '~> 1.0.7'
+gem 'catarse_moip', '~> 1.0.8'
 #gem 'catarse_moip', path: '../catarse_moip'
 
 
