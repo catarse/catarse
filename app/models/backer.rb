@@ -100,7 +100,7 @@ class Backer < ActiveRecord::Base
 
   def value_must_be_at_least_rewards_value
     return unless reward
-    errors.add(:value, I18n.t('backer.value_must_be_at_least_rewards_value', minimum_value: reward.display_minimum)) unless value >= reward.minimum_value
+    errors.add(:value, I18n.t('backer.value_must_be_at_least_rewards_value', minimum_value: reward.display_minimum)) unless value.to_f >= reward.minimum_value
   end
 
   def should_not_back_if_maximum_backers_been_reached
