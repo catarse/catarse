@@ -20,7 +20,6 @@ class Projects::BackersController < ApplicationController
 
   def show
     @title = t('projects.backers.show.title')
-    session[:thank_you_backer_id] = nil
   end
 
   def new
@@ -36,7 +35,7 @@ class Projects::BackersController < ApplicationController
     @title = t('projects.backers.new.title', name: @project.name)
     @backer = @project.backers.new(user: current_user)
     empty_reward = Reward.new(minimum_value: 0, description: t('projects.backers.new.no_reward'))
-    @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
+    @rewards = [empty_reward] + @project.rewards.remaining.order(:minimum_value)
 
     # Select
     if params[:reward_id] && (@selected_reward = @project.rewards.find params[:reward_id]) && !@selected_reward.sold_out?
