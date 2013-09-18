@@ -20,7 +20,6 @@ class Projects::BackersController < ApplicationController
 
   def show
     @title = t('projects.backers.show.title')
-    session[:thank_you_backer_id] = nil
   end
 
   def new
