@@ -119,14 +119,27 @@ describe Backer do
   end
 
   describe '#recommended_projects' do
+    subject{ backer.recommended_projects }
     let(:backer){ create(:backer) }
-    before do
-      backer.user.recommended_projects.should_receive(:where).with("projects.id <> ?", backer.project_id).and_call_original
-      backer.user.should_receive(:recommended_projects).and_call_original
+
+    context "when we have another projects in the same category" do
+      before do
+        @recommended = create(:project, category: backer.project.category)
+        # add a project successful that should not apear as recommended
+        create(:project, category: backer.project.category, state: 'successful')
+      end
+      it{ should eq [@recommended] }
     end
 
-    it "should call user recommended projects and remove the project of the back" do
-      backer.recommended_projects
+    context "when another user has backed the same project" do
+      before do
+        @another_backer = create(:backer, project: backer.project)
+        @recommended = create(:backer, user: @another_backer.user).project
+        # add a project successful that should not apear as recommended
+        create(:backer, user: @another_backer.user, project: successful_project)
+        successful_project.update_attributes state: 'successful'
+      end
+      it{ should eq [@recommended] }
     end
   end
 
