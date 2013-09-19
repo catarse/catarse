@@ -76,54 +76,45 @@ describe Reward do
     r.should be_valid
   end
 
+  describe '.remaining' do
+    subject { Reward.remaining }
+    before do
+      @remaining = create(:reward, maximum_backers: 3) 
+      create(:backer, state: 'confirmed', reward: @remaining, project: @remaining.project)
+      create(:backer, state: 'waiting_confirmation', reward: @remaining, project: @remaining.project)
+      @sold_out = create(:reward, maximum_backers: 2) 
+      create(:backer, state: 'confirmed', reward: @sold_out, project: @sold_out.project)
+      create(:backer, state: 'waiting_confirmation', reward: @sold_out, project: @sold_out.project)
+    end
+
+    it{ should == [@remaining] }
+  end
+
   describe '#sold_out?' do
-    let(:reward) { create(:reward, maximum_backers: nil) }
+    let(:reward) { create(:reward, maximum_backers: 3) }
     subject { reward.sold_out? }
 
     context 'when reward not have limits' do
+      let(:reward) { create(:reward, maximum_backers: nil) }
       it { should be_false }
     end
 
-    context 'when reward have limit' do
-      let(:reward) { create(:reward, maximum_backers: 3) }
-
-      context 'and have confirmed backers and backers in time to confirm' do
-        before do
-           create(:backer, state: 'confirmed', reward: reward, project: reward.project)
-           create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project)
-        end
-
-        it { should be_false }
-        it { reward.remaining.should == 1 }
+    context 'when reward backers waiting confirmation and confirmed are greater than limit' do
+      before do
+        2.times { create(:backer, state: 'confirmed', reward: reward, project: reward.project) }
+        create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project)
       end
 
-      context 'and have confirmed backers and the in time to confirm already expired' do
-        before do
-           create(:backer, state: 'confirmed', reward: reward, project: reward.project)
-           create(:backer, state: 'pending', payment_token: 'ABC', reward: reward, project: reward.project, created_at: 8.days.ago)
-        end
+      it { should be_true }
+    end
 
-        it { should be_false }
-        it { reward.remaining.should == 2 }
+    context 'when reward backers waiting confirmation and confirmed are lower than limit' do
+      before do
+        create(:backer, state: 'confirmed', reward: reward, project: reward.project)
+        create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project)
       end
+      it { should be_false }
 
-      context 'and reached the maximum backers number with confirmed backers' do
-        before do
-           3.times { create(:backer, state: 'confirmed', reward: reward, project: reward.project) }
-        end
-
-        it { should be_true }
-        it { reward.remaining.should == 0 }
-      end
-
-      context 'and reached the maximum backers number with backers in time to confirm' do
-        before do
-           3.times { create(:backer, state: 'waiting_confirmation', reward: reward, project: reward.project) }
-        end
-
-        it { should be_true }
-        it { reward.remaining.should == 0 }
-      end
     end
   end
 
