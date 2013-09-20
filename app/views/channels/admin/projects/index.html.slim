@@ -8,7 +8,7 @@
 
     .filters
       .bootstrap-form
-        = form_tag channels_adm_projects_path, method: :get, class: 'form-horizontal' do |f|
+        = form_tag channels_admin_projects_path, method: :get, class: 'form-horizontal' do |f|
           fieldset
             .input
               = label_tag :by_id, t('.id')
@@ -99,19 +99,19 @@
                       ul.dropdown-menu
                         - if project.can_approve?
                           li
-                            = link_to approve_channels_adm_project_path(project), method: :put do
+                            = link_to approve_channels_admin_project_path(project), method: :put do
                               i.icon-ok
                               = t('.approve')
 
                         - if project.can_reject?
                           li
-                            = link_to reject_channels_adm_project_path(project), method: :put  do
+                            = link_to reject_channels_admin_project_path(project), method: :put  do
                               i.icon-ban-circle
                               = t('.reject')
 
                         - if project.can_push_to_draft?
                           li
-                            = link_to  push_to_draft_channels_adm_project_path(project), method: :put  do
+                            = link_to  push_to_draft_channels_admin_project_path(project), method: :put  do
                               i.icon-trash
                               = t('.send_to_draft')
       = paginate @projects

@@ -1,5 +1,5 @@
 class Channels::Admin::StatisticsController < Admin::BaseController
-  menu I18n.t('channels.adm.statistics_menu') => Rails.application.routes.url_helpers.adm_statistics_path
+  menu I18n.t('channels.adm.statistics_menu') => Rails.application.routes.url_helpers.admin_statistics_path
 
   actions :index
 

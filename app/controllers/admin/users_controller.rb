@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   inherit_resources
-  menu I18n.t("adm.users.index.menu") => Rails.application.routes.url_helpers.adm_users_path
+  menu I18n.t("adm.users.index.menu") => Rails.application.routes.url_helpers.admin_users_path
   before_filter :set_title
   before_filter :set_totals
 

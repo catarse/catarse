@@ -1,5 +1,5 @@
 class Admin::BackersController < Admin::BaseController
-  menu I18n.t("adm.backers.index.menu") => Rails.application.routes.url_helpers.adm_backers_path
+  menu I18n.t("adm.backers.index.menu") => Rails.application.routes.url_helpers.admin_backers_path
   has_scope :by_user_id, :by_key, :user_name_contains, :project_name_contains, :confirmed, :credits, :with_state, :by_value
   has_scope :between_values, using: [ :start_at, :ends_at ], allow_blank: true
   before_filter :set_title
@@ -9,7 +9,7 @@ class Admin::BackersController < Admin::BaseController
       define_method action do
         resource.send(action)
         flash[:notice] = I18n.t("adm.backers.messages.successful.#{action}")
-        redirect_to adm_backers_path(params[:local_params])
+        redirect_to admin_backers_path(params[:local_params])
       end
     end
   end
@@ -18,7 +18,7 @@ class Admin::BackersController < Admin::BaseController
   def change_reward
     resource.change_reward! params[:reward_id]
     flash[:notice] = I18n.t('adm.backers.messages.successful.change_reward')
-    redirect_to adm_backers_path(params[:local_params])
+    redirect_to admin_backers_path(params[:local_params])
   end
 
   protected
