@@ -75,26 +75,30 @@ en:
   count_backed_projects: "backed %{total} projects"
   footer:
     titles:
-      info: "Useful Information"
-      opendata: "nice statistics"
-      social: "do you like Catarse?"
-      newsletter: "receive our newsletter"
-    stats:
-      backers: Backers
-      backs: Backs
-      total_backed: Backed
-      users: Users
-      funded_projects: "Successful projects"
-      active_projects: "Projects on air now"
+      about: "About us"
+      social: "Social Networks"
+      sitemap: "Navigate"
+      newsletter: "Subscribe to our news"
+      contact: "Keep in touch"
     links:
       about: "Who are we"
-      how_works: "How It works"
-      faq: F.A.Q./Help
-      terms: "Terms of use"
-      policy: "Privacy Policy"
-      terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161102-terms-of-use'
-      policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161104-privacy-policy'
-      contact: Contact
+      faq: "Help"
+      feedback: "Feedback"
+      terms: "Terms"
+      privacy: "Privacy"
+      press: "Press"
+      twitter: "Twitter"
+      facebook: "Facebook"
+      instagram: "Instagram"
+      github: "Github"
+      blog: "Blog"
+      contato: "Contact"
+      quick_explore: "Selected"
+      near: "Near me"
+      expiring: "Final countdown"
+      recents: "Recent"
+      submit: "Envie um projeto"
+      asas: "Canal Asas"
   main:
     links:
       channels: "Discover Asas Institute's Channel"
