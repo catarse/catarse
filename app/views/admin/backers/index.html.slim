@@ -17,7 +17,7 @@
 
     .filters
       .bootstrap-form
-        = form_tag adm_backers_path, method: :get, class: 'form-horizontal' do |f|
+        = form_tag admin_backers_path, method: :get, class: 'form-horizontal' do |f|
           fieldset
             .input
               = label_tag :by_user_id, t('.user_id')
@@ -130,9 +130,9 @@
                       = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'btn btn-mini dropdown-toggle' do
                         span.caret
                       ul.dropdown-menu
-                        li title=("#{t('.no_reward')}" ) = link_to t('.no_reward'), change_reward_adm_backer_path(backer, reward_id: nil), method: :put
+                        li title=("#{t('.no_reward')}" ) = link_to t('.no_reward'), change_reward_admin_backer_path(backer, reward_id: nil), method: :put
                         - backer.available_rewards.each do |reward|
-                          li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_adm_backer_path(backer, reward_id: reward.id, local_params: params), method: :put
+                          li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_admin_backer_path(backer, reward_id: reward.id, local_params: params), method: :put
 
                   td.key= backer.key
                   td.checkbox= best_in_place [:adm, backer], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
@@ -144,14 +144,14 @@
                         span.caret
                       ul.dropdown-menu
                         - if backer.confirmed?
-                          li= link_to t('adm.backers.index.unconfirm_backer'), pendent_adm_backer_path(backer, local_params: params), method: :put
+                          li= link_to t('adm.backers.index.unconfirm_backer'), pendent_admin_backer_path(backer, local_params: params), method: :put
                         - else
-                          li= link_to t('adm.backers.index.confirm_backer'), confirm_adm_backer_path(backer, local_params: params), method: :put
+                          li= link_to t('adm.backers.index.confirm_backer'), confirm_admin_backer_path(backer, local_params: params), method: :put
                         - if backer.requested_refund? or backer.confirmed?
-                          li= link_to t('adm.backers.index.refund_backer'), refund_adm_backer_path(backer, local_params: params), method: :put
-                        li= link_to t('adm.backers.index.refund_and_hide'), hide_adm_backer_path(backer, local_params: params), method: :put
-                        li= link_to t('adm.backers.index.cancel'), cancel_adm_backer_path(backer, local_params: params), method: :put
-                        li= link_to t('adm.backers.index.push_to_trash'), push_to_trash_adm_backer_path(backer, local_params: params), method: :put
+                          li= link_to t('adm.backers.index.refund_backer'), refund_admin_backer_path(backer, local_params: params), method: :put
+                        li= link_to t('adm.backers.index.refund_and_hide'), hide_admin_backer_path(backer, local_params: params), method: :put
+                        li= link_to t('adm.backers.index.cancel'), cancel_admin_backer_path(backer, local_params: params), method: :put
+                        li= link_to t('adm.backers.index.push_to_trash'), push_to_trash_admin_backer_path(backer, local_params: params), method: :put
       = paginate @backers
   .clearfix
 

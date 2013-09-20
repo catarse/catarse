@@ -1,5 +1,5 @@
 class Admin::ProjectsController < Admin::BaseController
-  menu I18n.t("adm.projects.index.menu") => Rails.application.routes.url_helpers.adm_projects_path
+  menu I18n.t("adm.projects.index.menu") => Rails.application.routes.url_helpers.admin_projects_path
 
   has_scope :by_id, :pg_search, :user_name_contains, :with_state
   has_scope :between_created_at, using: [ :start_at, :ends_at ], allow_blank: true
@@ -23,7 +23,7 @@ class Admin::ProjectsController < Admin::BaseController
       @project.push_to_trash!
     end
 
-    redirect_to adm_projects_path
+    redirect_to admin_projects_path
   end
 
   def collection

@@ -4,7 +4,7 @@
       h1= t('.title')
     .filters
       .bootstrap-form.clearfix
-        = form_for adm_users_path, method: :get, class: 'form-horizontal' do |f|
+        = form_for admin_users_path, method: :get, class: 'form-horizontal' do |f|
           = f.hidden_field :order_by, name: :order_by, value: params[:order_by]
           fieldset
             .input
@@ -63,7 +63,7 @@
               - for user in @users do
                 tr id=user.id class=cycle("even", "odd")
                   td= link_to user.id, user_path(user), target: '_blank'
-                  td= link_to user.name, adm_backers_path(by_user_id: user.id), target: '_blank'
+                  td= link_to user.name, admin_backers_path(by_user_id: user.id), target: '_blank'
                   td= user.email
                   td= user.user_total ? user.user_total.sum : 0
                   td= user.credits
