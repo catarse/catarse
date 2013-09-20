@@ -1,7 +1,7 @@
 #page_content
   .container
     .title
-      h1= t('channels.adm.statistics.title')
+      h1= @title = t('channels.admin.statistics.title')
     .filters
       .bootstrap-form
       .clearfix
@@ -10,7 +10,7 @@
         table.table.table-striped
           thead
             tr
-              th[style='text-align: left']= t('channels.adm.statistics.total_subscribers')
+              th[style='text-align: left']= t('channels.admin.statistics.total_subscribers')
           tbody
             tr
               td[style='text-align: left']
