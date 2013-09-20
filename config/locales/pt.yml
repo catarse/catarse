@@ -105,6 +105,8 @@ pt:
       recents: "Recentes"
       submit: "Envie um projeto"
       asas: "Canal Asas"
+    texts:
+      copyleft: "Feito com amor."
   main:
     links:
       channels: "Descubra o Canal Asas"

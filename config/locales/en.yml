@@ -99,6 +99,8 @@ en:
       recents: "Recent"
       submit: "Envie um projeto"
       asas: "Canal Asas"
+    texts:
+      copyleft: "Made with love."
   main:
     links:
       channels: "Discover Asas Institute's Channel"
