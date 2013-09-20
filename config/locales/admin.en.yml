@@ -1,5 +1,5 @@
 en:
-  adm: &admin
+  admin: &admin
     confirm_dialog: 'You are sure?'
     projects:
       index:
@@ -103,5 +103,5 @@ en:
         last_year: "Last year"
 
   channels:
-    adm:
+    admin:
       <<: *admin
