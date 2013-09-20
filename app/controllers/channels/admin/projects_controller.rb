@@ -1,7 +1,7 @@
-class Channels::Adm::ProjectsController < Adm::BaseController
+class Channels::Admin::ProjectsController < Admin::BaseController
   menu I18n.t('channels.adm.menu') => Rails.application.routes.url_helpers.adm_projects_path
 
-  
+
   has_scope :by_id, :pg_search, :user_name_contains, :order_table, :with_state
   has_scope :between_created_at, using: [ :start_at, :ends_at ], allow_blank: true
   has_scope :order_table do |controller, scope, value|
@@ -12,7 +12,7 @@ class Channels::Adm::ProjectsController < Adm::BaseController
 
   before_filter do
     @channel        =  Channel.find_by_permalink!(request.subdomain.to_s)
-    @total_projects =  @channel.projects.size 
+    @total_projects =  @channel.projects.size
   end
 
   [:approve, :reject, :push_to_draft].each do |name|
@@ -31,6 +31,6 @@ class Channels::Adm::ProjectsController < Adm::BaseController
     def collection
       @projects = apply_scopes(@channel.projects.page(params[:page]))
     end
-  
+
 
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Adm::BackersController do
+describe Admin::BackersController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   let(:unconfirmed_backer) { create(:backer) }
@@ -15,7 +15,7 @@ describe Adm::BackersController do
     subject { backer.confirmed? }
 
     before do
-      put :confirm, id: backer.id, locale: :pt 
+      put :confirm, id: backer.id, locale: :pt
     end
 
     it do
@@ -56,7 +56,7 @@ describe Adm::BackersController do
     subject { backer.refunded? }
 
     before do
-      put :refund, id: backer.id, locale: :pt 
+      put :refund, id: backer.id, locale: :pt
     end
 
     it do
@@ -70,7 +70,7 @@ describe Adm::BackersController do
     subject { backer.confirmed? }
 
     before do
-      put :pendent, id: backer.id, locale: :pt 
+      put :pendent, id: backer.id, locale: :pt
     end
 
     it do
@@ -84,7 +84,7 @@ describe Adm::BackersController do
     subject { backer.canceled? }
 
     before do
-      put :cancel, id: backer.id, locale: :pt 
+      put :cancel, id: backer.id, locale: :pt
     end
 
     it do
@@ -112,8 +112,8 @@ describe Adm::BackersController do
 
   describe ".menu" do
     it "should add a menu entry to the menu_items class variable when we pass a parameter and retrieve when we have no parameters" do
-      Adm::BackersController.menu "Test Menu" => "/path"
-      Adm::BaseController.menu.should include("Test Menu")
+      Admin::BackersController.menu "Test Menu" => "/path"
+      Admin::BaseController.menu.should include("Test Menu")
     end
   end
 end

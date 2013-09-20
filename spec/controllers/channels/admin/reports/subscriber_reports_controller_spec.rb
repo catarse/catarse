@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Channels::Adm::Reports::SubscriberReportsController do
+describe Channels::Admin::Reports::SubscriberReportsController do
   subject{ response }
   let(:channel){ create(:channel) }
   let(:admin) { create(:user, admin: false) }
