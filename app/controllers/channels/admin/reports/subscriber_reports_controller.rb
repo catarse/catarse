@@ -1,4 +1,4 @@
-class Channels::Adm::Reports::SubscriberReportsController < Adm::Reports::BaseController
+class Channels::Admin::Reports::SubscriberReportsController < Admin::Reports::BaseController
 
   private
   def begin_of_association_chain

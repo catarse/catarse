@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Adm::StatisticsController do
+describe Admin::StatisticsController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
   before do

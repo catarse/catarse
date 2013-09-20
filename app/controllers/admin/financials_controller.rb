@@ -1,4 +1,4 @@
-class Adm::FinancialsController < Adm::BaseController
+class Admin::FinancialsController < Admin::BaseController
   require 'csv'
   inherit_resources
   defaults  resource_class: Project, collection_name: 'projects', instance_name: 'project'
