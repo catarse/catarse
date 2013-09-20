@@ -55,9 +55,7 @@
 
       section.main-sidebar-division
         h3.title= t('sidebar.titles.newsletter')
-        = form_tag Configuration['mailchimp_url'], id: 'mailee-form', method: 'post', class: 'newsletter' do
-          = email_field_tag 'EMAIL', nil, placeholder: t('sidebar.placeholders.email'), label: 'email', class: 'newsletter-input'
-          = submit_tag t('sidebar.buttons.newsletter'), class: 'newsletter-submit'
+        = render 'layouts/newsletter'
 
 
       section.main-sidebar-division
