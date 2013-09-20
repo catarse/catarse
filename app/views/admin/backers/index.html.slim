@@ -119,8 +119,8 @@
                   td title=backer.user.display_name
                     = link_to user_path(backer.user) do
                       = image_tag backer.user.display_image, class: 'user_img'
-                    .user_id= best_in_place [:adm, backer], :user_id, method: :put, type: :input
-                  td= best_in_place [:adm, backer], :value, method: :put, type: :input
+                    .user_id= best_in_place [:admin, backer], :user_id, method: :put, type: :input
+                  td= best_in_place [:admin, backer], :value, method: :put, type: :input
                   td title=("#{backer.reward.display_minimum} - #{backer.reward.description}" if backer.reward)
                     - if backer.reward
                       = backer.reward.display_minimum
@@ -135,7 +135,7 @@
                           li title=("#{reward.display_minimum} - #{reward.description}" ) = link_to reward.minimum_value, change_reward_admin_backer_path(backer, reward_id: reward.id, local_params: params), method: :put
 
                   td.key= backer.key
-                  td.checkbox= best_in_place [:adm, backer], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
+                  td.checkbox= best_in_place [:admin, backer], :anonymous, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
                   td= (backer.credits ? t('yes') : t('no'))
                   td= backer.state
                   td.bootstrap-twitter
