@@ -1,5 +1,5 @@
 App.addChild('AdmUsers', {
-  el: '#main_content[data-controller-class="adm::userscontroller"]',
+  el: '#main_content[data-controller-class="admin::userscontroller"]',
 
   events: {
     'click [data-sort]' : 'sort'
