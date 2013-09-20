@@ -1,5 +1,5 @@
 pt:
-  adm: &admin
+  admin: &admin
     confirm_dialog: 'Você tem certeza?'
     financials:
       index:
@@ -146,5 +146,5 @@ pt:
         previous_period: "8 sem. anteriores"
         last_year: "Ano anterior"
   channels:
-    adm:
+    admin:
       <<: *admin

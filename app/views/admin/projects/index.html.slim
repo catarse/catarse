@@ -102,7 +102,7 @@
                       ul.dropdown-menu
                         - if project.can_push_to_trash?
                           li
-                            = link_to admin_project_path(project), method: :delete, data: {confirm: t('adm.confirm_dialog')} do
+                            = link_to admin_project_path(project), method: :delete, data: {confirm: t('admin.confirm_dialog')} do
                               i.icon-trash
                               = t('.send_to_trash')
                         - if project.can_approve?
