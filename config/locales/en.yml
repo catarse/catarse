@@ -76,7 +76,7 @@ en:
   footer:
     titles:
       about: "About us"
-      social: "Social Networks"
+      social: "Social networks"
       sitemap: "Navigate"
       newsletter: "Subscribe to our news"
       contact: "Keep in touch"
@@ -84,6 +84,7 @@ en:
       about: "Who are we"
       faq: "Help"
       feedback: "Feedback"
+      support: "Support"
       terms: "Terms"
       privacy: "Privacy"
       press: "Press"

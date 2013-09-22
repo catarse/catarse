@@ -82,7 +82,7 @@ pt:
   footer:
     titles:
       about: "Sobre nós"
-      social: "Redes Socias"
+      social: "Redes socias"
       sitemap: "Navegue"
       newsletter: "Assine nossa news"
       contact: "Mantenha contato"
@@ -90,6 +90,7 @@ pt:
       about: "Quem somos"
       faq: "Ajuda"
       feedback: "Feedback"
+      support: "Suporte"
       terms: "Termos"
       privacy: "Privacidade"
       press: "Imprensa"
