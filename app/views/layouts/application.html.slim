@@ -44,28 +44,5 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
     = render 'layouts/header'
     #main_content[data-controller-class=controller.class.name.downcase data-controller-name=controller.controller_name.downcase data-action=controller.action_name.downcase data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]
       =yield
-    #footer
-      .container.footer
-        .content
-          .info
-            h3= t('footer.titles.info')
-            ul
-
-              li= link_to t('footer.links.about'), about_path
-              li= link_to t('footer.links.faq'), 'http://suporte.catarse.me/', target: '_blank'
-              li= link_to t('footer.links.terms'), t('footer.links.terms_link')
-              li= link_to t('footer.links.policy'), t('footer.links.policy_link')
-              li= link_to t('footer.links.contact'), 'http://suporte.catarse.me/', target: '_blank'
-          .opendata
-            h3= t('footer.titles.social')
-            .twitter
-              = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
-            .facebook
-              = render_facebook_like href: "#{::Configuration[:facebook_url]}", width: "171"
-          .social
-            h3= t('footer.titles.newsletter')
-            = form_tag "#{::Configuration[:mailchimp_url]}", id: 'mailee-form', method: 'post' do
-              = text_field_tag 'EMAIL', nil, placeholder: 'email@email.com', label: 'email'
-              = submit_tag "#{t('newsletter_subscribe')}"
-          .clearfix
+    = render 'layouts/footer'
     = render '/layouts/classic_uservoice'

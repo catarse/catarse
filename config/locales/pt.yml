@@ -81,26 +81,33 @@ pt:
   count_backed_projects: "apoiou %{total} projetos"
   footer:
     titles:
-      info: "informações úteis"
-      opendata: "estatísticas bacanas"
-      social: "curtiu o catarse?"
-      newsletter: "receba nossa newsletter"
-    stats:
-      backers: Apoiadores
-      backs: Apoios
-      total_backed: Arrecadados
-      users: Usuários
-      funded_projects: "Projetos bem-sucedidos"
-      active_projects: "Projetos no ar agora"
+      about: "Sobre nós"
+      social: "Redes socias"
+      sitemap: "Navegue"
+      newsletter: "Assine nossa news"
+      contact: "Mantenha contato"
     links:
-      how_works: "Ajuda"
-      faq: "FAQ/Ajuda"
-      about: "Quem Somos"
-      terms: "Termos de Uso"
-      policy: "Política de Privacidade"
-      terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161100-termos-de-uso'
-      policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade'
-      contact: Contato
+      about: "Quem somos"
+      faq: "Ajuda"
+      feedback: "Feedback"
+      support: "Suporte"
+      terms: "Termos"
+      privacy: "Privacidade"
+      press: "Imprensa"
+      twitter: "Twitter"
+      facebook: "Facebook"
+      instagram: "Instagram"
+      github: "Github"
+      blog: "Blog"
+      contato: "Contato"
+      quick_explore: "Seleção"
+      near: "Próximos a mim"
+      expiring: "Na reta final"
+      recents: "Recentes"
+      submit: "Envie um projeto"
+      asas: "Canal Asas"
+    texts:
+      copyleft: "Feito com amor."
   main:
     links:
       channels: "Descubra o Canal Asas"
