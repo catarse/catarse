@@ -17,8 +17,12 @@ App.views.Project.addChild('ProjectBackers', _.extend({
 
   showBackers: function(){
     var state = $('input:radio[name=backer_state]:checked').val();
-    this.filter = {};
-    this.filter[state] = true;
+    if(state == 'waiting_confirmation'){
+      this.filter = {with_state: 'waiting_confirmation'};
+    }
+    else{
+      this.filter = {available_to_count: true};
+    }
     this.firstPage();
     this.fetchPage();
   }
