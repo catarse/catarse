@@ -1,20 +1,21 @@
+$green: #00B22D
+$blue-one: #3F4752
+$blue-two: #79808B
+$orange: #F69219
+
 body
   font-family: "Lato"
-  background: #F0F0F0
   i, em
     font-style: italic
   b, strong
-    font-weight: 700 
+    font-weight: 700
 
   #page_content
     .container
       +grid-system(16)
-      +border-radius(4px)
       padding: 0 10px 0 10px
       background: white
-      border: 1px $df_gryn solid
       margin-bottom: 40px
-
       .main
         padding-top: 17px
         +grid(12)
@@ -25,25 +26,37 @@ body
       .list
         float: left
 
-      .list_title
-        margin: 0 0 15px -30px
+      .list-title
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif
         float: left
-        clear: both
-        width: 100%
-        .title
-          float: left
-          min-width: 103px
-          height: 30px
-          padding: 5px 10px 5px 9px
-          h2
-            margin-left: 20px
-            float: left
-            color: $channel_text
-            font-family: "Lato"
-            font-size: 28px
-            font-weight: 700
+        min-width: 103px
+        height: 30px
+        color: $blue-one
+        font-size: 24px
+        font-weight: bold
+      .more-projects
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+        float: right
+        color: $orange
+        text-decoration: none
+        margin: 8px 0
+        font-size: 13px
+        font-weight: bold
+        background: url("/assets/catarse_bootstrap/catarse-assets.png") no-repeat scroll 188px -232px transparent
+        padding: 0 20px 0 0
+        text-indent: -25px
+        text-align: right
+        width: 200px
+        &:hover
+          text-decoration: underline
+
       .projects
-        padding-top: 20px
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+        display: inline-block
+        padding-top: 15px
+        margin-bottom: 20px
+        width: 700px
+
   #logos
     +grid-container
     +grid-system(16)

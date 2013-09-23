@@ -14,40 +14,34 @@
         .clearfix
         #loading= image_tag "loading.gif"
 
-    .sidebar
-      .content
-        - unless @recommended.empty? and @expiring.empty? and @recent.empty? and @successful.empty?
-          section.highlights
-            h2= t('.quick_explore')
-            ul#explore_quick
-              - unless @recommended.empty?
-                li
-                  a#recommended[data-filter={recommended: true}.to_json href='#']
-                    = t('.recommended')
-              - unless @expiring.empty?
-                li.no_margin
-                  a#expiring[data-filter={expiring: true}.to_json href='#']
-                    = t('.expiring')
-              - unless @recent.empty?
-                li
-                  a#recent[data-filter={recent: true}.to_json href='#']
-                    = t('.recent')
-              - unless @successful.empty?
-                li.no_margin
-                  a[data-filter={successful: true}.to_json href='#']
-                    = t('.successful')
-              - if current_user
-                li.no_margin
-                  a href="#near"
-                    = t('.near')
+    aside.main-sidebar.sidebar-discover
+        section.main-sidebar-division
+          h2.title= t('.quick_explore')
+          ul
+            li
+              a.explore-link[href='#recommended']
+                = t('.recommended')
+            li
+              a.explore-link[href='#expiring']
+                = t('.expiring')
+            li
+              a.explore-link[href='#recent']
+                = t('.recent')
+            li
+              a.explore-link[href='#successful']
+                = t('.successful')
+            - if current_user
+              li
+                a.explore-link[href="#near_of/#{current_user.address_state}"]
+                  = t('.near')
 
         - unless @categories.empty?
-          section.categories
-            h2= t('.categories')
-            ul#explore_categories
+          section.main-sidebar-division
+            h2.title= t('.categories')
+            ul
               - @categories.each_with_index do |category, index|
-                li class="#{(index%2==1 ? 'no_margin':'')}"
-                  a[data-filter={by_category_id: category.id}.to_json href='#']
+                li
+                  a.explore-link[href="#by_category_id/#{category.id}"]
                     = category
 
     .clearfix

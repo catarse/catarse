@@ -1,10 +1,9 @@
 require 'state_machine'
 # coding: utf-8
 class Backer < ActiveRecord::Base
-  include ActionView::Helpers::NumberHelper
-  include ActionView::Helpers::DateHelper
-
   schema_associations
+
+  delegate :display_value, :display_confirmed_at, to: :decorator
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00
@@ -13,28 +12,18 @@ class Backer < ActiveRecord::Base
   validate :should_not_back_if_maximum_backers_been_reached, on: :create
   validate :project_should_be_online, on: :create
 
-  scope :not_deleted, ->() { where("backers.state <> 'deleted'") }
-  scope :not_canceled, ->() { where("backers.state <> 'canceled'") }
+  scope :available_to_count, ->{ with_states(['confirmed', 'requested_refund', 'refunded']) }
+  scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
-  scope :by_state, ->(state) { where(state: state) }
   scope :by_key, ->(key) { where(key: key) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :project_name_contains, ->(term) { joins(:project).where("unaccent(upper(projects.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :anonymous, where(anonymous: true)
-  scope :credits, where(credits: true)
-  scope :requested_refund, where(state: 'requested_refund')
-  scope :refunded, where(state: 'refunded')
-  scope :not_anonymous, where(anonymous: false)
-  scope :confirmed, where(state: 'confirmed')
-  scope :not_confirmed, where("backers.state <> 'confirmed'") # used in payment engines
-  scope :in_time_to_confirm, ->() { where(state: 'waiting_confirmation') }
-  scope :pending_to_refund, ->() { where(state: 'requested_refund') }
+  scope :anonymous, -> { where(anonymous: true) }
+  scope :credits, -> { where(credits: true) }
+  scope :not_anonymous, -> { where(anonymous: false) }
 
-  scope :available_to_count, ->() { where("state in ('confirmed', 'requested_refund', 'refunded')") }
-  scope :available_to_display, ->() { where("state in ('confirmed', 'requested_refund', 'refunded', 'waiting_confirmation')") }
-
-  scope :can_cancel, ->() {
+  scope :can_cancel, -> {
     where(%Q{
       backers.state = 'waiting_confirmation' and
         (
@@ -60,6 +49,7 @@ class Backer < ActiveRecord::Base
   scope :can_refund, ->{
     where(%Q{
       backers.state IN('confirmed', 'requested_refund', 'refunded') AND
+      NOT backers.credits AND
       EXISTS(
         SELECT true
           FROM projects p
@@ -68,7 +58,8 @@ class Backer < ActiveRecord::Base
     })
   }
 
-  attr_protected :confirmed, :state
+  # TODO:
+  #attr_protected :confirmed, :state
 
   def self.between_values(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
@@ -81,17 +72,8 @@ class Backer < ActiveRecord::Base
     end.compact!
   end
 
-  def self.send_credits_notification
-    confirmed.joins(:project).joins(:user).find_each do |backer|
-      if backer.project.state == 'failed' && ((backer.project.expires_at + 1.month) < Time.now) && backer.user.credits >= backer.value
-        Notification.create_notification_once(:credits_warning,
-          backer.user,
-          {backer_id: backer.id},
-          backer: backer,
-          amount: backer.user.credits
-                                             )
-      end
-    end
+  def decorator
+    @decorator ||= BackerDecorator.new(self)
   end
 
   def recommended_projects
@@ -118,7 +100,7 @@ class Backer < ActiveRecord::Base
 
   def value_must_be_at_least_rewards_value
     return unless reward
-    errors.add(:value, I18n.t('backer.value_must_be_at_least_rewards_value', minimum_value: reward.display_minimum)) unless value >= reward.minimum_value
+    errors.add(:value, I18n.t('backer.value_must_be_at_least_rewards_value', minimum_value: reward.display_minimum)) unless value.to_f >= reward.minimum_value
   end
 
   def should_not_back_if_maximum_backers_been_reached
@@ -131,43 +113,32 @@ class Backer < ActiveRecord::Base
     errors.add(:project, I18n.t('backer.project_should_be_online'))
   end
 
-  def display_value
-    number_to_currency value
-  end
-
   def available_rewards
     Reward.where(project_id: self.project_id).where('minimum_value <= ?', self.value).order(:minimum_value)
   end
 
-  def display_confirmed_at
-    I18n.l(confirmed_at.to_date) if confirmed_at
+  def update_current_billing_info
+    self.address_street = user.address_street
+    self.address_number = user.address_number
+    self.address_neighbourhood = user.address_neighbourhood
+    self.address_zip_code = user.address_zip_code
+    self.address_city = user.address_city
+    self.address_state = user.address_state
+    self.address_phone_number = user.phone_number
+    self.payer_document = user.cpf
   end
 
-  def as_json(options={})
-    json_attributes = {
-      id: id,
-      anonymous: anonymous,
-      confirmed: confirmed?,
-      confirmed_at: display_confirmed_at,
-      user: user.as_json(options.merge(anonymous: anonymous)),
-      value: nil,
-      display_value: nil,
-      reward: nil
-    }
-    if options and options[:can_manage]
-      json_attributes.merge!({
-        value: display_value,
-        display_value: display_value,
-        reward: reward
-      })
-    end
-    if options and options[:include_project]
-      json_attributes.merge!({project: project})
-    end
-    if options and options[:include_reward]
-      json_attributes.merge!({reward: reward})
-    end
-    json_attributes
+  def update_user_billing_info
+    user.update_attributes({
+      address_street: address_street,
+      address_number: address_number,
+      address_neighbourhood: address_neighbourhood,
+      address_zip_code: address_zip_code,
+      address_city: address_city,
+      address_state: address_state,
+      phone_number: address_phone_number,
+      cpf: payer_document
+    })
   end
 
   state_machine :state, initial: :pending do
@@ -202,7 +173,7 @@ class Backer < ActiveRecord::Base
 
     event :request_refund do
       transition confirmed: :requested_refund, if: ->(backer){
-        backer.user.credits >= backer.value
+        backer.user.credits >= backer.value && !backer.credits
       }
     end
 

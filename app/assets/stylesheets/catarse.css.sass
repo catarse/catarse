@@ -1,0 +1,25 @@
+// Compass mixins
+@import compass/css3
+
+// Should be imported first, on this order
+@import animate.min.css
+@import catarse_bootstrap/settings
+
+// The order below doesn't matter
+@import catarse_bootstrap/grid/foundation
+@import catarse_bootstrap/fonts
+@import catarse_bootstrap/elements
+@import catarse_bootstrap/buttons
+@import catarse_bootstrap/alerts
+@import catarse_bootstrap/notices
+
+// Login pages
+@import catarse_bootstrap/pages/devise
+@import catarse_bootstrap/pages/passwords/new
+
+// Some styles from the old stylesheets that we will need
+@import miv/project_box
+@import miv/dropdown
+
+.clearfix
+  clear: both

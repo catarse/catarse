@@ -50,6 +50,9 @@ pt:
   edit_project: 'Editar projeto'
   days: 'dias'
   controllers:
+    updates:
+      create:
+        notice: 'Novidade enviada com sucesso!'
     rewards:
       create:
         notice: 'Recompensa adicionada com sucesso!'
@@ -78,42 +81,52 @@ pt:
   count_backed_projects: "apoiou %{total} projetos"
   footer:
     titles:
-      info: "informações úteis"
-      opendata: "estatísticas bacanas"
-      social: "curtiu o catarse?"
-      newsletter: "receba nossa newsletter"
-    stats:
-      backers: Apoiadores
-      backs: Apoios
-      total_backed: Arrecadados
-      users: Usuários
-      funded_projects: "Projetos bem-sucedidos"
-      active_projects: "Projetos no ar agora"
+      about: "Sobre nós"
+      social: "Redes socias"
+      sitemap: "Navegue"
+      newsletter: "Assine nossa news"
+      contact: "Mantenha contato"
     links:
-      how_works: "Ajuda"
-      faq: "FAQ/Ajuda"
-      about: "Quem Somos"
-      terms: "Termos de Uso"
-      policy: "Política de Privacidade"
-      terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161100-termos-de-uso'
-      policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade'
-      contact: Contato
+      about: "Quem somos"
+      faq: "Ajuda"
+      feedback: "Feedback"
+      support: "Suporte"
+      terms: "Termos de uso"
+      privacy: "Privacidade"
+      press: "Imprensa"
+      twitter: "Twitter"
+      facebook: "Facebook"
+      instagram: "Instagram"
+      github: "Github"
+      blog: "Blog"
+      contato: "Contato"
+      quick_explore: "Seleção"
+      near: "Próximos a mim"
+      expiring: "Na reta final"
+      recents: "Recentes"
+      submit: "Envie um projeto"
+      discover: "Descubra projetos"
+    texts:
+      copyleft: "Feito com amor."
   main:
     links:
-      channels: "conheça o Canal Asas"
-      selected: "explore mais projetos selecionados"
-      expiring: "explore mais projetos na reta final"
-      recents: "explore mais projetos recentes"
-      near: "explore mais projetos próximos"
+      channels: "Descubra o Canal Asas"
+      selected: "Descubra projetos selecionados"
+      expiring: "Descubra projetos na reta final"
+      recents: "Descubra projetos recentes"
+      near: "Descubra projetos perto de você"
+    banner: "10 milhões transformados em ações. Obrigado!"
   sidebar:
     titles:
       blog: blog
       facebook: "já curtiu nosso face?"
-      newsletter: "quer novidades?"
+      newsletter: "Assine nossa news"
       faq: "tá com dúvida?"
       schedule: agenda
+    placeholders:
+      email: "Digite seu email"
     buttons:
-      newsletter: assinar
+      newsletter: Enviar
   sections:
     near:
       title: 'Próximos a mim'
@@ -172,7 +185,7 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: Nome
+        name: "Nome completo"
         newsletter: 'Quero receber novidades do Catarse'
         id: 'ID'
         password: Senha
@@ -319,15 +332,15 @@ pt:
       login_with_facebook: "entre com sua conta do facebook"
       remember_me: "Lembre-se de mim e mantenha-me conectado."
     header:
-      blog: blog
-      help: ajuda
+      blog: Blog
+      help: Ajuda
       faq: FAQ
-      signup: cadastre-se
-      signin: login
-      explore: explore
-      submit_project: envie
-      profile: "meu perfil"
-      account: "minha conta"
+      signup: Cadastre-se
+      signin: Login
+      discover: Descubra
+      submit: Envie seu projeto
+      profile: "Meu perfil"
+      account: "Minha conta"
     user:
       logout: Sair
       my_credits: "Meus créditos"
@@ -383,6 +396,7 @@ pt:
   projects:
     box:
       by: por
+      when: em
     admin_fields:
       title: "Campos para o admin"
     back_project:
@@ -515,6 +529,8 @@ pt:
       reached: atingido
     project_backers:
       empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
+      confirmed: "Confirmados"
+      pending: "Pendentes"
     project_header:
       subtitle_html: "Um projeto de %{link}"
       without_city: "Um projeto de %{category_name} por %{author}"

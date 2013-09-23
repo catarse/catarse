@@ -24,7 +24,7 @@ describe "Projects" do
     end
 
     it "should show recent projects" do
-      recent = all(".recents_projects.list .project")
+      recent = all(".recents_projects.list .project-box")
       recent.should have(1).items
     end
   end
@@ -34,10 +34,10 @@ describe "Projects" do
       create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
       visit explore_path(locale: :pt)
-      sleep 3
+      sleep 4
     end
     it "should show recommended projects" do
-      recommended = all(".results .project")
+      recommended = all(".results .project-box")
       recommended.should have(1).items
     end
   end
@@ -46,11 +46,11 @@ describe "Projects" do
     before do
       create(:project, name: 'Foo', state: 'online', online_days: 30, recommended: true)
       create(:project, name: 'Lorem', state: 'online', online_days: 30, recommended: false)
-      visit explore_path(anchor: :search) + '/Lorem'
+      visit explore_path(pg_search: 'Lorem')
       sleep 4
     end
     it "should show recommended projects" do
-      recommended = all(".results .project")
+      recommended = all(".results .project-box")
       recommended.should have(1).items
     end
   end
@@ -58,8 +58,10 @@ describe "Projects" do
 
   describe "new and create" do
     before do
+      project # need to build the project to create category before visiting the page
       login
       visit new_project_path(locale: :pt)
+      sleep 1
     end
 
     it "should present the form and save the data" do
@@ -73,7 +75,6 @@ describe "Projects" do
       end
       check 'project_accepted_terms'
       find('#project_submit').click
-      #Project.first.name.should == project.name
     end
   end
 

@@ -1,14 +1,14 @@
-- backer = @notification.backer
-|Hi, <strong>#{backer.user.display_name}</strong> !
+- user = @notification.user
+|Hi, <strong>#{user.display_name}</strong> !
 br
 br
-|We spotted that you have R$ #{backer.user.credits} in credits at Catarse. What about backing another cool project right now?
+|We spotted that you have R$ #{user.credits} in credits at Catarse. What about backing another cool project right now?
 br
 br
 |We have selected below some project suggestions specially for you:
 br
 br
--backer.user.recommended_projects.limit(3).each do |project|
+-user.recommended_projects.limit(3).each do |project|
   |#{link_to(project.name, "#{Configuration[:base_url]}/projects/#{project.to_param}")}
   br
   |#{project.headline}
@@ -30,7 +30,7 @@ br
 |5 -Done! Your pledge will be confirmed =)
 br
 br
-|If you rather ask for a refund, first logon to your Catarse account and then click #{link_to("here", "#{Configuration[:base_url]}/users/#{backer.user.to_param}#credits")}.
+|If you rather ask for a refund, first logon to your Catarse account and then click #{link_to("here", "#{Configuration[:base_url]}/users/#{user.to_param}#credits")}.
 |#{link_to('This article', 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos')} aboud refunds will solve most of  your doubts.
 br
 br

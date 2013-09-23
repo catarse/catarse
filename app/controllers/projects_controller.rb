@@ -2,8 +2,9 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource only: [ :new, :create, :update, :destroy ]
   inherit_resources
+  has_scope :pg_search, :by_category_id, :near_of
+  has_scope :recent, :expiring, :successful, :recommended, :not_expired, type: :boolean
 
-  has_scope :pg_search, :by_category_id, :recent, :expiring, :successful, :recommended, :not_expired, :near_of
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
 
@@ -22,7 +23,7 @@ class ProjectsController < ApplicationController
           end
 
           @channel_projects = Project.from_channels.order_for_search.limit(3)
-          @projects_near = Project.online.near_of(current_user.address_state).order("random()").limit(3) if current_user
+          @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3) if current_user
           @expiring = ProjectsForHome.expiring
           @recent   = ProjectsForHome.recents
         end

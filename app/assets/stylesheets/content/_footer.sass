@@ -1,87 +1,61 @@
+$purple: #2E172B
+$gray-one: #F8F8F8
+$gray-two: #F1F2F3
+
+
 .footer
-  +grid-system(16)
-  +border-radius(4px)
-  padding: 0 10px 0 10px
-  border: 1px $df_gryn solid
-  background: $ultra_gryn !important
-  .content
-    padding-top: 30px
-    padding-bottom: 10px
-    h3
-      font-family: 'Lato'
-      font-weight: 700
-      font-size: 18px
-      color: $pink
-      padding-bottom: 40px
-      padding-top: 5px
-    .info
-      +grid(4)
-      +grid-suffix(1)
-      ul
-        li
-          margin-bottom: 24px
-          a
-            font-family: "Lato"
-            font-size: 18px
-            font-weight: lighter
-            color: white
-            text-decoration: none
-            &:hover
-              color: $pink
+  background: $purple
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+  padding: 3em 0 1.8em
+  hr
+    border: none
+    border-top: 1px solid rgba(255, 255, 255, 0.1)
+    margin: 1em 0 1em 0.6em
+    width: 100%
 
-    .opendata
-      +grid(5)
-      +grid-suffix(1)
-      ul
-        display: block
-        li
-          width: 100%
-          float: left
-          margin-bottom: 20px
-          h5
-            float: left
-            font-family: 'Lato'
-            font-weight: 700
-            font-size: 20px
-            color: white
-            padding-right: 10px
-          p
-            padding-top: 3px
-            float: left
-            text-transform: uppercase
-            font-family: Myriad Pro
-            font-size: 16px
-            color: white
-            +opacity(0.5)
+.footer-div
+  display: inline-block
+  vertical-align: top
+  // From this point on this class when we migrate the site to use grid
+  width: 24.5%
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+  padding: 0 1.25em 0 0
 
-    .social
-      +grid(5)
-      h3
-      .twitter
-        margin-bottom: 20px
-      form
-        input[type="text"]
-          float: left
-          width: 170px
-          height: 28px
-          +border-radius(4px 0 0 4px)
-          border: 1px $df_gryn solid
-          border-right: none
-          &:focus
-            outline: none
-            border: 1px $pink solid
-            border-right: none
-        input[type="submit"]
-          float: left
-          background: $pink
-          width: 82px
-          height: 32px
-          +border-radius(0 4px 4px 0)
-          color: white
-          font-family: "Lato"
-          font-size: 12px
-          text-transform: uppercase
-          border: none
-          +transition(all, 0.5s)
-          &:active
-            +box-shadow(rgba(black, 0.5) 0 0 5px inset)
+.footer-title
+  color: #fff
+  padding: 0 0 1.25em
+  font-size: 0.8em
+  font-weight: bold
+
+.footer-list
+  li
+    margin: 0 0 1.5em
+  a
+    text-decoration: none
+    color: rgba(255, 255, 255, 0.5)
+    font-size: 0.8em
+    &:hover
+      text-decoration: underline
+
+.twitter-box
+  margin: 0 0 1.25em
+
+.copyleft
+  color: rgba(255, 255, 255, 0.5)
+  line-height: 35px
+  font-size: 0.8em
+
+.github
+  background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -152px -125px transparent
+  display: inline-block
+  height: 28px
+  text-indent: -9999px
+  width: 35px
+
+// From this point to be deleted when we migrate the site to use grid
+.row
+  width: 960px
+  margin: 0 auto
+

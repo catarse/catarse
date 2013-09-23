@@ -1,0 +1,104 @@
+$green-one: #00B22D
+$blue-one: #3F4752
+$blue-two: #79808B
+
+.project
+  position: relative
+  float: left
+  .successful_flag
+    position: absolute
+    top: 0
+    z-index: 20
+
+.project-box
+  height: 400px
+  box-shadow: 0 1px 4px darken(lightgray, 10%)
+  position: relative
+  margin: 0 20px 1.5em 0
+  +transition(all .2s)
+  float: left
+  width: 220px
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+  &:nth-child(3n+0)
+    margin: 0 0 1.5em 0
+
+  .status-flag
+    position: absolute
+  a
+    text-decoration: none
+  .image
+    opacity: 1
+    &:hover
+      opacity: .9
+      > .title a
+        text-decoration: underline !important
+
+  .title
+    margin: .4em 0
+    line-height: 1.1em
+    a
+      color: $blue-one
+      font-weight: bold
+      font-size: 0.95em
+      &:hover
+        text-decoration: underline !important
+
+  .padding
+    padding: .2em .8em
+
+  .headline
+    font-size: .8em
+    margin: .8em 0 .4em 0
+    line-height: 1.4em
+    font-weight: 400
+    height: 70px
+    a
+      color: $blue-two
+
+  .status
+    border-top: 1px solid rgba(0, 0, 0, 0.1)
+    bottom: 0px
+    position: absolute
+    width: 100%
+    background: #F8F8F8
+    color: $blue-two
+    span
+      color: $blue-one
+
+  .progress-percent
+    font-size: .6em
+    text-transform: uppercase
+    vertical-align: middle
+    margin: 0 0 .8em
+    span
+      font-weight: bold
+      font-size: 1.4em
+      line-height: 1.4em
+      position: relative
+      top: .1em
+
+  .progress-bar
+    #progress_wrapper, #progress
+      height: .4em
+      border-radius: 6px
+      box-shadow: inset 0 0 4px lighten(gray, 15%)
+    #progress
+      background: $green-one
+      +background-image(linear-gradient(0deg,lighten($green, 5%) 0%,$green 1%,lighten($green, 5%) 100%,lighten($green, 15%) 100%)) 
+
+  .time-remaining, .money-raised
+    float: left
+    padding: 1em 0
+    text-transform: uppercase
+    font-size: .6em
+    color: $blue-two
+    span
+      display: block
+      font-weight: bold
+      font-size: 1.4em
+      text-transform: none
+      margin-bottom: .2em
+
+  .money-raised
+    float: right
+    margin-right: 2%

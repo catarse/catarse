@@ -25,13 +25,6 @@ describe UsersController do
     it{ should redirect_to user_path(user, anchor: 'settings') }
   end
 
-  describe "GET set_email" do
-    before do
-      get :set_email, locale: 'pt'
-    end
-    it{ should render_template('set_email') }
-  end
-
   describe "PUT update_password" do
     let(:current_password){ 'current_password' }
     let(:password){ 'newpassword123' }
@@ -49,34 +42,6 @@ describe UsersController do
     context "with right current password and right confirmation" do
       it{ flash[:notice].should_not be_empty }
       it{ flash[:error].should be_nil }
-      it{ should redirect_to user_path(user, anchor: 'settings') }
-    end
-  end
-
-  describe "PUT update_email" do
-    let(:email){ 'new_email@bar.com' }
-    let(:return_to){ nil }
-    before do
-      session[:return_to] = return_to
-      put :update_email, id: user.id, locale: 'pt', user: {email: email}
-    end
-
-    context "when email is not valid" do
-      let(:email){ 'new_email_bar.com' }
-      it{ should render_template('set_email') }
-    end
-
-    context "when email is valid and we have a session[:return_to]" do
-      let(:return_to){ '/foo' }
-      it{ should redirect_to return_to }
-      it{ session[:return_to].should be_nil }
-    end
-
-    context "when email is valid" do
-      it("should update the user") do
-        user.reload
-        user.email.should ==  'new_email@bar.com'
-      end
       it{ should redirect_to user_path(user, anchor: 'settings') }
     end
   end

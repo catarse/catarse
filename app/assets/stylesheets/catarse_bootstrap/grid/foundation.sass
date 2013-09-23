@@ -18,6 +18,8 @@ body
 a
   &:hover
     cursor: pointer
+  &:focus
+    outline: none
 
 img, object, embed
   max-width: 100%
@@ -81,7 +83,7 @@ select
   margin-right: auto
   margin-top: 0
   margin-bottom: 0
-  max-width: 60.5em
+  max-width: $default_grid_max_size
   *zoom: 1
   &:before
     content: " "
@@ -139,50 +141,38 @@ select
     float: left
   .small-1
     position: relative
-    width: 6.25%
+    width: 8.33333%
   .small-2
     position: relative
-    width: 12.5%
+    width: 16.66667%
   .small-3
     position: relative
-    width: 18.75%
+    width: 25%
   .small-4
     position: relative
-    width: 25%
+    width: 33.33333%
   .small-5
     position: relative
-    width: 31.25%
+    width: 41.66667%
   .small-6
     position: relative
-    width: 37.5%
+    width: 50%
   .small-7
     position: relative
-    width: 43.75%
+    width: 58.33333%
   .small-8
     position: relative
-    width: 50%
+    width: 66.66667%
   .small-9
     position: relative
-    width: 56.25%
+    width: 75%
   .small-10
     position: relative
-    width: 62.5%
+    width: 83.33333%
   .small-11
     position: relative
-    width: 68.75%
+    width: 91.66667%
   .small-12
-    position: relative
-    width: 75%
-  .small-13
-    position: relative
-    width: 81.25%
-  .small-14
-    position: relative
-    width: 87.5%
-  .small-15
-    position: relative
-    width: 93.75%
-  .small-16
     position: relative
     width: 100%
   .small-offset-0
@@ -190,46 +180,34 @@ select
     margin-left: 0%
   .small-offset-1
     position: relative
-    margin-left: 6.25%
+    margin-left: 8.33333%
   .small-offset-2
     position: relative
-    margin-left: 12.5%
+    margin-left: 16.66667%
   .small-offset-3
     position: relative
-    margin-left: 18.75%
+    margin-left: 25%
   .small-offset-4
     position: relative
-    margin-left: 25%
+    margin-left: 33.33333%
   .small-offset-5
     position: relative
-    margin-left: 31.25%
+    margin-left: 41.66667%
   .small-offset-6
     position: relative
-    margin-left: 37.5%
+    margin-left: 50%
   .small-offset-7
     position: relative
-    margin-left: 43.75%
+    margin-left: 58.33333%
   .small-offset-8
     position: relative
-    margin-left: 50%
+    margin-left: 66.66667%
   .small-offset-9
     position: relative
-    margin-left: 56.25%
+    margin-left: 75%
   .small-offset-10
     position: relative
-    margin-left: 62.5%
-  .small-offset-11
-    position: relative
-    margin-left: 68.75%
-  .small-offset-12
-    position: relative
-    margin-left: 75%
-  .small-offset-13
-    position: relative
-    margin-left: 81.25%
-  .small-offset-14
-    position: relative
-    margin-left: 87.5%
+    margin-left: 83.33333%
   [class*="column"] + [class*="column"]
     &:last-child
       float: right
@@ -242,53 +220,41 @@ select
     float: none !important
 
 // Styles for screens that are atleast 768px;
-@media only screen
+@media only screen and (min-width: 768px)
   .large-1
     position: relative
-    width: 6.25%
+    width: 8.33333%
   .large-2
     position: relative
-    width: 12.5%
+    width: 16.66667%
   .large-3
     position: relative
-    width: 18.75%
+    width: 25%
   .large-4
     position: relative
-    width: 25%
+    width: 33.33333%
   .large-5
     position: relative
-    width: 31.25%
+    width: 41.66667%
   .large-6
     position: relative
-    width: 37.5%
+    width: 50%
   .large-7
     position: relative
-    width: 43.75%
+    width: 58.33333%
   .large-8
     position: relative
-    width: 50%
+    width: 66.66667%
   .large-9
     position: relative
-    width: 56.25%
+    width: 75%
   .large-10
     position: relative
-    width: 62.5%
+    width: 83.33333%
   .large-11
     position: relative
-    width: 68.75%
+    width: 91.66667%
   .large-12
-    position: relative
-    width: 75%
-  .large-13
-    position: relative
-    width: 81.25%
-  .large-14
-    position: relative
-    width: 87.5%
-  .large-15
-    position: relative
-    width: 93.75%
-  .large-16
     position: relative
     width: 100%
   .row
@@ -297,168 +263,124 @@ select
       margin-left: 0%
     .large-offset-1
       position: relative
-      margin-left: 6.25%
+      margin-left: 8.33333%
     .large-offset-2
       position: relative
-      margin-left: 12.5%
+      margin-left: 16.66667%
     .large-offset-3
       position: relative
-      margin-left: 18.75%
+      margin-left: 25%
     .large-offset-4
       position: relative
-      margin-left: 25%
+      margin-left: 33.33333%
     .large-offset-5
       position: relative
-      margin-left: 31.25%
+      margin-left: 41.66667%
     .large-offset-6
       position: relative
-      margin-left: 37.5%
+      margin-left: 50%
     .large-offset-7
       position: relative
-      margin-left: 43.75%
+      margin-left: 58.33333%
     .large-offset-8
       position: relative
-      margin-left: 50%
+      margin-left: 66.66667%
     .large-offset-9
       position: relative
-      margin-left: 56.25%
+      margin-left: 75%
     .large-offset-10
       position: relative
-      margin-left: 62.5%
+      margin-left: 83.33333%
     .large-offset-11
       position: relative
-      margin-left: 68.75%
-    .large-offset-12
-      position: relative
-      margin-left: 75%
-    .large-offset-13
-      position: relative
-      margin-left: 81.25%
-    .large-offset-14
-      position: relative
-      margin-left: 87.5%
-    .large-offset-15
-      position: relative
-      margin-left: 93.75%
+      margin-left: 91.66667%
   .push-1
     position: relative
-    left: 6.25%
+    left: 8.33333%
     right: auto
   .pull-1
     position: relative
-    right: 6.25%
+    right: 8.33333%
     left: auto
   .push-2
     position: relative
-    left: 12.5%
+    left: 16.66667%
     right: auto
   .pull-2
     position: relative
-    right: 12.5%
+    right: 16.66667%
     left: auto
   .push-3
     position: relative
-    left: 18.75%
+    left: 25%
     right: auto
   .pull-3
     position: relative
-    right: 18.75%
+    right: 25%
     left: auto
   .push-4
     position: relative
-    left: 25%
+    left: 33.33333%
     right: auto
   .pull-4
     position: relative
-    right: 25%
+    right: 33.33333%
     left: auto
   .push-5
     position: relative
-    left: 31.25%
+    left: 41.66667%
     right: auto
   .pull-5
     position: relative
-    right: 31.25%
+    right: 41.66667%
     left: auto
   .push-6
     position: relative
-    left: 37.5%
+    left: 50%
     right: auto
   .pull-6
     position: relative
-    right: 37.5%
+    right: 50%
     left: auto
   .push-7
     position: relative
-    left: 43.75%
+    left: 58.33333%
     right: auto
   .pull-7
     position: relative
-    right: 43.75%
+    right: 58.33333%
     left: auto
   .push-8
     position: relative
-    left: 50%
+    left: 66.66667%
     right: auto
   .pull-8
     position: relative
-    right: 50%
+    right: 66.66667%
     left: auto
   .push-9
     position: relative
-    left: 56.25%
+    left: 75%
     right: auto
   .pull-9
     position: relative
-    right: 56.25%
+    right: 75%
     left: auto
   .push-10
     position: relative
-    left: 62.5%
+    left: 83.33333%
     right: auto
   .pull-10
     position: relative
-    right: 62.5%
+    right: 83.33333%
     left: auto
   .push-11
     position: relative
-    left: 68.75%
+    left: 91.66667%
     right: auto
   .pull-11
     position: relative
-    right: 68.75%
-    left: auto
-  .push-12
-    position: relative
-    left: 75%
-    right: auto
-  .pull-12
-    position: relative
-    right: 75%
-    left: auto
-  .push-13
-    position: relative
-    left: 81.25%
-    right: auto
-  .pull-13
-    position: relative
-    right: 81.25%
-    left: auto
-  .push-14
-    position: relative
-    left: 87.5%
-    right: auto
-  .pull-14
-    position: relative
-    right: 87.5%
-    left: auto
-  .push-15
-    position: relative
-    left: 93.75%
-    right: auto
-  .pull-15
-    position: relative
-    right: 93.75%
+    right: 91.66667%
     left: auto
   .column.large-centered, .columns.large-centered
     position: relative

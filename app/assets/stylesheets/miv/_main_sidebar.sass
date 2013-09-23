@@ -1,0 +1,62 @@
+$sidebar-title: #3F4752
+$sidebar-text: #79808E
+$sidebar-link: #F69219
+
+.main-sidebar
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  display: inline-block
+  width: 220px
+  padding: 40px 0 0 20px
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+
+.sidebar-discover
+  padding: 105px 0 0 20px
+
+.main-sidebar-division
+  padding: 20px 0
+  color: $sidebar-text
+  &:last-child
+    border-bottom: none
+
+  .title
+    font-size: 11px
+    color: $sidebar-title
+    text-transform: uppercase
+    font-weight: bold
+    margin: 0 0 15px
+
+  .post
+    padding-bottom: 30px
+    font-size: 12px
+    &:last-child
+      padding-bottom: 0
+  .post-title
+    color: $sidebar-text
+    font-size: 15px
+    font-weight: bold
+    text-decoration: none
+    line-height: 18px
+    &:hover
+      text-decoration: underline
+  .post-author
+    padding: 5px 0 10px 0
+    line-height: 15px
+  .post-resume
+    text-decoration: none
+    color: $sidebar-text
+    line-height: 15px
+
+  .explore-link
+    color: $sidebar-text
+    font-size: 15px
+    margin: 0 0 10px
+    text-decoration: none
+    display: block
+    &:hover
+      color: $sidebar-link
+      text-decoration: underline
+
+  .selected
+    font-weight: bold

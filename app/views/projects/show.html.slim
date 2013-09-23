@@ -40,26 +40,26 @@
       = image_tag @project.display_image('project_thumb_small')
     .section_header
       h1= @project.name
-      h4= t('projects.project_header.without_city', category_name: link_to(@project.category, explore_path(anchor: @project.category.to_s.parameterize)), author: link_to(@project.user.display_name, user_path(@project.user))).html_safe
+      h4= t('projects.project_header.without_city', category_name: link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}")), author: link_to(@project.user.display_name, user_path(@project.user))).html_safe
     .tab_container
       nav#project_menu
-        = link_to '#', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
+        = link_to '#about', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
           = t('.menu.about')
-        = link_to '#', 'id' => 'updates_link', 'data-target' => '#project_updates' do
+        = link_to '#updates', 'id' => 'updates_link', 'data-target' => '#project_updates' do
           = t('.menu.updates')
           span.count=" (#{@updates_count})"
-        = link_to '#', 'id' => 'backers_link', 'data-target' => '#project_backers' do
+        = link_to '#backers', 'id' => 'backers_link', 'data-target' => '#project_backers' do
           = t('.menu.backers')
           span.count=" (#{@project.total_backers})"
-        = link_to '#', 'id' => 'comments_link', 'data-target' => '#project_comments' do
+        = link_to '#comments', 'id' => 'comments_link', 'data-target' => '#project_comments' do
           = t('.menu.comments')
           | &nbsp; (
           fb:comments-count href="#{request.url}"
           | )
         - if can? :update, @project
-          = link_to '#', 'id' => 'edit_link', 'data-target' => '#project_edit' do
+          = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do
             = t('.menu.edit')
-          = link_to '#', 'id' => 'reports_link', 'data-target' => '#project_reports' do
+          = link_to '#reports', 'id' => 'reports_link', 'data-target' => '#project_reports' do
             = t('.menu.reports')
     .main
       #project_content
@@ -76,6 +76,11 @@
           .clearfix
           #updates-loading.loading= image_tag "loading.gif"
         #project_backers.content.hide[data-path=project_backers_path(project_id: @project.id)]
+          - if can?(:update, @project)
+            = radio_button_tag(:backer_state, "available_to_count", checked: true)
+            = label_tag(:backer_state, t('projects.project_backers.confirmed'))
+            = radio_button_tag(:backer_state, "waiting_confirmation")
+            = label_tag(:backer_state, t('projects.project_backers.pending'))
           .results &nbsp;
           .clearfix
           #backers-loading.loading= image_tag "loading.gif"
