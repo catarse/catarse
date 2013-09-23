@@ -111,8 +111,8 @@ describe Adm::BackersController do
   end
 
   describe '.collection' do
+    let(:backer) { create(:backer, payer_email: 'foo@foo.com') }
     context "when there is a match" do
-      let(:backer) { create(:backer, payer_email: 'foo@foo.com') }
       before do
         get :index, locale: :pt, payer_email_contains: 'foo@foo.com'
       end
@@ -120,9 +120,8 @@ describe Adm::BackersController do
     end
 
     context "when there is no match" do
-      let(:backer) { create(:backer, payer_email: '2foo@foo.com') }
       before do
-        get :index, locale: :pt, payer_email_contains: 'foo@foo.com'
+        get :index, locale: :pt, payer_email_contains: '2foo@foo.com'
       end
       it{ assigns(:backers).should eq([]) }
     end
