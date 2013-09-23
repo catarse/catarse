@@ -55,7 +55,7 @@ end
   company_name: 'Catarse',
   host: 'catarse.me',
   base_url: "http://catarse.me",
-  blog_url: "http://blog.catarse.me",
+
   email_contact: 'contato@catarse.me',
   email_payments: 'financeiro@catarse.me',
   email_projects: 'projetos@catarse.me',
@@ -63,13 +63,23 @@ end
   email_no_reply: 'no-reply@catarse.me',
   facebook_url: "http://facebook.com/catarse.me",
   facebook_app_id: '173747042661491',
+  twitter_url: 'http://twitter.com/catarse',
   twitter_username: "catarse",
   mailchimp_url: "http://catarse.us5.list-manage.com/subscribe/post?u=ebfcd0d16dbb0001a0bea3639&amp;id=149c39709e",
   catarse_fee: '0.13',
   support_forum: 'http://suporte.catarse.me/',
   base_domain: 'catarse.me',
   uservoice_secret_gadget: 'change_this',
-  uservoice_key: 'uservoice_key'
+  uservoice_key: 'uservoice_key',
+  faq_url: 'http://suporte.catarse.me/',
+  feedback_url: 'http://suporte.catarse.me/forums/103171-catarse-ideias-gerais',
+  support_url: 'http://suporte.catarse.me/',
+  terms_url: 'http://suporte.catarse.me/knowledgebase/articles/161102-terms-of-use',
+  privacy_url: 'http://suporte.catarse.me/knowledgebase/articles/161104-privacy-policy',
+  instagram_url: 'http://instagram.com/catarse_',
+  blog_url: "http://blog.catarse.me",
+  github_url: 'http://github.com/catarse',
+  contato_url: 'http://suporte.catarse.me/'
 }.each do |name, value|
    conf = Configuration.find_or_initialize_by(name: name)
    conf.update_attributes({
