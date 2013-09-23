@@ -1,0 +1,34 @@
+header.row
+  .large-2.columns
+    = link_to root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name] do
+      = image_tag 'catarse/logo.png'
+  .large-2.large-offset-2.columns
+    = link_to t('layouts.header.submit'), guidelines_start_path, :class => 'submit-project'
+  .large-2.columns
+    = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if Configuration[:support_forum].present?
+  .large-2.columns
+    = link_to t('channels.footer.how_channels_work'), 'http://blog.catarse.me/conheca-os-canais-do-catarse/', title: t('channels.footer.how_channels_work'), target: '_blank' 
+  .large-1.columns
+    = mail_to @profile.email, t('channels.footer.contact'), title: t('channels.footer.contact'), target: '_blank' 
+  .large-1.columns
+    - if current_user
+      = link_to '#', class: 'my_profile_link' do
+        = image_tag(current_user.display_image, :size => "40x40", :class => 'profile-picture')
+      ul.dropdown.user
+        li= link_to t('layouts.header.profile'), current_user
+        li
+          = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
+          .small
+            | (#{current_user.display_credits})
+        - if current_user.admin?
+          li.divider
+          - for menu, path in Adm::BaseController.menu do
+            li= link_to menu, path
+        - if current_user.trustee?
+          li.divider
+          - for menu, path in Channels::Adm::ProjectsController.menu do
+            li.channel_trustee= link_to menu, path
+        li.divider= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
+    - else
+      = link_to t('layouts.header.signup'), new_user_registration_path, :class => 'header-nav-item'
+      = link_to t('layouts.header.signin'), new_user_session_path, :class => 'header-nav-item'
