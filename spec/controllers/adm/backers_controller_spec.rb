@@ -15,7 +15,7 @@ describe Adm::BackersController do
     subject { backer.confirmed? }
 
     before do
-      put :confirm, id: backer.id, locale: :pt 
+      put :confirm, id: backer.id, locale: :pt
     end
 
     it do
@@ -56,7 +56,7 @@ describe Adm::BackersController do
     subject { backer.refunded? }
 
     before do
-      put :refund, id: backer.id, locale: :pt 
+      put :refund, id: backer.id, locale: :pt
     end
 
     it do
@@ -70,7 +70,7 @@ describe Adm::BackersController do
     subject { backer.confirmed? }
 
     before do
-      put :pendent, id: backer.id, locale: :pt 
+      put :pendent, id: backer.id, locale: :pt
     end
 
     it do
@@ -84,7 +84,7 @@ describe Adm::BackersController do
     subject { backer.canceled? }
 
     before do
-      put :cancel, id: backer.id, locale: :pt 
+      put :cancel, id: backer.id, locale: :pt
     end
 
     it do
@@ -107,6 +107,24 @@ describe Adm::BackersController do
         get :index, :locale => :pt
       end
       its(:status){ should == 200 }
+    end
+  end
+
+  describe '.collection' do
+    context "when there is a match" do
+      let(:backer) { create(:backer, payer_email: 'foo@foo.com') }
+      before do
+        get :index, locale: :pt, payer_email_contains: 'foo@foo.com'
+      end
+      it{ assigns(:backers).should eq([backer]) }
+    end
+
+    context "when there is no match" do
+      let(:backer) { create(:backer, payer_email: '2foo@foo.com') }
+      before do
+        get :index, locale: :pt, payer_email_contains: 'foo@foo.com'
+      end
+      it{ assigns(:backers).should eq([]) }
     end
   end
 
