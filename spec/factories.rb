@@ -121,5 +121,10 @@ FactoryGirl.define do
     sequence(:permalink) { |n| "#{n}-test-page" }
   end
 
+  factory :state do
+    name "RJ"
+    acronym "RJ"
+  end
+
 end
 

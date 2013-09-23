@@ -3,12 +3,12 @@
 = render 'devise/shared/header'
 
 .row
-  .large-7.large-centered.columns
+  .large-5.large-centered.columns
     .login-box.animated.fadeIn
       h2.text-center= t 'pages.reset_password.titles.header'
       hr
 
-      .large-14.large-centered.columns
+      .large-11.large-centered.columns
         = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put}) do |f|
           = render 'devise/shared/alert'
           = f.hidden_field :reset_password_token
@@ -22,5 +22,5 @@
             = f.label :password_confirmation, t('pages.reset_password.form.labels.password_confirmation')
             = f.password_field :password_confirmation, required: true
 
-          .large-10.columns.large-centered
-            = f.submit t('pages.reset_password.form.inputs.submit'), class: [:button, :success, 'large-16', 'columns']
+          .large-7.columns.large-centered
+            = f.submit t('pages.reset_password.form.inputs.submit'), class: [:button, :success, 'large-12', 'columns']

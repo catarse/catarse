@@ -1,0 +1,101 @@
+$border-gray: #E9E9EC
+$green-one: #00B22D
+$orange: #F69219
+
+.centered
+  margin: 0 auto
+  width: 980px
+
+.header
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+  display: inline-block
+  width: 100%
+  background: #fff
+  padding: 1em 0
+  border-bottom: 1px solid $border-gray
+  .logo
+    background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -21px -14px transparent
+    display: block
+    float: left
+    height: 50px
+    text-indent: -9999em
+    width: 151px
+    transition: 0.4s all
+    &:hover
+      opacity: 0.5
+
+.header-nav
+  float: right
+  text-align: right
+  .header-nav-li
+    display: inline-block
+    margin: 0 0 0 20px
+    line-height: 50px
+    vertical-align: bottom
+    a
+      text-decoration: none
+      &:hover
+        text-decoration: underline
+  .submit-project
+    background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -12px -256px transparent
+    color: $green-one
+    padding: 3px 0 0 30px
+    font-weight: bold
+    font-size: 15px
+  .header-nav-item
+    color: $blue-two
+    font-size: 13px
+  .locales
+    font-size: 13px
+    a
+      text-transform: uppercase
+      color: $blue-two
+      &:first-child
+        border-right: 1px solid $blue-two
+        padding: 0 7px 0 0
+        margin: 0 7px 0 0
+  .user
+    .my_profile_link
+      border-left: 1px solid #E9E9EC
+      display: block
+      height: 40px
+      padding: 0 15px 0 20px
+      margin: 5px 0
+      background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -27px -67px transparent
+      transition: 0.4s all
+      &:hover
+        opacity: 0.5
+    .profile-picture
+      +border-radius(20px)
+
+.discover-form
+  position: relative
+  margin: 6px 0 6px
+  width: 250px
+  height: 36px
+  .discover-form-input
+    +border-radius(3px)
+    border: none
+    height: 34px
+    left: 32px
+    position: absolute
+    top: 0
+    left: 0
+    width: 220px
+    border: 1px $minimal_gryn solid
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+    font-size: 13px
+    padding: 1px 1px 1px 30px
+    transition: 0.4s all
+    &:focus
+      border: 1px solid $orange
+  input[type="submit"]
+    background: url("/assets/catarse_bootstrap/catarse-assets.png") no-repeat scroll -49px -81px transparent
+    border: medium none
+    height: 20px
+    margin: 3px 5px 0 0
+    position: absolute
+    left: 6px
+    top: 6px
+    text-indent: -9999em
+    width: 20px

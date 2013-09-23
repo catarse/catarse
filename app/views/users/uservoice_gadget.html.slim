@@ -27,7 +27,7 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
           strong= t('uservoice_gadget.user.confirmed_backers')
         dd
           ul
-            - @user.backs.confirmed.each do |backer|
+            - @user.backs.with_state('confirmed').each do |backer|
               li= "#{backer.project.name} - #{backer.display_value}"
 
         br/
@@ -37,7 +37,7 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
         dd
           ul
             - @user.projects.each do |project|
-              li= link_to project.name, project_by_slug_url(project)
+              li= link_to project.name, project_by_slug_url(project.permalink)
     - else
       javascript:
         window.gadgetNoData = true;

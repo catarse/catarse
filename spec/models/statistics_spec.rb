@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Statistics do
   before do
-    FactoryGirl.create(:project, state: 'successful')
-    FactoryGirl.create(:project, state: 'draft') 
-    project = FactoryGirl.create(:project, state: 'online')
-    FactoryGirl.create(:backer, state: 'confirmed', project: project )
-    FactoryGirl.create(:backer, project: project)
+    create(:project, state: 'successful')
+    create(:project, state: 'draft') 
+    project = create(:project, state: 'online')
+    create(:backer, state: 'confirmed', project: project )
+    create(:backer, project: project)
   end
 
   describe "#total_users" do
@@ -16,7 +16,7 @@ describe Statistics do
 
   describe "#total_backs" do
     subject{ Statistics.first.total_backs }
-    it{ should == Backer.confirmed.count }
+    it{ should == Backer.with_state('confirmed').count }
   end
 
   describe "#total_backers" do
@@ -26,7 +26,7 @@ describe Statistics do
 
   describe "#total_backed" do
     subject{ Statistics.first.total_backed }
-    it{ should == Backer.confirmed.sum(:value) }
+    it{ should == Backer.with_state('confirmed').sum(:value) }
   end
 
   describe "#total_projects" do
@@ -41,6 +41,6 @@ describe Statistics do
 
   describe "#total_projects_online" do
     subject{ Statistics.first.total_projects_online }
-    it{ should == Project.online.count }
+    it{ should == Project.with_state('online').count }
   end
 end

@@ -6,9 +6,25 @@ App.views.Project.addChild('ProjectBackers', _.extend({
     this.$loaderDiv = this.$("#backers-loading");
     this.$results = this.$(".results");
     this.path = this.$el.data('path');
-    this.filter = {};
+    this.filter = {available_to_count: true};
     this.setupScroll();
     this.parent.on('selectTab', this.fetchPage);
+  },
+
+  events:{
+    "click input[type='radio'][name=backer_state]": "showBackers"
+  },
+
+  showBackers: function(){
+    var state = $('input:radio[name=backer_state]:checked').val();
+    if(state == 'waiting_confirmation'){
+      this.filter = {with_state: 'waiting_confirmation'};
+    }
+    else{
+      this.filter = {available_to_count: true};
+    }
+    this.firstPage();
+    this.fetchPage();
   }
 
 }, Skull.InfiniteScroll));

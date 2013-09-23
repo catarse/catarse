@@ -1,8 +1,9 @@
 #header
   +grid-container
   +grid-system(16)
-  margin: 20px auto 20px
+  margin: 20px auto
   display: block
+  width: 980px
   .logo
     +grid(4)
     +alpha
@@ -18,7 +19,7 @@
       text-decoration: none
     &.actions
       +grid(4)
-      margin-top: 20px
+      margin-top: 33px
       a
         color: $ultra_gryn
         font-size: 18px
@@ -35,13 +36,17 @@
           text-indent: 30px
     &.menu
       +grid(4)
-      margin-top: 20px
+      margin-top: 34px
+      margin-right: 0
+      float: right
+      text-align: right
+      width: 230px
       a
         font-family: "Lato"
         text-transform: lowercase
         color: $ultra_gryn
         font-size: 14px
-        margin-right: 12px
+        margin-left: 12px
         &.my_profile_link
           width: 130px
           display: block
@@ -71,7 +76,7 @@
           color: $pink
   .search
     +grid(4)
-    margin-top: 18px
+    margin-top: 27px
     form
       width: 220px
       height: 22px

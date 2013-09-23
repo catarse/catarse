@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
     :medium_name, :display_credits, :display_total_of_backs,
     to: :decorator
   # Setup accessible (or protected) attributes for your model
+  # TODO:
   attr_accessible :email,
     :password,
     :password_confirmation,
@@ -115,12 +116,26 @@ class User < ActiveRecord::Base
   scope :by_name, ->(name){ where('users.name ~* ?', name) }
   scope :by_id, ->(id){ where(id: id) }
   scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
-  scope :has_credits, joins(:user_total).where('user_totals.credits > 0')
+  scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0') }
+  scope :has_not_used_credits_last_month, -> { has_credits.
+    where("NOT EXISTS (SELECT true FROM backers b WHERE current_timestamp - b.created_at < '1 month'::interval AND b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
+  }
   scope :order_by, ->(sort_field){ order(sort_field) }
+
+  def self.send_credits_notification
+    has_not_used_credits_last_month.find_each do |user|
+      Notification.create_notification_once(:credits_warning,
+        user,
+        {user_id: user.id},
+        user: user,
+        amount: user.credits
+      )
+    end
+  end
 
   def self.backer_totals
     connection.select_one(
-      self.scoped.
+      self.all.
       joins(:user_total).
       select('
         count(DISTINCT user_id) as users,

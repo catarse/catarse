@@ -1,4 +1,8 @@
 en:
+  controllers:
+    updates:
+      create:
+        notice: 'Update was successfully created!'
   failure_title: 'Please, fix the errors bellow:'
   uservoice_gadget:
     user:
@@ -71,42 +75,52 @@ en:
   count_backed_projects: "backed %{total} projects"
   footer:
     titles:
-      info: "Useful Information"
-      opendata: "nice statistics"
-      social: "do you like Catarse?"
-      newsletter: "receive our newsletter"
-    stats:
-      backers: Backers
-      backs: Backs
-      total_backed: Backed
-      users: Users
-      funded_projects: "Successful projects"
-      active_projects: "Projects on air now"
+      about: "About us"
+      social: "Social networks"
+      sitemap: "Navigate"
+      newsletter: "Subscribe to our news"
+      contact: "Keep in touch"
     links:
       about: "Who are we"
-      how_works: "How It works"
-      faq: F.A.Q./Help
-      terms: "Terms of use"
-      policy: "Privacy Policy"
-      terms_link: 'http://suporte.catarse.me/knowledgebase/articles/161102-terms-of-use'
-      policy_link: 'http://suporte.catarse.me/knowledgebase/articles/161104-privacy-policy'
-      contact: Contact
+      faq: "Help"
+      feedback: "Feedback"
+      support: "Support"
+      terms: "Terms"
+      privacy: "Privacy"
+      press: "Press"
+      twitter: "Twitter"
+      facebook: "Facebook"
+      instagram: "Instagram"
+      github: "Github"
+      blog: "Blog"
+      contato: "Contact"
+      quick_explore: "Selected"
+      near: "Near me"
+      expiring: "Final countdown"
+      recents: "Recent"
+      submit: "Envie um projeto"
+      discover: "Descubra"
+    texts:
+      copyleft: "Made with love."
   main:
     links:
-      channels: "explore the Asas Institute's Channel"
-      selected: "explore more projects selected"
-      expiring: "explore more expiring projects"
-      recents: "explore more recent projects"
-      near: "explore more near me projects"
+      channels: "Discover Asas Institute's Channel"
+      selected: "Discover projects selected"
+      expiring: "Discover expiring projects"
+      recents: "Discover recent projects"
+      near: "Discover projects near you"
+    banner: "10 million turned into actions. Thank you!"
   sidebar:
     titles:
       blog: blog
       facebook: "have you liked our facebook page yet?"
-      newsletter: "do you want to receive our news?"
+      newsletter: "subscribe to our news"
       faq: "have any doubt?"
       schedule: calendar
+    placeholders:
+      email: "Enter your email"
     buttons:
-      newsletter: submit
+      newsletter: Submit
   sections:
     near:
       title: near me
@@ -165,7 +179,7 @@ en:
         email: Email
         full_name: "Full name / Company Name"
         bio: 'Mini Bio'
-        name: Name
+        name: 'Full name'
         password: Password
         password_confirmation: "Password Confirmation"
         phone_number: "Mobile phone number"
@@ -312,14 +326,14 @@ en:
       login_with_facebook: "sign in with your facebook account"
       remember_me: "Remember me and keep me connected."
     header:
-      blog: blog
-      help: help
-      signup: "sign up"
-      signin: login
-      explore: explore
-      submit_project: submit
-      profile: "my profile"
-      account: "my account"
+      blog: Blog
+      help: Help
+      signup: "Sign up"
+      signin: Login
+      discover: Discover
+      submit: Submit your project
+      profile: "My profile"
+      account: "My account"
     user:
       logout: Logout
       my_credits: "My credit"
@@ -373,6 +387,7 @@ en:
   projects:
     box:
       by: by
+      when: in
     admin_fields:
       title: "Admin fields"
     back_project:
@@ -496,6 +511,8 @@ en:
       reached: reached
     project_backers:
       empty: "Nobody backed this project so far. How about being the first one?"
+      confirmed: "Confirmed"
+      pending: "Pending"
     project_header:
       subtitle_html: "A project by %{link}"
       without_city: "A project in %{category_name}, by %{author}"

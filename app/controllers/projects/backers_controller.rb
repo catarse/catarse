@@ -3,22 +3,23 @@ class Projects::BackersController < ApplicationController
   actions :index, :show, :new, :update_info, :review, :create
   skip_before_filter :force_http, only: [:create, :update_info]
   skip_before_filter :verify_authenticity_token, only: [:moip]
-  load_and_authorize_resource
+  has_scope :available_to_count, :waiting_confirmation, type: :boolean
+  has_scope :page, default: 1
+  load_and_authorize_resource except: [:index]
   belongs_to :project
 
   def update_info
     resource.update_attributes(params[:backer])
+    resource.update_user_billing_info
     render json: {message: 'updated'}
   end
 
   def index
-    @backers = parent.backers.available_to_count.order("confirmed_at DESC").page(params[:page]).per(10)
-    render @backers
+    render collection
   end
 
   def show
     @title = t('projects.backers.show.title')
-    session[:thank_you_backer_id] = nil
   end
 
   def new
@@ -34,7 +35,7 @@ class Projects::BackersController < ApplicationController
     @title = t('projects.backers.new.title', name: @project.name)
     @backer = @project.backers.new(user: current_user)
     empty_reward = Reward.new(minimum_value: 0, description: t('projects.backers.new.no_reward'))
-    @rewards = [empty_reward] + @project.rewards.order(:minimum_value)
+    @rewards = [empty_reward] + @project.rewards.remaining.order(:minimum_value)
 
     # Select
     if params[:reward_id] && (@selected_reward = @project.rewards.find params[:reward_id]) && !@selected_reward.sold_out?
@@ -53,6 +54,7 @@ class Projects::BackersController < ApplicationController
         return redirect_to new_project_backer_path(@project)
       end
       success.html do
+        resource.update_current_billing_info
         flash[:notice] = nil
         session[:thank_you_backer_id] = @backer.id
         return render :create
@@ -73,5 +75,10 @@ class Projects::BackersController < ApplicationController
     end
     flash[:success] = t('projects.backers.checkout.success')
     redirect_to project_backer_path(project_id: parent.id, id: resource.id)
+  end
+
+  protected
+  def collection
+    @backers ||= apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").per(10)
   end
 end

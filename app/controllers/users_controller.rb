@@ -17,26 +17,10 @@ class UsersController < ApplicationController
     show!{
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
-      @credits = @user.backs.can_refund.all
+      @credits = @user.backs.can_refund
       @subscribed_to_updates = @user.updates_subscription
       @unsubscribes = @user.project_unsubscribes
     }
-  end
-
-  def set_email
-    @user = current_user
-  end
-
-  def update_email
-    update! do |success,failure|
-      success.html do
-        flash[:notice] = t('users.current_user_fields.updated')
-        redirect_to (session[:return_to] || user_path(@user, anchor: 'settings'))
-        session[:return_to] = nil
-        return
-      end
-      failure.html{ return render :set_email }
-    end
   end
 
   def update
@@ -59,19 +43,5 @@ class UsersController < ApplicationController
       flash[:error] = @user.errors.full_messages.to_sentence
     end
     return redirect_to user_path(@user, anchor: 'settings')
-  end
-
-  def projects
-    @user = User.find(params[:id])
-    @projects = @user.projects.includes(:user, :category, :project_total).order("updated_at DESC")
-    @projects = @projects.visible unless @user == current_user
-    @projects = @projects.page(params[:page]).per(10)
-    render json: @projects
-  end
-
-  def credits
-    @user = User.find(params[:id])
-    @credits = @user.backs.can_refund.order(:id).all
-    render json: @credits
   end
 end

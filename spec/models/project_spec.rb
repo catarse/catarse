@@ -72,44 +72,6 @@ describe Project do
     end
   end
 
-  describe '.not_deleted_projects' do
-    before do
-      create(:project,  state: 'online')
-      create(:project,  state: 'draft')
-      create(:project,  state: 'deleted')
-    end
-
-    subject { Project.not_deleted_projects }
-
-    it { should have(2).itens }
-  end
-
-  describe '.by_state' do
-    before do
-      @project_01 = create(:project, state: 'online')
-      @project_02 = create(:project, state: 'failed')
-      @project_03 = create(:project, state: 'successful')
-    end
-
-    context 'get all projects that is online' do
-      subject { Project.by_state('online') }
-
-      it { should == [@project_01] }
-    end
-
-    context 'get all projects that is failed' do
-      subject { Project.by_state('failed') }
-
-      it { should == [@project_02] }
-    end
-
-    context 'get all projects that is successful' do
-      subject { Project.by_state('successful') }
-
-      it { should == [@project_03] }
-    end
-  end
-
   describe '.by_progress' do
     subject { Project.by_progress(20) }
 
@@ -242,15 +204,6 @@ describe Project do
     it{ should == [@p] }
   end
 
-  describe ".online" do
-    before do
-      @p = create(:project, state: 'online')
-      create(:project, state: 'draft')
-    end
-    subject{ Project.online}
-    it{ should == [@p] }
-  end
-
   describe ".from_channels" do
     before do
       @p = create(:project, channels: [create(:channel)])
@@ -342,12 +295,23 @@ describe Project do
 
     context "when goal is 0.0 and pledged > 0.0" do
       let(:pledged){ 10.0 }
-      it{ should == 100 }
+      it{ should == 0 }
     end
 
     context "when goal is 0.0 and pledged is 0.0" do
       it{ should == 0 }
     end
+  end
+
+  describe "#pledged_and_waiting" do
+    subject{ project.pledged_and_waiting }
+    before do
+      @confirmed = create(:backer, value: 10, state: 'confirmed', project: project)
+      @waiting = create(:backer, value: 10, state: 'waiting_confirmation', project: project)
+      create(:backer, value: 100, state: 'refunded', project: project)
+      create(:backer, value: 1000, state: 'pending', project: project)
+    end
+    it{ should == @confirmed.value + @waiting.value }
   end
 
   describe "#pledged" do

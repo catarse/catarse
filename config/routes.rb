@@ -3,14 +3,17 @@ require 'sidekiq/web'
 Catarse::Application.routes.draw do
 
   devise_for :users, path: '',
-    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up }, 
+    path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up },
     controllers:  { omniauth_callbacks: :omniauth_callbacks, passwords: :passwords }
+
 
   devise_scope :user do
     post '/sign_up', to: 'devise/registrations#create', as: :sign_up
   end
 
-  match '/thank_you' => "static#thank_you"
+
+  get '/thank_you' => "static#thank_you"
+
 
   check_user_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin }
 
@@ -24,15 +27,14 @@ Catarse::Application.routes.draw do
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
 
-  # Non production routes
-  if Rails.env.development?
-    resources :emails, only: [ :index ]
-  end
-
   # Channels
-  constraints subdomain: 'asas' do
+  constraints subdomain: /^(?!www|secure|test|local)(\w+)/ do
     namespace :channels, path: '' do
-      namespace :adm do
+      namespace :admin do
+        namespace :reports do
+          resources :subscriber_reports, only: [ :index ]
+        end
+        resources :statistics, only: [ :index ]
         resources :projects, only: [ :index, :update] do
           member do
             put 'approve'
@@ -64,12 +66,7 @@ Catarse::Application.routes.draw do
   get "/about",                 to: "static#about",               as: :about
 
 
-  match "/explore" => "explore#index", as: :explore
-  match "/explore#:quick" => "explore#index", as: :explore_quick
-  match "/credits" => "credits#index", as: :credits
-
-  match "/reward/:id" => "rewards#show", as: :reward
-  resources :posts, only: [:index, :create]
+  get "/explore" => "explore#index", as: :explore
 
   namespace :reports do
     resources :backer_reports_for_project_owners, only: [:index]
@@ -84,7 +81,7 @@ Catarse::Application.routes.draw do
     end
     resources :backers, controller: 'projects/backers', only: [ :index, :show, :new, :create ] do
       member do
-        match 'credits_checkout'
+        get 'credits_checkout'
         post 'update_info'
       end
     end
@@ -105,29 +102,20 @@ Catarse::Application.routes.draw do
     end
     resources :backers, controller: 'users/backers', only: [:index] do
       member do
-        match :request_refund
+        get :request_refund
       end
     end
 
     resources :unsubscribes, only: [:create]
     member do
       get 'projects'
-      get 'credits'
       put 'unsubscribe_update'
       put 'update_email'
       put 'update_password'
     end
   end
-  # match "/users/:id/request_refund/:back_id" => 'users#request_refund'
 
-  resources :credits, only: [:index] do
-    collection do
-      get 'buy'
-      post 'refund'
-    end
-  end
-
-  namespace :adm do
+  namespace :admin do
     resources :projects, only: [ :index, :update, :destroy ] do
       member do
         put 'approve'
@@ -157,7 +145,5 @@ Catarse::Application.routes.draw do
     end
   end
 
-  match "/mudancadelogin" => "users#set_email", as: :set_email_users
-  match "/:permalink" => "projects#show", as: :project_by_slug
-
+  get "/:permalink" => "projects#show", as: :project_by_slug
 end
