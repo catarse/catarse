@@ -1,4 +1,7 @@
 en:
+  not_found:
+    title: "Sorry, we couldn't find this address :("
+    text: "You may have mistyped the address or the page may have moved."
   controllers:
     updates:
       create:
