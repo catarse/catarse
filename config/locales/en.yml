@@ -107,7 +107,7 @@ en:
       copyleft: "Made with love."
   main:
     links:
-      channels: "Discover Asas Institute's Channel"
+      channels: "Discover Asas Channel"
       recommended: "Discover recommended projects"
       expiring: "Discover expiring projects"
       recents: "Discover recent projects"
@@ -126,15 +126,15 @@ en:
       newsletter: Submit
   sections:
     near:
-      title: near me
+      title: Near me
     recommended:
-      title: recommended
+      title: Recommended
     expiring:
-      title: expiring
+      title: Expiring
     recents:
-      title: recent
+      title: Recent
     channels:
-      title: channels
+      title: "Asas Channel"
   accept_terms_html: "I have read and accepted the %{link}."
   activerecord:
     errors:
