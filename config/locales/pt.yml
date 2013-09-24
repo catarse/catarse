@@ -138,7 +138,7 @@ pt:
     expiring:
       title: "Na reta final"
     recents:
-      title: "Novos e fresquinhos"
+      title: "Recentes"
     channels:
       title: 'Canal Asas'
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
