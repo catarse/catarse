@@ -36,7 +36,7 @@ footer.footer
           h3.footer-title= t('footer.titles.sitemap')
           ul.footer-list
             - if current_user
-              li= link_to t('footer.links.quick_explore'), explore_path(anchor: "recommended")
+              li= link_to t('footer.links.recommended'), explore_path(anchor: "recommended")
             - if current_user
               li= link_to t('footer.links.near'), explore_path(anchor: "near_of/#{current_user.address_state}")
             li= link_to t('footer.links.expiring'), explore_path(anchor: "expiring")
