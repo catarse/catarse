@@ -1,4 +1,7 @@
 pt:
+  not_found:
+    title: "Não encontramos esse endereço :("
+    text: "Você pode ter digitado errado o endereço ou a página pode ter sido movida."
   sending: 'Enviando...'
   failure_title: 'Por favor, corrija os seguintes erros:'
   uservoice_gadget:
