@@ -443,7 +443,7 @@ en:
         review_with_reward_html: "You will back with <strong>%{value}</strong> and receive the following reward:"
         review_without_reward_html: "You will back with <strong>%{value}</strong> but you don't want any reward for that."
         submit:
-          credits: "Confirm backing with credits"
+          credits: "Confirm"
           moip: "Proceed to MoIP's checkout"
         subtitle: "This is the last step to make the difference and become part of this project."
         title: "Fill in and review your data"
