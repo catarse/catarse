@@ -110,6 +110,23 @@ describe Admin::BackersController do
     end
   end
 
+  describe '.collection' do
+    let(:backer) { create(:backer, payer_email: 'foo@foo.com') }
+    context "when there is a match" do
+      before do
+        get :index, locale: :pt, payer_email_contains: 'foo@foo.com'
+      end
+      it{ assigns(:backers).should eq([backer]) }
+    end
+
+    context "when there is no match" do
+      before do
+        get :index, locale: :pt, payer_email_contains: '2foo@foo.com'
+      end
+      it{ assigns(:backers).should eq([]) }
+    end
+  end
+
   describe ".menu" do
     it "should add a menu entry to the menu_items class variable when we pass a parameter and retrieve when we have no parameters" do
       Admin::BackersController.menu "Test Menu" => "/path"
