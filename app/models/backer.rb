@@ -79,7 +79,7 @@ class Backer < ActiveRecord::Base
   end
 
   def recommended_projects
-    user.recommended_projects.where("projects.id <> ?", project.id)
+    user.recommended_projects.where("projects.id <> ?", project.id).order("count DESC")
   end
 
   def refund_deadline
