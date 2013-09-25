@@ -453,7 +453,7 @@ pt:
         review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa:"
         review_without_reward_html: "Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio."
         submit:
-          credits: "Confirmar apoio com créditos"
+          credits: "Confirmar"
           moip: "Efetuar pagamento pelo MoIP"
         subtitle: "Estes dados seão informados ao organizador do projeto."
         title: "Preencha e revise os dados para pagamento"
