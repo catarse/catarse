@@ -20,6 +20,35 @@ describe("App", function() {
     });
   });
 
+  describe("#checkBadBrowser", function(){
+    beforeEach(function() {
+      view.$el.data('badbrowser-path', 'test-path');
+      spyOn(view, "navigate");
+      
+    });
+    
+    describe("when browserHasCheckValidity is false", function(){
+      beforeEach(function() {
+        spyOn(view, "browserHasCheckValidity").andReturn(false);
+        view.checkBadBrowser();
+      });
+
+      it("should navigate to root el badbrowser-path", function() {
+        expect(view.navigate).wasCalledWith('test-path');
+      });
+    });
+    describe("when browserHasCheckValidity is true", function(){
+      beforeEach(function() {
+        spyOn(view, "browserHasCheckValidity").andReturn(true);
+        view.checkBadBrowser();
+      });
+
+      it("should not navigate to root el badbrowser-path", function() {
+        expect(view.navigate).wasNotCalled();
+      });
+    });
+  });
+
   describe("#browserHasCheckValidity", function(){
     describe("when input element checkValidity is undefined", function(){
       var element = $('<input data-mask="999" />');
