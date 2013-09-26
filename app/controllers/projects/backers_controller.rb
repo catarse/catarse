@@ -1,6 +1,6 @@
 class Projects::BackersController < ApplicationController
   inherit_resources
-  actions :index, :show, :new, :update_info, :review, :create
+  actions :index, :show, :new, :update_info, :review, :create, :credits_checkout
   skip_before_filter :force_http, only: [:create, :update_info]
   skip_before_filter :verify_authenticity_token, only: [:moip]
   has_scope :available_to_count, type: :boolean
