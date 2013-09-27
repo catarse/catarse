@@ -47,3 +47,8 @@
         = render partial: 'channels/projects/project', locals: { project: project }
 
 = render 'footer'
+section.row
+  .projects
+    - @profile.projects.visible.each do |project|
+      = render partial: 'shared/project', locals: { project: project }
+
