@@ -96,8 +96,8 @@ en:
       instagram: "Instagram"
       github: "Github"
       blog: "Blog"
-      contato: "Contact"
-      quick_explore: "Selected"
+      contact: "Contact"
+      recommended: "Recommended"
       near: "Near me"
       expiring: "Final countdown"
       recents: "Recent"
@@ -107,8 +107,8 @@ en:
       copyleft: "Made with love."
   main:
     links:
-      channels: "Discover Asas Institute's Channel"
-      selected: "Discover projects selected"
+      channels: "Discover Asas Channel"
+      recommended: "Discover recommended projects"
       expiring: "Discover expiring projects"
       recents: "Discover recent projects"
       near: "Discover projects near you"
@@ -126,15 +126,15 @@ en:
       newsletter: Submit
   sections:
     near:
-      title: near me
-    selection:
-      title: selection
+      title: Near me
+    recommended:
+      title: Recommended
     expiring:
-      title: expiring
+      title: Expiring
     recents:
-      title: recent
+      title: Recent
     channels:
-      title: channels
+      title: "Asas Channel"
   accept_terms_html: "I have read and accepted the %{link}."
   activerecord:
     errors:

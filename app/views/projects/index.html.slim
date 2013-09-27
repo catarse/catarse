@@ -13,8 +13,8 @@
 
       section.selected_projects.list
         header
-          h2.list-title= t('sections.selection.title')
-          = link_to t('main.links.selected'), explore_path(anchor: :recommended), class: "more-projects"
+          h2.list-title= t('sections.recommended.title')
+          = link_to t('main.links.recommended'), explore_path(anchor: :recommended), class: "more-projects"
         .projects
           == render @recommends
 
