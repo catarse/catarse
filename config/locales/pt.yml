@@ -102,8 +102,8 @@ pt:
       instagram: "Instagram"
       github: "Github"
       blog: "Blog"
-      contato: "Contato"
-      quick_explore: "Seleção"
+      contact: "Contato"
+      recommended: "Recomendados"
       near: "Próximos a mim"
       expiring: "Na reta final"
       recents: "Recentes"
@@ -114,7 +114,7 @@ pt:
   main:
     links:
       channels: "Descubra o Canal Asas"
-      selected: "Descubra projetos selecionados"
+      recommended: "Descubra projetos recomendados"
       expiring: "Descubra projetos na reta final"
       recents: "Descubra projetos recentes"
       near: "Descubra projetos perto de você"
@@ -133,12 +133,12 @@ pt:
   sections:
     near:
       title: 'Próximos a mim'
-    selection:
-      title: 'Seleção'
+    recommended:
+      title: 'Recomendados'
     expiring:
       title: "Na reta final"
     recents:
-      title: "Novos e fresquinhos"
+      title: "Recentes"
     channels:
       title: 'Canal Asas'
   accept_terms_html: "Eu li e estou de acordo com os %{link}."

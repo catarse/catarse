@@ -2,26 +2,6 @@ footer.footer
   .centered
     .row
       .footer-div
-        h3.footer-title= t('footer.titles.newsletter')
-        .newsletter-footer
-          = render 'layouts/newsletter'
-        h3.footer-title= t('footer.titles.social')
-        .twitter-box
-          = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
-        .facebook-box
-          = render_facebook_like href: "", width: "171"
-      .footer-div
-        .footer-list
-          h3.footer-title= t('footer.titles.about')
-          ul.footer-list
-            li= link_to t('footer.links.about'), about_path
-            li= link_to t('footer.links.faq'), "#{Configuration[:faq_url]}", target: '_blank'
-            li= link_to t('footer.links.feedback'), "#{::Configuration[:feedback_url]}", target: '_blank'
-            li= link_to t('footer.links.support'), "#{::Configuration[:support_url]}", target: '_blank'
-            li= link_to t('footer.links.terms'), "#{::Configuration[:terms_url]}", target: '_blank'
-            li= link_to t('footer.links.privacy'), "#{::Configuration[:privacy_url]}", target: '_blank'
-            //li= link_to t('footer.links.press'), "#{::Configuration[:press_url]}", target: '_blank'
-      .footer-div
         .footer-list
           h3.footer-title= t('footer.titles.contact')
           ul.footer-list
@@ -30,19 +10,38 @@ footer.footer
             li= link_to t('footer.links.instagram'), "#{::Configuration[:instagram_url]}", target: '_blank'
             li= link_to t('footer.links.github'), "#{::Configuration[:github_url]}", target: '_blank'
             li= link_to t('footer.links.blog'), "#{::Configuration[:blog_url]}", target: '_blank'
-            li= link_to t('footer.links.contato'), "#{::Configuration[:contato_url]}", target: '_blank'
+            li= link_to t('footer.links.contact'), "#{::Configuration[:contact_url]}", target: '_blank'
+
+      .footer-div
+        .footer-list
+          h3.footer-title= t('footer.titles.about')
+          ul.footer-list
+            li= link_to t('footer.links.about'), about_path
+            li= link_to t('footer.links.faq'), "#{Configuration[:faq_url]}", target: '_blank'
+            li= link_to t('footer.links.feedback'), "#{::Configuration[:feedback_url]}", target: '_blank'
+            li= link_to t('footer.links.terms'), "#{::Configuration[:terms_url]}", target: '_blank'
+            li= link_to t('footer.links.privacy'), "#{::Configuration[:privacy_url]}", target: '_blank'
+            //li= link_to t('footer.links.press'), "#{::Configuration[:press_url]}", target: '_blank'
       .footer-div
         .footer-list
           h3.footer-title= t('footer.titles.sitemap')
           ul.footer-list
-            - if current_user
-              li= link_to t('footer.links.quick_explore'), explore_path(anchor: "recommended")
-            - if current_user
-              li= link_to t('footer.links.near'), explore_path(anchor: "near_of/#{current_user.address_state}")
-            li= link_to t('footer.links.expiring'), explore_path(anchor: "expiring")
-            li= link_to t('footer.links.recents'), explore_path(anchor: "recent")
             li= link_to t('footer.links.submit'), guidelines_start_path
             li= link_to t('footer.links.discover'), explore_path
+            - if current_user
+              li= link_to t('footer.links.near'), explore_path(anchor: "near_of/#{current_user.address_state}")
+            li= link_to t('footer.links.recommended'), explore_path(anchor: "recommended")
+            li= link_to t('footer.links.expiring'), explore_path(anchor: "expiring")
+            li= link_to t('footer.links.recents'), explore_path(anchor: "recent")
+      .footer-div
+        h3.footer-title= t('footer.titles.newsletter')
+        .newsletter-footer
+          = render 'layouts/newsletter'
+        h3.footer-title= t('footer.titles.social')
+        .twitter-box
+          = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
+        .facebook-box
+          = render_facebook_like href: "", width: "171"
     hr
     .row
         p.copyleft= "#{t('footer.texts.copyleft')} Catarse, 2013 | Open source #{link_to 'Catarse @ Github', "#{::Configuration[:github_url]}", :class => 'github', target: '_blank'}".html_safe

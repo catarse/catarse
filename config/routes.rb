@@ -44,6 +44,7 @@ Catarse::Application.routes.draw do
         end
       end
       get '/', to: 'profiles#show', as: :profile
+      get '/new-channel-home', to: 'profiles#new_channel_home', as: :new_profile
       get '/how-it-works', to: 'profiles#how_it_works', as: :about
       resources :projects, only: [:new, :create, :show] do
         collection do
