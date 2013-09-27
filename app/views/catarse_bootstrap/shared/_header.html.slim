@@ -1,9 +1,9 @@
 header.row
-  .large-2.columns
+  h1.large-2.columns
     = link_to root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name] do
       = image_tag 'catarse/logo.png'
   .large-10.columns
-    nav.nav-horizontal
+    nav.nav-horizontal-right
       ul
         li.nav-item
           = link_to t('layouts.header.submit'), guidelines_start_path, :class => 'action-link'
