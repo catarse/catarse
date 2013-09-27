@@ -1,6 +1,7 @@
 = render 'shared/header'
 = content_for :title, @profile.name
 
+section.even-background
   .row
     .large-4.columns
       .presentation
@@ -46,3 +47,4 @@ section.row
     - @profile.projects.visible.each do |project|
       = render partial: 'shared/project', locals: { project: project }
 
+= render 'shared/footer_channel'
