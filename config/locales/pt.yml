@@ -1,4 +1,8 @@
 pt:
+  bad_browser:
+    title: "Atualize o seu navegador"
+    text: "Para navegar pelo catarse e garantir que tudo funcione direitinho precisamos que você use uma versão mais atual do seu navegador"
+
   not_found:
     title: "Não encontramos esse endereço :("
     text: "Você pode ter digitado errado o endereço ou a página pode ter sido movida."
