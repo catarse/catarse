@@ -1,52 +1,46 @@
 = render 'shared/header'
 = content_for :title, @profile.name
 
-#page_content.presentation
-  .container
-    .video
-      .padding
-        = content_tag(:iframe, nil, src: 'http://player.vimeo.com/video/65078606?title=0&byline=0&portrait=0')
-    .about
-      h1              = @profile.name
-      p.description   = truncate(@profile.description, length: 210)
-      strong.headline = t('channels.projects.see_how_it_works')
-      p.buttons       = link_to t('channels.projects.how_it_works'), channels_about_path, class: [:ch_button, :ch_button_ok, :ch_button_green], title: t('channels.accessibility.how_it_works') 
-    .clearfix
+  .row
+    .large-4.columns
+      .presentation
+        h1.channel-title = @profile.name
+        p.channel-description = truncate(@profile.description, length: 210)
         = link_to t('channels.presentation.link-to-follow'), '', :class => 'large-6 columns button medium info'
+        p.large-6.columns.channel-followers = '+120 seguidores'
 
-#page_content.projects
-  .container
-    .channel
-      .info
-        .padding
-          .image  = image_tag @profile.image, size: '195x120', title: @profile.name
-          h3      = @profile.name
-          span    = t('channels.curator')
-          .social
-            = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"] if @profile.twitter
-            = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook
-            = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"] if @profile.website
+    .large-4.columns
+      = content_tag(:iframe, nil, src: 'http://vimeo.com/moogaloop.swf?clip_id=65078606&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=ffffff&amp;fullscreen=1&amp;autoplay=0&amp;loop=0', width: '330', height: '185', style: 'border: none')
 
-        hr
-        .mail
-          = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email') 
-      .subscription
-        hr.before_subscribe
-        - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
-        - if subscription
-          = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :ch_button_gray, :subscribe]} do
-            .following= t('channels.following')
-            .stop_following= t('channels.unfollow')
-        - else
-          = link_to t('channels.follow'), channels_channels_subscribers_path, method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe], title: t('channels.follow')
-        .subscribes_count[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
-          = resource.channels_subscribers.size
+    .large-4.columns
+      .projects
+        .container
+          .channel
+            .info
+              .padding
+                .image  = image_tag @profile.image, size: '195x120', title: @profile.name
+                h3      = @profile.name
+                span    = t('channels.curator')
+                .social
+                  = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"] if @profile.twitter
+                  = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook
+                  = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"] if @profile.website
 
-    ol.projects_list
-      = content_tag_for(:li, @profile.projects.visible) do |project|
-        = render partial: 'channels/projects/project', locals: { project: project }
+              hr
+              .mail
+                = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email') 
+            .subscription
+              hr.before_subscribe
+              - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
+              - if subscription
+                = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :ch_button_gray, :subscribe]} do
+                  .following= t('channels.following')
+                  .stop_following= t('channels.unfollow')
+              - else
+                = link_to t('channels.follow'), channels_channels_subscribers_path, method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe], title: t('channels.follow')
+              .subscribes_count[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
+                = resource.channels_subscribers.size
 
-= render 'footer'
 section.row
   .projects
     - @profile.projects.visible.each do |project|
