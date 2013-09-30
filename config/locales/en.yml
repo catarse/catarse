@@ -96,8 +96,8 @@ en:
       instagram: "Instagram"
       github: "Github"
       blog: "Blog"
-      contato: "Contact"
-      quick_explore: "Selected"
+      contact: "Contact"
+      recommended: "Recommended"
       near: "Near me"
       expiring: "Final countdown"
       recents: "Recent"
@@ -107,8 +107,8 @@ en:
       copyleft: "Made with love."
   main:
     links:
-      channels: "Discover Asas Institute's Channel"
-      selected: "Discover projects selected"
+      channels: "Discover Asas Channel"
+      recommended: "Discover recommended projects"
       expiring: "Discover expiring projects"
       recents: "Discover recent projects"
       near: "Discover projects near you"
@@ -126,15 +126,15 @@ en:
       newsletter: Submit
   sections:
     near:
-      title: near me
-    selection:
-      title: selection
+      title: Near me
+    recommended:
+      title: Recommended
     expiring:
-      title: expiring
+      title: Expiring
     recents:
-      title: recent
+      title: Recent
     channels:
-      title: channels
+      title: "Asas Channel"
   accept_terms_html: "I have read and accepted the %{link}."
   activerecord:
     errors:
@@ -219,7 +219,7 @@ en:
       current_credits_html: "Your current balance is <span id=\"current_credits\">%{credits}</span> in credits."
       important_html: "If you ask for a refund, the value of your payment will be deducted from your credits."
       project: Project
-      refund_expration_date: "Refund deadline"
+      refund_expration_date_html: "Deadline to request refund (<a target='__blank' href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
       refunded: "Refund request successfully done. Our team will contact you within two business days."
       insufficient_credits: "You don't have enough credits to request this refund."
       refunds_title: "Payments that can be refunded"
@@ -443,7 +443,7 @@ en:
         review_with_reward_html: "You will back with <strong>%{value}</strong> and receive the following reward:"
         review_without_reward_html: "You will back with <strong>%{value}</strong> but you don't want any reward for that."
         submit:
-          credits: "Confirm backing with credits"
+          credits: "Confirm"
           moip: "Proceed to MoIP's checkout"
         subtitle: "This is the last step to make the difference and become part of this project."
         title: "Fill in and review your data"

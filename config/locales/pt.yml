@@ -106,8 +106,8 @@ pt:
       instagram: "Instagram"
       github: "Github"
       blog: "Blog"
-      contato: "Contato"
-      quick_explore: "Seleção"
+      contact: "Contato"
+      recommended: "Recomendados"
       near: "Próximos a mim"
       expiring: "Na reta final"
       recents: "Recentes"
@@ -118,7 +118,7 @@ pt:
   main:
     links:
       channels: "Descubra o Canal Asas"
-      selected: "Descubra projetos selecionados"
+      recommended: "Descubra projetos recomendados"
       expiring: "Descubra projetos na reta final"
       recents: "Descubra projetos recentes"
       near: "Descubra projetos perto de você"
@@ -137,12 +137,12 @@ pt:
   sections:
     near:
       title: 'Próximos a mim'
-    selection:
-      title: 'Seleção'
+    recommended:
+      title: 'Recomendados'
     expiring:
       title: "Na reta final"
     recents:
-      title: "Novos e fresquinhos"
+      title: "Recentes"
     channels:
       title: 'Canal Asas'
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
@@ -230,7 +230,7 @@ pt:
       current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."
       important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
       project: Projeto
-      refund_expration_date: "Prazo para estorno"
+      refund_expration_date_html: "Prazo máximo para solicitar o estorno (<a target='__blank' href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
       refunded: "Reembolso requisitado com sucesso. Nossa equipe entrará em contato com você em até 2 dias úteis. "
       insufficient_credits: "Você não tem créditos suficientes para realizar este estorno."
       refunds_title: "Apoios que podem ter estorno realizado"
@@ -457,7 +457,7 @@ pt:
         review_with_reward_html: "Você irá apoiar com <strong>%{value}</strong> e ganhará a seguinte recompensa:"
         review_without_reward_html: "Você irá apoiar com <strong>%{value}</strong> e não quer nenhuma recompensa por seu apoio."
         submit:
-          credits: "Confirmar apoio com créditos"
+          credits: "Confirmar"
           moip: "Efetuar pagamento pelo MoIP"
         subtitle: "Estes dados seão informados ao organizador do projeto."
         title: "Preencha e revise os dados para pagamento"
