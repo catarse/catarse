@@ -10,6 +10,16 @@ var App = window.App = Skull.View.extend({
     this.router = new Backbone.Router;
   },
 
+  checkBadBrowser: function(){
+    if(!this.browserHasCheckValidity() && this.$el.data('badbrowser-path')){
+      this.navigate(this.$el.data('badbrowser-path'));
+    }
+  },
+
+  browserHasCheckValidity: function(){
+    return _.isFunction($('<input>')[0].checkValidity);
+  },
+
   activate: function(){
     this.$(".best_in_place").best_in_place();
     this.$dropdown = this.$('.dropdown.user');
