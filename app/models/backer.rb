@@ -60,8 +60,7 @@ class Backer < ActiveRecord::Base
     })
   }
 
-  # TODO:
-  #attr_protected :confirmed, :state
+  attr_protected :state
 
   def self.between_values(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
@@ -79,7 +78,7 @@ class Backer < ActiveRecord::Base
   end
 
   def recommended_projects
-    user.recommended_projects.where("projects.id <> ?", project.id)
+    user.recommended_projects.where("projects.id <> ?", project.id).order("count DESC")
   end
 
   def refund_deadline
