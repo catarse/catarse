@@ -2,7 +2,7 @@ var App = window.App = Skull.View.extend({
   el: 'html',
 
   events: {
-    "click a.my_profile_link" : "toggleMenu"
+    "click a.user-menu" : "toggleMenu"
   },
 
   beforeActivate: function(){
