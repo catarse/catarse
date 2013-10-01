@@ -41,6 +41,9 @@ gem 'draper'
 gem 'slim-rails', '~> 1.1.1'
 gem 'jquery-rails'
 
+# Static pages
+gem 'high_voltage'
+
 # Authentication and Authorization
 gem 'omniauth'
 gem 'omniauth-twitter'
