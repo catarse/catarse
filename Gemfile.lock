@@ -213,6 +213,7 @@ GEM
     hashie (2.0.5)
     heroku-deflater (0.5.1)
       rack (>= 1.4.5)
+    high_voltage (1.2.4)
     hike (1.2.3)
     http_accept_language (2.0.0)
     httparty (0.6.1)
@@ -498,6 +499,7 @@ DEPENDENCIES
   google-analytics-rails
   has_scope (~> 0.6.0.rc)
   heroku-deflater (>= 0.4.1)
+  high_voltage
   http_accept_language
   httparty (~> 0.6.1)
   httpclient (>= 2.2.5)
