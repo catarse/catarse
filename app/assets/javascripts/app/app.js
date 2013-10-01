@@ -2,12 +2,22 @@ var App = window.App = Skull.View.extend({
   el: 'html',
 
   events: {
-    "click a.my_profile_link" : "toggleMenu"
+    "click a.user-menu" : "toggleMenu"
   },
 
   beforeActivate: function(){
     this.$search = this.$('#pg_search');
     this.router = new Backbone.Router;
+  },
+
+  checkBadBrowser: function(){
+    if(!this.browserHasCheckValidity() && this.$el.data('badbrowser-path')){
+      this.navigate(this.$el.data('badbrowser-path'));
+    }
+  },
+
+  browserHasCheckValidity: function(){
+    return _.isFunction($('<input>')[0].checkValidity);
   },
 
   activate: function(){

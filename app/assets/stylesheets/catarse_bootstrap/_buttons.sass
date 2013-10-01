@@ -1,5 +1,6 @@
 .button, a.button
   display: inline-block
+  margin: 5px 0
   padding: 1.35em 1.1em
   text-align: center
   border: none
@@ -10,6 +11,7 @@
   transition: .2s background
 
   &.medium
+    font-size: 0.9em
     padding: 0.7em 0.8em
 
   &.negative
@@ -27,9 +29,9 @@
     color: $default_button_facebook_font_color !important
     &:hover
       background: lighten($default_button_facebook_background_color, 5%)
-  &.orange
-    background: $default_button_orange_background_color
-    color: $default_button_orange_font_color !important
+  &.info
+    background: $orange
+    color: $white
   &:active
     position: relative
     top: 2px
