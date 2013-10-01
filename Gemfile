@@ -40,6 +40,7 @@ gem 'draper'
 # Frontend stuff
 gem 'slim-rails', '~> 1.1.1'
 gem 'jquery-rails'
+gem 'browser'
 
 # Static pages
 gem 'high_voltage'

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :detect_old_browsers
 
   rescue_from ActionController::RoutingError, with: :render_404
   rescue_from ActionController::UnknownController, with: :render_404
@@ -58,6 +59,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def detect_old_browsers
+    return redirect_to page_path("bad_browser") unless browser.modern?
+  end
+
   def fb_admins
     @fb_admins.join(',')
   end
