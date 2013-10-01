@@ -27,7 +27,7 @@ header.header
 
         - if current_user
           li.header-nav-li.user
-            = link_to '#', class: 'my_profile_link' do
+            = link_to '#', class: 'my_profile_link user-menu' do
               = image_tag(current_user.display_image, :size => "40x40", :class => 'profile-picture')
             ul.dropdown.user
               li= link_to t('layouts.header.profile'), current_user
