@@ -44,5 +44,6 @@ html data-badbrowser-path=page_path("bad_browser") lang="#{I18n.locale}" xmlns="
     = render 'layouts/header'
     #main_content[data-controller-class=controller.class.name.downcase data-controller-name=controller.controller_name.downcase data-action=controller.action_name.downcase data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]
       =yield
-    = render 'layouts/footer'
+    - if namespace != 'channels'
+      = render 'layouts/footer'
     = render '/layouts/new_uservoice'
