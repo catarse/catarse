@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
 
   private
   def detect_old_browsers
-    return redirect_to page_path("bad_browser") unless browser.modern?
+    return redirect_to page_path("bad_browser") if !browser.modern? && controller_name != 'pages'
   end
 
   def fb_admins
