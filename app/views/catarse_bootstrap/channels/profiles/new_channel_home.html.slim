@@ -1,7 +1,7 @@
 = render 'shared/header'
 = content_for :title, @profile.name
 
-section.even-background
+section.line-box
   .row
     .large-4.columns
       .presentation
@@ -42,9 +42,8 @@ section.even-background
               .subscribes_count[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
                 = resource.channels_subscribers.size
 
-section.row
-  .projects
-    - @profile.projects.visible.each do |project|
-      = render partial: 'shared/project', locals: { project: project }
+section.row.projects
+  - @profile.projects.visible.each do |project|
+    = render partial: 'shared/project', locals: { project: project }
 
 = render 'shared/footer_channel'
