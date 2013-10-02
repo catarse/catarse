@@ -36,7 +36,7 @@ footer.footer
       .footer-div
         h3.footer-title= t('footer.titles.newsletter')
         .newsletter-footer
-          = render 'layouts/newsletter'
+          = render 'layouts/newsletter', custom_class: "newsletter-footer"
         h3.footer-title= t('footer.titles.social')
         .twitter-box
           = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
