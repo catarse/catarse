@@ -46,6 +46,8 @@ pt:
       header: "O seu projeto foi recebido pela equipe do Catarse"
     project_received_channel:
       subject: "O seu projeto foi recebido pelo %{channel_name}"
+    project_visible_channel:
+      subject: "Projeto no ar!"
     project_visible:
       subject: "Seu projeto está no ar no Catarse o/"
       header: "Agora é pra valer"
