@@ -18,7 +18,8 @@ section.line-box
             = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
     .large-4.columns
-      = content_tag(:iframe, nil, src: 'http://vimeo.com/moogaloop.swf?clip_id=65078606&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=ffffff&amp;fullscreen=1&amp;autoplay=0&amp;loop=0', width: '330', height: '185', style: 'border: none')
+      = content_tag(:iframe, nil, src: 'http://vimeo.com/moogaloop.swf?clip_id=65078606&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=ffffff&amp;fullscreen=1&amp;autoplay=0&amp;loop=0', width: '330', height: '185', style: 'border: none; border-radius: 4px')
+
 
     .large-4.columns
       .projects
