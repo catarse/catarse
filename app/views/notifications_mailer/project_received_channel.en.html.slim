@@ -13,22 +13,26 @@ br
 |Obrigado por enviar seu projeto para o #{channel.name}
 br
 br
-|Antes de mais nada, é importante ressaltar que todo o atendimento será diretamente com os gestores do Canal através do email: #{mail_to channel.email}
+|Todo o atendimento será diretamente com os gestores do Canal através do email: #{mail_to channel.email}
 br
 br
-|Nossa equipe de atendimento vai te responder em até <b>4 dias úteis</b>. Não é necessariamente uma questão de Sim ou de Não, com certeza vamos conversar bastante antes de o projeto ir para o ar.
+|Nossa equipe de atendimento vai te responder em até <b>4 dias úteis</b>. Não é necessariamente uma questão de sim ou de não, com certeza vamos conversar bastante antes de o projeto ir para o ar.
 br
 br
-|Enquanto isso (e durante nossas conversas também), você poderá alterar/aprimorar todas as informações enviadas. 
-|Lembre que está em um ambiente de #{link_to('rascunho', project_url(project, subdomain: channel.permalink))}, por isso, essa é a hora de preencher tudo com bastante calma.
+|Durante nossas conversas, você poderá alterar/aprimorar todas as informações enviadas. Lembre-se, seu projeto está em 
+|#{link_to('rascunho', project_url(project, subdomain: channel.permalink))}, por isso, essa é a hora de preencher tudo com bastante calma.
 br
 br
-|Apesar de todo o atendimento ser junto a Nome do Canal, as dicas fundamentais do Catarse permanecem, por isso: #{link_to 'http:catarse.me/guia_realizadores.pdf', 'http:catarse.me/guia_realizadores.pdf', target: '__blank' }
+|Apesar de todo o atendimento ser junto ao Nome do Canal, as dicas fundamentais do Catarse permanecem, por isso: 
+|Apesar de todo o atendimento ser junto ao Nome do Canal, as dicas fundamentais do Catarse permanecem as mesmas, por isso leia o 
+|#{link_to 'http:catarse.me/guia_realizadores.pdf', 'http:catarse.me/guia_realizadores.pdf', target: '__blank' } e fique por dentro. 
+
 br
 br
-|Se ficou com alguma dúvida, entre em contato conosco no: #{mail_to channel.email}
+|Se ficou com alguma dúvida, entre em contato conosco pelo: #{mail_to channel.email}
 br
 br
 |Abraço,
 br
 |#{channel.name}
+
