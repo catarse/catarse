@@ -1,21 +1,15 @@
 - project = @notification.project
-| Hey!
+- channel = project.channels.first
+- user = project.channels.first.trustees.first
+
+| Olá
+- if user.name
+  | , #{user.name}!
+
 br
 br
-| Mais um projeto foi criado no Canal Asas!
-== " por #{link_to project.user.name, user_url(project.user)}"
+| Um novo projeto #{link_to project.name, project_url(project, subdomain: channel.permalink)} foi criado por #{link_to project.user.name, user_url(project.user)}"
 br
-== "Email do realizador: #{mail_to project.user.email}"
-br
-br
-| Detalhes do projeto abaixo:
-br
-br
-b Nome:
-= " #{project.name}"
-br
-b Meta:
-= " #{project.display_goal}"
 br
 b Lista de Links relacionados:
 br
@@ -25,10 +19,10 @@ b Primeiros apoiadores:
 br
 = simple_format(project.first_backers)
 br
-b Como conheceu o Canal Asas:
+b Como conheceu o Canal:
 br
 = simple_format(project.how_know)
-br
-br
-= link_to 'Veja mais sobre o projeto', project_by_slug_url(permalink: project.permalink, subdomain: 'asas')
 
+|Abraço,
+br/
+= ::Configuration[:company_name]
