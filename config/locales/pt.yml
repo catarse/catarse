@@ -648,6 +648,10 @@ pt:
     start_project_email:
       subject: "Projeto enviado por %{name}"
       subject_html: "Projeto enviado por %{link}"
+
+  channels:
+    subscribed: "+ %{count} seguidores"
+
   registrations:
     new:
       site_title: Cadastre-se

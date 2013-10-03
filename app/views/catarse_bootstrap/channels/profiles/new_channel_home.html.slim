@@ -7,8 +7,15 @@ section.line-box
       .presentation
         h1.channel-title = @profile.name
         p.channel-description = truncate(@profile.description, length: 210)
-        = link_to t('channels.presentation.link-to-follow'), '', :class => 'large-6 columns button medium info'
-        p.large-6.columns.channel-followers = '+120 seguidores'
+        - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
+        - if subscription
+          = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:"large-6", :columns, :button, :medium, :negative]} do
+            .stop_following= t('channels.unfollow')
+        - else
+          = link_to t('channels.follow'), channels_channels_subscribers_path, method: :post, class: [:"large-6", :columns, :button, :medium, :action], title: t('channels.follow')
+        .large-6.columns
+          .channel-followers[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
+            = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
     .large-4.columns
       = content_tag(:iframe, nil, src: 'http://vimeo.com/moogaloop.swf?clip_id=65078606&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=ffffff&amp;fullscreen=1&amp;autoplay=0&amp;loop=0', width: '330', height: '185', style: 'border: none')
@@ -24,17 +31,6 @@ section.line-box
                 span    = t('channels.curator')
                 .social
 
-            .subscription
-              hr.before_subscribe
-              - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
-              - if subscription
-                = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :ch_button_gray, :subscribe]} do
-                  .following= t('channels.following')
-                  .stop_following= t('channels.unfollow')
-              - else
-                = link_to t('channels.follow'), channels_channels_subscribers_path, method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe], title: t('channels.follow')
-              .subscribes_count[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
-                = resource.channels_subscribers.size
       ul.large-12.columns.curator-social
         li.large-3.columns = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email')
         li.large-3.columns = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook

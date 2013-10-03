@@ -613,6 +613,10 @@ en:
     start_project_email:
       subject: "Project sent by %{name}"
       subject_html: "Project sent by %{link}"
+
+  channels:
+    subscribed: "+ %{count} followers"
+
   registrations:
     new:
       site_title: "Sign up"
