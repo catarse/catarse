@@ -21,17 +21,13 @@ section.line-box
       = content_tag(:iframe, nil, src: 'http://vimeo.com/moogaloop.swf?clip_id=65078606&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=ffffff&amp;fullscreen=1&amp;autoplay=0&amp;loop=0', width: '330', height: '185', style: 'border: none; border-radius: 4px')
 
 
-    .large-4.columns
-      .projects
-        .container
-          .channel
-            .info
-              .padding
-                .image  = image_tag @profile.image, size: '195x120', title: @profile.name
-                h3      = @profile.name
-                span    = t('channels.curator')
-                .social
 
+    .large-3.large-offset-1.columns
+      = image_tag @current_user.display_image, title: @profile.name, :class => "curator-image large-4 columns"
+      .large-8.columns
+        h2.curator-name = @profile.name
+        p.curator-caption = t('channels.curator')
+        h3.curator-bio = @profile.name
       ul.large-12.columns.curator-social
         li.large-3.columns = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email')
         li.large-3.columns = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook
