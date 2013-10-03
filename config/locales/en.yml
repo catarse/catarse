@@ -80,11 +80,11 @@ en:
     titles:
       about: "About us"
       social: "Social networks"
-      sitemap: "Navigate"
+      sitemap: "Browse"
       newsletter: "Subscribe to our news"
       contact: "Keep in touch"
     links:
-      about: "Who are we"
+      about: "Who we are"
       faq: "Help"
       feedback: "Feedback"
       support: "Support"
@@ -99,10 +99,10 @@ en:
       contact: "Contact"
       recommended: "Recommended"
       near: "Near me"
-      expiring: "Final countdown"
+      expiring: "Expiring"
       recents: "Recent"
-      submit: "Envie um projeto"
-      discover: "Descubra"
+      submit: "Submit your project"
+      discover: "Discover projects"
     texts:
       copyleft: "Made with love."
   main:
@@ -261,7 +261,7 @@ en:
     index:
       near: 'Near me'
       categories: Categories
-      expiring: "Final countdown"
+      expiring: "Expiring"
       quick_explore: "Quick search"
       recent: Recent
       recommended: Recommended
@@ -689,7 +689,7 @@ en:
       explore_curious: "BACKING A PROJECT"
       explore_projects: "Understand how to back a project"
     about:
-      title: "Who Are We?"
+      title: "Who We Are?"
       subtitle: "Meet the lovely gang that makes this whole thing happen <3"
       introduction: "Who are they? What do they feed of? How are they networked? You’ll see all of it now on “Who are we?”."
       name_one: "Luis Otávio Ribeiro"
