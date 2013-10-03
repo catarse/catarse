@@ -10,15 +10,16 @@
   | , #{user.name}!
 br/
 br/
-|Seu projeto acabou de entrar no ar e já está apto a começar a receber os apoios: #{link_to(project.name, project_url(project, subdomain: channel.permalink), target: '__blank')}
+|Seu projeto acabou de entrar no ar e já está pronto para receber os apoios: #{link_to(project.name, project_url(project, subdomain: channel.permalink), target: '__blank')}
 br/
 br/
-strong Agora vai um bando de informacões úteis:</b>
+strong Algumas informacões úteis:
 ol
   li
-    |Para promover o seu projeto, #{link_to('aqui', 'https://docs.google.com/a/catarse.me/document/d/14l3tS-x3wHhYV1xalRugl9tpgcaG9ot7RCvmth-ApH8/edit', target: '__blank')} temos algumas dicas. O documento é aberto, então sinta-se a vontade para incluir novas observações =)
+    |Temos algumas #{link_to('dicas', 'https://docs.google.com/a/catarse.me/document/d/14l3tS-x3wHhYV1xalRugl9tpgcaG9ot7RCvmth-ApH8/edit', target: '__blank')} pra promover seu projeto. O documento é aberto, então sinta-se a vontade para incluir novas observações =)
+    
   li
-    |Para interagir com seus apoiadores, você tem três abas:
+    |Você pode interagir com seus apoiadores de três formas diferentes:
     br
     br
     strong Apoiadores
@@ -28,18 +29,17 @@ ol
     br
     strong Novidades
     br
-    | Tudo que você publicar nessa aba, será enviado diretamente no EMAIL dos seus apoaidores. Utilize essa ferramenta para se comunicar com eles e fazer chamados especiais durante os momentos chaves da campanha.  Agora, cuidado para não virar um SPAMMER e encher a caixa de entrada de seus apoiadores :(
+    | Tudo que você publicar nessa aba, será enviado diretamente ao email dos apoiadores. Utilize essa ferramenta para se comunicar com eles e fazer chamados especiais durante os momentos chaves da campanha. Agora, cuidado para não virar um SPAMMER e encher a caixa de entrada de seus apoiadores.
     br
     br
     strong Comentários
     br
-    | Acompanhe os comentários, fique ligado no que seus colaboradores estão achado do projeto, participe das conversas. Comunicação é fundamental a todo momento e passa segurança.
-    
+    | Acompanhe os comentários, fique ligado no que seus colaboradores estão achando do projeto, participe das conversas. Comunicação é fundamental a todo momento e passa segurança.
   li
     |Além disso, você poderá <b>editar</b> o seu projeto, seguindo algumas regras:
     ul
-      li Não poderá alterar prazo e valor a ser arrecadado
-      li Não poderá alterar conteúdo e valor de recompensas que já possui algum apoio iniciado.
+      li Não alterar o prazo e valor a ser arrecadado
+      li Não alterar o conteúdo e valor de recompensas que já possuem algum apoio iniciado
     |E Poderá:
     ul
       li Trocar o vídeo principal
@@ -48,16 +48,13 @@ ol
       li Encerrar recompensas (limitando-as)
       li Alterar conteúdo e valor de recompensas não adquiridas
       li Trocar o Thumbnail e a Frase de Efeito
-    |Para saber todos os detalhes sobre a edição de projeto online, entre #{link_to 'aqui', 'http//catarse.me/guia_realizadores.pdf'}
-    br
-    br
-    strong IMPORTANTE:
-    |Para realizar todas essas ações, você precisa estar logado com o perfil “dono” do projeto no #{Configuration[:company_name]}, ok?
+    |Para saber todos os detalhes sobre a edição de projeto online, leia o #{link_to 'Guia dos Realizadores', 'http//catarse.me/guia_realizadores.pdf'}
   li
-    |Para bater uma bola sobre estratégias de comunicação com nossa equipe e receber sugestões sobre como agir na sua campanha, envie email para #{mail_to(channel.email)} 
+    |Para conversar sobre estratégias de comunicação com nossa equipe e receber sugestões sobre como agir na sua campanha, envie #{mail_to channel.email, 'email'} pra gente.
     br/
     br/
-    |<b>Use sem moderação!</b> Lembre-se que a responsabilidade de levar a campanha e divulgar ainda é sua, pois é da sua rede que virão os principais resultados da campanha e este auxílio deve ser usado apenas como apoio. ;)
+    |Lembre-se que é você quem deve fazer a campanha e cuidar da divulgação do seu projeto. É da sua rede que virão grande parte dos apoios, esta conversa deve ser encarada como um auxílio.
+    
   li
     |Qualquer dúvida referente ao Catarse, entre em contato através da #{link_to('Central de Suporte', Configuration[:support_forum], target: '__blank')}.
     
