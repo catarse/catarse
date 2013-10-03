@@ -182,7 +182,7 @@ pt:
         address_neighbourhood: Bairro
         address_number: Número
         address_state: Estado
-        address_street: Logradouro
+        address_street: Endereço
         address_zip_code: CEP
         cpf: 'CPF / CNPJ '
         cpf_hint_title: 'Nota Fiscal será emitida para esse documento'
@@ -192,7 +192,7 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: "Nome completo"
+        name: "Nickname"
         newsletter: 'Quero receber novidades do Catarse'
         id: 'ID'
         password: Senha
