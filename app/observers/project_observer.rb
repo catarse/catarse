@@ -56,7 +56,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def notify_owner_that_project_is_online(project)
-    Notification.create_notification_once(:project_visible,
+    Notification.create_notification_once(project.project_visible_notification_type,
       project.user,
       {project_id: project.id},
       project: project)

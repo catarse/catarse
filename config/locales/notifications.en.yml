@@ -49,6 +49,8 @@ en:
     new_draft_project_channel:
       subject: "The project %{project_name} has just been created"
       header:  "A new project is awaiting review"
+    project_visible_channel:
+      subject: "Projeto no ar!"
     project_visible:
       subject: "Your project is now online at Catarse"
       header: "Now it's for real"
