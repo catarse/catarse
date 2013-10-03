@@ -1,5 +1,7 @@
 en:
   notifications:
+    project_rejected_channel:
+      subject: "Seu projeto não foi aceito pelo %{channel_name}"
     new_user_registration:
       subject: 'Welcome to Catarse!'
       header: 'Welcome to Catarse!'

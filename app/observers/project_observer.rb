@@ -49,10 +49,10 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def notify_owner_that_project_is_rejected(project)
-    Notification.create_notification_once(:project_rejected,
+    Notification.create_notification_once(project.rejected_project_notification_type,
       project.user,
       {project_id: project.id},
-      project: project)
+      {project: project, channel_name: (project.channels.first ? project.channels.first.name : nil)})
   end
 
   def notify_owner_that_project_is_online(project)
