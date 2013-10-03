@@ -327,6 +327,10 @@ class Project < ActiveRecord::Base
     channels.first ? :project_received_channel : :project_received
   end
 
+  def rejected_project_notification_type
+    channels.first ? :project_rejected_channel : :project_rejected
+  end
+
   private
   def self.get_routes
     routes = Rails.application.routes.routes.map do |r|

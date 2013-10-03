@@ -542,6 +542,19 @@ describe Project do
     end
   end
 
+  describe "#rejected_project_notification_type" do
+    subject { project.rejected_project_notification_type }
+
+    context "when project does not belong to any channel" do
+      it { should eq(:project_rejected) }
+    end
+
+    context "when project does belong to a channel" do
+      let(:project) { channel_project }
+      it{ should eq(:project_rejected_channel) }
+    end
+  end
+
   describe "#new_draft_project_notification_type" do
     subject{ project.new_draft_project_notification_type }
 
