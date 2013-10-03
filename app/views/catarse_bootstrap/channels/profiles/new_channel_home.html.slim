@@ -23,13 +23,7 @@ section.line-box
                 h3      = @profile.name
                 span    = t('channels.curator')
                 .social
-                  = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"] if @profile.twitter
-                  = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook
-                  = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"] if @profile.website
 
-              hr
-              .mail
-                = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email') 
             .subscription
               hr.before_subscribe
               - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
@@ -41,6 +35,11 @@ section.line-box
                 = link_to t('channels.follow'), channels_channels_subscribers_path, method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe], title: t('channels.follow')
               .subscribes_count[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
                 = resource.channels_subscribers.size
+      ul.large-12.columns.curator-social
+        li.large-3.columns = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email')
+        li.large-3.columns = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook
+        li.large-3.columns = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"] if @profile.website
+        li.large-3.columns = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"] if @profile.twitter
 
 section.row.projects
   - @profile.projects.visible.each do |project|
