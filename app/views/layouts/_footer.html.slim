@@ -10,7 +10,7 @@ footer.footer
             li= link_to t('footer.links.instagram'), "#{::Configuration[:instagram_url]}", target: '_blank'
             li= link_to t('footer.links.github'), "#{::Configuration[:github_url]}", target: '_blank'
             li= link_to t('footer.links.blog'), "#{::Configuration[:blog_url]}", target: '_blank'
-            li= link_to t('footer.links.contact'), "#{::Configuration[:contact_url]}", target: '_blank'
+            li= link_to t('footer.links.contact'), '#', data: { uv_lightbox: 'classic_widget', uv_mode: 'support', uv_primary_color: '#79808b', uv_link_color: '#3f4652', uv_topic_id: '25760'}
 
       .footer-div
         .footer-list
@@ -41,7 +41,7 @@ footer.footer
         .twitter-box
           = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
         .facebook-box
-          = render_facebook_like href: "", width: "171"
+          = render_facebook_like href: "", colorscheme: "dark", width: "171"
     hr
     .row
         p.copyleft= "#{t('footer.texts.copyleft')} Catarse, 2013 | Open source #{link_to 'Catarse @ Github', "#{::Configuration[:github_url]}", :class => 'github', target: '_blank'}".html_safe
