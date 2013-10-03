@@ -1,0 +1,16 @@
+= content_for :title, @profile.name
+#page_content
+  .container
+    .bootstrap-form
+      = simple_form_for @profile, url: '/profile', html: { method: 'patch' } do |form|
+          = form.input :name
+          = form.input :description, as: :text
+          = form.input :permalink
+          = form.input :image
+          = form.input :video_url
+          = form.input :twitter
+          = form.input :facebook
+          = form.input :website
+          .clearfix
+          .form-actions.bootstrap-twitter
+            = form.button :submit

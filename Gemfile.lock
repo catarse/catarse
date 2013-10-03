@@ -405,6 +405,9 @@ GEM
       json
       redis (>= 3.0)
       redis-namespace
+    simple_form (3.0.0)
+      actionpack (>= 4.0.0, < 4.1)
+      activemodel (>= 4.0.0, < 4.1)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -539,6 +542,7 @@ DEPENDENCIES
   selenium-webdriver (~> 2.35.1)
   shoulda
   sidekiq (~> 2.13.0)
+  simple_form
   sinatra
   slim-rails (~> 1.1.1)
   spectator-validates_email

@@ -1,8 +1,9 @@
 class Channels::ProfilesController < Channels::BaseController
   layout :use_catarse_boostrap
   inherit_resources
-  defaults resource_class: Channel, finder: :find_by_permalink! 
-  actions :show
+  enable_authorization
+  defaults resource_class: Channel, finder: :find_by_permalink!
+  actions :show, :edit, :update
   custom_actions resource: [:how_it_works, :new_channel_home]
 
   before_filter{ params[:id] = request.subdomain }

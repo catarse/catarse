@@ -1,5 +1,5 @@
 class Channel < ActiveRecord::Base
-  attr_accessible :description, :name, :permalink
+  attr_accessible :description, :name, :permalink, :video_url, :twitter, :facebook, :website, :image
   schema_associations
 
   validates_presence_of :name, :description, :permalink
@@ -11,6 +11,7 @@ class Channel < ActiveRecord::Base
   has_many :subscriber_reports
 
   delegate :all, to: :decorator
+  mount_uploader :image, ProfileUploader
 
   # Links to channels should be their permalink
   def to_param; self.permalink end
