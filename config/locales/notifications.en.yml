@@ -45,8 +45,7 @@ en:
       subject: "Your project was received by Catarse"
       header: "Your project was received by the Catarse team"
     project_received_channel:
-      subject: "Your project was received by the Wings Channel"
-      header: "Your project was welcomed by the staff of the Wings Channel"
+      subject: "O seu projeto foi recebido pelo %{channel_name}"
     new_draft_project_channel:
       subject: "The project %{project_name} has just been created"
       header:  "A new project is awaiting review"

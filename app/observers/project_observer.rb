@@ -20,7 +20,7 @@ class ProjectObserver < ActiveRecord::Observer
     Notification.create_notification_once(project.new_project_received_notification_type,
                                           project.user,
                                           {project_id: project.id},
-                                          {project: project, project_name: project.name})
+                                          {project: project, project_name: project.name, channel_name: (project.channels.first ? project.channels.first.name : nil)})
   end
 
   def notify_owner_that_project_is_waiting_funds(project)
