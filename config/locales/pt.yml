@@ -661,6 +661,12 @@ pt:
       logout: "Sair"
       signup: "Cadastre-se"
       signin: "Login"
+    footer:
+      terms: "Termos de uso"
+      privacy_policy: "Política de privacidade"
+      how_works: "Como funciona"
+      contact: "Contato"
+      what_is_channel: "O que são canais?"
 
   registrations:
     new:

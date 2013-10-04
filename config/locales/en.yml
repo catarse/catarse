@@ -626,6 +626,12 @@ en:
       logout: "Logout"
       signup: "Sign up"
       signin: "Sign in"
+    footer:
+      terms: "Terms"
+      privacy_policy: "Privacy"
+      how_works: "How works"
+      contact: "Contact"
+      what_is_channel: "What is a channel?"
 
   registrations:
     new:
