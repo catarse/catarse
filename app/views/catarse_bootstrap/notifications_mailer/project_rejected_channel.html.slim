@@ -1,0 +1,27 @@
+- user = @notification.user
+- project = @notification.project
+- channel = project.channels.first
+
+= content_for :email_logo do
+  = image_tag(channel.image, alt: channel.name)
+
+| Olá
+- if user.name
+  | , #{user.name}!
+br/
+br/
+|Obrigado por enviar seu projeto para o #{channel.name}.
+br/
+br/
+|Acreditamos que o seu projeto não se enquadra no #{link_to('perfil', channels_about_url(subdomain: channel.permalink), target: '__blank')} que buscamos para o canal. 
+br/
+br/
+|Caso consiga reestruturar o seu projeto dentro do escopo que apresentamos, 
+|você poderá alterá-lo no #{link_to('rascunho', project_url(project, subdomain: channel.permalink), target: '__blank')} 
+|e nos avisar através de #{mail_to(channel.email)} sob o título de <b>Revisão</b>.
+br/
+br/
+|Abraço,
+|#{channel.name}
+
+

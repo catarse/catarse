@@ -20,7 +20,7 @@ class ProjectObserver < ActiveRecord::Observer
     Notification.create_notification_once(project.new_project_received_notification_type,
                                           project.user,
                                           {project_id: project.id},
-                                          {project: project, project_name: project.name})
+                                          {project: project, project_name: project.name, channel_name: (project.channels.first ? project.channels.first.name : nil)})
   end
 
   def notify_owner_that_project_is_waiting_funds(project)
@@ -49,14 +49,14 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def notify_owner_that_project_is_rejected(project)
-    Notification.create_notification_once(:project_rejected,
+    Notification.create_notification_once(project.rejected_project_notification_type,
       project.user,
       {project_id: project.id},
-      project: project)
+      {project: project, channel_name: (project.channels.first ? project.channels.first.name : nil)})
   end
 
   def notify_owner_that_project_is_online(project)
-    Notification.create_notification_once(:project_visible,
+    Notification.create_notification_once(project.project_visible_notification_type,
       project.user,
       {project_id: project.id},
       project: project)
