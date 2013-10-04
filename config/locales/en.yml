@@ -616,6 +616,16 @@ en:
 
   channels:
     subscribed: "+ %{count} followers"
+    header:
+      submit: "Enviar Projeto"
+      how_works: "Como funciona"
+      what_is_channel: "O que são canais?"
+      contact: "Contato"
+      profile: "Meu perfil"
+      my_credits: "Meus créditos"
+      logout: "Sair"
+      signup: "Cadastre-se"
+      signin: "Login"
 
   registrations:
     new:
