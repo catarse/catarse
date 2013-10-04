@@ -1,0 +1,67 @@
+- user = @notification.user
+- project = @notification.project
+- channel = project.channels.first
+
+= content_for :email_logo do
+  = image_tag(channel.image, alt: channel.name)
+
+| Olá
+- if user.name
+  | , #{user.name}!
+br/
+br/
+|Seu projeto acabou de entrar no ar e já está pronto para receber os apoios: #{link_to(project.name, project_url(project, subdomain: channel.permalink), target: '__blank')}
+br/
+br/
+strong Algumas informacões úteis:
+ol
+  li
+    |Temos algumas #{link_to('dicas', 'https://docs.google.com/a/catarse.me/document/d/14l3tS-x3wHhYV1xalRugl9tpgcaG9ot7RCvmth-ApH8/edit', target: '__blank')} pra promover seu projeto. O documento é aberto, então sinta-se a vontade para incluir novas observações =)
+    
+  li
+    |Você pode interagir com seus apoiadores de três formas diferentes:
+    br
+    br
+    strong Apoiadores
+    br
+    | Na aba de apoiadores você terá acesso ao e-mail de todos os seus contribuintes, o valor da colaboração e a recompensa selecionada.
+    br
+    br
+    strong Novidades
+    br
+    | Tudo que você publicar nessa aba, será enviado diretamente ao email dos apoiadores. Utilize essa ferramenta para se comunicar com eles e fazer chamados especiais durante os momentos chaves da campanha. Agora, cuidado para não virar um SPAMMER e encher a caixa de entrada de seus apoiadores.
+    br
+    br
+    strong Comentários
+    br
+    | Acompanhe os comentários, fique ligado no que seus colaboradores estão achando do projeto, participe das conversas. Comunicação é fundamental a todo momento e passa segurança.
+  li
+    |Além disso, você poderá <b>editar</b> o seu projeto, seguindo algumas regras:
+    ul
+      li Não alterar o prazo e valor a ser arrecadado
+      li Não alterar o conteúdo e valor de recompensas que já possuem algum apoio iniciado
+    |E Poderá:
+    ul
+      li Trocar o vídeo principal
+      li Editar a descrição do seu projeto
+      li Criar novas recompensas
+      li Encerrar recompensas (limitando-as)
+      li Alterar conteúdo e valor de recompensas não adquiridas
+      li Trocar o Thumbnail e a Frase de Efeito
+    |Para saber todos os detalhes sobre a edição de projeto online, leia o #{link_to 'Guia dos Realizadores', 'http//catarse.me/guia_realizadores.pdf'}
+  li
+    |Para conversar sobre estratégias de comunicação com nossa equipe e receber sugestões sobre como agir na sua campanha, envie #{mail_to channel.email, 'email'} pra gente.
+    br/
+    br/
+    |Lembre-se que é você quem deve fazer a campanha e cuidar da divulgação do seu projeto. É da sua rede que virão grande parte dos apoios, esta conversa deve ser encarada como um auxílio.
+    
+  li
+    |Qualquer dúvida referente ao Catarse, entre em contato através da #{link_to('Central de Suporte', Configuration[:support_forum], target: '__blank')}.
+    
+br
+br
+|Abraço
+br/
+|#{channel.name}
+
+
