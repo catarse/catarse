@@ -11,9 +11,12 @@ describe ProjectObserver do
   let(:backer_unsuccessful){ create(:notification_type, name: 'backer_project_unsuccessful') }
   let(:pending_backer_unsuccessful){ create(:notification_type, name: 'pending_backer_project_unsuccessful') }
   let(:project_visible){ create(:notification_type, name: 'project_visible') }
+  let(:project_visible_channel){ create(:notification_type, name: 'project_visible_channel') }
   let(:project_rejected){ create(:notification_type, name: 'project_rejected') }
+  let(:project_rejected_channel){ create(:notification_type, name: 'project_rejected_channel') }
   let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   let(:project) { create(:project, goal: 3000) }
+  let(:channel) { create(:channel) }
 
   subject{ backer }
 
@@ -187,17 +190,65 @@ describe ProjectObserver do
     end
   end
 
+  describe "#notify_owner_that_project_is_online" do
+    let(:project) { create(:project, state: 'draft') }
+
+    before do
+      ::Configuration[:facebook_url] = 'http://facebook.com/foo'
+      ::Configuration[:blog_url] = 'http://blog.com/foo'
+      project_visible
+      project_visible_channel
+    end
+
+    context "when project don't belong to any channel" do
+      before do
+        project.approve
+      end
+
+      it "should create notification for project owner" do
+        Notification.where(user_id: project.user.id, notification_type_id: project_visible.id, project_id: project.id).first.should_not be_nil
+      end
+    end
+
+    context "when project belong to a channel" do
+      before do
+        project.channels << channel
+        project.approve
+      end
+
+      it "should create notification for project owner" do
+        Notification.where(user_id: project.user.id, notification_type_id: project_visible_channel.id, project_id: project.id).first.should_not be_nil
+      end
+    end
+  end
+
   describe "#notify_owner_that_project_is_rejected" do
     let(:project){ create(:project, state: 'draft') }
     before do
       ::Configuration[:facebook_url] = 'http://facebook.com/foo'
       ::Configuration[:blog_url] = 'http://blog.com/foo'
       project_rejected
-      project.reject
+      project_rejected_channel
     end
 
-    it "should create notification for project owner" do
-      Notification.where(user_id: project.user.id, notification_type_id: project_rejected.id, project_id: project.id).first.should_not be_nil
+    context "when project don't belong to any channel" do
+      before do
+        project.reject
+      end
+      it "should create notification for project owner" do
+        Notification.where(user_id: project.user.id, notification_type_id: project_rejected.id, project_id: project.id).first.should_not be_nil
+      end
+    end
+
+    context "when project belong to a channel" do
+      before do
+        project.channels << channel
+        project.reject
+      end
+
+      it "should create notification for project owner" do
+        Notification.where(user_id: project.user.id, notification_type_id: project_rejected_channel.id, project_id: project.id).first.should_not be_nil
+      end
     end
 
   end
