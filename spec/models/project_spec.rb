@@ -213,23 +213,6 @@ describe Project do
     it{ should == [@p] }
   end
 
-  describe '#can_go_to_second_chance?' do
-    let(:project) { create(:project, goal: 100, online_days: -3) }
-    subject { project.can_go_to_second_chance? }
-
-    before { create(:backer, value: 20, state: 'confirmed', project: project) }
-
-    context 'when confirmed and pending backers reached 30% of the goal and in time to wait to wait' do
-      before { create(:backer, value: 10, state: 'waiting_confirmation', project: project) }
-
-      it { should be_true }
-    end
-
-    context 'when confirmed and pending backers reached less of 30% of the goal' do
-      it { should be_false }
-    end
-  end
-
   describe '#reached_goal?' do
     let(:project) { create(:project, goal: 3000) }
     subject { project.reached_goal? }
@@ -656,16 +639,6 @@ describe Project do
         end
 
         its(:failed?) { should be_true }
-      end
-
-      context 'when project is expired and the sum of the pending backers and confirmed backers reached 30% of the goal' do
-        before do
-          create(:backer, value: 100, project: main_project, created_at: 2.days.ago)
-          create(:backer, value: 9_000, project: main_project, state: 'waiting_confirmation')
-          main_project.finish
-        end
-
-        its(:waiting_funds?) { should be_true }
       end
 
       context 'when project is expired and have recent backers without confirmation' do
