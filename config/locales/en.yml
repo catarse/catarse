@@ -617,15 +617,15 @@ en:
   channels:
     subscribed: "+ %{count} followers"
     header:
-      submit: "Enviar Projeto"
-      how_works: "Como funciona"
-      what_is_channel: "O que são canais?"
-      contact: "Contato"
-      profile: "Meu perfil"
-      my_credits: "Meus créditos"
-      logout: "Sair"
-      signup: "Cadastre-se"
-      signin: "Login"
+      submit: "Send project"
+      how_works: "How works"
+      what_is_channel: "What is a channel?"
+      contact: "Contact"
+      profile: "My profile"
+      my_credits: "My credits"
+      logout: "Logout"
+      signup: "Sign up"
+      signin: "Sign in"
 
   registrations:
     new:
