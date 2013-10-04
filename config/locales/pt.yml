@@ -648,6 +648,26 @@ pt:
     start_project_email:
       subject: "Projeto enviado por %{name}"
       subject_html: "Projeto enviado por %{link}"
+
+  channels:
+    subscribed: "+ %{count} seguidores"
+    header:
+      submit: "Enviar Projeto"
+      how_works: "Como funciona"
+      what_is_channel: "O que são canais?"
+      contact: "Contato"
+      profile: "Meu perfil"
+      my_credits: "Meus créditos"
+      logout: "Sair"
+      signup: "Cadastre-se"
+      signin: "Login"
+    footer:
+      terms: "Termos de uso"
+      privacy_policy: "Política de privacidade"
+      how_works: "Como funciona"
+      contact: "Contato"
+      what_is_channel: "O que são canais?"
+
   registrations:
     new:
       site_title: Cadastre-se

@@ -613,6 +613,26 @@ en:
     start_project_email:
       subject: "Project sent by %{name}"
       subject_html: "Project sent by %{link}"
+
+  channels:
+    subscribed: "+ %{count} followers"
+    header:
+      submit: "Send project"
+      how_works: "How works"
+      what_is_channel: "What is a channel?"
+      contact: "Contact"
+      profile: "My profile"
+      my_credits: "My credits"
+      logout: "Logout"
+      signup: "Sign up"
+      signin: "Sign in"
+    footer:
+      terms: "Terms"
+      privacy_policy: "Privacy"
+      how_works: "How works"
+      contact: "Contact"
+      what_is_channel: "What is a channel?"
+
   registrations:
     new:
       site_title: "Sign up"
