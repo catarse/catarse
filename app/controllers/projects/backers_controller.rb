@@ -8,6 +8,7 @@ class Projects::BackersController < ApplicationController
   has_scope :page, default: 1
   load_and_authorize_resource except: [:index]
   belongs_to :project
+  before_filter :detect_old_browsers, only: [:new, :create]
 
   def update_info
     resource.update_attributes(params[:backer])
