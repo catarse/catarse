@@ -99,7 +99,10 @@ class Project < ActiveRecord::Base
 
   def self.between_expires_at(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
-    where("projects.expires_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+    where("projects.expires_at between
+          (to_timestamp(?, 'dd/mm/yyyy')::timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo') )
+          and
+          (to_timestamp(? , 'dd/mm/yyyy HH24:MI:SS')::timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))", start_at, ends_at + ' 23:59:59')
   end
 
   def self.finish_projects!
