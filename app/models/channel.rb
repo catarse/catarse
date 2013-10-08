@@ -1,5 +1,5 @@
 class Channel < ActiveRecord::Base
-  attr_accessible :description, :name, :permalink, :video_url, :twitter, :facebook, :website, :image
+  attr_accessible :description, :name, :permalink, :video_url, :twitter, :facebook, :website, :image, :how_it_works
   schema_associations
 
   validates_presence_of :name, :description, :permalink
