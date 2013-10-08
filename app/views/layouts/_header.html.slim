@@ -8,7 +8,7 @@ header.header
           = link_to t('layouts.header.submit'), guidelines_start_path, :class => 'project'
 
         li.header-nav-li
-          = link_to t('layouts.header.discover'), guidelines_start_path, :class => 'project'
+          = link_to t('layouts.header.discover'), explore_path, :class => 'project'
 
         li.header-nav-li.search
           = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
