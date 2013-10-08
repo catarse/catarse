@@ -1,7 +1,7 @@
 /= project.successful_flag
 .large-3.columns
   .project-box
-    .image = link_to image_tag(project.display_image, size: '260x135'), project_by_slug_path(project.permalink), title: project.name
+    = link_to image_tag(project.display_image), project_by_slug_path(project.permalink), title: project.name, :class => 'image'
     .padding
       h4.title    = link_to truncate(project.name, length: 50, separator: ''), project_by_slug_path(project.permalink), title: project.name
       p.headline  = link_to truncate(project.headline, length: 140), project_by_slug_path(project.permalink), title: project.headline
