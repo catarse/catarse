@@ -10,6 +10,7 @@ pt:
       form:
         labels:
           show_password: 'Exibir senha'
+          name: 'Nome completo'
         hint:
           password_length: 'Mínimo 6 caracteres'
         inputs:

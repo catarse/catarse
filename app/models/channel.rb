@@ -13,6 +13,10 @@ class Channel < ActiveRecord::Base
   delegate :all, to: :decorator
   mount_uploader :image, ProfileUploader
 
+  def has_subscriber? user
+    user && subscribers.where(id: user.id).first.present?
+  end
+
   # Links to channels should be their permalink
   def to_param; self.permalink end
 

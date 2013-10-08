@@ -33,6 +33,29 @@ describe Channel do
   end
 
 
+  describe "#has_subscriber?" do
+    let(:channel) { create(:channel) }
+    let(:user) { create(:user) }
+    subject{ channel.has_subscriber? user }
+
+    context "when user is nil" do
+      let(:user) { nil }
+      it{ should be_false }
+    end
+
+    context "when user is a channel subscriber" do
+      before do
+        channel.subscribers = [user]
+        channel.save!
+      end
+      it{ should be_true }
+    end
+
+    context "when user is not a channel subscriber" do
+      it{ should be_false }
+    end
+  end
+
   describe "#projects" do
     let(:channel) { create(:channel) }
     let(:project1) { create(:project, online_date: (Time.now - 21.days)) } 

@@ -202,10 +202,6 @@ class Project < ActiveRecord::Base
     pledged_and_waiting >= goal
   end
 
-  def can_go_to_second_chance?
-    (pledged_and_waiting >= (goal*0.3.to_f)) && (4.weekdays_from(expires_at) >= DateTime.now)
-  end
-
   def pledged_and_waiting
     backers.with_states(['confirmed', 'waiting_confirmation']).sum(:value)
   end
@@ -246,11 +242,11 @@ class Project < ActiveRecord::Base
 
     event :finish do
       transition online: :failed,             if: ->(project) {
-        project.expired? && !project.pending_backers_reached_the_goal? && !project.can_go_to_second_chance?
+        project.expired? && !project.pending_backers_reached_the_goal?
       }
 
       transition online: :waiting_funds,      if: ->(project) {
-        project.expired? && (project.pending_backers_reached_the_goal? || project.can_go_to_second_chance?)
+        project.expired? && project.pending_backers_reached_the_goal?
       }
 
       transition waiting_funds: :successful,  if: ->(project) {
@@ -258,11 +254,11 @@ class Project < ActiveRecord::Base
       }
 
       transition waiting_funds: :failed,      if: ->(project) {
-        project.expired? && !project.reached_goal? && !project.in_time_to_wait? && !project.can_go_to_second_chance?
+        project.expired? && !project.reached_goal? && !project.in_time_to_wait?
       }
 
       transition waiting_funds: :waiting_funds,      if: ->(project) {
-        project.expired? && !project.reached_goal? && (project.in_time_to_wait? || project.can_go_to_second_chance?)
+        project.expired? && !project.reached_goal? && project.in_time_to_wait?
       }
     end
 
@@ -325,6 +321,14 @@ class Project < ActiveRecord::Base
 
   def new_project_received_notification_type
     channels.first ? :project_received_channel : :project_received
+  end
+
+  def rejected_project_notification_type
+    channels.first ? :project_rejected_channel : :project_rejected
+  end
+
+  def project_visible_notification_type
+    channels.first ? :project_visible_channel : :project_visible
   end
 
   private

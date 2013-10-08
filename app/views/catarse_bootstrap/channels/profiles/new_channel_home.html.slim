@@ -1,50 +1,40 @@
-= render 'shared/header'
+= render 'shared/header_channel'
 = content_for :title, @profile.name
 
-section.even-background
+section.line-box
   .row
     .large-4.columns
       .presentation
         h1.channel-title = @profile.name
         p.channel-description = truncate(@profile.description, length: 210)
-        = link_to t('channels.presentation.link-to-follow'), '', :class => 'large-6 columns button medium info'
-        p.large-6.columns.channel-followers = '+120 seguidores'
+        - if resource.has_subscriber?(current_user)
+          = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:"large-6", :columns, :button, :medium, :negative]} do
+            .stop_following= t('channels.unfollow')
+        - else
+          = link_to t('channels.follow'), channels_channels_subscribers_path, method: :post, class: [:"large-6", :columns, :button, :medium, :action], title: t('channels.follow')
+        .large-6.columns
+          .channel-followers[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
+            = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
     .large-4.columns
-      = content_tag(:iframe, nil, src: 'http://vimeo.com/moogaloop.swf?clip_id=65078606&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=ffffff&amp;fullscreen=1&amp;autoplay=0&amp;loop=0', width: '330', height: '185', style: 'border: none')
+      = content_tag(:iframe, nil, src: 'http://vimeo.com/moogaloop.swf?clip_id=65078606&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=ffffff&amp;fullscreen=1&amp;autoplay=0&amp;loop=0', width: '330', height: '185', style: 'border: none; border-radius: 4px')
 
-    .large-4.columns
-      .projects
-        .container
-          .channel
-            .info
-              .padding
-                .image  = image_tag @profile.image, size: '195x120', title: @profile.name
-                h3      = @profile.name
-                span    = t('channels.curator')
-                .social
-                  = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"] if @profile.twitter
-                  = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook
-                  = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"] if @profile.website
 
-              hr
-              .mail
-                = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email') 
-            .subscription
-              hr.before_subscribe
-              - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
-              - if subscription
-                = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :ch_button_gray, :subscribe]} do
-                  .following= t('channels.following')
-                  .stop_following= t('channels.unfollow')
-              - else
-                = link_to t('channels.follow'), channels_channels_subscribers_path, method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe], title: t('channels.follow')
-              .subscribes_count[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
-                = resource.channels_subscribers.size
 
-section.row
-  .projects
-    - @profile.projects.visible.each do |project|
-      = render partial: 'shared/project', locals: { project: project }
+    .large-3.large-offset-1.columns
+      = image_tag @profile.trustees.first.display_image, title: @profile.name, :class => "curator-image large-4 columns"
+      .large-8.columns
+        h2.curator-name = @profile.trustees.first.name
+        p.curator-caption = t('channels.curator')
+        h3.curator-bio = @profile.trustees.first.bio
+      ul.large-12.columns.curator-social
+        li.large-3.columns = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email')
+        li.large-3.columns = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook
+        li.large-3.columns = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"] if @profile.website
+        li.large-3.columns = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"] if @profile.twitter
+
+section.row.projects
+  - @profile.projects.visible.each do |project|
+    = render partial: 'shared/project', locals: { project: project }
 
 = render 'shared/footer_channel'

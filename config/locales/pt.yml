@@ -89,7 +89,7 @@ pt:
   footer:
     titles:
       about: "Sobre nós"
-      social: "Redes socias"
+      social: "Redes sociais"
       sitemap: "Navegue"
       newsletter: "Assine nossa news"
       contact: "Mantenha contato"
@@ -187,7 +187,7 @@ pt:
         address_neighbourhood: Bairro
         address_number: Número
         address_state: Estado
-        address_street: Logradouro
+        address_street: Endereço
         address_zip_code: CEP
         cpf: 'CPF / CNPJ '
         cpf_hint_title: 'Nota Fiscal será emitida para esse documento'
@@ -197,7 +197,7 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: "Nome completo"
+        name: "Nickname"
         newsletter: 'Quero receber novidades do Catarse'
         id: 'ID'
         password: Senha
@@ -623,7 +623,7 @@ pt:
       video_hint: "O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
       video_important: "O seu vídeo precisa estar hospedado no Vimeo. Cola o link pra gente!"
       how_know_important: "Oba! Chegamos à última pergunta."
-      more_links_important: "É muito importante utilizar as suas mídias sócias para espalhar a notícia sobre o seu projeto e engajar sua rede no sucesso do projeto."
+      more_links_important: "É muito importante utilizar as suas mídias sociais para espalhar a notícia sobre o seu projeto e engajar sua rede no sucesso do projeto."
       first_backers_important: "Essas pessoas serão fundamentais para ter sucesso no seu projeto"
       online_days_important: 'O prazo máximo para deixar o projeto no ar é de 60 dias.'
       headline_important: 'É uma breve descrição do projeto, 140 caracteres no máximo! :D'
@@ -631,7 +631,7 @@ pt:
       social: "Canais de Mobilização"
       facebook_hint: "http://facebook.com/__________"
       twitter_hint: "http:// twitter.com/____________"
-      social_important: "É muito importante utilizar as suas mídias sócias para espalhar a notícia sobre o seu projeto e engajar sua rede no sucesso do projeto."
+      social_important: "É muito importante utilizar as suas mídias sociais para espalhar a notícia sobre o seu projeto e engajar sua rede no sucesso do projeto."
       know_us_via: "Como você conheceu o Catarse?"
       knowus_important: "Oba! Chegamos à última pergunta! Capricha aí, amizade ;)"
       how_works: "Como pretende mobilizar apoiadores para levantar o $ necessário para a execução?"
@@ -654,6 +654,26 @@ pt:
     start_project_email:
       subject: "Projeto enviado por %{name}"
       subject_html: "Projeto enviado por %{link}"
+
+  channels:
+    subscribed: "+ %{count} seguidores"
+    header:
+      submit: "Enviar Projeto"
+      how_works: "Como funciona"
+      what_is_channel: "O que são canais?"
+      contact: "Contato"
+      profile: "Meu perfil"
+      my_credits: "Meus créditos"
+      logout: "Sair"
+      signup: "Cadastre-se"
+      signin: "Login"
+    footer:
+      terms: "Termos de uso"
+      privacy_policy: "Política de privacidade"
+      how_works: "Como funciona"
+      contact: "Contato"
+      what_is_channel: "O que são canais?"
+
   registrations:
     new:
       site_title: Cadastre-se
