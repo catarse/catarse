@@ -24,6 +24,28 @@ describe Channel do
     it { should have_and_belong_to_many :subscribers }
   end
 
+  describe ".by_permalink" do
+    before do
+      @c1 = create(:channel, permalink: 'foo')
+      @c2 = create(:channel, permalink: 'bar')
+    end
+
+    subject { Channel.by_permalink('foo') }
+
+    it { should == [@c1] }
+  end
+
+  describe '.find_by_permalink!' do
+    before do
+      @c1 = create(:channel, permalink: 'Foo')
+      @c2 = create(:channel, permalink: 'bar')
+    end
+
+    subject { Channel.find_by_permalink!('foo') }
+
+    it { should == @c1 }
+  end
+
 
   describe "#to_param" do
     let(:channel) { create(:channel) }
@@ -58,7 +80,7 @@ describe Channel do
 
   describe "#projects" do
     let(:channel) { create(:channel) }
-    let(:project1) { create(:project, online_date: (Time.now - 21.days)) } 
+    let(:project1) { create(:project, online_date: (Time.now - 21.days)) }
     let(:project2) { create(:project, online_date: (Time.now - 20.days)) }
     before { channel.projects << project1 }
     before { channel.projects << project2 }
