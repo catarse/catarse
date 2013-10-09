@@ -24,7 +24,7 @@ header.row
                   | (#{current_user.display_credits})
               - if current_user.admin?
                 li.divider
-                - for menu, path in Adm::BaseController.menu do
+                - for menu, path in Admin::BaseController.menu do
                   li= link_to menu, path
               - if current_user.trustee?
                 li.divider
