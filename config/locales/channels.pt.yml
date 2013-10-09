@@ -13,6 +13,7 @@ pt:
     adm:
       menu: "Moderação de Canais"
       statistics_menu: "Estatisticas"
+      profile_menu: "Perfil do Canal"
       statistics:
         title: 'Estatísticas do canal'
         total_subscribers: 'Total de assinantes'

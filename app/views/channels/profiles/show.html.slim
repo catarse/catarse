@@ -4,12 +4,12 @@
   .container
     .video
       .padding
-        = content_tag(:iframe, nil, src: 'http://player.vimeo.com/video/65078606?title=0&byline=0&portrait=0')
+        = content_tag(:iframe, nil, src: "#{@profile.video_url}?title=0&byline=0&portrait=0")
     .about
       h1              = @profile.name
       p.description   = truncate(@profile.description, length: 210)
       strong.headline = t('channels.projects.see_how_it_works')
-      p.buttons       = link_to t('channels.projects.how_it_works'), channels_about_path, class: [:ch_button, :ch_button_ok, :ch_button_green], title: t('channels.accessibility.how_it_works') 
+      p.buttons       = link_to t('channels.projects.how_it_works'), channels_about_path, class: [:ch_button, :ch_button_ok, :ch_button_green], title: t('channels.accessibility.how_it_works')
     .clearfix
 
 #page_content.projects
@@ -17,7 +17,7 @@
     .channel
       .info
         .padding
-          .image  = image_tag @profile.image, size: '195x120', title: @profile.name
+          .image  = image_tag @profile.image.curator_thumb, title: @profile.name
           h3      = @profile.name
           span    = t('channels.curator')
           .social
@@ -27,7 +27,7 @@
 
         hr
         .mail
-          = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email') 
+          = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email')
       .subscription
         hr.before_subscribe
         - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
