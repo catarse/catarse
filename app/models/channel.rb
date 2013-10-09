@@ -16,7 +16,7 @@ class Channel < ActiveRecord::Base
   scope :by_permalink, ->(p) { where("lower(channels.permalink) = lower(?)", p) }
 
   def self.find_by_permalink!(string)
-    self.by_permalink(string).first
+    self.by_permalink(string).first!
   end
 
   def has_subscriber? user
