@@ -158,6 +158,11 @@ pt:
         update: "Receber atualizações do projeto"
       backer:
         value: Valor
+      channel:
+        name: Nome
+        description: Descrição
+        image: Imagem
+        video_url: "Vídeo"
       project:
         category: Categoria
         expires_at: Prazo
@@ -200,6 +205,7 @@ pt:
         phone_number: "Telefone (fixo ou celular)"
     models:
       backer: Apoiador
+      channel: Canal
       category: Categoria
       project: Projeto
       reward: Recompensa
