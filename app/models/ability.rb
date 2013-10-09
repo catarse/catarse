@@ -107,11 +107,12 @@ class Ability
       # Nobody can destroy projects.
       cannot :destroy, :projects
     end
+    can [:update, :edit], :channels if current_user.admin? || current_user.trustee?
 
     # A trustee cannot access the adm/ path
     # He can only do this if he is an admin too.
     case options[:namespace]
-      when "Adm"
+      when "Admin"
         if current_user.trustee? && !current_user.admin?
           cannot :access, :all
         end

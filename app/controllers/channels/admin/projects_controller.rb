@@ -1,5 +1,6 @@
 class Channels::Admin::ProjectsController < Admin::BaseController
   menu I18n.t('channels.adm.menu') => Rails.application.routes.url_helpers.admin_projects_path
+  menu I18n.t('channels.adm.profile_menu') => Rails.application.routes.url_helpers.edit_channels_profile_path
 
 
   has_scope :by_id, :pg_search, :user_name_contains, :order_table, :with_state
