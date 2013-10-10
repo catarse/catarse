@@ -24,11 +24,11 @@ header.row
                   | (#{current_user.display_credits})
               - if current_user.admin?
                 li.divider
-                - for menu, path in Adm::BaseController.menu do
+                - for menu, path in Admin::BaseController.menu do
                   li= link_to menu, path
               - if current_user.trustee?
                 li.divider
-                - for menu, path in Channels::Adm::ProjectsController.menu do
+                - for menu, path in Channels::Admin::ProjectsController.menu do
                   li.channel_trustee= link_to menu, path
               li.divider= link_to t('channels.header.logout'), destroy_user_session_path, method: :delete
         - else
