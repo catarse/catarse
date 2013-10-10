@@ -1,35 +1,30 @@
 class Channels::ChannelsSubscribersController < Channels::BaseController
   inherit_resources
   load_and_authorize_resource
-  actions :index, :create, :destroy
-
-  # we skid the set_locale because we are using the index method to create a record
-  skip_before_filter :set_locale
+  actions :create, :destroy
 
   def create
-    begin
-      create! do |success,failure|
-        success.html{
-          flash[:notice] = I18n.t('channels_subscribers.created')
-          return redirect_to root_path }
-      end
-    rescue PG::Error, ActiveRecord::RecordNotUnique => e
+    @channels_subscriber = ChannelsSubscriber.new subscription_attributes
+    create! do |format|
+      flash[:notice] = I18n.t('channels_subscribers.created')
       return redirect_to root_path
     end
   end
-  alias_method :index, :create
 
   def destroy
-    destroy! do |success,failure|
-      success.html{
-        flash[:notice] = I18n.t('channels_subscribers.deleted')
-        return redirect_to root_path
-      }
+    destroy! do |format|
+      flash[:notice] = I18n.t('channels_subscribers.deleted')
+      return redirect_to root_path
     end
   end
 
-  prepend_before_filter do
-    params[:channels_subscriber] = { channel_id: Channel.find_by_permalink!(request.subdomain).id, user_id: current_user.id } if current_user
+  def resource
+    @channels_subscriber ||= ChannelsSubscriber.where(subscription_attributes).first!
+  end
+
+  private
+  def subscription_attributes
+    { channel_id: Channel.find_by_permalink!(request.subdomain).id, user_id: current_user.id }
   end
 end
 

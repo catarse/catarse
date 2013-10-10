@@ -4,7 +4,7 @@
   .container
     .video
       .padding
-        = content_tag(:iframe, nil, src: "#{@profile.video_url}?title=0&byline=0&portrait=0")
+        = content_tag(:iframe, nil, src: @profile.video_url)
     .about
       h1              = @profile.name
       p.description   = truncate(@profile.description, length: 210)
@@ -30,13 +30,12 @@
           = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email')
       .subscription
         hr.before_subscribe
-        - subscription = current_user.channels_subscribers.where(channel_id: resource.id).first rescue nil
-        - if subscription
-          = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :ch_button_gray, :subscribe]} do
+        - if resource.has_subscriber?(current_user)
+          = link_to channels_subscriber_path, {method: :delete, class: [:ch_button, :ch_button_ok, :ch_button_unsubscribe, :ch_button_gray, :subscribe]} do
             .following= t('channels.following')
             .stop_following= t('channels.unfollow')
         - else
-          = link_to t('channels.follow'), channels_channels_subscribers_path, method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe], title: t('channels.follow')
+          = link_to t('channels.follow'), channels_subscriber_path, method: :post, class: [:ch_button, :ch_button_ok, :ch_button_pink, :subscribe], title: t('channels.follow')
         .subscribes_count[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
           = resource.channels_subscribers.size
 
