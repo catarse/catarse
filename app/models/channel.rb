@@ -7,7 +7,6 @@ class Channel < ActiveRecord::Base
 
   has_and_belongs_to_many :projects, -> { order("online_date desc") }
   has_and_belongs_to_many :subscribers, class_name: 'User', join_table: :channels_subscribers
-  has_and_belongs_to_many :trustees, class_name: 'User', join_table: :channels_trustees
   has_many :subscriber_reports
 
   delegate :all, to: :decorator
