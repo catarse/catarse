@@ -152,10 +152,6 @@ class User < ActiveRecord::Base
     @decorator ||= UserDecorator.new(self)
   end
 
-  def admin?
-    admin
-  end
-
   def credits
     user_total ? user_total.credits : 0.0
   end
