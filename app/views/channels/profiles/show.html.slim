@@ -4,7 +4,7 @@
   .container
     .video
       .padding
-        = content_tag(:iframe, nil, src: "#{@profile.video_url}?title=0&byline=0&portrait=0")
+        = content_tag(:iframe, nil, src: @profile.video_url)
     .about
       h1              = @profile.name
       p.description   = truncate(@profile.description, length: 210)

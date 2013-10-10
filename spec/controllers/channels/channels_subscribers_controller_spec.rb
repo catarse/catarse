@@ -12,22 +12,10 @@ describe Channels::ChannelsSubscribersController do
     controller.stub(:current_user).and_return(current_user)
   end
 
-  describe "GET index" do
-    before do
-      get :index
-    end
-    it{ should redirect_to root_path }
-  end
-
   describe "POST create" do
     before do
       channel_subscriber
       post :create
-    end
-
-    context "when user already has a subscription" do 
-      let(:channel_subscriber){ ChannelsSubscriber.create!(channel: channel, user: user) }
-      it{ should redirect_to root_path }
     end
 
     context "when user is signed in" do 

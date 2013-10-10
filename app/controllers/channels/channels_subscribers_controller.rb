@@ -4,13 +4,9 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
   actions :create, :destroy
 
   def create
-    begin
-      @channels_subscriber = ChannelsSubscriber.new subscription_attributes
-      create! do |format|
-        flash[:notice] = I18n.t('channels_subscribers.created')
-        return redirect_to root_path
-      end
-    rescue PG::Error, ActiveRecord::RecordNotUnique
+    @channels_subscriber = ChannelsSubscriber.new subscription_attributes
+    create! do |format|
+      flash[:notice] = I18n.t('channels_subscribers.created')
       return redirect_to root_path
     end
   end
@@ -23,7 +19,7 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
   end
 
   def resource
-    @channels_subscriber ||= ChannelsSubscriber.where(subscription_attributes).first! if current_user
+    @channels_subscriber ||= ChannelsSubscriber.where(subscription_attributes).first!
   end
 
   private
