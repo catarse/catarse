@@ -8,7 +8,7 @@ section.line-box
         h1.channel-title = @profile.name
         p.channel-description = truncate(@profile.description, length: 210)
         - if resource.has_subscriber?(current_user)
-          = link_to channels_channels_subscriber_path(subscription.id), {method: :delete, class: [:"large-6", :columns, :button, :medium, :negative]} do
+          = link_to channels_subscriber_path, {method: :delete, class: [:"large-6", :columns, :button, :medium, :negative]} do
             .stop_following= t('channels.unfollow')
         - else
           = link_to t('channels.follow'), channels_subscriber_path, method: :post, class: [:"large-6", :columns, :button, :medium, :action], title: t('channels.follow')
