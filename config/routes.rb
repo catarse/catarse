@@ -52,7 +52,7 @@ Catarse::Application.routes.draw do
           get 'video'
         end
       end
-      resources :channels_subscribers, only: [:index, :create, :destroy]
+      resource :channels_subscriber, only: [:create, :destroy], as: :subscriber
     end
   end
 
