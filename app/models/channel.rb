@@ -13,6 +13,12 @@ class Channel < ActiveRecord::Base
   delegate :all, to: :decorator
   mount_uploader :image, ProfileUploader
 
+  scope :by_permalink, ->(p) { where("lower(channels.permalink) = lower(?)", p) }
+
+  def self.find_by_permalink!(string)
+    self.by_permalink(string).first!
+  end
+
   def has_subscriber? user
     user && subscribers.where(id: user.id).first.present?
   end
