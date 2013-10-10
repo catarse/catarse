@@ -6,7 +6,7 @@ describe Channels::Admin::Reports::SubscriberReportsController do
   let(:admin) { create(:user, admin: false) }
 
   before do
-    channel.trustees = [ admin ]
+    channel.users = [ admin ]
     controller.stub(:current_user).and_return(admin)
     request.stub(:subdomain).and_return(channel.permalink)
   end
