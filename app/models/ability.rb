@@ -76,14 +76,12 @@ class Ability
     can :destroy, :channels_subscribers do |cs|
       cs.user == current_user
     end
-    
+
     can [:update, :edit], :channels do |c| 
       c == current_user.channel
     end
 
-    # An user cannot access the adm/ path
-    # He can only do this if he is an admin too.
-    cannot :access, :all if options[:namespace] == "Admin" && !current_user.admin?
+    can :access, :admin if options[:channel]  && options[:channel] == current_user.channel
 
     # NOTE: admin can access everything.
     # It's the last ability to override all previous abilities.
