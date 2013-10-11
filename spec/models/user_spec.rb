@@ -16,8 +16,9 @@ describe User do
     it{ should have_many :unsubscribes }
     it{ should have_many :authorizations }
     it{ should have_many(:oauth_providers).through(:authorizations) }
+    it{ should have_many :channels_subscribers }
     it{ should have_one :user_total }
-    it{ should have_and_belong_to_many :channels }
+    it{ should belong_to :channel }
     it{ should have_and_belong_to_many :subscriptions }
   end
 
@@ -355,23 +356,4 @@ describe User do
       it{ should == 'http://facebook.com/foo' }
     end
   end
-
-  describe "#trustee?" do
-    let(:user) { create(:user) }
-
-    context "when user is a moderator of one or more channels" do
-      it "should return true" do
-        user.channels << create(:channel)
-        expect(user.trustee?).to eq(true)
-      end
-    end
-
-    context "when user is not a moderator of any channels" do
-      it "should return false" do
-        expect(user.trustee?).to eq(false)
-      end
-    end
-
-  end
-
 end

@@ -34,6 +34,10 @@ class ApplicationController < ActionController::Base
     @fb_admins = [100000428222603, 547955110]
   end
 
+  def channel
+    Channel.find_by_permalink(request.subdomain.to_s)
+  end
+
   # We use this method only to make stubing easier
   # and remove FB templates from acceptance tests
   def render_facebook_sdk
