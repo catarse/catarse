@@ -24,7 +24,7 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
 
   private
   def subscription_attributes
-    { channel_id: Channel.find_by_permalink!(request.subdomain).id, user_id: current_user.id }
+    { channel_id: channel.id, user_id: current_user.id }
   end
 end
 
