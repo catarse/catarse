@@ -107,7 +107,9 @@ class Ability
       # Nobody can destroy projects.
       cannot :destroy, :projects
     end
-    can [:update, :edit], :channels if current_user.admin? || current_user.trustee?
+    can [:update, :edit], :channels do |channel|
+      channel.trustees.exists?(current_user)
+    end
 
     # A trustee cannot access the adm/ path
     # He can only do this if he is an admin too.
