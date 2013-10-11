@@ -57,7 +57,6 @@ class Ability
       current_user.admin
     end
 
-
     # NOTE: Backer authorizations
     cannot :show, :backers
     can :create, :backers if current_user.persisted?
@@ -78,53 +77,14 @@ class Ability
       cs.user == current_user
     end
 
-    if current_user.trustee?
-
-      can :access, :all
-      cannot :access, :projects
-      cannot :access, :rewards
-
-      can :create, :projects
-      can :access, :projects do |project|
-        current_user.channels_projects.exists?(project)
-      end
-
-
-      can :access, :rewards do |reward|
-        current_user.channels_projects.exists?(reward.project)
-      end
-
-
-      # For the access, :all
-      # we're removing the ability to update users at all, but
-      cannot [:update, :destroy], :users
-
-      # He can update himself
-      can :update, :users do |user|
-        user == current_user
-      end
-
-      # Nobody can destroy projects.
-      cannot :destroy, :projects
-    end
-    can [:update, :edit], :channels if current_user.admin? || current_user.trustee?
-
-    # A trustee cannot access the adm/ path
-    # He can only do this if he is an admin too.
-    case options[:namespace]
-      when "Admin"
-        if current_user.trustee? && !current_user.admin?
-          cannot :access, :all
-        end
-      else
+    can [:update, :edit], :channels do |c| 
+      c == current_user.channel
     end
 
-
+    can :access, :admin if options[:channel]  && options[:channel] == current_user.channel
 
     # NOTE: admin can access everything.
     # It's the last ability to override all previous abilities.
     can :access, :all if current_user.admin?
-
-
   end
 end
