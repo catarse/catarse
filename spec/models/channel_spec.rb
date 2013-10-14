@@ -19,8 +19,8 @@ describe Channel do
 
     it { should have_many :subscriber_reports }
     it { should have_many :channels_subscribers }
+    it { should have_many :users }
     it { should have_and_belong_to_many :projects }
-    it { should have_and_belong_to_many :trustees }
     it { should have_and_belong_to_many :subscribers }
   end
 

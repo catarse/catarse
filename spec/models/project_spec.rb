@@ -4,7 +4,7 @@ require 'spec_helper'
 describe Project do
   let(:project){ build(:project, goal: 3000) }
   let(:user){ create(:user) }
-  let(:channel){ create(:channel, email: user.email, trustees: [ user ]) }
+  let(:channel){ create(:channel, email: user.email, users: [ user ]) }
   let(:channel_project){ create(:project, channels: [ channel ]) }
 
   describe "associations" do
@@ -113,12 +113,12 @@ describe Project do
     let(:project_03) { create(:project) }
 
     before do
-      project_01.update_attributes({ online_date: '19/01/2013'.to_time, online_days: 0 })
-      project_02.update_attributes({ online_date: '23/01/2013'.to_time, online_days: 0 })
-      project_03.update_attributes({ online_date: '26/01/2013'.to_time, online_days: 0 })
+      project_01.update_attributes({ online_date: '17/01/2013'.to_time, online_days: 0 })
+      project_02.update_attributes({ online_date: '21/01/2013'.to_time, online_days: 0 })
+      project_03.update_attributes({ online_date: '23/01/2013'.to_time, online_days: 0 })
     end
 
-    it { should == [project_01] }
+    it { should == [project_01, project_02] }
   end
 
   describe '.to_finish' do

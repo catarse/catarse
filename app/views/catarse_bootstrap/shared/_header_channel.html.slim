@@ -26,7 +26,7 @@ header.row
                 li.divider
                 - for menu, path in Admin::BaseController.menu do
                   li= link_to menu, path
-              - if current_user.trustee?
+              - if current_user.channel
                 li.divider
                 - for menu, path in Channels::Admin::ProjectsController.menu do
                   li.channel_trustee= link_to menu, path

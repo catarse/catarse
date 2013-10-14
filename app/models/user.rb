@@ -74,10 +74,7 @@ class User < ActiveRecord::Base
 
 
   # Channels relation
-  has_and_belongs_to_many :channels, join_table: :channels_trustees
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
-  has_many :channels_projects, through: :channels, source: :projects
-  has_many :channels_subscribers
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
 
@@ -153,17 +150,6 @@ class User < ActiveRecord::Base
 
   def decorator
     @decorator ||= UserDecorator.new(self)
-  end
-
-  def admin?
-    admin
-  end
-
-  # NOTE: Checking if the user has CHANNELS
-  # If the user has some channels, this method returns TRUE
-  # Otherwise, it's FALSE
-  def trustee?
-    !self.channels.size.zero?
   end
 
   def credits

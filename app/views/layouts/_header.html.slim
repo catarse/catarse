@@ -39,7 +39,7 @@ header.header
                 li.divider
                 - for menu, path in Admin::BaseController.menu do
                   li= link_to menu, path
-              - if current_user.trustee? || current_user.admin?
+              - if current_user.channel || current_user.admin?
                 li.divider
                 - for menu, path in Channels::Admin::ProjectsController.menu do
                   li.channel_trustee= link_to menu, path
