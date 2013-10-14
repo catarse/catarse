@@ -242,7 +242,7 @@ class Project < ActiveRecord::Base
 
     event :finish do
       transition online: :failed,             if: ->(project) {
-        project.expired? && !project.pending_backers_reached_the_goal?
+        project.expired? && !project.pending_backers_reached_the_goal? && !project.reached_goal?
       }
 
       transition online: :waiting_funds,      if: ->(project) {
