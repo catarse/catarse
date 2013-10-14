@@ -1,5 +1,5 @@
 App.addChild('Payment', _.extend({
-  el: '#main_content[data-action="create"][data-controller-name="backers"] #payment',
+  el: '#project_review #payment',
 
   events: {
     'click #payment_menu a' : 'onTabClick'
