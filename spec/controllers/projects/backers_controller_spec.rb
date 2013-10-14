@@ -13,12 +13,12 @@ describe Projects::BackersController do
     controller.stub(:current_user).and_return(user)
   end
 
-  describe "POST update_info" do
+  describe "PUT update" do
     let(:set_expectations) {}
 
     before do
       set_expectations
-      post :update_info, { locale: :pt, project_id: project.id, id: backer.id, backer: backer_info }
+      put :update, { locale: :pt, project_id: project.id, id: backer.id, backer: backer_info, format: :json }
     end
 
     context "when no user is logged in" do
@@ -81,6 +81,26 @@ describe Projects::BackersController do
     end
   end
 
+  describe "GET edit" do
+    before do
+      request.env['REQUEST_URI'] = "/test_path"
+      get :edit, {locale: :pt, project_id: project.id, id: backer.id}
+    end
+
+    context "when no user is logged" do
+      it{ should redirect_to new_user_registration_path }
+      it('should set the session[:return_to]'){ session[:return_to].should == "/test_path" }
+    end
+
+    context "when user is logged in" do
+      let(:user){ create(:user) }
+      let(:backer){ create(:backer, value: 10.00, credits: true, project: project, state: 'pending', user: user) }
+      its(:body){ should =~ /#{I18n.t('projects.backers.edit.title')}/ }
+      its(:body){ should =~ /#{project.name}/ }
+      its(:body){ should =~ /R\$ 10/ }
+    end
+  end
+
   describe "POST create" do
     let(:value){ '20.00' }
     let(:set_expectations) {}
@@ -98,9 +118,7 @@ describe Projects::BackersController do
     context "when user is logged in" do
       let(:set_expectations) { Backer.any_instance.should_receive(:update_current_billing_info) }
       let(:user){ create(:user) }
-      its(:body){ should =~ /#{I18n.t('projects.backers.create.title')}/ }
-      its(:body){ should =~ /#{project.name}/ }
-      its(:body){ should =~ /R\$ 20/ }
+      it{ should redirect_to edit_project_backer_path(project_id: project.id, id: Backer.last.id) }
     end
 
     context "without value" do
