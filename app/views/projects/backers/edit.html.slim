@@ -24,7 +24,7 @@
             .alert
               #credits_notice= t('.credits_notice_html', credits: number_to_currency((current_user.credits - @backer.value), unit: 'R$', precision: 0, delimiter: '.'))
       .bootstrap-form
-        = semantic_form_for current_user, url: credits_checkout_project_backer_path(@backer.project, @backer), html: { data: { update_info_path: update_info_project_backer_path(project_id: @backer.project.id, id: @backer.id) }, id: 'review_form', class: "form-horizontal #{('dont_align' if @backer.credits)}", method: 'put' } do |form|
+        = semantic_form_for current_user, url: credits_checkout_project_backer_path(@backer.project, @backer), html: { data: { update_info_path: project_backer_path(project_id: @backer.project.id, id: @backer.id, format: :json) }, id: 'review_form', class: "form-horizontal #{('dont_align' if @backer.credits)}", method: 'put' } do |form|
           = hidden_field_tag 'project_id', @backer.project.id
           = hidden_field_tag 'backer_id', @backer.id
           = hidden_field_tag 'backer_credits', @backer.credits
@@ -59,7 +59,7 @@
                   = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), class: 'btn', id: 'user_submit'
 
         - unless @backer.credits
-          #payment.hide data-update-info-path=update_info_project_backer_path(project_id: @backer.project.id, id: @backer.id)
+          #payment.hide data-update-info-path=project_backer_path(project_id: @backer.project.id, id: @backer.id, format: :json)
             .title
               h1= t('.choose_payment')
               h2= t('.choose_payment_subtitle')

@@ -1,7 +1,7 @@
 class Projects::BackersController < ApplicationController
   inherit_resources
-  actions :index, :show, :new, :update_info, :review, :create, :credits_checkout
-  skip_before_filter :force_http, only: [:create, :update_info, :credits_checkout]
+  actions :index, :show, :new, :update, :review, :create, :credits_checkout
+  skip_before_filter :force_http, only: [:create, :edit, :update, :credits_checkout]
   skip_before_filter :verify_authenticity_token, only: [:moip]
   has_scope :available_to_count, type: :boolean
   has_scope :with_state
@@ -10,7 +10,7 @@ class Projects::BackersController < ApplicationController
   belongs_to :project
   before_filter :detect_old_browsers, only: [:new, :create]
 
-  def update_info
+  def update
     resource.update_attributes(params[:backer])
     resource.update_user_billing_info
     render json: {message: 'updated'}
@@ -59,7 +59,7 @@ class Projects::BackersController < ApplicationController
         resource.update_current_billing_info
         flash[:notice] = nil
         session[:thank_you_backer_id] = @backer.id
-        return render :create
+        return redirect_to edit_project_backer_path(project_id: @project.id, id: @backer.id)
       end
     end
     @thank_you_id = @project.id

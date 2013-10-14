@@ -450,7 +450,7 @@ pt:
         no_reward: "Obrigado. Eu só quero ajudar o projeto."
         submit: "Revisar e realizar pagamento"
         title: "Apoie o %{name}"
-      create:
+      edit:
         brazil_address_title: 'Preencha os campos abaixo se o seu apoio é nacional'
         credits_notice_html: "Este apoio será pago com seus créditos. Após a confirmação, você ficará com um saldo de <strong>%{credits}</strong> em créditos para apoiar outros projetos."
         live_in_brazil: 'Moro no Brasil. ( Desmarque caso o seu apoio seja internacional )'

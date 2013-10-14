@@ -41,6 +41,7 @@ App.addChild('ReviewForm', _.extend({
       address_phone_number: this.$('#user_phone_number').val()
     }
     $.post(this.$el.data('update-info-path'), {
+      _method: 'put',
       backer: backer_data
     });
   }
