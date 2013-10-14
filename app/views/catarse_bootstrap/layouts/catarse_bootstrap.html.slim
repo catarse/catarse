@@ -3,9 +3,24 @@ html
   head
     title= content_for(:title)
 
-
     = stylesheet_link_tag :catarse
+    = favicon_link_tag 'favicon.ico'
     = csrf_meta_tag
+
+    - if content_for? :meta_tags
+      /project specific meta tags
+      = yield :meta_tags
+    - else
+      /meta tags for the whole site
+      meta name="description"         content=t('site.description')
+      meta name="keywords"            content=t('site.keywords')
+      meta property="og:title"        content=t('site.title')
+      meta property="og:type"         content=:cause
+      meta property="og:url"          content=url_for(only_path: false)
+      meta property="og:image"        content=Configuration[:company_logo]
+      meta property="og:site_name"    content=Configuration[:company_name]
+      meta property="fb:app_id"       content=Configuration[:facebook_app_id]
+      meta property="og:description"  content=(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
 
   body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name]
     = render 'layouts/uservoice'
@@ -13,9 +28,6 @@ html
     = render 'layouts/login_feedback_support' if devise_controller?
 
     .content= yield
-
-
-
 
   = javascript_include_tag :application
   = render 'layouts/analytics'

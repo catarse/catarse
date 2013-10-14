@@ -1,0 +1,33 @@
+= render 'shared/header_channel'
+= content_for :title, @profile.name
+
+section.line-box
+  .row
+    .large-12.columns
+      .presentation
+        h1.channel-title = t('channels.how_it_works.title.channel')
+
+article.row
+  section.large-9.columns
+    h3#login = t('channels.how_it_works.title.login')
+    p = t('channels.how_it_works.text.login')
+    h3#inicial = t('channels.how_it_works.title.inicial')
+    p = t('channels.how_it_works.text.inicial')
+    h3#final = t('channels.how_it_works.title.final')
+    p = t('channels.how_it_works.text.final')
+    h3#participar = t('channels.how_it_works.title.participate')
+    p = t('channels.how_it_works.text.participate')
+    h3#detalhes = t('channels.how_it_works.title.details')
+    p = t('channels.how_it_works.text.details')
+
+  aside.large-3.columns
+    h4 = t('channels.how_it_works.sidebar.title')
+    nav
+      ul
+        li = link_to t('channels.how_it_works.sidebar.login'), "#login"
+        li = link_to t('channels.how_it_works.sidebar.inicial'), "#inicial"
+        li = link_to t('channels.how_it_works.sidebar.final'), "#final"
+        li = link_to t('channels.how_it_works.sidebar.participate'), "#participate"
+        li = link_to t('channels.how_it_works.sidebar.details'), "#details"
+
+= render 'shared/footer_channel'

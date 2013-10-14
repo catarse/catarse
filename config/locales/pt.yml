@@ -673,6 +673,27 @@ pt:
       how_works: "Como funciona"
       contact: "Contato"
       what_is_channel: "O que são canais?"
+    how_it_works:
+      title:
+        channel: "Como funciona: "
+        login: "Login"
+        inicial: "Empurrão inicial - Dicas"
+        final: "Empurrão final - Gatilho"
+        participate: "Para participar"
+        details: "Últimos detalhes"
+      text:
+        login: "O Instituto Asas quer dar asas pra quem quer mudar o mundo. Queremos inspirar, impulsionar e conectar jovens que querem transformar o mundo. Acreditamos que jovens com projetos transformadores precisam de mais oportunidades de formação, de maior articulação em rede, de espaço para dar visibilidade a suas iniciativas e também, de acesso a investimento para seus projetos."
+        inicial: "Para começar daremos dicas de como estruturar e potencializar sua campanha de crowdfunding para obter melhores resultados."
+        final: "Depois que o projeto estiver no ar, você mobiliza a sua rede e quando alcançar 80% da sua meta, o Instituto Asas coloca os outros 20% pra garantir o sucesso da sua campanha."
+        participate: "Entender como funciona o Catarse pois o que vale pro Catarse, vale pro Canal Asas. Caso você seja novo por aqui, entre nesse link e saiba mais. Ter entre 18 e 35 anos. O seu projeto precisa promover algum tipo de impacto positivo na sociedade. Você precisa emitir um recibo referente ao aporte do Instituto Asas"
+        details: "Assim como qualquer outro apoiador do seu projeto, o Instituto Asas terá direito à recompensa de acordo com o valor aportado. Caso você queira utilizar a marca do Instituto Asas, deverá seguir as regras do uso da marca. No fim do ano, vamos realizar um encontro para conhecê-lo e para que você interaja com outros jovens transformadores. Se o seu projeto já está no Catarse e você quer fazer parte deste Canal, envie pra gente: canalasas@catarse.me"
+      sidebar:
+        title: "Navegue"
+        login: "Login"
+        inicial: "Empurrão inicial - Dicas"
+        final: "Empurrão final - Gatilho"
+        participate: "Para participar"
+        details: "Últimos detalhes"
 
   registrations:
     new:
