@@ -122,10 +122,24 @@ describe Projects::BackersController do
     let(:secure_review_host){ nil }
     let(:user){ create(:user) }
     let(:online){ true }
+    let(:browser){ double("browser", ie9?: false, modern?: true) }
+
     before do
       ::Configuration[:secure_review_host] = secure_review_host
       Project.any_instance.stub(:online?).and_return(online)
+      controller.stub(:browser).and_return(browser)
+      ApplicationController.any_instance.unstub(:detect_old_browsers)
       get :new, {locale: :pt, project_id: project.id}
+    end
+
+    context "when browser is IE 9" do
+      let(:browser){ double("browser", ie9?: true, modern?: true) }
+      it{ should redirect_to page_path("bad_browser") }
+    end
+
+    context "when browser is old" do
+      let(:browser){ double("browser", ie9?: false, modern?: false) }
+      it{ should redirect_to page_path("bad_browser") }
     end
 
     context "when no user is logged" do
