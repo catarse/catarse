@@ -37,6 +37,7 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     ActiveRecord::Base.connection.execute "SET client_min_messages TO warning;"
+    ActiveRecord::Base.connection.execute "SET timezone TO 'utc';"
     DatabaseCleaner.clean_with :truncation
     I18n.locale = :pt
     I18n.default_locale = :pt
