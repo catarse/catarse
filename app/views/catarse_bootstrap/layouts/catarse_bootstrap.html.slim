@@ -17,9 +17,9 @@ html data-badbrowser-path=page_path("bad_browser")
       meta property="og:title"        content=t('site.title')
       meta property="og:type"         content=:cause
       meta property="og:url"          content=url_for(only_path: false)
-      meta property="og:image"        content='http://i.imgur.com/jbLchAN.jpg'
-      meta property="og:site_name"    content=::Configuration[:company_name]
-      meta property="fb:app_id"       content=::Configuration[:facebook_app_id]
+      meta property="og:image"        content=Configuration[:company_logo]
+      meta property="og:site_name"    content=Configuration[:company_name]
+      meta property="fb:app_id"       content=Configuration[:facebook_app_id]
       meta property="og:description"  content=(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
 
   body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name]
