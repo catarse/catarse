@@ -13,10 +13,6 @@ class Project < ActiveRecord::Base
     to: :decorator
 
   schema_associations
-  has_many :backers, dependent: :destroy
-  has_many :rewards, dependent: :destroy
-  has_many :updates, dependent: :destroy
-  has_many :notifications, dependent: :destroy
 
   has_and_belongs_to_many :channels
 
