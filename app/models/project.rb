@@ -235,7 +235,7 @@ class Project < ActiveRecord::Base
 
     event :finish do
       transition online: :failed,             if: ->(project) {
-        project.expired? && !project.pending_backers_reached_the_goal? && !project.reached_goal?
+        project.should_fail? && !project.pending_backers_reached_the_goal?
       }
 
       transition online: :waiting_funds,      if: ->(project) {
@@ -247,11 +247,11 @@ class Project < ActiveRecord::Base
       }
 
       transition waiting_funds: :failed,      if: ->(project) {
-        project.expired? && !project.reached_goal? && !project.in_time_to_wait?
+        project.should_fail? && !project.in_time_to_wait?
       }
 
       transition waiting_funds: :waiting_funds,      if: ->(project) {
-        project.expired? && !project.reached_goal? && project.in_time_to_wait?
+        project.should_fail? && project.in_time_to_wait?
       }
     end
 
@@ -279,6 +279,10 @@ class Project < ActiveRecord::Base
   end
 
   private
+  def should_fail?
+    project.expired? && !project.reached_goal?
+  end
+
   def self.between_dates(attribute, starts_at, ends_at)
     return scoped unless starts_at.present? && ends_at.present?
     where("projects.#{attribute}::date between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", starts_at, ends_at)
