@@ -13,7 +13,6 @@ class Project < ActiveRecord::Base
     to: :decorator
 
   schema_associations
-  belongs_to :user
   has_many :backers, dependent: :destroy
   has_many :rewards, dependent: :destroy
   has_many :updates, dependent: :destroy
