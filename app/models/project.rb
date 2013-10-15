@@ -91,7 +91,7 @@ class Project < ActiveRecord::Base
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
-  def self.between_created_at(start_at, ends_at)
+  def self.between_created_at(starts_at, ends_at)
     between_dates 'created_at', starts_at, ends_at
   end
 
@@ -99,11 +99,6 @@ class Project < ActiveRecord::Base
     between_dates 'expires_at', starts_at, ends_at
   end
   
-  def self.between_dates(attribute, starts_at, ends_at)
-    return scoped unless starts_at.present? && ends_at.present?
-    where("projects.#{attribute}::date between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
-  end
-
   def self.finish_projects!
     to_finish.each do |resource|
       Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
@@ -330,6 +325,11 @@ class Project < ActiveRecord::Base
   end
 
   private
+  def self.between_dates(attribute, starts_at, ends_at)
+    return scoped unless starts_at.present? && ends_at.present?
+    where("projects.#{attribute}::date between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", starts_at, ends_at)
+  end
+
   def self.get_routes
     routes = Rails.application.routes.routes.map do |r|
       r.path.spec.to_s.split('/').second.to_s.gsub(/\(.*?\)/, '')
