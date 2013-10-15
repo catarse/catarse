@@ -153,10 +153,6 @@ class Project < ActiveRecord::Base
     pledged >= goal
   end
 
-  def finished?
-    not online? and not draft? and not rejected?
-  end
-
   def expired?
     expires_at && expires_at < Time.zone.now
   end
