@@ -410,19 +410,6 @@ describe Project do
     end
   end
 
-  describe "#in_time?" do
-    subject{ project.in_time? }
-    context "when expires_at is in the future" do
-      let(:project){ Project.new online_date: 2.days.from_now, online_days: 0 }
-      it{ should be_true }
-    end
-
-    context "when expires_at is in the past" do
-      let(:project){ Project.new online_date: 2.days.ago, online_days: 0 }
-      it{ should be_false }
-    end
-  end
-
   describe "#expires_at" do
     subject{ project.expires_at }
     context "when we do not have an online_date" do
@@ -525,55 +512,15 @@ describe Project do
     end
   end
 
-  describe "#project_visible_notification_type" do
-    subject { project.project_visible_notification_type }
-
+  describe "#notification_type" do
+    subject { project.notification_type(:foo) }
     context "when project does not belong to any channel" do
-      it { should eq(:project_visible) }
+      it { should eq(:foo) }
     end
 
     context "when project does belong to a channel" do
       let(:project) { channel_project }
-      it{ should eq(:project_visible_channel) }
-    end
-  end
-
-  describe "#rejected_project_notification_type" do
-    subject { project.rejected_project_notification_type }
-
-    context "when project does not belong to any channel" do
-      it { should eq(:project_rejected) }
-    end
-
-    context "when project does belong to a channel" do
-      let(:project) { channel_project }
-      it{ should eq(:project_rejected_channel) }
-    end
-  end
-
-  describe "#new_draft_project_notification_type" do
-    subject{ project.new_draft_project_notification_type }
-
-    context "when project does not belong to any channel" do
-      it{ should == :new_draft_project }
-    end
-
-    context "when project does belong to a channel" do
-      let(:project) { channel_project }
-      it{ should == :new_draft_project_channel }
-    end
-  end
-
-  describe "#new_project_received_notification_type" do
-    subject{ project.new_project_received_notification_type }
-
-    context "when project does not belong to any channel" do
-      it{ should == :project_received }
-    end
-
-    context "when project does belong to a channel" do
-      let(:project) { channel_project }
-      it{ should == :project_received_channel }
+      it{ should eq(:foo_channel) }
     end
   end
 
@@ -608,7 +555,7 @@ describe Project do
 
     describe '#reject' do
       subject do
-        project.should_receive(:after_transition_of_draft_to_rejected)
+        project.should_receive(:notify_observers).with(:from_draft_to_rejected)
         project.reject
         project
       end
@@ -629,7 +576,7 @@ describe Project do
 
     describe '#approve' do
       subject do
-        project.should_receive(:after_transition_of_draft_to_online)
+        project.should_receive(:notify_observers).with(:from_draft_to_online)
         project.approve
         project
       end
