@@ -17,7 +17,7 @@ class ProjectObserver < ActiveRecord::Observer
                                            )
     end
 
-    Notification.create_notification_once(project.notification_type(:new_project_received),
+    Notification.create_notification_once(project.notification_type(:project_received),
                                           project.user,
                                           {project_id: project.id},
                                           {project: project, project_name: project.name, channel_name: (project.channels.first ? project.channels.first.name : nil)})
@@ -53,7 +53,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_draft_to_rejected(project)
-    Notification.create_notification_once(project.notification_type(:rejected_project),
+    Notification.create_notification_once(project.notification_type(:project_rejected),
       project.user,
       {project_id: project.id},
       {project: project, channel_name: (project.channels.first ? project.channels.first.name : nil)})
@@ -87,7 +87,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_waiting_funds_to_failed(project)
-    from_online_to_failed
+    from_online_to_failed(project)
     notify_admin_that_project_reached_deadline(project)
   end
 
