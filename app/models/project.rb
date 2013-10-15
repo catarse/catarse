@@ -92,13 +92,16 @@ class Project < ActiveRecord::Base
   validate :permalink_cant_be_route, allow_nil: true
 
   def self.between_created_at(start_at, ends_at)
-    return scoped unless start_at.present? && ends_at.present?
-    where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+    between_dates 'created_at', starts_at, ends_at
   end
 
-  def self.between_expires_at(start_at, ends_at)
-    return scoped unless start_at.present? && ends_at.present?
-    where("(projects.expires_at)::date BETWEEN to_date(?, 'dd/mm/yyyy') AND to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+  def self.between_expires_at(starts_at, ends_at)
+    between_dates 'expires_at', starts_at, ends_at
+  end
+  
+  def self.between_dates(attribute, starts_at, ends_at)
+    return scoped unless starts_at.present? && ends_at.present?
+    where("projects.#{attribute}::date between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
   end
 
   def self.finish_projects!
