@@ -156,10 +156,6 @@ class Project < ActiveRecord::Base
     backers.with_state('waiting_confirmation').count > 0
   end
 
-  def in_time?
-    !expired?
-  end
-
   def progress
     return 0 if goal == 0.0
     ((pledged / goal * 100).abs).round(pledged.to_i.size).to_i

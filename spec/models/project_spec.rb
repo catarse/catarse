@@ -410,19 +410,6 @@ describe Project do
     end
   end
 
-  describe "#in_time?" do
-    subject{ project.in_time? }
-    context "when expires_at is in the future" do
-      let(:project){ Project.new online_date: 2.days.from_now, online_days: 0 }
-      it{ should be_true }
-    end
-
-    context "when expires_at is in the past" do
-      let(:project){ Project.new online_date: 2.days.ago, online_days: 0 }
-      it{ should be_false }
-    end
-  end
-
   describe "#expires_at" do
     subject{ project.expires_at }
     context "when we do not have an online_date" do
