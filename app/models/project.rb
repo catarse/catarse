@@ -270,11 +270,11 @@ class Project < ActiveRecord::Base
     channels.first ? "#{type}_channel".to_sym : type
   end
 
-  private
   def should_fail?
-    project.expired? && !project.reached_goal?
+    expired? && !reached_goal?
   end
 
+  private
   def self.between_dates(attribute, starts_at, ends_at)
     return scoped unless starts_at.present? && ends_at.present?
     where("projects.#{attribute}::date between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", starts_at, ends_at)
