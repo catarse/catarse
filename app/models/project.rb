@@ -308,20 +308,8 @@ class Project < ActiveRecord::Base
     User.where(email: email).first
   end
 
-  def new_draft_project_notification_type
-    channels.first ? :new_draft_project_channel : :new_draft_project
-  end
-
-  def new_project_received_notification_type
-    channels.first ? :project_received_channel : :project_received
-  end
-
-  def rejected_project_notification_type
-    channels.first ? :project_rejected_channel : :project_rejected
-  end
-
-  def project_visible_notification_type
-    channels.first ? :project_visible_channel : :project_visible
+  def notification_type type
+    channels.first ? "#{type}_channel".to_sym : type
   end
 
   private

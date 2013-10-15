@@ -525,55 +525,15 @@ describe Project do
     end
   end
 
-  describe "#project_visible_notification_type" do
-    subject { project.project_visible_notification_type }
-
+  describe "#notification_type" do
+    subject { project.notification_type(:foo) }
     context "when project does not belong to any channel" do
-      it { should eq(:project_visible) }
+      it { should eq(:foo) }
     end
 
     context "when project does belong to a channel" do
       let(:project) { channel_project }
-      it{ should eq(:project_visible_channel) }
-    end
-  end
-
-  describe "#rejected_project_notification_type" do
-    subject { project.rejected_project_notification_type }
-
-    context "when project does not belong to any channel" do
-      it { should eq(:project_rejected) }
-    end
-
-    context "when project does belong to a channel" do
-      let(:project) { channel_project }
-      it{ should eq(:project_rejected_channel) }
-    end
-  end
-
-  describe "#new_draft_project_notification_type" do
-    subject{ project.new_draft_project_notification_type }
-
-    context "when project does not belong to any channel" do
-      it{ should == :new_draft_project }
-    end
-
-    context "when project does belong to a channel" do
-      let(:project) { channel_project }
-      it{ should == :new_draft_project_channel }
-    end
-  end
-
-  describe "#new_project_received_notification_type" do
-    subject{ project.new_project_received_notification_type }
-
-    context "when project does not belong to any channel" do
-      it{ should == :project_received }
-    end
-
-    context "when project does belong to a channel" do
-      let(:project) { channel_project }
-      it{ should == :project_received_channel }
+      it{ should eq(:foo_channel) }
     end
   end
 

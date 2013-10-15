@@ -10,14 +10,14 @@ class ProjectObserver < ActiveRecord::Observer
 
   def after_create(project)
     if (user = project.new_draft_recipient)
-      Notification.create_notification_once(project.new_draft_project_notification_type,
+      Notification.create_notification_once(project.notification_type(:new_draft_project),
                                             user,
                                             {project_id: project.id},
                                             {project: project, project_name: project.name, from: project.user.email, display_name: project.user.display_name}
                                            )
     end
 
-    Notification.create_notification_once(project.new_project_received_notification_type,
+    Notification.create_notification_once(project.notification_type(:new_project_received),
                                           project.user,
                                           {project_id: project.id},
                                           {project: project, project_name: project.name, channel_name: (project.channels.first ? project.channels.first.name : nil)})
@@ -49,14 +49,14 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def notify_owner_that_project_is_rejected(project)
-    Notification.create_notification_once(project.rejected_project_notification_type,
+    Notification.create_notification_once(project.notification_type(:rejected_project),
       project.user,
       {project_id: project.id},
       {project: project, channel_name: (project.channels.first ? project.channels.first.name : nil)})
   end
 
   def notify_owner_that_project_is_online(project)
-    Notification.create_notification_once(project.project_visible_notification_type,
+    Notification.create_notification_once(project.notification_type(:project_visible),
       project.user,
       {project_id: project.id},
       project: project)
