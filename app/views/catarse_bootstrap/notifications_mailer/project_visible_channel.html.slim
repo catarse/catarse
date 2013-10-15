@@ -10,7 +10,7 @@
   | , #{user.name}!
 br/
 br/
-|Seu projeto acabou de entrar no ar e já está pronto para receber os apoios: #{link_to(project.name, project_url(project, subdomain: channel.permalink), target: '__blank')}
+|Seu projeto acabou de entrar no ar e já está pronto para receber os apoios: #{link_to(project.name, project_by_slug_url(permalink: project.permalink, subdomain: channel.permalink), target: '__blank')}
 br/
 br/
 strong Algumas informacões úteis:
