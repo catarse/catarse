@@ -430,7 +430,7 @@ en:
         no_reward: "Thanks. I just want to help the project."
         submit: "Review and proceed to checkout"
         title: "Back %{name}"
-      create:
+      edit:
         brazil_address_title: 'Fill when you back is in Brazil'
         live_in_brazil: "If you live in Brazil, please check this box"
         credits_notice_html: "This back will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to back other projects."
