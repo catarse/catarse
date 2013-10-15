@@ -255,52 +255,18 @@ class Project < ActiveRecord::Base
       }
     end
 
-    after_transition online: :waiting_funds, do: :after_transition_of_online_to_waiting_funds
-    after_transition online: :failed, do: :after_transition_of_online_to_failed
-    after_transition waiting_funds: [:successful, :failed], do: :after_transition_of_wainting_funds_to_successful_or_failed
-    after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
-    after_transition draft: :online, do: :after_transition_of_draft_to_online
-    after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
-    after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
-    after_transition :waiting_funds => [:failed, :successful], :do => :after_transition_of_waiting_funds_to_failed_or_successful
-    after_transition [:draft, :rejected] => :deleted, :do => :after_transition_of_draft_or_rejected_to_deleted
-  end
-
-  def after_transition_of_draft_or_rejected_to_deleted
-    update_attributes({ permalink: "deleted_project_#{id}"})
-  end
-
-  def after_transition_of_online_to_waiting_funds
-    notify_observers :notify_owner_that_project_is_waiting_funds
-  end
-
-  def after_transition_of_waiting_funds_to_failed_or_successful
-    notify_observers :notify_admin_that_project_reached_deadline
-  end
-
-  def after_transition_of_any_to_failed_or_successful
-    notify_observers :sync_with_mailchimp
-  end
-
-  def after_transition_of_online_to_failed
-    notify_observers :notify_users
-  end
-
-  def after_transition_of_wainting_funds_to_successful
-    notify_observers :notify_owner_that_project_is_successful
-  end
-
-  def after_transition_of_draft_to_rejected
-    notify_observers :notify_owner_that_project_is_rejected
-  end
-
-  def after_transition_of_wainting_funds_to_successful_or_failed
-    notify_observers :notify_users
-  end
-
-  def after_transition_of_draft_to_online
-    update_attributes({ online_date: DateTime.now })
-    notify_observers :notify_owner_that_project_is_online
+    after_transition do |project, transition|
+      project.notify_observers :"from_#{transition.from}_to_#{transition.to}"
+    end
+    after_transition draft: :online do |project, transition|
+      project.update_attributes({ online_date: DateTime.now })
+    end
+    after_transition any => [:failed, :successful] do |project, transition|
+      project.notify_observers :sync_with_mailchimp
+    end
+    after_transition [:draft, :rejected] => :deleted do |project, transition|
+      project.update_attributes({ permalink: "deleted_project_#{project.id}"})
+    end
   end
 
   def new_draft_recipient

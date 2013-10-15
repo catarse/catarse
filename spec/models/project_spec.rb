@@ -568,7 +568,7 @@ describe Project do
 
     describe '#reject' do
       subject do
-        project.should_receive(:after_transition_of_draft_to_rejected)
+        project.should_receive(:notify_observers).with(:from_draft_to_rejected)
         project.reject
         project
       end
@@ -589,7 +589,7 @@ describe Project do
 
     describe '#approve' do
       subject do
-        project.should_receive(:after_transition_of_draft_to_online)
+        project.should_receive(:notify_observers).with(:from_draft_to_online)
         project.approve
         project
       end
