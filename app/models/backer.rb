@@ -91,7 +91,7 @@ class Backer < ActiveRecord::Base
   end
 
   def can_refund?
-    confirmed? && project.finished? && !project.successful?
+    confirmed? && project.failed?
   end
 
   def reward_must_be_from_project
