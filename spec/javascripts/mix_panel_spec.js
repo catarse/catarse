@@ -76,7 +76,6 @@ describe("MixPanel", function() {
       spyOn(view, "trackUserClickOnProjectsImage");
       spyOn(view, "trackUserClickOnProjectsTitle");
       spyOn(view, "trackUserClickOnBackButton");
-      spyOn(view, "trackUserClickOnRecommendedProject");
       spyOn(view, "trackUserClickOnReviewAndMakePayment");
       spyOn(view, "trackUserClickOnAcceptTerms");
       spyOn(view, "trackUserClickOnPaymentButton");
@@ -88,7 +87,6 @@ describe("MixPanel", function() {
       expect(view.trackUserClickOnProjectsImage).wasCalled();
       expect(view.trackUserClickOnProjectsTitle).wasCalled();
       expect(view.trackUserClickOnBackButton).wasCalled();
-      expect(view.trackUserClickOnRecommendedProject).wasCalled();
       expect(view.trackUserClickOnReviewAndMakePayment).wasCalled();
       expect(view.trackUserClickOnAcceptTerms).wasCalled();
       expect(view.trackUserClickOnPaymentButton).wasCalled();
