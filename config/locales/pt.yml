@@ -546,7 +546,7 @@ pt:
       pending: "Pendentes"
     project_header:
       subtitle_html: "Um projeto de %{link}"
-      without_city: "Um projeto de %{category_name} por %{author}"
+      without_city: "Um projeto de"
       with_city: "Um projeto de %{category_name} por %{author} em %{city}"
     project_updates:
       empty: "Este projeto ainda não teve novidades. Aguarde =D"
