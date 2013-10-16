@@ -27,11 +27,10 @@ section.line-box
         h2.curator-name = @profile.users.first.name
         p.curator-caption = t('channels.curator')
         h3.curator-bio = @profile.users.first.bio
-      ul.large-12.columns.curator-social
-        li.large-3.columns = mail_to @profile.email, t('channels.send_a_email'), class: ["icon-mail"], title: t('channels.send_a_email')
-        li.large-3.columns = link_to '', @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.facebook
-        li.large-3.columns = link_to '', @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"] if @profile.website
-        li.large-3.columns = link_to '', @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"] if @profile.twitter
+      ul.curator-social
+        li = link_to @profile.website, @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"] if @profile.facebook
+        li = link_to @profile.facebook, @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"] if @profile.website
+        li = link_to @profile.twitter, @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"] if @profile.twitter
 
 section.row.projects
   - @profile.projects.visible.each do |project|
