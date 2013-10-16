@@ -30,4 +30,8 @@ article.row
         li = link_to t('channels.how_it_works.sidebar.participate'), "#participate"
         li = link_to t('channels.how_it_works.sidebar.details'), "#details"
 
+  .row
+    .large-4.columns.large-centered
+      = link_to t('channels.header.submit'), guidelines_start_path, :class => 'button medium action submit'
+
 = render 'shared/footer_channel'
