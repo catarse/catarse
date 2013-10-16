@@ -5,29 +5,38 @@ section.line-box
   .row
     .large-12.columns
       .presentation
-        h1.channel-title = t('channels.how_it_works.title.channel')
+        h1.channel-title = "#{t('channels.how_it_works.title.channel')}: #{@profile.name}"
 
 article.row
-  section.large-9.columns
+  section.large-9.columns.how-it-works
     h3#login = t('channels.how_it_works.title.login')
-    p = t('channels.how_it_works.text.login')
+    p = 'O Instituto Asas quer dar asas pra quem quer mudar o mundo. Queremos inspirar, impulsionar e conectar jovens que querem transformar o mundo. Acreditamos que jovens com projetos transformadores precisam de mais oportunidades de formação, de maior articulação em rede, de espaço para dar visibilidade a suas iniciativas e também, de acesso a investimento para seus projetos.'
     h3#inicial = t('channels.how_it_works.title.inicial')
-    p = t('channels.how_it_works.text.inicial')
+    p = 'Para começar daremos dicas de como estruturar e potencializar sua campanha de crowdfunding para obter melhores resultados.'
     h3#final = t('channels.how_it_works.title.final')
-    p = t('channels.how_it_works.text.final')
+    p = 'Depois que o projeto estiver no ar, você mobiliza a sua rede e quando alcançar 80% da sua meta, o Instituto Asas coloca os outros 20% pra garantir o sucesso da sua campanha.'
     h3#participar = t('channels.how_it_works.title.participate')
-    p = t('channels.how_it_works.text.participate')
+    ul
+      li = 'Entender como funciona o Catarse pois o que vale pro Catarse, vale pro Canal Asas. Caso você seja novo por aqui, entre nesse link e saiba mais.'
+      li = 'Ter entre 18 e 35 anos.'
+      li = 'O seu projeto precisa promover algum tipo de impacto positivo na sociedade.'
+      li = 'Você precisa emitir um recibo referente ao aporte do Instituto Asas'
     h3#detalhes = t('channels.how_it_works.title.details')
-    p = t('channels.how_it_works.text.details')
+    p = 'Assim como qualquer outro apoiador do seu projeto, o Instituto Asas terá direito à recompensa de acordo com o valor aportado. Caso você queira utilizar a marca do Instituto Asas, deverá seguir as regras do uso da marca. No fim do ano, vamos realizar um encontro para conhecê-lo e para que você interaja com outros jovens transformadores.'
+    p = 'Se o seu projeto já está no Catarse e você quer fazer parte deste Canal, envie pra gente: canalasas@catarse.me'
 
-  aside.large-3.columns
-    h4 = t('channels.how_it_works.sidebar.title')
+  aside.large-3.columns.how-it-works-sidebar
+    h4 = t('channels.how_it_works.title.menu')
     nav
       ul
-        li = link_to t('channels.how_it_works.sidebar.login'), "#login"
-        li = link_to t('channels.how_it_works.sidebar.inicial'), "#inicial"
-        li = link_to t('channels.how_it_works.sidebar.final'), "#final"
-        li = link_to t('channels.how_it_works.sidebar.participate'), "#participate"
-        li = link_to t('channels.how_it_works.sidebar.details'), "#details"
+        li = link_to t('channels.how_it_works.title.login'), "#login"
+        li = link_to t('channels.how_it_works.title.inicial'), "#inicial"
+        li = link_to t('channels.how_it_works.title.final'), "#final"
+        li = link_to t('channels.how_it_works.title.participate'), "#participate"
+        li = link_to t('channels.how_it_works.title.details'), "#details"
+
+  .row
+    .large-4.columns.large-centered
+      = link_to t('channels.header.submit'), new_project_path, :class => 'button medium action submit'
 
 = render 'shared/footer_channel'

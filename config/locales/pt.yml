@@ -675,7 +675,7 @@ pt:
       what_is_channel: "O que são canais?"
     how_it_works:
       title:
-        channel: "Como funciona: "
+        channel: "Como funciona"
         login: "Login"
         inicial: "Empurrão inicial - Dicas"
         final: "Empurrão final - Gatilho"
