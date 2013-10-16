@@ -1,4 +1,5 @@
 class Channel < ActiveRecord::Base
+  extend CatarseAutoHtml
   attr_accessible :description, :name, :permalink, :video_url, :twitter, :facebook, :website, :image, :how_it_works
   schema_associations
 
@@ -8,6 +9,8 @@ class Channel < ActiveRecord::Base
   has_and_belongs_to_many :projects, -> { order("online_date desc") }
   has_and_belongs_to_many :subscribers, class_name: 'User', join_table: :channels_subscribers
   has_many :subscriber_reports
+
+  catarse_auto_html_for field: :how_it_works, video_width: 560, video_height: 340
 
   delegate :display_facebook, :display_twitter, :display_website, to: :decorator
   mount_uploader :image, ProfileUploader
