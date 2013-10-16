@@ -16,7 +16,6 @@ footer.footer
         .footer-list
           h3.footer-title= t('footer.titles.about')
           ul.footer-list
-            li= link_to t('footer.links.about'), about_path
             li= link_to t('footer.links.faq'), "#{Configuration[:faq_url]}", target: '_blank'
             li= link_to t('footer.links.feedback'), "#{::Configuration[:feedback_url]}", target: '_blank'
             li= link_to t('footer.links.terms'), "#{::Configuration[:terms_url]}", target: '_blank'
