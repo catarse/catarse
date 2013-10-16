@@ -9,7 +9,7 @@ class Channel < ActiveRecord::Base
   has_and_belongs_to_many :subscribers, class_name: 'User', join_table: :channels_subscribers
   has_many :subscriber_reports
 
-  delegate :all, to: :decorator
+  delegate :display_facebook, :display_twitter, :display_website, to: :decorator
   mount_uploader :image, ProfileUploader
 
   scope :by_permalink, ->(p) { where("lower(channels.permalink) = lower(?)", p) }
