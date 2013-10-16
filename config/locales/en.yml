@@ -518,7 +518,7 @@ en:
       pending: "Pending"
     project_header:
       subtitle_html: "A project by %{link}"
-      without_city: "A project in %{category_name}, by %{author}"
+      without_city: "A project in"
       with_city: "A project in %{category_name}, in %{city}, by %{author}"
     project_updates:
       empty: "This project didn't have updates yet. But wait and see =D"
