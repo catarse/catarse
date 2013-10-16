@@ -13,15 +13,10 @@ class Project < ActiveRecord::Base
     to: :decorator
 
   schema_associations
-  belongs_to :user
-  has_many :backers, dependent: :destroy
-  has_many :rewards, dependent: :destroy
-  has_many :updates, dependent: :destroy
-  has_many :notifications, dependent: :destroy
 
   has_and_belongs_to_many :channels
-
   has_one :project_total
+  has_many :rewards
   accepts_nested_attributes_for :rewards
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
@@ -92,16 +87,14 @@ class Project < ActiveRecord::Base
   validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
-  def self.between_created_at(start_at, ends_at)
-    return scoped unless start_at.present? && ends_at.present?
-    where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+  def self.between_created_at(starts_at, ends_at)
+    between_dates 'created_at', starts_at, ends_at
   end
 
-  def self.between_expires_at(start_at, ends_at)
-    return scoped unless start_at.present? && ends_at.present?
-    where("(projects.expires_at)::date BETWEEN to_date(?, 'dd/mm/yyyy') AND to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
+  def self.between_expires_at(starts_at, ends_at)
+    between_dates 'expires_at', starts_at, ends_at
   end
-
+  
   def self.finish_projects!
     to_finish.each do |resource|
       Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
@@ -151,20 +144,12 @@ class Project < ActiveRecord::Base
     pledged >= goal
   end
 
-  def finished?
-    not online? and not draft? and not rejected?
-  end
-
   def expired?
     expires_at && expires_at < Time.zone.now
   end
 
   def in_time_to_wait?
     backers.with_state('waiting_confirmation').count > 0
-  end
-
-  def in_time?
-    !expired?
   end
 
   def progress
@@ -242,7 +227,7 @@ class Project < ActiveRecord::Base
 
     event :finish do
       transition online: :failed,             if: ->(project) {
-        project.expired? && !project.pending_backers_reached_the_goal? && !project.reached_goal?
+        project.should_fail? && !project.pending_backers_reached_the_goal?
       }
 
       transition online: :waiting_funds,      if: ->(project) {
@@ -254,60 +239,26 @@ class Project < ActiveRecord::Base
       }
 
       transition waiting_funds: :failed,      if: ->(project) {
-        project.expired? && !project.reached_goal? && !project.in_time_to_wait?
+        project.should_fail? && !project.in_time_to_wait?
       }
 
       transition waiting_funds: :waiting_funds,      if: ->(project) {
-        project.expired? && !project.reached_goal? && project.in_time_to_wait?
+        project.should_fail? && project.in_time_to_wait?
       }
     end
 
-    after_transition online: :waiting_funds, do: :after_transition_of_online_to_waiting_funds
-    after_transition online: :failed, do: :after_transition_of_online_to_failed
-    after_transition waiting_funds: [:successful, :failed], do: :after_transition_of_wainting_funds_to_successful_or_failed
-    after_transition waiting_funds: :successful, do: :after_transition_of_wainting_funds_to_successful
-    after_transition draft: :online, do: :after_transition_of_draft_to_online
-    after_transition draft: :rejected, do: :after_transition_of_draft_to_rejected
-    after_transition any => [:failed, :successful], :do => :after_transition_of_any_to_failed_or_successful
-    after_transition :waiting_funds => [:failed, :successful], :do => :after_transition_of_waiting_funds_to_failed_or_successful
-    after_transition [:draft, :rejected] => :deleted, :do => :after_transition_of_draft_or_rejected_to_deleted
-  end
-
-  def after_transition_of_draft_or_rejected_to_deleted
-    update_attributes({ permalink: "deleted_project_#{id}"})
-  end
-
-  def after_transition_of_online_to_waiting_funds
-    notify_observers :notify_owner_that_project_is_waiting_funds
-  end
-
-  def after_transition_of_waiting_funds_to_failed_or_successful
-    notify_observers :notify_admin_that_project_reached_deadline
-  end
-
-  def after_transition_of_any_to_failed_or_successful
-    notify_observers :sync_with_mailchimp
-  end
-
-  def after_transition_of_online_to_failed
-    notify_observers :notify_users
-  end
-
-  def after_transition_of_wainting_funds_to_successful
-    notify_observers :notify_owner_that_project_is_successful
-  end
-
-  def after_transition_of_draft_to_rejected
-    notify_observers :notify_owner_that_project_is_rejected
-  end
-
-  def after_transition_of_wainting_funds_to_successful_or_failed
-    notify_observers :notify_users
-  end
-
-  def after_transition_of_draft_to_online
-    update_attributes({ online_date: DateTime.now })
-    notify_observers :notify_owner_that_project_is_online
+    after_transition do |project, transition|
+      project.notify_observers :"from_#{transition.from}_to_#{transition.to}"
+    end
+    after_transition draft: :online do |project, transition|
+      project.update_attributes({ online_date: DateTime.now })
+    end
+    after_transition any => [:failed, :successful] do |project, transition|
+      project.notify_observers :sync_with_mailchimp
+    end
+    after_transition [:draft, :rejected] => :deleted do |project, transition|
+      project.update_attributes({ permalink: "deleted_project_#{project.id}"})
+    end
   end
 
   def new_draft_recipient
@@ -315,23 +266,20 @@ class Project < ActiveRecord::Base
     User.where(email: email).first
   end
 
-  def new_draft_project_notification_type
-    channels.first ? :new_draft_project_channel : :new_draft_project
+  def notification_type type
+    channels.first ? "#{type}_channel".to_sym : type
   end
 
-  def new_project_received_notification_type
-    channels.first ? :project_received_channel : :project_received
-  end
-
-  def rejected_project_notification_type
-    channels.first ? :project_rejected_channel : :project_rejected
-  end
-
-  def project_visible_notification_type
-    channels.first ? :project_visible_channel : :project_visible
+  def should_fail?
+    expired? && !reached_goal?
   end
 
   private
+  def self.between_dates(attribute, starts_at, ends_at)
+    return scoped unless starts_at.present? && ends_at.present?
+    where("projects.#{attribute}::date between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", starts_at, ends_at)
+  end
+
   def self.get_routes
     routes = Rails.application.routes.routes.map do |r|
       r.path.spec.to_s.split('/').second.to_s.gsub(/\(.*?\)/, '')
