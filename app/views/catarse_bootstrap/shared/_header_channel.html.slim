@@ -5,9 +5,7 @@ header.row
     nav.nav-horizontal-right
       ul
         li.nav-item
-          = link_to t('channels.header.how_works'), "#{Configuration[:support_forum]}", id: 'guidelines_header_modal', :class => 'standard-link', target: '_blank'
-        li.nav-item
-          = link_to t('channels.header.what_is_channel'), 'http://blog.catarse.me/conheca-os-canais-do-catarse/', :class => 'standard-link', target: '_blank'
+          = link_to t('channels.header.submit'), "#{Configuration[:support_forum]}", id: 'guidelines_header_modal', :class => 'standard-link', target: '_blank'
         li.nav-item
           = mail_to @profile.email, t('channels.header.contact'), title: t('channels.header.contact'), :class => 'standard-link', target: '_blank'
         - if current_user
