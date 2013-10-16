@@ -6,7 +6,6 @@ App.addChild('MixPanel', {
     this.trackUserClickOnProjectsImage();
     this.trackUserClickOnProjectsTitle();
     this.trackUserClickOnBackButton();
-    this.trackUserClickOnRecommendedProject();
     this.trackUserClickOnReviewAndMakePayment();
     this.trackUserClickOnAcceptTerms();
     this.trackUserClickOnPaymentButton();
@@ -44,10 +43,6 @@ App.addChild('MixPanel', {
   trackUserClickOnReward: function(){
     this.trackOnMixPanel('#rewards .clickable', 'click', 'Clicked on a reward');
     this.trackOnMixPanel('#rewards .clickable_owner span.avaliable', 'click', 'Clicked on a reward');
-  },
-
-  trackUserClickOnRecommendedProject: function(){
-    this.trackOnMixPanel('#recommended_header h2', 'click', 'Clicked on a recommended banner');
   },
 
   trackUserClickOnReviewAndMakePayment: function(){
