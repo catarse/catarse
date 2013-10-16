@@ -18,7 +18,7 @@
       p.progress-percent = t('channels.projects.progress_html', percent: project.progress)
       .progress-bar = project.progress_bar
       = link_to(project_by_slug_path(project.permalink), title: project.name, class: 'time-remaining') do
-        - if project.in_time?
+        - unless project.expired?
           = t('channels.projects.time_remaining_html', count: project.time_to_go[:time], unit: project.time_to_go[:unit])
         - else
           span = t("project.display_status.#{project.display_status}").capitalize

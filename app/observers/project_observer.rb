@@ -10,31 +10,35 @@ class ProjectObserver < ActiveRecord::Observer
 
   def after_create(project)
     if (user = project.new_draft_recipient)
-      Notification.create_notification_once(project.new_draft_project_notification_type,
+      Notification.create_notification_once(project.notification_type(:new_draft_project),
                                             user,
                                             {project_id: project.id},
                                             {project: project, project_name: project.name, from: project.user.email, display_name: project.user.display_name}
                                            )
     end
 
-    Notification.create_notification_once(project.new_project_received_notification_type,
+    Notification.create_notification_once(project.notification_type(:project_received),
                                           project.user,
                                           {project_id: project.id},
                                           {project: project, project_name: project.name, channel_name: (project.channels.first ? project.channels.first.name : nil)})
   end
 
-  def notify_owner_that_project_is_waiting_funds(project)
+  def from_online_to_waiting_funds(project)
     Notification.create_notification_once(:project_in_wainting_funds,
       project.user,
       {project_id: project.id},
       project: project)
   end
 
-  def notify_owner_that_project_is_successful(project)
-    Notification.create_notification_once(:project_success,
+  def from_waiting_funds_to_successful(project)
+    Notification.create_notification_once(
+      :project_success,
       project.user,
       {project_id: project.id},
-      project: project)
+      project: project
+    )
+    notify_admin_that_project_reached_deadline(project)
+    notify_users(project)
   end
 
   def notify_admin_that_project_reached_deadline(project)
@@ -48,18 +52,43 @@ class ProjectObserver < ActiveRecord::Observer
     end
   end
 
-  def notify_owner_that_project_is_rejected(project)
-    Notification.create_notification_once(project.rejected_project_notification_type,
+  def from_draft_to_rejected(project)
+    Notification.create_notification_once(project.notification_type(:project_rejected),
       project.user,
       {project_id: project.id},
       {project: project, channel_name: (project.channels.first ? project.channels.first.name : nil)})
   end
 
-  def notify_owner_that_project_is_online(project)
-    Notification.create_notification_once(project.project_visible_notification_type,
+  def from_draft_to_online(project)
+    Notification.create_notification_once(project.notification_type(:project_visible),
       project.user,
       {project_id: project.id},
       project: project)
+  end
+
+  def from_online_to_failed(project)
+    notify_users(project)
+
+    project.backers.with_state('waiting_confirmation').each do |backer|
+      Notification.create_notification_once(
+        :pending_backer_project_unsuccessful,
+        backer.user,
+        {backer_id: backer.id},
+        {backer: backer, project: project, project_name: project.name }
+      )
+    end
+
+    Notification.create_notification_once(
+      :project_unsuccessful,
+      project.user,
+      {project_id: project.id, user_id: project.user.id},
+      project: project
+    )
+  end
+
+  def from_waiting_funds_to_failed(project)
+    from_online_to_failed(project)
+    notify_admin_that_project_reached_deadline(project)
   end
 
   def notify_users(project)
@@ -75,22 +104,6 @@ class ProjectObserver < ActiveRecord::Observer
         backer.update_attributes({ notified_finish: true })
       end
     end
-
-    if project.failed?
-      project.backers.with_state('waiting_confirmation').each do |backer|
-        Notification.create_notification_once(
-          :pending_backer_project_unsuccessful,
-          backer.user,
-          {backer_id: backer.id},
-          {backer: backer, project: project, project_name: project.name })
-      end
-    end
-
-    Notification.create_notification_once(:project_unsuccessful,
-      project.user,
-      {project_id: project.id, user_id: project.user.id},
-      project: project) unless project.successful?
-
   end
 
   def sync_with_mailchimp(project)

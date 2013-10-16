@@ -109,7 +109,7 @@
           #condition[class="#{@project.display_status}"]
             p
               = t("projects.back_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
-          - if @project.online? && @project.in_time?
+          - if @project.online? && !@project.expired?
             #pledge
               = form_tag(new_project_backer_path(@project), method: :get, id: 'back_project_form') do
                 fieldset
