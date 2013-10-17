@@ -1,14 +1,19 @@
 class Channels::ChannelsSubscribersController < Channels::BaseController
   inherit_resources
   load_and_authorize_resource
-  actions :create, :destroy
+  actions :show, :destroy, :create
 
-  def create
+  # We use show as create to redirect to this action after auth
+  def show
+    authorize! :create, ChannelsSubscriber
     @channels_subscriber = ChannelsSubscriber.new subscription_attributes
     create! do |format|
       flash[:notice] = I18n.t('channels_subscribers.created', channel: channel.name)
       return redirect_to root_path
     end
+  # This is needed when you press the follow channel button without being signed in
+  rescue PG::Error, ActiveRecord::RecordNotUnique
+    return redirect_to root_path
   end
 
   def destroy

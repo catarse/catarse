@@ -51,7 +51,8 @@ Catarse::Application.routes.draw do
           get 'video'
         end
       end
-      resource :channels_subscriber, only: [:create, :destroy], as: :subscriber
+      # NOTE We use index instead of create to subscribe comming back from auth via GET
+      resource :channels_subscriber, only: [:show, :destroy], as: :subscriber
     end
   end
 
