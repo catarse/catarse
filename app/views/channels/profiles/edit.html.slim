@@ -2,7 +2,7 @@
 #page_content
   .container
     .bootstrap-form
-      = simple_form_for @profile, url: '/profile', html: { method: 'patch' } do |form|
+      = simple_form_for @profile, as: 'profile', url: '/profile', html: { method: 'patch' } do |form|
           = form.input :name
           = form.input :description, as: :text
           = form.input :permalink

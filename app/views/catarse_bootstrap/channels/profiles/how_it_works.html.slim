@@ -1,0 +1,23 @@
+= render 'shared/header_channel'
+= content_for :title, @profile.name
+
+section.line-box
+  .row
+    .large-12.columns
+      .presentation
+        h1.channel-title = "#{t('channels.how_it_works.title.channel')}: #{@profile.name}"
+
+article.row.how-it-works-wrapper
+  section.large-9.columns.how-it-works
+    == @profile.how_it_works_html
+
+  aside.large-3.columns.how-it-works-sidebar
+    h4 = t('channels.how_it_works.title.menu')
+    nav
+      ul#side-menu
+
+  .row
+    .large-4.columns.large-centered
+      = link_to t('channels.header.submit'), new_project_path, :class => 'button medium action submit'
+
+= render 'shared/footer_channel'
