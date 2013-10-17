@@ -2,9 +2,9 @@
   .container
     .start_content
       .title
-        h1= t('.title')
+        h1= t('.title', channel: controller.channel.name)
         h2= t('.subtitle')
-        p= t('.legend_html')
+        p= t('.legend_html', channel: controller.channel.name)
       .bootstrap-form
         .clearfix
         = semantic_form_for @project, html: { id: 'project_form' } do |form|
