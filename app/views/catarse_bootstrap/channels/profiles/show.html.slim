@@ -13,7 +13,7 @@ section.line-box
               .stop_following= t('channels.unfollow')
         - else
           .large-6.columns
-            = link_to t('channels.follow'), channels_subscriber_path, method: :post, class: [:button, :medium, :negative], title: t('channels.follow')
+            = link_to t('channels.follow'), channels_subscriber_path, class: [:button, :medium, :negative], title: t('channels.follow')
         .large-6.columns
           .channel-followers[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
             = t('channels.subscribed', count: @profile.channels_subscribers.size)
