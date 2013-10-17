@@ -28,7 +28,7 @@ describe("HowItWorks", function() {
     });
 
     it("should enumerate the headers in name property", function(){
-      expect(_.map(headers, function(el){ return el.prop('name'); })).toEqual(['topic_0', 'topic_1']);
+      expect(_.map(headers, function(el){ return el.prop('id'); })).toEqual(['topic_0', 'topic_1']);
     });
 
     it("should return array with h3 elements inside how-it-works body", function(){
