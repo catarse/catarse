@@ -6,14 +6,14 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
   def create
     @channels_subscriber = ChannelsSubscriber.new subscription_attributes
     create! do |format|
-      flash[:notice] = I18n.t('channels_subscribers.created')
+      flash[:notice] = I18n.t('channels_subscribers.created', channel: channel.name)
       return redirect_to root_path
     end
   end
 
   def destroy
     destroy! do |format|
-      flash[:notice] = I18n.t('channels_subscribers.deleted')
+      flash[:notice] = I18n.t('channels_subscribers.deleted', channel: channel.name)
       return redirect_to root_path
     end
   end
