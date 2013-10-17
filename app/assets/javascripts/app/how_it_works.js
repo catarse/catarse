@@ -9,7 +9,7 @@ App.addChild('HowItWorks', {
 
   generateMenu: function(){
     return _.map(this.getHeaders(), function(el){ 
-      return $('<li>').append($('<a>').prop('href', '#' + el.prop('name')).html(el.html()));
+      return $('<li>').append($('<a>').prop('href', '#' + el.prop('id')).html(el.html()));
     });
   },
 
