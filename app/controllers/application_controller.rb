@@ -24,10 +24,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :namespace, :fb_admins, :render_facebook_sdk, :render_facebook_like, :render_twitter, :display_uservoice_sso
+  helper_method :channel, :namespace, :fb_admins, :render_facebook_sdk, :render_facebook_like, :render_twitter, :display_uservoice_sso
 
   before_filter :set_locale
   before_filter :force_http
+
+  before_action :referal_it!
 
   # TODO: Change this way to get the opendata
   before_filter do
@@ -62,6 +64,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def referal_it!
+    session[:referal_link] = params[:ref] if params[:ref].present?
+  end
+
   def detect_old_browsers
     return redirect_to page_path("bad_browser") if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
   end

@@ -8,9 +8,9 @@ footer.line-box
           li.nav-item.separator
             = link_to t('channels.footer.privacy_policy'), Configuration[:support_forum], title: t('channels.footer.privacy_policy'), class: 'standard-link', target: '_blank'
           li.nav-item.separator
-            = link_to t('channels.footer.how_works', name: @profile.name), channels_about_path, title: t('channels.footer.how_it_works', name: @profile.name), class: 'standard-link'
+            = link_to t('channels.footer.how_works', name: channel.name), channels_about_path, title: t('channels.footer.how_it_works', name: channel.name), class: 'standard-link'
           li.nav-item.separator
-            = mail_to @profile.email, t('channels.footer.contact'), title: t('channels.footer.contact'), class: 'standard-link', target: '_blank'
+            = mail_to channel.email, t('channels.footer.contact'), title: t('channels.footer.contact'), class: 'standard-link', target: '_blank'
           li.nav-item
             = link_to t('channels.footer.what_is_channel'), Configuration[:about_channel_url], title: t('channels.footer.how_channels_work'), class: 'standard-link', target: '_blank'
 
