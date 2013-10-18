@@ -1,5 +1,5 @@
-App.addChild('AdmUsers', {
-  el: '#main_content[data-controller-class="admin::userscontroller"]',
+App.addChild('Sort', {
+  el: '#page_content',
 
   events: {
     'click [data-sort]' : 'sort'
@@ -14,10 +14,6 @@ App.addChild('AdmUsers', {
   getSorting: function(){
     var sortField = this.form.find('[name=order_by]')
 
-    // set sorting default if empty
-    if(sortField.val().length == 0){
-      sortField.val('coalesce(user_totals.sum,0) DESC')
-    }
     var sort = sortField.val().split(' ');
     return {field: sort[0], order: sort[1]};
   },

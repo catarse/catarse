@@ -40,20 +40,14 @@ class Project < ActiveRecord::Base
 
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_id, ->(id) { where(id: id) }
+  scope :by_goal, ->(goal) { where(goal: goal) }
+  scope :by_online_date, ->(online_date) { where("online_date::date = ?", online_date.to_date) }
+  scope :by_expires_at, ->(expires_at) { where("projects.expires_at::date = ?", expires_at.to_date) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :order_table, ->(sort) {
-    if sort == 'desc'
-      order('goal desc')
-    elsif sort == 'asc'
-      order('goal asc')
-    else
-      order('created_at desc')
-    end
-  }
-
+  scope :order_by, ->(sort_field){ order(sort_field) }
   scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted']) }
