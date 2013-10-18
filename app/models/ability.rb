@@ -77,7 +77,7 @@ class Ability
       cs.user == current_user
     end
 
-    can [:update, :edit], :channels do |c| 
+    can [:update, :edit], :'channels/profiles' do |c| 
       c == current_user.channel
     end
 
