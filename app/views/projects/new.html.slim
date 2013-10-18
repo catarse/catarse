@@ -9,6 +9,7 @@
         .clearfix
         = semantic_form_for @project, html: { id: 'project_form' } do |form|
           = form.inputs do
+            = form.input :referal_link, as: :hidden, input_html: { value: session[:referal_link] }
             .input.control-group.error
             .input
               .bootstrap-alert

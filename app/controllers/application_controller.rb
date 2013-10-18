@@ -29,6 +29,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :force_http
 
+  before_action :referal_it!
+
   # TODO: Change this way to get the opendata
   before_filter do
     @fb_admins = [100000428222603, 547955110]
@@ -62,6 +64,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def referal_it!
+    session[:referal_link] = params[:ref] if params[:ref].present?
+  end
+
   def detect_old_browsers
     return redirect_to page_path("bad_browser") if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
   end
