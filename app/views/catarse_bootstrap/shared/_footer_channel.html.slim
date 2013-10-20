@@ -6,7 +6,7 @@ footer.line-box
           li.nav-item.separator
             = link_to t('channels.footer.terms'), Configuration[:terms_url], title: t('channels.footer.terms'), class: 'standard-link', target: '_blank'
           li.nav-item.separator
-            = link_to t('channels.footer.privacy_policy'), Configuration[:support_forum], title: t('channels.footer.privacy_policy'), class: 'standard-link', target: '_blank'
+            = link_to t('channels.footer.privacy_policy'), Configuration[:privacy_url], title: t('channels.footer.privacy_policy'), class: 'standard-link', target: '_blank'
           li.nav-item.separator
             = link_to t('channels.footer.how_works', name: channel.name), channels_about_path, title: t('channels.footer.how_it_works', name: channel.name), class: 'standard-link'
           li.nav-item.separator
