@@ -20,5 +20,14 @@ module Concerns
         end
       end
     end
+
+    def render_404(exception)
+      @not_found_path = exception.message
+      respond_to do |format|
+        format.html { render template: 'errors/not_found', layout: 'layouts/catarse_bootstrap', status: 404 }
+        format.all { render nothing: true, status: 404 }
+      end
+    end
+
   end
 end
