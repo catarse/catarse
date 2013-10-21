@@ -79,6 +79,7 @@ describe Update do
         {update_id: @update.id, user_id: backer.user.id},
         update_number: @update.project.updates.count,
         project_name: backer.project.name,
+        project: backer.project,
         project_owner: backer.project.user.display_name,
         project_owner_email: backer.project.user.email,
         from: @update.project.user.email,
