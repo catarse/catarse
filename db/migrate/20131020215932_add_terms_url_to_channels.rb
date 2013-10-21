@@ -1,4 +1,4 @@
-class AddTermsUrltoChannels < ActiveRecord::Migration
+class AddTermsUrlToChannels < ActiveRecord::Migration
   def change
     add_column :channels, :terms_url, :string
   end
