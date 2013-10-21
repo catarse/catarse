@@ -182,7 +182,7 @@ en:
         email: Email
         full_name: "Full name / Company Name"
         bio: 'Mini Bio'
-        name: 'Full name'
+        name: "Nickname"
         password: Password
         password_confirmation: "Password Confirmation"
         phone_number: "Mobile phone number"
