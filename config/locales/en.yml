@@ -632,6 +632,10 @@ en:
       how_works: "How works"
       contact: "Contact"
       what_is_channel: "What is a channel?"
+    admin:
+      statistics:
+        title: "Followers"
+        download: "Download list"
 
   registrations:
     new:

@@ -695,6 +695,10 @@ pt:
         final: "Empurrão final - Gatilho"
         participate: "Para participar"
         details: "Últimos detalhes"
+    admin:
+      statistics:
+        title: "Seguidores"
+        download: "Baixar lista"
 
   registrations:
     new:
