@@ -8,6 +8,6 @@ section.row
         | : 
         = @total_subscribers
     .large-2.columns
-      = link_to 'Baixar lista', channels_admin_reports_subscriber_reports_path(format: :csv), class: 'button medium action'
+      = link_to t('channels.admin.statistics.download'), channels_admin_reports_subscriber_reports_path(format: :csv), class: 'button medium action'
 
 = render 'shared/footer_channel'
