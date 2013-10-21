@@ -2,6 +2,8 @@
 require 'uservoice_sso'
 class ApplicationController < ActionController::Base
   include Concerns::ExceptionHandler
+  include Concerns::MenuHandler
+
   layout :use_catarse_boostrap
   protect_from_forgery
 
@@ -18,24 +20,6 @@ class ApplicationController < ActionController::Base
   # TODO: Change this way to get the opendata
   before_filter do
     @fb_admins = [100000428222603, 547955110]
-  end
-
-  @@menu_items = {}
-  cattr_accessor :menu_items
-
-  def self.add_to_menu i18n_name, path
-    menu I18n.t(i18n_name) => path
-  end
-
-  def self.menu menu
-    self.menu_items.merge! menu
-  end
-
-  def menu
-    ApplicationController.menu_items.inject({}) do |memo, el|
-      memo.merge!(el.first => Rails.application.routes.url_helpers.send(el.last)) if can? :access, el.last
-      memo
-    end
   end
 
   def channel
