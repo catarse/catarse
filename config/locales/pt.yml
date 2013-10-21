@@ -163,6 +163,7 @@ pt:
         description: Descrição
         image: Imagem
         video_url: "Vídeo"
+        how_it_works: "Como funciona"
       project:
         category: Categoria
         expires_at: Prazo

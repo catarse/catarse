@@ -1,0 +1,18 @@
+= render 'shared/header_channel'
+= content_for :title, @profile.name
+
+section.row
+  = simple_form_for @profile, as: 'profile', url: '/profile', html: { method: 'patch' }, class: 'channel-edit' do |form|
+    = form.input :name, as: :string
+    = form.input :description, as: :text
+    = form.input :image
+    = form.input :video_url, as: :string
+    = form.input :twitter, as: :string
+    = form.input :facebook, as: :string
+    = form.input :website, as: :string
+    = form.input :how_it_works, as: :text, input_html: {rows: 20}
+    .large-4.large-offset-4.columns
+      = form.button :submit, class: 'button action'
+    .clearfix
+
+= render 'shared/footer_channel'
