@@ -1,5 +1,5 @@
 App.addChild('Sort', {
-  el: '#page_content',
+  el: '#page_content.admin',
 
   events: {
     'click [data-sort]' : 'sort'
