@@ -12,10 +12,10 @@ describe Channels::ChannelsSubscribersController do
     controller.stub(:current_user).and_return(current_user)
   end
 
-  describe "POST create" do
+  describe "GET show" do
     before do
       channel_subscriber
-      post :create
+      get :show
     end
 
     context "when user is signed in" do 

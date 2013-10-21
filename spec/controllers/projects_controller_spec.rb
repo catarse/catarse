@@ -58,6 +58,16 @@ describe ProjectsController do
       get :index, locale: :pt
     end
     it { should be_success }
+
+    context "with referal link" do
+      subject { controller.session[:referal_link] }
+
+      before do
+        get :index, locale: :pt, ref: 'referal'
+      end
+
+      it { should == 'referal' }
+    end
   end
 
   describe "GET new" do
