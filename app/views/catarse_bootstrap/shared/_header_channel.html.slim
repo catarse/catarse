@@ -1,30 +1,31 @@
-header.row
-  h1.large-2.columns
-    = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo-image', :title => Configuration[:company_name]
-  .large-10.columns
-    nav.nav-horizontal-right
-      ul
-        li.nav-item
-          = link_to t('channels.header.submit'), channels_about_path, id: 'guidelines_header_modal', class: 'standard-link button medium action'
-        li.nav-item
-          = mail_to channel.email, t('channels.header.contact'), title: t('channels.header.contact'), class: 'standard-link', target: '_blank'
-        - if current_user
+header
+  .row
+    h1.large-2.columns
+      = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo-image', :title => Configuration[:company_name]
+    .large-10.columns
+      nav.nav-horizontal-right
+        ul
           li.nav-item
-            = link_to '#', class: 'user-menu' do
-              = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
-            ul.dropdown.user
-              li= link_to t('channels.header.profile'), current_user
-              li
-                = link_to t('channels.header.my_credits'), user_path(current_user, anchor: 'credits')
-                .small
-                  | (#{current_user.display_credits})
-              - if current_user.admin? || current_user.channel
-                li.divider
-                - for menu, path in controller.menu do
-                  li= link_to menu, path
-              li.divider= link_to t('channels.header.logout'), destroy_user_session_path, method: :delete
-        - else
+            = link_to t('channels.header.submit'), channels_about_path, id: 'guidelines_header_modal', class: 'standard-link button medium action'
           li.nav-item
-            = link_to t('channels.header.signup'), new_user_registration_path, class: 'standard-link'
-          li.nav-item
-            = link_to t('channels.header.signin'), new_user_session_path, class: 'standard-link'
+            = mail_to channel.email, t('channels.header.contact'), title: t('channels.header.contact'), class: 'standard-link', target: '_blank'
+          - if current_user
+            li.nav-item
+              = link_to '#', class: 'user-menu' do
+                = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
+              ul.dropdown.user
+                li= link_to t('channels.header.profile'), current_user
+                li
+                  = link_to t('channels.header.my_credits'), user_path(current_user, anchor: 'credits')
+                  .small
+                    | (#{current_user.display_credits})
+                - if current_user.admin? || current_user.channel
+                  li.divider
+                  - for menu, path in controller.menu do
+                    li= link_to menu, path
+                li.divider= link_to t('channels.header.logout'), destroy_user_session_path, method: :delete
+          - else
+            li.nav-item
+              = link_to t('channels.header.signup'), new_user_registration_path, class: 'standard-link'
+            li.nav-item
+              = link_to t('channels.header.signin'), new_user_session_path, class: 'standard-link'
