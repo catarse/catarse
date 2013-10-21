@@ -81,7 +81,11 @@ class Ability
       c == current_user.channel
     end
 
-    can :access, :admin if options[:channel]  && options[:channel] == current_user.channel
+    if options[:channel]  && options[:channel] == current_user.channel
+      can :access, :admin
+      can :access, :admin_projects_path
+      can :access, :edit_channels_profile_path
+    end
 
     # NOTE: admin can access everything.
     # It's the last ability to override all previous abilities.
