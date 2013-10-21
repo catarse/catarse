@@ -1,5 +1,4 @@
 # coding: utf-8
-require 'uservoice_sso'
 class ApplicationController < ActionController::Base
   include Concerns::ExceptionHandler
   include Concerns::MenuHandler
@@ -43,11 +42,7 @@ class ApplicationController < ActionController::Base
       current_user.update_attribute :locale, params[:locale] if current_user && params[:locale] != current_user.locale
     elsif request.method == "GET"
       new_locale = (current_user.locale if current_user) || I18n.default_locale
-      begin
-        return redirect_to params.merge(locale: new_locale, only_path: true)
-      rescue ActionController::RoutingError
-        logger.info "Could not redirect with params #{params.inspect} in set_locale"
-      end
+      redirect_to params.merge(locale: new_locale, only_path: true)
     end
   end
 
@@ -77,9 +72,9 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name,
-                                                            :email,
-                                                            :password) }
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:name, :email, :password)
+    end
   end
 
   def current_ability
