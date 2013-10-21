@@ -1,9 +1,12 @@
 class Channels::ProfilesController < Channels::BaseController
   layout :user_catarse_bootstrap
   inherit_resources
-  load_and_authorize_resource only: [:edit, :update]
   actions :show, :edit, :update
   custom_actions resource: [:how_it_works]
+
+  before_action only: [:edit, :update] do
+    authorize!(params[:action], resource)
+  end
 
   def resource
     @profile ||= channel
