@@ -41,16 +41,11 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(params[:project])
 
-    create!(notice: t('projects.create.success')) do |success, failure|
-      success.html{ return redirect_to project_by_slug_path(@project.permalink) }
-    end
+    create!(notice: t('projects.create.success')) { project_by_slug_path(@project.permalink) }
   end
 
   def update
-    update! do |success, failure|
-      success.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
-      failure.html{ return redirect_to project_by_slug_path(@project.permalink, anchor: 'edit') }
-    end
+    update! { project_by_slug_path(@project.permalink, anchor: 'edit') }
   end
 
   def show
