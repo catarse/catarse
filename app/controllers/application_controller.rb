@@ -1,28 +1,12 @@
 # coding: utf-8
 require 'uservoice_sso'
 class ApplicationController < ActionController::Base
+  include Concerns::ExceptionHandler
   layout :use_catarse_boostrap
   protect_from_forgery
 
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-
-  rescue_from ActionController::RoutingError, with: :render_404
-  rescue_from ActionController::UnknownController, with: :render_404
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
-
-  rescue_from CanCan::Unauthorized do |exception|
-    session[:return_to] = request.env['REQUEST_URI']
-    message = exception.message
-
-    if current_user.nil?
-      redirect_to new_user_registration_path, alert: I18n.t('devise.failure.unauthenticated')
-    elsif request.env["HTTP_REFERER"]
-      redirect_to :back, alert: message
-    else
-      redirect_to root_path, alert: message
-    end
-  end
 
   helper_method :channel, :namespace, :fb_admins, :render_facebook_sdk, :render_facebook_like, :render_twitter, :display_uservoice_sso
 
