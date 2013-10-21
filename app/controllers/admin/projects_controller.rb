@@ -1,7 +1,7 @@
 class Admin::ProjectsController < Admin::BaseController
   menu I18n.t("admin.projects.index.menu") => Rails.application.routes.url_helpers.admin_projects_path
 
-  has_scope :by_id, :pg_search, :user_name_contains, :with_state, :by_online_date, :by_expires_at, :by_category_id, :by_goal
+  has_scope :by_id, :pg_search, :user_name_contains, :with_state, :by_online_date, :by_expires_at, :by_category_id, :by_goal, :order_by
   has_scope :between_created_at, using: [ :start_at, :ends_at ], allow_blank: true
 
   before_filter do
@@ -27,9 +27,6 @@ class Admin::ProjectsController < Admin::BaseController
 
   protected
   def collection
-    order = params[:order_by].blank? ? 'created_at' : params[:order_by].split(' ')[0]
-    scope= apply_scopes(end_of_association_chain).without_state('deleted').sort_by{|p| p.send(order) || Time.now}
-    scope = scope.reverse if !params[:order_by].blank? && (params[:order_by].split(' ')[1] == 'DESC')
-    @projects ||= Kaminari.paginate_array(scope).page(params[:page])
+    @projects = apply_scopes(end_of_association_chain).includes(:project_total).without_state('deleted').page(params[:page])
   end
 end
