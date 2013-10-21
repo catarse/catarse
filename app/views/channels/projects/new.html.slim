@@ -10,6 +10,17 @@
         = semantic_form_for @project, html: { id: 'project_form' } do |form|
           = form.inputs do
             = form.input :referal_link, as: :hidden, input_html: { value: session[:referal_link] }
+            .input
+              .bootstrap-alert
+                span
+                .alert
+                  .important= t('.permalink_important')
+              = form.label :permalink, "#{t('activerecord.attributes.project.permalink')} *"
+              .input-prepend.permalink
+                span.add-on= "#{::Configuration[:base_url]}/"
+                = form.text_field :permalink, class: "permalink #{'error' if @project.errors[:permalink].present?}"
+                p.inline-hints
+                  = t('.permalink_hint')
 
             .input
               .bootstrap-alert
