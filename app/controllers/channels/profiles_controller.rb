@@ -1,5 +1,6 @@
 class Channels::ProfilesController < Channels::BaseController
   layout :user_catarse_bootstrap
+  add_to_menu 'channels.adm.profile_menu', :edit_channels_profile_path
   inherit_resources
   actions :show, :edit, :update
   custom_actions resource: [:how_it_works]

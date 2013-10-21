@@ -4,17 +4,6 @@ class Admin::BaseController < ApplicationController
     authorize! :access, :admin
   end
 
-  @@menu_items = {}
-  cattr_accessor :menu_items
-
-  def self.menu menu=nil
-    if menu
-      self.menu_items.merge! menu
-    else
-      self.menu_items
-    end
-  end
-
   def update
     update! do |format|
       if resource.errors.empty?
@@ -25,10 +14,4 @@ class Admin::BaseController < ApplicationController
       end
     end
   end
-
-  def current_ability
-    @current_ability ||= Ability.new(current_user, { channel: channel })
-  end
-
-
 end

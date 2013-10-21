@@ -1,5 +1,5 @@
 class Admin::ProjectsController < Admin::BaseController
-  menu I18n.t("admin.projects.index.menu") => Rails.application.routes.url_helpers.admin_projects_path
+  add_to_menu "admin.projects.index.menu", :admin_projects_path
 
   has_scope :by_id, :pg_search, :user_name_contains, :with_state
   has_scope :between_created_at, using: [ :start_at, :ends_at ], allow_blank: true
