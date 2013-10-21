@@ -42,6 +42,7 @@ class Update < ActiveRecord::Base
         {update_id: self.id, user_id: user.id},
         update_number: self.project.updates.count,
         project_name: project.name,
+        project: project,
         project_owner: project.user.display_name,
         project_owner_email: project.user.email,
         from: project.user.email,
