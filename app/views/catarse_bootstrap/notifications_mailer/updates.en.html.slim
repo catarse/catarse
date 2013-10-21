@@ -2,3 +2,7 @@
 br/
 strong=update.title
 == @notification.mail_params[:update_comment]
+br
+br
+|View project: #{link_to @notification.mail_params[:project_name], project_by_slug_url(permalink: @notification.project.permalink)}
+
