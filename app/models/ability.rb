@@ -85,6 +85,7 @@ class Ability
       can :access, :admin
       can :access, :admin_projects_path
       can :access, :edit_channels_profile_path
+      can :access, :admin_statistics_path
     end
 
     # NOTE: admin can access everything.
