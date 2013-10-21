@@ -28,7 +28,7 @@ class Admin::ProjectsController < Admin::BaseController
   protected
   def collection
     order = params[:order_by].blank? ? 'created_at' : params[:order_by].split(' ')[0]
-    scope= apply_scopes(end_of_association_chain).without_state('deleted').sort_by{|p| p.send(order)}
+    scope= apply_scopes(end_of_association_chain).without_state('deleted').sort_by{|p| p.send(order) || Time.now}
     scope = scope.reverse if !params[:order_by].blank? && (params[:order_by].split(' ')[1] == 'DESC')
     @projects ||= Kaminari.paginate_array(scope).page(params[:page])
   end
