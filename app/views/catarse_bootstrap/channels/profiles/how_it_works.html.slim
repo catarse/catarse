@@ -5,7 +5,10 @@ section.line-box
   .row
     .large-12.columns
       .presentation
-        h1.channel-title = "#{t('channels.how_it_works.title.channel')}: #{@profile.name}"
+        h1.channel-title
+          = t('channels.how_it_works.title.channel')
+          | : 
+          = link_to @profile.name, root_path, class: 'standard-link'
 
 article.row.how-it-works-wrapper
   section.large-9.columns.how-it-works
@@ -18,7 +21,7 @@ article.row.how-it-works-wrapper
         ul#side-menu
 
   .row
-    .large-4.columns.large-centered
-      = link_to t('channels.header.submit'), new_project_path, :class => 'button medium action submit'
+    .large-3.columns.large-centered
+      = link_to t('channels.header.submit'), new_project_path, class: 'button action submit'
 
 = render 'shared/footer_channel'
