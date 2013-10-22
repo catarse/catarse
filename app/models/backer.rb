@@ -1,8 +1,8 @@
-require 'state_machine'
 # coding: utf-8
 class Backer < ActiveRecord::Base
   schema_associations
 
+  include Shared::StateMachineHelpers
   delegate :display_value, :display_confirmed_at, to: :decorator
 
   validates_presence_of :project, :user, :value

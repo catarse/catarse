@@ -1,8 +1,8 @@
 # coding: utf-8
-require 'state_machine'
 class Project < ActiveRecord::Base
   schema_associations
 
+  include Shared::StateMachineHelpers
   include ProjectStateMachineHandler
   include ActionView::Helpers::TextHelper
   include PgSearch
