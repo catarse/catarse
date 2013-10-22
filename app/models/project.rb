@@ -77,7 +77,7 @@ class Project < ActiveRecord::Base
   validates_numericality_of :online_days, less_than_or_equal_to: 60
   validates_uniqueness_of :permalink, allow_blank: true, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
-  validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
+  validates_format_of :video_url, with: /https?:\/\/(?:.*?)\.?(youtube|vimeo)\.com\/(watch\?[^#]*v=(\w+)|(\d+)).+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
   def self.between_created_at(starts_at, ends_at)
@@ -87,10 +87,10 @@ class Project < ActiveRecord::Base
   def self.between_expires_at(starts_at, ends_at)
     between_dates 'expires_at', starts_at, ends_at
   end
-  
+
   def self.order_by(sort_field)
-    return scoped unless sort_field =~ /^\w+(\.\w+)?\s(desc|asc)$/i 
-    order(sort_field) 
+    return scoped unless sort_field =~ /^\w+(\.\w+)?\s(desc|asc)$/i
+    order(sort_field)
   end
 
   def self.finish_projects!
