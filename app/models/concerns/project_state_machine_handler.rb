@@ -1,14 +1,7 @@
-require 'state_machine'
 module ProjectStateMachineHandler
   extend ActiveSupport::Concern
 
   included do
-    def self.state_names
-      self.state_machine.states.map do |state|
-        state.name if state.name != :deleted
-      end.compact!
-    end
-
     #NOTE: state machine things
     state_machine :state, initial: :draft do
       state :draft, value: 'draft'
