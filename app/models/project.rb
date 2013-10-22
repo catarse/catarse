@@ -64,8 +64,8 @@ class Project < ActiveRecord::Base
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
 
-  scope :from_channels, ->{
-    where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id)")
+  scope :from_channels, ->(channels){
+    where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id AND cp.channel_id = ?)", channels)
   }
 
   attr_accessor :accepted_terms

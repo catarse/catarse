@@ -1,16 +1,15 @@
 class Channels::ProfilesController < Channels::BaseController
-  layout :user_catarse_bootstrap
+  layout 'catarse_bootstrap'
+  add_to_menu 'channels.admin.profile_menu', :edit_channels_profile_path
   inherit_resources
-  load_and_authorize_resource only: [:edit, :update]
   actions :show, :edit, :update
   custom_actions resource: [:how_it_works]
 
-  def resource
-    @profile ||= channel
+  before_action only: [:edit, :update] do
+    authorize!(params[:action], resource)
   end
 
-  private
-  def user_catarse_bootstrap
-    action_name == 'edit' ? 'application' : 'catarse_bootstrap'
+  def resource
+    @profile ||= channel
   end
 end

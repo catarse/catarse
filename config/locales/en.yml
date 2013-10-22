@@ -632,6 +632,36 @@ en:
       how_works: "How works"
       contact: "Contact"
       what_is_channel: "What is a channel?"
+    admin:
+      statistics:
+        title: "Followers"
+        download: "Download list"
+      management:
+        title: "Management"
+        total: "projects"
+      filter:
+        title: "Filter"
+        by_id: "By ID"
+        between_created_at: "Created Between"
+        pg_search: "Project"
+        with_state: "With state"
+        user_name_contains: "User"
+        order_table: "Order table"
+        submit: "Filter"
+      table:
+        name: "Title"
+        category: "Gategory"
+        user_id: "User"
+        goal: "Goal"
+        pledged: "Pledged"
+        total_backs: "Backs"
+        recommended: "Recommend"
+        online_date: "Published"
+        expires_at: "Finished"
+        state: "State"
+        approve: "Approve"
+        reject: "Reject"
+        send_to_draft: "Sendo to draft"
 
   registrations:
     new:
