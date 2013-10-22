@@ -116,7 +116,7 @@
             .submit
               fieldset.accept
                 = check_box_tag :accepted_terms
-                = label_tag :accepted_terms, t('accept_terms_html', link: link_to(t('terms'), 'http://suporte.catarse.me/knowledgebase/articles/190852-termo-de-uso-canal-asas', target: :_blank)), class: 'inline'
+                = label_tag :accepted_terms, t('accept_terms_html', link: link_to(t('terms'),  controller.channel.terms_url, target: :_blank)), class: 'inline'
                 - if @project.errors[:accepted_terms].present?
                   .bootstrap-twitter
                     p.text-error= @project.errors[:accepted_terms].to_sentence

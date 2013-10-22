@@ -251,11 +251,12 @@ describe Project do
   end
 
   describe ".from_channels" do
+    let(:channel){create(:channel)}
     before do
-      @p = create(:project, channels: [create(:channel)])
+      @p = create(:project, channels: [channel])
       create(:project, channels: [])
     end
-    subject{ Project.from_channels }
+    subject{ Project.from_channels([channel.id]) }
     it{ should == [@p] }
   end
 

@@ -36,6 +36,24 @@ class ApplicationController < ActionController::Base
     @fb_admins = [100000428222603, 547955110]
   end
 
+  @@menu_items = {}
+  cattr_accessor :menu_items
+
+  def self.add_to_menu i18n_name, path
+    menu I18n.t(i18n_name) => path
+  end
+
+  def self.menu menu
+    self.menu_items.merge! menu
+  end
+
+  def menu
+    ApplicationController.menu_items.inject({}) do |memo, el|
+      memo.merge!(el.first => Rails.application.routes.url_helpers.send(el.last)) if can? :access, el.last
+      memo
+    end
+  end
+
   def channel
     Channel.find_by_permalink(request.subdomain.to_s)
   end
@@ -142,5 +160,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name,
                                                             :email,
                                                             :password) }
+  end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user, { channel: channel })
   end
 end

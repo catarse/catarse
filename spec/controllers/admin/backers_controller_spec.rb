@@ -126,11 +126,4 @@ describe Admin::BackersController do
       it{ assigns(:backers).should eq([]) }
     end
   end
-
-  describe ".menu" do
-    it "should add a menu entry to the menu_items class variable when we pass a parameter and retrieve when we have no parameters" do
-      Admin::BackersController.menu "Test Menu" => "/path"
-      Admin::BaseController.menu.should include("Test Menu")
-    end
-  end
 end

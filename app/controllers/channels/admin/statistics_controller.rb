@@ -1,4 +1,5 @@
 class Channels::Admin::StatisticsController < Admin::BaseController
+  layout 'catarse_bootstrap'
   actions :index
 
   before_filter do
