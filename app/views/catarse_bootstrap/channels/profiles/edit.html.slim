@@ -5,7 +5,7 @@ section.row
   = simple_form_for @profile, as: 'profile', url: '/profile', html: { method: 'patch' }, class: 'channel-edit' do |form|
     = form.input :name, as: :string
     = form.input :description, as: :text
-    = form.input :image
+    = form.input :image, as: :file
     = form.input :video_url, as: :string
     = form.input :twitter, as: :string
     = form.input :facebook, as: :string
