@@ -50,7 +50,7 @@
         = link_to(@project.user.display_name, user_path(@project.user))
         |  
         - @project.channels.each do |c|
-          = link_to(c.name, root_path(subdomain: c.permalink), class: 'project-channel')
+          = link_to(c.name, root_url(subdomain: c.permalink), class: 'project-channel')
     .tab_container
       nav#project_menu
         = link_to '#about', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
