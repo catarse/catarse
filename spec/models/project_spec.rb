@@ -89,6 +89,52 @@ describe Project do
     it { should have(2).itens }
   end
 
+  describe '.by_goal' do
+    subject { Project.by_goal(200) }
+
+    before do
+      @project_01 = create(:project, goal: 100)
+      @project_02 = create(:project, goal: 200)
+
+    end
+
+    it { should = [@project_02] }
+  end
+  
+  describe '.by_online_date' do
+    subject { Project.by_online_date(Time.now.to_date.to_s) }
+
+    before do
+      @project_01 = create(:project, online_date: Time.now.to_s)
+      @project_02 = create(:project, online_date: 2.weeks.ago)
+
+    end
+
+    it { should = [@project_01] }
+  end
+
+  describe '.by_expires_at' do
+    subject { Project.by_expires_at('10/10/2013') }
+
+    before do
+      @project_01 = create(:project, online_date: '10/10/2013', online_days: 0)
+      @project_02 = create(:project, online_date: '09/10/2013', online_days: 0)
+    end
+
+    it { should = [@project_01] }
+  end
+
+  describe '.order_by' do
+    subject { Project.order_by('goal DESC') }
+
+    before do
+      @project_01 = create(:project, goal: 100)
+      @project_02 = create(:project, goal: 200)
+    end
+
+    it { should = [@project_02, @project_01] }
+  end
+
   describe '.between_created_at' do
     let(:start_at) { '17/01/2013' }
     let(:ends_at) { '20/01/2013' }
