@@ -1,6 +1,9 @@
 # coding: utf-8
 require 'state_machine'
 class Project < ActiveRecord::Base
+  schema_associations
+
+  include ProjectStateMachineHandler
   include ActionView::Helpers::TextHelper
   include PgSearch
   extend CatarseAutoHtml
@@ -12,7 +15,6 @@ class Project < ActiveRecord::Base
     :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar, :successful_flag,
     to: :decorator
 
-  schema_associations
 
   has_and_belongs_to_many :channels
   has_one :project_total
@@ -94,18 +96,12 @@ class Project < ActiveRecord::Base
   def self.between_expires_at(starts_at, ends_at)
     between_dates 'expires_at', starts_at, ends_at
   end
-  
+
   def self.finish_projects!
     to_finish.each do |resource|
       Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
       resource.finish
     end
-  end
-
-  def self.state_names
-    self.state_machine.states.map do |state|
-      state.name if state.name != :deleted
-    end.compact!
   end
 
   def subscribed_users
@@ -197,68 +193,6 @@ class Project < ActiveRecord::Base
 
   def self.permalink_on_routes?(permalink)
     permalink && self.get_routes.include?(permalink.downcase)
-  end
-
-  #NOTE: state machine things
-  state_machine :state, initial: :draft do
-    state :draft, value: 'draft'
-    state :rejected, value: 'rejected'
-    state :online, value: 'online'
-    state :successful, value: 'successful'
-    state :waiting_funds, value: 'waiting_funds'
-    state :failed, value: 'failed'
-    state :deleted, value: 'deleted'
-
-    event :push_to_draft do
-      transition all => :draft #NOTE: when use 'all' we can't use new hash style ;(
-    end
-
-    event :push_to_trash do
-      transition [:draft, :rejected] => :deleted
-    end
-
-    event :reject do
-      transition draft: :rejected
-    end
-
-    event :approve do
-      transition draft: :online
-    end
-
-    event :finish do
-      transition online: :failed,             if: ->(project) {
-        project.should_fail? && !project.pending_backers_reached_the_goal?
-      }
-
-      transition online: :waiting_funds,      if: ->(project) {
-        project.expired? && project.pending_backers_reached_the_goal?
-      }
-
-      transition waiting_funds: :successful,  if: ->(project) {
-        project.reached_goal? && !project.in_time_to_wait?
-      }
-
-      transition waiting_funds: :failed,      if: ->(project) {
-        project.should_fail? && !project.in_time_to_wait?
-      }
-
-      transition waiting_funds: :waiting_funds,      if: ->(project) {
-        project.should_fail? && project.in_time_to_wait?
-      }
-    end
-
-    after_transition do |project, transition|
-      project.notify_observers :"from_#{transition.from}_to_#{transition.to}"
-    end
-    after_transition draft: :online do |project, transition|
-      project.update_attributes({ online_date: DateTime.now })
-    end
-    after_transition any => [:failed, :successful] do |project, transition|
-      project.notify_observers :sync_with_mailchimp
-    end
-    after_transition [:draft, :rejected] => :deleted do |project, transition|
-      project.update_attributes({ permalink: "deleted_project_#{project.id}"})
-    end
   end
 
   def new_draft_recipient
