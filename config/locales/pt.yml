@@ -699,6 +699,32 @@ pt:
       statistics:
         title: "Seguidores"
         download: "Baixar lista"
+      management:
+        title: "Gerenciamento"
+        total: "projetos no total"
+      filter:
+        title: "Filtrar"
+        by_id: "Por id"
+        between_created_at: "Criados entre"
+        pg_search: "Projeto"
+        with_state: "Com o estado"
+        user_name_contains: "Usuário"
+        order_table: "Ordenar tabela"
+        submit: "Filtrar"
+      table:
+        name: "Título"
+        category: "Categoria"
+        user_id: "Usuário"
+        goal: "Meta"
+        pledged: "Alcançado"
+        total_backs: "Apoios"
+        recommended: "Recomendar"
+        online_date: "Publicação"
+        expires_at: "Término"
+        state: "Estado"
+        approve: "Aprovar"
+        reject: "Rejeitar"
+        send_to_draft: "Enviar para rascunho"
 
   registrations:
     new:

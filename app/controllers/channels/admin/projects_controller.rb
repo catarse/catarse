@@ -1,4 +1,5 @@
 class Channels::Admin::ProjectsController < Admin::BaseController
+  layout 'catarse_bootstrap'
   has_scope :by_id, :pg_search, :user_name_contains, :order_table, :with_state
   has_scope :between_created_at, using: [ :start_at, :ends_at ], allow_blank: true
   has_scope :order_table do |controller, scope, value|
