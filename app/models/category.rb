@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :name_pt
 
   def self.with_projects
-    where("id IN (SELECT DISTINCT category_id FROM projects WHERE state <> 'draft' AND state <> 'rejected')")
+    where("exists(select true from projects p where p.category_id = categories.id and p.state not in('draft', 'rejected'))")
   end
 
   def self.array
