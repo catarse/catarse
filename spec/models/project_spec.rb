@@ -125,14 +125,15 @@ describe Project do
   end
 
   describe '.order_by' do
-    subject { Project.order_by('goal DESC') }
+    subject { Project.last.name }
 
     before do
-      @project_01 = create(:project, goal: 100)
-      @project_02 = create(:project, goal: 200)
+      create(:project, name: 'lorem')
+      #testing for sql injection
+      Project.order_by("goal asc;update projects set name ='test';select * from projects ").first #use first so the sql is actually executed
     end
 
-    it { should = [@project_02, @project_01] }
+    it { should == 'lorem' }
   end
 
   describe '.between_created_at' do
