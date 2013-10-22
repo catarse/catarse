@@ -25,6 +25,8 @@ describe Project do
     it{ should ensure_length_of(:headline).is_at_most(140) }
     it{ should allow_value('http://vimeo.com/12111').for(:video_url) }
     it{ should allow_value('https://vimeo.com/12111').for(:video_url) }
+    it{ should allow_value('http://youtube.com/watch?v=UyU-xI').for(:video_url) }
+    it{ should allow_value('https://youtube.com/watch?v=UyU-xI').for(:video_url) }
     it{ should_not allow_value('http://www.foo.bar').for(:video_url) }
     it{ should allow_value('testproject').for(:permalink) }
     it{ should_not allow_value('users').for(:permalink) }
@@ -100,7 +102,7 @@ describe Project do
 
     it { should = [@project_02] }
   end
-  
+
   describe '.by_online_date' do
     subject { Project.by_online_date(Time.now.to_date.to_s) }
 
