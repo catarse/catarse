@@ -25,40 +25,10 @@ class Backer < ActiveRecord::Base
   scope :credits, -> { where(credits: true) }
   scope :not_anonymous, -> { where(anonymous: false) }
 
-  scope :can_cancel, -> {
-    where(%Q{
-      backers.state = 'waiting_confirmation' and
-        (
-          ((
-            select count(1) as total_of_days
-            from generate_series(created_at::date, current_date, '1 day') day
-            WHERE extract(dow from day) not in (0,1)
-          )  > 4)
-          OR
-          (
-            payment_choice = 'DebitoBancario'
-            AND
-              (
-                select count(1) as total_of_days
-                from generate_series(created_at::date, current_date, '1 day') day
-                WHERE extract(dow from day) not in (0,1)
-              )  > 1)
-        )
-    })
-  }
+  scope :can_cancel, -> { where("backers.can_cancel") }
 
   # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
-  scope :can_refund, ->{
-    where(%Q{
-      backers.state IN('confirmed', 'requested_refund', 'refunded') AND
-      NOT backers.credits AND
-      EXISTS(
-        SELECT true
-          FROM projects p
-          WHERE p.id = backers.project_id and p.state = 'failed'
-      )
-    })
-  }
+  scope :can_refund, ->{ where("backers.can_refund") }
 
   attr_protected :state
 
