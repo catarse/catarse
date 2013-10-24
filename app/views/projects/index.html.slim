@@ -7,7 +7,7 @@
         section.near_projects.list
           header
             h2.list-title= t('sections.near.title')
-            = link_to t('main.links.near'), explore_path(anchor: :near), class: "more-projects"
+            = link_to t('main.links.near'), explore_path(anchor: "near_of/" ) + current_user.address_state, class: "more-projects"
           .projects
             == render @projects_near
 
