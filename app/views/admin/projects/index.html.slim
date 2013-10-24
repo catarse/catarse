@@ -84,6 +84,7 @@
                 th
                   a data-sort="projects.expires_at" href='#'= t('.expires_at')
                   span.sort-order
+                th= t('.last_modification')
                 th= t('.state')
                 th
             tbody
@@ -104,6 +105,7 @@
                   td.checkbox= best_in_place [:admin, project], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
                   td= project.online_date.strftime('%d/%m/%Y') if project.online_date
                   td= project.display_expires_at
+                  td= project.updated_at.strftime('%d/%m/%Y') if project.updated_at.present?
                   td
                     - if project.online?
                       span.label.label-online= project.state
