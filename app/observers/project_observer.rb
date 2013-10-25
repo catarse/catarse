@@ -9,18 +9,19 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def after_create(project)
+    Notification.create_notification_once(project.notification_type(:project_received),
+      project.user,
+      {project_id: project.id},
+      {project: project, project_name: project.name, channel_name: (project.channels.first ? project.channels.first.name : nil)})
+  end
+
+  def from_draft_to_in_analysis(project)
     if (user = project.new_draft_recipient)
       Notification.create_notification_once(project.notification_type(:new_draft_project),
-                                            user,
-                                            {project_id: project.id},
-                                            {project: project, project_name: project.name, from: project.user.email, display_name: project.user.display_name}
-                                           )
+        user,
+        {project_id: project.id},
+        {project: project, project_name: project.name, from: project.user.email, display_name: project.user.display_name})
     end
-
-    Notification.create_notification_once(project.notification_type(:project_received),
-                                          project.user,
-                                          {project_id: project.id},
-                                          {project: project, project_name: project.name, channel_name: (project.channels.first ? project.channels.first.name : nil)})
   end
 
   def from_online_to_waiting_funds(project)
@@ -52,14 +53,14 @@ class ProjectObserver < ActiveRecord::Observer
     end
   end
 
-  def from_draft_to_rejected(project)
+  def from_in_analysis_to_rejected(project)
     Notification.create_notification_once(project.notification_type(:project_rejected),
       project.user,
       {project_id: project.id},
       {project: project, channel_name: (project.channels.first ? project.channels.first.name : nil)})
   end
 
-  def from_draft_to_online(project)
+  def from_in_analysis_to_online(project)
     Notification.create_notification_once(project.notification_type(:project_visible),
       project.user,
       {project_id: project.id},
