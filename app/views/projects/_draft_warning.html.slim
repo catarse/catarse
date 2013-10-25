@@ -21,3 +21,6 @@ br
       br/
       ' Pra fazer isso acesse a nossa
       = link_to 'Central de Suporte', Configuration[:support_forum], target: '_blank'
+    br/
+    br/
+    = link_to 'Enviar para curadoria', send_to_curate_project_path(@project), class: 'button'
