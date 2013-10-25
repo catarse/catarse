@@ -35,7 +35,7 @@ describe Project do
   end
 
   describe '.state_names' do
-    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed] }
+    let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed, :in_analysis] }
 
     subject { Project.state_names }
 
@@ -598,6 +598,7 @@ describe Project do
     describe '#rejected?' do
       subject { project.rejected? }
       before do
+        project.send_to_curate
         project.reject
       end
       context 'when project is not accepted' do
@@ -606,8 +607,9 @@ describe Project do
     end
 
     describe '#reject' do
+      before { project.update_attributes state: 'in_analysis' }
       subject do
-        project.should_receive(:notify_observers).with(:from_draft_to_rejected)
+        project.should_receive(:notify_observers).with(:from_in_analysis_to_rejected)
         project.reject
         project
       end
@@ -627,11 +629,14 @@ describe Project do
     end
 
     describe '#approve' do
+      before { project.send_to_curate }
+
       subject do
-        project.should_receive(:notify_observers).with(:from_draft_to_online)
+        project.should_receive(:notify_observers).with(:from_in_analysis_to_online)
         project.approve
         project
       end
+
       its(:online?){ should be_true }
       it('should call after transition method to notify the project owner'){ subject }
       it 'should persist the date of approvation' do
@@ -641,7 +646,10 @@ describe Project do
     end
 
     describe '#online?' do
-      before { project.approve }
+      before do
+        project.send_to_curate
+        project.approve
+      end
       subject { project.online? }
       it { should be_true }
     end
@@ -659,8 +667,8 @@ describe Project do
 
       context 'when project is expired and the sum of the pending backers and confirmed backers dont reached the goal' do
         before do
-          create(:backer, value: 100, project: main_project, created_at: 2.days.ago)
-          main_project.finish
+          create(:backer, value: 100, project: subject, created_at: 2.days.ago)
+          subject.finish
         end
 
         its(:failed?) { should be_true }
@@ -669,7 +677,7 @@ describe Project do
       context 'when project is expired and have recent backers without confirmation' do
         before do
           create(:backer, value: 30_000, project: subject, state: 'waiting_confirmation')
-          main_project.finish
+          subject.finish
         end
 
         its(:waiting_funds?) { should be_true }

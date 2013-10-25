@@ -213,7 +213,7 @@ class Project < ActiveRecord::Base
     end
 
     event :push_to_trash do
-      transition [:draft, :rejected] => :deleted
+      transition [:draft, :rejected, :in_analysis] => :deleted
     end
 
     event :send_to_curate do
