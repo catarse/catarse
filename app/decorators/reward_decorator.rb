@@ -5,7 +5,7 @@ class RewardDecorator < Draper::Decorator
   def display_deliver_prevision
     I18n.l((source.project.expires_at + source.days_to_delivery.days), format: :prevision)
   rescue
-    shource.days_to_delivery
+    source.days_to_delivery
   end
 
   def display_remaining
