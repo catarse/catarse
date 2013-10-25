@@ -62,7 +62,7 @@ pt:
         tags_important: "Confira mais projetos relacionados a sua categoria clicando <a href='%{href}' target='_blank'>aqui!</a>."
         video: "Já tem o video? Manda aí a url!"
         video_hint: "O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
-        video_important: "O seu vídeo precisa estar hospedado no VIMEO. Cola o link pra gente!"
+        video_important: "Cola o link pra gente! Pode ser do Vimeo ou do Youtube."
         how_know_important: "Oba! Chegamos à última pergunta."
         more_links_important: "É muito importante utilizar as suas mídias sociais para espalhar a notícia sobre o seu projeto e engajar sua rede no sucesso do projeto."
         first_backers_important: "Essas pessoas serão fundamentais para ter sucesso no seu projeto"
