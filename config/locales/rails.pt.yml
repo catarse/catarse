@@ -101,7 +101,7 @@ pt:
     messages:
       accepted: "deve ser aceito"
       blank: "não pode ficar em branco"
-      confirmation: "não está de acordo com a confirmação"
+      confirmation: "senhas não batem"
       empty: "não pode ficar vazio"
       equal_to: "deve ser igual a %{count}"
       even: "deve ser par"
