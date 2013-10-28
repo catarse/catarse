@@ -12,7 +12,7 @@ pt:
     curator: 'Curador'
     admin:
       menu: "Moderação de Canais"
-      statistics_menu: "Estatisticas"
+      statistics_menu: "Estatísticas"
       profile_menu: "Perfil do Canal"
       statistics:
         title: 'Estatísticas do canal'
