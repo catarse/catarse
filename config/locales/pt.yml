@@ -725,6 +725,7 @@ pt:
         approve: "Aprovar"
         reject: "Rejeitar"
         send_to_draft: "Enviar para rascunho"
+    edit: "Atualizar canal"
 
   registrations:
     new:
