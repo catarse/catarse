@@ -59,6 +59,16 @@ class Project < ActiveRecord::Base
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
                                      END ASC, projects.online_date DESC, projects.created_at DESC") }
+  scope :order_for_admin, -> {
+    reorder("
+            CASE projects.state
+            WHEN 'in_analysis' THEN 1
+            WHEN 'waiting_funds' THEN 2
+            WHEN 'successful' THEN 3
+            WHEN 'failed' THEN 4
+            END ASC, projects.online_date DESC, projects.created_at DESC")
+  }
+
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
