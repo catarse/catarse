@@ -48,7 +48,7 @@ pt:
         submit: 'filtrar'
         expires_at: 'Finaliza em'
         category: 'Categoria'
-        order_table: 'Ordernar tabela'
+        order_table: 'Ordenar tabela'
         order_date: 'Data de envio'
         order_asc: 'Menor meta'
         order_desc: 'Maior meta'
