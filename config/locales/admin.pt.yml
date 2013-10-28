@@ -53,6 +53,7 @@ pt:
         order_asc: 'Menor meta'
         order_desc: 'Maior meta'
         order_created_at: 'Data de envio'
+        last_modification: 'Ultima atualização'
     actions:
       confirm: 'Confirmar'
     users:

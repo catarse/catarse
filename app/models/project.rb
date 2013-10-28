@@ -35,20 +35,13 @@ class Project < ActiveRecord::Base
 
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_id, ->(id) { where(id: id) }
+  scope :by_goal, ->(goal) { where(goal: goal) }
+  scope :by_online_date, ->(online_date) { where("online_date::date = ?", online_date.to_date) }
+  scope :by_expires_at, ->(expires_at) { where("projects.expires_at::date = ?", expires_at.to_date) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
-  scope :order_table, ->(sort) {
-    if sort == 'desc'
-      order('goal desc')
-    elsif sort == 'asc'
-      order('goal asc')
-    else
-      order('created_at desc')
-    end
-  }
-
   scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted']) }
@@ -84,7 +77,7 @@ class Project < ActiveRecord::Base
   validates_numericality_of :online_days, less_than_or_equal_to: 60
   validates_uniqueness_of :permalink, allow_blank: true, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
-  validates_format_of :video_url, with: /https?:\/\/(www\.)?vimeo.com\/(\d+)/, message: I18n.t('project.video_regex_validation'), allow_blank: true
+  validates_format_of :video_url, with: /(https?\:\/\/|)(youtube|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
   def self.between_created_at(starts_at, ends_at)
@@ -94,7 +87,12 @@ class Project < ActiveRecord::Base
   def self.between_expires_at(starts_at, ends_at)
     between_dates 'expires_at', starts_at, ends_at
   end
-  
+
+  def self.order_by(sort_field)
+    return scoped unless sort_field =~ /^\w+(\.\w+)?\s(desc|asc)$/i
+    order(sort_field)
+  end
+
   def self.finish_projects!
     to_finish.each do |resource|
       Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
