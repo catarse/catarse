@@ -662,6 +662,7 @@ en:
         approve: "Approve"
         reject: "Reject"
         send_to_draft: "Sendo to draft"
+    edit: "Update channel"
 
   registrations:
     new:
