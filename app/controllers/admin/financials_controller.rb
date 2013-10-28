@@ -1,5 +1,4 @@
 class Admin::FinancialsController < Admin::BaseController
-  require 'csv'
   inherit_resources
   defaults  resource_class: Project, collection_name: 'projects', instance_name: 'project'
 
@@ -7,6 +6,8 @@ class Admin::FinancialsController < Admin::BaseController
 
   has_scope :by_permalink, :name_contains, :user_name_contains, :financial, :with_state, :by_progress
   has_scope :between_expires_at, using: [ :start_at, :ends_at ], allow_blank: true
+
+  respond_to :html, :csv
 
   actions :index
 
@@ -22,28 +23,13 @@ class Admin::FinancialsController < Admin::BaseController
     respond_to do |format|
       format.html {collection}
       format.csv do
-        csv_string = CSV.generate do |csv|
-          # header row
-          csv << ["name", "moip", "goal", "reached", "moip_tax", "catarse_fee", "repass_value","expires_at", "backer_report", "state"]
-          # data rows
-          projects.each do |project|
-            catarse_fee = ::Configuration[:catarse_fee].to_f * project.pledged
-            csv << [project.name,
-                    project.user.moip_login,
-                    project.display_goal,
-                    project.display_pledged,
-                    view_context.number_to_currency(project.total_payment_service_fee, precision: 2),
-                    view_context.number_to_currency(catarse_fee, precision: 2),
-                    view_context.number_to_currency(project.pledged*0.87, precision: 2),
-                    project.display_expires_at,
-                    admin_reports_backer_reports_url(project_id: project.id, format: :csv),
-                    project.state
-            ]
+        financials = ProjectFinancial.where(project_id: projects.select("id"))
+
+        self.response_body = Enumerator.new do |y|
+          financials.copy_to do |line|
+            y << line
           end
         end
-        send_data csv_string,
-                  type: 'text/csv; charset=iso-8859-1; header=present',
-                  disposition: "attachment; filename=financials.csv"
       end
     end
   end

@@ -1,4 +1,4 @@
-#page_content
+#page_content.admin
   .container
     .title
       h1= @title = t('.title')
@@ -9,6 +9,7 @@
     .filters
       .bootstrap-form
         = form_tag admin_projects_path, method: :get, class: 'form-horizontal' do |f|
+          = hidden_field_tag :order_by, params[:order_by]
           fieldset
             .input
               = label_tag :by_id, t('.id')
@@ -32,8 +33,17 @@
               = label_tag :user_name_contains, t('.user')
               = text_field_tag :user_name_contains, params[:user_name_contains]
             .input
-              = label_tag :order_table, t('.order_table')
-              = select_tag :order_table, options_for_select({t('.order_created_at') => 'created_at', t('.order_asc') => 'asc',t('.order_desc') => 'desc'}, params[:order_table]), include_blank: false
+              = label_tag :by_online_date, t('.online_date')
+              = text_field_tag :by_online_date, params[:by_online_date]
+            .input
+              = label_tag :by_expires_at, t('.expires_at')
+              = text_field_tag :by_expires_at, params[:by_expires_at]
+            .input
+              = label_tag :by_goal, t('.goal')
+              = text_field_tag :by_goal, params[:by_goal]
+            .input
+              = label_tag :by_category_id, t('.by_category')
+              = select_tag :by_category_id, options_from_collection_for_select(Category.all, :id, :name_pt,params[:by_category_id]), include_blank: true
 
             .bootstrap-twitter
               .input.submit
@@ -58,16 +68,27 @@
                   = t('.name')
                 th= t('.category')
                 th= t('.user_id')
-                th= t('.goal')
-                th= t('.pledged')
-                th= t('.total_backs')
+                th
+                  a data-sort="goal" href='#'= t('.goal')
+                  span.sort-order
+                th
+                  a data-sort="project_totals.progress" href='#'= t('.pledged')
+                  span.sort-order
+                th
+                  a data-sort="project_totals.total_backers" href='#'= t('.total_backs')
+                  span.sort-order
                 th= t('.recommended')
-                th= t('.online_date')
-                th= t('.expires_at')
+                th
+                  a data-sort="online_date" href='#'= t('.online_date')
+                  span.sort-order
+                th
+                  a data-sort="projects.expires_at" href='#'= t('.expires_at')
+                  span.sort-order
+                th= t('.last_modification')
                 th= t('.state')
                 th
             tbody
-              - @projects.includes(:category).each do |project|
+              - @projects.each do |project|
                 tr id=project.id class=cycle("even", "odd")
                   td
                     = link_to project.name, project_by_slug_path(permalink: project.permalink)
@@ -84,6 +105,7 @@
                   td.checkbox= best_in_place [:admin, project], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
                   td= project.online_date.strftime('%d/%m/%Y') if project.online_date
                   td= project.display_expires_at
+                  td= project.updated_at.strftime('%d/%m/%Y') if project.updated_at.present?
                   td
                     - if project.online?
                       span.label.label-online= project.state
