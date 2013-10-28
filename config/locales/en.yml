@@ -386,6 +386,7 @@ en:
       waiting_confirmation: waiting
       waiting_funds: waiting
       not_reached_goal: waiting
+      reached_goal: funded
       draf: "draft"
   projects:
     box:
