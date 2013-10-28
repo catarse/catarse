@@ -33,12 +33,12 @@
         span.backer= t('.title_requirements')
         ul.list.backer
           li.sucessfull
-            span= t('.sucessfull_title')
+            span= t('.sucessful_title')
             p= t('.sucessfull')
           li.not_funded
-            span= t('.not_sucess_title')
-            p= t('.not_sucess', terms: t('footer.links.terms_link')).html_safe
-      
+            span= t('.not_success_title')
+            p= t('.not_success', terms: t('footer.links.terms_link')).html_safe
+
       .more_questions
         = t('.more_questions')
         ul.questions
@@ -49,8 +49,8 @@
           li
             = image_tag('catarse/icon_credits.png')
             strong= t('.title_not_funded')
-            p= t('.not_funded')  
-          li.line                    
+            p= t('.not_funded')
+          li.line
           li
             = image_tag('catarse/icon_rewards.png')
             strong= t('.title_rewards')
@@ -90,5 +90,5 @@
               p= t('.other_four')
             li
               label.backer 5
-              p= t('.other_five')              
+              p= t('.other_five')
     .clearfix
