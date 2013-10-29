@@ -5,6 +5,7 @@ en:
     important: "<strong>Important:</strong> The %{channel} selects the projects based on their own criteria, this implies that the project can be refused by the curators team."
 
     permalink: "Project URL"
+    permalink_example: "catarse.me/yourproject"
     permalink_hint: "Project URL is the web address for your project, keep it simple. Try to not use underline, dash and special characters"
 
     name: "Project's Name"
