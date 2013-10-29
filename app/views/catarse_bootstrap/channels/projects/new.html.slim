@@ -39,7 +39,7 @@ section.row
     = form.input :how_know, as: :text, label: t('submit_project.how_know')
     p = t('submit_project.how_know_hint')
 
-    = form.input :accepted_terms, as: :boolean, label: t('submit_project.terms')
+    = form.input :accepted_terms, as: :boolean, label: t('submit_project.accept_terms', link: link_to('submit_project.terms', channel.terms_url))
 
     = form.button :submit, t('submit_project.submit'), class: 'button action submit'
 

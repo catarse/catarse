@@ -1,48 +1,43 @@
-submit_project:
-  hints:
-    backer:
-      credits: "You have <strong>%{credits}</strong> in credits and can back with up to this amount without needing to make a new payment."
-      value: "You chose the amount ;) starting with R$10, any amount is great."
-    project:
-      video_url_edit: 'Paste here the URL of your Vimeo video.'
-      about: "Tell us about what inspired you to come up with this project . Be objective end charming, present your readers with something that moves them while being very transparent over the expectations on your project!"
-      more_links: "Which channels will be used to spread the word about your project? List here your facebook/twitter/blog/site/ and what ever more links you have to help you"
-      category: "Before you format your project explore other (successful) projects to inspire yourself!"
-      expires_at: "Finally, choose how long you want your campaign to last. Again, this is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
-      online_days: "Finally, choose how long you want your campaign to last. Again, this is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
-      goal: "Values in reais (R$)"
-      first_backers: "To reach your financial goal it’s indispensable to engage the people who are close to you and the project. So if you can list here who will be your first 20 backers that would be a great sign ;) "
-      headline: "Summarize your project in 140 characters. This sentence will be the first contact people will have with your project, before even seeing the video. Be creative, clear and direct :)"
-      name: "Be as objective as you can. Leave explanations for the About section."
-      uploaded_image: "Upload a 512x400 image(.jpg)."
-      video_url: "Paste the URL from a <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a> video. We recommend Vimeo because it looks better and doesn't have ads. This way, your project will look better too! <strong>Produce your video the best you can and make a video specifically for your campaign</strong>. If there is a single thing that differentiates the projects that reach the goal from the others is the video. Observe ;)"
-    reward:
-      description: "Describe your reward in a way that arouses people's interest to back the project. Don't be shy!"
-      maximum_backers: "If your reward is limited, tell us the maximum backers."
-      minimum_value: "This is the minimum amount to choose this reward."
-      days_to_delivery: "Total of days to deliver the reward."
-  labels:
-    backer:
-      anonymous: "I want my back to be anonymous."
-      credits: "I want to use my credits on this back."
-      reward: "Select your reward"
-      value: "How much do you want to contribute with?"
-    comment:
-      comment: "Leave your comment about this project"
-    project:
-      more_links: "List project related links *"
-      how_know: "How did you get to know Catarse?"
-      headline: "Punch Line"
-      category: 'Category'
-      first_backers: "List your first backers *"
-      about: "About your project. How will you spend this money?"
-      expires_at: "What's the deadline to reach your goal?"
-      goal: "How much do you intend to raise? (use only numbers)"
-      name: "Project's Name"
-      online_days: 'How Many Campaign Days?'
-      video_url: Video
-      uploaded_image: "Project thumbnail"
-    reward:
-      maximum_backers: "Maximum backers (optional)"
-      days_to_delivery: "Days to delivery"
-  optional: " (optional)"
+en:
+  submit_project:
+    title: "Submit your project to %{channel} channel"
+    subtitle: "After filling out the form below, you will receive a draft project page. There you will add rewards and can share with your friends to have an even more sharp message. The information filled below are not definitive, but remember that the more consistent you are in your project submission, the faster it will air."
+    important: "<strong>Important:</strong> The %{channel} selects the projects based on their own criteria, this implies that the project can be refused by the curators team."
+
+    permalink: "Project URL"
+    permalink_hint: "Project URL is the web address for your project, keep it simple. Try to not use underline, dash and special characters"
+
+    name: "Project's Name"
+    name_hint: "Be as objective as you can. Leave explanations for the About section."
+
+    about: "About your project. How will you spend this money?"
+    about_hint: "Tell us about what inspired you to come up with this project . Be objective end charming, present your readers with something that moves them while being very transparent over the expectations on your project!"
+
+    headline: "Punch Line"
+    headline_hint: "Summarize your project in 140 characters. This sentence will be the first contact people will have with your project, before even seeing the video. Be creative, clear and direct."
+
+    category_id: "Category"
+    category_id_hint: "Before you format your project <a href='%{href}' target='_blank'>explore other</a> (successful) projects to inspire yourself!"
+
+    goal: "Values in reais (R$)"
+    goal_hint: "The biggest part of the supportes will be close to you. Based on that try to think on your capacity to mobilize at least 50% of your network. Remember the Catarse 13% tax.Just divide your final budget by 0,87 to reach the final number."
+
+    online_days: "How Many Campaign Days?"
+    online_days_hint: "Finally, choose how long you want your campaign to last. Again, this is a strategic choice: if you put a lot of time, people will lose interest along the way; if put too little, you may not reach the minimum in time."
+
+    video_url: "Vídeo"
+    video_url_hint: "Paste here the URL of your Youtube or Vimeo video."
+
+    more_links: "List project related links"
+    more_links_hint: "Which channels will be used to spread the word about your project? List here your facebook/twitter/blog/site/ and what ever more links you have to help you."
+
+    first_backers: "List the first backers"
+    first_backers_hint: "To reach your financial goal it’s indispensable to engage the people who are close to you and the project. So if you can list here who will be your first 20 backers that would be a great sign."
+
+    how_know: "Hou you discovered the channel?"
+    how_know_hint: "Tell us how you discovered the channel and what you expect from us."
+
+    accept_terms: "I read and agree with the %{link}."
+    terms: "use terms"
+
+    submit: "Submit project"
