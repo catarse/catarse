@@ -1,3 +1,7 @@
+form
+  div
+    margin: 1em 0
+
 label
   font-size: .9em
   display: inline-block
@@ -18,3 +22,22 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 
 input[type='checkbox']
   margin-right: .4em
+
+.password
+  position: relative
+  .hint
+    position: absolute
+    right: 0
+    top: 1px
+    color: $blue-two
+    font-size: em(13px)
+    display: block
+.password:focus > .hint
+  display: block
+
+.show-password
+  position: absolute
+  right: 24px
+  top: 196px
+  input
+    margin: 0 .4em
