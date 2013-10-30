@@ -1,4 +1,6 @@
+$default-font: "Helvetica Neue", "Helvetica", "Arial", sans-serif
 $default-font-size: 16px
+$default-line-height: 120%
 
 @function em($px : 0, $base: $default-font-size)
   $value : 0
@@ -11,9 +13,9 @@ $default-font-size: 16px
 // General
 
 html
-  font-family: $default_font
+  font-family: $default-font
   font-size: $default-font-size
-  line-height: $default_line_height
+  line-height: $default-line-height
 
 h1
   font-size: em(35px)
