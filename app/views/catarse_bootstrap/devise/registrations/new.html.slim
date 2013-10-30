@@ -33,6 +33,7 @@
             = check_box_tag :show_password
             = label_tag :show_password, t('pages.sign_up.form.labels.show_password')
 
+          = form.input :newsletter, as: :boolean, input_html: { checked: true }, label: t('pages.sign_up.form.labels.newsletter'), wrapper_html: { class: 'newsletter' }
 
           .large-10.columns.large-centered
             = form.submit t('pages.sign_up.form.inputs.submit'), class: 'button action'
