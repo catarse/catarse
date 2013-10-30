@@ -5,8 +5,8 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
 
   # We use show as create to redirect to this action after auth
   def show
-    authorize! :create, ChannelsSubscriber
     @channels_subscriber = ChannelsSubscriber.new subscription_attributes
+    authorize! :create, @channels_subscriber
     create! do |format|
       flash[:notice] = I18n.t('channels_subscribers.created', channel: channel.name)
       return redirect_to root_path
