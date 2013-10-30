@@ -6,39 +6,41 @@
   border: none
   border-radius: 3px
   font-weight: bold
-  font-size: .94em
+  font-size: em(15px)
   text-decoration: none
   transition: .2s background
 
   &.medium
-    font-size: 0.94em
+    font-size: em(15px)
     padding: 0.7em 1.5em
 
   &.negative
-    background: $default_button_negative_background_color
-    color: $default_button_negative_font_color !important
+    background: $blue-one
+    color: $white
     &:hover
-      background: lighten($default_button_negative_background_color, 5%)
-  &.success
-    background: $default_button_success_background_color
-    color: $default_button_success_font_color !important
-    &:hover
-      background: lighten($default_button_success_background_color, 5%)
+      background: lighten($blue-one, 5%)
+
   &.facebook
-    background: $default_button_facebook_background_color
-    color: $default_button_facebook_font_color !important
+    background: $blue-facebook
+    color: $white
     &:hover
-      background: lighten($default_button_facebook_background_color, 5%)
+      background: lighten($blue-facebook, 5%)
+
   &.info
     background: $orange
     color: $white
+    &:hover
+      background: lighten($orange, 5%)
+
   &.action
     background: $green
     color: $white
     &:hover
       background: lighten($green, 5%)
+
   &:active
     position: relative
     top: 2px
+
   &.submit
     margin: 3em 0
