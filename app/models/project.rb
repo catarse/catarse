@@ -38,6 +38,7 @@ class Project < ActiveRecord::Base
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_online_date, ->(online_date) { where("online_date::date = ?", online_date.to_date) }
   scope :by_expires_at, ->(expires_at) { where("projects.expires_at::date = ?", expires_at.to_date) }
+  scope :by_updated_at, ->(updated_at) { where("updated_at::date = ?", updated_at.to_date) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
