@@ -27,6 +27,6 @@ class Admin::ProjectsController < Admin::BaseController
 
   protected
   def collection
-    @projects = apply_scopes(end_of_association_chain).includes(:project_total).without_state('deleted').page(params[:page])
+    @projects = apply_scopes(end_of_association_chain).joins(:project_total).without_state('deleted').page(params[:page])
   end
 end
