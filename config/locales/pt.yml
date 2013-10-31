@@ -647,6 +647,19 @@ pt:
       subtitle: "A hora de montar o seu projeto é agora. Estamos loucos para saber o que você está aprontando..."
       title: "Agooora sim! Envie seu projeto, campeão."
       legend_html: "Após preencher o formulário abaixo, você receberá uma página de projeto em rascunho. Lá você irá adicionar as recompensas e poderá compartilhar com seus amigos para ter um projeto ainda mais afiado.<br><br>As informações preenchidas abaixo não são definitivas, mas lembre-se de que quanto mais consistente estiver o seu projeto nesse envio, mais rápido ele irá para o ar.<br><br><b>Importante</b> <i> O Catarse é uma plataforma curada, o que significa que vamos avaliar o foco, a viabilidade, e a consistência do seu projeto durante o processo de Rascunho. Se entendermos que o seu projeto não está de acordo com os nossos <a href='https://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank' >Critérios de Seleção</a>, ele poderá ser recusado pela equipe de curadores.</i>"
+      legend_html: "
+       <strong>Após preencher o formulário abaixo você vai criar uma página de RASCUNHO</strong><br/><br/>
+       <strong>As informações preenchidas abaixo não são definitivas!</strong><br/>
+       Criando a sua página de rascunho você vai poder adicionar recompensas e aprimorar a apresentação do seu projeto antes de ser avaliado. Você poderá, inclusive, enviar a página para os seus amigos, colher feedback e, ter um projeto ainda mais afiado para ser avaliado!
+       <br/><br/>
+       <strong>Quando você estiver pronto, vai poder enviar seu projeto para curadoria.</strong><br/>
+       É super simples, tem um botão específico para isso dentro da página de rascunho. É só clicar e aguardar a resposta dos curadores em até 2 dias úteis =)
+       <br/><br/>
+       <strong>IMPORTANTE!</strong><br/>
+       A curadoria vai avaliar o foco, a viabilidade, a consistência e, a qualidade de apresentação do seu projeto. Se entendermos que ele não está de acordo com os
+       <a href='http://suporte.catarse.me/knowledgebase/articles/241190-diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos' target='__blank'>Critérios de Seleção</a> da plataforma, ele poderá ser recusado pela nossa equipe.
+
+      "
     twitter:
       take_a_look: "Confira o projeto %{name} no @catarse"
     video_embed:
