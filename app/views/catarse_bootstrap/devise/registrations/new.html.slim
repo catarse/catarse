@@ -20,29 +20,22 @@
       .clearfix
 
       .large-11.large-centered.columns
-        = form_for(resource, as: resource_name, url: sign_up_path) do |f|
-          = f.hidden_field :newsletter, value: true
-
+        = simple_form_for(resource, as: resource_name, url: sign_up_path) do |form|
           = render 'devise/shared/alert'
-          p
-            = f.label :name, t('pages.sign_up.form.labels.name')
-            = f.text_field :name, required: true
 
-          p
-            = f.label :email
-            = f.text_field :email, required: true
+          = form.input :name, as: :string, label: t('pages.sign_up.form.labels.name')
 
-          p
-            = f.label :password
-            span.right.text-right.inline-hint
-              = t('pages.sign_up.form.hint.password_length')
-            = f.password_field :password, required: true
+          = form.input :email, as: :email
 
-          .text-left
+          = form.input :password, as: :password, label: t('pages.sign_up.form.labels.password'), hint: t('pages.sign_up.form.hint.password_length'), wrapper_html: { class: 'password' }
+
+          .show-password
             = check_box_tag :show_password
-            = f.label :show_password, t('pages.sign_up.form.labels.show_password')
+            = label_tag :show_password, t('pages.sign_up.form.labels.show_password')
+
+          = form.input :newsletter, as: :boolean, input_html: { checked: true }, label: t('pages.sign_up.form.labels.newsletter'), wrapper_html: { class: 'newsletter' }
 
           .large-10.columns.large-centered
-            = f.submit t('pages.sign_up.form.inputs.submit'), class: [:button, :success, 'large-12', 'columns']
+            = form.submit t('pages.sign_up.form.inputs.submit'), class: 'button action'
 
       .clearfix

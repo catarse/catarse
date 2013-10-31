@@ -1,51 +1,36 @@
-// Font-defaults for the entire project
+$default-font: "Helvetica Neue", "Helvetica", "Arial", sans-serif
+$default-font-size: 16px
+$default-line-height: 120%
 
-//  12px: .8em
-//  13px: .9em
-//  14px: 1em
-//  16px: 1.2em
-//  20px: 1.4em
-//  24px: 1.7em
-
-
+@function em($px : 0, $base: $default-font-size)
+  $value : 0
+  @if  $px > 0  and $base > 0
+    $value : ($px / $base) * 1em
+  @else
+    $value: 0
+  @return  $value
 
 // General
 
 html
-  font-size: $default_font_percent 
-body
-  font-family: $default_font 
-  font-size: 1em
-  line-height: $default_line_height
+  font-family: $default-font
+  font-size: $default-font-size
+  line-height: $default-line-height
 
-// Headers
-
-h1, h2, h3
-  color: $blue-one
 h1
-  font-size: 2.12em
+  font-size: em(35px)
+  color: $blue-one
 h2
-  font-size: 1.25em
+  font-size: em(20px)
+  color: $blue-one
 h3
-  font-size: $default_header_3_size
+  font-size: em(18px)
+  color: $blue-one
 h4
-  font-size: $default_header_4_size
-  color: $default_header_4_color
+  font-size: em(16px)
+  color: $blue-one
 
 // Paragraph
 p
-  font-size: .94em
+  font-size: em(15px)
   color: $blue-one
-
-// Forms
-label
-  font-size: .9em
-  display: inline-block
-  margin-bottom: 0.7em
-  color: $raven
-  font-weight: 700
-
-
-
-
-
