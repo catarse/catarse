@@ -237,7 +237,7 @@ pt:
       current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."
       important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
       project: Projeto
-      refund_expration_date_html: "Prazo máximo para solicitar o estorno (<a target='__blank' href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
+      refund_expiration_date_html: "Prazo máximo para solicitar o estorno (<a target='__blank' href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
       refunded: "Reembolso requisitado com sucesso. Nossa equipe entrará em contato com você em até 2 dias úteis. "
       insufficient_credits: "Você não tem créditos suficientes para realizar este estorno."
       refunds_title: "Apoios que podem ter estorno realizado"
@@ -393,7 +393,7 @@ pt:
         twitter_text: "Uhuu! O projeto '%{name}', que eu apoiei, foi bem-sucedido no @catarse! %{short_url}"
       unsuccessful:
         email_subject: "O projeto %{project_name} não foi financiado - algumas informações úteis"
-        email_text: 'Infelizmente o projeto %{project_link}, que você apoiou, não atingiu a meta estabelecda e não foi financiado no Catarse.<br><br>Em função disto, você recebeu <strong>%{value}</strong> em créditos para apoiar outros projetos. Você pode conhecer mais projetos de %{project_category} %{explore_category_link}.<br><br>Caso prefira, você pode pedir o reembolso do seu dinheiro %{credits_link}. Lembre que o seu cadastro no site foi feito através do <b>%{user_provider}.</b> É por ele que você deve entrar para acessar sua conta. Caso você tenha alguma dificuldade nesse processo, envie um email para financeiro@catarse.me com o assunto "Reembolso - problema no login".<br><br>Caso você prefira solicitar o reembolso, só para lembrar, como constam nos %{link_to_term} do Catarse, que se o apoio foi feito com cartão de crédito, o valor será estornado na próxima fatura do cartão. Se o apoio foi feito através de transferência bancária ou boleto, enviaremos um email com os procedimentos necessários para poder devolver o valor para você.<br><br>Se, por qualquer motivos, quiser entrar em contato com %{project_owner_name}, realizador do projeto, mande um email para %{project_owner_email}.<br><br>Se tiver alguma outra dúvida, acesse nosso FAQ ou mande um email para o financeiro@catarse.me.<br>'
+        email_text: 'Infelizmente o projeto %{project_link}, que você apoiou, não atingiu a meta estabelecida e não foi financiado no Catarse.<br><br>Em função disto, você recebeu <strong>%{value}</strong> em créditos para apoiar outros projetos. Você pode conhecer mais projetos de %{project_category} %{explore_category_link}.<br><br>Caso prefira, você pode pedir o reembolso do seu dinheiro %{credits_link}. Lembre que o seu cadastro no site foi feito através do <b>%{user_provider}.</b> É por ele que você deve entrar para acessar sua conta. Caso você tenha alguma dificuldade nesse processo, envie um email para financeiro@catarse.me com o assunto "Reembolso - problema no login".<br><br>Caso você prefira solicitar o reembolso, só para lembrar, como constam nos %{link_to_term} do Catarse, que se o apoio foi feito com cartão de crédito, o valor será estornado na próxima fatura do cartão. Se o apoio foi feito através de transferência bancária ou boleto, enviaremos um email com os procedimentos necessários para poder devolver o valor para você.<br><br>Se, por qualquer motivos, quiser entrar em contato com %{project_owner_name}, realizador do projeto, mande um email para %{project_owner_email}.<br><br>Se tiver alguma outra dúvida, acesse nosso FAQ ou mande um email para o financeiro@catarse.me.<br>'
         notification_text: "Você recebeu %{value} em créditos para apoiar outros projetos. Caso prefira, você pode pedir seu dinheiro de volta %{link}."
         unsuccessful_text: "O projeto %{link} que você apoiou não foi financiado. Quem sabe numa próxima vez?"
     video_regex_validation: "somente URLs do Vimeo são aceitas"
@@ -485,7 +485,7 @@ pt:
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
     form:
-      permalink_hint: 'Simplifique a URL do seu projeto.Imagine que seu apoiador precisará lembrar do endereço para dibulgar o projeto no bar.'
+      permalink_hint: 'Simplifique a URL do seu projeto.Imagine que seu apoiador precisará lembrar do endereço para divulgar o projeto no bar.'
       important_html: "Lembre-se da taxa de 13% descontada pelo Catarse caso seu projeto seja bem-sucedido."
       add_reward: "Adicionar nova recompensa"
       project_warning:
@@ -620,7 +620,7 @@ pt:
       category: "Qual é a categoria do seu projeto?"
       tags_hint: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
       tags_important: "Confira mais projetos relacionados a sua categoria clicando <a href='%{href}' target='_blank'>aqui!</a>."
-      video: "Já tem o video? Manda aí a url!"
+      video: "Já tem o vídeo? Manda aí a url!"
       video_hint: "O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
       video_important: "Cola o link pra gente! Pode ser do Vimeo ou do Youtube."
       how_know_important: "Oba! Chegamos à última pergunta."
@@ -725,6 +725,7 @@ pt:
         approve: "Aprovar"
         reject: "Rejeitar"
         send_to_draft: "Enviar para rascunho"
+    edit: "Atualizar canal"
 
   registrations:
     new:
@@ -772,7 +773,7 @@ pt:
       step_four: "Caso seu projeto não atinja a meta estabelecida dentro do prazo, seus apoiadores serão ressarcidos na forma de crédito para apoiar outros projetos ou, se preferirem, receberão o dinheiro de volta."
       title_requirements: "Requisitos para enviar projetos para o Catarse"
       creative: "Criativo e Finito"
-      colective: "Benefícios Coletivos"
+      collective: "Benefícios Coletivos"
       nonprofit: "Recompensas não-financeiras"
       donation: "Não ser um projeto “financie minha vida” ou caridade"
       video: "Fazer um vídeo"
@@ -788,7 +789,7 @@ pt:
       why: "Por que o Catarse?"
       intro: "Antes de mais nada, é legal que você saiba porque acreditamos que essa nova via para se financiar projetos é sensacional:"
       why_one: "Pouca burocracia e baixo risco financeiro; sem juros, sem venda de participação, sem custo para entrar no ar. E com muita emoção e diversão."
-      why_two: "Um bom empenho na comunicação do seu projeto pode espalhar rápidamente a sua ideia para muita gente, expandindo sua rede e fortalecendo sua base de apoiadores."
+      why_two: "Um bom empenho na comunicação do seu projeto pode espalhar rapidamente a sua ideia para muita gente, expandindo sua rede e fortalecendo sua base de apoiadores."
       why_three: "Gerando aproximação e ampliação da sua rede,  esse tipo de campanha abre portas para novos projetos, além de ideias, parcerias e conexões inesperadas."
     guidelines_tips:
       title: "Calma, amizade!"
@@ -808,7 +809,7 @@ pt:
       title_six: "E o vídeo, você já gravou?"
       tip_six: "O vídeo é o cartão de visita do projeto. Em geral é o primeiro contato com possíveis apoiadores, portanto, capriche no roteiro (principalmente os primeiros 30 segundos), no áudio e na qualidade da imagem (HD é recomendado)."
       title_seven: "Como irá mobilizar a sua rede?"
-      tip_seven: "É importante planejar estratégicamente a agitação das redes, tanto antes quanto durante o prazo de captação. Recomendamos distribuir o trabalho semanalmente e por níveis decrescentes de proximidade com os contatos."
+      tip_seven: "É importante planejar estrategicamente a agitação das redes, tanto antes quanto durante o prazo de captação. Recomendamos distribuir o trabalho semanalmente e por níveis decrescentes de proximidade com os contatos."
       title_eight: "Como o dinheiro será utilizado?"
       tip_eight: "Abra seu orçamento pra que todos saibam como serão usadas as contribuições. TRANSPARÊNCIA é tudo nesse processo. Você pode incluir um link para uma planilha no GOOGLE DOCS, ou então, colocá-la diretamente na descrição do projeto."
       explore_curious: "Tô aqui de curioso!"
@@ -830,10 +831,10 @@ pt:
       title_four: "Torça junto!"
       step_four: "Agora você está no mesmo barco que o realizador do projeto. Espalhe o projeto pelas redes e fique atento às novidades e a chamados na reta final."
       title_requirements: "Lembre-se que o Catarse é 'tudo ou nada'"
-      sucessfull_title: "Se o projeto atingir ou superar a meta de arrecadação..."
-      sucessfull: "O projeto é considerado bem-sucedido! O realizador recebe o dinheiro e o contato de todos os apoiadores."
-      not_sucess_title: "Se o projeto não atingir a meta..."
-      not_sucess: "Você recebe o valor do apoio integralmente na forma de créditos (para apoiar outro projeto). Se isso não te agradar, você pode solicitar o seu dinheiro de volta, segundo as regras do <a href='%{terms}' target='_blank'>termo de uso</a>."
+      sucessful_title: "Se o projeto atingir ou superar a meta de arrecadação..."
+      sucessful: "O projeto é considerado bem-sucedido! O realizador recebe o dinheiro e o contato de todos os apoiadores."
+      not_success_title: "Se o projeto não atingir a meta..."
+      not_success: "Você recebe o valor do apoio integralmente na forma de créditos (para apoiar outro projeto). Se isso não te agradar, você pode solicitar o seu dinheiro de volta, segundo as regras do <a href='%{terms}' target='_blank'>termo de uso</a>."
       title_not_funded: "Se o projeto não atingir a meta, como utilizo meus créditos?"
       not_funded: "Você receberá seus créditos no seu perfil no Catarse. No momento em que escolher outro projeto para apoiar, na tela de selecionar a recompensa, terá um campo para utilizar o seu crédito."
       more_questions: "Tô louco pra apoiar um projeto, tem mais alguma coisa que preciso saber?"

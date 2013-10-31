@@ -20,7 +20,7 @@ html
       meta property="og:image"        content=Configuration[:company_logo]
       meta property="og:site_name"    content=Configuration[:company_name]
       meta property="fb:app_id"       content=Configuration[:facebook_app_id]
-      meta property="og:description"  content=( request.subdomain.present? ? channel.description : t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
+      meta property="og:description"  content=( request.subdomain.present? && channel.present? ? channel.description : t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
 
   body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name]
     = render 'layouts/uservoice'

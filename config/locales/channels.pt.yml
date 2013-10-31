@@ -12,8 +12,8 @@ pt:
     curator: 'Curador'
     admin:
       menu: "Moderação de Canais"
-      statistics_menu: "Estatisticas"
-      profile_menu: "Perfil do Canal"
+      statistics_menu: "Estatísticas"
+      profile_menu: "Editar canal"
       statistics:
         title: 'Estatísticas do canal'
         total_subscribers: 'Total de assinantes'
@@ -26,65 +26,6 @@ pt:
         one: "<span>%{count} %{unit}</span> restante"
         other: "<span>%{count} %{unit}</span> restantes"
       pledged_html: "<span>%{value}</span> levantados"
-      new:
-        title: "Agooora sim! Envie seu projeto para o %{channel}"
-        subtitle: "A hora de montar o seu projeto é agora. Estamos loucos para saber o que você está aprontando..."
-        legend_html: "Após preencher o formulário abaixo, você receberá uma página de projeto em rascunho. Lá você irá adicionar as recompensas e poderá compartilhar com seus amigos para ter um projeto ainda mais afiado.
-        <br/>
-        <br/>
-        As informações preenchidas abaixo não são definitivas, mas lembre-se de que quanto mais consistente estiver o seu projeto nesse envio, mais rápido ele irá para o ar.
-        <br/>
-        <br/>
-        <strong>Importante</strong>
-        <br/>
-        O %{channel} seleciona projetos segundo seus próprios
-        critérios de seleção,
-        o que implica que seu projeto poderá ser recusado pela equipe de curadores.
-        "
-        permalink_hint: 'Simplifique a URL do seu projeto.Imagine que seu apoiador precisará lembrar do endereço para dibulgar o projeto no bar.'
-        permalink_important: 'Tente não usar Underline, hífen e etc.'
-        important_html: "Lembre-se da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido. Basta dividir o seu orçamento final por 0,87."
-        about: "Descreva seu projeto e como o $ será utilizado"
-        how_much_you_need: "Quanto você pretende arrecadar?"
-        how_much_hint_html: "É importante lembrar que grande parte dos apoios virão de pessoas próximas a você (1º  e 2º nível de relacionamento): <a href='%{href}' target='_blank'>Clique aqui!</a> Desse modo, ao definir o valor que pretende arrecadar através do Catarse é fundamental pensar na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos."
-        how_much_important: "Lembre-se da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido.  Basta dividir o seu orçamento final por 0,87."
-        days: "Em quantos dias?"
-        days_hint: "Em média os projetos ficam no ar por 40 dias."
-        days_important: "O prazo máximo para deixar o projeto no ar é de 60 dias."
-        about_hint: "Conte-nos um pouco sobre sua inspiração para realizar o projeto, sua história e o que será entregue ao final. Seja sucinto e fuja daquelas formalidades de editais. Nada de OBJETIVO, JUSTIFICATIVA, PÚBLICO-ALVO... Presenteie seus leitores com algo que mexa com eles e seja muito transparente em relação a expectativa sobre o projeto."
-        about_important: "Não deixe o texto muito grande! Coloque links para que o apoiador possa explorar mais o seu trabalho."
-        contact: "Deixe seu email para entrarmos em contato"
-        links: "Mais algum link para conhecer mais sobre o seu projeto?"
-        links_important: "Esse clipping irá nos ajudar a entender a história do seu trabalho."
-        links_hint: "Cole aqui links de vídeos, artigos, reportagens, blogs..."
-        category: "Qual é a categoria do seu projeto?"
-        tags_hint: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
-        tags_important: "Confira mais projetos relacionados a sua categoria clicando <a href='%{href}' target='_blank'>aqui!</a>."
-        video: "Já tem o video? Manda aí a url!"
-        video_hint: "O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
-        video_important: "Cola o link pra gente! Pode ser do Vimeo ou do Youtube."
-        how_know_important: "Oba! Chegamos à última pergunta."
-        more_links_important: "É muito importante utilizar as suas mídias sociais para espalhar a notícia sobre o seu projeto e engajar sua rede no sucesso do projeto."
-        first_backers_important: "Essas pessoas serão fundamentais para ter sucesso no seu projeto"
-        online_days_important: 'O prazo máximo para deixar o projeto no ar é de 60 dias.'
-        headline_important: 'É uma breve descrição do projeto, 140 caracteres no máximo! :D'
-        name_important: "Não ultrapasse 50 caracteres"
-        social: "Canais de Mobilização"
-        facebook_hint: "http://facebook.com/__________"
-        twitter_hint: "http:// twitter.com/____________"
-        social_important: "É muito importante utilizar as suas mídias sociais para espalhar a notícia sobre o seu projeto e engajar sua rede no sucesso do projeto."
-        know_us_via: "Como você conheceu o Catarse?"
-        knowus_important: "Oba! Chegamos à última pergunta! Capricha aí, amizade ;)"
-        how_works: "Como pretende mobilizar apoiadores para levantar o $ necessário para a execução?"
-        project_warning:
-          content_html: "Quer aumentar a chance de seu projeto ser selecionado? Não deixe de ler %{link}."
-          help_link: "nosso guia"
-        rewards: "Como irá recompensar os seus apoiadores?"
-        rewards_hint: "DIVIDA EM COTAS! A gente sabe que as recompensas ajudam o apoiador a definir com quanto ele irá apoiar o projeto. Todo mundo adora edições limitadas, coisas únicas, experiências divertidas. Gaste um bom tempo bolando as recompensas criativas."
-        rewards_important: "Não viaje nas recompensas. Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D"
-        submit: "Enviar o projeto"
-        send_project: "Quero enviar meu projeto."
-        how_know: "Como você conheceu o canal?"
     how_it_works:
       title: "Como funciona o %{channel}?"
     footer:

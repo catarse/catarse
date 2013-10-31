@@ -1,4 +1,5 @@
 class Channels::ProjectsController < ProjectsController
+  layout 'catarse_bootstrap'
   belongs_to :channel, finder: :find_by_permalink!, param: :profile_id
 
 
