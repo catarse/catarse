@@ -1,27 +1,38 @@
 br
-#project_warning.bootstrap-alert
-  .alert.alert-warning
-    i ATENÇÃO!  Este projeto ainda não está no ar... Seja bem-vindo ao rascunho o/
-    #toggle_warning
-      = link_to '(minimizar informações)', '#'
-    #project_warning_text
+- if can? :update, @project
+  #project_warning.bootstrap-alert
+    .alert.alert-warning
+      i Bem-vindo ao Rascunho!
+      #toggle_warning
+        = link_to '(minimizar informações)', '#'
+      #project_warning_text
+        br/
+        br/
+        | Para editar a página do seu projeto procure abaixo pela <strong>aba de EDIÇÃO</strong>, realize as todas alterações no formulário e clique em <strong>ATUALIZAR INFORMAÇÕES</strong>.
+        | As recompensas podem ser adicionadas diretamente na coluna onde ficam expostas, para isso basta clicar em <strong>ADICIONAR RECOMPENSA</strong>. 
+        br/
+        br/
+        strong Importante!
+        br/
+        | Seu projeto só será avaliado pela nossa equipe quando você clicar no botão <strong>ENVIAR PARA CURADORIA</strong>. Iremos analisar a consistência do seu projeto apenas com base nas informações preenchidas do rascunho, por isso seja bastante claro e objetivo. 
+        | Lembrando que o <strong>vídeo</strong> não é obrigatório para a avaliação, mas se você já estiver com ele pronto, mais rápido o seu projeto poderá ir ao ar.
+        br/
+        br/
+        strong Solução de problemas:
+        br/
+        | Confira: #{link_to 'Realizadores - Primeiros Passos', 'http://suporte.catarse.me/knowledgebase/topics/25764-realizadores-primeiros-passos-pr%C3%A9-projeto-', target: '__blank'}
       br/
       br/
-      ' Este projeto ainda está em fase de Rascunho, isso significa que nenhuma informação abaixo é definitiva até a entrada do projeto no ar.
-      | Por isso, aproveite! Dê uma olhada no vídeo, na descrição e nas recompensas e <strong> deixe seu feedback na aba de comentários.</strong>
-      br/
-      br/
-      '<strong>Lembrando que:</strong> O Catarse é uma plataforma curada, o que significa que vamos avaliar o foco, a viabilidade, e a consistência do seu
-      ' projeto durante o processo de Rascunho. Se entendermos que o seu projeto não está de acordo com os nossos
-      = link_to 'Critérios de Seleção', 'http://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit', target: '_blank'
-      | , ele poderá ser recusado pela equipe de curadores.
-      br/
-      br/
-      | Sinta-se a vontade pra nos enviar perguntas e feedbacks durante todo o processo =)
-      br/
-      ' Pra fazer isso acesse a nossa
-      = link_to 'Central de Suporte', Configuration[:support_forum], target: '_blank'
-    br/
-    br/
-    .bootstrap-twitter
-      = link_to 'Enviar para curadoria', send_to_curate_project_path(@project), class: 'btn btn-large'
+      .bootstrap-twitter
+        = link_to 'Enviar para curadoria', send_to_curate_project_path(@project), class: 'btn btn-large'
+- else
+  #project_warning.bootstrap-alert
+    .alert.alert-warning
+      i Atenção! Este projeto ainda está em rascunho.
+      #toggle_warning
+        = link_to '(minimizar informações)', '#'
+      #project_warning_text
+        br/
+        br/
+        | Este projeto ainda não está apto a receber contribuições financeiras e as informações dessa página não são definitivas. 
+        | Se você quer dar uma força desde já, deixe seu feedback para o(a) realizador(a) na <strong>Aba de Comentários</strong>.
