@@ -20,7 +20,7 @@ en:
     keywords: "catarse, crowdfunding, project, community, open source"
 
   login:
-    forgot_passord:
+    forgot_password:
       welcome: 'Reset password'
       label: 'Fill your email to reset your password'
       submit: 'Reset'
@@ -219,7 +219,7 @@ en:
       current_credits_html: "Your current balance is <span id=\"current_credits\">%{credits}</span> in credits."
       important_html: "If you ask for a refund, the value of your payment will be deducted from your credits."
       project: Project
-      refund_expration_date_html: "Deadline to request refund (<a target='__blank' href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
+      refund_expiration_date_html: "Deadline to request refund (<a target='__blank' href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
       refunded: "Refund request successfully done. Our team will contact you within two business days."
       insufficient_credits: "You don't have enough credits to request this refund."
       refunds_title: "Payments that can be refunded"
@@ -368,14 +368,14 @@ en:
     finish:
       successful:
         email_subject: "Hooray! The project %{project_name} was successful on Catarse!"
-        email_text: "The project %{project_link}, that you have backed, was successfully funded! Let's celebrate o/<br><br>The project has, including you, %{project_total_backers} wonderful backers, raised %{project_pleged} and reached %{project_process}% of its goal =D<br><br>Something that is important to know: Catarse's team takes 3 days to send to the project creator the list with all information of the backers. So, the project creator will only be in touch with you to thank you and talk about the rewards delivery in a few days, ok?<br><br>So why don't you, in this meantime, share with all your friends this success?<br><br><div style='text-align:center;'>%{facebook_button}%{twitter_button}</div><br><br>If you want to get in touch with %{project_owner_name}, send an email to %{project_owner_email}.<br><br>If you have any doubt about Catarse, acess our FAQ: <a href='http://www.catarse.me/faq' style='color: #008800';>www.catarse.me/faq</a> or send an email to <a href='mail_to:contato@catarse.me' style='color: #008800;'>contato@catarse.me</a><br>"
+        email_text: "The project %{project_link}, that you have backed, was successfully funded! Let's celebrate o/<br><br>The project has, including you, %{project_total_backers} wonderful backers, raised %{project_pledged} and reached %{project_process}% of its goal =D<br><br>Something that is important to know: Catarse's team takes 3 days to send to the project creator the list with all information of the backers. So, the project creator will only be in touch with you to thank you and talk about the rewards delivery in a few days, ok?<br><br>So why don't you, in this meantime, share with all your friends this success?<br><br><div style='text-align:center;'>%{facebook_button}%{twitter_button}</div><br><br>If you want to get in touch with %{project_owner_name}, send an email to %{project_owner_email}.<br><br>If you have any doubt about Catarse, access our FAQ: <a href='http://www.catarse.me/faq' style='color: #008800';>www.catarse.me/faq</a> or send an email to <a href='mail_to:contato@catarse.me' style='color: #008800;'>contato@catarse.me</a><br>"
         facebook_text: "Hooray! The project '%{name}', which I backed, was successful on Catarse!"
         notification_text: "Hooray! The project %{link} that you backed was successful! Spread the word!"
         reward_notification_text: "Soon, %{link} will contact you to deliver your reward. Enjoy!"
         twitter_text: "Hooray! The project '%{name}', which I backed, was successful on @catarse! %{short_url}"
       unsuccessful:
         email_subject: "The project %{project_name} wasn't funded on Catarse."
-        email_text: 'Unfortunately the project %{project_link}, that you have backed, did not reached its goal and was not funded at Catarse.<br><br>So, you have received <strong>%{value}</strong> in credits to back other projects. You can meet others %{project_category} projects in %{explore_category_link}.<br><br>You also can ask for your refund by clicking in %{credits_link}. Remember that you signed up in Catarse using %{user_provider}. If you have some difficulty in this process, do not be shame to send an email to financeiro@catarse.me with the subject "Refund - login issue".<br><br>If, for any reason, you want to contact %{project_owner_name}, send an email to %{project_owner_email}.<br><br>If you have any other doubt, acess our FAQ or send an email to <a href="mail_to:contato@catarse.me" style="color: #008800;">contato@catarse.me</a>.<br>'
+        email_text: 'Unfortunately the project %{project_link}, that you have backed, did not reached its goal and was not funded at Catarse.<br><br>So, you have received <strong>%{value}</strong> in credits to back other projects. You can meet others %{project_category} projects in %{explore_category_link}.<br><br>You also can ask for your refund by clicking in %{credits_link}. Remember that you signed up in Catarse using %{user_provider}. If you have some difficulty in this process, do not be shame to send an email to financeiro@catarse.me with the subject "Refund - login issue".<br><br>If, for any reason, you want to contact %{project_owner_name}, send an email to %{project_owner_email}.<br><br>If you have any other doubt, access our FAQ or send an email to <a href="mail_to:contato@catarse.me" style="color: #008800;">contato@catarse.me</a>.<br>'
         notification_text: "You received %{value} in credits to back other projects. If you prefer, you can request a refund %{link}."
         unsuccessful_text: "The project %{link} that you backed wasn't funded. Maybe next time!"
     video_regex_validation: "only Vimeo URLs are allowed"
@@ -386,7 +386,8 @@ en:
       waiting_confirmation: waiting
       waiting_funds: waiting
       not_reached_goal: waiting
-      draf: "draft"
+      reached_goal: funded
+      draft: "draft"
   projects:
     box:
       by: by
@@ -579,8 +580,8 @@ en:
       more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
       first_backers_important: "These people are fundamental to the success of your project."
       how_know_important: "Yay! We reached  the final question."
-      headline_important: "It's a summary of  your project . 140 characteres tops!:D"
-      tags_important: "Check ou other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
+      headline_important: "It's a summary of  your project . 140 characters tops!:D"
+      tags_important: "Check other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
       title: "Submit your project"
       about: "Describe your project and how much do you need"
@@ -650,7 +651,7 @@ en:
         submit: "Filter"
       table:
         name: "Title"
-        category: "Gategory"
+        category: "Category"
         user_id: "User"
         goal: "Goal"
         pledged: "Pledged"
@@ -662,6 +663,7 @@ en:
         approve: "Approve"
         reject: "Reject"
         send_to_draft: "Sendo to draft"
+    edit: "Update channel"
 
   registrations:
     new:
@@ -692,7 +694,7 @@ en:
     guidelines_backers:
       title: "I want to back a project!"
       subtitle: "Understand step by step how to back a project on Catarse."
-      introduction: "Catarse is an excellent way to engaje in a cause you believe in"
+      introduction: "Catarse is an excellent way to engage in a cause you believe in"
       legend_html: "We believe that being part of a project is the kind of thing that sometimes we do not really know why, but it does a darn good."
       title_one: "Explore the Project"
       step_one: "The first step is to understand the project. Watch the video, read the description, browse the links. If you are certain that this project can not remain only on paper, go one step forward!"
@@ -703,10 +705,10 @@ en:
       title_four: "Spread the word!"
       step_four: "Now you're in the same boat as the project creator. Spread the word on your networks and stay tuned on the updates."
       title_requirements: "Remember: in Catarse it’s “all or nothing”"
-      sucessfull_title: "If the project meet or exceed its financial target ..."
-      sucessfull: "The project is considered successful! The creator gets the money and contacts all supporters."
-      not_sucess_title: "If the project does not meet the target ..."
-      not_sucess: "You get the full amount of support in the form of loans (to support another project). If that does not please you, you can request your money back, according to the rules of the <a href='%{terms}' target='_blank'>terms of use</a>."
+      successful_title: "If the project meet or exceed its financial target ..."
+      successful: "The project is considered successful! The creator gets the money and contacts all supporters."
+      not_success_title: "If the project does not meet the target ..."
+      not_success: "You get the full amount of support in the form of loans (to support another project). If that does not please you, you can request your money back, according to the rules of the <a href='%{terms}' target='_blank'>terms of use</a>."
       title_not_funded: "If the project does not achieve the goal, how do I use my credits?"
       not_funded: "You will receive credits  on Catarse. The moment you choose to back another project, on the screen to select the reward, there will have a field to use your credits."
       more_questions: "I'm dying to support a project, is there anything else I need to know?"
@@ -719,7 +721,7 @@ en:
       title_money: "What if I don't want to use the credits?"
       money: "No problem! You just need to enter in your profile (My credits) and request a chargeback. If you paid with debit or billet, you’ll need to open an account at MOIP. If you used a credit card the value will be back on your next bill."
       other_backers: "I WANT MORE! CAN I HELP  IN OTHER WAYS?"
-      intro: "Get to know diferent ways to help projects you believe in"
+      intro: "Get to know different ways to help projects you believe in"
       other_one: "Bring two other friends to back with the same amount you did"
       other_two: "Spread the word to every one. Tell them how great is the project you backed on Catarse."
       other_three: "Do you have a friend who’s a Journalist? Try to have him/her to post something about it on his/her blog."
@@ -791,7 +793,7 @@ en:
       step_four: "If your project doesn't reach its goal before time runs out, all backers will receive their pledged amount in credits and later, if they want, can ask for a refund."
       title_requirements: "Requirements to submit your project to Catarse"
       creative: "Creative and Finite"
-      colective: "Collective Benefits"
+      collective: "Collective Benefits"
       nonprofit: "Non-financial rewards"
       donation: "No philanthropic or “fund my life” projects"
       video: "Make a video"
@@ -869,7 +871,7 @@ en:
       user_social:
         email: "Send me an email"
         facebook: "Profile on facebook"
-        twitter: "Profile on twiiter"
+        twitter: "Profile on twitter"
     backs:
       anonymous: "Anonymous back."
       no_backs: "%{name} haven't backed any project yet. But we know it's just a matter of time! :D"
@@ -911,7 +913,7 @@ en:
   users_mailer:
     notification_email:
       alt: "You must enable images in order to correctly view this message."
-      forward: "Foward to your friends"
+      forward: "Forward to your friends"
       hello: Hi
       intro: "You are receiving this message because you signed up on Catarse"
       mailee: "Message delivered by Mailee.me"
