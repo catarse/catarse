@@ -1,0 +1,29 @@
+br
+- if can? :update, @project
+  #project_warning.bootstrap-alert
+    .alert.alert-warning
+      i Seu projeto está em análise.
+      #toggle_warning
+        = link_to '(minimizar informações)', '#'
+      #project_warning_text
+        br/
+        br/
+        | Estamos avaliando as informações do seu rascunho, entraremos em contato em até 2 dias úteis =) 
+        | Lembre-se de preencher as informações do seu perfil no Catarse (link para aba preferências no perfil do dono do projeto)
+        strong Solução de problemas:
+        br/
+        = link_to 'Socorro! | Já passaram 2 dias úteis e não tive noticias da curadoria, o que fazer?', '', target: '__blank'
+      br/
+      br/
+      .bootstrap-twitter
+        = link_to 'Enviar para curadoria', send_to_curate_project_path(@project), class: 'btn btn-large'
+- else
+  #project_warning.bootstrap-alert
+    .alert.alert-warning
+      i Atenção! Este projeto ainda não está no ar… mas está quase lá!
+      #toggle_warning
+        = link_to '(minimizar informações)', '#'
+      #project_warning_text
+        br/
+        br/
+        | Aproveite para dar uma olhada na página e deixe seu feedback para o(a) realizador(a) ali na aba Comentários

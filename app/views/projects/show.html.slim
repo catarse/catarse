@@ -20,6 +20,9 @@
     - if @project.draft?
       = render "draft_warning"
 
+    - if @project.in_analysis?
+      = render "analysis_warning"
+
     - if @project.rejected?
       = render "rejected_warning"
 
