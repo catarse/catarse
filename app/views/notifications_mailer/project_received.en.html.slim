@@ -1,38 +1,31 @@
 - user = @notification.user
-|Hi, #{user.name}!
+- project = @notification.project
+|Olá, #{user.name}!
 br
 br
-|Thank you very much for trusting #{Configuration[:company_name]} with your project :)
+| Por favor, <strong>inclua na sua lista de contatos os e-mails: #{mail_to ::Configuration[:email_projects]} e #{mail_to: ::Configuration[:email_contact] } </strong> 
+| assim não vai acontecer das nossas mensagens caírem na sua caixa de spam ;)
+br/
+br/
+|Você acabou de criar seu rascunho (essa palavra tem que ser llink para a página do projeto em rascunho) no #{::Configuration[:company_name]}.
 br
 br
-|Before we begin, we would like to remind you how the project selection works here on #{Configuration[:company_name]}. There are 4 steps:
-br
-br
-|1 - You just filled that beatiful form and we received it;
-br
-br
-|2 - Our team will answer you in up to 4 working days. It's not necessarily a Yes or No answer, we will certainly exchange some emails before the project goes online.
-br
-br
-|3 - When your project is ready, we will send you a special link to submit your project;
-br
-br
-|4 - You will then need to tell us that the project has been submitted and we will authorize it so everyone can see and back it (if they want to, right?).
-br
-br
-|Important information: if you forgot to include something in the submitted form, no problems, you can add new information (or change them) when our team contacts you, ok?
-br
-br
-|Meanwhile, take a look at some projects (#{link_to "#{Configuration[:base_url]}/explore" ,"#{Configuration[:base_url]}/explore"}) and - if you like them- make a pledge! This is the best way to show that you believe in the crowdfunding culture in Brazil and promote the ecosystem around #{Configuration[:company_name]}. Not to mention, getting some inspiration for your own project.
-br
-br
-|Stay tuned to #{Configuration[:company_name]} on  #{link_to 'Facebook', Configuration[:facebook_url]} and #{link_to 'Twitter', "twitter.com/#{Configuration[:twitter_username]}" } and know more about #{Configuration[:company_name]} reading our posts on #{link_to 'blog', Configuration[:blog_url]}.
-br
-br
-|If you have any questions, contact us on: #{mail_to Configuration[:email_contact]}
-br
-br
-|A big hug,
-br
-br
-|#{Configuration[:company_name]} Team
+|Essa é a hora de preencher tudo com bastante calma, já que pode ficar o tempo que quiser montando a página do seu projeto antes de enviá-lo à curadoria.
+br/
+br/
+|As dicas fundamentais do Catarse para estruturar o seu projeto podem ser encontradas em diversos artigos na nossa Base de Conhecimento, leia todos com bastante atenção: 
+br/
+= link_to 'O Básico do Catarse', 'http://suporte.catarse.me/knowledgebase/topics/25760-o-b%C3%A1sico-do-catarse', target: '__blank'
+br/
+= link_to 'Realizadores - primeiros passos (rascunho)', 'http://suporte.catarse.me/knowledgebase/topics/25764-realizadores-primeiros-passos-rascunho-', target: '__blank'
+br/
+br/
+|Quando considerar que a sua página de projeto está pronta, basta clicar no botão “ENVIAR PARA CURADORIA” que entraremos em contato contigo.
+br/
+br/
+|Confira: #{link_to 'Quais são todos os passos que envolvem uma campanha no Catarse?', 'http://suporte.catarse.me/knowledgebase/articles/160683-quais-s%C3%A3o-todos-os-passos-que-envolvem-uma-campanh', target: '__blank'}
+br/
+br/
+|Abraço,
+br/
+= ::Configuration[:company_name]
