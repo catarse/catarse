@@ -12,8 +12,8 @@ class Channels::ChannelsSubscribersController < Channels::BaseController
       return redirect_to root_path
     end
   # This is needed when you press the follow channel button without being signed in
-  rescue PG::Error, ActiveRecord::RecordNotUnique
-    return redirect_to root_path
+  rescue
+    return redirect_to sign_up_path
   end
 
   def destroy
