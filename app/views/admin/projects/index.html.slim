@@ -39,6 +39,9 @@
               = label_tag :by_expires_at, t('.expires_at')
               = text_field_tag :by_expires_at, params[:by_expires_at]
             .input
+              = label_tag :by_updated_at, t('.updated_at')
+              = text_field_tag :by_updated_at, params[:by_updated_at]
+            .input
               = label_tag :by_goal, t('.goal')
               = text_field_tag :by_goal, params[:by_goal]
             .input
@@ -84,7 +87,9 @@
                 th
                   a data-sort="projects.expires_at" href='#'= t('.expires_at')
                   span.sort-order
-                th= t('.last_modification')
+                th
+                  a data-sort="updated_at" href='#'= t('.last_modification')
+                  span.sort-order
                 th= t('.state')
                 th
             tbody
