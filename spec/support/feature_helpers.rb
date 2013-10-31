@@ -5,7 +5,7 @@ module FeatureHelpers
     within ".login-box" do
       fill_in 'user_email', with: current_user.email
       fill_in 'user_password', with: 'test123'
-      find('.button.success').click
+      find('.button.action').click
     end
   end
 
