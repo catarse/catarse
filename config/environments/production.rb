@@ -62,8 +62,6 @@ Catarse::Application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
-  config.asset_host = ::Configuration[:base_url]
-  config.action_mailer.default_url_options = { host: ::Configuration[:host] }
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
