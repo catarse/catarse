@@ -25,9 +25,9 @@
             = f.label :email
             = f.text_field :email, class: [:login, :email], required: true, type: :email, tabindex: 1
 
-          p
+          div.password
             = f.label :password
-            = link_to t('pages.login.links.forgot_password'), new_password_path(resource_name), class: 'right text-right'
+            = link_to t('pages.login.links.forgot_password'), new_password_path(resource_name), class: 'hint'
             = f.password_field :password, class: [:login], required: true, tabindex: 2
           .text-left
             = f.check_box :remember_me, checked: true
