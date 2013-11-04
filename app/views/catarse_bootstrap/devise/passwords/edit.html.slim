@@ -12,9 +12,9 @@
         = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put}) do |f|
           = render 'devise/shared/alert'
           = f.hidden_field :reset_password_token
-          p
+          div.password
             = f.label :password, t('pages.reset_password.form.labels.password')
-            span.right.text-right.inline-hint
+            span.hint
               = t('pages.sign_up.form.hint.password_length')
             = f.password_field :password, class: [:login, :password], required: true
 
@@ -27,4 +27,4 @@
             = f.label :show_password, t('pages.sign_up.form.labels.show_password')
 
           .large-7.columns.large-centered
-            = f.submit t('pages.reset_password.form.inputs.submit'), class: [:button, :success, 'large-12', 'columns']
+            = f.submit t('pages.reset_password.form.inputs.submit'), class: [:button, :action, 'large-12', 'columns']

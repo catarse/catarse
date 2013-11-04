@@ -6,7 +6,7 @@ section.row
   p = t('submit_project.important', channel: controller.channel.name).html_safe
 
   = simple_form_for @project, html: { id: 'project_form', class: 'project-submit' } do |form|
-    = form.input :permalink, as: :string, label: t('submit_project.permalink'), placeholder: t('submit_project.permalink_example')
+    = form.input :permalink, as: :string, label: t('submit_project.permalink')
     p = t('submit_project.permalink_hint')
 
     = form.input :name, as: :string, label: t('submit_project.name')
@@ -18,8 +18,8 @@ section.row
     = form.input :headline, as: :string, label: t('submit_project.headline')
     p = t('submit_project.headline_hint')
 
-    = form.input :category_id, as: :select, label: t('submit_project.category_id')
-    p = t('submit_project.category_id_hint').html_safe
+    = form.input :category_id, as: :select, collection: Category.array, label: t('submit_project.category_id')
+    p = t('submit_project.category_id_hint', href: explore_path).html_safe
 
     = form.input :goal, as: :integer, label: t('submit_project.goal')
     p = t('submit_project.goal_hint').html_safe
