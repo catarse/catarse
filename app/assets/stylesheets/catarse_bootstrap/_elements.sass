@@ -1,39 +1,21 @@
 html
-  -webkit-font-smoothing: antialiased  
-  font-smoothing: antialiased  
-  background: $default_body_background_color
-
-body
-  background: $default_body_background_color
+  -webkit-font-smoothing: antialiased
+  font-smoothing: antialiased
+  background: $white
 
 a, a:active
-  color: $default_link_active_color
+  color: $orange
   text-decoration: none
   &:hover
-    color: $default_link_hover_color
+    color: $orange
     text-decoration: underline
   &:visited
-    color: $default_link_visited_color
-
-input[type='text'], input[type='number'],  input[type='password'], input[type='email'], textarea, select
-  border: 1px solid $default_input_text_border_color
-  color: $default_input_text_font_color
-  outline: none
-  padding: .6em .8em
-  border-radius: 3px
-  width: 100%
-  transition: .2s all
-  &:focus
-    border: 1px solid $default_input_text_focus_color
+    color: $orange
 
 hr
   border: 0
-  background: $lightsilver
+  background: $border-strong
   height: 1px
-
-
-input[type='checkbox']
-  margin-right: .4em
 
 .line-box
   border-bottom: 1px solid $border-gray

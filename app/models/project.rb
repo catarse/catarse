@@ -32,12 +32,14 @@ class Project < ActiveRecord::Base
 
   # Used to simplify a has_scope
   scope :successful, ->{ with_state('successful') }
+  scope :with_project_totals, -> { joins('LEFT OUTER JOIN project_totals pt ON pt.project_id = projects.id') }
 
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_online_date, ->(online_date) { where("online_date::date = ?", online_date.to_date) }
   scope :by_expires_at, ->(expires_at) { where("projects.expires_at::date = ?", expires_at.to_date) }
+  scope :by_updated_at, ->(updated_at) { where("updated_at::date = ?", updated_at.to_date) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }

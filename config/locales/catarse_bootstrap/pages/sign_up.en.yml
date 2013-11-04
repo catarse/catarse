@@ -11,6 +11,8 @@ en:
         labels:
           show_password: 'Show password'
           name: 'Name'
+          password: 'Password'
+          newsletter: 'I want to subscribe to Catarse newsletter'
         hint:
           password_length: 'Must be at least 6 characters.'
         inputs:
