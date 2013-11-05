@@ -30,9 +30,9 @@ section.line-box
         p.curator-caption = t('channels.curator')
         h3.curator-bio = @profile.users.first.bio
       ul.curator-social
-        - if @profile.facebook.present?
-          li = link_to @profile.display_website, @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"], target: :blank
         - if @profile.website.present?
+          li = link_to @profile.display_website, @profile.website, title: t('channels.accessibility.link_to_website'), class: [:"icon-earth"], target: :blank
+        - if @profile.facebook.present?
           li = link_to @profile.display_facebook, @profile.facebook, title: t('channels.accessibility.link_to_facebook'), class: [:"icon-facebook"], target: :blank
         - if @profile.twitter.present?
           li = link_to @profile.display_twitter, @profile.twitter, title: t('channels.accessibility.link_to_twitter'), class: [:"icon-twitter"], target: :blank
