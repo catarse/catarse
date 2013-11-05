@@ -456,6 +456,8 @@ en:
         pay_with: "Pay With"
     create:
       success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
+    update:
+      success: "Updated"
     form:
       permalink_hint: 'Simplify the URL of your project. Think that your sponsor need to remember the address to share your project.'
       add_reward: "Add reward"
