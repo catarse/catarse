@@ -22,6 +22,8 @@ class ProjectObserver < ActiveRecord::Observer
         {project_id: project.id},
         {project: project, project_name: project.name, from: project.user.email, display_name: project.user.display_name})
     end
+
+    Notification.create_notification_once(project.notification_type(:in_analysis_project), user, { project_id: project.id })
   end
 
   def from_online_to_waiting_funds(project)

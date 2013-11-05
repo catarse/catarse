@@ -579,6 +579,16 @@ describe Project do
   describe "state machine" do
     let(:project) { create(:project, state: 'draft') }
 
+    describe "#send_to_curate" do
+      subject { project.in_analysis? }
+      before do
+        project.should_receive(:notify_observers).with(:from_draft_to_in_analysis)
+        project.send_to_curate
+      end
+
+      it { should be_true }
+    end
+
     describe '#draft?' do
       subject { project.draft? }
       context "when project is new" do
