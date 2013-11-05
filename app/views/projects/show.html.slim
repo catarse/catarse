@@ -42,13 +42,13 @@
       h1= @project.name
       h4
         = t('projects.project_header.without_city')
-        |
+        |&nbsp;
         = link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"))
-        |
+        |&nbsp;
         = t('projects.box.by')
-        |
+        |&nbsp;
         = link_to(@project.user.display_name, user_path(@project.user))
-        |
+        |&nbsp;
         - @project.channels.each do |c|
           = link_to(c.name, root_url(subdomain: c.permalink), class: 'project-channel')
     .tab_container
