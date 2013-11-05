@@ -3,9 +3,9 @@
 .row.admin-projects
   h1
     = @title = t('channels.admin.management.title')
-    | : 
+    ' :
     = @total_projects
-    |  
+    '
     = t('channels.admin.management.total')
 
   h3 = t('channels.admin.filter.title')
@@ -18,12 +18,12 @@
       .large-2.columns
         = form.input 'between_created_at[ends_at]', as: :string, label: false, input_html: { class: 'custom', data: { mask: '99/99/9999' } }
       .large-3.columns
-        = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state]
+        = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
       .large-2.large-offset-1.columns
         p.filtered-number = @projects.count
         p.filtered-number-label
           = pluralize_without_number(@projects.count, t('project_singular'), t('project_plural'))
-          |  
+          |
           = pluralize_without_number @projects.count, t('found_singular'), t('found_plural')
     .row
       .large-3.columns
@@ -31,7 +31,7 @@
       .large-3.columns
         = form.input :user_name_contains, as: :string, label: t('channels.admin.filter.user_name_contains')
       .large-3.columns
-        = form.input :order_table, label: t('channels.admin.filter.order_table'), as: :select, collection: [[t('.order_created_at'), 'created_at'], [t('.order_asc'), 'asc'], [t('.order_desc'), 'desc']]
+        = form.input :order_by, label: t('channels.admin.filter.order_table'), as: :select, collection: [[t('.order_created_at'), 'created_at desc'], [t('.order_asc'), 'goal asc'], [t('.order_desc'), 'goal desc']], selected: params[:order_by]
       .large-2.large-offset-1.columns
         = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
 
