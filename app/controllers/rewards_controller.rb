@@ -17,11 +17,11 @@ class RewardsController < ApplicationController
   end
 
   def update
-    update! { project_by_slug_path(permalink: parent.permalink) }
+    update!(notice: t('projects.update.success')) { project_by_slug_path(permalink: parent.permalink) }
   end
 
   def create
-    create! { project_by_slug_path(permalink: parent.permalink) }
+    create!(notice: t('projects.update.success')) { project_by_slug_path(permalink: parent.permalink) }
   end
 
   def destroy

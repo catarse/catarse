@@ -484,6 +484,8 @@ pt:
         pay_with: "Pagar com"
     create:
       success: "Seu projeto foi criado com sucesso! Logo entraremos em contato. Muito obrigado!"
+    update:
+      success: "As informações foram atualizadas"
     form:
       permalink_hint: 'Simplifique a URL do seu projeto.Imagine que seu apoiador precisará lembrar do endereço para divulgar o projeto no bar.'
       important_html: "Lembre-se da taxa de 13% descontada pelo Catarse caso seu projeto seja bem-sucedido."
