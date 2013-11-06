@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    update! { project_by_slug_path(@project.permalink, anchor: 'edit') }
+    update!(notice: t('projects.update.success')) { project_by_slug_path(@project.permalink, anchor: 'edit') }
   end
 
   def show
