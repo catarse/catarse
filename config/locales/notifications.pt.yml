@@ -42,8 +42,8 @@ pt:
       subject: "Você tem um apoio iniciado para o projeto %{project_name}, que não foi financiado - algumas informações úteis"
       header: "Informações sobre confirmação de apoio, créditos e reembolso ;)"
     project_received:
-      subject: "O seu rascunho foi criado no Catarse."
-      header: "O seu rascunho foi criado no Catarse."
+      subject: "O seu rascunho de projeto foi criado no Catarse."
+      header: "O seu rascunho de projeto foi criado no Catarse."
     project_received_channel:
       subject: "O seu projeto foi recebido pelo %{channel_name}"
     project_visible_channel:
