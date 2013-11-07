@@ -46,6 +46,7 @@ class ProjectsController < ApplicationController
 
   def send_to_curate
     resource.send_to_curate
+    flash[:notice] = t('projects.send_to_curate')
     redirect_to project_by_slug_path(@project.permalink)
   end
 

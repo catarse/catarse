@@ -389,6 +389,7 @@ en:
       reached_goal: funded
       draft: "draft"
   projects:
+    send_to_curate: 'Your project has sent to our team'
     box:
       by: by
       when: in
