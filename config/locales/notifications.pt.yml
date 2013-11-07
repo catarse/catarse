@@ -55,8 +55,8 @@ pt:
       subject: "Seu projeto está no ar no Catarse o/"
       header: "Agora é pra valer"
     project_rejected:
-      subject: "Seu projeto não se enquadra no foco do Catarse"
-      header: "Seu projeto não foi aceito ;("
+      subject: "O seu projeto não foi se enquadra no perfil do Catarse."
+      header: "O seu projeto não foi se enquadra no perfil do Catarse."
     new_draft_project:
       subject: "O projeto %{project_name} acaba de ser criado"
       header:  "Um novo projeto está aguardando análise"
