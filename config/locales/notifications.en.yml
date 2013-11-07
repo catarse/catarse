@@ -58,8 +58,8 @@ en:
       subject: "Your project is now online at Catarse"
       header: "Now it's for real"
     project_rejected:
-      subject: "Your project does not fit Catarse's focus"
-      header: "Your project was not accepted ;("
+      subject: "O seu projeto não foi se enquadra no perfil do Catarse."
+      header: "O seu projeto não foi se enquadra no perfil do Catarse."
     new_draft_project:
       subject: "New project created - %{project_name}"
       header: "New project created"
