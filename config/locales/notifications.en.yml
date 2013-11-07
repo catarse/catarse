@@ -4,74 +4,51 @@ en:
       subject: "Seu projeto não foi aceito pelo %{channel_name}"
     new_user_registration:
       subject: 'Welcome to Catarse!'
-      header: 'Welcome to Catarse!'
     backer_canceled_after_confirmed:
       subject: "Backer canceled after confirmed"
-      header: "Backer canceled after confirmed"
     project_owner_backer_confirmed:
       subject: "Hooray! Another new supporter backed your project"
-      header: "A new back has just been confirmed for your project"
     confirm_backer:
       subject: "Thank you! Your back for %{project_name} was confirmed!"
-      header: "Back confirmed"
     payment_slip:
       subject: "Status do apoio para %{project_name}: boleto impresso"
-      header: "Informações sobre pagamentos por boleto no Catarse"
     processing_payment:
       subject: "Seu apoio para %{project_name} foi recebido e está aguardando confirmação do %{payment_method}"
-      header: "Apoio Em Análise - o que é isso?"
     updates:
       subject: "Project UPDATE #%{update_number} - %{project_name}"
-      header: "Project UPDATE #%{update_number} - %{project_name}"
     project_in_wainting_funds:
       subject: "O prazo do seu projeto acabou, saiba quais são os próximos passos"
-      header: "Acabou o prazo!"
     project_success:
       subject: "Project successful: some necessary information"
-      header: "Project successful"
     project_unsuccessful:
       subject: "Your project was not funded on Catarse, but we would like your feedback x)"
-      header: "Project was not successfully funded ;)"
     backer_project_successful:
       subject: "Hooray! The project %{project_name} has succeeded on Catarse"
-      header: "Hooray! The project you backed has succeeded on Catarse"
     backer_project_unsuccessful:
       subject: "The project %{project_name} was not funded - some useful information"
-      header: "Information on credits and refunds ;)"
     pending_backer_project_unsuccessful:
       subject: "You started to back the project %{project_name}, which was not funded - some useful information"
-      header: "Information about confirmation of support, credits and refunds ;)"
     project_received:
       subject: "Your project was received by Catarse"
-      header: "Your project was received by the Catarse team"
     project_received_channel:
       subject: "O seu projeto foi recebido pelo %{channel_name}"
     new_draft_project_channel:
       subject: "The project %{project_name} has just been created"
-      header:  "A new project is awaiting review"
     project_visible_channel:
       subject: "Projeto no ar!"
     project_visible:
       subject: "Your project is now online at Catarse"
-      header: "Now it's for real"
     project_rejected:
       subject: "Your project does not fit Catarse's focus"
-      header: "Your project was not accepted ;("
     new_draft_project:
       subject: "New project created - %{project_name}"
-      header: "New project created"
     new_features:
       subject: "Ajuda para tese de doutorado sobre crowdfunding"
-      header: "Ajuda para tese de doutorado sobre crowdfunding"
     adm_project_deadline:
       subject: "The project %{project_name} has reached its deadline"
-      header: "The project reached its deadline"
     credits_warning:
       subject: "You have R$ %{amount} in credits on Catarse"
-      header: "Why not back another project?"
     backer_confirmed_after_project_was_closed:
       subject: "New backer confirmed on finished project '%{project_name}' "
-      header: "New backer confirmed."
     temporary_password:
       subject: "Temporary password for Catarse"
-      header: "Log on to change your password"
