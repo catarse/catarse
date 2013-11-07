@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(params[:project])
 
-    create!(notice: t('projects.create.success')) { project_by_slug_path(@project.permalink) }
+    create! { project_by_slug_path(@project.permalink) }
   end
 
   def send_to_curate
