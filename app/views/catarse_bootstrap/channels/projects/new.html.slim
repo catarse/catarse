@@ -1,0 +1,46 @@
+= render 'shared/header_channel'
+
+section.row
+  h1.project-submit-h1 = t('submit_project.title', channel: controller.channel.name)
+  p = t('submit_project.subtitle', channel: controller.channel.name)
+  p = t('submit_project.important', channel: controller.channel.name).html_safe
+
+  = simple_form_for @project, html: { id: 'project_form', class: 'project-submit' } do |form|
+    = form.input :permalink, as: :string, label: t('submit_project.permalink')
+    p = t('submit_project.permalink_hint')
+
+    = form.input :name, as: :string, label: t('submit_project.name')
+    p = t('submit_project.name_hint')
+
+    = form.input :about, as: :text, label: t('submit_project.about')
+    p = t('submit_project.about_hint')
+
+    = form.input :headline, as: :string, label: t('submit_project.headline')
+    p = t('submit_project.headline_hint')
+
+    = form.input :category_id, as: :select, collection: Category.array, label: t('submit_project.category_id')
+    p = t('submit_project.category_id_hint', href: explore_path).html_safe
+
+    = form.input :goal, as: :integer, label: t('submit_project.goal')
+    p = t('submit_project.goal_hint').html_safe
+
+    = form.input :online_days, as: :integer, label: t('submit_project.online_days')
+    p = t('submit_project.online_days_hint')
+
+    = form.input :video_url, as: :text, label: t('submit_project.video_url')
+    p = t('submit_project.video_url_hint')
+
+    = form.input :more_links, as: :text, label: t('submit_project.more_links')
+    p = t('submit_project.more_links_hint')
+
+    = form.input :first_backers, as: :text, label: t('submit_project.first_backers')
+    p = t('submit_project.first_backers_hint')
+
+    = form.input :how_know, as: :text, label: t('submit_project.how_know')
+    p = t('submit_project.how_know_hint')
+
+    = form.input :accepted_terms, as: :boolean, label: t('submit_project.accept_terms', link: link_to(t('submit_project.terms'), channel.terms_url))
+
+    = form.button :submit, t('submit_project.submit'), class: 'button action submit'
+
+= render 'shared/footer_channel'

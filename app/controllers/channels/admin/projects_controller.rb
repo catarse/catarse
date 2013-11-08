@@ -1,9 +1,7 @@
 class Channels::Admin::ProjectsController < Admin::BaseController
-  has_scope :by_id, :pg_search, :user_name_contains, :order_table, :with_state
+  layout 'catarse_bootstrap'
+  has_scope :by_id, :pg_search, :user_name_contains, :order_by, :with_state
   has_scope :between_created_at, using: [ :start_at, :ends_at ], allow_blank: true
-  has_scope :order_table do |controller, scope, value|
-    value.present? ? scope.order_table(value) : scope.order('created_at DESC')
-  end
 
   before_filter do
     @total_projects =  channel.projects.size
