@@ -66,16 +66,15 @@ describe Update do
 
   describe "#notify_backers" do
     before do
-      Notification.unstub(:create_notification)
-      Notification.unstub(:create_notification_once)
-      create(:notification_type, name: 'updates')
+      Notification.unstub(:notify)
+      Notification.unstub(:notify_once)
       @project = create(:project)
       backer = create(:backer, state: 'confirmed', project: @project)
       create(:backer, state: 'confirmed', project: @project, user: backer.user)
       @project.reload
       ActionMailer::Base.deliveries = []
       @update = Update.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
-      Notification.should_receive(:create_notification_once).with(:updates, backer.user,
+      Notification.should_receive(:notify_once).with(:updates, backer.user,
         {update_id: @update.id, user_id: backer.user.id},
         update_number: @update.project.updates.count,
         project_name: backer.project.name,
@@ -89,7 +88,7 @@ describe Update do
         update_comment: @update.email_comment_html).once
     end
 
-    it 'should call Notification.create_notification once' do
+    it 'should call Notification.notify once' do
       @update.notify_backers
     end
   end

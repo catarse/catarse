@@ -2,39 +2,31 @@ require 'spec_helper'
 
 describe Notification do
   let(:backer){ create(:backer) }
-  let(:notification_type){ create(:notification_type, name: 'confirm_backer') }
 
   before do
-    Notification.unstub(:create_notification)
-    Notification.unstub(:create_notification_once)
+    Notification.unstub(:notify)
+    Notification.unstub(:notify_once)
     ActionMailer::Base.deliveries.clear
   end
 
   describe "Associations" do
     it{ should belong_to :user }
     it{ should belong_to :project }
-    it{ should belong_to :notification_type }
     it{ should belong_to :backer }
     it{ should belong_to :project_update }
   end
 
   describe "#send_email" do
     let(:deliver_exception){ nil }
-    let(:notification){ create(:notification, dismissed: false, notification_type: notification_type) }
+    let(:notification){ create(:notification, dismissed: false) }
 
     before do
       deliver_exception
       notification.send_email
     end
 
-    #temporarily disabled
-    #context "when deliver raises and exception" do
-      #let(:deliver_exception){ NotificationsMailer.stub(:notify).and_raise('fake error') }
-      #it("should not dismiss the notification"){ notification.dismissed.should be_false }
-    #end
-
     context "when dismissed is true" do
-      let(:notification){ create(:notification, dismissed: true, notification_type: notification_type) }
+      let(:notification){ create(:notification, dismissed: true) }
       it("should not send email"){ ActionMailer::Base.deliveries.should be_empty }
     end
 
@@ -44,62 +36,49 @@ describe Notification do
     end
   end
 
-  describe ".create_notification_once" do
-    let(:create_notification_once){ Notification.create_notification_once(:confirm_backer, backer.user, {user_id: backer.user.id, backer_id: backer.id}, backer: backer,  project_name: backer.project.name) }
-    before{ notification_type }
+  describe ".notify" do
+    let(:notification){ build(:notification) }
+    let(:notify){ Notification.notify(notification.template_name, notification.user) }
+    before do
+      Notification.should_receive(:create!).with({
+        template_name: notification.template_name, 
+        user: notification.user,
+        locale: notification.user.locale,
+        origin_email: Configuration['email_contact'],
+        origin_name: Configuration[:company_name]
+      }).and_return(notification)
+      notification.should_receive(:send_email)
+    end
+    it("should create and send email"){ notify }
+  end
 
-    context "when I have not created the notification with the same type and filters" do
+  describe ".notify_once" do
+    let(:notification){ create(:notification) }
+    let(:notify_once){ Notification.notify_once(notification.template_name, notification.user, filter) }
+
+    context "when filter is nil" do
+      let(:filter){ nil }
       before do
-        Notification.should_receive(:create_notification)
+        Notification.should_receive(:notify).with(notification.template_name, notification.user, {})
       end
-      it("should call create_notification"){ create_notification_once }
+      it("should call notify"){ notify_once }
     end
 
-    context "when I have already created the notification with the same type but a partially different filter" do
+    context "when filter returns a previous notification" do
+      let(:filter){ { user_id: notification.user.id } }
       before do
-        create_notification_once
-        Notification.should_receive(:create_notification)
+        Notification.should_not_receive(:notify)
       end
-      it("should call create_notification"){  Notification.create_notification_once(:confirm_backer, backer.user, {user_id: backer.user.id, backer_id: 0}, backer: backer,  project_name: backer.project.name) }
+      it("should call not notify"){ notify_once }
     end
-    context "when I have already created the notification with the same type and filters" do
+
+    context "when filter does not return a previous notification" do
+      let(:filter){ { user_id: (notification.user.id + 1) } }
       before do
-        create_notification_once
-        Notification.should_receive(:create_notification).never
+        Notification.should_receive(:notify).with(notification.template_name, notification.user, {})
       end
-      it("should never call create_notification"){ create_notification_once }
+      it("should call notify"){ notify_once }
     end
   end
 
-  describe ".create_notification" do
-    subject{ Notification.create_notification(:confirm_backer, backer.user, backer: backer,  project_name: backer.project.name) }
-
-    context "when NotificationType with the provided name exists" do
-      before{ notification_type }
-      it{ should be_persisted }
-      its(:class){ should == Notification }
-    end
-
-    context "when NotificationType with the provided name does not exist" do
-      it{ should be_nil }
-    end
-
-    context "when an update is provided" do
-      let(:update){ create(:update) }
-      before{ notification_type }
-      subject{ Notification.create_notification(:confirm_backer, backer.user, update: update, backer: backer,  project_name: backer.project.name) }
-      it{ should be_persisted }
-      its(:project_update){ should == update }
-    end
-  end
-
-  describe ".notify_backer" do
-    before{ notification_type }
-
-    context "when NotificationType with the provided name exists" do
-      subject{ Notification.create_notification(:confirm_backer, backer.user, backer: backer,  project_name: backer.project.name) }
-      its(:dismissed){ should be_true }
-      its(:backer){ should == backer }
-    end
-  end
 end

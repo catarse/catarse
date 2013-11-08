@@ -4,7 +4,7 @@ class PaymentNotificationObserver < ActiveRecord::Observer
   def before_save(payment_notification)
     return unless payment_notification.extra_data
     if payment_notification.extra_data['status_pagamento'] == '6' #payment is being processed
-      Notification.create_notification_once(:processing_payment,
+      Notification.notify_once(:processing_payment,
         payment_notification.backer.user,
         {backer_id: payment_notification.backer.id},
         backer: payment_notification.backer,

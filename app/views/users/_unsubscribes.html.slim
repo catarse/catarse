@@ -18,6 +18,5 @@
                   = u.input :subscribed, as: :boolean, input_html: {id: "user_unsubscribes_#{u.object.project_id}"}.merge(checked), label: Project.find(u.object.project_id).name
                 = u.input :project_id, as: :hidden
                 = u.input :user_id, as: :hidden
-                = u.input :notification_type_id, as: :hidden
 
         p= f.submit t('users.current_user_fields.update_social_info'), class: 'btn', id: "unsubscribe_submit"
