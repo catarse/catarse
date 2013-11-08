@@ -712,7 +712,7 @@ pt:
         participate: "Para participar"
         details: "Últimos detalhes"
     admin:
-      statistics:
+      followers:
         title: "Seguidores"
         download: "Baixar lista"
       management:
