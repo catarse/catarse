@@ -14,13 +14,13 @@ html
       /meta tags for the whole site
       meta name="description"         content=t('site.description')
       meta name="keywords"            content=t('site.keywords')
-      meta property="og:title"        content=t('site.title')
+      meta property="og:title"        content=( channel.try(:name) || t('site.title'))
       meta property="og:type"         content=:cause
       meta property="og:url"          content=url_for(only_path: false)
       meta property="og:image"        content=Configuration[:company_logo]
       meta property="og:site_name"    content=Configuration[:company_name]
       meta property="fb:app_id"       content=Configuration[:facebook_app_id]
-      meta property="og:description"  content=(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
+      meta property="og:description"  content=( channel.try(:description) || t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
 
   body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name]
     = render 'layouts/uservoice'

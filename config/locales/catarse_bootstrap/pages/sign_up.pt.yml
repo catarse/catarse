@@ -11,6 +11,8 @@ pt:
         labels:
           show_password: 'Exibir senha'
           name: 'Nome completo'
+          password: 'Senha'
+          newsletter: 'Quero receber novidades do Catarse via email'
         hint:
           password_length: 'Mínimo 6 caracteres'
         inputs:

@@ -13,6 +13,7 @@ en:
         order_asc: 'Goal asc'
         order_desc: 'Goal desc'
         order_created_at: 'Submission date'
+        last_modification: 'Last update'
     financials:
       index:
         submit: 'Filter'

@@ -26,19 +26,9 @@ describe Reward do
     it{ should have_many :backers }
   end
 
-  describe "#display_description" do
-    subject{ reward.display_description }
-    it{ should == "<p>envie um email para <a href=\"mailto:foo@bar.com\" target=\"_blank\">foo@bar.com</a></p>" }
-  end
-
   it "should have a minimum value" do
     r = build(:reward, minimum_value: nil)
     r.should_not be_valid
-  end
-
-  describe "#display_minimum" do
-    subject{ reward.display_minimum }
-    it{ should == reward.number_to_currency(reward.minimum_value) }
   end
 
   it "should have a greater than 10.00 minimum value" do
@@ -79,10 +69,10 @@ describe Reward do
   describe '.remaining' do
     subject { Reward.remaining }
     before do
-      @remaining = create(:reward, maximum_backers: 3) 
+      @remaining = create(:reward, maximum_backers: 3)
       create(:backer, state: 'confirmed', reward: @remaining, project: @remaining.project)
       create(:backer, state: 'waiting_confirmation', reward: @remaining, project: @remaining.project)
-      @sold_out = create(:reward, maximum_backers: 2) 
+      @sold_out = create(:reward, maximum_backers: 2)
       create(:backer, state: 'confirmed', reward: @sold_out, project: @sold_out.project)
       create(:backer, state: 'waiting_confirmation', reward: @sold_out, project: @sold_out.project)
     end
@@ -116,17 +106,5 @@ describe Reward do
       it { should be_false }
 
     end
-  end
-
-  it "should have a HTML-safe name that is a HTML composition from minimum_value, description and sold_out" do
-    I18n.locale = :pt
-    r = build(:reward, minimum_value: 0, description: "Description", maximum_backers: 0)
-    r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class=\"sold_out\">Esgotada</div><div class='clear'></div>"
-    r.maximum_backers = 1
-    r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class='clear'></div>"
-    r.minimum_value = 10
-    r.name.should == "<div class='reward_minimum_value'>R$ 10+</div><div class='reward_description'>Description</div><div class='clear'></div>"
-    r.description = "Description<javascript>XSS()</javascript>"
-    r.name.should == "<div class='reward_minimum_value'>R$ 10+</div><div class='reward_description'>Description&lt;javascript&gt;XSS()&lt;/javascript&gt;</div><div class='clear'></div>"
   end
 end

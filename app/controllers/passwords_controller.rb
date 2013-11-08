@@ -18,4 +18,10 @@ class PasswordsController < Devise::PasswordsController
       redirect_to new_password_path(resource_name)
     end
   end
+
+  protected
+
+  def after_sending_reset_password_instructions_path_for(resource)
+    new_password_path(resource_name)
+  end
 end
