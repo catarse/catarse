@@ -7,27 +7,34 @@
 |Olá, #{user.name}!
 br
 br
-| Nossa equipe acabou de receber seu #{link_to 'projeto', project_link, target: '__blank'}
+| Nossa equipe acabou de receber o projeto  #{link_to project.name, project_link, target: '__blank'}
 br/
 br/
-| Durante os próximos 2 dias úteis, iremos analisar o rascunho que você nos enviou e te daremos uma resposta.
+| Durante os próximos 4 dias úteis, iremos analisar o rascunho de projeto que você nos enviou e te daremos uma resposta.
 br
 br
-strong O que pode ser essa resposta?
+strong Você pode receber 3 tipos de resposta: 
 br/
 strong Opção 1: 
-| Seu rascunho foi aceito de bate-pronto! Agora é só marcarmos o dia e hora e colocamos no ar.
+| Seu rascunho passou na análise, foi aceito e poderá ir ao ar! 
+br/
+| Agora é só marcarmos o dia e hora para estreiar seu projeto no site do Catarse!
+br/
 br/
 strong Opção 2: 
-| Nos parece que o seu projeto tem muito ver com o #{company_name}, mas ainda está precisando de alguns ajustes para ir para o ar. Vamos entrar em contato para entendermos melhor o seu projeto
+| Nos parece que o seu projeto tem muito ver com o #{company_name}, mas ainda precisa de alguns ajustes para ir para o ar. Vamos entrar em contato para entender possibilidades , sugerir coisas e tirar algumas dúvidas. 
 br/
 strong Opção 3: 
-| Infelizmente, o rascunho que você enviou não tem o perfil do #{company_name}. Você será notificado.
+| Infelizmente, o rascunho de projeto que você enviou não se encaixa no perfil do site do #{company_name}. 
+| Enviaremos um email notificando a recusa. Sim, sabemos que recusas são sempre desagradáveis. Mas o lema aqui é 
+| "levanta, sacode a poeira e dá a volta por cima". Mas antes de sacudir qualquer poeira, 
+| estude nossa #{link_to 'Central de Suporte', ::Configuration[:support_forum], target: '__blank'}  para que você saiba tudo sobre nossos pré-requisitos para a construção do seu próximo projeto.
 br/
 br/
-| Lembrando que a qualquer momento você pode entrar em contato conosco através da #{link_to 'Central de Suporte', ::Configuration[:support_forum], target: '__blank'}.
+| Lembrando que você pode tirar dúvidas conosco respondendo diretamente este email 
+| ou através do #{mail_to ::Configuration[:email_projects]}
 br/
 br/
-|Abraço,
+|Um abraço,
 br/
 = company_name
