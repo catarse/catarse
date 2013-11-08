@@ -5,7 +5,6 @@ describe User do
   let(:unfinished_project){ create(:project, state: 'online') }
   let(:successful_project){ create(:project, state: 'online') }
   let(:failed_project){ create(:project, state: 'online') }
-  let(:notification_type){ create(:notification_type, name: 'updates') }
   let(:facebook_provider){ create :oauth_provider, name: 'facebook' }
 
   describe "associations" do
@@ -304,11 +303,10 @@ describe User do
   describe "#updates_subscription" do
     subject{user.updates_subscription}
     context "when user is subscribed to all projects" do
-      before{ notification_type }
       it{ should be_new_record }
     end
     context "when user is unsubscribed from all projects" do
-      before { @u = create(:unsubscribe, project_id: nil, notification_type_id: notification_type.id, user_id: user.id )}
+      before { @u = create(:unsubscribe, project_id: nil, user_id: user.id )}
       it{ should == @u}
     end
   end
@@ -318,7 +316,7 @@ describe User do
     before do
       @p1 = create(:project)
       create(:backer, user: user, project: @p1)
-      @u1 = create(:unsubscribe, project_id: @p1.id, notification_type_id: notification_type.id, user_id: user.id )
+      @u1 = create(:unsubscribe, project_id: @p1.id, user_id: user.id )
     end
     it{ should == [@u1]}
   end

@@ -93,8 +93,7 @@ class User < ActiveRecord::Base
      where("id NOT IN (
        SELECT user_id
        FROM unsubscribes
-       WHERE project_id IS NULL
-       AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
+       WHERE project_id IS NULL)")
    }
 
   scope :subscribed_to_project, ->(project_id) {

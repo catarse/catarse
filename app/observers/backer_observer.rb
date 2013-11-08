@@ -7,38 +7,38 @@ class BackerObserver < ActiveRecord::Observer
   end
 
   def before_save(backer)
-    Notification.create_notification_once(:payment_slip,
+    Notification.notify_once(:payment_slip,
       backer.user,
       {backer_id: backer.id},
       backer: backer,
-      project_name: backer.project.name) if backer.payment_choice_was.nil? && backer.payment_choice == 'BoletoBancario'
+      project: backer.project) if backer.payment_choice_was.nil? && backer.payment_choice == 'BoletoBancario'
 
     if backer.confirmed? and backer.confirmed_at.nil?
       backer.confirmed_at = Time.now
-      Notification.create_notification_once(:confirm_backer,
+      Notification.notify_once(:confirm_backer,
         backer.user,
         {backer_id: backer.id},
         backer: backer,
-        project_name: backer.project.name)
+        project: backer.project)
 
-      Notification.create_notification_once(:project_owner_backer_confirmed,
+      Notification.notify_once(:project_owner_backer_confirmed,
         backer.project.user,
         {backer_id: backer.id},
         backer: backer,
-        project_name: backer.project.name)
+        project: backer.project)
 
       if (Time.now > backer.project.expires_at  + 7.days) && (user = User.where(email: ::Configuration[:email_payments]).first)
-        Notification.create_notification_once(:backer_confirmed_after_project_was_closed,
+        Notification.notify_once(:backer_confirmed_after_project_was_closed,
           user,
           {backer_id: backer.id},
           backer: backer,
-          project_name: backer.project.name)
+          project: backer.project)
       end
     end
   end
 
   def after_save(backer)
-    Notification.create_notification_once(:project_success,
+    Notification.notify_once(:project_success,
       backer.project.user,
       {project_id: backer.project.id},
       project: backer.project) if backer.project.reached_goal?
@@ -51,7 +51,7 @@ class BackerObserver < ActiveRecord::Observer
   def notify_backoffice_about_canceled(backer)
     user = User.where(email: Configuration[:email_payments]).first
     if user.present?
-      Notification.create_notification_once(:backer_canceled_after_confirmed,
+      Notification.notify_once(:backer_canceled_after_confirmed,
         user,
         {backer_id: backer.id},
         backer: backer)

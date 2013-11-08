@@ -48,7 +48,6 @@ describe UsersController do
 
   describe "GET show" do
     before do
-      FactoryGirl.create(:notification_type, name: 'updates')
       get :show, id: user.id, locale: 'pt'
     end
 
