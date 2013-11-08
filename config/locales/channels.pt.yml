@@ -12,6 +12,7 @@ pt:
     curator: 'Curador'
     admin:
       menu: "Moderação de Canais"
+      followers_menu: "Seguidores"
       statistics_menu: "Estatísticas"
       profile_menu: "Editar canal"
       statistics:
