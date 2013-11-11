@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, ProjectUploader
   mount_uploader :video_thumbnail, ProjectUploader
 
-  delegate :display_status, :display_progress, :display_image, :display_expires_at,
+  delegate :display_status, :display_progress, :display_image, :display_expires_at, :remaining_text,
     :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar, :successful_flag,
     to: :decorator
 
@@ -163,10 +163,6 @@ class Project < ActiveRecord::Base
       end
     end
     {time: 0, unit: pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
-  end
-
-  def remaining_text
-    pluralize_without_number(time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
   end
 
   def update_video_embed_url
