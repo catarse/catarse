@@ -43,12 +43,24 @@ describe ProjectObserver do
     end
     let(:user) { create(:user, email: ::Configuration[:email_projects])}
 
-    it "should create notification for catarse admin" do
-      Notification.where(user_id: user.id, notification_type_id: new_draft_project.id, project_id: project.id).first.should_not be_nil
-    end
-
     it "should create notification for project owner" do
       Notification.where(user_id: project.user.id, notification_type_id: project_received.id, project_id: project.id).first.should_not be_nil
+    end
+  end
+
+  describe "when project is sent to curator" do
+    let(:project) { create(:project, goal: 3000, state: 'draft') }
+    let(:user) { create(:user, email: ::Configuration[:email_projects])}
+
+    before do
+      ::Configuration[:email_projects] = 'foo@foo.com'
+      user
+      project
+      project.send_to_analysis!
+    end
+
+    it "should create notification for catarse admin" do
+      Notification.where(user_id: user.id, notification_type_id: new_draft_project.id, project_id: project.id).first.should_not be_nil
     end
   end
 
@@ -56,12 +68,13 @@ describe ProjectObserver do
     let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
     context "when project is approved" do
       before do
+        project.update_attributes state: 'in_analysis'
         project.should_receive(:download_video_thumbnail).never
         project.should_receive(:update_video_embed_url).never
       end
 
       it "should call create_notification and do not call download_video_thumbnail" do
-        Notification.should_receive(:create_notification_once).with(:project_visible, project.user, {project_id: project.id}, {project: project})
+        Notification.should_receive(:create_notification_once).with(:project_visible, project.user, {project_id: project.id}, {project: project, project_name: project.name, channel_name: nil})
         project.approve
       end
     end
@@ -191,7 +204,7 @@ describe ProjectObserver do
   end
 
   describe "#notify_owner_that_project_is_online" do
-    let(:project) { create(:project, state: 'draft') }
+    let(:project) { create(:project, state: 'in_analysis') }
 
     before do
       ::Configuration[:facebook_url] = 'http://facebook.com/foo'
@@ -223,7 +236,7 @@ describe ProjectObserver do
   end
 
   describe "#notify_owner_that_project_is_rejected" do
-    let(:project){ create(:project, state: 'draft') }
+    let(:project){ create(:project, state: 'in_analysis') }
     before do
       ::Configuration[:facebook_url] = 'http://facebook.com/foo'
       ::Configuration[:blog_url] = 'http://blog.com/foo'

@@ -93,6 +93,7 @@ Catarse::Application.routes.draw do
       get 'embed'
       get 'video_embed'
       get 'embed_panel'
+      get 'send_to_analysis'
     end
   end
   resources :users do

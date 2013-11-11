@@ -1,33 +1,29 @@
-br
-#project_warning.bootstrap-alert
-  .alert.alert-warning
-    i Seu projeto está no ar \o/
-    #toggle_warning
-      = link_to '(minimizar informações)', '#'
-    #project_warning_text
-      br/
-      | Foi dada a largada! A agora é hora de mandar ver na divulgação da sua campanha =D
-      br/
-      br/
-      | Em geral as campanhas bem sucedidas têm dois picos de arrecadação. Um na primeira semana e outro na Reta Final.
-      ' Se o seu projeto destoa muito (pra pior) dessa lógica então seria bom reavaliar seu plano de divulgação ;) Confira as dicas no nosso guia de
-      = link_to 'COMO PROMOVER O SEU PROJETO', 'https://docs.google.com/a/catarse.me/document/d/14l3tS-x3wHhYV1xalRugl9tpgcaG9ot7RCvmth-ApH8/edit', target: '_blank'
-      | .  Lembrando que seus apoiadores estão (em grande maioria)  na sua prória rede de contatos. Divulgue bastante do começo até o fim do prazo e
-      | interaja com esse pessoal pra que eles efetivem o apoio e se sintam convidados a espalhar ainda mais ainda a sua ideia pelas redes
-      br/
-      br/
-      b Informações importantes:
-      br/
-      | - As contribuições podem demorar até 3 dias úteis para serem confirmadas no site, ok?
-      br/
-      | - Tudo que é postado na Aba de Novidades/Updates é enviado para o e-mail dos seus apoiadores.
-      br/
-      | - Na Aba de Relatórios você pode emitir (a qualque momento) planilhas detalhadas sobre os apoios ao seu projeto
-      br/
-      | - Pela Aba de Edição você ainda pode incluir fotos, vídeos e imagens na descrição =)
-      br/
-      br/
-      | Sinta-se a vontade pra nos enviar perguntas e feedbacks durante todo o processo =)
-      br/
-      ' Pra fazer isso acesse a nossa
-      = link_to 'Central de Suporte', Configuration[:support_forum], target: '_blank'
+- if can? :update, @project
+  br
+  #project_warning.bootstrap-alert
+    .alert.alert-warning
+      i Seu projeto está no ar!
+      #toggle_warning
+        = link_to '(minimizar informações)', '#'
+      #project_warning_text
+        br/
+        strong Importante!
+        br/
+        | - As contribuições podem demorar até 3 dias úteis para serem confirmadas.
+        br/
+        | - Seu prazo encerra as 23h59 do último dia de captação.
+        br/
+        | - Para falar diretamente com seus apoiadores você pode fazer postagens na <strong>aba Novidades</strong>. Tudo que é postado ali é enviado para o e-mail dos seus apoiadores.
+        br/
+        | - Pela <strong>aba Relatórios</strong> você pode baixar planilhas com informações sobre seus apoiadores como: Recompensa | Valor do apoio | Data de confirmação do apoio | Nome | E-mail | Endereço.
+        br/
+        br/
+        strong Soluções de problemas:
+        br/
+        = link_to 'Como eu sei se meu projeto está caminhando bem?', 'http://suporte.catarse.me/knowledgebase/articles/161084-como-eu-sei-se-meu-projeto-est%C3%A1-caminhando-bem-', target: '__blank'
+        br/
+        = link_to 'Como são definidos os destaques para projetos no site', 'http://suporte.catarse.me/knowledgebase/articles/161081-como-s%C3%A3o-definidos-os-projetos-em-destaque-no-site', target: '__blank'
+        br/
+        = link_to 'Socorro! | Erros nos relatórios de apoiadores', 'http://suporte.catarse.me/knowledgebase/articles/274781-socorro-erros-no-relat%C3%B3rio-planilha-de-apoiador', target: '__blank'
+        br/
+        = link_to 'Socorro! | As pessoas estão com dificuldade para apoiar meu projeto', 'http://suporte.catarse.me/knowledgebase/articles/274798-socorro-problema-erro-bug-ao-apoiar-projeto', target: '__blank'

@@ -1,0 +1,33 @@
+- project = @notification.project
+- channel = project.channels.first
+- user = project.channels.first.users.first
+- company_name = ::Configuration[:company_name]
+- project_link = project_by_slug_url(permalink: project.permalink)
+
+| Olá
+- if user.name
+  | , #{user.name}!
+
+br
+br
+| Um novo rascunho pediu sua avaliação! É importante que você saiba que o 
+| #{company_name} mantém uma política e um comprometimento de responder projetos em até 4 dias úteis. Não deixe Realizadores esperando! 
+br
+br
+| <strong>Projeto:</strong> #{link_to project.name, project_link, target: '__blank'}
+br/
+br/
+| <strong>Relizador:</strong> #{link_to project.user.display_name, user_url(project.user)}
+br/
+br/
+b Lista de Links relacionados:
+br
+= simple_format(project.more_links)
+br
+b Primeiros apoiadores:
+br
+= simple_format(project.first_backers)
+br
+b Como conheceu o #{channel.name}:
+br
+= simple_format(project.how_know)
