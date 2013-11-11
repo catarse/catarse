@@ -27,8 +27,14 @@ pt:
         by_progress: Por progresso %
     projects:
       index:
-        by_state: 'Por estado'
+        with_state: 'Por estado'
+        by_category: 'Por categoria'
+        project: 'Projeto'
+        user: 'Usuário'
         between_created_at: 'Criados entre'
+        between_expires_at: 'Expiram entre'
+        between_online_date: 'Entraram no ar entre'
+        between_updated_at: 'Atualizados entre'
         id: ID
         name: 'Titulo'
         send_to_trash: "Deletar"
