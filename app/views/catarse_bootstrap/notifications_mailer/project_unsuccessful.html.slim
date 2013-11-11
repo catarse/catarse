@@ -1,0 +1,41 @@
+- project = @notification.project
+
+- project_link = project_by_slug_url(permalink: project.permalink)
+- company_name = ::Configuration[:company_name]
+
+|Oi, #{project.user.display_name},
+br/
+br/
+| Infelizmente o projeto #{link_to project.name, project_link } não alcançou a meta estipulada por você no #{company_name}.
+br/
+br/
+| Todos os apoiadores receberam um email com instruções sobre como utilizar seus créditos ou pedir o reembolso do seu apoio. 
+br/
+| Confira: #{link_to 'Regras e Funcionamento dos Reembolsos', 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos', target: '__blank' }
+br/
+br/
+strong Último pedido =)
+br/
+| Sempre estamos em busca de melhorar nosso serviço e para isso precisamos estar atentos ao que os usuários nos dizem. Uma das melhores formas de fazer isso é colher o feedback e auxílio de quem teve experiências com a plataforma. Seria fabuloso se você respondesse essas duas perguntinhas abaixo:
+br/
+br/
+strong 1. Quais os 2 piores problemas que você enfrentou durante o processo de campanha?
+br/
+br/
+| Pode ser algo diretamente relacionado com o #{company_name} ou talvez em relação a dificuldades na 
+| captação ou comunicação do projeto enquanto ele estava em campanha, entre outros.
+br/
+br/
+strong 2. O que você mais sentiu falta na plataforma do #{company_name}?
+br/
+br/
+|Parabéns pela campanha, seu projeto pode não ter atingido a meta mas com certeza você aprendeu alguma coisa e pode tirar grande proveito dessa experiência se quiser!
+br/
+br/
+| Muito muito obrigado por entrar nessa com a gente! Te esperamos numa próxima.
+br/
+br/
+| Um abraço,
+br/
+= company_name
+

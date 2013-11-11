@@ -52,6 +52,17 @@ describe ProjectsController do
     end
   end
 
+  describe "GET send_to_analysis" do
+    let(:current_user){ project.user }
+
+    before do
+      get :send_to_analysis, id: project.id, locale: :pt
+      project.reload
+    end
+
+    it { project.in_analysis?.should be_true }
+  end
+
   describe "GET index" do
     before do
       controller.stub(:last_tweets).and_return([])
