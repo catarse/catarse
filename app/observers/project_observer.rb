@@ -23,7 +23,7 @@ class ProjectObserver < ActiveRecord::Observer
         {project: project, project_name: project.name, channel_name: (project.channels.present? ? project.channels.first.name : nil) ,from: project.user.email, display_name: project.user.display_name})
     end
 
-    Notification.create_notification_once(project.notification_type(:in_analysis_project), user, { project_id: project.id, channel_name: (project.channels.present? ? project.channels.first.name : nil) })
+    Notification.create_notification_once(project.notification_type(:in_analysis_project), user, { project_id: project.id}, {channel_name: (project.channels.present? ? project.channels.first.name : nil) })
   end
 
   def from_online_to_waiting_funds(project)
