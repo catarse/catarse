@@ -15,32 +15,23 @@
               = label_tag :by_id, t('.id')
               = text_field_tag :by_id, params[:by_id], class: 'input-small'
 
-            .input
-              = label_tag :between_created_at_start_at, t('.between_created_at')
-              = text_field_tag 'between_created_at[start_at]', (params[:between_created_at][:start_at] if params[:between_created_at].present?), class: 'input-small'
-              | &nbsp;
-              | &nbsp;
-              = text_field_tag 'between_created_at[ends_at]', (params[:between_created_at][:ends_at] if params[:between_created_at].present?), class: 'input-small'
+            - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |date_field|
+              .input
+                = label_tag "#{date_field}_start_at".to_sym, t(".#{date_field}")
+                = text_field_tag "#{date_field}[start_at]", (params[date_field][:start_at] if params[date_field].present?), class: 'input-small'
+                | &nbsp;
+                | &nbsp;
+                = text_field_tag "#{date_field}[ends_at]", (params[date_field][:ends_at] if params[date_field].present?), class: 'input-small'
 
             .input
               = label_tag :with_state, t('.with_state')
               = select_tag :with_state, options_for_select(Project.state_names, params[:with_state]), include_blank: true
-
             .input
               = label_tag :pg_search, t('.project')
               = text_field_tag :pg_search, params[:pg_search]
             .input
               = label_tag :user_name_contains, t('.user')
               = text_field_tag :user_name_contains, params[:user_name_contains]
-            .input
-              = label_tag :by_online_date, t('.online_date')
-              = text_field_tag :by_online_date, params[:by_online_date]
-            .input
-              = label_tag :by_expires_at, t('.expires_at')
-              = text_field_tag :by_expires_at, params[:by_expires_at]
-            .input
-              = label_tag :by_updated_at, t('.updated_at')
-              = text_field_tag :by_updated_at, params[:by_updated_at]
             .input
               = label_tag :by_goal, t('.goal')
               = text_field_tag :by_goal, params[:by_goal]
