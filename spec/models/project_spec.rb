@@ -154,6 +154,21 @@ describe Project do
     it { should == [@project_01] }
   end
 
+  describe '.goal_between' do
+    let(:start_at) { 100 }
+    let(:ends_at) { 200 }
+    subject { Project.goal_between(start_at, ends_at) }
+
+    before do
+      @project_01 = create(:project, goal: 100)
+      @project_02 = create(:project, goal: 200)
+      @project_03 = create(:project, created_at: 300)
+    end
+
+    it { should == [@project_01, @project_02] }
+  end
+
+
   describe '.between_expires_at' do
     let(:start_at) { '17/01/2013' }
     let(:ends_at) { '21/01/2013' }
