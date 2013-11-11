@@ -44,9 +44,9 @@ class ProjectsController < ApplicationController
     create! { project_by_slug_path(@project.permalink) }
   end
 
-  def send_to_curate
-    resource.send_to_curate
-    flash[:notice] = t('projects.send_to_curate')
+  def send_to_analysis
+    resource.send_to_analysis
+    flash[:notice] = t('projects.send_to_analysis')
     redirect_to project_by_slug_path(@project.permalink)
   end
 

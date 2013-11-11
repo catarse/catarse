@@ -26,7 +26,7 @@ class Ability
       project.user == current_user && ( project.draft? || project.rejected? || project.in_analysis? )
     end
 
-    can :send_to_curate, :projects do |project|
+    can :send_to_analysis, :projects do |project|
       project.user == current_user
     end
 
