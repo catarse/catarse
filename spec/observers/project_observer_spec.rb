@@ -56,7 +56,7 @@ describe ProjectObserver do
       ::Configuration[:email_projects] = 'foo@foo.com'
       user
       project
-      project.send_to_curate!
+      project.send_to_analysis!
     end
 
     it "should create notification for catarse admin" do

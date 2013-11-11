@@ -21,7 +21,7 @@ module ProjectStateMachineHandler
         transition [:draft, :rejected, :in_analysis] => :deleted
       end
 
-      event :send_to_curate do
+      event :send_to_analysis do
         transition draft: :in_analysis
       end
 

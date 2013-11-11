@@ -594,11 +594,11 @@ describe Project do
   describe "state machine" do
     let(:project) { create(:project, state: 'draft') }
 
-    describe "#send_to_curate" do
+    describe "#send_to_analysis" do
       subject { project.in_analysis? }
       before do
         project.should_receive(:notify_observers).with(:from_draft_to_in_analysis)
-        project.send_to_curate
+        project.send_to_analysis
       end
 
       it { should be_true }
@@ -623,7 +623,7 @@ describe Project do
     describe '#rejected?' do
       subject { project.rejected? }
       before do
-        project.send_to_curate
+        project.send_to_analysis
         project.reject
       end
       context 'when project is not accepted' do
@@ -654,7 +654,7 @@ describe Project do
     end
 
     describe '#approve' do
-      before { project.send_to_curate }
+      before { project.send_to_analysis }
 
       subject do
         project.should_receive(:notify_observers).with(:from_in_analysis_to_online)
@@ -672,7 +672,7 @@ describe Project do
 
     describe '#online?' do
       before do
-        project.send_to_curate
+        project.send_to_analysis
         project.approve
       end
       subject { project.online? }
