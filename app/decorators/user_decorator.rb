@@ -3,22 +3,22 @@ class UserDecorator < Draper::Decorator
   include Draper::LazyHelpers
 
   def backs_text
-    if total_backed_projects == 2
+    if source.total_backed_projects == 2
       I18n.t('user.backs_text.two')
-    elsif total_backed_projects > 1
-      I18n.t('user.backs_text.many', total: (total_backed_projects-1))
+    elsif source.total_backed_projects > 1
+      I18n.t('user.backs_text.many', total: (source.total_backed_projects-1))
     else
       I18n.t('user.backs_text.one')
     end
   end
 
   def twitter_link
-    "http://twitter.com/#{self.twitter}"
+    "http://twitter.com/#{source..twitter}"
   end
 
   def gravatar_url
-    return unless email
-    "https://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{::Configuration[:base_url]}/assets/user.png"
+    return unless source.email
+    "https://gravatar.com/avatar/#{Digest::MD5.new.update(source.email)}.jpg?default=#{::Configuration[:base_url]}/assets/user.png"
   end
 
   def display_name
