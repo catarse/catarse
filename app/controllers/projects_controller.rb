@@ -1,6 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  load_and_authorize_resource only: [ :new, :create, :update, :destroy, :send_to_curate ]
+  load_and_authorize_resource only: [ :new, :create, :update, :destroy, :send_to_analysis ]
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :recommended, :not_expired, type: :boolean
