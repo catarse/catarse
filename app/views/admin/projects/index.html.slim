@@ -15,13 +15,13 @@
               = label_tag :by_id, t('.id')
               = text_field_tag :by_id, params[:by_id], class: 'input-small'
 
-            - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |date_field|
+            - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at, :goal_between].each do |between_field|
               .input
-                = label_tag "#{date_field}_start_at".to_sym, t(".#{date_field}")
-                = text_field_tag "#{date_field}[start_at]", (params[date_field][:start_at] if params[date_field].present?), class: 'input-small'
+                = label_tag "#{between_field}_start_at".to_sym, t(".#{between_field}")
+                = text_field_tag "#{between_field}[start_at]", (params[between_field][:start_at] if params[between_field].present?), class: 'input-small'
                 | &nbsp;
                 | &nbsp;
-                = text_field_tag "#{date_field}[ends_at]", (params[date_field][:ends_at] if params[date_field].present?), class: 'input-small'
+                = text_field_tag "#{between_field}[ends_at]", (params[between_field][:ends_at] if params[between_field].present?), class: 'input-small'
 
             .input
               = label_tag :with_state, t('.with_state')
@@ -32,9 +32,6 @@
             .input
               = label_tag :user_name_contains, t('.user')
               = text_field_tag :user_name_contains, params[:user_name_contains]
-            .input
-              = label_tag :by_goal, t('.goal')
-              = text_field_tag :by_goal, params[:by_goal]
             .input
               = label_tag :by_category_id, t('.by_category')
               = select_tag :by_category_id, options_from_collection_for_select(Category.all, :id, :name_pt,params[:by_category_id]), include_blank: true
