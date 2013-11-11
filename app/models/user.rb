@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
-    :medium_name, :display_credits, :display_total_of_backs,
+    :medium_name, :display_credits, :display_total_of_backs, :backs_text, :twitter_link, :gravatar_url,
     to: :decorator
   # Setup accessible (or protected) attributes for your model
   # TODO:
@@ -210,20 +210,6 @@ class User < ActiveRecord::Base
     Project.backed_by(self.id)
   end
 
-  def backs_text
-    if total_backed_projects == 2
-      I18n.t('user.backs_text.two')
-    elsif total_backed_projects > 1
-      I18n.t('user.backs_text.many', total: (total_backed_projects-1))
-    else
-      I18n.t('user.backs_text.one')
-    end
-  end
-
-  def twitter_link
-    "http://twitter.com/#{self.twitter}"
-  end
-
   def fix_twitter_user
     self.twitter.gsub!(/@/, '') if self.twitter
   end
@@ -232,12 +218,6 @@ class User < ActiveRecord::Base
     if !self.facebook_link.blank?
       self.facebook_link = ('http://' + self.facebook_link) unless self.facebook_link[/^https?:\/\//]
     end
-  end
-
-  # Returns a Gravatar URL associated with the email parameter, uses local avatar if available
-  def gravatar_url
-    return unless email
-    "https://gravatar.com/avatar/#{Digest::MD5.new.update(email)}.jpg?default=#{::Configuration[:base_url]}/assets/user.png"
   end
 
   def password_required?
