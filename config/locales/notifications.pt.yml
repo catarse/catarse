@@ -52,7 +52,7 @@ pt:
     project_received_channel:
       subject: "O seu rascunho de projeto foi criado no %{channel_name}"
     project_visible_channel:
-      subject: "Projeto no ar!"
+      subject: "O projeto %{project_name} está no ar no %{channel_name}"
     project_visible:
       subject: "O projeto %{project_name} está no ar no Catarse"
       header: "Agora é pra valer"
@@ -63,7 +63,7 @@ pt:
       subject: "O projeto %{project_name} acaba de ser criado"
       header:  "Um novo projeto está aguardando análise"
     new_draft_project_channel:
-      subject: "O projeto %{project_name} acaba de ser criado"
+      subject: "Um novo rascunho de projeto pediu sua avaliação para entrada no %{channel_name}!"
       header:  "Um novo projeto está aguardando análise"
     new_features:
       subject: "Ajuda para tese de doutorado sobre crowdfunding"
