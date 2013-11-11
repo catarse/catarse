@@ -20,7 +20,7 @@ class ProjectObserver < ActiveRecord::Observer
       Notification.create_notification_once(project.notification_type(:new_draft_project),
         user,
         {project_id: project.id},
-        {project: project, project_name: project.name, from: project.user.email, display_name: project.user.display_name})
+        {project: project, project_name: project.name, channel_name: (project.channels.present? ? project.channels.first.name : nil) ,from: project.user.email, display_name: project.user.display_name})
     end
 
     Notification.create_notification_once(project.notification_type(:in_analysis_project), user, { project_id: project.id })
