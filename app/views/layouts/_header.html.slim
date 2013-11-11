@@ -1,7 +1,7 @@
 header.header
   .centered
     h1
-      = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), :class => 'logo', :title => Configuration[:company_name]
+      = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain, protocol: 'http'), :class => 'logo', :title => Configuration[:company_name]
     nav.header-nav
       ul
         li.header-nav-li
