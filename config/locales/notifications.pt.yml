@@ -48,7 +48,7 @@ pt:
       subject: "O seu rascunho de projeto foi criado no Catarse."
       header: "O seu rascunho de projeto foi criado no Catarse."
     project_received_channel:
-      subject: "O seu projeto foi recebido pelo %{channel_name}"
+      subject: "O seu rascunho de projeto foi criado no %{channel_name}"
     project_visible_channel:
       subject: "Projeto no ar!"
     project_visible:
