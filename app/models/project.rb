@@ -81,7 +81,7 @@ class Project < ActiveRecord::Base
   validates_numericality_of :online_days, less_than_or_equal_to: 60
   validates_uniqueness_of :permalink, allow_blank: true, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
-  validates_format_of :video_url, with: /(https?\:\/\/|)(youtube|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
+  validates_format_of :video_url, with: /(https?\:\/\/|)(youtu(\.be|be\.com)|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
   def self.between_created_at(starts_at, ends_at)
