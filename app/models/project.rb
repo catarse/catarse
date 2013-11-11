@@ -84,12 +84,14 @@ class Project < ActiveRecord::Base
   validates_format_of :video_url, with: /(https?\:\/\/|)(youtube|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
-  def self.between_created_at(starts_at, ends_at)
-    between_dates 'created_at', starts_at, ends_at
+  [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
+    define_singleton_method name do |starts_at, ends_at|
+      between_dates name.to_s.gsub('between_',''), starts_at, ends_at
+    end
   end
 
-  def self.between_expires_at(starts_at, ends_at)
-    between_dates 'expires_at', starts_at, ends_at
+  def self.goal_between(starts_at, ends_at)
+    where("goal BETWEEN ? AND ?", starts_at, ends_at)
   end
 
   def self.order_by(sort_field)
