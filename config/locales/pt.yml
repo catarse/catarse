@@ -408,7 +408,7 @@ pt:
       not_reached_goal: aguardando
       draft: "rascunho"
   projects:
-    send_to_curate: 'Seu projeto foi enviado para nossa equipe.'
+    send_to_analysis: 'Seu projeto foi enviado para nossa equipe.'
     box:
       by: por
       when: em
