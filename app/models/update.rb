@@ -38,20 +38,17 @@ class Update < ActiveRecord::Base
   def notify_backers
     project.subscribed_users.each do |user|
       Rails.logger.info "[User #{user.id}] - Creating notification for #{user.name}"
-      Notification.notify_once :updates, user,
+      Notification.notify_once(
+        :updates, 
+        user,
         {update_id: self.id, user_id: user.id},
-        update_number: self.project.updates.count,
-        project_name: project.name,
-        project: project,
-        project_owner: project.user.display_name,
-        project_owner_email: project.user.email,
-        from: project.user.email,
-        display_name: project.user.display_name,
-        update_title: title,
-        update: self,
-        from: project.user.email,
-        display_name: project.user.display_name,
-        update_comment: email_comment_html
+        {
+          project: project,
+          project_update: self,
+          origin_email: project.user.email,
+          origin_name: project.user.display_name
+        }
+      )
     end
   end
 
