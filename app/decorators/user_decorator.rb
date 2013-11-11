@@ -13,7 +13,7 @@ class UserDecorator < Draper::Decorator
   end
 
   def twitter_link
-    "http://twitter.com/#{source..twitter}"
+    "http://twitter.com/#{source.twitter}"
   end
 
   def gravatar_url
