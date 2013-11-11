@@ -9,7 +9,7 @@ pt:
       subject: "Apoio cancelado após ser confirmado"
       header: "Apoio cancelado após ser confirmado"
     project_owner_backer_confirmed:
-      subject: "Uhuu! Mais um novo apoiador pro seu projeto"
+      subject: "Novo apoio para o projeto %{project_name}"
       header: "Um novo apoio acabou de ser confirmado para o seu projeto"
     confirm_backer:
       subject: "Obrigado! Seu apoio para %{project_name} foi confirmado!"
@@ -24,13 +24,13 @@ pt:
       subject: "Novidade #%{update_number} - %{project_name}"
       header: "Novidade #%{update_number} - %{project_name}"
     project_in_wainting_funds:
-      subject: "O prazo do seu projeto acabou, saiba quais são os próximos passos"
+      subject: "Fim do prazo do projeto %{project_name}"
       header: "Acabou o prazo!"
     project_success:
-      subject: "Projeto bem-sucedido: algumas informações necessárias"
+      subject: "%{project_name} foi financiado!"
       header: "Projeto bem-sucedido o/"
     project_unsuccessful:
-      subject: "O seu projeto não foi financiado no Catarse, mas gostaríamos de um feedback x)"
+      subject: "%{project_name} não alcançou a meta de arrecadação"
       header: "Projeto não financiado não é projeto mal-sucedido ;)"
     backer_project_successful:
       subject: "Uhuu! O projeto %{project_name} foi bem-sucedido no Catarse"
@@ -52,11 +52,11 @@ pt:
     project_visible_channel:
       subject: "Projeto no ar!"
     project_visible:
-      subject: "Seu projeto está no ar no Catarse o/"
+      subject: "O projeto %{project_name} está no ar no Catarse"
       header: "Agora é pra valer"
     project_rejected:
-      subject: "O seu projeto não foi se enquadra no perfil do Catarse."
-      header: "O seu projeto não foi se enquadra no perfil do Catarse."
+      subject: "O seu rascunho de projeto foi criado no Catarse."
+      header: "O seu rascunho de projeto foi criado no Catarse."
     new_draft_project:
       subject: "O projeto %{project_name} acaba de ser criado"
       header:  "Um novo projeto está aguardando análise"

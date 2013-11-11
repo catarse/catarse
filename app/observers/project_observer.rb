@@ -38,8 +38,7 @@ class ProjectObserver < ActiveRecord::Observer
       :project_success,
       project.user,
       {project_id: project.id},
-      project: project
-    )
+      {project: project, project_name: project.name })
     notify_admin_that_project_reached_deadline(project)
     notify_users(project)
   end
@@ -66,7 +65,7 @@ class ProjectObserver < ActiveRecord::Observer
     Notification.create_notification_once(project.notification_type(:project_visible),
       project.user,
       {project_id: project.id},
-      project: project)
+      {project: project, project_name: project.name})
   end
 
   def from_online_to_failed(project)
@@ -85,7 +84,7 @@ class ProjectObserver < ActiveRecord::Observer
       :project_unsuccessful,
       project.user,
       {project_id: project.id, user_id: project.user.id},
-      project: project
+      {project: project, project_name: project.name }
     )
   end
 
