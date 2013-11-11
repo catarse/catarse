@@ -52,11 +52,11 @@ describe ProjectsController do
     end
   end
 
-  describe "GET send_to_curate" do
+  describe "GET send_to_analysis" do
     let(:current_user){ project.user }
 
     before do
-      get :send_to_curate, id: project.id, locale: :pt
+      get :send_to_analysis, id: project.id, locale: :pt
       project.reload
     end
 
