@@ -8,6 +8,7 @@
         = semantic_form_for @backer, url: @create_url, html: { id: 'backer_form' } do |form|
           = form.inputs do
             = hidden_field_tag 'credits', current_user.credits.to_i
+            = form.input :referal_link, as: :hidden, input_html: { value: referal_link }
             = form.label :value, t('formtastic.labels.backer.value')
             - if current_user.credits >= 10
               .bootstrap-alert
