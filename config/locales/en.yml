@@ -389,6 +389,7 @@ en:
       reached_goal: funded
       draft: "draft"
   projects:
+    send_to_analysis: 'Your project has sent to our team'
     box:
       by: by
       when: in
@@ -467,7 +468,7 @@ en:
         help_link: "our guide"
       rewards_description: "We believe that the best way to inspire people to back a project is offering excellent – and creative! – rewards. Everybody loves limited editions, unique things and joyful experiences (parties, candies, balloon travelling!). Spend some time devising creative rewards and people will be interested."
       rewards_title: Rewards
-      submit: "Submit project"
+      submit: "Save draft"
     index_header:
       subtitle: "Fund projects collaboratively and become part of something bigger. Promote a collective catharsis! You're the missing part in this story."
       subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
@@ -605,7 +606,7 @@ en:
         help_link: "our guide"
       rewards: "What rewards do you want to offer?"
       rewards_hint: "We believe that the best way to inspire people to back a project is offering excellent – and creative! – rewards. Everybody loves limited editions, unique things and joyful experiences (parties, candies, balloon travelling!). Spend some time devising creative rewards and people will be interested."
-      submit: "Submit the project"
+      submit: "Save draft"
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
       title: "Submit your project"
     twitter:

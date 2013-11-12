@@ -1,5 +1,8 @@
 en:
   notifications:
+    in_analysis_project:
+      subject: 'O seu projeto foi recebido pelo Catarse.'
+      header: 'O seu projeto foi recebido pelo Catarse.'
     project_rejected_channel:
       subject: "Seu projeto não foi aceito pelo %{channel_name}"
     new_user_registration:

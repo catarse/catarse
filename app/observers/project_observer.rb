@@ -9,18 +9,32 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def after_create(project)
+    Notification.create_notification_once(project.notification_type(:project_received),
+      project.user,
+      {project_id: project.id},
+      {project: project, project_name: project.name, channel_name: (project.channels.first ? project.channels.first.name : nil)})
+  end
+
+  def from_draft_to_in_analysis(project)
     if (user = project.new_draft_recipient)
-      Notification.notify_once(project.notification_type(:new_draft_project),
-                                            user,
-                                            {project_id: project.id},
-                                            {project: project, origin_email: project.user.email, origin_name: project.user.display_name}
-                                           )
+      Notification.notify_once(
+        project.notification_type(:new_draft_project),
+        user,
+        {project_id: project.id},
+        {
+          project: project, 
+          origin_email: project.user.email, 
+          origin_name: project.user.display_name
+        }
+      )
     end
 
-    Notification.notify_once(project.notification_type(:project_received),
-                                          project.user,
-                                          {project_id: project.id},
-                                          {project: project})
+    Notification.notify_once(
+      project.notification_type(:in_analysis_project), 
+      user, 
+      {project_id: project.id}, 
+      {project: project}
+    )
   end
 
   def from_online_to_waiting_funds(project)
@@ -35,8 +49,7 @@ class ProjectObserver < ActiveRecord::Observer
       :project_success,
       project.user,
       {project_id: project.id},
-      project: project
-    )
+      {project: project, project_name: project.name })
     notify_admin_that_project_reached_deadline(project)
     notify_users(project)
   end
@@ -52,18 +65,22 @@ class ProjectObserver < ActiveRecord::Observer
     end
   end
 
-  def from_draft_to_rejected(project)
-    Notification.notify_once(project.notification_type(:project_rejected),
+  def from_in_analysis_to_rejected(project)
+    Notification.notify_once(
+      project.notification_type(:project_rejected),
       project.user,
       {project_id: project.id},
-      {project: project})
+      {project: project}
+    )
   end
 
-  def from_draft_to_online(project)
-    Notification.notify_once(project.notification_type(:project_visible),
+  def from_in_analysis_to_online(project)
+    Notification.notify_once(
+      project.notification_type(:project_visible),
       project.user,
       {project_id: project.id},
-      project: project)
+      {project: project}
+    )
   end
 
   def from_online_to_failed(project)
@@ -82,7 +99,7 @@ class ProjectObserver < ActiveRecord::Observer
       :project_unsuccessful,
       project.user,
       {project_id: project.id, user_id: project.user.id},
-      project: project
+      {project: project, project_name: project.name }
     )
   end
 

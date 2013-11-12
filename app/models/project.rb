@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, ProjectUploader
   mount_uploader :video_thumbnail, ProjectUploader
 
-  delegate :display_status, :display_progress, :display_image, :display_expires_at,
+  delegate :display_status, :display_progress, :display_image, :display_expires_at, :remaining_text,
     :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar, :successful_flag,
     to: :decorator
 
@@ -63,6 +63,16 @@ class Project < ActiveRecord::Base
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
                                      END ASC, projects.online_date DESC, projects.created_at DESC") }
+  scope :order_for_admin, -> {
+    reorder("
+            CASE projects.state
+            WHEN 'in_analysis' THEN 1
+            WHEN 'waiting_funds' THEN 2
+            WHEN 'successful' THEN 3
+            WHEN 'failed' THEN 4
+            END ASC, projects.online_date DESC, projects.created_at DESC")
+  }
+
   scope :backed_by, ->(user_id){
     where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
@@ -84,12 +94,14 @@ class Project < ActiveRecord::Base
   validates_format_of :video_url, with: /(https?\:\/\/|)(youtube|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
-  def self.between_created_at(starts_at, ends_at)
-    between_dates 'created_at', starts_at, ends_at
+  [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
+    define_singleton_method name do |starts_at, ends_at|
+      between_dates name.to_s.gsub('between_',''), starts_at, ends_at
+    end
   end
 
-  def self.between_expires_at(starts_at, ends_at)
-    between_dates 'expires_at', starts_at, ends_at
+  def self.goal_between(starts_at, ends_at)
+    where("goal BETWEEN ? AND ?", starts_at, ends_at)
   end
 
   def self.order_by(sort_field)
@@ -161,10 +173,6 @@ class Project < ActiveRecord::Base
       end
     end
     {time: 0, unit: pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
-  end
-
-  def remaining_text
-    pluralize_without_number(time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
   end
 
   def update_video_embed_url

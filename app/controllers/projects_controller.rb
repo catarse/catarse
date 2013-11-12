@@ -1,6 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  load_and_authorize_resource only: [ :new, :create, :update, :destroy ]
+  load_and_authorize_resource only: [ :new, :create, :update, :destroy, :send_to_analysis ]
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :recommended, :not_expired, type: :boolean
@@ -41,7 +41,13 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(params[:project])
 
-    create!(notice: t('projects.create.success')) { project_by_slug_path(@project.permalink) }
+    create! { project_by_slug_path(@project.permalink) }
+  end
+
+  def send_to_analysis
+    resource.send_to_analysis
+    flash[:notice] = t('projects.send_to_analysis')
+    redirect_to project_by_slug_path(@project.permalink)
   end
 
   def update

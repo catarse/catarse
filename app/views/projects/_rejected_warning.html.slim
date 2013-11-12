@@ -1,10 +1,15 @@
 br
 #project_warning.bootstrap-alert
   .alert.alert-warning
-    i ATENÇÃO!  Este projeto foi rejeitado
+    i Este projeto não foi aceito pelo Catarse
     #toggle_warning
       = link_to '(minimizar informações)', '#'
     #project_warning_text
       br/
       br/
-      | Esse projeto não se enquadra aos nossos <a href='https://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank'>critérios de seleção.</a>
+      | Nossa equipe entendeu que este projeto não tem o perfil do Catarse. 
+      br/
+      | Lembrando que ter um projeto recusado não impede que você envie novos projetos para avaliação. 
+      | Levanta, sacode a poeira e dá a volta por cima! Estude nossa #{link_to 'Central de Suporte', ::Configuration[:support_forum]} para que você saiba tudo sobre 
+      | nossos pré-requisitos para a construção do seu próximo projeto. Para mais informações sobre requisitos para aprovação de um projeto no Catarse,
+      | basta acessar esse #{link_to 'artigo', 'http://suporte.catarse.me/knowledgebase/articles/241190-diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos', target: '__blank'}.
