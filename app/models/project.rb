@@ -37,6 +37,7 @@ class Project < ActiveRecord::Base
   scope :with_project_totals, -> { joins('LEFT OUTER JOIN project_totals pt ON pt.project_id = projects.id') }
 
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
+  scope :by_user_email, ->(email) { joins(:user).where("users.email = ?", email) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_online_date, ->(online_date) { where("online_date::date = ?", online_date.to_date) }
@@ -91,7 +92,7 @@ class Project < ActiveRecord::Base
   validates_numericality_of :online_days, less_than_or_equal_to: 60
   validates_uniqueness_of :permalink, allow_blank: true, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
-  validates_format_of :video_url, with: /(https?\:\/\/|)(youtube|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
+  validates_format_of :video_url, with: /(https?\:\/\/|)(youtu(\.be|be\.com)|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
   validate :permalink_cant_be_route, allow_nil: true
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|

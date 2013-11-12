@@ -35,6 +35,9 @@
             .input
               = label_tag :by_category_id, t('.by_category')
               = select_tag :by_category_id, options_from_collection_for_select(Category.all, :id, :name_pt,params[:by_category_id]), include_blank: true
+            .input
+              = label_tag :by_user_email, t('.by_user_email')
+              = text_field_tag :by_user_email, params[:by_user_email]
 
             .bootstrap-twitter
               .input.submit
