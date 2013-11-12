@@ -1,0 +1,39 @@
+- project = @notification.project
+
+- project_link = project_by_slug_url(permalink: project.permalink)
+- company_name = ::Configuration[:company_name]
+
+| Uhuu, #{project.user.name},
+br/
+| Parabéns pela campanha! 
+br/
+br/
+| O projeto #{link_to project.name, project_link} foi financiado! 
+br/
+br/
+| Depois que você comemorar com vontade o término bem sucedido da sua campanha de arrecadação, 
+| é hora de voltar ao trabalho! Reunimos aqui algumas informações importantíssimas para quem teve seu 
+| projeto financiado com sucesso aqui no #{company_name}. 
+br/
+br/
+| <strong>1</strong> - Na aba Relatórios (que fica na página do seu projeto) você consegue baixar 
+| planilhas com as <strong>informações sobre os apoiadores do seu projeto</strong> (Recompensa  escolhida | Valor do apoio | Data de confirmação do apoio | Nome | E-mail | Endereço)     
+br/
+br/
+| <strong>2</strong> - Emitiremos a <strong>Nota Fiscal</strong> para você assim que fizermos o repasse do dinheiro. Para emitir a nota fiscal nós vamos usar as informações que estão no seu perfil.
+br/
+| Confira:  #{link_to 'Como será feito o repasse?', 'http://suporte.catarse.me/knowledgebase/articles/161090-como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '__blank'}
+br/
+br/
+| <strong>3</strong> - Aqui no link: {link_to 'Realizadores | acabou o prazo!', 'http://suporte.catarse.me/knowledgebase/topics/25770-realizadores-acabou-o-prazo' }
+| você pode encontrar mais informações sobre essa nova fase do seu projeto no #{company_name}! 
+| Leia com atenção e fique por dentro de todos os processos que serão realizados no após o término do projeto! 
+br/
+br/
+| Se ficou com alguma dúvida, responda esse email diretamente ou fale connosco através do #{mail_to ::Configuration[:email_projects]}
+br/
+br/
+| Um abraço apertado de parabéns!
+br/
+| Catarse
+
