@@ -34,13 +34,7 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_image(version = 'project_thumb' )
-    if source.uploaded_image.present?
-      source.uploaded_image.send(version).url
-    elsif source.video_thumbnail.url.present?
-      source.video_thumbnail.send(version).url
-    elsif source.video
-      source.video.thumbnail_large
-    end
+    use_uploaded_image(version) || use_video_tumbnail(version)
   end
 
   def display_video_embed_url
@@ -79,6 +73,18 @@ class ProjectDecorator < Draper::Decorator
   end
 
   private
+
+  def use_uploaded_image(version)
+    source.uploaded_image.send(version).url if source.uploaded_image.present?
+  end
+
+  def use_video_tumbnail(version)
+    if source.video_thumbnail.url.present?
+      source.video_thumbnail.send(version).url
+    elsif source.video
+      source.video.thumbnail_large
+    end
+  end
 
   def time_to_go_for(unit)
     time = 1.send(unit)
