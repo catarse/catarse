@@ -9,6 +9,10 @@ describe ProjectObserver do
 
   before do
     Configuration[:support_forum] = 'http://support.com'
+    Configuration[:email_projects] = 'foo@foo.com'
+    Configuration[:facebook_url] = 'http://facebook.com/foo'
+    Configuration[:blog_url] = 'http://blog.com/foo'
+    Configuration[:company_name] = 'Catarse'
     Notification.unstub(:notify)
     Notification.unstub(:notify_once)
   end
@@ -16,14 +20,8 @@ describe ProjectObserver do
   describe "after_create" do
     before do
       ProjectObserver.any_instance.should_receive(:after_create).and_call_original
-      ::Configuration[:facebook_url] = 'http://facebook.com'
-      ::Configuration[:blog_url] = 'http://blog.com'
-      ::Configuration[:company_name] = 'Catarse'
-      ::Configuration[:email_projects] = 'foo@foo.com'
-      user
       project
     end
-    let(:user) { create(:user, email: ::Configuration[:email_projects])}
 
     it "should create notification for project owner" do
       Notification.where(user_id: project.user.id, template_name: 'project_received', project_id: project.id).first.should_not be_nil
@@ -35,14 +33,13 @@ describe ProjectObserver do
     let(:user) { create(:user, email: ::Configuration[:email_projects])}
 
     before do
-      ::Configuration[:email_projects] = 'foo@foo.com'
       user
       project
       project.send_to_analysis!
     end
 
     it "should create notification for catarse admin" do
-      Notification.where(user_id: user.id, notification_type_id: new_draft_project.id, project_id: project.id).first.should_not be_nil
+      Notification.where(user_id: user.id, template_name: :new_draft_project, project_id: project.id).first.should_not be_nil
     end
   end
 
@@ -172,8 +169,6 @@ describe ProjectObserver do
     let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
 
     before do
-      ::Configuration[:facebook_url] = 'http://facebook.com/foo'
-      ::Configuration[:blog_url] = 'http://blog.com/foo'
       project.stub(:reached_goal?).and_return(true)
       project.stub(:in_time_to_wait?).and_return(false)
       project.finish
@@ -186,11 +181,6 @@ describe ProjectObserver do
 
   describe "#notify_owner_that_project_is_online" do
     let(:project) { create(:project, state: 'in_analysis') }
-
-    before do
-      ::Configuration[:facebook_url] = 'http://facebook.com/foo'
-      ::Configuration[:blog_url] = 'http://blog.com/foo'
-    end
 
     context "when project don't belong to any channel" do
       before do
@@ -216,10 +206,6 @@ describe ProjectObserver do
 
   describe "#notify_owner_that_project_is_rejected" do
     let(:project){ create(:project, state: 'in_analysis') }
-    before do
-      ::Configuration[:facebook_url] = 'http://facebook.com/foo'
-      ::Configuration[:blog_url] = 'http://blog.com/foo'
-    end
 
     context "when project don't belong to any channel" do
       before do
@@ -247,8 +233,8 @@ describe ProjectObserver do
     let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
     let(:user) { create(:user, email: 'foo@foo.com')}
     before do
-      ::Configuration[:email_payments] = 'foo@foo.com'
-      ::Configuration[:email_system] = 'foo2@foo.com'
+      Configuration[:email_payments] = 'foo@foo.com'
+      Configuration[:email_system] = 'foo2@foo.com'
       user
       project.stub(:reached_goal?).and_return(true)
       project.stub(:in_time_to_wait?).and_return(false)
