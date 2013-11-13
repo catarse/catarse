@@ -7,13 +7,11 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def time_to_go
-    ['day', 'hour', 'minute', 'second'].each do |unit|
-      if source.expires_at.to_i >= 1.send(unit).from_now.to_i
-        time = ((source.expires_at - Time.zone.now).abs/1.send(unit)).round
-        return {time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase)}
-      end
+    time_and_unit = nil
+    %w(day hour minute second).detect do |unit|
+      time_and_unit = time_to_go_for unit
     end
-    {time: 0, unit: pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
+    time_and_unit || time_and_unit_attributes(0, 'second')
   end
 
   def remaining_days
@@ -78,6 +76,21 @@ class ProjectDecorator < Draper::Decorator
       image_tag("channels/successful.png")
     end
 
+  end
+
+  private
+
+  def time_to_go_for(unit)
+    time = 1.send(unit)
+
+    if source.expires_at.to_i >= time.from_now.to_i
+      time = ((source.expires_at - Time.zone.now).abs / time).round
+      time_and_unit_attributes time, unit
+    end
+  end
+
+  def time_and_unit_attributes(time, unit)
+    { time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase) }
   end
 end
 
