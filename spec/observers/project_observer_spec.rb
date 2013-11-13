@@ -53,7 +53,7 @@ describe ProjectObserver do
       end
 
       it "should call notify and do not call download_video_thumbnail" do
-        Notification.should_receive(:notify_once).with(:project_visible, project.user, {project_id: project.id}, {project: project})
+        Notification.should_receive(:notify_once).with(:project_visible, project.user, {project_id: project.id, channel_id: nil}, {project: project, channel: nil})
         project.approve
       end
     end

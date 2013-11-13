@@ -580,7 +580,7 @@ describe Project do
       it{ should == @user }
     end
 
-    context "when project does belong to a channel" do
+    context "when project belongs to a channel" do
       let(:project) { channel_project }
       it{ should == user }
     end
