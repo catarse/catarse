@@ -64,6 +64,18 @@ describe Update do
     it{ should == "<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img src=\"http://catarse.me/assets/catarse/logo164x54.png\" alt=\"\" style=\"max-width:513px\" /></p>" }
   end
 
+  describe "#update_number" do
+    let(:project){ create(:project) }
+    let(:update){ create(:update, project: project) }
+    subject{ update.update_number }
+    before do
+      create(:update, project: project)
+      update
+      create(:update, project: project)
+    end
+    it{ should == 2 }
+  end
+
   describe "#notify_backers" do
     before do
       Notification.unstub(:notify)

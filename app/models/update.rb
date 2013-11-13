@@ -21,6 +21,10 @@ class Update < ActiveRecord::Base
     )
   }
 
+  def update_number
+    self.project.updates.where('id <= ?', self.id).count
+  end
+
   def email_comment_html
     auto_html(comment) do
       html_escape map: {
