@@ -33,7 +33,7 @@ class ProjectObserver < ActiveRecord::Observer
 
     Notification.notify_once(
       project.notification_type(:in_analysis_project), 
-      user, 
+      project.user, 
       {project_id: project.id}, 
       {project: project}
     )
