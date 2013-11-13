@@ -6,6 +6,16 @@ class ProjectDecorator < Draper::Decorator
     pluralize_without_number(source.time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
   end
 
+  def time_to_go
+    ['day', 'hour', 'minute', 'second'].each do |unit|
+      if source.expires_at.to_i >= 1.send(unit).from_now.to_i
+        time = ((source.expires_at - Time.zone.now).abs/1.send(unit)).round
+        return {time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase)}
+      end
+    end
+    {time: 0, unit: pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
+  end
+
   def remaining_days
     source.time_to_go[:time]
   end
