@@ -8,6 +8,7 @@ The first crowdfunding platform from Brazil
 - [![Build Status](https://secure.travis-ci.org/catarse/catarse.png?branch=master)](https://travis-ci.org/catarse/catarse) 
 - [![Coverage Status](https://coveralls.io/repos/catarse/catarse/badge.png?branch=channels)](https://coveralls.io/r/catarse/catarse)
 - [![Dependency Status](https://gemnasium.com/catarse/catarse.png)](https://gemnasium.com/catarse/catarse)
+- [![Code Climate](https://codeclimate.com/github/catarse/catarse.png)](https://codeclimate.com/github/catarse/catarse)
 
 ## Official repository changed!
 
