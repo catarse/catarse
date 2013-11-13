@@ -120,11 +120,11 @@ class User < ActiveRecord::Base
 
   def self.send_credits_notification
     has_not_used_credits_last_month.find_each do |user|
-      Notification.create_notification_once(:credits_warning,
+      Notification.notify_once(
+        :credits_warning,
         user,
         {user_id: user.id},
-        user: user,
-        amount: user.credits
+        {user: user}
       )
     end
   end
