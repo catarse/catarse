@@ -9,10 +9,12 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def after_create(project)
-    Notification.create_notification_once(project.notification_type(:project_received),
+    Notification.notify_once(
+      project.notification_type(:project_received),
       project.user,
       {project_id: project.id},
-      {project: project, project_name: project.name, channel_name: (project.channels.first ? project.channels.first.name : nil)})
+      {project: project}
+    )
   end
 
   def from_draft_to_in_analysis(project)
@@ -38,10 +40,12 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_online_to_waiting_funds(project)
-    Notification.notify_once(:project_in_wainting_funds,
+    Notification.notify_once(
+      :project_in_wainting_funds,
       project.user,
       {project_id: project.id},
-      project: project)
+      project: project
+    )
   end
 
   def from_waiting_funds_to_successful(project)
@@ -49,19 +53,22 @@ class ProjectObserver < ActiveRecord::Observer
       :project_success,
       project.user,
       {project_id: project.id},
-      {project: project, project_name: project.name })
+      {project: project}
+    )
     notify_admin_that_project_reached_deadline(project)
     notify_users(project)
   end
 
   def notify_admin_that_project_reached_deadline(project)
     if (user = User.where(email: ::Configuration[:email_payments]).first)
-      Notification.notify_once(:adm_project_deadline,
+      Notification.notify_once(
+        :adm_project_deadline,
         user,
         {project_id: project.id},
         project: project,
         origin_email: Configuration[:email_system],
-        project: project)
+        project: project
+      )
     end
   end
 
@@ -99,7 +106,7 @@ class ProjectObserver < ActiveRecord::Observer
       :project_unsuccessful,
       project.user,
       {project_id: project.id, user_id: project.user.id},
-      {project: project, project_name: project.name }
+      {project: project}
     )
   end
 
