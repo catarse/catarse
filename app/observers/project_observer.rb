@@ -12,8 +12,8 @@ class ProjectObserver < ActiveRecord::Observer
     Notification.notify_once(
       project.notification_type(:project_received),
       project.user,
-      {project_id: project.id},
-      {project: project}
+      {project_id: project.id, channel_id: project.last_channel.id},
+      {project: project, channel: project.last_channel}
     )
   end
 
@@ -22,9 +22,10 @@ class ProjectObserver < ActiveRecord::Observer
       Notification.notify_once(
         project.notification_type(:new_draft_project),
         user,
-        {project_id: project.id},
+        {project_id: project.id, channel_id: project.last_channel.id},
         {
           project: project, 
+          channel: project.last_channel,
           origin_email: project.user.email, 
           origin_name: project.user.display_name
         }
@@ -34,8 +35,8 @@ class ProjectObserver < ActiveRecord::Observer
     Notification.notify_once(
       project.notification_type(:in_analysis_project), 
       project.user, 
-      {project_id: project.id}, 
-      {project: project}
+      {project_id: project.id, channel_id: project.last_channel.id}, 
+      {project: project, channel: project.last_channel}
     )
   end
 
@@ -76,8 +77,8 @@ class ProjectObserver < ActiveRecord::Observer
     Notification.notify_once(
       project.notification_type(:project_rejected),
       project.user,
-      {project_id: project.id},
-      {project: project}
+      {project_id: project.id, channel_id: project.last_channel.id},
+      {project: project, channel: project.last_channel}
     )
   end
 
@@ -85,8 +86,8 @@ class ProjectObserver < ActiveRecord::Observer
     Notification.notify_once(
       project.notification_type(:project_visible),
       project.user,
-      {project_id: project.id},
-      {project: project}
+      {project_id: project.id, channel_id: project.last_channel.id},
+      {project: project, channel: project.last_channel}
     )
   end
 
