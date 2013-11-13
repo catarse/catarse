@@ -529,6 +529,13 @@ describe Project do
     it { should == [reward_01, reward_03] }
   end
 
+  describe "#last_channel" do
+    let(:channel){ create(:channel) }
+    let(:project){ create(:project, channels: [ create(:channel), channel ]) }
+    subject{ project.last_channel }
+    it{ should == channel }
+  end
+
   describe "#download_video_thumbnail" do
     let(:project){ build(:project) }
     before do
