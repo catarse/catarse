@@ -4,7 +4,6 @@ class Unsubscribe < ActiveRecord::Base
   attr_accessor :subscribed
 
   def self.updates_unsubscribe project_id
-    notification_type ||= NotificationType.where(name: 'updates').first
-    self.find_or_initialize_by(project_id: project_id, notification_type_id: notification_type.id) if notification_type
+    find_or_initialize_by(project_id: project_id)
   end
 end

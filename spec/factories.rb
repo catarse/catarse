@@ -43,21 +43,19 @@ FactoryGirl.define do
     f.state 'online'
   end
 
-  factory :notification_type do |f|
-    f.name "confirm_backer"
-  end
-
   factory :unsubscribe do |f|
     f.association :user, factory: :user
     f.association :project, factory: :project
-    f.association :notification_type, factory: :notification_type
   end
 
   factory :notification do |f|
     f.association :user, factory: :user
     f.association :backer, factory: :backer
     f.association :project, factory: :project
-    f.association :notification_type, factory: :notification_type
+    f.template_name 'project_success'
+    f.origin_name 'Foo Bar'
+    f.origin_email 'foo@bar.com'
+    f.locale 'pt'
   end
 
   factory :reward do |f|
@@ -117,6 +115,7 @@ FactoryGirl.define do
 
   factory :channel do
     name "Test"
+    email "email+channel@foo.bar"
     description "Lorem Ipsum"
     sequence(:permalink) { |n| "#{n}-test-page" }
   end
