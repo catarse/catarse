@@ -128,6 +128,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'fakeweb'
   gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'

@@ -1,0 +1,676 @@
+HTTP/1.1 200 OK
+Server: Apache
+X-Powered-By: PHP/5.4.14
+Expires: Thu, 14 Nov 2013 06:24:52 GMT
+Vary: User-Agent,Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-UA-Compatible: IE=edge
+X-DNS-Prefetch-Control: on
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Date: Thu, 14 Nov 2013 04:24:52 GMT
+X-Varnish: 1572134265
+Age: 0
+Via: 1.1 varnish
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+X-Varnish-Cache: 0
+Connection: close
+X-VServer: 10.90.128.197
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=1024,maximum-scale=1.0">
+<link rel="dns-prefetch" href="//player.vimeo.com">
+<link rel="dns-prefetch" href="http://av.vimeo.com">
+    <link rel="dns-prefetch" href="//a.vimeocdn.com">
+    <link rel="dns-prefetch" href="//b.vimeocdn.com">
+<meta property="fb:app_id" content="19884028963">
+            <meta property="og:title" content="C&uacute;pula nov/2010">
+            <meta property="og:description" content="IMagens do dia a dia na C&uacute;pula, estudio e casa de Cisco Vasques em S&atilde;o PAulo. Neste video: Gustavo MAchado &amp; Lu, Camila Pitanga, Cisco VAsques, Tom GAstom, Gero&hellip;">
+            <meta property="og:image" content="http://b.vimeocdn.com/ts/107/328/107328495_640.jpg">
+            <meta property="og:type" content="video">
+            <meta property="og:video" content="http://vimeo.com/moogaloop.swf?clip_id=17298435">
+            <meta property="og:video:secure_url" content="https://vimeo.com/moogaloop.swf?clip_id=17298435">
+            <meta property="og:video:type" content="application/x-shockwave-flash">
+            <meta property="og:video:width" content="640">
+            <meta property="og:video:height" content="360">
+            <meta property="og:site_name" content="Vimeo">
+            <meta property="og:url" content="http://vimeo.com/17298435">
+            <meta property="video:duration" content="696">
+            <meta property="video:tag" content="Gustavo MAcgado &amp; Lu">
+            <meta property="video:tag" content="Camila Pitanga">
+            <meta property="video:tag" content="Cisco VAsques">
+            <meta property="video:tag" content="Tom GAstom">
+            <meta property="video:tag" content="Gero Camilo">
+            <meta property="video:tag" content="Tom&aacute;s">
+            <meta property="video:tag" content="Gisele SAnfelice">
+            <meta property="video:tag" content="Alexandre BAndeira">
+            <meta property="video:tag" content="Julia">
+            <meta property="video:tag" content="Simone">
+            <meta property="video:tag" content="Renato Ciasca">
+            <meta property="video:tag" content="MAnjubinha e GErson">
+            <meta property="video:tag" content="C&uacute;pula">
+            <meta property="video:tag" content="Gustavo MAchado &amp; Lu">
+
+        <meta name="twitter:card" content="player">
+        <meta name="twitter:player" content="https://player.vimeo.com/video/17298435">
+        <meta name="twitter:player:height" content="360">
+        <meta name="twitter:player:width" content="640">
+        <meta name="twitter:app:name:iphone" content="Vimeo">
+        <meta name="twitter:app:id:iphone" content="425194759">
+        <meta name="twitter:app:url:iphone" content="vimeo://video/17298435">
+        <meta name="twitter:app:name:ipad" content="Vimeo">
+        <meta name="twitter:app:id:ipad" content="425194759">
+        <meta name="twitter:app:name:googleplay" content="Vimeo">
+        <meta name="twitter:app:id:googleplay" content="com.vimeo.android.videoapp">
+        <meta name="description" content="IMagens do dia a dia na C&uacute;pula, estudio e casa de Cisco Vasques em S&atilde;o PAulo. Neste video: Gustavo MAchado &amp; Lu, Camila Pitanga, Cisco VAsques, Tom GAstom, Gero&hellip;">
+
+
+
+
+    <link rel="alternate" href="http://vimeo.com/api/oembed.json?url=http%3A%2F%2Fvimeo.com%2F17298435" type="application/json+oembed" title="C&uacute;pula nov/2010">
+    <link rel="alternate" href="http://vimeo.com/api/oembed.xml?url=http%3A%2F%2Fvimeo.com%2F17298435" type="text/xml+oembed" title="C&uacute;pula nov/2010">
+    <link rel="pingback" href="http://vimeo.com/_pingback">
+    <link rel="alternate" href="http://vimeo.com/m/17298435" media="only screen and (max-width: 640px)">
+    <link rel="canonical" href="http://vimeo.com/17298435">
+<link rel="shortcut icon" href="http://a.vimeocdn.com/images_v6/favicon_32.ico" />
+<link rel="apple-touch-icon-precomposed" media="(resolution: 326dpi)" href="http://a.vimeocdn.com/images_v6/apple-touch-icon-114.png">
+<link rel="apple-touch-icon-precomposed" media="(resolution: 163dpi)" href="http://a.vimeocdn.com/images_v6/apple-touch-icon-57.png">
+<link rel="apple-touch-icon-precomposed" media="(resolution: 132dpi)" href="http://a.vimeocdn.com/images_v6/apple-touch-icon-72.png">
+<link rel="search" type="application/opensearchdescription+xml" href="/search/opensearch.xml" title="Vimeo search">
+<link rel="publisher" href="https://google.com/+vimeo">
+<link rel="logo" type="image/svg" href="http://a.vimeocdn.com/logo.svg">
+        <title>C&uacute;pula nov/2010 on Vimeo</title>
+                        	<link rel="stylesheet" href="http://a.vimeocdn.com/styles/css_opt/global_combined.min.css?2a4ad636">
+	<link rel="stylesheet" href="http://a.vimeocdn.com/styles/css_opt/clip_combined.min.css?cb9a2b8d">
+<noscript>
+    <link rel="stylesheet" href="http://a.vimeocdn.com/styles/css_opt/nojs.min.css?5d9fd58">
+</noscript>
+<script>
+    var js_css = document.createElement('style');
+    js_css.innerHTML = '#site_header .submenus{position:absolute;top:58px;width:100%;height:0;overflow:hidden}#site_header nav>ul>li>ul,#site_header .submenus>ul{position:absolute;left:0;display:none;width:980px}#site_header nav>ul>li>ul.active,#site_header .submenus>ul.active{display:block}#site_header nav>ul>li>ul.condensed li,#site_header .submenus>ul.condensed li{width:136px}#site_header nav>ul>li>ul.expanded li,#site_header .submenus>ul.expanded li{width:175px}.peekaboo td dd,.peekaboo th dd{display:none}.fading_revolver{position:relative}.fading_revolver li{filter:alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;position:absolute;top:0;left:0}.fading_revolver li+li{margin-top:0!important}.fading_revolver .active{filter:alpha(opacity=100);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";opacity:1;z-index:1}#house_badges{height:100px}#info .description.collapsed{max-height:170px;overflow:hidden}#info .description.collapsed:after{content:"";display:block;height:100px;width:100%;position:absolute;left:0;bottom:-50px;background-image:linear-gradient(bottom,#f4f5f7 0%,#f4f5f7 50%,rgba(244,245,247,0)100%);background-image:-o-linear-gradient(bottom,#f4f5f7 0%,#f4f5f7 50%,rgba(244,245,247,0)100%);background-image:-moz-linear-gradient(bottom,#f4f5f7 0%,#f4f5f7 50%,rgba(244,245,247,0)100%);background-image:-webkit-linear-gradient(bottom,#f4f5f7 0%,#f4f5f7 50%,rgba(244,245,247,0)100%);background-image:-ms-linear-gradient(bottom,#f4f5f7 0%,#f4f5f7 50%,rgba(244,245,247,0)100%)}#info .more{display:inline-block;position:relative;z-index:1}.film .description_wrapper .description.collapsed{overflow:hidden;max-height:260px}.film .description_wrapper .description.collapsed.episode{max-height:140px}.film .more{display:inline-block;position:relative;z-index:1}.featured_list .description,.simple_accordion .description{height:0;overflow:hidden}#contact_support .part_2,#contact_support .part_3{display:none}select.skinned_dropdown{visibility:hidden}';
+    document.getElementsByTagName('head')[0].appendChild(js_css);
+</script>
+        	<style>
+					#ribbon, .default_lightbox header>h1, .default_lightbox header>h6, .default_lightbox header>.lightbox_heading, .default_lightbox .masthead, .upload_progress .inner .bar { background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiPgogICAgICAgICAgICA8cmVjdCB4PSIwIiB3aWR0aD0iMTQiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6IzE3MjMyNyIvPgogICAgICAgICAgICA8cmVjdCB4PSIxNCIgd2lkdGg9IjExIiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiMxOTM3MmMiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMjUiIHdpZHRoPSIzMyIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojMzI3MzQ0Ii8+CiAgICAgICAgICAgIDxyZWN0IHg9IjU4IiB3aWR0aD0iMSIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojNDM3ZTRjIi8+CiAgICAgICAgICAgIDxyZWN0IHg9IjU5IiB3aWR0aD0iMCIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojODY5OTU2Ii8+CiAgICAgICAgICAgIDxyZWN0IHg9IjU5IiB3aWR0aD0iMTEwIiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiNiMDhmNDIiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMTY5IiB3aWR0aD0iNCIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojYjQ2ODM5Ii8+CiAgICAgICAgICAgIDxyZWN0IHg9IjE3MyIgd2lkdGg9IjExIiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiNhNDM5NDEiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMTg0IiB3aWR0aD0iMzIiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6IzljMmM1MiIvPgogICAgICAgICAgICA8cmVjdCB4PSIyMTYiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojYmI0MjZiIi8+CiAgICAgICAgICAgIDxyZWN0IHg9IjIzMiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiM4YTJmNWMiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMjUyIiB3aWR0aD0iMzAiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6IzZkNDE2ZCIvPgogICAgICAgICAgICA8cmVjdCB4PSIyODIiIHdpZHRoPSI1NyIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojNDEzMjY0Ii8+CiAgICAgICAgICAgIDxyZWN0IHg9IjMzOSIgd2lkdGg9IjIiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6IzI5NDE2ZSIvPgogICAgICAgICAgICA8cmVjdCB4PSIzNDEiIHdpZHRoPSI4IiBoZWlnaHQ9IjEwMCUiIHN0eWxlPSJmaWxsOiM1NjkwYTUiLz4KICAgICAgICAgICAgPHJlY3QgeD0iMzQ5IiB3aWR0aD0iMzQiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6IzJlODQ5ZCIvPgogICAgICAgICAgICA8cmVjdCB4PSIzODMiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6IzI3NjY4NiIvPgogICAgICAgICAgICA8cmVjdCB4PSI0ODQiIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojMjM0MzZlIi8+CiAgICAgICAgICAgIDxyZWN0IHg9IjQ5NyIgd2lkdGg9IjMiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6IzE0MmEwNiIvPgogICAgPC9zdmc+Cg==) repeat-x top left; }
+			</style>
+	<style>#logo_holder { background:url(http://a.vimeocdn.com/logo.svg) no-repeat; background-size:140px 40px; width:140px; height:40px; text-indent: -9999px; }</style>
+<script>	var playerAssetUrls = {"js":"http:\/\/a.vimeocdn.com\/p\/2.1.14\/js\/player.js","canvas_js":"http:\/\/a.vimeocdn.com\/p\/2.1.14\/js\/player.canvas.js","moog":"http:\/\/a.vimeocdn.com\/p\/flash\/moogaloop\/5.5.7\/moogaloop.swf","moog_js":"http:\/\/a.vimeocdn.com\/p\/2.1.14\/js\/moogaloop.js","css":"http:\/\/a.vimeocdn.com\/p\/2.1.14\/css\/player.css","player_url":"player.vimeo.com"};
+</script>
+
+
+    </head>
+    <!-- Force any HTML comments inject by third parties to close -->
+    <body>
+        <div id="wrap">
+            <div id="ribbon"></div>
+
+            <div id="main">
+                <div id="menu_wrapper">
+                    <div id="brozar_toggle_wrapper" class="en"></div>
+<header id="site_header" class="nocontent">
+    <div class="container clearfix">
+        <a id="logo" href="https://vimeo.com" title="Go home">
+            <div id="logo_holder">Vimeo</div>
+        </a>
+        <nav class="en">
+            <ul id="menu" class="clearfix">
+                                    <li class="join">
+                        <a href="https://vimeo.com/join" class="join" data-ga-event-click="menu|join|top">Join</a>
+                    </li>
+                    <li class="login">
+                        <a href="/log_in" data-lightbox class="login" data-ga-event-click="menu|login|top">Log In</a>
+                    </li>
+                    <li class="create subnav">
+                        <a href="/create" data-ga-event-click="menu|create|top">Create</a>
+                        <ul>
+                            <li>
+                                <a href="/enhancer" data-ga-event-click="menu|enhancer|create">
+                                    <strong>Enhancer</strong>
+                                    Easily add Looks + music to your videos.                                </a>
+                            </li>
+                            <li>
+                                <a href="/videoschool" data-ga-event-click="menu|videoschool|create">
+                                    <strong>Video School</strong> Learn how to make better videos.                                </a>
+                            </li>
+                            <li class="music">
+                                <a href="/musicstore" data-ga-event-click="menu|musicstore|create">
+                                    <strong>Music Store</strong> Get free and affordable licensed tracks.                                </a>
+                            </li>
+                            <li>
+                                <a href="/creativecommons" data-ga-event-click="menu|createivecommons|create">
+                                    <strong>Creative Commons</strong> Find licensed videos on Vimeo.                                </a>
+                            </li>
+                            <li class="last creators">
+                                <a href="/creatorservices" data-ga-event-click="menu|creatorservices|create">
+                                    <strong>Creator Services</strong>
+                                    Make money by making video.                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="watch subnav">
+                        <a href="/watch" data-ga-event-click="menu|watch|top">Watch</a>
+                        <ul>
+                            <li>
+                                <a href="/staffpicks" data-ga-event-click="menu|staffpicks|watch">
+                                    <strong>Staff Picks</strong> Hand-picked videos we like.                                </a>
+                            </li>
+                            <li>
+                                <a href="/ondemand" data-ga-event-click="menu|ondemand|watch">
+                                    <strong>On Demand <span class="badge_new">New!</span></strong>
+                                    Watch movies, series, and more.                                </a>
+                            </li>
+                            <li class="categories">
+                                <a href="/categories" data-ga-event-click="menu|categories|watch">
+                                    <strong>Categories</strong> A simple way to browse our catalog of videos.                                </a>
+                            </li>
+                            <li>
+                                <a href="/channels" data-ga-event-click="menu|channels|watch">
+                                    <strong>Channels</strong> Video showcases curated by members.                                </a>
+                            </li>
+                            <li>
+                                <a href="/groups" data-ga-event-click="menu|groups|watch">
+                                    <strong>Groups</strong> Join other members to watch and discuss.                                </a>
+                            </li>
+                            <li>
+                                <a href="/couchmode" data-ga-event-click="menu|couchmode|watch">
+                                    <strong>Couch Mode</strong>
+                                    Lean back and enjoy the Vimeo.                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                                            <li class="upload">
+                            <a href="/upload" data-ga-event-click="button|navbar_upload|upload_v6">Upload</a>
+                        </li>
+                                                </ul>
+        </nav>
+
+        <form action="/search" method="get" id="search_form" class="clearfix">
+            <div id="search_holder">
+                <input type="text" id="search_field" name="q" value="" title="Enter search term" placeholder="Search" data-validators="required" data-speech-enabled data-search-engine="oracle">
+                <input type="text" id="search_suggest" value="" placeholder="" disabled>
+                <input type="submit" value="s" data-submit-text="s" class="btn_search iconify" title="Search">
+            </div>
+        </form>
+    </div>
+</header>
+<div class="clear"></div>
+
+
+                </div>
+
+                <div id="content">
+
+
+<div id="cols" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+        <meta itemprop="playpageUrl" content="http://vimeo.com/17298435">
+    <meta itemprop="discussionUrl" content="http://vimeo.com/17298435">
+    <meta itemprop="height" content="720">
+    <meta itemprop="width" content="1280">
+    <meta itemprop="image" content="http://b.vimeocdn.com/ts/107/328/107328495_640.jpg">
+    <meta itemprop="thumbnailUrl" content="http://b.vimeocdn.com/ts/107/328/107328495_640.jpg">
+    <meta itemprop="playerType" content="HTML5 Flash">
+    <meta itemprop="encodingFormat" content="MP4">
+    <meta itemprop="videoQuality" content="HD">
+    <meta itemprop="interactionCount" content="UserPlays:556">
+    <meta itemprop="interactionCount" content="UserLikes:1">
+    <meta itemprop="interactionCount" content="UserComments:0">
+    <meta itemprop="duration" content="PT00H11M36S">
+    <meta itemprop="dateCreated" content="2010-11-29T13:23:27-05:00">
+    <meta itemprop="uploadDate" content="2010-11-29T13:23:27-05:00">
+    <meta itemprop="embedUrl" content="http://vimeo.com/moogaloop.swf?clip_id=17298435">
+    <div itemprop="provider" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Vimeo">
+        <meta itemprop="url" content="https://vimeo.com">
+        <meta itemprop="logo" content="http://a.vimeocdn.com/logo.svg">
+    </div>
+
+
+    <div id="clip">
+                    <div id="video">
+
+    <style scoped>.player{width:100%;height:100%;-webkit-background-size:contain;background-size:contain;background-color:#000;background-repeat:no-repeat;background-position:50% 50%;}</style>
+
+
+<div class="player_container" style="width:960px; height:540px; " >
+	<div class="player" style="background-image: url(http://b.vimeocdn.com/ts/107/328/107328495_640.jpg);" id="player_1_52845093f423c" data-config-url="http://player.vimeo.com/v2/video/17298435/config?byline=0&amp;bypass_privacy=1&amp;context=clip.main&amp;default_to_hd=1&amp;portrait=0&amp;title=0&amp;s=6c655f3852ec98caa8f4beb9b02d193e3c5d03ef" data-fallback-url="//player.vimeo.com/v2/video/17298435/fallback?js">
+		<noscript>
+			<object id="flash-object" type="application/x-shockwave-flash" width="100%" height="100%" data="//player.vimeo.com/moog/17298435">
+				<param name="flashvars" value="clip_id=17298435&amp;api=1&amp;moogaloop_type=moogaloop&amp;noscript">
+				<param name="movie" value="//player.vimeo.com/moog/17298435?noscript">
+				<param name="allowfullscreen" value="true">
+				<param name="allowscriptaccess" value="always">
+				<param name="wmode" value="opaque">
+				<param name="quality" value="high">
+				<param name="scalemode" value="noscale">
+				<div class="fallback"><iframe src="//player.vimeo.com/video/17298435/fallback?noscript" frameborder="0"></iframe></div>
+			</object>
+		</noscript>
+	</div>
+</div>
+
+            </div>
+
+        <div id="info" class="boxed">
+
+
+<header id="page_header">
+    <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Cisco Vasques">
+        <a href="http://vimeo.com/ciscovasques" itemprop="url">
+            <img class="portrait portrait_lg" src="http://b.vimeocdn.com/ps/625/800/6258005_75.jpg" alt="" itemprop="image">
+        </a>
+    </div>
+    <div class="video_meta">
+        <h1 itemprop="name" class="js-clip_title">C&uacute;pula nov/2010</h1>
+        <div class="byline">
+             from <a rel="author" href="/ciscovasques">Cisco Vasques</a> <a tabindex="-1" href="/plus" title="Learn more about Vimeo Plus" data-ga-event-click="button|plus_badge_click|plus"><span class="badge_plus">Plus</span></a>            <time datetime="2010-11-29T13:23:27-05:00" title="Monday, November 29, 2010 1:23 PM">2 years ago</time>
+
+                                    <span class="meta">
+                                                    <span class="badge_rating safe">not yet rated</span>
+                                            </span>
+                                                        </div>
+    </div>
+</header>
+
+<div class="description_wrapper">
+    <div class="description" data-expand-tooltip="Click to expand description" itemprop="description">
+        <p class="first">IMagens do dia a dia na C&uacute;pula, estudio e casa de Cisco Vasques em S&atilde;o PAulo. Neste video:<br>
+Gustavo MAchado &amp; Lu, Camila Pitanga, Cisco VAsques, Tom GAstom, Gero Camilo, Tom&aacute;s, Gisele SAnfelice, Alexandre BAndeira, Julia, Simone, Renato Ciasca, MAnjubinha e GErson</p>    </div>
+</div>
+
+    <div id="tools">
+
+                                                                                                            <a href="javascript:void(0)" id="follow_btn" class="follow btn" title="Subscribe to videos from this member" data-lightbox data-lightbox-options="url=/log_in" data-text-loading="Loading&hellip;" data-ga-event-click="button|user_clip_follow|follow"  data-subscribed="0" data-btn-text="Follow" data-alternate-text="Following" data-alternate-hover="Unfollow" data-hover-text="Follow">Follow</a>
+
+                                    <a href="javascript:void(0)" class="adder btn iconify_plus_b" title="Add this video to your Channels, Groups, or Albums" data-lightbox data-lightbox-options="url=/log_in">Add to&hellip;</a>
+
+                            <a href="javascript:void(0)" class="btn stats viconify_stats_b" title="Show statistics for this video">Stats</a>
+
+                                                <a href="javascript:void(0)" class="download btn iconify_down_b" title="Download">Download</a>
+
+
+
+
+
+
+
+        <div id="follow" class="video_more hide"></div>
+        <div id="adder" class="video_more hide"></div>
+        <div id="stats" class="video_more hide"></div>
+        <div id="download" class="video_more hide"></div>
+        <div id="tipjar" class="video_more hide"></div>
+    </div>
+
+        </div>
+    </div>
+
+                        <div id="ad">
+                <section id="ad_iframe" data-type="main:clip:17298435" class="block js-ad_box "></section>
+
+            </div>
+
+        <div class="js-extras-wrapper extras_wrapper clearfix">
+            <div class="js-extras" id="extras"></div>
+            <div class="extras_loading js-extras-load-indicator">
+                <p class="loading js-loading-text">Loading more stuff&hellip;</p>
+                <p class="js-extras-retry notice hide">
+                    Hmm&hellip;it looks like things are taking a while to load. <a class="js-extras-retry-btn" href="/17298435">Try again</a>?                </p>
+            </div>
+        </div>
+
+                    <div id="google_afc_ads" class="google_ad js-ad_box"></div>
+
+
+        <div id="brozar" class="hide">
+            <h3 class="loading">
+                Loading videos&hellip;            </h3>
+        </div>
+    </div>
+
+                </div>
+
+
+                <footer id="site_footer">
+    <div class="container">
+
+        <section>
+            <h4 class="blue">Vimeo</h4>
+            <ul>
+                <li>
+                    <a href="/about">
+                        About Vimeo                    </a>
+                </li>
+                <li>
+                    <a href="/blog">
+                        Vimeo Blog                    </a>
+                </li>
+                <li>
+                    <a href="/help/guidelines">
+                    Vimeo Guidelines                    </a>
+                </li>
+                <li>
+                    <a href="http://developer.vimeo.com">
+                        Developers                    </a>
+                </li>
+                <li>
+                    <a href="/jobs">
+                        Jobs                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4 class="yellow">Help</h4>
+            <ul>
+                <li>
+                    <a href="/help">
+                        Help Center                    </a>
+                </li>
+                <li>
+                    <a href="/help/basics">
+                        Basics                    </a>
+                </li>
+                <li>
+                    <a href="/videoschool">
+                        Video School                    </a>
+                </li>
+                <li>
+                    <a href="/help/faq">
+                        FAQ                    </a>
+                </li>
+                <li>
+                    <a href="/forums">
+                        Forums                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4 class="green">More</h4>
+            <ul>
+                <li>
+                    <a href="/ondemand">
+                        On Demand                    </a>
+                </li>
+                <li>
+                    <a href="/enhancer">
+                        Enhancer                    </a>
+                </li>
+                <li>
+                    <a href="/everywhere">
+                        Everywhere                    </a>
+                </li>
+                <li>
+                    <a href="/upload">
+                        Upload                    </a>
+                </li>
+                <li>
+                    <a href="/site_map">
+                        Site Map                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h4 class="pink">Upgrade</h4>
+            <ul>
+                <li>
+                    <a href="/plus">
+                        Vimeo Plus                    </a>
+                </li>
+                <li>
+                    <a href="/pro">
+                        Vimeo PRO                    </a>
+                </li>
+                <li>
+                    <a href="/business">
+                        Vimeo for Business                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <aside id="footer_tip" class="footer_tip" aria-live="polite">
+    <h4>Did you know?</h4>
+    <button type="button" class="iconify_resume_b" id="get_tip"><span class="offstage">Show another tip</span></button>
+    <p class="active">You can get to know Vimeo better by watching our <a href="/album/1921098">tutorial videos</a> and reading our online dating profile. Actually, stick to the tutorials.</p>
+    <p>If you want to update a video without losing your URL or stats, you can <a href="/help/faq/managing-your-videos/video-settings#can-i-replace-a-video-and-keep-the-url-stats-comments-etc">replace your video file</a> quickly and easily.</p>
+</aside>    </div>
+</footer>
+            </div>
+
+            <div id="footers_footer">
+    <div id="legal">
+        <p>TM + &copy; 2013 Vimeo, LLC. All rights reserved.</p>
+        <ul class="inline_list dot_list">
+            <li>
+                <a href="/terms" title="Terms &amp; Conditions">
+                    Terms                </a>
+            </li>
+            <li>
+                <a href="/privacy" title="Privacy Policy">
+                    Privacy                </a>
+            </li>
+            <li>
+                <a href="/dmca" title="Copyright Information">
+                    Copyright                </a>
+            </li>
+            <li>
+                <a href="/cookie_policy" title="Learn more about how Vimeo uses cookies">
+                    Cookies                </a>
+            </li>
+
+                    </ul>
+        <p class="with_love">
+            Made with <a href="/love" class="iconify loveo" title="Love">k</a> in <abbr title="New York City">NYC</abbr>.        </p>
+    </div>
+
+        <p class="language">Language: <a href="#language" data-lightbox data-lightbox-options="width=600px|height=275px" title="Choose a Different Language">English</a></p>
+
+<div class="hide">
+    <aside id="language">
+        <header>
+            <h6>Choose a Different Language</h6>
+        </header>
+        <div class="language_selector">
+            <div class="iconify_globe_b"></div>
+
+            <p class="language_heading">Vimeo is available in the following languages:</p>
+            <ul class="styled">
+                                    <li class="selected">
+                        <a href="javascript:void(0)" data-language="en">English</a><span class="tip">&larr; Your current language</span>                    </li>
+                                    <li>
+                        <a href="javascript:void(0)" data-language="es">Español</a>                    </li>
+                                    <li>
+                        <a href="javascript:void(0)" data-language="de-DE">Deutsch</a>                    </li>
+                                    <li>
+                        <a href="javascript:void(0)" data-language="fr-FR">Français</a>                    </li>
+                            </ul>
+        </div>
+    </aside>
+</div>
+</div>
+        </div>
+
+
+        <script>
+            // Analytics Setup
+        var _comscore = _comscore || [],
+            _gaq = _gaq || [];
+
+        _comscore.push({
+            c1: "2",
+            c2: "10348289"
+        });
+
+        _gaq.push(['_require', 'inpage_linkid', '//www.google-analytics.com/plugins/ga/inpage_linkid.js']);
+        _gaq.push(['_setAccount', "UA-76641-8"]);
+
+                    _gaq.push(['_setDomainName', 'vimeo.com']);
+            _gaq.push(
+                ['_setLocalRemoteServerMode'],
+                ['_setLocalGifPath', '//utmtrk.vimeo.com/__utm.gif']
+            );
+
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_setAllowAnchor', true]);
+
+                    _gaq.push(
+                ['player._setAccount', "UA-76641-35"],
+                ['player._setDomainName', 'player.vimeo.com']
+            );
+
+        function trackHouseAd() {
+            var ga_l = document.location;
+            var ga_r = document.referrer;
+            var ga_s = ga_l.search;
+
+            if (ga_s.indexOf('house_ad') > -1) {
+                var house_ad_value = ga_s.match(/house_ad=([^&]+)/)[1];
+
+                _gaq.push(['_trackEvent', 'engagement:house-ad', house_ad_value, ga_r, undefined, true]);
+                _gaq.push(['_setCustomVar', 8, 'house_ad', house_ad_value, 1]);
+            }
+        }
+
+        trackHouseAd();
+
+
+        _gaq.push(['_setCustomVar', 1, 'user_status', 'logged_out', 2]);
+        _gaq.push(['_setCustomVar', 4, 'language', 'en', 3]);
+
+
+        _gaq.push(['_trackPageview']);
+
+
+
+    var CSS_DIR = 'http://a.vimeocdn.com/styles/css_opt/',
+        JS_DIR = 'http://a.vimeocdn.com/js_opt/',
+        IMAGE_DIR = 'http://a.vimeocdn.com/images_v6/',
+                BUILD_HASH = 'f41e0',
+        vimeo = {
+            app_version: 'v6',
+            domain: '.vimeo.com',
+            url: 'vimeo.com',
+            xsrft: 'c58a4ac1868b07c006374056eff55c84',
+            cur_user: null,
+            config: {"clip":{"id":17298435,"url":"\/17298435","title":"C&uacute;pula nov\/2010"},"user":{"id":3202545,"url":"\/ciscovasques","name":"Cisco Vasques"},"context":""}        };
+
+
+
+    var localeConfig = {
+        'Date': {
+            months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+            months_abbr: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+            days: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            days_abbr: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+
+            // Culture's date order: MM/DD/YYYY
+            dateOrder: ['date', 'month', 'year'],
+            shortDate: '%d/%m/%Y',
+            shortTime: '%I:%M%p',
+            AM: 'AM',
+            PM: 'PM',
+            firstDayOfWeek: 0,
+
+            // Date.Extras
+            ordinal: function(dayOfMonth){
+                return dayOfMonth;
+            }
+        },
+        'DatePicker': {
+            select_a_time: "Select a time",
+            use_mouse_wheel: "Use the mouse wheel to quickly change value",
+            time_confirm_button: "OK",
+            apply_range: "Apply",
+            cancel: "Cancel",
+            week: "Wk"        },
+                'Number': {
+            decimal: '.',
+            group: ',',
+            currency: {
+                prefix: '$'
+            }
+        },
+        'FormValidator': {"required":"This field is required.","requiredChk":"This field is required."}    };
+
+    var fullLocale = '';
+
+
+    var Copy = {
+        translate: function(key, plural, replacements) {
+            var translation = typeof this.dict[key] != 'object' ? this.dict[key] : (plural ? this.dict[key].plural : this.dict[key].singular);
+            if (typeof replacements === 'object') {
+                translation = this.substitute(translation, replacements);
+            }
+            return translation;
+        },
+        substitute: function(string, object) {
+            if (!string) {
+                return;
+            }
+            if (typeof string.substitute !== 'undefined') {
+                return string.substitute(object);
+            }
+            else {
+                return string.replace(/\\?\{([^{}]+)\}/g, function(match, name) {
+                    if (match.charAt(0) == '\\') return match.slice(1);
+                    return (object[name] != null) ? object[name] : '';
+                });
+            }
+        },
+        dict: {"just_now":"just now","seconds_ago":{"singular":"{COUNT} second ago","plural":"{COUNT} seconds ago"},"minutes_ago":{"singular":"{COUNT} minute ago","plural":"{COUNT} minutes ago"},"hours_ago":{"singular":"{COUNT} hour ago","plural":"{COUNT} hours ago"},"open_comment_box":"Add new comment instead &raquo;","url_unavailable":"Sorry, this url is unavailable.","unsaved_changes_generic":"You have unsaved changes, are you sure you wish to leave?","add":"Add","remove":"Remove","no_followers_for_letter":"You don&rsquo;t follow anyone that begin with the letter &ldquo;{PAGE_LETTER}&rdquo;","share_limit_reached":"You have reached the maximum number of users to share with.","old_code":"Use old embed code","new_code":"Use new embed code","at_least_one":"There must be at least one user.","available":"Available","unavailable":"Unavailable","browse_error_generic":"Sorry, there was an error","browse_error_no_videos":"Sorry, no videos found","follow":"Follow","following":"Following","unfollow":"Unfollow","unfollowing":"Unfollowing","count_comments":{"singular":"{COUNT} comment","plural":"{COUNT} comments"},"first_comment":"Be the first to comment&hellip;","no_comments_for_you":"Forbidden. You cannot post comments on this page.","duration_input_min_duration":"The duration cannot be less than {MIN_DURATION}.","duration_input_max_duration":"The duration cannot be greater than {MAX_DURATION}.","duration_input_invalid_characters":"0-9 and : are the only acceptable inputs.","close":"Close","expand":"Expand","loading":"Loading&hellip;","top":"top","advanced_search":"Advanced Search","no_suggestions":"No suggestions","recent_searches":"Recent Searches","search_all":"Search All of Vimeo","added":"added","removed":"removed","pending":"pending","videos":"Videos","read_more":"Read More","more_videos":"More Videos","more_videos_abbr":"<span>+<\/span> Videos","hide_videos":"Hide Videos","hide_videos_abbr":"<span>&ndash;<\/span> Videos","see_more_videos":"See more videos","confirm_remove_credit":"Are you sure you want to remove yourself from the credits?","no_data_for_range":"Sorry, but we do not have any statistics for this date range.","total_plays":"Total Plays","totals":"Weekly Totals","likes":"Likes","likes_count":"{COUNT} Likes","comments":"Comments"}    };
+</script>
+
+<script src="http://a.vimeocdn.com/js_opt/vimeo/controllers/player/player_manager.min.js"></script>
+<script>
+    if (typeof playerAssetUrls !== 'undefined') {
+        PlayerManager.run(playerAssetUrls);
+    }
+</script>
+
+    <script src="http://a.vimeocdn.com/js_opt/global_combined.min.js?d8816fda"></script>
+    <script src="http://a.vimeocdn.com/js_opt/clip_combined.min.js?6c120349"></script>
+    <script src="http://a.vimeocdn.com/js_opt/logging_combined.min.js?f9698bd2"></script>
+
+    <script async src="http://b.scorecardresearch.com/beacon.js"></script>
+    <script async src="http://stats.g.doubleclick.net/dc.js"></script>
+
+<script>
+    window.addEvent('domready', function() {
+
+        var ad = new Element('iframe', {
+            src: '//ad.doubleclick.net/adi/5480.iac.vimeo/clip;sec=false;sz=300x250;clipid=17298435;user_type=logged_out;category=films;subcategory=hd;?' + Math.random(),
+            width: 300,
+            height: 250,
+            frameborder: 0,
+            scrolling: 0
+        });
+
+        $('ad_iframe').adopt(ad);
+
+        new Fx.Tween(ad, {
+            property: 'opacity',
+            duration: 150
+        }).start(0, 1);
+
+        PlayerManager.dispatchReadySignals();
+
+            });
+</script>
+
+            <script>
+        var google_ad_client = 'ca-iwon-vimeo',
+            google_ad_output = 'js',
+            google_max_num_ads = '3',
+            google_ad_type = 'text',
+            google_encoding = 'utf8',
+            google_feedback = 'on',
+            google_kw_type = 'broad',
+            google_kw = 'Gustavo MAcgado &amp; Lu Camila Pitanga Cisco VAsques Tom GAstom Gero Camilo Tom&aacute;s Gisele SAnfelice Alexandre BAndeira Julia Simone Renato Ciasca MAnjubinha e GErson C&uacute;pula Gustavo MAchado &amp; Lu';
+
+        document.write('<scr'+'ipt src="//pagead2.googlesyndication.com/pagead/show_ads.js"></scr'+'ipt>');
+    </script>        </body>
+</html>
