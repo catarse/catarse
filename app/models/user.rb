@@ -123,8 +123,7 @@ class User < ActiveRecord::Base
       Notification.notify_once(
         :credits_warning,
         user,
-        {user_id: user.id},
-        {user: user}
+        {user_id: user.id}
       )
     end
   end
