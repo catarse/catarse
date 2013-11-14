@@ -109,13 +109,6 @@ class Project < ActiveRecord::Base
     order(sort_field)
   end
 
-  def self.finish_projects!
-    to_finish.each do |resource|
-      Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
-      resource.finish
-    end
-  end
-
   def subscribed_users
     User.subscribed_to_updates.subscribed_to_project(self.id)
   end

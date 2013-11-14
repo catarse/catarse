@@ -197,18 +197,6 @@ describe Project do
     end
   end
 
-  describe '.finish_projects!' do
-    let(:project){ double('project', id: 1, name: 'test') }
-    before do
-      Project.should_receive(:to_finish).and_return([project])
-      project.should_receive(:finish)
-    end
-
-    it "should iterate through to_finish projects and call finish to each one" do
-      Project.finish_projects!
-    end
-  end
-
   describe ".backed_by" do
     before do
       backer = create(:backer, state: 'confirmed')
