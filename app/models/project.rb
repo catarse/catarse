@@ -210,7 +210,7 @@ class Project < ActiveRecord::Base
   end
 
   def last_channel
-    channels.last
+    @last_channel ||= channels.last
   end
 
   def notification_type type
