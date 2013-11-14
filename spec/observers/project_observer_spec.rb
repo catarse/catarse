@@ -66,14 +66,18 @@ describe ProjectObserver do
 
   describe "before_save" do
     let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
+
+    before do
+      project
+    end
+
     context "when project is approved" do
       before do
         project.update_attributes state: 'in_analysis'
-        project.should_receive(:download_video_thumbnail).never
-        project.should_receive(:update_video_embed_url).never
+        ::Services::ProjectDownloader.any_instance.should_receive(:start!).never
       end
 
-      it "should call create_notification and do not call download_video_thumbnail" do
+      it "should call create_notification and do not call project downloader service" do
         Notification.should_receive(:create_notification_once).with(:project_visible, project.user, {project_id: project.id}, {project: project, project_name: project.name, channel_name: nil})
         project.approve
       end
@@ -81,13 +85,12 @@ describe ProjectObserver do
 
     context "when video_url changes" do
       before do
-        project.should_receive(:download_video_thumbnail)
-        project.should_receive(:update_video_embed_url)
+        ::Services::ProjectDownloader.any_instance.should_receive(:start!).at_least(1)
         Notification.should_receive(:create_notification).never
         Notification.should_receive(:create_notification_once).never
       end
 
-      it "should call download_video_thumbnail and do not call create_notification" do
+      it "should call project downloader service and do not call create_notification" do
         project.video_url = 'http://vimeo.com/66698435'
         project.save!
       end

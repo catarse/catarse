@@ -504,20 +504,6 @@ describe Project do
     it { should == [reward_01, reward_03] }
   end
 
-  describe "#download_video_thumbnail" do
-    let(:project){ build(:project) }
-    before do
-      project.should_receive(:download_video_thumbnail).and_call_original
-      project.should_receive(:open).and_return(File.open("#{Rails.root}/spec/fixtures/image.png"))
-      project.save!
-    end
-
-    it "should open the video_url and store it in video_thumbnail" do
-      project.video_thumbnail.url.should == "/uploads/project/video_thumbnail/#{project.id}/image.png"
-    end
-
-  end
-
   describe '#pending_backers_reached_the_goal?' do
     let(:project) { create(:project, goal: 200) }
 
