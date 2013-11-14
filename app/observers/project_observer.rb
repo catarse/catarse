@@ -3,7 +3,7 @@ class ProjectObserver < ActiveRecord::Observer
   observe :project
 
   def after_validation(project)
-    ::Services::ProjectDownloader.new(project).start! if project.video_url.present? && project.video_url_changed?
+   ProjectDownloader.new(project).start! if project.video_url.present? && project.video_url_changed?
   end
 
   def after_create(project)

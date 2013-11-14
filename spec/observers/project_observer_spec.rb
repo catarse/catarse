@@ -74,7 +74,7 @@ describe ProjectObserver do
     context "when project is approved" do
       before do
         project.update_attributes state: 'in_analysis'
-        ::Services::ProjectDownloader.any_instance.should_receive(:start!).never
+        ProjectDownloader.any_instance.should_receive(:start!).never
       end
 
       it "should call create_notification and do not call project downloader service" do
@@ -85,7 +85,7 @@ describe ProjectObserver do
 
     context "when video_url changes" do
       before do
-        ::Services::ProjectDownloader.any_instance.should_receive(:start!).at_least(1)
+        ProjectDownloader.any_instance.should_receive(:start!).at_least(1)
         Notification.should_receive(:create_notification).never
         Notification.should_receive(:create_notification_once).never
       end

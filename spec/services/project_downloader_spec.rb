@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Services::ProjectDownloader do
+describe ProjectDownloader do
   let(:project) { create(:project) }
 
-  subject { Services::ProjectDownloader.new(project) }
+  subject { ProjectDownloader.new(project) }
 
   describe "#start!" do
     after(:each) do
