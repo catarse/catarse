@@ -15,7 +15,6 @@ class Project < ActiveRecord::Base
     :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar, :successful_flag,
     to: :decorator
 
-
   has_and_belongs_to_many :channels
   has_one :project_total
   has_many :rewards
@@ -164,18 +163,6 @@ class Project < ActiveRecord::Base
   def progress
     return 0 if goal == 0.0
     ((pledged / goal * 100).abs).round(pledged.to_i.size).to_i
-  end
-
-  def update_video_embed_url
-    self.video_embed_url = self.video.embed_url if self.video.present?
-  end
-
-  def download_video_thumbnail
-    self.video_thumbnail = open(self.video.thumbnail_large) if self.video_url.present? && self.video
-  rescue OpenURI::HTTPError => e
-    Rails.logger.info "-----> #{e.inspect}"
-  rescue TypeError => e
-    Rails.logger.info "-----> #{e.inspect}"
   end
 
   def pending_backers_reached_the_goal?

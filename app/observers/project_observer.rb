@@ -1,11 +1,9 @@
+require 'project_downloader'
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
   def after_validation(project)
-    if project.video_url.present? && project.video_url_changed?
-      project.download_video_thumbnail
-      project.update_video_embed_url
-    end
+    ::Services::ProjectDownloader.new(project).start! if project.video_url.present? && project.video_url_changed?
   end
 
   def after_create(project)
