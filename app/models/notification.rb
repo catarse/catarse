@@ -5,7 +5,7 @@ class Notification < ActiveRecord::Base
   validates_presence_of :user
 
   def self.notify_once(template_name, user, filter, params = {})
-    notify(template_name, user, params) if filter.nil? || self.where(filter.merge(template_name: template_name)).empty?
+    notify(template_name, user, params) if is_unique?(template_name, filter)
   end
 
   def self.notify(template_name, user, params = {})
@@ -23,5 +23,10 @@ class Notification < ActiveRecord::Base
       NotificationsMailer.notify(self).deliver
       self.update_attributes dismissed: true
     end
+  end
+
+  private
+  def self.is_unique?(template_name, filter)
+    filter.nil? || self.where(filter.merge(template_name: template_name)).empty?
   end
 end
