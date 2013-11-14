@@ -13,7 +13,12 @@ class ProjectObserver < ActiveRecord::Observer
       project.notification_type(:project_received),
       project.user,
       {project_id: project.id, channel_id: project.last_channel.try(:id)},
-      {project: project, channel: project.last_channel}
+      {
+        project: project, 
+        channel: project.last_channel, 
+        origin_email: project.last_channel.try(:email) || Configuration[:email_projects], 
+        origin_name: project.last_channel.try(:name) || Configuration[:company_name]
+      }
     )
   end
 
@@ -36,7 +41,12 @@ class ProjectObserver < ActiveRecord::Observer
       project.notification_type(:in_analysis_project), 
       project.user, 
       {project_id: project.id, channel_id: project.last_channel.try(:id)}, 
-      {project: project, channel: project.last_channel}
+      {
+        project: project, 
+        channel: project.last_channel, 
+        origin_email: project.last_channel.try(:email) || Configuration[:email_projects], 
+        origin_name: project.last_channel.try(:name) || Configuration[:company_name]
+      }
     )
   end
 
@@ -78,7 +88,12 @@ class ProjectObserver < ActiveRecord::Observer
       project.notification_type(:project_rejected),
       project.user,
       {project_id: project.id, channel_id: project.last_channel.try(:id)},
-      {project: project, channel: project.last_channel}
+      {
+        project: project, 
+        channel: project.last_channel, 
+        origin_email: project.last_channel.try(:email) || Configuration[:email_projects], 
+        origin_name: project.last_channel.try(:name) || Configuration[:company_name]
+      }
     )
   end
 
@@ -87,7 +102,12 @@ class ProjectObserver < ActiveRecord::Observer
       project.notification_type(:project_visible),
       project.user,
       {project_id: project.id, channel_id: project.last_channel.try(:id)},
-      {project: project, channel: project.last_channel}
+      {
+        project: project, 
+        channel: project.last_channel, 
+        origin_email: project.last_channel.try(:email) || Configuration[:email_projects], 
+        origin_name: project.last_channel.try(:name) || Configuration[:company_name]
+      }
     )
   end
 

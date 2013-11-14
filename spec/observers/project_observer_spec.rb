@@ -44,7 +44,30 @@ describe ProjectObserver do
   end
 
   describe "before_save" do
+    let(:channel){ create(:channel) }
     let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
+    context "when project is approved and belongs to a channel" do
+      let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft', channels: [channel])}
+      before do
+        project.update_attributes state: 'in_analysis'
+      end
+
+      it "should call notify using channel data" do
+        Notification.should_receive(:notify_once).with(
+          :project_visible_channel, 
+          project.user, 
+          { project_id: project.id, channel_id: channel.id}, 
+          {
+            project: project, 
+            channel: channel,
+            origin_email: channel.email, 
+            origin_name: channel.name
+          }
+        )
+        project.approve
+      end
+    end
+
     context "when project is approved" do
       before do
         project.update_attributes state: 'in_analysis'
@@ -53,7 +76,17 @@ describe ProjectObserver do
       end
 
       it "should call notify and do not call download_video_thumbnail" do
-        Notification.should_receive(:notify_once).with(:project_visible, project.user, {project_id: project.id, channel_id: nil}, {project: project, channel: nil})
+        Notification.should_receive(:notify_once).with(
+          :project_visible, 
+          project.user, 
+          { project_id: project.id, channel_id: nil}, 
+          {
+            project: project, 
+            channel: nil,
+            origin_email: Configuration[:email_projects], 
+            origin_name: Configuration[:company_name]
+          }
+        )
         project.approve
       end
     end
