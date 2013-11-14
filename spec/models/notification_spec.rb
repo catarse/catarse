@@ -16,13 +16,13 @@ describe Notification do
     it{ should belong_to :project_update }
   end
 
-  describe "#send_email" do
+  describe "#deliver" do
     let(:deliver_exception){ nil }
     let(:notification){ create(:notification, dismissed: false) }
 
     before do
       deliver_exception
-      notification.send_email
+      notification.deliver
     end
 
     context "when dismissed is true" do
@@ -47,7 +47,7 @@ describe Notification do
         origin_email: Configuration['email_contact'],
         origin_name: Configuration[:company_name]
       }).and_return(notification)
-      notification.should_receive(:send_email)
+      notification.should_receive(:deliver)
     end
     it("should create and send email"){ notify }
   end
