@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, ProjectUploader
   mount_uploader :video_thumbnail, ProjectUploader
 
-  delegate :display_status, :display_progress, :display_image, :display_expires_at, :remaining_text,
+  delegate :display_status, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
     :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar, :successful_flag,
     to: :decorator
 
@@ -164,16 +164,6 @@ class Project < ActiveRecord::Base
   def progress
     return 0 if goal == 0.0
     ((pledged / goal * 100).abs).round(pledged.to_i.size).to_i
-  end
-
-  def time_to_go
-    ['day', 'hour', 'minute', 'second'].each do |unit|
-      if expires_at.to_i >= 1.send(unit).from_now.to_i
-        time = ((expires_at - Time.zone.now).abs/1.send(unit)).round
-        return {time: time, unit: pluralize_without_number(time, I18n.t("datetime.prompts.#{unit}").downcase)}
-      end
-    end
-    {time: 0, unit: pluralize_without_number(0, I18n.t('datetime.prompts.second').downcase)}
   end
 
   def update_video_embed_url
