@@ -15,10 +15,10 @@ class Notification < ActiveRecord::Base
       locale: user.locale || I18n.locale,
       origin_email: Configuration[:email_contact],
       origin_name: Configuration[:company_name]
-    }.merge(params)).send_email
+    }.merge(params)).deliver
   end
 
-  def send_email
+  def deliver
     unless dismissed
       NotificationsMailer.notify(self).deliver
       self.update_attributes dismissed: true
