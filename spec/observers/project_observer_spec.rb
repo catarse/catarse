@@ -112,7 +112,15 @@ describe ProjectObserver do
 
     before do
       create(:backer, project: project, value: 200, state: 'confirmed')
-      Notification.should_receive(:notify_once).with(:project_in_wainting_funds, project.user, {project_id: project.id}, {project: project})
+      Notification.should_receive(:notify_once).with(
+        :project_in_wainting_funds, 
+        project.user, 
+        {project_id: project.id}, 
+        {
+          project: project,
+          origin_email: Configuration[:email_projects]
+        }
+      )
     end
 
     it("should notify the project owner"){ project.finish }
