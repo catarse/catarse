@@ -279,7 +279,7 @@ describe ProjectObserver do
       project.stub(:reached_goal?).and_return(true)
       project.stub(:in_time_to_wait?).and_return(false)
       adm_project_deadline
-      Project.finish_projects!
+      project.finish
     end
 
     it "should create notification for admin" do
