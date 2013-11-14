@@ -40,17 +40,6 @@ puts 'Seeding the database...'
    })
  end
 
-[
-  'confirm_backer','payment_slip','project_success','backer_project_successful',
-  'backer_project_unsuccessful','project_received', 'project_received_channel', 'updates','project_unsuccessful',
-  'project_visible','processing_payment','new_draft_project', 'new_draft_channel', 'project_rejected',
-  'pending_backer_project_unsuccessful', 'project_owner_backer_confirmed', 'adm_project_deadline',
-  'project_in_wainting_funds', 'credits_warning', 'backer_confirmed_after_project_was_closed',
-  'backer_canceled_after_confirmed', 'new_user_registration', 'project_rejected_channel', 'project_visible_channel', 'in_analysis_project'
-].each do |name|
-  NotificationType.find_or_create_by(name: name)
-end
-
 {
   company_name: 'Catarse',
   company_logo: 'http://catarse.me/assets/catarse_bootstrap/logo_icon_catarse.png',

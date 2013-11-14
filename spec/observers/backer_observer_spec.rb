@@ -1,18 +1,12 @@
 require 'spec_helper'
 
 describe BackerObserver do
-  let(:project_owner_backer_confirmed){ create(:notification_type, name: 'project_owner_backer_confirmed') }
-  let(:confirm_backer){ create(:notification_type, name: 'confirm_backer') }
-  let(:project_success){ create(:notification_type, name: 'project_success') }
   let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   subject{ backer }
 
   before do
-    Notification.unstub(:create_notification)
-    Notification.unstub(:create_notification_once)
-    confirm_backer # It should create the NotificationType before creating the Backer
-    project_success
-    project_owner_backer_confirmed
+    Notification.unstub(:notify)
+    Notification.unstub(:notify_once)
   end
 
   describe "after_create" do
@@ -25,7 +19,7 @@ describe BackerObserver do
     context "when payment_choice is updated to BoletoBancario" do
       let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
-        Notification.should_receive(:create_notification).with(:payment_slip, backer.user, backer: backer, project_name: backer.project.name)
+        Notification.should_receive(:notify_once).with(:payment_slip, backer.user, {backer_id: backer.id}, backer: backer, project: backer.project)
         backer.payment_choice = 'BoletoBancario'
         backer.save!
       end
@@ -41,7 +35,7 @@ describe BackerObserver do
         project_total.stub(:total_backers).and_return(1)
         project.stub(:project_total).and_return(project_total)
         backer.project = project
-        Notification.should_receive(:create_notification).with(:project_success, backer.project.user, project: backer.project)
+        Notification.should_receive(:notify).with(:project_success, backer.project.user, project: backer.project)
         backer.save!
       end
       it("should notify the project owner"){ subject }
@@ -53,7 +47,7 @@ describe BackerObserver do
       before do
         backer
         project.update_attributes state: 'successful'
-        Notification.should_receive(:create_notification).never
+        Notification.should_receive(:notify).never
         backer.save!
       end
       it("should not send project_successful notification again"){ subject }
@@ -62,7 +56,7 @@ describe BackerObserver do
     context "when is not yet confirmed" do
       context 'notify the backer' do
         before do
-          Notification.should_receive(:create_notification).at_least(:once).with(:confirm_backer,
+          Notification.should_receive(:notify).at_least(:once).with(:confirm_backer,
             backer.user, backer: backer,  project_name: backer.project.name)
         end
 
@@ -72,7 +66,7 @@ describe BackerObserver do
 
       context 'notify project owner about this backer' do
         before do
-          Notification.should_receive(:create_notification).at_least(:once).with(:project_owner_backer_confirmed,
+          Notification.should_receive(:notify).at_least(:once).with(:project_owner_backer_confirmed,
             backer.project.user, backer: backer, project_name: backer.project.name)
         end
 
@@ -84,7 +78,7 @@ describe BackerObserver do
     context "when is already confirmed" do
       let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
-        Notification.should_receive(:create_notification).never
+        Notification.should_receive(:notify).never
       end
 
       it("should not send confirm_backer notification again"){ subject }
@@ -102,7 +96,7 @@ describe BackerObserver do
     context "when backer is confirmed and change to canceled" do
       before do
         backer.confirm
-        Notification.should_receive(:create_notification_once).with(:backer_canceled_after_confirmed, user, {backer_id: backer.id}, backer: backer)
+        Notification.should_receive(:notify_once).with(:backer_canceled_after_confirmed, user, {backer_id: backer.id}, backer: backer)
       end
 
       it { backer.cancel }
@@ -110,7 +104,7 @@ describe BackerObserver do
 
     context "when backer change to confirmed" do
       before do
-        Notification.should_not_receive(:create_notification).with(:backer_canceled_after_confirmed)
+        Notification.should_not_receive(:notify).with(:backer_canceled_after_confirmed)
       end
 
       it { backer.confirm }

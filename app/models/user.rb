@@ -93,8 +93,7 @@ class User < ActiveRecord::Base
      where("id NOT IN (
        SELECT user_id
        FROM unsubscribes
-       WHERE project_id IS NULL
-       AND notification_type_id = (SELECT id from notification_types WHERE name = 'updates'))")
+       WHERE project_id IS NULL)")
    }
 
   scope :subscribed_to_project, ->(project_id) {
@@ -121,11 +120,10 @@ class User < ActiveRecord::Base
 
   def self.send_credits_notification
     has_not_used_credits_last_month.find_each do |user|
-      Notification.create_notification_once(:credits_warning,
+      Notification.notify_once(
+        :credits_warning,
         user,
-        {user_id: user.id},
-        user: user,
-        amount: user.credits
+        {user_id: user.id}
       )
     end
   end

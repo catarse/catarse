@@ -1,19 +1,6 @@
 require 'spec_helper'
 
 describe ProjectObserver do
-  let(:new_draft_project){ create(:notification_type, name: 'new_draft_project') }
-  let(:confirm_backer){ create(:notification_type, name: 'confirm_backer') }
-  let(:project_received){ create(:notification_type, name: 'project_received') }
-  let(:project_in_wainting_funds){ create(:notification_type, name: 'project_in_wainting_funds') }
-  let(:adm_project_deadline){ create(:notification_type, name: 'adm_project_deadline') }
-  let(:project_success){ create(:notification_type, name: 'project_success') }
-  let(:backer_successful){ create(:notification_type, name: 'backer_project_successful') }
-  let(:backer_unsuccessful){ create(:notification_type, name: 'backer_project_unsuccessful') }
-  let(:pending_backer_unsuccessful){ create(:notification_type, name: 'pending_backer_project_unsuccessful') }
-  let(:project_visible){ create(:notification_type, name: 'project_visible') }
-  let(:project_visible_channel){ create(:notification_type, name: 'project_visible_channel') }
-  let(:project_rejected){ create(:notification_type, name: 'project_rejected') }
-  let(:project_rejected_channel){ create(:notification_type, name: 'project_rejected_channel') }
   let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   let(:project) { create(:project, goal: 3000) }
   let(:channel) { create(:channel) }
@@ -21,30 +8,23 @@ describe ProjectObserver do
   subject{ backer }
 
   before do
-    Notification.unstub(:create_notification)
-    Notification.unstub(:create_notification_once)
-    new_draft_project
-    project_received
-    confirm_backer
-    project_success
-    backer_successful
-    backer_unsuccessful
+    Configuration[:support_forum] = 'http://support.com'
+    Configuration[:email_projects] = 'foo@foo.com'
+    Configuration[:facebook_url] = 'http://facebook.com/foo'
+    Configuration[:blog_url] = 'http://blog.com/foo'
+    Configuration[:company_name] = 'Catarse'
+    Notification.unstub(:notify)
+    Notification.unstub(:notify_once)
   end
 
   describe "after_create" do
     before do
       ProjectObserver.any_instance.should_receive(:after_create).and_call_original
-      ::Configuration[:facebook_url] = 'http://facebook.com'
-      ::Configuration[:blog_url] = 'http://blog.com'
-      ::Configuration[:company_name] = 'Catarse'
-      ::Configuration[:email_projects] = 'foo@foo.com'
-      user
       project
     end
-    let(:user) { create(:user, email: ::Configuration[:email_projects])}
 
     it "should create notification for project owner" do
-      Notification.where(user_id: project.user.id, notification_type_id: project_received.id, project_id: project.id).first.should_not be_nil
+      Notification.where(user_id: project.user.id, template_name: 'project_received', project_id: project.id).first.should_not be_nil
     end
   end
 
@@ -53,14 +33,13 @@ describe ProjectObserver do
     let(:user) { create(:user, email: ::Configuration[:email_projects])}
 
     before do
-      ::Configuration[:email_projects] = 'foo@foo.com'
       user
       project
       project.send_to_analysis!
     end
 
     it "should create notification for catarse admin" do
-      Notification.where(user_id: user.id, notification_type_id: new_draft_project.id, project_id: project.id).first.should_not be_nil
+      Notification.where(user_id: user.id, template_name: :new_draft_project, project_id: project.id).first.should_not be_nil
     end
   end
 
@@ -73,8 +52,8 @@ describe ProjectObserver do
         project.should_receive(:update_video_embed_url).never
       end
 
-      it "should call create_notification and do not call download_video_thumbnail" do
-        Notification.should_receive(:create_notification_once).with(:project_visible, project.user, {project_id: project.id}, {project: project, project_name: project.name, channel_name: nil})
+      it "should call notify and do not call download_video_thumbnail" do
+        Notification.should_receive(:notify_once).with(:project_visible, project.user, {project_id: project.id, channel_id: nil}, {project: project, channel: nil})
         project.approve
       end
     end
@@ -83,11 +62,11 @@ describe ProjectObserver do
       before do
         project.should_receive(:download_video_thumbnail)
         project.should_receive(:update_video_embed_url)
-        Notification.should_receive(:create_notification).never
-        Notification.should_receive(:create_notification_once).never
+        Notification.should_receive(:notify).never
+        Notification.should_receive(:notify_once).never
       end
 
-      it "should call download_video_thumbnail and do not call create_notification" do
+      it "should call download_video_thumbnail and do not call notify" do
         project.video_url = 'http://vimeo.com/66698435'
         project.save!
       end
@@ -100,7 +79,7 @@ describe ProjectObserver do
 
     before do
       create(:backer, project: project, value: 200, state: 'confirmed')
-      Notification.should_receive(:create_notification_once).with(:project_in_wainting_funds, project.user, {project_id: project.id}, {project: project})
+      Notification.should_receive(:notify_once).with(:project_in_wainting_funds, project.user, {project_id: project.id}, {project: project})
     end
 
     it("should notify the project owner"){ project.finish }
@@ -148,7 +127,7 @@ describe ProjectObserver do
       before do
         backer
         project.update_attributes state: 'waiting_funds'
-        Notification.should_receive(:create_notification_once).at_least(:once)
+        Notification.should_receive(:notify_once).at_least(:once)
         backer.save!
         project.finish!
       end
@@ -161,7 +140,7 @@ describe ProjectObserver do
       before do
         backer
         project.update_attributes state: 'waiting_funds'
-        Notification.should_receive(:create_notification_once).at_least(:once)
+        Notification.should_receive(:notify_once).at_least(:once)
         backer.save!
         project.finish!
       end
@@ -178,7 +157,7 @@ describe ProjectObserver do
       end
 
       before do
-        Notification.should_receive(:create_notification_once).at_least(3)
+        Notification.should_receive(:notify_once).at_least(3)
         project.finish!
       end
       it("should notify the project backers and owner"){ subject }
@@ -190,36 +169,26 @@ describe ProjectObserver do
     let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
 
     before do
-      ::Configuration[:facebook_url] = 'http://facebook.com/foo'
-      ::Configuration[:blog_url] = 'http://blog.com/foo'
       project.stub(:reached_goal?).and_return(true)
       project.stub(:in_time_to_wait?).and_return(false)
-      project_success
       project.finish
     end
 
     it "should create notification for project owner" do
-      Notification.where(user_id: project.user.id, notification_type_id: project_success.id, project_id: project.id).first.should_not be_nil
+      Notification.where(user_id: project.user.id, template_name: 'project_success', project_id: project.id).first.should_not be_nil
     end
   end
 
   describe "#notify_owner_that_project_is_online" do
     let(:project) { create(:project, state: 'in_analysis') }
 
-    before do
-      ::Configuration[:facebook_url] = 'http://facebook.com/foo'
-      ::Configuration[:blog_url] = 'http://blog.com/foo'
-      project_visible
-      project_visible_channel
-    end
-
     context "when project don't belong to any channel" do
       before do
         project.approve
       end
 
       it "should create notification for project owner" do
-        Notification.where(user_id: project.user.id, notification_type_id: project_visible.id, project_id: project.id).first.should_not be_nil
+        Notification.where(user_id: project.user.id, template_name: 'project_visible', project_id: project.id).first.should_not be_nil
       end
     end
 
@@ -230,26 +199,20 @@ describe ProjectObserver do
       end
 
       it "should create notification for project owner" do
-        Notification.where(user_id: project.user.id, notification_type_id: project_visible_channel.id, project_id: project.id).first.should_not be_nil
+        Notification.where(user_id: project.user.id, template_name: 'project_visible_channel', project_id: project.id).first.should_not be_nil
       end
     end
   end
 
   describe "#notify_owner_that_project_is_rejected" do
     let(:project){ create(:project, state: 'in_analysis') }
-    before do
-      ::Configuration[:facebook_url] = 'http://facebook.com/foo'
-      ::Configuration[:blog_url] = 'http://blog.com/foo'
-      project_rejected
-      project_rejected_channel
-    end
 
     context "when project don't belong to any channel" do
       before do
         project.reject
       end
       it "should create notification for project owner" do
-        Notification.where(user_id: project.user.id, notification_type_id: project_rejected.id, project_id: project.id).first.should_not be_nil
+        Notification.where(user_id: project.user.id, template_name: 'project_rejected', project_id: project.id).first.should_not be_nil
       end
     end
 
@@ -260,7 +223,7 @@ describe ProjectObserver do
       end
 
       it "should create notification for project owner" do
-        Notification.where(user_id: project.user.id, notification_type_id: project_rejected_channel.id, project_id: project.id).first.should_not be_nil
+        Notification.where(user_id: project.user.id, template_name: 'project_rejected_channel', project_id: project.id).first.should_not be_nil
       end
     end
 
@@ -270,17 +233,16 @@ describe ProjectObserver do
     let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
     let(:user) { create(:user, email: 'foo@foo.com')}
     before do
-      ::Configuration[:email_payments] = 'foo@foo.com'
-      ::Configuration[:email_system] = 'foo2@foo.com'
+      Configuration[:email_payments] = 'foo@foo.com'
+      Configuration[:email_system] = 'foo2@foo.com'
       user
       project.stub(:reached_goal?).and_return(true)
       project.stub(:in_time_to_wait?).and_return(false)
-      adm_project_deadline
       Project.finish_projects!
     end
 
     it "should create notification for admin" do
-      Notification.where(user_id: user.id, notification_type_id: adm_project_deadline.id, project_id: project.id).first.should_not be_nil
+      Notification.where(user_id: user.id, template_name: 'adm_project_deadline', project_id: project.id).first.should_not be_nil
     end
 
   end

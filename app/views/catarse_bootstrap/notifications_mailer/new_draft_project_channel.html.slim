@@ -1,6 +1,6 @@
 - project = @notification.project
-- channel = project.channels.first
-- user = project.channels.first.users.first
+- channel = @notification.channel
+- user = project.last_channel.users.first
 - company_name = ::Configuration[:company_name]
 - project_link = project_by_slug_url(permalink: project.permalink)
 
