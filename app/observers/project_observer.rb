@@ -9,7 +9,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def after_create(project)
-    use_common_notification(:project_received)
+    deliver_default_notification_for(project, :project_received)
   end
 
   def from_draft_to_in_analysis(project)
@@ -69,11 +69,11 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_in_analysis_to_rejected(project)
-    use_common_notification(:project_rejected)
+    deliver_default_notification_for(project, :project_rejected)
   end
 
   def from_in_analysis_to_online(project)
-    use_common_notification(:project_visible)
+    deliver_default_notification_for(project, :project_visible)
   end
 
   def from_online_to_failed(project)
@@ -135,9 +135,9 @@ class ProjectObserver < ActiveRecord::Observer
 
   private
 
-  def use_common_notification(notification_type)
+  def deliver_default_notification_for(project, notification_type)
     Notification.notify_once(
-      project.notification_type(notification_ype),
+      project.notification_type(notification_type),
       project.user,
       {project_id: project.id, channel_id: project.last_channel.try(:id)},
       {project: project, channel: project.last_channel}
