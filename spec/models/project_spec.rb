@@ -492,6 +492,27 @@ describe Project do
     it { should == [reward_01, reward_03] }
   end
 
+  describe "#last_channel" do
+    let(:channel){ create(:channel) }
+    let(:project){ create(:project, channels: [ create(:channel), channel ]) }
+    subject{ project.last_channel }
+    it{ should == channel }
+  end
+
+  describe "#download_video_thumbnail" do
+    let(:project){ build(:project) }
+    before do
+      project.should_receive(:download_video_thumbnail).and_call_original
+      project.should_receive(:open).and_return(File.open("#{Rails.root}/spec/fixtures/image.png"))
+      project.save!
+    end
+
+    it "should open the video_url and store it in video_thumbnail" do
+      project.video_thumbnail.url.should == "/uploads/project/video_thumbnail/#{project.id}/image.png"
+    end
+
+  end
+
   describe '#pending_backers_reached_the_goal?' do
     let(:project) { create(:project, goal: 200) }
 
@@ -522,7 +543,7 @@ describe Project do
       it{ should == @user }
     end
 
-    context "when project does belong to a channel" do
+    context "when project belongs to a channel" do
       let(:project) { channel_project }
       it{ should == user }
     end
@@ -541,7 +562,7 @@ describe Project do
   end
 
   describe "state machine" do
-    let(:project) { create(:project, state: 'draft') }
+    let(:project) { create(:project, state: 'draft', online_date: nil) }
 
     describe "#send_to_analysis" do
       subject { project.in_analysis? }
@@ -551,6 +572,10 @@ describe Project do
       end
 
       it { should be_true }
+
+      it "should store sent_to_analysis_at" do
+        expect(project.sent_to_analysis_at).to_not be_nil
+      end
     end
 
     describe '#draft?' do
@@ -591,7 +616,7 @@ describe Project do
     end
 
     describe '#push_to_trash' do
-      let(:project) { FactoryGirl.create(:project, permalink: 'my_project', state: 'draft') }
+      let(:project) { create(:project, permalink: 'my_project', state: 'draft') }
 
       subject do
         project.push_to_trash
@@ -613,9 +638,9 @@ describe Project do
 
       its(:online?){ should be_true }
       it('should call after transition method to notify the project owner'){ subject }
-      it 'should persist the date of approvation' do
+      it 'should persist the online_date' do
         project.approve
-        project.online_date.should_not be_nil
+        expect(project.online_date).to_not be_nil
       end
     end
 

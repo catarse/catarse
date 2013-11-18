@@ -1,6 +1,6 @@
 - user = @notification.user
 - project = @notification.project
-- channel = project.channels.first
+- channel = @notification.channel
 
 = content_for :email_logo do
   = image_tag(channel.image, alt: channel.name)

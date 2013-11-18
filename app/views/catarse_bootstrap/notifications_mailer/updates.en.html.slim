@@ -1,8 +1,8 @@
-- update = @notification.mail_params[:update]
+- update = @notification.project_update
 br/
 strong=update.title
-== @notification.mail_params[:update_comment]
+== update.email_comment_html
 br
 br
-|View project: #{link_to @notification.mail_params[:project_name], project_by_slug_url(permalink: @notification.project.permalink)}
+|View project: #{link_to @notification.project.name, project_by_slug_url(permalink: @notification.project.permalink)}
 
