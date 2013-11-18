@@ -27,12 +27,7 @@ class ProjectObserver < ActiveRecord::Observer
       )
     end
 
-    Notification.notify_once(
-      project.notification_type(:in_analysis_project),
-      project.user,
-      {project_id: project.id, channel_id: project.last_channel.try(:id)},
-      {project: project, channel: project.last_channel}
-    )
+    deliver_default_notification_for(project, :in_analysis_project)
   end
 
   def from_online_to_waiting_funds(project)
@@ -40,7 +35,10 @@ class ProjectObserver < ActiveRecord::Observer
       :project_in_wainting_funds,
       project.user,
       {project_id: project.id},
-      project: project
+      {
+        project: project,
+        origin_email: Configuration[:email_projects]
+      }
     )
   end
 
@@ -49,7 +47,10 @@ class ProjectObserver < ActiveRecord::Observer
       :project_success,
       project.user,
       {project_id: project.id},
-      {project: project}
+      {
+        project: project,
+        origin_email: Configuration[:email_projects]
+      }
     )
     notify_admin_that_project_reached_deadline(project)
     notify_users(project)
@@ -92,7 +93,10 @@ class ProjectObserver < ActiveRecord::Observer
       :project_unsuccessful,
       project.user,
       {project_id: project.id, user_id: project.user.id},
-      {project: project}
+      {
+        project: project,
+        origin_email: Configuration[:email_projects]
+      }
     )
   end
 
@@ -140,8 +144,12 @@ class ProjectObserver < ActiveRecord::Observer
       project.notification_type(notification_type),
       project.user,
       {project_id: project.id, channel_id: project.last_channel.try(:id)},
-      {project: project, channel: project.last_channel}
+      {
+        project: project, 
+        channel: project.last_channel,
+        origin_email: project.last_channel.try(:email) || Configuration[:email_projects], 
+        origin_name: project.last_channel.try(:name) || Configuration[:company_name]
+      }
     )
   end
-
 end
