@@ -574,7 +574,7 @@ describe Project do
   end
 
   describe "state machine" do
-    let(:project) { create(:project, state: 'draft') }
+    let(:project) { create(:project, state: 'draft', online_date: nil) }
 
     describe "#send_to_analysis" do
       subject { project.in_analysis? }
@@ -584,6 +584,10 @@ describe Project do
       end
 
       it { should be_true }
+
+      it "should store sent_to_analysis_at" do
+        expect(project.sent_to_analysis_at).to_not be_nil
+      end
     end
 
     describe '#draft?' do
@@ -624,7 +628,7 @@ describe Project do
     end
 
     describe '#push_to_trash' do
-      let(:project) { FactoryGirl.create(:project, permalink: 'my_project', state: 'draft') }
+      let(:project) { create(:project, permalink: 'my_project', state: 'draft') }
 
       subject do
         project.push_to_trash
@@ -646,9 +650,9 @@ describe Project do
 
       its(:online?){ should be_true }
       it('should call after transition method to notify the project owner'){ subject }
-      it 'should persist the date of approvation' do
+      it 'should persist the online_date' do
         project.approve
-        project.online_date.should_not be_nil
+        expect(project.online_date).to_not be_nil
       end
     end
 
