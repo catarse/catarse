@@ -87,11 +87,12 @@ RSpec.configure do |config|
     Project.any_instance.stub(:download_video_thumbnail)
     CatarseMailchimp::API.stub(:subscribe)
     CatarseMailchimp::API.stub(:unsubscribe)
-    Notification.stub(:create_notification)
-    Notification.stub(:create_notification_once)
+    Notification.stub(:notify)
+    Notification.stub(:notify_once)
     Calendar.any_instance.stub(:fetch_events_from)
     Blog.stub(:fetch_last_posts).and_return([])
-    ::Configuration[:base_domain] = 'localhost'
-    ::Configuration['email_contact'] = 'foo@bar.com'
+    Configuration[:base_domain] = 'localhost'
+    Configuration[:email_contact] = 'foo@bar.com'
+    Configuration[:company_name] = 'Foo Bar Company'
   end
 end

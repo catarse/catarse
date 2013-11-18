@@ -64,32 +64,42 @@ describe Update do
     it{ should == "<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img src=\"http://catarse.me/assets/catarse/logo164x54.png\" alt=\"\" style=\"max-width:513px\" /></p>" }
   end
 
+  describe "#update_number" do
+    let(:project){ create(:project) }
+    let(:update){ create(:update, project: project) }
+    subject{ update.update_number }
+    before do
+      create(:update, project: project)
+      update
+      create(:update, project: project)
+    end
+    it{ should == 2 }
+  end
+
   describe "#notify_backers" do
     before do
-      Notification.unstub(:create_notification)
-      Notification.unstub(:create_notification_once)
-      create(:notification_type, name: 'updates')
+      Notification.unstub(:notify)
+      Notification.unstub(:notify_once)
       @project = create(:project)
       backer = create(:backer, state: 'confirmed', project: @project)
       create(:backer, state: 'confirmed', project: @project, user: backer.user)
       @project.reload
       ActionMailer::Base.deliveries = []
       @update = Update.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
-      Notification.should_receive(:create_notification_once).with(:updates, backer.user,
+      Notification.should_receive(:notify_once).with(
+        :updates, 
+        backer.user,
         {update_id: @update.id, user_id: backer.user.id},
-        update_number: @update.project.updates.count,
-        project_name: backer.project.name,
-        project: backer.project,
-        project_owner: backer.project.user.display_name,
-        project_owner_email: backer.project.user.email,
-        from: @update.project.user.email,
-        display_name: backer.project.user.display_name,
-        update_title: @update.title,
-        update: @update,
-        update_comment: @update.email_comment_html).once
+        {
+          project: @update.project,
+          project_update: @update,
+          origin_email: @update.project.user.email,
+          origin_name: @update.project.user.display_name
+        }
+      ).once.and_call_original
     end
 
-    it 'should call Notification.create_notification once' do
+    it 'should call Notification.notify once' do
       @update.notify_backers
     end
   end
