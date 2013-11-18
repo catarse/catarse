@@ -9,12 +9,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def after_create(project)
-    Notification.notify_once(
-      project.notification_type(:project_received),
-      project.user,
-      {project_id: project.id, channel_id: project.last_channel.try(:id)},
-      {project: project, channel: project.last_channel}
-    )
+    deliver_default_notification_for(project, :project_received)
   end
 
   def from_draft_to_in_analysis(project)
@@ -24,18 +19,18 @@ class ProjectObserver < ActiveRecord::Observer
         user,
         {project_id: project.id, channel_id: project.last_channel.try(:id)},
         {
-          project: project, 
+          project: project,
           channel: project.last_channel,
-          origin_email: project.user.email, 
+          origin_email: project.user.email,
           origin_name: project.user.display_name
         }
       )
     end
 
     Notification.notify_once(
-      project.notification_type(:in_analysis_project), 
-      project.user, 
-      {project_id: project.id, channel_id: project.last_channel.try(:id)}, 
+      project.notification_type(:in_analysis_project),
+      project.user,
+      {project_id: project.id, channel_id: project.last_channel.try(:id)},
       {project: project, channel: project.last_channel}
     )
   end
@@ -74,21 +69,11 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_in_analysis_to_rejected(project)
-    Notification.notify_once(
-      project.notification_type(:project_rejected),
-      project.user,
-      {project_id: project.id, channel_id: project.last_channel.try(:id)},
-      {project: project, channel: project.last_channel}
-    )
+    deliver_default_notification_for(project, :project_rejected)
   end
 
   def from_in_analysis_to_online(project)
-    Notification.notify_once(
-      project.notification_type(:project_visible),
-      project.user,
-      {project_id: project.id, channel_id: project.last_channel.try(:id)},
-      {project: project, channel: project.last_channel}
-    )
+    deliver_default_notification_for(project, :project_visible)
   end
 
   def from_online_to_failed(project)
@@ -146,6 +131,17 @@ class ProjectObserver < ActiveRecord::Observer
     rescue Exception => e
       Rails.logger.info "-----> #{e.inspect}"
     end
+  end
+
+  private
+
+  def deliver_default_notification_for(project, notification_type)
+    Notification.notify_once(
+      project.notification_type(notification_type),
+      project.user,
+      {project_id: project.id, channel_id: project.last_channel.try(:id)},
+      {project: project, channel: project.last_channel}
+    )
   end
 
 end
