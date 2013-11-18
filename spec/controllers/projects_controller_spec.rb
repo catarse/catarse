@@ -5,7 +5,8 @@ describe ProjectsController do
   before{ Notification.unstub(:notify) }
   before{ Notification.unstub(:notify_once) }
   before{ controller.stub(:current_user).and_return(current_user) }
-  before{ ::Configuration[:base_url] = 'http://catarse.me' }
+  before{ Configuration[:base_url] = 'http://catarse.me' }
+  before{ Configuration[:email_projects] = 'foo@bar.com' }
   render_views
   subject{ response }
   let(:project){ create(:project, state: 'draft') }
