@@ -5,6 +5,9 @@
 - project_link = project_by_slug_url(permalink: project.permalink)
 - company_name = ::Configuration[:company_name]
 
+= content_for :email_logo do
+  = image_tag(channel.image, alt: channel.name)
+
 |Olá, #{user.name}!
 br
 br
