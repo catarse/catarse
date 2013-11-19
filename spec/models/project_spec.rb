@@ -34,6 +34,17 @@ describe Project do
     it{ should_not allow_value('users').for(:permalink) }
   end
 
+  describe ".visible" do
+    before do
+      [:draft, :rejected, :deleted, :in_analysis].each do |state|
+        create(:project, state: state)
+      end
+      @project = create(:project, state: :online)
+    end
+    subject{ Project.visible }
+    it{ should == [@project] }
+  end
+
   describe '.state_names' do
     let(:states) { [:draft, :rejected, :online, :successful, :waiting_funds, :failed, :in_analysis] }
 
