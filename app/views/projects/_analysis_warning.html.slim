@@ -8,12 +8,14 @@ br
       #project_warning_text
         br/
         br/
-        | Estamos avaliando as informações do seu rascunho, entraremos em contato em até 2 dias úteis =) 
+        | Estamos avaliando as informações do seu rascunho, entraremos em contato em até 4 dias úteis =) 
+        br/
         | Lembre-se de preencher as informações do #{link_to 'seu perfil', user_path(@project.user)} no Catarse
+        br/
         br/
         strong Solução de problemas:
         br/
-        = link_to 'Socorro! | Já passaram 2 dias úteis e não tive noticias da curadoria, o que fazer?', 'http://suporte.catarse.me/knowledgebase/articles/274766-socorro-j%C3%A1-mandei-h%C3%A1-dois-dias-%C3%BAteis-e-a-curado', target: '__blank'
+        = link_to 'Socorro! | Já passaram 4 dias úteis e não tive noticias da curadoria, o que fazer?', 'http://suporte.catarse.me/knowledgebase/articles/274766-socorro-j%C3%A1-mandei-h%C3%A1-dois-dias-%C3%BAteis-e-a-curado', target: '__blank'
 - else
   #project_warning.bootstrap-alert
     .alert.alert-warning
