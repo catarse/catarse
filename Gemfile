@@ -7,7 +7,6 @@ gem 'mail',     '2.5.3'
 
 gem 'protected_attributes', '~> 1.0.3' # When upgrade to strong_parameters, remove this gem.
 gem 'rails-observers', '~> 0.1.2'
-gem 'activerecord-session_store', '~> 0.0.1'
 
 gem 'sidekiq',  '~> 2.13.0'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
@@ -63,7 +62,10 @@ gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref:
 gem 'formtastic',   '~> 2.2.1'
 gem 'simple_form'
 gem "auto_html",    '= 1.4.2'
+gem "RedCloth"
 gem 'kaminari'
+#TODO: Take a look on dependencies. Why not auto_html?
+gem 'rails_autolink', '~> 1.1.0'
 
 # Uploads
 gem 'carrierwave', '~> 0.8.0'
@@ -148,10 +150,3 @@ gem 'compass-960-plugin'
 # FIXME: Not-anymore-on-development
 # Gems that are with 1 or more years on the vacuum
 gem 'weekdays'
-gem "rack-timeout"
-
-# TODO: Take a look on dependencies. Why not auto_html?
-gem 'rails_autolink', '~> 1.1.0'
-
-# TODO: Take a look on dependencies
-gem "RedCloth"
