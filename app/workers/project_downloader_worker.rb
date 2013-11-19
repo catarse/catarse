@@ -1,12 +1,14 @@
-class ProjectDownloader
+class ProjectDownloaderWorker
+  include Sidekiq::Worker
+  sidekiq_options retry: true
 
-  def initialize(resource)
-    @resource = resource
-  end
+  def perform project_id
+    @resource = Project.find project_id
 
-  def start!
     update_video_embed_url
     download_video_thumbnail
+
+    @resource.save
   end
 
   def download_video_thumbnail
@@ -18,5 +20,4 @@ class ProjectDownloader
   def update_video_embed_url
     @resource.video_embed_url = @resource.video.embed_url if @resource.video
   end
-
 end

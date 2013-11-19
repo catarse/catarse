@@ -1,9 +1,8 @@
-require 'project_downloader'
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
   def after_validation(project)
-   ProjectDownloader.new(project).start! if project.video_url.present? && project.video_url_changed?
+    ProjectDownloaderWorker.perform_async(project.id) if project.video_url.present? && project.video_url_changed?
   end
 
   def after_create(project)
@@ -143,9 +142,9 @@ class ProjectObserver < ActiveRecord::Observer
       project.user,
       {project_id: project.id, channel_id: project.last_channel.try(:id)},
       {
-        project: project, 
+        project: project,
         channel: project.last_channel,
-        origin_email: project.last_channel.try(:email) || Configuration[:email_projects], 
+        origin_email: project.last_channel.try(:email) || Configuration[:email_projects],
         origin_name: project.last_channel.try(:name) || Configuration[:company_name]
       }
     )
