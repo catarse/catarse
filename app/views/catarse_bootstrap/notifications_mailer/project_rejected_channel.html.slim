@@ -2,6 +2,9 @@
 - project = @notification.project
 - channel = @notification.channel
 
+- project_link = project_by_slug_url(permalink: project.permalink)
+- company_name = ::Configuration[:company_name]
+
 = content_for :email_logo do
   = image_tag(channel.image, alt: channel.name)
 
@@ -10,18 +13,35 @@
   | , #{user.name}!
 br/
 br/
-|Obrigado por enviar seu projeto para o #{channel.name}.
+| Infelizmente, o projeto #{link_to project.name, project_link, target: '__blank'} não foi aceito no #{channel.name}
 br/
 br/
-|Acreditamos que o seu projeto não se enquadra no #{link_to('perfil', channels_about_url(subdomain: channel.permalink), target: '__blank')} que buscamos para o canal. 
+| Acreditamos que o projeto não se enquadra no perfil de projetos hospedados no #{channel.name}.
 br/
 br/
-|Caso consiga reestruturar o seu projeto dentro do escopo que apresentamos, 
-|você poderá alterá-lo no #{link_to('rascunho', project_by_slug_url(permalink: project.permalink, subdomain: channel.permalink), target: '__blank')} 
-|e nos avisar através de #{mail_to(channel.email)} sob o título de <b>Revisão</b>.
+| Caso queira  tirar quaisquer outras dúvidas, ou deletar o seu rascunho recusado, 
+| responda esse email diretamente ou entre em contato conosco através do #{mail_to channel.email}
 br/
 br/
-|Abraço,
+| Lembrando que ter um projeto recusado não impede que você envie novos projetos para avaliação. Levanta, 
+| sacode a poeira e dá a volta por cima! Estude a #{link_to 'Central de Suporte', ::Configuration[:support_forum], target: '__blank'} do #{company_name} para que você saiba tudo sobre nossos pré-requisitos para a 
+| construção do seu próximo projeto. Para mais informações sobre requisitos para aprovação de um projeto no #{channel.name}, basta acessar #{link_to 'aqui', channels_about_url(subdomain: channel.permalink), target: '__blank'}.
+br/
+br/
+|Um abraço,
 |#{channel.name}
+br/
+br/
+| Você está em contato com o atendimento do #{channel.name}
+br/
+br/
+| Saiba mais:
+br/
+= link_to 'O que são os canais ?', 'http://suporte.catarse.me/knowledgebase/articles/190323-o-que-s%C3%A3o-os-canais-', target: '__blank'
+br/
+= link_to "Diferenças entre o atendimento nos Canais e no #{company_name}.", 'http://suporte.catarse.me/knowledgebase/articles/279356-diferen%C3%A7as-entre-o-atendimento-nos-canais-e-no-cat', target: '__blank'
+
+
+
 
 
