@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
 
   include Shared::StateMachineHelpers
   include ProjectStateMachineHandler
+  include Projects::Hooks
   include ActionView::Helpers::TextHelper
   include PgSearch
   extend CatarseAutoHtml

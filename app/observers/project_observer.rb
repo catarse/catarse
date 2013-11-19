@@ -2,7 +2,9 @@ class ProjectObserver < ActiveRecord::Observer
   observe :project
 
   def after_validation(project)
-    ProjectDownloaderWorker.perform_async(project.id) if project.video_url.present? && project.video_url_changed?
+    if project.video_url.present? && project.video_url_changed?
+      ProjectDownloaderWorker.perform_async(project.id)
+    end
   end
 
   def after_create(project)
