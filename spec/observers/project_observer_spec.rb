@@ -72,7 +72,7 @@ describe ProjectObserver do
     context "when project is approved" do
       before do
         project.update_attributes state: 'in_analysis'
-        ProjectDownloader.any_instance.should_receive(:start!).never
+        ProjectDownloaderWorker.should_receive(:perform_async).with(project.id).never
       end
 
       it "should call notify and do not call download_video_thumbnail" do
@@ -93,7 +93,7 @@ describe ProjectObserver do
 
     context "when video_url changes" do
       before do
-        ProjectDownloader.any_instance.should_receive(:start!).at_least(1)
+        ProjectDownloaderWorker.should_receive(:perform_async).with(project.id).at_least(1)
         Notification.should_receive(:notify).never
         Notification.should_receive(:notify_once).never
       end
@@ -278,7 +278,6 @@ describe ProjectObserver do
       user
       project.stub(:reached_goal?).and_return(true)
       project.stub(:in_time_to_wait?).and_return(false)
-      adm_project_deadline
       project.finish
     end
 
