@@ -3,21 +3,9 @@ class ProjectDownloaderWorker
   sidekiq_options retry: true
 
   def perform project_id
-    @resource = Project.find project_id
+    project = Project.find project_id
 
-    update_video_embed_url
-    download_video_thumbnail
-
-    @resource.save
-  end
-
-  def download_video_thumbnail
-    @resource.video_thumbnail = open(@resource.video.thumbnail_large) if @resource.video_url.present? && @resource.video
-  rescue OpenURI::HTTPError, TypeError => e
-    Rails.logger.info "-----> #{e.inspect}"
-  end
-
-  def update_video_embed_url
-    @resource.video_embed_url = @resource.video.embed_url if @resource.video
+    project.update_video_embed_url
+    project.download_video_thumbnail
   end
 end
