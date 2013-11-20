@@ -127,10 +127,18 @@ describe ProjectDecorator do
   end
 
   describe '#display_video_embed_url' do
+    before do
+      Sidekiq::Testing.inline!
+    end
+
     subject{ project.display_video_embed_url }
 
     context 'source has a Vimeo video' do
       let(:project) { create(:project, video_url: 'http://vimeo.com/17298435') }
+
+      before do
+        project.reload
+      end
 
       it { should == 'http://player.vimeo.com/video/17298435?title=0&byline=0&portrait=0&autoplay=0' }
     end
