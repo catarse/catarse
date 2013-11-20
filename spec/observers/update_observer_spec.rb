@@ -1,20 +1,14 @@
 require 'spec_helper'
 
 describe UpdateObserver do
-  before do
-    Sidekiq::Testing.fake!
-  end
-
   describe 'after_create' do
-    context "call notify update worker" do
-      before do
-        NotifyUpdateWorker.jobs.clear
-        @project = FactoryGirl.create(:project)
-      end
+    context "notify backers" do
+      let(:project) { create(:project) }
+      let(:update) { build(:update) }
 
-      it "should send to queue" do
-        update = Update.create!(user: @project.user, project: @project, comment: "this is a comment")
-        NotifyUpdateWorker.jobs.size.should == 1
+      it "should satisfy expectations" do
+        update.should_receive(:notify_backers)
+        update.save
       end
     end
   end
