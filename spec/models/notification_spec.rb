@@ -4,6 +4,7 @@ describe Notification do
   let(:backer){ create(:backer) }
 
   before do
+    Sidekiq::Testing.fake!
     Notification.unstub(:notify)
     Notification.unstub(:notify_once)
     ActionMailer::Base.deliveries.clear
@@ -21,18 +22,18 @@ describe Notification do
     let(:notification){ create(:notification, dismissed: false) }
 
     before do
+      NotificationWorker.jobs.clear
       deliver_exception
       notification.deliver
     end
 
     context "when dismissed is true" do
       let(:notification){ create(:notification, dismissed: true) }
-      it("should not send email"){ ActionMailer::Base.deliveries.should be_empty }
+      it("should not add the notification into queue") { NotificationWorker.jobs.should be_empty }
     end
 
     context "when dismissed is false" do
-      it("should send email"){ ActionMailer::Base.deliveries.should_not be_empty }
-      it("should dismiss the notification"){ notification.dismissed.should be_true }
+      it("should add the notification into queue") { NotificationWorker.jobs.should_not be_empty }
     end
   end
 
@@ -41,7 +42,7 @@ describe Notification do
     let(:notify){ Notification.notify(notification.template_name, notification.user) }
     before do
       Notification.should_receive(:create!).with({
-        template_name: notification.template_name, 
+        template_name: notification.template_name,
         user: notification.user,
         locale: notification.user.locale,
         origin_email: Configuration['email_contact'],
