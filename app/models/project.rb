@@ -4,16 +4,15 @@ class Project < ActiveRecord::Base
 
   include Shared::StateMachineHelpers
   include ProjectStateMachineHandler
-  include Projects::Hooks
+  include Projects::VideoHandler
   include ActionView::Helpers::TextHelper
   include PgSearch
   extend CatarseAutoHtml
 
   mount_uploader :uploaded_image, ProjectUploader
-  mount_uploader :video_thumbnail, ProjectUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
-    :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar, :successful_flag,
+    :display_pledged, :display_goal, :remaining_days, :progress_bar, :successful_flag,
     to: :decorator
 
   has_and_belongs_to_many :channels
@@ -120,10 +119,6 @@ class Project < ActiveRecord::Base
 
   def expires_at
     online_date && (online_date + online_days.days).end_of_day
-  end
-
-  def video
-    @video ||= VideoInfo.get(self.video_url) if self.video_url.present?
   end
 
   def pledged
