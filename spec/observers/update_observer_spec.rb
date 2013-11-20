@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe UpdateObserver do
+  before do
+    Sidekiq::Testing.fake!
+  end
+
   describe 'after_create' do
     context "call notify update worker" do
       before do
