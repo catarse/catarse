@@ -581,10 +581,10 @@ pt:
       no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
       reports:
         no_backs: 'Seu projeto ainda não tem nenhum apoio.'
-        link_reports: 'Baixar relatório de '
+        link_reports: 'Baixar relatório de todos os apoiadores'
         all_backers: 'todos os apoiadores'
-        all_backers_without_reward: 'todos os apoiadores que não selecionaram uma recompensa'
-        link_reward: 'Baixar relatório dos apoiadores da recompensa de '
+        all_backers_without_reward: 'Baixar relatório de todos os apoiadores que não selecionaram uma recompensa'
+        link_reward: 'Baixar relatório dos apoiadores da recompensa de %{value}'
       menu:
         about: Sobre
         backers: Apoiadores
