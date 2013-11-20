@@ -146,6 +146,10 @@ describe ProjectDecorator do
     context 'source has an Youtube video' do
       let(:project) { create(:project, video_url: "http://www.youtube.com/watch?v=Brw7bzU_t4c") }
 
+      before do
+        project.reload
+      end
+
       it { should == '//www.youtube.com/embed/Brw7bzU_t4c?title=0&byline=0&portrait=0&autoplay=0' }
     end
 
