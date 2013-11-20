@@ -8,7 +8,7 @@ gem 'mail',     '2.5.3'
 gem 'protected_attributes', '~> 1.0.3' # When upgrade to strong_parameters, remove this gem.
 gem 'rails-observers', '~> 0.1.2'
 
-gem 'sidekiq',  '~> 2.13.0'
+gem 'sidekiq',  '~> 2.15.2'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
 
 # Turns every field on a editable one
@@ -130,6 +130,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'fakeweb'
   gem 'poltergeist'
   gem 'launchy'
   gem 'database_cleaner'

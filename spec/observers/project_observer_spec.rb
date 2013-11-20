@@ -46,6 +46,7 @@ describe ProjectObserver do
   describe "before_save" do
     let(:channel){ create(:channel) }
     let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft')}
+
     context "when project is approved and belongs to a channel" do
       let(:project){ create(:project, video_url: 'http://vimeo.com/11198435', state: 'draft', channels: [channel])}
       before do
@@ -54,13 +55,13 @@ describe ProjectObserver do
 
       it "should call notify using channel data" do
         Notification.should_receive(:notify_once).with(
-          :project_visible_channel, 
-          project.user, 
-          { project_id: project.id, channel_id: channel.id}, 
+          :project_visible_channel,
+          project.user,
+          { project_id: project.id, channel_id: channel.id},
           {
-            project: project, 
+            project: project,
             channel: channel,
-            origin_email: channel.email, 
+            origin_email: channel.email,
             origin_name: channel.name
           }
         )
@@ -71,19 +72,18 @@ describe ProjectObserver do
     context "when project is approved" do
       before do
         project.update_attributes state: 'in_analysis'
-        project.should_receive(:download_video_thumbnail).never
-        project.should_receive(:update_video_embed_url).never
+        ProjectDownloaderWorker.should_receive(:perform_async).with(project.id).never
       end
 
       it "should call notify and do not call download_video_thumbnail" do
         Notification.should_receive(:notify_once).with(
-          :project_visible, 
-          project.user, 
-          { project_id: project.id, channel_id: nil}, 
+          :project_visible,
+          project.user,
+          { project_id: project.id, channel_id: nil},
           {
-            project: project, 
+            project: project,
             channel: nil,
-            origin_email: Configuration[:email_projects], 
+            origin_email: Configuration[:email_projects],
             origin_name: Configuration[:company_name]
           }
         )
@@ -93,13 +93,12 @@ describe ProjectObserver do
 
     context "when video_url changes" do
       before do
-        project.should_receive(:download_video_thumbnail)
-        project.should_receive(:update_video_embed_url)
+        ProjectDownloaderWorker.should_receive(:perform_async).with(project.id).at_least(1)
         Notification.should_receive(:notify).never
         Notification.should_receive(:notify_once).never
       end
 
-      it "should call download_video_thumbnail and do not call notify" do
+      it "should call project downloader service and do not call create_notification" do
         project.video_url = 'http://vimeo.com/66698435'
         project.save!
       end
@@ -113,9 +112,9 @@ describe ProjectObserver do
     before do
       create(:backer, project: project, value: 200, state: 'confirmed')
       Notification.should_receive(:notify_once).with(
-        :project_in_wainting_funds, 
-        project.user, 
-        {project_id: project.id}, 
+        :project_in_wainting_funds,
+        project.user,
+        {project_id: project.id},
         {
           project: project,
           origin_email: Configuration[:email_projects]
@@ -279,7 +278,7 @@ describe ProjectObserver do
       user
       project.stub(:reached_goal?).and_return(true)
       project.stub(:in_time_to_wait?).and_return(false)
-      Project.finish_projects!
+      project.finish
     end
 
     it "should create notification for admin" do

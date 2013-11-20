@@ -4,17 +4,16 @@ class Project < ActiveRecord::Base
 
   include Shared::StateMachineHelpers
   include ProjectStateMachineHandler
+  include Projects::VideoHandler
   include ActionView::Helpers::TextHelper
   include PgSearch
   extend CatarseAutoHtml
 
   mount_uploader :uploaded_image, ProjectUploader
-  mount_uploader :video_thumbnail, ProjectUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
-    :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar, :successful_flag,
+    :display_pledged, :display_goal, :remaining_days, :progress_bar, :successful_flag,
     to: :decorator
-
 
   has_and_belongs_to_many :channels
   has_one :project_total
@@ -110,13 +109,6 @@ class Project < ActiveRecord::Base
     order(sort_field)
   end
 
-  def self.finish_projects!
-    to_finish.each do |resource|
-      Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
-      resource.finish
-    end
-  end
-
   def subscribed_users
     User.subscribed_to_updates.subscribed_to_project(self.id)
   end
@@ -127,10 +119,6 @@ class Project < ActiveRecord::Base
 
   def expires_at
     online_date && (online_date + online_days.days).end_of_day
-  end
-
-  def video
-    @video ||= VideoInfo.get(self.video_url) if self.video_url.present?
   end
 
   def pledged
@@ -164,18 +152,6 @@ class Project < ActiveRecord::Base
   def progress
     return 0 if goal == 0.0
     ((pledged / goal * 100).abs).round(pledged.to_i.size).to_i
-  end
-
-  def update_video_embed_url
-    self.video_embed_url = self.video.embed_url if self.video.present?
-  end
-
-  def download_video_thumbnail
-    self.video_thumbnail = open(self.video.thumbnail_large) if self.video_url.present? && self.video
-  rescue OpenURI::HTTPError => e
-    Rails.logger.info "-----> #{e.inspect}"
-  rescue TypeError => e
-    Rails.logger.info "-----> #{e.inspect}"
   end
 
   def pending_backers_reached_the_goal?

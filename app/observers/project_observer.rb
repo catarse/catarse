@@ -1,10 +1,9 @@
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
-  def after_validation(project)
+  def after_save(project)
     if project.video_url.present? && project.video_url_changed?
-      project.download_video_thumbnail
-      project.update_video_embed_url
+      ProjectDownloaderWorker.perform_async(project.id)
     end
   end
 
@@ -145,9 +144,9 @@ class ProjectObserver < ActiveRecord::Observer
       project.user,
       {project_id: project.id, channel_id: project.last_channel.try(:id)},
       {
-        project: project, 
+        project: project,
         channel: project.last_channel,
-        origin_email: project.last_channel.try(:email) || Configuration[:email_projects], 
+        origin_email: project.last_channel.try(:email) || Configuration[:email_projects],
         origin_name: project.last_channel.try(:name) || Configuration[:company_name]
       }
     )

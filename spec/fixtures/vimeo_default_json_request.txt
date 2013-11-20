@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Server: Apache
+Access-Control-Allow-Origin: *
+X-RateLimit-Limit: 3600
+X-RateLimit-Remaining: 3597
+X-RateLimit-Reset: 1384406396
+Expires: Thu, 14 Nov 2013 04:21:40 GMT
+Last-Modified: Mon, 04 Nov 2013 08:19:08 GMT
+Etag: "c3d0239abeebdf80a679b4b7821cb681"
+X-UA-Compatible: IE=edge
+X-DNS-Prefetch-Control: on
+Vary: Accept-Encoding
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Thu, 14 Nov 2013 04:20:40 GMT
+X-Varnish: 2104652965
+Age: 0
+Via: 1.1 varnish
+X-Varnish-Cache: 0
+Connection: close
+X-VServer: 10.90.128.188
+
+[{"id":17298435,"title":"C\u00fapula nov\/2010","description":"IMagens do dia a dia na C\u00fapula, estudio e casa de Cisco Vasques em S\u00e3o PAulo. Neste video:<br \/>\nGustavo MAchado & Lu, Camila Pitanga, Cisco VAsques, Tom GAstom, Gero Camilo, Tom\u00e1s, Gisele SAnfelice, Alexandre BAndeira, Julia, Simone, Renato Ciasca, MAnjubinha e GErson","url":"http:\/\/vimeo.com\/17298435","upload_date":"2010-11-29 13:23:27","thumbnail_small":"http:\/\/b.vimeocdn.com\/ts\/107\/328\/107328495_100.jpg","thumbnail_medium":"http:\/\/b.vimeocdn.com\/ts\/107\/328\/107328495_200.jpg","thumbnail_large":"http:\/\/b.vimeocdn.com\/ts\/107\/328\/107328495_640.jpg","user_id":3202545,"user_name":"Cisco Vasques","user_url":"http:\/\/vimeo.com\/ciscovasques","user_portrait_small":"http:\/\/b.vimeocdn.com\/ps\/625\/800\/6258005_30.jpg","user_portrait_medium":"http:\/\/b.vimeocdn.com\/ps\/625\/800\/6258005_75.jpg","user_portrait_large":"http:\/\/b.vimeocdn.com\/ps\/625\/800\/6258005_100.jpg","user_portrait_huge":"http:\/\/b.vimeocdn.com\/ps\/625\/800\/6258005_300.jpg","stats_number_of_likes":1,"stats_number_of_plays":556,"stats_number_of_comments":0,"duration":696,"width":1280,"height":720,"tags":"Gustavo MAcgado & Lu, Camila Pitanga, Cisco VAsques, Tom GAstom, Gero Camilo, Tom\u00e1s, Gisele SAnfelice, Alexandre BAndeira, Julia, Simone, Renato Ciasca, MAnjubinha e GErson, C\u00fapula, Gustavo MAchado & Lu","embed_privacy":"anywhere"}]

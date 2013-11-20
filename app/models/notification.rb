@@ -10,7 +10,7 @@ class Notification < ActiveRecord::Base
 
   def self.notify(template_name, user, params = {})
     create!({
-      template_name: template_name, 
+      template_name: template_name,
       user: user,
       locale: user.locale || I18n.locale,
       origin_email: Configuration[:email_contact],
@@ -20,8 +20,7 @@ class Notification < ActiveRecord::Base
 
   def deliver
     unless dismissed
-      NotificationsMailer.notify(self).deliver
-      self.update_attributes dismissed: true
+      NotificationWorker.perform_async(self.id)
     end
   end
 
