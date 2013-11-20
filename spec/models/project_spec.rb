@@ -431,28 +431,19 @@ describe Project do
       before { project.video_url = "http://vimeo.com/17298435" }
 
       context 'video_url is a Vimeo url' do
-        its(:video){ should be_an_instance_of(VideoInfo::Providers::Vimeo) }
+        its(:video){ should be_an_instance_of(VideoInfo) }
       end
 
       context 'video_url is an YouTube url' do
         before { project.video_url = "http://www.youtube.com/watch?v=Brw7bzU_t4c" }
 
-        its(:video){ should be_an_instance_of(VideoInfo::Providers::Youtube) }
+        its(:video){ should be_an_instance_of(VideoInfo) }
       end
 
       it 'caches the response object' do
         video_obj = VideoInfo.get(project.video_url)
         VideoInfo.should_receive(:get).once.and_return(video_obj)
         5.times { project.video }
-      end
-    end
-
-    context 'video_url changes' do
-      before { project.video_url = 'http://vimeo.com/17298435' }
-
-      it 'maintain cached version' do
-        project.video_url = 'http://vimeo.com/59205360'
-        project.video.video_id = '17298435'
       end
     end
   end
