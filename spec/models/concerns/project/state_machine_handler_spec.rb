@@ -9,7 +9,7 @@ describe Project::StateMachineHandler do
     describe "#send_to_analysis" do
       subject { project.in_analysis? }
       before do
-        project.should_receive(:notify_observers).with(:from_draft_to_in_analysis)
+        project.should_receive(:notify_observers).with(:from_draft_to_in_analysis).and_call_original
         project.send_to_analysis
       end
 
