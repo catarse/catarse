@@ -59,14 +59,6 @@ module Project::StateMachineHandler
         project.notify_observers :"from_#{transition.from}_to_#{transition.to}"
       end
 
-      after_transition draft: :in_analysis do |project, transition|
-        project.update_attributes({ sent_to_analysis_at: DateTime.now })
-      end
-
-      after_transition in_analysis: :online do |project, transition|
-        project.update_attributes({ online_date: DateTime.now })
-      end
-
       after_transition any => [:failed, :successful] do |project, transition|
         project.notify_observers :sync_with_mailchimp
       end
