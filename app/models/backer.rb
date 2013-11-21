@@ -3,7 +3,7 @@ class Backer < ActiveRecord::Base
   schema_associations
 
   include Shared::StateMachineHelpers
-  include BackerStateMachineHandler
+  include Backer::StateMachineHandler
 
   delegate :display_value, :display_confirmed_at, to: :decorator
 

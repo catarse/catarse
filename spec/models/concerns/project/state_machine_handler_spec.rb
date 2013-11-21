@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ProjectStateMachineHandler do
+describe Project::StateMachineHandler do
   let(:user){ create(:user) }
 
   describe "state machine" do
