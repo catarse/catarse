@@ -1,6 +1,9 @@
 - if Rails.env.production?
   = analytics_init if Configuration['google_analytics_id'].present?
-
+  - if params[:ref].present?
+    javascript:
+      #{GA::EventRenderer.new(GA::Event.new('_setCustomVar', 1, 'Reference', referal_link, 3), nil).to_s.html_safe}
+  
   - if Configuration['mixpanel_token'].present?
     javascript:
       (function(e,b){if(!b.__SV){
