@@ -3,8 +3,8 @@ class Project < ActiveRecord::Base
   schema_associations
 
   include Shared::StateMachineHelpers
-  include ProjectStateMachineHandler
-  include Projects::VideoHandler
+  include Project::StateMachineHandler
+  include Project::VideoHandler
   include ActionView::Helpers::TextHelper
   include PgSearch
   extend CatarseAutoHtml

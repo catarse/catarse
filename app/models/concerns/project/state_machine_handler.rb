@@ -1,4 +1,4 @@
-module ProjectStateMachineHandler
+module Project::StateMachineHandler
   extend ActiveSupport::Concern
 
   included do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BackerStateMachineHandler do
+describe Backer::StateMachineHandler do
   describe 'state_machine' do
     let(:backer) { create(:backer, state: initial_state) }
     let(:initial_state){ 'pending' }
