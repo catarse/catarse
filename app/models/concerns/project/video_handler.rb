@@ -1,4 +1,4 @@
-module Projects::VideoHandler
+module Project::VideoHandler
   extend ActiveSupport::Concern
 
   included do
