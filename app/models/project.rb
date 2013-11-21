@@ -2,12 +2,15 @@
 class Project < ActiveRecord::Base
   schema_associations
 
-  include Shared::StateMachineHelpers
-  include ProjectStateMachineHandler
-  include Projects::VideoHandler
+  extend CatarseAutoHtml
+
   include ActionView::Helpers::TextHelper
   include PgSearch
-  extend CatarseAutoHtml
+
+  include Shared::StateMachineHelpers
+  include Project::StateMachineHandler
+  include Project::VideoHandler
+  include Project::CustomValidators
 
   mount_uploader :uploaded_image, ProjectUploader
 
@@ -92,7 +95,6 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, allow_blank: true, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
   validates_format_of :video_url, with: /(https?\:\/\/|)(youtu(\.be|be\.com)|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
-  validate :permalink_cant_be_route, allow_nil: true
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
@@ -160,14 +162,6 @@ class Project < ActiveRecord::Base
 
   def pledged_and_waiting
     backers.with_states(['confirmed', 'waiting_confirmation']).sum(:value)
-  end
-
-  def permalink_cant_be_route
-    errors.add(:permalink, I18n.t("activerecord.errors.models.project.attributes.permalink.invalid")) if Project.permalink_on_routes?(permalink)
-  end
-
-  def self.permalink_on_routes?(permalink)
-    permalink && self.get_routes.include?(permalink.downcase)
   end
 
   def new_draft_recipient
