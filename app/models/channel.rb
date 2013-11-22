@@ -25,6 +25,10 @@ class Channel < ActiveRecord::Base
     user && subscribers.where(id: user.id).first.present?
   end
 
+  def to_s
+    self.name
+  end
+
   # Links to channels should be their permalink
   def to_param; self.permalink end
 
