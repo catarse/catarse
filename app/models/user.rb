@@ -1,5 +1,6 @@
 # coding: utf-8
 class User < ActiveRecord::Base
+  include User::OmniauthHandler
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   # :validatable
@@ -141,28 +142,6 @@ class User < ActiveRecord::Base
   def to_param
     return "#{self.id}" unless self.display_name
     "#{self.id}-#{self.display_name.parameterize}"
-  end
-
-  def self.create_with_omniauth(auth, current_user = nil)
-    omniauth_email = (auth["info"]["email"] rescue nil)
-    omniauth_email = (auth["extra"]["user_hash"]["email"] rescue nil) unless omniauth_email
-    if current_user
-      u = current_user
-    elsif omniauth_email && u = User.find_by_email(omniauth_email)
-    else
-      u = new do |user|
-        user.name = auth["info"]["name"]
-        user.email = omniauth_email
-        user.nickname = auth["info"]["nickname"]
-        user.bio = (auth["info"]["description"][0..139] rescue nil)
-        user.locale = I18n.locale.to_s
-        user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large" if auth["provider"] == "facebook"
-      end
-    end
-    provider = OauthProvider.where(name: auth['provider']).first
-    u.authorizations.build(uid: auth['uid'], oauth_provider_id: provider.id) if provider
-    u.save!
-    u
   end
 
   def total_backs
