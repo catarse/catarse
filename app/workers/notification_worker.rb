@@ -1,6 +1,6 @@
 class NotificationWorker
   include Sidekiq::Worker
-  sidekiq_options retry: true
+  sidekiq_options retry: 5
 
   def perform notification_id
     resource = Notification.find notification_id
