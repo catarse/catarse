@@ -106,13 +106,13 @@ en:
     texts:
       copyleft: "Made with love."
   main:
+    banner: "Discover the research"
     links:
       channels: "Discover Asas Channel"
       recommended: "Discover recommended projects"
       expiring: "Discover expiring projects"
       recents: "Discover recent projects"
       near: "Discover projects near you"
-    banner: "10 million turned into actions. Thank you!"
   sidebar:
     titles:
       blog: blog
