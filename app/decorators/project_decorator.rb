@@ -39,7 +39,7 @@ class ProjectDecorator < Draper::Decorator
 
   def display_video_embed_url
     if source.video_embed_url
-      "//#{source.video_embed_url}?title=0&byline=0&portrait=0&autoplay=0"
+      "#{source.video_embed_url}?title=0&byline=0&portrait=0&autoplay=0"
     end
   end
 
