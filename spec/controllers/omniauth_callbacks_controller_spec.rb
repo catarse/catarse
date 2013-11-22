@@ -72,7 +72,7 @@ describe OmniauthCallbacksController do
       end
 
       describe "assigned user" do
-        subject{ assigns(:user) }
+        subject{ assigns(:auth).user }
         its(:name){ should == "Foo" }
         it { subject.authorizations.should have(1).item }
       end
@@ -91,7 +91,7 @@ describe OmniauthCallbacksController do
       context "when there is no such user but we retrieve the email from omniauth" do
         let(:user){ nil }
         describe "assigned user" do
-          subject{ assigns(:user) }
+          subject{ assigns(:auth).user }
           its(:email){ should == "diogob@gmail.com" }
           its(:name){ should == "Diogo, Biazus" }
         end
@@ -100,12 +100,12 @@ describe OmniauthCallbacksController do
 
       context "when there is a valid user with this provider and uid and session return_to is /foo" do
         let(:return_to){ '/foo' }
-        it{ assigns(:user).should == user }
+        it{ assigns(:auth).user.should == user }
         it{ should redirect_to '/foo' }
       end
 
       context "when there is a valid user with this provider and uid and session return_to is nil" do
-        it{ assigns(:user).should == user }
+        it{ assigns(:auth).user.should == user }
         it{ should redirect_to root_path }
       end
     end
