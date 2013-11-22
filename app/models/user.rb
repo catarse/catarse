@@ -1,6 +1,4 @@
 # coding: utf-8
-
-
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -25,34 +23,11 @@ class User < ActiveRecord::Base
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_backs, :backs_text, :twitter_link, :gravatar_url,
     to: :decorator
-  # Setup accessible (or protected) attributes for your model
-  # TODO:
-  attr_accessible :email,
-    :password,
-    :password_confirmation,
-    :remember_me,
-    :name,
-    :nickname,
-    :image_url,
-    :uploaded_image,
-    :bio,
-    :newsletter,
-    :full_name,
-    :address_street,
-    :address_number,
-    :address_complement,
-    :address_neighbourhood,
-    :address_city,
-    :address_state,
-    :address_zip_code,
-    :phone_number,
-    :cpf,
-    :state_inscription,
-    :locale,
-    :twitter,
-    :facebook_link,
-    :other_link,
-    :moip_login
+
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :nickname,
+    :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
+    :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
+    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login
 
   mount_uploader :uploaded_image, UserUploader
 

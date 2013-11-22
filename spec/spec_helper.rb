@@ -6,10 +6,16 @@ Coveralls.wear!('rails')
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'sidekiq/testing'
+require 'fakeweb'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+
+def fixture_path(basename)
+  "spec/fixtures/#{basename}"
+end
+
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -41,6 +47,10 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with :truncation
     I18n.locale = :pt
     I18n.default_locale = :pt
+
+    FakeWeb.register_uri(:get, "http://vimeo.com/api/v2/video/17298435.json", response: fixture_path('vimeo_default_json_request.txt'))
+    FakeWeb.register_uri(:get, "http://vimeo.com/17298435", response: fixture_path('vimeo_default_request.txt'))
+    FakeWeb.register_uri(:get, "http://www.youtube.com/watch?v=Brw7bzU_t4c", response: fixture_path("youtube_request.txt"))
   end
 
   config.before(:each) do
@@ -87,4 +97,3 @@ RSpec.configure do |config|
     Configuration[:company_name] = 'Foo Bar Company'
   end
 end
-

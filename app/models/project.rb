@@ -2,19 +2,21 @@
 class Project < ActiveRecord::Base
   schema_associations
 
-  include Shared::StateMachineHelpers
-  include ProjectStateMachineHandler
-  include ActionView::Helpers::TextHelper
-  include PgSearch
   extend CatarseAutoHtml
 
+  include ActionView::Helpers::TextHelper
+  include PgSearch
+
+  include Shared::StateMachineHelpers
+  include Project::StateMachineHandler
+  include Project::VideoHandler
+  include Project::CustomValidators
+
   mount_uploader :uploaded_image, ProjectUploader
-  mount_uploader :video_thumbnail, ProjectUploader
 
   delegate :display_status, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
-    :display_pledged, :display_goal, :remaining_days, :display_video_embed_url, :progress_bar, :successful_flag,
+    :display_pledged, :display_goal, :remaining_days, :progress_bar, :successful_flag,
     to: :decorator
-
 
   has_and_belongs_to_many :channels
   has_one :project_total
@@ -93,7 +95,6 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :permalink, allow_blank: true, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
   validates_format_of :video_url, with: /(https?\:\/\/|)(youtu(\.be|be\.com)|vimeo).*+/, message: I18n.t('project.video_regex_validation'), allow_blank: true
-  validate :permalink_cant_be_route, allow_nil: true
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
@@ -110,13 +111,6 @@ class Project < ActiveRecord::Base
     order(sort_field)
   end
 
-  def self.finish_projects!
-    to_finish.each do |resource|
-      Rails.logger.info "[FINISHING PROJECT #{resource.id}] #{resource.name}"
-      resource.finish
-    end
-  end
-
   def subscribed_users
     User.subscribed_to_updates.subscribed_to_project(self.id)
   end
@@ -127,10 +121,6 @@ class Project < ActiveRecord::Base
 
   def expires_at
     online_date && (online_date + online_days.days).end_of_day
-  end
-
-  def video
-    @video ||= VideoInfo.get(self.video_url) if self.video_url.present?
   end
 
   def pledged
@@ -166,32 +156,12 @@ class Project < ActiveRecord::Base
     ((pledged / goal * 100).abs).round(pledged.to_i.size).to_i
   end
 
-  def update_video_embed_url
-    self.video_embed_url = self.video.embed_url if self.video.present?
-  end
-
-  def download_video_thumbnail
-    self.video_thumbnail = open(self.video.thumbnail_large) if self.video_url.present? && self.video
-  rescue OpenURI::HTTPError => e
-    Rails.logger.info "-----> #{e.inspect}"
-  rescue TypeError => e
-    Rails.logger.info "-----> #{e.inspect}"
-  end
-
   def pending_backers_reached_the_goal?
     pledged_and_waiting >= goal
   end
 
   def pledged_and_waiting
     backers.with_states(['confirmed', 'waiting_confirmation']).sum(:value)
-  end
-
-  def permalink_cant_be_route
-    errors.add(:permalink, I18n.t("activerecord.errors.models.project.attributes.permalink.invalid")) if Project.permalink_on_routes?(permalink)
-  end
-
-  def self.permalink_on_routes?(permalink)
-    permalink && self.get_routes.include?(permalink.downcase)
   end
 
   def new_draft_recipient

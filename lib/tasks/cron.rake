@@ -1,6 +1,8 @@
 desc "This task is called by the Heroku cron add-on"
 task :cron => :environment do
-  Project.finish_projects!
+  Project.to_finish.each do |project|
+    CampaignFinisherWorker.perform_async(project.id)
+  end
 end
 
 desc "Move to deleted state all backers that are in pending a lot of time"

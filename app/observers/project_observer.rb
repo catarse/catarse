@@ -1,10 +1,9 @@
 class ProjectObserver < ActiveRecord::Observer
   observe :project
 
-  def after_validation(project)
+  def after_save(project)
     if project.video_url.present? && project.video_url_changed?
-      project.download_video_thumbnail
-      project.update_video_embed_url
+      ProjectDownloaderWorker.perform_async(project.id)
     end
   end
 
@@ -28,6 +27,8 @@ class ProjectObserver < ActiveRecord::Observer
     end
 
     deliver_default_notification_for(project, :in_analysis_project)
+
+    project.update_attributes({ sent_to_analysis_at: DateTime.now })
   end
 
   def from_online_to_waiting_funds(project)
@@ -75,6 +76,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_in_analysis_to_online(project)
     deliver_default_notification_for(project, :project_visible)
+    project.update_attributes({ online_date: DateTime.now })
   end
 
   def from_online_to_failed(project)
@@ -145,9 +147,9 @@ class ProjectObserver < ActiveRecord::Observer
       project.user,
       {project_id: project.id, channel_id: project.last_channel.try(:id)},
       {
-        project: project, 
+        project: project,
         channel: project.last_channel,
-        origin_email: project.last_channel.try(:email) || Configuration[:email_projects], 
+        origin_email: project.last_channel.try(:email) || Configuration[:email_projects],
         origin_name: project.last_channel.try(:name) || Configuration[:company_name]
       }
     )
