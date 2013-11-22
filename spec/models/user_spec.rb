@@ -165,71 +165,31 @@ describe User do
     end
   end
 
-  describe ".create_with_omniauth" do
+  describe ".create_from_hash" do
     let(:auth)  do {
-        'provider' => "twitter",
-        'uid' => "foobar",
-        'info' => {
-          'name' => "Foo bar",
-          'email' => 'another_email@anotherdomain.com',
-          'nickname' => "foobar",
-          'description' => "Foo bar's bio".ljust(200),
-          'image' => "image.png"
-        }
+      'provider' => "facebook",
+      'uid' => "foobar",
+      'info' => {
+        'name' => "Foo bar",
+        'email' => 'another_email@anotherdomain.com',
+        'nickname' => "foobar",
+        'description' => "Foo bar's bio".ljust(200),
+        'image' => "image.png"
       }
+    }
     end
-    let(:created_user){ User.create_with_omniauth(auth) }
-    let(:oauth_provider){ OauthProvider.create! name: 'twitter', key: 'dummy_key', secret: 'dummy_secret' }
-    let(:oauth_provider_fb){ OauthProvider.create! name: 'facebook', key: 'dummy_key', secret: 'dummy_secret' }
-    before{ oauth_provider }
-    before{ oauth_provider_fb }
-    subject{ created_user }
-    its(:email){ should == auth['info']['email'] }
-    its(:name){ should == auth['info']['name'] }
-    its(:nickname){ should == auth['info']['nickname'] }
-    its(:bio){ should == auth['info']['description'][0..139] }
-
-    describe "when user is merging facebook account" do
-      let(:user) { create(:user, name: 'Test', email: 'test@test.com') }
-      let(:created_user){ User.create_with_omniauth(auth, user) }
-
-      subject { created_user }
-
-      its(:email) { should == 'test@test.com' }
-      it { subject.authorizations.first.uid.should == auth['uid'] }
+    subject{ User.create_from_hash(auth) }
+    context "when user is really new" do
+      it{ should be_persisted }
+      its(:email){ should == auth['info']['email'] }
     end
 
-    describe "when user is not logged in and logs in with a facebook account with the same email" do
-      let(:user) { create(:user, name: 'Test', email: 'another_email@anotherdomain.com') }
-      let(:created_user){ user; User.create_with_omniauth(auth) }
-
-      subject { created_user }
-
-      its(:id) { should == user.id }
-      its(:email) { should == 'another_email@anotherdomain.com' }
-      it { subject.authorizations.first.uid.should == auth['uid'] }
-    end
-
-    describe "created user's authorizations" do
-      subject{ created_user.authorizations.first }
-      its(:uid){ should == auth['uid'] }
-      its(:oauth_provider_id){ should == oauth_provider.id }
-    end
-
-    context "when user is from facebook" do
-      let(:auth)  do {
-        'provider' => "facebook",
-        'uid' => "foobar",
-        'info' => {
-          'name' => "Foo bar",
-          'email' => 'another_email@anotherdomain.com',
-          'nickname' => "foobar",
-          'description' => "Foo bar's bio".ljust(200),
-          'image' => "image.png"
-        }
-      }
+    context "when user with the same email exists" do
+      before do
+        create(:user, email: auth['info']['email'])
       end
-      its(:image_url){ should == "https://graph.facebook.com/#{auth['uid']}/picture?type=large" }
+      it{ should be_persisted }
+      its(:email){ should == auth['info']['email'] }
     end
   end
 
