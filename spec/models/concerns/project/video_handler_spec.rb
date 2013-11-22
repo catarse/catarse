@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Projects::VideoHandler do
+describe Project::VideoHandler do
   let(:project) { create(:project) }
 
   describe "#download_video_thumbnail" do

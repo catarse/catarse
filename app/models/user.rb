@@ -1,6 +1,4 @@
 # coding: utf-8
-
-
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -25,34 +23,11 @@ class User < ActiveRecord::Base
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_backs, :backs_text, :twitter_link, :gravatar_url,
     to: :decorator
-  # Setup accessible (or protected) attributes for your model
-  # TODO:
-  attr_accessible :email,
-    :password,
-    :password_confirmation,
-    :remember_me,
-    :name,
-    :nickname,
-    :image_url,
-    :uploaded_image,
-    :bio,
-    :newsletter,
-    :full_name,
-    :address_street,
-    :address_number,
-    :address_complement,
-    :address_neighbourhood,
-    :address_city,
-    :address_state,
-    :address_zip_code,
-    :phone_number,
-    :cpf,
-    :state_inscription,
-    :locale,
-    :twitter,
-    :facebook_link,
-    :other_link,
-    :moip_login
+
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :nickname,
+    :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
+    :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
+    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login
 
   mount_uploader :uploaded_image, UserUploader
 
@@ -168,26 +143,18 @@ class User < ActiveRecord::Base
     "#{self.id}-#{self.display_name.parameterize}"
   end
 
-  def self.create_with_omniauth(auth, current_user = nil)
-    omniauth_email = (auth["info"]["email"] rescue nil)
-    omniauth_email = (auth["extra"]["user_hash"]["email"] rescue nil) unless omniauth_email
-    if current_user
-      u = current_user
-    elsif omniauth_email && u = User.find_by_email(omniauth_email)
-    else
-      u = new do |user|
-        user.name = auth["info"]["name"]
-        user.email = omniauth_email
-        user.nickname = auth["info"]["nickname"]
-        user.bio = (auth["info"]["description"][0..139] rescue nil)
-        user.locale = I18n.locale.to_s
-        user.image_url = "https://graph.facebook.com/#{auth['uid']}/picture?type=large" if auth["provider"] == "facebook"
-      end
-    end
-    provider = OauthProvider.where(name: auth['provider']).first
-    u.authorizations.build(uid: auth['uid'], oauth_provider_id: provider.id) if provider
-    u.save!
-    u
+  def self.create_from_hash(hash)
+    find_or_create_by_email(
+      hash['info']['email'],
+      {
+        name: hash['info']['name'], 
+        email: hash['info']['email'], 
+        nickname: hash["info"]["nickname"],
+        bio: (hash["info"]["description"][0..139] rescue nil),
+        locale: I18n.locale.to_s,
+        image_url: "https://graph.facebook.com/#{hash['uid']}/picture?type=large" 
+      }
+    )
   end
 
   def total_backs

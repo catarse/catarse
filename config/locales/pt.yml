@@ -116,13 +116,13 @@ pt:
     texts:
       copyleft: "Feito com amor."
   main:
+    banner: "Conheça a pesquisa"
     links:
       channels: "Descubra o Canal Asas"
       recommended: "Descubra projetos recomendados"
       expiring: "Descubra projetos na reta final"
       recents: "Descubra projetos recentes"
       near: "Descubra projetos perto de você"
-    banner: "10 milhões transformados em ações. Obrigado!"
   sidebar:
     titles:
       blog: blog

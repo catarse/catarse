@@ -1,4 +1,4 @@
-module BackerStateMachineHandler
+module Backer::StateMachineHandler
   extend ActiveSupport::Concern
 
   included do

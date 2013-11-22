@@ -27,6 +27,8 @@ class ProjectObserver < ActiveRecord::Observer
     end
 
     deliver_default_notification_for(project, :in_analysis_project)
+
+    project.update_attributes({ sent_to_analysis_at: DateTime.now })
   end
 
   def from_online_to_waiting_funds(project)
@@ -74,6 +76,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_in_analysis_to_online(project)
     deliver_default_notification_for(project, :project_visible)
+    project.update_attributes({ online_date: DateTime.now })
   end
 
   def from_online_to_failed(project)
