@@ -27,6 +27,21 @@ describe Backer do
     it{ should allow_value(20).for(:value) }
   end
 
+  describe ".confirmed_today" do
+    before do
+      3.times { create(:backer, state: 'confirmed', confirmed_at: 2.days.ago) }
+      4.times { create(:backer, state: 'confirmed', confirmed_at: 6.days.ago) }
+
+      #TODO: need to investigate this timestamp issue when
+      # use DateTime.now or Time.now
+      7.times { create(:backer, state: 'confirmed', confirmed_at: 3.hours.from_now) }
+    end
+
+    subject { Backer.confirmed_today }
+
+    it { should have(7).items }
+  end
+
   describe ".between_values" do
     let(:start_at) { 10 }
     let(:ends_at) { 20 }
