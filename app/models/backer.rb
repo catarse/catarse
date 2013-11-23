@@ -23,6 +23,7 @@ class Backer < ActiveRecord::Base
   scope :anonymous, -> { where(anonymous: true) }
   scope :credits, -> { where(credits: true) }
   scope :not_anonymous, -> { where(anonymous: false) }
+  scope :confirmed_today, -> { with_state('confirmed').where("backers.confirmed_at::date = current_timestamp::date ") }
 
   scope :can_cancel, -> { where("backers.can_cancel") }
 
