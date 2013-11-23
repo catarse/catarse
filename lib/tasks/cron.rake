@@ -5,6 +5,17 @@ task :cron => :environment do
   end
 end
 
+desc "This tasks should be executed 1x per day"
+task notify_project_owner_about_new_confirmed_backers: :environment do
+  Project.with_backers_confirmed_today.each do |project|
+    Notification.notify(
+      :project_owner_backer_confirmed,
+      project.user,
+      project: project
+    )
+  end
+end
+
 desc "Move to deleted state all backers that are in pending a lot of time"
 task :move_pending_backers_to_trash => [:environment] do
   Backer.where("state in('pending') and created_at + interval '6 days' < current_timestamp").update_all({state: 'deleted'})
