@@ -3,6 +3,7 @@ CarrierWave.configure do |config|
     config.fog_credentials = {
       provider: 'AWS',
       host: 's3.amazonaws.com',
+      endpoint: 'http://s3.amazonaws.com',
       aws_access_key_id: Configuration[:aws_access_key],
       aws_secret_access_key: Configuration[:aws_secret_key]
     }
