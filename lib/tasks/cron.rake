@@ -8,8 +8,9 @@ end
 desc "This tasks should be executed 1x per day"
 task notify_project_owner_about_new_confirmed_backers: :environment do
   Project.with_backers_confirmed_today.each do |project|
-    Notification.notify(
+    Notification.notify_once(
       :project_owner_backer_confirmed,
+      {user_id: project.user.id, project_id: project.id, 'created_at::date' => Date.today},
       project.user,
       project: project
     )
