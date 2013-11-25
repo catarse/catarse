@@ -63,16 +63,6 @@ describe BackerObserver do
         it("should send confirm_backer notification"){ subject }
         its(:confirmed_at) { should_not be_nil }
       end
-
-      context 'notify project owner about this backer' do
-        before do
-          Notification.should_receive(:notify).at_least(:once).with(:project_owner_backer_confirmed,
-            backer.project.user, backer: backer, project_name: backer.project.name)
-        end
-
-        it("should send project_owner_backer_confirmed notification"){ subject }
-        its(:confirmed_at) { should_not be_nil }
-      end
     end
 
     context "when is already confirmed" do
