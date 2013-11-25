@@ -82,7 +82,7 @@ class ProjectDecorator < Draper::Decorator
     if source.video_thumbnail.url.present?
       source.video_thumbnail.send(version).url
     elsif source.video
-      source.video.thumbnail_large
+      source.video.thumbnail_large rescue nil
     end
   end
 
