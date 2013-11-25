@@ -34,6 +34,44 @@ describe Project do
     it{ should_not allow_value('users').for(:permalink) }
   end
 
+  describe ".with_backers_confirmed_today" do
+    let(:project_01) { create(:project, state: 'online') }
+    let(:project_02) { create(:project, state: 'online') }
+    let(:project_03) { create(:project, state: 'online') }
+
+    subject { Project.with_backers_confirmed_today }
+
+    before do
+      project_01
+      project_02
+      project_03
+    end
+
+    context "when have confirmed backers today" do
+      before do
+
+        #TODO: need to investigate this timestamp issue when
+        # use DateTime.now or Time.now
+        create(:backer, state: 'confirmed', project: project_01, confirmed_at: 3.hours.from_now )
+        create(:backer, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
+        create(:backer, state: 'confirmed', project: project_03, confirmed_at: 3.hours.from_now )
+      end
+
+      it { should have(2).items }
+      it { subject.include?(project_02).should be_false }
+    end
+
+    context "when does not have any confirmed backer today" do
+      before do
+        create(:backer, state: 'confirmed', project: project_01, confirmed_at: 1.days.ago )
+        create(:backer, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
+        create(:backer, state: 'confirmed', project: project_03, confirmed_at: 5.days.ago )
+      end
+
+      it { should have(0).items }
+    end
+  end
+
   describe ".visible" do
     before do
       [:draft, :rejected, :deleted, :in_analysis].each do |state|
