@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails',    '4.0.0'
-gem 'mail',     '2.5.3'
+gem 'rails',    '4.0.1'
 
 gem 'protected_attributes', '~> 1.0.3' # When upgrade to strong_parameters, remove this gem.
 gem 'rails-observers', '~> 0.1.2'
@@ -18,7 +17,7 @@ gem 'best_in_place', github: 'bernat/best_in_place', branch: 'rails-4'
 gem 'state_machine', require: 'state_machine/core'
 
 # paranoid stuff
-gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
+gem 'paper_trail', '>= 3.0.0.rc2'
 
 # Database and data related
 gem 'pg'
