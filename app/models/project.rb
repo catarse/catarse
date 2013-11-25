@@ -84,6 +84,10 @@ class Project < ActiveRecord::Base
     where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id AND cp.channel_id = ?)", channels)
   }
 
+  scope :with_backers_confirmed_today, -> {
+    joins(:backers).merge(Backer.confirmed_today).uniq
+  }
+
   attr_accessor :accepted_terms
 
   validates_acceptance_of :accepted_terms, on: :create
