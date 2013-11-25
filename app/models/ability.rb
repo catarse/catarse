@@ -69,7 +69,7 @@ class Ability
       backer.user == current_user
     end
 
-    cannot :update_info, :backers, [:user_attributes, :user_id, :user, :value, :payment_service_fee, :payment_id] do |backer|
+    cannot :update, :backers, [:user_attributes, :user_id, :user, :value, :payment_service_fee, :payment_id] do |backer|
       backer.user == current_user
     end
 
