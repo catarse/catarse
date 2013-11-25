@@ -10,7 +10,7 @@ task notify_project_owner_about_new_confirmed_backers: :environment do
   Project.with_backers_confirmed_today.each do |project|
     Notification.notify_once(
       :project_owner_backer_confirmed,
-      {user_id: project.user.id, project_id: project.id, 'created_at::date' => Date.today},
+      {user_id: project.user.id, project_id: project.id, 'projects.created_at::date' => Date.today},
       project.user,
       project: project
     )
