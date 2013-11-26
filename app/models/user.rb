@@ -144,8 +144,7 @@ class User < ActiveRecord::Base
   end
 
   def self.create_from_hash(hash)
-    find_or_create_by_email(
-      hash['info']['email'],
+    create!(
       {
         name: hash['info']['name'], 
         email: hash['info']['email'], 
