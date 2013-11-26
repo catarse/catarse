@@ -179,18 +179,8 @@ describe User do
     }
     end
     subject{ User.create_from_hash(auth) }
-    context "when user is really new" do
-      it{ should be_persisted }
-      its(:email){ should == auth['info']['email'] }
-    end
-
-    context "when user with the same email exists" do
-      before do
-        create(:user, email: auth['info']['email'])
-      end
-      it{ should be_persisted }
-      its(:email){ should == auth['info']['email'] }
-    end
+    it{ should be_persisted }
+    its(:email){ should == auth['info']['email'] }
   end
 
   describe ".create" do
