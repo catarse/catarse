@@ -11,7 +11,7 @@ task notify_project_owner_about_new_confirmed_backers: :environment do
     Notification.notify_once(
       :project_owner_backer_confirmed,
       project.user,
-      {user_id: project.user.id, project_id: project.id, 'notifications.created_at::date' => Date.today},
+      {user_id: project.user.id, project_id: project.id, 'notifications.created_at' => Date.today},
       {project: project}
     )
   end
