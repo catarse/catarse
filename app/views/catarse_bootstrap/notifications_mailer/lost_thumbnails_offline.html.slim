@@ -1,0 +1,30 @@
+p Oi, #{@notification.project.user.name},
+
+p Mesmo que um projeto já tenha sido financiado no Catarse, queremos garantir que esse projeto continue gerando frutos positivos para os realizadores. 
+
+p Viemos aqui pedir desculpa e uma ajudinha!
+
+p Tivemos um problema em nosso sistema ontem: perdemos a imagem fornecida por você que aparece na página de busca, representando o seu projeto. Elas foram temporariamente substituídas pela imagem fornecida pelo vídeo do seu projeto.  
+
+p Mas é possível recuperarmos a sua imagem e a solução é rápida e indolor.
+
+p Basta você subi-la novamente através desse passo-a-passo:
+
+ol
+  li 
+    | Entrar na 
+    = link_to 'página do seu projeto', project_by_slug_url(permalink: @notification.project.permalink, anchor: 'edit')
+  li Acessar a aba “Edição” (o link acima deve lever direto a ela)
+  li No campo “Thumbnail do projeto”, fazer o upload da imagem
+  li Clicar no botão “Atualizar Projeto” na parte inferior da tela.
+
+p Pronto! Com isso a sua imagem será recuperada e representará o seu projeto para todo mundo que estiver navegando pelo site. 
+
+p Muito obrigado pela atenção e ajuda. Se tiver qualquer dúvida é só responder a este e-mail. 
+
+p Um abraço,
+
+p
+  | Diego Reeberg
+  br/
+  | Suporte à Comunidade
