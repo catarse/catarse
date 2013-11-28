@@ -26,7 +26,7 @@ table width="500" border="1" cellpadding="10" cellspacing="0" style='font-size: 
         td= backer.user.display_name
         td= backer.user.email
         td= backer.display_value
-        td= backer.reward.display_description
+        td= backer.reward.display_description if backer.reward.present?
 br/
 br/
 | Veja todos os seus apoiadores #{link_to 'aqui', project_by_slug_url(permalink: project.permalink, anchor: 'backers', target: '__blank')}!
