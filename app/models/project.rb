@@ -128,15 +128,15 @@ class Project < ActiveRecord::Base
   end
 
   def pledged
-    project_total ? project_total.pledged : 0.0
+    project_total.try(:pledged).to_f
   end
 
   def total_backers
-    project_total ? project_total.total_backers : 0
+    project_total.try(:total_backers).to_i
   end
 
   def total_payment_service_fee
-    project_total ? project_total.total_payment_service_fee : 0.0
+    project_total.try(:total_payment_service_fee).to_f
   end
 
   def selected_rewards

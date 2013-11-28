@@ -126,11 +126,11 @@ class User < ActiveRecord::Base
   end
 
   def credits
-    user_total ? user_total.credits : 0.0
+    user_total.try(:credits).to_f
   end
 
   def total_backed_projects
-    user_total ? user_total.total_backed_projects : 0
+    user_total.try(:total_backed_projects).to_i
   end
 
   def facebook_id
@@ -146,12 +146,12 @@ class User < ActiveRecord::Base
   def self.create_from_hash(hash)
     create!(
       {
-        name: hash['info']['name'], 
-        email: hash['info']['email'], 
+        name: hash['info']['name'],
+        email: hash['info']['email'],
         nickname: hash["info"]["nickname"],
         bio: (hash["info"]["description"][0..139] rescue nil),
         locale: I18n.locale.to_s,
-        image_url: "https://graph.facebook.com/#{hash['uid']}/picture?type=large" 
+        image_url: "https://graph.facebook.com/#{hash['uid']}/picture?type=large"
       }
     )
   end
