@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Project::StateMachineHandler do
-  let(:user){ create(:user) }
+  let(:user){ create(:user, full_name: 'Lorem Ipsum', cpf: '99999999999', phone_number: '99999999', moip_login: 'foobar') }
 
   describe "state machine" do
-    let(:project) { create(:project, state: 'draft', online_date: nil) }
+    let(:project) { create(:project, state: 'draft', online_date: nil, user: user) }
 
     describe "#send_to_analysis" do
       subject { project.in_analysis? }
@@ -83,6 +83,10 @@ describe Project::StateMachineHandler do
       it 'should persist the online_date' do
         project.approve
         expect(project.online_date).to_not be_nil
+        expect(project.audited_user_name).to_not be_nil
+        expect(project.audited_user_cpf).to_not be_nil
+        expect(project.audited_user_moip_login).to_not be_nil
+        expect(project.audited_user_phone_number).to_not be_nil
       end
     end
 
