@@ -12,7 +12,7 @@ class Update < ActiveRecord::Base
   scope :visible_to, ->(user) {
     user_id = (user.try(:id))
 
-    return if user.try(:admin)
+    return if user.try(:admin?)
 
     where(
       "not exclusive
