@@ -126,11 +126,11 @@ class User < ActiveRecord::Base
   end
 
   def credits
-    user_total.try(:credits) || 0.0
+    user_total.try(:credits).to_f
   end
 
   def total_backed_projects
-    user_total.try(:total_backed_projects) || 0
+    user_total.try(:total_backed_projects).to_i
   end
 
   def facebook_id
