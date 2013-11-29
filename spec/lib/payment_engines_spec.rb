@@ -8,6 +8,17 @@ describe PaymentEngines do
   let(:backer){ FactoryGirl.create(:backer) }
   before{ PaymentEngines.clear }
 
+  describe ".find_engine" do
+    before do
+      PaymentEngines.register engine
+      PaymentEngines.register engine_pt
+    end
+
+    subject { PaymentEngines.find_engine('test pt') }
+
+    it { should == engine_pt}
+  end
+
   describe ".register" do
     before{ PaymentEngines.register engine }
     subject{ PaymentEngines.engines }
@@ -41,7 +52,7 @@ describe PaymentEngines do
   describe ".engines" do
     subject{ PaymentEngines.engines }
     before do
-      PaymentEngines.register engine 
+      PaymentEngines.register engine
       PaymentEngines.register engine_pt
     end
     context "when locale is pt" do
