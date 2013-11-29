@@ -49,6 +49,7 @@ en:
           cancel: 'Backer canceled!'
           push_to_trash: 'Backer deleted!'
       index:
+        send_refund_request_backer: 'Send refund request'
         push_to_trash: 'Delete backer'
         cancel: 'Cancel backer'
         refund_and_hide: 'Refund and hide'
