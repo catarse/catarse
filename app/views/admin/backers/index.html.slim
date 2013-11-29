@@ -154,6 +154,8 @@
                         - else
                           li= link_to t('admin.backers.index.confirm_backer'), confirm_admin_backer_path(backer, local_params: params), method: :put
                         - if backer.requested_refund? or backer.confirmed?
+                          - if backer.refund_path
+                            li= link_to t('admin.backers.index.send_refund_request_backer'), backer.refund_path, method: :post
                           li= link_to t('admin.backers.index.refund_backer'), refund_admin_backer_path(backer, local_params: params), method: :put
                         li= link_to t('admin.backers.index.refund_and_hide'), hide_admin_backer_path(backer, local_params: params), method: :put
                         li= link_to t('admin.backers.index.cancel'), cancel_admin_backer_path(backer, local_params: params), method: :put
