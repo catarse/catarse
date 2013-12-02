@@ -94,6 +94,7 @@ pt:
           cancel: 'Apoio cancelado com sucesso!'
           push_to_trash: 'Apoio deletado com sucesso!'
       index:
+        send_refund_request_backer: 'Enviar solicitação de reembolso'
         push_to_trash: 'Deletar apoio'
         cancel: 'Cancelar apoio'
         between_values: 'Valores entre'

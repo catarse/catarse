@@ -100,7 +100,7 @@ GEM
     catarse_moip (2.0.8)
       libxml-ruby (~> 2.6.0)
       rails (~> 4.0)
-    catarse_paypal_express (2.0.0)
+    catarse_paypal_express (2.1.0)
       activemerchant (>= 1.34.0)
       rails (~> 4.0)
       slim-rails
@@ -475,7 +475,7 @@ DEPENDENCIES
   carrierwave (~> 0.8.0)
   catarse_mailchimp!
   catarse_moip (~> 2.0.8)
-  catarse_paypal_express (~> 2.0.0)
+  catarse_paypal_express (~> 2.1.0)
   chartkick
   coffee-rails (~> 4.0.0)
   compass-960-plugin
