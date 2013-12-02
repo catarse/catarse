@@ -5,6 +5,7 @@ class Backer < ActiveRecord::Base
   include Shared::StateMachineHelpers
   include Backer::StateMachineHandler
   include Backer::CustomValidators
+  include Backer::PaymentEngineHandler
 
   delegate :display_value, :display_confirmed_at, to: :decorator
 

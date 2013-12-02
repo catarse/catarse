@@ -29,7 +29,7 @@ gem 'schema_associations'
 gem 'chartkick'
 
 # Payment engines
-gem 'catarse_paypal_express', '~> 2.0.0'
+gem 'catarse_paypal_express', '~> 2.1.0'
 gem 'catarse_moip', '~> 2.0.8'
 
 # Decorators
