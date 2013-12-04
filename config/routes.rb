@@ -60,7 +60,6 @@ Catarse::Application.routes.draw do
   root to: 'projects#index'
 
   # Static Pages
-  get '/sitemap',               to: 'static#sitemap',             as: :sitemap
   get "/guidelines_tips",       to: "static#guidelines_tips",     as: :guidelines_tips
   get "/guidelines_start",      to: "static#guidelines_start",    as: :guidelines_start
 
