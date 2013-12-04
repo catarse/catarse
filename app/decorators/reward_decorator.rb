@@ -1,6 +1,7 @@
 class RewardDecorator < Draper::Decorator
   decorates :reward
   include Draper::LazyHelpers
+  include AutoHtml
 
   def display_deliver_prevision
     I18n.l((source.project.expires_at + source.days_to_delivery.days), format: :prevision)
@@ -31,11 +32,11 @@ class RewardDecorator < Draper::Decorator
   def last_description
     if source.versions.present?
       reward = source.versions.last.reify(has_one: true)
-      auto_link(simple_format(reward.description), html: {target: :_blank})
+      auto_html(reward.description) { simple_format; link(:target => 'blank') }
     end
   end
 
   def display_description
-    auto_link(simple_format(source.description), html: {target: :_blank})
+    auto_html(source.description){ simple_format; link(:target => 'blank') }
   end
 end
