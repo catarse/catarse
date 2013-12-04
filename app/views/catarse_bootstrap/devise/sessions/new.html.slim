@@ -19,7 +19,7 @@
       .clearfix
 
       .large-11.large-centered.columns
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html:{novalidate: browser.safari?}) do |f|
           = render 'devise/shared/alert'
           p
             = f.label :email
