@@ -1,6 +1,8 @@
 = content_for :meta_tags do
   - if @project.draft? || @project.rejected? || @project.failed? || @project.deleted?
     meta name="robots" content="noindex, nofollow"
+  - else
+    meta name="robots" content="index, follow"
 
   - if @update
     meta name="description" content=@update.title
