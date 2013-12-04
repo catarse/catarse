@@ -1,5 +1,4 @@
 # coding: utf-8
-require 'rails_autolink'
 class Reward < ActiveRecord::Base
   include RankedModel
 
