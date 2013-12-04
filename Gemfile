@@ -36,7 +36,7 @@ gem 'catarse_moip', '~> 2.0.8'
 gem 'draper'
 
 # Frontend stuff
-gem 'slim-rails', '~> 1.1.1'
+gem 'slim-rails'
 gem 'jquery-rails'
 gem 'browser'
 
