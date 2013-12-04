@@ -31,15 +31,6 @@
               = f.label :has_credits, t('.credits')
       .clearfix
     .data-table
-      h2
-        strong= "#{@total_users} "
-        = t('.total_backers')
-        |  ·
-        strong= "#{number_to_currency @total_backed, precision: 0} "
-        = t('.total_backed')
-        |  ·
-        strong= "#{number_to_currency @total_credits, precision: 0} "
-        = t('.total_credits')
       br
       = paginate @users
       br

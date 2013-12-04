@@ -137,34 +137,7 @@ describe User do
     end
     it{ should == [@backer.user] }
   end
-
-  describe ".backer_totals" do
-    before do
-      create(:backer, state: 'confirmed', value: 100, credits: false, project: successful_project)
-      create(:backer, state: 'confirmed', value: 50, credits: false, project: successful_project)
-      user = create(:backer, state: 'confirmed', value: 25, project: failed_project).user
-      failed_project.update_attributes state: 'failed'
-      successful_project.update_attributes state: 'successful'
-      user.save!
-      @u = create(:user)
-    end
-
-    context "when we call upon user without backs" do
-      subject{ User.where(id: @u.id).backer_totals }
-      it{ should == {users: 0.0, backers: 0.0, backed: 0.0, credits: 0.0} }
-    end
-
-    context "when we call without scopes" do
-      subject{ User.backer_totals }
-      it{ should == {users: 3.0, backers: 3.0, backed: 175.0, credits: 25.0} }
-    end
-
-    context "when we call with scopes" do
-      subject{ User.has_credits.backer_totals }
-      it{ should == {users: 1.0, backers: 1.0, backed: 25.0, credits: 25.0} }
-    end
-  end
-
+  
   describe ".create_from_hash" do
     let(:auth)  do {
       'provider' => "facebook",
