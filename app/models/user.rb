@@ -103,19 +103,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.backer_totals
-    connection.select_one(
-      self.all.
-      joins(:user_total).
-      select('
-        count(DISTINCT user_id) as users,
-        count(*) as backers,
-        sum(user_totals.sum) as backed,
-        sum(user_totals.credits) as credits').
-      to_sql
-    ).reduce({}){|memo,el| memo.merge({ el[0].to_sym => BigDecimal.new(el[1] || '0') }) }
-  end
-
   def has_facebook_authentication?
     oauth = OauthProvider.find_by_name 'facebook'
     authorizations.where(oauth_provider_id: oauth.id).present? if oauth
