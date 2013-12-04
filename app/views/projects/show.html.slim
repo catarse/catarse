@@ -1,4 +1,7 @@
 = content_for :meta_tags do
+  - if @project.draft? || @project.rejected? || @project.failed? || @project.deleted?
+    meta name="robots" content="noindex, nofollow"
+
   - if @update
     meta name="description" content=@update.title
     meta property="og:title" content=@update.title
