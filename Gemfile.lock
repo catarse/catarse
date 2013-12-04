@@ -314,8 +314,6 @@ GEM
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_autolink (1.1.5)
-      rails (> 3.1)
     rails_serve_static_assets (0.0.1)
     rails_stdout_logging (0.0.3)
     railties (4.0.1)
@@ -520,7 +518,6 @@ DEPENDENCIES
   rails (= 4.0.1)
   rails-observers (~> 0.1.2)
   rails_12factor
-  rails_autolink (~> 1.1.0)
   ranked-model
   rmagick
   routing-filter (~> 0.4.0.pre)
