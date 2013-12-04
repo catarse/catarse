@@ -1,4 +1,9 @@
 = content_for :meta_tags do
+  - if ['online', 'waiting_funds', 'successful'].include? @project.state
+    meta name="robots" content="index, follow"
+  - else
+    meta name="robots" content="noindex, nofollow"
+
   - if @update
     meta name="description" content=@update.title
     meta property="og:title" content=@update.title
