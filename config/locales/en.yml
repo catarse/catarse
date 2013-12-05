@@ -235,21 +235,6 @@ en:
       refunded: "This payment has already been refunded."
       requested_refund: "You already requested a refund for this payment."
     title: "My credits"
-  credits_mailer:
-    request_refund_from:
-      subject: "Refund request from project %{name}"
-      subject_html: "User %{name} requested refund for the back %{backer_key} to the project %{backer_project} in the amount of %{backer_value} made by %{backer_payment_service} gateway."
-      user_name: 'User name'
-      user_email: 'User email'
-      payer_email: 'Payment email'
-      payer_name: 'User name used on payment'
-      project: 'Project'
-      backer_key: 'Backer key'
-      payment_id: 'Payment ID'
-      backer_value: 'Backer value'
-      payment_method: 'Payment method'
-      payment_choice: 'Payment choice'
-      created_at: 'created at'
   curated_pages:
     index:
       title: "Curated pages"
