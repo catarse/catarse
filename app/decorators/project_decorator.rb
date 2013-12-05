@@ -47,6 +47,11 @@ class ProjectDecorator < Draper::Decorator
     source.expires_at ? I18n.l(source.expires_at.to_date) : ''
   end
 
+  def progress
+    return 0 if source.goal == 0.0
+    ((source.pledged / source.goal * 100).abs).round(source.pledged.to_i.size).to_i
+  end
+
   def display_pledged
     number_to_currency source.pledged
   end

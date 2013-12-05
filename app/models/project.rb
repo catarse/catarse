@@ -4,7 +4,6 @@ class Project < ActiveRecord::Base
 
   extend CatarseAutoHtml
 
-  include ActionView::Helpers::TextHelper
   include PgSearch
 
   include Shared::StateMachineHelpers
@@ -14,7 +13,7 @@ class Project < ActiveRecord::Base
 
   mount_uploader :uploaded_image, ProjectUploader
 
-  delegate :display_status, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
+  delegate :display_status, :progress, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
     :display_pledged, :display_goal, :remaining_days, :progress_bar, :successful_flag,
     to: :decorator
 
@@ -42,18 +41,18 @@ class Project < ActiveRecord::Base
   scope :by_user_email, ->(email) { joins(:user).where("users.email = ?", email) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
+  scope :by_category_id, ->(id) { where(category_id: id) }
   scope :by_online_date, ->(online_date) { where("online_date::date = ?", online_date.to_date) }
   scope :by_expires_at, ->(expires_at) { where("projects.expires_at::date = ?", expires_at.to_date) }
   scope :by_updated_at, ->(updated_at) { where("updated_at::date = ?", updated_at.to_date) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
-  scope :by_category_id, ->(id) { where(category_id: id) }
+  scope :recommended, -> { where(recommended: true) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(?))", address_state) }
   scope :to_finish, ->{ expired.with_states(['online', 'waiting_funds']) }
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted', 'in_analysis']) }
   scope :financial, -> { with_states(['online', 'successful', 'waiting_funds']).where("projects.expires_at > (current_timestamp - '15 days'::interval)") }
-  scope :recommended, -> { where(recommended: true) }
   scope :expired, -> { where("projects.expires_at < current_timestamp") }
   scope :not_expired, -> { where("projects.expires_at >= current_timestamp") }
   scope :expiring, -> { not_expired.where("projects.expires_at <= (current_timestamp + interval '2 weeks')") }
@@ -153,11 +152,6 @@ class Project < ActiveRecord::Base
 
   def in_time_to_wait?
     backers.with_state('waiting_confirmation').count > 0
-  end
-
-  def progress
-    return 0 if goal == 0.0
-    ((pledged / goal * 100).abs).round(pledged.to_i.size).to_i
   end
 
   def pending_backers_reached_the_goal?
