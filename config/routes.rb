@@ -59,11 +59,6 @@ Catarse::Application.routes.draw do
   # Root path should be after channel constraints
   root to: 'projects#index'
 
-  # Static Pages
-  get "/guidelines_tips",       to: "static#guidelines_tips",     as: :guidelines_tips
-  get "/guidelines_start",      to: "static#guidelines_start",    as: :guidelines_start
-
-
   get "/explore" => "explore#index", as: :explore
 
   namespace :reports do
