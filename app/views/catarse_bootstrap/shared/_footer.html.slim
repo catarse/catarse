@@ -1,0 +1,41 @@
+footer
+  .row
+    .large-3.columns
+      h3.footer-title= t('footer.titles.contact')
+      ul.footer-list
+        li= link_to t('footer.links.twitter'), "#{::Configuration[:twitter_url]}", target: '_blank'
+        li= link_to t('footer.links.facebook'), "#{::Configuration[:facebook_url]}", target: '_blank'
+        li= link_to t('footer.links.instagram'), "#{::Configuration[:instagram_url]}", target: '_blank'
+        li= link_to t('footer.links.github'), "#{::Configuration[:github_url]}", target: '_blank'
+        li= link_to t('footer.links.blog'), "#{::Configuration[:blog_url]}", target: '_blank'
+        li= link_to t('footer.links.contact'), '#', data: { uv_lightbox: 'classic_widget', uv_mode: 'support', uv_primary_color: '#79808b', uv_link_color: '#3f4652', uv_topic_id: '25760'}
+    .large-3.columns
+      h3.footer-title= t('footer.titles.about')
+      ul.footer-list
+        li= link_to t('footer.links.faq'), "#{Configuration[:faq_url]}", target: '_blank'
+        li= link_to t('footer.links.feedback'), "#{::Configuration[:feedback_url]}", target: '_blank'
+        li= link_to t('footer.links.terms'), "#{::Configuration[:terms_url]}", target: '_blank'
+        li= link_to t('footer.links.privacy'), "#{::Configuration[:privacy_url]}", target: '_blank'
+    .large-3.columns
+      h3.footer-title= t('footer.titles.sitemap')
+      ul.footer-list
+        li= link_to t('footer.links.submit'), page_path(:how_it_works)
+        li= link_to t('footer.links.discover'), explore_path
+        - if current_user
+          li= link_to t('footer.links.near'), explore_path(anchor: "near_of/#{current_user.address_state}")
+        li= link_to t('footer.links.recommended'), explore_path(anchor: "recommended")
+        li= link_to t('footer.links.expiring'), explore_path(anchor: "expiring")
+        li= link_to t('footer.links.recents'), explore_path(anchor: "recent")
+    .large-3.columns
+      h3.footer-title= t('footer.titles.newsletter')
+      .newsletter-footer
+        = render 'layouts/newsletter'
+      h3.footer-title= t('footer.titles.social')
+      .twitter-box
+        = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
+      .facebook-box
+        = render_facebook_like href: "", colorscheme: "dark", width: "171"
+  .row
+    hr/
+  .row
+    p.copyleft= "#{t('footer.texts.copyleft')} Catarse, 2013 | Open source #{link_to 'Catarse @ Github', "#{::Configuration[:github_url]}", :class => 'github', target: '_blank'}".html_safe
