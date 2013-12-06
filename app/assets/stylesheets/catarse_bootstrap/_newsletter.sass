@@ -1,0 +1,39 @@
+.newsletter
+  display: inline-block
+  height: 34px
+  width: 100%
+  position: relative
+  .newsletter-input
+    border: none
+    font-size: 13px
+    width: 100%
+    height: 36px
+    line-height: 36px
+    text-indent: 5px
+    border: 1px solid #ddd
+    padding: 1px 40px 1px 4px
+    +border-radius(3px)
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
+    box-sizing: border-box
+    background: rgba(#FFFFFF, 0.1)
+  .newsletter-submit
+    position: absolute
+    top: 2px
+    right: 2px
+    border: none
+    background: #3C9DFF url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -163px -74px
+    height: 32px
+    width: 32px
+    text-align: center
+    font-size: 18px
+    +border-radius(3px)
+    text-indent: -9999px
+    &:hover
+      background: rgba(#3C9DFF, 0.8) url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -163px -74px
+
+.newsletter-footer
+  .newsletter
+    margin: 0 0 2.6em
+  .newsletter-input
+    border: none
