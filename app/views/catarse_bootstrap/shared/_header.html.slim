@@ -1,30 +1,46 @@
 header
   .row
-    h1.large-2.columns.no-padding
-      = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo-image', :title => Configuration[:company_name]
-    .large-10.columns.no-padding
-      nav.nav-horizontal-right
-        ul
+    h1.large-2.columns
+      = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo', :title => Configuration[:company_name]
+    .large-3.columns
+      ul.call-to-action
+        li.nav-item
+          = link_to t('layouts.header.submit'), page_path(:how_it_works), :class => 'project'
+        li.nav-item
+          = link_to t('layouts.header.discover'), explore_path, :class => 'project'
+    .large-3.columns
+      = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
+        = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "discover-form-input"
+        = submit_tag
+    .large-4.columns
+      ul.user-utilities
+        li.nav-item
+          = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if Configuration[:support_forum].present?
+
+        li.nav-item
+          = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank, class: 'header-nav-item' if Configuration['blog_url'].present?
+
+        li.nav-item.locales
+          - I18n.available_locales.map(&:to_s).sort.reverse.each do |locale|
+              = link_to locale, params.merge(locale: locale)
+        li.nav-item
+        - if current_user
           li.nav-item
-            = link_to t('layouts.header.submit'), page_path(:how_it_works), :class => 'project'
+            = link_to '#', class: 'user-menu' do
+              = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
+            ul.dropdown.user
+              li= link_to t('layouts.header.profile'), current_user
+              li
+                = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
+                .small
+                  | (#{current_user.display_credits})
+              - if current_user.admin? || current_user.channel
+                li.divider
+                - for menu, path in controller.menu do
+                  li= link_to menu, path
+              li.divider= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
+        - else
           li.nav-item
-          - if current_user
-            li.nav-item
-              = link_to '#', class: 'user-menu' do
-                = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
-              ul.dropdown.user
-                li= link_to t('layouts.header.profile'), current_user
-                li
-                  = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
-                  .small
-                    | (#{current_user.display_credits})
-                - if current_user.admin? || current_user.channel
-                  li.divider
-                  - for menu, path in controller.menu do
-                    li= link_to menu, path
-                li.divider= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
-          - else
-            li.nav-item
-              = link_to t('channels.header.signup'), new_user_registration_path, class: 'standard-link'
-            li.nav-item
-              = link_to t('channels.header.signin'), new_user_session_path, class: 'standard-link'
+            = link_to t('channels.header.signup'), new_user_registration_path
+          li.nav-item
+            = link_to t('channels.header.signin'), new_user_session_path
