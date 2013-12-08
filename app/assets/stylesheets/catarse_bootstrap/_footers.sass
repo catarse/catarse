@@ -1,5 +1,50 @@
-footer
+.channel_footer
   border-top: 1px solid $border-gray
   padding: 3em 0
   .standard-link
     font-size: .8em
+
+footer
+  // The footer position is relative to hide behind it any fixed element (like the how it works menu)
+  position: relative
+  z-index: 10
+  background: $purple
+  padding: 2em 0 1.8em
+  hr
+    background: none
+    border: none
+    border-top: 1px solid rgba(255, 255, 255, 0.1)
+    width: 100%
+
+.footer-title
+  color: #fff
+  font-size: 0.8em
+  font-weight: bold
+
+.footer-list
+  list-style: none
+  padding: 0
+  li
+    margin: 0 0 1.5em
+  a
+    text-decoration: none
+    color: rgba(255, 255, 255, 0.5)
+    font-size: 0.8em
+    &:hover
+      text-decoration: underline
+
+.twitter-box
+  margin: 0 0 1.25em
+
+.copyleft
+  color: rgba(255, 255, 255, 0.5)
+  line-height: 35px
+  font-size: 0.8em
+
+.github
+  background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -152px -125px transparent
+  display: inline-block
+  height: 28px
+  text-indent: -9999px
+  width: 35px
+
