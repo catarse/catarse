@@ -1,0 +1,35 @@
+= render 'shared/header'
+= content_for :title, 'Como funciona o Catarse'
+
+section.line-box
+  .row
+    .large-12.columns
+      .presentation
+        h1.channel-title
+          = t('channels.how_it_works.title.channel')
+          | : 
+          = link_to 'Catarse', root_path, class: 'standard-link'
+
+article.row.how-it-works-wrapper
+  section.large-9.columns.how-it-works
+    h3= t('static.guidelines_start.title_magic')
+    p= t('static.guidelines_start.magic')
+    h3= t('static.guidelines_start.title_money')
+    p= t('static.guidelines_start.money')
+    h3= t('static.guidelines_start.title_work')
+    p= t('static.guidelines_start.work')
+    h3= t('static.guidelines_start.title_costs')
+    p= t('static.guidelines_start.costs')
+
+  .row
+    aside.large-3.columns.how-it-works-sidebar
+      h4 = t('channels.how_it_works.sidebar.title')
+      nav
+        ul#side-menu
+
+  .row
+    .large-2.columns.large-centered
+      = link_to t('channels.header.submit'), new_project_path, class: 'button action submit'
+
+= render 'shared/footer'
+
