@@ -125,8 +125,8 @@ GEM
       sass (~> 3.1)
     compass-960-plugin (0.10.4)
       compass (>= 0.10.0)
-    compass-rails (2.0.alpha.0)
-      compass (>= 0.12.2, < 0.14)
+    compass-rails (1.1.2)
+      compass (>= 0.12.2)
     connection_pool (1.1.0)
     coveralls (0.7.0)
       multi_json (~> 1.3)
@@ -477,7 +477,7 @@ DEPENDENCIES
   chartkick
   coffee-rails (~> 4.0.0)
   compass-960-plugin
-  compass-rails (~> 2.0.alpha.0)
+  compass-rails
   coveralls
   database_cleaner
   devise (~> 3.0.2)
