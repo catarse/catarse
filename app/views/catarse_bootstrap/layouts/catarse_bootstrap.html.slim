@@ -23,6 +23,7 @@ html
       meta property="og:description"  content=( channel.try(:description) || t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
 
   body#catarse_bootstrap[data-namespace=namespace data-controller-name=controller_name data-action=action_name]
+    = render_facebook_sdk
     = render 'layouts/uservoice'
     = render 'layouts/catarse_bootstrap_notices' if notice.present?
     = render 'layouts/login_feedback_support' if devise_controller?
