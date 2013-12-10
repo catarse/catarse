@@ -56,7 +56,7 @@
           - if current_user != @user
             p.empty.hide= t('users.projects.no_projects', name: @user.display_name)
           - else
-            p.empty.hide= t('users.projects.no_projects_current_user_html', link: link_to(t('users.projects.here'), guidelines_start_path)).html_safe
+            p.empty.hide= t('users.projects.no_projects_current_user_html', link: link_to(t('users.projects.here'), page_path(:how_it_works))).html_safe
           .results
           .clearfix
           .loading= image_tag "loading.gif"
