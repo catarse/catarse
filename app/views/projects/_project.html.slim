@@ -9,7 +9,7 @@
           = image_tag "not_successful.#{I18n.locale}.png"
         - else
           = image_tag "waiting_confirmation.#{I18n.locale}.png"
-  .image = link_to image_tag(project.display_image, size: '220x140'), project_by_slug_path(project.permalink), title: project.name
+  .image = link_to image_tag(project.display_image, size: '220x172'), project_by_slug_path(project.permalink), title: project.name
   .padding
     h4.title    = link_to truncate(project.name, length: 50, separator: ''), project_by_slug_path(project.permalink), title: project.name
     p.headline  = link_to truncate(project.headline, length: 140), project_by_slug_path(project.permalink), title: project.headline
