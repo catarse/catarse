@@ -3,7 +3,6 @@ class BackerObserver < ActiveRecord::Observer
 
   def after_create(backer)
     backer.define_key
-    backer.define_payment_method
   end
 
   def before_save(backer)
