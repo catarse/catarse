@@ -97,8 +97,4 @@ class Backer < ActiveRecord::Base
   def define_key
     self.update_attributes({ key: Digest::MD5.new.update("#{self.id}###{self.created_at}###{Kernel.rand}").to_s })
   end
-
-  def define_payment_method
-    self.update_attributes({ payment_method: 'MoIP' })
-  end
 end
