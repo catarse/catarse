@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Backer::PaymentEngineHandler do
   let(:engine){ { name: 'moip', review_path: ->(backer){ "/#{backer}" }, locale: 'en', refund_path: ->(backer){ "/refund/#{backer}" } } }
-  let(:backer){ create(:backer) }
+  let(:backer){ create(:backer, payment_method: 'MoIP') }
 
   before do
     PaymentEngines.clear
