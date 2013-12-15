@@ -215,8 +215,10 @@ Devise.setup do |config|
     config.omniauth 'facebook', 'dummy_key', 'dummy_secret', scope: ''
   else
     begin
-      OauthProvider.all.each do |p|
-        config.omniauth p.name, p.key, p.secret, scope: p.scope
+      if ActiveRecord::Base.connection.table_exists? 'oauth_providers'
+        OauthProvider.all.each do |p|
+          config.omniauth p.name, p.key, p.secret, scope: p.scope
+        end
       end
     rescue Exception => e
       puts "problem while using OauthProvider model:\n '#{e.message}'"
