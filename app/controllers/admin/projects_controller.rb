@@ -1,4 +1,5 @@
 class Admin::ProjectsController < Admin::BaseController
+  layout 'catarse_bootstrap'
   add_to_menu "admin.projects.index.menu", :admin_projects_path
 
   has_scope :by_user_email, :by_id, :pg_search, :user_name_contains, :with_state, :by_category_id, :order_by

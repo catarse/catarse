@@ -1,0 +1,120 @@
+= render 'shared/header'
+.row.admin-projects
+  h1
+    = @title = t('channels.admin.management.title')
+    ' :
+    = @total_projects
+    '
+    = t('channels.admin.management.total')
+
+  h3 = t('channels.admin.filter.title')
+  = simple_form_for '', url: channels_admin_projects_path, method: :get do |form|
+    .row
+      .large-2.columns
+        = form.input :order_by, as: :hidden, input_html: {value: params[:order_by]}
+        = form.input :by_id, as: :integer, label: t('channels.admin.filter.by_id'), input_html: {value: params[:by_id]}
+      .large-3.columns
+        = form.input :pg_search, as: :string, label: t('channels.admin.filter.pg_search'), input_html: {value: params[:pg_search]}
+      .large-2.columns
+        = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+      .large-2.large-offset-1.columns
+        p.filtered-number = @projects.count
+        p.filtered-number-label
+          = pluralize_without_number(@projects.count, t('project_singular'), t('project_plural'))
+          |
+          = pluralize_without_number @projects.count, t('found_singular'), t('found_plural')
+    .row
+      - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at, :goal_between].each_with_index do |between_field, index|
+        - mask = (between_field == :goal_between ? '' : '99/99/9999')
+        - if index % 2 == 0
+          .row
+        .large-2.columns
+          = form.input "#{between_field}[start_at]", as: :string, label: t("channels.admin.filter.#{between_field}"), input_html: { data: { mask: mask } }
+        .large-2.columns
+          = form.input "#{between_field}[ends_at]", as: :string, label: false, input_html: { class: 'custom', data: { mask: mask } }
+
+      .large-3.columns
+        = form.input :user_name_contains, as: :string, label: t('channels.admin.filter.user_name_contains'), input_html: {value: params[:user_name_contains]}
+      .large-2.columns
+        = form.input :by_user_email, as: :string, label: t('channels.admin.filter.by_user_email'), input_html: {value: params[:by_user_email]}
+      .large-2.large-offset-1.columns
+        = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
+
+
+  = paginate @projects
+  - if @projects.empty?
+    = t('.no_backers')
+  - else
+    table.admin-projects-table
+      thead
+        tr
+          th.large-2.columns= t('channels.admin.table.name')
+          th.large-1.columns= t('channels.admin.table.category')
+          th.large-1.columns= t('channels.admin.table.user_id')
+          th.large-1.columns
+            a data-sort="goal" href='#'= t('.goal')
+            span.sort-order
+          th.large-1.columns
+            a data-sort="project_totals.progress" href='#'= t('.pledged')
+              span.sort-order
+          th.large-1.columns
+            a data-sort="project_totals.total_backers" href='#'= t('.total_backs')
+              span.sort-order
+          th.large-1.columns= t('channels.admin.table.recommended')
+          th.large-1.columns
+            a data-sort="online_date" href='#'= t('.online_date')
+              span.sort-order
+          th.large-1.columns
+            a data-sort="projects.expires_at" href='#'= t('.expires_at')
+              span.sort-order
+          th.large-1.columns
+            a data-sort="updated_at" href='#'= t('.last_modification')
+              span.sort-order
+          th.large-1.columns= t('channels.admin.table.state')
+          th.large-1.columns
+      tbody
+        - @projects.includes(:category).each do |project|
+          tr id=project.id class=cycle("even", "odd")
+            td.large-2.columns= link_to project.name, project_by_slug_path(permalink: project.permalink)
+            td.large-1.columns= project.category
+            td.large-1.columns= best_in_place [:channels, :admin, project], :user_id, method: :put, type: :input
+            td.large-1.columns= best_in_place [:channels, :admin, project], :goal, method: :put, type: :input, display_as: :display_goal
+            td.large-1.columns= "#{project.display_pledged} (#{project.progress}%)"
+            td.large-1.columns= project.total_backers
+            td.large-1.columns= best_in_place [:channels, :admin, project], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
+            td.large-1.columns= project.online_date.strftime('%d/%m/%Y') if project.online_date
+            td.large-1.columns= project.display_expires_at
+            td.large-1.columns= project.updated_at.strftime('%d/%m/%Y')
+            td.large-1.columns
+              - if project.online?
+                span.label.label-online= project.state
+              - elsif project.successful?
+                span.label.label-success= project.state
+              - elsif project.failed? or project.rejected?
+                span.label.label-important= project.state
+              - elsif project.waiting_funds?
+                span.label.label-warning= project.state
+              - else
+                span.label= project.state
+            td.large-1.columns.project-events-dropdown
+              ul.dropdown
+                - if project.can_approve?
+                  li
+                    = link_to approve_channels_admin_project_path(project), method: :put do
+                      i.icon-ok
+                      = t('channels.admin.table.approve')
+
+                - if project.can_reject?
+                  li
+                    = link_to reject_channels_admin_project_path(project), method: :put  do
+                      i.icon-ban-circle
+                      = t('channels.admin.table.reject')
+
+                - if project.can_push_to_draft?
+                  li
+                    = link_to  push_to_draft_channels_admin_project_path(project), method: :put  do
+                      i.icon-trash
+                      = t('channels.admin.table.send_to_draft')
+
+  = paginate @projects
+= render 'shared/footer'
