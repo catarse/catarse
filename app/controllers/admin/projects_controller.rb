@@ -1,4 +1,5 @@
 class Admin::ProjectsController < Admin::BaseController
+  layout 'catarse_bootstrap'
   add_to_menu "admin.projects.index.menu", :admin_projects_path
 
   has_scope :by_user_email, :by_id, :pg_search, :user_name_contains, :with_state, :by_category_id, :order_by
@@ -27,6 +28,7 @@ class Admin::ProjectsController < Admin::BaseController
 
   protected
   def collection
-    @projects = apply_scopes(end_of_association_chain).with_project_totals.without_state('deleted').page(params[:page])
+    @scoped_projects = apply_scopes(end_of_association_chain).with_project_totals.without_state('deleted')
+    @projects = @scoped_projects.page(params[:page])
   end
 end
