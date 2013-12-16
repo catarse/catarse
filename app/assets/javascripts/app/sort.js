@@ -1,18 +1,18 @@
 App.addChild('Sort', {
-  el: '#page_content.admin',
+  el: '.admin-projects',
 
   events: {
     'click [data-sort]' : 'sort'
   },
 
   activate: function(){
-    this.form = this.$('.bootstrap-form form');
-    this.table = this.$('.data-table');
+    this.form = this.$('form');
+    this.table = this.$('table.admin-projects-table');
     this.selectSorting();
   },
 
   getSorting: function(){
-    var sortField = this.form.find('[name=order_by]')
+    var sortField = this.form.find('[id=_order_by]')
 
     var sort = sortField.val().split(' ');
     return {field: sort[0], order: sort[1]};
@@ -35,7 +35,7 @@ App.addChild('Sort', {
 
   sort: function(event){
     var link = $(event.target);
-    var sortField = this.form.find('[name=order_by]');
+    var sortField = this.form.find('[id=_order_by]');
 
     // Put sorting data in hidden field and select sorting
     sortField.val(link.data('sort') + ' ' + (this.getSorting().order == 'ASC' ? 'DESC' : 'ASC'));
