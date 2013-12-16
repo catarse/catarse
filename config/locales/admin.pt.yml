@@ -36,6 +36,7 @@ pt:
         between_expires_at: 'Expiram entre'
         between_online_date: 'Entraram no ar entre'
         between_updated_at: 'Atualizados entre'
+        by_user_email: 'Email do realizador'
         id: ID
         name: 'Titulo'
         send_to_trash: "Deletar"
@@ -49,6 +50,7 @@ pt:
         pledged: 'Alcançado'
         recommended: 'Recomendado?'
         state: 'Estado'
+        no_projects: 'Nenhum projeto encontrado'
         menu: 'Admin projetos'
         title: 'Gerenciamento de projetos'
         total_projects: 'projetos'
