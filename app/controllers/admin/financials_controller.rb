@@ -11,14 +11,6 @@ class Admin::FinancialsController < Admin::BaseController
 
   actions :index
 
-  def projects
-    @search = apply_scopes(Project).includes(:user).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, (projects.expires_at)::date DESc")
-  end
-
-  def collection
-    @projects = projects.page(params[:page])
-  end
-
   def index
     respond_to do |format|
       format.html {collection}
@@ -34,4 +26,12 @@ class Admin::FinancialsController < Admin::BaseController
     end
   end
 
+  protected
+  def projects
+    apply_scopes(Project).includes(:user).order("CASE state WHEN 'successful' THEN 1 WHEN 'waiting_funds' THEN 2 ELSE 3 END, (projects.expires_at)::date DESc")
+  end
+
+  def collection
+    @projects ||= projects.page(params[:page])
+  end
 end
