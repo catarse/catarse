@@ -101,7 +101,7 @@ en:
       near: "Near me"
       expiring: "Expiring"
       recents: "Recent"
-      submit: "Submit your project"
+      submit: "Send your project"
       discover: "Discover projects"
     texts:
       copyleft: "Made with love."
@@ -319,7 +319,7 @@ en:
       signup: "Sign up"
       signin: Login
       discover: Discover
-      submit: Submit your project
+      submit: Send your project
       profile: "My profile"
       account: "My account"
     user:
@@ -571,7 +571,7 @@ en:
       headline_important: "It's a summary of  your project . 140 characters tops!:D"
       tags_important: "Check other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
-      title: "Submit your project"
+      title: "Send your project"
       about: "Describe your project and how much do you need"
       category: "Project category"
       how_much_you_need: "How much do you want to raise?"
