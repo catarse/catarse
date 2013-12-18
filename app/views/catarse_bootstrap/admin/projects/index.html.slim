@@ -29,9 +29,9 @@
         - if index % 2 == 0
           .row
         .large-2.columns
-          = form.input "#{between_field}[start_at]", as: :string, label: t(".#{between_field}"), input_html: {value: params[between_field][:start_at], data: { mask: mask } }
+          = form.input "#{between_field}[start_at]", as: :string, label: t(".#{between_field}"), input_html: {value: params[between_field] && params[between_field][:start_at], data: { mask: mask } }
         .large-2.columns
-          = form.input "#{between_field}[ends_at]", as: :string, label: false, input_html: { value: params[between_field][:ends_at], class: 'custom', data: { mask: mask } }
+          = form.input "#{between_field}[ends_at]", as: :string, label: false, input_html: { value: params[between_field] && params[between_field][:ends_at], class: 'custom', data: { mask: mask } }
 
       .large-3.columns
         = form.input :user_name_contains, as: :string, label: t('channels.admin.filter.user_name_contains'), input_html: {value: params[:user_name_contains]}
