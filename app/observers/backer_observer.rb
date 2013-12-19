@@ -24,7 +24,7 @@ class BackerObserver < ActiveRecord::Observer
   def notify_backoffice(backer)
     user = User.find_by(email: Configuration[:email_payments])
     if user.present?
-      Notification.notify(:request_refund, user, backer: backer)
+      Notification.notify(:refund_request, user, backer: backer)
     end
   end
 
