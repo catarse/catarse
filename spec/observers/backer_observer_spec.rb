@@ -74,12 +74,23 @@ describe BackerObserver do
     end
   end
 
-  describe '.notify_backoffice_about_canceled' do
+  describe '#notify_backoffice_about_refund' do
+    let(:admin){ create(:user) }
+    before do
+      Configuration[:email_payments] = admin.email
+    end
+
+    it "should notify admin upon refund request" do
+      backer.notify_observers :notify_backoffice_about_refund
+      expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: backer.user.email, origin_name: backer.user.name).count).to eq 1
+    end
+  end
+
+  describe '#notify_backoffice_about_canceled' do
     before do
       Configuration[:email_payments] = 'finan@c.me'
     end
 
-    let(:backer) { create(:backer) }
     let(:user) { create(:user, email: 'finan@c.me') }
 
     context "when backer is confirmed and change to canceled" do
