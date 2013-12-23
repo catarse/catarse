@@ -18,9 +18,8 @@ module Concerns
     end
 
     def fb_admins_add(ids)
-      case ids.class
-      when Array
-        ids.each {|id| @fb_admins << ids.to_i}
+      if ids.kind_of?(Array)
+        ids.each {|id| @fb_admins << id.to_i}
       else
         @fb_admins << ids.to_i
       end
