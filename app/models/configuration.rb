@@ -17,10 +17,12 @@ class Configuration < ActiveRecord::Base
     def []= key, value
       set key, value
     end
-    private
 
+    private
     def get key
-      find_by_name(key).value rescue nil
+      #Rails.cache.fetch("/configurations/#{key}") do
+        find_by_name(key).value rescue nil
+      #end
     end
 
     def set key, value
@@ -29,6 +31,7 @@ class Configuration < ActiveRecord::Base
       rescue
         create!(name: key, value: value)
       end
+      Rails.cache.write("/configurations/#{key}", value)
       value
     end
 
