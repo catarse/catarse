@@ -55,7 +55,7 @@ module Backer::StateMachineHandler
     end
 
     def after_transition_from_confirmed_to_requested_refund
-      notify_observers :notify_backoffice
+      notify_observers :notify_backoffice_about_refund
     end
   end
 end
