@@ -21,10 +21,10 @@ class BackerObserver < ActiveRecord::Observer
     end
   end
 
-  def notify_backoffice(backer)
+  def notify_backoffice_about_refund(backer)
     user = User.find_by(email: Configuration[:email_payments])
     if user.present?
-      Notification.notify(:refund_request, user, backer: backer)
+      Notification.notify(:refund_request, user, {backer: backer, origin_email: backer.user.email, origin_name: backer.user.name})
     end
   end
 
