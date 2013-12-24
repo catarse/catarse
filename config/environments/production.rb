@@ -88,6 +88,4 @@ Catarse::Application.configure do
   config.action_dispatch.default_headers = {
     'X-Frame-Options' => 'ALLOWALL'
   }
-
-  config.action_mailer.asset_host = ::Configuration[:base_url]
 end
