@@ -34,7 +34,7 @@ describe Backer do
 
       #TODO: need to investigate this timestamp issue when
       # use DateTime.now or Time.now
-      7.times { create(:backer, state: 'confirmed', confirmed_at: 3.hours.from_now) }
+      7.times { create(:backer, state: 'confirmed', confirmed_at: Time.now) }
     end
 
     subject { Backer.confirmed_today }
