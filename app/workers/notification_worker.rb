@@ -8,6 +8,8 @@ class NotificationWorker
     if resource
       NotificationsMailer.notify(resource).deliver
       resource.update_attributes dismissed: true
+    else
+      raise "Notification #{notification_id} not found.. sending to retry queue"
     end
   end
 end
