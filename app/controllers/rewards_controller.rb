@@ -1,5 +1,5 @@
 class RewardsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:index]
   inherit_resources
   belongs_to :project
   respond_to :html, :json
@@ -32,5 +32,10 @@ class RewardsController < ApplicationController
     resource.update_attribute :row_order_position, params[:reward][:row_order_position]
 
     render nothing: true
+  end
+
+  private
+  def collection
+    @rewards ||= parent.rewards.includes(:backers)
   end
 end
