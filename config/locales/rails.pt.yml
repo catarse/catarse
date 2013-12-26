@@ -195,7 +195,7 @@ pt:
   time:
     am: am
     formats:
-      prevision: "%B/%Y"
+      estimate: "%B/%Y"
       simple: "%d/%m/%Y, %H:%M h"
       default: "%A, %d de %B de %Y, %H:%M h"
       long: "%A, %d de %B de %Y, %H:%M h"
