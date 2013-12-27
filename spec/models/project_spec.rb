@@ -52,9 +52,9 @@ describe Project do
 
         #TODO: need to investigate this timestamp issue when
         # use DateTime.now or Time.now
-        create(:backer, state: 'confirmed', project: project_01, confirmed_at: 3.hours.from_now )
+        create(:backer, state: 'confirmed', project: project_01, confirmed_at: Time.now )
         create(:backer, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
-        create(:backer, state: 'confirmed', project: project_03, confirmed_at: 3.hours.from_now )
+        create(:backer, state: 'confirmed', project: project_03, confirmed_at: Time.now )
       end
 
       it { should have(2).items }
