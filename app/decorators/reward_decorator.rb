@@ -3,8 +3,8 @@ class RewardDecorator < Draper::Decorator
   include Draper::LazyHelpers
   include AutoHtml
 
-  def display_deliver_prevision
-    I18n.l((source.project.expires_at + source.days_to_delivery.days), format: :prevision)
+  def display_deliver_estimate
+    I18n.l((source.project.expires_at + source.days_to_delivery.days), format: :estimate)
   rescue
     source.days_to_delivery
   end

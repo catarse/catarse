@@ -1,24 +1,14 @@
 - backer = @notification.backer
-|Olá, <strong>#{backer.user.display_name}</strong> !
-br
-br
-|Você imprimiu um boleto para contribuir com <strong>#{backer.project.name}</strong>.
-br
-br
-|Se o boleto já foi pago e seu nome ainda não aparece como apoiador na página do projeto, não se preocupe, em até <strong>3 dias úteis</strong> aparecerá o seu nome lá no site. Esse é o tempo que a informação leva desde ser recebida pelo banco, passar pelo MoiP e chegar pra gente, ok?
-br
-br
-|Se você se esqueceu de pagar o boleto e quer apoiar o projeto novamente, é bem tranquilo, é só acessar a #{link_to('página do projeto', project_by_slug_url(permalink: backer.project.permalink, host: Configuration['host'] ))} e efetuar o procedimento de pagamento novamente. O primeiro boleto será desconsiderado e a gente não mandará um cobrador na porta da sua casa =P
-br
-br
-|Assim que o apoio for autorizado pelo MoIP, mandaremos outro email para você confirmando a transação.
-br
-br
-|Se tiver alguma outra dúvida, entre em contato conosco na nossa Central de Suporte:
-br
-= link_to 'http://suporte.catarse.me/', 'http://suporte.catarse.me/'
-br
-br
-|Um grande abraço,
-br
-|Equipe do #{Configuration[:company_name]}
+p Olá, <strong>#{backer.user.display_name}</strong> !
+p Você acabou de gerar um boleto para apoiar o projeto #{link_to(backer.project.name, project_by_slug_url(permalink: backer.project.permalink, host: Configuration['host'] ))}.
+p 
+  | Após o pagamento, levamos até 3 dias úteis para receber a confirmação. 
+  | Quando essa confirmação ocorrer, mandaremos outro email com todos os detalhes da transação.
+/p Para imprimir o boleto gerado, basta clicar aqui.
+
+p O prazo de vencimento do boleto é de 2 dias úteis. Para alterar a data de vencimento, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_contact]}
+
+p 
+  | Um abraço,
+  br/
+  | #{Configuration[:company_name]}

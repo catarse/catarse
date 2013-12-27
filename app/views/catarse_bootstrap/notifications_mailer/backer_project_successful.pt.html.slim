@@ -1,50 +1,8 @@
 - backer = @notification.backer
-|Olá, #{backer.user.name}!
-br
-br
- |O projeto #{link_to(backer.project.name, "#{Configuration[:base_url]}/projects/#{backer.project.to_param}")} que você apoiou foi financiado com sucesso no #{Configuration[:company_name]}! Hora de comemorar o/
-br
-br
-|O projeto teve, incluindo você, #{backer.project.total_backers} maravilhosos apoiadores, arrecadou #{backer.project.display_pledged} e atingiu #{backer.project.progress}% da meta da captação =D
-br
-br
-|Ahh, uma informação importante: a equipe do #{Configuration[:company_name]} leva até 3 dias úteis para passar a lista de contato de todos os apoiadores para os produtores do projeto. Por isso, o realizador entrará em contato contigo para agradecimentos e pra falar sobre as recompensas só daqui alguns dias, ok?
-br
-br
-|Enquanto isso, compartilhe com todo mundo este sucesso!
-br
-br
-- fb_img = "<img src=\"#{Configuration[:base_url]}/assets/auth/facebook_64.png\" title='Facebook' class='social' />".html_safe
-== raw link_to(fb_img, "http://www.facebook.com/share.php?u=#{Configuration[:base_url]}/projects/#{backer.project.to_param}&t=Uhuu! O projeto '#{backer.project.name}', que eu apoiei, foi bem-sucedido no #{Configuration[:company_name]}!" , :target => :_blank)
-- twitter_img = "<img src='#{Configuration[:base_url]}/assets/auth/twitter_64.png' title='Twitter' class='social' />".html_safe
-== raw link_to(twitter_img,"http://twitter.com/?status=#{"Uhuu! O projeto '#{backer.project.name}', que eu apoiei, foi bem-sucedido no @#{Configuration[:twitter_username]}! #{project_by_slug_url(permalink: backer.project.permalink)}"}", :target => :_blank)
-br
-br
-strong
-  |Informações importantes sobre o seu apoio (que sempre vão ajudar pra tirar qualquer dúvida):
-  br
-  br
-  |Valor apoiado: #{backer.value}
-  br
-  - if backer.reward
-    |Valor da recompensa selecionada: #{backer.reward.minimum_value}
-    br
-    |Descrição da recompensa: #{backer.reward.description}
-    br
-  |Data do apoio: #{backer.created_at.strftime("%d/%m/%Y")}
-  br
-  |Chave do apoio: #{backer.key}
-  br
-  br
-|Se quiser entrar em contato com #{backer.project.user.name}, mande um email para #{mail_to backer.project.user.email}
-br
-br
-|Se tiver alguma outra dúvida, entre em contato conosco na nossa Central de Suporte:
-br
-= link_to 'http://suporte.catarse.me/', 'http://suporte.catarse.me/'
-br
-br
-|Um grande abraço,
-br
-br
-|Equipe do #{Configuration[:company_name]}
+p Olá, <strong>#{backer.user.display_name}</strong>!
+p
+  | Parabéns! O projeto #{link_to(backer.project.name, project_by_slug_url(permalink: backer.project.permalink))} que,
+  | incluindo você, teve #{backer.project.total_backers} apoiadores, foi financiado com sucesso no #{Configuration[:company_name]}.
+p Esse e-mail serve como um <strong>recibo definitivo da sua contribuição</strong>.
+= render partial: 'backer_data', locals: {backer: backer}
+
