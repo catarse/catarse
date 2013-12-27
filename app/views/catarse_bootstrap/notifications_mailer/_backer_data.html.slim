@@ -1,0 +1,36 @@
+p Seguem todos os dados do pagamento:
+p
+  | Nome do apoiador: #{backer.payer_name}
+  br/
+  | CPF/CNPJ do apoiador: #{backer.payer_document}
+  br/
+  | Data da confirmação do apoio: #{l backer.confirmed_at}
+  br/
+  | Opção de pagamento: #{backer.payment_choice}
+  br/
+  | Valor da contribuição: #{number_to_currency backer.value}
+  br/
+  -if backer.reward.present?
+    | Recompensa selecionada: #{backer.reward.description}
+    br/
+  | Estimativa de entrega: #{backer.reward.display_deliver_estimate}
+  br/
+  | ID do apoio: #{backer.key}
+  br/
+  | Nome/Razão Social do realizador: #{backer.project.user.display_name}
+  br/
+  | CPF/CNPJ do realizador: #{backer.user.cpf}
+
+p 
+  | É importante ressaltar que o Catarse é apenas intermediador desse processo,
+  | portanto, se tiver alguma dúvida em relação ao projeto ou recompensa selecionada entre 
+  | em contato diretamente com o realizador através do e-mail #{mail_to backer.project.user.email}.  
+  | Ah! Lembre-se de guardar este email, pois ele é contem informações importantes 
+  | a respeito da sua contribuição ao projeto.
+p Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_contact]}
+
+p
+  | Um abraço e muito obrigado,
+  br/
+  | #{Configuration[:company_name]}
+
