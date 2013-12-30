@@ -13,8 +13,8 @@ p
   -if backer.reward.present?
     | Recompensa selecionada: #{backer.reward.description}
     br/
-  | Estimativa de entrega: #{backer.reward.display_deliver_estimate}
-  br/
+    | Estimativa de entrega: #{backer.reward.display_deliver_estimate}
+    br/
   | ID do apoio: #{backer.key}
   br/
   | Nome/Razão Social do realizador: #{backer.project.user.display_name}
