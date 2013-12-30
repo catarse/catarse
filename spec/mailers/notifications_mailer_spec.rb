@@ -11,7 +11,7 @@ describe NotificationsMailer do
       NotificationsMailer.any_instance.should_receive(:mail).with({
         from: "Catarse <contact@foo.bar>",
         to: notification.user.email,
-        subject: 'Obrigado! Seu apoio para Foo bar foi confirmado!',
+        subject: 'Recibo porvisório: apoio confirmado para Foo bar',
         template_name: 'confirm_backer'
       })
     end
