@@ -57,6 +57,85 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE projects (
+    id integer NOT NULL,
+    name text NOT NULL,
+    user_id integer NOT NULL,
+    category_id integer NOT NULL,
+    goal numeric NOT NULL,
+    about text NOT NULL,
+    headline text NOT NULL,
+    video_url text,
+    short_url text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    about_html text,
+    recommended boolean DEFAULT false,
+    home_page_comment text,
+    permalink text NOT NULL,
+    video_thumbnail text,
+    state character varying(255),
+    online_days integer DEFAULT 0,
+    online_date timestamp with time zone,
+    how_know text,
+    more_links text,
+    first_backers text,
+    uploaded_image character varying(255),
+    video_embed_url character varying(255),
+    CONSTRAINT projects_about_not_blank CHECK ((length(btrim(about)) > 0)),
+    CONSTRAINT projects_headline_length_within CHECK (((length(headline) >= 1) AND (length(headline) <= 140))),
+    CONSTRAINT projects_headline_not_blank CHECK ((length(btrim(headline)) > 0))
+);
+
+
+--
+-- Name: expires_at(projects); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION expires_at(projects) RETURNS timestamp with time zone
+    LANGUAGE sql
+    AS $_$
+     SELECT ((((($1.online_date AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo') + ($1.online_days || ' days')::interval)  )::date::text || ' 23:59:59')::timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))::timestamptz )               
+    $_$;
+
+
+--
+-- Name: authorizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE authorizations (
+    id integer NOT NULL,
+    oauth_provider_id integer NOT NULL,
+    user_id integer NOT NULL,
+    uid text NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: authorizations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE authorizations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: authorizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE authorizations_id_seq OWNED BY authorizations.id;
+
+
+--
 -- Name: backers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -90,140 +169,8 @@ CREATE TABLE backers (
     payment_choice text,
     payment_service_fee numeric,
     state character varying(255),
-    referal_link text,
     CONSTRAINT backers_value_positive CHECK ((value >= (0)::numeric))
 );
-
-
---
--- Name: can_cancel(backers); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION can_cancel(backers) RETURNS boolean
-    LANGUAGE sql
-    AS $_$
-        select
-          $1.state = 'waiting_confirmation' and
-          (
-            ((
-              select count(1) as total_of_days
-              from generate_series($1.created_at::date, current_date, '1 day') day
-              WHERE extract(dow from day) not in (0,1)
-            )  > 4)
-            OR
-            (
-              lower($1.payment_choice) = lower('DebitoBancario')
-              AND
-                (
-                  select count(1) as total_of_days
-                  from generate_series($1.created_at::date, current_date, '1 day') day
-                  WHERE extract(dow from day) not in (0,1)
-                )  > 1)
-          )
-      $_$;
-
-
---
--- Name: can_refund(backers); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION can_refund(backers) RETURNS boolean
-    LANGUAGE sql
-    AS $_$
-        select
-          $1.state IN('confirmed', 'requested_refund', 'refunded') AND
-          NOT $1.credits AND
-          EXISTS(
-            SELECT true
-              FROM projects p
-              WHERE p.id = $1.project_id and p.state = 'failed'
-          )
-      $_$;
-
-
---
--- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE projects (
-    id integer NOT NULL,
-    name text NOT NULL,
-    user_id integer NOT NULL,
-    category_id integer NOT NULL,
-    goal numeric NOT NULL,
-    about text NOT NULL,
-    headline text NOT NULL,
-    video_url text,
-    short_url text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    about_html text,
-    recommended boolean DEFAULT false,
-    home_page_comment text,
-    permalink text NOT NULL,
-    video_thumbnail text,
-    state character varying(255),
-    online_days integer DEFAULT 0,
-    online_date timestamp with time zone,
-    how_know text,
-    more_links text,
-    first_backers text,
-    uploaded_image character varying(255),
-    video_embed_url character varying(255),
-    referal_link text,
-    sent_to_analysis_at timestamp without time zone,
-    audited_user_name text,
-    audited_user_cpf text,
-    audited_user_moip_login text,
-    audited_user_phone_number text,
-    CONSTRAINT projects_about_not_blank CHECK ((length(btrim(about)) > 0)),
-    CONSTRAINT projects_headline_length_within CHECK (((length(headline) >= 1) AND (length(headline) <= 140))),
-    CONSTRAINT projects_headline_not_blank CHECK ((length(btrim(headline)) > 0))
-);
-
-
---
--- Name: expires_at(projects); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION expires_at(projects) RETURNS timestamp with time zone
-    LANGUAGE sql
-    AS $_$
-     SELECT ((((($1.online_date AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo') + ($1.online_days || ' days')::interval)  )::date::text || ' 23:59:59')::timestamp AT TIME ZONE coalesce((SELECT value FROM configurations WHERE name = 'timezone'), 'America/Sao_Paulo'))::timestamptz )               
-    $_$;
-
-
---
--- Name: authorizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE authorizations (
-    id integer NOT NULL,
-    oauth_provider_id integer NOT NULL,
-    user_id integer NOT NULL,
-    uid text NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: authorizations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE authorizations_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: authorizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE authorizations_id_seq OWNED BY authorizations.id;
 
 
 --
@@ -288,7 +235,6 @@ CREATE TABLE users (
     uploaded_image text,
     moip_login character varying(255),
     state_inscription character varying(255),
-    channel_id integer,
     CONSTRAINT users_bio_length_within CHECK (((length(bio) >= 0) AND (length(bio) <= 140)))
 );
 
@@ -389,20 +335,16 @@ ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 
 CREATE TABLE channels (
     id integer NOT NULL,
-    name text NOT NULL,
-    description text NOT NULL,
-    permalink text NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    twitter text,
-    facebook text,
-    email text,
-    image text,
-    website text,
-    video_url text,
-    how_it_works text,
-    how_it_works_html text,
-    terms_url character varying(255)
+    name character varying(255) NOT NULL,
+    description character varying(255),
+    permalink character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    twitter character varying(255),
+    facebook character varying(255),
+    email character varying(255),
+    image character varying(255),
+    website character varying(255)
 );
 
 
@@ -486,6 +428,36 @@ ALTER SEQUENCE channels_subscribers_id_seq OWNED BY channels_subscribers.id;
 
 
 --
+-- Name: channels_trustees; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE channels_trustees (
+    id integer NOT NULL,
+    user_id integer,
+    channel_id integer
+);
+
+
+--
+-- Name: channels_trustees_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE channels_trustees_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: channels_trustees_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE channels_trustees_id_seq OWNED BY channels_trustees.id;
+
+
+--
 -- Name: configurations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -513,6 +485,38 @@ CREATE VIEW financial_reports AS
 
 
 --
+-- Name: notification_types; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE notification_types (
+    id integer NOT NULL,
+    name text NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    layout text DEFAULT 'email'::text NOT NULL
+);
+
+
+--
+-- Name: notification_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE notification_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: notification_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE notification_types_id_seq OWNED BY notification_types.id;
+
+
+--
 -- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -523,13 +527,9 @@ CREATE TABLE notifications (
     dismissed boolean DEFAULT false NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    notification_type_id integer NOT NULL,
     backer_id integer,
-    update_id integer,
-    origin_email text NOT NULL,
-    origin_name text NOT NULL,
-    template_name text NOT NULL,
-    locale text NOT NULL,
-    channel_id integer
+    update_id integer
 );
 
 
@@ -680,15 +680,7 @@ CREATE TABLE paypal_payments (
 --
 
 CREATE VIEW project_totals AS
-    SELECT backers.project_id, sum(backers.value) AS pledged, ((sum(backers.value) / projects.goal) * (100)::numeric) AS progress, sum(backers.payment_service_fee) AS total_payment_service_fee, count(*) AS total_backers FROM (backers JOIN projects ON ((backers.project_id = projects.id))) WHERE ((backers.state)::text = ANY ((ARRAY['confirmed'::character varying, 'refunded'::character varying, 'requested_refund'::character varying])::text[])) GROUP BY backers.project_id, projects.goal;
-
-
---
--- Name: project_financials; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW project_financials AS
-    WITH catarse_fee_percentage AS (SELECT (c.value)::numeric AS total, ((1)::numeric - (c.value)::numeric) AS complement FROM configurations c WHERE (c.name = 'catarse_fee'::text)), catarse_base_url AS (SELECT c.value FROM configurations c WHERE (c.name = 'base_url'::text)) SELECT p.id AS project_id, p.name, u.moip_login AS moip, p.goal, pt.pledged AS reached, pt.total_payment_service_fee AS moip_tax, (cp.total * pt.pledged) AS catarse_fee, (pt.pledged * cp.complement) AS repass_value, to_char(expires_at(p.*), 'dd/mm/yyyy'::text) AS expires_at, ((catarse_base_url.value || '/admin/reports/backer_reports.csv?project_id='::text) || p.id) AS backer_report, p.state FROM ((((projects p JOIN users u ON ((u.id = p.user_id))) JOIN project_totals pt ON ((pt.project_id = p.id))) CROSS JOIN catarse_fee_percentage cp) CROSS JOIN catarse_base_url);
+    SELECT backers.project_id, sum(backers.value) AS pledged, sum(backers.payment_service_fee) AS total_payment_service_fee, count(*) AS total_backers FROM backers WHERE ((backers.state)::text = ANY ((ARRAY['confirmed'::character varying, 'refunded'::character varying, 'requested_refund'::character varying])::text[])) GROUP BY backers.project_id;
 
 
 --
@@ -697,6 +689,40 @@ CREATE VIEW project_financials AS
 
 CREATE VIEW projects_by_periods AS
     WITH weeks AS (SELECT (generate_series.generate_series * 7) AS days FROM generate_series(0, 7) generate_series(generate_series)), current_period AS (SELECT 'current_period'::text AS series, count(*) AS count, (w.days / 7) AS week FROM (projects p RIGHT JOIN weeks w ON ((((p.created_at)::date >= ((('now'::text)::date - w.days) - 7)) AND (p.created_at < (('now'::text)::date - w.days))))) GROUP BY (w.days / 7)), previous_period AS (SELECT 'previous_period'::text AS series, count(*) AS count, (w.days / 7) AS week FROM (projects p RIGHT JOIN weeks w ON ((((p.created_at)::date >= (((('now'::text)::date - w.days) - 7) - 56)) AND (p.created_at < ((('now'::text)::date - w.days) - 56))))) GROUP BY (w.days / 7)), last_year AS (SELECT 'last_year'::text AS series, count(*) AS count, (w.days / 7) AS week FROM (projects p RIGHT JOIN weeks w ON ((((p.created_at)::date >= (((('now'::text)::date - w.days) - 7) - 365)) AND (p.created_at < ((('now'::text)::date - w.days) - 365))))) GROUP BY (w.days / 7)) (SELECT current_period.series, current_period.count, current_period.week FROM current_period UNION ALL SELECT previous_period.series, previous_period.count, previous_period.week FROM previous_period) UNION ALL SELECT last_year.series, last_year.count, last_year.week FROM last_year ORDER BY 1, 3;
+
+
+--
+-- Name: projects_curated_pages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE projects_curated_pages (
+    id integer NOT NULL,
+    project_id integer,
+    curated_page_id integer,
+    description text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    description_html text
+);
+
+
+--
+-- Name: projects_curated_pages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE projects_curated_pages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: projects_curated_pages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE projects_curated_pages_id_seq OWNED BY projects_curated_pages.id;
 
 
 --
@@ -731,7 +757,18 @@ ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
 --
 
 CREATE VIEW recommendations AS
-    SELECT recommendations.user_id, recommendations.project_id, (sum(recommendations.count))::bigint AS count FROM (SELECT b.user_id, recommendations.id AS project_id, count(DISTINCT recommenders.user_id) AS count FROM ((((backers b JOIN projects p ON ((p.id = b.project_id))) JOIN backers backers_same_projects ON ((p.id = backers_same_projects.project_id))) JOIN backers recommenders ON ((recommenders.user_id = backers_same_projects.user_id))) JOIN projects recommendations ON ((recommendations.id = recommenders.project_id))) WHERE ((((((((b.state)::text = 'confirmed'::text) AND ((backers_same_projects.state)::text = 'confirmed'::text)) AND ((recommenders.state)::text = 'confirmed'::text)) AND (b.user_id <> backers_same_projects.user_id)) AND (recommendations.id <> b.project_id)) AND ((recommendations.state)::text = 'online'::text)) AND (NOT (EXISTS (SELECT true AS bool FROM backers b2 WHERE ((((b2.state)::text = 'confirmed'::text) AND (b2.user_id = b.user_id)) AND (b2.project_id = recommendations.id)))))) GROUP BY b.user_id, recommendations.id UNION SELECT b.user_id, recommendations.id AS project_id, 0 AS count FROM ((backers b JOIN projects p ON ((b.project_id = p.id))) JOIN projects recommendations ON ((recommendations.category_id = p.category_id))) WHERE (((b.state)::text = 'confirmed'::text) AND ((recommendations.state)::text = 'online'::text))) recommendations WHERE (NOT (EXISTS (SELECT true AS bool FROM backers b2 WHERE ((((b2.state)::text = 'confirmed'::text) AND (b2.user_id = recommendations.user_id)) AND (b2.project_id = recommendations.project_id))))) GROUP BY recommendations.user_id, recommendations.project_id ORDER BY (sum(recommendations.count))::bigint DESC;
+    SELECT recommendations.user_id, recommendations.project_id, recommendations.count FROM (SELECT b.user_id, recommendations.id AS project_id, count(DISTINCT recommenders.user_id) AS count FROM ((((backers b JOIN projects p ON ((p.id = b.project_id))) JOIN backers backers_same_projects ON ((p.id = backers_same_projects.project_id))) JOIN backers recommenders ON ((recommenders.user_id = backers_same_projects.user_id))) JOIN projects recommendations ON ((recommendations.id = recommenders.project_id))) WHERE ((((((((b.state)::text = 'confirmed'::text) AND ((backers_same_projects.state)::text = 'confirmed'::text)) AND ((recommenders.state)::text = 'confirmed'::text)) AND (b.user_id <> backers_same_projects.user_id)) AND (recommendations.id <> b.project_id)) AND ((recommendations.state)::text = 'online'::text)) AND (NOT (EXISTS (SELECT true AS bool FROM backers b2 WHERE ((((b2.state)::text = 'confirmed'::text) AND (b2.user_id = b.user_id)) AND (b2.project_id = recommendations.id)))))) GROUP BY b.user_id, recommendations.id UNION SELECT b.user_id, recommendations.id AS project_id, 0 AS count FROM ((backers b JOIN projects p ON ((b.project_id = p.id))) JOIN projects recommendations ON ((recommendations.category_id = p.category_id))) WHERE ((b.state)::text = 'confirmed'::text)) recommendations WHERE (NOT (EXISTS (SELECT true AS bool FROM backers b2 WHERE ((((b2.state)::text = 'confirmed'::text) AND (b2.user_id = recommendations.user_id)) AND (b2.project_id = recommendations.project_id))))) ORDER BY recommendations.count DESC;
+
+
+--
+-- Name: reward_ranges; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE reward_ranges (
+    name text NOT NULL,
+    lower numeric,
+    upper numeric
+);
 
 
 --
@@ -760,6 +797,38 @@ ALTER SEQUENCE rewards_id_seq OWNED BY rewards.id;
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
+
+
+--
+-- Name: sessions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sessions (
+    id integer NOT NULL,
+    session_id character varying(255) NOT NULL,
+    data text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sessions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sessions_id_seq OWNED BY sessions.id;
 
 
 --
@@ -830,6 +899,7 @@ CREATE TABLE total_backed_ranges (
 CREATE TABLE unsubscribes (
     id integer NOT NULL,
     user_id integer NOT NULL,
+    notification_type_id integer NOT NULL,
     project_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -998,7 +1068,21 @@ ALTER TABLE ONLY channels_subscribers ALTER COLUMN id SET DEFAULT nextval('chann
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY channels_trustees ALTER COLUMN id SET DEFAULT nextval('channels_trustees_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY configurations ALTER COLUMN id SET DEFAULT nextval('configurations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY notification_types ALTER COLUMN id SET DEFAULT nextval('notification_types_id_seq'::regclass);
 
 
 --
@@ -1033,7 +1117,21 @@ ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY projects_curated_pages ALTER COLUMN id SET DEFAULT nextval('projects_curated_pages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY rewards ALTER COLUMN id SET DEFAULT nextval('rewards_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sessions ALTER COLUMN id SET DEFAULT nextval('sessions_id_seq'::regclass);
 
 
 --
@@ -1128,11 +1226,27 @@ ALTER TABLE ONLY channels_subscribers
 
 
 --
+-- Name: channels_trustees_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY channels_trustees
+    ADD CONSTRAINT channels_trustees_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: configurations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY configurations
     ADD CONSTRAINT configurations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: notification_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY notification_types
+    ADD CONSTRAINT notification_types_pkey PRIMARY KEY (id);
 
 
 --
@@ -1168,6 +1282,14 @@ ALTER TABLE ONLY payment_notifications
 
 
 --
+-- Name: projects_curated_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY projects_curated_pages
+    ADD CONSTRAINT projects_curated_pages_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: projects_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1176,11 +1298,27 @@ ALTER TABLE ONLY projects
 
 
 --
+-- Name: reward_ranges_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY reward_ranges
+    ADD CONSTRAINT reward_ranges_pkey PRIMARY KEY (name);
+
+
+--
 -- Name: rewards_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY rewards
     ADD CONSTRAINT rewards_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sessions
+    ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
 
 
 --
@@ -1276,27 +1414,6 @@ CREATE INDEX fk__channels_subscribers_user_id ON channels_subscribers USING btre
 
 
 --
--- Name: fk__notifications_channel_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__notifications_channel_id ON notifications USING btree (channel_id);
-
-
---
--- Name: fk__users_channel_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__users_channel_id ON users USING btree (channel_id);
-
-
---
--- Name: index_authorizations_on_oauth_provider_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_authorizations_on_oauth_provider_id_and_user_id ON authorizations USING btree (oauth_provider_id, user_id);
-
-
---
 -- Name: index_authorizations_on_uid_and_oauth_provider_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1332,10 +1449,10 @@ CREATE INDEX index_backers_on_user_id ON backers USING btree (user_id);
 
 
 --
--- Name: index_categories_on_name_pt; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_categories_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_categories_on_name_pt ON categories USING btree (name_pt);
+CREATE INDEX index_categories_on_name ON categories USING btree (name_pt);
 
 
 --
@@ -1367,10 +1484,31 @@ CREATE UNIQUE INDEX index_channels_subscribers_on_user_id_and_channel_id ON chan
 
 
 --
+-- Name: index_channels_trustees_on_channel_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_channels_trustees_on_channel_id ON channels_trustees USING btree (channel_id);
+
+
+--
+-- Name: index_channels_trustees_on_user_id_and_channel_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_channels_trustees_on_user_id_and_channel_id ON channels_trustees USING btree (user_id, channel_id);
+
+
+--
 -- Name: index_configurations_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_configurations_on_name ON configurations USING btree (name);
+
+
+--
+-- Name: index_notification_types_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_notification_types_on_name ON notification_types USING btree (name);
 
 
 --
@@ -1420,6 +1558,27 @@ CREATE INDEX index_projects_on_user_id ON projects USING btree (user_id);
 --
 
 CREATE INDEX index_rewards_on_project_id ON rewards USING btree (project_id);
+
+
+--
+-- Name: index_sessions_on_session_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_sessions_on_session_id ON sessions USING btree (session_id);
+
+
+--
+-- Name: index_sessions_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_sessions_on_updated_at ON sessions USING btree (updated_at);
+
+
+--
+-- Name: index_unsubscribes_on_notification_type_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_unsubscribes_on_notification_type_id ON unsubscribes USING btree (notification_type_id);
 
 
 --
@@ -1551,19 +1710,19 @@ ALTER TABLE ONLY channels_subscribers
 
 
 --
--- Name: fk_notifications_channel_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_channels_trustees_channel_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY notifications
-    ADD CONSTRAINT fk_notifications_channel_id FOREIGN KEY (channel_id) REFERENCES channels(id);
+ALTER TABLE ONLY channels_trustees
+    ADD CONSTRAINT fk_channels_trustees_channel_id FOREIGN KEY (channel_id) REFERENCES channels(id);
 
 
 --
--- Name: fk_users_channel_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_channels_trustees_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY users
-    ADD CONSTRAINT fk_users_channel_id FOREIGN KEY (channel_id) REFERENCES channels(id);
+ALTER TABLE ONLY channels_trustees
+    ADD CONSTRAINT fk_channels_trustees_user_id FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
@@ -1572,6 +1731,14 @@ ALTER TABLE ONLY users
 
 ALTER TABLE ONLY notifications
     ADD CONSTRAINT notifications_backer_id_fk FOREIGN KEY (backer_id) REFERENCES backers(id);
+
+
+--
+-- Name: notifications_notification_type_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notifications_notification_type_id_fk FOREIGN KEY (notification_type_id) REFERENCES notification_types(id);
 
 
 --
@@ -1631,6 +1798,14 @@ ALTER TABLE ONLY rewards
 
 
 --
+-- Name: unsubscribes_notification_type_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY unsubscribes
+    ADD CONSTRAINT unsubscribes_notification_type_id_fk FOREIGN KEY (notification_type_id) REFERENCES notification_types(id);
+
+
+--
 -- Name: unsubscribes_project_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1665,8 +1840,6 @@ ALTER TABLE ONLY updates
 --
 -- PostgreSQL database dump complete
 --
-
-SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
@@ -1869,61 +2042,3 @@ INSERT INTO schema_migrations (version) VALUES ('20130829180232');
 INSERT INTO schema_migrations (version) VALUES ('20130905153553');
 
 INSERT INTO schema_migrations (version) VALUES ('20130911180657');
-
-INSERT INTO schema_migrations (version) VALUES ('20130918191809');
-
-INSERT INTO schema_migrations (version) VALUES ('20130926185207');
-
-INSERT INTO schema_migrations (version) VALUES ('20131008190648');
-
-INSERT INTO schema_migrations (version) VALUES ('20131010193936');
-
-INSERT INTO schema_migrations (version) VALUES ('20131010194006');
-
-INSERT INTO schema_migrations (version) VALUES ('20131010194345');
-
-INSERT INTO schema_migrations (version) VALUES ('20131010194500');
-
-INSERT INTO schema_migrations (version) VALUES ('20131010194521');
-
-INSERT INTO schema_migrations (version) VALUES ('20131014201229');
-
-INSERT INTO schema_migrations (version) VALUES ('20131016193346');
-
-INSERT INTO schema_migrations (version) VALUES ('20131016214955');
-
-INSERT INTO schema_migrations (version) VALUES ('20131016231130');
-
-INSERT INTO schema_migrations (version) VALUES ('20131018170211');
-
-INSERT INTO schema_migrations (version) VALUES ('20131020215932');
-
-INSERT INTO schema_migrations (version) VALUES ('20131021190108');
-
-INSERT INTO schema_migrations (version) VALUES ('20131022154220');
-
-INSERT INTO schema_migrations (version) VALUES ('20131023031539');
-
-INSERT INTO schema_migrations (version) VALUES ('20131023032325');
-
-INSERT INTO schema_migrations (version) VALUES ('20131107143439');
-
-INSERT INTO schema_migrations (version) VALUES ('20131107143512');
-
-INSERT INTO schema_migrations (version) VALUES ('20131107143537');
-
-INSERT INTO schema_migrations (version) VALUES ('20131107143832');
-
-INSERT INTO schema_migrations (version) VALUES ('20131107145351');
-
-INSERT INTO schema_migrations (version) VALUES ('20131107161918');
-
-INSERT INTO schema_migrations (version) VALUES ('20131112113608');
-
-INSERT INTO schema_migrations (version) VALUES ('20131113145601');
-
-INSERT INTO schema_migrations (version) VALUES ('20131114154112');
-
-INSERT INTO schema_migrations (version) VALUES ('20131127132159');
-
-INSERT INTO schema_migrations (version) VALUES ('20131128142533');
