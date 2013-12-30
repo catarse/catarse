@@ -18,7 +18,7 @@
           = image_tag 'loading.gif'
 
         .bootstrap-twitter
-          = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(@project, reward)}, class: 'show_reward_form btn btn-mini pull-right btn-primary' do
+          = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(parent, reward)}, class: 'show_reward_form btn btn-mini pull-right btn-primary' do
             i.icon-pencil.icon-white
 
     h2= t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
