@@ -137,7 +137,7 @@ group :test do
   gem 'capybara',   '~> 2.1.0'
   gem 'jasmine'
   gem 'coveralls', require: false
-  gem 'selenium-webdriver', '~> 2.35.1'
+  gem 'selenium-webdriver'
 end
 
 gem 'sass-rails', '~> 4.0.0'
