@@ -1,12 +1,14 @@
 rvm:
   - 2.1.0
 
+before_install:
+  - "gem install bundler -v '= 1.5.1'"
+
 before_script:
   - "cp config/database.sample.yml config/database.yml"
   - "psql -c 'create role catarse SUPERUSER LOGIN;' postgres"
   - "psql -c 'create database catarse_test;' -U catarse postgres"
   - "sh -e /etc/init.d/xvfb start"
-  - "gem install bundler -v '= 1.5.1'"
   - "bundle exec rake db:migrate"
 
 env:
