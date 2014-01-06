@@ -95,13 +95,7 @@ pt:
           hide: 'Apoio escondido com sucesso!'
           cancel: 'Apoio cancelado com sucesso!'
           push_to_trash: 'Apoio deletado com sucesso!'
-      index:
-        send_refund_request_backer: 'Enviar solicitação de reembolso'
-        push_to_trash: 'Deletar apoio'
-        cancel: 'Cancelar apoio'
-        between_values: 'Valores entre'
-        by_state: 'Estado'
-        refund_and_hide: 'Fazer estorno e não exibir apoio.'
+      show:
         backer_info: 'Informações do backer %{key}'
         payment_id: 'ID do pagamento'
         payment_method: 'Meio de pagamento'
@@ -110,6 +104,15 @@ pt:
         payer_email: 'Email utilizado no meio de pagamento'
         user_email: 'Email utilizado no catarse'
         created_at: 'Iniciado em'
+      index:
+        send_refund_request_backer: 'Enviar solicitação de reembolso'
+        payer_email: 'Email do meio de pagamento'
+        user_email: 'Email utilizado no catarse'
+        push_to_trash: 'Deletar apoio'
+        cancel: 'Cancelar apoio'
+        between_values: 'Valores entre'
+        by_state: 'Estado'
+        refund_and_hide: 'Fazer estorno e não exibir apoio.'
         pending_to_refund: 'Estornos pendentes'
         confirm_backer: 'Confirmar apoio'
         unconfirm_backer: 'Desconfirmar apoio'
@@ -118,6 +121,7 @@ pt:
         state: 'Estado'
         menu: "Apoios"
         anonymous: Anônimo?
+        backer: Apoio
         confirmed: Confirmado?
         credits: "Usou créditos?"
         id: Id
