@@ -120,7 +120,7 @@ Catarse::Application.routes.draw do
     resources :statistics, only: [ :index ]
     resources :financials, only: [ :index ]
 
-    resources :backers, only: [ :index, :update ] do
+    resources :backers, only: [ :index, :update, :show ] do
       member do
         put 'confirm'
         put 'pendent'
