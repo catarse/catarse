@@ -13,7 +13,7 @@ header
       = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
         = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "discover-form-input"
         = submit_tag
-    .large-4.columns
+    .large-3.columns
       ul.user-utilities
         li.nav-item
           = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if Configuration[:support_forum].present?
@@ -21,9 +21,6 @@ header
         li.nav-item
           = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank, class: 'header-nav-item' if Configuration['blog_url'].present?
 
-        li.nav-item.locales
-          - I18n.available_locales.map(&:to_s).sort.reverse.each do |locale|
-              = link_to locale, params.merge(locale: locale)
         li.nav-item
         - if current_user
           li.nav-item
