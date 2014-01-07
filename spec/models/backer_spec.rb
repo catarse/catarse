@@ -237,16 +237,4 @@ describe Backer do
       it{ should == 0 }
     end
   end
-
-  describe "#display_value" do
-    context "when the value has decimal places" do
-      subject{ build(:backer, value: 99.99).display_value }
-      it{ should == "R$ 100" }
-    end
-
-    context "when the value does not have decimal places" do
-      subject{ build(:backer, value: 1).display_value }
-      it{ should == "R$ 1" }
-    end
-  end
 end
