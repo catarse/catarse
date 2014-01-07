@@ -6,8 +6,16 @@ header
   h1
     margin: 0
 
-.user-menu
-  margin-top: -10px
+.my_profile_link
+  border-left: 1px solid #E9E9EC
+  display: block
+  height: 40px
+  padding: 0 15px 0 20px
+  margin: 5px 0
+  background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -27px -67px transparent
+  transition: 0.4s all
+  &:hover
+    opacity: 0.5
 
 .logo
   background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -32px -14px transparent
@@ -32,6 +40,7 @@ header
     opacity: 0.5
 
 .call-to-action
+  margin-top: 15px
   padding-left: 0
   a
     padding-left: 15px
@@ -42,10 +51,12 @@ header
 .user-utilities
   // this margin 0 is here to make the user avatar fit without pushing the header down
   margin-bottom: 0
+  margin-top: 15px
   padding-left: 0
   li
     padding-left: 10px
   a
+    padding-left: 15px
     color: $blue-two
     font-size: 13px
   .locales
