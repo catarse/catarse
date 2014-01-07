@@ -76,7 +76,6 @@ gem 'inherited_resources',        '~> 1.4.1'
 gem 'has_scope', '~> 0.6.0.rc'
 gem 'spectator-validates_email',  require: 'validates_email'
 gem 'video_info', '>= 1.1.1'
-gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
 
 # Translations
