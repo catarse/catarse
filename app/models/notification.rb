@@ -12,7 +12,8 @@ class Notification < ActiveRecord::Base
     create!({
       template_name: template_name,
       user: user,
-      locale: user.locale || I18n.locale,
+      #disable other locales temporarily
+      locale: :pt,
       origin_email: Configuration[:email_contact],
       origin_name: Configuration[:company_name]
     }.merge(params)).deliver
