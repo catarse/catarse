@@ -2,7 +2,7 @@ p Seguem todos os dados do pagamento:
 p
   | Nome do apoiador: #{backer.payer_name}
   br/
-  | CPF/CNPJ do apoiador: #{backer.payer_document}
+  | CPF/CNPJ do apoiador: #{(backer.payer_document || backer.user.cpf)}
   br/
   | Data da confirmação do apoio: #{l backer.confirmed_at}
   br/
@@ -19,7 +19,7 @@ p
   br/
   | Nome/Razão Social do realizador: #{backer.project.user.display_name}
   br/
-  | CPF/CNPJ do realizador: #{backer.user.cpf}
+  | CPF/CNPJ do realizador: #{backer.project.user.cpf}
 
 p 
   | É importante ressaltar que o Catarse é apenas intermediador desse processo,
