@@ -40,6 +40,7 @@ Catarse::Application.routes.draw do
             put 'approve'
             put 'reject'
             put 'push_to_draft'
+            put 'push_to_trash'
           end
         end
       end
@@ -114,6 +115,7 @@ Catarse::Application.routes.draw do
         put 'approve'
         put 'reject'
         put 'push_to_draft'
+        put 'push_to_trash'
       end
     end
 
