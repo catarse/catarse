@@ -1,0 +1,18 @@
+= render 'shared/header_channel'
+= content_for :title, channel.name
+
+section.line-box
+  .row
+    .large-12.columns
+      .presentation
+        h1.channel-title
+          = resource.title
+
+br/
+
+article.row.channel-posts-wrapper
+    section.large-9.columns.channel-post
+      == resource.body_html
+    .large-3.columns
+
+= render 'shared/footer_channel'

@@ -27,6 +27,8 @@ pt:
         one: "<span>%{count} %{unit}</span> restante"
         other: "<span>%{count} %{unit}</span> restantes"
       pledged_html: "<span>%{value}</span> levantados"
+    posts:
+      title: "Novidades"
     how_it_works:
       title: "Como funciona o %{channel}?"
     footer:

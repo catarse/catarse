@@ -2,6 +2,7 @@ class Channel < ActiveRecord::Base
   extend CatarseAutoHtml
   attr_accessible :description, :name, :permalink, :video_url, :twitter, :facebook, :website, :image, :how_it_works
   schema_associations
+  has_many :channel_posts
 
   validates_presence_of :name, :description, :permalink
   validates_uniqueness_of :permalink
