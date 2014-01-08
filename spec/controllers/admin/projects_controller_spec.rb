@@ -51,6 +51,22 @@ describe Admin::ProjectsController do
     end
   end
 
+  describe 'PUT push_to_trash' do
+    let(:project) { create(:project, state: 'draft') }
+    subject { project.deleted? }
+
+    before do
+      controller.stub(:current_user).and_return(admin)
+      put :push_to_trash, id: project, locale: :pt
+    end
+
+    it do
+      project.reload
+      should be_true
+    end
+  end
+
+
   describe "GET index" do
     context "when I'm not logged in" do
       let(:current_user){ nil }
