@@ -53,17 +53,14 @@ describe Admin::ProjectsController do
 
   describe 'PUT push_to_trash' do
     let(:project) { create(:project, state: 'draft') }
-    subject { project.deleted? }
+    subject{ project.reload.deleted? }
 
     before do
       controller.stub(:current_user).and_return(admin)
       put :push_to_trash, id: project, locale: :pt
     end
 
-    it do
-      project.reload
-      should be_true
-    end
+    it{ should be_true }
   end
 
 
