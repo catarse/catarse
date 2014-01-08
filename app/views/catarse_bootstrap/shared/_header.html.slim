@@ -1,11 +1,11 @@
 header
   .row
-    .large-3.column
+    .large-3.columns
       h1
         = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo', :title => Configuration[:company_name]
     .large-3.columns.call-to-action
-          = link_to t('layouts.header.submit'), page_path(:how_it_works), :class => 'project'
-          = link_to t('layouts.header.discover'), explore_path, :class => 'project'
+      = link_to t('layouts.header.submit'), page_path(:how_it_works), :class => 'project'
+      = link_to t('layouts.header.discover'), explore_path, :class => 'project'
     .large-3.columns
       = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
         = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "discover-form-input"
