@@ -100,6 +100,7 @@ describe Backer do
     before do
       backer.update_current_billing_info
     end
+    its(:payer_name) { should eq(user.display_name) }
     its(:address_street){ should eq(user.address_street) }
     its(:address_number){ should eq(user.address_number) }
     its(:address_neighbourhood){ should eq(user.address_neighbourhood) }
