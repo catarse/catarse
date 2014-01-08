@@ -1,6 +1,6 @@
 p Seguem todos os dados do pagamento:
 p
-  | Nome do apoiador: #{backer.payer_name}
+  | Nome do apoiador: #{(backer.payer_name || backer.user.display_name)}
   br/
   | CPF/CNPJ do apoiador: #{(backer.payer_document || backer.user.cpf)}
   br/
