@@ -100,6 +100,7 @@ describe Backer do
     before do
       backer.update_current_billing_info
     end
+    its(:payer_name) { should eq(user.display_name) }
     its(:address_street){ should eq(user.address_street) }
     its(:address_number){ should eq(user.address_number) }
     its(:address_neighbourhood){ should eq(user.address_neighbourhood) }
@@ -235,18 +236,6 @@ describe Backer do
         failed_project.update_attributes state: 'failed'
       end
       it{ should == 0 }
-    end
-  end
-
-  describe "#display_value" do
-    context "when the value has decimal places" do
-      subject{ build(:backer, value: 99.99).display_value }
-      it{ should == "R$ 100" }
-    end
-
-    context "when the value does not have decimal places" do
-      subject{ build(:backer, value: 1).display_value }
-      it{ should == "R$ 1" }
     end
   end
 end

@@ -7,7 +7,7 @@ class Channels::Admin::ProjectsController < Admin::BaseController
     @total_projects =  channel.projects.size
   end
 
-  [:approve, :reject, :push_to_draft].each do |name|
+  [:approve, :reject, :push_to_draft, :push_to_trash].each do |name|
     define_method name do
       @project    = channel.projects.find(params[:id])
       @project.send("#{name.to_s}!")
