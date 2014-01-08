@@ -663,6 +663,7 @@ pt:
   channels:
     subscribed: "+ %{count} seguidores"
     header:
+      posts: 'Novidades'
       submit: "Enviar projeto"
       how_works: "Como funciona"
       what_is_channel: "O que são canais?"
