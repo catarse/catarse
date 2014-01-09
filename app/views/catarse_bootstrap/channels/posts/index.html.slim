@@ -9,7 +9,23 @@ section.line-box
           = t('channels.posts.title')
           | : 
           = link_to channel.name, root_path, class: 'standard-link'
-- if current_user
+        .row
+          .large-4.columns
+            .channel-followers-wrapper
+              - if channel.has_subscriber?(current_user)
+                .large-6.columns.no-padding
+                  = link_to channels_subscriber_path, {method: :delete, class: [:button, :medium, :negative]} do
+                    .stop_following= t('channels.unfollow')
+              - else
+                .large-6.columns.no-padding
+                  = link_to t('channels.follow'), channels_subscriber_path, class: [:button, :medium, :negative], title: t('channels.follow')
+              .large-6.columns
+                .channel-followers[title=t('channels.subscribed', count: channel.channels_subscribers.size)]
+                  = t('channels.subscribed', count: channel.channels_subscribers.size)
+
+
+
+- if can? :access, :channel_posts
   article.row.channel-posts-new
     section.large-9.new-channel-post
       = simple_form_for @post, url: channels_posts_path, class: 'channel-post-new' do |form|
