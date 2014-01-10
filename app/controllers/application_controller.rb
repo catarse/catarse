@@ -3,12 +3,15 @@ class ApplicationController < ActionController::Base
   include Concerns::ExceptionHandler
   include Concerns::MenuHandler
   include Concerns::SocialHelpersHandler
+  include Pundit
 
   layout :use_catarse_boostrap
   protect_from_forgery
 
   before_filter :redirect_user_back_after_login, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  #after_filter :verify_authorized, :except => :index
+  #after_filter :verify_policy_scoped, :only => :index
 
   helper_method :channel, :namespace, :referal_link
 
