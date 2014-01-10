@@ -21,10 +21,6 @@ header.header
         li.header-nav-li
           = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank, class: 'header-nav-item' if Configuration['blog_url'].present?
 
-        li.header-nav-li.locales
-          - I18n.available_locales.map(&:to_s).sort.reverse.each do |locale|
-              = link_to locale, params.merge(locale: locale)
-
         - if current_user
           li.header-nav-li.user
             = link_to '#', class: 'my_profile_link user-menu' do
