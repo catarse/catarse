@@ -151,8 +151,6 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       request_store (~> 1.0.3)
-    enumerate_it (1.2.0)
-      activesupport (>= 3.0.0)
     erubis (2.7.0)
     excon (0.31.0)
     execjs (2.0.2)
@@ -479,7 +477,6 @@ DEPENDENCIES
   database_cleaner
   devise (~> 3.0.2)
   draper
-  enumerate_it
   ezcrypto
   factory_girl_rails
   fakeweb
