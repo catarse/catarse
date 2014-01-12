@@ -97,7 +97,8 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    catarse_moip (2.1.9)
+    catarse_moip (2.2.0)
+      enumerate_it
       libxml-ruby (~> 2.6.0)
       rails (~> 4.0)
     catarse_paypal_express (2.1.2)
@@ -151,6 +152,8 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       request_store (~> 1.0.3)
+    enumerate_it (1.2.0)
+      activesupport (>= 3.0.0)
     erubis (2.7.0)
     excon (0.31.0)
     execjs (2.0.2)
@@ -238,7 +241,7 @@ GEM
     minitest (4.7.5)
     money (6.0.0)
       i18n (~> 0.6.4)
-    multi_json (1.8.2)
+    multi_json (1.8.4)
     multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -469,7 +472,7 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   carrierwave (~> 0.8.0)
   catarse_mailchimp!
-  catarse_moip (~> 2.1.9)
+  catarse_moip (~> 2.2.0)
   catarse_paypal_express (~> 2.1.2)
   chartkick
   coffee-rails (~> 4.0.0)
