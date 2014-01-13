@@ -7,15 +7,15 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    true
   end
 
   def create?
-    false
+    user.admin? || false
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    user.admin? || false
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    user.admin? || false
   end
 
   def scope
