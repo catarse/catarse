@@ -1,6 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  load_and_authorize_resource only: [ :new, :create, :update, :destroy, :send_to_analysis ]
+  after_filter :verify_authorized, except: [:index, :video, :video_embed, :embed, :embed_panel]
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :recommended, :not_expired, type: :boolean
@@ -32,30 +32,38 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    new! do
-      @title = t('projects.new.title')
-      @project.rewards.build
-    end
+    @project = Project.new user: current_user
+    authorize @project
+    @title = t('projects.new.title')
+    @project.rewards.build
   end
 
   def create
-    @project = current_user.projects.new(params[:project])
-
+    @project = Project.new params[:project].merge(user: current_user)
+    authorize @project
     create! { project_by_slug_path(@project.permalink) }
+  end
+
+  def destroy
+    authorize resource
+    destroy!
   end
 
   def send_to_analysis
     resource.send_to_analysis
+    authorize @project
     flash[:notice] = t('projects.send_to_analysis')
     redirect_to project_by_slug_path(@project.permalink)
   end
 
   def update
+    authorize resource
     update!(notice: t('projects.update.success')) { project_by_slug_path(@project.permalink, anchor: 'edit') }
   end
 
   def show
     @title = resource.name
+    authorize @project
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
     @updates_count = resource.updates.count
     @update = resource.updates.where(id: params[:update_id]).first if params[:update_id].present?
@@ -81,6 +89,9 @@ class ProjectsController < ApplicationController
   end
 
   protected
+  def permitted_params
+    policy(resource).permitted_attributes(params)
+  end
 
   def resource
     @project ||= (params[:permalink].present? ? Project.by_permalink(params[:permalink]).first! : Project.find(params[:id]))
