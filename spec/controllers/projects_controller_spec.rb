@@ -28,31 +28,6 @@ describe ProjectsController do
     end
   end
 
-  describe "DELETE destroy" do
-    before do
-      delete :destroy, id: project.id, locale: :pt
-    end
-
-    context "when user is a guest" do
-      it { Project.all.include?(project).should be_true }
-    end
-
-    context "when user is a project owner" do
-      let(:current_user){ project.user }
-      it { Project.all.include?(project).should be_true }
-    end
-
-    context "when user is a registered user" do
-      let(:current_user){ create(:user, admin: false) }
-      it { Project.all.include?(project).should be_true }
-    end
-
-    context "when user is an admin" do
-      let(:current_user){ create(:user, admin: true) }
-      it { Project.all.include?(project).should be_false }
-    end
-  end
-
   describe "GET send_to_analysis" do
     let(:current_user){ project.user }
 
@@ -134,10 +109,9 @@ describe ProjectsController do
 
         context "when I try to update the project name and the about field" do
           before{ put :update, id: project.id, project: { name: 'new_title', about: 'new_description' }, locale: :pt }
-          it "should not update neither" do
+          it "should not update title" do
             project.reload
             project.name.should_not == 'new_title'
-            project.about.should_not == 'new_description'
           end
         end
 
