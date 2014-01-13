@@ -84,25 +84,25 @@ fr:
         value: Value
     statistics:
       index:
-        menu: "Statistics"
-        title: "Statistics"
-        total_users: "Users"
-        total_backs: "Backs"
-        total_backers: "Backers"
-        total_backed: "Backed"
-        total_projects: "Projects"
-        total_projects_success: "Successful"
-        total_projects_online: "Online"
+        menu: "Statistiques"
+        title: "Statistiques"
+        total_users: "Utilisateurs"
+        total_backs: "Fonds"
+        total_backers: "Bailleurs"
+        total_backed: "Financés"
+        total_projects: "Projets"
+        total_projects_success: "avec succès"
+        total_projects_online: "En ligne"
       projects_by_week:
-        title: "Projects sent per week"
-        current_period: "Last 8 weeks"
-        previous_period: "Previous 8 weeks"
-        last_year: "Last year"
+        title: "Projets soumis par semaine"
+        current_period: "8 dernières semaines"
+        previous_period: "les 8 semaines passées"
+        last_year: "L'an dernier"
       backers_by_week:
-        title: "Backed value confirmed per week"
-        current_period: "Last 8 weeks"
-        previous_period: "Previous 8 weeks"
-        last_year: "Last year"
+        title: "Financement confirmé par semaine"
+        current_period: "8 dernières semaines"
+        previous_period: "les 8 semaines passées"
+        last_year: "L'an dernier"
 
   channels:
     admin:
