@@ -4,3 +4,4 @@ pt:
       channel_post:
         title: 'Titulo'
         body: 'Conteúdo'
+        visible: 'Publicar (Marque caso queira publicar essa nóvidade)'

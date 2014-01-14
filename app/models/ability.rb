@@ -91,6 +91,7 @@ class Ability
       can :access, :admin_projects_path
       can :access, :edit_channels_profile_path
       can :access, :channels_admin_followers_path
+      can :access, :channels_admin_posts_path
     end
 
     # NOTE: admin can access everything.
