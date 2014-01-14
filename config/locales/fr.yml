@@ -372,7 +372,7 @@ fr:
       waiting_funds: waiting
       not_reached_goal: waiting
       reached_goal: funded
-      draft: "corbeille"
+      draft: "brouillon"
   projects:
     send_to_analysis: 'Votre projet a été envoyé à notre équipe'
     box:
@@ -382,14 +382,14 @@ fr:
       title: "champs pour Admin"
     back_project:
       display_status:
-        reached_goal: "This project will be successful and funded on %{date}"
-        not_reached_goal: "This project will only be funded if at least %{goal} is backed until %{date}"
+        reached_goal: "Ce projet sera financé le %{date}"
+        not_reached_goal: "Ce projet sera financé seulement si au moins %{goal} sont collectés avant %{date}"
         failed: "This project didn't reach the goal of %{goal} until %{date} and wasn't funded"
         successful: "This project was successful and was funded on %{date}"
         waiting_funds: "Waiting confirmation from payments to know if this project will be funded."
-        draft: "This project is in draft mode and is not open to backers yet."
-      reached_of: "Reached of"
-      submit: "Back this project"
+        draft: "Ce projet est en mode brouillon et n'est pas ouvert aux bailleurs."
+      reached_of: "atteint"
+      submit: "Soutenir ce projet"
     backers:
       backer:
         anonymous_backer: "Anonymous backer"

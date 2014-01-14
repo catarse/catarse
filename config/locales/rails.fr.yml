@@ -57,13 +57,13 @@ fr:
     distance_in_words:
       about_x_hours:
         one: 1 heure environ
-        other: %{count} heurs environ
+        other: '%{count} heures environ'
       about_x_months:
         one: 1 mois environ
-        other: %{count} mois environ
+        other: '%{count} mois environ'
       about_x_years:
         one: 1 an environ
-        other: %{count}
+        other: '%{count}'
       almost_x_years:
         one: près d'un an
         other: près de %{count} an
