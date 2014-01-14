@@ -1,0 +1,6 @@
+pt:
+  activerecord:
+    attributes:
+      channel_post:
+        title: 'Titulo'
+        body: 'Conteúdo'

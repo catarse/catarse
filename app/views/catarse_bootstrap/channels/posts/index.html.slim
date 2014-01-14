@@ -25,13 +25,6 @@ section.line-box
 
 
 
-- if can? :access, :channel_posts
-  article.row.channel-posts-new
-    section.large-9.new-channel-post
-      = simple_form_for @post, url: channels_posts_path, class: 'channel-post-new' do |form|
-        = form.input :title, as: :string
-        = form.input :body, as: :text, input_html: {rows: 10}
-
 article.row.channel-posts-wrapper
   - collection.each do |resource|
     section.large-9.columns.channel-post
