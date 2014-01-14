@@ -1,8 +1,14 @@
 = render 'shared/header_channel'
 
 .row.admin-posts
-  h1
-    = @title = "Editar Novidade"
-  .clearfix
+  br/
+  br/
+  .large-2.columns
+    = link_to 'Voltar para listagem', channels_admin_posts_path, class: [:button, :small, :negative]
 
-  = render 'form', url: channels_admin_post_path(resource)
+  .large-12.columns
+    h1
+      = @title = "Editar Novidade"
+    .clearfix
+
+    = render 'form', url: channels_admin_post_path(resource)
