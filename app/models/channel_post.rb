@@ -9,6 +9,8 @@ class ChannelPost < ActiveRecord::Base
 
   catarse_auto_html_for field: :body, video_width: 560, video_height: 340
 
+  scope :ordered, -> { order('id desc') }
+
   def to_s
     self.title
   end

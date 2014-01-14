@@ -701,6 +701,12 @@ pt:
         participate: "Para participar"
         details: "Últimos detalhes"
     admin:
+      confirmations:
+        destroy: 'Você tem certeza que deseja deletar?'
+      posts:
+        save_submit: 'Salvar Novidade'
+        index:
+          title: 'Gerenciamento: Novidades'
       followers:
         title: "Seguidores"
         download: "Baixar lista"
@@ -717,6 +723,8 @@ pt:
         order_table: "Ordenar tabela"
         submit: "Filtrar"
       table:
+        edit_action: 'Editar'
+        destroy_action: 'Deletar'
         name: "Título"
         category: "Categoria"
         user_id: "Usuário"

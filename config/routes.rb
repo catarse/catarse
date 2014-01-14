@@ -34,6 +34,7 @@ Catarse::Application.routes.draw do
         namespace :reports do
           resources :subscriber_reports, only: [ :index ]
         end
+        resources :posts
         resources :followers, only: [ :index ]
         resources :projects, only: [ :index, :update] do
           member do

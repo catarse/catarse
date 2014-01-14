@@ -1,0 +1,8 @@
+= render 'shared/header_channel'
+
+.row.admin-posts
+  h1
+    = @title = "Criar Novidade"
+  .clearfix
+
+  = render 'form', url: channels_admin_posts_path

@@ -1,0 +1,36 @@
+= render 'shared/header_channel'
+
+.row.admin-posts
+  h1
+    = @title = t('channels.admin.posts.index.title')
+  .clearfix
+  .row
+    .large-4.columns
+      = link_to 'Nova postagem', new_channels_admin_post_path, class: [:button, :medium, :negative]
+  br/
+  br/
+
+
+  .clearfix
+  - if collection.empty?
+    = t('channels.admin.management.no_posts')
+  - else
+    table.admin-posts-table
+      thead
+        tr
+          th.large-4.columns Título
+          th.large-2.columns Publicado?
+          th.large-4.columns Criado em
+          th.large-2.columns
+      tbody
+        - collection.each do |resource|
+          tr id=resource.id class=cycle("even", "odd")
+            td.large-4.columns= resource.title
+            td.large-2.columns= resource.visible
+            td.large-4.columns= l(resource.created_at)
+            td.large-2.columns.project-events-dropdown
+              ul.dropdown
+                li= link_to t('channels.admin.table.edit_action'), edit_channels_admin_post_path(resource)
+                li= link_to t('channels.admin.table.destroy_action'), channels_admin_post_path(resource), method: :delete, data: { confirm: t('channels.admin.confirmations.destroy') }
+
+  = paginate collection
