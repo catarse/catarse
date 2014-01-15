@@ -11,8 +11,14 @@ section.line-box
 br/
 
 article.row.channel-posts-wrapper
-    section.large-9.columns.channel-post
-      == resource.body_html
-    .large-3.columns
+  section.large-9.columns.channel-post
+    == resource.body_html
+  .large-3.columns
+
+br/
+
+article.row.channel-posts-comments-wrapper
+  section.large-9.columns.channel-posts-comments
+    #channel_posts_comments
 
 = render 'shared/footer_channel'
