@@ -72,6 +72,7 @@ class Backer < ActiveRecord::Base
     self.address_state = user.address_state
     self.address_phone_number = user.phone_number
     self.payer_document = user.cpf
+    self.payer_name = user.display_name
   end
 
   def update_user_billing_info

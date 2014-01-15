@@ -1,0 +1,81 @@
+= render 'shared/header'
+.row.admin
+  h1= @title = t('.title')
+  = simple_form_for '', url: admin_financials_path, method: :get do |form|
+    fieldset.financials
+      .row
+        .large-2.columns
+          = form.input :by_permalink, as: :string, label: t('.permalink'), input_html: {value: params[:by_permalink]}
+        .large-2.columns
+          = form.input "between_expires_at[start_at]", as: :string, label: t(".between_expires_at"), input_html: {value: params[:between_expires_at] && params[:between_expires_at][:start_at], data: { mask: '99/99/9999' } }
+        .large-2.columns
+          = form.input "between_expires_at[ends_at]", as: :string, label: '*', input_html: {value: params[:between_expires_at] && params[:between_expires_at][:ends_at], data: { mask: '99/99/9999' } }
+        .large-2.columns
+          = form.input :by_progress, as: :string, label: t('.by_progress'), input_html: {value: params[:by_progress]}
+        .large-2.columns
+          = form.input :name_contains, as: :string, label: t('.project'), input_html: {value: params[:name_contains]}
+        .large-2.columns
+          = form.input :user_name_contains, as: :string, label: t('.user'), input_html: {value: params[:user_name_contains]}
+      .row
+        .large-2.columns
+          = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+
+        .large-2.columns.search_report
+          = link_to t('.search_report'), admin_financials_path(params: params,format: :csv)
+        .large-2.large-offset-1.columns
+          = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
+    fieldset.financials
+      =' pluralize_without_number @scoped_projects.count, t('found_singular'), t('found_plural')
+      strong=' @scoped_projects.count
+      =' pluralize_without_number(@scoped_projects.count, t('project_singular'), t('project_plural')).downcase
+
+  = paginate @projects
+  - if @projects.empty?
+    = t('.no_projects')
+  - else
+    table.table.table-striped
+      thead
+        tr
+          th style="width: 200px;"
+            = t('.name')
+          th= t('.user')
+          th= t('.goal')
+          th= t('.pledged')
+          th= t('.total_payment_service_fee')
+          th= t('.total_catarse_fee')
+          th= t('.repass_value')
+          th= t('.expires_at')
+          th= t('.reports')
+          th= t('.state')
+          th
+      tbody
+        - @projects.each do |project|
+          tr id=project.id class=cycle("even", "odd")
+            td= link_to project.name, project_by_slug_path(permalink: project.permalink), target: '_blank'
+            td= link_to (project.user.moip_login.blank? ? 'Não preenchido' : project.user.moip_login), user_path(project.user, anchor: :settings), target: '_blank'
+            td= project.display_goal
+            td= project.display_pledged
+            td= number_to_currency project.total_payment_service_fee, precision: 2
+            - catarse_fee = Configuration[:catarse_fee].to_f * project.pledged
+            td
+              = number_to_currency catarse_fee, precision: 2
+            td
+              = number_to_currency ((project.pledged*0.87)), precistion: 2
+            td
+              = project.display_expires_at
+            td
+              = link_to t('.backer_report'), admin_reports_backer_reports_path(project_id: project.id, format: :csv)
+            td
+              - if project.online?
+                span.label.label-online= project.state
+              - elsif project.successful?
+                span.label.label-success= project.state
+              - elsif project.failed? or project.rejected?
+                span.label.label-important= project.state
+              - elsif project.waiting_funds?
+                span.label.label-warning= project.state
+              - else
+                span.label= project.state
+
+  = paginate @projects
+= render 'shared/footer'
