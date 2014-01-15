@@ -19,4 +19,23 @@ class ChannelPost < ActiveRecord::Base
   def to_param
     "#{self.id}-#{self.title.parameterize}"
   end
+
+  def post_number
+    self.channel.channel_posts.where('id <= ?', self.id).count
+  end
+
+  def email_body_html
+    auto_html(body) do
+      html_escape map: {
+        '&' => '&amp;',
+        '>' => '&gt;',
+        '<' => '&lt;',
+        '"' => '"'
+      }
+      email_image width: 513
+      redcloth target: :_blank
+      link target: :_blank
+    end
+  end
+
 end
