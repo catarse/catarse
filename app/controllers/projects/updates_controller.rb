@@ -23,6 +23,6 @@ class Projects::UpdatesController < ApplicationController
   end
 
   def collection
-    @updates ||= end_of_association_chain.visible_to(current_user)
+    @updates ||= end_of_association_chain.visible_to(current_user).order(:created_at).reverse_order
   end
 end
