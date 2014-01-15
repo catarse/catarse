@@ -7,9 +7,12 @@ App.views.Project.addChild('Updates', _.extend({
   },
 
   onUpdateCreate: function(e, data){
+    $('#update_submit').attr('disabled','disabled');
     $('.ghost-flash').addClass('flash').removeClass('hide', 'ghost-flash');
     app.flash();
     this.$results.prepend(data);
+    $("input[type=text], textarea").val("");
+    $('#update_submit').removeAttr('disabled');
   },
 
   activate: function(){
