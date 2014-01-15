@@ -41,6 +41,7 @@ Catarse::Application.routes.draw do
             put 'approve'
             put 'reject'
             put 'push_to_draft'
+            put 'push_to_trash'
           end
         end
       end
@@ -117,13 +118,14 @@ Catarse::Application.routes.draw do
         put 'approve'
         put 'reject'
         put 'push_to_draft'
+        put 'push_to_trash'
       end
     end
 
     resources :statistics, only: [ :index ]
     resources :financials, only: [ :index ]
 
-    resources :backers, only: [ :index, :update ] do
+    resources :backers, only: [ :index, :update, :show ] do
       member do
         put 'confirm'
         put 'pendent'

@@ -742,6 +742,8 @@ pt:
         approve: "Aprovar"
         reject: "Rejeitar"
         send_to_draft: "Enviar para rascunho"
+        send_to_trash: "DELETAR PROJETO"
+        confirmation: "Tem certeza que deseja deletar esse projeto?"
     edit: "Atualizar canal"
 
   registrations:
