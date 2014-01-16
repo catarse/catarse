@@ -97,7 +97,7 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    catarse_moip (2.2.0)
+    catarse_moip (2.2.1)
       enumerate_it
       libxml-ruby (~> 2.6.0)
       rails (~> 4.0)
@@ -471,7 +471,7 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   carrierwave (~> 0.8.0)
   catarse_mailchimp!
-  catarse_moip (~> 2.2.0)
+  catarse_moip (~> 2.2.1)
   catarse_paypal_express (~> 2.1.2)
   chartkick
   coffee-rails (~> 4.0.0)
