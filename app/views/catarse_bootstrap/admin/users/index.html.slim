@@ -1,24 +1,25 @@
 = render 'shared/header'
 .row.admin
   h1= @title = t('.title')
-  = simple_form_for '', url: admin_users_path, method: :get do |form|
-    = form.input :order_by, as: :hidden, input_html: {value: params[:order_by]}
+  = simple_form_for admin_users_path, method: :get, class: 'form-horizontal' do |form|
+    = form.hidden_field :order_by, name: :order_by, value: params[:order_by]
     fieldset
       .row
         .large-2.columns
-          = form.input :by_id, as: :integer, label: t('.id'), input_html: {value: params[:by_id]}
+          = form.input :by_id, as: :integer, label: t('channels.admin.filter.by_id'), input_html: {value: params[:by_id], name: :by_id}
         .large-2.columns
-          = form.input :by_name, as: :string, label: t('.name'), input_html: {value: params[:by_name]}
+          = form.input :by_name, as: :string, label: t('.by_name'), input_html: {value: params[:by_name], name: :by_name}
+        .large-3.columns
+          = form.input :by_email, as: :string, label: t('.by_email'), input_html: {value: params[:by_email], name: :by_email}
         .large-2.columns
-          = form.input :by_email, as: :string, label: t('.email'), input_html: {value: params[:by_email]}
+          = form.input :by_payer_email, as: :string, label: t('.by_payer_email'), input_html: {value: params[:by_payer_email], name: :by_payer_email}
         .large-3.columns
-          = form.input :by_payer_email, as: :string, label: t('.payer_email'), input_html: {value: params[:by_payer_email]}
-        .large-3.columns
-          = form.input :by_key, as: :string, label: t('.key'), input_html: {value: params[:by_key]}
-    fieldset
+          = form.input :by_key, as: :string, label: t('.key'), input_html: {value: params[:by_key], name: :by_key}
       .row
+        fieldset
         .large-2.columns
-          = form.input :has_credits, as: :boolean, label: t('.credits'), input_html: {value: params[:has_credits]}
+          = check_box_tag :has_credits, true, params[:has_credits].present?
+          = form.label :has_credits, t('.credits')
         .large-2.columns
           = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
 
