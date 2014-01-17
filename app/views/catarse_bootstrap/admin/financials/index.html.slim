@@ -2,7 +2,7 @@
 .row.admin
   h1= @title = t('.title')
   = simple_form_for '', url: admin_financials_path, method: :get do |form|
-    fieldset.financials
+    fieldset
       .row
         .large-2.columns
           = form.input :by_permalink, as: :string, label: t('.permalink'), input_html: {value: params[:by_permalink]}
@@ -24,7 +24,7 @@
           = link_to t('.search_report'), admin_financials_path(params: params,format: :csv)
         .large-2.large-offset-1.columns
           = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
-    fieldset.financials
+    fieldset
       =' pluralize_without_number @scoped_projects.count, t('found_singular'), t('found_plural')
       strong=' @scoped_projects.count
       =' pluralize_without_number(@scoped_projects.count, t('project_singular'), t('project_plural')).downcase
