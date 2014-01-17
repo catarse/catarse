@@ -19,7 +19,7 @@ section.line-box
             = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
     .large-4.columns
-      = content_tag(:iframe, nil, src: @profile.video_url, width: '330', height: '185', style: 'border: none; border-radius: 4px')
+      = content_tag(:iframe, nil, src: @profile.display_video_embed_url, width: '330', height: '185', style: 'border: none; border-radius: 4px')
 
 
 
