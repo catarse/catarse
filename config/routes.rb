@@ -34,6 +34,7 @@ Catarse::Application.routes.draw do
         namespace :reports do
           resources :subscriber_reports, only: [ :index ]
         end
+        resources :posts
         resources :followers, only: [ :index ]
         resources :projects, only: [ :index, :update] do
           member do
@@ -44,6 +45,8 @@ Catarse::Application.routes.draw do
           end
         end
       end
+
+      resources :posts
       get '/', to: 'profiles#show', as: :profile
       get '/how-it-works', to: 'profiles#how_it_works', as: :about
       resource :profile
