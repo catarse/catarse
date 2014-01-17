@@ -21,7 +21,7 @@ class ChannelPost < ActiveRecord::Base
   end
 
   def post_number
-    self.channel.channel_posts.where('id <= ?', self.id).count
+    self.channel.posts.where('id <= ?', self.id).count
   end
 
   def email_body_html
