@@ -1,0 +1,923 @@
+fr:
+  not_found:
+    title: "Désolé, nous n'avons pas pu trouvé cette adresse :("
+    text: "L'adresse est peut être incorrecte ou la page a été changée."
+  controllers:
+    updates:
+      create:
+        notice: 'mise à jour effectuée!'
+  failure_title: 'Veuillez corriger les erreurs suivantes:'
+  uservoice_gadget:
+    user:
+      name: 'Utilisateur'
+      location: 'Ville / État'
+      confirmed_backers: 'Bailleurs confirmés'
+      created_projects: 'Projets créés'
+  site:
+    title: "La plus grande communauté de crowdfunding au Brésil"
+    meta_title:  "%{title} · %{company_name}"
+    description: "Catarse é uma ferramenta diferente ¿ e colaborativa ¿ para tirar o seu projeto do papel!"
+    keywords: "catarse, crowdfunding, projet, communauté, open source"
+
+  login:
+    forgot_password:
+      welcome: 'Changer le mot de passe'
+      label: 'Saisissez votre email pour changer votre mot de passe'
+      submit: 'Changer'
+    registrations:
+      welcome: 'Créer un compte'
+      password_hint: '6 caractéres au minimum'
+      show_password: 'Montrer le mot de passe'
+    singin: "Se connecter"
+    placeholder:
+      email: "Email"
+      password: "Mot de passe"
+
+  backer_report_to_project_owner:
+    reward_description: 'Description de la récompense'
+    confirmed_at: 'Paiement confirmé à'
+    value: 'hauteur du financement'
+    service_fee: 'Honoraires Catarse'
+    user_name: 'Nom du bailleur'
+    user_email: "Email de l'utilisateur Catarse"
+    payer_email: 'Email utilisateur pour passerelle de paiement'
+    payment_method: 'Méthode de paiement'
+    address_street: 'Rue'
+    address_complement: 'Complément'
+    address_number: 'Numéro'
+    address_neighbourhood: 'Voisin'
+    address_city: 'Ville'
+    address_state: 'Etat'
+    address_zip_code: 'Zip code'
+    anonymous: 'Anonyme'
+  edit_project: 'Modifier ce projet'
+  facebook_locale: 'fr_FR'
+  or: 'ou'
+  'no': "Non"
+  'yes': "Oui"
+  newsletter_ok_header: "Vous êtes abonné à la newsletter!"
+  newsletter_ok_body: "Merci de vous être inscrit à notre newsletter"
+  newsletter_error_header: "Oops! il y a eu une erreur."
+  newsletter_error_body: "Votre email n'a pas pu être ajouté à notre newsletter. Réessayez plus tard s'il vous plait."
+  newsletter_subscribe: "s'abonner"
+  views:
+    pagination:
+      next: 'suivant'
+      last: 'précédant'
+      truncate: "..."
+  statistics:
+    backers:
+      subtitle: backers
+    goal:
+      subtitle: "total de %{total}"
+  project_by: "projet soumis par"
+  tell_about_this_back: "En parler à tout le monde!"
+  share_my_backs: "Voir les projets que je soutiens sur Catarse!"
+  tell_about_this_project: "Parler à tout le monde de ce projet!"
+  share_my_projects: "Voir mes projets sur Catarse!"
+  count_backed_projects: "financés %{total} projets"
+  footer:
+    titles:
+      about: "Qui sommes-nous"
+      social: "Réseaux sociaux"
+      sitemap: "Parcourir"
+      newsletter: "S'abonner à nous nouveautés"
+      contact: "Restez en contact"
+    links:
+      about: "Qui sommes-nous"
+      faq: "Aide"
+      feedback: "Retour d'information"
+      support: "Support"
+      terms: "Conditions"
+      privacy: "Vie privée"
+      press: "Presse"
+      twitter: "Twitter"
+      facebook: "Facebook"
+      instagram: "Instagram"
+      github: "Github"
+      blog: "Blog"
+      contact: "Contact"
+      recommended: "Recommandé"
+      near: "Près de moi"
+      expiring: "Expire"
+      recents: "Récents"
+      submit: "Soumettez votre projet"
+      discover: "Découvrir les autres projets"
+    texts:
+      copyleft: "Réalisé avec de l'amour."
+  main:
+    banner: "Découvrir la recherche"
+    links:
+      channels: "Découvrir la chaîne Asas"
+      recommended: "Découvrir les projets recommandés"
+      expiring: "Découvrir les projets expirant bientôt"
+      recents: "Découvrir les projets récents"
+      near: "Découvrir les projets près de vous"
+  sidebar:
+    titles:
+      blog: blog
+      facebook: "Avez-vous aimé notre page Facebook?" 
+      newsletter: "s'abonner à nos nouveautés"
+      faq: "avez-vous des questions?"
+      schedule: 'calendrier'
+    placeholders:
+      email: "Enterez votre email"
+    buttons:
+      newsletter: 'Soumettre'
+  sections:
+    near:
+      title: 'près de moi'
+    recommended:
+      title: 'Recommendés'
+    expiring:
+      title: 'Arrivant à expiration'
+    recents:
+      title: 'Récents'
+    channels:
+      title: "La chaîne Asas"
+  accept_terms_html: "J'ai lu et accepté %{link}."
+  activerecord:
+    errors:
+      models:
+        project:
+          attributes:
+            permalink:
+              invalid: "ce lien est invalide"
+    attributes:
+      unsubscribe:
+        update: "Recevez les mises à jour de ce projet"
+      backer:
+        value: 'valeur'
+      project:
+        category: 'Catégorie'
+        expires_at: 'Date limite'
+        online_days: 'Jours pour la campagne en ligne'
+        headline: 'entête'
+        image_url: "URL de l'image"
+        name: 'nom'
+        user_id: "ID de l'utilisateur"
+        video_url: "URL de la vidéo"
+        permalink: 'URL du projet'
+        how_know: "Comment avez-vous entendu parler de Catarse?"
+        more_links: 'Où est ce que nous pourrons avoir des informations sur vous et sur votre projet?'
+      reward:
+        description: Description
+        maximum_backers: "Nombre maximal de bailleurs"
+        minimum_value: "Montant minimum"
+      user:
+        address_city: 'Ville'
+        address_complement: "Complément d'adresse"
+        address_neighbourhood: 'voisin'
+        address_number: 'Numéro'
+        address_state: State
+        address_street: Street
+        address_zip_code: "Zip code"
+        cpf: 'CPF / CNPJ '
+        cpf_hint_title: 'Nota Fiscal será emitida para esse documento'
+        cpf_hint: '(?)'
+        state_inscription: "Inscription depuis l'état"
+        moip_login: 'Connexion MoIP'
+        moip_login_hint: '(Comment créer un compte)'
+        current_password: "Mot de passe actuel"
+        email: Email
+        full_name: "Nom complet / Nom de l'entreprise"
+        bio: 'Mini présentation'
+        name: "Pseudo"
+        password: Password
+        password_confirmation: "Confirmation du mot de passe"
+        phone_number: "Numéro du téléphone mobile"
+        newsletter: 'Je veux être informé des nouveautés de Catarse'
+    models:
+      backer: Backer
+      category: Category
+      project: Project
+      reward: Reward
+  backer:
+    display_confirmed_at: "il y'a %{time_ago} "
+    reward_must_be_from_project: "doit faire partie du même projet"
+    should_not_back_if_maximum_backers_been_reached: "a atteint la limite maximale de bailleurs"
+    value_must_be_at_least_rewards_value: "doit être au minimum %{minimum_value} pour la récompense selectionnée"
+    project_should_be_online: "Vous ne pouvez financé un projet hors ligne"
+  backer_plural: backers
+  project_plural: projects
+  project_singular: project
+  backer_singular: backer
+  click_here: "Cliquez ici"
+  clicking_here: "vous avez cliqué ici"
+  click_term: 'conditions'
+  comment:
+    display_time: "temps écoulé %{time_ago}"
+  credits:
+    modal:
+      title: "Confirmez-vous votre demande de remboursement ?"
+      text: "Voir comment se déroule le processus de remboursement:"
+      link: "Voir comment se fait le remboursement"
+      reject_btn: "Je veux garder mes parts"
+      accept_btn: "Je veux être remboursé"
+    index:
+      back_date: "Date du financement"
+      current_credits_html: "Votre solde actuel est de <span id=\"current_credits\">%{credits}</span> en crédits."
+      important_html: "Si vous demandez à être remboursé, le montant du paiement sera déduit de votre crédit."
+      project: Project
+      refund_expiration_date_html: "Date limite pour la demande de remboursement (<a target='__blank' href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
+      refunded: "Demande de remboursement effectuée. Notre équipe vous contactera dans 2 jours (ouvrables)."
+      insufficient_credits: "Vous n'avez pas assez de crédit pour effectuer une demande de remboursement."
+      refunds_title: "Paiements ne pouvant être remboursés"
+      request_refund: "Demander le remboursement"
+      requested_refund: "Remboursement demandé"
+      status: Status
+      title: "Mon crédit"
+      value: Value
+    refund:
+      cannot_refund: "Ce paiement n'est pas remboursable."
+      error: "Oops. Il y'a eu une erreur pendant l'envoi de la demande de remboursement."
+      no_credits: "Vous n'avez pas assez de crédit pour demander ce remboursement."
+      refunded: "Ce paiement a été remboursé."
+      requested_refund: "Vous avez déjà demandé le remboursement de ce paiement."
+    title: "Mon crédit"
+  curated_pages:
+    index:
+      title: "Pages organisées"
+    show:
+      backed: backed
+      reached: reached
+  error: "Ooops! Il y'a eu une erreur. Réessayer s'il vous plait."
+  explore:
+    index:
+      near: 'Près de moi'
+      categories: Categories
+      expiring: "Arrivant à expiration"
+      quick_explore: "Recherche rapide"
+      recent: Recent
+      recommended: Recommended
+      subtitle: "Parcourez les projets, trouvez ceux qui vous touchent, et aidez les à voir le jour!"
+      successful: Successful
+      title: "Découvrir les projets impréssionants"
+    title: "Parcourir les projets"
+    project:
+      empty: "Écoutez, nous n'avons trouvé aucun projet correspondant à votre recherche. Vous voulez essayer avec d'autres termes ? =D"
+  formtastic:
+    hints:
+      backer:
+        credits: "Vous avez <strong>%{credits}</strong> en crédits et vous pouvez les utiliser sans faire un nouveau paiement."
+        value: "Choisissez votre montant ;) mise de départ R$10, tout montant supérieur est encore meilleur"
+      project:
+        video_url_edit: 'Collez ici le lien de votre vidéo Vimeo/Youtube'
+        about: "Dites-nous ce qui vous a inspiré pour arriver à ce projet. Soyez fin objectif charmant, présenter vos lecteurs avec quelque chose qui les meut, tout en étant très transparent sur les attentes de votre projet!"
+        more_links: "Quels canaux seront utilisés pour passer le mot sur votre projet? Liste ici votre facebook / twitter / blog / site / et ce de plus en plus les liens que vous avez pour vous aider"
+        category: "Avant de formater votre projet explorez d'autres projets (réussis) pour vous en inspirer!"
+        expires_at: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt le long du chemin, si mettre trop peu, vous ne pouvez pas atteindre le minimum de temps."
+        online_days: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt le long du chemin, si mettre trop peu, vous ne pouvez pas atteindre le minimum de temps."
+        goal: "Montant en reais (R$)"
+        first_backers: "Pour atteindre votre objectif financier c'est indispensable pour engager les gens qui sont proches de vous et le projet. Donc, si vous pouvez énumérer ici qui seront vos 20 premiers bailleurs de fonds qui serait un grand pas vers l'avant;)"
+        headline: "Résumez votre projet en 140 caractères. Ce sera le premier contact que les visiteurs auront avec votre projet, avant même de voir la vidéo. Soyez créatif, clair et direct ;)"
+        name: "Soyez aussi objectif que possible. Donnez des explications sur la section 'à propos'."
+        uploaded_image: "Mettez une image de 512x400(.jpg)."
+        video_url: "Collez l'url de votre vidéo <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a>. Nous recommandons Vimeo parce qu'il fait passer mois d'annonce. De cette manière, votre projet apparaîtra mieux.<strong>Une vidéo est le meilleur moyen de présenter votre projet</strong> ;)"
+      reward:
+        description: "Décrivez votre récompense d'une manière qui suscite l'intérêt des gens pour soutenir le projet. Ne soyez pas timide!"
+        maximum_backers: "Si votre récompense est limitée, dites-nous combien de bailleurs vous souhaiterez avoir."
+        minimum_value: "Il s'agit du montant minimum pour cette récompense."
+        days_to_delivery: "Nombre de jours pour livrer la récompense."
+    labels:
+      backer:
+        anonymous: "Je veux financer dans l'anonymat."
+        credits: "Je veux utiliser mon crédit pour ce financement"
+        reward: "Choisir une récompense"
+        value: "Vous voulez cotiser à quelle hauteur?"
+      comment:
+        comment: "Laisser un commentaire à propos de ce projet"
+      project:
+        more_links: "Lister les liens des projets similaires *"
+        how_know: "Comment avez-vous entendu parler de Catarse?"
+        headline: "Conclusion"
+        category: 'Catégorie'
+        first_backers: "Lister vos premiers bailleurs *"
+        about: "A propos de votre projet. Comment allez-vous dépenser cet argent?"
+        expires_at: "Quelle est la date limite pour atteindre vos objectifs ?"
+        goal: "Combien espérez-vous collecter ? (en chiffres seulement)"
+        name: "Nom du projet"
+        online_days: 'Combien de jour de campagne ?'
+        video_url: Video
+        uploaded_image: "image du projet"
+      reward:
+        maximum_backers: "Maximum de bailleur (facultatif)"
+        days_to_delivery: "Jour pour livrer"
+    optional: " (facultatif)"
+  found_plural: 'Trouvé'
+  found_singular: 'Trouvés'
+  here: here
+  i_backed: "j'ai financé le projet %{name} sur @catarse"
+  i_just_backed: "je viens de financer le projet %{name} sur @catarse"
+  layouts:
+    login:
+      login_with_facebook: "connexion avec votre compte facebook"
+      remember_me: "Se souvenir de moi et me garder connecté."
+    header:
+      blog: Blog
+      help: Help
+      signup: "Créer un compte"
+      signin: Login
+      discover: Discover
+      submit: Send your project
+      profile: "Mon profil"
+      account: "Mon compte"
+    user:
+      logout: Logout
+      my_credits: "Mon crédit"
+  not_informed: "non informé"
+  notify_locale: "Nous avons détecté la langue de votre navigateur. Si vous voulez la changer, cliquez sur l'un des drapeaux à droite."
+  on_the_spot:
+    cancel: Cancel
+    ok: OK
+    tooltip: "Cliquer pour modifier..."
+  passwords:
+    edit:
+      label_new_password: "Nouveau mot de passe"
+      submit: "Changer de mot de passe"
+      title: "Réinitialiser le mot de passe"
+      site_title: "Changer de mot de passe"
+      subtitle: "Vous avez demandé la réinitialisation de votre mot de passe. Choisissez un nouveau mot de passe et cliquez sur \"Changer mon mot de passe\". Si vous n'avez pas fait cette demande, vous pouvez ignorer ce message et votre mot de passe restera le même."
+    email:
+      content_html: "<p> Quelqu'un a demandé un lien pour changer votre mot de passe, et vous pouvez le faire via le lien ci-dessous. </ p>% {link} </ p> Si vous n'avez pas demandé cela, s'il vous plaît ignorer ce message. </ p> Votre mot de passe ne changera pas jusqu'à ce que vous accédez au lien ci-dessus et en créer un nouveau. </ p>"
+      title: "Instructions pour réinitialisez votre mot de passe."
+    new:
+      submit: "M'envoyer les instructions de réinitialisation de mot de passe"
+      title: "Mot de passe oublié?"
+      site_title: "Retrouver mon mot de passe"
+  project:
+    start:
+      email_subject: "Votre projet a été reçu par l'équipe de Catarse"
+      email_text: "Merci d'avoir confié votre projet à Catarse :) <br> Nous savons que vous attendez une réponse rapide, mais, pour être franc, nous prennons jusqu'à 4 jours pour répondre, ok? C'est parce que nous avons une petite équipe qui travaille sur plusieurs projets. Notez que la réponse peut venir plus tôt. En attendant, ça vaut la peine de voir les projets qui sont déjà en ligne (<a href='%{explore_link}'>%{explore_link}</ a>) et - si vous aimez l'un d'eux, soutenez-le! C'est la façon de montrer le soutien de la culture de crowdfunding au Brésil et à nourrir l'écosystème qui ne cesse de croître autour Catarse. <br> En outre, vous aurez un peu d'inspiration pour votre propre projet...<br > Restez à l'écoute pour les mises à jour sur <a href='%{facebook}' style='color: #E75297 !important;'> Facebook </ a> et obtenez une connaissance plus approfondie sur Catarse lire les messages dans notre <a href = '% {blog} 'style =' color:. # E75297 !important; '> blog </ a> <br> Si vous avez des questions, envoyez nous un email à:% {email}"
+      notification_text: "Votre projet a été reçu par l'équipe Catarse"
+    finish:
+      successful:
+        email_subject: "Hourra! le projet %{project_name} a été accepté sur Catarse!"
+        email_text: "Le projet %{project_link}, que vous avez soutenu, a été financé!<br><br> Le projet a, vous inclus, %{project_total_backers} superbes bailleurs, été financé à hateur de %{project_pledged} et a atteint %{project_process}% de l'objectif =D<br><br>Une chose importante à savoir: Catarse met 3 jours avant d'envoyer à l'initiateur du projet la liste des bailleurs. Alors, il vous contactera pour vous remercier et discuter du délais pour votre récompense. ok?<br><br> Alors pourquoi ne pas partager avec vos amis ce succès ?<br><br><div style='text-align:center;'>%{facebook_button}%{twitter_button}</div><br><br>Si vous voulez être tenu au courant des nouveautés de %{project_owner_name}, envoyez un email à %{project_owner_email}.<br><br>Si vous avez des questions à propos de Catarse, allez sur FAQ: <a href='http://www.catarse.me/faq' style='color: #008800';>www.catarse.me/faq</a> ou envoyez un email à <a href='mail_to:contato@catarse.me' style='color: #008800;'>contato@catarse.me</a><br>"
+        facebook_text: "Houra! Le projet '%{name}', que j'ai financé sur Catarse a vu le jour!"
+        notification_text: "Houra! le projet %{link} que vous avez financé a vu le jour!"
+        reward_notification_text: "Bientôt, %{link} vous contactera pour votre récompense!"
+        twitter_text: "Houra! Le projet '%{name}', que j'ai financé sur @catarse! a réussi %{short_url}"
+      unsuccessful:
+        email_subject: "The project %{project_name} wasn't funded on Catarse."
+        email_text: "Malheureusement ce projet %{project_link} n'a pas atteint ses objectifs sur Catarse.<br><br>Vous avez reçu <strong>%{value}</strong> de crédits que vous pouvez utiliser sur d'autres projets. Vous pouvez accéder à d'autres projets %{project_category} ici %{explore_category_link}.<br><br>Vous pouvez demander à être remboursé en cliquant ici %{credits_link}. Si vous n'y arrivez pas facilement, faites nous un email à financeiro@catarse.me avec comme sujet 'Refund - login issue'.<br><br>Et si, pour une raison quelconque vous souhaitez contacter %{project_owner_name}, envoyez un email à %{project_owner_email}.<br>"
+        notification_text: "Vous avez reçu %{value} en credits que vous pouvez utiliser pour soutenir d'autres projects. Vous pouvez aussi demander un remboursement %{link}."
+        unsuccessful_text: "Le projet %{link} que vous avez soutenu n'as pas été financé."
+    video_regex_validation: "Seules les vidéos Vimeo sont autorisées"
+    display_status:
+      expired: expired
+      failed: "pas financé"
+      successful: funded
+      waiting_confirmation: waiting
+      waiting_funds: waiting
+      not_reached_goal: waiting
+      reached_goal: funded
+      draft: "brouillon"
+  projects:
+    send_to_analysis: 'Votre projet a été envoyé à notre équipe'
+    box:
+      by: by
+      when: in
+    admin_fields:
+      title: "champs pour Admin"
+    back_project:
+      display_status:
+        reached_goal: "Ce projet sera financé le %{date}"
+        not_reached_goal: "Ce projet sera financé seulement si au moins %{goal} sont collectés avant %{date}"
+        failed: "This project didn't reach the goal of %{goal} until %{date} and wasn't funded"
+        successful: "This project was successful and was funded on %{date}"
+        waiting_funds: "Waiting confirmation from payments to know if this project will be funded."
+        draft: "Ce projet est en mode brouillon et n'est pas ouvert aux bailleurs."
+      reached_of: "atteint"
+      submit: "Soutenir ce projet"
+    backers:
+      backer:
+        anonymous_backer: "Anonymous backer"
+        anonymous_description: "Opted to remain incognito"
+        no_reward: "This backer has not picked a reward"
+      review:
+        error: "Ooops. There was an error while registering your back. Please try again."
+      show:
+        error: "Ooops. You can only access this page after backing a project."
+        moip_message: "Your transaction is ¿Authorized¿ and you Moip code is ¿%{code}¿.<br>If you have any questions about this transaction, contact Moip directly."
+        header_subtitle: "Without you maybe this project wouldn't stand a chance. Welcome to the team!"
+        header_title: "Thank you! :D"
+        text_subtitle: "Tell everyone what you just did"
+        recommended_projects: "You may like these other projects:"
+        text_title_html: "You are now part of the group that does everything to make %{link} happen."
+        title: "Thank you"
+      checkout:
+        no_credits: "You don't have enough credits to back this project."
+        success: "Your back was successfully made. Thanks a lot!"
+      new:
+        cannot_back: "It's not possible to back this project right now. Please, back other projects."
+        header:
+          subtitle: "You're just a few steps away from making a difference and becoming a part of this project."
+          title: "Oohh yeah!"
+        no_reward: "Thanks. I just want to help the project."
+        submit: "Review and proceed to checkout"
+        title: "Back %{name}"
+      edit:
+        brazil_address_title: 'Fill when you back is in Brazil'
+        live_in_brazil: "If you live in Brazil, please check this box"
+        credits_notice_html: "This back will be payed with your credits. After the confirmation, you will have <strong>%{credits}</strong> in credits to back other projects."
+        error: "Ooops. There was an error while registering your back. Please try again."
+        international:
+          description: "You can use PayPal to make international payments"
+          important_html: "<p>The use of PayPal is destinated mostly for international payments. That's because you'll have only 60 days to receive an eventual refund without paying any fee.</p><p>In case you can make the regular payment through MoIP, we recommend you to do it.</p><p>But if that's not possible, don't worry: you'll always be able to receive your money back. Only, in case your refund is made more than 60 days after your payment, you'll have to pay PayPal's fee, which is 5,4% + R$0,60 per transaction.</p>"
+          submit: "Proceed to PayPal's checkout"
+          title: "Want to make an international payment?"
+        review_with_reward_html: "You will back with <strong>%{value}</strong> and receive the following reward:"
+        review_without_reward_html: "You will back with <strong>%{value}</strong> but you don't want any reward for that."
+        submit:
+          credits: "Confirm"
+          moip: "Proceed to MoIP's checkout"
+        subtitle: "This is the last step to make the difference and become part of this project."
+        title: "Fill in and review your data"
+        choose_payment: "How do you want to pay?"
+        choose_payment_subtitle: "Select below a payment method"
+        choose_credit_card: "PayPal"
+        choose_boleto: "Payments from Brazil"
+        you_are_about_html: "You are about to become part of the group that does everything to make %{link} happen."
+        pay_with: "Pay With"
+    create:
+      success: "Your project was successfully created! We'll soon contact you. Thanks a lot!"
+    update:
+      success: "Updated"
+    form:
+      permalink_hint: 'Simplify the URL of your project. Think that your sponsor need to remember the address to share your project.'
+      add_reward: "Add reward"
+      important_html: "Please notice that Catarse will charge 13% if your project is successful. Add this values to your budget in order to execute your project with no surprises."
+      project_warning:
+        content_html: "Want to have your project selected? Don't forget to read %{link}."
+        help_link: "our guide"
+      rewards_description: "We believe that the best way to inspire people to back a project is offering excellent ¿ and creative! ¿ rewards. Everybody loves limited editions, unique things and joyful experiences (parties, candies, balloon travelling!). Spend some time devising creative rewards and people will be interested."
+      rewards_title: Rewards
+      submit: "Save draft"
+    index_header:
+      subtitle: "Fund projects collaboratively and become part of something bigger. Promote a collective catharsis! You're the missing part in this story."
+      subtitle_html: "Fund projects collaboratively and become part of something bigger.<br/>Promote a collective catharsis! You're the missing part in this story."
+      title: "Make the projects you believe in happen"
+    recommended_header:
+      suggest_for_you: "suggested for you"
+      highlight_project: "featured project"
+      guidelines: "How it Works"
+      guidelines_subtitle: "Getting to know Catarse"
+    pending:
+      can_finish: "Can finish?"
+      finished: Finished?
+      home_page: "Home page?"
+      id: Id
+      name: Name
+      no_projects: "No projects found."
+      order: Order
+      project: Project
+      slug: Slug
+      recommended: Recommended?
+      rejected: Rejected?
+      submit: Search
+      title: "Project management"
+      user: User
+      visible: Visible?
+    pending_backers:
+      anonymous: Anonymous?
+      confirmed: Confirmed?
+      credits: "Used credits?"
+      id: Id
+      key: Key
+      no_backers: "No backers found."
+      project: Project
+      refunded: Refunded?
+      requested_refund: "Requested refund?"
+      reward: Reward
+      submit: Search
+      title: "Backers management"
+      total_backed: backed
+      total_backers: backers
+      total_backs: backs
+      total_users: users
+      user: User
+      value: Value
+    project:
+      backed: backed
+      reached: reached
+    project_backers:
+      empty: "Nobody backed this project so far. How about being the first one?"
+      confirmed: "Confirmed"
+      pending: "Pending"
+    project_header:
+      subtitle_html: "A project by %{link}"
+      without_city: "A project in"
+      with_city: "A project in %{category_name}, in %{city}, by %{author}"
+    project_updates:
+      empty: "This project didn't have updates yet. But wait and see =D"
+      submit: "Send update"
+      comment: "Update text"
+      exclusive: "Visible for backers only"
+      title: "Title of the update"
+      destroy: "Remove update"
+      destroy_confirmation: "Do you want to remove the update?"
+      warning: 'Remembering that every new post goes directly to the email of his supporters. Therefore, review your text well before sending it.'
+    rewards:
+      reward_title: "For %{minimum} or more"
+      reward_deliver_time: "Estimated delivery: %{estimate}"
+      backs_to_confirm:
+        one:  "1 backer in time to confirm."
+        other: "%{count} backers in time to confirm."
+      title: "Back and receive..."
+    send_mail:
+      success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
+    show:
+      rejected: "This project does not fit our <a href='https://docs.google.com/document/d/1Heh9LlvoSoD0lUfbmV5WlISJ3nqmGpEQiw15TBuCn-0/edit' target='_blank'>selection criteria.</a>"
+      waiting: "This project is waiting for approval and soon we'll know if it will go online on Catarse ;)"
+      waiting_owner: "To edit the project info, click on 'Edit project' tab. The rewards you can edit on reward column."
+      about_title: "About this project"
+      no_rewards_warning_title: 'Create here your rewards'
+      no_rewards_warning: "Don't go nuts! Think about how you're going to deliver them and include those costs in your budget. People are putting their trust in you, don't kid around with that!"
+      reports:
+        no_backs: "This project don't have any back yet."
+        link_reports: 'Download report of '
+        all_backers: 'all backers'
+        all_backers_without_reward: "all backers that don't select any reward"
+        link_reward: 'Download the report of backers that selected the reward'
+      menu:
+        about: About
+        backers: Backers
+        comments: Comments
+        updates: Updates
+        edit: Edit
+        reports: Reports
+        add_reward: 'Add Rewards'
+      share:
+        embed: embed
+        embed_title: "Embed this project on your site"
+        link: Link
+        link_title: "Share the link"
+        take_a_look: "Check out the project"
+        title: "Be part of it and share this project"
+    new:
+      legend_html: "After filling in the form below, you will receive a project page in Draft mode. In this draft you will add the rewards for your backers. You may also share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go on air.<br><br><b>Very Important:</b> <i>Catharsis is cured platform, which means that our board will evaluate the focus, the feasibility and consistency of your project during the Draft. If we understand that your project does not comply with our <a href='https://docs.google.com/a/catarse.me/document/d/1wLDS2lphQ6monovg9rEaTIDcxBD3FRZV9dfGKmajyj8/edit' target='_blank' >selection criteria</a>, it may be refused by the team of curators.</i>"
+      permalink_important: 'Try not to use underline, hyphen etc.'
+      permalink_hint: 'Go simple. Your backers should be able to remember the URL to your project ;)'
+      name_important: "Do not exceed  50 characters"
+      online_days_important: "60 days is the maximum"
+      about_important: "Don't make it too long! Indicate links so people can know more about your work"
+      important_html: 'Keep in mind the 13% fee charged by Catarse in case you reach your financial goal. Just divide your final budget by 0.87 to find the discounted amount.'
+      send_project: "I want to submit my project."
+      video_important: "The video must be hosted by Vimeo or Youtube. Paste here the URL!"
+      more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
+      first_backers_important: "These people are fundamental to the success of your project."
+      how_know_important: "Yay! We reached  the final question."
+      headline_important: "It's a summary of  your project . 140 characters tops!:D"
+      tags_important: "Check other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
+      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
+      title: "Send your project"
+      about: "Describe your project and how much do you need"
+      category: "Project category"
+      how_much_you_need: "How much do you want to raise?"
+      about_hint: "Tell us a little about what you want to do, how much you need and what for. Be brief and punctual, but don't forget to give the readers something that moves them. After all, it's your creation and they need to see your passion taking place!"
+      contact: "Leave us your email address so we can contact you"
+      links: "Where can we find more about you and your project?"
+      links_hint: "Leave us as many links as you have, so we can get to know your work and your project better. Doesn't have to be something formal or fancy, just a few useful links."
+      video: "Your project already have a video?"
+      video_hint: "A Vimeo / Youtube link"
+      twitter: "Have twitter account?"
+      facebook: "Have facebook account?"
+      blog: "Have a blog about the project?"
+      know_us_via: "How did you meet Catarse?"
+      how_works: "How to mobilize backers to raise $ needed for enforcement?"
+      project_warning:
+        content_html: "Want to have your project selected? Don't forget to read %{link}."
+        help_link: "our guide"
+      rewards: "What rewards do you want to offer?"
+      rewards_hint: "We believe that the best way to inspire people to back a project is offering excellent ¿ and creative! ¿ rewards. Everybody loves limited editions, unique things and joyful experiences (parties, candies, balloon travelling!). Spend some time devising creative rewards and people will be interested."
+      submit: "Save draft"
+      subtitle: "The time to make it happen is now! We really want to know what you're up to..."
+      title: "Submit your project"
+    twitter:
+      take_a_look: "Check out the project %{name} on @catarse"
+    video_embed:
+      a_project_by_html: "A project by %{link} on"
+  projects_mailer:
+    start_project_email:
+      subject: "Project sent by %{name}"
+      subject_html: "Project sent by %{link}"
+
+  channels:
+    subscribed: "+ %{count} followers"
+    header:
+      submit: "Send project"
+      how_works: "How works"
+      what_is_channel: "What is a channel?"
+      contact: "Contact"
+      profile: "My profile"
+      my_credits: "My credits"
+      logout: "Logout"
+      signup: "Sign up"
+      signin: "Sign in"
+    footer:
+      terms: "Terms"
+      privacy_policy: "Privacy"
+      how_works: "How works"
+      contact: "Contact"
+      what_is_channel: "What is a channel?"
+    admin:
+      statistics:
+        title: "Followers"
+        download: "Download list"
+      management:
+        title: "Management"
+        total: "projects"
+      filter:
+        title: "Filter"
+        by_id: "By ID"
+        between_created_at: "Created Between"
+        pg_search: "Project"
+        with_state: "With state"
+        user_name_contains: "User"
+        order_table: "Order table"
+        submit: "Filter"
+      table:
+        name: "Title"
+        category: "Category"
+        user_id: "User"
+        goal: "Goal"
+        pledged: "Pledged"
+        total_backs: "Backs"
+        recommended: "Recommend"
+        online_date: "Published"
+        expires_at: "Finished"
+        state: "State"
+        approve: "Approve"
+        reject: "Reject"
+        send_to_draft: "Sendo to draft"
+    edit: "Update channel"
+
+  registrations:
+    new:
+      site_title: "Sign up"
+      submit: "Sign Up"
+      title: "Sign up using you email"
+  remaining_plural: left
+  remaining_singular: left
+  remove: remove
+  require_admin: "You must be admin to perform this action."
+  require_login: "You must be logged in to perform this action."
+  require_permission: "You don't have permission to perform this action."
+  reward:
+    display_remaining: "%{remaining} of %{maximum} available"
+    dont_want: "I don't want a reward"
+    limited: Limited
+    sold_out: "Sold out"
+  sessions:
+    auth:
+      success: "Successfully logged in. Welcome, %{name}!"
+    destroy:
+      success: "Successfully logged out. See you!"
+    failure:
+      error: "There was an error while loggin in. Please try again."
+
+
+  static:
+    guidelines_backers:
+      title: "I want to back a project!"
+      subtitle: "Understand step by step how to back a project on Catarse."
+      introduction: "Catarse is an excellent way to engage in a cause you believe in"
+      legend_html: "We believe that being part of a project is the kind of thing that sometimes we do not really know why, but it does a darn good."
+      title_one: "Explore the Project"
+      step_one: "The first step is to understand the project. Watch the video, read the description, browse the links. If you are certain that this project can not remain only on paper, go one step forward!"
+      title_two: "Decide with how much you¿ll back it"
+      step_two: "A good way to decide how much to back with it¿s  to look  through which rewards  are offered in exchange for your backing. And also your bank statement."
+      title_three: "Finalize your backing"
+      step_three: "Fill in your information and review it! Then, decide what form of payment best meets your needs."
+      title_four: "Spread the word!"
+      step_four: "Now you're in the same boat as the project creator. Spread the word on your networks and stay tuned on the updates."
+      title_requirements: "Remember: in Catarse it¿s ¿all or nothing¿"
+      successful_title: "If the project meet or exceed its financial target ..."
+      successful: "The project is considered successful! The creator gets the money and contacts all supporters."
+      not_success_title: "If the project does not meet the target ..."
+      not_success: "You get the full amount of support in the form of loans (to support another project). If that does not please you, you can request your money back, according to the rules of the <a href='%{terms}' target='_blank'>terms of use</a>."
+      title_not_funded: "If the project does not achieve the goal, how do I use my credits?"
+      not_funded: "You will receive credits  on Catarse. The moment you choose to back another project, on the screen to select the reward, there will have a field to use your credits."
+      more_questions: "I'm dying to support a project, is there anything else I need to know?"
+      title_backer: "How do I know that my support was successful?"
+      backer: "You will receive a confirmation email. And stay tuned on the BACKERS tab at the page of the project you backed."
+      title_rewards: "If the project is funded, how do I get my rewards?"
+      rewards: "It is the duty of the project creator to contact you and arrange how to deliver  the chosen reward. If not, you need to send an email to him/her to claim it! If you get no answer ¿ contact us so we can give them an earful = D"
+      title_credits: "If the project does not achieve the goal, how do I use my credits?"
+      credits: "You will receive credits  on Catarse. The moment you choose to back another project, on the screen to select the reward, there will have a field to use your credits."
+      title_money: "What if I don't want to use the credits?"
+      money: "No problem! You just need to enter in your profile (My credits) and request a chargeback. If you paid with debit or billet, you¿ll need to open an account at MOIP. If you used a credit card the value will be back on your next bill."
+      other_backers: "I WANT MORE! CAN I HELP  IN OTHER WAYS?"
+      intro: "Get to know different ways to help projects you believe in"
+      other_one: "Bring two other friends to back with the same amount you did"
+      other_two: "Spread the word to every one. Tell them how great is the project you backed on Catarse."
+      other_three: "Do you have a friend who¿s a Journalist? Try to have him/her to post something about it on his/her blog."
+      other_four: "Make a backing video to broadcast your believe in the project .Like these guys did:https://vimeo.com/46233018"
+      other_five: "Send an e-mail to the project creator asking how can  you help even more."
+      submit: "VERY COOL!"
+      send_project: "I want to submit my project "
+      explore_curious: "I¿M ON BOARD!"
+      explore_projects: "I want to back a project"
+    guidelines:
+      title: "How it works"
+      subtitle: "Get to know Catarse better."
+      introduction_html: "Catarse is a space of exchange among individuals who together <br >enable the realization of creative projects."
+      legend_html: "We believe that connecting people that share value with respect to a cause; an idea; a project,  is one of the best ways to make them come true. <br><br> Be very welcome! This is your space as much as it is ours, after all, catharsis happens daily from the meeting of people in search of new ways to give life to more initiatives from society itself. We understand this to be an alternative to government resources, the sponsoring companies and bank loans = D"
+      submit: "SUBMITTING A PROJECT"
+      send_project: "Understand how to submit your project"
+      explore_curious: "BACKING A PROJECT"
+      explore_projects: "Understand how to back a project"
+    about:
+      title: "Who We Are?"
+      subtitle: "Meet the lovely gang that makes this whole thing happen <3"
+      introduction: "Who are they? What do they feed of? How are they networked? You¿ll see all of it now on ¿Who are we?¿."
+      name_one: "Luis Otávio Ribeiro"
+      title_one: "Fisher of Killer Projects"
+      text_one: "Uberabense. Laziness enthusiast , is addicted to maintaining creative structures running and promoting encounters between people."
+      name_two: "Diego Reeberg"
+      title_two: "Philosopher who lives in a Barrel"
+      text_two: "Apprentice of poet, musician, tango dancer and addict to Calvino and Saramago, likes to dig beautiful things and talented people in the dusty corners of the internet."
+      name_three: "Luciana Masini"
+      title_three: "Apprentice of Making it happen"
+      text_three: "Color and contrast enthusiast, poet and artist by nature, curious about culture, curator by accident."
+      name_four: "Renato Garcia"
+      title_four: "Catarse¿s Silvio Santos (a brasilian host and entrepreneur)"
+      text_four: "Collectivist. Believes in collaboration one by one, with no authority,  for a fairer world. Football and skateboarding fanatic. All this accompanied by a good samba or nacinal rap soundtrack."
+      name_five: "Rodrigo Maia"
+      title_five: "Information Remixer"
+      text_five: "Pragmatist who loves improvisation, has a deep voice and artistic outbursts. Fascinated by people and all forms of moving images."
+      name_six: "Diogo Biazus"
+      title_six: "Database Archbishop"
+      text_six: "Data Architect. Likes self-explanatory, self-referential and self-cleaning structures."
+      name_seven: "Evelise Luz"
+      title_seven: "Footer Designer"
+      text_seven: "Completely crazy, likes venturing into books, singing in the shower and loves exploring fig jam jars."
+      name_eight: "Adriano Benin"
+      title_eight: "Programmer"
+      text_eight: "When not programming he likes designing circuits and risking the piano."
+      name_nine: "Antônio Roberto"
+      title_nine: "Fireman"
+      text_nine: "A fellow crazy about development who lives in Tonland"
+    faq:
+      title: "Frequently asked questions"
+    guidelines_start:
+      accept: "I have read and understand how catarse works."
+      explore_curious: "Just looking around!"
+      explore_projects: "I want to explore the projects."
+      submit: "Next step!"
+      send_project: "I want to submit my project."
+      subtitle: "Understand, step-by-step, how to finance your project through Catarse."
+      title: "How Catarse works?"
+      introduction: "Catarse is a different - and collaborative - way to make your projects become reality."
+      legend_html: "Use this guide to decide if Catarse is the right tool for the job."
+      title_one: "Submit your project"
+      step_one: "Projects are actions! And we receive them with open arms whether they are small, big, funny, serious, traditional, innovative... We love projects that require little money and have a big impact in their communities."
+      title_two: "Review"
+      step_two: "After we receive your project, it will be screened by our team of reviewers. The objective here is to give you tips in order to maximize the chances of your project becoming successful, as well as filtering NON-SENSE projects. Remember, we want your project to be successful as much as you do ;)"
+      title_three: "Let's go live!?"
+      step_three: "When your project is ready, it's time to go live and plan your campaign. During this period, you will need to engage as many people as possible to reach your goal."
+      title_four: "It's all-or-nothing"
+      step_four: "If your project doesn't reach its goal before time runs out, all backers will receive their pledged amount in credits and later, if they want, can ask for a refund."
+      title_requirements: "Requirements to submit your project to Catarse"
+      creative: "Creative and Finite"
+      collective: "Collective Benefits"
+      nonprofit: "Non-financial rewards"
+      donation: "No philanthropic or ¿fund my life¿ projects"
+      video: "Make a video"
+      more_questions: "Ok, but tell me more about this Catarse..."
+      title_magic: "Our magic formula"
+      magic: "We believe that providing a meeting place for people that share common values is the best way to turn projects into reality. Use Catarse as a channel to direct your network towards a COMMON objective."
+      title_money: "Where does the money to finance projects come from?"
+      money: "At least 50% will come from your own network of contacts. In this manner, Catarse is a way for you to get closer to the people that enjoy your work and expand this network through sharing in social networks, newspapers, blogs and, of course, your favorite bar."
+      title_work: "Does it take a lot of work?"
+      work: "A loooot! There is no 'easy money on the INTERNET'. You will have to work a lot during your project, but the experience will be worth it - we assure you :D And you will have a much stronger network behind your project after Catarse."
+      title_costs: "How much does it cost to use Catarse?"
+      costs: "Submitting your project is free. Now, when your project is approved and has reached its goal, Catarse will apply a 13% fee, this value includes both the Catarse fee and the payment gateway fee."
+      why: "Why Catarse?"
+      intro: "First of all, it's good that you know why we believe that this new way to finance projects is phenomenal:"
+      why_one: "By creating a very strong bond with your network, this kind of campaign open doors to new projects, partnerships and other unexpected connections."
+      why_two: "If the projects are well connected, they can spread, quickly, to a lot of people, expanding your network and strengthening the base of people around your project."
+      why_three: "Minimum red tape and low financial risk. No interest rate, no entry fees... and lots of fun and emotion."
+    guidelines_tips:
+      title: "Almost there!"
+      subtitle: "Before submitting your project, it's good to think over a few important points."
+      introduction_html: "We know you can't wait to have your project online, but first answer <br> (in a piece of paper) the following questions."
+      legend_html: "Having clear answers to these questions will help tremendously in structuring your project, <br>increasing the chances that it will be successful."
+      title_one: "What inspired you to make this project?"
+      tip_one: "People only engage when they realize the importance of a cause for society or for the person who leads a campaign. So be very clear about what is your inspiration and let it overflow into your project."
+      title_two: "What is the focus?"
+      tip_two: "Catarse is an excellent way to take the first steps. Therefore, define very well the purpose of your project, as well as who will benefit from it. Clearly defining your objectives is one of the best ways to engage people."
+      title_three: "What is your goal?"
+      tip_three: "Calculate all costs for the project execution and rewards delivery. Also take into account your ability to engage people in order to define your financial goal."
+      title_four: "What is your deadline for the fundraising?"
+      tip_four: "Don't underestimate the work of a campaign. You will have to work hard during the entire period the project is live, so, it's recommended that you don't tire yourself too much in this process. Our recommendation: 40 days of campaign."
+      title_five: "Have you thought about the project rewards?"
+      tip_five: "Remember that rewards are public promises. So, think very well when elaborating them, as well as the logistics in delivering them to your backers. Our suggestion: think about immaterial rewards: downloads, experiences, courses e kisses."
+      title_six: "Is your video ready?"
+      tip_six: "The video is the business card of your project. It's through it that the backers will get in touch with your cause. So, take special care in the script, audio and image quality. HD is recommended."
+      title_seven: "How will you mobilize your network?"
+      tip_seven: "You need to have a clear idea on how you will stir your network and convince it to back your project. Distribute your work weekly and change your approach with the network according to how close you are to it."
+      title_eight: "How will the money be used?"
+      tip_eight: "Create a GOOGLE DOCS spreadsheet and open your budget to show everyone how the money will be used. TRANSPARENCY is everything."
+      explore_curious: "Just looking around!"
+      explore_projects: "I want to explore the projects."
+      submit: "Next step!"
+      send_project: "I want to submit my project."
+      guide: "Download here a complete guide with all the tips to elaborate your project in Catarse."
+    privacy:
+      title: "Privacy Policy"
+    terms:
+      title: "Terms of use"
+  terms: "terms of use"
+  user:
+    backs_text:
+      many: "Backed this and other %{total} projects"
+      one: "Backed only this project until now"
+      two: "Backed this and 1 other project"
+    no_name: Unnamed
+    google_account: "Google Account"
+  users:
+    project:
+      confirmed: "Confirmed"
+      refunded: "Refunded"
+      requested_refund: "Refund requested"
+      waiting_confirmation: "Waiting confirmation"
+    set_email:
+      site_title: 'Define your email address'
+      title: 'Define your email address'
+      submit: 'Save my email and proceed'
+    show:
+      attention: Attention
+      tabs:
+        backed_projects: "Backed projects"
+        created_projects: "Created projects"
+        comments: Comments
+        credits: Credits
+        settings: Settings
+        unsubscribes: Notifications
+      user_social:
+        email: "Send me an email"
+        facebook: "Profile on facebook"
+        twitter: "Profile on twitter"
+    backs:
+      anonymous: "Anonymous back."
+      no_backs: "%{name} haven't backed any project yet. But we know it's just a matter of time! :D"
+      no_backs_current_user_html: "You haven't backed any project yet. What about <a href=\"/\">starting now</a>?"
+      no_reward: "You didn't pick a reward"
+      title: "Projects %{name} has backed"
+      title_current_user: "Projects I've backed"
+      your_reward: "Your reward"
+    unsubscribes:
+      title: "Choose from which projects you want to receive update notifications:"
+      updates: "I want to receive project updates"
+    current_user_fields:
+      bio_limit: 'only 140 characters'
+      updated: "Your information has been updated"
+      update_social_info: "Update info"
+      social_info: "Contact info"
+      twitter: "twitter ( username )"
+      facebook_link: "facebook profile (full link)"
+      other_link: "another internet page"
+      change_password: "Change my password"
+      current_password_hint: "<i>We need your current password to confirm your changes.</i>"
+      email_hint: "Your email will only be used for communications from Catarse and from the projects you back. It won't be visible in your profile. When you back a project, we will give your email to the project owner so he can provide your rewards."
+      email_tooltip: "Click here to fill your email..."
+      gravatar_hint_html: "Want to change your picture? Use %{link} with your email. It's as simple as uploading an image and works for other sites as well ;)"
+      local_avatar: "My avatar"
+      submit_text: "Choose your picture"
+      submit: "Submit"
+      my_data: "My profile"
+      newsletter: "I want to receive news from Catarse via email"
+      password_hint: "<i>Leave blank if you don't want to change it.</i>"
+    header:
+      bio_tooltip: "Click here to write about you..."
+      name_tooltip: "Click here to fill your name..."
+    projects:
+      no_projects: "%{name} haven't started any project on Catarse yet. We wonder if inspiration will hit one of these days!"
+      no_projects_current_user_html: "You haven't submitted any project to Catarse yet. Let the inspiration flow and %{link} to start!"
+      title: "%{name}'s projects"
+      title_current_user: "My projects"
+  users_mailer:
+    notification_email:
+      alt: "You must enable images in order to correctly view this message."
+      forward: "Forward to your friends"
+      hello: Hi
+      intro: "You are receiving this message because you signed up on Catarse"
+      mailee: "Message delivered by Mailee.me"
+      salutation: "Big hugs,"
+      signature: "Catarse's Team"
+      unsubscribe: Unsubscribe
+      unsubscribe_long: "If you don't want to receive these emails"
+      weblink: "View on the web"
+      whitelist: "Add contact"
+      whitelist_long: "Add our email to your contacts"
+  notifications:
+    backers:
+      to_backer:
+        subject: "Thank you! Your back for %{project} has been confirmed!"
+        text: "Success! <br />Your back has just been confirmed.<br /><br />Check: %{backer_name}<br />%{backer_value}<br />%{reward}<br /><br />%{project_name}"
+    updates:
+      subject: "If the league! Update of %{project_name} by %{project_owner}: %{update_title}"
+      text: "%{update_title}<br />%{update_text}<br />Comments? Send it on in the project page: <a href='%{project_link}'>%{project_name}</a>."
+
