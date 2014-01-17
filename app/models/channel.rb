@@ -1,5 +1,8 @@
 class Channel < ActiveRecord::Base
   extend CatarseAutoHtml
+
+  include Shared::VideoHandler
+
   attr_accessible :description, :name, :permalink, :video_url, :twitter, :facebook, :website, :image, :how_it_works
   schema_associations
 

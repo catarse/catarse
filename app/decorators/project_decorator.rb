@@ -37,12 +37,6 @@ class ProjectDecorator < Draper::Decorator
     use_uploaded_image(version) || use_video_tumbnail(version)
   end
 
-  def display_video_embed_url
-    if source.video_embed_url
-      "//#{source.video_embed_url}?title=0&byline=0&portrait=0&autoplay=0"
-    end
-  end
-
   def display_expires_at
     source.expires_at ? I18n.l(source.expires_at.to_date) : ''
   end
