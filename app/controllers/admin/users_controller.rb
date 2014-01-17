@@ -1,4 +1,5 @@
 class Admin::UsersController < Admin::BaseController
+  layout 'catarse_bootstrap'
   inherit_resources
   add_to_menu "admin.users.index.menu", :admin_users_path
   before_filter :set_title
