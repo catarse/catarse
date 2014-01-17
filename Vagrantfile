@@ -9,7 +9,7 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
   # Customizing memory. The VM will need at least 512MB
-  config.vm.customize ["modifyvm", :id, "--memory", 512] 
+  config.vm.customize ["modifyvm", :id, "--memory", 512]
   config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
   # In case the Rails app runs on port 3000, make it available on the host
@@ -21,7 +21,7 @@ Vagrant::Config.run do |config|
     # NOTE:
     # This path should be created. Why? Because we want to enforce cookbooks repositories
     # Just `mkdir cookbooks` inside the Catarse repository
-    # Install vagrant gem install librarian-chef 
+    # Install vagrant gem install librarian-chef
     # Only this and cookbooks will be automatically installed
     chef.cookbooks_path = "cookbooks"
 
@@ -61,28 +61,28 @@ Vagrant::Config.run do |config|
     chef.add_recipe "set_locale::postgres"
 
 
-    #  Configuration: 
+    #  Configuration:
     #  The JSON below is where we configure or modify our recipes attributes
     #  Every recipe has an 'attributes' folder, and these are accessible using the hash format
 
     chef.json = {
       # Installing The latest ruby version
       rvm: {
-        default_ruby: 'ruby-1.9.3-p392',
-        
+        default_ruby: 'ruby-2.1.0',
+
         # Installing multiple ruby versions
         rubies: ['2.0.0-p0'],
         upgrade: :latest,
 
         # Gems that will be accessed globally
         global_gems: [
-          { name: :thin }, 
+          { name: :thin },
           { name: :bundler },
 
           # Add heroku to make deployment easier
           { name: :heroku },
         ],
-        
+
         # Somehow needed for Vagrant
         vagrant: {
           system_chef_solo: '/opt/vagrant_ruby/bin/chef-solo'
@@ -90,7 +90,7 @@ Vagrant::Config.run do |config|
       },
 
       # Configuring postgreSQL
-      # WARNING: 
+      # WARNING:
       # If you're going to deploy using Chef, please Change all these configurations!
       postgresql: {
         listen_addresses: "*",
@@ -110,18 +110,18 @@ Vagrant::Config.run do |config|
       },
       # Making the terminal looks good with theming and assigning to the vagrant user
       oh_my_zsh: {
-        users: [{ 
+        users: [{
           login: :vagrant,
           plugins: %w{git bundler ruby vi rails}
         }]
       }
     }
-  
+
 
   end
 
-  
-  # Run the Rails project right on vagrant up 
+
+  # Run the Rails project right on vagrant up
   config.vm.provision :shell, inline: %q{cd /vagrant && export DISPLAY=:99}
   config.vm.provision :shell, inline: %q{sudo /etc/init.d/xvfb start}
   config.vm.provision :shell, inline: %q{sudo bash -c "echo 'UseDNS no' >> /etc/ssh/sshd_config"}
