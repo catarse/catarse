@@ -20,6 +20,20 @@ Welcome to Catarse's source code repository. Our goal with opening the source co
 
 You can see the software in action in http://catarse.me.
 
+## Installation
+
+### Linux
+> git clone https://github.com/catarse/catarse.git
+> cd catarse
+> mv config/database.sample.yml config/database.yml
+> vim config/database.yml 
+ change username/password and save
+> bundle install
+> rake db:create db:migrate db:seed
+> rails server 
+
+If your migrations don't run, make sure you have postgresql-contrib installed on your linux system
+
 ## Getting started
 
 ## Internationalization
