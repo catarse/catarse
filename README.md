@@ -26,8 +26,8 @@ You can see the software in action in http://catarse.me.
 >* git clone https://github.com/catarse/catarse.git
 >* cd catarse
 >* mv config/database.sample.yml config/database.yml
-> *vim config/database.yml 
- change username/password and save
+>* vim config/database.yml 
+ # change username/password and save
 >* bundle install
 >* rake db:create db:migrate db:seed
 >* rails server 
