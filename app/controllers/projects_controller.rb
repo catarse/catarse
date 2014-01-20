@@ -90,7 +90,7 @@ class ProjectsController < ApplicationController
 
   protected
   def permitted_params
-    policy(resource).permitted_attributes(params)
+    params.permit(policy(resource).permitted_attributes)
   end
 
   def resource
