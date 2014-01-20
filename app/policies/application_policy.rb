@@ -39,6 +39,10 @@ class ApplicationPolicy
   end
 
   protected
+  def done_by_onwer_or_admin?
+    is_owned_by?(user) || user.try(:admin?)
+  end
+
   def is_owned_by?(user)
     user.present? && record.user == user
   end

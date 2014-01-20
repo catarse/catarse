@@ -1,14 +1,14 @@
 class ProjectPolicy < ApplicationPolicy
   def create?
-    is_owned_by? user
+    done_by_onwer_or_admin?
   end
 
   def update?
-    is_owned_by?(user) || user.try(:admin?)
+    create?
   end
 
   def send_to_analysis?
-    update?
+    create?
   end
 
   def permitted_attributes
