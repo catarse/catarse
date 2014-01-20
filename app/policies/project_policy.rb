@@ -13,7 +13,7 @@ class ProjectPolicy < ApplicationPolicy
 
   def permitted_attributes
     if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis?))
-      {project: record.attribute_names.map(&:to_sym)}
+      {project: record.attribute_names}
     else
       {project: [:about, :video_url, :uploaded_image, :headline]}
     end
