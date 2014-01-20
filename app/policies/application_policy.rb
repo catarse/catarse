@@ -37,5 +37,10 @@ class ApplicationPolicy
   def scope
     Pundit.policy_scope!(user, record.class)
   end
+
+  protected
+  def is_owned_by?(user)
+    user.present? && record.user == user
+  end
 end
 
