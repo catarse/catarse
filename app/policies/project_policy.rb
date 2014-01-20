@@ -1,6 +1,6 @@
 class ProjectPolicy < ApplicationPolicy
   def create?
-    user.present? && record.user == user
+    is_owned_by? user
   end
 
   def update?
