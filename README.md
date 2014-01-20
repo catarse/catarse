@@ -27,19 +27,10 @@ $ rails server
 
 If your migrations don't run, make sure you have postgresql-contrib installed on your system.
 
-
-## Internationalization
-
-This software was first created as Brazil's first crowdfunding platform. 
-Thus, it was first made in Portuguese and with a brazilian payment gateway. 
-We are now internationalizing it, and already have a good support for the english language and for paypal express checkout.
-See below the Payment gateways section for more information about integrating Catarse with a payment system of your choice.
-If you want to join us in this effort, please feel free to fork the repository and send us a pull request with your changes. If you have *any* doubt, please join our Google Group at http://groups.google.com/group/catarse-dev and we will help you.
-
 ### Translations
 
-We hope to support a lot of languages in the future. So we are willing to accept pull requests with translations to other languages. Here's a small guide to translate Catarse to your language in a way that we can integrate your translation in the main repository:
-* TODO 
+We hope to support a lot of languages in the future. 
+So we are willing to accept pull requests with translations to other languages. 
 
 Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the internationalization and beginning the english translation.
 
@@ -52,9 +43,6 @@ The two current working engines are:
 
 If you have created a different payment engine to Catarse please contact us so we can link your engine here.
 If you want to create a payment engine please join our mailing list at http://groups.google.com/group/catarse-dev
-
-
-Here are some tips to get things started:
 
 ## How to contribute with code
 
