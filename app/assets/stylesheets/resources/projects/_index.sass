@@ -1,29 +1,37 @@
 [data-namespace="null"][data-controller="projects"][data-action="index"]
   .banner
-    background: image-url('catarse_bootstrap/banner-3years.jpg') center center
+    background: image-url('catarse_bootstrap/banner-3years.png') center center
     height: 360px
     margin: 0 auto 2em
     overflow: hidden
+    position: relative
+    .content
+      background: image-url('catarse_bootstrap/banner-content.png') center center
+      position: absolute
+      top: 0
+      left: 50%
+      margin: 0 0 0 -463px
+      display: block
+      height: 360px
+      width: 926px
     a
       position: absolute
-      top: 250px
-      left: 52%
+      top: 230px
+      left: 39%
       text-decoration: none
       transition: 0.2s background
-      width: 235px
       text-align: center
       border: none
       border-radius: 3px
       display: inline-block
       font-weight: bold
-      font-size: 14px
-      padding: 0.7em 0
-      background: #00b22d
+      font-size: 15px
+      padding: 0.7em 1.5em
+      background: #3F4752
       color: white
-      text-transform: uppercase
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
       &:hover
-        background: #00cb33
+        background: lighten($blue-one, 5%)
 
   .channel_banner
     width: 100%
