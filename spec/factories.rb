@@ -125,5 +125,13 @@ FactoryGirl.define do
     acronym "RJ"
   end
 
+  factory :channel_post do |f|
+    f.association :user, factory: :user
+    f.association :channel, factory: :channel
+    title "My title"
+    f.body "This is a comment"
+    f.body_html "<p>This is a comment</p>"
+  end
+
 end
 

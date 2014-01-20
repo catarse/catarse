@@ -1,0 +1,35 @@
+= render 'shared/header_channel'
+= content_for :title, channel.name
+
+section.line-box
+  .row
+    .large-12.columns
+      .presentation
+        h1.channel-title
+          = t('channels.posts.title')
+          | : 
+          = link_to channel.name, root_path, class: 'standard-link'
+        .row
+          .large-4.columns
+            .channel-followers-wrapper
+              - if channel.has_subscriber?(current_user)
+                .large-6.columns.no-padding
+                  = link_to channels_subscriber_path, {method: :delete, class: [:button, :medium, :negative]} do
+                    .stop_following= t('channels.unfollow')
+              - else
+                .large-6.columns.no-padding
+                  = link_to t('channels.follow'), channels_subscriber_path, class: [:button, :medium, :negative], title: t('channels.follow')
+              .large-6.columns
+                .channel-followers[title=t('channels.subscribed', count: channel.channels_subscribers.size)]
+                  = t('channels.subscribed', count: channel.channels_subscribers.size)
+
+
+
+article.row.channel-posts-wrapper
+  - collection.each do |resource|
+    section.large-9.columns.channel-post
+      h3= link_to resource.title, channels_post_path(resource)
+      == resource.body_html
+    .large-3.columns
+
+= render 'shared/footer_channel'
