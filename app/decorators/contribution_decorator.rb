@@ -1,5 +1,5 @@
-class BackerDecorator < Draper::Decorator
-  decorates :backer
+class ContributionDecorator < Draper::Decorator
+  decorates :contribution
   include Draper::LazyHelpers
 
   def display_value

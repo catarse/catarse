@@ -8,8 +8,8 @@
   - if resource.new_record? || can?(:update, resource, :description)
     = f.input :description, required: true
 
-  - if resource.new_record? || can?(:update, resource, :maximum_backers)
-    = f.input :maximum_backers
+  - if resource.new_record? || can?(:update, resource, :maximum_contributions)
+    = f.input :maximum_contributions
 
   .clearfix
   = f.submit class: 'btn', disable_with: I18n.t('sending')

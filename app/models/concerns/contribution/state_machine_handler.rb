@@ -1,4 +1,4 @@
-module Backer::StateMachineHandler
+module Contribution::StateMachineHandler
   extend ActiveSupport::Concern
 
   included do
@@ -33,8 +33,8 @@ module Backer::StateMachineHandler
       end
 
       event :request_refund do
-        transition confirmed: :requested_refund, if: ->(backer){
-          backer.user.credits >= backer.value && !backer.credits
+        transition confirmed: :requested_refund, if: ->(contribution){
+          contribution.user.credits >= contribution.value && !contribution.credits
         }
       end
 

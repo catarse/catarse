@@ -1,7 +1,7 @@
-[data-controller="backers"][data-namespace="projects"][data-action="new"]
+[data-controller="contributions"][data-namespace="projects"][data-action="new"]
   #page_content
     .container
-      .backer_content
+      .contribution_content
         +grid(16)
         padding-top: 15px
         .title
@@ -25,7 +25,7 @@
           +grid(11)
           +alpha
           width: 600px
-          #backer_form
+          #contribution_form
             .simbol
               float: left
               width: 30px
@@ -74,7 +74,7 @@
                 strong
                   font-family: 'Lato'
                   font-weight: 700
-            #backer_reward_input
+            #contribution_reward_input
               padding-left: 0 !important
               legend
                 float: left
@@ -117,12 +117,12 @@
                     font-family: 'Lato'
                     font-size: 14px
                     line-height: 18px
-            #backer_credits_input
+            #contribution_credits_input
               .inline-hints
                 float: none
                 display: block
                 width: 80%
-            #backer_anonymous_input
+            #contribution_anonymous_input
               margin: 0px
               font-size: 14px
               label
@@ -155,7 +155,7 @@
           padding: 20px 40px
           text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
           //width: 462px
-        #backer_submit
+        #contribution_submit
           width: 300px
           height: 55px
           border-radius: 15px
@@ -168,12 +168,12 @@
           font-family: "Lato"
           font-size: 15px
           text-transform: uppercase
-        
+
         #back_info
           +grid(5)
           float: right
           margin-top: -80px
-          +omega          
+          +omega
           .project_name
             font-family: 'Lato'
             font-weight: 700
@@ -222,7 +222,7 @@
             line-height: 21px
             padding-left: 16px
             @include transition(all, 0.5s)
-            background: url($images_path+'bullet-green.png') left 5px no-repeat 
+            background: url($images_path+'bullet-green.png') left 5px no-repeat
             &:hover
               color: #64CB64
           p

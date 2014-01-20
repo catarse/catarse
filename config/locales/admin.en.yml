@@ -21,7 +21,7 @@ en:
         by_progress: By progress %
     users:
       index:
-        title: "Management backers"
+        title: "Management contributions"
         menu: Users
         credits: Credits
         credits_view: "Calculated credits"
@@ -30,7 +30,7 @@ en:
         submit: Search
         has_credits_difference: "Discrepancy in credits"
         total_backed: backed
-        total_backers: backers
+        total_contributions: contributions
         total_backs: backs
         total_users: users
         total_credits: credits
@@ -38,22 +38,22 @@ en:
         user: User
         value: Value
         provider: Provider
-    backers:
+    contributions:
       messages:
         successful:
-          confirm: 'Backer confirmed!'
-          pendent: 'Backer unconfirmed!'
-          refund: 'Backer refunded!'
+          confirm: 'Contribution confirmed!'
+          pendent: 'Contribution unconfirmed!'
+          refund: 'Contribution refunded!'
           change_reward: 'Reward changed!'
-          hide: 'Backer hidden!'
-          cancel: 'Backer canceled!'
-          push_to_trash: 'Backer deleted!'
+          hide: 'Contribution hidden!'
+          cancel: 'Contribution canceled!'
+          push_to_trash: 'Contribution deleted!'
       index:
-        send_refund_request_backer: 'Send refund request'
-        push_to_trash: 'Delete backer'
-        cancel: 'Cancel backer'
+        send_refund_request_contribution: 'Send refund request'
+        push_to_trash: 'Delete contribution'
+        cancel: 'Cancel contribution'
         refund_and_hide: 'Refund and hide'
-        backer_info: 'Info of backer %{key}'
+        contribution_info: 'Info of contribution %{key}'
         payment_id: 'Payment ID'
         payment_method: 'Payment method'
         payment_fee: 'Payment method fee'
@@ -62,14 +62,14 @@ en:
         user_email: 'Catarse user email'
         pending_to_refund: 'Pending to refund'
         created_at: 'Created at'
-        title: "Backers management"
+        title: "Contributions management"
         menu: Backs
         anonymous: Anonymous?
         confirmed: Confirmed?
         credits: "Used credits?"
         id: ID
         key: Key
-        no_backers: "No backers found."
+        no_contributions: "No contributions found."
         project: Project
         refunded: Refunded?
         requested_refund: "Requested refund?"
@@ -77,7 +77,7 @@ en:
         no_reward: "No reward"
         submit: Search
         total_backed: backed
-        total_backers: backers
+        total_contributions: contributions
         total_backs: backs
         total_users: Users
         user: User
@@ -88,7 +88,7 @@ en:
         title: "Statistics"
         total_users: "Users"
         total_backs: "Backs"
-        total_backers: "Backers"
+        total_contributions: "Contributions"
         total_backed: "Backed"
         total_projects: "Projects"
         total_projects_success: "Successful"
@@ -98,7 +98,7 @@ en:
         current_period: "Last 8 weeks"
         previous_period: "Previous 8 weeks"
         last_year: "Last year"
-      backers_by_week:
+      contributions_by_week:
         title: "Backed value confirmed per week"
         current_period: "Last 8 weeks"
         previous_period: "Previous 8 weeks"

@@ -46,7 +46,7 @@ App.addChild('MixPanel', {
   },
 
   trackUserClickOnReviewAndMakePayment: function(){
-    this.trackOnMixPanel('input#backer_submit', 'click', 'Clicked on Review and Make Payment');
+    this.trackOnMixPanel('input#contribution_submit', 'click', 'Clicked on Review and Make Payment');
   },
 
   trackUserClickOnAcceptTerms: function(){

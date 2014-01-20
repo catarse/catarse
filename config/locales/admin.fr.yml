@@ -30,7 +30,7 @@ fr:
         submit: Search
         has_credits_difference: "Différence entre les crédits"
         total_backed: backed
-        total_backers: backers
+        total_contributions: contributions
         total_backs: backs
         total_users: users
         total_credits: credits
@@ -38,7 +38,7 @@ fr:
         user: User
         value: Value
         provider: Provider
-    backers:
+    contributions:
       messages:
         successful:
           confirm: 'Bailleur confirmé'
@@ -49,11 +49,11 @@ fr:
           cancel: 'Bailleur retiré'
           push_to_trash: 'Bailleur supprimé'
       index:
-        send_refund_request_backer: 'Envoyer une demande de remboursement'
+        send_refund_request_contribution: 'Envoyer une demande de remboursement'
         push_to_trash: 'Supprimer ce bailler'
         cancel: 'Retirer ce bailleur'
         refund_and_hide: 'Rembourser et cacher'
-        backer_info: 'Infos sur le bailleur %{key}'
+        contribution_info: 'Infos sur le bailleur %{key}'
         payment_id: 'ID du paiement'
         payment_method: 'Méthode de paiement'
         payment_fee: 'Payment method fee'
@@ -62,14 +62,14 @@ fr:
         user_email: 'Catarse user email'
         pending_to_refund: 'Pending to refund'
         created_at: 'Created at'
-        title: "Backers management"
+        title: "Contributions management"
         menu: Backs
         anonymous: Anonymous?
         confirmed: Confirmed?
         credits: "Crédits utilisés"
         id: ID
         key: Key
-        no_backers: "Aucun bailleur trouvé!"
+        no_contributions: "Aucun bailleur trouvé!"
         project: Project
         refunded: Refunded?
         requested_refund: "Remboursement demandé?"
@@ -77,7 +77,7 @@ fr:
         no_reward: "Pas de récompense"
         submit: Search
         total_backed: backed
-        total_backers: backers
+        total_contributions: contributions
         total_backs: backs
         total_users: Users
         user: User
@@ -88,7 +88,7 @@ fr:
         title: "Statistiques"
         total_users: "Utilisateurs"
         total_backs: "Fonds"
-        total_backers: "Bailleurs"
+        total_contributions: "Bailleurs"
         total_backed: "Financés"
         total_projects: "Projets"
         total_projects_success: "avec succès"
@@ -98,7 +98,7 @@ fr:
         current_period: "8 dernières semaines"
         previous_period: "les 8 semaines passées"
         last_year: "L'an dernier"
-      backers_by_week:
+      contributions_by_week:
         title: "Financement confirmé par semaine"
         current_period: "8 dernières semaines"
         previous_period: "les 8 semaines passées"

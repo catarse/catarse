@@ -36,22 +36,22 @@ div class=(can?(:manage, parent) ? 'project_land' : 'small_project_land')
       li
         h6= project.display_pledged
         p= t('projects.project.reached')
-  - if backer && can?(:manage, parent)
+  - if contribution && can?(:manage, parent)
     div.back_info
       ul
         li.date
           h5
-            span #{t(".#{backer.state}")}
+            span #{t(".#{contribution.state}")}
             span.date< 
-              |(#{backer.display_confirmed_at || I18n.l(backer.created_at.to_date)})
-        - if backer.display_value
+              |(#{contribution.display_confirmed_at || I18n.l(contribution.created_at.to_date)})
+        - if contribution.display_value
           li.value
-            h5= backer.display_value
-        - if backer.reward
+            h5= contribution.display_value
+        - if contribution.reward
           li.reward
-            h5= I18n.t('projects.rewards.reward_title', minimum: backer.reward.display_minimum)
-            - description = backer.reward.description.gsub(/"/,'&quot;')
-            p[ title=description ]= truncate(backer.reward.description, length: 75)
+            h5= I18n.t('projects.rewards.reward_title', minimum: contribution.reward.display_minimum)
+            - description = contribution.reward.description.gsub(/"/,'&quot;')
+            p[ title=description ]= truncate(contribution.reward.description, length: 75)
     .tell_about
       p= t('tell_about_this_back')
       ul

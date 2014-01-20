@@ -1,30 +1,30 @@
 p Seguem todos os dados do pagamento:
 p
-  | Nome do apoiador: #{(backer.payer_name || backer.user.display_name)}
+  | Nome do apoiador: #{(contribution.payer_name || contribution.user.display_name)}
   br/
-  | CPF/CNPJ do apoiador: #{(backer.payer_document || backer.user.cpf)}
+  | CPF/CNPJ do apoiador: #{(contribution.payer_document || contribution.user.cpf)}
   br/
-  | Data da confirmação do apoio: #{l backer.confirmed_at}
+  | Data da confirmação do apoio: #{l contribution.confirmed_at}
   br/
-  | Opção de pagamento: #{backer.payment_choice}
+  | Opção de pagamento: #{contribution.payment_choice}
   br/
-  | Valor da contribuição: #{number_to_currency backer.value}
+  | Valor da contribuição: #{number_to_currency contribution.value}
   br/
-  -if backer.reward.present?
-    | Recompensa selecionada: #{backer.reward.description}
+  -if contribution.reward.present?
+    | Recompensa selecionada: #{contribution.reward.description}
     br/
-    | Estimativa de entrega: #{backer.reward.display_deliver_estimate}
+    | Estimativa de entrega: #{contribution.reward.display_deliver_estimate}
     br/
-  | ID do apoio: #{backer.key}
+  | ID do apoio: #{contribution.key}
   br/
-  | Nome/Razão Social do realizador: #{backer.project.user.display_name}
+  | Nome/Razão Social do realizador: #{contribution.project.user.display_name}
   br/
-  | CPF/CNPJ do realizador: #{backer.project.user.cpf}
+  | CPF/CNPJ do realizador: #{contribution.project.user.cpf}
 
 p 
   | É importante ressaltar que o Catarse é apenas intermediador desse processo,
   | portanto, se tiver alguma dúvida em relação ao projeto ou recompensa selecionada entre 
-  | em contato diretamente com o realizador através do e-mail #{mail_to backer.project.user.email}.  
+  | em contato diretamente com o realizador através do e-mail #{mail_to contribution.project.user.email}.  
   | Ah! Lembre-se de guardar este email, pois ele contém informações importantes 
   | a respeito da sua contribuição ao projeto.
 p Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_contact]}

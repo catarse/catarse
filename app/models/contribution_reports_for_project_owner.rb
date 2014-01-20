@@ -1,3 +1,3 @@
-class BackerReportsForProjectOwner < ActiveRecord::Base
+class ContributionReportsForProjectOwner < ActiveRecord::Base
   acts_as_copy_target
 end

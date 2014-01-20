@@ -40,7 +40,7 @@
 
   = paginate @projects
   - if @projects.empty?
-    = t('.no_backers')
+    = t('.no_contributions')
   - else
     table.admin-projects-table
       thead
@@ -64,7 +64,7 @@
             td.large-1.columns= best_in_place [:channels, :admin, project], :user_id, method: :put, type: :input
             td.large-1.columns= best_in_place [:channels, :admin, project], :goal, method: :put, type: :input, display_as: :display_goal
             td.large-1.columns= "#{project.display_pledged} (#{project.progress}%)"
-            td.large-1.columns= project.total_backers
+            td.large-1.columns= project.total_contributions
             td.large-1.columns= best_in_place [:channels, :admin, project], :recommended, method: :put, type: :checkbox, collection: [t('no'), t('yes')]
             td.large-1.columns= project.online_date.strftime('%d/%m/%Y') if project.online_date
             td.large-1.columns= project.display_expires_at

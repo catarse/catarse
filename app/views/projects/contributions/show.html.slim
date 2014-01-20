@@ -8,8 +8,8 @@
         = image_tag @project.display_image, id: 'project_image', alt: @project.name, width: '250px'
         h1= t('.text_title_html', link: link_to(@project.name, project_by_slug_path(permalink: @project.permalink)))
         #review_text
-          - if @backer.payment_method == 'MoIP' && @backer.payment_id
-            = t('.moip_message', code: @backer.payment_id).html_safe
+          - if @contribution.payment_method == 'MoIP' && @contribution.payment_id
+            = t('.moip_message', code: @contribution.payment_id).html_safe
             br
             br
           = t("projects.back_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
@@ -21,6 +21,6 @@
               = image_tag 'catarse/icon-fb.png', title: 'Facebook'
         #recommended_projects
           h2 = t('.recommended_projects')
-          - @backer.recommended_projects.limit(3).each do |project|
+          - @contribution.recommended_projects.limit(3).each do |project|
             = render partial: 'projects/project', locals: {project: project }
       .clearfix

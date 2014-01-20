@@ -1,4 +1,4 @@
-module Backer::PaymentEngineHandler
+module Contribution::PaymentEngineHandler
   extend ActiveSupport::Concern
 
   included do

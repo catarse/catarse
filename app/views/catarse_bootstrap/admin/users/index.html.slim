@@ -43,7 +43,7 @@
         - for user in @users do
           tr id=user.id class=cycle("even", "odd")
             td= link_to user.id, user_path(user), target: '_blank'
-            td= link_to user.name, admin_backers_path(by_user_id: user.id), target: '_blank'
+            td= link_to user.name, admin_contributions_path(by_user_id: user.id), target: '_blank'
             td= user.email
             td= user.user_total ? user.user_total.sum : 0
             td= user.credits

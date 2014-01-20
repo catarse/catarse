@@ -1,6 +1,6 @@
-class Users::BackersController < ApplicationController
+class Users::ContributionsController < ApplicationController
   inherit_resources
-  defaults resource_class: Backer, collection_name: 'backs', instance_name: 'back'
+  defaults resource_class: Contribution, collection_name: 'backs', instance_name: 'back'
   belongs_to :user
   actions :index
 

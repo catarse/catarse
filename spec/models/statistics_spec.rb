@@ -3,10 +3,10 @@ require 'spec_helper'
 describe Statistics do
   before do
     create(:project, state: 'successful')
-    create(:project, state: 'draft') 
+    create(:project, state: 'draft')
     project = create(:project, state: 'online')
-    create(:backer, state: 'confirmed', project: project )
-    create(:backer, project: project)
+    create(:contribution, state: 'confirmed', project: project )
+    create(:contribution, project: project)
   end
 
   describe "#total_users" do
@@ -16,17 +16,17 @@ describe Statistics do
 
   describe "#total_backs" do
     subject{ Statistics.first.total_backs }
-    it{ should == Backer.with_state('confirmed').count }
+    it{ should == Contribution.with_state('confirmed').count }
   end
 
-  describe "#total_backers" do
-    subject{ Statistics.first.total_backers }
-    it{ should == User.backers.count }
+  describe "#total_contributions" do
+    subject{ Statistics.first.total_contributions }
+    it{ should == User.contributions.count }
   end
 
   describe "#total_backed" do
     subject{ Statistics.first.total_backed }
-    it{ should == Backer.with_state('confirmed').sum(:value) }
+    it{ should == Contribution.with_state('confirmed').sum(:value) }
   end
 
   describe "#total_projects" do

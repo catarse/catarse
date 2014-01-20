@@ -1,9 +1,9 @@
-describe("Backer", function() {
+describe("Contribution", function() {
   var view;
   var reward = $('<input type="radio" />');
 
   beforeEach(function() {
-    view = new App.views.Backer({el: $('<div></div>')});
+    view = new App.views.Contribution({el: $('<div></div>')});
   });
 
   describe('#reward', function(){
@@ -12,7 +12,7 @@ describe("Backer", function() {
     beforeEach(function() {
       spyOn(view, "$").andReturn({ length: 1, val: function(){return 1;} });
       view.rewards = [
-        {id: 1}, 
+        {id: 1},
         {id: 2}
       ];
       reward = view.reward();
@@ -64,11 +64,11 @@ describe("Backer", function() {
     it("should remove selected class from choices", function() {
       expect(view.choices.removeClass).wasCalledWith('selected');
     });
-    
+
     it("should set prop checked to true", function() {
       expect(reward.prop).wasCalledWith('checked', true);
     });
-    
-  });  
-  
+
+  });
+
 });

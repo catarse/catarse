@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe NotificationsMailer do
   describe ".notify" do
-    let(:notification){ create(:notification, template_name: 'confirm_backer', user: create(:user, locale: 'pt'), origin_name: 'Catarse', origin_email: 'contact@foo.bar') }
+    let(:notification){ create(:notification, template_name: 'confirm_contribution', user: create(:user, locale: 'pt'), origin_name: 'Catarse', origin_email: 'contact@foo.bar') }
     subject{ NotificationsMailer.notify(notification) }
 
     before do
@@ -12,7 +12,7 @@ describe NotificationsMailer do
         from: "Catarse <contact@foo.bar>",
         to: notification.user.email,
         subject: 'Recibo provisório: apoio confirmado para Foo bar',
-        template_name: 'confirm_backer'
+        template_name: 'confirm_contribution'
       })
     end
 

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Admin::BackersController do
+describe Admin::ContributionsController do
   subject{ response }
   let(:admin) { create(:user, admin: true) }
-  let(:unconfirmed_backer) { create(:backer) }
+  let(:unconfirmed_contribution) { create(:contribution) }
   let(:current_user){ admin }
 
   before do
@@ -11,84 +11,84 @@ describe Admin::BackersController do
   end
 
   describe 'PUT confirm' do
-    let(:backer) { create(:backer) }
-    subject { backer.confirmed? }
+    let(:contribution) { create(:contribution) }
+    subject { contribution.confirmed? }
 
     before do
-      put :confirm, id: backer.id, locale: :pt
+      put :confirm, id: contribution.id, locale: :pt
     end
 
     it do
-      backer.reload
+      contribution.reload
       should be_true
     end
   end
 
   describe 'PUT push_to_trash' do
-    let(:backer) { create(:backer, state: 'pending') }
-    subject { backer.deleted? }
+    let(:contribution) { create(:contribution, state: 'pending') }
+    subject { contribution.deleted? }
 
     before do
-      put :push_to_trash, id: backer.id, locale: :pt
-      backer.reload
+      put :push_to_trash, id: contribution.id, locale: :pt
+      contribution.reload
     end
 
     it { should be_true }
   end
 
   describe 'PUT hide' do
-    let(:backer) { create(:backer, state: 'confirmed') }
-    subject { backer.refunded_and_canceled? }
+    let(:contribution) { create(:contribution, state: 'confirmed') }
+    subject { contribution.refunded_and_canceled? }
 
     before do
       controller.stub(:current_user).and_return(admin)
-      put :hide, id: backer.id, locale: :pt
+      put :hide, id: contribution.id, locale: :pt
     end
 
     it do
-      backer.reload
+      contribution.reload
       should be_true
     end
   end
 
   describe 'PUT refund' do
-    let(:backer) { create(:backer, state: 'confirmed') }
-    subject { backer.refunded? }
+    let(:contribution) { create(:contribution, state: 'confirmed') }
+    subject { contribution.refunded? }
 
     before do
-      put :refund, id: backer.id, locale: :pt
+      put :refund, id: contribution.id, locale: :pt
     end
 
     it do
-      backer.reload
+      contribution.reload
       should be_true
     end
   end
 
   describe 'PUT pendent' do
-    let(:backer) { create(:backer, state: 'confirmed') }
-    subject { backer.confirmed? }
+    let(:contribution) { create(:contribution, state: 'confirmed') }
+    subject { contribution.confirmed? }
 
     before do
-      put :pendent, id: backer.id, locale: :pt
+      put :pendent, id: contribution.id, locale: :pt
     end
 
     it do
-      backer.reload
+      contribution.reload
       should be_false
     end
   end
 
   describe 'PUT cancel' do
-    let(:backer) { create(:backer, state: 'confirmed') }
-    subject { backer.canceled? }
+    let(:contribution) { create(:contribution, state: 'confirmed') }
+    subject { contribution.canceled? }
 
     before do
-      put :cancel, id: backer.id, locale: :pt
+      put :cancel, id: contribution.id, locale: :pt
     end
 
     it do
-      backer.reload
+      contribution.reload
       should be_true
     end
   end
@@ -111,19 +111,19 @@ describe Admin::BackersController do
   end
 
   describe '.collection' do
-    let(:backer) { create(:backer, payer_email: 'foo@foo.com') }
+    let(:contribution) { create(:contribution, payer_email: 'foo@foo.com') }
     context "when there is a match" do
       before do
         get :index, locale: :pt, payer_email_contains: 'foo@foo.com'
       end
-      it{ assigns(:backers).should eq([backer]) }
+      it{ assigns(:contributions).should eq([contribution]) }
     end
 
     context "when there is no match" do
       before do
         get :index, locale: :pt, payer_email_contains: '2foo@foo.com'
       end
-      it{ assigns(:backers).should eq([]) }
+      it{ assigns(:contributions).should eq([]) }
     end
   end
 end

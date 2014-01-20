@@ -1,74 +1,74 @@
-class BackerObserver < ActiveRecord::Observer
-  observe :backer
+class ContributionObserver < ActiveRecord::Observer
+  observe :contribution
 
-  def after_create(backer)
-    backer.define_key
+  def after_create(contribution)
+    contribution.define_key
   end
 
-  def before_save(backer)
-    notify_confirmation(backer) if backer.confirmed? && backer.confirmed_at.nil?
-    notify_payment_slip(backer) if backer.payment_choice_was.nil? && backer.payment_choice == 'BoletoBancario'
+  def before_save(contribution)
+    notify_confirmation(contribution) if contribution.confirmed? && contribution.confirmed_at.nil?
+    notify_payment_slip(contribution) if contribution.payment_choice_was.nil? && contribution.payment_choice == 'BoletoBancario'
   end
 
-  def after_save(backer)
-    if backer.project.reached_goal?
+  def after_save(contribution)
+    if contribution.project.reached_goal?
       Notification.notify_once(
         :project_success,
-        backer.project.user,
-        {project_id: backer.project.id},
-        project: backer.project
+        contribution.project.user,
+        {project_id: contribution.project.id},
+        project: contribution.project
       )
     end
   end
 
-  def notify_backoffice_about_refund(backer)
+  def notify_backoffice_about_refund(contribution)
     user = User.find_by(email: Configuration[:email_payments])
     if user.present?
-      Notification.notify(:refund_request, user, {backer: backer, origin_email: backer.user.email, origin_name: backer.user.name})
+      Notification.notify(:refund_request, user, {contribution: contribution, origin_email: contribution.user.email, origin_name: contribution.user.name})
     end
   end
 
-  def notify_backoffice_about_canceled(backer)
+  def notify_backoffice_about_canceled(contribution)
     user = User.where(email: Configuration[:email_payments]).first
     if user.present?
       Notification.notify_once(
-        :backer_canceled_after_confirmed,
+        :contribution_canceled_after_confirmed,
         user,
-        {backer_id: backer.id},
-        backer: backer
+        {contribution_id: contribution.id},
+        contribution: contribution
       )
     end
   end
 
   private
-  def notify_confirmation(backer)
-    backer.confirmed_at = Time.now
+  def notify_confirmation(contribution)
+    contribution.confirmed_at = Time.now
     Notification.notify_once(
-      :confirm_backer,
-      backer.user,
-      {backer_id: backer.id},
-      backer: backer,
-      project: backer.project
+      :confirm_contribution,
+      contribution.user,
+      {contribution_id: contribution.id},
+      contribution: contribution,
+      project: contribution.project
     )
 
-    if (Time.now > backer.project.expires_at  + 7.days) && (user = User.where(email: ::Configuration[:email_payments]).first)
+    if (Time.now > contribution.project.expires_at  + 7.days) && (user = User.where(email: ::Configuration[:email_payments]).first)
       Notification.notify_once(
-        :backer_confirmed_after_project_was_closed,
+        :contribution_confirmed_after_project_was_closed,
         user,
-        {backer_id: backer.id},
-        backer: backer,
-        project: backer.project
+        {contribution_id: contribution.id},
+        contribution: contribution,
+        project: contribution.project
       )
     end
   end
 
-  def notify_payment_slip(backer)
+  def notify_payment_slip(contribution)
     Notification.notify_once(
       :payment_slip,
-      backer.user,
-      {backer_id: backer.id},
-      backer: backer,
-      project: backer.project
+      contribution.user,
+      {contribution_id: contribution.id},
+      contribution: contribution,
+      project: contribution.project
     )
   end
 

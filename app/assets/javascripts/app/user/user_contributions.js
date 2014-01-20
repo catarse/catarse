@@ -1,4 +1,4 @@
-App.views.User.addChild('UserBackers', _.extend({
+App.views.User.addChild('UserContributions', _.extend({
   el: '#user_backed_projects',
 
   activate: function(){

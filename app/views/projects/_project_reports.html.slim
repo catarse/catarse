@@ -5,17 +5,17 @@ ul
       .alert.alert-info
         p
           =' t('projects.show.reports.link_reports')
-          =' link_to 'csv', reports_backer_reports_for_project_owners_path(project_id: @project.id, format: :csv)
+          =' link_to 'csv', reports_contribution_reports_for_project_owners_path(project_id: @project.id, format: :csv)
           ',
-          = link_to 'xls', reports_backer_reports_for_project_owners_path(project_id: @project.id, format: :xls)
+          = link_to 'xls', reports_contribution_reports_for_project_owners_path(project_id: @project.id, format: :xls)
   li
     .bootstrap-twitter
       .alert.alert-info
         p
-          =' t('projects.show.reports.all_backers_without_reward')
-          =' link_to 'csv', reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :csv)
+          =' t('projects.show.reports.all_contributions_without_reward')
+          =' link_to 'csv', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :csv)
           ',
-          =' link_to 'xls', reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :xls)
+          =' link_to 'xls', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: 0, format: :xls)
   - if selected_r.length > 0
       - selected_r.each do |reward|
         li
@@ -23,6 +23,6 @@ ul
             .alert.alert-info
               p
                 =' t('projects.show.reports.link_reward', value: reward.display_minimum)
-                =' link_to 'csv', reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :csv)
+                =' link_to 'csv', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :csv)
                 ',
-                =' link_to 'xls', reports_backer_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :xls)
+                =' link_to 'xls', reports_contribution_reports_for_project_owners_path(project_id: @project.id, reward_id: reward.id, format: :xls)

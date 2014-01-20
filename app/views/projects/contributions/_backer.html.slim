@@ -1,37 +1,37 @@
-.backer
-  - if backer.anonymous
-    img src="/assets/user.png" class="backer_avatar"
+.contribution
+  - if contribution.anonymous
+    img src="/assets/user.png" class="contribution_avatar"
     .back_info
       p#text
-        em.anon=" #{t('.anonymous_backer')}"
+        em.anon=" #{t('.anonymous_contribution')}"
       p#confirmed
-        = backer.confirmed_at
+        = contribution.confirmed_at
       p#backed= t('.anonymous_description')
   - else
-    a href=user_path(backer.user)
-      img src=backer.user.display_image class="backer_avatar"
+    a href=user_path(contribution.user)
+      img src=contribution.user.display_image class="contribution_avatar"
     .back_info
       p#text
-        a href=user_path(backer.user)
-         = backer.user.short_name
+        a href=user_path(contribution.user)
+         = contribution.user.short_name
       p#confirmed
-        = backer.confirmed? ? backer.confirmed_at : backer.created_at
+        = contribution.confirmed? ? contribution.confirmed_at : contribution.created_at
       p#backed
-        = backer.user.backs_text
+        = contribution.user.backs_text
   - if current_user and (current_user == @project.user or current_user.admin)
     .reward
       =
-      .value = backer.value
-      - if backer.reward
+      .value = contribution.value
+      - if contribution.reward
         .user_reward
-          = backer.reward.display_minimum
+          = contribution.reward.display_minimum
           |  -
-          = backer.reward.medium_description
+          = contribution.reward.medium_description
       - else
         | &nbsp;
         = t('.no_reward')
-      - if backer.user.email
-        .user_email = backer.user.email
+      - if contribution.user.email
+        .user_email = contribution.user.email
       - else
         | &nbsp;
         = t('not_informed')
