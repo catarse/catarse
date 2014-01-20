@@ -11,11 +11,11 @@ class ProjectPolicy < ApplicationPolicy
     update?
   end
 
-  def permitted_attributes(params)
+  def permitted_attributes
     if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis?))
-      params.permit!
+      {project: record.attribute_names.map(&:to_sym)}
     else
-      params.permit(project: [:about, :video_url, :uploaded_image, :headline])
+      {project: [:about, :video_url, :uploaded_image, :headline]}
     end
   end
 end
