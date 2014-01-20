@@ -4,7 +4,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && (user.admin? || record.user == user)
+    is_owned_by?(user) || user.try(:admin?)
   end
 
   def send_to_analysis?
