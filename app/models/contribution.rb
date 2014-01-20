@@ -1,11 +1,11 @@
 # coding: utf-8
-class Backer < ActiveRecord::Base
+class Contribution < ActiveRecord::Base
   schema_associations
 
   include Shared::StateMachineHelpers
-  include Backer::StateMachineHandler
-  include Backer::CustomValidators
-  include Backer::PaymentEngineHandler
+  include Contribution::StateMachineHandler
+  include Contribution::CustomValidators
+  include Contribution::PaymentEngineHandler
 
   delegate :display_value, :display_confirmed_at, to: :decorator
 
@@ -24,12 +24,12 @@ class Backer < ActiveRecord::Base
   scope :anonymous, -> { where(anonymous: true) }
   scope :credits, -> { where(credits: true) }
   scope :not_anonymous, -> { where(anonymous: false) }
-  scope :confirmed_today, -> { with_state('confirmed').where("backers.confirmed_at::date = current_timestamp::date ") }
+  scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = current_timestamp::date ") }
 
-  scope :can_cancel, -> { where("backers.can_cancel") }
+  scope :can_cancel, -> { where("contributions.can_cancel") }
 
-  # Backers already refunded or with requested_refund should appear so that the user can see their status on the refunds list
-  scope :can_refund, ->{ where("backers.can_refund") }
+  # Contributions already refunded or with requested_refund should appear so that the user can see their status on the refunds list
+  scope :can_refund, ->{ where("contributions.can_refund") }
 
   attr_protected :state, :user_id
 
@@ -39,7 +39,7 @@ class Backer < ActiveRecord::Base
   end
 
   def decorator
-    @decorator ||= BackerDecorator.new(self)
+    @decorator ||= ContributionDecorator.new(self)
   end
 
   def recommended_projects

@@ -16,7 +16,7 @@ class Update < ActiveRecord::Base
 
     where(
       "not exclusive
-      or exists(select true from backers b where b.user_id = :user_id and b.state = 'confirmed' and b.project_id = updates.project_id)
+      or exists(select true from contributions b where b.user_id = :user_id and b.state = 'confirmed' and b.project_id = updates.project_id)
       or exists(select true from projects p where p.user_id = :user_id and p.id = updates.project_id)",
       { user_id: user_id }
     )
@@ -40,7 +40,7 @@ class Update < ActiveRecord::Base
     end
   end
 
-  def notify_backers
+  def notify_contributions
     project.subscribed_users.each do |user|
       Notification.notify_once(
         :updates,

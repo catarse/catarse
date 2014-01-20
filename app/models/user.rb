@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
 
   schema_associations
   has_many :oauth_providers, through: :authorizations
-  has_many :backs, class_name: "Backer"
+  has_many :backs, class_name: "Contribution"
   has_one :user_total
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
@@ -53,15 +53,15 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
 
-  scope :backers, -> {
+  scope :contributions, -> {
     where("id IN (
       SELECT DISTINCT user_id
-      FROM backers
-      WHERE backers.state <> ALL(ARRAY['pending'::character varying::text, 'canceled'::character varying::text]))")
+      FROM contributions
+      WHERE contributions.state <> ALL(ARRAY['pending'::character varying::text, 'canceled'::character varying::text]))")
   }
 
   scope :who_backed_project, ->(project_id) {
-    where("id IN (SELECT user_id FROM backers WHERE backers.state = 'confirmed' AND project_id = ?)", project_id)
+    where("id IN (SELECT user_id FROM contributions WHERE contributions.state = 'confirmed' AND project_id = ?)", project_id)
   }
 
   scope :subscribed_to_updates, -> {
@@ -80,16 +80,16 @@ class User < ActiveRecord::Base
   scope :by_payer_email, ->(email) {
     where('EXISTS(
       SELECT true
-      FROM backers
-      JOIN payment_notifications ON backers.id = payment_notifications.backer_id
-      WHERE backers.user_id = users.id AND payment_notifications.extra_data ~* ?)', email)
+      FROM contributions
+      JOIN payment_notifications ON contributions.id = payment_notifications.contribution_id
+      WHERE contributions.user_id = users.id AND payment_notifications.extra_data ~* ?)', email)
   }
   scope :by_name, ->(name){ where('users.name ~* ?', name) }
   scope :by_id, ->(id){ where(id: id) }
-  scope :by_key, ->(key){ where('EXISTS(SELECT true FROM backers WHERE backers.user_id = users.id AND backers.key ~* ?)', key) }
+  scope :by_key, ->(key){ where('EXISTS(SELECT true FROM contributions WHERE contributions.user_id = users.id AND contributions.key ~* ?)', key) }
   scope :has_credits, -> { joins(:user_total).where('user_totals.credits > 0') }
   scope :has_not_used_credits_last_month, -> { has_credits.
-    where("NOT EXISTS (SELECT true FROM backers b WHERE current_timestamp - b.created_at < '1 month'::interval AND b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
+    where("NOT EXISTS (SELECT true FROM contributions b WHERE current_timestamp - b.created_at < '1 month'::interval AND b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
   }
   scope :order_by, ->(sort_field){ order(sort_field) }
 

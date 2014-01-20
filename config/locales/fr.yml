@@ -11,7 +11,7 @@ fr:
     user:
       name: 'Utilisateur'
       location: 'Ville / État'
-      confirmed_backers: 'Bailleurs confirmés'
+      confirmed_contributions: 'Bailleurs confirmés'
       created_projects: 'Projets créés'
   site:
     title: "La plus grande communauté de crowdfunding au Brésil"
@@ -33,7 +33,7 @@ fr:
       email: "Email"
       password: "Mot de passe"
 
-  backer_report_to_project_owner:
+  contribution_report_to_project_owner:
     reward_description: 'Description de la récompense'
     confirmed_at: 'Paiement confirmé à'
     value: 'hauteur du financement'
@@ -66,8 +66,8 @@ fr:
       last: 'précédant'
       truncate: "..."
   statistics:
-    backers:
-      subtitle: backers
+    contributions:
+      subtitle: contributions
     goal:
       subtitle: "total de %{total}"
   project_by: "projet soumis par"
@@ -116,7 +116,7 @@ fr:
   sidebar:
     titles:
       blog: blog
-      facebook: "Avez-vous aimé notre page Facebook?" 
+      facebook: "Avez-vous aimé notre page Facebook?"
       newsletter: "s'abonner à nos nouveautés"
       faq: "avez-vous des questions?"
       schedule: 'calendrier'
@@ -146,7 +146,7 @@ fr:
     attributes:
       unsubscribe:
         update: "Recevez les mises à jour de ce projet"
-      backer:
+      contribution:
         value: 'valeur'
       project:
         category: 'Catégorie'
@@ -162,7 +162,7 @@ fr:
         more_links: 'Où est ce que nous pourrons avoir des informations sur vous et sur votre projet?'
       reward:
         description: Description
-        maximum_backers: "Nombre maximal de bailleurs"
+        maximum_contributions: "Nombre maximal de bailleurs"
         minimum_value: "Montant minimum"
       user:
         address_city: 'Ville'
@@ -188,20 +188,20 @@ fr:
         phone_number: "Numéro du téléphone mobile"
         newsletter: 'Je veux être informé des nouveautés de Catarse'
     models:
-      backer: Backer
+      contribution: Contribution
       category: Category
       project: Project
       reward: Reward
-  backer:
+  contribution:
     display_confirmed_at: "il y'a %{time_ago} "
     reward_must_be_from_project: "doit faire partie du même projet"
-    should_not_back_if_maximum_backers_been_reached: "a atteint la limite maximale de bailleurs"
+    should_not_back_if_maximum_contributions_been_reached: "a atteint la limite maximale de bailleurs"
     value_must_be_at_least_rewards_value: "doit être au minimum %{minimum_value} pour la récompense selectionnée"
     project_should_be_online: "Vous ne pouvez financé un projet hors ligne"
-  backer_plural: backers
+  contribution_plural: contributions
   project_plural: projects
   project_singular: project
-  backer_singular: backer
+  contribution_singular: contribution
   click_here: "Cliquez ici"
   clicking_here: "vous avez cliqué ici"
   click_term: 'conditions'
@@ -258,7 +258,7 @@ fr:
       empty: "Écoutez, nous n'avons trouvé aucun projet correspondant à votre recherche. Vous voulez essayer avec d'autres termes ? =D"
   formtastic:
     hints:
-      backer:
+      contribution:
         credits: "Vous avez <strong>%{credits}</strong> en crédits et vous pouvez les utiliser sans faire un nouveau paiement."
         value: "Choisissez votre montant ;) mise de départ R$10, tout montant supérieur est encore meilleur"
       project:
@@ -269,18 +269,18 @@ fr:
         expires_at: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt le long du chemin, si mettre trop peu, vous ne pouvez pas atteindre le minimum de temps."
         online_days: "Enfin, choisissez combien de temps vous voulez que votre campagne dure. Encore une fois, il s'agit d'un choix stratégique: si vous mettez beaucoup de temps, les gens vont perdre de l'intérêt le long du chemin, si mettre trop peu, vous ne pouvez pas atteindre le minimum de temps."
         goal: "Montant en reais (R$)"
-        first_backers: "Pour atteindre votre objectif financier c'est indispensable pour engager les gens qui sont proches de vous et le projet. Donc, si vous pouvez énumérer ici qui seront vos 20 premiers bailleurs de fonds qui serait un grand pas vers l'avant;)"
+        first_contributions: "Pour atteindre votre objectif financier c'est indispensable pour engager les gens qui sont proches de vous et le projet. Donc, si vous pouvez énumérer ici qui seront vos 20 premiers bailleurs de fonds qui serait un grand pas vers l'avant;)"
         headline: "Résumez votre projet en 140 caractères. Ce sera le premier contact que les visiteurs auront avec votre projet, avant même de voir la vidéo. Soyez créatif, clair et direct ;)"
         name: "Soyez aussi objectif que possible. Donnez des explications sur la section 'à propos'."
         uploaded_image: "Mettez une image de 512x400(.jpg)."
         video_url: "Collez l'url de votre vidéo <a href=\"http://vimeo.com\" target=\"_blank\">Vimeo</a>. Nous recommandons Vimeo parce qu'il fait passer mois d'annonce. De cette manière, votre projet apparaîtra mieux.<strong>Une vidéo est le meilleur moyen de présenter votre projet</strong> ;)"
       reward:
         description: "Décrivez votre récompense d'une manière qui suscite l'intérêt des gens pour soutenir le projet. Ne soyez pas timide!"
-        maximum_backers: "Si votre récompense est limitée, dites-nous combien de bailleurs vous souhaiterez avoir."
+        maximum_contributions: "Si votre récompense est limitée, dites-nous combien de bailleurs vous souhaiterez avoir."
         minimum_value: "Il s'agit du montant minimum pour cette récompense."
         days_to_delivery: "Nombre de jours pour livrer la récompense."
     labels:
-      backer:
+      contribution:
         anonymous: "Je veux financer dans l'anonymat."
         credits: "Je veux utiliser mon crédit pour ce financement"
         reward: "Choisir une récompense"
@@ -292,7 +292,7 @@ fr:
         how_know: "Comment avez-vous entendu parler de Catarse?"
         headline: "Conclusion"
         category: 'Catégorie'
-        first_backers: "Lister vos premiers bailleurs *"
+        first_contributions: "Lister vos premiers bailleurs *"
         about: "A propos de votre projet. Comment allez-vous dépenser cet argent?"
         expires_at: "Quelle est la date limite pour atteindre vos objectifs ?"
         goal: "Combien espérez-vous collecter ? (en chiffres seulement)"
@@ -301,7 +301,7 @@ fr:
         video_url: Video
         uploaded_image: "image du projet"
       reward:
-        maximum_backers: "Maximum de bailleur (facultatif)"
+        maximum_contributions: "Maximum de bailleur (facultatif)"
         days_to_delivery: "Jour pour livrer"
     optional: " (facultatif)"
   found_plural: 'Trouvé'
@@ -353,7 +353,7 @@ fr:
     finish:
       successful:
         email_subject: "Hourra! le projet %{project_name} a été accepté sur Catarse!"
-        email_text: "Le projet %{project_link}, que vous avez soutenu, a été financé!<br><br> Le projet a, vous inclus, %{project_total_backers} superbes bailleurs, été financé à hateur de %{project_pledged} et a atteint %{project_process}% de l'objectif =D<br><br>Une chose importante à savoir: Catarse met 3 jours avant d'envoyer à l'initiateur du projet la liste des bailleurs. Alors, il vous contactera pour vous remercier et discuter du délais pour votre récompense. ok?<br><br> Alors pourquoi ne pas partager avec vos amis ce succès ?<br><br><div style='text-align:center;'>%{facebook_button}%{twitter_button}</div><br><br>Si vous voulez être tenu au courant des nouveautés de %{project_owner_name}, envoyez un email à %{project_owner_email}.<br><br>Si vous avez des questions à propos de Catarse, allez sur FAQ: <a href='http://www.catarse.me/faq' style='color: #008800';>www.catarse.me/faq</a> ou envoyez un email à <a href='mail_to:contato@catarse.me' style='color: #008800;'>contato@catarse.me</a><br>"
+        email_text: "Le projet %{project_link}, que vous avez soutenu, a été financé!<br><br> Le projet a, vous inclus, %{project_total_contributions} superbes bailleurs, été financé à hateur de %{project_pledged} et a atteint %{project_process}% de l'objectif =D<br><br>Une chose importante à savoir: Catarse met 3 jours avant d'envoyer à l'initiateur du projet la liste des bailleurs. Alors, il vous contactera pour vous remercier et discuter du délais pour votre récompense. ok?<br><br> Alors pourquoi ne pas partager avec vos amis ce succès ?<br><br><div style='text-align:center;'>%{facebook_button}%{twitter_button}</div><br><br>Si vous voulez être tenu au courant des nouveautés de %{project_owner_name}, envoyez un email à %{project_owner_email}.<br><br>Si vous avez des questions à propos de Catarse, allez sur FAQ: <a href='http://www.catarse.me/faq' style='color: #008800';>www.catarse.me/faq</a> ou envoyez un email à <a href='mail_to:contato@catarse.me' style='color: #008800;'>contato@catarse.me</a><br>"
         facebook_text: "Houra! Le projet '%{name}', que j'ai financé sur Catarse a vu le jour!"
         notification_text: "Houra! le projet %{link} que vous avez financé a vu le jour!"
         reward_notification_text: "Bientôt, %{link} vous contactera pour votre récompense!"
@@ -390,9 +390,9 @@ fr:
         draft: "Ce projet est en mode brouillon et n'est pas ouvert aux bailleurs."
       reached_of: "atteint"
       submit: "Soutenir ce projet"
-    backers:
-      backer:
-        anonymous_backer: "Bailleur anonyme"
+    contributions:
+      contribution:
+        anonymous_contribution: "Bailleur anonyme"
         anonymous_description: "a préféré rester incognito"
         no_reward: "Ce bailleur n'a pas choisi de récompense"
       review:
@@ -479,21 +479,21 @@ fr:
       title: "Project management"
       user: User
       visible: Visible?
-    pending_backers:
+    pending_contributions:
       anonymous: Anonymous?
       confirmed: Confirmed?
       credits: "Used credits?"
       id: Id
       key: Key
-      no_backers: "No backers found."
+      no_contributions: "No contributions found."
       project: Project
       refunded: Refunded?
       requested_refund: "Requested refund?"
       reward: Reward
       submit: Search
-      title: "Backers management"
+      title: "Contributions management"
       total_backed: backed
-      total_backers: backers
+      total_contributions: contributions
       total_backs: backs
       total_users: users
       user: User
@@ -501,7 +501,7 @@ fr:
     project:
       backed: backed
       reached: reached
-    project_backers:
+    project_contributions:
       empty: "Nobody backed this project so far. How about being the first one?"
       confirmed: "Confirmed"
       pending: "Pending"
@@ -513,7 +513,7 @@ fr:
       empty: "This project didn't have updates yet. But wait and see =D"
       submit: "Send update"
       comment: "Update text"
-      exclusive: "Visible for backers only"
+      exclusive: "Visible for contributions only"
       title: "Title of the update"
       destroy: "Remove update"
       destroy_confirmation: "Do you want to remove the update?"
@@ -522,8 +522,8 @@ fr:
       reward_title: "For %{minimum} or more"
       reward_deliver_time: "Estimated delivery: %{estimate}"
       backs_to_confirm:
-        one:  "1 backer in time to confirm."
-        other: "%{count} backers in time to confirm."
+        one:  "1 contribution in time to confirm."
+        other: "%{count} contributions in time to confirm."
       title: "Back and receive..."
     send_mail:
       success: "Your project was successfully sent! We'll soon contact you. Thanks a lot!"
@@ -537,12 +537,12 @@ fr:
       reports:
         no_backs: "This project don't have any back yet."
         link_reports: 'Download report of '
-        all_backers: 'all backers'
-        all_backers_without_reward: "all backers that don't select any reward"
-        link_reward: 'Download the report of backers that selected the reward'
+        all_contributions: 'all contributions'
+        all_contributions_without_reward: "all contributions that don't select any reward"
+        link_reward: 'Download the report of contributions that selected the reward'
       menu:
         about: About
-        backers: Backers
+        contributions: Contributions
         comments: Comments
         updates: Updates
         edit: Edit
@@ -556,9 +556,9 @@ fr:
         take_a_look: "Check out the project"
         title: "Be part of it and share this project"
     new:
-      legend_html: "After filling in the form below, you will receive a project page in Draft mode. In this draft you will add the rewards for your backers. You may also share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go on air.<br><br><b>Very Important:</b> <i>Catharsis is cured platform, which means that our board will evaluate the focus, the feasibility and consistency of your project during the Draft. If we understand that your project does not comply with our <a href='https://docs.google.com/a/catarse.me/document/d/1wLDS2lphQ6monovg9rEaTIDcxBD3FRZV9dfGKmajyj8/edit' target='_blank' >selection criteria</a>, it may be refused by the team of curators.</i>"
+      legend_html: "After filling in the form below, you will receive a project page in Draft mode. In this draft you will add the rewards for your contributions. You may also share the page with your friends to collect feedback and sharpen your project even more.<br><br>The information filled in below is not definitive, but remember that the more consistent you are in your project submission, the faster it will go on air.<br><br><b>Very Important:</b> <i>Catharsis is cured platform, which means that our board will evaluate the focus, the feasibility and consistency of your project during the Draft. If we understand that your project does not comply with our <a href='https://docs.google.com/a/catarse.me/document/d/1wLDS2lphQ6monovg9rEaTIDcxBD3FRZV9dfGKmajyj8/edit' target='_blank' >selection criteria</a>, it may be refused by the team of curators.</i>"
       permalink_important: 'Try not to use underline, hyphen etc.'
-      permalink_hint: 'Go simple. Your backers should be able to remember the URL to your project ;)'
+      permalink_hint: 'Go simple. Your contributions should be able to remember the URL to your project ;)'
       name_important: "Do not exceed  50 characters"
       online_days_important: "60 days is the maximum"
       about_important: "Don't make it too long! Indicate links so people can know more about your work"
@@ -566,7 +566,7 @@ fr:
       send_project: "I want to submit my project."
       video_important: "The video must be hosted by Vimeo or Youtube. Paste here the URL!"
       more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
-      first_backers_important: "These people are fundamental to the success of your project."
+      first_contributions_important: "These people are fundamental to the success of your project."
       how_know_important: "Yay! We reached  the final question."
       headline_important: "It's a summary of  your project . 140 characters tops!:D"
       tags_important: "Check other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
@@ -585,7 +585,7 @@ fr:
       facebook: "Have facebook account?"
       blog: "Have a blog about the project?"
       know_us_via: "How did you meet Catarse?"
-      how_works: "How to mobilize backers to raise $ needed for enforcement?"
+      how_works: "How to mobilize contributions to raise $ needed for enforcement?"
       project_warning:
         content_html: "Want to have your project selected? Don't forget to read %{link}."
         help_link: "our guide"
@@ -679,7 +679,7 @@ fr:
 
 
   static:
-    guidelines_backers:
+    guidelines_contributions:
       title: "I want to back a project!"
       subtitle: "Understand step by step how to back a project on Catarse."
       introduction: "Catarse is an excellent way to engage in a cause you believe in"
@@ -700,15 +700,15 @@ fr:
       title_not_funded: "If the project does not achieve the goal, how do I use my credits?"
       not_funded: "You will receive credits  on Catarse. The moment you choose to back another project, on the screen to select the reward, there will have a field to use your credits."
       more_questions: "I'm dying to support a project, is there anything else I need to know?"
-      title_backer: "How do I know that my support was successful?"
-      backer: "You will receive a confirmation email. And stay tuned on the BACKERS tab at the page of the project you backed."
+      title_contribution: "How do I know that my support was successful?"
+      contribution: "You will receive a confirmation email. And stay tuned on the contributionS tab at the page of the project you backed."
       title_rewards: "If the project is funded, how do I get my rewards?"
       rewards: "It is the duty of the project creator to contact you and arrange how to deliver  the chosen reward. If not, you need to send an email to him/her to claim it! If you get no answer ¿ contact us so we can give them an earful = D"
       title_credits: "If the project does not achieve the goal, how do I use my credits?"
       credits: "You will receive credits  on Catarse. The moment you choose to back another project, on the screen to select the reward, there will have a field to use your credits."
       title_money: "What if I don't want to use the credits?"
       money: "No problem! You just need to enter in your profile (My credits) and request a chargeback. If you paid with debit or billet, you¿ll need to open an account at MOIP. If you used a credit card the value will be back on your next bill."
-      other_backers: "I WANT MORE! CAN I HELP  IN OTHER WAYS?"
+      other_contributions: "I WANT MORE! CAN I HELP  IN OTHER WAYS?"
       intro: "Get to know different ways to help projects you believe in"
       other_one: "Bring two other friends to back with the same amount you did"
       other_two: "Spread the word to every one. Tell them how great is the project you backed on Catarse."
@@ -778,7 +778,7 @@ fr:
       title_three: "Let's go live!?"
       step_three: "When your project is ready, it's time to go live and plan your campaign. During this period, you will need to engage as many people as possible to reach your goal."
       title_four: "It's all-or-nothing"
-      step_four: "If your project doesn't reach its goal before time runs out, all backers will receive their pledged amount in credits and later, if they want, can ask for a refund."
+      step_four: "If your project doesn't reach its goal before time runs out, all contributions will receive their pledged amount in credits and later, if they want, can ask for a refund."
       title_requirements: "Requirements to submit your project to Catarse"
       creative: "Creative and Finite"
       collective: "Collective Benefits"
@@ -813,9 +813,9 @@ fr:
       title_four: "What is your deadline for the fundraising?"
       tip_four: "Don't underestimate the work of a campaign. You will have to work hard during the entire period the project is live, so, it's recommended that you don't tire yourself too much in this process. Our recommendation: 40 days of campaign."
       title_five: "Have you thought about the project rewards?"
-      tip_five: "Remember that rewards are public promises. So, think very well when elaborating them, as well as the logistics in delivering them to your backers. Our suggestion: think about immaterial rewards: downloads, experiences, courses e kisses."
+      tip_five: "Remember that rewards are public promises. So, think very well when elaborating them, as well as the logistics in delivering them to your contributions. Our suggestion: think about immaterial rewards: downloads, experiences, courses e kisses."
       title_six: "Is your video ready?"
-      tip_six: "The video is the business card of your project. It's through it that the backers will get in touch with your cause. So, take special care in the script, audio and image quality. HD is recommended."
+      tip_six: "The video is the business card of your project. It's through it that the contributions will get in touch with your cause. So, take special care in the script, audio and image quality. HD is recommended."
       title_seven: "How will you mobilize your network?"
       tip_seven: "You need to have a clear idea on how you will stir your network and convince it to back your project. Distribute your work weekly and change your approach with the network according to how close you are to it."
       title_eight: "How will the money be used?"
@@ -913,10 +913,10 @@ fr:
       whitelist: "Add contact"
       whitelist_long: "Add our email to your contacts"
   notifications:
-    backers:
-      to_backer:
+    contributions:
+      to_contribution:
         subject: "Thank you! Your back for %{project} has been confirmed!"
-        text: "Success! <br />Your back has just been confirmed.<br /><br />Check: %{backer_name}<br />%{backer_value}<br />%{reward}<br /><br />%{project_name}"
+        text: "Success! <br />Your back has just been confirmed.<br /><br />Check: %{contribution_name}<br />%{contribution_value}<br />%{reward}<br /><br />%{project_name}"
     updates:
       subject: "If the league! Update of %{project_name} by %{project_owner}: %{update_title}"
       text: "%{update_title}<br />%{update_text}<br />Comments? Send it on in the project page: <a href='%{project_link}'>%{project_name}</a>."

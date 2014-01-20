@@ -1,35 +1,35 @@
 #page_content
   .container
-    #project_review data-thank-you-path=project_backer_path(project_id: @project.id, id: @backer.id)
+    #project_review data-thank-you-path=project_contribution_path(project_id: @project.id, id: @contribution.id)
       .project_info
         = image_tag @project.display_image, id: 'project_image', alt: @project.name, width: '250px'
         h1= t('.you_are_about_html', link: link_to(@project.name, project_by_slug_path(permalink: @project.permalink)))
         #review_text
-          - if @backer.reward
+          - if @contribution.reward
             .review_content
-              = t('.review_with_reward_html', value: @backer.display_value)
+              = t('.review_with_reward_html', value: @contribution.display_value)
             .reward
-              = @backer.reward.description
+              = @contribution.reward.description
           - else
             .review_content
-              = t('.review_without_reward_html', value: @backer.display_value)
+              = t('.review_without_reward_html', value: @contribution.display_value)
       .clearfix
       .title
         h1= t('.title')
         h2= t('.subtitle')
       .clearfix
-      - if @backer.credits
+      - if @contribution.credits
         #back_with_credits
           .bootstrap-alert
             .alert
-              #credits_notice= t('.credits_notice_html', credits: number_to_currency((current_user.credits - @backer.value), unit: 'R$', precision: 0, delimiter: '.'))
+              #credits_notice= t('.credits_notice_html', credits: number_to_currency((current_user.credits - @contribution.value), unit: 'R$', precision: 0, delimiter: '.'))
       .bootstrap-form
-        = semantic_form_for current_user, url: credits_checkout_project_backer_path(@backer.project, @backer), html: { data: { update_info_path: project_backer_path(project_id: @backer.project.id, id: @backer.id, format: :json) }, id: 'review_form', class: "form-horizontal #{('dont_align' if @backer.credits)}", method: 'put' } do |form|
-          = hidden_field_tag 'project_id', @backer.project.id
-          = hidden_field_tag 'backer_id', @backer.id
-          = hidden_field_tag 'backer_credits', @backer.credits
+        = semantic_form_for current_user, url: credits_checkout_project_contribution_path(@contribution.project, @contribution), html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', class: "form-horizontal #{('dont_align' if @contribution.credits)}", method: 'put' } do |form|
+          = hidden_field_tag 'project_id', @contribution.project.id
+          = hidden_field_tag 'contribution_id', @contribution.id
+          = hidden_field_tag 'contribution_credits', @contribution.credits
           = hidden_field_tag 'payment_method_url', nil
-          - unless @backer.credits
+          - unless @contribution.credits
             = form.inputs do
               fieldset.live_in_brazil
                 = check_box_tag 'live_in_brazil', 'live', params[:locale] == 'pt'
@@ -53,13 +53,13 @@
             fieldset.accept_terms
               = check_box_tag 'accept'
               = label_tag 'accept', t('accept_terms_html', link: link_to(t('terms'), ::Configuration[:terms_url], target: :_blank)), class: 'inline'
-            - if @backer.credits
+            - if @contribution.credits
               = form.actions do
                 .bootstrap-twitter
-                  = form.submit (@backer.credits ? t('.submit.credits') : t('.submit.moip')), class: 'btn', id: 'user_submit'
+                  = form.submit (@contribution.credits ? t('.submit.credits') : t('.submit.moip')), class: 'btn', id: 'user_submit'
 
-        - unless @backer.credits
-          #payment.hide data-update-info-path=project_backer_path(project_id: @backer.project.id, id: @backer.id, format: :json)
+        - unless @contribution.credits
+          #payment.hide data-update-info-path=project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json)
             .title
               h1= t('.choose_payment')
               h2= t('.choose_payment_subtitle')
@@ -68,8 +68,8 @@
               nav#payment_menu
                 - PaymentEngines.engines.each do |engine|
                   = link_to "##{engine[:name]}_payment", id: engine[:name], class: 'selected enabled' , data: {target: "##{engine[:name]}_payment"} do
-                    = t("projects.backers.review.#{engine[:name]}")
+                    = t("projects.contributions.review.#{engine[:name]}")
             .tab_content_container
               - PaymentEngines.engines.each do |engine|
-                div[id="#{engine[:name]}_payment" class="payments_type hide" data-path=engine[:review_path].call(@backer) ]
+                div[id="#{engine[:name]}_payment" class="payments_type hide" data-path=engine[:review_path].call(@contribution) ]
     .clearfix

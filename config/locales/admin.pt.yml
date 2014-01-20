@@ -18,7 +18,7 @@ pt:
         state: 'Estado'
         menu: 'Rel. Financeiros'
         title: 'Relatórios financeiros'
-        backer_report: "Relatório de apoiadores"
+        contribution_report: "Relatório de apoiadores"
         search_report: "Relatório da busca"
         total_projects: 'projetos'
         submit: 'filtrar'
@@ -76,7 +76,7 @@ pt:
         submit: Pesquisar
         has_credits_difference: Discrepância nos créditos
         total_backed: Total de apoios
-        total_backers: apoiadores
+        total_contributions: apoiadores
         total_backs: apoios
         total_users: usuários
         total_credits: créditos
@@ -85,7 +85,7 @@ pt:
         value: Valor
         payer_email: Email do pagamento
         provider: Provedor
-    backers:
+    contributions:
       messages:
         successful:
           confirm: 'Apoio confirmado com sucesso!'
@@ -96,7 +96,7 @@ pt:
           cancel: 'Apoio cancelado com sucesso!'
           push_to_trash: 'Apoio deletado com sucesso!'
       show:
-        backer_info: 'Informações do backer %{key}'
+        contribution_info: 'Informações do contribution %{key}'
         payment_id: 'ID do pagamento'
         payment_method: 'Meio de pagamento'
         payment_fee: 'Taxa do meio de pagamento'
@@ -105,7 +105,7 @@ pt:
         user_email: 'Email utilizado no catarse'
         created_at: 'Iniciado em'
       index:
-        send_refund_request_backer: 'Enviar solicitação de reembolso'
+        send_refund_request_contribution: 'Enviar solicitação de reembolso'
         payer_email: 'Email do meio de pagamento'
         user_email: 'Email utilizado no catarse'
         push_to_trash: 'Deletar apoio'
@@ -114,19 +114,19 @@ pt:
         by_state: 'Estado'
         refund_and_hide: 'Fazer estorno e não exibir apoio.'
         pending_to_refund: 'Estornos pendentes'
-        confirm_backer: 'Confirmar apoio'
-        unconfirm_backer: 'Desconfirmar apoio'
-        refund_backer: 'Estornar apoio'
+        confirm_contribution: 'Confirmar apoio'
+        unconfirm_contribution: 'Desconfirmar apoio'
+        refund_contribution: 'Estornar apoio'
         title: "Gerenciamento de apoios"
         state: 'Estado'
         menu: "Apoios"
         anonymous: Anônimo?
-        backer: Apoio
+        contribution: Apoio
         confirmed: Confirmado?
         credits: "Usou créditos?"
         id: Id
         key: Chave
-        no_backers: "Nenhum apoiador encontrado."
+        no_contributions: "Nenhum apoiador encontrado."
         project: Projeto
         refunded: "Estorno realizado?"
         requested_refund: "Solicitou estorno?"
@@ -134,7 +134,7 @@ pt:
         no_reward: "Sem recompensa"
         submit: Pesquisar
         total_backed: arrecadados
-        total_backers: apoiadores
+        total_contributions: apoiadores
         total_backs: apoios
         total_users: usuários
         user: Usuário
@@ -145,7 +145,7 @@ pt:
         title: "Estatísticas"
         total_users: "Usuários"
         total_backs: "Apoios"
-        total_backers: "Apoiadores"
+        total_contributions: "Apoiadores"
         total_backed: "Arrecadação"
         total_projects: "Projetos"
         total_projects_success: "Bem sucedidos"
@@ -155,7 +155,7 @@ pt:
         current_period: "Últimas 8 sem."
         previous_period: "8 sem. anteriores"
         last_year: "Ano anterior"
-      backers_by_week:
+      contributions_by_week:
         title: "Valor de apoios confirmados por semana"
         current_period: "Últimas 8 sem."
         previous_period: "8 sem. anteriores"

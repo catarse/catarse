@@ -1,2 +1,2 @@
-- collection.each do |backer|
-  = render partial: 'users/project', locals: { project: backer.project, backer: backer }
+- collection.each do |contribution|
+  = render partial: 'users/project', locals: { project: contribution.project, contribution: contribution }

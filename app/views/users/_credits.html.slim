@@ -35,7 +35,7 @@
                   .modal-footer
                     button type='button' data-dismiss="modal" class="btn"
                       = t('credits.modal.reject_btn')
-                    = link_to request_refund_user_backer_path(@user, credit), class: 'btn' do
+                    = link_to request_refund_user_contribution_path(@user, credit), class: 'btn' do
                       = t('credits.modal.accept_btn')
               = link_to t('credits.index.request_refund'), "#requestRefundModal#{credit.id}", data: {toggle: 'modal'}, class: 'link_project'
 .bootstrap-alert

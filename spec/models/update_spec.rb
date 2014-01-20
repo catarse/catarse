@@ -24,14 +24,14 @@ describe Update do
 
     subject { Update.visible_to(user) }
 
-    context "when user is a backer" do
-      let(:user) { create(:backer, state: 'confirmed', project: project).user }
+    context "when user is a contribution" do
+      let(:user) { create(:contribution, state: 'confirmed', project: project).user }
 
       it { should have(2).itens }
     end
 
-    context "when user is not a backer" do
-      let(:user) { create(:backer, state: 'pending', project: project).user }
+    context "when user is not a contribution" do
+      let(:user) { create(:contribution, state: 'pending', project: project).user }
 
       it { should eq([@update]) }
     end
@@ -76,20 +76,20 @@ describe Update do
     it{ should == 2 }
   end
 
-  describe "#notify_backers" do
+  describe "#notify_contributions" do
     before do
       Notification.unstub(:notify)
       Notification.unstub(:notify_once)
       @project = create(:project)
-      backer = create(:backer, state: 'confirmed', project: @project)
-      create(:backer, state: 'confirmed', project: @project, user: backer.user)
+      contribution = create(:contribution, state: 'confirmed', project: @project)
+      create(:contribution, state: 'confirmed', project: @project, user: contribution.user)
       @project.reload
       ActionMailer::Base.deliveries = []
       @update = Update.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
       Notification.should_receive(:notify_once).with(
-        :updates, 
-        backer.user,
-        {update_id: @update.id, user_id: backer.user.id},
+        :updates,
+        contribution.user,
+        {update_id: @update.id, user_id: contribution.user.id},
         {
           project: @update.project,
           project_update: @update,
@@ -100,7 +100,7 @@ describe Update do
     end
 
     it 'should call Notification.notify once' do
-      @update.notify_backers
+      @update.notify_contributions
     end
   end
 end

@@ -7,7 +7,7 @@ App.views.Project.addChild('ProjectSidebar', {
   },
 
   selectReward: function(event){
-    var url = this.$(event.currentTarget).data('new_backer_url');
+    var url = this.$(event.currentTarget).data('new_contribution_url');
     this.navigate(url);
     return false;
   },

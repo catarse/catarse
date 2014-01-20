@@ -31,8 +31,8 @@ pt:
     more_links: "Queremos saber mais"
     more_links_hint: "Queremos saber mais sobre você e seu projeto. Cole aqui os links (site do projeto, facebook, twitter e blogs) para entendermos mais sobre o seu trabalho e o que está planejando para a campanha."
 
-    first_backers: "Lista com os primeiros apoiadores"
-    first_backers_hint: "Para sua campanha ter sucesso, é fundamental trazer a sua rede de contato mais próxima. Por isso, liste aqui quem você acredita que serão seus primeiros 20 apoiadores. Essas pessoas serão fundamentais para ter sucesso no seu projeto."
+    first_contributions: "Lista com os primeiros apoiadores"
+    first_contributions_hint: "Para sua campanha ter sucesso, é fundamental trazer a sua rede de contato mais próxima. Por isso, liste aqui quem você acredita que serão seus primeiros 20 apoiadores. Essas pessoas serão fundamentais para ter sucesso no seu projeto."
 
     how_know: "Como você conheceu o canal?"
     how_know_hint: "Nos conte como você conheceu o canal e o que você espera da gente."

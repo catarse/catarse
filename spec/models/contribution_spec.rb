@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Backer do
+describe Contribution do
   let(:user){ create(:user) }
   let(:failed_project){ create(:project, state: 'online') }
   let(:unfinished_project){ create(:project, state: 'online') }
   let(:successful_project){ create(:project, state: 'online') }
-  let(:unfinished_project_backer){ create(:backer, state: 'confirmed', user: user, project: unfinished_project) }
-  let(:sucessful_project_backer){ create(:backer, state: 'confirmed', user: user, project: successful_project) }
-  let(:not_confirmed_backer){ create(:backer, user: user, project: unfinished_project) }
-  let(:valid_refund){ create(:backer, state: 'confirmed', user: user, project: failed_project) }
+  let(:unfinished_project_contribution){ create(:contribution, state: 'confirmed', user: user, project: unfinished_project) }
+  let(:sucessful_project_contribution){ create(:contribution, state: 'confirmed', user: user, project: successful_project) }
+  let(:not_confirmed_contribution){ create(:contribution, user: user, project: unfinished_project) }
+  let(:valid_refund){ create(:contribution, state: 'confirmed', user: user, project: failed_project) }
 
 
   describe "Associations" do
@@ -29,15 +29,15 @@ describe Backer do
 
   describe ".confirmed_today" do
     before do
-      3.times { create(:backer, state: 'confirmed', confirmed_at: 2.days.ago) }
-      4.times { create(:backer, state: 'confirmed', confirmed_at: 6.days.ago) }
+      3.times { create(:contribution, state: 'confirmed', confirmed_at: 2.days.ago) }
+      4.times { create(:contribution, state: 'confirmed', confirmed_at: 6.days.ago) }
 
       #TODO: need to investigate this timestamp issue when
       # use DateTime.now or Time.now
-      7.times { create(:backer, state: 'confirmed', confirmed_at: Time.now) }
+      7.times { create(:contribution, state: 'confirmed', confirmed_at: Time.now) }
     end
 
-    subject { Backer.confirmed_today }
+    subject { Contribution.confirmed_today }
 
     it { should have(7).items }
   end
@@ -45,45 +45,45 @@ describe Backer do
   describe ".between_values" do
     let(:start_at) { 10 }
     let(:ends_at) { 20 }
-    subject { Backer.between_values(start_at, ends_at) }
+    subject { Contribution.between_values(start_at, ends_at) }
     before do
-      create(:backer, value: 10)
-      create(:backer, value: 15)
-      create(:backer, value: 20)
-      create(:backer, value: 21)
+      create(:contribution, value: 10)
+      create(:contribution, value: 15)
+      create(:contribution, value: 20)
+      create(:contribution, value: 21)
     end
     it { should have(3).itens }
   end
 
   describe ".can_cancel" do
-    subject { Backer.can_cancel}
+    subject { Contribution.can_cancel}
 
-    context "when backer is in time to wait the confirmation" do
+    context "when contribution is in time to wait the confirmation" do
       before do
-        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
+        create(:contribution, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
       end
       it { should have(0).item }
     end
 
-    context "when backer is by bank transfer and is passed the confirmation time" do
+    context "when contribution is by bank transfer and is passed the confirmation time" do
       before do
-        create(:backer, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 2.weekdays_ago)
-        create(:backer, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 0.weekdays_ago)
+        create(:contribution, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 2.weekdays_ago)
+        create(:contribution, state: 'waiting_confirmation', payment_choice: 'DebitoBancario', created_at: 0.weekdays_ago)
       end
       it { should have(1).item }
     end
 
-    context "when we have backers that is passed the confirmation time" do
+    context "when we have contributions that is passed the confirmation time" do
       before do
-        create(:backer, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
-        create(:backer, state: 'waiting_confirmation', created_at: 6.weekdays_ago)
+        create(:contribution, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
+        create(:contribution, state: 'waiting_confirmation', created_at: 6.weekdays_ago)
       end
       it { should have(1).itens }
     end
   end
 
   describe "#update_current_billing_info" do
-    let(:backer) { build(:backer, user: user) }
+    let(:contribution) { build(:contribution, user: user) }
     let(:user) {
       build(:user, {
         address_street: 'test stret',
@@ -96,9 +96,9 @@ describe Backer do
         cpf: 'test doc number'
       })
     }
-    subject{ backer }
+    subject{ contribution }
     before do
-      backer.update_current_billing_info
+      contribution.update_current_billing_info
     end
     its(:payer_name) { should eq(user.display_name) }
     its(:address_street){ should eq(user.address_street) }
@@ -112,47 +112,47 @@ describe Backer do
   end
 
   describe "#update_user_billing_info" do
-    let(:backer) { create(:backer) }
-    let(:user) { backer.user }
-    let(:backer_attributes) {
+    let(:contribution) { create(:contribution) }
+    let(:user) { contribution.user }
+    let(:contribution_attributes) {
       {
-        address_street: backer.address_street,
-        address_number: backer.address_number,
-        address_neighbourhood: backer.address_neighbourhood,
-        address_zip_code: backer.address_zip_code,
-        address_city: backer.address_city,
-        address_state: backer.address_state,
-        phone_number: backer.address_phone_number,
-        cpf: backer.payer_document
+        address_street: contribution.address_street,
+        address_number: contribution.address_number,
+        address_neighbourhood: contribution.address_neighbourhood,
+        address_zip_code: contribution.address_zip_code,
+        address_city: contribution.address_city,
+        address_state: contribution.address_state,
+        phone_number: contribution.address_phone_number,
+        cpf: contribution.payer_document
       }
     }
 
     before do
-      user.should_receive(:update_attributes).with(backer_attributes)
+      user.should_receive(:update_attributes).with(contribution_attributes)
     end
 
-    it("should update user billing info attributes") { backer.update_user_billing_info}
+    it("should update user billing info attributes") { contribution.update_user_billing_info}
   end
 
   describe '#recommended_projects' do
-    subject{ backer.recommended_projects }
-    let(:backer){ create(:backer) }
+    subject{ contribution.recommended_projects }
+    let(:contribution){ create(:contribution) }
 
     context "when we have another projects in the same category" do
       before do
-        @recommended = create(:project, category: backer.project.category)
+        @recommended = create(:project, category: contribution.project.category)
         # add a project successful that should not apear as recommended
-        create(:project, category: backer.project.category, state: 'successful')
+        create(:project, category: contribution.project.category, state: 'successful')
       end
       it{ should eq [@recommended] }
     end
 
     context "when another user has backed the same project" do
       before do
-        @another_backer = create(:backer, project: backer.project)
-        @recommended = create(:backer, user: @another_backer.user).project
+        @another_contribution = create(:contribution, project: contribution.project)
+        @recommended = create(:contribution, user: @another_contribution.user).project
         # add a project successful that should not apear as recommended
-        create(:backer, user: @another_backer.user, project: successful_project)
+        create(:contribution, user: @another_contribution.user, project: successful_project)
         successful_project.update_attributes state: 'successful'
       end
       it{ should eq [@recommended] }
@@ -161,13 +161,13 @@ describe Backer do
 
 
   describe ".can_refund" do
-    subject{ Backer.can_refund.load }
+    subject{ Contribution.can_refund.load }
     before do
-      create(:backer, state: 'confirmed', credits: true, project: failed_project)
+      create(:contribution, state: 'confirmed', credits: true, project: failed_project)
       valid_refund
-      sucessful_project_backer
+      sucessful_project_contribution
       unfinished_project
-      not_confirmed_backer
+      not_confirmed_contribution
       successful_project.update_attributes state: 'successful'
       failed_project.update_attributes state: 'failed'
     end
@@ -175,31 +175,31 @@ describe Backer do
   end
 
   describe "#can_refund?" do
-    subject{ backer.can_refund? }
+    subject{ contribution.can_refund? }
     before do
       valid_refund
-      sucessful_project_backer
+      sucessful_project_contribution
       successful_project.update_attributes state: 'successful'
       failed_project.update_attributes state: 'failed'
     end
 
     context "when project is successful" do
-      let(:backer){ sucessful_project_backer }
+      let(:contribution){ sucessful_project_contribution }
       it{ should be_false }
     end
 
     context "when project is not finished" do
-      let(:backer){ unfinished_project_backer }
+      let(:contribution){ unfinished_project_contribution }
       it{ should be_false }
     end
 
-    context "when backer is not confirmed" do
-      let(:backer){ not_confirmed_backer }
+    context "when contribution is not confirmed" do
+      let(:contribution){ not_confirmed_contribution }
       it{ should be_false }
     end
 
     context "when it's a valid refund" do
-      let(:backer){ valid_refund }
+      let(:contribution){ valid_refund }
       it{ should be_true }
     end
   end
@@ -208,7 +208,7 @@ describe Backer do
     subject{ user.credits.to_f }
     context "when backs are confirmed and not done with credits but project is successful" do
       before do
-        create(:backer, state: 'confirmed', user: user, project: successful_project)
+        create(:contribution, state: 'confirmed', user: user, project: successful_project)
         successful_project.update_attributes state: 'successful'
       end
       it{ should == 0 }
@@ -216,7 +216,7 @@ describe Backer do
 
     context "when backs are confirmed and not done with credits" do
       before do
-        create(:backer, state: 'confirmed', user: user, project: failed_project)
+        create(:contribution, state: 'confirmed', user: user, project: failed_project)
         failed_project.update_attributes state: 'failed'
       end
       it{ should == 10 }
@@ -224,7 +224,7 @@ describe Backer do
 
     context "when backs are done with credits" do
       before do
-        create(:backer, credits: true, state: 'confirmed', user: user, project: failed_project)
+        create(:contribution, credits: true, state: 'confirmed', user: user, project: failed_project)
         failed_project.update_attributes state: 'failed'
       end
       it{ should == 0 }
@@ -232,7 +232,7 @@ describe Backer do
 
     context "when backs are not confirmed" do
       before do
-        create(:backer, user: user, project: failed_project, state: 'pending')
+        create(:contribution, user: user, project: failed_project, state: 'pending')
         failed_project.update_attributes state: 'failed'
       end
       it{ should == 0 }

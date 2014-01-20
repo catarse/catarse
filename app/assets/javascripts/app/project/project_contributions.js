@@ -1,9 +1,9 @@
-App.views.Project.addChild('ProjectBackers', _.extend({
-  el: '#project_backers',
+App.views.Project.addChild('ProjectContributions', _.extend({
+  el: '#project_contributions',
 
   activate: function(){
-    this.$loader = this.$("#backers-loading img");
-    this.$loaderDiv = this.$("#backers-loading");
+    this.$loader = this.$("#contributions-loading img");
+    this.$loaderDiv = this.$("#contributions-loading");
     this.$results = this.$(".results");
     this.path = this.$el.data('path');
     this.filter = {available_to_count: true};
@@ -12,11 +12,11 @@ App.views.Project.addChild('ProjectBackers', _.extend({
   },
 
   events:{
-    "click input[type='radio'][name=backer_state]": "showBackers"
+    "click input[type='radio'][name=contribution_state]": "showContributions"
   },
 
-  showBackers: function(){
-    var state = $('input:radio[name=backer_state]:checked').val();
+  showContributions: function(){
+    var state = $('input:radio[name=contribution_state]:checked').val();
     if(state == 'waiting_confirmation'){
       this.filter = {with_state: 'waiting_confirmation'};
     }

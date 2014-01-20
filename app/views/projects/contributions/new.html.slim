@@ -1,19 +1,19 @@
 #page_content
   .container
-    .backer_content
+    .contribution_content
       .title
         h1= t('.header.title')
         h2= t('.header.subtitle')
       #back_options.bootstrap-form
-        = semantic_form_for @backer, url: @create_url, html: { id: 'backer_form' } do |form|
+        = semantic_form_for @contribution, url: @create_url, html: { id: 'contribution_form' } do |form|
           = form.inputs do
             = hidden_field_tag 'credits', current_user.credits.to_i
             = form.input :referal_link, as: :hidden, input_html: { value: referal_link }
-            = form.label :value, t('formtastic.labels.backer.value')
+            = form.label :value, t('formtastic.labels.contribution.value')
             - if current_user.credits >= 10
               .bootstrap-alert
                 .alert.alert-info
-                  = form.input :credits, hint: t('formtastic.hints.backer.credits', credits: current_user.display_credits).html_safe
+                  = form.input :credits, hint: t('formtastic.hints.contribution.credits', credits: current_user.display_credits).html_safe
               .clearfix
             = form.input :value, required: true, as: :string, label: false,  input_html: { pattern: '\\d+', autocomplete: 'off', data: { rewards: @rewards.map{|r| {id: r.id, minimum_value: r.minimum_value.to_i} }.to_json } }
             .simbol
@@ -26,7 +26,7 @@
                   = render 'anonymous_warning'
           = form.actions do
             .bootstrap-twitter
-              = form.submit t('.submit'), class: 'btn btn-primary btn-large', id: "backer_submit"
+              = form.submit t('.submit'), class: 'btn btn-primary btn-large', id: "contribution_submit"
       #back_info
         #project_info
           .project_name= link_to @project.name, project_by_slug_path(permalink: @project.permalink)

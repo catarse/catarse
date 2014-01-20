@@ -14,7 +14,7 @@
                 th style="width: 200px;"
                   = t('.total_users')
                 th= t('.total_backs')
-                th= t('.total_backers')
+                th= t('.total_contributions')
                 th= t('.total_backed')
                 th= t('.total_projects')
                 th= t('.total_projects_success')
@@ -24,7 +24,7 @@
                 - statistics = collection.first
                 td= statistics.total_users
                 td= statistics.total_backs
-                td= statistics.total_backers
+                td= statistics.total_contributions
                 td= number_to_currency(statistics.total_backed)
                 td= statistics.total_projects
                 td= statistics.total_projects_success
@@ -32,8 +32,8 @@
     .charts
       h1= t('admin.statistics.projects_by_week.title')
       = line_chart ProjectsByPeriod.chart
-      h1= t('admin.statistics.backers_by_week.title')
-      = line_chart BackersByPeriod.chart
+      h1= t('admin.statistics.contributions_by_week.title')
+      = line_chart ContributionsByPeriod.chart
   .clearfix
 
 

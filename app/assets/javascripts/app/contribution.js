@@ -1,11 +1,11 @@
-App.addChild('Backer', _.extend({
-  el: 'form#backer_form',
+App.addChild('Contribution', _.extend({
+  el: 'form#contribution_form',
 
   events: {
-    'change #backer_value' : 'resetReward',
+    'change #contribution_value' : 'resetReward',
     'click input[type=radio]' : 'clickReward',
-    'click #backer_anonymous' : 'clickAnonymous',
-    'change #backer_credits' : 'checkCredits'
+    'click #contribution_anonymous' : 'clickAnonymous',
+    'change #contribution_credits' : 'checkCredits'
   },
 
   checkCredits: function(event){
@@ -43,16 +43,16 @@ App.addChild('Backer', _.extend({
     if(reward){
       var value = this.value.val();
       if(!(/^(\d+)$/.test(value)) || (parseInt(value) < reward.minimum_value)){
-        this.selectReward(this.$('#backer_reward_id'));
+        this.selectReward(this.$('#contribution_reward_id'));
       }
     }
   },
 
   activate: function(){
-    this.value = this.$('#backer_value');
+    this.value = this.$('#contribution_value');
     this.rewards = this.value.data('rewards');
     this.choices = this.$('li.choice');
-    this.credits = this.$('#credits'); 
+    this.credits = this.$('#credits');
     this.selectReward(this.$('input[type=radio]:checked'));
     this.setupForm();
   }

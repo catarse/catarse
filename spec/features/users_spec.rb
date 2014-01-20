@@ -20,7 +20,7 @@ describe "Users" do
   describe "the notification tab" do
     before do
       login
-      @project = create(:backer, user: current_user).project
+      @project = create(:contribution, user: current_user).project
       visit user_path(current_user, locale: :pt)
       click_link 'unsubscribes_link'
     end

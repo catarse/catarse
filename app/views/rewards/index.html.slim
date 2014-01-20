@@ -10,7 +10,7 @@
           = image_tag 'loading.gif'
 
 
-  div[id="reward_#{reward.id}" data-new_backer_url=new_project_backer_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="box #{(can?(:update, reward) ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
+  div[id="reward_#{reward.id}" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="box #{(can?(:update, reward) ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !can?(:update, reward)  ? 'clickable'  : '' )}"]
     - if can?(:update, reward)
 
       .bootstrap-form.bootstrap-twitter 
@@ -22,21 +22,21 @@
             i.icon-pencil.icon-white
 
     h2= t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
-    em= pluralize(reward.backers.with_state('confirmed').count, t('backer_singular'), t('backer_plural'))
+    em= pluralize(reward.contributions.with_state('confirmed').count, t('contribution_singular'), t('contribution_plural'))
     .clearfix
     p
       = reward.display_description
-    - if reward.maximum_backers
-      .maximum_backers.clearfix
+    - if reward.maximum_contributions
+      .maximum_contributions.clearfix
         - if reward.sold_out?
           .sold_out= t('reward.sold_out')
         - else
           .limited= t('reward.limited')
           .remaining
             = reward.display_remaining
-      - in_time_to_confirm = reward.backers.with_state('waiting_confirmation').count
+      - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count
       - if in_time_to_confirm > 0
-        .maximum_backers.in_time_to_confirm.clearfix
+        .maximum_contributions.in_time_to_confirm.clearfix
           .pending= t('projects.rewards.backs_to_confirm', count: in_time_to_confirm)
       .clearfix
     - if reward.days_to_delivery.present?
@@ -48,7 +48,7 @@
       - if reward.has_modification?
         div class="description_version rewardVersioning#{reward.id}"
           p= reward.last_description
-        .maximum_backers.in_time_to_confirm.clearfix
+        .maximum_contributions.in_time_to_confirm.clearfix
           .updated_reward
             span id="rewardVersioning#{reward.id}"
               = 'Veja a versão anterior.'

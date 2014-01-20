@@ -66,9 +66,9 @@
         = link_to '#updates', 'id' => 'updates_link', 'data-target' => '#project_updates' do
           = t('.menu.updates')
           span.count=" (#{@updates_count})"
-        = link_to '#backers', 'id' => 'backers_link', 'data-target' => '#project_backers' do
-          = t('.menu.backers')
-          span.count=" (#{@project.total_backers})"
+        = link_to '#contributions', 'id' => 'contributions_link', 'data-target' => '#project_contributions' do
+          = t('.menu.contributions')
+          span.count=" (#{@project.total_contributions})"
         = link_to '#comments', 'id' => 'comments_link', 'data-target' => '#project_comments' do
           = t('.menu.comments')
           | &nbsp; (
@@ -94,15 +94,15 @@
           .results &nbsp;
           .clearfix
           #updates-loading.loading= image_tag "loading.gif"
-        #project_backers.content.hide[data-path=project_backers_path(project_id: @project.id)]
+        #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
           - if can?(:update, @project)
-            = radio_button_tag(:backer_state, "available_to_count", checked: true)
-            = label_tag(:backer_state, t('projects.project_backers.confirmed'))
-            = radio_button_tag(:backer_state, "waiting_confirmation")
-            = label_tag(:backer_state, t('projects.project_backers.pending'))
+            = radio_button_tag(:contribution_state, "available_to_count", checked: true)
+            = label_tag(:contribution_state, t('projects.project_contributions.confirmed'))
+            = radio_button_tag(:contribution_state, "waiting_confirmation")
+            = label_tag(:contribution_state, t('projects.project_contributions.pending'))
           .results &nbsp;
           .clearfix
-          #backers-loading.loading= image_tag "loading.gif"
+          #contributions-loading.loading= image_tag "loading.gif"
         #project_comments.content.hide
         #project_about.content= render 'project_about'
 
@@ -111,9 +111,9 @@
       .info
         #statistics
           .statistics
-            .item.backers
-              p= @project.total_backers
-              em= t('statistics.backers.subtitle')
+            .item.contributions
+              p= @project.total_contributions
+              em= t('statistics.contributions.subtitle')
             .item.goal
               p= @project.display_pledged
               em= t('statistics.goal.subtitle', total: @project.display_goal).html_safe
@@ -130,7 +130,7 @@
               = t("projects.back_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
           - if @project.online? && !@project.expired?
             #pledge
-              = form_tag(new_project_backer_path(@project), method: :get, id: 'back_project_form') do
+              = form_tag(new_project_contribution_path(@project), method: :get, id: 'back_project_form') do
                 fieldset
                   = submit_tag t('projects.back_project.submit'), disabled: (not @project.online?)
         #creator_profile
@@ -142,7 +142,7 @@
             #bio
               p= @project.user.bio
           #city
-            p.backer= t('count_backed_projects', total: @project.user.total_backed_projects)
+            p.contribution= t('count_backed_projects', total: @project.user.total_backed_projects)
             p.city
               | #{@project.user.address_city}
         .user_social

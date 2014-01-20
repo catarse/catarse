@@ -1,28 +1,28 @@
-- backer = @notification.backer
-|Hi, <strong>#{backer.user.display_name}</strong>!
+- contribution = @notification.contribution
+|Hi, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-|Your pledge to #{link_to(backer.project.name, project_by_slug_url(permalink: backer.project.permalink))} was confirmed by <strong>#{backer.payment_method}</strong>
+|Your pledge to #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} was confirmed by <strong>#{contribution.payment_method}</strong>
 |!
 br
 br
 |Keep this email with you as a receipt.
 br
 br
-|Very important information:<strong> if you paid using a credit card</strong>, the name that will show up in your invoice is #{backer.payment_method}. Unfortunately, credit card operators don't allow #{Configuration[:company_name]}'s name to be shown, ok?
+|Very important information:<strong> if you paid using a credit card</strong>, the name that will show up in your invoice is #{contribution.payment_method}. Unfortunately, credit card operators don't allow #{Configuration[:company_name]}'s name to be shown, ok?
 br
 br
-|Pledged amount: <strong>R$ #{backer.value}</strong>
+|Pledged amount: <strong>R$ #{contribution.value}</strong>
 br
--if backer.reward
-  |Chosen reward: <strong>#{backer.reward.description}</strong>
+-if contribution.reward
+  |Chosen reward: <strong>#{contribution.reward.description}</strong>
 -else
   |No reward chosen, any questions please contact our team on #{mail_to Configuration[:email_contact]}
 br
-|Back key: #{backer.key}
+|Back key: #{contribution.key}
 br
 br
-|If the project is successful on <strong>#{backer.project.expires_at.strftime("%d/%m/%Y")}</strong>, the people responsible for the project will contact you in order to deliver the rewards. This contact will come, usually, a week later, which is the time it takes for us to forward all the backers information to the project owner.
+|If the project is successful on <strong>#{contribution.project.expires_at.strftime("%d/%m/%Y")}</strong>, the people responsible for the project will contact you in order to deliver the rewards. This contact will come, usually, a week later, which is the time it takes for us to forward all the contributions information to the project owner.
 br
 br
 |If the project doesn't reach it's goal, you will receive another email with instructions to:
@@ -32,7 +32,7 @@ br
 |2) ask for a refund.
 br
 br
-|If you want to contact #{backer.project.user.name}, send an email to #{mail_to backer.project.user.email}
+|If you want to contact #{contribution.project.user.name}, send an email to #{mail_to contribution.project.user.email}
 br
 br
 |If you have any other questions, access our #{link_to('FAQ', "#{Configuration[:base_url]}/faq")} or send an email to #{mail_to Configuration[:email_contact]}

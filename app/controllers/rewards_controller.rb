@@ -36,6 +36,6 @@ class RewardsController < ApplicationController
 
   private
   def collection
-    @rewards ||= parent.rewards.includes(:backers)
+    @rewards ||= parent.rewards.includes(:contributions)
   end
 end
