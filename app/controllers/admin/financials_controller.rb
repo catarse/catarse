@@ -1,4 +1,5 @@
 class Admin::FinancialsController < Admin::BaseController
+  layout 'catarse_bootstrap'
   inherit_resources
   defaults  resource_class: Project, collection_name: 'projects', instance_name: 'project'
 
@@ -32,6 +33,7 @@ class Admin::FinancialsController < Admin::BaseController
   end
 
   def collection
-    @projects ||= projects.page(params[:page])
+    @scoped_projects = projects
+    @projects ||= @scoped_projects.page(params[:page])
   end
 end
