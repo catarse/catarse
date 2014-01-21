@@ -76,7 +76,7 @@ describe Update do
     it{ should == 2 }
   end
 
-  describe "#notify_contributions" do
+  describe "#notify_contributors" do
     before do
       Notification.unstub(:notify)
       Notification.unstub(:notify_once)
@@ -100,7 +100,7 @@ describe Update do
     end
 
     it 'should call Notification.notify once' do
-      @update.notify_contributions
+      @update.notify_contributors
     end
   end
 end
