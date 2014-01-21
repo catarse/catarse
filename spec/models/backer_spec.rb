@@ -28,18 +28,11 @@ describe Backer do
   end
 
   describe ".confirmed_today" do
-    before do
-      3.times { create(:backer, state: 'confirmed', confirmed_at: 2.days.ago) }
-      4.times { create(:backer, state: 'confirmed', confirmed_at: 6.days.ago) }
-
-      #TODO: need to investigate this timestamp issue when
-      # use DateTime.now or Time.now
-      7.times { create(:backer, state: 'confirmed', confirmed_at: Time.now) }
-    end
-
-    subject { Backer.confirmed_today }
-
-    it { should have(7).items }
+    let(:backer1) { create(:backer, state: 'confirmed', confirmed_at: '2014-01-14') }
+    let(:backer2) { create(:backer, state: 'confirmed', confirmed_at: '2014-01-15 00:00:00') }
+    let(:backer3) { create(:backer, state: 'confirmed', confirmed_at: '2014-01-15 23:59:59') }
+    subject { Timecop.freeze(Time.zone.local(2014,1,15,21,30)) { Backer.confirmed_today.order(:confirmed_at) } }
+    it { should == [backer2, backer3] }
   end
 
   describe ".between_values" do
