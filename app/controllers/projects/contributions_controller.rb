@@ -26,7 +26,7 @@ class Projects::ContributionsController < ApplicationController
 
   def new
     unless parent.online?
-      flash[:failure] = t('projects.back.cannot_back')
+      flash[:failure] = t('projects.contributions.cannot_contribute')
       return redirect_to :root
     end
 

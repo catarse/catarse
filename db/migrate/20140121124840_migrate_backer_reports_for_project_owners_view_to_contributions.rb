@@ -9,7 +9,7 @@ class MigrateBackerReportsForProjectOwnersViewToContributions < ActiveRecord::Mi
         coalesce(r.id, 0) as reward_id,
         r.description as reward_description,
         b.confirmed_at::date,
-        b.value as back_value,
+        b.value as contribution_value,
         (b.value* (SELECT value::numeric FROM configurations WHERE name = 'catarse_fee') ) as service_fee,
         u.email as user_email,
         u.name as user_name,

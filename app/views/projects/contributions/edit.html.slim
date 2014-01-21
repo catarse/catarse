@@ -19,7 +19,7 @@
         h2= t('.subtitle')
       .clearfix
       - if @contribution.credits
-        #back_with_credits
+        #contribute_with_credits
           .bootstrap-alert
             .alert
               #credits_notice= t('.credits_notice_html', credits: number_to_currency((current_user.credits - @contribution.value), unit: 'R$', precision: 0, delimiter: '.'))

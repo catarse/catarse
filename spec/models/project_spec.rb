@@ -246,7 +246,7 @@ describe Project do
     end
   end
 
-  describe ".backed_by" do
+  describe ".contributed_by" do
     before do
       contribution = create(:contribution, state: 'confirmed')
       @user = contribution.user
@@ -258,7 +258,7 @@ describe Project do
       # Another contribution with different project and same user but not confirmed should not be in result
       create(:contribution, user: @user, state: 'pending')
     end
-    subject{ Project.backed_by(@user.id) }
+    subject{ Project.contributed_by(@user.id) }
     it{ should == [@project] }
   end
 

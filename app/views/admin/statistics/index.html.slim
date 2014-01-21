@@ -13,9 +13,9 @@
               tr
                 th style="width: 200px;"
                   = t('.total_users')
-                th= t('.total_backs')
                 th= t('.total_contributions')
-                th= t('.total_backed')
+                th= t('.total_contributions')
+                th= t('.total_contributed')
                 th= t('.total_projects')
                 th= t('.total_projects_success')
                 th= t('.total_projects_online')
@@ -23,9 +23,9 @@
               tr
                 - statistics = collection.first
                 td= statistics.total_users
-                td= statistics.total_backs
                 td= statistics.total_contributions
-                td= number_to_currency(statistics.total_backed)
+                td= statistics.total_contributions
+                td= number_to_currency(statistics.total_contributed)
                 td= statistics.total_projects
                 td= statistics.total_projects_success
                 td= statistics.total_projects_online

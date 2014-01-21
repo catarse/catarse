@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource new: [ :set_email ], except: [ :projects ]
   inherit_resources
   actions :show, :update, :unsubscribe_update, :request_refund, :set_email, :update_email, :uservoice_gadget
-  respond_to :json, only: [:backs, :projects, :request_refund]
+  respond_to :json, only: [:contributions, :projects, :request_refund]
 
   def uservoice_gadget
     if params[:secret] == ::Configuration[:uservoice_secret_gadget]
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     show!{
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
-      @credits = @user.backs.can_refund
+      @credits = @user.contributions.can_refund
       @subscribed_to_updates = @user.updates_subscription
       @unsubscribes = @user.project_unsubscribes
     }

@@ -7,7 +7,7 @@ describe Users::ContributionsController do
   let(:failed_project){ create(:project, state: 'online') }
   let(:successful_contribution){ create(:contribution, state: 'confirmed', project: successful_project) }
   let(:failed_contribution){ create(:contribution, state: 'confirmed', user: user, project: failed_project) }
-  let(:other_back) { create(:contribution, project: failed_project) }
+  let(:other_contribution) { create(:contribution, project: failed_project) }
   let(:unconfirmed_contribution) { create(:contribution, state: 'pending', user: user, project: failed_project) }
   let(:current_user){ nil }
   let(:format){ 'json' }
@@ -17,7 +17,7 @@ describe Users::ContributionsController do
     successful_contribution
     failed_contribution
     unconfirmed_contribution
-    other_back
+    other_contribution
     successful_project.update_attributes state: 'successful'
     failed_project.update_attributes state: 'failed'
   end
@@ -72,12 +72,12 @@ describe Users::ContributionsController do
 
     context "when current_user is not owner of the contribution" do
       let(:current_user) { create(:user) }
-      let(:user) { other_back.user }
-      before { post :request_refund, { user_id: user.id, id: other_back.id } }
+      let(:user) { other_contribution.user }
+      before { post :request_refund, { user_id: user.id, id: other_contribution.id } }
 
       it do
-        other_back.reload
-        other_back.requested_refund?.should be_false
+        other_contribution.reload
+        other_contribution.requested_refund?.should be_false
       end
 
       it { should redirect_to root_path }

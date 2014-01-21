@@ -35,7 +35,7 @@
 
       .tab_container
         nav#user_profile_menu
-          = link_to t('.tabs.backed_projects'), '#backs', id: 'backed_projects_link', class: 'selected', data: { target: '#user_backed_projects' }
+          = link_to t('.tabs.contributed_projects'), '#contributions', id: 'contributed_projects_link', class: 'selected', data: { target: '#user_contributed_projects' }
           = link_to t('.tabs.created_projects'), '#projects', id: 'created_projects_link', data: { target: '#user_created_projects' }
           - if can? :manage, @user
             = link_to t('.tabs.credits'), '#credits', id: 'credits_link', data: { target: '#user_credits' }
@@ -43,11 +43,11 @@
             = link_to t('.tabs.unsubscribes'), '#unsubscribes', id: 'unsubscribes_link', data: { target: '#user_unsubscribes' }
       .clearfix
       #user_profile_content
-        #user_backed_projects.content[data-path=user_contributions_path(@user)]
+        #user_contributed_projects.content[data-path=user_contributions_path(@user)]
           - if !can? :manage, @user
-            p.empty.hide= t('users.backs.no_backs', name: @user.display_name)
+            p.empty.hide= t('users.contributions.no_contributions', name: @user.display_name)
           - else
-            p.empty.hide= t('users.backs.no_backs_current_user_html', link: ::Configuration[:base_url])
+            p.empty.hide= t('users.contributions.no_contributions_current_user_html', link: ::Configuration[:base_url])
           .results
           .clearfix
           .loading= image_tag "loading.gif"

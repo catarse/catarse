@@ -31,12 +31,12 @@ describe("MixPanel", function() {
     it("should give a mixpanel nametag to user", function() {
       expect(mixpanel.name_tag).wasCalledWith(user.id + '-' + user.name);
     });
-    
+
     it("should indentify user", function() {
       expect(mixpanel.identify).wasCalledWith(user.id);
     });
-  });  
-  
+  });
+
   describe("#trackOnMixPanel", function() {
     var on = jasmine.createSpy().andCallFake(function(event, callback){
       callback();
@@ -69,31 +69,31 @@ describe("MixPanel", function() {
     it("should call track with default options", function() {
       expect(mixpanel.track).wasCalledWith(text, default_options);
     });
-  });  
-  
+  });
+
   describe("#activate", function() {
     beforeEach(function() {
       spyOn(view, "trackUserClickOnProjectsImage");
       spyOn(view, "trackUserClickOnProjectsTitle");
-      spyOn(view, "trackUserClickOnBackButton");
+      spyOn(view, "trackUserClickOnContributeButton");
       spyOn(view, "trackUserClickOnReviewAndMakePayment");
       spyOn(view, "trackUserClickOnAcceptTerms");
       spyOn(view, "trackUserClickOnPaymentButton");
       spyOn(view, "trackUserClickOnReward");
       view.activate();
     });
-    
+
     it("should call all track methods", function() {
       expect(view.trackUserClickOnProjectsImage).wasCalled();
       expect(view.trackUserClickOnProjectsTitle).wasCalled();
-      expect(view.trackUserClickOnBackButton).wasCalled();
+      expect(view.trackUserClickOnContributeButton).wasCalled();
       expect(view.trackUserClickOnReviewAndMakePayment).wasCalled();
       expect(view.trackUserClickOnAcceptTerms).wasCalled();
       expect(view.trackUserClickOnPaymentButton).wasCalled();
       expect(view.trackUserClickOnReward).wasCalled();
     });
-    
-  });  
-  
-});  
+
+  });
+
+});
 

@@ -1,23 +1,23 @@
 .contribution
   - if contribution.anonymous
     img src="/assets/user.png" class="contribution_avatar"
-    .back_info
+    .contribution_info
       p#text
         em.anon=" #{t('.anonymous_contribution')}"
       p#confirmed
         = contribution.confirmed_at
-      p#backed= t('.anonymous_description')
+      p#contributed= t('.anonymous_description')
   - else
     a href=user_path(contribution.user)
       img src=contribution.user.display_image class="contribution_avatar"
-    .back_info
+    .contribution_info
       p#text
         a href=user_path(contribution.user)
          = contribution.user.short_name
       p#confirmed
         = contribution.confirmed? ? contribution.confirmed_at : contribution.created_at
-      p#backed
-        = contribution.user.backs_text
+      p#contributed
+        = contribution.user.contributions_text
   - if current_user and (current_user == @project.user or current_user.admin)
     .reward
       =

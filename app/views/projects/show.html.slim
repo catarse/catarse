@@ -127,12 +127,12 @@
 
           #condition[class="#{@project.display_status}"]
             p
-              = t("projects.back_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
+              = t("projects.contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
           - if @project.online? && !@project.expired?
             #pledge
-              = form_tag(new_project_contribution_path(@project), method: :get, id: 'back_project_form') do
+              = form_tag(new_project_contribution_path(@project), method: :get, id: 'contribute_project_form') do
                 fieldset
-                  = submit_tag t('projects.back_project.submit'), disabled: (not @project.online?)
+                  = submit_tag t('projects.contribute_project.submit'), disabled: (not @project.online?)
         #creator_profile
           h3= t('project_by')
           .avatar = @project.user.display_image_html width: 80, height: 80
@@ -142,7 +142,7 @@
             #bio
               p= @project.user.bio
           #city
-            p.contribution= t('count_backed_projects', total: @project.user.total_backed_projects)
+            p.contribution= t('count_contributed_projects', total: @project.user.total_contributed_projects)
             p.city
               | #{@project.user.address_city}
         .user_social

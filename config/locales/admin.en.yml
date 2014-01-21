@@ -29,9 +29,9 @@ en:
         key: Key
         submit: Search
         has_credits_difference: "Discrepancy in credits"
-        total_backed: backed
+        total_contributed: contributed
+        total_contributors: contributors
         total_contributions: contributions
-        total_backs: backs
         total_users: users
         total_credits: credits
         total_credits_view: "calculated credits"
@@ -63,7 +63,7 @@ en:
         pending_to_refund: 'Pending to refund'
         created_at: 'Created at'
         title: "Contributions management"
-        menu: Backs
+        menu: Contributions
         anonymous: Anonymous?
         confirmed: Confirmed?
         credits: "Used credits?"
@@ -76,9 +76,9 @@ en:
         reward: Reward
         no_reward: "No reward"
         submit: Search
-        total_backed: backed
+        total_contributed: contributed
+        total_contributors: contributors
         total_contributions: contributions
-        total_backs: backs
         total_users: Users
         user: User
         value: Value
@@ -87,9 +87,9 @@ en:
         menu: "Statistics"
         title: "Statistics"
         total_users: "Users"
-        total_backs: "Backs"
         total_contributions: "Contributions"
-        total_backed: "Backed"
+        total_contributors: "Contributors"
+        total_contributed: "Contributed"
         total_projects: "Projects"
         total_projects_success: "Successful"
         total_projects_online: "Online"
@@ -99,7 +99,7 @@ en:
         previous_period: "Previous 8 weeks"
         last_year: "Last year"
       contributions_by_week:
-        title: "Backed value confirmed per week"
+        title: "Contributed value confirmed per week"
         current_period: "Last 8 weeks"
         previous_period: "Previous 8 weeks"
         last_year: "Last year"

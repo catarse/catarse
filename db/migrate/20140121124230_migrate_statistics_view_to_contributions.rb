@@ -5,13 +5,13 @@ class MigrateStatisticsViewToContributions < ActiveRecord::Migration
        CREATE OR REPLACE VIEW statistics AS
        SELECT ( SELECT count(*) AS count
                FROM users) AS total_users,
-        contributions_totals.total_backs, contributions_totals.total_contributions,
-        contributions_totals.total_backed, projects_totals.total_projects,
+        contributions_totals.total_contributions, contributions_totals.total_contributors,
+        contributions_totals.total_contributed, projects_totals.total_projects,
         projects_totals.total_projects_success,
         projects_totals.total_projects_online
-       FROM ( SELECT count(*) AS total_backs,
-                count(DISTINCT contributions.user_id) AS total_contributions,
-                sum(contributions.value) AS total_backed
+       FROM ( SELECT count(*) AS total_contributions,
+                count(DISTINCT contributions.user_id) AS total_contributors,
+                sum(contributions.value) AS total_contributed
                FROM contributions
               WHERE contributions.state::text <> ALL (ARRAY['waiting_confirmation'::character varying::text, 'pending'::character varying::text, 'canceled'::character varying::text, 'deleted'])) contributions_totals,
         ( SELECT count(*) AS total_projects,
