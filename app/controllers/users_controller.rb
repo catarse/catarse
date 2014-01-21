@@ -1,9 +1,13 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  load_and_authorize_resource new: [ :set_email ], except: [ :projects ]
+  load_and_authorize_resource new: [ :set_email ], except: [ :projects]
   inherit_resources
-  actions :show, :update, :unsubscribe_update, :request_refund, :set_email, :update_email, :uservoice_gadget
+  actions :show, :update, :unsubscribe_notifications, :unsubscribe_update, :request_refund, :set_email, :update_email, :uservoice_gadget
   respond_to :json, only: [:backs, :projects, :request_refund]
+
+  def unsubscribe_notifications
+    redirect_to user_path(current_user, anchor: 'unsubscribes')
+  end
 
   def uservoice_gadget
     if params[:secret] == ::Configuration[:uservoice_secret_gadget]
