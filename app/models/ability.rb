@@ -12,7 +12,7 @@ class Ability
       update.project.user_id == current_user.id
     end
     can :see, :updates do |update|
-      !update.exclusive || !current_user.backs.with_state('confirmed').where(project_id: update.project.id).empty?
+      !update.exclusive || !current_user.contributions.with_state('confirmed').where(project_id: update.project.id).empty?
     end
 
     # NOTE: Project authorizations

@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   end
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
-    :medium_name, :display_credits, :display_total_of_backs, :backs_text, :twitter_link, :gravatar_url,
+    :medium_name, :display_credits, :display_total_of_contributions, :contributions_text, :twitter_link, :gravatar_url,
     to: :decorator
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :nickname,
@@ -43,7 +43,6 @@ class User < ActiveRecord::Base
 
   schema_associations
   has_many :oauth_providers, through: :authorizations
-  has_many :backs, class_name: "Contribution"
   has_one :user_total
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
@@ -60,7 +59,7 @@ class User < ActiveRecord::Base
       WHERE contributions.state <> ALL(ARRAY['pending'::character varying::text, 'canceled'::character varying::text]))")
   }
 
-  scope :who_backed_project, ->(project_id) {
+  scope :who_contributed_project, ->(project_id) {
     where("id IN (SELECT user_id FROM contributions WHERE contributions.state = 'confirmed' AND project_id = ?)", project_id)
   }
 
@@ -72,7 +71,7 @@ class User < ActiveRecord::Base
    }
 
   scope :subscribed_to_project, ->(project_id) {
-    who_backed_project(project_id).
+    who_contributed_project(project_id).
     where("id NOT IN (SELECT user_id FROM unsubscribes WHERE project_id = ?)", project_id)
   }
 
@@ -116,8 +115,8 @@ class User < ActiveRecord::Base
     user_total.try(:credits).to_f
   end
 
-  def total_backed_projects
-    user_total.try(:total_backed_projects).to_i
+  def total_contributed_projects
+    user_total.try(:total_contributed_projects).to_i
   end
 
   def facebook_id
@@ -143,8 +142,8 @@ class User < ActiveRecord::Base
     )
   end
 
-  def total_backs
-    backs.confirmed.not_anonymous.count
+  def total_contributions
+    contributions.confirmed.not_anonymous.count
   end
 
   def updates_subscription
@@ -152,13 +151,13 @@ class User < ActiveRecord::Base
   end
 
   def project_unsubscribes
-    backed_projects.map do |p|
+    contributed_projects.map do |p|
       unsubscribes.updates_unsubscribe(p.id)
     end
   end
 
-  def backed_projects
-    Project.backed_by(self.id)
+  def contributed_projects
+    Project.contributed_by(self.id)
   end
 
   def fix_twitter_user

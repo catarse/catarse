@@ -54,6 +54,7 @@ class MigrateProjectTotalsAndProjectFinancialsViewBackerToContribution < ActiveR
   def down
     # project_totals VIEW
     execute <<-SQL
+     DROP VIEW project_financials;
      DROP VIEW project_totals;
      CREATE OR REPLACE VIEW project_totals AS
        SELECT
@@ -70,7 +71,6 @@ class MigrateProjectTotalsAndProjectFinancialsViewBackerToContribution < ActiveR
 
     # project_financials VIEW
     execute <<-SQL
-     DROP VIEW project_financials;
      CREATE OR REPLACE VIEW project_financials AS
         with catarse_fee_percentage as (
           select

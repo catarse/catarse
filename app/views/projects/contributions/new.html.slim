@@ -4,7 +4,7 @@
       .title
         h1= t('.header.title')
         h2= t('.header.subtitle')
-      #back_options.bootstrap-form
+      #contribute_options.bootstrap-form
         = semantic_form_for @contribution, url: @create_url, html: { id: 'contribution_form' } do |form|
           = form.inputs do
             = hidden_field_tag 'credits', current_user.credits.to_i
@@ -27,7 +27,7 @@
           = form.actions do
             .bootstrap-twitter
               = form.submit t('.submit'), class: 'btn btn-primary btn-large', id: "contribution_submit"
-      #back_info
+      #contribution_info
         #project_info
           .project_name= link_to @project.name, project_by_slug_path(permalink: @project.permalink)
           = image_tag @project.display_image, alt: @project.name, class: 'project_image', width: 280
@@ -35,7 +35,7 @@
           .project_expires_at #{@project.time_to_go[:time]} #{@project.time_to_go[:unit]} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
         .clearfix
         .back_faq
-          = render 'back_text'
+          = render 'contribute_text'
       .clearfix
     .clearfix
 

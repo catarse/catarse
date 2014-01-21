@@ -45,7 +45,7 @@ pt:
         approve: 'Aprovar!'
         user_id: 'User ID'
         goal: 'Meta'
-        total_backs: 'Apoios'
+        total_contributions: 'Apoios'
         online_date: 'Entrou no ar'
         pledged: 'Alcançado'
         recommended: 'Recomendado?'
@@ -75,9 +75,9 @@ pt:
         key: Chave
         submit: Pesquisar
         has_credits_difference: Discrepância nos créditos
-        total_backed: Total de apoios
+        total_contributed: Total de apoios
         total_contributions: apoiadores
-        total_backs: apoios
+        total_contributions: apoios
         total_users: usuários
         total_credits: créditos
         total_credits_view: créditos calculados
@@ -133,9 +133,9 @@ pt:
         reward: Recompensa
         no_reward: "Sem recompensa"
         submit: Pesquisar
-        total_backed: arrecadados
+        total_contributed: arrecadados
         total_contributions: apoiadores
-        total_backs: apoios
+        total_contribution: apoios
         total_users: usuários
         user: Usuário
         value: Valor
@@ -144,9 +144,9 @@ pt:
         menu: "Estatísticas"
         title: "Estatísticas"
         total_users: "Usuários"
-        total_backs: "Apoios"
-        total_contributions: "Apoiadores"
-        total_backed: "Arrecadação"
+        total_contributions: "Apoios"
+        total_contributors: "Apoiadores"
+        total_contributed: "Arrecadação"
         total_projects: "Projetos"
         total_projects_success: "Bem sucedidos"
         total_projects_online: "Online"

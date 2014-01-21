@@ -81,11 +81,11 @@ pt:
     goal:
       subtitle: "atingidos de %{total}"
   project_by: "projeto por"
-  tell_about_this_back: "Conte para o mundo sobre o seu apoio!"
-  share_my_backs: "Confira o projeto "
+  tell_about_this_contribution: "Conte para o mundo sobre o seu apoio!"
+  share_my_contributions: "Confira o projeto "
   tell_about_this_project: "Conte para o mundo sobre o seu projeto!"
   share_my_projects: "Confira o projeto "
-  count_backed_projects: "apoiou %{total} projetos"
+  count_contributed_projects: "apoiou %{total} projetos"
   footer:
     titles:
       about: "Sobre nós"
@@ -213,7 +213,7 @@ pt:
   contribution:
     display_confirmed_at: "Há %{time_ago}"
     reward_must_be_from_project: "deve ser do mesmo projeto"
-    should_not_back_if_maximum_contributions_been_reached: "já atingiu seu número máximo de apoiadores"
+    should_not_contribute_if_maximum_contributions_been_reached: "já atingiu seu número máximo de apoiadores"
     value_must_be_at_least_rewards_value: "deve ser pelo menos %{minimum_value} para a recompensa selecionada"
     project_should_be_online: "Você não pode apoiar um projeto que não está no ar"
   project_plural: projetos
@@ -233,7 +233,7 @@ pt:
       reject_btn: "Não, desejo manter meus créditos"
       accept_btn: "Sim, desejo solicitar o reembolso do meu apoio"
     index:
-      back_date: "Data do apoio"
+      contribution_date: "Data do apoio"
       current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."
       important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
       project: Projeto
@@ -257,7 +257,7 @@ pt:
     index:
       title: "Páginas curadas"
     show:
-      backed: levantados
+      contributed: levantados
       reached: atingido
   error: "Ooops! Ocorreu um erro. Por favor, tente novamente."
   explore:
@@ -324,8 +324,8 @@ pt:
   found_plural: Encontrados
   found_singular: Encontrado
   here: aqui
-  i_backed: "Eu apoiei o projeto %{name} no @catarse"
-  i_just_backed: "Eu acabei de apoiar o projeto %{name} no @catarse"
+  i_contributed: "Eu apoiei o projeto %{name} no @catarse"
+  i_just_contributed: "Eu acabei de apoiar o projeto %{name} no @catarse"
   layouts:
     login:
       login_with_facebook: "entre com sua conta do facebook"
@@ -399,7 +399,7 @@ pt:
       when: em
     admin_fields:
       title: "Campos para o admin"
-    back_project:
+    contribute_project:
       display_status:
         reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
         not_reached_goal: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
@@ -431,7 +431,7 @@ pt:
         no_credits: "Você não possui créditos suficientes para realizar este apoio."
         success: "Seu apoio foi realizado com sucesso. Muito obrigado!"
       new:
-        cannot_back: "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
+        cannot_contribute: "Não é possível apoiar este projeto no momento. Por favor, apoie outros projetos."
         header:
           subtitle: "Você está a poucos passos de fazer a diferença e se tornar parte deste projeto."
           title: "Oohh yeah!"
@@ -521,14 +521,14 @@ pt:
       reward: Recompensa
       submit: Pesquisar
       title: "Gerenciamento de apoios"
-      total_backed: arrecadados
-      total_contributions: apoiadores
-      total_backs: apoios
+      total_contributed: arrecadados
+      total_contributors: apoiadores
+      total_contributions: apoios
       total_users: usuários
       user: Usuário
       value: Valor
     project:
-      backed: levantados
+      contributed: levantados
       reached: atingido
     project_contributions:
       empty: "Ninguém apoiou este projeto ainda. Que tal ser o primeiro?"
@@ -552,7 +552,7 @@ pt:
       edit_reward: "Editar recompensa"
       reward_title: "Para %{minimum} ou mais"
       reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
-      backs_to_confirm:
+      contributions_to_confirm:
         one: "1 apoio em prazo de confirmação."
         other: "%{count} apoios em prazo de confirmação."
       title: "Apoie e ganhe..."
@@ -566,7 +566,7 @@ pt:
       no_rewards_warning_title: 'Crie aqui suas recompensas'
       no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
       reports:
-        no_backs: 'Seu projeto ainda não tem nenhum apoio.'
+        no_contributions: 'Seu projeto ainda não tem nenhum apoio.'
         link_reports: 'Baixar relatório de todos os apoiadores'
         all_contributions: 'todos os apoiadores'
         all_contributions_without_reward: 'Baixar relatório de todos os apoiadores que não selecionaram uma recompensa'
@@ -734,7 +734,7 @@ pt:
         user_id: "Usuário"
         goal: "Meta"
         pledged: "Alcançado"
-        total_backs: "Apoios"
+        total_contributions: "Apoios"
         recommended: "Recomendar"
         online_date: "Publicação"
         expires_at: "Término"
@@ -923,7 +923,7 @@ pt:
       title: "Termos de uso"
   terms: "termos de uso"
   user:
-    backs_text:
+    contributions_text:
       many: "Apoiou este e mais outros %{total} projetos"
       one: "Apoiou somente este projeto até agora"
       two: "Apoiou este e mais 1 outro projeto"
@@ -937,7 +937,7 @@ pt:
     show:
       attention: "Atenção"
       tabs:
-        backed_projects: "Projetos apoiados"
+        contributed_projects: "Projetos apoiados"
         created_projects: "Projetos criados"
         comments: Comentários
         credits: Créditos
@@ -952,10 +952,10 @@ pt:
       refunded: "Reembolsado"
       requested_refund: "Estorno solicitado"
       waiting_confirmation: "Aguardando Confirmação"
-    backs:
+    contributions:
       anonymous: "Apoio anônimo."
-      no_backs: "%{name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D"
-      no_backs_current_user_html: "Você ainda não apoiou nenhum projeto. Que tal <a href=\"/\">começar agora</a>?"
+      no_contributions: "%{name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D"
+      no_contributions_current_user_html: "Você ainda não apoiou nenhum projeto. Que tal <a href=\"/\">começar agora</a>?"
       no_reward: "Você não selecionou nenhuma recompensa"
       title: "Projetos que %{name} já apoiou"
       title_current_user: "Projetos que já apoiei"

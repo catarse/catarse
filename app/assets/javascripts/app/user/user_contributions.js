@@ -1,5 +1,5 @@
 App.views.User.addChild('UserContributions', _.extend({
-  el: '#user_backed_projects',
+  el: '#user_contributed_projects',
 
   activate: function(){
     this.$loader = this.$(".loading img");

@@ -2,10 +2,10 @@
 |Hi, #{contribution.user.name}!
 br
 br
-|Unfortunately the project #{link_to(contribution.project.name, "#{Configuration[:base_url]}/projects/#{contribution.project.to_param}")} that you backed did not reach its goal and wasn't funded on #{Configuration[:company_name]}.
+|Unfortunately the project #{link_to(contribution.project.name, "#{Configuration[:base_url]}/projects/#{contribution.project.to_param}")} that you contributed did not reach its goal and wasn't funded on #{Configuration[:company_name]}.
 br
 br
-|Due to this, you received #{contribution.display_value} in credits to back other projects. You can explore more #{contribution.project.category} projects in #{link_to("#{Configuration[:base_url]}/explore##{contribution.project.category.to_s.parameterize}", "#{Configuration[:base_url]}/explore##{contribution.project.category.to_s.parameterize}")}
+|Due to this, you received #{contribution.display_value} in credits to contribute other projects. You can explore more #{contribution.project.category} projects in #{link_to("#{Configuration[:base_url]}/explore##{contribution.project.category.to_s.parameterize}", "#{Configuration[:base_url]}/explore##{contribution.project.category.to_s.parameterize}")}
 br
 br
 |We selected some projects suggestions specially for you:
@@ -24,7 +24,7 @@ br
 |Back key: #{contribution.key}
 br
 br
-|If you choose to be refunded, remember that, as stated on  #{link_to("Termos de Uso do #{Configuration[:company_name]}","#{Configuration[:base_url]}/terms")}, if you backed using a credit card, the value will only be returned in the next card bill. If you paid using bank transfer, we will send you an email explaining all the steps to get you money back.
+|If you choose to be refunded, remember that, as stated on  #{link_to("Termos de Uso do #{Configuration[:company_name]}","#{Configuration[:base_url]}/terms")}, if you contributed using a credit card, the value will only be returned in the next card bill. If you paid using bank transfer, we will send you an email explaining all the steps to get you money contribute.
 br
 br
 |If, for any reason, you want to contact #{contribution.project.user.display_name}, send an email to #{mail_to contribution.project.user.email}.

@@ -37,7 +37,7 @@
       - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count
       - if in_time_to_confirm > 0
         .maximum_contributions.in_time_to_confirm.clearfix
-          .pending= t('projects.rewards.backs_to_confirm', count: in_time_to_confirm)
+          .pending= t('projects.rewards.contributions_to_confirm', count: in_time_to_confirm)
       .clearfix
     - if reward.days_to_delivery.present?
       div class="reward_deliver_at"

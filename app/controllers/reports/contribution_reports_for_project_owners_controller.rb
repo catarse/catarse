@@ -17,7 +17,7 @@ class Reports::ContributionReportsForProjectOwnersController < Reports::BaseCont
       select(%Q{
         reward_description as "#{I18n.t('contribution_report_to_project_owner.reward_description')}",
         confirmed_at as "#{I18n.t('contribution_report_to_project_owner.confirmed_at')}",
-        back_value as "#{I18n.t('contribution_report_to_project_owner.value')}",
+        contribution_value as "#{I18n.t('contribution_report_to_project_owner.value')}",
         service_fee as "#{I18n.t('contribution_report_to_project_owner.service_fee')}",
         user_name as "#{I18n.t('contribution_report_to_project_owner.user_name')}",
         user_email as "#{I18n.t('contribution_report_to_project_owner.user_email')}",

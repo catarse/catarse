@@ -12,10 +12,10 @@
             = t('.moip_message', code: @contribution.payment_id).html_safe
             br
             br
-          = t("projects.back_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
+          = t("projects.contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
         .share
             h2= t('.text_subtitle')
-            = link_to "http://twitter.com/?status=#{t('i_just_backed', name: @project.name)} #{project_by_slug_url(permalink: @project.permalink)}", target: :_blank do
+            = link_to "http://twitter.com/?status=#{t('i_just_contributed', name: @project.name)} #{project_by_slug_url(permalink: @project.permalink)}", target: :_blank do
               = image_tag 'catarse/icon-tw.png', title: 'Twitter'
             = link_to "http://www.facebook.com/share.php?u=#{project_by_slug_url(permalink: @project.permalink)}", target: :_blank do
               = image_tag 'catarse/icon-fb.png', title: 'Facebook'

@@ -1,6 +1,6 @@
 class Users::ContributionsController < ApplicationController
   inherit_resources
-  defaults resource_class: Contribution, collection_name: 'backs', instance_name: 'back'
+  defaults resource_class: Contribution
   belongs_to :user
   actions :index
 
@@ -22,8 +22,8 @@ class Users::ContributionsController < ApplicationController
 
   protected
   def collection
-    @backs = end_of_association_chain.available_to_display.order("created_at DESC, confirmed_at DESC")
-    @backs = @backs.not_anonymous.with_state('confirmed') unless can? :manage, @user
-    @backs = @backs.includes(:user, :reward, project: [:user, :category, :project_total]).page(params[:page]).per(10)
+    @contributions = end_of_association_chain.available_to_display.order("created_at DESC, confirmed_at DESC")
+    @contributions = @contributions.not_anonymous.with_state('confirmed') unless can? :manage, @user
+    @contributions = @contributions.includes(:user, :reward, project: [:user, :category, :project_total]).page(params[:page]).per(10)
   end
 end

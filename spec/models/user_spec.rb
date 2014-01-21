@@ -8,7 +8,7 @@ describe User do
   let(:facebook_provider){ create :oauth_provider, name: 'facebook' }
 
   describe "associations" do
-    it{ should have_many :backs }
+    it{ should have_many :contributions }
     it{ should have_many :projects }
     it{ should have_many :notifications }
     it{ should have_many :updates }
@@ -128,8 +128,8 @@ describe User do
     it{ should == [@u] }
   end
 
-  describe ".who_backed_project" do
-    subject{ User.who_backed_project(successful_project.id) }
+  describe ".who_contributed_project" do
+    subject{ User.who_contributed_project(successful_project.id) }
     before do
       @contribution = create(:contribution, state: 'confirmed', project: successful_project)
       create(:contribution, state: 'confirmed', project: successful_project, user: @contribution.user)
@@ -169,10 +169,10 @@ describe User do
     its(:facebook_link){ should == 'http://facebook.com/test' }
   end
 
-  describe "#total_backed_projects" do
+  describe "#total_contributed_projects" do
     let(:user) { create(:user) }
     let(:project) { create(:project) }
-    subject { user.total_backed_projects }
+    subject { user.total_contributed_projects }
 
     before do
       create(:contribution, state: 'confirmed', user: user, project: project)
@@ -244,8 +244,8 @@ describe User do
     it{ should == [@u1]}
   end
 
-  describe "#backed_projects" do
-    subject{user.backed_projects}
+  describe "#contributed_projects" do
+    subject{user.contributed_projects}
     before do
       @p1 = create(:project)
       create(:contribution, user: user, project: @p1)
