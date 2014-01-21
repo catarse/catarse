@@ -158,7 +158,7 @@ describe ProjectObserver do
     end
   end
 
-  describe "notify_contributions" do
+  describe "notify_contributors" do
 
     context "when project is successful" do
       let(:project){ create(:project, goal: 30, online_days: -7, state: 'online') }

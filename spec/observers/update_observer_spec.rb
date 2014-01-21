@@ -7,7 +7,7 @@ describe UpdateObserver do
       let(:update) { build(:update) }
 
       it "should satisfy expectations" do
-        update.should_receive(:notify_contributions)
+        update.should_receive(:notify_contributors)
         update.save
       end
     end
