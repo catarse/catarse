@@ -53,7 +53,7 @@ class Ability
       current_user.persisted?
     end
 
-    can [:update, :credits, :manage, :update_password, :update_email], :users  do |user|
+    can [:update, :credits, :manage, :update_password, :update_email, :unsubscribe_notifications], :users  do |user|
       current_user == user
     end
 
