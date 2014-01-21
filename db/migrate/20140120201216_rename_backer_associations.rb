@@ -1,4 +1,4 @@
-class RenamaeBackerAssociations < ActiveRecord::Migration
+class RenameBackerAssociations < ActiveRecord::Migration
   def change
     rename_column :notifications, :backer_id, :contribution_id
     rename_column :payment_notifications, :backer_id, :contribution_id
