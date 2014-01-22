@@ -106,7 +106,7 @@ describe Project do
     it { should have(3).itens }
   end
 
-  describe "by_permalink" do
+  describe ".by_permalink" do
     context "when project is deleted" do
       before do
         @p = create(:project, permalink: 'foo', state: 'deleted')
@@ -315,6 +315,19 @@ describe Project do
     end
     subject{ Project.from_channels([channel.id]) }
     it{ should == [@p] }
+  end
+
+  describe "#state_warning_template" do
+    subject{ project.state_warning_template }
+    context "when project is in analysis" do
+      let(:project){ Project.new state: 'in_analysis' }
+      it{ should == 'in_analysis_warning' }
+    end
+
+    context "when project is a draft" do
+      let(:project){ Project.new state: 'draft' }
+      it{ should == 'draft_warning' }
+    end
   end
 
   describe '#reached_goal?' do

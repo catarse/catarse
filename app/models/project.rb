@@ -178,6 +178,10 @@ class Project < ActiveRecord::Base
     expired? && !reached_goal?
   end
 
+  def state_warning_template
+    "#{state}_warning"
+  end
+
   private
   def self.between_dates(attribute, starts_at, ends_at)
     return scoped unless starts_at.present? && ends_at.present?
