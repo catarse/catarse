@@ -5,14 +5,6 @@ class Channels::Admin::PostsController < Admin::BaseController
   inherit_resources
   defaults resource_class: ChannelPost
 
-  def create
-    create! { channels_admin_posts_path }
-  end
-
-  def update
-    update! { channels_admin_posts_path }
-  end
-
   def begin_of_association_chain
     channel
   end
