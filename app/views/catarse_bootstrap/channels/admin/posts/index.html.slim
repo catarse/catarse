@@ -39,3 +39,5 @@
                 li= link_to t('channels.admin.table.destroy_action'), channels_admin_post_path(resource), method: :delete, data: { confirm: t('channels.admin.confirmations.destroy') }
 
   = paginate collection
+
+= render 'shared/footer_channel'
