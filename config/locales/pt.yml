@@ -701,11 +701,11 @@ pt:
         participate: "Para participar"
         details: "Últimos detalhes"
     admin:
-      posts_menu: 'Gerenciar nóvidades'
+      posts_menu: 'Gerenciar Novidades'
       confirmations:
         destroy: 'Você tem certeza que deseja deletar?'
       posts:
-        save_submit: 'Salvar Novidade'
+        save_submit: 'SALVAR'
         index:
           title: 'Gerenciamento: Novidades'
       followers:
