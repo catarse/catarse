@@ -8,5 +8,5 @@ br
 |Veja o projeto: #{link_to @notification.project.name, project_by_slug_url(permalink: @notification.project.permalink)}
 br/
 br/
-| #{link_to 'Descadastrar', user_url(user, anchor: 'unsubscribes')} o recebimento de novidades desse projeto
+| #{link_to 'Descadastrar', unsubscribe_notifications_user_url(user)} o recebimento de novidades desse projeto
 

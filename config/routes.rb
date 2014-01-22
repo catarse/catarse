@@ -94,6 +94,9 @@ Catarse::Application.routes.draw do
   end
   resources :users do
     resources :projects, controller: 'users/projects', only: [ :index ]
+    member do
+      get :unsubscribe_notifications
+    end
     collection do
       get :uservoice_gadget
     end
