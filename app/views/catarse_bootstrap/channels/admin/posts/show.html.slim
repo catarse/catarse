@@ -1,19 +1,16 @@
 = render 'shared/header_channel'
 = content_for :title, channel.name
 
-.row
-  br/
-  br/
-  .large-2.columns
-    = link_to 'Voltar para listagem', channels_admin_posts_path
-  .large-2.columns.right
-    - if resource.visible
-      li= link_to t('channels.admin.table.unpublish_action'), channels_admin_post_path(resource, channel_post: { visible: false }), method: :put, class: [:button, :action]
-    - else
-      li= link_to t('channels.admin.table.publish_action'), channels_admin_post_path(resource, channel_post: { visible: true }), method: :put, class: [:button, :action]
-
 section.line-box
   .row
+    .large-2.columns
+      = link_to 'Voltar para listagem', channels_admin_posts_path
+    .large-2.columns.right
+      - if resource.visible
+        = link_to t('channels.admin.table.unpublish_action'), channels_admin_post_path(resource, channel_post: { visible: false }), method: :put, class: [:button, :action, :medium]
+      - else
+        = link_to t('channels.admin.table.publish_action'), channels_admin_post_path(resource, channel_post: { visible: true }), method: :put, class: [:button, :action, :medium]
+
     .large-12.columns
       .presentation
         h1.channel-title
