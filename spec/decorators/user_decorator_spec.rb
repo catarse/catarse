@@ -75,13 +75,13 @@ describe UserDecorator do
     its(:display_credits) { should == 'R$ 0'}
   end
 
-  describe "#display_total_of_backs" do
+  describe "#display_total_of_contributions" do
     subject { user = create(:user) }
-    context "with confirmed backs" do
+    context "with confirmed contributions" do
       before do
-        create(:backer, state: 'confirmed', user: subject, value: 500.0)
+        create(:contribution, state: 'confirmed', user: subject, value: 500.0)
       end
-      its(:display_total_of_backs) { should == 'R$ 500'}
+      its(:display_total_of_contributions) { should == 'R$ 500'}
     end
   end
 end

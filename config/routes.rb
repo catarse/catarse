@@ -66,7 +66,7 @@ Catarse::Application.routes.draw do
   get "/explore" => "explore#index", as: :explore
 
   namespace :reports do
-    resources :backer_reports_for_project_owners, only: [:index]
+    resources :contribution_reports_for_project_owners, only: [:index]
   end
 
   resources :projects do
@@ -76,7 +76,7 @@ Catarse::Application.routes.draw do
         post 'sort'
       end
     end
-    resources :backers, controller: 'projects/backers' do
+    resources :contributions, controller: 'projects/contributions' do
       member do
         put 'credits_checkout'
       end
@@ -100,7 +100,7 @@ Catarse::Application.routes.draw do
     collection do
       get :uservoice_gadget
     end
-    resources :backers, controller: 'users/backers', only: [:index] do
+    resources :contributions, controller: 'users/contributions', only: [:index] do
       member do
         get :request_refund
       end
@@ -128,7 +128,7 @@ Catarse::Application.routes.draw do
     resources :statistics, only: [ :index ]
     resources :financials, only: [ :index ]
 
-    resources :backers, only: [ :index, :update, :show ] do
+    resources :contributions, only: [ :index, :update, :show ] do
       member do
         put 'confirm'
         put 'pendent'
@@ -142,7 +142,7 @@ Catarse::Application.routes.draw do
     resources :users, only: [ :index ]
 
     namespace :reports do
-      resources :backer_reports, only: [ :index ]
+      resources :contribution_reports, only: [ :index ]
     end
   end
 

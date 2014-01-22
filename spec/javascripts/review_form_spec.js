@@ -35,7 +35,7 @@ describe("ReviewForm", function() {
         spyOn(view, "$").andReturn($inputs);
         valid = view.validate();
       });
-      
+
       it("should look only for visible elements", function() {
         expect(view.$).wasCalledWith('input:visible');
       });
@@ -43,7 +43,7 @@ describe("ReviewForm", function() {
       it("should return false", function() {
         expect(valid).toEqual(false);
       });
-    });  
+    });
 
     describe("when all inputs are valid", function() {
       beforeEach(function() {
@@ -53,12 +53,12 @@ describe("ReviewForm", function() {
       it("should return true", function() {
         expect(view.validate()).toEqual(true);
       });
-    });  
-  });  
+    });
+  });
 
   describe("#acceptTerms", function() {
     beforeEach(function() {
-      spyOn(view, "updateBacker");
+      spyOn(view, "updateContribution");
     });
 
     describe("when validate is true", function() {
@@ -67,22 +67,22 @@ describe("ReviewForm", function() {
         view.acceptTerms();
       });
 
-      it("should call updateBacker", function() {
-        expect(view.updateBacker).wasCalled();
+      it("should call updateContribution", function() {
+        expect(view.updateContribution).wasCalled();
       });
-    });  
-    
+    });
+
     describe("when validate is false", function() {
       beforeEach(function() {
         spyOn(view, "validate").andReturn(false);
         view.acceptTerms();
       });
 
-      it("should not call updateBacker", function() {
-        expect(view.updateBacker).wasNotCalled();
+      it("should not call updateContribution", function() {
+        expect(view.updateContribution).wasNotCalled();
       });
-    });  
-  });  
+    });
+  });
 
   describe("#invalid", function() {
     var input = { addClass: function(){} };
@@ -96,12 +96,12 @@ describe("ReviewForm", function() {
     it("should get event currentTarget", function() {
        expect(view.$).wasCalledWith('error input');
     });
-    
+
     it("should add class to input", function() {
       expect(input.addClass).wasCalledWith('error');
     });
-  });  
-  
+  });
+
   describe("#checkInput", function() {
     var input = { removeClass: function(){} };
 
@@ -109,7 +109,7 @@ describe("ReviewForm", function() {
       spyOn(input, "removeClass");
       spyOn(view, "$").andReturn(input);
     });
-    
+
     describe("when event.currentTarget.checkValidity is false", function() {
       var currentTarget = { checkValidity: function(){ return false; } };
       beforeEach(function() {
@@ -134,7 +134,7 @@ describe("ReviewForm", function() {
       it("should remove class to input", function() {
         expect(input.removeClass).wasCalledWith('error');
       });
-    });  
-  });  
+    });
+  });
 });
 

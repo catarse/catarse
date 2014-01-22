@@ -1,0 +1,48 @@
+- contribution = @notification.contribution
+|Hi, #{contribution.user.name}!
+br
+br
+  |The project #{link_to(contribution.project.name, "#{Configuration[:base_url]}/projects/#{contribution.project.to_param}")} that you contributed was funded successfully on #{Configuration[:company_name].downcase}! Time to celebrate o/
+br
+br
+|The project had, including you, #{contribution.project.total_contributions} marvellous contributions, raised #{contribution.project.display_pledged} and reached #{contribution.project.progress}% of its goal =D
+br
+br
+|An important reminder: #{Configuration[:company_name]}'s team takes up to 3 days to pass the contact info of all contributions to the project producers. Therefore, the project's owner may take a few days to contact you about the rewards, ok?
+br
+br
+|Meanwhile, share this success with the world!
+br
+br
+- fb_img = "<img src=\"#{Configuration[:base_url]}/assets/auth/facebook_64.png\" title='Facebook' class='social' />".html_safe
+== raw link_to(fb_img, "http://www.facebook.com/share.php?u=#{Configuration[:base_url]}/projects/#{contribution.project.to_param}&t=Uhuu! The project '#{contribution.project.name}', that I contributed, was successfully funded on #{Configuration[:company_name]}!" , :target => :_blank)
+- twitter_img = "<img src='#{Configuration[:base_url]}/assets/auth/twitter_64.png' title='Twitter' class='social' />".html_safe
+== raw link_to(twitter_img,"http://twitter.com/?status=#{"Uhuu! The project '#{contribution.project.name}', that I contributed, was successful on @#{Configuration[:twitter_username]}! #{project_by_slug_url(permalink: contribution.project.permalink)}"}", :target => :_blank)
+br
+br
+strong
+  |Important information about your pledge (that will help to clear any doubts):
+  br
+  br
+  |Pledged amount: #{contribution.value}
+  br
+  - if contribution.reward
+    |Choosen reward value: #{contribution.reward.minimum_value}
+    br
+    |Choosen reward: #{contribution.reward.description}
+    br
+  |Pledge date: #{contribution.created_at.strftime("%d/%m/%Y")}
+  br
+  |Key: #{contribution.key}
+  br
+  br
+|If you want to talk to #{contribution.project.user.name}, send an email to #{mail_to contribution.project.user.email}
+br
+br
+|If you have any other questions, access our #{link_to('FAQ', "#{Configuration[:base_url]}/faq")} or send an email to #{mail_to Configuration[:email_contact]}
+br
+br
+|A big hug,
+br
+br
+|#{Configuration[:company_name]} team
