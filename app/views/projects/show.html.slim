@@ -22,26 +22,7 @@
 #page_content
   .container
 
-    - if @project.draft?
-      = render "draft_warning"
-
-    - if @project.in_analysis?
-      = render "analysis_warning"
-
-    - if @project.rejected?
-      = render "rejected_warning"
-
-    - if @project.online? && can?(:update, @project)
-      = render "online_warning"
-
-    - if @project.waiting_funds? && can?(:update, @project)
-      = render "waiting_funds_warning"
-
-    - if @project.successful? && can?(:update, @project)
-      = render "successful_warning"
-
-    - if @project.failed? && can?(:update, @project)
-      = render "failed_warning"
+    = render @project.state_warning
 
     #project_description
     .project_image
