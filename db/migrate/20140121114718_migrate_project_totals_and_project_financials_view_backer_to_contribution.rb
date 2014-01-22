@@ -58,15 +58,15 @@ class MigrateProjectTotalsAndProjectFinancialsViewBackerToContribution < ActiveR
      DROP VIEW project_totals;
      CREATE OR REPLACE VIEW project_totals AS
        SELECT
-         backers.project_id,
-         sum(backers.value) AS pledged,
-         (sum(backers.value)/projects.goal)*100 as progress,
-         sum(backers.payment_service_fee) AS total_payment_service_fee,
+         contributions.project_id,
+         sum(contributions.value) AS pledged,
+         (sum(contributions.value)/projects.goal)*100 as progress,
+         sum(contributions.payment_service_fee) AS total_payment_service_fee,
         count(*) AS total_backers
-      FROM backers
-      JOIN projects ON backers.project_id = projects.id
-      WHERE (backers.state in ('confirmed', 'refunded', 'requested_refund'))
-      GROUP BY backers.project_id, projects.goal;
+      FROM contributions
+      JOIN projects ON contributions.project_id = projects.id
+      WHERE (contributions.state in ('confirmed', 'refunded', 'requested_refund'))
+      GROUP BY contributions.project_id, projects.goal;
       SQL
 
     # project_financials VIEW

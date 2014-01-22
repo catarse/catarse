@@ -41,10 +41,10 @@ class MigrateStatisticsViewToContributions < ActiveRecord::Migration
         projects_totals.total_projects_success,
         projects_totals.total_projects_online
        FROM ( SELECT count(*) AS total_backs,
-                count(DISTINCT backers.user_id) AS total_backers,
-                sum(backers.value) AS total_backed
-               FROM backers
-              WHERE backers.state::text <> ALL (ARRAY['waiting_confirmation'::character varying::text, 'pending'::character varying::text, 'canceled'::character varying::text, 'deleted'])) backers_totals,
+                count(DISTINCT contributions.user_id) AS total_backers,
+                sum(contributions.value) AS total_backed
+               FROM contributions
+              WHERE contributions.state::text <> ALL (ARRAY['waiting_confirmation'::character varying::text, 'pending'::character varying::text, 'canceled'::character varying::text, 'deleted'])) backers_totals,
         ( SELECT count(*) AS total_projects,
                 count(
                     CASE
