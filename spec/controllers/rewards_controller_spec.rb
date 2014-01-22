@@ -63,8 +63,8 @@ describe RewardsController do
     it_should_behave_like "PUT rewards update"
     it_should_behave_like "DELETE rewards destroy"
 
-    context "When reward already have backers" do
-      before { FactoryGirl.create(:backer, state: 'confirmed', project: project, reward: reward) }
+    context "When reward already have contributions" do
+      before { FactoryGirl.create(:contribution, state: 'confirmed', project: project, reward: reward) }
 
       context "can't update the minimum value" do
         before { put :update, project_id: project.id, id: reward.id, reward: { minimum_value: 15, description: 'Amenori ipsum' }, locale: :pt }
@@ -74,14 +74,14 @@ describe RewardsController do
         }
       end
 
-      context "can update the description and maximum backers" do
+      context "can update the description and maximum contributions" do
         before do
-          put :update, project_id: project.id, id: reward.id, reward: { maximum_backers: 99, description: 'lorem ipsum'}, locale: :pt
+          put :update, project_id: project.id, id: reward.id, reward: { maximum_contributions: 99, description: 'lorem ipsum'}, locale: :pt
           reward.reload
         end
 
         it { expect(reward.description).to eq('lorem ipsum') }
-        it { expect(reward.maximum_backers).to eq(99) }
+        it { expect(reward.maximum_contributions).to eq(99) }
       end
 
     end

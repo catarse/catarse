@@ -4,15 +4,15 @@ class Reward < ActiveRecord::Base
 
   include ERB::Util
   schema_associations
-  has_many :backers, dependent: :nullify
+  has_many :contributions, dependent: :nullify
 
   ranks :row_order, with_same: :project_id
   has_paper_trail
 
   validates_presence_of :minimum_value, :description, :days_to_delivery
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00
-  validates_numericality_of :maximum_backers, only_integer: true, greater_than: 0, allow_nil: true
-  scope :remaining, -> { where("maximum_backers IS NULL OR (maximum_backers IS NOT NULL AND (SELECT COUNT(*) FROM backers WHERE state IN ('confirmed', 'waiting_confirmation') AND reward_id = rewards.id) < maximum_backers)") }
+  validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
+  scope :remaining, -> { where("maximum_contributions IS NULL OR (maximum_contributions IS NOT NULL AND (SELECT COUNT(*) FROM contributions WHERE state IN ('confirmed', 'waiting_confirmation') AND reward_id = rewards.id) < maximum_contributions)") }
   scope :sort_asc, -> { order('id ASC') }
 
   delegate :display_deliver_estimate, :display_remaining, :name, :display_minimum, :short_description,
@@ -26,15 +26,15 @@ class Reward < ActiveRecord::Base
   end
 
   def sold_out?
-    maximum_backers && total_compromised >= maximum_backers
+    maximum_contributions && total_compromised >= maximum_contributions
   end
 
   def total_compromised
-    backers.with_states(['confirmed', 'waiting_confirmation']).count
+    contributions.with_states(['confirmed', 'waiting_confirmation']).count
   end
 
   def remaining
-    return nil unless maximum_backers
-    maximum_backers - total_compromised
+    return nil unless maximum_contributions
+    maximum_contributions - total_compromised
   end
 end
