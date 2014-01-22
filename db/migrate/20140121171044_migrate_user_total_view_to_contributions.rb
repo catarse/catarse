@@ -61,7 +61,7 @@ class MigrateUserTotalViewToContributions < ActiveRecord::Migration
           ELSE b.value * (-1)::numeric
         END) AS credits
       FROM
-        backers b
+        contributions b
         JOIN projects p ON (b.project_id = p.id)
       WHERE b.state in ('confirmed', 'requested_refund', 'refunded')
       GROUP BY b.user_id;
