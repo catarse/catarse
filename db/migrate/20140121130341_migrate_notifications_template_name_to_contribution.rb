@@ -7,14 +7,18 @@ class MigrateNotificationsTemplateNameToContribution < ActiveRecord::Migration
                      [:project_owner_backer_confirmed, :project_owner_contribution_confirmed],
                      [:backer_canceled_after_confirmed, :contribution_canceled_after_confirmed] ]
   def up
-    TEMPLATE_NAMES.each do |t|
-      execute "UPDATE notifications SET template_name = '#{t[1]}' WHERE notifications.template_name = '#{t[0]}'"
-    end
+    case_conditions = TEMPLATE_NAMES.map do |names|
+      "WHEN '#{names[0]}' THEN '#{names[1]}'"
+    end.join(" ")
+    old_values = "'#{TEMPLATE_NAMES.map(&:first).join("','")}'"
+    execute "UPDATE notifications SET template_name = CASE template_name #{case_conditions} END WHERE template_name IN (#{old_values})"
   end
 
   def down
-    TEMPLATE_NAMES.each do |t|
-      execute "UPDATE notifications SET template_name = '#{t[0]}' WHERE notifications.template_name = '#{t[1]}'"
-    end
+    case_conditions = TEMPLATE_NAMES.map do |names|
+      "WHEN '#{names[1]}' THEN '#{names[0]}'"
+    end.join(" ")
+    new_values = "'#{TEMPLATE_NAMES.map(&:last).join("','")}'"
+    execute "UPDATE notifications SET template_name = CASE template_name #{case_conditions} END WHERE template_name IN (#{new_values})"
   end
 end
