@@ -24,7 +24,7 @@ class Channels::Admin::PostsController < Admin::BaseController
   protected
 
   def create_resource(object)
-    object.user = current_user
+    object.user_id = current_user.id
     super
   end
 end
