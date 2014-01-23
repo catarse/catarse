@@ -1,0 +1,237 @@
+[data-controller="contributions"][data-namespace="projects"][data-action="new"]
+  #page_content
+    .container
+      .contribution_content
+        +grid(16)
+        padding-top: 15px
+        .title
+          +grid(16)
+          +alpha
+          width: 600px
+          padding-bottom: 40px
+          h1
+            color: $ultra_gryn
+            font-family: "Lato"
+            font-weight: 700
+            font-size: 24px
+            padding: 5px 0
+          h2
+            color: #333333
+            font-family: "Lato"
+            font-size: 14px
+            padding-bottom: 20px
+            border-bottom: 1px dotted #CCCCCC
+        #contribute_options
+          +grid(11)
+          +alpha
+          width: 600px
+          #contribution_form
+            .simbol
+              float: left
+              width: 30px
+              margin-top: -55px
+              p
+                color: #6BB444
+                font-family: "Lato"
+                font-size: 28px
+            .inline-hints
+              font-family: "Lato"
+              font-size: 14px
+              color: #333333
+              width: 180px
+              float: right
+              line-height: 18px
+              margin-top: 13px
+              margin-right: 7px
+            label
+              font-family: "Lato"
+              font-size: 18px
+              display: block
+              color: #333333
+              margin-bottom: 12px
+            input[type="text"]
+              height: 55px
+              width: 300px
+              font-size: 38px
+              padding-right: 20px
+              padding-left: 20px
+              font-family: 'Lato'
+              font-weight: 700
+              font-size: 28px
+              color: #666666
+              margin-left: 50px
+              @include border-radius(10px)
+            .alert-info
+              margin-top: 20px
+              label
+                font-family: 'Lato'
+                font-weight: 700
+                input
+                  display: inline
+                  margin-right: 10px
+                  vertical-align: top
+              .inline-hints
+                strong
+                  font-family: 'Lato'
+                  font-weight: 700
+            #contribution_reward_input
+              padding-left: 0 !important
+              legend
+                float: left
+                border-bottom: dotted 1px #ccc
+                margin-top: 40px
+                background: url($images_path+'gift.png') 10px top no-repeat
+                label
+                  padding-left: 50px
+                  font-family: 'Lato'
+                  color: $ultra_gryn
+                  font-size: 22px
+                  padding-top: 7px
+                  margin-bottom: 12px
+              ol
+                float: left
+                li.choice
+                  padding: 20px 10px 10px 30px
+                  margin-bottom: 25px
+                  margin-right: 10px
+                  @include border-radius(10px)
+                  border: solid 1px #ccc
+                  width: 500px
+                  background: #FCFCFC
+                  float: right
+                  cursor: pointer
+                  label
+                    margin-bottom: 5px
+                    input[type="radio"]
+                      margin-left: -64px
+                      margin-top: 12px
+                      float: left
+                  &.selected
+                    background: rgba($light_green, 0.2)
+                  .reward_minimum_value
+                    color: #666666
+                    font-family: 'Lato'
+                    font-size: 24px
+                    padding-bottom: 5px
+                  .reward_description
+                    font-family: 'Lato'
+                    font-size: 14px
+                    line-height: 18px
+            #contribution_credits_input
+              .inline-hints
+                float: none
+                display: block
+                width: 80%
+            #contribution_anonymous_input
+              margin: 0px
+              font-size: 14px
+              label
+                font-size: 16px
+                color: #333
+                font-family: 'Lato'
+                font-weight: 700
+                float: right
+                padding: 15px 16px
+                width: 510px
+                margin-right: 10px
+                background: #e0f5e0
+                @include border-radius(10px)
+              input
+                display: inline
+                margin-right: 10px
+                vertical-align: top
+        .alert
+          background: #e0f5e0
+          @include border-radius(10px)
+          color: #333333
+          float: right
+          border: none
+          font-family: "Lato"
+          font-size: 14px
+          line-height: 18px
+          margin-bottom: 20px
+          margin-right: 10px
+          margin-top: -26px
+          padding: 20px 40px
+          text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
+          //width: 462px
+        #contribution_submit
+          width: 300px
+          height: 55px
+          border-radius: 15px
+          @include box-shadow(0px)
+          margin: 12px auto 0px
+          float: none
+          border: none
+          display: block
+          background: #64CB64
+          font-family: "Lato"
+          font-size: 15px
+          text-transform: uppercase
+
+        #contribution_info
+          +grid(5)
+          float: right
+          margin-top: -80px
+          +omega
+          .project_name
+            font-family: 'Lato'
+            font-weight: 700
+            font-size: 18px
+            margin-bottom: 15px
+            a
+              color: black
+              text-decoration: none
+              @include transition(all, 0.5s)
+              &:hover
+                color: $pink
+          .project_owner
+            padding-top: 12px
+            padding-bottom: 8px
+            font-family: 'Lato'
+            font-size: 14px
+            a
+              color: $pink
+              text-decoration: none
+              @include transition(all, 0.5s)
+              &:hover
+                color: black
+          .project_expires_at
+            font-family: 'Lato'
+            font-size: 14px
+            padding-bottom: 20px
+        .back_faq
+          margin-bottom: 20px
+          h2
+            border-bottom: 1px dotted #CCCCCC
+            color: #333333
+            font-family: "Lato"
+            font-size: 22px
+            margin-bottom: 20px
+            padding-bottom: 8px
+            text-transform: lowercase
+            margin-top: 30px
+          h3
+            font-family: 'Lato'
+            font-weight: 700
+            font-size: 14px
+            padding-bottom: 15px
+            color: #333333
+            text-decoration: none
+            cursor: pointer
+            line-height: 21px
+            padding-left: 16px
+            @include transition(all, 0.5s)
+            background: url($images_path+'bullet-green.png') left 5px no-repeat
+            &:hover
+              color: #64CB64
+          p
+            padding-bottom: 30px
+            font-family: Arial
+            line-height: 18px
+            font-size: 12px
+            padding-left: 17px
+            color: rgba(black, 0.6)
+            a
+            &:hover
+              color: #64CB64

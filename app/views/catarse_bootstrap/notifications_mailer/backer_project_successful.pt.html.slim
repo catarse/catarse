@@ -1,8 +1,0 @@
-- backer = @notification.backer
-p Olá, <strong>#{backer.user.display_name}</strong>!
-p
-  | Parabéns! O projeto #{link_to(backer.project.name, project_by_slug_url(permalink: backer.project.permalink))} que, 
-  | incluindo você, teve #{backer.project.total_backers} apoiadores, foi financiado com sucesso no #{Configuration[:company_name]}.
-p Esse e-mail serve como um <strong>recibo definitivo da sua contribuição</strong>.
-= render partial: 'backer_data', locals: {backer: backer}
-

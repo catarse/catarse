@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Backer::PaymentEngineHandler do
-  let(:engine){ { name: 'moip', review_path: ->(backer){ "/#{backer}" }, locale: 'en', refund_path: ->(backer){ "/refund/#{backer}" } } }
-  let(:backer){ create(:backer, payment_method: 'MoIP') }
+describe Contribution::PaymentEngineHandler do
+  let(:engine){ { name: 'moip', review_path: ->(contribution){ "/#{contribution}" }, locale: 'en', refund_path: ->(contribution){ "/refund/#{contribution}" } } }
+  let(:contribution){ create(:contribution, payment_method: 'MoIP') }
 
   before do
     PaymentEngines.clear
@@ -10,43 +10,43 @@ describe Backer::PaymentEngineHandler do
   end
 
   describe "#payment_engine" do
-    subject { backer.payment_engine }
+    subject { contribution.payment_engine }
 
-    context "when backer has a payment engine" do
+    context "when contribution has a payment engine" do
       before { PaymentEngines.register engine }
 
       it { should eq(engine) }
     end
 
-    context "when backer don't have a payment engine" do
+    context "when contribution don't have a payment engine" do
       it { should eq(nil) }
     end
   end
 
   describe "#refund_path" do
-    subject { backer.refund_path }
+    subject { contribution.refund_path }
 
-    context "when backer has a payment engine" do
+    context "when contribution has a payment engine" do
       before { PaymentEngines.register engine }
 
-      it { should eq(engine[:refund_path].call(backer)) }
+      it { should eq(engine[:refund_path].call(contribution)) }
     end
 
-    context "when backer don't have a payment engine" do
+    context "when contribution don't have a payment engine" do
       it { should eq(nil) }
     end
   end
 
   describe "#review_path" do
-    subject { backer.review_path }
+    subject { contribution.review_path }
 
-    context "when backer has a payment engine" do
+    context "when contribution has a payment engine" do
       before { PaymentEngines.register engine }
 
-      it { should eq(engine[:review_path].call(backer)) }
+      it { should eq(engine[:review_path].call(contribution)) }
     end
 
-    context "when backer don't have a payment engine" do
+    context "when contribution don't have a payment engine" do
       it { should eq(nil) }
     end
   end

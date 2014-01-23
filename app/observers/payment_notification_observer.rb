@@ -5,11 +5,11 @@ class PaymentNotificationObserver < ActiveRecord::Observer
     return unless payment_notification.extra_data
     if payment_notification.extra_data['status_pagamento'] == '6' #payment is being processed
       Notification.notify_once(:processing_payment,
-        payment_notification.backer.user,
-        {backer_id: payment_notification.backer.id},
-        backer: payment_notification.backer,
-        project_name: payment_notification.backer.project.name,
-        payment_method: payment_notification.backer.payment_method)
+        payment_notification.contribution.user,
+        {contribution_id: payment_notification.contribution.id},
+        contribution: payment_notification.contribution,
+        project_name: payment_notification.contribution.project.name,
+        payment_method: payment_notification.contribution.payment_method)
     end
   end
 

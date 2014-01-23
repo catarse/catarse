@@ -1,0 +1,80 @@
+[data-controller="projects"][data-action="pending_contributions"],
+[data-controller="projects"][data-action="pending"]
+  #page_content
+    .container
+      .project_content
+        +grid(16)
+        padding-top: 15px
+        .title
+          +grid(16)
+          +alpha
+          padding-bottom: 40px
+          h1
+            color: $ultra_gryn
+            font-family: "Lato"
+            font-size: 28px
+            padding: 5px 0
+          h2
+            color: rgba($ultra_gryn, 0.7)
+            font-family: Arial
+            font-size: 18px
+            strong
+              font-weight: bold
+              color: $green
+        fieldset
+          float: left
+          clear: both
+          width: 100%
+          .input
+            float: left
+            margin-right: 20px
+            &.check
+              input
+                display: inline
+              label
+                display: inline
+            &.total_results
+              float: right
+            &.submit
+              float: right
+              margin-top: 23px
+            label
+              font-family: 'Lato'
+              font-size: 13px
+        #total_results
+          float: right
+          font-family: 'Lato'
+          font-size: 13px
+          padding-top: 2px
+          strong
+            font-family: 'Lato'
+            font-weight: 700
+            color: $green
+        .pagination
+          text-align: right
+          padding: 20px 0 40px
+          font-family: 'Lato'
+          font-size: 13px
+          span.page.current
+            color: rgba(black, 0.3)
+          a
+            color: $pink
+        .table
+          thead
+            th
+              font-family: 'Lato'
+              font-weight: 700
+              font-size: 13px
+              text-align: center
+          tbody
+            tr
+              td
+                font-family: 'Lato'
+                font-size: 12px
+                text-align: center
+                vertical-align: middle
+                img
+                  &.project_img
+                    width: 50px
+                  &.user_img
+                    width: 30px

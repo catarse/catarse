@@ -13,7 +13,7 @@ App.addChild('Payment', _.extend({
   updatePaymentMethod: function() {
     var $selected_tab = this.$('#payment_menu a.selected');
     $.post(this.$el.data('update-info-path'), {
-      backer: {
+      contribution: {
         payment_method: $selected_tab.prop('id')
       }
     })

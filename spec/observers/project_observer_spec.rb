@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe ProjectObserver do
-  let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
+  let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   let(:project) { create(:project, goal: 3000) }
   let(:channel) { create(:channel) }
 
-  subject{ backer }
+  subject{ contribution }
 
   before do
     Configuration[:support_forum] = 'http://support.com'
@@ -110,7 +110,7 @@ describe ProjectObserver do
     let(:project) { create(:project, user: user, goal: 100, online_days: -2, state: 'online') }
 
     before do
-      create(:backer, project: project, value: 200, state: 'confirmed')
+      create(:contribution, project: project, value: 200, state: 'confirmed')
       Notification.should_receive(:notify_once).with(
         :project_in_wainting_funds,
         project.user,
@@ -136,7 +136,7 @@ describe ProjectObserver do
 
     context 'when project is successful' do
       before do
-        create(:backer, value: 15, state: 'confirmed', project: project)
+        create(:contribution, value: 15, state: 'confirmed', project: project)
         project.update_attributes state: 'waiting_funds'
       end
 
@@ -158,41 +158,41 @@ describe ProjectObserver do
     end
   end
 
-  describe "notify_backers" do
+  describe "notify_contributors" do
 
     context "when project is successful" do
       let(:project){ create(:project, goal: 30, online_days: -7, state: 'online') }
-      let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, value: 30, project: project) }
+      let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, value: 30, project: project) }
 
       before do
-        backer
+        contribution
         project.update_attributes state: 'waiting_funds'
         Notification.should_receive(:notify_once).at_least(:once)
-        backer.save!
+        contribution.save!
         project.finish!
       end
-      it("should notify the project backers"){ subject }
+      it("should notify the project contributions"){ subject }
     end
 
     context "when project is unsuccessful" do
       let(:project){ create(:project, goal: 30, online_days: -7, state: 'online') }
-      let(:backer){ create(:backer, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, value: 20) }
+      let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, value: 20) }
       before do
-        backer
+        contribution
         project.update_attributes state: 'waiting_funds'
         Notification.should_receive(:notify_once).at_least(:once)
-        backer.save!
+        contribution.save!
         project.finish!
       end
-      it("should notify the project backers and owner"){ subject }
+      it("should notify the project contributions and owner"){ subject }
     end
 
-    context "when project is unsuccessful with pending backers" do
+    context "when project is unsuccessful with pending contributions" do
       let(:project){ create(:project, goal: 30, online_days: -7, state: 'online') }
 
       before do
-        create(:backer, project: project, key: 'ABC1', payment_method: 'ABC', payment_token: 'ABC', value: 20, state: 'confirmed')
-        create(:backer, project: project, key: 'ABC2', payment_method: 'ABC', payment_token: 'ABC', value: 20)
+        create(:contribution, project: project, key: 'ABC1', payment_method: 'ABC', payment_token: 'ABC', value: 20, state: 'confirmed')
+        create(:contribution, project: project, key: 'ABC2', payment_method: 'ABC', payment_token: 'ABC', value: 20)
         project.update_attributes state: 'waiting_funds'
       end
 
@@ -200,7 +200,7 @@ describe ProjectObserver do
         Notification.should_receive(:notify_once).at_least(3)
         project.finish!
       end
-      it("should notify the project backers and owner"){ subject }
+      it("should notify the project contributions and owner"){ subject }
     end
 
   end

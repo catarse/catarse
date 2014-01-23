@@ -12,10 +12,10 @@ describe PaymentNotificationObserver do
         Notification.should_receive(:notify_once)
         p = create(:payment_notification)
         p.extra_data = {'status_pagamento' => '6'}
-        p.backer.project = create(:project)
+        p.contribution.project = create(:project)
         p.save!
       end
-      it("should notify the backer"){ p }
+      it("should notify the contribution"){ p }
     end
 
     context "when payment is approved" do
@@ -23,10 +23,10 @@ describe PaymentNotificationObserver do
         Notification.should_receive(:notify_once).never
         p = create(:payment_notification)
         p.extra_data = {'status_pagamento' => '1'}
-        p.backer.project = create(:project)
+        p.contribution.project = create(:project)
         p.save!
       end
-      it("should not notify the backer"){ p }
+      it("should not notify the contribution"){ p }
     end
 
   end

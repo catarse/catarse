@@ -35,11 +35,11 @@ module Project::StateMachineHandler
 
       event :finish do
         transition online: :failed,             if: ->(project) {
-          project.should_fail? && !project.pending_backers_reached_the_goal?
+          project.should_fail? && !project.pending_contributions_reached_the_goal?
         }
 
         transition online: :waiting_funds,      if: ->(project) {
-          project.expired? && project.pending_backers_reached_the_goal?
+          project.expired? && project.pending_contributions_reached_the_goal?
         }
 
         transition waiting_funds: :successful,  if: ->(project) {

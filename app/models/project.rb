@@ -75,16 +75,16 @@ class Project < ActiveRecord::Base
             END ASC, projects.online_date DESC, projects.created_at DESC")
   }
 
-  scope :backed_by, ->(user_id){
-    where("id IN (SELECT project_id FROM backers b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
+  scope :contributed_by, ->(user_id){
+    where("id IN (SELECT project_id FROM contributions b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
 
   scope :from_channels, ->(channels){
     where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id AND cp.channel_id = ?)", channels)
   }
 
-  scope :with_backers_confirmed_today, -> {
-    joins(:backers).merge(Backer.confirmed_today).uniq
+  scope :with_contributions_confirmed_today, -> {
+    joins(:contributions).merge(Contribution.confirmed_today).uniq
   }
 
   attr_accessor :accepted_terms
@@ -129,8 +129,8 @@ class Project < ActiveRecord::Base
     project_total.try(:pledged).to_f
   end
 
-  def total_backers
-    project_total.try(:total_backers).to_i
+  def total_contributions
+    project_total.try(:total_contributions).to_i
   end
 
   def total_payment_service_fee
@@ -138,7 +138,7 @@ class Project < ActiveRecord::Base
   end
 
   def selected_rewards
-    rewards.sort_asc.where(id: backers.with_state('confirmed').map(&:reward_id))
+    rewards.sort_asc.where(id: contributions.with_state('confirmed').map(&:reward_id))
   end
 
   def reached_goal?
@@ -150,15 +150,15 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    backers.with_state('waiting_confirmation').count > 0
+    contributions.with_state('waiting_confirmation').count > 0
   end
 
-  def pending_backers_reached_the_goal?
+  def pending_contributions_reached_the_goal?
     pledged_and_waiting >= goal
   end
 
   def pledged_and_waiting
-    backers.with_states(['confirmed', 'waiting_confirmation']).sum(:value)
+    contributions.with_states(['confirmed', 'waiting_confirmation']).sum(:value)
   end
 
   def new_draft_recipient

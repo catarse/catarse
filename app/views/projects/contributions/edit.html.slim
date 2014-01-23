@@ -1,0 +1,75 @@
+#page_content
+  .container
+    #project_review data-thank-you-path=project_contribution_path(project_id: @project.id, id: @contribution.id)
+      .project_info
+        = image_tag @project.display_image, id: 'project_image', alt: @project.name, width: '250px'
+        h1= t('.you_are_about_html', link: link_to(@project.name, project_by_slug_path(permalink: @project.permalink)))
+        #review_text
+          - if @contribution.reward
+            .review_content
+              = t('.review_with_reward_html', value: @contribution.display_value)
+            .reward
+              = @contribution.reward.description
+          - else
+            .review_content
+              = t('.review_without_reward_html', value: @contribution.display_value)
+      .clearfix
+      .title
+        h1= t('.title')
+        h2= t('.subtitle')
+      .clearfix
+      - if @contribution.credits
+        #contribute_with_credits
+          .bootstrap-alert
+            .alert
+              #credits_notice= t('.credits_notice_html', credits: number_to_currency((current_user.credits - @contribution.value), unit: 'R$', precision: 0, delimiter: '.'))
+      .bootstrap-form
+        = semantic_form_for current_user, url: credits_checkout_project_contribution_path(@contribution.project, @contribution), html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', class: "form-horizontal #{('dont_align' if @contribution.credits)}", method: 'put' } do |form|
+          = hidden_field_tag 'project_id', @contribution.project.id
+          = hidden_field_tag 'contribution_id', @contribution.id
+          = hidden_field_tag 'contribution_credits', @contribution.credits
+          = hidden_field_tag 'payment_method_url', nil
+          - unless @contribution.credits
+            = form.inputs do
+              fieldset.live_in_brazil
+                = check_box_tag 'live_in_brazil', 'live', params[:locale] == 'pt'
+                = label_tag 'live_in_brazil', t('.live_in_brazil'), class: 'inline'
+              = form.input :full_name, required: true, as: :string
+              /= form.input :cpf, as: :string, input_html: {autocomplete: 'off'}
+              = form.input :email, required: true, as: :string
+              .clearfix
+              fieldset.address_data
+                .title
+                  h2
+                = form.input :address_street, as: :string, required: true
+                = form.input :address_number, as: :string, required: true
+                = form.input :address_complement, required: false, as: :string
+                = form.input :address_neighbourhood, as: :string, required: true
+                = form.input :address_zip_code, as: :string, input_html: {autocomplete: 'off', data: {mask: '99999-999'}}, required: true
+                = form.input :address_city, as: :string, required: true
+                = form.input :address_state, as: :select, collection: State.array, required: true
+                = form.input :phone_number, as: :string, input_html: {autocomplete: 'off', data: {mask: '(99)9999-9999?9'}}, required: true
+          .submit
+            fieldset.accept_terms
+              = check_box_tag 'accept'
+              = label_tag 'accept', t('accept_terms_html', link: link_to(t('terms'), ::Configuration[:terms_url], target: :_blank)), class: 'inline'
+            - if @contribution.credits
+              = form.actions do
+                .bootstrap-twitter
+                  = form.submit (@contribution.credits ? t('.submit.credits') : t('.submit.moip')), class: 'btn', id: 'user_submit'
+
+        - unless @contribution.credits
+          #payment.hide data-update-info-path=project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json)
+            .title
+              h1= t('.choose_payment')
+              h2= t('.choose_payment_subtitle')
+
+            .tab_container
+              nav#payment_menu
+                - PaymentEngines.engines.each do |engine|
+                  = link_to "##{engine[:name]}_payment", id: engine[:name], class: 'selected enabled' , data: {target: "##{engine[:name]}_payment"} do
+                    = t("projects.contributions.review.#{engine[:name]}")
+            .tab_content_container
+              - PaymentEngines.engines.each do |engine|
+                div[id="#{engine[:name]}_payment" class="payments_type hide" data-path=engine[:review_path].call(@contribution) ]
+    .clearfix
