@@ -4,7 +4,7 @@ class StaticController < ApplicationController
   end
 
   def thank_you
-    backer = Backer.find session[:thank_you_backer_id]
-    redirect_to [backer.project, backer]
+    contribution = Contribution.find session[:thank_you_contribution_id]
+    redirect_to [contribution.project, contribution]
   end
 end

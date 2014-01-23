@@ -1,0 +1,34 @@
+= render 'shared/header'
+.row
+  h3= t('.contribution_info', key: resource.key)
+  p
+    strong= t('.payment_method')
+    | &nbsp;
+    = resource.payment_method
+  p
+    strong= t('.payment_fee')
+    | &nbsp;
+    = number_to_currency resource.payment_service_fee, unit: 'R$', precision: 2, delimiter: '.'
+  p
+    strong= t('.payment_id')
+    | &nbsp;
+    = resource.payment_id
+  p
+    strong= t('.payer_email')
+    | &nbsp;
+    = resource.payer_email
+  p
+    strong= t('.user_email')
+    | &nbsp;
+    = resource.user.email
+  p
+    strong= t('.payment_choice')
+    | &nbsp;
+    = resource.payment_choice
+  p
+    strong= t('.created_at')
+    | &nbsp;
+    = l(resource.created_at)
+
+.clearfix
+= render 'shared/footer'

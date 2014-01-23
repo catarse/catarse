@@ -110,18 +110,18 @@ describe Project::StateMachineHandler do
         its(:finish) { should be_false }
       end
 
-      context 'when project is expired and the sum of the pending backers and confirmed backers dont reached the goal' do
+      context 'when project is expired and the sum of the pending contributions and confirmed contributions dont reached the goal' do
         before do
-          create(:backer, value: 100, project: subject, created_at: 2.days.ago)
+          create(:contribution, value: 100, project: subject, created_at: 2.days.ago)
           subject.finish
         end
 
         its(:failed?) { should be_true }
       end
 
-      context 'when project is expired and have recent backers without confirmation' do
+      context 'when project is expired and have recent contributions without confirmation' do
         before do
-          create(:backer, value: 30_000, project: subject, state: 'waiting_confirmation')
+          create(:contribution, value: 30_000, project: subject, state: 'waiting_confirmation')
           subject.finish
         end
 
@@ -131,7 +131,7 @@ describe Project::StateMachineHandler do
       context 'when project already hit the goal and passed the waiting_funds time' do
         before do
           main_project.update_attributes state: 'waiting_funds'
-          subject.stub(:pending_backers_reached_the_goal?).and_return(true)
+          subject.stub(:pending_contributions_reached_the_goal?).and_return(true)
           subject.stub(:reached_goal?).and_return(true)
           subject.online_date = 2.weeks.ago
           subject.online_days = 0
@@ -142,9 +142,9 @@ describe Project::StateMachineHandler do
 
       context 'when project already hit the goal and still is in the waiting_funds time' do
         before do
-          subject.stub(:pending_backers_reached_the_goal?).and_return(true)
+          subject.stub(:pending_contributions_reached_the_goal?).and_return(true)
           subject.stub(:reached_goal?).and_return(true)
-          create(:backer, project: main_project, user: user, value: 20, state: 'waiting_confirmation')
+          create(:contribution, project: main_project, user: user, value: 20, state: 'waiting_confirmation')
           main_project.update_attributes state: 'waiting_funds'
           subject.finish
         end
@@ -153,10 +153,10 @@ describe Project::StateMachineHandler do
 
       context 'when project not hit the goal' do
         let(:user) { create(:user) }
-        let(:backer) { create(:backer, project: main_project, user: user, value: 20, payment_token: 'ABC') }
+        let(:contribution) { create(:contribution, project: main_project, user: user, value: 20, payment_token: 'ABC') }
 
         before do
-          backer
+          contribution
           subject.online_date = 2.weeks.ago
           subject.online_days = 0
           subject.finish
@@ -165,7 +165,7 @@ describe Project::StateMachineHandler do
         its(:failed?) { should be_true }
 
         it "should generate credits for users" do
-          backer.confirm!
+          contribution.confirm!
           user.reload
           user.credits.should == 20
         end

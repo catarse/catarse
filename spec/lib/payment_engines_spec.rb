@@ -3,9 +3,9 @@
 require 'spec_helper'
 
 describe PaymentEngines do
-  let(:engine){ {name: 'test', review_path: ->(backer){ "/#{backer}" }, locale: 'en'} }
-  let(:engine_pt){ {name: 'test pt', review_path: ->(backer){ "/#{backer}" }, locale: 'pt'} }
-  let(:backer){ FactoryGirl.create(:backer) }
+  let(:engine){ {name: 'test', review_path: ->(contribution){ "/#{contribution}" }, locale: 'en'} }
+  let(:engine_pt){ {name: 'test pt', review_path: ->(contribution){ "/#{contribution}" }, locale: 'pt'} }
+  let(:contribution){ FactoryGirl.create(:contribution) }
   before{ PaymentEngines.clear }
 
   describe ".find_engine" do
@@ -40,13 +40,13 @@ describe PaymentEngines do
   end
 
   describe ".create_payment_notification" do
-    subject{ PaymentEngines.create_payment_notification({ backer_id: backer.id, extra_data: { test: true } }) }
-    it{ should == PaymentNotification.where(backer_id: backer.id).first }
+    subject{ PaymentEngines.create_payment_notification({ contribution_id: contribution.id, extra_data: { test: true } }) }
+    it{ should == PaymentNotification.where(contribution_id: contribution.id).first }
   end
 
   describe ".find_payment" do
-    subject{ PaymentEngines.find_payment({ id: backer.id }) }
-    it{ should == backer }
+    subject{ PaymentEngines.find_payment({ id: contribution.id }) }
+    it{ should == contribution }
   end
 
   describe ".engines" do
