@@ -5,6 +5,10 @@ class Channels::Admin::PostsController < Admin::BaseController
   inherit_resources
   defaults resource_class: ChannelPost
 
+  def edit
+    return redirect_to channels_admin_posts_path if resource.visible
+  end
+
   def begin_of_association_chain
     channel
   end

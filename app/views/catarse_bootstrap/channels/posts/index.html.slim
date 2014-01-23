@@ -28,7 +28,8 @@ section.line-box
 article.row.channel-posts-wrapper
   - collection.each do |resource|
     section.large-9.columns.channel-post
-      h3= link_to resource.title, channels_post_path(resource)
+      h3.channel-post-title= link_to resource.title, channels_post_path(resource), class: 'standard-link-one'
+      p= l(resource.created_at, format: :updates)
       == resource.body_html
     .large-3.columns
 

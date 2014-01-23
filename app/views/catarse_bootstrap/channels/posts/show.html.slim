@@ -1,14 +1,19 @@
 = render 'shared/header_channel'
 = content_for :title, channel.name
 
-section.line-box
+section
   .row
+    .large-2.columns
+      br/
+      br/
+      = link_to 'Voltar para listagem', channels_posts_path, class: 'navigation-link'
+      br/
+      br/
     .large-12.columns
       .presentation
-        h1.channel-title
+        h1.channel-post-title
           = resource.title
-
-br/
+        p= l(resource.created_at, format: :updates)
 
 article.row.channel-posts-wrapper
   section.large-9.columns.channel-post
@@ -17,7 +22,7 @@ article.row.channel-posts-wrapper
 
 br/
 
-article.row.channel-posts-comments-wrapper
+/article.row.channel-posts-comments-wrapper
   section.large-9.columns.channel-posts-comments
     #channel_posts_comments
 

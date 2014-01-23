@@ -4,11 +4,13 @@
 
   .advise-box.gray
     p= t('projects.project_updates.warning')
+  .row
+    .large-2.columns
+      = form.button :submit, t('channels.admin.posts.save_submit'), class: 'button action medium'
+  .clearfix
+    br/
 
   = render partial: 'projects/formatting_tips'
   
-  .large-4.columns
-    = form.button :submit, t('channels.admin.posts.save_submit'), class: 'button action medium'
 .clearfix
 
-= render 'shared/footer_channel'

@@ -705,7 +705,7 @@ pt:
       confirmations:
         destroy: 'Você tem certeza que deseja deletar?'
       posts:
-        save_submit: 'SALVAR'
+        save_submit: 'Salvar'
         index:
           title: 'Gerenciamento: Novidades'
       followers:
