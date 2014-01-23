@@ -35,7 +35,8 @@
                 - else
                   li= link_to t('channels.admin.table.publish_action'), channels_admin_post_path(resource, channel_post: { visible: true }), method: :put
                 li= link_to t('channels.admin.table.show_action'), channels_admin_post_path(resource)
-                li= link_to t('channels.admin.table.edit_action'), edit_channels_admin_post_path(resource)
+                - unless resource.visible
+                  li= link_to t('channels.admin.table.edit_action'), edit_channels_admin_post_path(resource)
                 li= link_to t('channels.admin.table.destroy_action'), channels_admin_post_path(resource), method: :delete, data: { confirm: t('channels.admin.confirmations.destroy') }
 
   = paginate collection

@@ -9,6 +9,6 @@ class Channels::PostsController < Channels::BaseController
   end
 
   def end_of_association_chain
-    begin_of_association_chain.posts.visible
+    begin_of_association_chain.posts.ordered.visible
   end
 end
