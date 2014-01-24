@@ -10,7 +10,7 @@ describe Project do
   describe "associations" do
     it{ should belong_to :user }
     it{ should belong_to :category }
-    it{ should have_many :backers }
+    it{ should have_many :contributions }
     it{ should have_one  :project_total }
     it{ should have_many :rewards }
     it{ should have_many :updates }
@@ -34,12 +34,12 @@ describe Project do
     it{ should_not allow_value('users').for(:permalink) }
   end
 
-  describe ".with_backers_confirmed_today" do
+  describe ".with_contributions_confirmed_today" do
     let(:project_01) { create(:project, state: 'online') }
     let(:project_02) { create(:project, state: 'online') }
     let(:project_03) { create(:project, state: 'online') }
 
-    subject { Project.with_backers_confirmed_today }
+    subject { Project.with_contributions_confirmed_today }
 
     before do
       project_01
@@ -47,25 +47,25 @@ describe Project do
       project_03
     end
 
-    context "when have confirmed backers today" do
+    context "when have confirmed contributions today" do
       before do
 
         #TODO: need to investigate this timestamp issue when
         # use DateTime.now or Time.now
-        create(:backer, state: 'confirmed', project: project_01, confirmed_at: Time.now )
-        create(:backer, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
-        create(:backer, state: 'confirmed', project: project_03, confirmed_at: Time.now )
+        create(:contribution, state: 'confirmed', project: project_01, confirmed_at: Time.now )
+        create(:contribution, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
+        create(:contribution, state: 'confirmed', project: project_03, confirmed_at: Time.now )
       end
 
       it { should have(2).items }
       it { subject.include?(project_02).should be_false }
     end
 
-    context "when does not have any confirmed backer today" do
+    context "when does not have any confirmed contribution today" do
       before do
-        create(:backer, state: 'confirmed', project: project_01, confirmed_at: 1.days.ago )
-        create(:backer, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
-        create(:backer, state: 'confirmed', project: project_03, confirmed_at: 5.days.ago )
+        create(:contribution, state: 'confirmed', project: project_01, confirmed_at: 1.days.ago )
+        create(:contribution, state: 'confirmed', project: project_02, confirmed_at: 2.days.ago )
+        create(:contribution, state: 'confirmed', project: project_03, confirmed_at: 5.days.ago )
       end
 
       it { should have(0).items }
@@ -133,10 +133,10 @@ describe Project do
       @project_02 = create(:project, goal: 100)
       @project_03 = create(:project, goal: 100)
 
-      create(:backer, value: 10, project: @project_01)
-      create(:backer, value: 10, project: @project_01)
-      create(:backer, value: 30, project: @project_02)
-      create(:backer, value: 10, project: @project_03)
+      create(:contribution, value: 10, project: @project_01)
+      create(:contribution, value: 10, project: @project_01)
+      create(:contribution, value: 30, project: @project_02)
+      create(:contribution, value: 10, project: @project_03)
     end
 
     it { should have(2).itens }
@@ -246,19 +246,19 @@ describe Project do
     end
   end
 
-  describe ".backed_by" do
+  describe ".contributed_by" do
     before do
-      backer = create(:backer, state: 'confirmed')
-      @user = backer.user
-      @project = backer.project
-      # Another backer with same project and user should not create duplicate results
-      create(:backer, user: @user, project: @project, state: 'confirmed')
-      # Another backer with other project and user should not be in result
-      create(:backer, state: 'confirmed')
-      # Another backer with different project and same user but not confirmed should not be in result
-      create(:backer, user: @user, state: 'pending')
+      contribution = create(:contribution, state: 'confirmed')
+      @user = contribution.user
+      @project = contribution.project
+      # Another contribution with same project and user should not create duplicate results
+      create(:contribution, user: @user, project: @project, state: 'confirmed')
+      # Another contribution with other project and user should not be in result
+      create(:contribution, state: 'confirmed')
+      # Another contribution with different project and same user but not confirmed should not be in result
+      create(:contribution, user: @user, state: 'pending')
     end
-    subject{ Project.backed_by(@user.id) }
+    subject{ Project.contributed_by(@user.id) }
     it{ should == [@project] }
   end
 
@@ -334,28 +334,28 @@ describe Project do
     let(:project) { create(:project, goal: 3000) }
     subject { project.reached_goal? }
 
-    context 'when sum of all backers hit the goal' do
+    context 'when sum of all contributions hit the goal' do
       before do
-        create(:backer, value: 4000, project: project)
+        create(:contribution, value: 4000, project: project)
       end
       it { should be_true }
     end
 
-    context "when sum of all backers don't hit the goal" do
+    context "when sum of all contributions don't hit the goal" do
       it { should be_false }
     end
   end
 
   describe '#in_time_to_wait?' do
-    let(:backer) { create(:backer, state: 'waiting_confirmation') }
-    subject { backer.project.in_time_to_wait? }
+    let(:contribution) { create(:contribution, state: 'waiting_confirmation') }
+    subject { contribution.project.in_time_to_wait? }
 
     context 'when project expiration is in time to wait' do
       it { should be_true }
     end
 
     context 'when project expiration time is not more on time to wait' do
-      let(:backer) { create(:backer, created_at: 1.week.ago) }
+      let(:contribution) { create(:contribution, created_at: 1.week.ago) }
       it {should be_false}
     end
   end
@@ -376,10 +376,10 @@ describe Project do
   describe "#pledged_and_waiting" do
     subject{ project.pledged_and_waiting }
     before do
-      @confirmed = create(:backer, value: 10, state: 'confirmed', project: project)
-      @waiting = create(:backer, value: 10, state: 'waiting_confirmation', project: project)
-      create(:backer, value: 100, state: 'refunded', project: project)
-      create(:backer, value: 1000, state: 'pending', project: project)
+      @confirmed = create(:contribution, value: 10, state: 'confirmed', project: project)
+      @waiting = create(:contribution, value: 10, state: 'waiting_confirmation', project: project)
+      create(:contribution, value: 100, state: 'refunded', project: project)
+      create(:contribution, value: 1000, state: 'pending', project: project)
     end
     it{ should == @confirmed.value + @waiting.value }
   end
@@ -421,8 +421,8 @@ describe Project do
     end
   end
 
-  describe "#total_backers" do
-    subject{ project.total_backers }
+  describe "#total_contributions" do
+    subject{ project.total_contributions }
     context "when project_total is nil" do
       before do
         project.stub(:project_total).and_return(nil)
@@ -432,7 +432,7 @@ describe Project do
     context "when project_total exists" do
       before do
         project_total = mock()
-        project_total.stub(:total_backers).and_return(1)
+        project_total.stub(:total_contributions).and_return(1)
         project.stub(:project_total).and_return(project_total)
       end
       it{ should == 1 }
@@ -477,8 +477,8 @@ describe Project do
     let(:reward_03) { create(:reward, project: project) }
 
     before do
-      create(:backer, state: 'confirmed', project: project, reward: reward_01)
-      create(:backer, state: 'confirmed', project: project, reward: reward_03)
+      create(:contribution, state: 'confirmed', project: project, reward: reward_01)
+      create(:contribution, state: 'confirmed', project: project, reward: reward_03)
     end
 
     subject { project.selected_rewards }
@@ -492,21 +492,21 @@ describe Project do
     it{ should == channel }
   end
 
-  describe '#pending_backers_reached_the_goal?' do
+  describe '#pending_contributions_reached_the_goal?' do
     let(:project) { create(:project, goal: 200) }
 
     before { project.stub(:pleged) { 100 } }
 
-    subject { project.pending_backers_reached_the_goal? }
+    subject { project.pending_contributions_reached_the_goal? }
 
-    context 'when reached the goal with pending backers' do
-      before { 2.times { create(:backer, project: project, value: 120, state: 'waiting_confirmation') } }
+    context 'when reached the goal with pending contributions' do
+      before { 2.times { create(:contribution, project: project, value: 120, state: 'waiting_confirmation') } }
 
       it { should be_true }
     end
 
-    context 'when dont reached the goal with pending backers' do
-      before { 2.times { create(:backer, project: project, value: 30, state: 'waiting_confirmation') } }
+    context 'when dont reached the goal with pending contributions' do
+      before { 2.times { create(:contribution, project: project, value: 30, state: 'waiting_confirmation') } }
 
       it { should be_false }
     end

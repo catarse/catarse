@@ -7,12 +7,12 @@
   table.table.table-striped
     thead
       th= t('credits.index.project')
-      th= t('credits.index.back_date')
+      th= t('credits.index.contribution_date')
       th= t('credits.index.value')
       th= t('credits.index.refund_expiration_date_html')
       th= t('credits.index.status')
     - @credits.each do |credit|
-      tr[id="back_#{credit.id}"]
+      tr[id="contribution_#{credit.id}"]
         td.project_name
           = link_to credit.project.name, credit.project, class: 'link_project'
         td.date= I18n.l(credit.created_at.to_date)
@@ -35,7 +35,7 @@
                   .modal-footer
                     button type='button' data-dismiss="modal" class="btn"
                       = t('credits.modal.reject_btn')
-                    = link_to request_refund_user_backer_path(@user, credit), class: 'btn' do
+                    = link_to request_refund_user_contribution_path(@user, credit), class: 'btn' do
                       = t('credits.modal.accept_btn')
               = link_to t('credits.index.request_refund'), "#requestRefundModal#{credit.id}", data: {toggle: 'modal'}, class: 'link_project'
 .bootstrap-alert

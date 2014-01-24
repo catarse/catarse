@@ -14,18 +14,19 @@ The official repo is https://github.com/catarse/catarse
 
 ### Quick Installation
 
+**IMPORTANT**: Make sure you have postgresql-contrib ([Aditional Modules](http://www.postgresql.org/docs/9.3/static/contrib.html)) installed on your system.
+
+
 ```bash
 $ git clone https://github.com/catarse/catarse.git
 $ cd catarse
-$ mv config/database.sample.yml config/database.yml
+$ cp config/database.sample.yml config/database.yml
 $ vim config/database.yml 
 # change username/password and save
 $ bundle install
 $ rake db:create db:migrate db:seed
 $ rails server 
 ```
-
-If your migrations don't run, make sure you have postgresql-contrib installed on your system.
 
 ### Translations
 

@@ -4,19 +4,19 @@ require 'spec_helper'
 describe StaticController do
   render_views
   subject{ response }
-  
+
   describe 'GET thank_you' do
-    let(:backer) { FactoryGirl.create(:backer) }
-    
-    context 'with a session with backer' do
+    let(:contribution) { FactoryGirl.create(:contribution) }
+
+    context 'with a session with contribution' do
       before do
-        request.session[:thank_you_backer_id] = backer.id
-        get :thank_you, { locale: :pt } 
+        request.session[:thank_you_contribution_id] = contribution.id
+        get :thank_you, { locale: :pt }
       end
-      
-      it{ should redirect_to(project_backer_path(backer.project, backer)) }
+
+      it{ should redirect_to(project_contribution_path(contribution.project, contribution)) }
     end
-    
+
     context 'without session' do
       it{ should be_successful }
     end

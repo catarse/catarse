@@ -14,7 +14,7 @@ App.addChild('ReviewForm', _.extend({
   acceptTerms: function(){
     if(this.validate()){
       $('#payment').show();
-      this.updateBacker();
+      this.updateContribution();
     } else {
       return false;
     }
@@ -27,8 +27,8 @@ App.addChild('ReviewForm', _.extend({
     }
   },
 
-  updateBacker: function(){
-    var backer_data = {
+  updateContribution: function(){
+    var contribution_data = {
       payer_name: this.$('#user_full_name').val(),
       payer_email: this.$('#user_email').val(),
       address_street: this.$('#user_address_street').val(),
@@ -42,7 +42,7 @@ App.addChild('ReviewForm', _.extend({
     }
     $.post(this.$el.data('update-info-path'), {
       _method: 'put',
-      backer: backer_data
+      contribution: contribution_data
     });
   }
 }, Skull.Form));

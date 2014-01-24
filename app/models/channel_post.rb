@@ -3,7 +3,7 @@ class ChannelPost < ActiveRecord::Base
 
   schema_associations
 
-  validates_presence_of :user_id, :channel_id, :body, :body_html
+  validates_presence_of :user_id, :channel_id, :body, :body_html, :title
   #remove all whitespace from the start of the line so auto_html won't go crazy
   before_save -> {self.body = body.gsub(/^[^\S\n]+/, "")}
 

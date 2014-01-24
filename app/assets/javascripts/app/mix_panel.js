@@ -5,7 +5,7 @@ App.addChild('MixPanel', {
     this.user = null;
     this.trackUserClickOnProjectsImage();
     this.trackUserClickOnProjectsTitle();
-    this.trackUserClickOnBackButton();
+    this.trackUserClickOnContributeButton();
     this.trackUserClickOnReviewAndMakePayment();
     this.trackUserClickOnAcceptTerms();
     this.trackUserClickOnPaymentButton();
@@ -46,7 +46,7 @@ App.addChild('MixPanel', {
   },
 
   trackUserClickOnReviewAndMakePayment: function(){
-    this.trackOnMixPanel('input#backer_submit', 'click', 'Clicked on Review and Make Payment');
+    this.trackOnMixPanel('input#contribution_submit', 'click', 'Clicked on Review and Make Payment');
   },
 
   trackUserClickOnAcceptTerms: function(){
@@ -57,8 +57,8 @@ App.addChild('MixPanel', {
     this.trackOnMixPanel('form.moip input[type="submit"]', 'click', 'Made a payment')
   },
 
-  trackUserClickOnBackButton: function(){
-    this.trackOnMixPanel('#back_project_form input', 'click', 'Clicked on Back this project');
+  trackUserClickOnContributeButton: function(){
+    this.trackOnMixPanel('#contribute_project_form input', 'click', 'Clicked on Contribute this project');
   },
 
   trackUserClickOnProjectsImage: function(){
