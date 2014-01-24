@@ -10,9 +10,28 @@ describe UsersController do
 
   let(:successful_project){ FactoryGirl.create(:project, state: 'successful') }
   let(:failed_project){ FactoryGirl.create(:project, state: 'failed') }
-  let(:backer){ FactoryGirl.create(:backer, state: 'confirmed', user: user, project: failed_project) }
+  let(:contribution){ FactoryGirl.create(:contribution, state: 'confirmed', user: user, project: failed_project) }
   let(:user){ FactoryGirl.create(:user, password: 'current_password', password_confirmation: 'current_password', authorizations: [FactoryGirl.create(:authorization, uid: 666, oauth_provider: FactoryGirl.create(:oauth_provider, name: 'facebook'))]) }
   let(:current_user){ user }
+
+  describe "GET unsubscribe_notifications" do
+    context "when user is loged" do
+      before do
+        get :unsubscribe_notifications, id: user.id, locale: 'pt'
+      end
+
+      it { should redirect_to user_path(user, anchor: 'unsubscribes')  }
+    end
+
+    context "when user is not loged" do
+      let(:current_user) { nil }
+      before do
+        get :unsubscribe_notifications, id: user.id, locale: 'pt'
+      end
+
+      it { should_not redirect_to user_path(user, anchor: 'unsubscribes')  }
+    end
+  end
 
   describe "PUT update" do
     before do

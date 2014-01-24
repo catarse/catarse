@@ -38,7 +38,7 @@ FactoryGirl.define do
     f.online_days 5
     f.how_know 'Lorem ipsum'
     f.more_links 'Ipsum dolor'
-    f.first_backers 'Foo bar'
+    f.first_contributions 'Foo bar'
     f.video_url 'http://vimeo.com/17298435'
     f.state 'online'
   end
@@ -50,7 +50,7 @@ FactoryGirl.define do
 
   factory :notification do |f|
     f.association :user, factory: :user
-    f.association :backer, factory: :backer
+    f.association :contribution, factory: :contribution
     f.association :project, factory: :project
     f.template_name 'project_success'
     f.origin_name 'Foo Bar'
@@ -65,7 +65,7 @@ FactoryGirl.define do
     f.days_to_delivery 10
   end
 
-  factory :backer do |f|
+  factory :contribution do |f|
     f.association :project, factory: :project
     f.association :user, factory: :user
     f.confirmed_at Time.now
@@ -75,7 +75,7 @@ FactoryGirl.define do
   end
 
   factory :payment_notification do |f|
-    f.association :backer, factory: :backer
+    f.association :contribution, factory: :contribution
     f.extra_data {}
   end
 

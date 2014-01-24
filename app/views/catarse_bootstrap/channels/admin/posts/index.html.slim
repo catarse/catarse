@@ -6,7 +6,7 @@
   .clearfix
   .row
     .large-4.columns
-      = link_to 'Nova postagem', new_channels_admin_post_path, class: [:button, :medium, :negative]
+      = link_to 'Nova postagem', new_channels_admin_post_path, class: [:button, :medium, :action]
   br/
   br/
 
@@ -25,7 +25,7 @@
       tbody
         - collection.each do |resource|
           tr id=resource.id class=cycle("even", "odd")
-            td.large-4.columns= resource.title
+            td.large-4.columns= link_to resource.title, channels_admin_post_path(resource)
             td.large-2.columns= (resource.visible ? t('yes') : t('no'))
             td.large-4.columns= l(resource.created_at)
             td.large-2.columns.project-events-dropdown
@@ -35,7 +35,10 @@
                 - else
                   li= link_to t('channels.admin.table.publish_action'), channels_admin_post_path(resource, channel_post: { visible: true }), method: :put
                 li= link_to t('channels.admin.table.show_action'), channels_admin_post_path(resource)
-                li= link_to t('channels.admin.table.edit_action'), edit_channels_admin_post_path(resource)
+                - unless resource.visible
+                  li= link_to t('channels.admin.table.edit_action'), edit_channels_admin_post_path(resource)
                 li= link_to t('channels.admin.table.destroy_action'), channels_admin_post_path(resource), method: :delete, data: { confirm: t('channels.admin.confirmations.destroy') }
 
   = paginate collection
+
+= render 'shared/footer_channel'

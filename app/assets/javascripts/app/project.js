@@ -11,7 +11,7 @@ App.addChild('Project', _.extend({
     this.$embed= this.$('#project_embed');
     this.route('about');
     this.route('updates');
-    this.route('backers');
+    this.route('contributions');
     this.route('comments');
     this.route('edit');
     this.route('reports');

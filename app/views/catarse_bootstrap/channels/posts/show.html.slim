@@ -1,23 +1,40 @@
 = render 'shared/header_channel'
 = content_for :title, channel.name
+= content_for :meta_tags do
+  meta property="og:title"        content=resource.title
+  meta property="og:type"         content=:cause
+  meta property="og:url"          content=url_for(only_path: false)
+  meta property="og:image"        content=channel.image.curator_thumb.url
+  meta property="og:site_name"    content=channel.name
+  meta property="fb:app_id"       content=Configuration[:facebook_app_id]
+  meta property="og:description"  content=channel.description
 
-section.line-box
-  .row
-    .large-12.columns
-      .presentation
-        h1.channel-title
-          = resource.title
-
-br/
 
 article.row.channel-posts-wrapper
-  section.large-9.columns.channel-post
+  br/
+  br/
+  .large-9.columns
+    = link_to 'Voltar para listagem', channels_posts_path, class: 'navigation-link'
+    br/
+    br/
+  section.large-9.columns
+    h1.channel-post-title
+      = resource.title
+    p= l(resource.created_at, format: :updates)
     == resource.body_html
+    br/
+    br/
+    .row
+      .large-1.columns
+        .twitter_share= render_twitter text: "#{resource.title}", url: channels_post_url(resource, locale: I18n.locale)
+      .large-6.columns.left
+        .facebook_share= render_facebook_like href: channels_post_url(resource, locale: I18n.locale), width: '360'
+    .large-3.columns
   .large-3.columns
 
 br/
 
-article.row.channel-posts-comments-wrapper
+/article.row.channel-posts-comments-wrapper
   section.large-9.columns.channel-posts-comments
     #channel_posts_comments
 

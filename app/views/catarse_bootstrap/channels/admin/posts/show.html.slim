@@ -1,18 +1,37 @@
 = render 'shared/header_channel'
 = content_for :title, channel.name
 
-section.line-box
+section
   .row
+    .large-2.columns
+      br/
+      br/
+      = link_to 'Voltar para listagem', channels_admin_posts_path, class: 'navigation-link'
+      br/
+      br/
+      br/
+
     .large-12.columns
       .presentation
         h1.channel-title
           = resource.title
+        p= l(resource.created_at, format: :updates)
 
+article.row.channel-posts-wrapper
+  section.large-9.columns.channel-post
+    == resource.body_html
+  .large-3.columns
+
+br/
 br/
 
 article.row.channel-posts-wrapper
-    section.large-9.columns.channel-post
-      == resource.body_html
-    .large-3.columns
+  - unless resource.visible
+    .large-2.columns.left
+      = link_to t('channels.admin.table.edit_action'), edit_channels_admin_post_path(resource), class: [:button, :negative, :medium]
+    .large-2.columns.left
+      = link_to t('channels.admin.table.publish_action'), channels_admin_post_path(resource, channel_post: { visible: true }), method: :put, class: [:button, :action, :medium]
 
+br/
+br/
 = render 'shared/footer_channel'

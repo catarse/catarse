@@ -2,13 +2,13 @@ class UserDecorator < Draper::Decorator
   decorates :user
   include Draper::LazyHelpers
 
-  def backs_text
-    if source.total_backed_projects == 2
-      I18n.t('user.backs_text.two')
-    elsif source.total_backed_projects > 1
-      I18n.t('user.backs_text.many', total: (source.total_backed_projects-1))
+  def contributions_text
+    if source.total_contributed_projects == 2
+      I18n.t('user.contributions_text.two')
+    elsif source.total_contributed_projects > 1
+      I18n.t('user.contributions_text.many', total: (source.total_contributed_projects-1))
     else
-      I18n.t('user.backs_text.one')
+      I18n.t('user.contributions_text.one')
     end
   end
 
@@ -47,7 +47,7 @@ class UserDecorator < Draper::Decorator
     number_to_currency source.credits
   end
 
-  def display_total_of_backs
-    number_to_currency source.backs.with_state('confirmed').sum(:value)
+  def display_total_of_contributions
+    number_to_currency source.contributions.with_state('confirmed').sum(:value)
   end
 end

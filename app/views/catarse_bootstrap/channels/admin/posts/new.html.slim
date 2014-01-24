@@ -1,15 +1,16 @@
 = render 'shared/header_channel'
-
-.row.admin-posts
-
-  br/
-  br/
-  .large-2.columns
-    = link_to 'Voltar para listagem', channels_admin_posts_path, class: [:button, :small, :negative]
-
-  .large-12.columns
-    h1
-      = @title = "Criar Novidade"
-    .clearfix
-
-    = render 'form', url: channels_admin_posts_path
+section
+  .row.admin-posts
+  
+    br/
+    br/
+    .large-2.columns
+      = link_to 'Voltar para listagem', channels_admin_posts_path, class: 'navigation-link'
+  
+    .large-12.columns
+      h1
+        = @title = "Criar novidade"
+  
+      = render 'form', url: channels_admin_posts_path
+  
+= render 'shared/footer_channel'

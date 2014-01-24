@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Notification do
-  let(:backer){ create(:backer) }
+  let(:contribution){ create(:contribution) }
 
   before do
     Sidekiq::Testing.fake!
@@ -13,7 +13,7 @@ describe Notification do
   describe "Associations" do
     it{ should belong_to :user }
     it{ should belong_to :project }
-    it{ should belong_to :backer }
+    it{ should belong_to :contribution }
     it{ should belong_to :project_update }
   end
 

@@ -5,12 +5,8 @@ class Channels::Admin::PostsController < Admin::BaseController
   inherit_resources
   defaults resource_class: ChannelPost
 
-  def create
-    create! { channels_admin_posts_path }
-  end
-
-  def update
-    update! { channels_admin_posts_path }
+  def edit
+    return redirect_to channels_admin_posts_path if resource.visible
   end
 
   def begin_of_association_chain
@@ -24,7 +20,7 @@ class Channels::Admin::PostsController < Admin::BaseController
   protected
 
   def create_resource(object)
-    object.user = current_user
+    object.user_id = current_user.id
     super
   end
 end

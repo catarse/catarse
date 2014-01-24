@@ -16,7 +16,7 @@ describe("ProjectSidebar", function() {
 
     it("should get reward and get its url", function() {
       expect(view.$).wasCalledWith('reward');
-      expect(reward.data).wasCalledWith('new_backer_url');
+      expect(reward.data).wasCalledWith('new_contribution_url');
     });
 
     it("should navigate to URL", function() {
@@ -45,10 +45,10 @@ describe("ProjectSidebar", function() {
           placeholder: "ui-state-highlight",
           start: jasmine.any(Function),
           stop: jasmine.any(Function),
-          update: jasmine.any(Function) 
+          update: jasmine.any(Function)
         });
       });
-    });  
+    });
 
     describe("when I can not update rewards", function() {
       beforeEach(function() {
@@ -64,8 +64,8 @@ describe("ProjectSidebar", function() {
         expect(view.$rewards.sortable).wasNotCalled();
       });
     });
-  });  
-  
+  });
+
   describe("#showNewRewardForm", function() {
     var event = {
       preventDefault: function() {},
@@ -96,10 +96,10 @@ describe("ProjectSidebar", function() {
       expect(view.$).wasCalledWith('selector');
       expect(form.fadeIn).wasCalled();
     });
-    
+
     it("should call preventDefault", function() {
        expect(event.preventDefault).wasCalled();
     });
-  });  
-  
+  });
+
 });

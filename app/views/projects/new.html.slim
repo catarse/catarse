@@ -102,10 +102,10 @@
               .bootstrap-alert
                 span
                 .alert
-                  .important= t('.first_backers_important')
-              = form.label :first_backers, t('formtastic.labels.project.first_backers')
-              = form.text_area :first_backers, class: "#{'error' if @project.errors[:first_backers].present?}"
-              p.inline-hints= t('formtastic.hints.project.first_backers')
+                  .important= t('.first_contributions_important')
+              = form.label :first_contributions, t('formtastic.labels.project.first_contributions')
+              = form.text_area :first_contributions, class: "#{'error' if @project.errors[:first_contributions].present?}"
+              p.inline-hints= t('formtastic.hints.project.first_contributions')
 
             .input
               .bootstrap-alert
