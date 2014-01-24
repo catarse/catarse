@@ -37,4 +37,37 @@ describe ProjectPolicy do
     it_should_behave_like "create permissions"
   end
 
+  describe "#permitted?" do
+    context "when user is nil" do
+      let(:policy){ ProjectPolicy.new(nil, Project.new) }
+      [:about, :video_url, :uploaded_image, :headline].each do |field|
+        context "when field is #{field}" do
+          subject{ policy.permitted?(field) }
+          it{ should be_true }
+        end
+      end
+      context "when field is title" do
+        subject{ policy.permitted?(:title) }
+        it{ should be_false }
+      end
+    end
+    context "when user is admin" do
+      let(:user){ create(:user) }
+      let(:project){ create(:project) }
+      let(:policy){ ProjectPolicy.new(user, project) }
+
+      before do
+        user.admin = true
+        user.save!
+      end
+
+      Project.attribute_names.each do |field|
+        context "when field is #{field}" do
+          subject{ policy.permitted?(field) }
+          it{ should be_true }
+        end
+      end
+    end
+  end
+
 end
