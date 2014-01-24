@@ -37,6 +37,21 @@ describe ProjectPolicy do
     it_should_behave_like "create permissions"
   end
 
+  describe "#permitted_for?" do
+    context "when user is nil and I want to update about" do
+      let(:policy){ ProjectPolicy.new(nil, Project.new) }
+      subject{ policy.permitted_for?(:about, :update) }
+      it{ should be_false }
+    end
+
+    context "when user is project owner and I want to update about" do
+      let(:project){ create(:project) }
+      let(:policy){ ProjectPolicy.new(project.user, project) }
+      subject{ policy.permitted_for?(:about, :update) }
+      it{ should be_true }
+    end
+  end
+
   describe "#permitted?" do
     context "when user is nil" do
       let(:policy){ ProjectPolicy.new(nil, Project.new) }

@@ -38,6 +38,10 @@ class ApplicationPolicy
     Pundit.policy_scope!(user, record.class)
   end
 
+  def permitted_for?(field, operation)
+    permitted?(field) && send("#{operation}?")
+  end
+
   def permitted?(field)
     permitted_attributes.values.first.include? field
   end
