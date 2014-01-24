@@ -56,27 +56,27 @@
           / we need to remove the locale from the url
           fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}"
           | )
-        - if can? :update, @project
+        - if policy(@project).update?
           = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do
             = t('.menu.edit')
           = link_to '#reports', 'id' => 'reports_link', 'data-target' => '#project_reports' do
             = t('.menu.reports')
     .main
       #project_content
-        - if can? :update, @project
+        - if policy(@project).update?
           #project_reports.content.hide
             = render partial: 'project_reports'
           #project_edit.content.hide
             = render partial: 'project_edit'
 
         #project_updates.content.hide[data-path=project_updates_path(project_id: @project.id)]
-          - if can? :update, @project
+          - if policy(@project).update?
             = render template: 'projects/updates/new'
           .results &nbsp;
           .clearfix
           #updates-loading.loading= image_tag "loading.gif"
         #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
-          - if can?(:update, @project)
+          - if policy(@project).update?
             = radio_button_tag(:contribution_state, "available_to_count", checked: true)
             = label_tag(:contribution_state, t('projects.project_contributions.confirmed'))
             = radio_button_tag(:contribution_state, "waiting_confirmation")
@@ -142,7 +142,7 @@
                 = link_to @project.user.other_link, @project.user.other_link, target: '_blank'
 
         .clearfix
-        - if can?(:update, @project)
+        - if policy(@project).update?
           .bootstrap-twitter.bootstrap-form
             .alert.alert-info
               h4.alert-header= t('.no_rewards_warning_title')
@@ -163,7 +163,7 @@
                 a class='skull-modal-close' href='javascript:void(0);' &times;
               .skull-modal-body
                 = image_tag 'loading.gif'
-        #rewards[data-can_update="#{can?(:update, @project)}" data-index_path=project_rewards_path(@project)]
+        #rewards[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
           .reward-loader= image_tag 'loading.gif'
 
     .clearfix
