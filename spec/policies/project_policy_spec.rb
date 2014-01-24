@@ -78,7 +78,7 @@ describe ProjectPolicy do
 
       Project.attribute_names.each do |field|
         context "when field is #{field}" do
-          subject{ policy.permitted?(field) }
+          subject{ policy.permitted?(field.to_sym) }
           it{ should be_true }
         end
       end
