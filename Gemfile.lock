@@ -506,5 +506,5 @@ DEPENDENCIES
   uglifier
   unicorn
   validation_reflection!
-  video_info (>= 1.1.1)
+  video_info (>= 1.1.1, < 2)
   weekdays
