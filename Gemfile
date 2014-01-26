@@ -73,7 +73,7 @@ gem 'validation_reflection',      git: 'git://github.com/ncri/validation_reflect
 gem 'inherited_resources',        '1.3.1'
 gem 'has_scope'
 gem 'spectator-validates_email',  require: 'validates_email'
-gem 'video_info', '>= 1.1.1'
+gem 'video_info', '>= 1.1.1', '< 2'
 gem 'enumerate_it'
 gem 'httparty', '~> 0.6.1' # this version is required by moip gem, otherwise payment confirmation will break
 
