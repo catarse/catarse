@@ -16,8 +16,6 @@ class Ability
     end
 
     # NOTE: Project authorizations
-    can :create, :projects if current_user.persisted?
-
     can :update, :projects, [:about, :video_url, :uploaded_image, :headline ] do |project|
       project.user == current_user && ( project.online? || project.waiting_funds? || project.successful? || project.failed? )
     end
@@ -25,11 +23,6 @@ class Ability
     can :update, :projects do |project|
       project.user == current_user && ( project.draft? || project.rejected? || project.in_analysis? )
     end
-
-    can :send_to_analysis, :projects do |project|
-      project.user == current_user
-    end
-
 
     # NOTE: Reward authorizations
     can :create, :rewards do |reward|

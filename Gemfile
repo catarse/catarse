@@ -49,6 +49,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook', '1.4.0'
 gem 'devise', '~> 3.0.2'
 gem 'ezcrypto'
+gem 'pundit'
 
 # See https://github.com/ryanb/cancan/tree/2.0 for help about this
 # In resume: this version of cancan allow checking for authorization on specific fields on the model
