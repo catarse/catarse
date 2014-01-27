@@ -19,7 +19,6 @@ class Project < ActiveRecord::Base
 
   has_and_belongs_to_many :channels
   has_one :project_total
-  has_many :rewards
   accepts_nested_attributes_for :rewards
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
