@@ -1,5 +1,5 @@
 br
-- if can? :update, @project
+- if policy(@project).update?
   #project_warning.bootstrap-alert
     .alert.alert-warning
       i Bem-vindo ao Rascunho!

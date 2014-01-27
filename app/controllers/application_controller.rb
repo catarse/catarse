@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include Concerns::ExceptionHandler
   include Concerns::MenuHandler
   include Concerns::SocialHelpersHandler
+  include Pundit
 
   layout :use_catarse_boostrap
   protect_from_forgery

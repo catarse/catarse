@@ -69,7 +69,7 @@ Catarse::Application.routes.draw do
     resources :contribution_reports_for_project_owners, only: [:index]
   end
 
-  resources :projects do
+  resources :projects, only: [:index, :create, :update, :new, :show] do
     resources :updates, controller: 'projects/updates', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
       member do

@@ -1,4 +1,4 @@
-- if can? :update, @project
+- if policy(@project).update?
   br
   #project_warning.bootstrap-alert
     .alert.alert-warning

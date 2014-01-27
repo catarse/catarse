@@ -17,7 +17,6 @@ describe Ability do
 
     it { should_not be_able_to(:access, :all) }
     it { should be_able_to(:update, project) }
-    it { should be_able_to(:create, :projects) }
     it { should be_able_to(:update, reward)}
 
     describe "when project is approved" do
@@ -106,7 +105,6 @@ describe Ability do
 
     it { should_not be_able_to(:access, :all) }
     it { should_not be_able_to(:update, project) }
-    it { should be_able_to(:create, :projects) }
     it { should_not be_able_to(:update, reward)}
   end
 
