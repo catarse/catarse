@@ -79,9 +79,6 @@ class Project < ActiveRecord::Base
     where("id IN (SELECT project_id FROM contributions b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
   }
 
-  scope :created_by, ->(user_id){
-    where("id IN (SELECT id FROM projects WHERE user_id = ?)", user_id)
-  }
 
   scope :from_channels, ->(channels){
     where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id AND cp.channel_id = ?)", channels)
