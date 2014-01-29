@@ -160,10 +160,6 @@ class User < ActiveRecord::Base
     Project.contributed_by(self.id)
   end
 
-  def created_projects
-    Project.created_by(self.id)
-  end
-
   def fix_twitter_user
     self.twitter.gsub!(/@/, '') if self.twitter
   end
