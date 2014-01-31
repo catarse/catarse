@@ -9,5 +9,6 @@ class Channels::Admin::FollowersController < Admin::BaseController
 
   def index
     @total_subscribers = @channel.subscribers.count
+    @subscribers = channel.subscribers.page(params[:page])
   end
 end

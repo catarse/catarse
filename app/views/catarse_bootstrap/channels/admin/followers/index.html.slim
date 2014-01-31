@@ -1,6 +1,6 @@
 = render 'shared/header_channel'
 
-section.row
+.row
   .statistics
     .large-4.columns
       h1
@@ -9,5 +9,24 @@ section.row
         = @total_subscribers
     .large-2.columns
       = link_to t('channels.admin.followers.download'), channels_admin_reports_subscriber_reports_path(format: :csv), class: 'button medium action'
+.row
+  = paginate @subscribers
+  - if @subscribers.empty?
+    = t('.no_subscribers')
+  - else
+    table
+      thead
+        tr
+          th.large-4.columns= t('channels.admin.table.user')
+          th.large-1.columns= t('channels.admin.table.contributed_projects')
+          th.large-1.columns= t('channels.admin.table.created_projects')
+      tbody
+        - @subscribers.each do |subscriber|
+          tr id=subscriber.id class=cycle("even", "odd")
+            td.large-4.columns= link_to subscriber.name, user_path(subscriber)
+            td.large-1.columns= subscriber.contributed_projects.count
+            td.large-1.columns= subscriber.projects.count
 
+ 
+  = paginate @subscribers
 = render 'shared/footer_channel'

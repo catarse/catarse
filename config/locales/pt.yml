@@ -730,6 +730,9 @@ pt:
         edit_action: 'Editar'
         destroy_action: 'Deletar'
         name: "Título"
+        user: "Usuário"
+        contributed_projects: "Projetos apoiados"
+        created_projects: "Projeto criados"
         category: "Categoria"
         user_id: "Usuário"
         goal: "Meta"
