@@ -1,6 +1,7 @@
 class Projects::UpdatesController < ApplicationController
+  after_filter :verify_authorized, except: %i[index show]
   inherit_resources
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   actions :index, :create, :destroy
   belongs_to :project
@@ -14,11 +15,14 @@ class Projects::UpdatesController < ApplicationController
   end
 
   def create
-    @update = parent.updates.create(params[:update].merge!(user: current_user))
+    @update = parent.updates.new(params[:update].merge!(user: current_user))
+    authorize @update
+    @update.save
     render @update
   end
 
   def destroy
+    authorize resource
     destroy!{|format| return index }
   end
 
