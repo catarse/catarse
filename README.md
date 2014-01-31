@@ -4,7 +4,7 @@ The first crowdfunding platform from Brazil
 
 ## An open source crowdfunding platform for creative projects
 
-Welcome to Catarse's source code repository. 
+Welcome to Catarse's source code repository.
 Our goal with opening the source code is to stimulate the creation of a community of developers around a high-quality crowdfunding platform.
 
 You can see the software in action in http://catarse.me.
@@ -21,26 +21,27 @@ The official repo is https://github.com/catarse/catarse
 $ git clone https://github.com/catarse/catarse.git
 $ cd catarse
 $ cp config/database.sample.yml config/database.yml
-$ vim config/database.yml 
+$ vim config/database.yml
 # change username/password and save
 $ bundle install
 $ rake db:create db:migrate db:seed
-$ rails server 
+$ rails server
 ```
 
 ### Translations
 
-We hope to support a lot of languages in the future. 
-So we are willing to accept pull requests with translations to other languages. 
+We hope to support a lot of languages in the future.
+So we are willing to accept pull requests with translations to other languages.
 
 Thanks a lot to Daniel Walmsley, from http://purpose.com, for starting the internationalization and beginning the english translation.
 
 ## Payment gateways
 
-Currently, we support MoIP and PayPal through our payment engines. Payment engines are extensions to Catarse that implement a specific payment gateway logic. 
-The two current working engines are:
+Currently, we support MoIP, PayPal and WePay through our payment engines. Payment engines are extensions to Catarse that implement a specific payment gateway logic.
+The current working engines are:
 * MoIP
 * PayPal
+* WePay
 
 If you have created a different payment engine to Catarse please contact us so we can link your engine here.
 If you want to create a payment engine please join our mailing list at http://groups.google.com/group/catarse-dev
@@ -65,7 +66,7 @@ We use RSpec for the tests, and the best practices are:
 * Create one acceptance tests for each scenario of the feature you are trying to implement.
 * Create model and controller tests to keep 100% of code coverage at least in the new parts that you are writing.
 * Feel free to add specs to the code that is already in the repository without the proper coverage ;)
-* Regard the existing tests for a style guide, we try to use implicit spec subjects and lazy evaluation as often as we can. 
+* Regard the existing tests for a style guide, we try to use implicit spec subjects and lazy evaluation as often as we can.
 
 ## Credits
 
