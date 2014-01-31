@@ -40,7 +40,7 @@ describe Projects::UpdatesController do
     end
 
     context "When user is a registered user but don't the project owner" do
-      let(:current_user){ FactoryGirl.create(:user) }
+      let(:current_user){ create(:project).user }
       it{ Update.where(project_id: update.project.id).count.should == 1}
     end
 
