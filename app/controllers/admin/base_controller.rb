@@ -9,7 +9,7 @@ class Admin::BaseController < ApplicationController
       if resource.errors.empty?
         format.json { respond_with_bip(resource) }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { respond_with_bip(resource) }
       end
     end
