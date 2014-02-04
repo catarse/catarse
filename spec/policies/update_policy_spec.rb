@@ -74,13 +74,13 @@ describe UpdatePolicy do
 
       subject { UpdatePolicy::Scope.new(user, project.updates).resolve }
 
-      context "when user is a contribution" do
+      context "when user is a contributor" do
         let(:user) { create(:contribution, state: 'confirmed', project: project).user }
 
         it { should have(2).itens }
       end
 
-      context "when user is not a contribution" do
+      context "when user is not a contributor" do
         let(:user) { create(:contribution, state: 'pending', project: project).user }
 
         it { should eq([@update]) }
