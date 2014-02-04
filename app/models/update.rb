@@ -9,18 +9,11 @@ class Update < ActiveRecord::Base
 
   catarse_auto_html_for field: :comment, video_width: 560, video_height: 340
 
-  scope :visible_to, ->(user) {
-    user_id = user.try(:id)
-
-    return if user.try(:admin?)
-
-    where(
-      "not exclusive
-      or exists(select true from contributions b where b.user_id = :user_id and b.state = 'confirmed' and b.project_id = updates.project_id)
-      or exists(select true from projects p where p.user_id = :user_id and p.id = updates.project_id)",
-      { user_id: user_id }
-    )
+  scope :for_non_contributors, ->() {
+    where("not exclusive")
   }
+
+  scope :ordered, order("created_at desc")
 
   def update_number
     self.project.updates.where('id <= ?', self.id).count

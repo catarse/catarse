@@ -277,4 +277,21 @@ describe User do
       it{ should == 'http://facebook.com/foo' }
     end
   end
+
+  describe "#made_any_contribution_for_this_project?" do
+    let(:project) { create(:project) }
+    subject { user.made_any_contribution_for_this_project?(project.id) }
+
+    context "when user have contributions for the project" do
+      before do
+        create(:contribution, project: project, state: 'confirmed', user: user)
+      end
+
+      it { should be_true }
+    end
+
+    context "when user don't have contributions for the project" do
+      it { should be_false }
+    end
+  end
 end
