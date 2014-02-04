@@ -18,8 +18,7 @@ describe UpdatePolicy do
     end
 
     it "should permit access if user is admin" do
-      admin = User.new
-      admin.admin = true
+      admin = build(:user, admin: true)
       should permit(admin, Update.new(project: create(:project)))
     end
   end
@@ -41,8 +40,8 @@ describe UpdatePolicy do
       let(:policy){ UpdatePolicy.new(nil, build(:update)) }
       subject{ policy }
 
-      [:title, :comment, :exclusive].each do |field|
-        it{ should_not be_permitted(field.to_sym) }
+      %i[title comment exclusive].each do |field|
+        it{ should_not be_permitted(field) }
       end
     end
     context "when user is admin" do
@@ -57,8 +56,8 @@ describe UpdatePolicy do
         user.save!
       end
 
-      [:title, :comment, :exclusive].each do |field|
-        it{ should be_permitted(field.to_sym) }
+      %i[title comment exclusive].each do |field|
+        it{ should be_permitted(field) }
       end
     end
   end
