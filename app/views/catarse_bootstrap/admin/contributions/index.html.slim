@@ -27,6 +27,9 @@
         = form.input :by_key, as: :string, label: t('.key')
       .large-3.columns
     .row
+      .large-5.columns
+        = form.input :credits, as: :boolean, label: t('.credits')
+    .row
       .large-2.large-offset-10.columns
         = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
 
