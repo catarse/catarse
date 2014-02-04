@@ -97,14 +97,14 @@ describe Admin::ContributionsController do
     context "when I'm not logged in" do
       let(:current_user){ nil }
       before do
-        get :index, :locale => :pt
+        get :index, locale: :pt
       end
       it{ should redirect_to new_user_registration_path }
     end
 
     context "when I'm logged as admin" do
       before do
-        get :index, :locale => :pt
+        get :index, locale: :pt
       end
       its(:status){ should == 200 }
     end

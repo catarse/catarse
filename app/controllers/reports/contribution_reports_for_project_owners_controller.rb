@@ -4,7 +4,7 @@ class Reports::ContributionReportsForProjectOwnersController < Reports::BaseCont
   def index
     @report = end_of_association_chain.to_xls( columns: I18n.t('contribution_report_to_project_owner').values )
     super do |format|
-      format.xls { send_data @report, :filename => 'apoiadores.xls' }
+      format.xls { send_data @report, filename: 'apoiadores.xls' }
     end
   end
 
