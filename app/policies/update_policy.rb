@@ -1,5 +1,19 @@
 class UpdatePolicy < ApplicationPolicy
 
+  self::Scope = Struct.new(:user, :scope) do
+
+    def resolve
+      project = scope.proxy_association.owner
+
+      if user && (user.try(:admin) || user.project_ids.include?(project.id) || user.made_any_contribution_for_this_project?(project.id))
+        scope.load
+      else
+        scope.for_non_contributors
+      end
+    end
+
+  end
+
   def create?
     done_by_onwer_or_admin?
   end
