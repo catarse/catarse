@@ -1,19 +1,20 @@
 class UpdatePolicy < ApplicationPolicy
+
   def create?
     done_by_onwer_or_admin?
   end
 
   def update?
-    create?
+    done_by_onwer_or_admin?
   end
 
   def destroy?
-    create?
+    done_by_onwer_or_admin?
   end
 
   def permitted_attributes
     if done_by_onwer_or_admin?
-      { update: [:title, :comment, :exclusive] }
+      { update: [:title, :comment, :exclusive, :user_id] }
     else
       { update: [] }
     end

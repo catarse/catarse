@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe UpdatePolicy do
-  subject{ UpdatePolicy }
+  subject { UpdatePolicy }
 
   shared_examples_for "create permissions" do
     it "should deny access if user is nil" do
@@ -39,11 +39,10 @@ describe UpdatePolicy do
   describe "#permitted?" do
     context "when user is nil" do
       let(:policy){ UpdatePolicy.new(nil, build(:update)) }
+      subject{ policy }
+
       [:title, :comment, :exclusive].each do |field|
-        context "when field is #{field}" do
-          subject{ policy.permitted?(field) }
-          it{ should be_false }
-        end
+        it{ should_not be_permitted(field.to_sym) }
       end
     end
     context "when user is admin" do
@@ -51,16 +50,15 @@ describe UpdatePolicy do
       let(:update){ create(:update) }
       let(:policy){ UpdatePolicy.new(user, update) }
 
+      subject{ policy }
+
       before do
         user.admin = true
         user.save!
       end
 
       [:title, :comment, :exclusive].each do |field|
-        context "when field is #{field}" do
-          subject{ policy.permitted?(field.to_sym) }
-          it{ should be_true }
-        end
+        it{ should be_permitted(field.to_sym) }
       end
     end
   end
