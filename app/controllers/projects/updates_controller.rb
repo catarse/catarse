@@ -1,7 +1,6 @@
 class Projects::UpdatesController < ApplicationController
   after_filter :verify_authorized, except: %i[index show]
   inherit_resources
-  #load_and_authorize_resource
 
   actions :index, :create, :destroy
   belongs_to :project
@@ -15,7 +14,7 @@ class Projects::UpdatesController < ApplicationController
   end
 
   def create
-    @update = parent.updates.new(params[:update].merge!(user: current_user))
+    @update = parent.updates.new(update_params)
     authorize @update
     @update.save
     render @update
@@ -23,10 +22,17 @@ class Projects::UpdatesController < ApplicationController
 
   def destroy
     authorize resource
-    destroy!{|format| return index }
+    destroy!{ return index }
   end
 
   def collection
     @updates ||= end_of_association_chain.visible_to(current_user).order(:created_at).reverse_order
   end
+
+  protected
+
+  def update_params
+    params.require(:update).permit(:title, :comment, :user_id, :exclusive).merge!(user_id: current_user.try(:id))
+  end
+
 end
