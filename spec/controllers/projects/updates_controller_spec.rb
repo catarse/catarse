@@ -36,22 +36,22 @@ describe Projects::UpdatesController do
   describe "POST create" do
     before{ post :create, project_id: update.project.id, locale: 'pt', update: {title: 'title', comment: 'update comment'} }
     context 'When user is a guest' do
-      it{ Update.where(project_id: update.project.id).count.should == 1}
+      it{ Update.where(project_id: update.project.id).count.should == 1 }
     end
 
     context "When user is a registered user but don't the project owner" do
-      let(:current_user){ FactoryGirl.create(:user) }
-      it{ Update.where(project_id: update.project.id).count.should == 1}
+      let(:current_user){ create(:project).user }
+      it{ Update.where(project_id: update.project.id).count.should == 1 }
     end
 
     context 'When user is admin' do
       let(:current_user) { FactoryGirl.create(:user, admin: true) }
-      it{ Update.where(project_id: update.project.id).count.should ==  2}
+      it{ Update.where(project_id: update.project.id).count.should ==  2 }
     end
 
     context 'When user is project_owner' do
       let(:current_user) { update.project.user }
-      it{ Update.where(project_id: update.project.id).count.should ==  2}
+      it{ Update.where(project_id: update.project.id).count.should ==  2 }
     end
   end
 end

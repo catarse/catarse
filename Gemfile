@@ -31,6 +31,7 @@ gem 'chartkick'
 # Payment engines
 gem 'catarse_paypal_express', '~> 2.2.0'
 gem 'catarse_moip', '~> 2.3.0'
+# gem 'catarse_wepay', '~> 0.0.1'
 
 # Decorators
 gem 'draper'

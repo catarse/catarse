@@ -13,45 +13,19 @@ describe Update do
     it{ should belong_to :project }
   end
 
-  describe ".visible_to" do
+  describe ".for_non_contributors" do
     let(:project) { create(:project) }
-    let(:user) {}
 
     before do
       @exclusive_update = create(:update, exclusive: true, project: project)
       @update = create(:update, project: project)
     end
 
-    subject { Update.visible_to(user) }
+    subject { Update.for_non_contributors }
 
-    context "when user is a contribution" do
-      let(:user) { create(:contribution, state: 'confirmed', project: project).user }
-
-      it { should have(2).itens }
-    end
-
-    context "when user is not a contribution" do
-      let(:user) { create(:contribution, state: 'pending', project: project).user }
-
-      it { should eq([@update]) }
-    end
-
-    context "when user is a project owner" do
-      let(:user) { project.user }
-
-      it { should have(2).itens }
-    end
-
-    context "when user is an admin" do
-      let(:user) { create(:user, admin: true) }
-
-      it { should have(2).itens }
-    end
-
-    context "when user is a guest" do
-      it { should eq([@update]) }
-    end
+    it { should eq([@update]) }
   end
+
 
 
   describe ".create" do
