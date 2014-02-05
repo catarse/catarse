@@ -7,6 +7,10 @@ class RewardPolicy < ApplicationPolicy
     done_by_onwer_or_admin?
   end
 
+  def sort?
+    done_by_onwer_or_admin?
+  end
+
   def destroy?
     done_by_onwer_or_admin? && not_yet_sold?
   end
