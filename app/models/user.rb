@@ -34,12 +34,12 @@ class User < ActiveRecord::Base
   validates_length_of :bio, maximum: 140
 
   validates_presence_of :email
-  validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?, :message => I18n.t('activerecord.errors.models.user.attributes.email.taken')
-  validates_format_of :email, :with => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
+  validates_uniqueness_of :email, allow_blank: true, if: :email_changed?, message: I18n.t('activerecord.errors.models.user.attributes.email.taken')
+  validates_format_of :email, with: Devise.email_regexp, allow_blank: true, if: :email_changed?
 
-  validates_presence_of :password, :if => :password_required?
-  validates_confirmation_of :password, :if => :password_confirmation_required?
-  validates_length_of :password, :within => Devise.password_length, :allow_blank => true
+  validates_presence_of :password, if: :password_required?
+  validates_confirmation_of :password, if: :password_confirmation_required?
+  validates_length_of :password, within: Devise.password_length, allow_blank: true
 
   schema_associations
   has_many :oauth_providers, through: :authorizations
@@ -100,6 +100,10 @@ class User < ActiveRecord::Base
         {user_id: user.id}
       )
     end
+  end
+
+  def made_any_contribution_for_this_project?(project_id)
+    contributions.available_to_count.where(project_id: project_id).present?
   end
 
   def has_facebook_authentication?

@@ -26,6 +26,7 @@ Catarse::Application.routes.draw do
 
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
+#  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
   # Channels
   constraints subdomain: /^(?!www|secure|test|local)(\w+)/ do

@@ -22,7 +22,7 @@ class Contribution < ActiveRecord::Base
   scope :payer_email_contains, ->(term) { where("unaccent(upper(payer_email)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :project_name_contains, ->(term) { joins(:project).where("unaccent(upper(projects.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :anonymous, -> { where(anonymous: true) }
-  scope :credits, -> { where(credits: true) }
+  scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }
   scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = current_timestamp::date ") }
 

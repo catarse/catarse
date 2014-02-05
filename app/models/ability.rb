@@ -7,14 +7,6 @@ class Ability
 
     can :read, :all
 
-    # NOTE: Update authorizations
-    can :access, :updates do |update|
-      update.project.user_id == current_user.id
-    end
-    can :see, :updates do |update|
-      !update.exclusive || !current_user.contributions.with_state('confirmed').where(project_id: update.project.id).empty?
-    end
-
     # NOTE: Project authorizations
     can :update, :projects, [:about, :video_url, :uploaded_image, :headline ] do |project|
       project.user == current_user && ( project.online? || project.waiting_funds? || project.successful? || project.failed? )

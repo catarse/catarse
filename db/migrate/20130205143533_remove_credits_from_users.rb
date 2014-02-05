@@ -4,6 +4,6 @@ class RemoveCreditsFromUsers < ActiveRecord::Migration
   end
 
   def down
-    add_column :users, :credits, :numeric, :default => 0
+    add_column :users, :credits, :numeric, default: 0
   end
 end
