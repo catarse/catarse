@@ -6,7 +6,7 @@ p
   br/
   | Data da confirmação do apoio: #{l contribution.confirmed_at}
   br/
-  | Opção de pagamento: #{contribution.payment_choice}
+  | Opção de pagamento: #{contribution.payment_choice || contribution.payment_method}
   br/
   | Valor da contribuição: #{number_to_currency contribution.value}
   br/
