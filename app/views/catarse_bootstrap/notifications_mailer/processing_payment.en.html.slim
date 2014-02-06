@@ -1,24 +1,25 @@
 -contribution = @notification.contribution
-|Hi, <strong>#{contribution.user.display_name}</strong>!
+- company_name = ::Configuration[:company_name]
+- contact_email = ::Configuration[:email_contact]
+|Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-|Your pledge to #{contribution.project.name} is being <strong>analysed</strong> on <strong>#{contribution.payment_method}</strong>.
+| Seu apoio para #{link_to contribution.project.name, project_url(contribution.project)} 
+| entrou em processo de <strong>análise pelo #{contribution.payment_method}</strong>
 br
 br
-|This is a security measure in order to prevent fraud and, for some payments, they will need to contact the person, which is why it has not been approved yet.
+| Esse é uma medida de segurança realizada pelo #{contribution.payment_method} para evitar fraudes e 
+| aumentar a tranquilidade de todos os envolvidos nas transações que ocorrem no #{company_name}. 
+| É possível que o #{contribution.payment_method} entre em contato com você por telefone para confirmar a transação.
 br
 br
-|#{contribution.payment_method}, in some cases, may call you to confirm the transaction, ok?
+| Assim que o #{contribution.payment_method} autorizar seu pagamento, mandaremos um outro email com a confirmação.
 br
 br
-|If the pledge is greater than R$10.000, additional documentation may be required to confirm the transaction, in which case they will contact you for further details.
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
 br
 br
-|When you pledge is confirmed, we will send you another email.
+|Um abraço,
 br
-|Back key: #{contribution.key}
-br
-br
-|A big hug,
-br
-|#{Configuration[:company_name]} Team
+| #{company_name}
+

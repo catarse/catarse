@@ -1,29 +1,24 @@
 -contribution = @notification.contribution
+- company_name = ::Configuration[:company_name]
+- contact_email = ::Configuration[:email_contact]
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-|Seu apoio para #{contribution.project.name} está em processo de <strong>Análise</strong> no <strong>#{contribution.payment_method}</strong>.
+| Seu apoio para #{link_to contribution.project.name, project_url(contribution.project)} 
+| entrou em processo de <strong>análise pelo #{contribution.payment_method}</strong>
 br
 br
-|Este é um processo deles de segurança para evitar fraudes e, para alguns pagamentos, eles acabam checando entrando em contato com a pessoa, por isso ele não foi aprovado ainda.
+| Esse é uma medida de segurança realizada pelo #{contribution.payment_method} para evitar fraudes e 
+| aumentar a tranquilidade de todos os envolvidos nas transações que ocorrem no #{company_name}. 
+| É possível que o #{contribution.payment_method} entre em contato com você por telefone para confirmar a transação.
 br
 br
-|O #{contribution.payment_method}, em alguns casos, pode tentar entrar em contato contigo pelo telefone para confirmar a transação, ok?
+| Assim que o #{contribution.payment_method} autorizar seu pagamento, mandaremos um outro email com a confirmação.
 br
 br
-|Se o apoio for de mais de R$10mil, pode ser que eles requisitem alguns documentos para confirmar a transação, mas entrarão em contato contigo pra falar sobre isso.
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
 br
 br
-|Assim que o apoio for confirmado, mandaremos outro email para você.
+|Um abraço,
 br
-|Chave do apoio: #{contribution.key}
-br
-br
-|Se tiver alguma outra dúvida, entre em contato conosco na nossa Central de Suporte:
-br
-= link_to 'http://suporte.catarse.me/', 'http://suporte.catarse.me/'
-br
-br
-|Um grande abraço,
-br
-|Equipe do #{Configuration[:company_name]}
+| #{company_name}
