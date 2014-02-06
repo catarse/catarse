@@ -16,23 +16,6 @@ class Ability
       project.user == current_user && ( project.draft? || project.rejected? || project.in_analysis? )
     end
 
-    # NOTE: Reward authorizations
-    can :create, :rewards do |reward|
-      reward.project.user == current_user
-    end
-
-    can [:update, :destroy], :rewards do |reward|
-      reward.contributions.with_state('waiting_confirmation').empty? && reward.contributions.with_state('confirmed').empty? && reward.project.user == current_user
-    end
-
-    can [:update, :sort], :rewards, [:description, :maximum_contributions] do |reward|
-      reward.project.user == current_user
-    end
-
-    can :update, :rewards, :days_to_delivery do |reward|
-      reward.project.user == current_user && !reward.project.successful? && !reward.project.failed?
-    end
-
     # NOTE: User authorizations
     can :set_email, :users do |user|
       current_user.persisted?
