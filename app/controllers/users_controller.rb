@@ -2,8 +2,8 @@
 class UsersController < ApplicationController
   load_and_authorize_resource except: [:projects]
   inherit_resources
-  actions :show, :update, :unsubscribe_notifications, :unsubscribe_update, :request_refund, :uservoice_gadget
-  respond_to :json, only: [:contributions, :projects, :request_refund]
+  actions :show, :update, :unsubscribe_notifications, :uservoice_gadget
+  respond_to :json, only: [:contributions, :projects]
 
   def unsubscribe_notifications
     redirect_to user_path(current_user, anchor: 'unsubscribes')
