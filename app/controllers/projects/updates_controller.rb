@@ -31,10 +31,6 @@ class Projects::UpdatesController < ApplicationController
 
   protected
 
-  def end_of_association_chain
-    parent.updates
-  end
-
   def update_params
     params.require(:update).permit(:title, :comment, :user_id, :exclusive).merge!(user_id: current_user.try(:id))
   end
