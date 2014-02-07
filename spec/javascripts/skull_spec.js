@@ -7,7 +7,7 @@ describe("Skull.View", function(){
     ViewClass = Skull.View.extend({ parent: parent, el: 'test' });
     view = new ViewClass();
   });
-  
+
   describe(".addChild", function() {
     beforeEach(function() {
       ViewClass.addChild('NewChild', {el: 'test'}, {});
@@ -16,7 +16,7 @@ describe("Skull.View", function(){
     it("should assign new class to parent views object", function() {
       expect(ViewClass.views.NewChild).toEqual(jasmine.any(Function));
     });
-    
+
     it("should assign el to view class", function() {
       expect(ViewClass.views.NewChild.el).toEqual('test');
     });
@@ -24,8 +24,8 @@ describe("Skull.View", function(){
     it("should initialize views object as empy in new class", function() {
       expect(ViewClass.views.NewChild.views).toEqual({});
     });
-  });  
-  
+  });
+
   describe(".extend", function() {
     it("should have object views in constructor", function() {
       expect(ViewClass.views).toEqual(jasmine.any(Object));
@@ -39,7 +39,7 @@ describe("Skull.View", function(){
       ChildClass = Skull.View.extend({ el: 'child' });
       view.addView('childClass', ChildClass);
     });
-    
+
     it("should add instance of view object to the view if it is not there", function() {
       expect(view._childClass).toEqual(jasmine.any(ChildClass));
     });
@@ -50,21 +50,21 @@ describe("Skull.View", function(){
       expect(AnotherClass).wasNotCalled();
       expect(view._childClass).toEqual(jasmine.any(ChildClass));
     });
-  });  
-  
+  });
+
   describe("#rootView", function() {
     it("should return root view", function() {
       expect(view.rootView()).toEqual(root);
     });
-  });  
+  });
 
   describe("#router", function() {
     it("should return rootView router", function() {
       view.router();
       expect(view.router()).toEqual(view.rootView().router);
     });
-  });  
-  
+  });
+
   describe("#route", function() {
     var routeName = 'route_name';
     beforeEach(function() {
@@ -76,7 +76,7 @@ describe("Skull.View", function(){
       expect(view.router().route).wasCalledWith(routeName, routeName.split("/")[0], jasmine.any(Function));
     });
   });
-  
+
   describe("#createViewGetters", function() {
     beforeEach(function() {
       ViewClass.addChild('ChildClass', { el: '.child' });
@@ -94,10 +94,10 @@ describe("Skull.View", function(){
     it("should call the getter if the child el is present in parent's DOM", function() {
       expect(view.addView).wasCalledWith('childClass', ViewClass.views.ChildClass);
     });
-    
+
     it("should define a getter that calls addView with keys and values of views object", function() {
-      view.anotherChildClass; 
+      view.anotherChildClass;
       expect(view.addView).wasCalledWith('anotherChildClass', ViewClass.views.AnotherChildClass);
     });
-  });  
+  });
 });

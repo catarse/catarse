@@ -42,7 +42,7 @@ div class=(can?(:manage, parent) ? 'project_land' : 'small_project_land')
         li.date
           h5
             span #{t(".#{contribution.state}")}
-            span.date< 
+            span.date<
               |(#{contribution.display_confirmed_at || I18n.l(contribution.created_at.to_date)})
         - if contribution.display_value
           li.value

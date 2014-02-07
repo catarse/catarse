@@ -5,7 +5,7 @@ describe SubscriberReport do
   before(:all) do
     Configuration[:email_contact] = 'foo@bar.com'
     Configuration[:company_name] = 'Foo Bar Company'
-    @channel = create(:channel) 
+    @channel = create(:channel)
     @user = create(:user, subscriptions: [ @channel ])
   end
 

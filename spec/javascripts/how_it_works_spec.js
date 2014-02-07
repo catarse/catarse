@@ -18,7 +18,7 @@ describe("HowItWorks", function() {
     it("should generate menu with 2 links with href to corresponding topics", function(){
       expect(_.map(menu, function(el){ return el.find('a').prop('href'); })).toEqual([window.location.href + '#topic_0', window.location.href + '#topic_1']);
     });
-  
+
   });
 
   describe("#getHeaders", function(){

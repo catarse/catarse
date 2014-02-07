@@ -23,17 +23,17 @@ class CreateRecommendationsView < ActiveRecord::Migration
       and NOT EXISTS (
         SELECT true
         FROM backers b2
-        WHERE 
+        WHERE
           b2.state = 'confirmed'
           AND b2.user_id = b.user_id
           AND b2.project_id = recommendations.id
         )
-      GROUP BY 
+      GROUP BY
         b.user_id, recommendations.id
       )
       UNION
       (
-      SELECT 
+      SELECT
         b.user_id,
         recommendations.id AS project_id,
         0 AS count
@@ -45,11 +45,11 @@ class CreateRecommendationsView < ActiveRecord::Migration
         b.state = 'confirmed'
       ))
       recommendations
-      where  
+      where
       NOT EXISTS (
         SELECT true
         FROM backers b2
-        WHERE 
+        WHERE
           b2.state = 'confirmed'
           AND b2.user_id = recommendations.user_id
           AND b2.project_id = recommendations.project_id

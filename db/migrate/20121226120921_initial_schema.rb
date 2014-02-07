@@ -55,7 +55,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE active_admin_comments (
@@ -91,7 +91,7 @@ ALTER SEQUENCE admin_notes_id_seq OWNED BY active_admin_comments.id;
 
 
 --
--- Name: institutional_videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: institutional_videos; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE institutional_videos (
@@ -125,7 +125,7 @@ ALTER SEQUENCE advert_videos_id_seq OWNED BY institutional_videos.id;
 
 
 --
--- Name: backers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: backers; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE backers (
@@ -165,7 +165,7 @@ CREATE TABLE backers (
 
 
 --
--- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE categories (
@@ -178,7 +178,7 @@ CREATE TABLE categories (
 
 
 --
--- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE projects (
@@ -218,7 +218,7 @@ CREATE TABLE projects (
 -- Name: backers_by_category; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW backers_by_category AS 
+CREATE OR REPLACE VIEW backers_by_category AS
  SELECT to_char(p.expires_at, 'yyyy'::text) AS year, c.name AS category, sum(b.value) AS total_backed, count(DISTINCT b.user_id) AS total_backers
    FROM backers b
    JOIN projects p ON p.id = b.project_id
@@ -231,7 +231,7 @@ CREATE OR REPLACE VIEW backers_by_category AS
 -- Name: backers_by_payment_choice; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW backers_by_payment_choice AS 
+CREATE OR REPLACE VIEW backers_by_payment_choice AS
  SELECT to_char(p.expires_at, 'yyyy-mm'::text) AS month, backers.payment_method, backers.payment_choice, sum(backers.value) AS total_backed, sum(backers.value) / bbm.total_month_backed AS payment_choice_ratio, sum(
         CASE
             WHEN backers.refunded THEN backers.value
@@ -255,14 +255,14 @@ CREATE OR REPLACE VIEW backers_by_payment_choice AS
 -- Name: backers_by_project; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW backers_by_project AS 
+CREATE OR REPLACE VIEW backers_by_project AS
  SELECT backers.project_id, sum(backers.value) AS total_backed, max(backers.value) AS max_backed, count(DISTINCT backers.user_id) AS total_backers
    FROM backers
   WHERE backers.confirmed
   GROUP BY backers.project_id;
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE users (
@@ -315,7 +315,7 @@ CREATE TABLE users (
 -- Name: backers_by_state; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW backers_by_state AS 
+CREATE OR REPLACE VIEW backers_by_state AS
  SELECT to_char(p.expires_at, 'yyyy'::text) AS year, NULLIF(u.address_state, ''::text) AS state, sum(b.value) AS total_backed, count(DISTINCT b.user_id) AS total_backers
    FROM backers b
    JOIN projects p ON b.project_id = p.id
@@ -328,12 +328,12 @@ CREATE OR REPLACE VIEW backers_by_state AS
 -- Name: backers_by_year; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW backers_by_year AS 
- SELECT to_char(p.expires_at, 'yyyy'::text) AS year, sum(backers.value) AS total_backed, count(DISTINCT backers.user_id) AS total_backers, count(DISTINCT 
+CREATE OR REPLACE VIEW backers_by_year AS
+ SELECT to_char(p.expires_at, 'yyyy'::text) AS year, sum(backers.value) AS total_backed, count(DISTINCT backers.user_id) AS total_backers, count(DISTINCT
         CASE
             WHEN backers.reward_id IS NULL THEN backers.user_id
             ELSE NULL::integer
-        END) AS total_backers_without_reward, count(DISTINCT 
+        END) AS total_backers_without_reward, count(DISTINCT
         CASE
             WHEN backers.reward_id IS NULL THEN backers.user_id
             ELSE NULL::integer
@@ -382,7 +382,7 @@ ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
 
 
 --
--- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE comments (
@@ -420,7 +420,7 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
--- Name: configurations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: configurations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE configurations (
@@ -453,7 +453,7 @@ ALTER SEQUENCE configurations_id_seq OWNED BY configurations.id;
 
 
 --
--- Name: curated_pages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: curated_pages; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE curated_pages (
@@ -491,7 +491,7 @@ ALTER SEQUENCE curated_pages_id_seq OWNED BY curated_pages.id;
 
 
 --
--- Name: notification_types; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: notification_types; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE notification_types (
@@ -522,7 +522,7 @@ ALTER SEQUENCE notification_types_id_seq OWNED BY notification_types.id;
 
 
 --
--- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE notifications (
@@ -558,7 +558,7 @@ ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
 
 
 --
--- Name: oauth_providers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: oauth_providers; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE oauth_providers (
@@ -598,7 +598,7 @@ ALTER SEQUENCE oauth_providers_id_seq OWNED BY oauth_providers.id;
 
 
 --
--- Name: payment_logs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: payment_logs; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE payment_logs (
@@ -636,7 +636,7 @@ ALTER SEQUENCE payment_logs_id_seq OWNED BY payment_logs.id;
 
 
 --
--- Name: payment_notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: payment_notifications; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE payment_notifications (
@@ -668,7 +668,7 @@ ALTER SEQUENCE payment_notifications_id_seq OWNED BY payment_notifications.id;
 
 
 --
--- Name: paypal_payments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: paypal_payments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE paypal_payments (
@@ -738,7 +738,7 @@ CREATE VIEW project_totals AS
 -- Name: projects_by_category; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW projects_by_category AS 
+CREATE OR REPLACE VIEW projects_by_category AS
  SELECT to_char(p.expires_at, 'yyyy'::text) AS year, c.name AS category, count(*) AS total_projects, count(NULLIF(p.successful, false)) AS successful_projects
    FROM projects p
    JOIN categories c ON c.id = p.category_id
@@ -750,7 +750,7 @@ CREATE OR REPLACE VIEW projects_by_category AS
 -- Name: projects_by_state; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW projects_by_state AS 
+CREATE OR REPLACE VIEW projects_by_state AS
  SELECT to_char(p.expires_at, 'yyyy'::text) AS year, NULLIF(btrim(u.address_state), ''::text) AS uf, count(*) AS total_projects, count(NULLIF(p.successful, false)) AS successful_projects
    FROM projects p
    JOIN users u ON u.id = p.user_id
@@ -759,7 +759,7 @@ CREATE OR REPLACE VIEW projects_by_state AS
   ORDER BY to_char(p.expires_at, 'yyyy'::text), NULLIF(btrim(u.address_state), ''::text);
 
 --
--- Name: total_backed_ranges; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: total_backed_ranges; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE total_backed_ranges (
@@ -773,7 +773,7 @@ CREATE TABLE total_backed_ranges (
 -- Name: projects_by_total_backed_ranges; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW projects_by_total_backed_ranges AS 
+CREATE OR REPLACE VIEW projects_by_total_backed_ranges AS
  SELECT tbr.lower, tbr.upper, count(*) AS count, count(*)::numeric / (( SELECT count(*) AS count
            FROM backers_by_project))::numeric AS ratio
    FROM backers_by_project bp
@@ -785,7 +785,7 @@ CREATE OR REPLACE VIEW projects_by_total_backed_ranges AS
 -- Name: projects_by_year; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW projects_by_year AS 
+CREATE OR REPLACE VIEW projects_by_year AS
  SELECT to_char(p.expires_at, 'yyyy'::text) AS year, count(*) AS total_projects, count(NULLIF(p.successful, false)) AS successful_projects, sum(
         CASE
             WHEN p.successful THEN b.total_backed
@@ -799,7 +799,7 @@ CREATE OR REPLACE VIEW projects_by_year AS
 
 
 --
--- Name: projects_curated_pages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: projects_curated_pages; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE projects_curated_pages (
@@ -852,7 +852,7 @@ ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
 
 
 --
--- Name: projects_managers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: projects_managers; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE projects_managers (
@@ -865,7 +865,7 @@ CREATE TABLE projects_managers (
 -- Name: recurring_backers_by_year; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW recurring_backers_by_year AS 
+CREATE OR REPLACE VIEW recurring_backers_by_year AS
  SELECT bby.year, trb.total_recurring_backed, bby.total_backed, trb.total_recurring_backed / bby.total_backed AS recurring_backed_ratio, trb.total_recurring_backers, bby.total_backers, trb.total_recurring_backers / bby.total_backers::numeric AS recurring_backers_ratio
    FROM ( SELECT rb.year, sum(rb.total_recurring_backed) AS total_recurring_backed, sum(rb.total_recurring_backers) AS total_recurring_backers
            FROM ( SELECT to_char(backers.created_at, 'yyyy'::text) AS year, sum(backers.value) AS total_recurring_backed, count(DISTINCT backers.user_id) AS total_recurring_backers
@@ -877,7 +877,7 @@ CREATE OR REPLACE VIEW recurring_backers_by_year AS
    JOIN backers_by_year bby USING (year);
 
 --
--- Name: reward_ranges; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: reward_ranges; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE reward_ranges (
@@ -888,7 +888,7 @@ CREATE TABLE reward_ranges (
 
 
 --
--- Name: rewards; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: rewards; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE rewards (
@@ -908,7 +908,7 @@ CREATE TABLE rewards (
 -- Name: rewards_by_range; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE OR REPLACE VIEW rewards_by_range AS 
+CREATE OR REPLACE VIEW rewards_by_range AS
  SELECT rr.name AS range, count(*) AS count, count(*)::numeric / (( SELECT count(*) AS count
            FROM backers
           WHERE backers.confirmed AND backers.reward_id IS NOT NULL))::numeric AS ratio
@@ -939,7 +939,7 @@ CREATE SEQUENCE rewards_id_seq
 ALTER SEQUENCE rewards_id_seq OWNED BY rewards.id;
 
 --
--- Name: states; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: states; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE states (
@@ -973,7 +973,7 @@ ALTER SEQUENCE states_id_seq OWNED BY states.id;
 
 
 --
--- Name: static_contents; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: static_contents; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE static_contents (
@@ -1014,7 +1014,7 @@ CREATE VIEW statistics AS
 
 
 --
--- Name: unsubscribes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: unsubscribes; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE unsubscribes (
@@ -1047,7 +1047,7 @@ ALTER SEQUENCE unsubscribes_id_seq OWNED BY unsubscribes.id;
 
 
 --
--- Name: updates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: updates; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE updates (
@@ -1249,7 +1249,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY active_admin_comments
@@ -1257,7 +1257,7 @@ ALTER TABLE ONLY active_admin_comments
 
 
 --
--- Name: advert_videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: advert_videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY institutional_videos
@@ -1265,7 +1265,7 @@ ALTER TABLE ONLY institutional_videos
 
 
 --
--- Name: backers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: backers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY backers
@@ -1273,7 +1273,7 @@ ALTER TABLE ONLY backers
 
 
 --
--- Name: categories_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: categories_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY categories
@@ -1281,7 +1281,7 @@ ALTER TABLE ONLY categories
 
 
 --
--- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY categories
@@ -1289,7 +1289,7 @@ ALTER TABLE ONLY categories
 
 
 --
--- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY comments
@@ -1297,7 +1297,7 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: configurations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: configurations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY configurations
@@ -1305,7 +1305,7 @@ ALTER TABLE ONLY configurations
 
 
 --
--- Name: curated_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: curated_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY curated_pages
@@ -1313,7 +1313,7 @@ ALTER TABLE ONLY curated_pages
 
 
 --
--- Name: notification_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: notification_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY notification_types
@@ -1321,7 +1321,7 @@ ALTER TABLE ONLY notification_types
 
 
 --
--- Name: notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY notifications
@@ -1329,7 +1329,7 @@ ALTER TABLE ONLY notifications
 
 
 --
--- Name: oauth_providers_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: oauth_providers_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY oauth_providers
@@ -1337,7 +1337,7 @@ ALTER TABLE ONLY oauth_providers
 
 
 --
--- Name: oauth_providers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: oauth_providers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY oauth_providers
@@ -1345,7 +1345,7 @@ ALTER TABLE ONLY oauth_providers
 
 
 --
--- Name: payment_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: payment_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY payment_logs
@@ -1353,7 +1353,7 @@ ALTER TABLE ONLY payment_logs
 
 
 --
--- Name: payment_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: payment_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY payment_notifications
@@ -1361,7 +1361,7 @@ ALTER TABLE ONLY payment_notifications
 
 
 --
--- Name: projects_curated_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: projects_curated_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY projects_curated_pages
@@ -1369,7 +1369,7 @@ ALTER TABLE ONLY projects_curated_pages
 
 
 --
--- Name: projects_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: projects_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY projects
@@ -1377,7 +1377,7 @@ ALTER TABLE ONLY projects
 
 
 --
--- Name: reward_ranges_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: reward_ranges_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY reward_ranges
@@ -1385,7 +1385,7 @@ ALTER TABLE ONLY reward_ranges
 
 
 --
--- Name: rewards_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: rewards_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY rewards
@@ -1393,7 +1393,7 @@ ALTER TABLE ONLY rewards
 
 
 --
--- Name: states_acronym_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: states_acronym_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY states
@@ -1401,7 +1401,7 @@ ALTER TABLE ONLY states
 
 
 --
--- Name: states_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: states_name_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY states
@@ -1409,7 +1409,7 @@ ALTER TABLE ONLY states
 
 
 --
--- Name: states_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: states_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY states
@@ -1417,7 +1417,7 @@ ALTER TABLE ONLY states
 
 
 --
--- Name: static_contents_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: static_contents_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY static_contents
@@ -1425,7 +1425,7 @@ ALTER TABLE ONLY static_contents
 
 
 --
--- Name: total_backed_ranges_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: total_backed_ranges_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY total_backed_ranges
@@ -1433,7 +1433,7 @@ ALTER TABLE ONLY total_backed_ranges
 
 
 --
--- Name: unsubscribes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: unsubscribes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY unsubscribes
@@ -1441,7 +1441,7 @@ ALTER TABLE ONLY unsubscribes
 
 
 --
--- Name: updates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: updates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY updates
@@ -1449,7 +1449,7 @@ ALTER TABLE ONLY updates
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY users
@@ -1457,7 +1457,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: users_provider_uid_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_provider_uid_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY users
@@ -1465,210 +1465,210 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON active_admin_comments USING btree (author_type, author_id);
 
 
 --
--- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments USING btree (namespace);
 
 
 --
--- Name: index_backers_on_confirmed; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_backers_on_confirmed; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_backers_on_confirmed ON backers USING btree (confirmed);
 
 
 --
--- Name: index_backers_on_key; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_backers_on_key; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_backers_on_key ON backers USING btree (key);
 
 
 --
--- Name: index_backers_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_backers_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_backers_on_project_id ON backers USING btree (project_id);
 
 
 --
--- Name: index_backers_on_reward_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_backers_on_reward_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_backers_on_reward_id ON backers USING btree (reward_id);
 
 
 --
--- Name: index_backers_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_backers_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_backers_on_user_id ON backers USING btree (user_id);
 
 
 --
--- Name: index_categories_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_categories_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_categories_on_name ON categories USING btree (name);
 
 
 --
--- Name: index_comments_on_commentable_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_comments_on_commentable_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_comments_on_commentable_id ON comments USING btree (commentable_id);
 
 
 --
--- Name: index_comments_on_commentable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_comments_on_commentable_type; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_comments_on_commentable_type ON comments USING btree (commentable_type);
 
 
 --
--- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
--- Name: index_confirmed_backers_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_confirmed_backers_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_confirmed_backers_on_project_id ON backers USING btree (project_id) WHERE confirmed;
 
 
 --
--- Name: index_curated_pages_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_curated_pages_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_curated_pages_on_permalink ON curated_pages USING btree (permalink);
 
 
 --
--- Name: index_notification_types_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_notification_types_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_notification_types_on_name ON notification_types USING btree (name);
 
 
 --
--- Name: index_notifications_on_update_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_notifications_on_update_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_notifications_on_update_id ON notifications USING btree (update_id);
 
 
 --
--- Name: index_projects_on_category_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_projects_on_category_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_projects_on_category_id ON projects USING btree (category_id);
 
 
 --
--- Name: index_projects_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_projects_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_projects_on_name ON projects USING btree (name);
 
 
 --
--- Name: index_projects_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_projects_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_projects_on_permalink ON projects USING btree (permalink);
 
 
 --
--- Name: index_projects_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_projects_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_projects_on_user_id ON projects USING btree (user_id);
 
 
 --
--- Name: index_rewards_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_rewards_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_rewards_on_project_id ON rewards USING btree (project_id);
 
 
 --
--- Name: index_unsubscribes_on_notification_type_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_unsubscribes_on_notification_type_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_unsubscribes_on_notification_type_id ON unsubscribes USING btree (notification_type_id);
 
 
 --
--- Name: index_unsubscribes_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_unsubscribes_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_unsubscribes_on_project_id ON unsubscribes USING btree (project_id);
 
 
 --
--- Name: index_unsubscribes_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_unsubscribes_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_unsubscribes_on_user_id ON unsubscribes USING btree (user_id);
 
 
 --
--- Name: index_updates_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_updates_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_updates_on_project_id ON updates USING btree (project_id);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_users_on_name ON users USING btree (name);
 
 
 --
--- Name: index_users_on_primary_user_id_and_provider; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_primary_user_id_and_provider; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_users_on_primary_user_id_and_provider ON users USING btree (primary_user_id, provider);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
 
 --
--- Name: index_users_on_uid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_uid; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_users_on_uid ON users USING btree (uid);
 
 
 --
--- Name: users_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: users_email; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX users_email ON users USING btree (email) WHERE (provider = 'devise'::text);

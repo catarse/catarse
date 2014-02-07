@@ -15,7 +15,7 @@ DROP VIEW IF EXISTS project_totals;
 DROP VIEW IF EXISTS recurring_backers_by_year;
 DROP VIEW IF EXISTS rewards_by_range;
     "
-    create_view :project_totals, "SELECT backers.project_id, sum(backers.value) AS pledged, 
+    create_view :project_totals, "SELECT backers.project_id, sum(backers.value) AS pledged,
     count(*) AS total_backers
    FROM backers
   WHERE backers.state = 'confirmed'
@@ -26,7 +26,7 @@ DROP VIEW IF EXISTS rewards_by_range;
     execute "
 DROP VIEW IF EXISTS project_totals;
     "
-    create_view :project_totals, "SELECT backers.project_id, sum(backers.value) AS pledged, 
+    create_view :project_totals, "SELECT backers.project_id, sum(backers.value) AS pledged,
     count(*) AS total_backers
    FROM backers
   WHERE backers.confirmed

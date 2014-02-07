@@ -1,9 +1,9 @@
 class UpdateProjectsToStateMachineAgain < ActiveRecord::Migration
   def up
     execute(%Q{
-      UPDATE projects 
+      UPDATE projects
         SET finished = true
-        WHERE 
+        WHERE
           finished = false AND visible = true AND expires_at <= current_timestamp - '5 days'::interval;
     })
     execute(%Q{

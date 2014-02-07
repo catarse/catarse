@@ -2,9 +2,9 @@ class AddCpfToBackerReport < ActiveRecord::Migration
   def up
     drop_view :backer_reports
     create_view :backer_reports, "
-    SELECT 
+    SELECT
       b.project_id,
-      u.name, 
+      u.name,
       b.value,
       r.minimum_value,
       r.description,
@@ -27,7 +27,7 @@ class AddCpfToBackerReport < ActiveRecord::Migration
       u.address_zip_code,
       b.requested_refund,
       b.refunded
-    FROM 
+    FROM
       backers b
       JOIN users u ON u.id = b.user_id
       LEFT JOIN rewards r ON r.id = b.reward_id
@@ -39,9 +39,9 @@ class AddCpfToBackerReport < ActiveRecord::Migration
   def down
     drop_view :backer_reports
     create_view :backer_reports, "
-    SELECT 
+    SELECT
       b.project_id,
-      u.name, 
+      u.name,
       b.value,
       r.minimum_value,
       r.description,
@@ -64,7 +64,7 @@ class AddCpfToBackerReport < ActiveRecord::Migration
       u.address_zip_code,
       b.requested_refund,
       b.refunded
-    FROM 
+    FROM
       backers b
       JOIN users u ON u.id = b.user_id
       LEFT JOIN rewards r ON r.id = b.reward_id

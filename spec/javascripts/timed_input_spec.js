@@ -25,7 +25,7 @@ describe("TimedInput", function() {
       });
       spyOn(view.$el, "trigger");
     });
-    
+
     describe("when there is already a timer set", function() {
       beforeEach(function() {
         view.timeoutID = 456;
@@ -58,7 +58,7 @@ describe("TimedInput", function() {
       it("should store the timeoutID", function() {
         expect(view.timeoutID).toEqual(123);
       });
-    });  
-  });  
-});  
+    });
+  });
+});
 

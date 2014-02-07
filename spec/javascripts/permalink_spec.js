@@ -28,7 +28,7 @@ describe("Permalink", function() {
         view.checkPermalink();
         expect(view.$el.trigger).wasCalledWith('invalid');
       });
-      
+
       it("should search for permalink", function() {
         view.checkPermalink();
         expect($.get).wasCalledWith('/pt/a');
@@ -44,7 +44,7 @@ describe("Permalink", function() {
       it("should not search for permalink", function() {
         expect($.get).wasNotCalled();
       });
-    });  
-  });  
-});  
+    });
+  });
+});
 

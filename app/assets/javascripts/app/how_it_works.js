@@ -8,7 +8,7 @@ App.addChild('HowItWorks', {
   },
 
   generateMenu: function(){
-    return _.map(this.getHeaders(), function(el){ 
+    return _.map(this.getHeaders(), function(el){
       return $('<li>').append($('<a>').prop('href', '#' + el.prop('id')).html(el.html()));
     });
   },
