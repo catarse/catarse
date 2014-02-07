@@ -3,22 +3,22 @@ class RecreateStatisticsWithNewUsers < ActiveRecord::Migration
     execute <<-SQL
     CREATE OR REPLACE VIEW statistics AS
      SELECT (SELECT count(*) AS count
-           FROM users) AS total_users, 
-    backers_totals.total_backs, backers_totals.total_backers, 
-    backers_totals.total_backed, projects_totals.total_projects, 
-    projects_totals.total_projects_success, 
+           FROM users) AS total_users,
+    backers_totals.total_backs, backers_totals.total_backers,
+    backers_totals.total_backed, projects_totals.total_projects,
+    projects_totals.total_projects_success,
     projects_totals.total_projects_online
-   FROM ( SELECT count(*) AS total_backs, 
-            count(DISTINCT backers.user_id) AS total_backers, 
+   FROM ( SELECT count(*) AS total_backs,
+            count(DISTINCT backers.user_id) AS total_backers,
             sum(backers.value) AS total_backed
            FROM backers
-          WHERE backers.confirmed) backers_totals, 
-    ( SELECT count(*) AS total_projects, 
+          WHERE backers.confirmed) backers_totals,
+    ( SELECT count(*) AS total_projects,
             count(
                 CASE
                     WHEN projects.state::text = 'successful'::text THEN 1
                     ELSE NULL::integer
-                END) AS total_projects_success, 
+                END) AS total_projects_success,
             count(
                 CASE
                     WHEN projects.state::text = 'online'::text THEN 1
@@ -34,22 +34,22 @@ class RecreateStatisticsWithNewUsers < ActiveRecord::Migration
     CREATE OR REPLACE VIEW statistics AS
  SELECT ( SELECT count(*) AS count
            FROM users
-          WHERE users.primary_user_id IS NULL) AS total_users, 
-    backers_totals.total_backs, backers_totals.total_backers, 
-    backers_totals.total_backed, projects_totals.total_projects, 
-    projects_totals.total_projects_success, 
+          WHERE users.primary_user_id IS NULL) AS total_users,
+    backers_totals.total_backs, backers_totals.total_backers,
+    backers_totals.total_backed, projects_totals.total_projects,
+    projects_totals.total_projects_success,
     projects_totals.total_projects_online
-   FROM ( SELECT count(*) AS total_backs, 
-            count(DISTINCT backers.user_id) AS total_backers, 
+   FROM ( SELECT count(*) AS total_backs,
+            count(DISTINCT backers.user_id) AS total_backers,
             sum(backers.value) AS total_backed
            FROM backers
-          WHERE backers.confirmed) backers_totals, 
-    ( SELECT count(*) AS total_projects, 
+          WHERE backers.confirmed) backers_totals,
+    ( SELECT count(*) AS total_projects,
             count(
                 CASE
                     WHEN projects.state::text = 'successful'::text THEN 1
                     ELSE NULL::integer
-                END) AS total_projects_success, 
+                END) AS total_projects_success,
             count(
                 CASE
                     WHEN projects.state::text = 'online'::text THEN 1

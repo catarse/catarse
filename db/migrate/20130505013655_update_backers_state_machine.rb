@@ -2,11 +2,11 @@ class UpdateBackersStateMachine < ActiveRecord::Migration
   def up
     execute <<-SQL
       update backers b
-        set state= 
+        set state=
         (
-          case         
+          case
            -- when backer is via user credit
-           when b.confirmed and b.credits then 'confirmed'            
+           when b.confirmed and b.credits then 'confirmed'
            -- when backer is confirmed and user not requested refund and not is refunded and credits too
            when b.confirmed and not b.requested_refund and not b.refunded and not b.credits then 'confirmed'
            -- when backer is confirmed and user requested refund but is not refunded yet and not credits
@@ -14,8 +14,8 @@ class UpdateBackersStateMachine < ActiveRecord::Migration
            -- when backer is refunded and not credits
            when b.confirmed and b.refunded and not b.credits then 'refunded'
            -- when backer is not confirmed but user already pass into payment gateway
-           when not b.confirmed and b.payment_token is not null and ( 
-             case 
+           when not b.confirmed and b.payment_token is not null and (
+             case
                when lower(b.payment_choice) = 'debitobancario' then
                  date(current_timestamp) <= date(b.created_at + interval '1 days')
                when lower(b.payment_choice) = 'cartaodecredito' then
@@ -25,7 +25,7 @@ class UpdateBackersStateMachine < ActiveRecord::Migration
                end
            ) then 'waiting_confirmation'
            else 'pending'
-          end       
+          end
         )
     SQL
   end

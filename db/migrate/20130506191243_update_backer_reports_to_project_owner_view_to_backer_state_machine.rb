@@ -27,9 +27,9 @@ class UpdateBackerReportsToProjectOwnerViewToBackerStateMachine < ActiveRecord::
       JOIN users u ON u.id = b.user_id
       LEFT JOIN rewards r ON r.id = b.reward_id
       WHERE
-        b.state = 'confirmed';        
+        b.state = 'confirmed';
     SQL
-    
+
   end
 
   def down
@@ -60,6 +60,6 @@ class UpdateBackerReportsToProjectOwnerViewToBackerStateMachine < ActiveRecord::
     LEFT JOIN rewards r ON r.id = b.reward_id
     WHERE
       b.confirmed;
-    "    
+    "
   end
 end

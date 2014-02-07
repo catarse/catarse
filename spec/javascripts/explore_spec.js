@@ -5,13 +5,13 @@ describe("Explore", function() {
   beforeEach(function() {
     view = new App.views.Explore({ parent: parentView });
   });
-  
+
   describe("#$window", function() {
     it("should return $(window)", function() {
       expect(view.$window()).toEqual($(window));
     });
-  });  
-  
+  });
+
   describe("#isLoaderDivVisible", function() {
     describe("when loader is in visible portion of window", function() {
       beforeEach(function() {
@@ -49,8 +49,8 @@ describe("Explore", function() {
         expect(view.isLoaderDivVisible()).toEqual(false);
       });
     });
-  });  
-  
+  });
+
   describe("#setInitialFilter", function() {
     describe("when parent has search set", function() {
       it("set filter for search", function() {
@@ -60,7 +60,7 @@ describe("Explore", function() {
           pg_search: 'foo'
         });
       });
-    });  
+    });
 
     describe("when parent does not have search set", function() {
       it("should assign default filters", function() {
@@ -70,14 +70,14 @@ describe("Explore", function() {
           not_expired: true
         });
       });
-    });  
-  });  
-  
+    });
+  });
+
   describe("#activate", function() {
     it("should assing loader", function() {
       expect(view.$loader).toEqual(jasmine.any(Object));
     });
-    
+
     it("should assing false to EOF results", function() {
       expect(view.EOF).toEqual(false);
     });
@@ -85,7 +85,7 @@ describe("Explore", function() {
     it("should assing results", function() {
       expect(view.$results).toEqual(jasmine.any(Object));
     });
-    
+
     it("should call setInitialFilter", function() {
       spyOn(view, "setInitialFilter");
       view.activate();
@@ -140,8 +140,8 @@ describe("Explore", function() {
     it("assign 1 to filter.page", function() {
       expect(view.filter.page).toEqual(1);
     });
-  });  
-  
+  });
+
   describe("#fetchPage", function() {
     describe("when EOF is true and isLoaderDivVisible is true", function(){
       beforeEach(function() {
@@ -182,30 +182,30 @@ describe("Explore", function() {
     beforeEach(function() {
       spyOn(view.$results, "append");
       spyOn(view.$loader, "hide");
-      
+
       view.onSuccess('test data');
     });
 
     it("should append data to $results", function() {
       expect(view.$results.append).wasCalledWith('test data');
     });
-    
+
     it("should show loader", function() {
       expect(view.$loader.hide).wasCalled();
     });
-  });  
+  });
 
   describe("onScroll", function() {
     beforeEach(function() {
       spyOn(view, "fetchPage");
       view.onScroll();
     });
-    
+
     it("call fetchPage", function() {
       expect(view.fetchPage).wasCalled();
     });
-    
-  });  
-  
-});  
+
+  });
+
+});
 

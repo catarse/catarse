@@ -82,7 +82,7 @@ describe("Project", function() {
       });
       view.selectTab($tab, $tabContent);
     });
-    
+
     it("should trigger onSelectTab event", function() {
       expect(eventTriggered).toEqual(true);
     });
@@ -103,8 +103,8 @@ describe("Project", function() {
     it("should hide other tab contents", function() {
       expect($tabContentSiblings.hide).wasCalled();
     });
-  });  
-  
+  });
+
   describe("#onTabClick", function() {
     var $target = $('<a data-target="#selector">');
     var $tab = $('<div>');
@@ -123,8 +123,8 @@ describe("Project", function() {
       expect(view.$).wasCalledWith('#selector');
       expect(view.loadTab).wasCalledWith($tab);
     });
-  });  
-  
+  });
+
   describe("#loadTab", function() {
     beforeEach(function() {
       spyOn($, "get").andReturn({success: function(callback){ callback('qux'); } });
@@ -167,9 +167,9 @@ describe("Project", function() {
       it("should not get content", function() {
         expect($.get).wasNotCalled();
       });
-    });  
-    
-    
-    
-  });  
+    });
+
+
+
+  });
 });

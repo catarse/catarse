@@ -26,9 +26,9 @@ class RemoveSecondaryUsers < ActiveRecord::Migration
      'moip_login'
     ].each do |field|
       execute "
-      UPDATE users SET #{field} = 
-        (SELECT #{field} FROM users su WHERE su.primary_user_id = users.id AND #{field} IS NOT NULL LIMIT 1) 
-      WHERE 
+      UPDATE users SET #{field} =
+        (SELECT #{field} FROM users su WHERE su.primary_user_id = users.id AND #{field} IS NOT NULL LIMIT 1)
+      WHERE
         #{field} IS NULL AND primary_user_id IS NULL
         AND (SELECT count(*) FROM users su WHERE su.primary_user_id = users.id AND #{field} IS NOT NULL) > 0"
     end
@@ -38,10 +38,10 @@ class RemoveSecondaryUsers < ActiveRecord::Migration
     INSERT INTO authorizations (oauth_provider_id, user_id, uid, created_at, updated_at)
     SELECT DISTINCT a.oauth_provider_id, su.primary_user_id, a.uid, current_timestamp, current_timestamp
     FROM authorizations a JOIN users su ON a.user_id = su.id
-    WHERE su.primary_user_id IS NOT NULL 
+    WHERE su.primary_user_id IS NOT NULL
       AND NOT EXISTS (
-        SELECT true 
-        FROM authorizations a2 
+        SELECT true
+        FROM authorizations a2
         WHERE a2.user_id = su.primary_user_id AND a2.oauth_provider_id = a.oauth_provider_id);
     DELETE FROM authorizations WHERE user_id IN (SELECT id FROM users WHERE primary_user_id IS NOT NULL);
     CREATE UNIQUE INDEX index_authorizations_on_uid_and_oauth_provider_id ON authorizations (uid, oauth_provider_id);

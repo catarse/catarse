@@ -20,7 +20,7 @@
     #login_as(user, scope: :user)
 
     #visit channels_profile_path(@channel)
-    
+
 
   #end
 

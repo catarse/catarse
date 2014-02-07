@@ -18,11 +18,11 @@ describe Channels::ChannelsSubscribersController do
       get :show
     end
 
-    context "when user is signed in" do 
+    context "when user is signed in" do
       it{ should redirect_to root_path }
     end
 
-    context "when no user is signed in" do 
+    context "when no user is signed in" do
       let(:current_user){ nil }
       it{ should redirect_to new_user_registration_path }
     end

@@ -62,5 +62,5 @@ describe("ProjectComments", function() {
       });
     });
 
-  });  
+  });
 });

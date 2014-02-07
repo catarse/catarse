@@ -11,7 +11,7 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
   body
     - if @user
       dl
-        dt 
+        dt
           strong= t('uservoice_gadget.user.name')
         dd= link_to @user.display_name, user_url(@user)
 
