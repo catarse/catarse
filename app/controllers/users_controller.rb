@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource except: [:projects]
   inherit_resources
-  actions :show, :update, :unsubscribe_notifications, :uservoice_gadget
+  actions :show, :update, :update_password, :unsubscribe_notifications, :uservoice_gadget
   respond_to :json, only: [:contributions, :projects]
 
   def unsubscribe_notifications
