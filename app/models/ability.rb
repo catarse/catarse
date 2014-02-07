@@ -16,19 +16,6 @@ class Ability
       project.user == current_user && ( project.draft? || project.rejected? || project.in_analysis? )
     end
 
-    # NOTE: User authorizations
-    can :set_email, :users do |user|
-      current_user.persisted?
-    end
-
-    can [:update, :credits, :manage, :update_password, :update_email, :unsubscribe_notifications], :users  do |user|
-      current_user == user
-    end
-
-    can :update, :users, :admin do |user|
-      current_user.admin
-    end
-
     # NOTE: Contribution authorizations
     cannot :show, :contributions
     can :create, :contributions if current_user.persisted?
