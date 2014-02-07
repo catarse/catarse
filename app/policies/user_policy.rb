@@ -11,10 +11,6 @@ class UserPolicy < ApplicationPolicy
     done_by_onwer_or_admin?
   end
 
-  def uservoice_gadget?
-    done_by_onwer_or_admin?
-  end
-
   protected
   def done_by_onwer_or_admin?
     record == user || user.try(:admin?)
