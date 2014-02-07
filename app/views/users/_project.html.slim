@@ -1,4 +1,4 @@
-div class=(can?(:manage, parent) ? 'project_land' : 'small_project_land')
+div class=(policy(parent).update? ? 'project_land' : 'small_project_land')
   - if project.expired?
     .status_image
       a href=""
@@ -36,7 +36,7 @@ div class=(can?(:manage, parent) ? 'project_land' : 'small_project_land')
       li
         h6= project.display_pledged
         p= t('projects.project.reached')
-  - if contribution && can?(:manage, parent)
+  - if contribution && policy(parent).update?
     div.contribution_info
       ul
         li.date
