@@ -33,6 +33,4 @@ describe UserPolicy do
   permissions(:update_password?){ it_should_behave_like "update permissions" }
 
   permissions(:unsubscribe_notifications?){ it_should_behave_like "update permissions" }
-
-  permissions(:uservoice_gadget?){ it_should_behave_like "update permissions" }
 end
