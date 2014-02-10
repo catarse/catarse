@@ -1,4 +1,5 @@
 class Users::ContributionsController < ApplicationController
+  after_filter :verify_authorized, except: %i[index]
   inherit_resources
   defaults resource_class: Contribution
   belongs_to :user
@@ -9,7 +10,7 @@ class Users::ContributionsController < ApplicationController
   end
 
   def request_refund
-    authorize! :request_refund, resource
+    authorize resource
     if resource.value > resource.user.user_total.credits
       flash[:failure] = I18n.t('credits.index.insufficient_credits')
     elsif can?(:request_refund, resource) && resource.can_request_refund?
@@ -22,8 +23,6 @@ class Users::ContributionsController < ApplicationController
 
   protected
   def collection
-    @contributions = end_of_association_chain.available_to_display.order("created_at DESC, confirmed_at DESC")
-    @contributions = @contributions.not_anonymous.with_state('confirmed') unless can? :manage, @user
-    @contributions = @contributions.includes(:user, :reward, project: [:user, :category, :project_total]).page(params[:page]).per(10)
+    @contributions ||= policy_scoped(end_of_association_chain).order("created_at DESC, confirmed_at DESC").includes(:user, :reward, project: [:user, :category, :project_total]).page(params[:page]).per(10)
   end
 end

@@ -3,6 +3,7 @@ require "spec_helper"
 describe ContributionPolicy do
   subject{ ContributionPolicy }
 
+  let(:project){ create(:project) }
   let(:contribution){ create(:contribution) }
   let(:user){ contribution.user }
 
@@ -34,4 +35,27 @@ describe ContributionPolicy do
   permissions(:credits_checkout?){ it_should_behave_like "update permissions" }
 
   permissions(:request_refund?){ it_should_behave_like "update permissions" }
+
+  describe 'Scope' do
+    describe ".resolve" do
+      let(:user) { create(:user, admin: false) }
+      before do
+        create(:contribution, state: 'waiting_confirmation', project: project)
+        create(:contribution, anonymous: true, state: 'confirmed', project: project)
+        @contribution = create(:contribution, anonymous: false, state: 'confirmed', project: project)
+      end
+
+      subject { ContributionPolicy::Scope.new(user, project.contributions).resolve }
+
+      context "when user is admin" do
+        let(:user) { create(:user, admin: true) }
+
+        it { should have(3).itens }
+      end
+
+      context "when user is not an admin" do
+        it { should eq [@contribution] }
+      end
+    end
+  end
 end
