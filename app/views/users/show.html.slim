@@ -20,7 +20,7 @@
               = @user.bio
       .user_social
         ul
-          - if can? :manage, @user
+          - if policy(@user).update?
             li.email
               = mail_to @user.email, @user.email, target: '_blank'
           - if @user.facebook_link
@@ -37,14 +37,14 @@
         nav#user_profile_menu
           = link_to t('.tabs.contributed_projects'), '#contributions', id: 'contributed_projects_link', class: 'selected', data: { target: '#user_contributed_projects' }
           = link_to t('.tabs.created_projects'), '#projects', id: 'created_projects_link', data: { target: '#user_created_projects' }
-          - if can? :manage, @user
+          - if policy(@user).update?
             = link_to t('.tabs.credits'), '#credits', id: 'credits_link', data: { target: '#user_credits' }
             = link_to t('.tabs.settings'), '#settings', id: 'settings_link', data: { target: '#user_settings' }
             = link_to t('.tabs.unsubscribes'), '#unsubscribes', id: 'unsubscribes_link', data: { target: '#user_unsubscribes' }
       .clearfix
       #user_profile_content
         #user_contributed_projects.content[data-path=user_contributions_path(@user)]
-          - if !can? :manage, @user
+          - if !policy(@user).update?
             p.empty.hide= t('users.contributions.no_contributions', name: @user.display_name)
           - else
             p.empty.hide= t('users.contributions.no_contributions_current_user_html', link: ::Configuration[:base_url])
@@ -61,7 +61,7 @@
           .clearfix
           .loading= image_tag "loading.gif"
           .clearfix
-        - if can? :manage, @user
+        - if policy(@user).update?
           #user_unsubscribes.content.hide
             = render 'unsubscribes'
           #user_settings.content.hide
