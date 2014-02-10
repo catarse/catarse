@@ -1,0 +1,18 @@
+-contribution = @notification.contribution
+- company_name = ::Configuration[:company_name]
+- contact_email = ::Configuration[:email_contact]
+
+|Olá, <strong>#{contribution.user.display_name}</strong>!
+br
+br
+| Não recebemos a confirmação de pagamento do boleto gerado para o projeto #{link_to contribution.project.name, project_url(contribution.project)}.
+br
+br
+|Caso você ainda tenha interesse em apoiar o projeto, podemos alterar a data de vencimento para você. 
+br/
+|Para isso, basta entrar em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
+br
+br
+|Um abraço,
+br
+| #{company_name}
