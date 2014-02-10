@@ -16,18 +16,6 @@ class Ability
       project.user == current_user && ( project.draft? || project.rejected? || project.in_analysis? )
     end
 
-    # NOTE: Contribution authorizations
-    cannot :show, :contributions
-    can :create, :contributions if current_user.persisted?
-
-    can [ :request_refund, :credits_checkout, :show, :update, :edit], :contributions do |contribution|
-      contribution.user == current_user
-    end
-
-    cannot :update, :contributions, [:user_attributes, :user_id, :user, :value, :payment_service_fee, :payment_id] do |contribution|
-      contribution.user == current_user
-    end
-
     # Channel authorizations
     # Due to previous abilities, first I activate all things
     # and in the final I deactivate unnecessary abilities.
