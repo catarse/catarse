@@ -1,5 +1,6 @@
 class Projects::UpdatesController < ApplicationController
   after_filter :verify_authorized, except: %i[index show]
+  after_action :verify_policy_scoped, only: %i[index]
   inherit_resources
 
   actions :index, :create, :destroy
