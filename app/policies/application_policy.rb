@@ -52,7 +52,7 @@ class ApplicationPolicy
   end
 
   def done_by_onwer_or_admin?
-    is_owned_by?(user) || user.try(:admin?)
+    is_owned_by?(user) || only_admin
   end
 
   def is_owned_by?(user)
