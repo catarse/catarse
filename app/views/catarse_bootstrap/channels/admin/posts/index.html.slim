@@ -9,10 +9,6 @@
       = link_to t('channels.admin.posts.index.new_post_button'), new_channels_admin_post_path, class: [:button, :medium, :action]
   br/
   br/
-  .advise-box.gray
-    p= t('channels.admin.posts.warning_html')
-  br/
-  br/
 
 
   .clearfix
@@ -42,5 +38,11 @@
                 li= link_to t('channels.admin.table.destroy_action'), channels_admin_post_path(resource), method: :delete, data: { confirm: t('channels.admin.confirmations.destroy') }
 
   = paginate collection
+  br/
+  br/
+  .advise-box.gray
+    p= t('channels.admin.posts.warning_html')
+  br/
+  br/
 
 = render 'shared/footer_channel'

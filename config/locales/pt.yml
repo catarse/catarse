@@ -724,6 +724,7 @@ pt:
       management:
         title: "Gerenciamento"
         total: "projetos no total"
+        no_posts: 'Nenhuma novidade cadastrada'
       filter:
         title: "Filtrar"
         by_id: "Por id"
