@@ -701,13 +701,23 @@ pt:
         participate: "Para participar"
         details: "Últimos detalhes"
     admin:
-      posts_menu: 'Gerenciar Novidades'
+      posts_menu: 'Gerenciar novidades'
       confirmations:
         destroy: 'Você tem certeza que deseja deletar?'
       posts:
-        save_submit: 'Salvar'
+        save_submit: 'Salvar e visualizar'
+        warning_html: 'Lembrando que toda novidade publicada vai diretamente para o email de seus seguidores.<br/> Por isso, revise bem seu texto antes de enviá-lo.'
+        back_to_list: '← Voltar para o Gerenciador de novidades'
+        update:
+          published_message: 'Sua novidade foi publicada e enviada por email aos seguidores do canal.'
         index:
-          title: 'Gerenciamento: Novidades'
+          title: 'Gerenciar novidades'
+          new_post_button: 'Criar novidade'
+          table:
+            title: 'Título da novidade'
+            created_at: 'Criado em'
+            published_at: 'Publicado em'
+            actions: 'Ações'
       followers:
         title: "Seguidores"
         download: "Baixar lista"

@@ -2,6 +2,7 @@ class ChannelPost < ActiveRecord::Base
   extend CatarseAutoHtml
 
   schema_associations
+  has_many :notifications, dependent: :destroy
 
   validates_presence_of :user_id, :channel_id, :body, :body_html, :title
   #remove all whitespace from the start of the line so auto_html won't go crazy
