@@ -30,5 +30,9 @@ class ContributionPolicy < ApplicationPolicy
   def request_refund?
     done_by_onwer_or_admin?
   end
+
+  def permitted_attributes
+    {contribution: record.attribute_names.map(&:to_sym) - %i[user_attributes user_id user payment_service_fee payment_id]}
+  end
 end
 

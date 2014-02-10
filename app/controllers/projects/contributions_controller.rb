@@ -16,7 +16,7 @@ class Projects::ContributionsController < ApplicationController
 
   def update
     authorize resource
-    resource.update_attributes(params[:contribution])
+    resource.update_attributes(permitted_params[:contribution])
     resource.update_user_billing_info
     render json: {message: 'updated'}
   end
@@ -85,6 +85,10 @@ class Projects::ContributionsController < ApplicationController
   end
 
   protected
+  def permitted_params
+    params.permit(policy(resource).permitted_attributes)
+  end
+
   def collection
     @contributions ||= apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").per(10)
   end
