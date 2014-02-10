@@ -706,7 +706,7 @@ pt:
         destroy: 'Você tem certeza que deseja deletar?'
       posts:
         save_submit: 'Salvar e visualizar'
-        warning_html: 'Lembrando que toda novidade publicada vai diretamente para o email de seus seguidores.<br/> Por isso, revise bem seu texto antes de enviá-lo.'
+        warning_html: 'Lembrando que toda novidade publicada vai diretamente para o email de seus seguidores. Por isso, revise bem seu texto antes de enviá-lo.'
         back_to_list: '← Voltar para gerenciar novidades'
         update:
           published_message: 'Sua novidade foi publicada e enviada por email aos seguidores do canal.'
