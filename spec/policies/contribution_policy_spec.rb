@@ -26,6 +26,21 @@ describe ContributionPolicy do
     end
   end
 
+  shared_examples_for "create permissions" do
+    it_should_behave_like "update permissions" 
+
+    ['draft', 'deleted', 'rejected', 'successful', 'failed', 'waiting_funds', 'in_analysis'].each do |state|
+      it "should deny access if project is #{state}" do
+        contribution.project.update_attributes state: state
+        should_not permit(user, contribution)
+      end
+    end
+  end
+
+  permissions(:new?){ it_should_behave_like "create permissions" }
+
+  permissions(:create?){ it_should_behave_like "create permissions" }
+
   permissions(:show?){ it_should_behave_like "update permissions" }
 
   permissions(:update?){ it_should_behave_like "update permissions" }
