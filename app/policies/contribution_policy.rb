@@ -11,6 +11,10 @@ class ContributionPolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    done_by_onwer_or_admin? && record.project.online?
+  end
+
   def update?
     done_by_onwer_or_admin?
   end
