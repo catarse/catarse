@@ -1,11 +1,13 @@
 class Users::ContributionsController < ApplicationController
-  after_filter :verify_authorized, except: %i[index]
+  after_filter :verify_authorized, except: [:index]
+  after_filter :verify_policy_scoped, only: [:index]
   inherit_resources
   defaults resource_class: Contribution
   belongs_to :user
   actions :index
 
   def index
+    collection
     render layout: false
   end
 
@@ -23,6 +25,6 @@ class Users::ContributionsController < ApplicationController
 
   protected
   def collection
-    @contributions ||= policy_scoped(end_of_association_chain).order("created_at DESC, confirmed_at DESC").includes(:user, :reward, project: [:user, :category, :project_total]).page(params[:page]).per(10)
+    @contributions ||= policy_scope(end_of_association_chain).order("created_at DESC, confirmed_at DESC").includes(:user, :reward, project: [:user, :category, :project_total]).page(params[:page]).per(10)
   end
 end
