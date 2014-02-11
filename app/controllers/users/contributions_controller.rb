@@ -23,6 +23,11 @@ class Users::ContributionsController < ApplicationController
   end
 
   protected
+  def policy_scope(scope)
+    @_policy_scoped = true
+    ContributionPolicy::UserScope.new(current_user, scope).resolve
+  end
+
   def collection
     @contributions ||= policy_scope(end_of_association_chain).order("created_at DESC, confirmed_at DESC").includes(:user, :reward, project: [:user, :category, :project_total]).page(params[:page]).per(10)
   end
