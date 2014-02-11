@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    user.admin? || false
+    only_admin
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.admin? || false
+    only_admin
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    user.admin? || false
+    only_admin
   end
 
   def scope
@@ -47,6 +47,10 @@ class ApplicationPolicy
   end
 
   protected
+  def only_admin
+    user.try(:admin?) || false
+  end
+
   def done_by_onwer_or_admin?
     is_owned_by?(user) || user.try(:admin?)
   end
