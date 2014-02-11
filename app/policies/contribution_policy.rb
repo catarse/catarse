@@ -1,6 +1,6 @@
 class ContributionPolicy < ApplicationPolicy
 
-  self::Scope = Struct.new(:user, :scope) do
+  self::UserScope = Struct.new(:user, :scope) do
 
     def resolve
       if user.try(:admin?) 
