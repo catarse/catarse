@@ -23,10 +23,10 @@ section.line-box
             .channel-followers[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
               = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
-      .large-4.columns
-        = content_tag(:iframe, nil, src: @profile.display_video_embed_url, width: '330', height: '185', )
-        .video-thumb
-          = 'a'
+      .large-4.columns.video-thumb
+        = image_tag(@profile.video.thumbnail_large, width: '100%')
+        span
+          = image_tag 'catarse_bootstrap/icon-play.png'
 
       .large-3.large-offset-1.columns
         = image_tag @profile.users.first.display_image, title: @profile.name, :class => "curator-image large-4 columns"
