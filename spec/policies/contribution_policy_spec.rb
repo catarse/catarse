@@ -51,7 +51,7 @@ describe ContributionPolicy do
 
   permissions(:request_refund?){ it_should_behave_like "update permissions" }
 
-  describe 'Scope' do
+  describe 'UserScope' do
     describe ".resolve" do
       let(:user) { create(:user, admin: false) }
       before do
@@ -60,7 +60,7 @@ describe ContributionPolicy do
         @contribution = create(:contribution, anonymous: false, state: 'confirmed', project: project)
       end
 
-      subject { ContributionPolicy::Scope.new(user, project.contributions).resolve }
+      subject { ContributionPolicy::UserScope.new(user, project.contributions).resolve }
 
       context "when user is admin" do
         let(:user) { create(:user, admin: true) }
