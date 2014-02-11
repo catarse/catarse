@@ -1,19 +1,19 @@
 = semantic_form_for [parent, resource], html: { class: 'remote-form' } do |f|
-  - if resource.new_record? || can?(:update, resource, :minimum_value)
+  - if resource.new_record? || policy(resource).permitted_for?(:minimum_value, :update)
     = f.input :minimum_value, required: true, as: :number, input_html: {pattern: "^[\\d+.]+"}
 
-  - if resource.new_record? || can?(:update, resource, :days_to_delivery)
+  - if resource.new_record? || policy(resource).permitted_for?(:days_to_delivery, :update)
     = f.input :days_to_delivery, required: true
 
-  - if resource.new_record? || can?(:update, resource, :description)
+  - if resource.new_record? || policy(resource).permitted_for?(:description, :update)
     = f.input :description, required: true
 
-  - if resource.new_record? || can?(:update, resource, :maximum_contributions)
+  - if resource.new_record? || policy(resource).permitted_for?(:maximum_contributions, :update)
     = f.input :maximum_contributions
 
   .clearfix
   = f.submit class: 'btn', disable_with: I18n.t('sending')
-  - if resource.persisted? && can?(:destroy, resource)
+  - if resource.persisted? && policy(resource).destroy?
     br/
     = link_to [parent, resource], class: 'btn btn-danger', method: :delete, confirm: 'Are you sure?' do
       i.icon-trash.icon-white

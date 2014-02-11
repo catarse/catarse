@@ -1,11 +1,9 @@
 = simple_form_for resource, url: url, class: 'channel-post-new' do |form|
-  = form.input :title, as: :string
-  = form.input :body, as: :text, input_html: {rows: 10}
+  = form.input :title, as: :string, required: false
+  = form.input :body, as: :text, input_html: {rows: 10}, required: false
 
-  .advise-box.gray
-    p= t('projects.project_updates.warning')
   .row
-    .large-2.columns
+    .large-3.columns
       = form.button :submit, t('channels.admin.posts.save_submit'), class: 'button action medium'
   .clearfix
     br/
@@ -13,4 +11,5 @@
   = render partial: 'projects/formatting_tips'
   
 .clearfix
-
+br/
+br/

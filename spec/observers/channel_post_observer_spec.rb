@@ -27,6 +27,10 @@ describe ChannelPostObserver do
         ).never
       end
 
+      it 'should not fill published at field' do
+        channel_post.published_at.should be_nil
+      end
+
       it 'should not call Notification.notify once' do
         channel_post.update_attributes(visible: false)
       end
@@ -49,6 +53,11 @@ describe ChannelPostObserver do
 
       it 'should call Notification.notify once' do
         channel_post.update_attributes(visible: true)
+      end
+
+      it 'should fill published at field' do
+        channel_post.update_attributes(visible: true)
+        channel_post.published_at.should_not be_nil
       end
     end
   end
