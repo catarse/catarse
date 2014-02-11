@@ -1,6 +1,6 @@
 $(".video-thumb").click(function() {
 	$(".channel-bio").toggle();
-	$(".big-video").toggle();
+	$(".big-video").slideToggle("fadeIn");
 	$(".big-video-close").toggle("easein");
 });
 
