@@ -12,6 +12,18 @@ describe ContributionObserver do
   describe "after_create" do
     before{ Kernel.stub(:rand).and_return(1) }
     its(:key){ should == Digest::MD5.new.update("#{contribution.id}###{contribution.created_at}##1").to_s }
+
+    context "after create the contribution" do
+      let(:contribution) { build(:contribution) }
+
+      before do
+        PendingContributionWorker.should_receive(:perform_at)
+      end
+
+      it "should call perform at in pending contribution worker" do
+        contribution.save
+      end
+    end
   end
 
   describe "before_save" do
