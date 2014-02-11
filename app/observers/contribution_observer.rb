@@ -3,6 +3,7 @@ class ContributionObserver < ActiveRecord::Observer
 
   def after_create(contribution)
     contribution.define_key
+    PendingContributionWorker.perform_at(1.hour.from_now, contribution.id)
   end
 
   def before_save(contribution)
