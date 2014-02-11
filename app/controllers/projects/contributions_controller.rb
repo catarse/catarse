@@ -6,12 +6,17 @@ class Projects::ContributionsController < ApplicationController
   has_scope :available_to_count, type: :boolean
   has_scope :with_state
   has_scope :page, default: 1
-  load_and_authorize_resource except: [:index]
+  after_filter :verify_authorized, except: [:index]
   belongs_to :project
   before_filter :detect_old_browsers, only: [:new, :create]
 
+  def edit
+    authorize resource
+  end
+
   def update
-    resource.update_attributes(params[:contribution])
+    authorize resource
+    resource.update_attributes(permitted_params[:contribution])
     resource.update_user_billing_info
     render json: {message: 'updated'}
   end
@@ -21,21 +26,19 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def show
+    authorize resource
     @title = t('projects.contributions.show.title')
   end
 
   def new
-    unless parent.online?
-      flash[:failure] = t('projects.contributions.cannot_contribute')
-      return redirect_to :root
-    end
+    @contribution = Contribution.new(project: parent, user: current_user)
+    authorize @contribution
 
     @create_url = ::Configuration[:secure_review_host] ?
       project_contributions_url(@project, {host: ::Configuration[:secure_review_host], protocol: 'https'}) :
       project_contributions_path(@project)
 
     @title = t('projects.contributions.new.title', name: @project.name)
-    @contribution = @project.contributions.new(user: current_user)
     empty_reward = Reward.new(minimum_value: 0, description: t('projects.contributions.new.no_reward'))
     @rewards = [empty_reward] + @project.rewards.remaining.order(:minimum_value)
 
@@ -48,8 +51,9 @@ class Projects::ContributionsController < ApplicationController
 
   def create
     @title = t('projects.contributions.create.title')
-    @contribution.user = current_user
+    @contribution = Contribution.new(params[:contribution].merge(user: current_user, project: parent))
     @contribution.reward_id = nil if params[:contribution][:reward_id].to_i == 0
+    authorize @contribution
     create! do |success,failure|
       failure.html do
         flash[:failure] = t('projects.contributions.review.error')
@@ -66,6 +70,7 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def credits_checkout
+    authorize resource
     if current_user.credits < @contribution.value
       flash[:failure] = t('projects.contributions.checkout.no_credits')
       return redirect_to new_project_contribution_path(@contribution.project)
@@ -80,6 +85,10 @@ class Projects::ContributionsController < ApplicationController
   end
 
   protected
+  def permitted_params
+    params.permit(policy(resource).permitted_attributes)
+  end
+
   def collection
     @contributions ||= apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").per(10)
   end
