@@ -25,7 +25,7 @@
 
           = form.input :name, as: :string, label: t('pages.sign_up.form.labels.name')
 
-          = form.input :email, as: :email
+          = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }
 
           = form.input :password, as: :password, label: t('pages.sign_up.form.labels.password'), hint: t('pages.sign_up.form.hint.password_length'), wrapper_html: { class: 'password' }
 
