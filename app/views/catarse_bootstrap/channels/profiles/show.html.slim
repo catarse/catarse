@@ -5,7 +5,7 @@ section.line-box
   .row
     .large-12.columns
       .big-video
-        = content_tag(:iframe, nil, src: @profile.display_video_embed_url, width: '100%', height: '585px', :class => "load-video")
+        = content_tag(:iframe, nil, src: @profile.display_video_embed_url, width: '100%', height: '582px', :class => "load-video")
       .big-video-close
         = "×"
     .channel-bio
@@ -14,13 +14,13 @@ section.line-box
           h1.channel-title = @profile.name
           p.channel-description = truncate(@profile.description, length: 210)
           - if resource.has_subscriber?(current_user)
-            .large-6.columns.no-padding
+            .large-7.columns.no-padding
               = link_to channels_subscriber_path, {method: :delete, class: [:button, :medium, :negative]} do
                 .stop_following= t('channels.unfollow')
           - else
-            .large-6.columns.no-padding
+            .large-7.columns.no-padding
               = link_to t('channels.follow'), channels_subscriber_path, class: [:button, :medium, :negative], title: t('channels.follow')
-          .large-6.columns
+          .large-5.columns
             .channel-followers[title=t('channels.subscribed', count: @profile.channels_subscribers.size)]
               = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
