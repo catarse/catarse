@@ -3,12 +3,7 @@
   - if project.expired?
     .status-flag
       = link_to project_by_slug_path(permalink: project.permalink), target: ( defined?(embed_link) ? '__blank' : '' ) do
-        - if project.successful?
-          = image_tag "successful.#{I18n.locale}.png"
-        - elsif project.failed?
-          = image_tag "not_successful.#{I18n.locale}.png"
-        - else
-          = image_tag "waiting_confirmation.#{I18n.locale}.png"
+        = project.status_flag
   .image = link_to image_tag(project.display_image, size: '220x172'), project_by_slug_path(project.permalink), title: project.name
   .padding
     h4.title    = link_to truncate(project.name, length: 50, separator: ''), project_by_slug_path(project.permalink), title: project.name
