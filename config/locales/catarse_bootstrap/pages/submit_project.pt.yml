@@ -4,8 +4,9 @@ pt:
     subtitle: "Após preencher o formulário abaixo, você receberá uma página de projeto em rascunho. Lá você irá adicionar as recompensas e poderá compartilhar com seus amigos para ter um projeto ainda mais afiado. As informações preenchidas abaixo não são definitivas, mas lembre-se de que quanto mais consistente estiver o seu projeto nesse envio, mais rápido ele irá para o ar."
     important: "<strong>Importante:</strong> O %{channel} seleciona projetos segundo seus próprios critérios de seleção, o que implica que seu projeto poderá ser recusado pela equipe de curadores."
 
-    permalink: "%{channel}.catarse.me/"
+    permalink: "Url do projeto"
     permalink_hint: "URL é o endereço do seu projeto, deixe-a simples. Tente não usar underline, hífen e etc."
+    permalink_over: "%{channel}.catarse.me/"
 
     name: "Nome do projeto"
     name_hint: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo. Não ultrapasse 50 caracteres."
