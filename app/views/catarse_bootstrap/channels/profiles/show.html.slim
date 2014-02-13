@@ -33,7 +33,6 @@ section.line-box
         = image_tag @profile.users.first.display_image, title: @profile.name, :class => "curator-image large-4 columns"
         .large-8.columns
           h2.curator-name = @profile.users.first.name
-          p.curator-caption = t('channels.curator')
           h3.curator-bio = @profile.users.first.bio
         ul.curator-social
           - if @profile.website.present?

@@ -9,7 +9,6 @@ fr:
     following: "abonné"
     unfollow: "se désabonner"
     subscribed: "%{count} abonnés"
-    curator: 'Curateur'
     admin:
       menu: "Modération"
       statistics_menu: "Statistiques"
