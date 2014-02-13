@@ -14,11 +14,12 @@ article.row.how-it-works-wrapper
   section.large-9.columns.how-it-works
     == @profile.how_it_works_html
 
-  .row
-    aside.large-3.columns.how-it-works-sidebar
-      h4 = t('channels.how_it_works.sidebar.title')
-      nav
         ul#side-menu
+  aside.large-3.columns.how-it-works-sidebar
+    h4 = t('channels.how_it_works.sidebar.title')
+    nav
+      ul#side-menu
 
+  
 
 = render 'shared/footer_channel'
