@@ -20,3 +20,5 @@ App.addChild('HowItWorks', {
   }
 });
 
+$(".how-it-works-sidebar").sticky({topSpacing:0});
+
