@@ -3,7 +3,7 @@ header
     h1.large-2.columns.no-padding
       = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo-image', :title => Configuration[:company_name]
     .large-10.columns.no-padding
-      nav.nav-horizontal-right
+      nav.channel-header
         ul
           li.nav-item
             = link_to t('channels.header.submit'), channels_about_path, id: 'guidelines_header_modal', class: 'standard-link-green'
