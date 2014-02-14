@@ -4,6 +4,7 @@ App.addChild('HowItWorks', {
   activate: function(){
     this.body = this.$('.how-it-works');
     this.sidebar = this.$('.how-it-works-sidebar');
+    this.sidebar.sticky({topSpacing:0});
     this.$('#side-menu').append(this.generateMenu());
   },
 
@@ -20,5 +21,5 @@ App.addChild('HowItWorks', {
   }
 });
 
-$(".how-it-works-sidebar").sticky({topSpacing:0});
+
 
