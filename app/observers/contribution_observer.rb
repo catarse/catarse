@@ -29,7 +29,7 @@ class ContributionObserver < ActiveRecord::Observer
     end
   end
 
-  def notify_backoffice_about_canceled(contribution)
+  def notify_about_canceled(contribution)
     user = User.where(email: Configuration[:email_payments]).first
     if user.present?
       Notification.notify_once(
@@ -39,6 +39,13 @@ class ContributionObserver < ActiveRecord::Observer
         contribution: contribution
       )
     end
+
+    Notification.notify_once(
+      :contribution_canceled,
+      contribution.user,
+      { contribution_id: contribution.id },
+      contribution: contribution
+    )
   end
 
   private

@@ -51,7 +51,7 @@ module Contribution::StateMachineHandler
     end
 
     def after_transition_from_confirmed_to_canceled
-      notify_observers :notify_backoffice_about_canceled
+      notify_observers :notify_about_canceled
     end
 
     def after_transition_from_confirmed_to_requested_refund
