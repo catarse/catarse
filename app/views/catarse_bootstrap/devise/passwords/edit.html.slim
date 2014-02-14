@@ -14,17 +14,16 @@
           = f.hidden_field :reset_password_token
           div.password
             = f.label :password, t('pages.reset_password.form.labels.password')
+            = f.password_field :password, required: true
             span.hint
               = t('pages.sign_up.form.hint.password_length')
-            = f.password_field :password, class: [:login, :password], required: true
+            .show-password
+              = check_box_tag :show_password
+              = label_tag :show_password, t('pages.sign_up.form.labels.show_password')
 
-          p
+          div.password
             = f.label :password_confirmation, t('pages.reset_password.form.labels.password_confirmation')
             = f.password_field :password_confirmation, required: true
-
-          .text-left
-            = check_box_tag :show_password
-            = f.label :show_password, t('pages.sign_up.form.labels.show_password')
 
           .large-7.columns.large-centered
             = f.submit t('pages.reset_password.form.inputs.submit'), class: [:button, :action, 'large-12', 'columns']

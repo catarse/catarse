@@ -18,6 +18,8 @@
 //= require ./lib/backbone.js
 //= require ./lib/skull.js
 //= require ./app/app.js
+//= require ./lib/jquery.sticky.js
 //= require_tree ./lib
 //= require_tree ./app
+
 

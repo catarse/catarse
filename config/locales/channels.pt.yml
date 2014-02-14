@@ -9,7 +9,6 @@ pt:
     following: "Seguindo"
     unfollow: "Deixar de seguir"
     subscribed: "%{count} seguindo o canal"
-    curator: 'Curador'
     admin:
       menu: "Moderação de Canais"
       followers_menu: "Seguidores"
