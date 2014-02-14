@@ -98,17 +98,30 @@ describe ContributionObserver do
     end
   end
 
-  describe '#notify_backoffice_about_canceled' do
+  describe '#notify_about_canceled' do
     before do
       Configuration[:email_payments] = 'finan@c.me'
     end
 
-    let(:user) { create(:user, email: 'finan@c.me') }
+    let(:user_finan) { create(:user, email: 'finan@c.me') }
 
     context "when contribution is confirmed and change to canceled" do
       before do
         contribution.confirm
-        Notification.should_receive(:notify_once).with(:contribution_canceled_after_confirmed, user, {contribution_id: contribution.id}, contribution: contribution)
+
+        Notification.should_receive(:notify_once).with(
+          :contribution_canceled_after_confirmed,
+          user_finan,
+          {contribution_id: contribution.id},
+          contribution: contribution
+        )
+
+        Notification.should_receive(:notify_once).with(
+          :contribution_canceled,
+          contribution.user,
+          { contribution_id: contribution.id },
+          contribution: contribution
+        )
       end
 
       it { contribution.cancel }
