@@ -1,6 +1,6 @@
 #bootstrap-feedback
   .feedback-support data-toggle="closed" style="display: none"
-    = link_to '', 'javascript:void(0)', class: 'toggle close'
+    = link_to (content_tag(:span, "", :class => "close-arrow")), 'javascript:void(0)', class: 'toggle close'
     .clearfix
     .icon
     p= t('devise.feedback_tab.header_html')
@@ -12,5 +12,6 @@
       br/
       = link_to t('devise.feedback_tab.contact_link'), '#', data: { uv_lightbox: 'classic_widget', uv_mode: 'support', uv_primary_color: '#79808b', uv_link_color: '#3f4652', uv_topic_id: '25760'}
   .feedback-support data-toggle="opened"
-    = link_to '', 'javascript:void(0)', class: 'toggle open'
-    p= t('devise.feedback_tab.title')
+    = link_to (content_tag(:span, "", :class => "open-arrow")), 'javascript:void(0)', class: 'toggle open'
+    p.toggle.text
+      = t('devise.feedback_tab.title')
