@@ -3,10 +3,10 @@
 
 section
   .row
-    .large-2.columns
-      br/
-      br/
-      = link_to 'Voltar para listagem', channels_admin_posts_path, class: 'navigation-link'
+    br/
+    br/
+    .large-4.columns
+      = link_to t('channels.admin.posts.back_to_list'), channels_admin_posts_path, class: 'navigation-link'
       br/
       br/
       br/
@@ -17,7 +17,7 @@ section
           = resource.title
         p= l(resource.created_at, format: :updates)
 
-article.row.channel-posts-wrapper
+article.row.admin-channel-posts-wrapper
   section.large-9.columns.channel-post
     == resource.body_html
   .large-3.columns
@@ -27,6 +27,12 @@ br/
 
 article.row.channel-posts-wrapper
   - unless resource.visible
+    .large-12.columns
+      .advise-box.gray
+        p= t('channels.admin.posts.warning_html')
+      br/
+      br/
+
     .large-2.columns.left
       = link_to t('channels.admin.table.edit_action'), edit_channels_admin_post_path(resource), class: [:button, :negative, :medium]
     .large-2.columns.left
