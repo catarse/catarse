@@ -1,41 +1,33 @@
 - contribution = @notification.contribution
+
 |Olá, #{contribution.user.name}!
 br
 br
-|Infelizmente o projeto #{link_to(contribution.project.name, "#{Configuration[:base_url]}/projects/#{contribution.project.to_param}")} que você apoiou não atingiu a meta estabelecida e não foi financiado no #{Configuration[:company_name]}.
+| Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} 
+| que você apoiou não atingiu a meta estabelecida e não foi financiado no #{Configuration[:company_name]}.
 br
 br
-|Em função disto, você recebeu #{contribution.display_value} em créditos para apoiar outros projetos. Você pode conhecer mais projetos de #{contribution.project.category} em #{link_to("#{Configuration[:base_url]}/explore##{contribution.project.category.to_s.parameterize}", "#{Configuration[:base_url]}/explore##{contribution.project.category.to_s.parameterize}")}
+| Em função disto, você recebeu #{contribution.display_value} em créditos para apoiar outros projetos. 
+| Aqui temos uma seleção que pode te interessar:
 br
-br
-|Abaixo selecionamos algumas sugestões de projetos especialmente para você:
 br
 -contribution.user.recommended_projects.limit(3).each do |project|
-  |#{link_to(project.name, "#{Configuration[:base_url]}/projects/#{project.to_param}")}
+  |#{link_to(project.name, project_by_slug_url(permalink: project.permalink))}
   br
   |#{project.headline}
   br
   br
 br
 br
-|Caso prefira, você pode pedir o reembolso do seu dinheiro clicando #{link_to("aqui", "#{Configuration[:base_url]}/users/#{contribution.user.to_param}#credits")}.
+| Caso prefira, você pode pedir o #{link_to("reembolso seu apoio", credits_user_url(contribution.user, anchor: 'credits'))}.
 br
 br
-|Chave do apoio: #{contribution.key}
+| Lembrando que a chave de identificação do seu apoio é:: #{contribution.id}
 br
 br
-|Caso você prefira solicitar o reembolso, só para lembrar, como constam nos #{link_to("Termos de Uso do #{Configuration[:company_name]}","#{Configuration[:base_url]}/terms")}, que se o apoio foi feito com cartão de crédito, o valor será estornado na próxima ou subsequente fatura do cartão. Se o apoio foi feito através de transferência bancária ou boleto, enviaremos um email com os procedimentos necessários para poder devolver o valor para você.
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_contact]}
 br
 br
-|Se, por qualquer motivo, quiser entrar em contato com #{contribution.project.user.display_name}, mande um email para #{mail_to contribution.project.user.email}.
+|Um abraço,
 br
-br
-|Se tiver alguma outra dúvida, entre em contato conosco na nossa Central de Suporte:
-br
-= link_to 'http://suporte.catarse.me/', 'http://suporte.catarse.me/'
-br
-br
-|Um grande abraço,
-br
-br
-|Equipe do #{Configuration[:company_name]}
+| #{Configuration[:company_name]}
