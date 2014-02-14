@@ -9,6 +9,14 @@ class Channels::Admin::PostsController < Admin::BaseController
     return redirect_to channels_admin_posts_path if resource.visible
   end
 
+  def update
+    if params[:channel_post][:visible]
+      update!(notice: I18n.t('channels.admin.posts.update.published_message'))
+    else
+      update!
+    end
+  end
+
   def begin_of_association_chain
     channel
   end

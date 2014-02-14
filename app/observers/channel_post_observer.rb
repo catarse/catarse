@@ -1,6 +1,12 @@
 class ChannelPostObserver < ActiveRecord::Observer
   observe :channel_post
 
+  def before_save(channel_post)
+    if channel_post.visible
+      channel_post.published_at = DateTime.now unless channel_post.published_at.present?
+    end
+  end
+
   def after_save(channel_post)
     if channel_post.visible
       channel_post.channel.subscribers.each do |subscriber|

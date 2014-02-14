@@ -1,14 +1,12 @@
 = render 'shared/header_channel'
 
 .row.admin-posts
-  h1
-    = @title = t('channels.admin.posts.index.title')
-  .clearfix
   .row
-    .large-4.columns
-      = link_to 'Nova postagem', new_channels_admin_post_path, class: [:button, :medium, :action]
-  br/
-  br/
+    .large-10.columns
+      h1
+        = @title = t('channels.admin.posts.index.title')
+    .large-2.columns.right
+      = link_to t('channels.admin.posts.index.new_post_button'), new_channels_admin_post_path, class: [:button, :medium, :action, :new_post]
 
 
   .clearfix
@@ -18,21 +16,19 @@
     table.admin-posts-table
       thead
         tr
-          th.large-4.columns Título
-          th.large-2.columns Publicado?
-          th.large-4.columns Criado em
-          th.large-2.columns
+          th.large-4.columns= t('channels.admin.posts.index.table.title')
+          th.large-3.columns= t('channels.admin.posts.index.table.created_at')
+          th.large-4.columns= t('channels.admin.posts.index.table.published_at')
+          th.large-1.columns= t('channels.admin.posts.index.table.actions')
       tbody
         - collection.each do |resource|
           tr id=resource.id class=cycle("even", "odd")
             td.large-4.columns= link_to resource.title, channels_admin_post_path(resource)
-            td.large-2.columns= (resource.visible ? t('yes') : t('no'))
-            td.large-4.columns= l(resource.created_at)
-            td.large-2.columns.project-events-dropdown
+            td.large-3.columns= l(resource.created_at)
+            td.large-4.columns= l(resource.published_at) if resource.published_at.present?
+            td.large-1.columns.project-events-dropdown
               ul.dropdown
-                - if resource.visible
-                  li= link_to t('channels.admin.table.unpublish_action'), channels_admin_post_path(resource, channel_post: { visible: false }), method: :put
-                - else
+                - unless resource.visible
                   li= link_to t('channels.admin.table.publish_action'), channels_admin_post_path(resource, channel_post: { visible: true }), method: :put
                 li= link_to t('channels.admin.table.show_action'), channels_admin_post_path(resource)
                 - unless resource.visible
@@ -40,5 +36,6 @@
                 li= link_to t('channels.admin.table.destroy_action'), channels_admin_post_path(resource), method: :delete, data: { confirm: t('channels.admin.confirmations.destroy') }
 
   = paginate collection
+  br/
 
 = render 'shared/footer_channel'

@@ -1,0 +1,49 @@
+.video-thumb
+	position: relative
+	span
+		background: RGBA(85, 96, 112, 0.8)
+		width: 65px
+		height: 40px
+		border-radius: 4px
+		position: absolute
+		bottom: 10px
+		left: 25px
+		cursor: pointer
+		img
+			position: absolute
+			top: 50%
+			left: 50%
+			-webkit-transform: translate(-50%, -50%)
+			-ms-transform: translate(-50%, -50%)
+			transform: translate(-50%, -50%)
+			width: 17px
+		&:hover
+			background: lighten($blue-one, 10%)
+
+.big-video
+	border: none
+	display: none
+	padding: 60px 0 0
+	margin: -60px 0 0
+
+.load-video
+	border: none
+
+.big-video-close
+	position: absolute
+	right: -20px
+	top: 0
+	display: none
+	background: $blue-one
+	color: $white
+	display: none
+	width: 32px
+	height: 32px
+	border-radius: 3px
+	text-align: center
+	line-height: 26px
+	font-weight: 700
+	font-size: 1.6em
+	cursor: pointer
+	&:hover
+		background: lighten($blue-one, 10%)
