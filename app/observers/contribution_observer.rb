@@ -22,10 +22,16 @@ class ContributionObserver < ActiveRecord::Observer
     end
   end
 
-  def notify_backoffice_about_refund(contribution)
+  def notify_about_request_refund(contribution)
     user = User.find_by(email: Configuration[:email_payments])
     if user.present?
       Notification.notify(:refund_request, user, {contribution: contribution, origin_email: contribution.user.email, origin_name: contribution.user.name})
+    end
+
+    if contribution.payment_choice.try(:downcase) == 'cartaodecredito' || contribution.payment_method.try(:downcase) == 'paypal'
+      Notification.notify_once(:requested_refund, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+    else
+      Notification.notify_once(:requested_refund_split, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
     end
   end
 
