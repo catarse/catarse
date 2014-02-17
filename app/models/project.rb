@@ -14,7 +14,7 @@ class Project < ActiveRecord::Base
   mount_uploader :uploaded_image, ProjectUploader
 
   delegate :display_status, :progress, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
-    :display_pledged, :display_goal, :remaining_days, :progress_bar, :successful_flag,
+    :display_pledged, :display_goal, :remaining_days, :progress_bar, :status_flag,
     to: :decorator
 
   has_and_belongs_to_many :channels

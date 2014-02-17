@@ -4,7 +4,7 @@ en:
     subtitle: "After filling out the form below, you will receive a draft project page. There you will add rewards and can share with your friends to have an even more sharp message. The information filled below are not definitive, but remember that the more consistent you are in your project submission, the faster it will air."
     important: "<strong>Important:</strong> The %{channel} selects the projects based on their own criteria, this implies that the project can be refused by the curators team."
 
-    permalink: "%{channel}.catarse.me/"
+    permalink: "Project Url"
     permalink_hint: "Project URL is the web address for your project, keep it simple. Try to not use underline, dash and special characters"
 
     name: "Project's Name"
