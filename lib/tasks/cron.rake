@@ -19,12 +19,12 @@ end
 
 desc "Move to deleted state all contributions that are in pending a lot of time"
 task :move_pending_contributions_to_trash => [:environment] do
-  Contribution.where("state in('pending', 'waiting_confirmation') and created_at + interval '6 days' < current_timestamp").update_all({state: 'deleted'})
+  Contribution.where("state in('pending') and created_at + interval '6 days' < current_timestamp").update_all({state: 'deleted'})
 end
 
 desc "Cancel all waiting_confirmation contributions that is passed 4 weekdays"
 task :cancel_expired_waiting_confirmation_contributions => :environment do
-  Contribution.can_cancel.update_all(state: c)
+  Contribution.can_cancel.update_all(state: 'canceled')
 end
 
 desc "Send notification about credits 1 month after the project failed"
