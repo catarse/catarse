@@ -9,7 +9,6 @@ en:
     following: "Following"
     unfollow: "Unfollow"
     subscribed: "%{count} subscribed to this channel"
-    curator: 'Curator'
     admin:
       menu: "Channel moderation"
       statistics_menu: "Statistics"
