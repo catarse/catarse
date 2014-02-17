@@ -86,15 +86,34 @@ describe ContributionObserver do
     end
   end
 
-  describe '#notify_backoffice_about_refund' do
+  describe '#notify_about_request_refund' do
     let(:admin){ create(:user) }
     before do
       Configuration[:email_payments] = admin.email
     end
 
-    it "should notify admin upon refund request" do
-      contribution.notify_observers :notify_backoffice_about_refund
-      expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: contribution.user.email, origin_name: contribution.user.name).count).to eq 1
+    context "when contribution is made with credit card" do
+      before do
+        contribution.update_attributes(payment_choice: 'CartaoDeCredito', payment_method: 'MoIP')
+        contribution.notify_observers :notify_about_request_refund
+      end
+
+      it "should notify admin and contributor upon refund request" do
+        expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: contribution.user.email, origin_name: contribution.user.name).count).to eq 1
+        expect(Notification.where(template_name: 'requested_refund', user_id: contribution.user.id).count).to eq 1
+      end
+    end
+
+    context "when contribution is made with boleto" do
+      before do
+        contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'MoIP')
+        contribution.notify_observers :notify_about_request_refund
+      end
+
+      it "should notify admin and contributor upon refund request" do
+        expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: contribution.user.email, origin_name: contribution.user.name).count).to eq 1
+        expect(Notification.where(template_name: 'requested_refund_split', user_id: contribution.user.id).count).to eq 1
+      end
     end
   end
 
