@@ -7,35 +7,40 @@
       - if current_user && @projects_near.present?
         section.near_projects.list
           header
-            h2.list-title= t('sections.near.title')
+            h2.list-title
+              = link_to t('sections.near.title'), explore_path(anchor: "near_of/" ) + current_user.address_state
             = link_to t('main.links.near'), explore_path(anchor: "near_of/" ) + current_user.address_state, class: "more-projects"
           .projects
             == render @projects_near
 
       section.selected_projects.list
         header
-          h2.list-title= t('sections.recommended.title')
+          h2.list-title
+            = link_to t('sections.recommended.title'), explore_path(anchor: :recommended)
           = link_to t('main.links.recommended'), explore_path(anchor: :recommended), class: "more-projects"
         .projects
           == render @recommends
 
       section.channel_projects.list
         header
-          h2.list-title= t('sections.channels.title')
+          h2.list-title
+            = link_to t('sections.channels.title'), root_url(subdomain: 'asas')
           = link_to t('main.links.channels'), root_url(subdomain: 'asas'), class: "more-projects"
         .projects
           == render @channel_projects
 
       section.expiring_projects.list
         header
-          h2.list-title= t('sections.expiring.title')
+          h2.list-title
+            = link_to t('sections.expiring.title'), explore_path(anchor: :expiring)
           = link_to t('main.links.expiring'), explore_path(anchor: :expiring), class: "more-projects"
         .projects
           == render @expiring
 
       section.recents_projects.list
         header
-          h2.list-title= t('sections.recents.title')
+          h2.list-title
+            = link_to t('sections.recents.title'), explore_path(anchor: :recent)
           = link_to t('main.links.recents'), explore_path(anchor: :recent), class: "more-projects"
         .projects
           == render @recent
