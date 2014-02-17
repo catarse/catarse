@@ -19,11 +19,6 @@ class Ability
     # Channel authorizations
     # Due to previous abilities, first I activate all things
     # and in the final I deactivate unnecessary abilities.
-    can :create, :channels_subscribers if current_user.persisted?
-    can :destroy, :channels_subscribers do |cs|
-      cs.user == current_user
-    end
-
     can [:update, :edit], :channels do |c|
       c == current_user.channel
     end
