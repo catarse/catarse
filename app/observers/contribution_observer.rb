@@ -22,6 +22,14 @@ class ContributionObserver < ActiveRecord::Observer
     end
   end
 
+  def notify_about_refund(contribution)
+    if contribution.payment_choice.try(:downcase) == 'cartaodecredito' || contribution.payment_method.try(:downcase) == 'paypal'
+      Notification.notify_once(:refund_completed, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+    else
+      Notification.notify_once(:refund_completed_split, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+    end
+  end
+
   def notify_about_request_refund(contribution)
     user = User.find_by(email: Configuration[:email_payments])
     if user.present?

@@ -86,6 +86,30 @@ describe ContributionObserver do
     end
   end
 
+  describe "#notify_about_refund" do
+    context "when contribution is made with credit card" do
+      before do
+        contribution.update_attributes(payment_choice: 'CartaoDeCredito', payment_method: 'MoIP')
+        contribution.notify_observers :notify_about_refund
+      end
+
+      it "should notify contributor about refund" do
+        expect(Notification.where(template_name: 'refund_completed', user_id: contribution.user.id).count).to eq 1
+      end
+    end
+
+    context "when contribution is made with boleto" do
+      before do
+        contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'MoIP')
+        contribution.notify_observers :notify_about_refund
+      end
+
+      it "should notify contributor about refund" do
+        expect(Notification.where(template_name: 'refund_completed_split', user_id: contribution.user.id).count).to eq 1
+      end
+    end
+  end
+
   describe '#notify_about_request_refund' do
     let(:admin){ create(:user) }
     before do
