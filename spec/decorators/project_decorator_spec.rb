@@ -176,6 +176,7 @@ describe ProjectDecorator do
 
     context "When the project is in waiting funds" do
       it "should return a waiting funds image flag when the project is waiting funds" do
+        project.stub(:waiting_funds?).and_return(true)
 
         expect(project.status_flag).to eq("<div class=\"status_flag\"><img alt=\"Waiting confirmation.#{I18n.locale}\" src=\"/assets/waiting_confirmation.#{I18n.locale}.png\" /></div>")
       end

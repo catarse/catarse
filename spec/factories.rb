@@ -43,6 +43,11 @@ FactoryGirl.define do
     f.state 'online'
   end
 
+  factory :channels_subscriber do |f|
+    f.association :user
+    f.association :channel
+  end
+
   factory :unsubscribe do |f|
     f.association :user, factory: :user
     f.association :project, factory: :project

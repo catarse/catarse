@@ -68,7 +68,7 @@ class ProjectDecorator < Draper::Decorator
         image_tag "successful.#{I18n.locale}.png"
       elsif source.failed?
         image_tag "not_successful.#{I18n.locale}.png"
-      else
+      elsif source.waiting_funds?
         image_tag "waiting_confirmation.#{I18n.locale}.png"
       end
     end
