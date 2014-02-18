@@ -16,13 +16,6 @@ class Ability
       project.user == current_user && ( project.draft? || project.rejected? || project.in_analysis? )
     end
 
-    # Channel authorizations
-    # Due to previous abilities, first I activate all things
-    # and in the final I deactivate unnecessary abilities.
-    can [:update, :edit], :channels do |c|
-      c == current_user.channel
-    end
-
     if options[:channel]  && options[:channel] == current_user.channel
       can :access, :admin
       can :access, :channel_posts
