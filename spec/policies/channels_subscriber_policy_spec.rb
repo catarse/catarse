@@ -11,11 +11,11 @@ describe ChannelsSubscriberPolicy do
       should_not permit(nil, subscription)
     end
 
-    it "should deny access if user is not updating his contribution" do
+    it "should deny access if user is not updating his subscription" do
       should_not permit(User.new, subscription)
     end
 
-    it "should permit access if user is contribution owner" do
+    it "should permit access if user is subscription owner" do
       should permit(user, subscription)
     end
 
