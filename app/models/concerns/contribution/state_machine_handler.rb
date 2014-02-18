@@ -48,6 +48,11 @@ module Contribution::StateMachineHandler
 
       after_transition confirmed: :requested_refund, do: :after_transition_from_confirmed_to_requested_refund
       after_transition confirmed: :canceled, do: :after_transition_from_confirmed_to_canceled
+      after_transition %i(confirmed requested_refund) => :refunded, do: :after_transition_from_confirmed_or_requested_refund_to_refunded
+    end
+
+    def after_transition_from_confirmed_or_requested_refund_to_refunded
+      notify_observers :notify_about_refund
     end
 
     def after_transition_from_confirmed_to_canceled
