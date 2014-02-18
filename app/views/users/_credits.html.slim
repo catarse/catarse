@@ -24,7 +24,7 @@
           - elsif credit.refunded?
             = t('credits.index.refunded')
           - else
-            - if can? :request_refund, credit
+            - if credit.can_refund?
               .bootstrap-twitter
                 div id="requestRefundModal#{credit.id}" class="hide modal"
                   .modal-header
