@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   after_filter :verify_authorized, except: %i[uservoice_gadget]
   inherit_resources
-  actions :show, :update, :update_password, :unsubscribe_notifications, :uservoice_gadget, :Credits
+  actions :show, :update, :update_password, :unsubscribe_notifications, :uservoice_gadget, :credits
   respond_to :json, only: [:contributions, :projects]
 
   def unsubscribe_notifications
