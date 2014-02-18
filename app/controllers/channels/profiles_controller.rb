@@ -4,9 +4,16 @@ class Channels::ProfilesController < Channels::BaseController
   inherit_resources
   actions :show, :edit, :update
   custom_actions resource: [:how_it_works]
+  after_filter :verify_authorized, except: [:how_it_works, :show]
 
-  before_action only: [:edit, :update] do
-    authorize!(params[:action], resource)
+  def edit
+    authorize resource
+    edit!
+  end
+
+  def update
+    authorize resource
+    update!
   end
 
   def resource
