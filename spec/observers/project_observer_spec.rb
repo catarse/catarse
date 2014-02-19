@@ -158,6 +158,25 @@ describe ProjectObserver do
     end
   end
 
+  describe "save_dates" do
+    context "when project goes from in_analysis to rejected" do
+      let(:project){ create(:project, state: 'in_analysis') }
+      before do
+        project.reject
+      end
+      it("should save current date"){expect(project.rejected_at).to_not be_nil}
+    end
+
+    context "when project goes from in_analysis to draft" do
+      let(:project){ create(:project, state: 'in_analysis') }
+      before do
+        project.push_to_draft
+      end
+      it("should save current date"){expect(project.sent_to_draft_at).to_not be_nil}
+    end
+
+  end
+
   describe "notify_contributors" do
 
     context "when project is successful" do
