@@ -38,6 +38,10 @@ class Contribution < ActiveRecord::Base
     where("value between ? and ?", start_at, ends_at)
   end
 
+  def slip_payment?
+    payment_choice.try(:downcase) == 'boletobancario'
+  end
+
   def decorator
     @decorator ||= ContributionDecorator.new(self)
   end
@@ -86,6 +90,14 @@ class Contribution < ActiveRecord::Base
       phone_number: address_phone_number,
       cpf: payer_document
     })
+  end
+
+  def notify_to_contributor(template_name)
+    Notification.notify_once(template_name,
+      self.user,
+      { contribution_id: self.id },
+      contribution: self
+    )
   end
 
   # Used in payment engines

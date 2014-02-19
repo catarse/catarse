@@ -1,6 +1,6 @@
 - contribution = @notification.contribution
 p Olá, <strong>#{contribution.user.display_name}</strong> !
-p Você acabou de gerar um boleto para apoiar o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, host: Configuration['host'] ))}.
+p Você acabou de gerar um boleto para apoiar o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))}.
 p 
   | Após o pagamento, levamos até 3 dias úteis para receber a confirmação. 
   | Quando essa confirmação ocorrer, mandaremos outro email com todos os detalhes da transação.

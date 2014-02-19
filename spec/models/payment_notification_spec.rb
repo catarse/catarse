@@ -14,4 +14,35 @@ describe PaymentNotification do
     subject{ @p.extra_data }
     it{ should == test_hash }
   end
+
+  describe "#deliver_process_notification" do
+    before do
+      Notification.unstub(:notify)
+      Notification.unstub(:notify_once)
+
+      Notification.should_receive(:notify_once)
+    end
+
+    subject do
+      create(:payment_notification, contribution: create(:contribution, project: create(:project)))
+    end
+
+    it("should notify the contribution"){ subject.deliver_process_notification }
+  end
+
+  describe "#deliver_slip_canceled_notification" do
+    before do
+      Notification.unstub(:notify)
+      Notification.unstub(:notify_once)
+
+      Notification.should_receive(:notify_once)
+    end
+
+    subject do
+      create(:payment_notification, contribution: create(:contribution, project: create(:project)))
+    end
+
+    it("should notify the contribution"){ subject.deliver_slip_canceled_notification }
+  end
+
 end
