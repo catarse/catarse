@@ -77,6 +77,7 @@ FactoryGirl.define do
     f.value 10.00
     f.state 'confirmed'
     f.credits false
+    f.payment_id '1.2.3'
   end
 
   factory :payment_notification do |f|
