@@ -23,7 +23,7 @@ class ContributionObserver < ActiveRecord::Observer
   end
 
   def from_requested_refund_to_refunded(contribution)
-    notify_to_contributor(contribution, (contribution.slip_payment? ? :refund_completed_slip : :refund_completed))
+    contribution.notify_to_contributor((contribution.slip_payment? ? :refund_completed_slip : :refund_completed))
   end
   alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
 
@@ -33,7 +33,7 @@ class ContributionObserver < ActiveRecord::Observer
       Notification.notify(:refund_request, user, {contribution: contribution, origin_email: contribution.user.email, origin_name: contribution.user.name})
     end
 
-    notify_to_contributor(contribution, (contribution.slip_payment? ? :requested_refund_slip : :requested_refund))
+    contribution.notify_to_contributor((contribution.slip_payment? ? :requested_refund_slip : :requested_refund))
   end
 
   def from_confirmed_to_canceled(contribution)
@@ -47,7 +47,7 @@ class ContributionObserver < ActiveRecord::Observer
       )
     end
 
-    notify_to_contributor(contribution, :contribution_canceled)
+    contribution.notify_to_contributor(:contribution_canceled)
   end
 
   private
@@ -79,14 +79,6 @@ class ContributionObserver < ActiveRecord::Observer
       {contribution_id: contribution.id},
       contribution: contribution,
       project: contribution.project
-    )
-  end
-
-  def notify_to_contributor(contribution, template_name)
-    Notification.notify_once(template_name,
-      contribution.user,
-      { contribution_id: contribution.id },
-      contribution: contribution
     )
   end
 end

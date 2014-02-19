@@ -92,6 +92,14 @@ class Contribution < ActiveRecord::Base
     })
   end
 
+  def notify_to_contributor(template_name)
+    Notification.notify_once(template_name,
+      self.user,
+      { contribution_id: self.id },
+      contribution: self
+    )
+  end
+
   # Used in payment engines
   def price_in_cents
     (self.value * 100).round
