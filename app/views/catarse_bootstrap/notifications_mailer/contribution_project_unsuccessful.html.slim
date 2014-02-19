@@ -12,17 +12,17 @@ br
 br
 br
 -contribution.user.recommended_projects.limit(3).each do |project|
-  |#{link_to(project.name, project_by_slug_url(permalink: project.permalink))}
+  |#{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificacao_projeto_nao_financiado'))}
   br
   |#{project.headline}
   br
   br
 br
 br
-| Caso prefira, você pode pedir o #{link_to("reembolso seu apoio", credits_user_url(contribution.user, anchor: 'credits'))}.
+| Caso prefira, você pode pedir o #{link_to("reembolso seu apoio", credits_user_url(contribution.user))}.
 br
 br
-| Lembrando que a chave de identificação do seu apoio é:: #{contribution.id}
+| Lembrando que a chave de identificação do seu apoio é: #{contribution.id}
 br
 br
 | Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_contact]}
