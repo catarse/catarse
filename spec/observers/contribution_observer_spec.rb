@@ -86,11 +86,11 @@ describe ContributionObserver do
     end
   end
 
-  describe "#notify_about_refund" do
+  describe "#from_requested_refund_to_refunded" do
     context "when contribution is made with credit card" do
       before do
         contribution.update_attributes(payment_choice: 'CartaoDeCredito', payment_method: 'MoIP')
-        contribution.notify_observers :notify_about_refund
+        contribution.notify_observers :from_requested_refund_to_refunded
       end
 
       it "should notify contributor about refund" do
@@ -101,7 +101,7 @@ describe ContributionObserver do
     context "when contribution is made with boleto" do
       before do
         contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'MoIP')
-        contribution.notify_observers :notify_about_refund
+        contribution.notify_observers :from_requested_refund_to_refunded
       end
 
       it "should notify contributor about refund" do
@@ -110,7 +110,7 @@ describe ContributionObserver do
     end
   end
 
-  describe '#notify_about_request_refund' do
+  describe '#from_confirmed_to_requested_refund' do
     let(:admin){ create(:user) }
     before do
       Configuration[:email_payments] = admin.email
@@ -119,7 +119,7 @@ describe ContributionObserver do
     context "when contribution is made with credit card" do
       before do
         contribution.update_attributes(payment_choice: 'CartaoDeCredito', payment_method: 'MoIP')
-        contribution.notify_observers :notify_about_request_refund
+        contribution.notify_observers :from_confirmed_to_requested_refund
       end
 
       it "should notify admin and contributor upon refund request" do
@@ -131,7 +131,7 @@ describe ContributionObserver do
     context "when contribution is made with boleto" do
       before do
         contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'MoIP')
-        contribution.notify_observers :notify_about_request_refund
+        contribution.notify_observers :from_confirmed_to_requested_refund
       end
 
       it "should notify admin and contributor upon refund request" do
@@ -141,7 +141,7 @@ describe ContributionObserver do
     end
   end
 
-  describe '#notify_about_canceled' do
+  describe '#from_confirmed_to_canceled' do
     before do
       Configuration[:email_payments] = 'finan@c.me'
     end
