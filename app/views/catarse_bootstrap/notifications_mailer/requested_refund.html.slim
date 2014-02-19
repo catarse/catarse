@@ -1,0 +1,19 @@
+- contribution = @notification.contribution
+- company_name = ::Configuration[:company_name]
+- contact_email = ::Configuration[:email_contact]
+
+|Olá, <strong>#{contribution.user.display_name}</strong>!
+br
+br
+| Já registramos o seu pedido de reembolso! Em até 4 dias úteis, entraremos em contato para dar continuidade a este processo.
+br
+br
+| A chave de identificação do seu apoio é: #{contribution.id}
+br
+br
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}
+br
+br
+|Um abraço,
+br
+| #{company_name}
