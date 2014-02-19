@@ -30,6 +30,8 @@ describe UserPolicy do
 
   permissions(:update?){ it_should_behave_like "update permissions" }
 
+  permissions(:credits?){ it_should_behave_like "update permissions" }
+
   permissions(:update_password?){ it_should_behave_like "update permissions" }
 
   permissions(:unsubscribe_notifications?){ it_should_behave_like "update permissions" }
