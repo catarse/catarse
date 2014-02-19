@@ -22,28 +22,29 @@ class ContributionObserver < ActiveRecord::Observer
     end
   end
 
-  def notify_about_refund(contribution)
+  def from_requested_refund_to_refunded(contribution)
     if contribution.payment_choice.try(:downcase) == 'cartaodecredito' || contribution.payment_method.try(:downcase) == 'paypal'
-      Notification.notify_once(:refund_completed, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+      notify_to_contributor(contribution, :refund_completed)
     else
-      Notification.notify_once(:refund_completed_slip, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+      notify_to_contributor(contribution, :refund_completed_slip)
     end
   end
+  alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
 
-  def notify_about_request_refund(contribution)
+  def from_confirmed_to_requested_refund(contribution)
     user = User.find_by(email: Configuration[:email_payments])
     if user.present?
       Notification.notify(:refund_request, user, {contribution: contribution, origin_email: contribution.user.email, origin_name: contribution.user.name})
     end
 
     if contribution.payment_choice.try(:downcase) == 'cartaodecredito' || contribution.payment_method.try(:downcase) == 'paypal'
-      Notification.notify_once(:requested_refund, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+      notify_to_contributor(contribution, :requested_refund)
     else
-      Notification.notify_once(:requested_refund_slip, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+      notify_to_contributor(contribution, :requested_refund_slip)
     end
   end
 
-  def notify_about_canceled(contribution)
+  def from_confirmed_to_canceled(contribution)
     user = User.where(email: Configuration[:email_payments]).first
     if user.present?
       Notification.notify_once(
@@ -54,12 +55,7 @@ class ContributionObserver < ActiveRecord::Observer
       )
     end
 
-    Notification.notify_once(
-      :contribution_canceled,
-      contribution.user,
-      { contribution_id: contribution.id },
-      contribution: contribution
-    )
+    notify_to_contributor(contribution, :contribution_canceled)
   end
 
   private
@@ -94,4 +90,11 @@ class ContributionObserver < ActiveRecord::Observer
     )
   end
 
+  def notify_to_contributor(contribution, template_name)
+    Notification.notify_once(template_name,
+      contribution.user,
+      { contribution_id: contribution.id },
+      contribution: contribution
+    )
+  end
 end
