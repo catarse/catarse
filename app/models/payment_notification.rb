@@ -11,8 +11,8 @@ class PaymentNotification < ActiveRecord::Base
     )
   end
 
-  def deliver_split_canceled_notification
-    Notification.notify_once(:split_payment_canceled,
+  def deliver_slip_canceled_notification
+    Notification.notify_once(:slip_payment_canceled,
       self.contribution.user,
       { contribution_id: self.contribution.id },
       contribution: self.contribution
