@@ -3,7 +3,7 @@
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-| Verificamos que você iniciou um apoio para o projeto project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_pending'), 
+| Verificamos que você iniciou um apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink, ref: 'notificacao_pending')}, 
 | porém não chegou a concluí-lo.
 br
 br
