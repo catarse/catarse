@@ -12,7 +12,7 @@ br
 br
 | Você tem até #{l(contribution.project.expires_at)} para realizar sua contribuição de onde parou:
 br/
-| #{link_to edit_project_contribution_url(project_id: contribution.project.id, id: contribution.id, ref: 'notification_pending') }
+| #{ link_to  edit_project_contribution_url(project_id: contribution.project.id, id: contribution.id, ref: 'notification_pending'), edit_project_contribution_url(project_id: contribution.project.id, id: contribution.id, ref: 'notification_pending')}
 br
 br
 | Caso o motivo para não ter concluído seu apoio foi algum problema técnico, recomendamos tentar novamente utilizando outro navegador.
