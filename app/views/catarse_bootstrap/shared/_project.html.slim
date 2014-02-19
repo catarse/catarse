@@ -1,5 +1,5 @@
 .large-3.columns.project-column
-  = project.successful_flag
+  = project.status_flag
   .project-box
     = link_to image_tag(project.display_image), project_by_slug_path(project.permalink), title: project.name, :class => 'image'
     .padding

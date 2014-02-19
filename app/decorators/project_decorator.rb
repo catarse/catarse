@@ -62,11 +62,15 @@ class ProjectDecorator < Draper::Decorator
   end
 
 
-  def successful_flag
-    return nil unless source.successful?
-
-    content_tag(:div, class: [:successful_flag]) do
-      image_tag("channels/successful.png")
+  def status_flag
+    content_tag(:div, class: [:status_flag]) do
+      if source.successful?
+        image_tag "successful.#{I18n.locale}.png"
+      elsif source.failed?
+        image_tag "not_successful.#{I18n.locale}.png"
+      elsif source.waiting_funds?
+        image_tag "waiting_confirmation.#{I18n.locale}.png"
+      end
     end
 
   end

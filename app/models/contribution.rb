@@ -24,7 +24,7 @@ class Contribution < ActiveRecord::Base
   scope :anonymous, -> { where(anonymous: true) }
   scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }
-  scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = current_timestamp::date ") }
+  scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = current_date ") }
 
   scope :can_cancel, -> { where("contributions.can_cancel") }
 
@@ -36,6 +36,10 @@ class Contribution < ActiveRecord::Base
   def self.between_values(start_at, ends_at)
     return scoped unless start_at.present? && ends_at.present?
     where("value between ? and ?", start_at, ends_at)
+  end
+
+  def slip_payment?
+    payment_choice.try(:downcase) == 'boletobancario'
   end
 
   def decorator
@@ -86,6 +90,14 @@ class Contribution < ActiveRecord::Base
       phone_number: address_phone_number,
       cpf: payer_document
     })
+  end
+
+  def notify_to_contributor(template_name)
+    Notification.notify_once(template_name,
+      self.user,
+      { contribution_id: self.id },
+      contribution: self
+    )
   end
 
   # Used in payment engines
