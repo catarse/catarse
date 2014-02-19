@@ -23,11 +23,7 @@ class ContributionObserver < ActiveRecord::Observer
   end
 
   def from_requested_refund_to_refunded(contribution)
-    if contribution.payment_choice.try(:downcase) == 'cartaodecredito' || contribution.payment_method.try(:downcase) == 'paypal'
-      notify_to_contributor(contribution, :refund_completed)
-    else
-      notify_to_contributor(contribution, :refund_completed_slip)
-    end
+    notify_to_contributor(contribution, (contribution.slip_payment? ? :refund_completed_slip : :refund_completed))
   end
   alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
 
@@ -37,11 +33,7 @@ class ContributionObserver < ActiveRecord::Observer
       Notification.notify(:refund_request, user, {contribution: contribution, origin_email: contribution.user.email, origin_name: contribution.user.name})
     end
 
-    if contribution.payment_choice.try(:downcase) == 'cartaodecredito' || contribution.payment_method.try(:downcase) == 'paypal'
-      notify_to_contributor(contribution, :requested_refund)
-    else
-      notify_to_contributor(contribution, :requested_refund_slip)
-    end
+    notify_to_contributor(contribution, (contribution.slip_payment? ? :requested_refund_slip : :requested_refund))
   end
 
   def from_confirmed_to_canceled(contribution)
