@@ -4,13 +4,6 @@ class PendingContributionWorker
 
   def perform resource_id
     resource = Contribution.find resource_id
-
-    if resource.pending?
-      Notification.notify_once(:pending_payment,
-        resource.user,
-        { contribution_id: resource.id },
-        contribution: resource
-      )
-    end
+    resource.notify_to_contributor(:pending_payment) if resource.pending?
   end
 end
