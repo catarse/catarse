@@ -3,6 +3,7 @@ class ContributionObserver < ActiveRecord::Observer
 
   def after_create(contribution)
     contribution.define_key
+    PendingContributionWorker.perform_at(1.hour.from_now, contribution.id)
   end
 
   def before_save(contribution)
@@ -21,14 +22,21 @@ class ContributionObserver < ActiveRecord::Observer
     end
   end
 
-  def notify_backoffice_about_refund(contribution)
+  def from_requested_refund_to_refunded(contribution)
+    contribution.notify_to_contributor((contribution.slip_payment? ? :refund_completed_slip : :refund_completed))
+  end
+  alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
+
+  def from_confirmed_to_requested_refund(contribution)
     user = User.find_by(email: Configuration[:email_payments])
     if user.present?
       Notification.notify(:refund_request, user, {contribution: contribution, origin_email: contribution.user.email, origin_name: contribution.user.name})
     end
+
+    contribution.notify_to_contributor((contribution.slip_payment? ? :requested_refund_slip : :requested_refund))
   end
 
-  def notify_backoffice_about_canceled(contribution)
+  def from_confirmed_to_canceled(contribution)
     user = User.where(email: Configuration[:email_payments]).first
     if user.present?
       Notification.notify_once(
@@ -38,6 +46,8 @@ class ContributionObserver < ActiveRecord::Observer
         contribution: contribution
       )
     end
+
+    contribution.notify_to_contributor(:contribution_canceled)
   end
 
   private
@@ -71,5 +81,4 @@ class ContributionObserver < ActiveRecord::Observer
       project: contribution.project
     )
   end
-
 end

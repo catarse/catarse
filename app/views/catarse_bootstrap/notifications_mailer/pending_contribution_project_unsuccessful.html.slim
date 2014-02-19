@@ -1,0 +1,28 @@
+- contribution = @notification.contribution
+|Olá, #{contribution.user.name}!
+br
+br
+|Você iniciou um apoio para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)}, porém ele não atingiu a meta estabelecida no Catarse.
+br
+br
+| <strong>Se você NÃO concluiu o apoio</strong>, pode desconsiderar as informações desse e-mail.
+br
+br
+| <strong>Se você concluiu o seu apoio</strong>, mas não recebeu a confirmação do Catarse ainda, você deverá recebê-la nos próximos dias, assim que o #{contribution.payment_method} confirmar sua contribuição.
+br
+br
+|Em função disto, você recebera #{contribution.display_value} em créditos para apoiar outros projetos.
+br
+br
+| Caso prefira, você poderá pedir o #{link_to("reembolso seu apoio.", "#{Configuration[:base_url]}/users/#{contribution.user.to_param}#credits")}.
+br
+br
+| Lembrando que a chave de identificação do seu apoio é: <strong>#{contribution.id}</strong>
+br
+br
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_payments]}
+br
+br
+| Um abraço,
+br
+| #{Configuration[:company_name]}

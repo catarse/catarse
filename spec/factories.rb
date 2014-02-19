@@ -43,6 +43,11 @@ FactoryGirl.define do
     f.state 'online'
   end
 
+  factory :channels_subscriber do |f|
+    f.association :user
+    f.association :channel
+  end
+
   factory :unsubscribe do |f|
     f.association :user, factory: :user
     f.association :project, factory: :project
@@ -72,6 +77,7 @@ FactoryGirl.define do
     f.value 10.00
     f.state 'confirmed'
     f.credits false
+    f.payment_id '1.2.3'
   end
 
   factory :payment_notification do |f|

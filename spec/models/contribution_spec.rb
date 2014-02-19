@@ -82,6 +82,21 @@ describe Contribution do
     end
   end
 
+  describe '#slip_payment?' do
+    let(:contribution) { create(:contribution, payment_choice: 'BoletoBancario')}
+
+    subject { contribution.slip_payment? }
+
+    context "when contribution is made with Boleto" do
+      it { should be_true}
+    end
+
+    context "when contribution is not made with Boleto" do
+      let(:contribution) { create(:contribution, payment_choice: 'CartaoDeCredito')}
+      it { should be_false}
+    end
+  end
+
   describe "#update_current_billing_info" do
     let(:contribution) { build(:contribution, user: user) }
     let(:user) {

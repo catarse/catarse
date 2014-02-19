@@ -6,7 +6,7 @@ p
   br/
   | Data da confirmação do apoio: #{l contribution.confirmed_at}
   br/
-  | Opção de pagamento: #{contribution.payment_choice}
+  | Opção de pagamento: #{contribution.payment_choice || contribution.payment_method}
   br/
   | Valor da contribuição: #{number_to_currency contribution.value}
   br/
@@ -15,7 +15,7 @@ p
     br/
     | Estimativa de entrega: #{contribution.reward.display_deliver_estimate}
     br/
-  | ID do apoio: #{contribution.key}
+  | ID do apoio: #{contribution.id}
   br/
   | Nome/Razão Social do realizador: #{contribution.project.user.display_name}
   br/

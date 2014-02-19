@@ -12,6 +12,18 @@ describe ContributionObserver do
   describe "after_create" do
     before{ Kernel.stub(:rand).and_return(1) }
     its(:key){ should == Digest::MD5.new.update("#{contribution.id}###{contribution.created_at}##1").to_s }
+
+    context "after create the contribution" do
+      let(:contribution) { build(:contribution) }
+
+      before do
+        PendingContributionWorker.should_receive(:perform_at)
+      end
+
+      it "should call perform at in pending contribution worker" do
+        contribution.save
+      end
+    end
   end
 
   describe "before_save" do
@@ -74,29 +86,85 @@ describe ContributionObserver do
     end
   end
 
-  describe '#notify_backoffice_about_refund' do
+  describe "#from_requested_refund_to_refunded" do
+    context "when contribution is made with credit card" do
+      before do
+        contribution.update_attributes(payment_choice: 'CartaoDeCredito', payment_method: 'MoIP')
+        contribution.notify_observers :from_requested_refund_to_refunded
+      end
+
+      it "should notify contributor about refund" do
+        expect(Notification.where(template_name: 'refund_completed', user_id: contribution.user.id).count).to eq 1
+      end
+    end
+
+    context "when contribution is made with boleto" do
+      before do
+        contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'MoIP')
+        contribution.notify_observers :from_requested_refund_to_refunded
+      end
+
+      it "should notify contributor about refund" do
+        expect(Notification.where(template_name: 'refund_completed_slip', user_id: contribution.user.id).count).to eq 1
+      end
+    end
+  end
+
+  describe '#from_confirmed_to_requested_refund' do
     let(:admin){ create(:user) }
     before do
       Configuration[:email_payments] = admin.email
     end
 
-    it "should notify admin upon refund request" do
-      contribution.notify_observers :notify_backoffice_about_refund
-      expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: contribution.user.email, origin_name: contribution.user.name).count).to eq 1
+    context "when contribution is made with credit card" do
+      before do
+        contribution.update_attributes(payment_choice: 'CartaoDeCredito', payment_method: 'MoIP')
+        contribution.notify_observers :from_confirmed_to_requested_refund
+      end
+
+      it "should notify admin and contributor upon refund request" do
+        expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: contribution.user.email, origin_name: contribution.user.name).count).to eq 1
+        expect(Notification.where(template_name: 'requested_refund', user_id: contribution.user.id).count).to eq 1
+      end
+    end
+
+    context "when contribution is made with boleto" do
+      before do
+        contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'MoIP')
+        contribution.notify_observers :from_confirmed_to_requested_refund
+      end
+
+      it "should notify admin and contributor upon refund request" do
+        expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: contribution.user.email, origin_name: contribution.user.name).count).to eq 1
+        expect(Notification.where(template_name: 'requested_refund_slip', user_id: contribution.user.id).count).to eq 1
+      end
     end
   end
 
-  describe '#notify_backoffice_about_canceled' do
+  describe '#from_confirmed_to_canceled' do
     before do
       Configuration[:email_payments] = 'finan@c.me'
     end
 
-    let(:user) { create(:user, email: 'finan@c.me') }
+    let(:user_finan) { create(:user, email: 'finan@c.me') }
 
     context "when contribution is confirmed and change to canceled" do
       before do
         contribution.confirm
-        Notification.should_receive(:notify_once).with(:contribution_canceled_after_confirmed, user, {contribution_id: contribution.id}, contribution: contribution)
+
+        Notification.should_receive(:notify_once).with(
+          :contribution_canceled_after_confirmed,
+          user_finan,
+          {contribution_id: contribution.id},
+          contribution: contribution
+        )
+
+        Notification.should_receive(:notify_once).with(
+          :contribution_canceled,
+          contribution.user,
+          { contribution_id: contribution.id },
+          contribution: contribution
+        )
       end
 
       it { contribution.cancel }

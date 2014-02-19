@@ -1,0 +1,31 @@
+- contribution = @notification.contribution
+- company_name = ::Configuration[:company_name]
+- contact_email = ::Configuration[:email_contact]
+
+| Olá, <strong>#{contribution.user.display_name}</strong>!
+br
+br
+| Como o seu pagamento foi feito por boleto, segue os procedimentos que devem ser feitos para que possamos estornar o valor do seu apoio
+br
+br
+| 1 - Abra uma conta no MOIP: #{link_to 'www.moip.com.br', 'http://www.moip.com.br'} (empresa que processou o seu pagamento). Pode ser uma conta de Comprador. 
+br
+br
+| #{link_to 'Como criar uma conta MOIP', 'http://suporte.catarse.me/knowledgebase/articles/207139-criar-conta-moip-para-reembolso-de-apoio'}
+br/
+br/
+| 2 - Responda este e-mail nos dizendo qual é o <strong>login</strong> que você criou no MOIP. É fundamental que esta conta seja cadastrada com o CPF/CNPJ da mesma pessoa que terá sua conta bancária vinculada ao MoIP.
+br/
+br/
+| 3 - Vamos transferir o valor do seu apoio para a sua conta MOIP - avisaremos você quando isso acontecer - e através do MOIP você irá realizar o resgate do valor para a conta do seu banco.
+br/
+br/
+| Lembrando que a chave de identificação do seu apoio é: #{contribution.id}
+br/
+br/
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}. Para agilizar o atendimento, pedimos que indique a chave de identificação.
+br
+br
+|Um abraço,
+br
+| #{company_name}

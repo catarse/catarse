@@ -24,7 +24,7 @@ end
 
 desc "Cancel all waiting_confirmation contributions that is passed 4 weekdays"
 task :cancel_expired_waiting_confirmation_contributions => :environment do
-  Contribution.can_cancel.update_all(state: c)
+  Contribution.can_cancel.update_all(state: 'canceled')
 end
 
 desc "Send notification about credits 1 month after the project failed"
