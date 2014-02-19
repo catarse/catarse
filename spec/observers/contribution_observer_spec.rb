@@ -105,7 +105,7 @@ describe ContributionObserver do
       end
 
       it "should notify contributor about refund" do
-        expect(Notification.where(template_name: 'refund_completed_split', user_id: contribution.user.id).count).to eq 1
+        expect(Notification.where(template_name: 'refund_completed_slip', user_id: contribution.user.id).count).to eq 1
       end
     end
   end
@@ -136,7 +136,7 @@ describe ContributionObserver do
 
       it "should notify admin and contributor upon refund request" do
         expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: contribution.user.email, origin_name: contribution.user.name).count).to eq 1
-        expect(Notification.where(template_name: 'requested_refund_split', user_id: contribution.user.id).count).to eq 1
+        expect(Notification.where(template_name: 'requested_refund_slip', user_id: contribution.user.id).count).to eq 1
       end
     end
   end

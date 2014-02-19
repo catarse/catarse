@@ -26,7 +26,7 @@ class ContributionObserver < ActiveRecord::Observer
     if contribution.payment_choice.try(:downcase) == 'cartaodecredito' || contribution.payment_method.try(:downcase) == 'paypal'
       Notification.notify_once(:refund_completed, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
     else
-      Notification.notify_once(:refund_completed_split, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+      Notification.notify_once(:refund_completed_slip, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
     end
   end
 
@@ -39,7 +39,7 @@ class ContributionObserver < ActiveRecord::Observer
     if contribution.payment_choice.try(:downcase) == 'cartaodecredito' || contribution.payment_method.try(:downcase) == 'paypal'
       Notification.notify_once(:requested_refund, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
     else
-      Notification.notify_once(:requested_refund_split, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+      Notification.notify_once(:requested_refund_slip, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
     end
   end
 
