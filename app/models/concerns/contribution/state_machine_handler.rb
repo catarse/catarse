@@ -49,6 +49,10 @@ module Contribution::StateMachineHandler
       after_transition do |contribution, transition|
         contribution.notify_observers :"from_#{transition.from}_to_#{transition.to}"
       end
+
+      after_transition any => [:refunded_and_canceled] do |contribution, transition|
+        contribution.notify_to_contributor :refunded_and_canceled
+      end
     end
   end
 end
