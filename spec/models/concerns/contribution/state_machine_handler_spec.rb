@@ -96,5 +96,22 @@ describe Contribution::StateMachineHandler do
         it('should not switch to refunded state') { contribution.refunded?.should be_false }
       end
     end
+
+    describe "#hide" do
+      before do
+        contribution.should_receive(:notify_to_contributor).with(:refunded_and_canceled)
+        contribution.hide
+      end
+
+      context "when contribution is confirmed" do
+        let(:initial_state) { 'confirmed' }
+        it('should switch to refund_and_canceled state') { contribution.refunded_and_canceled?.should be_true }
+      end
+
+      context "when contribution is pending" do
+        let(:initial_state) { 'pending' }
+        it('should switch to refund_and_canceled state') { contribution.refunded_and_canceled?.should be_true }
+      end
+    end
   end
 end
