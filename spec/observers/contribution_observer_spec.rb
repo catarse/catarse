@@ -170,6 +170,22 @@ describe ContributionObserver do
       it { contribution.cancel }
     end
 
+    context "when contribution is made with Boleto and canceled" do
+      before do
+        contribution.update_attributes payment_choice: 'BoletoBancario'
+        contribution.confirm
+
+        Notification.should_receive(:notify_once).with(
+          :contribution_canceled_slip,
+          contribution.user,
+          { contribution_id: contribution.id },
+          contribution: contribution
+        )
+      end
+
+      it { contribution.cancel }
+    end
+
     context "when contribution change to confirmed" do
       before do
         Notification.should_not_receive(:notify).with(:contribution_canceled_after_confirmed)
