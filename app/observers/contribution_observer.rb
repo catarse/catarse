@@ -47,7 +47,7 @@ class ContributionObserver < ActiveRecord::Observer
       )
     end
 
-    contribution.notify_to_contributor(:contribution_canceled)
+    contribution.notify_to_contributor((contribution.slip_payment? ? :contribution_canceled_slip : :contribution_canceled))
   end
 
   private
