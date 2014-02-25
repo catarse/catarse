@@ -2,7 +2,7 @@
 = content_for :title, @profile.name
 
 section.line-box
-  .row
+  .row#channel-profile
     .large-12.columns
       .big-video
         = content_tag(:iframe, nil, src: @profile.display_video_embed_url, width: '100%', height: '582px', :class => "load-video")
