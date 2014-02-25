@@ -9,6 +9,7 @@ App.addChild('ChannelProfile', _.extend({
   clickBigVideoClose: function(){
     var that = this;
     this.bigVideo.slideUp( "slow", function() {
+      that.player.api('pause');
       that.bigVideoClose.toggle();
       that.channelBio.slideDown();
       $('html,body').animate({scrollTop: 0},'slow');
@@ -20,6 +21,7 @@ App.addChild('ChannelProfile', _.extend({
     this.channelBio.toggle();
     this.bigVideo.slideDown( "slow", function() {
       $('html,body').animate({scrollTop: that.bigVideo.offset().top},'slow');
+      that.player.api('play');
     });
     this.bigVideoClose.toggle("easein");
   },
@@ -28,6 +30,7 @@ App.addChild('ChannelProfile', _.extend({
     this.bigVideo = this.$('.big-video');
     this.bigVideoClose = this.$('.big-video-close');
     this.channelBio = this.$('.channel-bio');
+    this.player = $f(this.$('iframe.load-video')[0]);
   }
 
 }));
