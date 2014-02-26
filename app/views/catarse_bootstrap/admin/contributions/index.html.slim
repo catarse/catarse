@@ -12,7 +12,7 @@
         = form.input :by_user_id, as: :integer, label: t('.user_id')
       .large-2.columns
         = form.input 'between_values[start_at]', as: :string, label: t(".between_values")
-      .large-2.columns
+      .large-2.columns.no-label
         = form.input 'between_values[ends_at]', as: :string, label: ''
       .large-3.columns
         = form.input :payer_email_contains, as: :string, label: t('.payer_email')
