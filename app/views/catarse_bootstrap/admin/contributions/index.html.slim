@@ -12,11 +12,10 @@
         = form.input :by_user_id, as: :integer, label: t('.user_id')
       .large-2.columns
         = form.input 'between_values[start_at]', as: :string, label: t(".between_values")
-      .large-2.columns
+      .large-2.columns.no-label
         = form.input 'between_values[ends_at]', as: :string, label: ''
-      .large-3.columns
+      .large-4.columns
         = form.input :payer_email_contains, as: :string, label: t('.payer_email')
-      .large-1.columns
     .row
       .large-2.columns
         = form.input :with_state, collection: Contribution.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
@@ -29,10 +28,9 @@
       .large-3.columns
         = form.input :user_email_contains, as: :string, label: t('.user_email')
     .row
-      .large-5.columns
+      .large-9.columns
         = form.input :credits, as: :boolean, label: t('.credits')
-    .row
-      .large-2.large-offset-10.columns
+      .large-2.columns
         = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
 
   = paginate @contributions
@@ -99,5 +97,5 @@
                   li= link_to t('admin.contributions.index.cancel'), cancel_admin_contribution_path(contribution, local_params: params), method: :put
                   li= link_to t('admin.contributions.index.push_to_trash'), push_to_trash_admin_contribution_path(contribution, local_params: params), method: :put
 = paginate @contributions
-.clearfix
+
 = render 'shared/footer'
