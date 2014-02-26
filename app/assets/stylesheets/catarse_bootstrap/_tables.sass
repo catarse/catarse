@@ -3,20 +3,30 @@ table
   text-align: left
   border: 1px solid $border-gray
   width: 100%
+  margin: 1em 0 0
   thead
     background: $gray-two
   tr:nth-child(2n)
     background: $gray-two
   td, th
-    padding-top: .7em
-    padding-bottom: .7em
+    padding: 0.7em
+  .user_info
+    text-align: center
+
 table.no-bottom
   margin-bottom: 5em
 
   .project-events-dropdown
-    background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -80px -71px transparent
-    height: 30px
-    width: 55px
+    position: relative
+    width: 100%
+    .btn-group
+      background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -80px -86px transparent
+      position: absolute
+      height: 6px
+      width: 55px
+      top: 50%
+      right: 0
+      margin: -3px 0 0
   .project-events-dropdown a
     display: block
   .project-events-dropdown:hover ul
