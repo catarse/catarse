@@ -15,30 +15,33 @@
         = form.input :by_id, as: :integer, label: t('channels.admin.filter.by_id'), input_html: {value: params[:by_id]}
       .large-3.columns
         = form.input :pg_search, as: :string, label: t('channels.admin.filter.pg_search'), input_html: {value: params[:pg_search]}
+      .large-3.columns
+        = form.input :user_name_contains, as: :string, label: t('channels.admin.filter.user_name_contains'), input_html: {value: params[:user_name_contains]}
+      .large-2.columns
+        = form.input :by_user_email, as: :string, label: t('.by_user_email'), input_html: {value: params[:by_user_email]}
       .large-2.columns
         = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
-      .large-2.large-offset-1.columns
-        p.filtered-number = @scoped_projects.count
-        p.filtered-number-label
-          = pluralize_without_number(@scoped_projects.count, t('project_singular'), t('project_plural'))
-          '
-          = pluralize_without_number @scoped_projects.count, t('found_singular'), t('found_plural')
+
     .row
       - [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at, :goal_between].each_with_index do |between_field, index|
         - mask = (between_field == :goal_between ? '' : '99/99/9999')
-        - if index % 2 == 0
+        - if index % 3 == 0
           .row
         .large-2.columns
           = form.input "#{between_field}[start_at]", as: :string, label: t(".#{between_field}"), input_html: {value: params[between_field] && params[between_field][:start_at], data: { mask: mask } }
         .large-2.no-label.columns
           = form.input "#{between_field}[ends_at]", as: :string, label: false, input_html: { value: params[between_field] && params[between_field][:ends_at], data: { mask: mask } }
 
-      .large-3.columns
-        = form.input :user_name_contains, as: :string, label: t('channels.admin.filter.user_name_contains'), input_html: {value: params[:user_name_contains]}
-      .large-2.columns
-        = form.input :by_user_email, as: :string, label: t('.by_user_email'), input_html: {value: params[:by_user_email]}
-      .large-2.large-offset-1.columns
+      .large-2.no-label.columns
         = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
+
+    .row
+      .large-2.large-offset-10.columns
+        p.filtered-number = @scoped_projects.count
+        p.filtered-number-label
+          = pluralize_without_number(@scoped_projects.count, t('project_singular'), t('project_plural'))
+          '
+          = pluralize_without_number @scoped_projects.count, t('found_singular'), t('found_plural')
 
 
   = paginate @projects

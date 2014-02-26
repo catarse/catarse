@@ -2,32 +2,36 @@
 .row.admin
   h1= @title = t('.title')
   = simple_form_for '', url: admin_financials_path, method: :get do |form|
-    fieldset
-      .row
-        .large-2.columns
-          = form.input :by_permalink, as: :string, label: t('.permalink'), input_html: {value: params[:by_permalink]}
-        .large-2.columns
-          = form.input "between_expires_at[start_at]", as: :string, label: t(".between_expires_at"), input_html: {value: params[:between_expires_at] && params[:between_expires_at][:start_at], data: { mask: '99/99/9999' } }
-        .large-2.columns
-          = form.input "between_expires_at[ends_at]", as: :string, label: '*', input_html: {value: params[:between_expires_at] && params[:between_expires_at][:ends_at], data: { mask: '99/99/9999' } }
-        .large-2.columns
-          = form.input :by_progress, as: :string, label: t('.by_progress'), input_html: {value: params[:by_progress]}
-        .large-2.columns
-          = form.input :name_contains, as: :string, label: t('.project'), input_html: {value: params[:name_contains]}
-        .large-2.columns
-          = form.input :user_name_contains, as: :string, label: t('.user'), input_html: {value: params[:user_name_contains]}
-      .row
-        .large-2.columns
-          = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+    .row
+      .large-2.columns
+        = form.input :by_permalink, as: :string, label: t('.permalink'), input_html: {value: params[:by_permalink]}
+      .large-2.columns
+        = form.input "between_expires_at[start_at]", as: :string, label: t(".between_expires_at"), input_html: {value: params[:between_expires_at] && params[:between_expires_at][:start_at], data: { mask: '99/99/9999' } }
+      .large-2.columns.no-label
+        = form.input "between_expires_at[ends_at]", as: :string, label: '', input_html: {value: params[:between_expires_at] && params[:between_expires_at][:ends_at], data: { mask: '99/99/9999' } }
+      .large-2.columns
+        = form.input :by_progress, as: :string, label: t('.by_progress'), input_html: {value: params[:by_progress]}
+      .large-2.columns
+        = form.input :name_contains, as: :string, label: t('.project'), input_html: {value: params[:name_contains]}
+      .large-2.columns
+        = form.input :user_name_contains, as: :string, label: t('.user'), input_html: {value: params[:user_name_contains]}
 
-        .large-2.columns.search_report
-          = link_to t('.search_report'), admin_financials_path(params: params,format: :csv)
-        .large-2.large-offset-1.columns
-          = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
-    fieldset
-      =' pluralize_without_number @scoped_projects.count, t('found_singular'), t('found_plural')
-      strong=' @scoped_projects.count
-      =' pluralize_without_number(@scoped_projects.count, t('project_singular'), t('project_plural')).downcase
+    .row
+      .large-2.columns
+        = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
+
+      .large-2.columns.search_report
+        = link_to t('.search_report'), admin_financials_path(params: params,format: :csv)
+      .large-2.large-offset-1.columns
+        = form.button :submit, t('channels.admin.filter.submit'), class: 'button medium negative'
+
+    .row
+      .large-2.large-offset-10.columns
+        p.filtered-number = @scoped_projects.count
+        p.filtered-number-label
+          = pluralize_without_number(@scoped_projects.count, t('project_singular'), t('project_plural'))
+          '
+          = pluralize_without_number @scoped_projects.count, t('found_singular'), t('found_plural')
 
   = paginate @projects
   - if @projects.empty?
