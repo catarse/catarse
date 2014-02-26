@@ -30,13 +30,14 @@ input[type='checkbox']
 .password
   position: relative
   .hint
-    opacity: 0
     position: absolute
     right: 0
     top: 1px
     color: $blue-two
     font-size: em(13px)
     transition: .2s all
+  span.hint
+    opacity: 0
 #user_password:focus + .hint
   opacity: 1
 
