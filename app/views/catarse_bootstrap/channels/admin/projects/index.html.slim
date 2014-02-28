@@ -42,7 +42,7 @@
   - if @projects.empty?
     = t('.no_contributions')
   - else
-    table.admin-projects-table
+    table.admin-projects-table.no-bottom
       thead
         tr
           th.large-2.columns= t('channels.admin.table.name')
@@ -80,7 +80,7 @@
               - else
                 span.label= project.state
             td.large-1.columns.project-events-dropdown
-              ul.dropdown
+              ul.dropdown.btn-group
                 - if project.can_approve?
                   li
                     = link_to approve_channels_admin_project_path(project), method: :put do
