@@ -22,11 +22,11 @@ puts "Adding Funder user..."
 
   User.find_or_create_by!(name: "Funder") do |u|
     u.nickname = "Funder"
-    u.nmail = "funder@funder.com"
+    u.email = "funder@funder.com"
     u.nickname = "Funder"
-    u.nassword = "password"
-    u.nassword_confirmation = "password"
-    u.nemember_me = false
+    u.password = "password"
+    u.password_confirmation = "password"
+    u.remember_me = false
   end
 
 puts "Adding Test user..."
