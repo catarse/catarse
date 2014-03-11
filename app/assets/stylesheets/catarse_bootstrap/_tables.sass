@@ -12,31 +12,31 @@ table
     padding: 0.7em
   .user_info
     text-align: center
+  .best_in_place
+    display: block
+    cursor: pointer
+  .reward
+    width: 80px
 
 table.no-bottom
   margin-bottom: 5em
 
-  .project-events-dropdown
-    position: relative
-    background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -80px -71px transparent
-    height: 30px
-    width: 55px
-    .btn-group
-      background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -80px -86px transparent
-      position: absolute
-      height: 6px
-      width: 55px
-      top: 50%
-      right: 0
-      margin: -3px 0 0
-  .project-events-dropdown a
+.project-events-dropdown
+  position: relative
+  height: 30px
+  .btn-group
+    background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -92px -86px transparent
+    position: absolute
+    height: 6px
+    width: 20px
+    top: 60%
+    right: 1px
+    margin: -3px 0 0
+  a
     display: block
-  .project-events-dropdown:hover ul
+  &:hover ul
     display: block
     top: 15px
-  .best_in_place
-    display: block
-    cursor: pointer
 
 .label
   padding: 1px 4px 2px

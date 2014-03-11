@@ -65,7 +65,7 @@
             td= best_in_place [:admin, contribution], :value, method: :put, type: :input
             td.reward.large-1.columns.project-events-dropdown title=("#{contribution.reward.display_minimum} - #{contribution.reward.description}" if contribution.reward)
               - if contribution.reward
-                = contribution.reward.display_minimum
+                span = contribution.reward.display_minimum
               - else
                 | -
               .btn-group
