@@ -6,7 +6,7 @@ en:
           attributes:
             email:
               not_found: "That email does not exist in our system. Please try again, or sign up instead."
-              taken: "Email has already been taken, so just login"
+              taken: "has already been taken, so just login"
               invalid: "Invalid email"
             password:
               too_short: "Your password is too short"
