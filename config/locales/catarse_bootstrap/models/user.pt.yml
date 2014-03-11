@@ -6,7 +6,7 @@ pt:
           attributes:
             email:
               not_found: "O email não está cadastrado, verifique o endereço ou faça seu cadastro."
-              taken: "Email já está cadastrado, faça seu login"
+              taken: "já está cadastrado, faça seu login"
               invalid: "Esse endereço de email é inválido"
             password:
               too_short: "A senha que você escolheu é muito curta"
