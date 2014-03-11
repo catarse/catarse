@@ -44,6 +44,7 @@
           th= t('.project')
           th= t('.user')
           th= t('.value')
+          th= t('.payment_tax')
           th= t('.reward')
           th= t('.key')
           th= t('.anonymous')
@@ -63,6 +64,7 @@
                 = image_tag contribution.user.display_image, class: 'user_img'
               .user_id= best_in_place [:admin, contribution], :user_id, method: :put, type: :input
             td= best_in_place [:admin, contribution], :value, method: :put, type: :input
+            td= contribution.payment_service_fee
             td.reward.large-1.columns.project-events-dropdown title=("#{contribution.reward.display_minimum} - #{contribution.reward.description}" if contribution.reward)
               - if contribution.reward
                 span = contribution.reward.display_minimum
