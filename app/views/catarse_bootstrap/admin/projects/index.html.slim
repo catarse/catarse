@@ -88,7 +88,7 @@
             td.large-1.columns= project.online_date.strftime('%d/%m/%Y') if project.online_date
             td.large-1.columns= project.display_expires_at
             td.large-1.columns= project.updated_at.strftime('%d/%m/%Y')
-            td.large-1.columns
+            td.large-1.columns.project-events-dropdown
               - if project.online?
                 span.label.label-online= project.state
               - elsif project.successful?
@@ -99,7 +99,9 @@
                 span.label.label-warning= project.state
               - else
                 span.label= project.state
-            td.large-1.columns.project-events-dropdown
+              .btn-group
+                = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'btn btn-mini dropdown-toggle' do
+                  span.caret
               ul.dropdown
                 - if project.can_approve?
                   li
