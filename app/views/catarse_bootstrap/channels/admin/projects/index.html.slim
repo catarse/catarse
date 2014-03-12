@@ -1,6 +1,6 @@
 = render 'shared/header_channel'
 
-.row.admin-projects
+.row.admin-projects.admin
   h1
     = @title = t('channels.admin.management.title')
     ' :
@@ -15,7 +15,7 @@
         = form.input :by_id, as: :integer, label: t('channels.admin.filter.by_id')
       .large-2.columns
         = form.input 'between_created_at[start_at]', as: :string, label: t('channels.admin.filter.between_created_at'), input_html: { data: { mask: '99/99/9999' } }
-      .large-2.columns
+      .large-2.columns.no-label
         = form.input 'between_created_at[ends_at]', as: :string, label: false, input_html: { class: 'custom', data: { mask: '99/99/9999' } }
       .large-3.columns
         = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
@@ -23,7 +23,7 @@
         p.filtered-number = @projects.count
         p.filtered-number-label
           = pluralize_without_number(@projects.count, t('project_singular'), t('project_plural'))
-          |
+          '
           = pluralize_without_number @projects.count, t('found_singular'), t('found_plural')
     .row
       .large-3.columns
@@ -80,28 +80,31 @@
               - else
                 span.label= project.state
             td.large-1.columns.project-events-dropdown
-              ul.dropdown.btn-group
-                - if project.can_approve?
-                  li
-                    = link_to approve_channels_admin_project_path(project), method: :put do
-                      i.icon-ok
-                      = t('channels.admin.table.approve')
+              .btn-group
+                = link_to 'javascript:void(0);', data: {toggle: 'dropdown'}, class: 'btn btn-mini dropdown-toggle' do
+                  span.caret
+                ul.dropdown
+                  - if project.can_approve?
+                    li
+                      = link_to approve_channels_admin_project_path(project), method: :put do
+                        i.icon-ok
+                        = t('channels.admin.table.approve')
 
-                - if project.can_reject?
-                  li
-                    = link_to reject_channels_admin_project_path(project), method: :put  do
-                      i.icon-ban-circle
-                      = t('channels.admin.table.reject')
+                  - if project.can_reject?
+                    li
+                      = link_to reject_channels_admin_project_path(project), method: :put  do
+                        i.icon-ban-circle
+                        = t('channels.admin.table.reject')
 
-                - if project.can_push_to_draft?
-                  li
-                    = link_to  push_to_draft_channels_admin_project_path(project), method: :put  do
-                      i.icon-trash
-                      = t('channels.admin.table.send_to_draft')
-                - if project.can_push_to_trash?
-                  li
-                    = link_to  push_to_trash_channels_admin_project_path(project), confirm: t('channels.admin.table.confirmation'), method: :put  do
-                      = t('channels.admin.table.send_to_trash')
+                  - if project.can_push_to_draft?
+                    li
+                      = link_to  push_to_draft_channels_admin_project_path(project), method: :put  do
+                        i.icon-trash
+                        = t('channels.admin.table.send_to_draft')
+                  - if project.can_push_to_trash?
+                    li
+                      = link_to  push_to_trash_channels_admin_project_path(project), confirm: t('channels.admin.table.confirmation'), method: :put  do
+                        = t('channels.admin.table.send_to_trash')
 
   = paginate @projects
 
