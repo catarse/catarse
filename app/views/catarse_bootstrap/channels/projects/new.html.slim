@@ -21,7 +21,7 @@ section.row
     p = t('submit_project.headline_hint')
 
     = form.input :category_id, as: :select, collection: Category.array, label: t('submit_project.category_id')
-    p = t('submit_project.category_id_hint', href: explore_url).html_safe
+    p = t('submit_project.category_id_hint', href: explore_url(subdomain: nil)).html_safe
 
     = form.input :goal, as: :string, label: t('submit_project.goal')
     p = t('submit_project.goal_hint').html_safe
