@@ -186,7 +186,7 @@ class Project < ActiveRecord::Base
   private
   def self.between_dates(attribute, starts_at, ends_at)
     return scoped unless starts_at.present? && ends_at.present?
-    where("projects.#{attribute}::date between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", starts_at, ends_at)
+    where("(projects.#{attribute} AT TIME ZONE coalesce((SELECT c.value FROM configurations c WHERE c.name = 'timezone'), 'America/Sao_Paulo'))::date between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", starts_at, ends_at)
   end
 
   def self.get_routes
