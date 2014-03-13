@@ -119,6 +119,7 @@ describe ContributionObserver do
     context "when contribution is made with credit card" do
       before do
         contribution.update_attributes(payment_choice: 'CartaoDeCredito', payment_method: 'MoIP')
+        contribution.should_receive(:direct_refund)
         contribution.notify_observers :from_confirmed_to_requested_refund
       end
 
@@ -131,6 +132,7 @@ describe ContributionObserver do
     context "when contribution is made with boleto" do
       before do
         contribution.update_attributes(payment_choice: 'BoletoBancario', payment_method: 'MoIP')
+        contribution.should_receive(:direct_refund)
         contribution.notify_observers :from_confirmed_to_requested_refund
       end
 
