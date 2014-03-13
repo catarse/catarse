@@ -21,14 +21,6 @@
         .projects
           == render @recommends
 
-      section.channel_projects.list
-        header
-          h2.list-title
-            = link_to t('sections.channels.title'), root_url(subdomain: 'asas')
-          = link_to t('main.links.channels'), root_url(subdomain: 'asas'), class: "more-projects"
-        .projects
-          == render @channel_projects
-
       section.expiring_projects.list
         header
           h2.list-title
