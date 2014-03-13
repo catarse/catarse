@@ -114,6 +114,7 @@ describe ContributionObserver do
     let(:admin){ create(:user) }
     before do
       Configuration[:email_payments] = admin.email
+      contribution.stub(:can_do_refund?).and_return(true)
     end
 
     context "when contribution is made with credit card" do
