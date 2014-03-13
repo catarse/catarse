@@ -92,8 +92,6 @@
                   - else
                     li= link_to t('admin.contributions.index.confirm_contribution'), confirm_admin_contribution_path(contribution, local_params: params), method: :put
                   - if contribution.requested_refund? or contribution.confirmed?
-                    - if contribution.refund_path
-                      li= link_to t('admin.contributions.index.send_refund_request_contribution'), contribution.refund_path, method: :post
                     li= link_to t('admin.contributions.index.refund_contribution'), refund_admin_contribution_path(contribution, local_params: params), method: :put
                   li= link_to t('admin.contributions.index.refund_and_hide'), hide_admin_contribution_path(contribution, local_params: params), method: :put
                   li= link_to t('admin.contributions.index.cancel'), cancel_admin_contribution_path(contribution, local_params: params), method: :put
