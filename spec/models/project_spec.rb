@@ -228,7 +228,6 @@ describe Project do
     let(:project_03) { create(:project) }
 
     before do
-      Configuration[:timezone] = 'America/Sao_Paulo'
       project_01.update_attributes({ online_date: '17/01/2013', online_days: 1 })
       project_02.update_attributes({ online_date: '21/01/2013', online_days: 1 })
       project_03.update_attributes({ online_date: '23/01/2013', online_days: 1 })
