@@ -33,6 +33,7 @@ class ContributionObserver < ActiveRecord::Observer
       Notification.notify(:refund_request, user, {contribution: contribution, origin_email: contribution.user.email, origin_name: contribution.user.name})
     end
 
+    contribution.direct_refund
     contribution.notify_to_contributor((contribution.slip_payment? ? :requested_refund_slip : :requested_refund))
   end
 
