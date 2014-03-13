@@ -220,7 +220,7 @@ describe Project do
 
   describe '.between_expires_at' do
     let(:start_at) { '17/01/2013' }
-    let(:ends_at) { '21/01/2013' }
+    let(:ends_at) { '22/01/2013' }
     subject { Project.between_expires_at(start_at, ends_at).order("id desc") }
 
     let(:project_01) { create(:project) }
@@ -228,9 +228,9 @@ describe Project do
     let(:project_03) { create(:project) }
 
     before do
-      project_01.update_attributes({ online_date: '17/01/2013'.to_time, online_days: 0 })
-      project_02.update_attributes({ online_date: '21/01/2013'.to_time, online_days: 0 })
-      project_03.update_attributes({ online_date: '23/01/2013'.to_time, online_days: 0 })
+      project_01.update_attributes({ online_date: '17/01/2013', online_days: 1 })
+      project_02.update_attributes({ online_date: '21/01/2013', online_days: 1 })
+      project_03.update_attributes({ online_date: '23/01/2013', online_days: 1 })
     end
 
     it { should == [project_02, project_01] }
