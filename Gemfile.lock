@@ -412,7 +412,7 @@ GEM
       activemodel (>= 3.0.0)
     spreadsheet (0.9.6)
       ruby-ole (>= 1.0)
-    sprockets (2.12.0)
+    sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -534,6 +534,7 @@ DEPENDENCIES
   sinatra
   slim-rails
   spectator-validates_email
+  sprockets (~> 2.10.1)
   state_machine
   to_xls
   uglifier
