@@ -146,6 +146,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem "compass-rails"
 gem 'uglifier'
 gem 'compass-960-plugin'
+gem 'sprockets', '~> 2.10.1'
 
 # FIXME: Not-anymore-on-development
 # Gems that are with 1 or more years on the vacuum
