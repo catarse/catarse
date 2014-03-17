@@ -56,7 +56,7 @@ Our pivotal is concerned with user visible features using user stories. But we d
 
 After that, just fork the project, change what you want, and send us a pull request.
 
-## Best practices (or how to get your pull request accepted faster)
+### Best practices (or how to get your pull request accepted faster)
 
 * Follow this style guide: https://github.com/bbatsov/ruby-style-guide
 * Create one acceptance tests for each scenario of the feature you are trying to implement.
