@@ -30,5 +30,5 @@ header
               li= link_to menu, path
           li.divider= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
       - else
-        = link_to t('channels.header.signup'), new_user_registration_path
-        = link_to t('channels.header.signin'), new_user_session_path
+        = link_to t('channels.header.signup'), new_user_registration_path, class: 'header-nav-item'
+        = link_to t('channels.header.signin'), new_user_session_path, class: 'header-nav-item'
