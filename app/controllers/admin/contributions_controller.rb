@@ -1,6 +1,5 @@
 class Admin::ContributionsController < Admin::BaseController
   layout 'catarse_bootstrap'
-  add_to_menu "admin.contributions.index.menu", :admin_contributions_path
   has_scope :by_id, :by_user_id, :by_key, :user_name_contains, :user_email_contains, :payer_email_contains, :project_name_contains, :confirmed, :with_state, :by_value
   has_scope :credits, type: :boolean
   has_scope :between_values, using: [ :start_at, :ends_at ], allow_blank: true

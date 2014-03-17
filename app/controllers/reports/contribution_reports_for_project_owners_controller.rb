@@ -1,6 +1,4 @@
 class Reports::ContributionReportsForProjectOwnersController < Reports::BaseController
-  before_filter :check_if_project_belongs_to_user
-
   def index
     @report = end_of_association_chain.to_xls( columns: I18n.t('contribution_report_to_project_owner').values )
     super do |format|
@@ -13,7 +11,7 @@ class Reports::ContributionReportsForProjectOwnersController < Reports::BaseCont
 
     conditions.merge!(reward_id: params[:reward_id]) if params[:reward_id].present?
 
-    super.
+    current_user.projects.
       select(%Q{
         reward_description as "#{I18n.t('contribution_report_to_project_owner.reward_description')}",
         confirmed_at as "#{I18n.t('contribution_report_to_project_owner.confirmed_at')}",
@@ -35,9 +33,5 @@ class Reports::ContributionReportsForProjectOwnersController < Reports::BaseCont
         END as "#{I18n.t('contribution_report_to_project_owner.anonymous')}"
       }).
       where(conditions)
-  end
-
-  def check_if_project_belongs_to_user
-    redirect_to root_path unless can? :update, Project.find(params[:project_id])
   end
 end

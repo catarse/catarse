@@ -25,14 +25,6 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (>= 1.5.0)
 
-GIT
-  remote: git://github.com/ryanb/cancan.git
-  revision: f1cebde51a87be149b4970a3287826bb63c0ac0b
-  ref: f1cebde51a87be149b4970a3287826bb63c0ac0b
-  branch: 2.0
-  specs:
-    cancan (2.0.0.alpha)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -470,7 +462,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   browser
-  cancan!
   capybara (~> 2.1.0)
   carrierwave (~> 0.8.0)
   catarse_mailchimp!

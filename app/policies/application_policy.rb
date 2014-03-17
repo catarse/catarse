@@ -58,5 +58,9 @@ class ApplicationPolicy
   def is_owned_by?(user)
     user.present? && record.user == user
   end
+
+  def is_channel_admin?
+    user.try(:channel)
+  end
 end
 
