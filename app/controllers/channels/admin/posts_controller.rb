@@ -1,7 +1,5 @@
 class Channels::Admin::PostsController < Admin::BaseController
   layout 'catarse_bootstrap'
-  add_to_menu 'channels.admin.posts_menu', :channels_admin_posts_path
-  load_and_authorize_resource :channel_posts
   inherit_resources
   defaults resource_class: ChannelPost
 
