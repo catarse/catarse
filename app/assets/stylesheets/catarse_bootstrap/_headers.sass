@@ -1,17 +1,10 @@
 header
   padding: .4em 0
-  // min-hwight is defined to make the header have the same size with or without the user avatar
   min-height: 85px
   border-bottom: 2px solid $border-gray
   h1
     margin: 0
 
-.user-dropdown
-  height: 30px
-  width: 125px
-.user-dropdown:hover ul
-  display: block
-  top: 15px
 .logo
   background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -32px -14px transparent
   display: block
@@ -95,3 +88,19 @@ header
     text-indent: -9999em
     width: 20px
 
+.user-dropdown
+  height: 30px
+  margin-top: 15px
+  padding-left: 0
+  &:hover ul
+    display: block
+    top: 15px
+  a
+    color: $blue-two
+    font-size: 13px
+    padding-left: 15px
+  .user-menu
+    width: 85px
+    padding-right: 0
+    margin: 0
+    float: right
