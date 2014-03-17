@@ -8,8 +8,6 @@ module Concerns
       rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
       rescue_from Pundit::NotAuthorizedError, with: :auth_error
-      rescue_from CanCan::Unauthorized, with: :auth_error
-
     end
 
     def auth_error(exception)
