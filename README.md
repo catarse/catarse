@@ -56,13 +56,9 @@ Our pivotal is concerned with user visible features using user stories. But we d
 
 After that, just fork the project, change what you want, and send us a pull request.
 
-### Coding style
-* We prefer the `{foo: 'bar'}` over `{:foo => 'bar'}`
-* We prefer the `->(foo){ bar(foo) }` over `lambda{|foo| bar(foo) }`
+## Best practices (or how to get your pull request accepted faster)
 
-### Best practices (or how to get your pull request accepted faster)
-
-We use RSpec for the tests, and the best practices are:
+* Follow this style guide: https://github.com/bbatsov/ruby-style-guide
 * Create one acceptance tests for each scenario of the feature you are trying to implement.
 * Create model and controller tests to keep 100% of code coverage at least in the new parts that you are writing.
 * Feel free to add specs to the code that is already in the repository without the proper coverage ;)
