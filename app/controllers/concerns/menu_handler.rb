@@ -16,7 +16,7 @@ module Concerns
 
       def menu
         ApplicationController.menu_items.inject({}) do |memo, el|
-          memo.merge!(el.first => Rails.application.routes.url_helpers.send(el.last)) if can? :access, el.last
+          memo.merge!(el.first => Rails.application.routes.url_helpers.send(el.last)) 
           memo
         end
       end
