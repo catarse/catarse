@@ -96,6 +96,6 @@ RSpec.configure do |config|
     Configuration[:base_domain] = 'localhost'
     Configuration[:email_contact] = 'foo@bar.com'
     Configuration[:company_name] = 'Foo Bar Company'
-    Contribution.any_instance.stub(:direct_refund).and_return(true)
+    Contribution.any_instance.stub(:payment_engine).and_return(PaymentEngines::Interface.new)
   end
 end
