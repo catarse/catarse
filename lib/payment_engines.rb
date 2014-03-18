@@ -3,7 +3,7 @@ class PaymentEngines
 
   def self.find_engine name
     @@engines.find do |engine|
-      engine[:name].downcase == name.downcase
+      engine.name.downcase == name.downcase
     end
   end
 
@@ -16,7 +16,7 @@ class PaymentEngines
   end
 
   def self.engines
-    @@engines.sort{|a,b| (a[:locale] == I18n.locale.to_s ? -1 : 1) }
+    @@engines.sort{|a,b| (a.locale == I18n.locale.to_s ? -1 : 1) }
   end
 
   def self.create_payment_notification attributes
