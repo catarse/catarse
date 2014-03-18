@@ -3,10 +3,23 @@
 require 'spec_helper'
 
 describe PaymentEngines do
-  let(:engine){ {name: 'test', review_path: ->(contribution){ "/#{contribution}" }, locale: 'en'} }
-  let(:engine_pt){ {name: 'test pt', review_path: ->(contribution){ "/#{contribution}" }, locale: 'pt'} }
   let(:contribution){ FactoryGirl.create(:contribution) }
-  before{ PaymentEngines.clear }
+  let(:paypal_engine) { double }
+  let(:moip_engine) { double }
+
+  before do
+    PaymentEngines.clear
+    paypal_engine.stub(:name).and_return('PayPal')
+    paypal_engine.stub(:review_path).with(contribution).and_return("/#{contribution}")
+    paypal_engine.stub(:locale).and_return('en')
+
+    moip_engine.stub(:name).and_return('MoIP')
+    moip_engine.stub(:review_path).with(contribution).and_return("/#{contribution}")
+    moip_engine.stub(:locale).and_return('pt')
+  end
+
+  let(:engine){ paypal_engine }
+  let(:engine_pt){ moip_engine }
 
   describe ".find_engine" do
     before do
@@ -14,9 +27,9 @@ describe PaymentEngines do
       PaymentEngines.register engine_pt
     end
 
-    subject { PaymentEngines.find_engine('test pt') }
+    subject { PaymentEngines.find_engine('MoIP') }
 
-    it { should == engine_pt}
+    it { should == engine_pt }
   end
 
   describe ".register" do

@@ -1,14 +1,22 @@
 require 'spec_helper'
 
 describe Contribution::PaymentEngineHandler do
-  let(:engine){ { name: 'moip', review_path: ->(contribution){ "/#{contribution}" }, locale: 'en' } }
   let(:contribution){ create(:contribution, payment_method: 'MoIP') }
+  let(:moip_engine) { double }
 
   before do
-    Contribution.any_instance.unstub(:direct_refund)
+    Contribution.any_instance.unstub(:payment_engine)
     PaymentEngines.clear
-    engine
+
+    moip_engine.stub(:name).and_return('MoIP')
+    moip_engine.stub(:review_path).and_return("/#{contribution}")
+    moip_engine.stub(:locale).and_return('pt')
+    moip_engine.stub(:can_do_refund?).and_return(false)
+    moip_engine.stub(:direct_refund).and_return(false)
+
   end
+
+  let(:engine){ moip_engine }
 
   describe "#payment_engine" do
     subject { contribution.payment_engine }
@@ -20,7 +28,7 @@ describe Contribution::PaymentEngineHandler do
     end
 
     context "when contribution don't have a payment engine" do
-      it { should eq(nil) }
+      it { should be_a_kind_of(PaymentEngines::Interface) }
     end
   end
 
@@ -29,8 +37,8 @@ describe Contribution::PaymentEngineHandler do
 
     context "when contribution has a payment engine with direct refund enabled" do
       before do
-        PaymentEngines.register(engine.merge!({ can_do_refund?: true }))
-        contribution.stub(:direct_refund).and_return(true)
+        moip_engine.stub(:can_do_refund?).and_return(true)
+        PaymentEngines.register(engine)
       end
 
       it { should be_true }
@@ -50,7 +58,9 @@ describe Contribution::PaymentEngineHandler do
 
     context "when contribution has a payment engine with direct refund enabled" do
       before do
-        PaymentEngines.register(engine.merge!({ direct_refund: ->(contribution) { true } }))
+        moip_engine.stub(:can_do_refund?).and_return(true)
+        moip_engine.stub(:direct_refund).and_return(true)
+        PaymentEngines.register(engine)
       end
 
       it { should be_true }
@@ -69,9 +79,12 @@ describe Contribution::PaymentEngineHandler do
     subject { contribution.review_path }
 
     context "when contribution has a payment engine" do
-      before { PaymentEngines.register engine }
+      before do
+        contribution.stub(:payment_engine).and_return(engine)
+        PaymentEngines.register engine
+      end
 
-      it { should eq(engine[:review_path].call(contribution)) }
+      it { should eq(engine.review_path(contribution)) }
     end
 
     context "when contribution don't have a payment engine" do
