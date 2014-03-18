@@ -5,7 +5,7 @@ describe Contribution::PaymentEngineHandler do
   let(:moip_engine) { double }
 
   before do
-    Contribution.any_instance.unstub(:direct_refund)
+    Contribution.any_instance.unstub(:payment_engine)
     PaymentEngines.clear
 
     moip_engine.stub(:name).and_return('MoIP')
