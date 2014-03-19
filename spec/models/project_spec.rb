@@ -4,7 +4,7 @@ require 'spec_helper'
 describe Project do
   let(:project){ build(:project, goal: 3000) }
   let(:user){ create(:user) }
-  let(:channel){ create(:channel, email: user.email, users: [ user ]) }
+  let(:channel){ create(:channel, users: [ user ]) }
   let(:channel_project){ create(:project, channels: [ channel ]) }
 
   describe "associations" do
