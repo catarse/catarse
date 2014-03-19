@@ -314,8 +314,9 @@ describe Project do
     end
 
     it "should create notification for all inactive drafts" do
-      #Project.send_inactive_drafts_notification 
-      #expect(Notification.coun).to eq 1
+      Notification.should_receive(:notify_once).
+        with(:inactive_draft, @p.user, {project_id: @p.id}, {project: @p})
+      Project.send_inactive_drafts_notification 
     end
   end
 
