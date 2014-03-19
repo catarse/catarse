@@ -88,6 +88,12 @@ class Project < ActiveRecord::Base
     joins(:contributions).merge(Contribution.confirmed_today).uniq
   }
 
+  scope :inactive_drafts, ->{ 
+    with_state('draft').
+    where("(current_timestamp - updated_at) > '10 days'").
+    where("NOT EXISTS (SELECT true FROM notifications n WHERE n.project_id = projects.id AND template_name = 'inactive_draft')")
+  }
+
   attr_accessor :accepted_terms
 
   validates_acceptance_of :accepted_terms, on: :create
@@ -102,6 +108,17 @@ class Project < ActiveRecord::Base
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
       between_dates name.to_s.gsub('between_',''), starts_at, ends_at
+    end
+  end
+
+  def self.send_inactive_drafts_notification
+    inactive_drafts.find_each do |project|
+      Notification.notify_once(
+        :inactive_draft,
+        project.user,
+        {project_id: project.id},
+        {project: project}
+      )
     end
   end
 
