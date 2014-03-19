@@ -309,6 +309,7 @@ describe Project do
 
   describe "send_inactive_drafts_notification" do
     before do
+      Notification.unstub(:notify_once)
       @p = create(:project, state: 'draft', updated_at: Time.now - 11.days)
       create(:project, state: 'draft')
     end
