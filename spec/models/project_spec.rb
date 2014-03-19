@@ -307,6 +307,29 @@ describe Project do
     it{ should == [@p] }
   end
 
+  describe "send_inactive_drafts_notification" do
+    before do
+      @p = create(:project, state: 'draft', updated_at: Time.now - 11.days)
+      create(:project, state: 'draft')
+    end
+
+    it "should create notification for all inactive drafts" do
+      #Project.send_inactive_drafts_notification 
+      #expect(Notification.coun).to eq 1
+    end
+  end
+
+  describe ".inactive_drafts" do
+    before do
+      @p = create(:project, state: 'draft', updated_at: Time.now - 11.days)
+      already_notified = create(:project, state: 'draft', updated_at: Time.now - 11.days)
+      create(:notification, template_name: 'inactive_draft', project: already_notified)
+      create(:project, state: 'draft')
+    end
+    subject{ Project.inactive_drafts }
+    it{ should == [@p] }
+  end
+
   describe ".from_channels" do
     let(:channel){create(:channel)}
     before do
