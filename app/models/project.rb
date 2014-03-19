@@ -180,8 +180,7 @@ class Project < ActiveRecord::Base
   end
 
   def new_draft_recipient
-    email = last_channel.try(:email) || ::Configuration[:email_projects]
-    User.where(email: email).first
+    last_channel.try(:curator) || User.where(email: ::Configuration[:email_projects]).first
   end
 
   def last_channel
