@@ -3,27 +3,18 @@ module Contribution::PaymentEngineHandler
 
   included do
 
+    delegate :can_do_refund?, to: :payment_engine
+
     def payment_engine
-      PaymentEngines.find_engine(self.payment_method) rescue nil
+      PaymentEngines.find_engine(self.payment_method) || PaymentEngines::Interface.new
     end
 
-    def can_do_refund?
-      engine_handler { |engine| engine[:can_do_refund?] }
+    def review_path
+      payment_engine.review_path(self)
     end
 
-    %i(review_path direct_refund).each do |method_name|
-      define_method method_name do
-        engine_handler { |engine| engine[method_name].try(:call, self) }
-      end
+    def direct_refund
+      payment_engine.direct_refund(self)
     end
-
-    private
-
-    def engine_handler
-      if payment_engine
-        yield payment_engine
-      end
-    end
-
   end
 end
