@@ -111,6 +111,17 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def self.send_inactive_drafts_notification
+    inactive_drafts.find_each do |project|
+      Notification.notify_once(
+        :inactive_draft,
+        project.user,
+        {project_id: project.id},
+        {project: project}
+      )
+    end
+  end
+
   def self.goal_between(starts_at, ends_at)
     where("goal BETWEEN ? AND ?", starts_at, ends_at)
   end
