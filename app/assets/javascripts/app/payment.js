@@ -6,7 +6,7 @@ App.addChild('Payment', _.extend({
   },
 
   activate: function(){
-    this.onTabClick({target: this.$('#payment_menu a:first')});
+    this.onTabClick({currentTarget: this.$('#payment_menu a:first')});
     this.on('selectTab', this.updatePaymentMethod);
   },
 
