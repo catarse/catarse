@@ -31,7 +31,7 @@ App.addChild('Project', _.extend({
   followRoute: function(name){
     var $tab = this.$('nav#project_menu a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
-      this.onTabClick({ target: $tab });
+      this.onTabClick({ currentTarget: $tab });
     }
   },
 
