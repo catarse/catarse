@@ -27,9 +27,15 @@ describe PaymentEngines do
       PaymentEngines.register engine_pt
     end
 
-    subject { PaymentEngines.find_engine('MoIP') }
+    context "when engine name is not nil" do
+      subject { PaymentEngines.find_engine('MoIP') }
+      it { should == engine_pt }
+    end
 
-    it { should == engine_pt }
+    context "when engine name is nil" do
+      subject { PaymentEngines.find_engine(nil) }
+      it { should be_nil }
+    end
   end
 
   describe ".register" do

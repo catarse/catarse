@@ -2,7 +2,8 @@ class PaymentEngines
   @@engines = []
 
   def self.find_engine name
-    @@engines.find do |engine|
+    # if name is nil we should return nil
+    name && @@engines.find do |engine|
       engine.name.downcase == name.downcase
     end
   end
