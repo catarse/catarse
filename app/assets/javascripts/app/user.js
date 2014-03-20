@@ -13,7 +13,7 @@ App.addChild('User', _.extend({
   followRoute: function(){
     var $tab = this.$('nav#user_profile_menu a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
-      this.onTabClick({ target: $tab });
+      this.onTabClick({ currentTarget: $tab });
     }
   },
 
