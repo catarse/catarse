@@ -71,5 +71,5 @@
                     = t("projects.contributions.review.#{engine.name}")
             .tab_content_container
               - PaymentEngines.engines.each do |engine|
-                div[id="#{engine.name}_payment" class="payments_type hide" data-path=@contribution.review_path ]
+                div[id="#{engine.name}_payment" class="payments_type hide" data-path=engine.review_path(@contribution) ]
     .clearfix
