@@ -8,7 +8,7 @@ Skull.Tabs = {
   },
 
   onTabClick: function(event){
-    var $tab = $(event.target);
+    var $tab = $(event.currentTarget);
     var $tabContent = this.$($tab.data('target'));
     this.loadTab($tabContent);
     this.selectTab($tab, $tabContent);
