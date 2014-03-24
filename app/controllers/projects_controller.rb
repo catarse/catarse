@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
 
+  layout 'catarse_bootstrap'
+
   def index
     index! do |format|
       format.html do
