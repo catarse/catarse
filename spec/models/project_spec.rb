@@ -34,6 +34,21 @@ describe Project do
     it{ should_not allow_value('users').for(:permalink) }
   end
 
+  describe ".expiring_in_less_of" do
+    subject { Project.expiring_in_less_of('7 days') }
+
+    before do
+      @project_01 = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
+      @project_02 = create(:project, state: 'online', online_date: DateTime.now, online_days: 30)
+      @project_03 = create(:project, state: 'draft')
+      @project_04 = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
+    end
+
+    it "should return a collection with projects that is expiring time less of the time in param" do
+      should == [@project_01, @project_04]
+    end
+  end
+
   describe ".with_contributions_confirmed_today" do
     let(:project_01) { create(:project, state: 'online') }
     let(:project_02) { create(:project, state: 'online') }
@@ -317,7 +332,7 @@ describe Project do
     it "should create notification for all inactive drafts" do
       Notification.should_receive(:notify_once).
         with(:inactive_draft, @p.user, {project_id: @p.id}, {project: @p})
-      Project.send_inactive_drafts_notification 
+      Project.send_inactive_drafts_notification
     end
   end
 

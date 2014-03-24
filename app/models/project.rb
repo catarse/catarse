@@ -88,10 +88,14 @@ class Project < ActiveRecord::Base
     joins(:contributions).merge(Contribution.confirmed_today).uniq
   }
 
-  scope :inactive_drafts, ->{ 
+  scope :inactive_drafts, ->{
     with_state('draft').
     where("(current_timestamp - updated_at) > '10 days'").
     where("NOT EXISTS (SELECT true FROM notifications n WHERE n.project_id = projects.id AND template_name = 'inactive_draft')")
+  }
+
+  scope :expiring_in_less_of, ->(time) {
+    with_state('online').where("(projects.expires_at - current_date) <= ?", time)
   }
 
   attr_accessor :accepted_terms
