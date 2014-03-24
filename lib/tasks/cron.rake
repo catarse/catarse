@@ -5,7 +5,7 @@ task :cron => :environment do
   end
 end
 
-desc "deliver verify moip account notifications" do
+desc "deliver verify moip account notifications"
 task :deliver_verify_moip_account_notifications do
   Project.send_verify_moip_account_notification
 end
