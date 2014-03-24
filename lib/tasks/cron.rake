@@ -5,6 +5,18 @@ task :cron => :environment do
   end
 end
 
+desc "deliver verify moip account notifications" do
+task :deliver_verify_moip_account_notifications do
+  Project.expiring_in_less_of('7 days').each do |project|
+    Notification.notify_once(
+      :verify_moip_account,
+      project.user,
+      { project_id: project.id },
+      { project: project, origin_email: ::Configuration[:email_payments] }
+    )
+  end
+end
+
 desc "This tasks should be executed 1x per day"
 task notify_project_owner_about_new_confirmed_contributions: :environment do
   Project.with_contributions_confirmed_today.each do |project|
