@@ -122,6 +122,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'pry'
+  gem 'livingstyleguide'
 end
 
 group :test do
