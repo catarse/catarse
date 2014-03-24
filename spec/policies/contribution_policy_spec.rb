@@ -61,7 +61,7 @@ describe ContributionPolicy do
         @anon_contribution = create(:contribution, anonymous: true, state: 'confirmed', project: project)
       end
 
-      subject { ContributionPolicy::UserScope.new(current_user, user, project.contributions).resolve }
+      subject { ContributionPolicy::UserScope.new(current_user, user, project.contributions).resolve.order('created_at desc') }
 
       context "when user is admin" do
         let(:current_user) { create(:user, admin: true) }
