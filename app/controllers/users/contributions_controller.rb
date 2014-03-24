@@ -25,7 +25,7 @@ class Users::ContributionsController < ApplicationController
   protected
   def policy_scope(scope)
     @_policy_scoped = true
-    ContributionPolicy::UserScope.new(current_user, scope).resolve
+    ContributionPolicy::UserScope.new(parent, current_user, scope).resolve
   end
 
   def collection

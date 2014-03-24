@@ -27,7 +27,7 @@ describe ContributionPolicy do
   end
 
   shared_examples_for "create permissions" do
-    it_should_behave_like "update permissions" 
+    it_should_behave_like "update permissions"
 
     ['draft', 'deleted', 'rejected', 'successful', 'failed', 'waiting_funds', 'in_analysis'].each do |state|
       it "should deny access if project is #{state}" do
@@ -54,18 +54,24 @@ describe ContributionPolicy do
   describe 'UserScope' do
     describe ".resolve" do
       let(:user) { create(:user, admin: false) }
+      let(:current_user) { nil }
       before do
         create(:contribution, state: 'waiting_confirmation', project: project)
-        create(:contribution, anonymous: true, state: 'confirmed', project: project)
         @contribution = create(:contribution, anonymous: false, state: 'confirmed', project: project)
+        @anon_contribution = create(:contribution, anonymous: true, state: 'confirmed', project: project)
       end
 
-      subject { ContributionPolicy::UserScope.new(user, project.contributions).resolve }
+      subject { ContributionPolicy::UserScope.new(user, current_user, project.contributions).resolve }
 
       context "when user is admin" do
         let(:user) { create(:user, admin: true) }
 
         it { should have(3).itens }
+      end
+
+      context "when user is a contributor" do
+        let(:current_user) { user }
+        it { should eq [@anon_contribution, @contribution] }
       end
 
       context "when user is not an admin" do

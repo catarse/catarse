@@ -1,10 +1,11 @@
 class ContributionPolicy < ApplicationPolicy
 
-  self::UserScope = Struct.new(:user, :scope) do
-
+  self::UserScope = Struct.new(:user, :current_user, :scope) do
     def resolve
-      if user.try(:admin?) 
+      if user.try(:admin?)
         scope.available_to_display
+      elsif current_user == user
+        scope.with_state('confirmed')
       else
         scope.not_anonymous.with_state('confirmed')
       end
@@ -22,7 +23,7 @@ class ContributionPolicy < ApplicationPolicy
   def show?
     done_by_onwer_or_admin?
   end
-  
+
   def credits_checkout?
     done_by_onwer_or_admin?
   end
