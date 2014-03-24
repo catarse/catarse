@@ -115,14 +115,15 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def self.send_verify_moip_account_notification
+    expiring_in_less_of('7 days').find_each do |project|
+      project.notify_owner(:verify_moip_account, { origin_email: ::Configuration[:email_payments]})
+    end
+  end
+
   def self.send_inactive_drafts_notification
     inactive_drafts.find_each do |project|
-      Notification.notify_once(
-        :inactive_draft,
-        project.user,
-        {project_id: project.id},
-        {project: project}
-      )
+      project.notify_owner(:inactive_draft)
     end
   end
 
@@ -201,6 +202,15 @@ class Project < ActiveRecord::Base
 
   def state_warning_template
     "#{state}_warning"
+  end
+
+  def notify_owner(template_name, params = {})
+    Notification.notify_once(
+      template_name,
+      self.user,
+      { project_id: self.id },
+      { project: self }.merge!(params)
+    )
   end
 
   private

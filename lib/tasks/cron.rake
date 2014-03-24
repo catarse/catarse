@@ -7,14 +7,7 @@ end
 
 desc "deliver verify moip account notifications" do
 task :deliver_verify_moip_account_notifications do
-  Project.expiring_in_less_of('7 days').each do |project|
-    Notification.notify_once(
-      :verify_moip_account,
-      project.user,
-      { project_id: project.id },
-      { project: project, origin_email: ::Configuration[:email_payments] }
-    )
-  end
+  Project.send_verify_moip_account_notification
 end
 
 desc "This tasks should be executed 1x per day"
