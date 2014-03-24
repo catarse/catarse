@@ -1,8 +1,8 @@
 class ContributionPolicy < ApplicationPolicy
 
-  self::UserScope = Struct.new(:user, :current_user, :scope) do
+  self::UserScope = Struct.new(:current_user, :user, :scope) do
     def resolve
-      if user.try(:admin?)
+      if current_user.try(:admin?)
         scope.available_to_display
       elsif current_user == user
         scope.with_state('confirmed')
