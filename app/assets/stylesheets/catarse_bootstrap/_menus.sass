@@ -52,15 +52,43 @@
 
 .tabs-nav
   position: absolute
-  bottom: 0
+  bottom: 9px
   margin: 0
   padding: 0
   width: $default_grid_max_size
   li
     display: inline-block
+  a
+    color: $blue-one
+    padding: 11px 1.2em
+    &.selected
+      background: #ffffff
+      border-top: 1px solid $border-gray
+      border-left: 1px solid $border-gray
+      border-right: 1px solid $border-gray
 
   .tabs-nav-creator
     float: right
+    a
+      color: $orange
+      &:before
+        content: ''
+        float: left
+        width: 19px
+        height: 19px
+        vertical-align: top
+        margin: 0px -10px 0 0
+        background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -73px -129px transparent
 
   .tabs-nav-category
     float: right
+    a
+      color: $orange
+      &:before
+        content: ''
+        float: left
+        width: 19px
+        height: 19px
+        vertical-align: top
+        margin: 0px -10px 0 0
+        background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -120px -129px transparent
