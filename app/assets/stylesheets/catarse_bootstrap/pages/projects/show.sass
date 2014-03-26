@@ -1,2 +1,152 @@
 .project-title
 	font-size: em(24px)
+
+.project-content
+	margin-top: 4em
+
+.project-share
+	margin: 1em 0 3em
+	position: relative
+	padding: 0
+	height: 36px
+	li
+		display: inline-block
+	.embed
+		position: absolute
+		right: 0
+		border: 1px solid $border-gray
+		border-radius: 4px
+		background: #fff
+		padding: .5em 1em
+		a
+			color: $blue-one
+
+.project-statistics
+	background: $gray-one
+	border: 1px solid $border-strong
+	form
+		padding: 15px
+		clear: left
+	.project-status
+		padding: 15px
+		background: $border-strong
+		font-size: em(13px)
+		margin: 0
+
+.project-contributions, .project-goal, .project-days
+	padding: 30px 15px 0
+	margin: 0
+	float: left
+	font-size: em(27px)
+	font-weight: 700
+	&:before
+		content: ''
+		float: left
+		width: 48px
+		height: 48px
+		vertical-align: top
+		margin: -4px 10px 0 0
+	span
+		display: inline-block
+		width: 140px
+		font-size: 10px
+		text-transform: uppercase
+
+.project-contributions:before
+	background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -148px -170px transparent
+
+.project-goal:before
+	background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -22px -172px transparent
+
+.project-days:before
+	background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -80px -175px transparent
+
+.project-creator-title
+	text-transform: uppercase
+	margin: 4em 0 .5em
+	font-size: 11px
+	&:before
+		content: ''
+		float: left
+		width: 19px
+		height: 19px
+		vertical-align: top
+		margin: 0px 10px 0 0
+		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -73px -129px transparent
+
+
+.project-creator
+	border-bottom: 1px solid $border-gray
+	margin: 0 0 2em
+	.avatar_wrapper
+		float: left
+		margin: 0 1em 0 0
+	a
+		font-weight: bold
+	p
+		font-size: em(13px)
+		margin: 1em 0 0
+	.project-creator-name
+		margin-bottom: -8px
+	.project-creator-city
+		font-weight: 700
+	.project-creator-count
+		margin-top: 3px
+		font-weight: 700
+
+
+.project-creator-links
+	padding: 0
+	li
+		display: inline-block
+	a
+		font-weight: normal
+		font-size: em(13px)
+	.facebook
+		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -29px 127px transparent
+		text-indent: -9999px
+		display: inline-block
+		width: 18px
+		height: 18px
+	.twitter
+		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -30px 163px transparent
+		text-indent: -9999px
+		display: inline-block
+		width: 18px
+		height: 18px
+
+
+.new-reward
+	background: $gray-one
+	border: 1px solid $border-strong
+	padding: 1em
+	h4
+		margin: 0
+		font-size: 16px
+	p
+		font-size: 13px
+
+
+.rewards-list
+	background: $gray-one
+	border: 1px solid $border-strong
+	margin: 2em 0
+	padding: 0
+
+.reward-item
+	border-bottom: 1px solid $border-strong
+	padding: 2em 1.5em
+	display: inline-block
+	font-size: 13px
+	&:hover
+		background: $border-gray
+
+.reward-price
+	color: $green
+	font-size: 20px
+	margin: 0
+
+.reward-bakers
+	font-weight: 700
+	margin: .5em 0 1em
+	font-size: 15px

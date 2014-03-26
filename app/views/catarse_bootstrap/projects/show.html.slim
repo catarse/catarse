@@ -21,146 +21,142 @@
 
 = render 'shared/header'
 
-section.row
+section.project-show
+  section.row
 
-  = render @project.state_warning_template
+    = render @project.state_warning_template
 
-section.line-box
-  .row
-    h2.project-title
-      = @project.name
+  section
+    header.line-box
+      .row
+        h2.project-title
+          = @project.name
 
-    nav
-      ul.tabs-nav
-        li
-          = link_to '#about', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
-            = t('.menu.about')
-        li
-          = link_to '#updates', 'id' => 'updates_link', 'data-target' => '#project_updates' do
-            = t('.menu.updates')
-            span.count=" (#{@updates_count})"
-        li
-          = link_to '#contributions', 'id' => 'contributions_link', 'data-target' => '#project_contributions' do
-            = t('.menu.contributions')
-            span.count=" (#{@project.total_contributions})"
-        li
-          = link_to '#comments', 'id' => 'comments_link', 'data-target' => '#project_comments' do
-            = t('.menu.comments')
-            | &nbsp; (
-            fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}"
-            | )
+        nav
+          ul.tabs-nav
+            li
+              = link_to '#about', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
+                = t('.menu.about')
+            li
+              = link_to '#updates', 'id' => 'updates_link', 'data-target' => '#project_updates' do
+                = t('.menu.updates')
+                span.count=" (#{@updates_count})"
+            li
+              = link_to '#contributions', 'id' => 'contributions_link', 'data-target' => '#project_contributions' do
+                = t('.menu.contributions')
+                span.count=" (#{@project.total_contributions})"
+            li
+              = link_to '#comments', 'id' => 'comments_link', 'data-target' => '#project_comments' do
+                = t('.menu.comments')
+                | &nbsp; (
+                fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}"
+                | )
+            - if policy(@project).update?
+              li
+                = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do
+                  = t('.menu.edit')
+            li
+              = link_to '#reports', 'id' => 'reports_link', 'data-target' => '#project_reports' do
+                = t('.menu.reports')
+            li.tabs-nav-category
+              = link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"))
+            li.tabs-nav-creator
+              = link_to(@project.user.display_name, user_path(@project.user))
+
+    section.row.project-content
+      section.large-9.columns
         - if policy(@project).update?
-          li
-            = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do
-              = t('.menu.edit')
-        li
-          = link_to '#reports', 'id' => 'reports_link', 'data-target' => '#project_reports' do
-            = t('.menu.reports')
-        li.tabs-nav-category
-          = link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"))
-        li.tabs-nav-creator
-          = link_to(@project.user.display_name, user_path(@project.user))
+          #project_reports.content.hide
+            = render partial: 'project_reports'
+          #project_edit.content.hide
+            = render partial: 'project_edit'
 
-section.row
-  .main
-    #project_content
-      - if policy(@project).update?
-        #project_reports.content.hide
-          = render partial: 'project_reports'
-        #project_edit.content.hide
-          = render partial: 'project_edit'
+        #project_updates.content.hide[data-path=project_updates_path(project_id: @project.id)]
+          - if policy(@project).update?
+            = render template: 'projects/updates/new'
+          .results &nbsp;
+          .clearfix
+          #updates-loading.loading= image_tag "loading.gif"
+        #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
+          - if policy(@project).update?
+            = radio_button_tag(:contribution_state, "available_to_count", checked: true)
+            = label_tag(:contribution_state, t('projects.project_contributions.confirmed'))
+            = radio_button_tag(:contribution_state, "waiting_confirmation")
+            = label_tag(:contribution_state, t('projects.project_contributions.pending'))
+          .results &nbsp;
+          .clearfix
+          #contributions-loading.loading= image_tag "loading.gif"
+        #project_comments.content.hide
+        #project_about.content= render 'project_about'
 
-      #project_updates.content.hide[data-path=project_updates_path(project_id: @project.id)]
-        - if policy(@project).update?
-          = render template: 'projects/updates/new'
-        .results &nbsp;
-        .clearfix
-        #updates-loading.loading= image_tag "loading.gif"
-      #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
-        - if policy(@project).update?
-          = radio_button_tag(:contribution_state, "available_to_count", checked: true)
-          = label_tag(:contribution_state, t('projects.project_contributions.confirmed'))
-          = radio_button_tag(:contribution_state, "waiting_confirmation")
-          = label_tag(:contribution_state, t('projects.project_contributions.pending'))
-        .results &nbsp;
-        .clearfix
-        #contributions-loading.loading= image_tag "loading.gif"
-      #project_comments.content.hide
-      #project_about.content= render 'project_about'
 
-  .sidebar
-    .info
-      #statistics
-        .statistics
-          .item.contributions
-            p= @project.total_contributions
-            em= t('statistics.contributions.subtitle')
-          .item.goal
-            p= @project.display_pledged
-            em= t('statistics.goal.subtitle', total: @project.display_goal).html_safe
-          .item.time
-            - if @project.draft? || @project.rejected?
-              p= @project.online_days
-              em #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
-            - else
-              p= @project.remaining_days
-              em #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
-
-        #condition[class="#{@project.display_status}"]
-          p
-            = t("projects.contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
-        - if @project.online? && !@project.expired?
-          #pledge
+      aside.large-3.columns.sidebar
+        .project-statistics
+          p.project-contributions
+            = @project.total_contributions
+            span = t('projects.show.statistics.contributions')
+          p.project-goal
+            = @project.display_pledged
+            span = t('projects.show.statistics.goal', total: @project.display_goal).html_safe
+          - if @project.draft? || @project.rejected?
+            p.project-days
+              = @project.online_days
+              span #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
+          - else
+            p.project-days
+              = @project.remaining_days
+              span #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+          - if @project.online? && !@project.expired?
             = form_tag(new_project_contribution_path(@project), method: :get, id: 'contribute_project_form') do
-              fieldset
-                = submit_tag t('projects.contribute_project.submit'), disabled: (not @project.online?)
-      #creator_profile
-        h3= t('project_by')
-        .avatar = @project.user.display_image_html width: 80, height: 80
-        .personal_info
-          p.name
-           = link_to @project.user.display_name, user_path(@project.user)
-          #bio
-            p= @project.user.bio
-        #city
-          p.contribution= t('count_contributed_projects', total: @project.user.total_contributed_projects)
-          p.city
+              = submit_tag t('projects.contribute_project.submit'), disabled: (not @project.online?), class: "button action"
+          p.project-status
+            = t("projects.contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
+
+
+        h4.project-creator-title
+          = t('project_by')
+        .project-creator
+          = @project.user.display_image_html width: 80, height: 80
+          p.project-creator-name
+            = link_to @project.user.display_name, user_path(@project.user)
+          p
+            = @project.user.bio
+          p.project-creator-city
             | #{@project.user.address_city}
-      .user_social
-        ul
-          - if @project.user.facebook_link
-            li
-              = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
-          - if @project.user.twitter
-            li
-              = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'twitter'
-          - if @project.user.email
-            li
-              = mail_to @project.user.email, @project.user.email, target: '_blank', class: 'email'
-          - if @project.user.other_link
-            li.other
-              = link_to @project.user.other_link, @project.user.other_link, target: '_blank'
+          p.project-creator-count
+            = t('projects.count_contributed_projects', total: @project.user.total_contributed_projects)
 
-      - if policy(@project).update?
-        .bootstrap-twitter.bootstrap-form
-          .alert.alert-info
-            h4.alert-header= t('.no_rewards_warning_title')
-            p style="margin:0; padding:0;"
+          ul.project-creator-links
+            - if @project.user.facebook_link
+              li
+                = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
+            - if @project.user.twitter
+              li
+                = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'twitter'
+            - if @project.user.email
+              li
+                = mail_to @project.user.email, @project.user.email, target: '_blank', class: 'email'
+
+
+
+
+        - if policy(@project).update?
+          .new-reward
+            h4
+              = t('.no_rewards_warning_title')
+            p
               = t('.no_rewards_warning')
-            br/
             .new_reward_content.hide
-              = image_tag 'loading.gif'
 
-          .clearfix
-          = link_to t('.menu.add_reward'), 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'btn btn-success pull-right show_reward_form'
-          .clearfix
+            = link_to t('.menu.add_reward'), 'javascript:void(0);', data: {target: '.new_reward_content', path: new_project_reward_path(@project)}, class: 'button small negative show_reward_form'
 
-          br/
-          /.skull-modal.new_reward_content.hide
-            .skull-modal-header
-              h3= t('projects.rewards.new_reward')
-              a class='skull-modal-close' href='javascript:void(0);' &times;
-            .skull-modal-body
-              = image_tag 'loading.gif'
-      #rewards[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
-        .reward-loader= image_tag 'loading.gif'
+
+            /.skull-modal.new_reward_content.hide
+              .skull-modal-header
+                h3= t('projects.rewards.new_reward')
+                a class='skull-modal-close' href='javascript:void(0);' &times;
+              .skull-modal-body
+                = image_tag 'loading.gif'
+        ul.rewards-list#rewards[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
+          .reward-loader
+            = image_tag 'loading.gif'
