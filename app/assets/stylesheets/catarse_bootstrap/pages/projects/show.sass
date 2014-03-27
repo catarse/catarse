@@ -2,6 +2,7 @@
 	background: $gray-one
 	border-radius: 3px
 	padding: 1em 2em
+	margin: 2em
 	li
 		margin: 0 0 .5em
 
@@ -46,44 +47,25 @@
 	width: 55%
 
 .project-statistics
-	background: $gray-one
-	border: 1px solid $border-strong
 	form
-		padding: 15px
+		padding: 15px 0
 		clear: left
 	.project-status
-		padding: 15px
-		background: $border-strong
+		padding: 15px 0
 		font-size: em(13px)
 		margin: 0
 
 .project-contributions, .project-goal, .project-days
-	padding: 30px 15px 0
+	padding: 30px 0 0
 	margin: 0
 	float: left
-	font-size: em(27px)
+	font-size: em(35px)
 	font-weight: 700
-	&:before
-		content: ''
-		float: left
-		width: 48px
-		height: 48px
-		vertical-align: top
-		margin: -4px 10px 0 0
 	span
 		display: inline-block
-		width: 140px
-		font-size: 10px
+		width: 100%
+		font-size: 11px
 		text-transform: uppercase
-
-.project-contributions:before
-	background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -148px -170px transparent
-
-.project-goal:before
-	background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -22px -172px transparent
-
-.project-days:before
-	background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -80px -175px transparent
 
 .project-creator-title
 	text-transform: uppercase
@@ -100,11 +82,12 @@
 
 
 .project-creator
-	border-bottom: 1px solid $border-gray
-	margin: 0 0 2em
+	margin: 0 0 4em
 	.avatar_wrapper
 		float: left
 		margin: 0 1em 0 0
+		border-radius: 3px
+		border: 1px solid $blue-one
 	a
 		font-weight: bold
 	p
@@ -142,8 +125,8 @@
 
 .new-reward
 	background: $gray-one
-	border: 1px solid $border-strong
-	padding: 1em
+	border-radius: 4px
+	padding: 1.6em 1em
 	h4
 		margin: 0
 		font-size: 16px
@@ -153,24 +136,60 @@
 
 .rewards-list
 	background: $gray-one
-	border: 1px solid $border-strong
+	border-radius: 4px
 	margin: 2em 0
 	padding: 0
 
 .reward-item
 	border-bottom: 1px solid $border-strong
-	padding: 2em 1.5em
+	padding: 2em 1.5em 2em
 	display: inline-block
 	font-size: 13px
+	p
+		font-size: 1em
+	.reward_deliver_at p, .reward_updated_at p, .in_time_to_confirm p
+		margin: 0
+		font-size: 12px
 	&:hover
-		background: $border-gray
+		background: darken($gray-one, 5%)
+	&:last-child
+		border-bottom: none
+		&:hover
+			border-radius: 0 0 4px 4px
+	&:first-child:hover
+		border-radius: 4px 4px 0 0
 
 .reward-price
 	color: $green
-	font-size: 20px
+	font-size: 15px
 	margin: 0
 
 .reward-bakers
 	font-weight: 700
-	margin: .5em 0 1em
-	font-size: 15px
+	margin: .3em 0 1em
+
+.description_version
+	display: none
+
+.maximum_contributions
+	background: $blue-note
+	padding: 3px 7px
+	font-size: 12px
+	border-radius: 2px
+	text-align: center
+	margin: 12px 0
+	p
+		color: $white
+		font-weight: 700
+		margin: 0
+		span
+			font-weight: normal
+			margin: 0 0 0 6px
+
+.updated_reward
+	font-size: 16px
+	margin-top: 13px
+
+.edit-reward
+	position: absolute
+	right: 30px

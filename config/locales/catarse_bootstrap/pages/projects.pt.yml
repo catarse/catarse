@@ -197,10 +197,10 @@ pt:
       new_reward: "Cadastrar recompensa"
       edit_reward: "Editar recompensa"
       reward_title: "Para %{minimum} ou mais"
-      reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
+      reward_deliver_time: "Estimativa de Entrega: %{estimate}"
       contributions_to_confirm:
-        one: "1 apoio em prazo de confirmação."
-        other: "%{count} apoios em prazo de confirmação."
+        one: "1 apoio em prazo de confirmação"
+        other: "%{count} apoios em prazo de confirmação"
       title: "Apoie e ganhe..."
     send_mail:
       success: "Seu projeto foi enviado com sucesso! Logo entraremos em contato. Muito obrigado!"

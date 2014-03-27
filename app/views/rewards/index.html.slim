@@ -6,29 +6,16 @@
       .hide id="reward#{reward.id}Editor"
         = image_tag 'loading.gif'
 
-        = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(parent, reward)}, class: 'show_reward_form btn btn-mini pull-right btn-primary' do
-            .teste
+        = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(parent, reward)}, class: 'edit-reward show_reward_form' do
+            = 'edit'
 
     h4.reward-price
       = t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
     p.reward-bakers
       = pluralize(reward.contributions.with_state('confirmed').count, t('contribution_singular'), t('contribution_plural'))
+
     p
       = reward.display_description
-
-    - if reward.maximum_contributions
-      .maximum_contributions
-        - if reward.sold_out?
-          p.sold_out= t('reward.sold_out')
-        - else
-          p.limited= t('reward.limited')
-          p.remaining
-            = reward.display_remaining
-      - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count
-      - if in_time_to_confirm > 0
-        .maximum_contributions.in_time_to_confirm
-          .pending= t('projects.rewards.contributions_to_confirm', count: in_time_to_confirm)
-
 
     - if reward.days_to_delivery.present?
       div.reward_deliver_at
@@ -40,8 +27,23 @@
         p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
       - if reward.has_modification?
         div class="description_version rewardVersioning#{reward.id}"
-          p= reward.last_description
-        .maximum_contributions.in_time_to_confirm
+          = reward.last_description
+        .in_time_to_confirm
           .updated_reward
-            button.button.small id="rewardVersioning#{reward.id}"
-              = 'Veja a versão anterior.'
+            = link_to 'Versão anterior', "javascript:void(0);", class: 'button negative small', id: 'rewardVersioning#{reward.id}'
+
+    - if reward.maximum_contributions
+      .maximum_contributions
+        - if reward.sold_out?
+          p
+            = t('reward.sold_out')
+        - else
+          p
+            = t('reward.limited')
+            span
+              = '(' + reward.display_remaining + ')'
+      - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count
+      - if in_time_to_confirm > 0
+        .in_time_to_confirm
+          p
+            = t('projects.rewards.contributions_to_confirm', count: in_time_to_confirm)
