@@ -63,6 +63,7 @@ RSpec.configure do |config|
     DatabaseCleaner.start
     ActionMailer::Base.deliveries.clear
     RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
+    Sidekiq::Testing.fake!
   end
 
   config.after(:each) do

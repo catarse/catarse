@@ -10,8 +10,9 @@ class Reports::ContributionReportsForProjectOwnersController < Reports::BaseCont
     conditions = { project_id: params[:project_id] }
 
     conditions.merge!(reward_id: params[:reward_id]) if params[:reward_id].present?
+    conditions.merge!(project_owner_id: current_user.id) unless current_user.admin
 
-    current_user.projects.
+    super.
       select(%Q{
         reward_description as "#{I18n.t('contribution_report_to_project_owner.reward_description')}",
         confirmed_at as "#{I18n.t('contribution_report_to_project_owner.confirmed_at')}",

@@ -4,7 +4,6 @@ describe Notification do
   let(:contribution){ create(:contribution) }
 
   before do
-    Sidekiq::Testing.fake!
     Notification.unstub(:notify)
     Notification.unstub(:notify_once)
     ActionMailer::Base.deliveries.clear
