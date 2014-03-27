@@ -52,7 +52,7 @@
 
 .tabs-nav
   position: absolute
-  bottom: 9px
+  bottom: 12px
   margin: 0
   padding: 0
   width: $default_grid_max_size
@@ -60,17 +60,18 @@
     display: inline-block
   a
     color: $blue-one
-    padding: 11px 1.2em
+    padding: 14px 1em
     &.selected
       background: #ffffff
       border-top: 1px solid $border-gray
       border-left: 1px solid $border-gray
       border-right: 1px solid $border-gray
+      border-radius: 3px 3px 0 0
+      font-weight: 700
 
   .tabs-nav-creator
     float: right
     a
-      color: $orange
       &:before
         content: ''
         float: left
@@ -83,7 +84,6 @@
   .tabs-nav-category
     float: right
     a
-      color: $orange
       &:before
         content: ''
         float: left
