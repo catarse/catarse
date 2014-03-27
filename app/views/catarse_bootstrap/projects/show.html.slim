@@ -32,36 +32,27 @@ section.project-show
         h2.project-title
           = @project.name
 
-        nav
-          ul.tabs-nav
-            li
-              = link_to '#about', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
+        nav.tabs-nav
+          = link_to '#about', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
                 = t('.menu.about')
-            li
-              = link_to '#updates', 'id' => 'updates_link', 'data-target' => '#project_updates' do
-                = t('.menu.updates')
-                span.count=" (#{@updates_count})"
-            li
-              = link_to '#contributions', 'id' => 'contributions_link', 'data-target' => '#project_contributions' do
-                = t('.menu.contributions')
-                span.count=" (#{@project.total_contributions})"
-            li
-              = link_to '#comments', 'id' => 'comments_link', 'data-target' => '#project_comments' do
-                = t('.menu.comments')
-                | &nbsp; (
-                fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}"
-                | )
-            - if policy(@project).update?
-              li
-                = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do
-                  = t('.menu.edit')
-            li
-              = link_to '#reports', 'id' => 'reports_link', 'data-target' => '#project_reports' do
-                = t('.menu.reports')
-            li.tabs-nav-category
-              = link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"))
-            li.tabs-nav-creator
-              = link_to(@project.user.display_name, user_path(@project.user))
+          = link_to '#updates', 'id' => 'updates_link', 'data-target' => '#project_updates' do
+            = t('.menu.updates')
+            span.count=" (#{@updates_count})"
+          = link_to '#contributions', 'id' => 'contributions_link', 'data-target' => '#project_contributions' do
+            = t('.menu.contributions')
+            span.count=" (#{@project.total_contributions})"
+          = link_to '#comments', 'id' => 'comments_link', 'data-target' => '#project_comments' do
+            = t('.menu.comments')
+            | &nbsp; (
+            fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}"
+            | )
+          - if policy(@project).update?
+            = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do
+                = t('.menu.edit')
+          = link_to '#reports', 'id' => 'reports_link', 'data-target' => '#project_reports' do
+              = t('.menu.reports')
+          = link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'tabs-nav-category')
+          = link_to(@project.user.display_name, user_path(@project.user), class: 'tabs-nav-creator')
 
     section.row.project-content
       section.large-9.columns
