@@ -9,6 +9,7 @@ App.addChild('Project', _.extend({
   activate: function(){
     this.$warning = this.$('#project_warning_text');
     this.$embed= this.$('#project_embed');
+    this.$tabs = this.$('ul.tabs-nav');
     this.route('about');
     this.route('updates');
     this.route('contributions');
@@ -29,7 +30,7 @@ App.addChild('Project', _.extend({
   },
 
   followRoute: function(name){
-    var $tab = this.$('ul.tabs-nav a[href="' + window.location.hash + '"]');
+    var $tab = this.$tabs.find('a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
     }
