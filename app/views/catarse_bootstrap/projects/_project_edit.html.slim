@@ -1,32 +1,37 @@
-.bootstrap-twitter
-  .alert.alert-info
-    p
-      = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{Configuration[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
-.bootstrap-form
-  = semantic_form_for @project do |form|
-    = form.inputs do
-      - if current_user.admin
-        = form.input :user_id
-        = form.input :permalink, as: :string
-      - if policy(@project).permitted_for?(:name, :update)
-        = form.input :name, as: :string, required: false
-      - if policy(@project).permitted_for?(:headline, :update)
-        = form.input :headline, as: :string, required: false
-      - if policy(@project).permitted_for?(:category_id, :update)
-        = form.input :category, as: :select, required: false
-      - if policy(@project).permitted_for?(:video_url, :update)
-        = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
-      - if policy(@project).permitted_for?(:uploaded_image, :update)
-        = form.input :uploaded_image, as: :file, required: false,
-          hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') )
-      - if policy(@project).permitted_for?(:online_days, :update)
-        = form.input :online_days, as: :number, required: false
-      - if policy(@project).permitted_for?(:goal, :update)
-        = form.input :goal, as: :number, required: false, hint: t('formtastic.hints.project.goal').html_safe
-      - if policy(@project).permitted_for?(:about, :update)
-        = form.input :about, required: false
-        = render 'formatting_tips'
+p
+  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{Configuration[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
 
-      .clearfix
-      .form-actions.bootstrap-twitter
-        = form.submit class: 'btn'
+= simple_form_for @project, html: { class: 'project-form' } do |form|
+  - if current_user.admin
+    = form.input :user_id
+    = form.input :permalink, as: :string, label: t('submit_project.permalink'), input_html: { class: 'project-edit-permalink' }, hint: t('submit_project.permalink_placeholder')
+
+  - if policy(@project).permitted_for?(:name, :update)
+    = form.input :name, as: :string, label: t('submit_project.name')
+
+  - if policy(@project).permitted_for?(:headline, :update)
+    = form.input :headline, as: :string, label: t('submit_project.headline')
+
+  - if policy(@project).permitted_for?(:category_id, :update)
+    = form.input :category, as: :select, label: t('submit_project.category_id')
+
+  - if policy(@project).permitted_for?(:video_url, :update)
+    = form.input :video_url, as: :string, label: t('submit_project.video_url')
+    p = t('submit_project.video_url_hint')
+
+  - if policy(@project).permitted_for?(:uploaded_image, :update)
+    = form.input :uploaded_image, as: :file,
+      hint: (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') )
+
+  - if policy(@project).permitted_for?(:online_days, :update)
+    = form.input :online_days, label: t('submit_project.online_days')
+
+  - if policy(@project).permitted_for?(:goal, :update)
+    = form.input :goal, label: t('submit_project.goal')
+    p = t('submit_project.goal_hint').html_safe
+
+  - if policy(@project).permitted_for?(:about, :update)
+    = form.input :about, label: t('submit_project.about')
+    = render 'formatting_tips'
+
+    = form.submit class: 'button medium action'
