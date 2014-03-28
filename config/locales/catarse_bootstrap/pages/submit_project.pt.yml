@@ -6,7 +6,7 @@ pt:
 
     permalink: "Url do projeto"
     permalink_hint: "URL é o endereço do seu projeto, deixe-a simples. Tente não usar underline, hífen e etc."
-    permalink_over: "%{channel}.catarse.me/"
+    channel_permalink_placeholder: "%{channel}.catarse.me/"
 
     name: "Nome do projeto"
     name_hint: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo. Não ultrapasse 50 caracteres."
