@@ -1,30 +1,32 @@
 - if policy(@project).update?
-  br
-  #project_warning.bootstrap-alert
-    .alert.alert-warning
-      i Existem apoios em prazo de confirmação para o seu projeto
-      #toggle_warning
-        = link_to '(minimizar informações)', '#'
-      #project_warning_text
-        br/
-        br/
-        | Dentro de 3 dias úteis computaremos os pagamentos pendentes e saberemos exatamente quanto você consegiu arrecadar e se sua meta foi atingida!
-        br/
-        br/
-        strong Caso a meta tenha sido atingida repassaremos o dinheiro pra você!
-        br/
-        | Confira: #{link_to 'Como será feito o repasse?', 'http://suporte.catarse.me/knowledgebase/articles/161090-como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '_blank'}
-        br/
-        | Lembre-se: #{link_to 'Verificar sua conta MoIP para receber o valor arrecadado', 'http://suporte.catarse.me/knowledgebase/articles/179127-verificar-sua-conta-moip', target: '__blank'}
-        br/
-        br/
-        strong Caso a meta não tenha sido atingida devolvemos o dinheiro aos apoiadores!
-        br/
-        | Nós enviaremos um e-mail aos seus apoiadores informando como eles podem pedir o reembolso.
-        br/
-        | Cofira: #{link_to 'Regras e Funcionamento dos Reembolsos', 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos', target: '_blank'}
-        br/
-        br/
-        strong Solução de problemas:
-        br/
-        = link_to 'Socorro! | Erros nos relatórios de apoiadores', 'http://suporte.catarse.me/knowledgebase/articles/274781-socorro-erros-no-relat%C3%B3rio-planilha-de-apoiador', target: '_blank'
+.project-warning
+    h2
+      = 'Existem apoios em prazo de confirmação para o seu projeto'
+
+  #project_warning_text
+    .accordion
+        h4
+          = 'Importante'
+        ul.accordion-content
+          li
+            p
+              = 'Dentro de 3 dias úteis computaremos os pagamentos pendentes e saberemos exatamente quanto você consegiu arrecadar e se sua meta foi atingida!'
+            p
+              = 'Caso a meta tenha sido atingida repassaremos o dinheiro pra você!'
+            p
+              = "Confira: #{link_to 'Como será feito o repasse?', 'http://suporte.catarse.me/knowledgebase/articles/161090-como-ser%C3%A1-feito-o-repasse-do-dinheiro-', target: '_blank'}"
+            p
+              = "Lembre-se: #{link_to 'Verificar sua conta MoIP para receber o valor arrecadado', 'http://suporte.catarse.me/knowledgebase/articles/179127-verificar-sua-conta-moip', target: '__blank'}"
+            p
+              = "Caso a meta não tenha sido atingida devolvemos o dinheiro aos apoiadores!"
+            p
+              = "Nós enviaremos um e-mail aos seus apoiadores informando como eles podem pedir o reembolso."
+            p
+              = "Cofira: #{link_to 'Regras e Funcionamento dos Reembolsos', 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos', target: '_blank'}"
+
+    .accordion
+        h4
+          = 'Soluções de problemas'
+        ul.accordion-content.warning-links
+          li
+            = link_to 'Socorro! | Erros nos relatórios de apoiadores', 'http://suporte.catarse.me/knowledgebase/articles/274781-socorro-erros-no-relat%C3%B3rio-planilha-de-apoiador', target: '_blank'

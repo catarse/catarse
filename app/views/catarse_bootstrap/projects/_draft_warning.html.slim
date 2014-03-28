@@ -1,41 +1,40 @@
-br
 - if policy(@project).update?
-  #project_warning.bootstrap-alert
-    .alert.alert-warning
-      i Bem-vindo ao Rascunho!
-      #toggle_warning
-        = link_to '(minimizar informações)', '#'
-      #project_warning_text
-        br/
-        br/
-        | Para editar a página do seu projeto procure abaixo pela <strong>aba de EDIÇÃO</strong>, realize todas as alterações no formulário e clique em <strong>ATUALIZAR INFORMAÇÕES</strong>.
-        br/
-        | As recompensas podem ser adicionadas diretamente na coluna onde ficam expostas, para isso basta clicar em <strong>ADICIONAR RECOMPENSA</strong>. 
-        br/
-        br/
-        strong Importante!
-        br/
-        | Seu projeto só será avaliado pela nossa equipe quando você clicar no botão <strong>ENVIAR PROJETO</strong>. Iremos analisar a consistência do seu projeto apenas com base nas informações presentes no seu rascunho, 
-        | por isso seja bastante claro e objetivo na construção desta página. O <strong>vídeo</strong> não é obrigatório para a avaliação, apenas para o projeto ir ao ar. 
-        | Caso você já o tenha pronto, disponibilize pra gente. Quanto mais informação para o nosso atendimento e avaliação, melhor. Não deixe de estudar os 
-        | artigos da nossa #{link_to 'Central de Suporte!', ::Configuration[:support_forum], target: '__blank'} Lá você pode se informar sobre a maioria dos processos que ocorrem antes, durante e depois de uma campanha no Catarse!
-        br/
-        br/
-        strong Solução de problemas:
-        br/
-        | Confira: #{link_to 'Realizadores - Primeiros Passos', 'http://suporte.catarse.me/knowledgebase/topics/25764-realizadores-primeiros-passos-pr%C3%A9-projeto-', target: '__blank'}
-      br/
-      br/
-      .bootstrap-twitter
-        = link_to 'Enviar projeto', send_to_analysis_project_path(@project), class: 'btn btn-large'
+  .project-warning
+    h2
+      = 'Bem-vindo ao Rascunho!'
+
+    #project_warning_text
+      p
+        = 'Para editar a página do seu projeto procure abaixo pela <strong>aba de EDIÇÃO</strong>, realize todas as alterações no formulário e clique em <strong>ATUALIZAR INFORMAÇÕES</strong>.'.html_safe
+      p
+        = 'As recompensas podem ser adicionadas diretamente na coluna onde ficam expostas, para isso basta clicar em <strong>ADICIONAR RECOMPENSA</strong>.'.html_safe
+      .accordion
+        h4
+          = 'Importante'
+        ul.accordion-content
+          li
+            p
+              = 'Seu projeto só será avaliado pela nossa equipe quando você clicar no botão <strong>ENVIAR PROJETO</strong>. Iremos analisar a consistência do seu projeto apenas com base nas informações presentes no seu rascunho, por isso seja bastante claro e objetivo na construção desta página. O <strong>vídeo</strong> não é obrigatório para a avaliação, apenas para o projeto ir ao ar.'.html_safe
+            p
+              = "Caso você já o tenha pronto, disponibilize pra gente. Quanto mais informação para o nosso atendimento e avaliação, melhor. Não deixe de estudar os artigos da nossa #{link_to 'Central de Suporte!', ::Configuration[:support_forum], target: '__blank'} Lá você pode se informar sobre a maioria dos processos que ocorrem antes, durante e depois de uma campanha no Catarse!"
+
+      .accordion
+        h4
+          = 'Soluções de problemas'
+        ul.accordion-content.warning-links
+          li
+            p
+              = "Confira: #{link_to 'Realizadores - Primeiros Passos', 'http://suporte.catarse.me/knowledgebase/topics/25764-realizadores-primeiros-passos-pr%C3%A9-projeto-', target: '__blank'}"
+
+      = link_to 'Enviar projeto', send_to_analysis_project_path(@project), class: 'button medium action'
+
 - else
-  #project_warning.bootstrap-alert
-    .alert.alert-warning
-      i Atenção! Este projeto ainda está em rascunho.
-      #toggle_warning
-        = link_to '(minimizar informações)', '#'
-      #project_warning_text
-        br/
-        br/
-        | Este projeto ainda não está apto a receber contribuições financeiras e as informações dessa página não são definitivas. 
-        | Se você quer dar uma força desde já, deixe seu feedback para o(a) realizador(a) na <strong>Aba de Comentários</strong>.
+  .project-warning
+    h2
+      = 'Atenção! Este projeto ainda está em rascunho.'
+
+    #project_warning_text
+      p
+        = 'Este projeto ainda não está apto a receber contribuições financeiras e as informações dessa página não são definitivas.'
+      p
+        = 'Se você quer dar uma força desde já, deixe seu feedback para o(a) realizador(a) na <strong>Aba de Comentários</strong>.'.html_safe
