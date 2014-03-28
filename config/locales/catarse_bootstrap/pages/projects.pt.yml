@@ -186,11 +186,11 @@ pt:
       with_city: "Um projeto de %{category_name} por %{author} em %{city}"
     project_updates:
       empty: "Este projeto ainda não teve novidades. Aguarde =D"
-      submit: "Enviar Novidade"
+      submit: "Enviar novidade"
       comment: "Texto da sua Novidade"
       exclusive: "Visível apenas para apoiadores"
       title: "Título da sua Novidade"
-      destroy: "Remover Novidade"
+      destroy: "Remover novidade"
       destroy_confirmation: "Deseja remover esta novidade?"
       warning: 'Lembre-se que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo.'
     rewards:
