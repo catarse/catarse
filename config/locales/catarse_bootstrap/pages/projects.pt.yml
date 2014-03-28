@@ -192,7 +192,7 @@ pt:
       title: "Título da sua Novidade"
       destroy: "Remover Novidade"
       destroy_confirmation: "Deseja remover esta novidade?"
-      warning: 'Lembrando que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo.'
+      warning: 'Lembre-se que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo.'
     rewards:
       new_reward: "Cadastrar recompensa"
       edit_reward: "Editar recompensa"
