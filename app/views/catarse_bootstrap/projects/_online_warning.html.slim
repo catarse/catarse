@@ -1,31 +1,32 @@
 - if policy(@project).update?
   .project-warning
-      h2
-        = 'Seu projeto está no ar!'
-      #toggle_warning
-        = link_to '(minimizar informações)', '#'
+    h2
+      = 'Projeto no ar'
 
-      #project_warning_text
-        h4
-          = 'Importante!'
-        ul
-          li
-            = 'As contribuições podem demorar até 3 dias úteis para serem confirmadas.'
-          li
-            = 'Seu prazo encerra as 23h59 do último dia de captação.'
-          li
-            = 'Para falar diretamente com seus apoiadores você pode fazer postagens na <strong>aba Novidades</strong>. Tudo que é postado ali é enviado para o e-mail dos seus apoiadores.'
-          li
-            = "Pela <strong>#{link_to 'aba Relatórios', project_by_slug_path(permalink: @project.permalink, anchor: 'reports')}</strong> você pode baixar planilhas com informações sobre seus apoiadores como: Recompensa | Valor do apoio | Data de confirmação do apoio | Nome | E-mail | Endereço.".html_safe
+    #project_warning_text
+      h4
+        = 'Importante'
+      ul
+        li
+          = 'As contribuições podem demorar até 3 dias úteis para serem confirmadas.'
+        li
+          = 'Seu prazo encerra as 23h59 do último dia de captação.'
+        li
+          = 'Para falar diretamente com seus apoiadores você pode fazer postagens na <strong>aba novidades</strong>. Tudo que é postado ali é enviado para o e-mail dos seus apoiadores.'.html_safe
+        li
+          = "Pela <strong>#{link_to 'aba relatórios', project_by_slug_path(permalink: @project.permalink, anchor: 'reports')}</strong> você pode baixar planilhas com informações sobre seus apoiadores como: Recompensa | Valor do apoio | Data de confirmação do apoio | Nome | E-mail | Endereço.".html_safe
 
-        h4
-          = 'Soluções de problemas:'
-        ul
-          li
-            = link_to 'Como eu sei se meu projeto está caminhando bem?', 'http://suporte.catarse.me/knowledgebase/articles/161084-como-eu-sei-se-meu-projeto-est%C3%A1-caminhando-bem-', target: '__blank'
-          li
-            = link_to 'Como são definidos os destaques para projetos no site', 'http://suporte.catarse.me/knowledgebase/articles/161081-como-s%C3%A3o-definidos-os-projetos-em-destaque-no-site', target: '__blank'
-          li
-            = link_to 'Socorro! | Erros nos relatórios de apoiadores', 'http://suporte.catarse.me/knowledgebase/articles/274781-socorro-erros-no-relat%C3%B3rio-planilha-de-apoiador', target: '__blank'
-          li
-            = link_to 'Socorro! | As pessoas estão com dificuldade para apoiar meu projeto', 'http://suporte.catarse.me/knowledgebase/articles/274798-socorro-problema-erro-bug-ao-apoiar-projeto', target: '__blank'
+      h4
+        = 'Soluções de problemas'
+      ul.warning-links
+        li
+          = link_to 'Como eu sei se meu projeto está caminhando bem?', 'http://suporte.catarse.me/knowledgebase/articles/161084-como-eu-sei-se-meu-projeto-est%C3%A1-caminhando-bem-', target: '__blank'
+        li
+          = link_to 'Como são definidos os destaques para projetos no site', 'http://suporte.catarse.me/knowledgebase/articles/161081-como-s%C3%A3o-definidos-os-projetos-em-destaque-no-site', target: '__blank'
+        li
+          = link_to 'Socorro! | Erros nos relatórios de apoiadores', 'http://suporte.catarse.me/knowledgebase/articles/274781-socorro-erros-no-relat%C3%B3rio-planilha-de-apoiador', target: '__blank'
+        li
+          = link_to 'Socorro! | As pessoas estão com dificuldade para apoiar meu projeto', 'http://suporte.catarse.me/knowledgebase/articles/274798-socorro-problema-erro-bug-ao-apoiar-projeto', target: '__blank'
+
+  button.toggle-warning
+    = '×'

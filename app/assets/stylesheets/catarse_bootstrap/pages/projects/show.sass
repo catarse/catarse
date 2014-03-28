@@ -1,10 +1,78 @@
 .project-warning
-	background: $gray-one
-	border-radius: 3px
+	background: $blue-one
 	padding: 1em 2em
-	margin: 2em
+	width: 320px
+	position: fixed
+	top: 0
+	left: 0
+	-moz-box-sizing: border-box
+	-webkit-box-sizing: border-box
+	box-sizing: border-box
+	height: 100%
+	overflow: scroll
+	z-index: 100
+	h2
+		font-size: 16px
+		color: $green
+		font-weight: 500
+	li,p, h4
+		color: $gray-two
+	ul
+		padding: 0
 	li
 		margin: 0 0 .5em
+		font-size: 13px
+		list-style: none
+	.warning-links
+		li
+			margin-bottom: 1.5em
+	h4
+		color: white
+		font-size: 16px
+		font-weight: 500
+		margin-top: 2em
+	a
+		color: $blue-note
+
+.project-warning-hide
+	display: none
+
+.toggle-warning
+	position: fixed
+	top: 30px
+	left: 270px
+	z-index: 200
+	background: lighten($blue-one, 10%)
+	display: inline-block
+	width: 32px
+	height: 32px
+	border: none
+	border-radius: 3px
+	color: white
+	text-align: center
+	line-height: 26px
+	font-weight: 700
+	font-size: 1.3em
+	padding-bottom: 4px
+	outline: none
+	&:hover
+		background-color: lighten($blue-one, 20%)
+
+.open-warning
+	background: $blue-one url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -163px -74px
+	text-indent: -9999px
+	left: 20px
+	bottom: 30px
+	&:hover
+		background-color: lighten($blue-one, 10%)
+	&:after
+		content: 'Mostrar informações'
+		font-size: 13px
+		color: $blue-one
+		background: $gray-one
+		border: 1px solid $border-gray
+		opacity: 0.9
+		display: inline-block
 
 .project-title
 	font-size: em(24px)

@@ -21,11 +21,10 @@
 
 = render 'shared/header'
 
-section.project-show
-  section.row
+.warning
+  = render @project.state_warning_template
 
-    = render @project.state_warning_template
-
+section.project-show.with-warning
   section
     header.line-box-with-tabs
       .row

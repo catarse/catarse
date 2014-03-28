@@ -17,14 +17,9 @@ App.addChild('Project', _.extend({
     this.route('reports');
   },
 
-  toggleWarning: function(){
-    this.$warning.slideToggle('slow');
-    return false;
-  },
-
   toggleEmbed: function(){
     this.loadEmbed();
-    this.$embed.slideToggle('slow');
+    this.$embed.slideToggle('fast');
     return false;
   },
 

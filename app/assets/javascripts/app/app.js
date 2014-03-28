@@ -15,6 +15,7 @@ var App = window.App = Skull.View.extend({
     this.$dropdown = this.$('.dropdown.user');
     this.flash();
     this.notices();
+    this.warning();
     Backbone.history.start({pushState: false});
     this.$('input[data-mask]').each(this.maskElement);
   },
@@ -43,6 +44,14 @@ var App = window.App = Skull.View.extend({
   toggleMenu: function(){
     this.$dropdown.slideToggle('fast');
     return false;
+  },
+
+  warning: function(){
+    var that = this;
+    $('.toggle-warning').click( function() {
+      $('.project-warning').toggleClass('project-warning-hide');
+      $('.toggle-warning').toggleClass('open-warning');
+    })
   }
 });
 
