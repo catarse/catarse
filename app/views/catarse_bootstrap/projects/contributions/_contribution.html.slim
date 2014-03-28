@@ -1,42 +1,39 @@
 .contribution
   - if contribution.anonymous
     img src="/assets/user.png" class="contribution_avatar"
-    .contribution_info
-      p#text
-        em.anon=" #{t('.anonymous_contribution')}"
-      p#confirmed
-        = contribution.confirmed_at
-      p#contributed= t('.anonymous_description')
+    p
+      = t('.anonymous_contribution')
+    p
+      = contribution.confirmed_at
+    p
+      = t('.anonymous_description')
   - else
-    a href=user_path(contribution.user)
+    = link_to user_path(contribution.user)
       img src=contribution.user.display_image class="contribution_avatar"
-    .contribution_info
-      p#text
-        a href=user_path(contribution.user)
-         = contribution.user.short_name
-      p#confirmed
-        = contribution.confirmed? ? contribution.confirmed_at : contribution.created_at
-      p#contributed
-        = contribution.user.contributions_text
+    p
+      = link_to user_path(contribution.user)
+        = contribution.user.medium_name
+    p.contribution-date
+      = contribution.confirmed? ? contribution.confirmed_at.to_formatted_s(:db) : contribution.created_at.to_formatted_s(:db)
+    p
+      = contribution.user.contributions_text
+
   - if current_user and (current_user == @project.user or current_user.admin)
-    .reward
-      =
-      .value = contribution.value
-      - if contribution.reward
-        .user_reward
+    - if contribution.reward
+        p
           = contribution.reward.display_minimum
-          |  -
-          = contribution.reward.medium_description
-      - else
-        | &nbsp;
+          |  - 
+          = contribution.reward.short_description
+    - else
+      p
         = t('.no_reward')
+
+    p.contribuiton-value
+      = contribution.display_value
+      |  · 
       - if contribution.user.email
-        .user_email = contribution.user.email
+          = mail_to contribution.user.email
       - else
-        | &nbsp;
         = t('not_informed')
-      |.
 
-  .clear
-
-
+    

@@ -70,9 +70,9 @@ section.project-show.with-warning
         #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?
             = radio_button_tag(:contribution_state, "available_to_count", checked: true)
-            = label_tag(:contribution_state, t('projects.project_contributions.confirmed'))
+            = label_tag(:contribution_state, t('projects.project_contributions.confirmed'), class: "contribution-radio")
             = radio_button_tag(:contribution_state, "waiting_confirmation")
-            = label_tag(:contribution_state, t('projects.project_contributions.pending'))
+            = label_tag(:contribution_state, t('projects.project_contributions.pending'), class: "contribution-radio")
           .results &nbsp;
           .clearfix
           #contributions-loading.loading= image_tag "loading.gif"
