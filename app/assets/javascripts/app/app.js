@@ -54,6 +54,7 @@ var App = window.App = Skull.View.extend({
     });
     $('.accordion-content').toggle;
     $('.accordion h4').click(function() {
+      $(this).toggleClass('opened');
       $(this).parent().find('.accordion-content').slideToggle("fast");
     });
   }
