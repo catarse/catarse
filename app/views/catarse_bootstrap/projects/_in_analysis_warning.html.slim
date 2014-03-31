@@ -4,7 +4,7 @@
 
     #project_warning_text
       p
-        = 'Estamos avaliando as informações do seu rascunho, entraremos em contato em até 4 dias úteis =)'
+        = 'Estamos avaliando as informações do seu rascunho, entraremos em contato em até 4 dias úteis.'
       p
         = "Lembre-se de preencher as informações do #{link_to 'seu perfil', user_path(@project.user)} no Catarse".html_safe
 
@@ -16,11 +16,11 @@
             = link_to 'Socorro! | Já passaram 4 dias úteis e não tive noticias da curadoria, o que fazer?', 'http://suporte.catarse.me/knowledgebase/articles/274766-socorro-j%C3%A1-mandei-h%C3%A1-dois-dias-%C3%BAteis-e-a-curado', target: '__blank'
 - else
   .project-warning
-    h2 = 'Atenção! Este projeto ainda não está no ar! O Realizador responsável está fazendo ajustes!'
+    h2 = 'Atenção! Este projeto ainda<br> não está no ar!'.html_safe
 
     #project_warning_text
       p
-        = 'Aproveite para dar uma olhada na página e deixe seu feedback para o(a) realizador(a) ali na <strong>Aba Comentários</strong>. Ajude a melhorar o projeto com a sua opinião!'
+        = "O Realizador responsável está fazendo ajustes. Aproveite para dar uma olhada na página e deixe seu feedback para o(a) realizador(a) ali na aba <strong>#{link_to 'COMENTÁRIOS', project_by_slug_path(permalink: @project.permalink, anchor: 'comments')}</strong>. Ajude a melhorar o projeto com a sua opinião!".html_safe
 
 button.toggle-warning
   = '×'
