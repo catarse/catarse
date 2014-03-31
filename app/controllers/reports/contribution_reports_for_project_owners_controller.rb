@@ -10,6 +10,7 @@ class Reports::ContributionReportsForProjectOwnersController < Reports::BaseCont
     conditions = { project_id: params[:project_id] }
 
     conditions.merge!(reward_id: params[:reward_id]) if params[:reward_id].present?
+    conditions.merge!(state: params[:state]) if params[:state].present?
     conditions.merge!(project_owner_id: current_user.id) unless current_user.admin
 
     super.
@@ -27,7 +28,7 @@ class Reports::ContributionReportsForProjectOwnersController < Reports::BaseCont
         address_number as "#{I18n.t('contribution_report_to_project_owner.address_number')}",
         neighbourhood as "#{I18n.t('contribution_report_to_project_owner.address_neighbourhood')}",
         city as "#{I18n.t('contribution_report_to_project_owner.address_city')}",
-        state as "#{I18n.t('contribution_report_to_project_owner.address_state')}",
+        address_state as "#{I18n.t('contribution_report_to_project_owner.address_state')}",
         zip_code as "#{I18n.t('contribution_report_to_project_owner.address_zip_code')}",
         CASE WHEN anonymous='t' THEN '#{I18n.t('yes')}'
             WHEN anonymous='f' THEN '#{I18n.t('no')}'
