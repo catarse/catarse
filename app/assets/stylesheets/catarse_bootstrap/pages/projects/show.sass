@@ -1,6 +1,6 @@
 .project-warning
 	background: $blue-one
-	padding: 1em 2em
+	padding: 5.5em 2em
 	width: 320px
 	position: fixed
 	top: 0
@@ -15,14 +15,22 @@
 		font-size: 16px
 		color: $green
 		font-weight: 500
-		margin: 1em 0 2em
+		position: fixed
+		top: 0
+		background: $blue-one
+		padding: 2em 0
+		width: 320px
+		margin: 0
+		z-index: 300
+
 	li,p, h4
 		color: $gray-two
+	p
+		font-size: 13px
 	ul
 		padding: 0
 	li
 		margin: 0 0 .5em
-		font-size: 13px
 		list-style: none
 	.accordion-content
 		display: none
@@ -49,9 +57,18 @@
 			height: 16px
 	a
 		color: $blue-note
+	.submit-project
+		width: 320px
+		padding: 2em
+		background: $blue-one
 
 .project-warning-hide
 	display: none
+
+.submit-project
+	position: fixed
+	bottom: 0
+	left: 0
 
 .toggle-warning
 	position: fixed
@@ -140,6 +157,7 @@
 		padding: 15px 0
 		font-size: em(13px)
 		margin: 0
+		clear: left
 
 .project-contributions, .project-goal, .project-days
 	padding: 30px 0 0

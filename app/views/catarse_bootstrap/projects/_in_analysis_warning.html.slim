@@ -1,28 +1,26 @@
-br
 - if policy(@project).update?
-  #project_warning.bootstrap-alert
-    .alert.alert-warning
-      i Seu projeto está em análise.
-      #toggle_warning
-        = link_to '(minimizar informações)', '#'
-      #project_warning_text
-        br/
-        br/
-        | Estamos avaliando as informações do seu rascunho, entraremos em contato em até 4 dias úteis =) 
-        br/
-        | Lembre-se de preencher as informações do #{link_to 'seu perfil', user_path(@project.user)} no Catarse
-        br/
-        br/
-        strong Solução de problemas:
-        br/
-        = link_to 'Socorro! | Já passaram 4 dias úteis e não tive noticias da curadoria, o que fazer?', 'http://suporte.catarse.me/knowledgebase/articles/274766-socorro-j%C3%A1-mandei-h%C3%A1-dois-dias-%C3%BAteis-e-a-curado', target: '__blank'
+  .project-warning
+    h2 = 'Projeto em análise'
+
+    #project_warning_text
+      p
+        = 'Estamos avaliando as informações do seu rascunho, entraremos em contato em até 4 dias úteis =)'
+      p
+        = "Lembre-se de preencher as informações do #{link_to 'seu perfil', user_path(@project.user)} no Catarse".html_safe
+
+      .accordion
+        h4
+          = 'Soluções de problemas'
+        ul.accordion-content.warning-links
+          li
+            = link_to 'Socorro! | Já passaram 4 dias úteis e não tive noticias da curadoria, o que fazer?', 'http://suporte.catarse.me/knowledgebase/articles/274766-socorro-j%C3%A1-mandei-h%C3%A1-dois-dias-%C3%BAteis-e-a-curado', target: '__blank'
 - else
-  #project_warning.bootstrap-alert
-    .alert.alert-warning
-      i Atenção! Este projeto ainda não está no ar! O Realizador responsável está fazendo ajustes! 
-      #toggle_warning
-        = link_to '(minimizar informações)', '#'
-      #project_warning_text
-        br/
-        br/
-        | Aproveite para dar uma olhada na página e deixe seu feedback para o(a) realizador(a) ali na <strong>Aba Comentários</strong>. Ajude a melhorar o projeto com a sua opinião! 
+  .project-warning
+    h2 = 'Atenção! Este projeto ainda não está no ar! O Realizador responsável está fazendo ajustes!'
+
+    #project_warning_text
+      p
+        = 'Aproveite para dar uma olhada na página e deixe seu feedback para o(a) realizador(a) ali na <strong>Aba Comentários</strong>. Ajude a melhorar o projeto com a sua opinião!'
+
+button.toggle-warning
+  = '×'
