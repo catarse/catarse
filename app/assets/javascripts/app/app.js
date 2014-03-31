@@ -52,6 +52,7 @@ var App = window.App = Skull.View.extend({
       $('.project-warning').toggleClass('project-warning-hide');
       $('.toggle-warning').toggleClass('open-warning');
     });
+    $('.accordion-content').toggle;
     $('.accordion h4').click(function() {
       $(this).parent().find('.accordion-content').slideToggle("fast");
     });
