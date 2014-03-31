@@ -5,13 +5,12 @@
 .row
   .large-5.large-centered.columns
     .box.login-box.animated.fadeIn
-      h2.text-center= t 'pages.sign_up.titles.header'
+      h1.text-center= t 'pages.sign_up.titles.header'
       p.text-center.register_link
         = t 'pages.sign_up.have_account_html', link: link_to(t('pages.sign_up.links.login'), new_user_session_path)
-      hr
 
       .large-11.columns.large-centered
-        = link_to t('pages.sign_up.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-12', 'columns']
+        = link_to t('pages.sign_up.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, :medium, 'large-12', 'columns']
 
         .separator
           p
@@ -34,9 +33,8 @@
               = check_box_tag :show_password
               = label_tag :show_password, t('pages.sign_up.form.labels.show_password')
 
-          = form.input :newsletter, as: :boolean, input_html: { checked: true }, label: t('pages.sign_up.form.labels.newsletter'), wrapper_html: { class: 'newsletter' }
+          = form.input :newsletter, as: :boolean, input_html: { checked: true }, label: t('pages.sign_up.form.labels.newsletter'), wrapper_html: { class: 'enter-newsletter' }
 
-          .large-10.columns.large-centered
-            = form.submit t('pages.sign_up.form.inputs.submit'), class: 'button action'
+          = form.submit t('pages.sign_up.form.inputs.submit'), class: 'button action medium'
 
       .clearfix
