@@ -3,17 +3,20 @@ p
 
 = simple_form_for @project, html: { class: 'project-form' } do |form|
   - if current_user.admin
-    = form.input :user_id
-    = form.input :permalink, as: :string, label: t('submit_project.permalink'), input_html: { class: 'project-edit-permalink' }, hint: t('submit_project.permalink_placeholder')
+    = form.input :user_id, as: :hidden
+    = form.input :permalink, as: :hidden
 
   - if policy(@project).permitted_for?(:name, :update)
     = form.input :name, as: :string, label: t('submit_project.name')
+    p = t('submit_project.name_hint')
 
   - if policy(@project).permitted_for?(:headline, :update)
     = form.input :headline, as: :string, label: t('submit_project.headline')
+    p = t('submit_project.headline_hint')
 
   - if policy(@project).permitted_for?(:category_id, :update)
-    = form.input :category, as: :select, label: t('submit_project.category_id')
+    = form.input :category, as: :select, collection: Category.array, label: t('submit_project.category_id')
+    p = t('submit_project.category_id_hint', href: explore_url(subdomain: nil)).html_safe
 
   - if policy(@project).permitted_for?(:video_url, :update)
     = form.input :video_url, as: :string, label: t('submit_project.video_url')
@@ -25,6 +28,7 @@ p
 
   - if policy(@project).permitted_for?(:online_days, :update)
     = form.input :online_days, label: t('submit_project.online_days')
+    p = t('submit_project.online_days_hint')
 
   - if policy(@project).permitted_for?(:goal, :update)
     = form.input :goal, label: t('submit_project.goal')
@@ -32,6 +36,8 @@ p
 
   - if policy(@project).permitted_for?(:about, :update)
     = form.input :about, label: t('submit_project.about')
+    p = t('submit_project.about_hint')
+
     = render 'formatting_tips'
 
     = form.submit class: 'submit-form'
