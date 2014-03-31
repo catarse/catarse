@@ -1,11 +1,11 @@
 - if policy(@project).update?
-.project-warning
+  .project-warning
     h2
-      = 'Parabéns! Seu projeto foi financiado!!!'
+      = 'Parabéns! Seu projeto<br> foi financiado!!!'.html_safe
 
     #project_warning_text
       p
-        = "Através da #{link_to 'aba Relatórios', 'http://suporte.catarse.me/knowledgebase/articles/161093-eu-terei-acesso-a-uma-lista-das-informa%C3%A7%C3%B5es-dos-ap', target: '__blank'} você vai baixar planilhas com informações sobre seus apoiadores como: Recompensa | Valor do apoio | Data de confirmação do apoio | Nome | E-mail | Endereço."
+        = "Através da aba #{link_to 'RELATÓRIOS', project_by_slug_path(permalink: @project.permalink, anchor: 'reports')} você vai baixar planilhas com informações sobre seus apoiadores como: Recompensa | Valor do apoio | Data de confirmação do apoio | Nome | E-mail | Endereço.".html_safe
 
       .accordion
         h4
@@ -24,3 +24,6 @@
         ul.accordion-content.warning-links
           li
             = link_to 'Socorro! | Erros nos relatórios de apoiadores', 'http://suporte.catarse.me/knowledgebase/articles/274781-socorro-erros-no-relat%C3%B3rio-planilha-de-apoiador', target: '_blank'
+
+  button.toggle-warning
+    = '×'
