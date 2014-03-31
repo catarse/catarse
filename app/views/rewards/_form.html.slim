@@ -17,5 +17,5 @@
 
   = f.submit class: 'button small action', disable_with: I18n.t('sending')
   - if resource.persisted? && policy(resource).destroy?
-    = link_to [parent, resource], class: 'btn btn-danger', method: :delete, confirm: 'Are you sure?' do
-      i.icon-trash.icon-white
+    = link_to [parent, resource], class: 'button small negative', method: :delete, confirm: t('projects.reward.remove-confirmation') do
+      = t('projects.reward.remove')

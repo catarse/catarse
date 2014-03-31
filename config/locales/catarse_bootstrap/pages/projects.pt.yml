@@ -38,6 +38,8 @@ pt:
       days_to_delivery: "Informe em quantos dias, após o sucesso do projeto, você planeja entregar essa recompensa"
       description: "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!"
       maximum_contributions: "Se sua recompensa é limitada, informe o máximo de pessoas."
+      remove: "Deletar recompensa"
+      remove-confirmation: "Tem certeza que quer deletar?"
 
 
 
