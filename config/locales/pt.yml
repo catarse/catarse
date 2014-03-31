@@ -567,7 +567,8 @@ pt:
       no_rewards_warning: 'Não viaje! Pense em como irá entregá-las e coloque tudo isso no orçamento. Prometeu?! CUMPRA! :D'
       reports:
         no_contributions: 'Seu projeto ainda não tem nenhum apoio.'
-        link_reports: 'Baixar relatório de todos os apoiadores'
+        link_reports_confirmed: 'Baixar relatório de todos os apoiadores confirmados'
+        link_reports_waiting_confirmation: 'Baixar relatório de todos os apoiadores com boleto impresso'
         all_contributions: 'todos os apoiadores'
         all_contributions_without_reward: 'Baixar relatório de todos os apoiadores que não selecionaram uma recompensa'
         link_reward: 'Baixar relatório dos apoiadores da recompensa de %{value}'
