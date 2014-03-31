@@ -206,11 +206,11 @@ pt:
         password_confirmation: "Confirmação de senha"
         phone_number: "Telefone (fixo ou celular)"
     models:
-      contribution: Apoiador
-      channel: Canal
-      category: Categoria
-      project: Projeto
-      reward: Recompensa
+      contribution: apoiador
+      channel: canal
+      category: categoria
+      project: projeto
+      reward: recompensa
   contribution:
     display_confirmed_at: "Há %{time_ago}"
     reward_must_be_from_project: "deve ser do mesmo projeto"
