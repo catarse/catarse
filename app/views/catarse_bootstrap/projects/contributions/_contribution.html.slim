@@ -4,7 +4,7 @@
     p
       = t('.anonymous_contribution')
     p
-      = contribution.confirmed_at
+      = contribution.confirmed_at.to_formatted_s(:db)
     p
       = t('.anonymous_description')
   - else

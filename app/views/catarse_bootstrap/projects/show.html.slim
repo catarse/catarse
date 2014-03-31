@@ -75,7 +75,6 @@ section.project-show.with-warning
             = radio_button_tag(:contribution_state, "waiting_confirmation")
             = label_tag(:contribution_state, t('projects.project_contributions.pending'), class: "contribution-radio")
           .results &nbsp;
-          .clearfix
           #contributions-loading.loading= image_tag "loading.gif"
 
         #project_comments.content.hide
