@@ -25,12 +25,6 @@
     - if current_user && current_user.admin
       div class="reward_updated_at"
         p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
-      - if reward.has_modification?
-        div class="description_version rewardVersioning#{reward.id}"
-          = reward.last_description
-        .in_time_to_confirm
-          .updated_reward
-            = link_to 'Versão anterior', "javascript:void(0);", class: 'button negative small', id: 'rewardVersioning#{reward.id}'
 
     - if reward.maximum_contributions
       .maximum_contributions
