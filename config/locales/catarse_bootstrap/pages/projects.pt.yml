@@ -32,6 +32,12 @@ pt:
         contributions: "apoiadores"
         goal: "levantados de %{total}"
     count_contributed_projects: "Apoiou %{total} projetos"
+    days_to_delivery: "Previsão de entrega"
+    reward:
+      minimum_value: "Este é valor mínimo de apoio para escolher esta recompensa."
+      days_to_delivery: "Informe em quantos dias, após o sucesso do projeto, você planeja entregar essa recompensa"
+      description: "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!"
+      maximum_contributions: "Se sua recompensa é limitada, informe o máximo de pessoas."
 
 
 
