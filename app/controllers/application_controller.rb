@@ -81,8 +81,4 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :email, :password, :newsletter)
     end
   end
-
-  def current_ability
-    @current_ability ||= Ability.new(current_user, { channel: channel })
-  end
 end
