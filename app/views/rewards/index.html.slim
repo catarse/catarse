@@ -7,7 +7,7 @@
         = image_tag 'loading.gif'
 
       = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(parent, reward)}, class: 'edit-reward show_reward_form' do
-          = 'edit'
+          = t('projects.reward.edit')
 
     h4.reward-price
       = t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe

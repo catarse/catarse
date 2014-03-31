@@ -253,6 +253,7 @@
 	padding: 2em 1.5em 2em
 	display: inline-block
 	width: 100%
+	position: relative
 	p
 		font-size: 13px
 		word-wrap: break-word
@@ -307,7 +308,19 @@
 
 .edit-reward
 	position: absolute
-	right: 30px
+	right: 20px
+	top: 24px
+	font-size: 12px
+	text-transform: capitalize
+	font-weight: 700
+	color: white
+	background: $blue-one
+	padding: 4px 6px
+	border-radius: 4px
+	&:hover
+		color: white
+		text-decoration: none
+		background: lighten($blue-one, 10%)
 
 .project-form
 	div
