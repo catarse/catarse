@@ -10,7 +10,7 @@ class Reports::ContributionReportsForProjectOwnersController < Reports::BaseCont
     conditions = { project_id: params[:project_id] }
 
     conditions.merge!(reward_id: params[:reward_id]) if params[:reward_id].present?
-    conditions.merge!(state: params[:state]) if params[:state].present?
+    conditions.merge!(state: (params[:state].present? ? params[:state] : 'confirmed'))
     conditions.merge!(project_owner_id: current_user.id) unless current_user.admin
 
     super.

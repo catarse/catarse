@@ -31,7 +31,7 @@ class AddStateIntoContributionsReportToProjectOwner < ActiveRecord::Migration
       JOIN projects p ON b.project_id = p.id
       LEFT JOIN rewards r ON r.id = b.reward_id
       WHERE
-        b.state = 'confirmed';
+        b.state IN ('confirmed', 'waiting_confirmation');
     SQL
   end
 
