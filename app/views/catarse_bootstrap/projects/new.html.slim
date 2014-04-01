@@ -1,49 +1,55 @@
 = render 'shared/header'
 
 section.row
-  h1.project-submit-h1 = t('submit_project.title', channel: channel.name)
-  p = t('submit_project.subtitle', channel: channel.name)
-  p = t('submit_project.important', channel: channel.name).html_safe
+ .large-9.columns.large-centered
+      h1.project-submit-h1 = t('submit_project.title', channel: channel.name)
+      p
+        = "<strong>As informações preenchidas abaixo não são definitivas!</strong><br> Após preencher o formulário abaixo você vai criar uma página de RASCUNHO DE PROJETO. Durante o processo de criação da sua página de rascunho de projeto você poderá adicionar recompensas e formatar o seu projeto no mesmo modelo de página que ele terá caso seja aceito e vá ao ar. Você inclusive já escolherá um link de acesso ao seu projeto. No entanto, o rascunho de projeto não estará público ao final do processo. A finalidade disso é conferir o tempo necessário ao Realizador para aprimorar a apresentação do seu projeto antes de ser avaliado. Envie a página para os seus amigos, colha feedbacks e melhore sua proposta! Boas opiniões e colaboração ajudam a tornar seu projeto mais afiado e preciso. Envie seu projeto para avaliação apenas quando você sentir que ele está pronto.".html_safe
 
-  = simple_form_for @project, html: { id: 'project_form', class: 'project-submit' } do |form|
-    = form.input :referal_link, as: :hidden, input_html: { value: referal_link }
-    = form.input :permalink, as: :string, label: t('submit_project.permalink'), input_html: { class: 'url-input' }
-    span.url-text = t('submit_project.channel_permalink_placeholder', channel: channel.permalink)
-    p = t('submit_project.permalink_hint')
+      p
+        = "<strong>Quando você estiver pronto, você poderá enviar seu projeto para nossa equipe.</strong><br> É super super simples! Observe que disponibilizamos um botão específico para isso dentro da página de rascunho de projeto. É só clicar e aguardar a resposta em até 4 dias úteis!".html_safe
 
-    = form.input :name, as: :string, label: t('submit_project.name')
-    p = t('submit_project.name_hint')
+      p
+        = "<strong>Importante: </strong>Fazer um Rascunho de Projeto não significa que seu projeto irá ao ar no site do Catarse. Somos uma plataforma que seleciona as propostas enviadas e nosso atendimento irá avaliar o foco, a viabilidade, a consistência e a qualidade de apresentação do seu projeto. Se entendermos que ele não está de acordo com os #{link_to 'critérios de seleção', 'http://suporte.catarse.me/knowledgebase/articles/241190-diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos', target: '__blank'} da plataforma, ele poderá ser recusado pela nossa equipe.".html_safe
 
-    = form.input :about, as: :text, label: t('submit_project.about')
-    p = t('submit_project.about_hint')
+      = simple_form_for @project, html: { id: 'project_form', class: 'project-submit' } do |form|
+        = form.input :referal_link, as: :hidden, input_html: { value: referal_link }
+        = form.input :permalink, as: :string, label: t('submit_project.permalink'), input_html: { class: 'url-input' }
+        span.url-text = t('submit_project.permalink_placeholder')
+        p = t('submit_project.permalink_hint')
 
-    = form.input :headline, as: :string, label: t('submit_project.headline')
-    p = t('submit_project.headline_hint')
+        = form.input :name, as: :string, label: t('submit_project.name')
+        p = t('submit_project.name_hint')
 
-    = form.input :category_id, as: :select, collection: Category.array, label: t('submit_project.category_id')
-    p = t('submit_project.category_id_hint', href: explore_url(subdomain: nil)).html_safe
+        = form.input :about, as: :text, label: t('submit_project.about')
+        p = t('submit_project.about_hint')
 
-    = form.input :goal, as: :string, label: t('submit_project.goal')
-    p = t('submit_project.goal_hint').html_safe
+        = form.input :headline, as: :string, label: t('submit_project.headline')
+        p = t('submit_project.headline_hint')
 
-    = form.input :online_days, label: t('submit_project.online_days')
-    p = t('submit_project.online_days_hint')
+        = form.input :category_id, as: :select, collection: Category.array, label: t('submit_project.category_id')
+        p = t('submit_project.category_id_hint', href: explore_url(subdomain: nil)).html_safe
 
-    = form.input :video_url, as: :string, label: t('submit_project.video_url'), input_html: {data: {path: video_projects_path}}
-    p = t('submit_project.video_url_hint')
+        = form.input :goal, as: :string, label: t('submit_project.goal')
+        p = t('submit_project.goal_hint').html_safe
 
-    = form.input :more_links, as: :text, label: t('submit_project.more_links')
-    p = t('submit_project.more_links_hint')
+        = form.input :online_days, label: t('submit_project.online_days')
+        p = t('submit_project.online_days_hint')
 
-    = form.input :first_contributions, as: :text, label: t('submit_project.first_contributions')
-    p = t('submit_project.first_contributions_hint')
+        = form.input :video_url, as: :string, label: t('submit_project.video_url'), input_html: {data: {path: video_projects_path}}
+        p = t('submit_project.video_url_hint')
 
-    = form.input :how_know, as: :text, label: t('submit_project.how_know')
-    p = t('submit_project.how_know_hint')
+        = form.input :more_links, as: :text, label: t('submit_project.more_links')
+        p = t('submit_project.more_links_hint')
 
-    = form.input :accepted_terms, as: :boolean, label: t('submit_project.accept_terms', link: link_to(t('submit_project.terms'), channel.terms_url), target: '_blank').html_safe
-    .row
-        .large-3.columns.large-centered
+        = form.input :first_contributions, as: :text, label: t('submit_project.first_contributions')
+        p = t('submit_project.first_contributions_hint')
+
+        = form.input :how_know, as: :text, label: t('submit_project.how_know_catarse')
+
+        = form.input :accepted_terms, as: :boolean, label: t('submit_project.accept_terms', link: link_to(t('submit_project.terms'), channel.terms_url), target: '_blank').html_safe
+
+        .large-4.columns.large-centered
             = form.button :submit, t('submit_project.submit'), class: 'button action submit'
 
 = render 'shared/footer'
