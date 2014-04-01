@@ -12,7 +12,7 @@ section.row
       p
         = "<strong>Importante: </strong>Fazer um Rascunho de Projeto não significa que seu projeto irá ao ar no site do Catarse. Somos uma plataforma que seleciona as propostas enviadas e nosso atendimento irá avaliar o foco, a viabilidade, a consistência e a qualidade de apresentação do seu projeto. Se entendermos que ele não está de acordo com os #{link_to 'critérios de seleção', 'http://suporte.catarse.me/knowledgebase/articles/241190-diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos', target: '__blank'} da plataforma, ele poderá ser recusado pela nossa equipe.".html_safe
 
-      = simple_form_for @project, html: { id: 'project_form', class: 'project-submit' } do |form|
+      = simple_form_for @project, html: { id: 'project_form', class: 'project-submit', :novalidate => true} do |form|
         = form.input :referal_link, as: :hidden, input_html: { value: referal_link }
         = form.input :permalink, as: :string, label: t('submit_project.permalink'), input_html: { class: 'url-input' }
         span.url-text = t('submit_project.permalink_placeholder')

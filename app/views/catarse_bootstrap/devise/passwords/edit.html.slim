@@ -8,7 +8,7 @@
       h1.text-center= t 'pages.reset_password.titles.header'
 
       .large-11.large-centered.columns
-        = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put}) do |f|
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put, :novalidate => true}) do |f|
           = render 'devise/shared/alert'
           = f.hidden_field :reset_password_token
           div.password
