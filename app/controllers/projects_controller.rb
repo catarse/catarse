@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
 
   protected
   def use_catarse_bootstrap
-    (['new', 'show'].include?(action_name) ? 'catarse_bootstrap' : 'application')
+    (['create', 'new', 'show'].include?(action_name) ? 'catarse_bootstrap' : 'application')
   end
 
   def permitted_params
