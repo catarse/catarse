@@ -13,23 +13,23 @@ class ContributionPolicy < ApplicationPolicy
   end
 
   def create?
-    done_by_onwer_or_admin? && record.project.online?
+    done_by_owner_or_admin? && record.project.online?
   end
 
   def update?
-    done_by_onwer_or_admin?
+    done_by_owner_or_admin?
   end
 
   def show?
-    done_by_onwer_or_admin?
+    done_by_owner_or_admin?
   end
 
   def credits_checkout?
-    done_by_onwer_or_admin?
+    done_by_owner_or_admin?
   end
 
   def request_refund?
-    done_by_onwer_or_admin?
+    done_by_owner_or_admin?
   end
 
   def permitted_attributes

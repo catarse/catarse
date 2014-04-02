@@ -51,7 +51,7 @@ class ApplicationPolicy
     user.try(:admin?) || false
   end
 
-  def done_by_onwer_or_admin?
+  def done_by_owner_or_admin?
     is_owned_by?(user) || is_admin?
   end
 
