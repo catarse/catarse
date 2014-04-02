@@ -155,13 +155,10 @@ pt:
         title: "Projetos enviados para curadoria por semana"
       projects_by_week:
         title: "Rascunhos criados por semana"
-        current_period: "Últimas 8 sem."
-        previous_period: "8 sem. anteriores"
-        last_year: "Ano anterior"
       contributions_by_week:
         title: "Valor de apoios confirmados por semana"
+      charts:
         current_period: "Últimas 8 sem."
-        previous_period: "8 sem. anteriores"
         last_year: "Ano anterior"
   channels:
     admin:
