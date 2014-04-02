@@ -4,8 +4,8 @@ module Shared::ChartHandler
   included do
     def self.chart
       series = [
-        {name: 'Ano atual', data: {}},
-        {name: 'Ano anterior', data: {}}
+        {name: I18n.t('admin.statistics.charts.current_period'), data: {}},
+        {name: I18n.t('admin.statistics.charts.last_year'), data: {}}
       ]
       self.all.each do |data|
         series[0][:data][data.label] = data.current_year
