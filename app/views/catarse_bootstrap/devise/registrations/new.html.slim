@@ -19,7 +19,7 @@
       .clearfix
 
       .large-11.large-centered.columns
-        = simple_form_for(resource, as: resource_name, url: sign_up_path) do |form|
+        = simple_form_for(resource, as: resource_name, url: sign_up_path, :html => {:novalidate => true}) do |form|
           = render 'devise/shared/alert'
 
           = form.input :name, as: :string, label: t('pages.sign_up.form.labels.name')

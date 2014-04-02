@@ -79,7 +79,7 @@ section.project-show.with-warning
 
         #project_comments.content.hide
 
-        #project_about.content= render 'project_about'
+        #project_about.project-description.content= render 'project_about'
 
 
       aside.large-3.columns.sidebar
@@ -119,15 +119,15 @@ section.project-show.with-warning
             = t('projects.count_contributed_projects', total: @project.user.total_contributed_projects)
 
           ul.project-creator-links
+            - if @project.user.email
+              li
+                = mail_to @project.user.email, @project.user.email, target: '_blank', class: 'email'
             - if @project.user.facebook_link
               li
                 = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
             - if @project.user.twitter
               li
                 = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'twitter'
-            - if @project.user.email
-              li
-                = mail_to @project.user.email, @project.user.email, target: '_blank', class: 'email'
 
 
 

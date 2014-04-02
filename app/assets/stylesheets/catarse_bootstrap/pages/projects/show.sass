@@ -99,7 +99,7 @@
 	background: $blue-one url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -163px -74px
 	text-indent: -9999px
 	left: 20px
-	bottom: 25px
+	top: 135px
 	&:hover
 		background-color: lighten($blue-one, 10%)
 	&:after
@@ -211,6 +211,7 @@
 	p
 		font-size: em(13px)
 		margin: 1em 0 0
+		line-height: 1.2
 	.project-creator-name
 		margin-bottom: -8px
 	.project-creator-city
@@ -222,19 +223,22 @@
 
 .project-creator-links
 	padding: 0
+	margin-top: 4px
 	li
 		display: inline-block
+		&:last-child
+			margin-left: 5px
 	a
 		font-weight: normal
 		font-size: em(13px)
 	.facebook
-		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -29px 127px transparent
+		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -103px 103px transparent
 		text-indent: -9999px
 		display: inline-block
 		width: 18px
 		height: 18px
 	.twitter
-		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -30px 163px transparent
+		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -64px 103px transparent
 		text-indent: -9999px
 		display: inline-block
 		width: 18px
@@ -298,9 +302,8 @@
 	display: none
 
 .maximum_contributions
-	background: $blue-note
-	padding: 3px 7px
-	font-size: 12px
+	background: RGBA(64, 155, 255, .80)
+	padding: 0
 	border-radius: 2px
 	text-align: center
 	margin: 12px 0
@@ -308,6 +311,7 @@
 		color: $white
 		font-weight: 700
 		margin: 0
+		font-size: 12px
 		span
 			font-weight: normal
 			margin: 0 0 0 6px
@@ -318,8 +322,8 @@
 
 .edit-reward
 	position: absolute
-	right: 20px
-	top: 24px
+	right: 7px
+	top: 7px
 	font-size: 12px
 	text-transform: capitalize
 	font-weight: 700
@@ -411,3 +415,7 @@
 		display: inline-block
 	div
 		margin: 1em 0
+
+.project-description
+	p
+		line-height: 1.6
