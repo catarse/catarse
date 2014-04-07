@@ -34,9 +34,9 @@ App.addChild('MixPanel', {
   trackOnMixPanel: function(text, options){
     this.identifyUser();
     var obj             = $(this);
-    var usr             = (self.user != null) ? self.user.id : null;
-    var contributions   = (self.user != null) ? self.user.created_at : null;
-    var created_at      = (self.user != null) ? self.contributions : null;
+    var usr             = (this.user != null) ? this.user.id : null;
+    var contributions   = (this.user != null) ? this.user.created_at : null;
+    var created_at      = (this.user != null) ? this.contributions : null;
     var ref             = (obj.attr('href') != undefined) ? obj.attr('href') : null;
     var opt             = options || {};
     var default_options = {
