@@ -2,70 +2,71 @@ App.addChild('MixPanel', {
   el: 'body',
 
   activate: function(){
+    this.VISIT_MIN_TIME = 10000;
     this.user = null;
-    this.trackUserClickOnProjectsImage();
-    this.trackUserClickOnProjectsTitle();
-    this.trackUserClickOnContributeButton();
-    this.trackUserClickOnReviewAndMakePayment();
-    this.trackUserClickOnAcceptTerms();
-    this.trackUserClickOnPaymentButton();
-    this.trackUserClickOnReward();
+    this.contributions = null;
+    this.controller = this.$el.data('controller');
+    this.action = this.$el.data('action');
+    if(window.mixpanel){
+      this.startTracking();
+    }
+  },
+
+  startTracking: function(){
+    this.trackSelectedReward();
+    if(this.controller == 'projects' && (this.action == 'show' || this.action == 'index')){
+      this.trackUserVisit();
+    }
+    if(this.controller == 'contributions' && this.action == 'show'){
+      this.trackOnMixPanel("Visited thank you");
+    }
   },
 
   identifyUser: function(){
     this.user = this.$el.data('user');
+    this.contributions = this.$el.data('contributions');
     if (this.user){
       mixpanel.name_tag(this.user.id + '-' + this.user.name);
       mixpanel.identify(this.user.id);
     }
   },
 
-  trackOnMixPanel: function(target, event, text, options){
+  trackOnMixPanel: function(text, options){
+    this.identifyUser();
+    var obj             = $(this);
+    var usr             = (self.user != null) ? self.user.id : null;
+    var contributions   = (self.user != null) ? self.user.created_at : null;
+    var created_at      = (self.user != null) ? self.contributions : null;
+    var ref             = (obj.attr('href') != undefined) ? obj.attr('href') : null;
+    var opt             = options || {};
+    var default_options = {
+      'page name':  document.title,
+      'user_id':    usr,
+      'created_at': created_at,
+      'contributions': contributions,
+      'project':    ref,
+      'url':        window.location
+    };
+    var opt     = $.fn.extend(default_options, opt);
+
+    mixpanel.track(text, opt);
+  },
+
+  mixPanelEvent: function(target, event, text, options){
     var self = this;
     this.$(target).on(event, function(){
-      self.identifyUser();
-      var obj     = $(this);
-      var usr     = (self.user != null) ? self.user.id : null;
-      var ref     = (obj.attr('href') != undefined) ? obj.attr('href') : null;
-      var opt     = options || {};
-      var default_options = {
-        'page name':  document.title,
-        'user_id':    usr,
-        'project':    ref,
-        'url':        window.location
-      };
-      var opt     = $.fn.extend(default_options, opt);
-
-      mixpanel.track(text, opt);
+      self.trackOnMixPanel(text, options);
     });
   },
 
-  trackUserClickOnReward: function(){
-    this.trackOnMixPanel('#rewards .clickable', 'click', 'Clicked on a reward');
-    this.trackOnMixPanel('#rewards .clickable_owner span.avaliable', 'click', 'Clicked on a reward');
+  trackUserVisit: function(){
+    var self = this;
+    window.setTimeout(function(){
+      self.trackOnMixPanel('Visited home or project page');
+    }, this.VISIT_MIN_TIME);
   },
 
-  trackUserClickOnReviewAndMakePayment: function(){
-    this.trackOnMixPanel('input#contribution_submit', 'click', 'Clicked on Review and Make Payment');
+  trackSelectedReward: function(){
+    this.mixPanelEvent('input#contribution_submit', 'click', 'Selected reward');
   },
-
-  trackUserClickOnAcceptTerms: function(){
-    this.trackOnMixPanel('label[for="accept"]', 'click', 'Accepted terms of use');
-  },
-
-  trackUserClickOnPaymentButton: function(){
-    this.trackOnMixPanel('form.moip input[type="submit"]', 'click', 'Made a payment')
-  },
-
-  trackUserClickOnContributeButton: function(){
-    this.trackOnMixPanel('#contribute_project_form input', 'click', 'Clicked on Contribute this project');
-  },
-
-  trackUserClickOnProjectsImage: function(){
-    this.trackOnMixPanel('.box .cover a', 'click', 'Clicked on a projects image @ homepage');
-  },
-
-  trackUserClickOnProjectsTitle: function(){
-    this.trackOnMixPanel('.project_content h4','click', 'Clicked on a project\'s link box');
-  }
 });
