@@ -35,8 +35,8 @@ App.addChild('MixPanel', {
     this.identifyUser();
     var obj             = $(this);
     var usr             = (this.user != null) ? this.user.id : null;
-    var contributions   = (this.user != null) ? this.user.created_at : null;
-    var created_at      = (this.user != null) ? this.contributions : null;
+    var created_at      = (this.user != null) ? this.user.created_at : null;
+    var contributions   = (this.user != null) ? this.contributions : null;
     var ref             = (obj.attr('href') != undefined) ? obj.attr('href') : null;
     var opt             = options || {};
     var default_options = {
