@@ -81,7 +81,7 @@ pt:
       subtitle: apoiadores
     goal:
       subtitle: "atingidos de %{total}"
-  project_by: "projeto por"
+  project_by: "Projeto por"
   tell_about_this_contribution: "Conte para o mundo sobre o seu apoio!"
   share_my_contributions: "Confira o projeto "
   tell_about_this_project: "Conte para o mundo sobre o seu projeto!"

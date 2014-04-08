@@ -105,29 +105,29 @@ section.project-show.with-warning
             = t("projects.contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
 
-        h4.project-creator-title
-          = t('project_by')
         .project-creator
           = @project.user.display_image_html width: 80, height: 80
+          p
+            = t('project_by')
           p.project-creator-name
             = link_to @project.user.display_name, user_path(@project.user)
-          p
-            = @project.user.bio
           p.project-creator-city
             | #{@project.user.address_city}
           p.project-creator-count
             = t('projects.count_contributed_projects', total: @project.user.total_contributed_projects)
+          p
+            = @project.user.bio
 
           ul.project-creator-links
             - if @project.user.email
               li
-                = mail_to @project.user.email, @project.user.email, target: '_blank', class: 'email'
+                = mail_to @project.user.email, @project.user.email, target: '_blank'
             - if @project.user.facebook_link
               li
-                = link_to "Perfil no facebook", @project.user.facebook_link, target: '_blank', class: 'facebook'
+                = link_to @project.user.facebook_link, @project.user.facebook_link, target: '_blank'
             - if @project.user.twitter
               li
-                = link_to "Perfil no twitter", @project.user.twitter_link, target: '_blank', class: 'twitter'
+                = link_to @project.user.twitter_link, @project.user.twitter_link, target: '_blank'
 
 
 

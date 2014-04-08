@@ -200,7 +200,9 @@
 
 
 .project-creator
-	margin: 0 0 4em
+	margin: 40px 0
+	padding: 20px
+	background: $beige
 	.avatar_wrapper
 		float: left
 		margin: 0 1em 0 0
@@ -210,39 +212,29 @@
 		font-weight: bold
 	p
 		font-size: em(13px)
-		margin: 1em 0 0
+		margin: 0 0 .8em
 		line-height: 1.2
 	.project-creator-name
-		margin-bottom: -8px
-	.project-creator-city
-		font-weight: 700
+		margin-bottom: 0
+		a
+			color: $blue-one
 	.project-creator-count
-		margin-top: 3px
 		font-weight: 700
 
 
 .project-creator-links
 	padding: 0
-	margin-top: 4px
+	margin: 0
 	li
-		display: inline-block
+		display: block
+		border-bottom: 1px solid $border-gray
+		padding: 3px 0
 		&:last-child
-			margin-left: 5px
+			border: none
 	a
 		font-weight: normal
 		font-size: em(13px)
-	.facebook
-		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -103px 103px transparent
-		text-indent: -9999px
-		display: inline-block
-		width: 18px
-		height: 18px
-	.twitter
-		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -64px 103px transparent
-		text-indent: -9999px
-		display: inline-block
-		width: 18px
-		height: 18px
+		color: $blue-one
 
 
 .new-reward
