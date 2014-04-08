@@ -4,6 +4,6 @@ class PendingContributionWorker
 
   def perform resource_id
     resource = Contribution.find resource_id
-    resource.notify_to_contributor(:pending_payment) if resource.pending?
+    resource.notify_to_contributor(:pending_payment) if resource.pending? && resource.user.contributions.where(project_id: resource.project_id).with_states(['confirmed','waiting_confirmation']).empty?
   end
 end
