@@ -4,7 +4,6 @@ App.addChild('MixPanel', {
   activate: function(){
     this.VISIT_MIN_TIME = 10000;
     this.user = null;
-    this.contributions = null;
     this.controller = this.$el.data('controller');
     this.action = this.$el.data('action');
     if(window.mixpanel){
@@ -14,20 +13,25 @@ App.addChild('MixPanel', {
 
   startTracking: function(){
     this.trackSelectedReward();
-    if(this.controller == 'projects' && (this.action == 'show' || this.action == 'index')){
+    if(this.controller == 'projects' && this.action == 'show'){
       this.trackUserVisit();
     }
     if(this.controller == 'contributions' && this.action == 'show'){
-      this.trackOnMixPanel("Visited thank you");
+      this.trackOnMixPanel("Finished contribution");
     }
   },
 
   identifyUser: function(){
     this.user = this.$el.data('user');
-    this.contributions = this.$el.data('contributions');
     if (this.user){
-      mixpanel.name_tag(this.user.id + '-' + this.user.name);
+      mixpanel.name_tag(this.user.email);
       mixpanel.identify(this.user.id);
+      mixpanel.people.set({
+        "$email": this.user.email, 
+        "$created": this.user.created_at,
+        "$last_login": this.user.last_sign_in_at,
+        "contributions": this.user.total_contributed_projects 
+      });
     }
   },
 
@@ -35,15 +39,11 @@ App.addChild('MixPanel', {
     this.identifyUser();
     var obj             = $(this);
     var usr             = (this.user != null) ? this.user.id : null;
-    var created_at      = (this.user != null) ? this.user.created_at : null;
-    var contributions   = (this.user != null) ? this.contributions : null;
     var ref             = (obj.attr('href') != undefined) ? obj.attr('href') : null;
     var opt             = options || {};
     var default_options = {
       'page name':  document.title,
       'user_id':    usr,
-      'created_at': created_at,
-      'contributions': contributions,
       'project':    ref,
       'url':        window.location
     };
@@ -62,7 +62,7 @@ App.addChild('MixPanel', {
   trackUserVisit: function(){
     var self = this;
     window.setTimeout(function(){
-      self.trackOnMixPanel('Visited home or project page');
+      self.trackOnMixPanel('Visited project page');
     }, this.VISIT_MIN_TIME);
   },
 
