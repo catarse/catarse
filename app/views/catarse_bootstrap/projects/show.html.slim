@@ -54,7 +54,7 @@ section.project-show.with-warning
           = link_to(@project.user.display_name, user_path(@project.user), class: 'tabs-nav-creator')
 
     section.row.project-content
-      section.large-9.columns
+      section.large-8.columns
         - if policy(@project).update?
           #project_reports.content.hide
             = render partial: 'project_reports'
@@ -82,7 +82,7 @@ section.project-show.with-warning
         #project_about.project-description.content= render 'project_about'
 
 
-      aside.large-3.columns.sidebar
+      aside.large-4.columns.sidebar
         .project-statistics
           p.project-contributions
             = @project.total_contributions
