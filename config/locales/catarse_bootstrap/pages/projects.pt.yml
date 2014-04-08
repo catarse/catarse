@@ -206,7 +206,7 @@ pt:
       new_reward: "Cadastrar recompensa"
       edit_reward: "Editar recompensa"
       reward_title: "Para %{minimum} ou mais"
-      reward_deliver_time: "Estimativa de Entrega: %{estimate}"
+      reward_deliver_time: "Estimativa de Entrega:"
       contributions_to_confirm:
         one: "1 apoio em prazo de confirmação"
         other: "%{count} apoios em prazo de confirmação"

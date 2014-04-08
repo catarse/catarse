@@ -14,18 +14,6 @@
     p.reward-bakers
       = pluralize(reward.contributions.with_state('confirmed').count, t('contribution_singular'), t('contribution_plural'))
 
-    p
-      = reward.display_description
-
-    - if reward.days_to_delivery.present?
-      div.reward_deliver_at
-        p= "#{t('projects.rewards.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
-
-
-    - if current_user && current_user.admin
-      div class="reward_updated_at"
-        p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
-
     - if reward.maximum_contributions
       .maximum_contributions
         - if reward.sold_out?
@@ -41,3 +29,18 @@
         .in_time_to_confirm
           p
             = t('projects.rewards.contributions_to_confirm', count: in_time_to_confirm)
+
+    p
+      = reward.display_description
+
+    - if reward.days_to_delivery.present?
+      div.reward_deliver_at
+        p
+          strong= t('projects.rewards.reward_deliver_time')
+          | &nbsp;
+          = reward.display_deliver_estimate
+
+
+    - if current_user && current_user.admin
+      div class="reward_updated_at"
+        p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"

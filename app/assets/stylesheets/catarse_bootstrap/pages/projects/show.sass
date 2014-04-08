@@ -249,17 +249,17 @@
 
 
 .rewards-list
-	background: $gray-one
 	border-radius: 4px
 	margin: 2em 0
 	padding: 0
 
 .reward-item
-	border-bottom: 1px solid $border-strong
 	padding: 2em 1.5em 2em
 	display: inline-block
 	width: 100%
 	position: relative
+	margin-bottom: 5px
+	background: $gray-one
 	p
 		font-size: 13px
 		word-wrap: break-word
@@ -268,21 +268,12 @@
 		font-size: 12px
 	&:hover
 		background: darken($gray-one, 5%)
-	&:last-child
-		border-bottom: none
-		&:hover
-			border-radius: 0 0 4px 4px
-	&:first-child:hover
-		border-radius: 4px 4px 0 0
 	form
 		margin-bottom: 40px
 		a
 			margin-top: 20px
 
-
-
 .reward-price
-	color: $green
 	font-size: 15px
 	margin: 0
 
@@ -294,13 +285,15 @@
 	display: none
 
 .maximum_contributions
-	background: RGBA(64, 155, 255, .80)
-	padding: 0
-	border-radius: 2px
+	background: $yellow
+	padding: 0 5px
 	text-align: center
-	margin: 12px 0
+	display: inline-block
+	position: absolute
+	top: 53px
+	right: 23px
 	p
-		color: $white
+		color: $blue-one
 		font-weight: 700
 		margin: 0
 		font-size: 12px
