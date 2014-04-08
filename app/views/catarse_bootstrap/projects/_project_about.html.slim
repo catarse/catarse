@@ -7,7 +7,9 @@ ul.project-share
     = render_twitter(url: project_by_slug_url(permalink: @project.permalink))
   li.embed
     = link_to '#embed', id: 'embed_link' do
-      = t('projects.show.share.embed')
+      = "< > "
+      |
+      =t('projects.show.share.embed')
 
 
 #project_embed.hide data-path=embed_panel_project_path(@project)
