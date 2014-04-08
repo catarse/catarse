@@ -520,7 +520,7 @@ en:
       warning: 'Remembering that every new post goes directly to the email of his supporters. Therefore, review your text well before sending it.'
     rewards:
       reward_title: "For %{minimum} or more"
-      reward_deliver_time: "Estimated delivery: %{estimate}"
+      reward_deliver_time: "Estimated delivery:"
       contributions_to_confirm:
         one:  "1 contribution in time to confirm."
         other: "%{count} contributions in time to confirm."

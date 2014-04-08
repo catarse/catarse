@@ -26,6 +26,8 @@
             p
               = "Confira: #{link_to 'Realizadores - Primeiros Passos', 'http://suporte.catarse.me/knowledgebase/topics/25764-realizadores-primeiros-passos-pr%C3%A9-projeto-', target: '__blank'}".html_safe
       .submit-project
+        p
+          = 'Pronto para enviar para análise?'
         = link_to 'Enviar projeto', send_to_analysis_project_path(@project), class: 'button medium action'
 
 - else

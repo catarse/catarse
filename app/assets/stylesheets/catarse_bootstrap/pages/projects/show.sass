@@ -12,20 +12,20 @@
 	overflow: scroll
 	z-index: 100
 	h2
-		font-size: 16px
-		color: $green
+		font-size: 18px
+		color: white
 		font-weight: 500
 		position: fixed
 		top: 0
 		background: $blue-one
-		padding: 2em 0
+		padding: 2em 0 1.9em
 		width: 280px
 		margin: 0
 		z-index: 300
 	li,p, h4
 		color: $gray-two
 	p
-		font-size: 13px
+		font-size: 15px
 	ul
 		padding: 0
 	li
@@ -33,7 +33,7 @@
 		list-style: none
 		font-size: 13px
 	a
-		font-weight: 700
+		color: $orange
 	.accordion-content
 		display: none
 	.warning-links
@@ -59,12 +59,13 @@
 			height: 16px
 		&.opened:before
 			background: url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -29px -78px
-	a
-		color: $blue-note
 	.submit-project
 		width: 320px
-		padding: 2em
+		padding: 0.8em 2em 2em
 		background: $blue-one
+		p
+			margin-bottom: 10px
+			text-align: center
 
 .project-warning-hide
 	display: none
@@ -112,7 +113,7 @@
 		display: inline-block
 
 .project-title
-	font-size: em(24px)
+	font-size: 30px
 	font-weight: 500
 	small
 		display: block
@@ -174,10 +175,10 @@
 		padding: 15px 0
 		clear: left
 	.project-status
-		padding: 15px 0
 		font-size: em(13px)
 		margin: 0
 		clear: left
+		padding-right: 35px
 
 .project-contributions, .project-goal, .project-days
 	padding: 30px 0 0
@@ -190,6 +191,11 @@
 		width: 100%
 		font-size: 11px
 		text-transform: uppercase
+
+.project-support
+	width: 306px
+	height: 72px
+	font-size: 18px
 
 .project-creator-title
 	text-transform: uppercase
@@ -206,9 +212,9 @@
 
 
 .project-creator
-	margin: 40px 0
-	padding: 20px
-	background: $beige
+	margin: 40px 0 30px
+	padding: 20px 20px 14px
+	background: RGBA(246, 146, 25, 0.1)
 	.avatar_wrapper
 		float: left
 		margin: 0 1em 0 0
@@ -218,14 +224,17 @@
 		font-weight: bold
 	p
 		font-size: em(13px)
-		margin: 0 0 .8em
+		margin: 0 0 1em
 		line-height: 1.2
 	.project-creator-name
 		margin-bottom: 0
+		font-size: 15px
 		a
 			color: $blue-one
 	.project-creator-count
 		font-weight: 700
+	.project-creator-bio
+		font-size: 15px
 
 
 .project-creator-links
@@ -239,13 +248,12 @@
 			border: none
 	a
 		font-weight: normal
-		font-size: em(13px)
+		font-size: 13px
 		color: $blue-one
 
 
 .new-reward
 	background: $gray-one
-	border-radius: 4px
 	padding: 1.6em 1em
 	h4
 		margin: 0
@@ -264,10 +272,10 @@
 	display: inline-block
 	width: 100%
 	position: relative
-	margin-bottom: 5px
+	margin-bottom: 4px
 	background: $gray-one
 	p
-		font-size: 13px
+		font-size: 15px
 		word-wrap: break-word
 	.reward_deliver_at p, .reward_updated_at p, .in_time_to_confirm p
 		margin: 0
@@ -283,16 +291,17 @@
 	font-size: 15px
 	margin: 0
 
-.reward-bakers
+p.reward-bakers
 	font-weight: 700
 	margin: .3em 0 1em
+	font-size: 13px
 
 .description_version
 	display: none
 
 .maximum_contributions
 	background: $yellow
-	padding: 0 5px
+	padding: 0 1px
 	text-align: center
 	display: inline-block
 	position: absolute
@@ -305,7 +314,10 @@
 		font-size: 12px
 		span
 			font-weight: normal
-			margin: 0 0 0 6px
+			margin: 0 0 0 1px
+			word-spacing: -1px
+	.finished
+		background: $border-strong
 
 .updated_reward
 	font-size: 16px
@@ -380,15 +392,21 @@
 		margin: 0 0 0.3em
 		font-size: 13px
 		float: right
-		width: 230px
+		width: 200px
 	a
-		font-weight: 700
+		font-weight: 400
 		font-size: 13px
+		color: $blue-one
 	.contribuiton-value
 		font-weight: 700
 		font-size: 15px
 	.contribution-date
 		word-spacing: 12px
+	.contribution-supporter
+		a
+			font-size: 15px
+			color: $blue-one
+			font-weight: 700
 
 .updates
 	border-top: 1px solid $border-gray
@@ -409,4 +427,5 @@
 
 .project-description
 	p
+		font-size: 17px
 		line-height: 1.6

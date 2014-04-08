@@ -1,7 +1,7 @@
 .contribution
   - if contribution.anonymous
     img src="/assets/user.png" class="contribution_avatar"
-    p
+    p.contribution-supporter
       = t('.anonymous_contribution')
     p
       = contribution.confirmed_at.to_formatted_s(:db)
@@ -10,7 +10,7 @@
   - else
     = link_to user_path(contribution.user)
       img src=contribution.user.display_image class="contribution_avatar"
-    p
+    p.contribution-supporter
       = link_to user_path(contribution.user)
         = contribution.user.medium_name
     p.contribution-date

@@ -17,7 +17,7 @@
     - if reward.maximum_contributions
       .maximum_contributions
         - if reward.sold_out?
-          p
+          p.finished
             = t('reward.sold_out')
         - else
           p
@@ -36,7 +36,8 @@
     - if reward.days_to_delivery.present?
       div.reward_deliver_at
         p
-          strong= t('projects.rewards.reward_deliver_time')
+          strong
+          = t('projects.rewards.reward_deliver_time')
           | &nbsp;
           = reward.display_deliver_estimate
 

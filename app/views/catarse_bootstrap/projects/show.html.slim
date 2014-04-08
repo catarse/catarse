@@ -100,13 +100,13 @@ section.project-show.with-warning
               span #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
           - if @project.online? && !@project.expired?
             = form_tag(new_project_contribution_path(@project), method: :get, id: 'contribute_project_form') do
-              = submit_tag t('projects.contribute_project.submit'), disabled: (not @project.online?), class: "button action"
+              = submit_tag t('projects.contribute_project.submit'), disabled: (not @project.online?), class: "button action project-support"
           p.project-status
             = t("projects.contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
 
 
         .project-creator
-          = @project.user.display_image_html width: 80, height: 80
+          = @project.user.display_image_html width: 98, height: 98
           p
             = t('project_by')
           p.project-creator-name
@@ -115,7 +115,7 @@ section.project-show.with-warning
             | #{@project.user.address_city}
           p.project-creator-count
             = t('projects.count_contributed_projects', total: @project.user.total_contributed_projects)
-          p
+          p.project-creator-bio
             = @project.user.bio
 
           ul.project-creator-links
