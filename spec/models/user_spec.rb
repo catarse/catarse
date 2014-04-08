@@ -184,6 +184,11 @@ describe User do
     it { should == 2}
   end
 
+  describe "#to_analytics_json" do
+    subject{ user.to_analytics_json }
+    it{ should == {id: user.id, email: user.email, total_contributed_projects: user.total_contributed_projects, created_at: user.created_at, last_sign_in_at: user.last_sign_in_at}.to_json }
+  end
+
   describe "#credits" do
     before do
       @u = create(:user)
