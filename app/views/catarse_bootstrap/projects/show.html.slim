@@ -30,6 +30,8 @@ section.project-show.with-warning
       .row
         h2.project-title
           = @project.name
+          small
+            | #{t('.title.project_from')} #{link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"))} #{t('.title.project_by')} #{link_to(@project.user.display_name, user_path(@project.user))}
 
         nav.tabs-nav
           = link_to '#about', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
@@ -50,8 +52,6 @@ section.project-show.with-warning
                 = t('.menu.edit')
           = link_to '#reports', 'id' => 'reports_link', 'data-target' => '#project_reports' do
               = t('.menu.reports')
-          = link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'tabs-nav-category')
-          = link_to(@project.user.display_name, user_path(@project.user), class: 'tabs-nav-creator')
 
     section.row.project-content
       section.large-8.columns

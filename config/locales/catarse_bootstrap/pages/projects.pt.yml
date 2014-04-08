@@ -13,6 +13,9 @@ pt:
         all_contributions: 'todos os apoiadores'
         all_contributions_without_reward: 'Baixar relatório de todos os apoiadores que não selecionaram uma recompensa'
         link_reward: 'Baixar relatório dos apoiadores da recompensa de %{value}'
+      title:
+        project_from: 'Um projeto de'
+        project_by: por
       menu:
         about: Sobre
         contributions: Apoiadores
