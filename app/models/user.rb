@@ -123,12 +123,16 @@ class User < ActiveRecord::Base
     user_total.try(:total_contributed_projects).to_i
   end
 
+  def has_no_confirmed_contribution_to_project(project_id)
+    contributions.where(project_id: project_id).with_states(['confirmed','waiting_confirmation']).empty?
+  end
+
   def to_analytics_json
     {
-      id: self.id, 
-      email: self.email, 
-      total_contributed_projects: self.total_contributed_projects, 
-      created_at: self.created_at, 
+      id: self.id,
+      email: self.email,
+      total_contributed_projects: self.total_contributed_projects,
+      created_at: self.created_at,
       last_sign_in_at: self.last_sign_in_at
     }.to_json
   end

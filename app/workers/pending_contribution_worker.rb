@@ -4,6 +4,6 @@ class PendingContributionWorker
 
   def perform resource_id
     resource = Contribution.find resource_id
-    resource.notify_to_contributor(:pending_payment) if resource.pending?
+    resource.notify_to_contributor(:pending_payment) if resource.pending? && resource.user.has_no_confirmed_contribution_to_project(resource.project.id)
   end
 end
