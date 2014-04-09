@@ -18,7 +18,7 @@ App.addChild('MixPanel', {
       self.trackUserVisit('Visited project page');
     });
     this.trackOnPage('contributions', 'show', function(){
-      self.trackOnMixPanel("Finished contribution");
+      self.track("Finished contribution");
     });
   },
 
@@ -42,7 +42,7 @@ App.addChild('MixPanel', {
     }
   },
 
-  trackOnMixPanel: function(text, options){
+  track: function(text, options){
     this.identifyUser();
     var obj             = $(this);
     var usr             = (this.user != null) ? this.user.id : null;
@@ -62,14 +62,14 @@ App.addChild('MixPanel', {
   mixPanelEvent: function(target, event, text, options){
     var self = this;
     this.$(target).on(event, function(){
-      self.trackOnMixPanel(text, options);
+      self.track(text, options);
     });
   },
 
   trackUserVisit: function(eventName){
     var self = this;
     window.setTimeout(function(){
-      self.trackOnMixPanel(eventName);
+      self.track(eventName);
     }, this.VISIT_MIN_TIME);
   },
 
