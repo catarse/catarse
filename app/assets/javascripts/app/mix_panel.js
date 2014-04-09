@@ -12,12 +12,19 @@ App.addChild('MixPanel', {
   },
 
   startTracking: function(){
+    var self = this;
     this.trackSelectedReward();
-    if(this.controller == 'projects' && this.action == 'show'){
-      this.trackUserVisit();
-    }
-    if(this.controller == 'contributions' && this.action == 'show'){
-      this.trackOnMixPanel("Finished contribution");
+    this.trackOnPage('projects', 'show', function(){
+      self.trackUserVisit('Visited project page');
+    });
+    this.trackOnPage('contributions', 'show', function(){
+      self.trackOnMixPanel("Finished contribution");
+    });
+  },
+
+  trackOnPage: function(controller, action, callback){
+    if(this.controller == controller && this.action == action){
+      callback();
     }
   },
 
@@ -59,10 +66,10 @@ App.addChild('MixPanel', {
     });
   },
 
-  trackUserVisit: function(){
+  trackUserVisit: function(eventName){
     var self = this;
     window.setTimeout(function(){
-      self.trackOnMixPanel('Visited project page');
+      self.trackOnMixPanel(eventName);
     }, this.VISIT_MIN_TIME);
   },
 
