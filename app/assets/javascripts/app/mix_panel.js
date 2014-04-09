@@ -15,7 +15,7 @@ App.addChild('MixPanel', {
     var self = this;
     this.trackSelectedReward();
     this.trackOnPage('projects', 'show', function(){
-      self.trackUserVisit('Visited project page');
+      self.trackVisit('Visited project page');
     });
     this.trackOnPage('contributions', 'show', function(){
       self.track("Finished contribution");
@@ -66,7 +66,7 @@ App.addChild('MixPanel', {
     });
   },
 
-  trackUserVisit: function(eventName){
+  trackVisit: function(eventName){
     var self = this;
     window.setTimeout(function(){
       self.track(eventName);

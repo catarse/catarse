@@ -26,6 +26,21 @@ describe("MixPanel", function() {
     spyOn(mixpanel.people, "set");
   });
 
+  describe("#trackVisit", function(){
+    var text = 'Foo Bar';
+
+    beforeEach(function() {
+      spyOn(window, "setTimeout").and.callFake(function(callback){ callback(); });;
+      spyOn(view, "track");
+      view.trackVisit(text);
+    });
+
+    it("should call mixpanel.track in timeout callback", function(){
+      expect(window.setTimeout).toHaveBeenCalledWith(jasmine.any(Function), view.VISIT_MIN_TIME);
+      expect(view.track).toHaveBeenCalledWith(text);
+    });
+  });
+
   describe("#track", function(){
     var text = 'Foo Bar';
 
