@@ -4,6 +4,8 @@ describe("MixPanel", function() {
 
   beforeEach(function(){
     view = new App.views.MixPanel();
+    view.controller = "testController";
+    view.action = "testAction";
     window.mixpanel = mixpanel = {
       name_tag: function(){},
       identify: function(){},
@@ -38,6 +40,22 @@ describe("MixPanel", function() {
 
     it("should indentify user", function() {
       expect(mixpanel.identify).toHaveBeenCalledWith(user.id);
+    });
+  });
+
+  describe("#trackOnPage", function(){
+    var callback = jasmine.createSpy().and.returnValue();
+    beforeEach(function() {
+    });
+
+    it("should not call callback if controller and action match parameters", function() {
+      view.trackOnPage('foo', 'bar', callback);
+      expect(callback).not.toHaveBeenCalled();
+    });
+
+    it("should call callback if controller and action match parameters", function() {
+      view.trackOnPage(view.controller, view.action, callback);
+      expect(callback).toHaveBeenCalled();
     });
   });
 
