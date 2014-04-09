@@ -14,11 +14,21 @@ App.addChild('MixPanel', {
   startTracking: function(){
     var self = this;
     this.trackSelectedReward();
-    this.trackOnPage('projects', 'show', function(){
-      self.trackVisit('Visited project page');
+    this.trackPageVisit('projects', 'show', 'Visited project page');
+    this.trackPageLoad('contributions', 'show', 'Finished contribution');
+  },
+
+  trackPageLoad: function(controller, action, text){
+    var self = this;
+    this.trackOnPage(controller, action, function(){
+      self.track(text);
     });
-    this.trackOnPage('contributions', 'show', function(){
-      self.track("Finished contribution");
+  },
+
+  trackPageVisit: function(controller, action, text){
+    var self = this;
+    this.trackOnPage(controller, action, function(){
+      self.trackVisit(text);
     });
   },
 
