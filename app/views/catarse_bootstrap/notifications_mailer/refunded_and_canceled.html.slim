@@ -4,10 +4,10 @@
 |Olá, <strong>#{contribution.user.display_name}</strong>!
 br
 br
-| Seu reembolso foi realizado com sucesso e o pagamento para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)}, cancelado. 
+| Seu reembolso foi realizado com sucesso e o pagamento para o projeto #{link_to contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink)}, cancelado.
 br
 br
-| A chave de identificação do seu apoio é: #{contribution.id}
+| A chave de identificação do seu apoio é: #{contribution.payment_id}
 br
 br
 | Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to contact_email}

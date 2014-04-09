@@ -3,11 +3,11 @@
 |Olá, #{contribution.user.name}!
 br
 br
-| Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))} 
+| Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))}
 | que você apoiou não atingiu a meta estabelecida e não foi financiado no #{Configuration[:company_name]}.
 br
 br
-| Em função disto, você recebeu #{contribution.display_value} em créditos para apoiar outros projetos. 
+| Em função disto, você recebeu #{contribution.display_value} em créditos para apoiar outros projetos.
 | Aqui temos uma seleção que pode te interessar:
 br
 br
@@ -22,7 +22,7 @@ br
 | Caso prefira, você pode pedir o #{link_to("reembolso seu apoio", credits_user_url(contribution.user))}.
 br
 br
-| Lembrando que a chave de identificação do seu apoio é: #{contribution.id}
+| Lembrando que a chave de identificação do seu apoio é: #{contribution.payment_id}
 br
 br
 | Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_contact]}
