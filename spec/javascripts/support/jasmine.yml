@@ -1,93 +1,29 @@
-# src_files
-#
-# Return an array of filepaths relative to src_dir to include before jasmine specs.
-# Default: []
-#
-# EXAMPLE:
-#
-# src_files:
-#   - lib/source1.js
-#   - lib/source2.js
-#   - dist/**/*.js
-#
+# path to parent directory of src_files
+# relative path from Rails.root
+# defaults to app/assets/javascripts
+src_dir: "app/assets/javascripts"
+
+# list of file expressions to include as source files
+# relative path from src_dir
 src_files:
-  - application.js
-  - app/assets/javascripts/lib/jquery.js
-  - assets/jquery_ujs.js
-  - app/assets/javascripts/lib/underscore.js
-  - app/assets/javascripts/lib/backbone.js
-  - app/assets/javascripts/lib/skull.js
-  - app/assets/javascripts/lib/infinite_scroll.js
-  - assets/best_in_place.js
-  - app/assets/javascripts/lib/*.js
-  - app/assets/javascripts/app/app.js
-  - app/assets/javascripts/app/project.js
-  - app/assets/javascripts/app/review.js
-  - app/assets/javascripts/app/registration.js
-  - app/assets/javascripts/app/updates.js
-  - app/assets/javascripts/**/*.js
+ - "application.{js.coffee,js,coffee}"
 
-asset_paths:
-  - app/assets/javascripts
-  - vendor/assets/javascripts
-
-# stylesheets
-#
-# Return an array of stylesheet filepaths relative to src_dir to include before jasmine specs.
-# Default: []
-#
-# EXAMPLE:
-#
-# stylesheets:
-#   - css/style.css
-#   - stylesheets/*.css
-#
-stylesheets:
-
-# helpers
-#
-# Return an array of filepaths relative to spec_dir to include before jasmine specs.
-# Default: ["helpers/**/*.js"]
-#
-# EXAMPLE:
-#
-# helpers:
-#   - helpers/**/*.js
-#
-helpers:
-  - 'helpers/**/*.js'
-
-# spec_files
-#
-# Return an array of filepaths relative to spec_dir to include.
-# Default: ["**/*[sS]pec.js"]
-#
-# EXAMPLE:
-#
-# spec_files:
-#   - '**/*[sS]pec.js'
-#
-spec_files:
-  - '**/*[sS]pec.js'
-
-# src_dir
-#
-# Source directory path. Your src_files must be returned relative to this path. Will use root if left blank.
-# Default: project root
-#
-# EXAMPLE:
-#
-# src_dir: public
-#
-src_dir:
-
-# spec_dir
-#
-# Spec directory path. Your spec_files must be returned relative to this path.
-# Default: spec/javascripts
-#
-# EXAMPLE:
-#
-# spec_dir: spec/javascripts
-#
+# path to parent directory of spec_files
+# relative path from Rails.root
+# defaults to spec/javascripts
 spec_dir: spec/javascripts
+
+# list of file expressions to include as helpers into spec runner
+# relative path from spec_dir
+helpers:
+  - "helpers/**/*.{js.coffee,js,coffee}"
+
+# list of file expressions to include as specs into spec runner
+# relative path from spec_dir
+spec_files:
+  - "**/*[Ss]pec.{js.coffee,js,coffee}"
+
+# path to directory of temporary files
+# (spec runner and asset cache)
+# defaults to tmp/jasmine
+tmp_dir: "tmp/jasmine"
