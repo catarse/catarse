@@ -26,6 +26,42 @@ describe("MixPanel", function() {
     spyOn(mixpanel.people, "set");
   });
 
+  describe("#trackPageLoad", function(){
+    var text = 'Foo Bar';
+
+    beforeEach(function() {
+      spyOn(view, "track");
+    });
+
+    it("should not call trackVisit when controller and action do not match arguments", function(){
+      view.trackPageLoad(view.controller, 'bar', text);
+      expect(view.track).not.toHaveBeenCalled();
+    });
+
+    it("should call trackVisit when controller and action match arguments", function(){
+      view.trackPageLoad(view.controller, view.action, text);
+      expect(view.track).toHaveBeenCalledWith(text);
+    });
+  });
+
+  describe("#trackPageVisit", function(){
+    var text = 'Foo Bar';
+
+    beforeEach(function() {
+      spyOn(view, "trackVisit");
+    });
+
+    it("should not call trackVisit when controller and action do not match arguments", function(){
+      view.trackPageVisit(view.controller, 'bar', text);
+      expect(view.trackVisit).not.toHaveBeenCalled();
+    });
+
+    it("should call trackVisit when controller and action match arguments", function(){
+      view.trackPageVisit(view.controller, view.action, text);
+      expect(view.trackVisit).toHaveBeenCalledWith(text);
+    });
+  });
+
   describe("#trackVisit", function(){
     var text = 'Foo Bar';
 
