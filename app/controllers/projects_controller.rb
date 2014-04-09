@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
 
+  layout :use_catarse_bootstrap
+
   def index
     index! do |format|
       format.html do
@@ -88,6 +90,10 @@ class ProjectsController < ApplicationController
   end
 
   protected
+  def use_catarse_bootstrap
+    (['create', 'new', 'show'].include?(action_name) ? 'catarse_bootstrap' : 'application')
+  end
+
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end

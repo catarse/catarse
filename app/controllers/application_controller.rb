@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   before_action :referal_it!
 
   def channel
-    Channel.find_by_permalink(request.subdomain.to_s)
+    Channel.find_by_permalink(request.subdomain.to_s) || Channel.new(name: ::Configuration[:company_name])
   end
 
   def referal_link
@@ -80,9 +80,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:name, :email, :password, :newsletter)
     end
-  end
-
-  def current_ability
-    @current_ability ||= Ability.new(current_user, { channel: channel })
   end
 end

@@ -1,0 +1,43 @@
+p
+  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{Configuration[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
+
+= simple_form_for @project, html: { class: 'project-form' } do |form|
+  - if current_user.admin
+    = form.input :user_id, as: :hidden
+    = form.input :permalink, as: :hidden
+
+  - if policy(@project).permitted_for?(:name, :update)
+    = form.input :name, as: :string, label: t('submit_project.name')
+    p = t('submit_project.name_hint')
+
+  - if policy(@project).permitted_for?(:headline, :update)
+    = form.input :headline, as: :string, label: t('submit_project.headline')
+    p = t('submit_project.headline_hint')
+
+  - if policy(@project).permitted_for?(:category_id, :update)
+    = form.input :category, as: :select, collection: Category.array, label: t('submit_project.category_id')
+    p = t('submit_project.category_id_hint', href: explore_url(subdomain: nil)).html_safe
+
+  - if policy(@project).permitted_for?(:video_url, :update)
+    = form.input :video_url, as: :string, label: t('submit_project.video_url')
+    p = t('submit_project.video_url_hint')
+
+  - if policy(@project).permitted_for?(:uploaded_image, :update)
+    = form.input :uploaded_image, as: :file
+    p = (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') )
+
+  - if policy(@project).permitted_for?(:online_days, :update)
+    = form.input :online_days, label: t('submit_project.online_days')
+    p = t('submit_project.online_days_hint')
+
+  - if policy(@project).permitted_for?(:goal, :update)
+    = form.input :goal, label: t('submit_project.goal')
+    p = t('submit_project.goal_hint').html_safe
+
+  - if policy(@project).permitted_for?(:about, :update)
+    = form.input :about, label: t('submit_project.about')
+    p = t('submit_project.about_hint')
+
+    = render 'formatting_tips'
+
+    = form.submit class: 'submit-form'

@@ -24,6 +24,7 @@ pt:
     meta_title:  "%{title} · %{company_name}"
     description: "O Catarse é uma ferramenta diferente – e colaborativa – para tirar o seu projeto do papel!"
     keywords: "catarse, crowdfunding, financiamento coletivo, projeto, comunidade, open source"
+
   login:
     forgot_password:
       welcome: 'Redefinir senha'
@@ -80,7 +81,7 @@ pt:
       subtitle: apoiadores
     goal:
       subtitle: "atingidos de %{total}"
-  project_by: "projeto por"
+  project_by: "Projeto por"
   tell_about_this_contribution: "Conte para o mundo sobre o seu apoio!"
   share_my_contributions: "Confira o projeto "
   tell_about_this_project: "Conte para o mundo sobre o seu projeto!"
@@ -205,11 +206,11 @@ pt:
         password_confirmation: "Confirmação de senha"
         phone_number: "Telefone (fixo ou celular)"
     models:
-      contribution: Apoiador
-      channel: Canal
-      category: Categoria
-      project: Projeto
-      reward: Recompensa
+      contribution: apoiador
+      channel: canal
+      category: categoria
+      project: projeto
+      reward: recompensa
   contribution:
     display_confirmed_at: "Há %{time_ago}"
     reward_must_be_from_project: "deve ser do mesmo projeto"
@@ -293,11 +294,6 @@ pt:
         more_links: "Quais serão os canais de mobilização utilizados? (Coloque links como Facebook, Twitter, Blogs... tudo que irá te ajudar a divulgar o seu projeto)"
         online_days: "Em média os projetos ficam no ar por 40 dias."
         first_contributions: "Para sua campanha ter sucesso, é fundamental trazer a sua rede de contato mais próxima. Por isso, liste aqui quem você acredita que serão seus primeiros 20 apoiadores"
-      reward:
-        description: "Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!"
-        maximum_contributions: "Se sua recompensa é limitada, informe o máximo de pessoas."
-        minimum_value: "Este é valor mínimo de apoio para escolher esta recompensa."
-        days_to_delivery: "Informe em quantos dias, após o sucesso do projeto, você planeja entregar essa recompensa"
     labels:
       contribution:
         anonymous: "Quero que meu apoio seja anônimo."
@@ -551,7 +547,7 @@ pt:
       new_reward: "Cadastrar recompensa"
       edit_reward: "Editar recompensa"
       reward_title: "Para %{minimum} ou mais"
-      reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
+      reward_deliver_time: "Estimativa de Entrega:"
       contributions_to_confirm:
         one: "1 apoio em prazo de confirmação."
         other: "%{count} apoios em prazo de confirmação."
@@ -649,13 +645,8 @@ pt:
        Fazer um Rascunho de Projeto não significa que seu projeto irá ao ar no site do Catarse.
        Somos uma plataforma que seleciona as propostas enviadas e nosso atendimento irá avaliar o foco, a viabilidade, a
        consistência e a qualidade de apresentação do seu projeto. Se entendermos que ele não está de acordo com os
-       <a href='http://suporte.catarse.me/knowledgebase/articles/241190-diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos' target='__blank'>Critérios de Seleção</a> da plataforma, ele poderá ser recusado pela nossa equipe.
+       <a href='http://suporte.catarse.me/knowledgebase/articles/241190-diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos' target='__blank'>Critérios de Seleção</a> da plataforma, ele poderá ser recusado pela nossa equipe."
 
-      "
-    twitter:
-      take_a_look: "Confira o projeto %{name} no @catarse"
-    video_embed:
-      a_project_by_html: "Um projeto de %{link} no"
   projects_mailer:
     start_project_email:
       subject: "Projeto enviado por %{name}"

@@ -1,45 +1,47 @@
 - collection.rank(:row_order).each do |reward|
 
-  div[id="reward_#{reward.id}" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="box #{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !policy(reward).update?  ? 'clickable'  : '' )}"]
+  li[id="reward_#{reward.id}" class="reward-item" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="#{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !policy(reward).update?  ? 'clickable'  : '' )}"]
+
     - if policy(reward).update?
+      .hide id="reward#{reward.id}Editor"
+        = image_tag 'loading.gif'
 
-      .bootstrap-form.bootstrap-twitter 
-        .hide id="reward#{reward.id}Editor"
-          = image_tag 'loading.gif'
+      = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(parent, reward)}, class: 'edit-reward show_reward_form' do
+          = t('projects.reward.edit')
 
-        .bootstrap-twitter
-          = link_to "javascript:void(0);", data: {target: "#reward#{reward.id}Editor", path: edit_project_reward_path(parent, reward)}, class: 'show_reward_form btn btn-mini pull-right btn-primary' do
-            i.icon-pencil.icon-white
+    h4.reward-price
+      = t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
+    p.reward-bakers
+      = pluralize(reward.contributions.with_state('confirmed').count, t('contribution_singular'), t('contribution_plural'))
 
-    h2= t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
-    em= pluralize(reward.contributions.with_state('confirmed').count, t('contribution_singular'), t('contribution_plural'))
-    .clearfix
-    p
-      = reward.display_description
     - if reward.maximum_contributions
-      .maximum_contributions.clearfix
+      .maximum_contributions
         - if reward.sold_out?
-          .sold_out= t('reward.sold_out')
+          p.finished
+            = t('reward.sold_out')
         - else
-          .limited= t('reward.limited')
-          .remaining
-            = reward.display_remaining
+          p
+            = t('reward.limited')
+            span
+              = '(' + reward.display_remaining + ')'
       - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count
       - if in_time_to_confirm > 0
-        .maximum_contributions.in_time_to_confirm.clearfix
-          .pending= t('projects.rewards.contributions_to_confirm', count: in_time_to_confirm)
-      .clearfix
+        .in_time_to_confirm
+          p
+            = t('projects.rewards.contributions_to_confirm', count: in_time_to_confirm)
+
+    p
+      = reward.display_description
+
     - if reward.days_to_delivery.present?
-      div class="reward_deliver_at"
-        p= "#{t('projects.rewards.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
+      div.reward_deliver_at
+        p
+          strong
+          = t('projects.rewards.reward_deliver_time')
+          | &nbsp;
+          = reward.display_deliver_estimate
+
+
     - if current_user && current_user.admin
       div class="reward_updated_at"
         p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
-      - if reward.has_modification?
-        div class="description_version rewardVersioning#{reward.id}"
-          p= reward.last_description
-        .maximum_contributions.in_time_to_confirm.clearfix
-          .updated_reward
-            span id="rewardVersioning#{reward.id}"
-              = 'Veja a versão anterior.'
-.clearfix
