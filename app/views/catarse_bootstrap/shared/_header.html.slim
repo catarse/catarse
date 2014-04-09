@@ -14,7 +14,7 @@ header
       = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if Configuration[:support_forum].present?
       = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank, class: 'header-nav-item' if Configuration['blog_url'].present?
 
-    .large-2.columns.user-dropdown
+    div class="large-2 columns #{user_signed_in? ? 'user-dropdown' : 'user-utilities'}"
       - if current_user
         = link_to '#', class: 'user-menu' do
           = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')

@@ -1,11 +1,11 @@
 .update
-  h2 = link_to "#updates/#{update.id}", id: "updates/#{update.id}" do
+  h3 = link_to "#updates/#{update.id}", id: "updates/#{update.id}" do
     = update.title
 
-  p
+  p.update-time
     = l(update.created_at, format: :updates)
-
-  = raw(update.comment_html)
+  .update-text
+    = raw(update.comment_html)
 
   - url = project_by_slug_url(@project.permalink, update_id: update.id, locale: I18n.locale, anchor: 'updates')
   .twitter_share= render_twitter text: "#{update.title}", url: url

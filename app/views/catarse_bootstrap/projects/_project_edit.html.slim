@@ -11,7 +11,7 @@ p
     p = t('submit_project.name_hint')
 
   - if policy(@project).permitted_for?(:headline, :update)
-    = form.input :headline, as: :string, label: t('submit_project.headline')
+    = form.input :headline, as: :text, label: t('submit_project.headline'), input_html: { style: 'height: 5em;'}
     p = t('submit_project.headline_hint')
 
   - if policy(@project).permitted_for?(:category_id, :update)
@@ -23,7 +23,7 @@ p
     p = t('submit_project.video_url_hint')
 
   - if policy(@project).permitted_for?(:uploaded_image, :update)
-    = form.input :uploaded_image, as: :file
+    = form.input :uploaded_image, as: :file, label: t('submit_project.uploaded_image')
     p = (@project.uploaded_image.present? ? image_tag(@project.uploaded_image.project_thumb.url, size: '220x172') : t('formtastic.hints.project.uploaded_image') )
 
   - if policy(@project).permitted_for?(:online_days, :update)
