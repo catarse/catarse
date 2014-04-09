@@ -47,7 +47,7 @@ describe("Skull.View", function(){
     it("should not create new instance if it's already in there", function() {
       var AnotherClass = jasmine.createSpy('AnotherClass');
       view.addView('childClass', AnotherClass);
-      expect(AnotherClass).wasNotCalled();
+      expect(AnotherClass).not.toHaveBeenCalled();
       expect(view._childClass).toEqual(jasmine.any(ChildClass));
     });
   });  
@@ -73,7 +73,7 @@ describe("Skull.View", function(){
     });
 
     it("should create route in rootView router", function() {
-      expect(view.router().route).wasCalledWith(routeName, routeName.split("/")[0], jasmine.any(Function));
+      expect(view.router().route).toHaveBeenCalledWith(routeName, routeName.split("/")[0], jasmine.any(Function));
     });
   });
   
@@ -88,16 +88,16 @@ describe("Skull.View", function(){
     });
 
     it("should not call the getter if the child el is present in parent's DOM", function() {
-      expect(view.addView).wasNotCalledWith('anotherChildClass', ViewClass.views.AnotherChildClass);
+      expect(view.addView).not.toHaveBeenCalledWith('anotherChildClass', ViewClass.views.AnotherChildClass);
     });
 
     it("should call the getter if the child el is present in parent's DOM", function() {
-      expect(view.addView).wasCalledWith('childClass', ViewClass.views.ChildClass);
+      expect(view.addView).toHaveBeenCalledWith('childClass', ViewClass.views.ChildClass);
     });
     
     it("should define a getter that calls addView with keys and values of views object", function() {
       view.anotherChildClass; 
-      expect(view.addView).wasCalledWith('anotherChildClass', ViewClass.views.AnotherChildClass);
+      expect(view.addView).toHaveBeenCalledWith('anotherChildClass', ViewClass.views.AnotherChildClass);
     });
   });  
 });
