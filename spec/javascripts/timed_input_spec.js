@@ -13,13 +13,13 @@ describe("TimedInput", function() {
     });
 
     it("should bind the setTimer to the keyup event of $el", function() {
-      expect(view.$el.keyup).wasCalledWith(view.setTimer);
+      expect(view.$el.keyup).toHaveBeenCalledWith(view.setTimer);
     });
   });
 
   describe("setTimer", function() {
     beforeEach(function() {
-      spyOn(window, "setTimeout").andCallFake(function(callback, timeout){
+      spyOn(window, "setTimeout").and.callFake(function(callback, timeout){
         callback();
         return 123;
       });
@@ -34,7 +34,7 @@ describe("TimedInput", function() {
       });
 
       it("should cancell the previous timeout before setting a new one", function() {
-        expect(window.clearTimeout).wasCalledWith(456);
+        expect(window.clearTimeout).toHaveBeenCalledWith(456);
       });
 
       it("should store the timeoutID", function() {
@@ -48,11 +48,11 @@ describe("TimedInput", function() {
       });
 
       it("should call the trigger the timedKeyup inside callback", function() {
-        expect(view.$el.trigger).wasCalledWith('timedKeyup', 'event');
+        expect(view.$el.trigger).toHaveBeenCalledWith('timedKeyup', 'event');
       });
 
       it("should call the setTimeout", function() {
-        expect(window.setTimeout).wasCalledWith(jasmine.any(Function), view.timeout);
+        expect(window.setTimeout).toHaveBeenCalledWith(jasmine.any(Function), view.timeout);
       });
 
       it("should store the timeoutID", function() {

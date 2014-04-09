@@ -10,15 +10,15 @@ describe("ReviewForm", function() {
       var el;
       beforeEach(function(){
         el = { length: 0, on: function(){}, hide: function(){} };
-        spyOn(view, '$').andReturn(el);
+        spyOn(view, '$').and.returnValue(el);
         spyOn(el, "hide");
         view.activate();
       });
 
       it("should fadeOut address_data fieldset", function(){
-        expect(view.$).wasCalledWith("#live_in_brazil:checked");
-        expect(view.$).wasCalledWith("fieldset.address_data");
-        expect(el.hide).wasCalled();
+        expect(view.$).toHaveBeenCalledWith("#live_in_brazil:checked");
+        expect(view.$).toHaveBeenCalledWith("fieldset.address_data");
+        expect(el.hide).toHaveBeenCalled();
       });
 
     });
@@ -32,12 +32,12 @@ describe("ReviewForm", function() {
         view.$el.append('<input required="required"/><input />');
         $('html').append(view.$el);
         var $inputs = view.$('input');
-        spyOn(view, "$").andReturn($inputs);
+        spyOn(view, "$").and.returnValue($inputs);
         valid = view.validate();
       });
 
       it("should look only for visible elements", function() {
-        expect(view.$).wasCalledWith('input:visible');
+        expect(view.$).toHaveBeenCalledWith('input:visible');
       });
 
       it("should return false", function() {
@@ -63,23 +63,23 @@ describe("ReviewForm", function() {
 
     describe("when validate is true", function() {
       beforeEach(function() {
-        spyOn(view, "validate").andReturn(true);
+        spyOn(view, "validate").and.returnValue(true);
         view.acceptTerms();
       });
 
       it("should call updateContribution", function() {
-        expect(view.updateContribution).wasCalled();
+        expect(view.updateContribution).toHaveBeenCalled();
       });
     });
 
     describe("when validate is false", function() {
       beforeEach(function() {
-        spyOn(view, "validate").andReturn(false);
+        spyOn(view, "validate").and.returnValue(false);
         view.acceptTerms();
       });
 
       it("should not call updateContribution", function() {
-        expect(view.updateContribution).wasNotCalled();
+        expect(view.updateContribution).not.toHaveBeenCalled();
       });
     });
   });
@@ -89,16 +89,16 @@ describe("ReviewForm", function() {
 
     beforeEach(function() {
       spyOn(input, "addClass");
-      spyOn(view, "$").andReturn(input);
+      spyOn(view, "$").and.returnValue(input);
       view.invalid({ currentTarget: 'error input' })
     });
 
     it("should get event currentTarget", function() {
-       expect(view.$).wasCalledWith('error input');
+       expect(view.$).toHaveBeenCalledWith('error input');
     });
 
     it("should add class to input", function() {
-      expect(input.addClass).wasCalledWith('error');
+      expect(input.addClass).toHaveBeenCalledWith('error');
     });
   });
 
@@ -107,7 +107,7 @@ describe("ReviewForm", function() {
 
     beforeEach(function() {
       spyOn(input, "removeClass");
-      spyOn(view, "$").andReturn(input);
+      spyOn(view, "$").and.returnValue(input);
     });
 
     describe("when event.currentTarget.checkValidity is false", function() {
@@ -117,7 +117,7 @@ describe("ReviewForm", function() {
       });
 
       it("should not call removeClass", function() {
-        expect(input.removeClass).wasNotCalled();
+        expect(input.removeClass).not.toHaveBeenCalled();
       });
     });
 
@@ -128,11 +128,11 @@ describe("ReviewForm", function() {
       });
 
       it("should get event currentTarget", function() {
-        expect(view.$).wasCalledWith(currentTarget);
+        expect(view.$).toHaveBeenCalledWith(currentTarget);
       });
 
       it("should remove class to input", function() {
-        expect(input.removeClass).wasCalledWith('error');
+        expect(input.removeClass).toHaveBeenCalledWith('error');
       });
     });
   });
