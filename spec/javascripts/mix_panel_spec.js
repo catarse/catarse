@@ -1,6 +1,12 @@
 describe("MixPanel", function() {
   var view;
   var mixpanel;
+  var default_options = {
+    'page name':  document.title,
+    'user_id':    null,
+    'project':    null,
+    'url':        window.location
+  };
 
   beforeEach(function(){
     view = new App.views.MixPanel();
@@ -18,6 +24,18 @@ describe("MixPanel", function() {
     spyOn(mixpanel, "identify");
     spyOn(mixpanel, "track");
     spyOn(mixpanel.people, "set");
+  });
+
+  describe("#track", function(){
+    var text = 'Foo Bar';
+
+    beforeEach(function() {
+      view.track(text);
+    });
+
+    it("should call mixpanel.track", function(){
+      expect(mixpanel.track).toHaveBeenCalledWith(text, default_options);
+    });
   });
 
   describe("#identifyUser", function() {
@@ -65,12 +83,6 @@ describe("MixPanel", function() {
     });
     var target = '#rewards .clickable';
     var event = 'click';
-    var default_options = {
-      'page name':  document.title,
-      'user_id':    null,
-      'project':    null,
-      'url':        window.location
-    };
     var text = 'Clicked on a reward';
 
     beforeEach(function() {
