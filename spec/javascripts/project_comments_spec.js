@@ -15,7 +15,7 @@ describe("ProjectComments", function() {
 
   describe("#activate", function(){
     it("should bind render to parent's onSelectTab", function() {
-      expect(parentView.on).wasCalledWith('selectTab', view.render);
+      expect(parentView.on).toHaveBeenCalledWith('selectTab', view.render);
     });
   });
 
@@ -26,12 +26,12 @@ describe("ProjectComments", function() {
 
     describe("when $el is not visible", function(){
       beforeEach(function(){
-        spyOn(view.$el, "is").andReturn(false);
+        spyOn(view.$el, "is").and.returnValue(false);
         view.render();
       });
 
       it("should test $el visibility", function() {
-        expect(view.$el.is).wasCalledWith(':visible');
+        expect(view.$el.is).toHaveBeenCalledWith(':visible');
       });
 
       it("should not add div.fb-comments to DOM", function() {
@@ -39,18 +39,18 @@ describe("ProjectComments", function() {
       });
 
       it("should not call FB.XFBML.parse", function() {
-        expect(FB.XFBML.parse).wasNotCalled();
+        expect(FB.XFBML.parse).not.toHaveBeenCalled();
       });
     });
 
     describe("when $el is visible", function(){
       beforeEach(function(){
-        spyOn(view.$el, "is").andReturn(true);
+        spyOn(view.$el, "is").and.returnValue(true);
         view.render();
       });
 
       it("should test $el visibility", function() {
-        expect(view.$el.is).wasCalledWith(':visible');
+        expect(view.$el.is).toHaveBeenCalledWith(':visible');
       });
 
       it("should add div.fb-comments to DOM", function() {
@@ -58,7 +58,7 @@ describe("ProjectComments", function() {
       });
 
       it("should call FB.XFBML.parse", function() {
-        expect(FB.XFBML.parse).wasCalled();
+        expect(FB.XFBML.parse).toHaveBeenCalled();
       });
     });
 

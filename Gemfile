@@ -122,6 +122,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'pry'
+  gem 'jasmine-rails'
 end
 
 group :test do
@@ -132,7 +133,6 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara',   '~> 2.1.0'
-  gem 'jasmine'
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
 end

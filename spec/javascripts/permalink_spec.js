@@ -14,24 +14,24 @@ describe("Permalink", function() {
     describe("when pattern is matched", function() {
       beforeEach(function() {
         spyOn(view.$el, "trigger");
-        get.andReturn({ complete: function(callback){ callback({ status: 200 }); } });
+        get.and.returnValue({ complete: function(callback){ callback({ status: 200 }); } });
         view.$el.val('a');
       });
 
       it("should not trigger invalid if return status is 404", function() {
-        get.andReturn({ complete: function(callback){ callback({ status: 404 }); } });
+        get.and.returnValue({ complete: function(callback){ callback({ status: 404 }); } });
         view.checkPermalink();
-        expect(view.$el.trigger).wasNotCalled();
+        expect(view.$el.trigger).not.toHaveBeenCalled();
       });
 
       it("should trigger invalid if return status is not 404", function() {
         view.checkPermalink();
-        expect(view.$el.trigger).wasCalledWith('invalid');
+        expect(view.$el.trigger).toHaveBeenCalledWith('invalid');
       });
       
       it("should search for permalink", function() {
         view.checkPermalink();
-        expect($.get).wasCalledWith('/pt/a');
+        expect($.get).toHaveBeenCalledWith('/pt/a');
       });
     });
 
@@ -42,7 +42,7 @@ describe("Permalink", function() {
       });
 
       it("should not search for permalink", function() {
-        expect($.get).wasNotCalled();
+        expect($.get).not.toHaveBeenCalled();
       });
     });  
   });  
