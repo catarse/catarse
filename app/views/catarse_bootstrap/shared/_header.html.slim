@@ -2,7 +2,7 @@ header
   .row
     .large-3.columns
       h1
-        = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo', :title => Configuration[:company_name]
+        = link_to "#{CatarseSettings[:company_name]}", root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'logo', :title => CatarseSettings[:company_name]
     .large-3.columns.call-to-action
       = link_to t('layouts.header.submit'), page_path(:how_it_works), :class => 'project'
       = link_to t('layouts.header.discover'), explore_path, :class => 'project'
@@ -11,8 +11,8 @@ header
         = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "discover-form-input"
         = submit_tag
     .large-1.columns.user-utilities
-      = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if Configuration[:support_forum].present?
-      = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank, class: 'header-nav-item' if Configuration['blog_url'].present?
+      = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+      = link_to t('layouts.header.blog'), CatarseSettings['blog_url'], target: :_blank, class: 'header-nav-item' if CatarseSettings['blog_url'].present?
 
     .large-2.columns.user-dropdown
       - if current_user

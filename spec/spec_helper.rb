@@ -94,9 +94,9 @@ RSpec.configure do |config|
     Notification.stub(:notify_once)
     Calendar.any_instance.stub(:fetch_events_from)
     Blog.stub(:fetch_last_posts).and_return([])
-    Configuration[:base_domain] = 'localhost'
-    Configuration[:email_contact] = 'foo@bar.com'
-    Configuration[:company_name] = 'Foo Bar Company'
+    CatarseSettings[:base_domain] = 'localhost'
+    CatarseSettings[:email_contact] = 'foo@bar.com'
+    CatarseSettings[:company_name] = 'Foo Bar Company'
     Contribution.any_instance.stub(:payment_engine).and_return(PaymentEngines::Interface.new)
   end
 end
