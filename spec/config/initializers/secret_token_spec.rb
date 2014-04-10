@@ -10,10 +10,10 @@ describe 'find_secure_token' do
 
   context 'when database does not contain secret_token in configurations' do
     before do
-      ::Configuration[:secret_token] = nil
+      ::CatarseSettings[:secret_token] = nil
     end
     it{ should_not be_nil }
-    it{ should == ::Configuration[:secret_token] }
+    it{ should == ::CatarseSettings[:secret_token] }
   end
 
 end
@@ -27,10 +27,10 @@ describe 'find_secure_key_base' do
 
   context 'when database does not contain secret_key_base in configurations' do
     before do
-      ::Configuration[:secret_key_base] = nil
+      ::CatarseSettings[:secret_key_base] = nil
     end
     it{ should_not be_nil }
-    it{ should == ::Configuration[:secret_key_base] }
+    it{ should == ::CatarseSettings[:secret_key_base] }
   end
 
 end

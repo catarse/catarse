@@ -47,8 +47,8 @@ describe Concerns::SocialHelpersHandler do
       @controller.request = OpenStruct.new(host: 'test.local')
 
       controller.stub(:current_user).and_return(current_user)
-      ::Configuration[:uservoice_subdomain] = 'test'
-      ::Configuration[:uservoice_sso_key] = '12345'
+      CatarseSettings[:uservoice_subdomain] = 'test'
+      CatarseSettings[:uservoice_sso_key] = '12345'
     end
 
     it { expect(@controller.display_uservoice_sso).to_not be_nil }

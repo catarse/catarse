@@ -1,9 +1,9 @@
 = content_for :meta_tags do
   -# Meta tags for facebook social graph
   meta property="og:title" content=@user.name
-  meta property="og:url" content=="#{Configuration[:base_url]}#{user_path(@user)}"
+  meta property="og:url" content=="#{CatarseSettings[:base_url]}#{user_path(@user)}"
   meta property="og:image" content==@user.display_image
-  meta property="og:site_name" content=::Configuration[:company_name]
+  meta property="og:site_name" content=CatarseSettings[:company_name]
   meta property="og:description" content=@user.bio
   meta property="fb:admins" content="#{fb_admins}"
 
@@ -47,7 +47,7 @@
           - if !policy(@user).update?
             p.empty.hide= t('users.contributions.no_contributions', name: @user.display_name)
           - else
-            p.empty.hide= t('users.contributions.no_contributions_current_user_html', link: ::Configuration[:base_url])
+            p.empty.hide= t('users.contributions.no_contributions_current_user_html', link: CatarseSettings[:base_url])
           .results
           .clearfix
           .loading= image_tag "loading.gif"

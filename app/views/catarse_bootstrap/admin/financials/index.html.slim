@@ -60,7 +60,7 @@
             td= project.display_goal
             td= project.display_pledged
             td= number_to_currency project.total_payment_service_fee, precision: 2
-            - catarse_fee = Configuration[:catarse_fee].to_f * project.pledged
+            - catarse_fee = CatarseSettings[:catarse_fee].to_f * project.pledged
             td
               = number_to_currency catarse_fee, precision: 2
             td

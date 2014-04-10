@@ -27,6 +27,7 @@ gem 'pg_search'
 gem 'schema_plus'
 gem 'schema_associations'
 gem 'chartkick'
+gem 'catarse_settings_db'
 
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'

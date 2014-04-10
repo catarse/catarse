@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
                           { EMAIL: user.email, FNAME: user.name,
                           CITY: (user.address_city||'outro / other'), STATE: (user.address_state||'outro / other') }
                         },
-                        list_id: Configuration[:mailchimp_list_id],
+                        list_id: CatarseSettings[:mailchimp_list_id],
                         subscribe_when: ->(user) { (user.newsletter_changed? && user.newsletter) || (user.newsletter && user.new_record?) },
                         unsubscribe_when: ->(user) { user.newsletter_changed? && !user.newsletter },
                         unsubscribe_email: ->(user) { user.email }
