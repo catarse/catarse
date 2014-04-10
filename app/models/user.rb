@@ -123,6 +123,16 @@ class User < ActiveRecord::Base
     user_total.try(:total_contributed_projects).to_i
   end
 
+  def to_analytics_json
+    {
+      id: self.id, 
+      email: self.email, 
+      total_contributed_projects: self.total_contributed_projects, 
+      created_at: self.created_at, 
+      last_sign_in_at: self.last_sign_in_at
+    }.to_json
+  end
+
   def facebook_id
     auth = authorizations.joins(:oauth_provider).where("oauth_providers.name = 'facebook'").first
     auth.uid if auth

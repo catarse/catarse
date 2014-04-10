@@ -1,5 +1,5 @@
 App.addChild('Sort', {
-  el: '.admin-projects',
+  el: '.admin',
 
   events: {
     'click [data-sort]' : 'sort'
@@ -7,7 +7,7 @@ App.addChild('Sort', {
 
   activate: function(){
     this.form = this.$('form');
-    this.table = this.$('table.admin-projects-table');
+    this.table = this.$('table');
     this.selectSorting();
   },
 

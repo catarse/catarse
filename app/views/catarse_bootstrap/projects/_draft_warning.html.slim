@@ -1,20 +1,20 @@
 - if policy(@project).update?
   .project-warning
-    h2
+    h3
       = 'Bem-vindo ao Rascunho!'
 
     #project_warning_text
       p
-        = "Realize todas as alterações no formulário pela aba <strong>#{link_to 'EDIÇÃO', project_by_slug_path(permalink: @project.permalink, anchor: 'edit')}</strong> e depois clique em <strong>ATUALIZAR INFORMAÇÕES</strong>.".html_safe
+        = "Realize todas as alterações no formulário pela aba #{link_to 'EDIÇÃO', project_by_slug_path(permalink: @project.permalink, anchor: 'edit')} e depois clique em ATUALIZAR INFORMAÇÕES.".html_safe
       p
-        = 'As recompensas podem ser adicionadas diretamente na coluna onde ficam expostas, para isso basta clicar em <strong>ADICIONAR RECOMPENSA</strong>.'.html_safe
+        = 'As recompensas podem ser adicionadas diretamente na coluna onde ficam expostas, para isso basta clicar em ADICIONAR RECOMPENSA.'.html_safe
       .accordion
         h4
           = 'Importante'
         ul.accordion-content
           li
             p
-              = 'Seu projeto só será avaliado pela nossa equipe quando você clicar no botão <strong>ENVIAR PROJETO</strong>. Iremos analisar a consistência do seu projeto apenas com base nas informações presentes no seu rascunho, por isso seja bastante claro e objetivo na construção desta página. O <strong>vídeo</strong> não é obrigatório para a avaliação, apenas para o projeto ir ao ar.'.html_safe
+              = 'Seu projeto só será avaliado pela nossa equipe quando você clicar no botão ENVIAR PROJETO. Iremos analisar a consistência do seu projeto apenas com base nas informações presentes no seu rascunho, por isso seja bastante claro e objetivo na construção desta página. O vídeo não é obrigatório para a avaliação, apenas para o projeto ir ao ar.'.html_safe
             p
               = "Caso você já o tenha pronto, disponibilize pra gente. Quanto mais informação para o nosso atendimento e avaliação, melhor. Não deixe de estudar os artigos da nossa #{link_to 'Central de Suporte!', ::Configuration[:support_forum], target: '__blank'} Lá você pode se informar sobre a maioria dos processos que ocorrem antes, durante e depois de uma campanha no Catarse!".html_safe
 
@@ -32,7 +32,7 @@
 
 - else
   .project-warning
-    h2
+    h3
       = 'Atenção! Este projeto ainda<br> está em rascunho.'.html_safe
 
     #project_warning_text

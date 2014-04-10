@@ -64,7 +64,7 @@ pt:
         failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
         rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
         in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
-        successful: "Este projeto foi bem-sucedido e foi financiado em %{date}"
+        successful: "Este projeto foi bem-sucedido e foi financiado <br/> em %{date}"
         waiting_funds: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
         draft: "Esse projeto é apenas um rascunho e ainda não está aberto para receber apoios."
       reached_of: "Atingidos de"

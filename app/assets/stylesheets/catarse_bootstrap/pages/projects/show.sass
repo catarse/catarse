@@ -1,6 +1,6 @@
 .project-warning
 	background: $blue-one
-	padding: 5.5em 3em
+	padding: 5em 2.5em 6.5em
 	width: 320px
 	position: fixed
 	top: 0
@@ -9,23 +9,25 @@
 	-webkit-box-sizing: border-box
 	box-sizing: border-box
 	height: 100%
-	overflow: scroll
+	overflow: auto
 	z-index: 100
-	h2
+	h3
 		font-size: 18px
 		color: white
 		font-weight: 500
 		position: fixed
 		top: 0
 		background: $blue-one
-		padding: 2em 0 1.9em
+		padding: 2em 0 1.3em
 		width: 280px
 		margin: 0
 		z-index: 300
 	li,p, h4
 		color: $gray-two
+		font-size: 13px
 	p
-		font-size: 15px
+		padding-top: 0.3em
+		font-size: 13px
 	ul
 		padding: 0
 	li
@@ -37,11 +39,13 @@
 	.accordion-content
 		display: none
 	.warning-links
+		p, a
+			font-size: 13px
 		li
 			margin-bottom: 1.5em
 	h4
 		color: white
-		font-size: 16px
+		font-size: 15px
 		font-weight: 500
 		margin: 0 0 1em
 		padding: .5em
@@ -64,7 +68,7 @@
 		padding: 0.8em 2em 2em
 		background: $blue-one
 		p
-			margin-bottom: 10px
+			margin: 0 0 10px
 			text-align: center
 
 .project-warning-hide
@@ -121,9 +125,15 @@
 		margin-top: 1em
 		a
 			color: $blue-one
+		.channel
+			background: $blue-note
+			padding: 1px 3px
+			color: white
+			font-size: 15px
+			border-radius: 2px
 
 .project-content
-	margin-top: 4em
+	margin-top: 2em
 	margin-bottom: 4em
 
 .project-share
@@ -177,8 +187,19 @@
 	.project-status
 		font-size: em(13px)
 		margin: 0
-		clear: left
+		clear: both
 		padding-right: 35px
+		&.failed, &.successful
+			height: 54px
+			color: white
+			line-height: 1.2em
+			font-weight: 500
+		&.successful
+			padding: 1em 0.7em 0.7em 2em
+			background: $green
+		&.failed
+			padding: 1em 0.7em 0.7em 1.3em
+			background: $red
 
 .project-contributions, .project-goal, .project-days
 	padding: 30px 0 0
@@ -191,6 +212,9 @@
 		width: 100%
 		font-size: 11px
 		text-transform: uppercase
+
+.project-days
+	margin-bottom: .50em
 
 .project-support
 	width: 306px
@@ -234,6 +258,7 @@
 	.project-creator-count
 		font-weight: 700
 	.project-creator-bio
+		padding-top: 1em
 		font-size: 15px
 
 
@@ -286,6 +311,8 @@
 		margin-bottom: 40px
 		a
 			margin-top: 20px
+	.button.small
+		font-size: 12px
 
 .reward-price
 	font-size: 15px
@@ -301,7 +328,6 @@ p.reward-bakers
 
 .maximum_contributions
 	background: $yellow
-	padding: 0 1px
 	text-align: center
 	display: inline-block
 	position: absolute
@@ -312,6 +338,7 @@ p.reward-bakers
 		font-weight: 700
 		margin: 0
 		font-size: 12px
+		padding: 0 1px
 		span
 			font-weight: normal
 			margin: 0 0 0 1px
@@ -408,6 +435,11 @@ p.reward-bakers
 			color: $blue-one
 			font-weight: 700
 
+.updates_section_title
+	border-top: 1px solid $border-gray
+	margin: 3em 0 3em
+	padding: 3em 0 0
+
 .updates
 	border-top: 1px solid $border-gray
 	margin: 3em 0 3em
@@ -417,11 +449,21 @@ p.reward-bakers
 	border-bottom: 1px solid $border-gray
 	margin: 0 0 3em
 	padding: 0 0 3em
+	h3
+		a
+			color: $blue-one
+	p.update-time
+		margin-top: -0.6em
+		font-size: em(15px)
+	.update-text p
+		font-size: em(17px)
+		line-height: 1.6em
 	.button
-		width: 25%
-		margin: 1em 0 0
+		width: 35%
+		margin: 0em 0 0
 	.twitter_share, .facebook_share
 		display: inline-block
+		height: 34px
 	div
 		margin: 1em 0
 
