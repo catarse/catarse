@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
   end
 
   def force_http
-    redirect_to(protocol: 'http', host: ::Configuration[:base_domain]) if request.ssl?
+    redirect_to(protocol: 'http', host: CatarseSettings[:base_domain]) if request.ssl?
   end
 
   def redirect_user_back_after_login

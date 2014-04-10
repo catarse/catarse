@@ -38,7 +38,7 @@ module Concerns
     end
 
     def display_uservoice_sso
-      if current_user && ::Configuration[:uservoice_subdomain] && ::Configuration[:uservoice_sso_key]
+      if current_user && CatarseSettings[:uservoice_subdomain] && CatarseSettings[:uservoice_sso_key]
         Uservoice::Token.generate({
           guid: current_user.id, email: current_user.email, display_name: current_user.display_name,
           url: user_url(current_user), avatar_url: current_user.display_image

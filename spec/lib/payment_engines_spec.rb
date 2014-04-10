@@ -55,7 +55,7 @@ describe PaymentEngines do
 
   describe ".configuration" do
     subject{ PaymentEngines.configuration }
-    it{ should == ::Configuration }
+    it{ should == CatarseSettings }
   end
 
   describe ".create_payment_notification" do

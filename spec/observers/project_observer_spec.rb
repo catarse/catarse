@@ -8,11 +8,11 @@ describe ProjectObserver do
   subject{ contribution }
 
   before do
-    Configuration[:support_forum] = 'http://support.com'
-    Configuration[:email_projects] = 'foo@foo.com'
-    Configuration[:facebook_url] = 'http://facebook.com/foo'
-    Configuration[:blog_url] = 'http://blog.com/foo'
-    Configuration[:company_name] = 'Catarse'
+    CatarseSettings[:support_forum] = 'http://support.com'
+    CatarseSettings[:email_projects] = 'foo@foo.com'
+    CatarseSettings[:facebook_url] = 'http://facebook.com/foo'
+    CatarseSettings[:blog_url] = 'http://blog.com/foo'
+    CatarseSettings[:company_name] = 'Catarse'
     Notification.unstub(:notify)
     Notification.unstub(:notify_once)
   end
@@ -30,7 +30,7 @@ describe ProjectObserver do
 
   describe "when project is sent to curator" do
     let(:project) { create(:project, goal: 3000, state: 'draft') }
-    let(:user) { create(:user, email: ::Configuration[:email_projects])}
+    let(:user) { create(:user, email: ::CatarseSettings[:email_projects])}
 
     before do
       user
@@ -83,8 +83,8 @@ describe ProjectObserver do
           {
             project: project,
             channel: nil,
-            origin_email: Configuration[:email_projects],
-            origin_name: Configuration[:company_name]
+            origin_email: CatarseSettings[:email_projects],
+            origin_name: CatarseSettings[:company_name]
           }
         )
         project.approve
@@ -117,7 +117,7 @@ describe ProjectObserver do
         {project_id: project.id},
         {
           project: project,
-          origin_email: Configuration[:email_projects]
+          origin_email: CatarseSettings[:email_projects]
         }
       )
     end
@@ -127,8 +127,8 @@ describe ProjectObserver do
 
   describe "sync with mailchimp" do
     before do
-      Configuration[:mailchimp_successful_projects_list] = 'OwnerListId'
-      Configuration[:mailchimp_failed_projects_list] = 'UnsuccesfulListId'
+      CatarseSettings[:mailchimp_successful_projects_list] = 'OwnerListId'
+      CatarseSettings[:mailchimp_failed_projects_list] = 'UnsuccesfulListId'
     end
 
     let(:user) { create(:user) }
@@ -292,8 +292,8 @@ describe ProjectObserver do
     let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
     let(:user) { create(:user, email: 'foo@foo.com')}
     before do
-      Configuration[:email_payments] = 'foo@foo.com'
-      Configuration[:email_system] = 'foo2@foo.com'
+      CatarseSettings[:email_payments] = 'foo@foo.com'
+      CatarseSettings[:email_system] = 'foo2@foo.com'
       user
       project.stub(:reached_goal?).and_return(true)
       project.stub(:in_time_to_wait?).and_return(false)

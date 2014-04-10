@@ -56,10 +56,10 @@
 
 
       section.main-sidebar-division
-        .fb-like-box data-href="#{Configuration['facebook_url']}" data-width="200" data-height="300" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"
+        .fb-like-box data-href="#{CatarseSettings['facebook_url']}" data-width="200" data-height="300" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"
 
 
       section.main-sidebar-division
-        = link_to t('sidebar.titles.twitter'), "https://twitter.com/#{Configuration['twitter_username']}", class: 'twitter-timeline', data:{widget_id:"375343843308089345", chrome:"nofooter"}
+        = link_to t('sidebar.titles.twitter'), "https://twitter.com/#{CatarseSettings['twitter_username']}", class: 'twitter-timeline', data:{widget_id:"375343843308089345", chrome:"nofooter"}
 
     .clearfix

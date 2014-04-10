@@ -38,7 +38,7 @@ class ProjectObserver < ActiveRecord::Observer
       {project_id: project.id},
       {
         project: project,
-        origin_email: Configuration[:email_projects]
+        origin_email: CatarseSettings[:email_projects]
       }
     )
   end
@@ -50,7 +50,7 @@ class ProjectObserver < ActiveRecord::Observer
       {project_id: project.id},
       {
         project: project,
-        origin_email: Configuration[:email_projects]
+        origin_email: CatarseSettings[:email_projects]
       }
     )
     notify_admin_that_project_reached_deadline(project)
@@ -58,13 +58,13 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def notify_admin_that_project_reached_deadline(project)
-    if (user = User.where(email: ::Configuration[:email_payments]).first)
+    if (user = User.where(email: ::CatarseSettings[:email_payments]).first)
       Notification.notify_once(
         :adm_project_deadline,
         user,
         {project_id: project.id},
         project: project,
-        origin_email: Configuration[:email_system],
+        origin_email: CatarseSettings[:email_system],
         project: project
       )
     end
@@ -108,7 +108,7 @@ class ProjectObserver < ActiveRecord::Observer
       {project_id: project.id, user_id: project.user.id},
       {
         project: project,
-        origin_email: Configuration[:email_projects]
+        origin_email: CatarseSettings[:email_projects]
       }
     )
   end
@@ -139,11 +139,11 @@ class ProjectObserver < ActiveRecord::Observer
       mailchimp_params = { EMAIL: user.email, FNAME: user.name, CITY: user.address_city, STATE: user.address_state }
 
       if project.successful?
-        CatarseMailchimp::API.subscribe(mailchimp_params, Configuration[:mailchimp_successful_projects_list])
+        CatarseMailchimp::API.subscribe(mailchimp_params, CatarseSettings[:mailchimp_successful_projects_list])
       end
 
       if project.failed?
-        CatarseMailchimp::API.subscribe(mailchimp_params, Configuration[:mailchimp_failed_projects_list])
+        CatarseMailchimp::API.subscribe(mailchimp_params, CatarseSettings[:mailchimp_failed_projects_list])
       end
     rescue Exception => e
       Rails.logger.info "-----> #{e.inspect}"
@@ -160,8 +160,8 @@ class ProjectObserver < ActiveRecord::Observer
       {
         project: project,
         channel: project.last_channel,
-        origin_email: project.last_channel.try(:email) || Configuration[:email_projects],
-        origin_name: project.last_channel.try(:name) || Configuration[:company_name]
+        origin_email: project.last_channel.try(:email) || CatarseSettings[:email_projects],
+        origin_name: project.last_channel.try(:name) || CatarseSettings[:company_name]
       }
     )
   end
