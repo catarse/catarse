@@ -97,6 +97,8 @@ GEM
       activemerchant (>= 1.34.0)
       rails (~> 4.0)
       slim-rails
+    catarse_settings_db (0.0.1)
+      rails (~> 4.0.3)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     chartkick (1.2.1)
@@ -467,6 +469,7 @@ DEPENDENCIES
   catarse_mailchimp!
   catarse_moip (~> 2.3.4)
   catarse_paypal_express (= 2.2.3)
+  catarse_settings_db
   chartkick
   coffee-rails (~> 4.0.0)
   compass-960-plugin

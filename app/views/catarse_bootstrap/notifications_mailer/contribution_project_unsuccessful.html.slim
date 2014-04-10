@@ -4,7 +4,7 @@
 br
 br
 | Infelizmente o projeto #{link_to(contribution.project.name, project_by_slug_url(permalink: contribution.project.permalink))}
-| que você apoiou não atingiu a meta estabelecida e não foi financiado no #{Configuration[:company_name]}.
+| que você apoiou não atingiu a meta estabelecida e não foi financiado no #{CatarseSettings[:company_name]}.
 br
 br
 | Em função disto, você recebeu #{contribution.display_value} em créditos para apoiar outros projetos.
@@ -25,9 +25,9 @@ br
 | Lembrando que a chave de identificação do seu apoio é: #{contribution.payment_id}
 br
 br
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_contact]}
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
 br
 br
 |Um abraço,
 br
-| #{Configuration[:company_name]}
+| #{CatarseSettings[:company_name]}

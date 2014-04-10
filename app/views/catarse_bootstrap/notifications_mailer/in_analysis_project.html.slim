@@ -2,7 +2,7 @@
 - project = @notification.project
 
 - project_link = project_by_slug_url(permalink: project.permalink)
-- company_name = ::Configuration[:company_name]
+- company_name = CatarseSettings[:company_name]
 
 |Olá, #{user.name}!
 br
@@ -30,10 +30,10 @@ strong Opção 3:
 | Infelizmente, o rascunho de projeto que você enviou não se encaixa no perfil do site do #{company_name}. 
 | Enviaremos um email notificando a recusa. Sim, sabemos que recusas são sempre desagradáveis. Mas o lema aqui é 
 | "levanta, sacode a poeira e dá a volta por cima". Mas antes de sacudir qualquer poeira, 
-| estude nossa #{link_to 'Central de Suporte', ::Configuration[:support_forum], target: '__blank'}  para que você saiba tudo sobre nossos pré-requisitos para a construção do seu próximo projeto.
+| estude nossa #{link_to 'Central de Suporte', CatarseSettings[:support_forum], target: '__blank'}  para que você saiba tudo sobre nossos pré-requisitos para a construção do seu próximo projeto.
 br/
 br/
-| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to ::Configuration[:email_projects]}
+| Lembrando que você pode tirar dúvidas conosco respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_projects]}
 br/
 br/
 |Um abraço,

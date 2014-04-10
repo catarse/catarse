@@ -1,7 +1,7 @@
 header.header
   .centered
     h1
-      = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain, protocol: 'http'), :class => 'logo', :title => Configuration[:company_name]
+      = link_to "#{CatarseSettings[:company_name]}", root_url(host: CatarseSettings[:base_domain] || request.domain, protocol: 'http'), :class => 'logo', :title => CatarseSettings[:company_name]
     nav.header-nav
       ul
         li.header-nav-li
@@ -16,10 +16,10 @@ header.header
             = submit_tag
 
         li.header-nav-li
-          = link_to t('layouts.header.help'), Configuration[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if Configuration[:support_forum].present?
+          = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
 
         li.header-nav-li
-          = link_to t('layouts.header.blog'), Configuration['blog_url'], target: :_blank, class: 'header-nav-item' if Configuration['blog_url'].present?
+          = link_to t('layouts.header.blog'), CatarseSettings['blog_url'], target: :_blank, class: 'header-nav-item' if CatarseSettings['blog_url'].present?
 
         - if current_user
           li.header-nav-li.user

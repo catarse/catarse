@@ -331,7 +331,7 @@ describe Project do
 
     it "should create notification for all projects that is expiring" do
       Notification.should_receive(:notify_once).
-        with(:verify_moip_account, @p.user, {project_id: @p.id}, {project: @p, origin_email: ::Configuration[:email_payments]})
+        with(:verify_moip_account, @p.user, {project_id: @p.id}, {project: @p, origin_email: CatarseSettings[:email_payments]})
       Project.send_verify_moip_account_notification
     end
   end
@@ -570,8 +570,8 @@ describe Project do
     subject { project.new_draft_recipient }
     context "when project does not belong to any channel" do
       before do
-        Configuration[:email_projects] = 'admin_projects@foor.bar'
-        @user = create(:user, email: Configuration[:email_projects])
+        CatarseSettings[:email_projects] = 'admin_projects@foor.bar'
+        @user = create(:user, email: CatarseSettings[:email_projects])
       end
       it{ should == @user }
     end

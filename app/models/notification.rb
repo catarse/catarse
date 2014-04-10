@@ -13,8 +13,8 @@ class Notification < ActiveRecord::Base
       template_name: template_name,
       user: user,
       locale: user.locale || I18n.locale,
-      origin_email: Configuration[:email_contact],
-      origin_name: Configuration[:company_name]
+      origin_email: CatarseSettings[:email_contact],
+      origin_name: CatarseSettings[:company_name]
     }.merge(params)).deliver
   end
 
