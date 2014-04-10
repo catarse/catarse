@@ -13,14 +13,14 @@ describe("Project", function() {
     });
 
     it("should call slideToggle", function() {
-      expect(view.$warning.slideToggle).wasCalled();
+      expect(view.$warning.slideToggle).toHaveBeenCalled();
     });
   });
 
   describe("#loadEmbed", function() {
     beforeEach(function(){
-      spyOn(view.$embed, "data").andReturn('path');
-      spyOn($, "get").andReturn({
+      spyOn(view.$embed, "data").and.returnValue('path');
+      spyOn($, "get").and.returnValue({
         success: function(callback) {
           callback('HTML');
         }
@@ -28,21 +28,21 @@ describe("Project", function() {
     });
 
     it("should call $.get when .loader is present", function(){
-      spyOn(view.$embed, 'find').andReturn([1]);
+      spyOn(view.$embed, 'find').and.returnValue([1]);
       spyOn(view.$embed, 'html');
 
       view.loadEmbed();
 
-      expect($.get).wasCalledWith('path');
-      expect(view.$embed.html).wasCalledWith('HTML');
+      expect($.get).toHaveBeenCalledWith('path');
+      expect(view.$embed.html).toHaveBeenCalledWith('HTML');
     });
 
     it("should not call $.get when .loader is not present", function(){
-      spyOn(view.$embed, 'find').andReturn([]);
+      spyOn(view.$embed, 'find').and.returnValue([]);
 
       view.loadEmbed();
 
-      expect($.get).wasNotCalled();
+      expect($.get).not.toHaveBeenCalled();
     });
   });
 
@@ -54,11 +54,11 @@ describe("Project", function() {
     });
 
     it("should call slideToggle", function() {
-      expect(view.$embed.slideToggle).wasCalled();
+      expect(view.$embed.slideToggle).toHaveBeenCalled();
     });
 
     it("should call loadEmbed", function() {
-      expect(view.loadEmbed).wasCalled();
+      expect(view.loadEmbed).toHaveBeenCalled();
     });
   });
 
@@ -72,11 +72,11 @@ describe("Project", function() {
     beforeEach(function() {
       spyOn($tab, "addClass");
       spyOn($tabContent, "show");
-      spyOn($tab, "siblings").andReturn($tabSiblings);
-      spyOn($tabContent, "siblings").andReturn($tabContentSiblings);
+      spyOn($tab, "siblings").and.returnValue($tabSiblings);
+      spyOn($tabContent, "siblings").and.returnValue($tabContentSiblings);
       spyOn($tabSiblings, "removeClass");
       spyOn($tabContentSiblings, "hide");
-      spyOn(view, "$").andReturn($tabContent);
+      spyOn(view, "$").and.returnValue($tabContent);
       view.on('selectTab', function(){
         eventTriggered = true;
       });
@@ -88,20 +88,20 @@ describe("Project", function() {
     });
 
     it("should remove selected class from siblings", function() {
-      expect($tab.siblings).wasCalledWith('.selected');
-      expect($tabSiblings.removeClass).wasCalledWith('selected');
+      expect($tab.siblings).toHaveBeenCalledWith('.selected');
+      expect($tabSiblings.removeClass).toHaveBeenCalledWith('selected');
     });
 
     it("should add selected class", function() {
-      expect($tab.addClass).wasCalledWith('selected');
+      expect($tab.addClass).toHaveBeenCalledWith('selected');
     });
 
     it("should show tab content", function() {
-      expect($tabContent.show).wasCalled();
+      expect($tabContent.show).toHaveBeenCalled();
     });
 
     it("should hide other tab contents", function() {
-      expect($tabContentSiblings.hide).wasCalled();
+      expect($tabContentSiblings.hide).toHaveBeenCalled();
     });
   });  
   
@@ -111,23 +111,23 @@ describe("Project", function() {
     beforeEach(function() {
       spyOn(view, "loadTab");
       spyOn(view, "selectTab");
-      spyOn(view, "$").andReturn($tab);
-      view.onTabClick({target: $target});
+      spyOn(view, "$").and.returnValue($tab);
+      view.onTabClick({currentTarget: $target});
     });
 
     it("should call selectTab", function() {
-      expect(view.selectTab).wasCalledWith($target, $tab);
+      expect(view.selectTab).toHaveBeenCalledWith($($target), $tab);
     });
 
     it("should call loadTab passing the obj from selector", function() {
-      expect(view.$).wasCalledWith('#selector');
-      expect(view.loadTab).wasCalledWith($tab);
+      expect(view.$).toHaveBeenCalledWith('#selector');
+      expect(view.loadTab).toHaveBeenCalledWith($tab);
     });
   });  
   
   describe("#loadTab", function() {
     beforeEach(function() {
-      spyOn($, "get").andReturn({success: function(callback){ callback('qux'); } });
+      spyOn($, "get").and.returnValue({success: function(callback){ callback('qux'); } });
     });
 
     describe("when tab is empty", function() {
@@ -139,11 +139,11 @@ describe("Project", function() {
       });
 
       it("should fill tab with data", function() {
-        expect(tab.html).wasCalledWith('qux');
+        expect(tab.html).toHaveBeenCalledWith('qux');
       });
 
       it("should get content", function() {
-        expect($.get).wasCalledWith('/bar');
+        expect($.get).toHaveBeenCalledWith('/bar');
       });
     });
 
@@ -155,7 +155,7 @@ describe("Project", function() {
       });
 
       it("should not get content", function() {
-        expect($.get).wasNotCalled();
+        expect($.get).not.toHaveBeenCalled();
       });
     });
 
@@ -165,7 +165,7 @@ describe("Project", function() {
       });
 
       it("should not get content", function() {
-        expect($.get).wasNotCalled();
+        expect($.get).not.toHaveBeenCalled();
       });
     });  
     
