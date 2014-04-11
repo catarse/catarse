@@ -1,10 +1,10 @@
 = simple_form_for [parent, resource], html: { novalidate: false, class: 'remote-form' } do |f|
   - if resource.new_record? || policy(resource).permitted_for?(:minimum_value, :update)
-    = f.input :minimum_value, required: true, input_html: {required: true, pattern: "^[\\d+.]+"}
+    = f.input :minimum_value, required: true, input_html: {min: '10', required: true, pattern: "^[\\d+.]+"}
     p = t('projects.reward.minimum_value')
 
   - if resource.new_record? || policy(resource).permitted_for?(:days_to_delivery, :update)
-    = f.input :days_to_delivery, required: true, label: t('projects.days_to_delivery'), input_html: {required: true}
+    = f.input :days_to_delivery, required: true, label: t('projects.days_to_delivery'), input_html: {min: '0', required: true}
     p = t('projects.reward.days_to_delivery')
 
   - if resource.new_record? || policy(resource).permitted_for?(:description, :update)
