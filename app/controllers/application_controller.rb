@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   before_action :referal_it!
 
   def channel
-    Channel.find_by_permalink(request.subdomain.to_s) || Channel.new(name: ::Configuration[:company_name])
+    Channel.find_by_permalink(request.subdomain.to_s) || Channel.new(name: CatarseSettings[:company_name])
   end
 
   def referal_link
