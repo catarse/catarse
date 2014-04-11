@@ -32,7 +32,7 @@ class RewardsController < ApplicationController
 
   def destroy
     authorize resource
-    destroy! { project_by_slug_path(permalink: resource.project.permalink) }
+    destroy!(notice: t('projects.rewards.destroy')) { project_by_slug_path(permalink: resource.project.permalink) }
   end
 
   def sort
