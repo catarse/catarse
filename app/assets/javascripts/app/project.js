@@ -2,12 +2,10 @@ App.addChild('Project', _.extend({
   el: '#catarse_bootstrap[data-action="show"][data-controller-name="projects"]',
 
   events: {
-    'click #toggle_warning a' : 'toggleWarning',
     'click a#embed_link' : 'toggleEmbed'
   },
 
   activate: function(){
-    this.$warning = this.$('#project_warning_text');
     this.$embed= this.$('#project_embed');
     this.route('about');
     this.route('updates');
