@@ -12,7 +12,7 @@
     p = t('projects.reward.description')
 
   - if resource.new_record? || policy(resource).permitted_for?(:maximum_contributions, :update)
-    = f.input :maximum_contributions
+    = f.input :maximum_contributions, input_html: {min: '1'}
     p = t('projects.reward.maximum_contributions')
 
   = f.submit class: 'button small action', disable_with: I18n.t('sending')
