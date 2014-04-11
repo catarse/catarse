@@ -13,22 +13,22 @@
       = t('projects.rewards.reward_title', minimum: reward.display_minimum).html_safe
     p.reward-bakers
       = pluralize(reward.contributions.with_state('confirmed').count, t('contribution_singular'), t('contribution_plural'))
-
-    - if reward.maximum_contributions
-      .maximum_contributions
-        - if reward.sold_out?
-          p.finished
-            = t('reward.sold_out')
-        - else
-          p
-            = t('reward.limited')
-            span
-              = '(' + reward.display_remaining + ')'
-      - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count
-      - if in_time_to_confirm > 0
-        .in_time_to_confirm
-          p
-            = t('projects.rewards.contributions_to_confirm', count: in_time_to_confirm)
+      |
+      - if reward.maximum_contributions
+        .maximum_contributions
+          - if reward.sold_out?
+            p.finished
+              = t('reward.sold_out')
+          - else
+            p
+              = t('reward.limited')
+              span
+                = '(' + reward.display_remaining + ')'
+        - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count
+        - if in_time_to_confirm > 0
+          .in_time_to_confirm
+            p
+              = t('projects.rewards.contributions_to_confirm', count: in_time_to_confirm)
 
     p
       = reward.display_description

@@ -30,7 +30,7 @@ pt:
     online_days_hint: "O prazo máximo para deixar o projeto no ar é de 60 dias, sendo que em média ficam no ar por 40 dias."
 
     video_url: "Vídeo"
-    video_url_hint: "O vídeo é a principal peça do projeto, Faça um belo vídeo no Youtube ou no Vimeo e cole o link aqui."
+    video_url_hint: "O vídeo é a principal peça do projeto, faça um belo vídeo no Youtube ou no Vimeo e cole o link aqui."
 
     more_links: "Queremos saber mais"
     more_links_hint: "Queremos saber mais sobre você e seu projeto. Cole aqui os links (site do projeto, facebook, twitter e blogs) para entendermos mais sobre o seu trabalho e o que está planejando para a campanha."

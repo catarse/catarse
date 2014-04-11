@@ -3,12 +3,12 @@
 
 section.line-box
   .row
-    .large-12.columns
+    .large-9.large-centered.columns
       .presentation
         h1.channel-title
           = t('channels.how_it_works.title.channel')
           | : 
-          = link_to 'Catarse', root_path, class: 'standard-link'
+          = link_to 'Catarse', root_path
 
 article.row.how-it-works-wrapper
   section.large-9.columns.large-centered.how-it-works
@@ -22,7 +22,7 @@ article.row.how-it-works-wrapper
     p= t('static.guidelines_start.costs')
 
   .row
-    .large-2.columns.large-centered
+    .large-3.columns.large-centered
       = link_to t('channels.header.submit'), new_project_path, class: 'button action submit'
 
 = render 'shared/footer'
