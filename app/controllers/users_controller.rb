@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def uservoice_gadget
-    if params[:secret] == ::Configuration[:uservoice_secret_gadget]
+    if params[:secret] == CatarseSettings[:uservoice_secret_gadget]
       @user = User.find_by_email params[:email]
     end
 

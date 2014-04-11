@@ -117,7 +117,7 @@ class Project < ActiveRecord::Base
 
   def self.send_verify_moip_account_notification
     expiring_in_less_of('7 days').find_each do |project|
-      project.notify_owner(:verify_moip_account, { origin_email: ::Configuration[:email_payments]})
+      project.notify_owner(:verify_moip_account, { origin_email: CatarseSettings[:email_payments]})
     end
   end
 
@@ -185,7 +185,7 @@ class Project < ActiveRecord::Base
   end
 
   def new_draft_recipient
-    last_channel.try(:curator) || User.where(email: ::Configuration[:email_projects]).first
+    last_channel.try(:curator) || User.where(email: CatarseSettings[:email_projects]).first
   end
 
   def last_channel

@@ -1,5 +1,5 @@
 p
-  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{Configuration[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
+  = "Para saber tudo sobre como estruturar o seu projeto, baixe o #{link_to 'Guia Completo', "#{CatarseSettings[:base_url]}/guia_realizadores.pdf", target: '_blank'}".html_safe
 
 = simple_form_for @project, html: { class: 'project-form' } do |form|
   - if current_user.admin

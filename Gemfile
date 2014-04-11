@@ -27,6 +27,7 @@ gem 'pg_search'
 gem 'schema_plus'
 gem 'schema_associations'
 gem 'chartkick'
+gem 'catarse_settings_db'
 
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
@@ -122,6 +123,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'pry'
+  gem 'jasmine-rails'
 end
 
 group :test do
@@ -132,7 +134,6 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara',   '~> 2.1.0'
-  gem 'jasmine'
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
 end

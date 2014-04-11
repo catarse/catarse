@@ -34,8 +34,8 @@ class Projects::ContributionsController < ApplicationController
     @contribution = Contribution.new(project: parent, user: current_user)
     authorize @contribution
 
-    @create_url = ::Configuration[:secure_review_host] ?
-      project_contributions_url(@project, {host: ::Configuration[:secure_review_host], protocol: 'https'}) :
+    @create_url = CatarseSettings[:secure_review_host] ?
+      project_contributions_url(@project, {host: CatarseSettings[:secure_review_host], protocol: 'https'}) :
       project_contributions_path(@project)
 
     @title = t('projects.contributions.new.title', name: @project.name)

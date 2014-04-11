@@ -3,7 +3,9 @@ describe("Updates", function() {
 
   beforeEach(function() {
     view = new App.views.Project.views.Updates({ parent: { on: function(){} } });
-    app = new App();
+    app = {
+      flash: function(){}
+    };
   });
 
   describe("#onUpdateCreate", function() {
@@ -14,11 +16,11 @@ describe("Updates", function() {
     });
 
     it("should prepend data", function() {
-      expect(view.$results.prepend).wasCalledWith('test');
+      expect(view.$results.prepend).toHaveBeenCalledWith('test');
     });
 
     it("should display flash", function() {
-      expect(app.flash.wasCalled();
+      expect(app.flash).toHaveBeenCalled();
     });
   });
 
@@ -29,21 +31,21 @@ describe("Updates", function() {
       view.parent = { $: function(){} };
       $target = $('<div class="update">');
       $count = $('<div class="count">');
-      spyOn(window, "$").andReturn($target);
+      spyOn(window, "$").and.returnValue($target);
       spyOn($target, "remove");
-      spyOn(view.parent, "$").andReturn($count);
+      spyOn(view.parent, "$").and.returnValue($count);
       spyOn($count, "html");
 
       view.onUpdateDestroy({currentTarget: $target});
     });
 
     it("should get currentTarget and remove it", function() {
-      expect(window.$).wasCalledWith($target);
-      expect($target.remove).wasCalled();
+      expect(window.$).toHaveBeenCalledWith($target);
+      expect($target.remove).toHaveBeenCalled();
     });
 
      it("should update count", function() {
-       expect($count.html).wasCalledWith(' (0)');
+       expect($count.html).toHaveBeenCalledWith(' (0)');
      });
   });
 });

@@ -8,7 +8,7 @@ task :send_old_posts_to_tumblr => :environment do
   end
 
   Comment.posts.each do |post|
-    Tumblr::Post.create(TumblrUser, group: Configuration[:tumblr_blog], title: post.title, body: post.comment, date: post.created_at, tags: post.project.to_param)
+    Tumblr::Post.create(TumblrUser, group: CatarseSettings[:tumblr_blog], title: post.title, body: post.comment, date: post.created_at, tags: post.project.to_param)
   end
 
 end

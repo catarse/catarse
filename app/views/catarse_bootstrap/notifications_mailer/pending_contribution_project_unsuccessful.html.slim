@@ -14,15 +14,15 @@ br
 |Em função disto, você recebera #{contribution.display_value} em créditos para apoiar outros projetos.
 br
 br
-| Caso prefira, você poderá pedir o #{link_to("reembolso seu apoio.", "#{Configuration[:base_url]}/users/#{contribution.user.to_param}#credits")}.
+| Caso prefira, você poderá pedir o #{link_to("reembolso seu apoio.", "#{CatarseSettings[:base_url]}/users/#{contribution.user.to_param}#credits")}.
 br
 br
-| Lembrando que a chave de identificação do seu apoio é: <strong>#{contribution.id}</strong>
+| Lembrando que a chave de identificação do seu apoio é: <strong>#{contribution.payment_id}</strong>
 br
 br
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_payments]}
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_payments]}
 br
 br
 | Um abraço,
 br
-| #{Configuration[:company_name]}
+| #{CatarseSettings[:company_name]}
