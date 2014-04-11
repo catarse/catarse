@@ -10,6 +10,7 @@ App.addChild('ProjectStateWarning', {
       this.$projectWarning.toggleClass('project-warning-hide');
       this.$toggleWarning.toggleClass('open-warning');
       this.$('.accordion-content').toggle;
+      store.set(this.warningKey, !this.$projectWarning.is(':visible'));
   },
 
   toggleAccordion: function(event){
@@ -18,9 +19,12 @@ App.addChild('ProjectStateWarning', {
   },
 
   activate: function(){
-    var that = this;
     this.$projectWarning = this.$('.project-warning');
     this.$toggleWarning = this.$('.toggle-warning');
+    this.warningKey = this.$el.data('key');
+    if(store.get(this.warningKey)){
+      this.toggleWarning();
+    }
   }
 });
 
