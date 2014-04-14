@@ -86,8 +86,6 @@ gem 'moip', github: 'catarse/moip-ruby'
 gem 'httpclient',     '>= 2.2.5'
 
 group :production do
-  gem 'google-analytics-rails'
-
   # Gem used to handle image uploading
   gem 'fog', '>= 1.3.1'
 
