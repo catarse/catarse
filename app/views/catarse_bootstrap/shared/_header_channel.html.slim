@@ -28,6 +28,6 @@ header
                 li.divider= link_to t('channels.header.logout'), destroy_user_session_path, method: :delete
           - else
             li.nav-item
-              = link_to t('channels.header.signup'), new_user_registration_path, class: 'standard-link'
+              = link_to t('channels.header.signup'), new_user_registration_url, class: 'standard-link'
             li.nav-item
-              = link_to t('channels.header.signin'), new_user_session_path, class: 'standard-link'
+              = link_to t('channels.header.signin'), new_user_session_url, class: 'standard-link'
