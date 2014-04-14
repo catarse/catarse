@@ -8,7 +8,7 @@ def find_secure_token
   CatarseSettings[:secret_token] = SecureRandom.hex(64) unless ::CatarseSettings[:secret_token]
   CatarseSettings[:secret_token]
 rescue
-  # Just to ensure that we can run migrations and create the configurations table
+  # Just to ensure that we can run migrations and create the settings table
   nil
 end
 
@@ -16,7 +16,7 @@ def find_secure_key_base
   CatarseSettings[:secret_key_base] = SecureRandom.hex(64) unless ::CatarseSettings[:secret_key_base]
   CatarseSettings[:secret_key_base]
 rescue
-  # Just to ensure that we can run migrations and create the configurations table
+  # Just to ensure that we can run migrations and create the settings table
   nil
 end
 
