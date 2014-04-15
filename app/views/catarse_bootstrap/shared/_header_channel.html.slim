@@ -1,7 +1,7 @@
 header
-  .row
+  .row.main-header
     h1.large-2.columns.no-padding
-      = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo-image', :title => Configuration[:company_name]
+      = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo', :title => Configuration[:company_name]
     .large-10.columns.no-padding
       nav.channel-header
         ul
