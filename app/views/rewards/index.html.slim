@@ -15,15 +15,14 @@
       = pluralize(reward.contributions.with_state('confirmed').count, t('contribution_singular'), t('contribution_plural'))
       |
       - if reward.maximum_contributions
-        .maximum_contributions
-          - if reward.sold_out?
-            p.finished
-              = t('reward.sold_out')
-          - else
-            p
-              = t('reward.limited')
-              span
-                = '(' + reward.display_remaining + ')'
+        - if reward.sold_out?
+          span.limited-reward.finished
+            = t('reward.sold_out')
+        - else
+          span.limited-reward
+            = t('reward.limited')
+            span
+              = '(' + reward.display_remaining + ')'
         - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count
         - if in_time_to_confirm > 0
           .in_time_to_confirm

@@ -44,6 +44,18 @@ pt:
       edit: "editar"
       remove: "Deletar recompensa"
       remove-confirmation: "Tem certeza que quer deletar?"
+    contribute_project:
+      display_status:
+        reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
+        not_reached_goal: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
+        failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
+        rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
+        in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
+        successful: "Este projeto foi bem-sucedido e foi financiado <br/> em %{date}"
+        waiting_funds: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
+        draft: "Esse projeto é apenas um rascunho e ainda não está aberto para receber apoios."
+      reached_of: "Atingidos de"
+      submit: "Apoiar este projeto"
 
 
 
@@ -57,18 +69,6 @@ pt:
       when: em
     admin_fields:
       title: "Campos para o admin"
-    contribute_project:
-      display_status:
-        reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
-        not_reached_goal: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
-        failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
-        rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
-        in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
-        successful: "Este projeto foi bem-sucedido e foi financiado <br/> em %{date}"
-        waiting_funds: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
-        draft: "Esse projeto é apenas um rascunho e ainda não está aberto para receber apoios."
-      reached_of: "Atingidos de"
-      submit: "Apoiar este projeto"
     contributions:
       contribution:
         anonymous_contribution: "Apoiador anônimo"

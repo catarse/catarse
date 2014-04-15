@@ -1,473 +1,385 @@
 .project-warning
-	background: $blue-one
-	padding: 5em 2.5em 6.5em
-	width: 320px
-	position: fixed
-	top: 0
-	left: 0
-	-moz-box-sizing: border-box
-	-webkit-box-sizing: border-box
-	box-sizing: border-box
-	height: 100%
-	overflow: auto
-	z-index: 100
-	h3
-		font-size: 18px
-		color: white
-		font-weight: 500
-		position: fixed
-		top: 0
-		background: $blue-one
-		padding: 2em 0 1.3em
-		width: 280px
-		margin: 0
-		z-index: 300
-	li,p, h4
-		color: $gray-two
-		font-size: 13px
-	p
-		padding-top: 0.3em
-		font-size: 13px
-	ul
-		padding: 0
-	li
-		margin: 0 0 .5em
-		list-style: none
-		font-size: 13px
-	a
-		color: $orange
-	.accordion-content
-		display: none
-	.warning-links
-		p, a
-			font-size: 13px
-		li
-			margin-bottom: 1.5em
-	h4
-		color: white
-		font-size: 15px
-		font-weight: 500
-		margin: 0 0 1em
-		padding: .5em
-		border-radius: 4px
-		cursor: pointer
-		background: lighten($blue-one, 10%)
-		position: relative
-		&:hover
-			background-color: lighten($blue-one, 20%)
-		&:before
-			content: ''
-			background: url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -166px -80px
-			display: inline-block
-			width: 26px
-			height: 16px
-		&.opened:before
-			background: url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -29px -78px
-	.submit-project
-		width: 320px
-		padding: 0.8em 2em 2em
-		background: $blue-one
-		p
-			margin: 0 0 10px
-			text-align: center
+  background: $blue-one
+  padding: 5em 2.5em 6.5em
+  width: 320px
+  position: fixed
+  top: 0
+  left: 0
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+  height: 100%
+  overflow: auto
+  z-index: 100
+  h3
+    font-size: 18px
+    color: white
+    font-weight: 500
+    position: fixed
+    top: 0
+    background: $blue-one
+    padding: 2em 0 1.3em
+    width: 280px
+    margin: 0
+    z-index: 300
+  li,p, h4
+    color: $gray-two
+    font-size: 13px
+  p
+    padding-top: 0.3em
+    font-size: 13px
+  ul
+    padding: 0
+  li
+    margin: 0 0 .5em
+    list-style: none
+    font-size: 13px
+  a
+    color: $orange
+  .accordion-content
+    display: none
+  .warning-links
+    p, a
+      font-size: 13px
+    li
+      margin-bottom: 1.5em
+  h4
+    color: white
+    font-size: 15px
+    font-weight: 500
+    margin: 0 0 1em
+    padding: .5em
+    border-radius: 4px
+    cursor: pointer
+    background: lighten($blue-one, 10%)
+    position: relative
+    &:hover
+      background-color: lighten($blue-one, 20%)
+    &:before
+      content: ''
+      background: url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -166px -80px
+      display: inline-block
+      width: 26px
+      height: 16px
+    &.opened:before
+      background: url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -29px -78px
+  .submit-project
+    width: 320px
+    padding: 0.8em 2em 2em
+    background: $blue-one
+    p
+      margin: 0 0 10px
+      text-align: center
 
 .project-warning-hide
-	display: none
+  display: none
 
 .submit-project
-	position: fixed
-	bottom: 0
-	left: 0
+  position: fixed
+  bottom: 0
+  left: 0
 
 .toggle-warning
-	position: fixed
-	top: 25px
-	left: 270px
-	z-index: 200
-	background: lighten($blue-one, 10%)
-	display: inline-block
-	width: 32px
-	height: 32px
-	border: none
-	border-radius: 3px
-	color: white
-	text-align: center
-	line-height: 26px
-	font-weight: 700
-	font-size: 1.3em
-	padding-bottom: 4px
-	outline: none
-	&:hover
-		background-color: lighten($blue-one, 20%)
+  position: fixed
+  top: 25px
+  left: 270px
+  z-index: 200
+  background: lighten($blue-one, 10%)
+  display: inline-block
+  width: 32px
+  height: 32px
+  border: none
+  border-radius: 3px
+  color: white
+  text-align: center
+  line-height: 26px
+  font-weight: 700
+  font-size: 1.3em
+  padding-bottom: 4px
+  outline: none
+  &:hover
+    background-color: lighten($blue-one, 20%)
 
 .open-warning
-	background: $blue-one url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -163px -74px
-	text-indent: -9999px
-	left: 20px
-	top: 135px
-	&:hover
-		background-color: lighten($blue-one, 10%)
-	&:after
-		content: 'Mostrar informações'
-		font-size: 13px
-		color: $blue-one
-		background: $gray-one
-		border: 1px solid $border-gray
-		opacity: 0.9
-		display: inline-block
+  background: $blue-one url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -163px -74px
+  text-indent: -9999px
+  left: 20px
+  top: 135px
+  &:hover
+    background-color: lighten($blue-one, 10%)
+  &:after
+    content: 'Mostrar informações'
+    font-size: 13px
+    color: $blue-one
+    background: $gray-one
+    border: 1px solid $border-gray
+    opacity: 0.9
+    display: inline-block
 
 .project-title
-	font-size: 30px
-	font-weight: 500
-	small
-		display: block
-		font-size: 15px
-		margin-top: 1em
-		a
-			color: $blue-one
-		.channel
-			background: $blue-note
-			padding: 1px 3px
-			color: white
-			font-size: 15px
-			border-radius: 2px
+  font-size: 30px
+  font-weight: 500
+  small
+    display: block
+    font-size: 15px
+    margin-top: 1em
+    a
+      color: $blue-one
+    .channel
+      background: $blue-note
+      padding: 1px 3px
+      color: white
+      font-size: 15px
+      border-radius: 2px
 
 .project-content
-	margin-top: 2em
-	margin-bottom: 4em
+  margin-top: 2em
+  margin-bottom: 4em
 
 .project-share
-	margin: 1em 0 3em
-	position: relative
-	padding: 0
-	height: 36px
-	li
-		display: inline-block
-	.embed
-		position: absolute
-		right: 0
-		border-radius: 4px
-		background: #fff
-		font-weight: 700
-		a
-			color: $blue-one
+  margin: 1em 0 3em
+  position: relative
+  padding: 0
+  height: 36px
+  li
+    display: inline-block
+  .embed
+    position: absolute
+    right: 0
+    border-radius: 4px
+    background: #fff
+    font-weight: 700
+    a
+      color: $blue-one
 
 
 #project_embed
-	margin-bottom: 4em
-	padding: 4em 0
-	border-top: 1px solid $border-gray
-	border-bottom: 1px solid $border-gray
+  margin-bottom: 4em
+  padding: 4em 0
+  border-top: 1px solid $border-gray
+  border-bottom: 1px solid $border-gray
 
 #project_box_embed, #project_video_embed
-	margin: 0 2.5%
-	display: inline-block
-	text-align: center
-	vertical-align: top
-	textarea
-		font-size: 13px
+  margin: 0 2.5%
+  display: inline-block
+  text-align: center
+  vertical-align: top
+  textarea
+    font-size: 13px
 
 #project_box_embed
-	width: 34%
-	textarea
-		height: 95px
-		width: 224px
+  width: 34%
+  textarea
+    height: 95px
+    width: 224px
 
 
 #project_video_embed
-	width: 55%
-	textarea
-		height: 65px
-		width: 386px
+  width: 55%
+  textarea
+    height: 65px
+    width: 386px
 
 .project-statistics
-	form
-		padding: 15px 0
-		clear: left
-	.project-status
-		font-size: em(13px)
-		margin: 0
-		clear: both
-		padding-right: 35px
-		&.failed, &.successful
-			height: 54px
-			color: white
-			line-height: 1.2em
-			font-weight: 500
-		&.successful
-			padding: 1em 0.7em 0.7em 2em
-			background: $green
-		&.failed
-			padding: 1em 0.7em 0.7em 1.3em
-			background: $red
+  form
+    padding: 15px 0
+    clear: left
+  .project-status
+    font-size: em(13px)
+    margin: 0
+    clear: both
+    padding-right: 35px
+    &.failed, &.successful
+      height: 54px
+      color: white
+      line-height: 1.2em
+      font-weight: 500
+    &.successful
+      padding: 1em 0.7em 0.7em 2em
+      background: $green
+    &.failed
+      padding: 1em 0.7em 0.7em 1.3em
+      background: $red
 
 .project-contributions, .project-goal, .project-days
-	padding: 30px 0 0
-	margin: 0
-	float: left
-	font-size: em(44px)
-	font-weight: 500
-	span
-		display: inline-block
-		width: 100%
-		font-size: 11px
-		text-transform: uppercase
+  padding: 30px 0 0
+  margin: 0
+  float: left
+  font-size: em(44px)
+  font-weight: 500
+  width: 100%
+  span
+    display: inline-block
+    width: 100%
+    font-size: 11px
+    text-transform: uppercase
 
 .project-days
-	margin-bottom: .50em
+  margin-bottom: .50em
 
 .project-support
-	width: 306px
-	height: 72px
-	font-size: 18px
+  width: 306px
+  height: 72px
+  font-size: 18px
 
 .project-creator-title
-	text-transform: uppercase
-	margin: 4em 0 .5em
-	font-size: 11px
-	&:before
-		content: ''
-		float: left
-		width: 19px
-		height: 19px
-		vertical-align: top
-		margin: 0px 10px 0 0
-		background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -73px -129px transparent
+  text-transform: uppercase
+  margin: 4em 0 .5em
+  font-size: 11px
+  &:before
+    content: ''
+    float: left
+    width: 19px
+    height: 19px
+    vertical-align: top
+    margin: 0px 10px 0 0
+    background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -73px -129px transparent
 
 
 .project-creator
-	margin: 40px 0 30px
-	padding: 20px 20px 14px
-	background: RGBA(246, 146, 25, 0.1)
-	.avatar_wrapper
-		float: left
-		margin: 0 1em 0 0
-		border-radius: 3px
-		border: 1px solid $border-gray
-	a
-		font-weight: bold
-	p
-		font-size: em(13px)
-		margin: 0 0 1em
-		line-height: 1.2
-	.project-creator-name
-		margin-bottom: 0
-		font-size: 15px
-		a
-			color: $blue-one
-	.project-creator-count
-		font-weight: 700
-	.project-creator-bio
-		padding-top: 1em
-		font-size: 15px
+  margin: 40px 0 30px
+  padding: 20px 20px 14px
+  background: RGBA(246, 146, 25, 0.1)
+  .avatar_wrapper
+    float: left
+    margin: 0 1em 0 0
+    border-radius: 3px
+    border: 1px solid $border-gray
+  a
+    font-weight: bold
+  p
+    font-size: em(13px)
+    margin: 0 0 1em
+    line-height: 1.2
+  .project-creator-name
+    margin-bottom: 0
+    font-size: 15px
+    a
+      color: $blue-one
+  .project-creator-count
+    font-weight: 700
+  .project-creator-bio
+    padding-top: 1em
+    font-size: 15px
 
 
 .project-creator-links
-	padding: 0
-	margin: 0
-	li
-		display: block
-		border-bottom: 1px solid $border-gray
-		padding: 3px 0
-		&:last-child
-			border: none
-	a
-		font-weight: normal
-		font-size: 13px
-		color: $blue-one
-
-
-.new-reward
-	background: $gray-one
-	padding: 1.6em 1em
-	h4
-		margin: 0
-		font-size: 16px
-	p
-		font-size: 13px
-
-
-.rewards-list
-	border-radius: 4px
-	margin: 2em 0
-	padding: 0
-
-.reward-item
-	padding: 2em 1.5em 2em
-	display: inline-block
-	width: 100%
-	position: relative
-	margin-bottom: 4px
-	background: $gray-one
-	p
-		font-size: 15px
-		word-wrap: break-word
-	.reward_deliver_at p, .reward_updated_at p, .in_time_to_confirm p
-		margin: 0
-		font-size: 12px
-	&:hover
-		background: darken($gray-one, 5%)
-	form
-		margin-bottom: 40px
-		a
-			margin-top: 20px
-	.button.small
-		font-size: 12px
-
-.reward-price
-	font-size: 15px
-	margin: 0
-
-p.reward-bakers
-	font-weight: 700
-	margin: .3em 0 1em
-	font-size: 13px
-
-.description_version
-	display: none
-
-.maximum_contributions
-	background: $yellow
-	text-align: center
-	display: inline-block
-	position: absolute
-	top: 53px
-	right: 23px
-	p
-		color: $blue-one
-		font-weight: 700
-		margin: 0
-		font-size: 12px
-		padding: 0 1px
-		span
-			font-weight: normal
-			margin: 0 0 0 1px
-			word-spacing: -1px
-	.finished
-		background: $border-strong
-
-.updated_reward
-	font-size: 16px
-	margin-top: 13px
-
-.edit-reward
-	position: absolute
-	right: 7px
-	top: 7px
-	font-size: 12px
-	text-transform: capitalize
-	font-weight: 700
-	color: white
-	background: $blue-one
-	padding: 4px 6px
-	border-radius: 4px
-	&:hover
-		color: white
-		text-decoration: none
-		background: lighten($blue-one, 10%)
+  padding: 0
+  margin: 0
+  li
+    display: block
+    border-bottom: 1px solid $border-gray
+    padding: 3px 0
+    &:last-child
+      border: none
+  a
+    font-weight: normal
+    font-size: 13px
+    color: $blue-one
 
 .project-form
-	div
-		margin: 2.5em 0 0
-		position: relative
-	p
-		color: $blue-two
-		font-size: 0.8em
-	.project-edit-permalink
-		padding-left: 120px
-	.hint
-		position: absolute
-		top: 30px
-		left: 1px
-		background: $gray-one
-		display: inline-block
-		padding: 9px 20px
-		color: $blue-two
-		font-size: .8em
-		font-weight: bold
-	textarea
-		height: 15em
+  div
+    margin: 2.5em 0 0
+    position: relative
+  p
+    color: $blue-two
+    font-size: 0.8em
+  .project-edit-permalink
+    padding-left: 120px
+  .hint
+    position: absolute
+    top: 30px
+    left: 1px
+    background: $gray-one
+    display: inline-block
+    padding: 9px 20px
+    color: $blue-two
+    font-size: .8em
+    font-weight: bold
+  textarea
+    height: 15em
+    line-height: 1.6
 
 .project-reports
-	padding: 0
-	li
-		list-style: none
-		margin: 0 0 1em
-		background: $gray-one
-		border-radius: 4px
-		padding: 1em
-	p
-		margin: 0
+  padding: 0
+  li
+    list-style: none
+    margin: 0 0 1em
+    background: $gray-one
+    border-radius: 4px
+    padding: 1em
+  p
+    margin: 0
 
 .contribution-radio
-	margin: 0 3em 2em 1em
+  margin: 0 3em 2em 1em
 
 .contribution
-	padding: 1em
-	width: 48%
-	display: inline-block
-	margin: 0 1% 2%
-	vertical-align: top
-	img
-		float: left
-		width: 80px
-		height: 80px
-		margin: 0 10px 0 0
-		border-radius: 3px
-		border: 1px solid $border-gray
-	p
-		margin: 0 0 0.3em
-		font-size: 13px
-		float: right
-		width: 200px
-	a
-		font-weight: 400
-		font-size: 13px
-		color: $blue-one
-	.contribuiton-value
-		font-weight: 700
-		font-size: 15px
-	.contribution-date
-		word-spacing: 12px
-	.contribution-supporter
-		a
-			font-size: 15px
-			color: $blue-one
-			font-weight: 700
+  padding: 1em
+  width: 48%
+  display: inline-block
+  margin: 0 1% 2%
+  vertical-align: top
+  img
+    float: left
+    width: 80px
+    height: 80px
+    margin: 0 10px 0 0
+    border-radius: 3px
+    border: 1px solid $border-gray
+  p
+    margin: 0 0 0.3em
+    font-size: 13px
+    float: right
+    width: 200px
+  a
+    font-weight: 400
+    font-size: 13px
+    color: $blue-one
+  .contribuiton-value
+    font-weight: 700
+    font-size: 15px
+  .contribution-date
+    word-spacing: 12px
+  .contribution-supporter
+    a
+      font-size: 15px
+      color: $blue-one
+      font-weight: 700
 
 .updates_section_title
-	border-top: 1px solid $border-gray
-	margin: 3em 0 3em
-	padding: 3em 0 0
+  border-top: 1px solid $border-gray
+  margin: 3em 0 3em
+  padding: 3em 0 0
 
 .updates
-	border-top: 1px solid $border-gray
-	margin: 3em 0 3em
-	padding: 3em 0 0
+  border-top: 1px solid $border-gray
+  margin: 3em 0 3em
+  padding: 3em 0 0
 
 .update
-	border-bottom: 1px solid $border-gray
-	margin: 0 0 3em
-	padding: 0 0 3em
-	h3
-		a
-			color: $blue-one
-	p.update-time
-		margin-top: -0.6em
-		font-size: em(15px)
-	.update-text p
-		font-size: em(17px)
-		line-height: 1.6em
-	.button
-		width: 35%
-		margin: 0em 0 0
-	.twitter_share, .facebook_share
-		display: inline-block
-		height: 34px
-	div
-		margin: 1em 0
+  border-bottom: 1px solid $border-gray
+  margin: 0 0 3em
+  padding: 0 0 3em
+  h3
+    a
+      color: $blue-one
+  p.update-time
+    margin-top: -0.6em
+    font-size: em(15px)
+  .update-text p
+    font-size: em(17px)
+    line-height: 1.6em
+  .button
+    width: 35%
+    margin: 0em 0 0
+  .twitter_share, .facebook_share
+    display: inline-block
+    height: 34px
+  div
+    margin: 1em 0
 
 .project-description
-	p
-		font-size: 17px
-		line-height: 1.6
+  p
+    font-size: 17px
+    line-height: 1.6

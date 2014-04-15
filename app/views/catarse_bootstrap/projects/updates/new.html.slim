@@ -10,9 +10,3 @@ p = t('projects.project_updates.warning')
   = form.input :exclusive, as: :boolean, label: t('projects.project_updates.exclusive')
 
   = form.submit t('projects.project_updates.submit'), class: "submit-form", id: "update_submit"
-
-- content_for :custom_flahses do
-  .hide.ghost-flash
-    div class="notice wrapper"
-      div class="notice"
-        = t('controllers.updates.create.notice')

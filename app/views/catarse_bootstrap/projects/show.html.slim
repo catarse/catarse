@@ -35,7 +35,6 @@ section.project-show.with-warning
               | #{t('.title.project_from')} #{link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"))} #{t('.title.project_by')} #{link_to(@project.user.display_name, user_path(@project.user))}
               |
               - @project.channels.each do |c|
-                  = " no "
                   = link_to(c.name, root_url(subdomain: c.permalink), class: 'channel')
 
         nav.tabs-nav
