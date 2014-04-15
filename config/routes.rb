@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Catarse::Application.routes.draw do
   def ssl_options
+    puts CatarseSettings.find_by_name(:secure_host).value
     if Rails.env.production? && CatarseSettings[:secure_host]
       {protocol: 'https', host: CatarseSettings[:secure_host]}
     else

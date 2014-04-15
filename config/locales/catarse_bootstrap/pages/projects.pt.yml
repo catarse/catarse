@@ -206,6 +206,7 @@ pt:
       destroy_confirmation: "Deseja remover esta novidade?"
       warning: 'Lembre-se que todo post de novidade vai diretamente para o email de seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo.'
     rewards:
+      destroy: "A recompensa foi removida"
       new_reward: "Cadastrar recompensa"
       edit_reward: "Editar recompensa"
       reward_title: "Para %{minimum} ou mais"
