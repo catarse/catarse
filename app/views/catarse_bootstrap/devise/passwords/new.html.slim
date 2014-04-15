@@ -7,10 +7,10 @@
     .box.login-box.animated.fadeIn
       h1.text-center= t 'pages.forgot_password.titles.header'
       p.text-center.register_link
-        = t 'pages.forgot_password.no_account_html', link: link_to(t('pages.forgot_password.links.register'), new_user_registration_path)
+        = t 'pages.forgot_password.no_account_html', link: link_to(t('pages.forgot_password.links.register'), new_user_registration_url)
 
       .large-11.large-centered.columns
-        = form_for(resource, as: resource_name, url: password_path(resource_name), :html => {:novalidate => true}) do |f|
+        = form_for(resource, as: resource_name, url: password_url(resource_name), :html => {:novalidate => true}) do |f|
           = render 'devise/shared/alert'
           p
             = f.label :email, t('pages.forgot_password.form.labels.email')

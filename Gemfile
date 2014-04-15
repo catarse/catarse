@@ -49,7 +49,7 @@ gem 'high_voltage'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook', '1.4.0'
-gem 'devise', '~> 3.0.2'
+gem 'devise'
 gem 'ezcrypto'
 gem 'pundit'
 
@@ -86,8 +86,6 @@ gem 'moip', github: 'catarse/moip-ruby'
 gem 'httpclient',     '>= 2.2.5'
 
 group :production do
-  gem 'google-analytics-rails'
-
   # Gem used to handle image uploading
   gem 'fog', '>= 1.3.1'
 

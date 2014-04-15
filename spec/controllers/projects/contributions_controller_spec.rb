@@ -170,18 +170,8 @@ describe Projects::ContributionsController do
       it{ should redirect_to root_path }
     end
 
-    context "when project.online? is true and we have configured a secure create url" do
-      let(:secure_review_host){ 'secure.catarse.me' }
-      it "should assign the https url to @create_url" do
-        assigns(:create_url).should == project_contributions_url(project, host: CatarseSettings[:secure_review_host], protocol: 'https')
-      end
-    end
-
-    context "when project.online? is true and we have not configured a secure create url" do
+    context "when project.online? is true" do
       it{ should render_template("projects/contributions/new") }
-      it "should assign review_project_contributions_path to @create_url" do
-        assigns(:create_url).should == project_contributions_path(project)
-      end
       its(:body) { should =~ /#{I18n.t('projects.contributions.new.header.title')}/ }
       its(:body) { should =~ /#{I18n.t('projects.contributions.new.submit')}/ }
       its(:body) { should =~ /#{I18n.t('projects.contributions.new.no_reward')}/ }
