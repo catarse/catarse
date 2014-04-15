@@ -101,6 +101,14 @@ class Contribution < ActiveRecord::Base
     )
   end
 
+  def notify_to_backoffice(template_name, options = {})
+    Notification.notify_once(template_name,
+      User.find_by(email: CatarseSettings[:email_payments]),
+      { contribution_id: self.id },
+      { contribution: self }.merge!(options)
+    )
+  end
+
   # Used in payment engines
   def price_in_cents
     (self.value * 100).round
