@@ -11,6 +11,7 @@ module Contribution::StateMachineHandler
       state :requested_refund, value: 'requested_refund'
       state :refunded_and_canceled, value: 'refunded_and_canceled'
       state :deleted, value: 'deleted'
+      state :invalid_payment, value: 'invalid_payment'
 
       event :push_to_trash do
         transition all => :deleted
@@ -22,6 +23,10 @@ module Contribution::StateMachineHandler
 
       event :waiting do
         transition pending: :waiting_confirmation
+      end
+
+      event :invalid do
+        transition all => :invalid_payment
       end
 
       event :confirm do
@@ -48,6 +53,10 @@ module Contribution::StateMachineHandler
 
       after_transition do |contribution, transition|
         contribution.notify_observers :"from_#{transition.from}_to_#{transition.to}"
+      end
+
+      after_transition any => [:invalid_payment] do |contribution, transition|
+        contribution.notify_to_backoffice :invalid_payment
       end
 
       after_transition any => [:refunded_and_canceled] do |contribution, transition|
