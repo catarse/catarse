@@ -1,7 +1,7 @@
 doctype 5
 html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"
   head
-    title= t('site.meta_title', title: (@title || yield(:title)), company_name: ::Configuration[:company_name])
+    title= t('site.meta_title', title: (@title || yield(:title)), company_name: CatarseSettings[:company_name])
 
     meta charset='utf-8'
     meta name="author" content="Engage"
@@ -26,8 +26,8 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
       meta property="og:type"         content=:cause
       meta property="og:url"          content=url_for(only_path: false)
       meta property="og:image"        content=image_url('catarse/logo-fb.jpg')
-      meta property="og:site_name"    content=::Configuration[:company_name]
-      meta property="fb:app_id"       content=::Configuration[:facebook_app_id]
+      meta property="og:site_name"    content=CatarseSettings[:company_name]
+      meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
       meta property="og:description"  content=(t('projects.index_header.title') + '. ' +  t('projects.index_header.subtitle'))
 
     /[if lt IE 9]
@@ -46,4 +46,4 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
       =yield
     - if namespace != 'channels'
       = render 'layouts/footer'
-    = render '/layouts/new_uservoice'
+    = render '/layouts/new_zendesk'

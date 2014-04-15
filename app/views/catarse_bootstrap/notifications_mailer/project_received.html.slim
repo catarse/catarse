@@ -2,7 +2,7 @@
 - project = @notification.project
 
 - project_link = project_by_slug_url(permalink: project.permalink)
-- company_name = ::Configuration[:company_name]
+- company_name = CatarseSettings[:company_name]
 
 |Olá, #{user.name}!
 br
@@ -13,7 +13,7 @@ br
 br/
 br/
 | As dicas fundamentais para estruturar o seu projeto podem ser encontradas em 
-| diversos artigos na nossa #{link_to "Central de Suporte do #{company_name}", ::Configuration[:support_forum], target: '__blank'}. 
+| diversos artigos na nossa #{link_to "Central de Suporte do #{company_name}", CatarseSettings[:support_forum], target: '__blank'}. 
 | Ela pode ser utilizada como fonte de consulta para a maioria das dúvidas que você terá antes, durante e após a sua campanha. 
 | Mesmo assim resolvemos destacar alguns pontos nesse email. Leia todos com bastante atenção: 
 br/
@@ -37,11 +37,11 @@ br/
 | Quando considerar que a sua página de projeto está pronta, basta clicar no botão “ENVIAR PROJETO” que entraremos em contato contigo.
 br/
 br/
-| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to ::Configuration[:email_projects]}
+| Se ficou com alguma dúvida, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_projects]}
 br/
 br/
 | E por falar nisso, por favor <strong>não esqueça de incluir na sua lista de contatos os e-mails:</strong> 
-| #{mail_to ::Configuration[:email_projects]} e #{mail_to ::Configuration[:email_contact]} para evitar que nossas mensagens caiam na sua caixa de spam devido a filtros do seu email. 
+| #{mail_to CatarseSettings[:email_projects]} e #{mail_to CatarseSettings[:email_contact]} para evitar que nossas mensagens caiam na sua caixa de spam devido a filtros do seu email. 
 br/
 br/
 | Um abraço,

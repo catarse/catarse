@@ -5,22 +5,21 @@ footer.footer
         .footer-list
           h3.footer-title= t('footer.titles.contact')
           ul.footer-list
-            li= link_to t('footer.links.twitter'), "#{::Configuration[:twitter_url]}", target: '_blank'
-            li= link_to t('footer.links.facebook'), "#{::Configuration[:facebook_url]}", target: '_blank'
-            li= link_to t('footer.links.instagram'), "#{::Configuration[:instagram_url]}", target: '_blank'
-            li= link_to t('footer.links.github'), "#{::Configuration[:github_url]}", target: '_blank'
-            li= link_to t('footer.links.blog'), "#{::Configuration[:blog_url]}", target: '_blank'
-            li= link_to t('footer.links.contact'), '#', data: { uv_lightbox: 'classic_widget', uv_mode: 'support', uv_primary_color: '#79808b', uv_link_color: '#3f4652', uv_topic_id: '25760'}
-
+            li= link_to t('footer.links.twitter'), "#{CatarseSettings[:twitter_url]}", target: '_blank'
+            li= link_to t('footer.links.facebook'), "#{CatarseSettings[:facebook_url]}", target: '_blank'
+            li= link_to t('footer.links.instagram'), "#{CatarseSettings[:instagram_url]}", target: '_blank'
+            li= link_to t('footer.links.github'), "#{CatarseSettings[:github_url]}", target: '_blank'
+            li= link_to t('footer.links.blog'), "#{CatarseSettings[:blog_url]}", target: '_blank'
+            li.zendesk_widget= link_to t('footer.links.contact'), "#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}"
       .footer-div
         .footer-list
           h3.footer-title= t('footer.titles.about')
           ul.footer-list
-            li= link_to t('footer.links.faq'), "#{Configuration[:faq_url]}", target: '_blank'
-            li= link_to t('footer.links.feedback'), "#{::Configuration[:feedback_url]}", target: '_blank'
-            li= link_to t('footer.links.terms'), "#{::Configuration[:terms_url]}", target: '_blank'
-            li= link_to t('footer.links.privacy'), "#{::Configuration[:privacy_url]}", target: '_blank'
-            //li= link_to t('footer.links.press'), "#{::Configuration[:press_url]}", target: '_blank'
+            li= link_to t('footer.links.faq'), "#{CatarseSettings[:faq_url]}", target: '_blank'
+            li= link_to t('footer.links.feedback'), "#{CatarseSettings[:feedback_url]}", target: '_blank'
+            li= link_to t('footer.links.terms'), "#{CatarseSettings[:terms_url]}", target: '_blank'
+            li= link_to t('footer.links.privacy'), "#{CatarseSettings[:privacy_url]}", target: '_blank'
+            //li= link_to t('footer.links.press'), "#{CatarseSettings[:press_url]}", target: '_blank'
       .footer-div
         .footer-list
           h3.footer-title= t('footer.titles.sitemap')
@@ -38,9 +37,9 @@ footer.footer
           = render 'layouts/newsletter'
         h3.footer-title= t('footer.titles.social')
         .twitter-box
-          = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
+          = link_to "Follow @#{CatarseSettings[:twitter_username]}", "http://twitter.com/#{CatarseSettings[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
         .facebook-box
           = render_facebook_like href: "", colorscheme: "dark", width: "171"
     hr
     .row
-        p.copyleft= "#{t('footer.texts.copyleft')} Catarse, 2013 | Open source #{link_to 'Catarse @ Github', "#{::Configuration[:github_url]}", :class => 'github', target: '_blank'}".html_safe
+        p.copyleft= "#{t('footer.texts.copyleft')} Catarse, 2013 | Open source #{link_to 'Catarse @ Github', "#{CatarseSettings[:github_url]}", :class => 'github', target: '_blank'}".html_safe

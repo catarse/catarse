@@ -108,6 +108,7 @@ pt:
         payment_tax: 'Taxa meio de pagamento'
         send_refund_request_contribution: 'Enviar solicitação de reembolso'
         payer_email: 'Email do meio de pagamento'
+        payment_id: 'Id de pagamento'
         user_email: 'Email utilizado no catarse'
         push_to_trash: 'Deletar apoio'
         cancel: 'Cancelar apoio'

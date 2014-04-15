@@ -28,7 +28,7 @@ class ContributionObserver < ActiveRecord::Observer
   alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
 
   def from_confirmed_to_requested_refund(contribution)
-    user = User.find_by(email: Configuration[:email_payments])
+    user = User.find_by(email: CatarseSettings[:email_payments])
     if user.present?
       Notification.notify(:refund_request, user, {contribution: contribution, origin_email: contribution.user.email, origin_name: contribution.user.name})
     end
@@ -38,7 +38,7 @@ class ContributionObserver < ActiveRecord::Observer
   end
 
   def from_confirmed_to_canceled(contribution)
-    user = User.where(email: Configuration[:email_payments]).first
+    user = User.where(email: CatarseSettings[:email_payments]).first
     if user.present?
       Notification.notify_once(
         :contribution_canceled_after_confirmed,
@@ -62,7 +62,7 @@ class ContributionObserver < ActiveRecord::Observer
       project: contribution.project
     )
 
-    if (Time.now > contribution.project.expires_at  + 7.days) && (user = User.where(email: ::Configuration[:email_payments]).first)
+    if (Time.now > contribution.project.expires_at  + 7.days) && (user = User.where(email: ::CatarseSettings[:email_payments]).first)
       Notification.notify_once(
         :contribution_confirmed_after_project_was_closed,
         user,

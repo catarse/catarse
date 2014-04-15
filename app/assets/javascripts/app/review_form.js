@@ -45,5 +45,6 @@ App.addChild('ReviewForm', _.extend({
       contribution: contribution_data
     });
   }
+
 }, Skull.Form));
 

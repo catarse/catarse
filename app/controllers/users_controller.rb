@@ -1,6 +1,7 @@
 # coding: utf-8
 class UsersController < ApplicationController
   after_filter :verify_authorized, except: %i[uservoice_gadget]
+  skip_before_filter :force_http, only: [:update_password]
   inherit_resources
   actions :show, :update, :update_password, :unsubscribe_notifications, :uservoice_gadget, :credits
   respond_to :json, only: [:contributions, :projects]
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def uservoice_gadget
-    if params[:secret] == ::Configuration[:uservoice_secret_gadget]
+    if params[:secret] == CatarseSettings[:uservoice_secret_gadget]
       @user = User.find_by_email params[:email]
     end
 

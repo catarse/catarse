@@ -1,7 +1,7 @@
 class Projects::ContributionsController < ApplicationController
   inherit_resources
   actions :index, :show, :new, :update, :review, :create, :credits_checkout
-  skip_before_filter :force_http, only: [:create, :edit, :update, :credits_checkout]
+  skip_before_filter :force_http
   skip_before_filter :verify_authenticity_token, only: [:moip]
   has_scope :available_to_count, type: :boolean
   has_scope :with_state
@@ -33,10 +33,6 @@ class Projects::ContributionsController < ApplicationController
   def new
     @contribution = Contribution.new(project: parent, user: current_user)
     authorize @contribution
-
-    @create_url = ::Configuration[:secure_review_host] ?
-      project_contributions_url(@project, {host: ::Configuration[:secure_review_host], protocol: 'https'}) :
-      project_contributions_path(@project)
 
     @title = t('projects.contributions.new.title', name: @project.name)
     empty_reward = Reward.new(minimum_value: 0, description: t('projects.contributions.new.no_reward'))

@@ -12,12 +12,29 @@ App.addChild('MixPanel', {
   },
 
   startTracking: function(){
+    var self = this;
     this.trackSelectedReward();
-    if(this.controller == 'projects' && this.action == 'show'){
-      this.trackUserVisit();
-    }
-    if(this.controller == 'contributions' && this.action == 'show'){
-      this.trackOnMixPanel("Finished contribution");
+    this.trackPageVisit('projects', 'show', 'Visited project page');
+    this.trackPageLoad('contributions', 'show', 'Finished contribution');
+  },
+
+  trackPageLoad: function(controller, action, text){
+    var self = this;
+    this.trackOnPage(controller, action, function(){
+      self.track(text);
+    });
+  },
+
+  trackPageVisit: function(controller, action, text){
+    var self = this;
+    this.trackOnPage(controller, action, function(){
+      self.trackVisit(text);
+    });
+  },
+
+  trackOnPage: function(controller, action, callback){
+    if(this.controller == controller && this.action == action){
+      callback();
     }
   },
 
@@ -35,7 +52,7 @@ App.addChild('MixPanel', {
     }
   },
 
-  trackOnMixPanel: function(text, options){
+  track: function(text, options){
     this.identifyUser();
     var obj             = $(this);
     var usr             = (this.user != null) ? this.user.id : null;
@@ -55,14 +72,14 @@ App.addChild('MixPanel', {
   mixPanelEvent: function(target, event, text, options){
     var self = this;
     this.$(target).on(event, function(){
-      self.trackOnMixPanel(text, options);
+      self.track(text, options);
     });
   },
 
-  trackUserVisit: function(){
+  trackVisit: function(eventName){
     var self = this;
     window.setTimeout(function(){
-      self.trackOnMixPanel('Visited project page');
+      self.track(eventName);
     }, this.VISIT_MIN_TIME);
   },
 

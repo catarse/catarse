@@ -3,8 +3,8 @@ require 'spec_helper'
 describe SubscriberReport do
   let(:subscriber){ SubscriberReport.first }
   before(:all) do
-    Configuration[:email_contact] = 'foo@bar.com'
-    Configuration[:company_name] = 'Foo Bar Company'
+    CatarseSettings[:email_contact] = 'foo@bar.com'
+    CatarseSettings[:company_name] = 'Foo Bar Company'
     @channel = create(:channel) 
     @user = create(:user, subscriptions: [ @channel ])
   end

@@ -27,6 +27,7 @@ gem 'pg_search'
 gem 'schema_plus'
 gem 'schema_associations'
 gem 'chartkick'
+gem 'catarse_settings_db'
 
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
@@ -48,7 +49,7 @@ gem 'high_voltage'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook', '1.4.0'
-gem 'devise', '~> 3.0.2'
+gem 'devise'
 gem 'ezcrypto'
 gem 'pundit'
 
@@ -85,8 +86,6 @@ gem 'moip', github: 'catarse/moip-ruby'
 gem 'httpclient',     '>= 2.2.5'
 
 group :production do
-  gem 'google-analytics-rails'
-
   # Gem used to handle image uploading
   gem 'fog', '>= 1.3.1'
 
@@ -122,6 +121,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'pry'
+  gem 'jasmine-rails'
 end
 
 group :test do
@@ -132,7 +132,6 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara',   '~> 2.1.0'
-  gem 'jasmine'
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
 end

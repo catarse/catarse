@@ -7,7 +7,8 @@
     .box.login-box.animated.fadeIn
       h1.text-center= t 'pages.login.titles.header'
       p.text-center.register_link
-        = t 'pages.login.no_account_html', link: link_to(t('pages.login.links.register'), new_user_registration_path)
+        = t 'pages.login.no_account_html', link: link_to(t('pages.login.links.register'), new_user_registration_url)
+      hr
 
       .large-11.columns.large-centered
         = link_to t('pages.login.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, :medium, 'large-12', 'columns']
@@ -16,7 +17,7 @@
             = t('or')
 
       .large-11.large-centered.columns
-        = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:novalidate => true}) do |f|
+        = form_for(resource, as: resource_name, url: session_url(resource_name), html:{novalidate: browser.safari?}) do |f|
           = render 'devise/shared/alert'
           p
             = f.label :email

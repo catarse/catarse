@@ -23,9 +23,9 @@ describe("Explore", function() {
             return 1;
           }
         };
-        spyOn(view.$loaderDiv, "is").andReturn(true);
-        spyOn(view.$loaderDiv, "offset").andReturn({top: 1});
-        spyOn(view, "$window").andReturn(w);
+        spyOn(view.$loaderDiv, "is").and.returnValue(true);
+        spyOn(view.$loaderDiv, "offset").and.returnValue({top: 1});
+        spyOn(view, "$window").and.returnValue(w);
       });
       it("should return true", function() {
         expect(view.isLoaderDivVisible()).toEqual(true);
@@ -42,8 +42,8 @@ describe("Explore", function() {
             return 0;
           }
         };
-        spyOn(view.$loaderDiv, "offset").andReturn({top: 1});
-        spyOn(view, "$window").andReturn(w);
+        spyOn(view.$loaderDiv, "offset").and.returnValue({top: 1});
+        spyOn(view, "$window").and.returnValue(w);
       });
       it("should return false", function() {
         expect(view.isLoaderDivVisible()).toEqual(false);
@@ -89,7 +89,7 @@ describe("Explore", function() {
     it("should call setInitialFilter", function() {
       spyOn(view, "setInitialFilter");
       view.activate();
-      expect(view.setInitialFilter).wasCalled();
+      expect(view.setInitialFilter).toHaveBeenCalled();
     });
   });
 
@@ -108,15 +108,15 @@ describe("Explore", function() {
     });
 
     it("should call firstPage", function() {
-      expect(view.firstPage).wasCalled();
+      expect(view.firstPage).toHaveBeenCalled();
     });
 
     it("should call fetchPage", function() {
-      expect(view.fetchPage).wasCalled();
+      expect(view.fetchPage).toHaveBeenCalled();
     });
 
     it("should call selectLink", function() {
-      expect(view.selectLink).wasCalled();
+      expect(view.selectLink).toHaveBeenCalled();
     });
   });
 
@@ -134,7 +134,7 @@ describe("Explore", function() {
     });
 
     it("should clear results", function() {
-      expect(view.$results.html).wasCalledWith('');
+      expect(view.$results.html).toHaveBeenCalledWith('');
     });
 
     it("assign 1 to filter.page", function() {
@@ -146,7 +146,7 @@ describe("Explore", function() {
     describe("when EOF is true and isLoaderDivVisible is true", function(){
       beforeEach(function() {
         view.EOF = true;
-        spyOn(view, "isLoaderDivVisible").andReturn(false);
+        spyOn(view, "isLoaderDivVisible").and.returnValue(false);
         spyOn(view.$loader, "show");
         view.fetchPage();
       });
@@ -156,14 +156,14 @@ describe("Explore", function() {
       });
 
       it("should not show loader", function() {
-        expect(view.$loader.show).wasNotCalled();
+        expect(view.$loader.show).not.toHaveBeenCalled();
       });
     });
 
     describe("when EOF is false", function(){
       beforeEach(function() {
         view.EOF = false;
-        spyOn(view, "isLoaderDivVisible").andReturn(true);
+        spyOn(view, "isLoaderDivVisible").and.returnValue(true);
         spyOn(view.$loader, "show");
         view.fetchPage();
       });
@@ -173,7 +173,7 @@ describe("Explore", function() {
       });
 
       it("should show loader", function() {
-        expect(view.$loader.show).wasCalled();
+        expect(view.$loader.show).toHaveBeenCalled();
       });
     });
   });
@@ -187,11 +187,11 @@ describe("Explore", function() {
     });
 
     it("should append data to $results", function() {
-      expect(view.$results.append).wasCalledWith('test data');
+      expect(view.$results.append).toHaveBeenCalledWith('test data');
     });
     
     it("should show loader", function() {
-      expect(view.$loader.hide).wasCalled();
+      expect(view.$loader.hide).toHaveBeenCalled();
     });
   });  
 
@@ -202,7 +202,7 @@ describe("Explore", function() {
     });
     
     it("call fetchPage", function() {
-      expect(view.fetchPage).wasCalled();
+      expect(view.fetchPage).toHaveBeenCalled();
     });
     
   });  

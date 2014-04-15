@@ -1,7 +1,11 @@
 header
   .row.main-header
     h1.large-2.columns.no-padding
+<<<<<<< HEAD
       = link_to "#{Configuration[:company_name]}", root_url(host: Configuration[:base_domain] || request.domain), class: 'logo', :title => Configuration[:company_name]
+=======
+      = link_to "#{CatarseSettings[:company_name]}", root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'logo-image', :title => CatarseSettings[:company_name]
+>>>>>>> c09534f7b4914c5a73dce1baf5b6fba042b65278
     .large-10.columns.no-padding
       nav.channel-header
         ul
@@ -28,6 +32,6 @@ header
                 li.divider= link_to t('channels.header.logout'), destroy_user_session_path, method: :delete
           - else
             li.nav-item
-              = link_to t('channels.header.signup'), new_user_registration_path, class: 'standard-link'
+              = link_to t('channels.header.signup'), new_user_registration_url, class: 'standard-link'
             li.nav-item
-              = link_to t('channels.header.signin'), new_user_session_path, class: 'standard-link'
+              = link_to t('channels.header.signin'), new_user_session_url, class: 'standard-link'

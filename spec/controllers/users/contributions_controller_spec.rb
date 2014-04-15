@@ -12,7 +12,7 @@ describe Users::ContributionsController do
   let(:current_user){ nil }
   let(:format){ 'json' }
   before do
-    ::Configuration[:base_url] = 'http://catarse.me'
+    CatarseSettings[:base_url] = 'http://catarse.me'
     controller.stub(:current_user).and_return(current_user)
     successful_contribution
     failed_contribution
