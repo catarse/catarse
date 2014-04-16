@@ -57,6 +57,6 @@ section.row
         = form.input :accepted_terms, as: :boolean, label: t('submit_project.accept_terms', link: link_to(t('submit_project.terms'), channel.terms_url), target: '_blank').html_safe
 
         .large-4.columns.large-centered
-            = form.button :submit, t('submit_project.submit'), class: 'button action submit'
+            = form.button :submit, t('submit_project.submit'), id: 'project_submit', class: 'button action submit'
 
 = render 'shared/footer'
