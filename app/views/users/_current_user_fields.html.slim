@@ -63,7 +63,7 @@
   ul
     li
       .bootstrap-form
-        = form_for(@user, url: {action: "update_password"}, html: { method: :put, class: 'skip_feed_event', id: 'password_form' }) do |f|
+        = form_for(@user, url: update_password_user_url(@user), html: { method: :put, class: 'skip_feed_event', id: 'password_form' }) do |f|
           span.hint= t('.current_password_hint').html_safe
           br
           .div
