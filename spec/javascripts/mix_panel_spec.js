@@ -2,10 +2,14 @@ describe("MixPanel", function() {
   var view;
   var mixpanel;
   var default_options = {
-    'page name':  document.title,
-    'user_id':    null,
-    'project':    null,
-    'url':        window.location
+    'page name':          document.title,
+    'user_id':            null,
+    'created':            null,
+    'last_login':         null,
+    'contributions':      null,
+    'has_contributions':  null,
+    'project':            null,
+    'url':                window.location
   };
 
   beforeEach(function(){

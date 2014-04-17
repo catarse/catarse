@@ -15,6 +15,7 @@ App.addChild('MixPanel', {
     var self = this;
     this.trackSelectedReward();
     this.trackPageVisit('projects', 'show', 'Visited project page');
+    this.trackPageVisit('explore', 'index', 'Explore projects');
     this.trackPageLoad('contributions', 'show', 'Finished contribution');
   },
 
@@ -55,15 +56,25 @@ App.addChild('MixPanel', {
   track: function(text, options){
     this.identifyUser();
     var obj             = $(this);
-    var usr             = (this.user != null) ? this.user.id : null;
     var ref             = (obj.attr('href') != undefined) ? obj.attr('href') : null;
     var opt             = options || {};
     var default_options = {
-      'page name':  document.title,
-      'user_id':    usr,
-      'project':    ref,
-      'url':        window.location
+      'page name':          document.title,
+      'user_id':            null,
+      'created':            null,
+      'last_login':         null,
+      'contributions':      null,
+      'has_contributions':  null,
+      'project':            ref,
+      'url':                window.location
     };
+    if(this.user){
+      default_options.user_id = this.user.id;
+      default_options.created = this.user.created_at;
+      default_options.last_login = this.user.last_sign_in_at;
+      default_options.contributions = this.user.total_contributed_projects;
+      default_options.has_contributions = (this.user.total_contributed_projects > 0);
+    }
     var opt     = $.fn.extend(default_options, opt);
 
     mixpanel.track(text, opt);
