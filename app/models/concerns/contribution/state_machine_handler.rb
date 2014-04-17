@@ -55,10 +55,6 @@ module Contribution::StateMachineHandler
         contribution.notify_observers :"from_#{transition.from}_to_#{transition.to}"
       end
 
-      after_transition any => [:invalid_payment] do |contribution, transition|
-        contribution.notify_to_backoffice :invalid_payment
-      end
-
       after_transition any => [:refunded_and_canceled] do |contribution, transition|
         contribution.notify_to_contributor :refunded_and_canceled
       end
