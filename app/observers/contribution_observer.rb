@@ -27,27 +27,19 @@ class ContributionObserver < ActiveRecord::Observer
   end
   alias :from_confirmed_to_refunded :from_requested_refund_to_refunded
 
-  def from_confirmed_to_requested_refund(contribution)
-    user = User.find_by(email: CatarseSettings[:email_payments])
-    if user.present?
-      Notification.notify(:refund_request, user, {contribution: contribution, origin_email: contribution.user.email, origin_name: contribution.user.name})
-    end
+  def from_pending_to_invalid_payment(contribution)
+    contribution.notify_to_backoffice :invalid_payment
+  end
+  alias :from_waiting_confirmation_to_invalid_payment :from_pending_to_invalid_payment
 
+  def from_confirmed_to_requested_refund(contribution)
+    contribution.notify_to_backoffice :refund_request, {origin_email: contribution.user.email, origin_name: contribution.user.name}
     contribution.direct_refund if contribution.can_do_refund?
     contribution.notify_to_contributor((contribution.slip_payment? ? :requested_refund_slip : :requested_refund))
   end
 
   def from_confirmed_to_canceled(contribution)
-    user = User.where(email: CatarseSettings[:email_payments]).first
-    if user.present?
-      Notification.notify_once(
-        :contribution_canceled_after_confirmed,
-        user,
-        {contribution_id: contribution.id},
-        contribution: contribution
-      )
-    end
-
+    contribution.notify_to_backoffice :contribution_canceled_after_confirmed
     contribution.notify_to_contributor((contribution.slip_payment? ? :contribution_canceled_slip : :contribution_canceled))
   end
 
