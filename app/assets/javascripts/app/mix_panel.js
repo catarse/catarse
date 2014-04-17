@@ -13,10 +13,10 @@ App.addChild('MixPanel', {
 
   startTracking: function(){
     var self = this;
-    this.trackSelectedReward();
     this.trackPageVisit('projects', 'show', 'Visited project page');
     this.trackPageVisit('explore', 'index', 'Explore projects');
     this.trackPageLoad('contributions', 'show', 'Finished contribution');
+    this.trackPageLoad('contributions', 'edit', 'Selected reward');
   },
 
   trackPageLoad: function(controller, action, text){
@@ -92,9 +92,5 @@ App.addChild('MixPanel', {
     window.setTimeout(function(){
       self.track(eventName);
     }, this.VISIT_MIN_TIME);
-  },
-
-  trackSelectedReward: function(){
-    this.mixPanelEvent('input#contribution_submit', 'click', 'Selected reward');
-  },
+  }
 });
