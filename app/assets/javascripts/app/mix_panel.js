@@ -60,7 +60,6 @@ App.addChild('MixPanel', {
 
   identifyUser: function(){
     if (this.user){
-      this.detectLogin();
       mixpanel.name_tag(this.user.email);
       mixpanel.identify(this.user.id);
       mixpanel.people.set({

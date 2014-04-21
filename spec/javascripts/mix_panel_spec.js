@@ -19,6 +19,7 @@ describe("MixPanel", function() {
     view.action = "testAction";
     window.mixpanel = mixpanel = {
       name_tag: function(){},
+      alias: function(){},
       identify: function(){},
       track: function(){},
       people: {
