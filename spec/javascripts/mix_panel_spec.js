@@ -11,6 +11,7 @@ describe("MixPanel", function() {
     'project':            null,
     'url':                window.location
   };
+  var user = {id: 1, name: "Foo Bar"};
 
   beforeEach(function(){
     view = new App.views.MixPanel();
@@ -93,18 +94,41 @@ describe("MixPanel", function() {
     });
   });
 
-  describe("#identifyUser", function() {
-    var user = {id: 1, name: "Foo Bar"};
+  describe("#detectLogin", function() {
+    describe("when we have an user", function(){
+      beforeEach(function() {
+        spyOn(view, "onLogin");
+        store.set('user_id', null);
+        view.user = user;
+        view.detectLogin();
+      });
 
-    beforeEach(function() {
-      var $el = Backbone.$('<body></body>');
-      $el.data('user', user);
-      view.setElement($el, false);
-      view.identifyUser();
+      it("should call onLogin", function(){
+        expect(view.onLogin).toHaveBeenCalled();
+      });
+
+      it("should store the user id", function(){
+        expect(store.get('user_id')).toBe(user.id);
+      });
     });
 
-    it("should set user", function() {
-      expect(view.user).toEqual(user);
+    describe("when we do not have an user", function(){
+      beforeEach(function() {
+        store.set('user_id', 1);
+        view.user = null;
+        view.detectLogin();
+      });
+
+      it("should store null in the user id", function(){
+        expect(store.get('user_id')).toBe(null);
+      });
+    });
+  });
+
+  describe("#identifyUser", function() {
+    beforeEach(function() {
+      view.user = user;
+      view.identifyUser();
     });
 
     it("should give a mixpanel nametag to user", function() {

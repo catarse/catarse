@@ -6,6 +6,8 @@ App.addChild('MixPanel', {
     this.user = null;
     this.controller = this.$el.data('controller');
     this.action = this.$el.data('action');
+    this.user = this.$el.data('user');
+    this.detectLogin();
     if(window.mixpanel){
       this.startTracking();
     }
@@ -39,9 +41,24 @@ App.addChild('MixPanel', {
     }
   },
 
+  onLogin: function(){
+  },
+
+  detectLogin: function(){
+    if(this.user){ 
+      if(this.user.id != store.get('user_id')){
+        this.onLogin();
+        store.set('user_id', this.user.id);
+      }
+    }
+    else{
+      store.set('user_id', null);
+    }
+  },
+
   identifyUser: function(){
-    this.user = this.$el.data('user');
     if (this.user){
+      this.detectLogin();
       mixpanel.name_tag(this.user.email);
       mixpanel.identify(this.user.id);
       mixpanel.people.set({
