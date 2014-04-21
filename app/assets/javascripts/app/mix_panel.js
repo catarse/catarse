@@ -7,8 +7,8 @@ App.addChild('MixPanel', {
     this.controller = this.$el.data('controller');
     this.action = this.$el.data('action');
     this.user = this.$el.data('user');
-    this.detectLogin();
     if(window.mixpanel){
+      this.detectLogin();
       this.startTracking();
     }
   },
@@ -42,6 +42,8 @@ App.addChild('MixPanel', {
   },
 
   onLogin: function(){
+    mixpanel.alias(this.user.id);
+    this.track("Logged in");
   },
 
   detectLogin: function(){
