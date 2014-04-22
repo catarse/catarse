@@ -64,7 +64,7 @@ gem "RedCloth"
 gem 'kaminari'
 
 # Uploads
-gem 'carrierwave', '~> 0.8.0'
+gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick'
 
 # Other Tools
