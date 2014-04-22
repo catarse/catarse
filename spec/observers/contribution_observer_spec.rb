@@ -30,7 +30,7 @@ describe ContributionObserver do
     context "when payment_choice is updated to BoletoBancario" do
       let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
-        Notification.should_receive(:notify_once).with(:payment_slip, contribution.user, {contribution_id: contribution.id}, contribution: contribution, project: contribution.project)
+        Notification.should_receive(:notify_once).with(:payment_slip, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
         contribution.payment_choice = 'BoletoBancario'
         contribution.save!
       end
