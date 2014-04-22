@@ -6,16 +6,19 @@ App.addChild('MixPanel', {
     this.user = null;
     this.controller = this.$el.data('controller');
     this.action = this.$el.data('action');
+    this.user = this.$el.data('user');
     if(window.mixpanel){
+      this.detectLogin();
       this.startTracking();
     }
   },
 
   startTracking: function(){
     var self = this;
-    this.trackSelectedReward();
     this.trackPageVisit('projects', 'show', 'Visited project page');
+    this.trackPageVisit('explore', 'index', 'Explored projects');
     this.trackPageLoad('contributions', 'show', 'Finished contribution');
+    this.trackPageLoad('contributions', 'edit', 'Selected reward');
   },
 
   trackPageLoad: function(controller, action, text){
@@ -38,8 +41,24 @@ App.addChild('MixPanel', {
     }
   },
 
+  onLogin: function(){
+    mixpanel.alias(this.user.id);
+    this.track("Logged in");
+  },
+
+  detectLogin: function(){
+    if(this.user){ 
+      if(this.user.id != store.get('user_id')){
+        this.onLogin();
+        store.set('user_id', this.user.id);
+      }
+    }
+    else{
+      store.set('user_id', null);
+    }
+  },
+
   identifyUser: function(){
-    this.user = this.$el.data('user');
     if (this.user){
       mixpanel.name_tag(this.user.email);
       mixpanel.identify(this.user.id);
@@ -55,15 +74,25 @@ App.addChild('MixPanel', {
   track: function(text, options){
     this.identifyUser();
     var obj             = $(this);
-    var usr             = (this.user != null) ? this.user.id : null;
     var ref             = (obj.attr('href') != undefined) ? obj.attr('href') : null;
     var opt             = options || {};
     var default_options = {
-      'page name':  document.title,
-      'user_id':    usr,
-      'project':    ref,
-      'url':        window.location
+      'page name':          document.title,
+      'user_id':            null,
+      'created':            null,
+      'last_login':         null,
+      'contributions':      null,
+      'has_contributions':  null,
+      'project':            ref,
+      'url':                window.location
     };
+    if(this.user){
+      default_options.user_id = this.user.id;
+      default_options.created = this.user.created_at;
+      default_options.last_login = this.user.last_sign_in_at;
+      default_options.contributions = this.user.total_contributed_projects;
+      default_options.has_contributions = (this.user.total_contributed_projects > 0);
+    }
     var opt     = $.fn.extend(default_options, opt);
 
     mixpanel.track(text, opt);
@@ -81,9 +110,5 @@ App.addChild('MixPanel', {
     window.setTimeout(function(){
       self.track(eventName);
     }, this.VISIT_MIN_TIME);
-  },
-
-  trackSelectedReward: function(){
-    this.mixPanelEvent('input#contribution_submit', 'click', 'Selected reward');
-  },
+  }
 });
