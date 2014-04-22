@@ -9,7 +9,8 @@ class NotificationsMailer < ActionMailer::Base
     address.display_name = @notification.origin_name
     subject = render_to_string(template: "notifications_mailer/subjects/#{@notification.template_name}")
     m = mail({
-      from: address.format,
+      from: CatarseSettings[:email_system],
+      reply_to: address.format,
       to: @notification.user.email,
       subject: subject,
       template_name: @notification.template_name
