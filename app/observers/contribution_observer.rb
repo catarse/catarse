@@ -46,13 +46,7 @@ class ContributionObserver < ActiveRecord::Observer
   private
   def notify_confirmation(contribution)
     contribution.confirmed_at = Time.now
-    Notification.notify_once(
-      :confirm_contribution,
-      contribution.user,
-      {contribution_id: contribution.id},
-      contribution: contribution,
-      project: contribution.project
-    )
+    contribution.notify_to_contributor(:confirm_contribution)
 
     if (Time.now > contribution.project.expires_at  + 7.days) && (user = User.where(email: ::CatarseSettings[:email_payments]).first)
       Notification.notify_once(
