@@ -8,7 +8,10 @@ class ContributionObserver < ActiveRecord::Observer
 
   def before_save(contribution)
     notify_confirmation(contribution) if contribution.confirmed? && contribution.confirmed_at.nil?
-    notify_payment_slip(contribution) if contribution.payment_choice_was.nil? && contribution.payment_choice == 'BoletoBancario'
+
+    if contribution.payment_choice_was.nil? && contribution.payment_choice == 'BoletoBancario'
+      contribution.notify_to_contributor(:payment_slip)
+    end
   end
 
   def after_save(contribution)
@@ -48,24 +51,8 @@ class ContributionObserver < ActiveRecord::Observer
     contribution.confirmed_at = Time.now
     contribution.notify_to_contributor(:confirm_contribution)
 
-    if (Time.now > contribution.project.expires_at  + 7.days) && (user = User.where(email: ::CatarseSettings[:email_payments]).first)
-      Notification.notify_once(
-        :contribution_confirmed_after_project_was_closed,
-        user,
-        {contribution_id: contribution.id},
-        contribution: contribution,
-        project: contribution.project
-      )
+    if (Time.now > contribution.project.expires_at  + 7.days) && User.where(email: ::CatarseSettings[:email_payments]).present?
+      contribution.notify_to_backoffice(:contribution_confirmed_after_project_was_closed)
     end
-  end
-
-  def notify_payment_slip(contribution)
-    Notification.notify_once(
-      :payment_slip,
-      contribution.user,
-      {contribution_id: contribution.id},
-      contribution: contribution,
-      project: contribution.project
-    )
   end
 end
