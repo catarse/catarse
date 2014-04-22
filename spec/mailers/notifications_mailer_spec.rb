@@ -10,7 +10,7 @@ describe NotificationsMailer do
       notification
       Mail::Message.any_instance.stub(:deliver)
       NotificationsMailer.any_instance.should_receive(:mail).with({
-        from: CatarseSettings[:email_system],
+        from: "Catarse <system@catarse.me>",
         reply_to: "Catarse <contact@foo.bar>",
         to: notification.user.email,
         subject: 'Recibo provisório: apoio confirmado para Foo bar',
