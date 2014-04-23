@@ -1,0 +1,13 @@
+p Olá #{@notification.user.name},
+
+p Pesquisadores descobriram uma #{link_to 'vulnerabilidade de segurança', 'http://pt.wikipedia.org/wiki/Heartbleed'} que afeta muitos sites e serviços a nível mundial, incluindo o Catarse.
+
+p Revisamos nossos sistemas e fizemos as alterações necessárias para garantir que os nossos serviços não estejam expostos a essa vulnerabilidade, inclusive aumentando nossas barreiras de segurança desde de o login/cadastro de usuários.
+
+p O Catarse não sofreu nenhuma violação ou ataques decorrentes deste problema, no entanto sugerimos que você siga as orientações de segurança e #{link_to 'altere sua senha', edit_password_url(@notification.user, reset_password_token: @notification.user.generate_reset_password_token)}.
+
+p Se ficou com alguma dúvida, entre em contato conosco através de #{mail_to CatarseSettings[:email_contact]}
+
+p Abraços,
+
+= CatarseSettings[:company_name]
