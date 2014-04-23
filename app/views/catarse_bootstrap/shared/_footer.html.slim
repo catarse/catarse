@@ -8,7 +8,7 @@ footer
         li= link_to t('footer.links.instagram'), "#{CatarseSettings[:instagram_url]}", target: '_blank'
         li= link_to t('footer.links.github'), "#{CatarseSettings[:github_url]}", target: '_blank'
         li= link_to t('footer.links.blog'), "#{CatarseSettings[:blog_url]}", target: '_blank'
-        li= link_to t('footer.links.contact'), '#', data: { uv_lightbox: 'classic_widget', uv_mode: 'support', uv_primary_color: '#79808b', uv_link_color: '#3f4652', uv_topic_id: '25760'}
+        li.zendesk_widget= link_to t('footer.links.contact'), "#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}"
     .large-3.columns
       h3.footer-title= t('footer.titles.about')
       ul.footer-list
