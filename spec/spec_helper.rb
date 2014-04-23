@@ -96,7 +96,22 @@ RSpec.configure do |config|
     Blog.stub(:fetch_last_posts).and_return([])
     CatarseSettings[:base_domain] = 'localhost'
     CatarseSettings[:email_contact] = 'foo@bar.com'
+    CatarseSettings[:email_system] = 'system@catarse.me'
     CatarseSettings[:company_name] = 'Foo Bar Company'
     Contribution.any_instance.stub(:payment_engine).and_return(PaymentEngines::Interface.new)
+  end
+end
+
+RSpec::Matchers.define :custom_permit do |action|
+  match do |policy|
+    policy.public_send("#{action}")
+  end
+
+  failure_message_for_should do |policy|
+    "#{policy.class} does not permit #{action} on #{policy.record} for #{policy.user.inspect}."
+  end
+
+  failure_message_for_should_not do |policy|
+    "#{policy.class} does not forbid #{action} on #{policy.record} for #{policy.user.inspect}."
   end
 end

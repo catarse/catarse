@@ -18,6 +18,13 @@ describe Contribution::StateMachineHandler do
       end
     end
 
+    describe '#invalid' do
+      before { contribution.invalid}
+      context 'when in confirmed state' do
+        it("should switch to invalid payment state"){ contribution.invalid_payment?.should be_true}
+      end
+    end
+
     describe '#confirm' do
       before { contribution.confirm }
       it("should switch to confirmed state") { contribution.confirmed?.should be_true }
