@@ -5,6 +5,7 @@ module Admin
 
   class BaseController < ApplicationController
     inherit_resources
+
     before_filter do
       authorize Admin, :access?
     end
@@ -18,6 +19,10 @@ module Admin
           format.json { respond_with_bip(resource) }
         end
       end
+    end
+
+    def policy(record)
+      Admin.policy_class.new(current_user, record, channel)
     end
   end
 end

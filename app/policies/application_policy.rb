@@ -1,9 +1,10 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :user, :record, :channel
 
-  def initialize(user, record)
+  def initialize(user, record, channel = nil)
     @user = user
     @record = record
+    @channel = channel
   end
 
   def index?
@@ -60,7 +61,7 @@ class ApplicationPolicy
   end
 
   def is_channel_admin?
-    user.try(:channel)
+    user.try(:channel) == @channel
   end
 end
 
