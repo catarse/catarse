@@ -61,7 +61,7 @@ class ApplicationPolicy
   end
 
   def is_channel_admin?
-    user.try(:channel) == @channel
+    user.try(:channel) == @channel && @channel.present?
   end
 end
 
