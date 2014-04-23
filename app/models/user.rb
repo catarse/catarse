@@ -196,4 +196,12 @@ class User < ActiveRecord::Base
     !new_record?
   end
 
+  def generate_reset_password_token
+    raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
+    self.reset_password_token   = enc
+    self.reset_password_sent_at = Time.now.utc
+    self.save(validate: false)
+    raw
+  end
+
 end
