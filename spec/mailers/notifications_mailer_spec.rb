@@ -6,7 +6,6 @@ describe NotificationsMailer do
     subject{ NotificationsMailer.notify(notification) }
 
     before do
-      CatarseSettings[:email_system] = 'system@catarse.me'
       notification
       Mail::Message.any_instance.stub(:deliver)
       NotificationsMailer.any_instance.should_receive(:mail).with({
