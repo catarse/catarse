@@ -1,6 +1,6 @@
 - collection.rank(:row_order).each do |reward|
 
-  li[id="reward_#{reward.id}" class="reward-item" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="#{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !policy(reward).update?  ? 'clickable'  : '' )}"]
+  div[id="reward_#{reward.id}" class="reward-item" data-new_contribution_url=new_project_contribution_path(parent, reward_id: reward.id) data-update_url=sort_project_reward_path(parent, reward) class="#{(policy(reward).update? ? 'clickable_owner sortable' : '')} #{(parent.online? && !reward.sold_out? && !policy(reward).update?  ? 'clickable'  : '' )}"]
 
     - if policy(reward).update?
       .hide id="reward#{reward.id}Editor"
