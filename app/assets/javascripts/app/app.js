@@ -3,7 +3,7 @@ var App = window.App = Skull.View.extend({
 
   events: {
     "click a.user-menu" : "toggleMenu",
-    "click li.zendesk_widget" : "showWidget"
+    "click .zendesk_widget" : "showWidget"
   },
 
   beforeActivate: function(){
