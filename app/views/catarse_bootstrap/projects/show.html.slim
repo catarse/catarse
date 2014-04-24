@@ -29,7 +29,7 @@
 
 section.project-show.with-warning
   section
-    header.line-box-with-tabs
+    header.line-box.line-box-with-tabs
       .row
         .large-12.columns
           h2.project-title
@@ -113,7 +113,7 @@ section.project-show.with-warning
 
 
         .project-creator
-          = @project.user.display_image_html width: 98, height: 98
+          = @project.user.display_image_html
           p
             = t('project_by')
           p.project-creator-name

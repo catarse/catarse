@@ -47,18 +47,19 @@
     width: 60%
     text-align: left
     position: relative
-  a
+
+.curator-social-link
+  display: inline-block
+  font-size: 0.8em
+  color: $blue-one
+  font-weight: 700
+  &:before
+    content: ''
     display: inline-block
-    font-size: 0.8em
-    color: $blue-one
-    font-weight: 700
-    &:before
-      content: ''
-      display: inline-block
-      height: 18px
-      width: 18px
-      position: absolute
-      left: 0
+    height: 18px
+    width: 18px
+    position: absolute
+    left: 0
 
 .icon-earth
   &:before
@@ -83,9 +84,6 @@
     padding: 2em 0 0.5em
 
 .project-new
-  p
-    font-size: 17px
-    line-height: 1.6
   ul
     padding: 0 0 0 15px
   li

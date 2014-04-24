@@ -5,9 +5,7 @@
   position: fixed
   top: 0
   left: 0
-  -moz-box-sizing: border-box
-  -webkit-box-sizing: border-box
-  box-sizing: border-box
+  @include box-sizing(border-box)
   height: 100%
   overflow: auto
   z-index: 100
@@ -245,6 +243,8 @@
     margin: 0 1em 0 0
     border-radius: 3px
     border: 1px solid $border-gray
+    width: 98px
+    height: 98px
   a
     font-weight: bold
   p
@@ -320,6 +320,7 @@
   display: inline-block
   margin: 0 1% 2%
   vertical-align: top
+  font-size: 13px
   img
     float: left
     width: 80px
@@ -329,12 +330,10 @@
     border: 1px solid $border-gray
   p
     margin: 0 0 0.3em
-    font-size: 13px
     float: right
     width: 200px
   a
     font-weight: 400
-    font-size: 13px
     color: $blue-one
   .contribuiton-value
     font-weight: 700
