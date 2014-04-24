@@ -5,6 +5,25 @@ describe ContributionDecorator do
     I18n.locale = :pt
   end
 
+  describe "#display_description" do
+    subject{ contribution.display_description }
+    context "with anonymous contribution" do
+      let(:contribution){ build(:contribution, anonymous: true) }
+      before do
+        contribution.decorator.should_receive(:render).with(partial: 'projects/contributions/anonymous_description', locals: {contribution: contribution}).and_call_original
+      end
+      it("should render anonymous_description partial"){ subject }
+    end
+
+    context "with public contribution" do
+      let(:contribution){ build(:contribution, anonymous: false) }
+      before do
+        contribution.decorator.should_receive(:render).with(partial: 'projects/contributions/description', locals: {contribution: contribution}).and_call_original
+      end
+      it("should render description partial"){ subject }
+    end
+  end
+
   describe "#display_confirmed_at" do
     subject{ contribution.display_confirmed_at }
     context "when confirmet_at is not nil" do

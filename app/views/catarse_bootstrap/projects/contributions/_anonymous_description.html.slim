@@ -1,0 +1,8 @@
+img src="/assets/user.png" class="contribution_avatar"
+p.contribution-supporter
+  = t('.anonymous_contribution')
+p
+  = contribution.confirmed_at.to_formatted_s(:db)
+p
+  = t('.anonymous_description')
+

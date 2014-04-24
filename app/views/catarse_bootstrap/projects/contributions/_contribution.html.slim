@@ -1,22 +1,5 @@
 .contribution
-  - if contribution.anonymous
-    img src="/assets/user.png" class="contribution_avatar"
-    p.contribution-supporter
-      = t('.anonymous_contribution')
-    p
-      = contribution.confirmed_at.to_formatted_s(:db)
-    p
-      = t('.anonymous_description')
-  - else
-    = link_to user_path(contribution.user)
-      img src=contribution.user.display_image class="contribution_avatar"
-    p.contribution-supporter
-      = link_to user_path(contribution.user)
-        = contribution.user.medium_name
-    p.contribution-date
-      = contribution.confirmed? ? contribution.confirmed_at.to_formatted_s(:db) : contribution.created_at.to_formatted_s(:db)
-    p
-      = contribution.user.contributions_text
+  = contribution.display_description
 
   - if current_user and (current_user == @project.user or current_user.admin)
     - if contribution.reward
