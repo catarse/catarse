@@ -3,6 +3,8 @@
   font-size: 2.2em
   line-height: 1em
   margin: 0
+  a
+    color: $blue-one
 
 .channel-description
   color: $blue-two
@@ -37,53 +39,56 @@
 .curator-social
   padding: 0
   margin: 0
+  text-align: right
+  li
+    display: inline-block
+    list-style: none
+    padding: 0.2em 0 0 22px
+    width: 60%
+    text-align: left
+    position: relative
 
-.curator-social li
-  display: inline-block
-  list-style: none
-  padding: 0.2em 0 0 6em
-  width: 100%
-
-.curator-social a
+.curator-social-link
   display: inline-block
   font-size: 0.8em
-  padding: 0 0 0 25px
   color: $blue-one
   font-weight: 700
+  &:before
+    content: ''
+    display: inline-block
+    height: 18px
+    width: 18px
+    position: absolute
+    left: 0
 
 .icon-earth
-  background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -27px 197px transparent
+  &:before
+    background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -28px 103px transparent
 .icon-facebook
-  background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -29px 127px transparent
+  &:before
+    background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -105px 103px transparent
 .icon-twitter
-  background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -27px 163px transparent
+  &:before
+    background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -66px 103px transparent
 
 
 .how-it-works
+  p
+    font-size: 17px
+    line-height: 1.6
   ul
     padding: 0 0 0 15px
   li
     margin: 0 0 .8em
   h3
-    padding: 5em 0 0.5em
-    &:first-child
-      margin-top: 1em
-      & + p
-        font-size: 1.25em
-        font-weight: 400
-        line-height: 1.3em
+    padding: 2em 0 0.5em
 
-
-.how-it-works-sidebar
-  width: 25%
-  position: absolute
-  right: 0
-  h4
-    color: $blue-one
-    text-transform: uppercase
-    font-size: .7em
+.project-new
   ul
-    padding: 0
+    padding: 0 0 0 15px
   li
     margin: 0 0 .8em
-    list-style: none
+  h3
+    padding: 2em 0 0.5em
+  form
+    margin: 2em 0 0

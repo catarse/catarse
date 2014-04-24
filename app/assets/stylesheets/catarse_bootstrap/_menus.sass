@@ -23,7 +23,7 @@
   ul
     margin: 0
   li
-    margin: 10px 0 10px 20px
+    margin: 0 0 0 20px
     display: inline-block
   a
     line-height: 44px
@@ -49,3 +49,44 @@
   padding: 0 20px 0 0
   &:after
     content: " "
+
+.tabs-nav
+  position: absolute
+  bottom: -1px
+  margin: 0 0 0 15px
+  padding: 0
+  width: $default_grid_max_size
+  a
+    color: $blue-one
+    padding: 14px 1.8em
+    font-size: 13px
+    display: inline-block
+    &.selected
+      background: #ffffff
+      border-top: 1px solid $border-gray
+      border-left: 1px solid $border-gray
+      border-right: 1px solid $border-gray
+      border-radius: 3px 3px 0 0
+      font-weight: 700
+
+  .tabs-nav-creator
+    float: right
+    &:before
+      content: ''
+      float: left
+      width: 19px
+      height: 19px
+      vertical-align: top
+      margin: 0px 3px 0 0
+      background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -73px -129px transparent
+
+  .tabs-nav-category
+    float: right
+    &:before
+      content: ''
+      float: left
+      width: 19px
+      height: 19px
+      vertical-align: top
+      margin: 0px 3px 0 0
+      background: url("/assets/catarse_bootstrap/catarse-assets.png") repeat scroll -120px -129px transparent

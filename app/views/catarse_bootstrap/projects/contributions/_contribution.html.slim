@@ -1,0 +1,22 @@
+.contribution
+  = contribution.display_description
+
+  - if current_user and (current_user == @project.user or current_user.admin)
+    - if contribution.reward
+        p
+          = contribution.reward.display_minimum
+          |  - 
+          = contribution.reward.short_description
+    - else
+      p
+        = t('.no_reward')
+
+    p.contribuiton-value
+      = contribution.display_value
+      |  · 
+      - if contribution.user.email
+          = mail_to contribution.user.email
+      - else
+        = t('not_informed')
+
+    

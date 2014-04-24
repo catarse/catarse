@@ -1,0 +1,3 @@
+#video_embed
+  h1= link_to @project.name, project_by_slug_path(permalink: @project.permalink), target: '__blank'
+  iframe src="#{@project.display_video_embed_url}" width="384" height="200"

@@ -1,0 +1,84 @@
+.new-reward
+  background: $gray-one
+  padding: 1.6em 1em
+  h4
+    margin: 0
+    font-size: 16px
+  p
+    font-size: 13px
+
+
+.rewards-list
+  border-radius: 4px
+  margin: 2em 0
+  padding: 0
+
+.reward-item
+  padding: 2em 1.5em 2em
+  display: inline-block
+  width: 100%
+  position: relative
+  margin-bottom: 4px
+  background: $gray-one
+  p
+    font-size: 15px
+    word-wrap: break-word
+  .reward_deliver_at p, .reward_updated_at p, .in_time_to_confirm p
+    margin: 0
+    font-size: 12px
+  &:hover
+    background: darken($gray-one, 5%)
+  form
+    margin-bottom: 40px
+    a
+      margin-top: 20px
+    p
+      font-size: 13px
+
+.reward-price
+  font-size: 15px
+  margin: 0
+
+p.reward-bakers
+  font-weight: 700
+  margin: .3em 0 1em
+  font-size: 13px
+
+.description_version
+  display: none
+
+.limited-reward
+  background: $yellow
+  text-align: center
+  display: inline-block
+  color: $blue-one
+  font-weight: 700
+  margin: 0 0 0 5px
+  font-size: 12px
+  padding: 0 1px
+  span
+    font-weight: normal
+    margin: 0 0 0 1px
+    word-spacing: -1px
+  .finished
+    background: $border-strong
+
+.updated_reward
+  font-size: 16px
+  margin-top: 13px
+
+.edit-reward
+  position: absolute
+  right: 7px
+  top: 7px
+  font-size: 12px
+  text-transform: capitalize
+  font-weight: 700
+  color: white
+  background: $blue-one
+  padding: 4px 6px
+  border-radius: 4px
+  &:hover
+    color: white
+    text-decoration: none
+    background: lighten($blue-one, 10%)

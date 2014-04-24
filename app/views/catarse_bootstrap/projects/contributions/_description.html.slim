@@ -1,0 +1,10 @@
+= link_to user_path(contribution.user)
+  img src=contribution.user.display_image class="contribution_avatar"
+p.contribution-supporter
+  = link_to user_path(contribution.user)
+    = contribution.user.medium_name
+p.contribution-date
+  = contribution.confirmed? ? contribution.confirmed_at.to_formatted_s(:db) : contribution.created_at.to_formatted_s(:db)
+p
+  = contribution.user.contributions_text
+

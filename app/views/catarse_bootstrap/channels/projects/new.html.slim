@@ -8,7 +8,7 @@ section.row
   = simple_form_for @project, html: { id: 'project_form', class: 'project-submit' } do |form|
     = form.input :referal_link, as: :hidden, input_html: { value: referal_link }
     = form.input :permalink, as: :string, label: t('submit_project.permalink'), input_html: { class: 'url-input' }
-    span.url-text = t('submit_project.permalink_over', channel: channel.permalink)
+    span.url-text = t('submit_project.channel_permalink_placeholder', channel: channel.permalink)
     p = t('submit_project.permalink_hint')
 
     = form.input :name, as: :string, label: t('submit_project.name')

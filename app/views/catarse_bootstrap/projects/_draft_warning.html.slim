@@ -1,0 +1,45 @@
+- if policy(@project).update?
+  .project-warning
+    h3
+      = 'Bem-vindo ao Rascunho!'
+
+    #project_warning_text
+      p
+        = "Realize todas as alterações no formulário pela aba #{link_to 'EDIÇÃO', project_by_slug_path(permalink: @project.permalink, anchor: 'edit')} e depois clique em ATUALIZAR INFORMAÇÕES.".html_safe
+      p
+        = 'As recompensas podem ser adicionadas diretamente na coluna onde ficam expostas, para isso basta clicar em ADICIONAR RECOMPENSA.'.html_safe
+      .accordion
+        h4
+          = 'Importante'
+        ul.accordion-content
+          li
+            p
+              = 'Seu projeto só será avaliado pela nossa equipe quando você clicar no botão ENVIAR PROJETO. Iremos analisar a consistência do seu projeto apenas com base nas informações presentes no seu rascunho, por isso seja bastante claro e objetivo na construção desta página. O vídeo não é obrigatório para a avaliação, apenas para o projeto ir ao ar.'.html_safe
+            p
+              = "Caso você já o tenha pronto, disponibilize pra gente. Quanto mais informação para o nosso atendimento e avaliação, melhor. Não deixe de estudar os artigos da nossa #{link_to 'Central de Suporte!', ::CatarseSettings[:support_forum], target: '__blank'} Lá você pode se informar sobre a maioria dos processos que ocorrem antes, durante e depois de uma campanha no Catarse!".html_safe
+
+      .accordion
+        h4
+          = 'Soluções de problemas'
+        ul.accordion-content.warning-links
+          li
+            p
+              = "Confira: #{link_to 'Realizadores - Primeiros Passos', 'http://suporte.catarse.me/knowledgebase/topics/25764-realizadores-primeiros-passos-pr%C3%A9-projeto-', target: '__blank'}".html_safe
+      .submit-project
+        p
+          = 'Pronto para enviar para análise?'
+        = link_to 'Enviar projeto', send_to_analysis_project_path(@project), class: 'button medium action'
+
+- else
+  .project-warning
+    h3
+      = 'Atenção! Este projeto<br> ainda está em rascunho.'.html_safe
+
+    #project_warning_text
+      p
+        = 'Este projeto ainda não está apto a receber contribuições financeiras e as informações dessa página não são definitivas.'
+      p
+        = "Se você quer dar uma força desde já, deixe seu feedback para o(a) realizador(a) na aba <strong>#{link_to 'COMENTÁRIOS', project_by_slug_path(permalink: @project.permalink, anchor: 'comments')}</strong>".html_safe
+
+button.toggle-warning
+  = '×'

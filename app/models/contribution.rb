@@ -7,7 +7,7 @@ class Contribution < ActiveRecord::Base
   include Contribution::CustomValidators
   include Contribution::PaymentEngineHandler
 
-  delegate :display_value, :display_confirmed_at, to: :decorator
+  delegate :display_description, :display_value, :display_confirmed_at, to: :decorator
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00

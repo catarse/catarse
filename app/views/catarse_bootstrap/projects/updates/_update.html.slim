@@ -1,0 +1,19 @@
+.update
+  h3 = link_to "#updates/#{update.id}", id: "updates/#{update.id}" do
+    = update.title
+
+  p.update-time
+    = l(update.created_at, format: :updates)
+  .update-text
+    = raw(update.comment_html)
+
+  - url = project_by_slug_url(@project.permalink, update_id: update.id, locale: I18n.locale, anchor: 'updates')
+  .twitter_share= render_twitter text: "#{update.title}", url: url
+  .facebook_share= render_facebook_like href: url, width: '360'
+
+  - if policy(update).destroy?
+    div
+      = link_to t('projects.project_updates.destroy'), project_update_path(project_id: @project.id, id: update.id), confirm: t('projects.project_updates.destroy_confirmation'), remote: true, method: :delete, class: 'destroy_update button medium negative'
+      .deleting_update.hide= image_tag "loading.gif"
+
+

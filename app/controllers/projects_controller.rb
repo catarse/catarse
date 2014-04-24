@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
   respond_to :html
   respond_to :json, only: [:index, :show, :update]
 
+  layout :use_catarse_bootstrap
+
   def index
     index! do |format|
       format.html do
@@ -33,7 +35,6 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new user: current_user
     authorize @project
-    @title = t('projects.new.title')
     @project.rewards.build
   end
 
@@ -61,8 +62,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @title = resource.name
-    authorize @project
+    authorize resource
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
     @updates_count = resource.updates.count
     @update = resource.updates.where(id: params[:update_id]).first if params[:update_id].present?
@@ -88,6 +88,10 @@ class ProjectsController < ApplicationController
   end
 
   protected
+  def use_catarse_bootstrap
+    (['create', 'new', 'show'].include?(action_name) ? 'catarse_bootstrap' : 'application')
+  end
+
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end

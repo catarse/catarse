@@ -1,13 +1,11 @@
 App.addChild('Project', _.extend({
-  el: '#main_content[data-action="show"][data-controller-name="projects"]',
+  el: '#catarse_bootstrap[data-action="show"][data-controller-name="projects"]',
 
   events: {
-    'click #toggle_warning a' : 'toggleWarning',
     'click a#embed_link' : 'toggleEmbed'
   },
 
   activate: function(){
-    this.$warning = this.$('#project_warning_text');
     this.$embed= this.$('#project_embed');
     this.route('about');
     this.route('updates');
@@ -17,19 +15,14 @@ App.addChild('Project', _.extend({
     this.route('reports');
   },
 
-  toggleWarning: function(){
-    this.$warning.slideToggle('slow');
-    return false;
-  },
-
   toggleEmbed: function(){
     this.loadEmbed();
-    this.$embed.slideToggle('slow');
+    this.$embed.slideToggle('fast');
     return false;
   },
 
   followRoute: function(name){
-    var $tab = this.$('nav#project_menu a[href="' + window.location.hash + '"]');
+    var $tab = this.$('.tabs-nav a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
     }
