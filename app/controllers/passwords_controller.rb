@@ -1,5 +1,7 @@
 class PasswordsController < Devise::PasswordsController
 
+  prepend_before_filter :redirect_user_already_logged, only: [:edit]
+
   def update
     self.resource = resource_class.reset_password_by_token(resource_params)
 
@@ -20,6 +22,9 @@ class PasswordsController < Devise::PasswordsController
   end
 
   protected
+  def redirect_user_already_logged
+    session[:return_to] = user_path(current_user, anchor: 'settings') if current_user.present?
+  end
 
   def after_sending_reset_password_instructions_path_for(resource)
     new_password_path(resource_name)
