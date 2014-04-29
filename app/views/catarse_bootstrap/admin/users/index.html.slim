@@ -1,5 +1,5 @@
 = render 'shared/header'
-.row.admin
+.row.admin.use-sort
   h1= @title = t('.title')
   = simple_form_for admin_users_path, method: :get, class: 'form-horizontal' do |form|
     = form.hidden_field :order_by, name: :order_by, value: params[:order_by]
