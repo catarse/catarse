@@ -14,6 +14,7 @@ pt:
       followers_menu: "Seguidores"
       statistics_menu: "Estatísticas"
       profile_menu: "Editar canal"
+      partners_menu: "Editar parceiros"
       statistics:
         title: 'Estatísticas do canal'
         total_subscribers: 'Total de assinantes'
@@ -26,6 +27,8 @@ pt:
         one: "<span>%{count} %{unit}</span> restante"
         other: "<span>%{count} %{unit}</span> restantes"
       pledged_html: "<span>%{value}</span> levantados"
+    partners:
+      title: 'Parceiros'
     posts:
       title: "Novidades"
     how_it_works:

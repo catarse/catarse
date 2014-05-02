@@ -1,0 +1,7 @@
+pt:
+  activerecord:
+    attributes:
+      channel_partner:
+        name: 'Nome'
+        url: 'Site'
+        image: 'Imagem'
