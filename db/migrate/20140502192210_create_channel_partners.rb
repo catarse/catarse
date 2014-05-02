@@ -1,10 +1,10 @@
 class CreateChannelPartners < ActiveRecord::Migration
   def change
     create_table :channel_partners do |t|
-      t.text :name
-      t.text :url
-      t.text :image
-      t.integer :channel_id
+      t.text :name, null: false
+      t.text :url, null: false
+      t.text :image, null: false
+      t.integer :channel_id, null: false
 
       t.timestamps
     end

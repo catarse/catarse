@@ -706,6 +706,7 @@ pt:
       confirmations:
         destroy: 'Você tem certeza que deseja deletar?'
       partners:
+        edit_title: 'Editar parceiro'
         back_to_list: '← Voltar para gerenciar parceiros'
         save_submit: 'Salvar'
         index:
