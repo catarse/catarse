@@ -705,6 +705,18 @@ pt:
       posts_menu: 'Gerenciar novidades'
       confirmations:
         destroy: 'Você tem certeza que deseja deletar?'
+      partners:
+        edit_title: 'Editar parceiro'
+        back_to_list: '← Voltar para gerenciar parceiros'
+        save_submit: 'Salvar'
+        index:
+          title: 'Gerenciar parceiros'
+          new_button: 'Adicionar parceiro'
+          table:
+            name: 'Nome'
+            created_at: 'Criado em'
+            url: 'Site'
+            image: 'Imagem'
       posts:
         save_submit: 'Salvar e visualizar'
         warning_html: 'Lembrando que toda novidade publicada vai diretamente para o email de seus seguidores. Por isso, revise bem seu texto antes de enviá-lo.'
@@ -726,6 +738,7 @@ pt:
         title: "Gerenciamento"
         total: "projetos no total"
         no_posts: 'Nenhuma novidade cadastrada'
+        no_partners: 'Nenhum parceiro cadastrado'
       filter:
         title: "Filtrar"
         by_id: "Por id"

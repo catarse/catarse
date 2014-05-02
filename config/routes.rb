@@ -11,7 +11,7 @@ Catarse::Application.routes.draw do
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   devise_for(
-    :users, 
+    :users,
     {
       path: '',
       path_names:   { sign_in: :login, sign_out: :logout, sign_up: :sign_up },
@@ -50,6 +50,7 @@ Catarse::Application.routes.draw do
           resources :subscriber_reports, only: [ :index ]
         end
         resources :posts
+        resources :partners
         resources :followers, only: [ :index ]
         resources :projects, only: [ :index, :update] do
           member do
