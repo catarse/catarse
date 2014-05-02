@@ -46,4 +46,14 @@ section.row.projects
   - @profile.projects.visible.each do |project|
     = render partial: 'shared/project', locals: { project: project }
 
+section.row.partners
+  .large-12.columns
+    h3 Parceiros
+  - @profile.partners.each do |partner|
+    .large-3.columns.left
+      .partner-box
+        = link_to image_tag(partner.image.thumb.url), partner.url, title: partner.name
+        h5= partner.name
+
+
 = render 'shared/footer_channel'
