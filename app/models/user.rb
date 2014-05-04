@@ -133,7 +133,8 @@ class User < ActiveRecord::Base
       email: self.email,
       total_contributed_projects: self.total_contributed_projects,
       created_at: self.created_at,
-      last_sign_in_at: self.last_sign_in_at
+      last_sign_in_at: self.last_sign_in_at,
+      sign_in_count: self.sign_in_count
     }.to_json
   end
 
