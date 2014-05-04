@@ -43,7 +43,12 @@ App.addChild('MixPanel', {
 
   onLogin: function(){
     mixpanel.alias(this.user.id);
-    this.track("Logged in");
+    if(this.user.sign_in_count == 1){
+      this.track("Signed up");
+    }
+    else{
+      this.track("Logged in");
+    }
   },
 
   detectLogin: function(){
