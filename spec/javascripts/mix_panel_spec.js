@@ -95,6 +95,45 @@ describe("MixPanel", function() {
     });
   });
 
+  describe("#onLogin", function(){
+    beforeEach(function() {
+      spyOn(mixpanel, "alias");
+      spyOn(view, "track");
+    });
+
+    describe("when user has 1 login", function(){
+      beforeEach(function() {
+        user.sign_in_count = 1;
+        view.user = user;
+        view.onLogin();
+      });
+
+      it("should alias the user in mixpanel", function(){
+        expect(mixpanel.alias).toHaveBeenCalledWith(user.id);
+      });
+
+      it("should track login event", function(){
+        expect(view.track).toHaveBeenCalledWith("Signed up");
+      });
+    });
+
+    describe("when user has more than 1 login", function(){
+      beforeEach(function() {
+        user.sign_in_count = 2;
+        view.user = user;
+        view.onLogin();
+      });
+
+      it("should alias the user in mixpanel", function(){
+        expect(mixpanel.alias).toHaveBeenCalledWith(user.id);
+      });
+
+      it("should track login event", function(){
+        expect(view.track).toHaveBeenCalledWith("Logged in");
+      });
+    });
+  });
+
   describe("#detectLogin", function() {
     describe("when we have an user", function(){
       beforeEach(function() {
