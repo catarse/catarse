@@ -664,6 +664,7 @@ pt:
   channels:
     subscribed: "+ %{count} seguidores"
     header:
+      partners: 'Parceiros'
       posts: 'Novidades'
       submit: "Enviar projeto"
       how_works: "Como funciona"
