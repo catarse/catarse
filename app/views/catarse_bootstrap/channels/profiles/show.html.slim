@@ -46,7 +46,7 @@ section.row.projects
   - @profile.projects.visible.each do |project|
     = render partial: 'shared/project', locals: { project: project }
 
-section.row.partners
+section.row.partners id="partners"
   .large-12.columns
     h3 Parceiros
   - @profile.partners.each do |partner|

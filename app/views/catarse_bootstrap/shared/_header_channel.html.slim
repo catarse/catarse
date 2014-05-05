@@ -10,6 +10,8 @@ header
           li.nav-item
             = link_to t('channels.header.posts'), channels_posts_path, class: 'standard-link'
           li.nav-item
+            = link_to t('channels.header.partners'), root_url(anchor: 'partners'), class: 'standard-link'
+          li.nav-item
             = mail_to channel.email, t('channels.header.contact'), title: t('channels.header.contact'), class: 'standard-link', target: '_blank'
           - if current_user
             li.nav-item
