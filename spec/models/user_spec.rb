@@ -186,7 +186,16 @@ describe User do
 
   describe "#to_analytics_json" do
     subject{ user.to_analytics_json }
-    it{ should == {id: user.id, email: user.email, total_contributed_projects: user.total_contributed_projects, created_at: user.created_at, last_sign_in_at: user.last_sign_in_at}.to_json }
+    it do 
+      should == {
+        id: user.id, 
+        email: user.email, 
+        total_contributed_projects: user.total_contributed_projects, 
+        created_at: user.created_at, 
+        last_sign_in_at: user.last_sign_in_at, 
+        sign_in_count: user.sign_in_count
+      }.to_json 
+    end
   end
 
   describe "#credits" do

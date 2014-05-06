@@ -234,6 +234,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
+    mixpanel-ruby (1.4.0)
     monetize (0.1.4)
     money (6.0.1)
       i18n (~> 0.6.4)
@@ -497,6 +498,7 @@ DEPENDENCIES
   kaminari
   launchy
   letter_opener
+  mixpanel-ruby
   moip!
   newrelic_rpm (= 3.6.5.130)
   omniauth
