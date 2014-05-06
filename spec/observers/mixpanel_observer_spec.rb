@@ -5,6 +5,7 @@ describe MixpanelObserver do
   let(:tracker){ double('mixpanel-ruby tracker', {track: nil}) }
 
   before do
+    MixpanelObserver.any_instance.unstub(:tracker)
     MixpanelObserver.any_instance.stub(tracker: tracker)
     tracker.should_receive(:track).with(contribution.user.id.to_s, "Contribution confirmed")
   end

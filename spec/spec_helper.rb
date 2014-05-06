@@ -99,7 +99,7 @@ RSpec.configure do |config|
     CatarseSettings[:email_system] = 'system@catarse.me'
     CatarseSettings[:company_name] = 'Foo Bar Company'
     Contribution.any_instance.stub(:payment_engine).and_return(PaymentEngines::Interface.new)
-    Mixpanel::Tracker.stub(new: double('mixpanel-ruby tracker', {track: nil}))
+    MixpanelObserver.any_instance.stub(tracker: double('mixpanel tracker', track: nil))
   end
 end
 
