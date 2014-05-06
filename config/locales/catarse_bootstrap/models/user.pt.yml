@@ -1,5 +1,8 @@
 pt:
   activerecord:
+    attributes:
+      user:
+        reset_password_token: "Código para recriar senha"
     errors:
       models:
         user:
@@ -11,3 +14,5 @@ pt:
             password:
               too_short: "A senha que você escolheu é muito curta"
               confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
+            reset_password_token:
+              invalid: 'inválido. Vá para <a href="/password/new">esqueci minha senha</a> e solicite a redefinição da senha.'
