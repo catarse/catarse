@@ -1,7 +1,6 @@
 = simple_form_for resource, url: url, class: 'channel-partner-new' do |form|
-  = form.input :name, as: :string, required: false
   = form.input :url, as: :string, required: false
-  = form.input :image, as: :file
+  = form.input :image, as: :file, hint: t('channels.admin.partners.hint_image')
 
   .row
     .large-3.columns

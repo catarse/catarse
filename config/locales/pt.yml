@@ -710,6 +710,7 @@ pt:
         edit_title: 'Editar parceiro'
         back_to_list: '← Voltar para gerenciar parceiros'
         save_submit: 'Salvar'
+        hint_image: 'Tamanho da imagem 370x320'
         index:
           title: 'Gerenciar parceiros'
           new_button: 'Adicionar parceiro'
