@@ -29,6 +29,9 @@ gem 'schema_associations'
 gem 'chartkick'
 gem 'catarse_settings_db'
 
+# Mixpanel for backend tracking
+gem 'mixpanel-ruby'
+
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
 gem 'catarse_moip', '~> 2.3.5'

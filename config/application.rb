@@ -37,7 +37,8 @@ module Catarse
     end
     config.active_record.observers = [
       :contribution_observer, :user_observer, :channel_observer,
-      :update_observer, :project_observer, :channel_post_observer
+      :update_observer, :project_observer, :channel_post_observer,
+      :mixpanel_observer
     ]
 
     # Enable the asset pipeline
