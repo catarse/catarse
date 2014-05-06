@@ -25,7 +25,7 @@ class Contribution < ActiveRecord::Base
   scope :anonymous, -> { where(anonymous: true) }
   scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }
-  scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = current_date ") }
+  scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = to_date(?, 'yyyy-mm-dd')", Time.now.strftime('%Y-%m-%d')) }
 
   scope :can_cancel, -> { where("contributions.can_cancel") }
 
