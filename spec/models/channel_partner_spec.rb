@@ -6,7 +6,7 @@ describe ChannelPartner do
   end
 
   describe "validations" do
-    %w[name channel_id url image].each do |field|
+    %w[channel_id url image].each do |field|
       it{ should validate_presence_of field }
     end
   end

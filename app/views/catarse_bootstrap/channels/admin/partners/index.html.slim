@@ -17,17 +17,15 @@
       thead
         tr
           th.large-1.columns= t('channels.admin.partners.index.table.image')
-          th.large-3.columns= t('channels.admin.partners.index.table.name')
-          th.large-4.columns= t('channels.admin.partners.index.table.url')
-          th.large-3.columns= t('channels.admin.partners.index.table.created_at')
+          th.large-6.columns= t('channels.admin.partners.index.table.url')
+          th.large-4.columns= t('channels.admin.partners.index.table.created_at')
           th.large-1.columns= t('channels.admin.partners.index.table.actions')
       tbody
         - collection.each do |resource|
           tr id=resource.id class=cycle("even", "odd")
             td.large-1.columns= image_tag(resource.image.thumb_small.url, name: resource.name)
-            td.large-3.columns= link_to resource.name, edit_channels_admin_partner_path(resource)
-            td.large-4.columns= link_to resource.url, resource.url
-            td.large-3.columns= l(resource.created_at)
+            td.large-6.columns= link_to resource.url, resource.url
+            td.large-4.columns= l(resource.created_at)
             td.large-1.columns.project-events-dropdown
               ul.dropdown
                 li= link_to t('channels.admin.table.edit_action'), edit_channels_admin_partner_path(resource)
