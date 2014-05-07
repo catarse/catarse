@@ -11,7 +11,7 @@ class ChannelPartner < ActiveRecord::Base
 
   def convert_url
     unless self.url.starts_with?('http://', 'https://')
-      self.url = ['http://', self.url] * ''
+      self.url = ['http://', self.url].join('')
     end
   end
 end
