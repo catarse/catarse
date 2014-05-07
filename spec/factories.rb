@@ -15,6 +15,12 @@ FactoryGirl.define do
     "foo_page_#{n}"
   end
 
+  factory :channel_partner do |f|
+    f.url "http://google.com"
+    f.image File.open("#{Rails.root}/spec/support/testimg.png")
+    f.association :channel
+  end
+
   factory :user do |f|
     f.name "Foo bar"
     f.password "123456"
