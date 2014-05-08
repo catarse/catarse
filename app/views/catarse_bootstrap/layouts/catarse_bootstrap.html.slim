@@ -26,7 +26,6 @@ html
     = render_facebook_sdk
     = render 'layouts/uservoice'
     = render 'layouts/catarse_bootstrap_notices' if notice.present?
-    = render 'layouts/login_feedback_support' if devise_controller?
 
     .content= yield
 
