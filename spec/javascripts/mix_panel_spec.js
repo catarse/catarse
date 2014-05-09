@@ -39,22 +39,6 @@ describe("MixPanel", function() {
     spyOn(mixpanel.people, "set");
   });
 
-  describe('#trackFacebookShare', function(){
-    var evt = {
-      currentTarget: $('<div data-title="Foo"></div>')
-    };
-
-    beforeEach(function() {
-      spyOn(view, 'track');
-    });
-
-    it("should call track", function() {
-      view.trackFacebookShare(evt);
-      expect(view.track).toHaveBeenCalledWith('FB Share for project', { ref: 'Foo' });
-    });
-
-  });
-
   describe('#trackOnFacebookLike', function() {
     beforeEach(function(){
       spyOn(FB.Event, "subscribe");
@@ -71,7 +55,7 @@ describe("MixPanel", function() {
     });
   });
 
-  describe('#trackLike', function(){
+  describe('#trackFB', function(){
     var text = 'Foo Bar';
     var element = $('<div id="element" data-title="Foo"></div>');
 
@@ -80,7 +64,7 @@ describe("MixPanel", function() {
     });
 
     it("should call track when facebook event subscribe is fired", function(){
-      view.trackLike(text, element);
+      view.trackFB(text, element);
       expect(view.track).toHaveBeenCalledWith(text, { ref: 'Foo' })
     });
   });
