@@ -931,19 +931,6 @@ pt:
       two: "Apoiou este e mais 1 outro projeto"
     no_name: "Sem nome"
     google_account: "Conta Google"
-  users:
-    set_email:
-      site_title: 'Defina um email de contato'
-      title: 'Defina um email de contato'
-      submit: 'Gravar o email e prosseguir'
-    project:
-      confirmed: "Confirmado"
-      refunded: "Reembolsado"
-      requested_refund: "Estorno solicitado"
-      waiting_confirmation: "Aguardando Confirmação"
-    header:
-      bio_tooltip: "Clique aqui para escrever sobre você..."
-      name_tooltip: "Clique aqui para preencher seu nome..."
   users_mailer:
     notification_email:
       alt: "Você deve habilitar imagens para visualizar corretamente essa mensagem."
