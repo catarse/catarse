@@ -10,11 +10,11 @@ class RewardDecorator < Draper::Decorator
   end
 
   def display_remaining
-    I18n.t('reward.display_remaining', remaining: source.remaining, maximum: source.maximum_contributions).html_safe
+    I18n.t('rewards.index.display_remaining', remaining: source.remaining, maximum: source.maximum_contributions).html_safe
   end
 
   def name
-    "<div class='reward_minimum_value'>#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('reward.dont_want')}</div><div class='reward_description'>#{html_escape(source.description)}</div>#{'<div class="sold_out">' + I18n.t('reward.sold_out') + '</div>' if source.sold_out?}<div class='clear'></div>".html_safe
+    "<div class='reward_minimum_value'>#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</div><div class='reward_description'>#{html_escape(source.description)}</div>#{'<div class="sold_out">' + I18n.t('rewards.index.sold_out') + '</div>' if source.sold_out?}<div class='clear'></div>".html_safe
   end
 
   def display_minimum
