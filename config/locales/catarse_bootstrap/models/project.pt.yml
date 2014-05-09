@@ -1,0 +1,27 @@
+pt:
+  activerecord:
+    errors:
+      models:
+        project:
+          attributes:
+            permalink:
+              invalid: "URL do projeto inválida"
+    attributes:
+      project:
+        category: Categoria
+        expires_at: Prazo
+        online_days: "Qual o prazo para atingir o mínimo?"
+        headline: "Frase de efeito"
+        image_url: "URL da imagem"
+        name: "Nome do projeto"
+        goal: "Quanto você pretende arrecadar? (apenas números)"
+        about: "História do seu projeto e como o $ será utilizado"
+        user_id: "Id do usuário"
+        video_url: "URL do vídeo"
+        permalink: 'URL do seu projeto'
+        more_links: 'Mais algum link para conhecer mais sobre o seu projeto?'
+        how_know: 'Como você conheceu o Catarse?'
+        first_contributions: "Lista com os primeiros apoiadores"
+    models:
+      project: Projeto
+
