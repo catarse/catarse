@@ -1,9 +1,9 @@
-describe("Contribution", function() {
+describe("ContributionForm", function() {
   var view;
   var reward = $('<input type="radio" />');
 
   beforeEach(function() {
-    view = new App.views.Contribution({el: $('<div></div>')});
+    view = new App.views.Contribution.views.ContributionForm({el: $('<div></div>')});
   });
 
   describe('#reward', function(){

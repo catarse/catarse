@@ -17,6 +17,13 @@ describe("MixPanel", function() {
     view = new App.views.MixPanel();
     view.controller = "testController";
     view.action = "testAction";
+
+    window.FB = {
+      Event: {
+        subscribe: function(event_name, callback) {}
+      }
+    };
+
     window.mixpanel = mixpanel = {
       name_tag: function(){},
       alias: function(){},
@@ -30,6 +37,42 @@ describe("MixPanel", function() {
     spyOn(mixpanel, "identify");
     spyOn(mixpanel, "track");
     spyOn(mixpanel.people, "set");
+  });
+
+  describe('#trackOnFacebookLike', function() {
+    beforeEach(function(){
+      spyOn(view, 'trackFB');
+
+      spyOn(FB.Event, "subscribe").and.callFake(function(event, callback) {
+        callback('FB Like for project', 'element');
+      });
+    });
+
+    it("should call subscribe on edge.create", function(){
+      view.trackOnFacebookLike();
+      expect(FB.Event.subscribe).toHaveBeenCalledWith('edge.create', jasmine.any(Function));
+      expect(view.trackFB).toHaveBeenCalledWith('FB Like for project', 'element');
+    });
+
+    it("should call subscribe on edge.remove", function(){
+      view.trackOnFacebookLike();
+      expect(FB.Event.subscribe).toHaveBeenCalledWith('edge.remove', jasmine.any(Function));
+      expect(view.trackFB).toHaveBeenCalledWith('FB Unlike for project', 'element');
+    });
+  });
+
+  describe('#trackFB', function(){
+    var text = 'Foo Bar';
+    var element = $('<div id="element" data-title="Foo"></div>');
+
+    beforeEach(function(){
+      spyOn(view, "track");
+    });
+
+    it("should call track when facebook event subscribe is fired", function(){
+      view.trackFB(text, element);
+      expect(view.track).toHaveBeenCalledWith(text, { ref: 'Foo' })
+    });
   });
 
   describe("#trackPageLoad", function(){
