@@ -115,36 +115,6 @@ pt:
       discover: "Descubra projetos"
     texts:
       copyleft: "Feito com amor."
-  main:
-    banner: "Conheça a pesquisa"
-    links:
-      channels: "Descubra o Canal Asas"
-      recommended: "Descubra projetos recomendados"
-      expiring: "Descubra projetos na reta final"
-      recents: "Descubra projetos recentes"
-      near: "Descubra projetos perto de você"
-  sidebar:
-    titles:
-      blog: blog
-      facebook: "já curtiu nosso face?"
-      newsletter: "Assine nossa news"
-      faq: "tá com dúvida?"
-      schedule: agenda
-    placeholders:
-      email: "Digite seu email"
-    buttons:
-      newsletter: Enviar
-  sections:
-    near:
-      title: 'Próximos a mim'
-    recommended:
-      title: 'Recomendados'
-    expiring:
-      title: "Na reta final"
-    recents:
-      title: "Recentes"
-    channels:
-      title: 'Canal Asas'
   accept_terms_html: "Eu li e estou de acordo com os %{link}."
   activerecord:
     errors:
@@ -366,9 +336,6 @@ pt:
       draft: "rascunho"
   projects:
     send_to_analysis: 'Seu projeto foi enviado para nossa equipe.'
-    box:
-      by: por
-      when: em
     admin_fields:
       title: "Campos para o admin"
     contribute_project:
