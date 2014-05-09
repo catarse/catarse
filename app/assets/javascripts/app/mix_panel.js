@@ -10,6 +10,9 @@ App.addChild('MixPanel', {
     if(window.mixpanel){
       this.detectLogin();
       this.startTracking();
+      if(FB) {
+        this.trackOnFacebookLike();
+      }
     }
   },
 
@@ -41,6 +44,21 @@ App.addChild('MixPanel', {
     }
   },
 
+  trackOnFacebookLike: function() {
+    self = this;
+    FB.Event.subscribe('edge.create', function(url, html_element){
+      self.trackLike('FB Like for project', html_element)
+    });
+
+    FB.Event.subscribe('edge.remove', function(url, html_element){
+      self.trackLike('FB Unlike for project', html_element)
+    });
+  },
+
+  trackLike: function(text, element) {
+    self.track(text, { ref: $(element).data('title') });
+  },
+
   onLogin: function(){
     mixpanel.alias(this.user.id);
     if(this.user.sign_in_count == 1){
@@ -52,7 +70,7 @@ App.addChild('MixPanel', {
   },
 
   detectLogin: function(){
-    if(this.user){ 
+    if(this.user){
       if(this.user.id != store.get('user_id')){
         this.onLogin();
         store.set('user_id', this.user.id);
@@ -68,19 +86,19 @@ App.addChild('MixPanel', {
       mixpanel.name_tag(this.user.email);
       mixpanel.identify(this.user.id);
       mixpanel.people.set({
-        "$email": this.user.email, 
+        "$email": this.user.email,
         "$created": this.user.created_at,
         "$last_login": this.user.last_sign_in_at,
-        "contributions": this.user.total_contributed_projects 
+        "contributions": this.user.total_contributed_projects
       });
     }
   },
 
   track: function(text, options){
     this.identifyUser();
-    var obj             = $(this);
-    var ref             = (obj.attr('href') != undefined) ? obj.attr('href') : null;
     var opt             = options || {};
+    var obj             = $(this);
+    var ref             = (obj.attr('href') != undefined) ? obj.attr('href') : (opt.ref ? opt.ref : null);
     var default_options = {
       'page name':          document.title,
       'user_id':            null,
