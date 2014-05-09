@@ -11,6 +11,7 @@ App.addChild('MixPanel', {
       this.detectLogin();
       this.startTracking();
       this.trackFacebookShare();
+      this.trackTwitterShare();
       if(FB) {
         this.trackOnFacebookLike();
       }
@@ -45,10 +46,18 @@ App.addChild('MixPanel', {
     }
   },
 
+  trackTwitterShare: function() {
+    var self = this;
+
+    $('#twitter_share_button').on('click', function(event){
+      self.trackSocial('Twitter share for project', event.currentTarget);
+    });
+  },
+
   trackFacebookShare: function() {
     var self = this;
     $('a#facebook_share').on('click', function(event){
-      self.trackFB('FB Like for project', event.currentTarget);
+      self.trackSocial('FB Like for project', event.currentTarget);
     });
   },
 
@@ -56,15 +65,15 @@ App.addChild('MixPanel', {
     var self = this;
 
     FB.Event.subscribe('edge.create', function(url, html_element){
-      self.trackFB('FB Like for project', html_element)
+      self.trackSocial('FB Like for project', html_element)
     });
 
     FB.Event.subscribe('edge.remove', function(url, html_element){
-      self.trackFB('FB Unlike for project', html_element)
+      self.trackSocial('FB Unlike for project', html_element)
     });
   },
 
-  trackFB: function(text, element) {
+  trackSocial: function(text, element) {
     this.track(text, { ref: $(element).data('title') });
   },
 
