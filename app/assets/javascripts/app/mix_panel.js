@@ -45,7 +45,7 @@ App.addChild('MixPanel', {
     }
   },
 
-  trackFacebookShare: function(event) {
+  trackFacebookShare: function() {
     var self = this;
     $('a#facebook_share').on('click', function(event){
       self.trackFB('FB Like for project', event.currentTarget);
