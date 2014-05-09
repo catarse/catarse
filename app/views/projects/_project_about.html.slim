@@ -9,7 +9,7 @@
           = link_to '#embed', id: 'embed_link' do
             = image_tag "catarse/embed_icon19x9.png", title: t('projects.show.share.embed_title')
             = t('projects.show.share.embed')
-      #twitter_share= render_twitter(url: project_by_slug_url(permalink: @project.permalink))
+      #twitter_share= render_twitter(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
       .clearfix
 
 .clearfix
