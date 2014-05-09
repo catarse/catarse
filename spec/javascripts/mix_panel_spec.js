@@ -39,6 +39,22 @@ describe("MixPanel", function() {
     spyOn(mixpanel.people, "set");
   });
 
+  describe('#trackFacebookShare', function(){
+    var evt = {
+      currentTarget: $('<div data-title="Foo"></div>')
+    };
+
+    beforeEach(function() {
+      spyOn(view, 'track');
+    });
+
+    it("should call track", function() {
+      view.trackFacebookShare(evt);
+      expect(view.track).toHaveBeenCalledWith('FB Share for project', { ref: 'Foo' });
+    });
+
+  });
+
   describe('#trackOnFacebookLike', function() {
     beforeEach(function(){
       spyOn(FB.Event, "subscribe");
