@@ -1,12 +1,7 @@
 App.addChild('MixPanel', {
   el: 'body',
 
-  events: {
-    'click a#facebook_share' : 'trackFacebookShare',
-  },
-
   activate: function(){
-    self = this;
     this.VISIT_MIN_TIME = 10000;
     this.user = null;
     this.controller = this.$el.data('controller');
@@ -15,6 +10,7 @@ App.addChild('MixPanel', {
     if(window.mixpanel){
       this.detectLogin();
       this.startTracking();
+      this.trackFacebookShare();
       if(FB) {
         this.trackOnFacebookLike();
       }
@@ -22,6 +18,7 @@ App.addChild('MixPanel', {
   },
 
   startTracking: function(){
+    var self = this;
     this.trackPageVisit('projects', 'show', 'Visited project page');
     this.trackPageVisit('explore', 'index', 'Explored projects');
     this.trackPageLoad('contributions', 'show', 'Finished contribution');
@@ -29,12 +26,14 @@ App.addChild('MixPanel', {
   },
 
   trackPageLoad: function(controller, action, text){
+    var self = this;
     this.trackOnPage(controller, action, function(){
       self.track(text);
     });
   },
 
   trackPageVisit: function(controller, action, text){
+    var self = this;
     this.trackOnPage(controller, action, function(){
       self.trackVisit(text);
     });
@@ -47,24 +46,24 @@ App.addChild('MixPanel', {
   },
 
   trackFacebookShare: function(event) {
-    if(window.mixpanel) {
-      target = event.currentTarget;
-      self.track('FB Share for project', { ref: $(target).data('title') })
-    }
+    var self = this;
+    $('a#facebook_share').on('click', function(event){
+      self.trackFB('FB Like for project', event.currentTarget);
+    });
   },
 
   trackOnFacebookLike: function() {
     FB.Event.subscribe('edge.create', function(url, html_element){
-      self.trackLike('FB Like for project', html_element)
+      self.trackFB('FB Like for project', html_element)
     });
 
     FB.Event.subscribe('edge.remove', function(url, html_element){
-      self.trackLike('FB Unlike for project', html_element)
+      self.trackFB('FB Unlike for project', html_element)
     });
   },
 
-  trackLike: function(text, element) {
-    self.track(text, { ref: $(element).data('title') });
+  trackFB: function(text, element) {
+    this.track(text, { ref: $(element).data('title') });
   },
 
   onLogin: function(){
