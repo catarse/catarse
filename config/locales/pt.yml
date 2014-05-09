@@ -225,34 +225,6 @@ pt:
   click_term: 'termos de uso'
   comment:
     display_time: "Há %{time_ago}"
-  credits:
-    modal:
-      title: 'Quer mesmo solicitar o reembolso do seu apoio?'
-      text: "Saiba como funciona o processo de reembolso no Catarse:"
-      link: "Regras e Funcionamento dos reembolsos / estornos"
-      reject_btn: "Não, desejo manter meus créditos"
-      accept_btn: "Sim, desejo solicitar o reembolso do meu apoio"
-    index:
-      contribution_date: "Data do apoio"
-      current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."
-      important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
-      project: Projeto
-      refund_expiration_date_html: "Prazo máximo para solicitar o estorno (<a target='__blank' href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
-      refunded: "Reembolso requisitado com sucesso. Nossa equipe entrará em contato com você em até 2 dias úteis. "
-      insufficient_credits: "Você não tem créditos suficientes para realizar este estorno."
-      refunds_title: "Apoios que podem ter estorno realizado"
-      request_refund: "Solicitar estorno"
-      requested_refund: "Solicitado estorno"
-      status: Status
-      title: "Meus créditos"
-      value: Valor
-    refund:
-      cannot_refund: "Este apoio não pode ser estornado."
-      error: "Oops. Ocorreu um erro ao solicitar seu estorno."
-      no_credits: "Você não possui créditos suficientes para realizar este estorno."
-      refunded: "Este apoio já foi estornado."
-      requested_refund: "Você já solicitou estorno para este apoio."
-    title: "Meus créditos"
   curated_pages:
     index:
       title: "Páginas curadas"
@@ -959,69 +931,6 @@ pt:
       two: "Apoiou este e mais 1 outro projeto"
     no_name: "Sem nome"
     google_account: "Conta Google"
-  users:
-    set_email:
-      site_title: 'Defina um email de contato'
-      title: 'Defina um email de contato'
-      submit: 'Gravar o email e prosseguir'
-    show:
-      attention: "Atenção"
-      tabs:
-        contributed_projects: "Projetos apoiados"
-        created_projects: "Projetos criados"
-        comments: Comentários
-        credits: Créditos
-        settings: Preferências
-        unsubscribes: Notificações
-      user_social:
-        email: "Me envie um email"
-        facebook: "Perfil no facebook"
-        twitter: "Perfil no twitter"
-    project:
-      confirmed: "Confirmado"
-      refunded: "Reembolsado"
-      requested_refund: "Estorno solicitado"
-      waiting_confirmation: "Aguardando Confirmação"
-    contributions:
-      anonymous: "Apoio anônimo."
-      no_contributions: "%{name} ainda não apoiou nenhum projeto. Mas a gente sabe que é só questão de tempo! :D"
-      no_contributions_current_user_html: "Você ainda não apoiou nenhum projeto. Que tal <a href=\"/\">começar agora</a>?"
-      no_reward: "Você não selecionou nenhuma recompensa"
-      title: "Projetos que %{name} já apoiou"
-      title_current_user: "Projetos que já apoiei"
-      your_reward: "Sua recompensa"
-    unsubscribes:
-      title: "Escolha de quais projetos você deseja receber notificações:"
-      updates: "Eu quero receber atualizações dos projetos"
-    current_user_fields:
-      my_facebook: 'Integração com o facebook'
-      bio_limit: 'até 140 caracteres'
-      updated: "As suas informações foram atualizadas"
-      update_social_info: "Atualizar informações"
-      social_info: "Informações para contato"
-      twitter: "twitter ( usuário )"
-      facebook_link: "perfil do facebook (link completo)"
-      other_link: "link da sua página na internet"
-      change_password: "Alterar minha senha"
-      current_password_hint: "<i>Para que a senha seja alterada você precisa confirmar a sua senha atual.</i>"
-      email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projetos que você apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas."
-      email_tooltip: "Clique aqui para preencher seu email..."
-      gravatar_hint_html: "Você também pode mudar a sua foto usando o %{link} com seu email. <br>É tão simples quanto enviar uma imagem e já funciona para outros sites também ;)"
-      local_avatar: "Meu avatar"
-      submit_text: "Escolha sua imagem"
-      submit: "Enviar"
-      my_data: "Meus dados"
-      newsletter: "Quero receber novidades do Catarse por email"
-      password_hint: "<i>Deixe em branco caso você não queira trocar sua senha.</i>"
-    header:
-      bio_tooltip: "Clique aqui para escrever sobre você..."
-      name_tooltip: "Clique aqui para preencher seu nome..."
-    projects:
-      here: 'aqui'
-      no_projects: "%{name} ainda não realizou nenhum projeto no Catarse. Será que a inspiração vai bater uma hora dessas?"
-      no_projects_current_user_html: "Você ainda não realizou nenhum projeto no Catarse. Deixe a inspiração bater e clique %{link} para começar!"
-      title: "Projetos de %{name}"
-      title_current_user: "Meus projetos"
   users_mailer:
     notification_email:
       alt: "Você deve habilitar imagens para visualizar corretamente essa mensagem."
