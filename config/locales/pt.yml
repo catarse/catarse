@@ -759,11 +759,6 @@ pt:
   require_admin: "Você precisa ser admin para realizar esta ação."
   require_login: "Você precisa estar autenticado para realizar esta ação."
   require_permission: "Você não tem permissão para realizar esta ação."
-  reward:
-    display_remaining: "%{remaining} de %{maximum} disponíveis"
-    dont_want: "Não quero recompensa"
-    limited: Limitada
-    sold_out: Esgotada
   sessions:
     auth:
       success: "Login realizado com sucesso. Bem-vindo, %{name}!"
