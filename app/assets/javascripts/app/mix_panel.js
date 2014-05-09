@@ -49,14 +49,14 @@ App.addChild('MixPanel', {
   trackTwitterShare: function() {
     var self = this;
 
-    $('#twitter_share_button').on('click', function(event){
+    this.$('#twitter_share_button').on('click', function(event){
       self.trackSocial('Twitter share for project', event.currentTarget);
     });
   },
 
   trackFacebookShare: function() {
     var self = this;
-    $('a#facebook_share').on('click', function(event){
+    this.$('a#facebook_share').on('click', function(event){
       self.trackSocial('FB Like for project', event.currentTarget);
     });
   },
