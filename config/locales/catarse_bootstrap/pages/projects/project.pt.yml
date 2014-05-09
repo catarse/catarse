@@ -1,0 +1,18 @@
+pt:
+  projects:
+    project:
+      progress_html: "<span>%{percent}%</span> financiado"
+      time_remaining_html:
+        one: "<span>%{count} %{unit}</span> restante"
+        other: "<span>%{count} %{unit}</span> restantes"
+      pledged_html: "<span>%{value}</span> levantados"
+      display_status:
+        expired: "finalizado"
+        rejected: "rejeitado"
+        failed: "não financiado"
+        successful: financiado
+        reached_goal: financiado
+        waiting_confirmation: aguardando
+        waiting_funds: aguardando
+        not_reached_goal: aguardando
+        draft: "rascunho"
