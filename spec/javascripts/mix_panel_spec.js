@@ -41,17 +41,23 @@ describe("MixPanel", function() {
 
   describe('#trackOnFacebookLike', function() {
     beforeEach(function(){
-      spyOn(FB.Event, "subscribe");
+      spyOn(view, 'trackFB');
+
+      spyOn(FB.Event, "subscribe").and.callFake(function(event, callback) {
+        callback('FB Like for project', 'element');
+      });
     });
 
     it("should call subscribe on edge.create", function(){
       view.trackOnFacebookLike();
       expect(FB.Event.subscribe).toHaveBeenCalledWith('edge.create', jasmine.any(Function));
+      expect(view.trackFB).toHaveBeenCalledWith('FB Like for project', 'element');
     });
 
     it("should call subscribe on edge.remove", function(){
       view.trackOnFacebookLike();
       expect(FB.Event.subscribe).toHaveBeenCalledWith('edge.remove', jasmine.any(Function));
+      expect(view.trackFB).toHaveBeenCalledWith('FB Unlike for project', 'element');
     });
   });
 

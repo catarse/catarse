@@ -53,6 +53,8 @@ App.addChild('MixPanel', {
   },
 
   trackOnFacebookLike: function() {
+    var self = this;
+
     FB.Event.subscribe('edge.create', function(url, html_element){
       self.trackFB('FB Like for project', html_element)
     });
