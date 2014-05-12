@@ -21,4 +21,5 @@ class ImageUploader < CarrierWave::Uploader::Base
     "#{Rails.root}/tmp/uploads"
   end
 
+  process quality: 60
 end
