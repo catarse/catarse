@@ -1,5 +1,12 @@
 pt:
   projects:
+    project_reports:
+      all_contributions_without_reward: Baixar relatório de todos os apoiadores
+        que não selecionaram uma recompensa
+      link_reports_confirmed: Baixar relatório de todos os apoiadores confirmados
+      link_reports_waiting_confirmation: Baixar relatório de todos os apoiadores
+        com boleto impresso
+      link_reward: Baixar relatório dos apoiadores da recompensa de %{value}
     show:
       contribute_project:
         display_status:
@@ -29,13 +36,6 @@ pt:
       no_rewards_warning: Não viaje! Pense em como irá entregá-las e coloque tudo
         isso no orçamento. Prometeu?! CUMPRA! :D
       no_rewards_warning_title: Crie aqui suas recompensas
-      reports:
-        all_contributions_without_reward: Baixar relatório de todos os apoiadores
-          que não selecionaram uma recompensa
-        link_reports_confirmed: Baixar relatório de todos os apoiadores confirmados
-        link_reports_waiting_confirmation: Baixar relatório de todos os apoiadores
-          com boleto impresso
-        link_reward: Baixar relatório dos apoiadores da recompensa de %{value}
       share:
         embed: embed
         embed_title: Incorpore este projeto no seu site
