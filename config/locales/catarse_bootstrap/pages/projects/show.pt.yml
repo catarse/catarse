@@ -19,6 +19,9 @@ pt:
       link_reports_waiting_confirmation: Baixar relatório de todos os apoiadores
         com boleto impresso
       link_reward: Baixar relatório dos apoiadores da recompensa de %{value}
+    project_about:
+      embed: embed
+      embed_title: Incorpore este projeto no seu site
     show:
       contribute_project:
         display_status:
@@ -48,9 +51,6 @@ pt:
       no_rewards_warning: Não viaje! Pense em como irá entregá-las e coloque tudo
         isso no orçamento. Prometeu?! CUMPRA! :D
       no_rewards_warning_title: Crie aqui suas recompensas
-      share:
-        embed: embed
-        embed_title: Incorpore este projeto no seu site
       contribution_states:
         confirmed: Confirmados
         pending: Boletos impressos
