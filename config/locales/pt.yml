@@ -192,10 +192,6 @@ pt:
       create:
         alert: Ops! não foi possível adicionar a recompensa.
         notice: Recompensa adicionada com sucesso!
-    updates:
-      create:
-        notice: Novidade enviada com sucesso!
-  count_contributed_projects: apoiou %{total} projetos
   current_update: 'Alteração atual feita em '
   days: dias
   explore:
@@ -338,21 +334,11 @@ pt:
       waiting_confirmation: aguardando
       waiting_funds: aguardando
     video_regex_validation: somente URLs do Vimeo são aceitas
-  project_by: projeto por
   project_plural: projetos
   project_singular: projeto
   projects:
     admin_fields:
       title: Campos para o admin
-    box:
-      by: por
-      when: em
-    contribute_project:
-      display_status:
-        in_analysis: Este projeto está em análise e ainda não está aberto para receber
-          apoios.
-        rejected: Este projeto não foi aceito. Não é possível realizar um apoio.
-      submit: Apoiar este projeto
     contributions:
       checkout:
         no_credits: Você não possui créditos suficientes para realizar este apoio.
@@ -469,20 +455,8 @@ pt:
     project:
       contributed: levantados
       reached: atingido
-    project_contributions:
-      confirmed: Confirmados
-      pending: Boletos impressos
     project_header:
       without_city: Um projeto de
-    project_updates:
-      comment: Texto da sua Novidade
-      destroy: Remover Novidade
-      destroy_confirmation: Deseja remover esta novidade?
-      exclusive: Visível apenas para apoiadores
-      submit: Enviar Novidade
-      title: Título da sua Novidade
-      warning: Lembrando que todo post de novidade vai diretamente para o email de
-        seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo.
     rewards:
       contributions_to_confirm:
         one: 1 apoio em prazo de confirmação.
@@ -492,28 +466,6 @@ pt:
       reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
       reward_title: Para %{minimum} ou mais
     send_to_analysis: Seu projeto foi enviado para nossa equipe.
-    show:
-      menu:
-        about: Sobre
-        add_reward: Adicionar recompensa
-        comments: Comentários
-        contributions: Apoiadores
-        edit: Edição
-        reports: Relatórios
-        updates: Novidades
-      no_rewards_warning: Não viaje! Pense em como irá entregá-las e coloque tudo
-        isso no orçamento. Prometeu?! CUMPRA! :D
-      no_rewards_warning_title: Crie aqui suas recompensas
-      reports:
-        all_contributions_without_reward: Baixar relatório de todos os apoiadores
-          que não selecionaram uma recompensa
-        link_reports_confirmed: Baixar relatório de todos os apoiadores confirmados
-        link_reports_waiting_confirmation: Baixar relatório de todos os apoiadores
-          com boleto impresso
-        link_reward: Baixar relatório dos apoiadores da recompensa de %{value}
-      share:
-        embed: embed
-        embed_title: Incorpore este projeto no seu site
     twitter:
       take_a_look: Confira o projeto %{name} no @catarse
     update:
