@@ -192,9 +192,6 @@ pt:
       create:
         alert: Ops! não foi possível adicionar a recompensa.
         notice: Recompensa adicionada com sucesso!
-    updates:
-      create:
-        notice: Novidade enviada com sucesso!
   current_update: 'Alteração atual feita em '
   days: dias
   explore:
@@ -460,15 +457,6 @@ pt:
       reached: atingido
     project_header:
       without_city: Um projeto de
-    project_updates:
-      comment: Texto da sua Novidade
-      destroy: Remover Novidade
-      destroy_confirmation: Deseja remover esta novidade?
-      exclusive: Visível apenas para apoiadores
-      submit: Enviar Novidade
-      title: Título da sua Novidade
-      warning: Lembrando que todo post de novidade vai diretamente para o email de
-        seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo.
     rewards:
       contributions_to_confirm:
         one: 1 apoio em prazo de confirmação.
