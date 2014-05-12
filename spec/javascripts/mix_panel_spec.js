@@ -44,14 +44,14 @@ describe("MixPanel", function() {
       spyOn(view, 'track');
 
       spyOn(FB.Event, "subscribe").and.callFake(function(event, callback) {
-        callback('FB Like for project', {});
+        callback('Liked a project', {});
       });
     });
 
     it("should call subscribe on edge.create", function(){
       view.trackOnFacebookLike();
       expect(FB.Event.subscribe).toHaveBeenCalledWith('edge.create', jasmine.any(Function));
-      expect(view.track).toHaveBeenCalledWith('FB Like for project', jasmine.any(Object));
+      expect(view.track).toHaveBeenCalledWith('Liked a project', jasmine.any(Object));
     });
   });
 
