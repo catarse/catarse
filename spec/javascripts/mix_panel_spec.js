@@ -41,37 +41,17 @@ describe("MixPanel", function() {
 
   describe('#trackOnFacebookLike', function() {
     beforeEach(function(){
-      spyOn(view, 'trackSocial');
+      spyOn(view, 'track');
 
       spyOn(FB.Event, "subscribe").and.callFake(function(event, callback) {
-        callback('FB Like for project', 'element');
+        callback('Liked a project', {});
       });
     });
 
     it("should call subscribe on edge.create", function(){
       view.trackOnFacebookLike();
       expect(FB.Event.subscribe).toHaveBeenCalledWith('edge.create', jasmine.any(Function));
-      expect(view.trackSocial).toHaveBeenCalledWith('FB Like for project', 'element');
-    });
-
-    it("should call subscribe on edge.remove", function(){
-      view.trackOnFacebookLike();
-      expect(FB.Event.subscribe).toHaveBeenCalledWith('edge.remove', jasmine.any(Function));
-      expect(view.trackSocial).toHaveBeenCalledWith('FB Unlike for project', 'element');
-    });
-  });
-
-  describe('#trackSocial', function(){
-    var text = 'Foo Bar';
-    var element = $('<div id="element" data-title="Foo"></div>');
-
-    beforeEach(function(){
-      spyOn(view, "track");
-    });
-
-    it("should call track when social (facebook, twitter) event subscribe is fired", function(){
-      view.trackSocial(text, element);
-      expect(view.track).toHaveBeenCalledWith(text, { ref: 'Foo' })
+      expect(view.track).toHaveBeenCalledWith('Liked a project', jasmine.any(Object));
     });
   });
 
