@@ -1,6 +1,6 @@
 .banner
   .content
-  = link_to t('main.banner'), "http://pesquisa.catarse.me", class: "more-projects"
+  = link_to t('.banner'), "http://pesquisa.catarse.me", class: "more-projects"
 #page_content
   .container
     .main
@@ -8,50 +8,50 @@
         section.near_projects.list
           header
             h2.list-title
-              = link_to t('sections.near.title'), explore_path(anchor: "near_of/" ) + current_user.address_state
-            = link_to t('main.links.near'), explore_path(anchor: "near_of/" ) + current_user.address_state, class: "more-projects"
+              = link_to t('.sections.near.title'), explore_path(anchor: "near_of/" ) + current_user.address_state
+            = link_to t('.links.near'), explore_path(anchor: "near_of/" ) + current_user.address_state, class: "more-projects"
           .projects
             == render @projects_near
 
       section.selected_projects.list
         header
           h2.list-title
-            = link_to t('sections.recommended.title'), explore_path(anchor: :recommended)
-          = link_to t('main.links.recommended'), explore_path(anchor: :recommended), class: "more-projects"
+            = link_to t('.sections.recommended.title'), explore_path(anchor: :recommended)
+          = link_to t('.links.recommended'), explore_path(anchor: :recommended), class: "more-projects"
         .projects
           == render @recommends
 
       section.expiring_projects.list
         header
           h2.list-title
-            = link_to t('sections.expiring.title'), explore_path(anchor: :expiring)
-          = link_to t('main.links.expiring'), explore_path(anchor: :expiring), class: "more-projects"
+            = link_to t('.sections.expiring.title'), explore_path(anchor: :expiring)
+          = link_to t('.links.expiring'), explore_path(anchor: :expiring), class: "more-projects"
         .projects
           == render @expiring
 
       section.recents_projects.list
         header
           h2.list-title
-            = link_to t('sections.recents.title'), explore_path(anchor: :recent)
-          = link_to t('main.links.recents'), explore_path(anchor: :recent), class: "more-projects"
+            = link_to t('.sections.recents.title'), explore_path(anchor: :recent)
+          = link_to t('.links.recents'), explore_path(anchor: :recent), class: "more-projects"
         .projects
           == render @recent
 
     aside.main-sidebar
       section.main-sidebar-division
-        h3.title= t('sidebar.titles.blog')
+        h3.title= t('.sidebar.titles.blog')
         ul
           - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
             li.post
               h2
                 = link_to post.url, target: '__blank', class: 'post-title' do
                   = truncate(post.title, length: 80)
-              p.post-author= "#{t('projects.box.by')} #{post.author} #{t('projects.box.when')} #{l(post.published.to_date)}"
+              p.post-author= "#{t('.box.by')} #{post.author} #{t('.box.when')} #{l(post.published.to_date)}"
               = link_to post.url, target: '__blank', class: 'post-resume' do
                 = truncate(post.summary, length: 130).html_safe
 
       section.main-sidebar-division
-        h3.title= t('sidebar.titles.newsletter')
+        h3.title= t('.sidebar.titles.newsletter')
         = render 'layouts/newsletter'
 
 
@@ -60,6 +60,6 @@
 
 
       section.main-sidebar-division
-        = link_to t('sidebar.titles.twitter'), "https://twitter.com/#{CatarseSettings['twitter_username']}", class: 'twitter-timeline', data:{widget_id:"375343843308089345", chrome:"nofooter"}
+        = link_to t('.sidebar.titles.twitter'), "https://twitter.com/#{CatarseSettings['twitter_username']}", class: 'twitter-timeline', data:{widget_id:"375343843308089345", chrome:"nofooter"}
 
     .clearfix

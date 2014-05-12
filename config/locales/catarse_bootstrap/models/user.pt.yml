@@ -1,4 +1,9 @@
 pt:
+  user:
+    contributions_text:
+      many: "Apoiou este e mais outros %{total} projetos"
+      one: "Apoiou somente este projeto até agora"
+      two: "Apoiou este e mais 1 outro projeto"
   activerecord:
     attributes:
       user:
