@@ -1,5 +1,17 @@
 pt:
   projects:
+    updates:
+      update:
+        destroy: Remover Novidade
+        destroy_confirmation: Deseja remover esta novidade?
+      new:
+        notice: Novidade enviada com sucesso!
+        comment: Texto da sua Novidade
+        exclusive: Visível apenas para apoiadores
+        submit: Enviar Novidade
+        title: Título da sua Novidade
+        warning: Lembrando que todo post de novidade vai diretamente para o email de
+          seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo.
     project_reports:
       all_contributions_without_reward: Baixar relatório de todos os apoiadores
         que não selecionaram uma recompensa
