@@ -71,7 +71,7 @@ App.addChild('MixPanel', {
 
   onLogin: function(){
     mixpanel.alias(this.user.id);
-    if(this.user.sign_in_count == 1){
+    if(this.user.created_today){
       this.track("Signed up");
     }
     else{
