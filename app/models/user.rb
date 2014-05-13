@@ -127,6 +127,10 @@ class User < ActiveRecord::Base
     contributions.where(project_id: project_id).with_states(['confirmed','waiting_confirmation']).empty?
   end
 
+  def created_today?
+    self.created_at.to_date == Date.today && self.sign_in_count <= 1
+  end
+
   def to_analytics_json
     {
       id: self.id,
@@ -134,7 +138,8 @@ class User < ActiveRecord::Base
       total_contributed_projects: self.total_contributed_projects,
       created_at: self.created_at,
       last_sign_in_at: self.last_sign_in_at,
-      sign_in_count: self.sign_in_count
+      sign_in_count: self.sign_in_count,
+      created_today: self.created_today?
     }.to_json
   end
 
