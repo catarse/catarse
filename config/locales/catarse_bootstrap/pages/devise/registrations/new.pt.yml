@@ -1,0 +1,22 @@
+pt:
+  devise:
+    registrations:
+      new:
+        have_account_html: "Já tem cadastro? <strong>%{link}</strong>"
+        titles:
+          site: 'Cadastre-se'
+          header: 'Cadastre-se'
+        links:
+          login: "Faça seu login"
+        form:
+          labels:
+            show_password: 'Exibir senha'
+            name: 'Nome completo'
+            password: 'Senha'
+            newsletter: 'Quero receber novidades do Catarse via email'
+          hint:
+            password_length: 'Mínimo 6 caracteres'
+          inputs:
+            submit: 'Efetuar cadastro'
+            facebook: 'Entrar com Facebook'
+
