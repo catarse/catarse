@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
 
+  scope :active, ->{ where('inactivated_at IS NULL') }
   scope :contributions, -> {
     where("id IN (
       SELECT DISTINCT user_id
@@ -91,6 +92,10 @@ class User < ActiveRecord::Base
     where("NOT EXISTS (SELECT true FROM contributions b WHERE current_timestamp - b.created_at < '1 month'::interval AND b.credits AND b.state = 'confirmed' AND b.user_id = users.id)")
   }
   scope :order_by, ->(sort_field){ order(sort_field) }
+
+  def self.find_active!(id)
+    self.active.where(id: id).first!
+  end
 
   def self.send_credits_notification
     has_not_used_credits_last_month.find_each do |user|
