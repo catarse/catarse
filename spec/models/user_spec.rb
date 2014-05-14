@@ -198,6 +198,21 @@ describe User do
   
   end
 
+  describe "#deactivate" do
+    before do
+      @contribution = create(:contribution, user: user, anonymous: false)
+      user.deactivate
+    end
+
+    it "should set all contributions as anonymous" do
+      expect(@contribution.reload.anonymous).to be_true
+    end
+
+    it "should set deactivated_at" do
+      expect(user.deactivated_at).to be_present
+    end
+  end
+
   describe "#total_contributed_projects" do
     let(:user) { create(:user) }
     let(:project) { create(:project) }
