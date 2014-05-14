@@ -193,13 +193,6 @@ describe User do
 
   describe "#deactivate" do
     before do
-      
-    end
-  
-  end
-
-  describe "#deactivate" do
-    before do
       @contribution = create(:contribution, user: user, anonymous: false)
       user.deactivate
     end
