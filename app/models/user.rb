@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
 
-  scope :active, ->{ where('inactivated_at IS NULL') }
+  scope :active, ->{ where('deactivated_at IS NULL') }
   scope :contributions, -> {
     where("id IN (
       SELECT DISTINCT user_id
@@ -108,7 +108,10 @@ class User < ActiveRecord::Base
   end
 
   def active_for_authentication?
-    super && inactivated_at.nil?
+    super && deactivated_at.nil?
+  end
+
+  def deactivate
   end
 
   def made_any_contribution_for_this_project?(project_id)
