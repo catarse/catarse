@@ -184,17 +184,49 @@ describe User do
     it { should == 2}
   end
 
+  describe "#created_today?" do
+    subject { user.created_today? }
+
+    context "when user is created today and not sign in yet" do
+      before do
+        user.stub(:created_at).and_return(Date.today)
+        user.stub(:sign_in_count).and_return(0)
+      end
+
+      it { should be_true }
+    end
+
+    context "when user is created today and already signed in more that once time" do
+      before do
+        user.stub(:created_at).and_return(Date.today)
+        user.stub(:sign_in_count).and_return(2)
+      end
+
+      it { should be_false }
+    end
+
+    context "when user is created yesterday and not sign in yet" do
+      before do
+        user.stub(:created_at).and_return(Date.yesterday)
+        user.stub(:sign_in_count).and_return(1)
+      end
+
+      it { should be_false }
+    end
+  end
+
   describe "#to_analytics_json" do
     subject{ user.to_analytics_json }
-    it do 
+    it do
       should == {
-        id: user.id, 
-        email: user.email, 
-        total_contributed_projects: user.total_contributed_projects, 
-        created_at: user.created_at, 
-        last_sign_in_at: user.last_sign_in_at, 
-        sign_in_count: user.sign_in_count
-      }.to_json 
+        id: user.id,
+        email: user.email,
+        total_contributed_projects: user.total_contributed_projects,
+        created_at: user.created_at,
+        last_sign_in_at: user.last_sign_in_at,
+        sign_in_count: user.sign_in_count,
+        created_today: user.created_today?
+      }.to_json
     end
   end
 
