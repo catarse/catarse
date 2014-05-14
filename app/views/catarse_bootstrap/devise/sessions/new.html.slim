@@ -1,17 +1,17 @@
-= content_for :title, t('pages.login.titles.site')
+= content_for :title, t('.titles.site')
 
 = render 'devise/shared/header'
 
 .row
   .large-5.large-centered.columns
     .box.login-box.animated.fadeIn
-      h2.text-center= t 'pages.login.titles.header'
+      h2.text-center= t '.titles.header'
       p.text-center.register_link
-        = t 'pages.login.no_account_html', link: link_to(t('pages.login.links.register'), new_user_registration_url)
+        = t '.no_account_html', link: link_to(t('.links.register'), new_user_registration_url)
       hr
 
       .large-11.columns.large-centered
-        = link_to t('pages.login.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-12', 'columns']
+        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-12', 'columns']
         .separator
           p
             = t('or')
@@ -28,13 +28,13 @@
           div.password
             = f.label :password
             = f.password_field :password, class: [:login], required: true, tabindex: 2
-            = link_to t('pages.login.links.forgot_password'), new_password_path(resource_name), class: 'hint'
+            = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'hint'
           .text-left
             = f.check_box :remember_me, checked: true
-            = f.label :remember_me, t('pages.login.form.labels.remember_me')
+            = f.label :remember_me, t('.form.labels.remember_me')
 
           .large-7.columns.large-centered
-            = f.submit t('pages.login.form.inputs.submit'), class: [:button, :action, 'large-12', 'columns']
+            = f.submit t('.form.inputs.submit'), class: [:button, :action, 'large-12', 'columns']
 
           .clearfix
 
