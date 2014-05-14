@@ -32,6 +32,28 @@ describe User do
     it{ should validate_uniqueness_of(:email) }
   end
 
+  describe ".find_active!" do
+    it "should raise error when user is inactive" do
+      @inactive_user = create(:user, deactivated_at: Time.now)
+      expect(->{ User.find_active!(@inactive_user.id) }).to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "should return user when active" do
+      expect(User.find_active!(user.id)).to eq user
+    end
+  end
+
+  describe ".active" do
+    subject{ User.active }
+
+    before do
+      user
+      create(:user, deactivated_at: Time.now)
+    end
+
+    it{ should eq [user] }
+  end
+
   describe ".has_credits" do
     subject{ User.has_credits }
 
@@ -167,6 +189,21 @@ describe User do
     end
     its(:twitter){ should == 'dbiazus' }
     its(:facebook_link){ should == 'http://facebook.com/test' }
+  end
+
+  describe "#deactivate" do
+    before do
+      @contribution = create(:contribution, user: user, anonymous: false)
+      user.deactivate
+    end
+
+    it "should set all contributions as anonymous" do
+      expect(@contribution.reload.anonymous).to be_true
+    end
+
+    it "should set deactivated_at" do
+      expect(user.deactivated_at).to be_present
+    end
   end
 
   describe "#total_contributed_projects" do
