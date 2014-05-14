@@ -32,6 +32,28 @@ describe User do
     it{ should validate_uniqueness_of(:email) }
   end
 
+  describe ".find_active!" do
+    it "should raise error when user is inactive" do
+      @inactive_user = create(:user, inactivated_at: Time.now)
+      expect(->{ User.find_active!(@inactive_user.id) }).to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "should return user when active" do
+      expect(User.find_active!(user.id)).to eq user
+    end
+  end
+
+  describe ".active" do
+    subject{ User.active }
+
+    before do
+      user
+      create(:user, inactivated_at: Time.now)
+    end
+
+    it{ should eq [user] }
+  end
+
   describe ".has_credits" do
     subject{ User.has_credits }
 
