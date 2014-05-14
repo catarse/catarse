@@ -16,7 +16,7 @@ pt:
       password_token: 'O link para recuperar senha expirou. Insira novamente seu email'
       already_authenticated: ''
       #already_authenticated: Você já está autenticado.
-      inactive: A sua conta ainda não foi ativada.
+      inactive: Esse email pertence a uma conta desativada
       invalid: Email ou senha inválidos
       invalid_token: O token de autenticação não é válido.
       locked: A sua conta está bloqueada.
