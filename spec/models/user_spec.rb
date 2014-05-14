@@ -34,7 +34,7 @@ describe User do
 
   describe ".find_active!" do
     it "should raise error when user is inactive" do
-      @inactive_user = create(:user, inactivated_at: Time.now)
+      @inactive_user = create(:user, deactivated_at: Time.now)
       expect(->{ User.find_active!(@inactive_user.id) }).to raise_error(ActiveRecord::RecordNotFound)
     end
 
@@ -48,7 +48,7 @@ describe User do
 
     before do
       user
-      create(:user, inactivated_at: Time.now)
+      create(:user, deactivated_at: Time.now)
     end
 
     it{ should eq [user] }
@@ -189,6 +189,13 @@ describe User do
     end
     its(:twitter){ should == 'dbiazus' }
     its(:facebook_link){ should == 'http://facebook.com/test' }
+  end
+
+  describe "#deactivate" do
+    before do
+      
+    end
+  
   end
 
   describe "#total_contributed_projects" do

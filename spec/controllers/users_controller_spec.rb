@@ -71,7 +71,7 @@ describe UsersController do
     end
 
     context "when user is no longer active" do
-      let(:user){ create(:user, inactivated_at: Time.now) }
+      let(:user){ create(:user, deactivated_at: Time.now) }
       its(:status){ should eq 404 }
     end
 
