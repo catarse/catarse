@@ -107,6 +107,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def active_for_authentication?
+    super && inactivated_at.nil?
+  end
+
   def made_any_contribution_for_this_project?(project_id)
     contributions.available_to_count.where(project_id: project_id).present?
   end
