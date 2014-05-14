@@ -1,0 +1,16 @@
+pt:
+  devise:
+    passwords:
+      edit:
+        titles:
+          site: 'Defina uma nova senha'
+          header: 'Defina uma nova senha'
+        form:
+          hint:
+            password_length: 'Mínimo 6 caracteres'
+          labels:
+            password: 'Nova senha'
+            password_confirmation: 'Confirmação de senha'
+          inputs:
+            submit: 'Salvar e entrar'
+
