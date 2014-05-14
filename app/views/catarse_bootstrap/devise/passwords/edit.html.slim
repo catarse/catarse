@@ -16,10 +16,10 @@
             = f.label :password, t('.form.labels.password')
             = f.password_field :password, required: true
             span.hint
-              = t('pages.sign_up.form.hint.password_length')
+              = t('devise.registrations.new.form.hint.password_length')
             .show-password
               = check_box_tag :show_password
-              = label_tag :show_password, t('pages.sign_up.form.labels.show_password')
+              = label_tag :show_password, t('devise.registrations.new.form.labels.show_password')
 
           div.password
             = f.label :password_confirmation, t('.form.labels.password_confirmation')
