@@ -126,7 +126,7 @@ describe("MixPanel", function() {
 
     describe("when user has 1 login", function(){
       beforeEach(function() {
-        user.sign_in_count = 1;
+        user.created_today = true;
         view.user = user;
         view.onLogin();
       });
@@ -142,7 +142,7 @@ describe("MixPanel", function() {
 
     describe("when user has more than 1 login", function(){
       beforeEach(function() {
-        user.sign_in_count = 2;
+        user.created_today = false;
         view.user = user;
         view.onLogin();
       });
