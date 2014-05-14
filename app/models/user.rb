@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :nickname,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
-    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login
+    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at
 
   mount_uploader :uploaded_image, UserUploader
 
@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
 
+  scope :active, ->{ where('deactivated_at IS NULL') }
   scope :contributions, -> {
     where("id IN (
       SELECT DISTINCT user_id
@@ -92,6 +93,10 @@ class User < ActiveRecord::Base
   }
   scope :order_by, ->(sort_field){ order(sort_field) }
 
+  def self.find_active!(id)
+    self.active.where(id: id).first!
+  end
+
   def self.send_credits_notification
     has_not_used_credits_last_month.find_each do |user|
       Notification.notify_once(
@@ -100,6 +105,15 @@ class User < ActiveRecord::Base
         {user_id: user.id}
       )
     end
+  end
+
+  def active_for_authentication?
+    super && deactivated_at.nil?
+  end
+
+  def deactivate
+    self.update_attributes deactivated_at: Time.now
+    self.contributions.update_all(anonymous: true)
   end
 
   def made_any_contribution_for_this_project?(project_id)
