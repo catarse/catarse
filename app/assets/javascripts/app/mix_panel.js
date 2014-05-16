@@ -17,7 +17,6 @@ App.addChild('MixPanel', {
       } catch(e) {
         console.log(e);
       }
-      }
     }
   },
 
