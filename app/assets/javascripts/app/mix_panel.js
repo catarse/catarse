@@ -10,10 +10,13 @@ App.addChild('MixPanel', {
     if(window.mixpanel){
       this.detectLogin();
       this.startTracking();
-      this.trackFacebookShare();
       this.trackTwitterShare();
-      if(FB) {
+      this.trackFacebookShare();
+      try {
         this.trackOnFacebookLike();
+      } catch(e) {
+        console.log(e);
+      }
       }
     }
   },
