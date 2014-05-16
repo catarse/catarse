@@ -4,11 +4,11 @@
   .statistics
     .large-4.columns
       h1
-        = t('channels.admin.followers.title')
+        = t('.title')
         ' :
         = @total_subscribers
     .large-2.columns
-      = link_to t('channels.admin.followers.download'), channels_admin_reports_subscriber_reports_path(format: :csv), class: 'button medium action'
+      = link_to t('.download'), channels_admin_reports_subscriber_reports_path(format: :csv), class: 'button medium action'
 .row
   = paginate @subscribers
   - if @subscribers.empty?
@@ -27,6 +27,6 @@
             td.large-1.columns= subscriber.contributed_projects.count
             td.large-1.columns= subscriber.projects.count
 
- 
+
   = paginate @subscribers
 = render 'shared/footer_channel'

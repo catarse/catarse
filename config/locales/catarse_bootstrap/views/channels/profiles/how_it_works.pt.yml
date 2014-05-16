@@ -1,0 +1,8 @@
+pt:
+  channels:
+    profiles:
+      how_it_works:
+        title:
+          channel: Como funciona
+        sidebar:
+          title: Navegue

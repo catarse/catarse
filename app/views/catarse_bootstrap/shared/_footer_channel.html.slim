@@ -4,13 +4,13 @@
       nav
         ul.nav-horizontal
           li.nav-item.separator
-            = link_to t('channels.footer.terms'), channel.terms_url, title: t('channels.footer.terms'), class: 'standard-link', target: '_blank'
+            = link_to t('.terms'), channel.terms_url, title: t('.terms'), class: 'standard-link', target: '_blank'
           li.nav-item.separator
-            = link_to t('channels.footer.privacy_policy'), CatarseSettings[:privacy_url], title: t('channels.footer.privacy_policy'), class: 'standard-link', target: '_blank'
+            = link_to t('.privacy_policy'), CatarseSettings[:privacy_url], title: t('.privacy_policy'), class: 'standard-link', target: '_blank'
           li.nav-item.separator
-            = link_to t('channels.footer.how_works', name: channel.name), channels_about_path, title: t('channels.footer.how_it_works', name: channel.name), class: 'standard-link'
+            = link_to t('.how_works', name: channel.name), channels_about_path, title: t('.how_it_works', name: channel.name), class: 'standard-link'
           li.nav-item.separator
-            = mail_to channel.email, t('channels.footer.contact'), title: t('channels.footer.contact'), class: 'standard-link', target: '_blank'
+            = mail_to channel.email, t('.contact'), title: t('.contact'), class: 'standard-link', target: '_blank'
           li.nav-item
-            = link_to t('channels.footer.what_is_channel'), CatarseSettings[:about_channel_url], title: t('channels.footer.how_channels_work'), class: 'standard-link', target: '_blank'
+            = link_to t('.what_is_channel'), CatarseSettings[:about_channel_url], title: t('.how_channels_work'), class: 'standard-link', target: '_blank'
 
