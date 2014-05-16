@@ -3,12 +3,6 @@ pt:
   accept_terms_html: Eu li e estou de acordo com os %{link}.
   activerecord:
     attributes:
-      channel:
-        description: Descrição
-        how_it_works: Como funciona
-        image: Imagem da notificação
-        name: Nome
-        video_url: Vídeo
       project:
         permalink: URL do seu projeto
       user:
@@ -24,143 +18,11 @@ pt:
           attributes:
             permalink:
               invalid: URL do projeto inválida
-    models:
-      channel: Canal
   bad_browser:
     text: 'Para navegar pelo catarse e garantir que tudo funcione direitinho precisamos
       que você use uma versão mais atual do seu navegador ou instale um dos navegadores
       abaixo:'
     title: Atualize o seu navegador
-  channels:
-    admin:
-      confirmations:
-        destroy: Você tem certeza que deseja deletar?
-      filter:
-        between_created_at: Criados entre
-        by_id: Por id
-        order_table: Ordenar tabela
-        pg_search: Projeto
-        submit: Filtrar
-        title: Filtrar
-        user_name_contains: Usuário
-        with_state: Com o estado
-      followers:
-        download: Baixar lista
-        title: Seguidores
-      management:
-        no_partners: Nenhum parceiro cadastrado
-        no_posts: Nenhuma novidade cadastrada
-        title: Gerenciamento
-        total: projetos no total
-      partners:
-        back_to_list: "← Voltar para gerenciar parceiros"
-        edit_title: Editar parceiro
-        hint_image: Tamanho da imagem 370x320
-        index:
-          new_button: Adicionar parceiro
-          table:
-            created_at: Criado em
-            image: Imagem
-            name: Nome
-            url: Site
-          title: Gerenciar parceiros
-        save_submit: Salvar
-      posts:
-        back_to_list: "← Voltar para gerenciar novidades"
-        index:
-          new_post_button: Criar novidade
-          table:
-            actions: Ações
-            created_at: Criado em
-            published_at: Publicado em
-            title: Título da novidade
-          title: Gerenciar novidades
-        save_submit: Salvar e visualizar
-        update:
-          published_message: Sua novidade foi publicada e enviada por email aos seguidores
-            do canal.
-        warning_html: Lembrando que toda novidade publicada vai diretamente para o
-          email de seus seguidores. Por isso, revise bem seu texto antes de enviá-lo.
-      posts_menu: Gerenciar novidades
-      table:
-        approve: Aprovar
-        category: Categoria
-        confirmation: Tem certeza que deseja deletar esse projeto?
-        contributed_projects: Projetos apoiados
-        created_projects: Projeto criados
-        destroy_action: Deletar
-        edit_action: Editar
-        expires_at: Término
-        goal: Meta
-        name: Título
-        online_date: Publicação
-        pledged: Alcançado
-        publish_action: Publicar
-        recommended: Recomendar
-        reject: Rejeitar
-        send_to_draft: Enviar para rascunho
-        send_to_trash: DELETAR PROJETO
-        show_action: Visualizar
-        state: Estado
-        total_contributions: Apoios
-        unpublish_action: Despublicar
-        user: Usuário
-        user_id: Usuário
-    edit: Atualizar canal
-    footer:
-      contact: Contato
-      how_works: Como funciona
-      privacy_policy: Política de privacidade
-      terms: Termos de uso
-      what_is_channel: O que são canais?
-    header:
-      contact: Contato
-      logout: Sair
-      my_credits: Meus créditos
-      partners: Parceiros
-      posts: Novidades
-      profile: Meu perfil
-      signin: Login
-      signup: Cadastre-se
-      submit: Enviar projeto
-    how_it_works:
-      sidebar:
-        details: "Últimos detalhes"
-        final: Empurrão final - Gatilho
-        inicial: Empurrão inicial - Dicas
-        login: Login
-        participate: Para participar
-        title: Navegue
-      text:
-        details: 'Assim como qualquer outro apoiador do seu projeto, o Instituto Asas
-          terá direito à recompensa de acordo com o valor aportado. Caso você queira
-          utilizar a marca do Instituto Asas, deverá seguir as regras do uso da marca.
-          No fim do ano, vamos realizar um encontro para conhecê-lo e para que você
-          interaja com outros jovens transformadores. Se o seu projeto já está no
-          Catarse e você quer fazer parte deste Canal, envie pra gente: canalasas@catarse.me'
-        final: Depois que o projeto estiver no ar, você mobiliza a sua rede e quando
-          alcançar 80% da sua meta, o Instituto Asas coloca os outros 20% pra garantir
-          o sucesso da sua campanha.
-        inicial: Para começar daremos dicas de como estruturar e potencializar sua
-          campanha de crowdfunding para obter melhores resultados.
-        login: O Instituto Asas quer dar asas pra quem quer mudar o mundo. Queremos
-          inspirar, impulsionar e conectar jovens que querem transformar o mundo.
-          Acreditamos que jovens com projetos transformadores precisam de mais oportunidades
-          de formação, de maior articulação em rede, de espaço para dar visibilidade
-          a suas iniciativas e também, de acesso a investimento para seus projetos.
-        participate: Entender como funciona o Catarse pois o que vale pro Catarse,
-          vale pro Canal Asas. Caso você seja novo por aqui, entre nesse link e saiba
-          mais. Ter entre 18 e 35 anos. O seu projeto precisa promover algum tipo
-          de impacto positivo na sociedade. Você precisa emitir um recibo referente
-          ao aporte do Instituto Asas
-      title:
-        channel: Como funciona
-        details: "Últimos detalhes"
-        final: Empurrão final - Gatilho
-        inicial: Empurrão inicial - Dicas
-        login: Login
-        participate: Para participar
-    subscribed: "+ %{count} seguidores"
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
     reward_must_be_from_project: deve ser do mesmo projeto
