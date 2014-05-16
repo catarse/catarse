@@ -6,31 +6,31 @@ header
       nav.channel-header
         ul
           li.nav-item
-            = link_to t('channels.header.submit'), channels_about_path, id: 'guidelines_header_modal', class: 'standard-link-green'
+            = link_to t('.submit'), channels_about_path, id: 'guidelines_header_modal', class: 'standard-link-green'
           li.nav-item
-            = link_to t('channels.header.posts'), channels_posts_path, class: 'standard-link'
+            = link_to t('.posts'), channels_posts_path, class: 'standard-link'
           - if channel.partners.present?
             li.nav-item
-              = link_to t('channels.header.partners'), root_url(anchor: 'partners'), class: 'standard-link'
+              = link_to t('.partners'), root_url(anchor: 'partners'), class: 'standard-link'
           li.nav-item
-            = mail_to channel.email, t('channels.header.contact'), title: t('channels.header.contact'), class: 'standard-link', target: '_blank'
+            = mail_to channel.email, t('.contact'), title: t('.contact'), class: 'standard-link', target: '_blank'
           - if current_user
             li.nav-item
               = link_to '#', class: 'user-menu' do
                 = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
               ul.dropdown.user
-                li= link_to t('channels.header.profile'), current_user
+                li= link_to t('.profile'), current_user
                 li
-                  = link_to t('channels.header.my_credits'), user_path(current_user, anchor: 'credits')
+                  = link_to t('.my_credits'), user_path(current_user, anchor: 'credits')
                   .small
                     | (#{current_user.display_credits})
                 - if current_user.admin? || current_user.channel
                   li.divider
                   - for menu, path in controller.menu do
                     li= link_to menu, path
-                li.divider= link_to t('channels.header.logout'), destroy_user_session_path, method: :delete
+                li.divider= link_to t('.logout'), destroy_user_session_path, method: :delete
           - else
             li.nav-item
-              = link_to t('channels.header.signup'), new_user_registration_url, class: 'standard-link'
+              = link_to t('.signup'), new_user_registration_url, class: 'standard-link'
             li.nav-item
-              = link_to t('channels.header.signin'), new_user_session_url, class: 'standard-link'
+              = link_to t('.signin'), new_user_session_url, class: 'standard-link'

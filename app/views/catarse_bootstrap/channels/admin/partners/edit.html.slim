@@ -8,8 +8,8 @@
 
   .large-12.columns
     h1
-      = content_for(:title) { t('channels.admin.partners.edit_title') }
-      = t('channels.admin.partners.edit_title')
+      = content_for(:title) { t('.edit_title') }
+      = t('.edit_title')
     .clearfix
 
     = render 'form', url: channels_admin_partner_path(resource)
