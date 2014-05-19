@@ -4,6 +4,7 @@
 section.row
   = simple_form_for @profile, as: 'profile', url: '/profile', html: { method: 'patch' }, class: 'channel-edit' do |form|
     = form.input :name, as: :string
+    = form.input :email, as: :string
     = form.input :description, as: :text
     = form.input :image, as: :file
     - if @profile.image.present?
