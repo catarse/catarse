@@ -1,37 +1,5 @@
 ---
 pt:
-  accept_terms_html: Eu li e estou de acordo com os %{link}.
-  bad_browser:
-    text: 'Para navegar pelo catarse e garantir que tudo funcione direitinho precisamos
-      que você use uma versão mais atual do seu navegador ou instale um dos navegadores
-      abaixo:'
-    title: Atualize o seu navegador
-  contribution:
-    project_should_be_online: Você não pode apoiar um projeto que não está no ar
-    reward_must_be_from_project: deve ser do mesmo projeto
-    should_not_contribute_if_maximum_contributions_been_reached: já atingiu seu número
-      máximo de apoiadores
-    value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para
-      a recompensa selecionada
-  contribution_plural: apoiadores
-  contribution_report_to_project_owner:
-    address_city: Cidade
-    address_complement: Complemento
-    address_neighbourhood: Bairro
-    address_number: Número
-    address_state: Estado
-    address_street: Rua
-    address_zip_code: CEP
-    anonymous: Anônimo
-    confirmed_at: Data da confirmação do pagamento
-    payer_email: Email do meio de pagamento
-    payment_method: Meio de pagamento
-    reward_description: Descrição da recompensa
-    service_fee: Taxa do Catarse
-    user_email: Email perfil Catarse
-    user_name: Nome do apoiador
-    value: Valor do apoio
-  contribution_singular: apoiador
   controllers:
     rewards:
       create:
@@ -39,19 +7,6 @@ pt:
         notice: Recompensa adicionada com sucesso!
   current_update: 'Alteração atual feita em '
   days: dias
-  explore:
-    index:
-      categories: Categorias
-      expiring: Na reta final
-      near: Próximos a mim
-      quick_explore: Busca rápida
-      recent: Recentes
-      recommended: Recomendados
-      subtitle: Explore os projetos, encontre aqueles que mexem com seu coração, e
-        faça acontecer!
-      successful: Bem-sucedidos
-      title: Encontre projetos incríveis
-    title: Explore os projetos
   facebook_locale: pt_BR
   failure_title: 'Por favor, corrija os seguintes erros:'
   footer:
@@ -128,8 +83,6 @@ pt:
         more_links: Lista de Links relacionados a seu projeto *
         name: Nome do projeto *
         video_url: Vídeo
-  found_plural: Encontrados
-  found_singular: Encontrado
   i_just_contributed: Eu acabei de apoiar o projeto %{name} no @catarse
   layouts:
     header:
@@ -159,9 +112,6 @@ pt:
       recents: Descubra projetos recentes
       recommended: Descubra projetos recomendados
   'no': Não
-  not_found:
-    text: Você pode ter digitado errado o endereço ou a página pode ter sido movida.
-    title: Não encontramos esse endereço :(
   not_informed: não informado
   or: ou
   passwords:
@@ -179,8 +129,6 @@ pt:
       waiting_confirmation: aguardando
       waiting_funds: aguardando
     video_regex_validation: somente URLs do Vimeo são aceitas
-  project_plural: projetos
-  project_singular: projeto
   projects:
     admin_fields:
       title: Campos para o admin
@@ -317,8 +265,6 @@ pt:
       success: As informações foram atualizadas
     video_embed:
       a_project_by_html: Um projeto de %{link} no
-  remaining_plural: restantes
-  remaining_singular: restante
   sections:
     expiring:
       title: Na reta final

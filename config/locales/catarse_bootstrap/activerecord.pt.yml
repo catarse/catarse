@@ -58,6 +58,30 @@ pt:
               confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
             reset_password_token:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
+  contribution:
+    project_should_be_online: Você não pode apoiar um projeto que não está no ar
+    reward_must_be_from_project: deve ser do mesmo projeto
+    should_not_contribute_if_maximum_contributions_been_reached: já atingiu seu número
+      máximo de apoiadores
+    value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para
+      a recompensa selecionada
+  contribution_report_to_project_owner:
+    address_city: Cidade
+    address_complement: Complemento
+    address_neighbourhood: Bairro
+    address_number: Número
+    address_state: Estado
+    address_street: Rua
+    address_zip_code: CEP
+    anonymous: Anônimo
+    confirmed_at: Data da confirmação do pagamento
+    payer_email: Email do meio de pagamento
+    payment_method: Meio de pagamento
+    reward_description: Descrição da recompensa
+    service_fee: Taxa do Catarse
+    user_email: Email perfil Catarse
+    user_name: Nome do apoiador
+    value: Valor do apoio
   user:
     contributions_text:
       many: "Apoiou este e mais outros %{total} projetos"
