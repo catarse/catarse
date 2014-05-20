@@ -2,10 +2,10 @@ module FeatureHelpers
   def login
     visit new_user_session_path
 
-    within ".login-box" do
+    within ".form-login" do
       fill_in 'user_email', with: current_user.email
       fill_in 'user_password', with: 'test123'
-      find('.button.action').click
+      find('.button.bt-medium').click
     end
   end
 
