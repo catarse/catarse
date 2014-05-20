@@ -18,7 +18,7 @@ div class=(policy(parent).update? ? 'project_land' : 'small_project_land')
     .title
       h4
         = link_to project.name, project_by_slug_path(project.permalink)
-      p.author== "#{t('project_by')} #{project.user.name}"
+      p.author== "#{t('projects.show.project_by')} #{project.user.name}"
       p.headline= project.headline
     .status_bar
       .progress style="width: #{project.display_progress}%;"
@@ -28,7 +28,7 @@ div class=(policy(parent).update? ? 'project_land' : 'small_project_land')
           h6= "#{project.time_to_go[:time]} #{project.time_to_go[:unit]}"
           p= project.remaining_text
         - else
-          h6= project.display_status.blank? ? nil : I18n.t("project.display_status.#{project.display_status}")
+          h6= project.display_status.blank? ? nil : I18n.t("projects.project.display_status.#{project.display_status}")
           p= project.display_expires_at
       li
         h6= "#{project.progress} %"
@@ -53,7 +53,7 @@ div class=(policy(parent).update? ? 'project_land' : 'small_project_land')
             - description = contribution.reward.description.gsub(/"/,'&quot;')
             p[ title=description ]= truncate(contribution.reward.description, length: 75)
     .tell_about
-      p= t('tell_about_this_contribution')
+      p= t('.tell_about_this_contribution')
       ul
         li= link_to(image_tag('catarse/facebook_black_icon.png'), "http://www.facebook.com/sharer.php?s=100&p[url]=#{project_by_slug_url(permalink: project.permalink)}&p[summary]=#{t('share_my_contributions')} #{project.name}", target: '_blank').html_safe
         li= link_to image_tag('catarse/twitter_black_icon.png'), "http://twitter.com/share?text=#{t('share_my_contributions')}#{project.name}&url=#{project_by_slug_url(permalink: project.permalink)}", target: '_blank'

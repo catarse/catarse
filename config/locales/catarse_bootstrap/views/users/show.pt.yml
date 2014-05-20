@@ -1,5 +1,11 @@
 pt:
   users:
+    project:
+      confirmed: "Confirmado"
+      refunded: "Reembolsado"
+      requested_refund: "Reembolso solicitado"
+      waiting_confirmation: "Aguardando confirmação"
+      tell_about_this_contribution: Conte para o mundo sobre o seu apoio!
     credits:
       modal:
         title: 'Quer mesmo solicitar o reembolso do seu apoio?'
