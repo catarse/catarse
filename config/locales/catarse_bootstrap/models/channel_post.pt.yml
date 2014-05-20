@@ -1,7 +1,0 @@
-pt:
-  activerecord:
-    attributes:
-      channel_post:
-        title: 'Título'
-        body: 'Conteúdo'
-        visible: 'Publicar (Marque caso queira publicar essa nóvidade)'
