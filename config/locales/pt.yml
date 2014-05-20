@@ -1,23 +1,6 @@
 ---
 pt:
   accept_terms_html: Eu li e estou de acordo com os %{link}.
-  activerecord:
-    attributes:
-      project:
-        permalink: URL do seu projeto
-      user:
-        cpf: 'CPF / CNPJ '
-        cpf_hint: "(?)"
-        cpf_hint_title: Nota Fiscal será emitida para esse documento
-        id: ID
-        moip_login: Login do MoIP
-        moip_login_hint: "(Como criar uma conta)"
-    errors:
-      models:
-        project:
-          attributes:
-            permalink:
-              invalid: URL do projeto inválida
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
     reward_must_be_from_project: deve ser do mesmo projeto
