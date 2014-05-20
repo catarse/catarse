@@ -265,8 +265,6 @@ pt:
       success: As informações foram atualizadas
     video_embed:
       a_project_by_html: Um projeto de %{link} no
-  remaining_plural: restantes
-  remaining_singular: restante
   sections:
     expiring:
       title: Na reta final
