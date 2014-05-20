@@ -1,0 +1,76 @@
+pt:
+  activerecord:
+    models:
+      channel: Canal
+      project: Projeto
+    attributes:
+      project:
+        category: Categoria
+        expires_at: Prazo
+        online_days: "Qual o prazo para atingir o mínimo?"
+        headline: "Frase de efeito"
+        image_url: "URL da imagem"
+        name: "Nome do projeto"
+        goal: "Quanto você pretende arrecadar? (apenas números)"
+        about: "História do seu projeto e como o $ será utilizado"
+        user_id: "Id do usuário"
+        video_url: "URL do vídeo"
+        permalink: 'URL do seu projeto'
+        more_links: 'Mais algum link para conhecer mais sobre o seu projeto?'
+        how_know: 'Como você conheceu o Catarse?'
+        first_contributions: "Lista com os primeiros apoiadores"
+      user:
+        cpf: 'CPF / CNPJ '
+        cpf_hint: "(?)"
+        cpf_hint_title: Nota Fiscal será emitida para esse documento
+        id: ID
+        moip_login: Login do MoIP
+        moip_login_hint: "(Como criar uma conta)"
+        reset_password_token: "Link para recriar senha"
+      channel:
+        description: Descrição
+        how_it_works: Como funciona
+        image: Imagem da notificação
+        name: Nome
+        video_url: Vídeo
+      channel_partner:
+        name: 'Nome'
+        url: 'Site'
+        image: 'Imagem'
+      channel_post:
+        title: 'Título'
+        body: 'Conteúdo'
+        visible: 'Publicar (Marque caso queira publicar essa nóvidade)'
+    errors:
+      models:
+        project:
+          attributes:
+            permalink:
+              invalid: URL do projeto inválida
+        user:
+          attributes:
+            email:
+              not_found: "O email não está cadastrado, verifique o endereço ou faça seu cadastro."
+              taken: "já está cadastrado, faça seu login"
+              invalid: "Esse endereço de email é inválido"
+            password:
+              too_short: "A senha que você escolheu é muito curta"
+              confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
+            reset_password_token:
+              invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
+  user:
+    contributions_text:
+      many: "Apoiou este e mais outros %{total} projetos"
+      one: "Apoiou somente este projeto até agora"
+      two: "Apoiou este e mais 1 outro projeto"
+  channels_subscribers:
+    created: 'Agora você segue o %{channel}'
+    deleted: 'Você deixou de seguir o %{channel}'
+  channels:
+    edit: Atualizar canal
+    subscribed: "+ %{count} seguidores"
+    back_to_news: '← Voltar para as novidades'
+    follow: "Siga o canal"
+    following: "Seguindo"
+    unfollow: "Deixar de seguir"
+    subscribed: "%{count} seguindo o canal"
