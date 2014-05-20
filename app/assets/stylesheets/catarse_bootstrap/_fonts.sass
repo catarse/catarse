@@ -2,6 +2,12 @@ $default-font: "Helvetica Neue", "Helvetica", "Arial", sans-serif
 $default-font-size: 16px
 $default-line-height: 120%
 
+@mixin hide-text
+  display: none
+
+@mixin clearfix
+  clear: both
+
 @function em($px : 0, $base: $default-font-size)
   $value : 0
   @if  $px > 0  and $base > 0
