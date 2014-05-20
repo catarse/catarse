@@ -1,42 +1,41 @@
 = content_for :title, t('.titles.site')
 
-= render 'devise/shared/header'
+.w-container.proxima
+  = render 'devise/shared/header'
 
-.row
-  .large-5.large-centered.columns
-    .box.login-box.animated.fadeIn
-      h2.text-center= t '.titles.header'
-      p.text-center.register_link
-        = t '.have_account_html', link: link_to(t('.links.login'), new_user_session_url)
-      hr
+  .w-row
+    .w-col.w-col-3
+    .w-col.w-col-6.box-login
+      h2.text-center = t '.titles.header'
 
-      .large-11.columns.large-centered
-        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-12', 'columns']
+      .register
+        .text = t '.have_account_html'
+        = link_to t('.links.login'), new_user_session_url, class: 'link'
 
-        .separator
-          p
-            = t('or')
+      .login-fb
+        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'button bt-medium bt-fb'
 
-      .clearfix
+      .separator
+        .text.or = t('or')
 
-      .large-11.large-centered.columns
+      .w-form.form-login
         = simple_form_for(resource, as: resource_name, url: sign_up_url) do |form|
-          = render 'devise/shared/alert'
+          .box-error-login
+            = render 'devise/shared/alert'
 
-          = form.input :name, as: :string, label: t('.form.labels.name')
+          = form.input :name, as: :string, label: t('.form.labels.name'), input_html: { class: 'w-input text-field' }
 
-          = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }
+          = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }, input_html: { class: 'w-input text-field' }
 
           .password
-            = form.input :password, as: :password, label: t('.form.labels.password'), hint: t('.form.hint.password_length')
+            = form.input :password, as: :password, label: t('.form.labels.password'), hint: t('.form.hint.password_length'), input_html: { class: 'w-input text-field' }
 
             .show-password
               = check_box_tag :show_password
               = label_tag :show_password, t('.form.labels.show_password')
 
-          = form.input :newsletter, as: :boolean, input_html: { checked: true }, label: t('.form.labels.newsletter'), wrapper_html: { class: 'newsletter' }
+          = form.input :newsletter, as: :boolean, input_html: { checked: true }, label: t('.form.labels.newsletter'), input_html: { class: 'w-checkbox-input' }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
 
-          .large-10.columns.large-centered
-            = form.submit t('.form.inputs.submit'), class: 'button action'
+          = form.submit t('.form.inputs.submit'), class: 'w-button button bt-medium'
 
-      .clearfix
+          p.accept = t(".form.labels.accept").html_safe
