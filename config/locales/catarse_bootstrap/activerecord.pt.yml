@@ -60,6 +60,8 @@ pt:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
   found_plural: Encontrados
   found_singular: Encontrado
+  project_plural: projetos
+  project_singular: projeto
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
     reward_must_be_from_project: deve ser do mesmo projeto

@@ -129,8 +129,6 @@ pt:
       waiting_confirmation: aguardando
       waiting_funds: aguardando
     video_regex_validation: somente URLs do Vimeo são aceitas
-  project_plural: projetos
-  project_singular: projeto
   projects:
     admin_fields:
       title: Campos para o admin
