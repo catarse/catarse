@@ -1,32 +1,5 @@
 ---
 pt:
-  accept_terms_html: Eu li e estou de acordo com os %{link}.
-  contribution:
-    project_should_be_online: Você não pode apoiar um projeto que não está no ar
-    reward_must_be_from_project: deve ser do mesmo projeto
-    should_not_contribute_if_maximum_contributions_been_reached: já atingiu seu número
-      máximo de apoiadores
-    value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para
-      a recompensa selecionada
-  contribution_plural: apoiadores
-  contribution_report_to_project_owner:
-    address_city: Cidade
-    address_complement: Complemento
-    address_neighbourhood: Bairro
-    address_number: Número
-    address_state: Estado
-    address_street: Rua
-    address_zip_code: CEP
-    anonymous: Anônimo
-    confirmed_at: Data da confirmação do pagamento
-    payer_email: Email do meio de pagamento
-    payment_method: Meio de pagamento
-    reward_description: Descrição da recompensa
-    service_fee: Taxa do Catarse
-    user_email: Email perfil Catarse
-    user_name: Nome do apoiador
-    value: Valor do apoio
-  contribution_singular: apoiador
   controllers:
     rewards:
       create:
@@ -110,8 +83,6 @@ pt:
         more_links: Lista de Links relacionados a seu projeto *
         name: Nome do projeto *
         video_url: Vídeo
-  found_plural: Encontrados
-  found_singular: Encontrado
   i_just_contributed: Eu acabei de apoiar o projeto %{name} no @catarse
   layouts:
     header:
@@ -141,9 +112,6 @@ pt:
       recents: Descubra projetos recentes
       recommended: Descubra projetos recomendados
   'no': Não
-  not_found:
-    text: Você pode ter digitado errado o endereço ou a página pode ter sido movida.
-    title: Não encontramos esse endereço :(
   not_informed: não informado
   or: ou
   passwords:
