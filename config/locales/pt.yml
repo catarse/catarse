@@ -18,11 +18,6 @@ pt:
           attributes:
             permalink:
               invalid: URL do projeto inválida
-  bad_browser:
-    text: 'Para navegar pelo catarse e garantir que tudo funcione direitinho precisamos
-      que você use uma versão mais atual do seu navegador ou instale um dos navegadores
-      abaixo:'
-    title: Atualize o seu navegador
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
     reward_must_be_from_project: deve ser do mesmo projeto
