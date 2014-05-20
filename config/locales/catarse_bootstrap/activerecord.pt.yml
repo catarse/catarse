@@ -85,6 +85,7 @@ pt:
     user_name: Nome do apoiador
     value: Valor do apoio
   user:
+    no_name: Sem nome
     contributions_text:
       many: "Apoiou este e mais outros %{total} projetos"
       one: "Apoiou somente este projeto até agora"
