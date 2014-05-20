@@ -34,6 +34,21 @@ describe Project do
     it{ should_not allow_value('users').for(:permalink) }
   end
 
+  describe ".expiring_in_less_of" do
+    subject { Project.expiring_in_less_of('7 days') }
+
+    before do
+      @project_01 = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
+      @project_02 = create(:project, state: 'online', online_date: DateTime.now, online_days: 30)
+      @project_03 = create(:project, state: 'draft')
+      @project_04 = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
+    end
+
+    it "should return a collection with projects that is expiring time less of the time in param" do
+      should == [@project_01, @project_04]
+    end
+  end
+
   describe ".with_contributions_confirmed_today" do
     let(:project_01) { create(:project, state: 'online') }
     let(:project_02) { create(:project, state: 'online') }
@@ -307,6 +322,20 @@ describe Project do
     it{ should == [@p] }
   end
 
+  describe "send_verify_moip_account_notification" do
+    before do
+      Notification.unstub(:notify_once)
+      @p = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
+      create(:project, state: 'draft')
+    end
+
+    it "should create notification for all projects that is expiring" do
+      Notification.should_receive(:notify_once).
+        with(:verify_moip_account, @p.user, {project_id: @p.id}, {project: @p, origin_email: CatarseSettings[:email_payments]})
+      Project.send_verify_moip_account_notification
+    end
+  end
+
   describe "send_inactive_drafts_notification" do
     before do
       Notification.unstub(:notify_once)
@@ -317,7 +346,7 @@ describe Project do
     it "should create notification for all inactive drafts" do
       Notification.should_receive(:notify_once).
         with(:inactive_draft, @p.user, {project_id: @p.id}, {project: @p})
-      Project.send_inactive_drafts_notification 
+      Project.send_inactive_drafts_notification
     end
   end
 
@@ -541,8 +570,8 @@ describe Project do
     subject { project.new_draft_recipient }
     context "when project does not belong to any channel" do
       before do
-        Configuration[:email_projects] = 'admin_projects@foor.bar'
-        @user = create(:user, email: Configuration[:email_projects])
+        CatarseSettings[:email_projects] = 'admin_projects@foor.bar'
+        @user = create(:user, email: CatarseSettings[:email_projects])
       end
       it{ should == @user }
     end

@@ -8,19 +8,19 @@ describe("ProjectSidebar", function() {
   describe("#selectReward", function(){
     var reward = { data: function(){} };
     beforeEach(function() {
-      spyOn(view, "$").andReturn(reward);
-      spyOn(reward, "data").andReturn('url');
+      spyOn(view, "$").and.returnValue(reward);
+      spyOn(reward, "data").and.returnValue('url');
       spyOn(view, "navigate");
       view.selectReward({ currentTarget: 'reward' });
     });
 
     it("should get reward and get its url", function() {
-      expect(view.$).wasCalledWith('reward');
-      expect(reward.data).wasCalledWith('new_contribution_url');
+      expect(view.$).toHaveBeenCalledWith('reward');
+      expect(reward.data).toHaveBeenCalledWith('new_contribution_url');
     });
 
     it("should navigate to URL", function() {
-      expect(view.navigate).wasCalledWith('url');
+      expect(view.navigate).toHaveBeenCalledWith('url');
     });
   });
 
@@ -31,16 +31,16 @@ describe("ProjectSidebar", function() {
 
     describe("when I can update rewards", function() {
       beforeEach(function() {
-        spyOn(view.$rewards, "data").andReturn(true);
+        spyOn(view.$rewards, "data").and.returnValue(true);
         view.sortableRewards();
       });
 
       it("should test can_update", function() {
-        expect(view.$rewards.data).wasCalledWith('can_update');
+        expect(view.$rewards.data).toHaveBeenCalledWith('can_update');
       });
 
       it("should call sortable", function() {
-        expect(view.$rewards.sortable).wasCalledWith({
+        expect(view.$rewards.sortable).toHaveBeenCalledWith({
           axis: 'y',
           placeholder: "ui-state-highlight",
           start: jasmine.any(Function),
@@ -52,16 +52,16 @@ describe("ProjectSidebar", function() {
 
     describe("when I can not update rewards", function() {
       beforeEach(function() {
-        spyOn(view.$rewards, "data").andReturn(false);
+        spyOn(view.$rewards, "data").and.returnValue(false);
         view.sortableRewards();
       });
 
       it("should test can_update", function() {
-        expect(view.$rewards.data).wasCalledWith('can_update');
+        expect(view.$rewards.data).toHaveBeenCalledWith('can_update');
       });
 
       it("should not call sortable", function() {
-        expect(view.$rewards.sortable).wasNotCalled();
+        expect(view.$rewards.sortable).not.toHaveBeenCalled();
       });
     });
   });
@@ -80,7 +80,7 @@ describe("ProjectSidebar", function() {
 
     beforeEach(function() {
       spyOn(event, "preventDefault");
-      spyOn(view, "$").andCallFake(function(el){
+      spyOn(view, "$").and.callFake(function(el){
         return (el == 'selector' ? form : event.currentTarget);
       });
       spyOn(event.currentTarget, "fadeOut");
@@ -89,16 +89,16 @@ describe("ProjectSidebar", function() {
     });
 
     it("should call fadeOut on currentTarget element", function() {
-      expect(event.currentTarget.fadeOut).wasCalled();
+      expect(event.currentTarget.fadeOut).toHaveBeenCalled();
     });
 
     it("should call fadeIn on data('target') of currentTarget", function() {
-      expect(view.$).wasCalledWith('selector');
-      expect(form.fadeIn).wasCalled();
+      expect(view.$).toHaveBeenCalledWith('selector');
+      expect(form.fadeIn).toHaveBeenCalled();
     });
 
     it("should call preventDefault", function() {
-       expect(event.preventDefault).wasCalled();
+       expect(event.preventDefault).toHaveBeenCalled();
     });
   });
 

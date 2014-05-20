@@ -1,18 +1,18 @@
 class RewardPolicy < ApplicationPolicy
   def create?
-    done_by_onwer_or_admin?
+    done_by_owner_or_admin?
   end
 
   def update?
-    done_by_onwer_or_admin?
+    done_by_owner_or_admin?
   end
 
   def sort?
-    done_by_onwer_or_admin?
+    done_by_owner_or_admin?
   end
 
   def destroy?
-    done_by_onwer_or_admin? && not_yet_sold?
+    done_by_owner_or_admin? && not_yet_sold?
   end
 
   def permitted_attributes
@@ -31,7 +31,7 @@ class RewardPolicy < ApplicationPolicy
     record.project.failed? || record.project.successful?
   end
 
-  def done_by_onwer_or_admin?
+  def done_by_owner_or_admin?
     record.project.user == user || user.try(:admin?)
   end
 end

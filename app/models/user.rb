@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
                           { EMAIL: user.email, FNAME: user.name,
                           CITY: (user.address_city||'outro / other'), STATE: (user.address_state||'outro / other') }
                         },
-                        list_id: Configuration[:mailchimp_list_id],
+                        list_id: CatarseSettings[:mailchimp_list_id],
                         subscribe_when: ->(user) { (user.newsletter_changed? && user.newsletter) || (user.newsletter && user.new_record?) },
                         unsubscribe_when: ->(user) { user.newsletter_changed? && !user.newsletter },
                         unsubscribe_email: ->(user) { user.email }
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :nickname,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
-    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login
+    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at
 
   mount_uploader :uploaded_image, UserUploader
 
@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
 
+  scope :active, ->{ where('deactivated_at IS NULL') }
   scope :contributions, -> {
     where("id IN (
       SELECT DISTINCT user_id
@@ -92,6 +93,10 @@ class User < ActiveRecord::Base
   }
   scope :order_by, ->(sort_field){ order(sort_field) }
 
+  def self.find_active!(id)
+    self.active.where(id: id).first!
+  end
+
   def self.send_credits_notification
     has_not_used_credits_last_month.find_each do |user|
       Notification.notify_once(
@@ -100,6 +105,15 @@ class User < ActiveRecord::Base
         {user_id: user.id}
       )
     end
+  end
+
+  def active_for_authentication?
+    super && deactivated_at.nil?
+  end
+
+  def deactivate
+    self.update_attributes deactivated_at: Time.now
+    self.contributions.update_all(anonymous: true)
   end
 
   def made_any_contribution_for_this_project?(project_id)
@@ -121,6 +135,26 @@ class User < ActiveRecord::Base
 
   def total_contributed_projects
     user_total.try(:total_contributed_projects).to_i
+  end
+
+  def has_no_confirmed_contribution_to_project(project_id)
+    contributions.where(project_id: project_id).with_states(['confirmed','waiting_confirmation']).empty?
+  end
+
+  def created_today?
+    self.created_at.to_date == Date.today && self.sign_in_count <= 1
+  end
+
+  def to_analytics_json
+    {
+      id: self.id,
+      email: self.email,
+      total_contributed_projects: self.total_contributed_projects,
+      created_at: self.created_at,
+      last_sign_in_at: self.last_sign_in_at,
+      sign_in_count: self.sign_in_count,
+      created_today: self.created_today?
+    }.to_json
   end
 
   def facebook_id
@@ -180,6 +214,14 @@ class User < ActiveRecord::Base
 
   def password_confirmation_required?
     !new_record?
+  end
+
+  def generate_reset_password_token
+    raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
+    self.reset_password_token   = enc
+    self.reset_password_sent_at = Time.now.utc
+    self.save(validate: false)
+    raw
   end
 
 end

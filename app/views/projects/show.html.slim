@@ -16,7 +16,7 @@
     meta property="og:url" content=project_by_slug_url(@project.permalink, locale: I18n.locale)
   meta property="og:type" content='cause'
   meta property="og:image" content=@project.display_image('project_thumb_facebook')
-  meta property="og:site_name" content=::Configuration[:company_name]
+  meta property="og:site_name" content=CatarseSettings[:company_name]
   meta property="fb:admins" content="#{fb_admins}"
 
 #page_content
@@ -30,11 +30,11 @@
     .section_header
       h1= @project.name
       h4
-        = t('projects.project_header.without_city')
+        = t('.project_header.without_city')
         |&nbsp;
         = link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"))
         |&nbsp;
-        = t('projects.box.by')
+        = t('projects.index.box.by')
         |&nbsp;
         = link_to(@project.user.display_name, user_path(@project.user))
         |&nbsp;
@@ -78,9 +78,9 @@
         #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?
             = radio_button_tag(:contribution_state, "available_to_count", checked: true)
-            = label_tag(:contribution_state, t('projects.project_contributions.confirmed'))
+            = label_tag(:contribution_state, t('.contribution_states.confirmed'))
             = radio_button_tag(:contribution_state, "waiting_confirmation")
-            = label_tag(:contribution_state, t('projects.project_contributions.pending'))
+            = label_tag(:contribution_state, t('.contributions_states.pending'))
           .results &nbsp;
           .clearfix
           #contributions-loading.loading= image_tag "loading.gif"
@@ -94,10 +94,10 @@
           .statistics
             .item.contributions
               p= @project.total_contributions
-              em= t('statistics.contributions.subtitle')
+              em= t('.sidebar.contributions')
             .item.goal
               p= @project.display_pledged
-              em= t('statistics.goal.subtitle', total: @project.display_goal).html_safe
+              em= t('.sidebar.goal', total: @project.display_goal).html_safe
             .item.time
               - if @project.draft? || @project.rejected?
                 p= @project.online_days
@@ -108,14 +108,14 @@
 
           #condition[class="#{@project.display_status}"]
             p
-              = t("projects.contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
+              = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
           - if @project.online? && !@project.expired?
             #pledge
               = form_tag(new_project_contribution_path(@project), method: :get, id: 'contribute_project_form') do
                 fieldset
-                  = submit_tag t('projects.contribute_project.submit'), disabled: (not @project.online?)
+                  = submit_tag t('.contribute_project.submit'), disabled: (not @project.online?)
         #creator_profile
-          h3= t('project_by')
+          h3= t('.project_by')
           .avatar = @project.user.display_image_html width: 80, height: 80
           .personal_info
             p.name
@@ -123,7 +123,7 @@
             #bio
               p= @project.user.bio
           #city
-            p.contribution= t('count_contributed_projects', total: @project.user.total_contributed_projects)
+            p.contribution= t('.count_contributed_projects', total: @project.user.total_contributed_projects)
             p.city
               | #{@project.user.address_city}
         .user_social

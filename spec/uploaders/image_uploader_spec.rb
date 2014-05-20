@@ -40,7 +40,7 @@ describe ImageUploader do
     context "when in production env" do
       before do
         Rails.env.stub(:production?).and_return(true)
-        ::Configuration[:aws_access_key] = 'test'
+        CatarseSettings[:aws_access_key] = 'test'
       end
       it{ should == :fog }
     end

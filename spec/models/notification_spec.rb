@@ -4,7 +4,6 @@ describe Notification do
   let(:contribution){ create(:contribution) }
 
   before do
-    Sidekiq::Testing.fake!
     Notification.unstub(:notify)
     Notification.unstub(:notify_once)
     ActionMailer::Base.deliveries.clear
@@ -45,8 +44,8 @@ describe Notification do
         template_name: notification.template_name,
         user: notification.user,
         locale: notification.user.locale,
-        origin_email: Configuration['email_contact'],
-        origin_name: Configuration[:company_name]
+        origin_email: CatarseSettings['email_contact'],
+        origin_name: CatarseSettings[:company_name]
       }).and_return(notification)
       notification.should_receive(:deliver)
     end

@@ -27,10 +27,14 @@ gem 'pg_search'
 gem 'schema_plus'
 gem 'schema_associations'
 gem 'chartkick'
+gem 'catarse_settings_db'
+
+# Mixpanel for backend tracking
+gem 'mixpanel-ruby'
 
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
-gem 'catarse_moip', '~> 2.3.4'
+gem 'catarse_moip', '~> 2.3.5'
 # gem 'catarse_wepay', '~> 0.0.1'
 
 # Decorators
@@ -48,7 +52,7 @@ gem 'high_voltage'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook', '1.4.0'
-gem 'devise', '~> 3.0.2'
+gem 'devise'
 gem 'ezcrypto'
 gem 'pundit'
 
@@ -63,8 +67,8 @@ gem "RedCloth"
 gem 'kaminari'
 
 # Uploads
-gem 'carrierwave', '~> 0.8.0'
-gem 'rmagick'
+gem 'carrierwave', '~> 0.10.0'
+gem 'rmagick', :require => 'RMagick'
 
 # Other Tools
 gem 'to_xls'
@@ -85,8 +89,6 @@ gem 'moip', github: 'catarse/moip-ruby'
 gem 'httpclient',     '>= 2.2.5'
 
 group :production do
-  gem 'google-analytics-rails'
-
   # Gem used to handle image uploading
   gem 'fog', '>= 1.3.1'
 
@@ -122,7 +124,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'pry'
-  gem 'livingstyleguide'
+  gem 'jasmine-rails'
 end
 
 group :test do
@@ -133,7 +135,6 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara',   '~> 2.1.0'
-  gem 'jasmine'
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
 end

@@ -6,16 +6,18 @@
   h3 = t('channels.admin.filter.title')
   = simple_form_for '', url: admin_contributions_path, method: :get do |form|
     .row
-      .large-2.columns
+      .large-1.columns
         = form.input :by_id, as: :integer, label: t('.id')
       .large-2.columns
         = form.input :by_user_id, as: :integer, label: t('.user_id')
       .large-2.columns
-        = form.input 'between_values[start_at]', as: :string, label: t(".between_values")
+        = form.input 'between_values[start_at]', as: :integer, label: t(".between_values")
       .large-2.columns.no-label
-        = form.input 'between_values[ends_at]', as: :string, label: ''
-      .large-4.columns
+        = form.input 'between_values[ends_at]', as: :integer, label: ''
+      .large-3.columns
         = form.input :payer_email_contains, as: :string, label: t('.payer_email')
+      .large-2.columns
+        = form.input :by_payment_id, as: :string, label: t('.payment_id')
     .row
       .large-2.columns
         = form.input :with_state, collection: Contribution.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
