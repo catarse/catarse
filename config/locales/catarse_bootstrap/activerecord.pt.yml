@@ -58,10 +58,6 @@ pt:
               confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
             reset_password_token:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
-  found_plural: Encontrados
-  found_singular: Encontrado
-  project_plural: projetos
-  project_singular: projeto
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
     reward_must_be_from_project: deve ser do mesmo projeto
@@ -69,8 +65,6 @@ pt:
       máximo de apoiadores
     value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para
       a recompensa selecionada
-  contribution_singular: apoiador
-  contribution_plural: apoiadores
   contribution_report_to_project_owner:
     address_city: Cidade
     address_complement: Complemento
