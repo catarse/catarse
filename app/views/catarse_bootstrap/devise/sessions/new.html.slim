@@ -1,40 +1,33 @@
 = content_for :title, t('.titles.site')
 
-= render 'devise/shared/header'
+.w-container
+  = render 'devise/shared/header'
 
-.row
-  .large-5.large-centered.columns
-    .box.login-box.animated.fadeIn
+  .w-row
+    .w-col.w-col-3
+    .w-col.w-col-6.box-login.animated.fadeIn
       h2.text-center= t '.titles.header'
-      p.text-center.register_link
-        = t '.no_account_html', link: link_to(t('.links.register'), new_user_registration_url)
-      hr
+      .register
+        .text = t ('.no_account_html')
+        = link_to t('.links.register'), new_user_registration_url, class: 'link'
 
-      .large-11.columns.large-centered
-        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-12', 'columns']
-        .separator
-          p
-            = t('or')
+      .login-fb
+        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'button bt-medium bt-fb'
 
-      .clearfix
+      .separator
+        .text.or = t('or')
 
-      .large-11.large-centered.columns
-        = form_for(resource, as: resource_name, url: session_url(resource_name), html:{novalidate: browser.safari?}) do |f|
-          = render 'devise/shared/alert'
-          p
-            = f.label :email
-            = f.text_field :email, class: [:login, :email], required: true, type: :email, tabindex: 1
+      .w-form.form-login
+        = simple_form_for resource, as: resource_name, url: session_url(resource_name), html: {novalidate: browser.safari?}, class: 'email-form' do |form|
 
-          div.password
-            = f.label :password
-            = f.password_field :password, class: [:login], required: true, tabindex: 2
-            = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'hint'
-          .text-left
-            = f.check_box :remember_me, checked: true
-            = f.label :remember_me, t('.form.labels.remember_me')
+          .box-error-login
+            = render 'devise/shared/alert'
 
-          .large-7.columns.large-centered
-            = f.submit t('.form.inputs.submit'), class: [:button, :action, 'large-12', 'columns']
+          = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }
 
-          .clearfix
+          = form.input :password, as: :password, label: t('.password'), input_html: { class: 'w-input text-field' }
+          = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'link forget-password'
 
+          = form.input :remember_me, as: :boolean, label: t('.form.labels.remember_me'), input_html: { class: 'w-checkbox-input' }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
+
+          = form.button :submit, t('.form.inputs.submit'), class: 'w-button button bt-medium'
