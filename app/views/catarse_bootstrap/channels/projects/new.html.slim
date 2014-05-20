@@ -1,49 +1,49 @@
 = render 'shared/header_channel'
 
 section.row
-  h1.project-submit-h1 = t('submit_project.title', channel: controller.channel.name)
-  p = t('submit_project.subtitle', channel: controller.channel.name)
-  p = t('submit_project.important', channel: controller.channel.name).html_safe
+  h1.project-submit-h1 = t('.title', channel: controller.channel.name)
+  p = t('.subtitle', channel: controller.channel.name)
+  p = t('.important', channel: controller.channel.name).html_safe
 
   = simple_form_for @project, html: { id: 'project_form', class: 'project-submit' } do |form|
     = form.input :referal_link, as: :hidden, input_html: { value: referal_link }
-    = form.input :permalink, as: :string, label: t('submit_project.permalink'), input_html: { class: 'url-input' }
-    span.url-text = t('submit_project.permalink_over', channel: channel.permalink)
-    p = t('submit_project.permalink_hint')
+    = form.input :permalink, as: :string, label: t('.permalink'), input_html: { class: 'url-input' }
+    span.url-text = t('.permalink_over', channel: channel.permalink)
+    p = t('.permalink_hint')
 
-    = form.input :name, as: :string, label: t('submit_project.name')
-    p = t('submit_project.name_hint')
+    = form.input :name, as: :string, label: t('.name')
+    p = t('.name_hint')
 
-    = form.input :about, as: :text, label: t('submit_project.about')
-    p = t('submit_project.about_hint')
+    = form.input :about, as: :text, label: t('.about')
+    p = t('.about_hint')
 
-    = form.input :headline, as: :string, label: t('submit_project.headline')
-    p = t('submit_project.headline_hint')
+    = form.input :headline, as: :string, label: t('.headline')
+    p = t('.headline_hint')
 
-    = form.input :category_id, as: :select, collection: Category.array, label: t('submit_project.category_id')
-    p = t('submit_project.category_id_hint', href: explore_url(subdomain: nil)).html_safe
+    = form.input :category_id, as: :select, collection: Category.array, label: t('.category_id')
+    p = t('.category_id_hint', href: explore_url(subdomain: nil)).html_safe
 
-    = form.input :goal, as: :string, label: t('submit_project.goal')
-    p = t('submit_project.goal_hint').html_safe
+    = form.input :goal, as: :string, label: t('.goal')
+    p = t('.goal_hint').html_safe
 
-    = form.input :online_days, as: :string, label: t('submit_project.online_days')
-    p = t('submit_project.online_days_hint')
+    = form.input :online_days, as: :string, label: t('.online_days')
+    p = t('.online_days_hint')
 
-    = form.input :video_url, as: :text, label: t('submit_project.video_url')
-    p = t('submit_project.video_url_hint')
+    = form.input :video_url, as: :text, label: t('.video_url')
+    p = t('.video_url_hint')
 
-    = form.input :more_links, as: :text, label: t('submit_project.more_links')
-    p = t('submit_project.more_links_hint')
+    = form.input :more_links, as: :text, label: t('.more_links')
+    p = t('.more_links_hint')
 
-    = form.input :first_contributions, as: :text, label: t('submit_project.first_contributions')
-    p = t('submit_project.first_contributions_hint')
+    = form.input :first_contributions, as: :text, label: t('.first_contributions')
+    p = t('.first_contributions_hint')
 
-    = form.input :how_know, as: :text, label: t('submit_project.how_know')
-    p = t('submit_project.how_know_hint')
+    = form.input :how_know, as: :text, label: t('.how_know')
+    p = t('.how_know_hint')
 
-    = form.input :accepted_terms, as: :boolean, label: t('submit_project.accept_terms', link: link_to(t('submit_project.terms'), channel.terms_url), target: '_blank').html_safe
+    = form.input :accepted_terms, as: :boolean, label: t('.accept_terms', link: link_to(t('.terms'), channel.terms_url), target: '_blank').html_safe
     .row
         .large-3.columns.large-centered
-            = form.button :submit, t('submit_project.submit'), class: 'button action submit'
+            = form.button :submit, t('.submit'), class: 'button action submit'
 
 = render 'shared/footer_channel'
