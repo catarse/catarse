@@ -1,0 +1,47 @@
+pt:
+  channels:
+    projects:
+      new:
+        title: "Envie seu projeto para o %{channel}!"
+        subtitle: "Após preencher o formulário abaixo, você receberá uma página de projeto em rascunho. Lá você irá adicionar as recompensas e poderá compartilhar com seus amigos para ter um projeto ainda mais afiado. As informações preenchidas abaixo não são definitivas, mas lembre-se de que quanto mais consistente estiver o seu projeto nesse envio, mais rápido ele irá para o ar."
+        important: "<strong>Importante:</strong> O %{channel} seleciona projetos segundo seus próprios critérios de seleção, o que implica que seu projeto poderá ser recusado pela equipe de curadores."
+
+        permalink: "Url do projeto"
+        permalink_hint: "URL é o endereço do seu projeto, deixe-a simples. Tente não usar underline, hífen e etc."
+        permalink_over: "%{channel}.catarse.me/"
+
+        name: "Nome do projeto"
+        name_hint: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo. Não ultrapasse 50 caracteres."
+
+        about: "História do seu projeto e como o dinheiro será utilizado"
+        about_hint: "Fale sobre sua inspiração para criar o projeto, sua história e o que será realizado. Fuja daquelas formalidades de editais. Presenteie seus leitores com algo que mexa com eles e seja muito transparente em relação a expectativa sobre o projeto. Não deixe o texto muito grande! Coloque links para que o apoiador possa explorar mais o seu trabalho."
+
+        headline: "Frase de efeito"
+        headline_hint: "Crie uma breve descrição do projeto, com no máximo 140 caracteres. Esta frase será o primeiro contato das pessoas com o seu projeto, antes mesmo de ver o vídeo. Seja criativo, transparente e direto."
+
+        category_id: "Qual é a categoria do seu projeto?"
+        category_id_hint: "Antes de enviar, explore e se inspire em outros projetos da mesma <a href='%{href}' target='_blank'>categoria</a>."
+
+        goal: "Quanto você pretende arrecadar? (apenas números)"
+        goal_hint: "Grande parte dos apoios virão de pessoas próximas a você portanto, pense na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos. Lembre-se da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido. Basta dividir o seu orçamento final por 0,87 para chegar no valor total."
+
+        online_days: "Qual o prazo em dias para atingir o mínimo?"
+        online_days_hint: "O prazo máximo para deixar o projeto no ar é de 60 dias, sendo que em média ficam no ar por 40 dias."
+
+        video_url: "Vídeo"
+        video_url_hint: "O vídeo é a principal peça do projeto, mas você pode envia-lo depois. Faça um belo vídeo e cole o link aqui."
+
+        more_links: "Queremos saber mais"
+        more_links_hint: "Queremos saber mais sobre você e seu projeto. Cole aqui os links (site do projeto, facebook, twitter e blogs) para entendermos mais sobre o seu trabalho e o que está planejando para a campanha."
+
+        first_contributions: "Lista com os primeiros apoiadores"
+        first_contributions_hint: "Para sua campanha ter sucesso, é fundamental trazer a sua rede de contato mais próxima. Por isso, liste aqui quem você acredita que serão seus primeiros 20 apoiadores. Essas pessoas serão fundamentais para ter sucesso no seu projeto."
+
+        how_know: "Como você conheceu o canal?"
+        how_know_hint: "Nos conte como você conheceu o canal e o que você espera da gente."
+
+        accept_terms: "Eu li e estou de acordo com os %{link}."
+        terms: "termos de uso"
+
+        submit: "Salvar rascunho"
+

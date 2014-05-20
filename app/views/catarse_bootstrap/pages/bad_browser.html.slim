@@ -1,14 +1,14 @@
 - chrome_url = "http://www.google.com/chrome/"
 - firefox_url = "http://www.mozilla.org/firefox/"
-- content_for :title, t('bad_browser.title')
+- content_for :title, t('.title')
 = render 'devise/shared/header'
 .row
   .large-5.large-centered.columns
     .box.animated.fadeIn
-      h2.text-center= t('bad_browser.title')
+      h2.text-center= t('.title')
       hr
       .large-11.columns.large-centered
-        p= t('bad_browser.text')
+        p= t('.text')
       .browser-icons.large-12.columns.large-centered
         .large-6.columns.text-center
           = link_to chrome_url, target: :blank do
