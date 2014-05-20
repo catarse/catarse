@@ -1,16 +1,16 @@
 .current_credits
-  p= t('credits.index.current_credits_html', credits: @user.display_credits)
+  p= t('.index.current_credits_html', credits: @user.display_credits)
 
 .table_title
-  p= I18n.t('credits.index.refunds_title')
+  p= t('.index.refunds_title')
 .table_content
   table.table.table-striped
     thead
-      th= t('credits.index.project')
-      th= t('credits.index.contribution_date')
-      th= t('credits.index.value')
-      th= t('credits.index.refund_expiration_date_html')
-      th= t('credits.index.status')
+      th= t('.index.project')
+      th= t('.index.contribution_date')
+      th= t('.index.value')
+      th= t('.index.refund_expiration_date_html')
+      th= t('.index.status')
     - @credits.each do |credit|
       tr[id="contribution_#{credit.id}"]
         td.project_name
@@ -20,25 +20,25 @@
         td.term= I18n.l(credit.refund_deadline.to_date)
         td.status
           - if credit.requested_refund?
-            = t('credits.index.requested_refund')
+            = t('.index.requested_refund')
           - elsif credit.refunded?
-            = t('credits.index.refunded')
+            = t('.index.refunded')
           - else
             - if credit.can_refund?
               .bootstrap-twitter
                 div id="requestRefundModal#{credit.id}" class="hide modal"
                   .modal-header
-                    h3= t('credits.modal.title')
+                    h3= t('.modal.title')
                   .modal-body
-                    p= t('credits.modal.text')
-                    = link_to t('credits.modal.link'), 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos', target: '_blank'
+                    p= t('.modal.text')
+                    = link_to t('.modal.link'), 'http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos', target: '_blank'
                   .modal-footer
                     button type='button' data-dismiss="modal" class="btn"
-                      = t('credits.modal.reject_btn')
+                      = t('.modal.reject_btn')
                     = link_to request_refund_user_contribution_path(@user, credit), class: 'btn' do
-                      = t('credits.modal.accept_btn')
-              = link_to t('credits.index.request_refund'), "#requestRefundModal#{credit.id}", data: {toggle: 'modal'}, class: 'link_project'
+                      = t('.modal.accept_btn')
+              = link_to t('.index.request_refund'), "#requestRefundModal#{credit.id}", data: {toggle: 'modal'}, class: 'link_project'
 .bootstrap-alert
   .alert.alert-info
-    = t('credits.index.important_html')
+    = t('.index.important_html')
 

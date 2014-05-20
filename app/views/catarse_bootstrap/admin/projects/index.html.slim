@@ -1,5 +1,5 @@
 = render 'shared/header'
-.row.admin
+.row.admin.use-sort
   h1
     = @title = t('channels.admin.management.title')
     ' :
@@ -59,20 +59,20 @@
             span.sort-order
           th.large-1.columns
             a data-sort="project_totals.progress" href='#'= t('.pledged')
-              span.sort-order
+            span.sort-order
           th.large-1.columns
             a data-sort="project_totals.total_contributions" href='#'= t('.total_contributions')
-              span.sort-order
+            span.sort-order
           th.large-1.columns= t('channels.admin.table.recommended')
           th.large-1.columns
             a data-sort="online_date" href='#'= t('.online_date')
-              span.sort-order
+            span.sort-order
           th.large-1.columns
             a data-sort="projects.expires_at" href='#'= t('.expires_at')
-              span.sort-order
+            span.sort-order
           th.large-1.columns
             a data-sort="updated_at" href='#'= t('.last_modification')
-              span.sort-order
+            span.sort-order
           th.large-1.columns= t('channels.admin.table.state')
           th.large-1.columns
       tbody

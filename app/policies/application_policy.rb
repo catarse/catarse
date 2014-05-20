@@ -1,9 +1,10 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :user, :record, :channel
 
-  def initialize(user, record)
+  def initialize(user, record, channel = nil)
     @user = user
     @record = record
+    @channel = channel
   end
 
   def index?
@@ -51,7 +52,7 @@ class ApplicationPolicy
     user.try(:admin?) || false
   end
 
-  def done_by_onwer_or_admin?
+  def done_by_owner_or_admin?
     is_owned_by?(user) || is_admin?
   end
 
@@ -60,7 +61,7 @@ class ApplicationPolicy
   end
 
   def is_channel_admin?
-    user.try(:channel)
+    user.try(:channel) == @channel && @channel.present?
   end
 end
 

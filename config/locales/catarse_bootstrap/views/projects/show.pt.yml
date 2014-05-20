@@ -1,0 +1,59 @@
+pt:
+  projects:
+    updates:
+      update:
+        destroy: Remover Novidade
+        destroy_confirmation: Deseja remover esta novidade?
+      new:
+        notice: Novidade enviada com sucesso!
+        comment: Texto da sua Novidade
+        exclusive: Visível apenas para apoiadores
+        submit: Enviar Novidade
+        title: Título da sua Novidade
+        warning: Lembrando que todo post de novidade vai diretamente para o email de
+          seus apoiadores. Por isso, revise bem seu texto antes de enviá-lo.
+    project_reports:
+      all_contributions_without_reward: Baixar relatório de todos os apoiadores
+        que não selecionaram uma recompensa
+      link_reports_confirmed: Baixar relatório de todos os apoiadores confirmados
+      link_reports_waiting_confirmation: Baixar relatório de todos os apoiadores
+        com boleto impresso
+      link_reward: Baixar relatório dos apoiadores da recompensa de %{value}
+    project_about:
+      embed: embed
+      embed_title: Incorpore este projeto no seu site
+    show:
+      contribute_project:
+        display_status:
+          reached_goal: "Este projeto será bem-sucedido e financiado em %{date}"
+          not_reached_goal: "Este projeto só será financiado se pelo menos %{goal} forem atingidos até %{date}"
+          failed: "Este projeto não atingiu o mínimo de %{goal} até %{date} e não foi financiado"
+          rejected: "Este projeto não foi aceito. Não é possível realizar um apoio."
+          in_analysis: "Este projeto está em análise e ainda não está aberto para receber apoios."
+          successful: "Este projeto foi bem-sucedido e foi financiado em %{date}"
+          waiting_funds: "Aguardando a confirmação de boletos para saber se este projeto será financiado."
+          draft: "Esse projeto é apenas um rascunho e ainda não está aberto para receber apoios."
+        submit: Apoiar este projeto
+      project_by: projeto por
+      count_contributed_projects: apoiou %{total} projetos
+      project_header:
+        subtitle_html: "Um projeto de %{link}"
+        without_city: "Um projeto de"
+        with_city: "Um projeto de %{category_name} por %{author} em %{city}"
+      menu:
+        about: Sobre
+        add_reward: Adicionar recompensa
+        comments: Comentários
+        contributions: Apoiadores
+        edit: Edição
+        reports: Relatórios
+        updates: Novidades
+      no_rewards_warning: Não viaje! Pense em como irá entregá-las e coloque tudo
+        isso no orçamento. Prometeu?! CUMPRA! :D
+      no_rewards_warning_title: Crie aqui suas recompensas
+      contribution_states:
+        confirmed: Confirmados
+        pending: Boletos impressos
+      sidebar:
+        contributions: apoiadores
+        goal: atingidos de %{total}

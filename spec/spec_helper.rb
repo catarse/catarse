@@ -63,6 +63,7 @@ RSpec.configure do |config|
     DatabaseCleaner.start
     ActionMailer::Base.deliveries.clear
     RoutingFilter.active = false # Because this issue: https://github.com/svenfuchs/routing-filter/issues/36
+    Sidekiq::Testing.fake!
   end
 
   config.after(:each) do
@@ -93,9 +94,25 @@ RSpec.configure do |config|
     Notification.stub(:notify_once)
     Calendar.any_instance.stub(:fetch_events_from)
     Blog.stub(:fetch_last_posts).and_return([])
-    Configuration[:base_domain] = 'localhost'
-    Configuration[:email_contact] = 'foo@bar.com'
-    Configuration[:company_name] = 'Foo Bar Company'
+    CatarseSettings[:base_domain] = 'localhost'
+    CatarseSettings[:email_contact] = 'foo@bar.com'
+    CatarseSettings[:email_system] = 'system@catarse.me'
+    CatarseSettings[:company_name] = 'Foo Bar Company'
     Contribution.any_instance.stub(:payment_engine).and_return(PaymentEngines::Interface.new)
+    MixpanelObserver.any_instance.stub(tracker: double('mixpanel tracker', track: nil))
+  end
+end
+
+RSpec::Matchers.define :custom_permit do |action|
+  match do |policy|
+    policy.public_send("#{action}")
+  end
+
+  failure_message_for_should do |policy|
+    "#{policy.class} does not permit #{action} on #{policy.record} for #{policy.user.inspect}."
+  end
+
+  failure_message_for_should_not do |policy|
+    "#{policy.class} does not forbid #{action} on #{policy.record} for #{policy.user.inspect}."
   end
 end

@@ -1,17 +1,17 @@
-= content_for :title, t('pages.sign_up.titles.site')
+= content_for :title, t('.titles.site')
 
 = render 'devise/shared/header'
 
 .row
   .large-5.large-centered.columns
     .box.login-box.animated.fadeIn
-      h2.text-center= t 'pages.sign_up.titles.header'
+      h2.text-center= t '.titles.header'
       p.text-center.register_link
-        = t 'pages.sign_up.have_account_html', link: link_to(t('pages.sign_up.links.login'), new_user_session_path)
+        = t '.have_account_html', link: link_to(t('.links.login'), new_user_session_url)
       hr
 
       .large-11.columns.large-centered
-        = link_to t('pages.sign_up.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-12', 'columns']
+        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: [:button, :facebook, 'large-12', 'columns']
 
         .separator
           p
@@ -20,23 +20,23 @@
       .clearfix
 
       .large-11.large-centered.columns
-        = simple_form_for(resource, as: resource_name, url: sign_up_path) do |form|
+        = simple_form_for(resource, as: resource_name, url: sign_up_url) do |form|
           = render 'devise/shared/alert'
 
-          = form.input :name, as: :string, label: t('pages.sign_up.form.labels.name')
+          = form.input :name, as: :string, label: t('.form.labels.name')
 
           = form.input :email, as: :email, wrapper_html: { class: 'no-asterisk' }
 
           .password
-            = form.input :password, as: :password, label: t('pages.sign_up.form.labels.password'), hint: t('pages.sign_up.form.hint.password_length')
+            = form.input :password, as: :password, label: t('.form.labels.password'), hint: t('.form.hint.password_length')
 
             .show-password
               = check_box_tag :show_password
-              = label_tag :show_password, t('pages.sign_up.form.labels.show_password')
+              = label_tag :show_password, t('.form.labels.show_password')
 
-          = form.input :newsletter, as: :boolean, input_html: { checked: true }, label: t('pages.sign_up.form.labels.newsletter'), wrapper_html: { class: 'newsletter' }
+          = form.input :newsletter, as: :boolean, input_html: { checked: true }, label: t('.form.labels.newsletter'), wrapper_html: { class: 'newsletter' }
 
           .large-10.columns.large-centered
-            = form.submit t('pages.sign_up.form.inputs.submit'), class: 'button action'
+            = form.submit t('.form.inputs.submit'), class: 'button action'
 
       .clearfix

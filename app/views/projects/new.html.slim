@@ -16,9 +16,9 @@
                 span
                 .alert
                   .important= t('.permalink_important')
-              = form.label :permalink, "#{t('activerecord.attributes.project.permalink')} *"
+              = form.label :permalink
               .input-prepend.permalink
-                span.add-on= "#{::Configuration[:base_url]}/"
+                span.add-on= "#{CatarseSettings[:base_url]}/"
                 = form.text_field :permalink, pattern: '^(\w|-)+$', class: "permalink #{'error' if @project.errors[:permalink].present?}"
                 p.inline-hints
                   = t('.permalink_hint')
@@ -29,7 +29,7 @@
                 span
                 .alert
                   .important= t('.name_important')
-              = form.label :name, t('formtastic.labels.project.name')
+              = form.label :name
               = form.text_field :name, class: "#{'error' if @project.errors[:name].present?}"
               p.inline-hints= t('formtastic.hints.project.name')
 
@@ -38,7 +38,7 @@
                 span
                 .alert
                   .important= t('.about_important')
-              = form.label :about, t('formtastic.labels.project.about')
+              = form.label :about
               = form.text_area :about, class: "#{'error' if @project.errors[:about].present?}"
               p.inline-hints= t('formtastic.hints.project.about')
 
@@ -47,7 +47,7 @@
                 span
                 .alert
                   .important= t('.headline_important')
-              = form.label :headline, t('formtastic.labels.project.headline')
+              = form.label :headline
               = form.text_field :headline, { maxlength: 140, class: "#{'error' if @project.errors[:headline].present?}" }
               p.inline-hints= t('formtastic.hints.project.headline')
 
@@ -56,7 +56,7 @@
                 span
                 .alert
                   .important= t('.tags_important', href: "http://www.catarse.me/explore").html_safe
-              = form.label :category, t('.category')
+              = form.label :category
               = form.select :category_id, Category.array, class: "#{'error' if @project.errors[:category].present?}"
               p.inline-hints= t('formtastic.hints.project.category')
 
@@ -65,7 +65,7 @@
                 span
                 .alert
                   .important= t('.important_html', link: link_to("MoIP", "http://www.moip.com.br/", target: :_blank))
-              = form.label :goal, t('formtastic.labels.project.goal')
+              = form.label :goal
               = form.text_field :goal, class: "#{'error' if @project.errors[:goal].present?}"
               p.inline-hints= t('formtastic.hints.project.goal').html_safe
 
@@ -74,7 +74,7 @@
                 span
                 .alert
                   .important= t('.online_days_important')
-              = form.label :online_days, t('formtastic.labels.project.expires_at')
+              = form.label :online_days
               .input-append
                 = form.text_field :online_days, class: "#{'error' if @project.errors[:online_days].present?}"
                 span.add-on= t('days')
@@ -85,7 +85,7 @@
                 span
                 .alert
                   .important= t('.video_important')
-              = form.label :video_url, t('formtastic.labels.project.video_url')
+              = form.label :video_url
               = form.text_field :video_url, class: "#{'error' if @project.errors[:video_url].present?}", data: { path: video_projects_path }
               p.inline-hints= t('formtastic.hints.project.video_url').html_safe
 
@@ -94,7 +94,7 @@
                 span
                 .alert
                   .important= t('.more_links_important')
-              = form.label :more_links, t('formtastic.labels.project.more_links')
+              = form.label :more_links
               = form.text_area :more_links, class: "#{'error' if @project.errors[:more_links].present?}"
               p.inline-hints= t('formtastic.hints.project.more_links')
 
@@ -103,7 +103,7 @@
                 span
                 .alert
                   .important= t('.first_contributions_important')
-              = form.label :first_contributions, t('formtastic.labels.project.first_contributions')
+              = form.label :first_contributions
               = form.text_area :first_contributions, class: "#{'error' if @project.errors[:first_contributions].present?}"
               p.inline-hints= t('formtastic.hints.project.first_contributions')
 
@@ -112,7 +112,7 @@
                 span
                 .alert
                   .important= t('.how_know_important')
-              = form.label :how_know, t('formtastic.labels.project.how_know')
+              = form.label :how_know
               = form.text_area :how_know, class: "#{'error' if @project.errors[:how_know].present?}"
 
 
@@ -122,7 +122,7 @@
               fieldset.accept
                 = form.check_box :accepted_terms
                 | &nbsp;&nbsp;
-                = form.label :accepted_terms, t('accept_terms_html', link: link_to(t('terms'), ::Configuration[:terms_url], target: :_blank)), class: 'inline'
+                = form.label :accepted_terms, t('accept_terms_html', link: link_to(t('terms'), CatarseSettings[:terms_url], target: :_blank)), class: 'inline'
                 - if @project.errors[:accepted_terms].present?
                   .bootstrap-twitter
                     p.text-error= @project.errors[:accepted_terms].to_sentence

@@ -2,7 +2,8 @@ var App = window.App = Skull.View.extend({
   el: 'html',
 
   events: {
-    "click a.user-menu" : "toggleMenu"
+    "click a.user-menu" : "toggleMenu",
+    "click .zendesk_widget" : "showWidget"
   },
 
   beforeActivate: function(){
@@ -38,6 +39,11 @@ var App = window.App = Skull.View.extend({
   maskElement: function(index, el){
     var $el = this.$(el);
     $el.mask($el.data('mask') + '');
+  },
+
+  showWidget: function(){
+    Zenbox.show();
+    return false;
   },
 
   toggleMenu: function(){

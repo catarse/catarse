@@ -30,7 +30,7 @@ describe ContributionObserver do
     context "when payment_choice is updated to BoletoBancario" do
       let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
-        Notification.should_receive(:notify_once).with(:payment_slip, contribution.user, {contribution_id: contribution.id}, contribution: contribution, project: contribution.project)
+        Notification.should_receive(:notify_once).with(:payment_slip, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
         contribution.payment_choice = 'BoletoBancario'
         contribution.save!
       end
@@ -113,7 +113,7 @@ describe ContributionObserver do
   describe '#from_confirmed_to_requested_refund' do
     let(:admin){ create(:user) }
     before do
-      Configuration[:email_payments] = admin.email
+      CatarseSettings[:email_payments] = admin.email
       contribution.stub(:can_do_refund?).and_return(true)
     end
 
@@ -146,7 +146,7 @@ describe ContributionObserver do
 
   describe '#from_confirmed_to_canceled' do
     before do
-      Configuration[:email_payments] = 'finan@c.me'
+      CatarseSettings[:email_payments] = 'finan@c.me'
     end
 
     let(:user_finan) { create(:user, email: 'finan@c.me') }

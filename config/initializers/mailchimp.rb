@@ -1,1 +1,1 @@
-MAILCHIMP_API_KEY = Configuration[:mailchimp_api_key]
+MAILCHIMP_API_KEY = CatarseSettings[:mailchimp_api_key]

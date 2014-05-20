@@ -1,6 +1,6 @@
 #my_data
   ul
-    = I18n.t('users.unsubscribes.title')
+    = t('.title')
   ul
     li
       .bootstrap-form
@@ -9,13 +9,13 @@
           = f.semantic_fields_for :unsubscribes, @subscribed_to_updates do |u|
             - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = nil)
             #subscribed_check
-              = u.input :subscribed, as: :boolean, input_html: checked, label: I18n.t('users.unsubscribes.updates')
+              = u.input :subscribed, as: :boolean, input_html: checked, label: t('.updates')
           - if @unsubscribes
             = f.semantic_fields_for :unsubscribes, @unsubscribes do |u|
               = u.inputs do
                 - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = {})
                 .subscribed_projects
-                  = u.input :subscribed, as: :boolean, input_html: {id: "user_unsubscribes_#{u.object.project_id}"}.merge(checked), label: Project.find(u.object.project_id).name
+                  = u.input :subscribed, as: :boolean, input_html: {id: "user_unsubscribes_#{u.object.project_id}"}.merge(checked), label: (Project.find(u.object.project_id).name rescue nil)
                 = u.input :project_id, as: :hidden
                 = u.input :user_id, as: :hidden
 

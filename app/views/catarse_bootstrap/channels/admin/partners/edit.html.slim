@@ -1,0 +1,15 @@
+= render 'shared/header_channel'
+
+.row.admin-posts
+  br/
+  br/
+  .large-4.columns
+    = link_to t('channels.admin.partners.back_to_list'), channels_admin_partners_path, class: 'navigation-link'
+
+  .large-12.columns
+    h1
+      = content_for(:title) { t('.edit_title') }
+      = t('.edit_title')
+    .clearfix
+
+    = render 'form', url: channels_admin_partner_path(resource)

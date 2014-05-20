@@ -3,7 +3,7 @@
 - channel = @notification.channel
 
 - project_link = project_by_slug_url(permalink: project.permalink)
-- company_name = ::Configuration[:company_name]
+- company_name = CatarseSettings[:company_name]
 
 = content_for :email_logo do
   = image_tag(channel.image, alt: channel.name)
@@ -34,7 +34,7 @@ strong Opção 3:
 | Infelizmente, o rascunho de projeto que você enviou não se encaixa no perfil do #{channel.name}.
 | Enviaremos um email notificando a recusa. Sim, sabemos que recusas são sempre desagradáveis. Mas o lema aqui
 | é "levanta, sacode a poeira e dá a volta por cima". Mas antes de sacudir qualquer poeira, estude
-' a #{link_to 'Central de Suporte', ::Configuration[:support_forum], target: '__blank'} do #{company_name} e a #{ link_to 'proposta', channels_about_url(subdomain: channel.permalink), target: '__blank'}
+' a #{link_to 'Central de Suporte', CatarseSettings[:support_forum], target: '__blank'} do #{company_name} e a #{ link_to 'proposta', channels_about_url(subdomain: channel.permalink), target: '__blank'}
 | do #{channel.name} para que você saiba tudo sobre nossos pré-requisitos para a construção do seu próximo projeto.
 br/
 br/

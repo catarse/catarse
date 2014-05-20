@@ -1,9 +1,9 @@
 = content_for :meta_tags do
   -# Meta tags for facebook social graph
   meta property="og:title" content=@user.name
-  meta property="og:url" content=="#{Configuration[:base_url]}#{user_path(@user)}"
+  meta property="og:url" content=="#{CatarseSettings[:base_url]}#{user_path(@user)}"
   meta property="og:image" content==@user.display_image
-  meta property="og:site_name" content=::Configuration[:company_name]
+  meta property="og:site_name" content=CatarseSettings[:company_name]
   meta property="og:description" content=@user.bio
   meta property="fb:admins" content="#{fb_admins}"
 
@@ -45,18 +45,18 @@
       #user_profile_content
         #user_contributed_projects.content[data-path=user_contributions_path(@user)]
           - if !policy(@user).update?
-            p.empty.hide= t('users.contributions.no_contributions', name: @user.display_name)
+            p.empty.hide= t('.contributions.no_contributions', name: @user.display_name)
           - else
-            p.empty.hide= t('users.contributions.no_contributions_current_user_html', link: ::Configuration[:base_url])
+            p.empty.hide= t('.contributions.no_contributions_current_user_html', link: CatarseSettings[:base_url])
           .results
           .clearfix
           .loading= image_tag "loading.gif"
           .clearfix
         #user_created_projects.content.hide[data-path=user_projects_path(@user)]
           - if current_user != @user
-            p.empty.hide= t('users.projects.no_projects', name: @user.display_name)
+            p.empty.hide= t('.projects.no_projects', name: @user.display_name)
           - else
-            p.empty.hide= t('users.projects.no_projects_current_user_html', link: link_to(t('users.projects.here'), page_path(:how_it_works))).html_safe
+            p.empty.hide= t('.projects.no_projects_current_user_html', link: link_to(t('.projects.here'), page_path(:how_it_works))).html_safe
           .results
           .clearfix
           .loading= image_tag "loading.gif"

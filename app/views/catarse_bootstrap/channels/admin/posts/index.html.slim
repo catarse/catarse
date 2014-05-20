@@ -4,9 +4,9 @@
   .row
     .large-10.columns
       h1
-        = @title = t('channels.admin.posts.index.title')
+        = @title = t('.title')
     .large-2.columns.right
-      = link_to t('channels.admin.posts.index.new_post_button'), new_channels_admin_post_path, class: [:button, :medium, :action, :new_post]
+      = link_to t('.new_post_button'), new_channels_admin_post_path, class: [:button, :medium, :action, :new_post]
 
 
   .clearfix
@@ -16,10 +16,10 @@
     table.admin-posts-table
       thead
         tr
-          th.large-4.columns= t('channels.admin.posts.index.table.title')
-          th.large-3.columns= t('channels.admin.posts.index.table.created_at')
-          th.large-4.columns= t('channels.admin.posts.index.table.published_at')
-          th.large-1.columns= t('channels.admin.posts.index.table.actions')
+          th.large-4.columns= t('.table.title')
+          th.large-3.columns= t('.table.created_at')
+          th.large-4.columns= t('.table.published_at')
+          th.large-1.columns= t('.table.actions')
       tbody
         - collection.each do |resource|
           tr id=resource.id class=cycle("even", "odd")

@@ -2,7 +2,7 @@ doctype 5
 html lang="#{I18n.locale}" xmlns:fb="http://ogp.me/ns/fb#"
   head
     meta charset='utf-8'
-    title= "#{@title}#{' · ' if @title}#{::Configuration[:company_name]}"
+    title= "#{@title}#{' · ' if @title}#{CatarseSettings[:company_name]}"
     = stylesheet_link_tag 'application', :media => 'screen, projection'
     /[if lt IE 9]
       = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"

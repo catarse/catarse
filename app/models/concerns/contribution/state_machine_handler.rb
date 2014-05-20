@@ -11,6 +11,7 @@ module Contribution::StateMachineHandler
       state :requested_refund, value: 'requested_refund'
       state :refunded_and_canceled, value: 'refunded_and_canceled'
       state :deleted, value: 'deleted'
+      state :invalid_payment, value: 'invalid_payment'
 
       event :push_to_trash do
         transition all => :deleted
@@ -22,6 +23,10 @@ module Contribution::StateMachineHandler
 
       event :waiting do
         transition pending: :waiting_confirmation
+      end
+
+      event :invalid do
+        transition all => :invalid_payment
       end
 
       event :confirm do

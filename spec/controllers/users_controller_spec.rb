@@ -8,10 +8,10 @@ describe UsersController do
     controller.stub(:current_user).and_return(current_user)
   end
 
-  let(:successful_project){ FactoryGirl.create(:project, state: 'successful') }
-  let(:failed_project){ FactoryGirl.create(:project, state: 'failed') }
-  let(:contribution){ FactoryGirl.create(:contribution, state: 'confirmed', user: user, project: failed_project) }
-  let(:user){ FactoryGirl.create(:user, password: 'current_password', password_confirmation: 'current_password', authorizations: [FactoryGirl.create(:authorization, uid: 666, oauth_provider: FactoryGirl.create(:oauth_provider, name: 'facebook'))]) }
+  let(:successful_project){ create(:project, state: 'successful') }
+  let(:failed_project){ create(:project, state: 'failed') }
+  let(:contribution){ create(:contribution, state: 'confirmed', user: user, project: failed_project) }
+  let(:user){ create(:user, password: 'current_password', password_confirmation: 'current_password', authorizations: [create(:authorization, uid: 666, oauth_provider: create(:oauth_provider, name: 'facebook'))]) }
   let(:current_user){ user }
 
   describe "GET unsubscribe_notifications" do
@@ -70,6 +70,14 @@ describe UsersController do
       get :show, id: user.id, locale: 'pt'
     end
 
-    it{ assigns(:fb_admins).should include(user.facebook_id.to_i) }
+    context "when user is no longer active" do
+      let(:user){ create(:user, deactivated_at: Time.now) }
+      its(:status){ should eq 404 }
+    end
+
+    context "when user is active" do
+      it{ should be_successful }
+      it{ assigns(:fb_admins).should include(user.facebook_id.to_i) }
+    end
   end
 end

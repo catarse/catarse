@@ -16,6 +16,7 @@ class Contribution < ActiveRecord::Base
   scope :available_to_display, ->{ with_states(['confirmed', 'requested_refund', 'refunded', 'waiting_confirmation']) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_key, ->(key) { where(key: key) }
+  scope :by_payment_id, ->(payment_id) { where(payment_id: payment_id) }
   scope :by_user_id, ->(user_id) { where(user_id: user_id) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_email_contains, ->(term) { joins(:user).where("unaccent(upper(users.email)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
@@ -24,7 +25,7 @@ class Contribution < ActiveRecord::Base
   scope :anonymous, -> { where(anonymous: true) }
   scope :credits, -> { where("credits OR lower(payment_method) = 'credits'") }
   scope :not_anonymous, -> { where(anonymous: false) }
-  scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = current_date ") }
+  scope :confirmed_today, -> { with_state('confirmed').where("contributions.confirmed_at::date = to_date(?, 'yyyy-mm-dd')", Time.now.strftime('%Y-%m-%d')) }
 
   scope :can_cancel, -> { where("contributions.can_cancel") }
 
@@ -98,6 +99,18 @@ class Contribution < ActiveRecord::Base
       { contribution_id: self.id },
       contribution: self
     )
+  end
+
+  def notify_to_backoffice(template_name, options = {})
+    _user = User.find_by(email: CatarseSettings[:email_payments])
+
+    if _user
+      Notification.notify_once(template_name,
+        _user,
+        { contribution_id: self.id },
+        { contribution: self }.merge!(options)
+      )
+    end
   end
 
   # Used in payment engines

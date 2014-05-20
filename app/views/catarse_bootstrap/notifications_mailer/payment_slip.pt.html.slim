@@ -9,9 +9,9 @@ p
   = link_to 'clicar aqui', "https://www.moip.com.br/Boleto.do?id=#{contribution.payment_id.gsub('.', '').to_i}"
   | .
 
-p O prazo de vencimento do boleto é de 2 dias úteis. Para alterar a data de vencimento, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to Configuration[:email_contact]}
+p O prazo de vencimento do boleto é de 2 dias úteis. Para alterar a data de vencimento, entre em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
 
 p 
   | Um abraço,
   br/
-  | #{Configuration[:company_name]}
+  | #{CatarseSettings[:company_name]}
