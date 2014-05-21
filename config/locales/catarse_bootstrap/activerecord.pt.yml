@@ -58,6 +58,8 @@ pt:
               confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
             reset_password_token:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
+  project:
+    video_regex_validation: somente URLs do Vimeo são aceitas
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
     reward_must_be_from_project: deve ser do mesmo projeto
@@ -83,6 +85,7 @@ pt:
     user_name: Nome do apoiador
     value: Valor do apoio
   user:
+    no_name: Sem nome
     contributions_text:
       many: "Apoiou este e mais outros %{total} projetos"
       one: "Apoiou somente este projeto até agora"

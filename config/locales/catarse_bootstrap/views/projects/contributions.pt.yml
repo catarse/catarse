@@ -1,0 +1,60 @@
+pt:
+  projects:
+    contributions:
+      checkout:
+        no_credits: Você não possui créditos suficientes para realizar este apoio.
+        success: Seu apoio foi realizado com sucesso. Muito obrigado!
+      contribution:
+        anonymous_contribution: Apoiador anônimo
+        anonymous_description: Optou por permanecer incógnito
+        no_reward: Este apoiador não selecionou nenhuma recompensa
+      edit:
+        choose_payment: Como você quer pagar?
+        choose_payment_subtitle: Selecione abaixo uma forma de pagamento
+        cpf: 'Para prosseguir, por favor informe:'
+        credits_notice_html: Este apoio será pago com seus créditos. Após a confirmação,
+          você ficará com um saldo de <strong>%{credits}</strong> em créditos para
+          apoiar outros projetos.
+        live_in_brazil: Moro no Brasil. ( Desmarque caso o seu apoio seja internacional
+          )
+        number_card: Dados do cartão
+        owner_card: Dados do titular do cartão
+        payment_account: Pagamento com Débito em Conta
+        payment_boleto: Pagamento com Boleto
+        payment_card: Pagamento com Cartão
+        review_with_reward_html: 'Você irá apoiar com <strong>%{value}</strong> e
+          ganhará a seguinte recompensa:'
+        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
+          e não quer nenhuma recompensa por seu apoio.
+        select_account: 'Você será redirecionado para o site do seu banco:'
+        select_boleto: 'Para prosseguir, por favor selecione:'
+        submit:
+          credits: Confirmar
+          moip: Efetuar pagamento pelo MoIP
+        subtitle: Estes dados serão informados ao organizador do projeto.
+        title: Preencha e revise os dados para pagamento
+        you_are_about_html: Você está prestes a fazer parte do grupo que faz de tudo
+          para o %{link} acontecer.
+      new:
+        header:
+          subtitle: Você está a poucos passos de fazer a diferença e se tornar parte
+            deste projeto.
+          title: Oohh yeah!
+        no_reward: Obrigado. Eu só quero ajudar o projeto.
+        submit: Revisar e realizar pagamento
+        title: Apoie o %{name}
+      review:
+        error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
+      show:
+        header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo
+          ao time!
+        header_title: Muito obrigado! :D
+        moip_message: A verificação da sua transação está em andamento e o código
+          Moip é “%{code}″.<br>Caso tenha alguma dúvida referente a transação, entre
+          em contato com o Moip. Um email será enviado quando o pagamento for confirmado.
+        recommended_projects: 'Você também poderá curtir esses projetos:'
+        text_subtitle: Conte para todo mundo o que você acabou de fazer
+        text_title_html: Você agora é parte do grupo que faz de tudo para o %{link}
+          acontecer.
+        title: Muito obrigado
+
