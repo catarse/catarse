@@ -20,8 +20,25 @@ pt:
         how_know: 'Como você conheceu o Catarse?'
         first_contributions: "Lista com os primeiros apoiadores"
       user:
+        address_city: Cidade
+        address_complement: Complemento
+        address_neighbourhood: Bairro
+        address_number: Número
+        address_state: Estado
+        address_street: Endereço
+        address_zip_code: CEP
         cpf: 'CPF / CNPJ '
-        cpf_hint: "(?)"
+        cpf_hint: '(?)'
+        state_inscription: 'Inscrição Estadual'
+        current_password: "Senha atual"
+        email: Email
+        full_name: "Nome completo / Razão Social"
+        bio: 'Mini Bio'
+        name: "Nickname"
+        newsletter: 'Quero receber novidades do Catarse'
+        password: Senha
+        password_confirmation: "Confirmação de senha"
+        phone_number: "Telefone (fixo ou celular)"
         cpf_hint_title: Nota Fiscal será emitida para esse documento
         id: ID
         moip_login: Login do MoIP
