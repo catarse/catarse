@@ -1,0 +1,17 @@
+pt:
+  layouts:
+    header:
+      blog: Blog
+      discover: Descubra
+      faq: FAQ
+      help: Ajuda
+      profile: Meu perfil
+      signin: Login
+      signup: Cadastre-se
+      submit: Envie seu projeto
+    login:
+      login_with_facebook: entre com sua conta do facebook
+    user:
+      logout: Sair
+      my_credits: Meus créditos
+

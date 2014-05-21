@@ -5,10 +5,10 @@ header.header
     nav.header-nav
       ul
         li.header-nav-li
-          = link_to t('layouts.header.submit'), page_path(:how_it_works), :class => 'project'
+          = link_to t('.submit'), page_path(:how_it_works), :class => 'project'
 
         li.header-nav-li
-          = link_to t('layouts.header.discover'), explore_path, :class => 'project'
+          = link_to t('.discover'), explore_path, :class => 'project'
 
         li.header-nav-li.search
           = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
@@ -16,17 +16,17 @@ header.header
             = submit_tag
 
         li.header-nav-li
-          = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+          = link_to t('.help'), CatarseSettings[:support_forum], target: :_blank, :class => 'header-nav-item',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
 
         li.header-nav-li
-          = link_to t('layouts.header.blog'), CatarseSettings['blog_url'], target: :_blank, class: 'header-nav-item' if CatarseSettings['blog_url'].present?
+          = link_to t('.blog'), CatarseSettings['blog_url'], target: :_blank, class: 'header-nav-item' if CatarseSettings['blog_url'].present?
 
         - if current_user
           li.header-nav-li.user
             = link_to '#', class: 'my_profile_link user-menu' do
               = image_tag(current_user.display_image, :size => "40x40", :class => 'profile-picture')
             ul.dropdown.user
-              li= link_to t('layouts.header.profile'), current_user
+              li= link_to t('.profile'), current_user
               li
                 = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
                 .small
@@ -38,7 +38,7 @@ header.header
               li.divider= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
         - else
           li.header-nav-li
-            = link_to t('layouts.header.signup'), new_user_registration_url, :class => 'header-nav-item'
+            = link_to t('.signup'), new_user_registration_url, :class => 'header-nav-item'
           li.header-nav-li
-            = link_to t('layouts.header.signin'), new_user_session_url, :class => 'header-nav-item'
+            = link_to t('.signin'), new_user_session_url, :class => 'header-nav-item'
 .clearfix
