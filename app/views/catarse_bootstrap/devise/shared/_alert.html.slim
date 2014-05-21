@@ -1,11 +1,10 @@
 - if flash[:alert].present?
-  .alert-box.alert.animated.shake
-    .large-12.large-centered.columns
-      h3= t('failure_title')
-      p= flash[:alert]
+  .box-error-login.animated.shake
+    p = 'teste'
+    p.text-error.text-error-bold = t('failure_title')
+    p.text-error= flash[:alert]
 - elsif resource.errors.present?
-  .alert-box.alert.animated.shake
-    .large-12.large-centered.columns
-      h3= t('failure_title')
-      - resource.errors.full_messages.each do |message|
-        p== message
+  .box-error-login.animated.shake
+    p.text-error.text-error-bold = t('failure_title')
+    - resource.errors.full_messages.each do |message|
+      p.text-error == message
