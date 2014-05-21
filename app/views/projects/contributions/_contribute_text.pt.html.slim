@@ -6,6 +6,6 @@ p Assim que o MoIP ou o Paypal confirmar a transação (cartão e transferência
 h3 Então eu recebo meu dinheiro de volta se o projeto não sair?
 p Sim! Você recebe de volta 100% do que pagou na forma de créditos para apoiar outros projetos do #{CatarseSettings[:company_name]}.
 h3 E se eu não quiser usar os créditos no #{CatarseSettings[:company_name]}?
-p Sem problemas. É só entrar na aba #{link_to t('credits.title'), user_path(current_user, anchor: :credits), :target => :_blank}, até 60 dias após seu apoio, e solicitar um estorno. Caso tenha pago com cartão de crédito, o estorno será feito na sua próxima fatura. Se pagou com débito em conta ou boleto bancário, a única maneira de fazer o estorno é você abrir uma conta no MoIP. Aí a gente transfere o valor da nossa conta para a sua e, de lá, você transfere para sua conta no banco.
+p Sem problemas. É só entrar na aba #{link_to t('.credits_tab'), user_path(current_user, anchor: :credits), :target => :_blank}, até 60 dias após seu apoio, e solicitar um estorno. Caso tenha pago com cartão de crédito, o estorno será feito na sua próxima fatura. Se pagou com débito em conta ou boleto bancário, a única maneira de fazer o estorno é você abrir uma conta no MoIP. Aí a gente transfere o valor da nossa conta para a sua e, de lá, você transfere para sua conta no banco.
 h3 Se o projeto for financiado, como eu recebo minha recompensa?
 p Quando sua recompensa estiver pronta, #{link_to @project.user.display_name, user_path(@project.user)} vai entrar em contato com você para combinar a entrega.

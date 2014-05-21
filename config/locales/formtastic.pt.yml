@@ -35,7 +35,10 @@ pt:
         video_url_edit: Cole aqui o link do seu vídeo hospedado no Vimeo ou no Youtube.
     labels:
       contribution:
+        credits: Quero usar meus créditos para este apoio.
+        anonymous: Quero que meu apoio seja anônimo.
         value: Com quanto você quer apoiar?
+        reward: Selecione sua recompensa
       project:
         about: História do seu projeto e como o $ será utilizado *
         expires_at: Qual o prazo para atingir o mínimo? *

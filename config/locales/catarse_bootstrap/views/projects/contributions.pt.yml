@@ -1,6 +1,8 @@
 pt:
   projects:
     contributions:
+      contribute_text:
+        credits_tab: Meus créditos
       checkout:
         no_credits: Você não possui créditos suficientes para realizar este apoio.
         success: Seu apoio foi realizado com sucesso. Muito obrigado!

@@ -52,7 +52,7 @@
           .submit
             fieldset.accept_terms
               = check_box_tag 'accept'
-              = label_tag 'accept', t('shared.accept_terms_html', link: link_to(t('terms'), CatarseSettings[:terms_url], target: :_blank)), class: 'inline'
+              = label_tag 'accept', t('shared.accept_terms_html', link: link_to(t('shared.terms'), CatarseSettings[:terms_url], target: :_blank)), class: 'inline'
             - if @contribution.credits
               = form.actions do
                 .bootstrap-twitter

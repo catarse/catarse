@@ -1,5 +1,6 @@
 pt:
   shared:
+    terms: termos de uso
     accept_terms_html: Eu li e estou de acordo com os %{link}.
     header_channel:
       contact: Contato
