@@ -14,7 +14,7 @@ pt:
             name: 'Nome completo'
             password: 'Senha'
             newsletter: 'Quero receber novidades do Catarse via email'
-            accept: 'Ao efetuar cadastro, você está aceitando nossos <a href="/termos-de-uso-refinamento-header-e-footer4" class="alt-link" target="_blank">termos de uso</a> e <a class="alt-link" href="http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade" target="_blank">política de privacidade</a>'
+            accept: 'Ao efetuar cadastro, você está aceitando nossos <a href="http://suporte.catarse.me/knowledgebase/articles/161100-termos-de-uso" class="alt-link" target="_blank">termos de uso</a> e <a class="alt-link" href="http://suporte.catarse.me/knowledgebase/articles/161103-pol%C3%ADtica-de-privacidade" target="_blank">política de privacidade</a>'
           hint:
             password_length: 'Mínimo 6 caracteres'
           inputs:
