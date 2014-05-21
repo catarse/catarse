@@ -19,15 +19,15 @@
         .text.or = t('or')
 
       .w-form.form-login
-        = simple_form_for resource, as: resource_name, url: session_url(resource_name), html: {novalidate: browser.safari?}, class: 'email-form' do |form|
+        = simple_form_for resource, as: resource_name, url: session_url(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
 
           = render 'devise/shared/alert'
 
           = form.input :email, as: :email, label: t('.email'), input_html: { class: 'w-input text-field' }
 
-          = form.input :password, as: :password, label: t('.password'), input_html: { class: 'w-input text-field' }
+          = form.input :password, as: :password, label: t('.form.inputs.password'), input_html: { class: 'w-input text-field' }
           = link_to t('.links.forgot_password'), new_password_path(resource_name), class: 'link forget-password'
 
-          = form.input :remember_me, as: :boolean, label: t('.form.labels.remember_me'), input_html: { class: 'w-checkbox-input' }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
+          = form.input :remember_me, as: :boolean, label: t('.form.labels.remember_me'), input_html: { class: 'w-checkbox-input', checked: true }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
 
           = form.button :submit, t('.form.inputs.submit'), class: 'w-button button bt-medium'

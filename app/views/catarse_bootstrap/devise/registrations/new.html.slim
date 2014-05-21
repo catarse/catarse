@@ -19,7 +19,7 @@
         .text.or = t('or')
 
       .w-form.form-login
-        = simple_form_for(resource, as: resource_name, url: sign_up_url) do |form|
+        = simple_form_for resource, as: resource_name, url: sign_up_url, html: {novalidate: true} do |form|
           = render 'devise/shared/alert'
 
           = form.input :name, as: :string, label: t('.form.labels.name'), input_html: { class: 'w-input text-field' }
@@ -33,7 +33,7 @@
               = check_box_tag :show_password
               = label_tag :show_password, t('.form.labels.show_password')
 
-          = form.input :newsletter, as: :boolean, input_html: { checked: true }, label: t('.form.labels.newsletter'), input_html: { class: 'w-checkbox-input' }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
+          = form.input :newsletter, as: :boolean, label: t('.form.labels.newsletter'), input_html: { class: 'w-checkbox-input', checked: true }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
 
           = form.submit t('.form.inputs.submit'), class: 'w-button button bt-medium'
 
