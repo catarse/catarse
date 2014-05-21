@@ -19,7 +19,7 @@
         .text.or = t('or')
 
       .w-form.form-login
-        = simple_form_for resource, as: resource_name, url: session_url(resource_name), html: {novalidate: browser.safari?}, class: 'email-form' do |form|
+        = simple_form_for resource, as: resource_name, url: session_url(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
 
           = render 'devise/shared/alert'
 

@@ -13,7 +13,7 @@
         = link_to t('.links.register'), new_user_registration_url, class: 'link'
 
       .w-form.form-login
-        = simple_form_for resource, as: resource_name, url: password_url(resource_name), class: 'email-form' do |form|
+        = simple_form_for resource, as: resource_name, url: password_url(resource_name), html: {novalidate: true}, class: 'email-form' do |form|
 
           = render 'devise/shared/alert'
 
