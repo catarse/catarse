@@ -1,6 +1,5 @@
 - if flash[:alert].present?
   .box-error-login.animated.shake
-    p = 'teste'
     p.text-error.text-error-bold = t('failure_title')
     p.text-error= flash[:alert]
 - elsif resource.errors.present?

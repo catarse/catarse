@@ -8,11 +8,13 @@ pt:
           header: 'Login'
         links:
           register: "Cadastre-se"
+          password: "Senha"
           forgot_password: "Esqueci minha senha"
         form:
           labels:
             remember_me: 'Continuar conectado'
           inputs:
             submit: 'Fazer login'
+            password: 'Senha'
             facebook: 'Entrar com Facebook'
 

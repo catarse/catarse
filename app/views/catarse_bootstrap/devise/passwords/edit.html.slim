@@ -9,7 +9,7 @@
       h2.text-center.big-margin = t ('.titles.header')
 
       .w-form.form-login
-        = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put}, class: 'email-form' do |form|
+        = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put, novalidate: true}, class: 'email-form' do |form|
 
           = render 'devise/shared/alert'
           = form.hidden_field :reset_password_token
