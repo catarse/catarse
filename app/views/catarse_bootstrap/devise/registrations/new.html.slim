@@ -13,15 +13,14 @@
         = link_to t('.links.login'), new_user_session_url, class: 'link'
 
       .login-fb
-        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'button bt-medium bt-fb'
+        = button_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'button bt-medium bt-fb'
 
       .separator
         .text.or = t('or')
 
       .w-form.form-login
         = simple_form_for(resource, as: resource_name, url: sign_up_url) do |form|
-          .box-error-login
-            = render 'devise/shared/alert'
+          = render 'devise/shared/alert'
 
           = form.input :name, as: :string, label: t('.form.labels.name'), input_html: { class: 'w-input text-field' }
 

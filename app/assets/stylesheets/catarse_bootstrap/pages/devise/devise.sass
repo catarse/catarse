@@ -6,7 +6,7 @@
   padding-bottom: 9px
   padding-left: 64px
   border: 0px solid #e9e9ec
-  border-radius: 5px
+  +border-radius(5px)
   h2
     margin-top: 20px
     margin-bottom: 10px
@@ -33,6 +33,8 @@
     margin-top: 7px
     margin-bottom: 5px
     text-align: center
+  .big-margin
+    margin-bottom: 30px
   .text
     display: inline-block
     margin-right: 9px
@@ -55,8 +57,11 @@
     font-size: 16px
     font-weight: 600
     text-decoration: none
+    &:hover
+      text-decoration: underline
   .register
     text-align: center
+    margin-bottom: 16px
 
   .login-fb
     margin-top: 0px
@@ -71,28 +76,41 @@
     margin: 24px auto
     padding-top: 19px
     padding-bottom: 19px
-    border-radius: 5px
+    +border-radius(5px)
     background-color: #00b22d
-    -webkit-transition: all 500ms ease
-    -o-transition: all 500ms ease
-    transition: all 500ms ease
+    +transition-property(all)
+    +transition-duration(500ms)
+    +transition-timing-function(ease)
     color: white
     font-size: 18px
     text-align: center
     text-decoration: none
     font-weight: 400
+    &:hover
+      background-color: #02c433
+      opacity: 1
   .button.bt-medium
     padding-top: 12px
     padding-bottom: 12px
-    -webkit-transition: all 500ms ease, all 500ms ease
-    -o-transition: all 500ms ease, all 500ms ease
-    transition: all 500ms ease, all 500ms ease
+    +transition-property(all)
+    +transition-duration(500ms)
+    +transition-timing-function(ease)
     font-size: 16px
   .button.bt-medium.bt-fb
-    margin-top: 16px
     background-color: #4b6fb8
   .button.bt-medium.bt-fb:hover
     background-color: #547fd6
+  .box-error-login
+    margin-bottom: 28px
+    padding: 10px
+    +border-radius(5px)
+    background-color: #e86666
+  .text-error
+    color: white
+    font-size: 14px
+    font-weight: 400
+  .text-error.text-error-bold
+    font-weight: 700
 
 .form-login
   margin-top: 0px
@@ -109,13 +127,13 @@
     margin-top: 8px
     margin-bottom: 20px
     border: 1px solid #ddd
-    border-radius: 6px
+    +border-radius(6px)
     background-color: #f1f2f3
-    -webkit-transition: all 500ms ease
-    -o-transition: all 500ms ease
-    transition: all 500ms ease
+    +transition-property(all)
+    +transition-duration(500ms)
+    +transition-timing-function(ease)
     color: #79808b
-    font-size: 18px
+    font-size: 16px
     &:hover
       border-color: #f69219
     &:focus
@@ -127,7 +145,7 @@
     right: 0px
     bottom: 0px
     color: #79808b
-    font-size: 12px
+    font-size: 14px
     font-weight: 400
     text-align: left
   .w-checkbox-input
@@ -153,6 +171,10 @@
     color: #2c82de
   .accept
     color: #79808b
+    font-size: 14px
+  .error
+    display: none
+  .instructions
     font-size: 14px
 
 

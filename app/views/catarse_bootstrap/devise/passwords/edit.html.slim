@@ -1,29 +1,25 @@
 = content_for :title, t('.titles.site')
 
-= render 'devise/shared/header'
+.w-container.proxima
+  = render 'devise/shared/header'
 
-.row
-  .large-5.large-centered.columns
-    .box.login-box.animated.fadeIn
-      h2.text-center= t '.titles.header'
-      hr
+  .w-row
+    .w-col.w-col-3
+    .w-col.w-col-6.box-login.animated.fadeIn
+      h2.text-center.big-margin = t ('.titles.header')
 
-      .large-11.large-centered.columns
-        = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put}) do |f|
+      .w-form.form-login
+        = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put}, class: 'email-form' do |form|
+
           = render 'devise/shared/alert'
-          = f.hidden_field :reset_password_token
+          = form.hidden_field :reset_password_token
+
           div.password
-            = f.label :password, t('.form.labels.password')
-            = f.password_field :password, required: true
-            span.hint
-              = t('devise.registrations.new.form.hint.password_length')
+            = form.input :password, as: :password, label: t('.form.labels.password'), hint: t('.form.hint.password_length'), input_html: { class: 'w-input text-field' }
             .show-password
               = check_box_tag :show_password
               = label_tag :show_password, t('devise.registrations.new.form.labels.show_password')
 
-          div.password
-            = f.label :password_confirmation, t('.form.labels.password_confirmation')
-            = f.password_field :password_confirmation, required: true
+          = form.input :password_confirmation, as: :password, label: t('.form.labels.password_confirmation'), input_html: { class: 'w-input text-field' }
 
-          .large-7.columns.large-centered
-            = f.submit t('.form.inputs.submit'), class: [:button, :action, 'large-12', 'columns']
+          = form.button :submit, t('.form.inputs.submit'), class: 'w-button button bt-medium'
