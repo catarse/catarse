@@ -19,7 +19,7 @@
         .text.or = t('or')
 
       .w-form.form-login
-        = simple_form_for(resource, as: resource_name, url: sign_up_url) do |form|
+        = simple_form_for resource, as: resource_name, url: sign_up_url, html: {novalidate: true} do |form|
           = render 'devise/shared/alert'
 
           = form.input :name, as: :string, label: t('.form.labels.name'), input_html: { class: 'w-input text-field' }
