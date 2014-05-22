@@ -50,12 +50,14 @@ pt:
         user:
           attributes:
             email:
-              not_found: "O email não está cadastrado, verifique o endereço ou faça seu cadastro."
-              taken: "já está cadastrado, faça seu login"
+              not_found: "O email não está cadastrado, verifique o endereço ou faça seu cadastro"
+              taken: "O email já está cadastrado, faça seu login"
               invalid: "Esse endereço de email é inválido"
+              blank: "O email não pode ficar em branco"
             password:
               too_short: "A senha que você escolheu é muito curta"
               confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
+              blank: "A senha não pode ficar em branco"
             reset_password_token:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
   contribution:
