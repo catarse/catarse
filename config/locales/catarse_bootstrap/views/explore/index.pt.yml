@@ -3,6 +3,7 @@ pt:
     index:
       categories: Categorias
       expiring: Na reta final
+      in_funding: No ar
       near: Próximos a mim
       quick_explore: Busca rápida
       recent: Recentes
