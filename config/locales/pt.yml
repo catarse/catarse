@@ -1,52 +1,12 @@
----
 pt:
   days: dias
   facebook_locale: pt_BR
   failure_title: 'Por favor, corrija os seguintes erros:'
   i_just_contributed: Eu acabei de apoiar o projeto %{name} no @catarse
-  login:
-    have_account_html: Já tem cadastro? <strong>%{link}</strong>
-    registrations:
-      site_title: Cadastre-se
-      submit: Criar conta
   'no': Não
+  'yes': Sim
   not_informed: não informado
   or: ou
-  passwords:
-    edit:
-      label_new_password: Nova senha
-  projects:
-    admin_fields:
-      title: Campos para o admin
-    project:
-      contributed: levantados
-      reached: atingido
-    project_header:
-      without_city: Um projeto de
-    rewards:
-      contributions_to_confirm:
-        one: 1 apoio em prazo de confirmação.
-        other: "%{count} apoios em prazo de confirmação."
-      edit_reward: Editar recompensa
-      new_reward: Cadastrar recompensa
-      reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
-      reward_title: Para %{minimum} ou mais
-    send_to_analysis: Seu projeto foi enviado para nossa equipe.
-    twitter:
-      take_a_look: Confira o projeto %{name} no @catarse
-    update:
-      success: As informações foram atualizadas
-    video_embed:
-      a_project_by_html: Um projeto de %{link} no
-  sections:
-    expiring:
-      title: Na reta final
-    near:
-      title: Próximos a mim
-    recents:
-      title: Recentes
-    recommended:
-      title: Recomendados
   sending: Enviando...
   share_my_contributions: 'Confira o projeto '
   site:
@@ -56,9 +16,4 @@ pt:
       open source
     meta_title: "%{title} · %{company_name}"
     title: A maior comunidade de financiamento coletivo do Brasil!
-  statistics:
-    contributions:
-      subtitle: apoiadores
-    goal:
-      subtitle: atingidos de %{total}
-  'yes': Sim
+

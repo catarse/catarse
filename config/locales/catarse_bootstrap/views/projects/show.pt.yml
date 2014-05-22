@@ -1,5 +1,10 @@
 pt:
   projects:
+    send_to_analysis: Seu projeto foi enviado para nossa equipe.
+    twitter:
+      take_a_look: Confira o projeto %{name} no @catarse
+    video_embed:
+      a_project_by_html: Um projeto de %{link} no
     updates:
       update:
         destroy: Remover Novidade

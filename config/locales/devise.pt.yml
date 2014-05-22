@@ -49,7 +49,7 @@ pt:
         submit: 'Enviar instruções para alterar minha senha'
       edit:
         site_title: 'Defina uma nova senha'
-        label_new_password: 'Digite sua nova senha abaixo'
+        label_new_password: 'Nova senha'
         title: 'Defina uma nova senha'
         subtitle: 'Defina uma nova senha para usar seu email e senha quando quiser entrar no Catarse.'
         submit: 'Definir nova senha'
