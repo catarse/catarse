@@ -16,9 +16,9 @@ pt:
       index:
         contribution_date: "Data do apoio"
         current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."
-        important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
+        important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
         project: Projeto
-        refund_expiration_date_html: "Prazo máximo para solicitar o estorno (<a target='__blank' href='http://suporte.catarse.me/knowledgebase/articles/164746-regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
+        refund_expiration_date_html: "Prazo máximo para solicitar o estorno (<a target='__blank' href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
         refunded: "Reembolso requisitado com sucesso. Nossa equipe entrará em contato com você em até 2 dias úteis. "
         insufficient_credits: "Você não tem créditos suficientes para realizar este estorno."
         refunds_title: "Apoios que podem ter estorno realizado"
