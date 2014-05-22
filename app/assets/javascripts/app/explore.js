@@ -3,6 +3,7 @@ App.addChild('Explore', _.extend({
 
   routeFilters: {
     recent: { recent: true },
+    in_funding: { in_funding: true },
     expiring: { expiring: true },
     recommended: { recommended: true },
     successful: { successful: true }
@@ -17,6 +18,7 @@ App.addChild('Explore', _.extend({
     this.route('recommended');
     this.route('expiring');
     this.route('recent');
+    this.route('in_funding');
     this.route('successful');
     this.route('by_category_id/:id');
     this.route('near_of/:state');
