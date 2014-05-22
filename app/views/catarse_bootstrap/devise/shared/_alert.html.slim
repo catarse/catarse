@@ -5,5 +5,5 @@
 - elsif resource.errors.present?
   .box-error-login.animated.shake
     p.text-error.text-error-bold = t('failure_title')
-    - resource.errors.full_messages.each do |message|
-      p.text-error == message
+    - resource.errors.messages.each do |message|
+      p.text-error == message[1].to_sentence
