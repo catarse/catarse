@@ -30,7 +30,7 @@
           .profile
             = f.input :id, as: :string, input_html: { disabled:  'disabled'}
             = f.input :full_name, required: true, as: :string
-            = f.input :cpf, as: :string, input_html: {autocomplete: 'off'}, label: (t('activerecord.attributes.user.cpf') + link_to(t('activerecord.attributes.user.cpf_hint'), 'http://suporte.catarse.me/knowledgebase/articles/162312-o-catarse-emite-nota-fiscal', {title: t('activerecord.attributes.user.cpf_hint_title') })).html_safe
+            = f.input :cpf, as: :string, input_html: {autocomplete: 'off'}, label: (t('activerecord.attributes.user.cpf') + link_to(t('activerecord.attributes.user.cpf_hint'), 'http://suporte.catarse.me/hc/pt-br/articles/202457548-O-Catarse-emite-Nota-Fiscal-', {title: t('activerecord.attributes.user.cpf_hint_title') })).html_safe
             = f.input :state_inscription, as: :string
             = f.input :name, required: false, as: :string
             = f.input :address_street, as: :string
@@ -50,7 +50,7 @@
             .div
               = f.label :other_link, t('.other_link')
               = f.text_field :other_link
-            = f.input :moip_login, label: (t('activerecord.attributes.user.moip_login') + '  ' +  link_to(t('activerecord.attributes.user.moip_login_hint'), "http://suporte.catarse.me/knowledgebase/articles/153570-como-criar-uma-conta-no-moip")).html_safe
+            = f.input :moip_login, label: (t('activerecord.attributes.user.moip_login') + '  ' +  link_to(t('activerecord.attributes.user.moip_login_hint'), "http://suporte.catarse.me/pt-br/articles/203083097-Criar-uma-conta-no-MoIP")).html_safe
             = f.input :phone_number, required: false, as: :string
             = f.input :email, as: :string
             = hidden_field_tag 'id', @user.id
