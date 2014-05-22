@@ -5,3 +5,10 @@ pt:
       dont_want: "Não quero recompensa"
       limited: Limitada
       sold_out: Esgotada
+      contributions_to_confirm:
+        one: 1 apoio em prazo de confirmação.
+        other: "%{count} apoios em prazo de confirmação."
+      edit_reward: Editar recompensa
+      new_reward: Cadastrar recompensa
+      reward_deliver_time: "<b>Estimativa de Entrega:</b> %{estimate}"
+      reward_title: Para %{minimum} ou mais
