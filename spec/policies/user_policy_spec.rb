@@ -14,7 +14,7 @@ describe UserPolicy do
       should_not permit(User.new, user)
     end
 
-    it "should permit access if user is project owner" do
+    it "should permit access if user is updating himself" do
       should permit(user, user)
     end
 
@@ -29,6 +29,8 @@ describe UserPolicy do
   end
 
   permissions(:update?){ it_should_behave_like "update permissions" }
+
+  permissions(:destroy?){ it_should_behave_like "update permissions" }
 
   permissions(:credits?){ it_should_behave_like "update permissions" }
 
