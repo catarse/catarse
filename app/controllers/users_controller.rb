@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     authorize resource
     resource.deactivate
     sign_out(current_user) if current_user == resource
-    flash[:notice] = t('users.deactivated', name: resource.name)
+    flash[:notice] = t('users.current_user_fields.deactivate_notice', name: resource.name)
     redirect_to root_path
   end
 
