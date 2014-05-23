@@ -94,11 +94,13 @@ describe Channel do
     let(:channel) { create(:channel) }
     let(:project1) { create(:project, online_date: (Time.now - 21.days)) }
     let(:project2) { create(:project, online_date: (Time.now - 20.days)) }
+    let(:project3) { create(:project, state: "waiting_funds", online_date: (Time.now - 21.days)) }
     before { channel.projects << project1 }
     before { channel.projects << project2 }
+    before { channel.projects << project3 }
 
-    it "should projects in more days online ascending order" do
-      expect(channel.projects).to eq([project2, project1])
+    it "should projects in more days online ascending order and online projects first" do
+      expect(channel.projects).to eq([project2, project1, project3])
     end
   end
 end
