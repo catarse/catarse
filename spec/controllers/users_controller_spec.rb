@@ -14,6 +14,57 @@ describe UsersController do
   let(:user){ create(:user, password: 'current_password', password_confirmation: 'current_password', authorizations: [create(:authorization, uid: 666, oauth_provider: create(:oauth_provider, name: 'facebook'))]) }
   let(:current_user){ user }
 
+  describe "DELETE destroy" do
+    context "when user is beign deactivated by admin" do
+      before do
+        controller.unstub(:current_user)
+        sign_in(create(:user, admin: true))
+        delete :destroy, id: user.id, locale: :pt
+      end
+
+      it "should set deactivated_at" do
+        expect(user.reload.deactivated_at).to_not be_nil
+      end
+
+      it "should not sign user out" do
+        expect(controller.current_user).to_not be_nil
+      end
+
+      it { should redirect_to root_path  }
+    end
+
+    context "when user is loged" do
+      before do
+        controller.unstub(:current_user)
+        sign_in(current_user)
+        delete :destroy, id: user.id, locale: :pt
+      end
+
+      it "should set deactivated_at" do
+        expect(user.reload.deactivated_at).to_not be_nil
+      end
+
+      it "should sign user out" do
+        expect(controller.current_user).to be_nil
+      end
+
+      it { should redirect_to root_path  }
+    end
+
+    context "when user is not loged" do
+      let(:current_user) { nil }
+      before do
+        delete :destroy, id: user.id, locale: :pt
+      end
+
+      it "should not set deactivated_at" do
+        expect(user.reload.deactivated_at).to be_nil
+      end
+
+      it { should_not redirect_to user_path(user, anchor: 'settings')  }
+    end
+  end
+
   describe "GET unsubscribe_notifications" do
     context "when user is loged" do
       before do

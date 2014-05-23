@@ -54,6 +54,7 @@ pt:
       my_data: "Meus dados"
       newsletter: "Quero receber novidades do Catarse por email"
       password_hint: "<i>Deixe em branco caso você não queira trocar sua senha.</i>"
+    deactivate: "A conta de %{name} foi desativada."
     unsubscribes:
       title: "Escolha de quais projetos você deseja receber notificações:"
       updates: "Eu quero receber atualizações dos projetos"
