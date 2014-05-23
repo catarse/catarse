@@ -1,4 +1,4 @@
-#my_avatar
+#my_avatar.user_data
   h1 = t('.local_avatar')
   ul
     li
@@ -16,12 +16,12 @@
         p= t('.gravatar_hint_html', link: link_to('Gravatar', 'http://gravatar.com/', target: :_blank))
         .clearfix
 - unless @user.has_facebook_authentication?
-  #my_facebook
+  #my_facebook.user_data
     h1= t('.my_facebook')
     ul
       li
         = link_to t('layouts.login.login_with_facebook'), user_omniauth_authorize_path(provider: 'facebook', locale: nil), class: 'facebook_start'
-#my_data
+#my_data.user_data
   h1= t('.my_data')
   ul
     li
@@ -58,7 +58,7 @@
             = f.input :bio, hint: t('.bio_limit'), as: :text, input_html: { rows: 5, cols: 20, maxlength: 140  }
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), class: 'btn', id: "user_submit"
-#change_password
+#change_password.user_data
   h1= t('.change_password')
   ul
     li
@@ -74,3 +74,14 @@
             = f.password_field :password, class:'empty'
           .bootstrap-twitter
             p= f.submit 'OK', class: 'btn', id: 'password_submit'
+#deactivate.user_data
+  h1= t('.deactivate')
+  ul
+    li
+      .bootstrap-form
+        = form_for(@user, html: { method: :delete }) do |f|
+          span.hint= t('.deactivate_hint').html_safe
+          br
+          br
+          .bootstrap-twitter
+            p= f.submit t('.deactivate'), class: 'btn', confirm: t('.deactivate_confirm')

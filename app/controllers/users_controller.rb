@@ -4,8 +4,16 @@ class UsersController < ApplicationController
   skip_before_filter :force_http, only: [:update_password]
   inherit_resources
   defaults finder: :find_active!
-  actions :show, :update, :update_password, :unsubscribe_notifications, :uservoice_gadget, :credits
+  actions :show, :update, :update_password, :unsubscribe_notifications, :uservoice_gadget, :credits, :destroy
   respond_to :json, only: [:contributions, :projects]
+
+  def destroy
+    authorize resource
+    resource.deactivate
+    sign_out(current_user) if current_user == resource
+    flash[:notice] = t('users.current_user_fields.deactivate_notice', name: resource.name)
+    redirect_to root_path
+  end
 
   def unsubscribe_notifications
     authorize resource
