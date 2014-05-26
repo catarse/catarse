@@ -1,6 +1,8 @@
 .proxima
   font-family: "proxima-nova",sans-serif
 
+// Devise
+
 .box-login
   padding-right: 64px
   padding-bottom: 9px
@@ -177,8 +179,6 @@
   .instructions
     font-size: 14px
 
-
-
 .logo-login
   display: block
   height: 61px
@@ -186,7 +186,122 @@
   &:hover
     opacity: 0.5
 
+// Header
+
+.main-header
+  background: $blue_one
+  font-family: "proxima-nova",sans-serif
+  height: 65px
+
+.header-logo
+  transition: 0.4s all
+  &:hover
+    opacity: 0.5
+  img
+    margin: 8px 0 0 16px
+
+.header-nav
+  margin-top: 14px
+
+.header-link
+  display: inline-block
+  padding: 10px 22px
+  border-radius: 4px
+  color: $gray-two
+  font-size: 15px
+  font-weight: 300
+  text-decoration: none
+  &:hover
+    background-color: rgba(37, 49, 57, 0.6)
+    color: $gray-two
+    text-decoration: none
+  &:visited
+    color: $gray-two
+  &.left-side
+    float: left
+  &.right-side
+    float: right
+
+.form-search
+  display: inline-block
+  width: 250px
+  height: 36px
+  float: right
+  margin-right: 15px
+  div
+    margin: 0
+  input[type=text]
+    background: rgba(37, 49, 57, 0.6)
+    border: none
+    padding-left: 30px
+    font-size: 14px
+    height: 39px
+  input[type="submit"]
+    background: url("/assets/catarse_bootstrap/lupa.png")
+    width: 15px
+    height: 15px
+    display: inline-block
+    position: relative
+    left: 10px
+    top: -27px
+    border: none
+    text-indent: -9999em
+
+.user-profile
+  float: right
+  margin-left: 15px
+  &:hover .user-nav
+    display: block
+  .user-options
+    width: 36px
+    margin: 0
+    display: inline-block
+    transition: 0.4s all
+    &:hover
+      opacity: 0.5
+  .user-avatar
+    +border-radius(50%)
+
+.user-nav
+  display: none
+  background: white
+  padding: 5px
+  position: absolute
+  right: 10px
+  +border-radius(4px)
+  +box-shadow(rgba(black, 0.3) 1px 1px 2px)
+  li
+    padding: 0 10px
+    line-height: 30px
+    list-style: none
+    a
+      color: $blue-two
+      font-size: 13px
+    .small
+      font-size: 11px
+      font-weight: bold
+      color: $green
+      margin: -10px 0 7px
+      line-height: 15px
+    &.divider
+      border-top: 1px $border-gray solid
+
+
+
 
 @media screen and (max-width: 991px)
   .show-password
     display: none
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+.main-header
+  .w-row
+    .w-col.w-col-2
+      = link_to (image_tag "/assets/catarse_bootstrap/catarse-logo.png"), root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'header-logo', :title => CatarseSettings[:company_name]
+    .header-nav.w-col.w-col-10
+      = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side'
+
+      = link_to t('layouts.header.submit'), page_path(:how_it_works), class: 'header-link left-side'
+
+      .user-profile
+        - if current_user
+          = link_to '#', class: 'user-options' do
+            = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
+          ul.user-nav
+            li= link_to t('layouts.header.profile'), current_user
+            li
+              = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
+              .small
+                | (#{current_user.display_credits})
+            - if current_user.admin? || current_user.channel
+              li.divider
+              - for menu, path in controller.menu do
+                li= link_to menu, path
+            li.divider= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
+        - else
+            = link_to t('.signin'), new_user_session_url, class: 'header-link right-side'
+
+            = link_to t('.signup'), new_user_registration_url, class: 'header-link right-side'
+
+      = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'header-link right-side',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+
+      .w-form.form-search
+        = simple_form_for explore_path, :method => 'GET' do |form|
+          = form.input :pg_search, as: :string, label: false, input_html: { value: params[:pg_search], class: "form-search-input", placeholder: t('layouts.header.search')}
+          = form.submit class: "form-search-image"
