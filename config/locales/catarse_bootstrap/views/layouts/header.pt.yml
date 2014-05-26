@@ -9,6 +9,7 @@ pt:
       signin: Login
       signup: Cadastre-se
       submit: Envie seu projeto
+      search: Busque projetos
     login:
       login_with_facebook: entre com sua conta do facebook
     user:

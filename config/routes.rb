@@ -163,5 +163,11 @@ Catarse::Application.routes.draw do
     end
   end
 
+  get "/terms-of-use" => 'high_voltage/pages#show', id: 'terms-of-use'
+
   get "/:permalink" => "projects#show", as: :project_by_slug
+
+
 end
+
+
