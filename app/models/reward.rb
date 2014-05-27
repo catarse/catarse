@@ -1,13 +1,12 @@
 # coding: utf-8
 class Reward < ActiveRecord::Base
   include RankedModel
-
   include ERB::Util
+
   schema_associations
   has_many :contributions, dependent: :nullify
 
   ranks :row_order, with_same: :project_id
-  has_paper_trail
 
   validates_presence_of :minimum_value, :description, :days_to_delivery
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00
@@ -17,12 +16,19 @@ class Reward < ActiveRecord::Base
 
   delegate :display_deliver_estimate, :display_remaining, :name, :display_minimum, :short_description,
            :medium_description, :last_description, :display_description, to: :decorator
+
+  before_save :log_changes
+
+  def log_changes
+    self.last_changes = self.changes.to_json
+  end
+
   def decorator
     @decorator ||= RewardDecorator.new(self)
   end
 
   def has_modification?
-    versions.count > 1
+    !last_changes.blank?
   end
 
   def sold_out?

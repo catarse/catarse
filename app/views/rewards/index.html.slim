@@ -35,11 +35,4 @@
     - if current_user && current_user.admin
       div class="reward_updated_at"
         p= "Modificado em: #{I18n.l(reward.updated_at.to_date)} #{parent.online_date.nil? ? '' : ((parent.online_date > reward.updated_at)? '(draft)' : '(online)')}"
-      - if reward.has_modification?
-        div class="description_version rewardVersioning#{reward.id}"
-          p= reward.last_description
-        .maximum_contributions.in_time_to_confirm.clearfix
-          .updated_reward
-            span id="rewardVersioning#{reward.id}"
-              = 'Veja a versão anterior.'
 .clearfix
