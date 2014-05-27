@@ -13,7 +13,7 @@ pt:
             show_password: 'Exibir senha'
             name: 'Nome completo'
             password: 'Senha'
-            newsletter: 'Quero receber novidades do Catarse via email'
+            newsletter: 'Quero receber novidades do Catarse via sinal de fumaça'
             accept: 'Ao efetuar cadastro, você está aceitando nossos <a href="http://suporte.catarse.me/hc/pt-br/articles/203074067-Termos-de-Uso-Terms-of-Use" class="alt-link" target="_blank">termos de uso</a> e <a class="alt-link" href="http://suporte.catarse.me/hc/pt-br/articles/203074087-Pol%C3%ADtica-de-Privacidade" target="_blank">política de privacidade</a>'
           hint:
             password_length: 'Mínimo 6 caracteres'
