@@ -215,9 +215,179 @@ h2
   margin: 22px auto 0
   &:hover
     opacity: 0.5
+
+// Header
+
+.main-header
+  background: $blue_one
+  height: 65px
+
+.header-logo
+  transition: 0.4s all
+  &:hover
+    opacity: 0.5
+  img
+    margin: 12px 0 0 16px
+
+.header-nav
+  margin-top: 14px
+
+.header-link
+  display: inline-block
+  padding: 10px 22px
+  border-radius: 4px
+  color: $gray-two
+  font-size: 15px
+  font-weight: 300
+  text-decoration: none
+  &:hover
+    background-color: rgba(37, 49, 57, 0.6)
+    color: $gray-two
+    text-decoration: none
+  &:visited
+    color: $gray-two
+  &.left-side
+    float: left
+  &.right-side
+    float: right
+
+.form-search
+  display: inline-block
+  width: 250px
+  height: 36px
+  float: right
+  margin-right: 15px
+  div
+    margin: 0
+  input[type=text]
+    background: rgba(37, 49, 57, 0.6)
+    border: none
+    padding-left: 30px
+    font-size: 14px
+    height: 39px
+  input[type="submit"]
+    background: url("/assets/catarse_bootstrap/lupa.png")
+    width: 15px
+    height: 15px
+    display: inline-block
+    position: relative
+    left: 10px
+    top: -27px
+    border: none
+    text-indent: -9999em
+
+.user-profile
+  float: right
+  margin-left: 15px
+  &:hover .user-nav
+    display: block
+  .user-options
+    width: 36px
+    margin: 0
+    display: inline-block
+    transition: 0.4s all
+    &:hover
+      opacity: 0.5
+  .user-avatar
+    +border-radius(50%)
+
+.user-nav
+  display: none
+  background: white
+  padding: 5px
+  position: absolute
+  right: 10px
+  +border-radius(4px)
+  +box-shadow(rgba(black, 0.3) 1px 1px 2px)
+  li
+    padding: 0 10px
+    line-height: 30px
+    list-style: none
+    a
+      color: $blue-two
+      font-size: 13px
+    .small
+      font-size: 11px
+      font-weight: bold
+      color: $green
+      margin: -10px 0 7px
+      line-height: 15px
+    &.divider
+      border-top: 1px $border-gray solid
+
+// Footer
+.main-footer
+  padding: 35px 0
+  background: $gray-one
+  h4
+    margin: 24px 0
+    font-size: 16px
+    line-height: 24px
+    font-weight: 700
+  ul
+    padding: 0
+  li
+    padding: 7px 0
+    list-style: none
+  a
+    color: $blue-two
+    text-decoration: none
+    font-size: 14px
+    line-height: 20px
+  .copyleft
+    color: $blue-two
+    font-size: 14px
+    margin-top: 35px
+  .separator
+    border: none
+    border-top: 1px $border-gray solid
+    margin-top: 40px
+
+
+// Page Header
+.page-header
+  height: 200px
+  margin-bottom: 32px
+  background-color: #3f4752
+  h1
+    color: $gray-one
+    text-align: center
+    font-size: 44px
+    line-height: 200px
+    font-weight: 400
+
+.text-page
+  h2
+    margin-top: 20px
+    margin-bottom: 10px
+    padding-top: 10px
+    padding-bottom: 10px
+    font-size: 24px
+    line-height: 36px
+    font-weight: 600
+  p
+    margin-top: 20px
+    margin-bottom: 20px
+    font-size: 18px
+    line-height: 28px
+  .prg2
+    margin-top: 25px
+    margin-bottom: 40px
+    font-size: 16px
+
+.newsletter
+
+
 @media screen and (max-width: 991px)
   .show-password
     display: none
+
+
+
+
+
+
+
 
 
 
