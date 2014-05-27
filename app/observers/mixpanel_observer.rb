@@ -18,7 +18,7 @@ class MixpanelObserver < ActiveRecord::Observer
       project: contribution.project.name,
       payment_method: contribution.payment_method,
       payment_choice: contribution.payment_choice
-    });
+    })
   end
 
   private
