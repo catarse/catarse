@@ -1,6 +1,7 @@
-= content_for :title, t('.titles.site')
+- content_for :main_stylesheet, :webflow
+- content_for :title, t('.titles.site')
 
-.w-container.proxima
+.w-container
   = render 'devise/shared/header'
 
   .w-row
