@@ -82,14 +82,14 @@ class Contribution < ActiveRecord::Base
 
   def update_user_billing_info
     user.update_attributes({
-      address_street: address_street,
-      address_number: address_number,
-      address_neighbourhood: address_neighbourhood,
-      address_zip_code: address_zip_code,
-      address_city: address_city,
-      address_state: address_state,
-      phone_number: address_phone_number,
-      cpf: payer_document
+      address_street: address_street || user.address_street,
+      address_number: address_number || user.address_number,
+      address_neighbourhood: address_neighbourhood || user.address_neighbourhood,
+      address_zip_code: address_zip_code || user.address_zip_code,
+      address_city: address_city || user.address_city,
+      address_state: address_state || user.address_state,
+      phone_number: address_phone_number || user.phone_number,
+      cpf: payer_document || user.cpf
     })
   end
 
