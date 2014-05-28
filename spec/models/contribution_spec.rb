@@ -128,7 +128,6 @@ describe Contribution do
 
   describe "#update_user_billing_info" do
     let(:contribution) { create(:contribution) }
-    let(:user) { contribution.user }
     let(:contribution_attributes) {
       {
         address_street: contribution.address_street,
@@ -141,12 +140,42 @@ describe Contribution do
         cpf: contribution.payer_document
       }
     }
+    context "when cpf on contribution is not null" do
+      let(:user) { contribution.user }
+      let(:contribution_attributes) {
+        {
+          address_street: contribution.address_street,
+          address_number: contribution.address_number,
+          address_neighbourhood: contribution.address_neighbourhood,
+          address_zip_code: contribution.address_zip_code,
+          address_city: contribution.address_city,
+          address_state: contribution.address_state,
+          phone_number: contribution.address_phone_number,
+          cpf: contribution.payer_document
+        }
+      }
 
-    before do
-      user.should_receive(:update_attributes).with(contribution_attributes)
+      before do
+        contribution.update_attributes payer_document: '123'
+        contribution.reload
+        user.should_receive(:update_attributes).with(contribution_attributes)
+      end
+
+      it("should update user billing info attributes") { contribution.update_user_billing_info}
     end
 
-    it("should update user billing info attributes") { contribution.update_user_billing_info}
+    context "when cpf on contributions is null" do
+      let(:contribution) { create(:contribution, payer_document: nil) }
+      let(:user) { contribution.user }
+
+      before do
+        user.update_column :cpf, '000'
+        user.reload
+        user.should_receive(:update_attributes).with(contribution_attributes.merge!({cpf: user.cpf}))
+      end
+
+      it("should update user billing info attributes") { contribution.update_user_billing_info }
+    end
   end
 
   describe '#recommended_projects' do
