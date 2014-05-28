@@ -12,6 +12,12 @@ h2
 
 a
   text-decoration: none
+  &:hover
+    text-decoration: underline
+
+p
+  a
+    color: $blue-note
 
 .separator
   display: block
@@ -239,10 +245,11 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 
 .header-logo
   transition: 0.4s all
+  float: left
   &:hover
     opacity: 0.5
   img
-    margin: 12px 0 0 16px
+    margin: 0 16px
 
 .header-nav
   margin-top: 14px
@@ -290,6 +297,14 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     top: -27px
     border: none
     text-indent: -9999em
+  ::-webkit-input-placeholder
+    color: $blue-two
+  :-moz-placeholder
+    color: $blue-two
+  ::-moz-placeholder
+    color: $blue-two
+  :-ms-input-placeholder
+    color: $blue-two
 
 .user-profile
   float: right
@@ -297,7 +312,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   &:hover .user-nav
     display: block
   .user-options
-    width: 36px
+    width: 40px
     margin: 0
     display: inline-block
     transition: 0.4s all
@@ -346,17 +361,22 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     list-style: none
   a
     color: $blue-two
-    text-decoration: none
     font-size: 14px
     line-height: 20px
   .copyleft
     color: $blue-two
     font-size: 14px
     margin-top: 35px
+    img
+      margin-left: 15px
+      &:hover
+        opacity: 0.8
   .separator
     border: none
     border-top: 1px $border-gray solid
     margin-top: 40px
+  .twitter-box
+    margin-bottom: 20px
 
 
 // Page Header
@@ -409,6 +429,8 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     -webkit-box-sizing: border-box
     box-sizing: border-box
     background: #FFFFFF
+    &:focus
+      border-color: $blue-note
   .newsletter-submit
     position: absolute
     top: 2px
