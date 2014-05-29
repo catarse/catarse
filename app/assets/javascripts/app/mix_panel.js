@@ -10,6 +10,7 @@ App.addChild('MixPanel', {
     if(window.mixpanel){
       this.detectLogin();
       this.startTracking();
+      this.startTrackingFinishedContribution();
       this.trackTwitterShare();
       this.trackFacebookShare();
       try {
@@ -24,8 +25,20 @@ App.addChild('MixPanel', {
     var self = this;
     this.trackPageVisit('projects', 'show', 'Visited project page');
     this.trackPageVisit('explore', 'index', 'Explored projects');
-    this.trackPageLoad('contributions', 'show', 'Finished contribution');
     this.trackPageLoad('contributions', 'edit', 'Selected reward');
+  },
+
+  startTrackingFinishedContribution: function() {
+    var self = this;
+
+    if(this.controller == 'contributions' && this.action == 'show') {
+      var contribution_data = this.$('.contribution_data')
+
+      self.track('Finished contribution', {
+        payment_method: contribution_data.data('payment_method'),
+        payment_choice: contribution_data.data('payment_choice')
+      })
+    }
   },
 
   trackPageLoad: function(controller, action, text){
