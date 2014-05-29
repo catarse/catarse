@@ -16,9 +16,6 @@ gem 'best_in_place', github: 'bernat/best_in_place', branch: 'rails-4'
 # State machine for attributes on models
 gem 'state_machine', require: 'state_machine/core'
 
-# paranoid stuff
-gem 'paper_trail', '>= 3.0.0.rc2'
-
 # Database and data related
 gem 'pg'
 gem 'postgres-copy'
