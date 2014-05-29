@@ -54,7 +54,7 @@ gem 'ezcrypto'
 gem 'pundit'
 
 # Email marketing
-gem 'catarse_monkeymail'
+gem 'catarse_monkeymail', '>= 0.1.0'
 
 # HTML manipulation and formatting
 gem 'formtastic',   '~> 2.2.1'
