@@ -12,16 +12,16 @@ class ChannelPartnerUploader < ImageUploader
 
   version :medium do
     process resize_to_fill: [370,320]
-    process convert: :png
+    process convert: :jpg
   end
 
   version :thumb do
     process resize_to_fill: [220,172]
-    process convert: :png
+    process convert: :jpg
   end
 
   version :thumb_small, from_version: :project_thumb do
     process resize_to_fill: [85,67]
-    process convert: :png
+    process convert: :jpg
   end
 end
