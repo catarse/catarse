@@ -80,14 +80,13 @@ RSpec.configure do |config|
 
   # Stubs and configuration
   config.before(:each) do
-    CatarseMailchimp::API.stub(:subscribe).and_return(true)
-    CatarseMailchimp::API.stub(:unsubscribe).and_return(true)
+    User.any_instance.stub(:subscribe_to_newsletter_list).and_return(true)
+    User.any_instance.stub(:unsubscribe_to_newsletter_list).and_return(true)
+    Project.any_instance.stub(:subscribe_to_list).and_return(true)
     Project.any_instance.stub(:store_image_url).and_return('http://www.store_image_url.com')
     ProjectObserver.any_instance.stub(:after_create)
     UserObserver.any_instance.stub(:after_create)
     Project.any_instance.stub(:download_video_thumbnail)
-    CatarseMailchimp::API.stub(:subscribe)
-    CatarseMailchimp::API.stub(:unsubscribe)
     Notification.stub(:notify)
     Notification.stub(:notify_once)
     Calendar.any_instance.stub(:fetch_events_from)

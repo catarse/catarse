@@ -125,39 +125,6 @@ describe ProjectObserver do
     it("should notify the project owner"){ project.finish }
   end
 
-  describe "sync with mailchimp" do
-    before do
-      CatarseSettings[:mailchimp_successful_projects_list] = 'OwnerListId'
-      CatarseSettings[:mailchimp_failed_projects_list] = 'UnsuccesfulListId'
-    end
-
-    let(:user) { create(:user) }
-    let(:project) { create(:project, online_days: -7, goal: 10, state: 'online', user: user) }
-
-    context 'when project is successful' do
-      before do
-        create(:contribution, value: 15, state: 'confirmed', project: project)
-        project.update_attributes state: 'waiting_funds'
-      end
-
-      it 'subscribe project owner to successful projects mailchimp list' do
-        CatarseMailchimp::API.should_receive(:subscribe).with({ EMAIL: user.email, FNAME: user.name,
-          CITY: user.address_city, STATE: user.address_state }, 'OwnerListId')
-      end
-
-      after { project.finish }
-    end
-
-    context 'when project is unsuccesful' do
-      it 'subscribe project owner to failed projects mailchimp list' do
-        CatarseMailchimp::API.should_receive(:subscribe).with({ EMAIL: user.email, FNAME: user.name,
-          CITY: user.address_city, STATE: user.address_state }, 'UnsuccesfulListId')
-      end
-
-      after { project.finish }
-    end
-  end
-
   describe "save_dates" do
     context "when project goes from in_analysis to rejected" do
       let(:project){ create(:project, state: 'in_analysis') }

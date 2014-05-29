@@ -133,23 +133,6 @@ class ProjectObserver < ActiveRecord::Observer
     end
   end
 
-  def sync_with_mailchimp(project)
-    begin
-      user = project.user
-      mailchimp_params = { EMAIL: user.email, FNAME: user.name, CITY: user.address_city, STATE: user.address_state }
-
-      if project.successful?
-        CatarseMailchimp::API.subscribe(mailchimp_params, CatarseSettings[:mailchimp_successful_projects_list])
-      end
-
-      if project.failed?
-        CatarseMailchimp::API.subscribe(mailchimp_params, CatarseSettings[:mailchimp_failed_projects_list])
-      end
-    rescue Exception => e
-      Rails.logger.info "-----> #{e.inspect}"
-    end
-  end
-
   private
 
   def deliver_default_notification_for(project, notification_type)
