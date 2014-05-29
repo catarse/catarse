@@ -331,7 +331,7 @@ describe Project do
 
     it "should create notification for all projects that is expiring" do
       Notification.should_receive(:notify_once).
-        with(:verify_moip_account, @p.user, {project_id: @p.id}, {project: @p, origin_email: CatarseSettings[:email_payments]})
+        with(:verify_moip_account, @p.user, {project_id: @p.id, channel_id: @p.last_channel.try(:id)}, {project: @p, origin_email: CatarseSettings[:email_payments]})
       Project.send_verify_moip_account_notification
     end
   end
@@ -345,7 +345,7 @@ describe Project do
 
     it "should create notification for all inactive drafts" do
       Notification.should_receive(:notify_once).
-        with(:inactive_draft, @p.user, {project_id: @p.id}, {project: @p})
+        with(:inactive_draft, @p.user, {project_id: @p.id, channel_id: @p.last_channel.try(:id)}, {project: @p})
       Project.send_inactive_drafts_notification
     end
   end
