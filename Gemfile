@@ -54,7 +54,7 @@ gem 'ezcrypto'
 gem 'pundit'
 
 # Email marketing
-gem 'catarse_mailchimp', git: 'git://github.com/catarse/catarse_mailchimp', ref: '2ed4f39'
+gem 'catarse_monkeymail'
 
 # HTML manipulation and formatting
 gem 'formtastic',   '~> 2.2.1'
