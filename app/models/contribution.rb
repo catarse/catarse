@@ -93,11 +93,11 @@ class Contribution < ActiveRecord::Base
     })
   end
 
-  def notify_to_contributor(template_name)
+  def notify_to_contributor(template_name, options = {})
     Notification.notify_once(template_name,
       self.user,
       { contribution_id: self.id },
-      contribution: self
+      { contribution: self }.merge!(options)
     )
   end
 
