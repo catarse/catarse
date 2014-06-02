@@ -82,22 +82,22 @@ class Contribution < ActiveRecord::Base
 
   def update_user_billing_info
     user.update_attributes({
-      address_street: address_street || user.address_street,
-      address_number: address_number || user.address_number,
-      address_neighbourhood: address_neighbourhood || user.address_neighbourhood,
-      address_zip_code: address_zip_code || user.address_zip_code,
-      address_city: address_city || user.address_city,
-      address_state: address_state || user.address_state,
-      phone_number: address_phone_number || user.phone_number,
-      cpf: payer_document || user.cpf
+      address_street: (address_street.present? ? address_street : user.address_street),
+      address_number: (address_number.present? ? address_number : user.address_number),
+      address_neighbourhood: (address_neighbourhood.present? ? address_neighbourhood : user.address_neighbourhood),
+      address_zip_code: (address_zip_code.present? ? address_zip_code : user.address_zip_code),
+      address_city: (address_city.present? ? address_city : user.address_city),
+      address_state: (address_state.present? ? address_state : user.address_state),
+      phone_number: (address_phone_number.present? ? address_phone_number : user.phone_number),
+      cpf: (payer_document.present? ? payer_document : user.cpf)
     })
   end
 
-  def notify_to_contributor(template_name)
+  def notify_to_contributor(template_name, options = {})
     Notification.notify_once(template_name,
       self.user,
       { contribution_id: self.id },
-      contribution: self
+      { contribution: self }.merge!(options)
     )
   end
 

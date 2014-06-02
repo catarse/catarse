@@ -114,7 +114,7 @@ describe ProjectObserver do
       Notification.should_receive(:notify_once).with(
         :project_in_wainting_funds,
         project.user,
-        {project_id: project.id},
+        {project_id: project.id, channel_id: project.last_channel.try(:id)},
         {
           project: project,
           origin_email: CatarseSettings[:email_projects]

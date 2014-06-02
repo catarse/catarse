@@ -209,9 +209,19 @@ class Project < ActiveRecord::Base
     Notification.notify_once(
       template_name,
       self.user,
-      { project_id: self.id },
+      { project_id: self.id, channel_id: self.last_channel.try(:id) },
       { project: self }.merge!(params)
     )
+  end
+
+  def notify_to_backoffice(template_name, options = {}, backoffice_user = User.find_by(email: CatarseSettings[:email_payments]))
+    if backoffice_user
+      Notification.notify_once(template_name,
+        backoffice_user,
+        { project_id: self.id, channel_id: self.last_channel.try(:id) },
+        { project: self, channel: self.last_channel }.merge!(options)
+      )
+    end
   end
 
   private

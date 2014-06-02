@@ -165,7 +165,7 @@ describe Contribution do
     end
 
     context "when cpf on contributions is null" do
-      let(:contribution) { create(:contribution, payer_document: nil) }
+      let(:contribution) { create(:contribution, payer_document: '') }
       let(:user) { contribution.user }
 
       before do
