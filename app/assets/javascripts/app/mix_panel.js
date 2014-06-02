@@ -26,7 +26,7 @@ App.addChild('MixPanel', {
     this.trackPageVisit('explore', 'index', 'Explored projects');
     this.trackPageLoad('contributions', 'edit', 'Selected reward');
     this.trackOnPage('contributions', 'show', function(){
-      var contribution_data = this.$('.contribution_data')
+      var contribution_data = self.$('.contribution_data')
 
       self.track('Finished contribution', {
         payment_method: contribution_data.data('payment_method'),
