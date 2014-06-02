@@ -5,20 +5,6 @@ class User < ActiveRecord::Base
   # :validatable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :omniauthable
-  begin
-    # NOTE: Sync normal users on mailchimp
-    sync_with_mailchimp subscribe_data: ->(user) {
-                          { EMAIL: user.email, FNAME: user.name,
-                          CITY: (user.address_city||'outro / other'), STATE: (user.address_state||'outro / other') }
-                        },
-                        list_id: CatarseSettings[:mailchimp_list_id],
-                        subscribe_when: ->(user) { (user.newsletter_changed? && user.newsletter) || (user.newsletter && user.new_record?) },
-                        unsubscribe_when: ->(user) { user.newsletter_changed? && !user.newsletter },
-                        unsubscribe_email: ->(user) { user.email }
-
-  rescue Exception => e
-    Rails.logger.info "-----> #{e.inspect}"
-  end
 
   delegate  :display_name, :display_image, :short_name, :display_image_html,
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text, :twitter_link, :gravatar_url,
