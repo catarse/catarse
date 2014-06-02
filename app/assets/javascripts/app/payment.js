@@ -17,11 +17,11 @@ App.addChild('Payment', _.extend({
 
   updatePaymentMethod: function() {
     var $selected_tab = this.$('#payment_menu a.selected');
-    $.post(this.$el.data('update-info-path'), {
-      contribution: {
-        payment_method: $selected_tab.prop('id')
-      }
-    })
+    $.ajax({
+      url: this.$el.data('update-info-path'),
+      type: 'PUT',
+      data: { contribution: { payment_method: $selected_tab.prop('id') } }
+    });
   },
 
   hideNationalPayment: function() {
