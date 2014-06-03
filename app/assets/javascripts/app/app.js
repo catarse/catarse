@@ -3,6 +3,7 @@ var App = window.App = Skull.View.extend({
 
   events: {
     "click a.user-menu" : "toggleMenu",
+    "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget"
   },
 
@@ -49,6 +50,10 @@ var App = window.App = Skull.View.extend({
   toggleMenu: function(){
     this.$dropdown.slideToggle('fast');
     return false;
+  },
+
+  mobileMenu: function(){
+    $(".mobile-menu").slideToggle(500);
   }
 });
 

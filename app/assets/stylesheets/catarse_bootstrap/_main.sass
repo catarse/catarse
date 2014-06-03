@@ -244,6 +244,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 .header-logo
   transition: 0.4s all
   float: left
+  margin-top: 10px
   &:hover
     opacity: 0.5
   img
@@ -251,6 +252,9 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 
 .header-nav
   margin-top: 14px
+
+.mobile-menu
+  display: none
 
 .header-link
   display: inline-block
@@ -342,6 +346,9 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
       line-height: 15px
     &.divider
       border-top: 1px $border-gray solid
+
+.mobile-menu-link
+  display: none
 
 // Footer
 .main-footer
@@ -444,7 +451,57 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     &:hover
       background: rgba(#3C9DFF, 0.8) url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -163px -74px
 
+@media screen and (max-width: 1200px)
+  .header-link
+    padding: 10px
 
 @media screen and (max-width: 991px)
   .show-password
     display: none
+
+  .no-mobile
+    display: none
+
+  .mobile-menu-link
+    display: inline-block
+    border: none
+    color: $white
+    font-size: 14px
+    +border-radius(3px)
+    float: right
+    padding: 0 10px
+    background: rgba(37, 49, 57, 0.6)
+    height: 39px
+    line-height: 39px
+    &::after
+      content: url(/assets/catarse_bootstrap/icon-menu.png)
+      display: inline-block
+      vertical-align: top
+      margin: 7px 0 0 7px
+    &:hover
+      text-decoration: none
+
+  .user-profile
+    margin-left: 0
+
+  .mobile-menu
+    display: none
+    width: 100%
+    padding: 0
+    background: $blue-one
+    li
+      display: inline-block
+      width: 100%
+      background: rgba(37, 49, 57, 0.6)
+      color: $white
+      text-align: center
+      border-bottom: 1px solid $blue-one
+      form
+        text-align: left
+    .header-link, .form-search
+      float: none
+      padding: 15px
+      &:hover
+        background: none
+
+
