@@ -1,11 +1,11 @@
 .main-header
   .w-row
-    .w-col.w-col-2
+    .w-col.w-col-2.w-col-small-4.w-col-tiny-4
       = link_to (image_tag "/assets/catarse_bootstrap/catarse-logo.png"), root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'header-logo', :title => CatarseSettings[:company_name]
-    .header-nav.w-col.w-col-10
-      = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side'
+    .header-nav.w-col.w-col-10.w-col-small-8.w-col-tiny-8
+      = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side no-mobile'
 
-      = link_to t('layouts.header.submit'), page_path(:how_it_works), class: 'header-link left-side'
+      = link_to t('layouts.header.submit'), page_path(:how_it_works), class: 'header-link left-side no-mobile'
 
       .user-profile
         - if current_user
@@ -27,9 +27,21 @@
 
             = link_to t('layouts.header.signup'), new_user_registration_url, class: 'header-link right-side'
 
-      = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'header-link right-side',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+      = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'header-link right-side no-mobile',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
 
-      .w-form.form-search
+      .w-form.form-search.no-mobile
         = simple_form_for explore_path, :method => 'GET' do |form|
           = form.input :pg_search, as: :string, label: false, input_html: { value: params[:pg_search], class: "form-search-input", placeholder: t('layouts.header.search')}
           = form.submit class: "form-search-image"
+
+      = link_to 'Menu', '#', class: 'mobile-menu-link'
+
+ul.mobile-menu
+  li
+    = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side'
+
+  li
+    = link_to t('layouts.header.submit'), page_path(:how_it_works), class: 'header-link left-side'
+
+  li
+    = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'header-link right-side',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
