@@ -8,7 +8,7 @@ class Channel < ActiveRecord::Base
   validates_presence_of :name, :description, :permalink
   validates_uniqueness_of :permalink
 
-  has_and_belongs_to_many :projects, -> { order("(case state when 'online' then 1 end), online_date desc") }
+  has_and_belongs_to_many :projects, -> { order_for_search }
   has_and_belongs_to_many :subscribers, class_name: 'User', join_table: :channels_subscribers
   has_many :subscriber_reports
 
