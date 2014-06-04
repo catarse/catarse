@@ -3,6 +3,9 @@ pt:
     models:
       channel: Canal
       project: Projeto
+      reward: Recompensa
+      contribution: Apoiador
+      category: Categoria
     attributes:
       project:
         category: Categoria
@@ -78,6 +81,8 @@ pt:
             reset_password_token:
               invalid: 'expirou. Vá para <a href="/password/new">redefinir senha</a> e solicite novamente a redefinição da senha.'
   project:
+    update:
+      success: As informações foram atualizadas
     video_regex_validation: somente URLs do Vimeo são aceitas
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
