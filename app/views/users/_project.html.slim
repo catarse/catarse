@@ -49,7 +49,7 @@ div class=(policy(parent).update? ? 'project_land' : 'small_project_land')
             h5= contribution.display_value
         - if contribution.reward
           li.reward
-            h5= I18n.t('projects.rewards.reward_title', minimum: contribution.reward.display_minimum)
+            h5= t('rewards.index.reward_title', minimum: contribution.reward.display_minimum)
             - description = contribution.reward.description.gsub(/"/,'&quot;')
             p[ title=description ]= truncate(contribution.reward.description, length: 75)
     .tell_about
