@@ -1,6 +1,11 @@
 pt:
   formtastic:
     hints:
+      reward:
+        description: Descreva sua recompensa de um jeito que desperte o interesse das pessoas para apoiar o projeto. Não seja tímido!
+        maximum_contributions: Se sua recompensa é limitada, informe o máximo de pessoas.
+        minimum_value: Este é valor mínimo de apoio para escolher esta recompensa.
+        days_to_delivery: Informe em quantos dias, após o sucesso do projeto, você planeja entregar essa recompensa
       contribution:
         credits: Você possui <strong>%{credits}</strong> em créditos e pode apoiar
           até este valor sem precisar realizar um novo pagamento.
@@ -34,6 +39,11 @@ pt:
           precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!
         video_url_edit: Cole aqui o link do seu vídeo hospedado no Vimeo ou no Youtube.
     labels:
+      reward:
+        description: Descrição
+        minimum_value: Valor mínimo
+        days_to_delivery: Previsão de entrega
+        maximum_contributions: Máximo de apoiadores (opcional)
       contribution:
         credits: Quero usar meus créditos para este apoio.
         anonymous: Quero que meu apoio seja anônimo.
