@@ -30,9 +30,10 @@
       = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'header-link right-side no-mobile',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
 
       .w-form.form-search.no-mobile
-        = simple_form_for explore_path, :method => 'GET' do |form|
-          = form.input :pg_search, as: :string, label: false, input_html: { value: params[:pg_search], class: "form-search-input", placeholder: t('layouts.header.search')}
-          = form.submit class: "form-search-image"
+        = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
+          = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "form-search-input", placeholder: t('layouts.header.search')
+          = submit_tag class: "form-search-image"
+
 
       = link_to 'Menu', '#', class: 'mobile-menu-link'
 
