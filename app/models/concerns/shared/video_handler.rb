@@ -14,7 +14,7 @@ module Shared::VideoHandler
 
     def display_video_embed_url
       if self.video_embed_url
-        "//#{self.video_embed_url}?title=0&byline=0&portrait=0&autoplay=0"
+        "#{self.video_embed_url}?title=0&byline=0&portrait=0&autoplay=0"
       end
     end
 
