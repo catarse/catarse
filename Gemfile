@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails',    '4.0.3'
+gem 'rails',    '~> 4.1.1'
 
 gem 'protected_attributes', '~> 1.0.5' # When upgrade to strong_parameters, remove this gem.
 gem 'rails-observers', '~> 0.1.2'
@@ -70,7 +70,7 @@ gem 'rmagick', :require => 'RMagick'
 # Other Tools
 gem 'to_xls'
 gem 'ranked-model'
-gem 'feedzirra'
+gem 'feedjira'
 gem 'inherited_resources',        '~> 1.4.1'
 gem 'has_scope', '~> 0.6.0.rc'
 gem 'spectator-validates_email',  require: 'validates_email'
@@ -82,7 +82,7 @@ gem 'http_accept_language'
 gem 'routing-filter', '~> 0.4.0.pre'
 
 # Payment
-gem 'moip', github: 'catarse/moip-ruby'
+gem 'moip', github: 'catarse/moip-ruby', ref: 'c0225ad71645cd1df35dafa1e45c9f092b3abb9e'
 gem 'httpclient',     '>= 2.2.5'
 
 group :production do
