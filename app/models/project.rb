@@ -133,7 +133,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.order_by(sort_field)
-    return scoped unless sort_field =~ /^\w+(\.\w+)?\s(desc|asc)$/i
+    return self.all unless sort_field =~ /^\w+(\.\w+)?\s(desc|asc)$/i
     order(sort_field)
   end
 
