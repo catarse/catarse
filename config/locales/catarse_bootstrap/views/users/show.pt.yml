@@ -19,7 +19,7 @@ pt:
         important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
         project: Projeto
         refund_expiration_date_html: "Prazo máximo para solicitar o estorno (<a target='__blank' href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos'>?</a>)"
-        refunded: "Reembolso requisitado com sucesso. Nossa equipe entrará em contato com você em até 2 dias úteis. "
+        refunded: "Reembolso efetuado"
         insufficient_credits: "Você não tem créditos suficientes para realizar este estorno."
         refunds_title: "Apoios que podem ter estorno realizado"
         request_refund: "Solicitar estorno"
