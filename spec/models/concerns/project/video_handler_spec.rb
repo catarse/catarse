@@ -24,7 +24,7 @@ describe Project::VideoHandler do
     end
 
     it "should store the new embed url" do
-      project.video_embed_url.should == 'player.vimeo.com/video/49584778'
+      project.video_embed_url.should == '//player.vimeo.com/video/49584778'
     end
   end
 end
