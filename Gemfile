@@ -7,7 +7,7 @@ gem 'rails',    '4.0.3'
 gem 'protected_attributes', '~> 1.0.5' # When upgrade to strong_parameters, remove this gem.
 gem 'rails-observers', '~> 0.1.2'
 
-gem 'sidekiq',  '~> 2.15.2'
+gem 'sidekiq',  '~> 3.1.3'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
 
 # Turns every field on a editable one

@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
   include PgSearch
 
   include Shared::StateMachineHelpers
+  include Shared::Queued
+
   include Project::StateMachineHandler
   include Project::VideoHandler
   include Project::CustomValidators
