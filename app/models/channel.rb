@@ -9,7 +9,7 @@ class Channel < ActiveRecord::Base
   validates_uniqueness_of :permalink
 
   has_and_belongs_to_many :projects, -> { order_for_search }
-  has_and_belongs_to_many :subscribers, class_name: 'User', join_table: :channels_subscribers
+  has_many :subscribers, class_name: 'User', through: :channels_subscribers, source: :user
   has_many :subscriber_reports
 
   catarse_auto_html_for field: :how_it_works, video_width: 560, video_height: 340
