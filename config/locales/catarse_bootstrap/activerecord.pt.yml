@@ -94,19 +94,19 @@ pt:
   contribution_report_to_project_owner:
     reward_description: Descrição da recompensa
     confirmed_at: Data da confirmação do pagamento
-    value: Valor do apoio
+    contribution_value: Valor do apoio
     service_fee: Taxa do Catarse
     user_name: Nome do apoiador
     user_email: Email perfil Catarse
     payer_email: Email do meio de pagamento
     payment_method: Meio de pagamento
-    address_street: Rua
-    address_complement: Complemento
+    street: Rua
+    complement: Complemento
     address_number: Número
-    address_neighbourhood: Bairro
-    address_city: Cidade
-    address_state: Estado
-    address_zip_code: CEP
+    neighbourhood: Bairro
+    city: Cidade
+    state: Estado
+    zip_code: CEP
     anonymous: Anônimo
   user:
     no_name: Sem nome
