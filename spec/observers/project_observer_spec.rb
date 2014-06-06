@@ -17,6 +17,19 @@ describe ProjectObserver do
     Notification.unstub(:notify_once)
   end
 
+  describe "after_save" do
+    let(:project) { build(:project, state: 'in_analysis', online_date: 10.days.from_now) }
+
+    context "when change the online_date" do
+      before do
+        project.should_receive(:remove_scheduled_job).with('ProjectSchedulerWorker')
+        ProjectSchedulerWorker.should_receive(:perform_at)
+      end
+
+      it { project.save }
+    end
+  end
+
   describe "after_create" do
     before do
       ProjectObserver.any_instance.should_receive(:after_create).and_call_original
