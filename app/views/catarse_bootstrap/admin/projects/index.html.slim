@@ -37,15 +37,15 @@
 
     .row
       .large-2.large-offset-10.columns
-        p.filtered-number = @scoped_projects.count
+        p.filtered-number = @scoped_projects.count(:all)
         p.filtered-number-label
-          = pluralize_without_number(@scoped_projects.count, t('project_singular'), t('project_plural'))
+          = pluralize_without_number(@scoped_projects.count(:all), t('project_singular'), t('project_plural'))
           '
-          = pluralize_without_number @scoped_projects.count, t('found_singular'), t('found_plural')
+          = pluralize_without_number @scoped_projects.count(:all), t('found_singular'), t('found_plural')
 
 
   = paginate @projects
-  - if @projects.empty?
+  - if @scoped_projects.count(:all) < 1
     = t('.no_projects')
   - else
     table.admin-projects-table.no-bottom
