@@ -35,7 +35,7 @@ class Contribution < ActiveRecord::Base
   attr_protected :state, :user_id
 
   def self.between_values(start_at, ends_at)
-    return scoped unless start_at.present? && ends_at.present?
+    return all unless start_at.present? && ends_at.present?
     where("value between ? and ?", start_at, ends_at)
   end
 
