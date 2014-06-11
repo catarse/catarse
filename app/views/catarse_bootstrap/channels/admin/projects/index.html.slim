@@ -20,11 +20,11 @@
       .large-3.columns
         = form.input :with_state, collection: Project.state_names, label: t('channels.admin.filter.with_state'), as: :select, selected: params[:with_state], include_blank: true
       .large-2.large-offset-1.columns
-        p.filtered-number = @projects.count
+        p.filtered-number = @projects.count(:all)
         p.filtered-number-label
-          = pluralize_without_number(@projects.count, t('project_singular'), t('project_plural'))
+          = pluralize_without_number(@projects.count(:all), t('project_singular'), t('project_plural'))
           '
-          = pluralize_without_number @projects.count, t('found_singular'), t('found_plural')
+          = pluralize_without_number @projects.count(:all), t('found_singular'), t('found_plural')
     .row
       .large-3.columns
         = form.input :pg_search, as: :string, label: t('channels.admin.filter.pg_search')

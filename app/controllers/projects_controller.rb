@@ -74,7 +74,7 @@ class ProjectsController < ApplicationController
     @title = resource.name
     authorize @project
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
-    @updates_count = resource.updates.count
+    @updates_count = resource.updates.count(:all)
     @update = resource.updates.where(id: params[:update_id]).first if params[:update_id].present?
   end
 

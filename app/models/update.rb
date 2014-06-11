@@ -16,7 +16,7 @@ class Update < ActiveRecord::Base
   scope :ordered, ->() { order("created_at desc") }
 
   def update_number
-    self.project.updates.where('id <= ?', self.id).count
+    self.project.updates.where('id <= ?', self.id).count(:all)
   end
 
   def email_comment_html
