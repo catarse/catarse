@@ -167,7 +167,7 @@ class User < ActiveRecord::Base
   end
 
   def total_contributions
-    contributions.confirmed.not_anonymous.count
+    contributions.confirmed.not_anonymous.count(:all)
   end
 
   def updates_subscription

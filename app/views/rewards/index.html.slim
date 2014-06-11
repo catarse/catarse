@@ -12,7 +12,7 @@
             i.icon-pencil.icon-white
 
     h2= t('.reward_title', minimum: reward.display_minimum).html_safe
-    em= pluralize(reward.contributions.with_state('confirmed').count, t('contribution_singular'), t('contribution_plural'))
+    em= pluralize(reward.contributions.with_state('confirmed').count(:all), t('contribution_singular'), t('contribution_plural'))
     .clearfix
     p
       = reward.display_description
@@ -24,7 +24,7 @@
           .limited= t('.limited')
           .remaining
             = reward.display_remaining
-      - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count
+      - in_time_to_confirm = reward.contributions.with_state('waiting_confirmation').count(:all)
       - if in_time_to_confirm > 0
         .maximum_contributions.in_time_to_confirm.clearfix
           .pending= t('.contributions_to_confirm', count: in_time_to_confirm)

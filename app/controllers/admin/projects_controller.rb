@@ -5,7 +5,7 @@ class Admin::ProjectsController < Admin::BaseController
   has_scope :between_created_at, :between_expires_at, :between_online_date, :between_updated_at, :goal_between, using: [ :start_at, :ends_at ]
 
   before_filter do
-    @total_projects = Project.count
+    @total_projects = Project.count(:all)
   end
 
   [:approve, :reject, :push_to_draft, :push_to_trash].each do |name|
