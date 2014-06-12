@@ -5,6 +5,8 @@
 .bootstrap-form
   = simple_form_for @project do |form|
     - if current_user.admin
+      - if @project.in_analysis?
+        = form.input :online_date, as: :datetime
       = form.input :user_id
       = form.input :permalink, as: :string
     - if policy(@project).permitted_for?(:name, :update)
