@@ -80,6 +80,7 @@ RSpec.configure do |config|
 
   # Stubs and configuration
   config.before(:each) do
+    Sidekiq::ScheduledSet.stub(:new).and_return({})
     User.any_instance.stub(:subscribe_to_newsletter_list).and_return(true)
     User.any_instance.stub(:unsubscribe_to_newsletter_list).and_return(true)
     Project.any_instance.stub(:subscribe_to_list).and_return(true)
