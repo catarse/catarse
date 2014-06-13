@@ -88,9 +88,10 @@ GEM
       enumerate_it
       libxml-ruby (~> 2.6.0)
       rails (~> 4.0)
-    catarse_monkeymail (0.1.4)
+    catarse_monkeymail (0.1.5)
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
+      rails-observers
     catarse_paypal_express (2.2.3)
       activemerchant (>= 1.34.0)
       rails (~> 4.0)
@@ -237,7 +238,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mailchimp-api (2.0.4)
+    mailchimp-api (2.0.5)
       excon (>= 0.16.0)
       json (>= 1.7.7)
     method_source (0.8.2)
@@ -474,7 +475,7 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   carrierwave (~> 0.10.0)
   catarse_moip (~> 2.3.5)
-  catarse_monkeymail (>= 0.1.4)
+  catarse_monkeymail (>= 0.1.5)
   catarse_paypal_express (= 2.2.3)
   catarse_settings_db
   chartkick
