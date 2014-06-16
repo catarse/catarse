@@ -38,4 +38,4 @@
 
           = form.submit t('.form.inputs.submit'), class: 'w-button button bt-medium'
 
-          p.accept = t(".form.labels.accept").html_safe
+          p.accept = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe
