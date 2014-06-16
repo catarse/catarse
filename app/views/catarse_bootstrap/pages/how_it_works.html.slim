@@ -4,10 +4,10 @@
 = render 'shared/header_big'
 
 .page-header
-  .w-container
+  .w-container.no-responsive
     h1.headingcenter = t('.title')
 
-    .w-row.w-hidden-small
+    .w-row
       .w-col.w-col-4.column-stats-submit
         p.big-number = "200.000"
         p.prg1.sub-description = t('.header.people')
@@ -25,7 +25,7 @@
         = link_to t('.submit'), new_project_path, class: 'button bt-medium bt-rascunhooff'
 
 #learn
-  .w-container
+  .w-container.no-responsive
     .w-row.row-infosline
       .w-col.w-col-6.column-images-center
         = image_tag "catarse_bootstrap/how-it-works/inscreva-seu-projeto.png", class: "img-envie-01"
