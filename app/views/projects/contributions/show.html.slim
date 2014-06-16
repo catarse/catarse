@@ -13,7 +13,7 @@
             = t('.moip_message', code: @contribution.payment_id).html_safe
             br
             br
-          = t("projects.contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
+          = t("projects.show.contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
         .share
             h2= t('.text_subtitle')
             = link_to "http://twitter.com/?status=#{t('i_just_contributed', name: @project.name)} #{project_by_slug_url(permalink: @project.permalink)}", target: :_blank, id: "twitter_share_button", data: { title: @project.name } do
