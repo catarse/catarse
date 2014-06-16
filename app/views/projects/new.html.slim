@@ -122,7 +122,7 @@
               fieldset.accept
                 = form.check_box :accepted_terms
                 | &nbsp;&nbsp;
-                = form.label :accepted_terms, t('shared.accept_terms_html', link: link_to(t('terms'), CatarseSettings[:terms_url], target: :_blank)), class: 'inline'
+                = form.label :accepted_terms, t('shared.accept_terms_html', link: link_to(t('.terms'), CatarseSettings[:terms_url], target: :_blank)), class: 'inline'
                 - if @project.errors[:accepted_terms].present?
                   .bootstrap-twitter
                     p.text-error= @project.errors[:accepted_terms].to_sentence
