@@ -16,6 +16,11 @@ a
     text-decoration: underline
 
 p
+  margin-top: 0px
+  margin-bottom: 20px
+  color: #3f4752
+  font-size: 18px
+  line-height: 28px
   a
     color: $blue-note
 
@@ -50,6 +55,10 @@ p
   text-decoration: none
   &:hover
     text-decoration: underline
+
+.alt-link
+  color: #409bff
+  text-decoration: none
 
 .button
   display: block
@@ -386,14 +395,13 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 
 // Page Header
 .page-header
-  height: 200px
+  padding: 45px 0
   margin-bottom: 32px
   background-color: #3f4752
   h1
     color: $white
     text-align: center
     font-size: 44px
-    line-height: 200px
     font-weight: 400
 
 .text-page
@@ -450,6 +458,68 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     text-indent: -9999px
     &:hover
       background: rgba(#3C9DFF, 0.8) url(/assets/catarse_bootstrap/catarse-assets.png) no-repeat -163px -74px
+
+
+// How it works -----------------------------------------------------------------------------------------
+.column-stats-submit
+  margin-top: 59px
+  text-align: center
+
+.big-number
+  color: $green
+  font-size: 54px
+
+.sub-description
+  margin: 25px 0 16px
+  padding: 0 34px
+  color: rgba(241, 244, 244, 0.84)
+
+.column-images-center
+  margin-top: 19px
+  text-align: center
+  span
+    display: inline-block
+    margin: 0 23px
+    color: white
+    font-size: 16px
+
+.bt-aprenda
+  display: inline-block
+  width: 30%
+
+.bt-rascunhooff
+  display: inline-block
+  width: 35%
+  border: 1px solid #f1f4f4
+  background-color: transparent
+  +transition-property(all)
+  +transition-duration(500ms)
+  +transition-timing-function(ease)
+  &:hover
+    border: 1px solid $green
+
+.row-infosline
+  margin-bottom: 35px
+  .alt-link
+    font-size: 18px
+    line-height: 28px
+    margin-top: 20px
+
+
+.img-envie-01
+  margin-top: 30px
+  width: 300px
+.img-envie-02
+  margin-top: 66px
+  width: 300px
+.img-envie-03
+  margin-top: 44px
+  width: 190px
+.img-envie-04
+  margin-top: 23px
+  width: 200px
+
+
 
 @media screen and (max-width: 1200px)
   .header-link
