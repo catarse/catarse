@@ -1,38 +1,20 @@
 - project = @notification.project
-p Olá #{project.user.name}!
 
-p Tudo certo por aí?
-
-p 
-  | A gente reparou que o rascunho do projeto: #{link_to project.name, project_by_slug_url(permalink: project.permalink)} 
-  | não recebe nenhuma atualização já faz um tempo e, queremos saber se você precisa de alguma ajuda para seguir em frente.
-
-p 
-  | Caso tenha qualquer dúvida sobre seu projeto no Catarse e queira conversar com alguém da nossa equipe 
-  | basta mandar um e-mail para #{mail_to CatarseSettings[:email_projects]} ou responder a esta mensagem que a gente vai adorar poder te ajudar =)
-
-p 
-  | Esses links aqui também podem ser úteis:
-  br/
-  = link_to 'Como deve ser o vídeo do meu projeto?', 'http://suporte.catarse.me/hc/pt-br/articles/203082997-Como-deve-ser-o-v%C3%ADdeo-do-meu-projeto-'
-  br/
-  = link_to 'O que eu posso oferecer como recompensa?', 'http://suporte.catarse.me/hc/pt-br/articles/203083007-O-que-eu-posso-oferecer-como-recompensa-'
-  br/
-  = link_to 'Quais informações devo compartilhar na descrição do meu projeto?', 'http://suporte.catarse.me/hc/pt-br/articles/202037413-Quais-informa%C3%A7%C3%B5es-eu-deveria-compartilhar-na-descri%C3%A7%C3%A3o-do-meu-projeto-'
-  br/
-  = link_to 'O que devo levar em conta para pensar na meta de arrecadação do meu projeto?', 'http://suporte.catarse.me/hc/pt-br/articles/202037403-O-que-devo-levar-em-conta-para-pensar-na-meta-de-arrecada%C3%A7%C3%A3o-do-meu-projeto-'
-  br/
-  = link_to 'Quais são todos os passos que envolvem uma campanha no Catarse?', 'http://suporte.catarse.me/hc/pt-br/articles/202445898-Quais-s%C3%A3o-todos-os-passos-envolvidos-em-uma-campanha-no-Catarse-'
-
-p Lembrando que o seu projeto só será avaliado quando você clicar no botão “ENVIAR PROJETO”.
-
-p
-  | Estamos loucos para conhecer sua ideia então, já sabe, né? 
-  br/
-  | Na dúvida dá um grito pra gente o/
-
-p 
-  | Um abraço,
-  br/
-  = CatarseSettings[:company_name]
-
+|Olá #{project.user.name}, aqui é a Luciana do Catarse, como vai?
+br/
+br/
+|Vi que você criou o rascunho do projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))} mas ainda não o enviou para avaliação da nossa equipe. Você pode enviar agora mesmo clicando #{link_to 'aqui', send_to_analysis_project_url(project, ref: 'notificacao_resgate_botao')}.
+br/
+br/
+|Não quer enviar agora? Sem problemas, você todo o tempo do mundo para formatar seu projeto e enviá-lo pra gente através da sua página(#{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))}) .
+br/
+br/
+|Lembrando que você pode tirar dúvidas comigo a qualquer momento respondendo diretamente a esta mensagem ou através do e-mail #{mail_to 'contato@catarse.me'}.
+br/
+br/
+|Beijo,
+br/
+br/
+|Luciana Masini
+br/
+|Catalisadora de projetos criativos
