@@ -39,6 +39,18 @@ describe ProjectObserver do
     it "should create notification for project owner" do
       Notification.where(user_id: project.user.id, template_name: 'project_received', project_id: project.id).first.should_not be_nil
     end
+
+    context "after creating the project" do
+      let(:project) { build(:project) }
+
+      before do
+        InactiveDraftWorker.should_receive(:perform_at)
+      end
+
+      it "should call perform at in inactive draft worker" do
+        project.save
+      end
+    end
   end
 
   describe "when project is sent to curator" do
