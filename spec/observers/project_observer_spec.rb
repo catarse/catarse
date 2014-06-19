@@ -125,7 +125,7 @@ describe ProjectObserver do
     before do
       create(:contribution, project: project, value: 200, state: 'confirmed')
       Notification.should_receive(:notify_once).with(
-        :project_in_wainting_funds,
+        :project_in_waiting_funds,
         project.user,
         {project_id: project.id, channel_id: project.last_channel.try(:id)},
         {
