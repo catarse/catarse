@@ -28,7 +28,7 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_online_to_waiting_funds(project)
-    project.notify_owner(:project_in_wainting_funds, { origin_email: CatarseSettings[:email_projects] })
+    project.notify_owner(:project_in_waiting_funds, { origin_email: CatarseSettings[:email_projects] })
   end
 
   def from_waiting_funds_to_successful(project)
