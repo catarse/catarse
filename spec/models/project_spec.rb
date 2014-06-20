@@ -336,31 +336,6 @@ describe Project do
     end
   end
 
-  describe "send_inactive_drafts_notification" do
-    before do
-      Notification.unstub(:notify_once)
-      @p = create(:project, state: 'draft', updated_at: Time.now - 11.days)
-      create(:project, state: 'draft')
-    end
-
-    it "should create notification for all inactive drafts" do
-      Notification.should_receive(:notify_once).
-        with(:inactive_draft, @p.user, {project_id: @p.id, channel_id: @p.last_channel.try(:id)}, {project: @p})
-      Project.send_inactive_drafts_notification
-    end
-  end
-
-  describe ".inactive_drafts" do
-    before do
-      @p = create(:project, state: 'draft', updated_at: Time.now - 11.days)
-      already_notified = create(:project, state: 'draft', updated_at: Time.now - 11.days)
-      create(:notification, template_name: 'inactive_draft', project: already_notified)
-      create(:project, state: 'draft')
-    end
-    subject{ Project.inactive_drafts }
-    it{ should == [@p] }
-  end
-
   describe ".from_channels" do
     let(:channel){create(:channel)}
     before do
