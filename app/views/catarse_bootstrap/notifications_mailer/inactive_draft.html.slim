@@ -3,10 +3,15 @@
 |Olá #{project.user.name}, aqui é a Luciana do Catarse, como vai?
 br/
 br/
-|Vi que você criou o rascunho do projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))} mas ainda não o enviou para avaliação da nossa equipe. Você pode enviar agora mesmo clicando #{link_to 'aqui', send_to_analysis_project_url(project, ref: 'notificacao_resgate_botao')}.
+|Vi que você criou o rascunho do projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))} mas ainda não o enviou para avaliação da nossa equipe. Você pode enviar agora mesmo.
 br/
 br/
-|Não quer enviar agora? Sem problemas, você todo o tempo do mundo para formatar seu projeto e enviá-lo pra gente através da sua página(#{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))}) .
+center
+  = link_to send_to_analysis_project_url(project, ref: 'notificacao_resgate_botao'), target: '__blank' do
+    = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/botao_envie.png"
+br/
+br/
+|Não quer enviar agora? Sem problemas, você todo o tempo do mundo para formatar seu projeto e enviá-lo pra gente através da sua (#{link_to('página', project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))}) .
 br/
 br/
 |Lembrando que você pode tirar dúvidas comigo a qualquer momento respondendo diretamente a esta mensagem ou através do e-mail #{mail_to 'contato@catarse.me'}.
