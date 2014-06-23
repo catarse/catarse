@@ -91,12 +91,6 @@ class Project < ActiveRecord::Base
     joins(:contributions).merge(Contribution.confirmed_today).uniq
   }
 
-  scope :inactive_drafts, ->{
-    with_state('draft').
-    where("(current_timestamp - updated_at) > '10 days'").
-    where("NOT EXISTS (SELECT true FROM notifications n WHERE n.project_id = projects.id AND template_name = 'inactive_draft')")
-  }
-
   scope :expiring_in_less_of, ->(time) {
     with_state('online').where("(projects.expires_at - current_date) <= ?", time)
   }
@@ -121,12 +115,6 @@ class Project < ActiveRecord::Base
   def self.send_verify_moip_account_notification
     expiring_in_less_of('7 days').find_each do |project|
       project.notify_owner(:verify_moip_account, { origin_email: CatarseSettings[:email_payments]})
-    end
-  end
-
-  def self.send_inactive_drafts_notification
-    inactive_drafts.find_each do |project|
-      project.notify_owner(:inactive_draft)
     end
   end
 
