@@ -1,0 +1,5 @@
+- project = @notification.project
+- project_link = project_by_slug_url(permalink: project.permalink)
+= link_to project_link, project_link
+br/
+= project.display_pledged

@@ -37,6 +37,14 @@ class ProjectObserver < ActiveRecord::Observer
 
     notify_admin_that_project_reached_deadline(project)
     notify_users(project)
+    redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
+    if redbooth_user
+      Notification.notify_once(:redbooth_task,
+        redbooth_user,
+        { project_id: project.id },
+        { project: project }
+      )
+    end
   end
 
   def notify_admin_that_project_reached_deadline(project)
