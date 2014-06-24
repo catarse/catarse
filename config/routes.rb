@@ -113,6 +113,7 @@ Catarse::Application.routes.draw do
     member do
       get :unsubscribe_notifications
       get :credits
+      get :reactivate
     end
     collection do
       get :uservoice_gadget
