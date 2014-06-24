@@ -36,7 +36,16 @@ class ProjectObserver < ActiveRecord::Observer
     project.notify_owner(:project_success, origin_email: CatarseSettings[:email_projects])
 
     notify_admin_that_project_reached_deadline(project)
+    notify_admin_that_project_is_successful(project)
     notify_users(project)
+
+  end
+
+  def notify_admin_that_project_reached_deadline(project)
+    project.notify_to_backoffice(:adm_project_deadline, { origin_email: CatarseSettings[:email_system] })
+  end
+
+  def notify_admin_that_project_is_successful(project)
     redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
     if redbooth_user
       Notification.notify_once(:redbooth_task,
@@ -45,10 +54,6 @@ class ProjectObserver < ActiveRecord::Observer
         { project: project }
       )
     end
-  end
-
-  def notify_admin_that_project_reached_deadline(project)
-    project.notify_to_backoffice(:adm_project_deadline, { origin_email: CatarseSettings[:email_system] })
   end
 
   def from_in_analysis_to_rejected(project)
