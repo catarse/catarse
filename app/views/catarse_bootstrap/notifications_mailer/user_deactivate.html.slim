@@ -5,6 +5,6 @@ p Esse é um texto que deve ser substituído pela notificação de desativação
 p 
   | O objetivo é confirmar para o usuário que a conta dele foi desativada e mostrar
     um link para reativá-la.
-    O link a ser usado é esse aqui #{}
+    O link a ser usado é esse aqui #{link_to('clique aqui', reactivate_user_url(@notification.user))}
     Essas linhas com o | no início são necessárias para escrever uma mensagem em múltiplas linhas.
     Quando o parágrafo tiver apenas uma linha ele ser escrito inteiro após o p como nas linhas anteriores.
