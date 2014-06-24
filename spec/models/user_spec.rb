@@ -191,6 +191,34 @@ describe User do
     its(:facebook_link){ should == 'http://facebook.com/test' }
   end
 
+  describe "#notify" do
+    before do
+      Notification.unstub(:notify)
+      user.notify(:heartbleed)
+    end
+
+    it "should create notification" do
+      notification = Notification.last
+      expect(notification.user).to eq user
+      expect(notification.template_name).to eq 'heartbleed'
+    end
+  end
+
+  describe "#reactivate" do
+    before do
+      user.deactivate
+      user.reactivate
+    end
+
+    it "should set reatiactivate_token to nil" do
+      expect(user.reactivate_token).to be_nil
+    end
+
+    it "should set deactivated_at to nil" do
+      expect(user.deactivated_at).to be_nil
+    end
+  end
+
   describe "#deactivate" do
     before do
       @contribution = create(:contribution, user: user, anonymous: false)
@@ -199,6 +227,10 @@ describe User do
 
     it "should set all contributions as anonymous" do
       expect(@contribution.reload.anonymous).to be_true
+    end
+
+    it "should set reatiactivate_token" do
+      expect(user.reactivate_token).to be_present
     end
 
     it "should set deactivated_at" do
