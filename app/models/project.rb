@@ -103,7 +103,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days, less_than_or_equal_to: 60
-  validates_uniqueness_of :permalink, allow_blank: true, case_sensitive: false
+  validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
