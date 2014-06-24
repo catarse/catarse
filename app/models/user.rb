@@ -100,6 +100,10 @@ class User < ActiveRecord::Base
     super && deactivated_at.nil?
   end
 
+  def reactivate
+    self.update_attributes deactivated_at: nil, reactivate_token: nil
+  end
+
   def deactivate
     self.update_attributes deactivated_at: Time.now, reactivate_token: Devise.friendly_token
     self.contributions.update_all(anonymous: true)

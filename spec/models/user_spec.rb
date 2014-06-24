@@ -204,6 +204,21 @@ describe User do
     end
   end
 
+  describe "#reactivate" do
+    before do
+      user.deactivate
+      user.reactivate
+    end
+
+    it "should set reatiactivate_token to nil" do
+      expect(user.reactivate_token).to be_nil
+    end
+
+    it "should set deactivated_at to nil" do
+      expect(user.deactivated_at).to be_nil
+    end
+  end
+
   describe "#deactivate" do
     before do
       @contribution = create(:contribution, user: user, anonymous: false)
