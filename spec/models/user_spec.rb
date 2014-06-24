@@ -214,6 +214,10 @@ describe User do
       expect(@contribution.reload.anonymous).to be_true
     end
 
+    it "should set reatiactivate_token" do
+      expect(user.reactivate_token).to be_present
+    end
+
     it "should set deactivated_at" do
       expect(user.deactivated_at).to be_present
     end
