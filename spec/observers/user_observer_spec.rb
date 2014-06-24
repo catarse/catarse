@@ -11,7 +11,7 @@ describe UserObserver do
     let(:user) { create(:user) }
 
     it "send new user registration notification" do
-      Notification.should_receive(:notify_once).with(:new_user_registration, user, {user_id: user.id}, {user: user})
+      Notification.should_receive(:notify).with(:new_user_registration, user)
     end
   end
 

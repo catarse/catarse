@@ -91,7 +91,6 @@ class User < ActiveRecord::Base
     Notification.notify(
       template_name,
       self,
-      { user_id: self.id },
       params
     )
   end
