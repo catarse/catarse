@@ -84,13 +84,16 @@ class User < ActiveRecord::Base
   end
 
   def self.send_credits_notification
-    has_not_used_credits_last_month.find_each do |user|
-      Notification.notify_once(
-        :credits_warning,
-        user,
-        {user_id: user.id}
-      )
-    end
+    has_not_used_credits_last_month.find_each{|user| user.notify(:credits_warning) }
+  end
+
+  def notify(template_name, params = {})
+    Notification.notify(
+      template_name,
+      self,
+      { user_id: self.id },
+      params
+    )
   end
 
   def active_for_authentication?
