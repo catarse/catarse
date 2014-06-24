@@ -191,6 +191,19 @@ describe User do
     its(:facebook_link){ should == 'http://facebook.com/test' }
   end
 
+  describe "#notify" do
+    before do
+      Notification.unstub(:notify)
+      user.notify(:heartbleed)
+    end
+
+    it "should create notification" do
+      notification = Notification.last
+      expect(notification.user).to eq user
+      expect(notification.template_name).to eq 'heartbleed'
+    end
+  end
+
   describe "#deactivate" do
     before do
       @contribution = create(:contribution, user: user, anonymous: false)
