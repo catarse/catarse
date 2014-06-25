@@ -3,8 +3,8 @@ html
   font-size: 14px
 
 h2
-  margin-top: 20px
-  margin-bottom: 10px
+  margin-top: 70px
+  margin-bottom: 20px
   font-size: 24px
   line-height: 36px
   font-weight: 600
@@ -365,6 +365,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 .main-footer
   padding: 35px 0
   background: $gray-one
+  margin-top: 60px
   h4
     margin: 24px 0
     font-size: 16px
@@ -397,14 +398,19 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 
 // Page Header
 .page-header
-  padding: 45px 0
-  margin-bottom: 32px
+  padding: 46px 0 54px
+  margin-bottom: 4px
   background-color: #3f4752
   h1
     color: $white
     text-align: center
     font-size: 44px
-    font-weight: 400
+    font-weight: 300
+    &.headingcenter-middle
+      margin-top: 45px
+
+.stats-send-project
+  margin: 25px auto 32px
 
 .text-page
   h2
@@ -464,20 +470,24 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 
 // How it works -----------------------------------------------------------------------------------------
 .column-stats-submit
-  margin-top: 59px
+  margin-top: 46px
   text-align: center
 
 .big-number
-  color: $green
-  font-size: 54px
+  color: $text-green
+  margin-top: 14px
+  font-size: 63px
+  font-weight: 400
 
 .sub-description
-  margin: 25px 0 16px
+  margin: 22px 0 16px
   padding: 0 34px
   color: rgba(241, 244, 244, 0.84)
+  font-size: 15px
+  font-weight: 300
 
-.column-images-center
-  margin-top: 19px
+.bt-center-header
+  margin: 25px 0 50px
   text-align: center
   span
     display: inline-block
@@ -492,7 +502,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 .bt-rascunhooff
   display: inline-block
   width: 35%
-  border: 1px solid #f1f4f4
+  border: 2px solid #f1f4f4
   background-color: transparent
   +transition-property(all)
   +transition-duration(500ms)
@@ -505,8 +515,13 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   .alt-link
     font-size: 18px
     line-height: 28px
-    margin-top: 20px
+    margin: 28px 0 20px
+    display: block
 
+.column-images-center
+  margin-top: 13px
+  padding-top: 65px
+  text-align: center
 
 .img-envie-01
   margin-top: 30px
