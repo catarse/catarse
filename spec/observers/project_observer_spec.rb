@@ -298,4 +298,21 @@ describe ProjectObserver do
 
   end
 
+  describe "#notify_admin_that_project_is_successful" do
+    let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
+    let(:user) { create(:user, email: 'foo@foo.com')}
+    before do
+      CatarseSettings[:email_redbooth] = 'foo@foo.com'
+      user
+      project.stub(:reached_goal?).and_return(true)
+      project.stub(:in_time_to_wait?).and_return(false)
+      project.finish
+    end
+
+    it "should create notification for admin" do
+      Notification.where(user_id: user.id, template_name: 'redbooth_task', project_id: project.id).first.should_not be_nil
+    end
+
+  end
+
 end
