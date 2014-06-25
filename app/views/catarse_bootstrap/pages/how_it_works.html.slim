@@ -7,15 +7,16 @@
   .w-container.no-responsive
     h1.headingcenter-middle = t('.title')
 
+    - statistics = Statistics.first
     .w-row.stats-send-project
       .w-col.w-col-4.column-stats-submit
-        p.big-number = "200.000"
+        p.big-number = number_to_human(statistics.total_contributors)
         p.prg1.sub-description = t('.header.people')
       .w-col.w-col-4.column-stats-submit
-        p.big-number = "1.000"
+        p.big-number = number_to_human(statistics.total_projects_success)
         p.prg1.sub-description = t('.header.success')
       .w-col.w-col-4.column-stats-submit
-        p.big-number = "16 milhões"
+        p.big-number = number_to_human(statistics.total_contributed)
         p.prg1.sub-description = t('.header.money')
 
     .w-row
