@@ -121,7 +121,7 @@
                       = t('channels.admin.table.send_to_draft')
                 - if project.can_push_to_trash?
                   li
-                    = link_to  push_to_trash_channels_admin_project_path(project), confirm: t('channels.admin.table.confirmation'), method: :put  do
+                    = link_to  push_to_trash_channels_admin_project_path(project), data:{ confirm: t('channels.admin.table.confirmation')}, method: :put  do
                       = t('channels.admin.table.send_to_trash')
 
   = paginate @projects
