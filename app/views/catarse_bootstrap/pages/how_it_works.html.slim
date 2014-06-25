@@ -5,9 +5,9 @@
 
 .page-header
   .w-container.no-responsive
-    h1.headingcenter = t('.title')
+    h1.headingcenter-middle = t('.title')
 
-    .w-row
+    .w-row.stats-send-project
       .w-col.w-col-4.column-stats-submit
         p.big-number = "200.000"
         p.prg1.sub-description = t('.header.people')
@@ -15,12 +15,12 @@
         p.big-number = "1.000"
         p.prg1.sub-description = t('.header.success')
       .w-col.w-col-4.column-stats-submit
-        p.big-number = "R$16milhoes"
+        p.big-number = "16 milhões"
         p.prg1.sub-description = t('.header.money')
 
     .w-row
-      .w-col.w-col-8.w-col-push-2.column-images-center
-        = link_to t('.learn-more'), new_project_path, class: 'button bt-medium bt-aprenda'
+      .w-col.w-col-8.w-col-push-2.bt-center-header
+        = link_to t('.learn-more'), '#learn', class: 'button bt-medium bt-aprenda'
         span = "ou"
         = link_to t('.submit'), new_project_path, class: 'button bt-medium bt-rascunhooff'
 
@@ -32,13 +32,13 @@
       .w-col.w-col-6
         h2 = t('.start.title')
         p.prg1 = t('.start.content')
-        = link_to t('.start.link'), new_project_path, class: "alt-link"
+        = link_to t('.start.link'), 'http://suporte.catarse.me/hc/pt-br/sections/200406978-Realizadores-Primeiros-passos', class: "alt-link"
 
     .w-row.row-infosline
       .w-col.w-col-6
         h2 = t('.people.title')
         p.prg1 = t('.people.content')
-        = link_to t('.people.link'), new_project_path, class: 'alt-link'
+        = link_to t('.people.link'), 'http://blog.catarse.me/quantos-apoiadores-eu-preciso-para-alcancar-a-meta-do-meu-projeto/', class: 'alt-link'
 
       .w-col.w-col-6.column-images-center
         = image_tag "catarse_bootstrap/how-it-works/mobilze-interessados.png", class: "img-envie-02"
@@ -49,13 +49,13 @@
       .w-col.w-col-6
         h2 = t('.work.title')
         p.prg1 = t('.work.content')
-        = link_to t('.work.link'), new_project_path, class: 'alt-link'
+        = link_to t('.work.link'), 'http://blog.catarse.me/category/dicas/', class: 'alt-link'
 
     .w-row.row-infosline
       .w-col.w-col-6
         h2 = t('.time.title')
         p.prg1 = t('.time.content')
-        = link_to t('.time.link'), new_project_path, class: 'alt-link'
+        = link_to t('.time.link'), 'http://blog.catarse.me/nossa-taxa-de-servico-parte-1-de-onde-vem-e-pra-onde-vai-o-dinheiro-do-catarse/', class: 'alt-link'
       .w-col.w-col-6.column-images-center
         = image_tag "catarse_bootstrap/how-it-works/tudo-ou-nada.png", class: "img-envie-04"
 

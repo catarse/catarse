@@ -2,12 +2,12 @@ pt:
   pages:
     how_it_works:
       page-title: "Como funciona o Catarse?"
-      title: "Financie seu projeto coletivamente"
+      title: "Viabilize seu projeto coletivamente"
       submit: "Comece um projeto"
       learn-more: "Aprenda mais"
       header:
-        people: "Pessoas ja apoiaram pelo menos 01 projeto no Catarse"
-        success: "Projetos ja foram bem sucedidos por aqui"
+        people: "Pessoas já apoiaram pelo menos 01 projeto no Catarse"
+        success: "Projetos já foram bem sucedidos por aqui"
         money: "Foram investidos em ideias publicadas no Catarse"
       start:
         title: "Inscreva seu projeto"
@@ -16,12 +16,12 @@ pt:
       people:
         title: "Mobilize interessados"
         content: "Pelo menos 50% dos apoiadores virá da sua própria rede de contatos. O Catarse é uma forma de você se aproximar das pessoas que gostam do seu trabalho e expandir essa rede. Muitas das pessoas apoiam projetos pela relação com o realizador, outros pela admiração do trabalho e outras para receber uma recompensa única, mas a principal razão é a identificação com a proposta do projeto."
-        link: 'Saiba quantos apoiadores voce precisara mobilizar'
+        link: 'Saiba quantos apoiadores você precisará mobilizar'
       work:
         title: "Trabalhe muito no antes, durante e depois do período de arrecadação"
         content: "Estude projetos semelhantes ao seu. Mapeie, analise, expanda e prepare a sua rede e outras comunidades que possam se interessar pela realização da sua ideia. Planeje cada dia da sua campanha e execute ações para conquistar mais apoiadores. Explique por que está pedindo o dinheiro e como vai usá-lo. Comunique-se o tempo inteiro com os apoiadores do seu projeto. Execute e entregue as recompensas dentro do prazo estabelecido."
         link: 'Receba dicas de outras campanhas no Catarse'
       time:
         title: "Tudo ou nada"
-        content: "Você pode escolher um prazo entre 1 e 60 dias para alcançar o objetivo de arrecadação, no sistema que chamamos de Tudo ou Nada. Quando um projeto alcança a meta de arrecadação, o Catarse fica com 13% desse valor. Se o projeto não alcança o objetivo de arrecadação, não cobramos nada e devolvemos o dinheiro aos apoiadores"
-        link: 'Saiba como a taxa que voce paga ajuda a manter o Catarse'
+        content: "Você pode escolher um prazo entre 1 e 60 dias para alcançar o objetivo de arrecadação, no sistema que chamamos de Tudo ou Nada. Quando um projeto alcança a meta de arrecadação, o Catarse fica com 13% desse valor. Se o projeto não alcança o objetivo de arrecadação, não cobramos nada e devolvemos o dinheiro aos apoiadores."
+        link: 'Saiba como a taxa que você pega ajuda a manter o Catarse'
