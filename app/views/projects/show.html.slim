@@ -165,5 +165,9 @@
                 = image_tag 'loading.gif'
         #rewards[data-can_update="#{policy(@project).update?}" data-index_path=project_rewards_path(@project)]
           .reward-loader= image_tag 'loading.gif'
+        .funding_period_title
+          = t('.funding_period')
+        .funding_period
+          = "#{@project.display_online_date} - #{@project.display_expires_at} (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
 
     .clearfix

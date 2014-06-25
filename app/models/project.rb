@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
 
   mount_uploader :uploaded_image, ProjectUploader
 
-  delegate :display_status, :progress, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
+  delegate :display_online_date, :display_status, :progress, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
     :display_pledged, :display_goal, :remaining_days, :progress_bar, :status_flag,
     to: :decorator
 
@@ -91,12 +91,6 @@ class Project < ActiveRecord::Base
     joins(:contributions).merge(Contribution.confirmed_today).uniq
   }
 
-  scope :inactive_drafts, ->{
-    with_state('draft').
-    where("(current_timestamp - updated_at) > '10 days'").
-    where("NOT EXISTS (SELECT true FROM notifications n WHERE n.project_id = projects.id AND template_name = 'inactive_draft')")
-  }
-
   scope :expiring_in_less_of, ->(time) {
     with_state('online').where("(projects.expires_at - current_date) <= ?", time)
   }
@@ -109,7 +103,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days, less_than_or_equal_to: 60
-  validates_uniqueness_of :permalink, allow_blank: true, case_sensitive: false
+  validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
 
   [:between_created_at, :between_expires_at, :between_online_date, :between_updated_at].each do |name|
@@ -121,12 +115,6 @@ class Project < ActiveRecord::Base
   def self.send_verify_moip_account_notification
     expiring_in_less_of('7 days').find_each do |project|
       project.notify_owner(:verify_moip_account, { origin_email: CatarseSettings[:email_payments]})
-    end
-  end
-
-  def self.send_inactive_drafts_notification
-    inactive_drafts.find_each do |project|
-      project.notify_owner(:inactive_draft)
     end
   end
 

@@ -1,6 +1,6 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  after_filter :verify_authorized, except: %i[uservoice_gadget]
+  after_filter :verify_authorized, except: %i[uservoice_gadget reactivate]
   skip_before_filter :force_http, only: [:update_password]
   inherit_resources
   defaults finder: :find_active!
@@ -42,6 +42,16 @@ class UsersController < ApplicationController
       @subscribed_to_updates = @user.updates_subscription
       @unsubscribes = @user.project_unsubscribes
     }
+  end
+
+  def reactivate
+    user = User.find_by(reactivate_token: params[:token])
+    if user
+      user.reactivate
+    else
+      flash[:error] = t('users.failed_reactivation')
+    end
+    redirect_to root_path
   end
 
   def update

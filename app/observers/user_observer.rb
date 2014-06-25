@@ -6,7 +6,7 @@ class UserObserver < ActiveRecord::Observer
   end
 
   def after_create(user)
-    Notification.notify_once(:new_user_registration, user, {user_id: user.id}, {user: user})
+    user.notify(:new_user_registration)
   end
 
   def before_save(user)

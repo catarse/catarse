@@ -40,6 +40,7 @@ pt:
           draft: "Esse projeto é apenas um rascunho e ainda não está aberto para receber apoios."
         submit: Apoiar este projeto
       project_by: projeto por
+      funding_period: Período de campanha
       count_contributed_projects: apoiou %{total} projetos
       project_header:
         subtitle_html: "Um projeto de %{link}"
