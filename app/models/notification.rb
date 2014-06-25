@@ -4,6 +4,10 @@ class Notification < ActiveRecord::Base
 
   validates_presence_of :user
 
+  scope :last_with_template, ->(template_name){
+    where(template_name: template_name).order(:id).last
+  }
+
   def self.notify_once(template_name, user, filter, params = {})
     notify(template_name, user, params) if is_unique?(template_name, filter)
   end
