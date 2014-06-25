@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Notification do
   let(:contribution){ create(:contribution) }
+  let(:notification){ create(:notification, template_name: 'project_success', dismissed: false) }
 
   before do
     Notification.unstub(:notify)
@@ -16,9 +17,21 @@ describe Notification do
     it{ should belong_to :project_update }
   end
 
+  describe ".last_with_template" do
+    before do
+      create(:notification)
+      notification
+      create(:notification, template_name: 'project_failed')
+    end
+
+    subject{ Notification.last_with_template(:project_success) }
+
+    it{ should == notification }
+  
+  end
+
   describe "#deliver" do
     let(:deliver_exception){ nil }
-    let(:notification){ create(:notification, dismissed: false) }
 
     before do
       NotificationWorker.jobs.clear

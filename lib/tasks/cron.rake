@@ -34,7 +34,10 @@ end
 
 desc "Send notification about credits 1 month after the project failed"
 task send_credits_notification: :environment do
-  User.send_credits_notification
+  notification = Notification.last_with_template(:credits_warning)
+  if notification && (Time.now - notification.created_at) > 30.days
+    User.send_credits_notification
+  end
 end
 
 desc "Create first versions for rewards"
