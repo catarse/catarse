@@ -2,15 +2,11 @@ require 'spec_helper'
 
 describe SubscriberReport do
   let(:subscriber){ SubscriberReport.first }
-  before(:all) do
+  before do
     CatarseSettings[:email_contact] = 'foo@bar.com'
     CatarseSettings[:company_name] = 'Foo Bar Company'
     @channel = create(:channel) 
     @user = create(:user, subscriptions: [ @channel ])
-  end
-
-  after(:all) do
-    DatabaseCleaner.clean_with(:truncation)
   end
 
   describe "Associations" do
