@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
         if resource.errors.present?
           flash[:alert] = resource.errors.full_messages.to_sentence
         else
-          flash[:notice] = t('projects.update.success')
+          flash[:notice] = t('project.update.success')
         end
 
         redirect_to project_by_slug_path(@project.permalink, anchor: 'edit')

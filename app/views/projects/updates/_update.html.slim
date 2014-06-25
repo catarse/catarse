@@ -11,7 +11,7 @@
         .twitter_share= render_twitter text: "#{update.title}", url: url
         .facebook_share= render_facebook_like href: url, width: '360'
   - if policy(update).destroy?
-    = link_to t('.destroy'), project_update_path(project_id: @project.id, id: update.id), confirm: t('.destroy_confirmation'), remote: true, method: :delete, class: 'destroy_update'
+    = link_to t('.destroy'), project_update_path(project_id: @project.id, id: update.id), data: {confirm: t('.destroy_confirmation')}, remote: true, method: :delete, class: 'destroy_update'
     .deleting_update.hide= image_tag "loading.gif"
 
 

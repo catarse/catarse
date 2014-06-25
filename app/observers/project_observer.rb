@@ -14,6 +14,7 @@ class ProjectObserver < ActiveRecord::Observer
 
   def after_create(project)
     deliver_default_notification_for(project, :project_received)
+    InactiveDraftWorker.perform_at(2.day.from_now, project.id)
   end
 
   def from_draft_to_in_analysis(project)
@@ -28,18 +29,31 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_online_to_waiting_funds(project)
-    project.notify_owner(:project_in_wainting_funds, { origin_email: CatarseSettings[:email_projects] })
+    project.notify_owner(:project_in_waiting_funds, { origin_email: CatarseSettings[:email_projects] })
   end
 
   def from_waiting_funds_to_successful(project)
     project.notify_owner(:project_success, origin_email: CatarseSettings[:email_projects])
 
     notify_admin_that_project_reached_deadline(project)
+    notify_admin_that_project_is_successful(project)
     notify_users(project)
+
   end
 
   def notify_admin_that_project_reached_deadline(project)
     project.notify_to_backoffice(:adm_project_deadline, { origin_email: CatarseSettings[:email_system] })
+  end
+
+  def notify_admin_that_project_is_successful(project)
+    redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
+    if redbooth_user
+      Notification.notify_once(:redbooth_task,
+        redbooth_user,
+        { project_id: project.id },
+        { project: project }
+      )
+    end
   end
 
   def from_in_analysis_to_rejected(project)
