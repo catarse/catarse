@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :nickname,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
-    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at
+    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token
 
   mount_uploader :uploaded_image, UserUploader
 
@@ -84,21 +84,27 @@ class User < ActiveRecord::Base
   end
 
   def self.send_credits_notification
-    has_not_used_credits_last_month.find_each do |user|
-      Notification.notify_once(
-        :credits_warning,
-        user,
-        {user_id: user.id}
-      )
-    end
+    has_not_used_credits_last_month.find_each{|user| user.notify(:credits_warning) }
+  end
+
+  def notify(template_name, params = {})
+    Notification.notify(
+      template_name,
+      self,
+      params
+    )
   end
 
   def active_for_authentication?
     super && deactivated_at.nil?
   end
 
+  def reactivate
+    self.update_attributes deactivated_at: nil, reactivate_token: nil
+  end
+
   def deactivate
-    self.update_attributes deactivated_at: Time.now
+    self.update_attributes deactivated_at: Time.now, reactivate_token: Devise.friendly_token
     self.contributions.update_all(anonymous: true)
   end
 
