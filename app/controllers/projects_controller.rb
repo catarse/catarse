@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
     authorize resource
     resource.send_to_analysis
     if params[:ref].present?
-      resource.update_attribute :referal_link, params[:ref]
+      resource.update_attribute :referal_link, referal_link
     end
     flash[:notice] = t('projects.send_to_analysis')
     redirect_to project_by_slug_path(@project.permalink)
