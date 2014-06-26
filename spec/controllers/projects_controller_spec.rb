@@ -31,12 +31,24 @@ describe ProjectsController do
   describe "GET send_to_analysis" do
     let(:current_user){ project.user }
 
-    before do
-      get :send_to_analysis, id: project.id, locale: :pt
-      project.reload
+    context "without referal link" do
+      before do
+        get :send_to_analysis, id: project.id, locale: :pt
+        project.reload
+      end
+
+      it { project.in_analysis?.should be_true }
     end
 
-    it { project.in_analysis?.should be_true }
+    context "with referal link" do
+      subject { project.referal_link }
+      before do
+        get :send_to_analysis, id: project.id, locale: :pt, ref: 'referal'
+        project.reload
+      end
+
+      it { should == 'referal' }
+    end
   end
 
   describe "GET index" do
