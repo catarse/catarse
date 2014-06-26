@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
   def send_to_analysis
     authorize resource
     resource.send_to_analysis
-    if params[:ref].present?
+    if referal_link.present?
       resource.update_attribute :referal_link, referal_link
     end
     flash[:notice] = t('projects.send_to_analysis')
