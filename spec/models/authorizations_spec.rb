@@ -32,7 +32,6 @@ describe Authorization do
         image: "http://graph.facebook.com/547955110/picture?type:, square",
         last_name: "Biazus",
         name: "Diogo, Biazus",
-        nickname: "diogo.biazus",
         urls: {
           Facebook: "http://www.facebook.com/diogo.biazus"
         },
@@ -49,9 +48,9 @@ describe Authorization do
   end
 
   describe "Validations" do
-    it{ should validate_presence_of :oauth_provider } 
-    it{ should validate_presence_of :user } 
-    it{ should validate_presence_of :uid } 
+    it{ should validate_presence_of :oauth_provider }
+    it{ should validate_presence_of :user }
+    it{ should validate_presence_of :uid }
   end
 
   describe ".find_from_hash" do

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text, :twitter_link, :gravatar_url,
     to: :decorator
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :nickname,
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token
@@ -164,7 +164,6 @@ class User < ActiveRecord::Base
       {
         name: hash['info']['name'],
         email: hash['info']['email'],
-        nickname: hash["info"]["nickname"],
         bio: (hash["info"]["description"][0..139] rescue nil),
         locale: I18n.locale.to_s,
         image_url: "https://graph.facebook.com/#{hash['uid']}/picture?type=large"
