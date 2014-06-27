@@ -67,7 +67,7 @@ class Project < ActiveRecord::Base
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
-                                     END ASC, projects.online_date DESC, projects.created_at DESC") }
+                                     END ASC, pg_search_rank DESC, projects.online_date DESC, projects.created_at DESC") }
   scope :order_for_admin, -> {
     reorder("
             CASE projects.state
