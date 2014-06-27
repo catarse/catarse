@@ -72,13 +72,21 @@ describe ProjectsController do
 
   describe "PUT update" do
     shared_examples_for "updatable project" do
-      before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
-      it {
-        project.reload
-        project.name.should == 'My Updated Title'
-      }
+      context "with valid permalink" do
+        before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
+        it {
+          project.reload
+          project.name.should == 'My Updated Title'
+        }
 
-      it{ should redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
+        it{ should redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
+      end
+
+      context "with invalid permalink" do
+        before { put :update, id: project.id, project: { permalink: '', name: 'My Updated Title' },locale: :pt }
+
+        it{ should redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
+      end
     end
 
     shared_examples_for "protected project" do
