@@ -29,8 +29,6 @@
   meta name="twitter:data1" content="#{@project.total_contributions}"
   meta name="twitter:label2" content="#{t('.sidebar.goal', total: @project.display_goal).html_safe}"
   meta name="twitter:data2" content="#{@project.display_pledged}"
-  meta name="twitter:label3" content="#{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}"
-  meta name="twitter:data3" content="#{@project.remaining_days}"
 
 #page_content
   .container
