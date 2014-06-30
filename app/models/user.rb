@@ -188,6 +188,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def project_owner?
+    projects.count(:all) > 0
+  end
+
   def contributed_projects
     Project.contributed_by(self.id)
   end
