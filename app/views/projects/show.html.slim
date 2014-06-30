@@ -20,9 +20,9 @@
   meta property="fb:admins" content="#{fb_admins}"
   
   meta name="twitter:card" content="product"
-  meta name="twitter:site" content="@catarse"
+  meta name="twitter:site" content="@#{CatarseSettings[:twitter_username]}"
   meta name="twitter:creator" content="@#{(@project.user.twitter ? @project.user.twitter : 'catarse')}"
-  meta name="twitter:domain" content="catarse.me"
+  meta name="twitter:domain" content="#{CatarseSettings[:host]}"
   meta name="twitter:title" content="#{@project.name}"
   meta name="twitter:image" content="#{@project.display_image('project_thumb_facebook')}"
   meta name="twitter:label1" content="#{t('.sidebar.contributions')}"
