@@ -14,7 +14,7 @@
     - if policy(@project).permitted_for?(:headline, :update)
       = form.input :headline, as: :string, required: false
     - if policy(@project).permitted_for?(:category_id, :update)
-      = form.input :category, as: :select, required: false
+      = form.association :category, as: :select, required: false
     - if policy(@project).permitted_for?(:video_url, :update)
       = form.input :video_url, as: :string, hint: t('formtastic.hints.project.video_url_edit'),required: false
     - if policy(@project).permitted_for?(:uploaded_image, :update)
