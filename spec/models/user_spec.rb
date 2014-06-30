@@ -167,7 +167,6 @@ describe User do
       'info' => {
         'name' => "Foo bar",
         'email' => 'another_email@anotherdomain.com',
-        'nickname' => "foobar",
         'description' => "Foo bar's bio".ljust(200),
         'image' => "image.png"
       }
