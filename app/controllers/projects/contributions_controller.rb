@@ -74,6 +74,7 @@ class Projects::ContributionsController < ApplicationController
 
     unless @contribution.confirmed?
       @contribution.update_attributes({ payment_method: 'Credits' })
+      @contribution.update_current_billing_info
       @contribution.confirm!
     end
     flash[:success] = t('projects.contributions.checkout.success')
