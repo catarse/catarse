@@ -1,6 +1,8 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
   after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel]
+  before_action :set_variants_for_twitter, only: :show
+  layout :set_layout_for_twitter, only: :show
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
@@ -104,6 +106,18 @@ class ProjectsController < ApplicationController
   end
 
   protected
+  def set_variants_for_twitter
+    request.variant = :twitter_bot if is_twitter_bot?
+  end
+
+  def set_layout_for_twitter
+    false if is_twitter_bot?
+  end
+
+  def is_twitter_bot?
+    request.user_agent == 'Twitterbot'
+  end
+
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end
