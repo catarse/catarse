@@ -1,4 +1,15 @@
 class ProjectPolicy < ApplicationPolicy
+
+  self::UserScope = Struct.new(:current_user, :user, :scope) do
+    def resolve
+      if current_user.try(:admin?) || current_user == user
+        scope.without_state('deleted')
+      else
+        scope.without_state(['deleted', 'draft', 'in_analysis', 'rejected'])
+      end
+    end
+  end
+
   def create?
     done_by_owner_or_admin?
   end
