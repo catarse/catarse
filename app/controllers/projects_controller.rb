@@ -1,8 +1,8 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
   after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel]
-  before_action :set_variants_for_twitter, only: [:show]
-  layout :set_layout_for_twitter, only: [ :show ]
+  before_action :set_variants_for_twitter, only: :show
+  layout :set_layout_for_twitter, only: :show
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
