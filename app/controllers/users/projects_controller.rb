@@ -7,6 +7,7 @@ class Users::ProjectsController < ApplicationController
   belongs_to :user
 
   def index
+    collection
     render layout: false
   end
 
