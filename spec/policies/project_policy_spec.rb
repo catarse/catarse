@@ -24,6 +24,36 @@ describe ProjectPolicy do
     end
   end
 
+  describe 'UserScope' do
+    describe ".resolve" do
+      let(:current_user) { create(:user, admin: false) }
+      let(:user) { create(:user) }
+
+      before do
+        @draft = create(:project, state: 'draft', user: user)
+        @online = create(:project, state: 'online', user: user)
+        @in_analysis = create(:project, state: 'in_analysis', user: user)
+      end
+
+      subject { ProjectPolicy::UserScope.new(current_user, user, user.projects).resolve.order('created_at desc') }
+
+      context "when user is admin" do
+        let(:current_user) { create(:user, admin: true) }
+
+        it { should have(3).itens }
+      end
+
+      context "when user is a project owner" do
+        let(:current_user) { user }
+        it { should eq [@in_analysis, @online, @draft] }
+      end
+
+      context "when user is not an admin and project owner" do
+        it { should eq [@online] }
+      end
+    end
+  end
+
   permissions :create? do
     it_should_behave_like "create permissions"
   end
