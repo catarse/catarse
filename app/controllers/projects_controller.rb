@@ -107,11 +107,15 @@ class ProjectsController < ApplicationController
 
   protected
   def set_variants_for_twitter
-    request.variant = :twitter_bot if request.user_agent == 'Twitterbot'
+    request.variant = :twitter_bot if is_twitter_bot?
   end
 
   def set_layout_for_twitter
-    false if request.user_agent == 'Twitterbot'
+    false if is_twitter_bot?
+  end
+
+  def is_twitter_bot?
+    request.user_agent == 'Twitterbot'
   end
 
   def permitted_params
