@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   before_filter :force_http, unless: :devise_controller?
 
   helper_method :channel, :namespace, :referal_link
+  helper CatarseCredits::Engine.helpers
 
   before_filter :set_locale
 

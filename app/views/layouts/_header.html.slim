@@ -30,7 +30,7 @@ header.header
               - if current_user.project_owner?
                 li= link_to t('.projects'), user_path(current_user, anchor: 'projects')
               - if defined?(CatarseCredits)
-                li= build_user_menu_credits_link
+                li= build_user_menu_credits_link(current_user)
               - if current_user.admin? || current_user.channel
                 li.divider
                 - for menu, path in controller.menu do
