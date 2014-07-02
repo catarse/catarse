@@ -44,43 +44,6 @@ describe Projects::ContributionsController do
     end
   end
 
-  describe "PUT credits_checkout" do
-    let(:failed_project) { create(:project, state: 'online') }
-    before do
-      put :credits_checkout, { locale: :pt, project_id: project.id, id: contribution.id }
-    end
-
-    context "without user" do
-      it{ should redirect_to(new_user_registration_path) }
-    end
-
-    context "when contribution don't exist in current_user" do
-      let(:user){ create(:user) }
-      it{ should redirect_to(root_path) }
-      it('should set flash failure'){ request.flash[:alert].should_not be_empty }
-    end
-
-    context "with correct user but insufficient credits" do
-      let(:user){ contribution.user }
-      it('should not confirm contribution'){ contribution.reload.confirmed?.should be_false }
-      it('should set flash failure'){ request.flash[:failure].should == I18n.t('projects.contributions.checkout.no_credits') }
-      it{ should redirect_to(new_project_contribution_path(project)) }
-    end
-
-    context "with correct user and sufficient credits" do
-      let(:user) do
-        create(:contribution, value: 10.00, credits: false, state: 'confirmed', user: contribution.user, project: failed_project)
-        failed_project.update_attributes state: 'failed'
-        contribution.user.reload
-        contribution.user
-      end
-
-      it('should confirm contribution'){ contribution.reload.confirmed?.should be_true }
-      it('should set flash success'){ request.flash[:success].should == I18n.t('projects.contributions.checkout.success') }
-      it{ should redirect_to(project_contribution_path(project_id: project.id, id: contribution.id)) }
-    end
-  end
-
   describe "GET edit" do
     before do
       request.env['REQUEST_URI'] = "/test_path"
