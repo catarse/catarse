@@ -76,6 +76,7 @@ describe Projects::ContributionsController do
       end
 
       it('should confirm contribution'){ contribution.reload.confirmed?.should be_true }
+      it('should mark with credits'){ contribution.reload.credits.should be_true }
       it('should set flash success'){ request.flash[:success].should == I18n.t('projects.contributions.checkout.success') }
       it{ should redirect_to(project_contribution_path(project_id: project.id, id: contribution.id)) }
     end

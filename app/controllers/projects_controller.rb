@@ -1,6 +1,8 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
   after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel]
+  before_action :set_variants_for_twitter, only: :show
+  layout :set_layout_for_twitter, only: :show
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
@@ -12,7 +14,10 @@ class ProjectsController < ApplicationController
     index! do |format|
       format.html do
         if request.xhr?
-          @projects = apply_scopes(Project).visible.order_for_search.includes(:project_total, :user, :category).page(params[:page]).per(6)
+          @projects = apply_scopes(Project.visible.order_status)
+            .most_recent_first
+            .includes(:project_total, :user, :category)
+            .page(params[:page]).per(6)
           return render partial: 'project', collection: @projects, layout: false
         else
           @title = t("site.title")
@@ -49,8 +54,11 @@ class ProjectsController < ApplicationController
   end
 
   def send_to_analysis
+    authorize resource
     resource.send_to_analysis
-    authorize @project
+    if referal_link.present?
+      resource.update_attribute :referal_link, referal_link
+    end
     flash[:notice] = t('projects.send_to_analysis')
     redirect_to project_by_slug_path(@project.permalink)
   end
@@ -65,7 +73,7 @@ class ProjectsController < ApplicationController
           flash[:notice] = t('project.update.success')
         end
 
-        redirect_to project_by_slug_path(@project.permalink, anchor: 'edit')
+        redirect_to project_by_slug_path(@project.reload.permalink, anchor: 'edit')
       end
     end
   end
@@ -98,6 +106,18 @@ class ProjectsController < ApplicationController
   end
 
   protected
+  def set_variants_for_twitter
+    request.variant = :twitter_bot if is_twitter_bot?
+  end
+
+  def set_layout_for_twitter
+    false if is_twitter_bot?
+  end
+
+  def is_twitter_bot?
+    request.user_agent == 'Twitterbot'
+  end
+
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end

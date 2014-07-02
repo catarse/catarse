@@ -31,12 +31,24 @@ describe ProjectsController do
   describe "GET send_to_analysis" do
     let(:current_user){ project.user }
 
-    before do
-      get :send_to_analysis, id: project.id, locale: :pt
-      project.reload
+    context "without referal link" do
+      before do
+        get :send_to_analysis, id: project.id, locale: :pt
+        project.reload
+      end
+
+      it { project.in_analysis?.should be_true }
     end
 
-    it { project.in_analysis?.should be_true }
+    context "with referal link" do
+      subject { project.referal_link }
+      before do
+        get :send_to_analysis, id: project.id, locale: :pt, ref: 'referal'
+        project.reload
+      end
+
+      it { should == 'referal' }
+    end
   end
 
   describe "GET index" do
@@ -72,13 +84,21 @@ describe ProjectsController do
 
   describe "PUT update" do
     shared_examples_for "updatable project" do
-      before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
-      it {
-        project.reload
-        project.name.should == 'My Updated Title'
-      }
+      context "with valid permalink" do
+        before { put :update, id: project.id, project: { name: 'My Updated Title' },locale: :pt }
+        it {
+          project.reload
+          project.name.should == 'My Updated Title'
+        }
 
-      it{ should redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
+        it{ should redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
+      end
+
+      context "with invalid permalink" do
+        before { put :update, id: project.id, project: { permalink: '', name: 'My Updated Title' },locale: :pt }
+
+        it{ should redirect_to project_by_slug_path(project.permalink, anchor: 'edit') }
+      end
     end
 
     shared_examples_for "protected project" do

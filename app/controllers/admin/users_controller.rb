@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::BaseController
 
   protected
   def collection
-    @users ||= apply_scopes(end_of_association_chain.joins(:user_total)).order_by(params[:order_by] || 'coalesce(user_totals.sum, 0) DESC').includes(:user_total).page(params[:page])
+    @users ||= apply_scopes(end_of_association_chain).with_user_totals.order_by(params[:order_by] || 'coalesce(user_totals.sum, 0) DESC').includes(:user_total).page(params[:page])
   end
 end
 
