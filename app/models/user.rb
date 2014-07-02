@@ -107,6 +107,7 @@ class User < ActiveRecord::Base
   end
 
   def deactivate
+    self.notify(:user_deactivate)
     self.update_attributes deactivated_at: Time.now, reactivate_token: Devise.friendly_token
     self.contributions.update_all(anonymous: true)
   end
