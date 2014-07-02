@@ -22,6 +22,9 @@ describe Project do
     %w[name user category about headline goal permalink].each do |field|
       it{ should validate_presence_of field }
     end
+    it{ should validate_numericality_of(:goal) }
+    it{ should allow_value(10).for(:goal) }
+    it{ should_not allow_value(8).for(:goal) }
     it{ should ensure_length_of(:headline).is_at_most(140) }
     it{ should allow_value('http://vimeo.com/12111').for(:video_url) }
     it{ should allow_value('vimeo.com/12111').for(:video_url) }

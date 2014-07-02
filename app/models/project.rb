@@ -61,13 +61,14 @@ class Project < ActiveRecord::Base
   scope :expiring, -> { not_expired.where("projects.expires_at <= (current_timestamp + interval '2 weeks')") }
   scope :not_expiring, -> { not_expired.where("NOT (projects.expires_at <= (current_timestamp + interval '2 weeks'))") }
   scope :recent, -> { where("(current_timestamp - projects.online_date) <= '5 days'::interval") }
-  scope :order_for_search, ->{ reorder("
+  scope :order_status, ->{ order("
                                      CASE projects.state
                                      WHEN 'online' THEN 1
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
-                                     END ASC, projects.online_date DESC, projects.created_at DESC") }
+                                     END ASC")}
+  scope :most_recent_first, ->{ order("projects.online_date DESC, projects.created_at DESC") }
   scope :order_for_admin, -> {
     reorder("
             CASE projects.state
@@ -103,6 +104,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days, less_than_or_equal_to: 60
+  validates_numericality_of :goal, greater_than: 9
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
 

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     :medium_name, :display_credits, :display_total_of_contributions, :contributions_text, :twitter_link, :gravatar_url,
     to: :decorator
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :nickname,
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
     :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token
@@ -39,6 +39,9 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
 
   scope :active, ->{ where('deactivated_at IS NULL') }
+  scope :with_user_totals, -> {
+    joins("LEFT OUTER JOIN user_totals on user_totals.user_id = users.id")
+  }
   scope :contributions, -> {
     where("id IN (
       SELECT DISTINCT user_id
@@ -104,6 +107,7 @@ class User < ActiveRecord::Base
   end
 
   def deactivate
+    self.notify(:user_deactivate)
     self.update_attributes deactivated_at: Time.now, reactivate_token: Devise.friendly_token
     self.contributions.update_all(anonymous: true)
   end
@@ -164,7 +168,6 @@ class User < ActiveRecord::Base
       {
         name: hash['info']['name'],
         email: hash['info']['email'],
-        nickname: hash["info"]["nickname"],
         bio: (hash["info"]["description"][0..139] rescue nil),
         locale: I18n.locale.to_s,
         image_url: "https://graph.facebook.com/#{hash['uid']}/picture?type=large"
@@ -184,6 +187,10 @@ class User < ActiveRecord::Base
     contributed_projects.map do |p|
       unsubscribes.updates_unsubscribe(p.id)
     end
+  end
+
+  def project_owner?
+    projects.count(:all) > 0
   end
 
   def contributed_projects
