@@ -1,6 +1,6 @@
 class Projects::ContributionsController < ApplicationController
   inherit_resources
-  actions :index, :show, :new, :update, :review, :create, :credits_checkout
+  actions :index, :show, :new, :update, :review, :create
   skip_before_filter :force_http
   skip_before_filter :verify_authenticity_token, only: [:moip]
   has_scope :available_to_count, type: :boolean
@@ -65,21 +65,6 @@ class Projects::ContributionsController < ApplicationController
     @thank_you_id = @project.id
   end
 
-  def credits_checkout
-    authorize resource
-    if current_user.credits < @contribution.value
-      flash[:failure] = t('projects.contributions.checkout.no_credits')
-      return redirect_to new_project_contribution_path(@contribution.project)
-    end
-
-    unless @contribution.confirmed?
-      @contribution.update_attributes({ payment_method: 'Credits' })
-      @contribution.update_current_billing_info
-      @contribution.confirm!
-    end
-    flash[:success] = t('projects.contributions.checkout.success')
-    redirect_to project_contribution_path(project_id: parent.id, id: resource.id)
-  end
 
   protected
   def permitted_params
