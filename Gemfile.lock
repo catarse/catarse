@@ -17,6 +17,12 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (>= 1.5.0)
 
+PATH
+  remote: ~/store/code/catarse_credits
+  specs:
+    catarse_credits (0.0.1)
+      rails (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -474,6 +480,7 @@ DEPENDENCIES
   browser
   capybara (~> 2.1.0)
   carrierwave (~> 0.10.0)
+  catarse_credits!
   catarse_moip (~> 2.3.5)
   catarse_monkeymail (>= 0.1.6)
   catarse_paypal_express (= 2.2.3)
