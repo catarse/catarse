@@ -1,7 +1,20 @@
 - project = @notification.project
 - project_link = project_by_slug_url(permalink: project.permalink)
 |#renato420
+br/
+= project.name
+br/
+br/
 = link_to project_link, project_link
 br/
 br/
+'Arrecadado:
 = project.display_pledged
+br/
+br/
+'Data de expiração:
+= project.display_expires_at
+br/
+br/
+'Usuario moip:
+= project.user.moip_login
