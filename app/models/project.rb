@@ -104,6 +104,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days, less_than_or_equal_to: 60
+  validates_numericality_of :goal, greater_than: 9
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
 
