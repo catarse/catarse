@@ -17,6 +17,13 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (>= 1.5.0)
 
+PATH
+  remote: ../user_notifier
+  specs:
+    user_notifier (0.0.2)
+      rails (>= 4.0.0)
+      sidekiq
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -449,9 +456,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    user_notifier (0.0.2)
-      rails (>= 4.0.0)
-      sidekiq
     valuable (0.9.8)
     video_info (2.3.1)
       addressable
@@ -543,6 +547,6 @@ DEPENDENCIES
   to_xls
   uglifier
   unicorn
-  user_notifier
+  user_notifier!
   video_info (>= 1.1.1)
   weekdays
