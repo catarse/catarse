@@ -100,14 +100,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  #def notify(template_name, params = {})
-  #  Notification.notify(
-  #    template_name,
-  #    self,
-  #    params
-  #  )
-  #end
-
   def active_for_authentication?
     super && deactivated_at.nil?
   end
