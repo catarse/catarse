@@ -220,8 +220,13 @@ describe User do
 
   describe "#deactivate" do
     before do
+      Notification.unstub(:notify)
       @contribution = create(:contribution, user: user, anonymous: false)
       user.deactivate
+    end
+
+    it "should send user_deactivate notification" do
+      expect(Notification.last.template_name).to eq 'user_deactivate'
     end
 
     it "should set all contributions as anonymous" do

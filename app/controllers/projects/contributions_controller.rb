@@ -65,7 +65,6 @@ class Projects::ContributionsController < ApplicationController
     @thank_you_id = @project.id
   end
 
-
   protected
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
