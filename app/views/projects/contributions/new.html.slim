@@ -11,11 +11,6 @@
             = hidden_field_tag 'credits', current_user.credits.to_i
             = form.input :referal_link, as: :hidden, input_html: { value: referal_link }
             = form.label :value, t('formtastic.labels.contribution.value')
-            - if current_user.credits >= 10
-              .bootstrap-alert
-                .alert.alert-info
-                  = form.input :credits, hint: t('formtastic.hints.contribution.credits', credits: current_user.display_credits).html_safe
-              .clearfix
             = form.input :value, required: true, as: :string, label: false,  input_html: { pattern: '\\d+', autocomplete: 'off', data: { rewards: @rewards.map{|r| {id: r.id, minimum_value: r.minimum_value.to_i} }.to_json } }
             .simbol
               p R$
