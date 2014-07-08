@@ -10,9 +10,10 @@ class Projects::ContributionsController < ApplicationController
   belongs_to :project
   before_filter :detect_old_browsers, only: [:new, :create]
 
+  helper_method :avaiable_payment_engines
+
   def edit
     authorize resource
-    load_payment_engines
   end
 
   def update
@@ -71,8 +72,8 @@ class Projects::ContributionsController < ApplicationController
     params.permit(policy(resource).permitted_attributes)
   end
 
-  def load_payment_engines
-    @engines = PaymentEngines.engines.inject([]) do |total, item|
+  def avaiable_payment_engines
+    @engines ||= PaymentEngines.engines.inject([]) do |total, item|
       if item.name == 'Credits' && current_user.credits > 0
         total << item
       elsif item.name != 'Credits'
