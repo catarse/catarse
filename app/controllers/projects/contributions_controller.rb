@@ -12,6 +12,16 @@ class Projects::ContributionsController < ApplicationController
 
   def edit
     authorize resource
+
+    @engines = PaymentEngines.engines.inject([]) do |total, item|
+      if item.name == 'Credits' && current_user.credits > 0
+        total << item
+      elsif item.name != 'Credits'
+        total << item
+      end
+
+      total
+    end
   end
 
   def update
