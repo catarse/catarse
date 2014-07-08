@@ -12,16 +12,7 @@ class Projects::ContributionsController < ApplicationController
 
   def edit
     authorize resource
-
-    @engines = PaymentEngines.engines.inject([]) do |total, item|
-      if item.name == 'Credits' && current_user.credits > 0
-        total << item
-      elsif item.name != 'Credits'
-        total << item
-      end
-
-      total
-    end
+    load_payment_engines
   end
 
   def update
@@ -78,6 +69,18 @@ class Projects::ContributionsController < ApplicationController
   protected
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
+  end
+
+  def load_payment_engines
+    @engines = PaymentEngines.engines.inject([]) do |total, item|
+      if item.name == 'Credits' && current_user.credits > 0
+        total << item
+      elsif item.name != 'Credits'
+        total << item
+      end
+
+      total
+    end
   end
 
   def collection
