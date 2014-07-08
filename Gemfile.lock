@@ -84,7 +84,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    catarse_credits (0.0.3)
+    catarse_credits (0.0.4)
       rails (>= 4.0)
     catarse_moip (2.3.5)
       enumerate_it
@@ -476,7 +476,7 @@ DEPENDENCIES
   browser
   capybara (~> 2.1.0)
   carrierwave (~> 0.10.0)
-  catarse_credits (= 0.0.3)
+  catarse_credits (= 0.0.4)
   catarse_moip (~> 2.3.5)
   catarse_monkeymail (>= 0.1.6)
   catarse_paypal_express (= 2.2.3)
