@@ -84,6 +84,8 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    catarse_credits (0.0.4)
+      rails (>= 4.0)
     catarse_moip (2.3.5)
       enumerate_it
       libxml-ruby (~> 2.6.0)
@@ -244,7 +246,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
-    minitest (5.3.4)
+    minitest (5.3.5)
     mixpanel-ruby (1.4.0)
     money (6.1.1)
       i18n (~> 0.6.4)
@@ -474,6 +476,7 @@ DEPENDENCIES
   browser
   capybara (~> 2.1.0)
   carrierwave (~> 0.10.0)
+  catarse_credits (= 0.0.4)
   catarse_moip (~> 2.3.5)
   catarse_monkeymail (>= 0.1.6)
   catarse_paypal_express (= 2.2.3)
@@ -518,7 +521,7 @@ DEPENDENCIES
   protected_attributes (~> 1.0.5)
   pry
   pundit
-  rails (~> 4.1.1)
+  rails (= 4.1.1)
   rails-observers (~> 0.1.2)
   rails_12factor
   ranked-model

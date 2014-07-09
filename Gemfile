@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails',    '~> 4.1.1'
+gem 'rails', '4.1.1'
 
 gem 'protected_attributes', '~> 1.0.5' # When upgrade to strong_parameters, remove this gem.
 gem 'rails-observers', '~> 0.1.2'
@@ -32,6 +32,7 @@ gem 'mixpanel-ruby'
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
 gem 'catarse_moip', '~> 2.3.5'
+gem 'catarse_credits', '0.0.4'
 # gem 'catarse_wepay', '~> 0.0.1'
 
 # Decorators

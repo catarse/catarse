@@ -1,6 +1,6 @@
 class Projects::ContributionsController < ApplicationController
   inherit_resources
-  actions :index, :show, :new, :update, :review, :create, :credits_checkout
+  actions :index, :show, :new, :update, :review, :create
   skip_before_filter :force_http
   skip_before_filter :verify_authenticity_token, only: [:moip]
   has_scope :available_to_count, type: :boolean
@@ -9,6 +9,8 @@ class Projects::ContributionsController < ApplicationController
   after_filter :verify_authorized, except: [:index]
   belongs_to :project
   before_filter :detect_old_browsers, only: [:new, :create]
+
+  helper_method :avaiable_payment_engines
 
   def edit
     authorize resource
@@ -65,25 +67,21 @@ class Projects::ContributionsController < ApplicationController
     @thank_you_id = @project.id
   end
 
-  def credits_checkout
-    authorize resource
-    if current_user.credits < @contribution.value
-      flash[:failure] = t('projects.contributions.checkout.no_credits')
-      return redirect_to new_project_contribution_path(@contribution.project)
-    end
-
-    unless @contribution.confirmed?
-      @contribution.update_attributes({ credits: true, payment_method: 'Credits' })
-      @contribution.update_current_billing_info
-      @contribution.confirm!
-    end
-    flash[:success] = t('projects.contributions.checkout.success')
-    redirect_to project_contribution_path(project_id: parent.id, id: resource.id)
-  end
-
   protected
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
+  end
+
+  def avaiable_payment_engines
+    @engines ||= PaymentEngines.engines.inject([]) do |total, item|
+      if item.name == 'Credits' && current_user.credits > 0
+        total << item
+      elsif item.name != 'Credits'
+        total << item
+      end
+
+      total
+    end
   end
 
   def collection
