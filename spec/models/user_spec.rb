@@ -199,7 +199,7 @@ describe User do
     end
 
     it "should create notification" do
-      notification = Notification.last
+      notification = UserNotification.last
       expect(notification.user).to eq user
       expect(notification.template_name).to eq 'heartbleed'
     end
@@ -228,7 +228,7 @@ describe User do
     end
 
     it "should send user_deactivate notification" do
-      expect(Notification.last.template_name).to eq 'user_deactivate'
+      expect(UserNotification.last.template_name).to eq 'user_deactivate'
     end
 
     it "should set all contributions as anonymous" do
