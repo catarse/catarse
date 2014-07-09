@@ -14,7 +14,6 @@ describe User do
     it{ should have_many :updates }
     it{ should have_many :unsubscribes }
     it{ should have_many :authorizations }
-    it{ should have_many(:oauth_providers).through(:authorizations) }
     it{ should have_many :channels_subscribers }
     it{ should have_one :user_total }
     it{ should belong_to :channel }
@@ -158,23 +157,6 @@ describe User do
       create(:contribution, state: 'pending', project: successful_project)
     end
     it{ should == [@contribution.user] }
-  end
-
-  describe ".create_from_hash" do
-    let(:auth)  do {
-      'provider' => "facebook",
-      'uid' => "foobar",
-      'info' => {
-        'name' => "Foo bar",
-        'email' => 'another_email@anotherdomain.com',
-        'description' => "Foo bar's bio".ljust(200),
-        'image' => "image.png"
-      }
-    }
-    end
-    subject{ User.create_from_hash(auth) }
-    it{ should be_persisted }
-    its(:email){ should == auth['info']['email'] }
   end
 
   describe ".create" do
@@ -371,18 +353,6 @@ describe User do
       create(:contribution, user: user, project: @p1)
     end
     it{should == [@p1]}
-  end
-
-  describe "#facebook_id" do
-    subject{ user.facebook_id }
-    context "when user have a FB authorization" do
-      let(:user){ create(:user, authorizations: [ create(:authorization, uid: 'bar', oauth_provider: facebook_provider)]) }
-      it{ should == 'bar' }
-    end
-    context "when user do not have a FB authorization" do
-      let(:user){ create(:user) }
-      it{ should == nil }
-    end
   end
 
   describe "#fix_facebook_link" do

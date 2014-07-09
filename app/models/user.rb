@@ -1,5 +1,6 @@
 # coding: utf-8
 class User < ActiveRecord::Base
+  include User::OmniauthHandler
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   # :validatable
@@ -28,8 +29,8 @@ class User < ActiveRecord::Base
   validates_length_of :password, within: Devise.password_length, allow_blank: true
 
   schema_associations
-  has_many :oauth_providers, through: :authorizations
   has_one :user_total
+  has_many :contributed_projects, -> { where(contributions: { state: 'confirmed' } ).uniq } ,through: :contributions, source: :project
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
 
@@ -41,12 +42,6 @@ class User < ActiveRecord::Base
   scope :active, ->{ where('deactivated_at IS NULL') }
   scope :with_user_totals, -> {
     joins("LEFT OUTER JOIN user_totals on user_totals.user_id = users.id")
-  }
-  scope :contributions, -> {
-    where("id IN (
-      SELECT DISTINCT user_id
-      FROM contributions
-      WHERE contributions.state <> ALL(ARRAY['pending'::character varying::text, 'canceled'::character varying::text]))")
   }
 
   scope :who_contributed_project, ->(project_id) {
@@ -116,11 +111,6 @@ class User < ActiveRecord::Base
     contributions.available_to_count.where(project_id: project_id).present?
   end
 
-  def has_facebook_authentication?
-    oauth = OauthProvider.find_by_name 'facebook'
-    authorizations.where(oauth_provider_id: oauth.id).present? if oauth
-  end
-
   def decorator
     @decorator ||= UserDecorator.new(self)
   end
@@ -153,30 +143,9 @@ class User < ActiveRecord::Base
     }.to_json
   end
 
-  def facebook_id
-    auth = authorizations.joins(:oauth_provider).where("oauth_providers.name = 'facebook'").first
-    auth.uid if auth
-  end
-
   def to_param
     return "#{self.id}" unless self.display_name
     "#{self.id}-#{self.display_name.parameterize}"
-  end
-
-  def self.create_from_hash(hash)
-    create!(
-      {
-        name: hash['info']['name'],
-        email: hash['info']['email'],
-        bio: (hash["info"]["description"][0..139] rescue nil),
-        locale: I18n.locale.to_s,
-        image_url: "https://graph.facebook.com/#{hash['uid']}/picture?type=large"
-      }
-    )
-  end
-
-  def total_contributions
-    contributions.confirmed.not_anonymous.count(:all)
   end
 
   def updates_subscription
@@ -191,10 +160,6 @@ class User < ActiveRecord::Base
 
   def project_owner?
     projects.count(:all) > 0
-  end
-
-  def contributed_projects
-    Project.contributed_by(self.id)
   end
 
   def fix_twitter_user

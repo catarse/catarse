@@ -264,22 +264,6 @@ describe Project do
     end
   end
 
-  describe ".contributed_by" do
-    before do
-      contribution = create(:contribution, state: 'confirmed')
-      @user = contribution.user
-      @project = contribution.project
-      # Another contribution with same project and user should not create duplicate results
-      create(:contribution, user: @user, project: @project, state: 'confirmed')
-      # Another contribution with other project and user should not be in result
-      create(:contribution, state: 'confirmed')
-      # Another contribution with different project and same user but not confirmed should not be in result
-      create(:contribution, user: @user, state: 'pending')
-    end
-    subject{ Project.contributed_by(@user.id) }
-    it{ should == [@project] }
-  end
-
   describe ".expired" do
     before do
       @p = create(:project, online_days: -1)
