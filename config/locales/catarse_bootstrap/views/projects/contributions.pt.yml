@@ -11,9 +11,9 @@ pt:
         anonymous_description: Optou por permanecer incógnito
         no_reward: Este apoiador não selecionou nenhuma recompensa
       edit:
-        credits_submit: 'Pagar com creditos'
-        credits_title: 'Pagar utilizando creditos'
-        insufficient_credits: "Seus creditos não são suficientes para completar esse apoio, por favor escolha outro meio de pagamento."
+        credits_submit: 'Efetuar pagamento'
+        credits_title: 'Pagamento com créditos'
+        insufficient_credits: "Você possui %{credits} em créditos. Esse valor não é suficiente para realizar o apoio, por favor escolha outro meio de pagamento."
         choose_payment: Como você quer pagar?
         choose_payment_subtitle: Selecione abaixo uma forma de pagamento
         cpf: 'Para prosseguir, por favor informe:'
@@ -49,7 +49,7 @@ pt:
         submit: Revisar e realizar pagamento
         title: Apoie o %{name}
       review:
-        Credits: 'Creditos'
+        Credits: 'Créditos'
         error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
       show:
         header_subtitle: Sem você talvez este projeto não tivesse uma chance. Bem-vindo
