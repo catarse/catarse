@@ -31,7 +31,10 @@ class Project < ActiveRecord::Base
       [:headline, 'B'],
       [:about, 'C']
     ],
-    associated_against:  {user: [:name, :address_city ]},
+    associated_against:  {
+      user: [:name, :address_city ],
+      category: [:name_pt, :name_en]
+    },
     using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
