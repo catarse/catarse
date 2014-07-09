@@ -10,6 +10,7 @@ describe Projects::ContributionsController do
   subject{ response }
 
   before do
+    PaymentEngines.stub(:engines).and_return([])
     controller.stub(:current_user).and_return(user)
   end
 
