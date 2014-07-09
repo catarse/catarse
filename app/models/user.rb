@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
   schema_associations
   has_one :user_total
+  has_many :contributed_projects, -> { where(contributions: { state: 'confirmed' } ).uniq } ,through: :contributions, source: :project
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
 
@@ -159,10 +160,6 @@ class User < ActiveRecord::Base
 
   def project_owner?
     projects.count(:all) > 0
-  end
-
-  def contributed_projects
-    Project.contributed_by(self.id)
   end
 
   def fix_twitter_user
