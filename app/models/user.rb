@@ -42,12 +42,6 @@ class User < ActiveRecord::Base
   scope :with_user_totals, -> {
     joins("LEFT OUTER JOIN user_totals on user_totals.user_id = users.id")
   }
-  scope :contributions, -> {
-    where("id IN (
-      SELECT DISTINCT user_id
-      FROM contributions
-      WHERE contributions.state <> ALL(ARRAY['pending'::character varying::text, 'canceled'::character varying::text]))")
-  }
 
   scope :who_contributed_project, ->(project_id) {
     where("id IN (SELECT user_id FROM contributions WHERE contributions.state = 'confirmed' AND project_id = ?)", project_id)
@@ -151,10 +145,6 @@ class User < ActiveRecord::Base
   def to_param
     return "#{self.id}" unless self.display_name
     "#{self.id}-#{self.display_name.parameterize}"
-  end
-
-  def total_contributions
-    contributions.confirmed.not_anonymous.count(:all)
   end
 
   def updates_subscription
