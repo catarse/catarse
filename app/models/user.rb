@@ -87,6 +87,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def change_locale(language)
+    if locale != language
+      puts 'fooo'
+      self.update_attributes locale: language
+    end
+  end
+
   def notify(template_name, params = {})
     Notification.notify(
       template_name,

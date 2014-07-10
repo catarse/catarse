@@ -172,6 +172,26 @@ describe User do
     its(:facebook_link){ should == 'http://facebook.com/test' }
   end
 
+  describe "#change_locale" do
+    let(:user) { create(:user, locale: 'pt') }
+
+    context "when user already has a locale" do
+      before do
+        user.should_not_receive(:update_attributes).with(locale: 'pt')
+      end
+
+      it { user.change_locale('pt') }
+    end
+
+    context "when locale is diff from the user locale" do
+      before do
+        user.should_receive(:update_attributes).with(locale: 'en')
+      end
+
+      it { user.change_locale('en') }
+    end
+  end
+
   describe "#notify" do
     before do
       Notification.unstub(:notify)
