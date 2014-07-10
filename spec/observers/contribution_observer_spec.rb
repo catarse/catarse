@@ -30,7 +30,7 @@ describe ContributionObserver do
     context "when payment_choice is updated to BoletoBancario" do
       let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
-        Notification.should_receive(:notify_once).with(:payment_slip, contribution.user, {contribution_id: contribution.id}, contribution: contribution)
+        ContributionNotification.should_receive(:notify_once).with(:payment_slip, contribution.user, contribution, {})
         contribution.payment_choice = 'BoletoBancario'
         contribution.save!
       end
@@ -67,8 +67,10 @@ describe ContributionObserver do
     context "when is not yet confirmed" do
       context 'notify the contribution' do
         before do
-          Notification.should_receive(:notify).at_least(:once).with(:confirm_contribution,
-            contribution.user, contribution: contribution,  project_name: contribution.project.name)
+          ContributionNotification.
+            should_receive(:notify).
+            at_least(:once).
+            with(:confirm_contribution, contribution.user, contribution)
         end
 
         it("should send confirm_contribution notification"){ subject }
@@ -94,7 +96,7 @@ describe ContributionObserver do
       end
 
       it "should notify contributor about refund" do
-        expect(Notification.where(template_name: 'refund_completed', user_id: contribution.user.id).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'refund_completed', user_id: contribution.user.id).count).to eq 1
       end
     end
 
@@ -105,7 +107,7 @@ describe ContributionObserver do
       end
 
       it "should notify contributor about refund" do
-        expect(Notification.where(template_name: 'refund_completed_slip', user_id: contribution.user.id).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'refund_completed_slip', user_id: contribution.user.id).count).to eq 1
       end
     end
   end
@@ -125,8 +127,8 @@ describe ContributionObserver do
       end
 
       it "should notify admin and contributor upon refund request" do
-        expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: contribution.user.email, origin_name: contribution.user.name).count).to eq 1
-        expect(Notification.where(template_name: 'requested_refund', user_id: contribution.user.id).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'requested_refund', user_id: contribution.user.id).count).to eq 1
       end
     end
 
@@ -138,8 +140,8 @@ describe ContributionObserver do
       end
 
       it "should notify admin and contributor upon refund request" do
-        expect(Notification.where(template_name: 'refund_request', user_id: admin.id, origin_email: contribution.user.email, origin_name: contribution.user.name).count).to eq 1
-        expect(Notification.where(template_name: 'requested_refund_slip', user_id: contribution.user.id).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'refund_request', user_id: admin.id, from_email: contribution.user.email, from_name: contribution.user.name).count).to eq 1
+        expect(ContributionNotification.where(template_name: 'requested_refund_slip', user_id: contribution.user.id).count).to eq 1
       end
     end
   end
@@ -155,18 +157,18 @@ describe ContributionObserver do
       before do
         contribution.confirm
 
-        Notification.should_receive(:notify_once).with(
+        ContributionNotification.should_receive(:notify_once).with(
           :contribution_canceled_after_confirmed,
           user_finan,
-          {contribution_id: contribution.id},
-          contribution: contribution
+          contribution,
+          {}
         )
 
-        Notification.should_receive(:notify_once).with(
+        ContributionNotification.should_receive(:notify_once).with(
           :contribution_canceled,
           contribution.user,
-          { contribution_id: contribution.id },
-          contribution: contribution
+          contribution,
+          {}
         )
       end
 
@@ -178,11 +180,11 @@ describe ContributionObserver do
         contribution.update_attributes payment_choice: 'BoletoBancario'
         contribution.confirm
 
-        Notification.should_receive(:notify_once).with(
+        ContributionNotification.should_receive(:notify_once).with(
           :contribution_canceled_slip,
           contribution.user,
-          { contribution_id: contribution.id },
-          contribution: contribution
+          contribution,
+          {}
         )
       end
 

@@ -9,6 +9,7 @@ describe Contribution do
   let(:sucessful_project_contribution){ create(:contribution, state: 'confirmed', user: user, project: successful_project) }
   let(:not_confirmed_contribution){ create(:contribution, user: user, project: unfinished_project) }
   let(:valid_refund){ create(:contribution, state: 'confirmed', user: user, project: failed_project) }
+  let(:contribution) { create(:contribution) }
 
 
   describe "Associations" do
@@ -83,23 +84,105 @@ describe Contribution do
   end
 
   describe '#slip_payment?' do
-    let(:contribution) { create(:contribution, payment_choice: 'BoletoBancario')}
-
     subject { contribution.slip_payment? }
 
     context "when contribution is made with Boleto" do
+      before do
+        contribution.update_attributes payment_choice: 'BoletoBancario'
+      end
       it { should be_true}
     end
 
     context "when contribution is not made with Boleto" do
-      let(:contribution) { create(:contribution, payment_choice: 'CartaoDeCredito')}
+      before do
+        contribution.update_attributes payment_choice: 'CartaoDeCredito'
+      end
       it { should be_false}
+    end
+  end
+
+  describe "#update_current_billing_info" do
+    let(:contribution) { build(:contribution, user: user) }
+    let(:user) {
+      build(:user, {
+        address_street: 'test stret',
+        address_number: '123',
+        address_neighbourhood: 'test area',
+        address_zip_code: 'test zipcode',
+        address_city: 'test city',
+        address_state: 'test state',
+        phone_number: 'test phone',
+        cpf: 'test doc number'
+      })
+    }
+    subject{ contribution }
+    before do
+      contribution.update_current_billing_info
+    end
+    its(:payer_name) { should eq(user.display_name) }
+    its(:address_street){ should eq(user.address_street) }
+    its(:address_number){ should eq(user.address_number) }
+    its(:address_neighbourhood){ should eq(user.address_neighbourhood) }
+    its(:address_zip_code){ should eq(user.address_zip_code) }
+    its(:address_city){ should eq(user.address_city) }
+    its(:address_state){ should eq(user.address_state) }
+    its(:address_phone_number){ should eq(user.phone_number) }
+    its(:payer_document){ should eq(user.cpf) }
+  end
+
+  describe "#update_user_billing_info" do
+    let(:contribution_attributes) {
+      {
+        address_street: contribution.address_street,
+        address_number: contribution.address_number,
+        address_neighbourhood: contribution.address_neighbourhood,
+        address_zip_code: contribution.address_zip_code,
+        address_city: contribution.address_city,
+        address_state: contribution.address_state,
+        phone_number: contribution.address_phone_number,
+        cpf: contribution.payer_document
+      }
+    }
+    context "when cpf on contribution is not null" do
+      let(:user) { contribution.user }
+      let(:contribution_attributes) {
+        {
+          address_street: contribution.address_street,
+          address_number: contribution.address_number,
+          address_neighbourhood: contribution.address_neighbourhood,
+          address_zip_code: contribution.address_zip_code,
+          address_city: contribution.address_city,
+          address_state: contribution.address_state,
+          phone_number: contribution.address_phone_number,
+          cpf: contribution.payer_document
+        }
+      }
+
+      before do
+        contribution.update_attributes payer_document: '123'
+        contribution.reload
+        user.should_receive(:update_attributes).with(contribution_attributes)
+      end
+
+      it("should update user billing info attributes") { contribution.update_user_billing_info}
+    end
+
+    context "when cpf on contributions is null" do
+      let(:contribution) { create(:contribution, payer_document: '') }
+      let(:user) { contribution.user }
+
+      before do
+        user.update_column :cpf, '000'
+        user.reload
+        user.should_receive(:update_attributes).with(contribution_attributes.merge!({cpf: user.cpf}))
+      end
+
+      it("should update user billing info attributes") { contribution.update_user_billing_info }
     end
   end
 
   describe '#recommended_projects' do
     subject{ contribution.recommended_projects }
-    let(:contribution){ create(:contribution) }
 
     context "when we have another projects in the same category" do
       before do
