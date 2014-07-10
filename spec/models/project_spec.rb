@@ -13,7 +13,7 @@ describe Project do
     it{ should have_many :contributions }
     it{ should have_one  :project_total }
     it{ should have_many :rewards }
-    it{ should have_many :updates }
+    it{ should have_many :posts }
     it{ should have_many :notifications }
     it{ should have_and_belong_to_many :channels }
   end

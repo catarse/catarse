@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Update do
+describe ProjectPost do
   describe "validations" do
     it{ should validate_presence_of :project_id }
     it{ should validate_presence_of :user_id }
@@ -17,35 +17,35 @@ describe Update do
     let(:project) { create(:project) }
 
     before do
-      @exclusive_update = create(:update, exclusive: true, project: project)
-      @update = create(:update, project: project)
+      @exclusive_post = create(:project_post, exclusive: true, project: project)
+      @post = create(:project_post, project: project)
     end
 
-    subject { Update.for_non_contributors }
+    subject { ProjectPost.for_non_contributors }
 
-    it { should eq([@update]) }
+    it { should eq([@post]) }
   end
 
 
 
   describe ".create" do
-    subject{ create(:update, comment: "this is a comment\n") }
+    subject{ create(:project_post, comment: "this is a comment\n") }
     its(:comment_html){ should == "<p>this is a comment</p>" }
   end
 
   describe "#email_comment_html" do
-    subject{ create(:update, comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png").email_comment_html }
+    subject{ create(:project_post, comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png").email_comment_html }
     it{ should == "<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img src=\"http://catarse.me/assets/catarse/logo164x54.png\" alt=\"\" style=\"max-width:513px\" /></p>" }
   end
 
-  describe "#update_number" do
+  describe "#post_number" do
     let(:project){ create(:project) }
-    let(:update){ create(:update, project: project) }
-    subject{ update.update_number }
+    let(:project_post){ create(:project_post, project: project) }
+    subject{ project_post.post_number }
     before do
-      create(:update, project: project)
-      update
-      create(:update, project: project)
+      create(:project_post, project: project)
+      project_post
+      create(:project_post, project: project)
     end
     it{ should == 2 }
   end
@@ -59,22 +59,22 @@ describe Update do
       create(:contribution, state: 'confirmed', project: @project, user: contribution.user)
       @project.reload
       ActionMailer::Base.deliveries = []
-      @update = Update.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
+      @post = ProjectPost.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
       Notification.should_receive(:notify_once).with(
-        :updates,
+        :posts,
         contribution.user,
-        {update_id: @update.id, user_id: contribution.user.id},
+        {project_post_id: @post.id, user_id: contribution.user.id},
         {
-          project: @update.project,
-          project_update: @update,
-          origin_email: @update.project.user.email,
-          origin_name: @update.project.user.display_name
+          project: @post.project,
+          project_post: @post,
+          origin_email: @post.project.user.email,
+          origin_name: @post.project.user.display_name
         }
       ).once.and_call_original
     end
 
     it 'should call Notification.notify once' do
-      @update.notify_contributors
+      @post.notify_contributors
     end
   end
 end

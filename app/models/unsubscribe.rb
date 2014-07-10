@@ -5,7 +5,7 @@ class Unsubscribe < ActiveRecord::Base
 
   scope :by_project_id, ->(project_id) { where(project_id: project_id) }
 
-  def self.updates_unsubscribe project_id
+  def self.posts_unsubscribe project_id
     find_or_initialize_by(project_id: project_id)
   end
 
