@@ -2,10 +2,9 @@
 class Project < ActiveRecord::Base
   schema_associations
 
-  extend CatarseAutoHtml
-
   include PgSearch
 
+  include Shared::CatarseAutoHtml
   include Shared::StateMachineHelpers
   include Shared::Queued
 

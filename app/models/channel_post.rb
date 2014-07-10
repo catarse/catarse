@@ -1,5 +1,5 @@
 class ChannelPost < ActiveRecord::Base
-  extend CatarseAutoHtml
+  include Shared::CatarseAutoHtml
 
   schema_associations
   has_many :notifications, dependent: :destroy
@@ -26,17 +26,7 @@ class ChannelPost < ActiveRecord::Base
   end
 
   def email_body_html
-    auto_html(body) do
-      html_escape map: {
-        '&' => '&amp;',
-        '>' => '&gt;',
-        '<' => '&lt;',
-        '"' => '"'
-      }
-      email_image width: 513
-      redcloth target: :_blank
-      link target: :_blank
-    end
+    catarse_email_auto_html_for body, image_width: 513
   end
 
 end
