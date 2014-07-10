@@ -1,5 +1,5 @@
 .bootstrap-form
-  = semantic_form_for [@project, Update.new(user_id: current_user.id)], remote: true do |form|
+  = semantic_form_for ProjectPost.new(user: current_user, project: @project), url: project_posts_path(project_id: @project.id), remote: true do |form|
     = form.inputs do
       = form.input :title, as: :string, label: t('.title')
       = form.input :comment, as: :text, label: t('.comment'), input_html: {rows: 10}
@@ -13,7 +13,7 @@
       = render partial: 'projects/formatting_tips'
     = form.actions do
       .bootstrap-twitter
-        = form.submit t('.submit'), class: "btn", id: "update_submit"
+        = form.submit t('.submit'), class: "btn", id: "post_submit"
 
 - content_for :custom_flahses do
   .hide.ghost-flash

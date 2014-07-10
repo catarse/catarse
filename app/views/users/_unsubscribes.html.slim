@@ -6,10 +6,10 @@
       .bootstrap-form
       = semantic_form_for(@user, url: user_unsubscribes_path(user_id: @user.id), html:{ method: :post}) do |f|
         = f.inputs do
-          = f.semantic_fields_for :unsubscribes, @subscribed_to_updates do |u|
+          = f.semantic_fields_for :unsubscribes, @subscribed_to_posts do |u|
             - u.object.created_at.nil? ? (checked = { checked: 'checked' }) : (checked = nil)
             #subscribed_check
-              = u.input :subscribed, as: :boolean, input_html: checked, label: t('.updates')
+              = u.input :subscribed, as: :boolean, input_html: checked, label: t('.posts')
           - if @unsubscribes
             = f.semantic_fields_for :unsubscribes, @unsubscribes do |u|
               = u.inputs do
