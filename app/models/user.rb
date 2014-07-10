@@ -82,7 +82,9 @@ class User < ActiveRecord::Base
   end
 
   def self.send_credits_notification
-    has_not_used_credits_last_month.find_each{|user| user.notify(:credits_warning) }
+    has_not_used_credits_last_month.find_each do |user|
+      user.notify(:credits_warning)
+    end
   end
 
   def notify(template_name, params = {})
