@@ -15,9 +15,10 @@ class Project < ActiveRecord::Base
 
   mount_uploader :uploaded_image, ProjectUploader
 
-  delegate :display_online_date, :display_status, :progress, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
-    :display_pledged, :display_goal, :remaining_days, :progress_bar, :status_flag,
-    to: :decorator
+  delegate  :display_online_date, :display_status, :progress, :display_progress,
+            :display_image, :display_expires_at, :remaining_text, :time_to_go,
+            :display_pledged, :display_goal, :remaining_days, :progress_bar,
+            :status_flag, :state_warning_template, to: :decorator
 
   has_and_belongs_to_many :channels
   has_one :project_total
@@ -189,10 +190,6 @@ class Project < ActiveRecord::Base
 
   def should_fail?
     expired? && !reached_goal?
-  end
-
-  def state_warning_template
-    "#{state}_warning"
   end
 
   def notify_owner(template_name, params = {})

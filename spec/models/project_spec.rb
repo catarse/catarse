@@ -333,19 +333,6 @@ describe Project do
     it{ should == [@p] }
   end
 
-  describe "#state_warning_template" do
-    subject{ project.state_warning_template }
-    context "when project is in analysis" do
-      let(:project){ Project.new state: 'in_analysis' }
-      it{ should == 'in_analysis_warning' }
-    end
-
-    context "when project is a draft" do
-      let(:project){ Project.new state: 'draft' }
-      it{ should == 'draft_warning' }
-    end
-  end
-
   describe '#reached_goal?' do
     let(:project) { create(:project, goal: 3000) }
     subject { project.reached_goal? }

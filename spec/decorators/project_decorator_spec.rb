@@ -3,6 +3,20 @@ require 'spec_helper'
 describe ProjectDecorator do
   let(:project){ create(:project, about: 'Foo Bar http://www.foo.bar <javascript>xss()</javascript>"Click here":http://click.here') }
 
+  describe "#state_warning_template" do
+    subject{ project.state_warning_template }
+    context "when project is in analysis" do
+      let(:project){ Project.new state: 'in_analysis' }
+      it{ should == 'in_analysis_warning' }
+    end
+
+    context "when project is a draft" do
+      let(:project){ Project.new state: 'draft' }
+      it{ should == 'draft_warning' }
+    end
+  end
+
+
   describe "#time_to_go" do
     let(:project){ build(:project) }
     let(:expires_at){ Time.zone.parse("23:00:00") }
