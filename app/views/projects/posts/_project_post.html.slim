@@ -1,17 +1,17 @@
-.update
-  h3= link_to "#updates/#{update.id}", id: "updates/#{update.id}" do
-    = update.title
-  .time= l(update.created_at, format: :updates)
+.post
+  h3= link_to "#posts/#{project_post.id}", id: "posts/#{project_post.id}" do
+    = project_post.title
+  .time= l(project_post.created_at, format: :posts)
   .clearfix
-  .comment= raw(update.comment_html)
+  .comment= raw(project_post.comment_html)
   .media
     .social
       .update_share
-        - url = project_by_slug_url(@project.permalink, update_id: update.id, locale: I18n.locale, anchor: 'updates')
-        .twitter_share= render_twitter text: "#{update.title}", url: url
+        - url = project_by_slug_url(@project.permalink, project_post_id: project_post.id, locale: I18n.locale, anchor: 'posts')
+        .twitter_share= render_twitter text: "#{project_post.title}", url: url
         .facebook_share= render_facebook_like href: url, width: '360'
-  - if policy(update).destroy?
-    = link_to t('.destroy'), project_update_path(project_id: @project.id, id: update.id), data: {confirm: t('.destroy_confirmation')}, remote: true, method: :delete, class: 'destroy_update'
-    .deleting_update.hide= image_tag "loading.gif"
+  - if policy(project_post).destroy?
+    = link_to t('.destroy'), project_post_path(project_id: @project.id, id: project_post.id), data: {confirm: t('.destroy_confirmation')}, remote: true, method: :delete, class: 'destroy_post'
+    .deleting_post.hide= image_tag "loading.gif"
 
 
