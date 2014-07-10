@@ -1,13 +1,5 @@
 module Shared::CatarseAutoHtml
   extend ActiveSupport::Concern
-  mattr_reader :auto_html_escape_map
-
-  auto_html_escape_map =  {
-      '&' => '&amp;',
-      '>' => '&gt;',
-      '<' => '&lt;',
-      '"' => '"'
-  }
 
   included do
     AutoHtml.add_filter(:email_image).with(width: 200) do |text, options|
@@ -19,7 +11,12 @@ module Shared::CatarseAutoHtml
 
     def self.catarse_auto_html_for options={}
       self.auto_html_for options[:field] do
-        html_escape map: Shared::CatarseAutoHtml.auto_html_escape_map
+        html_escape map: {
+          '&' => '&amp;',
+          '>' => '&gt;',
+          '<' => '&lt;',
+          '"' => '"'
+        }
         image
         youtube width: options[:video_width], height: options[:video_height], wmode: "opaque"
         vimeo width: options[:video_width], height: options[:video_height]
@@ -30,7 +27,12 @@ module Shared::CatarseAutoHtml
 
     def catarse_email_auto_html_for field_data, options= {}
       self.auto_html field_data do
-        html_escape map: Shared::CatarseAutoHtml.auto_html_escape_map
+        html_escape map: {
+          '&' => '&amp;',
+          '>' => '&gt;',
+          '<' => '&lt;',
+          '"' => '"'
+        }
         email_image width: options[:image_width]
         redcloth target: :_blank
         link target: :_blank
