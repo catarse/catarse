@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       fb_admins_add(@user.facebook_id) if @user.facebook_id
       @title = "#{@user.display_name}"
       @credits = @user.contributions.can_refund
-      @subscribed_to_updates = @user.updates_subscription
+      @subscribed_to_posts = @user.posts_subscription
       @unsubscribes = @user.project_unsubscribes
     }
   end
