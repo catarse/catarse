@@ -1,7 +1,7 @@
-class UpdateObserver < ActiveRecord::Observer
-  observe :update
+class ProjectPostObserver < ActiveRecord::Observer
+  observe :project_post
 
-  def after_create(update)
-    update.notify_contributors
+  def after_create(post)
+    post.notify_contributors
   end
 end

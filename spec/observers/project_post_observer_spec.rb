@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe UpdateObserver do
+describe ProjectPostObserver do
   describe 'after_create' do
     context "notify contributions" do
       let(:project) { create(:project) }
-      let(:update) { build(:update) }
+      let(:project_post) { build(:project_post) }
 
       it "should satisfy expectations" do
-        update.should_receive(:notify_contributors)
-        update.save
+        project_post.should_receive(:notify_contributors)
+        project_post.save
       end
     end
   end
