@@ -11,7 +11,7 @@ describe User do
     it{ should have_many :contributions }
     it{ should have_many :projects }
     it{ should have_many :notifications }
-    it{ should have_many :updates }
+    it{ should have_many :project_posts }
     it{ should have_many :unsubscribes }
     it{ should have_many :authorizations }
     it{ should have_many :channels_subscribers }
@@ -344,8 +344,8 @@ describe User do
     it{ should == [unfinished_project]}
   end
 
-  describe "#updates_subscription" do
-    subject{user.updates_subscription}
+  describe "#posts_subscription" do
+    subject{user.posts_subscription}
     context "when user is subscribed to all projects" do
       it{ should be_new_record }
     end

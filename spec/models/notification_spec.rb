@@ -14,7 +14,7 @@ describe Notification do
     it{ should belong_to :user }
     it{ should belong_to :project }
     it{ should belong_to :contribution }
-    it{ should belong_to :project_update }
+    it{ should belong_to :project_post }
   end
 
   describe ".last_with_template" do
