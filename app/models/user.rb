@@ -161,7 +161,7 @@ class User < ActiveRecord::Base
   end
 
   def project_owner?
-    projects.count(:all) > 0
+    projects.present?
   end
 
   def fix_twitter_user
