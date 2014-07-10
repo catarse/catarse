@@ -17,10 +17,7 @@ describe PaymentNotification do
 
   describe "#deliver_process_notification" do
     before do
-      Notification.unstub(:notify)
-      Notification.unstub(:notify_once)
-
-      Notification.should_receive(:notify_once)
+      ContributionNotification.should_receive(:notify_once)
     end
 
     subject do
@@ -32,10 +29,7 @@ describe PaymentNotification do
 
   describe "#deliver_slip_canceled_notification" do
     before do
-      Notification.unstub(:notify)
-      Notification.unstub(:notify_once)
-
-      Notification.should_receive(:notify_once)
+      ContributionNotification.should_receive(:notify_once)
     end
 
     subject do
