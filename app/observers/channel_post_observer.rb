@@ -10,15 +10,13 @@ class ChannelPostObserver < ActiveRecord::Observer
   def after_save(channel_post)
     if channel_post.visible
       channel_post.channel.subscribers.each do |subscriber|
-        Notification.notify_once(
+        channel_post.notify_once(
           :channel_post,
           subscriber,
-          {channel_post_id: channel_post.id, channel_id: channel_post.channel_id},
+          channel_post,
           {
-            channel_post_id: channel_post.id,
-            channel_id: channel_post.channel_id,
-            origin_email: channel_post.channel.email,
-            origin_name: channel_post.channel.name
+            from_email: channel_post.channel.email,
+            from_name: channel_post.channel.name
           }
         )
       end
