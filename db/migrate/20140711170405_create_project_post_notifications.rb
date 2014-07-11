@@ -8,6 +8,7 @@ class CreateProjectPostNotifications < ActiveRecord::Migration
       t.text :template_name, null: false
       t.text :locale, null: false
       t.timestamp :sent_at
+      t.timestamps
     end
   end
 end
