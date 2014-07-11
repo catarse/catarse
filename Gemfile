@@ -26,7 +26,7 @@ gem 'chartkick'
 gem 'catarse_settings_db'
 
 # Notifications
-gem 'user_notifier', path: '../user_notifier'
+gem 'user_notifier'
 
 # Mixpanel for backend tracking
 gem 'mixpanel-ruby'
