@@ -6,6 +6,10 @@ class ProjectDecorator < Draper::Decorator
     pluralize_without_number(source.time_to_go[:time], I18n.t('remaining_singular'), I18n.t('remaining_plural'))
   end
 
+  def state_warning_template
+    "#{source.state}_warning"
+  end
+
   def time_to_go
     time_and_unit = nil
     %w(day hour minute second).detect do |unit|

@@ -1,6 +1,5 @@
 class Channel < ActiveRecord::Base
-  extend CatarseAutoHtml
-
+  include Shared::CatarseAutoHtml
   include Shared::VideoHandler
 
   schema_associations
