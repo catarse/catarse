@@ -74,7 +74,7 @@ class ProjectObserver < ActiveRecord::Observer
     notify_users(project)
 
     project.contributions.with_state('waiting_confirmation').each do |contribution|
-      contribution.notify_to_contributor(:pending_contribution_project_unsuccessful, { project: project })
+      contribution.notify_to_contributor(:pending_contribution_project_unsuccessful)
     end
 
     project.notify_owner(:project_unsuccessful, { from_email: CatarseSettings[:email_projects] })
@@ -90,7 +90,7 @@ class ProjectObserver < ActiveRecord::Observer
       unless contribution.notified_finish
         template_name = (project.successful? ? :contribution_project_successful : :contribution_project_unsuccessful)
 
-        contribution.notify_to_contributor(template_name, { project: project })
+        contribution.notify_to_contributor(template_name)
         contribution.update_attributes({ notified_finish: true })
       end
     end
