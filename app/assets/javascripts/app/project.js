@@ -10,7 +10,7 @@ App.addChild('Project', _.extend({
     this.$warning = this.$('#project_warning_text');
     this.$embed= this.$('#project_embed');
     this.route('about');
-    this.route('updates');
+    this.route('posts');
     this.route('contributions');
     this.route('comments');
     this.route('edit');

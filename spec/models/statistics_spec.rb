@@ -19,11 +19,6 @@ describe Statistics do
     it{ should == Contribution.with_state('confirmed').count }
   end
 
-  describe "#total_contributions" do
-    subject{ Statistics.first.total_contributions }
-    it{ should == User.contributions.count }
-  end
-
   describe "#total_contributed" do
     subject{ Statistics.first.total_contributed}
     it{ should == Contribution.with_state('confirmed').sum(:value) }

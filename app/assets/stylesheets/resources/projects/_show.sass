@@ -40,7 +40,7 @@
           font-family: "Lato"
           font-style: italic
           font-size: 16px
-    .update
+    .post
       width: 100%
       float: left
       border-bottom: 1px #ccc dotted
@@ -72,7 +72,7 @@
         &:hover
           color: $pink
           text-decoration: underline
-        &.destroy_update
+        &.destroy_post
           font-size: 12px
           color: $pink
           text-decoration: none
@@ -686,7 +686,7 @@
             background: $pink url($images_path+"icon_refreshproject.png") 10px 9px no-repeat
             &:hover
               background-color: $darker_pink
-    #project_updates
+    #project_posts
       p
         margin-top: 10px
         word-wrap: break-word
@@ -697,14 +697,14 @@
       width: 620px
       .bootstrap-form
         margin-top: 20px
-        textarea, input#update_title
+        textarea, input#project_post_title
           width: 98%
           margin-bottom: 20px
         label
           font-family: "Lato"
           font-size: 15px
           color: rgba(0, 0, 0, 0.8)
-        label, input#update_exclusive
+        label, input#project_post_exclusive
           margin: 5px
           float: left
       .alert.alert-info
@@ -716,7 +716,7 @@
         font-size: 13px
         line-height: 21px
         padding: 20px 10px 10px 20px
-      #formatting_tipgs
+      #formatting_tips
         float: left
         padding: 20px
         width: 93%
