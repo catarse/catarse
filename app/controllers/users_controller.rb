@@ -48,6 +48,8 @@ class UsersController < ApplicationController
     user = User.find_by(reactivate_token: params[:token])
     if user
       user.reactivate
+      sign_in user
+      flash[:notice] = t('users.reactivated')
     else
       flash[:error] = t('users.failed_reactivation')
     end
