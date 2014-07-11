@@ -208,7 +208,7 @@ describe ProjectObserver do
       end
 
       before do
-        Notification.should_receive(:notify_once).at_least(3)
+        ContributionNotification.should_receive(:notify_once).at_least(3)
         project.finish!
       end
       it("should notify the project contributions and owner"){ subject }
