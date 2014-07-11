@@ -82,6 +82,7 @@ p
   &:hover
     background-color: #02c433
     opacity: 1
+    text-decoration: none
 
   &.bt-medium
     padding-top: 12px
@@ -212,6 +213,7 @@ p
     color: white
     font-size: 14px
     font-weight: 400
+    margin-bottom: 0
   .text-error.text-error-bold
     font-weight: 700
   .password
@@ -342,6 +344,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   right: 10px
   +border-radius(4px)
   +box-shadow(rgba(black, 0.3) 1px 1px 2px)
+  z-index: 100
   li
     padding: 2px 15px
     line-height: 30px
@@ -508,7 +511,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   +transition-duration(500ms)
   +transition-timing-function(ease)
   &:hover
-    border: 1px solid $green
+    border: 2px solid $green
 
 .row-infosline
   margin-bottom: 35px
@@ -543,6 +546,8 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     padding: 10px
 
 @media screen and (max-width: 991px)
+  .header-logo img
+    margin: 0
   h2
     padding: 0 5%
   .prg2
