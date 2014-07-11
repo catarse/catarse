@@ -1,23 +1,23 @@
-App.views.Project.addChild('Updates', _.extend({
-  el: '#project_updates',
+App.views.Project.addChild('Posts', _.extend({
+  el: '#project_posts',
 
   events: {
-    'ajax:success .results .update' : 'onUpdateDestroy',
-    'ajax:success form#new_update' : 'onUpdateCreate'
+    'ajax:success .results .post' : 'onPostDestroy',
+    'ajax:success form#new_project_post' : 'onPostCreate'
   },
 
-  onUpdateCreate: function(e, data){
-    $('#update_submit').attr('disabled','disabled');
+  onPostCreate: function(e, data){
+    $('#post_submit').attr('disabled','disabled');
     $('.ghost-flash').addClass('flash').removeClass('hide', 'ghost-flash');
     app.flash();
     this.$results.prepend(data);
     $("input[type=text], textarea").val("");
-    $('#update_submit').removeAttr('disabled');
+    $('#post_submit').removeAttr('disabled');
   },
 
   activate: function(){
-    this.$loader = this.$("#updates-loading img");
-    this.$loaderDiv = this.$("#updates-loading");
+    this.$loader = this.$("#posts-loading img");
+    this.$loaderDiv = this.$("#posts-loading");
     this.$results = this.$(".results");
     this.path = this.$el.data('path');
     this.filter = {};
@@ -32,14 +32,14 @@ App.views.Project.addChild('Updates', _.extend({
     }
   },
 
-  updates: function(){
-    return this.$('.results .update');
+  posts: function(){
+    return this.$('.results .post');
   },
 
-  onUpdateDestroy: function(e){
+  onPostDestroy: function(e){
     var $target = $(e.currentTarget);
     $target.remove();
-    this.parent.$('a#updates_link .count').html(' (' + this.updates().length + ')');
+    this.parent.$('a#posts_link .count').html(' (' + this.posts().length + ')');
   }
 
 }, Skull.InfiniteScroll));

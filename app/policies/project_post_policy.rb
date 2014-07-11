@@ -1,4 +1,4 @@
-class UpdatePolicy < ApplicationPolicy
+class ProjectPostPolicy < ApplicationPolicy
 
   self::Scope = Struct.new(:user, :scope) do
 
@@ -28,9 +28,9 @@ class UpdatePolicy < ApplicationPolicy
 
   def permitted_attributes
     if done_by_owner_or_admin?
-      { update: [:title, :comment, :exclusive, :user_id] }
+      { project_post: [:title, :comment, :exclusive, :user_id] }
     else
-      { update: [] }
+      { project_post: [] }
     end
   end
 
