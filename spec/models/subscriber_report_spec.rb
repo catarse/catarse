@@ -5,7 +5,7 @@ describe SubscriberReport do
   before do
     CatarseSettings[:email_contact] = 'foo@bar.com'
     CatarseSettings[:company_name] = 'Foo Bar Company'
-    @channel = create(:channel) 
+    @channel = create(:channel)
     @user = create(:user, subscriptions: [ @channel ])
   end
 
@@ -18,10 +18,10 @@ describe SubscriberReport do
     it{ should eq 1 }
   end
 
-  describe "#id" do
-    subject{ subscriber.id }
-    it{ should eq @user.id }
-  end
+  #describe "#id" do
+  #  subject{ subscriber.id }
+  #  it{ should eq @user.id }
+  #end
 
   describe "#channel_id" do
     subject{ subscriber.channel_id }
