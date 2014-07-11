@@ -19,8 +19,8 @@ class ProjectObserver < ActiveRecord::Observer
 
   def from_draft_to_in_analysis(project)
     project.notify_to_backoffice(:new_draft_project, {
-      origin_email: project.user.email,
-      origin_name: project.user.display_name
+      from_email: project.user.email,
+      from_name: project.user.display_name
     }, project.new_draft_recipient)
 
     deliver_default_notification_for(project, :in_analysis_project)
@@ -29,11 +29,11 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def from_online_to_waiting_funds(project)
-    project.notify_owner(:project_in_waiting_funds, { origin_email: CatarseSettings[:email_projects] })
+    project.notify_owner(:project_in_waiting_funds, { from_email: CatarseSettings[:email_projects] })
   end
 
   def from_waiting_funds_to_successful(project)
-    project.notify_owner(:project_success, origin_email: CatarseSettings[:email_projects])
+    project.notify_owner(:project_success, from_email: CatarseSettings[:email_projects])
 
     notify_admin_that_project_reached_deadline(project)
     notify_admin_that_project_is_successful(project)
@@ -42,18 +42,12 @@ class ProjectObserver < ActiveRecord::Observer
   end
 
   def notify_admin_that_project_reached_deadline(project)
-    project.notify_to_backoffice(:adm_project_deadline, { origin_email: CatarseSettings[:email_system] })
+    project.notify_to_backoffice(:adm_project_deadline, { from_email: CatarseSettings[:email_system] })
   end
 
   def notify_admin_that_project_is_successful(project)
     redbooth_user = User.find_by(email: CatarseSettings[:email_redbooth])
-    if redbooth_user
-      Notification.notify_once(:redbooth_task,
-        redbooth_user,
-        { project_id: project.id },
-        { project: project }
-      )
-    end
+    project.notify_once(:redbooth_task, redbooth_user) if redbooth_user
   end
 
   def from_in_analysis_to_rejected(project)
@@ -83,7 +77,7 @@ class ProjectObserver < ActiveRecord::Observer
       contribution.notify_to_contributor(:pending_contribution_project_unsuccessful, { project: project })
     end
 
-    project.notify_owner(:project_unsuccessful, { origin_email: CatarseSettings[:email_projects] })
+    project.notify_owner(:project_unsuccessful, { from_email: CatarseSettings[:email_projects] })
   end
 
   def from_waiting_funds_to_failed(project)
@@ -107,10 +101,12 @@ class ProjectObserver < ActiveRecord::Observer
   def deliver_default_notification_for(project, notification_type)
     template_name = project.notification_type(notification_type)
 
-    project.notify_owner(template_name, {
-      channel: project.last_channel,
-      origin_email: project.last_channel.try(:email) || CatarseSettings[:email_projects],
-      origin_name: project.last_channel.try(:name) || CatarseSettings[:company_name]
-    })
+    project.notify_owner(
+      template_name, 
+      {
+        from_email: project.last_channel.try(:email) || CatarseSettings[:email_projects],
+        from_name: project.last_channel.try(:name) || CatarseSettings[:company_name]
+      }
+    )
   end
 end
