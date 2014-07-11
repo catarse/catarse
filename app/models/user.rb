@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_many :channel_posts
   has_many :channels_subscribers
-  has_many :notifications
   has_many :projects
   has_many :unsubscribes
   has_many :project_posts
