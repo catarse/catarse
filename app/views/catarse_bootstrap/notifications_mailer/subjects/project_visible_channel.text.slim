@@ -1,1 +1,1 @@
-|O projeto #{@notification.project.name} está no ar no #{@notification.channel.name}
+|O projeto #{@notification.project.name} está no ar no #{@notification.project.last_channel.try(:name)}
