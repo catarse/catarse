@@ -371,8 +371,6 @@ GEM
       sprockets-rails (~> 2.0)
     sax-machine (0.2.1)
       nokogiri (~> 1.6.0)
-    schema_associations (1.2.0)
-      schema_plus (>= 1.2.0)
     schema_plus (1.5.1)
       activerecord (>= 3.2)
       valuable
@@ -529,7 +527,6 @@ DEPENDENCIES
   routing-filter (~> 0.4.0.pre)
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.0)
-  schema_associations
   schema_plus
   selenium-webdriver
   shoulda
