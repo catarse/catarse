@@ -194,7 +194,6 @@ describe User do
 
   describe "#notify" do
     before do
-      Notification.unstub(:notify)
       user.notify(:heartbleed)
     end
 
@@ -222,7 +221,6 @@ describe User do
 
   describe "#deactivate" do
     before do
-      Notification.unstub(:notify)
       @contribution = create(:contribution, user: user, anonymous: false)
       user.deactivate
     end

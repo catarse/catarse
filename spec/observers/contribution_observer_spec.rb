@@ -4,11 +4,6 @@ describe ContributionObserver do
   let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: nil) }
   subject{ contribution }
 
-  before do
-    Notification.unstub(:notify)
-    Notification.unstub(:notify_once)
-  end
-
   describe "after_create" do
     before{ Kernel.stub(:rand).and_return(1) }
     its(:key){ should == Digest::MD5.new.update("#{contribution.id}###{contribution.created_at}##1").to_s }
