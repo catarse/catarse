@@ -5,8 +5,8 @@ pt:
       take_a_look: Confira o projeto %{name} no @catarse
     video_embed:
       a_project_by_html: Um projeto de %{link} no
-    updates:
-      update:
+    posts:
+      project_post:
         destroy: Remover Novidade
         destroy_confirmation: Deseja remover esta novidade?
       new:
@@ -53,7 +53,7 @@ pt:
         contributions: Apoiadores
         edit: Edição
         reports: Relatórios
-        updates: Novidades
+        posts: Novidades
       no_rewards_warning: Não viaje! Pense em como irá entregá-las e coloque tudo
         isso no orçamento. Prometeu?! CUMPRA! :D
       no_rewards_warning_title: Crie aqui suas recompensas

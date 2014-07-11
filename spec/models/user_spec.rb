@@ -11,10 +11,9 @@ describe User do
     it{ should have_many :contributions }
     it{ should have_many :projects }
     it{ should have_many :notifications }
-    it{ should have_many :updates }
+    it{ should have_many :project_posts }
     it{ should have_many :unsubscribes }
     it{ should have_many :authorizations }
-    it{ should have_many(:oauth_providers).through(:authorizations) }
     it{ should have_many :channels_subscribers }
     it{ should have_one :user_total }
     it{ should belong_to :channel }
@@ -160,23 +159,6 @@ describe User do
     it{ should == [@contribution.user] }
   end
 
-  describe ".create_from_hash" do
-    let(:auth)  do {
-      'provider' => "facebook",
-      'uid' => "foobar",
-      'info' => {
-        'name' => "Foo bar",
-        'email' => 'another_email@anotherdomain.com',
-        'description' => "Foo bar's bio".ljust(200),
-        'image' => "image.png"
-      }
-    }
-    end
-    subject{ User.create_from_hash(auth) }
-    it{ should be_persisted }
-    its(:email){ should == auth['info']['email'] }
-  end
-
   describe ".create" do
     subject do
       User.create! do |u|
@@ -188,6 +170,26 @@ describe User do
     end
     its(:twitter){ should == 'dbiazus' }
     its(:facebook_link){ should == 'http://facebook.com/test' }
+  end
+
+  describe "#change_locale" do
+    let(:user) { create(:user, locale: 'pt') }
+
+    context "when user already has a locale" do
+      before do
+        user.should_not_receive(:update_attributes).with(locale: 'pt')
+      end
+
+      it { user.change_locale('pt') }
+    end
+
+    context "when locale is diff from the user locale" do
+      before do
+        user.should_receive(:update_attributes).with(locale: 'en')
+      end
+
+      it { user.change_locale('en') }
+    end
   end
 
   describe "#notify" do
@@ -342,8 +344,8 @@ describe User do
     it{ should == [unfinished_project]}
   end
 
-  describe "#updates_subscription" do
-    subject{user.updates_subscription}
+  describe "#posts_subscription" do
+    subject{user.posts_subscription}
     context "when user is subscribed to all projects" do
       it{ should be_new_record }
     end
@@ -371,18 +373,6 @@ describe User do
       create(:contribution, user: user, project: @p1)
     end
     it{should == [@p1]}
-  end
-
-  describe "#facebook_id" do
-    subject{ user.facebook_id }
-    context "when user have a FB authorization" do
-      let(:user){ create(:user, authorizations: [ create(:authorization, uid: 'bar', oauth_provider: facebook_provider)]) }
-      it{ should == 'bar' }
-    end
-    context "when user do not have a FB authorization" do
-      let(:user){ create(:user) }
-      it{ should == nil }
-    end
   end
 
   describe "#fix_facebook_link" do

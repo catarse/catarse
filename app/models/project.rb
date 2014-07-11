@@ -2,10 +2,9 @@
 class Project < ActiveRecord::Base
   schema_associations
 
-  extend CatarseAutoHtml
-
   include PgSearch
 
+  include Shared::CatarseAutoHtml
   include Shared::StateMachineHelpers
   include Shared::Queued
 
@@ -15,9 +14,10 @@ class Project < ActiveRecord::Base
 
   mount_uploader :uploaded_image, ProjectUploader
 
-  delegate :display_online_date, :display_status, :progress, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
-    :display_pledged, :display_goal, :remaining_days, :progress_bar, :status_flag,
-    to: :decorator
+  delegate  :display_online_date, :display_status, :progress, :display_progress,
+            :display_image, :display_expires_at, :remaining_text, :time_to_go,
+            :display_pledged, :display_goal, :remaining_days, :progress_bar,
+            :status_flag, :state_warning_template, to: :decorator
 
   has_and_belongs_to_many :channels
   has_one :project_total
@@ -82,11 +82,6 @@ class Project < ActiveRecord::Base
             END ASC, projects.online_date DESC, projects.created_at DESC")
   }
 
-  scope :contributed_by, ->(user_id){
-    where("id IN (SELECT project_id FROM contributions b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
-  }
-
-
   scope :from_channels, ->(channels){
     where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id AND cp.channel_id = ?)", channels)
   }
@@ -133,7 +128,7 @@ class Project < ActiveRecord::Base
   end
 
   def subscribed_users
-    User.subscribed_to_updates.subscribed_to_project(self.id)
+    User.subscribed_to_posts.subscribed_to_project(self.id)
   end
 
   def decorator
@@ -194,10 +189,6 @@ class Project < ActiveRecord::Base
 
   def should_fail?
     expired? && !reached_goal?
-  end
-
-  def state_warning_template
-    "#{state}_warning"
   end
 
   def notify_owner(template_name, params = {})
