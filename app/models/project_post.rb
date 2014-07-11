@@ -1,9 +1,10 @@
 class ProjectPost < ActiveRecord::Base
   include Shared::CatarseAutoHtml
 
+  has_notifications
+
   belongs_to :project, inverse_of: :posts
   belongs_to :user
-  has_many :notifications, dependent: :destroy
 
   validates_presence_of :user_id, :project_id, :comment, :comment_html
   #remove all whitespace from the start of the line so auto_html won't go crazy
@@ -27,17 +28,7 @@ class ProjectPost < ActiveRecord::Base
 
   def notify_contributors
     project.subscribed_users.each do |user|
-      Notification.notify_once(
-        :posts,
-        user,
-        {project_post_id: self.id, user_id: user.id},
-        {
-          project: project,
-          project_post: self,
-          origin_email: project.user.email,
-          origin_name: project.user.display_name
-        }
-      )
+      notify_once(:posts, user, self, {from_email: project.user.email, from_name: project.user.display_name})
     end
   end
 
