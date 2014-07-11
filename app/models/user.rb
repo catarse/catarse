@@ -28,14 +28,18 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, if: :password_confirmation_required?
   validates_length_of :password, within: Devise.password_length, allow_blank: true
 
-  schema_associations
+  belongs_to :channel
   has_one :user_total
+  has_many :contributions
+  has_many :authorizations
+  has_many :channel_posts
+  has_many :channels_subscribers
   has_many :notifications
+  has_many :projects
+  has_many :unsubscribes
+  has_many :project_posts
   has_many :contributed_projects, -> { where(contributions: { state: 'confirmed' } ).uniq } ,through: :contributions, source: :project
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
-
-
-  # Channels relation
   has_and_belongs_to_many :subscriptions, join_table: :channels_subscribers, class_name: 'Channel'
 
   accepts_nested_attributes_for :unsubscribes, allow_destroy: true rescue puts "No association found for name 'unsubscribes'. Has it been defined yet?"
