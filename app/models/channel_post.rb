@@ -1,7 +1,9 @@
 class ChannelPost < ActiveRecord::Base
   include Shared::CatarseAutoHtml
 
-  schema_associations
+  belongs_to :channel, inverse_of: :posts
+  belongs_to :user
+
   has_many :notifications, dependent: :destroy
 
   validates_presence_of :user_id, :channel_id, :body, :body_html, :title

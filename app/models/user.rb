@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
   schema_associations
   has_one :user_total
+  has_many :notifications
   has_many :contributed_projects, -> { where(contributions: { state: 'confirmed' } ).uniq } ,through: :contributions, source: :project
   has_and_belongs_to_many :recommended_projects, join_table: :recommendations, class_name: 'Project'
 
