@@ -311,14 +311,13 @@ describe Project do
 
   describe "send_verify_moip_account_notification" do
     before do
-      Notification.unstub(:notify_once)
       @p = create(:project, state: 'online', online_date: DateTime.now, online_days: 3)
       create(:project, state: 'draft')
     end
 
     it "should create notification for all projects that is expiring" do
-      Notification.should_receive(:notify_once).
-        with(:verify_moip_account, @p.user, {project_id: @p.id, channel_id: @p.last_channel.try(:id)}, {project: @p, origin_email: CatarseSettings[:email_payments]})
+      ProjectNotification.should_receive(:notify_once).
+        with(:verify_moip_account, @p.user, @p, {from_email: CatarseSettings[:email_payments]})
       Project.send_verify_moip_account_notification
     end
   end

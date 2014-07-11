@@ -10,6 +10,8 @@ class Project < ActiveRecord::Base
   include Project::VideoHandler
   include Project::CustomValidators
 
+  has_notifications
+
   mount_uploader :uploaded_image, ProjectUploader
 
   delegate  :display_online_date, :display_status, :progress, :display_progress,
@@ -25,7 +27,6 @@ class Project < ActiveRecord::Base
   has_many :contributions
   has_many :posts, class_name: "ProjectPost"
   has_many :unsubscribes
-  has_many :notifications
 
   accepts_nested_attributes_for :rewards
 
@@ -119,7 +120,7 @@ class Project < ActiveRecord::Base
 
   def self.send_verify_moip_account_notification
     expiring_in_less_of('7 days').find_each do |project|
-      project.notify_owner(:verify_moip_account, { origin_email: CatarseSettings[:email_payments]})
+      project.notify_owner(:verify_moip_account, { from_email: CatarseSettings[:email_payments]})
     end
   end
 
@@ -197,20 +198,21 @@ class Project < ActiveRecord::Base
   end
 
   def notify_owner(template_name, params = {})
-    Notification.notify_once(
+    notify_once(
       template_name,
       self.user,
-      { project_id: self.id, channel_id: self.last_channel.try(:id) },
-      { project: self }.merge!(params)
+      self,
+      params
     )
   end
 
   def notify_to_backoffice(template_name, options = {}, backoffice_user = User.find_by(email: CatarseSettings[:email_payments]))
     if backoffice_user
-      Notification.notify_once(template_name,
+      notify_once(
+        template_name,
         backoffice_user,
-        { project_id: self.id, channel_id: self.last_channel.try(:id) },
-        { project: self, channel: self.last_channel }.merge!(options)
+        self,
+        options
       )
     end
   end
