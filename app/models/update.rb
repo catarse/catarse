@@ -1,5 +1,5 @@
 class Update < ActiveRecord::Base
-  extend CatarseAutoHtml
+  include Shared::CatarseAutoHtml
 
   schema_associations
   has_many :notifications, dependent: :destroy
@@ -20,17 +20,7 @@ class Update < ActiveRecord::Base
   end
 
   def email_comment_html
-    auto_html(comment) do
-      html_escape map: {
-        '&' => '&amp;',
-        '>' => '&gt;',
-        '<' => '&lt;',
-        '"' => '"'
-      }
-      email_image width: 513
-      redcloth target: :_blank
-      link target: :_blank
-    end
+    catarse_email_auto_html_for comment, image_width: 513
   end
 
   def notify_contributors

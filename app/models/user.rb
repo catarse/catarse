@@ -82,7 +82,16 @@ class User < ActiveRecord::Base
   end
 
   def self.send_credits_notification
-    has_not_used_credits_last_month.find_each{|user| user.notify(:credits_warning) }
+    has_not_used_credits_last_month.find_each do |user|
+      user.notify(:credits_warning)
+    end
+  end
+
+  def change_locale(language)
+    if locale != language
+      puts 'fooo'
+      self.update_attributes locale: language
+    end
   end
 
   def notify(template_name, params = {})
@@ -159,7 +168,7 @@ class User < ActiveRecord::Base
   end
 
   def project_owner?
-    projects.count(:all) > 0
+    projects.present?
   end
 
   def fix_twitter_user
