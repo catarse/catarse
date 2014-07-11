@@ -3,7 +3,7 @@ class Reward < ActiveRecord::Base
   include RankedModel
   include ERB::Util
 
-  schema_associations
+  belongs_to :project
   has_many :contributions, dependent: :nullify
 
   ranks :row_order, with_same: :project_id

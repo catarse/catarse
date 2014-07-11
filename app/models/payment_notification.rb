@@ -1,5 +1,5 @@
 class PaymentNotification < ActiveRecord::Base
-  schema_associations
+  belongs_to :contribution
   serialize :extra_data, JSON
 
   # This methods should be called by payments engines

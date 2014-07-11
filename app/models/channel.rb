@@ -2,14 +2,17 @@ class Channel < ActiveRecord::Base
   include Shared::CatarseAutoHtml
   include Shared::VideoHandler
 
-  schema_associations
+  has_many :posts, class_name: "ChannelPost"
+  has_many :partners, class_name: "ChannelPartner"
 
   validates_presence_of :name, :description, :permalink
   validates_uniqueness_of :permalink
 
   has_and_belongs_to_many :projects, -> { order_status.most_recent_first }
   has_many :subscribers, class_name: 'User', through: :channels_subscribers, source: :user
+  has_many :channels_subscribers
   has_many :subscriber_reports
+  has_many :users
 
   catarse_auto_html_for field: :how_it_works, video_width: 560, video_height: 340
 

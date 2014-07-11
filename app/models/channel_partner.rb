@@ -1,5 +1,5 @@
 class ChannelPartner < ActiveRecord::Base
-  schema_associations
+  belongs_to :channel, inverse_of: :partners
 
   mount_uploader :image, ChannelPartnerUploader
 
