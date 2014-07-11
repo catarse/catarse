@@ -1,7 +1,5 @@
 # coding: utf-8
 class Project < ActiveRecord::Base
-  schema_associations
-
   include PgSearch
 
   include Shared::CatarseAutoHtml
@@ -19,9 +17,16 @@ class Project < ActiveRecord::Base
             :display_pledged, :display_goal, :remaining_days, :progress_bar,
             :status_flag, :state_warning_template, to: :decorator
 
+  belongs_to :user
+  belongs_to :category
   has_and_belongs_to_many :channels
   has_one :project_total
   has_many :rewards
+  has_many :contributions
+  has_many :posts, class_name: "ProjectPost"
+  has_many :unsubscribes
+  has_many :notifications
+
   accepts_nested_attributes_for :rewards
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
