@@ -46,7 +46,12 @@ describe ContributionObserver do
         project_total.stub(:total_contributions).and_return(1)
         project.stub(:project_total).and_return(project_total)
         contribution.project = project
-        Notification.should_receive(:notify).with(:project_success, contribution.project.user, project: contribution.project)
+        ProjectNotification.should_receive(:notify).with(
+          :project_success, 
+          contribution.project.user,
+          contribution.project,
+          {}
+        )
         contribution.save!
       end
       it("should notify the project owner"){ subject }
@@ -58,7 +63,7 @@ describe ContributionObserver do
       before do
         contribution
         project.update_attributes state: 'successful'
-        Notification.should_receive(:notify).never
+        ContributionNotification.should_receive(:notify).never
         contribution.save!
       end
       it("should not send project_successful notification again"){ subject }
