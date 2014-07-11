@@ -38,14 +38,14 @@ describe Unsubscribe do
     it { should == 1 }
   end
 
-  describe ".updates_unsubscribe" do
-    subject{ Unsubscribe.updates_unsubscribe(1618) }
+  describe ".posts_unsubscribe" do
+    subject{ Unsubscribe.posts_unsubscribe(1618) }
     it{ should_not be_persisted }
     its(:class){ should == Unsubscribe }
     its(:project_id){ should == 1618 }
 
     context "when project_id is nil" do
-      subject{ Unsubscribe.updates_unsubscribe(nil) }
+      subject{ Unsubscribe.posts_unsubscribe(nil) }
       its(:class){ should == Unsubscribe }
       its(:project_id){ should be_nil }
     end

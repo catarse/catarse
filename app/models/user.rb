@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
     where("id IN (SELECT user_id FROM contributions WHERE contributions.state = 'confirmed' AND project_id = ?)", project_id)
   }
 
-  scope :subscribed_to_updates, -> {
+  scope :subscribed_to_posts, -> {
      where("id NOT IN (
        SELECT user_id
        FROM unsubscribes
@@ -157,13 +157,13 @@ class User < ActiveRecord::Base
     "#{self.id}-#{self.display_name.parameterize}"
   end
 
-  def updates_subscription
-    unsubscribes.updates_unsubscribe(nil)
+  def posts_subscription
+    unsubscribes.posts_unsubscribe(nil)
   end
 
   def project_unsubscribes
     contributed_projects.map do |p|
-      unsubscribes.updates_unsubscribe(p.id)
+      unsubscribes.posts_unsubscribe(p.id)
     end
   end
 

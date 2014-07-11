@@ -1,4 +1,4 @@
-class Update < ActiveRecord::Base
+class ProjectPost < ActiveRecord::Base
   include Shared::CatarseAutoHtml
 
   schema_associations
@@ -15,8 +15,8 @@ class Update < ActiveRecord::Base
 
   scope :ordered, ->() { order("created_at desc") }
 
-  def update_number
-    self.project.updates.where('id <= ?', self.id).count(:all)
+  def post_number
+    self.project.posts.where('id <= ?', self.id).count(:all)
   end
 
   def email_comment_html
@@ -26,12 +26,12 @@ class Update < ActiveRecord::Base
   def notify_contributors
     project.subscribed_users.each do |user|
       Notification.notify_once(
-        :updates,
+        :posts,
         user,
-        {update_id: self.id, user_id: user.id},
+        {project_post_id: self.id, user_id: user.id},
         {
           project: project,
-          project_update: self,
+          project_post: self,
           origin_email: project.user.email,
           origin_name: project.user.display_name
         }
@@ -39,4 +39,7 @@ class Update < ActiveRecord::Base
     end
   end
 
+  def to_partial_path
+    "projects/posts/project_post"
+  end
 end

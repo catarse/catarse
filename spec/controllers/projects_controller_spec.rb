@@ -173,9 +173,9 @@ describe ProjectsController do
   describe "GET show" do
     context "when we have update_id in the querystring" do
       let(:project){ create(:project) }
-      let(:update){ create(:update, project: project) }
-      before{ get :show, permalink: project.permalink, update_id: update.id, locale: :pt }
-      it("should assign update to @update"){ assigns(:update).should == update }
+      let(:project_post){ create(:project_post, project: project) }
+      before{ get :show, permalink: project.permalink, project_post_id: project_post.id, locale: :pt }
+      it("should assign update to @update"){ assigns(:post).should == project_post }
     end
   end
 

@@ -80,8 +80,8 @@ class ProjectsController < ApplicationController
     @title = resource.name
     authorize @project
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
-    @updates_count = resource.updates.count(:all)
-    @update = resource.updates.where(id: params[:update_id]).first if params[:update_id].present?
+    @posts_count = resource.posts.count(:all)
+    @post = resource.posts.where(id: params[:project_post_id]).first if params[:project_post_id].present?
   end
 
   def video
