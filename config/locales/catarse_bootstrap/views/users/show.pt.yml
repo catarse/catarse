@@ -1,6 +1,7 @@
 pt:
   users:
     failed_reactivation: "O link para reativação é inválido, por favor entre em contato com a nossa equipe."
+    reactivated: "Seja bem vindo de volta, sua conta foi reativada."
     project:
       confirmed: "Confirmado"
       refunded: "Reembolsado"
