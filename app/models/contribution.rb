@@ -1,13 +1,17 @@
 # coding: utf-8
 class Contribution < ActiveRecord::Base
-  schema_associations
-
   include Shared::StateMachineHelpers
   include Contribution::StateMachineHandler
   include Contribution::CustomValidators
   include Contribution::PaymentEngineHandler
 
   delegate :display_value, :display_confirmed_at, to: :decorator
+
+  belongs_to :project
+  belongs_to :reward
+  belongs_to :user
+  has_many :notifications
+  has_many :payment_notifications
 
   validates_presence_of :project, :user, :value
   validates_numericality_of :value, greater_than_or_equal_to: 10.00

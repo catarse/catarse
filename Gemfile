@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails', '4.1.1'
+gem 'rails', '~> 4.1.1'
 
 gem 'protected_attributes', '~> 1.0.5' # When upgrade to strong_parameters, remove this gem.
 gem 'rails-observers', '~> 0.1.2'
@@ -22,7 +22,6 @@ gem 'postgres-copy'
 gem 'pg_search'
 
 gem 'schema_plus'
-gem 'schema_associations'
 gem 'chartkick'
 gem 'catarse_settings_db'
 

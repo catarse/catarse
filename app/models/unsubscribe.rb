@@ -1,5 +1,6 @@
 class Unsubscribe < ActiveRecord::Base
-  schema_associations
+  belongs_to :user
+  belongs_to :project
 
   attr_accessor :subscribed
 
