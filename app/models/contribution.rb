@@ -70,7 +70,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def notify_to_contributor(template_name, options = {})
-    notify_once(template_name, self.user)
+    notify_once(template_name, self.user, options)
   end
 
   def notify_to_backoffice(template_name, options = {})
