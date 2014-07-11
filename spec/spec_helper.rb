@@ -88,8 +88,6 @@ RSpec.configure do |config|
     ProjectObserver.any_instance.stub(:after_create)
     UserObserver.any_instance.stub(:after_create)
     Project.any_instance.stub(:download_video_thumbnail)
-    Notification.stub(:notify)
-    Notification.stub(:notify_once)
     Calendar.any_instance.stub(:fetch_events_from)
     Blog.stub(:fetch_last_posts).and_return([])
     CatarseSettings[:base_domain] = 'localhost'
