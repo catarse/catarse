@@ -81,7 +81,7 @@ describe ContributionObserver do
     context "when is already confirmed" do
       let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now) }
       before do
-        Notification.should_receive(:notify).never
+        ContributionNotification.should_receive(:notify).never
       end
 
       it("should not send confirm_contribution notification again"){ subject }
@@ -193,7 +193,7 @@ describe ContributionObserver do
 
     context "when contribution change to confirmed" do
       before do
-        Notification.should_not_receive(:notify).with(:contribution_canceled_after_confirmed)
+        ContributionNotification.should_not_receive(:notify).with(:contribution_canceled_after_confirmed)
       end
 
       it { contribution.confirm }

@@ -90,10 +90,18 @@ RSpec.configure do |config|
     Project.any_instance.stub(:download_video_thumbnail)
     Calendar.any_instance.stub(:fetch_events_from)
     Blog.stub(:fetch_last_posts).and_return([])
+
+    # Default configurations
     CatarseSettings[:base_domain] = 'localhost'
     CatarseSettings[:email_contact] = 'foo@bar.com'
     CatarseSettings[:email_system] = 'system@catarse.me'
     CatarseSettings[:company_name] = 'Foo Bar Company'
+
+    # Email notification defaults
+    UserNotifier.system_email     = CatarseSettings[:email_system]
+    UserNotifier.from_email       = CatarseSettings[:email_contact]
+    UserNotifier.from_name        = CatarseSettings[:company_name]
+
     Contribution.any_instance.stub(:payment_engine).and_return(PaymentEngines::Interface.new)
     MixpanelObserver.any_instance.stub(tracker: double('mixpanel tracker', track: nil))
   end
