@@ -2,10 +2,9 @@
 class Project < ActiveRecord::Base
   schema_associations
 
-  extend CatarseAutoHtml
-
   include PgSearch
 
+  include Shared::CatarseAutoHtml
   include Shared::StateMachineHelpers
   include Shared::Queued
 
@@ -15,9 +14,10 @@ class Project < ActiveRecord::Base
 
   mount_uploader :uploaded_image, ProjectUploader
 
-  delegate :display_online_date, :display_status, :progress, :display_progress, :display_image, :display_expires_at, :remaining_text, :time_to_go,
-    :display_pledged, :display_goal, :remaining_days, :progress_bar, :status_flag,
-    to: :decorator
+  delegate  :display_online_date, :display_status, :progress, :display_progress,
+            :display_image, :display_expires_at, :remaining_text, :time_to_go,
+            :display_pledged, :display_goal, :remaining_days, :progress_bar,
+            :status_flag, :state_warning_template, to: :decorator
 
   has_and_belongs_to_many :channels
   has_one :project_total
@@ -31,7 +31,10 @@ class Project < ActiveRecord::Base
       [:headline, 'B'],
       [:about, 'C']
     ],
-    associated_against:  {user: [:name, :address_city ]},
+    associated_against:  {
+      user: [:name, :address_city ],
+      category: [:name_pt, :name_en]
+    },
     using: {tsearch: {dictionary: "portuguese"}},
     ignoring: :accents
 
@@ -61,13 +64,14 @@ class Project < ActiveRecord::Base
   scope :expiring, -> { not_expired.where("projects.expires_at <= (current_timestamp + interval '2 weeks')") }
   scope :not_expiring, -> { not_expired.where("NOT (projects.expires_at <= (current_timestamp + interval '2 weeks'))") }
   scope :recent, -> { where("(current_timestamp - projects.online_date) <= '5 days'::interval") }
-  scope :order_for_search, ->{ reorder("
+  scope :order_status, ->{ order("
                                      CASE projects.state
                                      WHEN 'online' THEN 1
                                      WHEN 'waiting_funds' THEN 2
                                      WHEN 'successful' THEN 3
                                      WHEN 'failed' THEN 4
-                                     END ASC, projects.online_date DESC, projects.created_at DESC") }
+                                     END ASC")}
+  scope :most_recent_first, ->{ order("projects.online_date DESC, projects.created_at DESC") }
   scope :order_for_admin, -> {
     reorder("
             CASE projects.state
@@ -77,11 +81,6 @@ class Project < ActiveRecord::Base
             WHEN 'failed' THEN 4
             END ASC, projects.online_date DESC, projects.created_at DESC")
   }
-
-  scope :contributed_by, ->(user_id){
-    where("id IN (SELECT project_id FROM contributions b WHERE b.state = 'confirmed' AND b.user_id = ?)", user_id)
-  }
-
 
   scope :from_channels, ->(channels){
     where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id AND cp.channel_id = ?)", channels)
@@ -103,6 +102,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
   validates_length_of :headline, maximum: 140
   validates_numericality_of :online_days, less_than_or_equal_to: 60
+  validates_numericality_of :goal, greater_than: 9
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
 
@@ -128,7 +128,7 @@ class Project < ActiveRecord::Base
   end
 
   def subscribed_users
-    User.subscribed_to_updates.subscribed_to_project(self.id)
+    User.subscribed_to_posts.subscribed_to_project(self.id)
   end
 
   def decorator
@@ -189,10 +189,6 @@ class Project < ActiveRecord::Base
 
   def should_fail?
     expired? && !reached_goal?
-  end
-
-  def state_warning_template
-    "#{state}_warning"
   end
 
   def notify_owner(template_name, params = {})

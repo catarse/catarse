@@ -1,6 +1,5 @@
 class Channel < ActiveRecord::Base
-  extend CatarseAutoHtml
-
+  include Shared::CatarseAutoHtml
   include Shared::VideoHandler
 
   schema_associations
@@ -8,7 +7,7 @@ class Channel < ActiveRecord::Base
   validates_presence_of :name, :description, :permalink
   validates_uniqueness_of :permalink
 
-  has_and_belongs_to_many :projects, -> { order_for_search }
+  has_and_belongs_to_many :projects, -> { order_status.most_recent_first }
   has_many :subscribers, class_name: 'User', through: :channels_subscribers, source: :user
   has_many :subscriber_reports
 

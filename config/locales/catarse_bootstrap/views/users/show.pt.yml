@@ -1,6 +1,7 @@
 pt:
   users:
     failed_reactivation: "O link para reativação é inválido, por favor entre em contato com a nossa equipe."
+    reactivated: "Seja bem vindo de volta, sua conta foi reativada."
     project:
       confirmed: "Confirmado"
       refunded: "Reembolsado"
@@ -61,7 +62,7 @@ pt:
       deactivate_hint: "Todos os seus apoios serão convertidos em apoios anônimos, seus dados não serão mais visíveis, você sairá automaticamente do sistema e sua conta será desativada permanentemente."
     unsubscribes:
       title: "Escolha de quais projetos você deseja receber notificações:"
-      updates: "Eu quero receber atualizações dos projetos"
+      posts: "Eu quero receber atualizações dos projetos"
     show:
       projects:
         here: 'aqui'

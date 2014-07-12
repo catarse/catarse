@@ -117,7 +117,7 @@ FactoryGirl.define do
     f.visible false
   end
 
-  factory :update do |f|
+  factory :project_post do |f|
     f.association :project, factory: :project
     f.association :user, factory: :user
     f.title "My title"

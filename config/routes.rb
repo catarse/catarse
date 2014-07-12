@@ -40,6 +40,7 @@ Catarse::Application.routes.draw do
 
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
+  mount CatarseCredits::Engine => "/", as: :catarse_credits
 #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
   # Channels
@@ -86,7 +87,7 @@ Catarse::Application.routes.draw do
   end
 
   resources :projects, only: [:index, :create, :update, :new, :show] do
-    resources :updates, controller: 'projects/updates', only: [ :index, :create, :destroy ]
+    resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
     resources :rewards, only: [ :index, :create, :update, :destroy, :new, :edit ] do
       member do
         post 'sort'

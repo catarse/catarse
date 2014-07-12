@@ -1,18 +1,18 @@
-describe("Updates", function() {
+describe("Posts", function() {
   var view;
 
   beforeEach(function() {
-    view = new App.views.Project.views.Updates({ parent: { on: function(){} } });
+    view = new App.views.Project.views.Posts({ parent: { on: function(){} } });
     app = {
       flash: function(){}
     };
   });
 
-  describe("#onUpdateCreate", function() {
+  describe("#onPostCreate", function() {
     beforeEach(function() {
       spyOn(view.$results, "prepend");
       spyOn(app, "flash");
-      view.onUpdateCreate(null, 'test');
+      view.onPostCreate(null, 'test');
     });
 
     it("should prepend data", function() {
@@ -24,19 +24,19 @@ describe("Updates", function() {
     });
   });
 
-  describe("#onUpdateDestroy", function() {
+  describe("#onPostDestroy", function() {
     var $target;
     var $count;
     beforeEach(function() {
       view.parent = { $: function(){} };
-      $target = $('<div class="update">');
+      $target = $('<div class="post">');
       $count = $('<div class="count">');
       spyOn(window, "$").and.returnValue($target);
       spyOn($target, "remove");
       spyOn(view.parent, "$").and.returnValue($count);
       spyOn($count, "html");
 
-      view.onUpdateDestroy({currentTarget: $target});
+      view.onPostDestroy({currentTarget: $target});
     });
 
     it("should get currentTarget and remove it", function() {

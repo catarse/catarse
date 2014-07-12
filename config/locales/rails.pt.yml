@@ -200,7 +200,7 @@ pt:
       default: "%A, %d de %B de %Y, %H:%M h"
       long: "%A, %d de %B de %Y, %H:%M h"
       short: "%d/%m, %H:%M h"
-      updates: "%d %b %Y"
+      posts: "%d %b %Y"
     pm: pm
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
