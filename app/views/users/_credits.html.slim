@@ -9,7 +9,6 @@
       th= t('.index.project')
       th= t('.index.contribution_date')
       th= t('.index.value')
-      th= t('.index.refund_expiration_date_html')
       th= t('.index.status')
     - @credits.each do |credit|
       tr[id="contribution_#{credit.id}"]
@@ -17,7 +16,6 @@
           = link_to credit.project.name, credit.project, class: 'link_project'
         td.date= I18n.l(credit.created_at.to_date)
         td.value= credit.display_value
-        td.term= I18n.l(credit.refund_deadline.to_date)
         td.status
           - if credit.requested_refund?
             = t('.index.requested_refund')
