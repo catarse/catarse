@@ -55,10 +55,6 @@ class Contribution < ActiveRecord::Base
     user.recommended_projects.where("projects.id <> ?", project.id).order("count DESC")
   end
 
-  def refund_deadline
-    created_at + 180.days
-  end
-
   def change_reward! reward
     self.reward_id = reward
     self.save
