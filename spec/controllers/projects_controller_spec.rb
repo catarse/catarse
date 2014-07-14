@@ -2,8 +2,6 @@
 require 'spec_helper'
 
 describe ProjectsController do
-  before{ Notification.unstub(:notify) }
-  before{ Notification.unstub(:notify_once) }
   before{ controller.stub(:current_user).and_return(current_user) }
   before{ CatarseSettings[:base_url] = 'http://catarse.me' }
   before{ CatarseSettings[:email_projects] = 'foo@bar.com' }

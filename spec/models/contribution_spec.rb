@@ -9,6 +9,7 @@ describe Contribution do
   let(:sucessful_project_contribution){ create(:contribution, state: 'confirmed', user: user, project: successful_project) }
   let(:not_confirmed_contribution){ create(:contribution, user: user, project: unfinished_project) }
   let(:valid_refund){ create(:contribution, state: 'confirmed', user: user, project: failed_project) }
+  let(:contribution) { create(:contribution) }
 
 
   describe "Associations" do
@@ -83,23 +84,25 @@ describe Contribution do
   end
 
   describe '#slip_payment?' do
-    let(:contribution) { create(:contribution, payment_choice: 'BoletoBancario')}
-
     subject { contribution.slip_payment? }
 
     context "when contribution is made with Boleto" do
+      before do
+        contribution.update_attributes payment_choice: 'BoletoBancario'
+      end
       it { should be_true}
     end
 
     context "when contribution is not made with Boleto" do
-      let(:contribution) { create(:contribution, payment_choice: 'CartaoDeCredito')}
+      before do
+        contribution.update_attributes payment_choice: 'CartaoDeCredito'
+      end
       it { should be_false}
     end
   end
 
   describe '#recommended_projects' do
     subject{ contribution.recommended_projects }
-    let(:contribution){ create(:contribution) }
 
     context "when we have another projects in the same category" do
       before do
