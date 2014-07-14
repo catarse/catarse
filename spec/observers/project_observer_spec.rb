@@ -13,8 +13,6 @@ describe ProjectObserver do
     CatarseSettings[:facebook_url] = 'http://facebook.com/foo'
     CatarseSettings[:blog_url] = 'http://blog.com/foo'
     CatarseSettings[:company_name] = 'Catarse'
-    Notification.unstub(:notify)
-    Notification.unstub(:notify_once)
   end
 
   describe "after_save" do
@@ -37,7 +35,7 @@ describe ProjectObserver do
     end
 
     it "should create notification for project owner" do
-      Notification.where(user_id: project.user.id, template_name: 'project_received', project_id: project.id).first.should_not be_nil
+      ProjectNotification.where(user_id: project.user.id, template_name: 'project_received', project_id: project.id).first.should_not be_nil
     end
 
     context "after creating the project" do
@@ -64,7 +62,7 @@ describe ProjectObserver do
     end
 
     it "should create notification for catarse admin" do
-      Notification.where(user_id: user.id, template_name: :new_draft_project, project_id: project.id).first.should_not be_nil
+      ProjectNotification.where(user_id: user.id, template_name: :new_draft_project, project_id: project.id).first.should_not be_nil
     end
   end
 
@@ -79,15 +77,13 @@ describe ProjectObserver do
       end
 
       it "should call notify using channel data" do
-        Notification.should_receive(:notify_once).with(
+        ProjectNotification.should_receive(:notify_once).with(
           :project_visible_channel,
           project.user,
-          { project_id: project.id, channel_id: channel.id},
+          project,
           {
-            project: project,
-            channel: channel,
-            origin_email: channel.email,
-            origin_name: channel.name
+            from_email: channel.email,
+            from_name: channel.name
           }
         )
         project.approve
@@ -101,15 +97,13 @@ describe ProjectObserver do
       end
 
       it "should call notify and do not call download_video_thumbnail" do
-        Notification.should_receive(:notify_once).with(
+        ProjectNotification.should_receive(:notify_once).with(
           :project_visible,
           project.user,
-          { project_id: project.id, channel_id: nil},
+          project,
           {
-            project: project,
-            channel: nil,
-            origin_email: CatarseSettings[:email_projects],
-            origin_name: CatarseSettings[:company_name]
+            from_email: CatarseSettings[:email_projects],
+            from_name: CatarseSettings[:company_name]
           }
         )
         project.approve
@@ -119,8 +113,8 @@ describe ProjectObserver do
     context "when video_url changes" do
       before do
         ProjectDownloaderWorker.should_receive(:perform_async).with(project.id).at_least(1)
-        Notification.should_receive(:notify).never
-        Notification.should_receive(:notify_once).never
+        ProjectNotification.should_receive(:notify).never
+        ProjectNotification.should_receive(:notify_once).never
       end
 
       it "should call project downloader service and do not call create_notification" do
@@ -136,13 +130,12 @@ describe ProjectObserver do
 
     before do
       create(:contribution, project: project, value: 200, state: 'confirmed')
-      Notification.should_receive(:notify_once).with(
+      ProjectNotification.should_receive(:notify_once).with(
         :project_in_waiting_funds,
         project.user,
-        {project_id: project.id, channel_id: project.last_channel.try(:id)},
+        project,
         {
-          project: project,
-          origin_email: CatarseSettings[:email_projects]
+          from_email: CatarseSettings[:email_projects]
         }
       )
     end
@@ -178,7 +171,7 @@ describe ProjectObserver do
       before do
         contribution
         project.update_attributes state: 'waiting_funds'
-        Notification.should_receive(:notify_once).at_least(:once)
+        ProjectNotification.should_receive(:notify_once).at_least(:once)
         contribution.save!
         project.finish!
       end
@@ -191,7 +184,7 @@ describe ProjectObserver do
       before do
         contribution
         project.update_attributes state: 'waiting_funds'
-        Notification.should_receive(:notify_once).at_least(:once)
+        ProjectNotification.should_receive(:notify_once).at_least(:once)
         contribution.save!
         project.finish!
       end
@@ -208,7 +201,7 @@ describe ProjectObserver do
       end
 
       before do
-        Notification.should_receive(:notify_once).at_least(3)
+        ContributionNotification.should_receive(:notify_once).at_least(3)
         project.finish!
       end
       it("should notify the project contributions and owner"){ subject }
@@ -226,7 +219,7 @@ describe ProjectObserver do
     end
 
     it "should create notification for project owner" do
-      Notification.where(user_id: project.user.id, template_name: 'project_success', project_id: project.id).first.should_not be_nil
+      ProjectNotification.where(user_id: project.user.id, template_name: 'project_success', project_id: project.id).first.should_not be_nil
     end
   end
 
@@ -239,7 +232,7 @@ describe ProjectObserver do
       end
 
       it "should create notification for project owner" do
-        Notification.where(user_id: project.user.id, template_name: 'project_visible', project_id: project.id).first.should_not be_nil
+        ProjectNotification.where(user_id: project.user.id, template_name: 'project_visible', project_id: project.id).first.should_not be_nil
       end
     end
 
@@ -250,7 +243,7 @@ describe ProjectObserver do
       end
 
       it "should create notification for project owner" do
-        Notification.where(user_id: project.user.id, template_name: 'project_visible_channel', project_id: project.id).first.should_not be_nil
+        ProjectNotification.where(user_id: project.user.id, template_name: 'project_visible_channel', project_id: project.id).first.should_not be_nil
       end
     end
   end
@@ -263,7 +256,7 @@ describe ProjectObserver do
         project.reject
       end
       it "should create notification for project owner" do
-        Notification.where(user_id: project.user.id, template_name: 'project_rejected', project_id: project.id).first.should_not be_nil
+        ProjectNotification.where(user_id: project.user.id, template_name: 'project_rejected', project_id: project.id).first.should_not be_nil
       end
     end
 
@@ -274,7 +267,7 @@ describe ProjectObserver do
       end
 
       it "should create notification for project owner" do
-        Notification.where(user_id: project.user.id, template_name: 'project_rejected_channel', project_id: project.id).first.should_not be_nil
+        ProjectNotification.where(user_id: project.user.id, template_name: 'project_rejected_channel', project_id: project.id).first.should_not be_nil
       end
     end
 
@@ -293,7 +286,7 @@ describe ProjectObserver do
     end
 
     it "should create notification for admin" do
-      Notification.where(user_id: user.id, template_name: 'adm_project_deadline', project_id: project.id).first.should_not be_nil
+      ProjectNotification.where(user_id: user.id, template_name: 'adm_project_deadline', project_id: project.id).first.should_not be_nil
     end
 
   end
@@ -310,7 +303,7 @@ describe ProjectObserver do
     end
 
     it "should create notification for admin" do
-      Notification.where(user_id: user.id, template_name: 'redbooth_task', project_id: project.id).first.should_not be_nil
+      ProjectNotification.where(user_id: user.id, template_name: 'redbooth_task', project_id: project.id).first.should_not be_nil
     end
 
   end

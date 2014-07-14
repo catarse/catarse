@@ -14,11 +14,7 @@ class PaymentNotification < ActiveRecord::Base
   private
 
   def deliver_contributor_notification(template_name)
-    Notification.notify_once(template_name,
-      self.contribution.user,
-      { contribution_id: self.contribution.id },
-      contribution: self.contribution
-    )
+    self.contribution.notify_to_contributor(template_name)
   end
 
 end
