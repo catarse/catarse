@@ -26,8 +26,6 @@ describe ProjectPost do
     it { should eq([@post]) }
   end
 
-
-
   describe ".create" do
     subject{ create(:project_post, comment: "this is a comment\n") }
     its(:comment_html){ should == "<p>this is a comment</p>" }
@@ -52,23 +50,19 @@ describe ProjectPost do
 
   describe "#notify_contributors" do
     before do
-      Notification.unstub(:notify)
-      Notification.unstub(:notify_once)
       @project = create(:project)
       contribution = create(:contribution, state: 'confirmed', project: @project)
       create(:contribution, state: 'confirmed', project: @project, user: contribution.user)
       @project.reload
       ActionMailer::Base.deliveries = []
       @post = ProjectPost.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\nhttp://catarse.me/assets/catarse/logo164x54.png")
-      Notification.should_receive(:notify_once).with(
+      ProjectPostNotification.should_receive(:notify_once).with(
         :posts,
         contribution.user,
-        {project_post_id: @post.id, user_id: contribution.user.id},
+        @post,
         {
-          project: @post.project,
-          project_post: @post,
-          origin_email: @post.project.user.email,
-          origin_name: @post.project.user.display_name
+          from_email: @post.project.user.email,
+          from_name: @post.project.user.display_name
         }
       ).once.and_call_original
     end

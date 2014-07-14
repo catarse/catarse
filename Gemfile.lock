@@ -337,9 +337,9 @@ GEM
     ranked-model (0.4.0)
       activerecord (>= 3.1.12)
     redcarpet (3.1.2)
-    redis (3.0.7)
-    redis-namespace (1.4.1)
-      redis (~> 3.0.4)
+    redis (3.1.0)
+    redis-namespace (1.5.0)
+      redis (~> 3.0, >= 3.0.4)
     request_store (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
@@ -385,7 +385,7 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.6.1)
       activesupport (>= 3.0.0)
-    sidekiq (3.1.3)
+    sidekiq (3.1.4)
       celluloid (>= 0.15.2)
       connection_pool (>= 2.0.0)
       json
@@ -449,6 +449,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    user_notifier (0.0.3)
+      rails (>= 4.0.0)
+      sidekiq
     valuable (0.9.8)
     video_info (2.3.1)
       addressable
@@ -540,5 +543,6 @@ DEPENDENCIES
   to_xls
   uglifier
   unicorn
+  user_notifier
   video_info (>= 1.1.1)
   weekdays

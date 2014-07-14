@@ -5,13 +5,13 @@ describe UserObserver do
   describe "after_create" do
     before do
       UserObserver.any_instance.should_receive(:after_create).and_call_original
-      Notification.unstub(:notify_once)
     end
 
-    let(:user) { create(:user) }
+    let(:user) { build(:user) }
 
     it "send new user registration notification" do
-      Notification.should_receive(:notify).with(:new_user_registration, user)
+      user.should_receive(:notify).with(:new_user_registration)
+      user.save
     end
   end
 

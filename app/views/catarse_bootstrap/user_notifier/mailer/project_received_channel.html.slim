@@ -1,6 +1,6 @@
 ﻿- user = @notification.user
 - project = @notification.project
-- channel = @notification.channel
+- channel = @notification.project.last_channel
 - project_link = project_by_slug_url(permalink: project.permalink)
 - company_name = CatarseSettings[:company_name]
 
