@@ -29,7 +29,7 @@ class ContributionObserver < ActiveRecord::Observer
   alias :from_waiting_confirmation_to_invalid_payment :from_pending_to_invalid_payment
 
   def from_confirmed_to_requested_refund(contribution)
-    contribution.notify_to_backoffice :refund_request, {origin_email: contribution.user.email, origin_name: contribution.user.name}
+    contribution.notify_to_backoffice :refund_request, {from_email: contribution.user.email, from_name: contribution.user.name}
     contribution.direct_refund if contribution.can_do_refund?
     contribution.notify_to_contributor((contribution.slip_payment? ? :requested_refund_slip : :requested_refund))
   end

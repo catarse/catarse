@@ -1,6 +1,7 @@
 # coding: utf-8
 class User < ActiveRecord::Base
   include User::OmniauthHandler
+  has_notifications
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   # :validatable
@@ -34,7 +35,6 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_many :channel_posts
   has_many :channels_subscribers
-  has_many :notifications
   has_many :projects
   has_many :unsubscribes
   has_many :project_posts
@@ -97,14 +97,6 @@ class User < ActiveRecord::Base
       puts 'fooo'
       self.update_attributes locale: language
     end
-  end
-
-  def notify(template_name, params = {})
-    Notification.notify(
-      template_name,
-      self,
-      params
-    )
   end
 
   def active_for_authentication?
