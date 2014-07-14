@@ -4,11 +4,11 @@
   - else
     meta name="robots" content="noindex, nofollow"
 
-  - if @update
-    meta name="description" content=@update.title
-    meta property="og:title" content=@update.title
-    meta property="og:description" content=@update.comment
-    meta property="og:url" content=project_by_slug_url(@project.permalink, update_id: @update.id, locale: I18n.locale)
+  - if @post
+    meta name="description" content=@post.title
+    meta property="og:title" content=@post.title
+    meta property="og:description" content=@post.comment
+    meta property="og:url" content=project_by_slug_url(@project.permalink, update_id: @post.id, locale: I18n.locale)
   - else
     meta name="description" content=@project.headline
     meta property="og:title" content=@project.name
@@ -18,7 +18,7 @@
   meta property="og:image" content=@project.display_image('project_thumb_facebook')
   meta property="og:site_name" content=CatarseSettings[:company_name]
   meta property="fb:admins" content="#{fb_admins}"
-
+  
 #page_content
   .container
 
@@ -44,9 +44,9 @@
       nav#project_menu
         = link_to '#about', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
           = t('.menu.about')
-        = link_to '#updates', 'id' => 'updates_link', 'data-target' => '#project_updates' do
-          = t('.menu.updates')
-          span.count=" (#{@updates_count})"
+        = link_to '#posts', 'id' => 'posts_link', 'data-target' => '#project_posts' do
+          = t('.menu.posts')
+          span.count=" (#{@posts_count})"
         = link_to '#contributions', 'id' => 'contributions_link', 'data-target' => '#project_contributions' do
           = t('.menu.contributions')
           span.count=" (#{@project.total_contributions})"
@@ -69,12 +69,12 @@
           #project_edit.content.hide
             = render partial: 'project_edit'
 
-        #project_updates.content.hide[data-path=project_updates_path(project_id: @project.id)]
+        #project_posts.content.hide[data-path=project_posts_path(project_id: @project.id)]
           - if policy(@project).update?
-            = render template: 'projects/updates/new'
+            = render template: 'projects/posts/new'
           .results &nbsp;
           .clearfix
-          #updates-loading.loading= image_tag "loading.gif"
+          #posts-loading.loading= image_tag "loading.gif"
         #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?
             = radio_button_tag(:contribution_state, "available_to_count", checked: true)

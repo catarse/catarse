@@ -26,7 +26,9 @@ header.header
             = link_to '#', class: 'my_profile_link user-menu' do
               = image_tag(current_user.display_image, :size => "40x40", :class => 'profile-picture')
             ul.dropdown.user
-              li= link_to t('.profile'), current_user
+              li= link_to t('.profile'), user_path(current_user, anchor: 'settings')
+              - if current_user.project_owner?
+                li= link_to t('.projects'), user_path(current_user, anchor: 'projects')
               li
                 = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
                 .small

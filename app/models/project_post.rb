@@ -1,8 +1,10 @@
-class Update < ActiveRecord::Base
-  extend CatarseAutoHtml
+class ProjectPost < ActiveRecord::Base
+  include Shared::CatarseAutoHtml
 
-  schema_associations
+  belongs_to :project, inverse_of: :posts
+  belongs_to :user
   has_many :notifications, dependent: :destroy
+
   validates_presence_of :user_id, :project_id, :comment, :comment_html
   #remove all whitespace from the start of the line so auto_html won't go crazy
   before_save -> {self.comment = comment.gsub(/^[^\S\n]+/, "")}
@@ -15,33 +17,23 @@ class Update < ActiveRecord::Base
 
   scope :ordered, ->() { order("created_at desc") }
 
-  def update_number
-    self.project.updates.where('id <= ?', self.id).count(:all)
+  def post_number
+    self.project.posts.where('id <= ?', self.id).count(:all)
   end
 
   def email_comment_html
-    auto_html(comment) do
-      html_escape map: {
-        '&' => '&amp;',
-        '>' => '&gt;',
-        '<' => '&lt;',
-        '"' => '"'
-      }
-      email_image width: 513
-      redcloth target: :_blank
-      link target: :_blank
-    end
+    catarse_email_auto_html_for comment, image_width: 513
   end
 
   def notify_contributors
     project.subscribed_users.each do |user|
       Notification.notify_once(
-        :updates,
+        :posts,
         user,
-        {update_id: self.id, user_id: user.id},
+        {project_post_id: self.id, user_id: user.id},
         {
           project: project,
-          project_update: self,
+          project_post: self,
           origin_email: project.user.email,
           origin_name: project.user.display_name
         }
@@ -49,4 +41,7 @@ class Update < ActiveRecord::Base
     end
   end
 
+  def to_partial_path
+    "projects/posts/project_post"
+  end
 end
