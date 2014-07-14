@@ -10,6 +10,7 @@ describe Projects::ContributionsController do
   subject{ response }
 
   before do
+    PaymentEngines.stub(:engines).and_return([])
     controller.stub(:current_user).and_return(user)
   end
 
@@ -41,43 +42,6 @@ describe Projects::ContributionsController do
       let(:contribution_info) { { payment_service_fee: 1000, value: 1000,  address_city: 'Porto Alegre', address_complement: '24', address_neighbourhood: 'Rio Branco', address_number: '1004', address_phone_number: '(51)2112-8397', address_state: 'RS', address_street: 'Rua Mariante', address_zip_code: '90430-180', payer_email: 'diogo@biazus.me', payer_name: 'Diogo de Oliveira Biazus'  } }
 
       it { should be_redirect }
-    end
-  end
-
-  describe "PUT credits_checkout" do
-    let(:failed_project) { create(:project, state: 'online') }
-    before do
-      put :credits_checkout, { locale: :pt, project_id: project.id, id: contribution.id }
-    end
-
-    context "without user" do
-      it{ should redirect_to(new_user_registration_path) }
-    end
-
-    context "when contribution don't exist in current_user" do
-      let(:user){ create(:user) }
-      it{ should redirect_to(root_path) }
-      it('should set flash failure'){ request.flash[:alert].should_not be_empty }
-    end
-
-    context "with correct user but insufficient credits" do
-      let(:user){ contribution.user }
-      it('should not confirm contribution'){ contribution.reload.confirmed?.should be_false }
-      it('should set flash failure'){ request.flash[:failure].should == I18n.t('projects.contributions.checkout.no_credits') }
-      it{ should redirect_to(new_project_contribution_path(project)) }
-    end
-
-    context "with correct user and sufficient credits" do
-      let(:user) do
-        create(:contribution, value: 10.00, credits: false, state: 'confirmed', user: contribution.user, project: failed_project)
-        failed_project.update_attributes state: 'failed'
-        contribution.user.reload
-        contribution.user
-      end
-
-      it('should confirm contribution'){ contribution.reload.confirmed?.should be_true }
-      it('should set flash success'){ request.flash[:success].should == I18n.t('projects.contributions.checkout.success') }
-      it{ should redirect_to(project_contribution_path(project_id: project.id, id: contribution.id)) }
     end
   end
 

@@ -1,6 +1,10 @@
 class Notification < ActiveRecord::Base
-  schema_associations
-  belongs_to :project_update, class_name: "Update", foreign_key: :update_id # Update was an unfortunate decision, we should rename it soon
+  belongs_to :user
+  belongs_to :project
+  belongs_to :channel
+  belongs_to :channel_post
+  belongs_to :contribution
+  belongs_to :project_post
 
   validates_presence_of :user
 

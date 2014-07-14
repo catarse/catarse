@@ -12,7 +12,10 @@ class ProjectsController < ApplicationController
     index! do |format|
       format.html do
         if request.xhr?
-          @projects = apply_scopes(Project).visible.order_for_search.includes(:project_total, :user, :category).page(params[:page]).per(6)
+          @projects = apply_scopes(Project.visible.order_status)
+            .most_recent_first
+            .includes(:project_total, :user, :category)
+            .page(params[:page]).per(6)
           return render partial: 'project', collection: @projects, layout: false
         else
           @title = t("site.title")
@@ -49,8 +52,11 @@ class ProjectsController < ApplicationController
   end
 
   def send_to_analysis
+    authorize resource
     resource.send_to_analysis
-    authorize @project
+    if referal_link.present?
+      resource.update_attribute :referal_link, referal_link
+    end
     flash[:notice] = t('projects.send_to_analysis')
     redirect_to project_by_slug_path(@project.permalink)
   end
@@ -65,7 +71,7 @@ class ProjectsController < ApplicationController
           flash[:notice] = t('project.update.success')
         end
 
-        redirect_to project_by_slug_path(@project.permalink, anchor: 'edit')
+        redirect_to project_by_slug_path(@project.reload.permalink, anchor: 'edit')
       end
     end
   end
@@ -74,8 +80,8 @@ class ProjectsController < ApplicationController
     @title = resource.name
     authorize @project
     fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
-    @updates_count = resource.updates.count(:all)
-    @update = resource.updates.where(id: params[:update_id]).first if params[:update_id].present?
+    @posts_count = resource.posts.count(:all)
+    @post = resource.posts.where(id: params[:project_post_id]).first if params[:project_post_id].present?
   end
 
   def video
@@ -98,6 +104,7 @@ class ProjectsController < ApplicationController
   end
 
   protected
+
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end

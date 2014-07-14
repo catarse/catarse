@@ -1,25 +1,25 @@
 require "spec_helper"
 
-describe UpdatePolicy do
-  subject { UpdatePolicy }
+describe ProjectPostPolicy do
+  subject { ProjectPostPolicy }
 
   shared_examples_for "create permissions" do
     it "should deny access if user is nil" do
-      should_not permit(nil, Update.new(project: create(:project)))
+      should_not permit(nil, ProjectPost.new(project: create(:project)))
     end
 
     it "should deny access if user is not project owner" do
-      should_not permit(User.new, Update.new(project: create(:project)))
+      should_not permit(User.new, ProjectPost.new(project: create(:project)))
     end
 
     it "should permit access if user is project owner" do
       new_user = create(:user)
-      should permit(new_user, Update.new(project: create(:project, user: new_user)))
+      should permit(new_user, ProjectPost.new(project: create(:project, user: new_user)))
     end
 
     it "should permit access if user is admin" do
       admin = build(:user, admin: true)
-      should permit(admin, Update.new(project: create(:project)))
+      should permit(admin, ProjectPost.new(project: create(:project)))
     end
   end
 
@@ -37,7 +37,7 @@ describe UpdatePolicy do
 
   describe "#permitted?" do
     context "when user is nil" do
-      let(:policy){ UpdatePolicy.new(nil, build(:update)) }
+      let(:policy){ ProjectPostPolicy.new(nil, build(:project_post)) }
       subject{ policy }
 
       %i[title comment exclusive].each do |field|
@@ -46,8 +46,8 @@ describe UpdatePolicy do
     end
     context "when user is admin" do
       let(:user){ create(:user) }
-      let(:update){ create(:update) }
-      let(:policy){ UpdatePolicy.new(user, update) }
+      let(:project_post){ create(:project_post) }
+      let(:policy){ ProjectPostPolicy.new(user, project_post) }
 
       subject{ policy }
 
@@ -68,11 +68,11 @@ describe UpdatePolicy do
       let(:user) {}
 
       before do
-        @exclusive_update = create(:update, exclusive: true, project: project)
-        @update = create(:update, project: project)
+        @exclusive_update = create(:project_post, exclusive: true, project: project)
+        @project_post = create(:project_post, project: project)
       end
 
-      subject { UpdatePolicy::Scope.new(user, project.updates).resolve }
+      subject { ProjectPostPolicy::Scope.new(user, project.posts).resolve }
 
       context "when user is a contributor" do
         let(:user) { create(:contribution, state: 'confirmed', project: project).user }
@@ -83,7 +83,7 @@ describe UpdatePolicy do
       context "when user is not a contributor" do
         let(:user) { create(:contribution, state: 'pending', project: project).user }
 
-        it { should eq([@update]) }
+        it { should eq([@project_post]) }
       end
 
       context "when user is a project owner" do
@@ -99,7 +99,7 @@ describe UpdatePolicy do
       end
 
       context "when user is a guest" do
-        it { should eq([@update]) }
+        it { should eq([@project_post]) }
       end
     end
   end

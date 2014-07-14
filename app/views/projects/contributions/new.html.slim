@@ -6,16 +6,17 @@
         h2= t('.header.subtitle')
       #contribute_options.bootstrap-form
         / We use the URL in the helper bellow to redirect to a HTTPS page if it's configured
+        - if current_user.credits >= 10
+          .bootstrap-alert
+            .alert.credit_alert
+              = t('projects.contributions.edit.credits_preview_html', credits: current_user.display_credits)
+          .clearfix
         = semantic_form_for @contribution, url: project_contributions_url(@project), html: { id: 'contribution_form' } do |form|
           = form.inputs do
             = hidden_field_tag 'credits', current_user.credits.to_i
             = form.input :referal_link, as: :hidden, input_html: { value: referal_link }
             = form.label :value, t('formtastic.labels.contribution.value')
-            - if current_user.credits >= 10
-              .bootstrap-alert
-                .alert.alert-info
-                  = form.input :credits, hint: t('formtastic.hints.contribution.credits', credits: current_user.display_credits).html_safe
-              .clearfix
+
             = form.input :value, required: true, as: :string, label: false,  input_html: { pattern: '\\d+', autocomplete: 'off', data: { rewards: @rewards.map{|r| {id: r.id, minimum_value: r.minimum_value.to_i} }.to_json } }
             .simbol
               p R$

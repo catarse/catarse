@@ -1,10 +1,10 @@
 p Olá #{@notification.user.name},
 
-p Esse é um texto que deve ser substituído pela notificação de desativação de conta
+p 
+  | Sua conta no Catarse já está desativada. Caso sinta saudades, você pode reativar a sua conta a qualquer momento, basta #{link_to('clicar aqui', reactivate_user_url(@notification.user, token: @notification.user.reactivate_token))} e voltar a apoiar ou realizar projetos incríveis.
 
 p 
-  | O objetivo é confirmar para o usuário que a conta dele foi desativada e mostrar
-    um link para reativá-la.
-    O link a ser usado é esse aqui #{link_to('clique aqui', reactivate_user_url(@notification.user))}
-    Essas linhas com o | no início são necessárias para escrever uma mensagem em múltiplas linhas.
-    Quando o parágrafo tiver apenas uma linha ele ser escrito inteiro após o p como nas linhas anteriores.
+  | Qualquer dúvida você pode entrar em contato conosco respondendo a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}
+
+p Um abraço,
+p Catarse

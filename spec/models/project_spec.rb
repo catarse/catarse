@@ -13,7 +13,7 @@ describe Project do
     it{ should have_many :contributions }
     it{ should have_one  :project_total }
     it{ should have_many :rewards }
-    it{ should have_many :updates }
+    it{ should have_many :posts }
     it{ should have_many :notifications }
     it{ should have_and_belong_to_many :channels }
   end
@@ -22,6 +22,9 @@ describe Project do
     %w[name user category about headline goal permalink].each do |field|
       it{ should validate_presence_of field }
     end
+    it{ should validate_numericality_of(:goal) }
+    it{ should allow_value(10).for(:goal) }
+    it{ should_not allow_value(8).for(:goal) }
     it{ should ensure_length_of(:headline).is_at_most(140) }
     it{ should allow_value('http://vimeo.com/12111').for(:video_url) }
     it{ should allow_value('vimeo.com/12111').for(:video_url) }
@@ -261,22 +264,6 @@ describe Project do
     end
   end
 
-  describe ".contributed_by" do
-    before do
-      contribution = create(:contribution, state: 'confirmed')
-      @user = contribution.user
-      @project = contribution.project
-      # Another contribution with same project and user should not create duplicate results
-      create(:contribution, user: @user, project: @project, state: 'confirmed')
-      # Another contribution with other project and user should not be in result
-      create(:contribution, state: 'confirmed')
-      # Another contribution with different project and same user but not confirmed should not be in result
-      create(:contribution, user: @user, state: 'pending')
-    end
-    subject{ Project.contributed_by(@user.id) }
-    it{ should == [@project] }
-  end
-
   describe ".expired" do
     before do
       @p = create(:project, online_days: -1)
@@ -344,19 +331,6 @@ describe Project do
     end
     subject{ Project.from_channels([channel.id]) }
     it{ should == [@p] }
-  end
-
-  describe "#state_warning_template" do
-    subject{ project.state_warning_template }
-    context "when project is in analysis" do
-      let(:project){ Project.new state: 'in_analysis' }
-      it{ should == 'in_analysis_warning' }
-    end
-
-    context "when project is a draft" do
-      let(:project){ Project.new state: 'draft' }
-      it{ should == 'draft_warning' }
-    end
   end
 
   describe '#reached_goal?' do

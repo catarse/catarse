@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    errors:
+      models:
+        project:
+          attributes:
+            permalink:
+              invalid: Invalid project URL
+        user:
+          attributes:
+            email:
+              not_found: "Email not found, please sign up"
+              taken: "Email has already been taken"
