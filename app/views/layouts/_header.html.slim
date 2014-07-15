@@ -33,6 +33,8 @@ header.header
                 = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
                 .small
                   | (#{current_user.display_credits})
+              li
+                = link_to t('layouts.user.refund_link'), user_path(current_user, anchor: 'credits')
               - if current_user.admin? || current_user.channel
                 li.divider
                 - for menu, path in controller.menu do
