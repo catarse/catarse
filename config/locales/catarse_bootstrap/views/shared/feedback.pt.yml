@@ -1,0 +1,11 @@
+pt:
+  shared:
+    feedback:
+      button: 'Dar um feedback'
+      inputs:
+        submit: 'Enviar feedback'
+        close: 'Fechar'
+      placeholders:
+        email: 'Email'
+        text: 'Escreva seu feedback'
+
