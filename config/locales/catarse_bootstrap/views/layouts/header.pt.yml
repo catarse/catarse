@@ -14,6 +14,7 @@ pt:
     login:
       login_with_facebook: entre com sua conta do facebook
     user:
+      my_contributions: Meus apoios
       logout: Sair
       my_credits: Meus créditos
       refund_link: Solicitar reembolso
