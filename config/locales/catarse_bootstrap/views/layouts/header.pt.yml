@@ -5,7 +5,7 @@ pt:
       discover: Descubra
       faq: FAQ
       help: Ajuda
-      profile: Meu perfil
+      profile: Meus dados
       projects: Meus projetos
       signin: Login
       signup: Cadastre-se
@@ -16,6 +16,6 @@ pt:
     user:
       my_contributions: Meus apoios
       logout: Sair
-      my_credits: Meus créditos
+      my_credits: Saldo de créditos
       refund_link: Solicitar reembolso
 
