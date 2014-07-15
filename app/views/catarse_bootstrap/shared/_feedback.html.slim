@@ -1,23 +1,23 @@
 .feedback-box
-  p.body-big.title.white
+  p.body-big.title
     = "Nos dê o prazer de sua palavra!"
-  p.body-small.white
+  p.body-small
     = "Nos últimos meses temos trabalhado dia e noite em uma série de mudanças na plataforma, que estão detalhadas nesse "
     |
     = link_to "post especial", new_user_session_url, class: "alt-link alt-link--underline white"
     |
-      . Seria incrível se pudéssemos ouvir de você o que está achando desta transformação
-
-  p.body-small.white = "Solte o verbo!"
+      . Seria incrível se pudéssemos ouvir de você o que está achando desta transformação. <br> Solte o verbo!
 
   .w-form
 
-      = email_field_tag(:email, content = nil, options = { class: 'w-input text-field', placeholder: "t('.feedback.inputs.email')"})
+      = email_field_tag(:email, content = nil, options = { class: 'w-input text-field text-field-error', placeholder: t('.placeholders.email')})
 
-      = text_area_tag(:feedback, content = nil, options = {class: 'w-input text-field text-field-feedback', placeholder: "t('.feedback.inputs.feedback')"})
+      = text_area_tag(:feedback, content = nil, options = {class: 'w-input text-field text-field-feedback', placeholder: t('.placeholders.text')})
 
-      = submit_tag(value = t('.feedback.inputs.submit'), options = {class: 'w-button button bt-medium bt-dark'})
+      = submit_tag(value = t('.inputs.submit'), options = {class: 'w-button button bt-medium bt-dark'})
 
-  = button_to t('.feedback.inputs.close'), class: "feedback-box-close"
+  = link_to "#", class: "feedback-box-close" do
+    = image_tag 'catarse_bootstrap/icons/icon-close.png'
 
-= button_to t('.feedback.button'), class: "icon-feedback-box"
+= link_to "#", class: "icon-feedback-box" do
+  = image_tag 'catarse_bootstrap/icons/feedback-box-icon.png'
