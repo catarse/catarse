@@ -13,6 +13,11 @@
       = submit_tag(value = t('.inputs.submit'), options = {class: 'w-button button bt-medium bt-dark'})
 
   = link_to "#", class: "feedback-box-close" do
+  / Conteúdo que deve entrar quando o form for enviado, tudo acima deve esconder
+  / p.display-medium = t('.texts.response.title').html_safe
+  / p.body-medium = t('.texts.response.content')
+
+  = link_to "#", class: "close-button" do
     = image_tag 'catarse_bootstrap/icons/icon-close.png'
 
 = link_to "#", class: "icon-feedback-box" do
