@@ -1,6 +1,28 @@
 form#new_reward, form.formtastic.reward, form#edit_reward
   width: 240px
   list-style: none
+  .fragments
+    margin-bottom: 25px
+    .label
+      padding: 0
+      margin: 0 0 20px 0
+    label, .label
+      border: none
+      font-family: 'Lato'
+      font-size: 14px
+      color: black
+      background: none
+    .fragments-group
+      margin: 0
+      .fragment
+        width: 110px
+        float: left
+        select
+          width: 105px
+    ol
+      list-style: none !important
+    li.fragment:first-child
+      display: none
   label
     //display: block
     font-family: 'Lato'

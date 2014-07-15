@@ -8,7 +8,7 @@ class Reward < ActiveRecord::Base
 
   ranks :row_order, with_same: :project_id
 
-  validates_presence_of :minimum_value, :description, :days_to_delivery
+  validates_presence_of :minimum_value, :description, :deliver_at #, :days_to_delivery
   validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00
   validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
   scope :remaining, -> { where("maximum_contributions IS NULL OR (maximum_contributions IS NOT NULL AND (SELECT COUNT(*) FROM contributions WHERE state IN ('confirmed', 'waiting_confirmation') AND reward_id = rewards.id) < maximum_contributions)") }
