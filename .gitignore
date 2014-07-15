@@ -24,3 +24,4 @@ Cookbooks
 .vagrant
 .project
 .secret.rvmrc
+.rvmrc

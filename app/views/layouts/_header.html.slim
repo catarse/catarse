@@ -27,12 +27,15 @@ header.header
               = image_tag(current_user.display_image, :size => "40x40", :class => 'profile-picture')
             ul.dropdown.user
               li= link_to t('.profile'), user_path(current_user, anchor: 'settings')
+              li= link_to t('layouts.user.my_contributions'), user_path(current_user, anchor: 'contributions')
               - if current_user.project_owner?
                 li= link_to t('.projects'), user_path(current_user, anchor: 'projects')
               li
                 = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
                 .small
                   | (#{current_user.display_credits})
+              li
+                = link_to t('layouts.user.refund_link'), user_path(current_user, anchor: 'credits')
               - if current_user.admin? || current_user.channel
                 li.divider
                 - for menu, path in controller.menu do
