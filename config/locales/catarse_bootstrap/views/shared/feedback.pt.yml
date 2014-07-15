@@ -8,4 +8,7 @@ pt:
       placeholders:
         email: 'Email'
         text: 'Escreva seu feedback'
+      texts:
+        title: "Nos dê o prazer de sua palavra!"
+        content: "Nos últimos meses temos trabalhado dia e noite em uma série de mudanças na plataforma, que estão detalhadas nesse <a href='#' class='link-underline'> post especial</a>. Seria incrível se pudéssemos ouvir de você o que está achando desta transformação. <br> Solte o verbo!"
 

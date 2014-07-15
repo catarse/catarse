@@ -1,12 +1,8 @@
 .feedback-box
   p.body-big.title
-    = "Nos dê o prazer de sua palavra!"
+    = t('.texts.title')
   p.body-small
-    = "Nos últimos meses temos trabalhado dia e noite em uma série de mudanças na plataforma, que estão detalhadas nesse "
-    |
-    = link_to "post especial", new_user_session_url, class: "link-underline"
-    |
-      . Seria incrível se pudéssemos ouvir de você o que está achando desta transformação. <br> Solte o verbo!
+    = t('.texts.content').html_safe
 
   .w-form
 
