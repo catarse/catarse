@@ -4,7 +4,8 @@ var App = window.App = Skull.View.extend({
   events: {
     "click a.user-menu" : "toggleMenu",
     "click a.mobile-menu-link" : "mobileMenu",
-    "click .zendesk_widget" : "showWidget"
+    "click .zendesk_widget" : "showWidget",
+    "click a.icon-feedback-box" : "toggleBox",
   },
 
   beforeActivate: function(){
@@ -72,6 +73,10 @@ var App = window.App = Skull.View.extend({
     });
   },
 
+  toggleBox: function() {
+    this.$(".feedback-box").toggleClass("feedback-box-closed");
+    return false;
+  },
 });
 
 $(function(){
