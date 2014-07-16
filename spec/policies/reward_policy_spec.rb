@@ -91,8 +91,8 @@ describe RewardPolicy do
           it{ should be_true }
         end
 
-        context "and want to update days_to_delivery" do
-          let(:field){ :days_to_delivery }
+        context "and want to update deliver_at" do
+          let(:field){ :deliver_at}
           it{ should be_true }
         end
       end
@@ -116,8 +116,8 @@ describe RewardPolicy do
           it{ should be_true }
         end
 
-        context "and want to update days_to_delivery" do
-          let(:field){ :days_to_delivery }
+        context "and want to update deliver_at" do
+          let(:field){ :deliver_at}
           it{ should be_false }
         end
       end
@@ -140,8 +140,8 @@ describe RewardPolicy do
         it{ should be_true }
       end
 
-      context "and want to update days_to_delivery" do
-        let(:field){ :days_to_delivery }
+      context "and want to update deliver_at" do
+        let(:field){ :deliver_at }
         it{ should be_true }
       end
     end
