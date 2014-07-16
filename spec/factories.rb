@@ -74,6 +74,7 @@ FactoryGirl.define do
     f.minimum_value 10.00
     f.description "Foo bar"
     f.days_to_delivery 10
+    f.deliver_at 10.days.from_now
   end
 
   factory :contribution do |f|

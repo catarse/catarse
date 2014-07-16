@@ -7,6 +7,8 @@ pt:
       contribution: Apoiador
       category: Categoria
     attributes:
+      reward:
+        deliver_at: Previsão de entrega
       project:
         category: Categoria
         expires_at: Prazo
