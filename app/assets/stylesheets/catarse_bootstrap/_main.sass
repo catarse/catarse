@@ -1,28 +1,14 @@
-html
+*
+  +transition-property(all)
+  +transition-duration(500ms)
+  +transition-timing-function(ease)
+
+body
   font-family: "proxima-nova",sans-serif
   font-size: 14px
 
-h2
-  margin-top: 70px
-  margin-bottom: 20px
-  font-size: 24px
-  line-height: 36px
-  font-weight: 600
-  padding: 10px 0
-
-a
-  text-decoration: none
-  &:hover
-    text-decoration: underline
-
-p
-  margin-top: 0px
-  margin-bottom: 20px
-  color: #3f4752
-  font-size: 18px
-  line-height: 28px
-  a
-    color: $blue-note
+.no-responsive
+  min-width: 940px
 
 .separator
   display: block
@@ -41,14 +27,42 @@ p
     position: relative
     top: -11px
 
-.required
-  abbr
-    display: none
+// Typography -----------------------------------------------------------------------------------------
+h2
+  margin-top: 70px
+  margin-bottom: 20px
+  font-size: 24px
+  line-height: 36px
+  font-weight: 600
+  padding: 10px 0
 
+p
+  margin-top: 0px
+  margin-bottom: 20px
+  color: #3f4752
+  font-size: 18px
+  line-height: 28px
+  a
+    color: $blue-note
+
+.display-medium
+  font-size: 44px
+  line-height: 44px
+
+.body-big
+  font-size: 18px
+  line-height: 28px
+
+.body-small
+  font-size: 15px
+  line-height: 22px
+
+.title
+  margin-bottom: 14px
+  font-weight: 600
+
+// Links -----------------------------------------------------------------------------------------
 .link
-  +transition-property(all)
-  +transition-duration(500ms)
-  +transition-timing-function(ease)
   color: #f69219
   font-size: 16px
   font-weight: 600
@@ -59,7 +73,51 @@ p
 .alt-link
   color: #409bff
   text-decoration: none
+  &:hover
+    text-decoration: underline
 
+.link-underline
+  color: white
+  &:hover
+    font-weight: 600
+
+// Forms -----------------------------------------------------------------------------------------
+input[type='text'], input[type='number'],  input[type='password'], input[type='email'], textarea, select
+  color: $blue-one
+  outline: none
+  padding: .6em .8em
+  +border-radius(5px)
+  width: 100%
+  font-family: "proxima-nova",sans-serif
+
+.text-field
+  display: block
+  height: 40px
+  margin-top: 8px
+  margin-bottom: 15px
+  border: 1px solid $border-strong
+  +border-radius(3px)
+  background-color: $gray-one
+  color: #3F4752
+  font-size: 15px
+  &:focus
+    border-color: $blue-note
+
+.text-field-feedback
+  height: 103px
+  background-color: #f1f4f4
+
+.text-field-error
+  border-color: $red
+  background-color: #f7cbcb
+  &:focus
+    border-color: $red
+
+.required
+  abbr
+    display: none
+
+// Buttons -----------------------------------------------------------------------------------------
 .button
   display: block
   width: 100%
@@ -68,9 +126,6 @@ p
   padding-bottom: 19px
   +border-radius(5px)
   background-color: #00b22d
-  +transition-property(all)
-  +transition-duration(500ms)
-  +transition-timing-function(ease)
   color: white
   font-size: 18px
   text-align: center
@@ -82,13 +137,11 @@ p
   &:hover
     background-color: #02c433
     opacity: 1
+    text-decoration: none
 
   &.bt-medium
     padding-top: 12px
     padding-bottom: 12px
-    +transition-property(all)
-    +transition-duration(500ms)
-    +transition-timing-function(ease)
     font-size: 16px
 
   &.bt-fb
@@ -97,12 +150,13 @@ p
     &:hover
       background-color: #547fd6
 
-.no-responsive
-  min-width: 940px
+  &.bt-dark
+    margin-top: 15px
+    background-color: $blue-one
+    &:hover
+      background-color: #505966
 
-
-// Devise
-
+// Devise -----------------------------------------------------------------------------------------
 .box-login
   padding-right: 64px
   padding-bottom: 9px
@@ -155,9 +209,6 @@ p
     border: 1px solid #ddd
     +border-radius(3px)
     background-color: #f1f2f3
-    +transition-property(all)
-    +transition-duration(500ms)
-    +transition-timing-function(ease)
     color: #79808b
     font-size: 16px
     &:hover
@@ -212,6 +263,7 @@ p
     color: white
     font-size: 14px
     font-weight: 400
+    margin-bottom: 0
   .text-error.text-error-bold
     font-weight: 700
   .password
@@ -222,7 +274,6 @@ p
       top: 1px
       color: $blue-two
       font-size: em(13px)
-      transition: .2s all
     span.hint
       opacity: 0
   #user_password:focus + .hint
@@ -235,25 +286,12 @@ p
   &:hover
     opacity: 0.5
 
-input[type='text'], input[type='number'],  input[type='password'], input[type='email'], textarea, select
-  border: 1px solid $border-strong
-  color: $blue-two
-  outline: none
-  padding: .6em .8em
-  border-radius: 3px
-  width: 100%
-  transition: .2s all
-  &:focus
-    border: 1px solid $orange
-
-// Header
-
+// Header -----------------------------------------------------------------------------------------
 .main-header
   background: $blue_one
   height: 65px
 
 .header-logo
-  transition: 0.4s all
   float: left
   margin-top: 10px
   &:hover
@@ -270,7 +308,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 .header-link
   display: inline-block
   padding: 10px 22px
-  border-radius: 4px
+  +border-radius(4px)
   color: $gray-two
   font-size: 15px
   font-weight: 300
@@ -328,7 +366,6 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     width: 40px
     margin: 0
     display: inline-block
-    transition: 0.4s all
     &:hover
       opacity: 0.5
   .user-avatar
@@ -342,6 +379,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   right: 10px
   +border-radius(4px)
   +box-shadow(rgba(black, 0.3) 1px 1px 2px)
+  z-index: 100
   li
     padding: 2px 15px
     line-height: 30px
@@ -361,7 +399,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 .mobile-menu-link
   display: none
 
-// Footer
+// Footer -----------------------------------------------------------------------------------------
 .main-footer
   padding: 35px 0
   background: $gray-one
@@ -396,7 +434,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     margin-bottom: 20px
 
 
-// Page Header
+// Page Header -----------------------------------------------------------------------------------------
 .page-header
   padding: 46px 0 54px
   margin-bottom: 4px
@@ -504,11 +542,8 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   width: 35%
   border: 2px solid #f1f4f4
   background-color: transparent
-  +transition-property(all)
-  +transition-duration(500ms)
-  +transition-timing-function(ease)
   &:hover
-    border: 1px solid $green
+    border: 2px solid $green
 
 .row-infosline
   margin-bottom: 35px
@@ -536,13 +571,59 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   margin-top: 23px
   width: 200px
 
+// Feedback -----------------------------------------------------------------------------------------
+.feedback-box
+  position: fixed
+  left: 15px
+  bottom: 90px
+  width: 370px
+  height: 455px
+  padding: 22px
+  +border-radius(5px)
+  background-color: $blue-note
+  +box-shadow(rgba(63, 71, 82, 0.49) 2px 0px 30px -1px)
+  p
+    color: white
+  .display-medium
+    margin-top: 20px
+    margin-bottom: 30px
+
+.feedback-box-closed
+  opacity: 0
+  z-index: -10
+
+.close-button
+  position: absolute
+  top: 18px
+  right: 22px
+  display: block
+  opacity: 0.5
+  width: 13px
+  &:hover
+    opacity: 1
+
+.icon-feedback-box
+  position: fixed
+  left: 15px
+  bottom: 20px
+  width: 52px
+  height: 52px
+  +border-radius(4px)
+  background-color: #409bff
+  color: #409bff
+  padding: 9px 6px
+  &:hover
+    background-color: #368deb
 
 
+// Responsive -----------------------------------------------------------------------------------------
 @media screen and (max-width: 1200px)
   .header-link
     padding: 10px
 
 @media screen and (max-width: 991px)
+  .header-logo img
+    margin: 0
   h2
     padding: 0 5%
   .prg2
