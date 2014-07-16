@@ -1,0 +1,23 @@
+.feedback-box
+  p.body-big.title
+    = t('.texts.title')
+  p.body-small
+    = t('.texts.content').html_safe
+
+  .w-form
+
+      = email_field_tag(:email, content = nil, options = { class: 'w-input text-field text-field-error', placeholder: t('.placeholders.email')})
+
+      = text_area_tag(:feedback, content = nil, options = {class: 'w-input text-field text-field-feedback', placeholder: t('.placeholders.text')})
+
+      = submit_tag(value = t('.inputs.submit'), options = {class: 'w-button button bt-medium bt-dark'})
+
+  / Conteúdo que deve entrar quando o form for enviado, tudo acima deve esconder
+  / p.display-medium = t('.texts.response.title').html_safe
+  / p.body-medium = t('.texts.response.content')
+
+  = link_to "#", class: "close-button" do
+    = image_tag 'catarse_bootstrap/icons/icon-close.png'
+
+= link_to "#", class: "icon-feedback-box" do
+  = image_tag 'catarse_bootstrap/icons/feedback-box-icon.png'
