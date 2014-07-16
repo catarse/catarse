@@ -2,8 +2,8 @@
   - if resource.new_record? || policy(resource).permitted_for?(:minimum_value, :update)
     = f.input :minimum_value, required: true, as: :number, input_html: {pattern: "^[\\d+.]+"}
 
-  - if resource.new_record? || policy(resource).permitted_for?(:days_to_delivery, :update)
-    = f.input :days_to_delivery, required: true
+  - if resource.new_record? || policy(resource).permitted_for?(:deliver_at, :update)
+    = f.input :deliver_at, required: true, as: :date_select, discard_day: true, labels: { day: false }
 
   - if resource.new_record? || policy(resource).permitted_for?(:description, :update)
     = f.input :description, required: true

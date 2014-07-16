@@ -4,9 +4,9 @@ class RewardDecorator < Draper::Decorator
   include AutoHtml
 
   def display_deliver_estimate
-    I18n.l((source.project.expires_at + source.days_to_delivery.days), format: :estimate)
+    I18n.l(source.deliver_at, format: :estimate)
   rescue
-    source.days_to_delivery
+    source.deliver_at
   end
 
   def display_remaining

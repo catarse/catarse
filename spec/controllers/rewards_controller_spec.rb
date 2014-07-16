@@ -11,12 +11,12 @@ describe RewardsController do
   end
 
   shared_examples_for "POST rewards create" do
-    before { post :create, project_id: project.id, reward: { description: 'Lorem ipsum', minimum_value: 10, days_to_delivery: 10 }, locale: :pt }
+    before { post :create, project_id: project.id, reward: { description: 'Lorem ipsum', minimum_value: 10, deliver_at: DateTime.now }, locale: :pt }
     it { project.rewards.should_not be_empty}
   end
 
   shared_examples_for "POST rewards create without permission" do
-    before { post :create, project_id: project.id, reward: { description: 'Lorem ipsum', minimum_value: 10, days_to_delivery: 10 }, locale: :pt }
+    before { post :create, project_id: project.id, reward: { description: 'Lorem ipsum', minimum_value: 10, deliver_at: DateTime.now }, locale: :pt }
     it { project.rewards.should be_empty}
   end
 
