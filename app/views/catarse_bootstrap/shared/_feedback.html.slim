@@ -6,11 +6,12 @@
 
   .w-form
 
-      = email_field_tag(:email, content = nil, options = { class: 'w-input text-field text-field-error', placeholder: t('.placeholders.email')})
+  = form_tag(zendesk.tickets_path(format: :json), method: :post, remote: true) do
+    = email_field_tag("user[email]", content = nil, options = { class: 'w-input text-field text-field-error', placeholder: t('.placeholders.email')})
 
-      = text_area_tag(:feedback, content = nil, options = {class: 'w-input text-field text-field-feedback', placeholder: t('.placeholders.text')})
+    = text_area_tag("ticket[comment][value]", content = nil, options = {class: 'w-input text-field text-field-feedback', placeholder: t('.placeholders.text')})
 
-      = submit_tag(value = t('.inputs.submit'), options = {class: 'w-button button bt-medium bt-dark'})
+    = submit_tag(value = t('.inputs.submit'), options = {class: 'w-button button bt-medium bt-dark'})
 
   / Conteúdo que deve entrar quando o form for enviado, tudo acima deve esconder
   / p.display-medium = t('.texts.response.title').html_safe
