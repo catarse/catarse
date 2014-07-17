@@ -103,7 +103,7 @@ class ProjectDecorator < Draper::Decorator
     time = 1.send(unit)
 
     if source.expires_at.to_i >= time.from_now.to_i
-      time = ((source.expires_at - Time.zone.now).abs / time).round
+      time = ((source.expires_at - Time.zone.now).abs / time).floor
       time_and_unit_attributes time, unit
     end
   end
