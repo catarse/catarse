@@ -472,7 +472,7 @@ GEM
       mime-types (~> 1.0)
       multi_json
       multipart-post (~> 2.0)
-    zendesk_engine (0.0.1)
+    zendesk_engine (0.0.2)
       rails (~> 4.1.4)
       zendesk_api
 
@@ -557,4 +557,4 @@ DEPENDENCIES
   user_notifier
   video_info (>= 1.1.1)
   weekdays
-  zendesk_engine
+  zendesk_engine (>= 0.0.2)
