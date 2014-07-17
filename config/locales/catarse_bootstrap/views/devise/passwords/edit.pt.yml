@@ -7,7 +7,7 @@ pt:
           header: 'Defina uma nova senha'
         form:
           hint:
-            password_length: 'Mínimo 6 caracteres'
+            password_length: 'Mínimo de 6 caracteres'
           labels:
             password: 'Nova senha'
             password_confirmation: 'Confirmação de senha'
