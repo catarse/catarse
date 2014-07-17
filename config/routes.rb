@@ -41,6 +41,7 @@ Catarse::Application.routes.draw do
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
   mount CatarseCredits::Engine => "/", as: :catarse_credits
+  mount ZendeskEngine::Engine => "/"
 #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
   # Channels
