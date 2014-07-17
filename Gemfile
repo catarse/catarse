@@ -32,7 +32,7 @@ gem 'user_notifier'
 gem 'mixpanel-ruby'
 
 # Zendesk API
-gem 'zendesk_engine'
+gem 'zendesk_engine', '>= 0.0.2'
 
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
