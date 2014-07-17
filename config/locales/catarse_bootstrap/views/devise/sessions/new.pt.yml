@@ -12,7 +12,7 @@ pt:
           forgot_password: "Esqueci minha senha"
         form:
           labels:
-            remember_me: 'Continuar conectado'
+            remember_me: 'Permanecer conectado'
           inputs:
             submit: 'Fazer login'
             password: 'Senha'
