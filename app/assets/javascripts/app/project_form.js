@@ -23,7 +23,7 @@ App.views.ProjectForm.addChild('VideoUrl', _.extend({
   checkVideoUrl: function(){
     var that = this;
     $.get(this.$el.data('path') + '?url=' + encodeURIComponent(this.$el.val())).success(function(data){
-      if(!data || !data.video_id){
+      if(!data || !data.provider){
         that.$el.trigger('invalid');
       }
     });
