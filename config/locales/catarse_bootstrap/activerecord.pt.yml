@@ -121,6 +121,7 @@ pt:
     deleted: 'Você deixou de seguir o %{channel}'
   channels:
     edit: Atualizar canal
+    image_hint: Tamanho máximo (600x121px)
     subscribed: "+ %{count} seguidores"
     back_to_news: '← Voltar para as novidades'
     follow: "Siga o canal"
