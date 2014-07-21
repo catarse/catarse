@@ -66,7 +66,6 @@ var App = window.App = Skull.View.extend({
           $('html,body').animate({
             scrollTop: target.offset().top
           }, 1000);
-          return false;
         }
       }
     });
