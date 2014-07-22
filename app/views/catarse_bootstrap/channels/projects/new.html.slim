@@ -38,9 +38,6 @@ section.row
     = form.input :first_contributions, as: :text, label: t('.first_contributions')
     p = t('.first_contributions_hint')
 
-    = form.input :how_know, as: :text, label: t('.how_know')
-    p = t('.how_know_hint')
-
     = form.input :accepted_terms, as: :boolean, label: t('.accept_terms', link: link_to(t('.terms'), channel.terms_url), target: '_blank').html_safe
     .row
         .large-3.columns.large-centered
