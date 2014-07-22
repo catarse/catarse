@@ -83,6 +83,9 @@ class ProjectDecorator < Draper::Decorator
 
   end
 
+  def display_traffic_sources
+    source.traffic_sources && source.traffic_sources.join(', ')
+  end
   private
 
   def use_uploaded_image(version)
