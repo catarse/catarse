@@ -1,6 +1,5 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  layout 'catarse_bootstrap'
   after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel]
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
@@ -112,5 +111,9 @@ class ProjectsController < ApplicationController
 
   def resource
     @project ||= (params[:permalink].present? ? Project.by_permalink(params[:permalink]).first! : Project.find(params[:id]))
+  end
+
+  def use_catarse_boostrap
+    action_name == "new" || action_name == "create" ? 'catarse_bootstrap' : 'application'
   end
 end
