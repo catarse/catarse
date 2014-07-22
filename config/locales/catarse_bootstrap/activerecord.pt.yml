@@ -67,8 +67,22 @@ pt:
       models:
         project:
           attributes:
+            name:
+              blank: "O nome do projeto não pode ficar em branco"
             permalink:
-              invalid: URL do projeto inválida
+              blank: "A URL do projeto não pode ficar em branco"
+              invalid: "A URL do projeto é inválida"
+              taken: "A URL do projeto já existe"
+            category:
+              blank: "Você deve escolher uma categoria para seu projeto"
+            goal:
+              blank: "O valor a ser arrecadado não pode ficar em branco"
+            online_days:
+              blank: "O prazo para arrecadação não pode ser 0"
+            about:
+              blank: "A descrição do projeto não pode ficar em branco"
+            headline:
+              blank: "A frase de efeito do projeto não pode ficar em branco"
         user:
           attributes:
             email:

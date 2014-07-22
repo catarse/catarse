@@ -40,8 +40,14 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     ## Inputs
-    b.use :label_input
+    # b.wrapper :tag => 'div', :class => 'controls' do |ba|
+    #   ba.use :hint,  wrap_with: { tag: :span, class: :hint }
+    #   ba.use :label_input
+    #   ba.use :error, wrap_with: { tag: :span, class: :error }
+    # end
+    b.use :label_text, wrap_with: { tag: :label, class: "field-label" }
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    b.use :input
     b.use :error, wrap_with: { tag: :span, class: :error }
   end
 
@@ -95,7 +101,7 @@ SimpleForm.setup do |config|
   # config.label_text = lambda { |label, required| "#{required} #{label}" }
 
   # You can define the class to use on all labels. Default is nil.
-  config.label_class = 'control-label'
+  config.label_class = 'field-label'
 
   # You can define the class to use on all forms. Default is simple_form.
   # config.form_class = :simple_form
