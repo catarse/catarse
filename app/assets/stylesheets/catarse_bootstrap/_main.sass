@@ -111,6 +111,9 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   font-size: 15px
   &:focus
     border-color: $blue-note
+  &.error
+    background: #f7cbcb
+    border-color: $red
 
 .text-field-medium
   height: 60px
@@ -240,8 +243,6 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     color: #79808b
     font-size: 16px
     font-weight: 400
-  div
-    margin: 0
   .text-field
     height: 40px
     margin-top: 8px
@@ -269,6 +270,8 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     margin-left: 0
     margin-top: 2px
     margin-right: 10px
+    .field-label
+      display: none
   .checkbox
     margin-bottom: 22px
     color: #79808b
@@ -681,9 +684,8 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   padding: 45px
   background: white
   border-left: 1px solid $border-strong
-  div
+  .field-label
     margin-top: 70px
-  label
     margin-bottom: 13px
     color: $blue-one
     font-size: 16px
