@@ -42,7 +42,6 @@ FactoryGirl.define do
     f.goal 10000
     f.online_date Time.now
     f.online_days 5
-    f.how_know 'Lorem ipsum'
     f.more_links 'Ipsum dolor'
     f.first_contributions 'Foo bar'
     f.video_url 'http://vimeo.com/17298435'

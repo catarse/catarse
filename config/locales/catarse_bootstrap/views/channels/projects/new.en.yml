@@ -36,8 +36,8 @@ en:
         first_contributions: "List the first contributions"
         first_contributions_hint: "To reach your financial goal it’s indispensable to engage the people who are close to you and the project. So if you can list here who will be your first 20 contributions that would be a great sign."
 
-        how_know: "Hou you discovered the channel?"
-        how_know_hint: "Tell us how you discovered the channel and what you expect from us."
+        traffic_sources: "Hou you discovered the channel?"
+        traffic_sources_hint: "Tell us how you discovered the channel and what you expect from us."
 
         accept_terms: "I read and agree with the %{link}."
         terms: "use terms"

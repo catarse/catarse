@@ -27,7 +27,7 @@ br
 br
 b Como conheceu o #{CatarseSettings[:company_name].downcase}:
 br
-= simple_format(project.how_know)
+= project.display_traffic_sources
 br
 br
 = link_to 'Veja mais sobre o projeto', project_by_slug_url(permalink: project.permalink)
