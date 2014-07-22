@@ -69,7 +69,7 @@ describe "Projects" do
       [
         'permalink', 'name', 'video_url',
         'headline', 'goal', 'online_days',
-        'about', 'first_contributions', 'more_links'
+        'about'
       ].each do |a|
         fill_in "project_#{a}", with: project.attributes[a]
       end
