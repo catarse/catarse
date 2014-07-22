@@ -158,7 +158,7 @@ en:
         user_id: "User ID"
         video_url: "Video URL"
         permalink: 'Project URL'
-        how_know: "How did you hear about Catarse?"
+        traffic_sources: "How did you hear about Catarse?"
         more_links: 'Where can we find more about you and your project?'
       reward:
         description: Description
@@ -289,7 +289,7 @@ en:
         comment: "Leave your comment about this project"
       project:
         more_links: "List project related links *"
-        how_know: "How did you get to know Catarse?"
+        traffic_sources: "How did you get to know Catarse?"
         headline: "Punch Line"
         category: 'Category'
         first_contributions: "List your first contributions *"
@@ -567,7 +567,7 @@ en:
       video_important: "The video must be hosted by Vimeo or Youtube. Paste here the URL!"
       more_links_important: "It's very important to use social medias to spread the word about your project and engage your network into making it a success"
       first_contributions_important: "These people are fundamental to the success of your project."
-      how_know_important: "Yay! We reached  the final question."
+      traffic_sources_important: "Yay! We reached  the final question."
       headline_important: "It's a summary of  your project . 140 characters tops!:D"
       tags_important: "Check other projects in your category  <a href='%{href}' target='_blank'>here!</a>!."
       subtitle: "The time to make it happen is now! We really want to know what you're up to..."
