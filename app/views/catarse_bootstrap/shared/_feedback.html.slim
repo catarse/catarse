@@ -1,20 +1,21 @@
 .feedback-box
-  p.body-big.title
+  p#title.body-big.title
     = t('.texts.title')
-  p.body-small
+  p#description.body-small
     = t('.texts.content').html_safe
 
   .w-form
+    = form_tag(zendesk.tickets_path(format: :json), method: :post, remote: true) do
+      = hidden_field_tag("user[name]", content = nil)
+      = email_field_tag("user[email]", content = nil, options = { class: 'w-input text-field text-field-error', placeholder: t('.placeholders.email')})
 
-      = email_field_tag(:email, content = nil, options = { class: 'w-input text-field text-field-error', placeholder: t('.placeholders.email')})
-
-      = text_area_tag(:feedback, content = nil, options = {class: 'w-input text-field text-field-feedback', placeholder: t('.placeholders.text')})
+      = text_area_tag("ticket[comment][value]", content = nil, options = {class: 'w-input text-field text-field-feedback', placeholder: t('.placeholders.text')})
 
       = submit_tag(value = t('.inputs.submit'), options = {class: 'w-button button bt-medium bt-dark'})
 
   / Conteúdo que deve entrar quando o form for enviado, tudo acima deve esconder
-  / p.display-medium = t('.texts.response.title').html_safe
-  / p.body-medium = t('.texts.response.content')
+  p#thanks-title.display-medium = t('.texts.response.title').html_safe
+  p#thanks-description.body-medium = t('.texts.response.content')
 
   = link_to "#", class: "close-button" do
     = image_tag 'catarse_bootstrap/icons/icon-close.png'
