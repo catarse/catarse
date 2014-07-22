@@ -41,7 +41,7 @@
 
             = form.input :name, as: :string, label: t('.form.labels.name'), hint: t('.form.hints.name'), input_html: { class: 'w-input text-field' }, autofocus: true
             = form.input :permalink, as: :string, label: t('.form.labels.permalink'), hint: t('.form.hints.permalink'), input_html: { class: 'w-input text-field' }
-            = form.input :category, as: :select, collection: Category.array, label: t('.form.labels.category'), hint: t('.form.hints.category'), input_html: { class: 'w-input text-field' }
+            = form.input :category_id, as: :select, collection: Category.array, label: t('.form.labels.category'), hint: t('.form.hints.category'), input_html: { class: 'w-input text-field' }
             = form.input :goal, as: :string, label: t('.form.labels.goal'), hint: t('.form.hints.goal'), input_html: { class: 'w-input text-field' }
             = form.input :online_days, as: :string, label: t('.form.labels.online_days'), hint: t('.form.hints.online_days'), input_html: { class: 'w-input text-field' }
 
