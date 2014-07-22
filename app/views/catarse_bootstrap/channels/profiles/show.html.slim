@@ -25,7 +25,7 @@ section.line-box
               = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
       .large-4.columns.video-thumb
-        = image_tag(@profile.video.thumbnail_large, width: '100%')
+        = image_tag(@profile.video.try(:thumbnail_large), width: '100%')
         span
           = image_tag 'catarse_bootstrap/icon-play.png'
 

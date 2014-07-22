@@ -28,17 +28,17 @@ describe ProjectDecorator do
 
     context "when there is more than 1 day to go" do
       let(:expires_at){ Time.zone.now + 2.days }
-      it{ should == {time:2, unit:"dias"} }
+      it{ should == {time:1, unit:"dia"} }
     end
 
     context "when there is less than 1 day to go" do
       let(:expires_at){ Time.zone.now + 13.hours }
-      it{ should == {time:13, unit:"horas"} }
+      it{ should == {time:12, unit:"horas"} }
     end
 
     context "when there is less than 1 hour to go" do
       let(:expires_at){ Time.zone.now + 59.minutes }
-      it{ should == {time:59, unit:"minutos"} }
+      it{ should == {time:58, unit:"minutos"} }
     end
   end
 

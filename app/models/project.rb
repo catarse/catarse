@@ -107,7 +107,7 @@ class Project < ActiveRecord::Base
   validates :video_url, presence: true, if: ->(p) { p.state_name == 'online' }
   validates_presence_of :name, :user, :category, :about, :headline, :goal, :permalink
   validates_length_of :headline, maximum: 140
-  validates_numericality_of :online_days, less_than_or_equal_to: 60
+  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0
   validates_numericality_of :goal, greater_than: 9
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\z/, allow_blank: true
@@ -170,7 +170,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    contributions.with_state('waiting_confirmation').count(:all) > 0
+    contributions.with_state('waiting_confirmation').present?
   end
 
   def pending_contributions_reached_the_goal?

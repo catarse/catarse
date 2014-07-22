@@ -126,7 +126,7 @@ describe ProjectObserver do
 
   describe "#notify_owner_that_project_is_waiting_funds" do
     let(:user) { create(:user) }
-    let(:project) { create(:project, user: user, goal: 100, online_days: -2, state: 'online') }
+    let(:project) { create(:project, user: user, goal: 100, online_days: 1, online_date: Time.now - 2.days, state: 'online') }
 
     before do
       create(:contribution, project: project, value: 200, state: 'confirmed')
@@ -165,7 +165,7 @@ describe ProjectObserver do
   describe "notify_contributors" do
 
     context "when project is successful" do
-      let(:project){ create(:project, goal: 30, online_days: -7, state: 'online') }
+      let(:project){ create(:project, goal: 30, online_days: 1, online_date: Time.now - 8.days, state: 'online') }
       let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, value: 30, project: project) }
 
       before do
@@ -179,7 +179,7 @@ describe ProjectObserver do
     end
 
     context "when project is unsuccessful" do
-      let(:project){ create(:project, goal: 30, online_days: -7, state: 'online') }
+      let(:project){ create(:project, goal: 30, online_days: 1, online_date: Time.now - 8.days, state: 'online') }
       let(:contribution){ create(:contribution, key: 'should be updated', payment_method: 'should be updated', state: 'confirmed', confirmed_at: Time.now, value: 20) }
       before do
         contribution
@@ -192,7 +192,7 @@ describe ProjectObserver do
     end
 
     context "when project is unsuccessful with pending contributions" do
-      let(:project){ create(:project, goal: 30, online_days: -7, state: 'online') }
+      let(:project){ create(:project, goal: 30, online_days: 1, online_date: Time.now - 8.days, state: 'online') }
 
       before do
         create(:contribution, project: project, key: 'ABC1', payment_method: 'ABC', payment_token: 'ABC', value: 20, state: 'confirmed')
@@ -210,7 +210,7 @@ describe ProjectObserver do
   end
 
   describe '#notify_owner_that_project_is_successful' do
-    let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
+    let(:project){ create(:project, goal: 30, online_days: 1, online_date: Time.now - 8.days, state: 'waiting_funds') }
 
     before do
       project.stub(:reached_goal?).and_return(true)
@@ -274,7 +274,7 @@ describe ProjectObserver do
   end
 
   describe "#notify_admin_that_project_reached_deadline" do
-    let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
+    let(:project){ create(:project, goal: 30, online_days: 1, online_date: Time.now - 8.days, state: 'waiting_funds') }
     let(:user) { create(:user, email: 'foo@foo.com')}
     before do
       CatarseSettings[:email_payments] = 'foo@foo.com'
@@ -292,7 +292,7 @@ describe ProjectObserver do
   end
 
   describe "#notify_admin_that_project_is_successful" do
-    let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
+    let(:project){ create(:project, goal: 30, online_days: 1, online_date: Time.now - 8.days, state: 'waiting_funds') }
     let(:user) { create(:user, email: 'foo@foo.com')}
     before do
       CatarseSettings[:email_redbooth] = 'foo@foo.com'
