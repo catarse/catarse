@@ -1,5 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
+  layout 'catarse_bootstrap'
   after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel]
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
