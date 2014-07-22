@@ -170,7 +170,7 @@ class Project < ActiveRecord::Base
   end
 
   def in_time_to_wait?
-    contributions.with_state('waiting_confirmation').count(:all) > 0
+    contributions.with_state('waiting_confirmation').present?
   end
 
   def pending_contributions_reached_the_goal?
