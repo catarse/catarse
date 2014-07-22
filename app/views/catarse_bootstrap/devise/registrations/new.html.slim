@@ -36,7 +36,7 @@
               = check_box_tag :show_password
               = label_tag :show_password, t('.form.labels.show_password')
 
-          = form.input :newsletter, as: :boolean, label: t('.form.labels.newsletter'), input_html: { class: 'w-checkbox-input', checked: true }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
+          = form.input :newsletter, as: :boolean, inline_label: t('.form.labels.newsletter'), input_html: { class: 'w-checkbox-input', checked: true }, wrapper_html: {class: 'w-checkbox-input w-clearfix' }
 
           = form.submit t('.form.inputs.submit'), class: 'w-button button bt-medium'
 
