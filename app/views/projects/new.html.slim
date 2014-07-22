@@ -35,6 +35,8 @@
 
       .w-col.w-col-8.send-project-form
         = simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
+          = render 'devise/shared/alert'
+
           fieldset
             legend.send-project-form-headline.headline = t('.form.blocks.first.title')
             p.body-medium = t('.form.blocks.first.description')
