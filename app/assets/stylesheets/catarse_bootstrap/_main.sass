@@ -145,6 +145,29 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   abbr
     display: none
 
+.form-error
+  margin-bottom: 28px
+  padding: 10px
+  +border-radius(5px)
+  background-color: #e86666
+  p
+    color: white
+    font-size: 14px
+    margin-bottom: 0
+  .form-error-title
+    font-weight: 700
+  .form-error-text
+    font-weight: 400
+
+.field_with_errors
+  input, textarea
+    border-color: $red
+    background-color: #f7cbcb
+    &:focus
+      border-color: $red
+  .error
+    display: none
+
 // Buttons -----------------------------------------------------------------------------------------
 .button
   display: block
@@ -297,18 +320,6 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     display: none
   .instructions
     font-size: 14px
-  .box-error-login
-    margin-bottom: 28px
-    padding: 10px
-    +border-radius(5px)
-    background-color: #e86666
-  .text-error
-    color: white
-    font-size: 14px
-    font-weight: 400
-    margin-bottom: 0
-  .text-error.text-error-bold
-    font-weight: 700
   .password
     position: relative
     .hint
