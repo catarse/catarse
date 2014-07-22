@@ -6,7 +6,7 @@ section.row
     = form.input :name, as: :string
     = form.input :email, as: :string
     = form.input :description, as: :text
-    = form.input :image, as: :file
+    = form.input :image, as: :file, hint: t('channels.image_hint')
     - if @profile.image.present?
       p= image_tag(@profile.image.curator_thumb.url)
 
