@@ -53,6 +53,10 @@ p
   font-size: 18px
   line-height: 28px
 
+.body-medium
+  font-size: 16px
+  line-height: 24px
+
 .body-small
   font-size: 15px
   line-height: 22px
@@ -60,6 +64,11 @@ p
 .title
   margin-bottom: 14px
   font-weight: 600
+
+.headline
+  margin-bottom: 12px
+  font-size: 22px
+  line-height: 33px
 
 // Links -----------------------------------------------------------------------------------------
 .link
@@ -102,6 +111,15 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   font-size: 15px
   &:focus
     border-color: $blue-note
+  &.error
+    background: #f7cbcb
+    border-color: $red
+
+.text-field-medium
+  height: 60px
+
+.text-field-big
+  height: 280px
 
 .text-field-feedback
   height: 103px
@@ -113,8 +131,41 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   &:focus
     border-color: $red
 
+.checkbox_field
+  margin-bottom: 12px
+  color: $blue-two
+
+.hint
+  display: block
+  margin-bottom: 10px
+  color: $blue-two
+  font-size: 14px
+
 .required
   abbr
+    display: none
+
+.form-error
+  margin-bottom: 28px
+  padding: 10px
+  +border-radius(5px)
+  background-color: #e86666
+  p
+    color: white
+    font-size: 14px
+    margin-bottom: 0
+  .form-error-title
+    font-weight: 700
+  .form-error-text
+    font-weight: 400
+
+.field_with_errors
+  input, textarea
+    border-color: $red
+    background-color: #f7cbcb
+    &:focus
+      border-color: $red
+  .error
     display: none
 
 // Buttons -----------------------------------------------------------------------------------------
@@ -155,6 +206,21 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     background-color: $blue-one
     &:hover
       background-color: #505966
+
+.bt-large
+  display: block
+  width: 100%
+  height: auto
+  margin-right: auto
+  margin-left: auto
+  padding: 19px 0
+  +border-radius(5px)
+  background-color: $green
+  color: white
+  font-size: 18px
+  text-align: center
+  text-decoration: none
+  font-family: "proxima-nova",sans-serif
 
 // Devise -----------------------------------------------------------------------------------------
 .box-login
@@ -200,8 +266,6 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     color: #79808b
     font-size: 16px
     font-weight: 400
-  div
-    margin: 0
   .text-field
     height: 40px
     margin-top: 8px
@@ -229,6 +293,8 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     margin-left: 0
     margin-top: 2px
     margin-right: 10px
+    .field-label
+      display: none
   .checkbox
     margin-bottom: 22px
     color: #79808b
@@ -254,18 +320,6 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     display: none
   .instructions
     font-size: 14px
-  .box-error-login
-    margin-bottom: 28px
-    padding: 10px
-    +border-radius(5px)
-    background-color: #e86666
-  .text-error
-    color: white
-    font-size: 14px
-    font-weight: 400
-    margin-bottom: 0
-  .text-error.text-error-bold
-    font-weight: 700
   .password
     position: relative
     .hint
@@ -573,7 +627,6 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
 
 // Feedback -----------------------------------------------------------------------------------------
 .feedback-box
-  z-index: 5
   position: fixed
   left: 15px
   bottom: 90px
@@ -604,7 +657,6 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     opacity: 1
 
 .icon-feedback-box
-  z-index: 10
   position: fixed
   left: 15px
   bottom: 20px
@@ -616,6 +668,74 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   padding: 9px 6px
   &:hover
     background-color: #368deb
+
+// New Project -----------------------------------------------------------------------------------------
+.send-project-content
+  margin-top: 70px
+  background-color: $gray-one
+  border: 1px solid $border-strong
+  +border-radius(3px)
+  display: inline-block
+
+.send-project-faq
+  height: 100%
+  padding: 10px 20px 67px 44px
+
+  .caption
+    font-size: 13px
+    line-height: 18px
+    font-weight: bold
+    text-transform: uppercase
+    margin: 50px 0 15px
+    padding: 0
+  li
+    margin-bottom: 10px
+
+.send-project-form
+  padding: 45px
+  background: white
+  border-left: 1px solid $border-strong
+  .field-label
+    margin-top: 70px
+    margin-bottom: 13px
+    color: $blue-one
+    font-size: 16px
+    font-weight: 600
+
+.checkbox_field
+  label
+    font-weight: 400
+    font-size: 14px
+    color: $blue-two
+    margin-bottom: 20px
+    &:first-child
+      font-weight: 600
+      margin-bottom: 24px
+      color: $blue-one
+      font-size: 16px
+  input
+    margin: 4px 6px 0 0
+
+.send-project-form-disclaimer
+  margin-top: 40px
+  margin-bottom: 52px
+  padding: 28px
+  border: 1px solid #ddd
+  border-radius: 3px
+
+.send-project-form-headline
+  margin-bottom: 20px
+  font-weight: 600
+
+.send-project-form-headline-with-margin
+  margin-bottom: 20px
+  font-weight: 600
+  padding-top: 95px
+
+.send-project-form-button
+  width: 45%
+  margin-top: 40px
+
 
 
 // Responsive -----------------------------------------------------------------------------------------

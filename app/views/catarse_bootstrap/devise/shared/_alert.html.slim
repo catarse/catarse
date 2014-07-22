@@ -1,9 +1,9 @@
 - if flash[:alert].present?
-  .box-error-login.animated.shake
-    p.text-error.text-error-bold = t('failure_title')
-    p.text-error= flash[:alert]
+  .form-error.animated.shake
+    p.form-error-title = t('failure_title')
+    p.form-error-text = flash[:alert]
 - elsif resource.errors.present?
-  .box-error-login.animated.shake
-    p.text-error.text-error-bold = t('failure_title')
+  .form-error.animated.shake
+    p.form-error-title = t('failure_title')
     - resource.errors.messages.each do |message|
-      p.text-error == message[1].to_sentence
+      p.form-error-text == message[1].to_sentence

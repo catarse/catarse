@@ -1,40 +1,51 @@
 pt:
   projects:
     new:
-      title: "Agooora sim! Envie seu projeto, campeão."
-      subtitle: "A hora para fazer acontecer é agora! Estamos loucos para saber o que você está aprontando..."
-      legend_html: "
-       <strong>Após preencher o formulário abaixo você vai criar uma página de RASCUNHO DE PROJETO</strong><br/><br/>
-       <strong>As informações preenchidas abaixo não são definitivas!</strong><br/>
-       Durante o processo de criação da sua página de rascunho de projeto você poderá adicionar recompensas e formatar o seu projeto no mesmo modelo de página que ele terá caso seja aceito e vá ao ar. Você inclusive já escolherá um link de acesso ao seu projeto. No entanto, o rascunho de projeto não estará público ao final do processo. A finalidade disso é conferir o tempo necessário ao Realizador para aprimorar a apresentação do seu projeto antes de ser avaliado. Envie a página para os seus amigos, colha feedbacks e melhore sua proposta! Boas opiniões e colaboração ajudam a tornar seu projeto mais afiado e preciso. Envie seu projeto para avaliação apenas quando você sentir que ele está pronto.
-       <br/><br/>
-       <strong>Quando você estiver pronto, você poderá enviar seu projeto para nossa equipe. </strong><br/>
-       É super super simples! Observe que disponibilizamos um botão específico para isso dentro da página de rascunho de projeto. É só clicar e aguardar a resposta em até 4 dias úteis!
-       <br/><br/>
-       <strong>IMPORTANTE!</strong><br/>
-       Fazer um Rascunho de Projeto não significa que seu projeto irá ao ar no site do Catarse.
-       Somos uma plataforma que seleciona as propostas enviadas e nosso atendimento irá avaliar o foco, a viabilidade, a
-       consistência e a qualidade de apresentação do seu projeto. Se entendermos que ele não está de acordo com os
-       <a href='http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-' target='__blank'>Critérios de Seleção</a> da plataforma, ele poderá ser recusado pela nossa equipe.
+      page-title: "Envie seu projeto"
 
-      "
-      permalink_important: 'Tente não usar Underline, hífen e etc.'
-      permalink_hint: 'Simplifique a URL do seu projeto. Imagine que seu apoiador precisará lembrar do endereço para divulgar o projeto no bar.'
-      important_html: "Lembre-se da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido. Basta dividir o seu orçamento final por 0,87."
-      days_hint: "Em média os projetos ficam no ar por 40 dias."
-      days_important: "O prazo máximo para deixar o projeto no ar é de 60 dias."
-      about_hint: "Conte-nos um pouco sobre sua inspiração para realizar o projeto, sua história e o que será entregue ao final. Seja sucinto e fuja daquelas formalidades de editais. Nada de OBJETIVO, JUSTIFICATIVA, PÚBLICO-ALVO... Presenteie seus leitores com algo que mexa com eles e seja muito transparente em relação a expectativa sobre o projeto."
-      about_important: "Não deixe o texto muito grande! Coloque links para que o apoiador possa explorar mais o seu trabalho."
-      tags_hint: "Antes de enviar seu projeto, explore e inspire-se com outros projetos que passaram pelo site."
-      tags_important: "Confira mais projetos relacionados a sua categoria clicando <a href='%{href}' target='_blank'>aqui!</a>."
-      video_hint: "O vídeo é a principal peça do projeto. Se ainda não tiver, não precisa enviar... Mas já vá pensando em como fazer um vídeo MATADOR!"
-      video_important: "Cola o link pra gente! Pode ser do Vimeo ou do Youtube."
-      how_know_important: "Oba! Chegamos à última pergunta."
-      more_links_important: "É muito importante utilizar as suas mídias sociais para espalhar a notícia sobre o seu projeto e engajar sua rede no sucesso do projeto."
-      first_contributions_important: "Essas pessoas serão fundamentais para ter sucesso no seu projeto"
-      online_days_important: 'O prazo máximo para deixar o projeto no ar é de 60 dias.'
-      headline_important: 'É uma breve descrição do projeto, 140 caracteres no máximo! :D'
-      name_important: "Não ultrapasse 50 caracteres"
-      submit: "Salvar rascunho"
-      send_project: "Quero enviar meu projeto."
-      terms: "termos de uso"
+      faq:
+        titles:
+          support: "Suporte"
+          know_more: "Saiba mais"
+
+        links:
+          criteria: "Critérios de seleção"
+          suport_central: "Central de suporte"
+          support_contact: "Entre em contato com a gente"
+          how_it_works: "Como o Catarse funciona?"
+          money: "Como receberei o dinheiro?"
+          selection: "Como os projetos são selecionados?"
+          all_or_nothing: "Por que Tudo ou Nada?"
+
+      form:
+        blocks:
+          first:
+            title: "1. Informações básicas"
+            description: "Você está criando o rascunho de seu projeto. As informações preenchidas nesse bloco 1 não podem ser  alteradas após o seu projeto entrar no ar."
+          second:
+            title: "2. História do projeto"
+            description: "As informações abaixo não são definitivas em nenhum momento. Logo você poderá alterá-las futuramente, mesmo durante o período em que seu projeto estará no ar."
+          disclaimer: "Somos uma plataforma que seleciona as propostas enviadas, nosso atendimento irá avaliar o foco, a viabilidade, a consistência e a apresentação do seu projeto. Se ele não está de acordo com os <a href='http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos' class='alt-link' target='_blank'>Critérios de Seleção da Plataforma</a>, ele poderá ser recusado."
+
+        labels:
+          name: "Nome do projeto"
+          permalink: "URL do projeto"
+          category: "Escolha a categoria"
+          goal: "Valor a ser arrecadado"
+          online_days: "Prazo para arrecadação"
+          video_url: "URL do vídeo"
+          about: "Descrição do projeto"
+          headline: "Frase de efeito"
+          how_know: "Como você conheceu o Catarse?"
+
+        hints:
+          name: "Quanto mais direto melhor. Não ultrapasse 50 caracteres"
+          permalink: "É o endereço do seu projeto, deixe-a simples. Tente não usar underline, hífen e etc."
+          category: "Antes de enviar, explore e se inspire em outros projetos da mesma categoria."
+          goal: "Grande parte dos apoios virão de pessoas próximas a você portanto, pense na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos. Lembre-se da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido."
+          online_days: "Em média os projetos ficam no ar por 40 dias. O prazo máximo para deixar o projeto no ar é de 60 dias."
+          video_url: "Cole aqui o link youtube ou vimeo do seu vídeo.  O vídeo é a principal peça do projeto, mas se ainda não o tiver, tudo bem, você pode adicioná-lo depois."
+          about: "Fale sobre o que será realizado, como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Fuja daquelas formalidades de editais. Lembre-se que <a href=http://suporte.catarse.me/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto class='alt-link' target='_blank'>você pode utilizar imagens e vídeos</a> para ilustrar melhor o seu projeto na descrição."
+          headline: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo. Não ultrapasse 100 caracteres."
+
+        submit: "Salvar e continuar"
