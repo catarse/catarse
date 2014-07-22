@@ -31,9 +31,6 @@ gem 'user_notifier'
 # Mixpanel for backend tracking
 gem 'mixpanel-ruby'
 
-# Zendesk API
-gem 'zendesk_engine', '>= 0.0.2'
-
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
 gem 'catarse_moip', '~> 2.3.5'
