@@ -34,6 +34,9 @@ describe Project do
     it{ should allow_value('https://youtube.com/watch?v=UyU-xI').for(:video_url) }
     it{ should_not allow_value('http://www.foo.bar').for(:video_url) }
     it{ should allow_value('testproject').for(:permalink) }
+    it{ should allow_value(1).for(:online_days) }
+    it{ should_not allow_value(0).for(:online_days) }
+    it{ should_not allow_value(61).for(:online_days) }
     it{ should_not allow_value('users').for(:permalink) }
   end
 
@@ -188,8 +191,8 @@ describe Project do
     subject { Project.by_expires_at('10/10/2013') }
 
     before do
-      @project_01 = create(:project, online_date: '10/10/2013', online_days: 0)
-      @project_02 = create(:project, online_date: '09/10/2013', online_days: 0)
+      @project_01 = create(:project, online_date: '10/10/2013', online_days: 1)
+      @project_02 = create(:project, online_date: '09/10/2013', online_days: 1)
     end
 
     it { should = [@project_01] }
@@ -266,7 +269,7 @@ describe Project do
 
   describe ".expired" do
     before do
-      @p = create(:project, online_days: -1)
+      @p = create(:project, online_days: 1, online_date: Time.now - 2.days)
       create(:project, online_days: 1)
     end
     subject{ Project.expired}
@@ -276,7 +279,7 @@ describe Project do
   describe ".not_expired" do
     before do
       @p = create(:project, online_days: 1)
-      create(:project, online_days: -1)
+      create(:project, online_days: 1, online_date: Time.now - 2.days)
     end
     subject{ Project.not_expired }
     it{ should == [@p] }
@@ -285,7 +288,7 @@ describe Project do
   describe ".expiring" do
     before do
       @p = create(:project, online_date: Time.now, online_days: 13)
-      create(:project, online_date: Time.now, online_days: -1)
+      create(:project, online_date: Time.now, online_days: 1, online_date: Time.now - 2.days)
     end
     subject{ Project.expiring }
     it{ should == [@p] }
@@ -294,7 +297,7 @@ describe Project do
   describe ".not_expiring" do
     before do
       @p = create(:project, online_days: 15)
-      create(:project, online_days: -1)
+      create(:project, online_days: 1, online_date: Time.now - 2.days)
     end
     subject{ Project.not_expiring }
     it{ should == [@p] }
@@ -463,12 +466,12 @@ describe Project do
   describe "#expires_at" do
     subject{ project.expires_at }
     context "when we do not have an online_date" do
-      let(:project){ build(:project, online_date: nil, online_days: 0) }
+      let(:project){ build(:project, online_date: nil, online_days: 1) }
       it{ should be_nil }
     end
     context "when we have an online_date" do
-      let(:project){ build(:project, online_date: Time.now, online_days: 0) }
-      it{ should == Time.zone.now.end_of_day }
+      let(:project){ build(:project, online_date: Time.now, online_days: 1) }
+      it{ should == Time.zone.tomorrow.end_of_day }
     end
   end
 
