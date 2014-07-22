@@ -100,7 +100,7 @@ describe Project::StateMachineHandler do
     end
 
     describe '#finish' do
-      let(:main_project) { create(:project, goal: 30_000, online_days: -1) }
+      let(:main_project) { create(:project, goal: 30_000, online_days: 1, online_date: Time.now - 2.days) }
       subject { main_project }
 
       context 'when project is not approved' do
@@ -134,7 +134,8 @@ describe Project::StateMachineHandler do
           subject.stub(:pending_contributions_reached_the_goal?).and_return(true)
           subject.stub(:reached_goal?).and_return(true)
           subject.online_date = 2.weeks.ago
-          subject.online_days = 0
+          subject.online_days = 1
+          subject.online_date = Time.now - 2.days
           subject.finish
         end
         its(:successful?) { should be_true }
@@ -158,7 +159,8 @@ describe Project::StateMachineHandler do
         before do
           contribution
           subject.online_date = 2.weeks.ago
-          subject.online_days = 0
+          subject.online_days = 1
+          subject.online_date = Time.now - 2.days
           subject.finish
         end
 
