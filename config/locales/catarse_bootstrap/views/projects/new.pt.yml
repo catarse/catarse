@@ -36,7 +36,7 @@ pt:
           video_url: "URL do vídeo"
           about: "Descrição do projeto"
           headline: "Frase de efeito"
-          how_know: "Como você conheceu o Catarse?"
+          traffic_sources: "Como você conheceu o Catarse?"
 
         hints:
           name: "Quanto mais direto melhor. Não ultrapasse 50 caracteres"

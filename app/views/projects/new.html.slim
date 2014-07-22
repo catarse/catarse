@@ -57,7 +57,7 @@
 
             = form.input :headline, as: :text, label: t('.form.labels.headline'), hint: t('.form.hints.headline'), input_html: { class: 'w-input text-field text-field-medium' }
 
-            = form.input :how_know, as: :check_boxes, collection: ["Imprensa", "Projetos em captação", "Realizadores de projetos", "Indicação de amigos", "Mídias sociais", "Eventos", "Faculdade/Professor", "Sites de busca", "Outros"], label: t('.form.labels.how_know'), wrapper_html: { class: 'checkbox_field' }
+            = form.input :traffic_sources, as: :check_boxes, collection: ["Imprensa", "Projetos em captação", "Realizadores de projetos", "Indicação de amigos", "Mídias sociais", "Eventos", "Faculdade/Professor", "Sites de busca", "Outros"], label: t('.form.labels.traffic_sources'), wrapper_html: { class: 'checkbox_field' }
 
           p.send-project-form-disclaimer.body-medium = t('.form.blocks.disclaimer').html_safe
 
