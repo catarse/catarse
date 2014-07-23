@@ -45,7 +45,8 @@
             = form.input :permalink, as: :string, label: t('.form.labels.permalink'), hint: t('.form.hints.permalink'), input_html: { class: 'w-input text-field permalink-input' }
             p.placeholder = t('.form.info.permalink')
             = form.input :category_id, as: :select, collection: Category.array, label: t('.form.labels.category'), hint: t('.form.hints.category'), input_html: { class: 'w-input text-field' }
-            = form.input :goal, as: :string, label: t('.form.labels.goal'), hint: t('.form.hints.goal'), input_html: { class: 'w-input text-field' }
+            = form.input :goal, as: :string, label: t('.form.labels.goal'), hint: t('.form.hints.goal'), input_html: { class: 'w-input text-field text-field-half goal-input' }
+            p.placeholder = t('.form.info.goal')
             = form.input :online_days, as: :string, label: t('.form.labels.online_days'), hint: t('.form.hints.online_days'), input_html: { class: 'w-input text-field' }
 
           fieldset
