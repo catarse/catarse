@@ -77,12 +77,15 @@ pt:
               blank: "Você deve escolher uma categoria para seu projeto"
             goal:
               blank: "O valor a ser arrecadado não pode ficar em branco"
+              greater_than: "O valor a ser arrecadado deve ser maior que 9"
             online_days:
-              blank: "O prazo para arrecadação não pode ser 0"
+              greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
+              not_a_number: "O prazo para arrecadação deve ser um número de dias"
             about:
               blank: "A descrição do projeto não pode ficar em branco"
             headline:
               blank: "A frase de efeito do projeto não pode ficar em branco"
+              too_long: "A frase de efeito é muito longa. Você pode usar um máximo de 140 caracteres."
         user:
           attributes:
             email:

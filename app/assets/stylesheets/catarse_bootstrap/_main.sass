@@ -107,13 +107,16 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   border: 1px solid $border-strong
   +border-radius(3px)
   background-color: $gray-one
-  color: #3F4752
+  color: $blue-one
   font-size: 15px
   &:focus
     border-color: $blue-note
   &.error
     background: #f7cbcb
     border-color: $red
+
+input.text-field-half
+  width: 50%
 
 .text-field-medium
   height: 60px
@@ -140,6 +143,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   margin-bottom: 10px
   color: $blue-two
   font-size: 14px
+  line-height: 20px
 
 .required
   abbr
@@ -160,13 +164,24 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     font-weight: 400
 
 .field_with_errors
-  input, textarea
+  input, textarea, select
     border-color: $red
     background-color: #f7cbcb
     &:focus
       border-color: $red
   .error
     display: none
+
+.placeholder
+  float: left
+  font-size: 15px
+  margin-top: -48px
+  margin-left: 12px
+  display: inline-block
+  color: $blue-two
+
+.days-placeholder
+  margin-left: 230px
 
 // Buttons -----------------------------------------------------------------------------------------
 .button
@@ -472,6 +487,9 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     color: $blue-two
     font-size: 14px
     line-height: 20px
+    text-decoration: none
+    &:hover
+      text-decoration: underline
   .copyleft
     color: $blue-two
     font-size: 14px
@@ -701,6 +719,10 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     color: $blue-one
     font-size: 16px
     font-weight: 600
+  .permalink-input
+    padding-left: 122px
+  .goal-input
+    padding-left: 33px
 
 .checkbox_field
   label
