@@ -5,13 +5,13 @@ br/
 |Vi que você criou o rascunho do projeto #{link_to(project.name, project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))} mas ainda não o enviou para nossa avaliação. Você pode enviá-lo agora mesmo através da sua #{link_to('página', project_by_slug_url(permalink: project.permalink, ref: 'notificação_resgate_rascunho' ))}. Após o envio, você vai começar a receber uma consultoria especial minha ou da nossa super equipe de atendimento, lembrando que todas as informações do seu projeto poderão ser editadas e é você que escolhe o dia para iniciar sua arrecadação.
 br/
 br/
-|Se estiver com alguma dúvida sobre a elaboração do seu projeto, podemos falar “pessoalmente” ;) Que tal a gente bater um papo via Hangout essa sexta as 14h? É só entrar #{link_to('nesse link', 'https://plus.google.com/hangouts/_/calendar/bHVjaWFuYUBjYXRhcnNlLm1l.oacmhf3nrd2nqprp6l1iohosto')} no horário combinado. Aguardo você lá!
+|Se estiver com alguma dúvida sobre a elaboração do seu projeto, podemos falar “pessoalmente” ;) Que tal a gente bater um papo via Hangout essa sexta as 14h? É só entrar #{link_to('nesse link', CatarseSettings[:hangout_link])} no horário combinado. Aguardo você lá!
 br/
 br/
-|Se não puder conversar comigo por hangout, recomendo dar um passeio pela nossa #{link_to('Central de Suporte', 'http://suporte.catarse.me/hc/pt-br')}. Lá você vai encontrar as respostas para as dúvidas mais frequentes de nossos realizadores, além de sugestões #{link_to('de o que oferecer como recompensa', 'http://suporte.catarse.me/hc/pt-br/articles/203083007-O-que-eu-posso-oferecer-como-recompensa-')} e também #{link_to('dicas de como fazer um vídeo matador', 'http://suporte.catarse.me/hc/pt-br/articles/203082997-Como-deve-ser-o-v%C3%ADdeo-do-meu-projeto-')}.
+|Se não puder conversar comigo por hangout, recomendo dar um passeio pela nossa #{link_to('Central de Suporte', CatarseSettings[:support_forum])}. Lá você vai encontrar as respostas para as dúvidas mais frequentes de nossos realizadores, além de sugestões #{link_to('de o que oferecer como recompensa', CatarseSettings[:choose_reward_link])} e também #{link_to('dicas de como fazer um vídeo matador', CatarseSettings[:video_how_to_link])}.
 br/
 br/
-|Lembrando que você também pode entrar em contato comigo a hora que quiser respondendo diretamente a esta mensagem ou através do e-mail #{mail_to 'contato@catarse.me'}. 
+|Lembrando que você também pode entrar em contato comigo a hora que quiser respondendo diretamente a esta mensagem ou através do e-mail #{mail_to CatarseSettings[:email_contact]}. 
 br/
 br/
 |Beijo,
