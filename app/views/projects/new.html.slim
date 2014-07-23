@@ -14,11 +14,11 @@
             li
               = link_to t('.faq.links.criteria'), "http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos", target: '_blank', class: "alt-link"
 
-            li.zendesk_widget
-              =link_to t('.faq.links.suport_central'), "#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", class: "alt-link"
-
             li
-              =link_to t('.faq.links.support_contact'), "https://equipecatarse.zendesk.com/account/dropboxes/20298537#/dropbox/tickets/new", target: '_blank', class: "alt-link"
+              =link_to t('.faq.links.suport_central'), "#{CatarseSettings[:faq_url]}", target: '_blank', class: "alt-link"
+
+            li.zendesk_widget
+              =link_to t('.faq.links.support_contact'), "#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", target: '_blank', class: "alt-link"
 
           ul.w-list-unstyled
             li.menu-list-head
