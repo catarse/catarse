@@ -107,7 +107,7 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   border: 1px solid $border-strong
   +border-radius(3px)
   background-color: $gray-one
-  color: #3F4752
+  color: $blue-one
   font-size: 15px
   &:focus
     border-color: $blue-note
@@ -167,6 +167,14 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
       border-color: $red
   .error
     display: none
+
+.placeholder
+  float: left
+  font-size: 15px
+  margin-top: -48px
+  margin-left: 12px
+  display: inline-block
+  color: $blue-two
 
 // Buttons -----------------------------------------------------------------------------------------
 .button
@@ -701,6 +709,8 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     color: $blue-one
     font-size: 16px
     font-weight: 600
+  .permalink-input
+    padding-left: 122px
 
 .checkbox_field
   label
