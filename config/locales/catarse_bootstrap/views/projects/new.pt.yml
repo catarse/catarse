@@ -48,4 +48,7 @@ pt:
           about: "Fale sobre o que será realizado, como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Fuja daquelas formalidades de editais. Lembre-se que <a href=http://suporte.catarse.me/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto class='alt-link' target='_blank'>você pode utilizar imagens e vídeos</a> para ilustrar melhor o seu projeto na descrição."
           headline: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo. Não ultrapasse 100 caracteres."
 
+        info:
+          permalink: http://catarse.me/
+
         submit: "Salvar e continuar"
