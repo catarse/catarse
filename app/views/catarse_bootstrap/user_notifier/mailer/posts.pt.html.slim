@@ -1,11 +1,11 @@
-- update = @notification.project_update
+- update = @notification.project_post
 - user = @notification.user
 br/
 strong= update.title
 == update.email_comment_html
 br
 br
-|Veja o projeto: #{link_to @notification.project.name, project_by_slug_url(permalink: @notification.project.permalink)}
+|Veja o projeto: #{link_to update.project.name, project_by_slug_url(permalink: update.project.permalink)}
 br/
 br/
 | #{link_to 'Descadastrar', unsubscribe_notifications_user_url(user)} o recebimento de novidades desse projeto
