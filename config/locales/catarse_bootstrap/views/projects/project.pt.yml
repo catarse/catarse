@@ -18,3 +18,4 @@ pt:
         waiting_funds: aguardando
         not_reached_goal: aguardando
         draft: "rascunho"
+        in_analysis: "em análise"
