@@ -23,3 +23,5 @@ pt:
       how_it_works: "Como funciona o %{name}"
       how_channels_work: "Entenda os Canais no Catarse"
       contact: "Contato"
+    header_big:
+      projects: "Meus Projetos"
