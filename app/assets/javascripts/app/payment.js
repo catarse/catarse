@@ -13,7 +13,6 @@ App.addChild('Payment', _.extend({
     $('#live_in_brazil').on('change', function(){
       _this.loadPaymentChoices();
     });
-    this.$('#payment_menu a').click(this.onTabClick);
   },
 
   updatePaymentMethod: function() {

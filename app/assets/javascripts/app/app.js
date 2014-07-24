@@ -18,7 +18,6 @@ var App = window.App = Skull.View.extend({
     this.$dropdown = this.$('.dropdown.user');
     this.flash();
     this.notices();
-    this.smoothScroll();
     Backbone.history.start({pushState: false});
     this.$('input[data-mask]').each(this.maskElement);
   },
@@ -56,21 +55,6 @@ var App = window.App = Skull.View.extend({
 
   mobileMenu: function(){
     $(".mobile-menu").slideToggle(500);
-  },
-
-  smoothScroll: function() {
-    $('a[href*=#]:not([href=#])').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html,body').animate({
-            scrollTop: target.offset().top
-          }, 1000);
-          return false;
-        }
-      }
-    });
   },
 
   toggleBox: function() {
