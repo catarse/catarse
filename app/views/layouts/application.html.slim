@@ -24,7 +24,7 @@ html lang="#{I18n.locale}" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http:/
       meta name="keywords"            content=t('site.keywords')
       meta property="og:title"        content=t('site.title')
       meta property="og:type"         content=:cause
-      meta property="og:url"          content=url_for(only_path: false)
+      meta property="og:url"          content=CatarseSettings[:base_url]
       meta property="og:image"        content=image_url('catarse/logo-fb.jpg')
       meta property="og:site_name"    content=CatarseSettings[:company_name]
       meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
