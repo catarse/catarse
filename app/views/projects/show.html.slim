@@ -1,4 +1,5 @@
 = content_for :meta_tags do
+- content_for :main_stylesheet, :webflow
   - if ['online', 'waiting_funds', 'successful'].include? @project.state
     meta name="robots" content="index, follow"
   - else
