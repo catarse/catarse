@@ -42,10 +42,6 @@ class RewardsController < ApplicationController
   end
 
   private
-  def collection
-    @rewards ||= parent.rewards.includes(:contributions)
-  end
-
   def permitted_params
     params.permit(policy(resource).permitted_attributes)
   end
