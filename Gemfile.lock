@@ -17,6 +17,13 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (>= 1.5.0)
 
+GIT
+  remote: https://github.com/catarse/catarse_credits.git
+  revision: f409876e017694fe578844d494b06822fb890092
+  specs:
+    catarse_credits (0.0.5)
+      rails (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -84,8 +91,6 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    catarse_credits (0.0.4)
-      rails (>= 4.0)
     catarse_moip (2.3.5)
       enumerate_it
       libxml-ruby (~> 2.6.0)
@@ -488,7 +493,7 @@ DEPENDENCIES
   browser
   capybara (~> 2.1.0)
   carrierwave (~> 0.10.0)
-  catarse_credits (= 0.0.4)
+  catarse_credits!
   catarse_moip (~> 2.3.5)
   catarse_monkeymail (>= 0.1.6)
   catarse_paypal_express (= 2.2.3)

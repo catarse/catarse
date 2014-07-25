@@ -37,7 +37,7 @@ gem 'zendesk_engine', '>= 0.0.2'
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
 gem 'catarse_moip', '~> 2.3.5'
-gem 'catarse_credits', '0.0.4'
+gem 'catarse_credits', git: 'https://github.com/catarse/catarse_credits.git'
 # gem 'catarse_wepay', '~> 0.0.1'
 
 # Decorators
