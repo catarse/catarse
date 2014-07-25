@@ -17,7 +17,7 @@ html
       meta name="keywords"            content=t('site.keywords')
       meta property="og:title"        content=( channel.try(:name) || t('site.title'))
       meta property="og:type"         content=:cause
-      meta property="og:url"          content=url_for(only_path: false)
+      meta property="og:url"          content=CatarseSettings[:base_url]
       meta property="og:image"        content=CatarseSettings[:company_logo]
       meta property="og:site_name"    content=CatarseSettings[:company_name]
       meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
@@ -33,4 +33,3 @@ html
     = render 'layouts/crazzy_egg'
   = javascript_include_tag :application
   = render 'layouts/analytics'
-  = render '/layouts/new_zendesk'
