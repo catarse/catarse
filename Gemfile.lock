@@ -246,6 +246,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_form (1.5.0)
+      actionmailer (>= 3.2, < 5)
+      activemodel (>= 3.2, < 5)
     mailchimp-api (2.0.5)
       excon (>= 0.16.0)
       json (>= 1.7.7)
@@ -525,6 +528,7 @@ DEPENDENCIES
   kaminari
   launchy
   letter_opener
+  mail_form
   mixpanel-ruby
   moip!
   newrelic_rpm (= 3.6.5.130)
