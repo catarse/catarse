@@ -15,13 +15,13 @@ pt:
         image_url: "URL da imagem"
         name: "Nome do projeto"
         goal: "Quanto você pretende arrecadar? (apenas números)"
-        about: "História do seu projeto e como o $ será utilizado"
+        about: "História do seu projeto e como o dinheiro será utilizado"
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
         permalink: 'URL do seu projeto'
-        more_links: 'Mais algum link para conhecer mais sobre o seu projeto?'
+        more_links: 'Links para conhecer mais sobre o seu projeto?'
         how_know: 'Como você conheceu o Catarse?'
-        first_contributions: "Lista com os primeiros apoiadores"
+        first_contributions: "Quem você acha que serão seus primeiros apoiadores?"
       user:
         address_city: Cidade
         address_complement: Complemento
@@ -37,7 +37,7 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: "Nickname"
+        name: "Apelido"
         newsletter: 'Quero receber novidades do Catarse'
         password: Senha
         password_confirmation: "Confirmação de senha"
@@ -83,11 +83,11 @@ pt:
   project:
     update:
       success: As informações foram atualizadas
-    video_regex_validation: somente URLs do Vimeo são aceitas
+    video_regex_validation: somente URLs do Vimeo e Youtube são aceitas
   contribution:
     project_should_be_online: Você não pode apoiar um projeto que não está no ar
-    reward_must_be_from_project: deve ser do mesmo projeto
-    should_not_contribute_if_maximum_contributions_been_reached: já atingiu seu número
+    reward_must_be_from_project: Deve ser do mesmo projeto
+    should_not_contribute_if_maximum_contributions_been_reached: Essa recompensa já atingiu seu número
       máximo de apoiadores
     value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para
       a recompensa selecionada
@@ -97,8 +97,8 @@ pt:
     contribution_value: Valor do apoio
     service_fee: Taxa do Catarse
     user_name: Nome do apoiador
-    user_email: Email perfil Catarse
-    payer_email: Email do meio de pagamento
+    user_email: E-mail perfil Catarse
+    payer_email: E-mail do meio de pagamento
     payment_method: Meio de pagamento
     street: Rua
     complement: Complemento
