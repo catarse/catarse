@@ -31,9 +31,6 @@ gem 'user_notifier'
 # Mixpanel for backend tracking
 gem 'mixpanel-ruby'
 
-# Zendesk API
-gem 'zendesk_engine', '>= 0.0.2'
-
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
 gem 'catarse_moip', '~> 2.3.5'
@@ -65,6 +62,7 @@ gem 'catarse_monkeymail', '>= 0.1.6'
 # HTML manipulation and formatting
 gem 'formtastic',   '~> 2.2.1'
 gem 'simple_form'
+gem 'mail_form'
 gem "auto_html",    '= 1.4.2'
 gem "RedCloth"
 gem 'kaminari'

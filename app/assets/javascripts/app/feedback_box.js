@@ -22,10 +22,19 @@ App.addChild('FeedbackBox', {
   activate: function(){
     this.$('#thanks-title').hide();
     this.$('#thanks-description').hide();
+    if(!store.get('feedbackFormClosed')){
+      this.openBox();
+    }
+  },
 
+  openBox: function(){
+    store.set('feedbackFormClosed', false);
+    this.$el.removeClass("feedback-box-closed");
+    return false;
   },
 
   closeBox: function() {
+    store.set('feedbackFormClosed', true);
     this.$el.addClass('feedback-box-closed');
     return false;
   },

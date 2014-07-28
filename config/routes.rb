@@ -41,7 +41,6 @@ Catarse::Application.routes.draw do
   mount CatarsePaypalExpress::Engine => "/", as: :catarse_paypal_express
   mount CatarseMoip::Engine => "/", as: :catarse_moip
   mount CatarseCredits::Engine => "/", as: :catarse_credits
-  mount ZendeskEngine::Engine => "/", as: :zendesk
 #  mount CatarseWepay::Engine => "/", as: :catarse_wepay
 
   # Channels
@@ -86,6 +85,9 @@ Catarse::Application.routes.draw do
   namespace :reports do
     resources :contribution_reports_for_project_owners, only: [:index]
   end
+
+  # Feedback form
+  resources :feedbacks, only: [:create]
 
   resources :projects, only: [:index, :create, :update, :new, :show] do
     resources :posts, controller: 'projects/posts', only: [ :index, :create, :destroy ]
