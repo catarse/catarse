@@ -58,7 +58,7 @@ var App = window.App = Skull.View.extend({
   },
 
   toggleBox: function() {
-    this.$(".feedback-box").toggleClass("feedback-box-closed");
+    this.feedbackBox.openBox();
     return false;
   },
 });
