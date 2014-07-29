@@ -142,7 +142,7 @@ class Project < ActiveRecord::Base
   end
 
   def expires_at
-    online_date && (online_date + online_days.days).end_of_day
+    Project.where(id: self.id).pluck('projects.expires_at').first
   end
 
   def pledged

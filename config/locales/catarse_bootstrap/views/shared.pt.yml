@@ -12,6 +12,7 @@ pt:
       signin: Login
       signup: Cadastre-se
       submit: Enviar projeto
+      how_work: Como funciona
     footer_channel:
       contact: Contato
       how_works: Como funciona
