@@ -15,8 +15,8 @@
         ul
           li= link_to t('layouts.footer.links.faq'), "#{CatarseSettings[:faq_url]}", target: '_blank'
           li= link_to t('layouts.footer.links.feedback'), "#{CatarseSettings[:feedback_url]}", target: '_blank'
-          li= link_to t('layouts.footer.links.terms'), "#{CatarseSettings[:terms_url]}", target: '_blank'
-          li= link_to t('layouts.footer.links.privacy'), "#{CatarseSettings[:privacy_url]}", target: '_blank'
+          li= link_to t('layouts.footer.links.terms'), terms_of_use_path, target: '_blank'
+          li= link_to t('layouts.footer.links.privacy'), privacy_policy_path, target: '_blank'
       .w-col.w-col-3
         h4 = t('layouts.footer.titles.sitemap')
         ul

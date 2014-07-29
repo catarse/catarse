@@ -17,8 +17,8 @@ footer.footer
           ul.footer-list
             li= link_to t('.links.faq'), "#{CatarseSettings[:faq_url]}", target: '_blank'
             li= link_to t('.links.feedback'), "#{CatarseSettings[:feedback_url]}", target: '_blank'
-            li= link_to t('.links.terms'), "#{CatarseSettings[:terms_url]}", target: '_blank'
-            li= link_to t('.links.privacy'), "#{CatarseSettings[:privacy_url]}", target: '_blank'
+            li= link_to t('.links.terms'), terms_of_use_path, target: '_blank'
+            li= link_to t('.links.privacy'), privacy_policy_path, target: '_blank'
             //li= link_to t('.links.press'), "#{CatarseSettings[:press_url]}", target: '_blank'
       .footer-div
         .footer-list
