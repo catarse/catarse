@@ -6,7 +6,7 @@
 
   .w-form
     = form_tag(feedbacks_path(format: :json), method: :post, remote: true) do
-      = email_field_tag("feedback[email]", content = nil, options = { class: 'w-input text-field', placeholder: t('.placeholders.email')})
+      = email_field_tag("feedback[email]", content = (current_user.try(:email)), options = { class: 'w-input text-field', placeholder: t('.placeholders.email')})
       = text_area_tag("feedback[message]", content = nil, options = {class: 'w-input text-field text-field-feedback', placeholder: t('.placeholders.text')})
 
       = submit_tag(value = t('.inputs.submit'), options = {class: 'w-button button bt-medium bt-dark'})
