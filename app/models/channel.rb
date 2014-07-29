@@ -37,6 +37,10 @@ class Channel < ActiveRecord::Base
     self.name
   end
 
+  def host_path
+    [self.permalink, CatarseSettings[:host]].join('.')
+  end
+
   # Links to channels should be their permalink
   def to_param; self.permalink end
 
