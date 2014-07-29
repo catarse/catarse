@@ -14,8 +14,8 @@ footer
       ul.footer-list
         li= link_to t('footer.links.faq'), "#{CatarseSettings[:faq_url]}", target: '_blank'
         li= link_to t('footer.links.feedback'), "#{CatarseSettings[:feedback_url]}", target: '_blank'
-        li= link_to t('footer.links.terms'), "#{CatarseSettings[:terms_url]}", target: '_blank'
-        li= link_to t('footer.links.privacy'), "#{CatarseSettings[:privacy_url]}", target: '_blank'
+        li= link_to t('footer.links.terms'), terms_of_use_path, target: '_blank'
+        li= link_to t('footer.links.privacy'), privacy_policy_path, target: '_blank'
     .large-3.columns
       h3.footer-title= t('footer.titles.sitemap')
       ul.footer-list

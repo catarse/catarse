@@ -6,7 +6,7 @@
           li.nav-item.separator
             = link_to t('.terms'), channel.terms_url, title: t('.terms'), class: 'standard-link', target: '_blank'
           li.nav-item.separator
-            = link_to t('.privacy_policy'), CatarseSettings[:privacy_url], title: t('.privacy_policy'), class: 'standard-link', target: '_blank'
+            = link_to t('.privacy_policy'), privacy_policy_path, title: t('.privacy_policy'), class: 'standard-link', target: '_blank'
           li.nav-item.separator
             = link_to t('.how_works', name: channel.name), channels_about_path, title: t('.how_it_works', name: channel.name), class: 'standard-link'
           li.nav-item.separator
