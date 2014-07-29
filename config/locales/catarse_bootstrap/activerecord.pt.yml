@@ -10,6 +10,7 @@ pt:
       reward:
         deliver_at: Previsão de entrega
       project:
+        channels: Canais
         category: Categoria
         expires_at: Prazo
         online_days: "Qual o prazo para atingir o mínimo?"
