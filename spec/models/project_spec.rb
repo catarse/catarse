@@ -458,7 +458,8 @@ describe Project do
     end
 
     context "when expires_at is in the past" do
-      let(:project){ Project.new online_date: 2.days.ago, online_days: 0 }
+      let(:project){ build(:project, online_date: 3.days.ago, online_days: 1) }
+      before{project.save!}
       it{ should be_true }
     end
   end
@@ -470,8 +471,9 @@ describe Project do
       it{ should be_nil }
     end
     context "when we have an online_date" do
-      let(:project){ build(:project, online_date: Time.now, online_days: 1) }
-      it{ should == Time.zone.tomorrow.end_of_day }
+      let(:project){ create(:project, online_date: Time.now, online_days: 1)}
+      before{project.save!}
+      it{ should == Time.zone.tomorrow.end_of_day.to_s(:db) }
     end
   end
 
