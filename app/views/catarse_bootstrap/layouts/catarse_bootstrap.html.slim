@@ -32,4 +32,5 @@ html
     .content= yield
     = render 'layouts/crazzy_egg'
   = javascript_include_tag :application
-  = render 'layouts/analytics'
+  = render_google_analytics_script
+  = render_mixpanel_script
