@@ -67,7 +67,7 @@ Catarse::Application.routes.draw do
       get '/', to: 'profiles#show', as: :profile
       get '/how-it-works', to: 'profiles#how_it_works', as: :about
       resource :profile
-      resources :projects, only: [:new, :create, :show] do
+      resources :projects, only: [:show] do
         collection do
           get 'video'
         end
