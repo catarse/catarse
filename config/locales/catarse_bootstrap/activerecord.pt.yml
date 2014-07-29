@@ -50,6 +50,7 @@ pt:
         moip_login_hint: "(Como criar uma conta)"
         reset_password_token: "Link para recriar senha"
       channel:
+        ga_code: Código do Analytics
         description: Descrição
         how_it_works: Como funciona
         image: Imagem da notificação
