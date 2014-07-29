@@ -182,7 +182,7 @@ class Project < ActiveRecord::Base
   end
 
   def new_draft_recipient
-    last_channel.try(:curator) || User.where(email: CatarseSettings[:email_projects]).first
+    User.where(email: CatarseSettings[:email_projects]).first
   end
 
   def last_channel
