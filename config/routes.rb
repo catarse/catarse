@@ -53,14 +53,6 @@ Catarse::Application.routes.draw do
         resources :posts
         resources :partners
         resources :followers, only: [ :index ]
-        resources :projects, only: [ :index, :update] do
-          member do
-            put 'approve'
-            put 'reject'
-            put 'push_to_draft'
-            put 'push_to_trash'
-          end
-        end
       end
 
       resources :posts
