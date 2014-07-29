@@ -42,7 +42,7 @@ class ProjectDecorator < Draper::Decorator
   end
 
   def display_expires_at
-    source.expires_at ? I18n.l(source.expires_at.to_date) : ''
+    source.expires_at ? I18n.l(source.expires_at.try(:in_time_zone,Rails.application.config.time_zone).to_date) : ''
   end
 
   def display_online_date

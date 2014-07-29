@@ -29,6 +29,7 @@ class Project < ActiveRecord::Base
   has_many :unsubscribes
 
   accepts_nested_attributes_for :rewards
+  accepts_nested_attributes_for :channels
 
   catarse_auto_html_for field: :about, video_width: 600, video_height: 403
 

@@ -96,7 +96,7 @@ describe ProjectDecorator do
     context "when we have an online_date" do
       let(:project){ create(:project, online_date: Time.now) }
       before do
-        I18n.should_receive(:l).with(project.expires_at.to_date)
+        I18n.should_receive(:l).with(project.expires_at.in_time_zone(Rails.application.config.time_zone).to_date)
       end
       it("should call I18n with date"){ subject }
     end
