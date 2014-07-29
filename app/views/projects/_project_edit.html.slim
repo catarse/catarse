@@ -28,6 +28,8 @@
       = form.input :about, required: false
       = render 'formatting_tips'
 
-    .clearfix
+    - if current_user.admin
+      = form.association :channels, as: :check_boxes
+
     .form-actions.bootstrap-twitter
       = form.submit class: 'btn'
