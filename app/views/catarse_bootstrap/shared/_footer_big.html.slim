@@ -35,11 +35,9 @@
         .twitter-box
           = link_to "Follow @#{CatarseSettings[:twitter_username]}", "http://twitter.com/#{CatarseSettings[:twitter_username]}", :class => 'twitter-follow-button', :"data-button"=>"blue", :"data-text-color" => "#ffffff", :"data-link-color"=>"#fffffff", :"data-width" => "224px"
         .facebook-box
-          = render_facebook_like href: "", colorscheme: "dark", width: "171"
+          = render_facebook_like colorscheme: "dark", width: "171"
   .w-container
     hr.separator
     p.prg2.copyleft
       = "Feito com amor. Catarse, 2014 | Open source"
       = link_to (image_tag "/assets/catarse_bootstrap/git-footer.png"), "http://github.com/catarse/catarse", target: '_blank'
-
-= render '/layouts/new_zendesk'
