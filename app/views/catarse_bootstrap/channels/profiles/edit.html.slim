@@ -3,6 +3,8 @@
 
 section.row
   = simple_form_for @profile, as: 'profile', url: '/profile', html: { method: 'patch' }, class: 'channel-edit' do |form|
+    - if current_user.admin
+      = form.input :ga_code, as: :string
     = form.input :name, as: :string
     = form.input :email, as: :string
     = form.input :description, as: :text
