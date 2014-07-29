@@ -142,7 +142,7 @@ class Project < ActiveRecord::Base
   end
 
   def expires_at
-    Project.where(id: self.id).pluck('projects.expires_at').first
+    Project.where(id: self.id).pluck('projects.expires_at').first.try(:in_time_zone,Rails.application.config.time_zone)
   end
 
   def pledged
