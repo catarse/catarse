@@ -26,8 +26,8 @@ class ProjectsController < ApplicationController
           end
 
           @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3).includes(:project_total) if current_user
-          @expiring = ProjectsForHome.expiring.includes(:project_totals)
-          @recent   = ProjectsForHome.recents.includes(:project_totals)
+          @expiring = ProjectsForHome.expiring.includes(:project_total)
+          @recent   = ProjectsForHome.recents.includes(:project_total)
         end
       end
     end
