@@ -1,4 +1,4 @@
-class Channels::Admin::FollowersController < Admin::BaseController
+class Channels::Admin::FollowersController < Channels::Admin::BaseController
   layout 'catarse_bootstrap'
   actions :index
 
