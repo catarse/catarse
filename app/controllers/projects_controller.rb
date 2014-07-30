@@ -20,14 +20,14 @@ class ProjectsController < ApplicationController
         else
           @title = t("site.title")
           if current_user && current_user.recommended_projects.present?
-            @recommends = current_user.recommended_projects.limit(3)
+            @recommends = current_user.recommended_projects.includes(:project_total).limit(3)
           else
-            @recommends = ProjectsForHome.recommends
+            @recommends = ProjectsForHome.recommends.includes(:project_total)
           end
 
-          @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3) if current_user
-          @expiring = ProjectsForHome.expiring
-          @recent   = ProjectsForHome.recents
+          @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3).includes(:project_total) if current_user
+          @expiring = ProjectsForHome.expiring.includes(:project_totals)
+          @recent   = ProjectsForHome.recents.includes(:project_totals)
         end
       end
     end
