@@ -1,5 +1,5 @@
 class AdminPolicy < ApplicationPolicy
   def access?
-    is_admin? || is_channel_admin?
+    is_admin?
   end
 end
