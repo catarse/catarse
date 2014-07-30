@@ -143,7 +143,7 @@ class Project < ActiveRecord::Base
   end
 
   def expires_at
-    Project.where(id: self.id).pluck('projects.expires_at').first
+    @expires_at ||= Project.where(id: self.id).pluck('projects.expires_at').first
   end
 
   def pledged

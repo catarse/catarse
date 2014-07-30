@@ -10,7 +10,7 @@ pt:
         text: 'Escreva seu feedback'
       texts:
         title: "Nos dê o prazer de sua palavra!"
-        content: "Nos últimos meses temos trabalhado dia e noite em uma série de mudanças na plataforma, que estão detalhadas nesse <a href='#' class='link-underline'> post especial</a>. Seria incrível se pudéssemos ouvir de você o que está achando desta transformação. <br> Solte o verbo!"
+        content: "Nos últimos meses temos trabalhado dia e noite em uma série de mudanças na plataforma, que estão detalhadas nesse <a target='_blank' href='http://blog.catarse.me/os-passos-para-um-novo-catarse/' class='link-underline'> post especial</a>. Seria incrível se pudéssemos ouvir de você o que está achando desta transformação. <br> Solte o verbo!"
         response:
           title: "Uau! <br> Obrigado ;)"
           content: "Valorizamos cada feedback recebido. Não conseguimos responder a cada um individualmente, mas ouvimos atentamente cada crítica e sugestão. Seu comentário com certeza será muito importante em nossa caminhada, e nos ajudará a melhorar continuamente sua experiência aqui no Catarse."
