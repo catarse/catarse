@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe ProjectsForHome do
+  describe "association" do
+    it{ should have_one :project_total } 
+  end
   describe '.recommends' do
     before do
       4.times { create(:project, recommended: true, state: 'online') }
