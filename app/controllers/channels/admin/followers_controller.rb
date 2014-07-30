@@ -1,5 +1,4 @@
 class Channels::Admin::FollowersController < Channels::Admin::BaseController
-  layout 'catarse_bootstrap'
   actions :index
 
   before_filter do
