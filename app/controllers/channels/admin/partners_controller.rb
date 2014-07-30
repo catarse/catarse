@@ -1,4 +1,4 @@
-class Channels::Admin::PartnersController < Admin::BaseController
+class Channels::Admin::PartnersController < Channels::Admin::BaseController
   layout 'catarse_bootstrap'
   inherit_resources
   defaults resource_class: ChannelPartner

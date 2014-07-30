@@ -1,4 +1,4 @@
-class Channels::Admin::PostsController < Admin::BaseController
+class Channels::Admin::PostsController < Channels::Admin::BaseController
   layout 'catarse_bootstrap'
   inherit_resources
   defaults resource_class: ChannelPost
