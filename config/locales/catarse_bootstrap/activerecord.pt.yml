@@ -54,7 +54,7 @@ pt:
         ga_code: Código do Analytics
         description: Descrição
         how_it_works: Como funciona
-        image: Imagem da notificação
+        image: Imagem da novidade
         name: Nome
         video_url: Vídeo
       channel_partner:
