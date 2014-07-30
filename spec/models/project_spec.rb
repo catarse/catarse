@@ -521,18 +521,11 @@ describe Project do
 
   describe "#new_draft_recipient" do
     subject { project.new_draft_recipient }
-    context "when project does not belong to any channel" do
-      before do
-        CatarseSettings[:email_projects] = 'admin_projects@foor.bar'
-        @user = create(:user, email: CatarseSettings[:email_projects])
-      end
-      it{ should == @user }
+    before do
+      CatarseSettings[:email_projects] = 'admin_projects@foor.bar'
+      @user = create(:user, email: CatarseSettings[:email_projects])
     end
-
-    context "when project belongs to a channel" do
-      let(:project) { channel_project }
-      it{ should == user }
-    end
+    it{ should == @user }
   end
 
   describe "#notification_type" do
