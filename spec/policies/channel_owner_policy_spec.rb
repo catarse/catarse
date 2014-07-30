@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe AdminPolicy do
+describe ChannelOwnerPolicy do
   let(:user) { nil }
   let(:channel) { nil }
 
-  subject{ AdminPolicy.new(user, Admin, channel) }
+  subject{ ChannelOwnerPolicy.new(user, Channel::Admin, channel) }
 
   context "permission access?" do
 
@@ -26,7 +26,7 @@ describe AdminPolicy do
       let(:channel) { user.channel }
 
       it "should permit access if user is channel admin" do
-        should_not custom_permit(:access?)
+        should custom_permit(:access?)
       end
     end
 
