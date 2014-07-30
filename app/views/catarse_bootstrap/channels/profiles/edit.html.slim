@@ -10,7 +10,7 @@ section.row
     = form.input :description, as: :text
     = form.input :image, as: :file, hint: t('channels.image_hint')
     - if @profile.image.present?
-      p= image_tag(@profile.image.curator_thumb.url)
+      p= image_tag(@profile.image)
 
     = form.input :video_url, as: :string
     = form.input :twitter, as: :string
