@@ -3,7 +3,7 @@ module Channels::Admin
     ChannelOwnerPolicy
   end
 
-  class BaseController < Admin::BaseController
+  class BaseController < ::Admin::BaseController
     inherit_resources
 
     before_filter do
