@@ -1,6 +1,4 @@
-class Channels::Admin::PartnersController < Admin::BaseController
-  layout 'catarse_bootstrap'
-  inherit_resources
+class Channels::Admin::PartnersController < Channels::Admin::BaseController
   defaults resource_class: ChannelPartner
 
   def update

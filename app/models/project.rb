@@ -50,6 +50,7 @@ class Project < ActiveRecord::Base
   scope :with_project_totals, -> { joins('LEFT OUTER JOIN project_totals ON project_totals.project_id = projects.id') }
 
   scope :by_progress, ->(progress) { joins(:project_total).where("project_totals.pledged >= projects.goal*?", progress.to_i/100.to_f) }
+  scope :by_channel, ->(channel_id) { joins(:channels).where("channels.id = ?", channel_id) }
   scope :by_user_email, ->(email) { joins(:user).where("users.email = ?", email) }
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
@@ -183,7 +184,7 @@ class Project < ActiveRecord::Base
   end
 
   def new_draft_recipient
-    last_channel.try(:curator) || User.where(email: CatarseSettings[:email_projects]).first
+    User.where(email: CatarseSettings[:email_projects]).first
   end
 
   def last_channel
