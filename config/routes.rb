@@ -46,6 +46,7 @@ Catarse::Application.routes.draw do
   # Channels
   constraints subdomain: /^(?!www|secure|test|local|bootstrap)(\w+)/ do
     namespace :channels, path: '' do
+
       namespace :admin do
         namespace :reports do
           resources :subscriber_reports, only: [ :index ]
@@ -53,25 +54,12 @@ Catarse::Application.routes.draw do
         resources :posts
         resources :partners
         resources :followers, only: [ :index ]
-        resources :projects, only: [ :index, :update] do
-          member do
-            put 'approve'
-            put 'reject'
-            put 'push_to_draft'
-            put 'push_to_trash'
-          end
-        end
       end
 
       resources :posts
       get '/', to: 'profiles#show', as: :profile
       get '/how-it-works', to: 'profiles#how_it_works', as: :about
       resource :profile
-      resources :projects, only: [:new, :create, :show] do
-        collection do
-          get 'video'
-        end
-      end
       # NOTE We use index instead of create to subscribe comming back from auth via GET
       resource :channels_subscriber, only: [:show, :destroy], as: :subscriber
     end
