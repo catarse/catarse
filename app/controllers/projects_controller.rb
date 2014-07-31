@@ -19,12 +19,8 @@ class ProjectsController < ApplicationController
           return render partial: 'project', collection: @projects, layout: false
         else
           @title = t("site.title")
-          if current_user && current_user.recommended_projects.present?
-            @recommends = current_user.recommended_projects.includes(:project_total).limit(3)
-          else
-            @recommends = ProjectsForHome.recommends.includes(:project_total)
-          end
 
+          @recommends = ProjectsForHome.recommends.includes(:project_total)
           @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3).includes(:project_total) if current_user
           @expiring = ProjectsForHome.expiring.includes(:project_total)
           @recent   = ProjectsForHome.recents.includes(:project_total)
