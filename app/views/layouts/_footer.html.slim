@@ -16,6 +16,7 @@ footer.footer
           h3.footer-title= t('.titles.about')
           ul.footer-list
             li= link_to t('.links.faq'), "#{CatarseSettings[:faq_url]}", target: '_blank'
+            li= mail_to CatarseSettings[:email_press], t('layouts.footer.links.press')
             li= link_to t('.links.feedback'), "#{CatarseSettings[:feedback_url]}", target: '_blank'
             li= link_to t('.links.terms'), terms_of_use_path, target: '_blank'
             li= link_to t('.links.privacy'), privacy_policy_path, target: '_blank'
