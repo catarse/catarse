@@ -10,6 +10,13 @@ task :deliver_verify_moip_account_notifications do
   Project.send_verify_moip_account_notification
 end
 
+desc "update paypal contributions without a payment_service_fee"
+task update_payment_service_fee: :environment do
+  ActiveRecord::Base.connection.execute(<<-EOQ)
+    UPDATE contributions SET payment_service_fee = ((regexp_matches(pn.extra_data, 'fee_amount":"(\d*\.\d*)"'))[1])::numeric from payment_notifications pn where contributions.id = pn.contribution_id AND contributions.payment_service_fee is null and contributions.payment_method = 'PayPal' and contributions.state = 'confirmed' and pn.extra_data ~* 'fee_amount';
+  EOQ
+end
+
 desc "This tasks should be executed 1x per day"
 task notify_project_owner_about_new_confirmed_contributions: :environment do
   Project.with_contributions_confirmed_today.each do |project|
