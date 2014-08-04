@@ -21,6 +21,21 @@ describe UsersController do
       user.deactivate
     end
 
+    context "when token is nil" do
+      let(:token){ 'nil' }
+
+      before do
+        expect(controller).to_not receive(:sign_in)
+        get :reactivate, id: user.id, token: token, locale: :pt
+      end
+
+      it "should not set deactivated_at to nil" do
+        expect(user.reload.deactivated_at).to_not be_nil
+      end
+
+      it { should redirect_to root_path  }
+    end
+
     context "when token is NOT valid" do
       let(:token){ 'invalid token' }
 
