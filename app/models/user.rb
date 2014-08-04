@@ -86,10 +86,8 @@ class User < ActiveRecord::Base
     self.active.where(id: id).first!
   end
 
-  def self.send_credits_notification
-    has_not_used_credits_last_month.find_each do |user|
-      user.notify(:credits_warning)
-    end
+  def send_credits_notification
+    self.notify(:credits_warning)
   end
 
   def change_locale(language)
