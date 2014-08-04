@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def reactivate
-    user = User.find_by(reactivate_token: params[:token])
+    user = params[:token].present? && User.find_by(reactivate_token: params[:token])
     if user
       user.reactivate
       sign_in user
