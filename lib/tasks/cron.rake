@@ -38,9 +38,9 @@ end
 
 desc "Send notification about credits 1 month after the project failed"
 task send_credits_notification: :environment do
-  User.has_not_used_credits_last_month.find_each do |user|
-    notification = user.notifications.where(template_name: 'credits_warning').last
-    if notification.nil? || ((Time.now - notification.created_at) > 30.days)
+  notification = UserNotification.where(template_name: 'credits_warning').last
+  if notification && (Time.now - notification.created_at) > 30.days
+    User.has_not_used_credits_last_month.find_each do |user|
       user.send_credits_notification
     end
   end
