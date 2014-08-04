@@ -14,6 +14,7 @@
         h4 = t('layouts.footer.titles.about')
         ul
           li= link_to t('layouts.footer.links.faq'), "#{CatarseSettings[:faq_url]}", target: '_blank'
+          li= mail_to CatarseSettings[:email_press], t('layouts.footer.links.press')
           li= link_to t('layouts.footer.links.feedback'), "#{CatarseSettings[:feedback_url]}", target: '_blank'
           li= link_to t('layouts.footer.links.terms'), terms_of_use_path, target: '_blank'
           li= link_to t('layouts.footer.links.privacy'), privacy_policy_path, target: '_blank'
