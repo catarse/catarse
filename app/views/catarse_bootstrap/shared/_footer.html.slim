@@ -1,6 +1,6 @@
 footer.w-hidden-small.w-hidden-tiny.footer-simple
   .w-container
-    .footer-signature-text.caption #{CatarseSettings[:comapny_name]} #{Time.now.strftime("%Y")}
+    .footer-signature-text.caption #{CatarseSettings[:company_name]} #{Time.now.strftime("%Y")}
     ul.w-list-unstyled.footer-simple-links.caption
       li.footer-simple-links-list = link_to t('footer.links.blog'), CatarseSettings[:blog_url], class: "link-footer"
       li.footer-simple-links-list = link_to t('footer.links.discover'), explore_path, class: "link-footer"
