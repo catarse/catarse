@@ -34,7 +34,7 @@ gem 'mixpanel-ruby'
 # Payment engines
 gem 'catarse_paypal_express', '2.2.3'
 gem 'catarse_moip', '~> 2.3.5'
-gem 'catarse_credits', git: 'https://github.com/catarse/catarse_credits.git'
+gem 'catarse_credits', '0.0.6'
 # gem 'catarse_wepay', '~> 0.0.1'
 
 # Decorators
