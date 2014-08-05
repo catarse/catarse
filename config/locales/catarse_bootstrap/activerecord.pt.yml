@@ -10,7 +10,7 @@ pt:
       contribution:
         value: valor
         reward: recompensa
-        project: project
+        project: projeto
       reward:
         deliver_at: Previsão de entrega
       project:
