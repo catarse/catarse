@@ -1,4 +1,12 @@
 header
+  = content_for :meta_tags do
+    meta property="og:title"        content=channel.name
+    meta property="og:type"         content=:cause
+    meta property="og:url"          content=url_for(only_path: false)
+    meta property="og:image"        content=channel.image.curator_thumb.url
+    meta property="og:site_name"    content=channel.name
+    meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
+    meta property="og:description"  content=channel.description
   .row
     h1.large-2.columns.no-padding
       = link_to "#{CatarseSettings[:company_name]}", root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'logo-image', :title => CatarseSettings[:company_name]
