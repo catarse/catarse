@@ -20,7 +20,7 @@
       .w-col.w-col-3
         h4 = t('layouts.footer.titles.sitemap')
         ul
-          li= link_to t('layouts.footer.links.submit'), page_path(:how_it_works)
+          li= link_to t('layouts.footer.links.submit'), start_path
           li= link_to t('layouts.footer.links.discover'), explore_path
           - if current_user
             li= link_to t('layouts.footer.links.near'), explore_path(anchor: "near_of/#{current_user.address_state}")
