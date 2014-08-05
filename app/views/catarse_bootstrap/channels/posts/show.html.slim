@@ -1,14 +1,5 @@
 = render 'shared/header_channel'
 = content_for :title, channel.name
-= content_for :meta_tags do
-  meta property="og:title"        content=resource.title
-  meta property="og:type"         content=:cause
-  meta property="og:url"          content=url_for(only_path: false)
-  meta property="og:image"        content=channel.image.curator_thumb.url
-  meta property="og:site_name"    content=channel.name
-  meta property="fb:app_id"       content=CatarseSettings[:facebook_app_id]
-  meta property="og:description"  content=channel.description
-
 
 article.row.channel-posts-wrapper
   br/
