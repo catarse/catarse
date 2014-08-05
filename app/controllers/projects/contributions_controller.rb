@@ -54,7 +54,7 @@ class Projects::ContributionsController < ApplicationController
     authorize @contribution
     create! do |success,failure|
       failure.html do
-        flash[:failure] = t('projects.contributions.review.error')
+        flash[:alert] = resource.errors.full_messages.to_sentence
         return redirect_to new_project_contribution_path(@project)
       end
       success.html do
