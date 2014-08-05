@@ -7,6 +7,10 @@ pt:
       contribution: Apoiador
       category: Categoria
     attributes:
+      contribution:
+        value: valor
+        reward: recompensa
+        project: projeto
       reward:
         deliver_at: Previsão de entrega
       project:
