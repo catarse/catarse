@@ -87,4 +87,8 @@ class Projects::ContributionsController < ApplicationController
   def collection
     @contributions ||= apply_scopes(end_of_association_chain).available_to_display.order("confirmed_at DESC").per(10)
   end
+
+  def use_catarse_boostrap
+    action_name == "new" || action_name == "create" ? 'catarse_bootstrap' : 'application'
+  end
 end
