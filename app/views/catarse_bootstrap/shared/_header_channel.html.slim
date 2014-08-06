@@ -1,6 +1,7 @@
 header
   = content_for :meta_tags do
-    meta property="og:title"        content=channel.name
+    -if ! @post
+      meta property="og:title"        content= channel.name
     meta property="og:type"         content=:cause
     meta property="og:url"          content=url_for(only_path: false)
     meta property="og:image"        content=channel.image.curator_thumb.url

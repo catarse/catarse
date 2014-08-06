@@ -1,5 +1,7 @@
 = render 'shared/header_channel'
 = content_for :title, channel.name
+= content_for :meta_tags do
+  meta property="og:title"        content= resource.title
 
 article.row.channel-posts-wrapper
   br/
