@@ -78,6 +78,7 @@ p
 .headline
   margin-bottom: 12px
   font-size: 22px
+  font-weight: 600
   line-height: 33px
 
 .caption
@@ -1041,6 +1042,87 @@ input.text-field-half
   padding: 0 30px 0 0
   clear: none
   font-weight: 600
+
+.back-reward-radio-reward
+  display: block
+  width: 95%
+  margin-top: 0px
+  margin-bottom: 0px
+  padding: 15px 40px 20px 35px
+  border-bottom: 1px solid $border-strong
+  +border-radius(5px)
+  +transition(all 500ms ease)
+  &:hover
+    background-color: $gray-one
+  &.selected
+    position: static
+    display: block
+    border: 1px solid $green
+    background-color: $gray-one
+
+.back-reward-radio-button
+  width: auto
+  margin: 10px 15px 0 -20px
+  float: left
+
+.back-reward-reward-description
+  margin: -5px 0 0 10px
+
+.back-reward-delivery-date
+  margin: -7px 0 0 0
+  color: $blue-two
+
+.back-reward-must-select-warning
+  display: block
+  width: 61.6%
+  margin: 70px auto 0 auto
+  padding: 24px
+  border: 1px solid $border-strong
+  +border-radius(5px)
+
+.back-faq-box
+  padding: 20px
+  border: 1px solid $border-strong
+  +border-radius(5px)
+
+.faq-box-title 
+  margin: 0 0 17px 0
+  font-weight: 600
+
+.faq-box-question 
+  display: block
+  margin: 0 0 10px 0
+  line-height: 12px
+  font-weight: 400
+
+.faq-box-arrow 
+  display: inline
+  font-size: 11px
+  line-height: 22px
+  font-weight: 800
+
+.faq-box-answer
+  padding: 0 0 0 18px
+
+.faq-box-question-text 
+  display: inline-block
+  margin: 0 0 0 8px
+
+.back-reward-button
+  position: static
+  left: 0px
+  right: 0px
+  bottom: 0px
+  z-index: 1
+  width: 30%
+  margin: 20px auto
+
+.back-reward-button-section
+  display: block
+  background-color: white
+  opacity: 1
+  margin: 30px 0 0 0 
+
 
 // Responsive -----------------------------------------------------------------------------------------
 @media screen and (max-width: 1200px)
