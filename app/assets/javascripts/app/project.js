@@ -1,5 +1,5 @@
 App.addChild('Project', _.extend({
-  el: '#main_content[data-action="show"][data-controller-name="projects"]',
+  el: '.content[data-action="show"][data-controller-name="projects"]',
 
   events: {
     'click #toggle_warning a' : 'toggleWarning',
@@ -29,7 +29,7 @@ App.addChild('Project', _.extend({
   },
 
   followRoute: function(name){
-    var $tab = this.$('nav#project_menu a[href="' + window.location.hash + '"]');
+    var $tab = this.$('nav.project-nav a[href="' + window.location.hash + '"]');
     if($tab.length > 0){
       this.onTabClick({ currentTarget: $tab });
     }
