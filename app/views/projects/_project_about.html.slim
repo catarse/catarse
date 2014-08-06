@@ -1,9 +1,12 @@
-.media
-  .video
-    iframe src="#{@project.display_video_embed_url}" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+iframe src="#{@project.display_video_embed_url}" class="embedly-embed" width="100%" height="390" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
 
-  - @project.channels.each do |c|
-          = link_to(c.name, root_url(subdomain: c.permalink), class: 'project-channel')
+ul.project-share
+  li
+    #facebook_share = render_facebook_like title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale)
+  li
+    #twitter_share= render_twitter(url: project_by_slug_url(permalink: @project.permalink), title: @project.name)
+  li
+    = link_to t('.embed'), '#embed', id: 'embed_link', class: 'link embed'
 
   .social
     #project_share

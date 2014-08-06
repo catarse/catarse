@@ -1,5 +1,5 @@
 - content_for :main_stylesheet, :webflow
-- content_for :title, @post.title
+- content_for :title, @project.name + " · " + CatarseSettings[:company_name]
 - content_for :meta_tags do
   - if ['online', 'waiting_funds', 'successful'].include? @project.state
     meta name="robots" content="index, follow"
@@ -32,7 +32,7 @@
 
 / = render @project.state_warning_template
 
-#page_content.project-page
+.project-page#page_content
   header.project-header
     h1.project-heading.display-small = @project.name
     p.project-sub-heading.body-big
@@ -86,6 +86,13 @@
 
         .w-col.w-col-4
           = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'project-nav-category'
+
+  section.project-main-content
+    .w-container
+      .w-row
+        article.w-col.w-col-8.project-content
+          #project_about.content = render 'project_about'
+
       .info
         #statistics
           .statistics
@@ -166,5 +173,3 @@
           = t('.funding_period')
         .funding_period
           = "#{@project.display_online_date} - #{@project.display_expires_at} (#{t('datetime.distance_in_words.x_days', count: @project.online_days)})"
-
-    .clearfix
