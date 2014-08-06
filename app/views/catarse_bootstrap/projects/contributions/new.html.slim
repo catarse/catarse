@@ -2,5 +2,47 @@
 - content_for :title, t('.page-title')
 
 = render 'shared/header'
+.project-header
+  .w-container
+    .project-heading.display-small Série Restus
+    .project-sub-heading.body-big por&nbsp;<a class="link-hidden">Zerezes</a>
+.back-reward-content
+  .w-container
+    .w-row
+      .w-col.w-col-8
+        .back-reward-cheers
+          .w-hidden-small.w-hidden-tiny.back-reward-cheers.display-medium Oh yeah!
+          .body-big Escolha o valor do apoio&nbsp;e sua recompensa
+        .w-form.back-reward-form
+          form id="email-form-3" name="email-form-3" data-name="Email Form 3"
+            .back-reward-input-reward-div
+              input class="w-input back-reward-input-reward" id="name" type="text" placeholder="R$" name="name" data-name="Name"
+              .back-reward-input-reward-tip.body-small A partir de R$10 está ótimo ;)
+            .w-radio.w-clearfix.back-reward-radio-reward data-ix="display-button-back"
+              input class="w-radio-input back-reward-radio-button" id="radio" type="radio" name="radio" value="Radio" data-name="Radio"
+              label class="w-form-label headline" for="radio" Não quero recompensa
+              .back-reward-reward-description
+                p.body-medium Obrigado. Só quero ajudar o projeto.
+                .back-reward-delivery-date.caption Estimativa de entrega:&nbsp;Abril 2014
+          .w-form-done
+            p Thank you! Your submission has been received!
+          .w-form-fail
+            p Oops! Something went wrong while submitting the form :(
+        .back-reward-must-select-warning.alt
+          .body-medium Você precisa selecionar alguma recompensa para seguir para o próximo passo! Volta aí em cima e escolhe com carinho ;)
+      .w-col.w-col-4
+        .w-hidden-small.w-hidden-tiny.back-faq-box data-ix="new-interaction"
+          .faq-box-title.body-medium Quero apoiar, e agora?
+          ul.w-list-unstyled
+            li.faq-box-question.body-small.alt-link
+              div
+                span.faq-box-arrow style="font-weight: 800;" +
+                | Como eu apoio este projeto?
+            li
+              p.faq-box-answer.body-small Assim que o MoIP ou o Paypal confirmar a transação. Se você pagou com cartão, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.
+  .back-reward-button-section.alt
+    .w-container
+      a.back-reward-button.bt-large href="#" Próximo passo
+
 = render 'shared/footer'
 

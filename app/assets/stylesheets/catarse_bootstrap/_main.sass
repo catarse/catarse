@@ -4,8 +4,10 @@
   +transition-timing-function(ease)
 
 body
+  color: $blue-one
   font-family: "proxima-nova",sans-serif
   font-size: 14px
+  line-height: 20px
 
 .no-responsive
   min-width: 940px
@@ -44,6 +46,10 @@ p
   line-height: 28px
   a
     color: $blue-note
+
+.display-small
+  font-size: 34px
+  line-height: 34px
 
 .display-medium
   font-size: 44px
@@ -104,7 +110,6 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
   outline: none
   padding: .6em .8em
   +border-radius(5px)
-  width: 100%
   font-family: "proxima-nova",sans-serif
 
 .text-field
@@ -988,6 +993,54 @@ input.text-field-half
   top: 50%
   +transform(translateY(-50%) scale(1.2))
 
+// New Contribution -----------------------------------------------------------------------------------------
+.project-header
+  padding: 44px 0 34px 0
+  background-color: $gray-one
+
+.project-heading
+  font-weight: 600
+  text-align: center
+
+.project-sub-heading
+  color: $blue-one
+  text-align: center
+
+.back-reward-content
+  padding: 52px 0 82px 0
+
+.back-reward-form
+  margin: 15px 0 0 0
+
+.back-reward-cheers
+  margin: 0 0 15px 0
+
+.back-reward-input-reward-div
+  display: inline-block
+
+.back-reward-input-reward
+  display: block
+  width: 64%
+  height: 70px
+  margin: 0 20px 35px 0
+  float: left
+  clear: none
+  border: 1px solid $green
+  +border-radius(5px)
+  background-color: $gray-one
+  +transition(all 500ms ease)
+  color: $green
+  font-size: 44px
+  font-weight: 400
+  &:focus
+    border-color: $green
+
+.back-reward-input-reward-tip
+  display: block
+  margin: 15px 0 0 0
+  padding: 0 30px 0 0
+  clear: none
+  font-weight: 600
 
 // Responsive -----------------------------------------------------------------------------------------
 @media screen and (max-width: 1200px)
