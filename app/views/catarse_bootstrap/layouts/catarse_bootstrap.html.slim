@@ -29,7 +29,7 @@ html
     = render 'layouts/catarse_bootstrap_notices' if notice.present?
     = render 'layouts/webfont'
 
-    .content= yield
+    .content[data-controller-class=controller.class.name.downcase data-controller-name=controller.controller_name.downcase data-action=controller.action_name.downcase data-locale="#{I18n.locale}" data-user="#{current_user.to_json}"]= yield
     = render 'layouts/crazzy_egg'
   = javascript_include_tag :application
   = render 'layouts/analytics'
