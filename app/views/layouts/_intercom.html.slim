@@ -1,5 +1,5 @@
 - if current_user
-  - failed_projects = current_user.contributed_projects.where(state: 'unsuccessful')
+  - failed_projects = current_user.contributed_projects.where(state: 'failed')
   javascript:
     window.intercomSettings = {
       name: "#{current_user.full_name}",
