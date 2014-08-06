@@ -14,9 +14,10 @@
           .w-hidden-small.w-hidden-tiny.back-reward-cheers.display-medium Oh yeah!
           .body-big Escolha o valor do apoio&nbsp;e sua recompensa
         .w-form.back-reward-form
-          form id="email-form-3" name="email-form-3" data-name="Email Form 3"
+          = simple_form_for [parent, @contribution], html: { id: 'contribution_form' } do |form|
+            = form.input_field :referal_link, as: :hidden, input_html: { value: referal_link }
             .back-reward-input-reward-div
-              input class="w-input back-reward-input-reward" id="name" type="text" placeholder="R$" name="name" data-name="Name"
+              = form.input_field :value, placeholder: 'R$', class: 'w-input back-reward-input-reward'
               .back-reward-input-reward-tip.body-small A partir de R$10 está ótimo ;)
             .w-radio.w-clearfix.back-reward-radio-reward data-ix="display-button-back"
               input class="w-radio-input back-reward-radio-button" id="radio" type="radio" name="radio" value="Radio" data-name="Radio"
