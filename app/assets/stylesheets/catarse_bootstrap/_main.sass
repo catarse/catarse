@@ -49,6 +49,10 @@ p
   font-size: 44px
   line-height: 44px
 
+.display-small
+  font-size: 34px
+  line-height: 34px
+
 .body-big
   font-size: 18px
   line-height: 28px
@@ -69,6 +73,10 @@ p
   margin-bottom: 12px
   font-size: 22px
   line-height: 33px
+
+.caption
+  font-size: 13px
+  line-height: 18px
 
 // Links -----------------------------------------------------------------------------------------
 .link
@@ -762,7 +770,134 @@ input.text-field-half
   width: 45%
   margin-top: 40px
 
+// project-page -----------------------------------------------------------------------------------------
+.project-header
+  background: $gray-one
+  text-align: center
+  color: $blue-one
 
+.project-heading
+  padding-top: 55px
+  font-weight: 600
+
+.project-sub-heading
+  padding-bottom: 34px
+  margin-bottom: 0
+  a
+    color: $blue-one
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+
+.project-nav
+  background: $gray-one
+
+.project-nav-tab
+  display: inline-block
+  margin: 15px 6px 0 0
+  color: $blue-one
+  padding: 13px
+  font-size: 15px
+  text-decoration: none
+  &.selected
+    border-radius: 4px 4px 0 0
+    background-color: white
+    font-weight: 600
+  &:hover
+    border-radius: 4px 4px 0 0
+    background-color: white
+
+.project-nav-tab-quantity
+  padding: 2px 4px
+  border-radius: 2px
+  background-color: $border-strong
+  color: $blue-two
+  font-size: 12px
+  font-weight: 800
+  margin-left: 8px
+
+.project-nav-category
+  margin-top: 30px
+  color: $blue-two
+  font-size: 15px
+  float: right
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+  &:before
+    content: url(/assets/catarse_bootstrap/icons/category-icon.png)
+    display: inline-block
+    vertical-align: middle
+    margin-right: 10px
+
+.project-main-content
+  padding: 32px 0 72px
+
+.project-share
+  margin: 20px 0
+  padding: 0
+  li
+    display: inline-block
+    vertical-align: top
+    margin: 0 20px 0 0
+
+.embed
+  color: #79808b
+  &:before
+    content: "< "
+  &:after
+    content: " >"
+
+// Project page sidebar -------------------------------------
+.project-stats-digits
+  margin-bottom: 10px
+  font-weight: 600
+  p
+    margin-bottom: 0
+
+.project-author
+  margin-top: 45px 0 0
+  padding: 15px
+  border-radius: 5px 5px 0px 0px
+  background-color: rgba(64, 155, 255, 0.09)
+  color: $blue-one
+  p
+    margin-bottom: 0
+  a
+    color: $blue-one
+    font-weight: 600
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+  .project-author-city
+    margin: 0 0 10px
+
+.thumb-author
+  float: left
+  margin-right: 15px
+
+.project-author-contacts
+  margin: 15px 0 0
+  padding: 15px 0 0
+  border-top: 1px solid rgba(255, 255, 255, 0.61)
+
+.project-author-item
+  margin: 0 0 5px
+
+.project-author-send-message
+  margin: 1px 0 25px
+  padding: 12px 0
+  border-radius: 0px 0px 5px 5px
+  background-color: rgba(64, 155, 255, 0.09)
+  font-weight: 600
+  text-align: center
+  &:hover
+    background-color: rgba(64, 155, 255, 0.2)
+    text-decoration: underline
+
+.project-funding-period
+  margin: 30px 0 0
+  font-weight: 600
 
 // Responsive -----------------------------------------------------------------------------------------
 @media screen and (max-width: 1200px)
