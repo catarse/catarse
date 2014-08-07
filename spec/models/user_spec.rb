@@ -373,6 +373,18 @@ describe User do
     it{should == [@p1]}
   end
 
+  describe "#failed_contributed_projects" do
+    subject{user.failed_contributed_projects}
+    before do
+      @failed_project = create(:project, state: 'online')
+      @online_project = create(:project, state: 'online')
+      create(:contribution, user: user, project: @failed_project)
+      create(:contribution, user: user, project: @online_project)
+      @failed_project.update_columns state: 'failed'
+    end
+    it{should == [@failed_project]}
+  end
+
   describe "#fix_facebook_link" do
     subject{ user.facebook_link }
     context "when user provides invalid url" do
