@@ -110,6 +110,6 @@ class ProjectsController < ApplicationController
   end
 
   def use_catarse_boostrap
-    action_name == "new" || action_name == "create" ? 'catarse_bootstrap' : 'application'
+    action_name == "new" || action_name == "create" || action_name == "show" ? 'catarse_bootstrap' : 'application'
   end
 end
