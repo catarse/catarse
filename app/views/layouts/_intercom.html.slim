@@ -1,13 +1,13 @@
 - if current_user
-  - failed_projects = current_user.contributed_projects.where(state: 'failed')
+  - failed_projects = 
   javascript:
     window.intercomSettings = {
       name: "#{current_user.full_name}",
       email: "#{current_user.email}",
       has_credits: "#{current_user.credits > 0}",
       last_contribution: "#{current_user.contributions.last.state}",
-      contributions_to_unsuccessful_projects: #{failed_projects.count},
-      last_unsuccessful_project: #{failed_projects.last.expires_at.to_i rescue "null"},
+      contributions_to_unsuccessful_projects: #{current_user.failed_projects.count},
+      last_unsuccessful_project: #{current_user.failed_projects.last.expires_at.to_i rescue "null"},
       created_at: #{current_user.created_at.to_i},
       app_id: "c7t08ha7"
     };
