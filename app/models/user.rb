@@ -86,6 +86,10 @@ class User < ActiveRecord::Base
     self.active.where(id: id).first!
   end
 
+  def failed_contributed_projects
+    contributed_projects.where(state: 'failed')
+  end
+
   def send_credits_notification
     self.notify(:credits_warning)
   end
