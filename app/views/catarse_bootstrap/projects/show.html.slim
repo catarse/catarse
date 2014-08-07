@@ -108,7 +108,7 @@
                 p.body-medium #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
             - if @project.online? && !@project.expired?
-              = button_tag "teste", new_project_contribution_path(@project), id: 'contribute_project_form', class: "project-back-button bt-large"
+              = button_tag t('.contribute_project.submit'), data: {url: new_project_contribution_path(@project)}, id: 'contribute_project_form', class: "project-back-button bt-large"
 
             p.body-small
               = t(".contribute_project.display_status.#{@project.display_status}", goal: @project.display_goal, date: @project.display_expires_at)
