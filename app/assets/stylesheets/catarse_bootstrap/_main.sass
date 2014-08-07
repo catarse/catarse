@@ -62,7 +62,7 @@ p
   line-height: 24px
 
 .body-small
-  font-size: 15px
+  font-size: 14px
   line-height: 22px
 
 .title
@@ -929,6 +929,65 @@ input.text-field-half
 .project-funding-period
   margin: 30px 0 0
   font-weight: 600
+
+// Rewards -----------------------------------------------------------------------------------------
+.project-reward-box
+  position: relative
+  margin-top: 4px
+  padding: 20px
+  background-color: $gray-one
+  color: $blue-one
+  cursor: pointer
+  p
+    margin-bottom: 0
+    color: inherit
+  .body-medium
+    margin-bottom: 20px
+  &:hover .project-reward-box-hover
+    z-index: 10
+    opacity: 1
+    .project-reward-box-hover-text
+      +transform(translateY(-50%) scale(1))
+
+.project-reward-box-gone
+  color: rgba(121, 128, 139, 0.36)
+  cursor: default
+  &:hover .project-reward-box-hover
+    z-index: -10
+
+.project-reward-box-title
+  margin-bottom: 20px
+  font-weight: 600
+
+.project-reward-box-limited-label
+  display: inline-block
+  margin: 12px 0 0
+  font-weight: 600
+  padding: 2px 10px
+  background-color: $yellow
+
+.project-reward-box-gone-label
+  background-color: $blue-two
+  color: white
+
+.project-reward-box-hover
+  width: 100%
+  height: 100%
+  position: absolute
+  top: 0
+  left: 0
+  background-color: rgba(0, 178, 45, 0.84)
+  z-index: -1
+  opacity: 0
+
+.project-reward-box-hover-text
+  color: white
+  font-size: 20px
+  text-align: center
+  position: relative
+  top: 50%
+  +transform(translateY(-50%) scale(1.2))
+
 
 // Responsive -----------------------------------------------------------------------------------------
 @media screen and (max-width: 1200px)
