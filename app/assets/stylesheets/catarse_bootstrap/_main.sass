@@ -4,8 +4,10 @@
   +transition-timing-function(ease)
 
 body
+  color: $blue-one
   font-family: "proxima-nova",sans-serif
   font-size: 14px
+  line-height: 20px
 
 .no-responsive
   min-width: 940px
@@ -45,6 +47,10 @@ p
   a
     color: $blue-note
 
+.display-small
+  font-size: 34px
+  line-height: 34px
+
 .display-medium
   font-size: 44px
   line-height: 44px
@@ -72,6 +78,7 @@ p
 .headline
   margin-bottom: 12px
   font-size: 22px
+  font-weight: 600
   line-height: 33px
 
 .caption
@@ -99,14 +106,6 @@ p
     font-weight: 600
 
 // Forms -----------------------------------------------------------------------------------------
-input[type='text'], input[type='number'],  input[type='password'], input[type='email'], textarea, select
-  color: $blue-one
-  outline: none
-  padding: .6em .8em
-  +border-radius(5px)
-  width: 100%
-  font-family: "proxima-nova",sans-serif
-
 .text-field
   display: block
   height: 40px
@@ -403,13 +402,14 @@ input.text-field-half
 
 .form-search
   display: inline-block
-  width: 250px
+  width: 50%
   height: 36px
   float: right
   margin-right: 15px
   div
     margin: 0
   input[type=text]
+    width: 100%
     background: rgba(37, 49, 57, 0.6)
     border: none
     padding-left: 30px
@@ -987,6 +987,134 @@ input.text-field-half
   position: relative
   top: 50%
   +transform(translateY(-50%) scale(1.2))
+
+// New Contribution -----------------------------------------------------------------------------------------
+.project-header
+  padding: 44px 0 34px 0
+  background-color: $gray-one
+
+.project-heading
+  font-weight: 600
+  text-align: center
+
+.project-sub-heading
+  color: $blue-one
+  text-align: center
+
+.back-reward-content
+  padding: 52px 0 82px 0
+
+.back-reward-form
+  margin: 15px 0 0 0
+
+.back-reward-cheers
+  margin: 0 0 15px 0
+
+.back-reward-input-reward-div
+  display: inline-block
+
+.back-reward-input-reward
+  display: block
+  width: 64%
+  height: 70px
+  margin: 0 20px 35px 0
+  float: left
+  clear: none
+  border: 1px solid $green
+  +border-radius(5px)
+  background-color: $gray-one
+  +transition(all 500ms ease)
+  color: $green
+  font-size: 44px
+  font-weight: 400
+  &:focus
+    border-color: $green
+
+.back-reward-input-reward-tip
+  display: block
+  margin: 15px 0 0 0
+  padding: 0 30px 0 0
+  clear: none
+  font-weight: 600
+
+.back-reward-radio-reward
+  display: block
+  width: 95%
+  margin-top: 0px
+  margin-bottom: 0px
+  padding: 15px 40px 20px 35px
+  border-bottom: 1px solid $border-strong
+  +border-radius(5px)
+  +transition(all 500ms ease)
+  &:hover
+    background-color: $gray-one
+  &.selected
+    position: static
+    display: block
+    border: 1px solid $green
+    background-color: $gray-one
+
+.back-reward-radio-button
+  width: auto
+  margin: 10px 15px 0 -20px
+  float: left
+
+.back-reward-reward-description
+  margin: -5px 0 0 10px
+
+.back-reward-delivery-date
+  margin: -7px 0 0 0
+  color: $blue-two
+
+.back-reward-must-select-warning
+  display: block
+  width: 61.6%
+  margin: 70px auto 0 auto
+  padding: 24px
+  border: 1px solid $border-strong
+  +border-radius(5px)
+
+.back-faq-box
+  padding: 20px
+  border: 1px solid $border-strong
+  +border-radius(5px)
+
+.faq-box-title 
+  margin: 0 0 17px 0
+  font-weight: 600
+
+.faq-box-question 
+  display: block
+  margin: 0 0 10px 0
+  line-height: 12px
+  font-weight: 400
+
+.faq-box-arrow 
+  display: inline
+  font-size: 11px
+  line-height: 22px
+  font-weight: 800
+
+.faq-box-answer
+  padding: 0 0 0 18px
+
+.faq-box-question-text 
+  display: inline-block
+  margin: 0 0 0 8px
+
+.back-reward-button
+  position: static
+  left: 0px
+  right: 0px
+  bottom: 0px
+  z-index: 1
+  width: 30%
+  margin: 20px auto
+
+.back-reward-button-section
+  display: block
+  opacity: 1
+  margin: 30px 0 0 0 
 
 
 // Responsive -----------------------------------------------------------------------------------------
