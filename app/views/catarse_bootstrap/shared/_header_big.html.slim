@@ -1,59 +1,11 @@
-.main-header
-  .w-row
-    .w-col.w-col-2.w-col-small-4.w-col-tiny-4
-      = link_to (image_tag "catarse_bootstrap/catarse-logo.png"), root_url(host: CatarseSettings[:base_domain] || request.domain), class: 'header-logo', :title => CatarseSettings[:company_name]
-    .header-nav.w-col.w-col-10.w-col-small-8.w-col-tiny-8
-      = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side no-mobile'
+- content_for :header_controls do
+  = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side'
 
-      = link_to t('layouts.header.submit'), start_path, class: 'header-link left-side no-mobile'
+  = link_to t('layouts.header.submit'), start_path, class: 'header-link left-side'
 
-      .user-profile
-        - if current_user
-          = link_to '#', class: 'user-options' do
-            = image_tag(current_user.display_image, :size => "40x40", class: 'user-avatar')
-          ul.user-nav
-            li= link_to t('layouts.header.profile'), current_user
-            li= link_to t('layouts.user.my_contributions'), user_path(current_user, anchor: 'contributions')
-            - if current_user.project_owner?
-              li= link_to t('.projects'), user_path(current_user, anchor: 'projects')
-            li
-              = link_to t('layouts.user.my_credits'), user_path(current_user, anchor: 'credits')
-              .small
-                | (#{current_user.display_credits})
-            li
-              = link_to t('layouts.user.refund_link'), user_path(current_user, anchor: 'credits')
-            - if current_user.admin? || current_user.channel
-              li.divider
-              - for menu, path in controller.menu do
-                li= link_to menu, path
-            li.divider= link_to t('layouts.user.logout'), destroy_user_session_path, method: :delete
-        - else
-            = link_to t('layouts.header.signin'), new_user_session_url, class: 'header-link right-side no-mobile'
+  .w-form.form-search
+    = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
+      = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "form-search-input", placeholder: t('layouts.header.search')
+      = submit_tag class: "form-search-image"
 
-            = link_to t('layouts.header.signup'), new_user_registration_url, class: 'header-link right-side no-mobile'
-
-      = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'header-link right-side no-mobile',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
-
-      .w-form.form-search.no-mobile
-        = form_tag explore_path, :method => 'GET', :class=>'discover-form' do
-          = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "form-search-input", placeholder: t('layouts.header.search')
-          = submit_tag class: "form-search-image"
-
-
-      = link_to 'Menu', '#', class: 'mobile-menu-link'
-
-ul.mobile-menu
-  li
-    = link_to t('layouts.header.signup'), new_user_registration_url, class: 'header-link right-side'
-
-  li
-    = link_to t('layouts.header.signin'), new_user_session_url, class: 'header-link right-side'
-
-  li
-    = link_to t('layouts.header.discover'), explore_path, class: 'header-link left-side'
-
-  li
-    = link_to t('layouts.header.submit'), start_path, class: 'header-link left-side'
-
-  li
-    = link_to t('layouts.header.help'), CatarseSettings[:support_forum], target: :_blank, class: 'header-link right-side',  id: 'guidelines_header_modal' if CatarseSettings[:support_forum].present?
+= render 'shared/header'
