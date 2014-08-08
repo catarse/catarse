@@ -23,15 +23,8 @@
 
 = render 'shared/header_big'
 
-/ = render @project.state_warning_template
-
 .project-page#page_content
-  header.project-header
-    h1.project-heading.display-small = @project.name
-    p.project-sub-heading.body-big
-      = t('projects.index.box.by')
-      |&nbsp;
-      = link_to(@project.user.display_name, user_path(@project.user))
+  = render 'project_header'
 
   nav.project-nav.w-hidden-small.w-hidden-tiny
     .w-container

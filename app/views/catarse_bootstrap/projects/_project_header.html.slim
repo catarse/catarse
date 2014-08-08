@@ -1,0 +1,7 @@
+header.project-header
+  h1.project-heading.display-small = @project.name
+  p.project-sub-heading.body-big
+    = t('projects.index.box.by')
+    |&nbsp;
+    = link_to(@project.user.display_name, user_path(@project.user))
+
