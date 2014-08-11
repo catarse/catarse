@@ -6,6 +6,7 @@ App.addChild('Contribution', {
   },
 
   activate: function(){
+    this.$('input[type=radio]:checked').parent().addClass('selected');
   },
 
   clickReward: function(event){
