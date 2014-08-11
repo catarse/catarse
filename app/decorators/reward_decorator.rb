@@ -14,9 +14,8 @@ class RewardDecorator < Draper::Decorator
   end
 
   def name
-    "<div class='reward_minimum_value'>#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</div><div class='reward_description'>#{html_escape(source.description)}</div>#{'<div class="sold_out">' + I18n.t('rewards.index.sold_out') + '</div>' if source.sold_out?}<div class='clear'></div>".html_safe
     %{
-      <label class="w-form-label headline" for="radio">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
+      <label class="w-form-label headline" for="contribution_reward_#{source.id}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
       <div class="back-reward-reward-description">
         <p class="body-medium">
         #{html_escape(source.description)}
