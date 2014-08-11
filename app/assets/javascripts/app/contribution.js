@@ -2,7 +2,13 @@ App.addChild('Contribution', {
   el: '#new-contribution',
 
   events: {
-    'click label.back-reward-radio-reward' : 'clickReward'
+    'click label.back-reward-radio-reward' : 'clickReward',
+    'click a#submit' : 'submitForm'
+  },
+
+  submitForm: function(){
+    this.$('form').submit();
+    return false;
   },
 
   activate: function(){
