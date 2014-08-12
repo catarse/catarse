@@ -17,6 +17,12 @@ GIT
       httparty (~> 0.6.1)
       nokogiri (>= 1.5.0)
 
+PATH
+  remote: ~/store/code/catarse_pagarme
+  specs:
+    catarse_pagarme (0.0.1)
+      rails (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -489,6 +495,7 @@ DEPENDENCIES
   catarse_credits (= 0.0.6)
   catarse_moip (~> 2.3.5)
   catarse_monkeymail (>= 0.1.6)
+  catarse_pagarme!
   catarse_paypal_express (= 2.2.3)
   catarse_settings_db
   chartkick
