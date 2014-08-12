@@ -11,7 +11,7 @@ gem 'sidekiq',  '~> 3.1.3'
 gem 'sinatra', require: false # required by sidekiq web interface mounted on /sidekiq
 
 # Turns every field on a editable one
-gem 'best_in_place', github: 'bernat/best_in_place', branch: 'rails-4'
+gem 'best_in_place', github: 'bernat/best_in_place', branch: 'master'
 
 # State machine for attributes on models
 gem 'state_machine', require: 'state_machine/core'
@@ -35,6 +35,7 @@ gem 'mixpanel-ruby'
 gem 'catarse_paypal_express', '2.2.3'
 gem 'catarse_moip', '~> 2.3.5'
 gem 'catarse_credits', '0.0.6'
+gem 'catarse_contribution_validator', github: 'catarse/catarse_contribution_validator'
 # gem 'catarse_wepay', '~> 0.0.1'
 
 # Decorators
