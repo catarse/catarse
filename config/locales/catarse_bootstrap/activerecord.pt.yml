@@ -126,8 +126,8 @@ pt:
     payer_email: Email do meio de pagamento
     payment_method: Meio de pagamento
     street: Rua
-    complement: Complemento
     address_number: Número
+    complement: Complemento
     neighbourhood: Bairro
     city: Cidade
     address_state: Estado
