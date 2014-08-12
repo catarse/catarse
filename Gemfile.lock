@@ -8,6 +8,13 @@ GIT
       rails (~> 4)
 
 GIT
+  remote: git://github.com/catarse/catarse_contribution_validator.git
+  revision: 10e244d93563085e784107f764960f541473304e
+  specs:
+    catarse_contribution_validator (0.0.1)
+      rails (>= 4.0.0)
+
+GIT
   remote: git://github.com/catarse/moip-ruby.git
   revision: c0225ad71645cd1df35dafa1e45c9f092b3abb9e
   ref: c0225ad71645cd1df35dafa1e45c9f092b3abb9e
@@ -486,6 +493,7 @@ DEPENDENCIES
   browser
   capybara (~> 2.1.0)
   carrierwave (~> 0.10.0)
+  catarse_contribution_validator!
   catarse_credits (= 0.0.6)
   catarse_moip (~> 2.3.5)
   catarse_monkeymail (>= 0.1.6)
