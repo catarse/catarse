@@ -43,4 +43,4 @@ footer.footer
           = render_facebook_like colorscheme: "dark", width: "171"
     hr
     .row
-        p.copyleft= "#{t('.texts.copyleft')} Catarse, #{Datetime.now.year} | Open source #{link_to 'Catarse @ Github', "#{CatarseSettings[:github_url]}", :class => 'github', target: '_blank'}".html_safe
+        p.copyleft= "#{t('.texts.copyleft')} Catarse, #{DateTime.now.year} | Open source #{link_to 'Catarse @ Github', "#{CatarseSettings[:github_url]}", :class => 'github', target: '_blank'}".html_safe
