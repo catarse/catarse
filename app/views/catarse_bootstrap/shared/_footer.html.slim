@@ -38,4 +38,4 @@ footer
   .row
     hr/
   .row
-    p.copyleft= "#{t('footer.texts.copyleft')} Catarse, 2014 | Open source #{link_to 'Catarse @ Github', "#{CatarseSettings[:github_url]}", :class => 'github', target: '_blank'}".html_safe
+    p.copyleft= "#{t('footer.texts.copyleft')} Catarse, #{Datetime.now.year} | Open source #{link_to 'Catarse @ Github', "#{CatarseSettings[:github_url]}", :class => 'github', target: '_blank'}".html_safe
