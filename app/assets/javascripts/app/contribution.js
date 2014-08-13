@@ -3,7 +3,7 @@ App.addChild('Contribution', {
 
   events: {
     'click label.back-reward-radio-reward' : 'clickReward',
-    'click a#submit' : 'submitForm'
+    'click button#submit' : 'submitForm'
   },
 
   submitForm: function(){
