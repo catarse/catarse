@@ -20,8 +20,6 @@
               = form.input_field :value, value: @contribution.value.to_i, class: 'w-input back-reward-input-reward'
               .back-reward-input-reward-tip.body-small = t('.minimum_disclaimer')
             = form.input :reward_id, as: :radio_buttons, collection: @rewards, input_html: {class: 'w-radio-input back-reward-radio-button'}, item_wrapper_class: 'w-radio w-clearfix back-reward-radio-reward', label: ''
-        .back-reward-must-select-warning.alt
-          .body-medium = t('.choose_reward')
       .w-col.w-col-4
         = render 'faq_box'
   .back-reward-button-section
