@@ -3,7 +3,7 @@ App.views.Project.addChild('ProjectSidebar', {
 
   events:{
     "click .show_reward_form": "showRewardForm",
-    "click #rewards .box.clickable" : "selectReward"
+    "click .project-reward-box" : "selectReward"
   },
 
   selectReward: function(event){
