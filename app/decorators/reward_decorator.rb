@@ -21,7 +21,7 @@ class RewardDecorator < Draper::Decorator
     }
     %{
       <label class="w-form-label headline" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
-      <div class="back-reward-selected-badge caption">#{I18n.t('projects.contributions.you_selected')}</div>
+      <div class="back-reward-selected-badge caption no-mobile">#{I18n.t('projects.contributions.you_selected')}</div>
       <div class="back-reward-reward-description">
         <p class="body-medium">
         #{html_escape(source.description)}
