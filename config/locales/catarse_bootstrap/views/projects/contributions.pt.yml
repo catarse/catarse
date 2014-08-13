@@ -43,14 +43,12 @@ pt:
         you_are_about_html: Você está prestes a fazer parte do grupo que faz de tudo
           para o %{link} acontecer.
       new:
-        page-title: Oohh yeah!
-        header:
-          subtitle: Você está a poucos passos de fazer a diferença e se tornar parte
-            deste projeto.
-          title: Oohh yeah!
+        page-title: Apoie o %{name}
+        choose_value: Escolha o valor do apoio&nbsp;e sua recompensa
+        minimum_disclaimer: A partir de R$10 está ótimo ;)
+        next_step: Próximo passo
+        choose_reward: Você precisa selecionar alguma recompensa para seguir para o próximo passo! Volta aí em cima e escolhe com carinho ;)
         no_reward: Obrigado. Eu só quero ajudar o projeto.
-        submit: Revisar e realizar pagamento
-        title: Apoie o %{name}
       review:
         Credits: 'Créditos'
         error: Ooops. Ocorreu um erro ao registrar seu apoio. Por favor, tente novamente.
