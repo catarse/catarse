@@ -1,6 +1,7 @@
 .media
-  .video
-    iframe src="#{@project.display_video_embed_url}" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
+  - if resource.video_url.present?
+    .video
+      iframe src="#{@project.display_video_embed_url}" width="640" height="430" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
   .social
     #project_share
       #facebook_share= render_facebook_like title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale)
