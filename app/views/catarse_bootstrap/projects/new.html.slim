@@ -1,0 +1,68 @@
+- content_for :main_stylesheet, :webflow
+- content_for :title, t('.page-title')
+
+= render 'shared/header'
+= render 'shared/feedback'
+
+.w-container
+  .w-row
+    .send-project-content
+      .w-col.w-col-4.send-project-faq
+          ul.w-list-unstyled
+            li.menu-list-head
+              h2.caption.bold = t('.faq.titles.support')
+            li
+              = link_to t('.faq.links.criteria'), "http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos", target: '_blank', class: "alt-link"
+
+            li
+              =link_to t('.faq.links.suport_central'), "#{CatarseSettings[:faq_url]}", target: '_blank', class: "alt-link"
+
+            li.zendesk_widget
+              =link_to t('.faq.links.support_contact'), "#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}", target: '_blank', class: "alt-link"
+
+          ul.w-list-unstyled
+            li.menu-list-head
+              h2.caption.bold = t('.faq.titles.know_more')
+            li
+              =link_to t('.faq.links.how_it_works'), "http://suporte.catarse.me/hc/pt-br/articles/201982466-O-que-%C3%A9-e-como-funciona-o-Catarse-", target: '_blank', class: "alt-link"
+
+            li
+              =link_to t('.faq.links.money'), "http://suporte.catarse.me/hc/pt-br/articles/202037493-Como-ser%C3%A1-feito-o-repasse-do-dinheiro-", target: '_blank', class: "alt-link"
+            li
+              =link_to t('.faq.links.selection'), "http://suporte.catarse.me/hc/pt-br/articles/202446018-Como-funciona-a-sele%C3%A7%C3%A3o-de-projetos-no-Catarse-", target: '_blank', class: "alt-link"
+            li
+              =link_to t('.faq.links.all_or_nothing'), "http://suporte.catarse.me/hc/pt-br/articles/202265256-Por-que-o-Tudo-ou-Nada-", target: '_blank', class: "alt-link"
+
+      .w-col.w-col-8.send-project-form
+        = simple_form_for @project, html: { id: 'project_form', class: 'w-form' } do |form|
+          = render 'devise/shared/alert'
+
+          fieldset
+            legend.send-project-form-headline.headline = t('.form.blocks.first.title')
+            p.body-medium = t('.form.blocks.first.description')
+
+            = form.input :name, as: :string, label: t('.form.labels.name'), hint: t('.form.hints.name'), input_html: { class: 'w-input text-field' }, autofocus: true
+            = form.input :permalink, as: :string, label: t('.form.labels.permalink'), hint: t('.form.hints.permalink'), input_html: { class: 'w-input text-field permalink-input' }
+            p.placeholder = t('.form.info.permalink')
+            = form.association :category, label: t('.form.labels.category'), hint: t('.form.hints.category'), input_html: { class: 'w-input text-field' }, prompt: true
+            = form.input :goal, as: :string, label: t('.form.labels.goal'), hint: t('.form.hints.goal'), input_html: { class: 'w-input text-field text-field-half goal-input' }
+            p.placeholder = t('.form.info.goal')
+            = form.input :online_days, as: :string, label: t('.form.labels.online_days'), hint: t('.form.hints.online_days'), input_html: { class: 'w-input text-field text-field-half' }
+            p.placeholder.days-placeholder = t('.form.info.online_days')
+
+          fieldset
+            legend.send-project-form-headline-with-margin.headline = t('.form.blocks.second.title')
+            p.body-medium = t('.form.blocks.second.description')
+
+            = form.input :video_url, as: :string, label: t('.form.labels.video_url'), hint: t('.form.hints.video_url'), input_html: { class: 'w-input text-field' }
+
+            = form.input :about, as: :text, label: t('.form.labels.about'), hint: t('.form.hints.about').html_safe, input_html: { class: 'w-input text-field text-field-big' }
+
+            = form.input :headline, as: :text, label: t('.form.labels.headline'), hint: t('.form.hints.headline'), input_html: { class: 'w-input text-field text-field-medium' }
+
+            = form.input :traffic_sources, as: :check_boxes, collection: ["Imprensa", "Projetos em captação", "Realizadores de projetos", "Indicação de amigos", "Mídias sociais", "Eventos", "Faculdade/Professor", "Sites de busca", "Outros"], label: t('.form.labels.traffic_sources'), wrapper_html: { class: 'checkbox_field' }
+
+          = form.submit t('.form.submit'), class: 'w-button send-project-form-button bt-large', id: 'project_submit'
+
+= render 'shared/footer_big'
+
