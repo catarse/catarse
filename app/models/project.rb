@@ -92,7 +92,7 @@ class Project < ActiveRecord::Base
 
   scope :from_channels, ->(channels){
     where("EXISTS (SELECT true FROM channels_projects cp WHERE cp.project_id = projects.id AND cp.channel_id = ?)", channels)
-  b}
+  }
 
   scope :with_contributions_confirmed_today, -> {
     joins(:contributions).merge(Contribution.confirmed_today).uniq
