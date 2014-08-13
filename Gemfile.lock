@@ -21,6 +21,7 @@ PATH
   remote: ~/store/code/catarse_pagarme
   specs:
     catarse_pagarme (0.0.1)
+      pagarme (~> 1.9.3)
       rails (~> 4.0)
 
 GEM
@@ -291,6 +292,9 @@ GEM
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.5.0)
+    pagarme (1.9.3)
+      multi_json
+      rest-client
     pg (0.17.1)
     pg_search (0.7.4)
       activerecord (>= 3.1)
