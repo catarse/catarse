@@ -411,10 +411,15 @@ input.text-field-half
   input[type=text]
     width: 100%
     background: rgba(37, 49, 57, 0.6)
-    border: none
+    border: 1px solid rgba(37, 49, 57, 0.6)
     padding-left: 30px
     font-size: 14px
     height: 39px
+    color: white
+    outline: none
+    +border-radius(4px)
+    &:focus
+      border-color: $blue-note
   input[type="submit"]
     background: url("/assets/catarse_bootstrap/lupa.png")
     width: 15px
