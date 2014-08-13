@@ -1107,6 +1107,14 @@ input.text-field-half
   margin: 0 0 10px 0
   line-height: 12px
   font-weight: 400
+  cursor: pointer
+  &.open
+    &:before
+      content: '-'
+      margin: 0 5px 0 0
+  &:before
+    content: '+'
+    margin: 0 5px 0 0
 
 .faq-box-arrow 
   display: inline

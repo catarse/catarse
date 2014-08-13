@@ -20,3 +20,22 @@ App.addChild('Contribution', {
     $(event.currentTarget).addClass('selected');
   }
 });
+
+App.views.Contribution.addChild('FaqBox', {
+  el: '#faq-box',
+
+  events: {
+    'click li.faq-box-question' : 'clickQuestion'
+  },
+
+  clickQuestion: function(event){
+    var $question = $(event.currentTarget);
+    var $answer = $question.next();
+    $question.toggleClass('open').toggleClass('alt-link');
+    $answer.slideToggle('slow');
+  },
+
+  activate: function(){
+    this.$('li.faq-box-answer').hide();
+  }
+});
