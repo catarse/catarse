@@ -43,6 +43,7 @@ pt:
         you_are_about_html: Você está prestes a fazer parte do grupo que faz de tudo
           para o %{link} acontecer.
       new:
+        page-title: Oohh yeah!
         header:
           subtitle: Você está a poucos passos de fazer a diferença e se tornar parte
             deste projeto.
