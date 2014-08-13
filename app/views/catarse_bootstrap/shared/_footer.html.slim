@@ -2,10 +2,10 @@ footer.w-hidden-small.w-hidden-tiny.footer-simple
   .w-container
     .footer-signature-text.caption #{CatarseSettings[:company_name]} #{Time.now.strftime("%Y")}
     ul.w-list-unstyled.footer-simple-links.caption
-      li.footer-simple-links-item = link_to t('footer.links.blog'), CatarseSettings[:blog_url], class: "link-footer"
-      li.footer-simple-links-item = link_to t('footer.links.discover'), explore_path, class: "link-footer"
-      li.footer-simple-links-item = link_to t('footer.links.start'), start_path, class: "link-footer"
-      li.footer-simple-links-item = link_to t('footer.links.faq'), CatarseSettings[:faq_url], class: "link-footer"
-      li.footer-simple-links-item = link_to t('footer.links.feedback'), CatarseSettings[:feedback_url], class: "link-footer"
-      li.footer-simple-links-item = link_to t('footer.links.terms'), terms_of_use_path, class: "link-footer"
-      li.footer-simple-links-item = link_to t('footer.links.privacy'), privacy_policy_path, class: "link-footer"
+      li.footer-simple-links-item = link_to t('layouts.footer.links.blog'), CatarseSettings[:blog_url], class: "link-footer"
+      li.footer-simple-links-item = link_to t('layouts.footer.links.discover'), explore_path, class: "link-footer"
+      li.footer-simple-links-item = link_to t('layouts.footer.links.start'), start_path, class: "link-footer"
+      li.footer-simple-links-item = link_to t('layouts.footer.links.faq'), CatarseSettings[:faq_url], class: "link-footer"
+      li.footer-simple-links-item = link_to t('layouts.footer.links.feedback'), CatarseSettings[:feedback_url], class: "link-footer"
+      li.footer-simple-links-item = link_to t('layouts.footer.links.terms'), terms_of_use_path, class: "link-footer"
+      li.footer-simple-links-item = link_to t('layouts.footer.links.privacy'), privacy_policy_path, class: "link-footer"

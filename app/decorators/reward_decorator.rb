@@ -14,16 +14,19 @@ class RewardDecorator < Draper::Decorator
   end
 
   def name
-    "<div class='reward_minimum_value'>#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</div><div class='reward_description'>#{html_escape(source.description)}</div>#{'<div class="sold_out">' + I18n.t('rewards.index.sold_out') + '</div>' if source.sold_out?}<div class='clear'></div>".html_safe
+    deliver = %{
+        <div class="back-reward-delivery-date caption">
+          Estimativa de entrega:&nbsp;#{source.display_deliver_estimate}
+        </div>
+    }
     %{
-      <label class="w-form-label headline" for="radio">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
+      <label class="w-form-label headline" for="contribution_reward#{source.id && "_#{source.id}"}">#{source.minimum_value > 0 ? source.display_minimum+'+' : I18n.t('rewards.index.dont_want')}</label>
+      <div class="back-reward-selected-badge caption">#{I18n.t('projects.contributions.you_selected')}</div>
       <div class="back-reward-reward-description">
         <p class="body-medium">
         #{html_escape(source.description)}
         </p>
-        <div class="back-reward-delivery-date caption">
-          Estimativa de entrega:&nbsp;#{source.display_deliver_estimate}
-        </div>
+        #{source.id ? deliver : ''}
       </div>
     }.html_safe
   end
