@@ -10,7 +10,7 @@
     .w-row
       .w-col.w-col-8
         .back-reward-cheers
-          .w-hidden-small.w-hidden-tiny.back-reward-cheers.display-medium Oh yeah!
+          .w-hidden-small.w-hidden-tiny.back-reward-cheers.display-medium = t('.title')
           .body-big = t('.choose_value')
         .w-form.back-reward-form
           = simple_form_for [parent, @contribution], html: { id: 'contribution_form' } do |form|
