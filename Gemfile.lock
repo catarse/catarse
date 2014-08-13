@@ -1,11 +1,10 @@
 GIT
   remote: git://github.com/bernat/best_in_place.git
-  revision: 366413be357d65cdf47031e928aea969f72e3659
-  branch: rails-4
+  revision: 0307038d99e0ab7ed19069903a18fe311b18a4b4
   specs:
-    best_in_place (2.0.3)
-      jquery-rails
-      rails (~> 4)
+    best_in_place (3.0.0.alpha)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
 
 GIT
   remote: git://github.com/catarse/moip-ruby.git
@@ -222,7 +221,7 @@ GEM
       phantomjs
       railties (>= 3.1.0)
       sprockets-rails
-    jquery-rails (3.1.0)
+    jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
@@ -449,7 +448,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (1.2.1)
+    tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.0)
       execjs (>= 0.3.0)

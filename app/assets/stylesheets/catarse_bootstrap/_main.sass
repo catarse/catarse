@@ -191,6 +191,9 @@ input.text-field-half
   margin-left: 230px
 
 // Buttons -----------------------------------------------------------------------------------------
+button
+  border: none
+
 .button
   display: block
   width: 100%
@@ -1018,9 +1021,15 @@ input.text-field-half
 .back-reward-input-reward-div
   display: inline-block
 
+  .reward_placeholder
+    position: absolute
+    margin: 23px 0 0 15px
+    font-size: 44px
+
 .back-reward-input-reward
+  padding: 0 0 0 75px
   display: block
-  width: 64%
+  width: 54%
   height: 70px
   margin: 0 20px 35px 0
   float: left
@@ -1051,6 +1060,15 @@ input.text-field-half
   border-bottom: 1px solid $border-strong
   +border-radius(5px)
   +transition(all 500ms ease)
+  .back-reward-selected-badge
+    top: 0px
+    right: 0px
+    display: none
+    margin: 0 0 0 14px
+    padding: 3px 10px
+    background-color: #00b22d
+    color: white
+    font-weight: 600
   &:hover
     background-color: $gray-one
   &.selected
@@ -1058,6 +1076,8 @@ input.text-field-half
     display: block
     border: 1px solid $green
     background-color: $gray-one
+    .back-reward-selected-badge
+      display: inline-block
 
 .back-reward-radio-button
   width: auto
@@ -1093,6 +1113,13 @@ input.text-field-half
   margin: 0 0 10px 0
   line-height: 12px
   font-weight: 400
+  cursor: pointer
+  &.open
+    &:before
+      content: '-'
+  &:before
+    content: '+'
+    margin: 0 5px 0 0
 
 .faq-box-arrow 
   display: inline

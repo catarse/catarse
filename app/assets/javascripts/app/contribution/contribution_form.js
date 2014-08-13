@@ -1,24 +1,6 @@
 App.views.Contribution.addChild('ContributionForm', _.extend({
   el: 'form#contribution_form',
 
-  events: {
-    'change #contribution_value' : 'resetReward',
-    'click input[type=radio]' : 'clickReward',
-    'click #contribution_anonymous' : 'clickAnonymous',
-    'change #contribution_credits' : 'checkCredits'
-  },
-
-  checkCredits: function(event){
-    if(event.currentTarget.checked && parseInt(this.credits.val()) < parseInt(this.value.val())) {
-      this.value.val(this.credits.val());
-      this.resetReward();
-    }
-  },
-
-  clickAnonymous: function(){
-    $('#anonymous_warning').fadeToggle();
-  },
-
   clickReward: function(event){
     var option = this.$(event.currentTarget);
     this.selectReward(option);
