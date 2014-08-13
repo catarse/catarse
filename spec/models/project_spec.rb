@@ -174,6 +174,31 @@ describe Project do
 
     it { should = [@project_02] }
   end
+    
+  describe '.video_url' do
+    before do
+      CatarseSettings[:minumum_goal_for_video] = 5000
+    end
+    context 'when goal is above minimum' do
+      subject { @project_01 }
+
+      before do
+        @project_01 = create(:project, goal: 6000, state: 'online')
+      end
+
+      it{ should_not allow_value(nil).for(:video_url) }
+    end
+    context 'when goal is below minimum' do
+      subject { @project_02 }
+
+      before do
+        @project_02 = create(:project, goal: 4000, state: 'online')
+      end
+
+      it{ should allow_value(nil).for(:video_url) }
+    end
+    
+  end
 
   describe '.by_online_date' do
     subject { Project.by_online_date(Time.now.to_date.to_s) }
