@@ -295,7 +295,7 @@ button
     height: 40px
     margin-top: 8px
     margin-bottom: 20px
-    border: 1px solid #ddd
+    border: 1px solid $border-strong
     +border-radius(3px)
     background-color: #f1f2f3
     color: #79808b
@@ -603,7 +603,7 @@ button
     height: 36px
     line-height: 36px
     text-indent: 5px
-    border: 1px solid #ddd
+    border: 1px solid $border-strong
     padding: 1px 40px 1px 4px
     +border-radius(3px)
     -moz-box-sizing: border-box
@@ -793,7 +793,7 @@ button
   margin-top: 40px
   margin-bottom: 52px
   padding: 28px
-  border: 1px solid #ddd
+  border: 1px solid $border-strong
   border-radius: 3px
 
 .send-project-form-headline
@@ -1144,9 +1144,15 @@ button
   margin: 20px auto
 
 .back-reward-button-section
-  display: block
+  position: fixed
   opacity: 1
-  margin: 30px 0 0 0 
+  border-top: 1px solid $border-strong
+  background-color: white
+  box-shadow: rgba(0, 0, 0, 0.18) 0px -6px 10px -7px
+  left: 0px
+  right: 0px
+  bottom: 0px
+  z-index: 1
 
 
 // Responsive -----------------------------------------------------------------------------------------
@@ -1166,7 +1172,7 @@ button
     display: none
 
   .no-mobile
-    display: none
+    display: none !important // I know important is ugly but this is to avoid problems with elements that we need to show and hide
 
   .mobile-menu-link
     display: inline-block
