@@ -14,4 +14,4 @@
     li.faq-box-answer.body-small Sem problemas. É só clicar em Solicitar reembolso e confirmar a solicitação do estorno. Apoios via cartão de crédito serão estornados na próxima fatura. Se pagou com boleto, o reembolso é feito através de uma conta MoIP.
 
     li.faq-box-question.body-small.alt-link Se o projeto for financiado, como eu recebo minha recompensa?
-    li.faq-box-answer.body-small Quando sua recompensa estiver pronta, #{@project.user.name} vai entrar em contato com você para combinar a entrega.
+    li.faq-box-answer.body-small Quando sua recompensa estiver pronta, #{link_to @project.user.name, user_path(@project.user), target: :blank} vai entrar em contato com você para combinar a entrega.
