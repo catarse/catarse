@@ -14,6 +14,7 @@
           .body-big = t('.choose_value')
         .w-form.back-reward-form
           = simple_form_for [parent, @contribution], html: { id: 'contribution_form' } do |form|
+            = render 'devise/shared/alert'
             = form.input_field :referal_link, as: :hidden, input_html: { value: referal_link }
             .back-reward-input-reward-div
               p.reward_placeholder R$
