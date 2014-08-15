@@ -47,7 +47,7 @@ pt:
         page-title: Apoie o %{name}
         title: Oohh yeah!
         choose_value: Escolha o valor do apoio e sua recompensa
-        minimum_disclaimer: 'A partir de R$10<br/> está ótimo ;)'
+        minimum_disclaimer: 'A partir de R$10 está ótimo ;)'
         next_step: Próximo passo
         choose_reward: Você precisa selecionar alguma recompensa para seguir para o próximo passo! Volta aí em cima e escolhe com carinho ;)
         no_reward: Obrigado. Eu só quero ajudar o projeto.
