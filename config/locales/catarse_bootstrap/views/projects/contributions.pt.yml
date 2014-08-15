@@ -46,7 +46,7 @@ pt:
       new:
         page-title: Apoie o %{name}
         title: Oohh yeah!
-        choose_value: Escolha o valor do apoio e sua recompensa
+        choose_value: Digite o valor que você deseja contribuir para %{project_name} ou escolha uma das recompensas abaixo
         minimum_disclaimer: 'A partir de R$10<br/> está ótimo ;)'
         next_step: Próximo passo
         choose_reward: Você precisa selecionar alguma recompensa para seguir para o próximo passo! Volta aí em cima e escolhe com carinho ;)
