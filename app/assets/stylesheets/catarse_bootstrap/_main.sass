@@ -55,10 +55,6 @@ p
   font-size: 44px
   line-height: 44px
 
-.display-small
-  font-size: 34px
-  line-height: 34px
-
 .body-big
   font-size: 18px
   line-height: 28px
@@ -1027,7 +1023,7 @@ button
 .back-reward-input-reward
   padding: 0 0 0 75px
   display: block
-  width: 54%
+  width: 64%
   height: 70px
   margin: 0 20px 35px 0
   float: left
@@ -1151,6 +1147,20 @@ button
     padding: 10px
 
 @media screen and (max-width: 991px)
+  .display-small
+    font-size: 28px
+    line-height: 28px
+
+  .body-big
+    font-size: 16px
+
+  .body-medium
+    font-size: 15px
+
+  .headline
+    font-size: 20px
+    line-height: 30px
+
   .header-logo img
     margin: 0
   h2
@@ -1208,4 +1218,66 @@ button
       &:hover
         background: none
 
+  .project-header
+    padding: 34px 0 24px 0
+  .back-reward-content 
+    padding: 32px 0 0 0
 
+
+@media screen and (max-width: 767px)
+  .display-small
+    font-size: 20px
+    line-height: 20px
+
+  .body-big 
+    line-height: 24px
+
+  .back-reward-cheers
+    font-weight: 600
+    text-align: center
+
+  .back-reward-button
+    width: 40%
+
+  .back-reward-input-reward-div
+    width: 100%
+    margin-right: auto
+    margin-left: auto
+    border-bottom: 1px solid #ddd
+
+    .reward_placeholder
+      margin: 23px 0 0 19%
+
+
+  .back-reward-input-reward
+    margin-right: auto
+    margin-bottom: -5px
+    margin-left: auto
+    float: none
+
+  .back-reward-input-reward-tip
+    margin-bottom: 20px
+    padding-right: 0px
+    text-align: center
+
+  .project-header
+    padding: 25px 0 20px 0
+  .back-reward-content
+    padding: 22px 0 42px 0
+
+@media screen and (max-width: 479px)
+  .back-reward-button
+    width: 90%
+
+  .headline
+    font-size: 18px
+
+  .back-reward-input-reward
+    width: 94%
+
+  .back-reward-input-reward-div
+    .reward_placeholder
+      margin: 23px 0 0 7%
+
+  .display-small
+    font-size: 18px
