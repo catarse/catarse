@@ -1,5 +1,5 @@
 header.project-header
-  h1.project-heading.display-small = @project.name
+  h1.project-heading.display-small = link_to @project.name, project_by_slug_path(permalink: @project.permalink)
   p.project-sub-heading.body-big
     = t('projects.index.box.by')
     |&nbsp;
