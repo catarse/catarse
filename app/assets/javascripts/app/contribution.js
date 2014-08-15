@@ -19,7 +19,7 @@ App.addChild('Contribution', {
 
   resetReward: function(event){
     if(parseInt('0' + this.$value.val()) < this.minimumValue()){
-      this.$('label.back-reward-radio-reward:first').click();
+      this.selectReward(this.$('label.back-reward-radio-reward:first'));
     }
   },
 
@@ -27,10 +27,18 @@ App.addChild('Contribution', {
     return this.$('label.back-reward-radio-reward.selected').find('label[data-minimum-value]').data('minimum-value');
   },
 
-  clickReward: function(event){
-    $currentTarget = $(event.currentTarget);
+  resetSelected: function(){
     this.$('label.back-reward-radio-reward').removeClass('selected');
-    $currentTarget.addClass('selected');
+  },
+
+  selectReward: function(reward){
+    this.resetSelected();
+    reward.find('input[type=radio]').prop('checked', true);
+    reward.addClass('selected');
+  },
+
+  clickReward: function(event){
+    this.selectReward($(event.currentTarget));
     this.$value.val(this.minimumValue());
   }
 });
