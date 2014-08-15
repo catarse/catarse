@@ -11,7 +11,7 @@
       .w-col.w-col-8
         .back-reward-cheers
           .w-hidden-small.w-hidden-tiny.back-reward-cheers.display-medium = t('.title')
-          .body-big = t('.choose_value')
+          .body-big = t('.choose_value', project_name: @project.name)
         .w-form.back-reward-form
           = simple_form_for [parent, @contribution], html: { id: 'contribution_form' } do |form|
             = render 'devise/shared/alert'
