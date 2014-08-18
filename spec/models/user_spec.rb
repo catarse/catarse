@@ -16,6 +16,7 @@ describe User do
     it{ should have_many :authorizations }
     it{ should have_many :channels_subscribers }
     it{ should have_one :user_total }
+    it{ should have_one :bank_account }
     it{ should belong_to :channel }
     it{ should have_and_belong_to_many :subscriptions }
   end
