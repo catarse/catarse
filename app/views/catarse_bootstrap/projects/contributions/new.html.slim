@@ -12,6 +12,9 @@
         .back-reward-cheers
           .w-hidden-small.w-hidden-tiny.back-reward-cheers.display-medium = t('.title')
           .body-big = t('.choose_value', project_name: @project.name)
+          - if current_user.credits > 0
+            .message-light.back-reward-message-light.body-medium
+              == t('.you_have_credits', credits: number_to_currency(current_user.credits))
         .w-form.back-reward-form
           = simple_form_for [parent, @contribution], html: { id: 'contribution_form' } do |form|
             = render 'devise/shared/alert'

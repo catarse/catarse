@@ -46,6 +46,7 @@ pt:
       new:
         page-title: Apoie o %{name}
         title: Oohh yeah!
+        you_have_credits: "Você tem <strong>%{credits}</strong> em créditos para realizar este apoio."
         choose_value: Digite o valor que você deseja contribuir para %{project_name} ou escolha uma das recompensas abaixo
         minimum_disclaimer: 'A partir de R$10 está ótimo ;)'
         next_step: Próximo passo
