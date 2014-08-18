@@ -12,6 +12,7 @@ class Contribution < ActiveRecord::Base
   belongs_to :project
   belongs_to :reward
   belongs_to :user
+  belongs_to :bank_account
   has_many :payment_notifications
 
   validates_presence_of :project, :user, :value
