@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       @credits = @user.contributions.can_refund
       @subscribed_to_posts = @user.posts_subscription
       @unsubscribes = @user.project_unsubscribes
+      build_bank_account
     }
   end
 
@@ -77,5 +78,14 @@ class UsersController < ApplicationController
       flash[:error] = @user.errors.full_messages.to_sentence
     end
     return redirect_to user_path(@user, anchor: 'settings')
+  end
+
+  private
+  def build_bank_account
+    @user.build_bank_account unless @user.bank_account
+  end
+
+  def permitted_params
+    params.permit(policy(resource).permitted_attributes)
   end
 end

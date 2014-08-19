@@ -19,6 +19,13 @@ class UserPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def permitted_attributes
+    u_attrs = [ bank_account_attributes: [:name, :agency, :account, :user_name, :user_document] ]
+    u_attrs << record.attribute_names.map(&:to_sym)
+
+    { user: u_attrs.flatten }
+  end
+
   protected
   def done_by_owner_or_admin?
     record == user || user.try(:admin?)
