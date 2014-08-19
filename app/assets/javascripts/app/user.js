@@ -8,6 +8,8 @@ App.addChild('User', _.extend({
     this.route('credits');
     this.route('settings');
     this.route('unsubscribes');
+
+    this.$('#user_bank_account_attributes_name').brbanks();
   },
 
   followRoute: function(){
