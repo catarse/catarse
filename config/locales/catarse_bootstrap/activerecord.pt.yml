@@ -6,7 +6,14 @@ pt:
       reward: Recompensa
       contribution: Apoiador
       category: Categoria
+      bank_account: Dados bancários
     attributes:
+      bank_account:
+        name: 'Banco'
+        user_name: 'Nome do titular'
+        user_document: 'CPF / CNPJ do titular'
+        agency: 'Agência'
+        account: 'Número da conta (com dígito)'
       reward:
         deliver_at: Previsão de entrega
       project:
