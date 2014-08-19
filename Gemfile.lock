@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/bernat/best_in_place.git
-  revision: 366413be357d65cdf47031e928aea969f72e3659
-  ref: 366413be357d65cdf47031e928aea969f72e3659
+  revision: 647f9775bf515402fc820e6b58c43761d3db93ac
+  ref: 647f9775bf515402fc820e6b58c43761d3db93ac
   branch: master
   specs:
-    best_in_place (2.0.3)
-      jquery-rails
-      rails (~> 4)
+    best_in_place (3.0.0.alpha)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
 
 GIT
   remote: git://github.com/catarse/catarse_contribution_validator.git
