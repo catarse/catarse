@@ -36,6 +36,8 @@ pt:
         requested_refund: "Você já solicitou estorno para este apoio."
       title: "Meus créditos"
     current_user_fields:
+      bank_account_title: "Dados bancários"
+      bank_account_hint: "Seus dados bancária é utilizado para fazer o reembolso de um apoio feito com boleto."
       my_facebook: 'Integração com o facebook'
       bio_limit: 'até 140 caracteres'
       updated: "As suas informações foram atualizadas"
