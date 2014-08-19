@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
     :image_url, :uploaded_image, :bio, :newsletter, :full_name, :address_street, :address_number,
     :address_complement, :address_neighbourhood, :address_city, :address_state, :address_zip_code, :phone_number,
-    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token
+    :cpf, :state_inscription, :locale, :twitter, :facebook_link, :other_link, :moip_login, :deactivated_at, :reactivate_token,
+    :bank_account_attributes
 
   mount_uploader :uploaded_image, UserUploader
 
