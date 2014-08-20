@@ -56,9 +56,17 @@
             = hidden_field_tag 'id', @user.id
             = f.input :newsletter, as: :boolean, label: t('.newsletter')
             = f.input :bio, hint: t('.bio_limit'), as: :text, input_html: { rows: 2, cols: 60, maxlength: 140  }
+          .bootstrap-twitter
+            p= f.submit t('.update_social_info'), class: 'btn', id: "user_submit"
+
+#bank_account.user_data
+  h1= t('.bank_account_title')
+  span.hint= t('.bank_account_hint')
+  ul
+    li
+      .bootstrap-form
+        = semantic_form_for @user, html: {method: :put, id: 'user_form'}  do |f|
           .bank_accounts
-            h1= t('.bank_account_title')
-            span.hint= t('.bank_account_hint')
             = f.semantic_fields_for :bank_account do |bank_form|
               = bank_form.input :name, as: :string
               = bank_form.input :agency, as: :string
@@ -67,6 +75,7 @@
               = bank_form.input :user_document, as: :string, input_html: { value: bank_form.object.user_document || @user.cpf }
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), class: 'btn', id: "user_submit"
+
 #change_password.user_data
   h1= t('.change_password')
   ul
