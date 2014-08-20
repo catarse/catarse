@@ -192,6 +192,7 @@ describe Project do
       subject { @project_02 }
 
       before do
+        CatarseSettings[:minumum_goal_for_video] = 5000
         @project_02 = create(:project, goal: 4000, state: 'online')
       end
 
