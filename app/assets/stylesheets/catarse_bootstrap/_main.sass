@@ -129,7 +129,7 @@ input.text-field-half
 
 .text-field-feedback
   height: 103px
-  background-color: #f1f4f4
+  background-color: $gray-one
 
 .text-field-error
   border-color: $red
@@ -666,7 +666,7 @@ button
 .bt-rascunhooff
   display: inline-block
   width: 35%
-  border: 2px solid #f1f4f4
+  border: 2px solid $gray-one
   background-color: transparent
   &:hover
     border: 2px solid $green
@@ -1021,12 +1021,22 @@ button
   margin: 0 0 15px 0
 
 .back-reward-input-reward-div
-  display: inline-block
+  display: block
+  margin-top: 50px
+  padding: 28px 48px 48px 23px
+  border-radius: 5px
+  background-color: $gray-one
+  height: 204px
+
+  .back-reward-input-reward-margin
+    margin: 30px 0 0 0
+    overflow: hidden
 
   .reward_placeholder
     position: absolute
     margin: 23px 0 0 15px
     font-size: 44px
+    font-weight: normal
 
 .back-reward-input-reward
   padding: 0 0 0 75px
@@ -1038,7 +1048,7 @@ button
   clear: none
   border: 1px solid $green
   +border-radius(5px)
-  background-color: $gray-one
+  background-color: white
   +transition(all 500ms ease)
   color: $green
   font-size: 44px
@@ -1252,6 +1262,8 @@ button
     margin-right: auto
     margin-left: auto
     border-bottom: 1px solid #ddd
+    font-weight: 600
+    text-align: center
 
     .reward_placeholder
       margin: 23px 0 0 19%
@@ -1281,11 +1293,11 @@ button
     font-size: 18px
 
   .back-reward-input-reward
-    width: 94%
+    width: 100%
 
   .back-reward-input-reward-div
     .reward_placeholder
-      margin: 23px 0 0 7%
+      margin: 23px 0 0 3%
 
   .display-small
     font-size: 18px

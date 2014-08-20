@@ -47,10 +47,10 @@ pt:
         page-title: Apoie o %{name}
         title: Oohh yeah!
         you_have_credits: "Você tem <strong>%{credits}</strong> em créditos para realizar este apoio."
-        choose_value: Digite o valor que você deseja contribuir para %{project_name} ou escolha uma das recompensas abaixo
-        minimum_disclaimer: 'A partir de R$10 está ótimo ;)'
-        next_step: Próximo passo
-        choose_reward: Você precisa selecionar alguma recompensa para seguir para o próximo passo! Volta aí em cima e escolhe com carinho ;)
+        choose_reward: Escolha a recompensa e em seguida o valor do seu apoio. 
+        choose_value: Agora escolha o valor do seu apoio.
+        minimum_disclaimer: 'A partir de R$ <span id="minimum-value">10</span> está ótimo ;)'
+        next_step: "Revisar e realizar pagamento"
         no_reward: Obrigado. Eu só quero ajudar o projeto.
       review:
         Credits: 'Créditos'
