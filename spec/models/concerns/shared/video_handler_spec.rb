@@ -42,6 +42,9 @@ describe Shared::VideoHandler do
     end
 
     context 'source does not have a video' do
+      before do
+        CatarseSettings[:minumum_goal_for_video] = 5000
+      end
       let(:project) { create(:project, video_url: "", goal: 3000) }
 
       it { should be_nil }
