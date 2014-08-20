@@ -29,7 +29,7 @@
   nav.project-nav.w-hidden-small.w-hidden-tiny
     .w-container
       .w-row
-        .w-col.w-col-8
+        .w-col.w-col-9
           = link_to '#about', 'id' => 'about_link', 'class' => 'selected project-nav-tab', 'data-target' => '#project_about.content' do
             = t('.menu.about')
 
@@ -51,7 +51,7 @@
             = link_to '#reports', 'id' => 'reports_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_reports' do
               = t('.menu.reports')
 
-        .w-col.w-col-4
+        .w-col.w-col-3
           = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'project-nav-category'
 
   section.project-main-content
