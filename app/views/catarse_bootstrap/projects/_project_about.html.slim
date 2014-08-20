@@ -29,7 +29,7 @@ ul.project-share
           p.project-channel-banner-followers
             = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
-  p.project-about-highlight.headline = "Nova linha de óculos de serragem desenvolvida a partir do reaproveitamento dos resíduos gerados na produção dos óculos Zerezes!"
+  p.headline.project-about-highlight = @project.headline
   p.body-big
     = @project.about_html.html_safe
 
