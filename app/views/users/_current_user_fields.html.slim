@@ -68,7 +68,7 @@
         = semantic_form_for @user, html: {method: :put, id: 'user_form'}  do |f|
           .bank_accounts
             = f.semantic_fields_for :bank_account do |bank_form|
-              = bank_form.input :name, as: :string
+              = bank_form.input :name, as: :string, input_html: {autocomplete: 'off'}
               = bank_form.input :agency, as: :string
               = bank_form.input :account, as: :string
               = bank_form.input :user_name, as: :string, input_html: { value: bank_form.object.user_name || @user.full_name }
