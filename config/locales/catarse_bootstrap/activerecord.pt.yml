@@ -13,7 +13,9 @@ pt:
         user_name: 'Nome do titular'
         user_document: 'CPF / CNPJ do titular'
         agency: 'Agência'
-        account: 'Número da conta (com dígito)'
+        agency_digit: 'Digito'
+        account: 'Número da conta'
+        account_digit: 'Digito'
       reward:
         deliver_at: Previsão de entrega
       project:
