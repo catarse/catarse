@@ -69,10 +69,16 @@
           .bank_accounts
             = f.semantic_fields_for :bank_account do |bank_form|
               = bank_form.input :name, as: :string, input_html: {autocomplete: 'off'}
+              .clearfix
               = bank_form.input :agency, as: :string
+              = bank_form.input :agency_digit, as: :string
+              .clearfix
               = bank_form.input :account, as: :string
+              = bank_form.input :account_digit, as: :string
+              .clearfix
               = bank_form.input :user_name, as: :string, input_html: { value: bank_form.object.user_name || @user.full_name }
               = bank_form.input :user_document, as: :string, input_html: { value: bank_form.object.user_document || @user.cpf }
+              .clearfix
           .bootstrap-twitter
             p= f.submit t('.update_social_info'), class: 'btn'
 

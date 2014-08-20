@@ -20,7 +20,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    u_attrs = [ bank_account_attributes: [:name, :agency, :account, :user_name, :user_document] ]
+    u_attrs = [ bank_account_attributes: [:name, :agency, :account, :user_name, :user_document, :account_digit, :agency_digit] ]
     u_attrs << record.attribute_names.map(&:to_sym)
 
     { user: u_attrs.flatten }
