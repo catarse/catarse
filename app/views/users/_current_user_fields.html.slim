@@ -74,7 +74,7 @@
               = bank_form.input :user_name, as: :string, input_html: { value: bank_form.object.user_name || @user.full_name }
               = bank_form.input :user_document, as: :string, input_html: { value: bank_form.object.user_document || @user.cpf }
           .bootstrap-twitter
-            p= f.submit t('.update_social_info'), class: 'btn', id: "user_submit"
+            p= f.submit t('.update_social_info'), class: 'btn'
 
 #change_password.user_data
   h1= t('.change_password')
