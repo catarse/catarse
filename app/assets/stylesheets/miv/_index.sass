@@ -150,6 +150,7 @@ span.on_the_spot_editing
   overflow: hidden
 
 .brbanks-banks
+  margin: 0 !important
   padding: 5px !important
   position: absolute
   width: 260px
@@ -160,10 +161,38 @@ span.on_the_spot_editing
   border-radius: 4px
   ul
     padding: 0 !important
+    margin: 0 !important
+    list-style-position: inside
+    list-style-type: none
     li
       margin: 0 !important
       font-size: 12px !important
       padding: 5px 0
       &:hover
         background: #ededed
-
+.bank_accounts
+  .input, .inputs
+    float: left
+    width: 160px
+  #user_bank_account_attributes_agency_input, .user_bank_account_agency
+    width: 60px
+    input[type='text']
+      width: 40px
+  #user_bank_account_attributes_agency_digit_input, .user_bank_account_agency_digit
+    width: 60px
+    input[type='text']
+      width: 40px
+  #user_bank_account_attributes_name_input, .user_bank_account_name
+    width: 220px
+    input[type='text']
+      width: 200px
+  #user_bank_account_attributes_account_input, .user_bank_account_account
+    width: 150px
+    input[type='text']
+      width: 130px
+  #user_bank_account_attributes_account_digit_input, .user_bank_account_account_digit
+    width: 60px
+    input[type='text']
+      width: 40px
+  input[type='text']
+    width: 140px
