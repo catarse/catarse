@@ -17,18 +17,18 @@ pt:
         channels: Canais
         category: Categoria
         expires_at: Prazo
-        online_days: "Qual o prazo para atingir o mínimo?"
-        headline: "Frase de efeito"
+        online_days: "Quantos dias você precisa para atingir sua meta? O tempo máximo é de 60 dias"
+        headline: "Uma frase de efeito sobre o seu projeto. Máximo de 140 caracteres."
         image_url: "URL da imagem"
         name: "Nome do projeto"
-        goal: "Quanto você pretende arrecadar? (apenas números)"
-        about: "História do seu projeto e como o $ será utilizado"
+        goal: "Quanto você pretende arrecadar? (Utilize apenas números)."
+        about: "Conte a história do seu projeto e como pretende gastar o dinheiro arrecadado."
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
         permalink: 'URL do seu projeto'
-        more_links: 'Mais algum link para conhecer mais sobre o seu projeto?'
+        more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
         traffic_sources: 'Como você conheceu o Catarse?'
-        first_contributions: "Lista com os primeiros apoiadores"
+        first_contributions: "Quem são as primeiras pessoas que você vai pedir para apoiar o seu projeto?"
       user:
         address_city: Cidade
         address_complement: Complemento
@@ -44,7 +44,7 @@ pt:
         email: Email
         full_name: "Nome completo / Razão Social"
         bio: 'Mini Bio'
-        name: "Nickname"
+        name: "Apelido"
         newsletter: 'Quero receber novidades do Catarse'
         password: Senha
         password_confirmation: "Confirmação de senha"
@@ -78,12 +78,12 @@ pt:
             permalink:
               blank: "A URL do projeto não pode ficar em branco"
               invalid: "A URL do projeto é inválida"
-              taken: "A URL do projeto já existe"
+              taken: "Essa URL de projeto já existe"
             category:
               blank: "Você deve escolher uma categoria para seu projeto"
             goal:
-              blank: "O valor a ser arrecadado não pode ficar em branco"
-              greater_than: "O valor a ser arrecadado deve ser maior que 9"
+              blank: "O valor da meta não pode ficar em branco"
+              greater_than: "A meta deve ser maior que 9"
             online_days:
               greater_than: "O prazo para arrecadação deve ser maior que 0 dias"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
