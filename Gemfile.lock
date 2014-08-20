@@ -1,12 +1,10 @@
 GIT
-  remote: git://github.com/bernat/best_in_place.git
-  revision: 647f9775bf515402fc820e6b58c43761d3db93ac
-  ref: 647f9775bf515402fc820e6b58c43761d3db93ac
-  branch: master
+  remote: git://github.com/bernat/best_in_place
+  revision: ee95961e639022e6aa528704b8cb4789596ea61b
+  ref: ee95961e639022e6aa528704b8cb4789596ea61b
   specs:
     best_in_place (3.0.0.alpha)
       actionpack (>= 3.2)
-      railties (>= 3.2)
 
 GIT
   remote: git://github.com/catarse/catarse_contribution_validator.git
