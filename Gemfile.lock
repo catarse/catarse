@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/bernat/best_in_place.git
-  revision: 366413be357d65cdf47031e928aea969f72e3659
-  ref: 366413be357d65cdf47031e928aea969f72e3659
+  revision: f86376ee6e95782b0c18364f7d8eecc36e67639d
   branch: master
   specs:
     best_in_place (3.0.0.alpha)
