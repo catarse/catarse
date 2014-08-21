@@ -1,0 +1,57 @@
+- content_for :main_stylesheet, :webflow
+- content_for :title, t('.page-title', name: @project.name)
+
+= render 'shared/header'
+
+= render 'projects/project_header'
+
+.back-reward-content
+  .w-container
+    .w-row
+      .w-col.w-col-8.back-payment-column-form
+        = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' } do |form|
+          .back-payment-headline.headline Preencha e revise os dados para pagamento
+          .w-hidden-tiny.back-payment-subheadline.body-medium Esses dados serão informados ao realizador do projeto
+          /.back-reward-error-form.form-error data-ix="display-none-on-load" 
+            div
+              strong This is some text inside of a div block.
+            div This is some text inside of a div block.
+            div This is some text inside of a div block.
+          .w-hidden-main.w-hidden-medium.w-clearfix.back-payment-formwrapper data-ix="new-interaction" 
+            .faq-box-title.mobile.body-small Valor do apoio
+            .w-clearfix.back-payment-info-reward
+              .back-payment-info-reward-value R$15
+              a.back-payment-info-reward-edit-link href="#"  Editar
+            .back-payment-info-reward
+              .faq-box-title.body-small Recompensa selecionada
+              .caption Com esse apoio seu nome ficará&nbsp;gravado no vídeo de agradecimento dos vídeos produzidos e dos agradecimentos dos vídeos e também no agradecimento dos vídeos isso isso isso e também no agradecimento dos vídeos
+          .w-form.back-payment-formwrapper
+            = form.input :payer_name, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}
+            = form.input :payer_email, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}
+          .back-payment-formwrapper
+            .back-payment-address-subtitle.body-big Endereço de entrega
+            .w-form
+              = form.input :address_country, as: :select, wrapper_html: {class: 'back-payment-form-box-half block'}
+              = form.input :address_street, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}
+              = form.input :address_number, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter'}
+              = form.input :address_complement, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter last'}
+              = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}
+              = form.input :address_city, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}
+              = form.input :address_state, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}
+              = form.input :address_zip_code, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter'}
+              = form.input :address_phone_number, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter last'}
+          .back-payment-button-next-step
+            a.bt-large data-ix="display-step2-back-payment" href="#step2"  Próximo passo
+      .w-col.w-col-4
+        .w-hidden-small.w-hidden-tiny.back-faq-box data-ix="new-interaction" 
+          .faq-box-title.body-small Valor do apoio
+          .w-clearfix.back-payment-info-reward
+            .back-payment-info-reward-value = @contribution.display_value
+            a.back-payment-info-reward-edit-link href="#"  Editar
+          .back-payment-info-reward
+            .faq-box-title.body-small Recompensa selecionada
+            .back-payment-reward-description.caption = @contribution.reward.display_description
+        .w-hidden-small.w-hidden-tiny
+          = render 'faq_box'
+
+= render 'shared/footer'
