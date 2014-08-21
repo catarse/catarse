@@ -21,11 +21,11 @@ pt:
         blocks:
           first:
             title: "1. Informações básicas"
-            description: "Você está criando o rascunho de seu projeto. As informações preenchidas nesse bloco 1 não podem ser  alteradas após o seu projeto entrar no ar."
+            description: "Você está criando o rascunho de seu projeto. As informações preenchidas nesse primeiro bloco não podem ser  alteradas após o seu projeto entrar no ar."
           second:
             title: "2. História do projeto"
-            description: "As informações abaixo não são definitivas em nenhum momento. Logo você poderá alterá-las futuramente, mesmo durante o período em que seu projeto estará no ar."
-          disclaimer: "Somos uma plataforma que seleciona as propostas enviadas, nosso atendimento irá avaliar o foco, a viabilidade, a consistência e a apresentação do seu projeto. Se ele não está de acordo com os <a href='http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos' class='alt-link' target='_blank'>Critérios de Seleção da Plataforma</a>, ele poderá ser recusado."
+            description: "As informações abaixo poderão ser editadas por você a qualquer momento, até quando seu projeto estiver no ar."
+          disclaimer: "Nem todos os projetos enviados vão ao ar, nosso atendimento irá avaliar o foco, a viabilidade, a consistência e a apresentação do seu projeto. Se ele não está de acordo com os <a href='http://suporte.catarse.me/hc/pt-br/articles/202387638-Diretrizes-para-a-cria%C3%A7%C3%A3o-de-projetos' class='alt-link' target='_blank'>Critérios de Seleção da Plataforma</a>, ele poderá ser recusado."
 
         labels:
           name: "Nome do projeto"
@@ -40,13 +40,13 @@ pt:
 
         hints:
           name: "Quanto mais direto melhor. Não ultrapasse 50 caracteres"
-          permalink: "É o endereço do seu projeto, deixe-a simples. Tente não usar underline, hífen e etc."
-          category: "Antes de enviar, explore e se inspire em outros projetos da mesma categoria."
-          goal: "Grande parte dos apoios virão de pessoas próximas a você portanto, pense na sua capacidade de mobilizar pelo menos 50% do valor dentro da sua rede de contatos. Lembre-se da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido."
-          online_days: "Em média os projetos ficam no ar por 40 dias. O prazo máximo para deixar o projeto no ar é de 60 dias."
-          video_url: "Cole aqui o link youtube ou vimeo do seu vídeo.  O vídeo é a principal peça do projeto, mas se ainda não o tiver, tudo bem, você pode adicioná-lo depois."
-          about: "Fale sobre o que será realizado, como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Fuja daquelas formalidades de editais. Lembre-se que <a href=http://suporte.catarse.me/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto class='alt-link' target='_blank'>você pode utilizar imagens e vídeos</a> para ilustrar melhor o seu projeto na descrição."
-          headline: "Quanto mais direto melhor. Deixe para descrever o seu projeto no Sobre e no Vídeo. Não ultrapasse 100 caracteres."
+          permalink: "É o endereço do seu projeto, deve ser fácil de memorizar. Tente não usar underline, hífen e etc."
+          category: "Antes de enviar, explore e se inspire em outros projetos da mesma categoria que o seu."
+          goal: "Grande parte dos apoios serão de pessoas próximas a você. Pense como conseguir pelo menos 50% do valor da meta dentro da sua rede de contatos. Não se esqueça da taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido."
+          online_days: "Em média os projetos ficam no ar por 40 dias. O prazo máximo da campanha é de 60 dias."
+          video_url: "Insira aqui o link do seu vídeo. Ele deve estar hospedado no Youtube ou no Vimeo. Se ainda não o tiver, tudo bem, você pode adicioná-lo depois. O vídeo é muito importante para o sucesso de sua campanha e obrigatório para projetos com metas de R$ 5.000 ou mais."
+          about: "Fale sobre o que será realizado, como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Seja informal e direto, essa é uma conversa entre pessoas que querem compartilhar uma ideia, não um projeto de edital. Lembre-se que <a href=http://suporte.catarse.me/hc/pt-br/articles/203083017-Adicionar-imagens-e-v%C3%ADdeos-na-descri%C3%A7%C3%A3o-do-projeto class='alt-link' target='_blank'>você pode utilizar imagens e vídeos</a> para ilustrar melhor o seu projeto na descrição."
+          headline: "No máximo 100 caracteres."
 
         info:
           permalink: http://catarse.me/
