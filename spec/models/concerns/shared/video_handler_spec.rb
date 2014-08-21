@@ -42,7 +42,7 @@ describe Shared::VideoHandler do
     end
 
     context 'source does not have a video' do
-      let(:project) { create(:project, video_url: "") }
+      let(:project) { create(:project, video_url: "", goal: 3000) }
 
       it { should be_nil }
     end

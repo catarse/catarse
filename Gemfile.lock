@@ -1,10 +1,18 @@
 GIT
   remote: git://github.com/bernat/best_in_place.git
-  revision: 0307038d99e0ab7ed19069903a18fe311b18a4b4
+  revision: f86376ee6e95782b0c18364f7d8eecc36e67639d
+  branch: master
   specs:
     best_in_place (3.0.0.alpha)
       actionpack (>= 3.2)
       railties (>= 3.2)
+
+GIT
+  remote: git://github.com/catarse/catarse_contribution_validator.git
+  revision: 10e244d93563085e784107f764960f541473304e
+  specs:
+    catarse_contribution_validator (0.0.1)
+      rails (>= 4.0.0)
 
 GIT
   remote: git://github.com/catarse/moip-ruby.git
@@ -485,6 +493,7 @@ DEPENDENCIES
   browser
   capybara (~> 2.1.0)
   carrierwave (~> 0.10.0)
+  catarse_contribution_validator!
   catarse_credits (= 0.0.6)
   catarse_moip (~> 2.3.5)
   catarse_monkeymail (>= 0.1.6)

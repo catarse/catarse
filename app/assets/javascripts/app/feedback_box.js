@@ -22,7 +22,7 @@ App.addChild('FeedbackBox', {
   activate: function(){
     this.$('#thanks-title').hide();
     this.$('#thanks-description').hide();
-    if(!store.get('feedbackFormClosed')){
+    if(!store.get('feedbackFormClosed') && !$.isEmptyObject($("body").data("user"))){
       this.openBox();
     }
   },
