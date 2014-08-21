@@ -118,6 +118,13 @@ p
     background: #f7cbcb
     border-color: $red
 
+.field-label
+  display: inline-block
+  margin-bottom: 0px
+  color: $blue_one
+  font-size: 16px
+  font-weight: 400
+
 input.text-field-half
   width: 50%
 
@@ -779,8 +786,6 @@ button
   .field-label
     margin-top: 70px
     margin-bottom: 13px
-    color: $blue-one
-    font-size: 16px
     font-weight: 600
   .permalink-input
     padding-left: 126px
@@ -1425,3 +1430,57 @@ button
 
   .read-more-link
     font-weight: 400
+
+  .display-small
+    font-size: 18px
+
+// Edit Contribution -----------------------------------------------------------------------------------------
+.back-reward-content
+  .field-label
+    font-weight: bold
+
+  .back-payment-form-box-half
+    display: inline-block
+    width: 50%
+    padding-right: 3%
+    &.block
+      display: block
+
+  .back-payment-form-box-quarter
+    display: inline-block
+    width: 25%
+    padding-right: 3%
+
+  .back-payment-button-next-step 
+    width: 40%
+    margin: 40px auto
+
+@media screen and (max-width: 991px)
+  .back-reward-content
+    .back-payment-button-next-step
+      width: 50%
+
+@media screen and (max-width: 767px)
+  .back-reward-content
+    .back-payment-form-box-half
+      display: block
+      width: 100%
+      padding-right: 0px
+
+    .back-payment-form-box-quarter
+      width: 50%
+      padding-right: 0px
+
+    .back-payment-form-box-quarter.last
+      padding-left: 15px
+
+    .back-payment-button-next-step
+      width: 60%
+
+@media screen and (max-width: 479px)
+  .back-reward-content
+    .back-payment-button-next-step
+      width: 100%
+      margin-top: 0px
+      padding: 20px 6% 0 6%
+      border-top: 1px solid #ddd
