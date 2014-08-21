@@ -94,6 +94,6 @@ class Projects::ContributionsController < ApplicationController
   end
 
   def use_catarse_boostrap
-    action_name == "new" || action_name == "create" ? 'catarse_bootstrap' : 'application'
+    ["new", "create", "edit", "update"].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end
