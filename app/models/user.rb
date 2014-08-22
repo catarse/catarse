@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   belongs_to :channel
   has_one :user_total
   has_one :bank_account
+  has_many :credit_cards
   has_many :contributions
   has_many :authorizations
   has_many :channel_posts
