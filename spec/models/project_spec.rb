@@ -204,10 +204,10 @@ describe Project do
       subject { @project_03 }
 
       before do
-        @project_03 = create(:project, goal: 5000, state: 'online', video_url: nil)
+        @project_03 = build(:project, goal: 5000, state: 'online', video_url: nil)
       end
 
-      it{ should allow_value(nil).for(:video_url) }
+      it{ should_not allow_value(nil).for(:video_url) }
     end
   end
 
