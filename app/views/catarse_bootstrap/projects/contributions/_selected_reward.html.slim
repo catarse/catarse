@@ -4,5 +4,9 @@
   a.back-payment-info-reward-edit-link href="#"  Editar
 .back-payment-info-reward
   .faq-box-title.body-small Recompensa selecionada
-  .back-payment-reward-description.caption = @contribution.reward.display_description
+  .back-payment-reward-description.caption 
+    - if @contribution.reward
+      == @contribution.reward.display_description
+    - else
+      == t('.review_without_reward_html', value: @contribution.display_value)
 

@@ -12,6 +12,9 @@ pt:
         anonymous_contribution: Apoiador anônimo
         anonymous_description: Optou por permanecer incógnito
         no_reward: Este apoiador não selecionou nenhuma recompensa
+      selected_reward:
+        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
+          e não quer nenhuma recompensa por seu apoio.
       edit:
         reward_sold_out: Essa recompensa está esgotada. Inicie um novo apoio.
         page-title: Apoie o %{name}
@@ -34,8 +37,6 @@ pt:
         payment_card: Pagamento com Cartão
         review_with_reward_html: 'Você irá apoiar com <strong>%{value}</strong> e
           ganhará a seguinte recompensa:'
-        review_without_reward_html: Você irá apoiar com <strong>%{value}</strong>
-          e não quer nenhuma recompensa por seu apoio.
         select_account: 'Você será redirecionado para o site do seu banco:'
         select_boleto: 'Para prosseguir, por favor selecione:'
         submit:
