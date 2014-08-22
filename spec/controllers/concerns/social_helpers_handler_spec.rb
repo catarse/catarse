@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Concerns::SocialHelpersHandler do
   render_views
   before do
-    [:render_facebook_sdk, :render_facebook_like, :render_twitter, :display_uservoice_sso].each do |method|
+    [:render_facebook_sdk, :render_facebook_like, :render_twitter].each do |method|
       ApplicationController.any_instance.unstub(method)
     end
     @controller = ApplicationController.new
