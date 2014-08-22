@@ -1437,6 +1437,24 @@ button
 
 // Edit Contribution -----------------------------------------------------------------------------------------
 .back-reward-content
+  .back-payment-reward-description
+    p
+      color: $blue-one
+      font-size: 13px
+      line-height: 18px
+
+  .back-payment-info-reward
+    margin-bottom: 35px
+
+  .back-payment-info-reward-edit-link
+    float: right
+    color: $blue-one
+    font-size: 15px
+    font-weight: 600
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+
   .back-payment-formwrapper
     margin-bottom: 20px
 
@@ -1483,6 +1501,16 @@ button
 
 @media screen and (max-width: 767px)
   .back-reward-content
+    .back-payment-info-reward
+      margin-bottom: 19px
+
+    .back-payment-info-reward-edit-link
+      position: static
+      right: 0px
+      bottom: 0px
+      display: inline-block
+      margin-top: 0px
+
     .back-payment-address-subtitle
       color: $blue-two
       text-align: left
