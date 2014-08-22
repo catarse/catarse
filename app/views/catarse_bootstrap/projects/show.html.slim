@@ -86,19 +86,20 @@
 
         aside.project-info.w-col.w-col-4
           .project-stats
-            .project-stats-digits
-              p.display-medium = @project.display_pledged
-              p.body-medium = t('.sidebar.goal', total: @project.display_goal).html_safe
-            .project-stats-digits
-              p.display-medium = @project.total_contributions
-              p.body-medium = t('.sidebar.contributions')
-            .project-stats-digits
-              - if @project.draft? || @project.rejected?
-                p.display-medium = @project.online_days
-                p.body-medium #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
-              - else
-                p.display-medium = @project.remaining_days
-                p.body-medium #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
+            .project-stats-numbers
+              .project-stats-digits
+                p.display-medium = @project.display_pledged
+                p.body-medium = t('.sidebar.goal', total: @project.display_goal).html_safe
+              .project-stats-digits
+                p.display-medium = @project.total_contributions
+                p.body-medium = t('.sidebar.contributions')
+              .project-stats-digits
+                - if @project.draft? || @project.rejected?
+                  p.display-medium = @project.online_days
+                  p.body-medium #{@project.online_days} #{pluralize_without_number(@project.online_days, I18n.t('datetime.prompts.day').downcase)} #{pluralize_without_number(@project.online_days, t('remaining_singular'), t('remaining_plural'))}
+                - else
+                  p.display-medium = @project.remaining_days
+                  p.body-medium #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('remaining_singular'), t('remaining_plural'))}
 
             - if @project.online? && !@project.expired?
               = link_to t('.contribute_project.submit'), new_project_contribution_path(@project), id: 'contribute_project_form', class: "project-back-button bt-large"
@@ -130,6 +131,13 @@
           .project-author-send-message
             = mail_to @project.user.email, "Entre em contato", target: '_blank', class: 'body-medium alt-link'
 
+          .project-share
+            .project-share-link
+              .button.bt-medium.bt-fb = "Compartilhe"
+            .project-share-link
+              .button.bt-medium.bt-twitter = "Tweet"
+            / = link_to
+            / = link_to
 
           - if policy(@project).update?
             h4 = t('.no_rewards_warning_title')
