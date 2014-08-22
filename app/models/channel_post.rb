@@ -23,10 +23,6 @@ class ChannelPost < ActiveRecord::Base
     "#{self.id}-#{self.title.parameterize}"
   end
 
-  def post_number
-    self.channel.posts.where('id <= ?', self.id).count(:all)
-  end
-
   def email_body_html
     catarse_email_auto_html_for body, image_width: 513
   end
