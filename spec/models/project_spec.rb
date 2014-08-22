@@ -193,7 +193,8 @@ describe Project do
       subject { @project_02 }
 
       before do
-        @project_02 = create(:project, goal: 4000, state: 'online', video_url: nil)
+        CatarseSettings[:minumum_goal_for_video] = 5000
+        @project_02 = create(:project, goal: 4000, state: 'online')
       end
 
       it{ should allow_value(nil).for(:video_url) }
@@ -203,10 +204,10 @@ describe Project do
       subject { @project_03 }
 
       before do
-        @project_03 = create(:project, goal: 5000, state: 'online', video_url: nil)
+        @project_03 = build(:project, goal: 5000, state: 'online', video_url: nil)
       end
 
-      it{ should allow_value(nil).for(:video_url) }
+      it{ should_not allow_value(nil).for(:video_url) }
     end
   end
 
