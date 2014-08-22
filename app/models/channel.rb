@@ -25,10 +25,6 @@ class Channel < ActiveRecord::Base
     self.by_permalink(string).first!
   end
 
-  def curator
-    users.first
-  end
-
   def has_subscriber? user
     user && subscribers.where(id: user.id).first.present?
   end

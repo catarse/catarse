@@ -24,18 +24,4 @@ describe ChannelPost do
     it{ should == "<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img src=\"http://catarse.me/assets/catarse/logo164x54.png\" alt=\"\" style=\"max-width:513px\" /></p>" }
   end
 
-  describe "#post_number" do
-    let(:channel){ create(:channel) }
-    let(:post){ create(:channel_post, channel: channel) }
-
-    subject{ post.post_number}
-
-    before do
-      create(:channel_post, channel: channel)
-      post
-      create(:channel_post, channel: channel)
-    end
-    it{ should == 2 }
-  end
-
 end
