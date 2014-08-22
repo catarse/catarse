@@ -41,16 +41,4 @@ describe Concerns::SocialHelpersHandler do
     it { expect(@controller.render_facebook_like(options)).to render_template(partial: 'layouts/_facebook_like') }
   end
 
-  describe '#display_uservoice_sso' do
-    let(:current_user) { create(:user) }
-    before do
-      @controller.request = OpenStruct.new(host: 'test.local')
-
-      controller.stub(:current_user).and_return(current_user)
-      CatarseSettings[:uservoice_subdomain] = 'test'
-      CatarseSettings[:uservoice_sso_key] = '12345'
-    end
-
-    it { expect(@controller.display_uservoice_sso).to_not be_nil }
-  end
 end
