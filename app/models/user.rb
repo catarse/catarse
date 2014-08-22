@@ -96,7 +96,6 @@ class User < ActiveRecord::Base
 
   def change_locale(language)
     if locale != language
-      puts 'fooo'
       self.update_attributes locale: language
     end
   end
