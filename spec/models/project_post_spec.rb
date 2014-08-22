@@ -36,18 +36,6 @@ describe ProjectPost do
     it{ should == "<p>this is a comment<br />\n<a href=\"http://vimeo.com/6944344\" target=\"_blank\">http://vimeo.com/6944344</a><br />\n<img src=\"http://catarse.me/assets/catarse/logo164x54.png\" alt=\"\" style=\"max-width:513px\" /></p>" }
   end
 
-  describe "#post_number" do
-    let(:project){ create(:project) }
-    let(:project_post){ create(:project_post, project: project) }
-    subject{ project_post.post_number }
-    before do
-      create(:project_post, project: project)
-      project_post
-      create(:project_post, project: project)
-    end
-    it{ should == 2 }
-  end
-
   describe "#notify_contributors" do
     before do
       @project = create(:project)

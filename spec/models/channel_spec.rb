@@ -78,18 +78,6 @@ describe Channel do
     end
   end
 
-  describe "#curator" do
-    subject{ channel.curator }
-
-    let(:channel) { create(:channel) }
-    let(:curator) { create(:user, channel: channel) }
-    before do
-      curator
-      create(:user, channel: channel) 
-    end
-    it{ should == curator }
-  end
-
   describe "#projects" do
     let(:channel) { create(:channel) }
     let(:project1) { create(:project, online_date: (Time.now - 21.days)) }

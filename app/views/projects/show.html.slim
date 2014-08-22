@@ -65,9 +65,9 @@
       #project_content
         - if policy(@project).update?
           #project_reports.content.hide
-            = render partial: 'project_reports'
+            = render 'project_reports'
           #project_edit.content.hide
-            = render partial: 'project_edit'
+            = render 'project_edit'
 
         #project_posts.content.hide[data-path=project_posts_path(project_id: @project.id)]
           - if policy(@project).update?
