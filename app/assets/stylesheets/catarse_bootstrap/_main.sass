@@ -196,7 +196,7 @@ input.text-field-half
 .message-light
   margin: 10px 0 20px 0
   padding: 20px
-  border: 1px solid #ddd
+  border: 1px solid $border-strong
   border-radius: 5px
   background-color: rgba(64, 155, 255, 0.09)
   box-shadow: rgba(63, 71, 82, 0.29) 1px 1px 3px 0px
@@ -1136,6 +1136,7 @@ button
   +border-radius(5px)
 
 .back-faq-box
+  margin: 0 0 20px 0
   padding: 20px
   border: 1px solid $border-strong
   +border-radius(5px)
@@ -1320,7 +1321,7 @@ button
     width: 100%
     margin-right: auto
     margin-left: auto
-    border-bottom: 1px solid #ddd
+    border-bottom: 1px solid $border-strong
     font-weight: 600
     text-align: center
 
@@ -1436,6 +1437,13 @@ button
 
 // Edit Contribution -----------------------------------------------------------------------------------------
 .back-reward-content
+  .back-payment-formwrapper
+    margin-bottom: 20px
+
+  .back-payment-address-subtitle
+    margin-bottom: 17px
+    font-weight: 600
+
   .field-label
     font-weight: bold
 
@@ -1462,6 +1470,12 @@ button
     width: 40%
     margin: 40px auto
 
+  .back-payment-info-reward-value
+    display: inline-block
+    float: left
+    color: $green
+    font-size: 34px
+
 @media screen and (max-width: 991px)
   .back-reward-content
     .back-payment-button-next-step
@@ -1469,6 +1483,22 @@ button
 
 @media screen and (max-width: 767px)
   .back-reward-content
+    .back-payment-address-subtitle
+      color: $blue-two
+      text-align: left
+
+    .back-payment-formwrapper
+      margin-bottom: 0px
+      padding: 15px
+      border-top: 1px solid $border-strong
+      border-bottom: 0px none $border-strong
+      border-radius: 0px
+      text-align: left
+
+    .back-payment-column-form
+      padding: 0 10px
+      text-align: center
+
     .back-payment-form-box-half
       display: block
       width: 100%
@@ -1491,13 +1521,25 @@ button
     .back-payment-button-next-step
       width: 60%
 
+    .back-payment-info-reward-value
+      margin-left: 10px
+      color: $blue-one
+      font-size: 16px
+      font-weight: 600
+
 @media screen and (max-width: 479px)
   .back-reward-content
+    .back-payment-formwrapper
+      margin-bottom: 0px
+      padding: 0 10px
+      border-bottom-style: none
+      border-bottom-width: 0px
+
     .back-payment-button-next-step
       width: 100%
       margin-top: 0px
       padding: 20px 6% 0 6%
-      border-top: 1px solid #ddd
+      border-top: 1px solid $border-strong
 
     .back-payment-headline
       margin-bottom: 20px
@@ -1507,3 +1549,6 @@ button
     .back-payment-subheadline
       margin: -20px 0 15px 0
       font-size: 12px
+
+    .back-payment-info-reward-value
+      font-size: 14px
