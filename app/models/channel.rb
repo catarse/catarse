@@ -29,6 +29,10 @@ class Channel < ActiveRecord::Base
     user && subscribers.where(id: user.id).first.present?
   end
 
+  def curator
+    users.first
+  end
+
   def to_s
     self.name
   end
