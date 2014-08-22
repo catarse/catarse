@@ -18,10 +18,6 @@ class ProjectPost < ActiveRecord::Base
 
   scope :ordered, ->() { order("created_at desc") }
 
-  def post_number
-    self.project.posts.where('id <= ?', self.id).count(:all)
-  end
-
   def email_comment_html
     catarse_email_auto_html_for comment, image_width: 513
   end

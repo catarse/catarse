@@ -27,10 +27,6 @@ class Reward < ActiveRecord::Base
     @decorator ||= RewardDecorator.new(self)
   end
 
-  def has_modification?
-    !last_changes.blank?
-  end
-
   def sold_out?
     maximum_contributions && total_compromised >= maximum_contributions
   end
