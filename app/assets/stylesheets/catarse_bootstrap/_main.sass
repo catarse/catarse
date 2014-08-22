@@ -1126,11 +1126,11 @@ button
   border: 1px solid $border-strong
   +border-radius(5px)
 
-.faq-box-title 
+.faq-box-title
   margin: 0 0 17px 0
   font-weight: 600
 
-.faq-box-question 
+.faq-box-question
   display: block
   margin: 0 0 10px 0
   line-height: 22px
@@ -1144,7 +1144,7 @@ button
     content: '+'
     margin: 0 5px 0 0
 
-.faq-box-arrow 
+.faq-box-arrow
   display: inline
   font-size: 11px
   line-height: 22px
@@ -1154,7 +1154,7 @@ button
   padding: 0 0 0 18px
   margin: 0 0 20px 0
 
-.faq-box-question-text 
+.faq-box-question-text
   display: inline-block
   margin: 0 0 0 8px
 
@@ -1178,6 +1178,10 @@ button
     display: none
 
 @media screen and (max-width: 991px)
+  .display-medium
+    font-size: 34px
+    line-height: 34px
+
   .display-small
     font-size: 28px
     line-height: 28px
@@ -1188,9 +1192,16 @@ button
   .body-medium
     font-size: 15px
 
+  .body-small
+    font-size: 13px
+    line-height: 20px
+
   .headline
     font-size: 20px
     line-height: 30px
+
+  .caption
+    font-size: 12px
 
   .header-logo img
     margin: 0
@@ -1251,8 +1262,26 @@ button
 
   .project-header
     padding: 34px 0 24px 0
-  .back-reward-content 
+
+  .back-reward-content
     padding: 32px 0 0 0
+
+  .project-nav-tab
+    font-size: 13px
+    margin-top: 11px
+
+  .project-nav-category
+    font-size: 13px
+    margin: 25px 0 5px
+
+  .project-reward-box
+    &:hover
+      background: $border-strong
+    &:hover .project-reward-box-hover
+      z-index: -10
+  .project-reward-box-gone
+    &:hover
+      background-color: $gray-one
 
 
 @media screen and (max-width: 767px)
