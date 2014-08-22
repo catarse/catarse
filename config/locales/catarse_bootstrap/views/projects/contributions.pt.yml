@@ -13,6 +13,7 @@ pt:
         anonymous_description: Optou por permanecer incógnito
         no_reward: Este apoiador não selecionou nenhuma recompensa
       edit:
+        reward_sold_out: Essa recompensa está esgotada. Inicie um novo apoio.
         credits_preview_html: "Você possui <strong>%{credits}</strong> em créditos para realizar este apoio."
         credits_submit: 'Efetuar pagamento'
         credits_title: 'Pagamento com créditos'

@@ -63,6 +63,13 @@ describe Projects::ContributionsController do
       its(:body){ should =~ /#{project.name}/ }
       its(:body){ should =~ /R\$ 10/ }
     end
+
+    context "when reward is sold out" do
+      before do
+        Reward.any_instance.stub(:sold_out?).and_return(true)
+      end
+      it { should be_redirect }
+    end
   end
 
   describe "POST create" do

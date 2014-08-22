@@ -29,7 +29,7 @@
         .maximum_contributions.in_time_to_confirm.clearfix
           .pending= t('.contributions_to_confirm', count: in_time_to_confirm)
       .clearfix
-    - if reward.days_to_delivery.present?
+    - if reward.deliver_at.present?
       div class="reward_deliver_at"
         p= "#{t('.reward_deliver_time', estimate: reward.display_deliver_estimate)}".html_safe
     - if current_user && current_user.admin

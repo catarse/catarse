@@ -20,38 +20,64 @@
   meta property="og:image" content=@project.display_image('project_thumb_facebook')
   meta property="og:site_name" content=CatarseSettings[:company_name]
   meta property="fb:admins" content="#{fb_admins}"
+  
+#page_content
+  .container
 
-= render 'shared/header_big'
+    = render @project.state_warning_template
 
-/ = render @project.state_warning_template
+    #project_description
+    .project_image
+      = image_tag @project.display_image('project_thumb_small')
+    .section_header
+      h1= @project.name
+      h4
+        = t('.project_header.without_city')
+        |&nbsp;
+        = link_to(@project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"))
+        |&nbsp;
+        = t('projects.index.box.by')
+        |&nbsp;
+        = link_to(@project.user.display_name, user_path(@project.user))
+        |&nbsp;
+        - @project.channels.each do |c|
+          = link_to(c.name, root_url(subdomain: c.permalink), class: 'project-channel')
+    .tab_container
+      nav#project_menu
+        = link_to '#about', 'id' => 'about_link', 'class' => 'selected', 'data-target' => '#project_about.content' do
+          = t('.menu.about')
+        = link_to '#posts', 'id' => 'posts_link', 'data-target' => '#project_posts' do
+          = t('.menu.posts')
+          span.count=" (#{@posts_count})"
+        = link_to '#contributions', 'id' => 'contributions_link', 'data-target' => '#project_contributions' do
+          = t('.menu.contributions')
+          span.count=" (#{@project.total_contributions})"
+        = link_to '#comments', 'id' => 'comments_link', 'data-target' => '#project_comments' do
+          = t('.menu.comments')
+          | &nbsp; (
+          / we need to remove the locale from the url
+          fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}"
+          | )
+        - if policy(@project).update?
+          = link_to '#edit', 'id' => 'edit_link', 'data-target' => '#project_edit' do
+            = t('.menu.edit')
+          = link_to '#reports', 'id' => 'reports_link', 'data-target' => '#project_reports' do
+            = t('.menu.reports')
+    .main
+      #project_content
+        - if policy(@project).update?
+          #project_reports.content.hide
+            = render 'project_reports'
+          #project_edit.content.hide
+            = render 'project_edit'
 
-.project-page#page_content
-  header.project-header
-    h1.project-heading.display-small = @project.name
-    p.project-sub-heading.body-big
-      = t('projects.index.box.by')
-      |&nbsp;
-      = link_to(@project.user.display_name, user_path(@project.user))
-
-  nav.project-nav.w-hidden-small.w-hidden-tiny
-    .w-container
-      .w-row
-        .w-col.w-col-8
-          = link_to '#about', 'id' => 'about_link', 'class' => 'selected project-nav-tab', 'data-target' => '#project_about.content' do
-            = t('.menu.about')
-
-          = link_to '#posts', 'id' => 'posts_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_posts' do
-            = t('.menu.posts')
-            span.project-nav-tab-quantity = "#{@posts_count}"
-
-          = link_to '#contributions', 'id' => 'contributions_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_contributions' do
-            = t('.menu.contributions')
-            span.project-nav-tab-quantity = "#{@project.total_contributions}"
-
-          = link_to '#comments', 'id' => 'comments_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_comments' do
-            = t('.menu.comments')
-            fb:comments-count href="#{request.base_url}/#{request.fullpath.split('/')[2]}" class="project-nav-tab-quantity"
-
+        #project_posts.content.hide[data-path=project_posts_path(project_id: @project.id)]
+          - if policy(@project).update?
+            = render template: 'projects/posts/new'
+          .results &nbsp;
+          .clearfix
+          #posts-loading.loading= image_tag "loading.gif"
+        #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
           - if policy(@project).update?
             = link_to '#edit', 'id' => 'edit_link', 'class' => 'project-nav-tab' , 'data-target' => '#project_edit' do
               = t('.menu.edit')
