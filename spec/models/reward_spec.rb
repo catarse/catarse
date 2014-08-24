@@ -15,9 +15,6 @@ describe Reward do
         expect(reward.last_changes).to eq("{\"description\":[\"envie um email para foo@bar.com\",\"foo\"]}")
       end
 
-      it "has modification? should be true" do
-        expect(reward.has_modification?).to be_true
-      end
     end
   end
 
