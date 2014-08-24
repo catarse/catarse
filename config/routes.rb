@@ -108,9 +108,6 @@ Catarse::Application.routes.draw do
       get :credits
       get :reactivate
     end
-    collection do
-      get :uservoice_gadget
-    end
     resources :contributions, controller: 'users/contributions', only: [:index] do
       member do
         get :request_refund
