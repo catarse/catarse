@@ -2,32 +2,11 @@
   .w-container
     .w-row
       .w-col.w-col-3
-        h4 = t('layouts.footer.titles.contact')
-        ul
-          li= link_to t('layouts.footer.links.twitter'), "#{CatarseSettings[:twitter_url]}", target: '_blank'
-          li= link_to t('layouts.footer.links.facebook'), "#{CatarseSettings[:facebook_url]}", target: '_blank'
-          li= link_to t('layouts.footer.links.instagram'), "#{CatarseSettings[:instagram_url]}", target: '_blank'
-          li= link_to t('layouts.footer.links.github'), "#{CatarseSettings[:github_url]}", target: '_blank'
-          li= link_to t('layouts.footer.links.blog'), "#{CatarseSettings[:blog_url]}", target: '_blank'
-          li.zendesk_widget= link_to t('layouts.footer.links.contact'), "#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}"
+        = render 'shared/footer_welcome' 
       .w-col.w-col-3
-        h4 = t('layouts.footer.titles.about')
-        ul
-          li= link_to t('layouts.footer.links.faq'), "#{CatarseSettings[:faq_url]}", target: '_blank'
-          li= mail_to CatarseSettings[:email_press], t('layouts.footer.links.press')
-          li= link_to t('layouts.footer.links.feedback'), "#{CatarseSettings[:feedback_url]}", target: '_blank'
-          li= link_to t('layouts.footer.links.terms'), terms_of_use_path, target: '_blank'
-          li= link_to t('layouts.footer.links.privacy'), privacy_policy_path, target: '_blank'
+        = render 'shared/footer_about' 
       .w-col.w-col-3
-        h4 = t('layouts.footer.titles.sitemap')
-        ul
-          li= link_to t('layouts.footer.links.submit'), start_path
-          li= link_to t('layouts.footer.links.discover'), explore_path
-          - if current_user
-            li= link_to t('layouts.footer.links.near'), explore_path(anchor: "near_of/#{current_user.address_state}")
-          li= link_to t('layouts.footer.links.recommended'), explore_path(anchor: "recommended")
-          li= link_to t('layouts.footer.links.expiring'), explore_path(anchor: "expiring")
-          li= link_to t('layouts.footer.links.recents'), explore_path(anchor: "recent")
+        = render 'shared/footer_navigate' 
       .w-col.w-col-3
         h4 = t('layouts.footer.titles.newsletter')
         .newsletter-footer

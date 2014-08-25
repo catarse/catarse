@@ -4,28 +4,11 @@ footer.main-footer.main-footer-neg
       .w-col.w-col-9
         .w-row
           .w-col.w-col-4.w-col-small-4.w-col-tiny-4
-            h4.h4-neg Bem-vindo
-            a.link-footer.link-footer-negative href="#{CatarseSettings[:twitter_url]}"  Twitter
-            a.link-footer.link-footer-negative href="#{CatarseSettings[:facebook_url]}"  Facebook
-            a.link-footer.link-footer-negative href="#{CatarseSettings[:instagram_url]}"  Instagram
-            a.link-footer.link-footer-negative href="#{CatarseSettings[:github_url]}"  Github
-            a.link-footer.link-footer-negative href="#{CatarseSettings[:blog_url]}"  Blog
-            a.link-footer.link-footer-negative href="#{CatarseSettings[:zendesk_url]}/account/dropboxes/#{CatarseSettings[:zendesk_dropbox_id]}"  Contato
+            = render 'shared/footer_welcome'
           .w-col.w-col-4.w-col-small-4.w-col-tiny-4
-            h4.h4-neg Sobre nós
-            a.link-footer.link-footer-negative href="#{CatarseSettings[:faq_url]}"  Ajuda
-            a.link-footer.link-footer-negative href="#{CatarseSettings[:feedback_url]}"  Feedback
-            a.link-footer.link-footer-negative href="#{terms_of_use_path}"  Termos de uso
-            a.link-footer.link-footer-negative href="#{privacy_policy_path}"  Política de privacidade
+            = render 'shared/footer_about'
           .w-col.w-col-4.w-col-small-4.w-col-tiny-4
-            h4.h4-neg Navegue
-            a.link-footer.link-footer-negative.no-mobile href="#{start_path}"  Envie um projeto
-            a.link-footer.link-footer-negative href="#{explore_path}"  Descubra projetos
-            - if current_user.try(:adress_state)
-              a.link-footer.link-footer-negative href="#{explore_path(anchor: ('near_of/' + current_user.address_state))}"  Próximos a mim
-            a.link-footer.link-footer-negative href="#{explore_path(anchor: "recommended")}"  Recomendados
-            a.link-footer.link-footer-negative href="#{explore_path(anchor: "expiring")}"  Na reta final
-            a.link-footer.link-footer-negative href="#{explore_path(anchor: "recent")}"  Recentes
+            = render 'shared/footer_navigate'
       .w-col.w-col-3.column-social-media-footer
         h4.h4-neg Assine nossa news
         .w-form
