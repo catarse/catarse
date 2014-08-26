@@ -2,7 +2,7 @@ App.views.Project.addChild('Posts', _.extend({
   el: '#project_posts',
 
   events: {
-    'ajax:success .results .post' : 'onPostDestroy',
+    'ajax:success .results .project-news' : 'onPostDestroy',
     'ajax:success form#new_project_post' : 'onPostCreate'
   },
 
@@ -33,7 +33,7 @@ App.views.Project.addChild('Posts', _.extend({
   },
 
   posts: function(){
-    return this.$('.results .post');
+    return this.$('.results .project-news');
   },
 
   onPostDestroy: function(e){

@@ -65,12 +65,11 @@
           /   #project_edit.content.hide
           /     = render partial: 'project_edit'
 
-          / #project_posts.content.hide[data-path=project_posts_path(project_id: @project.id)]
-          /   - if policy(@project).update?
-          /     = render template: 'projects/posts/new'
-          /   .results &nbsp;
-          /   .clearfix
-          /   #posts-loading.loading= image_tag "loading.gif"
+          #project_posts.content.hide[data-path=project_posts_path(project_id: @project.id)]
+            - if policy(@project).update?
+              = render template: 'projects/posts/new'
+            .results &nbsp;
+            .clearfix
           / #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
           /   - if policy(@project).update?
           /     = radio_button_tag(:contribution_state, "available_to_count", checked: true)
