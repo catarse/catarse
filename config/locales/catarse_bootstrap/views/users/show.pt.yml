@@ -8,6 +8,12 @@ pt:
       requested_refund: "Reembolso solicitado"
       waiting_confirmation: "Aguardando confirmação"
       tell_about_this_contribution: Conte para o mundo sobre o seu apoio!
+    credit_cards:
+      index:
+        last_digits: 'Cartão'
+        brand: 'Operadora'
+        title: 'Cartões de credito'
+        remove: 'Remover'
     credits:
       modal:
         title: 'Quer mesmo solicitar o reembolso do seu apoio?'
@@ -81,6 +87,7 @@ pt:
         your_reward: "Sua recompensa"
       attention: "Atenção"
       tabs:
+        credit_cards: 'Cartões de credito'
         contributed_projects: "Projetos apoiados"
         created_projects: "Projetos criados"
         comments: Comentários
