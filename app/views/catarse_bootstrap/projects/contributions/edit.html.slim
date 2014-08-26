@@ -1,0 +1,45 @@
+- content_for :main_stylesheet, :webflow
+- content_for :title, t('.page-title', name: @project.name)
+
+= render 'shared/header'
+
+= render 'projects/project_header'
+
+.back-reward-content
+  .w-container
+    .w-row
+      .w-col.w-col-8.back-payment-column-form
+        = simple_form_for [@project, @contribution], html: { data: { update_info_path: project_contribution_path(project_id: @contribution.project.id, id: @contribution.id, format: :json) }, id: 'review_form', method: 'put' } do |form|
+          .back-payment-headline.headline Preencha e revise os dados para pagamento
+          .w-hidden-tiny.back-payment-subheadline.body-medium Esses dados serão informados ao realizador do projeto
+          /.back-reward-error-form.form-error data-ix="display-none-on-load" 
+            div
+              strong This is some text inside of a div block.
+            div This is some text inside of a div block.
+            div This is some text inside of a div block.
+          .w-hidden-main.w-hidden-medium.w-clearfix.back-payment-formwrapper
+            = render 'selected_reward'
+          .w-form.back-payment-formwrapper
+            = form.input :payer_name, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
+            = form.input :payer_email, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
+          .back-payment-formwrapper
+            .back-payment-address-subtitle.body-big Endereço de entrega
+            .w-form
+              = form.input :address_country, as: :select, wrapper_html: {class: 'back-payment-form-box-half block'}, input_html: {class: 'w-select text-field'}
+              = form.input :address_street, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
+              = form.input :address_number, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter'}, input_html: {class: 'w-input text-field'}
+              = form.input :address_complement, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter last'}, input_html: {class: 'w-input text-field'}
+              = form.input :address_neighbourhood, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
+              = form.input :address_city, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
+              = form.input :address_state, as: :string, wrapper_html: {class: 'back-payment-form-box-half'}, input_html: {class: 'w-input text-field'}
+              = form.input :address_zip_code, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter'}, input_html: {class: 'w-input text-field'}
+              = form.input :address_phone_number, as: :string, wrapper_html: {class: 'back-payment-form-box-quarter last'}, input_html: {class: 'w-input text-field'}
+          .back-payment-button-next-step
+            a.bt-large data-ix="display-step2-back-payment" href="#step2"  Próximo passo
+      .w-col.w-col-4
+        .w-hidden-small.w-hidden-tiny.back-faq-box
+          = render 'selected_reward'
+        .w-hidden-small.w-hidden-tiny
+          = render 'faq_box'
+
+= render 'shared/footer'

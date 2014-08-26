@@ -17,13 +17,7 @@ describe RewardDecorator do
 
   it "should have a HTML-safe name that is a HTML composition from minimum_value, description and sold_out" do
     I18n.locale = :pt
-    r = build(:reward, minimum_value: 0, description: "Description", maximum_contributions: 0)
-    r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class=\"sold_out\">Esgotada</div><div class='clear'></div>"
-    r.maximum_contributions = 1
-    r.name.should == "<div class='reward_minimum_value'>Não quero recompensa</div><div class='reward_description'>Description</div><div class='clear'></div>"
-    r.minimum_value = 10
-    r.name.should == "<div class='reward_minimum_value'>R$ 10+</div><div class='reward_description'>Description</div><div class='clear'></div>"
-    r.description = "Description<javascript>XSS()</javascript>"
-    r.name.should == "<div class='reward_minimum_value'>R$ 10+</div><div class='reward_description'>Description&lt;javascript&gt;XSS()&lt;/javascript&gt;</div><div class='clear'></div>"
+    r = build(:reward, minimum_value: 0, description: "Description<javascript>XSS()</javascript>", maximum_contributions: 0)
+    expect(r.name).to include('Description&lt;javascript&gt;XSS()&lt;/javascript&gt;')
   end
 end

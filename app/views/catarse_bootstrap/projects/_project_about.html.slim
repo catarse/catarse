@@ -1,6 +1,6 @@
 iframe src="#{@project.display_video_embed_url}" class="embedly-embed" width="100%" height="390" frameborder="0" allowFullScreen
 
-ul.project-share
+ul.project-share.no-mobile
   li
     #facebook_share = render_facebook_like title: @project.name, href: project_by_slug_url(@project.permalink, locale: I18n.locale)
   li
@@ -9,7 +9,7 @@ ul.project-share
     = link_to t('.embed'), '#embed', id: 'embed_link', class: 'link embed'
 
 .project-about
-  .project-channel-banner
+  .project-channel-banner.no-mobile
     - @project.channels.each do |channel|
       .w-row
         .w-colw-col-2
@@ -29,9 +29,8 @@ ul.project-share
           p.project-channel-banner-followers
             = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
-  p.project-about-highlight.headline = "Nova linha de óculos de serragem desenvolvida a partir do reaproveitamento dos resíduos gerados na produção dos óculos Zerezes!"
-  p.body-big
-    = @project.about_html.html_safe
-
-#project_embed.hide data-path=embed_panel_project_path(@project)
-  = image_tag "loading.gif", class: 'loader'
+  p.headline.project-about-highlight = @project.headline
+  = link_to "Leia mais", "/project-user-about-mobile", class: "alt-link body-medium read-more-link"
+  .no-mobile
+    p.body-big
+      = @project.about_html.html_safe

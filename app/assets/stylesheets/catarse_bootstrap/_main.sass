@@ -4,8 +4,10 @@
   +transition-timing-function(ease)
 
 body
+  color: $blue-one
   font-family: "proxima-nova",sans-serif
   font-size: 14px
+  line-height: 20px
 
 .no-responsive
   min-width: 940px
@@ -45,6 +47,10 @@ p
   a
     color: $blue-note
 
+.display-small
+  font-size: 34px
+  line-height: 34px
+
 .display-medium
   font-size: 44px
   line-height: 44px
@@ -58,7 +64,7 @@ p
   line-height: 24px
 
 .body-small
-  font-size: 15px
+  font-size: 14px
   line-height: 22px
 
 .title
@@ -68,7 +74,12 @@ p
 .headline
   margin-bottom: 12px
   font-size: 22px
+  font-weight: 600
   line-height: 33px
+
+.caption
+  font-size: 13px
+  line-height: 18px
 
 // Links -----------------------------------------------------------------------------------------
 .link
@@ -91,14 +102,6 @@ p
     font-weight: 600
 
 // Forms -----------------------------------------------------------------------------------------
-input[type='text'], input[type='number'],  input[type='password'], input[type='email'], textarea, select
-  color: $blue-one
-  outline: none
-  padding: .6em .8em
-  +border-radius(5px)
-  width: 100%
-  font-family: "proxima-nova",sans-serif
-
 .text-field
   display: block
   height: 40px
@@ -115,6 +118,13 @@ input[type='text'], input[type='number'],  input[type='password'], input[type='e
     background: #f7cbcb
     border-color: $red
 
+.field-label
+  display: inline-block
+  margin-bottom: 0px
+  color: $blue_one
+  font-size: 16px
+  font-weight: 400
+
 input.text-field-half
   width: 50%
 
@@ -126,7 +136,7 @@ input.text-field-half
 
 .text-field-feedback
   height: 103px
-  background-color: #f1f4f4
+  background-color: $gray-one
 
 .text-field-error
   border-color: $red
@@ -183,7 +193,18 @@ input.text-field-half
 .days-placeholder
   margin-left: 230px
 
+.message-light
+  margin: 10px 0 20px 0
+  padding: 20px
+  border: 1px solid $border-strong
+  border-radius: 5px
+  background-color: rgba(64, 155, 255, 0.09)
+  box-shadow: rgba(63, 71, 82, 0.29) 1px 1px 3px 0px
+
 // Buttons -----------------------------------------------------------------------------------------
+button
+  border: none
+
 .button
   display: block
   width: 100%
@@ -215,6 +236,12 @@ input.text-field-half
     margin: 0
     &:hover
       background-color: #547fd6
+
+  &.bt-twitter
+    background-color: #3CF
+    margin: 0
+    &:hover
+      background-color: #5DF
 
   &.bt-dark
     margin-top: 15px
@@ -285,7 +312,7 @@ input.text-field-half
     height: 40px
     margin-top: 8px
     margin-bottom: 20px
-    border: 1px solid #ddd
+    border: 1px solid $border-strong
     +border-radius(3px)
     background-color: #f1f2f3
     color: #79808b
@@ -397,18 +424,24 @@ input.text-field-half
 
 .form-search
   display: inline-block
-  width: 250px
+  width: 50%
   height: 36px
   float: right
   margin-right: 15px
   div
     margin: 0
   input[type=text]
+    width: 100%
     background: rgba(37, 49, 57, 0.6)
-    border: none
+    border: 1px solid rgba(37, 49, 57, 0.6)
     padding-left: 30px
     font-size: 14px
     height: 39px
+    color: white
+    outline: none
+    +border-radius(4px)
+    &:focus
+      border-color: $blue-note
   input[type="submit"]
     background: url("/assets/catarse_bootstrap/lupa.png")
     width: 15px
@@ -510,6 +543,37 @@ input.text-field-half
   .twitter-box
     margin-bottom: 20px
 
+.footer-simple
+  padding: 15px 0
+  background-color: $gray-one
+
+.footer-simple-links-item
+  display: inline-block
+  margin: 0 30px 0 0
+
+.footer-simple-links
+  display: inline-block
+  float: right
+  text-align: left
+
+.footer-signature
+  margin: 30px 0 0 0
+  padding: 25px 0 0 0 
+  border-top: 1px solid $border-gray
+  color: $blue-two
+
+.footer-signature-text
+  display: inline-block
+  margin: 8px 0 0 0
+  font-weight: 600
+
+.link-footer
+  display: block
+  padding: 7px 0
+  color: $blue_two
+  text-decoration: none
+  &:hover
+    text-decoration: underline
 
 // Page Header -----------------------------------------------------------------------------------------
 .page-header
@@ -558,7 +622,7 @@ input.text-field-half
     height: 36px
     line-height: 36px
     text-indent: 5px
-    border: 1px solid #ddd
+    border: 1px solid $border-strong
     padding: 1px 40px 1px 4px
     +border-radius(3px)
     -moz-box-sizing: border-box
@@ -617,7 +681,7 @@ input.text-field-half
 .bt-rascunhooff
   display: inline-block
   width: 35%
-  border: 2px solid #f1f4f4
+  border: 2px solid $gray-one
   background-color: transparent
   &:hover
     border: 2px solid $green
@@ -722,8 +786,6 @@ input.text-field-half
   .field-label
     margin-top: 70px
     margin-bottom: 13px
-    color: $blue-one
-    font-size: 16px
     font-weight: 600
   .permalink-input
     padding-left: 126px
@@ -757,7 +819,392 @@ input.text-field-half
   width: 45%
   margin-top: 40px
 
+// project-page -----------------------------------------------------------------------------------------
+.project-header
+  background: $gray-one
+  text-align: center
+  color: $blue-one
+  a
+    color: $blue-one
+    text-decoration: none
+    &:hover
+      text-decoration: underline
 
+.project-heading
+  font-weight: 600
+
+.project-sub-heading
+  margin-bottom: 0
+
+.project-nav
+  background: $gray-one
+  margin-top: -10px
+  .w-col-9
+    margin-bottom: -1px
+
+.project-nav-tab
+  display: inline-block
+  margin: 15px 6px 0 0
+  color: $blue-one
+  padding: 13px
+  font-size: 15px
+  text-decoration: none
+  &.selected
+    border-radius: 4px 4px 0 0
+    background-color: white
+    font-weight: 600
+  &:hover
+    border-radius: 4px 4px 0 0
+    background-color: white
+
+.project-nav-tab-quantity
+  padding: 2px 4px
+  border-radius: 2px
+  background-color: $border-strong
+  color: $blue-two
+  font-size: 12px
+  font-weight: 800
+  margin-left: 8px
+
+.project-nav-category
+  margin-top: 30px
+  color: $blue-two
+  font-size: 15px
+  float: right
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+  &:before
+    content: url(/assets/catarse_bootstrap/icons/category-icon.png)
+    display: inline-block
+    vertical-align: middle
+    margin-right: 10px
+
+.project-main-content
+  padding: 32px 0 72px
+
+.project-share
+  margin: 20px 0
+  padding: 0
+  li
+    display: inline-block
+    vertical-align: top
+    margin: 0 20px 0 0
+
+.project-about
+  padding-right: 14px
+
+.project-about-highlight
+  font-weight: 400
+
+.embed
+  color: #79808b
+  &:before
+    content: "< "
+  &:after
+    content: " >"
+
+.read-more-link
+  display: none
+
+// Project page sidebar -------------------------------------
+.project-stats
+  padding-top: 24px
+  padding-left: 20px
+
+.project-stats-digits
+  margin-bottom: 10px
+  font-weight: 600
+  p
+    margin-bottom: 0
+
+.project-back-button
+  margin: 28px 0 15px
+
+.project-author
+  margin: 45px 0 0
+  padding: 15px
+  border-radius: 5px 5px 0px 0px
+  background-color: rgba(64, 155, 255, 0.09)
+  color: $blue-one
+  p
+    margin-bottom: 0
+  a
+    color: $blue-one
+    font-weight: 600
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+  .project-author-city
+    margin: 0 0 10px
+
+.thumb-author
+  float: left
+  margin-right: 15px
+
+.project-author-contacts
+  margin: 15px 0 0
+  padding: 15px 0 0
+  border-top: 1px solid rgba(255, 255, 255, 0.61)
+
+.project-author-item
+  margin: 0 0 5px
+
+.project-author-send-message
+  margin: 1px 0 25px
+  padding: 12px 0
+  border-radius: 0px 0px 5px 5px
+  background-color: rgba(64, 155, 255, 0.09)
+  font-weight: 600
+  text-align: center
+  &:hover
+    background-color: rgba(64, 155, 255, 0.2)
+    text-decoration: underline
+
+.project-funding-period
+  margin: 30px 0 0
+  font-weight: 600
+
+// Rewards -----------------------------------------------------------------------------------------
+.project-reward-box
+  position: relative
+  margin-top: 4px
+  padding: 20px
+  background-color: $gray-one
+  color: $blue-one
+  cursor: pointer
+  p
+    margin-bottom: 0
+    color: inherit
+  .body-medium
+    margin-bottom: 20px
+  &:hover .project-reward-box-hover
+    z-index: 10
+    opacity: 1
+    .project-reward-box-hover-text
+      +transform(translateY(-50%) scale(1))
+
+.project-reward-box-gone
+  color: rgba(121, 128, 139, 0.36)
+  cursor: default
+  &:hover .project-reward-box-hover
+    z-index: -10
+
+.project-reward-box-title
+  margin-bottom: 20px
+  font-weight: 600
+
+.project-reward-box-limited-label
+  display: inline-block
+  margin: 12px 0 0
+  font-weight: 600
+  padding: 2px 10px
+  background-color: $yellow
+
+.project-reward-box-gone-label
+  background-color: $blue-two
+  color: white
+
+.project-reward-box-hover
+  width: 100%
+  height: 100%
+  position: absolute
+  top: 0
+  left: 0
+  background-color: rgba(0, 178, 45, 0.84)
+  z-index: -1
+  opacity: 0
+
+.project-reward-box-hover-text
+  color: white
+  font-size: 20px
+  text-align: center
+  position: relative
+  top: 50%
+  +transform(translateY(-50%) scale(1.2))
+
+// Backers -----------------------------------------------------------------------------------------
+.project-backer-box
+  margin: 0 0 13px
+  padding: 0 0 16px
+  border-bottom: 1px solid $border-gray
+  p
+    margin-bottom: 0
+
+.project-backer-thumb
+  margin-right: 16px
+  float: left
+  width: 80px
+  height: 80px
+
+.backs-backer-name
+  margin-bottom: 6px
+  font-weight: 600
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+// New Contribution -----------------------------------------------------------------------------------------
+.project-header
+  padding: 44px 0 34px 0
+  background-color: $gray-one
+
+.project-heading
+  font-weight: 600
+  text-align: center
+
+.project-sub-heading
+  color: $blue-one
+  text-align: center
+
+.back-reward-content
+  padding: 52px 0 82px 0
+
+.back-reward-form
+  margin: 15px 0 0 0
+
+.back-reward-cheers
+  margin: 0 0 15px 0
+
+.back-reward-input-reward-div
+  display: block
+  margin-top: 50px
+  padding: 28px 48px 48px 23px
+  border-radius: 5px
+  background-color: $gray-one
+  height: 204px
+
+  .back-reward-input-reward-margin
+    margin: 30px 0 0 0
+    overflow: hidden
+
+  .reward_placeholder
+    position: absolute
+    margin: 23px 0 0 15px
+    font-size: 44px
+    font-weight: normal
+
+.back-reward-input-reward
+  padding: 0 0 0 75px
+  display: block
+  width: 64%
+  height: 70px
+  margin: 0 20px 35px 0
+  float: left
+  clear: none
+  border: 1px solid $green
+  +border-radius(5px)
+  background-color: white
+  +transition(all 500ms ease)
+  color: $green
+  font-size: 44px
+  font-weight: 400
+  &:focus
+    border-color: $green
+
+.back-reward-input-reward-tip
+  display: block
+  margin: 15px 0 0 0
+  padding: 0 30px 0 0
+  clear: none
+
+.back-reward-radio-reward
+  display: block
+  width: 95%
+  margin-top: 0px
+  margin-bottom: 0px
+  padding: 15px 40px 20px 35px
+  border-bottom: 1px solid $border-strong
+  +border-radius(5px)
+  +transition(all 500ms ease)
+  .back-reward-selected-badge
+    top: 0px
+    right: 0px
+    display: none
+    margin: 0 0 0 14px
+    padding: 3px 10px
+    background-color: #00b22d
+    color: white
+    font-weight: 600
+  &:hover
+    background-color: $gray-one
+  &.selected
+    position: static
+    display: block
+    border: 1px solid $green
+    background-color: $gray-one
+    .back-reward-selected-badge
+      display: inline-block
+
+.back-reward-radio-button
+  width: auto
+  margin: 10px 15px 0 -20px
+  float: left
+
+.back-reward-reward-description
+  margin: -5px 0 0 10px
+
+.back-reward-delivery-date
+  margin: -7px 0 0 0
+  color: $blue-two
+
+.back-reward-must-select-warning
+  display: block
+  width: 61.6%
+  margin: 70px auto 0 auto
+  padding: 24px
+  border: 1px solid $border-strong
+  +border-radius(5px)
+
+.back-faq-box
+  margin: 0 0 20px 0
+  padding: 20px
+  border: 1px solid $border-strong
+  +border-radius(5px)
+
+.faq-box-title
+  margin: 0 0 17px 0
+  font-weight: 600
+
+.faq-box-question
+  display: block
+  margin: 0 0 10px 0
+  line-height: 22px
+  font-weight: 400
+  cursor: pointer
+  &.open
+    font-weight: 600
+    &:before
+      content: '-'
+  &:before
+    content: '+'
+    margin: 0 5px 0 0
+
+.faq-box-arrow
+  display: inline
+  font-size: 11px
+  line-height: 22px
+  font-weight: 800
+
+.faq-box-answer
+  padding: 0 0 0 18px
+  margin: 0 0 20px 0
+
+.faq-box-question-text
+  display: inline-block
+  margin: 0 0 0 8px
+
+.back-reward-button
+  position: static
+  left: 0px
+  right: 0px
+  bottom: 0px
+  z-index: 1
+  width: 30%
+  margin: 20px auto
+
+.back-reward-button-section
+  margin: 30px 0 0 0
 
 // Responsive -----------------------------------------------------------------------------------------
 @media screen and (max-width: 1200px)
@@ -767,6 +1214,31 @@ input.text-field-half
     display: none
 
 @media screen and (max-width: 991px)
+  .display-medium
+    font-size: 34px
+    line-height: 34px
+
+  .display-small
+    font-size: 28px
+    line-height: 28px
+
+  .body-big
+    font-size: 16px
+
+  .body-medium
+    font-size: 15px
+
+  .body-small
+    font-size: 13px
+    line-height: 20px
+
+  .headline
+    font-size: 20px
+    line-height: 30px
+
+  .caption
+    font-size: 12px
+
   .header-logo img
     margin: 0
   h2
@@ -778,7 +1250,7 @@ input.text-field-half
     display: none
 
   .no-mobile
-    display: none
+    display: none !important // I know important is ugly but this is to avoid problems with elements that we need to show and hide
 
   .mobile-menu-link
     display: inline-block
@@ -824,4 +1296,315 @@ input.text-field-half
       &:hover
         background: none
 
+  .project-header
+    padding: 34px 0 24px 0
 
+  .back-reward-content
+    padding: 32px 0 0 0
+
+  .project-nav-tab
+    font-size: 13px
+    margin-top: 11px
+
+  .project-nav-category
+    font-size: 13px
+    margin: 25px 0 5px
+
+  .project-reward-box
+    &:hover
+      background: $border-strong
+    &:hover .project-reward-box-hover
+      z-index: -10
+  .project-reward-box-gone
+    &:hover
+      background-color: $gray-one
+
+
+@media screen and (max-width: 767px)
+  .display-small
+    font-size: 20px
+    line-height: 20px
+
+  .body-big
+    line-height: 24px
+
+  .body-small
+    font-size: 14px
+
+  .back-reward-cheers
+    font-weight: 600
+    text-align: center
+
+  .back-reward-button
+    width: 40%
+
+  .back-reward-input-reward-div
+    width: 100%
+    margin-right: auto
+    margin-left: auto
+    border-bottom: 1px solid $border-strong
+    font-weight: 600
+    text-align: center
+
+    .reward_placeholder
+      margin: 23px 0 0 19%
+
+  .back-reward-input-reward
+    margin-right: auto
+    margin-bottom: -5px
+    margin-left: auto
+    float: none
+
+  .back-reward-input-reward-tip
+    margin-bottom: 20px
+    padding-right: 0px
+    text-align: center
+
+  .project-header
+    padding: 25px 0 20px 0
+  .back-reward-content
+    padding: 22px 0 42px 0
+
+  .project-main-content
+    padding: 0
+
+  .project-content
+    background-color: $gray-one
+    width: 104%
+    position: relative
+    left: -10px
+    text-align: center
+
+  .project-about
+    padding: 30px 0 20px
+
+  .project-about-highlight
+    font-size: 15px
+
+  .read-more-link
+    display: block
+    font-weight: 600
+    &:after
+      content: ' >'
+
+  .project-stats
+    text-align: center
+    padding: 0
+
+  .project-stats-numbers
+    padding: 24px 0
+    border-top: 1px solid $border-strong
+    border-bottom: 1px solid $border-strong
+    margin: 0 0 10px
+    .project-stats-digits
+      width: 32%
+      display: inline-block
+      vertical-align: top
+
+  .project-back-button
+    width: 80%
+    margin: 18px 0
+
+  .project-author
+    margin-top: 34px
+
+  .project-author-contacts
+    display: none
+
+  .project-author-send-message
+    margin-top: 10px
+
+  .project-share
+    margin-bottom: 35px
+    text-align: center
+
+  .project-share-link
+    display: inline-block
+    margin: 0 2%
+    width: 36%
+    margin-top: 10px
+    cursor: pointer
+
+
+@media screen and (max-width: 479px)
+  .display-medium
+    font-size: 20px
+
+  .body-medium
+    font-size: 15px
+
+  .display-small
+    font-size: 18px
+
+  .back-reward-button
+    width: 90%
+
+  .headline
+    font-size: 18px
+
+  .back-reward-input-reward
+    width: 100%
+
+  .back-reward-input-reward-div
+    padding: 20px
+    .reward_placeholder
+      margin: 23px 0 0 3%
+
+  .read-more-link
+    font-weight: 400
+
+  .display-small
+    font-size: 18px
+
+// Edit Contribution -----------------------------------------------------------------------------------------
+.back-reward-content
+  .back-payment-reward-description
+    p
+      color: $blue-one
+      font-size: 13px
+      line-height: 18px
+
+  .back-payment-info-reward
+    margin-bottom: 35px
+
+  .back-payment-info-reward-edit-link
+    float: right
+    color: $blue-one
+    font-size: 15px
+    font-weight: 600
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+
+  .back-payment-formwrapper
+    margin-bottom: 20px
+
+  .back-payment-address-subtitle
+    margin-bottom: 17px
+    font-weight: 600
+
+  .field-label
+    font-weight: bold
+
+  .back-payment-headline
+    display: inline-block
+    margin-bottom: 20px
+
+  .back-payment-subheadline
+    margin: -20px 0 25px 0
+
+  .back-payment-form-box-half
+    display: inline-block
+    width: 50%
+    padding-right: 3%
+    &.block
+      display: block
+
+  .back-payment-form-box-quarter
+    display: inline-block
+    width: 25%
+    padding-right: 3%
+
+  .back-payment-button-next-step 
+    width: 40%
+    margin: 40px auto
+
+  .back-payment-info-reward-value
+    display: inline-block
+    float: left
+    color: $green
+    font-size: 34px
+
+@media screen and (max-width: 991px)
+  .back-reward-content
+    .back-payment-button-next-step
+      width: 50%
+
+@media screen and (max-width: 767px)
+  .back-reward-content
+    .faq-box-title 
+      margin-bottom: 6px
+      color: $blue-two
+      &.mobile
+        display: inline-block
+        float: left
+
+    .back-payment-info-reward
+      margin-bottom: 19px
+
+    .back-payment-info-reward-edit-link
+      position: static
+      right: 0px
+      bottom: 0px
+      display: inline-block
+      margin-top: 0px
+
+    .back-payment-address-subtitle
+      color: $blue-two
+      text-align: left
+
+    .back-payment-formwrapper
+      margin-bottom: 0px
+      padding: 15px
+      border-top: 1px solid $border-strong
+      border-bottom: 0px none $border-strong
+      border-radius: 0px
+      text-align: left
+
+    .back-payment-column-form
+      padding: 0 10px
+      text-align: center
+
+    .back-payment-form-box-half
+      display: block
+      width: 100%
+      padding-right: 0px
+
+    .back-payment-headline
+      display: block
+      color: $green
+
+    .back-payment-subheadline
+      margin: -20px 0 20px 0
+
+    .back-payment-form-box-quarter
+      width: 50%
+      padding-right: 0px
+
+    .back-payment-form-box-quarter.last
+      padding-left: 15px
+
+    .back-payment-button-next-step
+      width: 60%
+
+    .back-payment-info-reward-value
+      margin-left: 10px
+      color: $blue-one
+      font-size: 16px
+      font-weight: 600
+
+@media screen and (max-width: 479px)
+  .back-reward-content
+    .back-payment-formwrapper
+      margin-bottom: 0px
+      padding: inherit 10px
+      border-bottom-style: none
+      border-bottom-width: 0px
+
+    .back-payment-button-next-step
+      width: 100%
+      margin-top: 0px
+      padding: 20px 6% 0 6%
+      border-top: 1px solid $border-strong
+
+    .back-payment-headline
+      margin-bottom: 20px
+      padding: inherit 29px
+      line-height: 20px
+
+    .back-payment-subheadline
+      margin: -20px 0 15px 0
+      font-size: 12px
+
+    .back-payment-info-reward-value
+      font-size: 14px

@@ -1,23 +1,22 @@
-.contribution
+.project-backer-box
+
   - if contribution.anonymous
-    img src="/assets/user.png" class="contribution_avatar"
-    .contribution_info
-      p#text
-        em.anon=" #{t('.anonymous_contribution')}"
-      p#confirmed
-        = contribution.confirmed_at
-      p#contributed= t('.anonymous_description')
+
+    = image_tag 'user.png', class: "project-backer-thumb"
+    p.body-big.project-backer-name = t('.anonymous_contribution')
+    p.body-small = contribution.confirmed_at
+    p.body-small = t('.anonymous_description')
+
   - else
-    a href=user_path(contribution.user)
-      img src=contribution.user.display_image class="contribution_avatar"
-    .contribution_info
-      p#text
-        a href=user_path(contribution.user)
-         = contribution.user.short_name
-      p#confirmed
-        = contribution.confirmed? ? contribution.confirmed_at : contribution.created_at
-      p#contributed
-        = contribution.user.contributions_text
+    = link_to user_path(contribution.user) do
+      = image_tag contribution.user.display_image, class: 'project-backer-thumb'
+
+    p.body-big.project-backs-backer-name
+      = link_to user_path(contribution.user) do
+        = contribution.user.short_name
+    p.body-small = contribution.confirmed? ? contribution.confirmed_at : contribution.created_at
+    p.body-small = contribution.user.contributions_text
+
   - if current_user and (current_user == @project.user or current_user.admin)
     .reward
       =
@@ -36,7 +35,3 @@
         | &nbsp;
         = t('not_informed')
       |.
-
-  .clear
-
-
