@@ -226,6 +226,11 @@ button
     opacity: 1
     text-decoration: none
 
+  &.bt-small
+    padding-top: 9px
+    padding-bottom: 9px
+    font-size: 15px
+
   &.bt-medium
     padding-top: 12px
     padding-bottom: 12px
@@ -248,6 +253,9 @@ button
     background-color: $blue-one
     &:hover
       background-color: #505966
+
+  &.bt-blue
+    background-color: $blue-note
 
 .bt-large
   display: block
@@ -976,6 +984,7 @@ button
   p
     margin-bottom: 0
     color: inherit
+    word-wrap: break-word
   .body-medium
     margin-bottom: 20px
   &:hover .project-reward-box-hover
@@ -1022,6 +1031,22 @@ button
   position: relative
   top: 50%
   +transform(translateY(-50%) scale(1.2))
+
+// News -----------------------------------------------------------------------------------------
+.news-button
+  display: inline-block
+  width: 29%
+  margin-top: 0
+
+.project_posts
+  padding-top: 20px 14px 60px 0
+  border-bottom: 1px solid $border-gray
+  &:last-child
+    border: none
+
+.project-news-date
+  margin: -14px 0 30px
+  color: $blue-two
 
 // Backers -----------------------------------------------------------------------------------------
 .project-backer-box

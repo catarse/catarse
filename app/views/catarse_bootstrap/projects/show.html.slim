@@ -69,8 +69,8 @@
             - if policy(@project).update?
               = render template: 'projects/posts/new'
             .results &nbsp;
-
             #posts-loading.loading= image_tag "loading.gif"
+
           #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
             - if policy(@project).update?
               = radio_button_tag(:contribution_state, "available_to_count", checked: true)
@@ -78,10 +78,12 @@
               = radio_button_tag(:contribution_state, "waiting_confirmation")
               = label_tag(:contribution_state, t('.contributions_states.pending'))
             .results &nbsp;
-
             #contributions-loading.loading= image_tag "loading.gif"
+
           #project_comments.content.hide
+
           #project_about.content = render 'project_about'
+
 
 
         aside.project-info.w-col.w-col-4
