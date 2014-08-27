@@ -7,4 +7,10 @@ class CreditCard < ActiveRecord::Base
   def decorator
     CreditCardDecorator.new(self)
   end
+
+  def cancel_subscription
+    if defined?(CatarsePagarme)
+      self.pagarme_delegator.cancel_subscription
+    end
+  end
 end
