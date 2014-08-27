@@ -58,6 +58,8 @@
     .w-container
       .w-row
         article.w-col.w-col-8.project-content
+          #project_about.content = render 'project_about'
+
           #project_content
           - if policy(@project).update?
             #project_reports.content.hide
@@ -81,8 +83,6 @@
               | &nbsp;
 
           #project_comments.content.hide
-
-          #project_about.content = render 'project_about'
 
 
 
@@ -133,7 +133,7 @@
           .project-author-send-message
             = mail_to @project.user.email, "Entre em contato", target: '_blank', class: 'body-medium alt-link'
 
-          .project-share
+          .project-share.project-share-sidebar
             .project-share-link
               .button.bt-medium.bt-fb = "Compartilhe"
             .project-share-link

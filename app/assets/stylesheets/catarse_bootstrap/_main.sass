@@ -3,6 +3,9 @@
   +transition-duration(500ms)
   +transition-timing-function(ease)
 
+html
+  overflow-x: hidden
+
 body
   color: $blue-one
   font-family: "proxima-nova",sans-serif
@@ -973,6 +976,9 @@ button
   margin: 30px 0 0
   font-weight: 600
 
+.project-share-sidebar
+  display: none
+
 // Rewards -----------------------------------------------------------------------------------------
 .project-reward-box
   position: relative
@@ -987,6 +993,8 @@ button
     word-wrap: break-word
   .body-medium
     margin-bottom: 20px
+    p
+      font-size: 16px
   &:hover .project-reward-box-hover
     z-index: 10
     opacity: 1
@@ -1343,7 +1351,8 @@ button
   .project-reward-box-gone
     &:hover
       background-color: $gray-one
-
+  .project-share-sidebar
+    display: block
 
 @media screen and (max-width: 767px)
   .display-small
@@ -1395,9 +1404,8 @@ button
 
   .project-content
     background-color: $gray-one
-    width: 104%
+    width: 100%
     position: relative
-    left: -10px
     text-align: center
 
   .project-about
