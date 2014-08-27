@@ -10,6 +10,6 @@
         td.brand= card.card_brand
         td.actions
           .bootstrap-twitter
-            = link_to t('.index.remove'), '#', class: 'btn btn-danger'
+            = link_to t('.index.remove'), user_credit_card_path(@user, card), class: 'btn btn-danger', method: :delete, data: { confirm: 'você tem certeza?' }
 
 
