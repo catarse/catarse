@@ -68,8 +68,8 @@
           #project_posts.content.hide[data-path=project_posts_path(project_id: @project.id)]
             - if policy(@project).update?
               = render template: 'projects/posts/new'
-            .results &nbsp;
-            #posts-loading.loading= image_tag "loading.gif"
+            .results
+              | &nbsp;
 
           #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
             - if policy(@project).update?
@@ -77,8 +77,8 @@
               = label_tag(:contribution_state, t('.contribution_states.confirmed'))
               = radio_button_tag(:contribution_state, "waiting_confirmation")
               = label_tag(:contribution_state, t('.contributions_states.pending'))
-            .results &nbsp;
-            #contributions-loading.loading= image_tag "loading.gif"
+            .results
+              | &nbsp;
 
           #project_comments.content.hide
 
