@@ -30,7 +30,7 @@ ul.project-share.no-mobile
             = t('channels.subscribed', count: @profile.channels_subscribers.size)
 
   p.headline.project-about-highlight = @project.headline
-  = link_to "Leia mais", "/project-user-about-mobile", class: "alt-link body-medium read-more-link"
+  = link_to "Leia mais", about_mobile_project_path(@project), class: "alt-link body-medium read-more-link"
   .no-mobile
     p.body-big
       = @project.about_html.html_safe
