@@ -23,9 +23,7 @@ class ProjectPost < ActiveRecord::Base
   end
 
   def notify_contributors
-    project.subscribed_users.each do |user|
-      notify_once(:posts, user, self, {from_email: project.user.email, from_name: project.user.display_name})
-    end
+    ProjectPostWorker.perform_async(project)
   end
 
   def to_partial_path
