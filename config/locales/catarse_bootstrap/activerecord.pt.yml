@@ -8,6 +8,16 @@ pt:
       category: Categoria
     attributes:
       contribution:
+        payer_name: "Nome Completo"
+        payer_email: "Email"
+        address_country: "País"
+        address_street: "País"
+        address_number: "Número"
+        address_complement: "Complemento"
+        address_neighbourhood: "Bairro"
+        address_city: "Cidade"
+        address_zip_code: "CEP"
+        address_phone_number: "Telefone"
         value: valor
         reward: recompensa
         project: projeto
