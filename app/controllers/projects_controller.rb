@@ -1,6 +1,6 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel]
+  after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile]
   inherit_resources
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
@@ -94,6 +94,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def about_mobile
+    resource
+  end
+
   def embed_panel
     @title = resource.name
     render layout: false
@@ -110,6 +114,6 @@ class ProjectsController < ApplicationController
   end
 
   def use_catarse_boostrap
-    action_name == "new" || action_name == "create" || action_name == "show" ? 'catarse_bootstrap' : 'application'
+    ["new", "create", "show", "about_mobile"].include?(action_name) ? 'catarse_bootstrap' : 'application'
   end
 end
