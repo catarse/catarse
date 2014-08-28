@@ -22,10 +22,6 @@ class ProjectPost < ActiveRecord::Base
     catarse_email_auto_html_for comment, image_width: 513
   end
 
-  def notify_contributors
-    ProjectPostWorker.perform_async(project)
-  end
-
   def to_partial_path
     "projects/posts/project_post"
   end
