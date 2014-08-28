@@ -45,7 +45,7 @@ App.addChild('Contribution', {
   }
 });
 
-App.views.Contribution.addChild('FaqBox', {
+App.addChild('FaqBox', {
   el: '#faq-box',
 
   events: {

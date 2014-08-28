@@ -1,0 +1,18 @@
+.button.bt-small.bt-blue.news-button = "Escrever novidade"
+
+/ = semantic_form_for ProjectPost.new(user: current_user, project: @project), url: project_posts_path(project_id: @project.id), remote: true do |form|
+/   = form.inputs do
+/     = form.input :title, as: :string, label: t('.title')
+/     = form.input :comment, as: :text, label: t('.comment'), input_html: {rows: 10}
+/     = form.input :exclusive, as: :boolean, label: t('.exclusive')
+
+/     p = t('.warning')
+/     = render partial: 'projects/formatting_tips'
+/   = form.actions do
+/     = form.submit t('.submit'), id: "post_submit", class: "button"
+
+- content_for :custom_flahses do
+  .hide.ghost-flash
+    div class="notice wrapper"
+      div class="notice"
+        = t('.notice')

@@ -3,6 +3,9 @@
   +transition-duration(500ms)
   +transition-timing-function(ease)
 
+html
+  overflow-x: hidden
+
 body
   color: $blue-one
   font-family: "proxima-nova",sans-serif
@@ -132,6 +135,13 @@ p
     background: #f7cbcb
     border-color: $red
 
+.field-label
+  display: inline-block
+  margin-bottom: 0px
+  color: $blue_one
+  font-size: 16px
+  font-weight: 400
+
 input.text-field-half
   width: 50%
 
@@ -203,7 +213,7 @@ input.text-field-half
 .message-light
   margin: 10px 0 20px 0
   padding: 20px
-  border: 1px solid #ddd
+  border: 1px solid $border-strong
   border-radius: 5px
   background-color: rgba(64, 155, 255, 0.09)
   box-shadow: rgba(63, 71, 82, 0.29) 1px 1px 3px 0px
@@ -233,6 +243,11 @@ button
     opacity: 1
     text-decoration: none
 
+  &.bt-small
+    padding-top: 9px
+    padding-bottom: 9px
+    font-size: 15px
+
   &.bt-medium
     padding-top: 12px
     padding-bottom: 12px
@@ -255,6 +270,9 @@ button
     background-color: $blue-one
     &:hover
       background-color: #505966
+
+  &.bt-blue
+    background-color: $blue-note
 
 .bt-large
   display: block
@@ -793,8 +811,6 @@ button
   .field-label
     margin-top: 70px
     margin-bottom: 13px
-    color: $blue-one
-    font-size: 16px
     font-weight: 600
   .permalink-input
     padding-left: 126px
@@ -974,6 +990,9 @@ button
   margin: 30px 0 0
   font-weight: 600
 
+.project-share-sidebar
+  display: none
+
 // Rewards -----------------------------------------------------------------------------------------
 .project-reward-box
   position: relative
@@ -985,8 +1004,11 @@ button
   p
     margin-bottom: 0
     color: inherit
+    word-wrap: break-word
   .body-medium
     margin-bottom: 20px
+    p
+      font-size: 16px
   &:hover .project-reward-box-hover
     z-index: 10
     opacity: 1
@@ -1031,6 +1053,43 @@ button
   position: relative
   top: 50%
   +transform(translateY(-50%) scale(1.2))
+
+// News -----------------------------------------------------------------------------------------
+.news-button
+  display: inline-block
+  width: 29%
+  margin-top: 0
+
+.project_posts
+  padding: 20px 14px 60px 0
+  border-bottom: 1px solid $border-gray
+  &:last-child
+    border: none
+
+.project-news-date
+  margin: -14px 0 30px
+  color: $blue-two
+
+// Backers -----------------------------------------------------------------------------------------
+.project-backer-box
+  margin: 0 0 13px
+  padding: 0 0 16px
+  border-bottom: 1px solid $border-gray
+  p
+    margin-bottom: 0
+
+.project-backer-thumb
+  margin-right: 16px
+  float: left
+  width: 80px
+  height: 80px
+
+.backs-backer-name
+  margin-bottom: 6px
+  font-weight: 600
+  text-decoration: none
+  &:hover
+    text-decoration: underline
 
 // New Contribution -----------------------------------------------------------------------------------------
 .project-header
@@ -1145,6 +1204,7 @@ button
   +border-radius(5px)
 
 .back-faq-box
+  margin: 0 0 20px 0
   padding: 20px
   border: 1px solid $border-strong
   +border-radius(5px)
@@ -1305,7 +1365,9 @@ button
   .project-reward-box-gone
     &:hover
       background-color: $gray-one
-  
+  .project-share-sidebar
+    display: block
+
 @media screen and (max-width: 767px)
   .display-small
     font-size: 20px
@@ -1369,7 +1431,7 @@ button
     width: 100%
     margin-right: auto
     margin-left: auto
-    border-bottom: 1px solid #ddd
+    border-bottom: 1px solid $border-strong
     font-weight: 600
     text-align: center
 
@@ -1397,9 +1459,8 @@ button
 
   .project-content
     background-color: $gray-one
-    width: 104%
+    width: 100%
     position: relative
-    left: -10px
     text-align: center
 
   .project-about
@@ -1479,3 +1540,159 @@ button
 
   .read-more-link
     font-weight: 400
+
+  .display-small
+    font-size: 18px
+
+// Edit Contribution -----------------------------------------------------------------------------------------
+.back-reward-content
+  .back-payment-reward-description
+    p
+      color: $blue-one
+      font-size: 13px
+      line-height: 18px
+
+  .back-payment-info-reward
+    margin-bottom: 35px
+
+  .back-payment-info-reward-edit-link
+    float: right
+    color: $blue-one
+    font-size: 15px
+    font-weight: 600
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+
+  .back-payment-formwrapper
+    margin-bottom: 20px
+
+  .back-payment-address-subtitle
+    margin-bottom: 17px
+    font-weight: 600
+
+  .field-label
+    font-weight: bold
+
+  .back-payment-headline
+    display: inline-block
+    margin-bottom: 20px
+
+  .back-payment-subheadline
+    margin: -20px 0 25px 0
+
+  .back-payment-form-box-half
+    display: inline-block
+    width: 50%
+    padding-right: 3%
+    &.block
+      display: block
+
+  .back-payment-form-box-quarter
+    display: inline-block
+    width: 25%
+    padding-right: 3%
+
+  .back-payment-button-next-step 
+    width: 40%
+    margin: 40px auto
+
+  .back-payment-info-reward-value
+    display: inline-block
+    float: left
+    color: $green
+    font-size: 34px
+
+@media screen and (max-width: 991px)
+  .back-reward-content
+    .back-payment-button-next-step
+      width: 50%
+
+@media screen and (max-width: 767px)
+  .back-reward-content
+    .faq-box-title 
+      margin-bottom: 6px
+      color: $blue-two
+      &.mobile
+        display: inline-block
+        float: left
+
+    .back-payment-info-reward
+      margin-bottom: 19px
+
+    .back-payment-info-reward-edit-link
+      position: static
+      right: 0px
+      bottom: 0px
+      display: inline-block
+      margin-top: 0px
+
+    .back-payment-address-subtitle
+      color: $blue-two
+      text-align: left
+
+    .back-payment-formwrapper
+      margin-bottom: 0px
+      padding: 15px
+      border-top: 1px solid $border-strong
+      border-bottom: 0px none $border-strong
+      border-radius: 0px
+      text-align: left
+
+    .back-payment-column-form
+      padding: 0 10px
+      text-align: center
+
+    .back-payment-form-box-half
+      display: block
+      width: 100%
+      padding-right: 0px
+
+    .back-payment-headline
+      display: block
+      color: $green
+
+    .back-payment-subheadline
+      margin: -20px 0 20px 0
+
+    .back-payment-form-box-quarter
+      width: 50%
+      padding-right: 0px
+
+    .back-payment-form-box-quarter.last
+      padding-left: 15px
+
+    .back-payment-button-next-step
+      width: 60%
+
+    .back-payment-info-reward-value
+      margin-left: 10px
+      color: $blue-one
+      font-size: 16px
+      font-weight: 600
+
+@media screen and (max-width: 479px)
+  .back-reward-content
+    .back-payment-formwrapper
+      margin-bottom: 0px
+      padding: inherit 10px
+      border-bottom-style: none
+      border-bottom-width: 0px
+
+    .back-payment-button-next-step
+      width: 100%
+      margin-top: 0px
+      padding: 20px 6% 0 6%
+      border-top: 1px solid $border-strong
+
+    .back-payment-headline
+      margin-bottom: 20px
+      padding: inherit 29px
+      line-height: 20px
+
+    .back-payment-subheadline
+      margin: -20px 0 15px 0
+      font-size: 12px
+
+    .back-payment-info-reward-value
+      font-size: 14px
