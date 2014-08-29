@@ -21,13 +21,13 @@ ul.project-share.no-mobile
             = channel.name
             = link_to "Conheça o Canal", root_url(subdomain: channel.permalink), class: 'alt-link'
         .w-col.w-col-4
-          - if resource.has_subscriber?(current_user)
+          - if channel.has_subscriber?(current_user)
             = link_to channels_subscriber_path, {method: :delete, class: "bt-large bt-small bt-dark bt-channel-project-banner"} do
               .stop_following= t('channels.unfollow')
           - else
               = link_to t('channels.follow'), channels_subscriber_path, class: [:button, :medium, :negative], title: t('channels.follow')
           p.project-channel-banner-followers
-            = t('channels.subscribed', count: @profile.channels_subscribers.size)
+            = t('channels.subscribed', count: channel.channels_subscribers.size)
 
   p.headline.project-about-highlight = @project.headline
   = link_to "Leia mais", about_mobile_project_path(@project), class: "alt-link body-medium read-more-link"
