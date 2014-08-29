@@ -83,6 +83,31 @@
           #project_comments.content.hide
           #project_about.content = render 'project_about'
 
+          #project_content
+          - if policy(@project).update?
+            #project_reports.content.hide
+              = render partial: 'project_reports'
+            #project_edit.content.hide
+              = render partial: 'project_edit'
+
+          #project_posts.content.hide[data-path=project_posts_path(project_id: @project.id)]
+            - if policy(@project).update?
+              = render template: 'projects/posts/new'
+            .results
+              | &nbsp;
+
+          #project_contributions.content.hide[data-path=project_contributions_path(project_id: @project.id)]
+            - if policy(@project).update?
+              = radio_button_tag(:contribution_state, "available_to_count", checked: true)
+              = label_tag(:contribution_state, t('.contribution_states.confirmed'))
+              = radio_button_tag(:contribution_state, "waiting_confirmation")
+              = label_tag(:contribution_state, t('.contributions_states.pending'))
+            .results
+              | &nbsp;
+
+          #project_comments.content.hide
+
+
 
         aside.project-info.w-col.w-col-4
           .project-stats
@@ -131,7 +156,7 @@
           .project-author-send-message
             = mail_to @project.user.email, "Entre em contato", target: '_blank', class: 'body-medium alt-link'
 
-          .project-share
+          .project-share.project-share-sidebar
             .project-share-link
               .button.bt-medium.bt-fb = "Compartilhe"
             .project-share-link

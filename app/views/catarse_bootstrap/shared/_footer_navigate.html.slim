@@ -1,0 +1,8 @@
+h4.h4-neg #{t('layouts.footer.titles.sitemap')}
+a.link-footer.link-footer-negative.no-mobile href="#{start_path}"  #{t('layouts.footer.links.submit')}
+a.link-footer.link-footer-negative href="#{explore_path}"  #{t('layouts.footer.links.discover')}
+- if current_user.try(:adress_state)
+  a.link-footer.link-footer-negative href="#{explore_path(anchor: ('near_of/' + current_user.address_state))}" #{t('layouts.footer.links.near')}
+a.link-footer.link-footer-negative href="#{explore_path(anchor: "recommended")}"  #{t('layouts.footer.links.recommended')}
+a.link-footer.link-footer-negative href="#{explore_path(anchor: "expiring")}"  #{t('layouts.footer.links.expiring')}
+a.link-footer.link-footer-negative href="#{explore_path(anchor: "recent")}"  #{t('layouts.footer.links.recents')}
